@@ -10,7 +10,6 @@ import {
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
-import PickerStyleButton from '@components/core/PickerStyleButton';
 import {
   Campaign,
   CardId,
@@ -20,18 +19,15 @@ import {
   InvestigatorData,
   ParsedDeck,
   SplitCards,
-  Slots,
   Trauma,
 } from '@actions/types';
 import { showCard, showCardSwipe } from '@components/nav/helper';
-import DeckProblemRow from '@components/core/DeckProblemRow';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import CardTextComponent from '@components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
-import InvestigatorOptionsModule from './InvestigatorOptionsModule';
+import InvestigatorOptionsModule, { hasInvestigatorOptions } from './InvestigatorOptionsModule';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
-import TabooSetPicker from '@components/core/TabooSetPicker';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
@@ -39,16 +35,19 @@ import { BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
-import COLORS from '@styles/colors';
 import space, { isBig, m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { useDeckEdits } from '@components/core/hooks';
+import { useDeckEdits, useFlag } from '@components/core/hooks';
 import { setDeckTabooSet, updateDeckMeta } from './actions';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
+import DeckMetadataComponent from './DeckMetadataComponent';
+import DeckTabooPickerButton from './DeckTabooPickerButton';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import DeckPickerStyleButton from './DeckPickerStyleButton';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -177,13 +176,6 @@ function deckToSections(
       });
     }
   });
-  if (!special && result.length === 0) {
-    result.push({
-      id: 'cards-placeholder',
-      placeholder: true,
-      cards: [],
-    });
-  }
   if (result.length) {
     result[0].first = true;
     result[result.length - 1].last = true;
@@ -196,28 +188,13 @@ function deckToSections(
 
 
 function bondedSections(
-  slots: Slots,
-  cards: CardsMap,
-  bondedCardsByName: { [name: string]: Card[] },
+  uniqBondedCards: Card[],
+  count: number,
   index: number,
 ): DeckSection | undefined {
-  const bondedCards: Card[] = [];
-  forEach(slots, (count, code) => {
-    const card = cards[code];
-    if (count > 0 && card) {
-      const possibleBondedCards = bondedCardsByName[card.real_name];
-      if (possibleBondedCards && possibleBondedCards.length) {
-        forEach(possibleBondedCards, bonded => {
-          bondedCards.push(bonded);
-        });
-      }
-    }
-  });
-  if (!bondedCards.length) {
+  if (count === 0) {
     return undefined;
   }
-  const uniqBondedCards = uniqBy(bondedCards, c => c.code);
-  const count = sumBy(uniqBondedCards, card => card.quantity || 0);
   return {
     title: t`Bonded Cards (${count})`,
     sections: [{
@@ -233,6 +210,7 @@ function bondedSections(
           invalid: false,
         };
       }),
+      last: true,
     }],
   };
 }
@@ -313,9 +291,9 @@ export default function DeckViewTab(props: Props) {
     showDeckHistory,
     investigatorDataUpdates,
   } = props;
-  const { colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [deckEdits, deckEditsRef] = useDeckEdits(deck.id);
-  const [limitedSlots, setLimitedSlots] = useState(false);
+  const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
   const [data, setData] = useState<DeckSection[]>([]);
   const showInvestigator = useCallback(() => {
@@ -330,6 +308,27 @@ export default function DeckViewTab(props: Props) {
       );
     }
   }, [componentId, tabooSetId, investigatorFront, colors]);
+
+  const [uniqueBondedCards, bondedCardsCount] = useMemo((): [Card[], number] => {
+    const bondedCards: Card[] = [];
+    forEach(parsedDeck.slots, (count, code) => {
+      const card = cards[code];
+      if (count > 0 && card) {
+        const possibleBondedCards = bondedCardsByName[card.real_name];
+        if (possibleBondedCards && possibleBondedCards.length) {
+          forEach(possibleBondedCards, bonded => {
+            bondedCards.push(bonded);
+          });
+        }
+      }
+    });
+    if (!bondedCards.length) {
+      return [[], 0];
+    }
+    const uniqueBondedCards = uniqBy(bondedCards, c => c.code);
+    const bondedCardsCount = sumBy(uniqueBondedCards, card => card.quantity || 0);
+    return [uniqueBondedCards, bondedCardsCount];
+  }, [parsedDeck.slots, cards, bondedCardsByName]);
 
   useEffect(() => {
     if (!investigatorBack || !visible) {
@@ -365,14 +364,14 @@ export default function DeckViewTab(props: Props) {
     );
     const newData: DeckSection[] = [deckSection, specialSection];
     if (!limitedSlots) {
-      const bonded = bondedSections(slots, cards, bondedCardsByName, specialIndex);
+      const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, specialIndex);
       if (bonded) {
         newData.push(bonded);
       }
     }
     setData(newData);
   }, [investigatorBack, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits, cards,
-    showEditCards, showEditSpecial, setData, cardsByName, bondedCardsByName, inCollection, editable, visible]);
+    showEditCards, showEditSpecial, setData, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
   const faction = parsedDeck.investigator.factionCode();
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
@@ -464,89 +463,72 @@ export default function DeckViewTab(props: Props) {
     );
   }, [showSwipeCard, deckEditsRef, showDeckUpgrades, showCardUpgradeDialog, cards]);
 
-  const problemHeader = useMemo(() => {
-    if (!problem) {
-      return null;
-    }
-    const isSurvivor = parsedDeck.investigator.faction_code === 'survivor';
-    return (
-      <View style={[styles.problemBox,
-        { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
-      ]}>
-        <DeckProblemRow
-          problem={problem}
-          color={isSurvivor ? COLORS.black : COLORS.white}
-          fontSize={14}
-        />
-      </View>
-    );
-  }, [parsedDeck.investigator, problem]);
-
-  const availableExperienceButton = useMemo(() => {
-    const changes = parsedDeck.changes;
-    if (!changes) {
-      return null;
-    }
-    const adjustedXp = (deck.xp || 0) + (deckEdits?.xpAdjustment || 0);
-    return (
-      <PickerStyleButton
-        id="xp"
-        title={t`Experience`}
-        value={t`${changes.spentXp} of ${adjustedXp}`}
-        disabled={!editable}
-        onPress={showEditNameDialog}
-        colors={{
-          backgroundColor: 'transparent',
-          textColor: colors.darkText,
-        }}
-        widget="nav"
-        noBorder
-        settingsStyle
-      />
-    );
-  }, [colors, parsedDeck.changes, deck, showEditNameDialog, deckEdits?.xpAdjustment, editable]);
-
-  const toggleLimitedSlots = useCallback(() => {
-    setLimitedSlots(!limitedSlots);
-  }, [limitedSlots, setLimitedSlots]);
   const dispatch = useDispatch();
   const setTabooSet = useCallback((tabooSetId: number | undefined) => {
     dispatch(setDeckTabooSet(deck.id, tabooSetId || 0));
   }, [dispatch, deck.id]);
   const setMeta = useCallback((key: keyof DeckMeta, value?: string) => {
     if (deckEditsRef.current) {
-      dispatch(updateDeckMeta(deck.id, deck.investigator_code, deckEditsRef.current, key, value));
+      dispatch(updateDeckMeta(deck.id, deck.investigator_code, deckEditsRef.current, [{ key, value }]));
     }
   }, [dispatch, deck.id, deck.investigator_code, deckEditsRef]);
+  const setParallel = useCallback((front: string, back: string) => {
+    if (deckEditsRef.current) {
+      dispatch(updateDeckMeta(deck.id, deck.investigator_code, deckEditsRef.current, [
+        { key: 'alternate_front', value: front },
+        { key: 'alternate_back', value: back },
+      ]));
+    }
+  }, [dispatch, deckEditsRef, deck.id, deck.investigator_code]);
 
   const investigatorOptions = useMemo(() => {
-    if (!deckEdits?.meta) {
+    if (!deckEdits?.meta || !investigator) {
       return null;
     }
+    const hasTabooPicker = (tabooOpen || showTaboo || !!tabooSet);
+    const changes = parsedDeck.changes;
+    const hasXpButton = editable && !!(changes && deck.previous_deck);
+    const hasOptions = hasInvestigatorOptions(investigator, parallelInvestigators);
+    const adjustedXp = (deck.xp || 0) + (deckEdits?.xpAdjustment || 0);
+    const unspent = adjustedXp - (changes?.spentXp || 0);
+    const unspentStr = unspent > 0 ? `+${unspent}` : `${unspent}`;
     return (
-      <View style={styles.optionsContainer}>
-        { (tabooOpen || showTaboo || !!tabooSet) && (
-          <TabooSetPicker
+      <View style={[styles.optionsContainer, space.paddingS]}>
+        { hasXpButton && !!changes && (
+          <DeckPickerStyleButton
+            title={t`Experience`}
+            valueLabel={t`${adjustedXp} XP`}
+            valueLabelDescription={deck.previous_deck ? t`${unspentStr} unspent` : undefined}
+            editable={editable}
+            onPress={showEditNameDialog}
+            first
+            last={!hasTabooPicker && !hasOptions}
+            icon="xp"
+            noLabelDivider
+          />
+        ) }
+        { hasTabooPicker && (
+          <DeckTabooPickerButton
             open={tabooOpen}
+            faction={investigator.factionCode()}
             disabled={!editable}
             tabooSetId={tabooSetId}
             setTabooSet={setTabooSet}
-            color={colors.faction[
-              investigator ? investigator.factionCode() : 'neutral'
-            ].background}
-            transparent
+            first={!hasXpButton}
+            last={!hasOptions}
           />
         ) }
         <InvestigatorOptionsModule
-          investigator={parsedDeck.investigator}
+          investigator={investigator}
           meta={deckEdits.meta}
           parallelInvestigators={parallelInvestigators}
           setMeta={setMeta}
+          setParallel={setParallel}
           editWarning={!!deck.previous_deck}
           disabled={!editable}
+          first={!hasTabooPicker && !hasXpButton}
         />
-        { availableExperienceButton }
-        { limitedSlots && (
+        { !!find(investigatorBack?.deck_options, option => !!option.limit) && (
           <View style={styles.toggleRow}>
             <Text style={[
               typography.text,
@@ -561,20 +543,9 @@ export default function DeckViewTab(props: Props) {
         ) }
       </View>
     );
-  }, [investigator, colors, availableExperienceButton, limitedSlots,
-    toggleLimitedSlots,
-    typography,
-    parsedDeck.investigator,
-    parallelInvestigators,
-    deck,
-    deckEdits?.meta,
-    tabooSetId,
-    setMeta,
-    tabooSet,
-    setTabooSet,
-    showTaboo,
-    tabooOpen,
-    editable,
+  }, [investigatorBack, investigator, limitedSlots, typography, parallelInvestigators, deck, tabooSetId, tabooSet, showTaboo, tabooOpen, editable,
+    deckEdits?.meta, deckEdits?.xpAdjustment, parsedDeck?.changes,
+    showEditNameDialog, setMeta, setParallel, setTabooSet, toggleLimitedSlots,
   ]);
 
   const investigatorBlock = useMemo(() => {
@@ -627,53 +598,69 @@ export default function DeckViewTab(props: Props) {
     return (
       <View style={styles.headerWrapper}>
         <View style={styles.headerBlock}>
-          { problemHeader }
           <View style={styles.containerWrapper}>
             <View style={styles.container}>
               { investigatorBlock }
             </View>
+            <DeckMetadataComponent
+              parsedDeck={parsedDeck}
+              bondedCardCount={bondedCardsCount}
+              problem={problem}
+              hasPreviousDeck={!!deck.previous_deck}
+              editable={editable}
+            />
             { investigatorOptions }
           </View>
           { buttons }
         </View>
       </View>
     );
-  }, [problemHeader, investigatorBlock, investigatorOptions, buttons]);
+  }, [investigatorBlock, investigatorOptions, buttons, parsedDeck, bondedCardsCount, problem, editable, deck.previous_deck]);
   if (!deckEdits) {
     return null;
   }
 
   return (
-    <ScrollView contentContainerStyle={space.marginSideS}>
+    <ScrollView contentContainerStyle={backgroundStyle}>
       { header }
-      { map(data, deckSection => {
-        return (
-          <DeckSectionBlock faction={faction} title={deckSection.title} onTitlePress={deckSection.onTitlePress}>
-            { flatMap(deckSection.sections, section => (
-              <View key={section.id}>
-                { renderSectionHeader(section) }
-                { map(section.cards, (item, index) => renderCard(item, index, section)) }
-              </View>
-            )) }
-          </DeckSectionBlock>
-        );
-      })}
-      <DeckProgressComponent
-        componentId={componentId}
-        cards={cards}
-        deck={deck}
-        parsedDeck={parsedDeck}
-        editable={editable}
-        isPrivate={isPrivate}
-        campaign={campaign}
-        hideCampaign={hideCampaign}
-        showTraumaDialog={showTraumaDialog}
-        showDeckUpgrade={showDeckUpgrade}
-        showDeckHistory={showDeckHistory}
-        investigatorDataUpdates={investigatorDataUpdates}
-        tabooSetId={tabooSetId}
-        singleCardView={singleCardView}
-      />
+      <View style={space.marginSideS}>
+        { map(data, deckSection => {
+          return (
+            <DeckSectionBlock
+              faction={faction}
+              title={deckSection.title}
+              onTitlePress={deckSection.onTitlePress}
+              key={deckSection.title}
+              footerButton={deckSection.sections.length === 0 && deckSection.onTitlePress ? (
+                <RoundedFooterButton onPress={deckSection.onTitlePress} title={t`Add cards`} icon="deck" />
+              ) : undefined}
+            >
+              { flatMap(deckSection.sections, section => (
+                <View key={section.id}>
+                  { renderSectionHeader(section) }
+                  { map(section.cards, (item, index) => renderCard(item, index, section)) }
+                </View>
+              )) }
+            </DeckSectionBlock>
+          );
+        })}
+        <DeckProgressComponent
+          componentId={componentId}
+          cards={cards}
+          deck={deck}
+          parsedDeck={parsedDeck}
+          editable={editable}
+          isPrivate={isPrivate}
+          campaign={campaign}
+          hideCampaign={hideCampaign}
+          showTraumaDialog={showTraumaDialog}
+          showDeckUpgrade={showDeckUpgrade}
+          showDeckHistory={showDeckHistory}
+          investigatorDataUpdates={investigatorDataUpdates}
+          tabooSetId={tabooSetId}
+          singleCardView={singleCardView}
+        />
+      </View>
     </ScrollView>
   );
 }
@@ -722,13 +709,6 @@ const styles = StyleSheet.create({
   optionsContainer: {
     flexDirection: 'column',
     flex: 1,
-  },
-  problemBox: {
-    flex: 1,
-    paddingTop: xs,
-    paddingBottom: xs,
-    paddingRight: s,
-    paddingLeft: s,
   },
   headerBlock: {
     paddingBottom: s,

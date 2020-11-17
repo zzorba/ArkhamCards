@@ -31,7 +31,8 @@ export default function DeckEditView({
     return investigator_code && investigators && investigators[investigator_code];
   }, [deck, deckEdits, investigators]);
 
-  const versatile = !hideVersatile && (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
+  const hasVersatile = (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
+  const versatile = !hideVersatile && hasVersatile;
   const onYourOwn = deckEdits && deckEdits.slots[ON_YOUR_OWN_CODE] > 0;
   const queryOpt = useMemo(() => {
     if (storyOnly) {
@@ -87,7 +88,7 @@ export default function DeckEditView({
       baseQuery={queryOpt}
       investigator={investigator}
       hideVersatile={hideVersatile}
-      setHideVersatile={versatile ? setHideVersatile : undefined}
+      setHideVersatile={hasVersatile ? setHideVersatile : undefined}
       storyOnly={storyOnly}
     />
   );

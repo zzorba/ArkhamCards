@@ -20,14 +20,11 @@ import deepDiff from 'deep-diff';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
 
-import {
-  SettingsButton,
-} from '@lib/react-native-settings-components';
+import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import Dialog from '@components/core/Dialog';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import {
@@ -53,15 +50,15 @@ import {
   getPacksInCollection,
   AppState,
 } from '@reducers';
-import { m } from '@styles/space';
+import space, { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useInvestigatorCards, useNavigationButtonPressed, useParsedDeck, useTabooSet } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
+import DeckBubbleHeader from '../section/DeckBubbleHeader';
 
-const SHOW_CHECKLIST_EDITOR = true;
 export interface DeckDetailProps {
   id: number;
   title?: string;
@@ -284,7 +281,7 @@ function DeckDetailView({
         spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
         xpAdjustment: deckEditsRef.current.xpAdjustment,
         tabooSetId,
-        meta: deckEditsRef.current.ignoreDeckLimitSlots,
+        meta: deckEditsRef.current.meta,
       }
     )).then(() => {
       updateCampaignWeaknessSet(addedBasicWeaknesses);
@@ -892,153 +889,128 @@ function DeckDetailView({
     const adjustment = deckEdits.xpAdjustment >= 0 ? `+${deckEdits.xpAdjustment}` : `${deckEdits.xpAdjustment}`;
     const xpString = t`${xp} (${adjustment}) XP`;
     return (
-      <ScrollView style={[styles.menu, backgroundStyle]}>
-        <CardSectionHeader section={{ title: t`Deck` }} />
+      <ScrollView style={[styles.menu, backgroundStyle, space.paddingS]}>
+        <DeckBubbleHeader title={t`Deck`} />
         { editable && (
           <>
-            <SettingsButton
+            <MenuButton
               onPress={showEditDetails}
-              title={t`Name`}
-              description={deckEdits.nameChange || deck.name}
-              descriptionStyle={typography.small}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
+              title={deckEdits.nameChange || deck.name}
+              description={!deck.local ? t`Deck #${deck.id}` : undefined}
             />
-            <SettingsButton
+            <MenuButton
+              title={t`Taboo`}
               onPress={showTabooPicker}
-              title={t`Taboo List`}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
+              icon="taboo_thin"
               description={tabooSet ? tabooSet.date_start : t`None`}
-              descriptionStyle={typography.small}
+              last
             />
-            { !deck.local && (
-              <SettingsButton
-                title={t`Deck Id`}
-                titleStyle={typography.text}
-                containerStyle={backgroundStyle}
-                description={`${deck.id}`}
-                descriptionStyle={typography.small}
-                onPress={showEditDetails}
-                disabled
-              />
-            ) }
           </>
         ) }
-        <CardSectionHeader section={{ title: t`Cards` }} />
+        <DeckBubbleHeader title={t`Tools`} />
+        <MenuButton
+          onPress={showCardChartsPressed}
+          title={t`Charts`}
+          icon="chart"
+          description={t`For balancing and evaluating`}
+        />
+        <MenuButton
+          onPress={showDrawSimulatorPressed}
+          title={t`Draw Simulator`}
+          icon="draw"
+          description={t`Check your deck stability`}
+        />
+        <MenuButton
+          icon="checklist"
+          onPress={onChecklistPressed}
+          title={t`Checklist`}
+          description={t`For eady deck assembly`}
+          last
+        />
         { editable && (
           <>
-            <SettingsButton
+            <DeckBubbleHeader title={t`Cards`} />
+            <MenuButton
               onPress={onEditPressed}
-              title={t`Edit Cards`}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
+              icon="card-outline"
+              title={t`Deck Cards`}
               description={ngettext(
                 msgid`${normalCardCount} Card (${totalCardCount} Total)`,
                 `${normalCardCount} Cards (${totalCardCount} Total)`,
                 normalCardCount
               )}
-              descriptionStyle={typography.small}
             />
-            <SettingsButton
+            <MenuButton
               onPress={onEditSpecialPressed}
-              title={t`Story Assets`}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
-            />
-            <SettingsButton
-              onPress={onEditSpecialPressed}
-              title={t`Weaknesses`}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
+              icon="special_cards"
+              title={t`Special Cards`}
+              description={t`Story assets and weaknesses`}
+              last
             />
           </>
         ) }
-        { SHOW_CHECKLIST_EDITOR && (
-          <SettingsButton
-            onPress={onChecklistPressed}
-            title={t`Checklist`}
-            titleStyle={typography.text}
-            containerStyle={backgroundStyle}
-          />
-        ) }
-        <SettingsButton
-          onPress={showCardChartsPressed}
-          title={t`Charts`}
-          titleStyle={typography.text}
-          containerStyle={backgroundStyle}
-        />
-        <SettingsButton
-          onPress={showDrawSimulatorPressed}
-          title={t`Draw Simulator`}
-          titleStyle={typography.text}
-          containerStyle={backgroundStyle}
-        />
         { editable && (
           <>
-            <CardSectionHeader section={{ title: t`Campaign` }} />
-            <SettingsButton
-              onPress={onUpgradePressed}
-              title={t`Upgrade Deck`}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
-              disabled={!!hasPendingEdits}
-              description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
-              descriptionStyle={typography.small}
-            />
+            <DeckBubbleHeader title={t`Campaign`} />
             { !!deck.previous_deck && (
-              <SettingsButton
+              <MenuButton
+                icon="xp"
                 onPress={showEditDetails}
                 title={t`Available XP`}
-                titleStyle={typography.text}
-                containerStyle={backgroundStyle}
                 description={xpString}
-                descriptionStyle={typography.small}
               />
             ) }
+            <MenuButton
+              icon="upgrade"
+              onPress={onUpgradePressed}
+              title={t`Upgrade Deck`}
+              disabled={!!hasPendingEdits}
+              description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
+              last={!deck.previous_deck}
+            />
             { !!deck.previous_deck && (
-              <SettingsButton
+              <MenuButton
+                icon="deck"
                 onPress={showUpgradeHistoryPressed}
                 title={t`Upgrade History`}
-                titleStyle={typography.text}
-                containerStyle={backgroundStyle}
+                last
               />
             ) }
           </>
         ) }
-        <CardSectionHeader section={{ title: t`Options` }} />
-        <SettingsButton
+        <DeckBubbleHeader title={t`Options`} />
+        <MenuButton
+          icon="copy"
           onPress={toggleCopyDialog}
-          title={t`Clone`}
-          titleStyle={typography.text}
-          containerStyle={backgroundStyle}
+          title={t`Clone deck`}
         />
         { deck.local ? (
-          <SettingsButton
+          <MenuButton
+            icon="world"
             onPress={uploadToArkhamDB}
             title={t`Upload to ArkhamDB`}
-            titleStyle={typography.text}
-            containerStyle={backgroundStyle}
+            last={!isPrivate}
           />
         ) : (
-          <SettingsButton
+          <MenuButton
+            icon="world"
             title={t`View on ArkhamDB`}
+            description={t`Open in browser`}
             onPress={viewDeck}
-            titleStyle={typography.text}
-            containerStyle={backgroundStyle}
+            last={!isPrivate}
           />
         ) }
         { !!isPrivate && (
-          <SettingsButton
+          <MenuButton
+            icon="delete"
             title={t`Delete`}
-            titleStyle={styles.destructive}
-            containerStyle={backgroundStyle}
             onPress={deleteDeckPressed}
+            last
           />
         ) }
       </ScrollView>
     );
-  }, [backgroundStyle, typography, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
+  }, [backgroundStyle, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditDetails, showTabooPicker,
     onEditPressed, onEditSpecialPressed, onChecklistPressed,
@@ -1161,8 +1133,5 @@ const styles = StyleSheet.create({
   menu: {
     borderLeftWidth: 2,
     borderColor: COLORS.darkGray,
-  },
-  destructive: {
-    color: COLORS.red,
   },
 });

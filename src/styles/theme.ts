@@ -63,6 +63,8 @@ export interface ThemeColors {
     red: string;
   };
   navButton: string;
+  warn: string;
+  warnText: string;
 }
 const light10 = '#D7D3C6';
 const light20 = '#F5F0E1';
@@ -173,6 +175,8 @@ export const LIGHT_THEME: ThemeColors = {
     red: '#96000333',
   },
   navButton: '#007AFF',
+  warn: '#FB4135',
+  warnText: '#C50707',
 };
 
 export const DARK_THEME: ThemeColors = {
@@ -276,4 +280,6 @@ export const DARK_THEME: ThemeColors = {
     red: '#8f474988',
   },
   navButton: '#4aa1ff',
+  warn: '#C50707',
+  warnText: '#FB4135',
 };

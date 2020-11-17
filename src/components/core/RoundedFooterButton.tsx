@@ -6,7 +6,7 @@ import StyleContext from '@styles/StyleContext';
 import ArkhamButtonIcon, { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 
 interface Props {
-  onPress: () => void;
+  onPress?: () => void;
   icon: ArkhamButtonIconType;
   title: string;
 }
@@ -26,6 +26,7 @@ export default function RoundedFooterButton({ onPress, icon, title }: Props) {
       ]}
       rippleColor={colors.L20}
       onPress={onPress}
+      disabled={!onPress}
     >
       <View pointerEvents="box-none" style={styles.row}>
         <ArkhamButtonIcon icon={icon} color="dark" />

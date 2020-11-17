@@ -10,6 +10,7 @@ import {
   UpdateDeckEditAction,
   UpdateDeckEditCountsAction,
 } from '@actions/types';
+import { forEach } from 'lodash';
 
 
 export function incIgnoreDeckSlot(id: number, code: string, limit?: number): UpdateDeckEditCountsAction {
@@ -100,22 +101,23 @@ export function updateDeckMeta(
   id: number,
   investigator_code: string,
   deckEdits: EditDeckState,
-  key: keyof DeckMeta,
-  value?: string
+  updates: {
+    key: keyof DeckMeta;
+    value?: string;
+  }[]
 ): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, UpdateDeckEditAction | UpdateDeckEditCountsAction>): void => {
-    const updatedMeta = {
-      ...deckEdits.meta,
-      [key]: value,
-    };
-
-    if (value === undefined) {
-      delete updatedMeta[key];
-    } else {
-      if (investigator_code === '06002' && key === 'deck_size_selected') {
-        dispatch(setDeckSlot(id, '06008', (parseInt(value, 10) - 20) / 10));
+    const updatedMeta: DeckMeta = { ...deckEdits.meta };
+    forEach(updates, update => {
+      if (update.value === undefined) {
+        delete updatedMeta[update.key];
+      } else {
+        updatedMeta[update.key] = update.value as any;
+        if (investigator_code === '06002' && update.key === 'deck_size_selected') {
+          dispatch(setDeckSlot(id, '06008', (parseInt(update.value, 10) - 20) / 10));
+        }
       }
-    }
+    });
 
     dispatch({
       type: UPDATE_DECK_EDIT,

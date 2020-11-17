@@ -12,8 +12,14 @@ interface Props {
   meta: DeckMeta;
   parallelInvestigators: Card[];
   setMeta: (key: keyof DeckMeta, value?: string) => void;
+  setParallel: (front: string, back: string) => void;
   editWarning: boolean;
   disabled?: boolean;
+  first: boolean;
+}
+
+export function hasInvestigatorOptions(investigator: Card, parallelInvestigators: Card[]): boolean {
+  return !!parallelInvestigators.length || !!investigator.investigatorSelectOptions().length;
 }
 
 export default function InvestigatorOptionsModule({
@@ -21,19 +27,20 @@ export default function InvestigatorOptionsModule({
   meta,
   parallelInvestigators,
   setMeta,
+  setParallel,
   editWarning,
   disabled,
+  first,
 }: Props) {
-
-  const parallelCardChange = useCallback((
-    type: 'alternate_front' | 'alternate_back',
-    code?: string
-  ) => {
-    setMeta(type, code);
-  }, [setMeta]);
-
+  const options = investigator.investigatorSelectOptions();
+  const hasParallel = !!parallelInvestigators.length;
+  const hasOptions = !!options.length;
   const parallelOptionsSection = useMemo(() => {
     if (!parallelInvestigators.length) {
+      return null;
+    }
+    const alternateInvestigator = find(parallelInvestigators, pi => pi.code !== investigator.code);
+    if (!alternateInvestigator) {
       return null;
     }
 
@@ -41,33 +48,19 @@ export default function InvestigatorOptionsModule({
       <>
         <ParallelInvestigatorPicker
           investigator={investigator}
-          parallelInvestigators={parallelInvestigators}
-          type="alternate_front"
-          onChange={parallelCardChange}
-          selection={find(
-            parallelInvestigators,
-            investigator => investigator.code === meta.alternate_front
-          )}
+          alternateInvestigator={alternateInvestigator}
+          onChange={setParallel}
+          front={meta.alternate_front || investigator.code}
+          back={meta.alternate_back || investigator.code}
           disabled={disabled}
           editWarning={editWarning}
-        />
-        <ParallelInvestigatorPicker
-          investigator={investigator}
-          parallelInvestigators={parallelInvestigators}
-          type="alternate_back"
-          onChange={parallelCardChange}
-          selection={find(
-            parallelInvestigators,
-            investigator => investigator.code === meta.alternate_back
-          )}
-          disabled={disabled}
-          editWarning={editWarning}
+          first={first}
+          last={!hasOptions}
         />
       </>
     );
-  }, [investigator, parallelInvestigators, parallelCardChange, disabled, editWarning, meta]);
+  }, [investigator, parallelInvestigators, first, setParallel, disabled, editWarning, meta, hasOptions]);
 
-  const options = investigator.investigatorSelectOptions();
   return (
     <View>
       { parallelOptionsSection }
@@ -81,9 +74,11 @@ export default function InvestigatorOptionsModule({
             meta={meta}
             disabled={disabled}
             editWarning={editWarning}
+            first={first && !hasParallel && idx === 0}
           />
         );
       }) }
     </View>
   );
 }
+

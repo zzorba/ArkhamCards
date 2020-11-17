@@ -7,15 +7,17 @@ import { FactionCodeType } from '@app_constants';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
+import DeckPickerButton from '../DeckPickerButton';
 
 interface Props {
   name: string;
   factions: FactionCodeType[];
-  selection?: FactionCodeType;
+  selection: FactionCodeType;
   onChange: (faction: FactionCodeType) => void;
-  investigatorFaction?: FactionCodeType;
+  investigatorFaction: FactionCodeType;
   disabled?: boolean;
   editWarning: boolean;
+  first: boolean;
 }
 
 export default function FactionSelectPicker({
@@ -26,8 +28,8 @@ export default function FactionSelectPicker({
   disabled,
   editWarning,
   onChange,
+  first,
 }: Props){
-  const { colors } = useContext(StyleContext);
   const onChoiceChange = (index: number | null) => {
     if (index === null) {
       return;
@@ -36,27 +38,23 @@ export default function FactionSelectPicker({
   };
 
   return (
-    <SinglePickerComponent
-      settingsStyle
+    <DeckPickerButton
       title={name}
+      icon={`class_${selection}`}
       editable={!disabled}
-      description={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}
-      colors={{
-        modalColor: investigatorFaction ?
-          colors.faction[investigatorFaction].background :
-          COLORS.lightBlue,
-        modalTextColor: 'white',
-        backgroundColor: 'transparent',
-        textColor: colors.darkText,
-      }}
-      choices={map(factions, faction => {
+      modalDescription={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}
+      options={map(factions, (faction, index) => {
         return {
-          text: Card.factionCodeToName(faction, t`Select Faction`),
+          value: index,
+          label: Card.factionCodeToName(faction, t`Select Faction`),
         };
       })}
-      selectedIndex={selection ? findIndex(factions, faction => faction === selection) : 0}
+      valueLabel={Card.factionCodeToName(selection, t`Select Faction`)}
+      faction={investigatorFaction}
+      selectedValue={selection ? findIndex(factions, faction => faction === selection) : 0}
       onChoiceChange={onChoiceChange}
-      noBorder
+      first={first}
+      last
     />
   );
 }

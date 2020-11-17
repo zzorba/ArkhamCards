@@ -490,125 +490,125 @@
         "entries": [
           {
             "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "masculine_text": "#name# a lu l'Acte II du Roi en Jaune.",
+            "feminine_text": "#name# a lu l'Acte II du Roi en Jaune."
           },
           {
             "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "masculine_text": "#name# était possédé.",
+            "feminine_text": "#name# était possédée."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "les investigateurs ont été attaqués en fuyant l'Asile."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "vous êtes réveillé dans les catacombes."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "le royaume de Carcosa a fusionné avec notre monde, et Hastur règne sur les deux."
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "vous avez choisi de ne pas aller voir la police"
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "vous avez détruit le conjurateur"
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "vous n'avez pas échappé au regard du spectre."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "vous avez pénétré dans les catacombes de votre plein gré."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "investigateurs se sont échappés de l'Asile."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "vous avez fui la réception."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "adorateurs du signe ont trouvé la marche à suivre."
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "vous avez trouvé Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "vous avez trouvé la demeure de Nigel."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur a mis la main sur vous."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "vous avez tenu compte de l'avertissement de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "vous avez ignoré l'avertissementde Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "vous vous êtes introduit dans une réunion secrète."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "le Roi a réclamé ses victimes."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "vous connaissez l'emplacement de la porte"
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "vous avez laissé la broche en onyx"
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "vous avez ouvert la voie d'en haut."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "vous avez ouvert la voie d'en bas."
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "la police vous suspecte"
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "les investigateurs ont empêché Hastur de s'échapper de sa prison."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "vous avez tué les monstres de la réception."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "l'Étranger vous a à l'oeil."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "vous avez pris la broche en onyx"
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "vous avez tenté de prévenir la police."
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "vous n'avez pas réussi à trouver Nigel."
           },
           {
             "id": "tes_taken_by_the_abyss",
@@ -715,7 +715,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "au moins un investigateur était possédé"
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1287,125 +1287,125 @@
         "entries": [
           {
             "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "masculine_text": "#name# a lu l'Acte II du Roi en Jaune.",
+            "feminine_text": "#name# a lu l'Acte II du Roi en Jaune."
           },
           {
             "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "masculine_text": "#name# était possédé.",
+            "feminine_text": "#name# était possédée."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "les investigateurs ont été attaqués en fuyant l'Asile."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "vous êtes réveillé dans les catacombes."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "le royaume de Carcosa a fusionné avec notre monde, et Hastur règne sur les deux."
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "vous avez choisi de ne pas aller voir la police"
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "vous avez détruit le conjurateur"
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "vous n'avez pas échappé au regard du spectre."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "vous avez pénétré dans les catacombes de votre plein gré."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "investigateurs se sont échappés de l'Asile."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "vous avez fui la réception."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "adorateurs du signe ont trouvé la marche à suivre."
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "vous avez trouvé Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "vous avez trouvé la demeure de Nigel."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur a mis la main sur vous."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "vous avez tenu compte de l'avertissement de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "vous avez ignoré l'avertissementde Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "vous vous êtes introduit dans une réunion secrète."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "le Roi a réclamé ses victimes."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "vous connaissez l'emplacement de la porte"
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "vous avez laissé la broche en onyx"
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "vous avez ouvert la voie d'en haut."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "vous avez ouvert la voie d'en bas."
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "la police vous suspecte"
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "les investigateurs ont empêché Hastur de s'échapper de sa prison."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "vous avez tué les monstres de la réception."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "l'Étranger vous a à l'oeil."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "vous avez pris la broche en onyx"
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "vous avez tenté de prévenir la police."
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "vous n'avez pas réussi à trouver Nigel."
           },
           {
             "id": "tes_taken_by_the_abyss",
@@ -1512,7 +1512,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "au moins un investigateur était possédé"
           },
           {
             "id": "tpm_conviction_or_doubt",

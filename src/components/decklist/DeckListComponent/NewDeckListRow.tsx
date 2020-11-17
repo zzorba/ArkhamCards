@@ -1,0 +1,341 @@
+import React, { ReactNode, useCallback, useContext, useMemo } from 'react';
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { ngettext, msgid, t } from 'ttag';
+import {
+  Placeholder,
+  PlaceholderLine,
+  Fade,
+} from 'rn-placeholder';
+
+import { Campaign, Deck, ParsedDeck } from '@actions/types';
+import Card from '@data/Card';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
+import { getProblemMessage } from '@components/core/DeckProblemRow';
+import { toRelativeDateString } from '@lib/datetime';
+import { parseBasicDeck } from '@lib/parseDeck';
+import space, { m, s } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
+import { usePlayerCards } from '@components/core/hooks';
+import { TINY_PHONE } from '@styles/sizes';
+import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import InvestigatorImage from '@components/core/InvestigatorImage';
+import ArkhamButtonIcon from '@icons/ArkhamButtonIcon';
+import WarningIcon from '@icons/WarningIcon';
+
+interface Props {
+  lang: string;
+  deck: Deck;
+  previousDeck?: Deck;
+  deckToCampaign?: { [deck_id: number]: Campaign };
+  investigator?: Card;
+  onPress?: (deck: Deck, investigator?: Card) => void;
+  details?: ReactNode;
+  subDetails?: ReactNode;
+  viewDeckButton?: boolean;
+  killedOrInsane?: boolean;
+  width: number;
+}
+
+function deckXpString(parsedDeck: ParsedDeck) {
+  const xp = (parsedDeck.deck.xp || 0) + (parsedDeck.deck.xp_adjustment || 0);
+  if (xp > 0) {
+    if (parsedDeck.changes && parsedDeck.changes.spentXp > 0) {
+      const unspent = parsedDeck.availableExperience - parsedDeck.changes.spentXp;
+      const unspentStr = unspent > 0 ? `+${unspent}` : `${unspent}`;
+      return t`${xp} XP (${unspentStr} unspent)`;
+    }
+    return t`${xp} XP`;
+  }
+  if (parsedDeck.experience > 0) {
+    return t`${parsedDeck.experience} experience required`;
+  }
+  return null;
+}
+
+interface DetailProps {
+  investigator?: Card;
+  campaign?: Campaign;
+  deck: Deck;
+  previousDeck?: Deck;
+  details?: ReactNode;
+  lang: string;
+  eliminated: boolean;
+}
+
+function DetailLine({ text, icon, last }: { text: string; icon: React.ReactNode; last?: boolean }) {
+  const { borderStyle, typography } = useContext(StyleContext);
+  return (
+    <View style={[styles.detailLine, space.paddingSideXs, space.paddingBottomS, space.marginBottomS, borderStyle, !last ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined]}>
+      <View style={space.marginRightS}>
+        { icon }
+      </View>
+      <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
+        { text }
+      </Text>
+    </View>
+  );
+}
+
+function DeckListRowDetails({
+  investigator,
+  campaign,
+  deck,
+  details,
+  previousDeck,
+  eliminated,
+}: DetailProps) {
+  const { colors, typography } = useContext(StyleContext);
+  const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
+  const cards = usePlayerCards(deck.taboo_id || 0);
+  if (details) {
+    return (
+      <>
+        { details }
+      </>
+    );
+  }
+  const parsedDeck = deck && cards && parseBasicDeck(deck, cards, previousDeck);
+  if (!parsedDeck || !investigator) {
+    return (
+      <Placeholder Animation={loadingAnimation}>
+        <PlaceholderLine color={colors.L10} height={11} width={80} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
+        <PlaceholderLine color={colors.L10} height={11} width={40} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
+        <PlaceholderLine color={colors.L10} height={11} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
+        <PlaceholderLine color={colors.L10} height={11} width={60} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
+      </Placeholder>
+    );
+  }
+  const xpString = deckXpString(parsedDeck);
+  const scenarioCount = deck.scenarioCount || 0;
+  const traumaData = campaign && campaign.investigatorData[investigator.code];
+  const campaignLines: string[] = [];
+  if (campaign) {
+    campaignLines.push(campaign.name);
+  }
+  if (eliminated) {
+    campaignLines.push(investigator.traumaString(traumaData));
+  } else {
+    campaignLines.push(
+      ngettext(
+        msgid`${scenarioCount} scenario completed`,
+        `${scenarioCount} scenarios completed`,
+        scenarioCount
+      )
+    );
+  }
+  return (
+    <View>
+      <DetailLine
+        icon={<ArkhamButtonIcon icon="campaign" color="dark" />}
+        text={campaignLines.join('\n')}
+        last={!xpString && !deck.problem}
+      />
+      { eliminated && (
+        <Text style={typography.small}>
+          { investigator.traumaString(traumaData) }
+        </Text>
+      ) }
+      { !!xpString && (
+        <DetailLine
+          icon={<ArkhamButtonIcon icon="xp" color="dark" />}
+          text={xpString}
+          last={!deck.problem}
+        />
+      ) }
+      { !!deck.problem && (
+        <DetailLine
+          icon={<WarningIcon size={20} />}
+          text={getProblemMessage({ reason: deck.problem })}
+          last
+        />
+      ) }
+    </View>
+  );
+}
+
+export default function NewDeckListRow({
+  lang,
+  deck,
+  previousDeck,
+  deckToCampaign,
+  investigator,
+  onPress,
+  details,
+  subDetails,
+  viewDeckButton,
+  killedOrInsane,
+  width,
+}: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const onDeckPress = useCallback(() => {
+    onPress && onPress(deck, investigator);
+  }, [deck, investigator, onPress]);
+  const yithian = useMemo(() => (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.slots]);
+  const campaign = deck && deckToCampaign && deckToCampaign[deck.id];
+  const eliminated = useMemo(() => {
+    if (killedOrInsane) {
+      return true;
+    }
+    if (!investigator) {
+      return false;
+    }
+    const traumaData = campaign && campaign.investigatorData[deck.id];
+    return investigator.eliminated(traumaData);
+  }, [killedOrInsane, investigator, campaign, deck]);
+
+  const contents = useMemo(() => {
+    const faction = investigator?.factionCode();
+    if (!deck) {
+      return (
+        <View style={styles.row}>
+          <ActivityIndicator
+            style={styles.loading}
+            size="large"
+            color={colors.lightText}
+          />
+        </View>
+      );
+    }
+
+    const date: undefined | string = deck.date_update || deck.date_creation;
+    const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
+    const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate), lang) : undefined;
+    return (
+      <View style={[space.paddingSideS, space.paddingTopS]}>
+        <RoundedFactionBlock
+          faction={faction || 'neutral'}
+          header={faction ? (
+            <RoundedFactionHeader faction={faction} width={width - s * 2}>
+              <View style={space.paddingSideS}>
+                <Text style={[typography.large, typography.white]} numberOfLines={1} ellipsizeMode="tail">
+                  { deck.name }
+                </Text>
+                <Text style={[typography.smallLabel, typography.italic, typography.white]}>
+                  { investigator?.name || '' }
+                </Text>
+              </View>
+            </RoundedFactionHeader>
+          ) : (<View />)}
+          footer={(
+            <View style={[{ backgroundColor: colors.L10 }, styles.footer]}>
+              <View style={space.marginRightS}>
+                <ArkhamButtonIcon icon="deck" color="dark" />
+              </View>
+              <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
+                { dateStr || ''}
+              </Text>
+            </View>
+          )}
+        >
+          <View style={styles.deckRow}>
+            <View style={styles.image}>
+              <InvestigatorImage
+                card={investigator}
+                killedOrInsane={eliminated}
+                yithian={yithian}
+                border
+              />
+            </View>
+            <View style={styles.investigatorBlock}>
+              <View style={styles.investigatorBlockRow}>
+                <View style={[styles.column, styles.titleColumn]}>
+                  <DeckListRowDetails
+                    deck={deck}
+                    previousDeck={previousDeck}
+                    investigator={investigator}
+                    campaign={campaign}
+                    eliminated={eliminated}
+                    lang={lang}
+                    details={details}
+                  />
+                </View>
+              </View>
+              { subDetails }
+            </View>
+          </View>
+        </RoundedFactionBlock>
+      </View>
+    );
+  }, [colors, previousDeck, yithian, eliminated, deck, campaign, investigator, subDetails, lang, details, width, typography]);
+
+  if (!deck) {
+    return (
+      <View style={styles.row}>
+        <ActivityIndicator
+          style={styles.loading}
+          size="large"
+          color={colors.lightText}
+        />
+      </View>
+    );
+  }
+  if (viewDeckButton || !investigator) {
+    return contents;
+  }
+  return (
+    <TouchableOpacity onPress={onDeckPress}>
+      { contents }
+    </TouchableOpacity>
+  );
+}
+
+const styles = StyleSheet.create({
+  column: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  investigatorBlockRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  investigatorBlock: {
+    paddingTop: s,
+    paddingBottom: s,
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  loading: {
+    marginLeft: 10,
+  },
+  titleColumn: {
+    flex: 1,
+  },
+  image: {
+    marginTop: s,
+    marginBottom: m,
+    marginRight: m,
+  },
+  deckRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    flex: 1,
+  },
+  footer: {
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    padding: s,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  detailLine: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+  },
+});

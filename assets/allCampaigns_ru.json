@@ -347,7 +347,7 @@
       "id": "location_layout",
       "type": "location_setup",
       "text": "Расположение локаций",
-      "note": "<i><b>Note</b>: One of the below locations will <b>not</b> be in play.</i>",
+      "note": "<i><b>Примечание:</b> Одной из показанных ниже локаций <b>не будет</b> в игре.</i>",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -9576,7 +9576,7 @@
   "steps": [
     {
       "id": "check_intro_condition",
-      "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
+      "text": "Cверьтесь с журналом. <i>Если вы не укрылись от глаз призрака</i> или <i>вы не смогли найти Найджела</i>",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -11545,7 +11545,7 @@
       "id": "location_layout",
       "type": "location_setup",
       "text": "Расположение локаций",
-      "note": "<i><b>Note</b>: One of the below locations will <b>not</b> be in play.</i>",
+      "note": "<i><b>Примечание:</b> Одной из показанных ниже локаций <b>не будет</b> в игре.</i>",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -20723,7 +20723,7 @@
   "steps": [
     {
       "id": "check_intro_condition",
-      "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
+      "text": "Cверьтесь с журналом. <i>Если вы не укрылись от глаз призрака</i> или <i>вы не смогли найти Найджела</i>",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -55068,7 +55068,7 @@
     {
       "id": "spider_queen_2",
       "type": "story",
-      "text": "You are about to climb down the web to the platform below, when you hear the black cat's voice from behind your companion, Randolph. \"Drop it,\" the voice commands. A sinister grin spreads across Randolph's face as he drops a jagged onyx blad, which clatters to the ground.\n\"So you have seen through my mask?\" he says. \"No matter. You will complete the errand upon which I have sent you, regardless. Your world depends on it.\"\nBewildered, you ask why Randolph is acting this way. The black cat jumps onto your shoulder and perches there, its gaze never leaving your erstwhile companion. \"I figured it out a little while ago. He's not Randolph. He never was. Just an interloper in Randolph's skin.\"\n\"Interloper?\" Randolph thunders with anger. \"You, cat, are the interloper! Yes, I know what you are. This is not your place. But enough talk.\" A smile crawls along his lips once more. \"You have a task to perform. Goodbye, then… for now.\" With his warning complete, Not-Randolph walks off of the edge of the platform and falls into oblivion."
+      "text": "You are about to climb down the web to the platform below, when you hear the black cat's voice from behind your companion, Randolph. \"Drop it,\" the voice commands. A sinister grin spreads across Randolph's face as he drops a jagged onyx blade, which clatters to the ground.\n\"So you have seen through my mask?\" he says. \"No matter. You will complete the errand upon which I have sent you, regardless. Your world depends on it.\"\nBewildered, you ask why Randolph is acting this way. The black cat jumps onto your shoulder and perches there, its gaze never leaving your erstwhile companion. \"I figured it out a little while ago. He's not Randolph. He never was. Just an interloper in Randolph's skin.\"\n\"Interloper?\" Randolph thunders with anger. \"You, cat, are the interloper! Yes, I know what you are. This is not your place. But enough talk.\" A smile crawls along his lips once more. \"You have a task to perform. Goodbye, then… for now.\" With his warning complete, Not-Randolph walks off of the edge of the platform and falls into oblivion."
     },
     {
       "id": "spider_queen_3",

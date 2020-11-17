@@ -9576,7 +9576,7 @@
   "steps": [
     {
       "id": "check_intro_condition",
-      "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
+      "text": "Überprüfe das Kampagnenlogbuch. <i>Falls die Ermittler dem Blick des Phantoms nicht entkommen sind</i> oder <i>falls Nigel Engram nicht gefunden werden konnte</i>\"",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -20723,7 +20723,7 @@
   "steps": [
     {
       "id": "check_intro_condition",
-      "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
+      "text": "Überprüfe das Kampagnenlogbuch. <i>Falls die Ermittler dem Blick des Phantoms nicht entkommen sind</i> oder <i>falls Nigel Engram nicht gefunden werden konnte</i>\"",
       "type": "branch",
       "condition": {
         "type": "multi",
