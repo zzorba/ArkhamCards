@@ -121,7 +121,15 @@ class PlayerView extends React.Component<PlayerProps, PlayerState> {
     this.onPlaybackError = TrackPlayer.addEventListener(
       "playback-error",
       async (data) => {
-        console.log("playback-error", data);
+        if (data.code === "playback-source") {
+          if (data.message ===  "Response code: 403") {
+            // login error
+          } else if (data.message === "Response code: 404") {
+            // file doesn't exist
+          } else if (data.message === "Response code: 500") {
+            // server error
+          }
+        }
       }
     );
 
