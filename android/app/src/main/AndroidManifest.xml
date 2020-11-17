@@ -51,8 +51,7 @@
           <category android:name="android.intent.category.DEFAULT" />  
           <category android:name="android.intent.category.BROWSABLE" />
           <data
-            android:host="north101.co.uk"  
-            android:scheme="https"
+            android:scheme="dissonantvoices"
             android:path="/redirect" /> 
         </intent-filter>  
       </activity>

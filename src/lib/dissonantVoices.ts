@@ -59,6 +59,7 @@ export async function authorize(): Promise<string> {
       ) {
         if (abandoned) {
           abandoned = true;
+          reject(new Error('Abandoned by user'));
           cleanup();
         }
       }
@@ -73,7 +74,7 @@ export async function authorize(): Promise<string> {
         code,
         error,
       } = parse(event.url.substring(event.url.indexOf('?') + 1));
-      console.log(state, code, error)
+      console.log(event.url, state, code, error)
       if (error === 'access_denied') {
         reject(new Error('Access was denied by user.'));
       } else if (state !== originalState) {
