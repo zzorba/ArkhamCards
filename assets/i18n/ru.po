@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2020-11-18 17:02+0300\n"
+"PO-Revision-Date: 2020-11-18 10:41-0500\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,7 +14,7 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : 2);\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: src/reducers/campaigns.ts:169
 #, javascript-format
@@ -5005,8 +5005,8 @@ msgstr "${ experience } опыта"
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
 msgstr[0] "${ unspentXpStr } не потрачено"
-msgstr[1] "${ unspentXpStr } unspent"
-msgstr[2] ""
+msgstr[1] "${ unspentXpStr } не потрачено"
+msgstr[2] "${ unspentXpStr } не потрачено"
 
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/ProblemLine.tsx:30
 msgid "Deck is invalid"
