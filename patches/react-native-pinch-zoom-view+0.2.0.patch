@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-pinch-zoom-view/index.js b/node_modules/react-native-pinch-zoom-view/index.js
+index da7d6c4..53ffbb8 100644
+--- a/node_modules/react-native-pinch-zoom-view/index.js
++++ b/node_modules/react-native-pinch-zoom-view/index.js
+@@ -33,7 +33,7 @@ export default class PinchZoomView extends Component {
+     this.distant = 150;
+   }
+ 
+-  componentWillMount() {
++  UNSAFE_componentWillMount() {
+     this.gestureHandlers = PanResponder.create({
+       onStartShouldSetPanResponder: this._handleStartShouldSetPanResponder,
+       onMoveShouldSetPanResponder: this._handleMoveShouldSetPanResponder,

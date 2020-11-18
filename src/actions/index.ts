@@ -1,5 +1,4 @@
 import { Action } from 'redux';
-import { InteractionManager } from 'react-native';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import {
@@ -17,11 +16,9 @@ import {
 } from './types';
 import { AppState } from '@reducers';
 
-import Database from '@data/Database';
 import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 // @ts-ignore
 import { decks } from '@lib/authApi';
-import { where } from '@data/query';
 
 export function login(): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>): void => {
@@ -115,54 +112,42 @@ export function refreshMyDecks(): ThunkAction<void, AppState, unknown, Action> {
   };
 }
 
-export function setInCollection(code: string, value: boolean, db: Database): ThunkAction<void, AppState, unknown, Action> {
+export function setInCollection(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
     dispatch({
       type: SET_IN_COLLECTION,
       code,
       value,
     });
-    InteractionManager.runAfterInteractions(() => {
-      db.setCardInCollection(where('pack_code = :code', { code }), value);
-    });
   };
 }
 
-export function setCycleInCollection(cycle_code: string, value: boolean, db: Database): ThunkAction<void, AppState, unknown, Action> {
+export function setCycleInCollection(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
     dispatch({
       type: SET_IN_COLLECTION,
       cycle_code,
       value,
     });
-    InteractionManager.runAfterInteractions(() => {
-      db.setCardInCollection(where('cycle_code = :cycle_code', { cycle_code }), value);
-    });
   };
 }
 
-export function setPackSpoiler(code: string, value: boolean, db: Database): ThunkAction<void, AppState, unknown, Action> {
+export function setPackSpoiler(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
     dispatch({
       type: SET_PACK_SPOILER,
       code,
       value,
     });
-    InteractionManager.runAfterInteractions(() => {
-      db.setCardSpoiler(where('encounter_code is not null AND pack_code = :code', { code }), value);
-    });
   };
 }
 
-export function setCyclePackSpoiler(cycle_code: string, value: boolean, db: Database): ThunkAction<void, AppState, unknown, Action> {
+export function setCyclePackSpoiler(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
     dispatch({
       type: SET_PACK_SPOILER,
       cycle_code,
       value,
-    });
-    InteractionManager.runAfterInteractions(() => {
-      db.setCardSpoiler(where('encounter_code is not null AND cycle_code = :cycle_code', { cycle_code }), value);
     });
   };
 }

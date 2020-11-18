@@ -1,4 +1,4 @@
-import { Entity, Index, Column, PrimaryColumn, ManyToOne, OneToMany } from 'typeorm/browser';
+import { Entity, Column, PrimaryColumn, ManyToOne, OneToMany } from 'typeorm/browser';
 import { Rule as JsonRule } from '@data/scenario/types';
 import { map } from 'lodash';
 
@@ -38,7 +38,7 @@ export default class Rule {
   @OneToMany(() => Rule, rule => rule.parentRule, { cascade: true, eager: true })
   public rules?: Rule[];
 
-  @ManyToOne(type => Rule, rule => rule.rules)
+  @ManyToOne(() => Rule, rule => rule.rules)
   public parentRule?: Rule;
 
   static parse(lang: string, rule: JsonRule, order?: number): Rule {

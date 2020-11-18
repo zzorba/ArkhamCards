@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import {
   Linking,
   ScrollView,
   StyleSheet,
+  useWindowDimensions,
+  Text,
   View,
 } from 'react-native';
-import { Navigation, EventSubscription } from 'react-native-navigation';
-import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import CardDetailComponent from './CardDetailComponent';
-import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import { CardFaqProps } from '@components/card/CardFaqView';
 import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
-import { getShowSpoilers, getTabooSet, AppState } from '@reducers';
+import { getShowSpoilers, AppState } from '@reducers';
 import Card from '@data/Card';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useComponentDidAppear, useFlag, useNavigationButtonPressed, useTabooSetId } from '@components/core/hooks';
+import space from '@styles/space';
+import useSingleCard from '../useSingleCard';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = [{
@@ -59,95 +62,46 @@ export interface CardDetailProps {
   tabooSetId?: number;
 }
 
-type Props = NavigationProps & DimensionsProps & CardDetailProps & ReduxProps;
+type Props = NavigationProps & CardDetailProps;
 
-interface State {
-  showSpoilers: boolean;
+function options() {
+  return {
+    topBar: {
+      backButton: {
+        title: t`Back`,
+        color: COLORS.M,
+      },
+    },
+  };
 }
 
-class CardDetailView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static options() {
-    return {
-      topBar: {
-        backButton: {
-          title: t`Back`,
-          color: COLORS.M,
-        },
+function showFaq(componentId: string, id: string) {
+  Navigation.push<CardFaqProps>(componentId, {
+    component: {
+      name: 'Card.Faq',
+      passProps: {
+        id,
       },
-    };
-  }
-
-  navUpdated: boolean;
-  _navEventListener?: EventSubscription;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      showSpoilers: props.showSpoilers || false,
-    };
-    this.navUpdated = false;
-  }
-
-  componentDidMount() {
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  componentDidAppear() {
-    const { componentId } = this.props;
-    Navigation.mergeOptions(componentId, CardDetailView.options());
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    const {
-      componentId,
-      id,
-    } = this.props;
-    if (buttonId === 'share') {
-      Linking.openURL(`https://arkhamdb.com/card/${id}#reviews-header`);
-    } else if (buttonId === 'deck') {
-      this._showInvestigatorCards();
-    } else if (buttonId === 'faq') {
-      this._showFaq();
-    } else if (buttonId === 'back') {
-      Navigation.pop(componentId);
-    }
-  }
-
-  _showFaq = () => {
-    const {
-      componentId,
-      id,
-    } = this.props;
-    Navigation.push<CardFaqProps>(componentId, {
-      component: {
-        name: 'Card.Faq',
-        passProps: {
-          id,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`FAQ`,
-            },
+      options: {
+        topBar: {
+          title: {
+            text: t`FAQ`,
           },
         },
       },
-    });
-  };
+    },
+  });
+}
 
-  _showInvestigatorCards = () => {
-    const {
-      componentId,
-      id,
-    } = this.props;
+function CardDetailView({ componentId, id, pack_code, showSpoilers: propsShowSpoilers, tabooSetId: tabooSetIdOverride }: Props) {
+  const { backgroundStyle, typography } = useContext(StyleContext);
+  const { width } = useWindowDimensions();
+  const showSpoilersSelector = useCallback((state: AppState) => propsShowSpoilers || getShowSpoilers(state, pack_code), [propsShowSpoilers, pack_code]);
+  const showSpoilersSetting = useSelector(showSpoilersSelector);
+  const tabooSetId = useTabooSetId(tabooSetIdOverride);
+
+  const [showSpoilers, toggleShowSpoilers] = useFlag(showSpoilersSetting);
+  const showInvestigatorCards = useCallback(() => {
     Navigation.push<InvestigatorCardsProps>(componentId, {
       component: {
         name: 'Browse.InvestigatorCards',
@@ -166,71 +120,62 @@ class CardDetailView extends React.Component<Props, State> {
         },
       },
     });
-  };
+  }, [componentId, id]);
 
-  _toggleShowSpoilers = () => {
-    this.setState({
-      showSpoilers: !this.state.showSpoilers,
-    });
-  };
+  useComponentDidAppear(() => {
+    Navigation.mergeOptions(componentId, options());
+  }, componentId, []);
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'share') {
+      Linking.openURL(`https://arkhamdb.com/card/${id}#reviews-header`);
+    } else if (buttonId === 'deck') {
+      showInvestigatorCards();
+    } else if (buttonId === 'faq') {
+      showFaq(componentId, id);
+    } else if (buttonId === 'back') {
+      Navigation.pop(componentId);
+    }
+  }, componentId, [componentId, id, showInvestigatorCards]);
+  const [card, loading] = useSingleCard(id, 'encounter');
+  useEffect(() => {
+    if (card) {
+      Navigation.mergeOptions(componentId, {
+        topBar: {
+          rightButtons: rightButtonsForCard(card),
+        },
+      });
+    }
+  }, [card, componentId]);
 
-  render() {
-    const {
-      componentId,
-      showSpoilers,
-      tabooSetId,
-      width,
-      id,
-    } = this.props;
-    const { backgroundStyle } = this.context;
-    return (
-      <SingleCardWrapper code={id} type="encounter" loadingComponent={<View style={[styles.wrapper, backgroundStyle]} />}>
-        { (card: Card) => {
-          if (!this.navUpdated) {
-            this.navUpdated = true;
-            Navigation.mergeOptions(componentId, {
-              topBar: {
-                rightButtons: rightButtonsForCard(card),
-              },
-            });
-          }
-          if (!card) {
-            return null;
-          }
-          return (
-            <ScrollView style={[styles.wrapper, backgroundStyle]}>
-              <CardDetailComponent
-                width={width}
-                componentId={componentId}
-                card={card}
-                showSpoilers={showSpoilers || this.state.showSpoilers}
-                tabooSetId={tabooSetId}
-                toggleShowSpoilers={this._toggleShowSpoilers}
-                showInvestigatorCards={this._showInvestigatorCards}
-              />
-            </ScrollView>
-          );
-        } }
-      </SingleCardWrapper>
-    );
-
+  if (loading) {
+    return <View style={[styles.wrapper, backgroundStyle]} />;
   }
+  if (!card) {
+    const code = id;
+    return (
+      <Text style={[typography.text, space.paddingM]}>
+        { t`Missing card #${code}. Please try updating cards from ArkhamDB in settings.` }
+      </Text>
+    );
+  }
+  return (
+    <ScrollView style={[styles.wrapper, backgroundStyle]}>
+      <CardDetailComponent
+        width={width}
+        componentId={componentId}
+        card={card}
+        showSpoilers={showSpoilersSetting || showSpoilers}
+        tabooSetId={tabooSetId}
+        toggleShowSpoilers={toggleShowSpoilers}
+        showInvestigatorCards={showInvestigatorCards}
+      />
+    </ScrollView>
+  );
 }
 
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & CardDetailProps
-): ReduxProps {
-  return {
-    showSpoilers: props.showSpoilers || getShowSpoilers(state, props.pack_code),
-    tabooSetId: getTabooSet(state, props.tabooSetId),
-  };
-}
+CardDetailView.options = options;
 
-export default
-connect<ReduxProps, unknown, NavigationProps & CardDetailProps, AppState>(mapStateToProps)(
-  withDimensions(CardDetailView)
-);
+export default CardDetailView;
 
 const styles = StyleSheet.create({
   wrapper: {

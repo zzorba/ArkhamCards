@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Alert, ScrollView, StyleSheet, View } from 'react-native';
-import { EventSubscription, Navigation } from 'react-native-navigation';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
+import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import CampaignGuideSummary from './CampaignGuideSummary';
@@ -13,7 +12,6 @@ import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent
 import ScenarioListComponent from '@components/campaignguide/ScenarioListComponent';
 import TabView from '@components/core/TabView';
 import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import withCampaignGuideContext, {
   CampaignGuideProps as InjectedCampaignGuideProps,
@@ -21,57 +19,23 @@ import withCampaignGuideContext, {
 } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
 import { s, m } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
-interface ReduxActionProps {
-  updateCampaign: (
-    id: number,
-    sparseCampaign: Partial<Campaign>
-  ) => void;
-  deleteCampaign: (id: number) => void;
-}
-
 type Props = CampaignGuideProps &
-  ReduxActionProps &
   NavigationProps &
-  DimensionsProps &
   InjectedDialogProps &
   InjectedCampaignGuideProps &
   TraumaProps;
 
-class CampaignGuideView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _navEventListener!: EventSubscription;
-  constructor(props: Props) {
-    super(props);
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    if (buttonId === 'edit') {
-      this._showEditNameDialog();
-    }
-  }
-
-  _showEditNameDialog = () => {
-    const {
-      showTextEditDialog,
-      campaignData: { campaignName },
-    } = this.props;
-    showTextEditDialog(t`Name`, campaignName, this._updateCampaignName);
-  }
-
-  _updateCampaignName = (name: string) => {
-    const { campaignId, componentId, updateCampaign } = this.props;
-    updateCampaign(campaignId, { name, lastUpdated: new Date() });
+function CampaignGuideView(props: Props) {
+  const { backgroundStyle, borderStyle } = useContext(StyleContext);
+  const { campaignId, componentId, showTextEditDialog, campaignData, showTraumaDialog } = props;
+  const dispatch = useDispatch();
+  const updateCampaignName = useCallback((name: string) => {
+    dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -79,120 +43,105 @@ class CampaignGuideView extends React.Component<Props> {
         },
       },
     });
-  };
+  }, [campaignId, dispatch, componentId]);
 
-  /* eslint-disable @typescript-eslint/no-empty-function */
-  _onTabChange = () => {};
+  const showEditNameDialog = useCallback(() => {
+    showTextEditDialog(t`Name`, campaignData.campaignName, updateCampaignName);
+  }, [updateCampaignName, campaignData.campaignName, showTextEditDialog]);
 
-  _delete = () => {
-    const { componentId, campaignId, deleteCampaign } = this.props;
-    deleteCampaign(campaignId);
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'edit') {
+      showEditNameDialog();
+    }
+  }, componentId, [showEditNameDialog]);
+
+  const actuallyDeleteCampaign = useCallback(() => {
+    dispatch(deleteCampaign(campaignId));
     Navigation.pop(componentId);
-  };
+  }, [dispatch, componentId, campaignId]);
 
-  _deleteCampaign = () => {
-    const {
-      campaignData: { campaignName },
-    } = this.props;
+  const confirmDeleteCampaign = useCallback(() => {
+    const campaignName = campaignData.campaignName;
     Alert.alert(
       t`Delete`,
       t`Are you sure you want to delete the campaign: ${campaignName}`,
       [
-        { text: t`Delete`, onPress: this._delete, style: 'destructive' },
+        { text: t`Delete`, onPress: actuallyDeleteCampaign, style: 'destructive' },
         { text: t`Cancel`, style: 'cancel' },
       ],
     );
-  };
+  }, [campaignData.campaignName, actuallyDeleteCampaign]);
 
-  render() {
-    const {
-      campaignId,
-      campaignData,
-      componentId,
-      updateCampaign,
-      showTraumaDialog,
-    } = this.props;
-    const {
-      campaignGuide,
-      campaignState,
-    } = campaignData;
-    const { backgroundStyle, borderStyle } = this.context;
-    const processedCampaign = campaignGuide.processAllScenarios(campaignState);
-    const tabs = [
-      {
-        key: 'investigators',
-        title: t`Decks`,
-        node: (
-          <ScrollView contentContainerStyle={backgroundStyle}>
-            <View style={[styles.section, styles.bottomBorder, borderStyle]}>
-              <CampaignGuideSummary
-                difficulty={processedCampaign.campaignLog.campaignData.difficulty}
-                campaignGuide={campaignGuide}
-              />
-            </View>
-            <CampaignInvestigatorsComponent
-              componentId={componentId}
-              deleteCampaign={this._deleteCampaign}
-              updateCampaign={updateCampaign}
-              campaignData={campaignData}
-              processedCampaign={processedCampaign}
-              showTraumaDialog={showTraumaDialog}
-            />
-          </ScrollView>
-        ),
-      },
-      {
-        key: 'scenarios',
-        title: t`Scenarios`,
-        node: (
-          <ScrollView contentContainerStyle={backgroundStyle}>
-            <ScenarioListComponent
-              campaignId={campaignId}
-              campaignData={campaignData}
-              processedCampaign={processedCampaign}
-              componentId={componentId}
-            />
-          </ScrollView>
-        ),
-      },
-      {
-        key: 'log',
-        title: t`Log`,
-        node: (
-          <ScrollView contentContainerStyle={backgroundStyle}>
-            <CampaignLogComponent
-              campaignId={campaignId}
+  const saveCampaignUpdate = useCallback((id: number, sparseCampaign: Partial<Campaign>, now?: Date) => {
+    dispatch(updateCampaign(id, sparseCampaign, now));
+  }, [dispatch]);
+  const { campaignGuide, campaignState } = campaignData;
+  const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
+  const tabs = [
+    {
+      key: 'investigators',
+      title: t`Decks`,
+      node: (
+        <ScrollView contentContainerStyle={backgroundStyle}>
+          <View style={[styles.section, styles.bottomBorder, borderStyle]}>
+            <CampaignGuideSummary
+              difficulty={processedCampaign.campaignLog.campaignData.difficulty}
               campaignGuide={campaignGuide}
-              campaignLog={processedCampaign.campaignLog}
-              componentId={componentId}
             />
-          </ScrollView>
-        ),
-      },
-    ];
+          </View>
+          <CampaignInvestigatorsComponent
+            componentId={componentId}
+            deleteCampaign={confirmDeleteCampaign}
+            updateCampaign={saveCampaignUpdate}
+            campaignData={campaignData}
+            processedCampaign={processedCampaign}
+            showTraumaDialog={showTraumaDialog}
+          />
+        </ScrollView>
+      ),
+    },
+    {
+      key: 'scenarios',
+      title: t`Scenarios`,
+      node: (
+        <ScrollView contentContainerStyle={backgroundStyle}>
+          <ScenarioListComponent
+            campaignId={campaignId}
+            campaignData={campaignData}
+            processedCampaign={processedCampaign}
+            componentId={componentId}
+          />
+        </ScrollView>
+      ),
+    },
+    {
+      key: 'log',
+      title: t`Log`,
+      node: (
+        <ScrollView contentContainerStyle={backgroundStyle}>
+          <CampaignLogComponent
+            campaignId={campaignId}
+            campaignGuide={campaignGuide}
+            campaignLog={processedCampaign.campaignLog}
+            componentId={componentId}
+          />
+        </ScrollView>
+      ),
+    },
+  ];
 
-    return (
-      <TabView
-        tabs={tabs}
-        onTabChange={this._onTabChange}
-      />
-    );
-  }
+  return (
+    <TabView
+      tabs={tabs}
+    />
+  );
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    updateCampaign,
-    deleteCampaign,
-  } as any, dispatch);
-}
-
-export default withDimensions(
-  withCampaignGuideContext<Props>(
-    connect(null, mapDispatchToProps)(
-      withDialogs(
-        withTraumaDialog(CampaignGuideView, { hideKilledInsane: true })
-      )
+export default withCampaignGuideContext<CampaignGuideProps & NavigationProps>(
+  withDialogs<CampaignGuideProps & InjectedCampaignGuideProps & NavigationProps>(
+    withTraumaDialog<CampaignGuideProps & InjectedDialogProps & InjectedCampaignGuideProps & NavigationProps>(
+      CampaignGuideView,
+      { hideKilledInsane: true }
     )
   )
 );

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import { map, partition } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -18,11 +18,10 @@ import {
   CampaignCycleCode,
 } from '@actions/types';
 import CycleItem from './CycleItem';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { campaignName } from '../constants';
 import { NavigationProps } from '@components/nav/types';
-import { getPacksInCollection, AppState } from '@reducers';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { getPacksInCollection } from '@reducers';
+import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
 
@@ -30,118 +29,86 @@ export interface SelectCampagaignProps {
   campaignChanged: (packCode: CampaignCycleCode, text: string, hasGuide: boolean) => void;
 }
 
-interface ReduxProps {
-  in_collection: {
-    [code: string]: boolean;
-  };
+function campaignDescription(packCode: CampaignCycleCode): string | undefined {
+  switch (packCode) {
+    case TDE:
+      return t`Campaign A and Campaign B\nEight-part campaign`;
+    case TDEA:
+      return t`Campaign A\nFour-part campaign`;
+    case TDEB:
+      return t`Campaign B\nFour-part campaign`;
+    default:
+      return undefined;
+  }
 }
 
-type Props = NavigationProps &
-  SelectCampagaignProps &
-  ReduxProps &
-  DimensionsProps;
+function SelectCampaignDialog({ campaignChanged, componentId }: SelectCampagaignProps & NavigationProps) {
+  const { backgroundStyle } = useContext(StyleContext);
+  const in_collection = useSelector(getPacksInCollection);
 
-class SelectCampaignDialog extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static options() {
-    return {
-      topBar: {
-        title: {
-          text: t`Select Campaign`,
-        },
-      },
-    };
-  }
-
-  _onPress = (campaignCode: CampaignCycleCode, text: string) => {
-    const {
-      campaignChanged,
-      componentId,
-    } = this.props;
-
+  const onPress = useCallback((campaignCode: CampaignCycleCode, text: string) => {
     campaignChanged(campaignCode, text, GUIDED_CAMPAIGNS.has(campaignCode));
     Navigation.pop(componentId);
-  };
+  }, [campaignChanged, componentId]);
 
-  _editCollection = () => {
-    Navigation.push(this.props.componentId, {
+  const editCollection = useCallback(() => {
+    Navigation.push(componentId, {
       component: {
         name: 'My.Collection',
       },
     });
-  };
+  }, [componentId]);
 
-  campaignDescription(packCode: CampaignCycleCode): string | undefined {
-    switch (packCode) {
-      case TDE:
-        return t`Campaign A and Campaign B\nEight-part campaign`;
-      case TDEA:
-        return t`Campaign A\nFour-part campaign`;
-      case TDEB:
-        return t`Campaign B\nFour-part campaign`;
-      default:
-        return undefined;
-    }
-  }
 
-  renderCampaign(packCode: CampaignCycleCode) {
+  const renderCampaign = useCallback((packCode: CampaignCycleCode) => {
     const guideComingSoon = (packCode !== CUSTOM && !GUIDED_CAMPAIGNS.has(packCode));
     return (
       <CycleItem
         key={packCode}
         packCode={packCode}
-        onPress={this._onPress}
+        onPress={onPress}
         text={campaignName(packCode) || t`Custom`}
-        description={guideComingSoon ? t`Guide not yet available` : this.campaignDescription(packCode)}
+        description={guideComingSoon ? t`Guide not yet available` : campaignDescription(packCode)}
       />
     );
-  }
+  }, [onPress]);
 
-  render() {
-    const {
-      in_collection,
-    } = this.props;
-    const { backgroundStyle } = this.context;
-    const partitionedCampaigns = partition(
-      ALL_CAMPAIGNS,
-      pack_code => (in_collection[pack_code] || (
-        in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE)))
-    );
-    const myCampaigns = partitionedCampaigns[0];
-    const otherCampaigns = partitionedCampaigns[1];
-
-    return (
-      <ScrollView style={[styles.flex, backgroundStyle]}>
-        { myCampaigns.length > 0 && (
-          <CardSectionHeader section={{ title: t`My Campaigns` }} />
-        ) }
-        { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
-        { this.renderCampaign(CUSTOM) }
-        { otherCampaigns.length > 0 && (
-          <CardSectionHeader section={{ title: t`Other Campaigns` }} />
-        ) }
-        { map(otherCampaigns, pack_code => this.renderCampaign(pack_code)) }
-        <ArkhamButton
-          icon="edit"
-          onPress={this._editCollection}
-          title={t`Edit Collection`}
-        />
-      </ScrollView>
-    );
-  }
+  const [myCampaigns, otherCampaigns] = partition(
+    ALL_CAMPAIGNS,
+    pack_code => (in_collection[pack_code] || (
+      in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE)))
+  );
+  return (
+    <ScrollView style={[styles.flex, backgroundStyle]}>
+      { myCampaigns.length > 0 && (
+        <CardSectionHeader section={{ title: t`My Campaigns` }} />
+      ) }
+      { map(myCampaigns, pack_code => renderCampaign(pack_code)) }
+      { renderCampaign(CUSTOM) }
+      { otherCampaigns.length > 0 && (
+        <CardSectionHeader section={{ title: t`Other Campaigns` }} />
+      ) }
+      { map(otherCampaigns, pack_code => renderCampaign(pack_code)) }
+      <ArkhamButton
+        icon="edit"
+        onPress={editCollection}
+        title={t`Edit Collection`}
+      />
+    </ScrollView>
+  );
 }
 
-function mapStateToProps(state: AppState): ReduxProps {
+SelectCampaignDialog.options = () => {
   return {
-    in_collection: getPacksInCollection(state),
+    topBar: {
+      title: {
+        text: t`Select Campaign`,
+      },
+    },
   };
-}
+};
 
-export default connect(mapStateToProps)(
-  withDimensions(SelectCampaignDialog)
-);
+export default SelectCampaignDialog;
 
 const styles = StyleSheet.create({
   flex: {

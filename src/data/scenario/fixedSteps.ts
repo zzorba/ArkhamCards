@@ -1,5 +1,5 @@
 import { filter, find, map } from 'lodash';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import {
   BinaryConditionalChoice,
@@ -257,18 +257,34 @@ function investigatorStatusStepId(resolution: Resolution): string {
 }
 
 function statusToString(
-  status: InvestigatorStatus
+  status: InvestigatorStatus,
+  gender?: 'masculine' | 'feminine'
 ): string {
   switch (status) {
     case 'alive':
+      if (gender) {
+        return (gender === 'masculine') ? c('masculine').t`Alive` : c('feminine').t`Alive`;
+      }
       return t`Alive`;
     case 'resigned':
+      if (gender) {
+        return (gender === 'masculine') ? c('masculine').t`Resigned` : c('feminine').t`Resigned`;
+      }
       return t`Resigned`;
     case 'physical':
+      if (gender) {
+        return (gender === 'masculine') ? c('masculine').t`Defeated: physical trauma` : c('feminine').t`Defeated: physical trauma`;
+      }
       return t`Defeated: physical trauma`;
     case 'mental':
+      if (gender) {
+        return (gender === 'masculine') ? c('masculine').t`Defeated: mental trauma` : c('feminine').t`Defeated: mental trauma`;
+      }
       return t`Defeated: mental trauma`;
     case 'eliminated':
+      if (gender) {
+        return (gender === 'masculine') ? c('masculine').t`Defeated: no trauma` : c('feminine').t`Defeated: no trauma`;
+      }
       return t`Defeated: no trauma`;
   }
 }
@@ -325,6 +341,8 @@ export function createInvestigatorStatusStep(
       return {
         id: status,
         text: statusToString(status),
+        masculine_text: statusToString(status, 'masculine'),
+        feminine_text: statusToString(status, 'feminine'),
         effects,
       };
     }

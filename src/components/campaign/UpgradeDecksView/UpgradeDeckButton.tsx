@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Button } from 'react-native';
 import { t } from 'ttag';
 
@@ -11,18 +11,15 @@ interface Props {
   onPress: (deck: Deck, investigator: Card) => void;
 }
 
-export default class UpgradeDeckButton extends React.Component<Props> {
-  _onPress = () => {
-    const { deck, investigator, onPress } = this.props;
+export default function UpgradeDeckButton({ deck, investigator, onPress }: Props) {
+  const buttonOnPress = useCallback(() => {
     onPress(deck, investigator);
-  };
+  }, [deck, investigator, onPress]);
 
-  render() {
-    return (
-      <Button
-        title={t`Upgrade deck`}
-        onPress={this._onPress}
-      />
-    );
-  }
+  return (
+    <Button
+      title={t`Upgrade deck`}
+      onPress={buttonOnPress}
+    />
+  );
 }

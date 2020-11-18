@@ -1,5 +1,5 @@
 import { findBestAvailableLanguage } from 'react-native-localize';
-import { addLocale, useLocale } from 'ttag';
+import { addLocale, useLocale as ttagUseLocale } from 'ttag';
 
 const ALL_LANGUAGES = [
   'en',
@@ -33,7 +33,7 @@ function getTranslationObj(locale: string) {
 export function changeLocale(locale: string) {
   const translationObj = getTranslationObj(locale);
   addLocale(locale, translationObj);
-  useLocale(locale);
+  ttagUseLocale(locale);
 }
 
 export function systemLocale(): string {

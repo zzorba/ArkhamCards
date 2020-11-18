@@ -48,7 +48,7 @@ function ArkhamIconRule(style: StyleContextType): MarkdownRule<WithIconName, Sta
 
 function ArkhamIconSkillTextRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
   return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=\([0-9X]+\))')),
+    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=\\([0-9X]+\\))')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
@@ -232,7 +232,7 @@ export default function CardTextComponent({ text, onLinkPress }: Props) {
     );
   const wrappedOnLinkPress = useCallback((url: string) => {
     onLinkPress && onLinkPress(url, context);
-  }, [onLinkPress]);
+  }, [onLinkPress, context]);
 
   // Text that has hyperlinks uses a different style for the icons.
   return (
@@ -269,7 +269,8 @@ export default function CardTextComponent({ text, onLinkPress }: Props) {
           color: context.colors.navButton,
         },
         paragraph: {
-          ...context.typography.small,
+          fontFamily: 'Alegreya-Regular',
+          color: context.colors.darkText,
           fontSize: 16 * context.fontScale,
           lineHeight: 20 * context.fontScale,
           marginTop: 4,

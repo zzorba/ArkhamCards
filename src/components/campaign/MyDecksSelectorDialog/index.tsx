@@ -1,32 +1,31 @@
-import React from 'react';
-import { concat, filter, flatMap, flatten, keys, throttle, uniqBy, uniq } from 'lodash';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { concat, filter, flatMap, flatten, keys, uniqBy, uniq, throttle } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription, Options } from 'react-native-navigation';
+import { useSelector } from 'react-redux';
+import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { showInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
 import TabView from '@components/core/TabView';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import InvestigatorSelectorTab from './InvestigatorSelectorTab';
 import DeckSelectorTab from './DeckSelectorTab';
 import { NewDeckProps } from '@components/deck/NewDeckView';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { NavigationProps } from '@components/nav/types';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import { Deck, DecksMap, Campaign, SortType, SORT_BY_PACK } from '@actions/types';
+import { Deck, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/Card';
-import { getAllDecks, getCampaign, getCampaigns, getLatestCampaignDeckIds, AppState } from '@reducers';
+import { getAllDecks, getCampaigns, getLatestCampaignDeckIds, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
+import { useCampaign, useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface MyDecksSelectorProps {
   campaignId: number;
@@ -41,238 +40,83 @@ export interface MyDecksSelectorProps {
   simpleOptions?: boolean;
 }
 
-interface ReduxProps {
-  campaignLatestDeckIds: number[];
-  otherCampaignDeckIds: number[];
-  decks: DecksMap;
-  campaign?: Campaign;
+type Props = NavigationProps & MyDecksSelectorProps;
+
+function deckOptions(passProps: Props): Options {
+  return {
+    topBar: {
+      title: {
+        text: passProps.singleInvestigator ? t`Select Deck` : t`Choose an Investigator`,
+      },
+      leftButtons: [{
+        icon: iconsMap.close,
+        id: 'close',
+        color: COLORS.M,
+        accessibilityLabel: t`Cancel`,
+      }],
+      rightButtons: passProps.onlyShowSelected ? [] : [{
+        icon: iconsMap.add,
+        id: 'add',
+        color: COLORS.M,
+        accessibilityLabel: t`New Deck`,
+      }],
+    },
+  };
 }
 
-type Props = NavigationProps & MyDecksSelectorProps & ReduxProps & PlayerCardProps & DimensionsProps;
-
-interface State {
-  hideOtherCampaignDecks: boolean;
-  onlyShowPreviousCampaignMembers: boolean;
-  hideEliminatedInvestigators: boolean;
-  selectedTab: string;
-  selectedSort: SortType;
+function investigatorOptions(): Options {
+  return {
+    topBar: {
+      title: {
+        text: t`Choose an Investigator`,
+      },
+      leftButtons: [{
+        icon: iconsMap.close,
+        id: 'close',
+        color: COLORS.M,
+        accessibilityLabel: t`Cancel`,
+      }],
+      rightButtons: [{
+        icon: iconsMap.sort,
+        id: 'sort',
+        color: COLORS.M,
+        accessibilityLabel: t`Sort`,
+      }],
+    },
+  };
 }
 
-class MyDecksSelectorDialog extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function MyDecksSelectorDialog(props: Props) {
+  const { fontScale, typography } = useContext(StyleContext);
+  const { componentId, campaignId, onDeckSelect, onInvestigatorSelect, singleInvestigator, selectedDeckIds, selectedInvestigatorIds, onlyShowSelected, simpleOptions } = props;
 
-  static deckOptions(passProps: Props): Options {
-    return {
-      topBar: {
-        title: {
-          text: t`Choose an Investigator`,
-        },
-        leftButtons: [{
-          icon: iconsMap.close,
-          id: 'close',
-          color: COLORS.M,
-          accessibilityLabel: t`Cancel`,
-        }],
-        rightButtons: passProps.onlyShowSelected ? [] : [{
-          icon: iconsMap.add,
-          id: 'add',
-          color: COLORS.M,
-          accessibilityLabel: t`New Deck`,
-        }],
-      },
-    };
-  }
+  const otherCampaignsSelector = useCallback((state: AppState) => {
+    return filter(getCampaigns(state), campaign => campaign.id !== campaignId);
+  }, [campaignId]);
+  const otherCampaigns = useSelector(otherCampaignsSelector);
+  const otherCampaignDeckIdsSelector = useCallback((state: AppState) => {
+    return flatMap(otherCampaigns, c => getLatestCampaignDeckIds(state, c));
+  }, [otherCampaigns]);
+  const otherCampaignDeckIds = useSelector(otherCampaignDeckIdsSelector);
+  const campaign = useCampaign(campaignId);
+  const campaignLatestDeckIdsSelector = useCallback((state: AppState) => getLatestCampaignDeckIds(state, campaign), [campaign]);
+  const campaignLatestDeckIds = useSelector(campaignLatestDeckIdsSelector);
+  const decks = useSelector(getAllDecks);
 
-  static investigatorOptions(): Options {
-    return {
-      topBar: {
-        title: {
-          text: t`Choose an Investigator`,
-        },
-        leftButtons: [{
-          icon: iconsMap.close,
-          id: 'close',
-          color: COLORS.M,
-          accessibilityLabel: t`Cancel`,
-        }],
-        rightButtons: [{
-          icon: iconsMap.sort,
-          id: 'sort',
-          color: COLORS.M,
-          accessibilityLabel: t`Sort`,
-        }],
-      },
-    };
-  }
-  static options(passProps: Props) {
-    return MyDecksSelectorDialog.deckOptions(passProps);
-  }
-  _navEventListener: EventSubscription;
-  _showNewDeckDialog!: () => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      hideOtherCampaignDecks: true,
-      onlyShowPreviousCampaignMembers: false,
-      hideEliminatedInvestigators: true,
-      selectedTab: 'decks',
-      selectedSort: SORT_BY_PACK,
-    };
-
-    this._showNewDeckDialog = throttle(this.showNewDeckDialog.bind(this), 200);
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener.remove();
-  }
-
-  _sortChanged = (sort: SortType) => {
-    this.setState({
-      selectedSort: sort,
-    });
-  };
-
-  _showSortDialog = () => {
-    Keyboard.dismiss();
-    showInvestigatorSortDialog(this._sortChanged);
-  };
-
-  _toggleHideOtherCampaignInvestigators = () => {
-    this.setState({
-      hideOtherCampaignDecks: !this.state.hideOtherCampaignDecks,
-    });
-  };
-
-  _toggleOnlyShowPreviousCampaignMembers = () => {
-    this.setState({
-      onlyShowPreviousCampaignMembers: !this.state.onlyShowPreviousCampaignMembers,
-    });
-  };
-
-  _toggleHideEliminatedInvestigators = () => {
-    this.setState({
-      hideEliminatedInvestigators: !this.state.hideEliminatedInvestigators,
-    });
-  };
-
-  showNewDeckDialog() {
-    const {
-      componentId,
-      onDeckSelect,
-    } = this.props;
-    Navigation.push<NewDeckProps>(componentId, {
-      component: {
-        name: 'Deck.New',
-        passProps: {
-          onCreateDeck: onDeckSelect,
-          filterInvestigators: this.filterInvestigators(),
-          onlyInvestigators: this.onlyInvestigators(),
-        },
-      },
-    });
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    const {
-      componentId,
-    } = this.props;
-    if (buttonId === 'add') {
-      this._showNewDeckDialog();
-    } else if (buttonId === 'close') {
-      Navigation.dismissModal(componentId);
-    } else if (buttonId === 'sort') {
-      this._showSortDialog();
-    }
-  }
-
-  searchOptions(forDecks: boolean): SearchOptions | undefined {
-    const {
-      campaign,
-      onlyShowSelected,
-      singleInvestigator,
-      simpleOptions,
-    } = this.props;
-    const { typography, fontScale } = this.context;
-    const {
-      hideOtherCampaignDecks,
-      hideEliminatedInvestigators,
-      onlyShowPreviousCampaignMembers,
-    } = this.state;
-    if (onlyShowSelected) {
-      return undefined;
-    }
-    const elements = flatten([
-      forDecks ? [(
-        <View style={styles.row} key={0}>
-          <Text style={[typography.small, styles.searchOption]}>
-            { t`Hide Decks From Other Campaigns` }
-          </Text>
-          <ArkhamSwitch
-            useGestureHandler
-            value={hideOtherCampaignDecks}
-            onValueChange={this._toggleHideOtherCampaignInvestigators}
-          />
-        </View>
-      )] : [],
-      (!!campaign && !singleInvestigator && !simpleOptions) ? [(
-        <View style={styles.row} key={1}>
-          <Text style={[typography.small, styles.searchOption]}>
-            { t`Hide Killed and Insane Investigators` }
-          </Text>
-          <ArkhamSwitch
-            useGestureHandler
-            value={hideEliminatedInvestigators}
-            onValueChange={this._toggleHideEliminatedInvestigators}
-          />
-        </View>
-      )] : [],
-      (!!campaign && !singleInvestigator && !simpleOptions) ? [(
-        <View style={styles.row} key={2}>
-          <Text style={[typography.small, styles.searchOption]}>
-            { t`Only Show Previous Campaign Members` }
-          </Text>
-          <ArkhamSwitch
-            useGestureHandler
-            value={onlyShowPreviousCampaignMembers}
-            onValueChange={this._toggleOnlyShowPreviousCampaignMembers}
-          />
-        </View>
-      )] : [],
-    ]);
-    if (!elements.length) {
-      return undefined;
-    }
-    return {
-      controls: <View style={styles.searchOptions}>{ elements }</View>,
-      height: 20 + elements.length * (fontScale * 20 + 8) + 12,
-    };
-  }
-
-  filterInvestigators() {
-    const {
-      selectedInvestigatorIds,
-      selectedDeckIds,
-      decks,
-      campaign,
-      investigators,
-      onlyShowSelected,
-    } = this.props;
-    const {
-      hideEliminatedInvestigators,
-    } = this.state;
+  const [hideOtherCampaignDecks, toggleHideOtherCampaignDecks] = useFlag(true);
+  const [onlyShowPreviousCampaignMembers, toggleOnlyShowPreviousCampaignMembers] = useFlag(false);
+  const [hideEliminatedInvestigators, toggleHideEliminatedInvestigators] = useFlag(true);
+  const [selectedSort, setSelectedSort] = useState<SortType>(SORT_BY_PACK);
+  const investigators = useInvestigatorCards();
+  const filterInvestigators = useMemo(() => {
     if (onlyShowSelected) {
       return [];
     }
-
     const eliminatedInvestigators: string[] = !campaign ? [] :
       filter(
         keys(campaign.investigatorData || {}),
         code => {
-          const card = investigators[code];
+          const card = investigators && investigators[code];
           return !!card && card.eliminated(campaign.investigatorData[code]);
         });
     return uniq([
@@ -286,28 +130,43 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       }),
       ...(selectedInvestigatorIds || []),
     ]);
-  }
-
-  onlyInvestigators() {
-    const {
-      singleInvestigator,
-    } = this.props;
+  }, [hideEliminatedInvestigators, selectedInvestigatorIds, selectedDeckIds, decks, campaign, investigators, onlyShowSelected]);
+  const onlyInvestigators = useMemo(() => {
     if (singleInvestigator) {
       return [singleInvestigator];
     }
     return undefined;
-  }
+  }, [singleInvestigator]);
 
-  onlyDeckIds() {
-    const {
-      selectedDeckIds,
-      campaign,
-      campaignLatestDeckIds,
-      onlyShowSelected,
-    } = this.props;
-    const {
-      onlyShowPreviousCampaignMembers,
-    } = this.state;
+  const showNewDeckDialog = useMemo(() => throttle(() => {
+    Navigation.push<NewDeckProps>(componentId, {
+      component: {
+        name: 'Deck.New',
+        passProps: {
+          onCreateDeck: onDeckSelect,
+          filterInvestigators,
+          onlyInvestigators,
+        },
+      },
+    });
+  }, 200), [componentId, onDeckSelect, filterInvestigators, onlyInvestigators]);
+
+  const showSortDialog = useCallback(() => {
+    Keyboard.dismiss();
+    showInvestigatorSortDialog(setSelectedSort);
+  }, [setSelectedSort]);
+
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'add') {
+      showNewDeckDialog();
+    } else if (buttonId === 'close') {
+      Navigation.dismissModal(componentId);
+    } else if (buttonId === 'sort') {
+      showSortDialog();
+    }
+  }, componentId, [componentId, showNewDeckDialog, showSortDialog]);
+
+  const onlyDeckIds = useMemo(() => {
     if (onlyShowSelected) {
       return selectedDeckIds;
     }
@@ -315,17 +174,9 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       return campaignLatestDeckIds;
     }
     return undefined;
-  }
+  }, [selectedDeckIds, campaign, campaignLatestDeckIds, onlyShowSelected, onlyShowPreviousCampaignMembers]);
 
-  filterDeckIds(): number[] {
-    const {
-      selectedDeckIds,
-      otherCampaignDeckIds,
-      onlyShowSelected,
-    } = this.props;
-    const {
-      hideOtherCampaignDecks,
-    } = this.state;
+  const filterDeckIds: number[] = useMemo(() => {
     if (onlyShowSelected) {
       return [];
     }
@@ -333,97 +184,119 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       return uniqBy(concat(otherCampaignDeckIds, selectedDeckIds || []), x => x);
     }
     return selectedDeckIds || [];
-  }
+  }, [selectedDeckIds, otherCampaignDeckIds, onlyShowSelected, hideOtherCampaignDecks]);
 
-  _onTabChange = (tab: string) => {
-    const { componentId } = this.props;
-    this.setState({
-      selectedTab: tab,
-    });
+  const searchOptions = useCallback((forDecks: boolean): SearchOptions | undefined => {
+    if (onlyShowSelected) {
+      return undefined;
+    }
+    const elements = flatten([
+      forDecks ? [(
+        <View style={styles.row} key={0}>
+          <Text style={[typography.small, styles.searchOption]}>
+            { t`Hide Decks From Other Campaigns` }
+          </Text>
+          <ArkhamSwitch
+            useGestureHandler
+            value={hideOtherCampaignDecks}
+            onValueChange={toggleHideOtherCampaignDecks}
+          />
+        </View>
+      )] : [],
+      (!!campaign && !singleInvestigator && !simpleOptions) ? [(
+        <View style={styles.row} key={1}>
+          <Text style={[typography.small, styles.searchOption]}>
+            { t`Hide Killed and Insane Investigators` }
+          </Text>
+          <ArkhamSwitch
+            useGestureHandler
+            value={hideEliminatedInvestigators}
+            onValueChange={toggleHideEliminatedInvestigators}
+          />
+        </View>
+      )] : [],
+      (!!campaign && !singleInvestigator && !simpleOptions) ? [(
+        <View style={styles.row} key={2}>
+          <Text style={[typography.small, styles.searchOption]}>
+            { t`Only Show Previous Campaign Members` }
+          </Text>
+          <ArkhamSwitch
+            useGestureHandler
+            value={onlyShowPreviousCampaignMembers}
+            onValueChange={toggleOnlyShowPreviousCampaignMembers}
+          />
+        </View>
+      )] : [],
+    ]);
+    if (!elements.length) {
+      return undefined;
+    }
+    return {
+      controls: <View style={styles.searchOptions}>{ elements }</View>,
+      height: 20 + elements.length * (fontScale * 20 + 8) + 12,
+    };
+  }, [campaign, onlyShowSelected, singleInvestigator, simpleOptions, typography, fontScale,
+    hideOtherCampaignDecks, hideEliminatedInvestigators, onlyShowPreviousCampaignMembers,
+    toggleHideOtherCampaignDecks, toggleHideEliminatedInvestigators, toggleOnlyShowPreviousCampaignMembers]);
+
+  const onTabChange = useCallback((tab: string) => {
     Navigation.mergeOptions(
       componentId,
-      tab === 'decks' ?
-        MyDecksSelectorDialog.deckOptions(this.props) :
-        MyDecksSelectorDialog.investigatorOptions()
+      tab === 'decks' ? deckOptions(props) : investigatorOptions()
     );
-  };
+  }, [componentId, props]);
 
-  render() {
-    const {
-      componentId,
-      onDeckSelect,
-      onInvestigatorSelect,
-    } = this.props;
-    const deckTab = (
-      <DeckSelectorTab
-        componentId={componentId}
-        onDeckSelect={onDeckSelect}
-        searchOptions={this.searchOptions(true)}
-        filterDeckIds={this.filterDeckIds()}
-        onlyDeckIds={this.onlyDeckIds()}
-        filterInvestigators={this.filterInvestigators()}
-        onlyInvestigators={this.onlyInvestigators()}
+  const deckTab = useMemo(() => (
+    <DeckSelectorTab
+      componentId={componentId}
+      onDeckSelect={onDeckSelect}
+      searchOptions={searchOptions(true)}
+      filterDeckIds={filterDeckIds}
+      onlyDeckIds={onlyDeckIds}
+      filterInvestigators={filterInvestigators}
+      onlyInvestigators={onlyInvestigators}
+    />
+  ), [componentId, onDeckSelect, searchOptions, filterDeckIds, onlyDeckIds, filterInvestigators, onlyInvestigators]);
+
+  const tabs = useMemo(() => {
+    return onInvestigatorSelect ? [
+      {
+        key: 'decks',
+        title: t`Decks`,
+        node: deckTab,
+      },
+      {
+        key: 'investigators',
+        title: t`Investigator`,
+        node: (
+          <InvestigatorSelectorTab
+            componentId={componentId}
+            sort={selectedSort}
+            onInvestigatorSelect={onInvestigatorSelect}
+            searchOptions={searchOptions(false)}
+            filterDeckIds={filterDeckIds}
+            onlyDeckIds={onlyDeckIds}
+            filterInvestigators={filterInvestigators}
+          />
+        ),
+      },
+    ] : [];
+  }, [deckTab, componentId, selectedSort, onInvestigatorSelect, searchOptions, filterDeckIds, onlyDeckIds, filterInvestigators]);
+
+  if (onInvestigatorSelect) {
+    return (
+      <TabView
+        tabs={tabs}
+        onTabChange={onTabChange}
       />
     );
-    if (onInvestigatorSelect) {
-      const tabs = [
-        {
-          key: 'decks',
-          title: t`Decks`,
-          node: deckTab,
-        },
-        {
-          key: 'investigators',
-          title: t`Investigator`,
-          node: (
-            <InvestigatorSelectorTab
-              componentId={componentId}
-              sort={this.state.selectedSort}
-              onInvestigatorSelect={onInvestigatorSelect}
-              searchOptions={this.searchOptions(false)}
-              filterDeckIds={this.filterDeckIds()}
-              onlyDeckIds={this.onlyDeckIds()}
-              filterInvestigators={this.filterInvestigators()}
-            />
-          ),
-        },
-      ];
-
-      return (
-        <TabView
-          tabs={tabs}
-          onTabChange={this._onTabChange}
-        />
-      );
-    }
-    return deckTab;
   }
+  return deckTab;
 }
-
-function mapStateToPropsFix(
-  state: AppState,
-  props: NavigationProps & MyDecksSelectorProps
-): ReduxProps {
-  const otherCampaigns = filter(
-    getCampaigns(state),
-    campaign => campaign.id !== props.campaignId);
-  const otherCampaignDeckIds = flatMap(otherCampaigns, c => getLatestCampaignDeckIds(state, c));
-  const campaign = getCampaign(state, props.campaignId);
-  return {
-    campaign,
-    campaignLatestDeckIds: getLatestCampaignDeckIds(state, campaign),
-    otherCampaignDeckIds,
-    decks: getAllDecks(state),
-  };
-}
-
-export default connect<ReduxProps, unknown, NavigationProps & MyDecksSelectorProps, AppState>(
-  mapStateToPropsFix
-)(
-  withPlayerCards<NavigationProps & MyDecksSelectorProps & ReduxProps>(
-    withDimensions(MyDecksSelectorDialog)
-  )
-);
+MyDecksSelectorDialog.options = (passProps: Props) => {
+  return deckOptions(passProps);
+};
+export default MyDecksSelectorDialog;
 
 const styles = StyleSheet.create({
   row: {

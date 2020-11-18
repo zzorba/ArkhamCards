@@ -10,7 +10,6 @@ import { isBig, xs, s } from '@styles/space';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardTextComponent from '@components/card/CardTextComponent';
 import Card from '@data/Card';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 const SMALL_ICON_SIZE = isBig ? 26 : 16;

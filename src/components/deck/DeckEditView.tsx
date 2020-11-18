@@ -1,138 +1,40 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { Brackets } from 'typeorm/browser';
 
-import { Deck, DeckMeta, Slots } from '@actions/types';
 import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '@app_constants';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import CardSearchComponent from '@components/cardlist/CardSearchComponent';
-import QueryProvider from '@components/data/QueryProvider';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { queryForInvestigator, negativeQueryForInvestigator } from '@lib/InvestigatorRequirements';
 import FilterBuilder, { defaultFilterState } from '@lib/filters';
 import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from '@data/query';
-import Card from '@data/Card';
-import { parseDeck } from '@lib/parseDeck';
-import DeckNavFooter from '../DeckNavFooter';
 import { NavigationProps } from '@components/nav/types';
+import { useDeck, useSimpleDeckEdits, useInvestigatorCards } from '@components/core/hooks';
 
 export interface EditDeckProps {
-  deck: Deck;
-  previousDeck?: Deck;
-  tabooSetId?: number;
-  xpAdjustment?: number;
+  id: number;
   storyOnly?: boolean;
-  slots: Slots;
-  meta: DeckMeta;
-  ignoreDeckLimitSlots: Slots;
-  updateSlots: (slots: Slots) => void;
 }
 
-type Props = NavigationProps & EditDeckProps & PlayerCardProps & DimensionsProps;
+type Props = NavigationProps & EditDeckProps;
 
-interface State {
-  deckCardCounts: Slots;
-  slots: Slots;
-}
+export default function DeckEditView({
+  componentId,
+  id,
+  storyOnly,
+}: Props) {
+  const [deck] = useDeck(id, {});
+  const deckEdits = useSimpleDeckEdits(id);
+  const tabooSetId = (deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.taboo_id) || 0;
+  const investigators = useInvestigatorCards(tabooSetId);
+  const [hideVersatile, setHideVersatile] = useState(false);
+  const investigator = useMemo(() => {
+    const investigator_code = deckEdits?.meta.alternate_back || deck?.investigator_code;
+    return investigator_code && investigators && investigators[investigator_code];
+  }, [deck, deckEdits, investigators]);
 
-interface QueryProps {
-  meta: DeckMeta;
-  storyOnly?: boolean;
-  versatile: boolean;
-  onYourOwn: boolean;
-  investigator: Card;
-}
-
-class DeckEditView extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      deckCardCounts: props.slots || {},
-      slots: props.slots,
-    };
-  }
-
-  investigator(): Card | undefined {
-    const {
-      deck,
-      meta,
-      investigators,
-    } = this.props;
-    const investigator_code = meta?.alternate_back || deck?.investigator_code;
-    return investigator_code ? investigators[investigator_code] : undefined;
-  }
-
-  _syncDeckCardCounts = () => {
-    this.props.updateSlots(this.state.deckCardCounts);
-  };
-
-  componentDidUpdate(prevProps: Props) {
-    const {
-      slots,
-    } = this.props;
-    if (slots !== prevProps.slots) {
-      /* eslint-disable react/no-did-update-set-state */
-      this.setState({
-        deckCardCounts: slots,
-      });
-    }
-  }
-
-  _onDeckCountChange = (code: string, count: number) => {
-    const newSlots = Object.assign(
-      {},
-      this.state.deckCardCounts,
-      { [code]: count },
-    );
-    if (count === 0) {
-      delete newSlots[code];
-    }
-    this.setState({
-      deckCardCounts: newSlots,
-    }, this._syncDeckCardCounts);
-  };
-
-  _renderFooter = (updatedDeckCardCounts?: Slots, controls?: React.ReactNode) => {
-    const {
-      componentId,
-      deck,
-      ignoreDeckLimitSlots,
-      previousDeck,
-      cards,
-      xpAdjustment,
-      meta,
-    } = this.props;
-    const deckCardCounts = updatedDeckCardCounts || this.state.deckCardCounts;
-    const pDeck = parseDeck(
-      deck,
-      meta,
-      deckCardCounts,
-      ignoreDeckLimitSlots,
-      cards,
-      previousDeck
-    );
-    if (!pDeck) {
-      return null;
-    }
-    return (
-      <DeckNavFooter
-        componentId={componentId}
-        meta={meta}
-        parsedDeck={pDeck}
-        cards={cards}
-        xpAdjustment={xpAdjustment || 0}
-        controls={controls}
-      />
-    );
-  }
-
-  static baseQuery({
-    meta,
-    storyOnly,
-    versatile,
-    onYourOwn,
-    investigator,
-  }: QueryProps): Brackets {
+  const hasVersatile = (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
+  const versatile = !hideVersatile && hasVersatile;
+  const onYourOwn = deckEdits && deckEdits.slots[ON_YOUR_OWN_CODE] > 0;
+  const queryOpt = useMemo(() => {
     if (storyOnly) {
       return combineQueries(
         STORY_CARDS_QUERY,
@@ -140,7 +42,10 @@ class DeckEditView extends React.Component<Props, State> {
         'and'
       );
     }
-    const investigatorPart = queryForInvestigator(investigator, meta);
+    if (!investigator) {
+      return undefined;
+    }
+    const investigatorPart = investigator && queryForInvestigator(investigator, deckEdits?.meta);
     const parts: Brackets[] = [
       ...(investigatorPart ? [investigatorPart] : []),
     ];
@@ -152,7 +57,7 @@ class DeckEditView extends React.Component<Props, State> {
         levelEnabled: true,
       });
       if (versatileQuery) {
-        const invertedClause = negativeQueryForInvestigator(investigator, meta);
+        const invertedClause = negativeQueryForInvestigator(investigator, deckEdits?.meta);
         if (invertedClause) {
           parts.push(
             new Brackets(qb => qb.where(invertedClause).andWhere(versatileQuery))
@@ -171,51 +76,20 @@ class DeckEditView extends React.Component<Props, State> {
       return combineQueries(joinedQuery, [ON_YOUR_OWN_RESTRICTION], 'and');
     }
     return joinedQuery;
-  }
+  }, [deckEdits?.meta, storyOnly, investigator, versatile, onYourOwn]);
 
-  render() {
-    const {
-      componentId,
-      tabooSetId,
-      deck,
-      storyOnly,
-      meta,
-    } = this.props;
-    const {
-      deckCardCounts,
-    } = this.state;
-    const investigator = this.investigator();
-    if (!investigator) {
-      return null;
-    }
-    return (
-      <QueryProvider<QueryProps, Brackets>
-        meta={meta}
-        storyOnly={storyOnly}
-        investigator={investigator}
-        versatile={deckCardCounts[VERSATILE_CODE] > 0}
-        onYourOwn={deckCardCounts[ON_YOUR_OWN_CODE] > 0}
-        getQuery={DeckEditView.baseQuery}
-      >
-        { query => (
-          <CardSearchComponent
-            componentId={componentId}
-            tabooSetOverride={tabooSetId}
-            baseQuery={query}
-            originalDeckSlots={deck.slots}
-            investigator={investigator}
-            deckCardCounts={deckCardCounts}
-            onDeckCountChange={this._onDeckCountChange}
-            renderFooter={this._renderFooter}
-            storyOnly={storyOnly}
-            modal
-          />
-        ) }
-      </QueryProvider>
-    );
+  if (!investigator || !queryOpt || !deck || !deckEdits) {
+    return null;
   }
+  return (
+    <CardSearchComponent
+      componentId={componentId}
+      deckId={id}
+      baseQuery={queryOpt}
+      investigator={investigator}
+      hideVersatile={hideVersatile}
+      setHideVersatile={hasVersatile ? setHideVersatile : undefined}
+      storyOnly={storyOnly}
+    />
+  );
 }
-
-export default withPlayerCards<NavigationProps & EditDeckProps>(
-  withDimensions(DeckEditView)
-);

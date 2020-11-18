@@ -1,5 +1,4 @@
-import React from 'react';
-import { debounce } from 'lodash';
+import React, { useContext, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,79 +6,41 @@ import {
 
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useCounter } from '@components/core/hooks';
 
 interface Props {
   countChanged: (index: number, count: number) => void;
   index: number;
   title: string;
   count?: number;
-  isInvestigator?: boolean;
 }
 
-interface State {
-  count?: number;
-}
-
-export default class EditCountComponent extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _countChanged!: (index: number, count: number) => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      count: props.count,
-    };
-
-    this._countChanged = debounce(props.countChanged, 200, { trailing: true });
-  }
-
-  _increment = () => {
-    this.setState(state => {
-      const count = (state.count || 0) + 1;
-      this._countChanged(this.props.index, count);
-      return { count };
-    });
-  };
-
-  _decrement = () => {
-    this.setState(state => {
-      const count = Math.max((state.count || 0) - 1, 0);
-      this._countChanged(this.props.index, count);
-      return { count };
-    });
-  };
-
-  render() {
-    const {
-      title,
-    } = this.props;
-    const { gameFont, typography } = this.context;
-    const {
-      count,
-    } = this.state;
-    return (
-      <BasicListRow>
-        <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-          { title }
-        </Text>
-        <PlusMinusButtons
-          count={count || 0}
-          onIncrement={this._increment}
-          onDecrement={this._decrement}
-          countRender={(
-            <Text style={[styles.margin, typography.text]}>
-              { count }
-            </Text>
-          )}
-          size={36}
-        />
-      </BasicListRow>
-    );
-  }
+export default function EditCountComponent({ countChanged, index, title, count: initialCount }: Props) {
+  const { typography } = useContext(StyleContext);
+  const [count, increment, decrement] = useCounter(initialCount || 0, { min: 0 });
+  useEffect(() => {
+    countChanged(index, count);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count]);
+  return (
+    <BasicListRow>
+      <Text style={typography.mediumGameFont}>
+        { title }
+      </Text>
+      <PlusMinusButtons
+        count={count || 0}
+        onIncrement={increment}
+        onDecrement={decrement}
+        countRender={(
+          <Text style={[styles.margin, typography.text]}>
+            { count }
+          </Text>
+        )}
+        size={36}
+      />
+    </BasicListRow>
+  );
 }
 
 const styles = StyleSheet.create({

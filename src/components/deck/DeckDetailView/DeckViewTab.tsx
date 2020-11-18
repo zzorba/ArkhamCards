@@ -1,17 +1,9 @@
-import React, { ReactNode } from 'react';
-import { filter, find, flatMap, forEach, map, sum, sumBy, uniqBy } from 'lodash';
-import {
-  SectionList,
-  SectionListData,
-  SectionListRenderItemInfo,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { filter, find, flatMap, flatten, forEach, map, sum, sumBy, uniqBy } from 'lodash';
+import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
-import PickerStyleButton from '@components/core/PickerStyleButton';
 import {
   Campaign,
   CardId,
@@ -21,18 +13,15 @@ import {
   InvestigatorData,
   ParsedDeck,
   SplitCards,
-  Slots,
   Trauma,
 } from '@actions/types';
 import { showCard, showCardSwipe } from '@components/nav/helper';
-import DeckProblemRow from '@components/core/DeckProblemRow';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import CardTextComponent from '@components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
-import InvestigatorOptionsModule from './InvestigatorOptionsModule';
-import CardSectionHeader, { CardSectionHeaderData } from '@components/core/CardSectionHeader';
-import TabooSetPicker from '@components/core/TabooSetPicker';
+import InvestigatorOptionsModule, { hasInvestigatorOptions } from './InvestigatorOptionsModule';
+import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
@@ -40,19 +29,38 @@ import { BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
-import COLORS from '@styles/colors';
-import { isBig, m, s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import space, { isBig, m, s, xs } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
+import { useDeckEdits, useFlag } from '@components/core/hooks';
+import { setDeckTabooSet, updateDeckMeta } from './actions';
+import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
+import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
+import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
+import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
+import DeckMetadataComponent from './DeckMetadataComponent';
+import DeckTabooPickerButton from './DeckTabooPickerButton';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import DeckPickerStyleButton from './DeckPickerStyleButton';
 
 interface SectionCardId extends CardId {
   special: boolean;
   hasUpgrades: boolean;
+  index: number;
 }
 
 interface CardSection extends CardSectionHeaderData {
   id: string;
-  data: SectionCardId[];
+  cards: SectionCardId[];
+  first?: boolean;
+  last?: boolean;
+}
+
+interface DeckSection {
+  title: string;
+  onTitlePress?: () => void;
+  sections: CardSection[];
+  toggleCollapsed?: () => void;
+  collapsed?: boolean;
 }
 
 function hasUpgrades(
@@ -75,18 +83,22 @@ function hasUpgrades(
 }
 
 function deckToSections(
+  title: string,
+  onTitlePress: undefined | (() => void),
+  index: number,
   halfDeck: SplitCards,
   cards: CardsMap,
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
   special: boolean,
   inCollection: { [pack_code: string]: boolean },
-  limitedSlots: boolean
-): CardSection[] {
+  limitedSlots: boolean,
+  limitedSlotsOnly?: boolean,
+): [DeckSection, number] {
   const result: CardSection[] = [];
   if (halfDeck.Assets) {
     const assets = flatMap(halfDeck.Assets, subAssets => {
-      const data = filter(subAssets.data, c => !limitedSlots || c.limited);
+      const data = filter(subAssets.data, c => limitedSlotsOnly ? c.limited : (!c.limited || !limitedSlots));
       if (!data.length) {
         return [];
       }
@@ -100,19 +112,21 @@ function deckToSections(
       subAssets => sum(subAssets.data.map(c => c.quantity))
     );
     if (assetCount > 0) {
+      const assets = t`Assets`;
       result.push({
         id: `assets${special ? '-special' : ''}`,
-        subTitle: t`Assets (${assetCount})`,
-        data: [],
+        subTitle: `— ${assets} · ${assetCount} —`,
+        cards: [],
       });
     }
     forEach(assets, (subAssets, idx) => {
       result.push({
         id: `asset${special ? '-special' : ''}-${idx}`,
         title: subAssets.type,
-        data: map(subAssets.data, c => {
+        cards: map(subAssets.data, c => {
           return {
             ...c,
+            index: index++,
             special,
             hasUpgrades: hasUpgrades(
               c.id,
@@ -140,10 +154,11 @@ function deckToSections(
       const count = sumBy(cardIds, c => c.quantity);
       result.push({
         id: `${localizedName}-${special ? '-special' : ''}`,
-        subTitle: `${localizedName} (${count})`,
-        data: map(cardIds, c => {
+        subTitle: `— ${localizedName} · ${count} —`,
+        cards: map(cardIds, c => {
           return {
             ...c,
+            index: index++,
             special,
             hasUpgrades: hasUpgrades(
               c.id,
@@ -157,63 +172,54 @@ function deckToSections(
       });
     }
   });
-  if (!special && result.length === 0) {
-    result.push({
-      id: 'cards-placeholder',
-      placeholder: true,
-      data: [],
-    });
+  if (result.length) {
+    result[0].first = true;
+    result[result.length - 1].last = true;
   }
-  return result;
+  return [
+    { title, onTitlePress, sections: result },
+    index,
+  ];
 }
 
 
 function bondedSections(
-  slots: Slots,
-  cards: CardsMap,
-  bondedCardsByName: { [name: string]: Card[] }
-): CardSection[] {
-  const bondedCards: Card[] = [];
-  forEach(slots, (count, code) => {
-    const card = cards[code];
-    if (count > 0 && card) {
-      const possibleBondedCards = bondedCardsByName[card.real_name];
-      if (possibleBondedCards && possibleBondedCards.length) {
-        forEach(possibleBondedCards, bonded => {
-          bondedCards.push(bonded);
-        });
-      }
-    }
-  });
-  if (!bondedCards.length) {
-    return [];
+  uniqBondedCards: Card[],
+  count: number,
+  index: number,
+): DeckSection | undefined {
+  if (count === 0) {
+    return undefined;
   }
-  const uniqBondedCards = uniqBy(bondedCards, c => c.code);
-  const count = sumBy(uniqBondedCards, card => card.quantity || 0);
-  return [{
-    id: 'bonded-cards',
+  return {
     title: t`Bonded Cards (${count})`,
-    data: map(uniqBondedCards, c => {
-      return {
-        id: c.code,
-        quantity: c.quantity || 0,
-        special: true,
-        hasUpgrades: false,
-        limited: false,
-        invalid: false,
-      };
-    }),
-  }];
+    sections: [{
+      id: 'bonded',
+      cards: map(uniqBondedCards, c => {
+        return {
+          id: c.code,
+          quantity: c.quantity || 0,
+          index: index++,
+          special: true,
+          hasUpgrades: false,
+          limited: false,
+          invalid: false,
+        };
+      }),
+      last: true,
+    }],
+  };
 }
 
 interface Props {
   componentId: string;
   deck: Deck;
+  investigatorFront?: Card;
+  investigatorBack?: Card;
   parallelInvestigators: Card[];
   hideCampaign?: boolean;
   campaign?: Campaign;
   parsedDeck: ParsedDeck;
-  meta: DeckMeta;
   hasPendingEdits?: boolean;
   cards: CardsMap;
   cardsByName: {
@@ -222,6 +228,7 @@ interface Props {
   bondedCardsByName: {
     [name: string]: Card[];
   };
+  visible: boolean;
   editable: boolean;
   isPrivate: boolean;
   buttons?: ReactNode;
@@ -230,20 +237,14 @@ interface Props {
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   showCardUpgradeDialog: (card: Card) => void;
   investigatorDataUpdates?: InvestigatorData;
-  deckName: string;
   tabooSet?: TabooSet;
   tabooOpen: boolean;
   singleCardView: boolean;
   tabooSetId?: number;
   showTaboo: boolean;
-  setTabooSet: (tabooSetId?: number) => void;
-  xpAdjustment: number;
   signedIn: boolean;
   login: () => void;
   problem?: DeckProblem;
-  renderFooter: (slots?: Slots) => React.ReactNode;
-  onDeckCountChange: (code: string, count: number) => void;
-  setMeta: (key: keyof DeckMeta, value?: string) => void;
   showEditCards: () => void;
   showDeckUpgrade: () => void;
   showDeckHistory: () => void;
@@ -253,89 +254,158 @@ interface Props {
   };
 }
 
-interface State {
-  limitedSlots: boolean;
-}
-
-export default class DeckViewTab extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  state: State = {
-    limitedSlots: false,
-  };
-
-  _keyForCard = (item: SectionCardId) => {
-    return item.id;
-  };
-
-  investigator() {
-    const {
-      deck,
-      cards,
-    } = this.props;
-    return cards[deck.investigator_code];
-  }
-
-  investigatorFront() {
-    const {
-      deck,
-      cards,
-      meta,
-      parallelInvestigators,
-    } = this.props;
-    const altFront = meta.alternate_front && find(
-      parallelInvestigators,
-      card => card.code === meta.alternate_front);
-    return altFront || cards[deck.investigator_code];
-  }
-
-  investigatorBack() {
-    const {
-      parsedDeck: {
-        investigator,
-      },
-      meta,
-      parallelInvestigators,
-    } = this.props;
-    const altFront = meta.alternate_back && find(
-      parallelInvestigators,
-      card => card.code === meta.alternate_back);
-    return altFront || investigator;
-  }
-
-  _showInvestigator = () => {
-    const {
-      componentId,
-      tabooSetId,
-    } = this.props;
-    const { colors } = this.context;
-    const investigator = this.investigatorFront();
-    if (investigator) {
+export default function DeckViewTab(props: Props) {
+  const {
+    componentId,
+    tabooSetId,
+    cards,
+    investigatorFront,
+    investigatorBack,
+    deck,
+    parallelInvestigators,
+    parsedDeck,
+    singleCardView,
+    showEditCards,
+    showEditSpecial,
+    cardsByName,
+    bondedCardsByName,
+    inCollection,
+    editable,
+    showCardUpgradeDialog,
+    problem,
+    showEditNameDialog,
+    visible,
+    tabooSet,
+    showTaboo,
+    tabooOpen,
+    buttons,
+    isPrivate,
+    campaign,
+    hideCampaign,
+    showTraumaDialog,
+    showDeckUpgrade,
+    showDeckHistory,
+    investigatorDataUpdates,
+  } = props;
+  const { backgroundStyle, colors } = useContext(StyleContext);
+  const [deckEdits, deckEditsRef] = useDeckEdits(deck.id);
+  const [limitedSlots, toggleLimitedSlots] = useFlag(false);
+  const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
+  const [data, setData] = useState<DeckSection[]>([]);
+  const showInvestigator = useCallback(() => {
+    if (investigatorFront) {
       showCard(
         componentId,
-        investigator.code,
-        investigator,
+        investigatorFront.code,
+        investigatorFront,
         colors,
         false,
         tabooSetId,
       );
     }
-  };
+  }, [componentId, tabooSetId, investigatorFront, colors]);
 
-  _showSwipeCard = (id: string, card: Card) => {
-    const {
-      componentId,
-      tabooSetId,
-      parsedDeck: {
-        slots,
-      },
-      renderFooter,
-      onDeckCountChange,
-      singleCardView,
-    } = this.props;
-    const { colors } = this.context;
-    const investigator = this.investigatorFront();
+  const [uniqueBondedCards, bondedCardsCount] = useMemo((): [Card[], number] => {
+    const bondedCards: Card[] = [];
+    forEach(parsedDeck.slots, (count, code) => {
+      const card = cards[code];
+      if (count > 0 && card) {
+        const possibleBondedCards = bondedCardsByName[card.real_name];
+        if (possibleBondedCards && possibleBondedCards.length) {
+          forEach(possibleBondedCards, bonded => {
+            bondedCards.push(bonded);
+          });
+        }
+      }
+    });
+    if (!bondedCards.length) {
+      return [[], 0];
+    }
+    const uniqueBondedCards = uniqBy(bondedCards, c => c.code);
+    const bondedCardsCount = sumBy(uniqueBondedCards, card => card.quantity || 0);
+    return [uniqueBondedCards, bondedCardsCount];
+  }, [parsedDeck.slots, cards, bondedCardsByName]);
+  const limitSlotCount = find(investigatorBack?.deck_options, option => !!option.limit)?.limit || 0;
+  useEffect(() => {
+    if (!investigatorBack || !visible) {
+      return;
+    }
+    const normalCards = parsedDeck.normalCards;
+    const specialCards = parsedDeck.specialCards;
+    const slots = parsedDeck.slots;
+    const validation = new DeckValidation(investigatorBack, slots, deckEdits?.meta);
+    const [deckSection, deckIndex] = deckToSections(
+      t`Deck Cards`,
+      editable ? showEditCards : undefined,
+      0,
+      normalCards,
+      cards,
+      cardsByName,
+      validation,
+      false,
+      inCollection,
+      false
+    );
+    const [specialSection, specialIndex] = deckToSections(
+      t`Special Cards`,
+      editable ? showEditSpecial : undefined,
+      deckIndex,
+      specialCards,
+      cards,
+      cardsByName,
+      validation,
+      true,
+      inCollection,
+      false
+    );
+    const newData: DeckSection[] = [deckSection, specialSection];
+    if (limitSlotCount > 0) {
+      let index = specialIndex;
+      const limitedCards: SectionCardId[] = map(filter(flatten([
+        ...flatMap(normalCards.Assets || [], cards => cards.data),
+        normalCards.Event || [],
+        normalCards.Skill || [],
+        normalCards.Treachery || [],
+        normalCards.Enemy || [],
+        ...flatMap(specialCards.Assets || [], cards => cards.data),
+      ]), card => card.limited), card => {
+        return {
+          ...card,
+          index: index++,
+          special: false,
+          hasUpgrades: hasUpgrades(
+            card.id,
+            cards,
+            cardsByName,
+            validation,
+            inCollection
+          ),
+        };
+      });
+      const count = sumBy(limitedCards, card => slots[card.id] || 0);
+      newData.push({
+        title: t`Limited Slots`,
+        toggleCollapsed: toggleLimitedSlots,
+        collapsed: !limitedSlots,
+        sections: limitedSlots ? [
+          {
+            id: 'splash',
+            title: t`${count} of ${limitSlotCount}`,
+            cards: limitedCards,
+            last: true,
+          },
+        ] : [],
+      });
+    }
+    const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, specialIndex);
+    if (bonded) {
+      newData.push(bonded);
+    }
+    setData(newData);
+  }, [investigatorBack, limitSlotCount ,limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits, cards,
+    showEditCards, showEditSpecial, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
+  const faction = parsedDeck.investigator.factionCode();
+  const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(
         componentId,
@@ -347,290 +417,177 @@ export default class DeckViewTab extends React.Component<Props, State> {
       );
       return;
     }
-    const [sectionId, cardIndex] = id.split('.');
-    let index = 0;
-    const cards: Card[] = [];
-    forEach(this.data(), section => {
-      if (sectionId === section.id) {
-        index = cards.length + parseInt(cardIndex, 10);
-      }
-      forEach(section.data, item => {
-        const card = this.props.cards[item.id];
-        if (card) {
-          cards.push(card);
-        }
+    const index = parseInt(id, 10);
+    const visibleCards: Card[] = [];
+    forEach(data, deckSection => {
+      forEach(deckSection.sections, section => {
+        forEach(section.cards, item => {
+          const card = cards[item.id];
+          if (card) {
+            visibleCards.push(card);
+          }
+        });
       });
     });
     showCardSwipe(
       componentId,
-      cards,
+      map(visibleCards, card => card.code),
       index,
       colors,
+      visibleCards,
       false,
       tabooSetId,
-      slots,
-      onDeckCountChange,
-      investigator,
-      renderFooter
+      deck.id,
+      investigatorFront
     );
-  };
+  }, [componentId, data, colors, investigatorFront, tabooSetId, deck.id, singleCardView, cards]);
 
-  _renderSectionHeader = ({ section }: {
-    section: SectionListData<SectionCardId>;
-  }) => {
-    const {
-      parsedDeck: {
-        investigator,
-      },
-    } = this.props;
-    return (
-      <CardSectionHeader
-        key={section.id}
-        section={section as CardSectionHeaderData}
-        investigator={investigator}
-      />
-    );
-  }
+  const renderSectionHeader = useCallback((section: CardSection) => {
+    if (section.superTitle) {
+      return (
+        <DeckSectionHeader
+          title={section.superTitle}
+          onPress={section.onPress}
+          faction={faction}
+        />
+      );
+    }
+    if (section.title) {
+      return (
+        <DeckSlotHeader title={section.title} first={section.first} />
+      );
+    }
+    if (section.subTitle) {
+      return (
+        <DeckBubbleHeader title={section.subTitle} />
+      );
+    }
+    return null;
+  }, [faction]);
 
-  _renderCard = ({ item, index, section }: SectionListRenderItemInfo<SectionCardId>) => {
-    const {
-      parsedDeck: {
-        ignoreDeckLimitSlots,
-        deck: {
-          previous_deck,
-          next_deck,
-        },
-      },
-      showCardUpgradeDialog,
-    } = this.props;
-    const card = this.props.cards[item.id];
+  const showDeckUpgrades = useMemo(() => {
+    return !!(deck.previous_deck && !deck.next_deck);
+  }, [deck.previous_deck, deck.next_deck]);
+
+  const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection) => {
+    const card = cards[item.id];
     if (!card) {
       return null;
     }
-    const count = (item.special && ignoreDeckLimitSlots[item.id] > 0) ?
-      ignoreDeckLimitSlots[item.id] :
-      (item.quantity - (ignoreDeckLimitSlots[item.id] || 0));
-    const id = `${section.id}.${index}`;
-    const upgradeEnabled = previous_deck && !next_deck && item.hasUpgrades;
+    const count = (item.special && (deckEditsRef.current?.ignoreDeckLimitSlots[item.id] || 0) > 0) ?
+      deckEditsRef.current?.ignoreDeckLimitSlots[item.id] :
+      (item.quantity - (deckEditsRef.current?.ignoreDeckLimitSlots[item.id] || 0));
+    const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
     return (
       <CardSearchResult
-        key={id}
+        key={item.index}
         card={card}
-        id={id}
+        id={`${item.index}`}
         invalid={item.invalid}
-        onUpgrade={upgradeEnabled ? showCardUpgradeDialog : undefined}
-        onPressId={this._showSwipeCard}
-        count={count}
+        onPressId={showSwipeCard}
+        control={count !== undefined ? {
+          type: 'upgrade',
+          count,
+          onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
+        } : undefined}
+        noBorder={section.last && index === (section.cards.length - 1)}
       />
     );
-  };
+  }, [showSwipeCard, deckEditsRef, showDeckUpgrades, showCardUpgradeDialog, cards]);
 
-  renderProblem() {
-    const {
-      parsedDeck: {
-        investigator,
-      },
-      problem,
-    } = this.props;
+  const dispatch = useDispatch();
+  const setTabooSet = useCallback((tabooSetId: number | undefined) => {
+    dispatch(setDeckTabooSet(deck.id, tabooSetId || 0));
+  }, [dispatch, deck.id]);
+  const setMeta = useCallback((key: keyof DeckMeta, value?: string) => {
+    if (deckEditsRef.current) {
+      dispatch(updateDeckMeta(deck.id, deck.investigator_code, deckEditsRef.current, [{ key, value }]));
+    }
+  }, [dispatch, deck.id, deck.investigator_code, deckEditsRef]);
+  const setParallel = useCallback((front: string, back: string) => {
+    if (deckEditsRef.current) {
+      dispatch(updateDeckMeta(deck.id, deck.investigator_code, deckEditsRef.current, [
+        { key: 'alternate_front', value: front },
+        { key: 'alternate_back', value: back },
+      ]));
+    }
+  }, [dispatch, deckEditsRef, deck.id, deck.investigator_code]);
 
-    if (!problem) {
+  const investigatorOptions = useMemo(() => {
+    if (!deckEdits?.meta || !investigator) {
       return null;
     }
-    const isSurvivor = investigator.faction_code === 'survivor';
+    const hasTabooPicker = (tabooOpen || showTaboo || !!tabooSet);
+    const changes = parsedDeck.changes;
+    const hasXpButton = editable && !!(changes && deck.previous_deck);
+    const hasOptions = hasInvestigatorOptions(investigator, parallelInvestigators);
+    const adjustedXp = (deck.xp || 0) + (deckEdits?.xpAdjustment || 0);
+    const unspent = adjustedXp - (changes?.spentXp || 0);
+    const unspentStr = unspent > 0 ? `+${unspent}` : `${unspent}`;
     return (
-      <View style={[styles.problemBox,
-        { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
-      ]}>
-        <DeckProblemRow
-          problem={problem}
-          color={isSurvivor ? COLORS.black : COLORS.white}
-          fontSize={14}
-        />
-      </View>
-    );
-  }
-
-  data(): CardSection[] {
-    const {
-      parsedDeck: {
-        normalCards,
-        specialCards,
-        slots,
-      },
-      meta,
-      showEditCards,
-      showEditSpecial,
-      cards,
-      cardsByName,
-      bondedCardsByName,
-      inCollection,
-      editable,
-    } = this.props;
-    const { limitedSlots } = this.state;
-    const investigator = this.investigatorBack();
-    const validation = new DeckValidation(investigator, slots, meta);
-    return [
-      {
-        id: 'cards',
-        superTitle: t`Deck Cards`,
-        data: [],
-        onPress: editable ? showEditCards : undefined,
-      },
-      ...deckToSections(
-        normalCards,
-        cards,
-        cardsByName,
-        validation,
-        false,
-        inCollection,
-        limitedSlots
-      ), {
-        id: 'special',
-        superTitle: t`Special Cards`,
-        data: [],
-        onPress: showEditSpecial,
-      },
-      ...deckToSections(
-        specialCards,
-        cards,
-        cardsByName,
-        validation,
-        true,
-        inCollection,
-        limitedSlots
-      ),
-      ...(limitedSlots ? [] : bondedSections(slots, cards, bondedCardsByName)),
-    ];
-  }
-
-  renderAvailableExperienceButton() {
-    const {
-      parsedDeck: {
-        changes,
-      },
-      deck,
-      showEditNameDialog,
-      xpAdjustment,
-      editable,
-    } = this.props;
-    const { colors } = this.context;
-    if (!changes) {
-      return null;
-    }
-    const adjustedXp = (deck.xp || 0) + xpAdjustment;
-    return (
-      <PickerStyleButton
-        id="xp"
-        title={t`Experience`}
-        value={t`${changes.spentXp} of ${adjustedXp}`}
-        disabled={!editable}
-        onPress={showEditNameDialog}
-        colors={{
-          backgroundColor: 'transparent',
-          textColor: colors.darkText,
-        }}
-        widget="nav"
-        noBorder
-        settingsStyle
-      />
-    );
-  }
-
-  _toggleLimitedSlots = () => {
-    this.setState(state => {
-      return {
-        limitedSlots: !state.limitedSlots,
-      };
-    });
-  };
-
-  renderInvestigatorOptions() {
-    const {
-      parsedDeck: {
-        investigator,
-        limitedSlots,
-      },
-      parallelInvestigators,
-      deck,
-      meta,
-      setMeta,
-      tabooSet,
-      tabooSetId,
-      setTabooSet,
-      showTaboo,
-      tabooOpen,
-      editable,
-    } = this.props;
-    const { colors, typography } = this.context;
-    return (
-      <View style={styles.optionsContainer}>
-        { (tabooOpen || showTaboo || !!tabooSet) && (
-          <TabooSetPicker
+      <View style={[styles.optionsContainer, space.paddingS]}>
+        { hasXpButton && !!changes && (
+          <DeckPickerStyleButton
+            title={t`Experience`}
+            valueLabel={t`${adjustedXp} XP`}
+            valueLabelDescription={deck.previous_deck ? t`${unspentStr} unspent` : undefined}
+            editable={editable}
+            onPress={showEditNameDialog}
+            first
+            last={!hasTabooPicker && !hasOptions}
+            icon="xp"
+            noLabelDivider
+          />
+        ) }
+        { hasTabooPicker && (
+          <DeckTabooPickerButton
             open={tabooOpen}
+            faction={investigator.factionCode()}
             disabled={!editable}
             tabooSetId={tabooSetId}
             setTabooSet={setTabooSet}
-            color={colors.faction[
-              investigator ? investigator.factionCode() : 'neutral'
-            ].darkBackground}
-            transparent
+            first={!hasXpButton}
+            last={!hasOptions}
           />
         ) }
         <InvestigatorOptionsModule
           investigator={investigator}
-          meta={meta}
+          meta={deckEdits.meta}
           parallelInvestigators={parallelInvestigators}
           setMeta={setMeta}
+          setParallel={setParallel}
           editWarning={!!deck.previous_deck}
           disabled={!editable}
+          first={!hasTabooPicker && !hasXpButton}
         />
-        { this.renderAvailableExperienceButton() }
-        { limitedSlots && (
-          <View style={styles.toggleRow}>
-            <Text style={typography.small}>
-              { t`Show limited splash` }
-            </Text>
-            <ArkhamSwitch
-              value={this.state.limitedSlots}
-              onValueChange={this._toggleLimitedSlots}
-            />
-          </View>
-        ) }
       </View>
     );
-  }
+  }, [investigator, parallelInvestigators, deck, tabooSetId, tabooSet, showTaboo, tabooOpen, editable,
+    deckEdits?.meta, deckEdits?.xpAdjustment, parsedDeck?.changes,
+    showEditNameDialog, setMeta, setParallel, setTabooSet,
+  ]);
 
-  renderInvestigatorBlock() {
-    const {
-      componentId,
-      parsedDeck: {
-        slots,
-      },
-      cards,
-    } = this.props;
-    const investigator = (
-      (slots[BODY_OF_A_YITHIAN] || 0) > 0 ?
-        cards[BODY_OF_A_YITHIAN] :
-        undefined
-    ) || this.investigatorFront();
+  const investigatorBlock = useMemo(() => {
+    const yithian = (parsedDeck.slots[BODY_OF_A_YITHIAN] || 0) > 0;
+    const investigatorCard = (yithian ? cards[BODY_OF_A_YITHIAN] : undefined) || investigatorFront;
 
-    if (!investigator) {
+    if (!investigatorCard) {
       return null;
     }
 
     return (
       <View style={styles.column}>
-        <TouchableOpacity onPress={this._showInvestigator}>
+        <TouchableOpacity onPress={showInvestigator}>
           <View>
             <View style={styles.header}>
               <View style={styles.headerTextColumn}>
                 <InvestigatorStatLine
-                  investigator={investigator}
+                  investigator={investigatorCard}
                 />
-                { !!investigator.text && (
+                { !!investigatorCard.text && (
                   <View style={[styles.gameTextBlock, styles.headerLeftMargin]}>
                     <CardTextComponent
-                      text={investigator.text}
+                      text={investigatorCard.text}
                     />
                   </View>
                 ) }
@@ -638,107 +595,95 @@ export default class DeckViewTab extends React.Component<Props, State> {
               <View style={[styles.headerColumn, styles.headerLeftMargin]}>
                 <View style={styles.image}>
                   <InvestigatorImage
-                    card={this.investigator() || investigator}
+                    card={investigator || investigatorCard}
                     componentId={componentId}
-                    yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
+                    yithian={yithian}
                     border
                   />
                 </View>
-                <HealthSanityLine
-                  investigator={investigator}
-                />
+                <HealthSanityLine investigator={investigatorCard} />
               </View>
             </View>
           </View>
           <View style={styles.headerLeftMargin}>
-            <CardTabooTextBlock card={investigator} />
+            <CardTabooTextBlock card={investigatorCard} />
           </View>
         </TouchableOpacity>
       </View>
     );
-  }
+  }, [componentId, parsedDeck.slots, showInvestigator, cards, investigator, investigatorFront]);
 
-  _renderHeader = () => {
-    const {
-      buttons,
-    } = this.props;
-
+  const header = useMemo(() => {
     return (
       <View style={styles.headerWrapper}>
         <View style={styles.headerBlock}>
-          { this.renderProblem() }
           <View style={styles.containerWrapper}>
             <View style={styles.container}>
-              { this.renderInvestigatorBlock() }
+              { investigatorBlock }
             </View>
-            { this.renderInvestigatorOptions() }
+            <DeckMetadataComponent
+              parsedDeck={parsedDeck}
+              bondedCardCount={bondedCardsCount}
+              problem={problem}
+              hasPreviousDeck={!!deck.previous_deck}
+              editable={editable}
+            />
+            { investigatorOptions }
           </View>
           { buttons }
         </View>
       </View>
     );
-  };
-
-  _renderFooter = () => {
-    const {
-      campaign,
-      investigatorDataUpdates,
-      componentId,
-      deck,
-      cards,
-      isPrivate,
-      showTraumaDialog,
-      xpAdjustment,
-      showDeckUpgrade,
-      showDeckHistory,
-      editable,
-      parsedDeck,
-      tabooSetId,
-      renderFooter,
-      onDeckCountChange,
-      singleCardView,
-      hideCampaign,
-    } = this.props;
-    return (
-      <DeckProgressComponent
-        componentId={componentId}
-        cards={cards}
-        deck={deck}
-        parsedDeck={parsedDeck}
-        editable={editable}
-        isPrivate={isPrivate}
-        campaign={campaign}
-        hideCampaign={hideCampaign}
-        showTraumaDialog={showTraumaDialog}
-        showDeckUpgrade={showDeckUpgrade}
-        showDeckHistory={showDeckHistory}
-        investigatorDataUpdates={investigatorDataUpdates}
-        xpAdjustment={xpAdjustment}
-        tabooSetId={tabooSetId}
-        renderFooter={renderFooter}
-        onDeckCountChange={onDeckCountChange}
-        singleCardView={singleCardView}
-      />
-    );
-  };
-
-  render() {
-    const sections = this.data();
-    return (
-      <SectionList
-        ListHeaderComponent={this._renderHeader}
-        ListFooterComponent={this._renderFooter}
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
-        initialNumToRender={50}
-        renderItem={this._renderCard}
-        keyExtractor={this._keyForCard}
-        stickySectionHeadersEnabled={false}
-        renderSectionHeader={this._renderSectionHeader}
-        sections={sections}
-      />
-    );
+  }, [investigatorBlock, investigatorOptions, buttons, parsedDeck, bondedCardsCount, problem, editable, deck.previous_deck]);
+  if (!deckEdits) {
+    return null;
   }
+
+  return (
+    <ScrollView contentContainerStyle={backgroundStyle}>
+      { header }
+      <View style={space.marginSideS}>
+        { map(data, deckSection => {
+          return (
+            <DeckSectionBlock
+              faction={faction}
+              title={deckSection.title}
+              onTitlePress={deckSection.onTitlePress}
+              key={deckSection.title}
+              collapsed={deckSection.collapsed}
+              toggleCollapsed={deckSection.toggleCollapsed}
+              footerButton={deckSection.sections.length === 0 && deckSection.onTitlePress ? (
+                <RoundedFooterButton onPress={deckSection.onTitlePress} title={t`Add cards`} icon="deck" />
+              ) : undefined}
+            >
+              { flatMap(deckSection.sections, section => (
+                <View key={section.id}>
+                  { renderSectionHeader(section) }
+                  { map(section.cards, (item, index) => renderCard(item, index, section)) }
+                </View>
+              )) }
+            </DeckSectionBlock>
+          );
+        })}
+        <DeckProgressComponent
+          componentId={componentId}
+          cards={cards}
+          deck={deck}
+          parsedDeck={parsedDeck}
+          editable={editable}
+          isPrivate={isPrivate}
+          campaign={campaign}
+          hideCampaign={hideCampaign}
+          showTraumaDialog={showTraumaDialog}
+          showDeckUpgrade={showDeckUpgrade}
+          showDeckHistory={showDeckHistory}
+          investigatorDataUpdates={investigatorDataUpdates}
+          tabooSetId={tabooSetId}
+          singleCardView={singleCardView}
+        />
+      </View>
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -786,13 +731,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
   },
-  problemBox: {
-    flex: 1,
-    paddingTop: xs,
-    paddingBottom: xs,
-    paddingRight: s,
-    paddingLeft: s,
-  },
   headerBlock: {
     paddingBottom: s,
     position: 'relative',
@@ -801,13 +739,5 @@ const styles = StyleSheet.create({
     paddingLeft: xs,
     marginBottom: s,
     marginRight: s,
-  },
-  toggleRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: s,
-    paddingLeft: m,
-    paddingRight: m,
   },
 });

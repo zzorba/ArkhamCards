@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import BasicButton from '@components/core/BasicButton';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { NavigationProps } from '@components/nav/types';
-import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import Card from '@data/Card';
 import { Scenario, ChallengeData } from '@data/scenario/types';
 import StyleContext from '@styles/StyleContext';
+import useSingleCard from '@components/card/useSingleCard';
 
 export interface ChallengeScenarioProps {
   scenario: Scenario;
@@ -22,60 +21,45 @@ export interface ChallengeScenarioProps {
 
 type Props = ChallengeScenarioProps & NavigationProps;
 
-export default class ChallengeScenarioView extends React.Component<Props> {
-  static contextType = CampaignGuideContext;
-  context!: CampaignGuideContextType;
-
-  _onPress = () => {
-    const { componentId, onPress, scenario } = this.props;
+export default function ChallengeScenarioView({ componentId, scenario, challenge, onPress }: Props) {
+  const { backgroundStyle } = useContext(StyleContext);
+  const handleOnPress = useCallback(() => {
     Navigation.pop(componentId);
     onPress(scenario);
-  };
+  }, [componentId, onPress, scenario]);
 
-  introText(investigator: Card) {
-    const { scenario } = this.props;
+  const introText = useCallback((investigator: Card) => {
     return t`The <i>${scenario.scenario_name}</i> challenge scenario centers around the investigator ${investigator.name}, and therefore has the following prerequisites:`;
-  }
-
-  render() {
-    const {
-      challenge,
-    } = this.props;
-    return (
-      <StyleContext.Consumer>
-        {({ backgroundStyle }) => (
-          <View style={[styles.wrapper, backgroundStyle]}>
-            <ScrollView contentContainerStyle={styles.scrollView}>
-              <SingleCardWrapper code={challenge.investigator} type="player">
-                { investigator => (
-                  <View>
-                    <SetupStepWrapper bulletType="none">
-                      <CampaignGuideTextComponent text={this.introText(investigator)} />
-                    </SetupStepWrapper>
-                    <SetupStepWrapper>
-                      <CampaignGuideTextComponent
-                        text={t`${investigator.name} must be chosen as one of the investigators when playing this scenario.`}
-                      />
-                    </SetupStepWrapper>
-                    { map(challenge.requirements, (req, idx) => (
-                      <SetupStepWrapper key={idx}>
-                        <CampaignGuideTextComponent text={req.text} />
-                      </SetupStepWrapper>
-                    )) }
-                  </View>
-                ) }
-              </SingleCardWrapper>
-              <SetupStepWrapper bulletType="none">
-                <CampaignGuideTextComponent text={t`The app does not enforce Challenge Scenario prerequisites, so please confirm that they apply manually.`} />
+  }, [scenario]);
+  const [investigator] = useSingleCard(challenge.investigator, 'player');
+  return (
+    <View style={[styles.wrapper, backgroundStyle]}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        { !!investigator && (
+          <View>
+            <SetupStepWrapper bulletType="none">
+              <CampaignGuideTextComponent text={introText(investigator)} />
+            </SetupStepWrapper>
+            <SetupStepWrapper>
+              <CampaignGuideTextComponent
+                text={t`${investigator.name} must be chosen as one of the investigators when playing this scenario.`}
+              />
+            </SetupStepWrapper>
+            { map(challenge.requirements, (req, idx) => (
+              <SetupStepWrapper key={idx}>
+                <CampaignGuideTextComponent text={req.text} />
               </SetupStepWrapper>
-
-              <BasicButton title={t`Play this scenario`} onPress={this._onPress} />
-            </ScrollView>
+            )) }
           </View>
         ) }
-      </StyleContext.Consumer>
-    );
-  }
+        <SetupStepWrapper bulletType="none">
+          <CampaignGuideTextComponent text={t`The app does not enforce Challenge Scenario prerequisites, so please confirm that they apply manually.`} />
+        </SetupStepWrapper>
+
+        <BasicButton title={t`Play this scenario`} onPress={handleOnPress} />
+      </ScrollView>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { filter, keys, map, head } from 'lodash';
 import { t } from 'ttag';
 
-import ScenarioStepContext, { ScenarioStepContextType } from './ScenarioStepContext';
+import ScenarioStepContext from './ScenarioStepContext';
 import ChooseInvestigatorPrompt from './prompts/ChooseInvestigatorPrompt';
 import { InvestigatorSelector } from '@data/scenario/types';
-import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import Card from '@data/Card';
+import ScenarioGuideContext from './ScenarioGuideContext';
+
+function getInvestigatorChoices(
+  investigator: InvestigatorSelector,
+  investigators: Card[],
+  campaignLog: GuidedCampaignLog
+): string[] | undefined {
+  switch (investigator) {
+    case 'lead_investigator':
+      return [campaignLog.leadInvestigatorChoice()];
+    case 'any_resigned': {
+      const allStatus = campaignLog.investigatorResolutionStatus();
+      return map(
+        filter(investigators, card => {
+          return allStatus[card.code] === 'resigned';
+        }),
+        card => card.code
+      );
+    }
+    default:
+      return undefined;
+  }
+}
 
 interface Props<T> {
   id: string;
@@ -20,19 +42,26 @@ interface Props<T> {
   extraArg: T;
 }
 
-export default class InvestigatorSelectorWrapper<T = undefined> extends React.Component<Props<T>> {
-  investigators(
-    investigators: Card[],
-    campaignLog: GuidedCampaignLog,
-    choice?: string
-  ): Card[] {
-    const { investigator, input, optional, fixedInvestigator } = this.props;
+export default function InvestigatorSelectorWrapper<T = undefined>({
+  id,
+  investigator,
+  optional,
+  description,
+  input,
+  fixedInvestigator,
+  render,
+  extraArg,
+}: Props<T>) {
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const { campaignLog } = useContext(ScenarioStepContext);
+  const scenarioInvestigators = useMemo(() => campaignLog.investigators(false), [campaignLog]);
+  const investigators = useCallback((choice?: string): Card[] => {
     switch (investigator) {
       case 'lead_investigator': {
         const leadInvestigator = campaignLog.leadInvestigatorChoice();
         if (!optional) {
           return filter(
-            investigators,
+            scenarioInvestigators,
             investigator => investigator.code === leadInvestigator
           );
         }
@@ -40,12 +69,12 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
           return [];
         }
         return filter(
-          investigators,
+          scenarioInvestigators,
           investigator => investigator.code === choice
         );
       }
       case 'all':
-        return investigators;
+        return scenarioInvestigators;
       case 'any':
       case 'choice':
       case 'any_resigned':
@@ -53,13 +82,13 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
           return [];
         }
         return filter(
-          investigators,
+          scenarioInvestigators,
           investigator => investigator.code === choice
         );
       case 'defeated':
       case 'not_resigned': {
         const allStatus = campaignLog.investigatorResolutionStatus();
-        return filter(investigators, card => {
+        return filter(scenarioInvestigators, card => {
           const status = allStatus[card.code];
           switch (investigator) {
             case 'defeated':
@@ -72,7 +101,7 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
       case '$input_value': {
         const codes = new Set(input || []);
         return filter(
-          investigators,
+          scenarioInvestigators,
           investigator => codes.has(investigator.code)
         );
       }
@@ -81,86 +110,40 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
           return [];
         }
         return filter(
-          investigators,
+          scenarioInvestigators,
           investigator => investigator.code === fixedInvestigator
         );
       }
     }
-  }
+  }, [investigator, input, optional, fixedInvestigator, scenarioInvestigators, campaignLog]);
 
-  getInvestigatorChoices(
-    investigator: InvestigatorSelector,
-    investigators: Card[],
-    campaignLog: GuidedCampaignLog
-  ): string[] | undefined {
-    switch (investigator) {
-      case 'lead_investigator':
-        return [campaignLog.leadInvestigatorChoice()];
-      case 'any_resigned': {
-        const allStatus = campaignLog.investigatorResolutionStatus();
-        return map(
-          filter(investigators, card => {
-            return allStatus[card.code] === 'resigned';
-          }),
-          card => card.code
-        );
-      }
-      default:
-        return undefined;
-    }
-  }
 
-  renderContent(
-    scenarioState: ScenarioStateHelper,
-    campaignLog: GuidedCampaignLog,
-    scenarioInvestigators: Card[]
-  ) {
-    const {
-      id,
-      render,
-      investigator,
-      description,
-      extraArg,
-      optional,
-    } = this.props;
-    const choice = scenarioState.stringChoices(`${id}_investigator`);
-    if (choice === undefined && (
-      investigator === 'choice' ||
-      investigator === 'any' ||
-      investigator === 'any_resigned' ||
-      (investigator === 'lead_investigator' && optional)
-    )) {
-      return (
-        <ChooseInvestigatorPrompt
-          id={`${id}_investigator`}
-          title={t`Choose Investigator`}
-          choiceId="chosen_investigator"
-          description={description}
-          investigators={this.getInvestigatorChoices(
-            investigator,
-            scenarioInvestigators,
-            campaignLog
-          )}
-          defaultLabel={t`No one`}
-          required={investigator === 'any' || investigator === 'any_resigned'}
-        />
-      );
-    }
-    const investigators = this.investigators(
-      scenarioInvestigators,
-      campaignLog,
-      head(keys(choice))
-    );
-    return render(investigators, extraArg);
-  }
-
-  render() {
+  const choice = scenarioState.stringChoices(`${id}_investigator`);
+  if (choice === undefined && (
+    investigator === 'choice' ||
+    investigator === 'any' ||
+    investigator === 'any_resigned' ||
+    (investigator === 'lead_investigator' && optional)
+  )) {
     return (
-      <ScenarioStepContext.Consumer>
-        { ({ scenarioState, campaignLog }: ScenarioStepContextType) => {
-          return this.renderContent(scenarioState, campaignLog, campaignLog.investigators(false));
-        } }
-      </ScenarioStepContext.Consumer>
+      <ChooseInvestigatorPrompt
+        id={`${id}_investigator`}
+        title={t`Choose Investigator`}
+        choiceId="chosen_investigator"
+        description={description}
+        investigators={getInvestigatorChoices(
+          investigator,
+          scenarioInvestigators,
+          campaignLog
+        )}
+        defaultLabel={t`No one`}
+        required={investigator === 'any' || investigator === 'any_resigned'}
+      />
     );
   }
+  return (
+    <>
+      { render(investigators(head(keys(choice))), extraArg) }
+    </>
+  );
 }

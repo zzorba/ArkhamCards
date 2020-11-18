@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Navigation } from 'react-native-navigation';
 
 import MyDecksComponent from '@components/decklist/MyDecksComponent';
@@ -16,36 +16,29 @@ interface Props {
   filterInvestigators: string[];
 }
 
-export default class DeckSelectorTab extends React.Component<Props> {
-  _deckSelected = (deck: Deck) => {
-    const {
-      onDeckSelect,
-      componentId,
-    } = this.props;
+export default function DeckSelectorTab({
+  componentId,
+  searchOptions,
+  filterInvestigators,
+  filterDeckIds,
+  onlyDeckIds,
+  onlyInvestigators,
+  onDeckSelect,
+}: Props) {
+  const deckSelected = useCallback((deck: Deck) => {
     onDeckSelect(deck);
     Navigation.dismissModal(componentId);
-  }
+  }, [onDeckSelect, componentId]);
 
-  render() {
-    const {
-      componentId,
-      searchOptions,
-      filterInvestigators,
-      filterDeckIds,
-      onlyDeckIds,
-      onlyInvestigators,
-    } = this.props;
-
-    return (
-      <MyDecksComponent
-        componentId={componentId}
-        searchOptions={searchOptions}
-        deckClicked={this._deckSelected}
-        onlyDeckIds={onlyDeckIds}
-        onlyInvestigators={onlyInvestigators}
-        filterDeckIds={filterDeckIds}
-        filterInvestigators={filterInvestigators}
-      />
-    );
-  }
+  return (
+    <MyDecksComponent
+      componentId={componentId}
+      searchOptions={searchOptions}
+      deckClicked={deckSelected}
+      onlyDeckIds={onlyDeckIds}
+      onlyInvestigators={onlyInvestigators}
+      filterDeckIds={filterDeckIds}
+      filterInvestigators={filterInvestigators}
+    />
+  );
 }

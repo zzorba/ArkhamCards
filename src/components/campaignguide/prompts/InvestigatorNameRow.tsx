@@ -14,7 +14,7 @@ export default function InvestigatorNameRow({
   investigator,
   detail,
 }: Props) {
-  const { gameFont, colors, borderStyle, typography } = useContext(StyleContext);
+  const { colors, borderStyle, typography } = useContext(StyleContext);
   const backgroundColor = colors.faction[investigator.factionCode()].background;
   return (
     <View style={[
@@ -27,7 +27,6 @@ export default function InvestigatorNameRow({
       <View>
         <Text style={[
           typography.mediumGameFont,
-          { fontFamily: gameFont },
           styles.investigatorText,
         ]}>
           { investigator.name }

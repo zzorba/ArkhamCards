@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { last } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
@@ -9,7 +9,7 @@ import Difficulty from './Difficulty';
 import GameHeader from './GameHeader';
 import BackgroundIcon from './BackgroundIcon';
 import space from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   campaign: Campaign;
@@ -17,46 +17,32 @@ interface Props {
   hideScenario?: boolean;
 }
 
-export default class CampaignSummaryComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  latestScenario() {
-    return last(this.props.campaign.scenarioResults);
-  }
-
-  renderCampaign() {
-    const {
-      campaign,
-      name,
-    } = this.props;
-    const { gameFont, typography } = this.context;
+export default function CampaignSummaryComponent({ campaign, name, hideScenario }: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const latestScenario = useMemo(() => last(campaign.scenarioResults), [campaign.scenarioResults]);
+  const campaignSection = useMemo(() => {
     const text = campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode];
     return (
       <>
         <GameHeader text={text} />
         { !!name && (
-          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.gameFont}>
             { name }
           </Text>
         ) }
       </>
     );
-  }
-
-  renderLastScenario() {
-    const { hideScenario, campaign } = this.props;
-    const { gameFont, typography } = this.context;
+  }, [campaign, name, typography]);
+  const lastScenarioSection = useMemo(() => {
     if (hideScenario) {
       return null;
     }
-    const latestScenario = this.latestScenario();
     if (latestScenario && latestScenario.scenario) {
       const resolution = latestScenario.resolution && !campaign.guided ?
         `: ${latestScenario.resolution}` : '';
       return (
         <View style={space.marginTopXs}>
-          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.gameFont}>
             { `${latestScenario.scenario}${resolution}` }
           </Text>
         </View>
@@ -64,17 +50,14 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     }
     return (
       <View style={space.marginTopXs}>
-        <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+        <Text style={typography.gameFont}>
           { t`Not yet started` }
         </Text>
       </View>
     );
-  }
+  }, [hideScenario, campaign, typography, latestScenario]);
 
-  renderDifficulty() {
-    const {
-      campaign,
-    } = this.props;
+  const difficultySection = useMemo(() => {
     if (!campaign.difficulty) {
       return null;
     }
@@ -83,31 +66,25 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
         <Difficulty difficulty={campaign.difficulty} />
       </View>
     );
-  }
+  }, [campaign]);
 
-  render() {
-    const {
-      campaign,
-    } = this.props;
-    const { colors } = this.context;
-    return (
-      <View style={styles.row}>
-        { campaign.cycleCode !== CUSTOM && (
-          <BackgroundIcon
-            code={campaign.cycleCode}
-            color={campaignColor(campaign.cycleCode, colors)}
-          />
-        ) }
-        <View>
-          { this.renderCampaign() }
-          <View style={styles.textRow}>
-            { this.renderDifficulty() }
-            { this.renderLastScenario() }
-          </View>
+  return (
+    <View style={styles.row}>
+      { campaign.cycleCode !== CUSTOM && (
+        <BackgroundIcon
+          code={campaign.cycleCode}
+          color={campaignColor(campaign.cycleCode, colors)}
+        />
+      ) }
+      <View>
+        { campaignSection }
+        <View style={styles.textRow}>
+          { difficultySection }
+          { lastScenarioSection }
         </View>
       </View>
-    );
-  }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

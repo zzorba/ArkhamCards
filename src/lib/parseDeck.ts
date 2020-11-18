@@ -115,7 +115,7 @@ export function isSpecialCard(card?: Card): boolean {
       card.permanent ||
       card.subtype_code === 'weakness' ||
       card.subtype_code === 'basicweakness' ||
-      card.spoiler ||
+      card.mythos_card ||
       card.has_restrictions
     )
   );
@@ -369,7 +369,7 @@ function getDeckChanges(
     ),
     addedCard => {
       if (addedCard.myriad) {
-        const myriadKey = `${addedCard.real_text}_${addedCard.xp}`;
+        const myriadKey = `${addedCard.real_name}_${addedCard.xp}`;
         if (myriadBuys[myriadKey]) {
           // Already paid for a myriad of this level
           // So this one is free.
@@ -578,7 +578,7 @@ export function parseDeck(
       return {
         id,
         quantity: slots[id],
-        invalid: !validation.canIncludeCard(card, false),
+        invalid: !validation.canIncludeCard(card, false) || (card.deck_limit !== undefined && slots[id] > card.deck_limit),
         limited: validation.isCardLimited(card),
       };
     });

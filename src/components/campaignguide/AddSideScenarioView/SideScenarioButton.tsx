@@ -7,9 +7,9 @@ import EncounterIcon from '@icons/EncounterIcon';
 import NavButton from '@components/core/NavButton';
 import { ChallengeData, Scenario } from '@data/scenario/types';
 import space, { s, m } from '@styles/space';
-import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import { ChallengeScenarioProps } from '@components/campaignguide/ChallengeScenarioView';
 import StyleContext from '@styles/StyleContext';
+import useSingleCard from '@components/card/useSingleCard';
 
 interface Props {
   componentId: string;
@@ -19,21 +19,21 @@ interface Props {
 
 function ChallengeBlock({ scenario, challenge }: { scenario: Scenario; challenge: ChallengeData }) {
   const { typography } = useContext(StyleContext);
+  const [investigator] = useSingleCard(challenge.investigator, 'player');
+  if (!investigator) {
+    return null;
+  }
   const xpCost = scenario.xp_cost || 0;
   const challengeCost = xpCost + challenge.xp_cost;
   return (
-    <SingleCardWrapper code={challenge.investigator} type="player">
-      { investigator => (
-        <View style={styles.flex}>
-          <Text style={[typography.small, space.paddingTopS]}>
-            { t`${investigator.name} Challenge Scenario` }
-          </Text>
-          <Text style={[typography.small, typography.light, space.paddingTopS]}>
-            { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
-          </Text>
-        </View>
-      ) }
-    </SingleCardWrapper>
+    <View style={styles.flex}>
+      <Text style={[typography.small, space.paddingTopS]}>
+        { t`${investigator.name} Challenge Scenario` }
+      </Text>
+      <Text style={[typography.small, typography.light, space.paddingTopS]}>
+        { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
+      </Text>
+    </View>
   );
 }
 export default function SideScenarioButton({ scenario, onPress, componentId }: Props) {

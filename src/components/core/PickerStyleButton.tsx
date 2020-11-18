@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import space, { s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   title: string;
@@ -23,12 +21,19 @@ interface Props {
   settingsStyle?: boolean;
 }
 
-export default class PickerStyleButton extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  renderWidget() {
-    const { widget, colors } = this.props;
+export default function PickerStyleButton({
+  title,
+  value,
+  id,
+  onPress,
+  disabled,
+  colors: pickerColors,
+  widget,
+  noBorder,
+  settingsStyle,
+}: Props) {
+  const { borderStyle, typography, colors } = useContext(StyleContext);
+  const widgetIcon = useMemo(() => {
     switch (widget) {
       case 'shuffle':
         return (
@@ -36,7 +41,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialCommunityIcons
               name="shuffle-variant"
               size={24}
-              color={colors ? colors.textColor : this.context.colors.darkText}
+              color={pickerColors ? pickerColors.textColor : colors.darkText}
             />
           </View>
         );
@@ -45,7 +50,7 @@ export default class PickerStyleButton extends React.Component<Props> {
           <MaterialIcons
             name="keyboard-arrow-right"
             size={30}
-            color={colors ? colors.textColor : this.context.colors.darkText}
+            color={pickerColors ? pickerColors.textColor : colors.darkText}
           />
         );
       case 'delete':
@@ -54,31 +59,22 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialIcons
               name="delete"
               size={26}
-              color={colors ? colors.textColor : this.context.colors.darkText}
+              color={pickerColors ? pickerColors.textColor : colors.darkText}
             />
           </View>
         );
       default:
         return null;
     }
-  }
-  renderContent() {
-    const {
-      colors,
-      disabled,
-      title,
-      value,
-      noBorder,
-      settingsStyle,
-      widget,
-    } = this.props;
-    const { gameFont, borderStyle, typography } = this.context;
+  }, [widget, colors, pickerColors]);
+
+  const content = useMemo(() => {
     return (
       <View style={[
         style.defaultContainerStyle,
         borderStyle,
         {
-          backgroundColor: colors ? colors.backgroundColor : 'transparent',
+          backgroundColor: pickerColors ? pickerColors.backgroundColor : 'transparent',
           borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
         },
       ]}>
@@ -96,10 +92,9 @@ export default class PickerStyleButton extends React.Component<Props> {
               settingsStyle ? typography.text :
                 {
                   ...typography.mediumGameFont,
-                  fontFamily: gameFont,
                   fontWeight: '600',
                 },
-              { color: colors ? colors.textColor : this.context.colors.darkText },
+              { color: pickerColors ? pickerColors.textColor : colors.darkText },
             ]}
           >
             { title }
@@ -112,7 +107,7 @@ export default class PickerStyleButton extends React.Component<Props> {
                 style.defaultValueStyle,
                 typography.large,
                 {
-                  color: colors ? colors.textColor : this.context.colors.darkText,
+                  color: pickerColors ? pickerColors.textColor : colors.darkText,
                   fontWeight: '400',
                   flex: 4,
                   textAlign: 'right',
@@ -122,28 +117,24 @@ export default class PickerStyleButton extends React.Component<Props> {
               { value }
             </Text>
           ) }
-          { !disabled && this.renderWidget() }
+          { !disabled && widgetIcon }
         </View>
       </View>
     );
-  }
+  }, [colors, pickerColors, disabled, borderStyle, typography, title, value, noBorder, settingsStyle, widget, widgetIcon]);
 
-  _onPress = () => {
-    const { onPress, id } = this.props;
+  const handleOnPress = useCallback(() => {
     onPress(id);
-  };
+  }, [onPress, id]);
 
-  render() {
-    const { disabled } = this.props;
-    if (disabled) {
-      return this.renderContent();
-    }
-    return (
-      <TouchableOpacity onPress={this._onPress}>
-        { this.renderContent() }
-      </TouchableOpacity>
-    );
+  if (disabled) {
+    return content;
   }
+  return (
+    <TouchableOpacity onPress={handleOnPress}>
+      { content }
+    </TouchableOpacity>
+  );
 }
 
 const style = StyleSheet.create({

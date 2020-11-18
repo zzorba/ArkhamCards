@@ -14,20 +14,17 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-export default class MathConditionComponent extends React.Component<Props> {
-  render(): React.ReactNode {
-    const { step, condition, campaignLog } = this.props;
-    if (condition.operation !== 'equals' || !step.text) {
-      // Always spell these out;
-      return null;
-    }
-    const result = mathEqualsConditionResult(condition, campaignLog);
-    return (
-      <BinaryResult
-        bulletType={step.bullet_type}
-        prompt={step.text}
-        result={result.decision}
-      />
-    );
+export default function MathConditionComponent({ step, condition, campaignLog }: Props) {
+  if (condition.operation !== 'equals' || !step.text) {
+    // Always spell these out;
+    return null;
   }
+  const result = mathEqualsConditionResult(condition, campaignLog);
+  return (
+    <BinaryResult
+      bulletType={step.bullet_type}
+      prompt={step.text}
+      result={result.decision}
+    />
+  );
 }

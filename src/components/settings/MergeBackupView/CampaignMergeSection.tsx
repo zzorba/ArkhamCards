@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { map, sumBy } from 'lodash';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import CampaignMergeItem from './CampaignMergeItem';
 import { Campaign } from '@actions/types';
 import space from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useFlag } from '@components/core/hooks';
 
 interface Props {
   title: string;
@@ -21,16 +21,10 @@ interface Props {
 interface State {
   open: boolean;
 }
-export default class CampaignMergeSection extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  state: State = {
-    open: false,
-  };
-
-  renderItems() {
-    const { campaigns, inverted, onValueChange, values } = this.props;
+export default function CampaignMergeSection({ title, campaigns, values, inverted, onValueChange }: Props) {
+  const { colors, borderStyle, typography } = useContext(StyleContext);
+  const [open, toggleOpen] = useFlag(false);
+  const itemsSection = useMemo(() => {
     return (
       <>
         { map(campaigns, campaign => (
@@ -44,18 +38,9 @@ export default class CampaignMergeSection extends React.Component<Props, State> 
         )) }
       </>
     );
-  }
+  }, [campaigns, inverted, onValueChange, values]);
 
-  _toggleOpen = () => {
-    this.setState({
-      open: !this.state.open,
-    });
-  };
-
-  renderHeader() {
-    const { title, campaigns, inverted, values } = this.props;
-    const { open } = this.state;
-    const { colors, borderStyle, typography } = this.context;
+  const headerSection = useMemo(() => {
     const selected = sumBy(campaigns, campaign => {
       if (inverted) {
         return values[campaign.id] ? 0 : 1;
@@ -78,33 +63,29 @@ export default class CampaignMergeSection extends React.Component<Props, State> 
         ) }
       </View>
     );
-  }
+  }, [title, campaigns, inverted, values, open, colors, borderStyle, typography]);
 
-  render() {
-    const { campaigns, inverted } = this.props;
-    const { open } = this.state;
-    if (!campaigns.length) {
-      return null;
-    }
-    if (!inverted) {
-      return (
-        <>
-          <TouchableOpacity onPress={this._toggleOpen}>
-            { this.renderHeader() }
-          </TouchableOpacity>
-          <Collapsible collapsed={!open}>
-            { this.renderItems() }
-          </Collapsible>
-        </>
-      );
-    }
+  if (!campaigns.length) {
+    return null;
+  }
+  if (!inverted) {
     return (
       <>
-        { this.renderHeader() }
-        { this.renderItems() }
+        <TouchableOpacity onPress={toggleOpen}>
+          { headerSection }
+        </TouchableOpacity>
+        <Collapsible collapsed={!open}>
+          { itemsSection }
+        </Collapsible>
       </>
     );
   }
+  return (
+    <>
+      { headerSection }
+      { itemsSection }
+    </>
+  );
 }
 
 const styles = StyleSheet.create({

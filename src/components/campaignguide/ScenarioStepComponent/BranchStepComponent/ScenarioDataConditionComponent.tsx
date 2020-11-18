@@ -15,29 +15,26 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-export default class ScenarioDataConditionComponent extends React.Component<Props> {
-  render(): React.ReactNode {
-    const { step, condition, campaignLog } = this.props;
-    switch (condition.scenario_data) {
-      case 'player_count': {
-        const playerCount = campaignLog.playerCount();
-        return (
-          <SetupStepWrapper bulletType={step.bullet_type}>
-            <CampaignGuideTextComponent
-              text={step.text ||
-                ngettext(msgid`Because there is ${playerCount} player in the game:`,
-                  `Because there are ${playerCount} players in the game:`,
-                  playerCount)
-              }
-            />
-          </SetupStepWrapper>
-        );
-      }
-      case 'investigator_status':
-      case 'resolution': {
-        // Only used for control flow right now.
-        return null;
-      }
+export default function ScenarioDataConditionComponent({ step, condition, campaignLog }: Props) {
+  switch (condition.scenario_data) {
+    case 'player_count': {
+      const playerCount = campaignLog.playerCount();
+      return (
+        <SetupStepWrapper bulletType={step.bullet_type}>
+          <CampaignGuideTextComponent
+            text={step.text ||
+              ngettext(msgid`Because there is ${playerCount} player in the game:`,
+                `Because there are ${playerCount} players in the game:`,
+                playerCount)
+            }
+          />
+        </SetupStepWrapper>
+      );
+    }
+    case 'investigator_status':
+    case 'resolution': {
+      // Only used for control flow right now.
+      return null;
     }
   }
 }

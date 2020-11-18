@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Navigation } from 'react-native-navigation';
 
 import { SortType } from '@actions/types';
@@ -17,33 +17,26 @@ interface Props {
   filterInvestigators: string[];
 }
 
-export default class InvestigatorSelectorTab extends React.Component<Props> {
-  _investigatorSelected = (card: Card) => {
-    const {
-      onInvestigatorSelect,
-      componentId,
-    } = this.props;
+export default function InvestigatorSelectorTab({
+  componentId,
+  searchOptions,
+  filterInvestigators,
+  sort,
+  onInvestigatorSelect,
+}: Props) {
+  const investigatorSelected = useCallback((card: Card) => {
     onInvestigatorSelect(card);
     Navigation.dismissModal(componentId);
-  };
+  }, [onInvestigatorSelect, componentId]);
 
-  render() {
-    const {
-      componentId,
-      searchOptions,
-      filterInvestigators,
-      sort,
-    } = this.props;
-
-    return (
-      <InvestigatorsListComponent
-        componentId={componentId}
-        hideDeckbuildingRules
-        sort={sort}
-        searchOptions={searchOptions}
-        onPress={this._investigatorSelected}
-        filterInvestigators={filterInvestigators}
-      />
-    );
-  }
+  return (
+    <InvestigatorsListComponent
+      componentId={componentId}
+      hideDeckbuildingRules
+      sort={sort}
+      searchOptions={searchOptions}
+      onPress={investigatorSelected}
+      filterInvestigators={filterInvestigators}
+    />
+  );
 }

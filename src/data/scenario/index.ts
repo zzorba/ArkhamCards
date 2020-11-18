@@ -47,6 +47,8 @@ export interface LatestDecks {
 export interface DisplayChoice {
   border?: boolean;
   text?: string;
+  masculine_text?: string;
+  feminine_text?: string;
   description?: string;
   steps?: string[] | null;
   effects?: Effect[] | null;
@@ -93,7 +95,13 @@ function load(lang: string): {
         encounterSets: require('../../../assets/encounterSets_ru.json'),
         errata: require('../../../assets/campaignErrata_ru.json'),
       };
-
+    case 'fr':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_fr.json'),
+        allCampaigns: require('../../../assets/allCampaigns_fr.json'),
+        encounterSets: require('../../../assets/encounterSets_fr.json'),
+        errata: require('../../../assets/campaignErrata_fr.json'),
+      };
     case 'de':
       return {
         allLogEntries: require('../../../assets/campaignLogs_de.json'),

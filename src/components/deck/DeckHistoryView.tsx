@@ -1,49 +1,37 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { map } from 'lodash';
 import { ScrollView } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import DeckProgressComponent from './DeckProgressComponent';
 import { DeckDetailProps } from './DeckDetailView';
 import { getDeckOptions } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import { Deck, DeckMeta, DecksMap, ParsedDeck, Slots } from '@actions/types';
-import { AppState, getAllDecks } from '@reducers';
+import { Deck, ParsedDeck } from '@actions/types';
+import { getAllDecks } from '@reducers';
 import { parseDeck } from '@lib/parseDeck';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useSimpleDeckEdits, usePlayerCards } from '@components/core/hooks';
+import space from '@styles/space';
 
 export interface DeckHistoryProps {
   id: number;
-  meta: DeckMeta;
-  slots: Slots;
-  ignoreDeckLimitSlots: Slots;
-  xpAdjustment: number;
 }
 
-interface ReduxProps {
-  decks: DecksMap;
-}
-
-type Props = NavigationProps & DimensionsProps & DeckHistoryProps & PlayerCardProps & ReduxProps;
-
-class DeckHistoryView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  historicDecks(): ParsedDeck [] {
-    const {
-      id,
-      decks,
-      cards,
-      slots,
-      ignoreDeckLimitSlots,
-      xpAdjustment,
-      meta,
-    } = this.props;
+export default function DeckHistoryView({
+  componentId,
+  id,
+}: DeckHistoryProps & NavigationProps) {
+  const deckEdits = useSimpleDeckEdits(id);
+  const { backgroundStyle, colors } = useContext(StyleContext);
+  const cards = usePlayerCards();
+  const decks = useSelector(getAllDecks);
+  const historicDecks = useMemo(() => {
+    if (!cards) {
+      return [];
+    }
     const decksResult: ParsedDeck[] = [];
     let deck: Deck | undefined = decks[id];
     while (deck) {
@@ -51,14 +39,15 @@ class DeckHistoryView extends React.Component<Props> {
       const previousDeck: Deck | undefined = (
         deck.previous_deck ? decks[deck.previous_deck] : undefined
       );
+      const currentXpAdjustment = currentDeck ? deckEdits?.xpAdjustment : undefined;
       const parsedDeck = parseDeck(
         deck,
-        currentDeck ? meta : (deck.meta || {}),
-        currentDeck ? slots : deck.slots,
-        currentDeck ? ignoreDeckLimitSlots : deck.ignoreDeckLimitSlots,
+        (currentDeck && deckEdits?.meta) || (deck.meta || {}),
+        (currentDeck && deckEdits?.slots) || deck.slots,
+        (currentDeck && deckEdits?.ignoreDeckLimitSlots) || deck.ignoreDeckLimitSlots,
         cards,
         previousDeck,
-        currentDeck ? xpAdjustment : (deck.xp_adjustment || 0),
+        currentXpAdjustment !== undefined ? currentXpAdjustment : (deck.xp_adjustment || 0),
       );
       if (parsedDeck) {
         decksResult.push(parsedDeck);
@@ -66,13 +55,13 @@ class DeckHistoryView extends React.Component<Props> {
       deck = previousDeck;
     }
     return decksResult;
-  }
+  }, [id, decks, cards, deckEdits]);
 
-  deckTitle(deck: ParsedDeck, versionNumber: number): string {
+  const deckTitle = useCallback((deck: ParsedDeck, versionNumber: number): string => {
     if (!deck.changes) {
       return t`Original Deck`;
     }
-    if (deck.deck.id === this.props.id) {
+    if (deck.deck.id === id) {
       if (deck.changes) {
         return t`Latest Deck: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
       }
@@ -83,12 +72,9 @@ class DeckHistoryView extends React.Component<Props> {
       return t`Upgrade ${humanVersionNumber}: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
     }
     return t`Upgrade ${humanVersionNumber}: ${deck.availableExperience} XP`;
-  }
+  }, [id]);
 
-  _onDeckPress = (parsedDeck: ParsedDeck) => {
-    const {
-      componentId,
-    } = this.props;
+  const onDeckPress = useCallback((parsedDeck: ParsedDeck) => {
     Navigation.push<DeckDetailProps>(componentId, {
       component: {
         name: 'Deck',
@@ -96,48 +82,28 @@ class DeckHistoryView extends React.Component<Props> {
           id: parsedDeck.deck.id,
           isPrivate: true,
         },
-        options: getDeckOptions(this.context.colors, { title: parsedDeck.deck.name }, parsedDeck.investigator),
+        options: getDeckOptions(colors, { title: parsedDeck.deck.name }, parsedDeck.investigator),
       },
     });
-  };
-
-  render() {
-    const { componentId, cards } = this.props;
-    const decks = this.historicDecks();
-    const { backgroundStyle } = this.context;
-    return (
-      <ScrollView contentContainerStyle={backgroundStyle}>
-        { map(decks, (deck, idx) => (
-          <DeckProgressComponent
-            key={deck.deck.id}
-            title={this.deckTitle(deck, decks.length - idx)}
-            onTitlePress={this._onDeckPress}
-            componentId={componentId}
-            deck={deck.deck}
-            parsedDeck={deck}
-            cards={cards}
-            editable={false}
-            xpAdjustment={0}
-            isPrivate
-          />
-        )) }
-      </ScrollView>
-    );
+  }, [componentId, colors]);
+  if (!cards) {
+    return null;
   }
+  return (
+    <ScrollView contentContainerStyle={[backgroundStyle, space.paddingSideS]}>
+      { map(historicDecks, (deck, idx) => (
+        <DeckProgressComponent
+          key={deck.deck.id}
+          title={deckTitle(deck, historicDecks.length - idx)}
+          onTitlePress={idx === 0 ? undefined : onDeckPress}
+          componentId={componentId}
+          deck={deck.deck}
+          parsedDeck={deck}
+          cards={cards}
+          editable={false}
+          isPrivate
+        />
+      )) }
+    </ScrollView>
+  );
 }
-
-
-function mapStateToProps(state: AppState): ReduxProps {
-  const decks = getAllDecks(state);
-  return {
-    decks,
-  };
-}
-
-export default connect<ReduxProps, null, NavigationProps & DeckHistoryProps, AppState>(
-  mapStateToProps
-)(
-  withPlayerCards<ReduxProps & NavigationProps & DeckHistoryProps>(
-    withDimensions(DeckHistoryView)
-  )
-);

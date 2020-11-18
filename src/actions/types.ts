@@ -510,6 +510,54 @@ export const CLEAR_DECKS = 'CLEAR_DECKS';
 export interface ClearDecksAction {
   type: typeof CLEAR_DECKS;
 }
+
+export interface EditDeckState {
+  nameChange?: string;
+  tabooSetChange?: number;
+  xpAdjustment: number;
+  slots: Slots;
+  ignoreDeckLimitSlots: Slots;
+  meta: DeckMeta;
+}
+export const START_DECK_EDIT = 'START_DECK_EDIT';
+export interface StartDeckEditAction {
+  type: typeof START_DECK_EDIT;
+  id: number;
+}
+
+export const UPDATE_DECK_EDIT = 'UPDATE_DECK_EDIT';
+export interface UpdateDeckEditAction {
+  type: typeof UPDATE_DECK_EDIT;
+  id: number;
+  updates: Partial<EditDeckState>;
+}
+
+export const UPDATE_DECK_EDIT_COUNTS = 'UPDATE_DECK_EDIT_COUNTS';
+
+interface UpdateDeckEditCountsSetAction {
+  type: typeof UPDATE_DECK_EDIT_COUNTS;
+  id: number;
+  code: string;
+  operation: 'set';
+  value: number;
+  countType: 'slots' | 'ignoreDeckLimitSlots' | 'xpAdjustment';
+}
+interface UpdateDeckEditCountsAdjustAction {
+  type: typeof UPDATE_DECK_EDIT_COUNTS;
+  id: number;
+  code: string;
+  operation: 'inc' | 'dec';
+  limit?: number;
+  countType: 'slots' | 'ignoreDeckLimitSlots' | 'xpAdjustment';
+}
+export type UpdateDeckEditCountsAction = UpdateDeckEditCountsSetAction | UpdateDeckEditCountsAdjustAction;
+
+export const FINISH_DECK_EDIT = 'FINISH_DECK_EDIT';
+export interface FinishDeckEditAction {
+  type: typeof FINISH_DECK_EDIT;
+  id: number;
+}
+
 export const SET_MY_DECKS = 'SET_MY_DECKS';
 export interface SetMyDecksAction {
   type: typeof SET_MY_DECKS;
@@ -963,7 +1011,11 @@ export type DecksActions =
   UpdateDeckAction |
   ClearDecksAction |
   ReplaceLocalDeckAction |
-  EnsureUuidAction;
+  EnsureUuidAction |
+  StartDeckEditAction |
+  UpdateDeckEditAction |
+  FinishDeckEditAction |
+  UpdateDeckEditCountsAction;
 
 export type CampaignActions =
   LogoutAction |

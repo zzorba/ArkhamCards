@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { Linking } from 'react-native';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -19,7 +19,7 @@ export default function DownloadParallelCardsButton() {
     Linking.openURL(languageUrl ||
       'https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/'
     );
-  }, []);
+  }, [lang]);
   return (
     <BasicButton
       onPress={onPress}

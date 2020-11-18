@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { map } from 'lodash';
 import { ScrollView, View } from 'react-native';
-import { Table, Row, Cell} from 'react-native-table-component';
+import { Table, Row, Cell } from 'react-native-table-component';
 
 import Rule, { RuleTableRow } from '@data/Rule';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -12,7 +12,7 @@ import { s, m } from '@styles/space';
 import { NavigationProps } from '@components/nav/types';
 import DatabaseContext from '@data/DatabaseContext';
 import { useSelector } from 'react-redux';
-import { getTabooSet } from '@reducers';
+import { AppState, getTabooSet } from '@reducers';
 
 export interface RuleViewProps {
   rule: Rule
@@ -44,12 +44,11 @@ function RuleTable({ table }: { table: RuleTableRow[] }) {
 
 function RuleComponent({ componentId, rule, level, noTitle }: { componentId: string; rule: Rule; level: number; noTitle?: boolean }) {
   const { db } = useContext(DatabaseContext);
-  const tabooSetId = useSelector(getTabooSet);
+  const tabooSetId = useSelector((state: AppState) => getTabooSet(state, undefined));
   const linkPressed = useCallback(
     (url: string, context: StyleContextType) => {
       openUrl(url, context, db, componentId, tabooSetId);
-    }, []
-  );
+    }, [componentId, db, tabooSetId]);
 
   return (
     <>
@@ -70,5 +69,5 @@ export default function RuleView({ componentId, rule }: Props) {
     <ScrollView contentContainerStyle={backgroundStyle}>
       <RuleComponent componentId={componentId} rule={rule} level={0} noTitle />
     </ScrollView>
-  )
+  );
 }

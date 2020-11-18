@@ -2,13 +2,14 @@ import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'type
 import { forEach, filter, keys, map, min } from 'lodash';
 import { t } from 'ttag';
 
-import { TraumaAndCardData } from '@actions/types';
+import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
 import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
+import { QuerySort } from './types';
 
 const SERPENTS_OF_YIG = '04014';
-const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
+const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror');
@@ -47,18 +48,92 @@ const FEMININE_INVESTIGATORS = new Set([
   '07001', // Sister Mary
   '07002', // Amanda Sharpe
   '07003', // Trish
+  '05046', // Gavriella Mizrah
+  '05049', // Penny White
 ]);
+
+const HEADER_SELECT = {
+  [SORT_BY_FACTION]: 'c.sort_by_faction as headerId, c.sort_by_faction_header as headerTitle',
+  [SORT_BY_FACTION_PACK]: 'c.sort_by_faction_pack as headerId, c.sort_by_faction_pack_header as headerTitle',
+  [SORT_BY_COST]: 'c.cost as headerId, c.sort_by_cost_header as headerTitle',
+  [SORT_BY_PACK]: 'c.sort_by_pack as headerId, c.pack_name as headerTitle',
+  [SORT_BY_ENCOUNTER_SET]: 'c.encounter_code as headerId, c.sort_by_encounter_set_header as headerTitle',
+  [SORT_BY_TITLE]: '"0" as headerId',
+  [SORT_BY_TYPE]: 'c.sort_by_type as headerId, c.sort_by_type_header as headerTitle',
+};
+
+export class PartialCard {
+  public id: string;
+  public code: string;
+  public renderName: string;
+  public renderSubName?: string;
+
+  public headerId: string;
+  public headerTitle: string;
+  public pack_code: string;
+  public spoiler?: boolean;
+
+  constructor(
+    id: string,
+    code: string,
+    renderName: string,
+    headerId: string,
+    headerTitle: string,
+    pack_code: string,
+    renderSubName?: string,
+    spoiler?: boolean,
+  ) {
+    this.id = id;
+    this.code = code;
+    this.renderName = renderName;
+    this.headerId = headerId;
+    this.headerTitle = headerTitle;
+    this.pack_code = pack_code;
+    this.renderSubName = renderSubName;
+    this.spoiler = spoiler;
+  }
+
+  public static selectStatement(sort?: SortType): string {
+    const parts: string[] = [
+      `c.id as id`,
+      `c.code as code`,
+      `c.renderName as renderName`,
+      `c.renderSubname as renderSubname`,
+      `c.pack_code as pack_code`,
+      `c.spoiler as spoiler`,
+      HEADER_SELECT[sort || SORT_BY_TYPE],
+    ];
+    return parts.join(', ');
+  }
+
+  public static fromRaw(raw: any, sort?: SortType): PartialCard | undefined {
+    if (raw.id !== null && raw.code !== null && raw.renderName !== null && raw.pack_code !== null) {
+      return new PartialCard(
+        raw.id,
+        raw.code,
+        raw.renderName,
+        (raw.headerId === null || raw.headerId === undefined) ? 'null' : `${raw.headerId}`,
+        sort === SORT_BY_TITLE ? t`All Cards` : raw.headerTitle,
+        raw.pack_code,
+        raw.renderSubname,
+        !!raw.spoiler
+      );
+    }
+    return undefined;
+  }
+}
 
 @Entity('card')
 @Index('code_taboo', ['code', 'taboo_set_id'], { unique: true })
-@Index('sort_type', ['sort_by_type', 'renderName', 'xp'])
-@Index('sort_faction', ['sort_by_faction', 'renderName', 'xp'])
-@Index('sort_faction_pack', ['sort_by_faction_pack', 'code'])
-@Index('sort_cost', ['cost', 'renderName', 'xp'])
-@Index('sort_pack', ['sort_by_pack', 'position'])
-@Index('sort_pack_encounter', ['sort_by_pack', 'encounter_code', 'encounter_position'])
-@Index('sort_name_xp', ['renderName', 'xp'])
-@Index('encounter_query_index', ['taboo_set_id', 'altArtInvestigator', 'back_linked', 'hidden', 'encounter_code'])
+@Index('player_cards', ['browse_visible'])
+@Index('sort_type', ['browse_visible', 'taboo_set_id', 'sort_by_type', 'renderName', 'xp'])
+@Index('sort_faction', ['browse_visible', 'taboo_set_id', 'sort_by_faction', 'renderName', 'xp'])
+@Index('sort_faction_pack', ['browse_visible', 'taboo_set_id', 'sort_by_faction_pack', 'code'])
+@Index('sort_cost', ['browse_visible', 'taboo_set_id', 'cost', 'renderName', 'xp'])
+@Index('sort_pack', ['browse_visible', 'taboo_set_id', 'sort_by_pack', 'position'])
+@Index('sort_pack_encounter', ['browse_visible', 'taboo_set_id', 'sort_by_pack', 'encounter_code', 'encounter_position'])
+@Index('sort_name_xp', ['browse_visible', 'taboo_set_id', 'renderName', 'xp'])
+@Index('encounter_query_index', ['browse_visible', 'taboo_set_id', 'encounter_code'])
 export default class Card {
   @PrimaryColumn('text')
   public id!: string;
@@ -222,6 +297,19 @@ export default class Card {
   @Column('integer', { nullable: true })
   public sanity?: number;
 
+  @Column('text', { select: false })
+  public s_search_name!: string;
+  @Column('text', { select: false })
+  public s_search_name_back!: string;
+  @Column('text', { select: false })
+  public s_search_game?: string;
+  @Column('text', { select: false })
+  public s_search_game_back?: string;
+  @Column('text', { select: false })
+  public s_search_flavor?: string;
+  @Column('text', { select: false })
+  public s_search_flavor_back?: string;
+
   @Index('deck_limit')
   @Column('integer', { nullable: true })
   public deck_limit?: number;
@@ -319,30 +407,35 @@ export default class Card {
   public bonded_from?: boolean;
 
   @Column('boolean', { nullable: true })
-  public in_collection?: boolean;
-  @Column('boolean', { nullable: true })
-  public non_spoiler?: boolean;
-
-  @Column('boolean', { nullable: true })
   public seal?: boolean;
   @Column('boolean', { nullable: true })
   public heals_horror?: boolean;
-  @Column('integer', { nullable: true })
+
+  @Column('integer', { nullable: true, select: false })
   public sort_by_type?: number;
-  @Column('integer', { nullable: true })
+  @Column('text', { nullable: true, select: false })
+  public sort_by_type_header?: string;
+  @Column('integer', { nullable: true, select: false })
   public sort_by_faction?: number;
-  @Column('integer', { nullable: true })
+  @Column('text', { nullable: true, select: false })
+  public sort_by_faction_header?: string;
+  @Column('integer', { nullable: true, select: false })
   public sort_by_faction_pack?: number;
-  @Column('integer', { nullable: true })
+  @Column('text', { nullable: true, select: false })
+  public sort_by_faction_pack_header?: string;
+  @Column('text', { nullable: true, select: false })
+  public sort_by_cost_header?: string;
+  @Column('text', { nullable: true, select: false })
+  public sort_by_encounter_set_header?: string;
+  @Column('integer', { nullable: true, select: false })
   public sort_by_pack?: number;
+  @Column('integer', { nullable: true, select: false })
+  public browse_visible!: number;
+
+  @Column('boolean')
+  public mythos_card!: boolean;
 
   public static ELIDED_FIELDS = [
-    'c.seal',
-    'c.heals_horror',
-    'c.sort_by_type',
-    'c.sort_by_faction',
-    'c.sort_by_faction_pack',
-    'c.sort_by_pack',
     'c.slots_normalized',
     'c.back_linked',
     'c.eskill_willpower',
@@ -351,6 +444,22 @@ export default class Card {
     'c.eskill_agility',
     'c.linked_to_code',
     'c.linked_to_name',
+    'c.sort_by_type',
+    'c.sort_by_type_header',
+    'c.sort_by_faction',
+    'c.sort_by_faction_header',
+    'c.sort_by_faction_pack',
+    'c.sort_by_faction_pack_header',
+    'c.sort_by_cost_header',
+    'c.sort_by_encounter_set_header',
+    'c.sort_by_pack',
+    'c.browse_visible',
+    'c.s_search_name',
+    'c.s_search_name_back',
+    'c.s_search_game',
+    'c.s_search_game_back',
+    'c.s_search_flavor',
+    'c.s_search_flavor_back',
   ];
 
   public cardName(): string {
@@ -522,6 +631,8 @@ export default class Card {
       t`Survivor / Seeker`,
       t`Seeker / Mystic`,
       t`Mystic / Guardian`,
+      t`Basic Weakness`,
+      t`Signature Weakness`,
       t`Weakness`,
       t`Mythos`,
     ];
@@ -552,7 +663,11 @@ export default class Card {
     }
     switch(json.subtype_code) {
       case 'basicweakness':
+        return t`Basic Weakness`;
       case 'weakness':
+        if (json.restrictions || json.has_restrictions) {
+          return t`Signature Weakness`;
+        }
         return t`Weakness`;
       default: {
         if (!json.faction_code || !json.faction_name) {
@@ -587,6 +702,7 @@ export default class Card {
       t`Event`,
       t`Skill`,
       t`Basic Weakness`,
+      t`Signature Weakness`,
       t`Weakness`,
       t`Scenario`,
       t`Story`,
@@ -604,11 +720,14 @@ export default class Card {
         if (json.spoiler) {
           return t`Story`;
         }
+        if (json.restrictions || json.has_restrictions) {
+          return t`Signature Weakness`;
+        }
         return t`Weakness`;
       default:
         switch(json.type_code) {
           case 'asset':
-            if (json.spoiler) {
+            if (json.spoiler || json.encounter_code) {
               return t`Story`;
             }
             if (json.permanent || json.double_sided) {
@@ -753,7 +872,7 @@ export default class Card {
 
     const restrictions = Card.parseRestrictions(json.restrictions);
     const uses_match = json.real_text && json.real_text.match(USES_REGEX);
-    const uses = uses_match ? uses_match[1].toLowerCase() : null;
+    const uses = uses_match ? uses_match[2].toLowerCase() : null;
 
     const bonded_match = json.real_text && json.real_text.match(BONDED_REGEX);
     const bonded_name = bonded_match ? bonded_match[1] : null;
@@ -766,11 +885,18 @@ export default class Card {
     const myriad = !!json.real_text && json.real_text.indexOf('Myriad.') !== -1;
     const advanced = !!json.real_text && json.real_text.indexOf('Advanced.') !== -1;
 
-    const sort_by_type = Card.typeHeaderOrder().indexOf(Card.typeSortHeader(json));
-    const sort_by_faction = Card.factionHeaderOrder().indexOf(Card.factionSortHeader(json));
+    const sort_by_type_header = Card.typeSortHeader(json);
+    const sort_by_type = Card.typeHeaderOrder().indexOf(sort_by_type_header);
+    const sort_by_faction_header = Card.factionSortHeader(json);
+    const sort_by_faction = Card.factionHeaderOrder().indexOf(sort_by_faction_header);
     const pack = packsByCode[json.pack_code] || null;
     const sort_by_faction_pack = sort_by_faction * 100 + (pack ? pack.cycle_position : 0);
+    const sort_by_faction_pack_header = `${sort_by_faction_header} - ${json.pack_name}`;
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
+    const sort_by_cost_header = (json.cost === null || json.cost === undefined) ? t`Cost: None` : t`Cost: ${json.cost}`;
+    const sort_by_encounter_set_header = json.encounter_name ||
+      (linked_card && linked_card.encounter_name) ||
+      t`N/A`;
     const cycle_pack = pack ? cycleNames[pack.cycle_position] : null;
     const spoiler = !!(json.spoiler || (linked_card && linked_card.spoiler));
     const enemy_horror = json.type_code === 'enemy' ? (json.enemy_horror || 0) : null;
@@ -788,11 +914,33 @@ export default class Card {
       json.code === '98016' || // Dexter
       json.code === '99001'; // PROMO Marie
 
-    const result = {
+    const s_search_name = filter([
+      renderName && renderName.toLocaleLowerCase(lang),
+      renderSubname && renderSubname.toLocaleLowerCase(lang),
+    ], x => !!x).join(' ');
+    const s_search_name_back = filter([
+      name && name.toLocaleLowerCase(lang),
+      json.subname && json.subname.toLocaleLowerCase(lang),
+      json.back_name && json.back_name.toLocaleLowerCase(lang),
+    ], x => !!x).join(' ');
+    const s_search_game = filter([
+      json.text && json.text.toLocaleLowerCase(lang),
+      json.traits && json.traits.toLocaleLowerCase(lang),
+    ]).join(' ');
+    const s_search_game_back = (json.back_text && json.back_text.toLocaleLowerCase(lang)) || '';
+    const s_search_flavor = (json.flavor && json.flavor.toLocaleLowerCase(lang)) || '';
+    const s_search_flavor_back = (json.back_flavor && json.back_flavor.toLocaleLowerCase(lang)) || '';
+    let result = {
       ...json,
       ...eskills,
       id: json.code,
       tabooSetId: null,
+      s_search_name,
+      s_search_name_back,
+      s_search_game,
+      s_search_game_back,
+      s_search_flavor,
+      s_search_flavor_back,
       name,
       firstName,
       renderName,
@@ -824,10 +972,15 @@ export default class Card {
       enemy_horror,
       enemy_damage,
       altArtInvestigator,
+      sort_by_cost_header,
+      sort_by_type_header,
+      sort_by_faction_header,
+      sort_by_encounter_set_header,
+      sort_by_faction_pack_header,
     };
     if (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
       // console.log(`Reversing ${result.name} to ${result.linked_card.name}`);
-      return {
+      result = {
         ...result.linked_card,
         back_linked: null,
         hidden: null,
@@ -840,9 +993,28 @@ export default class Card {
           hidden: true,
           linked_to_code: result.linked_card.code,
           linked_to_name: result.linked_card.name,
+          browse_visible: false,
+          mythos_card: true,
         },
       };
     }
+    result.browse_visible = 0;
+    if (result.code === RANDOM_BASIC_WEAKNESS) {
+      result.browse_visible += 3;
+    } else if ((!result.altArtInvestigator && !result.back_linked && !result.hidden)) {
+      if (result.encounter_code) {
+        // It's an encounter card.
+        result.browse_visible += 2;
+      }
+      if (result.deck_limit > 0 || result.bonded_name) {
+        // It goes in a deck.
+        result.browse_visible += 1;
+      }
+    } else if (result.altArtInvestigator) {
+      result.browse_visible += 4;
+    }
+    result.mythos_card = !!result.encounter_code || !!result.linked_card?.encounter_code;
+    result.spoiler = result.spoiler || (result.linked_card && result.linked_card.spoiler);
     return result;
   }
 
@@ -878,7 +1050,55 @@ export default class Card {
       result.exceptional = true;
       result.deck_limit = 1;
     }
+    if (json.deck_limit !== undefined) {
+      result.deck_limit = json.deck_limit;
+    }
     return result;
+  }
+
+  static querySort(sort?: SortType): QuerySort[] {
+    switch(sort) {
+      case SORT_BY_FACTION:
+        return [
+          { s: 'c.sort_by_faction', direction: 'ASC' },
+          { s: 'c.renderName', direction: 'ASC' },
+          { s: 'c.xp', direction: 'ASC' },
+        ];
+      case SORT_BY_FACTION_PACK:
+        return [
+          { s: 'c.sort_by_faction_pack', direction: 'ASC' },
+          { s: 'c.code', direction: 'ASC' },
+        ];
+      case SORT_BY_COST:
+        return [
+          { s: 'c.cost', direction: 'ASC' },
+          { s: 'c.renderName', direction: 'ASC' },
+          { s: 'c.xp', direction: 'ASC' },
+        ];
+      case SORT_BY_PACK:
+        return [
+          { s: 'c.sort_by_pack', direction: 'ASC' },
+          { s: 'c.position', direction: 'ASC' },
+        ];
+      case SORT_BY_ENCOUNTER_SET:
+        return [
+          { s: 'c.sort_by_pack', direction: 'ASC' },
+          { s: 'c.encounter_code', direction: 'ASC' },
+          { s: 'c.encounter_position', direction: 'ASC' },
+        ];
+      case SORT_BY_TITLE:
+        return [
+          { s: 'c.renderName', direction: 'ASC' },
+          { s: 'c.xp', direction: 'ASC' },
+        ];
+      case SORT_BY_TYPE:
+      default:
+        return [
+          { s: 'c.sort_by_type', direction: 'ASC' },
+          { s: 'c.renderName', direction: 'ASC' },
+          { s: 'c.xp', direction: 'ASC' },
+        ];
+    }
   }
 }
 

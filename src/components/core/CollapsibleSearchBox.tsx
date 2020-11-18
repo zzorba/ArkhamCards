@@ -1,161 +1,119 @@
-import React from 'react';
-import { throttle } from 'lodash';
-import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform } from 'react-native';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform, useWindowDimensions } from 'react-native';
 
 import SearchBox, { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import { m, s, xs } from '@styles/space';
+import { useThrottle } from '@react-hook/throttle';
 
 export interface SearchOptions {
   controls: React.ReactNode;
   height: number;
 }
 
-interface OwnProps {
+interface Props {
   prompt: string;
   advancedOptions?: SearchOptions;
   searchTerm: string;
   onSearchChange: (text: string) => void;
   children: (
     handleScroll: (...args: any[]) => void,
+    showHeader: () => void
   ) => React.ReactNode;
 }
 
-interface State {
-  visible: boolean;
-  advancedOpen: boolean;
-  scrollAnim: Animated.Value;
-  advancedToggleAnim: Animated.Value;
-}
-
 const SCROLL_DISTANCE_BUFFER = 50;
-type Props = OwnProps & DimensionsProps;
 
-class CollapsibleSearchBox extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  state: State = {
-    visible: true,
-    advancedOpen: false,
-    scrollAnim: new Animated.Value(1),
-    advancedToggleAnim: new Animated.Value(0),
-  };
-
-  _handleScroll!: (...args: any[]) => void;
-  lastOffsetY: number = 0;
-  scrollY = new Animated.Value(0);
-
-  constructor(props: Props) {
-    super(props);
-
-    this._handleScroll = Animated.event(
-      [{ nativeEvent: { contentOffset: { y: this.scrollY } } }],
-      {
-        listener: this._onScroll,
-        useNativeDriver: false,
-      },
-    );
-  }
-
-  _onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const offsetY = event.nativeEvent.contentOffset.y;
-    // Dispatch the throttle event to handle hiding/showing stuff on transition.
-    this._throttledScroll(offsetY);
-  };
-
-  /**
-   * This is the throttle scrollEvent, throttled so we check it slightly
-   * less often and are able to make decisions about whether we update
-   * the stored scrollY or not.
-   */
-  _throttledScroll = throttle(
-    (offsetY: number) => {
-      if (offsetY <= 0) {
-        this._showHeader();
-      } else {
-        const delta = Math.abs(offsetY - this.lastOffsetY);
-        if (delta < SCROLL_DISTANCE_BUFFER) {
-          // Not a long enough scroll, don't update scrollY and don't take any
-          // action at all.
-          return;
-        }
-
-        // We have a decent sized scroll so we will make a direction based
-        // show/hide decision UNLESS we are near the top/bottom of the content.
-        const scrollingUp = offsetY < this.lastOffsetY;
-
-        if (scrollingUp) {
-          this._showHeader();
-        } else {
-          this._hideHeader();
-        }
-        this.lastOffsetY = offsetY;
-      }
+export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTerm, onSearchChange, children }: Props) {
+  const { backgroundStyle, borderStyle, colors } = useContext(StyleContext);
+  const [visible, setVisible] = useState(true);
+  const [advancedOpen, setAdvancedOpen] = useState(false);
+  const scrollAnim = useRef(new Animated.Value(1));
+  const advancedToggleAnim = useRef(new Animated.Value(0));
+  const lastOffsetY = useRef(0);
+  const scrollY = useRef(new Animated.Value(0));
+  const [offsetY, setOffsetY] = useThrottle(0, 4);
+  const onScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    setOffsetY(event.nativeEvent.contentOffset.y);
+  }, [setOffsetY]);
+  const handleScroll = useMemo(() => Animated.event(
+    [{ nativeEvent: { contentOffset: { y: scrollY.current } } }],
+    {
+      listener: onScroll,
+      useNativeDriver: false,
     },
-    250,
-    { trailing: true }
-  );
+  ), [onScroll]);
 
-  _showHeader = () => {
-    if (!this.state.visible) {
-      this.animateScroll(true);
-    }
-  };
 
-  _hideHeader = () => {
-    const { searchTerm } = this.props;
-    const {
-      visible,
-    } = this.state;
-    if (visible && searchTerm === '') {
-      this.animateScroll(false);
-    }
-  }
-
-  animateScroll(visible: boolean) {
-    const { scrollAnim, advancedOpen } = this.state;
+  const animateScroll = useCallback((visible: boolean) => {
     if (!advancedOpen) {
-      scrollAnim.stopAnimation(() => {
-        Animated.timing(scrollAnim, {
+      scrollAnim.current.stopAnimation(() => {
+        Animated.timing(scrollAnim.current, {
           toValue: visible ? 1 : 0,
           duration: 350,
           useNativeDriver: false,
         }).start();
       });
-      this.setState({
-        visible,
-      });
+      setVisible(visible);
     }
-  }
+  }, [scrollAnim, setVisible, advancedOpen]);
+  const showHeader = useCallback(() => {
+    if (!visible) {
+      animateScroll(true);
+    }
+  }, [visible, animateScroll]);
+  const hideHeader = useCallback(() => {
+    if (visible && searchTerm === '') {
+      animateScroll(false);
+    }
+  }, [searchTerm, visible, animateScroll]);
+  useEffect(() => {
+    /**
+     * This is the throttle scrollEvent, throttled so we check it slightly
+     * less often and are able to make decisions about whether we update
+     * the stored scrollY or not.
+     */
+    if (offsetY <= 0) {
+      showHeader();
+    } else {
+      const delta = Math.abs(offsetY - lastOffsetY.current);
+      if (delta < SCROLL_DISTANCE_BUFFER) {
+        // Not a long enough scroll, don't update scrollY and don't take any
+        // action at all.
+        return;
+      }
 
-  _toggleAdvanced = () => {
-    const {
-      advancedToggleAnim,
-      advancedOpen,
-    } = this.state;
+      // We have a decent sized scroll so we will make a direction based
+      // show/hide decision UNLESS we are near the top/bottom of the content.
+      const scrollingUp = offsetY < lastOffsetY.current;
+      if (scrollingUp) {
+        showHeader();
+      } else {
+        hideHeader();
+      }
+      lastOffsetY.current = offsetY;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [offsetY]);
 
-    advancedToggleAnim.stopAnimation(() => {
-      Animated.timing(advancedToggleAnim, {
+
+  const toggleAdvanced = useCallback(() => {
+    advancedToggleAnim.current.stopAnimation(() => {
+      Animated.timing(advancedToggleAnim.current, {
         toValue: !advancedOpen ? 1 : 0,
         duration: 250,
         useNativeDriver: false,
       }).start();
     });
-    this.setState({
-      advancedOpen: !advancedOpen,
-    });
-  };
+    setAdvancedOpen(!advancedOpen);
+  }, [setAdvancedOpen, advancedToggleAnim, advancedOpen]);
+  const { width } = useWindowDimensions();
 
-  renderAdvancedOptions() {
-    const { advancedOptions, width } = this.props;
-    const { advancedToggleAnim } = this.state;
-    const { colors } = this.context;
+  const advancedOptionsBlock = useMemo(() => {
     if (!advancedOptions) {
       return null;
     }
-    const controlHeight = advancedToggleAnim.interpolate({
+    const controlHeight = advancedToggleAnim.current.interpolate({
       inputRange: [0, 1],
       outputRange: [-(SEARCH_BAR_HEIGHT + advancedOptions.height), SEARCH_BAR_HEIGHT],
     });
@@ -176,70 +134,62 @@ class CollapsibleSearchBox extends React.Component<Props, State> {
         </View>
       </Animated.View>
     );
-  }
+  }, [advancedOptions, width, advancedToggleAnim, colors]);
 
-  render() {
-    const { advancedOptions, children, prompt, searchTerm, onSearchChange, width } = this.props;
-    const { advancedOpen, scrollAnim, advancedToggleAnim } = this.state;
-    const { backgroundStyle, borderStyle } = this.context;
-    const scrollY = advancedOpen ? 0 : scrollAnim.interpolate({
+  const translateY = advancedOpen ? 0 : scrollAnim.current.interpolate({
+    inputRange: [0, 1],
+    outputRange: [-SEARCH_BAR_HEIGHT, 0],
+  });
+  const shadowOpacity = Animated.multiply(
+    advancedToggleAnim.current.interpolate({
       inputRange: [0, 1],
-      outputRange: [-SEARCH_BAR_HEIGHT, 0],
-    });
-    const shadowOpacity = Animated.multiply(
-      advancedToggleAnim.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0.25, 0],
-      }),
-      scrollAnim.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 1],
-      }),
-    );
-    return (
-      <View style={[styles.wrapper, backgroundStyle]}>
-        <View style={[styles.container, backgroundStyle, borderStyle]}>
-          { children(this._handleScroll) }
-        </View>
-        { advancedOpen && !!advancedOptions && Platform.OS === 'android' && (
-          <View style={[
-            styles.slider,
-            {
-              top: 0,
-              width,
-              height: SEARCH_BAR_HEIGHT + advancedOptions.height,
-              backgroundColor: 'transparent',
-            }
-          ]} />
-        ) }
-        <Animated.View style={[
-          styles.slider,
-          backgroundStyle,
-          {
-            width,
-            transform: [{ translateY: scrollY }],
-            height: SEARCH_BAR_HEIGHT,
-            zIndex: 2,
-          },
-        ]}>
-          { this.renderAdvancedOptions() }
-          <Animated.View style={[styles.fixed, { width, shadowOpacity }]}>
-            <SearchBox
-              onChangeText={onSearchChange}
-              placeholder={prompt}
-              advancedOpen={advancedOpen}
-              toggleAdvanced={advancedOptions ? this._toggleAdvanced : undefined}
-              value={searchTerm}
-            />
-          </Animated.View>
-        </Animated.View>
+      outputRange: [0.25, 0],
+    }),
+    scrollAnim.current.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 1],
+    }),
+  );
+  return (
+    <View style={[styles.wrapper, backgroundStyle]}>
+      <View style={[styles.container, backgroundStyle, borderStyle]}>
+        { children(handleScroll, showHeader) }
       </View>
-    );
-  }
+      { advancedOpen && !!advancedOptions && Platform.OS === 'android' && (
+        <View style={[
+          styles.slider,
+          {
+            top: 0,
+            width,
+            height: SEARCH_BAR_HEIGHT + advancedOptions.height,
+            backgroundColor: 'transparent',
+          },
+        ]} />
+      ) }
+      <Animated.View style={[
+        styles.slider,
+        backgroundStyle,
+        {
+          width,
+          transform: [{ translateY }],
+          height: SEARCH_BAR_HEIGHT,
+          zIndex: 2,
+        },
+      ]}>
+        { advancedOptionsBlock }
+        <Animated.View style={[styles.fixed, { width, shadowOpacity }]}>
+          <SearchBox
+            onChangeText={onSearchChange}
+            placeholder={prompt}
+            advancedOpen={advancedOpen}
+            toggleAdvanced={advancedOptions ? toggleAdvanced : undefined}
+            value={searchTerm}
+          />
+        </Animated.View>
+      </Animated.View>
+    </View>
+  );
 }
-
-export default withDimensions(CollapsibleSearchBox);
-
 
 const styles = StyleSheet.create({
   textSearchOptions: {

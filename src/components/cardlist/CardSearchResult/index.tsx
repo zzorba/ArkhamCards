@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { flatMap, map, range, repeat } from 'lodash';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { map, range, repeat } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
@@ -11,180 +11,144 @@ import {
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
-import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import Card from '@data/Card';
 import { SKILLS, SkillCodeType } from '@app_constants';
-import { rowHeight, iconSize, toggleButtonMode, buttonWidth } from './constants';
-import UpgradeCardButton from './UpgradeCardButton';
-import CardQuantityComponent from './CardQuantityComponent';
+import { rowHeight, iconSize } from './constants';
 import { isBig, s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { ControlComponent, ControlType } from './ControlComponent';
 
 interface Props {
   card: Card;
   id?: string;
-  count?: number;
   onPress?: (card: Card) => void;
   onPressId?: (code: string, card: Card) => void;
-  onUpgrade?: (card: Card) => void;
-  onDeckCountChange?: (code: string, count: number) => void;
-  limit?: number;
-  onToggleChange?: (card: Card, value: boolean) => void;
-  toggleValue?: boolean;
-  deltaCountMode?: boolean;
-  hasSecondCore?: boolean;
-  showZeroCount?: boolean;
   backgroundColor?: string;
   invalid?: boolean;
+  control?: ControlType;
+  noBorder?: boolean;
 }
 
-export default class CardSearchResult extends React.PureComponent<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
+  const { colors, fontScale } = useContext(StyleContext);
+  if (count === 0) {
+    return null;
+  }
+  const SKILL_ICON_SIZE = (isBig ? 26 : 16) * fontScale;
+  return (
+    <>
+      { map(range(0, count), key => (
+        <View key={`${skill}-${key}`} style={styles.skillIcon}>
+          <ArkhamIcon
+            name={skill}
+            size={SKILL_ICON_SIZE}
+            color={colors.lightText}
+          />
+        </View>
+      )) }
+    </>
+  );
+}
 
-  _onPress = () => {
-    const {
-      id,
-      onPress,
-      onPressId,
-      card,
-    } = this.props;
+function FactionIcon({ card }: { card: Card }) {
+  const { fontScale, colors } = useContext(StyleContext);
+  const size = iconSize(fontScale);
+  const SMALL_ICON_SIZE = (isBig ? 38 : 26) * fontScale;
+
+  if (!card.encounter_code && card.linked_card) {
+    return <FactionIcon card={card.linked_card} />;
+  }
+
+  if (card.mythos_card && card.encounter_code) {
+    return (
+      <EncounterIcon
+        encounter_code={card.encounter_code}
+        size={size}
+        color={colors.darkText}
+      />
+    );
+  }
+  if (card.subtype_code &&
+    (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
+  ) {
+    return (
+      <ArkhamIcon name="weakness" size={size} color={colors.faction.neutral.text} />
+    );
+  }
+  const ICON_SIZE = iconSize(fontScale);
+  if (card.type_code === 'scenario' || card.type_code === 'story') {
+    return (
+      <EncounterIcon
+        encounter_code={card.pack_code}
+        size={ICON_SIZE}
+        color={colors.darkText}
+      />
+    );
+  }
+  const faction = card.factionCode();
+  return (
+    <View style={styles.investigatorFactionIcon}>
+      <ArkhamIcon
+        name={(card.faction2_code || faction === 'neutral') ? 'elder_sign' : faction}
+        size={size === ICON_SIZE ? ICON_SIZE : SMALL_ICON_SIZE}
+        color={colors.faction[faction].text}
+      />
+    </View>
+  );
+}
+
+function CardIcon({ card }: { card: Card }) {
+  const { fontScale } = useContext(StyleContext);
+  if (card.hidden && card.linked_card) {
+    return <CardIcon card={card.linked_card} />;
+  }
+
+  const showCost = card.type_code === 'asset' ||
+    card.type_code === 'event' ||
+    card.type_code === 'skill';
+
+  if (showCost) {
+    return (
+      <View style={[styles.factionIcon, {
+        width: costIconSize(fontScale),
+        height: costIconSize(fontScale),
+      }]}>
+        <CardCostIcon card={card} />
+      </View>
+    );
+  }
+  return (
+    <View style={[styles.factionIcon, {
+      width: costIconSize(fontScale),
+      height: costIconSize(fontScale),
+    }]}>
+      <FactionIcon card={card} />
+    </View>
+  );
+}
+
+export default function CardSearchResult(props: Props) {
+  const {
+    card,
+    id,
+    control,
+    onPress,
+    onPressId,
+    backgroundColor,
+    invalid,
+    noBorder,
+  } = props;
+  const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
+  const handleCardPress = useCallback(() => {
     Keyboard.dismiss();
     if (id && onPressId) {
       onPressId(id, card);
     } else {
       onPress && onPress(card);
     }
-  };
+  }, [onPress, onPressId, id, card]);
 
-  _onUpgradePressed = () => {
-    const {
-      onUpgrade,
-      card,
-    } = this.props;
-    onUpgrade && onUpgrade(card);
-  };
-
-  _onDeckCountChange = (count: number) => {
-    const {
-      onDeckCountChange,
-      card,
-    } = this.props;
-    onDeckCountChange && onDeckCountChange(card.code, count);
-  };
-
-  _renderCountButton = (count: number) => {
-    return count;
-  };
-
-  renderFactionIcon(card: Card, size: number): ReactNode {
-    const { fontScale, colors } = this.context;
-    const SMALL_ICON_SIZE = (isBig ? 38 : 26) * fontScale;
-
-    if (!card.encounter_code && card.linked_card) {
-      return this.renderFactionIcon(card.linked_card, size);
-    }
-
-    if (card.spoiler && card.encounter_code) {
-      return (
-        <EncounterIcon
-          encounter_code={card.encounter_code}
-          size={size}
-          color={colors.darkText}
-        />
-      );
-    }
-    if (card.subtype_code &&
-      (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
-    ) {
-      return (
-        <ArkhamIcon name="weakness" size={size} color={colors.faction.neutral.text} />
-      );
-    }
-    const ICON_SIZE = iconSize(fontScale);
-    if (card.type_code === 'scenario' || card.type_code === 'story') {
-      return (
-        <EncounterIcon
-          encounter_code={card.pack_code}
-          size={ICON_SIZE}
-          color={colors.darkText}
-        />
-      );
-    }
-    const faction = card.factionCode();
-    return (
-      <View style={styles.investigatorFactionIcon}>
-        <ArkhamIcon
-          name={(card.faction2_code || faction === 'neutral') ? 'elder_sign' : faction}
-          size={size === ICON_SIZE ? ICON_SIZE : SMALL_ICON_SIZE}
-          color={colors.faction[faction].text}
-        />
-      </View>
-    );
-  }
-
-  static cardCost(card: Card): string {
-    if (card.type_code === 'skill') {
-      return '';
-    }
-    if (card.permanent || card.double_sided) {
-      return '-';
-    }
-    return `${card.cost !== null ? card.cost : 'X'}`;
-  }
-
-  renderIcon(card: Card): ReactNode {
-    const { fontScale } = this.context;
-    if (card.hidden && card.linked_card) {
-      return this.renderIcon(card.linked_card);
-    }
-
-    const showCost = card.type_code === 'asset' ||
-      card.type_code === 'event' ||
-      card.type_code === 'skill';
-
-    if (showCost) {
-      return (
-        <View style={[styles.factionIcon, {
-          width: costIconSize(fontScale),
-          height: costIconSize(fontScale),
-        }]}>
-          <CardCostIcon card={card} />
-        </View>
-      );
-    }
-    return (
-      <View style={[styles.factionIcon, {
-        width: costIconSize(fontScale),
-        height: costIconSize(fontScale),
-      }]}>
-        { this.renderFactionIcon(card, iconSize(fontScale)) }
-      </View>
-    );
-  }
-
-  skillIcon(skill: SkillCodeType, count: number): ReactNode[] {
-    const { colors, fontScale } = this.context;
-    if (count === 0) {
-      return [];
-    }
-    const SKILL_ICON_SIZE = (isBig ? 26 : 16) * fontScale;
-    return map(range(0, count), key => (
-      <View key={`${skill}-${key}`} style={styles.skillIcon}>
-        <ArkhamIcon
-          name={skill}
-          size={SKILL_ICON_SIZE}
-          color={colors.lightText}
-        />
-      </View>
-    ));
-  }
-
-  renderDualFactionIcons() {
-    const { fontScale, colors } = this.context;
-    const {
-      card,
-    } = this.props;
+  const dualFactionIcons = useMemo(() => {
     if (!card.faction2_code) {
       return null;
     }
@@ -207,12 +171,9 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         </View>
       </View>
     );
-  }
+  }, [fontScale, colors, card]);
 
-  renderSkillIcons() {
-    const {
-      card,
-    } = this.props;
+  const skillIcons = useMemo(() => {
     if (card.type_code === 'investigator' || (
       card.skill_willpower === null &&
       card.skill_intellect === null &&
@@ -223,17 +184,12 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     }
     return (
       <View style={styles.skillIcons}>
-        { flatMap(SKILLS, (skill: SkillCodeType) =>
-          this.skillIcon(skill, card.skillCount(skill))) }
+        { map(SKILLS, (skill: SkillCodeType) => <SkillIcons key={skill} skill={skill} count={card.skillCount(skill)} />) }
       </View>
     );
-  }
+  }, [card]);
 
-  renderTabooBlock() {
-    const { colors, fontScale, typography } = this.context;
-    const {
-      card,
-    } = this.props;
+  const tabooBlock = useMemo(() => {
     if (!card.taboo_set_id || card.taboo_set_id === 0 || card.taboo_placeholder) {
       return null;
     }
@@ -250,14 +206,9 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         ) }
       </View>
     );
-  }
+  }, [colors, fontScale, typography, card]);
 
-  renderCardName() {
-    const { colors, fontScale, typography } = this.context;
-    const {
-      card,
-      invalid,
-    } = this.props;
+  const cardName = useMemo(() => {
     const color = (card.faction2_code ?
       colors.faction.dual :
       colors.faction[card.factionCode()]
@@ -272,7 +223,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           ]} numberOfLines={1} ellipsizeMode="clip">
             { card.renderName }
           </Text>
-          { this.renderTabooBlock() }
+          { tabooBlock }
           { !!card.advanced && (
             <View style={styles.tabooBlock}>
               <ArkhamIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
@@ -280,7 +231,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           ) }
         </View>
         <View style={[styles.row, { backgroundColor: 'transparent' }]}>
-          { this.renderSkillIcons() }
+          { skillIcons }
           { !!card.renderSubname && (
             <View style={styles.row}>
               <Text style={[typography.small, typography.italic, typography.light, styles.subname]} numberOfLines={1} ellipsizeMode="clip">
@@ -288,179 +239,81 @@ export default class CardSearchResult extends React.PureComponent<Props> {
               </Text>
             </View>
           ) }
-          { this.renderDualFactionIcons() }
+          { dualFactionIcons }
         </View>
       </View>
     );
-  }
+  }, [colors, fontScale, typography, card, invalid, tabooBlock, skillIcons, dualFactionIcons]);
 
-  countText(count: number) {
-    const {
-      deltaCountMode,
-    } = this.props;
-    if (deltaCountMode) {
-      if (count > 0) {
-        return `+${count}`;
-      }
-      return `${count}`;
-    }
-    return `×${count}`;
-  }
-
-  renderCount() {
-    const {
-      card,
-      count = 0,
-      onDeckCountChange,
-      onUpgrade,
-      limit,
-      hasSecondCore,
-      showZeroCount,
-    } = this.props;
-    const { typography } = this.context;
-    if (onDeckCountChange) {
-      const deck_limit: number = Math.min(
-        card.pack_code === 'core' ?
-          ((card.quantity || 0) * (hasSecondCore ? 2 : 1)) :
-          (card.deck_limit || 0),
-        card.deck_limit || 0
-      );
-      return (
-        <CardQuantityComponent
-          count={count || 0}
-          limit={Math.max(count || 0, typeof limit === 'number' ? limit : deck_limit)}
-          countChanged={this._onDeckCountChange}
-          showZeroCount={showZeroCount}
-        />
-      );
-    }
-    if (count !== 0) {
-      return (
-        <View style={styles.countWrapper}>
-          { !!onUpgrade && <UpgradeCardButton onPress={this._onUpgradePressed} /> }
-          <View style={styles.count}>
-            <Text style={typography.text}>
-              { this.countText(count) }
-            </Text>
-          </View>
-        </View>
-      );
-    }
-    return null;
-  }
-
-  _onToggleChange = (value: boolean) => {
-    const {
-      card,
-      onToggleChange,
-    } = this.props;
-    if (onToggleChange) {
-      onToggleChange(card, value);
-    }
-  };
-
-  renderContent() {
-    const {
-      card,
-      onToggleChange,
-      toggleValue,
-      onPress,
-      onPressId,
-      onDeckCountChange,
-      backgroundColor,
-    } = this.props;
-    const { colors, borderStyle, fontScale } = this.context;
+  if (!card) {
     return (
       <View style={[
         styles.rowContainer,
-        styles.rowBorder,
+        noBorder ? {} : styles.rowBorder,
         borderStyle,
         {
           height: rowHeight(fontScale),
           backgroundColor: backgroundColor || colors.background,
         },
-        !onDeckCountChange ? styles.rowPadding : {},
+        !control ? styles.rowPadding : {},
       ]}>
-        <TouchableOpacity
-          onPress={this._onPress}
-          disabled={!onPress && !onPressId}
-          style={[styles.row, styles.fullHeight]}
-          testID={`SearchCard-${card.code}`}
-          delayPressIn={5}
-          delayPressOut={5}
-          delayLongPress={5}
-        >
-          <View style={[
-            styles.cardTextRow,
-            onDeckCountChange && toggleButtonMode(fontScale) ?
-              { paddingRight: buttonWidth(fontScale) } :
-              {},
-          ]}>
-            { this.renderIcon(card) }
-            { this.renderCardName() }
+        <View style={styles.cardNameBlock}>
+          <View style={styles.row}>
+            <Text style={typography.text}>
+              Unknown Card
+            </Text>
           </View>
-        </TouchableOpacity>
-        { this.renderCount() }
-        { !!onToggleChange && (
-          <View style={styles.switchButton}>
-            <ArkhamSwitch
-              value={!!toggleValue}
-              onValueChange={this._onToggleChange}
-            />
-          </View>
-        ) }
+        </View>
+      </View>
+    );
+  }
+  if (!card.name) {
+    return (
+      <View style={[
+        styles.rowContainer,
+        noBorder ? {} : styles.rowBorder,
+        borderStyle,
+        {
+          height: rowHeight(fontScale),
+          backgroundColor: backgroundColor || colors.background,
+        },
+        !control ? styles.rowPadding : {},
+      ]}>
+        <Text>No Text</Text>;
       </View>
     );
   }
 
-  render() {
-    const {
-      card,
-      backgroundColor,
-      onDeckCountChange,
-    } = this.props;
-    const { fontScale, colors, borderStyle, typography } = this.context;
-    if (!card) {
-      return (
+  return (
+    <View style={[
+      styles.rowContainer,
+      noBorder ? {} : styles.rowBorder,
+      borderStyle,
+      {
+        height: rowHeight(fontScale),
+        backgroundColor: backgroundColor || colors.background,
+      },
+      !control ? styles.rowPadding : {},
+    ]}>
+      <TouchableOpacity
+        onPress={handleCardPress}
+        disabled={!onPress && !onPressId}
+        style={[styles.row, styles.fullHeight]}
+        testID={`SearchCard-${card.code}`}
+        delayPressIn={5}
+        delayPressOut={5}
+        delayLongPress={5}
+      >
         <View style={[
-          styles.rowContainer,
-          styles.rowBorder,
-          borderStyle,
-          {
-            height: rowHeight(fontScale),
-            backgroundColor: backgroundColor || colors.background,
-          },
-          !onDeckCountChange ? styles.rowPadding : {},
+          styles.cardTextRow,
         ]}>
-          <View style={styles.cardNameBlock}>
-            <View style={styles.row}>
-              <Text style={typography.text}>
-                Unknown Card
-              </Text>
-            </View>
-          </View>
+          <CardIcon card={card} />
+          { cardName }
         </View>
-      );
-    }
-    if (!card.name) {
-      return (
-        <View style={[
-          styles.rowContainer,
-          styles.rowBorder,
-          borderStyle,
-          {
-            height: rowHeight(fontScale),
-            backgroundColor: backgroundColor || colors.background,
-          },
-          !onDeckCountChange ? styles.rowPadding : {},
-        ]}>
-          <Text>No Text</Text>;
-        </View>
-      );
-    }
-
-    return this.renderContent();
-  }
+      </TouchableOpacity>
+      { !!control && <ControlComponent control={control} card={card} /> }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -518,22 +371,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingLeft: s,
     alignItems: 'center',
-  },
-  switchButton: {
-    marginTop: 6,
-    marginRight: 6,
-  },
-  countWrapper: {
-    marginRight: s,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  count: {
-    marginLeft: xs,
-    minWidth: 25,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
   },
   tabooBlock: {
     marginLeft: s,

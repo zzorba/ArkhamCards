@@ -1,29 +1,28 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
 import {
   Button,
   Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import { filter } from 'lodash';
-import { bindActionCreators, Action, Dispatch } from 'redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { refreshMyDecks } from '@actions';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
-import { Campaign, Deck, DecksMap } from '@actions/types';
+import { Deck } from '@actions/types';
 import Card from '@data/Card';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import COLORS from '@styles/colors';
 import space, { m, s, xs } from '@styles/space';
-import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from '@reducers';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { getAllDecks, getMyDecksState, getDeckToCampaignMap } from '@reducers';
+import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
@@ -38,64 +37,53 @@ interface OwnProps {
   customFooter?: ReactNode;
 }
 
-interface ReduxProps {
-  decks: DecksMap;
-  deckToCampaign: { [id: number]: Campaign };
-  myDecks: number[];
-  myDecksUpdated?: Date;
-  refreshing: boolean;
-  error?: string;
-}
+type Props = OwnProps & LoginStateProps & NetworkStatusProps;
 
-interface ReduxActionProps {
-  refreshMyDecks: () => void;
-}
-
-type Props = OwnProps & ReduxProps & ReduxActionProps & LoginStateProps & NetworkStatusProps & DimensionsProps;
-
-class MyDecksComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _reLogin = () => {
-    this.props.login();
-  };
-
-  _onRefresh = () => {
-    const {
-      refreshing,
-      refreshMyDecks,
-    } = this.props;
-
+function MyDecksComponent({
+  deckClicked,
+  onlyDeckIds,
+  onlyInvestigators,
+  filterDeckIds = [],
+  filterInvestigators = [],
+  searchOptions,
+  customFooter,
+  login,
+  signedIn,
+  networkType,
+  isConnected,
+}: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const dispatch = useDispatch();
+  const reLogin = useCallback(() => {
+    login();
+  }, [login]);
+  const decks = useSelector(getAllDecks);
+  const deckToCampaign = useSelector(getDeckToCampaignMap);
+  const {
+    myDecks,
+    myDecksUpdated,
+    refreshing,
+    error,
+  } = useSelector(getMyDecksState);
+  const onRefresh = useCallback(() => {
     if (!refreshing) {
-      refreshMyDecks();
+      dispatch(refreshMyDecks());
     }
-  };
+  }, [dispatch, refreshing]);
 
-  componentDidMount() {
-    const {
-      myDecksUpdated,
-      myDecks,
-      signedIn,
-    } = this.props;
+  useEffect(() => {
     const now = new Date();
     if ((!myDecks ||
       myDecks.length === 0 ||
       !myDecksUpdated ||
       (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)
     ) && signedIn) {
-      this._onRefresh();
+      onRefresh();
     }
-  }
-
-  renderError() {
-    const {
-      error,
-      networkType,
-      isConnected,
-      width,
-    } = this.props;
-    const { typography } = this.context;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const { width } = useWindowDimensions();
+  const errorLine = useMemo(() => {
     if (!error && networkType !== NetInfoStateType.none) {
       return null;
     }
@@ -110,7 +98,7 @@ class MyDecksComponent extends React.Component<Props> {
     }
     if (error === 'badAccessToken') {
       return (
-        <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error, { width }]}>
+        <TouchableOpacity onPress={reLogin} style={[styles.banner, styles.error, { width }]}>
           <Text style={[typography.small, styles.errorText, space.paddingS]}>
             { t`We're having trouble updating your decks at this time. If the problem persists tap here to reauthorize.` }
           </Text>
@@ -118,33 +106,15 @@ class MyDecksComponent extends React.Component<Props> {
       );
     }
     return (
-      <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error, { width }]}>
+      <TouchableOpacity onPress={reLogin} style={[styles.banner, styles.error, { width }]}>
         <Text style={[typography.small, styles.errorText, space.paddingS]}>
           { t`An unexpected error occurred (${error}). If restarting the app doesn't fix the problem, tap here to reauthorize.` }
         </Text>
       </TouchableOpacity>
     );
-  }
+  }, [error, networkType, isConnected, width, typography, reLogin]);
 
-  renderFooter() {
-    const {
-      customFooter,
-    } = this.props;
-    return (
-      <View style={styles.footer}>
-        { !!customFooter && <View style={styles.row}>{ customFooter }</View> }
-        { this.renderSignInFooter() }
-      </View>
-    );
-  }
-
-  renderSignInFooter() {
-    const {
-      login,
-      signedIn,
-      width,
-    } = this.props;
-    const { colors, typography } = this.context;
+  const signInFooter = useMemo(() => {
     if (signedIn) {
       return null;
     }
@@ -156,88 +126,62 @@ class MyDecksComponent extends React.Component<Props> {
         <Button onPress={login} title={t`Connect to ArkhamDB`} />
       </View>
     );
-  }
+  }, [login, signedIn, width, colors, typography]);
 
-  renderHeader() {
-    const { searchOptions } = this.props;
+  const footer = useMemo(() => {
+    return (
+      <View style={styles.footer}>
+        { !!customFooter && <View style={styles.row}>{ customFooter }</View> }
+        { signInFooter }
+      </View>
+    );
+  }, [customFooter, signInFooter]);
+
+  const header = useMemo(() => {
     const searchPadding = !!searchOptions && Platform.OS === 'android';
-    const error = this.renderError();
-    if (!error && !searchPadding) {
+    if (!errorLine && !searchPadding) {
       return null;
     }
     return (
       <>
-        { !!error && (
+        { !!errorLine && (
           <View style={styles.stack}>
-            { error }
+            { errorLine }
           </View>
         ) }
         { searchPadding && <View style={styles.searchBarPlaceholder} /> }
       </>
     );
-  }
+  }, [searchOptions, errorLine]);
 
-  render() {
-    const {
-      deckClicked,
-      onlyInvestigators,
-      filterDeckIds = [],
-      filterInvestigators = [],
-      myDecks,
-      decks,
-      refreshing,
-      onlyDeckIds,
-      deckToCampaign,
-      signedIn,
-      searchOptions,
-    } = this.props;
+  const deckIds = useMemo(() => {
     const onlyInvestigatorSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterDeckIdsSet = new Set(filterDeckIds);
     const filterInvestigatorsSet = new Set(filterInvestigators);
-    const deckIds = filter(onlyDeckIds || myDecks, deckId => {
+    return filter(onlyDeckIds || myDecks, deckId => {
       const deck = decks[deckId];
       return !filterDeckIdsSet.has(deckId) && (
         !deck || !filterInvestigatorsSet.has(deck.investigator_code)
       ) && (!deck || !onlyInvestigatorSet || onlyInvestigatorSet.has(deck.investigator_code));
     });
-    return (
-      <DeckListComponent
-        searchOptions={searchOptions}
-        customHeader={this.renderHeader()}
-        customFooter={this.renderFooter()}
-        deckIds={deckIds}
-        deckClicked={deckClicked}
-        deckToCampaign={deckToCampaign}
-        onRefresh={signedIn ? this._onRefresh : undefined}
-        refreshing={refreshing}
-        isEmpty={myDecks.length === 0}
-      />
-    );
-  }
+  }, [onlyInvestigators, onlyDeckIds, filterDeckIds, filterInvestigators, myDecks, decks]);
+  return (
+    <DeckListComponent
+      searchOptions={searchOptions}
+      customHeader={header}
+      customFooter={footer}
+      deckIds={deckIds}
+      deckClicked={deckClicked}
+      deckToCampaign={deckToCampaign}
+      onRefresh={signedIn ? onRefresh : undefined}
+      refreshing={refreshing}
+      isEmpty={myDecks.length === 0}
+    />
+  );
 }
 
-const EMPTY_DECKS_TO_CAMPAIGN = {};
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    decks: getAllDecks(state),
-    deckToCampaign: getDeckToCampaignMap(state) || EMPTY_DECKS_TO_CAMPAIGN,
-    ...getMyDecksState(state),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({ refreshMyDecks }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  withNetworkStatus<ReduxProps & ReduxActionProps & OwnProps>(
-    withLoginState<ReduxProps & ReduxActionProps & OwnProps & NetworkStatusProps>(
-      withDimensions(MyDecksComponent)
-    )
-  )
+export default withNetworkStatus<OwnProps>(
+  withLoginState<OwnProps & NetworkStatusProps>(MyDecksComponent)
 );
 
 const styles = StyleSheet.create({

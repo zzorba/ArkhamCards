@@ -1,319 +1,152 @@
-import React from 'react';
-import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { EventSubscription, Navigation } from 'react-native-navigation';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { Alert, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import { filter, find, map, reverse, partition, sortBy, sumBy, shuffle, flatMap, uniq } from 'lodash';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { t, ngettext, msgid } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import CardTextComponent from '@components/card/CardTextComponent';
 import CardUpgradeOption from './CardUpgradeOption';
 import DeckProblemRow from '@components/core/DeckProblemRow';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
-import { Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
+import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/DeckDetailView/actions';
 import DeckValidation from '@lib/DeckValidation';
-import Card, { CardsMap } from '@data/Card';
+import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
 import space, { m, s, xs } from '@styles/space';
 import DeckNavFooter from '../../DeckNavFooter';
-import { parseDeck } from '@lib/parseDeck';
-import {
-  getPacksInCollection,
-  AppState,
-} from '@reducers';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { getPacksInCollection } from '@reducers';
+import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
 import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
+import { useDeck, useSimpleDeckEdits, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
-  card?: Card;
-  cards: CardsMap;
-  cardsByName: {
-    [name: string]: Card[];
-  };
-  ignoreDeckLimitSlots: Slots;
+  id: number;
+  cardsByName: Card[];
   investigator: Card;
-  meta: DeckMeta;
-  parsedDeck: ParsedDeck;
-  previousDeck?: Deck;
-  slots?: Slots;
-  tabooSetId?: number;
-  updateSlots: (slots: Slots) => void;
-  updateIgnoreDeckLimitSlots: (slots: Slots) => void;
-  updateXpAdjustment: (xpAdjustment: number) => void;
-  xpAdjustment: number;
 }
 
-interface ReduxProps {
-  inCollection: {
-    [pack_code: string]: boolean;
-  };
-}
+type Props = CardUpgradeDialogProps & NavigationProps;
 
-interface State {
-  parsedDeck: ParsedDeck;
-  slots: Slots;
-  ignoreDeckLimitSlots: Slots;
-  xpAdjustment: number;
-  showNonCollection: boolean;
-  shrewdAnalysisResults: string[];
-}
+export default function CardUpgradeDialog({
+  componentId,
+  cardsByName,
+  investigator,
+  id,
+}: Props) {
+  const cards = usePlayerCards();
+  const [deck] = useDeck(id, {});
+  const deckEdits = useSimpleDeckEdits(id);
+  const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
+  const dispatch = useDispatch();
+  const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
+  const inCollection = useSelector(getPacksInCollection);
+  const [showNonCollection, setShowNonCollection] = useState(false);
+  const [shrewdAnalysisResult, setShrewdAnalysisResult] = useState<string[]>([]);
 
-type Props = CardUpgradeDialogProps & ReduxProps & NavigationProps & DimensionsProps;
-
-class CardUpgradeDialog extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _navEventListener?: EventSubscription;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      parsedDeck: props.parsedDeck,
-      slots: props.slots || {},
-      ignoreDeckLimitSlots: props.ignoreDeckLimitSlots,
-      xpAdjustment: props.xpAdjustment,
-      showNonCollection: false,
-      shrewdAnalysisResults: [],
-    };
-
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    const {
-      componentId,
-    } = this.props;
+  useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'back') {
       Navigation.pop(componentId);
     }
-  }
+  }, componentId, [componentId]);
 
-  _onIncrementIgnore = (code: string) => {
-    const {
-      updateIgnoreDeckLimitSlots,
-    } = this.props;
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-    } = this.state;
-
-    const newSlots: Slots = {
-      ...ignoreDeckLimitSlots,
-      [code]: (ignoreDeckLimitSlots[code] || 0) + 1,
-    };
-
-    const parsedDeck = this.updateXp(slots, newSlots);
-    this.setState({
-      ignoreDeckLimitSlots: newSlots,
-      parsedDeck: parsedDeck || this.state.parsedDeck,
-    });
-
-    updateIgnoreDeckLimitSlots(newSlots);
-  };
-
-  _onDecrementIgnore = (code: string) => {
-    const {
-      updateIgnoreDeckLimitSlots,
-    } = this.props;
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-    } = this.state;
-
-    const newSlots: Slots = {
-      ...ignoreDeckLimitSlots,
-      [code]: (ignoreDeckLimitSlots[code] || 0) - 1,
-    };
-
-    if (newSlots[code] <= 0) {
-      delete newSlots[code];
+  const namedCards = useMemo(() => {
+    if (!deckEdits) {
+      return [];
     }
-
-    const parsedDeck = this.updateXp(slots, newSlots);
-    this.setState({
-      ignoreDeckLimitSlots: newSlots,
-      parsedDeck: parsedDeck || this.state.parsedDeck,
-    });
-
-    updateIgnoreDeckLimitSlots(newSlots);
-  };
-
-  _onIncrement = (code: string) => {
-    const {
-      cards,
-      updateSlots,
-    } = this.props;
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-    } = this.state;
-
-    const newSlots: Slots = {
-      ...slots,
-      [code]: (slots[code] || 0) + 1,
-    };
-
-    const possibleDecrement = find(reverse(this.namedCards()), card => {
-      return (
-        card.code !== code && newSlots[card.code] > 0 &&
-        (ignoreDeckLimitSlots[card.code] || 0) < newSlots[card.code] &&
-        (card.xp || 0) < (cards[code]?.xp || 0)
-      );
-    });
-
-    if (possibleDecrement) {
-      newSlots[possibleDecrement.code]--;
-      if (newSlots[possibleDecrement.code] <= 0) {
-        delete newSlots[possibleDecrement.code];
-      }
-    }
-
-    const parsedDeck = this.updateXp(newSlots, ignoreDeckLimitSlots);
-    this.setState({
-      slots: newSlots,
-      parsedDeck: parsedDeck || this.state.parsedDeck,
-    });
-
-    updateSlots(newSlots);
-  };
-
-  _onDecrement = (code: string) => {
-    const {
-      updateSlots,
-    } = this.props;
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-    } = this.state;
-
-    const newSlots: Slots = {
-      ...slots,
-      [code]: (slots[code] || 0) - 1,
-    };
-
-    if (newSlots[code] <= 0) {
-      delete newSlots[code];
-    }
-
-    const parsedDeck = this.updateXp(newSlots, ignoreDeckLimitSlots);
-
-    this.setState({
-      slots: newSlots,
-      parsedDeck: parsedDeck || this.state.parsedDeck,
-    });
-
-    updateSlots(newSlots);
-  };
-
-  namedCards() {
-    const {
-      card,
-      cardsByName,
-      investigator,
-      meta,
-    } = this.props;
-    const {
-      slots,
-    } = this.state;
-    const validation = new DeckValidation(investigator, slots, meta);
+    const validation = new DeckValidation(investigator, deckEdits.slots, deckEdits.meta);
     return sortBy(
-      filter((card && cardsByName[card.real_name]) || [],
+      filter(cardsByName,
         card => validation.canIncludeCard(card, false)),
       card => card.xp || 0
     );
-  }
+  }, [cardsByName, investigator, deckEdits]);
+  const onIncrementIgnore = useCallback((code: string) => {
+    dispatch(incIgnoreDeckSlot(id, code));
+  }, [dispatch, id]);
 
-  overLimit(slots: Slots) {
-    const { ignoreDeckLimitSlots } = this.state;
-    const namedCards = this.namedCards();
+  const onDecrementIgnore = useCallback((code: string) => {
+    dispatch(decIgnoreDeckSlot(id, code));
+  }, [dispatch, id]);
+
+  const onIncrement = useCallback((code: string) => {
+    if (!deckEdits) {
+      return;
+    }
+    const possibleDecrement = find(reverse(namedCards), card => {
+      return (
+        !!cards &&
+        card.code !== code && deckEdits.slots[card.code] > 0 &&
+        (deckEdits.ignoreDeckLimitSlots[card.code] || 0) < deckEdits.slots[card.code] &&
+        (card.xp || 0) < (cards[code]?.xp || 0)
+      );
+    });
+    dispatch(incDeckSlot(id, code));
+    if (possibleDecrement) {
+      dispatch(decDeckSlot(id, possibleDecrement.code));
+    }
+  }, [deckEdits, dispatch, cards, namedCards, id]);
+
+  const onDecrement = useCallback((code: string) => {
+    dispatch(decDeckSlot(id, code));
+  }, [dispatch, id]);
+
+  const overLimit = useMemo(() => {
+    if (!deckEdits) {
+      return false;
+    }
     const limit = (namedCards && namedCards.length) ?
       (namedCards[0].deck_limit || 2) :
       2;
-    return sumBy(namedCards, card => (slots[card.code] || 0) - (ignoreDeckLimitSlots[card.code] || 0)) > limit;
-  }
+    return sumBy(namedCards, card => (deckEdits.slots[card.code] || 0) - (deckEdits.ignoreDeckLimitSlots[card.code] || 0)) > limit;
+  }, [deckEdits, namedCards]);
 
-  updateXp(slots: Slots, ignoreDeckLimitSlots: Slots): ParsedDeck | undefined {
-    const {
-      cards,
-      parsedDeck,
-      previousDeck,
-      meta,
-    } = this.props;
+  const showNonCollectionPressed = useCallback(() => {
+    setShowNonCollection(true);
+  }, [setShowNonCollection]);
 
-    const deck = parsedDeck.deck;
-    return parseDeck(
-      deck,
-      meta,
-      slots,
-      ignoreDeckLimitSlots || {},
-      cards,
-      previousDeck
-    );
-  }
-
-  _showNonCollection = () => {
-    this.setState({
-      showNonCollection: true,
-    });
-  };
-
-  inCollection(card: Card): boolean {
-    const { inCollection } = this.props;
-    const { showNonCollection } = this.state;
+  const cardInCollection = useCallback((card: Card): boolean => {
     return (
       card.code === 'core' ||
       inCollection[card.pack_code] ||
       showNonCollection
     );
-  }
+  }, [inCollection, showNonCollection]);
 
-
-  specialSkidsRule(card: Card, highestLevel: boolean) {
-    const { investigator } = this.props;
+  const specialSkidsRule = useCallback((card: Card, highestLevel: boolean) => {
     return investigator.code === PARALLEL_SKIDS_CODE &&
       card.real_traits_normalized &&
       (card.real_traits_normalized.indexOf('#gambit#') !== -1 || card.real_traits_normalized.indexOf('#fortune#') !== -1) &&
       !highestLevel;
-  }
+  }, [investigator]);
 
-  shrewdAnalysisRule(card: Card) {
-    const { slots } = this.state;
-    return (slots[SHREWD_ANALYSIS_CODE] > 0) && UNIDENTIFIED_UNTRANSLATED.has(card.code);
-  }
-
-  renderCard(card: Card, highestLevel: boolean) {
-    const {
-      componentId,
-      tabooSetId,
-      width,
-    } = this.props;
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-    } = this.state;
-    const { borderStyle } = this.context;
-    const allowIgnore = this.specialSkidsRule(card, highestLevel);
-
+  const shrewdAnalysisRule = useCallback((card: Card) => {
+    if (!deckEdits) {
+      return false;
+    }
+    return (deckEdits.slots[SHREWD_ANALYSIS_CODE] > 0) && UNIDENTIFIED_UNTRANSLATED.has(card.code);
+  }, [deckEdits]);
+  const { width } = useWindowDimensions();
+  const renderCard = useCallback((card: Card, highestLevel: boolean) => {
+    const allowIgnore = specialSkidsRule(card, highestLevel);
     return (
       <View style={[styles.column, borderStyle]} key={card.code}>
         <CardUpgradeOption
           key={card.code}
           card={card}
           code={card.code}
-          count={slots[card.code] || 0}
-          ignoreCount={ignoreDeckLimitSlots[card.code] || 0}
-          onIncrement={this._onIncrement}
-          onDecrement={this._onDecrement}
+          count={deckEdits?.slots[card.code] || 0}
+          ignoreCount={deckEdits?.ignoreDeckLimitSlots[card.code] || 0}
+          onIncrement={onIncrement}
+          onDecrement={onDecrement}
           onIgnore={allowIgnore ? {
-            onIncrement: this._onIncrementIgnore,
-            onDecrement: this._onDecrementIgnore,
+            onIncrement: onIncrementIgnore,
+            onDecrement: onDecrementIgnore,
           } : undefined}
         />
         <CardDetailComponent
@@ -326,56 +159,39 @@ class CardUpgradeDialog extends React.Component<Props, State> {
         />
       </View>
     );
-  }
+  }, [componentId, tabooSetId, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
+    specialSkidsRule, onIncrementIgnore, onDecrementIgnore, onIncrement, onDecrement]);
 
-
-  _doShrewdAnalysis = () => {
-    const { slots, ignoreDeckLimitSlots, xpAdjustment } = this.state;
-    const namedCards = this.namedCards();
+  const doShrewdAnalysis = useCallback(() => {
+    if (!deckEdits) {
+      return;
+    }
     const [inCollection] = partition(
       namedCards,
-      card => this.inCollection(card) || slots[card.code] > 0);
-    const [baseCards, eligibleCards] = partition(inCollection, card => this.shrewdAnalysisRule(card));
+      card => cardInCollection(card) || deckEdits.slots[card.code] > 0);
+    const [baseCards, eligibleCards] = partition(inCollection, card => shrewdAnalysisRule(card));
     if (eligibleCards.length && baseCards.length) {
       const baseCard = baseCards[0];
       const firstCard = shuffle(eligibleCards)[0];
       const secondCard = shuffle(eligibleCards)[0];
       const xpCost = (firstCard.xp || 0) + (firstCard.extra_xp || 0) - ((baseCard.xp || 0) + (baseCard.extra_xp || 0));
-      const {
-        updateSlots,
-        updateXpAdjustment,
-      } = this.props;
-
-      const newSlots: Slots = {
-        ...slots,
-        [baseCard.code]: (slots[baseCard.code] || 0) - 2,
-      };
-      if (newSlots[baseCard.code] <= 0) {
-        delete newSlots[baseCard.code];
-      }
-      newSlots[firstCard.code] = (newSlots[firstCard.code] || 0) + 1;
-      newSlots[secondCard.code] = (newSlots[secondCard.code] || 0) + 1;
-      const parsedDeck = this.updateXp(newSlots, ignoreDeckLimitSlots);
-      const newXpAdjustment = xpAdjustment + xpCost;
-      this.setState({
-        slots: newSlots,
-        xpAdjustment: newXpAdjustment,
-        shrewdAnalysisResults: [firstCard.code, secondCard.code],
-        parsedDeck: parsedDeck || this.state.parsedDeck,
-      });
-
-      updateSlots(newSlots);
-      updateXpAdjustment(newXpAdjustment);
+      dispatch(decDeckSlot(id, baseCard.code));
+      dispatch(decDeckSlot(id, baseCard.code));
+      dispatch(incDeckSlot(id, firstCard.code));
+      dispatch(incDeckSlot(id, secondCard.code));
+      setShrewdAnalysisResult([firstCard.code, secondCard.code]);
+      dispatch(setDeckXpAdjustment(id, deckEdits.xpAdjustment + xpCost));
     }
-  };
+  }, [deckEdits, namedCards, dispatch, id, cardInCollection, shrewdAnalysisRule]);
 
-  _askShrewdAnalysis = () => {
-    const { slots } = this.state;
-    const namedCards = this.namedCards();
+  const askShrewdAnalysis = useCallback(() => {
+    if (!deckEdits) {
+      return;
+    }
     const [inCollection] = partition(
       namedCards,
-      card => this.inCollection(card) || slots[card.code] > 0);
-    const [baseCards, eligibleCards] = partition(inCollection, card => this.shrewdAnalysisRule(card));
+      card => cardInCollection(card) || deckEdits.slots[card.code] > 0);
+    const [baseCards, eligibleCards] = partition(inCollection, card => shrewdAnalysisRule(card));
     if (eligibleCards.length && baseCards.length) {
       const baseCard = baseCards[0];
       const sampleCard = eligibleCards[0];
@@ -399,7 +215,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
         [
           {
             text: t`Upgrade`,
-            onPress: this._doShrewdAnalysis,
+            onPress: doShrewdAnalysis,
           },
           {
             text: t`Cancel`,
@@ -408,33 +224,29 @@ class CardUpgradeDialog extends React.Component<Props, State> {
         ]
       );
     }
-  };
-
-  shrewdAnalysisResults(): Card[] {
-    const { cards } = this.props;
-    const { shrewdAnalysisResults } = this.state;
-    return flatMap(uniq(shrewdAnalysisResults), code => {
-      const card = cards[code];
+  }, [deckEdits, namedCards, doShrewdAnalysis, cardInCollection, shrewdAnalysisRule]);
+  const shrewdAnalysisCards: Card[] = useMemo(() => {
+    return flatMap(uniq(shrewdAnalysisResult), code => {
+      const card = cards && cards[code];
       return card ? [card] : [];
     });
-  }
+  }, [shrewdAnalysisResult, cards]);
 
-  renderCards() {
-    const { slots } = this.state;
-    const { borderStyle, typography } = this.context;
-    const namedCards = this.namedCards();
-    const shrewdAnalysisResults = this.shrewdAnalysisResults();
+  const cardsSection = useMemo(() => {
+    if (!deckEdits) {
+      return null;
+    }
     const [inCollection, nonCollection] = partition(
       namedCards,
-      card => this.inCollection(card) || slots[card.code] > 0);
+      card => cardInCollection(card) || deckEdits.slots[card.code] > 0);
     const cards = map(inCollection, card => {
       return {
         card,
         highestLevel: !find(inCollection, c => (c.xp || 0) > (card.xp || 0)),
       };
     });
-    const skidsRule = !!find(cards, ({ card, highestLevel }) => this.specialSkidsRule(card, highestLevel));
-    const shrewdAnalysisRule = !!find(cards, ({ card }) => this.shrewdAnalysisRule(card) && slots[card.code] >= 2);
+    const skidsRule = !!find(cards, ({ card, highestLevel }) => specialSkidsRule(card, highestLevel));
+    const hasShrewdAnalysisRule = !!find(cards, ({ card }) => shrewdAnalysisRule(card) && deckEdits.slots[card.code] >= 2);
     return (
       <>
         { skidsRule && (
@@ -444,28 +256,37 @@ class CardUpgradeDialog extends React.Component<Props, State> {
             />
           </View>
         ) }
-        { (shrewdAnalysisRule || !!shrewdAnalysisResults.length) && (
+        { (hasShrewdAnalysisRule || !!shrewdAnalysisCards.length) && (
           <>
             <View style={space.paddingM}>
               <CardTextComponent
                 text={t`<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use Shrewd Analysis to choose both upgrades randomly and only pay for one.\n\n<i>Note: the app handles this by adjusting experience to account for the 'free' upgrade.</i>` }
               />
             </View>
-            { shrewdAnalysisResults.length ? (
+            { shrewdAnalysisCards.length ? (
               <>
                 <View style={[styles.shrewdAnalysisResults, borderStyle]}>
                   <Text style={[typography.text, typography.light, typography.right, space.paddingS, space.paddingRightM]}>
                     { t`Upgrade results` }
                   </Text>
                 </View>
-                { map(shrewdAnalysisResults, (card, idx) => <CardSearchResult key={idx} card={card} count={slots[card.code] || 0} />) }
+                { map(shrewdAnalysisCards, (card, idx) => (
+                  <CardSearchResult
+                    key={idx}
+                    card={card}
+                    control={{
+                      type: 'count',
+                      count: deckEdits.slots[card.code] || 0,
+                    }}
+                  />
+                )) }
               </>
             ) : (
-              <ArkhamButton title={t`Upgrade with Shrewd Analysis`} icon="up" onPress={this._askShrewdAnalysis} />
+              <ArkhamButton title={t`Upgrade with Shrewd Analysis`} icon="up" onPress={askShrewdAnalysis} />
             ) }
           </>
         ) }
-        { map(cards, ({ card, highestLevel }) => this.renderCard(card, highestLevel)) }
+        { map(cards, ({ card, highestLevel }) => renderCard(card, highestLevel)) }
         { nonCollection.length > 0 ? (
           <BasicButton
             key="non-collection"
@@ -474,88 +295,41 @@ class CardUpgradeDialog extends React.Component<Props, State> {
               `Show ${nonCollection.length} non-collection cards`,
               nonCollection.length
             )}
-            onPress={this._showNonCollection}
+            onPress={showNonCollectionPressed}
           />
         ) : null }
       </>
     );
-  }
+  }, [deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, cardInCollection, specialSkidsRule, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
 
-  renderFooter(slots?: Slots, controls?: React.ReactNode) {
-    const {
-      componentId,
-      cards,
-      meta,
-    } = this.props;
-    const {
-      parsedDeck,
-      xpAdjustment,
-    } = this.state;
 
-    if (!parsedDeck) {
-      return null;
-    }
-
-    return (
-      <DeckNavFooter
-        componentId={componentId}
-        parsedDeck={parsedDeck}
-        meta={meta}
-        cards={cards}
-        xpAdjustment={xpAdjustment}
-        controls={controls}
-      />
-    );
-  }
-
-  render() {
-    const {
-      investigator,
-    } = this.props;
-    const {
-      slots,
-    } = this.state;
-    const { backgroundStyle } = this.context;
-    const overLimit = this.overLimit(slots);
-
-    const isSurvivor = investigator.faction_code === 'survivor';
-    return (
-      <View
-        style={[styles.wrapper, backgroundStyle]}
+  const isSurvivor = investigator.faction_code === 'survivor';
+  return (
+    <View
+      style={[styles.wrapper, backgroundStyle]}
+    >
+      <ScrollView
+        overScrollMode="never"
+        bounces={false}
       >
-        <ScrollView
-          overScrollMode="never"
-          bounces={false}
-        >
-          { overLimit && (
-            <View style={[styles.problemBox,
-              { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
-            ]}>
-              <DeckProblemRow
-                problem={{ reason: 'too_many_copies' }}
-                color={isSurvivor ? COLORS.black : COLORS.white}
-                fontSize={14}
-              />
-            </View>
-          ) }
-          { this.renderCards() }
-          <View style={styles.footerPadding} />
-        </ScrollView>
-        { this.renderFooter() }
-      </View>
-    );
-  }
+        { overLimit && (
+          <View style={[styles.problemBox,
+            { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
+          ]}>
+            <DeckProblemRow
+              problem={{ reason: 'too_many_copies' }}
+              color={isSurvivor ? COLORS.black : COLORS.white}
+              fontSize={14}
+            />
+          </View>
+        ) }
+        { cardsSection }
+        <View style={styles.footerPadding} />
+      </ScrollView>
+      <DeckNavFooter componentId={componentId} deckId={id} />
+    </View>
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    inCollection: getPacksInCollection(state),
-  };
-}
-
-export default connect(mapStateToProps)(
-  withDimensions(CardUpgradeDialog)
-);
 
 const styles = StyleSheet.create({
   column: {

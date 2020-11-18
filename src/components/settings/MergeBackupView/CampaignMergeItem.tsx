@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import { campaignName } from '@components/campaign/constants';
@@ -11,21 +11,17 @@ interface Props {
   onValueChange: (campaign: Campaign, value: boolean) => void;
 }
 
-export default class CampaignMergeItem extends React.Component<Props> {
-  _onValueChange = (value: boolean) => {
-    const { campaign, inverted, onValueChange } = this.props;
+export default function CampaignMergeItem({ campaign, value, inverted, onValueChange }: Props) {
+  const handleOnValueChange = useCallback((value: boolean) => {
     onValueChange(campaign, inverted ? !value : value);
-  };
+  }, [campaign, inverted, onValueChange]);
 
-  render() {
-    const { campaign, inverted, value } = this.props;
-    return (
-      <SettingsSwitch
-        title={campaign.name}
-        description={campaignName(campaign.cycleCode) || undefined}
-        value={inverted ? !value : value}
-        onValueChange={this._onValueChange}
-      />
-    );
-  }
+  return (
+    <SettingsSwitch
+      title={campaign.name}
+      description={campaignName(campaign.cycleCode) || undefined}
+      value={inverted ? !value : value}
+      onValueChange={handleOnValueChange}
+    />
+  );
 }

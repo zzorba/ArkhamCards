@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { filter, find, flatMap, forEach, head, map } from 'lodash';
 import { ScrollView, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { t } from 'ttag';
@@ -8,7 +8,6 @@ import BasicButton from '@components/core/BasicButton';
 import InvestigatorOddsComponent from './InvestigatorOddsComponent';
 import SkillOddsRow from './SkillOddsRow';
 import VariableTokenInput from './VariableTokenInput';
-import { add, subtract } from './oddsHelper';
 import CardTextComponent from '@components/card/CardTextComponent';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -21,24 +20,15 @@ import { Campaign, CampaignDifficulty, CUSTOM } from '@actions/types';
 import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '@app_constants';
 import Card from '@data/Card';
 import { s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useCounter, useCounters } from '@components/core/hooks';
 
 interface Props {
   campaign: Campaign;
   chaosBag: ChaosBag;
   cycleScenarios?: Scenario[];
-  scenarioByCode?: { [code: string]: Scenario };
   allInvestigators: Card[];
   scenarioCards?: Card[];
-}
-
-interface State {
-  currentScenario?: Scenario;
-  currentScenarioCard?: Card;
-  difficulty?: string;
-  testDifficulty: number;
-  specialTokenValues: SpecialTokenValue[];
-  xValue: { [token: string]: number };
 }
 
 const SCENARIO_CODE_FIXER: {
@@ -48,55 +38,96 @@ const SCENARIO_CODE_FIXER: {
   the_doom_of_eztli: 'eztli',
 };
 
-export default class OddsCalculatorComponent extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function parseSpecialTokenValues(currentScenarioCard?: Card, difficulty?: string): SpecialTokenValue[] {
+  const scenarioTokens: SpecialTokenValue[] = [];
+  if (currentScenarioCard) {
+    let scenarioText = currentScenarioCard.text;
+    if (difficulty === CampaignDifficulty.HARD ||
+      difficulty === CampaignDifficulty.EXPERT) {
+      scenarioText = currentScenarioCard.back_text;
+    }
+    if (scenarioText) {
+      const linesByToken: { [token: string]: string } = {};
+      forEach(
+        scenarioText.replace(/<br\/>/g, '\n').split('\n'),
+        line => {
+          const token = find(SPECIAL_TOKENS, token =>
+            line.startsWith(`[${token}]`));
+          if (token) {
+            linesByToken[token] = line;
+          }
+        });
+      SPECIAL_TOKENS.forEach(token => {
+        switch (token) {
+          case 'elder_sign':
+            scenarioTokens.push({
+              token,
+              value: 0,
+            });
+            break;
+          case 'auto_fail':
+            scenarioTokens.push({
+              token,
+              value: 'auto_fail',
+            });
+            break;
+          default: {
+            const line = linesByToken[token];
+            if (line) {
+              const valueRegex = new RegExp(`\\[(${token})\\]\\s*:?\\s([-+][0-9X])(\\. )?(.*)`);
+              if (valueRegex.test(line)) {
+                const match = line.match(valueRegex);
+                if (match) {
+                  if (match[2] === '-X') {
+                    scenarioTokens.push({
+                      token,
+                      value: 'X',
+                      xText: match[4],
+                    });
+                  } else {
+                    scenarioTokens.push({
+                      token,
+                      value: parseFloat(match[2]) || 0,
+                    });
+                  }
+                }
+              } else {
+                const revealAnotherRegex = new RegExp(`\\[(${token})\\]\\s*:?\\sReveal another (chaos )?token.`);
+                if (revealAnotherRegex.test(line)) {
+                  scenarioTokens.push({
+                    token,
+                    value: 'reveal_another',
+                  });
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+  }
+  return scenarioTokens;
+}
 
-  constructor(props: Props) {
-    super(props);
-
-    const hasCompletedScenario = completedScenario(props.campaign ? props.campaign.scenarioResults : []);
-    const currentScenario = head(
-      filter(props.cycleScenarios, scenario =>
+export default function OddsCalculatorComponent({
+  campaign,
+  chaosBag,
+  cycleScenarios,
+  allInvestigators,
+  scenarioCards,
+}: Props) {
+  const { backgroundStyle, borderStyle, colors, typography } = useContext(StyleContext);
+  const [testDifficulty, incTestDifficulty, decTestDifficulty] = useCounter(3, { min: 0 });
+  const [currentScenario, setCurrentScenario] = useState<Scenario | undefined>(() => {
+    const hasCompletedScenario = completedScenario(campaign ? campaign.scenarioResults : []);
+    return head(
+      filter(cycleScenarios, scenario =>
         !scenario.interlude &&
         !hasCompletedScenario(scenario)
       )
     ) || undefined;
-
-    const {
-      currentScenarioCard,
-      difficulty,
-    } = this.currentScenarioState(currentScenario);
-
-    this.state = {
-      currentScenario,
-      currentScenarioCard,
-      difficulty,
-      testDifficulty: 0,
-      specialTokenValues: OddsCalculatorComponent.parseSpecialTokenValues(currentScenarioCard, difficulty),
-      xValue: {
-        skull: 0,
-        cultist: 0,
-        tablet: 0,
-        elder_thing: 0,
-      },
-    };
-  }
-
-  _showScenarioDialog = () => {
-    const {
-      currentScenario,
-    } = this.state;
-    if (!currentScenario) {
-      return;
-    }
-    showScenarioDialog(
-      this.possibleScenarios(),
-      this._scenarioChanged
-    );
-  };
-
-  encounterCode(currentScenario?: Scenario) {
+  });
+  const encounterCode = useMemo(() => {
     const encounterCode = currentScenario && (
       currentScenario.code.startsWith('return_to_') ?
         currentScenario.code.substring('return_to_'.length) :
@@ -105,199 +136,65 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
       return SCENARIO_CODE_FIXER[encounterCode];
     }
     return encounterCode;
-  }
-
-  currentScenarioState(currentScenario?: Scenario) {
-    const {
-      scenarioCards,
-      campaign,
-    } = this.props;
+  }, [currentScenario]);
+  const possibleScenarios = useMemo(() => {
+    return map(
+      filter(cycleScenarios, scenario => !scenario.interlude),
+      card => card.name
+    );
+  }, [cycleScenarios]);
+  const { currentScenarioCard, specialTokenValues, difficulty } = useMemo(() => {
     const difficulty = campaign ? campaign.difficulty : undefined;
-    const encounterCode = this.encounterCode(currentScenario);
-
     const currentScenarioCard = (scenarioCards && encounterCode) ?
       find(scenarioCards, card => card.encounter_code === encounterCode) :
       undefined;
-    const specialTokenValues = OddsCalculatorComponent.parseSpecialTokenValues(
-      currentScenarioCard,
-      difficulty
-    );
+    const specialTokenValues = parseSpecialTokenValues(currentScenarioCard, difficulty);
     return {
-      currentScenario,
       currentScenarioCard,
       specialTokenValues,
       difficulty,
     };
-  }
+  }, [encounterCode, scenarioCards, campaign]);
+  const [xValue, incXValue, decXValue] = useCounters({
+    skull: 0,
+    cultist: 0,
+    tablet: 0,
+    elder_thing: 0,
+  });
 
-  _scenarioChanged = (value: string) => {
-    const {
-      cycleScenarios,
-    } = this.props;
-    const currentScenario = find(cycleScenarios, scenario => scenario.name === value);
-    this.setState(this.currentScenarioState(currentScenario));
-  };
+  const scenarioChanged = useCallback((value: string) => {
+    setCurrentScenario(find(cycleScenarios, scenario => scenario.name === value));
+  }, [cycleScenarios, setCurrentScenario]);
 
-  static parseSpecialTokenValues(
-    currentScenarioCard?: Card,
-    difficulty?: string
-  ): SpecialTokenValue[] {
-    const scenarioTokens: SpecialTokenValue[] = [];
-    if (currentScenarioCard) {
-      let scenarioText = currentScenarioCard.text;
-      if (difficulty === CampaignDifficulty.HARD ||
-        difficulty === CampaignDifficulty.EXPERT) {
-        scenarioText = currentScenarioCard.back_text;
-      }
-      if (scenarioText) {
-        const linesByToken: { [token: string]: string } = {};
-        forEach(
-          scenarioText.replace(/<br\/>/g, '\n').split('\n'),
-          line => {
-            const token = find(SPECIAL_TOKENS, token =>
-              line.startsWith(`[${token}]`));
-            if (token) {
-              linesByToken[token] = line;
-            }
-          });
-        SPECIAL_TOKENS.forEach(token => {
-          switch (token) {
-            case 'elder_sign':
-              scenarioTokens.push({
-                token,
-                value: 0,
-              });
-              break;
-            case 'auto_fail':
-              scenarioTokens.push({
-                token,
-                value: 'auto_fail',
-              });
-              break;
-            default: {
-              const line = linesByToken[token];
-              if (line) {
-                const valueRegex = new RegExp(`\\[(${token})\\]\\s*:?\\s([-+][0-9X])(\\. )?(.*)`);
-                if (valueRegex.test(line)) {
-                  const match = line.match(valueRegex);
-                  if (match) {
-                    if (match[2] === '-X') {
-                      scenarioTokens.push({
-                        token,
-                        value: 'X',
-                        xText: match[4],
-                      });
-                    } else {
-                      scenarioTokens.push({
-                        token,
-                        value: parseFloat(match[2]) || 0,
-                      });
-                    }
-                  }
-                } else {
-                  const revealAnotherRegex = new RegExp(`\\[(${token})\\]\\s*:?\\sReveal another (chaos )?token.`);
-                  if (revealAnotherRegex.test(line)) {
-                    scenarioTokens.push({
-                      token,
-                      value: 'reveal_another',
-                    });
-                  }
-                }
-              }
-            }
-          }
-        });
-      }
+  const showScenarioDialogPressed = useCallback(() => {
+    if (!currentScenario) {
+      return;
     }
-    return scenarioTokens;
-  }
+    showScenarioDialog(possibleScenarios, scenarioChanged);
+  }, [currentScenario, possibleScenarios, scenarioChanged]);
 
-  _incrementToken = (token: string) => {
-    const { xValue } = this.state;
-    this.setState({
-      xValue: {
-        ...xValue,
-        [token]: xValue[token] + 1,
-      },
-    });
-  };
-
-  _decrementToken= (token: string) => {
-    const { xValue } = this.state;
-    this.setState({
-      xValue: {
-        ...xValue,
-        [token]: xValue[token] - 1,
-      },
-    });
-  };
-
-  _incrementDifficulty = () => {
-    this.modifyTestDifficulty(add);
-  };
-
-  _decrementDifficulty = () => {
-    this.modifyTestDifficulty(subtract);
-  };
-
-  possibleScenarios() {
-    const {
-      cycleScenarios,
-    } = this.props;
-    return map(
-      filter(
-        cycleScenarios,
-        scenario => !scenario.interlude
-      ),
-      card => card.name
-    );
-  }
-
-  modifyTestDifficulty(calculate: (x: number, y: number) => number) {
-    const {
-      testDifficulty,
-    } = this.state;
-    this.setState({
-      testDifficulty: calculate(testDifficulty, 1),
-    });
-  }
-
-  getSpecialTokenValues() {
-    const {
-      specialTokenValues,
-      xValue,
-    } = this.state;
+  const allSpecialTokenValues = useMemo(() => {
     return map(specialTokenValues, tokenValue => {
       if (tokenValue.value === 'X') {
         return {
           token: tokenValue.token,
-          value: -xValue[tokenValue.token],
+          value: -(xValue[tokenValue.token] || 0),
         };
       }
       return tokenValue;
     });
-  }
+  }, [specialTokenValues, xValue]);
 
-  renderInvestigatorRows() {
-    const {
-      allInvestigators,
-      chaosBag,
-    } = this.props;
-    const {
-      difficulty,
-      currentScenarioCard,
-      testDifficulty,
-    } = this.state;
+  const investigatorRows = useMemo(() => {
     if (!chaosBag || !currentScenarioCard) {
       return;
     }
-    const specialTokenValues = this.getSpecialTokenValues();
     return (
       <>
         <SkillOddsRow
           chaosBag={chaosBag}
           stat={0}
-          specialTokenValues={specialTokenValues}
+          specialTokenValues={allSpecialTokenValues}
           type="wild"
           testDifficulty={testDifficulty}
         />
@@ -305,18 +202,16 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           <InvestigatorOddsComponent
             key={investigator.real_name}
             investigator={investigator}
-            difficulty={difficulty}
             testDifficulty={testDifficulty}
             chaosBag={chaosBag}
-            specialTokenValues={specialTokenValues}
+            specialTokenValues={allSpecialTokenValues}
           />))
         }
       </>
     );
-  }
+  }, [allInvestigators, chaosBag, currentScenarioCard, testDifficulty, allSpecialTokenValues]);
 
-  renderSpecialTokenInputs() {
-    const { specialTokenValues, xValue } = this.state;
+  const specialTokenInputs = useMemo(() => {
     if (!find(specialTokenValues, value => value.value === 'X')) {
       return null;
     }
@@ -331,34 +226,26 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
               key={token.token}
               symbol={token.token}
               color={CHAOS_TOKEN_COLORS[token.token]}
-              value={xValue[token.token]}
+              value={xValue[token.token] || 0}
               text={token.xText}
-              increment={this._incrementToken}
-              decrement={this._decrementToken}
+              increment={incXValue}
+              decrement={decXValue}
             />
           );
         }) }
       </>
     );
-  }
+  }, [specialTokenValues, xValue, incXValue, decXValue]);
 
-  renderContent(campaign: Campaign) {
-    const {
-      chaosBag,
-    } = this.props;
-    const {
-      difficulty,
-      currentScenario,
-      currentScenarioCard,
-    } = this.state;
-    const { borderStyle, colors, typography } = this.context;
-    const scenarioText = currentScenarioCard && (
-      (difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT) ?
-        currentScenarioCard.back_text :
-        currentScenarioCard.text
-    );
-    return (
-      <>
+  const scenarioText = currentScenarioCard && (
+    (difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT) ?
+      currentScenarioCard.back_text :
+      currentScenarioCard.text
+  );
+  return (
+    <View style={[styles.container, backgroundStyle]}>
+      <KeepAwake />
+      <ScrollView style={[styles.container, backgroundStyle]}>
         <View style={[styles.sectionRow, borderStyle]}>
           { campaign.cycleCode !== CUSTOM && !!currentScenario && (
             <BackgroundIcon
@@ -375,58 +262,42 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           </View>
           <BasicButton
             title={t`Change Scenario`}
-            onPress={this._showScenarioDialog}
+            onPress={showScenarioDialogPressed}
           />
         </View>
-        { this.renderSpecialTokenInputs() }
+        { specialTokenInputs }
         <View style={[styles.sectionRow, borderStyle]}>
           <Text style={typography.small}>{ t`Chaos Bag` }</Text>
           <ChaosBagLine
             chaosBag={chaosBag}
           />
         </View>
-        { this.renderInvestigatorRows() }
-      </>
-    );
-  }
-
-  render() {
-    const { backgroundStyle, borderStyle, colors, typography } = this.context;
-    const { campaign } = this.props;
-    const {
-      testDifficulty,
-    } = this.state;
-    return (
-      <View style={[styles.container, backgroundStyle]}>
-        <KeepAwake />
-        <ScrollView style={[styles.container, backgroundStyle]}>
-          { this.renderContent(campaign) }
-          <View style={styles.finePrint}>
-            <Text style={typography.small}>
-              { t`Note: chaos tokens that cause additional tokens to be revealed does not show correct odds for the "Draw Two Pick One" and similar multi-draw situations.` }
+        { investigatorRows }
+        <View style={styles.finePrint}>
+          <Text style={typography.small}>
+            { t`Note: chaos tokens that cause additional tokens to be revealed does not show correct odds for the "Draw Two Pick One" and similar multi-draw situations.` }
+          </Text>
+        </View>
+      </ScrollView>
+      <SafeAreaView>
+        <View style={[styles.footer, borderStyle]}>
+          <View style={[styles.countRow, styles.footerRow, { backgroundColor: colors.L20 }]}>
+            <Text style={typography.text}>{ t`Difficulty` }</Text>
+            <Text style={[{ color: colors.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
+              { testDifficulty }
             </Text>
+            <PlusMinusButtons
+              count={testDifficulty}
+              size={36}
+              onIncrement={incTestDifficulty}
+              onDecrement={decTestDifficulty}
+              color="dark"
+            />
           </View>
-        </ScrollView>
-        <SafeAreaView>
-          <View style={[styles.footer, borderStyle]}>
-            <View style={[styles.countRow, styles.footerRow, { backgroundColor: colors.L20 }]}>
-              <Text style={typography.text}>{ t`Difficulty` }</Text>
-              <Text style={[{ color: colors.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
-                { testDifficulty }
-              </Text>
-              <PlusMinusButtons
-                count={testDifficulty}
-                size={36}
-                onIncrement={this._incrementDifficulty}
-                onDecrement={this._decrementDifficulty}
-                color="dark"
-              />
-            </View>
-          </View>
-        </SafeAreaView>
-      </View>
-    );
-  }
+        </View>
+      </SafeAreaView>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

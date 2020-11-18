@@ -5,6 +5,7 @@ project.ext.envConfigFiles = [
     release: ".env",
 ]
 
+
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
@@ -91,8 +92,11 @@ project.ext.react = [
 apply from: "../../node_modules/react-native/react.gradle"
 
 project.ext.vectoricons = [
-    iconFontNames: [ 'AnkeCalligraphicFG.ttf', 'arkhamicons.ttf', 'coreset.ttf', 'AboutDead.ttf', 'Alegreya-ExtraBoldItalic.ttf', 'Alegreya-ExtraBold.ttf', 'Alegreya-BoldItalic.ttf', 'Alegreya-MediumItalic.ttf', 'Alegreya-Bold.ttf', 'Alegreya-Medium.ttf', 'Alegreya-Regular.ttf', 'Alegreya-Italic', 'Conkordia.ttf', 'circle.ttf', 'dreameaters.ttf', 'dunwich.ttf', 'innsmouth.ttf', 'carcosa.ttf', 'forgotten.ttf', 'standalone.ttf', 'app.ttf', 'Teutonic.ttf' ]
+    iconFontsDir: 'android/app/src/main/assets/fonts',
+    iconFontNames: ['MaterialIcons.ttf', 'MaterialCommunityIcons.ttf', 'AnkeCalligraphicFG.ttf', 'arkhamicons.ttf', 'coreset.ttf', 'AboutDead.ttf', 'Alegreya-ExtraBoldItalic.ttf', 'Alegreya-ExtraBold.ttf', 'Alegreya-BoldItalic.ttf', 'Alegreya-MediumItalic.ttf', 'Alegreya-Bold.ttf', 'Alegreya-Medium.ttf', 'Alegreya-Regular.ttf', 'Alegreya-Italic', 'Conkordia.ttf', 'circle.ttf', 'dreameaters.ttf', 'dunwich.ttf', 'innsmouth.ttf', 'carcosa.ttf', 'forgotten.ttf', 'standalone.ttf', 'app.ttf', 'Teutonic.ttf' ]
 ]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -143,8 +147,8 @@ android {
         applicationId "com.arkhamcards"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 252
-        versionName "2.7.1"
+        versionCode 283
+        versionName "2.8.7"
         manifestPlaceholders = [
             appAuthRedirectScheme: 'arkhamcards'
         ]

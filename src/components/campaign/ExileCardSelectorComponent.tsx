@@ -1,16 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import { Deck, Slots } from '@actions/types';
 import Card from '@data/Card';
-import { getDeck, AppState } from '@reducers';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
+import { useDeck } from '@components/core/hooks';
 
 interface OwnProps {
   componentId: string;
   id: number;
   exileCounts: Slots;
-  updateExileCounts: (exileCounts: Slots) => void;
+  updateExileCount: (card: Card, count: number) => void;
   label?: React.ReactNode;
 }
 
@@ -20,42 +19,23 @@ interface ReduxProps {
 
 type Props = OwnProps & ReduxProps;
 
-class ExileCardSelectorComponent extends React.Component<Props> {
-  _isExile = (card: Card) => {
-    return !!card.exile;
-  };
+function isExile(card: Card) {
+  return !!card.exile;
+}
 
-  render() {
-    const {
-      componentId,
-      deck,
-      exileCounts,
-      updateExileCounts,
-      label,
-    } = this.props;
-    if (!deck) {
-      return null;
-    }
-    return (
-      <CardSelectorComponent
-        componentId={componentId}
-        slots={deck.slots}
-        counts={exileCounts}
-        updateCounts={updateExileCounts}
-        filterCard={this._isExile}
-        header={label}
-      />
-    );
+export default function ExileCardSelectorComponent({ componentId, id, exileCounts, updateExileCount, label }: Props) {
+  const [deck] = useDeck(id, {});
+  if (!deck) {
+    return null;
   }
+  return (
+    <CardSelectorComponent
+      componentId={componentId}
+      slots={deck.slots}
+      counts={exileCounts}
+      updateCount={updateExileCount}
+      filterCard={isExile}
+      header={label}
+    />
+  );
 }
-
-
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  return {
-    deck: getDeck(props.id)(state) || undefined,
-  };
-}
-
-export default connect<ReduxProps, unknown, OwnProps, AppState>(
-  mapStateToProps
-)(ExileCardSelectorComponent);

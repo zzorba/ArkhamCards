@@ -317,4 +317,6 @@ export default {
   updateCampaign,
   deleteCampaign,
   addScenarioResult,
+  addInvestigator,
+  removeInvestigator,
 };

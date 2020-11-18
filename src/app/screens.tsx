@@ -28,7 +28,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Deck.EditSpecial': return require('@components/deck/EditSpecialDeckCardsView').default;
     case 'Deck.NewOptions': return require('@components/deck/NewDeckOptionsDialog').default;
     case 'Card': return require('@components/card/CardDetailView').default;
-    case 'Card.Swipe': return require('@components/card/CardDetailSwipeView').default;
+    case 'Card.Swipe': return require('@components/card/DbCardDetailSwipeView').default;
     case 'Card.Faq': return require('@components/card/CardFaqView').default;
     case 'Card.Taboo': return require('@components/card/CardTabooView').default;
     case 'Card.Image': return require('@components/card/CardImageView').default;
@@ -64,7 +64,6 @@ function getStandardComponent(componentName: string | number) {
     case 'My.Spoilers': return require('@components/settings/SpoilersView').default;
     case 'Dialog.CardUpgrade': return require('@components/deck/CardUpgradeDialog').default;
     case 'Dialog.EditChaosBag': return require('@components/campaign/EditChaosBagDialog').default;
-    case 'Dialog.ExileCards': return require('@components/campaign/ExileCardDialog').default;
     case 'Dialog.Campaign': return require('@components/campaign/SelectCampaignDialog').default;
     case 'Dialog.CampaignDrawWeakness': return require('@components/campaign/CampaignDrawWeaknessDialog').default;
     case 'Dialog.CampaignEditWeakness': return require('@components/campaign/CampaignEditWeaknessDialog').default;
@@ -74,7 +73,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Rule': return require('@components/settings/RuleView').default;
     default: return undefined;
   }
-};
+}
 
 function getRootComponent(name: string | number): any {
   switch (name) {

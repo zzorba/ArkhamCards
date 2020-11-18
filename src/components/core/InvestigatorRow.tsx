@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,18 +6,23 @@ import {
   View,
 } from 'react-native';
 // @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {
+  Placeholder,
+  PlaceholderLine,
+  Fade,
+} from 'rn-placeholder';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardCostIcon from '@components/core/CardCostIcon';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import Card from '@data/Card';
 import space, { m, s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   superTitle?: string;
-  investigator: Card;
+  investigator?: Card;
   yithian?: boolean;
   description?: string;
   eliminated?: boolean;
@@ -25,58 +30,64 @@ interface Props {
   bigImage?: boolean;
   onPress?: (card: Card) => void;
   onRemove?: (card: Card) => void;
-  children?: React.ReactElement | React.ReactElement[];
+  children?: React.ReactNode;
   noFactionIcon?: boolean;
 }
 
 const ICON_SIZE = 60;
-export default class InvestigatorRow extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function InvestigatorRow({
+  superTitle,
+  investigator,
+  yithian,
+  description,
+  eliminated,
+  button,
+  bigImage,
+  onPress,
+  onRemove,
+  children,
+  noFactionIcon,
+}: Props) {
+  const { backgroundStyle, borderStyle, colors, fontScale, typography } = useContext(StyleContext);
+  const handleOnPress = useCallback(() => {
+    onPress && investigator && onPress(investigator);
+  }, [onPress, investigator]);
+  const handleOnRemove = useCallback(() => {
+    onRemove && investigator && onRemove(investigator);
+  }, [onRemove, investigator]);
 
-  _onPress = () => {
-    const {
-      onPress,
-      investigator,
-    } = this.props;
-    onPress && onPress(investigator);
-  };
-
-  _onRemove = () => {
-    const {
-      onRemove,
-      investigator,
-    } = this.props;
-    onRemove && onRemove(investigator);
-  };
-
-  renderContent() {
-    const {
-      investigator,
-      onRemove,
-      children,
-      eliminated,
-      button,
-      description,
-      yithian,
-      bigImage,
-      noFactionIcon,
-      superTitle,
-    } = this.props;
-    const { backgroundStyle, borderStyle, colors, gameFont, typography } = this.context;
+  const backgroundColor = useMemo(() => {
+    if (eliminated) {
+      return colors.faction.dead.background;
+    }
+    return colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+  }, [eliminated, investigator, colors]);
+  const fadeAnim = useCallback((props: any) => {
+    return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
+  }, [colors]);
+  const detailFadeAnim = useCallback((props: any) => {
+    return <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />;
+  }, [colors]);
+  const content = useMemo(() => {
     return (
       <View style={[
         styles.wrapper,
         backgroundStyle,
         borderStyle,
       ]}>
-        <View style={[
-          styles.headerColor,
-          { backgroundColor: colors.faction[eliminated ? 'dead' : investigator.factionCode()].darkBackground },
-        ]} />
+        { investigator ? (
+          <View style={[
+            styles.headerColor,
+            { backgroundColor },
+          ]} />
+        ) : (
+          <Placeholder Animation={fadeAnim}>
+            <PlaceholderLine noMargin style={styles.headerColor} color={colors.D10} />
+          </Placeholder>
+        ) }
         { !!superTitle && (
           <View style={[styles.row, space.paddingLeftM, space.paddingTopS]}>
-            <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>{ superTitle }</Text>
+            <Text style={typography.mediumGameFont}>{ superTitle }</Text>
           </View>
         ) }
         <View style={[styles.row, !superTitle ? space.paddingTopS : {}]}>
@@ -90,17 +101,23 @@ export default class InvestigatorRow extends React.Component<Props> {
             />
           </View>
           <View style={[styles.titleColumn, button ? styles.buttonColumn : {}, noFactionIcon ? space.marginRightM : {}]}>
-            <Text style={[
-              superTitle ? typography.gameFont : typography.bigGameFont,
-              { fontFamily: gameFont, color: colors.darkText },
-            ]}>
-              { description ? `${investigator.name}: ${description}` : investigator.name }
-            </Text>
+            { investigator ? (
+              <Text style={[
+                superTitle ? typography.gameFont : typography.bigGameFont,
+                typography.dark,
+              ]}>
+                { description ? `${investigator.name}: ${description}` : investigator.name }
+              </Text>
+            ) : (
+              <Placeholder Animation={detailFadeAnim}>
+                <PlaceholderLine color={colors.L10} height={28 * fontScale * 0.6} width={40} style={{ marginTop: 4, marginBottom: 4 }} />
+              </Placeholder>
+            ) }
             { !!button && button }
           </View>
           { !noFactionIcon && (
             <View style={space.marginRightM}>
-              { !onRemove && (
+              { !onRemove && investigator && (
                 <ArkhamIcon
                   name={CardCostIcon.factionIcon(investigator)}
                   size={ICON_SIZE}
@@ -111,7 +128,7 @@ export default class InvestigatorRow extends React.Component<Props> {
           ) }
           { !!onRemove && (
             <View style={styles.closeIcon}>
-              <TouchableOpacity onPress={this._onRemove}>
+              <TouchableOpacity onPress={handleOnRemove}>
                 <MaterialCommunityIcons
                   name="close"
                   size={36}
@@ -122,27 +139,44 @@ export default class InvestigatorRow extends React.Component<Props> {
           ) }
         </View>
         { !!children && children }
-        <View style={[
-          styles.headerColor,
-          { backgroundColor: colors.faction[eliminated ? 'dead' : investigator.factionCode()].darkBackground },
-        ]} />
+        { investigator ? (
+          <View style={[
+            styles.headerColor,
+            { backgroundColor },
+          ]} />
+        ) : (
+          <Placeholder Animation={fadeAnim}>
+            <PlaceholderLine noMargin style={[styles.headerColor, { borderRadius: 0 }]} color={colors.D10} />
+          </Placeholder>
+        ) }
       </View>
     );
-  }
+  }, [
+    detailFadeAnim,
+    fadeAnim,
+    handleOnRemove,
+    backgroundColor,
+    investigator,
+    onRemove,
+    children,
+    eliminated,
+    button,
+    description,
+    yithian,
+    bigImage,
+    noFactionIcon,
+    superTitle,
+    backgroundStyle, borderStyle, colors, typography, fontScale,
+  ]);
 
-  render() {
-    const {
-      onPress,
-    } = this.props;
-    if (!onPress) {
-      return this.renderContent();
-    }
-    return (
-      <TouchableOpacity onPress={this._onPress}>
-        { this.renderContent() }
-      </TouchableOpacity>
-    );
+  if (!onPress) {
+    return content;
   }
+  return (
+    <TouchableOpacity onPress={handleOnPress}>
+      { content }
+    </TouchableOpacity>
+  );
 }
 
 const styles = StyleSheet.create({

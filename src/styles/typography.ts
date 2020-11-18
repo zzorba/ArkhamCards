@@ -15,6 +15,7 @@ export interface Typography {
   smallLabel: TextStyle;
   small: TextStyle;
   tiny: TextStyle;
+  menuText: TextStyle;
   large: TextStyle;
   header: TextStyle;
   button: TextStyle;
@@ -91,6 +92,12 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
       fontSize: 18 * fontScale,
       lineHeight: 22 * fontScale,
       color: colors.D10,
+    },
+    menuText: {
+      fontFamily: 'Alegreya-Medium',
+      fontSize: 18 * fontScale,
+      lineHeight: 20 * fontScale,
+      color: colors.D30,
     },
     text: {
       fontFamily: 'Alegreya-Regular',

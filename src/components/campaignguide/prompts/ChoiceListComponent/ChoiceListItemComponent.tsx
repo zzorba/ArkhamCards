@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { map } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 
 import ChooseOneListComponent from '../ChooseOneListComponent';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { DisplayChoice } from '@data/scenario';
-import { BulletType } from '@data/scenario/types';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   code: string;
   name: string;
   color?: string;
-  bulletType?: BulletType;
+  masculine?: boolean;
   choices: DisplayChoice[];
   choice?: number;
   optional: boolean;
@@ -23,81 +23,88 @@ interface Props {
   firstItem: boolean;
 }
 
-export default class ChoiceListItemComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function ChoiceListItemComponent({
+  code,
+  name,
+  color,
+  masculine,
+  choices,
+  choice,
+  optional,
+  onChoiceChange,
+  editable,
+  detailed,
+  firstItem,
+}: Props) {
+  const { borderStyle, typography } = useContext(StyleContext);
 
-  _onChoiceChange = (idx: number) => {
-    const {
-      onChoiceChange,
-      code,
-    } = this.props;
-    onChoiceChange(code, idx);
-  };
-
-  render() {
-    const {
-      name,
-      color,
-      detailed,
-      choices,
-      choice,
-      editable,
-      optional,
-      firstItem,
-    } = this.props;
-    const { borderStyle, typography, gameFont } = this.context;
-    if (detailed) {
-      return (
-        <>
-          <View style={[
-            styles.headerRow,
-            borderStyle,
-            space.paddingS,
-            space.paddingLeftM,
-            color ? { backgroundColor: color } : {},
-          ]}>
-            <View>
-              <Text style={[
-                typography.mediumGameFont,
-                { fontFamily: gameFont },
-                styles.nameText,
-                color ? { color: COLORS.white } : {},
-              ]}>
-                { name }
-              </Text>
-            </View>
-            <View />
-          </View>
-          <ChooseOneListComponent
-            choices={choices}
-            selectedIndex={choice}
-            editable={editable}
-            onSelect={this._onChoiceChange}
-            color={color}
-            noBullet
-          />
-        </>
-      );
+  const onSelect = useCallback((idx: number | null) => {
+    if (idx === null) {
+      return;
     }
+    onChoiceChange(code, idx);
+  }, [onChoiceChange, code]);
+  const genderedChoices = useMemo(() => {
+    return map(choices, choice => {
+      if (choice.masculine_text && choice.feminine_text) {
+        return {
+          ...choice,
+          text: masculine ? choice.masculine_text : choice.feminine_text,
+        };
+      }
+      return choice;
+    });
+  }, [choices, masculine]);
+
+  if (detailed) {
     return (
-      <SinglePickerComponent
-        choices={choices}
-        selectedIndex={choice === undefined ? -1 : choice}
-        editable={editable}
-        optional={optional}
-        title={name}
-        onChoiceChange={this._onChoiceChange}
-        colors={color ? {
-          backgroundColor: color,
-          textColor: 'white',
-          modalColor: color,
-          modalTextColor: 'white',
-        } : undefined}
-        topBorder={firstItem}
-      />
+      <>
+        <View style={[
+          styles.headerRow,
+          borderStyle,
+          space.paddingS,
+          space.paddingLeftM,
+          color ? { backgroundColor: color } : {},
+        ]}>
+          <View>
+            <Text style={[
+              typography.mediumGameFont,
+              styles.nameText,
+              color ? { color: COLORS.white } : {},
+            ]}>
+              { name }
+            </Text>
+          </View>
+          <View />
+        </View>
+        <ChooseOneListComponent
+          choices={genderedChoices}
+          selectedIndex={choice}
+          editable={editable}
+          onSelect={onSelect}
+          color={color}
+          noBullet
+        />
+      </>
     );
   }
+  return (
+    <SinglePickerComponent
+      choices={genderedChoices}
+      selectedIndex={choice === undefined ? -1 : choice}
+      editable={editable}
+      optional={optional}
+      title={name}
+      onChoiceChange={onSelect}
+      colors={color ? {
+        backgroundColor: color,
+        textColor: 'white',
+        modalColor: color,
+        modalTextColor: 'white',
+      } : undefined}
+      topBorder={firstItem}
+    />
+  );
 }
 
 const styles = StyleSheet.create({

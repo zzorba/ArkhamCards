@@ -1,13 +1,11 @@
-import React from 'react';
-import { keys } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Linking,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -17,16 +15,16 @@ import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import { clearDecks } from '@actions';
 import { fetchCards } from '@components/card/actions';
 import { setSingleCardView, setAlphabetizeEncounterSets } from './actions';
 import { prefetch } from '@lib/auth';
 import Database from '@data/Database';
-import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
-import { getAllDecks, AppState, getLangPreference, getLangChoice } from '@reducers';
+import DatabaseContext from '@data/DatabaseContext';
+import { AppState, getLangPreference, getLangChoice } from '@reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
 import StyleContext from '@styles/StyleContext';
+import { NavigationProps } from '@components/nav/types';
 
 const NATIVE_RULES = true;
 interface OwnProps {
@@ -52,12 +50,24 @@ interface ReduxActionProps {
 
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
-class SettingsView extends React.Component<Props> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
+function contactPressed() {
+  Linking.openURL('mailto:arkhamcards@gmail.com');
+}
 
-  navButtonPressed(screen: string, title: string) {
-    Navigation.push(this.props.componentId, {
+export default function SettingsView({ componentId }: NavigationProps) {
+  const { db } = useContext(DatabaseContext);
+  const { backgroundStyle, colors } = useContext(StyleContext);
+  const dispatch = useDispatch();
+
+  const showCardsingleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
+  const alphabetizeEncounterSets = useSelector((state: AppState) => state.settings.alphabetizeEncounterSets || false);
+  const cardsLoading = useSelector((state: AppState) => state.cards.loading);
+  const cardsError = useSelector((state: AppState) => state.cards.error || undefined);
+  const lang = useSelector(getLangPreference);
+  const langChoice = useSelector(getLangChoice);
+
+  const navButtonPressed = useCallback((screen: string, title: string) => {
+    Navigation.push(componentId, {
       component: {
         name: screen,
         options: {
@@ -72,176 +82,130 @@ class SettingsView extends React.Component<Props> {
         },
       },
     });
-  }
+  }, [componentId]);
 
-  componentDidMount() {
+  useEffect(() => {
     prefetch();
-  }
+  }, []);
 
-  _myCollectionPressed = () => {
-    this.navButtonPressed('My.Collection', t`Edit Collection`);
-  };
+  const myCollectionPressed = useCallback(() => {
+    navButtonPressed('My.Collection', t`Edit Collection`);
+  }, [navButtonPressed]);
 
-  _editSpoilersPressed = () => {
-    this.navButtonPressed('My.Spoilers', t`Edit Spoilers`);
-  };
+  const editSpoilersPressed = useCallback(() => {
+    navButtonPressed('My.Spoilers', t`Edit Spoilers`);
+  }, [navButtonPressed]);
 
-  _diagnosticsPressed = () => {
-    this.navButtonPressed('Settings.Diagnostics', t`Diagnostics`);
-  };
+  const diagnosticsPressed = useCallback(() => {
+    navButtonPressed('Settings.Diagnostics', t`Diagnostics`);
+  }, [navButtonPressed]);
 
-  _aboutPressed = () => {
-    this.navButtonPressed('About', t`About Arkham Cards`);
-  };
+  const aboutPressed = useCallback(() => {
+    navButtonPressed('About', t`About Arkham Cards`);
+  }, [navButtonPressed]);
 
-  _backupPressed = () => {
-    this.navButtonPressed('Settings.Backup', t`Backup`);
-  };
+  const backupPressed = useCallback(() => {
+    navButtonPressed('Settings.Backup', t`Backup`);
+  }, [navButtonPressed]);
 
-  _contactPressed = () => {
-    Linking.openURL('mailto:arkhamcards@gmail.com');
-  }
-
-  _rules = () => {
+  const rulesPressed = useCallback(() => {
     if (NATIVE_RULES) {
-      this.navButtonPressed('Rules', t`Rules`);
+      navButtonPressed('Rules', t`Rules`);
     } else {
       Linking.openURL('https://arkhamdb.com/rules');
     }
-  };
+  }, [navButtonPressed]);
 
-  _doSyncCards = () => {
-    const {
-      lang,
-      langChoice,
-      fetchCards,
-    } = this.props;
-    fetchCards(this.context.db, lang, langChoice);
-  };
+  const doSyncCards = useCallback(() => {
+    dispatch(fetchCards(db, lang, langChoice));
+  }, [dispatch, db, lang, langChoice]);
 
-  syncCardsText() {
-    const {
-      cardsLoading,
-      cardsError,
-    } = this.props;
+  const syncCardsText = useMemo(() => {
     if (cardsLoading) {
       return t`Updating cards`;
     }
     return cardsError ?
       t`Error: Check for Cards Again` :
       t`Check for New Cards on ArkhamDB`;
-  }
+  }, [cardsLoading, cardsError]);
 
-  _swipeBetweenCardsChanged = (value: boolean) => {
-    this.props.setSingleCardView(!value);
-  };
+  const swipeBetweenCardsChanged = useCallback((value: boolean) => {
+    dispatch(setSingleCardView(!value));
+  }, [dispatch]);
 
-  _alphabetizeEncounterSetsChanged = (value: boolean) => {
-    this.props.setAlphabetizeEncounterSets(value);
-  };
+  const alphabetizeEncounterSetsChanged = useCallback((value: boolean) => {
+    dispatch(setAlphabetizeEncounterSets(value));
+  }, [dispatch]);
 
 
-  render() {
-    const { cardsLoading, showCardsingleCardView, alphabetizeEncounterSets } = this.props;
-    return (
-      <StyleContext.Consumer>
-        { ({ backgroundStyle, colors }) => (
-          <SafeAreaView style={[styles.container, backgroundStyle]}>
-            <ScrollView style={[styles.list, { backgroundColor: colors.L20 }]}>
-              <CardSectionHeader section={{ title: t`Account` }} />
-              <LoginButton settings />
-              <SettingsItem
-                navigation
-                onPress={this._backupPressed}
-                text={t`Backup Data`}
-              />
-              <CardSectionHeader section={{ title: t`Card Settings` }} />
-              <SettingsItem
-                navigation
-                onPress={this._myCollectionPressed}
-                text={t`Card Collection`}
-              />
-              <SettingsItem
-                navigation
-                onPress={this._editSpoilersPressed}
-                text={t`Spoiler Settings`}
-              />
-              <SettingsTabooPicker />
-              <CardSectionHeader section={{ title: t`Card Data` }} />
-              <SettingsItem
-                navigation
-                onPress={this._rules}
-                text={t`Rules`}
-              />
-              <SettingsItem
-                onPress={cardsLoading ? undefined : this._doSyncCards}
-                text={this.syncCardsText()}
-              />
-              <LanguagePicker />
-              <CardSectionHeader section={{ title: t`Preferences` }} />
-              <ThemePicker />
-              <FontSizePicker />
-              <SettingsSwitch
-                title={t`Swipe between card results`}
-                value={!showCardsingleCardView}
-                onValueChange={this._swipeBetweenCardsChanged}
-                settingsStyle
-              />
-              <SettingsSwitch
-                title={t`Alphabetize guide encounter sets`}
-                value={alphabetizeEncounterSets}
-                onValueChange={this._alphabetizeEncounterSetsChanged}
-                settingsStyle
-              />
-              <SettingsItem
-                navigation
-                onPress={this._diagnosticsPressed}
-                text={t`Diagnostics`}
-              />
-              <CardSectionHeader section={{ title: t`About Arkham Cards` }} />
-              <SettingsItem
-                navigation
-                onPress={this._aboutPressed}
-                text={t`About Arkham Cards`}
-              />
-              <SettingsItem
-                navigation
-                onPress={this._contactPressed}
-                text={t`Contact us`}
-              />
-            </ScrollView>
-          </SafeAreaView>
-        ) }
-      </StyleContext.Consumer>
-    );
-  }
+  return (
+    <SafeAreaView style={[styles.container, backgroundStyle]}>
+      <ScrollView style={[styles.list, { backgroundColor: colors.L20 }]}>
+        <CardSectionHeader section={{ title: t`Account` }} />
+        <LoginButton settings />
+        <SettingsItem
+          navigation
+          onPress={backupPressed}
+          text={t`Backup Data`}
+        />
+        <CardSectionHeader section={{ title: t`Card Settings` }} />
+        <SettingsItem
+          navigation
+          onPress={myCollectionPressed}
+          text={t`Card Collection`}
+        />
+        <SettingsItem
+          navigation
+          onPress={editSpoilersPressed}
+          text={t`Spoiler Settings`}
+        />
+        <SettingsTabooPicker />
+        <CardSectionHeader section={{ title: t`Card Data` }} />
+        <SettingsItem
+          navigation
+          onPress={rulesPressed}
+          text={t`Rules`}
+        />
+        <SettingsItem
+          onPress={cardsLoading ? undefined : doSyncCards}
+          text={syncCardsText}
+        />
+        <LanguagePicker />
+        <CardSectionHeader section={{ title: t`Preferences` }} />
+        <ThemePicker />
+        <FontSizePicker />
+        <SettingsSwitch
+          title={t`Swipe between card results`}
+          value={!showCardsingleCardView}
+          onValueChange={swipeBetweenCardsChanged}
+          settingsStyle
+        />
+        <SettingsSwitch
+          title={t`Alphabetize guide encounter sets`}
+          value={alphabetizeEncounterSets}
+          onValueChange={alphabetizeEncounterSetsChanged}
+          settingsStyle
+        />
+        <SettingsItem
+          navigation
+          onPress={diagnosticsPressed}
+          text={t`Diagnostics`}
+        />
+        <CardSectionHeader section={{ title: t`About Arkham Cards` }} />
+        <SettingsItem
+          navigation
+          onPress={aboutPressed}
+          text={t`About Arkham Cards`}
+        />
+        <SettingsItem
+          navigation
+          onPress={contactPressed}
+          text={t`Contact us`}
+        />
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    showCardsingleCardView: state.settings.singleCardView || false,
-    alphabetizeEncounterSets: state.settings.alphabetizeEncounterSets || false,
-    cardsLoading: state.cards.loading,
-    cardsError: state.cards.error || undefined,
-    deckCount: keys(getAllDecks(state)).length,
-    lang: getLangPreference(state),
-    langChoice: getLangChoice(state),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    clearDecks,
-    fetchCards,
-    setSingleCardView,
-    setAlphabetizeEncounterSets,
-  }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(SettingsView);
 
 const styles = StyleSheet.create({
   container: {

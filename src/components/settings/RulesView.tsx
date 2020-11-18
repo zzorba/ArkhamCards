@@ -34,16 +34,16 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
             },
           },
         },
-      }
+      },
     });
-  }, []);
+  }, [componentId, rule]);
   return (
     <View key={rule.id} style={{ paddingLeft: s + s * (level + 1), paddingRight: m, marginTop: s }}>
       <TouchableOpacity onPress={onPress}>
         <CardFlavorTextComponent text={`<game>${rule.title}</game>`} />
         { rule.rules && rule.rules.length > 0 && (
           <CardTextComponent text={map(rule.rules || [], subRule => subRule.title).join(', ')} />
-          ) }
+        ) }
       </TouchableOpacity>
     </View>
   );
@@ -67,6 +67,7 @@ interface SearchResults {
 
 
 export default function RulesView({ componentId }: Props) {
+  const { db } = useContext(DatabaseContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResults>({
     term: '',
@@ -74,7 +75,7 @@ export default function RulesView({ componentId }: Props) {
   });
   const updateSearch = useCallback((searchTerm: string) => {
     setSearchTerm(searchTerm);
-    if (searchTerm == searchResults.term) {
+    if (searchTerm === searchResults.term) {
       return;
     }
     if (!searchTerm) {
@@ -83,7 +84,7 @@ export default function RulesView({ componentId }: Props) {
         rules: [],
       });
     }
-    db.getRules(
+    db.getRulesPaged(
       0,
       100,
       where(`r.parentRule is null AND (r.title LIKE '%' || :searchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules_title is not null AND sub_rules_title LIKE '%' || :searchTerm || '%') OR (sub_rules_text is not null AND sub_rules_text LIKE '%' || :searchTerm || '%'))`, { searchTerm })
@@ -91,7 +92,7 @@ export default function RulesView({ componentId }: Props) {
       term: searchTerm,
       rules,
     }), console.log);
-  },[]);
+  }, [db, searchResults.term]);
   const [rules, appendRules] = useReducer<Reducer<PagedRules, AppendPagedRules>>(
     (state: PagedRules, action: AppendPagedRules): PagedRules => {
       return {
@@ -101,14 +102,13 @@ export default function RulesView({ componentId }: Props) {
         },
         endReached: state.endReached || action.rules.length < PAGE_SIZE,
       };
-  }, {
-    rules: {},
-    endReached: false,
-  });
-  const { db } = useContext(DatabaseContext);
-  const [page, fetchPage] = useReducer<ReducerWithoutAction<number>>((page: number) => {
+    }, {
+      rules: {},
+      endReached: false,
+    });
+  const [, fetchPage] = useReducer<ReducerWithoutAction<number>>((page: number) => {
     if (!rules.endReached) {
-      db.getRules(
+      db.getRulesPaged(
         page,
         PAGE_SIZE,
         new Brackets(qb => qb.where('r.parentRule is null'))
@@ -127,8 +127,10 @@ export default function RulesView({ componentId }: Props) {
     if (!rules.endReached) {
       fetchPage();
     }
-  }, []);
-  const renderItem = ({ item, index }: ListRenderItemInfo<Rule>) => <RuleComponent componentId={componentId} key={index} rule={item} level={0} />;
+  }, [rules.endReached, fetchPage]);
+  const renderItem = useCallback(({ item, index }: ListRenderItemInfo<Rule>) => {
+    return <RuleComponent componentId={componentId} key={index} rule={item} level={0} />;
+  }, [componentId]);
   const data = useMemo(() => searchTerm ? searchResults.rules : flatMap(
     sortBy(keys(rules.rules), parseInt),
     idx => rules.rules[idx]
@@ -139,24 +141,24 @@ export default function RulesView({ componentId }: Props) {
       searchTerm={searchTerm}
       onSearchChange={updateSearch}
     >
-    { (onScroll) => (
-      <FlatList
-        onScroll={onScroll}
-        data={data}
-        contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-        contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
-        renderItem={renderItem}
-        onEndReachedThreshold={2}
-        onEndReached={fetchMore}
-        updateCellsBatchingPeriod={50}
-        initialNumToRender={30}
-        maxToRenderPerBatch={30}
-        windowSize={30}
-        ListHeaderComponent={(Platform.OS === 'android') ? (
-          <View style={styles.searchBarPadding} />
-        ) : undefined}
-      />
-    ) }
+      { (onScroll) => (
+        <FlatList
+          onScroll={onScroll}
+          data={data}
+          contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+          renderItem={renderItem}
+          onEndReachedThreshold={2}
+          onEndReached={fetchMore}
+          updateCellsBatchingPeriod={50}
+          initialNumToRender={30}
+          maxToRenderPerBatch={30}
+          windowSize={30}
+          ListHeaderComponent={(Platform.OS === 'android') ? (
+            <View style={styles.searchBarPadding} />
+          ) : undefined}
+        />
+      ) }
     </CollapsibleSearchBox>
   );
 }

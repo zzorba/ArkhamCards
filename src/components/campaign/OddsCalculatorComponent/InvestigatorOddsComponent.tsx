@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { find, map } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -9,66 +9,36 @@ import { ChaosBag, ChaosTokenValue, SpecialTokenValue } from '@app_constants';
 import COLORS from '@styles/colors';
 import SkillOddsRow from './SkillOddsRow';
 import VariableTokenInput from './VariableTokenInput';
-import { InvestigatorElderSign } from './types';
 import { elderSign, modifiers } from './constants';
 import { s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useCounter, useFlag } from '@components/core/hooks';
 
 export interface InvestigatorOddsProps {
   chaosBag: ChaosBag;
   specialTokenValues: SpecialTokenValue[];
-  difficulty?: string;
   investigator: Card;
   testDifficulty: number;
 }
 
-type Props = InvestigatorOddsProps;
+export default function InvestigatorOddsComponent({ chaosBag, specialTokenValues, investigator, testDifficulty }: InvestigatorOddsProps) {
+  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const [counterValue, increment, decrement] = useCounter(0, { min: 0 });
+  const [switchValue, toggleSwitch] = useFlag(false);
 
-interface State {
-  counterValue: number;
-  switchValue: boolean;
-}
+  const elderSignEffect = useMemo(() => elderSign(investigator), [investigator]);
+  const elderSignValue: ChaosTokenValue = useMemo(() => {
+    switch (elderSignEffect.type) {
+      case 'constant':
+        return elderSignEffect.value;
+      case 'counter':
+        return counterValue;
+      case 'switch':
+        return elderSignEffect.values[switchValue ? 1 : 0];
+    }
+  }, [elderSignEffect, counterValue, switchValue]);
 
-export default class InvestigatorOddsComponent extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      counterValue: 0,
-      switchValue: false,
-    };
-  }
-
-  _increment = () => {
-    this.setState((state) => {
-      return {
-        counterValue: state.counterValue + 1,
-      };
-    });
-  };
-
-  _decrement = () => {
-    this.setState((state) => {
-      return {
-        counterValue: Math.max(state.counterValue - 1, 0),
-      };
-    });
-  };
-
-  _toggle = () => {
-    this.setState((state) => {
-      return {
-        switchValue: !state.switchValue,
-      };
-    });
-  }
-
-  renderElderSignOptions(elderSignEffect: InvestigatorElderSign) {
-    const { counterValue, switchValue } = this.state;
-    const { borderStyle, typography } = this.context;
+  const elderSignOptions = useMemo(() => {
     switch (elderSignEffect.type) {
       case 'constant':
         return null;
@@ -79,8 +49,8 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
             color={COLORS.darkBlue}
             value={counterValue}
             text={elderSignEffect.text}
-            increment={this._increment}
-            decrement={this._decrement}
+            increment={increment}
+            decrement={decrement}
           />
         );
       case 'switch':
@@ -103,41 +73,21 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
             <View style={[styles.row, { paddingRight: s }]}>
               <Switch
                 value={switchValue}
-                onValueChange={this._toggle}
+                onValueChange={toggleSwitch}
               />
             </View>
           </View>
         );
     }
-  }
+  }, [elderSignEffect, counterValue, switchValue, borderStyle, typography, increment, decrement, toggleSwitch]);
 
-  elderSignValue(elderSignEffect: InvestigatorElderSign): ChaosTokenValue {
-    const {
-      counterValue,
-      switchValue,
-    } = this.state;
-    switch (elderSignEffect.type) {
-      case 'constant':
-        return elderSignEffect.value;
-      case 'counter':
-        return counterValue;
-      case 'switch':
-        return elderSignEffect.values[switchValue ? 1 : 0];
-    }
-  }
-
-  specialTokenValues(elderSignEffect: InvestigatorElderSign) {
-    const {
-      investigator,
-      specialTokenValues,
-    } = this.props;
+  const allSpecialTokenValues = useMemo(() => {
     const specialModifiers = modifiers(investigator);
-
     return map(specialTokenValues, value => {
       if (value.token === 'elder_sign') {
         return {
           ...value,
-          value: this.elderSignValue(elderSignEffect),
+          value: elderSignValue,
         };
       }
       const modifier = find(specialModifiers, m => m.token === value.token);
@@ -149,60 +99,50 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
       }
       return value;
     });
-  }
+  }, [investigator, specialTokenValues, elderSignValue]);
 
-  render() {
-    const {
-      investigator,
-      testDifficulty,
-      chaosBag,
-    } = this.props;
-    const { colors, typography } = this.context;
-    const willpower = investigator.skill_willpower || 0;
-    const intellect = investigator.skill_intellect || 0;
-    const combat = investigator.skill_combat || 0;
-    const agility = investigator.skill_agility || 0;
-    const elderSignEffect = elderSign(investigator);
-    const specialTokenValues = this.specialTokenValues(elderSignEffect);
-    return (
-      <>
-        <View style={[styles.headerRow, { backgroundColor: colors.L20 }]}>
-          <Text style={typography.text}>
-            { investigator.name }
-          </Text>
-        </View>
-        { this.renderElderSignOptions(elderSignEffect) }
-        <SkillOddsRow
-          stat={willpower}
-          type={'willpower'}
-          testDifficulty={testDifficulty}
-          chaosBag={chaosBag}
-          specialTokenValues={specialTokenValues}
-        />
-        <SkillOddsRow
-          stat={intellect}
-          type={'intellect'}
-          testDifficulty={testDifficulty}
-          chaosBag={chaosBag}
-          specialTokenValues={specialTokenValues}
-        />
-        <SkillOddsRow
-          stat={combat}
-          type={'combat'}
-          testDifficulty={testDifficulty}
-          chaosBag={chaosBag}
-          specialTokenValues={specialTokenValues}
-        />
-        <SkillOddsRow
-          stat={agility}
-          type={'agility'}
-          testDifficulty={testDifficulty}
-          chaosBag={chaosBag}
-          specialTokenValues={specialTokenValues}
-        />
-      </>
-    );
-  }
+  const willpower = investigator.skill_willpower || 0;
+  const intellect = investigator.skill_intellect || 0;
+  const combat = investigator.skill_combat || 0;
+  const agility = investigator.skill_agility || 0;
+  return (
+    <>
+      <View style={[styles.headerRow, { backgroundColor: colors.L20 }]}>
+        <Text style={typography.text}>
+          { investigator.name }
+        </Text>
+      </View>
+      { elderSignOptions }
+      <SkillOddsRow
+        stat={willpower}
+        type={'willpower'}
+        testDifficulty={testDifficulty}
+        chaosBag={chaosBag}
+        specialTokenValues={allSpecialTokenValues}
+      />
+      <SkillOddsRow
+        stat={intellect}
+        type={'intellect'}
+        testDifficulty={testDifficulty}
+        chaosBag={chaosBag}
+        specialTokenValues={allSpecialTokenValues}
+      />
+      <SkillOddsRow
+        stat={combat}
+        type={'combat'}
+        testDifficulty={testDifficulty}
+        chaosBag={chaosBag}
+        specialTokenValues={allSpecialTokenValues}
+      />
+      <SkillOddsRow
+        stat={agility}
+        type={'agility'}
+        testDifficulty={testDifficulty}
+        chaosBag={chaosBag}
+        specialTokenValues={allSpecialTokenValues}
+      />
+    </>
+  );
 }
 
 const styles = StyleSheet.create({

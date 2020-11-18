@@ -1,80 +1,36 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { ScrollView,StyleSheet, View } from 'react-native';
-import { connect } from 'react-redux';
 import { flatMap, keys, map, range, sortBy } from 'lodash';
-import { EventSubscription, Navigation } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import { NavigationProps } from '@components/nav/types';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
-import { AppState, getChaosBagResults } from '@reducers';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
-import { ChaosBagResults } from '@actions/types';
 import SealTokenButton from './SealTokenButton';
+import { useChaosBagResults, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface SealTokenDialogProps {
   campaignId: number;
   chaosBag: ChaosBag;
 }
 
-interface ReduxProps {
-  chaosBagResults: ChaosBagResults;
-}
+function SealTokenDialog({ componentId, campaignId, chaosBag }: SealTokenDialogProps & NavigationProps) {
+  const chaosBagResults = useChaosBagResults(campaignId);
 
-type Props = NavigationProps & SealTokenDialogProps & ReduxProps & DimensionsProps;
-
-class SealTokenDialog extends React.Component<Props> {
-  static options() {
-    return {
-      topBar: {
-        title: {
-          text: t`Choose Tokens to Seal`,
-        },
-        leftButtons: [{
-          icon: iconsMap.close,
-          id: 'close',
-          color: COLORS.M,
-          accessibilityLabel: t`Cancel`,
-        }],
-      },
-    };
-  }
-
-  _navEventListener: EventSubscription;
-
-  constructor(props: Props) {
-    super(props);
-
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener.remove();
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    const {
-      componentId,
-    } = this.props;
+  useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'close') {
       Navigation.dismissModal(componentId);
     }
-  }
+  }, componentId, []);
 
-  _close = () => {
-    Navigation.dismissModal(this.props.componentId);
-  };
+  const close = useCallback(() => {
+    Navigation.dismissModal(componentId);
+  }, [componentId]);
 
-  getAllChaosTokens() {
-    const {
-      campaignId,
-      chaosBag,
-      chaosBagResults,
-    } = this.props;
-
+  const allChaosTokens = useMemo(() => {
     const unsortedTokens: ChaosTokenType[] = keys(chaosBag) as ChaosTokenType[];
     const tokens: ChaosTokenType[] = sortBy<ChaosTokenType>(
       unsortedTokens,
@@ -119,33 +75,32 @@ class SealTokenDialog extends React.Component<Props> {
         />
       );
     });
-  }
+  }, [campaignId, chaosBag, chaosBagResults]);
 
-  render() {
-    return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <View style={styles.drawnTokenRow}>{ this.getAllChaosTokens() }</View>
-        <BasicButton title={t`Done`} onPress={this._close} />
-      </ScrollView>
-    );
-  }
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.drawnTokenRow}>{ allChaosTokens }</View>
+      <BasicButton title={t`Done`} onPress={close} />
+    </ScrollView>
+  );
 }
 
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & SealTokenDialogProps
-): ReduxProps {
+SealTokenDialog.options = () => {
   return {
-    chaosBagResults: getChaosBagResults(state, props.campaignId),
+    topBar: {
+      title: {
+        text: t`Choose Tokens to Seal`,
+      },
+      leftButtons: [{
+        icon: iconsMap.close,
+        id: 'close',
+        color: COLORS.M,
+        accessibilityLabel: t`Cancel`,
+      }],
+    },
   };
-}
-
-
-export default connect<ReduxProps, unknown, NavigationProps & SealTokenDialogProps, AppState>(
-  mapStateToProps
-)(
-  withDimensions(SealTokenDialog)
-);
+};
+export default SealTokenDialog;
 
 const styles = StyleSheet.create({
   container: {

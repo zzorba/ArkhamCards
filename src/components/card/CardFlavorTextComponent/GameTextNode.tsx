@@ -18,7 +18,7 @@ export default function GameTextNode({ typography, fontScale, gameFont }: StyleC
         fontFamily: gameFont,
         fontStyle: 'normal',
         fontSize: 24 * fontScale,
-        lineHeight: 28 * fontScale,
+        lineHeight: 32 * fontScale,
       }, typography.dark]}>
         { output(node.children, state) }
       </Text>

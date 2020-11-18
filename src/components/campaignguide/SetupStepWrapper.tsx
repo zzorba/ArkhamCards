@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,7 +7,7 @@ import {
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { BulletType } from '@data/scenario/types';
 import space, { s, m, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   bulletType?: BulletType;
@@ -17,12 +17,10 @@ interface Props {
   hasTitle?: boolean;
 }
 
-export default class SetupStepWrapper extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function SetupStepWrapper({ bulletType, reverseSpacing, children, border, hasTitle }: Props) {
+  const { colors } = useContext(StyleContext);
 
-  renderBalancedSpacing() {
-    const { bulletType } = this.props;
+  const balancedSpacing = useMemo(() => {
     switch (bulletType) {
       case 'small':
         return s + m + 20;
@@ -31,10 +29,9 @@ export default class SetupStepWrapper extends React.Component<Props> {
       default:
         return s + 22;
     }
-  }
-  renderBullet() {
-    const { bulletType } = this.props;
-    const { colors } = this.context;
+  }, [bulletType]);
+
+  const bulletNode = useMemo(() => {
     switch (bulletType) {
       case 'none':
         return <View style={styles.bullet} />;
@@ -59,51 +56,42 @@ export default class SetupStepWrapper extends React.Component<Props> {
           </View>
         );
     }
-  }
+  }, [bulletType, colors]);
 
-  render() {
-    const {
-      children,
-      border,
-      hasTitle,
-      reverseSpacing,
-    } = this.props;
-    const { colors } = this.context;
-    if (reverseSpacing) {
-      return (
-        <View style={[
-          styles.step,
-          {
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingRight: this.renderBalancedSpacing(),
-          },
-        ]}>
-          { children }
-        </View>
-      );
-    }
-
+  if (reverseSpacing) {
     return (
       <View style={[
         styles.step,
-        space.paddingS,
-        space.paddingSideM,
-        border ? {
-          borderTopWidth: StyleSheet.hairlineWidth,
-          borderBottomWidth: StyleSheet.hairlineWidth,
-          borderColor: colors.divider,
-          backgroundColor: colors.background,
-        } : {},
-        hasTitle ? { paddingTop: 0, paddingBottom: 0 } : {},
+        {
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingRight: balancedSpacing,
+        },
       ]}>
-        { this.renderBullet() }
-        <View style={styles.mainText}>
-          { children }
-        </View>
+        { children }
       </View>
     );
   }
+
+  return (
+    <View style={[
+      styles.step,
+      space.paddingS,
+      space.paddingSideM,
+      border ? {
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderColor: colors.divider,
+        backgroundColor: colors.background,
+      } : {},
+      hasTitle ? { paddingTop: 0, paddingBottom: 0 } : {},
+    ]}>
+      { bulletNode }
+      <View style={styles.mainText}>
+        { children }
+      </View>
+    </View>
+  );
 }
 
 

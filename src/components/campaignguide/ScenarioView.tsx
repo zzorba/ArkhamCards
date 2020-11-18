@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import {
   Alert,
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import { last } from 'lodash';
-import { EventSubscription, Navigation } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
-import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
+import CampaignGuideContext from './CampaignGuideContext';
 import { ScenarioGuideContextType } from './ScenarioGuideContext';
 import StepsComponent from './StepsComponent';
 import { CampaignLogProps } from './CampaignLogView';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
 import { iconsMap } from '@app/NavIcons';
 import BasicButton from '@components/core/BasicButton';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
 import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
+import { useNavigationButtonPressed } from '@components/core/hooks';
+import StyleContext from '@styles/StyleContext';
 
 interface OwnProps {
   showLinkedScenario?: (
@@ -30,115 +32,47 @@ interface OwnProps {
 }
 type InputProps = NavigationProps & ScenarioGuideInputProps & OwnProps;
 
-type Props = InputProps & DimensionsProps & ScenarioGuideContextType;
+type Props = InputProps & ScenarioGuideContextType;
 
 export type ScenarioProps = ScenarioGuideInputProps & OwnProps;
 
 const RESET_ENABLED = false;
 
-class ScenarioView extends React.Component<Props> {
-  static contextType = CampaignGuideContext;
-  context!: CampaignGuideContextType;
-
-  undoEnabled: boolean;
-
-  static options() {
-    return ScenarioView.dynamicOptions(false);
-  }
-
-  static dynamicOptions(undo: boolean) {
-    const rightButtons = RESET_ENABLED ? [{
-      icon: iconsMap.replay,
-      id: 'reset',
+function dynamicOptions(undo: boolean) {
+  const rightButtons = RESET_ENABLED ? [{
+    icon: iconsMap.replay,
+    id: 'reset',
+    color: COLORS.M,
+  }] : [{
+    icon: iconsMap.menu,
+    id: 'log',
+    color: COLORS.M,
+    accessibilityLabel: t`Campaign Log`,
+  }];
+  if (undo) {
+    rightButtons.push({
+      icon: iconsMap.undo,
+      id: 'undo',
       color: COLORS.M,
-    }] : [{
-      icon: iconsMap.menu,
-      id: 'log',
-      color: COLORS.M,
-      accessibilityLabel: t`Campaign Log`,
-    }];
-    if (undo) {
-      rightButtons.push({
-        icon: iconsMap.undo,
-        id: 'undo',
-        color: COLORS.M,
-        accessibilityLabel: t`Undo`,
-      });
-    }
-    return {
-      topBar: {
-        rightButtons,
-      },
-    };
-  }
-  _navEventListener: EventSubscription;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.undoEnabled = props.processedScenario.canUndo;
-    Navigation.mergeOptions(props.componentId, ScenarioView.dynamicOptions(this.undoEnabled));
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentDidUpdate() {
-    const {
-      processedScenario: { canUndo },
-      componentId,
-    } = this.props;
-    if (canUndo !== this.undoEnabled) {
-      Navigation.mergeOptions(componentId, ScenarioView.dynamicOptions(canUndo));
-    }
-  }
-
-  componentWillUnmount() {
-    this._navEventListener.remove();
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    switch (buttonId) {
-      case 'reset': {
-        this.resetPressed();
-        break;
-      }
-      case 'log': {
-        this.menuPressed();
-        break;
-      }
-      case 'undo': {
-        this.undoPressed();
-        break;
-      }
-    }
-  }
-
-  undoPressed() {
-    const {
-      componentId,
-      scenarioId,
-      processedScenario: { closeOnUndo },
-    } = this.props;
-    this.context.campaignState.undo(scenarioId);
-    if (closeOnUndo) {
-      Navigation.pop(componentId);
-    }
-  }
-
-  _switchCampaignScenario = () => {
-    const {
-      componentId,
-      showLinkedScenario,
-      processedScenario,
-    } = this.props;
-    Navigation.pop(componentId).then(() => {
-      if (showLinkedScenario) {
-        showLinkedScenario(processedScenario.id.encodedScenarioId);
-      }
+      accessibilityLabel: t`Undo`,
     });
+  }
+  return {
+    topBar: {
+      rightButtons,
+    },
   };
+}
 
-  menuPressed() {
-    const { componentId, processedScenario, campaignId } = this.props;
+function ScenarioView({ componentId, campaignId, showLinkedScenario, processedScenario, scenarioId }: Props) {
+  const { campaignState } = useContext(CampaignGuideContext);
+  const { backgroundStyle } = useContext(StyleContext);
+  const { width } = useWindowDimensions();
+  useEffect(() => {
+    Navigation.mergeOptions(componentId, dynamicOptions(processedScenario.canUndo));
+  }, [componentId, processedScenario.canUndo]);
+
+  const menuPressed = useCallback(() => {
     const log = last(processedScenario.steps);
     if (!log) {
       return;
@@ -163,9 +97,9 @@ class ScenarioView extends React.Component<Props> {
         },
       },
     });
-  }
+  }, [componentId, processedScenario, campaignId]);
 
-  resetPressed() {
+  const resetPressed = useCallback(() => {
     Alert.alert(
       t`Reset Scenario?`,
       t`Are you sure you want to reset this scenario?\n\nAll data you have entered will be lost.`,
@@ -175,14 +109,46 @@ class ScenarioView extends React.Component<Props> {
         text: t`Reset`,
         style: 'destructive',
         onPress: () => {
-          this.context.campaignState.resetScenario(this.props.scenarioId);
+          campaignState.resetScenario(scenarioId);
         },
       }]
     );
-  }
+  }, [campaignState, scenarioId]);
 
-  _showScenarioFaq = () => {
-    const { componentId, campaignId, processedScenario } = this.props;
+  const undoPressed = useCallback(() => {
+    campaignState.undo(scenarioId);
+    if (processedScenario.closeOnUndo) {
+      Navigation.pop(componentId);
+    }
+  }, [componentId, scenarioId, processedScenario.closeOnUndo, campaignState]);
+
+  useNavigationButtonPressed(({ buttonId }) => {
+    switch (buttonId) {
+      case 'reset': {
+        resetPressed();
+        break;
+      }
+      case 'log': {
+        menuPressed();
+        break;
+      }
+      case 'undo': {
+        undoPressed();
+        break;
+      }
+    }
+  }, componentId, [resetPressed, menuPressed, undoPressed]);
+
+
+  const switchCampaignScenario = useCallback(() => {
+    Navigation.pop(componentId).then(() => {
+      if (showLinkedScenario) {
+        showLinkedScenario(processedScenario.id.encodedScenarioId);
+      }
+    });
+  }, [componentId, showLinkedScenario, processedScenario.id]);
+
+  const showScenarioFaq = useCallback(() => {
     Navigation.push<ScenarioFaqProps>(componentId, {
       component: {
         name: 'Guide.ScenarioFaq',
@@ -192,43 +158,42 @@ class ScenarioView extends React.Component<Props> {
         },
       },
     });
-  };
+  }, [componentId, campaignId, processedScenario.id]);
 
-  render() {
-    const { componentId, width, processedScenario, style: { backgroundStyle } } = this.props;
-    const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
-      processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
-    return (
-      <KeyboardAvoidingView
-        style={[styles.keyboardView, backgroundStyle]}
-        behavior="position"
-        enabled
-        keyboardVerticalOffset={100}
-      >
-        <KeepAwake />
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          { !!hasInterludeFaq && (
-            <BasicButton
-              title={t`Interlude FAQ`}
-              onPress={this._showScenarioFaq}
-            />
-          ) }
-          <StepsComponent
-            componentId={componentId}
-            width={width}
-            steps={processedScenario.steps}
-            switchCampaignScenario={this._switchCampaignScenario}
+  const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
+    processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
+  return (
+    <KeyboardAvoidingView
+      style={[styles.keyboardView, backgroundStyle]}
+      behavior="position"
+      enabled
+      keyboardVerticalOffset={100}
+    >
+      <KeepAwake />
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        { !!hasInterludeFaq && (
+          <BasicButton
+            title={t`Interlude FAQ`}
+            onPress={showScenarioFaq}
           />
-          <View style={styles.footer} />
-        </ScrollView>
-      </KeyboardAvoidingView>
-    );
-  }
+        ) }
+        <StepsComponent
+          componentId={componentId}
+          width={width}
+          steps={processedScenario.steps}
+          switchCampaignScenario={switchCampaignScenario}
+        />
+        <View style={styles.footer} />
+      </ScrollView>
+    </KeyboardAvoidingView>
+  );
 }
 
-export default withScenarioGuideContext<InputProps>(
-  withDimensions<InputProps & ScenarioGuideContextType>(ScenarioView)
-);
+ScenarioView.options = () => {
+  return dynamicOptions(false);
+};
+
+export default withScenarioGuideContext<InputProps>(ScenarioView);
 
 const styles = StyleSheet.create({
   footer: {

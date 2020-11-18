@@ -1,16 +1,16 @@
-import React from 'react';
 import { ActionSheetIOS, Platform, Linking } from 'react-native';
 import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import AndroidDialogPicker from 'react-native-android-dialog-picker';
 import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
+import { startsWith } from 'lodash';
 import { t } from 'ttag';
 
 import { DeckChartsProps } from '@components/deck/DeckChartsView';
 import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
-import { CardDetailSwipeProps } from '@components/card/CardDetailSwipeView';
-import { Deck, ParsedDeck, Slots } from '@actions/types';
+import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
+import { Deck, ParsedDeck } from '@actions/types';
 import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';
 import { CardImageProps } from '@components/card/CardImageView';
@@ -18,7 +18,6 @@ import { ThemeColors } from '@styles/theme';
 import { StyleContextType } from '@styles/StyleContext';
 import Database from '@data/Database';
 import { where } from '@data/query';
-import { startsWith } from 'lodash';
 
 export function getDeckOptions(
   colors: ThemeColors,
@@ -63,7 +62,7 @@ export function getDeckOptions(
       background: {
         color: colors.faction[
           (investigator ? investigator.faction_code : null) || 'neutral'
-        ].darkBackground,
+        ].background,
       },
       rightButtons: topBarOptions.rightButtons,
     },
@@ -201,15 +200,14 @@ export function showDrawSimulator(
 
 export function showCardSwipe(
   componentId: string,
-  cards: Card[],
+  codes: string[],
   index: number,
   colors: ThemeColors,
+  initialCards?: Card[],
   showSpoilers?: boolean,
   tabooSetId?: number,
-  deckCardCounts?: Slots,
-  onDeckCountChange?: (code: string, count: number) => void,
-  investigator?: Card,
-  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode,
+  deckId?: number,
+  investigator?: Card
 ) {
   const options = investigator ?
     getDeckOptions(colors, { title: '' }, investigator) :
@@ -225,13 +223,12 @@ export function showCardSwipe(
     component: {
       name: 'Card.Swipe',
       passProps: {
-        cards,
+        cardCodes: codes,
+        initialCards,
         initialIndex: index,
-        showSpoilers: !!showSpoilers,
+        showAllSpoilers: !!showSpoilers,
         tabooSetId,
-        deckCardCounts,
-        onDeckCountChange,
-        renderFooter,
+        deckId,
         whiteNav: !!investigator,
       },
       options,
@@ -328,7 +325,7 @@ export async function openUrl(
   const rule_match = url.match(rule_regex);
   if (rule_match) {
     const rule_id = rule_match[3];
-    const rules = await db.getRules(0, 1, where('r.id = :rule_id', { rule_id }));
+    const rules = await db.getRulesPaged(0, 1, where('r.id = :rule_id', { rule_id }));
     if (rules.length) {
       Navigation.push(componentId, {
         component: {

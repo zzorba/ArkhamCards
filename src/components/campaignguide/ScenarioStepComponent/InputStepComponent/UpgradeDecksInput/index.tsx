@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -6,71 +6,30 @@ import {
   View,
 } from 'react-native';
 import { find, map } from 'lodash';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import UpgradeDeckRow from './UpgradeDeckRow';
-import { Deck, Slots } from '@actions/types';
 import InvestigatorRow from '@components/core/InvestigatorRow';
-import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
-import Card from '@data/Card';
-import { LatestDecks } from '@data/scenario';
-import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
-import { AppState } from '@reducers';
+import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { m, s, xs } from '@styles/space';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import StyleContext from '@styles/StyleContext';
+import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
+import { useToggles } from '@components/core/hooks';
 
-interface ReduxActionProps {
-  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
-  saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
-}
-
-interface OwnProps {
+interface Props {
   componentId: string;
   id: string;
-  latestDecks: LatestDecks;
-  campaignState: CampaignStateHelper;
 }
 
-type Props = OwnProps & ReduxActionProps;
+export default function UpgradeDecksInput({ componentId, id }: Props) {
+  const { latestDecks, campaignState } = useContext(CampaignGuideContext);
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
+  const [unsavedEdits, , setUnsavedEdits] = useToggles({});
 
-interface State {
-  unsavedEdits: {
-    [code: string]: boolean | undefined;
-  };
-}
-class UpgradeDecksInput extends React.Component<Props, State> {
-  static contextType = ScenarioStepContext;
-  context!: ScenarioStepContextType;
-
-  state: State = {
-    unsavedEdits: {},
-  };
-
-  _setUnsavedEdits = (code: string, edits: boolean) => {
-    this.setState({
-      unsavedEdits: {
-        ...this.state.unsavedEdits,
-        [code]: edits,
-      },
-    });
-  };
-
-  proceedMessage(): string | undefined {
-    const {
-      id,
-      latestDecks,
-    } = this.props;
-    const { unsavedEdits } = this.state;
-    const {
-      scenarioInvestigators,
-      scenarioState,
-      campaignLog,
-    } = this.context;
+  const proceedMessage = useCallback((): string | undefined => {
     const unsavedDeck = find(
       scenarioInvestigators,
       investigator => {
@@ -111,17 +70,14 @@ class UpgradeDecksInput extends React.Component<Props, State> {
       return t`It looks like you edited the experience or trauma for an investigator, but have not saved it yet. Please go back and select ‘Save adjustments’ to ensure your changes are saved.`;
     }
     return undefined;
-  }
+  }, [id, latestDecks, unsavedEdits, scenarioInvestigators, scenarioState, campaignLog]);
 
-  _actuallySave = () => {
-
-    const { id } = this.props;
-    const { scenarioState } = this.context;
+  const actuallySave = useCallback(() => {
     scenarioState.setDecision(id, true);
-  }
+  }, [id, scenarioState]);
 
-  _save = () => {
-    const warningMessage = this.proceedMessage();
+  const save = useCallback(() => {
+    const warningMessage = proceedMessage();
     if (warningMessage) {
       Alert.alert(
         t`Proceed without saving`,
@@ -132,107 +88,57 @@ class UpgradeDecksInput extends React.Component<Props, State> {
         }, {
           text: t`Proceed anyway`,
           style: 'destructive',
-          onPress: this._actuallySave,
+          onPress: actuallySave,
         }]
       );
     } else {
-      this._actuallySave();
+      actuallySave();
     }
-  };
-
-  renderContent(
-    scenarioInvestigators: Card[],
-    campaignLog: GuidedCampaignLog,
-    scenarioState: ScenarioStateHelper
-  ) {
-    const {
-      componentId,
-      id,
-      saveDeckChanges,
-      saveDeckUpgrade,
-      latestDecks,
-      campaignState,
-    } = this.props;
-    const {
-      style: { gameFont, borderStyle, typography },
-    } = this.context;
-    const hasDecision = scenarioState.decision(id) !== undefined;
-    return (
-      <View>
-        <View style={[styles.header, borderStyle]}>
-          <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.right]}>
-            { t`Update decks with scenario results` }
-          </Text>
-        </View>
-        { map(scenarioInvestigators, investigator => {
-          if (campaignLog.isEliminated(investigator)) {
-            return (
-              <InvestigatorRow
-                key={investigator.code}
-                investigator={investigator}
-                description={investigator.traumaString(campaignLog.traumaAndCardData(investigator.code))}
-                eliminated
-              />
-            );
-          }
+  }, [proceedMessage, actuallySave]);
+  const { borderStyle, typography } = useContext(StyleContext);
+  const hasDecision = scenarioState.decision(id) !== undefined;
+  return (
+    <View>
+      <View style={[styles.header, borderStyle]}>
+        <Text style={[typography.bigGameFont, typography.right]}>
+          { t`Update decks with scenario results` }
+        </Text>
+      </View>
+      { map(scenarioInvestigators, investigator => {
+        if (campaignLog.isEliminated(investigator)) {
           return (
-            <UpgradeDeckRow
+            <InvestigatorRow
               key={investigator.code}
-              id={id}
-              componentId={componentId}
-              saveDeckChanges={saveDeckChanges}
-              saveDeckUpgrade={saveDeckUpgrade}
-              campaignLog={campaignLog}
-              campaignState={campaignState}
-              scenarioState={scenarioState}
               investigator={investigator}
-              deck={latestDecks[investigator.code]}
-              setUnsavedEdits={this._setUnsavedEdits}
-              editable={!hasDecision}
+              description={investigator.traumaString(campaignLog.traumaAndCardData(investigator.code))}
+              eliminated
             />
           );
-        }) }
-        { !hasDecision && (
-          <BasicButton
-            title={t`Proceed`}
-            onPress={this._save}
+        }
+        return (
+          <UpgradeDeckRow
+            key={investigator.code}
+            id={id}
+            componentId={componentId}
+            campaignLog={campaignLog}
+            campaignState={campaignState}
+            scenarioState={scenarioState}
+            investigator={investigator}
+            deck={latestDecks[investigator.code]}
+            setUnsavedEdits={setUnsavedEdits}
+            editable={!hasDecision}
           />
-        ) }
-      </View>
-    );
-  }
-
-  render() {
-    return (
-      <ScenarioStepContext.Consumer>
-        { ({ scenarioInvestigators, campaignLog, scenarioState }: ScenarioStepContextType) => (
-          this.renderContent(scenarioInvestigators, campaignLog, scenarioState)
-        ) }
-      </ScenarioStepContext.Consumer>
-    );
-  }
+        );
+      }) }
+      { !hasDecision && (
+        <BasicButton
+          title={t`Proceed`}
+          onPress={save}
+        />
+      ) }
+    </View>
+  );
 }
-
-
-/* eslint-disable @typescript-eslint/ban-types */
-function mapStateToProps(): {} {
-  return {};
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    saveDeckChanges,
-    saveDeckUpgrade,
-  } as any, dispatch);
-}
-
-/* eslint-disable @typescript-eslint/ban-types */
-export default connect<{}, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  UpgradeDecksInput
-);
 
 const styles = StyleSheet.create({
   header: {

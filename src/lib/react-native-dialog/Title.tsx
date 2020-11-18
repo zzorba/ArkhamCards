@@ -10,7 +10,7 @@ interface Props extends TextProps {
 export default function DialogTitle({ style, children, ...otherProps }: Props) {
   const { typography } = useContext(StyleContext);
   return (
-    <Text style={[styles.text, typography.dark, style]} {...otherProps}>
+    <Text style={[styles.text, typography.text, typography.dark, style]} {...otherProps}>
       {children}
     </Text>
   );

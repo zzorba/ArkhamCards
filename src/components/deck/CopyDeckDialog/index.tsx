@@ -1,152 +1,90 @@
-import React from 'react';
-import { ActivityIndicator, Platform, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { ActivityIndicator, Platform, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { throttle } from 'lodash';
-import { bindActionCreators, Action, Dispatch } from 'redux';
-import { connect } from 'react-redux';
+import { Action } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DialogComponent from '@lib/react-native-dialog';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
 import SelectDeckSwitch from './SelectDeckSwitch';
 import { saveClonedDeck } from '../actions';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { showDeckModal } from '@components/nav/helper';
 import Dialog from '@components/core/Dialog';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import { login } from '@actions';
 import { Deck } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
-import { getDeck, getBaseDeck, getLatestDeck, AppState } from '@reducers';
+import { getBaseDeck, getLatestDeck, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useDeck, useEffectUpdate, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
+import { ThunkDispatch } from 'redux-thunk';
 
 interface OwnProps {
   componentId: string;
   toggleVisible: () => void;
   deckId?: number;
-  viewRef?: View;
   signedIn?: boolean;
 }
 
-interface ReduxProps {
-  deck?: Deck;
-  baseDeck?: Deck;
-  latestDeck?: Deck;
-}
+type Props = OwnProps & NetworkStatusProps;
 
-interface ReduxActionProps {
-  login: () => void;
-  saveClonedDeck: (local: boolean, cloneDeck: Deck, deckName: string) => Promise<Deck>;
-}
+type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
-type Props = OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps & NetworkStatusProps;
-
-interface State {
-  saving: boolean;
-  deckName: string | null;
-  offlineDeck: boolean;
-  selectedDeckId?: number;
-  error: string | null;
-}
-
-class CopyDeckDialog extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _onOkayPress!: () => void;
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      saving: false,
-      deckName: null,
-      offlineDeck: !!(props.deck && props.deck.local),
-      selectedDeckId: props.deckId,
-      error: null,
-    };
-
-    this._onOkayPress = throttle(this.onOkayPress.bind(this, false), 200);
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    const {
-      deckId,
-    } = this.props;
-    if (deckId && deckId !== prevProps.deckId) {
-      this.resetForm();
+function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnected, networkType, refreshNetworkStatus }: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const dispatch: DeckDispatch = useDispatch();
+  const [deck] = useDeck(deckId, {});
+  const baseDeckSelector = useCallback((state: AppState) => {
+    if (deckId === undefined) {
+      return undefined;
     }
-  }
+    const baseDeck = getBaseDeck(state, deckId);
+    if (!baseDeck || baseDeck.id === deckId) {
+      return undefined;
+    }
+    return baseDeck;
+  }, [deckId]);
+  const baseDeck = useSelector(baseDeckSelector);
+  const laltestDeckSelector = useCallback((state: AppState) => {
+    if (deckId === undefined) {
+      return undefined;
+    }
+    const latestDeck = getLatestDeck(state, deckId);
+    if (!latestDeck || latestDeck.id === deckId) {
+      return undefined;
+    }
+    return latestDeck;
+  }, [deckId]);
+  const latestDeck = useSelector(laltestDeckSelector);
+  const [saving, setSaving] = useState(false);
+  const [deckName, setDeckName] = useState<string | undefined>();
+  const [offlineDeck, setOfflineDeck] = useState(!!(deck && deck.local));
+  const [selectedDeckId, setSelectedDeckId] = useState(deckId);
+  const [error, setError] = useState<string | undefined>();
 
-  _onDeckTypeChange = (value: boolean) => {
-    const {
-      signedIn,
-      login,
-    } = this.props;
+  const resetForm = useCallback(() => {
+    setSaving(false);
+    setSelectedDeckId(deckId);
+    setDeckName(deck ? deck.name : undefined);
+  }, [setSaving, setSelectedDeckId, setDeckName, deck, deckId]);
+
+  useEffectUpdate(() => {
+    if (deckId !== undefined) {
+      resetForm();
+    }
+  }, [deckId]);
+
+  const onDeckTypeChange = useCallback((value: boolean) => {
     if (value && !signedIn) {
-      login();
+      dispatch(login());
     }
-    this.setState({
-      offlineDeck: !value,
-    });
-  };
+    setOfflineDeck(!value);
+  }, [dispatch, signedIn, setOfflineDeck]);
 
-  _onDeckNameChange = (value: string) => {
-    this.setState({
-      deckName: value,
-    });
-  };
-
-  _selectedDeckIdChanged = (deckId: number, value: boolean) => {
-    if (value) {
-      this.setState({
-        selectedDeckId: deckId,
-      });
-    } else {
-      this.setState({
-        selectedDeckId: undefined,
-      });
-    }
-  };
-
-  resetForm() {
-    const {
-      deckId,
-      deck,
-    } = this.props;
-    this.setState({
-      saving: false,
-      selectedDeckId: deckId,
-      deckName: deck ? deck.name : null,
-    });
-  }
-
-  _showNewDeck = (deck: Deck) => {
-    const {
-      componentId,
-      toggleVisible,
-    } = this.props;
-    const investigator = this.investigator();
-    this.setState({
-      saving: false,
-    });
-    if (Platform.OS === 'android') {
-      toggleVisible();
-    }
-    // Change the deck options for required cards, if present.
-    showDeckModal(componentId, deck, this.context.colors, investigator);
-  };
-
-  selectedDeck(): Deck | undefined {
-    const {
-      baseDeck,
-      deck,
-      latestDeck,
-    } = this.props;
-    const {
-      selectedDeckId,
-    } = this.state;
-
+  const selectedDeck: Deck | undefined = useMemo(() => {
     if (baseDeck && baseDeck.id === selectedDeckId) {
       return baseDeck;
     }
@@ -154,82 +92,68 @@ class CopyDeckDialog extends React.Component<Props, State> {
       return latestDeck;
     }
     return deck;
-  }
+  }, [baseDeck, deck, latestDeck, selectedDeckId]);
+  const investigators = useInvestigatorCards();
+  const investigator = useMemo(() => deck && investigators && investigators[deck.investigator_code], [deck, investigators]);
 
-  onOkayPress(isRetry: boolean) {
-    const {
-      signedIn,
-      isConnected,
-      networkType,
-      saveClonedDeck,
-    } = this.props;
-    const {
-      deckName,
-      offlineDeck,
-    } = this.state;
-    const cloneDeck = this.selectedDeck();
-    if (!cloneDeck) {
+  const showNewDeck = useCallback((deck: Deck) => {
+    setSaving(false);
+    if (Platform.OS === 'android') {
+      toggleVisible();
+    }
+    // Change the deck options for required cards, if present.
+    showDeckModal(componentId, deck, colors, investigator);
+  }, [componentId, toggleVisible, investigator, setSaving, colors]);
+
+  const saveCopy = useCallback((isRetry: boolean) => {
+    if (!selectedDeck) {
       return;
     }
-    const investigator = this.investigator();
-    if (investigator && (!this.state.saving || isRetry)) {
-      this.setState({
-        saving: true,
-      });
+    if (investigator && (!saving || isRetry)) {
+      setSaving(true);
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
-      saveClonedDeck(
-        local,
-        cloneDeck,
-        deckName || t`New Deck`
-      ).then(
-        this._showNewDeck,
+      dispatch(saveClonedDeck(local, selectedDeck, deckName || t`New Deck`)).then(
+        showNewDeck,
         (err) => {
-          this.setState({
-            saving: false,
-            error: err.message,
-          });
+          setSaving(false);
+          setError(err.message);
         }
       );
     }
-  }
+  }, [signedIn, isConnected, networkType,
+    deckName, offlineDeck, selectedDeck, saving, investigator,
+    dispatch, setSaving, setError, showNewDeck]);
+  const onOkayPress = useMemo(() => throttle(() => saveCopy(false), 200), [saveCopy]);
 
-  investigator() {
-    const {
-      deck,
-      investigators,
-    } = this.props;
-    return deck && investigators[deck.investigator_code];
-  }
+  const onDeckNameChange = useCallback((value: string) => {
+    setDeckName(value);
+  }, [setDeckName]);
 
-  renderDeckSelector() {
-    const {
-      deck,
-      baseDeck,
-      latestDeck,
-      cards,
-    } = this.props;
-    const {
-      selectedDeckId,
-    } = this.state;
-    const { typography } = this.context;
-    const parsedCurrentDeck = deck && parseBasicDeck(deck, cards);
-    const parsedBaseDeck = baseDeck && parseBasicDeck(baseDeck, cards);
-    const parsedLatestDeck = latestDeck && parseBasicDeck(latestDeck, cards);
+  const selectedDeckIdChanged = useCallback((deckId: number, value: boolean) => {
+    setSelectedDeckId(value ? deckId : undefined);
+  }, [setSelectedDeckId]);
+
+  const cards = usePlayerCards();
+  const parsedCurrentDeck = useMemo(() => cards && deck && parseBasicDeck(deck, cards), [cards, deck]);
+  const parsedBaseDeck = useMemo(() => cards && baseDeck && parseBasicDeck(baseDeck, cards), [cards, baseDeck]);
+  const parsedLatestDeck = useMemo(() => cards && latestDeck && parseBasicDeck(latestDeck, cards), [cards, latestDeck]);
+
+  const deckSelector = useMemo(() => {
     if (parsedCurrentDeck && !parsedBaseDeck && !parsedLatestDeck) {
       // Only one deck, no need to show a selector.
       return null;
     }
     return (
-      <React.Fragment>
-        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { t`SELECT DECK VERSION TO COPY` }
+      <>
+        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+          { t`Version to copy` }
         </DialogComponent.Description>
         { parsedBaseDeck ? (
           <SelectDeckSwitch
             deckId={parsedBaseDeck.deck.id}
             label={t`Base Version\n${parsedBaseDeck.experience} XP`}
             value={selectedDeckId === parsedBaseDeck.deck.id}
-            onValueChange={this._selectedDeckIdChanged}
+            onValueChange={selectedDeckIdChanged}
           />
         ) : null }
         { parsedCurrentDeck ? (
@@ -237,7 +161,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
             deckId={parsedCurrentDeck.deck.id}
             label={t`Current Version ${parsedCurrentDeck.deck.version}\n${parsedCurrentDeck.experience} XP`}
             value={selectedDeckId === parsedCurrentDeck.deck.id}
-            onValueChange={this._selectedDeckIdChanged}
+            onValueChange={selectedDeckIdChanged}
           />
         ) : null }
         { parsedLatestDeck ? (
@@ -245,27 +169,14 @@ class CopyDeckDialog extends React.Component<Props, State> {
             deckId={parsedLatestDeck.deck.id}
             label={t`Latest Version ${parsedLatestDeck.deck.version}\n${parsedLatestDeck.experience} XP`}
             value={selectedDeckId === parsedLatestDeck.deck.id}
-            onValueChange={this._selectedDeckIdChanged}
+            onValueChange={selectedDeckIdChanged}
           />
         ) : null }
-      </React.Fragment>
+      </>
     );
-  }
+  }, [parsedBaseDeck, parsedCurrentDeck, parsedLatestDeck, selectedDeckId, typography, selectedDeckIdChanged]);
 
-  renderFormContent() {
-    const {
-      signedIn,
-      networkType,
-      isConnected,
-      refreshNetworkStatus,
-    } = this.props;
-    const {
-      saving,
-      deckName,
-      offlineDeck,
-      error,
-    } = this.state;
-    const { colors, typography } = this.context;
+  const formContent = useMemo(() => {
     if (saving) {
       return (
         <ActivityIndicator
@@ -277,17 +188,17 @@ class CopyDeckDialog extends React.Component<Props, State> {
       );
     }
     return (
-      <React.Fragment>
+      <>
         <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
           { t`New Name` }
         </DialogComponent.Description>
         <DialogComponent.Input
           value={deckName || ''}
           placeholder={t`Required`}
-          onChangeText={this._onDeckNameChange}
+          onChangeText={onDeckNameChange}
           returnKeyType="done"
         />
-        { this.renderDeckSelector() }
+        { deckSelector }
         <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
           { t`Deck Type` }
         </DialogComponent.Description>
@@ -295,7 +206,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
           label={t`Create on ArkhamDB`}
           value={!offlineDeck && signedIn && isConnected && networkType !== NetInfoStateType.none}
           disabled={!isConnected || networkType === NetInfoStateType.none}
-          onValueChange={this._onDeckTypeChange}
+          onValueChange={onDeckTypeChange}
           trackColor={COLORS.switchTrackColor}
         />
         { (!isConnected || networkType === NetInfoStateType.none) && (
@@ -311,91 +222,44 @@ class CopyDeckDialog extends React.Component<Props, State> {
             { error }
           </Text>
         ) }
-      </React.Fragment>
+      </>
     );
-  }
+  }, [signedIn, networkType, isConnected, colors, typography, saving, deckName, offlineDeck, error, onDeckNameChange, refreshNetworkStatus, onDeckTypeChange, deckSelector]);
 
-  render() {
-    const {
-      toggleVisible,
-      viewRef,
-      deckId,
-    } = this.props;
-    const {
-      saving,
-      selectedDeckId,
-    } = this.state;
-    const { typography } = this.context;
-    const investigator = this.investigator();
-    if (!investigator) {
-      return null;
-    }
-    const okDisabled = saving || selectedDeckId === null;
-    return (
-      <Dialog
-        title={t`Copy Deck`}
-        visible={!!deckId}
-        viewRef={viewRef}
+
+  if (!investigator) {
+    return null;
+  }
+  const okDisabled = saving || selectedDeckId === null;
+  return (
+    <Dialog
+      title={t`Copy Deck`}
+      visible={!!deckId}
+    >
+      <DialogComponent.Description
+        style={[space.marginSideS, saving ? typography.center : typography.left, typography.text]}
       >
-        <DialogComponent.Description
-          style={[space.marginSideS, saving ? typography.center : typography.left]}
-        >
-          { saving ?
-            t`Saving` :
-            t`Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.`
-          }
-        </DialogComponent.Description>
-        { this.renderFormContent() }
-        <DialogComponent.Button
-          label={t`Cancel`}
-          onPress={toggleVisible}
-        />
-        <DialogComponent.Button
-          label={t`Okay`}
-          color={okDisabled ? COLORS.darkGray : COLORS.lightBlue}
-          disabled={okDisabled}
-          onPress={this._onOkayPress}
-        />
-      </Dialog>
-    );
-  }
+        { saving ?
+          t`Saving` :
+          t`Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.`
+        }
+      </DialogComponent.Description>
+      { formContent }
+      <DialogComponent.Button
+        label={t`Cancel`}
+        onPress={toggleVisible}
+      />
+      <DialogComponent.Button
+        label={t`Okay`}
+        color={okDisabled ? COLORS.darkGray : COLORS.lightBlue}
+        disabled={okDisabled}
+        onPress={onOkayPress}
+      />
+    </Dialog>
+  );
 }
 
-function mapStateToProps(state: AppState, props: OwnProps & PlayerCardProps): ReduxProps {
-  if (!props.deckId) {
-    return {};
-  }
-  const deck = getDeck(props.deckId)(state);
-  let baseDeck: Deck | undefined = getBaseDeck(state, props.deckId);
-  if (baseDeck && baseDeck.id === props.deckId) {
-    baseDeck = undefined;
-  }
-  let latestDeck: Deck | undefined = getLatestDeck(state, props.deckId);
-  if (latestDeck && latestDeck.id === props.deckId) {
-    latestDeck = undefined;
-  }
-  return {
-    deck: deck || undefined,
-    baseDeck,
-    latestDeck,
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    saveClonedDeck,
-    login,
-  } as any, dispatch);
-}
-
-export default withPlayerCards<OwnProps>(
-  connect<ReduxProps, ReduxActionProps, OwnProps & PlayerCardProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(
-    withNetworkStatus(CopyDeckDialog)
-  )
-);
+export default withNetworkStatus(CopyDeckDialog);
 
 const styles = StyleSheet.create({
   spinner: {

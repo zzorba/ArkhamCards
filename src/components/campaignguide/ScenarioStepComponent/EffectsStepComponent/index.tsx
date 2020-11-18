@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import { View } from 'react-native';
 import { flatMap, map } from 'lodash';
 
 import BorderWrapper from '@components/campaignguide/BorderWrapper';
 import ScenarioStepComponent from '@components/campaignguide/ScenarioStepComponent';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import ScenarioGuideContext from '../../ScenarioGuideContext';
 import ChaosTokenEffectComponent from './ChaosTokenEffectComponent';
 import CampaignLogEffectComponent from './CampaignLogEffectComponent';
 import AddWeaknessEffectComponent from './AddWeaknessEffectComponent';
@@ -13,8 +13,6 @@ import AddCardEffectComponent from './AddCardEffectComponent';
 import RemoveCardEffectComponent from './RemoveCardEffectComponent';
 import TraumaEffectComponent from './TraumaEffectComponent';
 import { EffectsStep, Effect } from '@data/scenario/types';
-import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { ProcessedScenario } from '@data/scenario';
 import { getSpecialEffectChoiceList } from '@data/scenario/effectHelper';
 import space from '@styles/space';
 
@@ -26,23 +24,15 @@ interface Props {
   switchCampaignScenario: () => void;
 }
 
-export default class EffectsStepComponent extends React.Component<Props> {
-  renderEffect(
+export default function EffectsStepComponent({ componentId, width, step, campaignLog, switchCampaignScenario }: Props) {
+  const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
+  const renderEffect = useCallback((
     id: string,
     effect: Effect,
-    processedScenario: ProcessedScenario,
-    scenarioState: ScenarioStateHelper,
     border: boolean,
     input?: string[],
     numberInput?: number[],
-  ): React.ReactNode {
-    const {
-      step,
-      campaignLog,
-      componentId,
-      width,
-      switchCampaignScenario,
-    } = this.props;
+  ): React.ReactNode => {
     switch (effect.type) {
       case 'freeform_campaign_log':
         return (
@@ -53,7 +43,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
           />
         );
       case 'campaign_log':
-        if (this.props.step.stepText || border) {
+        if (step.stepText || border) {
           return null;
         }
         return (
@@ -66,7 +56,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
         );
       case 'add_chaos_token':
       case 'remove_chaos_token':
-        if (this.props.step.stepText || border) {
+        if (step.stepText || border) {
           return null;
         }
         return (
@@ -89,7 +79,6 @@ export default class EffectsStepComponent extends React.Component<Props> {
           <AddCardEffectComponent
             id={id}
             effect={effect}
-            input={input}
           />
         );
       case 'remove_card':
@@ -120,7 +109,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
               processedScenario.scenarioGuide.expandSteps(
                 effect.steps,
                 scenarioState,
-                this.props.campaignLog
+                campaignLog
               ),
               step => (
                 <ScenarioStepComponent
@@ -145,53 +134,40 @@ export default class EffectsStepComponent extends React.Component<Props> {
         return null;
       }
     }
-  }
+  }, [step, campaignLog, componentId, width, switchCampaignScenario, scenarioState, processedScenario]);
 
-  render() {
-    const { step, width } = this.props;
-    let foundSpecialEffect = false;
-    return (
-      <ScenarioGuideContext.Consumer>
-        { ({ processedScenario, scenarioState }: ScenarioGuideContextType) => (
-          flatMap(step.effectsWithInput, (effectsWithInput, outerIdx) => {
-            if (foundSpecialEffect) {
-              return null;
-            }
-            return (
-              <BorderWrapper
-                key={`${step.id}_${outerIdx}`}
-                width={width}
-                border={!!effectsWithInput.border}
-              >
-                { flatMap(effectsWithInput.effects, (effect, innerIdx) => {
-                  if (foundSpecialEffect) {
-                    return null;
-                  }
-                  const specialEffectChoice = getSpecialEffectChoiceList(step.id, effect);
-                  if (specialEffectChoice && specialEffectChoice !== '$fixed_investigator' &&
-                    scenarioState.stringChoices(specialEffectChoice) === undefined
-                  ) {
-                    foundSpecialEffect = true;
-                  }
-                  return (
-                    <View key={`${step.id}_${outerIdx}_${innerIdx}`}>
-                      { this.renderEffect(
-                        step.id,
-                        effect,
-                        processedScenario,
-                        scenarioState,
-                        !!effectsWithInput.border,
-                        effectsWithInput.input,
-                        effectsWithInput.numberInput
-                      ) }
-                    </View>
-                  );
-                }) }
-              </BorderWrapper>
-            );
-          })
-        ) }
-      </ScenarioGuideContext.Consumer>
-    );
-  }
+  let foundSpecialEffect = false;
+  return (
+    <>
+      { flatMap(step.effectsWithInput, (effectsWithInput, outerIdx) => {
+        if (foundSpecialEffect) {
+          return null;
+        }
+        return (
+          <BorderWrapper
+            key={`${step.id}_${outerIdx}`}
+            width={width}
+            border={!!effectsWithInput.border}
+          >
+            { flatMap(effectsWithInput.effects, (effect, innerIdx) => {
+              if (foundSpecialEffect) {
+                return null;
+              }
+              const specialEffectChoice = getSpecialEffectChoiceList(step.id, effect);
+              if (specialEffectChoice && specialEffectChoice !== '$fixed_investigator' &&
+                scenarioState.stringChoices(specialEffectChoice) === undefined
+              ) {
+                foundSpecialEffect = true;
+              }
+              return (
+                <View key={`${step.id}_${outerIdx}_${innerIdx}`}>
+                  { renderEffect(step.id, effect, !!effectsWithInput.border, effectsWithInput.input, effectsWithInput.numberInput) }
+                </View>
+              );
+            }) }
+          </BorderWrapper>
+        );
+      }) }
+    </>
+  );
 }

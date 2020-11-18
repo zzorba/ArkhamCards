@@ -1,10 +1,12 @@
 import React from 'react';
-import { Alert, InteractionManager } from 'react-native';
+import { Alert, Platform } from 'react-native';
 import { connect } from 'react-redux';
 
 import Database from './Database';
-import DatabaseContext from './DatabaseContext';
+import DatabaseContext, { PlayerCards } from './DatabaseContext';
 import { AppState } from '@reducers';
+import { CardsMap } from './Card';
+import TabooSet from './TabooSet';
 
 interface OwnProps {
   children: React.ReactNode;
@@ -17,22 +19,33 @@ interface ReduxProps {
 type Props = OwnProps & ReduxProps;
 let theDatabase: Database | null = null;
 
-class DatabaseProvider extends React.Component<Props> {
+interface State {
+  investigatorCardsByTaboo: {
+    [tabooSet: string]: CardsMap;
+  };
+  playerCardsByTaboo: {
+    [tabooSet: string]: PlayerCards;
+  };
+  tabooSets: TabooSet[];
+}
+class DatabaseProvider extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
     if (theDatabase === null) {
       theDatabase = new Database(props.schemaVersion);
-      InteractionManager.runAfterInteractions(() => {
+      setTimeout(() => {
         if (theDatabase) {
           theDatabase.reloadPlayerCards();
         }
-      });
+      }, Platform.OS === 'android' ? 500 : 25);
     }
-  }
-
-  componentDidMount() {
-    theDatabase && theDatabase.addListener(this._playerCardsChanged);
+    theDatabase.addListener(this._playerCardsChanged);
+    this.state = {
+      investigatorCardsByTaboo: theDatabase.investigatorState || {},
+      playerCardsByTaboo: theDatabase.playerState?.playerCards || {},
+      tabooSets: theDatabase.playerState?.tabooSets || [],
+    };
   }
 
   componentWillUnmount() {
@@ -40,7 +53,13 @@ class DatabaseProvider extends React.Component<Props> {
   }
 
   _playerCardsChanged = () => {
-    this.forceUpdate();
+    if (theDatabase) {
+      this.setState({
+        investigatorCardsByTaboo: theDatabase.investigatorState || {},
+        playerCardsByTaboo: theDatabase.playerState?.playerCards || {},
+        tabooSets: theDatabase.playerState?.tabooSets || [],
+      });
+    }
   };
 
   render() {
@@ -50,9 +69,8 @@ class DatabaseProvider extends React.Component<Props> {
     }
     return (
       <DatabaseContext.Provider value={{
+        ...this.state,
         db: theDatabase,
-        playerCardsByTaboo: theDatabase.state?.playerCards,
-        tabooSets: theDatabase.state?.tabooSets || [],
       }}>
         { this.props.children }
       </DatabaseContext.Provider>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   Text,
   TouchableOpacity,
@@ -8,8 +8,7 @@ import { Navigation } from 'react-native-navigation';
 import { ScenarioResult } from '@actions/types';
 import { Scenario } from '../constants';
 import { EditScenarioResultProps } from '../EditScenarioResultView';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
-
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -20,16 +19,9 @@ interface Props {
   editable?: boolean;
 }
 
-export default class ScenarioResultRow extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _onPress = () => {
-    const {
-      componentId,
-      campaignId,
-      index,
-    } = this.props;
+export default function ScenarioResultRow({ componentId, campaignId, index, scenarioResult, scenarioByCode, editable }: Props) {
+  const { typography } = useContext(StyleContext);
+  const onPress = useCallback(() => {
     Navigation.push<EditScenarioResultProps>(componentId, {
       component: {
         name: 'Campaign.EditResult',
@@ -39,31 +31,22 @@ export default class ScenarioResultRow extends React.Component<Props> {
         },
       },
     });
-  };
+  }, [componentId, campaignId, index]);
 
-  render() {
-    const {
-      scenarioResult,
-      scenarioByCode,
-      editable,
-    } = this.props;
-    const { gameFont, typography } = this.context;
-    const resolution = scenarioResult.resolution ?
-      `: ${scenarioResult.resolution}` : '';
-    const scenarioCard = scenarioByCode && scenarioByCode[scenarioResult.scenarioCode];
-    const scenarioName = scenarioCard ? scenarioCard.name : scenarioResult.scenario;
-    const content = (
-      <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-        { `${scenarioName}${resolution}` }
-      </Text>
-    );
-    if (!editable) {
-      return content;
-    }
-    return (
-      <TouchableOpacity onPress={this._onPress}>
-        { content }
-      </TouchableOpacity>
-    );
+  const resolution = scenarioResult.resolution ? `: ${scenarioResult.resolution}` : '';
+  const scenarioCard = scenarioByCode && scenarioByCode[scenarioResult.scenarioCode];
+  const scenarioName = scenarioCard ? scenarioCard.name : scenarioResult.scenario;
+  const content = (
+    <Text style={typography.mediumGameFont}>
+      { `${scenarioName}${resolution}` }
+    </Text>
+  );
+  if (!editable) {
+    return content;
   }
+  return (
+    <TouchableOpacity onPress={onPress}>
+      { content }
+    </TouchableOpacity>
+  );
 }

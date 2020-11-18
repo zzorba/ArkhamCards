@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import SettingsSwitch from '@components/core/SettingsSwitch';
 
@@ -10,30 +10,19 @@ interface Props {
   onValueChange: (index: number, value: boolean) => void;
 }
 
-export default class RequiredCardSwitch extends React.Component<Props> {
-  _onValueChange = (value: boolean) => {
-    const {
-      onValueChange,
-      index,
-    } = this.props;
+export default function RequiredCardSwitch({ index, disabled, label, value, onValueChange }: Props) {
+  const handleOnValueChange = useCallback((value: boolean) => {
     onValueChange(index, value);
-  };
+  }, [onValueChange, index]);
 
-  render() {
-    const {
-      disabled,
-      label,
-      value,
-    } = this.props;
-    return (
-      <SettingsSwitch
-        disabled={disabled}
-        noDisableText
-        title={label}
-        value={value}
-        onValueChange={this._onValueChange}
-        settingsStyle
-      />
-    );
-  }
+  return (
+    <SettingsSwitch
+      disabled={disabled}
+      noDisableText
+      title={label}
+      value={value}
+      onValueChange={handleOnValueChange}
+      settingsStyle
+    />
+  );
 }

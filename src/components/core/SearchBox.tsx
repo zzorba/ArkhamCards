@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import {
+  Platform,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -9,11 +10,12 @@ import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import ToggleButton from '@components/core/ToggleButton';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 
 export const SEARCH_BAR_HEIGHT = 60;
 export const SEARCH_BAR_INPUT_HEIGHT = SEARCH_BAR_HEIGHT - 20;
+
 interface Props {
   onChangeText: (search: string) => void;
   placeholder: string;
@@ -22,94 +24,76 @@ interface Props {
   advancedOpen?: boolean;
 }
 
-export default class SearchBox extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedOpen }: Props) {
+  const { borderStyle, colors } = useContext(StyleContext);
+  const clear = useCallback(() => {
+    onChangeText('');
+  }, [onChangeText]);
 
-  _clear = () => {
-    this.props.onChangeText('');
-  };
-
-  renderClearButton(rightPadding?: boolean) {
-    const { value } = this.props;
-    const { colors } = this.context;
+  const renderClearButton = useCallback((rightPadding?: boolean) => {
     if (!value) {
-      return undefined;
+      return null;
     }
     return (
-      <TouchableOpacity style={rightPadding ? space.marginRightS : undefined} onPress={this._clear}>
+      <TouchableOpacity style={rightPadding ? space.marginRightS : undefined} onPress={clear}>
         <View style={styles.dismissIcon}>
           <AppIcon name="dismiss" size={18} color={colors.D20} />
         </View>
       </TouchableOpacity>
     );
-  }
+  }, [value, colors, clear]);
 
-  renderToggleButton() {
-    const {
-      toggleAdvanced,
-      advancedOpen,
-    } = this.props;
+  const toggleButton = useMemo(() => {
     if (!toggleAdvanced) {
       return (
         <View style={styles.rightButtons}>
-          { this.renderClearButton() }
+          { renderClearButton() }
         </View>
       );
     }
     return (
       <View style={styles.rightButtons}>
-        { this.renderClearButton(true) }
+        { renderClearButton(true) }
         <ToggleButton accessibilityLabel={t`Search options`} value={!!advancedOpen} onPress={toggleAdvanced} icon="dots" />
       </View>
     );
-  }
+  }, [toggleAdvanced, advancedOpen, renderClearButton]);
 
-  render() {
-    const {
-      placeholder,
-      onChangeText,
-      toggleAdvanced,
-      value,
-    } = this.props;
-    const { colors, borderStyle } = this.context;
-
-    return (
-      <Input
-        clearButtonMode="never"
-        autoCorrect={false}
-        autoCapitalize="none"
-        multiline={false}
-        containerStyle={[styles.container, borderStyle, { backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : {}]}
-        inputContainerStyle={[
-          styles.searchInput,
-          {
-            backgroundColor: colors.L20,
-            borderColor: colors.L10,
-          },
-        ]}
-        inputStyle={{
-          marginTop: 6,
-          fontFamily: 'Alegreya-Regular',
-          fontSize: 20,
-          lineHeight: 24,
-          color: colors.darkText,
-          textAlignVertical: 'center',
-        }}
-        underlineColorAndroid="rgba(0,0,0,0)"
-        allowFontScaling={false}
-        onChangeText={onChangeText}
-        placeholder={placeholder}
-        placeholderTextColor={colors.D20}
-        leftIcon={<View style={styles.searchIcon}><AppIcon name="search" color={colors.M} size={18} /></View>}
-        rightIcon={this.renderToggleButton()}
-        rightIconContainerStyle={{
-          marginRight: -13,
-        }}
-        value={value}
-      />
-    );
-  }
+  return (
+    <Input
+      clearButtonMode="never"
+      autoCorrect={false}
+      autoCapitalize="none"
+      multiline={false}
+      containerStyle={[styles.container, borderStyle, { backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : {}]}
+      inputContainerStyle={[
+        styles.searchInput,
+        {
+          backgroundColor: colors.L20,
+          borderColor: colors.L10,
+        },
+      ]}
+      inputStyle={{
+        marginTop: 6,
+        fontFamily: 'Alegreya-Regular',
+        fontSize: Platform.OS === 'android' ? 16 : 20,
+        lineHeight: 24,
+        color: colors.darkText,
+        textAlignVertical: 'center',
+      }}
+      underlineColorAndroid="rgba(0,0,0,0)"
+      allowFontScaling={false}
+      onChangeText={onChangeText}
+      placeholder={placeholder}
+      placeholderTextColor={colors.D20}
+      leftIcon={<View style={styles.searchIcon}><AppIcon name="search" color={colors.M} size={18} /></View>}
+      rightIcon={toggleButton}
+      rightIconContainerStyle={{
+        marginRight: -13,
+      }}
+      value={value}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
