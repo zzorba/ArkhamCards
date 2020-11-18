@@ -1517,22 +1517,22 @@ msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection des Faiblesses"
 
 #: src/components/campaign/campaignHelper.ts:43
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
 #: src/components/campaign/campaignHelper.ts:44
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
 #: src/components/campaign/campaignHelper.ts:49
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les supprimer de l’ensemble de faiblesse de base de la campagne?"
 
 #: src/components/campaign/campaignHelper.ts:50
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la supprimer de l’ensemble de faiblesse de base de la campagne?"
 
@@ -4452,7 +4452,7 @@ msgstr "Liste de contrôle"
 
 #: src/lib/DeckValidation.ts:256
 msgid "Limit 1 Covenant per deck."
-msgstr ""
+msgstr "Limite de 1 Traité par deck"
 
 #: src/components/card/CardFaqView.tsx:97
 msgid "Checking for FAQ"
@@ -4808,7 +4808,7 @@ msgstr "Le Récif du Diable"
 
 #: src/components/campaign/constants.ts:260
 msgid "Horror in High Gear"
-msgstr ""
+msgstr "Horreur à Toute Vitesse"
 
 #: src/components/campaign/constants.ts:261
 msgid "A Light in the Fog"
@@ -5055,114 +5055,114 @@ msgstr "Livres"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:129
 msgid "Upgraded"
-msgstr ""
+msgstr "Amélioré"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:130
 msgid "Added"
-msgstr ""
+msgstr "Ajouté"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:131
 msgid "Removed"
-msgstr ""
+msgstr "Supprimé"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:132
 msgid "Exiled"
-msgstr ""
+msgstr "Bannie"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:143
 msgid "Latest upgrade"
-msgstr ""
+msgstr "Dernière amélioration"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:115
 msgid "Assets"
-msgstr ""
+msgstr "Soutients"
 
 #: src/components/decklist/DeckListComponent/NewDeckListRow.tsx:52
 #, javascript-format
 msgid "${ xp } XP (${ unspentStr } unspent)"
-msgstr ""
+msgstr "${ xp } XP (${ unspentStr } non dépensé)"
 
 #: src/components/decklist/DeckListComponent/NewDeckListRow.tsx:54
 msgid "${ xp } XP"
-msgstr ""
+msgstr ""${ xp } XP"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:528
 #, javascript-format
 msgid "${ adjustedXp } XP"
-msgstr ""
+msgstr "${ adjustedXp } XP"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:529
 msgid "${ unspentStr } unspent"
-msgstr ""
+msgstr "${ unspentStr } non dépensé"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:652
 msgid "Add cards"
-msgstr ""
+msgstr "Ajouter des cartes"
 
 #: src/components/deck/DeckDetailView/index.tsx:895
 #, javascript-format
 msgid "Deck #${ deck.id }"
-msgstr ""
+msgstr "Deck #${ deck.id }"
 
 #: src/components/deck/DeckDetailView/index.tsx:906
 msgid "Tools"
-msgstr ""
+msgstr "Outils"
 
 #: src/components/deck/DeckDetailView/index.tsx:911
 msgid "For balancing and evaluating"
-msgstr ""
+msgstr "Pour équilibrer et évaluer"
 
 #: src/components/deck/DeckDetailView/index.tsx:917
 msgid "Check your deck stability"
-msgstr ""
+msgstr "Vérifier la stabilité de votre deck"
 
 #: src/components/deck/DeckDetailView/index.tsx:923
-msgid "For easy deck assembly"
-msgstr ""
+msgid "For eady deck assembly"
+msgstr "Pour faciliter la construction du deck"
 
 #: src/components/deck/DeckDetailView/index.tsx:943
 msgid "Story assets and weaknesses"
-msgstr ""
+msgstr "Soutient et faiblesse d'histoire"
 
 #: src/components/deck/DeckDetailView/index.tsx:981
 msgid "Clone deck"
-msgstr ""
+msgstr "Duppliquer le deck"
 
 #: src/components/deck/DeckDetailView/index.tsx:994
 msgid "Open in browser"
-msgstr ""
+msgstr "Ouvrir dans le navigateur"
 
 #: src/components/deck/DeckDetailView/InvestigatorOptionsModule/DeckSizeSelectPicker.tsx:36
 #, javascript-format
 msgid "${ cardCount } Cards"
-msgstr ""
+msgstr "${ cardCount } Cartes"
 
 #: src/components/deck/DeckDetailView/InvestigatorOptionsModule/ParallelInvestigatorPicker.tsx:31
 msgid "Original front · Original back"
-msgstr ""
+msgstr "Recto original - Verso original"
 
 #: src/components/deck/DeckDetailView/InvestigatorOptionsModule/ParallelInvestigatorPicker.tsx:32
 msgid "Parallel front · Original back"
-msgstr ""
+msgstr "Recto parallèle - Verso original"
 
 #: src/components/deck/DeckDetailView/InvestigatorOptionsModule/ParallelInvestigatorPicker.tsx:33
 msgid "Original front · Parallel back"
-msgstr ""
+msgstr "Recto original - Verso parallèle"
 
 #: src/components/deck/DeckDetailView/InvestigatorOptionsModule/ParallelInvestigatorPicker.tsx:34
 msgid "Parallel front · Parallel back"
-msgstr ""
+msgstr "Recto parallèle - Verso parallèle"
 
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/CardCountLine.tsx:19
 msgid "Card count"
-msgstr ""
+msgstr "Nombre de cartes"
 
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/CardCountLine.tsx:24
 #, javascript-format
 msgid "${ normalCardCount } · ${ totalCardCount } total"
 msgid_plural "${ normalCardCount } · ${ totalCardCount } total"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ normalCardCount } · ${ totalCardCount } total"
+msgstr[1] "${ normalCardCount } · ${ totalCardCount } total"
 
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/CardCountLine.tsx:28
 msgid "${ bondedCardCount } bound"
@@ -5174,12 +5174,12 @@ msgstr[1] ""
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/ExperienceLine.tsx:28
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ unspentXpStr } non dépensé"
+msgstr[1] "${ unspentXpStr } non dépensés"
 
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/ProblemLine.tsx:30
 msgid "Deck is invalid"
-msgstr ""
+msgstr "Deck invalide"
 
 #: src/components/deck/section/DeckSectionBlock.tsx:27
 msgid "Show splash cards"
@@ -5196,28 +5196,28 @@ msgstr ""
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:389
 #, javascript-format
 msgid "${ count } of ${ limitSlotCount }"
-msgstr ""
+msgstr "${ count } sur ${ limitSlotCount }"
 
 #: src/components/DeckNavFooter/index.tsx:88
 #, javascript-format
 msgid "${ normalCardCount } Card"
 msgid_plural "${ normalCardCount } Cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ normalCardCount } Carte"
+msgstr[1] "${ normalCardCount } Cartes"
 
 #: src/components/DeckNavFooter/index.tsx:93
 msgid "${ totalCardCount } Total"
 msgid_plural "${ totalCardCount } Total"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ totalCardCount } Total"
+msgstr[1] "${ totalCardCount } Total"
 
 #: src/components/DeckNavFooter/index.tsx:68
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/ExperienceLine.tsx:24
 #, javascript-format
 msgid "${ experience } XP"
 msgid_plural "${ experience } XP"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ experience } XP"
+msgstr[1] "${ experience } XP"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
 #, javascript-format
@@ -5434,7 +5434,7 @@ msgid ""
 "your Campaign Log."
 msgstr ""
 "Si <i>${ card.name }</i> n'est pas noté sous la mention ‘${ entry.section "
-"}’ dans votre carnet de campagne."
+"}’ dans votre Carnet de campagne."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:40
 #, javascript-format
@@ -5444,7 +5444,7 @@ msgid ""
 "Campaign Log."
 msgstr ""
 "Si <i>${ card.name }</i> est noté sous la mention ‘${ entry.section }’ dans "
-"votre carnet de campagne."
+"votre Carnet de campagne."
 
 #: src/components/deck/DrawSimulatorView.tsx:197
 msgctxt "Draw Cards"
