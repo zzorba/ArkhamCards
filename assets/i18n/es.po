@@ -1422,22 +1422,18 @@ msgstr "Nombre de Campaña"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template
 #: src/components/campaign/campaignHelper.ts:43
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template
 #: src/components/campaign/campaignHelper.ts:44
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template
 #: src/components/campaign/campaignHelper.ts:49
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template
 #: src/components/campaign/campaignHelper.ts:50
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
@@ -4921,7 +4917,7 @@ msgid "Check your deck stability"
 msgstr "Comprueba la consistencia del mazo"
 
 #: src/components/deck/DeckDetailView/index.tsx:923
-msgid "For eady deck assembly"
+msgid "For easy deck assembly"
 msgstr "Para montar fácilmente el mazo"
 
 #: src/components/deck/DeckDetailView/index.tsx:943
