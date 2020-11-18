@@ -14,7 +14,6 @@ import { campaignScenarios, Scenario } from '@components/campaign/constants';
 import TabooSet from '@data/TabooSet';
 
 export function useBackButton(handler: () => boolean) {
-  // Frustration isolated! Yay! 🎉
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', handler);
 

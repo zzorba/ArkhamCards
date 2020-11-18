@@ -234,9 +234,7 @@ interface Props {
   buttons?: ReactNode;
   showEditSpecial?: () => void;
   showEditNameDialog: () => void;
-  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   showCardUpgradeDialog: (card: Card) => void;
-  investigatorDataUpdates?: InvestigatorData;
   tabooSet?: TabooSet;
   tabooOpen: boolean;
   singleCardView: boolean;
@@ -282,10 +280,8 @@ export default function DeckViewTab(props: Props) {
     isPrivate,
     campaign,
     hideCampaign,
-    showTraumaDialog,
     showDeckUpgrade,
     showDeckHistory,
-    investigatorDataUpdates,
   } = props;
   const { backgroundStyle, colors } = useContext(StyleContext);
   const [deckEdits, deckEditsRef] = useDeckEdits(deck.id);
@@ -645,24 +641,25 @@ export default function DeckViewTab(props: Props) {
       <View style={space.marginSideS}>
         { map(data, deckSection => {
           return (
-            <DeckSectionBlock
-              faction={faction}
-              title={deckSection.title}
-              onTitlePress={deckSection.onTitlePress}
-              key={deckSection.title}
-              collapsed={deckSection.collapsed}
-              toggleCollapsed={deckSection.toggleCollapsed}
-              footerButton={deckSection.sections.length === 0 && deckSection.onTitlePress ? (
-                <RoundedFooterButton onPress={deckSection.onTitlePress} title={t`Add cards`} icon="deck" />
-              ) : undefined}
-            >
-              { flatMap(deckSection.sections, section => (
-                <View key={section.id}>
-                  { renderSectionHeader(section) }
-                  { map(section.cards, (item, index) => renderCard(item, index, section)) }
-                </View>
-              )) }
-            </DeckSectionBlock>
+            <View style={space.marginBottomS} key={deckSection.title}>
+              <DeckSectionBlock
+                faction={faction}
+                title={deckSection.title}
+                onTitlePress={deckSection.onTitlePress}
+                collapsed={deckSection.collapsed}
+                toggleCollapsed={deckSection.toggleCollapsed}
+                footerButton={deckSection.sections.length === 0 && deckSection.onTitlePress ? (
+                  <RoundedFooterButton onPress={deckSection.onTitlePress} title={t`Add cards`} icon="deck" />
+                ) : undefined}
+              >
+                { flatMap(deckSection.sections, section => (
+                  <View key={section.id}>
+                    { renderSectionHeader(section) }
+                    { map(section.cards, (item, index) => renderCard(item, index, section)) }
+                  </View>
+                )) }
+              </DeckSectionBlock>
+            </View>
           );
         })}
         <DeckProgressComponent
@@ -674,10 +671,8 @@ export default function DeckViewTab(props: Props) {
           isPrivate={isPrivate}
           campaign={campaign}
           hideCampaign={hideCampaign}
-          showTraumaDialog={showTraumaDialog}
           showDeckUpgrade={showDeckUpgrade}
           showDeckHistory={showDeckHistory}
-          investigatorDataUpdates={investigatorDataUpdates}
           tabooSetId={tabooSetId}
           singleCardView={singleCardView}
         />
