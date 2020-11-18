@@ -5139,7 +5139,7 @@ msgid "Check your deck stability"
 msgstr ""
 
 #: src/components/deck/DeckDetailView/index.tsx:923
-msgid "for easy deck assembly"
+msgid "For easy deck assembly"
 msgstr ""
 
 #: src/components/deck/DeckDetailView/index.tsx:943

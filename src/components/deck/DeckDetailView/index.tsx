@@ -920,7 +920,7 @@ function DeckDetailView({
           icon="checklist"
           onPress={onChecklistPressed}
           title={t`Checklist`}
-          description={t`for easy deck assembly`}
+          description={t`For easy deck assembly`}
           last
         />
         { editable && (
