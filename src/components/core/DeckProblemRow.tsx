@@ -8,9 +8,9 @@ import {
 import { t } from 'ttag';
 
 import { DeckProblem, DeckProblemType } from '@actions/types';
-import AppIcon from '@icons/AppIcon';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import WarningIcon from '@icons/WarningIcon';
 
 interface Props {
   problem: DeckProblem;
@@ -38,15 +38,11 @@ export default function DeckProblemRow({
   noFontScaling,
   fontSize,
 }: Props) {
-  const { fontScale, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   return (
     <View style={styles.problemRow}>
       <View style={space.marginRightXs}>
-        <AppIcon
-          name="warning"
-          size={14 * (noFontScaling ? 1 : fontScale)}
-          color={color}
-        />
+        <WarningIcon size={14} />
       </View>
       <Text
         style={[typography.small, { color }, { fontSize: fontSize || 14 }, styles.problemText]}

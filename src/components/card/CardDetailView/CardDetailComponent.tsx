@@ -21,13 +21,12 @@ interface Props {
   card: Card;
   width: number;
   showSpoilers: boolean;
-  tabooSetId?: number;
   toggleShowSpoilers?: (code: string) => void;
   showInvestigatorCards?: (code: string) => void;
   simple?: boolean;
 }
 
-export default function CardDetailComponent({ componentId, card, width, showSpoilers, tabooSetId, toggleShowSpoilers, showInvestigatorCards, simple }: Props) {
+export default function CardDetailComponent({ componentId, card, width, showSpoilers, toggleShowSpoilers, showInvestigatorCards, simple }: Props) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const editSpoilersPressed = useCallback(() => {
     if (componentId) {

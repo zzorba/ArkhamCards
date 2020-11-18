@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useRef } from 'react';
 import { Text as SVGText } from 'react-native-svg';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   x: number;

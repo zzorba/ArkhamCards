@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import { find, map } from 'lodash';
 

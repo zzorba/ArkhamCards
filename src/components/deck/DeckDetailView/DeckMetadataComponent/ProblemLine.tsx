@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
 import { DeckProblem, DeckProblemType } from '@actions/types';
-import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import MetadataLineComponent from './MetadataLineComponent';
 import WarningIcon from '@icons/WarningIcon';
@@ -53,10 +52,5 @@ export default function ProblemLine({ problem }: Props) {
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-  },
-  circle: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
   },
 });

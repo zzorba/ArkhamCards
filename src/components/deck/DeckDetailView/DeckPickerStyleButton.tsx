@@ -20,7 +20,7 @@ interface Props {
 function iconSize(icon: string) {
   switch (icon) {
     case 'xp':
-      return 36;
+      return 32;
     case 'card-outline':
       return 34;
     case 'parallel':

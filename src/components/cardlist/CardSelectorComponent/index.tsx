@@ -28,7 +28,7 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
     } else if (updateCount) {
       updateCount(card, count);
     }
-  }, [counts, updateCount, toggleCard]);
+  }, [updateCount, toggleCard]);
 
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);

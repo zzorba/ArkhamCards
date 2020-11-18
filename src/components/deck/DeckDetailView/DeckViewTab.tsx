@@ -1,12 +1,6 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { filter, find, flatMap, forEach, map, sum, sumBy, uniqBy } from 'lodash';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { filter, find, flatMap, flatten, forEach, map, sum, sumBy, uniqBy } from 'lodash';
+import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
@@ -37,7 +31,6 @@ import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
 import space, { isBig, m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { useDeckEdits, useFlag } from '@components/core/hooks';
 import { setDeckTabooSet, updateDeckMeta } from './actions';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
@@ -66,6 +59,8 @@ interface DeckSection {
   title: string;
   onTitlePress?: () => void;
   sections: CardSection[];
+  toggleCollapsed?: () => void;
+  collapsed?: boolean;
 }
 
 function hasUpgrades(
@@ -97,12 +92,13 @@ function deckToSections(
   validation: DeckValidation,
   special: boolean,
   inCollection: { [pack_code: string]: boolean },
-  limitedSlots: boolean
+  limitedSlots: boolean,
+  limitedSlotsOnly?: boolean,
 ): [DeckSection, number] {
   const result: CardSection[] = [];
   if (halfDeck.Assets) {
     const assets = flatMap(halfDeck.Assets, subAssets => {
-      const data = filter(subAssets.data, c => !limitedSlots || c.limited);
+      const data = filter(subAssets.data, c => limitedSlotsOnly ? c.limited : (!c.limited || !limitedSlots));
       if (!data.length) {
         return [];
       }
@@ -291,7 +287,7 @@ export default function DeckViewTab(props: Props) {
     showDeckHistory,
     investigatorDataUpdates,
   } = props;
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, colors } = useContext(StyleContext);
   const [deckEdits, deckEditsRef] = useDeckEdits(deck.id);
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
@@ -329,7 +325,7 @@ export default function DeckViewTab(props: Props) {
     const bondedCardsCount = sumBy(uniqueBondedCards, card => card.quantity || 0);
     return [uniqueBondedCards, bondedCardsCount];
   }, [parsedDeck.slots, cards, bondedCardsByName]);
-
+  const limitSlotCount = find(investigatorBack?.deck_options, option => !!option.limit)?.limit || 0;
   useEffect(() => {
     if (!investigatorBack || !visible) {
       return;
@@ -348,7 +344,7 @@ export default function DeckViewTab(props: Props) {
       validation,
       false,
       inCollection,
-      limitedSlots
+      false
     );
     const [specialSection, specialIndex] = deckToSections(
       t`Special Cards`,
@@ -360,18 +356,54 @@ export default function DeckViewTab(props: Props) {
       validation,
       true,
       inCollection,
-      limitedSlots
+      false
     );
     const newData: DeckSection[] = [deckSection, specialSection];
-    if (!limitedSlots) {
-      const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, specialIndex);
-      if (bonded) {
-        newData.push(bonded);
-      }
+    if (limitSlotCount > 0) {
+      let index = specialIndex;
+      const limitedCards: SectionCardId[] = map(filter(flatten([
+        ...flatMap(normalCards.Assets || [], cards => cards.data),
+        normalCards.Event || [],
+        normalCards.Skill || [],
+        normalCards.Treachery || [],
+        normalCards.Enemy || [],
+        ...flatMap(specialCards.Assets || [], cards => cards.data),
+      ]), card => card.limited), card => {
+        return {
+          ...card,
+          index: index++,
+          special: false,
+          hasUpgrades: hasUpgrades(
+            card.id,
+            cards,
+            cardsByName,
+            validation,
+            inCollection
+          ),
+        };
+      });
+      const count = sumBy(limitedCards, card => slots[card.id] || 0);
+      newData.push({
+        title: t`Limited Slots`,
+        toggleCollapsed: toggleLimitedSlots,
+        collapsed: !limitedSlots,
+        sections: limitedSlots ? [
+          {
+            id: 'splash',
+            title: t`${count} of ${limitSlotCount}`,
+            cards: limitedCards,
+            last: true,
+          },
+        ] : [],
+      });
+    }
+    const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, specialIndex);
+    if (bonded) {
+      newData.push(bonded);
     }
     setData(newData);
-  }, [investigatorBack, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits, cards,
-    showEditCards, showEditSpecial, setData, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
+  }, [investigatorBack, limitSlotCount ,limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits, cards,
+    showEditCards, showEditSpecial, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
   const faction = parsedDeck.investigator.factionCode();
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
@@ -528,24 +560,11 @@ export default function DeckViewTab(props: Props) {
           disabled={!editable}
           first={!hasTabooPicker && !hasXpButton}
         />
-        { !!find(investigatorBack?.deck_options, option => !!option.limit) && (
-          <View style={styles.toggleRow}>
-            <Text style={[
-              typography.text,
-            ]}>
-              { t`Show limited splash` }
-            </Text>
-            <ArkhamSwitch
-              value={limitedSlots}
-              onValueChange={toggleLimitedSlots}
-            />
-          </View>
-        ) }
       </View>
     );
-  }, [investigatorBack, investigator, limitedSlots, typography, parallelInvestigators, deck, tabooSetId, tabooSet, showTaboo, tabooOpen, editable,
+  }, [investigator, parallelInvestigators, deck, tabooSetId, tabooSet, showTaboo, tabooOpen, editable,
     deckEdits?.meta, deckEdits?.xpAdjustment, parsedDeck?.changes,
-    showEditNameDialog, setMeta, setParallel, setTabooSet, toggleLimitedSlots,
+    showEditNameDialog, setMeta, setParallel, setTabooSet,
   ]);
 
   const investigatorBlock = useMemo(() => {
@@ -631,6 +650,8 @@ export default function DeckViewTab(props: Props) {
               title={deckSection.title}
               onTitlePress={deckSection.onTitlePress}
               key={deckSection.title}
+              collapsed={deckSection.collapsed}
+              toggleCollapsed={deckSection.toggleCollapsed}
               footerButton={deckSection.sections.length === 0 && deckSection.onTitlePress ? (
                 <RoundedFooterButton onPress={deckSection.onTitlePress} title={t`Add cards`} icon="deck" />
               ) : undefined}
@@ -718,13 +739,5 @@ const styles = StyleSheet.create({
     paddingLeft: xs,
     marginBottom: s,
     marginRight: s,
-  },
-  toggleRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: s,
-    paddingLeft: m,
-    paddingRight: m,
   },
 });

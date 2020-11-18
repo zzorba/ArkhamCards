@@ -1,9 +1,9 @@
-import { MutableRefObject, Reducer, Ref, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { InteractionManager } from 'react-native';
+import { MutableRefObject, Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { BackHandler, InteractionManager } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, ChaosBagResults, Deck, DeckMeta, EditDeckState, ParsedDeck, SingleCampaign, Slots } from '@actions/types';
+import { Campaign, ChaosBagResults, Deck, EditDeckState, ParsedDeck, SingleCampaign, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState, getCampaign, getChaosBagResults, getDeck, getDeckEdits, getEffectiveDeckId, getLatestCampaignDeckIds, getLatestCampaignInvestigators, getTabooSet } from '@reducers';
@@ -11,7 +11,6 @@ import DatabaseContext from '@data/DatabaseContext';
 import { parseDeck } from '@lib/parseDeck';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
-import { BackHandler } from 'react-native';
 import TabooSet from '@data/TabooSet';
 
 export function useBackButton(handler: () => boolean) {

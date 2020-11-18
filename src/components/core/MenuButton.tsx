@@ -27,7 +27,7 @@ export default function MenuButton({ icon, title, description, onPress, disabled
           <Text style={typography.menuText}>
             { title }
           </Text>
-          <Text style={[typography.smallLabel, typography.italic, { color: colors.M}]}>
+          <Text style={[typography.smallLabel, typography.italic, { color: colors.M }]}>
             { description }
           </Text>
         </View>

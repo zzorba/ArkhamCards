@@ -1,11 +1,7 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useContext } from 'react';
 
-import Ripple from '@lib/react-native-material-ripple';
 import { useEffectUpdate, useFlag } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
-import space, { s } from '@styles/space';
-import AppIcon from '@icons/AppIcon';
 import { SettingsPickerModal } from '@lib/react-native-settings-components';
 import { FactionCodeType } from '@app_constants';
 import { PickerItem } from '@lib/react-native-settings-components/picker/picker.modal';
@@ -27,18 +23,6 @@ interface Props {
   open?: boolean;
 }
 
-function iconSize(icon: string) {
-  switch (icon) {
-    case 'card-outline':
-      return 34;
-    case 'parallel':
-    case 'taboo_thin':
-      return 26;
-    default:
-      return 28;
-  }
-}
-
 export default function DeckPickerButton({
   icon,
   faction,
@@ -54,7 +38,7 @@ export default function DeckPickerButton({
   onChoiceChange,
   open: propsOpen,
 }: Props) {
-  const { colors, fontScale, typography } = useContext(StyleContext);
+  const { colors } = useContext(StyleContext);
   const modalColor = colors.faction[faction].background;
   const [open, toggleOpen, setOpen] = useFlag(propsOpen || false);
   const onSelectionChange = useCallback((index: number | null) => {
@@ -109,46 +93,3 @@ export default function DeckPickerButton({
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  column: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  leftRow: {
-    flexDirection: 'row',
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  icon: {
-    width: 32,
-    height: 32,
-    marginRight: s,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  editIcon: {
-    width: 32,
-    height: 32,
-    marginLeft: s,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  roundTop: {
-    borderTopRightRadius: 8,
-    borderTopLeftRadius: 8,
-  },
-  roundBottom: {
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-  },
-});

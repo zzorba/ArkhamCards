@@ -1,5 +1,4 @@
 import { DeckProblem, ParsedDeck } from '@actions/types';
-import { parseDeck } from '@lib/parseDeck';
 import React from 'react';
 import CardCountLine from './CardCountLine';
 import ExperienceLine from './ExperienceLine';

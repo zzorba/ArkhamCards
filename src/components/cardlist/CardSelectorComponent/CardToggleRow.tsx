@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
 } from 'react-native';
@@ -6,7 +6,6 @@ import {
 import CardSearchResult from '../../cardlist/CardSearchResult';
 import Card from '@data/Card';
 import { useFlag } from '@components/core/hooks';
-import CardToggle from '../CardSearchResult/ControlComponent/CardToggle';
 
 interface Props {
   card: Card;
@@ -14,10 +13,9 @@ interface Props {
   onChange: (card: Card, count: number) => void;
   onPress?: (card: Card) => void;
   limit: number;
-  value?: number;
 }
 
-export default function CardToggleRow({ card, count, onChange, onPress, limit, value }: Props) {
+export default function CardToggleRow({ card, count, onChange, onPress, limit }: Props) {
   const [one, toggleOne] = useFlag(count > 0);
   const [two, toggleTwo] = useFlag(count > 1);
   const [three, toggleThree] = useFlag(count > 2);

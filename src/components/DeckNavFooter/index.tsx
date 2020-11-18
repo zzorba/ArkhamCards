@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { msgid, ngettext, t } from 'ttag';
+import { msgid, ngettext } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import DeckProblemRow from '@components/core/DeckProblemRow';
@@ -58,18 +58,23 @@ export default function DeckNavFooter({
     );
   }, [parsedDeck?.problem]);
 
-  const xpString = useMemo(() => {
+  const [xpString, xpDetailString] = useMemo(() => {
     if (!parsedDeck || deckEdits?.xpAdjustment === undefined) {
-      return '';
+      return [undefined, undefined];
     }
-    const experience = parsedDeck.experience;
-    const xp = parsedDeck.deck.xp;
+    const experience = parsedDeck.availableExperience;
     const changes = parsedDeck.changes;
+
+    const xpStr = ngettext(msgid`${experience} XP`, `${experience} XP`, experience);
     if (!changes) {
-      return t`XP: ${experience}`;
+      return [xpStr, undefined];
     }
-    const adjustedExperience = (xp || 0) + (deckEdits.xpAdjustment || 0);
-    return t`XP: ${changes.spentXp} of ${adjustedExperience}`;
+    const unspentXp = parsedDeck.availableExperience - (changes?.spentXp || 0);
+    const unspentXpStr = parsedDeck.availableExperience > 0 ? `+${unspentXp}` : `${unspentXp}`;
+    return [
+      xpStr,
+      ngettext(msgid`${unspentXpStr} unspent`, `${unspentXpStr} unspent`, unspentXp),
+    ];
   }, [deckEdits?.xpAdjustment, parsedDeck]);
   if (!parsedDeck) {
     return null;
@@ -81,21 +86,38 @@ export default function DeckNavFooter({
     totalCardCount,
   } = parsedDeck;
   const cardCountString = ngettext(
-    msgid`${normalCardCount} Card (${totalCardCount} Total)`,
-    `${normalCardCount} Cards (${totalCardCount} Total)`,
+    msgid`${normalCardCount} Card`,
+    `${normalCardCount} Cards`,
     normalCardCount
   );
+  const totalCountString = ngettext(
+    msgid`${totalCardCount} Total`,
+    msgid`${totalCardCount} Total`,
+    totalCardCount
+  );
+  const faction = investigator.factionCode();
+  const bigTextStyle = TINY_PHONE ? typography.small : typography.text;
   return (
     <View style={styles.borderWrapper}>
-      <View style={[styles.wrapper, { backgroundColor: colors.faction[investigator.factionCode()].background }]}>
+      <View style={[styles.wrapper, { backgroundColor: colors.faction[faction].background }]}>
         <View style={styles.left}>
           <View style={styles.row}>
-            <Text style={[
-              TINY_PHONE ? typography.small : typography.text,
-              styles.whiteText,
-            ]} allowFontScaling={false}>
-              { `${cardCountString} - ${xpString}` }
+            <Text style={[bigTextStyle, styles.whiteText]} allowFontScaling={false}>
+              { `${cardCountString}` }
             </Text>
+            <Text style={[typography.small, typography.italic, { lineHeight: bigTextStyle.lineHeight, color: '#ddd' }]} allowFontScaling={false}>
+              { `  ${totalCountString}` }
+            </Text>
+            { !!xpString && (
+              <Text style={[bigTextStyle, styles.whiteText]} allowFontScaling={false}>
+                { `  ·  ${xpString}` }
+              </Text>
+            ) }
+            { !!xpDetailString && (
+              <Text style={[typography.small, typography.italic, { lineHeight: bigTextStyle.lineHeight, color: '#ddd' }]} allowFontScaling={false}>
+                { ` ${xpDetailString}` }
+              </Text>
+            )}
           </View>
           <View style={styles.row}>
             { problemRow }

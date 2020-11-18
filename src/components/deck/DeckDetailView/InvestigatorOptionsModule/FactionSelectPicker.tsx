@@ -1,12 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { findIndex, map } from 'lodash';
 import { t } from 'ttag';
 
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { FactionCodeType } from '@app_constants';
 import Card from '@data/Card';
-import COLORS from '@styles/colors';
-import StyleContext from '@styles/StyleContext';
 import DeckPickerButton from '../DeckPickerButton';
 
 interface Props {

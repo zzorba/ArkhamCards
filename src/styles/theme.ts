@@ -7,6 +7,7 @@ export interface ThemeFonts {
 
 
 export interface FactionColors {
+  invertedText: string;
   text: string;
   background: string;
   darkBackground: string;
@@ -74,6 +75,27 @@ const dark20 = '#475259';
 const dark30 = '#24303C';
 const medium = '#9B9B9B';
 
+const guardianLightText = '#1072C2';
+const seekerLightText = '#DB7C07';
+const rogueLightText = '#219428';
+const mysticLightText = '#7554AB';
+const survivorLightText = '#CC3038';
+const neutralLightText = dark20;
+const dualLightText = '#868600';
+const deadLightText = '#704214';
+const mythosLightText = dark30;
+
+const guardianDarkText = '#5CB4FD';
+const seekerDarkText = '#EFA345';
+const rogueDarkText = '#48B14F';
+const mysticDarkText = '#BA81F2';
+const survivorDarkText = '#EE4A53';
+const neutralDarkText = light20;
+
+const dualDarkText = '#E9D06C';
+const deadDarkText = '#704214';
+const mythosDarkText = light30;
+
 export const LIGHT_THEME: ThemeColors = {
   fight: '#8D181E',
   evade: '#0D6813',
@@ -92,55 +114,64 @@ export const LIGHT_THEME: ThemeColors = {
   M: medium,
   faction: {
     guardian: {
-      text: '#1072C2',
+      invertedText: guardianDarkText,
+      text: guardianLightText,
       background: '#1072C2',
       darkBackground: '#2b80c5',
       lightBackground: '#d5e6f3',
     },
     seeker: {
-      text: '#DB7C07',
+      invertedText: seekerDarkText,
+      text: seekerLightText,
       background: '#DB7C07',
       darkBackground: '#db7c07',
       lightBackground: '#fbe6d4',
     },
     rogue: {
-      text: '#219428',
+      invertedText: rogueDarkText,
+      text: rogueLightText,
       background: '#219428',
       darkBackground: '#107116',
       lightBackground: '#cfe3d0',
     },
     mystic: {
-      text: '#7554AB',
+      invertedText: mysticDarkText,
+      text: mysticLightText,
       background: '#7554AB',
       darkBackground: '#4331B9',
       lightBackground: '#d9d6f1',
     },
     survivor: {
-      text: '#CC3038',
+      invertedText: survivorDarkText,
+      text: survivorLightText,
       background: '#CC3038',
       darkBackground: '#cc3038',
       lightBackground: '#f5d6d7',
     },
     neutral: {
-      text: dark20,
+      invertedText: neutralDarkText,
+      text: neutralLightText,
       background: dark20,
       darkBackground: '#444444',
       lightBackground: '#e6e6e6',
     },
     dual: {
-      text: '#868600',
+      invertedText: dualDarkText,
+      text: dualLightText,
       background: '#cfb13a',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',
     },
     dead: {
-      text: '#704214',
+      invertedText: deadDarkText,
+      text: deadLightText,
       background: '#704214',
       darkBackground: '#5a3510',
       lightBackground: '#d4c6b9',
     },
     mythos: {
-      text: dark30,
+      invertedText: mythosDarkText,
+      text: mythosLightText,
       background: dark30,
       darkBackground: '#000000',
       lightBackground: '#000000',
@@ -197,55 +228,64 @@ export const DARK_THEME: ThemeColors = {
   disableOverlay: '#24303C99',
   faction: {
     guardian: {
-      text: '#5CB4FD',
+      invertedText: guardianLightText,
+      text: guardianDarkText,
       background: '#1072C2',
       darkBackground: '#2b80c5',
       lightBackground: '#004880',
     },
     seeker: {
-      text: '#EFA345',
+      invertedText: seekerLightText,
+      text: seekerDarkText,
       background: '#DB7C07',
       darkBackground: '#db7c07',
       lightBackground: '#bf5c00',
     },
     rogue: {
-      text: '#48B14F',
+      invertedText: rogueLightText,
+      text: rogueDarkText,
       background: '#219428',
       darkBackground: '#107116',
       lightBackground: '#015906',
     },
     mystic: {
-      text: '#BA81F2',
+      invertedText: mysticLightText,
+      text: mysticDarkText,
       background: '#7554AB',
       darkBackground: '#7554AB',
       lightBackground: '#46018f',
     },
     survivor: {
-      text: '#EE4A53',
+      invertedText: survivorLightText,
+      text: survivorDarkText,
       background: '#CC3038',
       darkBackground: '#cc3038',
       lightBackground: '#7a0105',
     },
     neutral: {
-      text: light20,
+      invertedText: neutralLightText,
+      text: neutralDarkText,
       background: dark20,
       darkBackground: '#444444',
       lightBackground: '#292929',
     },
     dual: {
-      text: '#E9D06C',
+      invertedText: dualLightText,
+      text: dualDarkText,
       background: '#cfb13a',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',
     },
     dead: {
-      text: '#704214',
+      invertedText: deadLightText,
+      text: deadDarkText,
       background: '#704214',
       darkBackground: '#5a3510',
       lightBackground: '#d4c6b9',
     },
     mythos: {
-      text: light30,
+      invertedText: mythosLightText,
+      text: mythosDarkText,
       background: '#444',
       darkBackground: '#000000',
       lightBackground: '#000000',

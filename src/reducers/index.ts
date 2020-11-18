@@ -30,7 +30,6 @@ import {
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { ChaosBag } from '@app_constants';
-import { useSelector } from 'react-redux';
 
 const packsPersistConfig = {
   key: 'packs',
