@@ -14,14 +14,18 @@ interface Props {
 
 export default function ExperienceLine({ parsedDeck: { deck, experience, availableExperience, changes } }: Props) {
   const { colors, typography, fontScale } = useContext(StyleContext);
-  const title = <Text style={[typography.smallLabel, typography.italic, typography.dark]}>{ t`Experience` }</Text>;
+  const title = (
+    <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
+      { t`Experience` }
+    </Text>
+  );
   const icon = <AppIcon name="xp" size={36} color={colors.M} />;
   const unspentXp = availableExperience - (changes?.spentXp || 0);
   const unspentXpStr = availableExperience > 0 ? `+${unspentXp}` : `${unspentXp}`;
   const description = (
     <View style={styles.row}>
       <Text style={[typography.large, space.marginRightS]}>
-        { t`${experience} XP` }
+        { ngettext(msgid`${experience} XP`, `${experience} XP`, experience) }
       </Text>
       { !!deck.previous_deck && (
         <Text style={[typography.small, { color: colors.M, lineHeight: 24 * fontScale }]}>

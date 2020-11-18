@@ -5170,12 +5170,6 @@ msgid_plural "${ bondedCardCount } bound"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/DeckNavFooter/index.tsx:68
-#: src/components/deck/DeckDetailView/DeckMetadataComponent/ExperienceLine.tsx:24
-#, javascript-format
-msgid "${ experience } XP"
-msgstr ""
-
 #: src/components/DeckNavFooter/index.tsx:76
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/ExperienceLine.tsx:28
 msgid "${ unspentXpStr } unspent"
@@ -5214,6 +5208,14 @@ msgstr[1] ""
 #: src/components/DeckNavFooter/index.tsx:93
 msgid "${ totalCardCount } Total"
 msgid_plural "${ totalCardCount } Total"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/DeckNavFooter/index.tsx:68
+#: src/components/deck/DeckDetailView/DeckMetadataComponent/ExperienceLine.tsx:24
+#, javascript-format
+msgid "${ experience } XP"
+msgid_plural "${ experience } XP"
 msgstr[0] ""
 msgstr[1] ""
 
