@@ -3040,14 +3040,14 @@ msgstr "Lis « ${ badThing.condition } »"
 #, javascript-format
 msgid "(${ supply.cost } supply point each)"
 msgid_plural "(${ supply.cost } supply points each)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(${ supply.cost } point d'équipement par unité"
+msgstr[1] "(${ supply.cost } points d'équipement par unité"
 
 #: src/components/campaignguide/prompts/SuppliesPrompt/SupplyComponent.tsx:43
 msgid "(${ supply.cost } supply point)"
 msgid_plural "(${ supply.cost } supply points)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(${ supply.cost } point d'équipement)"
+msgstr[1] "(${ supply.cost } points d'équipement)"
 
 #: src/components/campaignguide/prompts/SuppliesPrompt/index.tsx:102
 #, javascript-format
@@ -3270,10 +3270,10 @@ msgid ""
 msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] ""
-"Tant que ${ list } n'ont pas un ${ supplyName }, ils doivent lire <b>${ sectionName }</"
+"Tant que ${ list } n'a pas un ${ supplyName }, ils doivent lire <b>${ sectionName }</"
 "b>."
 msgstr[1] ""
-"Tant qu'aucun ${ list } ont un ${ supplyName }, ils doivent lire <b>${ sectionName }</b>."
+"Tant que ${ list } n'ont pas un ${ supplyName }, ils doivent lire <b>${ sectionName }</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:50
 #, javascript-format
@@ -4068,21 +4068,21 @@ msgstr "Contactez nous"
 #, javascript-format
 msgid "${ count } resupply"
 msgid_plural "${ count } resupply"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ count } rééquipement"
+msgstr[1] "${ count } rééquipement"
 
 #: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:85
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ count } point d'équipement"
+msgstr[1] "${ count } points d'équipement"
 
 #: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:103
 #, javascript-format
 msgid "${ xp } general / ${ resupplyPointsString } XP"
 msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ xp } general / ${ resupplyPointsString } XP"
+msgstr[1] "${ xp } general / ${ resupplyPointsString } XP"
 
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:114
 msgid ""
@@ -4106,8 +4106,8 @@ msgstr ""
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/InvestigatorCounterInputComponent.tsx:46
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ specialXp } point d'équipement disponible"
+msgstr[1] "${ specialXp } points d'équipement disponibles"
 
 #: src/components/settings/BackupView.tsx:91
 msgid "Unexpected file type"
@@ -4983,15 +4983,15 @@ msgstr "Deck invalide"
 
 #: src/components/deck/section/DeckSectionBlock.tsx:27
 msgid "Show splash cards"
-msgstr ""
+msgstr "Afficher les cartes hors-classe"
 
 #: src/components/deck/section/DeckSectionBlock.tsx:27
 msgid "Hide splash cards"
-msgstr ""
+msgstr "Cacher les cartes hors-classe"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:383
 msgid "Limited Slots"
-msgstr ""
+msgstr "Emplacements limités"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:389
 #, javascript-format
