@@ -16109,7 +16109,7 @@
   "id": "rtptc",
   "position": 2,
   "version": 1,
-  "name": "Return to The Path to Carcosa",
+  "name": "Renouveau: Le Chemin de Carcosa",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -16948,7 +16948,7 @@
 },
 {
   "id": "return_to_a_phantom_of_truth",
-  "scenario_name": "Return to A Phantom of Truth",
+  "scenario_name": "Renouveau: Le Spectre de la Vérité",
   "full_name": "Scenario V: Return to A Phantom of Truth",
   "setup": [
     "app_note",
@@ -17849,7 +17849,7 @@
 },
 {
   "id": "return_to_black_stars_rise",
-  "scenario_name": "Return to Black Stars Rise",
+  "scenario_name": "Renouveau: Sous les Étoiles Noires",
   "full_name": "Scenario VII: Return to Black Stars Rise",
   "setup": [
     "intro",
@@ -18569,7 +18569,7 @@
 },
 {
   "id": "return_to_curtain_call",
-  "scenario_name": "Return to Curtain Call",
+  "scenario_name": "Renouveau: Baisser de Rideau",
   "full_name": "Scenario I: Return to Curtain Call",
   "setup": [
     "intro",
@@ -18957,7 +18957,7 @@
 },
 {
   "id": "return_to_dim_carcosa",
-  "scenario_name": "Return to Dim Carcosa",
+  "scenario_name": "Renouveau: La Pâle Carcosa",
   "full_name": "Scenario VIII: Return to Dim Carcosa",
   "setup": [
     "check_path_below",
@@ -19773,7 +19773,7 @@
 },
 {
   "id": "return_to_echoes_of_the_past",
-  "scenario_name": "Return to Echoes of the Past",
+  "scenario_name": "Renouveau: Les Échos du Passé",
   "full_name": "Scenario III: Return to Echoes of the Past",
   "setup": [
     "intro",
@@ -20341,7 +20341,7 @@
 },
 {
   "id": "return_to_the_last_king",
-  "scenario_name": "Return to The Last King",
+  "scenario_name": "Renouveau: Le Dernier Roi",
   "full_name": "Scenario II: Return to The Last King",
   "setup": [
     "intro",
@@ -20702,7 +20702,7 @@
 },
 {
   "id": "return_to_the_pallid_mask",
-  "scenario_name": "Return to The Pallid Mask",
+  "scenario_name": "Renouveau: Le Masque Blême",
   "full_name": "Scenario VI: Return to The Pallid Mask",
   "setup": [
     "check_intro_condition",
@@ -21338,7 +21338,7 @@
 },
 {
   "id": "return_to_the_unspeakable_oath",
-  "scenario_name": "Return to The Unspeakable Oath",
+  "scenario_name": "Renouveau: Le Serment Indicible",
   "full_name": "Scenario IV: Return to The Unspeakable Oath",
   "setup": [
     "check_followers_of_the_sign_found_way",
@@ -22080,7 +22080,7 @@
   "id": "rttfa",
   "position": 3,
   "version": 1,
-  "name": "Return to The Forgotten Age",
+  "name": "Renouveau: La Civilisation Oubliée",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -22088,12 +22088,12 @@
     },
     {
       "id": "yigs_fury",
-      "title": "Yig's Fury",
+      "title": "Fureur de Yig",
       "type": "count"
     },
     {
       "id": "supplies",
-      "title": "Supplies",
+      "title": "Fournitures",
       "type": "supplies"
     },
     {
@@ -22145,7 +22145,7 @@
     {
       "id": "supplies",
       "type": "rule_reminder",
-      "title": "Supplies",
+      "title": "Fournitures",
       "text": "At certain points throughout The Forgotten Age campaign, investigators are given the opportunity to choose supplies to bring on their expeditions into the wilds. These supplies are recorded in the Campaign Log, under each investigator’s “Supplies” section.\nSupplies are purchased with supply points, which are granted to investigators whenever they are given the opportunity to purchase supplies. Leftover supply points are not recorded, and are lost.\nAn investigator’s supplies will determine the possible options available during gameplay and throughout the story of this campaign. <b>Each supply has no effect on its own.</b> Some card effects, story options, and resolutions may change or become available depending on the supplies carried by the investigator(s)."
     },
     {
@@ -22618,7 +22618,7 @@
 },
 {
   "id": "tfa_interlude3",
-  "scenario_name": "The Jungle Beckons",
+  "scenario_name": "L'Appel de la Jungle",
   "full_name": "Interlude III: The Jungle Beckons",
   "type": "interlude",
   "setup": [
@@ -23223,7 +23223,7 @@
 },
 {
   "id": "tfa_interlude1",
-  "scenario_name": "Restless Nights",
+  "scenario_name": "Nuits Agitées",
   "full_name": "Interlude I: Restless Nights",
   "type": "interlude",
   "setup": [
@@ -24560,7 +24560,7 @@
 },
 {
   "id": "return_to_shattered_aeons",
-  "scenario_name": "Return to Shattered Aeons",
+  "scenario_name": "Renouveau: Paradoxes Temporels",
   "full_name": "Scenario VIII: Return to Shattered Aeons",
   "setup": [
     "check_braziers_are_lit",
@@ -25101,7 +25101,7 @@
 },
 {
   "id": "return_to_the_boundary_beyond",
-  "scenario_name": "Return to The Boundary Beyond",
+  "scenario_name": "Renouveau: Par-delà les Limites",
   "full_name": "Scenario IV: Return to The Boundary Beyond",
   "setup": [
     "intro",
@@ -25912,7 +25912,7 @@
 },
 {
   "id": "return_to_the_city_of_archives",
-  "scenario_name": "Return to The City of Archives",
+  "scenario_name": "Renouveau: La Cité des Archives",
   "full_name": "Scenario VI: Return to The City of Archives",
   "setup": [
     "intro_1",
@@ -26389,7 +26389,7 @@
 },
 {
   "id": "return_to_the_depths_of_yoth",
-  "scenario_name": "Return to The Depths of Yoth",
+  "scenario_name": "Renouveau: Les Profondeurs de Yoth",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
   "setup": [
     "intro_1",
@@ -27513,7 +27513,7 @@
 },
 {
   "id": "return_to_the_doom_of_eztli",
-  "scenario_name": "Return to The Doom of Eztli",
+  "scenario_name": "Renouveau: Le Fléau des Eztli",
   "full_name": "Scenario II: Return to The Doom of Eztli",
   "setup": [
     "check_wait_for_additional_supplies",
@@ -28162,7 +28162,7 @@
 },
 {
   "id": "return_to_the_untamed_wilds",
-  "scenario_name": "Return to The Untamed Wilds",
+  "scenario_name": "Renouveau: Une Contrée Sauvage",
   "full_name": "Scenario I: Return to The Untamed Wilds",
   "setup": [
     "intro",
@@ -28611,7 +28611,7 @@
 },
 {
   "id": "return_to_threads_of_fate",
-  "scenario_name": "Return to Threads of Fate",
+  "scenario_name": "Renouveau: Les Fils du Destin",
   "full_name": "Scenario III: Return to Threads of Fate",
   "setup": [
     "intro_1",
@@ -30591,7 +30591,7 @@
 },
 {
   "id": "tfa_interlude5",
-  "scenario_name": "The Darkness",
+  "scenario_name": "Les Ténèbres",
   "full_name": "Interlude V: The Darkness",
   "type": "interlude",
   "setup": [
@@ -31103,7 +31103,7 @@
 },
 {
   "id": "tfa_interlude4",
-  "scenario_name": "Those Held Captive",
+  "scenario_name": "Les Captifs",
   "full_name": "Interlude IV: Those Held Captive",
   "type": "interlude",
   "setup": [
@@ -31817,7 +31817,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difficile",
                 "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31920,7 +31920,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difficile",
                 "description": "+1, 0, 0, 0, -1, -1, -3, -4, -5, -6, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -32020,7 +32020,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difficile",
                 "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -32124,7 +32124,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difficile",
                 "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -32224,7 +32224,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difficile",
                 "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -32315,7 +32315,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difficile",
                 "description": "0, -1, -2, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -32373,7 +32373,7 @@
             "choices": [
               {
                 "id": "easy",
-                "text": "Easy",
+                "text": "Facile",
                 "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -32441,7 +32441,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difficile",
                 "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -32534,7 +32534,7 @@
             "choices": [
               {
                 "id": "easy",
-                "text": "Easy",
+                "text": "Facile",
                 "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -32602,7 +32602,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difficile",
                 "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -34573,7 +34573,7 @@
         "choices": [
           {
             "id": "none",
-            "text": "None",
+            "text": "Aucun",
             "steps": [
               "ask_innocent_revelers_killed"
             ]
@@ -34610,7 +34610,7 @@
         "choices": [
           {
             "id": "none",
-            "text": "None"
+            "text": "Aucun"
           },
           {
             "id": "one_or_more",
@@ -45354,7 +45354,7 @@
   "id": "tdea",
   "position": 5,
   "version": 1,
-  "name": "The Dream-Quest",
+  "name": "La Quête Onirique",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -45362,7 +45362,7 @@
     },
     {
       "id": "evidence_of_kadath",
-      "title": "Evidence of Kadath",
+      "title": "Preuve de Kadath",
       "type": "count"
     },
     {
@@ -45623,7 +45623,7 @@
     {
       "id": "alert",
       "type": "rule_reminder",
-      "title": "Alert",
+      "title": "Alerte",
       "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
     },
     {
@@ -45680,7 +45680,7 @@
 }, "scenarios": [
 {
   "id": "the_black_cat",
-  "scenario_name": "The Black Cat",
+  "scenario_name": "Le Chat Noir",
   "full_name": "Interlude I: The Black Cat",
   "type": "interlude",
   "setup": [
@@ -46651,7 +46651,7 @@
 },
 {
   "id": "the_great_ones",
-  "scenario_name": "The Great Ones",
+  "scenario_name": "Les Grands Anciens",
   "full_name": "Interlude III: The Great Ones",
   "type": "interlude",
   "setup": [
@@ -47456,7 +47456,7 @@
 },
 {
   "id": "the_oneironauts",
-  "scenario_name": "The Oneironauts",
+  "scenario_name": "Les Onironautes",
   "full_name": "Interlude II: The Oneironauts",
   "type": "interlude",
   "setup": [
@@ -48153,7 +48153,7 @@
 },
 {
   "id": "beyond_the_gates_of_sleep",
-  "scenario_name": "Beyond the Gates of Sleep",
+  "scenario_name": "Par-delà le Mur du Sommeil",
   "full_name": "Scenario I–A: Beyond the Gates of Sleep",
   "setup": [
     "dream_intro",
@@ -49136,7 +49136,7 @@
 },
 {
   "id": "dark_side_of_the_moon",
-  "scenario_name": "Dark Side of the Moon",
+  "scenario_name": "La Face Cachée la Lune",
   "full_name": "Scenario III–A: Dark Side of the Moon",
   "setup": [
     "check_someone_captured",
@@ -49572,7 +49572,7 @@
 },
 {
   "id": "the_search_for_kadath",
-  "scenario_name": "The Search for Kadath",
+  "scenario_name": "À la Recherche de Kadath",
   "full_name": "Scenario II–A: The Search for Kadath",
   "setup": [
     "intro_1",
@@ -51414,7 +51414,7 @@
   "id": "tdeb",
   "position": 6,
   "version": 1,
-  "name": "The Web of Dreams",
+  "name": "La Toile des Songes",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -51422,7 +51422,7 @@
     },
     {
       "id": "steps_of_the_bridge",
-      "title": "Steps of the Bridge",
+      "title": "Marches du pont",
       "type": "count"
     },
     {
@@ -51695,7 +51695,7 @@
     {
       "id": "alert",
       "type": "rule_reminder",
-      "title": "Alert",
+      "title": "Alerte",
       "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
     },
     {
@@ -51752,7 +51752,7 @@
 }, "scenarios": [
 {
   "id": "a_thousand_shapes_of_horror",
-  "scenario_name": "A Thousand Shapes of Horror",
+  "scenario_name": "Mille Nuances d'horreur",
   "full_name": "Scenario II–B: A Thousand Shapes of Horror",
   "setup": [
     "intro_1",
@@ -51949,14 +51949,14 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Yes",
+            "text": "Oui",
             "steps": [
               "resolution_3"
             ]
           },
           {
             "id": "no",
-            "text": "No",
+            "text": "Non",
             "steps": [
               "resolution_4"
             ]
@@ -52139,7 +52139,7 @@
 },
 {
   "id": "the_black_cat",
-  "scenario_name": "The Black Cat",
+  "scenario_name": "Le Chat Noir",
   "full_name": "Interlude I: The Black Cat",
   "type": "interlude",
   "setup": [
@@ -52993,7 +52993,7 @@
 },
 {
   "id": "the_great_ones",
-  "scenario_name": "The Great Ones",
+  "scenario_name": "Les Grands Anciens",
   "full_name": "Interlude III: The Great Ones",
   "type": "interlude",
   "setup": [
@@ -53491,7 +53491,7 @@
 },
 {
   "id": "the_oneironauts",
-  "scenario_name": "The Oneironauts",
+  "scenario_name": "Les Onironautes",
   "full_name": "Interlude II: The Oneironauts",
   "type": "interlude",
   "setup": [
@@ -54256,7 +54256,7 @@
 },
 {
   "id": "point_of_no_return",
-  "scenario_name": "Point of No Return",
+  "scenario_name": "Point de Non-Retour",
   "full_name": "Scenario III–B: Point of No Return",
   "setup": [
     "check_randolph_did_not_survive_descent",
@@ -54761,7 +54761,7 @@
 },
 {
   "id": "waking_nightmare",
-  "scenario_name": "Waking Nightmare",
+  "scenario_name": "Cauchemar Eveillé",
   "full_name": "Scenario I–B: Waking Nightmare",
   "setup": [
     "intro_1",
@@ -55308,7 +55308,7 @@
 },
 {
   "id": "weaver_of_the_cosmos",
-  "scenario_name": "Weaver of the Cosmos",
+  "scenario_name": "Tisseuse du Cosmos",
   "full_name": "Scenario IV-B: Weaver of the Cosmos",
   "setup": [
     "weaver_intro",
@@ -56285,7 +56285,7 @@
   "id": "tfa",
   "position": 3,
   "version": 1,
-  "name": "The Forgotten Age",
+  "name": "La Civilisation Oubliée",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -56293,12 +56293,12 @@
     },
     {
       "id": "yigs_fury",
-      "title": "Yig's Fury",
+      "title": "Fureur de Yig",
       "type": "count"
     },
     {
       "id": "supplies",
-      "title": "Supplies",
+      "title": "Fournitures",
       "type": "supplies"
     },
     {
@@ -56350,7 +56350,7 @@
     {
       "id": "supplies",
       "type": "rule_reminder",
-      "title": "Supplies",
+      "title": "Fournitures",
       "text": "At certain points throughout The Forgotten Age campaign, investigators are given the opportunity to choose supplies to bring on their expeditions into the wilds. These supplies are recorded in the Campaign Log, under each investigator’s “Supplies” section.\nSupplies are purchased with supply points, which are granted to investigators whenever they are given the opportunity to purchase supplies. Leftover supply points are not recorded, and are lost.\nAn investigator’s supplies will determine the possible options available during gameplay and throughout the story of this campaign. <b>Each supply has no effect on its own.</b> Some card effects, story options, and resolutions may change or become available depending on the supplies carried by the investigator(s)."
     },
     {
@@ -56820,7 +56820,7 @@
 },
 {
   "id": "eztli",
-  "scenario_name": "The Doom of Eztli",
+  "scenario_name": "Le Fléau des Eztli",
   "full_name": "Scenario II: The Doom of Eztli",
   "setup": [
     "check_wait_for_additional_supplies",
@@ -58088,7 +58088,7 @@
 },
 {
   "id": "tfa_interlude3",
-  "scenario_name": "The Jungle Beckons",
+  "scenario_name": "L'Appel de la Jungle",
   "full_name": "Interlude III: The Jungle Beckons",
   "type": "interlude",
   "setup": [
@@ -58693,7 +58693,7 @@
 },
 {
   "id": "tfa_interlude1",
-  "scenario_name": "Restless Nights",
+  "scenario_name": "Nuits Agitées",
   "full_name": "Interlude I: Restless Nights",
   "type": "interlude",
   "setup": [
@@ -58984,7 +58984,7 @@
 },
 {
   "id": "shattered_aeons",
-  "scenario_name": "Shattered Aeons",
+  "scenario_name": "Paradoxes Temporels",
   "full_name": "Scenario VIII: Shattered Aeons",
   "setup": [
     "check_braziers_are_lit",
@@ -59514,7 +59514,7 @@
 },
 {
   "id": "the_boundary_beyond",
-  "scenario_name": "The Boundary Beyond",
+  "scenario_name": "Par-delà les Limites",
   "full_name": "Scenario IV: The Boundary Beyond",
   "setup": [
     "intro",
@@ -60319,7 +60319,7 @@
 },
 {
   "id": "the_city_of_archives",
-  "scenario_name": "The City of Archives",
+  "scenario_name": "La Cité des Archives",
   "full_name": "Scenario VI: The City of Archives",
   "setup": [
     "intro_1",
@@ -60785,7 +60785,7 @@
 },
 {
   "id": "tfa_interlude5",
-  "scenario_name": "The Darkness",
+  "scenario_name": "Les Ténèbres",
   "full_name": "Interlude V: The Darkness",
   "type": "interlude",
   "setup": [
@@ -61297,7 +61297,7 @@
 },
 {
   "id": "the_depths_of_yoth",
-  "scenario_name": "The Depths of Yoth",
+  "scenario_name": "Les Profondeurs de Yoth",
   "full_name": "Scenario VII: The Depths of Yoth",
   "setup": [
     "intro_1",
@@ -62329,7 +62329,7 @@
 },
 {
   "id": "tfa_interlude4",
-  "scenario_name": "Those Held Captive",
+  "scenario_name": "Les Captifs",
   "full_name": "Interlude IV: Those Held Captive",
   "type": "interlude",
   "setup": [
@@ -62959,7 +62959,7 @@
 },
 {
   "id": "threads_of_fate",
-  "scenario_name": "Threads of Fate",
+  "scenario_name": "Les Fils du Destin",
   "full_name": "Scenario III: Threads of Fate",
   "setup": [
     "intro_1",
@@ -64532,7 +64532,7 @@
 },
 {
   "id": "wilds",
-  "scenario_name": "The Untamed Wilds",
+  "scenario_name": "Une Contrée Sauvage",
   "full_name": "Scenario I: The Untamed Wilds",
   "setup": [
     "intro",
@@ -64963,7 +64963,7 @@
   "id": "tic",
   "position": 7,
   "version": 1,
-  "name": "The Innsmouth Conspiracy",
+  "name": "La Conspiration d'Innsmouth",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -64975,11 +64975,11 @@
     },
     {
       "id": "possible_suspects",
-      "title": "Possible Suspects"
+      "title": "Suspects possibles"
     },
     {
       "id": "possible_hideouts",
-      "title": "Possible Hideouts"
+      "title": "Les cachettes possibles"
     },
     {
       "id": "hidden",
@@ -65328,7 +65328,7 @@
 },
 {
   "id": "devil_reef",
-  "scenario_name": "Devil Reef",
+  "scenario_name": "Le Récif du Diable",
   "full_name": "Scenario IV: Devil Reef",
   "type": "placeholder",
   "setup": [],
@@ -65352,7 +65352,7 @@
 },
 {
   "id": "in_too_deep",
-  "scenario_name": "In Too Deep",
+  "scenario_name": "Mouillés Jusqu’au Cou",
   "full_name": "Scenario III: In Too Deep",
   "setup": [
     "intro",

@@ -65312,7 +65312,7 @@
 }, "scenarios": [
 {
   "id": "a_light_in_the_fog",
-  "scenario_name": "A Light in the Fog",
+  "scenario_name": "Una luz en la niebla",
   "full_name": "Scenario VI: A Light in the Fog",
   "type": "placeholder",
   "setup": [],
@@ -65320,7 +65320,7 @@
 },
 {
   "id": "beneath_the_waves",
-  "scenario_name": "Beneath the Waves",
+  "scenario_name": "Bajo las olas",
   "full_name": "Interlude III: Beneath the Waves",
   "type": "placeholder",
   "setup": [],
@@ -65328,7 +65328,7 @@
 },
 {
   "id": "devil_reef",
-  "scenario_name": "Devil Reef",
+  "scenario_name": "Arrecife del Diablo",
   "full_name": "Scenario IV: Devil Reef",
   "type": "placeholder",
   "setup": [],
@@ -65336,7 +65336,7 @@
 },
 {
   "id": "hidden_truths",
-  "scenario_name": "Hidden Truths",
+  "scenario_name": "Verdades ocultas",
   "full_name": "Interlude IV: Hidden Truths",
   "type": "placeholder",
   "setup": [],
@@ -65344,7 +65344,7 @@
 },
 {
   "id": "horror_in_high_gear",
-  "scenario_name": "Horror in High Gear",
+  "scenario_name": "Horror a toda Máquina",
   "full_name": "Scenario V: Horror in High Gear",
   "type": "placeholder",
   "setup": [],
@@ -65352,7 +65352,7 @@
 },
 {
   "id": "in_too_deep",
-  "scenario_name": "In Too Deep",
+  "scenario_name": "Hasta el cuello",
   "full_name": "Scenario III: In Too Deep",
   "setup": [
     "intro",
@@ -66027,7 +66027,7 @@
 },
 {
   "id": "into_the_maelstrom",
-  "scenario_name": "Into the Maelstrom",
+  "scenario_name": "Hacia el remolino",
   "full_name": "Scenario VIII: Into the Maelstrom",
   "type": "placeholder",
   "setup": [],
@@ -66246,7 +66246,7 @@
 },
 {
   "id": "the_lair_of_dagon",
-  "scenario_name": "The Lair of Dagon",
+  "scenario_name": "La guarida de Dagon",
   "full_name": "Scenario VII: The Lair of Dagon",
   "type": "placeholder",
   "setup": [],

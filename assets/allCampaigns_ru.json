@@ -38642,7 +38642,7 @@
 },
 {
   "id": "before_the_black_throne",
-  "scenario_name": "Before the Black Throne",
+  "scenario_name": "Перед Чёрным престолом",
   "full_name": "Scenario VIII: Before the Black Throne",
   "setup": [
     "intro",
@@ -39741,7 +39741,7 @@
 },
 {
   "id": "for_the_greater_good",
-  "scenario_name": "For the Greater Good",
+  "scenario_name": "Во имя высшего блага",
   "full_name": "Scenario V: For the Greater Good",
   "setup": [
     "intro_1",
@@ -40163,7 +40163,7 @@
 },
 {
   "id": "in_the_clutches_of_chaos",
-  "scenario_name": "In the Clutches of Chaos",
+  "scenario_name": "В когтях Хаоса",
   "full_name": "Scenario VII: In the Clutches of Chaos",
   "setup": [
     "intro_1",
@@ -40882,7 +40882,7 @@
 {
   "id": "the_inner_circle",
   "type": "interlude",
-  "scenario_name": "The Inner Circle",
+  "scenario_name": "Внутренний круг",
   "full_name": "Interlude III: The Inner Circle",
   "setup": [
     "ic_1",
@@ -41919,7 +41919,7 @@
 },
 {
   "id": "the_secret_name",
-  "scenario_name": "The Secret Name",
+  "scenario_name": "Тайное имя",
   "full_name": "Scenario III: The Secret Name",
   "setup": [
     "check_members_of_the_lodge",
@@ -42507,7 +42507,7 @@
 },
 {
   "id": "the_wages_of_sin",
-  "scenario_name": "The Wages of Sin",
+  "scenario_name": "Расплата за грехи",
   "full_name": "Scenario IV: The Wages of Sin",
   "setup": [
     "intro",
@@ -43235,7 +43235,7 @@
 {
   "id": "twist_of_fate",
   "type": "interlude",
-  "scenario_name": "Twist of Fate",
+  "scenario_name": "Причуда судьбы",
   "full_name": "Interlude IV: Twist of Fate",
   "setup": [
     "tof_1",
@@ -43574,7 +43574,7 @@
 },
 {
   "id": "union_and_disillusion",
-  "scenario_name": "Union and Disillusion",
+  "scenario_name": "Единство и разочарование",
   "full_name": "Scenario VI: Union and Disillusion",
   "setup": [
     "intro_1",
@@ -45623,7 +45623,7 @@
     {
       "id": "alert",
       "type": "rule_reminder",
-      "title": "Alert",
+      "title": "Бдительный",
       "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
     },
     {
@@ -51695,7 +51695,7 @@
     {
       "id": "alert",
       "type": "rule_reminder",
-      "title": "Alert",
+      "title": "Бдительный",
       "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
     },
     {
@@ -51949,14 +51949,14 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Yes",
+            "text": "Да",
             "steps": [
               "resolution_3"
             ]
           },
           {
             "id": "no",
-            "text": "No",
+            "text": "Нет",
             "steps": [
               "resolution_4"
             ]
