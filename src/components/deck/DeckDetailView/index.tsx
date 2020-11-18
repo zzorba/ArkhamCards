@@ -23,7 +23,6 @@ import SideMenu from 'react-native-side-menu-updated';
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
-import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import Dialog from '@components/core/Dialog';
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
@@ -54,7 +53,7 @@ import space, { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useInvestigatorCards, useNavigationButtonPressed, useParsedDeck, useTabooSet } from '@components/core/hooks';
+import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useParsedDeck, useTabooSet } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
@@ -71,7 +70,6 @@ export interface DeckDetailProps {
 
 type Props = NavigationProps &
   DeckDetailProps &
-  TraumaProps &
   LoginStateProps;
 type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
@@ -87,8 +85,6 @@ function DeckDetailView({
   modal,
   signedIn,
   login,
-  showTraumaDialog,
-  investigatorDataUpdates,
 }: Props) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
@@ -337,7 +333,7 @@ function DeckDetailView({
       toggleMenuOpen();
     }
   }, componentId, [saveEdits, toggleMenuOpen, handleBackPress]);
-
+  useBackButton(handleBackPress);
   const rightButtons = useMemo(() => {
     const rightButtons: OptionsTopBarButton[] = [{
       id: 'menu',
@@ -1092,8 +1088,6 @@ function DeckDetailView({
               login={login}
               campaign={campaign}
               hideCampaign={hideCampaign}
-              showTraumaDialog={showTraumaDialog}
-              investigatorDataUpdates={investigatorDataUpdates}
               width={width}
             />
             <DeckNavFooter deckId={id} componentId={componentId} />
@@ -1108,7 +1102,7 @@ function DeckDetailView({
   );
 }
 
-export default withTraumaDialog(withLoginState(DeckDetailView));
+export default withLoginState(DeckDetailView);
 
 const styles = StyleSheet.create({
   flex: {

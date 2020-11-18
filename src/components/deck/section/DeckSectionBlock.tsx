@@ -24,7 +24,7 @@ export default function DeckSectionBlock({ title, onTitlePress, children, footer
       header={<DeckSectionHeader onPress={onTitlePress} faction={faction} title={title} />}
       footer={toggleCollapsed ? (
         <RoundedFooterButton
-          title={collapsed ? t`Show cards` : t`Hide cards`}
+          title={collapsed ? t`Show splash cards` : t`Hide splash cards`}
           icon={collapsed ? 'show' : 'hide'}
           onPress={toggleCollapsed}
         />

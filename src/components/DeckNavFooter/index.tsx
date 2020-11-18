@@ -92,7 +92,7 @@ export default function DeckNavFooter({
   );
   const totalCountString = ngettext(
     msgid`${totalCardCount} Total`,
-    msgid`${totalCardCount} Total`,
+    `${totalCardCount} Total`,
     totalCardCount
   );
   const faction = investigator.factionCode();
