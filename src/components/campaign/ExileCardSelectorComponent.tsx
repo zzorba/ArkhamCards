@@ -9,7 +9,7 @@ interface OwnProps {
   componentId: string;
   id: number;
   exileCounts: Slots;
-  updateExileCounts: (exileCounts: Slots) => void;
+  updateExileCount: (card: Card, count: number) => void;
   label?: React.ReactNode;
 }
 
@@ -23,7 +23,7 @@ function isExile(card: Card) {
   return !!card.exile;
 }
 
-export default function ExileCardSelectorComponent({ componentId, id, exileCounts, updateExileCounts, label }: Props) {
+export default function ExileCardSelectorComponent({ componentId, id, exileCounts, updateExileCount, label }: Props) {
   const [deck] = useDeck(id, {});
   if (!deck) {
     return null;
@@ -33,7 +33,7 @@ export default function ExileCardSelectorComponent({ componentId, id, exileCount
       componentId={componentId}
       slots={deck.slots}
       counts={exileCounts}
-      updateCounts={updateExileCounts}
+      updateCount={updateExileCount}
       filterCard={isExile}
       header={label}
     />

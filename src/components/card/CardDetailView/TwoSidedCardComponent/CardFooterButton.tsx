@@ -6,6 +6,7 @@ import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import AppIcon from '@icons/AppIcon';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
 
 interface Props {
   onPressFaq: () => void;
@@ -70,24 +71,11 @@ export default function CardFooterButton({ onPressFaq, onPressTaboo }: Props) {
     );
   }
   return (
-    <Ripple
-      style={[
-        styles.buttonStyle,
-        {
-          backgroundColor: colors.L10,
-          height,
-        },
-      ]}
-      rippleColor={colors.L20}
+    <RoundedFooterButton
       onPress={onPressFaq}
-    >
-      <View pointerEvents="box-none" style={styles.row}>
-        <ArkhamIcon name="wild" size={18 * fontScale} color={colors.D20} />
-        <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
-          { t`FAQ` }
-        </Text>
-      </View>
-    </Ripple>
+      title={t`FAQ`}
+      icon="faq"
+    />
   );
 }
 

@@ -14,6 +14,7 @@ import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { PlayScenarioInput } from '@data/scenario/types';
 import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
+import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 
 interface Props {
   componentId: string;
@@ -23,7 +24,8 @@ interface Props {
 }
 
 export default function PlayScenarioComponent({ componentId, campaignId, id, input }: Props) {
-  const { scenarioState, processedScenario, campaignLog } = useContext(ScenarioStepContext);
+  const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
+  const { campaignLog } = useContext(ScenarioStepContext);
 
   const branchPress = useCallback((index: number) => {
     scenarioState.setChoice(id, index);

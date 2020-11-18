@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import {
   flatMap,
   forEach,
@@ -43,29 +43,25 @@ import { s, m } from '@styles/space';
 import ArkhamButton, { ArkhamButtonIcon } from '@components/core/ArkhamButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { useCards, useSlots, useToggles } from '@components/core/hooks';
+import { useCards, useDeck, useEffectUpdate, useSimpleDeckEdits, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 
 interface Props {
   componentId: string;
+  deckId?: number;
+  currentDeckOnly?: boolean;
   query?: Brackets;
-  tabooSetOverride?: number;
-  originalDeckSlots?: Slots;
   filterQuery?: Brackets;
   textQuery?: Brackets;
   sort?: SortType;
-  deckCardCounts?: Slots;
   initialSort?: SortType;
   mythosToggle?: boolean;
   searchTerm?: string;
   expandSearchControls?: ReactNode;
-  onDeckCountChange?: (code: string, count: number) => void;
-  limits?: Slots;
   investigator?: Card;
   cardPressed?: (card: Card) => void;
   renderCard?: (card: Card) => React.ReactElement;
   header?: React.ReactElement;
-  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   noSearch?: boolean;
   handleScroll?: (...args: any[]) => void;
   showHeader?: () => void;
@@ -85,16 +81,6 @@ function getRandomLoadingMessage() {
     t`Up by 5, hope I don't draw the tentacle`,
   ];
   return messages[random(0, messages.length - 1)];
-}
-
-interface QueryCounts {
-  query: Brackets;
-  nonCollection?: {
-    [key: string]: number | undefined;
-  };
-  spoiler?: {
-    [key: string]: number | undefined;
-  };
 }
 
 interface SectionHeaderItem {
@@ -180,27 +166,44 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
   };
 }
 
-function useDeckQuery(deckCardCounts: Slots, originalDeckSlots?: Slots): [Brackets | undefined, boolean, () => void] {
-  const [refreshCounter, setRefreshCounter] = useState(0);
-  const [updateCounter, setUpdateCounter] = useState(-1);
+function useDeckQuery(deckCardCounts?: Slots, originalDeckSlots?: Slots): [Brackets | undefined, boolean, () => void] {
+  const [{ refreshCounter, updateCounter }, updateRefreshCounts] = useReducer((
+    { refreshCounter, updateCounter }: { refreshCounter: number; updateCounter: number },
+    action: 'update' | 'refresh'
+  ) => {
+    switch (action) {
+      case 'refresh':
+        return {
+          refreshCounter: updateCounter,
+          updateCounter,
+        };
+      case 'update':
+        return {
+          refreshCounter,
+          updateCounter: updateCounter + 1,
+        };
+    }
+  }, { refreshCounter: 0, updateCounter: 0 });
   const refreshDeck = useCallback(() => {
-    setRefreshCounter(updateCounter);
-  }, [setRefreshCounter, updateCounter]);
+    updateRefreshCounts('refresh');
+  }, [updateRefreshCounts]);
 
-  useEffect(() => {
-    setUpdateCounter(updateCounter + 1);
+  useEffectUpdate(() => {
+    updateRefreshCounts('update');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deckCardCounts]);
-  const hasDeckChanges = (updateCounter > refreshCounter);
 
+  const hasDeckChanges = (updateCounter > refreshCounter);
   const deckCodes = useMemo(() => {
-    if (!originalDeckSlots) {
+    if (!originalDeckSlots && !deckCardCounts) {
       return [];
     }
     return filter(
       uniq(concat(keys(originalDeckSlots), keys(deckCardCounts))),
-      code => originalDeckSlots[code] > 0 ||
+      code => !!(
+        (originalDeckSlots && originalDeckSlots[code] > 0) ||
         (deckCardCounts && deckCardCounts[code] > 0)
+      )
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshCounter]);
@@ -222,7 +225,7 @@ interface SectionFeedProps {
   filterQuery?: Brackets;
   textQuery?: Brackets;
   showAllNonCollection?: boolean;
-  deckCardCounts: Slots;
+  deckCardCounts?: Slots;
   originalDeckSlots?: Slots;
   storyOnly?: boolean;
 }
@@ -259,7 +262,6 @@ function useSectionFeed({
   const [mainQueryCards, setMainQueryCards] = useState<PartialCard[]>([]);
   const [textQueryCards, setTextQueryCards] = useState<PartialCard[]>([]);
   const [deckQuery, hasDeckChanges, refreshDeck] = useDeckQuery(deckCardCounts, originalDeckSlots);
-
   useEffect(() => {
     let ignore = false;
     if (!deckQuery) {
@@ -584,38 +586,32 @@ function itemHeight(item: Item, fontScale: number): number {
 }
 export default function({
   componentId,
+  deckId,
+  currentDeckOnly,
   query,
   filterQuery,
   textQuery,
   sort,
-  tabooSetOverride,
   initialSort,
   searchTerm,
   expandSearchControls,
-  deckCardCounts: propsDeckCardCounts,
   investigator,
   renderCard,
-  renderFooter,
   cardPressed,
-  onDeckCountChange,
-  limits,
   noSearch,
   header,
   handleScroll,
   showHeader,
-  originalDeckSlots,
   storyOnly,
   showNonCollection,
 }: Props) {
   const { db } = useContext(DatabaseContext);
+  const [deck] = useDeck(deckId, {});
+  const deckEdits = useSimpleDeckEdits(deckId);
   const { colors, borderStyle, fontScale, typography } = useContext(StyleContext);
-  const [deckCardCounts, setDeckCardCounts] = useSlots(propsDeckCardCounts || {});
-  const handleDeckCountChange = useCallback((code: string, value: number) => {
-    onDeckCountChange && onDeckCountChange(code, value);
-    setDeckCardCounts({ type: 'set-slot', code, value });
-  }, [onDeckCountChange, setDeckCardCounts]);
   const hasSecondCore = useSelector((state: AppState) => getPacksInCollection(state).core || false);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
+  const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.taboo_id) || 0) : undefined;
   const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const {
@@ -633,8 +629,8 @@ export default function({
     filterQuery,
     textQuery,
     showAllNonCollection: showNonCollection,
-    deckCardCounts,
-    originalDeckSlots,
+    deckCardCounts: deckEdits?.slots,
+    originalDeckSlots: currentDeckOnly ? undefined : deck?.slots,
     storyOnly,
   });
   const dispatch = useDispatch();
@@ -649,13 +645,23 @@ export default function({
       setLoadingMessage(getRandomLoadingMessage());
     }
   }, [refreshing]);
+
   useEffect(() => {
     dispatch(addDbFilterSet(componentId, db, query, initialSort || SORT_BY_TYPE, tabooSetId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, tabooSetId]);
 
+  const feedValues = useRef<{
+    feed: Item[];
+    fullFeed: PartialCard[];
+  }>();
+  useEffect(() => {
+    feedValues.current = {
+      feed,
+      fullFeed,
+    };
+  }, [feed, fullFeed]);
   const cardOnPressId = useCallback((id: string, card: Card) => {
-    console.log(`Card Pressed: ${id}`);
     cardPressed && cardPressed(card);
     if (singleCardView) {
       showCard(
@@ -670,6 +676,10 @@ export default function({
     }
     let index = 0;
     const [headerId, cardId] = id.split('.');
+    if (!feedValues.current) {
+      return;
+    }
+    const { feed, fullFeed } = feedValues.current;
     const codes = map(fullFeed, (partialCard, idx) => {
       if (headerId === partialCard.headerId && cardId === partialCard.id) {
         index = idx;
@@ -685,12 +695,11 @@ export default function({
       cards,
       showSpoilerCards,
       tabooSetOverride,
-      deckCardCounts,
-      onDeckCountChange,
-      investigator,
-      renderFooter,
+      deckId,
+      investigator
     );
-  }, [feed, fullFeed, showSpoilerCards, tabooSetOverride, deckCardCounts, onDeckCountChange, investigator, renderFooter, colors, cardPressed, componentId, singleCardView]);
+  }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors,
+    deckId, investigator, componentId, cardPressed]);
   const debouncedCardOnPressId = useMemo(() => debounce(cardOnPressId, 500, { leading: true }), [cardOnPressId]);
   const keyExtractor = useCallback((item: Item, index: number) => {
     switch (item.type) {
@@ -731,15 +740,22 @@ export default function({
         if (renderCard) {
           return renderCard(card);
         }
+        const deck_limit: number = Math.min(
+          card.pack_code === 'core' ?
+            ((card.quantity || 0) * (hasSecondCore ? 2 : 1)) :
+            (card.deck_limit || 0),
+          card.deck_limit || 0
+        );
         return (
           <CardSearchResult
             card={card}
-            count={deckCardCounts && deckCardCounts[card.code]}
-            onDeckCountChange={onDeckCountChange ? handleDeckCountChange : undefined}
             onPressId={debouncedCardOnPressId}
             id={item.id}
-            limit={limits ? limits[card.code] : undefined}
-            hasSecondCore={hasSecondCore}
+            control={deckId !== undefined ? {
+              type: 'deck',
+              deckId,
+              limit: deck_limit,
+            } : undefined}
           />
         );
       }
@@ -752,12 +768,12 @@ export default function({
         );
       case 'loading':
         return (
-          <LoadingCardSearchResult />
+          <LoadingCardSearchResult key={item.id} />
         );
       default:
         return null;
     }
-  }, [debouncedCardOnPressId, onDeckCountChange, handleDeckCountChange, hasSecondCore, deckCardCounts, investigator, limits, renderCard]);
+  }, [debouncedCardOnPressId, deckId, hasSecondCore, investigator, renderCard]);
   const listHeader = useMemo(() => {
     const searchBarPadding = !noSearch && Platform.OS === 'android';
     if (!searchBarPadding && !header) {

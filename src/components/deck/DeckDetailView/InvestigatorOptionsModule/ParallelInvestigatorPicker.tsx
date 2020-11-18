@@ -1,68 +1,61 @@
-import React, { useContext } from 'react';
-import { findIndex, map } from 'lodash';
+import React, { useCallback, useMemo } from 'react';
 import { t } from 'ttag';
 
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import Card from '@data/Card';
-import COLORS from '@styles/colors';
-import StyleContext from '@styles/StyleContext';
+import DeckPickerButton from '../DeckPickerButton';
 
 interface Props {
   investigator: Card;
-  parallelInvestigators: Card[];
-  selection?: Card;
-  type: 'alternate_back' | 'alternate_front';
-  onChange: (type: 'alternate_back' | 'alternate_front', code?: string) => void;
+  alternateInvestigator: Card;
+  front: string;
+  back: string;
+  onChange: (front: string, back: string) => void;
   disabled?: boolean;
   editWarning: boolean;
+  first: boolean;
+  last: boolean;
 }
 
 export default function ParallelInvestigatorPicker({
   investigator,
-  parallelInvestigators,
-  type,
+  alternateInvestigator,
+  front,
+  back,
   disabled,
   editWarning,
-  selection,
   onChange,
+  first,
+  last,
 }: Props) {
-  const { colors } = useContext(StyleContext);
-  const onChoiceChange = (index: number | null) => {
-    if (index === null) {
-      return;
+  const options = useMemo(() => [
+    { label: t`Original front · Original back`, value: 0 },
+    { label: t`Parallel front · Original back`, value: 1 },
+    { label: t`Original front · Parallel back`, value: 2 },
+    { label: t`Parallel front · Parallel back`, value: 3 },
+  ], []);
+  const selectedValue = (front === investigator.code ? 0 : 1) + (back === investigator.code ? 0 : 2);
+  const onChoiceChange = useCallback((index: number | null) => {
+    if (index !== null) {
+      onChange(
+        index % 2 ? alternateInvestigator.code : investigator.code,
+        index >= 2 ? alternateInvestigator.code : investigator.code
+      );
     }
-    onChange(
-      type,
-      index === 0 ? undefined : parallelInvestigators[index - 1].code
-    );
-  };
+  }, [onChange, alternateInvestigator.code, investigator.code]);
 
-  // Not found: -1 + 1 = 0
-  const selectedIndex = selection ? (1 + findIndex(parallelInvestigators, card => card.code === selection.code)) : 0;
-  const investigatorFaction = investigator.factionCode();
   return (
-    <SinglePickerComponent
-      settingsStyle
-      title={type === 'alternate_front' ? t`Card Front` : t`Card Back`}
+    <DeckPickerButton
+      icon="parallel"
+      faction={investigator.factionCode()}
+      title={t`Parallel`}
       editable={!disabled}
-      description={editWarning ? t`Parallel investigator options should only be selected at deck creation time, not between scenarios.` : undefined}
-      colors={{
-        modalColor: investigatorFaction ?
-          colors.faction[investigatorFaction].background :
-          COLORS.lightBlue,
-        modalTextColor: 'white',
-        backgroundColor: 'transparent',
-        textColor: colors.darkText,
-      }}
-      choices={[
-        { text: t`Original` },
-        ...map(parallelInvestigators, (card) => {
-          return { text: card.pack_name };
-        }),
-      ]}
-      selectedIndex={selectedIndex}
+      modalDescription={editWarning ? t`Parallel investigator options should only be selected at deck creation time, not between scenarios.` : undefined}
+      options={options}
+      selectedValue={selectedValue}
       onChoiceChange={onChoiceChange}
-      noBorder
+      valueLabel={options[selectedValue].label}
+      first={first}
+      last={last}
     />
   );
 }

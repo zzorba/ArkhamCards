@@ -5,7 +5,7 @@ import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import ChoiceListItemComponent from './ChoiceListItemComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import ScenarioGuideContext from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import { StringChoices } from '@actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';

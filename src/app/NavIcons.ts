@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { forEach, keys } from 'lodash';
 
 import AppIcon from '@icons/AppIcon';

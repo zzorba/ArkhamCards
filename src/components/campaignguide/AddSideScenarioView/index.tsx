@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import DialogComponent from '@lib/react-native-dialog';
@@ -28,24 +28,12 @@ export interface AddSideScenarioProps extends CampaignGuideInputProps {
 
 type Props = NavigationProps & AddSideScenarioProps & CampaignGuideProps;
 
-interface State {
-  customDialogVisible: boolean;
-  viewRef?: View;
-  customScenarioName: string;
-  customXpCost: number;
-}
-
-/* eslint-disable @typescript-eslint/no-empty-function */
-function onTabChange() {
-}
-
 function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
   const { campaignState, campaignGuide } = useContext(CampaignGuideContext);
   const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
   const [customDialogVisible, setCustomDialogVisible] = useState(false);
   const [customScenarioName, setCustomScenarioName] = useState('');
   const [customXpCost, incCustomXpCost, decCustomXpCost] = useCounter(1, { min: 0 });
-  const viewRef = useRef<View>();
   const onPress = useCallback((scenario: Scenario) => {
     campaignState.startOfficialSideScenario(
       scenario.id,
@@ -77,7 +65,6 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
       <Dialog
         title={t`Custom side scenario`}
         visible={customDialogVisible}
-        viewRef={viewRef.current}
       >
         <DialogComponent.Description style={[
           space.paddingTopS,
@@ -109,7 +96,7 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
         />
       </Dialog>
     );
-  }, [customDialogVisible, decCustomXpCost, incCustomXpCost, customScenarioName, customXpCost, viewRef, typography, cancelCustomScenarioPressed, saveCustomScenario]);
+  }, [customDialogVisible, decCustomXpCost, incCustomXpCost, customScenarioName, customXpCost, typography, cancelCustomScenarioPressed, saveCustomScenario]);
 
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const tabs = [
@@ -190,10 +177,7 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
   ];
   return (
     <>
-      <TabView
-        tabs={tabs}
-        onTabChange={onTabChange}
-      />
+      <TabView tabs={tabs} />
       { customDialog }
     </>
   );

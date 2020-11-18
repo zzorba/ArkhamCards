@@ -7,19 +7,18 @@ import InvestigatorCheckListComponent from './InvestigatorCheckListComponent';
 import InvestigatorCounterComponent from './InvestigatorCounterComponent';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import ScenarioGuideContext from '../ScenarioGuideContext';
-import { BulletType, UseSuppliesInput, UseSuppliesAllInput } from '@data/scenario/types';
+import { UseSuppliesInput, UseSuppliesAllInput } from '@data/scenario/types';
 import Card from '@data/Card';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   id: string;
-  bulletType?: BulletType;
   text?: string;
   input: UseSuppliesInput;
   campaignLog: GuidedCampaignLog;
 }
 
-export default function UseSuppliesPrompt({ id, bulletType, text, input, campaignLog }: Props) {
+export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const supplyLimits = useMemo(() => {
     const investigagorSupplies = campaignLog.investigatorSections[input.section] || {};

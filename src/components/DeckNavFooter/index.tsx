@@ -5,10 +5,8 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { msgid, ngettext, t } from 'ttag';
+import { msgid, ngettext } from 'ttag';
 
-import { ParsedDeck } from '@actions/types';
 import AppIcon from '@icons/AppIcon';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import { TINY_PHONE } from '@styles/sizes';
@@ -17,33 +15,38 @@ import { showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
 import { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { useParsedDeck } from '@components/core/hooks';
 
 const SHOW_CHARTS_BUTTON = true;
 
 interface Props {
   componentId: string;
-  parsedDeck: ParsedDeck;
-  xpAdjustment: number;
+  deckId: number;
   controls?: React.ReactNode;
 }
 
 export default function DeckNavFooter({
   componentId,
-  parsedDeck,
-  xpAdjustment,
+  deckId,
   controls,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const { parsedDeck, deckEdits } = useParsedDeck(deckId, componentId);
+
   const showCardChartsPressed = useCallback(() => {
-    showCardCharts(componentId, parsedDeck, colors);
+    if (parsedDeck) {
+      showCardCharts(componentId, parsedDeck, colors);
+    }
   }, [componentId, parsedDeck, colors]);
 
   const showDrawSimulatorPressed = useCallback(() => {
-    showDrawSimulator(componentId, parsedDeck, colors);
+    if (parsedDeck) {
+      showDrawSimulator(componentId, parsedDeck, colors);
+    }
   }, [componentId, parsedDeck, colors]);
 
   const problemRow = useMemo(() => {
-    if (!parsedDeck.problem) {
+    if (!parsedDeck?.problem) {
       return null;
     }
     return (
@@ -53,18 +56,29 @@ export default function DeckNavFooter({
         noFontScaling
       />
     );
-  }, [parsedDeck.problem]);
+  }, [parsedDeck?.problem]);
 
-  const xpString = useMemo(() => {
-    const experience = parsedDeck.experience;
-    const xp = parsedDeck.deck.xp;
-    const changes = parsedDeck.changes;
-    if (!changes) {
-      return t`XP: ${experience}`;
+  const [xpString, xpDetailString] = useMemo(() => {
+    if (!parsedDeck || deckEdits?.xpAdjustment === undefined) {
+      return [undefined, undefined];
     }
-    const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
-    return t`XP: ${changes.spentXp} of ${adjustedExperience}`;
-  }, [xpAdjustment, parsedDeck.changes, parsedDeck.experience, parsedDeck.deck.xp]);
+    const experience = parsedDeck.availableExperience;
+    const changes = parsedDeck.changes;
+
+    const xpStr = ngettext(msgid`${experience} XP`, `${experience} XP`, experience);
+    if (!changes) {
+      return [xpStr, undefined];
+    }
+    const unspentXp = parsedDeck.availableExperience - (changes?.spentXp || 0);
+    const unspentXpStr = parsedDeck.availableExperience > 0 ? `+${unspentXp}` : `${unspentXp}`;
+    return [
+      xpStr,
+      ngettext(msgid`${unspentXpStr} unspent`, `${unspentXpStr} unspent`, unspentXp),
+    ];
+  }, [deckEdits?.xpAdjustment, parsedDeck]);
+  if (!parsedDeck) {
+    return null;
+  }
 
   const {
     investigator,
@@ -72,21 +86,38 @@ export default function DeckNavFooter({
     totalCardCount,
   } = parsedDeck;
   const cardCountString = ngettext(
-    msgid`${normalCardCount} Card (${totalCardCount} Total)`,
-    `${normalCardCount} Cards (${totalCardCount} Total)`,
+    msgid`${normalCardCount} Card`,
+    `${normalCardCount} Cards`,
     normalCardCount
   );
+  const totalCountString = ngettext(
+    msgid`${totalCardCount} Total`,
+    msgid`${totalCardCount} Total`,
+    totalCardCount
+  );
+  const faction = investigator.factionCode();
+  const bigTextStyle = TINY_PHONE ? typography.small : typography.text;
   return (
     <View style={styles.borderWrapper}>
-      <View style={[styles.wrapper, { backgroundColor: colors.faction[investigator.factionCode()].darkBackground }]}>
+      <View style={[styles.wrapper, { backgroundColor: colors.faction[faction].background }]}>
         <View style={styles.left}>
           <View style={styles.row}>
-            <Text style={[
-              TINY_PHONE ? typography.small : typography.text,
-              styles.whiteText,
-            ]} allowFontScaling={false}>
-              { `${cardCountString} - ${xpString}` }
+            <Text style={[bigTextStyle, styles.whiteText]} allowFontScaling={false}>
+              { `${cardCountString}` }
             </Text>
+            <Text style={[typography.small, typography.italic, { lineHeight: bigTextStyle.lineHeight, color: '#ddd' }]} allowFontScaling={false}>
+              { `  ${totalCountString}` }
+            </Text>
+            { !!xpString && (
+              <Text style={[bigTextStyle, styles.whiteText]} allowFontScaling={false}>
+                { `  ·  ${xpString}` }
+              </Text>
+            ) }
+            { !!xpDetailString && (
+              <Text style={[typography.small, typography.italic, { lineHeight: bigTextStyle.lineHeight, color: '#ddd' }]} allowFontScaling={false}>
+                { ` ${xpDetailString}` }
+              </Text>
+            )}
           </View>
           <View style={styles.row}>
             { problemRow }
@@ -98,13 +129,13 @@ export default function DeckNavFooter({
               { SHOW_CHARTS_BUTTON && (
                 <TouchableOpacity onPress={showCardChartsPressed}>
                   <View style={styles.button}>
-                    <MaterialCommunityIcons name="chart-bar" size={28} color="#FFFFFF" />
+                    <AppIcon name="chart" size={36} color="#FFFFFF" />
                   </View>
                 </TouchableOpacity>
               ) }
               <TouchableOpacity onPress={showDrawSimulatorPressed}>
                 <View style={styles.button}>
-                  <AppIcon name="cards-1" size={28} color="#FFFFFF" />
+                  <AppIcon name="draw" size={36} color="#FFFFFF" />
                 </View>
               </TouchableOpacity>
             </>

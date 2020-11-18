@@ -24,7 +24,7 @@ import SettingsItem from '@components/settings/SettingsItem';
 import BasicButton from '@components/core/BasicButton';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
-import { saveNewDeck, NewDeckParams } from '@components/deck/actions';
+import { saveNewDeck } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
 import { Deck, Slots } from '@actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
@@ -42,27 +42,10 @@ export interface NewDeckOptionsProps {
   onCreateDeck: (deck: Deck) => void;
 }
 
-interface ReduxProps {
-  defaultTabooSetId?: number;
-}
-
-interface ReduxActionProps {
-  saveNewDeck: (params: NewDeckParams) => Promise<Deck>;
-}
-
 type Props = NavigationProps &
   NewDeckOptionsProps &
   NetworkStatusProps &
   LoginStateProps;
-
-interface State {
-  saving: boolean;
-  deckName?: string;
-  offlineDeck: boolean;
-  tabooSetId?: number;
-  starterDeck: boolean;
-  optionSelected: boolean[];
-}
 
 type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
@@ -81,7 +64,7 @@ function NewDeckOptionsDialog({
   const [saving, setSaving] = useState(false);
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
   const [offlineDeck, toggleOfflineDeck] = useFlag(!signedIn || !isConnected || networkType === NetInfoStateType.none);
-  const [optionSelected, setOptionSelected] = useState<boolean[]>([]);
+  const [optionSelected, setOptionSelected] = useState<boolean[]>([true]);
   const [tabooSetId, setTabooSetId] = useState<number | undefined>(defaultTabooSetId);
   const [starterDeck, setStarterDeck] = useState(false);
   const investigators = useInvestigatorCards(tabooSetId);

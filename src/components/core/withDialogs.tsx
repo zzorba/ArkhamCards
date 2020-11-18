@@ -71,6 +71,7 @@ export default function withDialogs<P>(
       numberOfLines?: number,
       onSaveAndAdd?: (text: string) => void,
     ) => {
+      console.log('showTextDialog', { title, text, onTextChange });
       this.setState({
         textVisibleCount: this.state.textVisibleCount + 1,
         title,

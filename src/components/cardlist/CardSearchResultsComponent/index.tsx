@@ -1,4 +1,5 @@
-import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { debounce } from 'throttle-debounce';
 import {
   StyleSheet,
@@ -9,11 +10,7 @@ import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
 import { t } from 'ttag';
 
-import {
-  SORT_BY_ENCOUNTER_SET,
-  SortType,
-  Slots,
-} from '@actions/types';
+import { SORT_BY_ENCOUNTER_SET, SortType } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';
@@ -23,11 +20,14 @@ import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
+import DeckNavFooter from '@components/DeckNavFooter';
+import { getLangPreference } from '@reducers';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
 interface Props {
   componentId: string;
+  deckId?: number;
   baseQuery?: Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
@@ -37,27 +37,12 @@ interface Props {
   visible: boolean;
   toggleMythosMode: () => void;
   clearSearchFilters: () => void;
-  tabooSetOverride?: number;
 
   investigator?: Card;
-  originalDeckSlots?: Slots;
-  deckCardCounts?: Slots;
-  onDeckCountChange?: (code: string, count: number) => void;
-  limits?: Slots;
   header?: React.ReactElement;
-  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
 
   initialSort?: SortType;
-}
-
-interface State {
-  searchText: boolean;
-  searchFlavor: boolean;
-  searchBack: boolean;
-  searchTerm?: string;
-  searchCode?: number;
-  searchQuery?: RegExp;
 }
 
 function searchOptionsHeight(fontScale: number) {
@@ -238,6 +223,7 @@ function ExpandSearchButtons({
 
 export default function({
   componentId,
+  deckId,
   baseQuery,
   mythosToggle,
   showNonCollection,
@@ -246,18 +232,13 @@ export default function({
   mythosMode,
   toggleMythosMode,
   clearSearchFilters,
-  tabooSetOverride,
   investigator,
-  originalDeckSlots,
-  deckCardCounts,
-  onDeckCountChange,
-  limits,
   header,
-  renderFooter,
   storyOnly,
   initialSort,
 }: Props) {
   const { fontScale } = useContext(StyleContext);
+  const lang = useSelector(getLangPreference);
   const [searchText, setSearchText] = useState(false);
   const [searchFlavor, setSearchFlavor] = useState(false);
   const [searchBack, setSearchBack] = useState(false);
@@ -296,46 +277,38 @@ export default function({
     if (searchTerm === '' || !searchTerm) {
       return combineQueriesOpt(parts, 'and');
     }
-    const safeSearchTerm = `%${searchTerm}%`;
+    const safeSearchTerm = `%${searchTerm.toLocaleLowerCase(lang)}%`;
+    parts.push(where('c.s_search_name like :searchTerm', { searchTerm: safeSearchTerm }));
     if (searchBack) {
       parts.push(where([
-        'c.name like :searchTerm',
-        '(c.linked_card is not null AND c.linked_card.name like :searchTerm)',
-        '(c.back_name is not null AND c.back_name like :searchTerm)',
-        '(c.linked_card is not null AND c.linked_card.back_name is not null and c.linked_card.back_name like :searchTerm)',
-        '(c.subname is not null AND c.subname like :searchTerm)',
-        '(c.linked_card is not null AND c.linked_card.subname is not null AND c.linked_card.subname like :searchTerm)',
-      ].join(' OR '), { searchTerm: safeSearchTerm }));
-    } else {
-      parts.push(where('c.renderName like :searchTerm OR (c.renderSubname is not null AND c.renderSubname like :searchTerm)', { searchTerm: safeSearchTerm }));
+        'c.s_search_name_back like :searchTerm',
+        '(c.linked_card is not null AND c.linked_card.s_search_name like :searchTerm)',
+        '(c.linked_card is not null AND c.linked_card.s_search_name_back like :searchTerm)',
+      ].join(' OR '), { searchTerm: safeSearchTerm }
+      ));
     }
     if (searchText) {
-      parts.push(where([
-        '(c.text is not null AND c.text like :searchTerm)',
-        '(c.traits is not null AND c.traits like :searchTerm)',
-      ].join(' OR '), { searchTerm: safeSearchTerm }));
+      parts.push(where('c.s_search_game like :searchTerm', { searchTerm: safeSearchTerm }));
       if (searchBack) {
         parts.push(where([
-          '(c.linked_card is not null AND c.linked_card.text is not null AND c.linked_card.text like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.traits AND c.linked_card.traits like :searchTerm)',
-          '(c.back_text is not null AND c.back_text like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.back_text is not null AND c.linked_card.back_text like :searchTerm)',
+          'c.s_search_game_back like :searchTerm',
+          '(c.linked_card is not null AND c.linked_card.s_search_game like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.s_search_game_back like :searchTerm)',
         ].join(' OR '), { searchTerm: safeSearchTerm }));
       }
     }
     if (searchFlavor) {
-      parts.push(where('(c.flavor is not null AND c.flavor like :searchTerm)', { searchTerm: safeSearchTerm }));
-      '(c.linked_card is no';
+      parts.push(where('(c.s_search_flavor like :searchTerm)', { searchTerm: safeSearchTerm }));
       if (searchBack) {
         parts.push(where([
-          '(c.back_flavor is not null AND c.back_flavor like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.flavor is not null AND c.linked_card.flavor like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.back_flavor is not null AND c.linked_card.back_flavor like :searchTerm)',
+          '(c.s_search_flavor_back like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.s_search_flavor like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.s_search_flavor_back like :searchTerm)',
         ].join(' OR '), { searchTerm: safeSearchTerm }));
       }
     }
     return combineQueriesOpt(parts, 'or');
-  }, [searchState, searchBack, searchFlavor, searchText, searchTerm]);
+  }, [searchState, searchBack, searchFlavor, searchText, searchTerm, lang]);
 
   const controls = (
     <SearchOptions
@@ -384,17 +357,13 @@ export default function({
         <>
           <DbCardResultList
             componentId={componentId}
-            tabooSetOverride={tabooSetOverride}
+            deckId={deckId}
             query={query}
             filterQuery={filterQuery || undefined}
             textQuery={textQuery}
             searchTerm={searchTerm}
             sort={selectedSort}
             investigator={investigator}
-            originalDeckSlots={originalDeckSlots}
-            deckCardCounts={deckCardCounts}
-            onDeckCountChange={onDeckCountChange}
-            limits={limits}
             handleScroll={handleScroll}
             showHeader={showHeader}
             expandSearchControls={(
@@ -413,16 +382,15 @@ export default function({
               />
             )}
             header={header}
-            renderFooter={renderFooter}
             showNonCollection={showNonCollection}
             storyOnly={storyOnly}
             mythosToggle={mythosToggle}
             //            mythosMode={mythosToggle && mythosMode}
             initialSort={initialSort}
           />
-          { !!renderFooter && (
+          { deckId !== undefined && (
             <View style={styles.footer}>
-              { renderFooter() }
+              <DeckNavFooter deckId={deckId} componentId={componentId} />
             </View>
           ) }
         </>

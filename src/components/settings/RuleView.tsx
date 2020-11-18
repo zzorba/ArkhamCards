@@ -12,7 +12,7 @@ import { s, m } from '@styles/space';
 import { NavigationProps } from '@components/nav/types';
 import DatabaseContext from '@data/DatabaseContext';
 import { useSelector } from 'react-redux';
-import { getTabooSet } from '@reducers';
+import { AppState, getTabooSet } from '@reducers';
 
 export interface RuleViewProps {
   rule: Rule
@@ -44,7 +44,7 @@ function RuleTable({ table }: { table: RuleTableRow[] }) {
 
 function RuleComponent({ componentId, rule, level, noTitle }: { componentId: string; rule: Rule; level: number; noTitle?: boolean }) {
   const { db } = useContext(DatabaseContext);
-  const tabooSetId = useSelector(getTabooSet);
+  const tabooSetId = useSelector((state: AppState) => getTabooSet(state, undefined));
   const linkPressed = useCallback(
     (url: string, context: StyleContextType) => {
       openUrl(url, context, db, componentId, tabooSetId);

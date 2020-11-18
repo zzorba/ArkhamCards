@@ -30,8 +30,9 @@ type Props = CampaignGuideProps &
   InjectedCampaignGuideProps &
   TraumaProps;
 
-function CampaignGuideView({ campaignId, componentId, showTextEditDialog, campaignData, showTraumaDialog }: Props) {
+function CampaignGuideView(props: Props) {
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
+  const { campaignId, componentId, showTextEditDialog, campaignData, showTraumaDialog } = props;
   const dispatch = useDispatch();
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
@@ -73,7 +74,7 @@ function CampaignGuideView({ campaignId, componentId, showTextEditDialog, campai
 
   const saveCampaignUpdate = useCallback((id: number, sparseCampaign: Partial<Campaign>, now?: Date) => {
     dispatch(updateCampaign(id, sparseCampaign, now));
-  }, [dispatch])
+  }, [dispatch]);
   const { campaignGuide, campaignState } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const tabs = [

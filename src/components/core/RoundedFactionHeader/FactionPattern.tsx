@@ -6,13 +6,13 @@ import {
   Pattern,
   Path,
 } from 'react-native-svg';
-import MysticPattern from '../../../../../assets/mystic_pattern.svg';
-import SeekerPattern from '../../../../../assets/seeker_pattern.svg';
-import MythosPattern from '../../../../../assets/mythos_pattern.svg';
-import RoguePattern from '../../../../../assets/rogue_pattern.svg';
-import GuardianPattern from '../../../../../assets/guardian_pattern.svg';
-import SurvivorPattern from '../../../../../assets/survivor_pattern.svg';
-import NeutralPattern from '../../../../../assets/neutral_pattern.svg';
+import MysticPattern from '../../../../assets/mystic_pattern.svg';
+import SeekerPattern from '../../../../assets/seeker_pattern.svg';
+import MythosPattern from '../../../../assets/mythos_pattern.svg';
+import RoguePattern from '../../../../assets/rogue_pattern.svg';
+import GuardianPattern from '../../../../assets/guardian_pattern.svg';
+import SurvivorPattern from '../../../../assets/survivor_pattern.svg';
+import NeutralPattern from '../../../../assets/neutral_pattern.svg';
 
 
 interface Props {

@@ -18,17 +18,17 @@ import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import { rightButtonsForCard } from './CardDetailView';
 import { CardFaqProps } from './CardFaqView';
 import { getTabooSet, AppState, getPacksInCollection, getPackSpoilers } from '@reducers';
-import CardQuantityComponent from '../cardlist/CardSearchResult/CardQuantityComponent';
 import { InvestigatorCardsProps } from '../cardlist/InvestigatorCardsView';
 import { NavigationProps } from '@components/nav/types';
-import { Slots } from '@actions/types';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useSlots, useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards } from '@components/core/hooks';
+import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards } from '@components/core/hooks';
 import DatabaseContext from '@data/DatabaseContext';
 import { where } from '@data/query';
 import Carousel from 'react-native-snap-carousel';
+import DeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/DeckQuantityComponent';
+import DeckNavFooter from '@components/DeckNavFooter';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -37,9 +37,7 @@ export interface CardDetailSwipeProps {
   whiteNav: boolean;
   showAllSpoilers?: boolean;
   tabooSetId?: number;
-  deckCardCounts?: Slots;
-  onDeckCountChange?: (code: string, count: number) => void;
-  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode;
+  deckId?: number;
 }
 
 type Props = NavigationProps &
@@ -57,7 +55,7 @@ const options = (passProps: CardDetailSwipeProps) => {
 };
 
 function DbCardDetailSwipeView(props: Props) {
-  const { componentId, cardCodes, initialCards, showAllSpoilers, onDeckCountChange, tabooSetId: tabooSetOverride, renderFooter, initialIndex } = props;
+  const { componentId, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex } = props;
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
   const { width, height } = useWindowDimensions();
@@ -65,7 +63,6 @@ function DbCardDetailSwipeView(props: Props) {
   const hasSecondCore = useSelector((state: AppState) => getPacksInCollection(state).core || false);
   const showSpoilers = useSelector((state: AppState) => getPackSpoilers(state));
   const [spoilers, toggleShowSpoilers] = useToggles({});
-  const [deckCardCounts, updateDeckCardCounts] = useSlots(props.deckCardCounts || {});
   const [index, setIndex] = useState(initialIndex);
   const [cards, updateCards] = useCards('code', initialCards);
   const currentCode = useMemo(() => cardCodes[index], [cardCodes, index]);
@@ -162,15 +159,8 @@ function DbCardDetailSwipeView(props: Props) {
     return !!(showAllSpoilers || showSpoilers[card.pack_code] || spoilers[card.code]);
   }, [showSpoilers, spoilers, showAllSpoilers]);
 
-  const countChanged = useCallback((code: string, value: number) => {
-    if (onDeckCountChange) {
-      onDeckCountChange(code, value);
-    }
-    updateDeckCardCounts({ type: 'set-slot', code, value });
-  }, [onDeckCountChange, updateDeckCardCounts]);
-
   const deckCountControls = useMemo(() => {
-    if (!onDeckCountChange || !deckCardCounts || !currentCard) {
+    if (deckId === undefined || !currentCard) {
       return null;
     }
     const deck_limit: number = Math.min(
@@ -181,18 +171,10 @@ function DbCardDetailSwipeView(props: Props) {
     );
     return (
       <View style={{ height: FOOTER_HEIGHT, position: 'relative' }}>
-        <CardQuantityComponent
-          key={currentCard.id}
-          code={currentCard.code}
-          count={deckCardCounts[currentCard.code] || 0}
-          countChanged={countChanged}
-          limit={deck_limit}
-          showZeroCount
-          forceBig
-        />
+        <DeckQuantityComponent code={currentCard.code} deckId={deckId} forceBig showZeroCount limit={deck_limit} />
       </View>
     );
-  }, [countChanged, deckCardCounts, currentCard, hasSecondCore, onDeckCountChange]);
+  }, [deckId, currentCard, hasSecondCore]);
   const renderCard = useCallback((
     { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }): React.ReactNode => {
     if (!card) {
@@ -225,10 +207,6 @@ function DbCardDetailSwipeView(props: Props) {
   const data: (Card | undefined)[] = useMemo(() => {
     return map(cardCodes, code => cards[code]);
   }, [cardCodes, cards]);
-
-  const footer = useMemo(() => {
-    return !!renderFooter && renderFooter(deckCardCounts, deckCountControls);
-  }, [renderFooter, deckCardCounts, deckCountControls]);
   return (
     <View
       style={[styles.wrapper, backgroundStyle, { width, height }]}
@@ -244,7 +222,7 @@ function DbCardDetailSwipeView(props: Props) {
         onScrollIndexChanged={setIndex}
         disableIntervalMomentum
       />
-      { footer }
+      { deckId !== undefined && <DeckNavFooter deckId={deckId} componentId={componentId} controls={deckCountControls} /> }
       { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
     </View>
   );

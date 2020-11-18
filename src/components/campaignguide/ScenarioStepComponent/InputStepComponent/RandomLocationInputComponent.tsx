@@ -7,10 +7,10 @@ import BasicButton from '@components/core/BasicButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import { RandomLocationInput } from '@data/scenario/types';
-import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { m, l } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import useCardList from '@components/card/useCardList';
+import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 
 interface Props {
   input: RandomLocationInput;
@@ -22,7 +22,7 @@ interface State {
 
 
 export default function RandomLocationInputComponent({ input }: Props) {
-  const { scenarioState } = useContext(ScenarioStepContext);
+  const { scenarioState } = useContext(ScenarioGuideContext);
   const { borderStyle } = useContext(StyleContext);
   const [choices, updateChoices] = useReducer((state: number[], action: 'draw' | 'clear') => {
     switch (action) {

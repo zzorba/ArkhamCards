@@ -5,10 +5,10 @@ import { t } from 'ttag';
 import ChooseOnePrompt from '@components/campaignguide/prompts/ChooseOnePrompt';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { ReceiveCampaignLinkInput } from '@data/scenario/types';
 import BasicButton from '@components/core/BasicButton';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 
 interface Props {
   componentId: string;
@@ -25,7 +25,7 @@ export default function ReceiveCampaignLinkInputComponent({
   campaignLog,
   switchCampaignScenario,
 }: Props) {
-  const { scenarioState } = useContext(ScenarioStepContext);
+  const { scenarioState } = useContext(ScenarioGuideContext);
   const close = useCallback(() => {
     Navigation.pop(componentId);
   }, [componentId]);

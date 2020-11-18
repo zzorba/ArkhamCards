@@ -17,15 +17,12 @@ interface Props {
   values: { [id: string]: boolean | undefined };
   inverted?: boolean;
   onValueChange: (deck: Deck, value: boolean) => void;
-  investigators: CardsMap;
+  investigators?: CardsMap;
   scenarioCount: {
     [key: string]: number;
   };
 }
 
-interface State {
-  open: boolean;
-}
 export default function DeckMergeSection({ title, decks, values, inverted, onValueChange, investigators, scenarioCount }: Props) {
   const { colors, borderStyle, typography } = useContext(StyleContext);
   const [open, toggleOpen] = useFlag(false);

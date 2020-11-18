@@ -106,7 +106,7 @@ export default function RulesView({ componentId }: Props) {
       rules: {},
       endReached: false,
     });
-  const [page, fetchPage] = useReducer<ReducerWithoutAction<number>>((page: number) => {
+  const [, fetchPage] = useReducer<ReducerWithoutAction<number>>((page: number) => {
     if (!rules.endReached) {
       db.getRulesPaged(
         page,

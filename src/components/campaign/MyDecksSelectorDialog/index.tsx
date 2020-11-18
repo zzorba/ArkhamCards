@@ -46,7 +46,7 @@ function deckOptions(passProps: Props): Options {
   return {
     topBar: {
       title: {
-        text: t`Choose an Investigator`,
+        text: passProps.singleInvestigator ? t`Select Deck` : t`Choose an Investigator`,
       },
       leftButtons: [{
         icon: iconsMap.close,

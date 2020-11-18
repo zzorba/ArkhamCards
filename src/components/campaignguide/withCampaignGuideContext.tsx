@@ -1,13 +1,13 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { Text } from 'react-native';
+import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import { AppState } from '@reducers';
-import withUniversalCampaignData, { UniversalCampaignProps } from '@components/campaignguide/withUniversalCampaignData';
-import { CampaignGuideReduxData, campaignGuideReduxData, constructCampaignGuideContext } from '@components/campaignguide/contextHelper';
-import StyleContext from '@styles/StyleContext';
+import { campaignGuideReduxData } from '@components/campaignguide/contextHelper';
+import useCampaignGuideContext from './useCampaignGuideContext';
+import { useInvestigatorCards } from '@components/core/hooks';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 export interface CampaignGuideInputProps {
   campaignId: number;
@@ -20,23 +20,20 @@ export interface CampaignGuideProps {
 export default function withCampaignGuideContext<Props>(
   WrappedComponent: React.ComponentType<Props & CampaignGuideProps>
 ): React.ComponentType<Props & CampaignGuideInputProps> {
-  function CampaignDataComponent(props: Props & CampaignGuideInputProps & UniversalCampaignProps) {
-    const { campaignId, investigators } = props;
+  function CampaignDataComponent(props: Props & CampaignGuideInputProps) {
+    const { campaignId } = props;
+    const investigators = useInvestigatorCards();
     const campaignDataSelector = useCallback((state: AppState) => {
+      if (!investigators) {
+        return undefined;
+      }
       return campaignGuideReduxData(campaignId, investigators, state);
     }, [campaignId, investigators]);
     const campaignData = useSelector(campaignDataSelector);
-    const styleContext = useContext(StyleContext);
-    const context = useMemo(() => {
-      return campaignData ? constructCampaignGuideContext(
-        campaignData as CampaignGuideReduxData,
-        props,
-        styleContext
-      ) : undefined;
-    }, [props, styleContext, campaignData]);
+    const context = useCampaignGuideContext(campaignId, campaignData);
     if (!campaignData || !context) {
       return (
-        <Text>Unknown Campaign</Text>
+        <LoadingSpinner />
       );
     }
     return (
@@ -48,7 +45,6 @@ export default function withCampaignGuideContext<Props>(
       </CampaignGuideContext.Provider>
     );
   }
-  const result = withUniversalCampaignData<Props & CampaignGuideInputProps>(CampaignDataComponent);
-  hoistNonReactStatic(result, WrappedComponent);
-  return result;
+  hoistNonReactStatic(CampaignDataComponent, WrappedComponent);
+  return CampaignDataComponent;
 }

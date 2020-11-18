@@ -95,7 +95,7 @@ export default function InvestigatorsListComponent({
   const investigators = useInvestigatorCards();
 
   const in_collection = useSelector(getPacksInCollection);
-  const [showNonCollection, toggleShowNonCollection, setShowNonCollection] = useToggles({});
+  const [showNonCollection,, setShowNonCollection] = useToggles({});
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleScrollBeginDrag = useCallback(() => {

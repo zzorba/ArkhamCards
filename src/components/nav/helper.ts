@@ -1,4 +1,3 @@
-import React from 'react';
 import { ActionSheetIOS, Platform, Linking } from 'react-native';
 import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import AndroidDialogPicker from 'react-native-android-dialog-picker';
@@ -11,7 +10,7 @@ import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
 import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
-import { Deck, ParsedDeck, Slots } from '@actions/types';
+import { Deck, ParsedDeck } from '@actions/types';
 import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';
 import { CardImageProps } from '@components/card/CardImageView';
@@ -63,7 +62,7 @@ export function getDeckOptions(
       background: {
         color: colors.faction[
           (investigator ? investigator.faction_code : null) || 'neutral'
-        ].darkBackground,
+        ].background,
       },
       rightButtons: topBarOptions.rightButtons,
     },
@@ -207,10 +206,8 @@ export function showCardSwipe(
   initialCards?: Card[],
   showSpoilers?: boolean,
   tabooSetId?: number,
-  deckCardCounts?: Slots,
-  onDeckCountChange?: (code: string, count: number) => void,
-  investigator?: Card,
-  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode,
+  deckId?: number,
+  investigator?: Card
 ) {
   const options = investigator ?
     getDeckOptions(colors, { title: '' }, investigator) :
@@ -231,9 +228,7 @@ export function showCardSwipe(
         initialIndex: index,
         showAllSpoilers: !!showSpoilers,
         tabooSetId,
-        deckCardCounts,
-        onDeckCountChange,
-        renderFooter,
+        deckId,
         whiteNav: !!investigator,
       },
       options,

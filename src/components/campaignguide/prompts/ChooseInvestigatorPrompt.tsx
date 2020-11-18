@@ -8,6 +8,7 @@ import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import Card from '@data/Card';
 import ScenarioStepContext from '../ScenarioStepContext';
 import StyleContext from '@styles/StyleContext';
+import ScenarioGuideContext from '../ScenarioGuideContext';
 
 interface Props {
   id: string;
@@ -32,7 +33,8 @@ export default function ChooseInvestigatorPrompt({
   investigatorToValue,
   renderResults,
 }: Props): JSX.Element {
-  const { scenarioInvestigators, scenarioState } = useContext(ScenarioStepContext);
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const { scenarioInvestigators } = useContext(ScenarioStepContext);
   const { borderStyle } = useContext(StyleContext);
   const [selectedInvestigator, setSelectedInvestigator] = useState(required && scenarioInvestigators.length > 0 ? scenarioInvestigators[0].code : undefined);
   const theInvestigators = useMemo(() => {

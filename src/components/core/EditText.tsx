@@ -41,7 +41,7 @@ async function openDialog({
     const { action, text } = await DialogAndroid.prompt(title, dialogDescription, {
       defaultValue: value || '',
       positiveText: t`Done`,
-      negativeText: t`Cncel`,
+      negativeText: t`Cancel`,
       keyboardType: null,
     });
     if (action === DialogAndroid.actionPositive) {

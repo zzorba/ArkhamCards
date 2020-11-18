@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { forEach, keys, range, throttle } from 'lodash';
+import { find, forEach, keys, range, throttle } from 'lodash';
 import {
   Alert,
   AlertButton,
@@ -20,14 +20,11 @@ import deepDiff from 'deep-diff';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
 
-import {
-  SettingsButton,
-} from '@lib/react-native-settings-components';
+import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import Dialog from '@components/core/Dialog';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import {
@@ -35,14 +32,12 @@ import {
   uploadLocalDeck,
   saveDeckChanges,
 } from '@components/deck/actions';
-import { DeckMeta, Slots } from '@actions/types';
+import { Slots, START_DECK_EDIT, UPDATE_DECK_EDIT } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/Card';
-import { parseDeck } from '@lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
-import { DeckDescriptionProps } from '../DeckDescriptionView';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
 import { DeckHistoryProps } from '../DeckHistoryView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
@@ -55,16 +50,15 @@ import {
   getPacksInCollection,
   AppState,
 } from '@reducers';
-import { m } from '@styles/space';
+import space, { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useComponentVisible, useDeck, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots, useTabooSet } from '@components/core/hooks';
+import { useFlag, useInvestigatorCards, useNavigationButtonPressed, useParsedDeck, useTabooSet } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
+import DeckBubbleHeader from '../section/DeckBubbleHeader';
 
-const SHOW_DESCRIPTION_EDITOR = false;
-const SHOW_CHECKLIST_EDITOR = true;
 export interface DeckDetailProps {
   id: number;
   title?: string;
@@ -80,6 +74,7 @@ type Props = NavigationProps &
   TraumaProps &
   LoginStateProps;
 type DeckDispatch = ThunkDispatch<AppState, any, Action>;
+
 
 function DeckDetailView({
   componentId,
@@ -101,18 +96,16 @@ function DeckDetailView({
   const { width } = useWindowDimensions();
 
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
-  const [deck, previousDeck] = useDeck(id, { fetchIfMissing: true });
-  const deckTabooSetId = ((deck && deck.taboo_id) || 0);
-  const [tabooSetChange, setTabooSetChange] = useState<number | undefined>();
-  const tabooSetId = tabooSetChange !== undefined ? tabooSetChange : deckTabooSetId;
-  const tabooSet = useTabooSet(tabooSetId);
-  const visible = useComponentVisible(componentId);
-  const setTabooSet = useCallback((tabooSetId?: number) => {
-    setTabooSetChange(tabooSetId || 0);
-  }, [setTabooSetChange]);
+  const {
+    deck,
+    cards,
+    deckEdits,
+    deckEditsRef,
+    visible,
+    parsedDeck,
+    tabooSetId,
+  } = useParsedDeck(id, componentId, true);
 
-  const cards = usePlayerCards(tabooSetId);
-  const investigators = useInvestigatorCards(tabooSetId);
   const [copying, toggleCopying] = useFlag(false);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | undefined>();
@@ -122,49 +115,73 @@ function DeckDetailView({
   const [tabooOpen, setTabooOpen] = useState(false);
   const [editDetailsOpen, toggleEditDetailsOpen, setEditDetailsOpen] = useFlag(false);
 
-  // All the flags for the current state
-  const [xpAdjustment, setXpAdjustment] = useState(deck?.xp_adjustment || 0);
-  const [nameChange, setNameChange] = useState<string | undefined>();
-  const [descriptionChange, setDescriptionChange] = useState<string | undefined>();
-  const [meta, setMeta] = useState<DeckMeta>(deck?.meta || {});
-  const [slots, updateSlots] = useSlots(deck?.slots || {});
-  const [ignoreDeckLimitSlots, updateIgnoreDeckLimitSlots] = useSlots(deck?.ignoreDeckLimitSlots || {});
-  const parsedDeck = useMemo(() => {
-    if (!deck || !cards) {
-      return undefined;
+  const tabooSet = useTabooSet(tabooSetId);
+  const investigators = useInvestigatorCards(tabooSetId);
+
+  const parallelInvestigators = useMemo(() => {
+    const investigator = deck?.investigator_code;
+    if (!investigator) {
+      return [];
     }
-    return parseDeck(deck, meta, slots, ignoreDeckLimitSlots, cards, previousDeck);
-  }, [deck, meta, slots, ignoreDeckLimitSlots, cards, previousDeck]);
+    const parallelInvestigators: Card[] = [];
+    forEach(investigators, card => {
+      if (card && investigator && card.alternate_of_code === investigator) {
+        parallelInvestigators.push(card);
+      }
+    });
+    return parallelInvestigators;
+  }, [investigators, deck?.investigator_code]);
+
+  const slotDeltas = useMemo(() => {
+    const result: {
+      removals: Slots;
+      additions: Slots;
+      ignoreDeckLimitChanged: boolean;
+    } = {
+      removals: {},
+      additions: {},
+      ignoreDeckLimitChanged: false,
+    };
+    if (!deck || !deckEdits) {
+      return result;
+    }
+    forEach(deck.slots, (deckCount, code) => {
+      const currentDeckCount = deckEdits.slots[code] || 0;
+      if (deckCount > currentDeckCount) {
+        result.removals[code] = deckCount - currentDeckCount;
+      }
+    });
+    forEach(deckEdits.slots, (currentCount, code) => {
+      const ogDeckCount = deck.slots[code] || 0;
+      if (ogDeckCount < currentCount) {
+        result.additions[code] = currentCount - ogDeckCount;
+      }
+      const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
+      if (ogIgnoreCount !== (deckEdits.ignoreDeckLimitSlots[code] || 0)) {
+        result.ignoreDeckLimitChanged = true;
+      }
+    });
+    return result;
+  }, [deck, deckEdits]);
+
+  const [investigatorFront, investigatorBack] = useMemo(() => {
+    const altFront = deckEdits?.meta.alternate_front && find(
+      parallelInvestigators,
+      card => card.code === deckEdits?.meta.alternate_front);
+    const investigatorFront = (altFront || (cards && deck && cards[deck.investigator_code]));
+
+    const altBack = deckEdits?.meta.alternate_back && find(
+      parallelInvestigators,
+      card => card.code === deckEdits?.meta.alternate_back);
+    const investigatorBack = altBack || (deck && cards && cards[deck.investigator_code]);
+    return [investigatorFront, investigatorBack];
+  }, [deck, cards, deckEdits?.meta, parallelInvestigators]);
+
   const problem = parsedDeck?.problem;
-  const name = nameChange !== undefined ? nameChange : deck?.name;
-
-  const onSlotsUpdate = useCallback((newSlots: Slots, resetIgnoreDeckLimitSlots?: boolean) => {
-    updateSlots({ type: 'sync', slots: newSlots });
-    if (resetIgnoreDeckLimitSlots && deck) {
-      updateIgnoreDeckLimitSlots({ type: 'sync', slots: deck.ignoreDeckLimitSlots || {} });
-    }
-  }, [updateSlots, updateIgnoreDeckLimitSlots, deck]);
-
-  const onIgnoreDeckLimitSlotsUpdate = useCallback((newIgnoreDeckLimitSlots: Slots) => {
-    updateIgnoreDeckLimitSlots({ type: 'sync', slots: newIgnoreDeckLimitSlots });
-  }, [updateIgnoreDeckLimitSlots]);
-
+  const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
   const campaignSelector = useCallback((state: AppState) => campaignId ? getCampaign(state, campaignId) : getCampaignForDeck(state, deck?.id || id), [deck, id, campaignId]);
   const inCollection = useSelector(getPacksInCollection);
   const campaign = useSelector(campaignSelector);
-
-  // When the deck changes (redux / network), update the locally editable state to match.
-  useEffect(() => {
-    if (!deck) {
-      return;
-    }
-    updateSlots({ type: 'sync', slots: deck?.slots });
-    updateIgnoreDeckLimitSlots({ type: 'sync', slots: deck.ignoreDeckLimitSlots || {} });
-    setMeta(deck.meta || {});
-    setXpAdjustment(deck.xp_adjustment || 0);
-    setTabooSetChange(undefined);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deck]);
 
   const [cardsByName, bondedCardsByName] = useMemo(() => {
     const cardsByName: {
@@ -192,65 +209,20 @@ function DeckDetailView({
     return [cardsByName, bondedCardsByName];
   }, [cards]);
 
-  const parallelInvestigators = useMemo(() => {
-    const investigator = deck?.investigator_code;
-    if (!investigator) {
-      return [];
-    }
-    const parallelInvestigators: Card[] = [];
-    forEach(investigators, card => {
-      if (card && investigator && card.alternate_of_code === investigator) {
-        parallelInvestigators.push(card);
-      }
-    });
-    return parallelInvestigators;
-  }, [investigators, deck?.investigator_code]);
-  const slotDeltas = useMemo(() => {
-    const result: {
-      removals: Slots;
-      additions: Slots;
-      ignoreDeckLimitChanged: boolean;
-    } = {
-      removals: {},
-      additions: {},
-      ignoreDeckLimitChanged: false,
-    };
-    if (!deck) {
-      return result;
-    }
-    forEach(deck.slots, (deckCount, code) => {
-      const currentDeckCount = slots[code] || 0;
-      if (deckCount > currentDeckCount) {
-        result.removals[code] = deckCount - currentDeckCount;
-      }
-    });
-    forEach(slots, (currentCount, code) => {
-      const ogDeckCount = deck.slots[code] || 0;
-      if (ogDeckCount < currentCount) {
-        result.additions[code] = currentCount - ogDeckCount;
-      }
-      const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
-      if (ogIgnoreCount !== (ignoreDeckLimitSlots[code] || 0)) {
-        result.ignoreDeckLimitChanged = true;
-      }
-    });
-    return result;
-  }, [deck, slots, ignoreDeckLimitSlots]);
-
   const hasPendingEdits = useMemo(() => {
-    if (!deck) {
+    if (!deck || !deckEdits) {
       return false;
     }
     const originalTabooSet: number = (deck.taboo_id || 0);
-    const metaChanges = deepDiff(meta, deck.meta || {});
-    return (nameChange && deck.name !== nameChange) ||
-      (tabooSetChange !== undefined && originalTabooSet !== tabooSetChange) ||
-      (deck.previous_deck && (deck.xp_adjustment || 0) !== xpAdjustment) ||
+    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
+    return (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
+      (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
+      (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
       keys(slotDeltas.removals).length > 0 ||
       keys(slotDeltas.additions).length > 0 ||
       slotDeltas.ignoreDeckLimitChanged ||
       (!!metaChanges && metaChanges.length > 0);
-  }, [deck, meta, xpAdjustment, nameChange, tabooSetChange, slotDeltas]);
+  }, [deck, deckEdits, slotDeltas]);
 
   const addedBasicWeaknesses = useMemo(() => {
     if (!cards || !deck) {
@@ -294,27 +266,22 @@ function DeckDetailView({
     if (saving && !isRetry) {
       return;
     }
-    if (!deck || !parsedDeck) {
+    if (!deck || !parsedDeck || !deckEditsRef.current) {
       return;
     }
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-    } = parsedDeck;
-
     const problemField = problem ? problem.reason : '';
     setSaving(true);
     deckDispatch(saveDeckChanges(
       deck,
       {
-        name: nameChange,
-        slots,
-        ignoreDeckLimitSlots,
+        name: deckEditsRef.current.nameChange,
+        slots: deckEditsRef.current.slots,
+        ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
         problem: problemField,
         spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
-        xpAdjustment,
+        xpAdjustment: deckEditsRef.current.xpAdjustment,
         tabooSetId,
-        meta,
+        meta: deckEditsRef.current.meta,
       }
     )).then(() => {
       updateCampaignWeaknessSet(addedBasicWeaknesses);
@@ -322,10 +289,9 @@ function DeckDetailView({
         Navigation.dismissAllModals();
       } else {
         setSaving(false);
-        setNameChange(undefined);
       }
     }, handleSaveError);
-  }, [deck, saving, parsedDeck, nameChange, tabooSetId, xpAdjustment, meta, addedBasicWeaknesses, problem,
+  }, [deck, saving, parsedDeck, deckEditsRef, tabooSetId, addedBasicWeaknesses, problem,
     deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet,
   ]);
 
@@ -428,12 +394,11 @@ function DeckDetailView({
       setSaving(true);
       deckDispatch(uploadLocalDeck(deck)).then(() => {
         setSaving(false);
-        setTabooSetChange(undefined);
       }, () => {
         setSaving(false);
       });
     }
-  }, 200), [deckDispatch, parsedDeck, saving, deck, setSaving, setTabooSetChange]);
+  }, 200), [deckDispatch, parsedDeck, saving, deck, setSaving]);
 
   useEffect(() => {
     if (!deck) {
@@ -454,7 +419,7 @@ function DeckDetailView({
   }, [deck]);
 
   useEffect(() => {
-    const newName = nameChange || deck?.name;
+    const newName = deckEdits?.nameChange || deck?.name;
     if (newName) {
       Navigation.mergeOptions(componentId, {
         topBar: {
@@ -466,7 +431,7 @@ function DeckDetailView({
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nameChange]);
+  }, [deckEdits?.nameChange]);
 
   const deleteDeck = useCallback((deleteAllVersions: boolean) => {
     if (!deleting) {
@@ -518,7 +483,7 @@ function DeckDetailView({
   }, [saveEdits]);
 
   const onChecklistPressed = useCallback(() => {
-    if (!deck || !cards) {
+    if (!deck || !cards || !deckEditsRef.current) {
       return;
     }
     setMenuOpen(false);
@@ -528,13 +493,13 @@ function DeckDetailView({
         name: 'Deck.Checklist',
         passProps: {
           id: deck.id,
-          slots,
+          slots: deckEditsRef.current.slots,
           tabooSetOverride: tabooSetId,
         },
         options: getDeckOptions(colors, { title: t`Checklist`, noTitle: true }, investigator),
       },
     });
-  }, [componentId, deck, cards, tabooSetId, slots, colors, setMenuOpen]);
+  }, [componentId, deck, cards, tabooSetId, deckEditsRef, colors, setMenuOpen]);
 
   const onEditSpecialPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -547,15 +512,8 @@ function DeckDetailView({
         name: 'Deck.EditSpecial',
         passProps: {
           campaignId: campaign ? campaign.id : undefined,
-          deck,
-          meta,
-          previousDeck,
-          slots,
-          ignoreDeckLimitSlots,
-          updateSlots: onSlotsUpdate,
-          updateIgnoreDeckLimitSlots: onIgnoreDeckLimitSlotsUpdate,
+          id,
           assignedWeaknesses: addedBasicWeaknesses,
-          xpAdjustment,
         },
         options: {
           statusBar: {
@@ -571,13 +529,13 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
             },
           },
         },
       },
     });
-  }, [componentId, onIgnoreDeckLimitSlotsUpdate, onSlotsUpdate, setMenuOpen, deck, previousDeck, cards, campaign, meta, slots, ignoreDeckLimitSlots, xpAdjustment, colors, addedBasicWeaknesses]);
+  }, [componentId, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses]);
 
   const onEditPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -589,14 +547,7 @@ function DeckDetailView({
       component: {
         name: 'Deck.Edit',
         passProps: {
-          deck,
-          meta,
-          previousDeck,
-          slots: slots,
-          ignoreDeckLimitSlots: ignoreDeckLimitSlots,
-          updateSlots: onSlotsUpdate,
-          xpAdjustment: xpAdjustment,
-          tabooSetOverride: tabooSetId,
+          id,
         },
         options: {
           statusBar: {
@@ -612,13 +563,13 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
             },
           },
         },
       },
     });
-  }, [componentId, deck, previousDeck, colors, onSlotsUpdate, setMenuOpen, cards, slots, meta, ignoreDeckLimitSlots, xpAdjustment, tabooSetId]);
+  }, [componentId, deck, id, colors, setMenuOpen, cards]);
 
   const onUpgradePressed = useCallback(() => {
     if (!deck) {
@@ -647,7 +598,7 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].background,
             },
           },
         },
@@ -666,40 +617,8 @@ function DeckDetailView({
   }, [setSaveError, setSaving]);
 
   const clearEdits = useCallback(() => {
-    if (!deck) {
-      return;
-    }
-    setTabooSetChange(undefined);
-    setNameChange(undefined);
-    setMeta(deck.meta || {});
-    setXpAdjustment(deck.xp_adjustment || 0);
-    updateSlots({ type: 'sync', slots: deck.slots });
-    updateIgnoreDeckLimitSlots({ type: 'sync', slots: deck.ignoreDeckLimitSlots || {} });
-  }, [deck, setMeta, setNameChange, setTabooSetChange, setXpAdjustment, updateSlots, updateIgnoreDeckLimitSlots]);
-
-  const updateMeta = useCallback((key: keyof DeckMeta, value?: string) => {
-    if (!deck) {
-      return;
-    }
-
-    const updatedMeta: DeckMeta = {
-      ...meta,
-      [key]: value,
-    };
-
-    if (value === undefined) {
-      delete updatedMeta[key];
-    } else {
-      if (deck.investigator_code === '06002' && key === 'deck_size_selected') {
-        updateSlots({ type: 'set-slot', code: '06008', value: (parseInt(value, 10) - 20) / 10 });
-      }
-    }
-    setMeta(updatedMeta);
-  }, [deck, meta, setMeta, updateSlots]);
-
-  const onDeckCountChange = useCallback((code: string, count: number) => {
-    updateSlots({ type: 'set-slot', code, value: count });
-  }, [updateSlots]);
+    dispatch({ type: START_DECK_EDIT, id });
+  }, [dispatch, id]);
 
   const copyDialog = useMemo(() => {
     return (
@@ -722,42 +641,20 @@ function DeckDetailView({
     setEditDetailsOpen(true);
   }, [setMenuOpen, setEditDetailsOpen]);
 
-  const updateDescription = useCallback((description: string) => {
-    if (!deck) {
-      return;
-    }
-    const descriptionChange = deck.description_md !== description ?
-      description :
-      undefined;
-    setDescriptionChange(descriptionChange);
-  }, [deck, setDescriptionChange]);
-
-  const showEditDescription = useCallback(() => {
-    setMenuOpen(false);
-    if (!parsedDeck) {
-      return;
-    }
-    const options = getDeckOptions(colors, {}, parsedDeck.investigator);
-    Navigation.push<DeckDescriptionProps>(componentId, {
-      component: {
-        name: 'Deck.Description',
-        passProps: {
-          description: '',
-          update: updateDescription,
-        },
-        options: options,
-      },
-    });
-  }, [componentId, setMenuOpen, parsedDeck, colors, updateDescription]);
-
   const updateDeckDetails = useCallback((name: string, xpAdjustment: number) => {
     setEditDetailsOpen(false);
-    setNameChange(name);
-    setXpAdjustment(xpAdjustment);
-  }, [setNameChange, setXpAdjustment, setEditDetailsOpen]);
+    dispatch({
+      type: UPDATE_DECK_EDIT,
+      id,
+      updates: {
+        nameChange: name,
+        xpAdjustment,
+      },
+    });
+  }, [dispatch, id, setEditDetailsOpen]);
 
   const editDetailsDialog = useMemo(() => {
-    if (!deck || !parsedDeck) {
+    if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;
     }
     const {
@@ -768,14 +665,14 @@ function DeckDetailView({
         visible={editDetailsOpen}
         xp={deck.xp || 0}
         spentXp={changes ? changes.spentXp : 0}
-        xpAdjustment={xpAdjustment}
+        xpAdjustment={deckEdits.xpAdjustment}
         xpAdjustmentEnabled={!!deck.previous_deck && !deck.next_deck}
         toggleVisible={toggleEditDetailsOpen}
-        name={nameChange || deck.name}
+        name={deckEdits.nameChange || deck.name}
         updateDetails={updateDeckDetails}
       />
     );
-  }, [deck, parsedDeck, editDetailsOpen, toggleEditDetailsOpen, updateDeckDetails, nameChange, xpAdjustment]);
+  }, [deck, parsedDeck, editDetailsOpen, toggleEditDetailsOpen, updateDeckDetails, deckEdits?.xpAdjustment, deckEdits?.nameChange]);
 
   const deletingDialog = useMemo(() => {
     if (deleteError) {
@@ -849,7 +746,7 @@ function DeckDetailView({
   }, [deck, hasPendingEdits, savePressed, clearEdits]);
 
   const showCardUpgradeDialog = useCallback((card: Card) => {
-    if (!cards || !parsedDeck) {
+    if (!parsedDeck) {
       return;
     }
     Navigation.push<CardUpgradeDialogProps>(componentId, {
@@ -857,52 +754,14 @@ function DeckDetailView({
         name: 'Dialog.CardUpgrade',
         passProps: {
           componentId,
-          card,
-          deck: parsedDeck.deck,
-          meta,
-          cards,
-          cardsByName,
+          id,
+          cardsByName: cardsByName[card.real_name] || [],
           investigator: parsedDeck.investigator,
-          tabooSetId,
-          previousDeck,
-          ignoreDeckLimitSlots,
-          slots: parsedDeck.slots,
-          xpAdjustment,
-          updateSlots: onSlotsUpdate,
-          updateIgnoreDeckLimitSlots: onIgnoreDeckLimitSlotsUpdate,
-          updateXpAdjustment: setXpAdjustment,
         },
         options: getDeckOptions(colors, { title: card.name }, parsedDeck.investigator),
       },
     });
-  }, [componentId, onIgnoreDeckLimitSlotsUpdate, onSlotsUpdate, setXpAdjustment,
-    cards, previousDeck, parsedDeck, colors, tabooSetId, meta, xpAdjustment, ignoreDeckLimitSlots, cardsByName,
-  ]);
-
-  const renderFooter = useCallback((newSlots?: Slots, controls?: React.ReactNode) => {
-    if (!deck || !cards) {
-      return null;
-    }
-    const parsedDeck = parseDeck(
-      deck,
-      meta,
-      newSlots || slots,
-      ignoreDeckLimitSlots,
-      cards,
-      previousDeck
-    );
-    if (!parsedDeck) {
-      return null;
-    }
-    return (
-      <DeckNavFooter
-        componentId={componentId}
-        parsedDeck={parsedDeck}
-        xpAdjustment={xpAdjustment}
-        controls={controls}
-      />
-    );
-  }, [componentId, xpAdjustment, meta, slots, ignoreDeckLimitSlots, cards, previousDeck, deck]);
+  }, [componentId, cardsByName, parsedDeck, id, colors]);
 
   const uploadLocalDeckPressed = useCallback(() => {
     doUploadLocalDeck();
@@ -1002,17 +861,13 @@ function DeckDetailView({
         component: {
           name: 'Deck.History',
           passProps: {
-            id: parsedDeck.deck.id,
-            meta,
-            slots,
-            ignoreDeckLimitSlots,
-            xpAdjustment,
+            id,
           },
-          options: getDeckOptions(colors, { title: t`Upgrade History` },parsedDeck.investigator),
+          options: getDeckOptions(colors, { title: t`Upgrade History` }, parsedDeck.investigator),
         },
       });
     }
-  }, [componentId, parsedDeck, colors, meta, slots, ignoreDeckLimitSlots, xpAdjustment, setMenuOpen]);
+  }, [componentId, id, colors, parsedDeck, setMenuOpen]);
 
   const showDrawSimulatorPressed = useCallback(() => {
     setMenuOpen(false);
@@ -1022,7 +877,7 @@ function DeckDetailView({
   }, [componentId, parsedDeck, colors, setMenuOpen]);
 
   const sideMenu = useMemo(() => {
-    if (!deck || !parsedDeck) {
+    if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;
     }
     const {
@@ -1030,168 +885,135 @@ function DeckDetailView({
       totalCardCount,
     } = parsedDeck;
     const editable = isPrivate && deck && !deck.next_deck;
-    const xp = (deck.xp || 0) + xpAdjustment;
-    const adjustment = xpAdjustment >= 0 ? `+${xpAdjustment}` : `${xpAdjustment}`;
+    const xp = (deck.xp || 0) + deckEdits.xpAdjustment;
+    const adjustment = deckEdits.xpAdjustment >= 0 ? `+${deckEdits.xpAdjustment}` : `${deckEdits.xpAdjustment}`;
     const xpString = t`${xp} (${adjustment}) XP`;
     return (
-      <ScrollView style={[styles.menu, backgroundStyle]}>
-        <CardSectionHeader section={{ title: t`Deck` }} />
+      <ScrollView style={[styles.menu, backgroundStyle, space.paddingS]}>
+        <DeckBubbleHeader title={t`Deck`} />
         { editable && (
           <>
-            <SettingsButton
+            <MenuButton
               onPress={showEditDetails}
-              title={t`Name`}
-              description={nameChange || deck.name}
-              descriptionStyle={typography.small}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
+              title={deckEdits.nameChange || deck.name}
+              description={!deck.local ? t`Deck #${deck.id}` : undefined}
             />
-            { SHOW_DESCRIPTION_EDITOR && (
-              <SettingsButton
-                onPress={showEditDescription}
-                title={t`Description`}
-                titleStyle={typography.text}
-                containerStyle={backgroundStyle}
-              />
-            ) }
-            <SettingsButton
+            <MenuButton
+              title={t`Taboo`}
               onPress={showTabooPicker}
-              title={t`Taboo List`}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
+              icon="taboo_thin"
               description={tabooSet ? tabooSet.date_start : t`None`}
-              descriptionStyle={typography.small}
+              last
             />
-            { !deck.local && (
-              <SettingsButton
-                title={t`Deck Id`}
-                titleStyle={typography.text}
-                containerStyle={backgroundStyle}
-                description={`${deck.id}`}
-                descriptionStyle={typography.small}
-                onPress={showEditDetails}
-                disabled
-              />
-            ) }
           </>
         ) }
-        <CardSectionHeader section={{ title: t`Cards` }} />
+        <DeckBubbleHeader title={t`Tools`} />
+        <MenuButton
+          onPress={showCardChartsPressed}
+          title={t`Charts`}
+          icon="chart"
+          description={t`For balancing and evaluating`}
+        />
+        <MenuButton
+          onPress={showDrawSimulatorPressed}
+          title={t`Draw Simulator`}
+          icon="draw"
+          description={t`Check your deck stability`}
+        />
+        <MenuButton
+          icon="checklist"
+          onPress={onChecklistPressed}
+          title={t`Checklist`}
+          description={t`For eady deck assembly`}
+          last
+        />
         { editable && (
           <>
-            <SettingsButton
+            <DeckBubbleHeader title={t`Cards`} />
+            <MenuButton
               onPress={onEditPressed}
-              title={t`Edit Cards`}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
+              icon="card-outline"
+              title={t`Deck Cards`}
               description={ngettext(
                 msgid`${normalCardCount} Card (${totalCardCount} Total)`,
                 `${normalCardCount} Cards (${totalCardCount} Total)`,
                 normalCardCount
               )}
-              descriptionStyle={typography.small}
             />
-            <SettingsButton
+            <MenuButton
               onPress={onEditSpecialPressed}
-              title={t`Story Assets`}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
-            />
-            <SettingsButton
-              onPress={onEditSpecialPressed}
-              title={t`Weaknesses`}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
+              icon="special_cards"
+              title={t`Special Cards`}
+              description={t`Story assets and weaknesses`}
+              last
             />
           </>
         ) }
-        { SHOW_CHECKLIST_EDITOR && (
-          <SettingsButton
-            onPress={onChecklistPressed}
-            title={t`Checklist`}
-            titleStyle={typography.text}
-            containerStyle={backgroundStyle}
-          />
-        ) }
-        <SettingsButton
-          onPress={showCardChartsPressed}
-          title={t`Charts`}
-          titleStyle={typography.text}
-          containerStyle={backgroundStyle}
-        />
-        <SettingsButton
-          onPress={showDrawSimulatorPressed}
-          title={t`Draw Simulator`}
-          titleStyle={typography.text}
-          containerStyle={backgroundStyle}
-        />
         { editable && (
           <>
-            <CardSectionHeader section={{ title: t`Campaign` }} />
-            <SettingsButton
-              onPress={onUpgradePressed}
-              title={t`Upgrade Deck`}
-              titleStyle={typography.text}
-              containerStyle={backgroundStyle}
-              disabled={!!hasPendingEdits}
-              description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
-              descriptionStyle={typography.small}
-            />
+            <DeckBubbleHeader title={t`Campaign`} />
             { !!deck.previous_deck && (
-              <SettingsButton
+              <MenuButton
+                icon="xp"
                 onPress={showEditDetails}
                 title={t`Available XP`}
-                titleStyle={typography.text}
-                containerStyle={backgroundStyle}
                 description={xpString}
-                descriptionStyle={typography.small}
               />
             ) }
+            <MenuButton
+              icon="upgrade"
+              onPress={onUpgradePressed}
+              title={t`Upgrade Deck`}
+              disabled={!!hasPendingEdits}
+              description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
+              last={!deck.previous_deck}
+            />
             { !!deck.previous_deck && (
-              <SettingsButton
+              <MenuButton
+                icon="deck"
                 onPress={showUpgradeHistoryPressed}
                 title={t`Upgrade History`}
-                titleStyle={typography.text}
-                containerStyle={backgroundStyle}
+                last
               />
             ) }
           </>
         ) }
-        <CardSectionHeader section={{ title: t`Options` }} />
-        <SettingsButton
+        <DeckBubbleHeader title={t`Options`} />
+        <MenuButton
+          icon="copy"
           onPress={toggleCopyDialog}
-          title={t`Clone`}
-          titleStyle={typography.text}
-          containerStyle={backgroundStyle}
+          title={t`Clone deck`}
         />
         { deck.local ? (
-          <SettingsButton
+          <MenuButton
+            icon="world"
             onPress={uploadToArkhamDB}
             title={t`Upload to ArkhamDB`}
-            titleStyle={typography.text}
-            containerStyle={backgroundStyle}
+            last={!isPrivate}
           />
         ) : (
-          <SettingsButton
+          <MenuButton
+            icon="world"
             title={t`View on ArkhamDB`}
+            description={t`Open in browser`}
             onPress={viewDeck}
-            titleStyle={typography.text}
-            containerStyle={backgroundStyle}
+            last={!isPrivate}
           />
         ) }
         { !!isPrivate && (
-          <SettingsButton
+          <MenuButton
+            icon="delete"
             title={t`Delete`}
-            titleStyle={styles.destructive}
-            containerStyle={backgroundStyle}
             onPress={deleteDeckPressed}
+            last
           />
         ) }
       </ScrollView>
     );
-  }, [backgroundStyle, typography, isPrivate, deck, nameChange, hasPendingEdits, xpAdjustment, tabooSet, parsedDeck,
+  }, [backgroundStyle, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditDetails, showTabooPicker,
-    showEditDescription, onEditPressed, onEditSpecialPressed, onChecklistPressed,
+    onEditPressed, onEditSpecialPressed, onChecklistPressed,
   ]);
 
   if (!deck) {
@@ -1211,7 +1033,7 @@ function DeckDetailView({
       </View>
     );
   }
-  if (!parsedDeck || !cards) {
+  if (!parsedDeck || !cards || !deckEdits) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
         <ActivityIndicator
@@ -1240,20 +1062,18 @@ function DeckDetailView({
           <View style={[styles.container, backgroundStyle] }>
             <DeckViewTab
               componentId={componentId}
+              visible={visible}
               inCollection={inCollection}
               parallelInvestigators={parallelInvestigators}
+              investigatorFront={investigatorFront}
+              investigatorBack={investigatorBack}
               deck={deck}
               editable={editable}
-              meta={meta}
-              setMeta={updateMeta}
-              deckName={nameChange || deck.name}
               tabooSet={tabooSet}
               tabooSetId={tabooSetId}
               showTaboo={showTaboo}
               tabooOpen={tabooOpen}
-              setTabooSet={setTabooSet}
               singleCardView={singleCardView}
-              xpAdjustment={xpAdjustment}
               parsedDeck={parsedDeck}
               problem={problem}
               hasPendingEdits={hasPendingEdits}
@@ -1274,11 +1094,9 @@ function DeckDetailView({
               hideCampaign={hideCampaign}
               showTraumaDialog={showTraumaDialog}
               investigatorDataUpdates={investigatorDataUpdates}
-              renderFooter={renderFooter}
-              onDeckCountChange={onDeckCountChange}
               width={width}
             />
-            { renderFooter() }
+            <DeckNavFooter deckId={id} componentId={componentId} />
           </View>
           { editDetailsDialog }
         </View>
@@ -1315,8 +1133,5 @@ const styles = StyleSheet.create({
   menu: {
     borderLeftWidth: 2,
     borderColor: COLORS.darkGray,
-  },
-  destructive: {
-    color: COLORS.red,
   },
 });

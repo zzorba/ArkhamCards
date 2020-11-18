@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { forEach } from 'lodash';
 import {
   Alert,
@@ -10,17 +10,16 @@ import {
   StyleSheet,
 } from 'react-native';
 import Crashes from 'appcenter-crashes';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { Campaign, CampaignGuideState, Deck, Pack } from '@actions/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { clearDecks } from '@actions';
 import Database from '@data/Database';
-import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
+import DatabaseContext from '@data/DatabaseContext';
 import Card from '@data/Card';
-import { getBackupData, getAllPacks, AppState, getLangPreference, getLangChoice } from '@reducers';
+import { getBackupData, getAllPacks, getLangPreference, getLangChoice } from '@reducers';
 import { fetchCards } from '@components/card/actions';
 import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
@@ -54,21 +53,26 @@ interface ReduxActionProps {
 
 type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
 
-class DiagnosticsView extends React.Component<Props> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
+function DiagnosticsView({ showTextEditDialog }: Props) {
+  const { db } = useContext(DatabaseContext);
+  const { colors } = useContext(StyleContext);
+  const dispatch = useDispatch();
+  const backupData = useSelector(getBackupData);
+  const packs = useSelector(getAllPacks);
+  const lang = useSelector(getLangPreference);
+  const langChoice = useSelector(getLangChoice);
 
-  _importBackupDataJson = (json: any) => {
+  const importBackupDataJson = useCallback((json: string) => {
     try {
       const backupData = JSON.parse(json) || {};
       const campaigns: Campaign[] = backupData.campaigns || [];
       const guides: { [id: string]: CampaignGuideState } = backupData.guides || {};
       const decks: Deck[] = backupData.decks || [];
-      this.props.restoreBackup(
+      dispatch(restoreBackup(
         campaigns,
         guides,
         decks
-      );
+      ));
       return;
     } catch (e) {
       console.log(e);
@@ -77,12 +81,9 @@ class DiagnosticsView extends React.Component<Props> {
         t`We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.`,
       );
     }
-  };
+  }, [dispatch]);
 
-  _importCampaignData = () => {
-    const {
-      showTextEditDialog,
-    } = this.props;
+  const importCampaignData = useCallback(() => {
     const erasedCopy = t`All local decks and campaigns will be overridden`;
     Alert.alert(
       t`Restore campaign data?`,
@@ -97,10 +98,10 @@ class DiagnosticsView extends React.Component<Props> {
           showTextEditDialog(
             t`Paste Backup Here`,
             '',
-            (json) => {
+            (json: string) => {
               Keyboard.dismiss();
               InteractionManager.runAfterInteractions(
-                () => this._importBackupDataJson(json)
+                () => importBackupDataJson(json)
               );
             },
             false,
@@ -109,9 +110,9 @@ class DiagnosticsView extends React.Component<Props> {
         },
       }],
     );
-  };
+  }, [showTextEditDialog, importBackupDataJson]);
 
-  _exportCampaignData = () => {
+  const exportCampaignData = useCallback(() => {
     Alert.alert(
       t`Backup campaign data?`,
       t`This feature is intended for advanced diagnostics or if you are trying to move your campaign data from one device to another. Just copy the data and paste it into the other app.`,
@@ -122,44 +123,32 @@ class DiagnosticsView extends React.Component<Props> {
         text: t`Export Campaign Data`,
         onPress: () => {
           Share.share({
-            message: JSON.stringify(this.props.backupData),
+            message: JSON.stringify(backupData),
           });
         },
       }],
     );
-  };
+  }, [backupData]);
 
-  async clearDatabase() {
-    await (await this.context.db.cardsQuery()).delete().execute();
-    await (await this.context.db.encounterSets()).createQueryBuilder().delete().execute();
-    await (await this.context.db.faqEntries()).createQueryBuilder().delete().execute();
-    await (await this.context.db.tabooSets()).createQueryBuilder().delete().execute();
-  }
+  const clearDatabase = useCallback(async() => {
+    await (await db.cardsQuery()).delete().execute();
+    await (await db.encounterSets()).createQueryBuilder().delete().execute();
+    await (await db.faqEntries()).createQueryBuilder().delete().execute();
+    await (await db.tabooSets()).createQueryBuilder().delete().execute();
+  }, [db]);
 
-  _clearCache = () => {
-    const {
-      clearDecks,
-    } = this.props;
-    clearDecks();
-    this.clearDatabase().then(() => {
-      this._doSyncCards();
+  const doSyncCards = useCallback(() => {
+    dispatch(fetchCards(db, lang, langChoice));
+  }, [dispatch, lang, langChoice, db]);
+
+  const clearCache = useCallback(() => {
+    dispatch(clearDecks());
+    clearDatabase().then(() => {
+      doSyncCards();
     });
-  };
+  }, [dispatch, clearDatabase, doSyncCards]);
 
-  _doSyncCards = () => {
-    const {
-      lang,
-      langChoice,
-      fetchCards,
-    } = this.props;
-    fetchCards(this.context.db, lang, langChoice);
-  };
-
-  addDebugCardJson(json: string) {
-    const {
-      packs,
-      lang,
-    } = this.props;
+  const addDebugCardJson = useCallback((json: string) => {
     const packsByCode: { [code: string]: Pack } = {};
     const cycleNames: {
       [cycle_position: number]: {
@@ -182,34 +171,31 @@ class DiagnosticsView extends React.Component<Props> {
     cycleNames[80] = {
       name: t`Side stories`,
     };
-    this.context.db.cards().then(cards => {
+    db.cards().then(cards => {
       cards.insert(
         Card.fromJson(JSON.parse(json), packsByCode, cycleNames, lang)
       );
     });
-  }
+  }, [packs, lang, db]);
 
-  _addDebugCard = () => {
-    const {
-      showTextEditDialog,
-    } = this.props;
+  const addDebugCard = useCallback(() => {
     showTextEditDialog(
       t`Debug Card Json`,
       '',
-      (json) => {
+      (json: string) => {
         Keyboard.dismiss();
-        setTimeout(() => this.addDebugCardJson(json), 1000);
+        setTimeout(() => addDebugCardJson(json), 1000);
       },
       false,
       4
     );
-  };
+  }, [showTextEditDialog, addDebugCardJson]);
 
-  _crash = () => {
+  const crash = useCallback(() => {
     Crashes.generateTestCrash();
-  };
+  }, []);
 
-  renderDebugSection() {
+  const debugSection = useMemo(() => {
     if (!__DEV__) {
       return null;
     }
@@ -217,70 +203,41 @@ class DiagnosticsView extends React.Component<Props> {
       <>
         <CardSectionHeader section={{ title: t`Debug` }} />
         <SettingsItem
-          onPress={this._crash}
+          onPress={crash}
           text={'Crash'}
         />
         <SettingsItem
-          onPress={this._addDebugCard}
+          onPress={addDebugCard}
           text={'Add Debug Card'}
         />
       </>
     );
-  }
+  }, [crash, addDebugCard]);
 
-  render() {
-    return (
-      <StyleContext.Consumer>
-        { ({ colors }) => (
-          <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
-            <ScrollView style={{ backgroundColor: colors.L20 }}>
-              <CardSectionHeader section={{ title: t`Backup` }} />
-              <SettingsItem
-                onPress={this._exportCampaignData}
-                text={t`Backup Campaign Data`}
-              />
-              <SettingsItem
-                onPress={this._importCampaignData}
-                text={t`Restore Campaign Data`}
-              />
-              <CardSectionHeader section={{ title: t`Caches` }} />
-              <SettingsItem
-                onPress={this._clearCache}
-                text={t`Clear cache`}
-              />
-              { this.renderDebugSection() }
-            </ScrollView>
-          </SafeAreaView>
-        ) }
-      </StyleContext.Consumer>
-
-    );
-  }
+  return (
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
+      <ScrollView style={{ backgroundColor: colors.L20 }}>
+        <CardSectionHeader section={{ title: t`Backup` }} />
+        <SettingsItem
+          onPress={exportCampaignData}
+          text={t`Backup Campaign Data`}
+        />
+        <SettingsItem
+          onPress={importCampaignData}
+          text={t`Restore Campaign Data`}
+        />
+        <CardSectionHeader section={{ title: t`Caches` }} />
+        <SettingsItem
+          onPress={clearCache}
+          text={t`Clear cache`}
+        />
+        { debugSection }
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    backupData: getBackupData(state),
-    packs: getAllPacks(state),
-    lang: getLangPreference(state),
-    langChoice: getLangChoice(state),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    clearDecks,
-    fetchCards,
-    restoreBackup,
-  }, dispatch);
-}
-
-export default withDialogs(
-  connect<ReduxProps, ReduxActionProps, InjectedDialogProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(DiagnosticsView)
-);
+export default withDialogs(DiagnosticsView);
 
 const styles = StyleSheet.create({
   container: {

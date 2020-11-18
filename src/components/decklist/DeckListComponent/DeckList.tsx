@@ -5,15 +5,16 @@ import {
   Platform,
   RefreshControl,
   StyleSheet,
+  useWindowDimensions,
 } from 'react-native';
 
 import { Campaign, Deck, DecksMap } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
-import DeckListRow from '@components/decklist/DeckListRow';
 import Card from '@data/Card';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { useInvestigatorCards } from '@components/core/hooks';
+import NewDeckListRow from './NewDeckListRow';
 
 interface Props {
   lang: string;
@@ -34,20 +35,9 @@ interface Item {
   deckId: number;
 }
 
-export default function DeckList({
-  lang,
-  deckIds,
-  header,
-  footer,
-  searchTerm,
-  deckToCampaign,
-  onRefresh,
-  refreshing,
-  decks,
-  onScroll,
-  deckClicked,
-}: Props) {
+export default function DeckList({ lang, deckIds, header, searchTerm, deckToCampaign, refreshing, decks, footer, onRefresh, onScroll, deckClicked }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
+  const { width } = useWindowDimensions();
   const investigators = useInvestigatorCards();
   const renderItem = useCallback(({ item: { deckId } }: { item: Item }) => {
     const deck = decks[deckId];
@@ -56,7 +46,7 @@ export default function DeckList({
     }
     const investigator = deck && investigators && investigators[deck.investigator_code];
     return (
-      <DeckListRow
+      <NewDeckListRow
         lang={lang}
         key={deckId}
         deck={deck}
@@ -64,9 +54,10 @@ export default function DeckList({
         deckToCampaign={deckToCampaign}
         investigator={investigator}
         onPress={deckClicked}
+        width={width}
       />
     );
-  }, [decks, investigators, deckToCampaign, deckClicked, lang]);
+  }, [decks, investigators, deckToCampaign, deckClicked, lang, width]);
   const items = useMemo(() => {
     return map(
       filter(deckIds, deckId => {

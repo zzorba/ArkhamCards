@@ -8,9 +8,9 @@ import {
 import { t } from 'ttag';
 
 import { DeckProblem, DeckProblemType } from '@actions/types';
-import AppIcon from '@icons/AppIcon';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import WarningIcon from '@icons/WarningIcon';
 
 interface Props {
   problem: DeckProblem;
@@ -19,13 +19,7 @@ interface Props {
   fontSize?: number;
 }
 
-export default function DeckProblemRow({
-  problem,
-  color,
-  noFontScaling,
-  fontSize,
-}: Props) {
-  const { fontScale, typography } = useContext(StyleContext);
+export function getProblemMessage(problem: DeckProblem): string {
   const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
     too_few_cards: t`Not enough cards.`,
     too_many_cards: t`Too many cards.`,
@@ -34,14 +28,21 @@ export default function DeckProblemRow({
     deck_options_limit: t`Contains too many limited cards.`,
     investigator: t`Doesn't comply with the Investigator requirements.`,
   };
+
+  return head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason];
+}
+
+export default function DeckProblemRow({
+  problem,
+  color,
+  noFontScaling,
+  fontSize,
+}: Props) {
+  const { typography } = useContext(StyleContext);
   return (
     <View style={styles.problemRow}>
       <View style={space.marginRightXs}>
-        <AppIcon
-          name="warning"
-          size={14 * (noFontScaling ? 1 : fontScale)}
-          color={color}
-        />
+        <WarningIcon size={14} />
       </View>
       <Text
         style={[typography.small, { color }, { fontSize: fontSize || 14 }, styles.problemText]}
@@ -49,7 +50,7 @@ export default function DeckProblemRow({
         ellipsizeMode="tail"
         allowFontScaling={!noFontScaling}
       >
-        { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
+        { getProblemMessage(problem) }
       </Text>
     </View>
   );

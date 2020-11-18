@@ -1,16 +1,16 @@
-import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { MutableRefObject, Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { BackHandler, InteractionManager } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, ChaosBagResults, Deck, DeckMeta, ParsedDeck, SingleCampaign, Slots } from '@actions/types';
+import { Campaign, ChaosBagResults, Deck, EditDeckState, ParsedDeck, SingleCampaign, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState, getCampaign, getChaosBagResults, getDeck, getEffectiveDeckId, getLatestCampaignDeckIds, getLatestCampaignInvestigators, getTabooSet } from '@reducers';
+import { AppState, getCampaign, getChaosBagResults, getDeck, getDeckEdits, getEffectiveDeckId, getLatestCampaignDeckIds, getLatestCampaignInvestigators, getTabooSet } from '@reducers';
 import DatabaseContext from '@data/DatabaseContext';
 import { parseDeck } from '@lib/parseDeck';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
-import { BackHandler } from 'react-native';
 import TabooSet from '@data/TabooSet';
 
 export function useBackButton(handler: () => boolean) {
@@ -75,6 +75,25 @@ export function useComponentDidAppear(
 ) {
   useEffect(() => {
     const sub = Navigation.events().registerComponentDidAppearListener((event: ComponentDidAppearEvent) => {
+      if (event.componentId === componentId) {
+        handler(event);
+      }
+    });
+    return () => {
+      sub.remove();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [componentId, handler, ...deps]);
+}
+
+
+export function useComponentDidDisappear(
+  handler: (event: ComponentDidDisappearEvent) => void,
+  componentId: string,
+  deps: any[],
+) {
+  useEffect(() => {
+    const sub = Navigation.events().registerComponentDidDisappearListener((event: ComponentDidDisappearEvent) => {
       if (event.componentId === componentId) {
         handler(event);
       }
@@ -186,7 +205,7 @@ interface ClearAction {
 
 interface SetToggleAction {
   type: 'set';
-  key: string;
+  key: string | number;
   value: boolean;
 }
 
@@ -206,7 +225,7 @@ export interface Toggles {
   [key: string]: boolean | undefined;
 }
 
-export function useToggles(initialState: Toggles): [Toggles, (code: string) => void, (code: string, value: boolean) => void, () => void, (code: string) => void] {
+export function useToggles(initialState: Toggles): [Toggles, (code: string) => void, (code: string | number, value: boolean) => void, () => void, (code: string) => void] {
   const [toggles, updateToggles] = useReducer((state: Toggles, action: SectionToggleAction) => {
     switch (action.type) {
       case 'clear':
@@ -229,7 +248,7 @@ export function useToggles(initialState: Toggles): [Toggles, (code: string) => v
     }
   }, initialState);
   const toggle = useCallback((code: string) => updateToggles({ type: 'toggle', key: code }), [updateToggles]);
-  const set = useCallback((code: string, value: boolean) => updateToggles({ type: 'set', key: code, value }), [updateToggles]);
+  const set = useCallback((code: string | number, value: boolean) => updateToggles({ type: 'set', key: code, value }), [updateToggles]);
   const clear = useCallback(() => updateToggles({ type: 'clear' }), [updateToggles]);
   const remove = useCallback((code: string) => updateToggles({ type: 'remove', key: code }), [updateToggles]);
   return [toggles, toggle, set, clear, remove];
@@ -323,6 +342,77 @@ export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => vo
   }, initialState);
 }
 
+export function useSimpleDeckEdits(id: number | undefined): EditDeckState | undefined {
+  const selector = useCallback((state: AppState) => id !== undefined ? getDeckEdits(state, id) : undefined, [id]);
+  return useSelector(selector);
+}
+
+export function useDeckEdits(id: number | undefined, initialize?: boolean): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (initialize && id !== undefined) {
+      dispatch({ type: 'START_DECK_EDIT', id });
+      return function cleanup() {
+        dispatch({ type: 'FINISH_DECK_EDIT', id });
+      };
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const deckEdits = useSimpleDeckEdits(id);
+  const deckEditsRef = useRef<EditDeckState>();
+  useEffect(() => {
+    if (deckEdits) {
+      deckEditsRef.current = deckEdits;
+    }
+  }, [deckEdits]);
+  return [deckEdits, deckEditsRef];
+}
+
+export interface EditSlotsActions {
+  setSlot: (code: string, count: number) => void;
+  incSlot: (code: string) => void;
+  decSlot: (code: string) => void;
+}
+
+export function useSlotActions(slots?: Slots, editSlotsActions?: EditSlotsActions, updateSlots?: (slots: Slots) => void): [Slots, EditSlotsActions | undefined] {
+  const [deckCardCounts, updateDeckCardCounts] = useSlots(slots || {}, updateSlots);
+  const propsSetSlot = editSlotsActions?.setSlot;
+  const propsDecSlot = editSlotsActions?.decSlot;
+  const propsIncSlot = editSlotsActions?.incSlot;
+
+  const setSlot = useCallback((code: string, value: number) => {
+    if (propsSetSlot) {
+      InteractionManager.runAfterInteractions(() => {
+        propsSetSlot(code, value);
+      });
+    }
+    updateDeckCardCounts({ type: 'set-slot', code, value });
+  }, [propsSetSlot, updateDeckCardCounts]);
+  const incSlot = useCallback((code: string) => {
+    if (propsIncSlot) {
+      InteractionManager.runAfterInteractions(() => {
+        propsIncSlot(code);
+      });
+    }
+    updateDeckCardCounts({ type: 'inc-slot', code });
+  }, [propsIncSlot, updateDeckCardCounts]);
+  const decSlot = useCallback((code: string) => {
+    if (propsDecSlot) {
+      InteractionManager.runAfterInteractions(() => {
+        propsDecSlot(code);
+      });
+    }
+    updateDeckCardCounts({ type: 'dec-slot', code });
+  }, [propsDecSlot, updateDeckCardCounts]);
+  const actions = useMemo(() => {
+    return {
+      setSlot,
+      incSlot,
+      decSlot,
+    };
+  }, [setSlot, incSlot, decSlot]);
+  return [deckCardCounts, editSlotsActions ? actions : undefined];
+}
 
 interface AppendCardsAction {
   type: 'cards';
@@ -403,6 +493,7 @@ export function useCampaign(campaignId?: number): SingleCampaign | undefined {
   return useSelector(selector);
 }
 
+const EMPTY_INVESTIGATORS: Card[] = [];
 export function useCampaignInvestigators(campaign?: Campaign, investigators?: CardsMap): Card[] {
   const allInvestigatorsSelector = useCallback((state: AppState) => {
     return investigators && campaign ? getLatestCampaignInvestigators(state, investigators, campaign) : EMPTY_INVESTIGATORS;
@@ -411,13 +502,16 @@ export function useCampaignInvestigators(campaign?: Campaign, investigators?: Ca
 }
 
 const EMPTY_DECK_IDS: number[] = [];
-const EMPTY_INVESTIGATORS: Card[] = [];
-export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [number[], Card[]] {
+export function useCampaignLatestDeckIds(campaign?: Campaign): number[] {
   const latestDeckIdsSelector = useCallback((state: AppState) => {
     return campaign ? getLatestCampaignDeckIds(state, campaign) : EMPTY_DECK_IDS;
   }, [campaign]);
-  const latestDeckIds = useSelector(latestDeckIdsSelector);
+  return useSelector(latestDeckIdsSelector);
+}
+
+export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [number[], Card[]] {
   const allInvestigators = useCampaignInvestigators(campaign, investigators);
+  const latestDeckIds = useCampaignLatestDeckIds(campaign);
   return [latestDeckIds, allInvestigators];
 }
 
@@ -438,58 +532,73 @@ export function useChaosBagResults(campaignId: number): ChaosBagResults {
   return useSelector(chaosBagResultsSelector);
 }
 
-export function useDeck(id: number, { fetchIfMissing }: { fetchIfMissing?: boolean }) {
+export function useDeck(id: number | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean }) {
   const dispatch = useDispatch();
-  const effectiveDeckIdSelector = useCallback((state: AppState) => getEffectiveDeckId(state, id), [id]);
+  const effectiveDeckIdSelector = useCallback((state: AppState) => id !== undefined ? getEffectiveDeckId(state, id) : undefined, [id]);
   const effectiveDeckId = useSelector(effectiveDeckIdSelector);
-  const deckSelector = useMemo(() => getDeck(effectiveDeckId), [effectiveDeckId]);
+  const deckSelector = useCallback((state: AppState) => effectiveDeckId !== undefined ? getDeck(effectiveDeckId)(state) : undefined, [effectiveDeckId]);
   const theDeck = useSelector(deckSelector) || undefined;
   const previousDeckSelector = useCallback((state: AppState) => {
     return theDeck && theDeck.previous_deck && getDeck(theDeck.previous_deck)(state);
   }, [theDeck]);
   const thePreviousDeck = useSelector(previousDeckSelector) || undefined;
   useEffect(() => {
-    if (!theDeck && fetchIfMissing && id > 0) {
+    if (!theDeck && fetchIfMissing && id !== undefined && id > 0) {
       dispatch(fetchPrivateDeck(id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (!thePreviousDeck && theDeck?.previous_deck && fetchIfMissing && !theDeck.local) {
-      dispatch(fetchPrivateDeck(id));
+      dispatch(fetchPrivateDeck(theDeck.previous_deck));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theDeck]);
   return [theDeck, thePreviousDeck];
 }
 
-export function useParsedDeck(
-  deck: Deck,
-  {
-    previousDeck,
-    meta,
-    slots,
-    ignoreDeckLimitSlots,
-    xpAdjustment,
-  }: {
-    previousDeck?: Deck;
-    meta?: DeckMeta;
-    slots?: Slots;
-    ignoreDeckLimitSlots?: Slots;
-    xpAdjustment?: number;
-  }
-): ParsedDeck | undefined {
-  const cards = usePlayerCards(deck.taboo_id || 0);
-  const parsedDeck = useMemo(() => cards && parseDeck(
+interface ParsedDeckResults {
+  deck?: Deck;
+  cards?: CardsMap;
+  previousDeck?: Deck;
+  deckEdits?: EditDeckState;
+  tabooSetId: number;
+  deckEditsRef: MutableRefObject<EditDeckState | undefined>;
+  visible: boolean;
+  parsedDeck?: ParsedDeck;
+}
+export function useParsedDeck(id: number, componentId: string, fetchIfMissing?: boolean): ParsedDeckResults {
+  const [deck, previousDeck] = useDeck(id, { fetchIfMissing });
+  const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing);
+  const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
+  const cards = usePlayerCards(tabooSetId);
+  const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>();
+  const visible = useComponentVisible(componentId);
+  useEffect(() => {
+    if (cards && visible && deckEdits && deck) {
+      setParsedDeck(
+        parseDeck(
+          deck,
+          deckEdits.meta,
+          deckEdits.slots,
+          deckEdits.ignoreDeckLimitSlots,
+          cards,
+          previousDeck,
+          deckEdits.xpAdjustment
+        )
+      );
+    }
+  }, [cards, deck, deckEdits, visible, previousDeck]);
+  return {
     deck,
-    meta || deck.meta || {},
-    slots || deck.slots,
-    ignoreDeckLimitSlots || deck.ignoreDeckLimitSlots,
     cards,
     previousDeck,
-    xpAdjustment !== undefined ? xpAdjustment : deck.xp_adjustment,
-  ), [cards, deck, meta, slots, ignoreDeckLimitSlots, previousDeck, xpAdjustment]);
-  return parsedDeck;
+    tabooSetId,
+    deckEdits,
+    deckEditsRef,
+    visible,
+    parsedDeck,
+  };
 }
 
 export function useEffectUpdate(update: () => void, deps: any[]) {

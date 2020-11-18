@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useReducer, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useReducer } from 'react';
 import { filter, map } from 'lodash';
 import {
   StyleSheet,
@@ -62,7 +62,7 @@ export default function NotesSection(props: Props) {
     if (notes !== currentNotes) {
       notesChanged(index, currentNotes);
     }
-  }, [notesChanged, index, currentNotes]);
+  }, [notesChanged, index, notes, currentNotes]);
 
   const updateNote = useCallback((note: string, index: number) => {
     updateCurrentNotes({ type: 'update', index, note });

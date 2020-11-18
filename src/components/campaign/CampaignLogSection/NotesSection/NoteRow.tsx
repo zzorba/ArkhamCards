@@ -5,8 +5,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
 import { t } from 'ttag';
+
 import TextBoxButton from '@components/core/TextBoxButton';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 
@@ -14,7 +14,7 @@ interface Props {
   title: string;
   index: number;
   note: string;
-  updateNote: (note: string, index: number, ) => void;
+  updateNote: (note: string, index: number) => void;
   appendNote?: (note: string) => void;
   showDialog: ShowTextEditDialog;
 }

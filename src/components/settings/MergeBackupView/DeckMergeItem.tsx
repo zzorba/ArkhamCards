@@ -9,7 +9,7 @@ interface Props {
   value: boolean;
   inverted: boolean;
   onValueChange: (deck: Deck, value: boolean) => void;
-  investigators: CardsMap;
+  investigators?: CardsMap;
   scenarioCount: number;
 }
 
@@ -19,7 +19,7 @@ export default function DeckMergeItem({ deck, value, inverted, onValueChange, in
   }, [deck, inverted, onValueChange]);
 
   const description = useMemo(() => {
-    const investigator = investigators[deck.investigator_code];
+    const investigator = investigators && investigators[deck.investigator_code];
     if (!investigator) {
       return undefined;
     }

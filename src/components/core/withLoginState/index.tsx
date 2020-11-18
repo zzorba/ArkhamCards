@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 
 import LoginStateComponent from './LoginStateComponent';
@@ -21,27 +21,17 @@ export default function withLoginState<P>(
   options?: Options
 ) {
   function LoginStateWrapper(props: P) {
-    const renderWrappedComponent = useCallback((
-      login: () => void,
-      signedIn: boolean,
-      signInError?: string,
-    ) => {
-      return (
-        <WrappedComponent
-          {...props}
-          login={login}
-          signedIn={signedIn}
-          signInError={signInError}
-        />
-      );
-    }, [props]);
-
     return (
-      <LoginStateComponent
-        noWrapper={!!(options && options.noWrapper)}
-        render={renderWrappedComponent}
-        otherProps={props}
-      />
+      <LoginStateComponent noWrapper={!!(options && options.noWrapper)}>
+        { (login: () => void, signedIn: boolean, signInError?: string) => (
+          <WrappedComponent
+            {...props}
+            login={login}
+            signedIn={signedIn}
+            signInError={signInError}
+          />
+        ) }
+      </LoginStateComponent>
     );
   }
 

@@ -297,6 +297,19 @@ export default class Card {
   @Column('integer', { nullable: true })
   public sanity?: number;
 
+  @Column('text', { select: false })
+  public s_search_name!: string;
+  @Column('text', { select: false })
+  public s_search_name_back!: string;
+  @Column('text', { select: false })
+  public s_search_game?: string;
+  @Column('text', { select: false })
+  public s_search_game_back?: string;
+  @Column('text', { select: false })
+  public s_search_flavor?: string;
+  @Column('text', { select: false })
+  public s_search_flavor_back?: string;
+
   @Index('deck_limit')
   @Column('integer', { nullable: true })
   public deck_limit?: number;
@@ -441,6 +454,12 @@ export default class Card {
     'c.sort_by_encounter_set_header',
     'c.sort_by_pack',
     'c.browse_visible',
+    'c.s_search_name',
+    'c.s_search_name_back',
+    'c.s_search_game',
+    'c.s_search_game_back',
+    'c.s_search_flavor',
+    'c.s_search_flavor_back',
   ];
 
   public cardName(): string {
@@ -895,11 +914,33 @@ export default class Card {
       json.code === '98016' || // Dexter
       json.code === '99001'; // PROMO Marie
 
+    const s_search_name = filter([
+      renderName && renderName.toLocaleLowerCase(lang),
+      renderSubname && renderSubname.toLocaleLowerCase(lang),
+    ], x => !!x).join(' ');
+    const s_search_name_back = filter([
+      name && name.toLocaleLowerCase(lang),
+      json.subname && json.subname.toLocaleLowerCase(lang),
+      json.back_name && json.back_name.toLocaleLowerCase(lang),
+    ], x => !!x).join(' ');
+    const s_search_game = filter([
+      json.text && json.text.toLocaleLowerCase(lang),
+      json.traits && json.traits.toLocaleLowerCase(lang),
+    ]).join(' ');
+    const s_search_game_back = (json.back_text && json.back_text.toLocaleLowerCase(lang)) || '';
+    const s_search_flavor = (json.flavor && json.flavor.toLocaleLowerCase(lang)) || '';
+    const s_search_flavor_back = (json.back_flavor && json.back_flavor.toLocaleLowerCase(lang)) || '';
     let result = {
       ...json,
       ...eskills,
       id: json.code,
       tabooSetId: null,
+      s_search_name,
+      s_search_name_back,
+      s_search_game,
+      s_search_game_back,
+      s_search_flavor,
+      s_search_flavor_back,
       name,
       firstName,
       renderName,
@@ -958,7 +999,9 @@ export default class Card {
       };
     }
     result.browse_visible = 0;
-    if ((!result.altArtInvestigator && !result.back_linked && !result.hidden)) {
+    if (result.code === RANDOM_BASIC_WEAKNESS) {
+      result.browse_visible += 3;
+    } else if ((!result.altArtInvestigator && !result.back_linked && !result.hidden)) {
       if (result.encounter_code) {
         // It's an encounter card.
         result.browse_visible += 2;

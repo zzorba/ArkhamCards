@@ -172,6 +172,7 @@ export interface BranchStep {
   title?: string;
   condition: Condition;
   bullet_type?: BulletType;
+  narration?: Narration;
 }
 export interface MultiCondition {
   type: "multi";
@@ -494,6 +495,10 @@ export interface CampaignLogCardsCondition {
   id: string;
   options: BoolOption[];
 }
+export interface Narration {
+  id: string;
+  name: string;
+}
 export interface EffectsStep {
   id: string;
   type: "effects";
@@ -502,6 +507,7 @@ export interface EffectsStep {
   effectsWithInput: EffectsWithInput[];
   stepText: boolean;
   bullet_type?: BulletType;
+  narration?: Narration;
 }
 export interface EffectsWithInput {
   border?: boolean;
@@ -516,6 +522,7 @@ export interface InputStep {
   text?: string;
   input: Input;
   bullet_type?: BulletType;
+  narration?: Narration;
 }
 export interface UpgradeDecksInput {
   type: "upgrade_decks";
@@ -693,6 +700,7 @@ export interface EncounterSetsStep {
   aside?: boolean;
   encounter_sets: string[];
   bullet_type?: BulletType;
+  narration?: Narration;
 }
 export interface GenericStep {
   id: string;
@@ -706,6 +714,7 @@ export interface GenericStep {
     text: string;
   }[];
   bullet_type?: BulletType;
+  narration?: Narration;
 }
 export interface ResolutionStep {
   id: string;
@@ -716,6 +725,7 @@ export interface ResolutionStep {
   generated?: boolean;
   effects?: ScenarioDataStatusEffect[];
   bullet_type?: null;
+  narration?: Narration;
 }
 export interface RuleReminderStep {
   id: string;
@@ -727,6 +737,7 @@ export interface RuleReminderStep {
   }[];
   example?: string;
   bullet_type?: null;
+  narration?: Narration;
 }
 export interface StoryStep {
   id: string;
@@ -738,6 +749,7 @@ export interface StoryStep {
     text: string;
   }[];
   bullet_type?: null;
+  narration?: Narration;
 }
 export interface LocationSetupStep {
   id: string;
@@ -758,6 +770,7 @@ export interface LocationSetupStep {
     name: string;
   }[];
   bullet_type?: null;
+  narration?: Narration;
 }
 export interface LocationConnectorsStep {
   id: string;
@@ -767,6 +780,7 @@ export interface LocationConnectorsStep {
   subtext: string;
   location_connectors: LocationConnector[];
   bullet_type?: BulletType;
+  narration?: Narration;
 }
 export interface TableStep {
   id: string;
@@ -776,6 +790,7 @@ export interface TableStep {
   header: TableRow;
   rows: TableRow[];
   bullet_type?: BulletType;
+  narration?: Narration;
 }
 export interface TableRow {
   cells: TableCell[];
@@ -795,6 +810,7 @@ export interface CampaignLogCountStep {
   bullet_type?: null;
   title?: string;
   text?: null;
+  narration?: Narration;
 }
 export interface XpCountStep {
   id: string;
@@ -803,6 +819,7 @@ export interface XpCountStep {
   title?: string;
   special_xp: SpecialXp;
   text?: null;
+  narration?: Narration;
 }
 export interface InternalStep {
   id: string;
@@ -811,6 +828,7 @@ export interface InternalStep {
   hidden?: boolean;
   bullet_type?: null;
   title?: null;
+  narration?: Narration;
 }
 export interface Scenario {
   id: string;
@@ -837,6 +855,7 @@ export interface Resolution {
   text?: string;
   investigator_status?: InvestigatorStatus[];
   steps: string[];
+  narration?: Narration;
 }
 export interface Log {
   campaignName: string;

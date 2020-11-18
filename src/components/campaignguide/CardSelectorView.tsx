@@ -6,7 +6,6 @@ import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import BasicButton from '@components/core/BasicButton';
-import CardQueryWrapper from '@components/card/CardQueryWrapper';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import CardToggleRow from '@components/cardlist/CardSelectorComponent/CardToggleRow';
 import { NavigationProps } from '@components/nav/types';
@@ -16,6 +15,7 @@ import { combineQueries, MYTHOS_CARDS_QUERY, where } from '@data/query';
 import space from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
 
 export interface CardSelectorProps {
   query?: Brackets;
@@ -85,6 +85,7 @@ export default function CardSelectorView({ query, selection: initialSelection, o
     );
   }, [query]);
 
+  const [storyCards, storyCardsLoading] = useCardsFromQuery({ query: storyQuery });
   const storyCardsSection = useMemo(() => {
     if (!includeStoryToggle) {
       return null;
@@ -102,12 +103,10 @@ export default function CardSelectorView({ query, selection: initialSelection, o
         <CardSectionHeader
           section={{ title: t`Story assets` }}
         />
-        <CardQueryWrapper name="other-selector" query={storyQuery}>
-          { renderCards }
-        </CardQueryWrapper>
+        { renderCards(storyCards, storyCardsLoading) }
       </>
     );
-  }, [renderCards, storyQuery, storyToggle, includeStoryToggle, toggleStoryCards]);
+  }, [renderCards, storyCards, storyCardsLoading, storyToggle, includeStoryToggle, toggleStoryCards]);
 
   const normalCardsQuery = useMemo(() => {
     return combineQueries(
@@ -117,6 +116,7 @@ export default function CardSelectorView({ query, selection: initialSelection, o
     );
   }, [query]);
 
+  const [normalCards, normalCardsLoading] = useCardsFromQuery({ query: normalCardsQuery });
   return (
     <CollapsibleSearchBox
       searchTerm={searchTerm}
@@ -130,9 +130,7 @@ export default function CardSelectorView({ query, selection: initialSelection, o
           contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
         >
           { Platform.OS === 'android' && <View style={styles.searchBarPadding} /> }
-          <CardQueryWrapper name="normal-selector" query={normalCardsQuery}>
-            { renderCards }
-          </CardQueryWrapper>
+          { renderCards(normalCards, normalCardsLoading) }
           { storyCardsSection }
         </ScrollView>
       ) }

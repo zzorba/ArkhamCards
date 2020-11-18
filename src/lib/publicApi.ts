@@ -126,7 +126,7 @@ export const syncTaboos = async function(
 };
 
 async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<any>, maxInsert?: number) {
-  const chunkThings = chunk(things, Platform.OS === 'ios' ? 50 : maxInsert || 10);
+  const chunkThings = chunk(things, Platform.OS === 'ios' ? 50 : maxInsert || 8);
   await Promise.all(map(chunkThings, async toInsert => await insert(toInsert)));
 }
 
@@ -134,6 +134,10 @@ function rulesJson(lang?: string) {
   switch (lang) {
     case 'es':
       return require('../../assets/rules_es.json');
+    case 'ru':
+      return require('../../assets/rules_ru.json');
+    case 'de':
+      return require('../../assets/rules_de.json');
     case 'en':
     default:
       return require('../../assets/rules.json');

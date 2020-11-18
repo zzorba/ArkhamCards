@@ -10,3 +10,15 @@ index 398a9b4..5928c9a 100644
      };
      _activeItem: number;
      _onScrollActiveItem: number;
+diff --git a/node_modules/react-native-snap-carousel/src/carousel/types.ts b/node_modules/react-native-snap-carousel/src/carousel/types.ts
+index 46c1e5e..fa4fb02 100644
+--- a/node_modules/react-native-snap-carousel/src/carousel/types.ts
++++ b/node_modules/react-native-snap-carousel/src/carousel/types.ts
+@@ -21,6 +21,7 @@ type CarouselBaseProps<TData> = {
+   callbackOffsetMargin: number;
+   containerCustomStyle: StyleProp<ViewStyle>;
+   contentContainerCustomStyle: StyleProp<ViewStyle>;
++  disableIntervalMomentum?: boolean;
+   enableSnap: boolean;
+   firstItem: number;
+   inactiveSlideOpacity: number;

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Alert, AppState, InteractionManager, Text, StyleSheet, View, AppStateStatus } from 'react-native';
-import { Navigation, EventSubscription } from 'react-native-navigation';
-import { find, findLast, flatMap, forEach, map, partition } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { Alert, InteractionManager, Text, StyleSheet, View } from 'react-native';
+import { find, findLast, flatMap, forEach, map, mapValues, partition } from 'lodash';
 import { isAfter } from 'date-fns';
+import { useAppState } from '@react-native-community/hooks';
 import { t } from 'ttag';
 
 import { Campaign, InvestigatorData, Trauma } from '@actions/types';
@@ -13,6 +13,8 @@ import CampaignGuideContext, { CampaignGuideContextType } from '@components/camp
 import Card from '@data/Card';
 import { s, l } from '@styles/space';
 import COLORS from '@styles/colors';
+import { useComponentDidDisappear, useCounters, useEffectUpdate, useFlag } from '@components/core/hooks';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -27,94 +29,49 @@ interface Props {
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
 }
 
-interface State {
-  spentXp: {
-    [code: string]: number;
-  };
-  removeMode: boolean;
-  appState: AppStateStatus;
-  xpDirty: boolean;
+function getDate(date: string | Date) {
+  if (typeof date === 'string') {
+    return new Date(Date.parse(date));
+  }
+  return date;
 }
 
-export default class CampaignInvestigatorsComponent extends React.Component<Props, State> {
-  _navEventListener: EventSubscription;
+export default function CampaignInvestigatorsComponent(props: Props) {
+  const { componentId, campaignData, processedCampaign, updateCampaign, deleteCampaign, showTraumaDialog } = props;
+  const { campaignState, latestDecks, campaignInvestigators, campaignId, playerCards } = useContext(CampaignGuideContext);
+  const { borderStyle, typography } = useContext(StyleContext);
 
-  static contextType = CampaignGuideContext;
-  context!: CampaignGuideContextType;
-
-  constructor(props: Props) {
-    super(props);
-    const spentXp: {
-      [code: string]: number;
-    } = {};
-    forEach(props.campaignData.adjustedInvestigatorData, (data, code) => {
-      spentXp[code] = (data && data.spentXp) || 0;
-    });
-
-    this.state = {
-      spentXp,
-      removeMode: false,
-      xpDirty: false,
-      appState: AppState.currentState,
-    };
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  _handleAppStateChange = (nextAppState: AppStateStatus) => {
-    const { appState } = this.state;
-    if (appState === 'active' && (nextAppState === 'inactive' || nextAppState === 'background')) {
-      this._syncCampaignData();
-    }
-    this.setState({
-      appState: nextAppState,
-    });
-  };
-
-  componentDidMount() {
-    AppState.addEventListener('change', this._handleAppStateChange);
-  }
-
-  componentWillUnmount() {
-    AppState.removeEventListener('change', this._handleAppStateChange);
-
-    this._navEventListener && this._navEventListener.remove();
-    InteractionManager.runAfterInteractions(this._syncCampaignData);
-  }
-
-  componentDidDisappear() {
-    if (this.state.xpDirty) {
-      this._syncCampaignData();
-    }
-  }
-
-  _syncCampaignData = () => {
+  const [spentXp, incSpentXp, decSpentXp] = useCounters(mapValues(campaignData.adjustedInvestigatorData, data => (data && data.spentXp) || 0));
+  const [removeMode, toggleRemoveInvestigator] = useFlag(false);
+  const [xpDirty, setXpDirty] = useState(false);
+  useEffectUpdate(() => {
+    setXpDirty(true);
+  }, [spentXp, campaignState]);
+  const appState = useAppState();
+  const syncCampaignData = useCallback(() => {
     const {
-      campaignData: {
-        campaignId,
-        campaignGuideVersion,
-        campaignGuide,
-        campaignState,
-        lastUpdated,
-      },
-      processedCampaign: {
-        campaignLog,
-        scenarios,
-      },
-      updateCampaign,
-    } = this.props;
-    const { spentXp } = this.state;
+      campaignId,
+      campaignGuideVersion,
+      campaignGuide,
+      campaignState,
+      lastUpdated,
+    } = campaignData;
+    const {
+      campaignLog,
+      scenarios,
+    } = processedCampaign;
     const adjustedInvestigatorData: InvestigatorData = {};
     forEach(spentXp, (xp, code) => {
       adjustedInvestigatorData[code] = {
         spentXp: xp,
       };
     });
-    const hasXpDifference = !!find(spentXp, (xp, code) => {
-      const adjust = this.props.campaignData.adjustedInvestigatorData[code];
+    const hasXpDifference = xpDirty || !!find(spentXp, (xp, code) => {
+      const adjust = campaignData.adjustedInvestigatorData[code];
       return !adjust || adjust.spentXp !== xp;
     });
-    const guideLastUpdated = campaignState.lastUpdated();
-    const newLastUpdated = isAfter(lastUpdated, guideLastUpdated) ? lastUpdated : guideLastUpdated;
+    const guideLastUpdated = getDate(campaignState.lastUpdated());
+    const newLastUpdated = isAfter(getDate(lastUpdated), guideLastUpdated) ? lastUpdated : guideLastUpdated;
     updateCampaign(
       campaignId,
       {
@@ -138,60 +95,28 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       },
       hasXpDifference ? new Date() : newLastUpdated
     );
-  };
+  }, [campaignData, processedCampaign, spentXp, updateCampaign, xpDirty]);
 
-  _addInvestigator = () => {
-    this.context.campaignState.showChooseDeck();
-  };
-
-  _toggleRemoveInvestigator = () => {
-    this.setState(state => {
-      return {
-        removeMode: !state.removeMode,
-      };
-    });
-  };
-
-  _showChooseDeckForInvestigator = (investigator: Card) =>{
-    this.context.campaignState.showChooseDeck(investigator);
-  };
-
-  _incXp = (code: string) => {
-    this.setState({
-      spentXp: {
-        ...this.state.spentXp,
-        [code]: (this.state.spentXp[code] || 0) + 1,
-      },
-      xpDirty: true,
-    });
-  };
-
-  _decXp = (code: string) => {
-    this.setState({
-      spentXp: {
-        ...this.state.spentXp,
-        [code]: Math.max(0, (this.state.spentXp[code] || 0) - 1),
-      },
-      xpDirty: true,
-    });
-  };
-
-  renderRemoveButton(aliveInvestigators: Card[]) {
-    if (!aliveInvestigators.length) {
-      return null;
+  useEffect(() => {
+    if (appState === 'inactive' || appState === 'background') {
+      syncCampaignData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appState]);
 
-    return (
-      <BasicButton
-        title={t`Remove investigators`}
-        color={COLORS.red}
-        onPress={this._toggleRemoveInvestigator}
-      />
-    );
-  }
+  useComponentDidDisappear(() => {
+    if (xpDirty) {
+      syncCampaignData();
+    }
+  }, componentId, [syncCampaignData]);
 
-  _removeInvestigatorPressed = (investigator: Card) => {
-    const { latestDecks, campaignState } = this.context;
+  const addInvestigatorPressed = useCallback(() => {
+    campaignState.showChooseDeck();
+  }, [campaignState]);
+  const showChooseDeckForInvestigator = useCallback((investigator: Card) =>{
+    campaignState.showChooseDeck(investigator);
+  }, [campaignState]);
+  const removeInvestigatorPressed = useCallback((investigator: Card) => {
     const deck = latestDecks[investigator.code];
     if (deck) {
       Alert.alert(
@@ -209,12 +134,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
         ]
       );
     } else {
-      const {
-        processedCampaign: {
-          campaignLog,
-        },
-      } = this.props;
-      if (campaignLog.hasInvestigatorPlayedScenario(investigator)) {
+      if (processedCampaign.campaignLog.hasInvestigatorPlayedScenario(investigator)) {
         Alert.alert(
           t`Cannot remove`,
           t`Since this investigator has participated in one or more scenarios during this campaign, they cannot be removed.\n\nHowever, you can choose to have them not participate in future scenarios of this campaign.`,
@@ -226,147 +146,123 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
         campaignState.removeInvestigator(investigator);
       }
     }
-  };
+  }, [latestDecks, processedCampaign.campaignLog, campaignState]);
 
-  canEditTrauma() {
-    const {
-      processedCampaign,
-    } = this.props;
+  const canEditTrauma = useMemo(() => {
     return !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&
       !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed');
-  }
+  }, [processedCampaign]);
 
-  _updateTraumaData = (code: string, trauma: Trauma) => {
-    const { processedCampaign } = this.props;
+  const [killedInvestigators, aliveInvestigators] = useMemo(() => partition(
+    campaignInvestigators,
+    investigator => processedCampaign.campaignLog.isEliminated(investigator)
+  ), [processedCampaign.campaignLog, campaignInvestigators]);
+
+  const removeButton = useMemo(() => {
+    if (!aliveInvestigators.length) {
+      return null;
+    }
+
+    return (
+      <BasicButton
+        title={t`Remove investigators`}
+        color={COLORS.red}
+        onPress={toggleRemoveInvestigator}
+      />
+    );
+  }, [toggleRemoveInvestigator, aliveInvestigators]);
+
+  const updateTraumaData = useCallback((code: string, trauma: Trauma) => {
     const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed');
     InteractionManager.runAfterInteractions(() => {
-      this.context.campaignState.setInterScenarioInvestigatorData(
+      campaignState.setInterScenarioInvestigatorData(
         code,
         trauma,
         latestScenario ? latestScenario?.id.encodedScenarioId : undefined
       );
     });
-  };
+  }, [processedCampaign, campaignState]);
 
-  _showTraumaDialog = (investigator: Card, traumaData: Trauma) => {
-    const { showTraumaDialog } = this.props;
-    showTraumaDialog(
-      investigator,
-      traumaData,
-      this._updateTraumaData
-    );
-  };
+  const showTraumaPressed = useCallback((investigator: Card, traumaData: Trauma) => {
+    showTraumaDialog(investigator, traumaData, updateTraumaData);
+  }, [showTraumaDialog, updateTraumaData]);
 
-  _disabledShowTraumaDialog = () => {
-    const {
-      processedCampaign,
-    } = this.props;
+  const disabledShowTraumaPressed = useCallback(() => {
     const campaignSetupCompleted = !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed');
-
     Alert.alert(
       t`Investigator trauma`,
       campaignSetupCompleted ?
         t`You can only edit trauma here between scenarios.\n\nDuring scenario play it can be edited using the scenario guide.` :
         t`Starting trauma can be adjusted after 'Campaign Setup' has been completed.`
     );
-  };
+  }, [processedCampaign.scenarios]);
 
-  render() {
-    const {
-      processedCampaign: {
-        campaignLog,
-      },
-      campaignData: {
-        playerCards,
-      },
-      componentId,
-      deleteCampaign,
-    } = this.props;
-    const {
-      removeMode,
-      spentXp,
-    } = this.state;
-    const {
-      style: { borderStyle, typography },
-    } = this.context;
-    const canEditTrauma = this.canEditTrauma();
-    return (
-      <CampaignGuideContext.Consumer>
-        { ({ campaignInvestigators, campaignId, latestDecks }: CampaignGuideContextType) => {
-          const [killedInvestigators, aliveInvestigators] = partition(
-            campaignInvestigators,
-            investigator => campaignLog.isEliminated(investigator)
-          );
-          return (
-            <>
-              { map(aliveInvestigators, investigator => (
-                <InvestigatorCampaignRow
-                  key={investigator.code}
-                  campaignId={campaignId}
-                  playerCards={playerCards}
-                  spentXp={spentXp[investigator.code] || 0}
-                  totalXp={campaignLog.totalXp(investigator.code)}
-                  incSpentXp={this._incXp}
-                  decSpentXp={this._decXp}
-                  deck={latestDecks[investigator.code]}
-                  componentId={componentId}
-                  investigator={investigator}
-                  traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
-                  chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
-                  removeInvestigator={removeMode ? this._removeInvestigatorPressed : undefined}
-                  showTraumaDialog={canEditTrauma ? this._showTraumaDialog : this._disabledShowTraumaDialog}
-                />
-              )) }
-              { !removeMode && (
-                <BasicButton
-                  title={t`Add Investigator`}
-                  onPress={this._addInvestigator}
-                />
-              ) }
-              { removeMode ?
-                <BasicButton
-                  title={t`Finished removing investigators`}
-                  color={COLORS.red}
-                  onPress={this._toggleRemoveInvestigator}
-                /> : this.renderRemoveButton(aliveInvestigators)
-              }
-              { killedInvestigators.length > 0 && (
-                <View style={styles.header}>
-                  <Text style={[typography.bigGameFont, typography.center, typography.underline]}>
-                    { t`Killed and Insane Investigators` }
-                  </Text>
-                </View>
-              ) }
-              <View style={[styles.bottomBorder, borderStyle]}>
-                { map(killedInvestigators, investigator => (
-                  <InvestigatorCampaignRow
-                    key={investigator.code}
-                    playerCards={playerCards}
-                    spentXp={spentXp[investigator.code] || 0}
-                    totalXp={campaignLog.totalXp(investigator.code)}
-                    incSpentXp={this._incXp}
-                    decSpentXp={this._decXp}
-                    campaignId={campaignId}
-                    deck={latestDecks[investigator.code]}
-                    componentId={componentId}
-                    investigator={investigator}
-                    traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
-                  />
-                )) }
-              </View>
-              { !!deleteCampaign && !removeMode && (
-                <BasicButton
-                  title={t`Delete Campaign`}
-                  color={COLORS.red}
-                  onPress={deleteCampaign}
-                />
-              ) }
-            </>
-          );
-        } }
-      </CampaignGuideContext.Consumer>
-    );
-  }
+  return (
+    <>
+      { map(aliveInvestigators, investigator => (
+        <InvestigatorCampaignRow
+          key={investigator.code}
+          campaignId={campaignId}
+          playerCards={playerCards}
+          spentXp={spentXp[investigator.code] || 0}
+          totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
+          incSpentXp={incSpentXp}
+          decSpentXp={decSpentXp}
+          deck={latestDecks[investigator.code]}
+          componentId={componentId}
+          investigator={investigator}
+          traumaAndCardData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
+          chooseDeckForInvestigator={showChooseDeckForInvestigator}
+          removeInvestigator={removeMode ? removeInvestigatorPressed : undefined}
+          showTraumaDialog={canEditTrauma ? showTraumaPressed : disabledShowTraumaPressed}
+        />
+      )) }
+      { !removeMode && (
+        <BasicButton
+          title={t`Add Investigator`}
+          onPress={addInvestigatorPressed}
+        />
+      ) }
+      { removeMode ?
+        <BasicButton
+          title={t`Finished removing investigators`}
+          color={COLORS.red}
+          onPress={toggleRemoveInvestigator}
+        /> : removeButton
+      }
+      { killedInvestigators.length > 0 && (
+        <View style={styles.header}>
+          <Text style={[typography.bigGameFont, typography.center, typography.underline]}>
+            { t`Killed and Insane Investigators` }
+          </Text>
+        </View>
+      ) }
+      <View style={[styles.bottomBorder, borderStyle]}>
+        { map(killedInvestigators, investigator => (
+          <InvestigatorCampaignRow
+            key={investigator.code}
+            playerCards={playerCards}
+            spentXp={spentXp[investigator.code] || 0}
+            totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
+            incSpentXp={incSpentXp}
+            decSpentXp={decSpentXp}
+            campaignId={campaignId}
+            deck={latestDecks[investigator.code]}
+            componentId={componentId}
+            investigator={investigator}
+            traumaAndCardData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
+          />
+        )) }
+      </View>
+      { !!deleteCampaign && !removeMode && (
+        <BasicButton
+          title={t`Delete Campaign`}
+          color={COLORS.red}
+          onPress={deleteCampaign}
+        />
+      ) }
+    </>
+  );
 }
 
 const styles = StyleSheet.create({

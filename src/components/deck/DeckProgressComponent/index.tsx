@@ -6,15 +6,15 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import ArkhamButton from '@components/core/ArkhamButton';
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '@components/campaign/CampaignSummaryComponent';
-import CardSectionHeader from '@components/core/CardSectionHeader';
-import { Campaign, Deck, ParsedDeck, Slots, Trauma } from '@actions/types';
+import { Campaign, Deck, ParsedDeck, Trauma } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import space, { l, m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import DeckSectionBlock from '../section/DeckSectionBlock';
 
 interface Props {
   componentId: string;
@@ -32,14 +32,7 @@ interface Props {
   investigatorDataUpdates?: any;
   showDeckUpgrade?: () => void;
   tabooSetId?: number;
-  renderFooter?: (slots?: Slots) => React.ReactNode;
-  onDeckCountChange?: (code: string, count: number) => void;
   singleCardView?: boolean;
-}
-
-interface ReduxActionProps {
-  fetchPrivateDeck: (deckId: number) => void;
-  fetchPublicDeck: (deckId: number, useDeckEndpoint: boolean) => void;
 }
 
 export default function DeckProgressComponent({
@@ -57,8 +50,6 @@ export default function DeckProgressComponent({
   investigatorDataUpdates,
   showDeckUpgrade,
   tabooSetId,
-  renderFooter,
-  onDeckCountChange,
   singleCardView,
 }: Props) {
   const { typography } = useContext(StyleContext);
@@ -72,24 +63,36 @@ export default function DeckProgressComponent({
     };
   }, [campaign, investigatorDataUpdates]);
   const { investigator } = parsedDeck;
+  const footerButton = useMemo(() => {
+    if (!showDeckUpgrade) {
+      return undefined;
+    }
+    return (
+      <RoundedFooterButton
+        title={t`Upgrade Deck with XP`}
+        icon="up"
+        onPress={showDeckUpgrade}
+      />
+    );
+  }, [showDeckUpgrade]);
   const campaignSection = useMemo(() => {
     if (!editable) {
       return null;
     }
     return (
-      <React.Fragment>
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Campaign` }}
-        />
+      <DeckSectionBlock
+        title={t`Campaign`}
+        faction={investigator.factionCode()}
+        footerButton={footerButton}
+      >
         { !!campaign && !hideCampaign && (
           <View style={styles.campaign}>
-            <Text style={[typography.text, space.marginBottomS]}>
-              { campaign.name }
-            </Text>
             <View style={space.marginBottomM}>
               <CampaignSummaryComponent campaign={campaign} hideScenario />
             </View>
+            <Text style={[typography.text, space.marginBottomS]}>
+              { campaign.name }
+            </Text>
             { !!showTraumaDialog && !campaign.guided && (
               <EditTraumaComponent
                 investigator={investigator}
@@ -99,24 +102,17 @@ export default function DeckProgressComponent({
             ) }
           </View>
         ) }
-        { !!showDeckUpgrade && (
-          <ArkhamButton
-            icon="up"
-            title={t`Upgrade Deck with XP`}
-            onPress={showDeckUpgrade}
-          />
-        ) }
-      </React.Fragment>
+      </DeckSectionBlock>
     );
   }, [
     campaign,
+    editable,
+    hideCampaign,
     investigatorData,
     investigator,
     showTraumaDialog,
-    showDeckUpgrade,
-    editable,
-    hideCampaign,
     typography,
+    footerButton,
   ]);
 
   if (!deck.previous_deck && !deck.next_deck && !campaign && !editable && !title) {
@@ -133,19 +129,17 @@ export default function DeckProgressComponent({
         cards={cards}
         parsedDeck={parsedDeck}
         tabooSetId={tabooSetId}
-        renderFooter={renderFooter}
-        onDeckCountChange={onDeckCountChange}
         singleCardView={singleCardView}
         editable={editable}
         onTitlePress={onTitlePress}
+        footerButton={!!editable && !!deck.previous_deck && !!showDeckHistory && (
+          <RoundedFooterButton
+            icon="deck"
+            title={t`Upgrade History`}
+            onPress={showDeckHistory}
+          />
+        ) }
       />
-      { !!editable && !!deck.previous_deck && !!showDeckHistory && (
-        <ArkhamButton
-          icon="deck"
-          title={t`Upgrade History`}
-          onPress={showDeckHistory}
-        />
-      ) }
     </View>
   );
 }
