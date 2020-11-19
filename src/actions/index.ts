@@ -20,7 +20,7 @@ import {
 } from './types';
 import { AppState } from '@reducers';
 
-import { getAccessToken, signInFlow, signOutFlow } from '@lib/dissonantVoices';
+import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 import * as dissonantVoices from '@lib/dissonantVoices';
 // @ts-ignore
 import { decks } from '@lib/authApi';
