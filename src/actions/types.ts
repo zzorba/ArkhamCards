@@ -1044,3 +1044,30 @@ export type GuideActions =
   GuideSetInputAction |
   GuideUndoInputAction |
   GuideResetScenarioAction;
+
+export const DISSONANT_VOICES_LOGIN_STARTED = 'DISSONANT_VOICES_LOGIN_STARTED';
+interface DissonantVoicesLoginStartedAction {
+  type: typeof DISSONANT_VOICES_LOGIN_STARTED;
+}
+
+export const DISSONANT_VOICES_LOGIN = 'DISSONANT_VOICES_LOGIN';
+interface DissonantVoicesLoginAction {
+  type: typeof DISSONANT_VOICES_LOGIN;
+}
+
+export const DISSONANT_VOICES_LOGIN_ERROR = 'DISSONANT_VOICES_LOGIN_ERROR';
+interface DissonantVoicesLoginErrorAction {
+  type: typeof DISSONANT_VOICES_LOGIN_ERROR;
+  error: Error | string;
+}
+
+export const DISSONANT_VOICES_LOGOUT = 'DISSONANT_VOICES_LOGOUT';
+interface DissonantVoicesLogoutAction {
+  type: typeof DISSONANT_VOICES_LOGOUT;
+}
+
+export type DissonantVoicesActions =
+  DissonantVoicesLoginAction |
+  DissonantVoicesLoginStartedAction |
+  DissonantVoicesLoginErrorAction |
+  DissonantVoicesLogoutAction;

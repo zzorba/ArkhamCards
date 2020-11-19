@@ -23,6 +23,7 @@ import DatabaseContext from '@data/DatabaseContext';
 import { AppState, getLangPreference, getLangChoice } from '@reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
+import DissonantVoicesLoginButton from './DissonantVoicesLoginButton';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
 
@@ -143,6 +144,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
       <ScrollView style={[styles.list, { backgroundColor: colors.L20 }]}>
         <CardSectionHeader section={{ title: t`Account` }} />
         <LoginButton settings />
+        <DissonantVoicesLoginButton settings />
         <SettingsItem
           navigation
           onPress={backupPressed}

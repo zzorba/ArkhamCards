@@ -17,6 +17,7 @@ import { ScenarioGuideContextType } from './ScenarioGuideContext';
 import StepsComponent from './StepsComponent';
 import { CampaignLogProps } from './CampaignLogView';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
+import { hasDissonantVoices } from '@reducers';
 import { iconsMap } from '@app/NavIcons';
 import BasicButton from '@components/core/BasicButton';
 import { NavigationProps } from '@components/nav/types';
@@ -24,6 +25,8 @@ import COLORS from '@styles/colors';
 import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
+import NarratorView, { NarrationTrack, queueNarration } from '@components/campaignguide/Narrator';
+import { useSelector } from 'react-redux';
 
 interface OwnProps {
   showLinkedScenario?: (
@@ -122,6 +125,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
     }
   }, [componentId, scenarioId, processedScenario.closeOnUndo, campaignState]);
 
+
   useNavigationButtonPressed(({ buttonId }) => {
     switch (buttonId) {
       case 'reset': {
@@ -160,6 +164,44 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
     });
   }, [componentId, campaignId, processedScenario.id]);
 
+  const hasDS = useSelector(hasDissonantVoices);
+  useEffect(() => {
+    if (!hasDS) {
+      queueNarration([]);
+    }
+
+    const campaignCode = processedScenario.scenarioGuide.campaignGuide.campaignCycleCode();
+    const campaignName = processedScenario.scenarioGuide.campaignGuide.campaignName();
+    const scenarioName = processedScenario.scenarioGuide.scenarioName();
+    const queue: NarrationTrack[] = [];
+    for (const scenarioStep of processedScenario.steps) {
+      if (scenarioStep.step.type === "resolution") {
+        const narration = processedScenario.scenarioGuide.resolution(
+          scenarioStep.step.resolution
+        )?.narration;
+        if (!narration) continue;
+
+        queue.push({
+          ...narration,
+          campaignCode,
+          campaignName,
+          scenarioName,
+        });
+      } else if (scenarioStep.step.type === "story" || scenarioStep.step.type === "branch") {
+        const narration = scenarioStep.step.narration;
+        if (!narration) continue;
+
+        queue.push({
+          ...narration,
+          campaignCode,
+          campaignName,
+          scenarioName,
+        });
+      }
+    }
+    queueNarration(queue);
+  }, [processedScenario, hasDS]);
+
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
     processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
   return (
@@ -170,21 +212,22 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
       keyboardVerticalOffset={100}
     >
       <KeepAwake />
-      <ScrollView contentContainerStyle={backgroundStyle}>
-        { !!hasInterludeFaq && (
-          <BasicButton
-            title={t`Interlude FAQ`}
-            onPress={showScenarioFaq}
+      <NarratorView>
+        <ScrollView contentContainerStyle={backgroundStyle}>
+          { !!hasInterludeFaq && (
+            <BasicButton
+              title={t`Interlude FAQ`}
+              onPress={showScenarioFaq}
+            />
+          ) }
+          <StepsComponent
+            componentId={componentId}
+            width={width}
+            steps={processedScenario.steps}
+            switchCampaignScenario={switchCampaignScenario}
           />
-        ) }
-        <StepsComponent
-          componentId={componentId}
-          width={width}
-          steps={processedScenario.steps}
-          switchCampaignScenario={switchCampaignScenario}
-        />
-        <View style={styles.footer} />
-      </ScrollView>
+        </ScrollView>
+      </NarratorView>
     </KeyboardAvoidingView>
   );
 }

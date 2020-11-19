@@ -238,6 +238,8 @@ PODS:
     - React-Core
   - react-native-sqlite-storage (5.0.0):
     - React
+  - react-native-track-player (1.2.3):
+    - React
   - react-native-webview (10.10.2):
     - React-Core
   - React-RCTActionSheet (0.63.3):
@@ -371,6 +373,7 @@ DEPENDENCIES:
   - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
+  - react-native-track-player (from `../node_modules/react-native-track-player`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -463,6 +466,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-sqlite-storage:
     :path: "../node_modules/react-native-sqlite-storage"
+  react-native-track-player:
+    :path: "../node_modules/react-native-track-player"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
@@ -549,6 +554,7 @@ SPEC CHECKSUMS:
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-netinfo: 250dc0ca126512f618a8a2ca6a936577e1f66586
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
+  react-native-track-player: 28b96dd6404dea3eee80e67b74507679235a8dfb
   react-native-webview: 0aa2cde4ee7e3e1c5fffdf64dbce9c709aa18155
   React-RCTActionSheet: 53ea72699698b0b47a6421cb1c8b4ab215a774aa
   React-RCTAnimation: 1befece0b5183c22ae01b966f5583f42e69a83c2
@@ -580,4 +586,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 7c2fb16334e9e8eb87856d4d116617eef634b330
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
