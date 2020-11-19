@@ -21,6 +21,7 @@ import {
 import { AppState } from '@reducers';
 
 import { getAccessToken, signInFlow, signOutFlow } from '@lib/dissonantVoices';
+import * as dissonantVoices from '@lib/dissonantVoices';
 // @ts-ignore
 import { decks } from '@lib/authApi';
 
@@ -79,7 +80,7 @@ export function dissonantVoicesLogin(): ThunkAction<void, AppState, unknown, Act
     dispatch({
       type: DISSONANT_VOICES_LOGIN_STARTED,
     });
-    signInFlow().then(response => {
+    dissonantVoices.signInFlow().then(response => {
       if (response.success) {
         dispatch({
           type: DISSONANT_VOICES_LOGIN,
@@ -99,7 +100,7 @@ export function dissonantVoicesLogout(): ThunkAction<void, AppState, null, Actio
     dispatch({
       type: DISSONANT_VOICES_LOGIN_STARTED,
     });
-    signOutFlow().then(() => {
+    dissonantVoices.signOutFlow().then(() => {
       dispatch({
         type: DISSONANT_VOICES_LOGOUT,
       });
@@ -109,7 +110,7 @@ export function dissonantVoicesLogout(): ThunkAction<void, AppState, null, Actio
 
 export function dissonantVoicesVerifyLogin(): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
-    getAccessToken().then(accessToken => {
+    dissonantVoices.getAccessToken().then(accessToken => {
       if (accessToken) {
         dispatch({
           type: DISSONANT_VOICES_LOGIN,
