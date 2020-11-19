@@ -5,7 +5,6 @@ import {
   ScrollView,
   StyleSheet,
   useWindowDimensions,
-  View,
 } from 'react-native';
 import { last } from 'lodash';
 import { Navigation } from 'react-native-navigation';
@@ -27,6 +26,7 @@ import { useNavigationButtonPressed } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import NarratorView, { NarrationTrack, queueNarration } from '@components/campaignguide/Narrator';
 import { useSelector } from 'react-redux';
+import { SHOW_DISSONANT_VOICES } from '@app/App';
 
 interface OwnProps {
   showLinkedScenario?: (
@@ -166,8 +166,8 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
 
   const hasDS = useSelector(hasDissonantVoices);
   useEffect(() => {
-    if (!hasDS) {
-      queueNarration([]);
+    if (!hasDS || !SHOW_DISSONANT_VOICES) {
+      return;
     }
 
     const campaignCode = processedScenario.scenarioGuide.campaignGuide.campaignCycleCode();
@@ -175,22 +175,24 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
     const scenarioName = processedScenario.scenarioGuide.scenarioName();
     const queue: NarrationTrack[] = [];
     for (const scenarioStep of processedScenario.steps) {
-      if (scenarioStep.step.type === "resolution") {
+      if (scenarioStep.step.type === 'resolution') {
         const narration = processedScenario.scenarioGuide.resolution(
           scenarioStep.step.resolution
         )?.narration;
-        if (!narration) continue;
-
+        if (!narration) {
+          continue;
+        }
         queue.push({
           ...narration,
           campaignCode,
           campaignName,
           scenarioName,
         });
-      } else if (scenarioStep.step.type === "story" || scenarioStep.step.type === "branch") {
+      } else if (scenarioStep.step.type === 'story' || scenarioStep.step.type === 'branch') {
         const narration = scenarioStep.step.narration;
-        if (!narration) continue;
-
+        if (!narration) {
+          continue;
+        }
         queue.push({
           ...narration,
           campaignCode,
@@ -239,9 +241,6 @@ ScenarioView.options = () => {
 export default withScenarioGuideContext<InputProps>(ScenarioView);
 
 const styles = StyleSheet.create({
-  footer: {
-    marginTop: 64,
-  },
   keyboardView: {
     flex: 1,
     flexDirection: 'column',

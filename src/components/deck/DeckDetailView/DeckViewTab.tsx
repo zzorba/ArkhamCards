@@ -10,10 +10,8 @@ import {
   Deck,
   DeckMeta,
   DeckProblem,
-  InvestigatorData,
   ParsedDeck,
   SplitCards,
-  Trauma,
 } from '@actions/types';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';

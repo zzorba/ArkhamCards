@@ -143,7 +143,7 @@ export const getBackupData = createSelector(
     const guidesState: { [id: string]: CampaignGuideState } = {};
     forEach(guides, (guide, id) => {
       if (guide) {
-        guides[id] = guide;
+        guidesState[id] = guide;
       }
     });
     return {

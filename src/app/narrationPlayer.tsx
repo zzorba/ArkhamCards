@@ -1,11 +1,11 @@
-import TrackPlayer from "react-native-track-player";
+import TrackPlayer from 'react-native-track-player';
 
 export const registerNarrationPlayer = () => {
-  return TrackPlayer.registerPlaybackService(() => async () => {
-    TrackPlayer.addEventListener("remote-play", TrackPlayer.play);
-    TrackPlayer.addEventListener("remote-pause", TrackPlayer.pause);
-    TrackPlayer.addEventListener("remote-next", TrackPlayer.skipToNext);
-    TrackPlayer.addEventListener("remote-previous", TrackPlayer.skipToPrevious);
+  return TrackPlayer.registerPlaybackService(() => async() => {
+    TrackPlayer.addEventListener('remote-play', TrackPlayer.play);
+    TrackPlayer.addEventListener('remote-pause', TrackPlayer.pause);
+    TrackPlayer.addEventListener('remote-next', TrackPlayer.skipToNext);
+    TrackPlayer.addEventListener('remote-previous', TrackPlayer.skipToPrevious);
 
     await TrackPlayer.setupPlayer({});
     TrackPlayer.updateOptions({
@@ -22,5 +22,5 @@ export const registerNarrationPlayer = () => {
         TrackPlayer.CAPABILITY_PAUSE,
       ],
     });
-  })
+  });
 };

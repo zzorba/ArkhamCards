@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import {
   StyleSheet,
   View,
@@ -21,15 +21,20 @@ interface Props {
 
 export default function StoryStepComponent({ step, width }: Props) {
   const hasDS = useSelector(hasDissonantVoices);
+  const narrationPlayPressed = useCallback(() => {
+    if (step.narration?.id) {
+      playNarration(step.narration.id);
+    }
+  }, [step.narration]);
   const text = useMemo(() => {
     return (
       <View style={
         step.border ? [space.paddingSideL, space.paddingTopM] : []
       }>
         <View style={space.marginTopM}>
-          <View style={{...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{ ...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
             { hasDS && step.narration && (
-              <Icon name='play-circle-outline' type='material' onPress={() => playNarration(step.narration!.id)}/>
+              <Icon name="play-circle-outline" type="material" onPress={narrationPlayPressed} />
             ) }
           </View>
         </View>
@@ -44,7 +49,7 @@ export default function StoryStepComponent({ step, width }: Props) {
         <BulletsComponent bullets={step.bullets} />
       </View>
     );
-  }, [step, hasDS]);
+  }, [step, hasDS, narrationPlayPressed]);
   if (step.border) {
     return (
       <BorderWrapper border width={width}>

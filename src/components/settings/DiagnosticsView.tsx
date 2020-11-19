@@ -13,7 +13,7 @@ import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Campaign, CampaignGuideState, Deck, Pack } from '@actions/types';
+import { Campaign, CampaignGuideState, Deck, DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { clearDecks } from '@actions';
 import Database from '@data/Database';
@@ -25,6 +25,7 @@ import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
+import { saveAuthResponse } from '@lib/dissonantVoices';
 
 interface ReduxProps {
   backupData: {
@@ -195,6 +196,20 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
     Crashes.generateTestCrash();
   }, []);
 
+  const setDissonantVoicesToken = useCallback(() => {
+    showTextEditDialog(
+      'Dissonant Voices token',
+      '',
+      (token: string) => {
+        Keyboard.dismiss();
+        saveAuthResponse(token);
+        dispatch({
+          type: DISSONANT_VOICES_LOGIN,
+        });
+      }
+    );
+  }, [showTextEditDialog, dispatch]);
+
   const debugSection = useMemo(() => {
     if (!__DEV__) {
       return null;
@@ -210,9 +225,13 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
           onPress={addDebugCard}
           text={'Add Debug Card'}
         />
+        <SettingsItem
+          onPress={setDissonantVoicesToken}
+          text={'Set Dissonant Voices Token'}
+        />
       </>
     );
-  }, [crash, addDebugCard]);
+  }, [crash, addDebugCard, setDissonantVoicesToken]);
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>

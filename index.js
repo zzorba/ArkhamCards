@@ -10,7 +10,7 @@ import DatabaseProvider from './src/data/DatabaseProvider';
 import { registerScreens } from './src/app/screens';
 import { registerNarrationPlayer } from './src/app/narrationPlayer';
 import configureStore from './src/app/store';
-import App from './src/app/App';
+import App, { SHOW_DISSONANT_VOICES } from './src/app/App';
 import StyleProvider from './src/styles/StyleProvider';
 
 
@@ -43,6 +43,8 @@ Crashes.setListener({
 let app = null;
 Navigation.events().registerAppLaunchedListener(() => {
   registerScreens(MyProvider, { redux: store, persistor: persistor });
-  registerNarrationPlayer();
+  if (SHOW_DISSONANT_VOICES) {
+    registerNarrationPlayer();
+  }
   app = new App(store);
 });

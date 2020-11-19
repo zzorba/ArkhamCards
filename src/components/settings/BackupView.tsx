@@ -18,7 +18,7 @@ import Share from 'react-native-share';
 import { t } from 'ttag';
 
 import { MergeBackupProps } from './MergeBackupView';
-import { Campaign, BackupState } from '@actions/types';
+import { Campaign } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { getBackupData } from '@reducers';
 import SettingsItem from './SettingsItem';
@@ -30,13 +30,6 @@ import StyleContext from '@styles/StyleContext';
 export interface BackupProps {
   safeMode?: boolean;
 }
-
-interface ReduxProps {
-  backupData: BackupState;
-}
-
-
-type Props = BackupProps & NavigationProps;
 
 async function safeReadFile(file: string): Promise<string> {
   try {

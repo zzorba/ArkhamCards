@@ -6,7 +6,7 @@ import {
   Text,
   TouchableHighlight,
   View,
-  ViewStyle
+  ViewStyle,
 } from 'react-native';
 import { Divider, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
@@ -16,10 +16,14 @@ import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
 import { AppState, hasDissonantVoices } from '@reducers';
 import { StyleContext, StyleContextType } from '@styles/StyleContext';
+import { m } from '@styles/space';
+import { SHOW_DISSONANT_VOICES } from '@app/App';
 
 export async function playNarration(trackId: string) {
-  await TrackPlayer.skip(trackId);
-  await TrackPlayer.play();
+  if (SHOW_DISSONANT_VOICES) {
+    await TrackPlayer.skip(trackId);
+    await TrackPlayer.play();
+  }
 }
 
 export async function queueNarration(queue: NarrationTrack[]) {
@@ -31,7 +35,7 @@ export async function queueNarration(queue: NarrationTrack[]) {
     return {
       id: track.id,
       title: track.name,
-      artist: "Dissonant Voices",
+      artist: 'Dissonant Voices',
       album: track.scenarioName,
       artwork: track.campaignCode,
       url: `https://north101.co.uk/api/scene/${track.id}/listen`,
@@ -87,6 +91,8 @@ interface PlayerState {
 }
 
 class PlayerView extends React.Component<PlayerProps, PlayerState> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
   onPlaybackTrackChange?: TrackPlayer.EmitterSubscription;
   onPlaybackState?: TrackPlayer.EmitterSubscription;
   onPlaybackError?: TrackPlayer.EmitterSubscription;
@@ -102,8 +108,8 @@ class PlayerView extends React.Component<PlayerProps, PlayerState> {
 
   componentDidMount() {
     this.onPlaybackTrackChange = TrackPlayer.addEventListener(
-      "playback-track-changed",
-      async (data) => {
+      'playback-track-changed',
+      async(data) => {
         const track = await TrackPlayer.getTrack(data.nextTrack);
         this.setState({
           track,
@@ -111,22 +117,22 @@ class PlayerView extends React.Component<PlayerProps, PlayerState> {
       }
     );
     this.onPlaybackState = TrackPlayer.addEventListener(
-      "playback-state",
-      async (data) => {
+      'playback-state',
+      async(data) => {
         this.setState({
           state: data.state,
         });
       }
     );
     this.onPlaybackError = TrackPlayer.addEventListener(
-      "playback-error",
-      async (data) => {
-        if (data.code === "playback-source") {
-          if (data.message ===  "Response code: 403") {
+      'playback-error',
+      async(data) => {
+        if (data.code === 'playback-source') {
+          if (data.message === 'Response code: 403') {
             // login error
-          } else if (data.message === "Response code: 404") {
+          } else if (data.message === 'Response code: 404') {
             // file doesn't exist
-          } else if (data.message === "Response code: 500") {
+          } else if (data.message === 'Response code: 500') {
             // server error
           }
         }
@@ -153,22 +159,27 @@ class PlayerView extends React.Component<PlayerProps, PlayerState> {
     this.onPlaybackError?.remove();
   }
 
-  onReplayPress = async () => {
+  onReplayPress = async() => {
     try {
       await TrackPlayer.seekTo((await TrackPlayer.getPosition()) - 30);
-    } catch (_) {}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
-  onPreviousPress = async () => {
+  onPreviousPress = async() => {
     try {
       await TrackPlayer.skipToPrevious();
-    } catch (_) {}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
-  onPlayPress = async () => {
+  onPlayPress = async() => {
     const { track, state } = this.state;
-    if (track === null) return;
-
+    if (track === null) {
+      return;
+    }
     if (state === TrackPlayer.STATE_PLAYING) {
       await TrackPlayer.pause();
     } else {
@@ -176,31 +187,32 @@ class PlayerView extends React.Component<PlayerProps, PlayerState> {
     }
   };
 
-  onClosePress = async () => {
+  onClosePress = async() => {
     await TrackPlayer.stop();
   };
 
-  onNextPress = async () => {
+  onNextPress = async() => {
     try {
       await TrackPlayer.skipToNext();
-    } catch (_) {}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   render() {
     const { style } = this.props;
     const { track, state } = this.state;
-
     return (
       <View>
         <Divider />
         <View
           style={{
             ...(style || {}),
-            display: "flex",
-            flexDirection: "row",
+            display: 'flex',
+            flexDirection: 'row',
             height: 64,
-            alignItems: "center",
-            padding: 16,
+            alignItems: 'center',
+            padding: m,
           }}
         >
           <ArkworkView track={track} state={state} />
@@ -229,15 +241,15 @@ class ProgressView extends ProgressComponent {
       <View
         style={{
           height: 1,
-          width: "100%",
-          flexDirection: "row",
+          width: '100%',
+          flexDirection: 'row',
         }}
       >
-        <View style={{ flex: progress, backgroundColor: "red" }} />
+        <View style={{ flex: progress, backgroundColor: 'red' }} />
         <View
           style={{
             flex: duration - progress,
-            backgroundColor: "grey",
+            backgroundColor: 'grey',
           }}
         />
       </View>
@@ -252,16 +264,19 @@ interface ArtworkProps {
 }
 
 class ArkworkView extends React.Component<ArtworkProps> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   render() {
     const { track, state } = this.props;
-
+    const { colors } = this.context;
     return (
       <View style={{ width: 48, height: 48, marginRight: 4 }}>
         {track?.artwork && (
           <View
             style={{
               marginRight: 4,
-              position: "absolute",
+              position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
@@ -269,16 +284,16 @@ class ArkworkView extends React.Component<ArtworkProps> {
             }}
           >
             <EncounterIcon
-              encounter_code={track?.artwork ?? ""}
+              encounter_code={track?.artwork ?? ''}
               size={48}
-              color="black"
+              color={colors.D30}
             />
           </View>
         )}
         <View
           style={{
             marginRight: 4,
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
@@ -287,7 +302,7 @@ class ArkworkView extends React.Component<ArtworkProps> {
         >
           <ActivityIndicator
             size={40}
-            color="black"
+            color={colors.D30}
             animating={state === TrackPlayer.STATE_BUFFERING}
           />
         </View>
@@ -338,17 +353,20 @@ interface PlaybackButtonProps {
 }
 
 abstract class PlaybackButton extends React.Component<PlaybackButtonProps> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static defaultProps = {
-    type: "material",
+    type: 'material',
     size: 30,
   };
 
   render() {
     const { name, type, size, onPress } = this.props;
-
+    const { colors } = this.context;
     return (
       <View style={{ padding: 2 }}>
-        <Icon name={name} type={type} size={size} onPress={onPress} />
+        <Icon name={name} type={type} size={size} onPress={onPress} color={colors.D30} />
       </View>
     );
   }
@@ -357,42 +375,42 @@ abstract class PlaybackButton extends React.Component<PlaybackButtonProps> {
 class PreviousButton extends PlaybackButton {
   static defaultProps = {
     ...PlaybackButton.defaultProps,
-    name: "skip-previous",
+    name: 'skip-previous',
   };
 }
 
 class PlayButton extends PlaybackButton {
   static defaultProps = {
     ...PlaybackButton.defaultProps,
-    name: "play-arrow",
+    name: 'play-arrow',
   };
 }
 
 class PauseButton extends PlaybackButton {
   static defaultProps = {
     ...PlaybackButton.defaultProps,
-    name: "pause",
+    name: 'pause',
   };
 }
 
 class NextButton extends PlaybackButton {
   static defaultProps = {
     ...PlaybackButton.defaultProps,
-    name: "skip-next",
+    name: 'skip-next',
   };
 }
 
 class ReplayButton extends PlaybackButton {
   static defaultProps = {
     ...PlaybackButton.defaultProps,
-    name: "replay",
+    name: 'replay',
   };
 }
 
 class CloseButton extends PlaybackButton {
   static defaultProps = {
     ...PlaybackButton.defaultProps,
-    name: "close",
+    name: 'close',
   };
 }
 
@@ -405,22 +423,26 @@ class TrackView extends React.Component<TrackProps> {
   static contextType = StyleContext;
   context!: StyleContextType;
 
+  _playNarration = () => {
+    playNarration(this.props.track.id);
+  };
+
   render() {
     const { track, isCurrentTrack } = this.props;
 
     return (
-      <TouchableHighlight onPress={() => playNarration(track.id)}>
+      <TouchableHighlight onPress={this._playNarration}>
         <>
           <Divider />
           <View
             style={{
-              display: "flex",
-              flexDirection: "row",
+              display: 'flex',
+              flexDirection: 'row',
               height: 64,
-              width: "100%",
-              alignItems: "center",
-              padding: 16,
-              backgroundColor: isCurrentTrack ? "grey" : "transparent",
+              width: '100%',
+              alignItems: 'center',
+              padding: m,
+              backgroundColor: isCurrentTrack ? 'grey' : 'transparent',
             }}
           >
             <ArkworkView track={track} state={null} />
@@ -454,7 +476,7 @@ class PlaylistView extends React.Component<PlaylistProps, PlaylistState> {
 
   componentDidMount() {
     this.onPlaybackTrackChange = TrackPlayer.addEventListener(
-      "playback-track-changed",
+      'playback-track-changed',
       (data) => {
         this.setState({
           currentTrackId: data.nextTrack,
@@ -476,8 +498,9 @@ class PlaylistView extends React.Component<PlaylistProps, PlaylistState> {
 
     return (
       <View style={style}>
-        {queue.map((track) => (
+        { queue.map((track) => (
           <TrackView
+            key={track.id}
             track={track}
             isCurrentTrack={currentTrackId === track.id}
           />
@@ -520,24 +543,27 @@ class NarratorContainerView extends React.Component<
   }
 
   updateQueue() {
-    this.queueHandle = setTimeout(async () => {
-      const queue = await TrackPlayer.getQueue();
-      if (!_.isEqual(queue, this.state.queue)) {
-        this.setState(() => ({ queue }), this.updateQueue);
-      }
-    }, 100);
+    if (SHOW_DISSONANT_VOICES) {
+      this.queueHandle = setTimeout(async() => {
+        const queue = await TrackPlayer.getQueue();
+        if (!_.isEqual(queue, this.state.queue)) {
+          this.setState(() => ({ queue }), this.updateQueue);
+        }
+      }, 100);
+    }
   }
 
   render() {
     const { hasDissonantVoices, children } = this.props;
     const { queue } = this.state;
-    if (queue.length === 0 || !hasDissonantVoices) return children;
-
+    if (queue.length === 0 || !hasDissonantVoices || !SHOW_DISSONANT_VOICES) {
+      return children;
+    }
     return (
-      <View style={{height: '100%'}}>
+      <View style={{ height: '100%' }}>
         {children}
         <PlayerView />
-        {Platform.OS === 'ios' && <View style={{height: 83}}></View>}
+        {Platform.OS === 'ios' && <View style={{ height: 83 }} />}
       </View>
     );
   }

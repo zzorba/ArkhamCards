@@ -1,16 +1,15 @@
 import { parse } from 'query-string';
 import { AppState, AppStateStatus, Linking } from 'react-native';
-import Config from 'react-native-config';
 import * as Keychain from 'react-native-keychain';
 
-async function saveAuthResponse(accessToken: string) {
+export async function saveAuthResponse(accessToken: string) {
   return Keychain.setInternetCredentials('dissonantvoices', 'dissonantvoices', accessToken);
 }
 
 export async function getAccessToken() {
   const creds = await Keychain.getInternetCredentials('dissonantvoices');
   if (creds) {
-      return creds.password;
+    return creds.password;
   }
   return null;
 }
@@ -82,12 +81,14 @@ export async function authorize(): Promise<string> {
           method: 'POST',
           headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify({code: code}),
+          body: JSON.stringify({ code: code }),
         })
           .then(response => {
-            if (response.status !== 200) throw Error('Invalid token')
+            if (response.status !== 200) {
+              throw Error('Invalid token');
+            }
             return response.text();
           })
           .then(text => resolve(text))
