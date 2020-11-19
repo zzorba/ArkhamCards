@@ -226,7 +226,6 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
             steps={processedScenario.steps}
             switchCampaignScenario={switchCampaignScenario}
           />
-          <View style={styles.footer} />
         </ScrollView>
       </NarratorView>
     </KeyboardAvoidingView>

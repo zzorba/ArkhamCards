@@ -52,7 +52,6 @@ export async function authorize(): Promise<string> {
     let abandoned = true;
     let currentAppState: AppStateStatus = AppState.currentState;
     const handleAppStateChange = (nextAppState: AppStateStatus) => {
-      console.log(nextAppState)
       if (
         (currentAppState === 'inactive' || currentAppState === 'background') &&
         nextAppState === 'active'
@@ -74,7 +73,6 @@ export async function authorize(): Promise<string> {
         code,
         error,
       } = parse(event.url.substring(event.url.indexOf('?') + 1));
-      console.log(event.url, state, code, error)
       if (error === 'access_denied') {
         reject(new Error('Access was denied by user.'));
       } else if (state !== originalState) {
@@ -88,7 +86,10 @@ export async function authorize(): Promise<string> {
           },
           body: JSON.stringify({code: code}),
         })
-          .then(response => response.text())
+          .then(response => {
+            if (response.status !== 200) throw Error('Invalid token')
+            return response.text();
+          })
           .then(text => resolve(text))
           .catch((error) => reject(error));
       }

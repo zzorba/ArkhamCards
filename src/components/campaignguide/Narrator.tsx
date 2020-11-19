@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import {
   ActivityIndicator,
+  Platform,
   Text,
   TouchableHighlight,
   View,
@@ -14,7 +15,6 @@ import TrackPlayer, { ProgressComponent } from 'react-native-track-player';
 import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
 import { AppState, hasDissonantVoices } from '@reducers';
-import { DissonantVoicesState } from '@reducers/dissonantVoices';
 import { StyleContext, StyleContextType } from '@styles/StyleContext';
 
 export async function playNarration(trackId: string) {
@@ -44,7 +44,7 @@ export async function queueNarration(queue: NarrationTrack[]) {
 
   // if current track is in the new queue
   const currentTrackId = await TrackPlayer.getCurrentTrack();
-  const currentTrack = await TrackPlayer.getTrack(currentTrackId);
+  const currentTrack = currentTrackId && await TrackPlayer.getTrack(currentTrackId);
   const currentTrackIndex = newTrackIds.indexOf(currentTrackId);
   if (
     currentTrackIndex !== -1 &&
@@ -521,12 +521,10 @@ class NarratorContainerView extends React.Component<
 
   updateQueue() {
     this.queueHandle = setTimeout(async () => {
-      this.setState(
-        {
-          queue: await TrackPlayer.getQueue(),
-        },
-        this.updateQueue
-      );
+      const queue = await TrackPlayer.getQueue();
+      if (!_.isEqual(queue, this.state.queue)) {
+        this.setState(() => ({ queue }), this.updateQueue);
+      }
     }, 100);
   }
 
@@ -539,6 +537,7 @@ class NarratorContainerView extends React.Component<
       <View style={{height: '100%'}}>
         {children}
         <PlayerView />
+        {Platform.OS === 'ios' && <View style={{height: 83}}></View>}
       </View>
     );
   }
