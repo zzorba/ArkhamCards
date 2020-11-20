@@ -644,19 +644,19 @@ msgstr "Сделать резервную копию кампании?"
 msgid "Export Campaign Data"
 msgstr "Экспортировать"
 
-#: src/components/settings/BackupView.tsx:188
+#: src/components/settings/BackupView.tsx:189
 #: src/components/settings/DiagnosticsView.tsx:239
 #: src/components/settings/SafeModeView.tsx:62
 #: src/components/settings/SettingsView.tsx:110
 msgid "Backup"
 msgstr "Резервная копия"
 
-#: src/components/settings/BackupView.tsx:191
+#: src/components/settings/BackupView.tsx:192
 #: src/components/settings/DiagnosticsView.tsx:242
 msgid "Backup Campaign Data"
 msgstr "Сделать резервную копию кампании"
 
-#: src/components/settings/BackupView.tsx:196
+#: src/components/settings/BackupView.tsx:197
 #: src/components/settings/DiagnosticsView.tsx:246
 msgid "Restore Campaign Data"
 msgstr "Восстановить кампанию"
