@@ -6,14 +6,14 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { ngettext, msgid, t } from 'ttag';
+import { ngettext, msgid } from 'ttag';
 import {
   Placeholder,
   PlaceholderLine,
   Fade,
 } from 'rn-placeholder';
 
-import { Campaign, Deck, ParsedDeck } from '@actions/types';
+import { Campaign, Deck } from '@actions/types';
 import Card from '@data/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { getProblemMessage } from '@components/core/DeckProblemRow';
@@ -198,7 +198,7 @@ export default function NewDeckListRow({
       <View style={[space.paddingSideS, space.paddingTopS]}>
         <RoundedFactionBlock
           faction={faction || 'neutral'}
-          header={faction ? (
+          header={(
             <RoundedFactionHeader faction={faction} width={width - s * 2}>
               <View style={space.paddingSideS}>
                 <Text style={[typography.large, typography.white]} numberOfLines={1} ellipsizeMode="tail">
@@ -209,7 +209,7 @@ export default function NewDeckListRow({
                 </Text>
               </View>
             </RoundedFactionHeader>
-          ) : (<View />)}
+          )}
           footer={(
             <View style={[{ backgroundColor: colors.L10 }, styles.footer]}>
               <View style={space.marginRightS}>

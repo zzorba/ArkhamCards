@@ -32,7 +32,7 @@ export default function DeckNavFooter({
   faction,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const { parsedDeck, deckEdits } = useParsedDeck(deckId, 'NavFooter', componentId);
+  const { parsedDeck } = useParsedDeck(deckId, 'NavFooter', componentId);
 
   const showCardChartsPressed = useCallback(() => {
     if (parsedDeck) {

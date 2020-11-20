@@ -128,7 +128,7 @@ function deckToSections(
       subAssets => sum(subAssets.data.map(c => c.quantity))
     );
     if (assetCount > 0) {
-      const assets = t`Assets`;
+      const assets = sectionHeaderTitle('asset', assetCount);
       result.push({
         id: `assets${special ? '-special' : ''}`,
         subTitle: `— ${assets} · ${assetCount} —`,
@@ -156,20 +156,34 @@ function deckToSections(
       });
     });
   }
-  forEach({
-    [t`Event`]: halfDeck.Event,
-    [t`Skill`]: halfDeck.Skill,
-    [t`Enemy`]: halfDeck.Enemy,
-    [t`Treachery`]: halfDeck.Treachery,
-  }, (cardSplitGroup, localizedName) => {
+  const splits: { cardType: TypeCodeType; cardSplitGroup?: CardId[] }[] = [
+    {
+      cardType: 'event',
+      cardSplitGroup: halfDeck.Event,
+    },
+    {
+      cardType: 'skill',
+      cardSplitGroup: halfDeck.Skill,
+    },
+    {
+      cardType: 'enemy',
+      cardSplitGroup: halfDeck.Enemy,
+    },
+    {
+      cardType: 'treachery',
+      cardSplitGroup: halfDeck.Treachery,
+    },
+  ];
+  forEach(splits, ({ cardSplitGroup, cardType }) => {
     if (cardSplitGroup) {
       const cardIds = filter(cardSplitGroup, c => !limitedSlots || c.limited);
       if (!cardIds.length) {
         return;
       }
       const count = sumBy(cardIds, c => c.quantity);
+      const localizedName = sectionHeaderTitle(cardType, count);
       result.push({
-        id: `${localizedName}-${special ? '-special' : ''}`,
+        id: `${cardType}-${special ? '-special' : ''}`,
         subTitle: `— ${localizedName} · ${count} —`,
         cards: map(cardIds, c => {
           return {
