@@ -169,6 +169,7 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
                 title: t`Save backup`,
                 message: filename,
                 url: `data:application/json;base64,${base64.encode(JSON.stringify(backupData))}`,
+                type: 'data:application/json',
                 filename,
                 failOnCancel: false,
                 showAppsToView: true,
