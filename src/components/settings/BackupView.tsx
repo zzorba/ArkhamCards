@@ -52,6 +52,7 @@ async function hasFileSystemPermission(read: boolean) {
       case PermissionsAndroid.RESULTS.GRANTED:
         return true;
       case PermissionsAndroid.RESULTS.DENIED:
+        Alert.alert(t`Missing system permission`, t`It looks like you previously denied allowing Arkham Cards to read/write external files. Please visit your System settings to adjust this permission, and try again.`);
         return false;
       case PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN:
         Alert.alert(t`Cannot request access`, t`It looks like you previously denied allowing Arkham Cards to read/write external files. Please visit your System settings to adjust this permission, and try again.`);

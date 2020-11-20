@@ -144,13 +144,11 @@ msgstr "Vorteil: Tarot"
 msgid "Asset: Other"
 msgstr "Vorteil: Sonstiges"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:160
 #: src/data/Card.ts:702
 #: src/data/Card.ts:766
 msgid "Event"
 msgstr "Ereignis"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:161
 #: src/data/Card.ts:703
 #: src/data/Card.ts:771
 msgid "Skill"
@@ -206,8 +204,8 @@ msgid "Second Core Set"
 msgstr "Zweites Grundspiel"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:95
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:306
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:369
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:307
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:370
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:260
 #: src/components/deck/EditSpecialDeckCardsView.tsx:146
 #: src/components/settings/CollectionEditView.tsx:51
@@ -289,7 +287,7 @@ msgstr "Enthält zu viele limitierte Karten."
 #: src/components/card/DbCardDetailSwipeView.tsx:52
 #: src/components/card/DbCardDetailSwipeView.tsx:95
 #: src/components/card/DbCardDetailSwipeView.tsx:116
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:504
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:502
 #: src/components/core/ChooserButton.tsx:35
 #: src/components/core/DbChooserButton.tsx:45
 #: src/components/core/PackListComponent/PackRow.tsx:48
@@ -364,9 +362,9 @@ msgstr "Aus Sammlung ziehen"
 #: src/components/deck/authHelper.ts:32
 #: src/components/nav/helper.ts:249
 #: src/components/nav/helper.ts:264
-#: src/components/settings/BackupView.tsx:90
-#: src/components/settings/BackupView.tsx:131
-#: src/components/settings/BackupView.tsx:142
+#: src/components/settings/BackupView.tsx:91
+#: src/components/settings/BackupView.tsx:132
+#: src/components/settings/BackupView.tsx:143
 #: src/components/settings/DiagnosticsView.tsx:121
 #: src/components/settings/LanguagePicker.tsx:90
 #: src/components/settings/LoginButton.tsx:39
@@ -453,7 +451,7 @@ msgid "Authorization error"
 msgstr "Autorisierungsfehler"
 
 #: src/components/deck/authHelper.ts:21
-#: src/components/settings/BackupView.tsx:87
+#: src/components/settings/BackupView.tsx:88
 msgid "Try again"
 msgstr "Versuchen Sie es erneut"
 
@@ -510,7 +508,7 @@ msgstr "Egal"
 msgid "Problem with import"
 msgstr "Problem mit Import"
 
-#: src/components/settings/BackupView.tsx:125
+#: src/components/settings/BackupView.tsx:126
 #: src/components/settings/DiagnosticsView.tsx:90
 msgid "Restore campaign data?"
 msgstr "Kampagnendaten wiederherstellen?"
@@ -519,7 +517,7 @@ msgstr "Kampagnendaten wiederherstellen?"
 msgid "Paste Backup Here"
 msgstr "Backup hier einfügen"
 
-#: src/components/settings/BackupView.tsx:139
+#: src/components/settings/BackupView.tsx:140
 #: src/components/settings/DiagnosticsView.tsx:118
 msgid "Backup campaign data?"
 msgstr "Backup-Kampagnendaten?"
@@ -535,24 +533,24 @@ msgstr ""
 "verschieben. Kopieren Sie die Daten einfach und fügen Sie sie in die andere "
 "App ein."
 
-#: src/components/settings/BackupView.tsx:145
+#: src/components/settings/BackupView.tsx:146
 #: src/components/settings/DiagnosticsView.tsx:124
 msgid "Export Campaign Data"
 msgstr "Exportiere die Kampagendaten"
 
-#: src/components/settings/BackupView.tsx:187
+#: src/components/settings/BackupView.tsx:188
 #: src/components/settings/DiagnosticsView.tsx:239
 #: src/components/settings/SafeModeView.tsx:62
 #: src/components/settings/SettingsView.tsx:110
 msgid "Backup"
 msgstr "Backup"
 
-#: src/components/settings/BackupView.tsx:190
+#: src/components/settings/BackupView.tsx:191
 #: src/components/settings/DiagnosticsView.tsx:242
 msgid "Backup Campaign Data"
 msgstr "Backup die Kampagnendaten"
 
-#: src/components/settings/BackupView.tsx:195
+#: src/components/settings/BackupView.tsx:196
 #: src/components/settings/DiagnosticsView.tsx:246
 msgid "Restore Campaign Data"
 msgstr "Kampagnendaten wiederherstellen"
@@ -646,7 +644,7 @@ msgstr "Kartendaten"
 msgid "Card Collection"
 msgstr "Kartensammlung"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:501
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:499
 #: src/components/settings/SettingsView.tsx:163
 msgid "Spoiler Settings"
 msgstr "Spoilereinstellungen"
@@ -1038,7 +1036,7 @@ msgstr "Nur vorige Kampagnenmitglieder zeigen"
 
 #: src/components/campaign/XpComponent.tsx:24
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/ExperienceLine.tsx:21
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:543
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:557
 msgid "Experience"
 msgstr "Erfahrung"
 
@@ -1879,7 +1877,7 @@ msgstr "Nicht unterstützte Operation"
 msgid "Upload to ArkhamDB"
 msgstr "Upload zu ArkhamDB"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:365
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:379
 #: src/components/deck/DeckDetailView/index.tsx:948
 msgid "Special Cards"
 msgstr "Sonderkarten"
@@ -1942,39 +1940,39 @@ msgstr "Typ"
 msgid "Encounter Set"
 msgstr "Begegnungsset"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:77
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:78
 msgid "Investigating for clues"
 msgstr "Ermitteln nach Hinweisen"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:78
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:79
 msgid "Cursing at the tentacle token"
 msgstr "Verfluche den Tentakelmarker"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:79
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:80
 msgid "Drawing a mythos card with surge"
 msgstr "Eine Mythos-Karte mit Nachrüsten ziehen"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:80
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:81
 msgid "Placing doom on the agenda"
 msgstr "Verderben auf der Agenda platzieren"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:81
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:82
 msgid "Reticulating spines"
 msgstr "Stacheln senken"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:82
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:83
 msgid "Trying to make sense of the Time Warp FAQ"
 msgstr "Versuche die Time Warp FAQ zu verstehen"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:83
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:84
 msgid "Taking three damage and three horror"
 msgstr "Drei Schaden und drei Horror nehmen"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:826
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:822
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Keine passenden Karten für \"${searchTerm}\""
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:827
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:823
 msgid "No matching cards"
 msgstr "Keine passenden Karten"
 
@@ -1986,11 +1984,11 @@ msgstr "Kosten: Keine"
 msgid "All Cards"
 msgstr "Alle Karten"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:348
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:349
 msgid "Search for a card"
 msgstr "Suche nach einer Karte"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:196
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:197
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
 msgstr "\"${searchTerm}\" Suche zurücksetzen"
@@ -2078,7 +2076,7 @@ msgstr "Yigs Zorn"
 msgid "Doesn't comply with the Investigator requirements."
 msgstr "Hält sich nicht an die Anforderungen des Ermittlers."
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:84
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:85
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Mehr als 5 über den Zielwert, hoffe ich, ich ziehe nicht den Tentakel"
 
@@ -2472,11 +2470,11 @@ msgstr ""
 msgid "Level ${ level }"
 msgstr "Stufe ${level}"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:322
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:323
 msgid "In Deck"
 msgstr "In Deck"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:345
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:346
 msgid "All Eligible Cards"
 msgstr "Alle erlaubten Karten"
 
@@ -2694,7 +2692,7 @@ msgstr "Unbekannte Karte: ${ req.code }"
 msgid "Select Deck Size"
 msgstr "Wählen Sie die Deckgröße"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:211
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:225
 #, javascript-format
 msgid "Bonded Cards (${ count })"
 msgstr "Gebundene Karten (${ count })"
@@ -2703,15 +2701,15 @@ msgstr "Gebundene Karten (${ count })"
 msgid "New Name"
 msgstr "NEUER NAME"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:85
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:86
 msgid "Game Text"
 msgstr "Spieltext"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:95
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:96
 msgid "Flavor Text"
 msgstr "Stimmungstext"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:105
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:106
 msgid "Card Backs"
 msgstr "Kartenrückseiten"
 
@@ -2860,7 +2858,7 @@ msgstr "Schwächeset"
 msgid "Options"
 msgstr "Einstellungen"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:353
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:367
 #: src/components/deck/DeckDetailView/index.tsx:938
 msgid "Deck Cards"
 msgstr "Deckkarten"
@@ -3730,7 +3728,7 @@ msgstr[1] ""
 msgid "All local decks and campaigns will be overridden"
 msgstr "Alle lokalen Decks und Kampagnen werden überschrieben"
 
-#: src/components/settings/BackupView.tsx:128
+#: src/components/settings/BackupView.tsx:129
 #: src/components/settings/DiagnosticsView.tsx:96
 msgid "Import data"
 msgstr "Daten importieren"
@@ -4289,7 +4287,7 @@ msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } Erfahrungspunkt für Ausrüstungspunkte verfügbar"
 msgstr[1] "${ specialXp } Erfahrungspunkte für Ausrüstungspunkte verfügbar"
 
-#: src/components/settings/BackupView.tsx:84
+#: src/components/settings/BackupView.tsx:85
 msgid "Unexpected file type"
 msgstr "Unbekannter Dateityp"
 
@@ -4298,11 +4296,11 @@ msgstr "Unbekannter Dateityp"
 msgid "Backup Data"
 msgstr "Daten sichern"
 
-#: src/components/settings/BackupView.tsx:85
+#: src/components/settings/BackupView.tsx:86
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
 msgstr "Diese App erwartet Arkham Cards backup Dateien (.acb/.json)"
 
-#: src/components/settings/BackupView.tsx:126
+#: src/components/settings/BackupView.tsx:127
 msgid ""
 "This feature will let you restore data from a lost device. If you were "
 "signed into ArkhamDB, please reauthorize before importing campaign data.\n"
@@ -4316,7 +4314,7 @@ msgstr ""
 "Nachdem ein Backup ausgewählt wurde, können die Daten ausgewählt werden, "
 "die importiert werden sollen."
 
-#: src/components/settings/BackupView.tsx:140
+#: src/components/settings/BackupView.tsx:141
 msgid ""
 "This will let you backup your local decks and campaigns for safe-keeping. "
 "This can also be used to move them to another device."
@@ -4324,15 +4322,16 @@ msgstr ""
 "Dieser Punk erlaubt das Backup lokaler Decks und Kampagnen. Dieser Punkt "
 "kann auch verwendet werden, um diese Daten auf andere Geräte zu übertragen."
 
-#: src/components/settings/BackupView.tsx:168
+#: src/components/settings/BackupView.tsx:169
 msgid "Save backup"
 msgstr "Backup speichern"
 
-#: src/components/settings/BackupView.tsx:57
+#: src/components/settings/BackupView.tsx:58
 msgid "Cannot request access"
 msgstr "Zugangsanforderung nicht möglich"
 
-#: src/components/settings/BackupView.tsx:57
+#: src/components/settings/BackupView.tsx:55
+#: src/components/settings/BackupView.tsx:58
 msgid ""
 "It looks like you previously denied allowing Arkham Cards to read/write "
 "external files. Please visit your System settings to adjust this "
@@ -4581,34 +4580,34 @@ msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
 msgstr[0] "Zeige ${ section.nonCollectionCount } Nicht-Sammlung Ermittler"
 msgstr[1] "Zeigen Sie ${ section.nonCollectionCount } Nicht-Sammlung Ermittlern"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:545
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:543
 msgid "Edit spoiler settings"
 msgstr "Spoilereinstellungen bearbeiten"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:556
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:554
 #, javascript-format
 msgid "Show ${ spoilerCardsCount } spoiler"
 msgid_plural "Show ${ spoilerCardsCount } spoilers"
 msgstr[0] "Zeige ${spoilerCardsCount} Spoiler"
 msgstr[1] "Zeige ${spoilerCardsCount} Spoilers"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:140
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:141
 msgid "Search player cards"
 msgstr "Suche nach Spielerkarten"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:140
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:141
 msgid "Search encounter cards"
 msgstr "Suche nach Begegnungskarten"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:147
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:148
 msgid "Clear search filters"
 msgstr "Suchfilter Zurücksetzen"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:203
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:204
 msgid "Search game text"
 msgstr "Suche nach Spieltext"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:210
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:211
 msgid "Search card backs"
 msgstr "Suche nach Kartenrückseite"
 
@@ -4709,7 +4708,7 @@ msgstr "Beweglichkeit: ${ agility }"
 msgid "Search options"
 msgstr "Suchoptionen"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:79
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:80
 msgid "Search in:"
 msgstr "Suchen in:"
 
@@ -5015,7 +5014,7 @@ msgstr ""
 msgid "Cost: ${ json.cost }"
 msgstr ""
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:380
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:381
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
@@ -5086,16 +5085,12 @@ msgstr ""
 msgid "Latest upgrade"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:131
-msgid "Assets"
-msgstr ""
-
 #: src/components/deck/hooks.ts:32
 #, javascript-format
 msgid "${ adjustedXp } XP"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:664
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:678
 msgid "Add cards"
 msgstr ""
 
@@ -5188,11 +5183,11 @@ msgstr ""
 msgid "Hide splash cards"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:402
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:416
 msgid "Limited Slots"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:408
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:422
 #, javascript-format
 msgid "${ count } of ${ limitSlotCount }"
 msgstr ""
@@ -5235,12 +5230,8 @@ msgstr ""
 msgid "${ overspent } overspent"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:162
-msgid "Enemy"
-msgstr ""
-
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:163
-msgid "Treachery"
+#: src/components/settings/BackupView.tsx:55
+msgid "Missing system permission"
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
