@@ -17,7 +17,6 @@ import { rowHeight, iconSize } from './constants';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ControlComponent, ControlType } from './ControlComponent';
-import { useThrottleCallback } from '@react-hook/throttle';
 import { usePressCallback } from '@components/core/hooks';
 
 interface Props {

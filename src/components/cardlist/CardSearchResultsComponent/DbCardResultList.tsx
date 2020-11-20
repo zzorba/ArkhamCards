@@ -28,6 +28,7 @@ import { Brackets } from 'typeorm/browser';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
+import useDebouncedEffect from 'use-debounced-effect-hook';
 
 import DatabaseContext from '@data/DatabaseContext';
 import { addDbFilterSet } from '@components/filter/actions';
@@ -455,40 +456,37 @@ function useSectionFeed({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, filterQuery, sort, tabooSetId, db]);
 
-  useEffect(() => {
+  useDebouncedEffect(() => {
     if (textQuery) {
       let ignore = false;
-      const delayedSearch = debounce(() => {
-        if (!query) {
-          setTextQueryCards([]);
-          return;
+      if (!query) {
+        setTextQueryCards([]);
+        return;
+      }
+      // Look for textual card changes.
+      // const start = new Date();
+      db.getPartialCards(
+        combineQueries(query,
+          [
+            ...(filterQuery ? [filterQuery] : []),
+            ...(textQuery ? [textQuery] : []),
+          ],
+          'and'
+        ),
+        tabooSetId,
+        sort
+      ).then((cards: PartialCard[]) => {
+        if (!ignore) {
+          // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+          setTextQueryCards(cards);
         }
-        // Look for textual card changes.
-        // const start = new Date();
-        db.getPartialCards(
-          combineQueries(query,
-            [
-              ...(filterQuery ? [filterQuery] : []),
-              ...(textQuery ? [textQuery] : []),
-            ],
-            'and'
-          ),
-          tabooSetId,
-          sort
-        ).then((cards: PartialCard[]) => {
-          if (!ignore) {
-            // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
-            setTextQueryCards(cards);
-          }
-        });
-      }, 50);
-      delayedSearch();
+      });
       return () => {
-        ignore = true; delayedSearch.cancel();
+        ignore = true;
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, filterQuery, textQuery, sort, tabooSetId]);
+  }, [query, filterQuery, textQuery, sort, tabooSetId], 200);
 
   const editSpoilerSettings = useCallback(() => {
     Keyboard.dismiss();
@@ -703,9 +701,7 @@ export default function({
       deckId,
       investigator
     );
-  }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors,
-    deckId, investigator, componentId, cardPressed]);
-  const debouncedCardOnPressId = useMemo(() => debounce(cardOnPressId, 500, { leading: true }), [cardOnPressId]);
+  }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, cardPressed]);
   const keyExtractor = useCallback((item: Item, index: number) => {
     switch (item.type) {
       case 'button': return `button_${item.id}`;
@@ -777,7 +773,7 @@ export default function({
         return (
           <CardSearchResult
             card={card}
-            onPressId={debouncedCardOnPressId}
+            onPressId={cardOnPressId}
             id={item.id}
             control={deckId !== undefined ? (control || {
               type: 'deck',
@@ -801,7 +797,7 @@ export default function({
       default:
         return null;
     }
-  }, [debouncedCardOnPressId, deckId, hasSecondCore, investigator, renderCard, deckLimits]);
+  }, [cardOnPressId, deckId, hasSecondCore, investigator, renderCard, deckLimits]);
   const listHeader = useMemo(() => {
     const searchBarPadding = !noSearch && Platform.OS === 'android';
     if (!searchBarPadding && !header) {

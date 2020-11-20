@@ -11,7 +11,6 @@ import DatabaseContext from '@data/DatabaseContext';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
 import TabooSet from '@data/TabooSet';
-import { useDebounceCallback } from '@react-hook/debounce';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -31,7 +30,11 @@ export function useNavigationButtonPressed(
   componentId: string,
   deps: any[],
 ) {
-  const debouncedHandler = useMemo(() => debounce(handler, 1000, { leading: true }), [handler]);
+  const handlerRef = useRef(handler);
+  useEffect(() => {
+    handlerRef.current = handler;
+  }, [handler]);
+  const debouncedHandler = useMemo(() => debounce((event: NavigationButtonPressedEvent) => handlerRef.current && handlerRef.current(event), 300, { leading: true, trailing: false }), []);
   useEffect(() => {
     const sub = Navigation.events().registerNavigationButtonPressedListener((event: NavigationButtonPressedEvent) => {
       if (event.componentId === componentId) {
@@ -538,12 +541,12 @@ export function useEffectUpdate(update: () => void, deps: any[]) {
   }, deps);
 }
 
-export function usePressCallback(callback: undefined | (() => void)): undefined | (() => void) {
+export function usePressCallback(callback: undefined | (() => void), bufferTime: number = 1000): undefined | (() => void) {
   const callbackRef = useRef(callback);
   useEffect(() => {
     callbackRef.current = callback;
   }, [callback]);
-  const onPress = useMemo(() => debounce(() => callbackRef.current && callbackRef.current(), 1000, { leading: true, trailing: false }), []);
+  const onPress = useMemo(() => debounce(() => callbackRef.current && callbackRef.current(), bufferTime, { leading: true, trailing: false }), []);
   return callback ? onPress : undefined;
 }
 

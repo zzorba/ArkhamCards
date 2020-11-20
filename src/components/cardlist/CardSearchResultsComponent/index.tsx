@@ -9,6 +9,7 @@ import {
 import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
 import { t } from 'ttag';
+import { useDebounceCallback } from '@react-hook/debounce';
 
 import { SORT_BY_ENCOUNTER_SET, SortType } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
@@ -260,7 +261,7 @@ export default function({
       searchCode,
     });
   }, []);
-  const debouncedUpdateSearch = debounce(50, updateSearch);
+  const debouncedUpdateSearch = useDebounceCallback(updateSearch, 50);
   const searchUpdated = useCallback((text: string) => {
     setSearchTerm(text);
     debouncedUpdateSearch(text);
