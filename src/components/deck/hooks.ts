@@ -85,7 +85,9 @@ export function useParsedDeck(id: number, componentName: string, componentId: st
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const cards = usePlayerCards(tabooSetId);
   const visible = useComponentVisible(componentId);
-  const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>();
+  const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(deck && cards && fetchIfMissing ?
+    parseDeck(deck, deck.meta || {}, deck.slots, deck.ignoreDeckLimitSlots, cards, previousDeck, deck.xp_adjustment || 0) :
+    undefined);
   useDebouncedEffect(() => {
     if (cards && visible && deckEdits && deck) {
       setParsedDeck(

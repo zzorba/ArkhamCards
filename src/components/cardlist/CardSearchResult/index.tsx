@@ -18,6 +18,7 @@ import { isBig, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ControlComponent, ControlType } from './ControlComponent';
 import { useThrottleCallback } from '@react-hook/throttle';
+import { usePressCallback } from '@components/core/hooks';
 
 interface Props {
   card: Card;
@@ -148,7 +149,7 @@ function CardSearchResult(props: Props) {
       onPress && onPress(card);
     }
   }, [onPress, onPressId, id, card]);
-  const handleCardPress = useThrottleCallback(handleCardPressFunction, 1, true);
+  const handleCardPress = usePressCallback(handleCardPressFunction);
 
   const dualFactionIcons = useMemo(() => {
     if (!card.faction2_code) {

@@ -538,12 +538,12 @@ export function useEffectUpdate(update: () => void, deps: any[]) {
   }, deps);
 }
 
-function dummyCallback() {
-  // intentionally empty;
-}
-
 export function usePressCallback(callback: undefined | (() => void)): undefined | (() => void) {
-  const onPress = useDebounceCallback(callback || dummyCallback, 1000, true);
+  const callbackRef = useRef(callback);
+  useEffect(() => {
+    callbackRef.current = callback;
+  }, [callback]);
+  const onPress = useMemo(() => debounce(() => callbackRef.current && callbackRef.current(), 1000, { leading: true, trailing: false }), []);
   return callback ? onPress : undefined;
 }
 
