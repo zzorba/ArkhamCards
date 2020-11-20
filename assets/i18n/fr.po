@@ -4257,7 +4257,7 @@ msgstr "N'a pas de"
 #: src/components/deck/DeckDetailView/index.tsx:495
 #: src/components/deck/DeckDetailView/index.tsx:922
 msgid "Checklist"
-msgstr "Liste de contrôle"
+msgstr "Liste à cocher"
 
 #: src/lib/DeckValidation.ts:256
 msgid "Limit 1 Covenant per deck."
@@ -4875,7 +4875,7 @@ msgstr "Dernière amélioration"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:115
 msgid "Assets"
-msgstr "Soutients"
+msgstr "Soutiens"
 
 #: src/components/decklist/DeckListComponent/NewDeckListRow.tsx:52
 #, javascript-format
@@ -4922,7 +4922,7 @@ msgstr "Pour faciliter la construction du deck"
 
 #: src/components/deck/DeckDetailView/index.tsx:943
 msgid "Story assets and weaknesses"
-msgstr "Soutient et faiblesse d'histoire"
+msgstr "Soutiens et faiblesses d'histoire"
 
 #: src/components/deck/DeckDetailView/index.tsx:981
 msgid "Clone deck"
