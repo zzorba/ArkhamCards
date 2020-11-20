@@ -145,13 +145,13 @@ msgstr ""
 msgid "Asset: Other"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:144
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:160
 #: src/data/Card.ts:702
 #: src/data/Card.ts:766
 msgid "Event"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:145
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:161
 #: src/data/Card.ts:703
 #: src/data/Card.ts:771
 msgid "Skill"
@@ -1035,7 +1035,7 @@ msgstr ""
 
 #: src/components/campaign/XpComponent.tsx:24
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/ExperienceLine.tsx:21
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:527
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:543
 msgid "Experience"
 msgstr ""
 
@@ -1837,11 +1837,11 @@ msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:146
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:162
 msgid "Enemy"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:147
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:163
 msgid "Treachery"
 msgstr ""
 
@@ -1880,7 +1880,7 @@ msgstr ""
 msgid "Upload to ArkhamDB"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:349
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:365
 #: src/components/deck/DeckDetailView/index.tsx:948
 msgid "Special Cards"
 msgstr ""
@@ -2610,7 +2610,7 @@ msgstr ""
 msgid "Select Deck Size"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:195
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:211
 #, javascript-format
 msgid "Bonded Cards (${ count })"
 msgstr ""
@@ -2767,7 +2767,7 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:337
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:353
 #: src/components/deck/DeckDetailView/index.tsx:938
 msgid "Deck Cards"
 msgstr ""
@@ -4808,7 +4808,7 @@ msgstr ""
 msgid "Latest upgrade"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:115
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:131
 msgid "Assets"
 msgstr ""
 
@@ -4817,7 +4817,7 @@ msgstr ""
 msgid "${ adjustedXp } XP"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:648
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:664
 msgid "Add cards"
 msgstr ""
 
@@ -4910,11 +4910,11 @@ msgstr ""
 msgid "Hide splash cards"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:386
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:402
 msgid "Limited Slots"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:392
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:408
 #, javascript-format
 msgid "${ count } of ${ limitSlotCount }"
 msgstr ""
@@ -5171,6 +5171,94 @@ msgstr ""
 msgctxt "Taboo List"
 msgid "None"
 msgstr ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:87
+msgctxt "header"
+msgid "Asset"
+msgid_plural "Assets"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:88
+msgctxt "header"
+msgid "Event"
+msgid_plural "Events"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:89
+msgctxt "header"
+msgid "Skill"
+msgid_plural "Skills"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:90
+msgctxt "header"
+msgid "Treachery"
+msgid_plural "Treacheries"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:91
+msgctxt "header"
+msgid "Enemy"
+msgid_plural "Enemies"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:92
+msgctxt "header"
+msgid "Location"
+msgid_plural "Locations"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:93
+msgctxt "header"
+msgid "Story"
+msgid_plural "Stories"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:94
+msgctxt "header"
+msgid "Act"
+msgid_plural "Acts"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:95
+msgctxt "header"
+msgid "Agenda"
+msgid_plural "Agendas"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:96
+msgctxt "header"
+msgid "Investigator"
+msgid_plural "Investigators"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:97
+msgctxt "header"
+msgid "Scenario"
+msgid_plural "Scenarios"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:69
 msgctxt "Weakness Card"
