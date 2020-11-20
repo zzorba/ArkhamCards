@@ -21,13 +21,14 @@ import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards } from '@components/core/hooks';
+import { usePlayerCards, usePressCallback } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import ArkhamButtonIcon from '@icons/ArkhamButtonIcon';
 import WarningIcon from '@icons/WarningIcon';
+import { useDeckXpStrings } from '@components/deck/hooks';
 
 interface Props {
   lang: string;
@@ -41,22 +42,6 @@ interface Props {
   viewDeckButton?: boolean;
   killedOrInsane?: boolean;
   width: number;
-}
-
-function deckXpString(parsedDeck: ParsedDeck) {
-  const xp = (parsedDeck.deck.xp || 0) + (parsedDeck.deck.xp_adjustment || 0);
-  if (xp > 0) {
-    if (parsedDeck.changes && parsedDeck.changes.spentXp > 0) {
-      const unspent = parsedDeck.availableExperience - parsedDeck.changes.spentXp;
-      const unspentStr = unspent > 0 ? `+${unspent}` : `${unspent}`;
-      return t`${xp} XP (${unspentStr} unspent)`;
-    }
-    return t`${xp} XP`;
-  }
-  if (parsedDeck.experience > 0) {
-    return t`${parsedDeck.experience} experience required`;
-  }
-  return null;
 }
 
 interface DetailProps {
@@ -94,6 +79,8 @@ function DeckListRowDetails({
   const { colors, typography } = useContext(StyleContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
   const cards = usePlayerCards(deck.taboo_id || 0);
+  const parsedDeck = useMemo(() => deck && cards && parseBasicDeck(deck, cards, previousDeck), [deck, cards, previousDeck]);
+  const [mainXpString, xpDetailString] = useDeckXpStrings(parsedDeck);
   if (details) {
     return (
       <>
@@ -101,7 +88,6 @@ function DeckListRowDetails({
       </>
     );
   }
-  const parsedDeck = deck && cards && parseBasicDeck(deck, cards, previousDeck);
   if (!parsedDeck || !investigator) {
     return (
       <Placeholder Animation={loadingAnimation}>
@@ -112,7 +98,7 @@ function DeckListRowDetails({
       </Placeholder>
     );
   }
-  const xpString = deckXpString(parsedDeck);
+  const xpString = xpDetailString ? `${mainXpString} · ${xpDetailString}` : mainXpString;
   const scenarioCount = deck.scenarioCount || 0;
   const traumaData = campaign && campaign.investigatorData[investigator.code];
   const campaignLines: string[] = [];
@@ -174,9 +160,10 @@ export default function NewDeckListRow({
   width,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const onDeckPress = useCallback(() => {
+  const onDeckPressFunction = useCallback(() => {
     onPress && onPress(deck, investigator);
   }, [deck, investigator, onPress]);
+  const onDeckPress = usePressCallback(onDeckPressFunction);
   const yithian = useMemo(() => (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.slots]);
   const campaign = deck && deckToCampaign && deckToCampaign[deck.id];
   const eliminated = useMemo(() => {

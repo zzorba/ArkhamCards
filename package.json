@@ -24,6 +24,7 @@
   "dependencies": {
     "@matt-block/react-native-in-app-browser": "3.2.2",
     "@ptomasroos/react-native-multi-slider": "2.2.2",
+    "@react-hook/debounce": "^3.0.0",
     "@react-hook/throttle": "2.2.0",
     "@react-native-async-storage/async-storage": "1.13.2",
     "@react-native-community/hooks": "2.6.0",
@@ -84,7 +85,9 @@
     "react-native-zss-rich-text-editor": "https://github.com/jb-/react-native-zss-rich-text-editor",
     "react-redux": "7.2.2",
     "redux": "4.0.5",
+    "redux-batched-subscribe": "^0.1.6",
     "redux-logger": "3.0.6",
+    "redux-perf-middleware": "^1.2.2",
     "redux-persist": "6.0.0",
     "redux-thunk": "2.3.0",
     "reflect-metadata": "0.1.13",
@@ -97,6 +100,7 @@
     "ttag": "1.7.22",
     "typeorm": "0.2.25",
     "url": "0.11.0",
+    "use-debounced-effect-hook": "^1.1.62",
     "utility-types": "3.10.0",
     "victory-native": "35.3.1",
     "yarn": "1.22.0"

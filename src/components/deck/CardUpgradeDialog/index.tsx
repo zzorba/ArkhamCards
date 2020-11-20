@@ -10,7 +10,7 @@ import CardTextComponent from '@components/card/CardTextComponent';
 import CardUpgradeOption from './CardUpgradeOption';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
-import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/DeckDetailView/actions';
+import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/actions';
 import DeckValidation from '@lib/DeckValidation';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
@@ -22,7 +22,8 @@ import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
 import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { useDeck, useSimpleDeckEdits, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useSimpleDeckEdits } from '@components/deck/hooks';
+import { useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
@@ -40,9 +41,7 @@ export default function CardUpgradeDialog({
   id,
 }: Props) {
   const cards = usePlayerCards();
-  const [deck] = useDeck(id, {});
   const deckEdits = useSimpleDeckEdits(id);
-  const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const dispatch = useDispatch();
   const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
@@ -153,13 +152,12 @@ export default function CardUpgradeDialog({
           componentId={componentId}
           card={card}
           showSpoilers
-          tabooSetId={tabooSetId}
           width={width}
           simple
         />
       </View>
     );
-  }, [componentId, tabooSetId, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
+  }, [componentId, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
     specialSkidsRule, onIncrementIgnore, onDecrementIgnore, onIncrement, onDecrement]);
 
   const doShrewdAnalysis = useCallback(() => {
@@ -326,7 +324,7 @@ export default function CardUpgradeDialog({
         { cardsSection }
         <View style={styles.footerPadding} />
       </ScrollView>
-      <DeckNavFooter componentId={componentId} deckId={id} />
+      <DeckNavFooter componentId={componentId} deckId={id} faction={investigator.factionCode()} />
     </View>
   );
 }

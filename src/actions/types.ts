@@ -523,6 +523,7 @@ export const START_DECK_EDIT = 'START_DECK_EDIT';
 export interface StartDeckEditAction {
   type: typeof START_DECK_EDIT;
   id: number;
+  deck?: Deck;
 }
 
 export const UPDATE_DECK_EDIT = 'UPDATE_DECK_EDIT';
@@ -997,8 +998,6 @@ export type SignInActions =
   LogoutAction;
 
 export type DecksActions =
-  ResetDeckChecklistAction |
-  SetDeckChecklistCardAction |
   LogoutAction |
   RestoreComplexBackupAction |
   RestoreBackupAction |
@@ -1011,7 +1010,15 @@ export type DecksActions =
   UpdateDeckAction |
   ClearDecksAction |
   ReplaceLocalDeckAction |
-  EnsureUuidAction |
+  EnsureUuidAction;
+
+export type DeckEditsActions =
+  DeleteDeckAction |
+  ReplaceLocalDeckAction |
+  ResetDeckChecklistAction |
+  SetDeckChecklistCardAction |
+  DeleteDeckAction |
+  UpdateDeckAction |
   StartDeckEditAction |
   UpdateDeckEditAction |
   FinishDeckEditAction |

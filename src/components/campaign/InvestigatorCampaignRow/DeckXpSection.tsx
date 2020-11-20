@@ -8,7 +8,7 @@ import PickerStyleButton from '@components/core/PickerStyleButton';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { showDeckModal } from '@components/nav/helper';
 import Card, { CardsMap } from '@data/Card';
-import { AppState, getDeck } from '@reducers';
+import { AppState, makeDeckSelector } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
 
@@ -22,10 +22,10 @@ interface Props {
 
 export default function DeckXpSection({ componentId, deck, cards, investigator, showDeckUpgrade }: Props) {
   const { colors } = useContext(StyleContext);
-  const previousDeckSelector = useCallback((state: AppState) => {
-    return (deck.previous_deck && getDeck(deck.previous_deck)(state)) || undefined;
-  }, [deck.previous_deck]);
-  const previousDeck = useSelector(previousDeckSelector);
+  const previousDeckSelector = useMemo(makeDeckSelector, []);
+  const previousDeck = useSelector((state: AppState) => {
+    return (deck.previous_deck && previousDeckSelector(state, deck.previous_deck)) || undefined;
+  });
 
   const showDeckUpgradePress = useCallback(() => {
     if (deck && showDeckUpgrade) {

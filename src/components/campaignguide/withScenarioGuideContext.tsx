@@ -29,18 +29,25 @@ export default function withScenarioGuideContext<Props>(
       return processedScenario && new ScenarioStateHelper(processedScenario.scenarioGuide.id, campaignState);
     }, [processedScenario, campaignState]);
 
-    if (!processedScenario || !scenarioState) {
+    const context = useMemo(() => {
+      if (!processedScenario || !scenarioState) {
+        return undefined;
+      }
+      return {
+        processedScenario,
+        scenarioState,
+      };
+    }, [processedScenario, scenarioState]);
+
+    if (!context) {
       return <Text>Unknown scenario: { scenarioId }</Text>;
     }
     return (
-      <ScenarioGuideContext.Provider value={{
-        processedScenario,
-        scenarioState,
-      }}>
+      <ScenarioGuideContext.Provider value={context}>
         <WrappedComponent
           {...props as Props}
-          processedScenario={processedScenario}
-          scenarioState={scenarioState}
+          processedScenario={context.processedScenario}
+          scenarioState={context.scenarioState}
         />
       </ScenarioGuideContext.Provider>
     );

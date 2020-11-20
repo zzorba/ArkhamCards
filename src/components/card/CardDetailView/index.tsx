@@ -20,7 +20,7 @@ import COLORS from '@styles/colors';
 import { getShowSpoilers, AppState } from '@reducers';
 import Card from '@data/Card';
 import StyleContext from '@styles/StyleContext';
-import { useComponentDidAppear, useFlag, useNavigationButtonPressed, useTabooSetId } from '@components/core/hooks';
+import { useComponentDidAppear, useFlag, useNavigationButtonPressed } from '@components/core/hooks';
 import space from '@styles/space';
 import useSingleCard from '../useSingleCard';
 
@@ -48,11 +48,6 @@ export function rightButtonsForCard(card?: Card, color?: string) {
     });
   }
   return rightButtons;
-}
-
-interface ReduxProps {
-  showSpoilers: boolean;
-  tabooSetId?: number;
 }
 
 export interface CardDetailProps {
@@ -98,7 +93,6 @@ function CardDetailView({ componentId, id, pack_code, showSpoilers: propsShowSpo
   const { width } = useWindowDimensions();
   const showSpoilersSelector = useCallback((state: AppState) => propsShowSpoilers || getShowSpoilers(state, pack_code), [propsShowSpoilers, pack_code]);
   const showSpoilersSetting = useSelector(showSpoilersSelector);
-  const tabooSetId = useTabooSetId(tabooSetIdOverride);
 
   const [showSpoilers, toggleShowSpoilers] = useFlag(showSpoilersSetting);
   const showInvestigatorCards = useCallback(() => {
@@ -136,7 +130,7 @@ function CardDetailView({ componentId, id, pack_code, showSpoilers: propsShowSpo
       Navigation.pop(componentId);
     }
   }, componentId, [componentId, id, showInvestigatorCards]);
-  const [card, loading] = useSingleCard(id, 'encounter');
+  const [card, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);
   useEffect(() => {
     if (card) {
       Navigation.mergeOptions(componentId, {
@@ -165,7 +159,6 @@ function CardDetailView({ componentId, id, pack_code, showSpoilers: propsShowSpo
         componentId={componentId}
         card={card}
         showSpoilers={showSpoilersSetting || showSpoilers}
-        tabooSetId={tabooSetId}
         toggleShowSpoilers={toggleShowSpoilers}
         showInvestigatorCards={showInvestigatorCards}
       />

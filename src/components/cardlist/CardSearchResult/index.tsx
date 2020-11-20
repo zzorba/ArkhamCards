@@ -17,6 +17,7 @@ import { rowHeight, iconSize } from './constants';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ControlComponent, ControlType } from './ControlComponent';
+import { useThrottleCallback } from '@react-hook/throttle';
 
 interface Props {
   card: Card;
@@ -127,7 +128,7 @@ function CardIcon({ card }: { card: Card }) {
   );
 }
 
-export default function CardSearchResult(props: Props) {
+function CardSearchResult(props: Props) {
   const {
     card,
     id,
@@ -139,7 +140,7 @@ export default function CardSearchResult(props: Props) {
     noBorder,
   } = props;
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
-  const handleCardPress = useCallback(() => {
+  const handleCardPressFunction = useCallback(() => {
     Keyboard.dismiss();
     if (id && onPressId) {
       onPressId(id, card);
@@ -147,6 +148,7 @@ export default function CardSearchResult(props: Props) {
       onPress && onPress(card);
     }
   }, [onPress, onPressId, id, card]);
+  const handleCardPress = useThrottleCallback(handleCardPressFunction, 1, true);
 
   const dualFactionIcons = useMemo(() => {
     if (!card.faction2_code) {
@@ -315,6 +317,8 @@ export default function CardSearchResult(props: Props) {
     </View>
   );
 }
+export default React.memo(CardSearchResult);
+
 
 const styles = StyleSheet.create({
   rowContainer: {

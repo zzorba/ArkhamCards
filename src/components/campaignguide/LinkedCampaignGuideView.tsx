@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Alert, ScrollView } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import LinkedScenarioListComponent from './LinkedScenarioListComponent';
@@ -15,8 +15,7 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import TabView from '@components/core/TabView';
 import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
-import { campaignGuideReduxData } from '@components/campaignguide/contextHelper';
-import { AppState } from '@reducers';
+import { useCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
 import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
@@ -43,10 +42,8 @@ function LinkedCampaignGuideView(props: Props) {
 
   const campaign = useCampaign(campaignId);
   const campaignName = (campaign && campaign.name) || '';
-  const campaignDataASelector = useCallback((state: AppState) => investigators && campaignGuideReduxData(campaignIdA, investigators, state), [campaignIdA, investigators]);
-  const campaignDataA = useSelector(campaignDataASelector);
-  const campaignDataBSelector = useCallback((state: AppState) => investigators && campaignGuideReduxData(campaignIdB, investigators, state), [campaignIdB, investigators]);
-  const campaignDataB = useSelector(campaignDataBSelector);
+  const campaignDataA = useCampaignGuideReduxData(campaignIdA, investigators);
+  const campaignDataB = useCampaignGuideReduxData(campaignIdB, investigators);
 
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));

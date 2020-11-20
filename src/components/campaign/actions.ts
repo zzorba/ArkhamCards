@@ -42,7 +42,7 @@ import {
   ADJUST_BLESS_CURSE,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
-import { AppState, getCampaign } from '@reducers';
+import { AppState, makeCampaignSelector } from '@reducers';
 
 function getBaseDeckIds(
   state: AppState,
@@ -265,7 +265,7 @@ export function deleteCampaign(
   id: number
 ): ThunkAction<void, AppState, null, DeleteCampaignAction> {
   return (dispatch, getState: () => AppState) => {
-    const campaign = getCampaign(getState(), id);
+    const campaign = makeCampaignSelector()(getState(), id);
     if (campaign && campaign.link) {
       dispatch({
         type: DELETE_CAMPAIGN,

@@ -390,7 +390,7 @@ export default function({
           />
           { deckId !== undefined && (
             <View style={styles.footer}>
-              <DeckNavFooter deckId={deckId} componentId={componentId} />
+              <DeckNavFooter deckId={deckId} componentId={componentId} faction={investigator?.factionCode()} />
             </View>
           ) }
         </>

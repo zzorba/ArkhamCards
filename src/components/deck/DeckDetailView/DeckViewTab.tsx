@@ -1,8 +1,8 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { MutableRefObject, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, find, flatMap, flatten, forEach, map, sum, sumBy, uniqBy } from 'lodash';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { t } from 'ttag';
+import { c, msgid, ngettext, t } from 'ttag';
 
 import {
   Campaign,
@@ -10,6 +10,7 @@ import {
   Deck,
   DeckMeta,
   DeckProblem,
+  EditDeckState,
   ParsedDeck,
   SplitCards,
 } from '@actions/types';
@@ -23,14 +24,14 @@ import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
-import { BODY_OF_A_YITHIAN } from '@app_constants';
+import { BODY_OF_A_YITHIAN, TypeCodeType } from '@app_constants';
 import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
 import space, { isBig, m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useDeckEdits, useFlag } from '@components/core/hooks';
-import { setDeckTabooSet, updateDeckMeta } from './actions';
+import { useFlag } from '@components/core/hooks';
+import { setDeckTabooSet, updateDeckMeta } from '@components/deck/actions';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
@@ -39,6 +40,7 @@ import DeckMetadataComponent from './DeckMetadataComponent';
 import DeckTabooPickerButton from './DeckTabooPickerButton';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckPickerStyleButton from './DeckPickerStyleButton';
+import { useDeckXpStrings } from '../hooks';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -78,6 +80,22 @@ function hasUpgrades(
       validation.canIncludeCard(upgradeCard, false) &&
       (upgradeCard.pack_code === 'core' || inCollection[upgradeCard.pack_code])
     )));
+}
+
+function sectionHeaderTitle(type: TypeCodeType, count: number): string {
+  switch (type) {
+    case 'asset': return c('header').ngettext(msgid`Asset`, `Assets`, count);
+    case 'event': return c('header').ngettext(msgid`Event`, `Events`, count);
+    case 'skill': return c('header').ngettext(msgid`Skill`, `Skills`, count);
+    case 'treachery': return c('header').ngettext(msgid`Treachery`, `Treacheries`, count);
+    case 'enemy': return c('header').ngettext(msgid`Enemy`, `Enemies`, count);
+    case 'location': return c('header').ngettext(msgid`Location`, `Locations`, count);
+    case 'story': return c('header').ngettext(msgid`Story`, `Stories`, count);
+    case 'act': return c('header').ngettext(msgid`Act`, `Acts`, count);
+    case 'agenda': return c('header').ngettext(msgid`Agenda`, `Agendas`, count);
+    case 'investigator': return c('header').ngettext(msgid`Investigator`, `Investigators`, count);
+    case 'scenario': return c('header').ngettext(msgid`Scenario`, `Scenarios`, count);
+  }
 }
 
 function deckToSections(
@@ -248,6 +266,8 @@ interface Props {
   inCollection: {
     [pack_code: string]: boolean;
   };
+  deckEdits?: EditDeckState;
+  deckEditsRef: MutableRefObject<EditDeckState | undefined>;
 }
 
 export default function DeckViewTab(props: Props) {
@@ -280,9 +300,10 @@ export default function DeckViewTab(props: Props) {
     hideCampaign,
     showDeckUpgrade,
     showDeckHistory,
+    deckEdits,
+    deckEditsRef,
   } = props;
   const { backgroundStyle, colors } = useContext(StyleContext);
-  const [deckEdits, deckEditsRef] = useDeckEdits(deck.id);
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
   const [data, setData] = useState<DeckSection[]>([]);
@@ -396,7 +417,7 @@ export default function DeckViewTab(props: Props) {
       newData.push(bonded);
     }
     setData(newData);
-  }, [investigatorBack, limitSlotCount ,limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits, cards,
+  }, [investigatorBack, limitSlotCount ,limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits?.meta, cards,
     showEditCards, showEditSpecial, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
   const faction = parsedDeck.investigator.factionCode();
   const showSwipeCard = useCallback((id: string, card: Card) => {
@@ -506,7 +527,7 @@ export default function DeckViewTab(props: Props) {
       ]));
     }
   }, [dispatch, deckEditsRef, deck.id, deck.investigator_code]);
-
+  const [xpLabel, xpDetailLabel] = useDeckXpStrings(parsedDeck);
   const investigatorOptions = useMemo(() => {
     if (!deckEdits?.meta || !investigator) {
       return null;
@@ -515,16 +536,13 @@ export default function DeckViewTab(props: Props) {
     const changes = parsedDeck.changes;
     const hasXpButton = editable && !!(changes && deck.previous_deck);
     const hasOptions = hasInvestigatorOptions(investigator, parallelInvestigators);
-    const adjustedXp = (deck.xp || 0) + (deckEdits?.xpAdjustment || 0);
-    const unspent = adjustedXp - (changes?.spentXp || 0);
-    const unspentStr = unspent > 0 ? `+${unspent}` : `${unspent}`;
     return (
       <View style={[styles.optionsContainer, space.paddingS]}>
-        { hasXpButton && !!changes && (
+        { hasXpButton && !!changes && !!xpLabel && (
           <DeckPickerStyleButton
             title={t`Experience`}
-            valueLabel={t`${adjustedXp} XP`}
-            valueLabelDescription={deck.previous_deck ? t`${unspentStr} unspent` : undefined}
+            valueLabel={xpLabel}
+            valueLabelDescription={xpDetailLabel}
             editable={editable}
             onPress={showEditNameDialog}
             first
@@ -557,8 +575,8 @@ export default function DeckViewTab(props: Props) {
       </View>
     );
   }, [investigator, parallelInvestigators, deck, tabooSetId, tabooSet, showTaboo, tabooOpen, editable,
-    deckEdits?.meta, deckEdits?.xpAdjustment, parsedDeck?.changes,
-    showEditNameDialog, setMeta, setParallel, setTabooSet,
+    deckEdits?.meta, parsedDeck?.changes,
+    showEditNameDialog, setMeta, setParallel, setTabooSet, xpLabel, xpDetailLabel,
   ]);
 
   const investigatorBlock = useMemo(() => {
@@ -629,14 +647,10 @@ export default function DeckViewTab(props: Props) {
       </View>
     );
   }, [investigatorBlock, investigatorOptions, buttons, parsedDeck, bondedCardsCount, problem, editable, deck.previous_deck]);
-  if (!deckEdits) {
-    return null;
-  }
 
-  return (
-    <ScrollView contentContainerStyle={backgroundStyle}>
-      { header }
-      <View style={space.marginSideS}>
+  const renderedData = useMemo(() => {
+    return (
+      <>
         { map(data, deckSection => {
           return (
             <View style={space.marginBottomS} key={deckSection.title}>
@@ -659,7 +673,20 @@ export default function DeckViewTab(props: Props) {
               </DeckSectionBlock>
             </View>
           );
-        })}
+        }) }
+      </>
+    );
+  }, [data, renderSectionHeader, renderCard, faction]);
+
+  if (!deckEdits) {
+    return null;
+  }
+
+  return (
+    <ScrollView contentContainerStyle={backgroundStyle}>
+      { header }
+      <View style={space.marginSideS}>
+        { renderedData }
         <DeckProgressComponent
           componentId={componentId}
           cards={cards}

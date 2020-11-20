@@ -13,25 +13,26 @@ import { TINY_PHONE } from '@styles/sizes';
 import COLORS from '@styles/colors';
 import { showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
-import { m, s, xs } from '@styles/space';
+import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useParsedDeck } from '@components/core/hooks';
-
-const SHOW_CHARTS_BUTTON = true;
+import { useDeckXpStrings, useParsedDeck } from '@components/deck/hooks';
+import { FactionCodeType } from '@app_constants';
 
 interface Props {
   componentId: string;
   deckId: number;
   controls?: React.ReactNode;
+  faction?: FactionCodeType;
 }
 
 export default function DeckNavFooter({
   componentId,
   deckId,
   controls,
+  faction,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const { parsedDeck, deckEdits } = useParsedDeck(deckId, componentId);
+  const { parsedDeck, deckEdits } = useParsedDeck(deckId, 'NavFooter', componentId);
 
   const showCardChartsPressed = useCallback(() => {
     if (parsedDeck) {
@@ -58,81 +59,83 @@ export default function DeckNavFooter({
     );
   }, [parsedDeck?.problem]);
 
-  const [xpString, xpDetailString] = useMemo(() => {
-    if (!parsedDeck || deckEdits?.xpAdjustment === undefined) {
-      return [undefined, undefined];
+  const factionColor = faction || parsedDeck?.investigator.factionCode();
+  const bigTextStyle = TINY_PHONE ? typography.small : typography.text;
+  const mainLine = useMemo(() => {
+    if (!parsedDeck) {
+      return null;
     }
-    const experience = parsedDeck.availableExperience;
-    const changes = parsedDeck.changes;
+    const {
+      normalCardCount,
+      totalCardCount,
+    } = parsedDeck;
+    const cardCountString = ngettext(
+      msgid`${normalCardCount} Card`,
+      `${normalCardCount} Cards`,
+      normalCardCount
+    );
+    const totalCountString = ngettext(
+      msgid`${totalCardCount} Total`,
+      `${totalCardCount} Total`,
+      totalCardCount
+    );
 
-    const xpStr = ngettext(msgid`${experience} XP`, `${experience} XP`, experience);
-    if (!changes) {
-      return [xpStr, undefined];
+    return (
+      <View style={styles.row}>
+        <Text style={[bigTextStyle, styles.whiteText]} allowFontScaling={false}>
+          { `${cardCountString}` }
+        </Text>
+        <Text style={[typography.small, typography.italic, { lineHeight: bigTextStyle.lineHeight, color: '#ddd' }]} allowFontScaling={false}>
+          { `  ${totalCountString}` }
+        </Text>
+      </View>
+    );
+  }, [parsedDeck, bigTextStyle, typography]);
+
+  const [xpString, xpDetailString] = useDeckXpStrings(parsedDeck);
+
+  const xpLine = useMemo(() => {
+    if (!xpString && !xpDetailString) {
+      return null;
     }
-    const unspentXp = parsedDeck.availableExperience - (changes?.spentXp || 0);
-    const unspentXpStr = parsedDeck.availableExperience > 0 ? `+${unspentXp}` : `${unspentXp}`;
-    return [
-      xpStr,
-      ngettext(msgid`${unspentXpStr} unspent`, `${unspentXpStr} unspent`, unspentXp),
-    ];
-  }, [deckEdits?.xpAdjustment, parsedDeck]);
-  if (!parsedDeck) {
+    return (
+      <View style={styles.row}>
+        { !!xpString && (
+          <Text style={[bigTextStyle, styles.whiteText]} allowFontScaling={false}>
+            { `  ·  ${xpString}` }
+          </Text>
+        ) }
+        { !!xpDetailString && (
+          <Text style={[typography.small, typography.italic, { lineHeight: bigTextStyle.lineHeight, color: '#ddd' }]} allowFontScaling={false}>
+            { ` ${xpDetailString}` }
+          </Text>
+        )}
+      </View>
+    );
+  }, [xpString, xpDetailString, typography, bigTextStyle]);
+  if (!factionColor) {
     return null;
   }
-
-  const {
-    investigator,
-    normalCardCount,
-    totalCardCount,
-  } = parsedDeck;
-  const cardCountString = ngettext(
-    msgid`${normalCardCount} Card`,
-    `${normalCardCount} Cards`,
-    normalCardCount
-  );
-  const totalCountString = ngettext(
-    msgid`${totalCardCount} Total`,
-    `${totalCardCount} Total`,
-    totalCardCount
-  );
-  const faction = investigator.factionCode();
-  const bigTextStyle = TINY_PHONE ? typography.small : typography.text;
   return (
     <View style={styles.borderWrapper}>
-      <View style={[styles.wrapper, { backgroundColor: colors.faction[faction].background }]}>
+      <View style={[styles.wrapper, { backgroundColor: colors.faction[factionColor || 'neutral'].background }]}>
         <View style={styles.left}>
-          <View style={styles.row}>
-            <Text style={[bigTextStyle, styles.whiteText]} allowFontScaling={false}>
-              { `${cardCountString}` }
-            </Text>
-            <Text style={[typography.small, typography.italic, { lineHeight: bigTextStyle.lineHeight, color: '#ddd' }]} allowFontScaling={false}>
-              { `  ${totalCountString}` }
-            </Text>
-            { !!xpString && (
-              <Text style={[bigTextStyle, styles.whiteText]} allowFontScaling={false}>
-                { `  ·  ${xpString}` }
-              </Text>
-            ) }
-            { !!xpDetailString && (
-              <Text style={[typography.small, typography.italic, { lineHeight: bigTextStyle.lineHeight, color: '#ddd' }]} allowFontScaling={false}>
-                { ` ${xpDetailString}` }
-              </Text>
-            )}
+          <View style={TINY_PHONE ? styles.row : styles.row}>
+            { mainLine }
+            { xpLine }
           </View>
           <View style={styles.row}>
             { problemRow }
           </View>
         </View>
-        <View style={styles.right}>
+        <View style={[styles.right, controls && TINY_PHONE ? space.paddingTopS : undefined]}>
           { controls || (
             <>
-              { SHOW_CHARTS_BUTTON && (
-                <TouchableOpacity onPress={showCardChartsPressed}>
-                  <View style={styles.button}>
-                    <AppIcon name="chart" size={36} color="#FFFFFF" />
-                  </View>
-                </TouchableOpacity>
-              ) }
+              <TouchableOpacity onPress={showCardChartsPressed}>
+                <View style={styles.button}>
+                  <AppIcon name="chart" size={36} color="#FFFFFF" />
+                </View>
+              </TouchableOpacity>
               <TouchableOpacity onPress={showDrawSimulatorPressed}>
                 <View style={styles.button}>
                   <AppIcon name="draw" size={36} color="#FFFFFF" />

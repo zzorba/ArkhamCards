@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 
 import OddsCalculatorComponent from './OddsCalculatorComponent';
 import { SCENARIO_CARDS_QUERY } from '@data/query';
-import { AppState, getCampaign } from '@reducers';
-import { useCampaignScenarios, useInvestigatorCards } from '@components/core/hooks';
+import { AppState, makeCampaignSelector } from '@reducers';
+import { useCycleScenarios, useInvestigatorCards } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 
@@ -16,9 +16,10 @@ export interface OddsCalculatorProps {
 
 const EMPTY_CHAOS_BAG = {};
 export default function OddsCalculatorView({ campaignId, investigatorIds }: OddsCalculatorProps) {
+  const getCampaign = useMemo(makeCampaignSelector, []);
   const campaign = useSelector((state: AppState) => getCampaign(state, campaignId));
   const chaosBag = campaign?.chaosBag || EMPTY_CHAOS_BAG;
-  const [cycleScenarios, scenarioByCode] = useCampaignScenarios(campaign);
+  const cycleScenarios = useCycleScenarios(campaign);
   const investigators = useInvestigatorCards();
   const allInvestigators = useMemo(() => flatMap(investigatorIds, code => investigators?.[code] || []), [investigatorIds, investigators]);
   const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
@@ -35,7 +36,6 @@ export default function OddsCalculatorView({ campaignId, investigatorIds }: Odds
       campaign={campaign}
       chaosBag={chaosBag || {}}
       cycleScenarios={cycleScenarios}
-      scenarioByCode={scenarioByCode}
       allInvestigators={allInvestigators}
       scenarioCards={scenarioCards}
     />

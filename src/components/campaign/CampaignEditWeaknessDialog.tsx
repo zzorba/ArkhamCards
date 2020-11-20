@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { t } from 'ttag';
@@ -6,7 +6,7 @@ import { Campaign, Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
 import { updateCampaign } from './actions';
-import { getCampaign, AppState } from '@reducers';
+import { AppState, makeCampaignSelector } from '@reducers';
 
 export interface CampaignEditWeaknessProps {
   campaignId: number;
@@ -14,11 +14,9 @@ export interface CampaignEditWeaknessProps {
 
 function CampaignEditWeaknessDialog({ componentId, campaignId }: CampaignEditWeaknessProps & NavigationProps) {
   const dispatch = useDispatch();
-  const weaknessSelector = useCallback((state: AppState) => {
-    const campaign = getCampaign(state, campaignId);
-    return campaign && campaign.weaknessSet;
-  }, [campaignId]);
-  const weaknessSet = useSelector(weaknessSelector);
+  const campaignSelector = useMemo(makeCampaignSelector, []);
+  const campaign = useSelector((state: AppState) => campaignSelector(state, campaignId));
+  const weaknessSet = campaign && campaign.weaknessSet;
   const updateAssignedCards = useCallback((assignedCards: Slots) => {
     if (weaknessSet) {
       const updatedWeaknessSet = {

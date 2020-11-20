@@ -30,8 +30,9 @@ import {
   deleteDeckAction,
   uploadLocalDeck,
   saveDeckChanges,
+  startDeckEdit,
 } from '@components/deck/actions';
-import { Slots, START_DECK_EDIT, UPDATE_DECK_EDIT } from '@actions/types';
+import { Slots, UPDATE_DECK_EDIT } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/Card';
@@ -44,8 +45,8 @@ import EditDeckDetailsDialog from './EditDeckDetailsDialog';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '@components/DeckNavFooter';
 import {
-  getCampaign,
-  getCampaignForDeck,
+  makeCampaignSelector,
+  makeCampaignForDeckSelector,
   getPacksInCollection,
   AppState,
 } from '@reducers';
@@ -53,7 +54,8 @@ import space, { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useParsedDeck, useTabooSet } from '@components/core/hooks';
+import { useParsedDeck } from '@components/deck/hooks';
+import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
@@ -100,7 +102,7 @@ function DeckDetailView({
     visible,
     parsedDeck,
     tabooSetId,
-  } = useParsedDeck(id, componentId, true);
+  } = useParsedDeck(id, 'DeckDetail', componentId, true);
 
   const [copying, toggleCopying] = useFlag(false);
   const [saving, setSaving] = useState(false);
@@ -127,9 +129,18 @@ function DeckDetailView({
     });
     return parallelInvestigators;
   }, [investigators, deck?.investigator_code]);
+  const [hasPendingEdits, setHasPendingEdits] = useState(false);
+  const [slotDeltas, setSlotDeltas] = useState<{
+    removals: Slots;
+    additions: Slots;
+    ignoreDeckLimitChanged: boolean
+  }>({ removals: {}, additions: {}, ignoreDeckLimitChanged: false });
 
-  const slotDeltas = useMemo(() => {
-    const result: {
+  useEffect(() => {
+    if (!visible || !deck || !deckEdits) {
+      return;
+    }
+    const slotDeltas: {
       removals: Slots;
       additions: Slots;
       ignoreDeckLimitChanged: boolean;
@@ -138,27 +149,36 @@ function DeckDetailView({
       additions: {},
       ignoreDeckLimitChanged: false,
     };
-    if (!deck || !deckEdits) {
-      return result;
-    }
     forEach(deck.slots, (deckCount, code) => {
       const currentDeckCount = deckEdits.slots[code] || 0;
       if (deckCount > currentDeckCount) {
-        result.removals[code] = deckCount - currentDeckCount;
+        slotDeltas.removals[code] = deckCount - currentDeckCount;
       }
     });
     forEach(deckEdits.slots, (currentCount, code) => {
       const ogDeckCount = deck.slots[code] || 0;
       if (ogDeckCount < currentCount) {
-        result.additions[code] = currentCount - ogDeckCount;
+        slotDeltas.additions[code] = currentCount - ogDeckCount;
       }
       const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
       if (ogIgnoreCount !== (deckEdits.ignoreDeckLimitSlots[code] || 0)) {
-        result.ignoreDeckLimitChanged = true;
+        slotDeltas.ignoreDeckLimitChanged = true;
       }
     });
-    return result;
-  }, [deck, deckEdits]);
+
+    const originalTabooSet: number = (deck.taboo_id || 0);
+    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
+    setHasPendingEdits(
+      (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
+      (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
+      (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
+      keys(slotDeltas.removals).length > 0 ||
+      keys(slotDeltas.additions).length > 0 ||
+      slotDeltas.ignoreDeckLimitChanged ||
+      (!!metaChanges && metaChanges.length > 0)
+    );
+    setSlotDeltas(slotDeltas);
+  }, [deck, deckEdits, visible]);
 
   const [investigatorFront, investigatorBack] = useMemo(() => {
     const altFront = deckEdits?.meta.alternate_front && find(
@@ -175,9 +195,10 @@ function DeckDetailView({
 
   const problem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
-  const campaignSelector = useCallback((state: AppState) => campaignId ? getCampaign(state, campaignId) : getCampaignForDeck(state, deck?.id || id), [deck, id, campaignId]);
+  const campaignSelector = useMemo(makeCampaignSelector, []);
+  const campaignForDeckSelector = useMemo(makeCampaignForDeckSelector, []);
   const inCollection = useSelector(getPacksInCollection);
-  const campaign = useSelector(campaignSelector);
+  const campaign = useSelector((state: AppState) => campaignId ? campaignSelector(state, campaignId) : campaignForDeckSelector(state, deck?.id || id));
 
   const [cardsByName, bondedCardsByName] = useMemo(() => {
     const cardsByName: {
@@ -204,21 +225,6 @@ function DeckDetailView({
     });
     return [cardsByName, bondedCardsByName];
   }, [cards]);
-
-  const hasPendingEdits = useMemo(() => {
-    if (!deck || !deckEdits) {
-      return false;
-    }
-    const originalTabooSet: number = (deck.taboo_id || 0);
-    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
-    return (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
-      (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
-      (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
-      keys(slotDeltas.removals).length > 0 ||
-      keys(slotDeltas.additions).length > 0 ||
-      slotDeltas.ignoreDeckLimitChanged ||
-      (!!metaChanges && metaChanges.length > 0);
-  }, [deck, deckEdits, slotDeltas]);
 
   const addedBasicWeaknesses = useMemo(() => {
     if (!cards || !deck) {
@@ -613,7 +619,7 @@ function DeckDetailView({
   }, [setSaveError, setSaving]);
 
   const clearEdits = useCallback(() => {
-    dispatch({ type: START_DECK_EDIT, id });
+    dispatch(startDeckEdit(id));
   }, [dispatch, id]);
 
   const copyDialog = useMemo(() => {
@@ -1089,8 +1095,10 @@ function DeckDetailView({
               campaign={campaign}
               hideCampaign={hideCampaign}
               width={width}
+              deckEdits={deckEdits}
+              deckEditsRef={deckEditsRef}
             />
-            <DeckNavFooter deckId={id} componentId={componentId} />
+            <DeckNavFooter deckId={id} componentId={componentId} faction={investigatorFront?.factionCode()} />
           </View>
           { editDetailsDialog }
         </View>

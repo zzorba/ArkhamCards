@@ -1571,6 +1571,13 @@
   resolved "https://registry.yarnpkg.com/@ptomasroos/react-native-multi-slider/-/react-native-multi-slider-2.2.2.tgz#35a97fb8c355627c6a2ded010b360ac5728b44ad"
   integrity sha512-HWyCnRD3Z3SbHK2FLWYmBBqd1B4iXipeKv1+AK0FoY/CElEDTEixHE8hN60TsqxalPrznn798LE2Q4tHuCiyaA==
 
+"@react-hook/debounce@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@react-hook/debounce/-/debounce-3.0.0.tgz#9eea8b5d81d4cb67cd72dd8657b3ff724afc7cad"
+  integrity sha512-ir/kPrSfAzY12Gre0sOHkZ2rkEmM4fS5M5zFxCi4BnCeXh2nvx9Ujd+U4IGpKCuPA+EQD0pg1eK2NGLvfWejag==
+  dependencies:
+    "@react-hook/latest" "^1.0.2"
+
 "@react-hook/latest@^1.0.2":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@react-hook/latest/-/latest-1.0.3.tgz#c2d1d0b0af8b69ec6e2b3a2412ba0768ac82db80"
@@ -9164,6 +9171,11 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
+present@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/present/-/present-1.0.0.tgz#6d2f865be7a96885118f4660e83e2161fb71cf2b"
+  integrity sha1-bS+GW+epaIURj0Zg6D4hYftxzys=
+
 prettier-linter-helpers@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/prettier-linter-helpers/-/prettier-linter-helpers-1.0.0.tgz#d23d41fe1375646de2d0104d3454a3008802cf7b"
@@ -9965,12 +9977,24 @@ realpath-native@^2.0.0:
   resolved "https://registry.yarnpkg.com/realpath-native/-/realpath-native-2.0.0.tgz#7377ac429b6e1fd599dc38d08ed942d0d7beb866"
   integrity sha512-v1SEYUOXXdbBZK8ZuNgO4TBjamPsiSgcFr0aP+tEKpQZK8vooEUqV6nm6Cv502mX4NF2EfsnVqtNAHG+/6Ur1Q==
 
+redux-batched-subscribe@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/redux-batched-subscribe/-/redux-batched-subscribe-0.1.6.tgz#de928602708df7198b4d0c98c7119df993780d59"
+  integrity sha1-3pKGAnCN9xmLTQyYxxGd+ZN4DVk=
+
 redux-logger@3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
   integrity sha1-91VZZvMJjzyIYExEnPC69XeCdL8=
   dependencies:
     deep-diff "^0.3.5"
+
+redux-perf-middleware@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/redux-perf-middleware/-/redux-perf-middleware-1.2.2.tgz#099b4ca38d1f0a3beb77b66617d196ed0ef2f514"
+  integrity sha1-CZtMo40fCjvrd7ZmF9GW7Q7y9RQ=
+  dependencies:
+    present "^1.0.0"
 
 redux-persist@6.0.0:
   version "6.0.0"
@@ -11624,6 +11648,19 @@ url@0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-debounce@^3.3.0:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-3.4.3.tgz#5df9322322b3f1b1c263d46413f9facf6d8b56ab"
+  integrity sha512-nxy+opOxDccWfhMl36J5BSCTpvcj89iaQk2OZWLAtBJQj7ISCtx1gh+rFbdjGfMl6vtCZf6gke/kYvrkVfHMoA==
+
+use-debounced-effect-hook@^1.1.62:
+  version "1.1.62"
+  resolved "https://registry.yarnpkg.com/use-debounced-effect-hook/-/use-debounced-effect-hook-1.1.62.tgz#909648550c69fc88026c18bcd3ea211123541ba7"
+  integrity sha512-DDkGKEqV7bMAdgW/KC3T4CibQgp3sQ+1OligFwqLb2OYw3qWuxURSLHDYe0CNlLeW2CHBoLNksPk3sRL50/50g==
+  dependencies:
+    lodash.isequal "^4.5.0"
+    use-debounce "^3.3.0"
 
 use-subscription@^1.0.0:
   version "1.4.1"
