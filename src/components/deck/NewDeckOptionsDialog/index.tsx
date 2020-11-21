@@ -334,7 +334,7 @@ function NewDeckOptionsDialog({
   if (!investigator) {
     return null;
   }
-  const okDisabled = saving || !find(optionSelected, selected => selected);
+  const okDisabled = saving || !(starterDeck || !!find(optionSelected, selected => selected));
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       { formContent }
