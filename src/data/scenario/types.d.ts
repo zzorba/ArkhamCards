@@ -6,11 +6,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Narration {
-  id: string;
-  name: string;
-}
-
 export type Schema = AllCampaigns | Log | Errata | Rules;
 export type Step =
   | BranchStep
@@ -167,7 +162,7 @@ export interface Campaign {
   setup: string[];
   steps: Step[];
   side_scenario_steps?: Step[];
-  standalone?: any[];
+  campaign_type: "standalone" | "campaign";
 }
 export interface BranchStep {
   id: string;
@@ -198,7 +193,7 @@ export interface CampaignLogCondition {
 }
 export interface BoolOption {
   boolCondition: boolean;
-  condition?: string;
+  prompt?: string;
   effects?: Effect[];
   border?: boolean;
   steps?: string[];
@@ -363,6 +358,7 @@ export interface Option {
   boolCondition?: boolean;
   numCondition?: number;
   condition?: string;
+  prompt?: string;
   border?: boolean;
   effects?: Effect[];
   steps?: string[];
@@ -575,6 +571,7 @@ export interface UseSuppliesChoiceInput {
   section: string;
   id: string;
   name: string;
+  prompt: string;
   investigator: "choice";
   min: number;
   max: number;
@@ -585,6 +582,7 @@ export interface UseSuppliesAllInput {
   section: string;
   id: string;
   name: string;
+  prompt: string;
   investigator: "all";
   choices: BoolOption[];
 }
@@ -846,6 +844,7 @@ export interface Scenario {
   resolutions?: Resolution[];
   steps: Step[];
   type?: "interlude" | "epilogue" | "placeholder";
+  standalone_setup?: string[];
 }
 export interface ChallengeData {
   investigator: string;

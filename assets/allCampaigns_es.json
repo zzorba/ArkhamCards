@@ -6,6 +6,7 @@
   "position": 1,
   "version": 1,
   "name": "El legado de Dunwich",
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -3675,6 +3676,7 @@
   "name": "La noche de la fanática",
   "position": 0,
   "version": 1,
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -5068,6 +5070,7 @@
   "position": 2,
   "version": 1,
   "name": "El camino a Carcosa",
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -10878,6 +10881,7 @@
   "position": 1,
   "version": 1,
   "name": "Regreso a El legado de Dunwich",
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -14652,6 +14656,7 @@
   "name": "Regreso a La noche de la fanática",
   "position": 0,
   "version": 1,
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -16110,6 +16115,7 @@
   "position": 2,
   "version": 1,
   "name": "Regreso a El camino a Carcosa",
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -22081,6 +22087,7 @@
   "position": 3,
   "version": 1,
   "name": "Regreso a La era olvidada",
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -22660,13 +22667,14 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Gasolina",
+        "prompt": "Use gasoline",
         "investigator": "choice",
         "min": 1,
         "max": 1,
         "choices": [
           {
             "boolCondition": false,
-            "condition": "Out of Gas",
+            "prompt": "Sin combustible",
             "border": true,
             "effects": [
               {
@@ -22712,7 +22720,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "A Path Discovered",
+            "prompt": "Camino descubierto",
             "border": true,
             "effects": [
               {
@@ -22760,11 +22768,12 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
+        "prompt": "Use provisions",
         "investigator": "all",
         "choices": [
           {
             "boolCondition": false,
-            "condition": "Low on Rations",
+            "prompt": "Escasos de raciones",
             "border": true,
             "effects": [
               {
@@ -22806,6 +22815,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
+        "prompt": "Use medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -22833,7 +22843,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "The Poison Spreads",
+            "prompt": "El veneno se extiende",
             "border": true,
             "effects": [
               {
@@ -22884,7 +22894,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "Patterns in the Stone",
+            "prompt": "Diseños en la piedra",
             "border": true,
             "effects": [
               {
@@ -22898,7 +22908,7 @@
           },
           {
             "boolCondition": false,
-            "condition": "Secrets in the Stone",
+            "prompt": "Secretos en la piedra",
             "border": true,
             "effects": [
               {
@@ -23261,7 +23271,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "Restful Sleep",
+            "prompt": "Sueño reparador",
             "border": true,
             "effects": [
               {
@@ -23275,7 +23285,7 @@
           },
           {
             "boolCondition": false,
-            "condition": "Tossing and Turning",
+            "prompt": "Vueltas y más vueltas",
             "border": true,
             "effects": [
               {
@@ -23331,12 +23341,13 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
+        "prompt": "Use provisions",
         "investigator": "all",
         "choices": [
           {
             "boolCondition": false,
             "border": true,
-            "condition": "Low on Rations",
+            "prompt": "Escasos de raciones",
             "effects": [
               {
                 "type": "story_step",
@@ -23454,6 +23465,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
+        "prompt": "Use medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -23481,7 +23493,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "The Poison Spreads",
+            "prompt": "El veneno se extiende",
             "border": true,
             "effects": [
               {
@@ -25399,13 +25411,14 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Gasolina",
+        "prompt": "Use gasoline",
         "investigator": "choice",
         "min": 1,
         "max": 1,
         "choices": [
           {
             "boolCondition": false,
-            "condition": "Out of Gas",
+            "prompt": "Sin combustible",
             "border": true,
             "effects": [
               {
@@ -27345,6 +27358,7 @@
         "section": "supplies",
         "id": "rope",
         "name": "Cuerda",
+        "prompt": "Use rope",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -29491,6 +29505,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
+        "prompt": "Use medicine",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -30955,7 +30970,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "Torchlight",
+            "prompt": "Luz de antorcha",
             "border": true,
             "effects": [
               {
@@ -30978,7 +30993,7 @@
           },
           {
             "boolCondition": false,
-            "condition": "The Abyss",
+            "prompt": "El abismo",
             "border": true,
             "effects": [
               {
@@ -31046,7 +31061,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "Reading Signs",
+            "prompt": "Interpretando las señales",
             "border": true,
             "effects": [
               {
@@ -31487,7 +31502,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "The Way is Open",
+            "prompt": "El camino está abierto",
             "border": true,
             "effects": [
               {
@@ -31501,7 +31516,7 @@
           },
           {
             "boolCondition": false,
-            "condition": "The Way is Shut",
+            "prompt": "El camino está cerrado",
             "border": true,
             "effects": [
               {
@@ -31555,11 +31570,12 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
+        "prompt": "Use provisions",
         "investigator": "all",
         "choices": [
           {
             "boolCondition": false,
-            "condition": "Low on Rations",
+            "prompt": "Escasos de raciones",
             "border": true,
             "effects": [
               {
@@ -31598,6 +31614,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
+        "prompt": "Use medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -31625,7 +31642,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "The Poison Spreads",
+            "prompt": "El veneno se extiende",
             "border": true,
             "effects": [
               {
@@ -31676,7 +31693,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "Restful Sleep",
+            "prompt": "Sueño reparador",
             "border": true,
             "effects": [
               {
@@ -31690,7 +31707,7 @@
           },
           {
             "boolCondition": false,
-            "condition": "Tossing and Turning",
+            "prompt": "Vueltas y más vueltas",
             "border": true,
             "effects": [
               {
@@ -31737,6 +31754,7 @@
 {
   "id": "side",
   "name": "Escenarios secundarios",
+  "campaign_type": "campaign",
   "position": 0,
   "version": 1,
   "campaign_log": [],
@@ -31751,928 +31769,7 @@
     "all_or_nothing"
   ],
   "setup": [],
-  "steps": [],
-  "standalone": [
-    {
-      "id": "curse_of_the_roguarou",
-      "setup": [
-        "choose_investigators",
-        "difficulty_choice"
-      ],
-      "steps": [
-        {
-          "id": "choose_investigators",
-          "type": "input",
-          "input": {
-            "type": "scenario_investigators"
-          }
-        },
-        {
-          "id": "difficulty_choice",
-          "text": "Elige el nivel de dificultad:",
-          "type": "input",
-          "input": {
-            "type": "choose_one",
-            "choices": [
-              {
-                "id": "standard",
-                "text": "Normal",
-                "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "standard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "+1",
-                      "0",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-3",
-                      "-4",
-                      "-4",
-                      "-5",
-                      "-6",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "hard",
-                "text": "Difícil",
-                "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "hard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "0",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-3",
-                      "-4",
-                      "-4",
-                      "-5",
-                      "-6",
-                      "-8",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "id": "carnevale_of_horrors",
-      "setup": [
-        "choose_investigators",
-        "difficulty_choice"
-      ],
-      "steps": [
-        {
-          "id": "choose_investigators",
-          "type": "input",
-          "input": {
-            "type": "scenario_investigators"
-          }
-        },
-        {
-          "id": "difficulty_choice",
-          "text": "Elige el nivel de dificultad:",
-          "type": "input",
-          "input": {
-            "type": "choose_one",
-            "choices": [
-              {
-                "id": "standard",
-                "text": "Normal",
-                "description": "+1, 0, 0, 0, -1, -1, -1, -2, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "standard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "0",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "-6",
-                      "skull",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "hard",
-                "text": "Difícil",
-                "description": "+1, 0, 0, 0, -1, -1, -3, -4, -5, -6, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "hard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "0",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-3",
-                      "-4",
-                      "-5",
-                      "-6",
-                      "-7",
-                      "skull",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "id": "the_eternal_slumber",
-      "setup": [
-        "choose_investigators",
-        "difficulty_choice"
-      ],
-      "steps": [
-        {
-          "id": "choose_investigators",
-          "type": "input",
-          "input": {
-            "type": "scenario_investigators"
-          }
-        },
-        {
-          "id": "difficulty_choice",
-          "text": "Elige el nivel de dificultad:",
-          "type": "input",
-          "input": {
-            "type": "choose_one",
-            "choices": [
-              {
-                "id": "standard",
-                "text": "Normal",
-                "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "standard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "+1",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-3",
-                      "-4",
-                      "-6",
-                      "skull",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "hard",
-                "text": "Difícil",
-                "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "hard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-3",
-                      "-4",
-                      "-4",
-                      "-5",
-                      "-7",
-                      "skull",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "id": "the_nights_usurper",
-      "setup": [
-        "choose_investigators",
-        "difficulty_choice"
-      ],
-      "steps": [
-        {
-          "id": "choose_investigators",
-          "type": "input",
-          "input": {
-            "type": "scenario_investigators"
-          }
-        },
-        {
-          "id": "difficulty_choice",
-          "text": "Elige el nivel de dificultad:",
-          "type": "input",
-          "input": {
-            "type": "choose_one",
-            "choices": [
-              {
-                "id": "standard",
-                "text": "Normal",
-                "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "standard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "+1",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-3",
-                      "-4",
-                      "-6",
-                      "skull",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "hard",
-                "text": "Difícil",
-                "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "hard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-3",
-                      "-4",
-                      "-4",
-                      "-5",
-                      "-7",
-                      "skull",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "id": "blob_that_ate_everything",
-      "setup": [
-        "choose_investigators",
-        "difficulty_choice"
-      ],
-      "steps": [
-        {
-          "id": "choose_investigators",
-          "type": "input",
-          "input": {
-            "type": "scenario_investigators"
-          }
-        },
-        {
-          "id": "difficulty_choice",
-          "text": "Elige el nivel de dificultad:",
-          "type": "input",
-          "input": {
-            "type": "choose_one",
-            "choices": [
-              {
-                "id": "standard",
-                "text": "Normal",
-                "description": "+1, 0, 0, 0, -1, -2, -2, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "standard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "0",
-                      "0",
-                      "0",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "-5",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "hard",
-                "text": "Difícil",
-                "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "hard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "0",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "-5",
-                      "-6",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "id": "murder_at_the_excelsior_hotel",
-      "setup": [
-        "choose_investigators",
-        "difficulty_choice"
-      ],
-      "steps": [
-        {
-          "id": "choose_investigators",
-          "type": "input",
-          "input": {
-            "type": "scenario_investigators"
-          }
-        },
-        {
-          "id": "difficulty_choice",
-          "text": "Elige el nivel de dificultad:",
-          "type": "input",
-          "input": {
-            "type": "choose_one",
-            "choices": [
-              {
-                "id": "standard",
-                "text": "Normal",
-                "description": "+1, 0, -1, -1, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "standard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "hard",
-                "text": "Difícil",
-                "description": "0, -1, -2, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "hard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "0",
-                      "-1",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "-4",
-                      "-5",
-                      "-6",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "id": "read_or_die",
-      "setup": [
-        "choose_investigators",
-        "difficulty_choice"
-      ],
-      "steps": [
-        {
-          "id": "choose_investigators",
-          "type": "input",
-          "input": {
-            "type": "scenario_investigators"
-          }
-        },
-        {
-          "id": "difficulty_choice",
-          "text": "Elige el nivel de dificultad:",
-          "type": "input",
-          "input": {
-            "type": "choose_one",
-            "choices": [
-              {
-                "id": "easy",
-                "text": "Fácil",
-                "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "easy"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "+1",
-                      "0",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "standard",
-                "text": "Normal",
-                "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "standard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "hard",
-                "text": "Difícil",
-                "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "hard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "-5",
-                      "-6",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "expert",
-                "text": "Experto",
-                "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "expert"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "0",
-                      "-1",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "-5",
-                      "-6",
-                      "-7",
-                      "-8",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "id": "all_or_nothing",
-      "setup": [
-        "choose_investigators",
-        "difficulty_choice"
-      ],
-      "steps": [
-        {
-          "id": "choose_investigators",
-          "type": "input",
-          "input": {
-            "type": "scenario_investigators"
-          }
-        },
-        {
-          "id": "difficulty_choice",
-          "text": "Elige el nivel de dificultad:",
-          "type": "input",
-          "input": {
-            "type": "choose_one",
-            "choices": [
-              {
-                "id": "easy",
-                "text": "Fácil",
-                "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "easy"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "+1",
-                      "0",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "standard",
-                "text": "Normal",
-                "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "standard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "+1",
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "hard",
-                "text": "Difícil",
-                "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "hard"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "0",
-                      "0",
-                      "-1",
-                      "-1",
-                      "-2",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "-5",
-                      "-6",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "expert",
-                "text": "Experto",
-                "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
-                "effects": [
-                  {
-                    "type": "campaign_data",
-                    "setting": "difficulty",
-                    "value": "expert"
-                  },
-                  {
-                    "type": "add_chaos_token",
-                    "tokens": [
-                      "0",
-                      "-1",
-                      "-2",
-                      "-3",
-                      "-4",
-                      "-5",
-                      "-6",
-                      "-7",
-                      "-8",
-                      "skull",
-                      "skull",
-                      "cultist",
-                      "tablet",
-                      "elder_thing",
-                      "auto_fail",
-                      "elder_sign"
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ]
+  "steps": []
 }, "scenarios": [
 {
   "id": "all_or_nothing",
@@ -32685,6 +31782,23 @@
     "xp_cost": 2,
     "requirements": []
   },
+  "standalone_setup": [
+    "choose_investigators",
+    "choose_difficulty",
+    "intro",
+    "gather_encounter_sets",
+    "gather_return_encounter_sets",
+    "gather_return_encounter_sets_bullets",
+    "new_scenario_card",
+    "new_act_agenda",
+    "remove_misc_cards",
+    "set_aside_cards",
+    "setup_locations",
+    "location_layout",
+    "setup_enemies",
+    "encounter_deck",
+    "$play_scenario"
+  ],
   "setup": [
     "xp_cost",
     "intro",
@@ -32702,6 +31816,158 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Elige el nivel de dificultad:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Fácil",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "text": "Normal",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difícil",
+            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "expert",
+            "text": "Experto",
+            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-7",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
     {
       "id": "xp_cost",
       "hidden": true,
@@ -33106,6 +32372,24 @@
   "scenario_name": "La masa que lo devoraba todo",
   "full_name": "La masa que lo devoraba todo",
   "xp_cost": 2,
+  "standalone_setup": [
+    "choose_investigators",
+    "choose_difficulty",
+    "intro_1",
+    "intro_2",
+    "gather_encounter_sets",
+    "set_aside_migo",
+    "set_aside_cards",
+    "setup_blob",
+    "setup_locations",
+    "place_countermeasures",
+    "encounter_deck",
+    "countermeasures_rule",
+    "blob_x_rule",
+    "devour_rule",
+    "reality_acid",
+    "$play_scenario"
+  ],
   "setup": [
     "xp_cost",
     "intro_1",
@@ -33124,6 +32408,91 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Elige el nivel de dificultad:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "standard",
+            "text": "Normal",
+            "description": "+1, 0, 0, 0, -1, -2, -2, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difícil",
+            "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
     {
       "id": "xp_cost",
       "effects": [
@@ -34379,6 +33748,21 @@
   "scenario_name": "Carnevale de horrores",
   "full_name": "Carnevale de horrores",
   "xp_cost": 3,
+  "standalone_setup": [
+    "choose_investigators",
+    "choose_difficulty",
+    "intro",
+    "gather_encounter_sets",
+    "remove_random_location",
+    "setup_locations",
+    "setup_masked_people",
+    "set_aside_cards",
+    "encounter_deck",
+    "circle_rule",
+    "counter_clockwise_rule",
+    "across_from_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "xp_cost",
     "intro",
@@ -34394,6 +33778,95 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Elige el nivel de dificultad:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "standard",
+            "text": "Normal",
+            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difícil",
+            "description": "+1, 0, 0, 0, -1, -1, -3, -4, -5, -6, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-7",
+                  "skull",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
     {
       "id": "xp_cost",
       "effects": [
@@ -34711,6 +34184,17 @@
   "scenario_name": "La maldición del Rougarou",
   "full_name": "La maldición del Rougarou",
   "xp_cost": 1,
+  "standalone_setup": [
+    "choose_investigators",
+    "choose_difficulty",
+    "intro",
+    "gather_encounter_sets",
+    "set_aside_rougarou",
+    "setup_locations",
+    "set_aside_cards",
+    "encounter_deck",
+    "$play_scenario"
+  ],
   "setup": [
     "xp_cost",
     "intro",
@@ -34722,6 +34206,106 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Elige el nivel de dificultad:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "standard",
+            "text": "Normal",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difícil",
+            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-5",
+                  "-6",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
     {
       "id": "xp_cost",
       "effects": [
@@ -34889,6 +34473,26 @@
   "scenario_name": "Asesinato en el hotel Excelsior",
   "full_name": "Asesinato en el hotel Excelsior",
   "xp_cost": 3,
+  "standalone_setup": [
+    "choose_investigators",
+    "choose_difficulty",
+    "intro_1",
+    "check_player_count",
+    "intro_4",
+    "gather_encounter_sets",
+    "set_aside_encounter_sets",
+    "construct_act_deck",
+    "set_aside_true_culprit",
+    "take_bloodstained_dagger",
+    "create_leads_deck",
+    "setup_locations",
+    "location_layout",
+    "set_aside_cards",
+    "encounter_deck",
+    "patrol_rule",
+    "true_culprit_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "check_first_play_xp_cost",
     "gather_encounter_sets",
@@ -34906,6 +34510,87 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Elige el nivel de dificultad:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "standard",
+            "text": "Normal",
+            "description": "+1, 0, -1, -1, -2, -3, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difícil",
+            "description": "0, -1, -2, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
     {
       "id": "check_first_play_xp_cost",
       "hidden": true,
@@ -36564,6 +36249,24 @@
       }
     ]
   },
+  "standalone_setup": [
+    "choose_investigators",
+    "choose_difficulty",
+    "intro",
+    "investigator_setup",
+    "gather_encounter_sets",
+    "new_scenario_card",
+    "new_act_agenda",
+    "remove_misc_cards",
+    "setup_locations",
+    "location_layout",
+    "setup_tomes",
+    "setup_jazz_mulligan",
+    "spawn_namer_of_the_dead",
+    "daisy_gets_henry_armitage",
+    "encounter_deck",
+    "$play_scenario"
+  ],
   "setup": [
     "xp_cost",
     "intro",
@@ -36582,6 +36285,158 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Elige el nivel de dificultad:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Fácil",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "text": "Normal",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difícil",
+            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "expert",
+            "text": "Experto",
+            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-7",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
     {
       "id": "xp_cost",
       "hidden": true,
@@ -36957,6 +36812,23 @@
   "scenario_name": "El letargo eterno",
   "full_name": "El letargo eterno",
   "xp_cost": 2,
+  "standalone_setup": [
+    "choose_investigators",
+    "choose_difficulty",
+    "intro_1",
+    "gather_encounter_sets",
+    "setup_locations",
+    "location_layout",
+    "set_aside_cards",
+    "create_brotherhood_deck",
+    "set_strength_of_the_abyss",
+    "encounter_deck",
+    "explore_rule",
+    "story_cards",
+    "strength_of_the_abyss",
+    "taken_by_the_abyss",
+    "$play_scenario"
+  ],
   "setup": [
     "xp_cost",
     "intro_1",
@@ -36974,6 +36846,101 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Elige el nivel de dificultad:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "standard",
+            "text": "Normal",
+            "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difícil",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-7",
+                  "skull",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
     {
       "id": "xp_cost",
       "effects": [
@@ -37344,6 +37311,22 @@
   "scenario_name": "El usurpador de la noche",
   "full_name": "El usurpador de la noche",
   "xp_cost": 2,
+  "standalone_setup": [
+    "choose_investigators",
+    "choose_difficulty",
+    "intro_1",
+    "gather_encounter_sets",
+    "setup_locations",
+    "set_aside_cards",
+    "create_exploration_deck",
+    "check_played_eternal_slumber",
+    "encounter_deck",
+    "explore_rule",
+    "story_cards",
+    "strength_of_the_abyss",
+    "taken_by_the_abyss",
+    "$play_scenario"
+  ],
   "setup": [
     "xp_cost",
     "intro_1",
@@ -37360,6 +37343,101 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Elige el nivel de dificultad:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "standard",
+            "text": "Normal",
+            "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difícil",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-7",
+                  "skull",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
     {
       "id": "xp_cost",
       "effects": [
@@ -37729,6 +37807,7 @@
   "position": 4,
   "version": 3,
   "name": "El círculo roto",
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -45355,6 +45434,7 @@
   "position": 5,
   "version": 1,
   "name": "La búsqueda onírica",
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -51415,6 +51495,7 @@
   "position": 6,
   "version": 1,
   "name": "La red de los sueños",
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -56286,6 +56367,7 @@
   "position": 3,
   "version": 1,
   "name": "La era olvidada",
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -58130,13 +58212,14 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Gasolina",
+        "prompt": "Use gasoline",
         "investigator": "choice",
         "min": 1,
         "max": 1,
         "choices": [
           {
             "boolCondition": false,
-            "condition": "Out of Gas",
+            "prompt": "Sin combustible",
             "border": true,
             "effects": [
               {
@@ -58182,7 +58265,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "A Path Discovered",
+            "prompt": "Camino descubierto",
             "border": true,
             "effects": [
               {
@@ -58230,11 +58313,12 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
+        "prompt": "Use provisions",
         "investigator": "all",
         "choices": [
           {
             "boolCondition": false,
-            "condition": "Low on Rations",
+            "prompt": "Escasos de raciones",
             "border": true,
             "effects": [
               {
@@ -58276,6 +58360,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
+        "prompt": "Use medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -58303,7 +58388,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "The Poison Spreads",
+            "prompt": "El veneno se extiende",
             "border": true,
             "effects": [
               {
@@ -58354,7 +58439,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "Patterns in the Stone",
+            "prompt": "Diseños en la piedra",
             "border": true,
             "effects": [
               {
@@ -58368,7 +58453,7 @@
           },
           {
             "boolCondition": false,
-            "condition": "Secrets in the Stone",
+            "prompt": "Secretos en la piedra",
             "border": true,
             "effects": [
               {
@@ -58731,7 +58816,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "Restful Sleep",
+            "prompt": "Sueño reparador",
             "border": true,
             "effects": [
               {
@@ -58745,7 +58830,7 @@
           },
           {
             "boolCondition": false,
-            "condition": "Tossing and Turning",
+            "prompt": "Vueltas y más vueltas",
             "border": true,
             "effects": [
               {
@@ -58801,12 +58886,13 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
+        "prompt": "Use provisions",
         "investigator": "all",
         "choices": [
           {
             "boolCondition": false,
             "border": true,
-            "condition": "Low on Rations",
+            "prompt": "Escasos de raciones",
             "effects": [
               {
                 "type": "story_step",
@@ -58924,6 +59010,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
+        "prompt": "Use medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -58951,7 +59038,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "The Poison Spreads",
+            "prompt": "El veneno se extiende",
             "border": true,
             "effects": [
               {
@@ -59811,13 +59898,14 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Gasolina",
+        "prompt": "Use gasoline",
         "investigator": "choice",
         "min": 1,
         "max": 1,
         "choices": [
           {
             "boolCondition": false,
-            "condition": "Out of Gas",
+            "prompt": "Sin combustible",
             "border": true,
             "effects": [
               {
@@ -61149,7 +61237,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "Torchlight",
+            "prompt": "Luz de antorcha",
             "border": true,
             "effects": [
               {
@@ -61172,7 +61260,7 @@
           },
           {
             "boolCondition": false,
-            "condition": "The Abyss",
+            "prompt": "El abismo",
             "border": true,
             "effects": [
               {
@@ -61240,7 +61328,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "Reading Signs",
+            "prompt": "Interpretando las señales",
             "border": true,
             "effects": [
               {
@@ -62278,6 +62366,7 @@
         "section": "supplies",
         "id": "rope",
         "name": "Cuerda",
+        "prompt": "Use rope",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -62713,7 +62802,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "The Way is Open",
+            "prompt": "El camino está abierto",
             "border": true,
             "effects": [
               {
@@ -62727,7 +62816,7 @@
           },
           {
             "boolCondition": false,
-            "condition": "The Way is Shut",
+            "prompt": "El camino está cerrado",
             "border": true,
             "effects": [
               {
@@ -62781,11 +62870,12 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
+        "prompt": "Use provisions",
         "investigator": "all",
         "choices": [
           {
             "boolCondition": false,
-            "condition": "Low on Rations",
+            "prompt": "Escasos de raciones",
             "border": true,
             "effects": [
               {
@@ -62824,6 +62914,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
+        "prompt": "Use medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -62851,7 +62942,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "The Poison Spreads",
+            "prompt": "El veneno se extiende",
             "border": true,
             "effects": [
               {
@@ -62902,7 +62993,7 @@
         "options": [
           {
             "boolCondition": true,
-            "condition": "Restful Sleep",
+            "prompt": "Sueño reparador",
             "border": true,
             "effects": [
               {
@@ -62916,7 +63007,7 @@
           },
           {
             "boolCondition": false,
-            "condition": "Tossing and Turning",
+            "prompt": "Vueltas y más vueltas",
             "border": true,
             "effects": [
               {
@@ -64964,6 +65055,7 @@
   "position": 7,
   "version": 1,
   "name": "La conspiración de Innsmouth",
+  "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",

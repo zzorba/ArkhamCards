@@ -75,7 +75,7 @@ export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Prop
       <InvestigatorCheckListComponent
         id={id}
         choiceId="bad_thing"
-        checkText={badThing ? t`Reads "${badThing.condition}"` : t`Doesn't get any`}
+        checkText={badThing ? t`Reads "${badThing.prompt}"` : t`Doesn't get any`}
         min={target}
         max={target}
       />
@@ -115,7 +115,7 @@ export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Prop
             <InvestigatorCheckListComponent
               id={id}
               choiceId="use_supply"
-              checkText={`Use ${input.id}`}
+              checkText={input.prompt}
               min={input.min}
               max={input.max}
               filter={filterInvestigatorChoice}
@@ -123,7 +123,7 @@ export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Prop
           ) : (
             <InvestigatorCounterComponent
               id={id}
-              countText={`Use ${input.id}`}
+              countText={input.prompt}
               limits={supplyLimits}
             />
           ) }

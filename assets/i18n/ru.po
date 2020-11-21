@@ -454,7 +454,7 @@ msgstr "Отменить"
 #: src/components/deck/DeckUpgradeDialog.tsx:184
 #: src/components/deck/DeckUpgradeDialog.tsx:186
 #: src/components/deck/EditSpecialDeckCardsView.tsx:147
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:309
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:349
 #: src/components/deck/NewDeckView.tsx:82
 #: src/components/deck/authHelper.ts:32
 #: src/components/nav/helper.ts:249
@@ -783,14 +783,14 @@ msgid "Sign out of ArkhamDB"
 msgstr "Выйти из ArkhamDB"
 
 #: src/components/deck/DeckDetailView/index.tsx:789
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:264
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:308
 #: src/components/settings/LoginButton.tsx:65
 #: src/components/settings/LoginButton.tsx:68
 msgid "Sign in to ArkhamDB"
 msgstr "Войти в ArkhamDB"
 
 #: src/components/core/TabooSetPicker.tsx:49
-#: src/components/deck/DeckDetailView/DeckTabooPickerButton.tsx:58
+#: src/components/deck/controls/DeckTabooPickerButton.tsx:58
 #: src/components/settings/SettingsTabooPicker.tsx:24
 msgid "Taboo List"
 msgstr "Список табу"
@@ -1289,8 +1289,8 @@ msgstr "Колоды"
 #: src/app/App.ts:270
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:61
 #: src/components/deck/CopyDeckDialog/index.tsx:97
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:75
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:179
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:95
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:199
 #: src/components/deck/NewDeckView.tsx:52
 #: src/components/deck/NewDeckView.tsx:76
 #: src/components/decklist/MyDecksView.tsx:84
@@ -1475,30 +1475,30 @@ msgstr ""
 msgid "Reauthorize"
 msgstr "Авторизоваться заново"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:79
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:99
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
 msgstr "${ investigator.name } расследует"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:81
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:101
 msgid "${ investigator.name } Investigates"
 msgstr "Следствие ведёт ${ investigator.name }"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:83
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:103
 #, javascript-format
 msgid "The ${ investigator.name } Mysteries"
 msgstr "${ investigator.name } и мистические тайны"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:85
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:105
 msgid "The ${ investigator.name } Job"
 msgstr "${ investigator.name } нападает на след"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:87
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:107
 #, javascript-format
 msgid "${ investigator.name } on the Road"
 msgstr "${ investigator.name } отправляется в путь"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:89
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:109
 msgid "${ investigator.name } Does It All"
 msgstr "${ investigator.name }: один за всех"
 
@@ -1507,39 +1507,39 @@ msgstr "${ investigator.name }: один за всех"
 #: src/components/campaign/NewCampaignView/index.tsx:410
 #: src/components/campaignguide/CampaignGuideView.tsx:49
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:60
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:219
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:221
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:232
 msgid "Name"
 msgstr "Название"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:220
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:222
 msgid "Enter a name for this deck."
 msgstr "Введите название этой колоды."
 
 #: src/components/card/CardDetailView/SignatureCardsComponent.tsx:38
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:235
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:272
 msgid "Required Cards"
 msgstr "Обязательные карты"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:185
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:251
 msgid "Deck Type"
 msgstr "Тип колоды"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:188
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:255
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:299
 msgid "Create on ArkhamDB"
 msgstr "Создать на ArkhamDB"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:197
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:272
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:318
 msgid "You seem to be offline. Refresh Network?"
 msgstr "Кажется, вы не в сети. Обновить подключение?"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:279
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:291
 msgid "Use Starter Deck"
 msgstr "Использовать стартовую колоду"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:304
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:344
 msgid "Create deck"
 msgstr "Создать колоду"
 
@@ -1570,24 +1570,24 @@ msgstr "Улучшить колоду за опыт"
 msgid "Upgrade History"
 msgstr "История улучшений"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:225
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:226
 #, javascript-format
 msgid "Bonded Cards (${ count })"
 msgstr "Связанные карты (${ count })"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:367
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:368
 #: src/components/deck/DeckDetailView/index.tsx:938
 msgid "Deck Cards"
 msgstr "Карты в колоде"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:379
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:380
 #: src/components/deck/DeckDetailView/index.tsx:948
 msgid "Special Cards"
 msgstr "Особые карты"
 
 #: src/components/campaign/XpComponent.tsx:24
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/ExperienceLine.tsx:21
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:557
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:553
 msgid "Experience"
 msgstr "Опыт"
 
@@ -1814,12 +1814,12 @@ msgstr "Просмотреть на ArkhamDB"
 msgid "Delete Deck"
 msgstr "Удалить колоду"
 
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/DeckSizeSelectPicker.tsx:47
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/InvestigatorOption.tsx:45
+#: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:47
+#: src/components/deck/controls/InvestigatorOptionsControl/InvestigatorOption.tsx:45
 msgid "Select Deck Size"
 msgstr "Укажите размер колоды"
 
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/DeckSizeSelectPicker.tsx:43
+#: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:43
 msgid ""
 "Note: Deck size should only be selected at deck creation time, not between "
 "scenarios."
@@ -1827,13 +1827,13 @@ msgstr ""
 "Обратите внимание: Размер колоды может быть выбран только при создании "
 "колоды, но не между сценариями."
 
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/FactionSelectPicker.tsx:46
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/FactionSelectPicker.tsx:49
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/InvestigatorOption.tsx:63
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:46
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:49
+#: src/components/deck/controls/InvestigatorOptionsControl/InvestigatorOption.tsx:63
 msgid "Select Faction"
 msgstr "Выберите класс"
 
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/FactionSelectPicker.tsx:42
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:42
 msgid ""
 "Note: Secondary faction should only be selected at deck creation time, not "
 "between scenarios."
@@ -1841,7 +1841,7 @@ msgstr ""
 "Обратите внимание: Дополнительный класс может быть выбран только при "
 "создании колоды, но не между сценариями."
 
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/ParallelInvestigatorPicker.tsx:52
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:52
 msgid ""
 "Parallel investigator options should only be selected at deck creation "
 "time, not between scenarios."
@@ -2039,7 +2039,7 @@ msgid "The Innsmouth Conspiracy"
 msgstr ""
 
 #: src/components/core/PackListComponent/index.tsx:56
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/ParallelInvestigatorPicker.tsx:50
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:50
 msgid "Parallel"
 msgstr "Альтернативные"
 
@@ -2577,10 +2577,6 @@ msgstr "${ confirmText } <i>(учтено автоматически)</i>"
 #, javascript-format
 msgid "${ supplyName } to use (${ desiredCount })"
 msgstr "${ supplyName } использовать (${ desiredCount })"
-
-#: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:78
-msgid "Reads \"${ badThing.condition }\""
-msgstr "Описание: “${ badThing.condition }”"
 
 #: src/components/campaignguide/prompts/SuppliesPrompt/SupplyComponent.tsx:40
 #, javascript-format
@@ -5091,7 +5087,7 @@ msgstr "Последнее обновление"
 msgid "${ adjustedXp } XP"
 msgstr "${ adjustedXp } опыта"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:678
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:673
 msgid "Add cards"
 msgstr "Добавить карты"
 
@@ -5128,24 +5124,24 @@ msgstr "Копировать колоду"
 msgid "Open in browser"
 msgstr "Открыть в браузере"
 
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/DeckSizeSelectPicker.tsx:36
+#: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:36
 #, javascript-format
 msgid "${ cardCount } Cards"
 msgstr "${ cardCount } карт"
 
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/ParallelInvestigatorPicker.tsx:31
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:31
 msgid "Original front · Original back"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/ParallelInvestigatorPicker.tsx:32
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:32
 msgid "Parallel front · Original back"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/ParallelInvestigatorPicker.tsx:33
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:33
 msgid "Original front · Parallel back"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/InvestigatorOptionsModule/ParallelInvestigatorPicker.tsx:34
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:34
 msgid "Parallel front · Parallel back"
 msgstr ""
 
@@ -5186,11 +5182,11 @@ msgstr "Показать карты с ограниченным доступом
 msgid "Hide splash cards"
 msgstr "Скрыть"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:416
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:417
 msgid "Limited Slots"
 msgstr "Скрыть карты с ограниченным доступом"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:422
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:423
 #, javascript-format
 msgid "${ count } of ${ limitSlotCount }"
 msgstr "${ count } из ${ limitSlotCount }"
@@ -5237,6 +5233,10 @@ msgstr ""
 
 #: src/components/settings/BackupView.tsx:55
 msgid "Missing system permission"
+msgstr ""
+
+#: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:78
+msgid "Reads \"${ badThing.prompt }\""
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
@@ -5482,83 +5482,83 @@ msgid "All"
 msgstr "Все"
 
 #: src/components/core/TabooSetPicker.tsx:52
-#: src/components/deck/DeckDetailView/DeckTabooPickerButton.tsx:32
-#: src/components/deck/DeckDetailView/DeckTabooPickerButton.tsx:59
+#: src/components/deck/controls/DeckTabooPickerButton.tsx:32
+#: src/components/deck/controls/DeckTabooPickerButton.tsx:59
 msgctxt "Taboo List"
 msgid "None"
 msgstr "Нет"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:87
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:88
 msgctxt "header"
 msgid "Asset"
 msgid_plural "Assets"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:88
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:89
 msgctxt "header"
 msgid "Event"
 msgid_plural "Events"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:89
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:90
 msgctxt "header"
 msgid "Skill"
 msgid_plural "Skills"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:90
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:91
 msgctxt "header"
 msgid "Treachery"
 msgid_plural "Treacheries"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:91
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:92
 msgctxt "header"
 msgid "Enemy"
 msgid_plural "Enemies"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:92
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:93
 msgctxt "header"
 msgid "Location"
 msgid_plural "Locations"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:93
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:94
 msgctxt "header"
 msgid "Story"
 msgid_plural "Stories"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:94
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:95
 msgctxt "header"
 msgid "Act"
 msgid_plural "Acts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:95
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:96
 msgctxt "header"
 msgid "Agenda"
 msgid_plural "Agendas"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:96
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:97
 msgctxt "header"
 msgid "Investigator"
 msgid_plural "Investigators"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:97
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:98
 msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"
