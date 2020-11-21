@@ -61,11 +61,18 @@ interface StringResult {
 }
 
 export type OptionWithId = Option & { id: string };
+export type BoolOptionWithId = BoolOption & { id: string };
 
 export interface InvestigatorResult {
   type: 'investigator';
   investigatorChoices: StringChoices;
   options: OptionWithId[];
+}
+
+export interface InvestigatorCardResult {
+  type: 'investigator';
+  investigatorChoices: StringChoices;
+  options: BoolOptionWithId[];
 }
 
 export type ConditionResult =
@@ -119,10 +126,21 @@ function stringConditionResult(
   };
 }
 
-function investigatorResult(
+function investigatorResult<T>(
   investigatorChoices: StringChoices,
   options: OptionWithId[]
 ): InvestigatorResult {
+  return {
+    type: 'investigator',
+    investigatorChoices,
+    options,
+  };
+}
+
+function investigatorCardResult<T>(
+  investigatorChoices: StringChoices,
+  options: BoolOptionWithId[]
+): InvestigatorCardResult {
   return {
     type: 'investigator',
     investigatorChoices,
@@ -174,7 +192,7 @@ export function checkSuppliesAnyConditionResult(
 export function checkSuppliesAllConditionResult(
   condition: CheckSuppliesAllCondition,
   campaignLog: GuidedCampaignLog
-): InvestigatorResult {
+): InvestigatorCardResult {
   const investigatorSupplies = campaignLog.investigatorSections[condition.section] || {};
   const choices: StringChoices = {};
   forEach(campaignLog.investigators(false), investigator => {
@@ -192,15 +210,13 @@ export function checkSuppliesAllConditionResult(
       choices[investigatorCode] = [hasSupply ? 'true' : 'false'];
     }
   });
-  return investigatorResult(
-    choices,
-    map(condition.options, option => {
-      return {
-        ...option,
-        id: option.boolCondition ? 'true' : 'false',
-      };
-    }),
-  );
+  const options: BoolOptionWithId[] = map(condition.options, option => {
+    return {
+      ...option,
+      id: option.boolCondition ? 'true' : 'false',
+    };
+  });
+  return investigatorCardResult(choices, options);
 }
 
 export function campaignLogConditionResult(
@@ -298,7 +314,7 @@ export function basicTraumaConditionResult(
 export function hasCardConditionResult(
   condition: CardCondition,
   campaignLog: GuidedCampaignLog
-): InvestigatorResult | BinaryResult {
+): InvestigatorCardResult | BinaryResult {
   if (condition.investigator === 'each') {
     return investigatorCardConditionResult(condition, campaignLog);
   }
@@ -331,7 +347,7 @@ export function binaryCardConditionResult(
 export function investigatorCardConditionResult(
   condition: InvestigatorCardCondition,
   campaignLog: GuidedCampaignLog
-): InvestigatorResult {
+): InvestigatorCardResult {
   const investigators = campaignLog.investigatorCodes(false);
   const choices: StringChoices = {};
   forEach(investigators, code => {
@@ -344,18 +360,16 @@ export function investigatorCardConditionResult(
       choices[code] = [decision ? 'true' : 'false'];
     }
   });
-  return investigatorResult(
-    choices,
-    map(
-      condition.options,
-      option => {
-        return {
-          ...option,
-          id: option.boolCondition ? 'true' : 'false',
-        };
-      }
-    )
+  const options: BoolOptionWithId[] = map(
+    condition.options,
+    option => {
+      return {
+        ...option,
+        id: option.boolCondition ? 'true' : 'false',
+      };
+    }
   );
+  return investigatorCardResult(choices, options);
 }
 
 function investigatorDataMatches(

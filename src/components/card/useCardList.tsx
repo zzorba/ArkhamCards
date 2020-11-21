@@ -9,7 +9,7 @@ import useCardsFromQuery from './useCardsFromQuery';
 
 const FILTER_BUILDER = new FilterBuilder('clw');
 
-export default function useCardList(codes: string[], type: 'player' | 'encounter'): [Card[], boolean] {
+export default function useCardList(codes: string[], type: 'player' | 'encounter', tabooSetOverride?: number): [Card[], boolean] {
   const query = useMemo(() => {
     if (!codes.length || type === 'player') {
       return undefined;
@@ -21,7 +21,7 @@ export default function useCardList(codes: string[], type: 'player' | 'encounter
   }, [codes, type]);
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
-  const [queryCards, queryCardsLoading] = useCardsFromQuery({ query });
+  const [queryCards, queryCardsLoading] = useCardsFromQuery({ query, tabooSetOverride });
   if (!codes.length) {
     return [[], false];
   }

@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { t } from 'ttag';
 
 import Card from '@data/Card';
-import DeckPickerButton from '../DeckPickerButton';
+import DeckPickerButton from '@components/deck/controls/DeckPickerButton';
 
 interface Props {
   investigator: Card;

@@ -13,7 +13,8 @@ import { Deck, ParsedDeck } from '@actions/types';
 import { getAllDecks } from '@reducers';
 import { parseDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
-import { useSimpleDeckEdits, usePlayerCards } from '@components/core/hooks';
+import { usePlayerCards } from '@components/core/hooks';
+import { useSimpleDeckEdits } from '@components/deck/hooks';
 import space from '@styles/space';
 
 export interface DeckHistoryProps {

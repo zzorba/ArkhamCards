@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { map } from 'lodash';
 import { msgid, ngettext } from 'ttag';
 
@@ -10,7 +10,7 @@ import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';
 import { Deck } from '@actions/types';
 import { useSelector } from 'react-redux';
-import { getDeck } from '@reducers';
+import { AppState, makeDeckSelector } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
 
 interface Props {
@@ -25,12 +25,9 @@ function SpentDeckXpComponent({ deck, campaignLog, previousDeckId, playerCards, 
   playerCards: CardsMap;
   children: (xp: number) => JSX.Element | null;
 }) {
-  const previousDeck = useSelector(getDeck(previousDeckId)) || undefined;
-  const parsedDeck = parseBasicDeck(
-    deck,
-    playerCards,
-    previousDeck
-  );
+  const getDeck = useMemo(makeDeckSelector, []);
+  const previousDeck = useSelector((state: AppState) => getDeck(state, previousDeckId)) || undefined;
+  const parsedDeck = useMemo(() => parseBasicDeck(deck, playerCards, previousDeck), [deck, playerCards, previousDeck]);
   const earnedXp = campaignLog.earnedXp(deck.investigator_code);
   if (!parsedDeck) {
     return children(earnedXp);

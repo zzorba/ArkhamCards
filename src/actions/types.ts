@@ -523,6 +523,7 @@ export const START_DECK_EDIT = 'START_DECK_EDIT';
 export interface StartDeckEditAction {
   type: typeof START_DECK_EDIT;
   id: number;
+  deck?: Deck;
 }
 
 export const UPDATE_DECK_EDIT = 'UPDATE_DECK_EDIT';
@@ -997,8 +998,6 @@ export type SignInActions =
   LogoutAction;
 
 export type DecksActions =
-  ResetDeckChecklistAction |
-  SetDeckChecklistCardAction |
   LogoutAction |
   RestoreComplexBackupAction |
   RestoreBackupAction |
@@ -1011,7 +1010,15 @@ export type DecksActions =
   UpdateDeckAction |
   ClearDecksAction |
   ReplaceLocalDeckAction |
-  EnsureUuidAction |
+  EnsureUuidAction;
+
+export type DeckEditsActions =
+  DeleteDeckAction |
+  ReplaceLocalDeckAction |
+  ResetDeckChecklistAction |
+  SetDeckChecklistCardAction |
+  DeleteDeckAction |
+  UpdateDeckAction |
   StartDeckEditAction |
   UpdateDeckEditAction |
   FinishDeckEditAction |
@@ -1044,3 +1051,30 @@ export type GuideActions =
   GuideSetInputAction |
   GuideUndoInputAction |
   GuideResetScenarioAction;
+
+export const DISSONANT_VOICES_LOGIN_STARTED = 'DISSONANT_VOICES_LOGIN_STARTED';
+interface DissonantVoicesLoginStartedAction {
+  type: typeof DISSONANT_VOICES_LOGIN_STARTED;
+}
+
+export const DISSONANT_VOICES_LOGIN = 'DISSONANT_VOICES_LOGIN';
+interface DissonantVoicesLoginAction {
+  type: typeof DISSONANT_VOICES_LOGIN;
+}
+
+export const DISSONANT_VOICES_LOGIN_ERROR = 'DISSONANT_VOICES_LOGIN_ERROR';
+interface DissonantVoicesLoginErrorAction {
+  type: typeof DISSONANT_VOICES_LOGIN_ERROR;
+  error: Error | string;
+}
+
+export const DISSONANT_VOICES_LOGOUT = 'DISSONANT_VOICES_LOGOUT';
+interface DissonantVoicesLogoutAction {
+  type: typeof DISSONANT_VOICES_LOGOUT;
+}
+
+export type DissonantVoicesActions =
+  DissonantVoicesLoginAction |
+  DissonantVoicesLoginStartedAction |
+  DissonantVoicesLoginErrorAction |
+  DissonantVoicesLogoutAction;

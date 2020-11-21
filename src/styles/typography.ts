@@ -4,6 +4,7 @@ import COLORS from './colors';
 
 export interface TypographyColors {
   D10: string;
+  D30: string;
   L30: string;
   L20: string;
   lightText: string;

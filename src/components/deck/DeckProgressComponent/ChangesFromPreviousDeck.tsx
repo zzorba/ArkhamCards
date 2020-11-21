@@ -133,19 +133,10 @@ export default function ChangesFromPreviousDeck({
         </>
       );
     }
-    if (!changes) {
-      return null;
-    }
-    if (!editable) {
-      return (
-        <DeckBubbleHeader title={t`No Changes` } />
-      );
-    }
-  }, [changes, editable, renderSection]);
-  const changed = hasChanges(changes);
-  if (!changed && !title) {
-    return null;
-  }
+    return (
+      <DeckBubbleHeader title={t`No Changes` } />
+    );
+  }, [changes, renderSection]);
   return (
     <DeckSectionBlock
       faction={faction}

@@ -18,7 +18,7 @@ import Share from 'react-native-share';
 import { t } from 'ttag';
 
 import { MergeBackupProps } from './MergeBackupView';
-import { Campaign, BackupState } from '@actions/types';
+import { Campaign } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { getBackupData } from '@reducers';
 import SettingsItem from './SettingsItem';
@@ -30,13 +30,6 @@ import StyleContext from '@styles/StyleContext';
 export interface BackupProps {
   safeMode?: boolean;
 }
-
-interface ReduxProps {
-  backupData: BackupState;
-}
-
-
-type Props = BackupProps & NavigationProps;
 
 async function safeReadFile(file: string): Promise<string> {
   try {
@@ -59,6 +52,7 @@ async function hasFileSystemPermission(read: boolean) {
       case PermissionsAndroid.RESULTS.GRANTED:
         return true;
       case PermissionsAndroid.RESULTS.DENIED:
+        Alert.alert(t`Missing system permission`, t`It looks like you previously denied allowing Arkham Cards to read/write external files. Please visit your System settings to adjust this permission, and try again.`);
         return false;
       case PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN:
         Alert.alert(t`Cannot request access`, t`It looks like you previously denied allowing Arkham Cards to read/write external files. Please visit your System settings to adjust this permission, and try again.`);
@@ -175,6 +169,7 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
                 title: t`Save backup`,
                 message: filename,
                 url: `data:application/json;base64,${base64.encode(JSON.stringify(backupData))}`,
+                type: 'data:application/json',
                 filename,
                 failOnCancel: false,
                 showAppsToView: true,

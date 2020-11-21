@@ -7,25 +7,29 @@ import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import MetadataLineComponent from './MetadataLineComponent';
 import space from '@styles/space';
+import { useDeckXpStrings } from '@components/deck/hooks';
 
 interface Props {
   parsedDeck: ParsedDeck;
 }
 
-export default function ExperienceLine({ parsedDeck: { deck, experience, availableExperience, changes } }: Props) {
+export default function ExperienceLine({ parsedDeck }: Props) {
   const { colors, typography, fontScale } = useContext(StyleContext);
-  const title = <Text style={[typography.smallLabel, typography.italic, typography.dark]}>{ t`Experience` }</Text>;
+  const [xpString, xpDetailString] = useDeckXpStrings(parsedDeck);
+  const title = (
+    <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
+      { t`Experience` }
+    </Text>
+  );
   const icon = <AppIcon name="xp" size={36} color={colors.M} />;
-  const unspentXp = availableExperience - (changes?.spentXp || 0);
-  const unspentXpStr = availableExperience > 0 ? `+${unspentXp}` : `${unspentXp}`;
   const description = (
     <View style={styles.row}>
       <Text style={[typography.large, space.marginRightS]}>
-        { t`${experience} XP` }
+        { xpString }
       </Text>
-      { !!deck.previous_deck && (
+      { !!xpDetailString && (
         <Text style={[typography.small, { color: colors.M, lineHeight: 24 * fontScale }]}>
-          { ngettext(msgid`${unspentXpStr} unspent`, `${unspentXpStr} unspent`, unspentXp) }
+          { xpDetailString }
         </Text>
       ) }
     </View>

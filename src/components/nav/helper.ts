@@ -230,6 +230,7 @@ export function showCardSwipe(
         tabooSetId,
         deckId,
         whiteNav: !!investigator,
+        faction: investigator?.factionCode(),
       },
       options,
     },

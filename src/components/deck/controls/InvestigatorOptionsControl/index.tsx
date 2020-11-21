@@ -22,7 +22,7 @@ export function hasInvestigatorOptions(investigator: Card, parallelInvestigators
   return !!parallelInvestigators.length || !!investigator.investigatorSelectOptions().length;
 }
 
-export default function InvestigatorOptionsModule({
+export default function InvestigatorOptionsControl({
   investigator,
   meta,
   parallelInvestigators,

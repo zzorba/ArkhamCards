@@ -302,7 +302,7 @@ export default class RippleComponent extends PureComponent<Props, State> {
         <Animated.View {...props} style={style} pointerEvents="box-only">
           {children}
           <View style={[styles.container, containerStyle]}>
-            {ripples.map(this.renderRipple)}
+            { ripples.map(this.renderRipple) }
           </View>
         </Animated.View>
       </TouchableWithoutFeedback>

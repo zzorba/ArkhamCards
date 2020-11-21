@@ -10,8 +10,10 @@ import guides from './guides';
 import filters from './filters';
 import cards from './cards';
 import decks from './decks';
+import deckEdits from './deckEdits';
 import packs from './packs';
 import settings from './settings';
+import dissonantVoices from './dissonantVoices';
 import { CardFilterData, FilterState } from '@lib/filters';
 import { getSystemLanguage } from '@lib/i18n';
 import {
@@ -70,6 +72,11 @@ const signedInPersistConfig = {
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
+const dissonantVoicesPersistConfig = {
+  key: 'dissonantVoices',
+  storage: AsyncStorage,
+  blacklist: ['loading', 'error'],
+};
 
 // Combine all the reducers
 const rootReducer = combineReducers({
@@ -81,6 +88,8 @@ const rootReducer = combineReducers({
   signedIn: persistReducer(signedInPersistConfig, signedIn),
   settings: persistReducer(settingsPeristConfig, settings),
   filters,
+  deckEdits,
+  dissonantVoices: persistReducer(dissonantVoicesPersistConfig, dissonantVoices),
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
@@ -136,7 +145,7 @@ export const getBackupData = createSelector(
     const guidesState: { [id: string]: CampaignGuideState } = {};
     forEach(guides, (guide, id) => {
       if (guide) {
-        guides[id] = guide;
+        guidesState[id] = guide;
       }
     });
     return {
@@ -149,18 +158,13 @@ export const getBackupData = createSelector(
   }
 );
 
-export const getShowSpoilers = createSelector(
-  (state: AppState) => state.packs.show_spoilers,
-  (state: AppState, packCode: string) => packCode,
-  (show_spoilers, packCode): boolean => {
-    return !!show_spoilers?.[packCode];
-  }
-);
+export function getShowSpoilers(state: AppState, packCode: string) {
+  return !!state.packs.show_spoilers?.[packCode];
+}
 
-export const getPackFetchDate = createSelector(
-  (state: AppState) => state.packs.dateFetched,
-  (dateFetched) => dateFetched
-);
+export function getPackFetchDate(state: AppState) {
+  return state.packs.dateFetched;
+}
 
 export const getAllPacks = createSelector(
   allPacksSelector,
@@ -172,38 +176,43 @@ export const getAllPacks = createSelector(
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const EMPTY_PACKS: Pack[] = [];
-const allPacksCycleSelector = (state: AppState, cyclePack?: Pack) => getAllPacks(state);
-const cycleSelector = (state: AppState, cyclePack?: Pack) => cyclePack;
-export const getAllCyclePacks = createSelector(
-  allPacksCycleSelector,
-  cycleSelector,
-  (allPacks, cyclePack) => !cyclePack ?
-    EMPTY_PACKS :
-    filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position)
-);
+export const makeAllCyclePacksSelector = () =>
+  createSelector(
+    (state: AppState, cyclePack?: Pack) => getAllPacks(state),
+    (state: AppState, cyclePack?: Pack) => cyclePack,
+    (allPacks, cyclePack) => !cyclePack ?
+      EMPTY_PACKS :
+      filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position)
+  );
 
 export const getAllStandalonePacks = createSelector(
   allPacksSelector,
   (packs) => filter(packs, pack => pack.cycle_position === 70)
 );
 
-export const getPack = createSelector(
-  (state: AppState) => state.packs.all,
-  (state: AppState, packCode: string) => packCode,
-  (all, packCode): Pack | undefined => {
-    if (packCode) {
-      return find(
-        all || DEFAULT_PACK_LIST,
-        pack => pack.code === packCode
-      );
+export const makePackSelector = () =>
+  createSelector(
+    (state: AppState) => state.packs.all,
+    (state: AppState, packCode: string) => packCode,
+    (all, packCode): Pack | undefined => {
+      if (packCode) {
+        return find(
+          all || DEFAULT_PACK_LIST,
+          pack => pack.code === packCode
+        );
+      }
+      return undefined;
     }
-    return undefined;
-  }
-);
+  );
 
 export const getPackSpoilers = createSelector(
   (state: AppState) => state.packs.show_spoilers,
   (show_spoilers) => show_spoilers || DEFAULT_OBJECT
+);
+
+export const getHasSecondCore = createSelector(
+  (state: AppState) => state.packs.in_collection,
+  (in_collection) => (in_collection || DEFAULT_OBJECT).core || false,
 );
 
 export const getPacksInCollection = createSelector(
@@ -216,29 +225,43 @@ export const getAllDecks = createSelector(
   (all) => all || DEFAULT_OBJECT
 );
 
-export const getBaseDeck = createSelector(
-  (state: AppState) => getAllDecks(state),
-  (state: AppState, deckId: number) => deckId,
-  (decks, deckId): Deck | undefined => {
-    let deck = decks[deckId];
-    while (deck && deck.previous_deck && decks[deck.previous_deck]) {
-      deck = decks[deck.previous_deck];
+export const makeBaseDeckSelector = () =>
+  createSelector(
+    (state: AppState) => getAllDecks(state),
+    (state: AppState, deckId?: number) => deckId,
+    (decks, deckId): Deck | undefined => {
+      if (deckId === undefined) {
+        return undefined;
+      }
+      let baseDeck = decks[deckId];
+      while (baseDeck && baseDeck.previous_deck && decks[baseDeck.previous_deck]) {
+        baseDeck = decks[baseDeck.previous_deck];
+      }
+      if (!baseDeck || baseDeck.id === deckId) {
+        return undefined;
+      }
+      return baseDeck;
     }
-    return deck;
-  }
-);
+  );
 
-export const getLatestDeck = createSelector(
-  getAllDecks,
-  (state: AppState, deckId: number) => deckId,
-  (decks, deckId): Deck | undefined => {
-    let deck = decks[deckId];
-    while (deck && deck.next_deck && decks[deck.next_deck]) {
-      deck = decks[deck.next_deck];
+export const makeLatestDeckSelector = () =>
+  createSelector(
+    getAllDecks,
+    (state: AppState, deckId?: number) => deckId,
+    (decks, deckId): Deck | undefined => {
+      if (deckId === undefined) {
+        return undefined;
+      }
+      let latestDeck = decks[deckId];
+      while (latestDeck && latestDeck.next_deck && decks[latestDeck.next_deck]) {
+        latestDeck = decks[latestDeck.next_deck];
+      }
+      if (!latestDeck || latestDeck.id === deckId) {
+        return undefined;
+      }
+      return latestDeck;
     }
-    return deck;
-  }
-);
+  );
 
 export const getDeckToCampaignMap = createSelector(
   allCampaignsSelector,
@@ -269,64 +292,67 @@ export const getDeckToCampaignMap = createSelector(
   }
 );
 
-const getAllDecksForCampaignInvestigators = (
-  state: AppState,
-  investigators: CardsMap,
-  campaign?: Campaign
-) => getAllDecks(state);
-const getInvestigatorsForCampaignInvestigators = (
-  state: AppState,
-  investigators: CardsMap,
-  campaign?: Campaign
-) => investigators;
-const getLatestDeckIdsForCampaignInvestigators = (
-  state: AppState,
-  investigators: CardsMap,
-  campaign?: Campaign
-) => getLatestCampaignDeckIds(state, campaign);
+export const hasDissonantVoices = createSelector(
+  (state: AppState) => state.dissonantVoices.status,
+  (status): boolean => status === true
+);
 
 const EMPTY_INVESTIGATOR_IDS: string[] = [];
-const getNonDeckInvestigatorsForCampaignInvestigators = (
-  state: AppState,
-  investigators: CardsMap,
-  campaign?: Campaign
-) => {
-  if (!campaign || !campaign.nonDeckInvestigators) {
-    return EMPTY_INVESTIGATOR_IDS;
-  }
-  return campaign.nonDeckInvestigators;
-};
 
-export const getLatestCampaignInvestigators = createSelector(
-  getAllDecksForCampaignInvestigators,
-  getInvestigatorsForCampaignInvestigators,
-  getLatestDeckIdsForCampaignInvestigators,
-  getNonDeckInvestigatorsForCampaignInvestigators,
-  (decks, investigators, latestDeckIds, nonDeckInvestigators): Card[] => {
-    const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
-    return uniq([
-      ...flatMap(
-        filter(latestDecks, deck => !!(deck && deck.investigator_code)),
-        deck => investigators[deck.investigator_code] || []
-      ),
-      ...flatMap(nonDeckInvestigators, code => investigators[code] || []),
-    ]);
-  }
-);
+
+export function makeLatestCampaignInvestigatorsSelector(): (state: AppState, investigators?: CardsMap, campaign?: Campaign) => Card[] {
+  const getLatestCampaignDeckIds: (state: AppState, campaign?: Campaign) => number[] = makeLatestCampaignDeckIdsSelector();
+  const getNonDeckInvestigatorsForCampaignInvestigators = createSelector(
+    (campaign?: Campaign) => campaign?.nonDeckInvestigators,
+    (nonDeckInvestigators) => {
+      if (!nonDeckInvestigators) {
+        return EMPTY_INVESTIGATOR_IDS;
+      }
+      return nonDeckInvestigators;
+    });
+  return createSelector(
+    (state: AppState, investigators?: CardsMap, campaign?: Campaign) => getAllDecks(state),
+    (state: AppState, investigators?: CardsMap, campaign?: Campaign) => investigators,
+    (state: AppState, investigators?: CardsMap, campaign?: Campaign) => getLatestCampaignDeckIds(state, campaign),
+    (state: AppState, investigators?: CardsMap, campaign?: Campaign) => getNonDeckInvestigatorsForCampaignInvestigators(campaign),
+    (decks, investigators, latestDeckIds, nonDeckInvestigators): Card[] => {
+      if (!investigators) {
+        return [];
+      }
+      const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
+      return uniq([
+        ...flatMap(
+          filter(latestDecks, deck => !!(deck && deck.investigator_code)),
+          deck => investigators[deck.investigator_code] || []
+        ),
+        ...flatMap(nonDeckInvestigators, code => investigators[code] || []),
+      ]);
+    }
+  );
+}
 
 const EMPTY_DECK_ID_LIST: number[] = [];
 
-const latestDeckIdsDecksSelector = (state: AppState, campaign?: Campaign) => state.decks.all;
-const latestDeckIdsCampaignSelector = (state: AppState, campaign?: Campaign) => campaign;
-export const getLatestCampaignDeckIds = createSelector(
-  latestDeckIdsDecksSelector,
-  latestDeckIdsCampaignSelector,
-  (decks, campaign) => {
-    if (!campaign) {
-      return EMPTY_DECK_ID_LIST;
-    }
-    if (campaign.baseDeckIds) {
-      return flatMap(campaign.baseDeckIds, deckId => {
+export const makeLatestCampaignDeckIdsSelector = () =>
+  createSelector(
+    (state: AppState) => state.decks.all,
+    (state: AppState, campaign?: Campaign) => !campaign,
+    (state: AppState, campaign?: Campaign) => campaign?.baseDeckIds,
+    (state: AppState, campaign?: Campaign) => campaign?.latestDeckIds,
+    (decks, noCampaign, baseDeckIds, latestDeckIds) => {
+      if (noCampaign) {
+        return EMPTY_DECK_ID_LIST;
+      }
+      if (baseDeckIds) {
+        return flatMap(baseDeckIds, deckId => {
+          let deck = decks[deckId];
+          while (deck && deck.next_deck && deck.next_deck in decks) {
+            deck = decks[deck.next_deck];
+          }
+          return deck ? [deck.id] : [];
+        });
+      }
+      return flatMap(latestDeckIds || [], deckId => {
         let deck = decks[deckId];
         while (deck && deck.next_deck && deck.next_deck in decks) {
           deck = decks[deck.next_deck];
@@ -334,24 +360,15 @@ export const getLatestCampaignDeckIds = createSelector(
         return deck ? [deck.id] : [];
       });
     }
-    return flatMap(campaign.latestDeckIds || [], deckId => {
-      let deck = decks[deckId];
-      while (deck && deck.next_deck && deck.next_deck in decks) {
-        deck = decks[deck.next_deck];
-      }
-      return deck ? [deck.id] : [];
-    });
-  }
-);
+  );
 
 const EMPTY_MY_DECKS: number[] = [];
 
-const myDecksSelector = (state: AppState) => state.decks.myDecks;
 const myDecksUpdatedSelector = (state: AppState) => state.decks.dateUpdated;
 const myDecksRefreshingSelector = (state: AppState) => state.decks.refreshing;
 const myDecksErrorSelector = (state: AppState) => state.decks.error;
 export const getMyDecksState = createSelector(
-  myDecksSelector,
+  (state: AppState) => state.decks.myDecks,
   myDecksUpdatedSelector,
   myDecksRefreshingSelector,
   myDecksErrorSelector,
@@ -365,21 +382,18 @@ export const getMyDecksState = createSelector(
   }
 );
 
-export const getEffectiveDeckId = createSelector(
-  (state: AppState) => state.decks.replacedLocalIds,
-  (state: AppState, id: number) => id,
-  (replacedLocalIds: undefined | { [id: number]: number; }, id: number): number => {
-    if (replacedLocalIds && replacedLocalIds[id]) {
-      return replacedLocalIds[id];
-    }
-    return id;
+export const getEffectiveDeckId = (state: AppState, id: number): number => {
+  if (state.decks.replacedLocalIds && state.decks.replacedLocalIds[id]) {
+    return state.decks.replacedLocalIds[id];
   }
-);
+  return id;
+};
 
-export function getDeck(id: number) {
+export const makeDeckSelector = () => {
   return createSelector(
     (state: AppState) => state.decks.all,
-    (all) => {
+    (state: AppState, id: number) => id,
+    (all, id) => {
       if (!id) {
         return null;
       }
@@ -389,26 +403,25 @@ export function getDeck(id: number) {
       return null;
     }
   );
-}
+};
 
-const getDecksAllDecksSelector = (state: AppState, deckIds: number[]) => state.decks.all;
-const getDecksDeckIdsSelector = (state: AppState, deckIds: number[]) => deckIds;
-export const getDecks = createSelector(
-  getDecksAllDecksSelector,
-  getDecksDeckIdsSelector,
-  (allDecks, deckIds) => {
-    const decks: Deck[] = [];
-    forEach(deckIds, deckId => {
-      if (deckId) {
-        const deck = allDecks[deckId];
-        if (deck && deck.id) {
-          decks.push(deck);
+export const makeGetDecksSelector = () =>
+  createSelector(
+    (state: AppState) => state.decks.all,
+    (state: AppState, deckIds: number[]) => deckIds,
+    (allDecks, deckIds) => {
+      const decks: Deck[] = [];
+      forEach(deckIds, deckId => {
+        if (deckId) {
+          const deck = allDecks[deckId];
+          if (deck && deck.id) {
+            decks.push(deck);
+          }
         }
-      }
-    });
-    return decks;
-  }
-);
+      });
+      return decks;
+    }
+  );
 
 function processCampaign(campaign: Campaign): SingleCampaign {
   const latestScenario = last(campaign.scenarioResults);
@@ -427,64 +440,57 @@ export const getNextCampaignId = createSelector(
   }
 );
 
-const getAllCampaignsWithId = (state: AppState, id: number) => state.campaigns.all;
-const getIdWithId = (state: AppState, id: number) => id;
-export const getCampaign = createSelector(
-  getAllCampaignsWithId,
-  getIdWithId,
-  (allCampaigns, id): SingleCampaign | undefined => {
-    if (id in allCampaigns) {
-      const campaign = allCampaigns[id];
-      return campaign && processCampaign(campaign);
-    }
-    return undefined;
-  }
-);
-
-const getChaosBagResultsWithId = (state: AppState, id: number) => state.campaigns.chaosBagResults;
-
-const EMPTY_CHAOS_BAG_RESULTS = {
-  drawnTokens: [],
-  sealedTokens: [],
-  totalDrawnTokens: 0,
-};
-export const getChaosBagResults = createSelector(
-  getChaosBagResultsWithId,
-  getIdWithId,
-  (chaosBagResults, id): ChaosBagResults => {
-    if (chaosBagResults) {
-      const result = chaosBagResults[id];
-      if (result) {
-        return result;
+export const makeCampaignSelector = () =>
+  createSelector(
+    (state: AppState,) => state.campaigns.all,
+    (state: AppState, id: number) => id,
+    (allCampaigns, id): SingleCampaign | undefined => {
+      if (id in allCampaigns) {
+        const campaign = allCampaigns[id];
+        return campaign && processCampaign(campaign);
       }
+      return undefined;
     }
-    return NEW_CHAOS_BAG_RESULTS;
-  }
-);
+  );
 
-export const getTabooSet = createSelector(
-  (state: AppState) => state.settings.tabooId,
-  (state: AppState, tabooSetOverride?: number) => tabooSetOverride,
-  (tabooId?: number, tabooSetOverride?: number) => {
-    if (tabooSetOverride !== undefined) {
-      return tabooSetOverride;
+export const makeChaosBagResultsSelector = () =>
+  createSelector(
+    (state: AppState) => state.campaigns.chaosBagResults,
+    (state: AppState, id: number) => id,
+    (chaosBagResults, id): ChaosBagResults => {
+      if (chaosBagResults) {
+        const result = chaosBagResults[id];
+        if (result) {
+          return result;
+        }
+      }
+      return NEW_CHAOS_BAG_RESULTS;
     }
-    return tabooId;
-  }
-);
+  );
 
-const deckToCampaignMapForDeck = (state: AppState, deckId: number) => getDeckToCampaignMap(state);
-const deckIdForDeck = (state: AppState, deckId: number) => deckId;
-export const getCampaignForDeck = createSelector(
-  deckToCampaignMapForDeck,
-  deckIdForDeck,
-  (deckToCampaign, deckId): SingleCampaign | undefined => {
-    if (deckId in deckToCampaign) {
-      return processCampaign(deckToCampaign[deckId]);
+export const makeTabooSetSelector = () =>
+  createSelector(
+    (state: AppState) => state.settings.tabooId,
+    (state: AppState, tabooSetOverride?: number) => tabooSetOverride,
+    (tabooId: number | undefined, tabooSetOverride: number | undefined): number | undefined => {
+      if (tabooSetOverride !== undefined) {
+        return tabooSetOverride;
+      }
+      return tabooId;
     }
-    return undefined;
-  }
-);
+  );
+
+export const makeCampaignForDeckSelector = () =>
+  createSelector(
+    (state: AppState) => getDeckToCampaignMap(state),
+    (state: AppState, deckId: number) => deckId,
+    (deckToCampaign, deckId): SingleCampaign | undefined => {
+      if (deckId in deckToCampaign) {
+        return processCampaign(deckToCampaign[deckId]);
+      }
+      return undefined;
+    }
+  );
 
 export const getNextLocalDeckId = createSelector(
   (state: AppState) => state.decks.all,
@@ -508,9 +514,9 @@ export const getNextLocalDeckId = createSelector(
 
 const EMTPY_CHECKLIST: string[] = [];
 export const getDeckChecklist = createSelector(
-  (state: AppState) => state.decks.checklist,
+  (state: AppState) => state.deckEdits.checklist,
   (state: AppState, id: number) => id,
-  (checklist: undefined | { [id: number]: string[] | undefined }, id: number) => {
+  (checklist: { [id: number]: string[] | undefined }, id: number) => {
     return (checklist || {})[id] || EMTPY_CHECKLIST;
   }
 );
@@ -559,13 +565,14 @@ const DEFAULT_GUIDE_STATE = {
   inputs: [],
 };
 
-export const getCampaignGuideState = createSelector(
-  (state: AppState) => state.guides?.all,
-  (state: AppState, campaignId: number) => campaignId,
-  (guideState: undefined | { [campaignId: string]: CampaignGuideState | undefined }, campaignId: number) => {
-    return (guideState && guideState[campaignId]) || DEFAULT_GUIDE_STATE;
-  }
-);
+export const makeCampaignGuideStateSelector = () =>
+  createSelector(
+    (state: AppState) => state.guides?.all,
+    (state: AppState, campaignId: number) => campaignId,
+    (guideState: undefined | { [campaignId: string]: CampaignGuideState | undefined }, campaignId: number) => {
+      return (guideState && guideState[campaignId]) || DEFAULT_GUIDE_STATE;
+    }
+  );
 
 export const getLangChoice = createSelector(
   (state: AppState) => state.settings.lang,
@@ -619,24 +626,26 @@ export const getAppFontScale = createSelector(
   (fontScale?: number) => fontScale || 1.0
 );
 
-export const getDeckEdits = createSelector(
-  (state: AppState) => state.decks.editting,
-  (state: AppState) => state.decks.edits,
-  (state: AppState, id: number) => id,
-  (editting, edits, id: number): EditDeckState | undefined => {
-    if (!editting || !editting[id] || !edits || !edits[id]) {
-      return undefined;
+export const makeDeckEditsSelector = () =>
+  createSelector(
+    (state: AppState) => state.deckEdits.editting,
+    (state: AppState) => state.deckEdits.edits,
+    (state: AppState, id: number | undefined) => id,
+    (editting, edits, id: number | undefined): EditDeckState | undefined => {
+      if (id === undefined || !editting || !editting[id] || !edits || !edits[id]) {
+        return undefined;
+      }
+      return edits[id];
     }
-    return edits[id];
-  }
-);
+  );
 
 const EMPTY_CHAOS_BAG: ChaosBag = {};
-export const getCampaignChaosBag = createSelector(
-  (state: AppState) => state.campaigns.all,
-  (state: AppState, campaignId: number) => campaignId,
-  (campaigns: { [id: string]: Campaign }, campaignId: number) => {
-    const campaign = campaigns[campaignId];
-    return (campaign && campaign.chaosBag) || EMPTY_CHAOS_BAG;
-  }
-);
+export const makeCampaignChaosBagSelector = () =>
+  createSelector(
+    (state: AppState) => state.campaigns.all,
+    (state: AppState, campaignId: number) => campaignId,
+    (campaigns: { [id: string]: Campaign }, campaignId: number) => {
+      const campaign = campaigns[campaignId];
+      return (campaign && campaign.chaosBag) || EMPTY_CHAOS_BAG;
+    }
+  );

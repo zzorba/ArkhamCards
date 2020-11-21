@@ -5,6 +5,7 @@ import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 import { FactionCodeType } from '@app_constants';
 import AppIcon from '@icons/AppIcon';
+import { usePressCallback } from '@components/core/hooks';
 
 interface Props {
   title: string;
@@ -14,10 +15,11 @@ interface Props {
 
 export default function DeckSectionHeader({ title, faction, onPress }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
-  if (onPress) {
+  const throttleOnPress = usePressCallback(onPress);
+  if (throttleOnPress) {
     return (
       <Ripple
-        onPress={onPress}
+        onPress={throttleOnPress}
         style={[styles.header, { backgroundColor: colors.faction[faction].background }]}
         rippleColor={colors.faction[faction].text}
       >

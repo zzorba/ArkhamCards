@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -8,7 +8,7 @@ import { NavigationProps } from '@components/nav/types';
 import { ChaosBag } from '@app_constants';
 import COLORS from '@styles/colors';
 import { EditChaosBagProps } from './EditChaosBagDialog';
-import { AppState, getCampaignChaosBag } from '@reducers';
+import { AppState, makeCampaignChaosBagSelector } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface CampaignChaosBagProps {
@@ -19,7 +19,8 @@ export interface CampaignChaosBagProps {
 type Props = NavigationProps & CampaignChaosBagProps;
 
 function CampaignChaosBagView({ componentId, campaignId, updateChaosBag }: Props) {
-  const chaosBag = useSelector((state: AppState) => getCampaignChaosBag(state, campaignId));
+  const chaosBagSelector = useMemo(makeCampaignChaosBagSelector, []);
+  const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId));
 
   const showChaosBagDialog = useCallback(() => {
     if (!updateChaosBag) {

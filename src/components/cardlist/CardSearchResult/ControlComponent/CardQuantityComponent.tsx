@@ -62,11 +62,11 @@ function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { 
 
   const inc = useCallback(() => {
     incCount();
-    setTimeout(() => incSlot(code), 100);
+    incSlot(code);
   }, [incCount, incSlot, code]);
   const dec = useCallback(() => {
     decCount();
-    setTimeout(() => decSlot(code), 100);
+    decSlot(code);
   }, [decCount, decSlot, code]);
 
   return (

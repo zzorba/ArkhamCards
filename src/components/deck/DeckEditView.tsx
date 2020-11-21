@@ -7,7 +7,8 @@ import { queryForInvestigator, negativeQueryForInvestigator } from '@lib/Investi
 import FilterBuilder, { defaultFilterState } from '@lib/filters';
 import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from '@data/query';
 import { NavigationProps } from '@components/nav/types';
-import { useDeck, useSimpleDeckEdits, useInvestigatorCards } from '@components/core/hooks';
+import { useDeck, useInvestigatorCards } from '@components/core/hooks';
+import { useSimpleDeckEdits } from '@components/deck/hooks';
 
 export interface EditDeckProps {
   id: number;

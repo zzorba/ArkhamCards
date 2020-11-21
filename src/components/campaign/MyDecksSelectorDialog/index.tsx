@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { concat, filter, flatMap, flatten, keys, uniqBy, uniq, throttle } from 'lodash';
+import { concat, filter, flatMap, flatten, keys, map, uniqBy, uniq, throttle } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
@@ -20,7 +20,7 @@ import { NavigationProps } from '@components/nav/types';
 import { Deck, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/Card';
-import { getAllDecks, getCampaigns, getLatestCampaignDeckIds, AppState } from '@reducers';
+import { getAllDecks, getCampaigns, makeLatestCampaignDeckIdsSelector, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -95,12 +95,12 @@ function MyDecksSelectorDialog(props: Props) {
   }, [campaignId]);
   const otherCampaigns = useSelector(otherCampaignsSelector);
   const otherCampaignDeckIdsSelector = useCallback((state: AppState) => {
-    return flatMap(otherCampaigns, c => getLatestCampaignDeckIds(state, c));
+    return flatMap(otherCampaigns, c => makeLatestCampaignDeckIdsSelector()(state, c));
   }, [otherCampaigns]);
   const otherCampaignDeckIds = useSelector(otherCampaignDeckIdsSelector);
   const campaign = useCampaign(campaignId);
-  const campaignLatestDeckIdsSelector = useCallback((state: AppState) => getLatestCampaignDeckIds(state, campaign), [campaign]);
-  const campaignLatestDeckIds = useSelector(campaignLatestDeckIdsSelector);
+  const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
+  const campaignLatestDeckIds = useSelector((state: AppState) => getLatestCampaignDeckIds(state, campaign));
   const decks = useSelector(getAllDecks);
 
   const [hideOtherCampaignDecks, toggleHideOtherCampaignDecks] = useFlag(true);

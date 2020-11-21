@@ -2,18 +2,18 @@ import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import { findIndex, flatMap, forEach } from 'lodash';
 
-import { InvestigatorResult, OptionWithId } from '@data/scenario/conditionHelper';
+import { InvestigatorCardResult, BoolOptionWithId } from '@data/scenario/conditionHelper';
 import Card from '@data/Card';
-import { Option } from '@data/scenario/types';
+import { BoolOption } from '@data/scenario/types';
 import useCardList from '@components/card/useCardList';
 
 interface Props<T> {
-  result: InvestigatorResult;
+  result: InvestigatorCardResult;
   extraArg: T;
-  renderOption: (investigators: Card[], option: Option, extraArg: T) => Element | null;
+  renderOption: (investigators: Card[], option: BoolOption, extraArg: T) => Element | null;
 }
 
-function InvestigatorResultConditionOption<T>({ result, option, renderOption, extraArg }: Props<T> & { option: OptionWithId }) {
+function InvestigatorResultConditionOption<T>({ result, option, renderOption, extraArg }: Props<T> & { option: BoolOptionWithId }) {
   const investigators: string[] = useMemo(() => {
     const investigators: string[] = [];
     forEach(result.investigatorChoices, (choices, code) => {

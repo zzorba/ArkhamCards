@@ -28,6 +28,7 @@ import { Brackets } from 'typeorm/browser';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
+import useDebouncedEffect from 'use-debounced-effect-hook';
 
 import DatabaseContext from '@data/DatabaseContext';
 import { addDbFilterSet } from '@components/filter/actions';
@@ -36,15 +37,18 @@ import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
 import { SortType, Slots, SORT_BY_TYPE } from '@actions/types';
 import { combineQueries, where } from '@data/query';
-import { getPacksInCollection, getTabooSet, AppState, getPackSpoilers } from '@reducers';
+import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers, getHasSecondCore } from '@reducers';
 import Card, { CardsMap, PartialCard } from '@data/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import { s, m } from '@styles/space';
-import ArkhamButton, { ArkhamButtonIcon } from '@components/core/ArkhamButton';
+import ArkhamButton from '@components/core/ArkhamButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { useCards, useDeck, useEffectUpdate, useSimpleDeckEdits, useToggles } from '@components/core/hooks';
+import { useSimpleDeckEdits } from '@components/deck/hooks';
+import { useCards, useDeck, useEffectUpdate, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
+import { ControlType } from '../CardSearchResult/ControlComponent';
+import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 
 interface Props {
   componentId: string;
@@ -102,7 +106,7 @@ interface ButtonItem {
   id: string;
   onPress: () => void;
   title: string;
-  icon: ArkhamButtonIcon;
+  icon: ArkhamButtonIconType;
 }
 
 type Item = SectionHeaderItem | CardItem | ButtonItem | LoadingItem;
@@ -416,9 +420,10 @@ function useSectionFeed({
   const { cards, fetchMore } = useCardFetcher(visibleCards);
   const [refreshing, setRefreshing] = useState(true);
 
+  const androidFilterQuery = Platform.OS === 'android' ? filterQuery : undefined;
   useEffect(() => {
     setRefreshing(true);
-  }, [query, sort, tabooSetId]);
+  }, [query, androidFilterQuery, sort, tabooSetId]);
 
   useEffect(() => {
     let ignore = false;
@@ -451,40 +456,37 @@ function useSectionFeed({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, filterQuery, sort, tabooSetId, db]);
 
-  useEffect(() => {
+  useDebouncedEffect(() => {
     if (textQuery) {
       let ignore = false;
-      const delayedSearch = debounce(() => {
-        if (!query) {
-          setTextQueryCards([]);
-          return;
+      if (!query) {
+        setTextQueryCards([]);
+        return;
+      }
+      // Look for textual card changes.
+      // const start = new Date();
+      db.getPartialCards(
+        combineQueries(query,
+          [
+            ...(filterQuery ? [filterQuery] : []),
+            ...(textQuery ? [textQuery] : []),
+          ],
+          'and'
+        ),
+        tabooSetId,
+        sort
+      ).then((cards: PartialCard[]) => {
+        if (!ignore) {
+          // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+          setTextQueryCards(cards);
         }
-        // Look for textual card changes.
-        // const start = new Date();
-        db.getPartialCards(
-          combineQueries(query,
-            [
-              ...(filterQuery ? [filterQuery] : []),
-              ...(textQuery ? [textQuery] : []),
-            ],
-            'and'
-          ),
-          tabooSetId,
-          sort
-        ).then((cards: PartialCard[]) => {
-          if (!ignore) {
-            // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
-            setTextQueryCards(cards);
-          }
-        });
-      }, 50);
-      delayedSearch();
+      });
       return () => {
-        ignore = true; delayedSearch.cancel();
+        ignore = true;
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, filterQuery, textQuery, sort, tabooSetId]);
+  }, [query, filterQuery, textQuery, sort, tabooSetId], 200);
 
   const editSpoilerSettings = useCallback(() => {
     Keyboard.dismiss();
@@ -609,10 +611,11 @@ export default function({
   const [deck] = useDeck(deckId, {});
   const deckEdits = useSimpleDeckEdits(deckId);
   const { colors, borderStyle, fontScale, typography } = useContext(StyleContext);
-  const hasSecondCore = useSelector((state: AppState) => getPacksInCollection(state).core || false);
+  const hasSecondCore = useSelector(getHasSecondCore);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
   const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.taboo_id) || 0) : undefined;
-  const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
+  const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
+  const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const {
     feed,
@@ -698,9 +701,7 @@ export default function({
       deckId,
       investigator
     );
-  }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors,
-    deckId, investigator, componentId, cardPressed]);
-  const debouncedCardOnPressId = useMemo(() => debounce(cardOnPressId, 500, { leading: true }), [cardOnPressId]);
+  }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, cardPressed]);
   const keyExtractor = useCallback((item: Item, index: number) => {
     switch (item.type) {
       case 'button': return `button_${item.id}`;
@@ -725,6 +726,28 @@ export default function({
   const getItemLayout = useCallback((item: Item[] | null | undefined, index: number) => {
     return itemOffsets[index];
   }, [itemOffsets]);
+  const deckLimits: ControlType[] = useMemo(() => deckId ? [
+    {
+      type: 'deck',
+      deckId,
+      limit: 0,
+    },
+    {
+      type: 'deck',
+      deckId,
+      limit: 1,
+    },
+    {
+      type: 'deck',
+      deckId,
+      limit: 2,
+    },
+    {
+      type: 'deck',
+      deckId,
+      limit: 3,
+    },
+  ] : [], [deckId]);
   const renderItem = useCallback(({ item }: ListRenderItemInfo<Item>) => {
     switch (item.type) {
       case 'button':
@@ -746,16 +769,17 @@ export default function({
             (card.deck_limit || 0),
           card.deck_limit || 0
         );
+        const control = deck_limit < deckLimits.length ? deckLimits[deck_limit] : undefined;
         return (
           <CardSearchResult
             card={card}
-            onPressId={debouncedCardOnPressId}
+            onPressId={cardOnPressId}
             id={item.id}
-            control={deckId !== undefined ? {
+            control={deckId !== undefined ? (control || {
               type: 'deck',
               deckId,
               limit: deck_limit,
-            } : undefined}
+            }) : undefined}
           />
         );
       }
@@ -773,7 +797,7 @@ export default function({
       default:
         return null;
     }
-  }, [debouncedCardOnPressId, deckId, hasSecondCore, investigator, renderCard]);
+  }, [cardOnPressId, deckId, hasSecondCore, investigator, renderCard, deckLimits]);
   const listHeader = useMemo(() => {
     const searchBarPadding = !noSearch && Platform.OS === 'android';
     if (!searchBarPadding && !header) {

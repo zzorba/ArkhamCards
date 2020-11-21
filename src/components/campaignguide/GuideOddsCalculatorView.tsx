@@ -5,7 +5,7 @@ import OddsCalculatorComponent from '@components/campaign/OddsCalculatorComponen
 import { ChaosBag } from '@app_constants';
 import Card from '@data/Card';
 import { SCENARIO_CARDS_QUERY } from '@data/query';
-import { useCampaign, useCampaignScenarios, useInvestigatorCards } from '@components/core/hooks';
+import { useCampaign, useCycleScenarios, useInvestigatorCards } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 
@@ -17,7 +17,7 @@ export interface GuideOddsCalculatorProps {
 
 export default function GuideOddsCalculatorView({ campaignId, investigatorIds, chaosBag }: GuideOddsCalculatorProps) {
   const campaign = useCampaign(campaignId);
-  const [cycleScenarios, scenarioByCode] = useCampaignScenarios(campaign);
+  const cycleScenarios = useCycleScenarios(campaign);
 
   const investigators = useInvestigatorCards();
   const allInvestigators: Card[] = useMemo(() => {
@@ -37,7 +37,6 @@ export default function GuideOddsCalculatorView({ campaignId, investigatorIds, c
       campaign={campaign}
       chaosBag={chaosBag}
       cycleScenarios={cycleScenarios}
-      scenarioByCode={scenarioByCode}
       allInvestigators={allInvestigators}
       scenarioCards={scenarioCards}
     />

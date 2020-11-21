@@ -15,7 +15,7 @@ import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetw
 import { login } from '@actions';
 import { Deck } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
-import { getBaseDeck, getLatestDeck, AppState } from '@reducers';
+import { makeBaseDeckSelector, makeLatestDeckSelector, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -37,28 +37,10 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
   const { colors, typography } = useContext(StyleContext);
   const dispatch: DeckDispatch = useDispatch();
   const [deck] = useDeck(deckId, {});
-  const baseDeckSelector = useCallback((state: AppState) => {
-    if (deckId === undefined) {
-      return undefined;
-    }
-    const baseDeck = getBaseDeck(state, deckId);
-    if (!baseDeck || baseDeck.id === deckId) {
-      return undefined;
-    }
-    return baseDeck;
-  }, [deckId]);
-  const baseDeck = useSelector(baseDeckSelector);
-  const laltestDeckSelector = useCallback((state: AppState) => {
-    if (deckId === undefined) {
-      return undefined;
-    }
-    const latestDeck = getLatestDeck(state, deckId);
-    if (!latestDeck || latestDeck.id === deckId) {
-      return undefined;
-    }
-    return latestDeck;
-  }, [deckId]);
-  const latestDeck = useSelector(laltestDeckSelector);
+  const baseDeckSelector = useMemo(makeBaseDeckSelector, []);
+  const baseDeck = useSelector((state: AppState) => baseDeckSelector(state, deckId));
+  const latestDeckSelector = useMemo(makeLatestDeckSelector, []);
+  const latestDeck = useSelector((state: AppState) => latestDeckSelector(state, deckId));
   const [saving, setSaving] = useState(false);
   const [deckName, setDeckName] = useState<string | undefined>();
   const [offlineDeck, setOfflineDeck] = useState(!!(deck && deck.local));

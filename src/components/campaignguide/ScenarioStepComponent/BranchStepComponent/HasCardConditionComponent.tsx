@@ -9,9 +9,9 @@ import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import Card from '@data/Card';
 import {
+  BoolOption,
   BranchStep,
   CardCondition,
-  Option,
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { hasCardConditionResult } from '@data/scenario/conditionHelper';
@@ -41,9 +41,9 @@ function investigatorCardPrompt(
   }
 }
 
-function renderInvestigators(investigatorCards: Card[], option: Option): Element | null {
+function renderInvestigators(investigatorCards: Card[], option: BoolOption): Element | null {
   const investigators = stringList(map(investigatorCards, card => card.name));
-  const prompt = option && option.condition;
+  const prompt = option && option.prompt;
   return (
     <SetupStepWrapper>
       <CampaignGuideTextComponent

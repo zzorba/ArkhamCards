@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { ColorSchemeName, useColorScheme } from 'react-native-appearance';
@@ -60,11 +60,12 @@ export default function StyleProvider({ children } : Props) {
   const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const gameFont = lang === 'ru' ? 'Conkordia' : 'Teutonic';
-  return (
-    <StyleContext.Provider value={{
+  const styleTypography = useMemo(() => typography(appFontScale, colors, gameFont), [appFontScale, colors, gameFont]);
+  const context = useMemo(() => {
+    return {
       darkMode,
       fontScale,
-      typography: typography(appFontScale, colors, gameFont),
+      typography: styleTypography,
       colors,
       gameFont,
       backgroundStyle: {
@@ -76,7 +77,10 @@ export default function StyleProvider({ children } : Props) {
       disabledStyle: {
         backgroundColor: colors.disableOverlay,
       },
-    }}>
+    };
+  }, [darkMode, fontScale, styleTypography, colors, gameFont]);
+  return (
+    <StyleContext.Provider value={context}>
       <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>
         { children }
       </ThemeProvider>
