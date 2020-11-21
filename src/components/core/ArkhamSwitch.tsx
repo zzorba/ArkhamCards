@@ -10,8 +10,9 @@ interface Props extends TouchableOpacityProps {
   value: boolean;
   onValueChange: (checked: boolean) => void;
   accessibilityLabel?: string;
+  large?: boolean;
 }
-export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, accessibilityLabel, disabled, ...props }: Props) {
+export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, accessibilityLabel, disabled, large, ...props }: Props) {
   const { colors } = useContext(StyleContext);
 
   const onPress = useCallback(() => {
@@ -27,11 +28,11 @@ export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, 
       accessibilityState={{ checked: value }}
       disabled={disabled} {...props}
     >
-      <View style={styles.icon}>
-        <AppIcon size={28} name="check-circle" color={disabled ? colors.L20 : colors.L10} />
+      <View style={[styles.icon, large ? styles.largeIcon : undefined]}>
+        <AppIcon size={large ? 34 : 28} name="check-circle" color={disabled ? colors.L20 : colors.L10} />
         { !!value && (
           <View style={styles.check}>
-            <AppIcon size={20} name="check" color={disabled ? colors.L20 : colors.M} />
+            <AppIcon size={large ? 26 : 20} name="check" color={disabled ? colors.L20 : colors.M} />
           </View>
         )}
       </View>
@@ -40,6 +41,10 @@ export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, 
 }
 
 const styles = StyleSheet.create({
+  largeIcon: {
+    width: 40,
+    height: 40,
+  },
   icon: {
     width: 32,
     height: 32,
