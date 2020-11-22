@@ -20,12 +20,13 @@ type CampaignLogEntry = {
   feminine_text: string;
 };
 
+export interface CampaignLogSection {
+  section: string;
+  entries: CampaignLogEntry[];
+}
 export interface CampaignLog {
   campaignId: string;
-  sections: {
-    section: string;
-    entries: CampaignLogEntry[];
-  }[];
+  sections: CampaignLogSection[];
   supplies: Supply[];
 }
 
@@ -142,10 +143,11 @@ export default class CampaignGuide {
 
   getScenario(
     id: string,
-    campaignState: CampaignStateHelper
+    campaignState: CampaignStateHelper,
+    standalone?: boolean
   ): ProcessedScenario | undefined {
     return find(
-      this.processAllScenarios(campaignState).scenarios,
+      this.processAllScenarios(campaignState, standalone).scenarios,
       scenario => scenario.scenarioGuide.id === id
     );
   }
@@ -164,6 +166,7 @@ export default class CampaignGuide {
 
   processAllScenarios(
     campaignState: CampaignStateHelper,
+    standalone?: boolean
   ): ProcessedCampaign {
     const scenarios: ProcessedScenario[] = [];
     let campaignLog: GuidedCampaignLog = new GuidedCampaignLog(
@@ -178,7 +181,8 @@ export default class CampaignGuide {
           scenario.id,
           scenario.scenario,
           campaignState,
-          campaignLog
+          campaignLog,
+          standalone
         );
         forEach(nextScenarios, scenario => {
           scenarios.push(scenario);
@@ -329,7 +333,8 @@ export default class CampaignGuide {
     id: ScenarioId,
     scenario: Scenario,
     campaignState: CampaignStateHelper,
-    campaignLog: GuidedCampaignLog
+    campaignLog: GuidedCampaignLog,
+    standalone?: boolean
   ): ProcessedScenario[] {
     const scenarioGuide = new ScenarioGuide(
       id.encodedScenarioId,
@@ -363,7 +368,7 @@ export default class CampaignGuide {
       }];
     }
     const scenarioState = new ScenarioStateHelper(id.encodedScenarioId, campaignState);
-    const executedScenario = scenarioGuide.setupSteps(scenarioState);
+    const executedScenario = scenarioGuide.setupSteps(scenarioState, standalone);
     const firstResult: ProcessedScenario = {
       type: executedScenario.inProgress ? 'started' : 'completed',
       id,

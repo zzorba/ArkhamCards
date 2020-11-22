@@ -432,7 +432,7 @@ export function getFixedStep(
   }
 }
 
-export function scenarioStepIds(scenario: Scenario) {
+export function scenarioStepIds(scenario: Scenario, standalone?: boolean) {
   return (scenario.type === 'interlude' || scenario.type === 'epilogue') ?
     [
       ...scenario.setup,
@@ -441,6 +441,6 @@ export function scenarioStepIds(scenario: Scenario) {
     ] : [
       CHOOSE_INVESTIGATORS_STEP_ID,
       LEAD_INVESTIGATOR_STEP_ID,
-      ...scenario.setup,
+      ...((standalone && scenario.standalone_setup) || scenario.setup),
     ];
 }

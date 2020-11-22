@@ -31,7 +31,28 @@ export default function XpChooser({
   const levelRanges = useMemo(() => {
     return [[0, 0], [1, maxLevel]];
   }, [maxLevel]);
-
+  const selectedIndexes = useMemo(() => flatMap(levelRanges, (xyz, idx) => {
+    if (enabled &&
+        xyz[0] >= levels[0] && xyz[0] <= levels[1] &&
+        xyz[1] >= levels[0] && xyz[1] <= levels[1]) {
+      return [idx];
+    }
+    return [];
+  }), [levelRanges, enabled, levels]);
+  const buttons = useMemo(() => map(levelRanges, xyz => {
+    const startXp = xyz[0];
+    const endXp = xyz[1];
+    const xp = startXp === endXp ?
+      t`Level ${startXp}` :
+      t`Level ${startXp} - ${endXp}`;
+    return {
+      element: (selected: boolean) => (
+        <Text style={[typography.small, { color: selected ? colors.D20 : colors.L20 }]}>
+          { xp }
+        </Text>
+      ),
+    };
+  }), [levelRanges, colors, typography]);
   const updateIndex = useCallback((indexes: number[]) => {
     const selection = flatMap(indexes, idx => levelRanges[idx]);
     const level = indexes.length > 0 ? [min(selection), max(selection)] : [0, maxLevel];
@@ -51,28 +72,6 @@ export default function XpChooser({
     return null;
   }
 
-  const selectedIndexes = flatMap(levelRanges, (xyz, idx) => {
-    if (enabled &&
-        xyz[0] >= levels[0] && xyz[0] <= levels[1] &&
-        xyz[1] >= levels[0] && xyz[1] <= levels[1]) {
-      return [idx];
-    }
-    return [];
-  });
-  const buttons = map(levelRanges, xyz => {
-    const startXp = xyz[0];
-    const endXp = xyz[1];
-    const xp = startXp === endXp ?
-      t`Level ${startXp}` :
-      t`Level ${startXp} - ${endXp}`;
-    return {
-      element: (selected: boolean) => (
-        <Text style={[typography.small, { color: selected ? colors.D20 : colors.L20 }]}>
-          { xp }
-        </Text>
-      ),
-    };
-  });
   return (
     <ArkhamButtonGroup
       onPress={updateIndex}

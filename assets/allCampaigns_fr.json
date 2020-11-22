@@ -31783,7 +31783,6 @@
     "requirements": []
   },
   "standalone_setup": [
-    "choose_investigators",
     "choose_difficulty",
     "intro",
     "gather_encounter_sets",
@@ -31959,13 +31958,6 @@
             ]
           }
         ]
-      }
-    },
-    {
-      "id": "choose_investigators",
-      "type": "input",
-      "input": {
-        "type": "scenario_investigators"
       }
     },
     {
@@ -32373,7 +32365,6 @@
   "full_name": "The Blob That Ate Everything",
   "xp_cost": 2,
   "standalone_setup": [
-    "choose_investigators",
     "choose_difficulty",
     "intro_1",
     "intro_2",
@@ -32484,13 +32475,6 @@
             ]
           }
         ]
-      }
-    },
-    {
-      "id": "choose_investigators",
-      "type": "input",
-      "input": {
-        "type": "scenario_investigators"
       }
     },
     {
@@ -33749,7 +33733,6 @@
   "full_name": "Carnevale of Horrors",
   "xp_cost": 3,
   "standalone_setup": [
-    "choose_investigators",
     "choose_difficulty",
     "intro",
     "gather_encounter_sets",
@@ -33858,13 +33841,6 @@
             ]
           }
         ]
-      }
-    },
-    {
-      "id": "choose_investigators",
-      "type": "input",
-      "input": {
-        "type": "scenario_investigators"
       }
     },
     {
@@ -34185,7 +34161,6 @@
   "full_name": "Curse of the Rougarou",
   "xp_cost": 1,
   "standalone_setup": [
-    "choose_investigators",
     "choose_difficulty",
     "intro",
     "gather_encounter_sets",
@@ -34297,13 +34272,6 @@
             ]
           }
         ]
-      }
-    },
-    {
-      "id": "choose_investigators",
-      "type": "input",
-      "input": {
-        "type": "scenario_investigators"
       }
     },
     {
@@ -34474,7 +34442,6 @@
   "full_name": "Murder at the Excelsior Hotel",
   "xp_cost": 3,
   "standalone_setup": [
-    "choose_investigators",
     "choose_difficulty",
     "intro_1",
     "check_player_count",
@@ -34582,13 +34549,6 @@
             ]
           }
         ]
-      }
-    },
-    {
-      "id": "choose_investigators",
-      "type": "input",
-      "input": {
-        "type": "scenario_investigators"
       }
     },
     {
@@ -36250,7 +36210,6 @@
     ]
   },
   "standalone_setup": [
-    "choose_investigators",
     "choose_difficulty",
     "intro",
     "investigator_setup",
@@ -36428,13 +36387,6 @@
             ]
           }
         ]
-      }
-    },
-    {
-      "id": "choose_investigators",
-      "type": "input",
-      "input": {
-        "type": "scenario_investigators"
       }
     },
     {
@@ -36813,7 +36765,6 @@
   "full_name": "The Eternal Slumber",
   "xp_cost": 2,
   "standalone_setup": [
-    "choose_investigators",
     "choose_difficulty",
     "intro_1",
     "gather_encounter_sets",
@@ -36932,13 +36883,6 @@
             ]
           }
         ]
-      }
-    },
-    {
-      "id": "choose_investigators",
-      "type": "input",
-      "input": {
-        "type": "scenario_investigators"
       }
     },
     {
@@ -37312,7 +37256,6 @@
   "full_name": "The Night's Usurper",
   "xp_cost": 2,
   "standalone_setup": [
-    "choose_investigators",
     "choose_difficulty",
     "intro_1",
     "gather_encounter_sets",
@@ -37429,13 +37372,6 @@
             ]
           }
         ]
-      }
-    },
-    {
-      "id": "choose_investigators",
-      "type": "input",
-      "input": {
-        "type": "scenario_investigators"
       }
     },
     {

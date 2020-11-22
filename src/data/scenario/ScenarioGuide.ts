@@ -115,24 +115,12 @@ export default class ScenarioGuide {
     return find(this.scenario.resolutions || [], resolution => resolution.id === id);
   }
 
-  encounterSets(scenarioState: ScenarioStateHelper): string[] {
-    return flatMap(
-      this.setupSteps(scenarioState).steps,
-      step => {
-        if (step.step.type === 'encounter_sets') {
-          return step.step.encounter_sets;
-        }
-        return [];
-      }
-    );
-  }
-
   setupSteps(
-    scenarioState: ScenarioStateHelper
+    scenarioState: ScenarioStateHelper,
+    standalone?: boolean
   ): ExecutedScenario {
-    const stepIds = scenarioStepIds(this.scenario);
+    const stepIds = scenarioStepIds(this.scenario, standalone);
     const steps = this.expandSteps(stepIds, scenarioState, this.scenarioStartCampaignLog);
-
     const lastStep = last(steps);
     if (!lastStep) {
       // Every scenario has at least one step.

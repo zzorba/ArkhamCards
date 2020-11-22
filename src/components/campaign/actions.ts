@@ -40,6 +40,9 @@ import {
   RestoreBackupAction,
   AdjustBlessCurseAction,
   ADJUST_BLESS_CURSE,
+  StandaloneId,
+  NewStandaloneCampaignAction,
+  NEW_STANDALONE,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector } from '@reducers';
@@ -153,6 +156,29 @@ export function newLinkedCampaign(
     weaknessSet,
     guided: true,
     now: new Date(),
+  };
+}
+
+export function newStandalone(
+  id: number,
+  name: string,
+  standaloneId: StandaloneId,
+  deckIds: number[],
+  investigatorIds: string[],
+  weaknessSet: WeaknessSet
+): ThunkAction<void, AppState, null, NewStandaloneCampaignAction> {
+  return (dispatch, getState: () => AppState) => {
+    const action: NewStandaloneCampaignAction = {
+      type: NEW_STANDALONE,
+      id,
+      name: name,
+      standaloneId,
+      weaknessSet,
+      baseDeckIds: getBaseDeckIds(getState(), deckIds),
+      investigatorIds,
+      now: new Date(),
+    };
+    dispatch(action);
   };
 }
 

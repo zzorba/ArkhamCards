@@ -1,20 +1,23 @@
 import React, { useCallback } from 'react';
 import { TouchableOpacity } from 'react-native';
 
-import { CampaignCycleCode } from '@actions/types';
+import { StandaloneId } from '@actions/types';
 import ItemContent from './ItemContent';
 
 interface Props {
-  packCode: CampaignCycleCode;
+  id: StandaloneId;
+  packCode: string;
   text: string;
   description?: string;
   disabled?: boolean;
-  onPress: (packCode: CampaignCycleCode, text: string) => void;
+  onPress: (id: StandaloneId, text: string) => void;
 }
-export default function CycleItem({ packCode, text, description, disabled, onPress }: Props) {
+
+
+export default function StandaloneItem({ id, packCode, text, description, disabled, onPress }: Props) {
   const handleOnPress = useCallback(() => {
-    onPress(packCode, text);
-  }, [onPress, packCode, text]);
+    onPress(id, text);
+  }, [onPress, id, text]);
 
   if (!disabled) {
     return (
@@ -25,3 +28,4 @@ export default function CycleItem({ packCode, text, description, disabled, onPre
   }
   return <ItemContent packCode={packCode} text={text} disabled={disabled} description={description} />;
 }
+

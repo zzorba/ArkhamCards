@@ -4,6 +4,8 @@ import {
   SingleCampaign,
   CampaignGuideState,
   DecksMap,
+  StandaloneId,
+  STANDALONE,
 } from '@actions/types';
 import { createSelector } from 'reselect';
 import CampaignGuide from '@data/scenario/CampaignGuide';
@@ -34,9 +36,13 @@ const makeCampaignGuideSelector = () =>
   createSelector(
     (state: AppState) => getLangPreference(state),
     (state: AppState, campaign?: SingleCampaign) => campaign?.cycleCode,
-    (lang: string, campaignCode?: string) => {
+    (state: AppState, campaign?: SingleCampaign) => campaign?.standaloneId,
+    (lang: string, campaignCode?: string, standaloneId?: StandaloneId) => {
       if (!campaignCode) {
         return undefined;
+      }
+      if (campaignCode === STANDALONE && standaloneId) {
+        return getCampaignGuide(standaloneId.campaignId, lang);
       }
       return getCampaignGuide(campaignCode, lang);
     }

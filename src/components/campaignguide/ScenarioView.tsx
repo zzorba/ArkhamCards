@@ -13,7 +13,6 @@ import KeepAwake from 'react-native-keep-awake';
 import { useSelector } from 'react-redux';
 
 import CampaignGuideContext from './CampaignGuideContext';
-import { ScenarioGuideContextType } from './ScenarioGuideContext';
 import StepsComponent from './StepsComponent';
 import { CampaignLogProps } from './CampaignLogView';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
@@ -28,6 +27,7 @@ import StyleContext from '@styles/StyleContext';
 import NarratorView, { NarrationTrack, setNarrationQueue } from '@components/campaignguide/Narrator';
 import { SHOW_DISSONANT_VOICES } from '@app_constants';
 import ScenarioStep from '@data/scenario/ScenarioStep';
+import ScenarioGuideContext from './ScenarioGuideContext';
 
 interface OwnProps {
   showLinkedScenario?: (
@@ -36,7 +36,7 @@ interface OwnProps {
 }
 type InputProps = NavigationProps & ScenarioGuideInputProps & OwnProps;
 
-type Props = InputProps & ScenarioGuideContextType;
+type Props = InputProps;
 
 export type ScenarioProps = ScenarioGuideInputProps & OwnProps;
 
@@ -68,10 +68,17 @@ function dynamicOptions(undo: boolean) {
   };
 }
 
-function ScenarioView({ componentId, campaignId, showLinkedScenario, processedScenario, scenarioState, scenarioId }: Props) {
+function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId, standalone }: Props) {
   const { campaignState } = useContext(CampaignGuideContext);
+  const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
   const { backgroundStyle } = useContext(StyleContext);
   const { width } = useWindowDimensions();
+  useEffect(() => {
+    if (standalone && processedScenario.type !== 'started' && processedScenario.type !== 'completed') {
+      campaignState.startScenario(scenarioId);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => {
     Navigation.mergeOptions(componentId, dynamicOptions(processedScenario.canUndo));
   }, [componentId, processedScenario.canUndo]);

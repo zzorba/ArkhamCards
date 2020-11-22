@@ -10,6 +10,7 @@ import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { usePressCallback } from '@components/core/hooks';
 
 interface Props {
   campaign: Campaign;
@@ -21,9 +22,10 @@ export default function CampaignItem({ campaign, onPress }: Props) {
   const handleOnPress = useCallback(() => {
     onPress(campaign.id, campaign);
   }, [onPress, campaign]);
+  const debouncedOnPress = usePressCallback(handleOnPress);
 
   return (
-    <TouchableOpacity onPress={handleOnPress}>
+    <TouchableOpacity onPress={debouncedOnPress}>
       <View style={[styles.container, borderStyle]}>
         <CampaignSummaryComponent
           campaign={campaign}

@@ -20,6 +20,7 @@ import {
   CampaignCycleCode,
   CustomCampaignLog,
   ScenarioResult,
+  STANDALONE,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/Card';
@@ -55,6 +56,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case TDEB: return t`The Web of Dreams`;
     case TIC: return t`The Innsmouth Conspiracy`;
     case CUSTOM: return null;
+    case STANDALONE: return t`Standalone`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -266,6 +268,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
     ];
     case TDE: return [];
     case CUSTOM: return [];
+    case STANDALONE: return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -289,6 +292,7 @@ export function campaignNames() {
     tdeb: t`The Web of Dreams`,
     tcu: t`The Circle Undone`,
     tic: t`The Innsmouth Conspiracy`,
+    standalone: t`Standalone`,
   };
 }
 
@@ -298,6 +302,7 @@ export function campaignColor(cycle: CampaignCycleCode, colors: ThemeColors) {
     case 'rtnotz':
     case 'tcu':
     case 'custom':
+    case 'standalone':
       return colors.campaign.blue;
     case 'ptc':
     case 'rtptc':
@@ -406,6 +411,8 @@ export function getCampaignLog(
           t`Campaign Notes`,
         ],
       };
+    case STANDALONE:
+      return {};
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -522,6 +529,7 @@ export function getChaosBag(
     case CORE:
     case RTNOTZ:
     case CUSTOM:
+    case STANDALONE:
       return NOTZ_BAG[difficulty];
     case DWL:
     case RTDWL:

@@ -1,11 +1,13 @@
-import { find } from 'lodash';
+import { find, flatMap, forEach } from 'lodash';
 
-import { Deck, NumberChoices } from '@actions/types';
-import { FullCampaign, Effect, Errata } from './types';
-import CampaignGuide, { CampaignLog } from './CampaignGuide';
+import { Deck, NumberChoices, StandaloneId } from '@actions/types';
+import { FullCampaign, Effect, Errata, Scenario } from './types';
+import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
-import GuidedCampaignLog from './GuidedCampaignLog';
+import GuidedCampaignLog, { CampaignLogEntry } from './GuidedCampaignLog';
+import { ca } from 'date-fns/locale';
+import { scenarioFromCard } from '@components/campaign/constants';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -120,6 +122,39 @@ function load(lang: string): {
   }
 }
 
+function combineCampaignLog(
+  campaignLog: CampaignLog,
+  sideCampaign: CampaignLog
+): CampaignLog {
+  const sections: CampaignLogSection[] = [];
+  const usedSideSections: string[] = [];
+  campaignLog.sections.forEach(section => {
+    const sideSection = sideCampaign.sections.find(side => side.section === section.section);
+    if (sideSection) {
+      usedSideSections.push(section.section);
+      sections.push({
+        section: section.section,
+        entries: [
+          ...section.entries,
+          ...sideSection.entries,
+        ],
+      });
+    } else {
+      sections.push(section);
+    }
+  });
+  const usedSideSectionsSet = new Set(usedSideSections);
+  sideCampaign.sections.forEach(side => {
+    if (!usedSideSectionsSet.has(side.section)) {
+      sections.push(side);
+    }
+  });
+  return {
+    ...campaignLog,
+    sections,
+  };
+}
+
 export function getCampaignGuide(
   id: string,
   lang: string
@@ -135,16 +170,76 @@ export function getCampaignGuide(
     campaign.campaign.id === id
   );
   const logEntries = find(allLogEntries, log => log.campaignId === id);
+  const sideLogEntries = find(allLogEntries, log => log.campaignId === 'side');
   const sideCampaign = find(allCampaigns, campaign => campaign.campaign.id === 'side');
 
-  return campaign && logEntries && sideCampaign &&
-    new CampaignGuide(
-      campaign,
-      logEntries,
-      encounterSets,
-      sideCampaign,
-      errata,
-    );
+  if (!campaign || !logEntries || !sideCampaign || !sideLogEntries) {
+    return undefined;
+  }
+  return new CampaignGuide(
+    campaign,
+    combineCampaignLog(logEntries, sideLogEntries),
+    encounterSets,
+    sideCampaign,
+    errata,
+  );
+}
+
+function findStandaloneScenario(id: StandaloneId, allCampaigns: FullCampaign[], allLogEntries: CampaignLog[]): undefined | {
+  logEntries: CampaignLog;
+  campaign: FullCampaign;
+  scenario: Scenario;
+} {
+  const campaign = find(allCampaigns, campaign => campaign.campaign.id === id.campaignId);
+  const logEntries = find(allLogEntries, log => log.campaignId === id.campaignId);
+  const scenario = campaign && find(campaign.scenarios, scenario => scenario.id === id.scenarioId);
+  if (!campaign || !scenario || !logEntries) {
+    console.log(!!campaign);
+    console.log(!!scenario);
+    console.log(!!logEntries);
+    return undefined;
+  }
+  return {
+    campaign,
+    scenario,
+    logEntries,
+  };
+}
+
+export function getStandaloneScenarioGuide(id: string, lang: string) {
+  const {
+    allLogEntries,
+    allCampaigns,
+  } = load(lang);
+  return null;
+}
+
+export interface StandaloneScenarioInfo {
+  id: StandaloneId;
+  name: string;
+  code: string;
+}
+
+export function getStandaloneScenarios(
+  lang: string
+): StandaloneScenarioInfo[] {
+  const {
+    allLogEntries,
+    allCampaigns,
+  } = load(lang);
+  const standalones = require('../../../assets/standaloneScenarios.json');
+  return flatMap(standalones, (id: StandaloneId) => {
+    const data = findStandaloneScenario(id, allCampaigns, allLogEntries);
+    if (!data) {
+      console.log(`Could not find ${JSON.stringify(id)}`);
+      return [];
+    }
+    return {
+      id,
+      name: data.scenario.scenario_name,
+      code: data.scenario.id,
+    };
+  });
 }
 
 export default {

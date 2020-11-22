@@ -257,9 +257,24 @@ function MyDecksSelectorDialog(props: Props) {
       onlyInvestigators={onlyInvestigators}
     />
   ), [componentId, onDeckSelect, searchOptions, filterDeckIds, onlyDeckIds, filterInvestigators, onlyInvestigators]);
-
+  const investigatorTab = useMemo(() => {
+    if (!onInvestigatorSelect) {
+      return null;
+    }
+    return (
+      <InvestigatorSelectorTab
+        componentId={componentId}
+        sort={selectedSort}
+        onInvestigatorSelect={onInvestigatorSelect}
+        searchOptions={searchOptions(false)}
+        filterDeckIds={filterDeckIds}
+        onlyDeckIds={onlyDeckIds}
+        filterInvestigators={filterInvestigators}
+      />
+    );
+  }, [componentId, selectedSort, onInvestigatorSelect, searchOptions, filterDeckIds, onlyDeckIds, filterInvestigators]);
   const tabs = useMemo(() => {
-    return onInvestigatorSelect ? [
+    return investigatorTab ? [
       {
         key: 'decks',
         title: t`Decks`,
@@ -268,22 +283,12 @@ function MyDecksSelectorDialog(props: Props) {
       {
         key: 'investigators',
         title: t`Investigator`,
-        node: (
-          <InvestigatorSelectorTab
-            componentId={componentId}
-            sort={selectedSort}
-            onInvestigatorSelect={onInvestigatorSelect}
-            searchOptions={searchOptions(false)}
-            filterDeckIds={filterDeckIds}
-            onlyDeckIds={onlyDeckIds}
-            filterInvestigators={filterInvestigators}
-          />
-        ),
+        node: investigatorTab,
       },
-    ] : [];
-  }, [deckTab, componentId, selectedSort, onInvestigatorSelect, searchOptions, filterDeckIds, onlyDeckIds, filterInvestigators]);
+    ] : null;
+  }, [deckTab, investigatorTab]);
 
-  if (onInvestigatorSelect) {
+  if (tabs) {
     return (
       <TabView
         tabs={tabs}

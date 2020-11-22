@@ -10,7 +10,7 @@ import DatabaseProvider from './src/data/DatabaseProvider';
 import { registerScreens } from './src/app/screens';
 import configureStore from './src/app/store';
 import StyleProvider from './src/styles/StyleProvider';
-
+import App from './src/app/App';
 
 function MyProvider({ store: { redux, persistor }, children}) {
   return (
@@ -41,7 +41,6 @@ Crashes.setListener({
 let app = null;
 Navigation.events().registerAppLaunchedListener(() => {
   registerScreens(MyProvider, { redux: store, persistor: persistor });
-  const App = require('./src/app/App').default;
   app = new App(store);
 });
 

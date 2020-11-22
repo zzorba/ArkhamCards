@@ -10,36 +10,33 @@ import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign, usePressCallback } from '@components/core/hooks';
+import { usePressCallback } from '@components/core/hooks';
 
 interface Props {
   campaign: Campaign;
+  scenarioName: string;
   onPress: (id: number, campaign: Campaign) => void;
 }
 
-export default function LinkedCampaignItem({ campaign, onPress }: Props) {
+export default function StandaloneItem({ campaign, onPress, scenarioName }: Props) {
   const { borderStyle } = useContext(StyleContext);
-  const campaignA = useCampaign(campaign.link ? campaign.link.campaignIdA : undefined);
-  const campaignB = useCampaign(campaign.link ? campaign.link.campaignIdB : undefined);
-
-  const onCampaignPress = useCallback(() => {
+  const handleOnPress = useCallback(() => {
     onPress(campaign.id, campaign);
-  }, [campaign, onPress]);
-  const debouncedOnPress = usePressCallback(onCampaignPress);
+  }, [onPress, campaign]);
+  const debouncedOnPress = usePressCallback(handleOnPress);
 
   return (
     <TouchableOpacity onPress={debouncedOnPress}>
       <View style={[styles.container, borderStyle]}>
         <CampaignSummaryComponent
           campaign={campaign}
-          hideScenario
           name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
+          standaloneName={scenarioName}
+          hideScenario
         />
-        { !!campaignA && !!campaignB && (
-          <CampaignInvestigatorRow
-            campaigns={[campaignA, campaignB]}
-          />
-        ) }
+        <CampaignInvestigatorRow
+          campaigns={[campaign]}
+        />
       </View>
     </TouchableOpacity>
   );

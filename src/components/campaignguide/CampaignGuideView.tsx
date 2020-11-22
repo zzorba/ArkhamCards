@@ -14,25 +14,25 @@ import TabView from '@components/core/TabView';
 import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
 import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import withCampaignGuideContext, {
-  CampaignGuideProps as InjectedCampaignGuideProps,
   CampaignGuideInputProps,
 } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
 import { s, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
+import CampaignGuideContext from './CampaignGuideContext';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
 type Props = CampaignGuideProps &
   NavigationProps &
   InjectedDialogProps &
-  InjectedCampaignGuideProps &
   TraumaProps;
 
 function CampaignGuideView(props: Props) {
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
-  const { campaignId, componentId, showTextEditDialog, campaignData, showTraumaDialog } = props;
+  const { campaignId, componentId, showTextEditDialog, showTraumaDialog } = props;
+  const campaignData = useContext(CampaignGuideContext);
   const dispatch = useDispatch();
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
@@ -77,58 +77,67 @@ function CampaignGuideView(props: Props) {
   }, [dispatch]);
   const { campaignGuide, campaignState } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
-  const tabs = [
+  const decksTab = useMemo(() => {
+    return (
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        <View style={[styles.section, styles.bottomBorder, borderStyle]}>
+          <CampaignGuideSummary
+            difficulty={processedCampaign.campaignLog.campaignData.difficulty}
+            campaignGuide={campaignGuide}
+          />
+        </View>
+        <CampaignInvestigatorsComponent
+          componentId={componentId}
+          deleteCampaign={confirmDeleteCampaign}
+          updateCampaign={saveCampaignUpdate}
+          campaignData={campaignData}
+          processedCampaign={processedCampaign}
+          showTraumaDialog={showTraumaDialog}
+        />
+      </ScrollView>
+    );
+  }, [componentId, backgroundStyle, borderStyle, confirmDeleteCampaign, saveCampaignUpdate, campaignData, processedCampaign, campaignGuide, showTraumaDialog]);
+  const scenariosTab = useMemo(() => {
+    return (
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        <ScenarioListComponent
+          campaignId={campaignId}
+          campaignData={campaignData}
+          processedCampaign={processedCampaign}
+          componentId={componentId}
+        />
+      </ScrollView>
+    );
+  }, [backgroundStyle, campaignData, campaignId, processedCampaign, componentId]);
+  const logTab = useMemo(() => {
+    return (
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        <CampaignLogComponent
+          campaignId={campaignId}
+          campaignGuide={campaignGuide}
+          campaignLog={processedCampaign.campaignLog}
+          componentId={componentId}
+        />
+      </ScrollView>
+    );
+  }, [backgroundStyle, campaignId, campaignGuide, processedCampaign.campaignLog, componentId]);
+  const tabs = useMemo(() => [
     {
       key: 'investigators',
       title: t`Decks`,
-      node: (
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <View style={[styles.section, styles.bottomBorder, borderStyle]}>
-            <CampaignGuideSummary
-              difficulty={processedCampaign.campaignLog.campaignData.difficulty}
-              campaignGuide={campaignGuide}
-            />
-          </View>
-          <CampaignInvestigatorsComponent
-            componentId={componentId}
-            deleteCampaign={confirmDeleteCampaign}
-            updateCampaign={saveCampaignUpdate}
-            campaignData={campaignData}
-            processedCampaign={processedCampaign}
-            showTraumaDialog={showTraumaDialog}
-          />
-        </ScrollView>
-      ),
+      node: decksTab,
     },
     {
       key: 'scenarios',
       title: t`Scenarios`,
-      node: (
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <ScenarioListComponent
-            campaignId={campaignId}
-            campaignData={campaignData}
-            processedCampaign={processedCampaign}
-            componentId={componentId}
-          />
-        </ScrollView>
-      ),
+      node: scenariosTab,
     },
     {
       key: 'log',
       title: t`Log`,
-      node: (
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <CampaignLogComponent
-            campaignId={campaignId}
-            campaignGuide={campaignGuide}
-            campaignLog={processedCampaign.campaignLog}
-            componentId={componentId}
-          />
-        </ScrollView>
-      ),
+      node: logTab,
     },
-  ];
+  ], [decksTab, scenariosTab, logTab]);
 
   return (
     <TabView
@@ -138,8 +147,8 @@ function CampaignGuideView(props: Props) {
 }
 
 export default withCampaignGuideContext<CampaignGuideProps & NavigationProps>(
-  withDialogs<CampaignGuideProps & InjectedCampaignGuideProps & NavigationProps>(
-    withTraumaDialog<CampaignGuideProps & InjectedDialogProps & InjectedCampaignGuideProps & NavigationProps>(
+  withDialogs<CampaignGuideProps & NavigationProps>(
+    withTraumaDialog<CampaignGuideProps & InjectedDialogProps & NavigationProps>(
       CampaignGuideView,
       { hideKilledInsane: true }
     )
