@@ -194,29 +194,34 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
       }
     }
     for (const scenarioStep of scenarioSteps) {
-      if (scenarioStep.step.type === 'resolution') {
-        const narration = processedScenario.scenarioGuide.resolution(
-          scenarioStep.step.resolution
-        )?.narration;
-        if (!narration) continue;
-
-        queue.push({
-          ...narration,
-          campaignCode,
-          campaignName,
-          scenarioName,
-        });
-      } else if (['story', 'branch', 'input'].includes(scenarioStep.step.type ?? '')) {
-        const narration = scenarioStep.step.narration;
-        if (!narration) {
-          continue;
+      switch(scenarioStep.step.type) {
+        case 'resolution': {
+          const narration = processedScenario.scenarioGuide.resolution(
+            scenarioStep.step.resolution
+          )?.narration;
+          if (narration) {
+            queue.push({
+              ...narration,
+              campaignCode,
+              campaignName,
+              scenarioName,
+            });
+          }
+          break;
         }
-        queue.push({
-          ...narration,
-          campaignCode,
-          campaignName,
-          scenarioName,
-        });
+        case 'story':
+        case 'branch':
+        case 'input': {
+          const narration = scenarioStep.step.narration;
+          if (narration) {
+            queue.push({
+              ...narration,
+              campaignCode,
+              campaignName,
+              scenarioName,
+            });
+          }
+        }
       }
     }
 
