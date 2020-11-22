@@ -5310,7 +5310,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -5320,7 +5320,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -5907,7 +5907,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que <i>vous avez pris la broche en onyx</i> et que le déteneur initial ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -5940,7 +5940,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -5961,7 +5961,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -5971,7 +5971,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -6485,7 +6485,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que <i>vous avez pris la broche en onyx</i> et que le déteneur initial ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -6518,7 +6518,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -6554,7 +6554,7 @@
     {
       "id": "set_aside_location_layout",
       "type": "location_setup",
-      "text": "Set-aside Location Layout (spoilers)",
+      "text": "Disposition des lieux mis de côté (spoilers)",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -6596,7 +6596,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -6669,7 +6669,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -7577,7 +7577,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que <i>vous avez pris la broche en onyx</i> et que le déteneur initial ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -7610,7 +7610,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -7748,7 +7748,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -7758,7 +7758,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -8170,7 +8170,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Mettez les cartes suivantes de côté, hors jeu\u001e: Bibliothèque Cachée, Conjurateur Possédé, M. Peabody, La Cape en Lambeaux et Broche d’Onyx Noir"
+      "text": "Mettez les cartes suivantes de côté, hors jeu : Bibliothèque Cachée, Conjurateur Possédé, M. Peabody, La Cape en Lambeaux et Broche d’Onyx Noir"
     },
     {
       "id": "spawn_cultists",
@@ -8271,7 +8271,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -8292,7 +8292,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -8302,7 +8302,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -8616,7 +8616,7 @@
     {
       "id": "R4",
       "title": "Conclusion 4",
-      "text": "Les événements de la nuit vous laissent exténué. Vous n'avez rien trouvé dans le manoir de la Société des Historiens qui puisse vous aider dans votre enquête. Qui qu'aient été ces intrus, ils devaient chercher les mêmes informations que vous. Bouleversé, vous vous dirigez vers le lit le plus proche que vous trouvez – à la Pension de Ma, située non-loin de la Société des Historiens. L'aube vous surprend alors que vous a\u001deignez la pension. La poignée de porte et les fougères du porche sont couvertes de rosée. Vous avez la chance de trouver une chambre libre pour la journée, et vous vous écroulez de fatigue.\nSoudain, vous tombez. Au-dessus et tout autour de vous, une lumière aveuglante flamboie tel un brasier. Des maux de tête et des visions colorées vous assaillent. Votre peau commence à roussir au contact des flammes. Un abîme s'ouvre sous vos pieds et vous engloutit tout entier. Vous vous retrouvez dans une cellule à l'odeur méphitique, humide et dépourvue de fenêtres. Un homme est recroquevillé dans un coin de la pièce, tremblant à cause du froid, de sa situation désespérée, ou peut-être des deux. « Pas de masque », marmonne-t-il encore et encore, « pas de masque, pas de masque... » Vous tentez de vous approcher de lui mais, avant que vous ne puissiez l'atteindre, le loquet métallique de la porte sa cellule s'ouvre et vous entendez une voix l'appeler. « Daniel, il est l'heure », dit-elle. «'Daniel, réveille-toi. Réveille-toi, Daniel. » Et vous vous réveillez.",
+      "text": "Les événements de la nuit vous laissent exténué. Vous n'avez rien trouvé dans le manoir de la Société des Historiens qui puisse vous aider dans votre enquête. Qui qu'aient été ces intrus, ils devaient chercher les mêmes informations que vous. Bouleversé, vous vous dirigez vers le lit le plus proche que vous trouvez – à la Pension de Ma, située non-loin de la Société des Historiens. L'aube vous surprend alors que vous atteignez la pension. La poignée de porte et les fougères du porche sont couvertes de rosée. Vous avez la chance de trouver une chambre libre pour la journée, et vous vous écroulez de fatigue.\nSoudain, vous tombez. Au-dessus et tout autour de vous, une lumière aveuglante flamboie tel un brasier. Des maux de tête et des visions colorées vous assaillent. Votre peau commence à roussir au contact des flammes. Un abîme s'ouvre sous vos pieds et vous engloutit tout entier. Vous vous retrouvez dans une cellule à l'odeur méphitique, humide et dépourvue de fenêtres. Un homme est recroquevillé dans un coin de la pièce, tremblant à cause du froid, de sa situation désespérée, ou peut-être des deux. « Pas de masque », marmonne-t-il encore et encore, « pas de masque, pas de masque... » Vous tentez de vous approcher de lui mais, avant que vous ne puissiez l'atteindre, le loquet métallique de la porte sa cellule s'ouvre et vous entendez une voix l'appeler. « Daniel, il est l'heure », dit-elle. «'Daniel, réveille-toi. Réveille-toi, Daniel. » Et vous vous réveillez.",
       "steps": [
         "followers_of_sign_found_way",
         "earn_1_xp",
@@ -9310,7 +9310,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -9331,7 +9331,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -9341,7 +9341,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -9792,7 +9792,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que <i>vous avez pris la broche en onyx</i> et que le déteneur initial ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -9825,7 +9825,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -9852,7 +9852,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -9905,7 +9905,7 @@
           },
           {
             "id": "doubt",
-            "text": "You spent clues to advance.",
+            "text": "Vous avez dépensé des indices pour avancer.",
             "description": " Inscrivez deux <b>Doutes</b>",
             "effects": [
               {
@@ -9927,7 +9927,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -10460,7 +10460,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -10511,7 +10511,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que <i>vous avez pris la broche en onyx</i> et que le déteneur initial ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -10532,7 +10532,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -10542,7 +10542,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -16114,7 +16114,7 @@
   "id": "rtptc",
   "position": 2,
   "version": 1,
-  "name": "Renouveau: Le Chemin de Carcosa",
+  "name": "Renouveau - La route de Carcosa",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -16355,7 +16355,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -16365,7 +16365,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -16954,8 +16954,8 @@
 },
 {
   "id": "return_to_a_phantom_of_truth",
-  "scenario_name": "Renouveau: Le Spectre de la Vérité",
-  "full_name": "Scenario V: Return to A Phantom of Truth",
+  "scenario_name": "Renouveau - Le Spectre de la Vérité",
+  "full_name": "Scénario V :Renouveau - Le Spectre de la Vérité",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -17502,7 +17502,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que <i>vous avez pris la broche en onyx</i> et que le déteneur initial ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -17535,7 +17535,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -17556,7 +17556,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -17566,7 +17566,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -17781,19 +17781,19 @@
     },
     {
       "id": "choose_locations",
-      "text": "Randomly put 1 of each of the following locations into play: Montmarte, Opéra Garnier, Montparnasse, Grand Guignol, Père Lachaise Cemetery, Canal Saint-Martin, Notre-Dame, Le Marais, and Gardens of Luxembourg. Remove the other versions of those locations from the game."
+      "text": "Prenez au hazard 1 des 2 lieux Maontparnasse, 1 des 2 lieux Grand-Guignol, 1 des 2 lieux Cimetière du père Lachaise, 1 des 2 lieux Canal Saint-Martin, 1 des 2 lieux Notre-Dame et 1 des 2 lieux Jardin du Luxembourg. Mettez-les en jeux. Retirez de la partie les autres versions de ces lieux."
     },
     {
       "id": "setup_locations",
-      "text": "Put Gare d’Orsay into play. Each investigator begins play at Gare d’Orsay."
+      "text": "Mettez en jeu la Gare d'Orsay. Chaque investigateur commence la partie à la Gare d'Orsay."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the double‐sided The Organist enemy and both copies of Figure in the Shadows aside, out of play."
+      "text": "Mettez de côté l'ennemi double-face L'Organiste et les deux exemplaires de  Silhouette dans la pénombre, hors jeu."
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rules apply:\n\"<b>Forced</b> - After The Organist enters play: Shuffle both set-aside copies of Figure in the Shadows into the encounter deck, along with the encounter discard pile.\"\nAttach the Return to A Phantom of Truth scenario reference card to the scenario reference card as a reminder."
+      "text": "Pour la durée de ce scénario, appliquez la règle supplémentaire suivante :\n« <b>Forcé</b> - Après que l'Organiste est entré en jeu : mélangez les deux exemplaires de Silhouette dans la Pénombre mis de côté et la pile de défausse Rencontre dans le deck Rencontre. »\nAttachez cette carte à la carte de référence dus cénario en tant qu\"aide-mémoire."
     }
   ],
   "resolutions": [
@@ -17855,8 +17855,8 @@
 },
 {
   "id": "return_to_black_stars_rise",
-  "scenario_name": "Renouveau: Sous les Étoiles Noires",
-  "full_name": "Scenario VII: Return to Black Stars Rise",
+  "scenario_name": "Renouveau - Sous les Étoiles Noires",
+  "full_name": "Scénario VII : Renouveau - Sous les Étoiles Noires",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -18094,7 +18094,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que <i>vous avez pris la broche en onyx</i> et que le déteneur initial ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -18127,7 +18127,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -18163,7 +18163,7 @@
     {
       "id": "set_aside_location_layout",
       "type": "location_setup",
-      "text": "Set-aside Location Layout (spoilers)",
+      "text": "Disposition des lieux mis de côté (spoilers)",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -18205,7 +18205,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -18278,7 +18278,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -18487,22 +18487,22 @@
     },
     {
       "id": "randomize_knights_hall_and_cloister",
-      "text": "Sort each copy of Cloister and Knight's Hall into two piles, based on the encounter set icon on their reverse side.",
+      "text": "Classez en deux piles chaque exemplaire du Cloitre et de la Salle des Chenvaliers en fonction de l'icône de set de rencontre à leur verso.",
       "bullets": [
         {
-          "text": "One pile should consist of the original versions of Cloister and Knight's Hall, the other should consist of the new versions included in this encounter set."
+          "text": "Une pile doit être constituée des versions originelles du Cloitre et de la Salle des Chevaliers, l'autre doit être constituée des nouvelles versions incluses dans ce set de rencontre."
         },
         {
-          "text": "Flip each pile over so only the Black Stars Rise encounter set icon is showing."
+          "text": "Retournez chaque pile afin que seule l'icône du set de rencontre <i>Sous les Étoiles Noires</i> soit visible."
         },
         {
-          "text": "Randomize the two piles so you cannot tell which is which. Choose one pile at random to remove from the game and one pile at random to use throughout this scenario's setup."
+          "text": "Prenez l'une des deux piles au hazard et retirez-la de la partie. Utilisez l'autre pile lors de la mise en place de ce scénario."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Both act cards (Act 3a and Act 3c), Beast of Aldebaran, each copy of Tidal Terror, each copy of Rift Seeker, Cloister, Knight’s Hall, Abbey Tower, and Chapel of St. Aubert <i>(remember to use the versions of Abbey Tower, Chapel of St. Aubert, Cloister, and Knight's Hall that were randomly chosen earlier)</i>."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : les deux cartes Acte (Acte 3a et Acte 3c), Bête d'Aldébaran, chaque exemplaire de Terreur des Marées, chaque exemplaire de Chercheur de Failles, Cloître, Salle des Chevaliers, Tour de l'Abbaye et Chapelle Saint-Aubert <i>(rappelez-vous bien d'utiliser les versions de la Tour de l'Abbaye, de la Chapelle Saint-Aubert, du Cloitre et de la Salle des Chevaliers choisis aléatoirement plus tôt)</i>."
     }
   ],
   "resolutions": [
@@ -18575,8 +18575,8 @@
 },
 {
   "id": "return_to_curtain_call",
-  "scenario_name": "Renouveau: Baisser de Rideau",
-  "full_name": "Scenario I: Return to Curtain Call",
+  "scenario_name": "Renouveau - Baisser de Rideau",
+  "full_name": "Scénario I : Renouveau - Baisser de Rideau",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -18814,11 +18814,11 @@
     },
     {
       "id": "attach_to_royal_emissary",
-      "text": "Attach the Return to Curtain Call scenario reference card to the Royal Emissary. It gains the following text:\n\"This card cannot be detached from Royal Emissary (even if Royal Emissary leaves play).\n<b>Forced</b> - After Royal Emissary is added to the victory display: Place 1 resource on this card, as a warning.\nFor each warning on this card, Royal Emissary gets +1 [per_investigator] health."
+      "text": "Attachez la carte de référence Renouveau - Baisser de Rideau à l'Émissaire Royal. Elle gagne le texte suivant :\n« Catte carte ne peut pas être détachée de l'Émissaire Royal (même si ce dernier quitte le jeu).\n<b>Forcé<\b> - Après avoir ajouté l'Émissaire Royal à la pile de victoire : placez 1 ressource sur cette carte en tant qu'avertissement.\nPour chaque avertissement sur cette carte, l'Émissaire Royal gagne +1 [per_investigator] vie. »\n"
     },
     {
       "id": "construct_act_deck",
-      "text": "Construct the act deck using all six copies of Act 2a - \"The Stranger.\""
+      "text": "Constituez le deck Acte en utilisant les six exemplaires de l'Acte 2a - « l'Étranger »."
     },
     {
       "id": "add_chaos_token",
@@ -18871,8 +18871,8 @@
           },
           {
             "id": "alaran_mists",
-            "text": "Alaran Mists",
-            "description": "Add 1 [cultist] and 1 [tablet] token to the chaos bag.",
+            "text": "Les Brumes d'Alaran",
+            "description": "Ajouter 1 pion [cultist] et 1 pion [tablet] dans la reserve du chaos.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -18885,8 +18885,8 @@
           },
           {
             "id": "under_the_city",
-            "text": "Under the City",
-            "description": "Add 1 [cultist] and 1 [elder_thing] token to the chaos bag.",
+            "text": "Sous la Ville",
+            "description": "Ajouter 1 pion [cultist] et 1 pion [elder_thing] dans la reserve du chaos.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -18899,8 +18899,8 @@
           },
           {
             "id": "here_is_my_reply",
-            "text": "Here Is My Reply",
-            "description": "Add 1 [tablet] and 1 [elder_thing] token to the chaos bag.",
+            "text": "Voici ma Réplique",
+            "description": "Ajouter 1 pion [tablet] et 1 pion [elder_thing] dans la reserve du chaos.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -18963,8 +18963,8 @@
 },
 {
   "id": "return_to_dim_carcosa",
-  "scenario_name": "Renouveau: La Pâle Carcosa",
-  "full_name": "Scenario VIII: Return to Dim Carcosa",
+  "scenario_name": "Renouveau - La Pâle Carcosa",
+  "full_name": "Scénario VIII : Renouveau - La Pâle Carcosa",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -19224,7 +19224,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que <i>vous avez pris la broche en onyx</i> et que le déteneur initial ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -19257,7 +19257,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -19395,7 +19395,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -19405,7 +19405,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -19656,7 +19656,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Shores of Hali, Dark Spires, and Palace of the King <i>(Hastur's Domain)</i> into play. Remove the old copy of Palace of the King from the game."
+      "text": "Mettez en jeu le Palais du Roi <i>(Domaine d'Hastur)</i>. Retirez de la partie le Palais du Roi d'origine."
     },
     {
       "id": "location_layout",
@@ -19694,11 +19694,11 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "Set the following locations aside, out of play: Recesses of Your Own Mind, The Throne Room, and Stage of the Ward Theatre."
+      "text": "Mettez de côté, hors jeu les cartes suivante : Recoins de votre Esprit, La Salle du trône et Scène du Théatre Ward."
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rules apply:\n\"Hastur's health cannot be reduced to less than 2 [per_investigator] unless any investigator 'knows the secret.'\"\nAttach the Return to Dim Carcosa scenario reference card to the scenario reference card as a reminder."
+      "text": "Pour la durée de ce scénario, appliquez la règle supplémentare suivante :\n« La vie d'Hastur ne peut pas être réduite à moins de 2 [per_investigator], sauf si un investigateur \"connait le secret\". »\nAttachez cette carte à la carte de référence du Scénario en tant qu'aide-mémoire."
     }
   ],
   "resolutions": [
@@ -19779,8 +19779,8 @@
 },
 {
   "id": "return_to_echoes_of_the_past",
-  "scenario_name": "Renouveau: Les Échos du Passé",
-  "full_name": "Scenario III: Return to Echoes of the Past",
+  "scenario_name": "Renouveau - Les Échos du Passé",
+  "full_name": "Scénario III : Renouveau - Les Échos du Passé",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -19929,7 +19929,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -19950,7 +19950,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -19960,7 +19960,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -20236,11 +20236,11 @@
     },
     {
       "id": "choose_locations",
-      "text": "Randomly choose one [[Basement]] Historical Society location, one [[Ground Floor]] Historical Society location, one [[Second Floor]] Historical Society location, and one [[Third Floor]] Historical Society location. Remove those locations from the game, without looking at their revealed sides."
+      "text": "Prenez au hasard un un lieu Société des Historiens [[Sous-sol]], lieu Société des Historiens [[Rez-de-chaussée]], un lieu Société des Historiens [[Premier Étage]] et un lieu Société des Historiens [[Deuxième Étage]]. Retirez ces lieux de la partie sans regarder leur face révélée."
     },
     {
       "id": "setup_locations",
-      "text": "Put the following locations into play: Entry Hall, all three copies of Quiet Halls, and the remaining 8 Historical Society locations. Each investigator begins play in the Entry Hall."
+      "text": "Mettez en jeu les lieux suivants : Hall, les trois exemplaires de Couloirs Silencieux, et les 8 lieux Société des Historiens restants. Chaque investigateur commence la partie dans le Hall."
     },
     {
       "id": "location_layout",
@@ -20273,11 +20273,11 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Hidden Library, Possessed Oathspeaker, Mr. Peabody, The Tattered Cloak, Clasp of Black Onyx, and both Keeper of the Oath enemies."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : Bibliothèque Cachée, Conjurateur Possédé, M. Peabody, La Cape en Lambeaux, Broche d’Onyx Noir et les deux Gardien du Serment."
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rule applies:\n\"<b>Forced</b> - After the investigators advance to act 2 or act 3: Spawn a set-aside Keeper of the Oath in any empty Historical Society location.\"\nAttach the Return to Echoes of the Past scenario reference card to the scenario reference card as a reminder."
+      "text": "Pour la durée de ce scénario, appliquez la règle supplémentaire suivante :\n« <b>Forcé</b> - Après que les investigateurs ont avancé a l'Acte 2 ou à l'Acte 3 : générez un Gardien du Serment mis de côté dans n'importe quel lieu vide Société des Historien. »\nAtachez cette carte à la carte de référence du scénario en tant qu'aide-mémoire."
     }
   ],
   "resolutions": [
@@ -20334,7 +20334,7 @@
     {
       "id": "R4",
       "title": "Conclusion 4",
-      "text": "Les événements de la nuit vous laissent exténué. Vous n'avez rien trouvé dans le manoir de la Société des Historiens qui puisse vous aider dans votre enquête. Qui qu'aient été ces intrus, ils devaient chercher les mêmes informations que vous. Bouleversé, vous vous dirigez vers le lit le plus proche que vous trouvez – à la Pension de Ma, située non-loin de la Société des Historiens. L'aube vous surprend alors que vous a\\u001deignez la pension. La poignée de porte et les fougères du porche sont couvertes de rosée. Vous avez la chance de trouver une chambre libre pour la journée, et vous vous écroulez de fatigue.\nSoudain, vous tombez. Au-dessus et tout autour de vous, une lumière aveuglante flamboie tel un brasier. Des maux de tête et des visions colorées vous assaillent. Votre peau commence à roussir au contact des flammes. Un abîme s'ouvre sous vos pieds et vous engloutit tout entier. Vous vous retrouvez dans une cellule à l'odeur méphitique, humide et dépourvue de fenêtres. Un homme est recroquevillé dans un coin de la pièce, tremblant à cause du froid, de sa situation désespérée, ou peut-être des deux. « Pas de masque », marmonne-t-il encore et encore, « pas de masque, pas de masque... » Vous tentez de vous approcher de lui mais, avant que vous ne puissiez l'atteindre, le loquet métallique de la porte sa cellule s'ouvre et vous entendez une voix l'appeler. « Daniel, il est l'heure », dit-elle. «'Daniel, réveille-toi. Réveille-toi, Daniel. » Et vous vous réveillez.",
+      "text": "Les événements de la nuit vous laissent exténué. Vous n'avez rien trouvé dans le manoir de la Société des Historiens qui puisse vous aider dans votre enquête. Qui qu'aient été ces intrus, ils devaient chercher les mêmes informations que vous. Bouleversé, vous vous dirigez vers le lit le plus proche que vous trouvez – à la Pension de Ma, située non-loin de la Société des Historiens. L'aube vous surprend alors que vous atteignez la pension. La poignée de porte et les fougères du porche sont couvertes de rosée. Vous avez la chance de trouver une chambre libre pour la journée, et vous vous écroulez de fatigue.\nSoudain, vous tombez. Au-dessus et tout autour de vous, une lumière aveuglante flamboie tel un brasier. Des maux de tête et des visions colorées vous assaillent. Votre peau commence à roussir au contact des flammes. Un abîme s'ouvre sous vos pieds et vous engloutit tout entier. Vous vous retrouvez dans une cellule à l'odeur méphitique, humide et dépourvue de fenêtres. Un homme est recroquevillé dans un coin de la pièce, tremblant à cause du froid, de sa situation désespérée, ou peut-être des deux. « Pas de masque », marmonne-t-il encore et encore, « pas de masque, pas de masque... » Vous tentez de vous approcher de lui mais, avant que vous ne puissiez l'atteindre, le loquet métallique de la porte sa cellule s'ouvre et vous entendez une voix l'appeler. « Daniel, il est l'heure », dit-elle. «'Daniel, réveille-toi. Réveille-toi, Daniel. » Et vous vous réveillez.",
       "steps": [
         "followers_of_sign_found_way",
         "earn_1_xp",
@@ -20347,8 +20347,8 @@
 },
 {
   "id": "return_to_the_last_king",
-  "scenario_name": "Renouveau: Le Dernier Roi",
-  "full_name": "Scenario II: Return to The Last King",
+  "scenario_name": "Renouveau - Le Dernier Roi",
+  "full_name": "Scénario II : Renouveau - Le Dernier Roi",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -20429,7 +20429,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -20450,7 +20450,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -20460,7 +20460,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -20623,15 +20623,15 @@
     },
     {
       "id": "remove_agenda_1",
-      "text": "Remove Agenda 1a - \"Fashionably Late\" from the game and replace it with the new Agenda 1a - \"Better Never Than Late.\""
+      "text": "Retirez de la partie l'Intrigue 1a - « Legèrement en Retard » et remplacez-la par par la nouvelle Intrigue 1a - « Mieux Vaut Jamais que Tard »"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Shocking Display treachery and the new Dianne Devine <i>(Hiding an Oath Unspoken)</i> ally aside, out of play. Remove the original Dianne Devine <i>(Mercurial and Mischevious)</i> from the game."
+      "text": "Mettez la tratrise Spectacle Choquant et la nouvelle Dianne Devine <i>(Cache un Serment Indicible)</i> de côté, hors jeu. Retirez de la partie la Dianne Devine d'origine <i>(Malveillante et Lunatique)</i>."
     },
     {
       "id": "setup_sickening_reality",
-      "text": "Place the 8 “Sickening Reality” story cards underneath the scenario reference card.",
+      "text": "Placez les 8 cartes Histoire « Effroyable Réalité » sous la carte de référence du scénario.",
       "bullets": [
         {
           "text": "<i>Note : ces cartes sont rectoverso et possèdent une carte Rencontre sur leur verso. Afin de profiter de la meilleure expérience de jeu possible, nous vous invitons à ne pas regarder le verso de ces cartes à moins qu'un effet ne vous le demande.</i>"
@@ -20708,8 +20708,8 @@
 },
 {
   "id": "return_to_the_pallid_mask",
-  "scenario_name": "Renouveau: Le Masque Blême",
-  "full_name": "Scenario VI: Return to The Pallid Mask",
+  "scenario_name": "Renouveau - Le Masque Blême",
+  "full_name": "Scénario VI : Renouveau - Le Masque Blême",
   "setup": [
     "check_intro_condition",
     "check_ishimaru_haruko",
@@ -20919,7 +20919,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que <i>vous avez pris la broche en onyx</i> et que le déteneur initial ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -20952,7 +20952,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -20979,7 +20979,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -21032,7 +21032,7 @@
           },
           {
             "id": "doubt",
-            "text": "You spent clues to advance.",
+            "text": "Vous avez dépensé des indices pour avancer.",
             "description": " Inscrivez deux <b>Doutes</b>",
             "effects": [
               {
@@ -21054,7 +21054,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -21282,7 +21282,7 @@
       "text": "Mettez de côté les autres lieux pour constituer un « deck Catacombes », selon les règles suivantes :",
       "bullets": [
         {
-          "text": "Randomly choose 4 Catacombs locations and remove them from the game, without looking at them."
+          "text": "Prenez 4 lieux Les Catacombes au hasard et retirez-les de la partie sans les regardez."
         },
         {
           "text": "Mélangez ensemble la Tombe des Ombres, le Passage Bloqué et 3 autres lieux Les Catacombes, face Catacombes visible, afin de constituer la base (les 5 cartes du dessous) du deck Catacombes."
@@ -21294,7 +21294,7 @@
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rules apply:\n\"For the purposes of Corpse Dweller's spawn ability, The Man in the Pallid Mask does not count as a [[Humanoid]] enemy.\nWhile it is act 2, The Man in the Pallid Mask cannot leave the Tomb of Shadows.\"\nAttach the Return to The Pallid Mask scenario reference card to the scenario reference card as a reminder."
+      "text": "Pour la durée de ce scénario, appliquez les règles supplémentaire suivantes :\n« En ce qui concerne la capacité Génération du Cadavre Parasité, L'Homme au Masque Blème ne compte pas comme un ennemi [[Humanoïde]].\nTant que vous êtes à l'Acte 2, l'Homme au Masque Blème ne peut pas quitter la Tombe des Ombres. »\nAttachez cette carte à la carte de référence du scénario en tant qu'aide-mémoire."
     }
   ],
   "resolutions": [
@@ -21344,8 +21344,8 @@
 },
 {
   "id": "return_to_the_unspeakable_oath",
-  "scenario_name": "Renouveau: Le Serment Indicible",
-  "full_name": "Scenario IV: Return to The Unspeakable Oath",
+  "scenario_name": "Renouveau - Le Serment Indicible",
+  "full_name": "Scénario IV : Renouveau - Le Serment Indicible",
   "setup": [
     "check_followers_of_the_sign_found_way",
     "intro_3",
@@ -21593,7 +21593,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que le détenteur initial de la faiblesse L'Homme au Masque Blême ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -21644,7 +21644,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Parce que <i>vous avez pris la broche en onyx</i> et que le déteneur initial ne joue pas ce scénario, un autre investigateur doit l'ajouter à son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -21665,7 +21665,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Défaite de L'Homme au Masque Blême",
             "steps": [
               "mitpm_defeated"
             ]
@@ -21675,7 +21675,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Poursuite de l'Étranger,» inscrivez un trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -21964,7 +21964,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Daniel Chesterfield, Host of Insanity, Radical Treatment, and each copy of Patient Confinement."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : Daniel Chesterfield, l'ennemi Incarnation de la Folie, la traitrise Traitement Radical  et tous les exemplaires de la Cellule d'Isolement."
     },
     {
       "id": "select_act_2",
@@ -22010,12 +22010,12 @@
     {
       "id": "more_or_equal_conviction_act_2_v3",
       "bullet_type": "small",
-      "text": "Because you have more (or equal) <b>Conviction</b> than <b>Doubt</b>, use Act 2—”The Really Bad Ones” (v. III)."
+      "text": "Parce que vous avez plus (ou autant) de <b>Certitudes</b> que de <b>Doutes</b>, utilisez le nouvel Actes 2 - « Les Vrais Méchants » (v. III)."
     },
     {
       "id": "more_doubt_act_2_v4",
       "bullet_type": "small",
-      "text": "Because you have more <b>Doubt</b> than <b>Conviction</b>, use Act 2—”The Really Bad Ones” (v. IV)."
+      "text": "Parce que vous avez plus de <b>Doutes</b> que de <b>Certitudes</b> utilisez le nouvel Actes 2 - « Les Vrais Méchants » (v. IV)."
     }
   ],
   "resolutions": [
@@ -31757,7 +31757,17 @@
   "campaign_type": "campaign",
   "position": 0,
   "version": 1,
-  "campaign_log": [],
+  "campaign_log": [
+    {
+      "id": "campaign_notes",
+      "title": "Notes de Campagne"
+    },
+    {
+      "id": "hidden",
+      "type": "hidden",
+      "title": "Caché"
+    }
+  ],
   "scenarios": [
     "curse_of_the_rougarou",
     "carnevale_of_horrors",

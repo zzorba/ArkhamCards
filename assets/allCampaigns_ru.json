@@ -31757,7 +31757,17 @@
   "campaign_type": "campaign",
   "position": 0,
   "version": 1,
-  "campaign_log": [],
+  "campaign_log": [
+    {
+      "id": "campaign_notes",
+      "title": "Заметки"
+    },
+    {
+      "id": "hidden",
+      "type": "hidden",
+      "title": "Скрытый"
+    }
+  ],
   "scenarios": [
     "curse_of_the_rougarou",
     "carnevale_of_horrors",

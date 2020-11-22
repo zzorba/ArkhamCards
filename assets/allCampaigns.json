@@ -30385,7 +30385,17 @@
   "campaign_type": "campaign",
   "position": 0,
   "version": 1,
-  "campaign_log": [],
+  "campaign_log": [
+    {
+      "id": "campaign_notes",
+      "title": "Campaign Notes"
+    },
+    {
+      "id": "hidden",
+      "type": "hidden",
+      "title": "Hidden"
+    }
+  ],
   "scenarios": [
     "curse_of_the_rougarou",
     "carnevale_of_horrors",

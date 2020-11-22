@@ -95,6 +95,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId,
           campaignId,
           campaignLog: log.campaignLog,
           campaignGuide: processedScenario.scenarioGuide.campaignGuide,
+          standalone,
         },
         options: {
           topBar: {
@@ -108,7 +109,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId,
         },
       },
     });
-  }, [componentId, processedScenario, campaignId]);
+  }, [componentId, processedScenario, campaignId, standalone]);
 
   const resetPressed = useCallback(() => {
     Alert.alert(
