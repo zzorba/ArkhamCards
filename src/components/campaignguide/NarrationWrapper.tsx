@@ -1,35 +1,40 @@
-import _ from 'lodash';
-import React from 'react';
+import { isEqual } from 'lodash';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
-  Platform,
+  SafeAreaView,
+  StyleSheet,
   Text,
   TouchableHighlight,
   View,
   ViewStyle,
 } from 'react-native';
 import { Divider, Icon } from 'react-native-elements';
-import { connect } from 'react-redux';
-import TrackPlayer, { ProgressComponent } from 'react-native-track-player';
+import { useSelector } from 'react-redux';
+import TrackPlayer, { usePlaybackState, useTrackPlayerEvents, useTrackPlayerProgress } from 'react-native-track-player';
 
 import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
-import { AppState, hasDissonantVoices } from '@reducers';
+import { hasDissonantVoices } from '@reducers';
 import { StyleContext, StyleContextType } from '@styles/StyleContext';
 import { m } from '@styles/space';
 import { SHOW_DISSONANT_VOICES } from '@app_constants';
+import { narrationPlayer, useCurrentTrackId, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
+import { usePressCallback } from '@components/core/hooks';
 
 export async function playNarrationTrack(trackId: string) {
   if (SHOW_DISSONANT_VOICES) {
-    await TrackPlayer.skip(trackId);
-    await TrackPlayer.play();
+    const trackPlayer = await narrationPlayer();
+    await trackPlayer.skip(trackId);
+    await trackPlayer.play();
   }
 }
 
 export async function setNarrationQueue(queue: NarrationTrack[]) {
+  const trackPlayer = await narrationPlayer();
   const accessToken = await getAccessToken();
 
-  const oldTracks = await TrackPlayer.getQueue();
+  const oldTracks = await trackPlayer.getQueue();
   const oldTrackIds = oldTracks.map((track) => track.id);
   const newTracks = queue.map((track) => {
     return {
@@ -47,29 +52,29 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
   const newTrackIds = newTracks.map((track) => track.id);
 
   // if current track is in the new queue
-  const currentTrackId = await TrackPlayer.getCurrentTrack();
-  const currentTrack = currentTrackId && await TrackPlayer.getTrack(currentTrackId);
+  const currentTrackId = await trackPlayer.getCurrentTrack();
+  const currentTrack = currentTrackId && await trackPlayer.getTrack(currentTrackId);
   const currentTrackIndex = newTrackIds.indexOf(currentTrackId);
   if (
     currentTrackIndex !== -1 &&
-    _.isEqual(currentTrack, newTracks[currentTrackIndex])
+    isEqual(currentTrack, newTracks[currentTrackIndex])
   ) {
     // remove anything in the queue that isn't the current track
-    await TrackPlayer.remove(
+    await trackPlayer.remove(
       oldTrackIds.filter((trackId) => trackId !== currentTrackId)
     );
 
     // add all the new tracks before the current track
     const tracksBeforeCurrent = newTracks.slice(0, currentTrackIndex);
-    await TrackPlayer.add(tracksBeforeCurrent, currentTrackId);
+    await trackPlayer.add(tracksBeforeCurrent, currentTrackId);
 
     // add all the new tracks after the current track
     const tracksAfterCurrent = newTracks.slice(currentTrackIndex + 1);
-    await TrackPlayer.add(tracksAfterCurrent);
+    await trackPlayer.add(tracksAfterCurrent);
   } else {
     // otherwise reset and add all the new tracks
-    await TrackPlayer.reset();
-    await TrackPlayer.add(newTracks);
+    await trackPlayer.reset();
+    await trackPlayer.add(newTracks);
   }
 }
 
@@ -90,171 +95,118 @@ interface PlayerState {
   state: TrackPlayer.State | null;
 }
 
-class PlayerView extends React.Component<PlayerProps, PlayerState> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-  onPlaybackTrackChange?: TrackPlayer.EmitterSubscription;
-  onPlaybackState?: TrackPlayer.EmitterSubscription;
-  onPlaybackError?: TrackPlayer.EmitterSubscription;
 
-  constructor(props: PlayerProps) {
-    super(props);
+function ProgressView() {
+  const { colors } = useContext(StyleContext);
+  const { position, duration } = useTrackPlayerProgress(1000);
+  return (
+    <View
+      style={{
+        height: 1,
+        width: '100%',
+        flexDirection: 'row',
+      }}
+    >
+      <View style={{ flex: position, backgroundColor: colors.D30 }} />
+      <View
+        style={{
+          flex: duration - position,
+          backgroundColor: colors.L10,
+        }}
+      />
+    </View>
+  );
+}
 
-    this.state = {
-      track: null,
-      state: null,
-    };
-  }
-
-  componentDidMount() {
-    this.onPlaybackTrackChange = TrackPlayer.addEventListener(
-      'playback-track-changed',
-      async(data) => {
-        const track = await TrackPlayer.getTrack(data.nextTrack);
-        this.setState({
-          track,
-        });
-      }
-    );
-    this.onPlaybackState = TrackPlayer.addEventListener(
-      'playback-state',
-      async(data) => {
-        this.setState({
-          state: data.state,
-        });
-      }
-    );
-    this.onPlaybackError = TrackPlayer.addEventListener(
-      'playback-error',
-      async(data) => {
-        if (data.code === 'playback-source') {
-          if (data.message === 'Response code: 403') {
-            // login error
-          } else if (data.message === 'Response code: 404') {
-            // file doesn't exist
-          } else if (data.message === 'Response code: 500') {
-            // server error
-          }
-        }
-      }
-    );
-
-    TrackPlayer.getCurrentTrack()
-      .then((trackId) => TrackPlayer.getTrack(trackId))
-      .then((track) => {
-        this.setState({
-          track,
-        });
-      });
-    TrackPlayer.getState().then((state) => {
-      this.setState({
-        state,
-      });
-    });
-  }
-
-  componentWillUnmount() {
-    this.onPlaybackTrackChange?.remove();
-    this.onPlaybackState?.remove();
-    this.onPlaybackError?.remove();
-  }
-
-  onReplayPress = async() => {
-    try {
-      await TrackPlayer.seekTo((await TrackPlayer.getPosition()) - 30);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  onPreviousPress = async() => {
-    try {
-      await TrackPlayer.skipToPrevious();
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  onPlayPress = async() => {
-    const { track, state } = this.state;
-    if (track === null) {
-      return;
-    }
-    if (state === TrackPlayer.STATE_PLAYING) {
-      await TrackPlayer.pause();
-    } else {
-      await TrackPlayer.play();
-    }
-  };
-
-  onClosePress = async() => {
-    await TrackPlayer.stop();
-  };
-
-  onNextPress = async() => {
-    try {
-      await TrackPlayer.skipToNext();
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  render() {
-    const { style } = this.props;
-    const { track, state } = this.state;
-    return (
-      <View>
-        <Divider />
-        <View
-          style={{
-            ...(style || {}),
-            display: 'flex',
-            flexDirection: 'row',
-            height: 64,
-            alignItems: 'center',
-            padding: m,
-          }}
-        >
-          <ArkworkView track={track} state={state} />
-          <TitleView style={{ flex: 1 }} track={track} />
-          <PreviousButton onPress={this.onPreviousPress} />
-          <ReplayButton onPress={this.onReplayPress} />
-          {state === TrackPlayer.STATE_PLAYING ? (
-            <PauseButton onPress={this.onPlayPress} />
-          ) : (
-            <PlayButton onPress={this.onPlayPress} />
-          )}
-          <NextButton onPress={this.onNextPress} />
-        </View>
-        <ProgressView />
-      </View>
-    );
+async function replay() {
+  try {
+    const trackPlayer = await narrationPlayer();
+    await trackPlayer.seekTo((await trackPlayer.getPosition()) - 30);
+  } catch (e) {
+    console.log(e);
   }
 }
 
-class ProgressView extends ProgressComponent {
-  render() {
-    const progress = this.getProgress();
-    const duration = this.getBufferedProgress();
+async function previousTrack() {
+  try {
+    const trackPlayer = await narrationPlayer();
+    await trackPlayer.skipToPrevious();
+  } catch (e) {
+    console.log(e);
+  }
+}
+async function nextTrack() {
+  try {
+    const trackPlayer = await narrationPlayer();
+    await trackPlayer.skipToNext();
+  } catch (e) {
+    console.log(e);
+  }
+}
 
-    return (
+function PlayerView({ style }: PlayerProps) {
+  const trackId = useCurrentTrackId();
+  const track = useTrackDetails(trackId);
+  const queue = useTrackPlayerQueue();
+  const state = usePlaybackState();
+  const onReplayPress = usePressCallback(replay);
+
+  const onPlay = useCallback(async() => {
+    if (!track) {
+      return;
+    }
+    const trackPlayer = await narrationPlayer();
+    if (state === TrackPlayer.STATE_PLAYING) {
+      await trackPlayer.pause();
+    } else {
+      await trackPlayer.play();
+    }
+  }, [track, state]);
+  const onPlayPress = usePressCallback(onPlay);
+  const onPreviousPress = usePressCallback(previousTrack);
+  const onNextPress = usePressCallback(nextTrack);
+  useTrackPlayerEvents(['playback-error'], (event: any) => {
+    if (event.code === 'playback-source') {
+      if (event.message === 'Response code: 403') {
+        // login error
+      } else if (event.message === 'Response code: 404') {
+        // file doesn't exist
+      } else if (event.message === 'Response code: 500') {
+        // server error
+      }
+    }
+  });
+  if (!queue.length) {
+    return null;
+  }
+
+  return (
+    <View>
+      <Divider />
       <View
         style={{
-          height: 1,
-          width: '100%',
+          ...(style || {}),
+          display: 'flex',
           flexDirection: 'row',
+          height: 64,
+          alignItems: 'center',
+          padding: m,
         }}
       >
-        <View style={{ flex: progress, backgroundColor: 'red' }} />
-        <View
-          style={{
-            flex: duration - progress,
-            backgroundColor: 'grey',
-          }}
-        />
+        <ArkworkView track={track} state={state} />
+        <TitleView style={{ flex: 1 }} track={track} />
+        <PreviousButton onPress={onPreviousPress} />
+        <ReplayButton onPress={onReplayPress} />
+        { state === TrackPlayer.STATE_PLAYING ? (
+          <PauseButton onPress={onPlayPress} />
+        ) : (
+          <PlayButton onPress={onPlayPress} />
+        ) }
+        <NextButton onPress={onNextPress} />
       </View>
-    );
-  }
+      <ProgressView />
+    </View>
+  );
 }
 
 interface ArtworkProps {
@@ -349,7 +301,7 @@ interface PlaybackButtonProps {
   name: string;
   type: string;
   size: number;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 abstract class PlaybackButton extends React.Component<PlaybackButtonProps> {
@@ -404,13 +356,6 @@ class ReplayButton extends PlaybackButton {
   static defaultProps = {
     ...PlaybackButton.defaultProps,
     name: 'replay',
-  };
-}
-
-class CloseButton extends PlaybackButton {
-  static defaultProps = {
-    ...PlaybackButton.defaultProps,
-    name: 'close',
   };
 }
 
@@ -475,17 +420,19 @@ class PlaylistView extends React.Component<PlaylistProps, PlaylistState> {
   }
 
   componentDidMount() {
-    this.onPlaybackTrackChange = TrackPlayer.addEventListener(
-      'playback-track-changed',
-      (data) => {
-        this.setState({
-          currentTrackId: data.nextTrack,
-        });
-      }
-    );
-    TrackPlayer.getCurrentTrack().then((currentTrackId) =>
-      this.setState({ currentTrackId })
-    );
+    narrationPlayer().then(trackPlayer => {
+      this.onPlaybackTrackChange = trackPlayer.addEventListener(
+        'playback-track-changed',
+        (data) => {
+          this.setState({
+            currentTrackId: data.nextTrack,
+          });
+        }
+      );
+      trackPlayer.getCurrentTrack().then((currentTrackId) =>
+        this.setState({ currentTrackId })
+      );
+    });
   }
 
   componentWillUnmount() {
@@ -512,72 +459,21 @@ class PlaylistView extends React.Component<PlaylistProps, PlaylistState> {
 }
 
 interface NarratorContainerProps {
-  hasDissonantVoices: boolean;
   children: JSX.Element,
 }
 
-class NarratorContainerView extends React.Component<
-  NarratorContainerProps,
-  { queue: TrackPlayer.Track[] }
-> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-  queueHandle: NodeJS.Timeout | null = null;
-  _isMounted: boolean = false;
-
-  constructor(props: NarratorContainerProps) {
-    super(props);
-
-    this.state = {
-      queue: [],
-    };
-  }
-
-  componentDidMount() {
-    this._isMounted = true
-    this.updateQueue();
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false;
-    if (this.queueHandle !== null) {
-      clearTimeout(this.queueHandle);
-    }
-  }
-
-  updateQueue() {
-    if (SHOW_DISSONANT_VOICES && this._isMounted) {
-      this.queueHandle = setTimeout(async() => {
-        const queue = await TrackPlayer.getQueue();
-        if (this._isMounted && !_.isEqual(queue, this.state.queue)) {
-          this.setState(() => ({ queue }), this.updateQueue);
-        } else {
-          this.updateQueue();
-        }
-      }, 100);
-    } else {
-      this.queueHandle = null;
-    }
-  }
-
-  render() {
-    const { hasDissonantVoices, children } = this.props;
-    const { queue } = this.state;
-    if (queue.length === 0 || !hasDissonantVoices || !SHOW_DISSONANT_VOICES) {
-      return children;
-    }
-    return (
-      <View style={{ height: '100%' }}>
-        {children}
-        <PlayerView />
-        {Platform.OS === 'ios' && <View style={{ height: 83 }} />}
-      </View>
-    );
-  }
+export default function NarrationWrapper({ children }: NarratorContainerProps) {
+  const hasDV = useSelector(hasDissonantVoices);
+  return (
+    <SafeAreaView style={styles.container}>
+      { children }
+      { !!(SHOW_DISSONANT_VOICES && hasDV) && <PlayerView /> }
+    </SafeAreaView>
+  );
 }
 
-export default connect((state: AppState) => {
-  return {
-    hasDissonantVoices: hasDissonantVoices(state),
-  };
-})(NarratorContainerView);
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+  },
+});

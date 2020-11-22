@@ -1,25 +1,23 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { View } from 'react-native';
+import React, { useCallback, useContext } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { Icon, Text } from 'react-native-elements';
 
 import { StyleContext } from '@styles/StyleContext';
-import TrackPlayer, {
-  STATE_PLAYING,
-  useTrackPlayerEvents,
-} from 'react-native-track-player';
+import { STATE_PLAYING, usePlaybackState } from 'react-native-track-player';
 
-import space, { s } from '@styles/space';
-import { playNarrationTrack } from '@components/campaignguide/Narrator';
+import space from '@styles/space';
+import { playNarrationTrack } from '@components/campaignguide/NarrationWrapper';
 import { Narration } from '@data/scenario/types';
 import { SHOW_DISSONANT_VOICES } from '@app_constants';
 import { useSelector } from 'react-redux';
 import { hasDissonantVoices } from '@reducers';
+import { narrationPlayer, useCurrentTrackId } from '@lib/audio/narrationPlayer';
+import { usePressCallback } from '@components/core/hooks';
 
-export function useNarration(narration?: Narration) {
+export function useNarration(narration?: Narration): Narration | undefined {
   const hasDS = useSelector(hasDissonantVoices);
-
   if (!SHOW_DISSONANT_VOICES || !hasDS || narration === undefined) {
-    return;
+    return undefined;
   }
   return narration;
 }
@@ -28,42 +26,25 @@ interface IconProps {
   narration: Narration;
 }
 
-export function NarrationStatusButton(props: IconProps) {
-  const { narration } = props;
-
-  const [playerState, setPlayerState] = useState<string | number | null>(null);
-  const [currentTrackState, setCurrentTrackState] = useState<string | null>(null);
-
-  useEffect(() => {
-    TrackPlayer.getState().then(state => setPlayerState(state));
-    TrackPlayer.getCurrentTrack().then(currentTrack => setCurrentTrackState(currentTrack));
-  }, []);
-
-  useTrackPlayerEvents(
-    ['playback-track-changed', 'playback-state'],
-    (event: any) => {
-      if (event.type === 'playback-state') {
-        setPlayerState(event.state);
-      } else if (event.type === 'playback-track-changed') {
-        setCurrentTrackState(event.nextTrack);
-      }
-    }
-  );
-  const isPlaying = playerState === STATE_PLAYING && currentTrackState === narration.id;
-
+export function NarrationButton({ narration }: IconProps) {
+  const { colors } = useContext(StyleContext);
+  const playerState = usePlaybackState();
+  const currentTrackId = useCurrentTrackId();
+  const isPlaying = playerState === STATE_PLAYING && currentTrackId === narration.id;
   const onPressNarration = useCallback(() => {
     if (isPlaying) {
-      TrackPlayer.pause();
+      narrationPlayer().then(trackPlayer => trackPlayer.pause());
     } else {
       playNarrationTrack(narration.id);
     }
   }, [narration, isPlaying]);
-
+  const onPress = usePressCallback(onPressNarration);
   return (
     <Icon
       name={isPlaying ? 'pause-circle-outline' : 'play-circle-outline'}
       type="material"
-      onPress={onPressNarration}
+      onPress={onPress}
+      color={colors.D30}
     />
   );
 }
@@ -74,21 +55,15 @@ interface TitleProps {
 
 export function NarrationTitle(props: TitleProps) {
   const { narration } = props;
-
   const { typography } = useContext(StyleContext);
   return (
     <View style={space.marginTopM}>
       <View
-        style={{
-          ...space.marginSideM,
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}
+        style={[space.marginSideM, styles.rowLeft]}
       >
-        <NarrationStatusButton narration={narration} />
-        <Text style={{ ...typography.mediumGameFont, flex: 1, paddingLeft: s }}>
-          {narration.name}
+        <NarrationButton narration={narration} />
+        <Text style={[typography.mediumGameFont, space.paddingLeftS]}>
+          { narration.name }
         </Text>
       </View>
     </View>
@@ -102,12 +77,19 @@ interface ComponentProps {
 
 export default function NarrationStepComponent(props: ComponentProps) {
   const { children } = props;
-
   const narration = useNarration(props.narration);
   return (
     <>
-      {narration && <NarrationTitle narration={narration} />}
-      {children}
+      { narration && <NarrationTitle narration={narration} /> }
+      { children }
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  rowLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+});

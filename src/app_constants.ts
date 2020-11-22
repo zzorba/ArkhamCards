@@ -1,4 +1,4 @@
-export const SHOW_DISSONANT_VOICES = false;
+export const SHOW_DISSONANT_VOICES = true;
 export type TypeCodeType =
   'asset' |
   'event' |

@@ -13,8 +13,6 @@ import { iconsLoaded, iconsMap } from './NavIcons';
 import COLORS from '@styles/colors';
 import { getLangPreference, AppState, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from '@styles/theme';
-import { registerNarrationPlayer } from './narrationPlayer';
-import { SHOW_DISSONANT_VOICES } from '@app_constants';
 
 const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';
@@ -43,10 +41,6 @@ export default class App {
     this.initialAppStart(store).then(safeMode => {
       if (!safeMode) {
         this.setupAppEventHandlers(true);
-      }
-
-      if (SHOW_DISSONANT_VOICES) {
-        registerNarrationPlayer();
       }
     });
   }

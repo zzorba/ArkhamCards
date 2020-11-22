@@ -24,10 +24,12 @@ import COLORS from '@styles/colors';
 import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
-import NarratorView, { NarrationTrack, setNarrationQueue } from '@components/campaignguide/Narrator';
+import NarrationWrapper, { NarrationTrack, setNarrationQueue } from '@components/campaignguide/NarrationWrapper';
 import { SHOW_DISSONANT_VOICES } from '@app_constants';
 import ScenarioStep from '@data/scenario/ScenarioStep';
 import ScenarioGuideContext from './ScenarioGuideContext';
+import { ProcessedScenario } from '@data/scenario';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 
 interface OwnProps {
   showLinkedScenario?: (
@@ -66,6 +68,64 @@ function dynamicOptions(undo: boolean) {
       rightButtons,
     },
   };
+}
+
+function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: ScenarioStateHelper) {
+  const campaignCode = processedScenario.scenarioGuide.campaignGuide.campaignCycleCode();
+  const campaignName = processedScenario.scenarioGuide.campaignGuide.campaignName();
+  const scenarioName = processedScenario.scenarioGuide.scenarioName();
+
+  const queue: NarrationTrack[] = [];
+  const scenarioSteps: ScenarioStep[] = [];
+  for (const scenarioStep of processedScenario.steps) {
+    if (scenarioStep.step.type === 'effects') {
+      for (const effectsWithInput of scenarioStep.step.effectsWithInput) {
+        for (const effect of effectsWithInput.effects) {
+          if ('steps' in effect) {
+            scenarioSteps.push(...processedScenario.scenarioGuide.expandSteps(
+              effect.steps,
+              scenarioState,
+              scenarioStep.campaignLog
+            ));
+          }
+        }
+      }
+    } else {
+      scenarioSteps.push(scenarioStep);
+    }
+  }
+  for (const scenarioStep of scenarioSteps) {
+    switch(scenarioStep.step.type) {
+      case 'resolution': {
+        const narration = processedScenario.scenarioGuide.resolution(
+          scenarioStep.step.resolution
+        )?.narration;
+        if (narration) {
+          queue.push({
+            ...narration,
+            campaignCode,
+            campaignName,
+            scenarioName,
+          });
+        }
+        break;
+      }
+      case 'story':
+      case 'branch':
+      case 'input': {
+        const narration = scenarioStep.step.narration;
+        if (narration) {
+          queue.push({
+            ...narration,
+            campaignCode,
+            campaignName,
+            scenarioName,
+          });
+        }
+      }
+    }
+  }
+  return queue;
 }
 
 function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId, standalone }: Props) {
@@ -171,68 +231,13 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId,
       },
     });
   }, [componentId, campaignId, processedScenario.id]);
-
   const hasDS = useSelector(hasDissonantVoices);
+
   useEffect(() => {
     if (!hasDS || !SHOW_DISSONANT_VOICES) {
       return;
     }
-
-    const campaignCode = processedScenario.scenarioGuide.campaignGuide.campaignCycleCode();
-    const campaignName = processedScenario.scenarioGuide.campaignGuide.campaignName();
-    const scenarioName = processedScenario.scenarioGuide.scenarioName();
-
-    const queue: NarrationTrack[] = [];
-    const scenarioSteps: ScenarioStep[] = [];
-    for (const scenarioStep of processedScenario.steps) {
-      if (scenarioStep.step.type === 'effects') {
-        for (const effectsWithInput of scenarioStep.step.effectsWithInput) {
-          for (const effect of effectsWithInput.effects) {
-            if ('steps' in effect) {
-              scenarioSteps.push(...processedScenario.scenarioGuide.expandSteps(
-                effect.steps,
-                scenarioState,
-                scenarioStep.campaignLog
-              ));
-            }
-          }
-        }
-      } else {
-        scenarioSteps.push(scenarioStep);
-      }
-    }
-    for (const scenarioStep of scenarioSteps) {
-      switch(scenarioStep.step.type) {
-        case 'resolution': {
-          const narration = processedScenario.scenarioGuide.resolution(
-            scenarioStep.step.resolution
-          )?.narration;
-          if (narration) {
-            queue.push({
-              ...narration,
-              campaignCode,
-              campaignName,
-              scenarioName,
-            });
-          }
-          break;
-        }
-        case 'story':
-        case 'branch':
-        case 'input': {
-          const narration = scenarioStep.step.narration;
-          if (narration) {
-            queue.push({
-              ...narration,
-              campaignCode,
-              campaignName,
-              scenarioName,
-            });
-          }
-        }
-      }
-    }
-
+    const queue = getNarrationQueue(processedScenario, scenarioState);
     setNarrationQueue(queue);
   }, [processedScenario, scenarioState, hasDS]);
 
@@ -246,7 +251,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId,
       keyboardVerticalOffset={100}
     >
       <KeepAwake />
-      <NarratorView>
+      <NarrationWrapper>
         <ScrollView contentContainerStyle={backgroundStyle}>
           { !!hasInterludeFaq && (
             <BasicButton
@@ -261,7 +266,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId,
             switchCampaignScenario={switchCampaignScenario}
           />
         </ScrollView>
-      </NarratorView>
+      </NarrationWrapper>
     </KeyboardAvoidingView>
   );
 }

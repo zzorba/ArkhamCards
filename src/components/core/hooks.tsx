@@ -550,6 +550,22 @@ export function usePressCallback(callback: undefined | (() => void), bufferTime:
   return callback ? onPress : undefined;
 }
 
+export function useInterval(callback: () => void, delay: number) {
+  const savedCallback = useRef<() => void>();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  });
+
+  useEffect(() => {
+    if (!delay) {
+      return;
+    }
+    const id = setInterval(savedCallback.current, delay);
+    return () => clearInterval(id);
+  }, [delay]);
+}
+
 export function useWhyDidYouUpdate<T>(name: string, props: T) {
   // Get a mutable ref object where we can store props ...
   // ... for comparison next time this hook runs.
