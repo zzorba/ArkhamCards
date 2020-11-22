@@ -20,11 +20,12 @@ export default function ResolutionStepComponent({ step }: Props) {
   const { typography } = useContext(StyleContext);
   const { processedScenario } = useContext(ScenarioGuideContext);
   const resolution = processedScenario.scenarioGuide.resolution(step.resolution);
+  const narration = useNarration(resolution?.narration);
+
   if (!resolution) {
     return <Text>Unknown resolution: { step.resolution }</Text>;
   }
 
-  const narration = useNarration(resolution.narration);
   return (
     <>
       { !!step.text && (

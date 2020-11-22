@@ -1,26 +1,26 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import { View } from "react-native";
-import { Icon, Text } from "react-native-elements";
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { View } from 'react-native';
+import { Icon, Text } from 'react-native-elements';
 
-import { StyleContext } from "@styles/StyleContext";
+import { StyleContext } from '@styles/StyleContext';
 import TrackPlayer, {
   STATE_PLAYING,
   useTrackPlayerEvents,
-} from "react-native-track-player";
+} from 'react-native-track-player';
 
-import space, { s } from "@styles/space";
-import { playNarrationTrack } from "@components/campaignguide/Narrator";
-import { Narration } from "@data/scenario/types";
-import { SHOW_DISSONANT_VOICES } from "@app_constants";
-import { useSelector } from "react-redux";
-import { hasDissonantVoices } from "@reducers";
+import space, { s } from '@styles/space';
+import { playNarrationTrack } from '@components/campaignguide/Narrator';
+import { Narration } from '@data/scenario/types';
+import { SHOW_DISSONANT_VOICES } from '@app_constants';
+import { useSelector } from 'react-redux';
+import { hasDissonantVoices } from '@reducers';
 
 export function useNarration(narration?: Narration) {
-  if (!SHOW_DISSONANT_VOICES || narration === undefined) return;
-
   const hasDS = useSelector(hasDissonantVoices);
-  if (!hasDS) return;
 
+  if (!SHOW_DISSONANT_VOICES || !hasDS || narration === undefined) {
+    return;
+  }
   return narration;
 }
 
@@ -33,18 +33,18 @@ export function NarrationStatusButton(props: IconProps) {
 
   const [playerState, setPlayerState] = useState<string | number | null>(null);
   const [currentTrackState, setCurrentTrackState] = useState<string | null>(null);
-  
+
   useEffect(() => {
     TrackPlayer.getState().then(state => setPlayerState(state));
     TrackPlayer.getCurrentTrack().then(currentTrack => setCurrentTrackState(currentTrack));
   }, []);
 
   useTrackPlayerEvents(
-    ["playback-track-changed", "playback-state"],
+    ['playback-track-changed', 'playback-state'],
     (event: any) => {
-      if (event.type === "playback-state") {
+      if (event.type === 'playback-state') {
         setPlayerState(event.state);
-      } else if (event.type === "playback-track-changed") {
+      } else if (event.type === 'playback-track-changed') {
         setCurrentTrackState(event.nextTrack);
       }
     }
@@ -61,7 +61,7 @@ export function NarrationStatusButton(props: IconProps) {
 
   return (
     <Icon
-      name={isPlaying ? "pause-circle-outline" : "play-circle-outline"}
+      name={isPlaying ? 'pause-circle-outline' : 'play-circle-outline'}
       type="material"
       onPress={onPressNarration}
     />
@@ -81,9 +81,9 @@ export function NarrationTitle(props: TitleProps) {
       <View
         style={{
           ...space.marginSideM,
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
         }}
       >
         <NarrationStatusButton narration={narration} />
