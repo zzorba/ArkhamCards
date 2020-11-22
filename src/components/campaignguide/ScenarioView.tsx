@@ -25,7 +25,7 @@ import COLORS from '@styles/colors';
 import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
-import NarratorView, { NarrationTrack, queueNarration } from '@components/campaignguide/Narrator';
+import NarratorView, { NarrationTrack, setNarrationQueue } from '@components/campaignguide/Narrator';
 import { SHOW_DISSONANT_VOICES } from '@app_constants';
 import ScenarioStep from '@data/scenario/ScenarioStep';
 
@@ -220,7 +220,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
       }
     }
 
-    queueNarration(queue);
+    setNarrationQueue(queue);
   }, [processedScenario, scenarioState, hasDS]);
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&

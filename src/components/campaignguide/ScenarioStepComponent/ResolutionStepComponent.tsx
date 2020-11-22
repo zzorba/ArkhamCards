@@ -10,7 +10,7 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { ResolutionStep } from '@data/scenario/types';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { CheckDissonantVoicesComponent, NarrationStatusButton } from './NarrationStepComponent';
+import { NarrationStatusButton, useNarration } from './NarrationStepComponent';
 
 interface Props {
   step: ResolutionStep;
@@ -23,6 +23,8 @@ export default function ResolutionStepComponent({ step }: Props) {
   if (!resolution) {
     return <Text>Unknown resolution: { step.resolution }</Text>;
   }
+
+  const narration = useNarration(resolution.narration);
   return (
     <>
       { !!step.text && (
@@ -33,9 +35,7 @@ export default function ResolutionStepComponent({ step }: Props) {
       { (!!resolution.text || resolution.steps.length > 0) && (
         <View style={space.marginTopM}>
           <View style={{ ...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            <CheckDissonantVoicesComponent narration={resolution.narration}>
-              <NarrationStatusButton narration={resolution.narration!}/>
-            </CheckDissonantVoicesComponent>
+            {narration && <NarrationStatusButton narration={narration} />}
             <Text style={{ ...typography.mediumGameFont, flex: 1, paddingLeft: s }}>
               { resolution.title }
             </Text>

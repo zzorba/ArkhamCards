@@ -1,7 +1,6 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import { Icon, Text } from "react-native-elements";
-import { useSelector } from "react-redux";
 
 import { StyleContext } from "@styles/StyleContext";
 import TrackPlayer, {
@@ -10,22 +9,19 @@ import TrackPlayer, {
 } from "react-native-track-player";
 
 import space, { s } from "@styles/space";
-import { hasDissonantVoices } from "@reducers";
-import { playNarration } from "@components/campaignguide/Narrator";
+import { playNarrationTrack } from "@components/campaignguide/Narrator";
 import { Narration } from "@data/scenario/types";
 import { SHOW_DISSONANT_VOICES } from "@app_constants";
+import { useSelector } from "react-redux";
+import { hasDissonantVoices } from "@reducers";
 
-interface CheckProps {
-  narration?: Narration;
-  children: JSX.Element;
-}
-
-export function CheckDissonantVoicesComponent(props: CheckProps) {
-  const { children, narration } = props;
-  if (!SHOW_DISSONANT_VOICES || narration === undefined) return <></>;
+export function useNarration(narration?: Narration) {
+  if (!SHOW_DISSONANT_VOICES || narration === undefined) return;
 
   const hasDS = useSelector(hasDissonantVoices);
-  return (hasDS ? children : <></>);
+  if (!hasDS) return;
+
+  return narration;
 }
 
 interface IconProps {
@@ -38,8 +34,10 @@ export function NarrationStatusButton(props: IconProps) {
   const [playerState, setPlayerState] = useState<string | number | null>(null);
   const [currentTrackState, setCurrentTrackState] = useState<string | null>(null);
   
-  TrackPlayer.getState().then(state => setPlayerState(state));
-  TrackPlayer.getCurrentTrack().then(currentTrack => setCurrentTrackState(currentTrack));
+  useEffect(() => {
+    TrackPlayer.getState().then(state => setPlayerState(state));
+    TrackPlayer.getCurrentTrack().then(currentTrack => setCurrentTrackState(currentTrack));
+  }, []);
 
   useTrackPlayerEvents(
     ["playback-track-changed", "playback-state"],
@@ -57,7 +55,7 @@ export function NarrationStatusButton(props: IconProps) {
     if (isPlaying) {
       TrackPlayer.pause();
     } else {
-      playNarration(narration.id);
+      playNarrationTrack(narration.id);
     }
   }, [narration, isPlaying]);
 
@@ -99,17 +97,16 @@ export function NarrationTitle(props: TitleProps) {
 
 interface ComponentProps {
   narration?: Narration;
-  children: JSX.Element;
+  children: React.ReactNode | React.ReactNode[];
 }
 
 export default function NarrationStepComponent(props: ComponentProps) {
-  const { children, narration } = props;
+  const { children } = props;
 
+  const narration = useNarration(props.narration);
   return (
     <>
-      <CheckDissonantVoicesComponent narration={narration}>
-        <NarrationTitle narration={narration!}/>
-      </CheckDissonantVoicesComponent>
+      {narration && <NarrationTitle narration={narration} />}
       {children}
     </>
   );
