@@ -26,7 +26,7 @@ import LoginButton from './LoginButton';
 import DissonantVoicesLoginButton from './DissonantVoicesLoginButton';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
-import { SHOW_DISSONANT_VOICES } from '@app_constants';
+import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
 
 const NATIVE_RULES = true;
 interface OwnProps {

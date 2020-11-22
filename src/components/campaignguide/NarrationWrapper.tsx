@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   ActivityIndicator,
   SafeAreaView,
@@ -18,8 +18,7 @@ import { getAccessToken } from '@lib/dissonantVoices';
 import { hasDissonantVoices } from '@reducers';
 import { StyleContext, StyleContextType } from '@styles/StyleContext';
 import { m } from '@styles/space';
-import { SHOW_DISSONANT_VOICES } from '@app_constants';
-import { narrationPlayer, useCurrentTrackId, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
+import { SHOW_DISSONANT_VOICES, narrationPlayer, useCurrentTrackId, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 
 export async function playNarrationTrack(trackId: string) {

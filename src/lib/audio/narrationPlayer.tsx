@@ -3,6 +3,8 @@ import { isEqual } from 'lodash';
 import TrackPlayer, { EmitterSubscription, EventType, Track, State, useTrackPlayerEvents } from 'react-native-track-player';
 import { useInterval } from '@components/core/hooks';
 
+export const SHOW_DISSONANT_VOICES = false;
+
 interface TrackPlayerFunctions {
   getQueue: () => Promise<Track[]>;
   getTrack: (id: string) => Promise<Track>;

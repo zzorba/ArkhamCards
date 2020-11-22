@@ -8,10 +8,9 @@ import { STATE_PLAYING, usePlaybackState } from 'react-native-track-player';
 import space from '@styles/space';
 import { playNarrationTrack } from '@components/campaignguide/NarrationWrapper';
 import { Narration } from '@data/scenario/types';
-import { SHOW_DISSONANT_VOICES } from '@app_constants';
 import { useSelector } from 'react-redux';
 import { hasDissonantVoices } from '@reducers';
-import { narrationPlayer, useCurrentTrackId } from '@lib/audio/narrationPlayer';
+import { SHOW_DISSONANT_VOICES, narrationPlayer, useCurrentTrackId } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 
 export function useNarration(narration?: Narration): Narration | undefined {

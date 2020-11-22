@@ -25,7 +25,7 @@ import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import NarrationWrapper, { NarrationTrack, setNarrationQueue } from '@components/campaignguide/NarrationWrapper';
-import { SHOW_DISSONANT_VOICES } from '@app_constants';
+import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
 import ScenarioStep from '@data/scenario/ScenarioStep';
 import ScenarioGuideContext from './ScenarioGuideContext';
 import { ProcessedScenario } from '@data/scenario';
