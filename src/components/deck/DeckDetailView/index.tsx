@@ -1066,7 +1066,6 @@ function DeckDetailView({
               componentId={componentId}
               visible={visible}
               inCollection={inCollection}
-              parallelInvestigators={parallelInvestigators}
               investigatorFront={investigatorFront}
               investigatorBack={investigatorBack}
               deck={deck}

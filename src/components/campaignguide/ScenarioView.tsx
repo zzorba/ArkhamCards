@@ -10,6 +10,7 @@ import { last } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
+import { useSelector } from 'react-redux';
 
 import CampaignGuideContext from './CampaignGuideContext';
 import { ScenarioGuideContextType } from './ScenarioGuideContext';
@@ -25,8 +26,7 @@ import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import NarratorView, { NarrationTrack, queueNarration } from '@components/campaignguide/Narrator';
-import { useSelector } from 'react-redux';
-import { SHOW_DISSONANT_VOICES } from '@app/App';
+import { SHOW_DISSONANT_VOICES } from '@app_constants';
 
 interface OwnProps {
   showLinkedScenario?: (

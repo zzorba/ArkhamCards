@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { concat, filter, flatMap, flatten, keys, map, uniqBy, uniq, throttle } from 'lodash';
+import { concat, filter, flatMap, flatten, keys, uniqBy, uniq, throttle } from 'lodash';
 import {
   Keyboard,
   StyleSheet,

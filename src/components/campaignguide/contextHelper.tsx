@@ -77,7 +77,7 @@ export function useCampaignGuideReduxData(campaignId: number, investigators?: Ca
       campaignState,
       linkedCampaignState,
       latestDecks,
-      campaignInvestigators
+      campaignInvestigators,
     };
   }, [campaign, campaignGuide, campaignState, linkedCampaignState, latestDecks, campaignInvestigators]);
 }

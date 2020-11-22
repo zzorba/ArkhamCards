@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { msgid, ngettext, t } from 'ttag';
+import { t } from 'ttag';
 
 import { ParsedDeck } from '@actions/types';
 import AppIcon from '@icons/AppIcon';

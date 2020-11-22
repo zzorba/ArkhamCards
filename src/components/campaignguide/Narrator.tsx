@@ -17,7 +17,7 @@ import { getAccessToken } from '@lib/dissonantVoices';
 import { AppState, hasDissonantVoices } from '@reducers';
 import { StyleContext, StyleContextType } from '@styles/StyleContext';
 import { m } from '@styles/space';
-import { SHOW_DISSONANT_VOICES } from '@app/App';
+import { SHOW_DISSONANT_VOICES } from '@app_constants';
 
 export async function playNarration(trackId: string) {
   if (SHOW_DISSONANT_VOICES) {

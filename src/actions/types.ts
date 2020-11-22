@@ -610,6 +610,21 @@ export interface NewCampaignAction {
   campaignLog: CustomCampaignLog;
   guided: boolean;
 }
+
+export const NEW_STANDALONE = 'NEW_STANDALONE';
+export interface NewStandaloneCampaignAction {
+  type: typeof NEW_STANDALONE;
+  now: Date;
+  id: number;
+  name: string;
+  cycleCode: CampaignCycleCode;
+  baseDeckIds: number[];
+  investigatorIds: string[];
+  chaosBag: ChaosBag;
+  weaknessSet: WeaknessSet;
+  campaignLog: CustomCampaignLog;
+  guided: boolean;
+}
 export const NEW_LINKED_CAMPAIGN = 'NEW_LINKED_CAMPAIGN';
 export interface NewLinkedCampaignAction {
   type: typeof NEW_LINKED_CAMPAIGN;

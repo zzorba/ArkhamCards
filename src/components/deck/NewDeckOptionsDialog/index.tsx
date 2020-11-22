@@ -10,17 +10,13 @@ import {
 import { Navigation } from 'react-native-navigation';
 import { find, forEach, map, sumBy, throttle } from 'lodash';
 import { Action } from 'redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
-import SettingsSwitch from '@components/core/SettingsSwitch';
-import EditText, { openDialog } from '@components/core/EditText';
+import { openDialog } from '@components/core/EditText';
 import RequiredCardSwitch from './RequiredCardSwitch';
-import { showDeckModal } from '@components/nav/helper';
-import TabooSetPicker from '@components/core/TabooSetPicker';
-import CardSectionHeader from '@components/core/CardSectionHeader';
-import SettingsItem from '@components/settings/SettingsItem';
+import { showCard, showCardSwipe, showDeckModal } from '@components/nav/helper';
 import BasicButton from '@components/core/BasicButton';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
@@ -64,6 +60,7 @@ function NewDeckOptionsDialog({
   refreshNetworkStatus,
 }: Props) {
   const defaultTabooSetId = useTabooSetId();
+  const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [saving, setSaving] = useState(false);
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
@@ -238,6 +235,42 @@ function NewDeckOptionsDialog({
     );
   }, [deckNameChange, defaultDeckName, showNameDialog]);
 
+  const onCardPress = useCallback((card: Card) => {
+    if (singleCardView) {
+      showCard(
+        componentId,
+        card.code,
+        card,
+        colors,
+        true,
+        tabooSetId
+      );
+      return;
+    }
+    let index = 0;
+    const visibleCards: Card[] = [];
+    forEach(requiredCardOptions, requiredCards => {
+      forEach(requiredCards, requiredCard => {
+        if (requiredCard) {
+          visibleCards.push(requiredCard);
+        }
+        if (card.code === requiredCard.code) {
+          index = visibleCards.length;
+        }
+      });
+    });
+    showCardSwipe(
+      componentId,
+      map(visibleCards, card => card.code),
+      index,
+      colors,
+      visibleCards,
+      false,
+      tabooSetId,
+      undefined,
+      investigator
+    );
+  }, [componentId, requiredCardOptions, colors, investigator, singleCardView, tabooSetId]);
   const formContent = useMemo(() => {
     if (saving) {
       return (
@@ -275,6 +308,7 @@ function NewDeckOptionsDialog({
                 <RequiredCardSwitch
                   key={`${investigatorId}-${index}`}
                   index={index}
+                  onPress={onCardPress}
                   disabled={(index === 0 && cardOptions.length === 1) || starterDeck}
                   cards={requiredCards}
                   value={optionSelected[index] || false}
@@ -323,7 +357,7 @@ function NewDeckOptionsDialog({
         </View>
       </>
     );
-  }, [investigatorId, signedIn, networkType, isConnected,
+  }, [investigatorId, signedIn, networkType, isConnected, onCardPress,
     offlineDeck, optionSelected, starterDeck, tabooSetId, requiredCardOptions, meta, colors, typography, saving,
     toggleOptionsSelected,toggleOfflineDeck, login, refreshNetworkStatus, renderNamePicker, setParallel, updateMeta]);
 
