@@ -1,0 +1,15 @@
+diff --git a/node_modules/react-native-track-player/index.d.ts b/node_modules/react-native-track-player/index.d.ts
+index b3ea0be..9e916e0 100644
+--- a/node_modules/react-native-track-player/index.d.ts
++++ b/node_modules/react-native-track-player/index.d.ts
+@@ -165,6 +165,10 @@ declare namespace RNTrackPlayer {
+     public getBufferedProgress: () => number;
+   }
+ 
++  // Hooks
++
++  export function useTrackPlayerEvents(events: string[], handler: (event: string) => void): void;
++
+   // Constants
+ 
+   export const STATE_NONE: State;

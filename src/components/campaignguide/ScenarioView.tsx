@@ -27,6 +27,7 @@ import { useNavigationButtonPressed } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import NarratorView, { NarrationTrack, queueNarration } from '@components/campaignguide/Narrator';
 import { SHOW_DISSONANT_VOICES } from '@app_constants';
+import ScenarioStep from '@data/scenario/ScenarioStep';
 
 interface OwnProps {
   showLinkedScenario?: (
@@ -67,7 +68,7 @@ function dynamicOptions(undo: boolean) {
   };
 }
 
-function ScenarioView({ componentId, campaignId, showLinkedScenario, processedScenario, scenarioId }: Props) {
+function ScenarioView({ componentId, campaignId, showLinkedScenario, processedScenario, scenarioState, scenarioId }: Props) {
   const { campaignState } = useContext(CampaignGuideContext);
   const { backgroundStyle } = useContext(StyleContext);
   const { width } = useWindowDimensions();
@@ -125,7 +126,6 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
     }
   }, [componentId, scenarioId, processedScenario.closeOnUndo, campaignState]);
 
-
   useNavigationButtonPressed(({ buttonId }) => {
     switch (buttonId) {
       case 'reset': {
@@ -173,22 +173,40 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
     const campaignCode = processedScenario.scenarioGuide.campaignGuide.campaignCycleCode();
     const campaignName = processedScenario.scenarioGuide.campaignGuide.campaignName();
     const scenarioName = processedScenario.scenarioGuide.scenarioName();
+
     const queue: NarrationTrack[] = [];
+    const scenarioSteps: ScenarioStep[] = [];
     for (const scenarioStep of processedScenario.steps) {
+      if (scenarioStep.step.type === 'effects') {
+        for (const effectsWithInput of scenarioStep.step.effectsWithInput) {
+          for (const effect of effectsWithInput.effects) {
+            if ('steps' in effect) {
+              scenarioSteps.push(...processedScenario.scenarioGuide.expandSteps(
+                effect.steps,
+                scenarioState,
+                scenarioStep.campaignLog
+              ));
+            }
+          }
+        }
+      } else {
+        scenarioSteps.push(scenarioStep);
+      }
+    }
+    for (const scenarioStep of scenarioSteps) {
       if (scenarioStep.step.type === 'resolution') {
         const narration = processedScenario.scenarioGuide.resolution(
           scenarioStep.step.resolution
         )?.narration;
-        if (!narration) {
-          continue;
-        }
+        if (!narration) continue;
+
         queue.push({
           ...narration,
           campaignCode,
           campaignName,
           scenarioName,
         });
-      } else if (scenarioStep.step.type === 'story' || scenarioStep.step.type === 'branch') {
+      } else if (['story', 'branch', 'input'].includes(scenarioStep.step.type ?? '')) {
         const narration = scenarioStep.step.narration;
         if (!narration) {
           continue;
@@ -201,8 +219,9 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
         });
       }
     }
+
     queueNarration(queue);
-  }, [processedScenario, hasDS]);
+  }, [processedScenario, scenarioState, hasDS]);
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
     processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;

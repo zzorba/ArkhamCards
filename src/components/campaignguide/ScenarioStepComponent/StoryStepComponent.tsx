@@ -20,36 +20,21 @@ interface Props {
 }
 
 export default function StoryStepComponent({ step, width }: Props) {
-  const hasDS = useSelector(hasDissonantVoices);
-  const narrationPlayPressed = useCallback(() => {
-    if (step.narration?.id) {
-      playNarration(step.narration.id);
-    }
-  }, [step.narration]);
-  const text = useMemo(() => {
-    return (
-      <View style={
-        step.border ? [space.paddingSideL, space.paddingTopM] : []
-      }>
-        <View style={space.marginTopM}>
-          <View style={{ ...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            { hasDS && step.narration && (
-              <Icon name="play-circle-outline" type="material" onPress={narrationPlayPressed} />
-            ) }
-          </View>
-        </View>
-        <View style={[styles.step, space.marginTopS, space.paddingSideM]}>
-          { !!step.text && (
-            <CampaignGuideTextComponent
-              text={step.text}
-              flavor
-            />
-          ) }
-        </View>
-        <BulletsComponent bullets={step.bullets} />
+  const text = (
+    <View style={
+      step.border ? [space.paddingSideL, space.paddingTopM] : []
+    }>
+      <View style={[styles.step, space.marginTopS, space.paddingSideM]}>
+        { !!step.text && (
+          <CampaignGuideTextComponent
+            text={step.text}
+            flavor
+          />
+        ) }
       </View>
-    );
-  }, [step, hasDS, narrationPlayPressed]);
+      <BulletsComponent bullets={step.bullets} />
+    </View>
+  );
   if (step.border) {
     return (
       <BorderWrapper border width={width}>
