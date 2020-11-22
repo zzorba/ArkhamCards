@@ -19,14 +19,14 @@ import { StyleContext, StyleContextType } from '@styles/StyleContext';
 import { m } from '@styles/space';
 import { SHOW_DISSONANT_VOICES } from '@app_constants';
 
-export async function playNarration(trackId: string) {
+export async function playNarrationTrack(trackId: string) {
   if (SHOW_DISSONANT_VOICES) {
     await TrackPlayer.skip(trackId);
     await TrackPlayer.play();
   }
 }
 
-export async function queueNarration(queue: NarrationTrack[]) {
+export async function setNarrationQueue(queue: NarrationTrack[]) {
   const accessToken = await getAccessToken();
 
   const oldTracks = await TrackPlayer.getQueue();
@@ -424,7 +424,7 @@ class TrackView extends React.Component<TrackProps> {
   context!: StyleContextType;
 
   _playNarration = () => {
-    playNarration(this.props.track.id);
+    playNarrationTrack(this.props.track.id);
   };
 
   render() {
@@ -523,6 +523,7 @@ class NarratorContainerView extends React.Component<
   static contextType = StyleContext;
   context!: StyleContextType;
   queueHandle: NodeJS.Timeout | null = null;
+  _isMounted: boolean = false;
 
   constructor(props: NarratorContainerProps) {
     super(props);
@@ -533,23 +534,29 @@ class NarratorContainerView extends React.Component<
   }
 
   componentDidMount() {
+    this._isMounted = true
     this.updateQueue();
   }
 
   componentWillUnmount() {
+    this._isMounted = false;
     if (this.queueHandle !== null) {
       clearTimeout(this.queueHandle);
     }
   }
 
   updateQueue() {
-    if (SHOW_DISSONANT_VOICES) {
+    if (SHOW_DISSONANT_VOICES && this._isMounted) {
       this.queueHandle = setTimeout(async() => {
         const queue = await TrackPlayer.getQueue();
-        if (!_.isEqual(queue, this.state.queue)) {
+        if (this._isMounted && !_.isEqual(queue, this.state.queue)) {
           this.setState(() => ({ queue }), this.updateQueue);
+        } else {
+          this.updateQueue();
         }
       }, 100);
+    } else {
+      this.queueHandle = null;
     }
   }
 

@@ -8,9 +8,7 @@ import 'reflect-metadata';
 
 import DatabaseProvider from './src/data/DatabaseProvider';
 import { registerScreens } from './src/app/screens';
-import { registerNarrationPlayer } from './src/app/narrationPlayer';
 import configureStore from './src/app/store';
-import SHOW_DISSONANT_VOICES from './src/app_constants';
 import StyleProvider from './src/styles/StyleProvider';
 
 
@@ -43,9 +41,6 @@ Crashes.setListener({
 let app = null;
 Navigation.events().registerAppLaunchedListener(() => {
   registerScreens(MyProvider, { redux: store, persistor: persistor });
-  if (SHOW_DISSONANT_VOICES) {
-    registerNarrationPlayer();
-  }
   const App = require('./src/app/App').default;
   app = new App(store);
 });
