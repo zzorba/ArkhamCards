@@ -36,6 +36,8 @@ import DeckMetadataControls from '../controls/DeckMetadataControls';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
 import DeckSectionBlock from '../section/DeckSectionBlock';
 import DeckCheckboxButton from '../controls/DeckCheckboxButton';
+import DeckButton from '../controls/DeckButton';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -272,16 +274,6 @@ function NewDeckOptionsDialog({
     );
   }, [componentId, requiredCardOptions, colors, investigator, singleCardView, tabooSetId]);
   const formContent = useMemo(() => {
-    if (saving) {
-      return (
-        <ActivityIndicator
-          style={styles.spinner}
-          color={colors.lightText}
-          size="large"
-          animating
-        />
-      );
-    }
     const cardOptions = requiredCardOptions;
     let hasStarterDeck = false;
     if (investigatorId) {
@@ -357,9 +349,9 @@ function NewDeckOptionsDialog({
         </View>
       </>
     );
-  }, [investigatorId, signedIn, networkType, isConnected, onCardPress,
-    offlineDeck, optionSelected, starterDeck, tabooSetId, requiredCardOptions, meta, colors, typography, saving,
-    toggleOptionsSelected,toggleOfflineDeck, login, refreshNetworkStatus, renderNamePicker, setParallel, updateMeta]);
+  }, [investigatorId, signedIn, networkType, isConnected,
+    offlineDeck, optionSelected, starterDeck, tabooSetId, requiredCardOptions, meta, typography,
+    onCardPress, toggleOptionsSelected,toggleOfflineDeck, login, refreshNetworkStatus, renderNamePicker, setParallel, updateMeta]);
 
   const cancelPressed = useCallback(() => {
     Navigation.pop(componentId);
@@ -369,23 +361,33 @@ function NewDeckOptionsDialog({
     return null;
   }
   const okDisabled = saving || !(starterDeck || !!find(optionSelected, selected => selected));
+  if (saving) {
+    return (
+      <View style={[styles.container, backgroundStyle]}>
+        <LoadingSpinner large />
+      </View>
+    );
+  }
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       { formContent }
-      { !saving && (
-        <>
-          <BasicButton
-            title={t`Create deck`}
-            disabled={okDisabled}
-            onPress={onOkayPress}
-          />
-          <BasicButton
+      <View style={[space.paddingS, styles.row]}>
+        <View style={[space.marginRightS, styles.flex]}>
+          <DeckButton
             title={t`Cancel`}
-            color={COLORS.red}
+            color="red"
+            icon="dismiss"
             onPress={cancelPressed}
           />
-        </>
-      ) }
+        </View>
+        <View style={styles.flex}>
+          <DeckButton
+            title={t`Create deck`}
+            icon="plus-thin"
+            onPress={okDisabled ? undefined : onOkayPress}
+          />
+        </View>
+      </View>
     </ScrollView>
   );
 }
@@ -398,7 +400,17 @@ export default withLoginState<NavigationProps & NewDeckOptionsProps>(
 );
 
 const styles = StyleSheet.create({
-  spinner: {
-    height: 80,
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  flex: {
+    flex: 1,
   },
 });

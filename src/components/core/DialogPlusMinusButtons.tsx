@@ -19,14 +19,7 @@ interface Props {
   disabled?: boolean;
 }
 
-export default function DialogPlusMinusButtons({
-  label,
-  value,
-  max,
-  inc,
-  dec,
-  disabled,
-}: Props) {
+export default function DialogPlusMinusButtons({ label, value, max, inc, dec, disabled }: Props) {
   const { typography } = useContext(StyleContext);
   return (
     <View style={[styles.counterColumn, space.paddingTopXs]}>

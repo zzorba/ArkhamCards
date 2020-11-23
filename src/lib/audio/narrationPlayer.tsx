@@ -28,46 +28,54 @@ let _narrationPromise: Promise<TrackPlayerFunctions> | null = null;
 export function narrationPlayer(): Promise<TrackPlayerFunctions> {
   if (_narrationPromise === null) {
     _narrationPromise = new Promise<TrackPlayerFunctions>((resolve, reject) => {
-      TrackPlayer.registerPlaybackService(() => async() => {
-        TrackPlayer.addEventListener('remote-play', TrackPlayer.play);
-        TrackPlayer.addEventListener('remote-pause', TrackPlayer.pause);
-        TrackPlayer.addEventListener('remote-next', TrackPlayer.skipToNext);
-        TrackPlayer.addEventListener('remote-previous', TrackPlayer.skipToPrevious);
+      try {
+        TrackPlayer.registerPlaybackService(() => async() => {
+          try {
+            TrackPlayer.addEventListener('remote-play', TrackPlayer.play);
+            TrackPlayer.addEventListener('remote-pause', TrackPlayer.pause);
+            TrackPlayer.addEventListener('remote-next', TrackPlayer.skipToNext);
+            TrackPlayer.addEventListener('remote-previous', TrackPlayer.skipToPrevious);
 
-        await TrackPlayer.setupPlayer({});
-        TrackPlayer.updateOptions({
-          stopWithApp: true,
-          capabilities: [
-            TrackPlayer.CAPABILITY_PLAY,
-            TrackPlayer.CAPABILITY_PAUSE,
-            TrackPlayer.CAPABILITY_SKIP_TO_NEXT,
-            TrackPlayer.CAPABILITY_SKIP_TO_PREVIOUS,
-            TrackPlayer.CAPABILITY_JUMP_BACKWARD,
-          ],
-          compactCapabilities: [
-            TrackPlayer.CAPABILITY_PLAY,
-            TrackPlayer.CAPABILITY_PAUSE,
-          ],
+            await TrackPlayer.setupPlayer({});
+            TrackPlayer.updateOptions({
+              stopWithApp: true,
+              capabilities: [
+                TrackPlayer.CAPABILITY_PLAY,
+                TrackPlayer.CAPABILITY_PAUSE,
+                TrackPlayer.CAPABILITY_SKIP_TO_NEXT,
+                TrackPlayer.CAPABILITY_SKIP_TO_PREVIOUS,
+                TrackPlayer.CAPABILITY_JUMP_BACKWARD,
+              ],
+              compactCapabilities: [
+                TrackPlayer.CAPABILITY_PLAY,
+                TrackPlayer.CAPABILITY_PAUSE,
+              ],
+            });
+            resolve({
+              getQueue: TrackPlayer.getQueue,
+              getCurrentTrack: TrackPlayer.getCurrentTrack,
+              getTrack: TrackPlayer.getTrack,
+              addEventListener: TrackPlayer.addEventListener,
+              play: TrackPlayer.play,
+              pause: TrackPlayer.pause,
+              stop: TrackPlayer.stop,
+              skipToNext: TrackPlayer.skipToNext,
+              getState: TrackPlayer.getState,
+              skip: TrackPlayer.skip,
+              add: TrackPlayer.add,
+              remove: TrackPlayer.remove,
+              reset: TrackPlayer.reset,
+              seekTo: TrackPlayer.seekTo,
+              skipToPrevious: TrackPlayer.skipToPrevious,
+              getPosition: TrackPlayer.getPosition,
+            });
+          } catch (e) {
+            reject(e);
+          }
         });
-        resolve({
-          getQueue: TrackPlayer.getQueue,
-          getCurrentTrack: TrackPlayer.getCurrentTrack,
-          getTrack: TrackPlayer.getTrack,
-          addEventListener: TrackPlayer.addEventListener,
-          play: TrackPlayer.play,
-          pause: TrackPlayer.pause,
-          stop: TrackPlayer.stop,
-          skipToNext: TrackPlayer.skipToNext,
-          getState: TrackPlayer.getState,
-          skip: TrackPlayer.skip,
-          add: TrackPlayer.add,
-          remove: TrackPlayer.remove,
-          reset: TrackPlayer.reset,
-          seekTo: TrackPlayer.seekTo,
-          skipToPrevious: TrackPlayer.skipToPrevious,
-          getPosition: TrackPlayer.getPosition,
-        });
-      });
+      } catch (e) {
+        reject(e);
+      }
     });
   }
   return _narrationPromise;
