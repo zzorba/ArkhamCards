@@ -8,13 +8,7 @@ export const SHOW_DISSONANT_VOICES = false;
 interface TrackPlayerFunctions {
   getQueue: () => Promise<Track[]>;
   getTrack: (id: string) => Promise<Track>;
- // getCurrentTrack: () => Promise<string>;
- // getVolume: () => Promise<number>;
- // getDuration: () => Promise<number>;
-//  getPosition: () => Promise<number>;
-//  getBufferedPosition: () => Promise<number>;
   getState: () => Promise<State>;
-//  getRate: () => Promise<number>;
   addEventListener: (type: EventType, listener: (data: any) => void) => EmitterSubscription;
   getCurrentTrack: () => Promise<string>;
   play: () => Promise<void>;

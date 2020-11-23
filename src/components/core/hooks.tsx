@@ -546,7 +546,7 @@ export function usePressCallback(callback: undefined | (() => void), bufferTime:
   useEffect(() => {
     callbackRef.current = callback;
   }, [callback]);
-  const onPress = useMemo(() => debounce(() => callbackRef.current && callbackRef.current(), bufferTime, { leading: true, trailing: false }), []);
+  const onPress = useMemo(() => debounce(() => callbackRef.current && callbackRef.current(), bufferTime, { leading: true, trailing: false }), [callbackRef]);
   return callback ? onPress : undefined;
 }
 
@@ -555,7 +555,7 @@ export function useInterval(callback: () => void, delay: number) {
 
   useEffect(() => {
     savedCallback.current = callback;
-  });
+  }, [callback]);
 
   useEffect(() => {
     if (!delay) {
