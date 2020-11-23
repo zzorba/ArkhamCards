@@ -4878,7 +4878,7 @@ msgstr ""
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:199
 msgid "Shrewd Analysis Rule"
-msgstr ""
+msgstr "Analyse Subtile : "
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:201
 #, javascript-format
@@ -4928,14 +4928,20 @@ msgid ""
 "<i>Note: the app handles this by adjusting experience to account for the "
 "'free' upgrade.</i>"
 msgstr ""
+"<b>Analyse Subtile<\b> : Si vous remplissez les conditions de campagne, "
+"Vous pouvez utiliser Analyse Subtile et choisir les deux améliorations au hasard et de n'en payer qu'une.\n"
+"\n"
+"<i>Note : l'application gère cela en ajustant l'expérience pour tenir compte"
+"de l'améliorations  gratuite </i>"
+
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:268
 msgid "Upgrade results"
-msgstr ""
+msgstr "Résultat de l'amélioration"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:283
 msgid "Upgrade with Shrewd Analysis"
-msgstr ""
+msgstr "Amélioration avec Analyse Subtile"
 
 #: src/components/campaign/constants.ts:253
 msgid "The Pit of Despair"
