@@ -1138,7 +1138,7 @@
       },
       {
         "id": "medicine",
-        "name": "Medikamenten",
+        "name": "Medizin",
         "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
         "cost": 2,
         "multiple": true
@@ -2276,7 +2276,7 @@
       },
       {
         "id": "medicine",
-        "name": "Medikamenten",
+        "name": "Medizin",
         "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
         "cost": 2,
         "multiple": true

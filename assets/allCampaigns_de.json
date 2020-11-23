@@ -22683,7 +22683,7 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Benzin",
-        "prompt": "Use gasoline",
+        "prompt": "Benzin benutzen",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -22784,7 +22784,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Proviant",
-        "prompt": "Use provisions",
+        "prompt": "Proviant benutzen",
         "investigator": "all",
         "choices": [
           {
@@ -22830,8 +22830,8 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
-        "name": "Medikamenten",
-        "prompt": "Use medicine",
+        "name": "Medizin",
+        "prompt": "Medizin benutzen",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -23183,7 +23183,7 @@
           },
           {
             "id": "medicine",
-            "name": "Medikamenten",
+            "name": "Medizin",
             "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
             "cost": 2,
             "multiple": true
@@ -23353,7 +23353,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Proviant",
-        "prompt": "Use provisions",
+        "prompt": "Proviant benutzen",
         "investigator": "all",
         "choices": [
           {
@@ -23400,7 +23400,7 @@
         "section": "supplies",
         "id": "binoculars",
         "investigator": "choice",
-        "prompt": "Group's lookout",
+        "prompt": "Späher der Gruppe",
         "positiveChoice": {
           "id": "positive",
           "text": "Gestalten in den Bäumen",
@@ -23477,7 +23477,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medikamente",
-        "prompt": "Use medicine",
+        "prompt": "Medizin benutzen",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -25435,7 +25435,7 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Benzin",
-        "prompt": "Use gasoline",
+        "prompt": "Benzin benutzen",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -27382,7 +27382,7 @@
         "section": "supplies",
         "id": "rope",
         "name": "Seil",
-        "prompt": "Use rope",
+        "prompt": "Seil benutzen",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -29529,7 +29529,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medikamente",
-        "prompt": "Use medicine",
+        "prompt": "Medizin benutzen",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -31598,7 +31598,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Proviant",
-        "prompt": "Use provisions",
+        "prompt": "Proviant benutzen",
         "investigator": "all",
         "choices": [
           {
@@ -31642,7 +31642,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medikamente",
-        "prompt": "Use medicine",
+        "prompt": "Medizin benutzen",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -36952,7 +36952,7 @@
           "text": "Sobald ein einseitig bedruckter Ort vom Erkundungsdeck ins Spiel gebracht wird, gibt dessen Hinweiswert an, wie viele Hinweise zu diesem Zeitpunkt auf dem Ort platziert werden."
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "Falls das gesamte Erkundungsdeck durchgegangen wurde, ohne eine Verratskarte oder einen Ort, den die die Erkunden-Fähigkeit angibt, zu finden, wird das Erkunden einfach beendet. Es gilt weder als „erfolgreich“ noch als „nicht erfolgreich“. Alle gezogenen Orte werden zurück in das Erkundungsdeck gemischt. Die Aktion des Ermittlers ist beendet."
         }
       ],
       "example": "<i>Beispiel: Szene 1a – „Die Suche nach dem Tor“ hat folgende Fähigkeit: „[action]: <b>Erkunden</b>. Ziehe die oberste Karte des Erkundungsdecks. Falls es ein verbundener Ort ist, bringe ihn ins Spiel und bewege dich dorthin.“ Ursula Downs ist im Expeditionslager und möchte einen neuen Ort finden, zu dem sie reisen kann. Sie gibt ihre erste Aktion aus, um zu erkunden. Sie zieht die oberste Karte des Erkundungsdecks. Die Karte, die sie zieht, ist die Oase in der Wüste. Weil die Oase in der Wüste ein Ort ist, der nicht mit dem Expeditionslager verbunden ist, wird sie neben dem Erkundungsdeck platziert und Ursula zieht die nächste Karte des Erkundungsdecks. Jetzt zieht sie die Verratskarte Sandsturm, die sie normal abhandelt und auf den Begegnungs-Ablagestapel legt. Ihr Erkunden ist nicht erfolgreich und sie muss die Karte Oase in der Wüste, die sie zuvor gezogen hat, zurück ins Erkundungsdeck mischen. Ursula entscheidet sich eine zweite Aktion auszugeben, um erneut zu erkunden. Jetzt zieht sie den Nil, der mit dem Expeditionslager verbunden ist. Ihr Erkunden ist erfolgreich. Der Nil wird mit Hinweisen in Höhe seines Hinweiswertes ins Spiel gebracht und Ursula bewegt sich sofort vom Expeditionslager zum Nil.</i>"
@@ -37251,7 +37251,7 @@
         "physical",
         "mental"
       ],
-      "text": "The city of Cairo sleeps and will never wake. In the west, the Brotherhood rejoices, fortheir prophecy is about to be fulfilled. And deep in the landof dreams, their Chosen grips his weapon for the first time.",
+      "text": "Die Stadt Kairo liegt in einem tiefen Schlaf, aus dem sie niemals wieder erwachen wird. Im Westen triumphiert die Bruderschaft, weil die Erfüllung ihrer Prophezeiung unmittelbar bevorsteht. Und tief im Land der Träume greift ihr Auserwählter zum ersten Mal zu seiner Waffe.",
       "steps": [
         "earn_xp",
         "record_dreamers_in_abyss",
@@ -37441,7 +37441,7 @@
           "text": "Sobald ein einseitig bedruckter Ort vom Erkundungsdeck ins Spiel gebracht wird, gibt dessen Hinweiswert an, wie viele Hinweise zu diesem Zeitpunkt auf dem Ort platziert werden."
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "Falls das gesamte Erkundungsdeck durchgegangen wurde, ohne eine Verratskarte oder einen Ort, den die die Erkunden-Fähigkeit angibt, zu finden, wird das Erkunden einfach beendet. Es gilt weder als „erfolgreich“ noch als „nicht erfolgreich“. Alle gezogenen Orte werden zurück in das Erkundungsdeck gemischt. Die Aktion des Ermittlers ist beendet."
         }
       ],
       "example": "<i>Beispiel: Szene 1a – „Die Suche nach dem Tor“ hat folgende Fähigkeit: „[action]: <b>Erkunden</b>. Ziehe die oberste Karte des Erkundungsdecks. Falls es ein verbundener Ort ist, bringe ihn ins Spiel und bewege dich dorthin.“ Ursula Downs ist im Expeditionslager und möchte einen neuen Ort finden, zu dem sie reisen kann. Sie gibt ihre erste Aktion aus, um zu erkunden. Sie zieht die oberste Karte des Erkundungsdecks. Die Karte, die sie zieht, ist die Oase in der Wüste. Weil die Oase in der Wüste ein Ort ist, der nicht mit dem Expeditionslager verbunden ist, wird sie neben dem Erkundungsdeck platziert und Ursula zieht die nächste Karte des Erkundungsdecks. Jetzt zieht sie die Verratskarte Sandsturm, die sie normal abhandelt und auf den Begegnungs-Ablagestapel legt. Ihr Erkunden ist nicht erfolgreich und sie muss die Karte Oase in der Wüste, die sie zuvor gezogen hat, zurück ins Erkundungsdeck mischen. Ursula entscheidet sich eine zweite Aktion auszugeben, um erneut zu erkunden. Jetzt zieht sie den Nil, der mit dem Expeditionslager verbunden ist. Ihr Erkunden ist erfolgreich. Der Nil wird mit Hinweisen in Höhe seines Hinweiswertes ins Spiel gebracht und Ursula bewegt sich sofort vom Expeditionslager zum Nil.</i>"
@@ -37523,7 +37523,7 @@
       "text": "Die 6 doppelseitig bedruckten [[Bruderschaft]]-Gegner werden herausgesucht. Auf den Rückseiten dieser Gegner befinden sich Handlungskarten <i>(siehe „Handlungskarten“)</i>. Einige dieser Gegner werden (wie im Folgenden beschrieben) unter der Szenarioübersichtskarte platziert. Die übrigen werden aus dem Spiel entfernt.",
       "bullets": [
         {
-          "text": "Because you have not played <b>The Eternal Slumber</b>, shuffle these 6 enemies together and place 3 of them beneath the scenario reference card without looking at them."
+          "text": "Da das Szenario <b>Der ewige Schlaf</b> nicht gespielt wurde, werden die 6 Gegner zusammengemischt und 3 davon unter der Szenarioübersichtskarte platziert, ohne sie anzusehen."
         }
       ]
     },
@@ -37532,7 +37532,7 @@
       "text": "Die 6 doppelseitig bedruckten [[Bruderschaft]]-Gegner werden herausgesucht. Auf den Rückseiten dieser Gegner befinden sich Handlungskarten <i>(siehe „Handlungskarten“)</i>. Einige dieser Gegner werden (wie im Folgenden beschrieben) unter der Szenarioübersichtskarte platziert. Die übrigen werden aus dem Spiel entfernt.",
       "bullets": [
         {
-          "text": "Place each of the enemies listed next to <i>“Brotherhood Agents Who Escaped”</i> in your Campaign Log beneath the scenario reference card."
+          "text": "Es werden die im Kampagnenlogbuch unter <i>„Entkommene Agenten der Bruderschaft“</i> notierten Gegner unter der Szenarioübersichtskarte platziert."
         }
       ]
     },
@@ -37541,7 +37541,7 @@
       "text": "Wie im Folgenden beschrieben wird eine bestimmte Anzahl an Ressourcenmarkern auf der Szenarioübersichtskarte unter „Stärke des Abgrunds“ platziert <i>(siehe „Stärke des Abgrunds“)</i>",
       "bullets": [
         {
-          "text": "Because you have not played The Eternal Slumber, place 1 resource for each investigator in the game."
+          "text": "Da das Szenario Der ewige Schlaf nicht gespielt wurde, wird 1 Ressource pro Ermittler im Spiel platziert."
         }
       ]
     },
@@ -37550,7 +37550,7 @@
       "text": "Wie im Folgenden beschrieben wird eine bestimmte Anzahl an Ressourcenmarkern auf der Szenarioübersichtskarte unter „Stärke des Abgrunds“ platziert <i>(siehe „Stärke des Abgrunds“)</i>",
       "bullets": [
         {
-          "text": "Place resources equal to the number listed in parentheses next to <i>“dreamers in the abyss”</i> in your Campaign Log."
+          "text": "Es werden Ressourcen entsprechend der Zahl in Klammern neben <i>Träumer im Abgrund</i> im Kampagnenlogbuch platziert."
         }
       ]
     },
@@ -45928,7 +45928,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "black_cat_decision",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that <i>the black cat delivered news of your plight.</i>",
+        "prompt": "Teile den Ermittlern in <i>Das Netz der Träume</i> (Kampagne B) mit: <i>Die schwarze Katze hat die Nachricht über deine Notlage überbracht</i>.",
         "decision": "black_cat_delivered_news"
       }
     },
@@ -45976,7 +45976,7 @@
         "type": "send_campaign_link",
         "id": "black_cat_decision",
         "decision": "black_cat_shared_knowledge_of_the_dreamlands",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that <i>the black cat shared knowledge of the Dreamlands.</i>"
+        "prompt": "Teile den Ermittlern in <i>Das Netz der Träume</i> (Kampagne B) mit: <i>Die schwarze Katze hat das Wissen über die Traumlande geteilt</i>."
       }
     },
     {
@@ -45998,7 +45998,7 @@
         "type": "send_campaign_link",
         "id": "black_cat_decision",
         "decision": "black_cat_warned_the_others",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that <i>the black cat warned the others.</i>"
+        "prompt": "Teile den Ermittlern in <i>Das Netz der Träume</i> (Kampagne B) mit: <i>Die schwarze Katze hat die anderen gewarnt</i>."
       }
     },
     {
@@ -46033,7 +46033,7 @@
         "type": "send_campaign_link",
         "id": "black_cat_decision",
         "decision": "threaten_black_cat",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), <i>okay, fine, have it your way then.</i>"
+        "prompt": "Teile den Ermittlern in <i>Das Netz der Träume</i> (Kampagne B) mit: <i>Du hast es so gewollt</i>."
       }
     },
     {
@@ -47011,7 +47011,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "great_ones_black_cat_is_searching_for_the_truth",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B) to keep <i>the black cat is searching for the truth</i> in their campaign log.",
+        "prompt": "Teile den Ermittlern in <i>Das Netz der Träume</i> (Kampagne B) mit, sie sollen <i>Die schwarze Katze sucht nach der Wahrheit</i> in ihrem Kampagnenlogbuch stehen lassen.",
         "decision": "keep"
       }
     },
@@ -47133,7 +47133,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "great_ones_decision",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that the black cat wandered off without taking a message.",
+        "prompt": "Teile den Ermittlern in <i>Das Netz der Träume</i> (Kampagne B) mit, dass die schwarze Katze davon geschlendert ist, ohne eine Nachricht mitzunehmen.",
         "decision": "black_cat_wanders_off"
       }
     },
@@ -47818,7 +47818,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "oneironauts_searching_for_the_truth",
-        "prompt": "If asked by the investigators of <i>The Web of Dreams</i> if <i>the black cat is searching for the truth</i>, tell them no.",
+        "prompt": "Falls du von den Ermittlern in <i>Das Netz der Träume</i> gefragt wirst, ob <i>die schwarze Katze nach der Wahrheit sucht</i>, sagt ihnen nein.",
         "decision": "no_change"
       }
     },
@@ -53221,7 +53221,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "great_ones_silver_key",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> that <i>the black cat brought a Silver Key</i>.",
+        "prompt": "Teile den Ermittlern der <i>Die Traumsuche</i> (Kampagne A) mit: <i>Die schwarze Katze hat den silbernen Schlüssel gebracht</i>.",
         "decision": "transfer_key"
       }
     },
@@ -53231,7 +53231,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "great_ones_silver_key",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> that <i>the black cat did not bring a key</i>.",
+        "prompt": "Teile den Ermittlern der <i>Die Traumsuche</i> (Kampagne A) mit: <i>Die schwarze Katze hat keinen Schlüssel gebracht</i>.",
         "decision": "no_key"
       }
     },
@@ -53667,7 +53667,7 @@
         "type": "send_campaign_link",
         "id": "oneironauts_black_cat_has_a_hunch",
         "decision": "keep",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), to keep <i>the black cat has a hunch</i> in their Campaign Log."
+        "prompt": "Teile den Ermittlern der <i>Die Traumsuche</i> (Kampagne A) mit, sie sollen <i>Die schwarze Katze hat eine Ahnung</i> in ihrem Kampagnenlogbuch stehen lassen."
       }
     },
     {
@@ -53852,7 +53852,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "oneironauts_decision",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the black cat requested aid from the others.</i>",
+        "prompt": "Teile den Ermittlern der <i>Die Traumsuche</i> (Kampagne A) mit: <i>Die schwarze Katze hat Hilfe um Hilfe von den anderen gebeten</i>.",
         "decision": "black_cat_requested_aid"
       }
     },
@@ -53873,7 +53873,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "oneironauts_decision",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the black cat shared knowledge of the Underworld.</i>",
+        "prompt": "Teile den Ermittlern der <i>Die Traumsuche</i> (Kampagne A) mit: <i>Die schwarze Katze hat das Wissen über die Unterwelt geteilt</i>.",
         "decision": "black_cat_shared_knowledge_of_the_underworld"
       }
     },
@@ -53894,7 +53894,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "oneironauts_decision",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the black cat warned the others.</i>",
+        "prompt": "Teile den Ermittlern der <i>Die Traumsuche</i> (Kampagne A) mit: <i>Die schwarze Katze hat die anderen gewarnt</i>.",
         "decision": "black_cat_warned_the_others"
       }
     },
@@ -55206,7 +55206,7 @@
         "type": "send_campaign_link",
         "id": "dreamers_grow_weaker",
         "decision": "dreamers_are_strong",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the dreamers are strong</i>."
+        "prompt": "Teile den Ermittlern der <i>Die Traumsuche</i> (Kampagne A) mit: <i>Die Träumer sind stark</i>."
       }
     },
     {
@@ -56444,7 +56444,7 @@
           "text": "Wenn ein einseitig bedruckter Ort vom Erkundungsdeck ins Spiel gebracht wird, gibt dessen Hinweiswert an, wie viele Hinweise zu diesem Zeitpunkt auf dem Ort platziert werden."
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "Falls das gesamte Erkundungsdeck durchgegangen wurde, ohne eine Verratskarte oder einen Ort, den die die Erkunden-Fähigkeit angibt, zu finden, wird das Erkunden einfach beendet. Es gilt weder als „erfolgreich“ noch als „nicht erfolgreich“. Alle gezogenen Orte werden zurück in das Erkundungsdeck gemischt. Die Aktion des Ermittlers ist beendet."
         }
       ],
       "example": "<i>Beispiel: Agenda 1a —„Expedition in die Wildnis“ hat folgende Fähigkeit: „[action]: <b>Erkunden</b>. Ziehe die oberste Karte des Erkundungsdecks. Falls es ein verbundener Ort ist, bringe ihn ins Spiel und bewege dich dahin.“ Ursula Downs ist im Expeditionslager und möchte einen neuen Ort finden, an den sie reisen kann. Sie gibt ihre erste Aktion aus, um zu erkunden. Sie zieht die oberste Karte des Erkundungsdecks. Die Karte, die sie zieht, ist Im Kreis gegangen. Weil Im Kreis gegangen ein Ort ist, der nicht mit Expeditionslager verbunden ist, wird er neben dem Erkundungsdeck platziert und Ursula zieht die nächste Karte des Erkundungsdecks. Jetzt zieht sie die Karte Unzureichende Ausrüstung, die sie normal abhandelt und auf den Begegnungs-Ablagestapel legt. Ihr Erkunden ist nicht erfolgreich und sie muss die Karte Im Kreis gegangen, die sie zuvor gezogen hat, zurück ins Erkundungsdeck mischen. Ursula entscheidet sich, eine zweite Aktion auszugeben, um erneut zu erkunden. Jetzt zieht sie Dornenpfad, der mit dem Expeditionslager verbunden ist. Ihr Erkunden ist erfolgreich. Dornenpfad wird mit Hinweisen in Höhe seines Hinweiswertes ins Spiel gebracht und Ursula bewegt sich sofort aus dem Expeditionslager zum Dornenpfad.</i>"
@@ -58182,7 +58182,7 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Benzin",
-        "prompt": "Use gasoline",
+        "prompt": "Benzin benutzen",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -58283,7 +58283,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Proviant",
-        "prompt": "Use provisions",
+        "prompt": "Proviant benutzen",
         "investigator": "all",
         "choices": [
           {
@@ -58329,8 +58329,8 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
-        "name": "Medikamenten",
-        "prompt": "Use medicine",
+        "name": "Medizin",
+        "prompt": "Medizin benutzen",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -58682,7 +58682,7 @@
           },
           {
             "id": "medicine",
-            "name": "Medikamenten",
+            "name": "Medizin",
             "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
             "cost": 2,
             "multiple": true
@@ -58852,7 +58852,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Proviant",
-        "prompt": "Use provisions",
+        "prompt": "Proviant benutzen",
         "investigator": "all",
         "choices": [
           {
@@ -58899,7 +58899,7 @@
         "section": "supplies",
         "id": "binoculars",
         "investigator": "choice",
-        "prompt": "Group's lookout",
+        "prompt": "Späher der Gruppe",
         "positiveChoice": {
           "id": "positive",
           "text": "Gestalten in den Bäumen",
@@ -58976,7 +58976,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medikamente",
-        "prompt": "Use medicine",
+        "prompt": "Medizin benutzen",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -59876,7 +59876,7 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Benzin",
-        "prompt": "Use gasoline",
+        "prompt": "Benzin benutzen",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -62344,7 +62344,7 @@
         "section": "supplies",
         "id": "rope",
         "name": "Seil",
-        "prompt": "Use rope",
+        "prompt": "Seil benutzen",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -62852,7 +62852,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Proviant",
-        "prompt": "Use provisions",
+        "prompt": "Proviant benutzen",
         "investigator": "all",
         "choices": [
           {
@@ -62896,7 +62896,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medikamente",
-        "prompt": "Use medicine",
+        "prompt": "Medizin benutzen",
         "investigator": "choice",
         "min": 0,
         "max": 4,
