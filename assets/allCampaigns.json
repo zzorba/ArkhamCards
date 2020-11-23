@@ -2236,11 +2236,19 @@
     },
     {
       "id": "part_1",
+      "narration": {
+        "id": "the_dunwich_legacy.the_miskatonic_museum.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "The notes written by Dr. Armitage in the journal stress Whateley’s desire to get his hands on the Necronomicon for some terrible purpose. As you read on, it seems that Dr. Armitage brought the university’s copy of the tome to Harold Walsted—the curator of the Miskatonic Museum—for safekeeping in the museum’s Restricted Hall. Although you are worried about your mentor, you are equally worried that Armitage’s kidnappers might get their hands on this Necronomicon. You decide to head to the museum to prevent them from acquiring it."
     },
     {
       "id": "part_2",
+      "narration": {
+        "id": "the_dunwich_legacy.the_miskatonic_museum.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "“My colleagues and I were quick to put the ordeal behind us,” Armitage says with a sigh. “But it seems that things haven’t fully resolved themselves. I’ll tell you the rest later, but for now, it is imperative that we get our hands on that copy of the Necronomicon. If my instincts are correct, the assailants you’ve encountered will be searching for it. After all that transpired, I didn’t feel safe keeping it at the library, so I brought it to my good friend, Harold Walsted. He is the current curator of the Miskatonic Museum. I thought it would be safe in the museum’s Restricted Hall, but now I’m not so sure. You must retrieve it at all costs! I fear terribly what they could do with the rites contained in its pages…”"
     },
@@ -11808,11 +11816,19 @@
     },
     {
       "id": "part_1",
+      "narration": {
+        "id": "the_dunwich_legacy.the_miskatonic_museum.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "The notes written by Dr. Armitage in the journal stress Whateley’s desire to get his hands on the Necronomicon for some terrible purpose. As you read on, it seems that Dr. Armitage brought the university’s copy of the tome to Harold Walsted—the curator of the Miskatonic Museum—for safekeeping in the museum’s Restricted Hall. Although you are worried about your mentor, you are equally worried that Armitage’s kidnappers might get their hands on this Necronomicon. You decide to head to the museum to prevent them from acquiring it."
     },
     {
       "id": "part_2",
+      "narration": {
+        "id": "the_dunwich_legacy.the_miskatonic_museum.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "“My colleagues and I were quick to put the ordeal behind us,” Armitage says with a sigh. “But it seems that things haven’t fully resolved themselves. I’ll tell you the rest later, but for now, it is imperative that we get our hands on that copy of the Necronomicon. If my instincts are correct, the assailants you’ve encountered will be searching for it. After all that transpired, I didn’t feel safe keeping it at the library, so I brought it to my good friend, Harold Walsted. He is the current curator of the Miskatonic Museum. I thought it would be safe in the museum’s Restricted Hall, but now I’m not so sure. You must retrieve it at all costs! I fear terribly what they could do with the rites contained in its pages…”"
     },
@@ -21876,10 +21892,6 @@
   "steps": [
     {
       "id": "prompt",
-      "narration": {
-        "id": "the_forgotten_age.interlude_1.intro",
-        "name": "Intro"
-      },
       "text": "In order, read each of the following sections:"
     },
     {
@@ -22069,7 +22081,7 @@
     {
       "id": "shapes_in_the_tress",
       "narration": {
-        "id": "the_forgotten_age.interlude_1.shapes_in_the_tress",
+        "id": "the_forgotten_age.interlude_1.shapes_in_the_trees",
         "name": "Shapes in the Trees"
       },
       "type": "story",
@@ -23767,14 +23779,18 @@
     {
       "id": "intro",
       "narration": {
-        "id": "the_forgotten_age.the_boundary_beyond.intro",
-        "name": "Intro"
+        "id": "the_forgotten_age.the_boundary_beyond.intro_1",
+        "name": "Intro 1"
       },
       "type": "story",
       "text": "Rays of hot yellow sunlight beat down on you from above as your car speeds down the dusty highways of southern Texas, just outside of San Antonio. It has been several days since you hit the road from Arkham on your way to Mexico City, where you may be able to get answers from some of Alejandro’s associates—or even better, from his adversaries in academia. Your recent investigations in Arkham uncovered much, but despite all the knowledge you laid bare, the trail went cold soon after. The “Brotherhood” that you exposed in Arkham has all but vanished from the city. Its members left behind little information as to their next objective, other than the name “The Nexus of N’kai,” a place of power that Ichtaca believes is the Brotherhood’s ultimate destination. Enigmatic as ever, the Eztli warrior sits in the passenger seat next to you. She is tense and coiled like a spring, the Ford’s leather seat offering her little comfort."
     },
     {
       "id": "check_forged_bond_with_ichtaca",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.ichtaca_section",
+        "name": "Ichtaca Section"
+      },
       "text": "Check Campaign Log. <i>If the investigators forged a bond with Ichtaca</i>, the lead investigator reads <b>Ichtaca’s Quest</b>.",
       "type": "branch",
       "condition": {
@@ -23859,6 +23875,10 @@
     },
     {
       "id": "check_found_missing_relic",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.relic_section",
+        "name": "Relic Section"
+      },
       "text": "Check Campaign Log. <i> If the investigators found the missing relic</i>, the lead investigator reads <b>Arcane Thrumming.</b>.",
       "type": "branch",
       "condition": {
@@ -23948,6 +23968,10 @@
     },
     {
       "id": "check_rescued_alejandro",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.alejandro_section",
+        "name": "Alejandro Section"
+      },
       "text": "Check Campaign Log. <i>If the investigators rescued Alejandro</i>, the lead investigator reads <b>Alejandro’s Thoughts.</b>",
       "type": "branch",
       "condition": {
@@ -24575,7 +24599,7 @@
     {
       "id": "intro_1",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_1",
+        "id": "the_forgotten_age.the_city_of_archives.intro_1",
         "name": "Intro 1"
       },
       "type": "story",
@@ -24610,7 +24634,7 @@
     {
       "id": "intro_2",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_2",
+        "id": "the_forgotten_age.the_city_of_archives.intro_2",
         "name": "Intro 2"
       },
       "type": "story",
@@ -24630,7 +24654,7 @@
     {
       "id": "intro_3",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_3",
+        "id": "the_forgotten_age.the_city_of_archives.intro_3",
         "name": "Intro 3"
       },
       "type": "story",
@@ -24996,7 +25020,7 @@
     {
       "id": "no_resolution",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
+        "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
@@ -25015,7 +25039,7 @@
     {
       "id": "R1",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.resolution_1",
+        "id": "the_forgotten_age.the_city_of_archives.resolution_1",
         "name": "Resolution 1"
       },
       "title": "Resolution 1",
@@ -29910,6 +29934,10 @@
     },
     {
       "id": "explain_mind_recovered",
+      "narration": {
+        "id": "the_forgotten_age.interlude_4.mind_recovered_forever_lost_section",
+        "name": "Mind Recovered / Forever Lost Section"
+      },
       "text": "Check the chaos bag and the Campaign Log. If all of the following are true, the lead investigator reads <b>A Mind Recovered</b>. If any of the following are not true, the lead investigator reads <b>Forever Lost</b> instead."
     },
     {
@@ -38184,7 +38212,7 @@
     {
       "id": "progress_1",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_1",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_1",
         "name": "The Price of Progress 1"
       },
       "type": "story",
@@ -38193,7 +38221,7 @@
     {
       "id": "progress_2",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_2",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_2",
         "name": "The Price of Progress 2"
       },
       "type": "story",
@@ -38202,7 +38230,7 @@
     {
       "id": "progress_3",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_3",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_3",
         "name": "The Price of Progress 3"
       },
       "type": "story",
@@ -38261,7 +38289,7 @@
     {
       "id": "progress_4",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_4",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_4",
         "name": "The Price of Progress 4"
       },
       "type": "story",
@@ -38287,7 +38315,7 @@
     {
       "id": "progress_5",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_5",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_5",
         "name": "The Price of Progress 5"
       },
       "type": "story",
@@ -38342,7 +38370,7 @@
     {
       "id": "progress_6",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_6",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_6",
         "name": "The Price of Progress 6"
       },
       "type": "story",
@@ -38362,7 +38390,7 @@
     {
       "id": "progress_7",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_7",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_7",
         "name": "The Price of Progress 7"
       },
       "type": "story",
@@ -38382,7 +38410,7 @@
     {
       "id": "progress_8",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_8",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_8",
         "name": "The Price of Progress 8"
       },
       "type": "story",
@@ -38407,7 +38435,7 @@
     {
       "id": "progress_9",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_9",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_9",
         "name": "The Price of Progress 9"
       },
       "type": "story",
@@ -41868,7 +41896,7 @@
     {
       "id": "black_cat_1",
       "narration": {
-        "id": "the_dreameaters.interlude_1.black_cat_1",
+        "id": "the_dreameaters.interlude_1.the_black_cat_1",
         "name": "Black Cat 1"
       },
       "type": "story",
@@ -43037,10 +43065,6 @@
     },
     {
       "id": "black_cat_wanders_off",
-      "narration": {
-        "id": "the_dreameaters.interlude_3.the_great_ones_1_continued",
-        "name": "The Great Ones 1, continued."
-      },
       "type": "story",
       "text": "The black cat bounds off into the void of space before you get the chance to ask it anything else."
     },
@@ -44429,7 +44453,7 @@
     {
       "id": "miskatonic_dream",
       "narration": {
-        "id": "the_dreameaters.beyond_the_gates_of_sleep.miskatonic_dream",
+        "id": "the_dreameaters.beyond_the_gates_of_sleep.miskatonic_or_scholar_dream",
         "name": "Miskatonic Dream"
       },
       "type": "story",
@@ -44471,7 +44495,7 @@
     {
       "id": "neutral_1_dream",
       "narration": {
-        "id": "the_dreameaters.beyond_the_gates_of_sleep.neutral_dream 1",
+        "id": "the_dreameaters.beyond_the_gates_of_sleep.neutral_dream_1",
         "name": "Neutral Dream (1)"
       },
       "type": "story",
@@ -47628,7 +47652,7 @@
     {
       "id": "black_cat_3",
       "narration": {
-        "id": "the_dreameaters.interlude_1.black_cat_3",
+        "id": "the_dreameaters.interlude_1.the_black_cat_3",
         "name": "Black Cat 3"
       },
       "type": "story",
@@ -50300,7 +50324,7 @@
     {
       "id": "no_resolution_defeated",
       "narration": {
-        "id": "the_dreameaters.waking_nightmare.no_resolution_resigned",
+        "id": "the_dreameaters.waking_nightmare.no_resolution_defeated",
         "name": "No Resolution (Resigned)"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
@@ -53432,10 +53456,6 @@
   "steps": [
     {
       "id": "prompt",
-      "narration": {
-        "id": "the_forgotten_age.interlude_1.intro",
-        "name": "Intro"
-      },
       "text": "In order, read each of the following sections:"
     },
     {
@@ -53610,7 +53630,7 @@
     {
       "id": "shapes_in_the_tress",
       "narration": {
-        "id": "the_forgotten_age.interlude_1.shapes_in_the_tress",
+        "id": "the_forgotten_age.interlude_1.shapes_in_the_trees",
         "name": "Shapes in the Trees"
       },
       "type": "story",
@@ -54196,14 +54216,18 @@
     {
       "id": "intro",
       "narration": {
-        "id": "the_forgotten_age.the_boundary_beyond.intro",
-        "name": "Intro"
+        "id": "the_forgotten_age.the_boundary_beyond.intro_1",
+        "name": "Intro 1"
       },
       "type": "story",
       "text": "Rays of hot yellow sunlight beat down on you from above as your car speeds down the dusty highways of southern Texas, just outside of San Antonio. It has been several days since you hit the road from Arkham on your way to Mexico City, where you may be able to get answers from some of Alejandro’s associates—or even better, from his adversaries in academia. Your recent investigations in Arkham uncovered much, but despite all the knowledge you laid bare, the trail went cold soon after. The “Brotherhood” that you exposed in Arkham has all but vanished from the city. Its members left behind little information as to their next objective, other than the name “The Nexus of N’kai,” a place of power that Ichtaca believes is the Brotherhood’s ultimate destination. Enigmatic as ever, the Eztli warrior sits in the passenger seat next to you. She is tense and coiled like a spring, the Ford’s leather seat offering her little comfort."
     },
     {
       "id": "check_forged_bond_with_ichtaca",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.ichtaca_section",
+        "name": "Ichtaca Section"
+      },
       "text": "Check Campaign Log. <i>If the investigators forged a bond with Ichtaca</i>, the lead investigator reads <b>Ichtaca’s Quest</b>.",
       "type": "branch",
       "condition": {
@@ -54278,6 +54302,10 @@
     },
     {
       "id": "check_found_missing_relic",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.relic_section",
+        "name": "Relic Section"
+      },
       "text": "Check Campaign Log. <i> If the investigators found the missing relic</i>, the lead investigator reads <b>Arcane Thrumming.</b>.",
       "type": "branch",
       "condition": {
@@ -54357,6 +54385,10 @@
     },
     {
       "id": "check_rescued_alejandro",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.alejandro_section",
+        "name": "Alejandro Section"
+      },
       "text": "Check Campaign Log. <i>If the investigators rescued Alejandro</i>, the lead investigator reads <b>Alejandro’s Thoughts.</b>",
       "type": "branch",
       "condition": {
@@ -54880,7 +54912,7 @@
     {
       "id": "intro_1",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_1",
+        "id": "the_forgotten_age.the_city_of_archives.intro_1",
         "name": "Intro 1"
       },
       "type": "story",
@@ -54909,7 +54941,7 @@
     {
       "id": "intro_2",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_2",
+        "id": "the_forgotten_age.the_city_of_archives.intro_2",
         "name": "Intro 2"
       },
       "type": "story",
@@ -54929,7 +54961,7 @@
     {
       "id": "intro_3",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_3",
+        "id": "the_forgotten_age.the_city_of_archives.intro_3",
         "name": "Intro 3"
       },
       "type": "story",
@@ -55250,7 +55282,7 @@
     {
       "id": "no_resolution",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
+        "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
       "title": "No resolution was reached\n(each investigator was defeated)",
@@ -55265,7 +55297,7 @@
     {
       "id": "R1",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.resolution_1",
+        "id": "the_forgotten_age.the_city_of_archives.resolution_1",
         "name": "Resolution 1"
       },
       "title": "Resolution 1",
@@ -56801,6 +56833,10 @@
     },
     {
       "id": "explain_mind_recovered",
+      "narration": {
+        "id": "the_forgotten_age.interlude_4.mind_recovered_forever_lost_section",
+        "name": "Mind Recovered / Forever Lost Section"
+      },
       "text": "Check the chaos bag and the Campaign Log. If all of the following are true, the lead investigator reads <b>A Mind Recovered</b>. If any of the following are not true, the lead investigator reads <b>Forever Lost</b> instead."
     },
     {

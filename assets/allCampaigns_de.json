@@ -2564,11 +2564,19 @@
     },
     {
       "id": "part_1",
+      "narration": {
+        "id": "the_dunwich_legacy.the_miskatonic_museum.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Die Notizen in Dr. Armitages Tagebuch heben Whateleys drängenden Wunsch hervor, an das Necronomicon zu gelangen und damit etwas Fürchterliches anzurichten. Du liest weiter und findest heraus, dass Dr. Armitage die Ausgabe des Buches wohl zu Dr. Harold Walsted – dem Kurator des Miskatonic-Museums – gebracht hatte, damit dieser es sicher in der für Besucher geschlossenen Ausstellungshalle aufbewahren konnte. Obwohl du dir Sorgen um deinen Mentor machst, siehst du auch die Gefahr, dass Armitages Entführer das Necronomicon in ihren Besitz bringen könnten. Also beschließt du dich auf den Weg zum Museum zu machen, um das zu verhindern."
     },
     {
       "id": "part_2",
+      "narration": {
+        "id": "the_dunwich_legacy.the_miskatonic_museum.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "„Meine Kollegen und ich haben die Sache so schnell wie möglich hinter uns gebracht“, sagt Armitage seufzend. „Aber es scheint, dass die Angelegenheit noch nicht vollständig erledigt ist. Den Rest erzähle ich Ihnen später, nun müssen wir aber zunächst das Necronomicon in unseren Besitz bringen. Falls mein Instinkt mich nicht trügt, sind Ihre Angreifer ebenfalls auf der Suche danach. Nachdem ich davon erfahren hatte, hielt ich das Buch in der Bibliothek nicht mehr für sicher und brachte es zu meinem Freund Harold Walsted. Er ist derzeit Kurator des Miskatonic-Museums. Ich hielt die für Besucher geschlossene Ausstellungshalle für einen sicheren Aufbewahrungsort, aber jetzt bin ich mir nicht mehr so sicher. Sie müssen es auf jeden Fall zurückholen! Ich fürchte mich vor dem, was sie mit den darin enthaltenen Ritualen machen könnten ...“"
     },
@@ -13180,11 +13188,19 @@
     },
     {
       "id": "part_1",
+      "narration": {
+        "id": "the_dunwich_legacy.the_miskatonic_museum.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Die Notizen in Dr. Armitages Tagebuch heben Whateleys drängenden Wunsch hervor, an das Necronomicon zu gelangen und damit etwas Fürchterliches anzurichten. Du liest weiter und findest heraus, dass Dr. Armitage die Ausgabe des Buches wohl zu Dr. Harold Walsted – dem Kurator des Miskatonic-Museums – gebracht hatte, damit dieser es sicher in der für Besucher geschlossenen Ausstellungshalle aufbewahren konnte. Obwohl du dir Sorgen um deinen Mentor machst, siehst du auch die Gefahr, dass Armitages Entführer das Necronomicon in ihren Besitz bringen könnten. Also beschließt du dich auf den Weg zum Museum zu machen, um das zu verhindern."
     },
     {
       "id": "part_2",
+      "narration": {
+        "id": "the_dunwich_legacy.the_miskatonic_museum.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "„Meine Kollegen und ich haben die Sache so schnell wie möglich hinter uns gebracht“, sagt Armitage seufzend. „Aber es scheint, dass die Angelegenheit noch nicht vollständig erledigt ist. Den Rest erzähle ich Ihnen später, nun müssen wir aber zunächst das Necronomicon in unseren Besitz bringen. Falls mein Instinkt mich nicht trügt, sind Ihre Angreifer ebenfalls auf der Suche danach. Nachdem ich davon erfahren hatte, hielt ich das Buch in der Bibliothek nicht mehr für sicher und brachte es zu meinem Freund Harold Walsted. Er ist derzeit Kurator des Miskatonic-Museums. Ich hielt die für Besucher geschlossene Ausstellungshalle für einen sicheren Aufbewahrungsort, aber jetzt bin ich mir nicht mehr so sicher. Sie müssen es auf jeden Fall zurückholen! Ich fürchte mich vor dem, was sie mit den darin enthaltenen Ritualen machen könnten ...“"
     },
@@ -23248,10 +23264,6 @@
   "steps": [
     {
       "id": "prompt",
-      "narration": {
-        "id": "the_forgotten_age.interlude_1.intro",
-        "name": "Intro"
-      },
       "text": "Lies die folgenden Absätze in der angegebenen Reihenfolge:"
     },
     {
@@ -23441,7 +23453,7 @@
     {
       "id": "shapes_in_the_tress",
       "narration": {
-        "id": "the_forgotten_age.interlude_1.shapes_in_the_tress",
+        "id": "the_forgotten_age.interlude_1.shapes_in_the_trees",
         "name": "Shapes in the Trees"
       },
       "type": "story",
@@ -25139,14 +25151,18 @@
     {
       "id": "intro",
       "narration": {
-        "id": "the_forgotten_age.the_boundary_beyond.intro",
-        "name": "Intro"
+        "id": "the_forgotten_age.the_boundary_beyond.intro_1",
+        "name": "Intro 1"
       },
       "type": "story",
       "text": "Gelbe Sonnenstrahlen brennen heiß auf dich herab, als du mit deinem Auto über die staubigen Highways des südlichen Texas an San Antonio vorbeifährst. Dein Aufbruch von Arkham nach Mexiko-Stadt ist nun einige Tage her. Dort hoffst du Antworten von einigen MitarbeiterAlejandros zu erhalten – oder noch besser: von seinen Gegnern in der akademischen Welt. Deine letzten Ermittlungen in Arkham haben viel Interessantes zutage gebracht, aber trotz all diesem neuen Wissen ist die Spur doch kalt geworden. Die „Bruderschaft“, die du in Arkham enthüllt hast, ist aus der Stadt verschwunden. Ihre Mitglieder haben nur wenige Informationen über ihre nächsten Ziele zurückgelassen. Du kennst nur den Namen „Nexus von N’kai“. Dabei soll es sich um einen machtvollen Ort handeln, den Ichtaca für das eigentliche Ziel der Bruderschaft hält. Rätselhaft wie immer sitzt die Kriegerin der Eztli auf dem Beifahrersitz neben dir. Sie ist nervös und angespannt wie eine Sprungfeder, der Ledersitz des Fords bietet ihr offensichtlich nur wenig Bequemlichkeit."
     },
     {
       "id": "check_forged_bond_with_ichtaca",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.ichtaca_section",
+        "name": "Ichtaca Section"
+      },
       "text": "Überprüfe das Kampagnenlogbuch. <i>Falls die Ermittler ein Bündnis mit Ichtaca geschlossen haben</i>, liest der Ermittlungsleiter <b>Ichtacas Suche</b>.",
       "type": "branch",
       "condition": {
@@ -25231,6 +25247,10 @@
     },
     {
       "id": "check_found_missing_relic",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.relic_section",
+        "name": "Relic Section"
+      },
       "text": "Überprüfe das Kampagnenlogbuch. <i>Falls die Ermittler das verschwundene Relikt gefunden haben</i>, liest der Ermittlungsleiter <b>Arkanes Summen</b>.",
       "type": "branch",
       "condition": {
@@ -25320,6 +25340,10 @@
     },
     {
       "id": "check_rescued_alejandro",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.alejandro_section",
+        "name": "Alejandro Section"
+      },
       "text": "Überprüfe das Kampagnenlogbuch. <i>Falls die Ermittler Alejandro gerettet haben</i>, liest der Ermittlungsleiter <b>Alejandros Gedanken.</b>",
       "type": "branch",
       "condition": {
@@ -25947,7 +25971,7 @@
     {
       "id": "intro_1",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_1",
+        "id": "the_forgotten_age.the_city_of_archives.intro_1",
         "name": "Intro 1"
       },
       "type": "story",
@@ -25982,7 +26006,7 @@
     {
       "id": "intro_2",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_2",
+        "id": "the_forgotten_age.the_city_of_archives.intro_2",
         "name": "Intro 2"
       },
       "type": "story",
@@ -26002,7 +26026,7 @@
     {
       "id": "intro_3",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_3",
+        "id": "the_forgotten_age.the_city_of_archives.intro_3",
         "name": "Intro 3"
       },
       "type": "story",
@@ -26368,7 +26392,7 @@
     {
       "id": "no_resolution",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
+        "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
@@ -26387,7 +26411,7 @@
     {
       "id": "R1",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.resolution_1",
+        "id": "the_forgotten_age.the_city_of_archives.resolution_1",
         "name": "Resolution 1"
       },
       "title": "Auflösung 1",
@@ -31282,6 +31306,10 @@
     },
     {
       "id": "explain_mind_recovered",
+      "narration": {
+        "id": "the_forgotten_age.interlude_4.mind_recovered_forever_lost_section",
+        "name": "Mind Recovered / Forever Lost Section"
+      },
       "text": "Überprüfe den Chaosbeutel und das Kampagnenlogbuch. Falls die folgenden Bedingungen vollständig erfüllt sind, liest der Ermittlungsleiter <b>Ein wiederhergestellter Geist</b>. Falls irgendeine der folgenden Bedingungen nicht erfüllt ist, liest der Ermittlungsleiter stattdessen <b>Für immer verloren</b>."
     },
     {
@@ -41636,7 +41664,7 @@
     {
       "id": "progress_1",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_1",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_1",
         "name": "The Price of Progress 1"
       },
       "type": "story",
@@ -41645,7 +41673,7 @@
     {
       "id": "progress_2",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_2",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_2",
         "name": "The Price of Progress 2"
       },
       "type": "story",
@@ -41654,7 +41682,7 @@
     {
       "id": "progress_3",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_3",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_3",
         "name": "The Price of Progress 3"
       },
       "type": "story",
@@ -41733,7 +41761,7 @@
     {
       "id": "progress_4",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_4",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_4",
         "name": "The Price of Progress 4"
       },
       "type": "story",
@@ -41759,7 +41787,7 @@
     {
       "id": "progress_5",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_5",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_5",
         "name": "The Price of Progress 5"
       },
       "type": "story",
@@ -41824,7 +41852,7 @@
     {
       "id": "progress_6",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_6",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_6",
         "name": "The Price of Progress 6"
       },
       "type": "story",
@@ -41844,7 +41872,7 @@
     {
       "id": "progress_7",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_7",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_7",
         "name": "The Price of Progress 7"
       },
       "type": "story",
@@ -41864,7 +41892,7 @@
     {
       "id": "progress_8",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_8",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_8",
         "name": "The Price of Progress 8"
       },
       "type": "story",
@@ -41891,7 +41919,7 @@
     {
       "id": "progress_9",
       "narration": {
-        "id": "the_circle_undone.interlude_2.progress_9",
+        "id": "the_circle_undone.interlude_2.the_price_of_progress_9",
         "name": "The Price of Progress 9"
       },
       "type": "story",
@@ -45770,7 +45798,7 @@
     {
       "id": "black_cat_1",
       "narration": {
-        "id": "the_dreameaters.interlude_1.black_cat_1",
+        "id": "the_dreameaters.interlude_1.the_black_cat_1",
         "name": "Black Cat 1"
       },
       "type": "story",
@@ -47096,10 +47124,6 @@
     },
     {
       "id": "black_cat_wanders_off",
-      "narration": {
-        "id": "the_dreameaters.interlude_3.the_great_ones_1_continued",
-        "name": "The Great Ones 1, continued."
-      },
       "type": "story",
       "text": "Die schwarze Katze springt davon in die Leere des Alls, ehe du sie noch etwas fragen kannst."
     },
@@ -48647,7 +48671,7 @@
     {
       "id": "miskatonic_dream",
       "narration": {
-        "id": "the_dreameaters.beyond_the_gates_of_sleep.miskatonic_dream",
+        "id": "the_dreameaters.beyond_the_gates_of_sleep.miskatonic_or_scholar_dream",
         "name": "Miskatonic Dream"
       },
       "type": "story",
@@ -48689,7 +48713,7 @@
     {
       "id": "neutral_1_dream",
       "narration": {
-        "id": "the_dreameaters.beyond_the_gates_of_sleep.neutral_dream 1",
+        "id": "the_dreameaters.beyond_the_gates_of_sleep.neutral_dream_1",
         "name": "Neutral Dream (1)"
       },
       "type": "story",
@@ -52218,7 +52242,7 @@
     {
       "id": "black_cat_3",
       "narration": {
-        "id": "the_dreameaters.interlude_1.black_cat_3",
+        "id": "the_dreameaters.interlude_1.the_black_cat_3",
         "name": "Black Cat 3"
       },
       "type": "story",
@@ -55239,7 +55263,7 @@
     {
       "id": "no_resolution_defeated",
       "narration": {
-        "id": "the_dreameaters.waking_nightmare.no_resolution_resigned",
+        "id": "the_dreameaters.waking_nightmare.no_resolution_defeated",
         "name": "No Resolution (Resigned)"
       },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
@@ -58739,10 +58763,6 @@
   "steps": [
     {
       "id": "prompt",
-      "narration": {
-        "id": "the_forgotten_age.interlude_1.intro",
-        "name": "Intro"
-      },
       "text": "Lies die folgenden Absätze in der angegebenen Reihenfolge:"
     },
     {
@@ -58932,7 +58952,7 @@
     {
       "id": "shapes_in_the_tress",
       "narration": {
-        "id": "the_forgotten_age.interlude_1.shapes_in_the_tress",
+        "id": "the_forgotten_age.interlude_1.shapes_in_the_trees",
         "name": "Shapes in the Trees"
       },
       "type": "story",
@@ -59572,14 +59592,18 @@
     {
       "id": "intro",
       "narration": {
-        "id": "the_forgotten_age.the_boundary_beyond.intro",
-        "name": "Intro"
+        "id": "the_forgotten_age.the_boundary_beyond.intro_1",
+        "name": "Intro 1"
       },
       "type": "story",
       "text": "Gelbe Sonnenstrahlen brennen heiß auf dich herab, als du mit deinem Auto über die staubigen Highways des südlichen Texas an San Antonio vorbeifährst. Dein Aufbruch von Arkham nach Mexiko-Stadt ist nun einige Tage her. Dort hoffst du Antworten von einigen MitarbeiterAlejandros zu erhalten – oder noch besser: von seinen Gegnern in der akademischen Welt. Deine letzten Ermittlungen in Arkham haben viel Interessantes zutage gebracht, aber trotz all diesem neuen Wissen ist die Spur doch kalt geworden. Die „Bruderschaft“, die du in Arkham enthüllt hast, ist aus der Stadt verschwunden. Ihre Mitglieder haben nur wenige Informationen über ihre nächsten Ziele zurückgelassen. Du kennst nur den Namen „Nexus von N’kai“. Dabei soll es sich um einen machtvollen Ort handeln, den Ichtaca für das eigentliche Ziel der Bruderschaft hält. Rätselhaft wie immer sitzt die Kriegerin der Eztli auf dem Beifahrersitz neben dir. Sie ist nervös und angespannt wie eine Sprungfeder, der Ledersitz des Fords bietet ihr offensichtlich nur wenig Bequemlichkeit."
     },
     {
       "id": "check_forged_bond_with_ichtaca",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.ichtaca_section",
+        "name": "Ichtaca Section"
+      },
       "text": "Überprüfe das Kampagnenlogbuch. <i>Falls die Ermittler ein Bündnis mit Ichtaca geschlossen haben</i>, liest der Ermittlungsleiter <b>Ichtacas Suche</b>.",
       "type": "branch",
       "condition": {
@@ -59664,6 +59688,10 @@
     },
     {
       "id": "check_found_missing_relic",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.relic_section",
+        "name": "Relic Section"
+      },
       "text": "Überprüfe das Kampagnenlogbuch. <i>Falls die Ermittler das verschwundene Relikt gefunden haben</i>, liest der Ermittlungsleiter <b>Arkanes Summen</b>.",
       "type": "branch",
       "condition": {
@@ -59753,6 +59781,10 @@
     },
     {
       "id": "check_rescued_alejandro",
+      "narration": {
+        "id": "the_forgotten_age.the_boundary_beyond.alejandro_section",
+        "name": "Alejandro Section"
+      },
       "text": "Überprüfe das Kampagnenlogbuch. <i>Falls die Ermittler Alejandro gerettet haben</i>, liest der Ermittlungsleiter <b>Alejandros Gedanken.</b>",
       "type": "branch",
       "condition": {
@@ -60374,7 +60406,7 @@
     {
       "id": "intro_1",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_1",
+        "id": "the_forgotten_age.the_city_of_archives.intro_1",
         "name": "Intro 1"
       },
       "type": "story",
@@ -60409,7 +60441,7 @@
     {
       "id": "intro_2",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_2",
+        "id": "the_forgotten_age.the_city_of_archives.intro_2",
         "name": "Intro 2"
       },
       "type": "story",
@@ -60429,7 +60461,7 @@
     {
       "id": "intro_3",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.intro_3",
+        "id": "the_forgotten_age.the_city_of_archives.intro_3",
         "name": "Intro 3"
       },
       "type": "story",
@@ -60785,7 +60817,7 @@
     {
       "id": "no_resolution",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.no_resolution",
+        "id": "the_forgotten_age.the_city_of_archives.no_resolution",
         "name": "No Resolution"
       },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
@@ -60804,7 +60836,7 @@
     {
       "id": "R1",
       "narration": {
-        "id": "the_forgotten_age.heart_of_the_elders_part_2.resolution_1",
+        "id": "the_forgotten_age.the_city_of_archives.resolution_1",
         "name": "Resolution 1"
       },
       "title": "Auflösung 1",
@@ -62528,6 +62560,10 @@
     },
     {
       "id": "explain_mind_recovered",
+      "narration": {
+        "id": "the_forgotten_age.interlude_4.mind_recovered_forever_lost_section",
+        "name": "Mind Recovered / Forever Lost Section"
+      },
       "text": "Überprüfe den Chaosbeutel und das Kampagnenlogbuch. Falls die folgenden Bedingungen vollständig erfüllt sind, liest der Ermittlungsleiter <b>Ein wiederhergestellter Geist</b>. Falls irgendeine der folgenden Bedingungen nicht erfüllt ist, liest der Ermittlungsleiter stattdessen <b>Für immer verloren</b>."
     },
     {
