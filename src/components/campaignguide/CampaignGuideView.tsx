@@ -1,7 +1,7 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import CampaignGuideSummary from './CampaignGuideSummary';
@@ -21,6 +21,7 @@ import { s, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import CampaignGuideContext from './CampaignGuideContext';
+import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -34,6 +35,8 @@ function CampaignGuideView(props: Props) {
   const { campaignId, componentId, showTextEditDialog, showTraumaDialog } = props;
   const campaignData = useContext(CampaignGuideContext);
   const dispatch = useDispatch();
+  useStopAudioOnUnmount();
+
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
     Navigation.mergeOptions(componentId, {

@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { debounce } from 'throttle-debounce';
 import {
   StyleSheet,
   Text,

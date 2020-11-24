@@ -25,7 +25,7 @@ interface TabRoute extends Route {
 const initialLayout = { width: Dimensions.get('window').width };
 
 export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Props) {
-  const { backgroundStyle, fontScale, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, fontScale, colors } = useContext(StyleContext);
   const [index, setIndex] = useState(0);
 
   const onIndexChange = useCallback((index: number) => {
@@ -46,8 +46,8 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
         style={backgroundStyle}
         labelStyle={{
           fontFamily: 'Alegreya-Regular',
-          fontSize: 16 * fontScale,
-          lineHeight: 18 * fontScale,
+          fontSize: 14 * fontScale,
+          lineHeight: 16 * fontScale,
         }}
       />
     );

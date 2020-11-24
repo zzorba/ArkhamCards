@@ -17,7 +17,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
 import { hasDissonantVoices } from '@reducers';
 import { StyleContext, StyleContextType } from '@styles/StyleContext';
-import { m } from '@styles/space';
+import space, { m } from '@styles/space';
 import { SHOW_DISSONANT_VOICES, narrationPlayer, useCurrentTrackId, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 
@@ -144,6 +144,7 @@ async function nextTrack() {
 }
 
 function PlayerView({ style }: PlayerProps) {
+  const { colors } = useContext(StyleContext);
   const trackId = useCurrentTrackId();
   const track = useTrackDetails(trackId);
   const queue = useTrackPlayerQueue();
@@ -192,8 +193,17 @@ function PlayerView({ style }: PlayerProps) {
           padding: m,
         }}
       >
-        <ArkworkView track={track} state={state} />
-        <TitleView style={{ flex: 1 }} track={track} />
+        <View style={styles.leftRow}>
+          <ArtworkView track={track} state={state} />
+          <TitleView track={track} />
+          <View style={space.marginLeftM}>
+            <ActivityIndicator
+              size={40}
+              color={colors.D30}
+              animating={state === TrackPlayer.STATE_BUFFERING}
+            />
+          </View>
+        </View>
         <PreviousButton onPress={onPreviousPress} />
         <ReplayButton onPress={onReplayPress} />
         { state === TrackPlayer.STATE_PLAYING ? (
@@ -214,12 +224,12 @@ interface ArtworkProps {
   state: TrackPlayer.State | null;
 }
 
-class ArkworkView extends React.Component<ArtworkProps> {
+class ArtworkView extends React.Component<ArtworkProps> {
   static contextType = StyleContext;
   context!: StyleContextType;
 
   render() {
-    const { track, state } = this.props;
+    const { track } = this.props;
     const { colors } = this.context;
     return (
       <View style={{ width: 48, height: 48, marginRight: 4 }}>
@@ -241,22 +251,6 @@ class ArkworkView extends React.Component<ArtworkProps> {
             />
           </View>
         )}
-        <View
-          style={{
-            marginRight: 4,
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-          }}
-        >
-          <ActivityIndicator
-            size={40}
-            color={colors.D30}
-            animating={state === TrackPlayer.STATE_BUFFERING}
-          />
-        </View>
       </View>
     );
   }
@@ -373,7 +367,7 @@ class TrackView extends React.Component<TrackProps> {
 
   render() {
     const { track, isCurrentTrack } = this.props;
-
+    const { colors } = this.context;
     return (
       <TouchableHighlight onPress={this._playNarration}>
         <>
@@ -389,7 +383,7 @@ class TrackView extends React.Component<TrackProps> {
               backgroundColor: isCurrentTrack ? 'grey' : 'transparent',
             }}
           >
-            <ArkworkView track={track} state={null} />
+            <ArtworkView track={track} state={null} />
             <TitleView style={{ flex: 1 }} track={track} />
           </View>
         </>
@@ -474,5 +468,11 @@ export default function NarrationWrapper({ children }: NarratorContainerProps) {
 const styles = StyleSheet.create({
   container: {
     height: '100%',
+  },
+  leftRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flex: 1,
   },
 });
