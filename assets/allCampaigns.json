@@ -25056,6 +25056,31 @@
   "id": "return_to_the_depths_of_yoth",
   "scenario_name": "Return to The Depths of Yoth",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "setup_standalone_log_1",
+    "setup_standalone_log_2",
+    "setup_standalone_log_3",
+    "explain_difficulty",
+    "choose_yigs_fury",
+    "setup_standalone_supplies",
+    "intro_1",
+    "check_forging_own_path",
+    "gather_encounter_sets",
+    "check_yigs_fury",
+    "set_aside_locations",
+    "maybe_setup_harbinger",
+    "check_agenda_6",
+    "create_exploration_deck",
+    "setup_depth",
+    "set_aside_relic",
+    "set_aside_poison",
+    "encounter_deck",
+    "standalone_unwinnable",
+    "depth_level_rule",
+    "pursuit_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "intro_1",
     "check_forging_own_path",
@@ -25076,6 +25101,178 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "hard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "0",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-5",
+            "skull",
+            "skull",
+            "cultist",
+            "tablet",
+            "elder_thing",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "setup_standalone_log_1",
+      "text": "<i>You are not forging your own path.</i>"
+    },
+    {
+      "id": "setup_standalone_log_2",
+      "text": "<i>Ichtaca's faith is not restored.</i>"
+    },
+    {
+      "id": "setup_standalone_log_3",
+      "text": "<i>The relic is missing.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "relic_is_missing",
+          "text": "the relic is missing."
+        }
+      ]
+    },
+    {
+      "id": "explain_difficulty",
+      "text": "The investigators may choose how many tally marks are under “Yig’s Fury.” The lower the number chosen, the safer and easier the scenario will be.",
+      "bullets": [
+        {
+          "text": "For a safer and easier experience, choose 0 or 5."
+        },
+        {
+          "text": "For an average experience, choose 10 or 14."
+        },
+        {
+          "text": "For a more brutal experience, choose 17 or 20. "
+        },
+        {
+          "text": "For the ultimate challenge, choose 21 or higher."
+        }
+      ]
+    },
+    {
+      "id": "choose_yigs_fury",
+      "text": "Choose the amount of \"Yig's Fury\" to start with:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "0",
+            "text": "0",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "5",
+            "text": "5",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "id": "10",
+            "text": "10",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 10
+              }
+            ]
+          },
+          {
+            "id": "14",
+            "text": "14",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 14
+              }
+            ]
+          },
+          {
+            "id": "17",
+            "text": "17",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 17
+              }
+            ]
+          },
+          {
+            "id": "20",
+            "text": "20",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 20
+              }
+            ]
+          },
+          {
+            "id": "21",
+            "text": "21+",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 21
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup_standalone_supplies",
+      "text": "<i>You have no supplies.</i>"
+    },
+    {
+      "id": "standalone_unwinnable",
+      "text": "This scenario is <b>unwinnable</b> in Standalone Mode. Your goal is to continue playing for as long as you can. Once each investigator has been defeated, the current depth level will determine how well you performed."
+    },
     {
       "id": "intro_1",
       "type": "story",
@@ -30994,7 +31191,7 @@
                 ]
               }
             ]
-          },{
+          }, {
             "id": "hard",
             "text": "Hard",
             "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
@@ -55767,6 +55964,31 @@
   "id": "the_depths_of_yoth",
   "scenario_name": "The Depths of Yoth",
   "full_name": "Scenario VII: The Depths of Yoth",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "setup_standalone_log_1",
+    "setup_standalone_log_2",
+    "setup_standalone_log_3",
+    "explain_difficulty",
+    "choose_yigs_fury",
+    "setup_standalone_supplies",
+    "intro_1",
+    "check_forging_own_path",
+    "gather_encounter_sets",
+    "check_yigs_fury",
+    "set_aside_locations",
+    "maybe_setup_harbinger",
+    "check_agenda_6",
+    "create_exploration_deck",
+    "setup_depth",
+    "set_aside_relic",
+    "set_aside_poison",
+    "encounter_deck",
+    "standalone_unwinnable",
+    "depth_level_rule",
+    "pursuit_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "intro_1",
     "check_forging_own_path",
@@ -55785,6 +56007,163 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "hard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1", "0", "0", "0", "-1", "-2", "-2", "-3", "-5", "skull", "skull", "cultist", "tablet", "elder_thing", "auto_fail", "elder_sign"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "setup_standalone_log_1",
+      "text": "<i>You are not forging your own path.</i>"
+    },
+    {
+      "id": "setup_standalone_log_2",
+      "text": "<i>Ichtaca's faith is not restored.</i>"
+    },
+    {
+      "id": "setup_standalone_log_3",
+      "text": "<i>The relic is missing.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "relic_is_missing",
+          "text": "the relic is missing."
+        }
+      ]
+    },
+    {
+      "id": "explain_difficulty",
+      "text": "The investigators may choose how many tally marks are under “Yig’s Fury.” The lower the number chosen, the safer and easier the scenario will be.",
+      "bullets": [
+        {
+          "text": "For a safer and easier experience, choose 0 or 5."
+        },
+        {
+          "text": "For an average experience, choose 10 or 14."
+        },
+        {
+          "text": "For a more brutal experience, choose 17 or 20. "
+        },
+        {
+          "text": "For the ultimate challenge, choose 21 or higher."
+        }
+      ]
+    },
+    {
+      "id": "choose_yigs_fury",
+      "text": "Choose the amount of \"Yig's Fury\" to start with:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "0",
+            "text": "0",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "5",
+            "text": "5",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "id": "10",
+            "text": "10",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 10
+              }
+            ]
+          },
+          {
+            "id": "14",
+            "text": "14",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 14
+              }
+            ]
+          },
+          {
+            "id": "17",
+            "text": "17",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 17
+              }
+            ]
+          },
+          {
+            "id": "20",
+            "text": "20",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 20
+              }
+            ]
+          },
+          {
+            "id": "21",
+            "text": "21+",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 21
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup_standalone_supplies",
+      "text": "<i>You have no supplies.</i>"
+    },
+    {
+      "id": "standalone_unwinnable",
+      "text": "This scenario is <b>unwinnable</b> in Standalone Mode. Your goal is to continue playing for as long as you can. Once each investigator has been defeated, the current depth level will determine how well you performed."
+    },
     {
       "id": "intro_1",
       "type": "story",

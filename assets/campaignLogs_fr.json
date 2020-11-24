@@ -1125,57 +1125,34 @@
       {
         "id": "provisions",
         "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "description": "de l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "pour lutter contre les maladies, les infections et les venins.",
+        "cost": 2,
+        "multiple": true
+      },
+      {
+        "id": "medicine",
+        "name": "Médicaments",
+        "description": "pour lutter contre les maladies, les infections et les venins.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Pendentif",
+        "description": "totalement inutile, mais les souvenirs chers apportent du réconfort aux voyageurs qui sont loin de chez eux.",
         "cost": 1
-      },
-      {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
-        "cost": 2
       },
       {
         "id": "pickaxe",
         "name": "Pickaxe",
         "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
         "cost": 2
       },
       {
@@ -1185,21 +1162,57 @@
         "cost": 2
       },
       {
-        "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
-        "cost": 3
+        "id": "blanket",
+        "name": "Duvet",
+        "description": "pour tenir chaud la nuit.",
+        "cost": 2
       },
       {
-        "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
-        "cost": 3
+        "id": "binoculars",
+        "name": "Jumelles",
+        "description": "pour vous aider à observer des lieux éloignés.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Boussole",
+        "description": "pour vous guider lorsque vous êtes irrémédiablement perdu.",
+        "cost": 2
+      },
+      {
+        "id": "chalk",
+        "name": "Craie",
+        "description": "pour écrire sur de la pierre.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "à remplir dans les ruisseaux et les rivières.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Gourde",
+        "description": "à remplir dans les ruisseaux et les rivières.",
+        "cost": 2
       },
       {
         "id": "map",
         "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "description": "il n'y a rien dessus, mais avec le temps vous devriez être capable de le compléter.",
+        "cost": 3
+      },
+      {
+        "id": "torches",
+        "name": "Torches",
+        "description": "pour éclairer les lieux obscurs ou allumer des torches murales.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Corde",
+        "description": "un long rouleau de solide cordage. Essentiel pour grimper ou faire de la spéléologie.",
         "cost": 3
       }
     ]
@@ -2256,57 +2269,34 @@
       {
         "id": "provisions",
         "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "description": "de l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "pour lutter contre les maladies, les infections et les venins.",
+        "cost": 2,
+        "multiple": true
+      },
+      {
+        "id": "medicine",
+        "name": "Médicaments",
+        "description": "pour lutter contre les maladies, les infections et les venins.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Pendentif",
+        "description": "totalement inutile, mais les souvenirs chers apportent du réconfort aux voyageurs qui sont loin de chez eux.",
         "cost": 1
-      },
-      {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
-        "cost": 2
       },
       {
         "id": "pickaxe",
         "name": "Pickaxe",
         "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
         "cost": 2
       },
       {
@@ -2316,21 +2306,57 @@
         "cost": 2
       },
       {
-        "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
-        "cost": 3
+        "id": "blanket",
+        "name": "Duvet",
+        "description": "pour tenir chaud la nuit.",
+        "cost": 2
       },
       {
-        "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
-        "cost": 3
+        "id": "binoculars",
+        "name": "Jumelles",
+        "description": "pour vous aider à observer des lieux éloignés.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Boussole",
+        "description": "pour vous guider lorsque vous êtes irrémédiablement perdu.",
+        "cost": 2
+      },
+      {
+        "id": "chalk",
+        "name": "Craie",
+        "description": "pour écrire sur de la pierre.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "à remplir dans les ruisseaux et les rivières.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Gourde",
+        "description": "à remplir dans les ruisseaux et les rivières.",
+        "cost": 2
       },
       {
         "id": "map",
         "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "description": "il n'y a rien dessus, mais avec le temps vous devriez être capable de le compléter.",
+        "cost": 3
+      },
+      {
+        "id": "torches",
+        "name": "Torches",
+        "description": "pour éclairer les lieux obscurs ou allumer des torches murales.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Corde",
+        "description": "un long rouleau de solide cordage. Essentiel pour grimper ou faire de la spéléologie.",
         "cost": 3
       }
     ]

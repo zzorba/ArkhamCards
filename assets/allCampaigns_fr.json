@@ -22169,25 +22169,25 @@
       "id": "supplies",
       "type": "rule_reminder",
       "title": "Équipement",
-      "text": "À certains moments pendant la campagne La Civilisation Oubliée, les investigateurs ont l'opportunité de choisir de l'équipement à emporter dans leurs expéditions en terre sauvage. Cet équipement est inscrit dans le Carnet de Campagne sous la section « Équipement » propre à chaque investigateur.\nL'équipement s'achète avec les points d'équipement qui sont accordés aux investigateurs à chaque fois qu'ils ont l'opportunité de se procurer de l'équipement. Les points d'équipement non dépensés ne sont pas conservés et sont définitivement perdus.\nDe l'équipement d'un investigateur dépendront différentes options de jeu proposées tout au long de cette campagne. <b>L'équipement n'a aucun effet en lui-même.<\b> Certains effets de cartes, options narratives ou conclusions peuvent être modifiés ou devenir disponibles en fonction de l'équipement transporté par le ou les investigateur(s)."
+      "text": "À certains moments pendant la campagne La Civilisation Oubliée, les investigateurs ont l'opportunité de choisir de l'équipement à emporter dans leurs expéditions en terre sauvage. Cet équipement est inscrit dans le Carnet de Campagne sous la section « Équipement » propre à chaque investigateur.\nL'équipement s'achète avec les points d'équipement qui sont accordés aux investigateurs à chaque fois qu'ils ont l'opportunité de se procurer de l'équipement. Les points d'équipement non dépensés ne sont pas conservés et sont définitivement perdus.\nDe l'équipement d'un investigateur dépendront différentes options de jeu proposées tout au long de cette campagne. <b>L'équipement n'a aucun effet en lui-même.</b> Certains effets de cartes, options narratives ou conclusions peuvent être modifiés ou devenir disponibles en fonction de l'équipement transporté par le ou les investigateur(s)."
     },
     {
       "id": "vengeance",
       "type": "rule_reminder",
       "title": "Vengeance X",
-      "text": "Certaines cartes Rencontre rapportent des points de vengeance. Le texte <b>Vengeance X<\b> indique qu'une carte vaut X points de vengeance.\nComme pour <b>Victoire X<\b>, quand une carte Rencontre avec <b>Vengeance X<\b> est remportée par les investigateurs, elle est stockée dans la pile de victoire jusqu'à la fin du scénario. Les points de vengeance symbolisent l'éveil et l'animosité du Père des Serpents. Contrairement aux points de victoire, il est préférable d'éviter d'accumuler des points de vengeance.\nLes points de vengeance dans la pile de victoire n'ont aucun impact sur le jeu à moins que le contraire ne soit spécifiquement indiqué par une autre carte Rencontre.",
+      "text": "Certaines cartes Rencontre rapportent des points de vengeance. Le texte <b>Vengeance X</b> indique qu'une carte vaut X points de vengeance.\nComme pour <b>Victoire X</b>, quand une carte Rencontre avec <b>Vengeance X</b> est remportée par les investigateurs, elle est stockée dans la pile de victoire jusqu'à la fin du scénario. Les points de vengeance symbolisent l'éveil et l'animosité du Père des Serpents. Contrairement aux points de victoire, il est préférable d'éviter d'accumuler des points de vengeance.\nLes points de vengeance dans la pile de victoire n'ont aucun impact sur le jeu à moins que le contraire ne soit spécifiquement indiqué par une autre carte Rencontre.",
       "bullets": [
         {
-          "text": "Dès qu'un ennemi avec <b>Vengeance X<\b> est vaincu, placez sa carte dans la pile de victoire au lieu de la pile de défausse."
+          "text": "Dès qu'un ennemi avec <b>Vengeance X</b> est vaincu, placez sa carte dans la pile de victoire au lieu de la pile de défausse."
         },
         {
-          "text": "À la fin d'un scénario, placez dans la pile de victoire chaque lieu avec <b>Vengeance X<\b> qui est en jeu, révélé et qui ne contient aucun indice."
+          "text": "À la fin d'un scénario, placez dans la pile de victoire chaque lieu avec <b>Vengeance X</b> qui est en jeu, révélé et qui ne contient aucun indice."
         },
         {
           "text": "Dès que la résolution d'une carte Traîtrise avec <b>Vengeance X</b> est terminée, placez cette carte dans la pile de victoire au lieu de la pile de défausse."
         },
         {
-          "text": "Les cartes qui rapportent des points de vengeance ne rapportent pas de points de victoire, sauf si la carte possède à la fois <b>Victoire X<\b> et <b>Vengeance X<\b>."
+          "text": "Les cartes qui rapportent des points de vengeance ne rapportent pas de points de victoire, sauf si la carte possède à la fois <b>Victoire X</b> et <b>Vengeance X</>b>."
         }
       ]
     },
@@ -22330,7 +22330,7 @@
       "id": "explore",
       "type": "rule_reminder",
       "title": "Explorer",
-      "text": "Lors de cette campagne, certaines capacités sont précédées de l'indicatif d'action <b>Explorer<\b>. De telles capacités servent en général à trouver de nouveaux lieux à mettre en jeu et sont initiées en utilisant une action « Activer ».\nLes capacités <b>Explorer<\b> vous demandent de piocher la carte du dessus du « deck Exploration », un deck spéci\\u001bque qui est construit lors de la mise en place de certains scénarios. Ce deck est constitué de plusieurs cartes Lieu mono-face ainsi que de cartes Traîtrise.",
+      "text": "Lors de cette campagne, certaines capacités sont précédées de l'indicatif d'action <b>Explorer</b>. De telles capacités servent en général à trouver de nouveaux lieux à mettre en jeu et sont initiées en utilisant une action « Activer ».\nLes capacités <b>Explorer</b> vous demandent de piocher la carte du dessus du « deck Exploration », un deck spéci\\u001bque qui est construit lors de la mise en place de certains scénarios. Ce deck est constitué de plusieurs cartes Lieu mono-face ainsi que de cartes Traîtrise.",
       "bullets": [
         {
           "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
@@ -22351,7 +22351,7 @@
           "text": "In some scenarios, there are additional changes to the explore rules. These changes are noted on the setup card for each scenario."
         }
       ],
-      "example": "<i>Exemple : l'Intrigue 1a – « Expédition en Pleine Nature » possède la capacité suivante : « [action]: <b>Explorer<\b>. Piochez la carte du dessus du deck Exploration. Si c\\u001eest un lieu connexe, mettez-le en jeu et déplacez-vous vers lui. » Ursula Downs se trouve au Campement de l'Expédition et souhaite découvrir un nouveau lieu vers lequel voyager. Elle dépense sa première action pour explorer en piochant la carte du dessus du deck Exploration. La carte piochée est la Piste Détournée. Étant donné que ce Lieu n'est pas connexe au Campement de l'Expédition, il est posé à côté du deck Exploration et Ursula pioche la carte suivante dans le deck Exploration. Cette fois, elle pioche Épuisement des Réserves, une carte Traîtrise qu'elle résout normalement et place dans la pile de défausse Rencontre. Son exploration se révèle infructueuse et elle doit mélanger dans le deck Exploration la Piste Détournée qu'elle a piochée précédemment. Ursula décide de dépenser une deuxième action pour explorer à nouveau. Cette fois, elle pioche le Chemin de Ronces qui est connexe au Campement de l'Expédition. Son exploration se révèle fructueuse. Le Chemin de Ronces est mis en jeu avec un nombre d'indices égal à sa valeur d'indice et Ursula se déplace immédiatement du Campement de l'Expédition vers le Chemin de Ronces.<\\i>"
+      "example": "<i>Exemple : l'Intrigue 1a – « Expédition en Pleine Nature » possède la capacité suivante : « [action]: <b>Explorer</b>. Piochez la carte du dessus du deck Exploration. Si c\\u001eest un lieu connexe, mettez-le en jeu et déplacez-vous vers lui. » Ursula Downs se trouve au Campement de l'Expédition et souhaite découvrir un nouveau lieu vers lequel voyager. Elle dépense sa première action pour explorer en piochant la carte du dessus du deck Exploration. La carte piochée est la Piste Détournée. Étant donné que ce Lieu n'est pas connexe au Campement de l'Expédition, il est posé à côté du deck Exploration et Ursula pioche la carte suivante dans le deck Exploration. Cette fois, elle pioche Épuisement des Réserves, une carte Traîtrise qu'elle résout normalement et place dans la pile de défausse Rencontre. Son exploration se révèle infructueuse et elle doit mélanger dans le deck Exploration la Piste Détournée qu'elle a piochée précédemment. Ursula décide de dépenser une deuxième action pour explorer à nouveau. Cette fois, elle pioche le Chemin de Ronces qui est connexe au Campement de l'Expédition. Son exploration se révèle fructueuse. Le Chemin de Ronces est mis en jeu avec un nombre d'indices égal à sa valeur d'indice et Ursula se déplace immédiatement du Campement de l'Expédition vers le Chemin de Ronces.</i>"
     }
   ]
 }, "scenarios": [
@@ -23147,7 +23147,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Tuesday, June 2nd, 1925</fancy></right>\nThere will be no rest for us this summer, it seems.\nToday I met with Harlan Earnstone, a historical theorist at Miskatonic University and an old friend of mine. He’d said he had a job offer for me, but frankly, I didn’t know what to expect.\nHarlan introduced me to an associate of his: Alejandro Vela, a distinguished historian from across the southern border. Mr. Vela is a graduate of a prestigious university in Mexico City, and has spent many years researching the Aztec Empire. He claims that he has found evidence regarding the existence of an unheard-of Aztec city-state called Eztli. His strange and unprecedented findings were not accepted by the university, and he’s become a pariah among his peers.\nAlejandro came to Arkham to seek funding for an expedition into the rainforests of southern Mexico, where he believes that the ruins of the Eztli altepetl lie undiscovered. His description of this city-state’s origins defies modern understanding of Mesoamerican history. Despite this— or, knowing my old friend, because of this—Harlan is enthralled by Alejandro’s discoveries. Miskatonic University has agreed to fund the expedition (albeit meagerly), and Harlan wants me to go along.\nThe way I see it, there’s a good chance we’re looking for something that doesn’t even exist. But if there’s even a slight chance these Eztli people existed, the historical significance would be profound. We debated the issue for some time, but in the end, we accepted Alejandro’s offer. Preparations are underway, and we should be setting off by the end of the month. With any luck, we’ll have this journal filled with all manner of interesting discoveries. If not, perhaps it’ll be a nice wedge to place beneath Harlan’s lopsided desk."
+      "text": "<right><fancy>Mardi 2 juin 1925</right></fancy>\nIl semble que nous n'aurons pas de repos cet été.\nAujourd'hui, j'ai rencontré mon vieil ami Harlan Earnstone, chercheur en Histoire à l'Université Miskatonic. Il disait avoir un travail à me confier, mais je ne savais honnêtement pas à quoi m'attendre.\nHarlan m'a présenté l'un de ses collègues : Alejandro Vela, un historien célèbre de l'autre côté de la frontière sud. M. Vela est diplômé d\"une prestigieuse université de Mexico et a passé de nombreuses années à étudier l\"Empire aztèque. Il prétend avoir trouvé des preuves de l\"existence d\"une cité-état aztèque encore inconnue appelée Eztli. Mais ses découvertes aussi étranges qu\"inédites n\"ont pas été prises au sérieux par l\"université et il est devenu un paria auprès de ses pairs.\nAlejandro est venu à Arkham dans le but de rassembler des fonds pour monter une expédition afin d'explorer les forêts tropicales du sud du Mexique où reposent, selon lui, les ruines encore inviolées de l'altepetl d'Eztli. Sa description des origines de la cité-état défie toutes nos connaissances actuelles sur l'histoire de l'Amérique précolombienne. Malgré cela – ou plutôt à cause de cela, connaissant bien mon vieil ami –, Harlan a été fasciné par les découvertes d'Alejandro. L'Université Miskatonic a accepté de financer l'expédition (quoique chichement), et Harlan compte sur moi pour en faire partie.\nSi vous voulez mon avis, il y a de grandes probabilités pour que nous partions à la recherche de quelque chose qui n'existe même pas. Mais s'il y a la moindre chance que ce peuple appelé Eztli ait réellement vécu, les implications historiques seraient alors considérables. Après avoir débattu pendant quelque temps de cette proposition, nous avons finalement accepté l'offre d'Alejandro. Les préparatifs sont en cours et nous devrions décoller d'ici la fin du mois. Avec un peu de chance, nous pourrons remplir ce journal avec toutes sortes d'intéressantes découvertes. Sinon, il fera toujours une bonne cale pour le bureau branlant d'Harlan."
     },
     {
       "id": "choose_investigators",
@@ -23158,12 +23158,12 @@
     },
     {
       "id": "expedition_leader",
-      "text": "If Ursula Downs, Leo Anderson, or Monterey Jack was chosen as an investigator for this campaign: Choose one of those investigators to be the expedition leader. That investigator begins Scenarios I and II as the lead investigator."
+      "text": "Si Ursula Downs, Leo Anderson ou Monterey Jack ont été choisis comme investigateur pour cette campagne : choisissez l'un de ces investigateurs pour être le chef de l'expédition. Cet investigateur débute les scénarios I et II en tant qu'investigateur principal."
     },
     {
       "id": "supplies",
       "type": "input",
-      "text": "As an outcast from academia, funding for Alejandro’s expedition is limited. Each investigator must choose supplies to bring for the expedition. In the Campaign Log, under each investigator’s “Supplies” section, record the supplies that investigator chose to bring. <i>(Note: Provisions and Medicine can be taken more than once by recording their name multiple times and spending the appropriate number of supply points each time.)</i>",
+      "text": "Alejandro étant mis au ban des milieux académiques, le financement de son expédition est limité. Chaque investigateur doit choisir de l'équipement à emporter pour l'expédition. Dans la section « Équipement » du Carnet de Campagne, indiquez pour chaque investigateur l'équipement qu'il choisit d'emporter. <i>(Remarque : les Provisions et les Médicaments peuvent être sélectionnés plusieurs fois en inscrivant plusieurs fois leurs noms et en dépensant le nombre correspondant de points d'équipement à chaque fois.)</i>",
       "input": {
         "type": "supplies",
         "section": "supplies",
@@ -23177,69 +23177,69 @@
           {
             "id": "provisions",
             "name": "Provisions",
-            "description": "Food and water for one person. A must-have for any journey.",
+            "description": "de l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
             "cost": 1,
             "multiple": true
           },
           {
             "id": "medicine",
             "name": "Medicine",
-            "description": "To stave off disease, infection, or venom.",
+            "description": "pour lutter contre les maladies, les infections et les venins.",
             "cost": 2,
             "multiple": true
           },
           {
             "id": "rope",
-            "name": "Rope",
-            "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+            "name": "Corde",
+            "description": "un long rouleau de solide cordage. Essentiel pour grimper ou faire de la spéléologie.",
             "cost": 3
           },
           {
             "id": "blanket",
-            "name": "Blanket",
-            "description": "For warmth at night.",
+            "name": "Duvet",
+            "description": "pour tenir chaud la nuit.",
             "cost": 2
           },
           {
             "id": "canteen",
             "name": "Canteen",
-            "description": "Can be refilled at streams and rivers.",
+            "description": "à remplir dans les ruisseaux et les rivières.",
             "cost": 2
           },
           {
             "id": "torches",
             "name": "Torches",
-            "description": "Can light up dark areas, or set sconces alight.",
+            "description": "pour éclairer les lieux obscurs ou allumer des torches murales.",
             "cost": 3
           },
           {
             "id": "compass",
-            "name": "Compass",
-            "description": "Can guide you when you are hopelessly lost.",
+            "name": "Boussole",
+            "description": "pour vous guider lorsque vous êtes irrémédiablement perdu.",
             "cost": 2
           },
           {
             "id": "map",
             "name": "Map",
-            "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+            "description": "il n'y a rien dessus, mais avec le temps vous devriez être capable de le compléter.",
             "cost": 3
           },
           {
             "id": "binoculars",
-            "name": "Binoculars",
-            "description": "To help you see faraway places.",
+            "name": "Jumelles",
+            "description": "pour vous aider à observer des lieux éloignés.",
             "cost": 2
           },
           {
             "id": "chalk",
-            "name": "Chalk",
-            "description": "For writing on rough stone surfaces.",
+            "name": "Craie",
+            "description": "pour écrire sur de la pierre.",
             "cost": 2
           },
           {
             "id": "pendant",
-            "name": "Pendant",
-            "description": "Useless, but fond memories bring comfort to travelers far from home.",
+            "name": "Pendentif",
+            "description": "totalement inutile, mais les souvenirs chers apportent du réconfort aux voyageurs qui sont loin de chez eux.",
             "cost": 1
           }
         ]
@@ -23279,7 +23279,7 @@
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
-        "name": "Blanket",
+        "name": "Duvet",
         "options": [
           {
             "boolCondition": true,
@@ -23476,7 +23476,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Médicaments",
         "prompt": "Use medicine",
         "investigator": "choice",
         "min": 0,
@@ -26428,6 +26428,31 @@
   "id": "return_to_the_depths_of_yoth",
   "scenario_name": "Renouveau: Les Profondeurs de Yoth",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "setup_standalone_log_1",
+    "setup_standalone_log_2",
+    "setup_standalone_log_3",
+    "explain_difficulty",
+    "choose_yigs_fury",
+    "setup_standalone_supplies",
+    "intro_1",
+    "check_forging_own_path",
+    "gather_encounter_sets",
+    "check_yigs_fury",
+    "set_aside_locations",
+    "maybe_setup_harbinger",
+    "check_agenda_6",
+    "create_exploration_deck",
+    "setup_depth",
+    "set_aside_relic",
+    "set_aside_poison",
+    "encounter_deck",
+    "standalone_unwinnable",
+    "depth_level_rule",
+    "pursuit_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "intro_1",
     "check_forging_own_path",
@@ -26448,6 +26473,178 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "hard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "0",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-5",
+            "skull",
+            "skull",
+            "cultist",
+            "tablet",
+            "elder_thing",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "setup_standalone_log_1",
+      "text": "<i>You are not forging your own path.</i>"
+    },
+    {
+      "id": "setup_standalone_log_2",
+      "text": "<i>Ichtaca's faith is not restored.</i>"
+    },
+    {
+      "id": "setup_standalone_log_3",
+      "text": "<i>The relic is missing.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "relic_is_missing",
+          "text": "the relic is missing."
+        }
+      ]
+    },
+    {
+      "id": "explain_difficulty",
+      "text": "The investigators may choose how many tally marks are under “Yig’s Fury.” The lower the number chosen, the safer and easier the scenario will be.",
+      "bullets": [
+        {
+          "text": "For a safer and easier experience, choose 0 or 5."
+        },
+        {
+          "text": "For an average experience, choose 10 or 14."
+        },
+        {
+          "text": "For a more brutal experience, choose 17 or 20. "
+        },
+        {
+          "text": "For the ultimate challenge, choose 21 or higher."
+        }
+      ]
+    },
+    {
+      "id": "choose_yigs_fury",
+      "text": "Choose the amount of \"Yig's Fury\" to start with:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "0",
+            "text": "0",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "5",
+            "text": "5",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "id": "10",
+            "text": "10",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 10
+              }
+            ]
+          },
+          {
+            "id": "14",
+            "text": "14",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 14
+              }
+            ]
+          },
+          {
+            "id": "17",
+            "text": "17",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 17
+              }
+            ]
+          },
+          {
+            "id": "20",
+            "text": "20",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 20
+              }
+            ]
+          },
+          {
+            "id": "21",
+            "text": "21+",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 21
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup_standalone_supplies",
+      "text": "<i>You have no supplies.</i>"
+    },
+    {
+      "id": "standalone_unwinnable",
+      "text": "This scenario is <b>unwinnable</b> in Standalone Mode. Your goal is to continue playing for as long as you can. Once each investigator has been defeated, the current depth level will determine how well you performed."
+    },
     {
       "id": "intro_1",
       "type": "story",
@@ -27381,7 +27578,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "rope",
-        "name": "Rope",
+        "name": "Corde",
         "prompt": "Use rope",
         "investigator": "choice",
         "min": 1,
@@ -29528,7 +29725,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Médicaments",
         "prompt": "Use medicine",
         "investigator": "choice",
         "min": 1,
@@ -29909,14 +30106,14 @@
           {
             "id": "provisions",
             "name": "Provisions",
-            "description": "Food and water for one person. A must-have for any journey.",
+            "description": "de l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
             "cost": 1,
             "multiple": true
           },
           {
             "id": "medicine",
-            "name": "Medicine",
-            "description": "To stave off disease, infection, or venom.",
+            "name": "Médicaments",
+            "description": "pour lutter contre les maladies, les infections et les venins.",
             "cost": 2,
             "multiple": true
           },
@@ -29929,32 +30126,32 @@
           },
           {
             "id": "blanket",
-            "name": "Blanket",
-            "description": "For warmth at night.",
+            "name": "Duvet",
+            "description": "pour tenir chaud la nuit.",
             "cost": 2
           },
           {
             "id": "canteen",
-            "name": "Canteen",
-            "description": "Can be refilled at streams and rivers.",
+            "name": "Gourde",
+            "description": "à remplir dans les ruisseaux et les rivières.",
             "cost": 2
           },
           {
             "id": "compass",
-            "name": "Compass",
-            "description": "Can guide you when you are hopelessly lost.",
+            "name": "Boussole",
+            "description": "pour vous guider lorsque vous êtes irrémédiablement perdu.",
             "cost": 2
           },
           {
             "id": "binoculars",
-            "name": "Binoculars",
-            "description": "To help you see faraway places.",
+            "name": "Jumelles",
+            "description": "pour vous aider à observer des lieux éloignés.",
             "cost": 2
           },
           {
             "id": "chalk",
-            "name": "Chalk",
-            "description": "For writing on rough stone surfaces.",
+            "name": "Craie",
+            "description": "pour écrire sur de la pierre.",
             "cost": 2
           },
           {
@@ -31081,7 +31278,7 @@
         "section": "supplies",
         "investigator": "all",
         "id": "map",
-        "name": "Map",
+        "name": "Plan",
         "options": [
           {
             "boolCondition": true,
@@ -31526,7 +31723,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "chalk",
-        "name": "Chalk",
+        "name": "Craie",
         "options": [
           {
             "boolCondition": true,
@@ -31641,7 +31838,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Médicaments",
         "prompt": "Use medicine",
         "investigator": "choice",
         "min": 0,
@@ -31717,7 +31914,7 @@
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
-        "name": "Blanket",
+        "name": "Duvet",
         "options": [
           {
             "boolCondition": true,
@@ -56403,25 +56600,25 @@
       "id": "supplies",
       "type": "rule_reminder",
       "title": "Équipement",
-      "text": "À certains moments pendant la campagne La Civilisation Oubliée, les investigateurs ont l'opportunité de choisir de l'équipement à emporter dans leurs expéditions en terre sauvage. Cet équipement est inscrit dans le Carnet de Campagne sous la section « Équipement » propre à chaque investigateur.\nL'équipement s'achète avec les points d'équipement qui sont accordés aux investigateurs à chaque fois qu'ils ont l'opportunité de se procurer de l'équipement. Les points d'équipement non dépensés ne sont pas conservés et sont définitivement perdus.\nDe l'équipement d'un investigateur dépendront différentes options de jeu proposées tout au long de cette campagne. <b>L'équipement n'a aucun effet en lui-même.<\b> Certains effets de cartes, options narratives ou conclusions peuvent être modifiés ou devenir disponibles en fonction de l'équipement transporté par le ou les investigateur(s)."
+      "text": "À certains moments pendant la campagne La Civilisation Oubliée, les investigateurs ont l'opportunité de choisir de l'équipement à emporter dans leurs expéditions en terre sauvage. Cet équipement est inscrit dans le Carnet de Campagne sous la section « Équipement » propre à chaque investigateur.\nL'équipement s'achète avec les points d'équipement qui sont accordés aux investigateurs à chaque fois qu'ils ont l'opportunité de se procurer de l'équipement. Les points d'équipement non dépensés ne sont pas conservés et sont définitivement perdus.\nDe l'équipement d'un investigateur dépendront différentes options de jeu proposées tout au long de cette campagne. <b>L'équipement n'a aucun effet en lui-même.</b> Certains effets de cartes, options narratives ou conclusions peuvent être modifiés ou devenir disponibles en fonction de l'équipement transporté par le ou les investigateur(s)."
     },
     {
       "id": "vengeance",
       "type": "rule_reminder",
       "title": "Vengeance X",
-      "text": "Certaines cartes Rencontre rapportent des points de vengeance. Le texte <b>Vengeance X<\b> indique qu'une carte vaut X points de vengeance.\nComme pour <b>Victoire X<\b>, quand une carte Rencontre avec <b>Vengeance X<\b> est remportée par les investigateurs, elle est stockée dans la pile de victoire jusqu'à la fin du scénario. Les points de vengeance symbolisent l'éveil et l'animosité du Père des Serpents. Contrairement aux points de victoire, il est préférable d'éviter d'accumuler des points de vengeance.\nLes points de vengeance dans la pile de victoire n'ont aucun impact sur le jeu à moins que le contraire ne soit spécifiquement indiqué par une autre carte Rencontre.",
+      "text": "Certaines cartes Rencontre rapportent des points de vengeance. Le texte <b>Vengeance X</b> indique qu'une carte vaut X points de vengeance.\nComme pour <b>Victoire X</b>, quand une carte Rencontre avec <b>Vengeance X</b> est remportée par les investigateurs, elle est stockée dans la pile de victoire jusqu'à la fin du scénario. Les points de vengeance symbolisent l'éveil et l'animosité du Père des Serpents. Contrairement aux points de victoire, il est préférable d'éviter d'accumuler des points de vengeance.\nLes points de vengeance dans la pile de victoire n'ont aucun impact sur le jeu à moins que le contraire ne soit spécifiquement indiqué par une autre carte Rencontre.",
       "bullets": [
         {
-          "text": "Dès qu'un ennemi avec <b>Vengeance X<\b> est vaincu, placez sa carte dans la pile de victoire au lieu de la pile de défausse."
+          "text": "Dès qu'un ennemi avec <b>Vengeance X</b> est vaincu, placez sa carte dans la pile de victoire au lieu de la pile de défausse."
         },
         {
-          "text": "À la fin d'un scénario, placez dans la pile de victoire chaque lieu avec <b>Vengeance X<\b> qui est en jeu, révélé et qui ne contient aucun indice."
+          "text": "À la fin d'un scénario, placez dans la pile de victoire chaque lieu avec <b>Vengeance X</b> qui est en jeu, révélé et qui ne contient aucun indice."
         },
         {
           "text": "Dès que la résolution d'une carte Traîtrise avec <b>Vengeance X</b> est terminée, placez cette carte dans la pile de victoire au lieu de la pile de défausse."
         },
         {
-          "text": "Les cartes qui rapportent des points de vengeance ne rapportent pas de points de victoire, sauf si la carte possède à la fois <b>Victoire X<\b> et <b>Vengeance X<\b>."
+          "text": "Les cartes qui rapportent des points de vengeance ne rapportent pas de points de victoire, sauf si la carte possède à la fois <b>Victoire X</b> et <b>Vengeance X</>b>."
         }
       ]
     },
@@ -56429,7 +56626,7 @@
       "id": "explore",
       "type": "rule_reminder",
       "title": "Explorer",
-      "text": "Lors de cette campagne, certaines capacités sont précédées de l'indicatif d'action <b>Explorer<\b>. De telles capacités servent en général à trouver de nouveaux lieux à mettre en jeu et sont initiées en utilisant une action « Activer ».\nLes capacités <b>Explorer<\b> vous demandent de piocher la carte du dessus du « deck Exploration », un deck spéci\u001bque qui est construit lors de la mise en place de certains scénarios. Ce deck est constitué de plusieurs cartes Lieu mono-face ainsi que de cartes Traîtrise.",
+      "text": "Lors de cette campagne, certaines capacités sont précédées de l'indicatif d'action <b>Explorer</b>. De telles capacités servent en général à trouver de nouveaux lieux à mettre en jeu et sont initiées en utilisant une action « Activer ».\nLes capacités <b>Explorer</b> vous demandent de piocher la carte du dessus du « deck Exploration », un deck spéci\u001bque qui est construit lors de la mise en place de certains scénarios. Ce deck est constitué de plusieurs cartes Lieu mono-face ainsi que de cartes Traîtrise.",
       "bullets": [
         {
           "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
@@ -56447,7 +56644,7 @@
           "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
         }
       ],
-      "example": "<i>Exemple : l'Intrigue 1a – « Expédition en Pleine Nature » possède la capacité suivante : « [action]: <b>Explorer<\b>. Piochez la carte du dessus du deck Exploration. Si c\u001eest un lieu connexe, mettez-le en jeu et déplacez-vous vers lui. » Ursula Downs se trouve au Campement de l'Expédition et souhaite découvrir un nouveau lieu vers lequel voyager. Elle dépense sa première action pour explorer en piochant la carte du dessus du deck Exploration. La carte piochée est la Piste Détournée. Étant donné que ce Lieu n'est pas connexe au Campement de l'Expédition, il est posé à côté du deck Exploration et Ursula pioche la carte suivante dans le deck Exploration. Cette fois, elle pioche Épuisement des Réserves, une carte Traîtrise qu'elle résout normalement et place dans la pile de défausse Rencontre. Son exploration se révèle infructueuse et elle doit mélanger dans le deck Exploration la Piste Détournée qu'elle a piochée précédemment. Ursula décide de dépenser une deuxième action pour explorer à nouveau. Cette fois, elle pioche le Chemin de Ronces qui est connexe au Campement de l'Expédition. Son exploration se révèle fructueuse. Le Chemin de Ronces est mis en jeu avec un nombre d'indices égal à sa valeur d'indice et Ursula se déplace immédiatement du Campement de l'Expédition vers le Chemin de Ronces.<\\i>"
+      "example": "<i>Exemple : l'Intrigue 1a – « Expédition en Pleine Nature » possède la capacité suivante : « [action]: <b>Explorer</b>. Piochez la carte du dessus du deck Exploration. Si c\u001eest un lieu connexe, mettez-le en jeu et déplacez-vous vers lui. » Ursula Downs se trouve au Campement de l'Expédition et souhaite découvrir un nouveau lieu vers lequel voyager. Elle dépense sa première action pour explorer en piochant la carte du dessus du deck Exploration. La carte piochée est la Piste Détournée. Étant donné que ce Lieu n'est pas connexe au Campement de l'Expédition, il est posé à côté du deck Exploration et Ursula pioche la carte suivante dans le deck Exploration. Cette fois, elle pioche Épuisement des Réserves, une carte Traîtrise qu'elle résout normalement et place dans la pile de défausse Rencontre. Son exploration se révèle infructueuse et elle doit mélanger dans le deck Exploration la Piste Détournée qu'elle a piochée précédemment. Ursula décide de dépenser une deuxième action pour explorer à nouveau. Cette fois, elle pioche le Chemin de Ronces qui est connexe au Campement de l'Expédition. Son exploration se révèle fructueuse. Le Chemin de Ronces est mis en jeu avec un nombre d'indices égal à sa valeur d'indice et Ursula se déplace immédiatement du Campement de l'Expédition vers le Chemin de Ronces.</i>"
     },
     {
       "id": "difficulty_choice",
@@ -58646,7 +58843,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Tuesday, June 2nd, 1925</fancy></right>\nThere will be no rest for us this summer, it seems.\nToday I met with Harlan Earnstone, a historical theorist at Miskatonic University and an old friend of mine. He’d said he had a job offer for me, but frankly, I didn’t know what to expect.\nHarlan introduced me to an associate of his: Alejandro Vela, a distinguished historian from across the southern border. Mr. Vela is a graduate of a prestigious university in Mexico City, and has spent many years researching the Aztec Empire. He claims that he has found evidence regarding the existence of an unheard-of Aztec city-state called Eztli. His strange and unprecedented findings were not accepted by the university, and he’s become a pariah among his peers.\nAlejandro came to Arkham to seek funding for an expedition into the rainforests of southern Mexico, where he believes that the ruins of the Eztli altepetl lie undiscovered. His description of this city-state’s origins defies modern understanding of Mesoamerican history. Despite this— or, knowing my old friend, because of this—Harlan is enthralled by Alejandro’s discoveries. Miskatonic University has agreed to fund the expedition (albeit meagerly), and Harlan wants me to go along.\nThe way I see it, there’s a good chance we’re looking for something that doesn’t even exist. But if there’s even a slight chance these Eztli people existed, the historical significance would be profound. We debated the issue for some time, but in the end, we accepted Alejandro’s offer. Preparations are underway, and we should be setting off by the end of the month. With any luck, we’ll have this journal filled with all manner of interesting discoveries. If not, perhaps it’ll be a nice wedge to place beneath Harlan’s lopsided desk."
+      "text": "<right><fancy>Mardi 2 juin 1925</right></fancy>\nIl semble que nous n'aurons pas de repos cet été.\nAujourd'hui, j'ai rencontré mon vieil ami Harlan Earnstone, chercheur en Histoire à l'Université Miskatonic. Il disait avoir un travail à me confier, mais je ne savais honnêtement pas à quoi m'attendre.\nHarlan m'a présenté l'un de ses collègues : Alejandro Vela, un historien célèbre de l'autre côté de la frontière sud. M. Vela est diplômé d\"une prestigieuse université de Mexico et a passé de nombreuses années à étudier l\"Empire aztèque. Il prétend avoir trouvé des preuves de l\"existence d\"une cité-état aztèque encore inconnue appelée Eztli. Mais ses découvertes aussi étranges qu\"inédites n\"ont pas été prises au sérieux par l\"université et il est devenu un paria auprès de ses pairs.\nAlejandro est venu à Arkham dans le but de rassembler des fonds pour monter une expédition afin d'explorer les forêts tropicales du sud du Mexique où reposent, selon lui, les ruines encore inviolées de l'altepetl d'Eztli. Sa description des origines de la cité-état défie toutes nos connaissances actuelles sur l'histoire de l'Amérique précolombienne. Malgré cela – ou plutôt à cause de cela, connaissant bien mon vieil ami –, Harlan a été fasciné par les découvertes d'Alejandro. L'Université Miskatonic a accepté de financer l'expédition (quoique chichement), et Harlan compte sur moi pour en faire partie.\nSi vous voulez mon avis, il y a de grandes probabilités pour que nous partions à la recherche de quelque chose qui n'existe même pas. Mais s'il y a la moindre chance que ce peuple appelé Eztli ait réellement vécu, les implications historiques seraient alors considérables. Après avoir débattu pendant quelque temps de cette proposition, nous avons finalement accepté l'offre d'Alejandro. Les préparatifs sont en cours et nous devrions décoller d'ici la fin du mois. Avec un peu de chance, nous pourrons remplir ce journal avec toutes sortes d'intéressantes découvertes. Sinon, il fera toujours une bonne cale pour le bureau branlant d'Harlan."
     },
     {
       "id": "choose_investigators",
@@ -58657,12 +58854,12 @@
     },
     {
       "id": "expedition_leader",
-      "text": "If Ursula Downs, Leo Anderson, or Monterey Jack was chosen as an investigator for this campaign: Choose one of those investigators to be the expedition leader. That investigator begins Scenarios I and II as the lead investigator."
+      "text": "Si Ursula Downs, Leo Anderson ou Monterey Jack ont été choisis comme investigateur pour cette campagne : choisissez l'un de ces investigateurs pour être le chef de l'expédition. Cet investigateur débute les scénarios I et II en tant qu'investigateur principal."
     },
     {
       "id": "supplies",
       "type": "input",
-      "text": "As an outcast from academia, funding for Alejandro’s expedition is limited. Each investigator must choose supplies to bring for the expedition. In the Campaign Log, under each investigator’s “Supplies” section, record the supplies that investigator chose to bring. <i>(Note: Provisions and Medicine can be taken more than once by recording their name multiple times and spending the appropriate number of supply points each time.)</i>",
+      "text": "Alejandro étant mis au ban des milieux académiques, le financement de son expédition est limité. Chaque investigateur doit choisir de l'équipement à emporter pour l'expédition. Dans la section « Équipement » du Carnet de Campagne, indiquez pour chaque investigateur l'équipement qu'il choisit d'emporter. <i>(Remarque : les Provisions et les Médicaments peuvent être sélectionnés plusieurs fois en inscrivant plusieurs fois leurs noms et en dépensant le nombre correspondant de points d'équipement à chaque fois.)</i>",
       "input": {
         "type": "supplies",
         "section": "supplies",
@@ -58676,69 +58873,69 @@
           {
             "id": "provisions",
             "name": "Provisions",
-            "description": "Food and water for one person. A must-have for any journey.",
+            "description": "de l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
             "cost": 1,
             "multiple": true
           },
           {
             "id": "medicine",
             "name": "Medicine",
-            "description": "To stave off disease, infection, or venom.",
+            "description": "pour lutter contre les maladies, les infections et les venins.",
             "cost": 2,
             "multiple": true
           },
           {
             "id": "rope",
-            "name": "Rope",
-            "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+            "name": "Corde",
+            "description": "un long rouleau de solide cordage. Essentiel pour grimper ou faire de la spéléologie.",
             "cost": 3
           },
           {
             "id": "blanket",
-            "name": "Blanket",
-            "description": "For warmth at night.",
+            "name": "Duvet",
+            "description": "pour tenir chaud la nuit.",
             "cost": 2
           },
           {
             "id": "canteen",
             "name": "Canteen",
-            "description": "Can be refilled at streams and rivers.",
+            "description": "à remplir dans les ruisseaux et les rivières.",
             "cost": 2
           },
           {
             "id": "torches",
             "name": "Torches",
-            "description": "Can light up dark areas, or set sconces alight.",
+            "description": "pour éclairer les lieux obscurs ou allumer des torches murales.",
             "cost": 3
           },
           {
             "id": "compass",
-            "name": "Compass",
-            "description": "Can guide you when you are hopelessly lost.",
+            "name": "Boussole",
+            "description": "pour vous guider lorsque vous êtes irrémédiablement perdu.",
             "cost": 2
           },
           {
             "id": "map",
             "name": "Map",
-            "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+            "description": "il n'y a rien dessus, mais avec le temps vous devriez être capable de le compléter.",
             "cost": 3
           },
           {
             "id": "binoculars",
-            "name": "Binoculars",
-            "description": "To help you see faraway places.",
+            "name": "Jumelles",
+            "description": "pour vous aider à observer des lieux éloignés.",
             "cost": 2
           },
           {
             "id": "chalk",
-            "name": "Chalk",
-            "description": "For writing on rough stone surfaces.",
+            "name": "Craie",
+            "description": "pour écrire sur de la pierre.",
             "cost": 2
           },
           {
             "id": "pendant",
-            "name": "Pendant",
-            "description": "Useless, but fond memories bring comfort to travelers far from home.",
+            "name": "Pendentif",
+            "description": "totalement inutile, mais les souvenirs chers apportent du réconfort aux voyageurs qui sont loin de chez eux.",
             "cost": 1
           }
         ]
@@ -58778,7 +58975,7 @@
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
-        "name": "Blanket",
+        "name": "Duvet",
         "options": [
           {
             "boolCondition": true,
@@ -58975,7 +59172,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Médicaments",
         "prompt": "Use medicine",
         "investigator": "choice",
         "min": 0,
@@ -61302,7 +61499,7 @@
         "section": "supplies",
         "investigator": "all",
         "id": "map",
-        "name": "Map",
+        "name": "Plan",
         "options": [
           {
             "boolCondition": true,
@@ -61365,6 +61562,31 @@
   "id": "the_depths_of_yoth",
   "scenario_name": "Les Profondeurs de Yoth",
   "full_name": "Scenario VII: The Depths of Yoth",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "setup_standalone_log_1",
+    "setup_standalone_log_2",
+    "setup_standalone_log_3",
+    "explain_difficulty",
+    "choose_yigs_fury",
+    "setup_standalone_supplies",
+    "intro_1",
+    "check_forging_own_path",
+    "gather_encounter_sets",
+    "check_yigs_fury",
+    "set_aside_locations",
+    "maybe_setup_harbinger",
+    "check_agenda_6",
+    "create_exploration_deck",
+    "setup_depth",
+    "set_aside_relic",
+    "set_aside_poison",
+    "encounter_deck",
+    "standalone_unwinnable",
+    "depth_level_rule",
+    "pursuit_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "intro_1",
     "check_forging_own_path",
@@ -61383,6 +61605,178 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "hard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "0",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-5",
+            "skull",
+            "skull",
+            "cultist",
+            "tablet",
+            "elder_thing",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "setup_standalone_log_1",
+      "text": "<i>You are not forging your own path.</i>"
+    },
+    {
+      "id": "setup_standalone_log_2",
+      "text": "<i>Ichtaca's faith is not restored.</i>"
+    },
+    {
+      "id": "setup_standalone_log_3",
+      "text": "<i>The relic is missing.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "relic_is_missing",
+          "text": "the relic is missing."
+        }
+      ]
+    },
+    {
+      "id": "explain_difficulty",
+      "text": "The investigators may choose how many tally marks are under “Yig’s Fury.” The lower the number chosen, the safer and easier the scenario will be.",
+      "bullets": [
+        {
+          "text": "For a safer and easier experience, choose 0 or 5."
+        },
+        {
+          "text": "For an average experience, choose 10 or 14."
+        },
+        {
+          "text": "For a more brutal experience, choose 17 or 20. "
+        },
+        {
+          "text": "For the ultimate challenge, choose 21 or higher."
+        }
+      ]
+    },
+    {
+      "id": "choose_yigs_fury",
+      "text": "Choose the amount of \"Yig's Fury\" to start with:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "0",
+            "text": "0",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "5",
+            "text": "5",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "id": "10",
+            "text": "10",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 10
+              }
+            ]
+          },
+          {
+            "id": "14",
+            "text": "14",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 14
+              }
+            ]
+          },
+          {
+            "id": "17",
+            "text": "17",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 17
+              }
+            ]
+          },
+          {
+            "id": "20",
+            "text": "20",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 20
+              }
+            ]
+          },
+          {
+            "id": "21",
+            "text": "21+",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "yigs_fury",
+                "operation": "set",
+                "value": 21
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup_standalone_supplies",
+      "text": "<i>You have no supplies.</i>"
+    },
+    {
+      "id": "standalone_unwinnable",
+      "text": "This scenario is <b>unwinnable</b> in Standalone Mode. Your goal is to continue playing for as long as you can. Once each investigator has been defeated, the current depth level will determine how well you performed."
+    },
     {
       "id": "intro_1",
       "type": "story",
@@ -62343,7 +62737,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "rope",
-        "name": "Rope",
+        "name": "Corde",
         "prompt": "Use rope",
         "investigator": "choice",
         "min": 1,
@@ -62780,7 +63174,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "chalk",
-        "name": "Chalk",
+        "name": "Craie",
         "options": [
           {
             "boolCondition": true,
@@ -62895,7 +63289,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Médicaments",
         "prompt": "Use medicine",
         "investigator": "choice",
         "min": 0,
@@ -62971,7 +63365,7 @@
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
-        "name": "Blanket",
+        "name": "Duvet",
         "options": [
           {
             "boolCondition": true,
@@ -64004,14 +64398,14 @@
           {
             "id": "provisions",
             "name": "Provisions",
-            "description": "Food and water for one person. A must-have for any journey.",
+            "description": "de l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
             "cost": 1,
             "multiple": true
           },
           {
             "id": "medicine",
-            "name": "Medicine",
-            "description": "To stave off disease, infection, or venom.",
+            "name": "Médicaments",
+            "description": "pour lutter contre les maladies, les infections et les venins.",
             "cost": 2,
             "multiple": true
           },
@@ -64024,32 +64418,32 @@
           },
           {
             "id": "blanket",
-            "name": "Blanket",
-            "description": "For warmth at night.",
+            "name": "Duvet",
+            "description": "pour tenir chaud la nuit.",
             "cost": 2
           },
           {
             "id": "canteen",
-            "name": "Canteen",
-            "description": "Can be refilled at streams and rivers.",
+            "name": "Gourde",
+            "description": "à remplir dans les ruisseaux et les rivières.",
             "cost": 2
           },
           {
             "id": "compass",
-            "name": "Compass",
-            "description": "Can guide you when you are hopelessly lost.",
+            "name": "Boussole",
+            "description": "pour vous guider lorsque vous êtes irrémédiablement perdu.",
             "cost": 2
           },
           {
             "id": "binoculars",
-            "name": "Binoculars",
-            "description": "To help you see faraway places.",
+            "name": "Jumelles",
+            "description": "pour vous aider à observer des lieux éloignés.",
             "cost": 2
           },
           {
             "id": "chalk",
-            "name": "Chalk",
-            "description": "For writing on rough stone surfaces.",
+            "name": "Craie",
+            "description": "pour écrire sur de la pierre.",
             "cost": 2
           },
           {
