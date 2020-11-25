@@ -23724,7 +23724,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -23825,7 +23825,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -23834,7 +23834,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -24243,7 +24243,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -24289,14 +24289,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "Nombre de dégâts sur le Hérault",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           }
         ]
       }
@@ -24304,10 +24304,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -24385,7 +24385,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -24394,7 +24394,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -25640,7 +25640,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -25767,14 +25767,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "Nombre de dégâts sur le Hérault",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           }
         ]
       }
@@ -25782,10 +25782,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -25814,7 +25814,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -25823,7 +25823,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -27194,7 +27194,7 @@
     },
     {
       "id": "set_aside_poison",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -27425,14 +27425,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "Nombre de dégâts sur le Hérault",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           }
         ]
       }
@@ -27440,10 +27440,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -27505,7 +27505,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -27514,7 +27514,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -27812,7 +27812,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "<right><fancy>Wednesday, July 8th, 1925</fancy></right>\nOur runners, José and Maria, returned several days later. They were fully stocked with food, water, aspirin, and weapons. I am curious how deep Alejandro’s connections are in Mexico. For an outcast historian, he was able to secure guns and ammunition faster than I had anticipated. But perhaps it is better if he keeps his sources undisclosed.\nWe ventured once more into the jungle. This time, we were prepared. We had learned from our previous excursion, and we made our way across the river canyon, venturing deeper south than we had dared before. Eventually we reached the ruins Alejandro sought, and soon we will enter what Alejandro believes is the main temple. Strangely, the serpent creatures we encountered earlier didn’t attack in force as we had feared. Could they have fled? Or are they simply lying in wait, preparing to ambush while we sleep at night?"
+      "text": "<right><fancy>Mercredi 8 juillet 1925</fancy></right>\nNos messagers, José et Maria, sont revenus quelques jours plus tard les bras chargés de nourriture, d'eau, d'aspirine et d'armes. Je serais curieux de savoir jusqu'où vont les relations d'Alejandro au Mexique. Pour un historien marginalisé, il a pu obtenir des armes et des munitions bien plus vite que ce que j'avais imaginé. Mais peut-être est-il préférable qu'il taise ses sources.\nNous nous sommes aventurés une fois de plus dans la jungle. Cette fois, nous étions prêts. Nous avions appris de notre précédente excursion et nous nous sommes frayé un chemin jusqu'aux gorges du fleuve, bien plus loin au sud que ce que nous avions osé auparavant. Finalement, nous avons atteint les ruines qu'Alejandro cherchait et nous avons bientôt pénétré dans ce qu'il pensait être le temple principal. Bizarrement, les créatures serpentines que nous avions rencontrées plus tôt n'ont pas attaqué en force comme nous le craignions. Avaient-elles fui ? Ou étaient-elles terrées quelque part, attendant la nuit pour nous attaquer par surprise pendant notre sommeil ?"
     },
     {
       "id": "intro_2",
@@ -27821,15 +27821,15 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "<right><fancy>Friday, July 3rd, 1925</fancy></right>\nWe spent most of yesterday moving our camp to the edge of the ruins. With the serpentine creatures still guarding the region, we have decided that a small party will have the best chance of slipping into the main temple unnoticed. I told Maria, the expedition’s naturalist, to take one of the trucks and wait beyond the northern edge of the rainforest. Our cartographer, José, is guarding the camp until we return. We’re on our own, but at least we’ve cleared an escape route in the event things go sour..."
+      "text": "<right><fancy>Vendredi 3 juillet 1925</fancy></right>\nNous avons passé la majeure partie de la journée d'hier à déménager notre campement à l'entrée des ruines. Avec les créatures ophidiennes qui surveillent la région, nous avons décidé qu'un petit groupe aurait de meilleures chances de se glisser dans le temple principal sans se faire remarquer. J'ai demandé à Maria, la naturaliste de l'expédition, de prendre l'un des camions et d'attendre à la lisière nord de la forêt. José, notre cartographe, gardera le campement jusqu'à notre retour. Nous sommes livrés à nous-mêmes ; mais au moins, nous avons une solution de repli au cas où les choses tourneraient mal…"
     },
     {
       "id": "setup_locations",
-      "text": "Put the Entryway into play. Each investigator begins play in the Entryway."
+      "text": "Mettez en jeu l'Entrée des Ruines. Chaque investigateur commence la partie dans l'Entrée des Ruines."
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -27914,11 +27914,11 @@
     },
     {
       "id": "three_or_fewer_fury",
-      "text": "Check Campaign Log. Because there are three or fewer tally marks under “Yig’s Fury”"
+      "text": "Vérifiez votre Carnet de Campagne. S'il y a trois traits ou moins sous la mention « Colère de Yig »"
     },
     {
       "id": "four_or_more_fury",
-      "text": "Check Campaign Log. Because there are four or more tally marks under “Yig’s Fury”"
+      "text": "Vérifiez votre Carnet de Campagne. S'il y a au moins quatre traits sous la mention « Colère de Yig »"
     },
     {
       "id": "resolution_2",
@@ -27943,11 +27943,11 @@
     {
       "id": "yigs_fury_bad",
       "type": "story",
-      "text": "The creatures are upon you before you have time to react. You scream in agony as you are skewered by razor-sharp spears."
+      "text": "Les créatures fondent sur vous avant que vous n'ayez le temps de réagir. Vous hurlez de douleur tandis qu'elles vous transpercent de leurs lances acérées."
     },
     {
       "id": "defeated_investigators_killed",
-      "text": "Each investigator who was defeated is <b>killed</b>. (If there are not enough investigators to continue the campaign, the campaign is over and the players lose.)",
+      "text": "Chaque investigateur qui a été vaincu est <b>tué</b>. (S'il n'y a plus assez d'investigateurs pour continuer la campagne, celle-ci est terminée et les joueurs ont perdu.)",
       "effects": [
         {
           "type": "trauma",
@@ -27959,11 +27959,11 @@
     {
       "id": "yigs_fury_okay",
       "type": "story",
-      "text": "Suddenly, a distant voice hisses to the others, and the serpents tentatively retreat into the darkness. You run for your life, not taking any chances."
+      "text": "Soudain, un sifflement éloigné s'adresse aux autres et, après un moment d'hésitation, les serpents se replient dans les ténèbres. Saisissant l'occasion, vous fuyez à toutes jambes."
     },
     {
       "id": "mark_3_yigs_fury",
-      "text": "Record three tally marks under “Yig’s Fury.”",
+      "text": "Inscrivez 3 traits sous la mention « Colère de Yig ».",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -27982,14 +27982,14 @@
         "choices": [
           {
             "id": "go_back_in",
-            "text": "<i>“We can’t stop now—we have to go back inside!”</i>",
+            "text": "<i>« Nous ne pouvons pas arrêter maintenant – nous devons retourner à l'intérieur ! »</i>",
             "steps": [
               "resolution_4"
             ]
           },
           {
             "id": "destroy",
-            "text": "<i>“It’s too dangerous. This place must be destroyed.”</i>",
+            "text": "<i>« C'est trop dangereux. Cet endroit doit être détruit. »</i>",
             "steps": [
               "resolution_5"
             ]
@@ -27999,13 +27999,13 @@
     },
     {
       "id": "investigators_recovered_relic",
-      "text": "In your Campaign Log, record that <i>the investigators recovered the Relic of Ages</i>. One investigator must add the Relic of Ages to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>les investigateurs ont trouvé la Relique des Âges</i>. Un investigateur doit ajouter la Relique des Âges à son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_recovered_relic",
-          "text": "the investigators recovered the Relic of Ages."
+          "text": "les investigateurs ont trouvé la Relique des Âges"
         },
         {
           "type": "add_card",
@@ -28022,7 +28022,7 @@
         "choices": [
           {
             "id": "harbinger_alive",
-            "text": "Is the Harbinger of Valusia still in play or set aside?",
+            "text": "Le Hérault de Valusia est-il toujours en jeu ou mis de côté ?",
             "steps": [
               "record_harbinger"
             ]
@@ -28032,18 +28032,18 @@
     },
     {
       "id": "record_harbinger",
-      "text": "Record in your Campaign Log that <i>the Harbinger is still alive</i>. Next to this, in parentheses, record how much damage is on the Harbinger of Valusia.",
+      "text": "Indiquez dans votre Carnet de Campagne que <i>le Hérault est toujours vivant</i>. Précisez à côté, entre parenthèses, le nombre de dégâts sur lui.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "Nombre de dégâts sur le Hérault",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           }
         ]
       }
@@ -28051,10 +28051,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -28068,11 +28068,11 @@
     {
       "id": "record_yigs_fury_plus_10",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
-        "confirm_text": "Record an additional ten tally marks, as you have angered Yig with your foolish actions.",
+        "text": "Vengeance dans la pile de victoire : ",
+        "confirm_text": "Inscrivez dix traits supplémentaires car vos actions démesurées ont éveillé la colère de Yig.",
         "delta": true,
         "effects": [
           {
@@ -28096,17 +28096,17 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_recovered_relic",
-          "text": "Alejandro recovered the Relic of Ages."
+          "text": "Alejandro a trouvé la Relique des Âges."
         }
       ]
     },
     {
       "id": "choose_new_investigators",
-      "text": "Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal."
+      "text": "Tout joueur dont l'investigateur a été tué ou rendu dément doit choisir un nouvel investigateur à incarner, selon la règle habituelle."
     },
     {
       "id": "extra_doom_on_entryway",
-      "text": "During setup, when the Entryway is put into play, place one doom on it for each time this resolution has been reached."
+      "text": "Lors de la mise en place, quand l'Entrée des Ruines est mise en jeu, placez une fatalité dessus pour chaque fois où cette conclusion a été atteinte."
     },
     {
       "id": "earn_xp",
@@ -28125,7 +28125,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -28134,7 +28134,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -28290,7 +28290,7 @@
         "name": "Investigator Defeat"
       },
       "title": "Investigateur vaincu",
-      "text": "The temple shakes with the ferocity of an earthquake, causing you to collapse to the ground. Serpent creatures emerge from the shadows around you, surrounding you completely. The thought, “This is how it ends,” flashes through your mind. For a moment, you contemplate the absurdity of your death. You can only hope that nobody else will be foolish enough to try to explore these forsaken ruins.",
+      "text": "Le temple tremble avec la férocité d'un séisme, vous plaquant au sol. Des créatures serpentines sortent des ombres alentour et vous encerclent totalement. La pensée « C'est ainsi que tout se termine » vous traverse l'esprit. Pendant un instant, vous contemplez l'absurdité de votre mort. Vous ne pouvez plus qu'espérer que personne d'autre ne sera assez fou pour tenter d'explorer à nouveau ces ruines abandonnées.",
       "steps": [
         "check_yigs_fury"
       ]
@@ -28307,7 +28307,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached\n(each investigator resigned before act 3)",
+      "title": "aucune conclusion n'a été atteinte\n(tous les investigateurs ont abandonné avant l'Acte 3",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -28325,7 +28325,7 @@
         "name": "Resolution 1"
       },
       "title": "Conclusion 1",
-      "text": "(The following is scrawled below the previous journal entry.)\nThe outside of the temple ruins appeared Aztec in origin, but once we breached the interior, it became clear that these buildings had a very different and inhuman origin. The ruins were alive. The grooves in the walls were illuminated as though powered by electricity, and a faint hum of energy reverberated throughout the halls. In spite of the serpent creatures, we were able to reach a hidden passage that led deeper underground.\nIn the central chamber of these underground halls, we found our prize: a steel orb of unknown origin, gently humming and glowing with a dim blue light. It was attached delicately to a bronze frame, appearing almost religious in its significance, and we knew it could not have been made by the Aztecs.\nWith the artifact in tow, we fled the ruins. The building had started to crumble around us, as though the orb was the only thing keeping it standing. Had it been powering the ruins, like a battery? What exactly was this device that the serpents guarded so fervently?\nMaria was waiting for us with the trucks when we finally reached the northern edge of the rainforest. We’re getting the hell out of this serpent-infested jungle while we still can.",
+      "text": "(Le texte suivant est griffonné au-dessous de la précédente entrée du journal.)\nL'extérieur du temple en ruine semblait bien être de style aztèque. Mais sitôt à l'intérieur, il nous est apparu que cet édifice avait une origine radicalement différente et non-humaine. Ces ruines étaient vivantes. Les gravures des murs étaient illuminées comme si elles étaient alimentées avec de l'électricité, et un sourd bourdonnement d'énergie résonnait à travers les couloirs. Malgré les créatures serpentines, nous sommes parvenus à atteindre un passage caché menant vers les étages inférieurs.\nDans la pièce au centre de ces couloirs souterrains, nous avons trouvé notre récompense : un orbe métallique d'origine inconnue, luisant d'une pâle lumière bleutée et émettant un léger ronronnement. Il était délicatement attaché à une armature de bronze. Cet objet était indéniablement religieux, mais nous savions qu'il n'était pas de facture aztèque.\nL'artefact en main, nous sommes sortis des ruines. L'édifice commençait à s'effondrer tout autour de nous, comme si l'orbe était la seule chose qui le maintenait debout. Fournissait-il les ruines en énergie comme une sorte de batterie ? Quelle était donc la vraie nature de cet artefact que les serpents gardaient avec une telle ferveur ?\nQuand nous avons enfin atteint la lisière nord de la forêt, Maria nous attendait avec les camions. Nous avons alors déguerpi aussi vite que possible de cette jungle infestée de serpents.",
       "steps": [
         "investigators_recovered_relic",
         "check_harbinger",
@@ -28341,7 +28341,7 @@
         "name": "Resolution 2"
       },
       "title": "Conclusion 2",
-      "text": "(The following is scrawled below the previous journal entry.)\nIt is not in my nature to leave a thing unfinished. For the sake of my fallen comrades, I have taken it upon myself to record the remainder of our expedition in this journal.\nThe others never made it out of the temple. I convinced two of the other members of the expedition, José and Andrea, to venture in after the others...But now I fear a terrible fate has befallen them, as well.\nThankfully, my gambit was worthwhile. While José and Andrea searched for the others, I snuck into the temple and took a different route. Having seen what we have seen, knowing what we know now, I couldn’t have returned to the university without evidence of our discovery. While the serpent creatures were distracted, I was able to reach a hidden passageway that led deeper underground.\nIn the central chamber of these underground halls, I found the device. The orb was made of an unnatural steel, attached delicately to its bronze frame. It pulsed with power in my hands and glowed with a dim blue light. Any fool could tell that it was not made by the Aztecs, but the other members of the expedition could not even begin to understand its true significance. The ruins started to crumble around me as I left, but it mattered not. The relic was all that mattered now.\nWith the artifact in tow, I returned to camp and told the others it was time to depart. Maria was waiting for us with the trucks when we finally reached the northern edge of the jungle. Now we are headed to Texas, where we will cross the border into the United States.\nIt is a shame what happened to the others. Their sacrifice will not be in vain. Now, my work can continue.\n– Alejandro Vela",
+      "text": "(Le texte suivant est griffonné au-dessous de la précédente entrée du journal.)\nIl n'est pas dans ma nature de laisser les choses inachevées. En mémoire de mes camarades disparus, j'ai pris sur moi de rédiger dans ce journal la fin de notre expédition.\nLes autres ne sont jamais sortis du temple. J'ai convaincu deux autres membres de l'expédition, José et Andrea, de partir à leur recherche… mais j'ai bien peur qu'un sort funeste ne les ait également frappés.\nQuoi qu'il en soit, mon stratagème a fonctionné. Pendant que José et Andrea cherchaient les autres, je me suis introduit dans le temple et j'ai pris une route différente. Ayant vu ce que j'ai vu et sachant ce que je sais, je ne pouvais pas rentrer à l'université sans preuve de nos découvertes. Pendant que les créatures serpentines étaient occupées, j'ai pu atteindre un passage menant aux étages inférieurs.\nDans la pièce au centre de ces couloirs souterrains, j'ai trouvé l'objet. L'orbe composé d'un métal surnaturel était délicatement attaché à une armature de bronze. Il pulsait d'énergie dans ma main et brillait d'une pâle lueur bleutée. N'importe quel idiot verrait qu'il n'avait pas été fabriqué par les Aztèques, mais les autres membres de l'expédition ne pouvaient même pas commencer à imaginer sa véritable nature. Les ruines ont commencé à s'écrouler tandis que je fuyais, mais je n'en avais cure. La relique était tout ce qui comptait à présent.\nAvec l'artefact en main, je suis retourné au campement et j'ai dit aux autres qu'il était temps de partir. Quand nous avons enfin atteint la lisière nord de la forêt, Maria nous attendait avec les camions.\nNous nous dirigeons à présent vers le Texas, où nous traverserons la frontière pour rentrer aux États-Unis.\nCe qui est arrivé aux autres est regrettable, mais leur sacrifice ne sera pas vain. Maintenant, mon travail peut continuer.\n– Alejandro Vela",
       "steps": [
         "alejandro_recovered_relic",
         "check_harbinger",
@@ -28357,7 +28357,7 @@
         "name": "Resolution 3"
       },
       "title": "Conclusion 3",
-      "text": "(The following is scrawled below the previous journal entry.)\nThis was a mistake. This was all a terrible mistake. We escaped the temple with our lives, but not a moment too soon. The ruins were alive. It was as though the walls knew of our intrusion, hated us for our presence. Wanted us out. Wanted us dead.\nWe have gathered outside the temple where José is waiting for us. Alejandro, unwilling to return home empty-handed, wants us to go back inside. We must decide what to do next.",
+      "text": "(Le texte suivant est griffonné au-dessous de la précédente entrée du journal.)\nTout cela était une erreur, une terrible erreur. Nous sommes parvenus à sortir du temple en vie, mais c'était tout juste. Les ruines étaient vivantes. C'était comme si les murs étaient conscients de notre intrusion et nous haïssaient parce que nous étions là. Ils rejetaient notre présence. Ils voulaient nous voir morts.\nNous nous sommes rassemblés à l'extérieur du temple où José nous attendait. Alejandro n'a pas l'intention de rentrer bredouille et veut que nous retournions à l'intérieur. Nous devons décider de la marche à suivre.",
       "steps": [
         "choose_to_continue"
       ]
@@ -28369,7 +28369,7 @@
         "name": "Resolution 4"
       },
       "title": "Conclusion 4",
-      "text": "(The following is scrawled below the previous journal entry.)\nWe’ve made our decision. Alejandro is right: we’ve come too far to back down now. Our plan is to regroup and head back into the temple once more. Even from here, we can tell that the layout of the temple has warped and changed. The ruins seem to have reset to their dormant state. With any luck, we’ll make it out this time...",
+      "text": "(Le texte suivant est griffonné au-dessous de la précédente entrée du journal.)\nNous avons pris notre décision. Alejandro a raison : nous sommes allés trop loin pour reculer maintenant. Notre plan est de nous regrouper et de retourner une nouvelle fois dans le temple. Même d'ici, on peut voir que la disposition de l'édifice a changé. Les ruines semblent de nouveau endormies. Avec un peu de chance, nous allons y arriver cette fois…",
       "steps": [
         "replay_scenario",
         "choose_new_investigators",
@@ -28384,7 +28384,7 @@
         "name": "Resolution 5"
       },
       "title": "Conclusion 5",
-      "text": "(The following is scrawled below the previous journal entry.)\nWe made our decision. There was no way we were going back into that deathtrap. Thankfully, there was another way. José had brought some TNT from the trucks, and there was more than enough to level the damned place.\nThat night, we put on a hell of a fireworks show. The jungle protested. Birds scattered into the sky, the ground rumbled, and hateful snarls surrounded our camp. But the dynamite did its job. Once the dust settled, we began sifting through the debris in search of anything with historical or cultural significance we could bring back to Arkham.\nJosé was the first to notice the blue light peeking out from underneath the remains of the temple. The rays grew in intensity with each passing moment. As we started clearing the rubble in order to discover the source of the light, there was a sudden flash, and the debris at the center of the ruins scattered. A steel orb of unknown origin lay on top of the rubble, gently humming. It was attached delicately to a bronze frame, appearing almost religious in its significance. The blue glow emanating from the device dimmed as I touched it. There was no way a device like this was built by the Aztecs.\nWith the artifact in tow, we left the smoldering temple behind us. We had outstayed our welcome in this rainforest, and we knew it. Around us, the jungle hissed. The ground slithered and crawled with snakes. In the darkness, we heard shouts in a language we could not understand. There was no time to pack up camp; we ran as soon as we had the chance. Andrea was struck in her throat by a black-feathered arrow, her startled scream captured in grim perpetuity. José was grabbed by a giant boa as we fled north into the river canyon. His neck snapped before we could reach him.\nMaria was waiting for us with the trucks when we finally reached the northern edge of the jungle. We didn’t stop until we crossed into Mexico City. Even now I do not feel safe: who could, after seeing what we have seen?\nTo hell with the Eztli and to hell with this forsaken place.",
+      "text": "(Le texte suivant est griffonné au-dessous de la précédente entrée du journal.)\nNous avons pris notre décision. Pas question de retourner dans ce piège mortel. Heureusement, il existait une autre solution. José avait apporté de la TNT dans les camions, en quantité suffisante pour raser cet endroit infernal.\nCette nuit, nous avons eu droit à un magnifique feu d'artifice. La jungle a protesté. Les oiseaux se sont éparpillés dans le ciel, le sol a tremblé et des grognements de haine ont entouré notre campement. Mais la dynamite a fait son office. Une fois la poussière retombée, nous avons fouillé les débris à la recherche de quoi que ce soit d'historique ou de culturel à rapporter à Arkham.\nJosé a été le premier à remarquer la lumière bleutée émanant de sous les débris du temple. Les rayons gagnaient en intensité à chaque seconde qui passait. Alors que nous commencions à déblayer les décombres afin de trouver la source de cette lumière, un éclair soudain est apparu et les débris au centre des ruines se sont dispersés. Un orbe métallique d'origine inconnue reposait sous les décombres, émettant un léger bourdonnement. Il était délicatement attaché à une armature de bronze et semblait être un objet religieux. La lueur bleutée émanant de l'objet a pâli lorsque je l'ai touché. Impossible qu'un artefact de ce genre ait été fabriqué par les Aztèques.\nL'artefact en main, nous avons quité les ruines fumantes du temple.Nous avions assez abusé de l'hospitalité de cette forêt vierge et nous le savions. Autour de nous, la jungle a sifflé. Le sol grouillait de serpents. Dans les ténèbres, nous avons entendu des cris dans une langue que nous ne comprenions pas. Le temps manquait pour démonter le campement ; nous avons préféré fuir tant que nous en avions la possibilité. Andrea a reçu en pleine gorge une flèche empennée de plumes noires, qui a interrompu à jamais le cri qu'elle s'apprêtait à pousser. José a été attrapé par un boa géant tandis que nous nous dirigions vers les gorges du fleuve au nord. Son cou s'est brisé avant que nous n'ayons pu l'atteindre.\nQuand nous avons enfin atteint la lisière nord de la forêt, Maria nous attendait avec les camions. Nous avons roulé sans discontinuer jusqu'à Mexico. Même maintenant, je ne me sens pas en sécurité : mais qui le pourrait, après avoir vu ce que nous avons vu ?\nMaudits soient les Eztli, et maudit soit ce lieu oublié de tous.",
       "steps": [
         "investigators_recovered_relic",
         "check_harbinger",
@@ -28562,7 +28562,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -28590,7 +28590,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -28599,7 +28599,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "effects": [
               {
                 "type": "add_card",
@@ -30219,14 +30219,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "Nombre de dégâts sur le Hérault",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           }
         ]
       }
@@ -30234,10 +30234,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -30651,7 +30651,7 @@
     },
     {
       "id": "set_aside_poison",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -57912,7 +57912,7 @@
 {
   "id": "eztli",
   "scenario_name": "Le Fléau des Eztli",
-  "full_name": "Scenario II: The Doom of Eztli",
+  "full_name": "Scénario II : Le Fléau des Eztli",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -57971,7 +57971,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "<right><fancy>Wednesday, July 8th, 1925</fancy></right>\nOur runners, José and Maria, returned several days later. They were fully stocked with food, water, aspirin, and weapons. I am curious how deep Alejandro’s connections are in Mexico. For an outcast historian, he was able to secure guns and ammunition faster than I had anticipated. But perhaps it is better if he keeps his sources undisclosed.\nWe ventured once more into the jungle. This time, we were prepared. We had learned from our previous excursion, and we made our way across the river canyon, venturing deeper south than we had dared before. Eventually we reached the ruins Alejandro sought, and soon we will enter what Alejandro believes is the main temple. Strangely, the serpent creatures we encountered earlier didn’t attack in force as we had feared. Could they have fled? Or are they simply lying in wait, preparing to ambush while we sleep at night?"
+      "text": "<right><fancy>Mercredi 8 juillet 1925</fancy></right>\nNos messagers, José et Maria, sont revenus quelques jours plus tard les bras chargés de nourriture, d'eau, d'aspirine et d'armes. Je serais curieux de savoir jusqu'où vont les relations d'Alejandro au Mexique. Pour un historien marginalisé, il a pu obtenir des armes et des munitions bien plus vite que ce que j'avais imaginé. Mais peut-être est-il préférable qu'il taise ses sources.\nNous nous sommes aventurés une fois de plus dans la jungle. Cette fois, nous étions prêts. Nous avions appris de notre précédente excursion et nous nous sommes frayé un chemin jusqu'aux gorges du fleuve, bien plus loin au sud que ce que nous avions osé auparavant. Finalement, nous avons atteint les ruines qu'Alejandro cherchait et nous avons bientôt pénétré dans ce qu'il pensait être le temple principal. Bizarrement, les créatures serpentines que nous avions rencontrées plus tôt n'ont pas attaqué en force comme nous le craignions. Avaient-elles fui ? Ou étaient-elles terrées quelque part, attendant la nuit pour nous attaquer par surprise pendant notre sommeil ?"
     },
     {
       "id": "intro_2",
@@ -57980,7 +57980,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "<right><fancy>Friday, July 3rd, 1925</fancy></right>\nWe spent most of yesterday moving our camp to the edge of the ruins. With the serpentine creatures still guarding the region, we have decided that a small party will have the best chance of slipping into the main temple unnoticed. I told Maria, the expedition’s naturalist, to take one of the trucks and wait beyond the northern edge of the rainforest. Our cartographer, José, is guarding the camp until we return. We’re on our own, but at least we’ve cleared an escape route in the event things go sour..."
+      "text": "<right><fancy>Vendredi 3 juillet 1925</fancy></right>\nNous avons passé la majeure partie de la journée d'hier à déménager notre campement à l'entrée des ruines. Avec les créatures ophidiennes qui surveillent la région, nous avons décidé qu'un petit groupe aurait de meilleures chances de se glisser dans le temple principal sans se faire remarquer. J'ai demandé à Maria, la naturaliste de l'expédition, de prendre l'un des camions et d'attendre à la lisière nord de la forêt. José, notre cartographe, gardera le campement jusqu'à notre retour. Nous sommes livrés à nous-mêmes ; mais au moins, nous avons une solution de repli au cas où les choses tourneraient mal…"
     },
     {
       "id": "gather_encounter_sets",
@@ -57999,19 +57999,19 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Entryway into play. Each investigator begins play in the Entryway."
+      "text": "Mettez en jeu l'Entrée des Ruines. Chaque investigateur commence la partie dans l'Entrée des Ruines."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the five single-sided [[Ancient]] locations and shuffling them together, along with one copy each of the following treachery cards: Ill Omen, Deep Dark, Final Mistake, Entombed, and Crypt Chill."
+      "text": "Constituez le deck Exploration en prenant les cinq lieux mono-face [[Antique]] et en les mélangeant avec un exemplaire de chacune des cartes Traîtrise suivantes : Mauvais Présage, Obscurité Profonde, Erreur Fatale, Enseveli et Froid de la Crypte."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Harbinger of Valusia enemy, the Chamber of Time location, and the Relic of Ages asset."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : l'ennemi Hérault de Valusia, le lieu Chambre du Temps et le soutien Relique des Âges."
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -58096,11 +58096,11 @@
     },
     {
       "id": "three_or_fewer_fury",
-      "text": "Check Campaign Log. Because there are three or fewer tally marks under “Yig’s Fury”"
+      "text": "Vérifiez votre Carnet de Campagne. S'il y a trois traits ou moins sous la mention « Colère de Yig »"
     },
     {
       "id": "four_or_more_fury",
-      "text": "Check Campaign Log. Because there are four or more tally marks under “Yig’s Fury”"
+      "text": "Vérifiez votre Carnet de Campagne. S'il y a au moins quatre traits sous la mention « Colère de Yig »"
     },
     {
       "id": "resolution_2",
@@ -58125,11 +58125,11 @@
     {
       "id": "yigs_fury_bad",
       "type": "story",
-      "text": "The creatures are upon you before you have time to react. You scream in agony as you are skewered by razor-sharp spears."
+      "text": "Les créatures fondent sur vous avant que vous n'ayez le temps de réagir. Vous hurlez de douleur tandis qu'elles vous transpercent de leurs lances acérées."
     },
     {
       "id": "defeated_investigators_killed",
-      "text": "Each investigator who was defeated is <b>killed</b>. (If there are not enough investigators to continue the campaign, the campaign is over and the players lose.)",
+      "text": "Chaque investigateur qui a été vaincu est <b>tué</b>. (S'il n'y a plus assez d'investigateurs pour continuer la campagne, celle-ci est terminée et les joueurs ont perdu.)",
       "effects": [
         {
           "type": "trauma",
@@ -58141,11 +58141,11 @@
     {
       "id": "yigs_fury_okay",
       "type": "story",
-      "text": "Suddenly, a distant voice hisses to the others, and the serpents tentatively retreat into the darkness. You run for your life, not taking any chances."
+      "text": "Soudain, un sifflement éloigné s'adresse aux autres et, après un moment d'hésitation, les serpents se replient dans les ténèbres. Saisissant l'occasion, vous fuyez à toutes jambes."
     },
     {
       "id": "mark_3_yigs_fury",
-      "text": "Record three tally marks under “Yig’s Fury.”",
+      "text": "Inscrivez 3 traits sous la mention « Colère de Yig ».",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -58164,14 +58164,14 @@
         "choices": [
           {
             "id": "go_back_in",
-            "text": "<i>“We can’t stop now—we have to go back inside!”</i>",
+            "text": "<i>« Nous ne pouvons pas arrêter maintenant – nous devons retourner à l'intérieur ! »</i>",
             "steps": [
               "resolution_4"
             ]
           },
           {
             "id": "destroy",
-            "text": "<i>“It’s too dangerous. This place must be destroyed.”</i>",
+            "text": "<i>« C'est trop dangereux. Cet endroit doit être détruit. »</i>",
             "steps": [
               "resolution_5"
             ]
@@ -58181,13 +58181,13 @@
     },
     {
       "id": "investigators_recovered_relic",
-      "text": "In your Campaign Log, record that <i>the investigators recovered the Relic of Ages</i>. One investigator must add the Relic of Ages to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>les investigateurs ont trouvé la Relique des Âges</i>. Un investigateur doit ajouter la Relique des Âges à son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_recovered_relic",
-          "text": "the investigators recovered the Relic of Ages."
+          "text": "les investigateurs ont trouvé la Relique des Âges"
         },
         {
           "type": "add_card",
@@ -58204,7 +58204,7 @@
         "choices": [
           {
             "id": "harbinger_alive",
-            "text": "Is the Harbinger of Valusia still in play or set aside?",
+            "text": "Le Hérault de Valusia est-il toujours en jeu ou mis de côté ?",
             "steps": [
               "record_harbinger"
             ]
@@ -58214,18 +58214,18 @@
     },
     {
       "id": "record_harbinger",
-      "text": "Record in your Campaign Log that <i>the Harbinger is still alive</i>. Next to this, in parentheses, record how much damage is on the Harbinger of Valusia.",
+      "text": "Indiquez dans votre Carnet de Campagne que <i>le Hérault est toujours vivant</i>. Précisez à côté, entre parenthèses, le nombre de dégâts sur lui.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "Nombre de dégâts sur le Hérault",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           }
         ]
       }
@@ -58233,10 +58233,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -58250,11 +58250,11 @@
     {
       "id": "record_yigs_fury_plus_10",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
-        "confirm_text": "Record an additional ten tally marks, as you have angered Yig with your foolish actions.",
+        "text": "Vengeance dans la pile de victoire : ",
+        "confirm_text": "Inscrivez dix traits supplémentaires car vos actions démesurées ont éveillé la colère de Yig.",
         "delta": true,
         "effects": [
           {
@@ -58278,13 +58278,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_recovered_relic",
-          "text": "Alejandro recovered the Relic of Ages."
+          "text": "Alejandro a trouvé la Relique des Âges."
         }
       ]
     },
     {
       "id": "replay_scenario",
-      "text": "The investigators must replay <b>Scenario II: The Doom of Eztli</b>. Reset the game to this scenario’s Setup. Do not record anything in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game.",
+      "text": "Les investigateurs doivent rejouer le <b>Scénario II : Le Fléau des Eztli</b>. Réinitialisez la partie à la <b>Mise en Place</b> de ce scénario. N'inscrivez rien dans le Carnet de Campagne à l'exception des éventuels traumatismes subis lors de votre partie précédente. Aucun point d'expérience n'est reçu pour votre partie précédente.",
       "effects": [
         {
           "type": "campaign_data",
@@ -58295,11 +58295,11 @@
     },
     {
       "id": "choose_new_investigators",
-      "text": "Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal."
+      "text": "Tout joueur dont l'investigateur a été tué ou rendu dément doit choisir un nouvel investigateur à incarner, selon la règle habituelle."
     },
     {
       "id": "extra_doom_on_entryway",
-      "text": "During setup, when the Entryway is put into play, place one doom on it for each time this resolution has been reached."
+      "text": "Lors de la mise en place, quand l'Entrée des Ruines est mise en jeu, placez une fatalité dessus pour chaque fois où cette conclusion a été atteinte."
     },
     {
       "id": "earn_xp",
@@ -58318,7 +58318,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -58327,7 +58327,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -58359,7 +58359,7 @@
         "name": "Investigator Defeat"
       },
       "title": "Investigateur vaincu",
-      "text": "The temple shakes with the ferocity of an earthquake, causing you to collapse to the ground. Serpent creatures emerge from the shadows around you, surrounding you completely. The thought, “This is how it ends,” flashes through your mind. For a moment, you contemplate the absurdity of your death. You can only hope that nobody else will be foolish enough to try to explore these forsaken ruins.",
+      "text": "Le temple tremble avec la férocité d'un séisme, vous plaquant au sol. Des créatures serpentines sortent des ombres alentour et vous encerclent totalement. La pensée « C'est ainsi que tout se termine » vous traverse l'esprit. Pendant un instant, vous contemplez l'absurdité de votre mort. Vous ne pouvez plus qu'espérer que personne d'autre ne sera assez fou pour tenter d'explorer à nouveau ces ruines abandonnées.",
       "steps": [
         "check_yigs_fury"
       ]
@@ -58376,7 +58376,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached\n(each investigator resigned before act 3)",
+      "title": "aucune conclusion n'a été atteinte\n(tous les investigateurs ont abandonné avant l'Acte 3",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -58394,7 +58394,7 @@
         "name": "Resolution 1"
       },
       "title": "Conclusion 1",
-      "text": "(The following is scrawled below the previous journal entry.)\nThe outside of the temple ruins appeared Aztec in origin, but once we breached the interior, it became clear that these buildings had a very different and inhuman origin. The ruins were alive. The grooves in the walls were illuminated as though powered by electricity, and a faint hum of energy reverberated throughout the halls. In spite of the serpent creatures, we were able to reach a hidden passage that led deeper underground.\nIn the central chamber of these underground halls, we found our prize: a steel orb of unknown origin, gently humming and glowing with a dim blue light. It was attached delicately to a bronze frame, appearing almost religious in its significance, and we knew it could not have been made by the Aztecs.\nWith the artifact in tow, we fled the ruins. The building had started to crumble around us, as though the orb was the only thing keeping it standing. Had it been powering the ruins, like a battery? What exactly was this device that the serpents guarded so fervently?\nMaria was waiting for us with the trucks when we finally reached the northern edge of the rainforest. We’re getting the hell out of this serpent-infested jungle while we still can.",
+      "text": "(Le texte suivant est griffonné au-dessous de la précédente entrée du journal.)\nL'extérieur du temple en ruine semblait bien être de style aztèque. Mais sitôt à l'intérieur, il nous est apparu que cet édifice avait une origine radicalement différente et non-humaine. Ces ruines étaient vivantes. Les gravures des murs étaient illuminées comme si elles étaient alimentées avec de l'électricité, et un sourd bourdonnement d'énergie résonnait à travers les couloirs. Malgré les créatures serpentines, nous sommes parvenus à atteindre un passage caché menant vers les étages inférieurs.\nDans la pièce au centre de ces couloirs souterrains, nous avons trouvé notre récompense : un orbe métallique d'origine inconnue, luisant d'une pâle lumière bleutée et émettant un léger ronronnement. Il était délicatement attaché à une armature de bronze. Cet objet était indéniablement religieux, mais nous savions qu'il n'était pas de facture aztèque.\nL'artefact en main, nous sommes sortis des ruines. L'édifice commençait à s'effondrer tout autour de nous, comme si l'orbe était la seule chose qui le maintenait debout. Fournissait-il les ruines en énergie comme une sorte de batterie ? Quelle était donc la vraie nature de cet artefact que les serpents gardaient avec une telle ferveur ?\nQuand nous avons enfin atteint la lisière nord de la forêt, Maria nous attendait avec les camions. Nous avons alors déguerpi aussi vite que possible de cette jungle infestée de serpents.",
       "steps": [
         "investigators_recovered_relic",
         "check_harbinger",
@@ -58410,7 +58410,7 @@
         "name": "Resolution 2"
       },
       "title": "Conclusion 2",
-      "text": "(The following is scrawled below the previous journal entry.)\nIt is not in my nature to leave a thing unfinished. For the sake of my fallen comrades, I have taken it upon myself to record the remainder of our expedition in this journal.\nThe others never made it out of the temple. I convinced two of the other members of the expedition, José and Andrea, to venture in after the others...But now I fear a terrible fate has befallen them, as well.\nThankfully, my gambit was worthwhile. While José and Andrea searched for the others, I snuck into the temple and took a different route. Having seen what we have seen, knowing what we know now, I couldn’t have returned to the university without evidence of our discovery. While the serpent creatures were distracted, I was able to reach a hidden passageway that led deeper underground.\nIn the central chamber of these underground halls, I found the device. The orb was made of an unnatural steel, attached delicately to its bronze frame. It pulsed with power in my hands and glowed with a dim blue light. Any fool could tell that it was not made by the Aztecs, but the other members of the expedition could not even begin to understand its true significance. The ruins started to crumble around me as I left, but it mattered not. The relic was all that mattered now.\nWith the artifact in tow, I returned to camp and told the others it was time to depart. Maria was waiting for us with the trucks when we finally reached the northern edge of the jungle. Now we are headed to Texas, where we will cross the border into the United States.\nIt is a shame what happened to the others. Their sacrifice will not be in vain. Now, my work can continue.\n– Alejandro Vela",
+      "text": "(Le texte suivant est griffonné au-dessous de la précédente entrée du journal.)\nIl n'est pas dans ma nature de laisser les choses inachevées. En mémoire de mes camarades disparus, j'ai pris sur moi de rédiger dans ce journal la fin de notre expédition.\nLes autres ne sont jamais sortis du temple. J'ai convaincu deux autres membres de l'expédition, José et Andrea, de partir à leur recherche… mais j'ai bien peur qu'un sort funeste ne les ait également frappés.\nQuoi qu'il en soit, mon stratagème a fonctionné. Pendant que José et Andrea cherchaient les autres, je me suis introduit dans le temple et j'ai pris une route différente. Ayant vu ce que j'ai vu et sachant ce que je sais, je ne pouvais pas rentrer à l'université sans preuve de nos découvertes. Pendant que les créatures serpentines étaient occupées, j'ai pu atteindre un passage menant aux étages inférieurs.\nDans la pièce au centre de ces couloirs souterrains, j'ai trouvé l'objet. L'orbe composé d'un métal surnaturel était délicatement attaché à une armature de bronze. Il pulsait d'énergie dans ma main et brillait d'une pâle lueur bleutée. N'importe quel idiot verrait qu'il n'avait pas été fabriqué par les Aztèques, mais les autres membres de l'expédition ne pouvaient même pas commencer à imaginer sa véritable nature. Les ruines ont commencé à s'écrouler tandis que je fuyais, mais je n'en avais cure. La relique était tout ce qui comptait à présent.\nAvec l'artefact en main, je suis retourné au campement et j'ai dit aux autres qu'il était temps de partir. Quand nous avons enfin atteint la lisière nord de la forêt, Maria nous attendait avec les camions.\nNous nous dirigeons à présent vers le Texas, où nous traverserons la frontière pour rentrer aux États-Unis.\nCe qui est arrivé aux autres est regrettable, mais leur sacrifice ne sera pas vain. Maintenant, mon travail peut continuer.\n– Alejandro Vela",
       "steps": [
         "alejandro_recovered_relic",
         "check_harbinger",
@@ -58426,7 +58426,7 @@
         "name": "Resolution 3"
       },
       "title": "Conclusion 3",
-      "text": "(The following is scrawled below the previous journal entry.)\nThis was a mistake. This was all a terrible mistake. We escaped the temple with our lives, but not a moment too soon. The ruins were alive. It was as though the walls knew of our intrusion, hated us for our presence. Wanted us out. Wanted us dead.\nWe have gathered outside the temple where José is waiting for us. Alejandro, unwilling to return home empty-handed, wants us to go back inside. We must decide what to do next.",
+      "text": "(Le texte suivant est griffonné au-dessous de la précédente entrée du journal.)\nTout cela était une erreur, une terrible erreur. Nous sommes parvenus à sortir du temple en vie, mais c'était tout juste. Les ruines étaient vivantes. C'était comme si les murs étaient conscients de notre intrusion et nous haïssaient parce que nous étions là. Ils rejetaient notre présence. Ils voulaient nous voir morts.\nNous nous sommes rassemblés à l'extérieur du temple où José nous attendait. Alejandro n'a pas l'intention de rentrer bredouille et veut que nous retournions à l'intérieur. Nous devons décider de la marche à suivre.",
       "steps": [
         "choose_to_continue"
       ]
@@ -58438,7 +58438,7 @@
         "name": "Resolution 4"
       },
       "title": "Conclusion 4",
-      "text": "(The following is scrawled below the previous journal entry.)\nWe’ve made our decision. Alejandro is right: we’ve come too far to back down now. Our plan is to regroup and head back into the temple once more. Even from here, we can tell that the layout of the temple has warped and changed. The ruins seem to have reset to their dormant state. With any luck, we’ll make it out this time...",
+      "text": "(Le texte suivant est griffonné au-dessous de la précédente entrée du journal.)\nNous avons pris notre décision. Alejandro a raison : nous sommes allés trop loin pour reculer maintenant. Notre plan est de nous regrouper et de retourner une nouvelle fois dans le temple. Même d'ici, on peut voir que la disposition de l'édifice a changé. Les ruines semblent de nouveau endormies. Avec un peu de chance, nous allons y arriver cette fois…",
       "steps": [
         "replay_scenario",
         "choose_new_investigators",
@@ -58453,7 +58453,7 @@
         "name": "Resolution 5"
       },
       "title": "Conclusion 5",
-      "text": "(The following is scrawled below the previous journal entry.)\nWe made our decision. There was no way we were going back into that deathtrap. Thankfully, there was another way. José had brought some TNT from the trucks, and there was more than enough to level the damned place.\nThat night, we put on a hell of a fireworks show. The jungle protested. Birds scattered into the sky, the ground rumbled, and hateful snarls surrounded our camp. But the dynamite did its job. Once the dust settled, we began sifting through the debris in search of anything with historical or cultural significance we could bring back to Arkham.\nJosé was the first to notice the blue light peeking out from underneath the remains of the temple. The rays grew in intensity with each passing moment. As we started clearing the rubble in order to discover the source of the light, there was a sudden flash, and the debris at the center of the ruins scattered. A steel orb of unknown origin lay on top of the rubble, gently humming. It was attached delicately to a bronze frame, appearing almost religious in its significance. The blue glow emanating from the device dimmed as I touched it. There was no way a device like this was built by the Aztecs.\nWith the artifact in tow, we left the smoldering temple behind us. We had outstayed our welcome in this rainforest, and we knew it. Around us, the jungle hissed. The ground slithered and crawled with snakes. In the darkness, we heard shouts in a language we could not understand. There was no time to pack up camp; we ran as soon as we had the chance. Andrea was struck in her throat by a black-feathered arrow, her startled scream captured in grim perpetuity. José was grabbed by a giant boa as we fled north into the river canyon. His neck snapped before we could reach him.\nMaria was waiting for us with the trucks when we finally reached the northern edge of the jungle. We didn’t stop until we crossed into Mexico City. Even now I do not feel safe: who could, after seeing what we have seen?\nTo hell with the Eztli and to hell with this forsaken place.",
+      "text": "(Le texte suivant est griffonné au-dessous de la précédente entrée du journal.)\nNous avons pris notre décision. Pas question de retourner dans ce piège mortel. Heureusement, il existait une autre solution. José avait apporté de la TNT dans les camions, en quantité suffisante pour raser cet endroit infernal.\nCette nuit, nous avons eu droit à un magnifique feu d'artifice. La jungle a protesté. Les oiseaux se sont éparpillés dans le ciel, le sol a tremblé et des grognements de haine ont entouré notre campement. Mais la dynamite a fait son office. Une fois la poussière retombée, nous avons fouillé les débris à la recherche de quoi que ce soit d'historique ou de culturel à rapporter à Arkham.\nJosé a été le premier à remarquer la lumière bleutée émanant de sous les débris du temple. Les rayons gagnaient en intensité à chaque seconde qui passait. Alors que nous commencions à déblayer les décombres afin de trouver la source de cette lumière, un éclair soudain est apparu et les débris au centre des ruines se sont dispersés. Un orbe métallique d'origine inconnue reposait sous les décombres, émettant un léger bourdonnement. Il était délicatement attaché à une armature de bronze et semblait être un objet religieux. La lueur bleutée émanant de l'objet a pâli lorsque je l'ai touché. Impossible qu'un artefact de ce genre ait été fabriqué par les Aztèques.\nL'artefact en main, nous avons quité les ruines fumantes du temple.Nous avions assez abusé de l'hospitalité de cette forêt vierge et nous le savions. Autour de nous, la jungle a sifflé. Le sol grouillait de serpents. Dans les ténèbres, nous avons entendu des cris dans une langue que nous ne comprenions pas. Le temps manquait pour démonter le campement ; nous avons préféré fuir tant que nous en avions la possibilité. Andrea a reçu en pleine gorge une flèche empennée de plumes noires, qui a interrompu à jamais le cri qu'elle s'apprêtait à pousser. José a été attrapé par un boa géant tandis que nous nous dirigions vers les gorges du fleuve au nord. Son cou s'est brisé avant que nous n'ayons pu l'atteindre.\nQuand nous avons enfin atteint la lisière nord de la forêt, Maria nous attendait avec les camions. Nous avons roulé sans discontinuer jusqu'à Mexico. Même maintenant, je ne me sens pas en sécurité : mais qui le pourrait, après avoir vu ce que nous avons vu ?\nMaudits soient les Eztli, et maudit soit ce lieu oublié de tous.",
       "steps": [
         "investigators_recovered_relic",
         "check_harbinger",
@@ -58710,7 +58710,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -58822,7 +58822,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -58831,7 +58831,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -58950,7 +58950,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -58996,14 +58996,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "Nombre de dégâts sur le Hérault",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           }
         ]
       }
@@ -59011,10 +59011,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -59092,7 +59092,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -59101,7 +59101,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -61156,7 +61156,7 @@
     },
     {
       "id": "set_aside_poisoned",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -61283,14 +61283,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "Nombre de dégâts sur le Hérault",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           }
         ]
       }
@@ -61298,10 +61298,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -61330,7 +61330,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -61339,7 +61339,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -63195,7 +63195,7 @@
     },
     {
       "id": "set_aside_poison",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -63426,14 +63426,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia:",
+        "text": "Nombre de dégâts sur le Hérault",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
             "operation": "set_input",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           }
         ]
       }
@@ -63441,10 +63441,10 @@
     {
       "id": "record_yigs_fury",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire.",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -63506,7 +63506,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -63515,7 +63515,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "condition": {
               "type": "has_card",
               "card": "04102",
@@ -65704,7 +65704,7 @@
     },
     {
       "id": "create_explore_deck",
-      "text": "Create the exploration deck. This is done by taking the five single-sided [[Ancient]] locations and shuffling them together, along with one copy each of the following treachery cards: Ill Omen, Deep Dark, Final Mistake, Entombed, and Crypt Chill."
+      "text": "Constituez le deck Exploration en prenant les cinq lieux mono-face [[Antique]] et en les mélangeant avec un exemplaire de chacune des cartes Traîtrise suivantes : Mauvais Présage, Obscurité Profonde, Erreur Fatale, Enseveli et Froid de la Crypte."
     },
     {
       "id": "set_aside_cards",
@@ -65724,7 +65724,7 @@
     },
     {
       "id": "set_aside_poison",
-      "text": "Set aside each Poisoned weakness that is not already in an investigator’s deck."
+      "text": "Mettez de côté toutes les faiblesses Empoisonné qui ne sont pas déjà dans le deck d'un investigateur."
     },
     {
       "id": "encounter_deck",
@@ -66024,7 +66024,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Vengance in the victory display:",
+        "text": "Vengeance dans la pile de victoire : ",
         "delta": true,
         "effects": [
           {
@@ -66052,7 +66052,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
+      "text": "Un incestigateur a-t-il recu une faiblesse Empoisonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -66061,7 +66061,7 @@
         "choices": [
           {
             "id": "poisoned",
-            "text": "Poisoned",
+            "text": "Empoisonné",
             "effects": [
               {
                 "type": "add_card",

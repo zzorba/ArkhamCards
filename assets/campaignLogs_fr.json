@@ -871,7 +871,7 @@
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro a trouvé la Relique des Âges."
           },
           {
             "id": "alejandro_remained_at_camp",
@@ -943,7 +943,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           },
           {
             "id": "ichtaca_has_confidence",
@@ -971,7 +971,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "les investigateurs ont trouvé la Relique des Âges"
           },
           {
             "id": "investigators_saved_serpents",
@@ -2072,7 +2072,7 @@
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro a trouvé la Relique des Âges."
           },
           {
             "id": "alejandro_remained_at_camp",
@@ -2144,7 +2144,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "le Hérault est toujours vivant (#X# dégâts)"
           },
           {
             "id": "ichtaca_has_confidence",
@@ -2172,7 +2172,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "les investigateurs ont trouvé la Relique des Âges"
           },
           {
             "id": "investigators_saved_serpents",
