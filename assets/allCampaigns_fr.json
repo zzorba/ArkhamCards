@@ -23250,7 +23250,7 @@
 {
   "id": "tfa_interlude1",
   "scenario_name": "Nuits Agitées",
-  "full_name": "Interlude I: Restless Nights",
+  "full_name": "Interlude I : Nuits Agitées",
   "type": "interlude",
   "setup": [
     "prompt",
@@ -23264,7 +23264,7 @@
   "steps": [
     {
       "id": "prompt",
-      "text": "In order, read each of the following sections:"
+      "text": "Lisez chacune des sections suivantes, dans l'ordre."
     },
     {
       "id": "check_blanket",
@@ -23273,7 +23273,7 @@
         "name": "Blanket Check"
       },
       "type": "branch",
-      "text": "Check your supplies to see which investigators have a blanket.",
+      "text": "Vérifiez votre équipementpour savoir quels investigateurs possèdent un duvet",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -23283,7 +23283,7 @@
         "options": [
           {
             "boolCondition": true,
-            "prompt": "Restful Sleep",
+            "prompt": "Sommeil Réparateur",
             "border": true,
             "effects": [
               {
@@ -23297,7 +23297,7 @@
           },
           {
             "boolCondition": false,
-            "prompt": "Tossing and Turning",
+            "prompt": "Sommeil Agité",
             "border": true,
             "effects": [
               {
@@ -23323,8 +23323,8 @@
         "name": "Tossing and Turning"
       },
       "type": "story",
-      "title": "Tossing and Turning",
-      "text": "Those nights in the jungle, I barely slept. A strange fog rolled through the camp each night, plunging the area in an intense and peculiar cold. My bedroll offered some protection against the elements, but we hadn’t been prepared for this unnatural weather. Flies and mosquitoes buzzed in my ears every time I began to drift off. Even when I finally slept, I would soon be startled awake by the crawling of an insect or lizard across my face. I wager I’ll get very little sleep on this journey..."
+      "title": "Sommeil Agité",
+      "text": "J'ai à peine dormi au cours de ces nuits passées dans la jungle. Un étrange brouillard envahissait le campement chaque soir, le plongeant dans un froid intense et singulier. Mon sac de couchage offrait quelque protection contre les éléments, mais nous n'étions pas préparés à affrronter des conditions aussi surnaturelles. Mouches et moustiques bourdonnaient à mes oreilles chaque fois que je m'apprêtais à m'endormir. Même lorsque je trouvais enfin le sommeil, le rampement d'un insecte ou d'un lézard sur mon visage me réveillait aussitôt. Je gage que je ne vais pas beaucoup dormir durant ce voyage…"
     },
     {
       "id": "restful_sleep",
@@ -23332,9 +23332,9 @@
         "id": "the_forgotten_age.interlude_1.restful_sleep",
         "name": "Restful Sleep"
       },
-      "title": "Restful Sleep",
+      "title": "Sommeil Réparateur",
       "type": "story",
-      "text": "Mercifully, I was able to sleep through each night. However, while my body rested, my mind was plagued by nightmares. A cavern like a gaping maw, bathed in dim red light...the walls slithering with the glimmering scales of a hundred vipers...it might have been better had I not slept at all."
+      "text": "Fort heureusement, j'ai réussi à dormir chaque nuit. Mais tandis que mon corps se reposait, mon esprit était la proie de terribles cauchemars. Une grotte, semblable à une gueule béante et baignée d'une pâle lumière rouge… les murs grouillant des écailles luisantes de centaines de vipères… il aurait peut-être mieux valu ne pas dormir du tout."
     },
     {
       "id": "no_ill_effects",
@@ -23346,7 +23346,7 @@
         "id": "the_forgotten_age.interlude_1.provisions_check",
         "name": "Provisions Check"
       },
-      "text": "Check your supplies. The investigators, as a group, must cross off one provisions per investigator from their supplies. For each provisions they cannot cross off, choose an investigator to read <b>Low on Rations</b>.",
+      "text": "Vérifiez votre équipement. Les investigateurs doivent rayer collectivement une unité de provisions par investigateur. Pour chaque unité de provisions qu'ils ne peuvent pas rayer, choisissez un investigateur qui lit <b>Épuisement des Vivres</b>.",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -23381,7 +23381,7 @@
       },
       "type": "story",
       "title": "Low on Rations",
-      "text": "We thought we’d brought enough food and water for everybody, but the journey had taken its toll on our supplies. When the sun rose and it came time to eat, we discovered we were already running out of provisions."
+      "text": "Nous pensions avoir emporté suffisamment d'eau et de nourriture pour tout le monde, mais le voyage a fortement pesé sur nos provisions. Quand le soleil s'est levé et que l'heure de manger est arrivée, nous avons découvert que nous commencions déjà à manquer de provisions."
     },
     {
       "id": "fewer_resources",
@@ -23393,17 +23393,17 @@
         "id": "the_forgotten_age.interlude_1.binoculars_check",
         "name": "Binoculars Check"
       },
-      "text": "The lead investigator must choose one investigator to be the group’s lookout. Then, that investigator checks their supplies to see if they have binoculars.",
+      "text": "L'investigateur principal doit choisir un investigateur pour être le guetteur du groupe. Ensuite, cet investigateur vérifie son équipement. S'il possède des jumelles",
       "type": "input",
       "input": {
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
         "investigator": "choice",
-        "prompt": "Group's lookout",
+        "prompt": "Guetteur du groupe",
         "positiveChoice": {
           "id": "positive",
-          "text": "Shapes in the Trees",
+          "text": "Des Formes dans les Arbres",
           "border": true,
           "effects": [
             {
@@ -23422,7 +23422,7 @@
         },
         "negativeChoice": {
           "id": "eyes_in_the_dark",
-          "text": "Eyes in the Dark",
+          "text": "Des Yeux dans les Ténèbres",
           "border": true,
           "effects": [
             {
@@ -23447,8 +23447,8 @@
         "name": "Eyes in the Dark"
       },
       "type": "story",
-      "title": "Eyes in the Dark",
-      "text": "Each night, I was watched. I didn’t just feel watched: I saw the eyes peering out from the inky darkness that surrounded our camp. They knew we were there. The yellow eyes watched me, alert, my weapons drawn, ready to defend the camp if the need arose. Our eyes met, and a darkness seized my heart."
+      "title": "Des Yeux dans les Ténèbres",
+      "text": "Chaque nuit, j'étais épié. Je ne me sentais pas seulement observé : je pouvais réellement voir des yeux briller dans l'obscurité autour du campement. Des yeux jaunes qui me scrutaient. Vigilant, l'arme au poing, j'étais prêt à défendre le campement si nécessaire. Lorsque nos yeux ont fini par se croiser, les ténèbres se sont emparées de mon coeur."
     },
     {
       "id": "shapes_in_the_tress",
@@ -23457,12 +23457,12 @@
         "name": "Shapes in the Trees"
       },
       "type": "story",
-      "title": "Shapes in the Trees",
-      "text": "Most of the nights passed without incident, but on this night, I was startled by the rustling of tree branches along the southern border of our camp’s clearing. Despite the darkness, I was able to use my binoculars to see shapes moving in the trees. The shapes appeared human, but...why? Why do they only watch us from afar? What is their purpose?"
+      "title": "Des Formes dans les Arbres",
+      "text": "La plupart des nuits s'étaient déroulées paisiblement ; mais cette nuit-là, j'ai été surpris par des bruissements dans les branches des arbres à la lisière sud de la clairière où se trouve notre campement. Malgré l'obscurité, j'ai pu utiliser mes jumelles pour observer des formes qui se déplaçaient à travers les arbres. Ces formes semblaient humaines, mais… pourquoi ? Pourquoi nous épiaient-elles de loin ? Quel était leur but ?"
     },
     {
       "id": "bonus_binoculars_xp",
-      "text": "You earn 2 additional experience as you gain further insight into the motivations of the Eztli."
+      "text": "Vous gagnez 2 points d'expérience supplémentaire pour avoir eu un bref aperçu des motivations des Eztli."
     },
     {
       "id": "use_medicine",
@@ -23532,7 +23532,7 @@
       },
       "type": "story",
       "title": "The Poison Spreads",
-      "text": "As the days went by, the poison continued to spread through my body. By the second night, my skin was drenched in sweat. I started having difficutly breathing, and I began every morning by retching up most of the previous night’s dinner."
+      "text": "Les jours passaient et le poison continuait de se répandre dans mon corps. La deuxième nuit, j'étais trempé de sueur. Je commençais à avoir des difficultés à respirer, et je débutais chaque journée en rendant la plus grande partie du dîner de la veille."
     }
   ]
 },
@@ -28417,11 +28417,11 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, June 28th, 1925</fancy></right>\nIt’s been a hell of a day. We’ve just set up camp along the northern border of the rainforest where Alejandro believes the Eztli once dwelled. The jungle here is dense and untamed. The sky hides above the tree cover, but I can tell from the crisp breeze that storm clouds are brewing overhead.\nThe dangers of our expedition have been explained to us many times. We are hundreds of miles away from any sign of civilization. Nobody in modern times has yet to pierce the heart of these wilds. Until now, nobody has had reason to try. After all, it wouldn’t make sense to find Aztec ruins in this region of Mexico. And yet, here we are: looking for ruins that may not exist in a place where, by all accounts, they should not.\nAlready one of our surveyors has fallen ill, and another has been bitten by a viper. I’m starting to think the rainforest doesn’t want us here. If this luck persists, ours will be the shortest expedition in Miskatonic University’s history. Tonight, we rest. Tomorrow, we venture into uncharted wilds."
+      "text": "<right><fancy>Dimanche 28 juin 1925</fancy></right>\nCette journée a été infernale. Nous venons juste de finir d'installer notre campement le long de la lisière nord de la forêt, où Alejandro pense que les Eztli vivaient jadis. La végétation y est dense et sauvage. Le ciel est caché par le couvert des arbres, mais je peux deviner au son que fait le vent que des nuages orageux s'amoncellent là-haut.\nOn nous a maintes fois expliqué les dangers que comportait cette expédition. Nous sommes à des centaines de kilomètres de tout signe de civilisation. À notre époque, personne n'a encore jamais pénétré au coeur de ces contrées. Jusqu'à présent, personne n'avait jamais eu de raison d'essayer. Après tout, cela n'aurait aucun sens de trouver des ruines aztèques dans cette région du Mexique. Et pourtant, nous voilà : à la recherche de ruines qui n'existent peut-être même pas dans un endroit où, selon toute vraisemblance, elles ne devraient pas se trouver.\nL'un de nos géomètres est déjà tombé malade et un autre a été mordu par une vipère. Je commence à croire que la jungle ne veut pas de nous. Si le sort continue de s'acharner ainsi, ce sera l\\u001eexpédition la plus courte de l'histoire de l'Université Miskatonic. Ce soir, c\\u001eest repos. Demain, nous nous aventurerons dans les contrées inexplorées."
     },
     {
       "id": "setup_locations",
-      "text": "Put the Expedition Camp into play. Each investigator begins play at the Expedition Camp."
+      "text": "Mettez en jeu le Campement de l'Expédition. Chaque investigateur commence la partie dans le Campement de l'Expédition."
     },
     {
       "id": "set_aside_cards",
@@ -28430,7 +28430,7 @@
       "encounter_sets": [
         "agents_of_yig"
       ],
-      "text": "Set the following cards aside, out of play: The three single-sided [[Ruins]] locations, the <i>Agents of Yig</i> encounter set, the four Poisoned weaknesses, the Alejandro Vela asset, and the Ichtaca enemy."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : les trois lieux monoface [[Ruines]], le set de rencontre Agents de Yig, les quatre faiblesses Empoisonné, le soutien Alejandro Vela et l'ennemi Ichtaca."
     },
     {
       "id": "encounter_deck",
@@ -28443,7 +28443,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "wait_for_additional_supplies",
-          "text": "the investigators were forced to wait for additional supplies."
+          "text": "les investigateurs ont été forcés d'attendre des vivres supplémentaires."
         }
       ]
     },
@@ -28454,7 +28454,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_observed_progress",
-          "text": "Ichtaca observed your progress with keen interest."
+          "text": "Ichtaca a observé votre progression avec intérêt."
         }
       ]
     },
@@ -28465,19 +28465,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "earned_ichtacas_trust",
-          "text": "the investigators have earned Ichtaca’s trust."
+          "text": "investigateurs ont gagné la confiance d'Ichtaca."
         }
       ]
     },
     {
       "id": "alejandro_followed_to_ruins",
-      "text": "In your Campaign Log, record that <i>Alejandro followed the investigators into the ruins</i>. Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>Alejandro a suivi les investigateurs dans les ruines</i>. N'importe quel investigateur a le droit d'ajouter Alejandro Vela à son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_followed_to_ruins",
-          "text": "Alejandro followed the investigators into the ruins."
+          "text": "Alejandro a suivi les investigateurs dans les ruines"
         },
         {
           "type": "add_card",
@@ -28493,19 +28493,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_is_wary",
-          "text": "Ichtaca is wary of the investigators."
+          "text": "Ichtaca se méfie des investigateurs."
         }
       ]
     },
     {
       "id": "alejandro_remained_at_camp",
-      "text": "In your Campaign Log, record that <i>Alejandro chose to remain at camp</i>. Do not add Alejandro Vela to any investigator’s deck.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>Alejandro a choisi de rester au campement</i>. N'ajoutez pas Alejandro Vela au deck d'un investigateur.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_remained_at_camp",
-          "text": "Alejandro chose to remain at camp."
+          "text": "Alejandro a choisi de rester au campement"
         }
       ]
     },
@@ -28516,20 +28516,20 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "cleared_path_to_temple",
-          "text": "the investigators cleared a path to the Eztli ruins."
+          "text": "\"les investigateurs se sont frayé un chemin jusqu'aux ruines de la cité Eztli."
         }
       ]
     },
     {
       "id": "check_final_act",
-      "text": "Which of the following was true?",
+      "text": "Laquelle de ses propositions est vraie ?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1_or_2",
-            "text": "It was Act 1 or 2 when the scenario ended.",
+            "text": "C'était l'Acte 1 ou l'Acte 2 lorsque le scénario s'est terminé",
             "steps": [
               "ichtaca_observed_progress",
               "alejandro_followed_to_ruins"
@@ -28537,7 +28537,7 @@
           },
           {
             "id": "fought_ichtaca",
-            "text": "“You fought with Ichtaca”",
+            "text": "« Vous avez combattu Ichtaca »",
             "steps": [
               "maybe_add_tablet_token",
               "ichtaca_is_wary",
@@ -28546,7 +28546,7 @@
           },
           {
             "id": "talked_to_ichtaca",
-            "text": "“Ichtaca is leading the way”",
+            "text": "« Ichtaca ouvre la voie »",
             "steps": [
               "maybe_add_cultist_token",
               "earned_ichtacas_trust",
@@ -28558,7 +28558,7 @@
     },
     {
       "id": "record_vengeance",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log. Beware the anger of the Father of Serpents, as his fury will haunt you in the future.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire. Faites attention à la colère du Père des Serpents car sa fureur vous poursuivra à l'avenir.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -28647,15 +28647,15 @@
     },
     {
       "id": "add_chaos_token",
-      "text": "Which of these is true?",
+      "text": "Laquelle de ses propositions est vraie ?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "cultist",
-            "text": "<i>Ichtaca is leading the way.</i>",
-            "description": "Add 1 [cultist] token.",
+            "text": "<i>Ichtaca ouvre la voie</i>",
+            "description": "Ajoutez un pion [cultist] à la réserve du Chaos",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -28667,8 +28667,8 @@
           },
           {
             "id": "tablet",
-            "text": "<i>You fought with Icthaca.</i>",
-            "description": "Add 1 [tablet] token.",
+            "text": "<i>Vous avez combattu Ichtaca</i>",
+            "description": "Ajoutez un pion [tablet] à la réserve du Chaos",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -28719,7 +28719,7 @@
     },
     {
       "id": "add_tablet_token",
-      "text": "While playing the scenario, there was an instruction to add one [tablet] token to the chaos bag.",
+      "text": "En jouant le scénario, il a été demandé d'ajouter un jeton [tablet] dans la réserve du Chaos",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -28731,7 +28731,7 @@
     },
     {
       "id": "add_cultist_token",
-      "text": "While playing the scenario, there was an instruction to add one [cultist] token to the chaos bag.",
+      "text": "En jouant le scénario, il a été demandé d'ajouter un jeton [cultist] dans la réserve du Chaos",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -28797,7 +28797,7 @@
         "physical",
         "mental"
       ],
-      "text": "<right><fancy>Wednesday, July 1st, 1925</fancy></right>\nI still have no idea how we made it back to camp alive.\nThe jungle was more perilous than we could have possibly imagined. This may read like the ravings of a lunatic, but I cannot explain it any other way. Being lost in the jungle was no picnic, but that was the least of our worries. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate, hunting us relentlessly.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he was more disturbed than fascinated. I suppose he has a right to be incredulous. Nothing about this expedition makes sense.\nThe serpent creatures chased us for what seemed like days. Finally we were able to find our way back to camp, but the price was steep. We had lost all progress we had made, and many of us were injured or afflicted by serpent venom. We have no choice but to send runners to the nearest city for additional supplies and to wait and recover from our wounds.",
+      "text": "<right><fancy>Mercredi 1er juillet 1925</fancy></right>\nJe n'ai toujours aucune idée de la manière dont nous sommes rentrés en vie au campement.\nLa jungle était plus dangereuse que tout ce que nous aurions pu imaginer. Je sais que cela ressemble aux divagations d'un dément, mais je ne peux l'expliquer autrement. Certes, être perdu dans la jungle n'était pas une partie de plaisir, mais c'était là le cadet de nos soucis. La forêt était gardée. Gardée par des horreurs inimaginables : des créatures ophidiennes animées par la colère et la haine, et qui nous ont pourchassés sans relâche.\nMais les hommes de la forêt vierge se sont révélés tout aussi dangereux. Ils ressemblent à des guerriers aztèques, du moins en ce qui concerne les vêtements et le langage. Ils ont visiblement réussi à survivre malgré la chute de l'Empire aztèque, il y a de cela plusieurs siècles. Comment sont-ils parvenus à rester cachés si longtemps ? Cela reste un mystère. Je pensais qu'Alejandro serait avide d'en apprendre plus sur eux, mais il semble plus inquiet que fasciné. Je suppose qu'il a de bonnes raisons d'être incrédule : rien ne tourne rond dans cette expédition.\nLes créatures serpentines nous ont poursuivis pendant ce qui m'a paru être des jours. Nous sommes finalement parvenus à rentrer au camp, mais à quel prix ? Nous avons tout perdu, et nombre d'entre nous ont été blessés ou empoisonnés par le venin des serpents. Nous n'avons pas d'autre choix que d'envoyer des messagers vers la ville la plus proche pour nous ravitailler et attendre en pansant nos plaies.",
       "steps": [
         "wait_for_additional_supplies",
         "check_final_act",
@@ -28813,7 +28813,7 @@
         "name": "Resolution 1"
       },
       "title": "Conclusion 1",
-      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. The warrior named Ichtaca was particularly intriguing. We were able to defuse the initial encounter with her, and surprisingly, she helped guide us through the jungle, only to disappear mysteriously when we reached the ruins. I have a feeling we have not seen the last of her.\nAlejandro did not agree with our decision to trust the Eztli warriors. He’s decided to stay at camp until further notice, disturbed as he is by their presence. I thought he would be excited to learn more about them, but I expect this discovery defies even his broad-minded theories. I suppose he has a right to be distrustful. Nothing about this expedition makes sense.\nWe have cleared a route to what Alejandro believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "text": "<right><fancy>Jeudi 2 juillet 1925</fancy></right>\nAprès de nombreuses heures passées à explorer, nous avons enfin découvert les ruines qu'Alejandro cherchait ; mais nous n'étions guère préparés à ce que nous avons rencontré dans la forêt. La jungle était gardée. Surveillée par des horreurs inimaginables : des créatures ophidiennes animées par la colère et la haine, et qui nous ont pourchassés sans relâche en brandissant des armes rudimentaires et en communiquant au moyen de sifflements aigus.\nMais les hommes de la forêt vierge se sont révélés tout aussi dangereux. Ils ressemblent à des guerriers aztèques, du moins en ce qui concerne les vêtements et le langage. Ils ont visiblement réussi à survivre malgré la chute de l'Empire aztèque, il y a de cela plusieurs siècles. Comment sont-ils parvenus à rester cachés si longtemps ? Cela reste un mystère. La guerrière nommée Ichtaca est particulièrement intrigante. Nous sommes parvenus à calmer le jeu lors de notre première rencontre avec elle. Étrangement, elle a accepté de nous guider à travers la jungle, pour disparaître ensuite mystérieusement une fois les ruines atteintes.\nJ'ai le sentiment que nous la reverrons.\nAlejandro n'était pas d'accord avec notre décision de faire confiance aux guerriers eztli. Il a décidé de rester au camp jusqu'à nouvel ordre, gêné qu'il est de leur présence. Je pensais qu'il serait avide d'en apprendre plus sur eux mais j'imagine que cette découverte est déconcertante, même pour un esprit aussi ouvert que le sien. Je suppose qu'il a le droit d'être suspicieux : rien ne tourne rond dans cette expédition.\nNous avons déblayé la route qui mène à ce qu'Alejandro croit être le temple principal. Nous avons peu de temps pour nous reposer. Les créatures serpentines ont l'air de vouloir nous arrêter, nous ne pouvons donc pas nous attarder plus que nécessaire. Bientôt, nous entrerons dans les ruines afin de découvrir quels secrets se cachent à l'intérieur.",
       "steps": [
         "maybe_add_cultist_token",
         "cleared_path_to_temple",
@@ -28831,7 +28831,7 @@
         "name": "Resolution 2"
       },
       "title": "Conclusion 2",
-      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "text": "<right><fancy>Jeudi 2 juillet 1925</fancy></right>\nAprès de nombreuses heures passées à explorer, nous avons enfin découvert les ruines qu'Alejandro cherchait ; mais nous n'étions guère préparés à ce que nous avons rencontré dans la forêt. La jungle était gardée. Surveillée par des horreurs inimaginables : des créatures ophidiennes animées par la colère et la haine, et qui nous ont pourchassés sans relâche en brandissant des armes rudimentaires et en communiquant au moyen de sifflements aigus.\nMais les hommes de la forêt vierge se sont révélés tout aussi dangereux. Ils ressemblent à des guerriers aztèques, du moins en ce qui concerne les vêtements et le langage. Ils ont visiblement réussi à survivre malgré la chute de l'Empire aztèque, il y a de cela plusieurs siècles. Comment sont ils parvenus à rester cachés si longtemps ? Cela reste un mystère. Je pensais qu'Alejandro serait avide d'en apprendre plus sur eux, mais il partage nos inquiétudes. Nous sommes parvenus à vaincre leur chef, une guerrière nommée Ichtaca, et à l'interroger. Avant de fuir, elle nous a mis en garde contre les ruines. Malheureusement pour elle, nous refusons de rentrer bredouille chez nous.\nAvec Alejandro à notre tête, nous avons déblayé la route qui mène à ce qu'il croit être le temple principal. Nous avons peu de temps pour nous reposer. Les créatures serpentines ont l'air de vouloir nous arrêter, nous ne pouvons donc pas nous attarder plus que nécessaire. Bientôt, nous entrerons dans les ruines afin de découvrir quels secrets se cachent à l'intérieur.",
       "steps": [
         "maybe_add_tablet_token",
         "cleared_path_to_temple",
@@ -31788,7 +31788,7 @@
     },
     {
       "id": "eat_provisions",
-      "text": "Check your supplies. The investigators, as a group, must cross off one provisions per investigator from their supplies. For each provisions they cannot cross off, choose an investigator to read <b>Low on Rations</b>.",
+      "text": "Vérifiez votre équipement. Les investigateurs doivent rayer collectivement une unité de provisions par investigateur. Pour chaque unité de provisions qu'ils ne peuvent pas rayer, choisissez un investigateur qui lit <b>Épuisement des Vivres</b>.",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -31907,7 +31907,7 @@
     },
     {
       "id": "check_blanket",
-      "text": "Check your supplies to see which investigators have a blanket.",
+      "text": "Vérifiez votre équipementpour savoir quels investigateurs possèdent un duvet",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
@@ -31918,7 +31918,7 @@
         "options": [
           {
             "boolCondition": true,
-            "prompt": "Restful Sleep",
+            "prompt": "Sommeil Réparateur",
             "border": true,
             "effects": [
               {
@@ -31932,7 +31932,7 @@
           },
           {
             "boolCondition": false,
-            "prompt": "Tossing and Turning",
+            "prompt": "Sommeil Agité",
             "border": true,
             "effects": [
               {
@@ -31958,7 +31958,7 @@
         "name": "Tossing and Turning"
       },
       "type": "story",
-      "title": "Tossing and Turning",
+      "title": "Sommeil Agité",
       "text": "Sleep does not come easily for you. Barely any layers protect you from the bitter cold of the underground cavern, and you lie shivering for hours before exhaustion finally claims you. You awaken every hour or so as the shifting of your body almost causes you to tumble off your stone perch. When “morning” comes, you are even more weary than you were the previous night."
     },
     {
@@ -31967,7 +31967,7 @@
         "id": "the_forgotten_age.interlude_4.restful_sleep",
         "name": "Restful Sleep"
       },
-      "title": "Restful Sleep",
+      "title": "Sommeil Réparateur",
       "type": "story",
       "text": "Though you long for a proper bed, at least your blanket protects you from the frigid chill that permeates the cavern. When “morning” arrives, your body longs for more sleep, but you know you must press onward and reach the Nexus as fast as you can..."
     }
@@ -32001,7 +32001,8 @@
     "murder_at_the_excelsior_hotel",
     "blob_that_ate_everything",
     "read_or_die",
-    "all_or_nothing"
+    "all_or_nothing",
+    "in_the_labyrinths_of_lunacy"
   ],
   "setup": [],
   "steps": []
@@ -34667,6 +34668,847 @@
         "rougarou_escaped_and_embrace_curse",
         "earn_xp",
         "$upgrade_decks"
+      ]
+    }
+  ]
+},
+{
+  "id": "in_the_labyrinths_of_lunacy",
+  "scenario_name": "The Labyrinths of Lunacy",
+  "full_name": "The Labyrinths of Lunacy",
+  "side_scenario_type": "standalone",
+  "xp_cost": 3,
+  "standalone_setup": [
+    "choose_difficulty",
+    "paradox_rule",
+    "ask_epic_multiplayer",
+    "ask_group",
+    "$play_scenario"
+  ],
+  "setup": [],
+  "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Choisir le niveau de difficulté :",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "standard",
+            "text": "Standard",
+            "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -5, [skull], [skull], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "skull",
+                  "skull",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difficile",
+            "description": "+1, 0, -1, -1, -1, -2, -2, -2, -3, -4, -5, -6, [skull], [skull], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "paradox_rule",
+      "type": "rule_reminder",
+      "title": "Paradox",
+      "text": "The Labyrinths of Lunacy is a strange place. You will sometimes be confronted with seemingly impossible situations. Game text on cards might not make sense at first. Solving these paradoxes is the key to your survival. Keep a keen eye and be aware of your surroundings, and you <i>might</i> escape."
+    },
+    {
+      "id": "ask_epic_multiplayer",
+      "type": "input",
+      "text": "Select how you would like to play this scenario:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "epic_multiplayer",
+            "text": "Epic Multiplayer",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "epic_multiplayer",
+                "text": "leurre"
+              }
+            ],
+            "steps": [
+              "timed_objective_rule_epic",
+              "story_rule",
+              "time_limit_rule",
+              "giving_and_exchanging_rule",
+              "epic_multiplayer_mode"
+            ]
+          },
+          {
+            "id": "single_group",
+            "text": "Single Group",
+            "steps": [
+              "timed_objective_rule_single",
+              "story_rule",
+              "single_group_mode"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "timed_objective_rule_single",
+      "type": "rule_reminder",
+      "title": "“Timed” objectives",
+      "text": "Many act cards in this scenario have special objectives marked with the word <b>Timed</b>. These act cards represent a task or condition the investigators must perform by the time the agenda advances. <b>Investigators do not advance the act card as soon as this condition is met. They must first wait for the agenda to advance.</b>\nIn this scenario, the act and agenda cards do not advance independently of one another; when the agenda advances, it will instruct you to advance the act card, as well. The back of each act card will have further instructions based on whether or not you were able to succeed in your task.\nWhen playing in <i>Single Group Mode</i>, if the investigators feel that they have completed their objective with time to spare, when adding doom tokens to the agenda during the mythos phase, they may choose to add doom tokens to the agenda until its doom threshold is satisfied."
+    },
+    {
+      "id": "timed_objective_rule_epic",
+      "type": "rule_reminder",
+      "title": "“Timed” objectives",
+      "text": "Many act cards in this scenario have special objectives marked with the word <b>Timed</b>. These act cards represent a task or condition the investigators must perform by the time the agenda advances. <b>Investigators do not advance the act card as soon as this condition is met. They must first wait for the agenda to advance.</b>\nIn this scenario, the act and agenda cards do not advance independently of one another; when the agenda advances, it will instruct you to advance the act card, as well. The back of each act card will have further instructions based on whether or not you were able to succeed in your task.\nWhen playing in <i>Epic Multiplayer Mode</i>, a group cannot advance to the next act and agenda until all other groups are ready to advance to the next act and agenda."
+    },
+    {
+      "id": "story_rule",
+      "type": "rule_reminder",
+      "title": "Cartes Histoire",
+      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and game text. When a story card is drawn, read its story text and resolve its <b>Revelation</b> effect. Its game text is considered active for as long as the card is in play. The story cards in this scenario are double sided, with one side entitled “Deep Within the Labyrinth.” Do not flip them to this  until you are instructed to do so."
+    },
+    {
+      "id": "time_limit_rule",
+      "type": "rule_reminder",
+      "title": "Time Limit",
+      "text": "When playing in <i>Epic Multiplayer Mode</i>, the players (or your event organizer) may impose a time restriction for each act and agenda of the game. The default limit for each act and agenda is <b>60 minutes</b>. The players (or your event organizer) may impose a different time restriction, often depending on the number of players. If time runs out, any groups that have not yet completed the current round should continue playing until the next mythos phase, then place doom on the current agenda until its doom threshold is met and advance the agenda."
+    },
+    {
+      "id": "giving_and_exchanging_rule",
+      "type": "rule_reminder",
+      "title": "Giving and Exchanging Cards and Tokens",
+      "text": "When playing this scenario in Epic Multiplayer Mode, there are some effects that allow investigators the option to give tokens, cards in hand, or assets in play to investigators in other groups.\nPlease be courteous when receiving cards from another player, and treat those cards with respect. Once the game has ended, make sure any cards or tokens that changed control are returned to their respective owners."
+    },
+    {
+      "id": "epic_multiplayer_mode",
+      "type": "rule_reminder",
+      "title": "Epic Multiplayer Mode",
+      "text": "To play <i>The Labyrinths of Lunacy</i> in <i>Epic Multiplayer Mode</i>, first divide the investigators into three separate groups—Group A, Group B, and Group C. Each group requires its own copy of The Labyrinths of Lunacy in order to play. At least 1 investigator must be assigned to each group, and no more than 4 investigators may be assigned to a single group.\nDuring gameplay, observe the following additional rules:",
+      "bullets": [
+        {
+          "text": "When constructing decks for <i>The Labyrinths of Lunacy</i>, use the rules for standalone mode on page 19 of the Rules Reference. You do not need to start with 0 experience."
+        },
+        {
+          "text": "Each group has its own play area, and plays the game separately from one another. Rules, actions, and card effects cannot affect investigators in other groups, unless explicitly stated otherwise."
+        },
+        {
+          "text": "At the end of each round, investigators must pause the game and wait until all three groups have reached the end of the round. At that point, each group may trigger “At the end of the round” abilities, in any order. Once all three groups have triggered “At the end of the round” abilities, continue to the next round."
+        },
+        {
+          "text": "With the exception of asking other groups whether they have reached the end of the round, <b>investigators cannot communicate with investigators in other groups</b>, unless a scenario card permits them to do so. Investigators also cannot examine other groups’ play areas. <i>(For the best effect, groups should play at different tables or in different rooms.)</i>"
+        }
+      ]
+    },
+    {
+      "id": "single_group_mode",
+      "type": "rule_reminder",
+      "title": "Single Group Mode",
+      "text": "When played in <i>Single Group Mode</i>, <i>The Labyrinths of Lunacy</i> can be played in one of two ways—as a single standalone scenario, or over a series of three games, like a mini-campaign.\nWhen played as a single standalone scenario, you may play as either Group A, B, or C. Use the setup instructions for the group chosen to set up the game.\nWhen played as a mini-campaign, play three consecutive games—one for each group—in an order of your choosing. Unlike a normal campaign, the following rules apply:",
+      "bullets": [
+        {
+          "text": "When constructing decks for <i>The Labyrinths of Lunacy</i>, use the rules for standalone mode on page 19 of the Rules Reference. You do not need to start with 0 experience."
+        },
+        {
+          "text": "Players may swap investigators and/or decks in between each scenario, in order to represent the different groups of investigators who have been trapped inside the Labyrinths."
+        },
+        {
+          "text": "Experience is not earned or spent in between scenarios during this campaign."
+        },
+        {
+          "text": "There is no Campaign Log for this campaign. During this campaign, investigators do not earn trauma, and investigators who are <b>killed</b> or driven <b>insane</b> may still be used in other scenarios."
+        }
+      ]
+    },
+    {
+      "id": "ask_group",
+      "type": "input",
+      "text": "Which group's setup instruction do you want to read:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "group_a",
+            "text": "Group A",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "group_a",
+                "text": "leurre"
+              }
+            ],
+            "steps": [
+              "intro_a",
+              "gather_encounter_sets",
+              "gather_mode_encounter_sets",
+              "construct_act_deck_a",
+              "setup_locations_a",
+              "set_aside_a",
+              "lead_investigator_takes_note",
+              "add_tokens_a",
+              "shuffle_encounter_deck"
+            ]
+          },
+          {
+            "id": "group_b",
+            "text": "Group B",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "group_b",
+                "text": "leurre"
+              }
+            ],
+            "steps": [
+              "intro_b",
+              "gather_encounter_sets",
+              "gather_mode_encounter_sets",
+              "construct_act_deck_b",
+              "setup_locations_b",
+              "set_aside_b",
+              "lead_investigator_takes_note",
+              "add_tokens_b",
+              "shuffle_encounter_deck"
+            ]
+          },
+          {
+            "id": "group_c",
+            "text": "Group C",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "group_c",
+                "text": "leurre"
+              }
+            ],
+            "steps": [
+              "intro_c",
+              "gather_encounter_sets",
+              "gather_mode_encounter_sets",
+              "construct_act_deck_c",
+              "setup_locations_c",
+              "set_aside_c",
+              "lead_investigator_takes_note",
+              "add_tokens_c",
+              "shuffle_encounter_deck"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_a",
+      "type": "story",
+      "title": "Group A Instructions",
+      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+    },
+    {
+      "id": "intro_b",
+      "type": "story",
+      "title": "Group B Instructions",
+      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+    },
+    {
+      "id": "intro_c",
+      "type": "story",
+      "title": "Group C Instructions",
+      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Mise en Place",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "in_the_labyrinths_of_lunacy"
+      ]
+    },
+    {
+      "id": "gather_mode_encounter_sets",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "epic_multiplayer",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "gather_epic_encounter_sets"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "gather_single_encounter_sets"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "gather_epic_encounter_sets",
+      "text": "Because you are playing in <i>Epic Multiplayer Mode</i>, gather all cards from the <i>Epic Multiplayer</i> encounter set.",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "epic_multiplayer"
+      ],
+      "subtext": "Remove all cards from the <i>Single Group</i> encounter set from the game."
+    },
+    {
+      "id": "gather_single_encounter_sets",
+      "text": "Because you are playing in <i>Single Group Mode</i>, gather all cards from the <i>Single Group</i> encounter set.",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "single_group"
+      ],
+      "subtext": "Remove all cards from the <i>Epic Multiplayer</i> encounter set from the game."
+    },
+    {
+      "id": "construct_act_deck_a",
+      "text": "Construct the act deck using only the (Group A) versions of acts 1 and 2. Remove each other version of those acts from the game."
+    },
+    {
+      "id": "construct_act_deck_b",
+      "text": "Construct the act deck using only the (Group B) versions of acts 1 and 2. Remove each other version of those acts from the game."
+    },
+    {
+      "id": "construct_act_deck_c",
+      "text": "Construct the act deck using only the (Group C) versions of acts 1 and 2. Remove each other version of those acts from the game."
+    },
+    {
+      "id": "setup_locations_a",
+      "text": "Randomly choose 1 of the 3 copies of Chamber of Secrets to put into play. Remove the other 2 copies from the game. Each investigator begins play in the Chamber of Secrets."
+    },
+    {
+      "id": "setup_locations_b",
+      "text": "Put the Chamber of Rain and Chamber of Sorrows locations into play. Randomly choose an investigator to begin play in the Chamber of Rain. Each other investigator begins play in the Chamber of Sorrows."
+    },
+    {
+      "id": "setup_locations_c",
+      "text": "Put the Chamber of Night and Chamber of Regret locations into play. Each investigator begins play at the Chamber of Night"
+    },
+    {
+      "id": "set_aside_a",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "epic_multiplayer",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_epic"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_aside_single_a"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_epic",
+      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location.",
+      "bullets": [
+        {
+          "text": "Because you are playing in <i>Epic Multiplayer Mode</i>, also set The Jailor enemy and each double-sided story card aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "set_aside_single_a",
+      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location.",
+      "bullets": [
+        {
+          "text": "Because you are playing in <i>Single Group Mode</i>, put the set-aside Key of Mysteries into play in the Chamber of Secrets."
+        }
+      ]
+    },
+    {
+      "id": "set_aside_b",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "epic_multiplayer",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_epic"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_aside_single_b"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_single_b",
+      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location."
+    },
+    {
+      "id": "set_aside_c",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "epic_multiplayer",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_epic"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_aside_single_c"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_single_c",
+      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location.",
+      "bullets": [
+        {
+          "text": "Because you are playing in <i>Single Group Mode</i>, randomly choose 1 of the 3 set-aside copies of Chamber of Secrets and place it underneath the scenario reference card, without looking at its revealed side."
+        }
+      ]
+    },
+    {
+      "id": "lead_investigator_takes_note",
+      "text": "The lead investigator takes control of Eixodolon’s Note."
+    },
+    {
+      "id": "add_tokens_a",
+      "text": "Ajoutez 2 jetons [elder_thing] à la reserve du chaos.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "elder_thing",
+            "elder_thing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add_tokens_b",
+      "text": "Ajoutez 2 jetons [tablet] à la reserve du chaos.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "tablet",
+            "tablet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add_tokens_c",
+      "text": "Ajoutez 2 jetons [cultist] à la reserve du chaos.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "cultist",
+            "cultist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shuffle_encounter_deck",
+      "text": "Shuffle the rest of the encounter cards to build the encounter deck."
+    },
+    {
+      "id": "act_2_setup_a",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "epic_multiplayer",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "act_2_setup_a_epic"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "act_2_setup_a_single"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "act_2_setup_a_epic",
+      "type": "rule_reminder",
+      "title": "Act 2 Setup",
+      "bullets": [
+        {
+          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+        },
+        {
+          "text": "Because you are playing <i>Epic Multiplayer Mode</i>, choose one of the 3 groups at random. That group shuffles the set-aside The Jailor enemy into the encounter deck."
+        },
+        {
+          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+        },
+        {
+          "text": "Put the set-aside Chamber of Decay into play."
+        },
+        {
+          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+        }
+      ]
+    },
+    {
+      "id": "act_2_setup_a_single",
+      "type": "rule_reminder",
+      "title": "Act 2 Setup",
+      "bullets": [
+        {
+          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+        },
+        {
+          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+        },
+        {
+          "text": "Put the set-aside Chamber of Decay into play."
+        },
+        {
+          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+        }
+      ]
+    },
+    {
+      "id": "act_2_setup_b",
+      "type": "rule_reminder",
+      "title": "Act 2 Setup",
+      "bullets": [
+        {
+          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+        },
+        {
+          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+        },
+        {
+          "text": "Put the set-aside Chamber of Rot and Chamber of Poison locations into play."
+        },
+        {
+          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+        }
+      ]
+    },
+    {
+      "id": "act_2_setup_c",
+      "type": "rule_reminder",
+      "title": "Act 2 Setup",
+      "bullets": [
+        {
+          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+        },
+        {
+          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+        },
+        {
+          "text": "Put the set-aside Chamber of Hunger into play"
+        },
+        {
+          "text": "Put the set-aside Eixodolon’s Pet into play, near the Chamber of Hunger, but not at any location. While it is not at any location, it is considered to be “locked away.”"
+        },
+        {
+          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+        }
+      ]
+    },
+    {
+      "id": "act_3_setup",
+      "type": "rule_reminder",
+      "title": "Act 3 Setup",
+      "bullets": [
+        {
+          "text": "Put the set-aside Abandoned Warehouse into play."
+        },
+        {
+          "text": "Disengage all engaged enemies and move each surviving investigator to the Abandoned Warehouse."
+        },
+        {
+          "text": "Put the set-aside Eixodolon enemy into play at the Abandoned Warehouse."
+        },
+        {
+          "text": "Remove all doom from play and proceed to act 3a & agenda 3a."
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "act_2_setup",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "act_2_setup",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Act 2 Setup",
+            "steps": [
+              "act_2_setup"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "act_2_setup",
+                "text": "leurre"
+              }
+            ]
+          },
+          {
+            "id": "act_3_setup",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "act_3_setup",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Act 3 Setup",
+            "steps": [
+              "act_3_setup"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "act_3_setup",
+                "text": "leurre"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "act_2_setup",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "group_a",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "act_2_setup_a"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "check_act_2_setup_b"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_act_2_setup_b",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "group_b",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "act_2_setup_b"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "act_2_setup_c"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "lose",
+      "text": "Les investigateurs ont perdu.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
+    },
+    {
+      "id": "win",
+      "text": "The investigators win.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "win"
+        }
+      ]
+    },
+    {
+      "id": "survived_new_guest",
+      "text": "The investigators survived, but in another timeline, the labyrinth has a new guest."
+    },
+    {
+      "id": "survived_eixodolon_lives",
+      "text": "The investigators survived, but Eixodolon lives on."
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "Aucune conclusion n'a été atteinte\n(tous les investigateurs ont été vaincus)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "resolution_1"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "Conclusion 1",
+      "text": "In the wrong hands, your anguish is a powerful weapon. Your blood fuels the arcane glyph carved into the cement floor at the labyrinth’s core. For the cruel mastermind who trapped you here, it is a moment of triumph and vindication. The entire world will feel this pain. This fear. This despair.",
+      "steps": [
+        "lose"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "Conclusion 2",
+      "text": "The mastermind falls to his knees, his mask cracked. Blood drips from his open wounds onto the cement floor. “Do you really think you can escape?” he wheezes. His distorted voice is pained but triumphant. “Do you really think… I would ever let you leave this place?” His body collapses to the ground. Seeing an opportunity to escape, you rush to the iron doors sealing you in the warehouse. With a desperate effort, you are finally able to break the padlock and push open the heavy doors.\nA sudden gust of cold evening air sweeps over you. You are surprised to see wooden docks on the side of the Miskatonic River. A few ducks quack in surprise and swim away from the nearest dock. Water sloshes along the shore. You hear dockworkers going about their business, their work day almost finished as the sun sets to your left. After taking a few steps, you collapse to the ground. You are too exhausted and injured to go on. “Who’s that?” a dockworker calls out. “Someone is hurt—quick, let’s get them to St. Mary’s!” You drift into unconsciousness just as a muscled man lifts you into his arms.\nYou wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight. A note on the ground nearby reads:\n<fancy>Greetings. I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die…</fancy>",
+      "steps": [
+        "survived_new_guest"
+      ]
+    },
+    {
+      "id": "R3",
+      "title": "Conclusion 3",
+      "text": "The mastermind falls to his knees, his mask cracked. Blood drips from his open wounds onto the cement floor. “Do you really think you can kill me?” he wheezes. His distorted voice is pained but proud. “I am everywhere and everywhen. This vessel is but one. There are others. And if even one of them is proven right, I will never truly die.” His body falls limply to the ground. Seeing an opportunity to escape, you rush to the iron doors sealing you in the warehouse. With a desperate effort, you are finally able to break the padlock and push open the heavy doors.\nA sudden gust of cold evening air sweeps over you. You are surprised to see wooden docks on the side of the Miskatonic River. A few ducks quack in surprise and swim away from the nearest dock. Water sloshes along the shore. You hear dockworkers going about their business, their work day almost finished as the sun sets to your left. After taking a few steps, you collapse to the ground. You are too exhausted and injured to go on. “Who’s that?” a dockworker calls out. “Someone is hurt—quick, let’s get them to St. Mary’s!” A muscled man lifts you into his arms, and you are driven to the hospital.\nYou have somehow made it out of your captor’s hellish labyrinth, but his dying words haunt your thoughts. What did he mean by “others?” You recall the strange visions you saw in his maze, and a terrible thought seeps into your mind. The kidnapper had mentioned other groups, but you were never able to find them, and you have no idea if they made it out alive. You tell the police there are others and insist that they search the docks, but there is no trace of the warehouse you had escaped, nor of the mastermind who trapped you there…",
+      "steps": [
+        "survived_eixodolon_lives"
+      ]
+    },
+    {
+      "id": "R4",
+      "title": "Conclusion 4",
+      "text": "The mastermind falls to his knees, his mask cracked. Blood drips from his open wounds onto the cement floor. The outline of his body twists and blurs, like a wrinkle in the fabric of space and time. “So, the ritual has failed!” His bitter cackle descends into a cry of pain. “Perhaps humanity has a chance after all. This agony, this suffering! Such power is not meant for humans to wield. It is for the ones beyond!” He gasps and wheezes, collapsing to the ground. “Do not follow the path I followed,” he begs, “it leads only to… despair.” His breathing stops.\nYou have somehow defeated your captor, but many questions remain. Deciding to explore the labyrinth further, you find a way to break open the iron doors leading into the other sections of the complex. To your surprise, you find no other victims trapped in the labyrinth—only signs of their struggles, and of their survival.\nIt takes only one solid strike to break open the padlock sealing the warehouse’s iron doors. The sound of metal slamming against metal is tripled in its volume. You do not believe your kidnapper meant for you to ever leave, but somehow you have defied the odds stacked against you. You wonder if the others are opening these heavy doors at this very moment, too.\nA sudden gust of cold evening air sweeps over you. You are surprised to see wooden docks on the side of the Miskatonic River. A few ducks quack in surprise and swim away from the nearest dock. Water sloshes along the shore. You hear dockworkers going about their business, their work day almost finished as the sun sets to your left. You watch the sun disappear under the horizon, and the others watch in turn.",
+      "steps": [
+        "win"
       ]
     }
   ]
@@ -58946,7 +59788,7 @@
 {
   "id": "tfa_interlude1",
   "scenario_name": "Nuits Agitées",
-  "full_name": "Interlude I: Restless Nights",
+  "full_name": "Interlude I : Nuits Agitées",
   "type": "interlude",
   "setup": [
     "prompt",
@@ -58960,7 +59802,7 @@
   "steps": [
     {
       "id": "prompt",
-      "text": "In order, read each of the following sections:"
+      "text": "Lisez chacune des sections suivantes, dans l'ordre."
     },
     {
       "id": "check_blanket",
@@ -58969,7 +59811,7 @@
         "name": "Blanket Check"
       },
       "type": "branch",
-      "text": "Check your supplies to see which investigators have a blanket.",
+      "text": "Vérifiez votre équipementpour savoir quels investigateurs possèdent un duvet",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -58979,7 +59821,7 @@
         "options": [
           {
             "boolCondition": true,
-            "prompt": "Restful Sleep",
+            "prompt": "Sommeil Réparateur",
             "border": true,
             "effects": [
               {
@@ -58993,7 +59835,7 @@
           },
           {
             "boolCondition": false,
-            "prompt": "Tossing and Turning",
+            "prompt": "Sommeil Agité",
             "border": true,
             "effects": [
               {
@@ -59019,8 +59861,8 @@
         "name": "Tossing and Turning"
       },
       "type": "story",
-      "title": "Tossing and Turning",
-      "text": "Those nights in the jungle, I barely slept. A strange fog rolled through the camp each night, plunging the area in an intense and peculiar cold. My bedroll offered some protection against the elements, but we hadn’t been prepared for this unnatural weather. Flies and mosquitoes buzzed in my ears every time I began to drift off. Even when I finally slept, I would soon be startled awake by the crawling of an insect or lizard across my face. I wager I’ll get very little sleep on this journey..."
+      "title": "Sommeil Agité",
+      "text": "J'ai à peine dormi au cours de ces nuits passées dans la jungle. Un étrange brouillard envahissait le campement chaque soir, le plongeant dans un froid intense et singulier. Mon sac de couchage offrait quelque protection contre les éléments, mais nous n'étions pas préparés à affrronter des conditions aussi surnaturelles. Mouches et moustiques bourdonnaient à mes oreilles chaque fois que je m'apprêtais à m'endormir. Même lorsque je trouvais enfin le sommeil, le rampement d'un insecte ou d'un lézard sur mon visage me réveillait aussitôt. Je gage que je ne vais pas beaucoup dormir durant ce voyage…"
     },
     {
       "id": "restful_sleep",
@@ -59028,9 +59870,9 @@
         "id": "the_forgotten_age.interlude_1.restful_sleep",
         "name": "Restful Sleep"
       },
-      "title": "Restful Sleep",
+      "title": "Sommeil Réparateur",
       "type": "story",
-      "text": "Mercifully, I was able to sleep through each night. However, while my body rested, my mind was plagued by nightmares. A cavern like a gaping maw, bathed in dim red light...the walls slithering with the glimmering scales of a hundred vipers...it might have been better had I not slept at all."
+      "text": "Fort heureusement, j'ai réussi à dormir chaque nuit. Mais tandis que mon corps se reposait, mon esprit était la proie de terribles cauchemars. Une grotte, semblable à une gueule béante et baignée d'une pâle lumière rouge… les murs grouillant des écailles luisantes de centaines de vipères… il aurait peut-être mieux valu ne pas dormir du tout."
     },
     {
       "id": "no_ill_effects",
@@ -59042,7 +59884,7 @@
         "id": "the_forgotten_age.interlude_1.provisions_check",
         "name": "Provisions Check"
       },
-      "text": "Check your supplies. The investigators, as a group, must cross off one provisions per investigator from their supplies. For each provisions they cannot cross off, choose an investigator to read <b>Low on Rations</b>.",
+      "text": "Vérifiez votre équipement. Les investigateurs doivent rayer collectivement une unité de provisions par investigateur. Pour chaque unité de provisions qu'ils ne peuvent pas rayer, choisissez un investigateur qui lit <b>Épuisement des Vivres</b>.",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -59077,7 +59919,7 @@
       },
       "type": "story",
       "title": "Low on Rations",
-      "text": "We thought we’d brought enough food and water for everybody, but the journey had taken its toll on our supplies. When the sun rose and it came time to eat, we discovered we were already running out of provisions."
+      "text": "Nous pensions avoir emporté suffisamment d'eau et de nourriture pour tout le monde, mais le voyage a fortement pesé sur nos provisions. Quand le soleil s'est levé et que l'heure de manger est arrivée, nous avons découvert que nous commencions déjà à manquer de provisions."
     },
     {
       "id": "fewer_resources",
@@ -59089,17 +59931,17 @@
         "id": "the_forgotten_age.interlude_1.binoculars_check",
         "name": "Binoculars Check"
       },
-      "text": "The lead investigator must choose one investigator to be the group’s lookout. Then, that investigator checks their supplies to see if they have binoculars.",
+      "text": "L'investigateur principal doit choisir un investigateur pour être le guetteur du groupe. Ensuite, cet investigateur vérifie son équipement. S'il possède des jumelles",
       "type": "input",
       "input": {
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
         "investigator": "choice",
-        "prompt": "Group's lookout",
+        "prompt": "Guetteur du groupe",
         "positiveChoice": {
           "id": "positive",
-          "text": "Shapes in the Trees",
+          "text": "Des Formes dans les Arbres",
           "border": true,
           "effects": [
             {
@@ -59118,7 +59960,7 @@
         },
         "negativeChoice": {
           "id": "eyes_in_the_dark",
-          "text": "Eyes in the Dark",
+          "text": "Des Yeux dans les Ténèbres",
           "border": true,
           "effects": [
             {
@@ -59143,8 +59985,8 @@
         "name": "Eyes in the Dark"
       },
       "type": "story",
-      "title": "Eyes in the Dark",
-      "text": "Each night, I was watched. I didn’t just feel watched: I saw the eyes peering out from the inky darkness that surrounded our camp. They knew we were there. The yellow eyes watched me, alert, my weapons drawn, ready to defend the camp if the need arose. Our eyes met, and a darkness seized my heart."
+      "title": "Des Yeux dans les Ténèbres",
+      "text": "Chaque nuit, j'étais épié. Je ne me sentais pas seulement observé : je pouvais réellement voir des yeux briller dans l'obscurité autour du campement. Des yeux jaunes qui me scrutaient. Vigilant, l'arme au poing, j'étais prêt à défendre le campement si nécessaire. Lorsque nos yeux ont fini par se croiser, les ténèbres se sont emparées de mon coeur."
     },
     {
       "id": "shapes_in_the_tress",
@@ -59153,12 +59995,12 @@
         "name": "Shapes in the Trees"
       },
       "type": "story",
-      "title": "Shapes in the Trees",
-      "text": "Most of the nights passed without incident, but on this night, I was startled by the rustling of tree branches along the southern border of our camp’s clearing. Despite the darkness, I was able to use my binoculars to see shapes moving in the trees. The shapes appeared human, but...why? Why do they only watch us from afar? What is their purpose?"
+      "title": "Des Formes dans les Arbres",
+      "text": "La plupart des nuits s'étaient déroulées paisiblement ; mais cette nuit-là, j'ai été surpris par des bruissements dans les branches des arbres à la lisière sud de la clairière où se trouve notre campement. Malgré l'obscurité, j'ai pu utiliser mes jumelles pour observer des formes qui se déplaçaient à travers les arbres. Ces formes semblaient humaines, mais… pourquoi ? Pourquoi nous épiaient-elles de loin ? Quel était leur but ?"
     },
     {
       "id": "bonus_binoculars_xp",
-      "text": "You earn 2 additional experience as you gain further insight into the motivations of the Eztli."
+      "text": "Vous gagnez 2 points d'expérience supplémentaire pour avoir eu un bref aperçu des motivations des Eztli."
     },
     {
       "id": "use_medicine",
@@ -59228,7 +60070,7 @@
       },
       "type": "story",
       "title": "The Poison Spreads",
-      "text": "As the days went by, the poison continued to spread through my body. By the second night, my skin was drenched in sweat. I started having difficutly breathing, and I began every morning by retching up most of the previous night’s dinner."
+      "text": "Les jours passaient et le poison continuait de se répandre dans mon corps. La deuxième nuit, j'étais trempé de sueur. Je commençais à avoir des difficultés à respirer, et je débutais chaque journée en rendant la plus grande partie du dîner de la veille."
     }
   ]
 },
@@ -63239,7 +64081,7 @@
     },
     {
       "id": "eat_provisions",
-      "text": "Check your supplies. The investigators, as a group, must cross off one provisions per investigator from their supplies. For each provisions they cannot cross off, choose an investigator to read <b>Low on Rations</b>.",
+      "text": "Vérifiez votre équipement. Les investigateurs doivent rayer collectivement une unité de provisions par investigateur. Pour chaque unité de provisions qu'ils ne peuvent pas rayer, choisissez un investigateur qui lit <b>Épuisement des Vivres</b>.",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -63358,7 +64200,7 @@
     },
     {
       "id": "check_blanket",
-      "text": "Check your supplies to see which investigators have a blanket.",
+      "text": "Vérifiez votre équipementpour savoir quels investigateurs possèdent un duvet",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
@@ -63369,7 +64211,7 @@
         "options": [
           {
             "boolCondition": true,
-            "prompt": "Restful Sleep",
+            "prompt": "Sommeil Réparateur",
             "border": true,
             "effects": [
               {
@@ -63383,7 +64225,7 @@
           },
           {
             "boolCondition": false,
-            "prompt": "Tossing and Turning",
+            "prompt": "Sommeil Agité",
             "border": true,
             "effects": [
               {
@@ -63409,7 +64251,7 @@
         "name": "Tossing and Turning"
       },
       "type": "story",
-      "title": "Tossing and Turning",
+      "title": "Sommeil Agité",
       "text": "Sleep does not come easily for you. Barely any layers protect you from the bitter cold of the underground cavern, and you lie shivering for hours before exhaustion finally claims you. You awaken every hour or so as the shifting of your body almost causes you to tumble off your stone perch. When “morning” comes, you are even more weary than you were the previous night."
     },
     {
@@ -63418,7 +64260,7 @@
         "id": "the_forgotten_age.interlude_4.restful_sleep",
         "name": "Restful Sleep"
       },
-      "title": "Restful Sleep",
+      "title": "Sommeil Réparateur",
       "type": "story",
       "text": "Though you long for a proper bed, at least your blanket protects you from the frigid chill that permeates the cavern. When “morning” arrives, your body longs for more sleep, but you know you must press onward and reach the Nexus as fast as you can..."
     }
@@ -65000,7 +65842,7 @@
 {
   "id": "wilds",
   "scenario_name": "Une Contrée Sauvage",
-  "full_name": "Scenario I: The Untamed Wilds",
+  "full_name": "Scénario I : Une Contrée Sauvage",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -65018,7 +65860,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, June 28th, 1925</fancy></right>\nIt’s been a hell of a day. We’ve just set up camp along the northern border of the rainforest where Alejandro believes the Eztli once dwelled. The jungle here is dense and untamed. The sky hides above the tree cover, but I can tell from the crisp breeze that storm clouds are brewing overhead.\nThe dangers of our expedition have been explained to us many times. We are hundreds of miles away from any sign of civilization. Nobody in modern times has yet to pierce the heart of these wilds. Until now, nobody has had reason to try. After all, it wouldn’t make sense to find Aztec ruins in this region of Mexico. And yet, here we are: looking for ruins that may not exist in a place where, by all accounts, they should not.\nAlready one of our surveyors has fallen ill, and another has been bitten by a viper. I’m starting to think the rainforest doesn’t want us here. If this luck persists, ours will be the shortest expedition in Miskatonic University’s history. Tonight, we rest. Tomorrow, we venture into uncharted wilds."
+      "text": "<right><fancy>Dimanche 28 juin 1925</fancy></right>\nCette journée a été infernale. Nous venons juste de finir d'installer notre campement le long de la lisière nord de la forêt, où Alejandro pense que les Eztli vivaient jadis. La végétation y est dense et sauvage. Le ciel est caché par le couvert des arbres, mais je peux deviner au son que fait le vent que des nuages orageux s'amoncellent là-haut.\nOn nous a maintes fois expliqué les dangers que comportait cette expédition. Nous sommes à des centaines de kilomètres de tout signe de civilisation. À notre époque, personne n'a encore jamais pénétré au coeur de ces contrées. Jusqu'à présent, personne n'avait jamais eu de raison d'essayer. Après tout, cela n'aurait aucun sens de trouver des ruines aztèques dans cette région du Mexique. Et pourtant, nous voilà : à la recherche de ruines qui n'existent peut-être même pas dans un endroit où, selon toute vraisemblance, elles ne devraient pas se trouver.\nL'un de nos géomètres est déjà tombé malade et un autre a été mordu par une vipère. Je commence à croire que la jungle ne veut pas de nous. Si le sort continue de s'acharner ainsi, ce sera l\u001eexpédition la plus courte de l'histoire de l'Université Miskatonic. Ce soir, c\u001eest repos. Demain, nous nous aventurerons dans les contrées inexplorées."
     },
     {
       "id": "gather_encounter_sets",
@@ -65037,11 +65879,11 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Expedition Camp into play. Each investigator begins play at the Expedition Camp."
+      "text": "Mettez en jeu le Campement de l'Expédition. Chaque investigateur commence la partie dans le Campement de l'Expédition."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the five single-sided [[Jungle]] locations and shuffling them together, along with one copy each of the following treachery cards: Lost in the Wilds, Overgrowth, Snake Bite, Low on Supplies, and Arrows from the Trees."
+      "text": "Constituez le deck Exploration en prenant les cinq lieux mono-face [[Jungle]] et en les mélangeant avec un exemplaire de chacune des cartes Traîtrise suivantes : Perdu dans la Nature, Prolifération, Morsure de Serpent, Épuisement des Réserves et Pluie de Flèches."
     },
     {
       "id": "set_aside_cards",
@@ -65050,7 +65892,7 @@
       "encounter_sets": [
         "agents_of_yig"
       ],
-      "text": "Set the following cards aside, out of play: The three single-sided [[Ruins]] locations, the <i>Agents of Yig</i> encounter set, the four Poisoned weaknesses, the Alejandro Vela asset, and the Ichtaca enemy."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : les trois lieux monoface [[Ruines]], le set de rencontre Agents de Yig, les quatre faiblesses Empoisonné, le soutien Alejandro Vela et l'ennemi Ichtaca."
     },
     {
       "id": "encounter_deck",
@@ -65063,7 +65905,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "wait_for_additional_supplies",
-          "text": "the investigators were forced to wait for additional supplies."
+          "text": "les investigateurs ont été forcés d'attendre des vivres supplémentaires."
         }
       ]
     },
@@ -65074,7 +65916,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_observed_progress",
-          "text": "Ichtaca observed your progress with keen interest."
+          "text": "Ichtaca a observé votre progression avec intérêt."
         }
       ]
     },
@@ -65085,19 +65927,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "earned_ichtacas_trust",
-          "text": "the investigators have earned Ichtaca’s trust."
+          "text": "investigateurs ont gagné la confiance d'Ichtaca."
         }
       ]
     },
     {
       "id": "alejandro_followed_to_ruins",
-      "text": "In your Campaign Log, record that <i>Alejandro followed the investigators into the ruins</i>. Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>Alejandro a suivi les investigateurs dans les ruines</i>. N'importe quel investigateur a le droit d'ajouter Alejandro Vela à son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_followed_to_ruins",
-          "text": "Alejandro followed the investigators into the ruins."
+          "text": "Alejandro a suivi les investigateurs dans les ruines"
         },
         {
           "type": "add_card",
@@ -65113,19 +65955,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_is_wary",
-          "text": "Ichtaca is wary of the investigators."
+          "text": "Ichtaca se méfie des investigateurs."
         }
       ]
     },
     {
       "id": "alejandro_remained_at_camp",
-      "text": "In your Campaign Log, record that <i>Alejandro chose to remain at camp</i>. Do not add Alejandro Vela to any investigator’s deck.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>Alejandro a choisi de rester au campement</i>. N'ajoutez pas Alejandro Vela au deck d'un investigateur.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_remained_at_camp",
-          "text": "Alejandro chose to remain at camp."
+          "text": "Alejandro a choisi de rester au campement"
         }
       ]
     },
@@ -65136,20 +65978,20 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "cleared_path_to_temple",
-          "text": "the investigators cleared a path to the Eztli ruins."
+          "text": "\"les investigateurs se sont frayé un chemin jusqu'aux ruines de la cité Eztli."
         }
       ]
     },
     {
       "id": "check_final_act",
-      "text": "Which of the following was true?",
+      "text": "Laquelle de ses propositions est vraie ?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1_or_2",
-            "text": "It was Act 1 or 2 when the scenario ended.",
+            "text": "C'était l'Acte 1 ou l'Acte 2 lorsque le scénario s'est terminé",
             "steps": [
               "ichtaca_observed_progress",
               "alejandro_followed_to_ruins"
@@ -65157,7 +65999,7 @@
           },
           {
             "id": "fought_ichtaca",
-            "text": "“You fought with Ichtaca”",
+            "text": "« Vous avez combattu Ichtaca »",
             "steps": [
               "maybe_add_tablet_token",
               "ichtaca_is_wary",
@@ -65166,7 +66008,7 @@
           },
           {
             "id": "talked_to_ichtaca",
-            "text": "“Ichtaca is leading the way”",
+            "text": "« Ichtaca ouvre la voie »",
             "steps": [
               "maybe_add_cultist_token",
               "earned_ichtacas_trust",
@@ -65178,7 +66020,7 @@
     },
     {
       "id": "record_vengeance",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log. Beware the anger of the Father of Serpents, as his fury will haunt you in the future.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Colère de Yig », inscrivez un trait pour chaque point de vengeance dans la pile de victoire. Faites attention à la colère du Père des Serpents car sa fureur vous poursuivra à l'avenir.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -65267,15 +66109,15 @@
     },
     {
       "id": "add_chaos_token",
-      "text": "Which of these is true?",
+      "text": "Laquelle de ses propositions est vraie ?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "cultist",
-            "text": "<i>Ichtaca is leading the way.</i>",
-            "description": "Add 1 [cultist] token.",
+            "text": "<i>Ichtaca ouvre la voie</i>",
+            "description": "Ajoutez un pion [cultist] à la réserve du Chaos",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -65287,8 +66129,8 @@
           },
           {
             "id": "tablet",
-            "text": "<i>You fought with Icthaca.</i>",
-            "description": "Add 1 [tablet] token.",
+            "text": "<i>Vous avez combattu Ichtaca</i>",
+            "description": "Ajoutez un pion [tablet] à la réserve du Chaos",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -65339,7 +66181,7 @@
     },
     {
       "id": "add_tablet_token",
-      "text": "While playing the scenario, there was an instruction to add one [tablet] token to the chaos bag.",
+      "text": "En jouant le scénario, il a été demandé d'ajouter un jeton [tablet] dans la réserve du Chaos",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -65351,7 +66193,7 @@
     },
     {
       "id": "add_cultist_token",
-      "text": "While playing the scenario, there was an instruction to add one [cultist] token to the chaos bag.",
+      "text": "En jouant le scénario, il a été demandé d'ajouter un jeton [cultist] dans la réserve du Chaos",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -65376,7 +66218,7 @@
         "physical",
         "mental"
       ],
-      "text": "<right><fancy>Wednesday, July 1st, 1925</fancy></right>\nI still have no idea how we made it back to camp alive.\nThe jungle was more perilous than we could have possibly imagined. This may read like the ravings of a lunatic, but I cannot explain it any other way. Being lost in the jungle was no picnic, but that was the least of our worries. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate, hunting us relentlessly.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he was more disturbed than fascinated. I suppose he has a right to be incredulous. Nothing about this expedition makes sense.\nThe serpent creatures chased us for what seemed like days. Finally we were able to find our way back to camp, but the price was steep. We had lost all progress we had made, and many of us were injured or afflicted by serpent venom. We have no choice but to send runners to the nearest city for additional supplies and to wait and recover from our wounds.",
+      "text": "<right><fancy>Mercredi 1er juillet 1925</fancy></right>\nJe n'ai toujours aucune idée de la manière dont nous sommes rentrés en vie au campement.\nLa jungle était plus dangereuse que tout ce que nous aurions pu imaginer. Je sais que cela ressemble aux divagations d'un dément, mais je ne peux l'expliquer autrement. Certes, être perdu dans la jungle n'était pas une partie de plaisir, mais c'était là le cadet de nos soucis. La forêt était gardée. Gardée par des horreurs inimaginables : des créatures ophidiennes animées par la colère et la haine, et qui nous ont pourchassés sans relâche.\nMais les hommes de la forêt vierge se sont révélés tout aussi dangereux. Ils ressemblent à des guerriers aztèques, du moins en ce qui concerne les vêtements et le langage. Ils ont visiblement réussi à survivre malgré la chute de l'Empire aztèque, il y a de cela plusieurs siècles. Comment sont-ils parvenus à rester cachés si longtemps ? Cela reste un mystère. Je pensais qu'Alejandro serait avide d'en apprendre plus sur eux, mais il semble plus inquiet que fasciné. Je suppose qu'il a de bonnes raisons d'être incrédule : rien ne tourne rond dans cette expédition.\nLes créatures serpentines nous ont poursuivis pendant ce qui m'a paru être des jours. Nous sommes finalement parvenus à rentrer au camp, mais à quel prix ? Nous avons tout perdu, et nombre d'entre nous ont été blessés ou empoisonnés par le venin des serpents. Nous n'avons pas d'autre choix que d'envoyer des messagers vers la ville la plus proche pour nous ravitailler et attendre en pansant nos plaies.",
       "steps": [
         "wait_for_additional_supplies",
         "check_final_act",
@@ -65392,7 +66234,7 @@
         "name": "Resolution 1"
       },
       "title": "Conclusion 1",
-      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. The warrior named Ichtaca was particularly intriguing. We were able to defuse the initial encounter with her, and surprisingly, she helped guide us through the jungle, only to disappear mysteriously when we reached the ruins. I have a feeling we have not seen the last of her.\nAlejandro did not agree with our decision to trust the Eztli warriors. He’s decided to stay at camp until further notice, disturbed as he is by their presence. I thought he would be excited to learn more about them, but I expect this discovery defies even his broad-minded theories. I suppose he has a right to be distrustful. Nothing about this expedition makes sense.\nWe have cleared a route to what Alejandro believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "text": "<right><fancy>Jeudi 2 juillet 1925</fancy></right>\nAprès de nombreuses heures passées à explorer, nous avons enfin découvert les ruines qu'Alejandro cherchait ; mais nous n'étions guère préparés à ce que nous avons rencontré dans la forêt. La jungle était gardée. Surveillée par des horreurs inimaginables : des créatures ophidiennes animées par la colère et la haine, et qui nous ont pourchassés sans relâche en brandissant des armes rudimentaires et en communiquant au moyen de sifflements aigus.\nMais les hommes de la forêt vierge se sont révélés tout aussi dangereux. Ils ressemblent à des guerriers aztèques, du moins en ce qui concerne les vêtements et le langage. Ils ont visiblement réussi à survivre malgré la chute de l'Empire aztèque, il y a de cela plusieurs siècles. Comment sont-ils parvenus à rester cachés si longtemps ? Cela reste un mystère. La guerrière nommée Ichtaca est particulièrement intrigante. Nous sommes parvenus à calmer le jeu lors de notre première rencontre avec elle. Étrangement, elle a accepté de nous guider à travers la jungle, pour disparaître ensuite mystérieusement une fois les ruines atteintes.\nJ'ai le sentiment que nous la reverrons.\nAlejandro n'était pas d'accord avec notre décision de faire confiance aux guerriers eztli. Il a décidé de rester au camp jusqu'à nouvel ordre, gêné qu'il est de leur présence. Je pensais qu'il serait avide d'en apprendre plus sur eux mais j'imagine que cette découverte est déconcertante, même pour un esprit aussi ouvert que le sien. Je suppose qu'il a le droit d'être suspicieux : rien ne tourne rond dans cette expédition.\nNous avons déblayé la route qui mène à ce qu'Alejandro croit être le temple principal. Nous avons peu de temps pour nous reposer. Les créatures serpentines ont l'air de vouloir nous arrêter, nous ne pouvons donc pas nous attarder plus que nécessaire. Bientôt, nous entrerons dans les ruines afin de découvrir quels secrets se cachent à l'intérieur.",
       "steps": [
         "maybe_add_cultist_token",
         "cleared_path_to_temple",
@@ -65410,7 +66252,7 @@
         "name": "Resolution 2"
       },
       "title": "Conclusion 2",
-      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "text": "<right><fancy>Jeudi 2 juillet 1925</fancy></right>\nAprès de nombreuses heures passées à explorer, nous avons enfin découvert les ruines qu'Alejandro cherchait ; mais nous n'étions guère préparés à ce que nous avons rencontré dans la forêt. La jungle était gardée. Surveillée par des horreurs inimaginables : des créatures ophidiennes animées par la colère et la haine, et qui nous ont pourchassés sans relâche en brandissant des armes rudimentaires et en communiquant au moyen de sifflements aigus.\nMais les hommes de la forêt vierge se sont révélés tout aussi dangereux. Ils ressemblent à des guerriers aztèques, du moins en ce qui concerne les vêtements et le langage. Ils ont visiblement réussi à survivre malgré la chute de l'Empire aztèque, il y a de cela plusieurs siècles. Comment sont ils parvenus à rester cachés si longtemps ? Cela reste un mystère. Je pensais qu'Alejandro serait avide d'en apprendre plus sur eux, mais il partage nos inquiétudes. Nous sommes parvenus à vaincre leur chef, une guerrière nommée Ichtaca, et à l'interroger. Avant de fuir, elle nous a mis en garde contre les ruines. Malheureusement pour elle, nous refusons de rentrer bredouille chez nous.\nAvec Alejandro à notre tête, nous avons déblayé la route qui mène à ce qu'il croit être le temple principal. Nous avons peu de temps pour nous reposer. Les créatures serpentines ont l'air de vouloir nous arrêter, nous ne pouvons donc pas nous attarder plus que nécessaire. Bientôt, nous entrerons dans les ruines afin de découvrir quels secrets se cachent à l'intérieur.",
       "steps": [
         "maybe_add_tablet_token",
         "cleared_path_to_temple",

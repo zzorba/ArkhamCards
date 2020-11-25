@@ -12,9 +12,11 @@ interface Props {
 export default function RuleReminderStepComponent({ step }: Props) {
   return (
     <>
-      <SetupStepWrapper bulletType="none">
-        <CampaignGuideTextComponent text={step.text} />
-      </SetupStepWrapper>
+      { !!step.text && (
+        <SetupStepWrapper bulletType="none">
+          <CampaignGuideTextComponent text={step.text} />
+        </SetupStepWrapper>
+      ) }
       <BulletsComponent bullets={step.bullets} normalBulletType />
       { !!step.example && (
         <SetupStepWrapper bulletType="none">

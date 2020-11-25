@@ -105,7 +105,7 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
         processedCampaign.scenarios,
         playedScenario => playedScenario.id.scenarioId === scenario.id
       );
-      return !alreadyPlayed;
+      return !alreadyPlayed && scenario.side_scenario_type !== 'standalone';
     });
   }, [campaignGuide, processedCampaign.scenarios]);
   const [playableSideScenarios, playableChallengeScenarios] = useMemo(() => partition(playableScenarios, scenario => scenario.side_scenario_type !== 'challenge'), [playableScenarios]);

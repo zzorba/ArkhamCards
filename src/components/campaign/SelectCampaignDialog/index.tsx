@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useContext } from 'react';
 import { Navigation } from 'react-native-navigation';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Text } from 'react-native';
 import { t } from 'ttag';
 
 import {
@@ -12,6 +12,7 @@ import StandaloneTab from './StandaloneTab';
 import CampaignTab from './CampaignTab';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
+import space from '@styles/space';
 
 export type CampaignSelection = {
   type: 'campaign';
@@ -25,7 +26,7 @@ export interface SelectCampagaignProps {
 }
 
 function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaignProps & NavigationProps) {
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, typography } = useContext(StyleContext);
   const campaignChanged = useCallback((packCode: CampaignCycleCode, text: string, hasGuide: boolean) => {
     selectionChanged({ type: 'campaign', code: packCode }, text, hasGuide);
     Navigation.pop(componentId);
@@ -69,10 +70,13 @@ function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaig
             onPress={editCollection}
             title={t`Edit Collection`}
           />
+          <Text style={[space.marginSideM, space.marginTopM, space.marginBottomL, typography.text]}>
+            { t`Don't see your favorite Standalone scenario here? Let me know at arkhamcards@gmail.com, and I'll see about including it in a future release.` }
+          </Text>
         </ScrollView>
       ),
     },
-  ], [campaignChanged, standaloneChanged, editCollection, backgroundStyle]);
+  ], [campaignChanged, standaloneChanged, editCollection, backgroundStyle, typography]);
 
   return (
     <TabView tabs={tabs} />

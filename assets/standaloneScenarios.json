@@ -17,6 +17,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "in_the_labyrinths_of_lunacy"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "murder_at_the_excelsior_hotel"
   },
   {

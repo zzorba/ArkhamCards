@@ -859,7 +859,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "Alejandro a suivi les investigateurs dans les ruines"
           },
           {
             "id": "alejandro_is_missing",
@@ -875,7 +875,7 @@
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "Alejandro a choisi de rester au campement"
           },
           {
             "id": "alejandro_remembers_everything",
@@ -895,7 +895,7 @@
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "\"les investigateurs se sont frayé un chemin jusqu'aux ruines de la cité Eztli."
           },
           {
             "id": "cooperated_with_yithians",
@@ -907,7 +907,7 @@
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "investigateurs ont gagné la confiance d'Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -955,11 +955,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "Ichtaca se méfie des investigateurs."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "Ichtaca a observé votre progression avec intérêt."
           },
           {
             "id": "ichtaca_set_against",
@@ -1043,7 +1043,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "les investigateurs ont été forcés d'attendre des vivres supplémentaires."
           }
         ]
       },
@@ -1321,6 +1321,30 @@
           {
             "id": "$input_value",
             "text": "#nom#"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "leurre"
+          },
+          {
+            "id": "act_3_setup",
+            "text": "leurre"
+          },
+          {
+            "id": "epic_multiplayer",
+            "text": "leurre"
+          },
+          {
+            "id": "group_a",
+            "text": "leurre"
+          },
+          {
+            "id": "group_b",
+            "text": "leurre"
+          },
+          {
+            "id": "group_c",
+            "text": "leurre"
           },
           {
             "id": "meh_did_cover_up",
@@ -2036,7 +2060,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "Alejandro a suivi les investigateurs dans les ruines"
           },
           {
             "id": "alejandro_is_missing",
@@ -2052,7 +2076,7 @@
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "Alejandro a choisi de rester au campement"
           },
           {
             "id": "alejandro_remembers_everything",
@@ -2072,7 +2096,7 @@
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "\"les investigateurs se sont frayé un chemin jusqu'aux ruines de la cité Eztli."
           },
           {
             "id": "cooperated_with_yithians",
@@ -2084,7 +2108,7 @@
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "investigateurs ont gagné la confiance d'Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -2132,11 +2156,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "Ichtaca se méfie des investigateurs."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "Ichtaca a observé votre progression avec intérêt."
           },
           {
             "id": "ichtaca_set_against",
@@ -2216,7 +2240,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "les investigateurs ont été forcés d'attendre des vivres supplémentaires."
           }
         ]
       },

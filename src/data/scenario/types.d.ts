@@ -733,7 +733,7 @@ export interface ResolutionStep {
 export interface RuleReminderStep {
   id: string;
   type: "rule_reminder";
-  text: string;
+  text?: string;
   title?: string;
   bullets?: {
     text: string;
@@ -838,7 +838,7 @@ export interface Scenario {
   scenario_name: string;
   full_name: string;
   xp_cost?: number;
-  side_scenario_type?: "challenge";
+  side_scenario_type?: "challenge" | "standalone";
   challenge?: ChallengeData;
   setup: string[];
   resolutions?: Resolution[];

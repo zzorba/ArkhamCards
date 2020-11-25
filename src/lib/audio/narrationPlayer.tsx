@@ -5,7 +5,7 @@ import { useInterval } from '@components/core/hooks';
 import { useSelector } from 'react-redux';
 import { hasDissonantVoices } from '@reducers';
 
-export const SHOW_DISSONANT_VOICES = true;
+export const SHOW_DISSONANT_VOICES = false;
 
 interface TrackPlayerFunctions {
   getQueue: () => Promise<Track[]>;

@@ -1,13 +1,11 @@
-import { find, flatMap, forEach } from 'lodash';
+import { find, flatMap, sortBy } from 'lodash';
 
 import { Deck, NumberChoices, StandaloneId } from '@actions/types';
 import { FullCampaign, Effect, Errata, Scenario } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
-import GuidedCampaignLog, { CampaignLogEntry } from './GuidedCampaignLog';
-import { ca } from 'date-fns/locale';
-import { scenarioFromCard } from '@components/campaign/constants';
+import GuidedCampaignLog from './GuidedCampaignLog';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -206,14 +204,6 @@ function findStandaloneScenario(id: StandaloneId, allCampaigns: FullCampaign[], 
   };
 }
 
-export function getStandaloneScenarioGuide(id: string, lang: string) {
-  const {
-    allLogEntries,
-    allCampaigns,
-  } = load(lang);
-  return null;
-}
-
 export interface StandaloneScenarioInfo {
   id: StandaloneId;
   name: string;
@@ -228,7 +218,7 @@ export function getStandaloneScenarios(
     allCampaigns,
   } = load(lang);
   const standalones = require('../../../assets/standaloneScenarios.json');
-  return flatMap(standalones, (id: StandaloneId) => {
+  return sortBy(flatMap(standalones, (id: StandaloneId) => {
     const data = findStandaloneScenario(id, allCampaigns, allLogEntries);
     if (!data) {
       console.log(`Could not find ${JSON.stringify(id)}`);
@@ -239,7 +229,7 @@ export function getStandaloneScenarios(
       name: data.scenario.scenario_name,
       code: data.scenario.id,
     };
-  });
+  }), scenario => scenario.name);
 }
 
 export default {

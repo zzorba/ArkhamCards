@@ -35,6 +35,7 @@ interface OwnProps {
   showLinkedScenario?: (
     scenarioId: string
   ) => void;
+  footer?: React.ReactNode;
 }
 type InputProps = NavigationProps & ScenarioGuideInputProps & OwnProps;
 
@@ -128,7 +129,7 @@ function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: 
   return queue;
 }
 
-function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId, standalone }: Props) {
+function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId, standalone, footer }: Props) {
   const { campaignState } = useContext(CampaignGuideContext);
   const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
   const { backgroundStyle } = useContext(StyleContext);
@@ -265,6 +266,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId,
             steps={processedScenario.steps}
             switchCampaignScenario={switchCampaignScenario}
           />
+          { !!footer && footer }
         </ScrollView>
       </NarrationWrapper>
     </KeyboardAvoidingView>
