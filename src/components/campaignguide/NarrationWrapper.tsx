@@ -71,11 +71,13 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
     const tracksBefore = [...newTracks.slice(0, currentTrackNewIndex + 1).reverse(), null].findIndex((track, index) => {
       return !isEqual(track, commonTracks[currentTrackCommonIndex - index]);
     });
+    console.log('tracksBefore', tracksBefore);
 
     // find the number of tracks that are the same after our current track
     const tracksAfter = [...newTracks.slice(currentTrackNewIndex), null].findIndex((track, index) => {
       return !isEqual(track, commonTracks[currentTrackCommonIndex + index]);
     });
+    console.log('tracksAfter', tracksAfter);
 
     // Remove tracks that don't match our new queue
     const removeTrackIds = [
@@ -86,18 +88,21 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
           index >= currentTrackCommonIndex + tracksAfter
       ),
     ];
+    console.log('removeTrackIds', removeTrackIds);
     if (removeTrackIds.length > 0) {
       await trackPlayer.remove(removeTrackIds);
     }
 
     // add all the new tracks before the current track
     const addTracksBefore = newTracks.slice(0, currentTrackNewIndex - tracksBefore + 1);
+    console.log('addTracksBefore', addTracksBefore);
     if (addTracksBefore.length > 0) {
       await trackPlayer.add(addTracksBefore, newTrackIds[currentTrackNewIndex - tracksBefore]);
     }
 
     // add all the new tracks after the current track
     const addTracksAfter = newTracks.slice(currentTrackNewIndex + tracksAfter);
+    console.log('addTracksAfter', addTracksAfter);
     if (addTracksAfter.length > 0) {
       await trackPlayer.add(addTracksAfter);
     }
@@ -180,7 +185,7 @@ function PlayerView({ style }: PlayerProps) {
   const track = useTrackDetails(trackId);
   const queue = useTrackPlayerQueue();
   const state = usePlaybackState();
-  const onReplayPress = usePressCallback(replay);
+  const onReplayPress = usePressCallback(replay, 250);
 
   const onPlay = useCallback(async() => {
     if (!track) {
@@ -193,9 +198,9 @@ function PlayerView({ style }: PlayerProps) {
       await trackPlayer.play();
     }
   }, [track, state]);
-  const onPlayPress = usePressCallback(onPlay);
-  const onPreviousPress = usePressCallback(previousTrack);
-  const onNextPress = usePressCallback(nextTrack);
+  const onPlayPress = usePressCallback(onPlay, 250);
+  const onPreviousPress = usePressCallback(previousTrack, 250);
+  const onNextPress = usePressCallback(nextTrack, 250);
   useTrackPlayerEvents(['playback-error'], (event: any) => {
     if (event.code === 'playback-source') {
       if (event.message === 'Response code: 403') {
