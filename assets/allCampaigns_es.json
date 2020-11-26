@@ -3774,7 +3774,7 @@
           {
             "id": "standard",
             "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
             "effects": [
               {
                 "type": "campaign_data",
@@ -9587,7 +9587,7 @@
   "steps": [
     {
       "id": "check_intro_condition",
-      "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
+      "text": "Comprueba en el registro de campaña si <i>los investigadores no escaparon de la mirada del Fantasma</i>, o si <i>los investigadores no lograron encontrar a Nigel</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -9666,7 +9666,7 @@
     },
     {
       "id": "check_ishimaru_haruko",
-      "text": "Comprueba el registro de campaña si <i>Ishimaru Haruko aparece en la sección “VIP interrogados”</i>:",
+      "text": "Comprueba en el registro de campaña si <i>Ishimaru Haruko aparece en la sección “VIP interrogados”</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -14762,7 +14762,7 @@
           {
             "id": "standard",
             "text": "Normal <i>(quiero un reto)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
             "effects": [
               {
                 "type": "campaign_data",
@@ -20745,7 +20745,7 @@
   "steps": [
     {
       "id": "check_intro_condition",
-      "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
+      "text": "Comprueba en el registro de campaña si <i>los investigadores no escaparon de la mirada del Fantasma</i>, o si <i>los investigadores no lograron encontrar a Nigel</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -20824,7 +20824,7 @@
     },
     {
       "id": "check_ishimaru_haruko",
-      "text": "Comprueba el registro de campaña si <i>Ishimaru Haruko aparece en la sección “VIP interrogados”</i>:",
+      "text": "Comprueba en el registro de campaña si <i>Ishimaru Haruko aparece en la sección “VIP interrogados”</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -22683,7 +22683,7 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Gasolina",
-        "prompt": "Use gasoline",
+        "prompt": "Usar la gasolina",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -22784,7 +22784,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
-        "prompt": "Use provisions",
+        "prompt": "Usar las provisiones",
         "investigator": "all",
         "choices": [
           {
@@ -22831,7 +22831,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
-        "prompt": "Use medicine",
+        "prompt": "Usar las medicinas",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -23353,7 +23353,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
-        "prompt": "Use provisions",
+        "prompt": "Usar las provisiones",
         "investigator": "all",
         "choices": [
           {
@@ -23400,7 +23400,7 @@
         "section": "supplies",
         "id": "binoculars",
         "investigator": "choice",
-        "prompt": "Group's lookout",
+        "prompt": "Centinela del grupo",
         "positiveChoice": {
           "id": "positive",
           "text": "Siluetas en los árboles",
@@ -23477,7 +23477,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
-        "prompt": "Use medicine",
+        "prompt": "Usar las medicinas",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -25435,7 +25435,7 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Gasolina",
-        "prompt": "Use gasoline",
+        "prompt": "Usar la gasolina",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -26475,7 +26475,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "text": "Crea la bolsa de caos con las siguientes fichas: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -26507,15 +26507,15 @@
     },
     {
       "id": "setup_standalone_log_1",
-      "text": "<i>You are not forging your own path.</i>"
+      "text": "<i>Los investigadores no se están forjando su propio camino.</i>"
     },
     {
       "id": "setup_standalone_log_2",
-      "text": "<i>Ichtaca's faith is not restored.</i>"
+      "text": "<i>Ichtaca no ha recuperado la fe.</i>"
     },
     {
       "id": "setup_standalone_log_3",
-      "text": "<i>The relic is missing.</i>",
+      "text": "<i>La reliquia ha desaparecido.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -26527,25 +26527,25 @@
     },
     {
       "id": "explain_difficulty",
-      "text": "The investigators may choose how many tally marks are under “Yig’s Fury.” The lower the number chosen, the safer and easier the scenario will be.",
+      "text": "Los investigadores pueden elegir cuántas marcas hay en la sección “Furia de Yig”. Cuanto menor sea el número elegido, más seguro y fácil será el escenario.",
       "bullets": [
         {
-          "text": "For a safer and easier experience, choose 0 or 5."
+          "text": "Para una experiencia más segura y fácil, elige 0 o 5."
         },
         {
-          "text": "For an average experience, choose 10 or 14."
+          "text": "Para una experiencia intermedia, elige 10 o 14."
         },
         {
-          "text": "For a more brutal experience, choose 17 or 20. "
+          "text": "Para una experiencia más brutal, elige 17 o 20."
         },
         {
-          "text": "For the ultimate challenge, choose 21 or higher."
+          "text": "Si quieres el reto definitivo, elige 21 o más."
         }
       ]
     },
     {
       "id": "choose_yigs_fury",
-      "text": "Choose the amount of \"Yig's Fury\" to start with:",
+      "text": "Elige la cantidad de “Furia de Yig” para empezar:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -26639,11 +26639,11 @@
     },
     {
       "id": "setup_standalone_supplies",
-      "text": "<i>You have no supplies.</i>"
+      "text": "<i>No tienes suministros.</i>"
     },
     {
       "id": "standalone_unwinnable",
-      "text": "This scenario is <b>unwinnable</b> in Standalone Mode. Your goal is to continue playing for as long as you can. Once each investigator has been defeated, the current depth level will determine how well you performed."
+      "text": "Este escenario es <b>imposible de ganar</b> al jugarlo de forma independiente. El objetivo es seguir jugando tanto como puedas. Cuando todos los investigadores hayan sido derrotados, el nivel de profundidad en ese momento determinará lo bien que has jugado."
     },
     {
       "id": "intro_1",
@@ -27579,7 +27579,7 @@
         "section": "supplies",
         "id": "rope",
         "name": "Cuerda",
-        "prompt": "Use rope",
+        "prompt": "Usar la cuerda",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -27603,11 +27603,11 @@
     {
       "id": "put_harbinger_in_pursuit",
       "bullet_type": "small",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. Because it is agenda 5a or 6a, place it in the pursuit area. (See “Pursuit,” below.)"
+      "text": "Busca el nuevo Heraldo de Valusia <i>(El durmiente regresa)</i> en la colección y coloca sobre él una cantidad de daño igual a la cantidad de daño anotada entre paréntesis en el registro de campaña. Como está en juego el plan 5a o 6a, mueve el Enemigo Heraldo de Valusia puesto aparte a la zona de persecución (consulta “Persecución” más adelante)."
     },
     {
       "id": "set_aside_harbinger",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. Place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one. "
+      "text": "Busca el nuevo Heraldo de Valusia <i>(El durmiente regresa)</i> en la colección y déjalo aparte. Coloca sobre él una cantidad de daño igual a la cantidad de daño anotada entre paréntesis en el registro de campaña. Si el Heraldo de Valusia entra en juego durante este escenario, utiliza esta nueva versión en lugar de la original."
     },
     {
       "id": "create_exploration_deck",
@@ -29726,7 +29726,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
-        "prompt": "Use medicine",
+        "prompt": "Usar las medicinas",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -31795,7 +31795,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
-        "prompt": "Use provisions",
+        "prompt": "Usar las provisiones",
         "investigator": "all",
         "choices": [
           {
@@ -31839,7 +31839,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
-        "prompt": "Use medicine",
+        "prompt": "Usar las medicinas",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -37991,7 +37991,7 @@
           "text": "Cuando se ponga en juego un Lugar de una sola cara desde el mazo de Exploración, coloca sobre ese Lugar una cantidad de pistas igual a su valor de pista."
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "Si se acaba el mazo de Exploración sin haber encontrado ni una carta de Traición ni un Lugar indicado por la capacidad de explorar, la exploración simplemente termina. No se considera ni que haya tenido éxito ni que no. Todas los Lugares robados durante la exploración deben devolverse al mazo de Exploración, barajarlo, y la acción del Investigador finaliza."
         }
       ],
       "example": "<i>Ejemplo: El plan 1a (La búsqueda del portal) tiene la siguiente capacidad: “[action]: <b>Explorar</b>. Roba la primera carta del mazo de Exploración. Si es un Lugar conectado, ponlo en juego y muévete a él.”. Ursula Downs está en el Campamento de expedición y quiere encontrar un nuevo Lugar al que viajar. Gasta su primera acción para explorar y roba la primera carta del mazo de Exploración. La carta que roba es el Oasis del desierto. Puesto que el Oasis del desierto es un Lugar que no está conectado al Campamento de expedición, lo coloca junto al mazo de Exploración y roba la siguiente carta de dicho mazo. Esta vez, roba la carta de Traición Tormenta de arena, por lo que la resuelve de forma normal y la coloca en la pila de descartes de Encuentros. Su exploración no ha tenido éxito, y debe devolver el Oasis del desierto que robó anteriormente al mazo de Exploración y barajarlo. Ursula decide explorar una vez más, gastando una segunda acción. Esta vez, roba el Río Nilo, que está conectado al Campamento de expedición. Su exploración tiene éxito. El Río Nilo se pone en juego con tantas pistas encima como su valor de pista, y Ursula se mueve inmediatamente del Campamento de expedición al Río Nilo.</i>"
@@ -38290,7 +38290,7 @@
         "physical",
         "mental"
       ],
-      "text": "The city of Cairo sleeps and will never wake. In the west, the Brotherhood rejoices, fortheir prophecy is about to be fulfilled. And deep in the landof dreams, their Chosen grips his weapon for the first time.",
+      "text": "La ciudad de El Cairo duerme y no despertará nunca. Al oeste, la Hermandad se regocija, pues su profecía está a punto de cumplirse. Y en lo más profundo de la tierra de los sueños, su Elegido aferra su arma por primera vez.",
       "steps": [
         "earn_xp",
         "record_dreamers_in_abyss",
@@ -38480,7 +38480,7 @@
           "text": "Cuando se ponga en juego un Lugar de una sola cara desde el mazo de Exploración, coloca sobre ese Lugar una cantidad de pistas igual a su valor de pista."
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "Si se acaba el mazo de Exploración sin haber encontrado ni una carta de Traición ni un Lugar indicado por la capacidad de explorar, la exploración simplemente termina. No se considera ni que haya tenido éxito ni que no. Todas los Lugares robados durante la exploración deben devolverse al mazo de Exploración, barajarlo, y la acción del Investigador finaliza."
         }
       ],
       "example": "<i>Ejemplo: El plan 1a (La búsqueda del portal) tiene la siguiente capacidad: “[action]: <b>Explorar</b>. Roba la primera carta del mazo de Exploración. Si es un Lugar conectado, ponlo en juego y muévete a él.”. Ursula Downs está en el Campamento de expedición y quiere encontrar un nuevo Lugar al que viajar. Gasta su primera acción para explorar y roba la primera carta del mazo de Exploración. La carta que roba es el Oasis del desierto. Puesto que el Oasis del desierto es un Lugar que no está conectado al Campamento de expedición, lo coloca junto al mazo de Exploración y roba la siguiente carta de dicho mazo. Esta vez, roba la carta de Traición Tormenta de arena, por lo que la resuelve de forma normal y la coloca en la pila de descartes de Encuentros. Su exploración no ha tenido éxito, y debe devolver el Oasis del desierto que robó anteriormente al mazo de Exploración y barajarlo. Ursula decide explorar una vez más, gastando una segunda acción. Esta vez, roba el Río Nilo, que está conectado al Campamento de expedición. Su exploración tiene éxito. El Río Nilo se pone en juego con tantas pistas encima como su valor de pista, y Ursula se mueve inmediatamente del Campamento de expedición al Río Nilo.</i>"
@@ -38562,7 +38562,7 @@
       "text": "Busca los 6 Enemigos [[Hermandad]] de doble cara. Estos Enemigos tienen cartas de Historia en su dorso <i>(consulta \"Cartas de Historia\")</i>. Algunos de estos Enemigos se colocan bajo la carta de referencia de escenario, como se explica a continuación. El resto se retiran de la partida.",
       "bullets": [
         {
-          "text": "Because you have not played <b>The Eternal Slumber</b>, shuffle these 6 enemies together and place 3 of them beneath the scenario reference card without looking at them."
+          "text": "Como no has jugado <b>El letargo eterno</b>, baraja los 6 Enemigos y coloca 3 de ellos bajo la carta de referencia de escenario sin mirarlos."
         }
       ]
     },
@@ -38571,7 +38571,7 @@
       "text": "Busca los 6 Enemigos [[Hermandad]] de doble cara. Estos Enemigos tienen cartas de Historia en su dorso <i>(consulta \"Cartas de Historia\")</i>. Algunos de estos Enemigos se colocan bajo la carta de referencia de escenario, como se explica a continuación. El resto se retiran de la partida.",
       "bullets": [
         {
-          "text": "Place each of the enemies listed next to <i>“Brotherhood Agents Who Escaped”</i> in your Campaign Log beneath the scenario reference card."
+          "text": "Coloca bajo la carta de referencia de escenario todos los Enemigos anotados en la sección <i>“Agentes de la Hermandad que escaparon”</i> del registro de campaña."
         }
       ]
     },
@@ -38580,7 +38580,7 @@
       "text": "Coloca una cantidad de fichas de Recurso sobre la carta de referencia de escenario (en la sección \"Fuerza del Abismo\") de la siguiente forma <i>(consulta \"Fuerza del Abismo”)</i>.",
       "bullets": [
         {
-          "text": "Because you have not played The Eternal Slumber, place 1 resource for each investigator in the game."
+          "text": "Como no has jugado <b>El letargo eterno</b>, coloca 1 recurso por cada investigador que haya en la partida."
         }
       ]
     },
@@ -38589,7 +38589,7 @@
       "text": "Coloca una cantidad de fichas de Recurso sobre la carta de referencia de escenario (en la sección \"Fuerza del Abismo\") de la siguiente forma <i>(consulta \"Fuerza del Abismo”)</i>.",
       "bullets": [
         {
-          "text": "Place resources equal to the number listed in parentheses next to <i>“dreamers in the abyss”</i> in your Campaign Log."
+          "text": "Coloca una cantidad de recursos igual al número anotado entre paréntesis en la sección <i>“Soñadores en el Abismo”</i> del registro de campaña."
         }
       ]
     },
@@ -39041,6 +39041,10 @@
   "steps": [
     {
       "id": "intro_article",
+      "narration": {
+        "id": "the_circle_undone.at_deaths_doorstep.intro_article",
+        "name": "Intro Article"
+      },
       "bullet_type": "none",
       "text": "<b>Cuatro desaparecidos en paradero desconocido</b>\n\nLos residentes de French Hill siguen conmocionados tras la repentina desaparición de varios invitados y miembros del personal de servicio en la casa del Sr. Josef Meiger durante la noche de la gala benéfica anual del Crepúsculo de Plata del pasado domingo. “Estamos absolutamente desconcertados y sin saber cómo puede haber ocurrido”, dijo el Sr. Meiger el día después de las desapariciones. “Dicho esto, confiamos en que el sheriff Engle y la policía de Arkham iniciarán diligencias para encontrar a los desaparecidos”.\nSigue sin haber la menor prueba en cuanto al paradero de la Srta. Gavriella Mizrah, el Sr. Jerome Davids, el Sr. Valentino Rivas y la Sra. Penny White, quienes desaparecieron en mitad de la celebración y a quienes no se les ha vuelto a ver desde entonces. La policía ofrece una cuantiosa recompensa a cualquiera que proporcione información sobre estas desapariciones. Al preguntarle si la policía está considerando el caso como un homicidio, el sheriff Engle declaró: “Por ahora, no hay motivos para sospechar que haya habido juego sucio. Sin embargo, y dadas las circunstancias, debemos tener en cuenta cualquier posibilidad”. Ninguno de los demás asistentes ha hecho declaraciones en relación a la gala, que pareció terminar sin el menor problema pese a las desapariciones.\nHasta ahora, ninguno de los miembros más importantes de la Logia del Crepúsculo de Plata ha expresado preocupación alguna acerca de la próxima cena benéfica de la Logia, que se trasladó recientemente a la misma ubicación: la finca de Josef Meiger en French Hill. “Estoy seguro de que este acontecimiento será un rotundo éxito”, declaró el Sr. Meiger al Arkham Advertirser en una entrevista realizada ayer. “No hay motivos para que los buenos habitantes de Arkham se preocupen”.\n\n–Minnie Klein"
     },
@@ -40850,6 +40854,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Desde vuestro roce con la muerte en la Colina del Ahorcado, la situación en Arkham no ha hecho más que empeorar. En los días que han pasado desde entonces, se han sucedido más “avistamientos de fantasmas” y se han producido más desapariciones aún. Una fina capa de niebla gris persiste en las calles a todas horas, día y noche. En cuanto el sol comienza a ponerse cada noche, todo el mundo cierra sus puertas a cal y canto. Sin darse cuenta de la verdadera razón, muy poca gente se atreve a aventurarse fuera de noche. Algunos negocios han llegado a cerrar incluso durante el día, alegando el “mal tiempo”. Las cosas se están saliendo de madre."
     },
@@ -40942,6 +40950,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Está claro que la criatura que apareció en la gala benéfica de la Logia no está atada a la mansión de Josef Meiger, lo que significa que los horrores que habéis experimentado podrían ser sólo el comienzo de algo mucho peor. Es hora de informar de vuestras pesquisas a la Logia del Crepúsculo de Plata. Quizás puedan ayudaros a interpretar el conocimiento que habéis reunido y aconsejaros sobre vuestro siguiente paso. Con su ayuda, tal vez logréis salvar Arkham…"
     },
@@ -40964,21 +40976,37 @@
     },
     {
       "id": "deceiving_sidebar",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.deceiving_the_lodge",
+        "name": "Deceiving the Lodge"
+      },
       "type": "story",
       "text": "…aunque sospecháis que la Logia tiene otros intereses. Está claro que la Logia sabe más sobre lo que está ocurriendo de lo que quieren admitir. Hay un propósito siniestro que acecha bajo la superficie de la Logia, y vais a descubrir cuál es."
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Está claro que la criatura que apareció en la gala benéfica de la Logia no está atada a la mansión de Josef Meiger, lo que significa que los horrores que habéis experimentado podrían ser sólo el comienzo de algo mucho peor. Aún no conocéis el porqué exacto, pero sabéis que la Logia del Crepúsculo de Plata tiene alguna relación con la criatura. Quizás sea hora de hacerle una visita a la Logia... con o sin su permiso."
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "No podéis evitar preguntaros si pasasteis por alto algo importante en casa de Josef Meiger. Las cuatro desapariciones que tuvieron lugar en la gala benéfica de la Logia no pudieron ser una coincidencia. Si esas víctimas se encontraron con una criatura como la que visteis en el cementerio, los horrores que habéis experimentado podrían ser sólo el comienzo de algo mucho peor. Aún no conocéis el porqué exacto, pero estáis seguros de que la Logia del Crepúsculo de Plata tiene alguna relación con estos acontecimientos. Quizás sea hora de hacerle una visita a la Logia... con o sin su permiso."
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "Han ocurrido demasiadas desapariciones en la finca de Josef Meiger como para que sea una coincidencia: primero, las cuatro víctimas de la gala benéfica, y luego las que asistieron a la cena benéfica de una semana después. Si se encontraron con una criatura como la que visteis en el cementerio, los horrores que habéis experimentado podrían ser sólo el comienzo de algo mucho peor. Aún no conocéis el porqué exacto, pero estáis seguros de que la Logia del Crepúsculo de Plata tiene alguna relación con estos acontecimientos. Quizás sea hora de hacerle una visita a la Logia... con o sin su permiso."
     },
@@ -41205,6 +41233,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -41222,6 +41254,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "Cada fibra de vuestro ser es estirada cuando la caja tira de vosotros hacia ella. Sin embargo, antes de poder cumplir su misión, una anciana mano cierra la tapa de golpe. Os tambaleáis hacia atrás y os desplomáis cuando la fuerza del tirón se detiene. Cuando por fin os recuperáis, Carl Sanford está de pie frente a vosotros, tan inmutable como siempre. –Veo que han logrado abrir el dispositivo sin derrotar a su guardián. Qué suerte –declara. Examina la caja atentamente, retira la llave y la moneda del recipiente y las reconoce al instante–. Tenía la sensación de que serían un valioso activo para la Logia, pero parece que subestimé su capacidad. Quizás sea el momento de que sepan la verdad que se esconde tras nuestra organización. Tengo el presentimiento de que están predestinados para realizar grandes cosas.\nInesperadamente, el Sr. Sanford os devuelve la caja junto con los componentes que la abren: –Vengan conmigo. Hay mucho de lo que hablar.",
       "steps": [
@@ -41231,6 +41267,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Cada fibra de vuestro ser es estirada cuando la caja tira de vosotros hacia ella. Sin embargo, antes de poder cumplir su misión, lográis alcanzarla y cerrar la tapa de golpe. Os estremecéis incontroladamente mientras os recuperáis. Esta caja es más peligrosa de lo que podríais haber imagino. En manos de la Logia, podría haber sido un arma poderosa, pero no estáis seguros de lo que pretendían hacer con ella. En ese momento, oís que se acercan varios miembros de la Logia. Apartáis rápidamente una de las librerías de la estancia y os ocultáis tras ella antes de que entren. –¿Estás seguro de que oíste a alguien aquí dentro? No veo a nadie –dice uno de ellos.\n–Mm... –El otro se detiene, posiblemente examinando la sala en busca de algún rastro de los intrusos–. No debió de ser nada.\n–Está bien. Estamos todos algo nerviosos desde que desapareció la caja trampa. Vamos, no queremos llegar tarde a la ceremonia. Esta noche es muy importante –El sonido de sus pisadas se va atenuando mientras se marchan. Las palabras del hombre permanecen unos momentos en vuestras mentes. ¿A qué se refería con lo de que esta noche es muy importante? Podría ser igual de importante que la caja enigmática que estaban intentando abrir. Seguís sigilosamente a los dos hombres mientras se adentran en los túneles que hay bajo la Logia. Os cuesta mantener su ritmo mientras tratáis de silenciar vuestros pasos en el suelo de piedra del pasadizo. Al fin, entran por una gran puerta que tiene las tres familiares flechas del Crepúsculo de Plata grabadas en su superficie. Un cántico ritual llena la estancia que hay al otro lado. Os acercáis lentamente y ponéis la oreja en la puerta para escuchar.\n–Hermanos y hermanas –anuncia una voz anciana–, gracias por venir a esta sagrada reunión. Se acerca el momento que llevamos tanto tiempo esperando. Reconocéis la voz del hombre: es Carl Sanford, presidente de la Logia del Crepúsculo de Plata: –Durante muchas décadas, la Orden del Crepúsculo de Plata ha buscado el conocimiento que pueda elevar a la humanidad. Nos hemos defendido de amenazas contra nuestra propia existencia. Lo hemos sacrificado todo por esta causa sagrada. Ahora, una de estas amenazas aterroriza nuestra ciudad, y una vez más debemos hacer lo que sea necesario para protegerla –Su audiencia responde con solemne aprobación–. Esta noche, completaremos el ritual que comenzamos hace muchas noches en el centro de la Isla ignota. Esta noche, por fin ataremos a la resucitada y descubriremos lo que sabe. No debemos permitir que los secretos de AZATHOTH se pierdan con los que quieren hacerle daño a la humanidad.\nLa secta replica con un himno monótono, y aprovecháis la oportunidad para huir de la Logia antes de que os descubran. La conspiración que habéis descubierto os deja con más preguntas aún. Si la resucitada de la que habla el Sr. Sanford es lo que pensáis que es, atarla seguramente proteja Arkham como él afirma. Pero ¿qué conocimiento quieren aprender de ella? ¿Y qué demonios es un “AZATHOTH”?",
       "steps": [
@@ -41242,6 +41282,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "text": "La bestia que surgió de la caja era un guardián violento que masacraba a cualquiera que se cruzara en su camino. De algún modo, lograsteis matar a la criatura, pero con funestas consecuencias. Muchos miembros de la Logia murieron de forma macabra durante el estallido de la bestia, antes de que lograrais acabar con ella. Y lo que es peor aún, el dispositivo del que surgió quedó completamente destruido, hasta quedar irreconocible. No estáis seguros de si se rompió por la aparición de la bestia o como resultado de su muerte, pero, en cualquier caso, es un resultado lamentable. –Esto no ha funcionado como planeábamos –afirma de forma casual uno de los miembros de la Orden ataviados con túnicas mientras examináis la destrozada caja.\n–Creo que te quedas muy corto –añade otra. Le pone la mano en el hombro a uno de vosotros y os aparta amablemente de los restos del dispositivo mientras dice–. Vamos, no hay nada que hacer.\nSu compañero ignora vuestra presencia y se dirige a ella de forma estoica: –Tendremos que acudir a la Isla ignota y completar el ritual de atadura sin la trampa. Ella asiente y os dedica una última mirada antes de que los miembros restantes de la Logia huyan del edificio. ¿Es este el tipo de “sacrificio” que la Logia del Crepúsculo de Plata cree que hay que realizar? Y si es así, ¿qué significa esto para el “rito de atadura” que quieren completar en la Isla ignota?",
       "steps": [
@@ -41984,6 +42028,10 @@
   "steps": [
     {
       "id": "ic_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_1",
+        "name": "The Inner Circle 1"
+      },
       "type": "story",
       "text": "Os llevan a las profundidades del santuario interior, donde sólo se permite el acceso a los miembros de más alto rango de la Logia. El Sr. Sanford explica que la Orden del Crepúsculo de Plata es mucho más antigua e importante que la Logia del Crepúsculo de Plata, que es su cara pública. Su conocimiento se extiende hacia los campos de lo arcano e ignoto. –Durante muchas décadas, la Orden del Crepúsculo de Plata ha buscado el conocimiento que pueda elevar a la humanidad. Nos hemos defendido de amenazas contra nuestra propia existencia. Lo hemos sacrificado todo por esta causa sagrada. Ahora, una de estas amenazas aterroriza nuestra ciudad, y somos los únicos que podemos detenerla. Ya conocen a la criatura de la que hablo. Asentís para afirmar que es cierto.\n–Esto es lo que sabemos: fueron las brujas quienes trajeron esta abominación sobre Arkham. Intentamos detener su ritual pero, por desgracia, no tuvimos éxito al atarla. Ahora ha quedado suelta, y debemos terminar lo que empezamos antes de que las brujas puedan hacer lo mismo. Pero antes, creo que también tienen información para nosotros. Por favor, entreguen lo que han encontrado. Es importante que colaboremos para entender esta situación."
     },
@@ -42015,6 +42063,10 @@
     },
     {
       "id": "ic_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_2",
+        "name": "The Inner Circle 2"
+      },
       "type": "story",
       "text": "Le enseñáis al Sr. Sanford las pruebas que habéis recopilado. –Mm... Sí, ya veo. Es lo que sospechaba –murmura mientras examina los objetos."
     },
@@ -42125,6 +42177,10 @@
     },
     {
       "id": "ic_3",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_3",
+        "name": "The Inner Circle 3"
+      },
       "type": "story",
       "text": "No os fiais de Carl Sanford como para darle estas pruebas. ¿Quién sabe qué hará con ellas? En manos del presidente de la Logia del Crepúsculo de Plata, cualquiera de estos objetos podría ser un instrumento letal. Mentís y le contáis que vuestra investigación ha sido infructuosa hasta el momento. Tensa la mandíbula y se os queda mirando intensamente durante un instante, lanzándoos puñales con sus fríos ojos azules. –Me decepciona oír eso. Pero quizás sea culpa mía; no tendría que haber impuesto una carga tan pesada sobre un neófito de la Orden.\nEl Sr. Sanford se levanta, y el resto de miembros de la Orden lo imitan. Se dirige a los demás miembros del Círculo Interno: –Muy bien. No tenemos más tiempo que perder. Hay que completar el ritual de inmediato. Usaremos el mismo lugar que antes; la columna central de la Isla ignota, donde la barrera entre este mundo y el siguiente es más delgada. Es probable que la anomalía nos persiga hasta allí, así que actuad con precaución –A continuación, se vuelve hacia vosotros–. También nos hará falta su ayuda, claro está. El dispositivo que poseen es la clave para atar a la resucitada. Deben usarlo adecuadamente cuando llegue el momento. ¿Lo entienden? Asentís. Respiráis hondo para calmar los nervios y os preparáis para el viaje a la Isla ignota; un viaje hacia la propia muerte."
     },
@@ -42141,6 +42197,10 @@
     },
     {
       "id": "ic_4",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_4",
+        "name": "The Inner Circle 4"
+      },
       "type": "story",
       "text": "Carl Sanford sonríe y se pone en pie: –Habéis demostrado ser fieles adeptos de nuestra Orden. Creo que es la hora de que ascendáis a nuestro Círculo Interno –Os acercáis al Sr. Sanford y os arrodilláis ante él. Éste extiende los brazos con amplitud y declara–. Os nombro Caballeros del Círculo Interno. Volved a alzaos, caballeros y levantaos con orgullo. Ahora sois uno de los guardianes de élite de la humanidad, guardianes de la verdad y válidos de la Orden del Crepúsculo de Plata. Otro miembro de la Orden os ofrece sendas túnicas azules dobladas, y os las ponéis con solemnidad. –Estoy seguro de que tenéis muchas preguntas para mí. No tenemos mucho tiempo para charlas, pero os merecéis respuestas. ¿Qué deseáis saber?"
     },
@@ -42604,41 +42664,73 @@
     },
     {
       "id": "answer_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_is_the_creature",
+        "name": "What is the Creature?"
+      },
       "type": "story",
       "text": "–Se trata de un poderoso resto que dejó alguien que murió hace mucho tiempo. Las brujas sólo podrían haberlo convocado si tuvieran una fuerte conexión con el alma al cual perteneció antaño –explica el Sr. Sanford–. Sólo podría ser una persona: la mismísima Keziah Mason."
     },
     {
       "id": "answer_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_do_you_want_with_the_creature",
+        "name": "What do you want with the Creature?"
+      },
       "type": "story",
       "text": "–Lo primero y fundamental es atarla para evitar que cause más daños. Eso es de importancia vital. Cuando esté atada, podríamos aprender los secretos que posee sin ponernos en peligro a nosotros mismos o a otros."
     },
     {
       "id": "answer_3",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_do_the_witches_want_with_the_creature",
+        "name": "What do the witches want with the Creature?"
+      },
       "type": "story",
       "text": "–Seguro que quieren aprender sus secretos y extraer su poder –os comenta mientras se mesa la barba–. Quizás incluso permitir que una de las suyas quede poseída por el espíritu para así obtener poder sobre la vida y la muerte."
     },
     {
       "id": "answer_4",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.did_you_know_about_the_creature_before_the_charity_gala",
+        "name": "Did you know about the Creature before the charity gala?"
+      },
       "type": "story",
       "text": "–La verdad es que sí –admite el Sr. Sanford–. Pero no sabíamos que vendría a nosotros. Tras interceder en el rito de invocación de la bruja, investigamos la niebla espectral que permaneció varios días. Probablemente llamamos demasiado la atención, y por eso se vio atraída hacia nuestra presencia. Al final no fue necesariamente algo malo."
     },
     {
       "id": "answer_5",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.where_are_the_four_missing_people_from_the_charity_gala",
+        "name": "Where are the four missing people from the charity gala?"
+      },
       "type": "story",
       "text": "–Sólo Dios lo sabe –responde el Sr. Sanford con un suspiro–. Posiblemente se los llevara la resucitada. O se los tragara la niebla –Se queda pensando un rato y luego añade–. Sospecho que, si siguen con vida, no estarán lejos de la resucitada. Para bien o para mal, la anomalía parece encontrarse en torno a ella."
     },
     {
       "id": "answer_6",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.why_are_you_looking_at_me_like_that",
+        "name": "Why are you looking at me like that?"
+      },
       "type": "story",
       "text": "El Sr. Sanford se aclara la garganta: –Yo... No es nada –miente."
     },
     {
       "id": "ic_5",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_5",
+        "name": "The Inner Circle 5"
+      },
       "type": "story",
       "text": "Carl Sanford le da los objetos y extraños componentes a otro miembro del Círculo Interno, que los coge con cuidado y los lleva arriba. –Gracias por su ayuda en este asunto. Somos más fuertes juntos que separados, ¿no creen?\nEl Sr. Sanford se levanta, y el resto de miembros de la Orden lo imitan. Se dirige a los demás miembros del Círculo Interno: –Muy bien. No tenemos más tiempo que perder. Hay que completar el ritual de inmediato. Usaremos el mismo lugar que antes; la columna central de la Isla ignota, donde la barrera entre este mundo y el siguiente es más delgada. Es probable que la anomalía nos persiga hasta allí, así que actuad con precaución –A continuación, se vuelve hacia vosotros–. También nos hará falta su ayuda, claro está. El dispositivo que poseen es la clave para atar a la resucitada. Deben usarlo adecuadamente cuando llegue el momento. ¿Lo entienden? Asentís. Respiráis hondo para calmar los nervios y os preparáis para el viaje a la Isla ignota; un viaje hacia la propia muerte."
     },
     {
       "id": "ic_6",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_6",
+        "name": "The Inner Circle 6"
+      },
       "type": "story",
       "text": "El Sr. Sanford se levanta, y el resto de miembros de la Orden lo imitan. Se dirige a los demás miembros del Círculo Interno: –Muy bien. No tenemos más tiempo que perder. Hay que completar el ritual de inmediato. Usaremos el mismo lugar que antes; la columna central de la Isla ignota, donde la barrera entre este mundo y el siguiente es más delgada. Es probable que la anomalía nos persiga hasta allí, así que actuad con precaución –A continuación, se vuelve hacia vosotros–. También nos hará falta vuestra ayuda, claro está. El dispositivo que poseéis es la clave para atar a la resucitada. Debéis usarlo adecuadamente cuando llegue el momento. ¿Lo entendéis? Asentís. Respiráis hondo para calmar los nervios y os preparáis para el viaje a la Isla ignota; un viaje hacia la propia muerte."
     },
@@ -43113,6 +43205,10 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "El estudio del piso de arriba de la Logia del Crepúsculo de Plata es acogedor, aunque algo apretado. El suelo está cubierto por una lujosa alfombra, y la sala está iluminada por una cálida luz y llena con varios sofás cómodos y mesitas redondas. En las paredes se alinean retratos de miembros de la Logia de todo el mundo. Carl Sanford, presidente de la Logia, está sentado frente a vosotros, moviendo una copa de Merlot en su arrugada mano.\n–La Logia del Crepúsculo de Plata persigue todo conocimiento que nos pueda ayudar a elevar nuestra comprensión del universo –explica el Sr. Sanford, deteniéndose para dar un sorbo a su vino–. Esa criatura que encontraron en la finca de Josef Meiger... Su aparición no es el único suceso peculiar que ha ocurrido en Arkham últimamente. Díganme: ¿han experimentado algo más que pudiera tener relación con estos acontecimientos recientemente?"
     },
@@ -43146,6 +43242,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Le contáis al Sr. Sanford vuestra experiencia de la semana anterior: que os despertasteis en mitad del bosque, la extraña niebla que serpenteaba entre los árboles, las brujas y su hechizo. Se inclina hacia delante y escucha atentamente mientras le explicáis los extraños acontecimientos de esa noche, aunque vuestros recuerdos siguen algo borrosos. Al acabar la historia, el anciano sopesa vuestras palabras. –Qué interesante –termina diciendo–. Sé de ese aquelarre. Lo dirige una bruja llamada Anette Mason. Su magia no es nada trivial. Han transmitido secretos arcanos que pueden manipular las energías del universo. Poseen un peligroso conocimiento; un conocimiento que creo que obtuvieron de una poderosa bruja que huyó de Salem hace más de doscientos años. ¿Les dice algo el nombre de “Keziah”?\nAsentís. Todos los habitantes de Arkham tienen cuanto menos una ligera idea de la bruja cuyo fantasma supuestamente habita en la vieja “Casa de la bruja” clausurada en French Hill. La mayoría creen que es pura ficción; un cuento para asustar a los críos y que no se acerquen a la decrépita casa. La dura mirada del Sr. Sanford y su adusto tono os deja claro que no es así. –Es posible que esta tal Anette descienda realmente de Keziah, o quizás se limite a usar su nombre. En cualquier caso, creo que estos acontecimientos están relacionados. Por eso tengo una tarea para ustedes, en nombre de la Logia del Crepúsculo de Plata. Carl Sanford se pone en pie, empleando su bastón más por apariencia que para guardar el equilibrio. Vosotros también os levantáis, dispuestos a realizar cualquier misión que sea necesaria para llegar al fondo de este misterio.\n–Necesitamos tanta información sobre este aquelarre como podamos obtener. Si hay un sitio que tendrá esas respuestas, ésa es la casa en la que la propia Keziah vivió hace años. Asentís para indicar que estáis de acuerdo; hay demasiadas preguntas que debéis responder. ¿Qué hechizo estaban lanzando las brujas esa noche en el bosque? ¿Cuál es su motivo? ¿Y qué relación tienen con la criatura que secuestró a esos cuatro desdichados? Le estrecháis la mano al Sr. Sanford y salís para la casa de la bruja."
     },
@@ -43174,6 +43274,10 @@
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Negáis con la cabeza. No estáis seguros de si lo que ocurrió en el bosque tendrá alguna relación, o de si ocurrió de verdad siquiera; una parte de vosotros aún cree que todo fue un extraño sueño. El Sr. Sanford os examina con una fría y penetrante mirada. Tenéis la sensación de que puede ver en vuestro interior. –Muy bien –dice–. Sólo por curiosidad, ¿les dice algo el nombre “Keziah Mason”?\nAsentís. Todos los habitantes de Arkham tienen cuando menos una ligera idea de la bruja cuyo fantasma supuestamente habita en la vieja “Casa de la bruja” clausurada en French Hill. La mayoría creen que es pura ficción; un cuento para asustar a los críos y que no se acerquen a la decrépita casa. La dura mirada del Sr. Sanford y su adusto tono os deja claro que no es así. Señala un viejo y ajado tomo que hay sobre la mesa que tenéis delante y luego lo abre por una página llena de extrañas inscripciones y símbolos arcanos. –Creo que la criatura que encontraron en la mansión de Josef está vinculada con Keziah y el conocimiento secreto que poseía. Compruébenlo ustedes mismos. Cogéis el tomo y examináis atentamente los símbolos de la página."
     },
@@ -43239,16 +43343,28 @@
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Tras la confrontación con el presidente de la Logia del Crepúsculo de Plata, os desplazáis hasta la mansión de la Sociedad Histórica de Arkham en el Barrio Sur. Estáis seguros de que los acontecimientos que vivisteis la semana pasada en el bosque tienen algo que ver con la criatura que secuestró a esos cuatro desdichados. Es una corazonada, una sensación que os hormiguea en la nuca y os implora que miréis hacia otra parte, pero estáis seguros de que todo está conectado. Lo único que no sabéis es cómo\nAl entrar, una de los muchos investigadores de la Sociedad Histórica os saluda y os pregunta si puede ayudaros de algún modo. Le dais una descripción somera de la información que buscáis; lo suficiente como para que pueda indicaros dónde mirar, pero lo bastante vaga como para que no pueda saber vuestros motivos. –No sé por qué están investigando unos asuntos tan macabros, pero los registros que buscan deberían de estar en la biblioteca del tercer piso –os dice la investigadora.\nLe dais las gracias y os dirigís al tercer piso, donde comenzáis a estudiar la historia de la brujería en Arkham. A finales del siglo XVII, Arkham fue una de las poblaciones de Nueva Inglaterra que se vieron envueltas en la histeria de los juicios a las brujas. Las acusaciones de brujería se propagaban como el fuego, y muchas de las acusadas fueron ejecutadas siendo ahorcadas o quemadas, fueran inocentes o culpables. Pero hubo una bruja cuya infamia destacaba sobre el resto y cuyo poder místico nunca fue cuestionado: Keziah Mason.\nReconocéis el nombre como el del fantasma que supuestamente habita en la vieja casa de la bruja de French Hill. Siempre pensasteis que era pura ficción; un cuento para asustar a los críos y que no se acercaran a la casa clausurada. Pero los registros de la Sociedad Histórica indican que Keziah fue una persona real: una poderosa bruja que huyó de Salem hace más de doscientos años.\nLa brujería de verdad no os resulta desconocida. Si Keziah Mason tiene algo que ver con el aquelarre que encontrasteis en el bosque, debéis descubrir cuál es la relación. Salís de la mansión y os dirigís hacia French Hill, donde os espera la casa de la bruja…"
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "La pista que os llevó a la gala benéfica de la Logia del Crepúsculo de Plata no dio sus frutos, pero la lectura de Anna Kaslow sigue resonando en vuestras cabezas una y otra vez. No podéis evitar tener la sensación de que os falta una pieza de este puzle, algo que podéis emplear para evitar el aciago destino que describió la tarotista. Volvéis vuestra atención al aquelarre de brujas que encontrasteis en el bosque la semana pasada, y por eso os desplazáis a la Sociedad Histórica de Arkham, en el Barrio Sur. Quizá haya alguna información que se os pasa por alto y que arrojará luz sobre su identidad o sus motivos.\nAl entrar, una de los muchos investigadores de la Sociedad Histórica os saluda y os pregunta si puede ayudaros de algún modo. Le dais una descripción somera de la información que buscáis; lo suficiente como para que pueda indicaros dónde mirar, pero lo bastante vaga como para que no pueda saber vuestros motivos. –No sé por qué están investigando unos asuntos tan macabros, pero los registros que buscan deberían de estar en la biblioteca del tercer piso –os dice la investigadora.\nLe dais las gracias y os dirigís al tercer piso, donde comenzáis a estudiar la historia de la brujería en Arkham. A finales del siglo XVII, Arkham fue una de las poblaciones de Nueva Inglaterra que se vieron envueltas en la histeria de los juicios a las brujas. Las acusaciones de brujería corrían como el fuego, y muchas de las acusadas fueron ejecutadas siendo ahorcadas o quemadas, fueran inocentes o culpables. Pero hubo una bruja cuya infamia destacaba sobre el resto y cuyo poder místico nunca fue cuestionado: Keziah Mason.\nReconocéis el nombre como el del fantasma que supuestamente habita en la vieja casa de la bruja de French Hill. Siempre pensasteis que era pura ficción; un cuento para asustar a los críos y que no se acercaran a la casa clausurada. Pero los registros de la Sociedad Histórica indican que Keziah fue una persona real: una poderosa bruja que huyó de Salem hace más de doscientos años.\nLa brujería de verdad no os resulta desconocida. Si Keziah Mason tiene algo que ver con el aquelarre que encontrasteis en el bosque, debéis descubrir cuál es la relación. Salís de la mansión y os dirigís hacia French Hill, donde os espera la casa de la bruja…"
     },
     {
       "id": "intro_6",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_6",
+        "name": "Intro 6"
+      },
       "type": "story",
       "text": "Clavas en la pared el artículo de periódico, junto al resto de pruebas que has encontrado. Sea lo que sea lo que ocurre en la mansión de Josef Meiger, se está saliendo de madre. Primero hubo cuatro desapariciones el día 22, durante la gala benéfica anual de la Logia del Crepúsculo de Plata. Y ahora ha desaparecido más gente tras un segundo evento en la misma finca. ¿Está la Logia involucrada de algún modo? ¿Por qué si no iban a trasladar esta cena a la finca del Sr. Meiger?\nY ése no es el único titular. Han estado ocurriendo extraños avistamientos por toda la ciudad: figuras fantasmales, una niebla cenicienta y una silueta encorvada y envuelva en una capa cuya identidad se comenta fervientemente entre la comunidad. El nombre que está en boca de todo el mundo es el de Keziah Mason, el fantasma que supuestamente habita en la vieja casa de la bruja de French Hill. Siempre pensaste que era pura ficción; un relato pensado para asustar a los críos y alejarlos de la casa clausurada. Pero con todas las desapariciones y extrañas visiones que están sucediendo en la ciudad, ya no estás tan seguro. Quizá esta vieja historia de fantasmas tenga algún fundamento después de todo."
     },
@@ -43559,6 +43675,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -43573,6 +43693,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "Despertáis en el enlodado patio que hay al pie de unos deformados escalones de madera, con la puerta delantera de la casa de la bruja sobre vosotros. Cada fibra de vuestro ser está llena de arrepentimiento. Sabéis que habéis fracasado en evitar algo terrible, pero no estáis seguros de qué exactamente. Las pruebas de vuestros ojos y oídos sugieren que lo que visteis en la casa de la bruja no estaba sucediendo en el aquí y ahora. En cualquier caso, habéis descubierto varias cosas sobre Keziah Mason, la bruja que vivió antaño en esta vieja casa abandonada. Con los ánimos decaídos y los cuerpos doloridos, tendréis que conformaros con esta información. No os atrevéis a volver a aventuraros en esa casa infernal.",
       "steps": [
@@ -43585,6 +43709,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Cuando recuperáis la consciencia, estáis tumbados sobre el suelo de madera del cuarto de Walter Gilman. No veis por ninguna parte los accesorios de las siniestras prácticas de Keziah, ni tampoco a la rata barbuda y con colmillos, el “familiar” de Keziah, como ahora sabéis. Cuando estáis a punto de poneros en pie, veis algo que brilla en un rincón de la estancia. Uno de vosotros se arrastra bajo la cama de Gilman y coge el objeto. Es un gastado crucifijo de níquel, similar a los que visteis en el cuarto del reparador de telares. Lo guardáis antes de salir de la perturbadora sala y dejar atrás sus extraños ángulos. Habéis descubierto tanto como os importa descubrir sobre Keziah Mason, la bruja que habitó antaño en esta vieja casa abandonada. Al salir al frío aire de noviembre, os giráis para mirar una última vez la decrépita casa de la bruja. Teméis que, aunque nunca volváis a entrar en este lugar, nunca lo dejaréis atrás realmente en vuestros pensamientos y sueños.",
       "steps": [
@@ -43616,6 +43744,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Desde vuestro encuentro con el fantasma en la casa de la bruja, os habéis visto obligados a replantearos todo lo que sabéis sobre la vida y la muerte. Keziah Mason murió hace más de doscientos años, pero su espíritu permanece en la niebla espectral, la misma que encontrasteis en la mansión de Josef Meiger. Hay una pregunta que os ronda la cabeza cuando examináis los acontecimientos que se han sucedido: ¿permanece el espíritu debido a la niebla, o es su presencia lo que provoca la niebla? ¿Cuál es la enfermedad y cuál el síntoma?\nCuanto más profundizáis en la historia de brujería y persecuciones de Arkham, más inquietud sentís. Noche tras noche, os asaltan terribles sueños de muerte, podredumbre, culpa y pecado. En esta ciudad habita un mal que ha permanecido mucho tiempo oculto en la oscuridad del pasado de Arkham. Y lo que es peor, vuestra investigación ha llegado a un punto muerto. Creéis que, si podéis encontrar el aquelarre de brujas que visteis en el bosque aquella fatídica noche, podríais descubrir más sobre Keziah Mason o este mal innombrable.\nDurante vuestra rutina de cada mañana, veis uno de los titulares más pequeños del periódico de hoy: “¿Apariciones de fantasmas en la Colina del Ahorcado? Los residentes de la Periferia afirman haber visto formas humanas en la espesa niebla que surge del arroyo del Ahorcado...”. No puede ser una coincidencia, ¿verdad?\nEntonces os dais cuenta de algo: si lo que buscáis son las brujas, el único lugar en el que podéis estar seguros de encontrarlas es a dos metros bajo tierra, en el lugar donde las declaradas brujas fueron ejecutadas hace tantos años. Puede que buscar espectros en un cementerio no sea la apuesta más segura, pero no estáis seguros de que nadie pueda seguir estando a salvo en esta ciudad."
     },
@@ -43855,6 +43987,10 @@
     {
       "id": "R1",
       "title": "Resolución 1",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.resolution_1",
+        "name": "Resolution 1"
+      },
       "text": "Rayos de tenue luz solar atraviesan la bruma, y la niebla antinatural retrocede por fin. Al hacerlo, la Colina del Ahorcado vuelve a su estado original. No surgen más fantasmas maliciosos para acosaros, y las brujas que los invocaron han vuelto a retirarse a las sombras. Esperáis haber hecho lo suficiente como para evitar que el resto de Arkham sucumba ante este horror.",
       "steps": [
         "maybe_corn_husk_doll",
@@ -43866,6 +44002,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Caéis de rodillas, resignados a vuestro destino. La niebla se abre. El tiempo parece detenerse mientras aparece el vigilante. Su forma espectral se desliza por el suelo, acercándose con la lenta certeza de un reloj en marcha. Cerráis los ojos, reacios a mirar a vuestro asesino. Cerráis los puños con fuerza y os preparáis.\nEl momento pasa.\nCuando volvéis a abrir los ojos, la criatura ha desaparecido junto con la niebla espectral.\n¿Habéis sido perdonados...?",
       "steps": [
@@ -46838,13 +46978,17 @@
       "id": "black_cat_1",
       "narration": {
         "id": "the_dreameaters.interlude_1.the_black_cat_1",
-        "name": "Black Cat 1"
+        "name": "The Black Cat 1"
       },
       "type": "story",
       "text": "<i>Tras el escenario 1–A, los soñadores viajan más allá del Bosque Encantado...</i>\nCuando salís del Bosque Encantado, atravesáis ondulantes praderas verdes bajo un cielo sin nubes de un brillante color azul. Habláis con el hombre rubio, que se presenta como Randolph Carter, durante varias horas en vuestro viaje hacia el sur. Pasáis por una ciudad que Randolph llama Nir y sobre un puente de piedra que cruza un ancho río. Puesto que el hombre parece amable y que sabe mucho sobre vuestro mundo y sobre éste, le explicáis vuestra situación: que seguisteis los escritos de un hombre llamado Virgil Gray para llegar a esta extraña tierra, para poder ver por vosotros mismos qué había de verdad en su historia.\n–Hay un lugar en Ulthar en el que quizá podáis conocer a este hombre –responde Randolph–. Cuando lleguemos a Ulthar, os lo mostraré.\nLa ciudad de Ulthar no es como habíais imaginado. El límite de la ciudad lo marca un camino adoquinado que separa sus pintorescas fincas de las verdes praderas del otro lado. Dentro de la ciudad, las estrechas calles empedradas están a rebosar de gatos de todas clases y colores que se apartan cuando os acercáis. Los antiguos tejados a dos aguas y los pisos superiores voladizos de las casas penden sobre las empinadas calles; toda la población parece un caótico cúmulo de hogares y negocios de toda la vida. Al llegar a la plaza de la ciudad que hay cerca del centro, Randolph se detiene y se dirige a vosotros con una sonrisa juvenil: –Bienvenidos a Ulthar –proclama–. Como os mencioné antes, aquí estáis bastante seguros. Mientras recorráis este lugar, hay una ley fundamental que debéis tener en mente: en la ciudad de Ulthar, nadie puede matar a un gato.\nDado que las calles están más que repletas de gatos, os preguntáis en voz alta si es que la ciudad la gobiernan los gatos.\n–No exactamente –contesta Randolph mientras sopesa vuestras palabras–. Aunque supongo que podría decirse que se trata del centro de la sociedad gatuna en las Tierras del Sueño. El motivo de la existencia de esa ley es una historia para otro momento. Antes, venid... Tengo la sensación de que a este tal Virgil del que habláis lo encontraremos en la taberna de Einar.\nRandolph os guía por la plaza de la ciudad, que está rodeada de edificios adornados con motivos gatunos en forma de estatuas, carteles y hasta vidrieras. Acabáis por llegar a uno de esos edificios, que tiene un letrero que dice: “Casa Einar”. El interior es una taberna de estilo medieval con largas mesas de madera. Veis a varios clientes y el triple de gatos. Uno de los clientes que está en la barra de madera da pequeñas tiras de carne seca a uno de los gatos. Es un hombre apuesto apenas entrado en la treintena, con pelo corto y negro, una fuerte mandíbula y pómulos marcados. Lo reconocéis al instante: es el escritor Virgil Gray.\nEn vuestra cabeza, os preguntáis si este encuentro fortuito es producto del azar o algo predestinado, para bien o para mal.\nSea como sea, os acercáis al hombre y os presentáis junto con Randolph. Virgil os estrecha la mano a todos con una sonrisa jovial.\n–¡Bienhallados, compañeros soñadores! –dice el escritor con cierto tono de emoción juvenil en la voz–. Es fantástico conocer a más creyentes. Me estaba hartando de leer acerca de mi supuesta “enfermedad” en los periódicos.\nAsentís con la cabeza e informáis a Virgil de que queréis encontrar alguna prueba de este descubrimiento que podáis llevar de vuelta al mundo de la vigilia.\n–¿No creéis que ya lo he intentado? –responde adusto–. Por desgracia, es imposible que alguien que está dormido lleve algo de este reino al mundo real. Veréis, esto es todo imaginación. Ideas, conceptos, fantasías. No podéis agarrar un pensamiento con las manos, ¿verdad?\nRandolph interviene: –Hay un lugar en las Tierras del Sueño que podría contener la prueba que buscáis. Lo he visto en mis sueños. Lo he visitado tres veces, y cada vez fue un instante fugaz antes de que me sacara de allí el sol naciente... Pero por mucho que lo intente, no logro encontrar el camino de vuelta. He pasado muchas noches buscando.\n–¿Oh? –pregunta Virgil, intrigado–. ¿Y cuál es ese lugar?\n–Es una ciudad maravillosa –describe con los ojos brillantes de admiración–. Dorada y encantadora como nada que hubiera visto antes o que haya visto desde entonces. Una ciudad al otro lado de los picos de la ignota montaña Kadath, donde nadie ha pisado nunca. Allí, oculta entre las nubes y coronada por estrellas, se encuentra el castillo de ónice de los Primigenios.\nVirgil acaricia distraídamente el gato que hay en la barra junto a él, absorto por el relato de Randolph. El animal es esbelto y tiene un lustroso pelaje negro, oscuro como el vacío del espacio.\n–¡Entonces debemos encontrar ese lugar! Incluso si no contiene la prueba que buscamos, parece la aventura de nuestras vidas. ¡Bastará para llenar cien páginas o más!\nLes decís a Virgil y Randolph que, antes de aceptar emprender una aventura así, debéis volver al mundo de la vigilia y contarles vuestras experiencias a vuestros compañeros. En ese momento, una voz enigmática y queda interviene en la conversación: –Oh, no podéis despertar. El ojo está fijo en vosotros.\nTodos miráis de un lado a otro en busca del origen de la voz. ¿El tabernero? ¿Otro cliente? En ese momento, el gato negro de Virgil se despereza y se queda sentado; sus penetrantes ojos amarillos reflejan la luz del sol que entra por la ventana.\n–Llevo mucho tiempo esperando a que quisierais ir a Kadath –dice.\n–¿Puedes hablar? –pregunta Virgil, que pega un salto de sorpresa y está a punto de tirar su taburete.\n–Soy un gato, bobo. Claro que puedo hablar –responde el gato negro mientras se lame la pata por aburrimiento–. Debes de haber conocido a mil gatos de Ulthar, ¿y ahora te sorprendes?\n–Pero... Yo pensaba... –Virgil se pasa la mano por la frente.\n–No le hagáis caso –dice el gato negro, dirigiéndose directamente a vosotros–. Os aseguro que no podréis volver al mundo de la vigilia hasta que encontréis Kadath. Es vuestra única salida. Entretanto, yo iré a hablarles a vuestros compañeros de la misión que os espera –Salta de la barra y camina con firmeza hacia la puerta–. Aunque imagino que su tarea será más ardua aún..."
     },
     {
       "id": "connect_campaign_branch",
+      "narration": {
+        "id": "the_dreameaters.interlude_1.campaign_branch",
+        "name": "Campaign Branch"
+      },
       "text": "Si estás jugando <i>La búsqueda onírica</i> y <i>La red de los sueños</i> como campañas interconectadas.",
       "type": "branch",
       "condition": {
@@ -46870,6 +47014,10 @@
     },
     {
       "id": "black_cat_vanishes",
+      "narration": {
+        "id": "the_dreameaters.interlude_1.the_black_cat_vanishes",
+        "name": "The Black Cat Vanishes"
+      },
       "type": "story",
       "text": "El enigmático gato desaparece por la puerta antes de que podáis responder."
     },
@@ -46967,7 +47115,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "black_cat_decision",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that <i>the black cat delivered news of your plight.</i>",
+        "prompt": "Dile a los investigadores de <i>La red de los sueños</i> (Campaña B) que <i>el gato negro llevó noticias del problema de los investigadores.</i>",
         "decision": "black_cat_delivered_news"
       }
     },
@@ -47015,7 +47163,7 @@
         "type": "send_campaign_link",
         "id": "black_cat_decision",
         "decision": "black_cat_shared_knowledge_of_the_dreamlands",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that <i>the black cat shared knowledge of the Dreamlands.</i>"
+        "prompt": "Dile a los investigadores de <i>La red de los sueños</i> (Campaña B) que <i> el gato negro compartió conocimiento sobre las Tierras del Sueño.</i>"
       }
     },
     {
@@ -47037,7 +47185,7 @@
         "type": "send_campaign_link",
         "id": "black_cat_decision",
         "decision": "black_cat_warned_the_others",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that <i>the black cat warned the others.</i>"
+        "prompt": "Dile a los investigadores de <i>La red de los sueños</i> (Campaña B) que <i>el gato negro advirtió a los demás.</i>"
       }
     },
     {
@@ -47072,7 +47220,7 @@
         "type": "send_campaign_link",
         "id": "black_cat_decision",
         "decision": "threaten_black_cat",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), <i>okay, fine, have it your way then.</i>"
+        "prompt": "Dile a los investigadores de <i>La red de los sueños</i> (Campaña B), <i>pues vale, como queráis.</i>"
       }
     },
     {
@@ -48050,7 +48198,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "great_ones_black_cat_is_searching_for_the_truth",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B) to keep <i>the black cat is searching for the truth</i> in their campaign log.",
+        "prompt": "Dile a los investigadores de <i>La red de los sueños</i> (Campaña B) que anoten en su registro de campaña que <i>el gato negro está buscando la verdad</i>.",
         "decision": "keep"
       }
     },
@@ -48172,7 +48320,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "great_ones_decision",
-        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that the black cat wandered off without taking a message.",
+        "prompt": "Dile a los investigadores de <i>La red de los sueños</i> (Campaña B) que el gato negro se marchó sin llevar un mensaje.",
         "decision": "black_cat_wanders_off"
       }
     },
@@ -48857,7 +49005,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "oneironauts_searching_for_the_truth",
-        "prompt": "If asked by the investigators of <i>The Web of Dreams</i> if <i>the black cat is searching for the truth</i>, tell them no.",
+        "prompt": "Si los investigadores de <i>La red de los sueños</i> preguntan si <i>el gato negro está buscando la verdad</i>, diles que no.",
         "decision": "no_change"
       }
     },
@@ -54260,7 +54408,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "great_ones_silver_key",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> that <i>the black cat brought a Silver Key</i>.",
+        "prompt": "Dile a los investigadores de <i>La búsqueda onírica</i> (Campaña A) que <i>el gato negro trajo la llave de plata</i>.",
         "decision": "transfer_key"
       }
     },
@@ -54270,7 +54418,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "great_ones_silver_key",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> that <i>the black cat did not bring a key</i>.",
+        "prompt": "Dile a los investigadores de <i>La búsqueda onírica</i> (Campaña A) que <i>el gato negro no trajo ninguna llave</i>.",
         "decision": "no_key"
       }
     },
@@ -54706,7 +54854,7 @@
         "type": "send_campaign_link",
         "id": "oneironauts_black_cat_has_a_hunch",
         "decision": "keep",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), to keep <i>the black cat has a hunch</i> in their Campaign Log."
+        "prompt": "Dile a los investigadores de <i>La búsqueda onírica</i> (Campaña A) que anoten en su registro de campaña que <i>el gato negro tiene una corazonada</i>."
       }
     },
     {
@@ -54891,7 +55039,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "oneironauts_decision",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the black cat requested aid from the others.</i>",
+        "prompt": "Dile a los investigadores de <i>La búsqueda onírica</i> (Campaña A) que <i>el gato negro les pidió ayuda a los demás.</i>",
         "decision": "black_cat_requested_aid"
       }
     },
@@ -54912,7 +55060,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "oneironauts_decision",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the black cat shared knowledge of the Underworld.</i>",
+        "prompt": "Dile a los investigadores de <i>La búsqueda onírica</i> (Campaña A) que <i>el gato negro compartió conocimientos sobre el Mundo subterráneo.</i>",
         "decision": "black_cat_shared_knowledge_of_the_underworld"
       }
     },
@@ -54933,7 +55081,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "oneironauts_decision",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the black cat warned the others.</i>",
+        "prompt": "Dile a los investigadores de <i>La búsqueda onírica</i> (Campaña A) que <i>el gato negro advirtió a los demás.</i>",
         "decision": "black_cat_warned_the_others"
       }
     },
@@ -56245,7 +56393,7 @@
         "type": "send_campaign_link",
         "id": "dreamers_grow_weaker",
         "decision": "dreamers_are_strong",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the dreamers are strong</i>."
+        "prompt": "Dile a los investigadores de <i>La búsqueda onírica</i> (Campaña A) que <i> los soñadores están fuertes.</i>"
       }
     },
     {
@@ -57483,7 +57631,7 @@
           "text": "Cuando se ponga en juego un Lugar de una sola cara desde el mazo de Exploración, coloca sobre ese Lugar una cantidad de pistas igual a su valor de pista."
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "Si se acaba el mazo de Exploración sin haber encontrado ni una carta de Traición ni un Lugar indicado por la capacidad de explorar, la exploración simplemente termina. No se considera ni que haya tenido éxito ni que no. Todas los Lugares robados durante la exploración deben devolverse al mazo de Exploración, barajarlo, y la acción del Investigador finaliza."
         }
       ],
       "example": "<i>Ejemplo: El plan 1a (Expedición en tierra salvaje) tiene la siguiente capacidad: “[action]: <b>Explorar</b>. Roba la primera carta del mazo de Exploración. Si es un Lugar conectado, ponlo en juego y muévete a él.”. Ursula Downs está en el Campamento de expedición y quiere encontrar un nuevo Lugar al que viajar. Gasta su primera acción para explorar y roba la primera carta del mazo de Exploración. La carta que roba es la Senda enrevesada. Puesto que la Senda enrevesada es un Lugar que no está conectado al Campamento de expedición, lo coloca junto al mazo de Exploración y roba la siguiente carta de dicho mazo. Esta vez, roba la carta de Traición Escaso de suministros, por lo que la resuelve de forma normal y la coloca en la pila de descartes de Encuentros. Su exploración no ha tenido éxito, y debe devolver la Senda enrevesada que robó anteriormente al mazo de Exploración y barajarlo. Ursula decide explorar una vez más, gastando una segunda acción. Esta vez, roba el Sendero de espinas, que está conectado al Campamento de expedición. Su exploración tiene éxito. El Sendero de espinas se pone en juego con tantas pistas encima como su valor de pista, y Ursula se mueve inmediatamente del Campamento de expedición al Sendero de espinas.</i>"
@@ -59221,7 +59369,7 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Gasolina",
-        "prompt": "Use gasoline",
+        "prompt": "Usar la gasolina",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -59322,7 +59470,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
-        "prompt": "Use provisions",
+        "prompt": "Usar las provisiones",
         "investigator": "all",
         "choices": [
           {
@@ -59369,7 +59517,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
-        "prompt": "Use medicine",
+        "prompt": "Usar las medicinas",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -59891,7 +60039,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
-        "prompt": "Use provisions",
+        "prompt": "Usar las provisiones",
         "investigator": "all",
         "choices": [
           {
@@ -59938,7 +60086,7 @@
         "section": "supplies",
         "id": "binoculars",
         "investigator": "choice",
-        "prompt": "Group's lookout",
+        "prompt": "Centinela del grupo",
         "positiveChoice": {
           "id": "positive",
           "text": "Siluetas en los árboles",
@@ -60015,7 +60163,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
-        "prompt": "Use medicine",
+        "prompt": "Usar las medicinas",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -60915,7 +61063,7 @@
         "section": "supplies",
         "id": "gasoline",
         "name": "Gasolina",
-        "prompt": "Use gasoline",
+        "prompt": "Usar la gasolina",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -62449,7 +62597,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "text": "Crea la bolsa de caos con las siguientes fichas: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -62481,15 +62629,15 @@
     },
     {
       "id": "setup_standalone_log_1",
-      "text": "<i>You are not forging your own path.</i>"
+      "text": "<i>Los investigadores no se están forjando su propio camino.</i>"
     },
     {
       "id": "setup_standalone_log_2",
-      "text": "<i>Ichtaca's faith is not restored.</i>"
+      "text": "<i>Ichtaca no ha recuperado la fe.</i>"
     },
     {
       "id": "setup_standalone_log_3",
-      "text": "<i>The relic is missing.</i>",
+      "text": "<i>La reliquia ha desaparecido.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -62501,25 +62649,25 @@
     },
     {
       "id": "explain_difficulty",
-      "text": "The investigators may choose how many tally marks are under “Yig’s Fury.” The lower the number chosen, the safer and easier the scenario will be.",
+      "text": "Los investigadores pueden elegir cuántas marcas hay en la sección “Furia de Yig”. Cuanto menor sea el número elegido, más seguro y fácil será el escenario.",
       "bullets": [
         {
-          "text": "For a safer and easier experience, choose 0 or 5."
+          "text": "Para una experiencia más segura y fácil, elige 0 o 5."
         },
         {
-          "text": "For an average experience, choose 10 or 14."
+          "text": "Para una experiencia intermedia, elige 10 o 14."
         },
         {
-          "text": "For a more brutal experience, choose 17 or 20. "
+          "text": "Para una experiencia más brutal, elige 17 o 20."
         },
         {
-          "text": "For the ultimate challenge, choose 21 or higher."
+          "text": "Si quieres el reto definitivo, elige 21 o más."
         }
       ]
     },
     {
       "id": "choose_yigs_fury",
-      "text": "Choose the amount of \"Yig's Fury\" to start with:",
+      "text": "Elige la cantidad de “Furia de Yig” para empezar:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -62613,11 +62761,11 @@
     },
     {
       "id": "setup_standalone_supplies",
-      "text": "<i>You have no supplies.</i>"
+      "text": "<i>No tienes suministros.</i>"
     },
     {
       "id": "standalone_unwinnable",
-      "text": "This scenario is <b>unwinnable</b> in Standalone Mode. Your goal is to continue playing for as long as you can. Once each investigator has been defeated, the current depth level will determine how well you performed."
+      "text": "Este escenario es <b>imposible de ganar</b> al jugarlo de forma independiente. El objetivo es seguir jugando tanto como puedas. Cuando todos los investigadores hayan sido derrotados, el nivel de profundidad en ese momento determinará lo bien que has jugado."
     },
     {
       "id": "intro_1",
@@ -63580,7 +63728,7 @@
         "section": "supplies",
         "id": "rope",
         "name": "Cuerda",
-        "prompt": "Use rope",
+        "prompt": "Usar la cuerda",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -64088,7 +64236,7 @@
         "section": "supplies",
         "id": "provisions",
         "name": "Provisiones",
-        "prompt": "Use provisions",
+        "prompt": "Usar las provisiones",
         "investigator": "all",
         "choices": [
           {
@@ -64132,7 +64280,7 @@
         "section": "supplies",
         "id": "medicine",
         "name": "Medicinas",
-        "prompt": "Use medicine",
+        "prompt": "Usar las medicinas",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -66623,7 +66771,7 @@
 {
   "id": "a_light_in_the_fog",
   "scenario_name": "Una luz en la niebla",
-  "full_name": "Scenario VI: A Light in the Fog",
+  "full_name": "Escenario VI: Una luz en la niebla",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -66631,7 +66779,7 @@
 {
   "id": "beneath_the_waves",
   "scenario_name": "Bajo las olas",
-  "full_name": "Interlude III: Beneath the Waves",
+  "full_name": "Interludio III: Bajo las olas",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -66639,7 +66787,7 @@
 {
   "id": "devil_reef",
   "scenario_name": "Arrecife del Diablo",
-  "full_name": "Scenario IV: Devil Reef",
+  "full_name": "Escenario IV: Arrecife del Diablo",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -66647,15 +66795,15 @@
 {
   "id": "hidden_truths",
   "scenario_name": "Verdades ocultas",
-  "full_name": "Interlude IV: Hidden Truths",
+  "full_name": "Interludio IV: Verdades ocultas",
   "type": "placeholder",
   "setup": [],
   "steps": []
 },
 {
   "id": "horror_in_high_gear",
-  "scenario_name": "Horror a toda Máquina",
-  "full_name": "Scenario V: Horror in High Gear",
+  "scenario_name": "Horror a toda máquina",
+  "full_name": "Escenario V: Horror a toda máquina",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -66663,7 +66811,7 @@
 {
   "id": "in_too_deep",
   "scenario_name": "Hasta el cuello",
-  "full_name": "Scenario III: In Too Deep",
+  "full_name": "Escenario III: Hasta el cuello",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -67338,7 +67486,7 @@
 {
   "id": "into_the_maelstrom",
   "scenario_name": "Hacia el remolino",
-  "full_name": "Scenario VIII: Into the Maelstrom",
+  "full_name": "Escenario VIII: Hacia el remolino",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -67556,8 +67704,8 @@
 },
 {
   "id": "the_lair_of_dagon",
-  "scenario_name": "La guarida de Dagon",
-  "full_name": "Scenario VII: The Lair of Dagon",
+  "scenario_name": "La guarida de Dagón",
+  "full_name": "Escenario VII: La guarida de Dagón",
   "type": "placeholder",
   "setup": [],
   "steps": []

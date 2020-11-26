@@ -39041,6 +39041,10 @@
   "steps": [
     {
       "id": "intro_article",
+      "narration": {
+        "id": "the_circle_undone.at_deaths_doorstep.intro_article",
+        "name": "Intro Article"
+      },
       "bullet_type": "none",
       "text": "<b>Vier Personen vermisst, noch keine Hinweise auf ihren Aufenthaltsort</b>\n\nUnter den Bewohnern des Französischen Viertels herrscht immer noch helle Aufregung, nachdem letzten Sonntag bei der jährlichen Wohltätigkeitsgala der Silberloge der Dämmerung einige Gäste und Angehörige des Personals von Josef Meigers Anwesen verschwunden sind. „Wir haben nicht die geringste Ahnung, wie das passieren konnte“, äußerte sich Mr. Meiger am Tag nach dem Verschwinden. „Aber wir haben vollstes Vertrauen in Sheriff Engle und die Polizei von Arkham. Ich bin davon überzeugt, dass sie mit größter Sorgfalt ermitteln und die vermissten Personen finden werden.“\nBis jetzt gibt es noch keine Hinweise auf den derzeitigen Aufenthaltsort von Miss Gavriella Mizrah, Mr. Jerome Davids, Mr. Valentino Rivas und Mrs. Penny White. Diese vier Personen verschwanden im Verlauf der Veranstaltung und wurden seitdem nicht mehr gesehen. Die Polizei hat eine nicht unbeträchtliche Belohnung für Hinweise, die zur Lösung der Vermisstenfälle beitragen, ausgesetzt. Auf die Frage, ob die Polizei von einem Tötungsdelikt ausgehe, antwortete Sheriff Engle: „Es gibt derzeit noch keinen konkreten Hinweis, dass hier ein Verbrechen vorliegt. Aber unter den gegebenen Umständen müssen wir jede Möglichkeit in Betracht ziehen.“ Bisher hat noch keiner der anderen Gäste der Veranstaltung einen Kommentar abgegeben. Offensichtlich wurde die Gala trotz der Vermisstenfälle fortgesetzt.\nAuch von den prominenten Mitgliedern der Silberloge der Dämmerung hat sich noch niemand dazu geäußert, welche Auswirkungen dies auf das bevorstehende Benefiz-Abendessen haben könnte. Erst kürzlich wurde der geplante Veranstaltungsort für das Dinner verlegt: Es soll jetzt ebenfalls auf Josef Meigers Anwesen im Französischen Viertel stattfinden. „Ich bin sicher, dass diese Veranstaltung ein voller Erfolg wird“, äußerte sich Mr. Meiger gestern in einem Interview im <i>Arkham Advertiser</i>. „Für die aufrechten Bürger Arkhams gibt es keinen Anlass zur Sorge.“\n\n–Minnie Klein"
     },
@@ -40850,6 +40854,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Seitdem du den Hauch des Todes am Henkershügel verspürt hast, hat sich die Situation in Arkham weiter verschlechtert. In den Tagen danach kam es zu immer mehr „Geistersichtungen“ und sogar weitere Vermisstenfälle sind aufgetreten. Ein dünner Schleier grauen Nebels zieht nun zu jeder Stunde – Tag und Nacht – durch die Straßen. Sobald die Sonne abends untergeht, werden die Türen fest verschlossen. Ohne selbst den Grund zu kennen, trauen sich immer weniger Menschen nachts auf die Straße. Einige Geschäfte haben sogar tagsüber wegen „schlechten Wetters“ geschlossen. Die ganze Situation gerät außer Kontrolle."
     },
@@ -40942,6 +40950,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Die Kreatur, die auf der Wohltätigkeitsgala der Loge erschien, ist nicht an das Anwesen Josef Meigers gebunden. Das bedeutet, dass der Schrecken, der dir wider fahren ist, nur der Anfang von etwas Schlimmerem sein könnte. Es wird Zeit, der Silberloge der Dämmerung von deinen Erkenntnissen zu berichten. Vielleicht können sie Rückschlüsse aus deinem gesammelten Wissen ziehen und dir dabei helfen, den nächsten Schritt zu tun. Mit ihrer Hilfe könnte es dir gelingen, Arkham zu retten …"
     },
@@ -40964,21 +40976,37 @@
     },
     {
       "id": "deceiving_sidebar",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.deceiving_the_lodge",
+        "name": "Deceiving the Lodge"
+      },
       "type": "story",
       "text": "…obwohl du vermutest, dass die Loge andere Interessen verfolgt. Die Loge weiß eindeutig mehr über die Vorfälle, als sie eingestehen möchte. Es lauern düstere Absichten unter der Oberfläche der Loge und du wirst herausfinden, was diese Absichten sind."
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Die Kreatur, die auf der Wohltätigkeitsgala der Loge erschien, ist nicht an das Anwesen Josef Meigers gebunden. Das bedeutet, dass der Schrecken, der dir widerfahren ist, nur der Anfang von etwas Schlimmerem sein könnte. Du bist dir noch nicht sicher, warum, aber du bist überzeugt, dass die Silberloge der Dämmerung mit dieser Kreatur in Verbindung steht. Vielleicht ist es an der Zeit, der Loge einen Besuch abzustatten – ob mit oder ohne ihre Erlaubnis."
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Du fragst dich, ob du nicht ein wichtiges Detail in Josef Meigers Haus übersehen hast. Die vier Vermisstenfälle auf der Wohltätigkeitsgala der Loge können kein Zufall sein. Wenn diese Opfer einer Kreatur ähnlich der, die du auf dem Friedhof gesehen hast, begegnet sind, könnte der Schrecken, der dir widerfahren ist, nur der Anfang von etwas Schlimmerem sein. Du bist dir noch nicht sicher, warum, aber du bist überzeugt, dass die Silberloge der Dämmerung mit dieser Kreatur in Verbindung steht. Vielleicht ist es an der Zeit, der Loge einen Besuch abzustatten – ob mit oder ohne ihre Erlaubnis."
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "Auf Josef Meigers Anwesen sind zu viele Personen verschwunden, als dass es nur ein Zufall sein könnte: Erst die vier Opfer auf der Wohltätigkeitsgala, dann die jenigen auf dem Benefizdinner eine Woche später. Wenn sie einer Kreatur ähnlich der, die du auf dem Friedhof gesehen hast, begegnet sind, könnte der Schrecken, der dir widerfahren ist, nur der Anfang von etwas Schlimmerem sein. Du bist dir noch nicht sicher, warum, aber du bist überzeugt, dass die Silberloge der Dämmerung mit dieser Kreatur in Verbindung steht. Vielleicht ist es an der Zeit, der Loge einen Besuch abzustatten – ob mit oder ohne ihre Erlaubnis."
     },
@@ -41205,6 +41233,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
       "investigator_status": [
         "resigned",
@@ -41222,6 +41254,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Jede Faser deines Körpers dehnt sich, als die Kiste versucht dich in sie hineinzuziehen. Bevor sie dieses Vorhaben jedoch abschließen kann, wird sie von einer älteren Hand zugeschlagen. Du taumelst rückwärts, als die Kraft von dir ablässt. Nachdem du wieder bei Sinnen bist, steht Carl Sanford ungerührt über dir. „Ich sehe, dass es Ihnen gelungen ist, die Apparatur zu öffnen, ohne den Wächter zu besiegen. Wie bedauerlich“, erklärt er. Er untersucht die Kiste eindringlich, entfernt den Schlüssel sowie die Münze aus dem Behältnis und erkennt beides sofort. „Ich hatte es im Gefühl, dass Sie der Loge noch zu Diensten sein können. Aber es scheint, ich habe ihre Findigkeit ein wenig unterschätzt. Vielleicht ist es an der Zeit, Ihnen die wahre Geschichte unserer Organisation zu erzählen. Ich denke, Sie sind für größere Dinge bestimmt.“ Mr. Sanford reicht dir unerwarteterweise die Rätselkiste samt der Komponenten, die das Schloss öffnen. „Folgen Sie mir. Es gibt viel zu bereden.“",
       "steps": [
@@ -41231,6 +41267,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Jede Faser deines Körpers dehnt sich, als die Kiste versucht dich in sie hineinzuziehen. Bevor sie dieses Vorhaben jedoch abschließen kann, gelingt es dir, nach vorne zu greifen und den Deckel zuzuschlagen. Du zitterst unkontrolliert, als du wieder zu Sinnen kommst. Die Kiste ist gefährlicher, als du auch nur ahnen konntest. In den Händen der Loge hätte sie eine mächtige Waffe sein können. Aber du bist dir nicht sicher, was sie mit ihr planten. In diesem Augenblick hörst du, wie sich dir einige Logenmitglieder nähern. Schnell verschiebst du eines der Buchregale ein wenig und versteckst dich dahinter, noch bevor sie den Raum betreten. „Bist du sicher, dass das Geräusch von hier kam? Ich sehe niemanden“, sagt einer von ihnen.\n„Hm…“, überlegt der andere. Wahrscheinlich sucht er gerade nach Anzeichen für Eindringlinge. „War wohl nichts.“\n„Ist in Ordnung. Wir sind alle etwas angespannt, seitdem die Falle verschwunden ist. Komm jetzt - wir wollen nicht zu spät zur Zeremonie kommen. Heute ist eine wichtige Nacht!“ Ihre Schritte werden immer leiser. Was meinte er damit, dass heute eine wichtige Nacht sei? Das könnte ähnlich wichtig sein wie die Rätselkiste, die sie vergeblich versucht haben zu öffnen. Du folgst leise den beiden Männern, als sie die Tunnel unterhalb der Loge betreten. Es fällt dir schwer, hinterherzukommen, und dabei trotzdem auf dem Steinboden des Durchgangs kein Geräusch zu verursachen. Dann treten sie durch eine große Tür, die mit den dir bekannten drei Pfeilen der Silberdämmerung verziert ist. Ritualgesänge erklingen von der anderen Seite der Halle. Du näherst dich zaghaft und presst dann dein Ohr an die Tür.\n„Brüder und Schwestern“, beginnt eine ältere Stimme zu verkünden, „danke für euer Erscheinen zu dieser geweihten Versammlung. Die Zeit, auf die wir lange gewartet haben, ist nah.“ Du erkennst die Stimme des Mannes. Es ist Carl Sanford, der Präsident der Silberloge der Dämmerung. „Seit Jahrzehnten ist der Orden der Silbernen Dämmerung auf der Suche nach Wissen, dass die Menschheit emporheben kann. Wir haben uns gegen Bedrohungen der Basis unseres Wirkens gewehrt. Wir haben für diese geheiligte Sache alles geopfert. Jetzt terrorisiert eine dieser Bedrohungen unsere Stadt und wir müssen nun erneut tun, was getan werden muss, um die Stadt zu beschützen.“ Die Menge reagiert mit pathetischer Zustimmung. „Heute Nacht werden wir das Ritual, das wir vor vielen Nächten begonnen haben, in der Mitte der Unerforschten Insel zu Ende führen. Heute Nacht werden wir den Wiedergänger endlich binden und von ihm lernen, was er weiß. Wir dürfen es nicht zulassen, dass die Geheimnisse von AZATOTH zu denen gelangen, die der Menschheit Schaden bringen wollen.“\nDer Kult antwortet mit einem monotonen Lobgesang. Diese Gelegenheit nutzt du, um aus der Loge zu flüchten, bevor du entdeckt wirst. Die Verschwörung, derer du gerade Zeuge warst, lässt dich mit noch mehr offenen Fragen zurück. Wenn der Wiedergänger, von dem Mr. Sanford spricht, das ist, was du denkst, wird ihn zu binden Arkham sicherlich schützen, wie er behauptet hat. Aber welches Wissen wollen sie von ihm erlangen? … Und was zur Hölle ist ein „AZATOTH“?",
       "steps": [
@@ -41242,6 +41282,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Die Bestie, die der Kiste entwichen ist, war ein grausamer Wächter, der jeden in seinem Weg niedergemetzelt hat. Irgendwie hast du es geschafft, die Kreatur zu erschlagen, aber die Konsequenzen waren entsetzlich. Logenmitglieder wurden durch seine Raserei grausam getötet, bevor es dir gelang, die Bestie endgültig zu bezwingen. Schlimmer noch: Die Apparatur, der sie entwichen ist, ist nun vollständig zerstört. Du bist dir nicht sicher, ob dies durch das Entweichen der Bestie oder als Folge ihres Todes geschehen ist. Das Resultat ist jedenfalls bedauerlich. „So war das nicht geplant“, stellt eines der in Roben gehüllten Mitglieder des Ordens nüchtern fest, während du die zerschmetterte Rätselkiste untersuchst.\n„Das ist eine verdammte Untertreibung“, fügt ein anderes Mitglied hinzu. Es legt seine Hand auf deine Schulter und zieht dich langsam von dem weg, was von der Apparatur übriggeblieben ist. „Kommen Sie, das macht keinen Sinn mehr.“, sagt sie.\nIhr Gefährte ignoriert deine Anwesenheit und spricht stoisch weiter. „Wir müssen zur Unerforschten Insel und das Bindungsritual ohne die Falle vollenden.“ Er nickt und blickt dir ein letztes Mal in die Augen, bevor die überlebenden Logenmitglieder aus dem Gebäude fliehen. Ist das für die Silberloge der Dämmerung die Bedeutung von „Opfer bringen“? Und falls ja, was bedeutet dies für das „Bindungsritual“, das auf der Unerforschten Insel durchgeführt werden soll?",
       "steps": [
@@ -41984,6 +42028,10 @@
   "steps": [
     {
       "id": "ic_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_1",
+        "name": "The Inner Circle 1"
+      },
       "type": "story",
       "text": "Du wurdest tief ins Innerste Heiligtum gebracht, zu dem nur die ranghöchsten Mitglieder der Loge Zugang erhalten. Mr. Sanford erklärt dir, dass der Orden der Silbernen Dämmerung weitaus älter und wichtiger ist als die öffentliche Silberloge der Dämmerung und dass ihr Wissen bis ins Reich des Arkanen und des Verborgenen reicht. „Seit Jahrzehnten ist der Orden der Silbernen Dämmerung auf der Suche nach Wissen, das die Menschheit emporheben kann. Wir haben uns gegen Feinde verteidigt, die unsere Existenz bedroht haben. Wir haben für diese geheiligte Sache alles geopfert. Jetzt terrorisiert eine dieser Bedrohungen unsere Stadt und wir sind die Einzigen, die es aufhalten können. Sie kennen die Kreatur, von der ich spreche.“ Du nickst zustimmend.\n„Die Sache sieht so aus: Die Hexen haben diese Abscheulichkeit nach Arkham gebracht. Wir haben versucht, ihr Ritual aufzuhalten, aber wir konnten sie leider nicht binden. Jetzt ist sie frei. Wir müssen beenden, was wir angefangen haben, bevor die Hexen das Gleiche tun können. Ich nehme an, dass auch Sie einige Informationen für uns haben. Bitte übergeben Sie uns ihre Funde. Wir müssen zusammenarbeiten, um die Situation besser verstehen zu können.“"
     },
@@ -42015,6 +42063,10 @@
     },
     {
       "id": "ic_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_2",
+        "name": "The Inner Circle 2"
+      },
       "type": "story",
       "text": "Du zeigst Mr. Sanford die gesammelten Beweise. „Hm … ja, ich verstehe. Es ist so, wie ich angenommen habe.“, murmelt er, während er die Fundstücke in Augenschein nimmt."
     },
@@ -42125,6 +42177,10 @@
     },
     {
       "id": "ic_3",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_3",
+        "name": "The Inner Circle 3"
+      },
       "type": "story",
       "text": "Du möchtest Carl Sanford die Beweise nicht anvertrauen. Wer weiß schon, was er mit ihnen vorhat? In den Händen des Präsidenten der Silberloge der Dämmerung kann jeder dieser Gegenstände zu einem tödlichen Werkzeug werden. Du lügst und sagst, dass deine Ermittlungen bisher fruchtlos waren. Er presst seine Kiefer zusammen und blickt mit seinen kalten blauen Augen stechend in deine. „Das ist enttäuschend zu hören. Aber vielleicht ist es mein Fehler. Ich hätte einem Neuling des Ordens nicht so eine schwere Bürde auferlegen sollen.“\nMr. Sanford erhebt sich und die anderen Mitglieder des Ordens folgen ihm. Er spricht zu den anderen Mitgliedern des inneren Kreises: „In Ordnung. Wir haben keine Zeit mehr zu vergeuden. Das Ritual muss unverzüglich vollendet werden. Wir sollten denselben Ort wählen wie zuvor – die Hauptsäule auf der Unerforschten Insel, wo die Barriere zwischen dieser und der nächsten Welt am dünnsten ist. Es ist sehr wahrscheinlich, dass die Ano malie uns dorthin folgen wird, also seid wachsam.“ Er wendet sich wieder dir zu. „Wir werden Ihre Unterstützung natürlich ebenso benötigen. Die Apparatur, die Sie in Händen halten, ist der Schlüssel dazu, den Wiedergänger zu binden. Sie müssen sie korrekt verwenden, wenn die Zeit gekommen ist. Haben Sie mich verstanden?“ Du nickst zustimmend. Dann nimmst du einen tiefen Atemzug, um deine Nerven zu beruhigen, und bereitest dich auf die Reise zur Unerforschten Insel vor – eine Reise zum Rendezvous mit dem Tod."
     },
@@ -42141,6 +42197,10 @@
     },
     {
       "id": "ic_4",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_4",
+        "name": "The Inner Circle 4"
+      },
       "type": "story",
       "text": "Carl Sanford lächelt und erhebt sich. „Sie haben sich gegenüber unserem Orden als loyal erwiesen. Ich glaube, es ist an der Zeit, dass Sie in den inneren Kreis aufsteigen.“ Du gehst auf Mr. Sanford zu und kniest vor ihm nieder. Er breitet seine Arme aus und verkündet: „Ich ernenne Euch hiermit zum Ritter des inneren Kreises. Erhebt Euch, Ritter, und steht aufrecht. Ihr gehört nun zur Wächter-Elite der Menschheit, zu den Hütern der Wahrheit und den Verwaltern des Ordens der Silbernen Dämmerung.“ Ein weiteres Mitglied des Ordens reicht dir eine gefaltete, blaue Robe, die du feierlich anziehst. „Mir ist bewusst, dass Sie viele Fragen an mich haben. Wir dürfen nicht trödeln, aber Sie verdienen Antworten. Was möchten Sie wissen?“"
     },
@@ -42604,41 +42664,73 @@
     },
     {
       "id": "answer_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_is_the_creature",
+        "name": "What is the Creature?"
+      },
       "type": "story",
       "text": "„Sie ist ein mächtiges Überbleibsel; zurückgelassen von jemandem, der schon lange untergegangen ist. Die Hexen konnten es nur beschwören, weil sie eine starke Verbindung zu der Seele hatten, der sie einmal gehört hatte“, erklärt Mr. Sanford. „Und dies kann nur eine Person sein: Keziah Mason.“"
     },
     {
       "id": "answer_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_do_you_want_with_the_creature",
+        "name": "What do you want with the Creature?"
+      },
       "type": "story",
       "text": "„Zuallererst müssen wir sie binden, um weiteren Schaden zu verhindern. Dies ist von höchster Wichtigkeit. Nachdem sie einmal gebunden ist, können wir vielleicht Geheimnisse von ihr lernen, ohne uns oder andere zu gefährden.“"
     },
     {
       "id": "answer_3",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_do_the_witches_want_with_the_creature",
+        "name": "What do the witches want with the Creature?"
+      },
       "type": "story",
       "text": "„Ich bin mir sicher, dass auch sie ihre Geheimnisse erlangen und ihre Macht nutzen möchten“, vermutet er und streicht sich durch seinen Bart. „Vielleicht wird eine von ihnen den Geist der Kreatur aufnehmen und dadurch Macht über Leben und Tod erlangen können.“"
     },
     {
       "id": "answer_4",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.did_you_know_about_the_creature_before_the_charity_gala",
+        "name": "Did you know about the Creature before the charity gala?"
+      },
       "type": "story",
       "text": "„Um ehrlich zu sein, ja“, gibt Mr. Sanford zu. „Aber wir haben nicht gewusst, dass sie zu uns kommen wird. Nachdem wir in das Beschwörungsritual der Hexen eingegriffen hatten, haben wir den geisterhaften Nebel beobachtet, der noch tagelang zurückblieb. Wir haben wohl zu viel Aufmerksamkeit auf uns gezogen und das hat sie angelockt. Letztendlich keine schlechte Sache.“"
     },
     {
       "id": "answer_5",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.where_are_the_four_missing_people_from_the_charity_gala",
+        "name": "Where are the four missing people from the charity gala?"
+      },
       "type": "story",
       "text": "„Das weiß nur Gott“, antwortet Mr. Sanford mit einem Seufzen. „Möglicherweise vom Wiedergänger geholt. Oder vom Nebel verschluckt.“ Er denkt eine Weile darüber nach und fügt hinzu: „Wenn sie noch am Leben sind, können sie nicht weit vom Wiedergänger entfernt sein. Ob gut oder schlecht, aber die Anomalie scheint sich darum zu lokalisieren.“"
     },
     {
       "id": "answer_6",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.why_are_you_looking_at_me_like_that",
+        "name": "Why are you looking at me like that?"
+      },
       "type": "story",
       "text": "Mr. Sanford räuspert sich. „Ich… ach, nichts.“, lügt er."
     },
     {
       "id": "ic_5",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_5",
+        "name": "The Inner Circle 5"
+      },
       "type": "story",
       "text": "Carl Sanford gibt die Fundstücke einem anderen Mitglied des inneren Kreises, der sie vorsichtig nach oben bringt. „Danke für Ihre Unterstützung in dieser Angelegenheit. Zusammen sind wir stärker als jeder für sich alleine – meinen Sie nicht auch?“\nMr. Sanford erhebt sich und die anderen Mitglieder des Ordens folgen ihm. Er spricht zu den anderen Mitgliedern des inneren Kreises: „In Ordnung. Wir haben keine Zeit mehr zu vergeuden. Das Ritual muss unverzüglich vollendet werden. Wir sollten denselben Ort wählen wie zuvor – die Hauptsäule auf der Unerforschten Insel, wo die Barriere zwischen dieser und der nächsten Welt am dünnsten ist. Es ist sehr wahrscheinlich, dass die Anomalie uns dorthin folgen wird, also seid wachsam.“ Er wendet sich wieder dir zu. „Wir werden Ihre Unterstützung natürlich ebenso benötigen. Die Apparatur, die Sie in Ihren Händen halten, ist der Schlüssel dazu, den Wiedergänger zu binden. Sie müssen sie korrekt verwenden, wenn die Zeit gekommen ist. Haben Sie mich verstanden?“ Du nickst zustimmend. Dann nimmst du einen tiefen Atemzug, um deine Nerven zu beruhigen, und bereitest dich auf die Reise zur Unerforschten Insel vor – eine Reise zum Rendezvous mit dem Tod."
     },
     {
       "id": "ic_6",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_6",
+        "name": "The Inner Circle 6"
+      },
       "type": "story",
       "text": "Mr. Sanford erhebt sich und die anderen Mitglieder des Ordens folgen ihm. Er spricht zu den anderen Mitgliedern des inneren Kreises: „In Ordnung. Wir haben keine Zeit mehr zu vergeuden. Das Ritual muss unverzüglich vollendet werden. Wir sollten denselben Ort wählen wie zuvor – die Hauptsäule auf der Unerforschten Insel, wo die Barriere zwischen dieser und der nächsten Welt am dünnsten ist. Es ist sehr wahrscheinlich, dass die Anomalie uns dorthin folgen wird, also seid wachsam.“ Dann wendet er sich direkt dir zu und fügt hinzu: „ Die Apparatur, die Sie in Ihren Händen halten, ist der Schlüssel dazu, den Wiedergänger zu binden. Ich vertraue darauf, dass Sie sie korrekt verwenden, wenn die Zeit gekommen ist.“ Du und die anderen Mitglieder des Kreises nicken zustimmend. Dann nimmst du einen tiefen Atemzug, um deine Nerven zu beruhigen, und bereitest dich auf die Reise zur Unerforschten Insel vor – eine Reise zum Rendezvous mit dem Tod."
     },
@@ -43113,6 +43205,10 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Das im Obergeschoss gelegene Arbeitszimmer der Silberloge der Dämmerung ist behaglich, wenn auch ein wenig beengt. Der Boden ist mit einem Plüsch teppich ausgekleidet und mehrere gemütliche Sofas sowie kleine Beistelltische füllen den in warmes Licht gehüllten Raum. Portraits von des Lebens überdrüssigen Mitgliedern der Loge säumen die Wände um dich herum. Carl Sanford, der Präsident der Loge, sitzt dir gegenüber und schwenkt in seiner faltigen Hand ein Glas Merlot.\n„Die Silberloge der Dämmerung strebt nach Wissen, das uns helfen kann unser Verständnis des Universums auf eine neue Stufe zu heben“, erklärt Mr. Sanford und nimmt einen Schluck seines Weines. „Die Kreatur, die Ihnen auf Josef Meigers Anwesen begegnet ist – ihr Erscheinen ist nicht der einzige seltsame Vorfall in Arkham in der letzten Zeit. Sagen Sie mir: Haben Sie kürzlich Ähnliches erlebt, was mit diesem Ereignis in Verbindung stehen könnte?“"
     },
@@ -43146,6 +43242,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Du erzählst Mr. Sanford von deinen Erlebnissen der vergangenen Woche: dass du mitten im Wald aufgewacht bist, vom befremdlichen Nebel, der durch die Bäume gezogen ist, und von den Hexen und ihrem Zauber. Er lehnt sich vor und lauscht gebannt den merkwürdigen Ereignissen jener Nacht, die sich wie hinter einem Schleier in deinem Gedächtnis befinden. Du beendest deine Geschichte und der ältere Mann hält kurz inne. „Interessant“, sagt er letztendlich. „Ich kenne diesen Hexenzirkel. Er wird von einer Hexe namens Anette Mason angeführt. Ihre Magie ist nicht zu verachten. Ihnen sind arkane Geheimnisse überliefert worden, welche die Energien des Universums manipulieren können. Es ist ein gefährliches Wissen, das sie da besitzen – Wissen, von dem ich glaube, dass es von einer mächtigen Hexe stammt, die vor über zweihundert Jahren aus Salem floh. Sagt Ihnen der Name ‚Keziah‘ etwas?“\nDu nickst. Jeder in Arkham kennt Geschichten über die Hexe, deren Geist angeblich das verfluchte alte „Hexenhaus“ im Französischen Viertel heimsucht. Viele halten sie für eine Fiktion; ein Schauermärchen, um die Kinder von diesem heruntergekommenen Haus fernzuhalten. Mr. Sanfords stechender Blick und sein ernster Tonfall bedeuten dir, dass dies nicht der Fall ist. „Diese Anette ist möglicherweise eine direkte Nachfahrin von Keziah. Oder sie nutzt ihren Namen lediglich zu ihrem Vorteil. Ich sehe in diesen Ereignissen jedenfalls einen Zusammenhang. Aus diesem Grunde habe ich im Namen der Silberloge der Dämmerung eine Aufgabe für Sie.“ Carl Sanford erhebt sich, wobei er den Gehstock eher für den dramatischen Effekt nutzt denn als Stütze. Du stehst ebenfalls auf und bist bereit deine Pflicht zu erfüllen und alles dafür zu geben, diesem Geheimnis auf den Grund zu gehen.\n„Wir benötigen so viele Informationen wie möglich über diesen Hexenzirkel. Wenn es einen Ort gibt, der Antworten auf all die Fragen haben könnte, dann ist es das Haus, in dem Keziah vor all den Jahren lebte.“ Du nickst zustimmend – es gibt einfach zu viele Fragen, auf die du Antworten suchst. Welchen Zauber haben die Hexen in jener Nacht im Wald gewirkt? Was könnten ihre Motive sein? Und wie stehen sie in Verbindung zu dieser Kreatur, welche die vier beklagenswerten Seelen entführt hat? Du schüttelst Mr. Sanford die Hand und machst dich auf den Weg zum Hexenhaus."
     },
@@ -43174,6 +43274,10 @@
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Du schüttelst den Kopf. Du bist dir nicht sicher, ob die Ereignisse im Wald miteinander in Verbindung oder ob sie überhaupt geschehen sind – irgendetwas in dir glaubt immer noch, dass das alles nur ein seltsamer Traum war. Mr. Sanford betrachtet dich mit einem kalten, durchdringenden Blick. Du hast das Gefühl, als könne er in dich hineinblicken. „Nun gut“, sagt er. „Nur aus Neugier: Sagt Ihnen der Name ‚Keziah Mason‘ irgendetwas?“\nDu nickst. Jeder in Arkham kennt Geschichten über die Hexe, deren Geist angeblich das verfluchte alte „Hexenhaus“ im Französischen Viertel heimsucht. Viele halten sie für eine Fiktion; ein Schauermärchen, um die Kinder von diesem heruntergekommenen Haus fernzuhalten. Mr. Sanfords stechender Blick und sein ernster Tonfall bedeuten dir, dass dies nicht der Fall ist. Er deutet auf ein altes zerlesenes Buch auf einem der Tische vor dir. Die aufgeschlagene Seite ist gefüllt mit seltsamen Inschriften und arkanen Zeichen. „Ich glaube, dass die Kreatur, der Sie auf Josefs Anwesen begegnet sind, eine Verbindung zu Keziah und ihrem geheimen Wissen hat. Überzeugen Sie sich selbst.“ Du nimmst das Buch in die Hand und untersuchst die Zeichen eingehend."
     },
@@ -43239,16 +43343,28 @@
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Nach deinem Aufeinandertreffen mit dem Präsidenten der Silberloge der Dämmerung reist du zum Anwesen der Gesellschaft für Geschichte in der Südstadt von Arkham. Du bist dir sicher, dass die Ereignisse, die dir vergangene Woche im Wald widerfahren sind, etwas mit der Kreatur zu tun haben, welche die vier beklagenswerten Seelen entführt hat. Es ist nur eine Ahnung – ein Gefühl, das dir die Nackenhaare zu Berge stehen lässt und dich inständig bittet deinen Blick davor zu verschließen – aber du bist davon überzeugt, dass alles zusammenhängt. Du weißt nur noch nicht wie.\nAls du das Gebäude betrittst, wirst du von einer Historikerin der Gesellschaft für Geschichte begrüßt. Sie fragt, ob sie dir behilflich sein könne. Du gibst ihr eine rasche Beschreibung der Informationen, die du suchst; gerade genug, dass sie dir helfen kann, aber vage genug, um deine Motive im Dunkeln zu lassen. „Ich weiß nicht, warum Sie sich für solch düstere Angelegenheiten interessieren, aber die Aufzeichnungen, die sie suchen, sollten in der Sammlung im zweiten Stock zu finden sein“, sagt die Historikerin.\nDu bedankst dich bei ihr und machst dich auf den Weg in den zweiten Stock, wo du dich der Geschichte der Hexerei in Arkham widmest. Im späten 17. Jahrhundert war Arkham eine der Städte in New England, die der Hysterie der Hexenprozesse erlag. In rasantem Tempo breiteten sich Anschuldigungen der Hexerei aus und viele der Angeklagten wurden zum Tode durch den Strang oder das Feuer verurteilt – Schuldige und Unschuldige gleichermaßen. Aber es gab eine Hexe, deren Niedertracht alles überragte und deren mystische Kraft nie infrage gestellt wurde: Keziah Mason.\nDu erkennst den Namen als den des Geistes wieder, der das alte „Hexenhaus“ im Französischen Viertel heimsuchen soll. Du hast Keziah immer für eine Fiktion gehalten; eine Figur aus einem Schauermärchen, um die Kinder von diesem verdammten Haus fernzuhalten. Aber die Aufzeichnungen der Gesellschaft für Geschichte beweisen, dass Keziah tatsächlich gelebt hat: eine mächtige Hexe, die vor über zweihundert Jahren aus Salem floh.\nDie wahre Hexenkunst ist dir nicht unbekannt. Falls Keziah Mason etwas mit diesem Hexenzirkel aus dem Wald zu tun hat, musst du diese Verbindung aufdecken. Du verlässt das Anwesen und begibst dich in Richtung des Französischen Viertels, wo das Hexenhaus auf dich wartet …"
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "Deine Spur zur Wohltätigkeitsgala der Silberloge der Dämmerung war eine Pleite, aber Anna Kaslows Vorhersage hat sich in deinen Gedanken festgesetzt. Es fühlt sich so an, als ob dir ein Stück des Puzzles fehlt – etwas, das du nutzen kannst, um dem entsetzlichen Schicksal, von dem die Tarotkarten sprachen, zu entgehen. Du richtest deine Aufmerksamkeit zurück auf den Hexenzirkel, dem du vergangene Woche im Wald begegnet bist, und reist zum Anwesen der Gesellschaft für Geschichte in der Südstadt von Arkham. Vielleicht hast du eine kleine Information übersehen, welche ein wenig Licht auf die Identität der Hexen und ihre Motive werfen könnte.\nAls du das Gebäude betrittst, wirst du von einer Historikerin der Gesellschaft für Geschichte begrüßt. Sie fragt, ob sie dir behilflich sein könne. Du gibst ihr eine rasche Beschreibung der Informationen, die du suchst; gerade genug, dass sie dir helfen kann, aber vage genug, um deine Motive im Dunkeln zu lassen. „Ich weiß nicht, warum Sie sich für solch düstere Angelegenheiten interessieren, aber die Aufzeichnungen, die sie suchen, sollten in der Sammlung im zweiten Stock zu finden sein“, sagt die Historikerin.\nDu bedankst dich bei ihr und machst dich auf den Weg in den zweiten Stock, wo du dich der Geschichte der Hexerei in Arkham widmest. Im späten 17. Jahrhundert war Arkham eine der Städte in New England, die der Hysterie der Hexenprozesse erlag. In rasantem Tempo breiteten sich Anschuldigungen der Hexerei aus und viele der Angeklagten wurden zum Tode durch den Strang oder das Feuer verurteilt – Schuldige und Unschuldige gleichermaßen. Aber es gab eine Hexe, deren Niedertracht alles überragte und deren mystische Kraft nie infrage gestellt wurde: Keziah Mason.\nDu erkennst den Namen als den des Geistes wieder, der das alte „Hexenhaus“ im Französischen Viertel heimsuchen soll. Du hast Keziah immer für eine Fiktion gehalten; eine Figur aus einem Schauermärchen, um die Kinder von diesem verdammten Haus fernzuhalten. Aber die Aufzeichnungen der Gesellschaft für Geschichte beweisen, dass Keziah tatsächlich gelebt hat: eine mächtige Hexe, die vor über zweihundert Jahren aus Salem floh.\nDie wahre Hexenkunst ist dir nicht unbekannt. Falls Keziah Mason etwas mit diesem Hexenzirkel aus dem Wald zu tun hat, musst du diese Verbindung aufdecken. Du verlässt das Anwesen und begibst dich in Richtung des Französischen Viertels, wo das Hexenhaus auf dich wartet …"
     },
     {
       "id": "intro_6",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_6",
+        "name": "Intro 6"
+      },
       "type": "story",
       "text": "Du heftest den Zeitungsartikel neben all die anderen gefundenen Beweise an die Wand. Was auch immer in Josef Meigers Anwesen vor sich geht, es gerät außer Kontrolle. Erst die vier Verschwundenen am 22. auf der jährlich stattfindenden Wohltätigkeitsgala der Silberloge der Dämmerung. Nun sind bei einem weiteren Ereignis weitere Personen auf dem gleichen Anwesen verschwunden. Ist die Loge darin verwickelt? Warum sonst haben sie das Abendessen kurzfristig auf Mr. Meigers Anwesen verlegt?\nUnd das ist nicht die einzige Schlagzeile. Seltsame Sichtungen sind in der ganzen Stadt aufgetreten: geisterhafte Erscheinungen, grauer Nebel und ein buckeliges, verhülltes Wesen, über dessen Identität in der ganzen Gemeinde debattiert wird. Ein Name, der immer wieder fällt, ist Keziah Mason – der Geist, der angeblich das alte „Hexenhaus“ im Französischen Viertel heimsucht. Du hast sie immer für eine Fiktion gehalten; eine Figur aus einem Schauermärchen, um die Kinder von diesem verdammten Haus fernzuhalten. Aber mit all den Verschwundenen und den eigenartigen Sichtungen in der Stadt bist du dir da nicht mehr ganz sicher. Vielleicht ist an dieser alten Geistergeschichte doch etwas dran."
     },
@@ -43559,6 +43675,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
       "investigator_status": [
         "resigned",
@@ -43573,6 +43693,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Du erwachst auf dem matschigen Rasen am Fuße einer windschiefen Holztreppe. Die Eingangstür des Hexenhauses ragt bedroh lich vor dir empor. Jede Faser deines Daseins füllt sich mit Reue. Dir ist bewusst, dass du etwas Schreckliches nicht verhindern konntest, bist dir aber nicht sicher, was genau. Was du gehört und gesehen hast, hat nichts mit dem Hier und Jetzt zu tun. Du hast jedenfalls einiges über Keziah Mason gelernt – über die Hexe, die einst dieses alte und nun aufgegebene Haus bewohnt hat. Deine geschwächte Psyche und dein schmerzender Körper sagen dir, dass diese Information genügen muss. Du wagst es nicht, dich nochmals in dieses teuf lische Haus zu begeben.",
       "steps": [
@@ -43585,6 +43709,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Als du zu dir kommst, liegst du auf dem Holzboden in Walter Gilmans Zimmer. Weder die Insignien Keziahs übler Machenschaften, noch die mit Hauern versehene, bärtige Ratte – Keziahs Vertrauter, wie du nun weißt – ist irgendwo zu sehen. Gerade als du dich aufrichten willst, fällt dir ein Glitzern in einer Ecke des Raumes auf. Du kriechst unter Gilmans Bett und bekommst einen Anhänger zu fassen. Es ist ein abgegriffenes Kruzifix aus Nickel, ähnlich dem, welches du im Zimmer des Webers gesehen hast. Du steckst es in deine Tasche, bevor du den beunruhigenden Raum mit seinen seltsamen Winkeln hinter dir lässt. Du hast genug über Keziah Mason erfahren – über die Hexe, die einst dieses alte und nun aufgegebene Haus bewohnt hat. Als du aus dem Haus in die kühle Novemberluft hinaustrittst, wirfst du einen letzten Blick auf das heruntergekommene Hexenhaus. Du fürchtest, dass es dich – obwohl du nie wieder einen Fuß hineinsetzen wirst – in deinen Träumen und Gedanken nie ganz loslassen wird.",
       "steps": [
@@ -43616,6 +43744,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Seit deiner Begegnung mit dem Geist im Hexenhaus hast du immer wieder alles, was du über Leben und Tod weißt, hinterfragt. Keziah Mason starb vor über 200 Jahren, aber ihr Geist ist immer noch im geisterhaften Nebel präsent – dem gleiche Nebel, den du auf Josef Meigers Anwesen gesehen hast. Eine Frage brennt dir nach all den Ereignissen auf den Nägeln: Kann Keziahs Geist dank des Nebels hier verweilen oder ist der Nebel eine Folge ihrer Präsenz? Was ist die Krankheit, was das Symptom?\nJe tiefer du in Arkhams Geschichte der Hexerei und deren Verfolgung eintauchst, desto ruheloser wirst du. Nacht um Nacht wirst du von schrecklichen Träumen heimgesucht – Träume von Tod und Verwesung, Schuld und Sünde. Etwas Böses verweilt in dieser Stadt, etwas Böses, das sich lange in der düsteren Vergangenheit Arkhams versteckt hielt. Schlimmer ist aber, dass deine Nachforschungen in einer Sackgasse gelandet sind. Du bist dir sicher: Wenn du den Hexenzirkel aus dem Wald aus jener entscheidenden Nacht findest, wirst du mehr über Keziah Mason oder über dieses unaussprechliche Böse erfahren.\nMitten in deiner morgendlichen Routine fällt dein Blick auf eine kleine Überschrift in der heutigen Ausgabe der Tageszeitung: „Geistersichtung am Henkershügel? Bewohner des Wohnviertels behaupten, menschliche Umrisse im dichten Nebel gesehen zu haben, der vom Henkersbach aufsteigt …“ Dies kann kein Zufall sein, oder doch?\nDann wird dir plötzlich alles klar – wenn du nach Hexen suchst, ist der einzige Platz, wo du sie finden kannst, unter der Erde. Dort, wo überführte Hexen vor so vielen Jahren hingerichtet wurden. Nach Geistern auf einem Friedhof zu suchen, ist vielleicht nicht unbedingt die sicherste Vorgehensweise. Aber wo ist es in dieser Stadt heute schon sicher?"
     },
@@ -43855,6 +43987,10 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.resolution_1",
+        "name": "Resolution 1"
+      },
       "text": "Blasse Sonnenstrahlen durchdringen den Dunst und der widernatürliche Nebel zieht sich zurück. Der Henkershügel erstrahlt wieder in seinem ursprünglichen Zustand. Keine Spur mehr von boshaften Geistern, die dich heimsuchen wollen - und auch die Hexen, die diese Geister beschworen haben, haben sich erneut in die Schatten zurückgezogen. Du hoffst, dass du genug getan hast, um den Rest Arkhams davor zu bewahren, diesem Horror zu verfallen.",
       "steps": [
         "maybe_corn_husk_doll",
@@ -43866,6 +44002,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Schicksalsergeben sinkst du auf die Knie. Der Nebel teilt sich. Die Zeit scheint nahezu unmerklich voranzuschreiten, als der Beobachter durch den Nebel dringt. Seine geisterhafte Gestalt gleitet über den Boden und nähert sich dir langsam mit der Präzision eines stetig tickenden Uhrwerks. Du schließt deine Augen, um deinem Mörder nicht in die Augen sehen zu müssen. Deine Finger bohren sich in deine Handflächen, während du dich deinem Schicksal ergibst.\nDer Moment vergeht.\nAls du deine Augen wieder öffnest, ist die Kreatur mitsamt dem geisterhaften Nebel verschwunden.\n... Bist du wirklich verschont worden?",
       "steps": [
@@ -46838,13 +46978,17 @@
       "id": "black_cat_1",
       "narration": {
         "id": "the_dreameaters.interlude_1.the_black_cat_1",
-        "name": "Black Cat 1"
+        "name": "The Black Cat 1"
       },
       "type": "story",
       "text": "<i>Setzt nach Szenario 1–A an, als die Träumer sich auf ihrer Reise jenseits des Verwunschenen Waldes befinden …</i>\nAls du den Verwunschenen Wald verlässt, wanderst du durch eine hügelige Wiesenlandschaft. Am strahlend blauen Himmel ist keine Wolke zu sehen. Auf deiner Reise nach Süden unterhältst du dich mehrere Stunden mit dem blonden Mann, der sich als Randolph Carter vorstellt. Bei der Stadt Nir, wie sie Randolph nennt, überquerst du einen breiten Fluss über eine Steinbrücke. Da der Mann freundlich wirkt und sich in dieser wie in deiner Welt auszukennen scheint, erklärst du ihm deine Situation, dass du den Erzählungen eines Mannes namens Virgil Gray gefolgt bist, um dieses seltsame Land zu erreichen und selbst zu erleben, ob die Geschichte wahr ist. „In Ulthar gibt es einen Ort, wo du den Mann persönlich treffen kannst“, antwortet Randolph. „Wenn wir in Ulthar ankommen, zeige ich ihn dir.“ \nDie Stadt Ulthar ist nicht gerade das, was du dir vorgestellt hast. Eine Straße aus Kopfsteinpflaster bildet die Grenze der Stadt, welche die malerischen Hütten von der hügeligen Wiesenlandschaft trennt. In der Stadt sind die gepflasterten Straßen fast vollständig mit Katzen sämtlicher Farben bevölkert, die dir den Weg freimachen, wenn du dich ihnen näherst. Alte Spitzgiebeldächer und einander zugeneigte obere Stockwerke bilden eine Art Bogengang über den buckligen Straßen. Die gesamte Stadt scheint eine planlose Aneinanderreihung von Wohnungen und altmodischen Geschäften zu sein. Als du den Marktplatz in der Mitte der Stadt erreichst, hält dich Randolph an und wendet sich mit einem jugendlichen Lächeln an dich. „Willkommen in Ulthar“, verkündet er. „Wie ich bereits vorher erwähnt habe, ist es recht sicher hier. Es gibt hier nur eine wichtige Regel, an die du dich halten solltest, wenn du dich an diesem Ort aufhältst: In der Stadt Ulthar darf niemand eine Katze töten.“ Wegen des Umstands, dass die Straßen mit Katzen übersät sind, willst du wissen, ob die Stadt von Katzen regiert wird. „Nicht ganz“, antwortet dir Randolph, nachdem er über deine Frage nachgedacht hat, „obgleich man die Stadt als Zentrum der Katzengesellschaft in den Traumlanden ansehen kann. Der Grund für die Existenz dieses Gesetzes ist eine andere Geschichte – Ich glaube, dass wir diesen Virgil bei Einar finden werden.“ \nRandolph führt dich über den Marktplatz, der von Gebäuden gesäumt wird, die mit Statuen, Schildern und sogar Buntglasfenstern mit Katzenmotiven verziert sind. Schließlich kommt ihr an ein solches Gebäude, auf dessen Schild „Einars Platz“ prangt. Im Inneren befindet sich eine mit langen Holztischen ausgestattete mittelalterliche Taverne. Du entdeckst mehrere Gäste und genauso viele Katzen. Einer der Gäste füttert an der Holztheke eine der Katzen mit getrockneten Fleischstreifen. Er ist ein stattlicher Mann in den frühen Dreißigern mit kurzem schwarzen Haar und ausgeprägten, spitz zulaufenden Wangenknochen. Du erkennst ihn sofort als den Autor Virgil Gray. Im Hinterkopf nagt die Frage an dir, ob diese Begegnung zufällig oder doch vorherbestimmt ist – zum Guten oder zum Schlechten. \nWie dem auch sei, du näherst dich dem Mann zusammen mit Randolph und stellst euch vor. Mit einem fröhlichen Lächeln schüttelt Virgil dir und Randolph die Hand. „Seid gegrüßt, werte Mitträumer!“, sagt der Autor mit leichter Aufregung in der Stimme. „Ich freue mich, andere zu treffen, die auch an die Sache glauben. Ich habe es satt, in der Zeitung ständig immer nur von meiner ‚Krankheit‘ lesen zu müssen.“ \nDu nickst zustimmend und teilst Virgil mit, dass du einen Beweis für deine Entdeckung suchst, die du in die wache Welt mitnehmen kannst. „Glaubst du etwa nicht, dass ich das nicht schon versucht habe?“, antwortet er matt. „Leider ist es für jemanden, der schläft, unmöglich, etwas aus diesem Reich in die reale Welt mitzunehmen. Das hier ist alles Einbildung, verstehst du? Ideen, Konzepte, Fantasien. Du kannst keinen Gedanken in der Hand festhalten, nicht wahr?“ \nRandolph mischt sich ins Gespräch mit ein. „In den Traumlanden gibt es einen Ort, der euch den Beweis liefern kann, den ihr sucht. Ich habe ihn in meinen Träumen gesehen. Ich habe ihn drei Mal besucht, immer nur ganz kurz, bevor ich von der aufgehenden Sonne zurückgeholt wurde … aber was ich auch versuche, ich kann den Weg dorthin nicht mehr finden. Ich habe viele Nächte mit der Suche danach verbracht.“ \n„Oh?“, fragt Virgil neugierig. „Und was ist das für ein Ort?“ \n„Es ist eine wunderbare Stadt“, beschreibt er euch , wobei seine Augen zu leuchten beginnen, „aus Gold und so schön, wie nichts, das ich seitdem gesehen habe. Eine Stadt jenseits der Gipfel des unbekannten Berges Kadath, wo noch niemand gewesen ist. Dort, verhüllt in Nebel und von den Sternen gekrönt, liegt die Onyxfeste der Großen.“ \nVirgil streichelt beiläufig eine Katze, die in der Nähe auf der Theke sitzt, während er gebannt Randolphs Geschichte zuhört. Sie ist eine schlanke Kreatur mit glänzendem schwarzen Fell, dunkel wie die Leere des Alls selbst. „Dann müssen wir diesen Ort finden! Auch wenn wir dort keinen Beweis finden, hört es sich nach dem Abenteuer des Lebens an. Genug, um hunderte Seiten zu füllen, wenn nicht mehr!“ \nDu erklärst Virgil und Randolph, dass du zuerst in die wache Welt zurückkehren musst, um deinen Gefährten von deinen Erlebnissen zu berichten, bevor du ein solches Abenteuer angehen kannst. Plötzlich vernimmst du eine andere Stimme, wie sie geheimnisvoll leise zu sprechen beginnt: „Oh, du kannst nicht aufwachen. Das Auge ruht nun auf dir.“ \nDu und die anderen wenden ihre Köpfe dem Ursprung der Stimme zu. War es der Wirt hinter der Theke? Ein anderer Gast? Virgils schwarze Katze streckt sich und setzt sich auf. Ihre gelben Augen spiegeln das Sonnenlicht wider, das durch die Fenster von draußen hereindringt. „Lange habe ich darauf gewartet, dass du auf die Suche nach Kadath gehst“, sagt sie. \n„Du kannst sprechen?“, fragt Virgil, wobei er fast seinen Hocker umwirft, als er überrascht aufspringt. \n„Ich bin eine Katze, du Tölpel. Natürlich kann ich sprechen“, antwortet die schwarze Katze und leckt sich gelangweilt ihre Pfote. „Du hast schon tausende Katzen vor mir in Ulthar getroffen. Und jetzt bist du überrascht?“ \n„Aber …ich dachte …“ Virgil wischt sich mit der Handfläche über die Stirn. \n„Achte nicht auf ihn“, sagt die schwarze Katze und wendet sich direkt dir zu. „Ich versichere dir, dass du nicht mehr in die wache Welt wechseln kannst, bevor du Kadath gefunden hast. Das ist der einzige Ausweg. In der Zwischenzeit werde ich zurückkehren und deinen Gefährten von deiner bevorstehenden Suche berichten.“ Sie springt vom Tresen und läuft selbstbewusst auf den Ausgang zu. „Aber ich befürchte, dass ihnen eine noch schwierigere Aufgabe bevorsteht …“"
     },
     {
       "id": "connect_campaign_branch",
+      "narration": {
+        "id": "the_dreameaters.interlude_1.campaign_branch",
+        "name": "Campaign Branch"
+      },
       "text": "Falls <i>Die Traumsuche</i> und <i>Das Netz der Träume</i> als verwobene Kampagne gespielt werden.",
       "type": "branch",
       "condition": {
@@ -46870,6 +47014,10 @@
     },
     {
       "id": "black_cat_vanishes",
+      "narration": {
+        "id": "the_dreameaters.interlude_1.the_black_cat_vanishes",
+        "name": "The Black Cat Vanishes"
+      },
       "type": "story",
       "text": "Die rätselhafte Katze verschwindet durch die Tür, bevor du ihr antworten kannst."
     },

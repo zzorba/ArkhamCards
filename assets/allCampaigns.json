@@ -36033,6 +36033,10 @@
   "steps": [
     {
       "id": "intro_article",
+      "narration": {
+        "id": "the_circle_undone.at_deaths_doorstep.intro_article",
+        "name": "Intro Article"
+      },
       "bullet_type": "none",
       "text": "<b>Four Missing, Whereabouts Unknown</b>\n\nResidents of French Hill are still in a tizzy after the sudden disappearance of several guests and house staff from the home of Mr. Josef Meiger during the night of the annual Silver Twilight charity gala last Sunday. “We are absolutely baffled as to how this could have happened,” said Mr. Meiger the day after the disappearances. “That said, we are confident that Sheriff Engle and the Arkham Police will do their due diligence in finding the missing persons.”\nThere is still no evidence whatsoever as to the whereabouts of Miss Gavriella Mizrah, Mr. Jerome Davids, Mr. Valentino Rivas, and Mrs. Penny White, all of whom vanished halfway through the event and have not been seen since. The police are offering a substantial reward for any person or persons who come forward with information related to these disappearances. When asked whether the police were considering the case a homicide, Sheriff Engle had this to say: “There’s no reason to suspect foul play is involved just yet. However, given the circumstances, we have to consider every possibility.” No other attendees have come forward with statements concerning the gala, which seemed to finish without a hitch despite the disappearances.\nSo far, none of the prominent members of the Silver Twilight Lodge have expressed any concern about the Lodge’s upcoming benefit dinner, which was recently moved to the same location: Josef Meiger’s estate in French Hill. “I am certain that this event will be a smashing success,” Mr. Meiger told the Arkham Advertiser in an interview yesterday. “There is no reason for the fair residents of Arkham to worry.”\n\n–Minnie Klein"
     },
@@ -37622,6 +37626,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Ever since your brush with death at Hangman’s Hill, the situation in Arkham has only worsened. In the days since, there have been more reports of “ghost sightings” and even several more disappearances. A thin layer of grey mist lingers over the streets at all hours, day and night. As soon as the sun begins to set each evening, doors are shut and locked. Without truly realizing why, very few people dare venture out at night. Some businesses have even closed their doors to customers during the day, citing “poor weather.” Things are getting out of hand."
     },
@@ -37699,6 +37707,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "The creature that appeared at the Lodge’s charity gala is clearly not bound to Josef Meiger’s manor, which means the horrors you’ve experienced could be just the start of something much worse. It is time to report your findings to the Silver Twilight Lodge. Perhaps they can help interpret the knowledge you’ve gathered, and inform you as to what your next step should be. With their help, you may be able to save Arkham…"
     },
@@ -37719,21 +37731,37 @@
     },
     {
       "id": "deceiving_sidebar",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.deceiving_the_lodge",
+        "name": "Deceiving the Lodge"
+      },
       "type": "story",
       "text": "…though you suspect the Lodge has other interests. The Lodge clearly knows more about what is happening than they care to admit. There is a sinister purpose that lurks beneath the surface of the Lodge, and you intend to discover what that purpose is."
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "The creature that appeared at the Lodge’s charity gala is clearly not bound to Josef Meiger’s manor, which means the horrors you’ve experienced could be just the start of something much worse. You’re not sure why just yet, but you know the Silver Twilight Lodge is connected to the creature in some way. Perhaps it’s time to pay the Lodge a visit—with or without their permission."
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "You can’t help but wonder if you missed something important in the home of Josef Meiger. The four disappearances that occurred at the Lodge’s charity gala could not have been a coincidence. If those victims encountered a creature like the one you saw at the graveyard, the horrors you’ve experienced could be just the start of something much worse. You’re not sure why just yet, but you are sure that the Silver Twilight Lodge is connected to these events in some way. Perhaps it’s time to pay the Lodge a visit—with or without their permission."
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "Too many disappearances have occurred at Josef Meiger’s estate for it to be a coincidence: first, the four victims at the charity gala, then the ones who attended the benefit dinner one week later. If they encountered a creature like the one you saw at the graveyard, the horrors you’ve experienced could be just the start of something much worse. You’re not sure why just yet, but you are sure that the Silver Twilight Lodge is connected to these events in some way. Perhaps it’s time to pay the Lodge a visit—with or without their permission."
     },
@@ -37926,6 +37954,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "investigator_status": [
         "resigned",
@@ -37938,18 +37970,30 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolution 1",
       "text": "Every fiber of your being is stretched as the box pulls you in. However, before it can accomplish its task, the lid is suddenly slammed shut by an elderly hand. You reel backward and collapse as the pulling force ceases. When your senses finally return to you, Carl Sanford is standing over you, unflappable as ever. “I see you managed to open the device without defeating its guardian. How fortunate,” he declares. He examines the box closely, removing the key and the coin from the container and recognizing them instantly. “I had a feeling you would be a valuable asset to the Lodge, but it seems I underestimated your resourcefulness. Perhaps it is time that you learn the truth behind our organization. I have a feeling you are destined for great things.” Unexpectedly, Mr. Sanford hands the puzzle box back to you, along with the components that unlocked it. “Come with me. There is much to discuss.”",
       "steps": ["discovered_how_to_open_the_puzzle_box", "earn_xp"]
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "Every fiber of your being is stretched as the box pulls you in. However, before it can accomplish its task, you manage to reach out and slam the lid shut. You shudder uncontrollably as your senses slowly return to you. This box is more dangerous than you could have imagined. In the hands of the Lodge, it could have been a powerful weapon, though you’re not sure what they intended to do with it. Just then, you hear several Lodge members approaching. You quickly shift one of the room’s bookcases aside and hide behind it before they enter the room. “You’re sure you heard something in here? I don’t see anybody,” one of them says.\n“Hm…” the other pauses, presumably inspecting the room for signs of intruders. “Must have been nothing.”\n“It’s all right. We’re all a bit on edge since the trap box went missing. Come, we don’t want to be late for the ceremony. Tonight is an important night.” Their footfalls become softer as they depart. The man’s words linger in your thoughts momentarily. What did he mean by tonight being an important night? This could be just as important as the puzzle box they had been attempting to open. You quietly follow the two men as they head deep into the tunnels beneath the Lodge. You struggle to keep up with them while trying to keep your footsteps silent on the stone floor of the passageway. Finally, they enter a large door with the familiar three arrows of Silver Twilight emblazoned along its surface. Ritualistic chanting fills the hall from the other side. You approach softly, placing your ear against the door to listen in.\n“Brothers and sisters,” an elderly voice announces, “thank you for coming to this hallowed gathering. The time we have long waited for approaches.” You recognize the man’s voice – it is Carl Sanford, president of the Silver Twilight Lodge. “For many decades, the Order of the Silver Twilight has pursued knowledge that can elevate humanity. We have defended against threats to our very existence. We have sacrificed everything for this sacred cause. Now, one of these threats terrorizes our city, and once again we must do what has to be done in order to protect it.” The crowd responds with solemn approval. “Tonight, we will complete the ritual we began many nights ago at the center of the Unvisited Isle. Tonight, we will finally bind the revenant and learn what it knows. We must not allow the secrets of AZATHOTH to be lost to those who would do humanity harm.”\nThe cult replies with a monotone hymn, and you take this opportunity to flee the Lodge before you are discovered. The conspiracy you have unveiled leaves you with even more questions. If the revenant Mr. Sanford speaks of is what you think it is, binding it will surely protect Arkham, as he claims. But what knowledge do they seek to learn from it?…and what in the hell is an “AZATHOTH?”",
       "steps": ["discovered_how_to_open_the_puzzle_box", "earn_xp", "$upgrade_decks", "skip_inner_circle"]
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolution 3",
       "text": "The beast that had emerged from the box was a vicious guardian, slaughtering anyone in its path. Somehow you were able to slay the creature, but the consequences were dire. Many Lodge members were gruesomely killed by the creature’s rampage before you were able to put it down. Worse, the device it emerged from was destroyed beyond recognition. You’re not sure whether it broke as a result of the beast’s emergence or as a result of its death, but either way, it is a regretful outcome. “This didn’t work as planned,” one of the robed members of the Order states matter-of-factly as you examine the crushed puzzle box.\n“That’s a hell of an understatement,” another adds. She places a hand on your shoulder and gently pulls you away from the remains of the device. “Come on, that’s a lost cause,” she says.\nHer partner ignores your presence and stoically addresses her. “We’ll have to get to the Unvisited Isle and complete the binding rite without the trap.” She nods and takes one last look at you before the remaining Lodge members flee the building. Is this the kind of “sacrifice” the Silver Twilight Lodge believes in making? And if so, what does this mean for the “binding rite” they seek to complete at the Unvisited Isle?",
       "steps": ["guardian_of_the_trap_defeated", "earn_xp", "$upgrade_decks", "skip_inner_circle"]
@@ -38579,6 +38623,10 @@
   "steps": [
     {
       "id": "ic_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_1",
+        "name": "The Inner Circle 1"
+      },
       "type": "story",
       "text": "You have been brought deep into the inner sanctum, where only the highest-ranking members of the Lodge are allowed. Mr. Sanford explains that the Order of the Silver Twilight is far older and more important than the public-facing Silver Twilight Lodge, and that their knowledge extends into the realm of the arcane and the obscure. “For many decades, the Order of the Silver Twilight has pursued knowledge that can elevate humanity. We have defended against threats to our very existence. We have sacrificed everything for this sacred cause. Now, one of these threats terrorizes our city, and we are the only ones who can stop it. You know the creature I speak of.” You nod in affirmation.\n“Here is what we know: it was the witches who brought this abomination upon Arkham. We tried to stop their ritual, but unfortunately, we were unsuccessful in binding it. Now it is loose, and we must finish what we started before the witches are able to do the same. But first, I understand you may have some information for us, as well. Please, hand over what you have found. It is important that we collaborate in order to understand this situation.”"
     },
@@ -38603,6 +38651,10 @@
     },
     {
       "id": "ic_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_2",
+        "name": "The Inner Circle 2"
+      },
       "type": "story",
       "text": "You show Mr. Sanford the evidence you’ve collected. “Hm… Yes, I see. It is as I suspected,” he murmurs as he inspects the trinkets."
     },
@@ -38705,6 +38757,10 @@
     },
     {
       "id": "ic_3",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_3",
+        "name": "The Inner Circle 3"
+      },
       "type": "story",
       "text": "You don’t trust Carl Sanford with these pieces of evidence. Who knows what he intends to do with them? In the hands of the president of the Silver Twilight Lodge, any one of these items could be a deadly instrument. You lie, informing him that your investigation has so far proven fruitless. He clenches his jaw and glares at you for a moment, his cold blue eyes staring daggers into yours. “That is disappointing to hear. But perhaps it is my fault; I should not have imposed such a heavy burden on a neophyte to the Order.”\nMr. Sanford rises to his feet, and the other members of the Order follow suit. He addresses the other members of the Inner Circle: “All right. We have no more time to spare. The ritual must be completed at once. We shall use the same site as before—the central pillar of the Unvisited Isle, where the barrier between this world and the next is thinnest. It is likely that the anomaly will pursue us there, so act with caution.” Then he turns back to you. “We will require your assistance as well, of course. The device you hold is the key to binding the revenant. You must use it properly when the time comes. Do you understand?” You nod in affirmation. Taking a deep breath to steel your nerves, you prepare for the journey to the Unvisited Isle—a journey toward death itself."
     },
@@ -38721,6 +38777,10 @@
     },
     {
       "id": "ic_4",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_4",
+        "name": "The Inner Circle 4"
+      },
       "type": "story",
       "text": "Carl Sanford grins and rises to his feet. “You have proven yourself a loyal asset to our Order. I believe it is time that you ascended to our Inner Circle.” You approach and kneel before Mr. Sanford. He spreads his arms wide and declares, “I hereby appoint to you the rank of Knight of the Inner Circle. Arise once more, knight, and stand tall. You are now one of the elite guardians of humanity, keepers of the truth, and stewards of the Silver Twilight Order.” Another member of the Order offers you a folded blue robe, and you don it solemnly. “Now, I am sure you have many questions for me. We do not have a lot of time to dawdle, but you deserve answers. What do you wish to know?”"
     },
@@ -39082,41 +39142,73 @@
     },
     {
       "id": "answer_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_is_the_creature",
+        "name": "What is the Creature?"
+      },
       "type": "story",
       "text": "“It is a powerful remnant, left behind from one who perished long ago. The witches could only have summoned it if they had a strong connection to the soul it once belonged to,” Mr. Sanford explains. “It could only be one person: Keziah Mason herself.”"
     },
     {
       "id": "answer_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_do_you_want_with_the_creature",
+        "name": "What do you want with the Creature?"
+      },
       "type": "story",
       "text": "“First and foremost, we need to bind it to prevent it from doing further harm. That is of paramount importance. Once it is bound, we may be able to learn the secrets it possesses without endangering ourselves or others.”"
     },
     {
       "id": "answer_3",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_do_the_witches_want_with_the_creature",
+        "name": "What do the witches want with the Creature?"
+      },
       "type": "story",
       "text": "“I am sure they wish to learn its secrets, and draw from its power,” he theorizes, stroking his beard. “Perhaps allow one of their own to become possessed by the spirit, and hence gain power over life and death itself.”"
     },
     {
       "id": "answer_4",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.did_you_know_about_the_creature_before_the_charity_gala",
+        "name": "Did you know about the Creature before the charity gala?"
+      },
       "type": "story",
       "text": "“In truth, yes,” Mr. Sanford admits. “But we did not know it would come to us. After interceding in the witch’s summoning rite, we investigated the spectral mist that was left behind for several days. We likely drew too much attention to ourselves, and it was drawn to our presence. Not necessarily a bad thing, in the end.”"
     },
     {
       "id": "answer_5",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.where_are_the_four_missing_people_from_the_charity_gala",
+        "name": "Where are the four missing people from the charity gala?"
+      },
       "type": "story",
       "text": "“God only knows,” Mr. Sanford replies with a sigh. “Taken by the revenant, perhaps. Or swallowed by the mist.” He considers this for a while, then adds, “I suspect that if they are still alive, they cannot be far from the revenant. For better or for worse, the anomaly seems localized around it."
     },
     {
       "id": "answer_6",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.why_are_you_looking_at_me_like_that",
+        "name": "Why are you looking at me like that?"
+      },
       "type": "story",
       "text": "Mr. Sanford clears his throat. “I… It is nothing,” he lies."
     },
     {
       "id": "ic_5",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_5",
+        "name": "The Inner Circle 5"
+      },
       "type": "story",
       "text": "Carl Sanford gives the trinkets and strange components to another member of the Inner Circle, who retrieves them with care and brings them upstairs. “Thank you for your assistance in this matter. We are stronger together than apart; don’t you agree?”\nMr. Sanford rises to his feet, and the other members of the Order follow suit. He addresses the other members of the Inner Circle: “All right. We have no more time to spare. The ritual must be completed at once. We shall use the same site as before—the central pillar of the Unvisited Isle, where the barrier between this world and the next is thinnest. It is likely that the anomaly will pursue us there, so act with caution.” Then he turns back to you. “We will require your assistance as well, of course. The device you hold is the key to binding the revenant. You must use it properly when the time comes. Do you understand?” You nod in affirmation. Taking a deep breath to steel your nerves, you prepare for the journey to the Unvisited Isle—a journey toward death itself."
     },
     {
       "id": "ic_6",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_6",
+        "name": "The Inner Circle 6"
+      },
       "type": "story",
       "text": "Mr. Sanford rises to his feet, and the other members of the Order follow suit. He addresses the members of the Inner Circle, yourself included: “All right. We have no more time to spare. The ritual must be completed at once. We shall use the same site as before—the central pillar of the Unvisited Isle, where the barrier between this world and the next is thinnest. It is likely that the anomaly will pursue us there, so act with caution.” Then he turns directly to you and adds, “The device you hold is the key to binding the revenant. I trust you to use it properly when the time comes.” You and the other members of the circle nod in affirmation. Taking a deep breath to steel your nerves, you prepare for the journey to the Unvisited Isle—a journey toward death itself."
     },
@@ -39536,6 +39628,10 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "The upstairs study of the Silver Twilight Lodge is cozy, if a little cramped. The floor is covered in a plush carpet, and several comfortable sofas and small round tables fill the warmly lit room. Portraits of world-weary Lodge members line the walls around you. Carl Sanford, president of the Lodge, sits across from you, idly swirling a glass of Merlot in his wrinkled hand.\n“The Silver Twilight Lodge pursues knowledge that can help us elevate our understanding of the universe,” Mr. Sanford explains, pausing to take a sip from his wine. “The creature you encountered in Josef Meiger’s estate—its appearance is not the only peculiar happening in Arkham as of late. Tell me: have you experienced anything else recently that might be connected to these events?”"
     },
@@ -39560,6 +39656,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "You tell Mr. Sanford about your experience last week—waking up in the middle of the woods, the strange mist that weaved throughout the trees, the witches and their spell. He leans forward and listens intently as you explain the night’s strange events, your memories still somewhat of a haze. You conclude your story, and the elderly man considers your words. “Interesting,” he says at last. “I know of this coven. They are led by a witch named Anette Mason. Their magic is no trivial thing. They have passed down arcane secrets that can manipulate the energies of the universe. It is dangerous knowledge they possess—knowledge I believe they derived from a powerful witch who fled from Salem over two hundred years ago. Does the name ‘Keziah’ mean anything to you?”\nYou nod. Everyone in Arkham has at least some passing knowledge of the witch whose ghost supposedly haunts the old condemned “Witch House” in French Hill. Most believe her to be a work of fiction; a tall tale meant to scare young children away from the decrepit house. Mr. Sanford’s steely gaze and humorless tone makes it clear to you that this is not the case. “Perhaps this Anette is a true descendant of Keziah, or perhaps she is simply using her name. In any event, I believe these events are connected. To that end, I have a task for you, on behalf of the Silver Twilight Lodge.” Carl Sanford rises to his feet, using his cane more for show than for balance. You rise as well, ready to perform whatever duties are necessary to get to the bottom of this mystery.\n“We need as much information about this coven as we can obtain. If there is any place that will have these answers, it is the house where Keziah herself lived all those years ago.” You nod in agreement—there are too many questions you need answered. What spell were the witches casting that night in the woods? What is their motive? And what is their connection to the creature that kidnapped those four unfortunate souls? You shake Mr. Sanford’s hand and depart for the Witch House."
     },
@@ -39586,6 +39686,10 @@
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "You shake your head. You’re not sure if the events that took place in the woods are connected, or if they even really happened—some part of you still believes it was all a strange dream. Mr. Sanford examines you with a cold, piercing glare. You get the feeling that he is looking directly through you. “Very well,” he says. “Out of curiosity, does the name ‘Keziah Mason’ mean anything to you?”\nYou nod. Everyone in Arkham has at least some passing knowledge of the witch whose ghost supposedly haunts the old condemned “Witch House” in French Hill. Most believe her to be a work of fiction; a tall tale meant to scare young children away from the decrepit house. Mr. Sanford’s steely gaze and humorless tone makes it clear to you that this is not the case. He motions to an old, worn tome which lies on the table in front of you, open to a page filled with strange inscriptions and arcane glyphs. “I believe the creature you encountered in Josef ’s manor is tied to Keziah and the secret knowledge she possessed. See for yourself.” You pick up the tome and examine the markings on the page closely."
     },
@@ -39645,16 +39749,28 @@
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "After your confrontation with the president of the Silver Twilight Lodge, you travel to the manor of the Arkham Historical Society in Southside. You are positive that the events you experienced in the woods last week have something to do with the creature that kidnapped those four unfortunate souls. It’s just a hunch—a feeling that crawls along the back of your neck, imploring you to look away—but you’re sure that everything is connected. You’re just not sure how.\nAs you enter, one of the Historical Society’s many researchers greets you and asks if she can help in any way. You give a cursory description of the information you’re looking for; just enough that she can direct you where to look, but vague enough to leave your motives at the door. “I don’t know why you are researching such morbid affairs, but the records you are looking for should be in the library on the third floor,” the researcher says.\nYou thank her and head to the third floor, where you begin to study the history of witchcraft in Arkham. In the late 17th century, Arkham was one of the New England towns caught up in the hysteria of witch trials. Accusations of witchcraft spread like wildfire, and many of the accused were executed by hanging or burning, guilty and innocent alike. But there was one witch whose infamy rose above the rest, and whose mystical power was never in question: Keziah Mason.\nYou recognize the name as the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But the Historical Society’s records indicate that Keziah was a real person: a powerful witch who had fled from Salem over two hundred years ago.\nYou are no stranger to real witchcraft. If Keziah Mason has anything to do with the coven you encountered in the woods, you must discover that connection. You leave the manor and head toward French Hill, where the Witch House awaits…"
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "Your lead regarding the Silver Twilight Lodge’s charity gala turned out to be a bust, but Anna Kaslow’s reading still plays out over and over in your mind. You cannot help but feel as though you are missing a piece of this puzzle—something you can use to avoid the dire fate the tarot reader described. Turning your attention back to the coven of witches you encountered in the woods last week, you travel to the manor of the Arkham Historical Society in Southside. Perhaps there is some piece of information you have overlooked that will shed light on their identity, or their motives.\nAs you enter, one of the Historical Society’s many researchers greets you and asks if she can help in any way. You give a cursory description of the information you’re looking for; just enough that she can direct you where to look, but vague enough to leave your motives at the door. “I don’t know why you are researching such morbid affairs, but the records you are looking for should be in the library on the third floor,” the researcher says.\nYou thank her and head to the third floor, where you begin to study the history of witchcraft in Arkham. In the late 17th century, Arkham was one of the New England towns caught up in the hysteria of witch trials. Accusations of witchcraft spread like wildfire, and many of the accused were executed by hanging or burning, guilty and innocent alike. But there was one witch whose infamy rose above the rest, and whose mystical power was never in question: Keziah Mason.\nYou recognize the name as the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But the Historical Society’s records indicate that Keziah was a real person: a powerful witch who had fled from Salem over two hundred years ago.\nYou are no stranger to real witchcraft. If Keziah Mason has anything to do with the coven you encountered in the woods, you must discover that connection. You leave the manor and head toward French Hill, where the Witch House awaits…"
     },
     {
       "id": "intro_6",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_6",
+        "name": "Intro 6"
+      },
       "type": "story",
       "text": "You pin the newspaper article up on your wall along with the rest of the evidence you’ve found. Whatever is happening in Josef Meiger’s manor, it’s getting out of hand. First, there were the four disappearances on the twenty-second, at the Silver Twilight Lodge’s annual charity gala. Now more have gone missing after a second event at the same estate. Is the Lodge somehow involved? Why else would they move this dinner to Mr. Meiger’s estate?\nThat’s not the only headline, either. Strange sightings have been occuring throughout the city: ghostly figures, an ashen mist, and a hunched, cloaked figure whose identity is hotly debated by the community. The name on the tips of everybody’s tongues is Keziah Mason—the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But with all of the disappearances and odd sightings occuring throughout town, you’re not so sure. Perhaps there is something to this old ghost story, after all."
     },
@@ -39937,6 +40053,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "investigator_status": [
         "resigned",
@@ -39949,12 +40069,20 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolution 1",
       "text": "You awaken in the muddy lawn at the base of some crooked wooden steps, the front door of the Witch House looming above you. Every fiber of your being is filled with regret. You know you have failed to prevent something awful, though you are not sure exactly what. The evidence of your eyes and ears suggests what you saw inside the Witch House was not concurrent with here and now. Regardless, you’ve learned several things about Keziah Mason, the witch who once inhabited this old and forsaken house. With your spirit diminished and your body aching, this information will have to suffice. You dare not venture back into this infernal house.",
       "steps": ["earn_xp", "check_brown_jenkin_xp", "check_nahab_xp", "check_act_deck", "$upgrade_decks"]
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "When you come to, you are lying on the wooden floor of Walter Gilman’s room. The trappings of Keziah’s foul practices are nowhere to be found, nor is the fanged, bearded rat – Keziah’s “ familiar,” as you now understand. Just as you are about to rise to your feet, you spot something glinting in a corner of the room. Crawling underneath Gilman’s bed, you reach out and grab the trinket. It is a worn nickel crucifix, similar to the ones you saw in the loomfixer’s room. You shove it into your pocket before leaving the troubling room and its strange angles behind. You’ve learned as much as you care to uncover about Keziah Mason, the witch who once inhabited this old and forsaken house. As you step out into the chilly November air, you turn and take one last look at the decrepit Witch House. You fear that though you may never enter this place again, in your thoughts and your dreams, you will never truly leave it behind.",
       "steps": ["earn_xp_bonus_2", "all_mementos", "choose_black_book_prompt", "choose_black_book", "$upgrade_decks"]
@@ -39980,6 +40108,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Ever since your encounter with the ghost in the Witch House, you have been forced to reconsider everything you know about life and death. Keziah Mason died over two hundred years ago, but her spirit remains in the spectral mist—the same mist you encountered in Josef Meiger’s manor. One question lingers in your mind as you consider the events that have transpired: Does Keziah’s spirit linger because of the mist, or is the mist caused by her presence? Which is the disease, and which the symptom?\nThe more you delve into Arkham’s history of witchcraft and persecution, the more restless you become. Night after night, you are assaulted by terrible dreams—dreams of death and decay, of guilt and sin. There is an evil that dwells in this city, an evil that has long remained hidden in the darkness of Arkham’s past. What’s worse, your inquiry has reached an impasse. You believe that if you can find the coven of witches you saw in the woods that fateful night, you might be able to learn more about Keziah Mason or of this unspoken evil.\nAs you go through your morning routine, your eyes drift across one of the smaller headlines of today’s newspaper: “Ghost Sightings on Hangman’s Hill? Residents of Uptown claim to have seen human shapes in the thick fog emanating from Hangman’s Brook…” It couldn’t be a coincidence, could it?\nThen the realization dawns on you—if it is witches you seek, the only place you can be certain to find them is six feet underground, in the place where professed witches were executed all those years ago. Searching for specters in a graveyard may not be your safest bet, but you’re not sure one can stay safe in this city anymore."
     },
@@ -40193,11 +40325,19 @@
     {
       "id": "R1",
       "title": "Resolution 1",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.resolution_1",
+        "name": "Resolution 1"
+      },
       "text": "Rays of faded sunlight stream through the haze, and the unnatural mist finally recedes. As it does, Hangman’s Hill returns to its original state. No other spiteful ghosts emerge to haunt you, and the witches who summoned them have retreated into the shadows once more. You hope that you have done enough to prevent the rest of Arkham to succumbing to this horror.",
       "steps": ["maybe_corn_husk_doll", "record_heretics_released", "check_earned_wisp", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "Resigned to your fate, you fall to your knees. The mist parts. Time slows to a crawl as the watcher emerges. Its spectral form glides along the ground, approaching with the slow surety of a ticking clock. You close your eyes, unwilling to look upon your killer. Your fingers dig into your palm, and you brace yourself.\nThe moment passes.\nWhen you open your eyes again, the creature is gone, along with the spectral mist.\n…Have you been spared?",
       "steps": ["survived_the_watchers_embrace", "record_heretics_released", "check_earned_wisp", "earn_xp", "$upgrade_decks"]
@@ -42860,13 +43000,17 @@
       "id": "black_cat_1",
       "narration": {
         "id": "the_dreameaters.interlude_1.the_black_cat_1",
-        "name": "Black Cat 1"
+        "name": "The Black Cat 1"
       },
       "type": "story",
       "text": "<i>Following scenario 1–A, the dreamers travel beyond the Enchanted Woods…</i>\nAs you travel out of the Enchanted Woods, you pass through rolling green meadows under a bright-blue, cloudless sky. You speak with the blond-haired man—who introduces himself as Randolph Carter— for several hours along your journey south. You pass through a town Randolph calls Nir and over a stone bridge spanning a wide river. Since the man seems friendly and knowledgeable about both your world and this one, you explain to him your situation: that you had followed the writings of a man named Virgil Gray to reach this strange land, in order to see for yourself the truth of his story. “There is a place in Ulthar where you may yet meet this man for yourself,” Randolph responds. “When we reach Ulthar, I will show you.”\nThe town of Ulthar is not quite what you had imagined. The border of the town is marked by a cobblestone road separating its quaint cottages from the rolling green meadows beyond. Inside the town, narrow cobbled streets are filled almost to capacity with cats of all kinds and colors, which part as you approach. Old peaked roofs and overhanging upper stories arch over the hilly streets; the entire village seems a haphazard cluster of homes and old-fashioned businesses. As you reach the town square near the center of the village, Randolph stops and addresses you with a youthful smile. “Welcome to Ulthar,” he proclaims. “As I mentioned before, you are quite safe here. There is but one paramount law to keep in mind as you traverse this place: in the town of Ulthar, no one may kill a cat.” Given how utterly packed the streets are with cats, you wonder aloud if this is indeed a town run by cats. “Not quite,” Randolph replies, pondering your words, “though I suppose one might call it the center of cat society here in the Dreamlands. The reason for that law’s existence is a story for another time. First, come—I have a feeling we’ll find this ‘Virgil’ fellow you speak of at Einar’s.”\nRandolph leads you through the town square, which is surrounded by buildings adorned with cat motifs in the form of statues, signs, and even stained-glass windows. You eventually arrive at one such building bearing a sign that reads “Einar’s Place.” Inside is a medieval-style tavern filled with long wooden tables. You spot several patrons and three times as many cats. One such patron at the wooden counter feeds one of the cats small strips of dried meat. He is a handsome man in his early thirties, with short dark hair, a strong jaw, and sharp cheekbones. You recognize him instantly as the writer Virgil Gray. In the back of your mind, you wonder if this chance meeting is merely an act of fortune or something preordained, for good or for ill.\nRegardless, you approach the man and introduce yourself, along with Randolph. Virgil shakes your hand and Randolph’s with a joyful smile. “Well met, fellow dreamers!” the writer says, a hint of boyish excitement in his voice. “It is wonderful to meet more fellow believers. I had become so sick and tired of reading about my supposed ‘illness’ in the papers.”\nYou nod your head in agreement and inform Virgil that you intend to find some proof of this discovery to bring back to the waking world. “Don’t you think I tried that?” he replies, stymied. “Sadly, it is impossible for one who is asleep to bring anything from this realm into the real world. This is all imagination, you see. Ideas, concepts, fantasies. You cannot hold a thought in your hands, can you?”\nRandolph interjects. “There is a place within the Dreamlands that may hold the proof you seek. I have seen it in my dreams. I visited there three times, each time just a fleeting moment before I was snatched away by the rising sun…but try as I might, I cannot find the way again. I have spent many nights searching.”\n“Oh?” Virgil asks, intrigued. “And what is this place?”\n“It is a marvelous city,” he describes, his eyes aglow with wonder, “golden and lovely like nothing I have seen before or since. A city beyond the peaks of the unknown mountain Kadath, where no one has ever set foot before. There, veiled within the clouds and crowned by stars, lies the onyx castle of the Great Ones.”\nVirgil idly pets the cat on the countertop next to him as he is absorbed by Randolph’s tale. It is a slender creature with lustrous black fur, dark as the void of space itself. “Then we must find this place! Even if it does not have the proof we seek, it sounds like the adventure of a lifetime. Enough to fill a hundred pages, or more!”\nYou tell Virgil and Randolph that before you commit to such an adventure, you must return to the waking world and tell your companions about your experiences. Just then, another voice, cryptic and quiet, chimes: “Oh, you can’t wake up. The eye is upon you now.”\nYou and the others spin your heads around, searching for the source of the voice. The barkeeper? Another patron? Then Virgil’s black cat stretches and sits up, its piercing yellow eyes reflecting the light of the sun through the window outside. “I have waited a long time for you to seek Kadath,” it says.\n“You can talk?” Virgil says, nearly toppling over his stool as he jumps in surprise.\n“I’m a cat, you dolt. Of course I can talk,” the black cat replies, licking its paw out of boredom. “You have met a thousand cats from Ulthar, and now you are surprised?”\n“But…I thought…” Virgil wipes his brow with his palm.\n“Never mind him,” the black cat says, addressing you directly. “I assure you, you cannot cross back into the waking world until you find Kadath. It is your only way out. In the meantime, I will return and tell your companions about the quest ahead of you.” It hops off of the countertop and walks confidently toward the exit. “Though I imagine their task will be even more arduous…”"
     },
     {
       "id": "connect_campaign_branch",
+      "narration": {
+        "id": "the_dreameaters.interlude_1.campaign_branch",
+        "name": "Campaign Branch"
+      },
       "text": "If you are playing both <i>The Dream-Quest</i> and <i>The Web of Dreams</i> as an interconnected campaign.",
       "type": "branch",
       "condition": {
@@ -42887,6 +43031,10 @@
     },
     {
       "id": "black_cat_vanishes",
+      "narration": {
+        "id": "the_dreameaters.interlude_1.the_black_cat_vanishes",
+        "name": "The Black Cat Vanishes"
+      },
       "type": "story",
       "text": "The enigmatic cat vanishes out the door before you get the chance to respond."
     },

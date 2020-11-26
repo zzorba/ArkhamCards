@@ -39041,6 +39041,10 @@
   "steps": [
     {
       "id": "intro_article",
+      "narration": {
+        "id": "the_circle_undone.at_deaths_doorstep.intro_article",
+        "name": "Intro Article"
+      },
       "bullet_type": "none",
       "text": "<b>Quatre Personnes Portées Disparues</b>\n\nLes résidents de French Hill sont toujours en émoi après la soudaine disparition de plusieurs invités et membres du personnel dans la demeure de M. Josef Meiger, lors du gala annuel du Crépuscule d’Argent dimanche dernier. « Nous n’avons absolument aucune idée de la manière dont cela a pu arriver », a déclaré M. Meiger le lendemain des disparitions. « Cela dit, nous avons toute confiance dans le shérif Engle et dans la police d’Arkham pour mettre tout en oeuvre afin de retrouver au plus vite les personnes disparues. »/nIl n’y a toujours pas la moindre trace de Mlle Gavriella Mizrah, M. Jerome Davids, M. Valentino Rivas ou Mme Penny White. Tous se sont évaporés au beau milieu de la réception et n’ont pas été revus depuis. La police offre une récompense substantielle pour quiconque aurait des informations relatives à ces disparitions. À la question de savoir si la piste de l’homicide est examinée, le shérif Engle répond : « Il n’y aucune raison de suspecter un acte malveillant à ce stade. Cependant, au vu des circonstances, nous devons envisager toutes les possibilités. » Aucun des autres invités n’a pu fournir de témoignage concernant le gala, qui s’est terminé sans incident malgré les disparitions./nJusqu’à présent, aucun des membres les plus importants de la Loge du Crépuscule d’Argent n’a exprimé la moindre inquiétude quant à la tenue prochaine d’un dîner de bienfaisance au même endroit : la propriété de Josef Meiger, à French Hill. « Je suis certain que cet événement sera un franc succès », a annoncé hier M. Meiger à l’Annonceur d’Arkham lors d’un entretien. « Les citoyens d’Arkham n’ont aucune raison de s’inquiéter. »\n\n–Minnie Klein"
     },
@@ -40850,6 +40854,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Depuis que vous avez côtoyé la mort sur la Colline du Pendu, la situation n’a fait qu’empirer à Arkham. Dans les jours qui suivirent, les rapports concernant des « apparitions de fantômes » se sont multipliés et il y a même eu d’autres disparitions. Une fine couche de brume recouvre désormais les rues de la ville à toute heure du jour et de la nuit. Dès que le soleil commence à se coucher chaque soir, les habitants verrouillent leurs portes. Même s’ils ne réalisent pas vraiment pourquoi, peu de gens osent s’aventurer dehors à la nuit tombée. Certains commerces ont même fermé leurs portes au client la journée sous prétexte de « mauvaises conditions météorologiques ». La situation devient hors de contrôle."
     },
@@ -40942,6 +40950,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "La créature qui est apparue au gala de charité de la Loge n’est visiblement pas liée au manoir de Josef Meiger, ce qui signifie que les horreurs que vous avez vécues pourraient n’être que le début de quelque chose de pire. Il est temps de faire votre rapport à la Loge du Crépuscule d’Argent. Ils pourront peut-être vous aider à interpréter les informations que vous avez réunies et vous dire quel devrait être votre prochain mouvement. Avec leur aide, vous pourrez peut-être sauver Arkham…"
     },
@@ -40964,21 +40976,37 @@
     },
     {
       "id": "deceiving_sidebar",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.deceiving_the_lodge",
+        "name": "Deceiving the Lodge"
+      },
       "type": "story",
       "text": "…bien que vous la suspectiez de poursuivre d’autres intérêts. La Loge en sait clairement plus sur ce qui se produit qu’elle ne veut bien l’admettre. De sinistres desseins se cachent sous le vernis de la Loge et vous avez bien l’intention de découvrir lesquels."
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "La créature qui est apparue au gala de charité de la Loge n’est visiblement pas liée au manoir de Josef Meiger, ce qui signifie que les horreurs que vous avez vécues pourraient n’être que le début de quelque chose de pire. Vous ignorez encore comment, mais vous êtes sûr que cette créature est liée à la Loge du Crépuscule d’Argent, d’une manière ou d’une autre. Il est peut-être temps de leur rendre une petite visite… avec ou sans leur permission."
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Vous ne pouvez pas vous empêcher de vous demander si vous n’avez pas manqué quelque chose d’important dans la demeure de Josef Meiger. Les quatre disparitions qui ont eu lieu lors du gala de charité ne peuvent pas être une coïncidence. Si ces personnes ont rencontré une créature comme celle que vous avez vue dans le cimetière, les horreurs que vous avez vécues pourraient n’être que le début de quelque chose de pire. Vous ignorez encore comment, mais vous êtes sûr que ces événements sont liés à la Loge du Crépuscule d’Argent, d’une manière ou d’une autre. Il est peut-être temps de leur rendre une petite visite… avec ou sans leur permission."
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "Trop de disparitions ont eu lieu dans la demeure de Josef Meiger pour que cela ne soit qu’une coïncidence : d’abord, les quatre disparitions qui ont eu lieu lors du gala de charité, ensuite, celles du dîner la semaine suivante. Si ces personnes ont rencontré une créature comme celle que vous avez vue dans le cimetière, les horreurs que vous avez vécues pourraient n’être que le début de quelque chose de pire. Vous ignorez encore comment, mais vous êtes sûr que ces événements sont liés à la Loge du Crépuscule d’Argent, d’une manière ou d’une autre. Il est peut-être temps de leur rendre une petite visite… avec ou sans leur permission."
     },
@@ -41205,6 +41233,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'est atteinte\n(tous les investigateurs ont abandonné ou été vaincus)",
       "investigator_status": [
         "resigned",
@@ -41222,6 +41254,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Vous êtes comme attiré à l’intérieur de la boîte et chaque fibre de votre corps commence à se tendre. Cependant, avant que la boîte ait pu accomplir son office, son couvercle est brusquement claqué par une main ridée. Vous faites un pas en arrière et tombez au sol ; vos forces vous ayant abandonnées. Quand vous recouvrez le contrôle de vos sens, vous voyez Carl Sanford debout devant vous, aussi imperturbable qu’à l’accoutumée. « Je vois que vous avez réussi à ouvrir le mécanisme sans vaincre le gardien. Quelle chance », déclare-t-il. Il examine la boîte attentivement, ôtant la clé et la pièce qu’il reconnaît immédiatement. « J’avais le pressentiment que vous seriez un atout pour la Loge, mais j’ignorais à quel point. Il est peut-être temps de vous initier aux vérités qui se cachent derrière notre organisation. Je sens que vous êtes destiné à accomplir de grandes choses. » Contre toute attente, M. Sanford vous rend la boîte à énigme et les composants qui permirent de la déverrouiller. « Suivez-moi. Nous avons beaucoup de choses à nous dire. »",
       "steps": [
@@ -41231,6 +41267,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Vous êtes comme attiré à l’intérieur de la boîte et chaque fibre de votre corps commence à se tendre. Cependant, avant que la boîte ait pu accomplir son office, vous parvenez à refermer son couvercle. Vous tremblez de manière incontrôlable mais vos sens finissent lentement par revenir à la normale. Cette boîte est plus dangereuse que ce que vous imaginiez. Entre les mains de la Loge, elle aurait pu devenir une arme puissante, bien que vous ne sachiez pas exactement ce qu’ils comptaient en faire. À cet instant, vous entendez plusieurs membres de la loge approcher. Vous déplacez rapidement l’une des bibliothèques et vous vous cachez derrière avant qu’ils n’entrent dans la pièce. « Tu es sûr que tu as entendu quelque chose ici ? Je ne vois personne », dit l’un d’eux.\n« Hum… » répond l’autre en inspectant la pièce à la recherche de signes d’intrusion. « Ce n’était sans doute rien. »\n« Pas grave, nous sommes tous un peu sur les nerfs depuis que la boîte à piège a disparu. Viens, nous ne devons pas être en retard pour la cérémonie. Cette nuit est une nuit importante. » Leurs pas s’estompent tandis qu’ils rebroussent chemin. Les mots de l’homme résonnent un instant dans votre tête. Que voulait- il dire par une nuit importante ? Cela pourrait être aussi important que la boîte à énigme qu’ils tentaient d’ouvrir. Vous suivez discrètement les deux hommes qui s’enfoncent plus profondément dans les tunnels sous la Loge. Vous luttez pour ne pas perdre leur trace tout en essayant de rendre vos pas aussi silencieux que possible sur le sol de pierre du couloir. Enfin, ils franchissent une large porte ornée du blason aux trois flèches du Crépuscule d’Argent. Vous pouvez entendre des incantations rituelles provenant de l’intérieur. Vous approchez doucement et placez votre oreille contre la porte pour entendre ce qui s’y dit.\n« Frères et soeurs », commence un vieil homme, « merci à vous d’être venus à ce rassemblement sacré. L’heure que nous attendions est désormais toute proche. » Vous reconnaissez cette voix ; c’est celle de Carl Sanford, le président de la Loge du Crépuscule d’Argent. « Pendant des décennies, l’Ordre du Crépuscule d’Argent a recherché des savoirs susceptibles d’élever l’humanité. Nous nous sommes défendus contre des menaces qui voulaient anéantir jusqu’à nos existences. Nous avons tout sacrifié pour cette cause sacrée. Aujourd’hui, l’une de ces menaces terrorise notre ville, et une fois encore nous devons faire ce qui doit être fait afin de la protéger. » La foule approuve d’un murmure. « Cette nuit, nous accomplirons le rituel que nous avons débuté il y a de cela plusieurs nuits au centre de l’Île Déserte. Cette nuit, nous capturerons le revenant et apprendrons ce qu’il sait. Nous ne devons pas laisser les secrets d’AZATHOTH être perdus au profit de ceux qui voudraient nuire à l’humanité.\nLe culte répond avec un hymne monotone et vous en profitez pour fuir la Loge avant d’être découvert. La conspiration que vous avez dévoilée vous laisse avec plus de questions que de réponses. Si le revenant dont parlait M. Sanford est ce que vous pensez qu’il est, le capturer protégera sûrement Arkham comme il le prétend. Mais quels savoirs espèrent-ils en tirer ?… et que diable peut bien être un « AZATHOTH » ?",
       "steps": [
@@ -41242,6 +41282,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.for_the_greater_good.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Conclusion 3",
       "text": "La bête qui a surgi de la boîte était un gardien brutal qui a tout massacré sur son passage. Vous êtes parvenu à tuer la créature, mais à quel prix ? De nombreux membres de la Loge ont été sauvagement tués par la créature avant que vous ne la neutralisiez. Pire, le mécanisme d’où elle est sortie a été complètement détruit. Vous ne savez pas si c’est l’émergence de la créature, ou sa mort, qui a causé la destruction de la boîte, mais dans les deux cas, c’est une perte regrettable. « Cela n’a pas fonctionné comme prévu », constate l’un des membres de l’Ordre vêtu d’une robe tandis que vous examinez les restes de la boîte à énigme.\n« Tu parles d’un euphémisme », répond une autre. Elle pose une main sur votre épaule et vous arrache en douceur à la contemplation du mécanisme détruit. « Venez, c’est une cause perdue », dit-elle.\nSon partenaire ignore votre présence et se tourne vers elle, stoïquement. « Nous devons nous rendre sur l’Île Déserte et accomplir le rituel de contrainte sans le mécanisme. » Elle acquiesce et vous jette un dernier regard avant que les derniers membres de la Loge ne fuient le bâtiment. Est-ce que c’est à ce genre de « sacrifices » que croit la Loge du Crépuscule d’Argent ? Et qu’est-ce que ce rituel de contrainte que ses membres cherchent à effectuer sur l’Île Déserte ?",
       "steps": [
@@ -41984,6 +42028,10 @@
   "steps": [
     {
       "id": "ic_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_1",
+        "name": "The Inner Circle 1"
+      },
       "type": "story",
       "text": "Vous avez été amené au coeur du sanctuaire intérieur, là où seuls les membres les plus hauts dans la hiérarchie de la Loge sont autorisés. M. Sanford vous explique que l’Ordre du Crépuscule d’Argent est bien plus ancien, et plus important, que sa couverture publique, la Loge du Crépuscule d’Argent, et que leurs savoirs s’étendent au royaume du mystique et de l’occulte. « Pendant des décennies, l’Ordre du Crépuscule d’Argent a recherché des savoirs susceptibles d’élever l’humanité. Nous nous sommes défendus contre des menaces qui voulaient anéantir jusqu’à nos existences. Nous avons tout sacrifié pour cette cause sacrée. Aujourd’hui, l’une de ces menaces terrorise notre ville, et nous seuls pouvons l’arrêter. Vous savez de quelle créature je parle. » Vous acquiescez.\n« Voici ce que nous savons : ce sont les sorcières qui ont amené cette abomination sur Arkham. Nous avons tenté d’arrêter leur rituel, mais nous en avons malheureusement été incapables. Elle est désormais libre, et nous devons finir ce que nous avons commencé avant que les sorcières ne fassent de même. Mais d’abord, j’ai cru comprendre que vous aviez également des informations pour nous. S’il vous plaît, montrez-nous ce que vous avez trouvé. Il est important de collaborer pleinement afin de faire la lumière sur cette situation. »"
     },
@@ -42015,6 +42063,10 @@
     },
     {
       "id": "ic_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_2",
+        "name": "The Inner Circle 2"
+      },
       "type": "story",
       "text": "Vous montrez à M. Sanford les éléments que vous avez découverts. « Hum… Oui, je vois. C’est bien ce que je soupçonnais », murmure-t-il en examinant les objets."
     },
@@ -42125,6 +42177,10 @@
     },
     {
       "id": "ic_3",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_3",
+        "name": "The Inner Circle 3"
+      },
       "type": "story",
       "text": "Vous ne faites pas confiance à Carl Sanford pour garder les preuves que vous avez récoltées. Qui sait ce qu’il compte faire avec ? Dans les mains du président de la Loge du Crépuscule d’Argent, le moindre de ces objets pourrait devenir une arme mortelle. Vous mentez et l’informez que vos investigations se sont révélées infructueuses. Il serre la mâchoire et vous scrute un moment, ses yeux bleus et froids vous transperçant comme des poignards. « Voilà qui est très décevant. Mais peut-être est-ce ma faute ; je n’aurais pas dû imposer un si lourd fardeau à un néophyte de notre Ordre. »\nM. Sanford se lève et les autres membres de l’Ordre l’imitent. Il se tourne vers les autres membres du Cercle Restreint : « Très bien, nous n’avons plus de temps à perdre. Le rituel doit être accompli sans tarder. Nous devons nous rendre dans le même lieu que la dernière fois : le pilier central de l’Île Déserte, là où la barrière entre les mondes est la plus ténue. Il est probable que l’anomalie nous poursuive là-bas, donc soyez prudents. » Il se tourne à nouveau vers vous. « Votre aide est également la bienvenue, évidemment. Le mécanisme que vous détenez est la clé pour capturer le revenant. Vous devrez l’utiliser de la manière appropriée quand le moment sera venu. Vous comprenez ? » Vous hochez la tête à cette affirmation, respirez un grand coup pour calmer vos nerfs et vous préparez à vous rendre sur l’Île Déserte ; un voyage vers la mort elle-même."
     },
@@ -42141,6 +42197,10 @@
     },
     {
       "id": "ic_4",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_4",
+        "name": "The Inner Circle 4"
+      },
       "type": "story",
       "text": "Carl Sanford esquisse un sourire et se lève. « Vous avez prouvé que vous étiez un soutien loyal de notre Ordre. Je crois qu’il est temps pour vous d’intégrer notre Cercle Restreint. » Vous approchez et vous agenouillez devant M. Sanford. Ce dernier ouvre grand les bras et déclare : « Moi, Carl Sanford, vous élève à la dignité de Chevalier du Cercle Restreint. Relevez-vous, chevalier, et soyez fier. Vous êtes désormais un membre de l’élite des gardiens de l’humanité, protecteurs de la vérité au service de l’Ordre du Crépuscule d’Argent. » Un autre membre de l’Ordre vous apporte une robe bleue que vous revêtez solennellement. « Je suis sûr que de nombreuses questions brûlent vos lèvres. Nous n’avons pas beaucoup de temps devant nous, mais vous méritez d’obtenir des réponses. Que voulez-vous savoir ? »"
     },
@@ -42604,41 +42664,73 @@
     },
     {
       "id": "answer_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_is_the_creature",
+        "name": "What is the Creature?"
+      },
       "type": "story",
       "text": "« Il s’agit d’un puissant revenant, resté ici alors qu’il périt il y a longtemps. Les sorcières ne peuvent l’avoir invoqué qu’en bénéficiant d’une forte connexion à l’être qu’il fut autrefois. », explique M. Sanford. « Je ne vois qu’une personne qui corresponde : Keziah Mason elle-même. »"
     },
     {
       "id": "answer_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_do_you_want_with_the_creature",
+        "name": "What do you want with the Creature?"
+      },
       "type": "story",
       "text": "« En premier lieu, nous devons l’arrêter afin qu’elle ne puisse plus faire de mal à qui que ce soit. C’est le plus important. Une fois capturée, nous devrions être en mesure d’apprendre ses secrets sans mettre quiconque en danger. »"
     },
     {
       "id": "answer_3",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.what_do_the_witches_want_with_the_creature",
+        "name": "What do the witches want with the Creature?"
+      },
       "type": "story",
       "text": "« Je pense qu’elles veulent apprendre ses secrets et tirer profit de son pouvoir », suppute-t-il en se grattant le menton. « Peut-être permettre à l’une des leurs d’être possédée par l’esprit et d’acquérir un pouvoir sur la vie et la mort elles-mêmes. »"
     },
     {
       "id": "answer_4",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.did_you_know_about_the_creature_before_the_charity_gala",
+        "name": "Did you know about the Creature before the charity gala?"
+      },
       "type": "story",
       "text": "« En vérité, oui », admet M. Sanford. « Mais nous ignorions qu’elle viendrait à nous. Après avoir interrompu le rituel d’invocation des sorcières, nous avons enquêté sur la brume spectrale qui perdura pendant plusieurs jours. Nous avons visiblement trop attiré son attention sur nous et elle fut attirée par notre présence. Ce qui n’était pas forcément une mauvaise chose au final. »"
     },
     {
       "id": "answer_5",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.where_are_the_four_missing_people_from_the_charity_gala",
+        "name": "Where are the four missing people from the charity gala?"
+      },
       "type": "story",
       "text": "« Dieu seul le sait », soupire M. Sanford. « Emportés par le revenant, je suppose. Ou dévorés par la brume. » Il fait une courte pause, puis ajoute : « J’imagine que s’ils sont toujours vivants, ils ne doivent pas être loin du revenant. Pour le meilleur comme pour le pire, l’anomalie semble se cantonner à son entourage immédiat. »"
     },
     {
       "id": "answer_6",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.why_are_you_looking_at_me_like_that",
+        "name": "Why are you looking at me like that?"
+      },
       "type": "story",
       "text": "M. Sanford se racle la gorge. « Je… Non, ce n’est rien », ment-il."
     },
     {
       "id": "ic_5",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_5",
+        "name": "The Inner Circle 5"
+      },
       "type": "story",
       "text": "Carl Sanford confie les objets à un autre membre du Cercle Restreint qui les saisit soigneusement et les emporte à l’étage. « Merci pour votre aide. Nous sommes plus forts ensemble que séparément, ne trouvez-vous pas ? »\nM. Sanford se lève et les autres membres de l’Ordre l’imitent. Il se tourne vers les autres membres du Cercle Restreint : « Très bien, nous n’avons plus de temps à perdre. Le rituel doit être accompli sans tarder. Nous devons nous rendre dans le même lieu que la dernière fois : le pilier central de l’Île Déserte, là où la barrière entre les mondes est la plus ténue. Il est probable que l’anomalie nous poursuive là-bas, donc soyez prudents. » Il se tourne à nouveau vers vous. « Votre aide est également la bienvenue, évidemment. Le mécanisme que vous détenez est la clé pour capturer le revenant. Vous devrez l’utiliser de la manière appropriée quand le moment sera venu. Vous comprenez ? » Vous hochez la tête à cette affirmation, respirez un grand coup pour calmer vos nerfs et vous préparez à vous rendre sur l’Île Déserte ; un voyage vers la mort elle-même."
     },
     {
       "id": "ic_6",
+      "narration": {
+        "id": "the_circle_undone.interlude_3.the_inner_circle_6",
+        "name": "The Inner Circle 6"
+      },
       "type": "story",
       "text": "M. Sanford se lève et les autres membres de l’Ordre l’imitent. Il se tourne vers les autres membres du Cercle Restreint, vous inclus : « Très bien, nous n’avons plus de temps à perdre. Le rituel doit être accompli sans tarder. Nous devons nous rendre dans le même lieu que la dernière fois : le pilier central de l’Île Déserte, là où la barrière entre les mondes est la plus ténue. Il est probable que l’anomalie nous poursuive là-bas, donc soyez prudents. » Il se tourne vers vous en particulier. « Le mécanisme que vous détenez est la clé pour capturer le revenant. Je compte sur vous pour l’utiliser de la manière appropriée quand le moment sera venu. » Vous et les autres membres du cercle hochez la tête à cette affirmation. Vous respirez un grand coup pour calmer vos nerfs et vous préparez à vous rendre sur l’Île Déserte ; un voyage vers la mort elle-même."
     },
@@ -43113,6 +43205,10 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Le bureau de l’étage de la Loge du Crépuscule d’Argent est confortable, bien qu’exigu. Le sol est couvert d’un somptueux tapis et l’éclairage est chaleureux. Des canapés confortables et des petites tables rondes sont disposés dans la pièce et les portraits désabusés de membres de la Loge sont alignés sur les murs. Carl Sanford, président de la Loge, est assis en face de vous, sirotant tranquillement le verre de Merlot qu’il tient dans sa main ridée.\n« La Loge du Crépuscule d’Argent cherche à acquérir des connaissances susceptibles d’améliorer notre compréhension de l’univers », explique M. Sanford. Il fait une courte pause le temps d’avaler une gorgée de vin. « La créature que vous avez aperçue dans la demeure de Josef Meiger ; son apparition n’est pas la seule chose étrange qui a eu lieu à Arkham ces derniers temps. Dites moi : avez-vous récemment vécu quelque chose qui pourrait être lié à ces événements ?"
     },
@@ -43146,6 +43242,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Vous parlez à M. Sanford de votre expérience de la semaine précédente ; votre réveil au milieu de la forêt, l’étrange brume qui s’étendait à travers les arbres, les sorcières et leur sortilège. Il se penche en avant et écoute attentivement votre explication des étranges événements de cette nuit. Malgré vos souvenirs nébuleux, vous parvenez à terminer votre histoire. Le vieil homme réfléchit à vos paroles. « Intéressant », dit-il enfin. « Je connais cette congrégation. Elle est dirigée par une sorcière appelée Anette Mason. Leur magie n’est pas à prendre à la légère. Elles ont percé des arcanes mystiques qui permettent de manipuler les énergies de l’univers. Ce sont des savoirs dangereux à posséder ; je crois qu’elles tiennent ces savoirs d’une puissante sorcière ayant fui Salem il y a plus de deux siècles. Est-ce que le nom de “Keziah” vous est familier ? »\nVous acquiescez. Tout le monde à Arkham a déjà entendu au moins une fois l’histoire de la sorcière dont le fantôme est censé hanter la vieille « Maison de la Sorcière » à French Hill. La plupart pensent qu’elle n’est que pure invention ; un conte de fée destiné à effrayer les enfants et à les tenir éloignés de la maison en ruines. À en juger par le ton sérieux et le regard d’acier de M. Sanford, ce n’est pas le cas. « Peut-être que cette Anette est une véritable descendante de Keziah, ou peut-être qu’elle utilise juste son nom. Quoi qu’il en soit, je pense que ces événements sont liés. En conséquence, j’ai une tâche à vous confier au nom de la Loge du Crépuscule d’Argent. » Carl Sanford se lève, utilisant sa canne pour appuyer sa prestance plus que sa personne. Vous l’imitez, prêt à faire ce que qui doit être fait pour aller au fond de ce mystère.\n« Nous avons besoin d’autant d’informations que possible sur cette congrégation. S’il y a un endroit où nous pourrons trouver des réponses, c’est bien la maison où vécut Keziah pendant des années. » Vous acquiescez ; il y a trop de questions qui nécessitent une réponse. Quel était ce sortilège lancé par les sorcières dans les bois ? Quelles sont leurs motivations ? Et quel est leur lien avec la créature qui a enlevé ces quatre âmes infortunées ? Vous serrez la main de M. Sanford et prenez la direction de la Maison de la Sorcière."
     },
@@ -43174,6 +43274,10 @@
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Vous secouez la tête. Vous ne savez pas si les événements qui se sont déroulés dans les bois sont liés, ni même s’ils ont réellement eu lieu ; une part de vous pense toujours qu’il s’agissait d’un étrange rêve. Les yeux froid de M. Sanford restent fixés sur vous, comme s’il était capable de lire à travers vous. « Très bien », dit-il. « Juste par curiosité, est-ce que le nom de “Keziah Mason” vous est familier ? »\nVous acquiescez. Tout le monde à Arkham a déjà entendu au moins une fois l’histoire de la sorcière dont le fantôme est censé hanter la vieille « Maison de la Sorcière » à French Hill. La plupart pensent qu’elle n’est que pure invention ; un conte de fée destiné à effrayer les enfants et à les tenir éloignés de la maison en ruines. À en juger par le ton sérieux et le regard d’acier de M. Sanford, ce n’est pas le cas. Il se tourne vers un vieux grimoire posé sur une table attenante. Ce dernier est ouvert à une page couverte d’étranges inscriptions et de glyphes ésotériques. « Je crois que la créature que vous avez rencontrée dans la demeure de Josef est liée à Keziah et aux savoirs secrets qu’elle possédait. Voyez vous-même. » Vous prenez l’ouvrage et examinez attentivement la page."
     },
@@ -43239,16 +43343,28 @@
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Après votre confrontation avec le président de la Loge du Crépuscule d’Argent, vous décidez de vous rendre au manoir de la Société des Historiens d’Arkham, dans le Quartier Sud. Vous êtes sûr que les événements de la semaine dernière dans les bois ont un lien avec la créature qui a enlevé ces quatre âmes infortunées. Ce n’est qu’un pressentiment – une idée qui vous trotte à l’arrière du crâne, vous implorant de passer à autre chose – mais vous avez la conviction que tout est lié. Vous ignorez juste comment.\nÀ la Société des Historiens, une érudite vous accueille et vous demande si elle peut vous aider. Vous lui donnez une description sommaire des informations que vous recherchez ; suffisamment précises pour lui indiquer où chercher, mais assez vagues pour ne pas laisser transparaître vos motivations. « J’ignore pourquoi vous enquêtez sur d’aussi morbides affaires, mais les dossiers que vous cherchez devraient être dans la bibliothèque du deuxième étage », répond-elle.\nVous la remerciez et vous vous dirigez vers le deuxième étage où vous commencez à compulser les ouvrages relatifs à la sorcellerie à Arkham. À la fin du XVIIe siècle, Arkham fut l’une des villes de Nouvelle Angleterre prises dans la frénésie de la chasse aux sorcières. Les accusations de sorcellerie jaillissaient de partout et nombre des accusées furent brûlées ou pendues, qu’elles aient été coupables ou innocentes. Mais il y eut une sorcière dont l’infamie était au-dessus du lot et dont les pouvoirs mystiques ne furent jamais remis en question : Keziah Mason.\nVous reconnaissez ce nom comme étant celui d’un fantôme censé hanter la vieille Maison de la Sorcière à French Hill. Vous aviez toujours considéré qu’elle n’était que pure invention ; un conte de fée destiné à effrayer les enfants et à les tenir éloignés de la maison en ruines. Mais les dossiers de la Société des Historiens indiquent que Keziah a réellement existé et qu’elle était une puissante sorcière ayant fui Salem il y a plus de deux siècles.\nLa véritable sorcellerie ne vous est pas inconnue. Si Keziah Mason a quelque chose à voir avec la congrégation que vous avez rencontrée dans les bois, vous devez découvrir le lien qui existe entre elles. Vous quittez le manoir et prenez la direction de French Hill où la Maison de la Sorcière vous attend…"
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "Votre piste menant au gala de charité de la Loge du Crépuscule d’Argent s’est révélée être un cul-de-sac, mais les prédictions d’Anna Kaslow sont toujours gravées dans votre esprit. Vous ne parvenez pas à vous ôter de la tête qu’il vous manque une pièce du puzzle ; quelque chose que vous pourriez utiliser pour éviter le terrible destin prédit par la voyante. Vous tournez à nouveau votre attention vers la congrégation de sorcières que vous avez rencontrée dans les bois la semaine dernière. Vous décidez de vous rendre au manoir de la Société des Historiens d’Arkham dans le Quartier Sud. Il y a peut-être des éléments que vous avez négligés et qui pourraient mettre en lumière leur identité ou leurs motivations.\nÀ la Société des Historiens, une érudite vous accueille et vous demande si elle peut vous aider. Vous lui donnez une description sommaire des informations que vous recherchez ; suffisamment précises pour lui indiquer où chercher, mais assez vagues pour ne pas laisser transparaître vos motivations. « J’ignore pourquoi vous enquêtez sur d’aussi morbides affaires, mais les dossiers que vous cherchez devraient être dans la bibliothèque du deuxième étage », répond-elle.\nVous la remerciez et vous vous dirigez vers le deuxième étage où vous commencez à compulser les ouvrages relatifs à la sorcellerie à Arkham. À la fin du XVIIe siècle, Arkham fut l’une des villes de Nouvelle Angleterre prises dans la frénésie de la chasse aux sorcières. Les accusations de sorcellerie jaillissaient de partout et nombre des accusées furent brûlées ou pendues, qu’elles aient été coupables ou innocentes. Mais il y eut une sorcière dont l’infamie était au-dessus du lot et dont les pouvoirs mystiques ne furent jamais remis en question : Keziah Mason.\nVous reconnaissez ce nom comme étant celui d’un fantôme censé hanter la vieille Maison de la Sorcière à French Hill. Vous aviez toujours considéré qu’elle n’était que pure invention ; un conte de fée destiné à effrayer les enfants et à les tenir éloignés de la maison en ruines. Mais les dossiers de la Société des Historiens indiquent que Keziah a réellement existé et qu’elle était une puissante sorcière ayant fui Salem il y a plus de deux siècles.\nLa véritable sorcellerie ne vous est pas inconnue. Si Keziah Mason a quelque chose à voir avec la congrégation que vous avez rencontrée dans les bois, vous devez découvrir le lien qui existe entre elles. Vous quittez le manoir et prenez la direction de French Hill où la Maison de la Sorcière vous attend…"
     },
     {
       "id": "intro_6",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.intro_6",
+        "name": "Intro 6"
+      },
       "type": "story",
       "text": "Vous punaisez l’article de journal sur votre mur avec le reste des preuves que vous avez rassemblées. Quoiqu’il se soit passé au manoir de Josef Meiger, cela s’étend. Il y a d’abord eu les quatre disparitions le vingt-deux novembre lors du gala de charité annulé de la Loge du Crépuscule d’Argent. Et là, des gens ont à nouveau disparu après un nouvel événement du même genre dans cette même demeure. La Loge est-elle impliquée ? Pour quelle autre raison auraient-ils déplacé ce dîner dans la propriété de M. Meiger ?\nCe n’est pas votre seul sujet d’inquiétude. D’étranges apparitions se sont produites partout en ville : des spectres, une brume grisâtre et une silhouette bossue et encapuchonnée dont l’identité est âprement débattue en société. Le nom qui est sur toutes les lèvres est celui de Keziah Mason, le fantôme qui est censé hanter la vieille Maison de la Sorcière. Vous avez toujours considéré qu’elle n’était que pure invention ; un conte de fée destiné à effrayer les enfants et à les tenir éloignés de la maison en ruines. Mais avec toutes ces disparitions et les étranges apparitions qui se sont produites en ville, vous n’en êtes plus si sûr. Il y a peut-être du vrai derrière ces vieilles histoires de fantômes après tout."
     },
@@ -43559,6 +43675,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'est atteinte\n(tous les investigateurs ont abandonné ou été vaincus)",
       "investigator_status": [
         "resigned",
@@ -43573,6 +43693,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Vous vous réveillez sur une pelouse boueuse au pied de l’escalier de bois bancal menant à la porte d’entrée de la Maison de la Sorcière. Chaque fibre de votre être est emplie de regrets. Vous savez que vous n’avez pas réussi à empêcher quelque chose de terrible, bien que vous ignoriez quoi exactement. Ce que vous avez vu et entendu dans la Maison de la Sorcière ne correspond pas avec ce lieu et ce temps. Au moins, vous avez appris plusieurs choses à propos de Keziah Mason, la sorcière qui vivait autrefois dans cette vieille bâtisse abandonnée. Le corps endolori et l’esprit diminué, vous allez devoir en rester là pour l’instant et vous contenter des informations que vous avez récoltées. Jamais vous n’oserez franchir à nouveau le seuil de cette demeure infernale.",
       "steps": [
@@ -43585,6 +43709,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.the_secret_name.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Quand vous revenez à vous, vous êtes étendu sur le parquet de la chambre de Walter Gilman. Il n’y a plus aucune trace des viles pratiques de Keziah, ni du rat barbu et griffu, et que vous savez maintenant être le « familier » de Keziah. Alors que vous êtes sur le point de vous relever, un reflet dans un coin de la pièce attire votre regard. Rampant sous le lit de Gilman, vous parvenez à saisir l’objet. C’est un vieux crucifix en nickel, semblable à ceux que vous avez aperçus dans la chambre du réparateur de métiers à tisser. Vous le glissez dans votre poche avant de quitter cette affreuse chambre et ses étranges angles. Vous avez appris tout ce que vous pouviez sur Keziah Mason, la sorcière qui vivait autrefois dans cette vieille bâtisse abandonnée. Vous craignez que même si vous ne remettez jamais les pieds dans cette maison, elle continuera de hanter vos cauchemars et vos pensées.",
       "steps": [
@@ -43616,6 +43744,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Depuis votre rencontre avec le fantôme de la Maison de la Sorcière, vous avez été forcé de reconsidérer tout ce que vous saviez à propos de la vie et de la mort. Keziah Mason est morte il y a plus de deux cents ans, mais son esprit demeure dans la brume spectrale ; la même brume que vous avez vue dans le manoir de Josef Meiger. Quand vous tentez d’analyser tous ces événements, une question hante votre esprit : le spectre de Keziah est-il la cause, ou la conséquence de la brume ? La maladie ou bien le symptôme ?\nPlus vous creusez dans l’histoire de la sorcellerie à Arkham et de la persécution qui en a découlé, moins vous parvenez à trouver le sommeil. Nuit après nuit, vous êtes assailli par des rêves ; des rêves de mort et de décrépitude, de culpabilité et de péché. Un mal ronge cette ville, un mal qui est longtemps resté caché dans les ténèbres du passé d’Arkham. Mais le pire, c’est que votre enquête est au point mort. Si seulement vous pouviez retrouver la congrégation de sorcières que vous avez vue cette fameuse nuit, vous pourriez peut-être en apprendre plus sur Keziah Mason ou sur ce mal indéterminé.\nVous reprenez votre routine matinale lorsqu’un petit article du journal d’aujourd’hui attire votre attention : « Des fantômes aperçus sur la Colline du Pendu ? Des habitants du quartier résidentiel déclarent avoir vu des formes humaines au coeur d’un épais brouillard émanant du Ruisseau du Pendu… » Cela ne peut pas être une coïncidence tout de même ?\nVous réalisez ensuite que si vous cherchez des sorcières, le meilleur endroit pour en trouver est six pieds sous terre, là où les femmes reconnues comme sorcières étaient exécutées pendant toutes ces années. Aller chercher des spectres de sorcières dans un cimetière n’est peut-être pas l’idée la plus brillante que vous ayez jamais eue, mais, de toute manière, vous n’êtes plus certain d’être en sécurité en ville."
     },
@@ -43855,6 +43987,10 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.resolution_1",
+        "name": "Resolution 1"
+      },
       "text": "De pâles rayons de lumière percent enfin à travers la brume et celle-ci reflue. De ce fait, la Colline du Pendu retrouve son aspect originel. Aucun autre spectre en colère ne surgit pour vous hanter et les sorcières qui les ont invoqués se sont de nouveau repliées dans les ombres. Vous espérez que vos actions auront suffit pour empêcher le reste d’Arkham de succomber à cette horreur.",
       "steps": [
         "maybe_corn_husk_doll",
@@ -43866,6 +44002,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.the_wages_of_sin.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Résigné quant à votre sort, vous tombez à genou. La brume s’écarte. Le temps semble ralentir tandis que le guetteur en émerge. Sa silhouette spectrale glisse sur le sol, s’approchant de vous avec la lenteur et la régularité du tic-tac d’une pendule. Vous fermez les yeux, incapable de regarder votre assassin en face. Vos doigts s’enfoncent dans vos paumes et vous vous arc-boutez.\nUn moment passe.\nQuand vous ouvrez enfin les yeux, la créature a disparu, de même que la brume spectrale.\n…Auriez-vous été épargné ?",
       "steps": [
@@ -46838,13 +46978,17 @@
       "id": "black_cat_1",
       "narration": {
         "id": "the_dreameaters.interlude_1.the_black_cat_1",
-        "name": "Black Cat 1"
+        "name": "The Black Cat 1"
       },
       "type": "story",
       "text": "<i>Following scenario 1–A, the dreamers travel beyond the Enchanted Woods…</i>\nAs you travel out of the Enchanted Woods, you pass through rolling green meadows under a bright-blue, cloudless sky. You speak with the blond-haired man—who introduces himself as Randolph Carter— for several hours along your journey south. You pass through a town Randolph calls Nir and over a stone bridge spanning a wide river. Since the man seems friendly and knowledgeable about both your world and this one, you explain to him your situation: that you had followed the writings of a man named Virgil Gray to reach this strange land, in order to see for yourself the truth of his story. “There is a place in Ulthar where you may yet meet this man for yourself,” Randolph responds. “When we reach Ulthar, I will show you.”\nThe town of Ulthar is not quite what you had imagined. The border of the town is marked by a cobblestone road separating its quaint cottages from the rolling green meadows beyond. Inside the town, narrow cobbled streets are filled almost to capacity with cats of all kinds and colors, which part as you approach. Old peaked roofs and overhanging upper stories arch over the hilly streets; the entire village seems a haphazard cluster of homes and old-fashioned businesses. As you reach the town square near the center of the village, Randolph stops and addresses you with a youthful smile. “Welcome to Ulthar,” he proclaims. “As I mentioned before, you are quite safe here. There is but one paramount law to keep in mind as you traverse this place: in the town of Ulthar, no one may kill a cat.” Given how utterly packed the streets are with cats, you wonder aloud if this is indeed a town run by cats. “Not quite,” Randolph replies, pondering your words, “though I suppose one might call it the center of cat society here in the Dreamlands. The reason for that law’s existence is a story for another time. First, come—I have a feeling we’ll find this ‘Virgil’ fellow you speak of at Einar’s.”\nRandolph leads you through the town square, which is surrounded by buildings adorned with cat motifs in the form of statues, signs, and even stained-glass windows. You eventually arrive at one such building bearing a sign that reads “Einar’s Place.” Inside is a medieval-style tavern filled with long wooden tables. You spot several patrons and three times as many cats. One such patron at the wooden counter feeds one of the cats small strips of dried meat. He is a handsome man in his early thirties, with short dark hair, a strong jaw, and sharp cheekbones. You recognize him instantly as the writer Virgil Gray. In the back of your mind, you wonder if this chance meeting is merely an act of fortune or something preordained, for good or for ill.\nRegardless, you approach the man and introduce yourself, along with Randolph. Virgil shakes your hand and Randolph’s with a joyful smile. “Well met, fellow dreamers!” the writer says, a hint of boyish excitement in his voice. “It is wonderful to meet more fellow believers. I had become so sick and tired of reading about my supposed ‘illness’ in the papers.”\nYou nod your head in agreement and inform Virgil that you intend to find some proof of this discovery to bring back to the waking world. “Don’t you think I tried that?” he replies, stymied. “Sadly, it is impossible for one who is asleep to bring anything from this realm into the real world. This is all imagination, you see. Ideas, concepts, fantasies. You cannot hold a thought in your hands, can you?”\nRandolph interjects. “There is a place within the Dreamlands that may hold the proof you seek. I have seen it in my dreams. I visited there three times, each time just a fleeting moment before I was snatched away by the rising sun…but try as I might, I cannot find the way again. I have spent many nights searching.”\n“Oh?” Virgil asks, intrigued. “And what is this place?”\n“It is a marvelous city,” he describes, his eyes aglow with wonder, “golden and lovely like nothing I have seen before or since. A city beyond the peaks of the unknown mountain Kadath, where no one has ever set foot before. There, veiled within the clouds and crowned by stars, lies the onyx castle of the Great Ones.”\nVirgil idly pets the cat on the countertop next to him as he is absorbed by Randolph’s tale. It is a slender creature with lustrous black fur, dark as the void of space itself. “Then we must find this place! Even if it does not have the proof we seek, it sounds like the adventure of a lifetime. Enough to fill a hundred pages, or more!”\nYou tell Virgil and Randolph that before you commit to such an adventure, you must return to the waking world and tell your companions about your experiences. Just then, another voice, cryptic and quiet, chimes: “Oh, you can’t wake up. The eye is upon you now.”\nYou and the others spin your heads around, searching for the source of the voice. The barkeeper? Another patron? Then Virgil’s black cat stretches and sits up, its piercing yellow eyes reflecting the light of the sun through the window outside. “I have waited a long time for you to seek Kadath,” it says.\n“You can talk?” Virgil says, nearly toppling over his stool as he jumps in surprise.\n“I’m a cat, you dolt. Of course I can talk,” the black cat replies, licking its paw out of boredom. “You have met a thousand cats from Ulthar, and now you are surprised?”\n“But…I thought…” Virgil wipes his brow with his palm.\n“Never mind him,” the black cat says, addressing you directly. “I assure you, you cannot cross back into the waking world until you find Kadath. It is your only way out. In the meantime, I will return and tell your companions about the quest ahead of you.” It hops off of the countertop and walks confidently toward the exit. “Though I imagine their task will be even more arduous…”"
     },
     {
       "id": "connect_campaign_branch",
+      "narration": {
+        "id": "the_dreameaters.interlude_1.campaign_branch",
+        "name": "Campaign Branch"
+      },
       "text": "If you are playing both <i>The Dream-Quest</i> and <i>The Web of Dreams</i> as an interconnected campaign.",
       "type": "branch",
       "condition": {
@@ -46870,6 +47014,10 @@
     },
     {
       "id": "black_cat_vanishes",
+      "narration": {
+        "id": "the_dreameaters.interlude_1.the_black_cat_vanishes",
+        "name": "The Black Cat Vanishes"
+      },
       "type": "story",
       "text": "The enigmatic cat vanishes out the door before you get the chance to respond."
     },
