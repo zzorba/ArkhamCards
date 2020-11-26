@@ -546,7 +546,9 @@ export function usePressCallback(callback: undefined | (() => void), bufferTime:
   useEffect(() => {
     callbackRef.current = callback;
   }, [callback]);
-  const onPress = useMemo(() => debounce(() => callbackRef.current && callbackRef.current(), bufferTime, { leading: true, trailing: false }), [callbackRef]);
+  const onPress = useMemo(() => {
+    return debounce(() => callbackRef.current && callbackRef.current(), bufferTime, { leading: true, trailing: false });
+  }, [callbackRef, bufferTime]);
   return callback ? onPress : undefined;
 }
 
