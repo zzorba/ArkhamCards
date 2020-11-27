@@ -2425,7 +2425,7 @@
           },
           {
             "id": "mission_failed",
-            "text": "the mission failed."
+            "text": "Die Mission ist gescheitert."
           },
           {
             "id": "mission_succeeded",

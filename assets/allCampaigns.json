@@ -60680,7 +60680,7 @@
   "id": "beneath_the_waves",
   "scenario_name": "Beneath the Waves",
   "full_name": "Interlude III: Beneath the Waves",
-  "type": "placeholder",
+  "type": "interlude",
   "setup": [
     "intro",
     "section_intro",
@@ -60711,7 +60711,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "id": "cheat",
+            "id": "purple_key",
             "text": "Was the purple key on the current act or controlled by an investigator when the scenario ended?",
             "steps": ["purple_key_story", "purple_key_xp", "purple_key_token", "idol_brought_to_the_lighthouse"]
           }
@@ -60765,7 +60765,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "id": "cheat",
+            "id": "white_key",
             "text": "Was the white key on the current act or controlled by an investigator when the scenario ended?",
             "steps": ["white_key_story", "white_key_xp", "white_key_token", "mantle_brought_to_the_lighthouse"]
           }
@@ -60811,8 +60811,6 @@
         }
       ]
     },
-
-
     {
       "id": "ask_black_key",
       "type": "input",
@@ -60820,7 +60818,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "id": "cheat",
+            "id": "black_key",
             "text": "Was the black key on the current act or controlled by an investigator when the scenario ended?",
             "steps": ["black_key_story", "black_key_xp", "black_key_token", "headdress_brought_to_the_lighthouse"]
           }
@@ -60880,7 +60878,7 @@
             "id": "headdress_brought_to_the_lighthouse",
             "options": [
               {
-                "boolCondition": true
+                "boolCondition": false
               }
             ]
           },
@@ -60890,7 +60888,7 @@
             "id": "mantle_brought_to_the_lighthouse",
             "options": [
               {
-                "boolCondition": true
+                "boolCondition": false
               }
             ]
           },
@@ -60900,12 +60898,12 @@
             "id": "idol_brought_to_the_lighthouse",
             "options": [
               {
-                "boolCondition": true
+                "boolCondition": false
               }
             ]
           }
         ],
-        "count": 0,
+        "count": 3,
         "options": [
           {
             "boolCondition": true,
@@ -60946,7 +60944,6 @@
   "id": "devil_reef",
   "scenario_name": "Devil Reef",
   "full_name": "Scenario IV: Devil Reef",
-  "type": "placeholder",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -60974,7 +60971,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<center><game>FRIDAY, SEPTEMBER 2, 1927</game></center>\n<center><game>THREE WEEKS EARLIER</game></center>\nThe rumbling of the boat's engine startles you from your thoughts. \"Yeh all right there?\" the ship's captain growls. \"Yeh look like ye've seena ghost. Pale as a sheet, yeh are.\"\nYou turn and face the grizzled old man. Mr. Moore was the only ship captain you could find in Innsmouth who was unafflicted by whatever curse or deformity has gripped most of the town. His apparent hunanity, however, has done nothing to spare his broken teeth, crooked jaw, or the massive scar torn down his right cheek. Still, he is a welcome sight, considering the way the rest of your investigation has gone.\n\"Can't believe you want to head to that accurs'd Devil Reef,\" he exclaims, shaking his head. \"It's a fool's errand.\"\nYou point out that the sailor was happy enough to provide passage after you showed him his payment, earning a raspy chuckle out of him.\n\"Yeh got me there,\" he admits. \"Now get ready. We set off in ten.\" He stumbles from the main deck into the bridge to chart a course while you prepare for the journey ahead."
+      "text": "<center><game>FRIDAY, SEPTEMBER 2, 1927</game></center>\n<center><game>THREE WEEKS EARLIER</game></center>\nThe rumbling of the boat's engine startles you from your thoughts. \"Yeh all right there?\" the ship's captain growls. \"Yeh look like ye've seen a ghost. Pale as a sheet, yeh are.\"\nYou turn and face the grizzled old man. Mr. Moore was the only ship captain you could find in Innsmouth who was unafflicted by whatever curse or deformity has gripped most of the town. His apparent hunanity, however, has done nothing to spare his broken teeth, crooked jaw, or the massive scar torn down his right cheek. Still, he is a welcome sight, considering the way the rest of your investigation has gone.\n\"Can't believe you want to head to that accurs'd Devil Reef,\" he exclaims, shaking his head. \"It's a fool's errand.\"\nYou point out that the sailor was happy enough to provide passage after you showed him his payment, earning a raspy chuckle out of him.\n\"Yeh got me there,\" he admits. \"Now get ready. We set off in ten.\" He stumbles from the main deck into the bridge to chart a course while you prepare for the journey ahead."
     },
     {
       "id": "check_mission_succeeded",
@@ -60998,7 +60995,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "Agent Dawson boards the ship at last. He sports a heavy overcoat and carries a shotgun slugged over his shoulder. \"Agent Harper had a cache with some extra firepower,\" he explains. \"I figured, given the rumors, it couldn't hurt.\"\nYou know what rumors Dawson refers to: Devil Reef is supposedly haunted, or perhaps infested, with some manner of devilish sea creature. The sailors of Innsmouth speak of silhouettes crawling in and out of caves along the reef's many islands, of strangely misshapen fins sighted along the surface of the sea, and of entire boats crashing against the jagged rocks and vanishing beneath the waves.\n\"All of our research has led to this. Whatever is going on in this town, the Esoteric Order of Dagon and this 'Devil Reef' are at the heard of it. Agent Harper suspects these rumors were spread by the Order to keep sailors away from the reef. If that's true, there must be something the Order is hiding.\"\nYou ask where Harper is, and Dawson shoots you a hard glance. \"She has her mission. We have ours.\" You remind Dawson that you've already accomplished the mission you were hired to perform, which yields a smirk from the hardened vet. \"True. And yet here you are.\"\nHe has a point. You could have left right after Harper was rescued, but you stayed to assist with their investigation. Perhaps out of a sense of duty, or perhaps curiosity. Whatever it was, you're here now, and there's no going back."
+      "text": "Agent Dawson boards the ship at last. He sports a heavy overcoat and carries a shotgun slugged over his shoulder. \"Agent Harper had a cache with some extra firepower,\" he explains. \"I figured, given the rumors, it couldn't hurt.\"\nYou know what rumors Dawson refers to: Devil Reef is supposedly haunted, or perhaps infested, with some manner of devilish sea creature. The sailors of Innsmouth speak of silhouettes crawling in and out of caves along the reef's many islands, of strangely misshapen fins sighted along the surface of the sea, and of entire boats crashing against the jagged rocks and vanishing beneath the waves.\n\"All of our research has led to this. Whatever is going on in this town, the Esoteric Order of Dagon and this 'Devil Reef' are at the heart of it. Agent Harper suspects these rumors were spread by the Order to keep sailors away from the reef. If that's true, there must be something the Order is hiding.\"\nYou ask where Harper is, and Dawson shoots you a hard glance. \"She has her mission. We have ours.\" You remind Dawson that you've already accomplished the mission you were hired to perform, which yields a smirk from the hardened vet. \"True. And yet here you are.\"\nHe has a point. You could have left right after Harper was rescued, but you stayed to assist with their investigation. Perhaps out of a sense of duty, or perhaps curiosity. Whatever it was, you're here now, and there's no going back."
     },
     {
       "id": "intro_3",
@@ -61125,6 +61122,7 @@
     },
     {
       "id": "check_battle_with_a_horrifying_devil",
+      "text": "If <i>a battle with a horrifying devil</i> is listed under Memories Recovered.",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -61443,41 +61441,44 @@
           {
             "id": "agenda_1",
             "text": "It was agenda 1a when the game ended.",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "terror_of_devil_reef_is_still_alive",
-                "text": "the Terror of Devil Reef is still alive."
-              }
-            ]
+            "steps": ["terror_of_devil_reef_is_still_alive"]
           },
           {
             "id": "in_play",
             "text": "The Terror of Devil Reef is in play.",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "terror_of_devil_reef_is_still_alive",
-                "text": "the Terror of Devil Reef is still alive."
-              }
-            ]
+            "steps": ["terror_of_devil_reef_is_still_alive"]
           },
           {
             "id": "victory_display",
             "text": "The Terror of Devil Reef is in the victory display.",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "terror_of_devil_reef_is_dead",
-                "text": "the Terror of Devil Reef is dead."
-              }
-            ]
+            "steps": ["terror_of_devil_reef_is_dead"]
           }
         ]
       }
+    },
+    {
+      "id": "terror_of_devil_reef_is_still_alive",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "terror_of_devil_reef_is_still_alive",
+          "text": "the Terror of Devil Reef is still alive."
+        }
+      ]
+    },
+    {
+      "id": "terror_of_devil_reef_is_dead",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "terror_of_devil_reef_is_dead",
+          "text": "the Terror of Devil Reef is dead."
+        }
+      ]
     },
     {
       "id": "proceed_keys",

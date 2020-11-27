@@ -66780,7 +66780,7 @@
   "id": "beneath_the_waves",
   "scenario_name": "Bajo las olas",
   "full_name": "Interludio III: Bajo las olas",
-  "type": "placeholder",
+  "type": "interlude",
   "setup": [
     "intro",
     "section_intro",
@@ -66811,7 +66811,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "id": "cheat",
+            "id": "purple_key",
             "text": "Was the purple key on the current act or controlled by an investigator when the scenario ended?",
             "steps": [
               "purple_key_story",
@@ -66871,7 +66871,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "id": "cheat",
+            "id": "white_key",
             "text": "Was the white key on the current act or controlled by an investigator when the scenario ended?",
             "steps": [
               "white_key_story",
@@ -66931,7 +66931,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "id": "cheat",
+            "id": "black_key",
             "text": "Was the black key on the current act or controlled by an investigator when the scenario ended?",
             "steps": [
               "black_key_story",
@@ -66997,7 +66997,7 @@
             "id": "headdress_brought_to_the_lighthouse",
             "options": [
               {
-                "boolCondition": true
+                "boolCondition": false
               }
             ]
           },
@@ -67007,7 +67007,7 @@
             "id": "mantle_brought_to_the_lighthouse",
             "options": [
               {
-                "boolCondition": true
+                "boolCondition": false
               }
             ]
           },
@@ -67017,12 +67017,12 @@
             "id": "idol_brought_to_the_lighthouse",
             "options": [
               {
-                "boolCondition": true
+                "boolCondition": false
               }
             ]
           }
         ],
-        "count": 0,
+        "count": 3,
         "options": [
           {
             "boolCondition": true,
@@ -67063,8 +67063,7 @@
 {
   "id": "devil_reef",
   "scenario_name": "Arrecife del Diablo",
-  "full_name": "Escenario IV: Arrecife del Diablo",
-  "type": "placeholder",
+  "full_name": "Scenario IV: Devil Reef",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -67092,7 +67091,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<center><game>FRIDAY, SEPTEMBER 2, 1927</game></center>\n<center><game>THREE WEEKS EARLIER</game></center>\nThe rumbling of the boat's engine startles you from your thoughts. \"Yeh all right there?\" the ship's captain growls. \"Yeh look like ye've seena ghost. Pale as a sheet, yeh are.\"\nYou turn and face the grizzled old man. Mr. Moore was the only ship captain you could find in Innsmouth who was unafflicted by whatever curse or deformity has gripped most of the town. His apparent hunanity, however, has done nothing to spare his broken teeth, crooked jaw, or the massive scar torn down his right cheek. Still, he is a welcome sight, considering the way the rest of your investigation has gone.\n\"Can't believe you want to head to that accurs'd Devil Reef,\" he exclaims, shaking his head. \"It's a fool's errand.\"\nYou point out that the sailor was happy enough to provide passage after you showed him his payment, earning a raspy chuckle out of him.\n\"Yeh got me there,\" he admits. \"Now get ready. We set off in ten.\" He stumbles from the main deck into the bridge to chart a course while you prepare for the journey ahead."
+      "text": "<center><game>FRIDAY, SEPTEMBER 2, 1927</game></center>\n<center><game>THREE WEEKS EARLIER</game></center>\nThe rumbling of the boat's engine startles you from your thoughts. \"Yeh all right there?\" the ship's captain growls. \"Yeh look like ye've seen a ghost. Pale as a sheet, yeh are.\"\nYou turn and face the grizzled old man. Mr. Moore was the only ship captain you could find in Innsmouth who was unafflicted by whatever curse or deformity has gripped most of the town. His apparent hunanity, however, has done nothing to spare his broken teeth, crooked jaw, or the massive scar torn down his right cheek. Still, he is a welcome sight, considering the way the rest of your investigation has gone.\n\"Can't believe you want to head to that accurs'd Devil Reef,\" he exclaims, shaking his head. \"It's a fool's errand.\"\nYou point out that the sailor was happy enough to provide passage after you showed him his payment, earning a raspy chuckle out of him.\n\"Yeh got me there,\" he admits. \"Now get ready. We set off in ten.\" He stumbles from the main deck into the bridge to chart a course while you prepare for the journey ahead."
     },
     {
       "id": "check_mission_succeeded",
@@ -67120,7 +67119,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "Agent Dawson boards the ship at last. He sports a heavy overcoat and carries a shotgun slugged over his shoulder. \"Agent Harper had a cache with some extra firepower,\" he explains. \"I figured, given the rumors, it couldn't hurt.\"\nYou know what rumors Dawson refers to: Devil Reef is supposedly haunted, or perhaps infested, with some manner of devilish sea creature. The sailors of Innsmouth speak of silhouettes crawling in and out of caves along the reef's many islands, of strangely misshapen fins sighted along the surface of the sea, and of entire boats crashing against the jagged rocks and vanishing beneath the waves.\n\"All of our research has led to this. Whatever is going on in this town, the Esoteric Order of Dagon and this 'Devil Reef' are at the heard of it. Agent Harper suspects these rumors were spread by the Order to keep sailors away from the reef. If that's true, there must be something the Order is hiding.\"\nYou ask where Harper is, and Dawson shoots you a hard glance. \"She has her mission. We have ours.\" You remind Dawson that you've already accomplished the mission you were hired to perform, which yields a smirk from the hardened vet. \"True. And yet here you are.\"\nHe has a point. You could have left right after Harper was rescued, but you stayed to assist with their investigation. Perhaps out of a sense of duty, or perhaps curiosity. Whatever it was, you're here now, and there's no going back."
+      "text": "Agent Dawson boards the ship at last. He sports a heavy overcoat and carries a shotgun slugged over his shoulder. \"Agent Harper had a cache with some extra firepower,\" he explains. \"I figured, given the rumors, it couldn't hurt.\"\nYou know what rumors Dawson refers to: Devil Reef is supposedly haunted, or perhaps infested, with some manner of devilish sea creature. The sailors of Innsmouth speak of silhouettes crawling in and out of caves along the reef's many islands, of strangely misshapen fins sighted along the surface of the sea, and of entire boats crashing against the jagged rocks and vanishing beneath the waves.\n\"All of our research has led to this. Whatever is going on in this town, the Esoteric Order of Dagon and this 'Devil Reef' are at the heart of it. Agent Harper suspects these rumors were spread by the Order to keep sailors away from the reef. If that's true, there must be something the Order is hiding.\"\nYou ask where Harper is, and Dawson shoots you a hard glance. \"She has her mission. We have ours.\" You remind Dawson that you've already accomplished the mission you were hired to perform, which yields a smirk from the hardened vet. \"True. And yet here you are.\"\nHe has a point. You could have left right after Harper was rescued, but you stayed to assist with their investigation. Perhaps out of a sense of duty, or perhaps curiosity. Whatever it was, you're here now, and there's no going back."
     },
     {
       "id": "intro_3",
@@ -67251,6 +67250,7 @@
     },
     {
       "id": "check_battle_with_a_horrifying_devil",
+      "text": "If <i>a battle with a horrifying devil</i> is listed under Memories Recovered.",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -67583,41 +67583,50 @@
           {
             "id": "agenda_1",
             "text": "It was agenda 1a when the game ended.",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "terror_of_devil_reef_is_still_alive",
-                "text": "the Terror of Devil Reef is still alive."
-              }
+            "steps": [
+              "terror_of_devil_reef_is_still_alive"
             ]
           },
           {
             "id": "in_play",
             "text": "The Terror of Devil Reef is in play.",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "terror_of_devil_reef_is_still_alive",
-                "text": "the Terror of Devil Reef is still alive."
-              }
+            "steps": [
+              "terror_of_devil_reef_is_still_alive"
             ]
           },
           {
             "id": "victory_display",
             "text": "The Terror of Devil Reef is in the victory display.",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "terror_of_devil_reef_is_dead",
-                "text": "the Terror of Devil Reef is dead."
-              }
+            "steps": [
+              "terror_of_devil_reef_is_dead"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "terror_of_devil_reef_is_still_alive",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "terror_of_devil_reef_is_still_alive",
+          "text": "the Terror of Devil Reef is still alive."
+        }
+      ]
+    },
+    {
+      "id": "terror_of_devil_reef_is_dead",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "terror_of_devil_reef_is_dead",
+          "text": "the Terror of Devil Reef is dead."
+        }
+      ]
     },
     {
       "id": "proceed_keys",
@@ -70942,7 +70951,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "mission_failed",
-          "text": "the mission failed."
+          "text": "la misión fracasó."
         }
       ]
     },
@@ -70985,7 +70994,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "\"P-please miss, y-you have to believe me!\" Brian stammers. Agent Harper stands over the seventeen-year-old and taps threatingly oon the holster of her firearm. \"I didn't have a choice, I'm telling you! It was the Order! Th-they made me do it!\"\nHarper rolls her eyes and turns too you. \"I can't believe I was abducted by this goof. Certainly a low point in my career.\" You offer that it was precisely his bumbling nature that allowed the boy to catch her off guard. \"I suppose you're right. Anyhow, what's done is done. What do you make of all this?\" she asks, crossing her arms. \"The boy seems to think it was wiser to ambush a federal agent than run afoull of this 'Order.' Think he's telling the truth?\"\nYou might have miscalculated Mr. Burnham's capabilities, but he certainly seems to be more afraid of this Order than he is of you. With a sigh, you nod.\n\"All right, kid,\" Agent Harper says, hauling the boy to his feet. \"Time for you to talk. Tell us everything.\"",
+      "text": "–P-por favor, señorita, ¡t-tiene que creerme! –tartamudea Brian. La agente Harper se está encarando con el chico de diecisiete años mientras da golpecitos en su pistolera–. ¡Le juro que no tuve elección! ¡Fue la Orden! ¡M-me obligaron a hacerlo!\nHarper hace una mueca y se vuelve hacia ti: –No me puedo creer que me secuestrara este bobalicón. No ha sido uno de los momentos más brillantes de mi carrera.\nComentas que precisamente fue esa naturaleza bobalicona lo que permitió al chico pillarla por sorpresa.\n–Supongo que tiene razón. En cualquier caso, lo hecho hecho está. ¿Qué opina de todo esto? –pregunta de brazos cruzados–. El chico parece pensar que era mejor asaltar a una agente federal que estar de malas con esa «Orden ». ¿Cree que dice la verdad?\nTal vez juzgaras mal de lo que era capaz el Sr. Burnham, pero está claro que parece estar más asustado de esa Orden que de vosotros. Asientes con un suspiro.\n–Muy bien, chico –dice el agente Harper, poniéndolo en pie–. Va siendo hora de que hables. Cuéntanoslo todo.",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -70994,7 +71003,7 @@
     {
       "id": "R3",
       "title": "Resolución 3",
-      "text": "Othera struggles against her bonds, trying like hell to free herself. \"Let me go! You have to let me go!\" she cries. Agent Harper grins, reveling in this turn of events.\n\"Doesn't feel so good, does it?\" she teases.\n\"You don't understand,\" Othera replies. \"Come. Look. You'll see.\" She motions to the door next to her, which you haven't yet searched. Inside is a stash of oil paintings, dozens and dozens of them, all depicting the same thing: a tumultuous maelstrom in the middle of the ocean, over which the sun and the moon hang in perfect alignment against a red-tinged sky. \"What in the hell...?\" Agent Harper wonders aloud as she sorts through the many reproductions.\nOthera bites her lip, and a single tear streaks down her cheek. \"It's the Order,\" she whispers. \"The Order owns us all.\"",
+      "text": "Othera forcejea con sus ligaduras, tratando de liberarse a toda costa.\n–¡Déjenme marchar! ¡Tienen que dejarme marchar! –grita. La agente Harper sonríe, disfrutando de este giro de los acontecimientos.\n–¿A que no sienta bien? –le dice burlona.\n–No lo entiende –contesta Othera–. Venga. Mire y lo entenderá.\nHace un gesto hacia la puerta que tiene al lado, en la que no has entrado aún. En el interior hay docenas y docenas de pinturas al óleo que muestran la misma escena: un tempestuoso remolino en mitad del océano sobre el que aparecen el sol y la luna perfectamente alineados sobre un cielo de color rojo.\n–¿Qué demonios es...? –pregunta en alto la agente Harper mientras mira las numerosas reproducciones.\nOthera se muerde el labio, y una lágrima le rueda por la mejilla.\n–Es la Orden –susurra–. La Orden nos domina a todos.",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -71003,7 +71012,7 @@
     {
       "id": "R4",
       "title": "Resolución 4",
-      "text": "Despite her situation, Joyce does little to resist you once you have her restrained. She seems resigned to her fate, her gaze elsewhere as you question her. \"Believe me, if I'd had another method of getting you to back off, I would have used it,\" she says to Agent Harper. \"But you were getting too close. So I did what had to be done.\"\n\"I don't understand. Too close to what, exactly, Ms. Little?\" Harper asks.\n\"There is a secret at the heart of this town. A secret that brings us wealth. A secret that brings us power. A secret that brings us...\" She pauses to find the right words. \"...closer to our destiny.\"\n\"And what kind of secret is that?\" Harper probes.\nJoyce smirks and shakes her head. \"What makes you think I would ever share that with outsiders?\"\n\"Because you assaulted a federal agent, and if you don't tell me what I want to know, your 'destiny' is going to be the inside of a lonely prison cell.\"\nYou watch Ms. Little's confidence shatter. She gulps down the last of her pride. A beat of sweat drips down her forehead. \"It started with the Order,\" she explains quietly.",
+      "text": "Pese a su situación, Joyce apenas se resiste cuando la reducís. Parece resignada a su suerte, y tiene la mirada perdida mientras la interrogáis.\n–Créame que si hubiera tenido otra forma de lograr que se marchara, lo habría hecho –le dice a la agente Harper–. Pero se estaba acercando demasiado. Así que hice lo que había que hacer.\n–No lo entiendo. ¿A qué me estaba acercando demasiado exactamente, señorita Little? –pregunta Harper.\n–Hay un secreto que es el núcleo de esta ciudad. Un secreto que nos trae riqueza. Un secreto que nos trae poder. Un secreto que nos trae... –Se detiene mientras busca las palabras correctas–. ...la realización de nuestro destino.\n–¿Y qué clase de secreto es ese? –indaga Harper\nJoyce sonríe con suficiencia y sacude la cabeza: –¿Qué le hace pensar que iba a compartir eso con gente de fuera?\n–Porque ha atacado a una agente federal, y si no me dice lo que quiero saber, su «destino » será el interior de una solitaria celda.\nVes cómo la confianza de la señorita Little se hace pedazos. Se traga el orgullo que le queda. Una gota de sudor le baja por la frente.\n–Todo empezó con la Orden –empieza a explicar con voz queda.",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -71012,7 +71021,7 @@
     {
       "id": "R5",
       "title": "Resolución 5",
-      "text": "Barnabas spits in your face as you attempt to interrogate him. \"I ain't tellin' you a word, interloper,\" he barks, his bulging eyes unblinking as he glowers at you with unbridled hate. \"You don't belong here. All o' your kind'll be dead before the week's end.\"\nAgent Harper narrows her eyes at the strange man's remarks. \"What do you mean by that, Marsh? Our kind? What—outsiders?\"\nBarnabas scowls, his bulbous lips curling back to reveal sharp, inhuman teeth. \"Outsiders. Intruders. You're a blight on our fair town. But you'll be purged soon enough.\"\nYou are taken aback by the severity of the old man's threat and his simmering hatred, but Harper simply chortles. \"You call this place 'fair'?\" Ignoring her derision, you warn Barnabas that if he doesn't speak up, he'll be spending a long time behind bars.\n\"Not I,\" he remarks. \"You're the one who'll be locked up, 'n worse. When the Order's done with you, you'll be nothin' but fish food.\"\nYou and Harper exchange a knowing glance. She pries further: \"What Order is this, exactly?\"",
+      "text": "Barnabas te escupe a la cara mientras intentas interrogarlo.\n–No voy a decir ni una palabra, intruso –ladra mirándote con sus ojos saltones y que no parpadean rebosantes de odio–. No perteneces a este lugar. Todos los de tu ralea estarán muertos antes de que acabe la semana.\nLa agente Harper entrecierra los ojos al oír el comentario: –¿A qué se refiere con eso, Marsh? ¿Nuestra ralea? ¿Gente de fuera?\nBarnabas pone mala cara y retrae los bulbosos labios para revelar unos afilados dientes inhumanos: –Gente de fuera. Intrusos. Sois una lacra para nuestra bella ciudad. Pero pronto seréis purgados.\nTe impacta la severidad de la amenaza del anciano y su hirviente odio, pero Harper se limita a reírse: –¿En serio cree que este sitio es bello?\nIgnoras su burla y adviertes a Barnabas de que se pasará mucho tiempo entre rejas si no habla.\n–Yo no –afirma–. Seréis vosotros los que acabaréis encerrados o algo peor. Cuando la Orden acabe con vosotros, seréis comida para peces.\nHarper y tú intercambiáis una mirada cómplice. Ella intenta sacarle algo más: –¿Qué es esa Orden exactamente?",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -71021,7 +71030,7 @@
     {
       "id": "R6",
       "title": "Resolución 6",
-      "text": "\"Heh, heh, heh, heh... ye startin' to see haow rott'n this town's got, ain't ye?\" Zadok hollers, a crazed look in his wide eyes. He clutches desperately at your arm, not seeming to care about your attempts to bind him. \"We're all in their clutches now, we are! Heh, heh, heh!\"\n\"What's this blotto have to laugh about?\" Agent Harper mocks. \"Hey, Zadok. Stop it with the nonsense and tell us what your game is.\"\nZadok rocks back and forth, his voice growing louder and bolder. \"My game? My game?\" he roils with manic laughter. \"Yeh think I'm to blame, but them fish devils are in our midst, they are! Haven't ye seen them?\" He grins. \"Haven't ye seen them monsters crawlin' an' bleatin' an' barkin' an' hoppin' araoun' the black streets? Haven't ye heard the haowlin' errey night from the churches an' the Order o' Dagon Hall? Don'tcha know what's doin' the haowlin'? Eh? Well?\" His voice rises to a shriek, then descends into a fit of laughter.\n\"No, I haven't,\" Harper replies, her eyes narrow. \"Why don't you tell us all about it?\"",
+      "text": "–Je, je, je, je... Asín que ya van viendo lo podría que está la ciudá, ¿verdá? –grita Zadok con una expresión demente en los ojos. Te agarra el brazo desesperadamente, sin que parezca importarle tu intento de atarlo–. ¡Ahora estamos tós en sus garras! ¡Je, je, je!\n–¿Qué motivos tiene para reírse este beodo? –se burla la agente Harper–.Eh, Zadok. Deje ya las tonterías y díganos por qué ha hecho esto.\nZadok se mece adelante y atrás mientras su voz aumenta de volumen y se vuelve más osada.\n–¿Que por qué? ¿Por qué? –se agita presa de una risa furiosa–. Se creen que la culpa es mía, pero esos peces demonio están entre nosotros, ¡vaya que sí! ¿No los han visto? –Sonríe–. ¿No han visto esos monstruos arrastrándose y chillando y ladrando y dando saltos por las calles negras? ¿No han oío los aullíos cada noche desde las iglesias y la Orden de Dagón? ¿No saben quién da esos aullíos? ¿Eh? ¿Eh?\nEl tono de su voz se eleva hasta ser poco más que un chillido, y luego vuelve a bajar cuando sufre un ataque de risa.\n–Yo no me he dado cuenta –contestar Harper entrecerrando los ojos–. ¿Por qué no nos lo cuenta?",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -71030,7 +71039,7 @@
     {
       "id": "R7",
       "title": "Resolución 7",
-      "text": "Robert refruses to say a word until you get him a cigar. You begrudgingly oblige, hoping that your generosity yields dividends. \"I was investigating the docks when he and his cronies nabbed me,\" Agent Harper recounts bitterly. You ask who these \"cronies\" were, and she shrugs. \"Not sure. Dockworkers and sailors, I imagine. Whoever hired Mr. Friendly over here must have a lot of influence over the locals.\"\nAfter handing Robert the cigar he demanded, you are surprised to find him a little more compliant, though no more friendly despite his name. \"Doesn't matter,\" he mutters, blowing out a puff of rank cigar smoke. \"You're all dead men walking. No offense, miss.\"\n\"Offense taken,\" she bites back. \"Care to tell us what you mean by that?\"\n\"The Order,\" he replies with a quiet, unwavering resolve. \"They know everything that happens in this town. Probably out lookin' for me right now. You sure you wanna be here when they find me?\" He flashes a sadistic grin.\nHarper doesn't flinch. \"Yeah, actually. I think I do,\" she replies, cracking her knuckles. \"Now start talking.\"",
+      "text": "Robert se niega a decir nada hasta que le deis un puro. Accedes a regañadientes, con la esperanza de que tu generosidad dé su fruto.\n–Estaba investigando los muelles cuando él y sus compinches me atraparon –cuenta la agente Harper con tono amargo. Le preguntas quiénes eran esos «compinches » y se encoge de hombros–. No estoy segura. Supongo que estibadores y marineros. Quien contratara al Sr. Friendly debe de tener mucha influencia entre los lugareños.\nTras darle a Robert el puro que ha exigido, te sorprende que se vuelva más obediente, aunque no más amigable.\n–No importa –murmura mientras expulsa una bocanada de nauseabundo humo de puro–. Sois hombres muertos. Sin ánimo de ofender, señorita.\n–Pues me ha ofendido –replica ella–. ¿Le importa decirnos a qué se refiere?\n–A la Orden –contesta con voz tranquila y resuelta–. Saben todo lo que ocurre en esta ciudad. Probablemente me estén buscando ahora mismo. ¿Seguro que quieren estar aquí cuando me encuentren? – Añade con una sonrisa sádica.\nHarper no se inmuta: –Pues sí, la verdad. Creo que quiero estar –responde mientras hace crujir los nudillos–. Y ahora, empiece a hablar.",
       "steps": [
         "earn_xp",
         "mission_succeeded"
