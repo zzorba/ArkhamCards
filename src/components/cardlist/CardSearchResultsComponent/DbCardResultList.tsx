@@ -36,8 +36,8 @@ import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
 import { SortType, Slots, SORT_BY_TYPE } from '@actions/types';
 import { combineQueries, where } from '@data/query';
-import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers, getHasSecondCore } from '@reducers';
-import Card, { CardsMap, PartialCard } from '@data/Card';
+import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
+import Card, { cardInCollection, CardsMap, PartialCard } from '@data/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import { s, m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -349,7 +349,7 @@ function useSectionFeed({
     currentSectionId = undefined;
     let currentNonCollection: PartialCard[] = [];
     const [nonSpoilerCards, spoilerCards] = partition(partialCards, card => {
-      if (!showAllNonCollection && card.pack_code !== 'core' && !packInCollection[card.pack_code]) {
+      if (!showAllNonCollection && card.pack_code !== 'core' && !cardInCollection(card, packInCollection)) {
         return true;
       }
       return !card.spoiler || packSpoiler[card.pack_code];
@@ -402,7 +402,7 @@ function useSectionFeed({
           });
           currentSectionId = card.headerId;
         }
-        if (!showAllNonCollection && card.pack_code !== 'core' && !packInCollection[card.pack_code]) {
+        if (!showAllNonCollection && card.pack_code !== 'core' && !cardInCollection(card, packInCollection)) {
           currentNonCollection.push(card);
         } else {
           result.push(card);
@@ -610,12 +610,12 @@ export default function({
   const [deck] = useDeck(deckId, {});
   const deckEdits = useSimpleDeckEdits(deckId);
   const { colors, borderStyle, fontScale, typography } = useContext(StyleContext);
-  const hasSecondCore = useSelector(getHasSecondCore);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
   const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
+  const packInCollection = useSelector(getPacksInCollection);
   const {
     feed,
     fullFeed,
@@ -762,12 +762,7 @@ export default function({
         if (renderCard) {
           return renderCard(card);
         }
-        const deck_limit: number = Math.min(
-          card.pack_code === 'core' ?
-            ((card.quantity || 0) * (hasSecondCore ? 2 : 1)) :
-            (card.deck_limit || 0),
-          card.deck_limit || 0
-        );
+        const deck_limit: number = card.collectionDeckLimit(packInCollection);
         const control = deck_limit < deckLimits.length ? deckLimits[deck_limit] : undefined;
         return (
           <CardSearchResult
@@ -796,7 +791,7 @@ export default function({
       default:
         return null;
     }
-  }, [cardOnPressId, deckId, hasSecondCore, investigator, renderCard, deckLimits]);
+  }, [cardOnPressId, deckId, packInCollection, investigator, renderCard, deckLimits]);
   const listHeader = useMemo(() => {
     const searchBarPadding = !noSearch && Platform.OS === 'android';
     if (!searchBarPadding && !header) {
