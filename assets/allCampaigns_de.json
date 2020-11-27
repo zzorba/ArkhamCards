@@ -66781,16 +66781,874 @@
   "scenario_name": "Unter den Wellen",
   "full_name": "Zwischenspiel III: Unter den Wellen",
   "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "intro",
+    "section_intro",
+    "ask_purple_key",
+    "ask_white_key",
+    "ask_black_key",
+    "check_no_keys",
+    "outro",
+    "return_thomas_dawson",
+    "spend_xp",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "You bounce through your memories, struggling to return to the present. You remember a dark cell. A knife at your throat. A man with wide, unblinking eyes, wearing a long hooded robe. \"Oceiros,\" another voice calls, \"these ones were found in Dagon's lair as well. We believe they were the ones snooping around Devil Reef.\"\nOceiros nods. The knife at your throat digs deeper. \"Take what they have stolen to the lighthouse at once,\" he commands. \"It is time to begin our great work. None will disrupt the Order's business every again.\"\nYour mind snaps back to the present. The rumbling of an automobile engine grows as your senses return. Agent Harper grips your shoulder and peers into your eyes. \"Another vision,\" she utters with a hint of surprise. \"Do you remember something? What was it?\"\nYou shake the ache from your pounding skull and ask Harper if the name Oceiros means anything. \"Oceiros Marsh? He's the keeper of the old lighthouse on Falcon Point,\" she replies. \"Why? What did you see?\""
+    },
+    {
+      "id": "section_intro",
+      "type": "rule_reminder",
+      "text": "Depending on which keys were on the current act or controlled by an investigator when <b>Scenario IV: Devil Reef</b> ended, read each of the sections below that apply. Then, proceed to the following text."
+    },
+    {
+      "id": "ask_purple_key",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cheat",
+            "text": "Was the purple key on the current act or controlled by an investigator when the scenario ended?",
+            "steps": [
+              "purple_key_story",
+              "purple_key_xp",
+              "purple_key_token",
+              "idol_brought_to_the_lighthouse"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "purple_key_story",
+      "type": "story",
+      "text": "You describe the idol found in the undersea grotto. Agent Harper nods along with you. \"I remember seeing something like that in some of the notes I found while you were off investigating the reef. It depicts some kind of ancient diety—something those vile creatures worship.\" Her voice lowers to little more than a whisper. \"Something I suspect is no myth.\" You ask where the idol is now, and she shakes her head. \"I suspect it was taken from you when you were thrown into that pit,\" she replies."
+    },
+    {
+      "id": "purple_key_xp",
+      "text": "The conspiracy deepens. Every investigator records 2 additional experience under \"Unspent Experience.\"",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unspect_xp",
+          "bonus": 2
+        }
+      ]
+    },
+    {
+      "id": "purple_key_token",
+      "text": "Für den Rest der Kampagne wird dem Chaosbeutel 1 [cultist]-Marker hinzugefügt.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "cultist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "idol_brought_to_the_lighthouse",
+      "text": "In your Campaign Log, record <i>the idol was brought to the lighthouse.</i> <i>(Do not add the Waveworn Idol story asset to any investigator's deck. It must be recovered first.)</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "idol_brought_to_the_lighthouse",
+          "text": "the idol was brought to the lighthouse."
+        }
+      ]
+    },
+    {
+      "id": "ask_white_key",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cheat",
+            "text": "Was the white key on the current act or controlled by an investigator when the scenario ended?",
+            "steps": [
+              "white_key_story",
+              "white_key_xp",
+              "white_key_token",
+              "mantle_brought_to_the_lighthouse"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "white_key_story",
+      "type": "story",
+      "text": "You recall the strange mantle you found submerged in the depths of Devil Reef. \"Yes, I remember seeing that,\" Harper says with a snap of her fingers. \"One of the 'priests' in that accursed Esoteric Order of Dagon wore it when I first arrived in Innsmouth. It must have been taken to the lighthouse with the rest of your belongings when you were captured at the Order's headquarters. If we're lucky, it'll still be there...\""
+    },
+    {
+      "id": "white_key_xp",
+      "text": "The conspiracy deepens. Every investigator records 2 additional experience under \"Unspent Experience.\"",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unspect_xp",
+          "bonus": 2
+        }
+      ]
+    },
+    {
+      "id": "white_key_token",
+      "text": "Für den Rest der Kampagne wird dem Chaosbeutel 1 [tablet] -Chaosmarker hinzugefügt.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "tablet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mantle_brought_to_the_lighthouse",
+      "text": "In your Campaign Log, record <i>the mantle was brought to the lighthouse.</i> <i>(Do not add the Awakened Mantle story asset to any investigator's deck. It must be recovered first.)</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "mantle_brought_to_the_lighthouse",
+          "text": "the mantle was brought to the lighthouse."
+        }
+      ]
+    },
+    {
+      "id": "ask_black_key",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cheat",
+            "text": "Was the black key on the current act or controlled by an investigator when the scenario ended?",
+            "steps": [
+              "black_key_story",
+              "black_key_xp",
+              "black_key_token",
+              "headdress_brought_to_the_lighthouse"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "black_key_story",
+      "type": "story",
+      "text": "You tell Agent Harper about the temple with the two statues you discovered within Devil Reef, and about the crown you stole. \"That sounds like the 'Headdress of Y'ha-nthlei' I read about while I was researching the Order. I'm impressed you were able to make off with it. Whatever it is, it sounds pretty important to the Order. Although I still have no clue what 'Y'ha-nthlei' is.\" You remark that you don't have the crown anymore, and she nods. \"It must have been taken from you and brought to the lighthouse with the rest of your things before you lost your memories,\" she explains."
+    },
+    {
+      "id": "black_key_xp",
+      "text": "The conspiracy deepens. Every investigator records 2 additional experience under \"Unspent Experience.\"",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unspect_xp",
+          "bonus": 2
+        }
+      ]
+    },
+    {
+      "id": "black_key_token",
+      "text": "Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "elder_thing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "headdress_brought_to_the_lighthouse",
+      "text": "In your Campaign Log, record <i>the headress was brought to the lighthouse.</i> <i>(Do not add the Headdress of Y'ha-nthlei story asset to any investigator's deck. It must be recovered first.)</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "headdress_brought_to_the_lighthouse",
+          "text": "the headdress was brought to the lighthouse."
+        }
+      ]
+    },
+    {
+      "id": "check_no_keys",
+      "text": "If no keys were on the current act or controlled by an investigator when the scenario ended:",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "headdress_brought_to_the_lighthouse",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "mantle_brought_to_the_lighthouse",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "idol_brought_to_the_lighthouse",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 0,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "no_keys_story"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_keys_story",
+      "type": "story",
+      "text": "You struggle to remember anything of value beyond your initial exploration of the reef. You recall the uncanny creatures you fought, the various islands you explored, and the rising tides, but no more. Secrets must be hidden in those reefs, but either you were unable to find them, or you simply don't recall. Your head throbs with pain as you struggle to summon memories from the void within your mind. \"That's okay,\" Agent Harper says, placing a hand on your shoulder. \"We'll figure this out together.\""
+    },
+    {
+      "id": "outro",
+      "type": "story",
+      "text": "\"It seems your memories are starting to return,\" Agent Harper says with a tentative grin. \"How do you feel?\"\nYou struggle to find a reply that fits. Part of you is relieved to have your memories returning, but the rest of you wishes they hadn't been so vivid. You wonder once more if you should simply take this opportunity to drive back to Arkham and never set foot in Innsmouth again. Then your gaze meets Harper's, and you see that fierce resolve within her eyes. The same resolve that stirs in you.\nYou say nothing, but she seems to understand. \"This must be a lot to take in. For now, let's focus on getting to Falcon Point. If what you say is true, and Oceiros is part of the Esoteric Order of Dagon, there should be answers there.\" She looks over her shoulder, peering into the western horizon. The sun dips just below the treeline, bathing the sky in deep scarlet. \"Something tells me this isn't over.\""
+    },
+    {
+      "id": "return_thomas_dawson",
+      "text": "Return Thomas Dawson to the collection. If an investigator earned Elina Harper (at any point during this campaign), they may add her back to their deck."
+    },
+    {
+      "id": "spend_xp",
+      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "transfer_special_xp": "unspect_xp"
+        }
+      ]
+    }
+  ]
 },
 {
   "id": "devil_reef",
   "scenario_name": "Das Teufelsriff",
   "full_name": "Szenario IV: Das Teufelsriff",
   "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "intro_1",
+    "check_mission_succeeded",
+    "investigator_setup",
+    "maybe_remove_dawson",
+    "gather_encounter_sets",
+    "setup_keys",
+    "setup_locations",
+    "set_aside_cards",
+    "setup_devil_reef",
+    "setup_unfathomable_depths",
+    "setup_tidal_tunnels",
+    "setup_act_deck",
+    "check_battle_with_a_horrifying_devil",
+    "add_flood_tokens",
+    "encounter_deck",
+    "location_adjacency_rule",
+    "vehicles_rule",
+    "vehicles_rule_1",
+    "vehicles_rule_2",
+    "vehicles_rule_3",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "<center><game>FRIDAY, SEPTEMBER 2, 1927</game></center>\n<center><game>THREE WEEKS EARLIER</game></center>\nThe rumbling of the boat's engine startles you from your thoughts. \"Yeh all right there?\" the ship's captain growls. \"Yeh look like ye've seena ghost. Pale as a sheet, yeh are.\"\nYou turn and face the grizzled old man. Mr. Moore was the only ship captain you could find in Innsmouth who was unafflicted by whatever curse or deformity has gripped most of the town. His apparent hunanity, however, has done nothing to spare his broken teeth, crooked jaw, or the massive scar torn down his right cheek. Still, he is a welcome sight, considering the way the rest of your investigation has gone.\n\"Can't believe you want to head to that accurs'd Devil Reef,\" he exclaims, shaking his head. \"It's a fool's errand.\"\nYou point out that the sailor was happy enough to provide passage after you showed him his payment, earning a raspy chuckle out of him.\n\"Yeh got me there,\" he admits. \"Now get ready. We set off in ten.\" He stumbles from the main deck into the bridge to chart a course while you prepare for the journey ahead."
+    },
+    {
+      "id": "check_mission_succeeded",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_succeeded",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "intro_2"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "intro_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "Agent Dawson boards the ship at last. He sports a heavy overcoat and carries a shotgun slugged over his shoulder. \"Agent Harper had a cache with some extra firepower,\" he explains. \"I figured, given the rumors, it couldn't hurt.\"\nYou know what rumors Dawson refers to: Devil Reef is supposedly haunted, or perhaps infested, with some manner of devilish sea creature. The sailors of Innsmouth speak of silhouettes crawling in and out of caves along the reef's many islands, of strangely misshapen fins sighted along the surface of the sea, and of entire boats crashing against the jagged rocks and vanishing beneath the waves.\n\"All of our research has led to this. Whatever is going on in this town, the Esoteric Order of Dagon and this 'Devil Reef' are at the heard of it. Agent Harper suspects these rumors were spread by the Order to keep sailors away from the reef. If that's true, there must be something the Order is hiding.\"\nYou ask where Harper is, and Dawson shoots you a hard glance. \"She has her mission. We have ours.\" You remind Dawson that you've already accomplished the mission you were hired to perform, which yields a smirk from the hardened vet. \"True. And yet here you are.\"\nHe has a point. You could have left right after Harper was rescued, but you stayed to assist with their investigation. Perhaps out of a sense of duty, or perhaps curiosity. Whatever it was, you're here now, and there's no going back."
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "Agent Dawson boards the ship at last. Heavy bags uner his weary eye. \"All of our leads are cold,\" he says with resignation. \"Wherever Agent Harper is now, she's beyond our reach.\"\nYou attempt to console Dawson by reminding him why you've chosen to investigate Devil Reef. The rumors say it is haunted, or perhaps infested, with some manner of devilish sea creature. The sailors of Innsmouth speak of silhouettes crawling in and out of caves along the reef's many islands, of strangely misshapen fins sighted along the surface of the sea, and of entire boats crashing against the jagged rocks and vanishing beneath the waves.\n\"You're right,\" Dawson admits with a sigh. \"Whatever happened to Agent Harper has something to do with the Esoteric Order of Dagon. That book that was slipped under your hotel room door is evidence enough of that. And if my hypothesis is right, the ones who have been spreading these rumors about Devil Reef are none other than the Order themselves. If that's true, there must be something they're hiding.\"\nYou nod and begin preparing for the mission. Agent Dawson gazes at you inquisitively the entire time. \"Why did you stay?\" he finally asks. \"You could have left Innsmouth after we failed to rescue Agent Harper, but you chose to stick around. Why?\"\nTruth be told, you aren't sure. Perhaps it was a sense of duty. Perhaps it was curiosity. You shrug and tell him it doesn't matter. You're here now, and there's no going back. Your admission earns you a smile from the hardened vet.\n\"Right. Let's go find what they're hiding,\" he says."
+    },
+    {
+      "id": "investigator_setup",
+      "type": "rule_reminder",
+      "title": "Ermittlervorbereitung",
+      "text": "Perform this step before setting up your investigator.",
+      "bullets": [
+        {
+          "text": "Search each investigator's deck for Elina Harper and remove her from the game for the duration of this scenario."
+        }
+      ]
+    },
+    {
+      "id": "maybe_remove_dawson",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_succeeded",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_agent_dawson_hand"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_agent_dawson_deck"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_agent_dawson_hand",
+      "bullet_type": "small",
+      "text": "Search the collection for Agent Dawson and add him to any investigator's opening hand, as an additional card."
+    },
+    {
+      "id": "add_agent_dawson_deck",
+      "bullet_type": "small",
+      "text": "Search the collection for Agent Dawson and shuffle him into any investigator's deck for the duration of this scenario."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Szenariovorbereitung",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "devil_reef",
+        "agents_of_hydra",
+        "creatures_of_the_deep",
+        "flooded_caverns",
+        "malfunction",
+        "rising_tide"
+      ]
+    },
+    {
+      "id": "setup_keys",
+      "text": "Set each key aside, as follows:",
+      "bullets": [
+        {
+          "text": "Set the purple, white, and black keys aside, faceup."
+        },
+        {
+          "text": "Set the yellow, green, red, and blue keys aside, facedown. Shuffle them so you do not know which is which."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "But the Churning Waters location into play. <i>(It enters play fully flooded.)</i>",
+      "bullets": [
+        {
+          "text": "Put the Fishing Vessel story asset into play at Churning Waters."
+        },
+        {
+          "text": "Each investigator begins play in the Fishing Vessel <i>(see Vehicles, below)</i>."
+        }
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following story assets aside, out of play: Awakened Mantle, Headdress of Y'ha-nthlei, and Waveworn Idol."
+    },
+    {
+      "id": "setup_devil_reef",
+      "text": "Shuffle the 5 Devil Reef locations and put each of them into play, unrevealed side faceup.",
+      "bullets": [
+        {
+          "text": "Do not place them <i>adjacent</i> to Churning Waters—these locations are connected not via adjacency, but via their connection symbols."
+        }
+      ]
+    },
+    {
+      "id": "setup_unfathomable_depths",
+      "text": "Prepare the Unfathomable Depths by performing the following steps:",
+      "bullets": [
+        {
+          "text": "First, remove 1 of each of the following locations from the game without looking at them: Cyclopean Ruins, Deep One Grotto, and Temple of the Union. Each of these locations is the revealed side of an Unfathomable Depths location."
+        },
+        {
+          "text": "Set the remaining 3 Unfathomable Depths locations aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "setup_tidal_tunnels",
+      "text": "Shuffle the 8 Tidal Tunnel locations to form the Tidal Tunnel deck.",
+      "bullets": [
+        {
+          "text": "Each of the cards in the Tidal Tunnel deck should have its unrevealed side faceup so that only the \"Tidal Tunnel\" side is showing."
+        },
+        {
+          "text": "Place this deck near the encounter deck."
+        }
+      ]
+    },
+    {
+      "id": "setup_act_deck",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. Depending on the following circumstances, a different version of agenda 1 should be used in this scenario. Remove the other version of agenda 1 from the game."
+    },
+    {
+      "id": "check_battle_with_a_horrifying_devil",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "battle_with_a_horrifying_devil",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "agenda_1_v1"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "agenda_1_v2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "agenda_1_v1",
+      "bullet_type": "small",
+      "text": "Use Agenda 1a—Secrets of the Sea (v.I)."
+    },
+    {
+      "id": "agenda_1_v2",
+      "bullet_type": "small",
+      "text": "Otherwise, use Agenda 1a—Secrets of the Sea (v.II)."
+    },
+    {
+      "id": "add_flood_tokens",
+      "text": "Add the flood tokens to the token pool."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
+    },
+    {
+      "id": "location_adjacency_rule",
+      "type": "rule_reminder",
+      "title": "Location Adjacency in Devil Reef",
+      "text": "During this scenario, [[Island]] and [[Cave]] locations are arranged in a set pattern, with new locations from the Tidal Tunnel deck emerging, below, to the left, or to the right of some [[Island]] locations. However, [[Island]] locations and Churning Waters are not adjacent to one another, and are instead connected through connection icons as normal.",
+      "bullets": [
+        {
+          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+        },
+        {
+          "text": "A location that is put into play adjacent to another location should be set next to that location, with no other locations between them."
+        },
+        {
+          "text": "Locations are only adjacent orthogonally (left, right, above, or below); they are not adjacent diagonally."
+        }
+      ]
+    },
+    {
+      "id": "vehicles_rule",
+      "type": "rule_reminder",
+      "title": "Vehicles",
+      "text": "An asset with the vehicle keyword represents a vehicle that the investigators may enter or leave. An asset with this keyword is called a vehicle, and follows these rules:"
+    },
+    {
+      "id": "vehicles_rule_1",
+      "text": "While an investigator's mini-card is placed overlapping a vehicle, that investigator is in that vehicle. While an investigator's mini-card is placed overlapping the location, that investigator is instead not in a vehicle <i>(even if they are at the same location as a vehicle)</i>.",
+      "bullets": [
+        {
+          "text": "As a [fast] ability, an investigator may enter or leave a vehicle at their location. Move that investigator's mini-card onto the vehicle or off of the vehicle and onto their location to indicate their new position. Each investigator may perform this ability only once each round."
+        },
+        {
+          "text": "An investigator who is in a vehicle is also at that vehicle's location."
+        },
+        {
+          "text": "While an investigator is in a vehicle, that investigator cannot move indepdently of the vehicle."
+        }
+      ]
+    },
+    {
+      "id": "vehicles_rule_2",
+      "text": "Vehicles generally have one or more abilities that allow them to move to a connecting location. As a vehicle moves from one location to another, all investigators in the vehicle also move with the vehicle."
+    },
+    {
+      "id": "vehicles_rule_3",
+      "text": "Vehicles do not alter enemy movement or enemy engagement in any way unless otherwise noted."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Schlüssel",
+            "steps": [
+              "ask_keys"
+            ]
+          },
+          {
+            "id": "flashback_9",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_9",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback IX",
+            "steps": [
+              "flashback_9_story",
+              "flashback_9_effects",
+              "flashback_9_assets"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_9",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_10",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_10",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback X",
+            "steps": [
+              "flashback_10_story",
+              "flashback_10_effects",
+              "flashback_10_assets"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_10",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_11",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_11",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback XI",
+            "steps": [
+              "flashback_11_story",
+              "flashback_11_effects",
+              "flashback_11_assets"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_11",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Which keys do you want to read the representation of:",
+      "input": {
+        "type": "checklist",
+        "text": "Read",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Red / Blue / Green / Yellow",
+            "steps": [
+              "red_key"
+            ]
+          },
+          {
+            "id": "purple",
+            "text": "Purple",
+            "steps": [
+              "purple_key"
+            ]
+          },
+          {
+            "id": "black",
+            "text": "Black",
+            "steps": [
+              "black_key"
+            ]
+          },
+          {
+            "id": "white",
+            "text": "White",
+            "steps": [
+              "white_key"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "red_key",
+      "text": "Red / Blue / Green / Yellow: Various devices used to gain entrance into the deeper parts of Devil Reef."
+    },
+    {
+      "id": "purple_key",
+      "text": "Purple: A strange idol."
+    },
+    {
+      "id": "black_key",
+      "text": "Black: A mystical headdress."
+    },
+    {
+      "id": "white_key",
+      "text": "White: An unholy mantle."
+    },
+    {
+      "id": "flashback_9_story",
+      "title": "Flashback IX",
+      "type": "story",
+      "text": "As you wade through the flooded cavern, your foot strikes something hard and metallic. The water is too dark and murky for you to see what lies beneath the surface. Holding your breath, you dive into the water and grope around for the object. Eventually, your hands wrap around something smooth and heavy. You drag it up to the surface and heave it onto an outcropping of rock.\nIt is a statue depicting some kind of entity—or perhaps a deity—although it is unlike any religious figure you have ever seen. The sight of its uncanny spined tendrils and its sole glaring eye of translucent crystal makes your skin crawl. And yet, it also calls to you, like the sound of ocean waves crashing on the shore on a foggy overcast day..."
+    },
+    {
+      "id": "flashback_9_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "discovery_of_a_strange_idol",
+          "text": "discovery of a strange idol."
+        }
+      ]
+    },
+    {
+      "id": "flashback_9_assets",
+      "text": "Take control of both the purple key and the set-aside Waveworn Idol story asset. Place the purple key on the Waveworn Idol. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the purple key also takes control of the Waveworn Idol, as well. If the purple key is placed on another card, place the Waveworn Idol near that card, uncontrolled. If the purple key leaves play, remove the Waveworn Idol from the game."
+    },
+    {
+      "id": "flashback_10_story",
+      "title": "Flashback X",
+      "type": "story",
+      "text": "You swim through an array of vast undersea halls until at least you come to a circle of pillars. Inside this submerged henge stands an altar covered in an ornate cloth. It is embroidered with rich threads of gold and inlaid with cerulean opals. Despite being immersed in water, the fabric appears perfectly preserved. Wondering what such an object is doing deep in this underwater cavern, you decide to take it with you.\nThe moment you emerge from the depths and onto dry stone, you realize with amazement that the cloth is perfectly dry. Turning it over in your hands, you find a clasp of gold and realize it is not simply shapeless cloth, but a mantle—perhaps even part of a greater outfit. When you don the strange cloak, its gemstones pulse with arcane power."
+    },
+    {
+      "id": "flashback_10_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "discovery_of_an_unholy_mantle",
+          "text": "discovery of an unholy mantle."
+        }
+      ]
+    },
+    {
+      "id": "flashback_10_assets",
+      "text": "Take control of both the white key and the set-aside Awakened Mantle story asset. Place the white key on the Awakened Mantle. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the white key also takes control of the Awakened Mantle, as well. If the white key is placed on another card, place the Awakened Mantle near that card, uncontrolled. If the white key leaves play, remove the Awakened Mantle from the game."
+    },
+    {
+      "id": "flashback_11_story",
+      "title": "Flashback XI",
+      "type": "story",
+      "text": "You reach an outcropping of rock overlooking a ceremony of sorts. Horrifying fish-like creatures prostrate themselves in front of two enormous statues: one of onyx, one of white marble. At the precipice of this ridge sits a golden crown sporting a shell-like pattern and three distinct horns. Whatever this artifact is, it is clearly important to these creatures. Summoning your courage, you snatch the artifact and escape while you still can. The relic thrums with power in your hands as you flee."
+    },
+    {
+      "id": "flashback_11_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "discovery_of_a_mystical_relic",
+          "text": "discovery of a mystical relic."
+        }
+      ]
+    },
+    {
+      "id": "flashback_11_assets",
+      "text": "Take control of both the blck key and the set-aside Headdress of Y'ha-nthlei story asset. Place the black key on the Headdress of Y'ha-nthlei. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the black key also takes control of the Headdress of Y'ha-nthlei, as well. If the black key is placed on another card, place the Headdress of Y'ha-nthlei near that card, uncontrolled. If the black key leaves play, remove the Headdress of Y'ha-nthlei from the game."
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Siegpunktestapel:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unspect_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_terror_of_devil_reef",
+      "type": "input",
+      "text": "Find the Terror of Devil Reef. Then choose one of the following options:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "agenda_1",
+            "text": "It was agenda 1a when the game ended.",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "terror_of_devil_reef_is_still_alive",
+                "text": "the Terror of Devil Reef is still alive."
+              }
+            ]
+          },
+          {
+            "id": "in_play",
+            "text": "The Terror of Devil Reef is in play.",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "terror_of_devil_reef_is_still_alive",
+                "text": "the Terror of Devil Reef is still alive."
+              }
+            ]
+          },
+          {
+            "id": "victory_display",
+            "text": "The Terror of Devil Reef is in the victory display.",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "terror_of_devil_reef_is_dead",
+                "text": "the Terror of Devil Reef is dead."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "proceed_keys",
+      "text": "Do not move the purple, black, or white keys from their current position just yet—the location of each of these keys will be important during <b>Interlude III: Beneath the Waves</b>."
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "resolution_1"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "Auflösung 1",
+      "text": "With daylight fading and the tide rising to swallow the various islands off the coast of Innsmouth, you decide to make your way back to the harbor with your discoveries. \"Found what yer lookin' for?\" Mr. Moore asks oncce you've made it to the coast safely.\nTruth be told, you're not completely sure. What you found was startling. The coves and tidal caverns of Devil Reef were home not just to relics of the Esoteric Order of Dagon, but also to a horde of strange creatures: hybrids between fish, man, and monster. You might have escaped with your life, but the horrors you saw in those caves will stay with you forever. Sharp jagged teeth—blood-stained altars—unholy prayers—signs of a coming catastrophe—it still haunts you even after your escape.\nBut is Innsmouth truly safe? Is any land at all?",
+      "steps": [
+        "earn_xp",
+        "ask_terror_of_devil_reef",
+        "proceed_keys"
+      ]
+    }
+  ]
 },
 {
   "id": "hidden_truths",
@@ -67025,7 +67883,7 @@
     },
     {
       "id": "flood_tokens",
-      "text": "Die Flutmarker werden dem Markervorrat hinzugefügt.",
+      "text": "Add the flood tokens to the token pool.",
       "bullets": [
         {
           "text": "Die Flutstufe der folgenden Orte wird erhöht: Das Haus in der Water Street, Hafen von Innsmouth und Trostlose Küste."
@@ -67060,7 +67918,7 @@
       "text": "Während dieses Szenarios werden die Orte in einem vorgegebenen Muster ausgelegt. Dabei ist jeder Ort benachbart zu 1 oder mehr anderen Orten.",
       "bullets": [
         {
-          "text": "<b>Während dieses Szenarios gelten benachbarte Orte als miteinander verbunden.</b>"
+          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
         },
         {
           "text": "Orte sind nur orthogonal benachbart (nach Norden, Osten, Süden und Westen), jedoch nicht diagonal."
@@ -67196,14 +68054,14 @@
     {
       "id": "ask_keys",
       "type": "input",
-      "text": "Von welchem Schlüssel möchtest du die Bedeutung lesen:",
+      "text": "Which keys do you want to read the representation of:",
       "input": {
         "type": "checklist",
-        "text": "Lesen",
+        "text": "Read",
         "choices": [
           {
             "id": "black",
-            "text": "Schwarz",
+            "text": "Black",
             "steps": [
               "black_key"
             ]
@@ -67407,7 +68265,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Jeder Ermittler verdient Erfahrungspunkte in Höhe des Sieg-XWertes aller Karten im Siegpunktestapel. Notiere diese Erfahrungspunkte im Kampagnen logbuch unter „Nicht ausgegebene EP“. <b>Diese Erfahrungs punkte dürfen jetzt noch nicht ausgegeben werden.</b> Die Ermittler werden zu einem späteren Zeitpunkt dazu angewiesen, diese Erfahrungspunkte auszugeben.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -67845,7 +68703,7 @@
           "text": "Ein Ort, der links, rechts oder unterhalb eines anderen Ortes ins Spiel gebracht wird, sollte auf die beschriebene Art neben den Ort gelegt werden, sodass sich keine anderen Orte zwischen den beiden Orten befinden. Ein Ort, der sich so neben einem anderen Ort befindet, gilt als „benachbart“."
         },
         {
-          "text": "Orte sind nur orthogonal benachbart (rechts, links, oberhalb, unterhalb), jedoch nicht diagonal."
+          "text": "Locations are only adjacent orthogonally (left, right, above, or below); they are not adjacent diagonally."
         },
         {
           "text": "Orte können nicht an einer Stelle ins Spiel gebracht werden, an der sich bereits ein anderer Ort befindet. Wird man dazu angewiesen, einen neuen Ort vom Gezeitentunnel-Deck an einer Stelle zu platzieren, die bereits durch einen vorhandenen Ort belegt ist, kommt der neue Ort nicht ins Spiel."
@@ -68036,7 +68894,7 @@
           },
           {
             "id": "purple",
-            "text": "Lila",
+            "text": "Purple",
             "steps": [
               "purple_key"
             ]
@@ -68265,7 +69123,7 @@
     },
     {
       "id": "spend_xp",
-      "text": "Mit diesem zurückgekehrten Fragment deiner Erinnerung werden die Ereignisse aus deiner Vergangenheit ein wenig klarer. Jeder Ermittler darf jetzt seine Erfahrungspunkte ausgeben, die im Kampagnenlogbuch unter „Nicht ausgegebene EP“ notiert sind.",
+      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
       "effects": [
         {
           "type": "earn_xp",
@@ -70084,7 +70942,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "mission_failed",
-          "text": "Die Mission ist gescheitert."
+          "text": "the mission failed."
         }
       ]
     },
@@ -70095,7 +70953,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "mission_succeeded",
-          "text": "Die Mission war erfolgreich."
+          "text": "the mission was successful."
         }
       ]
     }
@@ -70127,7 +70985,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "„B-b-bitte, Miss, Sie müssen mir g-g-glauben!“, stammelt Brian. Agent Harper steht über dem siebzehnjährigen Jungen und tippt bedrohlich auf das Holster, in dem ihre Schusswaffe steckt. „Ich hatte keine Wahl, das hab’ ich Ihnen doch schon gesagt! Es war der Orden! Sie haben mich dazu g-g-gezwungen!“ \nHarper rollt mit den Augen und wendet sich an dich. „Ich kann nicht glauben, dass ich von diesem Trottel entführt worden bin. Sicherlich ein Tiefpunkt meiner Karriere.“ Du versuchst, ihr zu verstehen zu geben, dass es genau seine unbeholfene Art war, wodurch der Junge sie auf dem falschen Fuß erwischen konnte. „Ich glaube, Sie haben recht. Egal, was geschehen ist, ist geschehen. Was halten Sie von dem Ganzen?“, will sie von dir wissen und verschränkt die Arme vor der Brust. „Der Junge hat geglaubt, dass es besser wäre, eine Bundesagentin zu überfallen, als mit diesem ‚Orden‘ aneinanderzugeraten. Glauben Sie, dass er die Wahrheit sagt?“ \nDu hast Mr. Burnhams Fähigkeiten vielleicht unterschätzt, aber er scheint mehr Angst vor dem Orden als vor euch zu haben. Seufzend nickst du. \n„Also gut, Jüngelchen“, wendet sich Agent Harper wieder an den Jungen und zieht ihn auf die Füße, „Zeit zu reden. Erzähl uns alles.“",
+      "text": "\"P-please miss, y-you have to believe me!\" Brian stammers. Agent Harper stands over the seventeen-year-old and taps threatingly oon the holster of her firearm. \"I didn't have a choice, I'm telling you! It was the Order! Th-they made me do it!\"\nHarper rolls her eyes and turns too you. \"I can't believe I was abducted by this goof. Certainly a low point in my career.\" You offer that it was precisely his bumbling nature that allowed the boy to catch her off guard. \"I suppose you're right. Anyhow, what's done is done. What do you make of all this?\" she asks, crossing her arms. \"The boy seems to think it was wiser to ambush a federal agent than run afoull of this 'Order.' Think he's telling the truth?\"\nYou might have miscalculated Mr. Burnham's capabilities, but he certainly seems to be more afraid of this Order than he is of you. With a sigh, you nod.\n\"All right, kid,\" Agent Harper says, hauling the boy to his feet. \"Time for you to talk. Tell us everything.\"",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -70136,7 +70994,7 @@
     {
       "id": "R3",
       "title": "Auflösung 3",
-      "text": "Othera versucht wie wahnsinnig, sich von ihren Fesseln zu befreien. „Lassen Sie mich los! Sie müssen mich gehen lassen!“, schreit sie. Agent Harper grinst und genießt die Wende der Ereignisse sichtlich. \n„Das fühlt sich nicht so gut an, nicht wahr?“, stichelt sie. \n„Sie verstehen nicht“, entgegnet ihr Othera. „Kommen Sie her, sehen Sie, hier!“ Sie blickt in Richtung der nahen Tür, die du noch nicht untersucht hast. Dahinter befindet sich ein Lager mit Unmengen an Ölgemälden, alle mit dem gleichen Motiv: ein sturmumtoster Mahlstrom in der Mitte eines Ozeans, über dem die Sonne und der Mond in perfekter Linie an einem rot gefärbten Himmel hängen. „Was zur Hölle …?“, entfährt es Agent Harper, als sie sich die vielen Reproduktionen ansieht. \nOthera beißt sich auf die Lippe. Eine einzelne Träne rinnt ihr die Wange hinab. „Es ist der Orden“, flüstert sie. „Der Orden hat uns alle in der Hand.“",
+      "text": "Othera struggles against her bonds, trying like hell to free herself. \"Let me go! You have to let me go!\" she cries. Agent Harper grins, reveling in this turn of events.\n\"Doesn't feel so good, does it?\" she teases.\n\"You don't understand,\" Othera replies. \"Come. Look. You'll see.\" She motions to the door next to her, which you haven't yet searched. Inside is a stash of oil paintings, dozens and dozens of them, all depicting the same thing: a tumultuous maelstrom in the middle of the ocean, over which the sun and the moon hang in perfect alignment against a red-tinged sky. \"What in the hell...?\" Agent Harper wonders aloud as she sorts through the many reproductions.\nOthera bites her lip, and a single tear streaks down her cheek. \"It's the Order,\" she whispers. \"The Order owns us all.\"",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -70145,7 +71003,7 @@
     {
       "id": "R4",
       "title": "Auflösung 4",
-      "text": "Trotz ihrer Lage wehrt sich Joyce kaum noch, nachdem du sie gefesselt hast. Sie scheint aufgegeben zu haben und sich ihrem Schicksal zu fügen. Ihr Blick weicht dir aus, als du sie befragst. „Glauben Sie mir, wenn ich eine andere Möglichkeit gehabt hätte, Sie von der Fährte abzubringen, ich hätte sie genutzt“, sagt sie zu Agent Harper. „Aber Sie sind zu nahe gekommen. So tat ich, was ich tun musste.“ \n„Ich verstehe nicht. Zu nahe an was genau, Ms. Little?“, hakt Harper nach. \n„Im Herzen dieser Stadt gibt es ein Geheimnis. Ein Geheimnis, das uns Wohlstand bringt. Ein Geheimnis, das uns Macht bringt. Ein Geheimnis, das uns …“, erklärt sie, macht dann aber eine Pause, um die richtigen Worte zu finden, „… näher an unser Schicksal bringt.“ \n„Und was für ein Geheimnis ist das genau?“, bohrt Harper nach. \nJoyce grinst und schüttelt den Kopf. „Wie kommen Sie darauf, dass ich das jemals Außenstehenden anvertrauen werde?“ \n„Weil Sie eine Bundesagentin angegriffen haben. Wenn Sie mir jetzt nicht erzählen, was ich wissen will, wird Ihr ‚Schicksal‘ das Innere einer einsamen Gefängniszelle sein.“ \nDu siehst, wie Ms. Littles Selbstvertrauen bröckelt. Dann schluckt sie ihren Stolz hinunter. Eine Schweißperle rinnt ihr die Stirn hinab. „Es hat alles mit dem Orden angefangen“, beginnt sie leise zu berichten.",
+      "text": "Despite her situation, Joyce does little to resist you once you have her restrained. She seems resigned to her fate, her gaze elsewhere as you question her. \"Believe me, if I'd had another method of getting you to back off, I would have used it,\" she says to Agent Harper. \"But you were getting too close. So I did what had to be done.\"\n\"I don't understand. Too close to what, exactly, Ms. Little?\" Harper asks.\n\"There is a secret at the heart of this town. A secret that brings us wealth. A secret that brings us power. A secret that brings us...\" She pauses to find the right words. \"...closer to our destiny.\"\n\"And what kind of secret is that?\" Harper probes.\nJoyce smirks and shakes her head. \"What makes you think I would ever share that with outsiders?\"\n\"Because you assaulted a federal agent, and if you don't tell me what I want to know, your 'destiny' is going to be the inside of a lonely prison cell.\"\nYou watch Ms. Little's confidence shatter. She gulps down the last of her pride. A beat of sweat drips down her forehead. \"It started with the Order,\" she explains quietly.",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -70154,7 +71012,7 @@
     {
       "id": "R5",
       "title": "Auflösung 5",
-      "text": "Barnabas spuckt dir ins Gesicht, als du ihn zu befragen versuchst. „Von mir hören Sie kein Wort, Eindringling“, bellt er und sieht dich hasserfüllt mit seinen hervorquellenden, nicht blinzelnden Augen an. „Sie gehören nicht hier her. Ihre Art wird noch vor dem Ende der Woche tot sein.“ \nAgent Harper runzelt die Stirn, als sie die seltsamen Worte des Mannes hört. „Was meinen Sie damit, Marsh? Mit Ihre Art? Meinen Sie damit Auswärtige?“ \nBarnabas setzt einen finsteren Blick auf, verzieht seine fleischigen Lippen und offenbart dahinter eine Reihe spitzer unmenschlicher Zähne. „Eindringlinge. Störenfriede. Sie sind ein Schandfleck in unserer schönen Stadt. Aber schon bald wird die Stadt von Ihnen reingewaschen sein.“ \nDie Heftigkeit der Bedrohung des alten Mannes und sein siedender Hass machen dich sprachlos. Harper dagegen kichert leise. „Sie nennen diesen Ort ‚schön‘?“ Du ignorierst Harpers spöttischen Tonfall und warnst Barnabas, dass er eine lange Zeit hinter Gittern verbringen wird, sollte er nicht endlich zu reden anfangen. \n„Nicht ich“, bemerkt er. „Sie sind es, die eingesperrt werden oder denen noch Schlimmeres zustoßen wird. Wenn der Orden mit Ihnen fertig ist, werden Sie nichts weiter als Fischfutter sein.“ \nHarper wirft dir einen wissenden Blick zu und fragt weiter nach: „Welchen Orden meinen Sie genau?“",
+      "text": "Barnabas spits in your face as you attempt to interrogate him. \"I ain't tellin' you a word, interloper,\" he barks, his bulging eyes unblinking as he glowers at you with unbridled hate. \"You don't belong here. All o' your kind'll be dead before the week's end.\"\nAgent Harper narrows her eyes at the strange man's remarks. \"What do you mean by that, Marsh? Our kind? What—outsiders?\"\nBarnabas scowls, his bulbous lips curling back to reveal sharp, inhuman teeth. \"Outsiders. Intruders. You're a blight on our fair town. But you'll be purged soon enough.\"\nYou are taken aback by the severity of the old man's threat and his simmering hatred, but Harper simply chortles. \"You call this place 'fair'?\" Ignoring her derision, you warn Barnabas that if he doesn't speak up, he'll be spending a long time behind bars.\n\"Not I,\" he remarks. \"You're the one who'll be locked up, 'n worse. When the Order's done with you, you'll be nothin' but fish food.\"\nYou and Harper exchange a knowing glance. She pries further: \"What Order is this, exactly?\"",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -70163,7 +71021,7 @@
     {
       "id": "R6",
       "title": "Auflösung 6",
-      "text": "„He, he, he … jetz’ seh’n Se, wie verdorb’n die Stadt is’, nich?“, brüllt Zadok mit einem wilden Blick in seinen weit aufgerissenen Augen. Er hält sich krampfhaft an deinem Arm fest und scheint sich nicht um deine Versuche, ihn fesseln zu wollen, zu scheren. „Wir sind jetz’ alle in ihr’n Fäng’n, jawohl! He, he, he!“ \n„Über was lacht dieser Trunkenbold eigentlich?“, spöttelt Agent Harper. „Hey, Zadok. Schluss jetzt mit dem Unsinn. Sagen Sie uns, was Sie mit der Sache zu tun haben.“ \nZadok wiegt sich vor und zurück, während er lauter und mit mehr Nachdruck in der Stimme antwortet: „Was ich? Was ich?“, sprudelt es aus ihm heraus, gelegentlich von wahnsinnigem Lachen unterbrochen. „Se glaube’n, ich wär’ schuld. Aber die Fischteufel sin’s, überall um uns rum. Hab’n Se se nich’ geseh’n?“ Er grinst. „Hab’n Se die Monster nich’ geseh’n, überall kriech’n, plärr’n, bell’n un hops’n se in den Straß’n rum. Hab’n Se se nich’ in der Nacht aus’ m Ord’ n von Dagon heul’n hör’n? Nich’?“ Seine Stimme wird zu einem Kreischen, dann wird er von einem erneuten Lachanfall geschüttelt. \n„Nein, habe ich nicht“, antwortet Harper mit ernstem Blick. „Warum erzählen Sie uns nicht einfach alles darüber?“",
+      "text": "\"Heh, heh, heh, heh... ye startin' to see haow rott'n this town's got, ain't ye?\" Zadok hollers, a crazed look in his wide eyes. He clutches desperately at your arm, not seeming to care about your attempts to bind him. \"We're all in their clutches now, we are! Heh, heh, heh!\"\n\"What's this blotto have to laugh about?\" Agent Harper mocks. \"Hey, Zadok. Stop it with the nonsense and tell us what your game is.\"\nZadok rocks back and forth, his voice growing louder and bolder. \"My game? My game?\" he roils with manic laughter. \"Yeh think I'm to blame, but them fish devils are in our midst, they are! Haven't ye seen them?\" He grins. \"Haven't ye seen them monsters crawlin' an' bleatin' an' barkin' an' hoppin' araoun' the black streets? Haven't ye heard the haowlin' errey night from the churches an' the Order o' Dagon Hall? Don'tcha know what's doin' the haowlin'? Eh? Well?\" His voice rises to a shriek, then descends into a fit of laughter.\n\"No, I haven't,\" Harper replies, her eyes narrow. \"Why don't you tell us all about it?\"",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -70172,7 +71030,7 @@
     {
       "id": "R7",
       "title": "Auflösung 7",
-      "text": "Robert weigert sich, auch nur ein Wort zu sagen, bis er nicht eine Zigarre bekommt. Widerwillig kommst du seiner Forderung nach und hoffst, dass deine Großzügigkeit auf ihn abfärbt. „Ich habe gerade Untersuchungen im Hafen angestellt, als er und seine Kumpanen mich erwischt haben“, berichtet dir Agent Harper bitter. Du fragst sie, wer diese „Kumpanen“ sind, aber sie zuckt nur mit den Schultern. „Ich bin mir nicht sicher. Hafenarbeiter und Seeleute, könnte ich mir vorstellen. Wer auch immer unseren Mr. Friendly angeheuert hat, muss viel Einfluss auf die Einheimischen haben.“ \nNachdem du Robert die geforderte Zigarre überreicht hast, bist du überrascht, dass er ein wenig entgegenkommender wird, auch wenn sein Auftreten noch weit von „freundlich“ entfernt ist. „Spielt alles keine Rolle mehr“, murmelt er und bläst eine Wolke widerlichen Zigarrenrauchs in die Luft. „Nehmen Sie es mir nicht übel, Miss, aber Sie alle sind schon so gut wie tot.“ \n„Ich nehme es Ihnen aber übel“, antwortet sie ihm bissig. „Wären Sie so freundlich, uns zu erklären, was Sie damit meinen?“ \n„Der Orden“, gibt er ruhig und mit unbeirrter Entschlossenheit zurück. „Der Orden weiß alles, was in der Stadt passiert. Wahrscheinlich sucht er schon nach mir. Sind Sie sicher, dass Sie noch da sein wollen, wenn er mich hier findet?“ Er grinst sie boshaft an. \nHarper bleibt standhaft. „Wenn ich so darüber nachdenke, würde ich sagen, ja“, entgegnet sie ihm und lässt ihre Fingerknöchel knacken. „Jetzt fangen Sie endlich zu reden an!“",
+      "text": "Robert refruses to say a word until you get him a cigar. You begrudgingly oblige, hoping that your generosity yields dividends. \"I was investigating the docks when he and his cronies nabbed me,\" Agent Harper recounts bitterly. You ask who these \"cronies\" were, and she shrugs. \"Not sure. Dockworkers and sailors, I imagine. Whoever hired Mr. Friendly over here must have a lot of influence over the locals.\"\nAfter handing Robert the cigar he demanded, you are surprised to find him a little more compliant, though no more friendly despite his name. \"Doesn't matter,\" he mutters, blowing out a puff of rank cigar smoke. \"You're all dead men walking. No offense, miss.\"\n\"Offense taken,\" she bites back. \"Care to tell us what you mean by that?\"\n\"The Order,\" he replies with a quiet, unwavering resolve. \"They know everything that happens in this town. Probably out lookin' for me right now. You sure you wanna be here when they find me?\" He flashes a sadistic grin.\nHarper doesn't flinch. \"Yeah, actually. I think I do,\" she replies, cracking her knuckles. \"Now start talking.\"",
       "steps": [
         "earn_xp",
         "mission_succeeded"

@@ -2382,6 +2382,14 @@
             "text": "Othera Gilman is out for blood."
           },
           {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "the headdress was brought to the lighthouse."
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "the idol was brought to the lighthouse."
+          },
+          {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
             "text": "Innsmouth was consumed by the rising tide."
           },
@@ -2394,6 +2402,10 @@
             "text": "the investigators made it safely to their vehicles."
           },
           {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "the mantle was brought to the lighthouse."
+          },
+          {
             "id": "marsh_out_for_blood",
             "text": "Barnabas Marsh is out for blood."
           },
@@ -2403,7 +2415,15 @@
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission succeeded."
+            "text": "the mission was successful."
+          },
+          {
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "the Terror of Devil Reef is dead."
+          },
+          {
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "the Terror of Devil Reef is still alive."
           }
         ]
       },
@@ -2463,6 +2483,14 @@
             "text": "dummy"
           },
           {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
             "id": "flashback_2",
             "text": "dummy"
           },
@@ -2488,6 +2516,10 @@
           },
           {
             "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_9",
             "text": "dummy"
           },
           {
@@ -2522,6 +2554,18 @@
           {
             "id": "decision_to_stick_together",
             "text": "a decision to stick together"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "discovery of a mystical relic."
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "discovery of a strange idol."
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "discovery of an unholy mantle."
           },
           {
             "id": "encounter_with_a_secret_cult",
