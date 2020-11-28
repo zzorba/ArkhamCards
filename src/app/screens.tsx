@@ -55,6 +55,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Settings.MergeBackup': return require('@components/settings/MergeBackupView').default;
     case 'Settings.SafeMode': return require('@components/settings/SafeModeView').default;
     case 'SearchFilters': return require('@components/filter/CardFilterView').default;
+    case 'SearchFilters.Asset': return require('@components/filter/CardAssetFilterView').default;
     case 'SearchFilters.Enemy': return require('@components/filter/CardEnemyFilterView').default;
     case 'SearchFilters.Location': return require('@components/filter/CardLocationFilterView').default;
     case 'SearchFilters.Packs': return require('@components/filter/PackFilterView').default;

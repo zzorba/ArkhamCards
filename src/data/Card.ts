@@ -899,7 +899,8 @@ export default class Card {
       filter(
         map(real_slot.split('.'), s => s.toLowerCase().trim()),
         s => !!s
-      )
+      ),
+      slot => `#${slot}#`
     ).join(',') : null;
     const slot = json.slot || null;
     const slots_normalized = json.slot ? map(

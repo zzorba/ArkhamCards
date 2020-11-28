@@ -22,12 +22,20 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
 import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
+import FixedSetChooserButton from '../FixedSetChooserButton';
+import { slotsTranslations } from '../CardAssetFilterView';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {
     return `${name}(${values[0]})`;
   }
   return `${name}(${values[0]}-${values[1]})`;
+}
+function listText(name: string, values: string[], translations?: { [key: string]: string }) {
+  if (translations) {
+    return `${name}(${map(values, item => translations[item]).join(', ')})`;
+  }
+  return `${name}(${values.join(', ')}`;
 }
 
 function splitTraits(value: string): string[] {
@@ -50,6 +58,10 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
   const allPacks = useSelector(getAllPacks);
   const onPacksPress = useCallback(() => {
     pushFilterView('SearchFilters.Packs');
+  }, [pushFilterView]);
+
+  const onAssetPress = useCallback(() => {
+    pushFilterView('SearchFilters.Asset');
   }, [pushFilterView]);
 
   const onEnemyPress = useCallback(() => {
@@ -89,12 +101,12 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     cluesEnabled,
     cluesFixed,
     hauntedEnabled,
-    uses,
     factions,
+    actions,
+    skillModifiers,
     traits,
     types,
     subTypes,
-    slots,
     encounters,
     illustrators,
     victory,
@@ -117,10 +129,16 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     evadeAction,
     investigateAction,
     fightAction,
+    uses,
+    slots,
+    assetSanityEnabled,
+    assetHealthEnabled,
+    assetHealth,
+    assetSanity,
   } = filters;
 
   const selectedPacksText = useMemo(() => {
-    if (!allPacks.length || !packs.length) {
+    if (!allPacks || !packs || !allPacks.length || !packs.length) {
       return t`Packs: All`;
     }
     const selectedPackNames = new Set(packs);
@@ -247,6 +265,28 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyEvadeEnabled,
     enemyEvade,
   ]);
+
+
+  const assetFilterText = useMemo(() => {
+    const parts = [];
+    if (assetHealthEnabled) {
+      parts.push(rangeText(t`Health`, assetHealth));
+    }
+    if (assetSanityEnabled) {
+      parts.push(rangeText(t`Sanity`, assetSanity));
+    }
+    if (uses.length) {
+      parts.push(listText(t`Uses`, uses));
+    }
+    if (slots.length) {
+      parts.push(listText(t`Slots`, slots, slotsTranslations()));
+    }
+    if (parts.length === 0) {
+      return t`Assets: All`;
+    }
+    const searchParts = parts.join(', ');
+    return t`Assets: ${searchParts}`;
+  }, [assetHealthEnabled, assetHealth, assetSanityEnabled, assetSanity, uses, slots]);
   const locationFilterText = useMemo(() => {
     const parts = [];
     if (cluesEnabled) {
@@ -335,23 +375,40 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
         <FilterChooserButton
           componentId={componentId}
           title={t`Types`}
-          field="type_name"
+          field="type_code"
           selection={types}
           setting="types"
           onFilterChange={onFilterChange}
           query={baseQuery}
           tabooSetId={tabooSetId}
+          fixedTranslations={{
+            asset: t`Asset`,
+            event: t`Event`,
+            skill: t`Skill`,
+            act: t`Act`,
+            agenda: t`Agenda`,
+            story: t`Story`,
+            enemy: t`Enemy`,
+            treachery: t`Treachery`,
+            location: t`Location`,
+            investigator: t`Investigator`,
+            scenario: t`Scenario`,
+          }}
         />
         { (subTypes.length > 0 || hasWeakness) && (
           <FilterChooserButton
             componentId={componentId}
             title={t`SubTypes`}
-            field="subtype_name"
+            field="subtype_code"
             selection={subTypes}
             setting="subTypes"
             onFilterChange={onFilterChange}
             query={baseQuery}
             tabooSetId={tabooSetId}
+            fixedTranslations={{
+              weakness: t`Weakness`,
+              basicweakness: t`Basic Weakness`,
+            }}
           />
         ) }
       </View>
@@ -377,6 +434,23 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
         />
       ) }
       <View>
+        <FixedSetChooserButton
+          title={t`Actions`}
+          componentId={componentId}
+          selection={actions}
+          setting="actions"
+          onFilterChange={onFilterChange}
+          allValues={{
+            'fight': t`Fight`,
+            'engage': t`Engage`,
+            'investigate': t`Investigate`,
+            'play': t`Play`,
+            'draw': t`Draw`,
+            'move': t`Move`,
+            'evade': t`Evade`,
+            'resource': t`Resource`,
+          }}
+        />
         <FilterChooserButton
           title={t`Traits`}
           componentId={componentId}
@@ -387,6 +461,10 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
           onFilterChange={onFilterChange}
           query={baseQuery}
           tabooSetId={tabooSetId}
+        />
+        <NavButton
+          text={assetFilterText}
+          onPress={onAssetPress}
         />
         { hasEnemy && (
           <NavButton
@@ -401,32 +479,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
           />
         ) }
       </View>
-      { hasSlot && (
-        <FilterChooserButton
-          componentId={componentId}
-          title={t`Slots`}
-          processValue={splitTraits}
-          field="slot"
-          selection={slots}
-          setting="slots"
-          onFilterChange={onFilterChange}
-          query={baseQuery}
-          tabooSetId={tabooSetId}
-        />
-      ) }
-      { hasUses && (
-        <FilterChooserButton
-          componentId={componentId}
-          title={t`Uses`}
-          field="uses"
-          selection={uses}
-          setting="uses"
-          onFilterChange={onFilterChange}
-          query={baseQuery}
-          tabooSetId={tabooSetId}
-          capitalize
-        />
-      ) }
       <View style={[styles.toggleStack, borderStyle, space.paddingBottomS]}>
         <View style={[styles.toggleRow, space.marginTopXs]}>
           <View style={styles.toggleColumn}>
