@@ -6025,6 +6025,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "You awaken with a start, as though shaken by an unseen force. You must have slept for quite some time, for there are only a few other patrons in the audience, and no performers on stage. The lights are dimmed, and the stage curtains are tattered and ripped, though you do not remember that being the case during the first act. You wait a moment before you are sure this isn’t part of the performance. As you wait, a foul but unrecognizable smell permeates the air. How long have you been asleep? Shaking off your drowsiness, you walk toward one of the seated patrons and ask for the time, but he does not respond. It is then that you realize you are speaking to a corpse."
     },
@@ -6276,6 +6280,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached\n(each investigator was defeated)",
       "investigator_status": [
         "eliminated",
@@ -6287,12 +6295,20 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolution 1",
       "text": "Fleeing from the theatre, you head straight to the police station in Easttown. Bursting through the door, to the stares of onlookers and police officers alike, you demand to see Sheriff Engle, stressing the importance of your visit. The desk sergeant, who is lazily working through a stack of paperwork, shakes his head and raises a finger in silence, then points to a nearby chair. The wait is excruciating. Every moment is an eternity. The hands of the nearby clock crawl. You drum your fingers on the desk. You tap your feet. You constantly peer over your shoulder to make sure the pallid mask of the Stranger is not watching you through the front window. Finally, the desk sergeant puts his pen down and sits up, beckoning you. “Alright, what’s so important now?” You are only halfway through your explanation of the night’s events when he sighs and shakes his head. “Look, if this is some kind of joke, it ain’t funny,” he says. “We had officers downtown all night. Don’t try to feed me some hooey straight to my face.” You insist, but the desk sergeant rises to his feet and opens the door, motioning for you to leave. He raises his voice. “What, you think we’re not busy enough or something? Beat it!” He mumbles about “blind birds” behind your back as he escorts you out of the station.\nYou <b>know</b> what you saw earlier that night. Frustrated, you head back to the Ward Theatre to find some kind of proof you can take to the police. You are surprised to find that the front door of the theatre is locked. You are about to decide whether or not to break down the door when you see a notice on the wall near the entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and fold it into your coat pocket, hoping it will lead you to the answers you seek.",
       "steps": ["police_unhelpful", "tried_to_warn_police", "stole_from_box_office", "stranger_is_on_to_you", "chasing_the_stranger_2", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "You think about going to the police, but considering the horrors in the theatre, they’re more likely to think you’re mad than to believe your story. A small part of you wonders if this is still some kind of prank, but that can’t be the case—it was all too real, too terrifying to forget. Wondering what course of action to take, you find yourself backtracking over your escape route, returning to the theatre with cautious steps. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. Soon the Ward Theatre comes into sight, its bright lights dominating the streets of Downtown. You expected the theatre to be in ruins, but its exterior looks the same as it did when you arrived to see The King in Yellow earlier that night. You walk to the front window of the Ward Theatre and tentatively peer through, but it is too dark to see anything inside.\nJust then, a chill brushes the nape of your neck, and you feel that you are being watched. You turn, and spot a shadow fleeing around the corner. A swarm of roaches skitters across the sidewalk, following in the shadow’s wake. Your muscles tense with uncertainty, and you round the corner in pursuit. Standing unconcerned on the sidewalk is a familiar-looking man in a featureless pallid mask.\nHis unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, and instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty—save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, hoping it will lead you to the answers you seek.",
       "steps": ["wise_not_to_warn", "chose_not_to_warn_police", "stranger_is_on_to_you", "chasing_the_stranger_2", "earn_xp", "$upgrade_decks"]
@@ -7689,6 +7705,10 @@
   "steps": [
     {
       "id": "house_choice",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.intro",
+        "name": "Intro"
+      },
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -7966,16 +7986,28 @@
     },
     {
       "id": "reward_1",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_1",
+        "name": "Lunacy's Reward 1"
+      },
       "type": "story",
       "text": "The change in the atmosphere has you curious. What if it was all a trick of your mind? What if the hauntings that follow The King in Yellow are but transitory? The answers to all of your questions might lie inside. Cautiously, you open the front door to the manor once again. Reassuring jazz and the clamor of casual conversation grow louder as you step inside. The enticing smell of roasted pork wafts through the air. As you suspected, the signs of struggle and oddities you noticed before have vanished without explanation. Then, as you turn the corner into the dining room, you find the Stranger speaking with another man—tall, mustached, wearing a fine black suit, and holding a silver-handled cane. The Stranger turns to you, his gaze drills through your mind, and your vision swims with agony. Before you realize it, you are running as fast as you can, toppling through the front doorway in a haze of pain and disorientation. Without time to catch your breath, you race to your vehicle and speed away, hands trembling upon the steering wheel."
     },
     {
       "id": "reward_2",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_2",
+        "name": "Lunacy's Reward 2"
+      },
       "type": "story",
       "text": "You can’t trust your senses. This is all a trick, an attempt to lure you back inside. You’re no safer now than you were before. Swallowing your fear, you set to work barricading the front door of the manor using several of the heavy stone benches lining the cobblestone path in the front yard. You hope it’s enough, but you aren’t willing to stick around to find out. As soon as you’re done, you head back to your vehicle and drive toward Southside, where you hope to find answers."
     },
     {
       "id": "reward_3",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_3",
+        "name": "Lunacy's Reward 3"
+      },
       "type": "story",
       "text": "You dare not risk stepping back inside that madhouse. But you can’t let the monstrosities run amok, either. You root through the open garage for a few supplies, finding an old hose, an empty gasoline canister, and some matches. Knowing what you must do, you first siphon some gas from Mrs. Dumaine’s Oakland 6-54A. You spread the gasoline across the front porch, inside the garage, and around the manor’s outer walls. From there, all it takes is several matches to start the blaze. You watch from the front yard as the manor is eventually consumed by the flames. The sounds of crackling fire and snapping wood and the screeching of dying horrors fills the street. Satisfied, you head back to your vehicle and tear off toward Southside, full of grim determination."
     }
@@ -7995,6 +8027,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.prologue.prologue",
+        "name": "Prologue"
+      },
       "type": "story",
       "text": "You turn over the folded program in your hand, reading it for what seems like the hundredth time. “Miskatonic Playhouse presents: The King in Yellow,” it reads. “A special one-night engagement at Arkham’s very own Ward Theatre. An irresistible drama in two acts. Production staged and directed by Nigel Engram.” The cast is a small ensemble, with one unattributed credit at the end: “The Stranger.”\nTo have such a highly anticipated play come to Arkham all the way from Paris is a noteworthy event, even if it is just for one night. For weeks leading up to the show, it was the talk of the town. It seemed so unassuming...and yet, you have evidence something sinister is at work. It started with the disappearance of one of the stagehands at the theatre—a boy of only seventeen who missed rehearsal one night and was never seen again. Then, less than two weeks before the performance, there was the musician whose corpse was found with a gun in its mouth. Perhaps most chilling was the crazed man the coppers had picked up in Independence Square who had been ranting and raving about the “King’s return.” He was brought to Arkham Asylum, and you were surprised to discover that he was not alone in his delusions.\nFinding these events suspicious, you and your companions have delved deeper into the matter. Although no connection can be proven, these weren’t the only strange events surrounding the up-and-coming play. Instances of suicide and madness have followed in its wake, and you are determined to discover why.\nThe lights in the auditorium dim, and a spotlight shines on the stage. What unfolds is not quite what you expected. Slow-paced and monotonous, the first act of The King in Yellow is a tedious bore. The setting and characters are compelling, but the meandering and nonsensical story does little to entertain or inform. You begin to wonder whether the dreadful events surrounding The King in Yellow aren’t connected, after all. Perhaps it was just your overactive imagination; how could such a trivial and unassuming show cause such pandemonium? You are surprised when the first act closes without any rising action or revelation. The lights rise for the intermission, and you consider leaving early, stifling a yawn. Before you are able to decide, however, you find yourself drifting...drifting...to sleep."
     },
@@ -8028,6 +8064,10 @@
     },
     {
       "id": "lola_prologue",
+      "narration": {
+        "id": "the_path_to_carcosa.prologue.lola_prologue",
+        "name": "Lola Prologue"
+      },
       "type": "story",
       "text": "Act I came and went without a hitch, as it often did in rehearsal. You couldn’t help but note the blank, dismissive expressions on many of the audience members’ faces, and you wonder how the audience will react to the play’s disturbing second half. The role of Cassilda is tiresomely boring for the first half of the play, although you enjoy portraying her regal charm. You find yourself missing your previous co-star, Miriam Twain, and suddenly the dread and regret you had felt in Paris comes flooding back. With a sigh, you retreat to a dark corner backstage to escape the sounds of stagehands preparing for the next scene. You try to quell your emotions and replace your thoughts with those of Cassilda’s—her hopes, her fears, her fate.\nJust then, you catch the Stranger staring at you from afar, and you find yourself shaking at the mere sight of him. Even though they continue to replace the actor who plays the Stranger before each show (and indeed many times during rehearsals), you know that this last-minute replacement is the most horrid of them all. Realizing you never caught his name, a shiver of terror courses through your spine. Have you found your way back to the wolves, like a lost lamb? You cannot look away— his gaze is inescapable. Everything goes black."
     }
@@ -8053,6 +8093,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "If anyone has the answers to the questions that burn in your mind, it’s the cast and crew of The King in Yellow. With no other leads to pursue, you put on your best clothes and head to 1452 Atlantic Avenue, where a woman named Constance Dumaine is hosting an event in celebration of the play’s one-night engagement in Arkham."
     },
@@ -8330,18 +8374,30 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolution 1",
       "text": "The brisk autumn air embraces you as you exit the manor. There is no doubt in your mind that the cast and crew of The King in Yellow have become affected by madness. Perhaps it’s getting to you, as well. You feel an encroaching darkness, a presence in your mind not unlike the gaze of the Stranger. Startled, you peer about the front yard for the first time since escaping the manor. The scene is...different. The front windows are not smashed as they were when you first approached. The trail of blood you had noticed on the porch has been wiped clean, and instead of the disturbingly warped music you had heard upon entering, the soothing tones of slow jazz drift out from the courtyard.",
       "steps": ["vips_interviewed", "vips_slain", "earn_xp", "earn_clue_xp"]
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "“Excuse me, but it’s very late,” you hear a server say as he gently taps you on your shoulder. You realize that you are sitting on a couch in the manor’s living room, and that you have been asleep for some time. The party appears to be winding down. No music fills the halls, the food is all but gone, and only a few guests remain. “Perhaps you would like for me to get your coat?” the server asks with a trained smile. You wobble as you rise to your feet, leaning against the couch’s armrest. Your head pounds with a dizzying intensity, and your vision is spotted. You insist that you are fine, and begin walking toward the foyer.\nYou no longer see any of the guests you were searching for earlier, not even the hostess, Mrs. Dumaine. All traces of the madness and horror you’ve experienced are gone. Even the oddities you witnessed upon entering the manor have vanished—the signs of struggle, the broken windows, the blood trail on the porch... Every piece of evidence has been erased. But you still remember the night’s events, and in your memory you will find your answers.",
       "steps": ["vips_interviewed", "vips_slain", "earn_xp", "earn_clue_xp", "adjust_chaos_tokens", "$upgrade_decks", "skip_lunacys_reward"]
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolution 3",
       "text": "Several days later, you find yourself reminiscing about the party you attended at 1452 Atlantic Avenue. What a roaring good time you had! And yet, your memory is hazy. You can’t help but feel you are forgetting something important. Something about the play you’d watched earlier that night—The King in Yellow. That nagging sensation pursues you in every waking moment. Try as you might to recall the night’s events in full, there remains a gaping hole in your memory. As you strain to remember, your concern grows, almost to the point of obsession. Deciding that you absolutely must know what occurred that night, you head toward the manor of the Historical Society in Southside. Perhaps there you can learn more about <u>The King in Yellow</u> play...",
       "steps": ["vips_interviewed", "vips_slain", "earn_xp", "earn_clue_xp", "adjust_chaos_tokens", "$upgrade_decks", "skip_lunacys_reward"]
@@ -15237,6 +15293,10 @@
   "steps": [
     {
       "id": "house_choice",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.intro",
+        "name": "Intro"
+      },
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -15527,16 +15587,28 @@
     },
     {
       "id": "reward_1",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_1",
+        "name": "Lunacy's Reward 1"
+      },
       "type": "story",
       "text": "The change in the atmosphere has you curious. What if it was all a trick of your mind? What if the hauntings that follow The King in Yellow are but transitory? The answers to all of your questions might lie inside. Cautiously, you open the front door to the manor once again. Reassuring jazz and the clamor of casual conversation grow louder as you step inside. The enticing smell of roasted pork wafts through the air. As you suspected, the signs of struggle and oddities you noticed before have vanished without explanation. Then, as you turn the corner into the dining room, you find the Stranger speaking with another man—tall, mustached, wearing a fine black suit, and holding a silver-handled cane. The Stranger turns to you, his gaze drills through your mind, and your vision swims with agony. Before you realize it, you are running as fast as you can, toppling through the front doorway in a haze of pain and disorientation. Without time to catch your breath, you race to your vehicle and speed away, hands trembling upon the steering wheel."
     },
     {
       "id": "reward_2",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_2",
+        "name": "Lunacy's Reward 2"
+      },
       "type": "story",
       "text": "You can’t trust your senses. This is all a trick, an attempt to lure you back inside. You’re no safer now than you were before. Swallowing your fear, you set to work barricading the front door of the manor using several of the heavy stone benches lining the cobblestone path in the front yard. You hope it’s enough, but you aren’t willing to stick around to find out. As soon as you’re done, you head back to your vehicle and drive toward Southside, where you hope to find answers."
     },
     {
       "id": "reward_3",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_3",
+        "name": "Lunacy's Reward 3"
+      },
       "type": "story",
       "text": "You dare not risk stepping back inside that madhouse. But you can’t let the monstrosities run amok, either. You root through the open garage for a few supplies, finding an old hose, an empty gasoline canister, and some matches. Knowing what you must do, you first siphon some gas from Mrs. Dumaine’s Oakland 6-54A. You spread the gasoline across the front porch, inside the garage, and around the manor’s outer walls. From there, all it takes is several matches to start the blaze. You watch from the front yard as the manor is eventually consumed by the flames. The sounds of crackling fire and snapping wood and the screeching of dying horrors fills the street. Satisfied, you head back to your vehicle and tear off toward Southside, full of grim determination."
     }
@@ -15555,6 +15627,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.prologue.prologue",
+        "name": "Prologue"
+      },
       "type": "story",
       "text": "You turn over the folded program in your hand, reading it for what seems like the hundredth time. “Miskatonic Playhouse presents: The King in Yellow,” it reads. “A special one-night engagement at Arkham’s very own Ward Theatre. An irresistible drama in two acts. Production staged and directed by Nigel Engram.” The cast is a small ensemble, with one unattributed credit at the end: “The Stranger.”\nTo have such a highly anticipated play come to Arkham all the way from Paris is a noteworthy event, even if it is just for one night. For weeks leading up to the show, it was the talk of the town. It seemed so unassuming...and yet, you have evidence something sinister is at work. It started with the disappearance of one of the stagehands at the theatre—a boy of only seventeen who missed rehearsal one night and was never seen again. Then, less than two weeks before the performance, there was the musician whose corpse was found with a gun in its mouth. Perhaps most chilling was the crazed man the coppers had picked up in Independence Square who had been ranting and raving about the “King’s return.” He was brought to Arkham Asylum, and you were surprised to discover that he was not alone in his delusions.\nFinding these events suspicious, you and your companions have delved deeper into the matter. Although no connection can be proven, these weren’t the only strange events surrounding the up-and-coming play. Instances of suicide and madness have followed in its wake, and you are determined to discover why.\nThe lights in the auditorium dim, and a spotlight shines on the stage. What unfolds is not quite what you expected. Slow-paced and monotonous, the first act of The King in Yellow is a tedious bore. The setting and characters are compelling, but the meandering and nonsensical story does little to entertain or inform. You begin to wonder whether the dreadful events surrounding The King in Yellow aren’t connected, after all. Perhaps it was just your overactive imagination; how could such a trivial and unassuming show cause such pandemonium? You are surprised when the first act closes without any rising action or revelation. The lights rise for the intermission, and you consider leaving early, stifling a yawn. Before you are able to decide, however, you find yourself drifting...drifting...to sleep."
     },
@@ -15591,6 +15667,10 @@
     },
     {
       "id": "lola_prologue",
+      "narration": {
+        "id": "the_path_to_carcosa.prologue.lola_prologue",
+        "name": "Lola Prologue"
+      },
       "type": "story",
       "text": "Act I came and went without a hitch, as it often did in rehearsal. You couldn’t help but note the blank, dismissive expressions on many of the audience members’ faces, and you wonder how the audience will react to the play’s disturbing second half. The role of Cassilda is tiresomely boring for the first half of the play, although you enjoy portraying her regal charm. You find yourself missing your previous co-star, Miriam Twain, and suddenly the dread and regret you had felt in Paris comes flooding back. With a sigh, you retreat to a dark corner backstage to escape the sounds of stagehands preparing for the next scene. You try to quell your emotions and replace your thoughts with those of Cassilda’s—her hopes, her fears, her fate.\nJust then, you catch the Stranger staring at you from afar, and you find yourself shaking at the mere sight of him. Even though they continue to replace the actor who plays the Stranger before each show (and indeed many times during rehearsals), you know that this last-minute replacement is the most horrid of them all. Realizing you never caught his name, a shiver of terror courses through your spine. Have you found your way back to the wolves, like a lost lamb? You cannot look away— his gaze is inescapable. Everything goes black."
     }
@@ -17235,6 +17315,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "You awaken with a start, as though shaken by an unseen force. You must have slept for quite some time, for there are only a few other patrons in the audience, and no performers on stage. The lights are dimmed, and the stage curtains are tattered and ripped, though you do not remember that being the case during the first act. You wait a moment before you are sure this isn’t part of the performance. As you wait, a foul but unrecognizable smell permeates the air. How long have you been asleep? Shaking off your drowsiness, you walk toward one of the seated patrons and ask for the time, but he does not respond. It is then that you realize you are speaking to a corpse."
     },
@@ -17562,6 +17646,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached\n(each investigator was defeated)",
       "investigator_status": [
         "eliminated",
@@ -17578,6 +17666,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolution 1",
       "text": "Fleeing from the theatre, you head straight to the police station in Easttown. Bursting through the door, to the stares of onlookers and police officers alike, you demand to see Sheriff Engle, stressing the importance of your visit. The desk sergeant, who is lazily working through a stack of paperwork, shakes his head and raises a finger in silence, then points to a nearby chair. The wait is excruciating. Every moment is an eternity. The hands of the nearby clock crawl. You drum your fingers on the desk. You tap your feet. You constantly peer over your shoulder to make sure the pallid mask of the Stranger is not watching you through the front window. Finally, the desk sergeant puts his pen down and sits up, beckoning you. “Alright, what’s so important now?” You are only halfway through your explanation of the night’s events when he sighs and shakes his head. “Look, if this is some kind of joke, it ain’t funny,” he says. “We had officers downtown all night. Don’t try to feed me some hooey straight to my face.” You insist, but the desk sergeant rises to his feet and opens the door, motioning for you to leave. He raises his voice. “What, you think we’re not busy enough or something? Beat it!” He mumbles about “blind birds” behind your back as he escorts you out of the station.\nYou <b>know</b> what you saw earlier that night. Frustrated, you head back to the Ward Theatre to find some kind of proof you can take to the police. You are surprised to find that the front door of the theatre is locked. You are about to decide whether or not to break down the door when you see a notice on the wall near the entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and fold it into your coat pocket, hoping it will lead you to the answers you seek.",
       "steps": [
@@ -17592,6 +17684,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "You think about going to the police, but considering the horrors in the theatre, they’re more likely to think you’re mad than to believe your story. A small part of you wonders if this is still some kind of prank, but that can’t be the case—it was all too real, too terrifying to forget. Wondering what course of action to take, you find yourself backtracking over your escape route, returning to the theatre with cautious steps. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. Soon the Ward Theatre comes into sight, its bright lights dominating the streets of Downtown. You expected the theatre to be in ruins, but its exterior looks the same as it did when you arrived to see The King in Yellow earlier that night. You walk to the front window of the Ward Theatre and tentatively peer through, but it is too dark to see anything inside.\nJust then, a chill brushes the nape of your neck, and you feel that you are being watched. You turn, and spot a shadow fleeing around the corner. A swarm of roaches skitters across the sidewalk, following in the shadow’s wake. Your muscles tense with uncertainty, and you round the corner in pursuit. Standing unconcerned on the sidewalk is a familiar-looking man in a featureless pallid mask.\nHis unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, and instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty—save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, hoping it will lead you to the answers you seek.",
       "steps": [
@@ -19009,6 +19105,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "If anyone has the answers to the questions that burn in your mind, it’s the cast and crew of The King in Yellow. With no other leads to pursue, you put on your best clothes and head to 1452 Atlantic Avenue, where a woman named Constance Dumaine is hosting an event in celebration of the play’s one-night engagement in Arkham."
     },
@@ -19311,6 +19411,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolution 1",
       "text": "The brisk autumn air embraces you as you exit the manor. There is no doubt in your mind that the cast and crew of The King in Yellow have become affected by madness. Perhaps it’s getting to you, as well. You feel an encroaching darkness, a presence in your mind not unlike the gaze of the Stranger. Startled, you peer about the front yard for the first time since escaping the manor. The scene is...different. The front windows are not smashed as they were when you first approached. The trail of blood you had noticed on the porch has been wiped clean, and instead of the disturbingly warped music you had heard upon entering, the soothing tones of slow jazz drift out from the courtyard.",
       "steps": [
@@ -19322,6 +19426,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "“Excuse me, but it’s very late,” you hear a server say as he gently taps you on your shoulder. You realize that you are sitting on a couch in the manor’s living room, and that you have been asleep for some time. The party appears to be winding down. No music fills the halls, the food is all but gone, and only a few guests remain. “Perhaps you would like for me to get your coat?” the server asks with a trained smile. You wobble as you rise to your feet, leaning against the couch’s armrest. Your head pounds with a dizzying intensity, and your vision is spotted. You insist that you are fine, and begin walking toward the foyer.\nYou no longer see any of the guests you were searching for earlier, not even the hostess, Mrs. Dumaine. All traces of the madness and horror you’ve experienced are gone. Even the oddities you witnessed upon entering the manor have vanished—the signs of struggle, the broken windows, the blood trail on the porch... Every piece of evidence has been erased. But you still remember the night’s events, and in your memory you will find your answers.",
       "steps": [
@@ -19336,6 +19444,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolution 3",
       "text": "Several days later, you find yourself reminiscing about the party you attended at 1452 Atlantic Avenue. What a roaring good time you had! And yet, your memory is hazy. You can’t help but feel you are forgetting something important. Something about the play you’d watched earlier that night—The King in Yellow. That nagging sensation pursues you in every waking moment. Try as you might to recall the night’s events in full, there remains a gaping hole in your memory. As you strain to remember, your concern grows, almost to the point of obsession. Deciding that you absolutely must know what occurred that night, you head toward the manor of the Historical Society in Southside. Perhaps there you can learn more about <u>The King in Yellow</u> play...",
       "steps": [

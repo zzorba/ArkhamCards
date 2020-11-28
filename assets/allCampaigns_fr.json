@@ -6954,6 +6954,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Vous vous réveillez en sursaut, comme secoué par une force invisible. Vous devez avoir dormi un certain temps car il ne reste plus que quelques spectateurs dans la salle, et aucun acteur sur la scène. Les lumières sont tamisées et le rideau en lambeaux. Vous ne vous rappelez pas qu'il était dans cet état pendant le premier acte. Vous attendez un moment pour être sûr que cela ne fait pas partie du spectacle. Une odeur nauséabonde que vous ne parvenez pas à identifier commence à imprégner l'air. Combien de temps avez-vous dormi ? Secouant vos membres engourdis, vous vous dirigez vers l'un des spectateurs assis et lui demandez l'heure, mais il ne vous répond pas. Ce n'est qu'à ce moment-là que vous réalisez que vous êtes en train de parler à un cadavre."
     },
@@ -7230,6 +7234,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'a été atteinte\n(tous les investigateurs ont été vaincus)",
       "investigator_status": [
         "eliminated",
@@ -7246,6 +7254,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Fuyant le théâtre, vous foncez droit au commissariat du Quartier Est. Vous ouvrez la porte à la volée, sous le regard médusé des agents de police et des autres personnes présentes, et vous demandez à voir immédiatement le shérif Engle en insistant sur l'urgence de la situation. Le sergent de garde, indolemment penché sur une pile de dossiers, secoue la tête en vous faisant signe de vous taire et de vous asseoir. L'attente est insoutenable. Chaque seconde semble durer une éternité. Les aiguilles de l'horloge se traînent et vous commencez à pianoter nerveusement sur le bureau. Vous tapez du pied. Vous regardez sans cesse par-dessus votre épaule pour être sûr que le masque blême de l'Étranger n'est pas en train de vous épier par la fenêtre. Enfin, le sergent pose son crayon et se lève en vous appelant. « Très bien, expliquez-moi ce qui est si urgent ? » À peine êtes-vous parvenu à la moitié de votre récit de la soirée qu'il soupire et secoue la tête. « Écoutez, si c'est une sorte de blague, elle n'est pas drôle », dit-il. « Nous avons des agents qui ont patrouillé dans le centre-ville toute la soirée, alors ne me lancez pas de telles foutaises à la figure. » Vous insistez mais le sergent se lève, ouvre la porte et vous ordonne de partir. Il élève la voix. « Vous pensez qu'on n'est pas assez occupé ou quoi ? Fichez le camp ! » Il vous escorte vers la sortie tout en maugréant à propos des « gobe-mouches » dans votre dos.\nVous <b>savez</b> bien ce que vous avez vu ce soir. Frustré, vous retournez vers le théâtre Ward afin de trouver des preuves à présenter à la police. Vous êtes surpris de constater que la portée d'entrée du théâtre est verrouillée. Vous envisagez de la fracturer lorsque vous apercevez une note sur le mur, près de l'entrée. « Ne soyez pas rabat-joie ! Venez à la fête de la troupe du Roi en Jaune. 20h00 à la demeure de Constance Dumaine, 1452 Atlantic Avenue. Tenue correcte exigée. » Vous arrachez la note et l'emportez avec vous, espérant que cela vous mènera aux réponses que vous cherchez.",
       "steps": [
@@ -7260,6 +7272,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Vous envisagez d'aller trouver la police mais, compte-tenu des horreurs que vous avez vues au théâtre, il y a de bonnes chances qu'on vous prenne pour un fou. Une part de vous continue de se demander s'il ne s'agit pas d'une sorte de farce, mais c'est impossible – tout était trop réel, trop terrifiant. Vous vous demandez quoi faire à présent et vous finissez par rebrousser chemin, remontant précautionneusement le trajet de votre fuite jusqu'au théâtre. La lumière aveuglante des phares des voitures vous éblouit tandis qu'elles passent dans la rue, aspergeant le trottoir derrière vous d'eau de pluie souillée. Vous apercevez bientôt le théâtre Ward, ses lumières vives dominant les rues du centre-ville. Vous pensiez le trouver en ruine mais sa façade semble intacte, identique à ce qu'elle était avant que vous n'entriez pour assister à la représentation du Roi en Jaune, plus tôt dans la soirée. Vous marchez jusqu'aux baies vitrées du théâtre Ward et tentez de regarder à l'intérieur, mais il fait trop sombre pour y voir quoi que ce soit.\nÀ cet instant, un frisson vous parcourt la nuque et vous avez la désagréable impression d'être observé. Vous faites volte-face et apercevez une ombre qui s'enfuit dans une ruelle. Une nuée de cafards s'agite sur le trottoir et s'engouffre dans son sillage. Vos muscles se crispent et vous vous élancez à sa poursuite, tournant au coin de la rue. Une silhouette familière au masque blême se tient immobile et sereine sur le trottoir.\nSon regard inflexible est posé sur vous. «  Qui <b>êtes</b>-vous ? » L'Étranger ne vous répond pas. Au contraire, il fait demi-tour et s'engouffre dans une allée derrière le théâtre. Vous vous lancez à sa poursuite en quête de réponses mais, le temps que vous atteigniez l'allée, l'Étranger a disparu. Une petite note est épinglée au mur, à côté de l'entrée de service. « Ne soyez pas rabat-joie ! Venez à la fête de la troupe du Roi en Jaune. 20h00 à la demeure de Constance Dumaine, 1452 Atlantic Avenue. Tenue correcte exigée. » Vous arrachez la note, espérant qu'elle vous mènera aux réponses que vous cherchez.",
       "steps": [
@@ -8851,6 +8867,10 @@
   "steps": [
     {
       "id": "house_choice",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.intro",
+        "name": "Intro"
+      },
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -9141,16 +9161,28 @@
     },
     {
       "id": "reward_1",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_1",
+        "name": "Lunacy's Reward 1"
+      },
       "type": "story",
       "text": "Le changement dans l'air pique votre curiosité. Et si tout cela n'était qu'une construction de votre esprit ? Et si les horreurs qui ont suivi Le Roi en Jaune n'étaient que temporaires ? Les réponses à toutes vos questions doivent se trouver à l'intérieur. Vous ouvrez prudemment la porte du manoir une nouvelle fois. Un jazz rassurant et le bruit d'inoffensifs bavardages s'amplifient lorsque vous passez le seuil. L'odeur alléchante du porc rôti embaume l'air. Comme vous le soupçonniez, les traces de lutte et les étrangetés que vous aviez remarquées auparavant ont disparu sans explication. Puis, alors que vous tournez à l'angle du couloir menant à la salle à manger, vous découvrez l'Étranger en plein discussion avec un autre homme – grand, moustachu, vêtu d'un élégant costume noir et tenant une canne au pommeau argenté. L'Étranger se tourne vers vous, son regard perçant sonde votre esprit et votre tête se met à tourner, en proie à une douleur insoutenable. Avant de réaliser ce que vous faites, vous vous retrouvez en train de fuir cette demeure aussi vite que possible, désorienté par les brumes de la douleur. Vous filez jusqu'à votre véhicule sans reprendre votre soufle et détalez, vos mains tremblantes agrippées au volant."
     },
     {
       "id": "reward_2",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_2",
+        "name": "Lunacy's Reward 2"
+      },
       "type": "story",
       "text": "Vous ne pouvez pas compter sur vos sens. Tout n'est qu'artifice, c'est un piège pour vous faire revenir à l'intérieur. Vous n'y serez pas plus en sécurité maintenant qu'auparavant. Luttant contre votre peur, vous commencez à barricader la porte d'entrée du manoir en utilisant certains des lourds bancs de pierre qui bordent l'allée pavée du jardin de devant. Vous espérez que ce sera sufisant, mais vous n'avez pas l'intention de rester dans les parages pour le découvrir. Une fois la barrière de fortune terminée, vous retournez à votre véhicule avant de vous diriger vers le Quartier Sud, où vous espérez trouver des réponses à vos questions."
     },
     {
       "id": "reward_3",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_3",
+        "name": "Lunacy's Reward 3"
+      },
       "type": "story",
       "text": "Vous ne risquez pas de retourner dans cette maison de fous, mais vous ne pouvez pas non plus laisser ces monstruosités en liberté. Vous courez vers le garage resté ouvert en quête de quelques fournitures. Vous trouvez un vieux tuyau, un jerrican d'essence vide et quelques allumettes. Résolu, vous siphonnez l\u001eessence du réservoir de l'Oakland 6-54A de Mme Dumaine, puis vous la répandez sous le porche, dans le garage et le long des murs extérieurs de la demeure. Quelques allumettes sufisent à allumer l'incendie. Depuis le jardin de devant, vous observez un moment le manoir se faire consumer par les \u001cammes. Les sons du brasier qui crépite, du bois qui cède, et les cris des horreurs mourantes emplissent la rue. Satisfait, vous retournez à votre véhicule et foncez vers le Quartier Sud, plein d'une froide détermination."
     }
@@ -9169,6 +9201,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.prologue.prologue",
+        "name": "Prologue"
+      },
       "type": "story",
       "text": "Vous retournez le dépliant dans votre main, le feuilletant pour ce qui vous semble être la centième fois. « La Compagnie Miskatonic présente : Le Roi en Jaune », annonce le programme. « Une unique représentation au théâtre Ward d'Arkham. Un drame irrésistible en deux actes, avec une mise en scène signée Nigel Engram. » La troupe est petite et l'un des acteurs, crédité à la fin, est simplement appelé « L'Étranger ».\nVoir une pièce aussi prisée faire tout ce chemin depuis Paris jusqu'à Arkham est un événement en soi, même si ce n'est que pour un seul soir. Durant les semaines précédant la représentation, la pièce avait alimenté toutes les conversations en ville. Elle semblait sans prétention… et pourtant, vous avez l'impression que quelque chose de sinistre est à l'oeuvre. Tout commença avec la disparition de l'un des machinistes du théâtre – un gamin d'à peine dix-sept ans, qui manqua l'une des répétitions un soir et n'a plus reparu depuis. Il y eut ensuite, moins de deux semaines avant la représentation, ce musicien dont le cadavre fut retrouvé un pistolet dans la bouche. Mais le plus troublant, c'était ce déséquilibré que les flics avaient ramassé dans le square de l'Indépendance alors qu'il était en train de divaguer et de vociférer à propos du « retour du Roi. » Il fut transporté à l'asile d'Arkham et vous fûtes surpris de découvrir qu'il n'était pas le seul à avoir ce genre d'hallucinations.\nÀ la lumière de ces événements suspects, vos compagnons et vous avez décidé de creuser plus profondément. Bien que vous n'ayez pu établir aucun lien direct entre la pièce et ces événements étranges, plusieurs cas de suicides et de folie ont suivi son sillage, et vous êtes déterminé à découvrir pourquoi.\nLes lumières de l'auditorium s'éteignent et un projecteur éclaire la scène. Ce qui suit est très loin de ce à quoi vous vous attendiez. Lent et monotone, le premier acte du Roi en Jaune est d'un pénible ennui. Les décors et les personnages sont convaincants, mais l'histoire tortueuse et insensée n'est ni très amusante, ni très intéressante. Vous commencez à vous demander si les sombres événements qui entourent Le Roi en Jaune ne sont pas que des coïncidences, après tout. Peut-être n'était-ce que votre imagination ; comment un spectacle si trivial et innocent pourrait-il causer un tel chaos ? Vous êtes étonné de constater que le premier acte se termine sans révélation ni rebondissement. Les lumières se rallument pour l\u001eentracte et vous envisagez de quitter prématurément la pièce tout en réprimant un bâillement. Cependant, avant d'avoir pu vous décider, vous vous sentez sombrer… sombrer… dans un profond sommeil."
     },
@@ -9205,6 +9241,10 @@
     },
     {
       "id": "lola_prologue",
+      "narration": {
+        "id": "the_path_to_carcosa.prologue.lola_prologue",
+        "name": "Lola Prologue"
+      },
       "type": "story",
       "text": "L'acte 1 s'est déroulé sans le moindre incident, comme souvent lors des répétitions. Vous ne pouvez vous empêcher de remarquer l'air dubitatif d'une grande partie du public, et vous vous demandez comment les spectateurs vont réagir à la troublante seconde partie de la pièce. Le rôle de Cassilda est particulièrement ennuyeux pendant la première moitié de la pièce, bien que vous aimiez incarner son charme royal. Vous vous prenez à regretter l'absence de votre ancienne partenaire, Miriam Twain ; d'un seul coup, l'effroi et les regrets que vous aviez ressentis à Paris vous reviennent en mémoire. Avec un soupir, vous vous retirez dans un coin sombre des coulisses pour échapper au bruit des machinistes préparant la prochaine scène. Vous tentez de maîtriser vos émotions et de remplacer vos pensées par celles de Cassilda – ses espoirs, ses peurs, son destin.\nÀ cet instant, vous apercevez l'Étranger qui vous fixe de loin et vous vous mettez à trembler à sa seule vue. Même s'ils continuent de remplacer l'acteur qui joue son rôle avant chaque représentation (et, bien sûr, de nombreuses fois pendant les répétitions), vous savez que ce\u001be substitution de dernière minute est la plus épouvantable de toutes. Vous réalisez que vous ne connaissez même pas son nom, et un frisson vous traverse l'échine. Vous seriez-vous malencontreusement jetée dans la gueule du loup ? Vous êtes incapable de détourner les yeux – son regard est implacable. Tout devient noir."
     }
@@ -9229,6 +9269,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Si quelqu'un a les réponses aux questions qui bouillonnent dans votre esprit, c'est bien la troupe du Roi en Jaune. C'est avec cette idée en tête que vous revêtez vos plus beaux atours afin de vous rendre au 1452 Atlantic Avenue, où une femme nommée Constance Dumaine organise une fête pour célébrer l'unique représentation de la pièce à Arkham."
     },
@@ -9526,6 +9570,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "L'air frais de l'automne vous étreint quand vous quittez le manoir. Il ne fait aucun doute dans votre esprit que les acteurs et l'équipe technique du Roi en Jaune ont été frappés de folie. Peut-être que vous aussi. Vous sentez une part de ténèbres, une présence dans votre esprit qui vous procure une sensation similaire au regard de l'Étranger. Effrayé, vous levez les yeux vers la façade pour la première fois depuis que vous êtes sorti du manoir. Les lieux sont… différents. Les fenêtres de la façade ne sont plus brisées comme elles l'étaient lorsque vous êtes arrivé la première fois. La traînée de sang que vous aviez remarquée sous le porche semble avoir été totalement nettoyée et, à la place de la musique dissonante et corrompue que vous aviez entendue avant d'entrer, les tons apaisants d'un jazz langoureux s'échappent de la cour.",
       "steps": [
@@ -9537,6 +9585,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "« Excusez-moi, mais il est très tard », vous signale aimablement un serveur en vous posant une main sur l'épaule. Vous réalisez que vous êtes affalé dans un fauteuil de la salle de séjour du manoir et q que vous avez dormi pendant longtemps. La fête semble se terminer. Aucune musique ne résonne dans les couloirs, la nourriture a disparu et il ne reste que quelques invités. « Désirez-vous que je vous apporte votre manteau ? », demande le serveur avec un sourire de convenance. Vous chancelez en vous appuyant sur les accoudoirs du fauteuil pour vous redresser. Votre tête tourne de manière vertigineuse et votre vision est trouble. Vous assurez que vous allez parfaitement bien, et vous vous dirigez vers l'entrée.\nVous n'apercevez plus aucun des invités que vous cherchiez plus tôt, pas même l'hôtesse Mme Dumaine. Toute trace des folies et des horreurs que vous avez vécues a disparu. Même les bizarreries que vous aviez remarquées avant d'entrer dans le manoir ne sont plus là – les signes de lutte, les fenêtres brisées, la traînée de sang sous le porche… La moindre preuve a été effacée. Mais les événements de cette nuit restent gravés dans votre mémoire, et c'est là que vous trouverez des réponses.",
       "steps": [
@@ -9551,6 +9603,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Conclusion 3",
       "text": "Quelques jours plus tard, vous vous remémorez la fête à laquelle vous avez assisté au 1452 Atlantic Avenue. Vous ne vous étiez jamais autant amusé ! Et pourtant, vos souvenirs sont brumeux. Vous ne pouvez vous empêcher de penser que vous oubliez quelque chose d'important. Quelque chose à propos de cette pièce de théâtre que vous aviez vue plus tôt cette même soirée – Le Roi en Jaune. Cette sensation tenace vous taraude à chaque instant. Aussi ardemment que vous tentiez de vous rappeler l'intégralité des événements de la nuit, un gigantesque trou demeure dans votre mémoire. Plus vous essayez de vous souvenir, plus vos inquiétudes grandissent au point de devenir une obsession. Décidant que vous devez absolument savoir ce qui s'est passé cette nuit-là, vous vous dirigez vers le manoir de la Société des Historiens, dans le Quartier Sud. Peut-être que vous pourrez y en apprendre davantage sur la pièce <u>Le Roi en Jaune</u>…",
       "steps": [
@@ -16609,6 +16665,10 @@
   "steps": [
     {
       "id": "house_choice",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.intro",
+        "name": "Intro"
+      },
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -16899,16 +16959,28 @@
     },
     {
       "id": "reward_1",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_1",
+        "name": "Lunacy's Reward 1"
+      },
       "type": "story",
       "text": "Le changement dans l'air pique votre curiosité. Et si tout cela n'était qu'une construction de votre esprit ? Et si les horreurs qui ont suivi Le Roi en Jaune n'étaient que temporaires ? Les réponses à toutes vos questions doivent se trouver à l'intérieur. Vous ouvrez prudemment la porte du manoir une nouvelle fois. Un jazz rassurant et le bruit d'inoffensifs bavardages s'amplifient lorsque vous passez le seuil. L'odeur alléchante du porc rôti embaume l'air. Comme vous le soupçonniez, les traces de lutte et les étrangetés que vous aviez remarquées auparavant ont disparu sans explication. Puis, alors que vous tournez à l'angle du couloir menant à la salle à manger, vous découvrez l'Étranger en plein discussion avec un autre homme – grand, moustachu, vêtu d'un élégant costume noir et tenant une canne au pommeau argenté. L'Étranger se tourne vers vous, son regard perçant sonde votre esprit et votre tête se met à tourner, en proie à une douleur insoutenable. Avant de réaliser ce que vous faites, vous vous retrouvez en train de fuir cette demeure aussi vite que possible, désorienté par les brumes de la douleur. Vous filez jusqu'à votre véhicule sans reprendre votre soufle et détalez, vos mains tremblantes agrippées au volant."
     },
     {
       "id": "reward_2",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_2",
+        "name": "Lunacy's Reward 2"
+      },
       "type": "story",
       "text": "Vous ne pouvez pas compter sur vos sens. Tout n'est qu'artifice, c'est un piège pour vous faire revenir à l'intérieur. Vous n'y serez pas plus en sécurité maintenant qu'auparavant. Luttant contre votre peur, vous commencez à barricader la porte d'entrée du manoir en utilisant certains des lourds bancs de pierre qui bordent l'allée pavée du jardin de devant. Vous espérez que ce sera sufisant, mais vous n'avez pas l'intention de rester dans les parages pour le découvrir. Une fois la barrière de fortune terminée, vous retournez à votre véhicule avant de vous diriger vers le Quartier Sud, où vous espérez trouver des réponses à vos questions."
     },
     {
       "id": "reward_3",
+      "narration": {
+        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_3",
+        "name": "Lunacy's Reward 3"
+      },
       "type": "story",
       "text": "Vous ne risquez pas de retourner dans cette maison de fous, mais vous ne pouvez pas non plus laisser ces monstruosités en liberté. Vous courez vers le garage resté ouvert en quête de quelques fournitures. Vous trouvez un vieux tuyau, un jerrican d'essence vide et quelques allumettes. Résolu, vous siphonnez l\\u001eessence du réservoir de l'Oakland 6-54A de Mme Dumaine, puis vous la répandez sous le porche, dans le garage et le long des murs extérieurs de la demeure. Quelques allumettes sufisent à allumer l'incendie. Depuis le jardin de devant, vous observez un moment le manoir se faire consumer par les \\u001cammes. Les sons du brasier qui crépite, du bois qui cède, et les cris des horreurs mourantes emplissent la rue. Satisfait, vous retournez à votre véhicule et foncez vers le Quartier Sud, plein d'une froide détermination."
     }
@@ -16927,6 +16999,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.prologue.prologue",
+        "name": "Prologue"
+      },
       "type": "story",
       "text": "Vous retournez le dépliant dans votre main, le feuilletant pour ce qui vous semble être la centième fois. « La Compagnie Miskatonic présente : Le Roi en Jaune », annonce le programme. « Une unique représentation au théâtre Ward d'Arkham. Un drame irrésistible en deux actes, avec une mise en scène signée Nigel Engram. » La troupe est petite et l'un des acteurs, crédité à la fin, est simplement appelé « L'Étranger ».\nVoir une pièce aussi prisée faire tout ce chemin depuis Paris jusqu'à Arkham est un événement en soi, même si ce n'est que pour un seul soir. Durant les semaines précédant la représentation, la pièce avait alimenté toutes les conversations en ville. Elle semblait sans prétention… et pourtant, vous avez l'impression que quelque chose de sinistre est à l'oeuvre. Tout commença avec la disparition de l'un des machinistes du théâtre – un gamin d'à peine dix-sept ans, qui manqua l'une des répétitions un soir et n'a plus reparu depuis. Il y eut ensuite, moins de deux semaines avant la représentation, ce musicien dont le cadavre fut retrouvé un pistolet dans la bouche. Mais le plus troublant, c'était ce déséquilibré que les flics avaient ramassé dans le square de l'Indépendance alors qu'il était en train de divaguer et de vociférer à propos du « retour du Roi. » Il fut transporté à l'asile d'Arkham et vous fûtes surpris de découvrir qu'il n'était pas le seul à avoir ce genre d'hallucinations.\nÀ la lumière de ces événements suspects, vos compagnons et vous avez décidé de creuser plus profondément. Bien que vous n'ayez pu établir aucun lien direct entre la pièce et ces événements étranges, plusieurs cas de suicides et de folie ont suivi son sillage, et vous êtes déterminé à découvrir pourquoi.\nLes lumières de l'auditorium s'éteignent et un projecteur éclaire la scène. Ce qui suit est très loin de ce à quoi vous vous attendiez. Lent et monotone, le premier acte du Roi en Jaune est d'un pénible ennui. Les décors et les personnages sont convaincants, mais l'histoire tortueuse et insensée n'est ni très amusante, ni très intéressante. Vous commencez à vous demander si les sombres événements qui entourent Le Roi en Jaune ne sont pas que des coïncidences, après tout. Peut-être n'était-ce que votre imagination ; comment un spectacle si trivial et innocent pourrait-il causer un tel chaos ? Vous êtes étonné de constater que le premier acte se termine sans révélation ni rebondissement. Les lumières se rallument pour l\\u001eentracte et vous envisagez de quitter prématurément la pièce tout en réprimant un bâillement. Cependant, avant d'avoir pu vous décider, vous vous sentez sombrer… sombrer… dans un profond sommeil."
     },
@@ -16963,6 +17039,10 @@
     },
     {
       "id": "lola_prologue",
+      "narration": {
+        "id": "the_path_to_carcosa.prologue.lola_prologue",
+        "name": "Lola Prologue"
+      },
       "type": "story",
       "text": "L'acte 1 s'est déroulé sans le moindre incident, comme souvent lors des répétitions. Vous ne pouvez vous empêcher de remarquer l'air dubitatif d'une grande partie du public, et vous vous demandez comment les spectateurs vont réagir à la troublante seconde partie de la pièce. Le rôle de Cassilda est particulièrement ennuyeux pendant la première moitié de la pièce, bien que vous aimiez incarner son charme royal. Vous vous prenez à regretter l'absence de votre ancienne partenaire, Miriam Twain ; d'un seul coup, l'effroi et les regrets que vous aviez ressentis à Paris vous reviennent en mémoire. Avec un soupir, vous vous retirez dans un coin sombre des coulisses pour échapper au bruit des machinistes préparant la prochaine scène. Vous tentez de maîtriser vos émotions et de remplacer vos pensées par celles de Cassilda – ses espoirs, ses peurs, son destin.\nÀ cet instant, vous apercevez l'Étranger qui vous fixe de loin et vous vous mettez à trembler à sa seule vue. Même s'ils continuent de remplacer l'acteur qui joue son rôle avant chaque représentation (et, bien sûr, de nombreuses fois pendant les répétitions), vous savez que ce\\u001be substitution de dernière minute est la plus épouvantable de toutes. Vous réalisez que vous ne connaissez même pas son nom, et un frisson vous traverse l'échine. Vous seriez-vous malencontreusement jetée dans la gueule du loup ? Vous êtes incapable de détourner les yeux – son regard est implacable. Tout devient noir."
     }
@@ -18607,6 +18687,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Vous vous réveillez en sursaut, comme secoué par une force invisible. Vous devez avoir dormi un certain temps car il ne reste plus que quelques spectateurs dans la salle, et aucun acteur sur la scène. Les lumières sont tamisées et le rideau en lambeaux. Vous ne vous rappelez pas qu'il était dans cet état pendant le premier acte. Vous attendez un moment pour être sûr que cela ne fait pas partie du spectacle. Une odeur nauséabonde que vous ne parvenez pas à identifier commence à imprégner l'air. Combien de temps avez-vous dormi ? Secouant vos membres engourdis, vous vous dirigez vers l'un des spectateurs assis et lui demandez l'heure, mais il ne vous répond pas. Ce n'est qu'à ce moment-là que vous réalisez que vous êtes en train de parler à un cadavre."
     },
@@ -18934,6 +19018,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'a été atteinte\n(tous les investigateurs ont été vaincus)",
       "investigator_status": [
         "eliminated",
@@ -18950,6 +19038,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Fuyant le théâtre, vous foncez droit au commissariat du Quartier Est. Vous ouvrez la porte à la volée, sous le regard médusé des agents de police et des autres personnes présentes, et vous demandez à voir immédiatement le shérif Engle en insistant sur l'urgence de la situation. Le sergent de garde, indolemment penché sur une pile de dossiers, secoue la tête en vous faisant signe de vous taire et de vous asseoir. L'attente est insoutenable. Chaque seconde semble durer une éternité. Les aiguilles de l'horloge se traînent et vous commencez à pianoter nerveusement sur le bureau. Vous tapez du pied. Vous regardez sans cesse par-dessus votre épaule pour être sûr que le masque blême de l'Étranger n'est pas en train de vous épier par la fenêtre. Enfin, le sergent pose son crayon et se lève en vous appelant. « Très bien, expliquez-moi ce qui est si urgent ? » À peine êtes-vous parvenu à la moitié de votre récit de la soirée qu'il soupire et secoue la tête. « Écoutez, si c'est une sorte de blague, elle n'est pas drôle », dit-il. « Nous avons des agents qui ont patrouillé dans le centre-ville toute la soirée, alors ne me lancez pas de telles foutaises à la figure. » Vous insistez mais le sergent se lève, ouvre la porte et vous ordonne de partir. Il élève la voix. « Vous pensez qu'on n'est pas assez occupé ou quoi ? Fichez le camp ! » Il vous escorte vers la sortie tout en maugréant à propos des « gobe-mouches » dans votre dos.\nVous <b>savez</b> bien ce que vous avez vu ce soir. Frustré, vous retournez vers le théâtre Ward afin de trouver des preuves à présenter à la police. Vous êtes surpris de constater que la portée d'entrée du théâtre est verrouillée. Vous envisagez de la fracturer lorsque vous apercevez une note sur le mur, près de l'entrée. « Ne soyez pas rabat-joie ! Venez à la fête de la troupe du Roi en Jaune. 20h00 à la demeure de Constance Dumaine, 1452 Atlantic Avenue. Tenue correcte exigée. » Vous arrachez la note et l'emportez avec vous, espérant que cela vous mènera aux réponses que vous cherchez.",
       "steps": [
@@ -18964,6 +19056,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.curtain_call.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Vous envisagez d'aller trouver la police mais, compte-tenu des horreurs que vous avez vues au théâtre, il y a de bonnes chances qu'on vous prenne pour un fou. Une part de vous continue de se demander s'il ne s'agit pas d'une sorte de farce, mais c'est impossible – tout était trop réel, trop terrifiant. Vous vous demandez quoi faire à présent et vous finissez par rebrousser chemin, remontant précautionneusement le trajet de votre fuite jusqu'au théâtre. La lumière aveuglante des phares des voitures vous éblouit tandis qu'elles passent dans la rue, aspergeant le trottoir derrière vous d'eau de pluie souillée. Vous apercevez bientôt le théâtre Ward, ses lumières vives dominant les rues du centre-ville. Vous pensiez le trouver en ruine mais sa façade semble intacte, identique à ce qu'elle était avant que vous n'entriez pour assister à la représentation du Roi en Jaune, plus tôt dans la soirée. Vous marchez jusqu'aux baies vitrées du théâtre Ward et tentez de regarder à l'intérieur, mais il fait trop sombre pour y voir quoi que ce soit.\nÀ cet instant, un frisson vous parcourt la nuque et vous avez la désagréable impression d'être observé. Vous faites volte-face et apercevez une ombre qui s'enfuit dans une ruelle. Une nuée de cafards s'agite sur le trottoir et s'engouffre dans son sillage. Vos muscles se crispent et vous vous élancez à sa poursuite, tournant au coin de la rue. Une silhouette familière au masque blême se tient immobile et sereine sur le trottoir.\nSon regard inflexible est posé sur vous. «  Qui <b>êtes</b>-vous ? » L'Étranger ne vous répond pas. Au contraire, il fait demi-tour et s'engouffre dans une allée derrière le théâtre. Vous vous lancez à sa poursuite en quête de réponses mais, le temps que vous atteigniez l'allée, l'Étranger a disparu. Une petite note est épinglée au mur, à côté de l'entrée de service. « Ne soyez pas rabat-joie ! Venez à la fête de la troupe du Roi en Jaune. 20h00 à la demeure de Constance Dumaine, 1452 Atlantic Avenue. Tenue correcte exigée. » Vous arrachez la note, espérant qu'elle vous mènera aux réponses que vous cherchez.",
       "steps": [
@@ -20381,6 +20477,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Si quelqu'un a les réponses aux questions qui bouillonnent dans votre esprit, c'est bien la troupe du Roi en Jaune. C'est avec cette idée en tête que vous revêtez vos plus beaux atours afin de vous rendre au 1452 Atlantic Avenue, où une femme nommée Constance Dumaine organise une fête pour célébrer l'unique représentation de la pièce à Arkham."
     },
@@ -20683,6 +20783,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "L'air frais de l'automne vous étreint quand vous quittez le manoir. Il ne fait aucun doute dans votre esprit que les acteurs et l'équipe technique du Roi en Jaune ont été frappés de folie. Peut-être que vous aussi. Vous sentez une part de ténèbres, une présence dans votre esprit qui vous procure une sensation similaire au regard de l'Étranger. Effrayé, vous levez les yeux vers la façade pour la première fois depuis que vous êtes sorti du manoir. Les lieux sont… différents. Les fenêtres de la façade ne sont plus brisées comme elles l'étaient lorsque vous êtes arrivé la première fois. La traînée de sang que vous aviez remarquée sous le porche semble avoir été totalement nettoyée et, à la place de la musique dissonante et corrompue que vous aviez entendue avant d'entrer, les tons apaisants d'un jazz langoureux s'échappent de la cour.",
       "steps": [
@@ -20694,6 +20798,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "« Excusez-moi, mais il est très tard », vous signale aimablement un serveur en vous posant une main sur l'épaule. Vous réalisez que vous êtes affalé dans un fauteuil de la salle de séjour du manoir et q que vous avez dormi pendant longtemps. La fête semble se terminer. Aucune musique ne résonne dans les couloirs, la nourriture a disparu et il ne reste que quelques invités. « Désirez-vous que je vous apporte votre manteau ? », demande le serveur avec un sourire de convenance. Vous chancelez en vous appuyant sur les accoudoirs du fauteuil pour vous redresser. Votre tête tourne de manière vertigineuse et votre vision est trouble. Vous assurez que vous allez parfaitement bien, et vous vous dirigez vers l'entrée.\nVous n'apercevez plus aucun des invités que vous cherchiez plus tôt, pas même l'hôtesse Mme Dumaine. Toute trace des folies et des horreurs que vous avez vécues a disparu. Même les bizarreries que vous aviez remarquées avant d'entrer dans le manoir ne sont plus là – les signes de lutte, les fenêtres brisées, la traînée de sang sous le porche… La moindre preuve a été effacée. Mais les événements de cette nuit restent gravés dans votre mémoire, et c'est là que vous trouverez des réponses.",
       "steps": [
@@ -20708,6 +20816,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.the_last_king.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Conclusion 3",
       "text": "Quelques jours plus tard, vous vous remémorez la fête à laquelle vous avez assisté au 1452 Atlantic Avenue. Vous ne vous étiez jamais autant amusé ! Et pourtant, vos souvenirs sont brumeux. Vous ne pouvez vous empêcher de penser que vous oubliez quelque chose d'important. Quelque chose à propos de cette pièce de théâtre que vous aviez vue plus tôt cette même soirée – Le Roi en Jaune. Cette sensation tenace vous taraude à chaque instant. Aussi ardemment que vous tentiez de vous rappeler l'intégralité des événements de la nuit, un gigantesque trou demeure dans votre mémoire. Plus vous essayez de vous souvenir, plus vos inquiétudes grandissent au point de devenir une obsession. Décidant que vous devez absolument savoir ce qui s'est passé cette nuit-là, vous vous dirigez vers le manoir de la Société des Historiens, dans le Quartier Sud. Peut-être que vous pourrez y en apprendre davantage sur la pièce <u>Le Roi en Jaune</u>…",
       "steps": [
@@ -22423,8 +22535,8 @@
 },
 {
   "id": "tfa_interlude2",
-  "scenario_name": "Expedition's End",
-  "full_name": "Interlude II: Expedition's End",
+  "scenario_name": "La Fin de l’Expédition",
+  "full_name": "Interlude II : La Fin de l’Expédition",
   "type": "interlude",
   "setup": [
     "check_investigators_recovered_relic",
@@ -22479,7 +22591,7 @@
         "name": "Expedition's End 1"
       },
       "type": "story",
-      "text": "<right><fancy>Friday, July 17th, 1925</fancy></right>\nWe have finally made it back to Arkham, our expedition a “success.” Alejandro is excited to report his findings to the university. How he maintains his starry-eyed idealism after the hell we went through in the jungle is beyond me. His attention is fixated on the strange relic that we discovered in the ruins. I wish we knew a little more about the artifact’s origins. It unsettles me greatly. It hums at all times and pulses with an otherworldly energy I can scarcely describe. As we traveled home with the artifact in tow, our nights were plagued by bizarre nightmares: dreams of other worlds and civilizations.\nAlejandro wants to bring the relic to the Miskatonic Museum, to put on display along with the other Eztli artifacts we discovered. My feelings are mixed. At the museum, it will receive proper care, and historians will be able to study it and perhaps even discern its purpose. However, I fear that the relic may be too dangerous for the public. After all, we still have no idea what the damned thing even is. Alejandro would hate it, but perhaps it would be better to keep the relic somewhere safe, where Harlan and I can study it in private. I’ll have to decide tonight; after tomorrow, there won’t be time to change my mind..."
+      "text": "<right><fancy>Vendredi 17 juillet 1925</fancy></right>\nNous sommes finalement rentrés à Arkham, notre expédition ayant été un «csuccès ».\n Alejandro est pressé de rapporter ses découvertes à l'université. Je ne comprends pas comment il parvient à rester aussi optimiste et positif après l'enfer que nous avons traversé dans cette jungle. Toute son attention est focalisée sur cette étrange relique que nous avons découverte dans les ruines. J'aurais aimé en savoir plus sur les origines de cet artefact. Cela me trouble beaucoup. Il bourdonne toujours et pulse d'une énergie surnaturelle que je peux à peine décrire. Tandis que nous voyagions avec l'artefact, nos nuits étaient emplies de cauchemars étranges : des rêves d'autres mondes et d'autres civilisations.Alejandro veut apporter la relique au Musée Miskatonic, pour l'exposer avec les autres artefacts eztli que nous avons découverts. Je suis plutôt mitigé. Au musée, elle pourra bénéficier d'une attention particulière et des historiens pourront l'étudier, pour peut-être découvrir à quoi elle sert. Cependant, je crains que cette relique ne soit trop dangereuse pour le public. Après tout, nous n'avons toujours aucune idée de ce qu'est cette chose. Alejandro va détester cette idée, mais peutêtre serait-il plus sage de la garder en sécurité quelque part où Harlan et moi pourrions l'étudier en privé. Il faut que je me décide cette nuit. Après-demain, il sera trop tard pour changer d'avis…"
     },
     {
       "id": "choose_where_relic_goes",
@@ -22490,7 +22602,7 @@
         "choices": [
           {
             "id": "museum",
-            "text": "<i>It belongs in a museum. Alejandro and the museum staff will be able to study it and learn more about its purpose.</i>",
+            "text": "<i>Sa place est dans un musée. Alejandro et l'équipe du musée pourront l'étudier et en apprendre plus à son propos.</i>",
             "steps": [
               "ee_2",
               "gave_relic_to_alejandro",
@@ -22502,7 +22614,7 @@
           },
           {
             "id": "hide",
-            "text": "<i>It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.</i>",
+            "text": "<i>L'artefact est trop dangereux pour être exposé. Nous devrions le garder en sécurité jusqu'à ce que nous en sachions plus à son sujet.</i>",
             "steps": [
               "ee_3",
               "gave_relic_to_harlan",
@@ -22520,7 +22632,7 @@
         "name": "Expedition's End 2"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to give custody of the relic to Alejandro. This entire expedition was based on his research, after all—he should be the one to study it. If anyone can discover the relic’s secrets, it’s him.\nThe relic is to be the centerpiece of a new exhibit at the museum. Alejandro has already written extensively about our discoveries, but his work has only just begun. Many mysteries about our expedition remain. How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored? I have no doubt Alejandro will uncover the answers to these questions, given enough time.\nAs for me, my role in this endeavor has ended. However, I have yet to relax. My thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. When I walk through the streets, I find myself drawn toward the museum without realizing it, as though possessed to see the relic once again. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right><fancy>Dimanche 19 juillet 1925</fancy></right>\nJ'ai décidé de confier la relique à Alejandro. Après tout, l'expédition entière était basée sur ses recherches – ce devrait être à lui de l'étudier. Si quelqu'un peut en découvrir les secrets, c'est bien lui.\nLa relique sera la pièce maîtresse d'une nouvelle exposition au musée. Alejandro a déjà beaucoup écrit à propos de nos découvertes, mais son travail ne fait que commencer. De nombreux mystères relatifs à notre expédition demeurent. Comment les Eztli ont-ils pu rester cachés aussi longtemps ? Pourquoi semblaient-ils garder la jungle, et de quoi ? Qui a réellement bâti le temple en ruine que nous avons exploré ? Je n'ai aucun doute sur le fait qu'Alejandro élucidera ces questions si on lui en laisse le temps.\nQuant à moi, mon rôle dans cette affaire est terminé. Cependant, je ne parviens pas trouver le repos. Mes pensées me ramènent constamment vers cette jungle – ces formes ophidiennes dans les ombres, ces flèches d'obsidienne enchâssées dans des corps squelettiques, ces voix déformées hurlant dans les profondeurs caverneuses. Quand je marche dans la rue, je me surprends à me diriger vers le musée sans m'en rendre compte, comme si je brûlais de voir à nouveau cette relique. Une sensation tenace sourd au fond de mon esprit, comme si j'avais oublié quelque chose d'important. Que dois-je faire pour me débarrasser de –\n(Le journal se termine ici, brutalement.)"
     },
     {
       "id": "gave_relic_to_alejandro",
@@ -22529,7 +22641,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gave_relic_to_alejandro",
-          "text": "the investigators gave custody of the relic to Alejandro."
+          "text": "les investigateurs ont conifé la relique à Alejandro."
         }
       ]
     },
@@ -22540,7 +22652,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "earned_alejandros_trust",
-          "text": "the investigators have earned Alejandro’s trust."
+          "text": "les investigateurs ont gagné la confiance d'Alejandro."
         }
       ]
     },
@@ -22563,7 +22675,7 @@
     },
     {
       "id": "earn_alejandro",
-      "text": "Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter Alejandro Vela à son deck. Cette carte ne compte pas dans le Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -22590,7 +22702,7 @@
         "name": "Expedition's End 3"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to keep the relic hidden for now. Alejandro is not happy with my decision, but until we know what the orb is capable of, it’s important that it stay somewhere safe, where it won’t endanger others. Harlan agrees with me, and has offered to take custody of the relic and keep it in his private office. There, we can study the artifact in secret.\nAlejandro is staying in Arkham for the time being, recording his notes about the expedition and helping the museum put together an exhibit displaying our other, less dangerous discoveries. As for me, I hope to find answers to other mysteries: How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored?\nMy thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. Each time I leave Harlan’s office, I find myself longing to head back and gaze upon the relic once more. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right><fancy>Dimanche 19 juillet 1925</fancy></right>\nJ'ai décidé de garder la relique cachée pour l'instant. Alejandro n'est pas content de ma décision mais, jusqu'à ce qu'on sache de quoi cet orbe est capable, il est important de le conserver dans un lieu sûr où il ne mettra personne en danger. Harlan est d'accord avec moi et il a accepté de conserver la relique dans son bureau privé. Là, nous pourrons l'étudier en secret.\nAlejandro a décidé de rester à Arkham pour le moment, afin de compiler ses notes sur l'expédition et d'aider le musée à monter une exposition présentant les autres découvertes, moins dangereuses. Quant à moi, j'espère trouver des réponses à d'autres mystères : comment les Eztli ont-ils pu rester cachés aussi longtemps ? Pourquoi semblaient-ils garder la jungle, et de quoi ? Qui a réellement bâti le temple en ruine que nous avons exploré ?\nMes pensées me ramènent constamment vers cette jungle – ces formes ophidiennes dans les ombres, ces flèches d'obsidienne enchâssées dans des corps squelettiques, ces voix déformées hurlant dans les profondeurs caverneuses. Chaque fois que je quitte le bureau d'Harlan, je me surprends à faire demi-tour pour aller contempler à nouveau la relique. Une sensation tenace sourd au fond de mon esprit, comme si j'avais oublié quelque chose d'important. Que dois-je faire pour me débarrasser de –\n(Le journal se termine ici, brutalement.)"
     },
     {
       "id": "gave_relic_to_harlan",
@@ -22599,19 +22711,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gave_relic_to_harlan",
-          "text": "the investigators gave custody of the relic to Harlan Earnstone."
+          "text": "les investigateurs ont confié la relique à Harlan Earnstone."
         }
       ]
     },
     {
       "id": "alejandro_on_his_own",
-      "text": "In your Campaign Log, record that <i>Alejandro is continuing his research on his own</i>. If Alejandro Vela is currently in an investigator’s deck, remove him from that investigator’s deck.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>Alejandro poursuit ses recherches de son côté</i>. Si Alejandro Vela est actuellement dans le deck d'un investigateur, retirez-le de ce deck.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_on_his_own",
-          "text": "Alejandro is continuing his research on his own."
+          "text": "Alejandro poursuit ses recherches de son côté"
         },
         {
           "type": "remove_card",
@@ -22626,7 +22738,7 @@
         "name": "Expedition's End 4"
       },
       "type": "story",
-      "text": "You drop your pen as a loud knocking at the door startles you, and you jump to your feet. It is almost 2:30 in the morning. Who could possibly be at your door at this hour? Your thoughts wander again to the jungle, and you are faced with a vision of serpent-creatures attacking you in your own home. Shuddering, you find a weapon and approach the front door carefully, ready to strike if need be. You take a long breath and open the door.\nOn the other side is a familiar woman with brown skin, long brown hair, and piercing yellow eyes set in a hard glare. Though her attire has changed, you recognize her instantly as Ichtaca, the Eztli warrior you encountered in the rainforest. Wearing a long coat and a Bollman hat, she is visibly uncomfortable in her shoes. Her jaw is set in anger. You are about to raise your weapon in defense when she lets out a heavy sigh and walks slowly over the threshold of your home, shutting your front door behind her. “Whatever you did, you have to reverse it,” she intones darkly. “Or we will all cease to exist.”"
+      "text": "Un coup sec sur la porte vous fait sursauter. Vous lâchez votre stylo et vous vous levez précipitamment. Il est presque 2:30 du matin. Qui peut bien frapper à votre porte à cette heure ? Vos pensées vagabondent à nouveau vers la jungle et vous imaginez un instant les créatures serpentines vous attaquant dans votre propre demeure. Réprouvant un frisson, vous prenez une arme et vous vous approchez doucement de la porte, prêt à frapper si nécessaire. Vous prenez une longue inspiration et ouvrez le battant.\nDe l'autre côté se tient la silhouette familière d'une femme à la peau sombre, aux longs cheveux bruns et aux yeux jaunes perçants, qui vous lance un regard dur. Bien qu'elle ait changé d'accoutrement, vous reconnaissez Ichtaca, la guerrière eztli que vous avez rencontrée dans la forêt vierge. Vêtue d'un long manteau et d'un chapeau Bollman, elle ne semble pas très à l'aise. Son visage est crispé de colère. Vous vous apprêtez à lever votre arme pour vous défendre quand elle laisse échapper un profond soupir et entre lentement chez vous, fermant la porte d'entrée derrière elle. « Quoi que vous ayez fait, vous devez le défaire », commence-t-elle d'une voix sombre. « Sans quoi nous cesserons tous d'exister. »"
     },
     {
       "id": "ee_5",
@@ -22635,7 +22747,7 @@
         "name": "Expedition's End 5"
       },
       "type": "story",
-      "text": "Harlan Earnstone paces across your living room, dabbing his wrinkled forehead with his handkerchief. “It’s my fault. I should never have encouraged them to go on that dreadful expedition.” Though your paths have only crossed a few times before, Mr. Earnstone has become a valuable contact of yours within Miskatonic University. When the University’s latest expedition returned with only a few survivors and a handful of strange, archaic artifacts, he came to you for advice.\n“I know, I know. I should at least take solace in the fact that the expedition was successful, despite its heavy losses. Alejandro was right all along. The Eztli people are real. And yet...I am concerned about some of these findings.” Harlan pulls a small leather-bound journal from his suitcase and hands it to you. “Before the expedition leader’s tragic death, the leader recorded many of the group’s discoveries in this journal. One of the surviving members of the expedition managed to grab it from the camp before fleeing the jungle. I think if you read these entries, you’ll understand what I mean. The things they experienced, the creatures they encountered...” Harlan shudders and adjusts his glasses with too-shaky hands. “I am concerned not only for Alejandro, but for all of us. Read this journal, and if you can, please keep an eye on my colleague.” You agree to help, but his worry does not fade. “I only hope that I am not damning you to a similar fate by asking for your aid.”\nYou spend the remainder of that night studying the expedition journal, your mind swimming with thoughts of strange serpent-creatures and Aztec warriors. Long after Harlan has left, a loud knocking at the door startles you, and you jump to your feet. It is almost 2:30 in the morning. Who could possibly be at your door at this hour? You open the front door warily. On the other side is a woman with brown skin, long brown hair, and piercing yellow eyes set in a hard glare. She wears a long coat and a Bollman-style hat, visibly uncomfortable in her shoes. Her jaw is set in anger. A sudden flash of insight crosses your mind, and you realize at once who she must be. After all, you’ve read and re-read the journal’s description of Ichtaca, the Eztli warrior. She lets out a heavy sigh and walks slowly over the threshold of your home, shutting your front door behind her. “Whatever they did, you have to reverse it,” she intones darkly. “Or we will all cease to exist.”"
+      "text": "Harlan Earnstone fait les cent pas dans votre salon, épongeant son front soucieux avec son mouchoir. « Tout est ma faute. Jamais je n'aurais dû les inciter à entreprendre cette horrible expédition. » Bien que vos chemins ne se soient croisés que quelques fois auparavant, M. Earnstone est devenu un contact précieux au sein de l'Université Miskatonic. Quand la dernière expédition de l'Université est revenue avec seulement quelques survivants et une poignée d'étranges artefacts archaïques, Harlan est venu vous voir à la recherche de conseils.\n« Je sais, je sais. Je devrais trouver du réconfort dans le fait que l'expédition a été un succès malgré ses lourdes pertes. Alejandro avait raison depuis le début. Le peuple Eztli existe réellement. Et pourtant… je suis inquiet à propos de certaines de ces trouvailles. » Harlan vous tend un petit journal de cuir. « Avant sa mort tragique, le chef de l'expédition a relaté la majorité des découvertes du groupe dans ce journal. L'un des membres survivants a réussi à emporter le journal avec lui avant de fuir la jungle. Je pense que si vous lisez ces mots, vous comprendrez ce que je veux dire. Les événements qu'ils ont vécus, les créatures qu'ils ont rencontrées… » Harlan frissonne et ajuste ses lunettes de ses mains tremblantes. « Mes inquiétudes ne concernent pas qu'Alejandro, mais tout le monde. Lisez ce journal et, si possible, gardez un oeil sur mon collègue. » Vous acceptez de l'aider, mais il reste soucieux. « J'espère seulement que je ne vous entraîne pas vers un sort tout aussi funeste en requérant votre aide. »\nVous passez le reste de la nuit à étudier le journal de l'expédition, l'esprit rempli de guerriers aztèques et d'étranges créatures serpentines. Longtemps après le départ d'Harlan, un coup sec sur la porte vous fait sursauter et vous vous levez précipitamment. Il est presque 2:30 du matin. Qui peut bien frapper à votre porte à cette heure ? Vous ouvrez prudemment la porte. De l'autre côté se tient une femme à la peau sombre, aux longs cheveux bruns et aux yeux jaunes perçants, qui vous lance un regard dur. Vêtue d'un long manteau et d'un chapeau Bollman, elle ne semble pas très à l'aise. Son visage est crispé de colère. Un éclair de compréhension traverse votre esprit et vous réalisez d'un coup qui elle est. Après tout, vous venez de lire et relire sa description dans le journal. Ichtaca, la guerrière eztli, laisse échapper un profond soupir et entre lentement chez vous, fermant la porte d'entrée derrière elle. « Quoi qu ls aient fait, vous devez le défaire », commence-t-elle d'une voix sombre. « Sans quoi nous cesserons-tous d'exister. »"
     }
   ]
 },
@@ -57841,8 +57953,8 @@
 },
 {
   "id": "tfa_interlude2",
-  "scenario_name": "Expedition's End",
-  "full_name": "Interlude II: Expedition's End",
+  "scenario_name": "La Fin de l’Expédition",
+  "full_name": "Interlude II : La Fin de l’Expédition",
   "type": "interlude",
   "setup": [
     "check_investigators_recovered_relic",
@@ -57897,7 +58009,7 @@
         "name": "Expedition's End 1"
       },
       "type": "story",
-      "text": "<right><fancy>Friday, July 17th, 1925</fancy></right>\nWe have finally made it back to Arkham, our expedition a “success.” Alejandro is excited to report his findings to the university. How he maintains his starry-eyed idealism after the hell we went through in the jungle is beyond me. His attention is fixated on the strange relic that we discovered in the ruins. I wish we knew a little more about the artifact’s origins. It unsettles me greatly. It hums at all times and pulses with an otherworldly energy I can scarcely describe. As we traveled home with the artifact in tow, our nights were plagued by bizarre nightmares: dreams of other worlds and civilizations.\nAlejandro wants to bring the relic to the Miskatonic Museum, to put on display along with the other Eztli artifacts we discovered. My feelings are mixed. At the museum, it will receive proper care, and historians will be able to study it and perhaps even discern its purpose. However, I fear that the relic may be too dangerous for the public. After all, we still have no idea what the damned thing even is. Alejandro would hate it, but perhaps it would be better to keep the relic somewhere safe, where Harlan and I can study it in private. I’ll have to decide tonight; after tomorrow, there won’t be time to change my mind..."
+      "text": "<right><fancy>Vendredi 17 juillet 1925</fancy></right>\nNous sommes finalement rentrés à Arkham, notre expédition ayant été un «csuccès ».\n Alejandro est pressé de rapporter ses découvertes à l'université. Je ne comprends pas comment il parvient à rester aussi optimiste et positif après l'enfer que nous avons traversé dans cette jungle. Toute son attention est focalisée sur cette étrange relique que nous avons découverte dans les ruines. J'aurais aimé en savoir plus sur les origines de cet artefact. Cela me trouble beaucoup. Il bourdonne toujours et pulse d'une énergie surnaturelle que je peux à peine décrire. Tandis que nous voyagions avec l'artefact, nos nuits étaient emplies de cauchemars étranges : des rêves d'autres mondes et d'autres civilisations.Alejandro veut apporter la relique au Musée Miskatonic, pour l'exposer avec les autres artefacts eztli que nous avons découverts. Je suis plutôt mitigé. Au musée, elle pourra bénéficier d'une attention particulière et des historiens pourront l'étudier, pour peut-être découvrir à quoi elle sert. Cependant, je crains que cette relique ne soit trop dangereuse pour le public. Après tout, nous n'avons toujours aucune idée de ce qu'est cette chose. Alejandro va détester cette idée, mais peutêtre serait-il plus sage de la garder en sécurité quelque part où Harlan et moi pourrions l'étudier en privé. Il faut que je me décide cette nuit. Après-demain, il sera trop tard pour changer d'avis…"
     },
     {
       "id": "choose_where_relic_goes",
@@ -57908,7 +58020,7 @@
         "choices": [
           {
             "id": "museum",
-            "text": "<i>It belongs in a museum. Alejandro and the museum staff will be able to study it and learn more about its purpose.</i>",
+            "text": "<i>Sa place est dans un musée. Alejandro et l'équipe du musée pourront l'étudier et en apprendre plus à son propos.</i>",
             "steps": [
               "ee_2",
               "gave_relic_to_alejandro",
@@ -57920,7 +58032,7 @@
           },
           {
             "id": "hide",
-            "text": "<i>It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.</i>",
+            "text": "<i>L'artefact est trop dangereux pour être exposé. Nous devrions le garder en sécurité jusqu'à ce que nous en sachions plus à son sujet.</i>",
             "steps": [
               "ee_3",
               "gave_relic_to_harlan",
@@ -57938,7 +58050,7 @@
         "name": "Expedition's End 2"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to give custody of the relic to Alejandro. This entire expedition was based on his research, after all—he should be the one to study it. If anyone can discover the relic’s secrets, it’s him.\nThe relic is to be the centerpiece of a new exhibit at the museum. Alejandro has already written extensively about our discoveries, but his work has only just begun. Many mysteries about our expedition remain. How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored? I have no doubt Alejandro will uncover the answers to these questions, given enough time.\nAs for me, my role in this endeavor has ended. However, I have yet to relax. My thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. When I walk through the streets, I find myself drawn toward the museum without realizing it, as though possessed to see the relic once again. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right><fancy>Dimanche 19 juillet 1925</fancy></right>\nJ'ai décidé de confier la relique à Alejandro. Après tout, l'expédition entière était basée sur ses recherches – ce devrait être à lui de l'étudier. Si quelqu'un peut en découvrir les secrets, c'est bien lui.\nLa relique sera la pièce maîtresse d'une nouvelle exposition au musée. Alejandro a déjà beaucoup écrit à propos de nos découvertes, mais son travail ne fait que commencer. De nombreux mystères relatifs à notre expédition demeurent. Comment les Eztli ont-ils pu rester cachés aussi longtemps ? Pourquoi semblaient-ils garder la jungle, et de quoi ? Qui a réellement bâti le temple en ruine que nous avons exploré ? Je n'ai aucun doute sur le fait qu'Alejandro élucidera ces questions si on lui en laisse le temps.\nQuant à moi, mon rôle dans cette affaire est terminé. Cependant, je ne parviens pas trouver le repos. Mes pensées me ramènent constamment vers cette jungle – ces formes ophidiennes dans les ombres, ces flèches d'obsidienne enchâssées dans des corps squelettiques, ces voix déformées hurlant dans les profondeurs caverneuses. Quand je marche dans la rue, je me surprends à me diriger vers le musée sans m'en rendre compte, comme si je brûlais de voir à nouveau cette relique. Une sensation tenace sourd au fond de mon esprit, comme si j'avais oublié quelque chose d'important. Que dois-je faire pour me débarrasser de –\n(Le journal se termine ici, brutalement.)"
     },
     {
       "id": "gave_relic_to_alejandro",
@@ -57947,7 +58059,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gave_relic_to_alejandro",
-          "text": "the investigators gave custody of the relic to Alejandro."
+          "text": "les investigateurs ont conifé la relique à Alejandro."
         }
       ]
     },
@@ -57958,7 +58070,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "earned_alejandros_trust",
-          "text": "the investigators have earned Alejandro’s trust."
+          "text": "les investigateurs ont gagné la confiance d'Alejandro."
         }
       ]
     },
@@ -57981,7 +58093,7 @@
     },
     {
       "id": "earn_alejandro",
-      "text": "Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter Alejandro Vela à son deck. Cette carte ne compte pas dans le Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -58008,7 +58120,7 @@
         "name": "Expedition's End 3"
       },
       "type": "story",
-      "text": "<right><fancy>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to keep the relic hidden for now. Alejandro is not happy with my decision, but until we know what the orb is capable of, it’s important that it stay somewhere safe, where it won’t endanger others. Harlan agrees with me, and has offered to take custody of the relic and keep it in his private office. There, we can study the artifact in secret.\nAlejandro is staying in Arkham for the time being, recording his notes about the expedition and helping the museum put together an exhibit displaying our other, less dangerous discoveries. As for me, I hope to find answers to other mysteries: How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored?\nMy thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. Each time I leave Harlan’s office, I find myself longing to head back and gaze upon the relic once more. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right><fancy>Dimanche 19 juillet 1925</fancy></right>\nJ'ai décidé de garder la relique cachée pour l'instant. Alejandro n'est pas content de ma décision mais, jusqu'à ce qu'on sache de quoi cet orbe est capable, il est important de le conserver dans un lieu sûr où il ne mettra personne en danger. Harlan est d'accord avec moi et il a accepté de conserver la relique dans son bureau privé. Là, nous pourrons l'étudier en secret.\nAlejandro a décidé de rester à Arkham pour le moment, afin de compiler ses notes sur l'expédition et d'aider le musée à monter une exposition présentant les autres découvertes, moins dangereuses. Quant à moi, j'espère trouver des réponses à d'autres mystères : comment les Eztli ont-ils pu rester cachés aussi longtemps ? Pourquoi semblaient-ils garder la jungle, et de quoi ? Qui a réellement bâti le temple en ruine que nous avons exploré ?\nMes pensées me ramènent constamment vers cette jungle – ces formes ophidiennes dans les ombres, ces flèches d'obsidienne enchâssées dans des corps squelettiques, ces voix déformées hurlant dans les profondeurs caverneuses. Chaque fois que je quitte le bureau d'Harlan, je me surprends à faire demi-tour pour aller contempler à nouveau la relique. Une sensation tenace sourd au fond de mon esprit, comme si j'avais oublié quelque chose d'important. Que dois-je faire pour me débarrasser de –\n(Le journal se termine ici, brutalement.)"
     },
     {
       "id": "gave_relic_to_harlan",
@@ -58017,19 +58129,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gave_relic_to_harlan",
-          "text": "the investigators gave custody of the relic to Harlan Earnstone."
+          "text": "les investigateurs ont confié la relique à Harlan Earnstone."
         }
       ]
     },
     {
       "id": "alejandro_on_his_own",
-      "text": "In your Campaign Log, record that <i>Alejandro is continuing his research on his own</i>. If Alejandro Vela is currently in an investigator’s deck, remove him from that investigator’s deck.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>Alejandro poursuit ses recherches de son côté</i>. Si Alejandro Vela est actuellement dans le deck d'un investigateur, retirez-le de ce deck.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_on_his_own",
-          "text": "Alejandro is continuing his research on his own."
+          "text": "Alejandro poursuit ses recherches de son côté"
         },
         {
           "type": "remove_card",
@@ -58044,7 +58156,7 @@
         "name": "Expedition's End 4"
       },
       "type": "story",
-      "text": "You drop your pen as a loud knocking at the door startles you, and you jump to your feet. It is almost 2:30 in the morning. Who could possibly be at your door at this hour? Your thoughts wander again to the jungle, and you are faced with a vision of serpent-creatures attacking you in your own home. Shuddering, you find a weapon and approach the front door carefully, ready to strike if need be. You take a long breath and open the door.\nOn the other side is a familiar woman with brown skin, long brown hair, and piercing yellow eyes set in a hard glare. Though her attire has changed, you recognize her instantly as Ichtaca, the Eztli warrior you encountered in the rainforest. Wearing a long coat and a Bollman hat, she is visibly uncomfortable in her shoes. Her jaw is set in anger. You are about to raise your weapon in defense when she lets out a heavy sigh and walks slowly over the threshold of your home, shutting your front door behind her. “Whatever you did, you have to reverse it,” she intones darkly. “Or we will all cease to exist.”"
+      "text": "Un coup sec sur la porte vous fait sursauter. Vous lâchez votre stylo et vous vous levez précipitamment. Il est presque 2:30 du matin. Qui peut bien frapper à votre porte à cette heure ? Vos pensées vagabondent à nouveau vers la jungle et vous imaginez un instant les créatures serpentines vous attaquant dans votre propre demeure. Réprouvant un frisson, vous prenez une arme et vous vous approchez doucement de la porte, prêt à frapper si nécessaire. Vous prenez une longue inspiration et ouvrez le battant.\nDe l'autre côté se tient la silhouette familière d'une femme à la peau sombre, aux longs cheveux bruns et aux yeux jaunes perçants, qui vous lance un regard dur. Bien qu'elle ait changé d'accoutrement, vous reconnaissez Ichtaca, la guerrière eztli que vous avez rencontrée dans la forêt vierge. Vêtue d'un long manteau et d'un chapeau Bollman, elle ne semble pas très à l'aise. Son visage est crispé de colère. Vous vous apprêtez à lever votre arme pour vous défendre quand elle laisse échapper un profond soupir et entre lentement chez vous, fermant la porte d'entrée derrière elle. « Quoi que vous ayez fait, vous devez le défaire », commence-t-elle d'une voix sombre. « Sans quoi nous cesserons tous d'exister. »"
     },
     {
       "id": "ee_5",
@@ -58053,7 +58165,7 @@
         "name": "Expedition's End 5"
       },
       "type": "story",
-      "text": "Harlan Earnstone paces across your living room, dabbing his wrinkled forehead with his handkerchief. “It’s my fault. I should never have encouraged them to go on that dreadful expedition.” Though your paths have only crossed a few times before, Mr. Earnstone has become a valuable contact of yours within Miskatonic University. When the University’s latest expedition returned with only a few survivors and a handful of strange, archaic artifacts, he came to you for advice.\n“I know, I know. I should at least take solace in the fact that the expedition was successful, despite its heavy losses. Alejandro was right all along. The Eztli people are real. And yet...I am concerned about some of these findings.” Harlan pulls a small leather-bound journal from his suitcase and hands it to you. “Before the expedition leader’s tragic death, the leader recorded many of the group’s discoveries in this journal. One of the surviving members of the expedition managed to grab it from the camp before fleeing the jungle. I think if you read these entries, you’ll understand what I mean. The things they experienced, the creatures they encountered...” Harlan shudders and adjusts his glasses with too-shaky hands. “I am concerned not only for Alejandro, but for all of us. Read this journal, and if you can, please keep an eye on my colleague.” You agree to help, but his worry does not fade. “I only hope that I am not damning you to a similar fate by asking for your aid.”\nYou spend the remainder of that night studying the expedition journal, your mind swimming with thoughts of strange serpent-creatures and Aztec warriors. Long after Harlan has left, a loud knocking at the door startles you, and you jump to your feet. It is almost 2:30 in the morning. Who could possibly be at your door at this hour? You open the front door warily. On the other side is a woman with brown skin, long brown hair, and piercing yellow eyes set in a hard glare. She wears a long coat and a Bollman-style hat, visibly uncomfortable in her shoes. Her jaw is set in anger. A sudden flash of insight crosses your mind, and you realize at once who she must be. After all, you’ve read and re-read the journal’s description of Ichtaca, the Eztli warrior. She lets out a heavy sigh and walks slowly over the threshold of your home, shutting your front door behind her. “Whatever they did, you have to reverse it,” she intones darkly. “Or we will all cease to exist.”"
+      "text": "Harlan Earnstone fait les cent pas dans votre salon, épongeant son front soucieux avec son mouchoir. « Tout est ma faute. Jamais je n'aurais dû les inciter à entreprendre cette horrible expédition. » Bien que vos chemins ne se soient croisés que quelques fois auparavant, M. Earnstone est devenu un contact précieux au sein de l'Université Miskatonic. Quand la dernière expédition de l'Université est revenue avec seulement quelques survivants et une poignée d'étranges artefacts archaïques, Harlan est venu vous voir à la recherche de conseils.\n« Je sais, je sais. Je devrais trouver du réconfort dans le fait que l'expédition a été un succès malgré ses lourdes pertes. Alejandro avait raison depuis le début. Le peuple Eztli existe réellement. Et pourtant… je suis inquiet à propos de certaines de ces trouvailles. » Harlan vous tend un petit journal de cuir. « Avant sa mort tragique, le chef de l'expédition a relaté la majorité des découvertes du groupe dans ce journal. L'un des membres survivants a réussi à emporter le journal avec lui avant de fuir la jungle. Je pense que si vous lisez ces mots, vous comprendrez ce que je veux dire. Les événements qu'ils ont vécus, les créatures qu'ils ont rencontrées… » Harlan frissonne et ajuste ses lunettes de ses mains tremblantes. « Mes inquiétudes ne concernent pas qu'Alejandro, mais tout le monde. Lisez ce journal et, si possible, gardez un oeil sur mon collègue. » Vous acceptez de l'aider, mais il reste soucieux. « J'espère seulement que je ne vous entraîne pas vers un sort tout aussi funeste en requérant votre aide. »\nVous passez le reste de la nuit à étudier le journal de l'expédition, l'esprit rempli de guerriers aztèques et d'étranges créatures serpentines. Longtemps après le départ d'Harlan, un coup sec sur la porte vous fait sursauter et vous vous levez précipitamment. Il est presque 2:30 du matin. Qui peut bien frapper à votre porte à cette heure ? Vous ouvrez prudemment la porte. De l'autre côté se tient une femme à la peau sombre, aux longs cheveux bruns et aux yeux jaunes perçants, qui vous lance un regard dur. Vêtue d'un long manteau et d'un chapeau Bollman, elle ne semble pas très à l'aise. Son visage est crispé de colère. Un éclair de compréhension traverse votre esprit et vous réalisez d'un coup qui elle est. Après tout, vous venez de lire et relire sa description dans le journal. Ichtaca, la guerrière eztli, laisse échapper un profond soupir et entre lentement chez vous, fermant la porte d'entrée derrière elle. « Quoi qu ls aient fait, vous devez le défaire », commence-t-elle d'une voix sombre. « Sans quoi nous cesserons-tous d'exister. »"
     }
   ]
 },
