@@ -23,7 +23,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import { saveNewDeck } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
 import { Deck, DeckMeta, Slots } from '@actions/types';
-import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card from '@data/Card';
 import { AppState } from '@reducers';
 import space from '@styles/space';
@@ -66,7 +66,11 @@ function NewDeckOptionsDialog({
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [saving, setSaving] = useState(false);
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
-  const [offlineDeck, toggleOfflineDeck] = useFlag(!signedIn || !isConnected || networkType === NetInfoStateType.none);
+  const [offlineDeck, toggleOfflineDeck] = useFlag(
+    investigatorId === CUSTOM_INVESTIGATOR ||
+    !signedIn ||
+    !isConnected ||
+    networkType === NetInfoStateType.none);
   const [optionSelected, setOptionSelected] = useState<boolean[]>([true]);
   const [tabooSetId, setTabooSetId] = useState<number | undefined>(defaultTabooSetId);
   const [starterDeck, setStarterDeck] = useState(false);
@@ -293,60 +297,64 @@ function NewDeckOptionsDialog({
             firstElement={renderNamePicker}
           />
         </View>
-        <View style={[space.paddingSideS, space.paddingBottomS]}>
-          <DeckSectionBlock title={t`Required Cards`} faction="neutral">
-            { map(cardOptions, (requiredCards, index) => {
-              return (
-                <RequiredCardSwitch
-                  key={`${investigatorId}-${index}`}
-                  index={index}
-                  onPress={onCardPress}
-                  disabled={(index === 0 && cardOptions.length === 1) || starterDeck}
-                  cards={requiredCards}
-                  value={optionSelected[index] || false}
-                  onValueChange={toggleOptionsSelected}
-                  last={index === (requiredCards.length - 1)}
-                />
-              );
-            }) }
-          </DeckSectionBlock>
-        </View>
-        <View style={[space.paddingSideS, space.paddingBottomS]}>
-          <DeckCheckboxButton
-            icon="card-outline"
-            title={t`Use Starter Deck`}
-            value={starterDeck}
-            disabled={!hasStarterDeck}
-            onValueChange={setStarterDeck}
-          />
-          { signedIn ? (
+        { cardOptions.length > 0 && cardOptions[0].length > 0 && (
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
+            <DeckSectionBlock title={t`Required Cards`} faction="neutral">
+              { map(cardOptions, (requiredCards, index) => {
+                return (
+                  <RequiredCardSwitch
+                    key={`${investigatorId}-${index}`}
+                    index={index}
+                    onPress={onCardPress}
+                    disabled={(index === 0 && cardOptions.length === 1) || starterDeck}
+                    cards={requiredCards}
+                    value={optionSelected[index] || false}
+                    onValueChange={toggleOptionsSelected}
+                    last={index === (requiredCards.length - 1)}
+                  />
+                );
+              }) }
+            </DeckSectionBlock>
+          </View>
+        ) }
+        { investigatorId !== CUSTOM_INVESTIGATOR && (
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
             <DeckCheckboxButton
-              icon="world"
-              title={t`Create on ArkhamDB`}
-              value={!offlineDeck}
-              disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
-              onValueChange={toggleOfflineDeck}
-              last
+              icon="card-outline"
+              title={t`Use Starter Deck`}
+              value={starterDeck}
+              disabled={!hasStarterDeck}
+              onValueChange={setStarterDeck}
             />
-          ) : (
-            <DeckCheckboxButton
-              icon="world"
-              title={t`Sign in to ArkhamDB`}
-              value={false}
-              onValueChange={login}
-              last
-            />
-          ) }
-          { (!isConnected || networkType === NetInfoStateType.none) && (
-            <TouchableOpacity onPress={refreshNetworkStatus}>
-              <View style={[space.paddingS, space.paddingLeftM]}>
-                <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
-                  { t`You seem to be offline. Refresh Network?` }
-                </Text>
-              </View>
-            </TouchableOpacity>
-          ) }
-        </View>
+            { signedIn ? (
+              <DeckCheckboxButton
+                icon="world"
+                title={t`Create on ArkhamDB`}
+                value={!offlineDeck}
+                disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
+                onValueChange={toggleOfflineDeck}
+                last
+              />
+            ) : (
+              <DeckCheckboxButton
+                icon="world"
+                title={t`Sign in to ArkhamDB`}
+                value={false}
+                onValueChange={login}
+                last
+              />
+            ) }
+            { (!isConnected || networkType === NetInfoStateType.none) && (
+              <TouchableOpacity onPress={refreshNetworkStatus}>
+                <View style={[space.paddingS, space.paddingLeftM]}>
+                  <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
+                    { t`You seem to be offline. Refresh Network?` }
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            ) }
+          </View>
+        ) }
       </>
     );
   }, [investigatorId, signedIn, networkType, isConnected,
