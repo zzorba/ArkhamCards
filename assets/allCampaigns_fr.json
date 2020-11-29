@@ -8115,6 +8115,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Une douleur sourde résonne sous votre crâne tandis que vous roulez à travers les rues pluvieuses d'Arkham afin de rejoindre votre prochaine destination. La menace de l'Étranger plane sur vous et vous jetez régulièrement des coups d'oeil dans votre rétroviseur, craignant d'apercevoir le visage inexpressif de son masque qui hante votre esprit. Mais vous ne voyez rien d'autre que la nuit noire et brumeuse, et la route déserte derrière vous.\nComme elles l'ont souvent fait ces dernières heures, vos pensées vagabondent à nouveau vers Le Roi en Jaune, la cité de Carcosa et ses habitants. Quel était le message caché dans cette affreuse pièce de théâtre ? Que signifiait toute cette folie ? Un détail insignifiant perçu lors des discussions au manoir de Mme Dumaine vous revient en mémoire – la représentation de ce soir de la pièce maudite Le Roi en Jaune n'était pas la première à se dérouler à Arkham. Il y en avait eu au moins une autre, mise en scène par le même homme : Nigel Engram.\nIl existe un endroit à Arkham où sont archivés tous les événements importants survenus en ville : le manoir de la Société des Historiens, dans le Quartier Sud. S'il subsiste le moindre témoignage de la précédente représentation du Roi en Jaune, la Société des Historiens doit en avoir une trace. Vous trouverez peut-être dans ces dossiers les réponses aux questions qui vous hantent."
     },
@@ -8139,6 +8143,10 @@
     },
     {
       "id": "sebastiens_information",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.sebastiens_information",
+        "name": "Sebastien's Information"
+      },
       "type": "story",
       "text": "Les Informations de Sebastien : Vous vous remémorez ce que Sebastien vous a appris lors du dîner. La pièce Le Roi en Jaune a été jouée à Arkham il y a des décennies, bien avant que le théâtre Ward ne soit construit. Selon Sebastien, il n'est guère surprenant que les gens ne s'en souviennent pas – en fait, le but de la représentation de ce soir était, entre autres, de faire découvrir Le Roi en Jaune à un public plus large. La Société des Historiens a sûrement conservé une trace de ce précédent spectacle, surtout s'il fut suivi d'événements similaires à ceux de cette nuit. Peut-être trouverez-vous des coupures de journaux ou d'autres articles décrivant ce qui s'est passé à cette époque."
     },
@@ -8589,6 +8597,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'est atteinte\n(tous les investigateurs ont abandonné ou été vaincus)",
       "investigator_status": [
         "resigned",
@@ -8603,6 +8615,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Il n'existe pas de coïncidence dès lors qu'il s'agit du Roi en Jaune. Vous ne doutez pas un instant que l'objet que vous avez trouvé est important. Vous décidez de l'emporter avant de pousser plus avant vos investigations. La dernière note que vous trouvez concernant la mise en scène originelle du Roi en Jaune est l'évaluation psychiatrique d'un certain Daniel Chesterfield, un machiniste qui perdit l'esprit après l'ultime représentation. Il semble qu'il ait été admis à l'asile après la fin de la production. Peut-être qu'il y est encore…",
       "steps": [
@@ -8615,6 +8631,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Cette enquête rendrait n'importe qui paranoïaque. Attribuer une importance démesurée à tout et n'importe quoi pourrait se révéler dangereux. Vous êtes sûr que cette broche est sans intérêt : peut-être s'agit-il seulement d'un accessoire utilisé lors de la première pièce. Vous la laissez de côté et poursuivez vos investigations. La dernière note que vous trouvez concernant la mise en scène originelle du Roi en Jaune est l'évaluation psychiatrique d'un certain Daniel Chesterfield, un machiniste qui perdit l'esprit après l'ultime représentation. Il semble qu'il ait été admis à l'asile après la fin de la production. Peut-être qu'il y est encore…",
       "steps": [
@@ -8627,6 +8647,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Conclusion 3",
       "text": "La silhouette tombe au sol et son corps commence à fondre tandis qu'elle se tord de douleur. Elle hurle et sifle, et une lueur jaune émane de sa bouche et de derrière ses yeux. « Daniel », articule la chose de sa voix rauque. « Cherchez Daniel… Daniel Chesterfield, le machiniste, il se souvient ! » Une autre voix, profondément enfouie sous les paroles du conjurateur, murmure doucement d'un ton mélodique. « Trouvez-le… Lui aussi a prononcé le serment… Le serment qui a scellé notre destin à tous… ! » Sur ces derniers mots, la peau de l'homme se détache de ses os et il s'écroule sur le sol.",
       "steps": [
@@ -8639,6 +8663,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Conclusion 4",
       "text": "Les événements de la nuit vous laissent exténué. Vous n'avez rien trouvé dans le manoir de la Société des Historiens qui puisse vous aider dans votre enquête. Qui qu'aient été ces intrus, ils devaient chercher les mêmes informations que vous. Bouleversé, vous vous dirigez vers le lit le plus proche que vous trouvez – à la Pension de Ma, située non-loin de la Société des Historiens. L'aube vous surprend alors que vous atteignez la pension. La poignée de porte et les fougères du porche sont couvertes de rosée. Vous avez la chance de trouver une chambre libre pour la journée, et vous vous écroulez de fatigue.\nSoudain, vous tombez. Au-dessus et tout autour de vous, une lumière aveuglante flamboie tel un brasier. Des maux de tête et des visions colorées vous assaillent. Votre peau commence à roussir au contact des flammes. Un abîme s'ouvre sous vos pieds et vous engloutit tout entier. Vous vous retrouvez dans une cellule à l'odeur méphitique, humide et dépourvue de fenêtres. Un homme est recroquevillé dans un coin de la pièce, tremblant à cause du froid, de sa situation désespérée, ou peut-être des deux. « Pas de masque », marmonne-t-il encore et encore, « pas de masque, pas de masque... » Vous tentez de vous approcher de lui mais, avant que vous ne puissiez l'atteindre, le loquet métallique de la porte sa cellule s'ouvre et vous entendez une voix l'appeler. « Daniel, il est l'heure », dit-elle. «'Daniel, réveille-toi. Réveille-toi, Daniel. » Et vous vous réveillez.",
       "steps": [
@@ -10361,7 +10389,7 @@
     },
     {
       "id": "choose_locations",
-      "text": "Prenez au hasard 1 exemplaire des Couloirs de l'Asile <i>(Aile Est)</> et 1 exemplaire des Couloirs de l'Asile <i>(Aile Ouest)</i>. Retirez ces cartes de la partie. Mettez les Couloirs de l'Asile restants en jeu. Chaque investigateur commence la partie dans le lieu Couloirs de l'Asile de son choix."
+      "text": "Prenez au hasard 1 exemplaire des Couloirs de l'Asile <i>(Aile Est)</i> et 1 exemplaire des Couloirs de l'Asile <i>(Aile Ouest)</i>. Retirez ces cartes de la partie. Mettez les Couloirs de l'Asile restants en jeu. Chaque investigateur commence la partie dans le lieu Couloirs de l'Asile de son choix."
     },
     {
       "id": "set_aside_cards",
@@ -10493,7 +10521,7 @@
     {
       "id": "act_2_v1",
       "bullet_type": "small",
-      "text": "tilisez l'Acte 2 – « Les Vrais Méchants » (v. I)"
+      "text": "Utilisez l'Acte 2 – « Les Vrais Méchants » (v. I)"
     },
     {
       "id": "act_2_v2",
@@ -19911,6 +19939,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Une douleur sourde résonne sous votre crâne tandis que vous roulez à travers les rues pluvieuses d'Arkham afin de rejoindre votre prochaine destination. La menace de l'Étranger plane sur vous et vous jetez régulièrement des coups d'oeil dans votre rétroviseur, craignant d'apercevoir le visage inexpressif de son masque qui hante votre esprit. Mais vous ne voyez rien d'autre que la nuit noire et brumeuse, et la route déserte derrière vous.\nComme elles l'ont souvent fait ces dernières heures, vos pensées vagabondent à nouveau vers Le Roi en Jaune, la cité de Carcosa et ses habitants. Quel était le message caché dans cette affreuse pièce de théâtre ? Que signifiait toute cette folie ? Un détail insignifiant perçu lors des discussions au manoir de Mme Dumaine vous revient en mémoire – la représentation de ce soir de la pièce maudite Le Roi en Jaune n'était pas la première à se dérouler à Arkham. Il y en avait eu au moins une autre, mise en scène par le même homme : Nigel Engram.\nIl existe un endroit à Arkham où sont archivés tous les événements importants survenus en ville : le manoir de la Société des Historiens, dans le Quartier Sud. S'il subsiste le moindre témoignage de la précédente représentation du Roi en Jaune, la Société des Historiens doit en avoir une trace. Vous trouverez peut-être dans ces dossiers les réponses aux questions qui vous hantent."
     },
@@ -19935,6 +19967,10 @@
     },
     {
       "id": "sebastiens_information",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.sebastiens_information",
+        "name": "Sebastien's Information"
+      },
       "type": "story",
       "text": "Les Informations de Sebastien : Vous vous remémorez ce que Sebastien vous a appris lors du dîner. La pièce Le Roi en Jaune a été jouée à Arkham il y a des décennies, bien avant que le théâtre Ward ne soit construit. Selon Sebastien, il n'est guère surprenant que les gens ne s'en souviennent pas – en fait, le but de la représentation de ce soir était, entre autres, de faire découvrir Le Roi en Jaune à un public plus large. La Société des Historiens a sûrement conservé une trace de ce précédent spectacle, surtout s'il fut suivi d'événements similaires à ceux de cette nuit. Peut-être trouverez-vous des coupures de journaux ou d'autres articles décrivant ce qui s'est passé à cette époque."
     },
@@ -20395,6 +20431,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'est atteinte\n(tous les investigateurs ont abandonné ou été vaincus)",
       "investigator_status": [
         "resigned",
@@ -20409,6 +20449,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Il n'existe pas de coïncidence dès lors qu'il s'agit du Roi en Jaune. Vous ne doutez pas un instant que l'objet que vous avez trouvé est important. Vous décidez de l'emporter avant de pousser plus avant vos investigations. La dernière note que vous trouvez concernant la mise en scène originelle du Roi en Jaune est l'évaluation psychiatrique d'un certain Daniel Chesterfield, un machiniste qui perdit l'esprit après l'ultime représentation. Il semble qu'il ait été admis à l'asile après la fin de la production. Peut-être qu'il y est encore…",
       "steps": [
@@ -20421,6 +20465,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Cette enquête rendrait n'importe qui paranoïaque. Attribuer une importance démesurée à tout et n'importe quoi pourrait se révéler dangereux. Vous êtes sûr que cette broche est sans intérêt : peut-être s'agit-il seulement d'un accessoire utilisé lors de la première pièce. Vous la laissez de côté et poursuivez vos investigations. La dernière note que vous trouvez concernant la mise en scène originelle du Roi en Jaune est l'évaluation psychiatrique d'un certain Daniel Chesterfield, un machiniste qui perdit l'esprit après l'ultime représentation. Il semble qu'il ait été admis à l'asile après la fin de la production. Peut-être qu'il y est encore…",
       "steps": [
@@ -20433,6 +20481,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Conclusion 3",
       "text": "La silhouette tombe au sol et son corps commence à fondre tandis qu'elle se tord de douleur. Elle hurle et sifle, et une lueur jaune émane de sa bouche et de derrière ses yeux. « Daniel », articule la chose de sa voix rauque. « Cherchez Daniel… Daniel Chesterfield, le machiniste, il se souvient ! » Une autre voix, profondément enfouie sous les paroles du conjurateur, murmure doucement d'un ton mélodique. « Trouvez-le… Lui aussi a prononcé le serment… Le serment qui a scellé notre destin à tous… ! » Sur ces derniers mots, la peau de l'homme se détache de ses os et il s'écroule sur le sol.",
       "steps": [
@@ -20445,6 +20497,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Conclusion 4",
       "text": "Les événements de la nuit vous laissent exténué. Vous n'avez rien trouvé dans le manoir de la Société des Historiens qui puisse vous aider dans votre enquête. Qui qu'aient été ces intrus, ils devaient chercher les mêmes informations que vous. Bouleversé, vous vous dirigez vers le lit le plus proche que vous trouvez – à la Pension de Ma, située non-loin de la Société des Historiens. L'aube vous surprend alors que vous atteignez la pension. La poignée de porte et les fougères du porche sont couvertes de rosée. Vous avez la chance de trouver une chambre libre pour la journée, et vous vous écroulez de fatigue.\nSoudain, vous tombez. Au-dessus et tout autour de vous, une lumière aveuglante flamboie tel un brasier. Des maux de tête et des visions colorées vous assaillent. Votre peau commence à roussir au contact des flammes. Un abîme s'ouvre sous vos pieds et vous engloutit tout entier. Vous vous retrouvez dans une cellule à l'odeur méphitique, humide et dépourvue de fenêtres. Un homme est recroquevillé dans un coin de la pièce, tremblant à cause du froid, de sa situation désespérée, ou peut-être des deux. « Pas de masque », marmonne-t-il encore et encore, « pas de masque, pas de masque... » Vous tentez de vous approcher de lui mais, avant que vous ne puissiez l'atteindre, le loquet métallique de la porte sa cellule s'ouvre et vous entendez une voix l'appeler. « Daniel, il est l'heure », dit-elle. «'Daniel, réveille-toi. Réveille-toi, Daniel. » Et vous vous réveillez.",
       "steps": [
@@ -21690,7 +21746,7 @@
     {
       "id": "act_2_v1",
       "bullet_type": "small",
-      "text": "tilisez l'Acte 2 – « Les Vrais Méchants » (v. I)"
+      "text": "Utilisez l'Acte 2 – « Les Vrais Méchants » (v. I)"
     },
     {
       "id": "act_2_v2",
@@ -22088,7 +22144,7 @@
     },
     {
       "id": "choose_locations",
-      "text": "Prenez au hasard 1 exemplaire des Couloirs de l'Asile <i>(Aile Est)</> et 1 exemplaire des Couloirs de l'Asile <i>(Aile Ouest)</i>. Retirez ces cartes de la partie. Mettez les Couloirs de l'Asile restants en jeu. Chaque investigateur commence la partie dans le lieu Couloirs de l'Asile de son choix."
+      "text": "Prenez au hasard 1 exemplaire des Couloirs de l'Asile <i>(Aile Est)</i> et 1 exemplaire des Couloirs de l'Asile <i>(Aile Ouest)</i>. Retirez ces cartes de la partie. Mettez les Couloirs de l'Asile restants en jeu. Chaque investigateur commence la partie dans le lieu Couloirs de l'Asile de son choix."
     },
     {
       "id": "set_aside_cards",
@@ -22591,7 +22647,7 @@
         "name": "Expedition's End 1"
       },
       "type": "story",
-      "text": "<right><fancy>Vendredi 17 juillet 1925</fancy></right>\nNous sommes finalement rentrés à Arkham, notre expédition ayant été un «csuccès ».\n Alejandro est pressé de rapporter ses découvertes à l'université. Je ne comprends pas comment il parvient à rester aussi optimiste et positif après l'enfer que nous avons traversé dans cette jungle. Toute son attention est focalisée sur cette étrange relique que nous avons découverte dans les ruines. J'aurais aimé en savoir plus sur les origines de cet artefact. Cela me trouble beaucoup. Il bourdonne toujours et pulse d'une énergie surnaturelle que je peux à peine décrire. Tandis que nous voyagions avec l'artefact, nos nuits étaient emplies de cauchemars étranges : des rêves d'autres mondes et d'autres civilisations.Alejandro veut apporter la relique au Musée Miskatonic, pour l'exposer avec les autres artefacts eztli que nous avons découverts. Je suis plutôt mitigé. Au musée, elle pourra bénéficier d'une attention particulière et des historiens pourront l'étudier, pour peut-être découvrir à quoi elle sert. Cependant, je crains que cette relique ne soit trop dangereuse pour le public. Après tout, nous n'avons toujours aucune idée de ce qu'est cette chose. Alejandro va détester cette idée, mais peutêtre serait-il plus sage de la garder en sécurité quelque part où Harlan et moi pourrions l'étudier en privé. Il faut que je me décide cette nuit. Après-demain, il sera trop tard pour changer d'avis…"
+      "text": "<right><fancy>Vendredi 17 juillet 1925</fancy></right>\nNous sommes finalement rentrés à Arkham, notre expédition ayant été un «csuccès ».\nAlejandro est pressé de rapporter ses découvertes à l'université. Je ne comprends pas comment il parvient à rester aussi optimiste et positif après l'enfer que nous avons traversé dans cette jungle. Toute son attention est focalisée sur cette étrange relique que nous avons découverte dans les ruines. J'aurais aimé en savoir plus sur les origines de cet artefact. Cela me trouble beaucoup. Il bourdonne toujours et pulse d'une énergie surnaturelle que je peux à peine décrire. Tandis que nous voyagions avec l'artefact, nos nuits étaient emplies de cauchemars étranges : des rêves d'autres mondes et d'autres civilisations.Alejandro veut apporter la relique au Musée Miskatonic, pour l'exposer avec les autres artefacts eztli que nous avons découverts. Je suis plutôt mitigé. Au musée, elle pourra bénéficier d'une attention particulière et des historiens pourront l'étudier, pour peut-être découvrir à quoi elle sert. Cependant, je crains que cette relique ne soit trop dangereuse pour le public. Après tout, nous n'avons toujours aucune idée de ce qu'est cette chose. Alejandro va détester cette idée, mais peutêtre serait-il plus sage de la garder en sécurité quelque part où Harlan et moi pourrions l'étudier en privé. Il faut que je me décide cette nuit. Après-demain, il sera trop tard pour changer d'avis…"
     },
     {
       "id": "choose_where_relic_goes",
@@ -58009,7 +58065,7 @@
         "name": "Expedition's End 1"
       },
       "type": "story",
-      "text": "<right><fancy>Vendredi 17 juillet 1925</fancy></right>\nNous sommes finalement rentrés à Arkham, notre expédition ayant été un «csuccès ».\n Alejandro est pressé de rapporter ses découvertes à l'université. Je ne comprends pas comment il parvient à rester aussi optimiste et positif après l'enfer que nous avons traversé dans cette jungle. Toute son attention est focalisée sur cette étrange relique que nous avons découverte dans les ruines. J'aurais aimé en savoir plus sur les origines de cet artefact. Cela me trouble beaucoup. Il bourdonne toujours et pulse d'une énergie surnaturelle que je peux à peine décrire. Tandis que nous voyagions avec l'artefact, nos nuits étaient emplies de cauchemars étranges : des rêves d'autres mondes et d'autres civilisations.Alejandro veut apporter la relique au Musée Miskatonic, pour l'exposer avec les autres artefacts eztli que nous avons découverts. Je suis plutôt mitigé. Au musée, elle pourra bénéficier d'une attention particulière et des historiens pourront l'étudier, pour peut-être découvrir à quoi elle sert. Cependant, je crains que cette relique ne soit trop dangereuse pour le public. Après tout, nous n'avons toujours aucune idée de ce qu'est cette chose. Alejandro va détester cette idée, mais peutêtre serait-il plus sage de la garder en sécurité quelque part où Harlan et moi pourrions l'étudier en privé. Il faut que je me décide cette nuit. Après-demain, il sera trop tard pour changer d'avis…"
+      "text": "<right><fancy>Vendredi 17 juillet 1925</fancy></right>\nNous sommes finalement rentrés à Arkham, notre expédition ayant été un «csuccès ».\nAlejandro est pressé de rapporter ses découvertes à l'université. Je ne comprends pas comment il parvient à rester aussi optimiste et positif après l'enfer que nous avons traversé dans cette jungle. Toute son attention est focalisée sur cette étrange relique que nous avons découverte dans les ruines. J'aurais aimé en savoir plus sur les origines de cet artefact. Cela me trouble beaucoup. Il bourdonne toujours et pulse d'une énergie surnaturelle que je peux à peine décrire. Tandis que nous voyagions avec l'artefact, nos nuits étaient emplies de cauchemars étranges : des rêves d'autres mondes et d'autres civilisations.Alejandro veut apporter la relique au Musée Miskatonic, pour l'exposer avec les autres artefacts eztli que nous avons découverts. Je suis plutôt mitigé. Au musée, elle pourra bénéficier d'une attention particulière et des historiens pourront l'étudier, pour peut-être découvrir à quoi elle sert. Cependant, je crains que cette relique ne soit trop dangereuse pour le public. Après tout, nous n'avons toujours aucune idée de ce qu'est cette chose. Alejandro va détester cette idée, mais peutêtre serait-il plus sage de la garder en sécurité quelque part où Harlan et moi pourrions l'étudier en privé. Il faut que je me décide cette nuit. Après-demain, il sera trop tard pour changer d'avis…"
     },
     {
       "id": "choose_where_relic_goes",

@@ -8115,6 +8115,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Un dolor sordo te palpita en la cabeza mientras conduces por las lluviosas calles de Arkham hacia tu próximo destino. Tienes la amenaza del Extranjero muy en mente, y te descubres mirando por el retrovisor muy a menudo, esperando ver el rostro sin expresión de su máscara persiguiéndote. En lugar de eso, no ves nada más que la neblinosa noche sin estrellas y la carretera desierta que va quedando a tu espalda.\nTus pensamientos vuelven a divagar, como lo han hecho en varias ocasiones durante las últimas horas, y vuelven a El Rey de Amarillo y a la ciudad de Carcosa y sus habitantes. ¿Cuál era el mensaje oculto en esa terrible obra y el significado de su locura? Hay un detalle que se abre paso hasta la primera línea de tus pensamientos. Uno que salió a relucir durante las conversaciones que oísteis en la mansión de la Sra. Dumaine: que la representación de El Rey de Amarillo de esta noche no fue la primera vez que Arkham había visto la terrible obra. Había habido al menos una representación más, dirigida por el mismo hombre: Nigel Engram.\nEn Arkham hay un lugar en el que suelen conservarse registros de los acontecimientos más importantes que han ocurrido en la ciudad: la casa señorial de la Sociedad Histórica en el Barrio Sur. Si hay algún registro de la representación anterior de El Rey de Amarillo, puede que la Sociedad Histórica disponga de él. Quizás allí encuentres respuestas a las preguntas que arden en tu mente."
     },
@@ -8139,6 +8143,10 @@
     },
     {
       "id": "sebastiens_information",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.sebastiens_information",
+        "name": "Sebastien's Information"
+      },
       "type": "story",
       "text": "Recuerdas lo que te contó Sebastien durante la fiesta. El Rey de Amarillo vino a Arkham hace varias décadas, mucho antes de que se construyera el Teatro Ward. Según él, no es sorprendente que lo recuerden pocas personas; de hecho, parte de su objetivo de esta noche era hacer llegar El Rey de Amarillo a un público mayor. Es posible que la Sociedad Histórica haya conservado algún registro sobre esta producción anterior, especialmente si la siguieron acontecimientos similares a los sucedidos esta noche. Quizás logres encontrar algún recorte de periódico u otros artículos que describan lo que ocurrió en el pasado."
     },
@@ -8589,6 +8597,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -8603,6 +8615,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "Cuando se trata de El Rey de Amarillo, no existen las coincidencias. No tienes ninguna duda de que el objeto que has encontrado es importante, y decides llevártelo antes de proseguir tu investigación. El último documento que encuentras que esté relacionado con la producción original de El Rey de Amarillo es una evaluación psiquiátrica de un tal Daniel Chesterfield, un tramoyista que perdió la cabeza tras la última representación. Parece que lo ingresaron en el manicomio después de que acabara la producción. Puede que siga allí...",
       "steps": [
@@ -8615,6 +8631,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Esta investigación volvería paranoico al más pintado. Atribuirle un gran significado a todo lo que encuentras puede ser realmente peligroso. Estás seguro de que este broche no tiene importancia, y puede que sea parte de la utilería de la obra original. Lo dejas allí y prosigues tu investigación. El último documento que encuentras que esté relacionado con la producción original de El Rey de Amarillo es una evaluación psiquiátrica de un tal Daniel Chesterfield, un tramoyista que perdió la cabeza tras la última representación. Parece que lo ingresaron en el manicomio después de que acabara la producción. Puede que siga allí...",
       "steps": [
@@ -8627,6 +8647,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "text": "El personaje se desploma en el suelo, y su distorsionado cuerpo se retuerce de agonía mientras parece fundirse. Jadea y grita mientras un brillo amarillo brota del interior de su boca y de sus ojos: –Daniel –dice la cosa con voz quebrada–. Buscad a Daniel... Daniel Chesterfield, el tramoyista. ¡Él lo recuerda! –Detrás de las palabras del hombre hay otra voz que susurra levemente en un idioma melódico–. Encontradlo... El también pronunció el juramento... ¡El juramento que nos condenó a todos...! –Con esas últimas palabras, la piel del hombre se funde, dejando sus huesos al descubierto, y se agita en el suelo.",
       "steps": [
@@ -8639,6 +8663,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Resolución 4",
       "text": "Los acontecimientos de la noche te han dejado agotado. No lograste descubrir nada en la mansión de la Sociedad Histórica que pudiera hacer avanzar tu investigación. Quienesquiera que fueran esos intrusos, debían de estar buscando la misma información que tú. Consternado, te diriges al alojamiento más cercano que encuentras, la Pensión de Ma, a poca distancia de la Sociedad Histórica. Cuando llegas allí, despunta el alba, y el picaporte de la puerta delantera y los helechos del porche están cubiertos de rocío. Tienes suerte de que haya una habitación libre para todo el día, y pronto te quedas profundamente dormido.\nDe pronto, estás cayendo. A tu alrededor, un brillo cegador resplandece como un furioso infierno. Te palpita la cabeza de dolor, y tu vista se ve inundada de brillantes colores. Las llamas queman tu piel. Debajo de ti, el abismo se abre y te engulle. Entonces te encuentras en una celda húmeda y sin ventanas y en la que impera un pútrido hedor. Hay un hombre acurrucado en un rincón, temblando de frío o por la desesperación de su situación, o quizá por ambas cosas. –Sin máscara –murmura una y otra vez–. Sin máscara, sin máscara... –Das un par de vacilantes pasos hacia delante, pero antes de poder alcanzarlo, la ranura metálica de la puerta de la celda se abre, y oyes que un auxiliar le llama: –Daniel, despierta. Despierta, Daniel –Y entonces despiertas.",
       "steps": [
@@ -19911,6 +19939,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Un dolor sordo te palpita en la cabeza mientras conduces por las lluviosas calles de Arkham hacia tu próximo destino. Tienes la amenaza del Extranjero muy en mente, y te descubres mirando por el retrovisor muy a menudo, esperando ver el rostro sin expresión de su máscara persiguiéndote. En lugar de eso, no ves nada más que la neblinosa noche sin estrellas y la carretera desierta que va quedando a tu espalda.\nTus pensamientos vuelven a divagar, como lo han hecho en varias ocasiones durante las últimas horas, y vuelven a El Rey de Amarillo y a la ciudad de Carcosa y sus habitantes. ¿Cuál era el mensaje oculto en esa terrible obra y el significado de su locura? Hay un detalle que se abre paso hasta la primera línea de tus pensamientos. Uno que salió a relucir durante las conversaciones que oísteis en la mansión de la Sra. Dumaine: que la representación de El Rey de Amarillo de esta noche no fue la primera vez que Arkham había visto la terrible obra. Había habido al menos una representación más, dirigida por el mismo hombre: Nigel Engram.\nEn Arkham hay un lugar en el que suelen conservarse registros de los acontecimientos más importantes que han ocurrido en la ciudad: la casa señorial de la Sociedad Histórica en el Barrio Sur. Si hay algún registro de la representación anterior de El Rey de Amarillo, puede que la Sociedad Histórica disponga de él. Quizás allí encuentres respuestas a las preguntas que arden en tu mente."
     },
@@ -19935,6 +19967,10 @@
     },
     {
       "id": "sebastiens_information",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.sebastiens_information",
+        "name": "Sebastien's Information"
+      },
       "type": "story",
       "text": "Recuerdas lo que te contó Sebastien durante la fiesta. El Rey de Amarillo vino a Arkham hace varias décadas, mucho antes de que se construyera el Teatro Ward. Según él, no es sorprendente que lo recuerden pocas personas; de hecho, parte de su objetivo de esta noche era hacer llegar El Rey de Amarillo a un público mayor. Es posible que la Sociedad Histórica haya conservado algún registro sobre esta producción anterior, especialmente si la siguieron acontecimientos similares a los sucedidos esta noche. Quizás logres encontrar algún recorte de periódico u otros artículos que describan lo que ocurrió en el pasado."
     },
@@ -20395,6 +20431,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -20409,6 +20449,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "Cuando se trata de El Rey de Amarillo, no existen las coincidencias. No tienes ninguna duda de que el objeto que has encontrado es importante, y decides llevártelo antes de proseguir tu investigación. El último documento que encuentras que esté relacionado con la producción original de El Rey de Amarillo es una evaluación psiquiátrica de un tal Daniel Chesterfield, un tramoyista que perdió la cabeza tras la última representación. Parece que lo ingresaron en el manicomio después de que acabara la producción. Puede que siga allí...",
       "steps": [
@@ -20421,6 +20465,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Esta investigación volvería paranoico al más pintado. Atribuirle un gran significado a todo lo que encuentras puede ser realmente peligroso. Estás seguro de que este broche no tiene importancia, y puede que sea parte de la utilería de la obra original. Lo dejas allí y prosigues tu investigación. El último documento que encuentras que esté relacionado con la producción original de El Rey de Amarillo es una evaluación psiquiátrica de un tal Daniel Chesterfield, un tramoyista que perdió la cabeza tras la última representación. Parece que lo ingresaron en el manicomio después de que acabara la producción. Puede que siga allí...",
       "steps": [
@@ -20433,6 +20481,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "text": "El personaje se desploma en el suelo, y su distorsionado cuerpo se retuerce de agonía mientras parece fundirse. Jadea y grita mientras un brillo amarillo brota del interior de su boca y de sus ojos: –Daniel –dice la cosa con voz quebrada–. Buscad a Daniel... Daniel Chesterfield, el tramoyista. ¡Él lo recuerda! –Detrás de las palabras del hombre hay otra voz que susurra levemente en un idioma melódico–. Encontradlo... El también pronunció el juramento... ¡El juramento que nos condenó a todos...! –Con esas últimas palabras, la piel del hombre se funde, dejando sus huesos al descubierto, y se agita en el suelo.",
       "steps": [
@@ -20445,6 +20497,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Resolución 4",
       "text": "Los acontecimientos de la noche te han dejado agotado. No lograste descubrir nada en la mansión de la Sociedad Histórica que pudiera hacer avanzar tu investigación. Quienesquiera que fueran esos intrusos, debían de estar buscando la misma información que tú. Consternado, te diriges al alojamiento más cercano que encuentras, la Pensión de Ma, a poca distancia de la Sociedad Histórica. Cuando llegas allí, despunta el alba, y el picaporte de la puerta delantera y los helechos del porche están cubiertos de rocío. Tienes suerte de que haya una habitación libre para todo el día, y pronto te quedas profundamente dormido.\nDe pronto, estás cayendo. A tu alrededor, un brillo cegador resplandece como un furioso infierno. Te palpita la cabeza de dolor, y tu vista se ve inundada de brillantes colores. Las llamas queman tu piel. Debajo de ti, el abismo se abre y te engulle. Entonces te encuentras en una celda húmeda y sin ventanas y en la que impera un pútrido hedor. Hay un hombre acurrucado en un rincón, temblando de frío o por la desesperación de su situación, o quizá por ambas cosas. –Sin máscara –murmura una y otra vez–. Sin máscara, sin máscara... –Das un par de vacilantes pasos hacia delante, pero antes de poder alcanzarlo, la ranura metálica de la puerta de la celda se abre, y oyes que un auxiliar le llama: –Daniel, despierta. Despierta, Daniel –Y entonces despiertas.",
       "steps": [

@@ -8115,6 +8115,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Ein dumpfer Schmerz pulsiert in deinem Kopf, während du durch die regennassen Straßen von Arkham zu deinem nächsten Ziel unterwegs bist. Die Bedrohung durch den Fremden ist in deinem Geist immer noch erschreckend präsent. Du merkst, dass du häufig in den Rückspiegel schaust, in der Erwartung, dass dich das ausdruckslose Gesicht seiner Maske wieder heimsucht. Stattdessen siehst du aber nichts als die neblige, sternenlose Nacht und eine menschenleere Straße hinter dir.\nDeine Gedanken kreisen wie schon so oft in den letzten Stunden um Der König in Gelb und die Stadt Carcosa und ihre Einwohner. Welche verborgene Botschaft enthält dieses fürchterliche Stück und was ist die wahre Bedeutung seines Wahnsinns? Dann drängt sich eine Kleinigkeit in dein Bewusstsein, etwas, das du in einem Gespräch im Herrenhaus von Ms. Dumaine mitgehört hast – die heutige Aufführung von <u>Der König in Gelb</u> war nicht die erste dieser widerlichen Inszenierung in Arkham. Es hat mindestens eine weitere Aufführung in der Vergangenheit gegeben, mit demselben Regisseur: Nigel Engram.\nIn Arkham gibt es einen Ort, an dem Aufzeichnungen über wichtige Ereignisse in der Stadt aufbewahrt werden: das Anwesen der Gesellschaft für Geschichte in der Südstadt. Falls es Berichte über die frühere Aufführung von <u>Der König in Gelb</u> gibt, wird die Gesellschaft für Geschichte sie haben. Vielleicht findest du dort die Antworten auf die brennenden Fragen, die deinen Geist quälen."
     },
@@ -8139,6 +8143,10 @@
     },
     {
       "id": "sebastiens_information",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.sebastiens_information",
+        "name": "Sebastien's Information"
+      },
       "type": "story",
       "text": "Du erinnerst dich an etwas, was Sebastien dir auf der Feier erzählt hat. <u>Der König in Gelb</u> gastierte vor einigen Jahrzehnten schon einmal in Arkham, lange bevor es das Ward-Theater gegeben hat. Er war nicht überrascht, dass nur wenige Menschen sich daran erinnern – eines der Ziele der heutigen Aufführung war Der König in Gelb einem breiteren Publikum bekannt zu machen. Die Gesellschaft für Geschichte könnte Aufzeichnungen über diese frühere Inszenierung aufbewahrt haben, besonders wenn damals ähnliche Ereignisse in ihrem Umfeld stattgefunden haben wie heute. Vielleicht findest du dort Zeitungsausschnitte oder andere Berichte über die Ereignisse aus der Vergangenheit."
     },
@@ -8589,6 +8597,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
       "investigator_status": [
         "resigned",
@@ -8603,6 +8615,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Es gibt keine Zufälle, wenn es um <u>Der König in Gelb</u> geht. Du hast keinen Zweifel daran, dass dieses Ding, das du gefunden hast, wichtig ist. Du entscheidest dich dafür, es mitzunehmen, und setzt deine Ermittlungen fort. Beim letzten Bericht, den du im Zusammenhang mit der früheren Inszenierung von <u>Der König in Gelb</u> gefunden hast, handelt es sich um ein psychologisches Gutachten über einen gewissen Daniel Chesterfield, einen Bühnenarbeiter, der nach der letzten Aufführung den Verstand verloren hat. Scheinbar wurde er nach dem Ende der Produktion ins Sanatorium eingewiesen. Vielleicht ist er immer noch da ...",
       "steps": [
@@ -8615,6 +8631,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Diese Ermittlung würde jeden paranoid machen. Es ist gefährlich, allem, was du findest, eine tiefere Bedeutung beizumessen. Du bist dir aber sicher, dass diese Spange keine Bedeutung hat, vielleicht handelt es sich um eine Requisite aus der Originalinszenierung. Du lässt sie zurück und setzt deine Ermittlung fort. Beim letzten Bericht, den du im Zusammenhang mit der früheren Inszenierung von <u>Der König in Gelb</u> gefunden hast, handelt es sich um ein psychologisches Gutachten über einen gewissen Daniel Chesterfield, einen Bühnenarbeiter, der nach der letzten Aufführung den Verstand verloren hat. Scheinbar wurde er nach dem Ende der Produktion ins Sanatorium eingewiesen. Vielleicht ist er immer noch da ...",
       "steps": [
@@ -8627,6 +8647,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Die Gestalt bricht zusammen und ihr verzerrter, schmelzender Körper zuckt unter Todesqualen. Sie keucht und schreit auf, aus ihrem Mund und ihren Augen dringt ein gelbliches Leuchten. „Daniel“, sagt das Ding mit rauer Stimme. „Finde Daniel ... Daniel Chesterfield, der Bühnenarbeiter. Er wird sich erinnern!“ Eine andere Stimme, die in einer melodischen Sprache flüstert, mischt sich unter die Worte des Mannes. „Finde ihn ... Auch er hat den Eid abgelegt ... Der Eid hat uns alle in die Verdammnis getrieben ...!“ Das sind die letzten Worte des Mannes, bevor die Haut von seinen Knochen schmilzt und diese klappernd auf den Boden fallen.",
       "steps": [
@@ -8639,6 +8663,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "text": "Nach den Ereignissen dieser Nacht bist du völlig erschöpft. Im Anwesen der Gesellschaft für Geschichte konntest du nichts finden, was deine Ermittlungen weiterbringt. Wer auch immer diese Eindringlinge waren, sie müssen dieselben Informationen gesucht haben wie du. Verstört machst du dich auf den Weg zum nächstgelegenen Ort, an dem du in einem Bett etwas Schlaf finden kannst – Ma‘s Gästehaus ist nicht weit entfernt von der Gesellschaft für Geschichte. Als du das Gästehaus erreichst, dämmert es bereits. Tautropfen bedecken Türgriff und Geländer der vorderen Veranda. Du hast Glück, dass es noch ein freies Zimmer gibt. In wenigen Augenblicken bist du eingeschlafen.\nDann fühlst du plötzlich, dass du fällst. Über dir und um dich herum siehst du ein Inferno aus blendendem Licht. Dein Kopf schmerzt fürchterlich und vor deinen Augen tanzen leuchtende Farben. Die Flammen lecken an deiner Haut. Unter dir öffnet sich ein Abgrund und verschluckt dich mit Haut und Haaren. Dann findest du dich in einer feuchten, fensterlosen Zelle wieder und ein stechender Gestank dringt dir in die Nase. In einer Ecke des Raumes kauert ein Mann, der vor Kälte zittert – oder vielleicht wegen der Hoffnungslosigkeit seiner Situation oder beidem. „Keine Maske“, murmelt er immer wieder, „keine Maske, keine Maske ...“ Zögernd gehst du ein paar Schritte auf ihn zu, aber noch bevor du ihn erreichst, öffnet sich ein Metallriegel an der Tür seiner Zelle und du hörst, wie ein Pfleger nach ihm ruft. „Daniel, es ist Zeit“, sagt er. „Daniel, wach auf. Wach auf, Daniel.“ Dann erwachst du.",
       "steps": [
@@ -19911,6 +19939,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Ein dumpfer Schmerz pulsiert in deinem Kopf, während du durch die regennassen Straßen von Arkham zu deinem nächsten Ziel unterwegs bist. Die Bedrohung durch den Fremden ist in deinem Geist immer noch erschreckend präsent. Du merkst, dass du häufig in den Rückspiegel schaust, in der Erwartung, dass dich das ausdruckslose Gesicht seiner Maske wieder heimsucht. Stattdessen siehst du aber nichts als die neblige, sternenlose Nacht und eine menschenleere Straße hinter dir.\nDeine Gedanken kreisen wie schon so oft in den letzten Stunden um Der König in Gelb und die Stadt Carcosa und ihre Einwohner. Welche verborgene Botschaft enthält dieses fürchterliche Stück und was ist die wahre Bedeutung seines Wahnsinns? Dann drängt sich eine Kleinigkeit in dein Bewusstsein, etwas, das du in einem Gespräch im Herrenhaus von Ms. Dumaine mitgehört hast – die heutige Aufführung von <u>Der König in Gelb</u> war nicht die erste dieser widerlichen Inszenierung in Arkham. Es hat mindestens eine weitere Aufführung in der Vergangenheit gegeben, mit demselben Regisseur: Nigel Engram.\nIn Arkham gibt es einen Ort, an dem Aufzeichnungen über wichtige Ereignisse in der Stadt aufbewahrt werden: das Anwesen der Gesellschaft für Geschichte in der Südstadt. Falls es Berichte über die frühere Aufführung von <u>Der König in Gelb</u> gibt, wird die Gesellschaft für Geschichte sie haben. Vielleicht findest du dort die Antworten auf die brennenden Fragen, die deinen Geist quälen."
     },
@@ -19935,6 +19967,10 @@
     },
     {
       "id": "sebastiens_information",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.sebastiens_information",
+        "name": "Sebastien's Information"
+      },
       "type": "story",
       "text": "Du erinnerst dich an etwas, was Sebastien dir auf der Feier erzählt hat. <u>Der König in Gelb</u> gastierte vor einigen Jahrzehnten schon einmal in Arkham, lange bevor es das Ward-Theater gegeben hat. Er war nicht überrascht, dass nur wenige Menschen sich daran erinnern – eines der Ziele der heutigen Aufführung war Der König in Gelb einem breiteren Publikum bekannt zu machen. Die Gesellschaft für Geschichte könnte Aufzeichnungen über diese frühere Inszenierung aufbewahrt haben, besonders wenn damals ähnliche Ereignisse in ihrem Umfeld stattgefunden haben wie heute. Vielleicht findest du dort Zeitungsausschnitte oder andere Berichte über die Ereignisse aus der Vergangenheit."
     },
@@ -20395,6 +20431,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
       "investigator_status": [
         "resigned",
@@ -20409,6 +20449,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Es gibt keine Zufälle, wenn es um <u>Der König in Gelb</u> geht. Du hast keinen Zweifel daran, dass dieses Ding, das du gefunden hast, wichtig ist. Du entscheidest dich dafür, es mitzunehmen, und setzt deine Ermittlungen fort. Beim letzten Bericht, den du im Zusammenhang mit der früheren Inszenierung von <u>Der König in Gelb</u> gefunden hast, handelt es sich um ein psychologisches Gutachten über einen gewissen Daniel Chesterfield, einen Bühnenarbeiter, der nach der letzten Aufführung den Verstand verloren hat. Scheinbar wurde er nach dem Ende der Produktion ins Sanatorium eingewiesen. Vielleicht ist er immer noch da ...",
       "steps": [
@@ -20421,6 +20465,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Diese Ermittlung würde jeden paranoid machen. Es ist gefährlich, allem, was du findest, eine tiefere Bedeutung beizumessen. Du bist dir aber sicher, dass diese Spange keine Bedeutung hat, vielleicht handelt es sich um eine Requisite aus der Originalinszenierung. Du lässt sie zurück und setzt deine Ermittlung fort. Beim letzten Bericht, den du im Zusammenhang mit der früheren Inszenierung von <u>Der König in Gelb</u> gefunden hast, handelt es sich um ein psychologisches Gutachten über einen gewissen Daniel Chesterfield, einen Bühnenarbeiter, der nach der letzten Aufführung den Verstand verloren hat. Scheinbar wurde er nach dem Ende der Produktion ins Sanatorium eingewiesen. Vielleicht ist er immer noch da ...",
       "steps": [
@@ -20433,6 +20481,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Die Gestalt bricht zusammen und ihr verzerrter, schmelzender Körper zuckt unter Todesqualen. Sie keucht und schreit auf, aus ihrem Mund und ihren Augen dringt ein gelbliches Leuchten. „Daniel“, sagt das Ding mit rauer Stimme. „Finde Daniel ... Daniel Chesterfield, der Bühnenarbeiter. Er wird sich erinnern!“ Eine andere Stimme, die in einer melodischen Sprache flüstert, mischt sich unter die Worte des Mannes. „Finde ihn ... Auch er hat den Eid abgelegt ... Der Eid hat uns alle in die Verdammnis getrieben ...!“ Das sind die letzten Worte des Mannes, bevor die Haut von seinen Knochen schmilzt und diese klappernd auf den Boden fallen.",
       "steps": [
@@ -20445,6 +20497,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_path_to_carcosa.echoes_of_the_past.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "text": "Nach den Ereignissen dieser Nacht bist du völlig erschöpft. Im Anwesen der Gesellschaft für Geschichte konntest du nichts finden, was deine Ermittlungen weiterbringt. Wer auch immer diese Eindringlinge waren, sie müssen dieselben Informationen gesucht haben wie du. Verstört machst du dich auf den Weg zum nächstgelegenen Ort, an dem du in einem Bett etwas Schlaf finden kannst – Ma‘s Gästehaus ist nicht weit entfernt von der Gesellschaft für Geschichte. Als du das Gästehaus erreichst, dämmert es bereits. Tautropfen bedecken Türgriff und Geländer der vorderen Veranda. Du hast Glück, dass es noch ein freies Zimmer gibt. In wenigen Augenblicken bist du eingeschlafen.\nDann fühlst du plötzlich, dass du fällst. Über dir und um dich herum siehst du ein Inferno aus blendendem Licht. Dein Kopf schmerzt fürchterlich und vor deinen Augen tanzen leuchtende Farben. Die Flammen lecken an deiner Haut. Unter dir öffnet sich ein Abgrund und verschluckt dich mit Haut und Haaren. Dann findest du dich in einer feuchten, fensterlosen Zelle wieder und ein stechender Gestank dringt dir in die Nase. In einer Ecke des Raumes kauert ein Mann, der vor Kälte zittert – oder vielleicht wegen der Hoffnungslosigkeit seiner Situation oder beidem. „Keine Maske“, murmelt er immer wieder, „keine Maske, keine Maske ...“ Zögernd gehst du ein paar Schritte auf ihn zu, aber noch bevor du ihn erreichst, öffnet sich ein Metallriegel an der Tür seiner Zelle und du hörst, wie ein Pfleger nach ihm ruft. „Daniel, es ist Zeit“, sagt er. „Daniel, wach auf. Wach auf, Daniel.“ Dann erwachst du.",
       "steps": [
