@@ -863,7 +863,7 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "Alejandro a disparu."
           },
           {
             "id": "alejandro_on_his_own",
@@ -919,15 +919,15 @@
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "les investigateurs ont tissé un lien avec Ichtaca"
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "vous suivez votre propre voie"
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "les investigateurs ont trouvé la relique perdue."
           },
           {
             "id": "gave_relic_to_alejandro",
@@ -947,11 +947,11 @@
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "Ichtaca vous fait confiance."
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "Ichtaca est dans les Ténèbres."
           },
           {
             "id": "ichtaca_is_wary",
@@ -967,7 +967,7 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "la foi d'Ichtaca est restaurée."
           },
           {
             "id": "investigators_recovered_relic",
@@ -983,11 +983,11 @@
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "la jungle veille (#name# x#X#).)"
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "les investigateurs ont cartographié la voie d'accès"
           },
           {
             "id": "mended_tear_in_time",
@@ -999,7 +999,7 @@
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "vous connaissez #X# chemins"
           },
           {
             "id": "process_backfired",
@@ -1027,7 +1027,7 @@
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "les investigateurs ont secouru Alejandro."
           },
           {
             "id": "resisted_captivity",
@@ -1068,11 +1068,11 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca est partie sans vous"
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "écouté l'histoire d'Ichtaca"
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -1117,8 +1117,8 @@
       },
       {
         "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "name": "Essence",
+        "description": "Suffisamment pour un long voyage en voiture.",
         "cost": 1,
         "multiple": true
       },
@@ -1127,13 +1127,6 @@
         "name": "Provisions",
         "description": "de l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
         "cost": 1,
-        "multiple": true
-      },
-      {
-        "id": "medicine",
-        "name": "Medicine",
-        "description": "pour lutter contre les maladies, les infections et les venins.",
-        "cost": 2,
         "multiple": true
       },
       {
@@ -1151,14 +1144,14 @@
       },
       {
         "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
+        "name": "Pioche",
+        "description": "Pour briser les surfaces rocheuses.",
         "cost": 2
       },
       {
         "id": "pocketknife",
         "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "description": "Trop petit pour être utilisé comme arme, mais facile à dissimuler.",
         "cost": 2
       },
       {
@@ -1187,19 +1180,13 @@
       },
       {
         "id": "canteen",
-        "name": "Canteen",
-        "description": "à remplir dans les ruisseaux et les rivières.",
-        "cost": 2
-      },
-      {
-        "id": "canteen",
         "name": "Gourde",
         "description": "à remplir dans les ruisseaux et les rivières.",
         "cost": 2
       },
       {
         "id": "map",
-        "name": "Map",
+        "name": "Plan",
         "description": "il n'y a rien dessus, mais avec le temps vous devriez être capable de le compléter.",
         "cost": 3
       },
@@ -2064,7 +2051,7 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "Alejandro a disparu."
           },
           {
             "id": "alejandro_on_his_own",
@@ -2120,15 +2107,15 @@
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "les investigateurs ont tissé un lien avec Ichtaca"
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "vous suivez votre propre voie"
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "les investigateurs ont trouvé la relique perdue."
           },
           {
             "id": "gave_relic_to_alejandro",
@@ -2148,11 +2135,11 @@
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "Ichtaca vous fait confiance."
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "Ichtaca est dans les Ténèbres."
           },
           {
             "id": "ichtaca_is_wary",
@@ -2168,7 +2155,7 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "la foi d'Ichtaca est restaurée."
           },
           {
             "id": "investigators_recovered_relic",
@@ -2184,11 +2171,11 @@
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "la jungle veille (#name# x#X#).)"
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "les investigateurs ont cartographié la voie d'accès"
           },
           {
             "id": "mended_tear_in_time",
@@ -2200,7 +2187,7 @@
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "vous connaissez #X# chemins"
           },
           {
             "id": "process_backfired",
@@ -2224,7 +2211,7 @@
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "les investigateurs ont secouru Alejandro."
           },
           {
             "id": "resisted_captivity",
@@ -2265,11 +2252,11 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca est partie sans vous"
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "écouté l'histoire d'Ichtaca"
           },
           {
             "id": "tasks_completed",
@@ -2285,8 +2272,8 @@
     "supplies": [
       {
         "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "name": "Essence",
+        "description": "Suffisamment pour un long voyage en voiture.",
         "cost": 1,
         "multiple": true
       },
@@ -2295,13 +2282,6 @@
         "name": "Provisions",
         "description": "de l'eau et de la nourriture pour une personne. Incontournable pour tout voyage.",
         "cost": 1,
-        "multiple": true
-      },
-      {
-        "id": "medicine",
-        "name": "Medicine",
-        "description": "pour lutter contre les maladies, les infections et les venins.",
-        "cost": 2,
         "multiple": true
       },
       {
@@ -2319,14 +2299,14 @@
       },
       {
         "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
+        "name": "Pioche",
+        "description": "Pour briser les surfaces rocheuses.",
         "cost": 2
       },
       {
         "id": "pocketknife",
         "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "description": "Trop petit pour être utilisé comme arme, mais facile à dissimuler.",
         "cost": 2
       },
       {
@@ -2355,19 +2335,13 @@
       },
       {
         "id": "canteen",
-        "name": "Canteen",
-        "description": "à remplir dans les ruisseaux et les rivières.",
-        "cost": 2
-      },
-      {
-        "id": "canteen",
         "name": "Gourde",
         "description": "à remplir dans les ruisseaux et les rivières.",
         "cost": 2
       },
       {
         "id": "map",
-        "name": "Map",
+        "name": "Plan",
         "description": "il n'y a rien dessus, mais avec le temps vous devriez être capable de le compléter.",
         "cost": 3
       },
