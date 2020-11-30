@@ -297,7 +297,7 @@ function NewDeckOptionsDialog({
             firstElement={renderNamePicker}
           />
         </View>
-        { cardOptions.length > 0 && cardOptions[0].length > 0 && (
+        { !!find(cardOptions, option => option.length > 0) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <DeckSectionBlock title={t`Required Cards`} faction="neutral">
               { map(cardOptions, (requiredCards, index) => {
