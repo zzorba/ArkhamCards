@@ -2397,11 +2397,11 @@
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "Der Kopfschmuck wurde zum Leuchtturm gebracht."
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "Der Götze wurde zum Leuchtturm gebracht."
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
@@ -2417,7 +2417,7 @@
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "Der Mantel wurde zum Leuchtturm gebracht."
           },
           {
             "id": "marsh_out_for_blood",
@@ -2433,11 +2433,11 @@
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "Der Schrecken des Teufelsriffs ist tot."
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "Der Schrecken des Teufelsriffs ist noch am Leben."
           }
         ]
       },
@@ -2571,15 +2571,15 @@
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic."
+            "text": "eine Entdeckung eines mystischen Relikts."
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol."
+            "text": "eine Entdeckung eines seltsamen Götzen."
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle."
+            "text": "eine Entdeckung eines unheiligen Mantels."
           },
           {
             "id": "encounter_with_a_secret_cult",

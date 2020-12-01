@@ -879,11 +879,11 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Alejandro se souvient de tout."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Alejandro est contre vous."
           },
           {
             "id": "braziers_are_lit",
@@ -899,7 +899,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "investigateurs ont coopéré avec les Yithiens."
           },
           {
             "id": "earned_alejandros_trust",
@@ -939,7 +939,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "les souvenirs des investigateurs ont été effacés."
           },
           {
             "id": "harbinger_alive",
@@ -1003,19 +1003,19 @@
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "le processus a échoué"
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "le processus a échoué de manière spectaculaire"
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "le processus a parfaitement fonctionné"
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "le processus a fonctionné"
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -1031,7 +1031,7 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "les investigateurs ont résisté à l'emprisonnement."
           },
           {
             "id": "sealed_relic_of_ages_forever",
@@ -1084,7 +1084,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "#X# ont été accomplies"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -2067,11 +2067,11 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Alejandro se souvient de tout."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Alejandro est contre vous."
           },
           {
             "id": "braziers_are_lit",
@@ -2087,7 +2087,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "investigateurs ont coopéré avec les Yithiens."
           },
           {
             "id": "earned_alejandros_trust",
@@ -2127,7 +2127,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "les souvenirs des investigateurs ont été effacés."
           },
           {
             "id": "harbinger_alive",
@@ -2191,19 +2191,19 @@
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "le processus a échoué"
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "le processus a échoué de manière spectaculaire"
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "le processus a parfaitement fonctionné"
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "le processus a fonctionné"
           },
           {
             "id": "relic_is_missing",
@@ -2215,7 +2215,7 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "les investigateurs ont résisté à l'emprisonnement."
           },
           {
             "id": "sealed_relic_of_ages_forever",
@@ -2260,7 +2260,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "#X# ont été accomplies"
           },
           {
             "id": "wilds_add_chaos_token",
