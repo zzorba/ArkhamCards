@@ -51,7 +51,6 @@ export default function configureStore(initialState: AppState) {
     // These all have some transient fields and are handled separately.
     blacklist: ['cards', 'decks', 'packs', 'signedIn', 'filters', 'deckEdits'],
     migrate: createMigrate(migrations, { debug: false }),
-    debug: true,
   };
 
   const reducer = persistReducer(
