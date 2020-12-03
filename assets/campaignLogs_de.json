@@ -2429,7 +2429,7 @@
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission was successful."
+            "text": "Die Mission war erfolgreich."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
@@ -2438,6 +2438,10 @@
           {
             "id": "terror_of_devil_reef_is_still_alive",
             "text": "Der Schrecken des Teufelsriffs ist noch am Leben."
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "die Gezeiten sind stärker geworden."
           }
         ]
       },

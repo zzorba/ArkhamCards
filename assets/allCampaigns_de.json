@@ -814,6 +814,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Durch die Ereignisse im Museum bist du gezwungen Armitages Geschichte über Dunwich erneut zu überdenken. Das kann alles kein Zufall sein – Wilbur Whateley, das Necronomicon, die Kreatur von Dunwich und die Menschen und Wesen, die dich hier in Arkham angegriffen haben – zwischen all dem muss es einen Zusammenhang geben. Du bist dir jetzt sicher, wohin dich dein Weg als Nächstes führen wird: in den einsamen und trostlosen Ort Dunwich.\nDu denkst darüber nach, der Polizei von Massachusetts alles zu erzählen, was du weißt, aber die Nachteile würden die Vorteile überwiegen. Sie würden deine Geschichte sowieso für eine völlig absurde Lüge halten. Schlimmer noch, sie könnten dich verhaften. Immerhin warst du in einer illegalen Kneipe und bist widerrechtlich ins Museum eingedrungen. Also entscheidest du dich stattdessen selbst weitere Ermittlungen in Dunwich anzustellen.\nDu packst alles ein, was du möglicherweise brauchen kannst, und schaffst es, in dieser Nacht noch ein wenig Ruhe zu finden. Am Morgen brichst du zum Bahnhof in der Nordstadt auf und kaufst dir eine Fahrkarte. Dunwich liegt einige Stunden mit dem Zug in nordöstlicher Richtung durch das Tal des Miskatonic. Es gibt keinen Bahnhof in Dunwich, aber Armitage hat einen Verbündeten in dem kleinen Ort, den du anrufst: einen Mann namens Zebulon Whateley, der ebenfalls Teil der Geschehnisse vor einigen Monaten war.\nAus Armitages Notizen erfährst du, dass Whateleys Familie weit verzweigt ist, ein Teil von ihr ist dekadent und skrupellos, andere wiederum sind „unverdorben“ und nicht von bösen Kräften oder teuflischen Ritualen berührt. Armitage meint, dass Zebulons Zweig der Familie irgendwo dazwischen liegt, dass sie zwar um die Traditionen ihrer Vorfahren wissen, aber nicht von ihnen korrumpiert worden sind. Zebulon bietet dir an dich am nächstgelegenen Bahnhof abzuholen und in den Ort zu fahren.\nAls der Zug den Bahnhof von Arkham verlässt, fühlst du, wie die Ereignisse der letzten Nacht von dir Besitz ergreifen und dich die Müdigkeit überwältigt. Aber noch bevor du dein Ziel sicher erreichen kannst, beginnt der Zug plötzlich zu rumpeln und zu beben und weckt dich so aus deinen Tagträumen. Dann bleibt der Zug mit einem lauten Kreischen schlagartig stehen und hinter dir hörst du ein Scheppern ..."
     },
@@ -1142,6 +1146,10 @@
   "resolutions": [
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.investigator_defeat",
+        "name": "Investigator Defeat"
+      },
       "title": "Besiegter Ermittler",
       "text": "Auch wenn du dich nicht klar daran erinnern kannst, waren deine Erfahrungen jenseits des Tores doch beängstigend. An den Rändern deines verwirrten Geistes wirbeln die Erinnerungen an hypnotisierende Lichter, Wahrnehmungen, die nicht von dieser Welt sein können, um einen völlig verzerrten Raum herum. Eine unirdische Stimme aus dem Jenseits klingt in deinen Ohren, aber was ihre Worte bedeuten sollen, ist dir ein Rätsel. Du bist in den Wäldern einige Meilen vom Miskatonic entfernt wieder zu dir gekommen. Um dich herum siehst du zerstörte Zugwagen. Sie scheinen durch einen wuchtigen Schlag zerschmettert worden zu sein, aber sie sind auch von Rost und Schmutz bedeckt, als würden sie schon jahrelang hier liegen. Von den anderen Fahrgästen fehlt jede Spur.",
       "steps": [
@@ -1168,6 +1176,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_1",
+        "name": "Resolution 1"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -1183,6 +1195,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_2",
+        "name": "Resolution 2"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -8896,7 +8912,7 @@
     {
       "id": "house_choice",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.intro",
+        "id": "the_path_to_carcosa.interlude_1.intro",
         "name": "Intro"
       },
       "type": "input",
@@ -9190,7 +9206,7 @@
     {
       "id": "reward_1",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_1",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_1",
         "name": "Lunacy's Reward 1"
       },
       "type": "story",
@@ -9199,7 +9215,7 @@
     {
       "id": "reward_2",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_2",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_2",
         "name": "Lunacy's Reward 2"
       },
       "type": "story",
@@ -9208,7 +9224,7 @@
     {
       "id": "reward_3",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_3",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_3",
         "name": "Lunacy's Reward 3"
       },
       "type": "story",
@@ -11795,6 +11811,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Durch die Ereignisse im Museum bist du gezwungen Armitages Geschichte über Dunwich erneut zu überdenken. Das kann alles kein Zufall sein – Wilbur Whateley, das Necronomicon, die Kreatur von Dunwich und die Menschen und Wesen, die dich hier in Arkham angegriffen haben – zwischen all dem muss es einen Zusammenhang geben. Du bist dir jetzt sicher, wohin dich dein Weg als Nächstes führen wird: in den einsamen und trostlosen Ort Dunwich.\nDu denkst darüber nach, der Polizei von Massachusetts alles zu erzählen, was du weißt, aber die Nachteile würden die Vorteile überwiegen. Sie würden deine Geschichte sowieso für eine völlig absurde Lüge halten. Schlimmer noch, sie könnten dich verhaften. Immerhin warst du in einer illegalen Kneipe und bist widerrechtlich ins Museum eingedrungen. Also entscheidest du dich stattdessen selbst weitere Ermittlungen in Dunwich anzustellen.\nDu packst alles ein, was du möglicherweise brauchen kannst, und schaffst es, in dieser Nacht noch ein wenig Ruhe zu finden. Am Morgen brichst du zum Bahnhof in der Nordstadt auf und kaufst dir eine Fahrkarte. Dunwich liegt einige Stunden mit dem Zug in nordöstlicher Richtung durch das Tal des Miskatonic. Es gibt keinen Bahnhof in Dunwich, aber Armitage hat einen Verbündeten in dem kleinen Ort, den du anrufst: einen Mann namens Zebulon Whateley, der ebenfalls Teil der Geschehnisse vor einigen Monaten war.\nAus Armitages Notizen erfährst du, dass Whateleys Familie weit verzweigt ist, ein Teil von ihr ist dekadent und skrupellos, andere wiederum sind „unverdorben“ und nicht von bösen Kräften oder teuflischen Ritualen berührt. Armitage meint, dass Zebulons Zweig der Familie irgendwo dazwischen liegt, dass sie zwar um die Traditionen ihrer Vorfahren wissen, aber nicht von ihnen korrumpiert worden sind. Zebulon bietet dir an dich am nächstgelegenen Bahnhof abzuholen und in den Ort zu fahren.\nAls der Zug den Bahnhof von Arkham verlässt, fühlst du, wie die Ereignisse der letzten Nacht von dir Besitz ergreifen und dich die Müdigkeit überwältigt. Aber noch bevor du dein Ziel sicher erreichen kannst, beginnt der Zug plötzlich zu rumpeln und zu beben und weckt dich so aus deinen Tagträumen. Dann bleibt der Zug mit einem lauten Kreischen schlagartig stehen und hinter dir hörst du ein Scheppern ..."
     },
@@ -12128,6 +12148,10 @@
   "resolutions": [
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.investigator_defeat",
+        "name": "Investigator Defeat"
+      },
       "title": "Besiegter Ermittler",
       "text": "Auch wenn du dich nicht klar daran erinnern kannst, waren deine Erfahrungen jenseits des Tores doch beängstigend. An den Rändern deines verwirrten Geistes wirbeln die Erinnerungen an hypnotisierende Lichter, Wahrnehmungen, die nicht von dieser Welt sein können, um einen völlig verzerrten Raum herum. Eine unirdische Stimme aus dem Jenseits klingt in deinen Ohren, aber was ihre Worte bedeuten sollen, ist dir ein Rätsel. Du bist in den Wäldern einige Meilen vom Miskatonic entfernt wieder zu dir gekommen. Um dich herum siehst du zerstörte Zugwagen. Sie scheinen durch einen wuchtigen Schlag zerschmettert worden zu sein, aber sie sind auch von Rost und Schmutz bedeckt, als würden sie schon jahrelang hier liegen. Von den anderen Fahrgästen fehlt jede Spur.",
       "steps": [
@@ -12154,6 +12178,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_1",
+        "name": "Resolution 1"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -12169,6 +12197,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_2",
+        "name": "Resolution 2"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -16694,7 +16726,7 @@
     {
       "id": "house_choice",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.intro",
+        "id": "the_path_to_carcosa.interlude_1.intro",
         "name": "Intro"
       },
       "type": "input",
@@ -16988,7 +17020,7 @@
     {
       "id": "reward_1",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_1",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_1",
         "name": "Lunacy's Reward 1"
       },
       "type": "story",
@@ -16997,7 +17029,7 @@
     {
       "id": "reward_2",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_2",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_2",
         "name": "Lunacy's Reward 2"
       },
       "type": "story",
@@ -17006,7 +17038,7 @@
     {
       "id": "reward_3",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_3",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_3",
         "name": "Lunacy's Reward 3"
       },
       "type": "story",
@@ -26643,7 +26675,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "text": "Der Chaosbeutel wird aus folgenden Markern zusammengestellt: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -26675,15 +26707,15 @@
     },
     {
       "id": "setup_standalone_log_1",
-      "text": "<i>You are not forging your own path.</i>"
+      "text": "<i>Du hast nicht deinen eigenen Weg gewählt.</i>"
     },
     {
       "id": "setup_standalone_log_2",
-      "text": "<i>Ichtaca's faith is not restored.</i>"
+      "text": "<i>Ichtacas Vertrauen ist nicht wiederhergestellt.</i>"
     },
     {
       "id": "setup_standalone_log_3",
-      "text": "<i>The relic is missing.</i>",
+      "text": "<i>Das Relikt ist verschwunden.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -26695,25 +26727,25 @@
     },
     {
       "id": "explain_difficulty",
-      "text": "The investigators may choose how many tally marks are under “Yig’s Fury.” The lower the number chosen, the safer and easier the scenario will be.",
+      "text": "Die Ermittler dürfen wählen, wie viele Zählstriche sie unter „Yigs Zorn“ notierten. Je niedriger die Zahl ist, desto sicherer und einfacher wird das Szenario.",
       "bullets": [
         {
-          "text": "For a safer and easier experience, choose 0 or 5."
+          "text": "Für eine sichere und einfache Spielerfahrung sollte 0 oder 5 gewählt werden."
         },
         {
-          "text": "For an average experience, choose 10 or 14."
+          "text": "Für eine normale Spielerfahrung wäre 10 oder 14 die richtige Wahl."
         },
         {
-          "text": "For a more brutal experience, choose 17 or 20. "
+          "text": "Für eine deutlich brutalere Spielerfahrung sollten die Spieler 17 oder 20 wählen. "
         },
         {
-          "text": "For the ultimate challenge, choose 21 or higher."
+          "text": "Die ultimative Herausforderung erhalten sie bei einer Wahl von 21 oder mehr."
         }
       ]
     },
     {
       "id": "choose_yigs_fury",
-      "text": "Choose the amount of \"Yig's Fury\" to start with:",
+      "text": "Wähle die Anzahl der Zählstriche unter „Yigs Zorn“:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -26807,11 +26839,11 @@
     },
     {
       "id": "setup_standalone_supplies",
-      "text": "<i>You have no supplies.</i>"
+      "text": "<i>Du hast keine Ausrüstung.</i>"
     },
     {
       "id": "standalone_unwinnable",
-      "text": "This scenario is <b>unwinnable</b> in Standalone Mode. Your goal is to continue playing for as long as you can. Once each investigator has been defeated, the current depth level will determine how well you performed."
+      "text": "Dieses Szenario kann im Einzelspielmodus <b>nicht gewonnen</b> werden. Das Ziel ist es, so lange wie möglich zu spielen. Sobald jeder Ermittler besiegt worden ist, wird durch die aktuelle Tiefenstufe bestimmt, wie erfolgreich sie waren."
     },
     {
       "id": "intro_1",
@@ -34842,8 +34874,8 @@
 },
 {
   "id": "in_the_labyrinths_of_lunacy",
-  "scenario_name": "The Labyrinths of Lunacy",
-  "full_name": "The Labyrinths of Lunacy",
+  "scenario_name": "Die Labyrinthe des Irrsinns",
+  "full_name": "Die Labyrinthe des Irrsinns",
   "side_scenario_type": "standalone",
   "xp_cost": 3,
   "standalone_setup": [
@@ -34935,18 +34967,18 @@
       "id": "paradox_rule",
       "type": "rule_reminder",
       "title": "Paradox",
-      "text": "The Labyrinths of Lunacy is a strange place. You will sometimes be confronted with seemingly impossible situations. Game text on cards might not make sense at first. Solving these paradoxes is the key to your survival. Keep a keen eye and be aware of your surroundings, and you <i>might</i> escape."
+      "text": "Die Labyrinthe des Irrsinns bestehen aus fremdartigen Orten. Die Ermittler werden gelegentlich mit scheinbar unmöglichen Situationen konfrontiert. Der Spieltext auf Karten ergibt möglicherweise auf den ersten Blick keinen Sinn, aber die Lösung dieser Paradoxien ist der Schlüssel zum Überleben. Die Ermittler sollten ihre Umgebung jeder zeit genau im Auge behalten und sich ihrer bewusst sein, um möglicher weise entkommen zu können."
     },
     {
       "id": "ask_epic_multiplayer",
       "type": "input",
-      "text": "Select how you would like to play this scenario:",
+      "text": "Wähle, wie dieses Szenario gespielt werden soll:",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "epic_multiplayer",
-            "text": "Epic Multiplayer",
+            "text": "Epischer Mehrspielermodus",
             "effects": [
               {
                 "type": "campaign_log",
@@ -34965,7 +34997,7 @@
           },
           {
             "id": "single_group",
-            "text": "Single Group",
+            "text": "Einzelgruppenmodus",
             "steps": [
               "timed_objective_rule_single",
               "story_rule",
@@ -34978,83 +35010,83 @@
     {
       "id": "timed_objective_rule_single",
       "type": "rule_reminder",
-      "title": "“Timed” objectives",
-      "text": "Many act cards in this scenario have special objectives marked with the word <b>Timed</b>. These act cards represent a task or condition the investigators must perform by the time the agenda advances. <b>Investigators do not advance the act card as soon as this condition is met. They must first wait for the agenda to advance.</b>\nIn this scenario, the act and agenda cards do not advance independently of one another; when the agenda advances, it will instruct you to advance the act card, as well. The back of each act card will have further instructions based on whether or not you were able to succeed in your task.\nWhen playing in <i>Single Group Mode</i>, if the investigators feel that they have completed their objective with time to spare, when adding doom tokens to the agenda during the mythos phase, they may choose to add doom tokens to the agenda until its doom threshold is satisfied."
+      "title": "„Zeitbegrenzte“ Ermittlungsziele",
+      "text": "Viele Szenenkarten in diesem Szenario haben besondere Ermittlungsziele, die das Wort <b>Zeitbegrenzt</b> beinhalten. Diese Szenenkarten stehen für Aufgaben oder Bedingungen, welche die Ermittler durchführen müssen, bevor die Agenda vorrückt. <b>Die Ermittler rücken nicht von der Szenenkarte vor, wenn diese Bedingung erfüllt ist.</b> Sie müssen zunächst abwarten, bis die Agenda vorrückt.\nIn diesem Szenario rücken die Szenen- und Agendakarten nicht unabhängig voneinander vor. Sobald die Agenda vorrückt, weist sie die Spieler an auch von der Szenenkarte vorzurücken. Die Rückseite jeder Szenenkarte enthält weitere Anweisungen, abhängig davon, ob die Ermittler es geschafft haben, ihre Aufgabe zu erfüllen oder nicht.\nWenn im <i>Einzelgruppenmodus</i> gespielt wird und die Ermittler der Meinung sind, sie haben ihr Ermittlungsziel erfüllt und noch Zeit übrig, dürfen sie sich in der Mythosphase, sobald Verderbensmarker der Agenda hinzugefügt werden, dafür entscheiden, Verderbensmarker der Agenda hinzuzufügen, bis der Verderbenschwellenwert erreicht ist."
     },
     {
       "id": "timed_objective_rule_epic",
       "type": "rule_reminder",
-      "title": "“Timed” objectives",
-      "text": "Many act cards in this scenario have special objectives marked with the word <b>Timed</b>. These act cards represent a task or condition the investigators must perform by the time the agenda advances. <b>Investigators do not advance the act card as soon as this condition is met. They must first wait for the agenda to advance.</b>\nIn this scenario, the act and agenda cards do not advance independently of one another; when the agenda advances, it will instruct you to advance the act card, as well. The back of each act card will have further instructions based on whether or not you were able to succeed in your task.\nWhen playing in <i>Epic Multiplayer Mode</i>, a group cannot advance to the next act and agenda until all other groups are ready to advance to the next act and agenda."
+      "title": "„Zeitbegrenzte“ Ermittlungsziele",
+      "text": "Viele Szenenkarten in diesem Szenario haben besondere Ermittlungsziele, die das Wort <b>Zeitbegrenzt</b> beinhalten. Diese Szenenkarten stehen für Aufgaben oder Bedingungen, welche die Ermittler durchführen müssen, bevor die Agenda vorrückt. <b>Die Ermittler rücken nicht von der Szenenkarte vor, wenn diese Bedingung erfüllt ist.</b> Sie müssen zunächst abwarten, bis die Agenda vorrückt.\nIn diesem Szenario rücken die Szenen- und Agendakarten nicht unabhängig voneinander vor. Sobald die Agenda vorrückt, weist sie die Spieler an auch von der Szenenkarte vorzurücken. Die Rückseite jeder Szenenkarte enthält weitere Anweisungen, abhängig davon, ob die Ermittler es geschafft haben, ihre Aufgabe zu erfüllen oder nicht.\nWenn im <i>Epischen Mehrspielermodus</i> gespielt wird, kann keine Gruppe zur nächsten Szene oder Agenda vorrücken, bis alle anderen Gruppen ebenfalls dazu bereit sind, zur nächsten Szene und Agenda vorzurücken."
     },
     {
       "id": "story_rule",
       "type": "rule_reminder",
       "title": "Handlungskarten",
-      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and game text. When a story card is drawn, read its story text and resolve its <b>Revelation</b> effect. Its game text is considered active for as long as the card is in play. The story cards in this scenario are double sided, with one side entitled “Deep Within the Labyrinth.” Do not flip them to this  until you are instructed to do so."
+      "text": "Handlungskarten sind eine neue Kartenart in diesem Szenario. Diese Karten dienen als neue Möglichkeit, die Kampagne mit noch mehr erzählter Handlung und Spieltext zu füllen. Sobald eine Handlungskarte gezogen wird, wird einfach der Handlungstext auf der Karte vorgelesen und ihr <b>Enthüllung</b>-Effekt abgehandelt. Ihr Spieltext gilt als aktiv, solange die Karte im Spiel ist. Die Handlungskarten in diesem Szenario sind doppelseitig bedruckt: Eine der Seiten hat jeweils die Überschrift „Tief im Labyrinth“. Die Karten werden erst dann auf diese Seite umgedreht, wenn die Spieler die Anweisung dazu erhalten."
     },
     {
       "id": "time_limit_rule",
       "type": "rule_reminder",
-      "title": "Time Limit",
-      "text": "When playing in <i>Epic Multiplayer Mode</i>, the players (or your event organizer) may impose a time restriction for each act and agenda of the game. The default limit for each act and agenda is <b>60 minutes</b>. The players (or your event organizer) may impose a different time restriction, often depending on the number of players. If time runs out, any groups that have not yet completed the current round should continue playing until the next mythos phase, then place doom on the current agenda until its doom threshold is met and advance the agenda."
+      "title": "Zeitbeschränkung",
+      "text": "Wenn im <i>Epischen Mehrspielermodus</i> gespielt wird, können die Spieler (oder der Organisator des Spiels) eine Zeitbeschränkung für jede Szene und Agenda im Spiel festlegen. Die Standard-Zeitbeschränkung für jede Szene und Agenda beträgt <b>60 Minuten</b>. Die Spieler (oder der Organisator des Spiels) dürfen eine andere Zeitbeschränkung festlegen, die zum Beispiel von der Anzahl der Spieler abhängt. Falls die Zeit abläuft , sollten alle Gruppen, welche die aktuelle Runde noch nicht abgeschlossen haben, bis zur nächsten Mythosphase weiterspielen, dann so viele Verderbensmarker auf die aktuelle Agenda platzieren, bis der Verderbensschwellenwert erreicht ist, und zur nächsten Agenda vorrücken."
     },
     {
       "id": "giving_and_exchanging_rule",
       "type": "rule_reminder",
-      "title": "Giving and Exchanging Cards and Tokens",
-      "text": "When playing this scenario in Epic Multiplayer Mode, there are some effects that allow investigators the option to give tokens, cards in hand, or assets in play to investigators in other groups.\nPlease be courteous when receiving cards from another player, and treat those cards with respect. Once the game has ended, make sure any cards or tokens that changed control are returned to their respective owners."
+      "title": "Karten und Marker geben oder austauschen",
+      "text": "Wenn dieses Szenario im Epischen Mehrspielermodus gespielt wird, gibt es einige Effekte, die es den Ermittlern erlauben, Marker, Handkarten oder Vorteile im Spiel an Ermittler in anderen Gruppen zu geben. \nDie Spieler sollten darauf achten, Karten, die sie von anderen Spielern erhalten haben, vorsichtig zu behandeln. Endet das Spiel, sollte sichergestellt werden, dass alle Karten und Marker, die unter die Kontrolle eines anderen Spielers geraten sind, wieder ihrem Besitzer zurückgegeben werden."
     },
     {
       "id": "epic_multiplayer_mode",
       "type": "rule_reminder",
-      "title": "Epic Multiplayer Mode",
-      "text": "To play <i>The Labyrinths of Lunacy</i> in <i>Epic Multiplayer Mode</i>, first divide the investigators into three separate groups—Group A, Group B, and Group C. Each group requires its own copy of The Labyrinths of Lunacy in order to play. At least 1 investigator must be assigned to each group, and no more than 4 investigators may be assigned to a single group.\nDuring gameplay, observe the following additional rules:",
+      "title": "Epischer Mehrspielermodus",
+      "text": "Um <i>Die Labyrinthe des Irrsinns</i> im <i>Epischen Mehrspielermodus</i> zu spielen, sollten die Ermittler zuerst in 3 Gruppen aufgeteilt werden – Gruppe A, Gruppe B und Gruppe C. Jede Gruppe benötigt zum Spielen eine eigene Kopie von Die Labyrinthe des Irrsinns. Jeder Gruppe muss mindestens 1 Ermittler zugewiesen werden und keiner Gruppe dürfen mehr als 4 Ermittler zugewiesen werden. \nWährend des Spiels müssen folgende zusätzliche Regeln beachtet werden:",
       "bullets": [
         {
-          "text": "When constructing decks for <i>The Labyrinths of Lunacy</i>, use the rules for standalone mode on page 19 of the Rules Reference. You do not need to start with 0 experience."
+          "text": "Bei der Erstellung von Decks für <i>Die Labyrinthe des Irrsinns</i> werden die Regeln für das Einzelspielszenario auf Seite 8 des Referenzhandbuchs verwendet. Die Spieler müssen nicht unbedingt mit 0\u001fErfahrungspunkten starten."
         },
         {
-          "text": "Each group has its own play area, and plays the game separately from one another. Rules, actions, and card effects cannot affect investigators in other groups, unless explicitly stated otherwise."
+          "text": "Jede Gruppe hat ihre eigene Spielzone und spielt unabhängig von den anderen Gruppen. Regeln, Aktionen und Karteneffekte können nicht Ermittler in anderen Gruppen betreffen, außer wenn dies ausdrücklich angegeben ist."
         },
         {
-          "text": "At the end of each round, investigators must pause the game and wait until all three groups have reached the end of the round. At that point, each group may trigger “At the end of the round” abilities, in any order. Once all three groups have triggered “At the end of the round” abilities, continue to the next round."
+          "text": "Am Ende jeder Runde müssen die Ermittler eine Spielpause einlegen und abwarten, bis alle 3 Gruppen das Ende der Runde erreicht haben. Zu diesem Zeitpunkt darf jede Gruppe „Am Ende der Runde“-Fähigkeiten in beliebiger Reihenfolge auslösen. Sobald alle 3 Gruppen ihre „Am Ende der Runde“-Fähigkeiten ausgelöst haben, wird das Spiel mit der nächsten Runde fortgesetzt."
         },
         {
-          "text": "With the exception of asking other groups whether they have reached the end of the round, <b>investigators cannot communicate with investigators in other groups</b>, unless a scenario card permits them to do so. Investigators also cannot examine other groups’ play areas. <i>(For the best effect, groups should play at different tables or in different rooms.)</i>"
+          "text": "Die Spieler dürfen die anderen Gruppen fragen, ob sie das Ende der Runde erreicht haben, <b>ansonsten dürfen die Ermittler nicht mit Ermittlern in anderen Gruppen kommunizieren</b>, außer wenn eine Szenariokarte dies ausdrücklich erlaubt. Die Ermittler dürfen außerdem nicht die Karten in den Spielzonen anderer Gruppen ansehen. <i>(Für ein bestmögliches Spielerlebnis sollten die Spieler an verschiedenen Tischen oder sogar in verschiedenen Räumen spielen.)</i>"
         }
       ]
     },
     {
       "id": "single_group_mode",
       "type": "rule_reminder",
-      "title": "Single Group Mode",
-      "text": "When played in <i>Single Group Mode</i>, <i>The Labyrinths of Lunacy</i> can be played in one of two ways—as a single standalone scenario, or over a series of three games, like a mini-campaign.\nWhen played as a single standalone scenario, you may play as either Group A, B, or C. Use the setup instructions for the group chosen to set up the game.\nWhen played as a mini-campaign, play three consecutive games—one for each group—in an order of your choosing. Unlike a normal campaign, the following rules apply:",
+      "title": "Einzelgruppenmodus",
+      "text": "Im Einzelgruppenmodus können Die Labyrinthe des Irrsinns auf 2 Arten gespielt werden – als Einzelspielszenario oder als Reihe von 3 Spielen als Minikampagne. \nSobald im Einzelspielszenario gespielt wird, dürfen die Ermittler entweder als Gruppe A, Gruppe B oder Gruppe C spielen. Dabei werden die Vorbereitungsanweisungen der gewählten Gruppe bei der Spielvorbereitung verwendet. \nBeim Spiel als Minikampagne werden 3 Spiele in Folge gespielt – 1 für jede Gruppe. Die Reihenfolge darf dabei von den Spielern frei gewählt werden. Anders als bei anderen Kampagnen gelten folgende Regeln:",
       "bullets": [
         {
-          "text": "When constructing decks for <i>The Labyrinths of Lunacy</i>, use the rules for standalone mode on page 19 of the Rules Reference. You do not need to start with 0 experience."
+          "text": "Bei der Erstellung von Decks für <i>Die Labyrinthe des Irrsinns</i> werden die Regeln für das Einzelspielszenario auf Seite 8 des Referenzhandbuchs verwendet. Die Spieler müssen nicht unbedingt mit 0\u001fErfahrungspunkten starten."
         },
         {
-          "text": "Players may swap investigators and/or decks in between each scenario, in order to represent the different groups of investigators who have been trapped inside the Labyrinths."
+          "text": "Die Spieler dürfen zwischen den Szenarien ihre Ermittler und/oder Decks wechseln, um die verschiedenen Ermittlergruppen, die in den Labyrinthen gefangen sind, darzustellen."
         },
         {
-          "text": "Experience is not earned or spent in between scenarios during this campaign."
+          "text": "In dieser Kampagne verdienen die Spieler zwischen den Szenarien keine Erfahrungspunkte und können sie auch nicht ausgeben."
         },
         {
-          "text": "There is no Campaign Log for this campaign. During this campaign, investigators do not earn trauma, and investigators who are <b>killed</b> or driven <b>insane</b> may still be used in other scenarios."
+          "text": "Für diese Kampagne existiert kein Kampagnenlogbuch. Während der Kampagne verdienen die Ermittler keine Traumata und <b>getötete</b> oder <b>wahnsinnige</b> Ermittler dürfen in anderen Szenarien verwendet werden."
         }
       ]
     },
     {
       "id": "ask_group",
       "type": "input",
-      "text": "Which group's setup instruction do you want to read:",
+      "text": "Für welche Gruppe sollen die Anweisungen angezeigt werden:",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "group_a",
-            "text": "Group A",
+            "text": "Gruppe A",
             "effects": [
               {
                 "type": "campaign_log",
@@ -35077,7 +35109,7 @@
           },
           {
             "id": "group_b",
-            "text": "Group B",
+            "text": "Gruppe B",
             "effects": [
               {
                 "type": "campaign_log",
@@ -35100,7 +35132,7 @@
           },
           {
             "id": "group_c",
-            "text": "Group C",
+            "text": "Gruppe C",
             "effects": [
               {
                 "type": "campaign_log",
@@ -35127,20 +35159,20 @@
     {
       "id": "intro_a",
       "type": "story",
-      "title": "Group A Instructions",
-      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+      "title": "Anweisungen für Gruppe A",
+      "text": "Du wachst an einem fremdartigen Ort auf, kannst dich aber nicht daran erinnern, wie du hierher gekommen bist. Deine Muskeln sind schwach und reagieren nicht. Du kannst nur noch verschwommen sehen. Schon das einfache Heben deiner Füße ist eine enorme Anstrengung. Deine Beine sind wacklig und kaum in der Lage, dein Gewicht zu tragen. Zum ersten Mal seit deinem Erwachen untersuchst du deine Umgebung. Du bist in einem fensterlosen Raum mit Kupferrohren an Wänden und Decke eingesperrt. Von allen Seiten hörst du das leise Zischen austretender Luft. Du bist hier gefangen, ohne Möglichkeit, zu entkommen. Auf dem Boden neben dir liegt ein Zettel. Darauf steht:\n<fancy>Grüße.</fancy>\n<fancy>Ich habe euch für ein Experiment an diesen Ort gebracht. Betrachtet dies als eine Prüfung der menschlichen Willenskraft. Ihr werdet überleben. Oder ihr werdet sterben.</fancy><fancy>Ihr seid nicht allein. Euer Schicksal wird von zwei weiteren Gruppen geteilt. Werdet ihr euer Leben aufs Spiel setzen, um ihnen zu helfen? Oder werdet ihr eure Freiheit auf Kosten ihrer Leben gewinnen?</fancy>\n<fancy>Ich erlaube euch zu entkommen, aber nur wenn ihr euch als willensstark und geistesgegenwärtig erweist. Falls nicht, werden euer Schmerz und euer Leid als Erinnerung daran dienen, dass nicht die Menschen die Erben dieser Erde sind.</fancy>"
     },
     {
       "id": "intro_b",
       "type": "story",
-      "title": "Group B Instructions",
-      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+      "title": "Anweisungen für Gruppe B",
+      "text": "Du wachst an einem fremdartigen Ort auf, kannst dich aber nicht daran erinnern, wie du hierher gekommen bist. Deine Muskeln sind schwach und reagieren nicht. Du kannst nur noch verschwommen sehen. Schon das einfache Heben deiner Füße ist eine enorme Anstrengung. Deine Beine sind wacklig und kaum in der Lage, dein Gewicht zu tragen. \nZum ersten Mal seit deinem Erwachen untersuchst du deine Umgebung. Du bist in einem großen Tank aus Glas gefangen und das Wasser darin reicht dir bis zu deinen Knöcheln. Durch das trübe Glas siehst du in einem Nebel noch mehr Tanks, die dem deinen gleichen. Du bist hier gefangen, ohne Möglichkeit, zu entkommen. Auf dem Boden neben dem Becken liegt ein Zettel. Darauf steht:\n<fancy>Grüße.</fancy>\n<fancy>Ich habe euch für ein Experiment an diesen Ort gebracht. Betrachtet dies als eine Prüfung der menschlichen Willenskraft. Ihr werdet überleben. Oder ihr werdet sterben.</fancy><fancy>Ihr seid nicht allein. Euer Schicksal wird von zwei weiteren Gruppen geteilt. Werdet ihr euer Leben aufs Spiel setzen, um ihnen zu helfen? Oder werdet ihr eure Freiheit auf Kosten ihrer Leben gewinnen?</fancy>\n<fancy>Ich erlaube euch zu entkommen, aber nur wenn ihr euch als willensstark und geistesgegenwärtig erweist. Falls nicht, werden euer Schmerz und euer Leid als Erinnerung daran dienen, dass nicht die Menschen die Erben dieser Erde sind.</fancy>"
     },
     {
       "id": "intro_c",
       "type": "story",
-      "title": "Group C Instructions",
-      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+      "title": "Anweisungen für Gruppe C",
+      "text": "Du wachst an einem fremdartigen Ort auf, kannst dich aber nicht daran erinnern, wie du hierher gekommen bist. Deine Muskeln sind schwach und reagieren nicht. Du kannst nur noch verschwommen sehen. Schon das einfache Heben deiner Füße ist eine enorme Anstrengung. Deine Beine sind wacklig und kaum in der Lage, dein Gewicht zu tragen. \nZum ersten Mal seit deinem Erwachen untersuchst du deine Umgebung. Du befindest dich in einem düsteren Raum, der nur von einigen Kerzen beleuchtet wird. Er ist vollgestopft mit alten Fässern, Kisten und morschen Regalen. Du kannst kein Fenster und keine Tür sehen, die aus dem Raum hinausführen könnte. Du bist hier gefangen, ohne Möglichkeit, zu entkommen. Auf dem Boden neben dir liegt ein Zettel. Darauf steht::\n<fancy>Grüße.</fancy>\n<fancy>Ich habe euch für ein Experiment an diesen Ort gebracht. Betrachtet dies als eine Prüfung der menschlichen Willenskraft. Ihr werdet überleben. Oder ihr werdet sterben.</fancy><fancy>Ihr seid nicht allein. Euer Schicksal wird von zwei weiteren Gruppen geteilt. Werdet ihr euer Leben aufs Spiel setzen, um ihnen zu helfen? Oder werdet ihr eure Freiheit auf Kosten ihrer Leben gewinnen?</fancy>\n<fancy>Ich erlaube euch zu entkommen, aber nur wenn ihr euch als willensstark und geistesgegenwärtig erweist. Falls nicht, werden euer Schmerz und euer Leid als Erinnerung daran dienen, dass nicht die Menschen die Erben dieser Erde sind.</fancy>"
     },
     {
       "id": "gather_encounter_sets",
@@ -35176,45 +35208,45 @@
     },
     {
       "id": "gather_epic_encounter_sets",
-      "text": "Because you are playing in <i>Epic Multiplayer Mode</i>, gather all cards from the <i>Epic Multiplayer</i> encounter set.",
+      "text": "Da im <i>Epischen Mehrspielermodus<i> gespielt wird, werden alle Karten aus dem Begegnungsset <i>Epischer Mehrspielermodus</i> herausgesucht.",
       "type": "encounter_sets",
       "encounter_sets": [
         "epic_multiplayer"
       ],
-      "subtext": "Remove all cards from the <i>Single Group</i> encounter set from the game."
+      "subtext": "Alle Karten aus dem Begegnungsset <i>Einzelgruppe</i> werden aus dem Spiel entfernt."
     },
     {
       "id": "gather_single_encounter_sets",
-      "text": "Because you are playing in <i>Single Group Mode</i>, gather all cards from the <i>Single Group</i> encounter set.",
+      "text": "Da im <i>Einzelgruppenmodus</i> gespielt wird, werden alle Karten aus dem Begegnungsset <i>Einzelgruppe</i> herausgesucht.",
       "type": "encounter_sets",
       "encounter_sets": [
         "single_group"
       ],
-      "subtext": "Remove all cards from the <i>Epic Multiplayer</i> encounter set from the game."
+      "subtext": "Alle Karten aus dem Begegnungsset <i>Epischer Mehrspielermodus</i> werden aus dem Spiel entfernt."
     },
     {
       "id": "construct_act_deck_a",
-      "text": "Construct the act deck using only the (Group A) versions of acts 1 and 2. Remove each other version of those acts from the game."
+      "text": "Das Szenendeck wird nur aus Szene 1 und 2 der Version (Gruppe A) zusammengestellt. Alle anderen Versionen dieser Szenen werden aus dem Spiel entfernt."
     },
     {
       "id": "construct_act_deck_b",
-      "text": "Construct the act deck using only the (Group B) versions of acts 1 and 2. Remove each other version of those acts from the game."
+      "text": "Das Szenendeck wird nur aus Szene 1 und 2 der Version (Gruppe B) zusammengestellt. Alle anderen Versionen dieser Szenen werden aus dem Spiel entfernt."
     },
     {
       "id": "construct_act_deck_c",
-      "text": "Construct the act deck using only the (Group C) versions of acts 1 and 2. Remove each other version of those acts from the game."
+      "text": "Das Szenendeck wird nur aus Szene 1 und 2 der Version (Gruppe C) zusammengestellt. Alle anderen Versionen dieser Szenen werden aus dem Spiel entfernt."
     },
     {
       "id": "setup_locations_a",
-      "text": "Randomly choose 1 of the 3 copies of Chamber of Secrets to put into play. Remove the other 2 copies from the game. Each investigator begins play in the Chamber of Secrets."
+      "text": "Von den 3 Kopien der Karte Kammer der Geheimnisse wird zufällig 1 bestimmt und ins Spiel gebracht. Die übrigen 2 Kopien werden aus dem Spiel entfernt. Jeder Ermittler beginnt das Spiel in der Kammer der Geheimnisse."
     },
     {
       "id": "setup_locations_b",
-      "text": "Put the Chamber of Rain and Chamber of Sorrows locations into play. Randomly choose an investigator to begin play in the Chamber of Rain. Each other investigator begins play in the Chamber of Sorrows."
+      "text": "Die Orte Kammer des Regens und Kammer des Leids werden ins Spiel gebracht. Ein Ermittler wird zufällig bestimmt, der das Spiel in der Kammer des Regens beginnt. Jeder andere Ermittler beginnt das Spiel in der Kammer des Leids."
     },
     {
       "id": "setup_locations_c",
-      "text": "Put the Chamber of Night and Chamber of Regret locations into play. Each investigator begins play at the Chamber of Night"
+      "text": "Die Orte Kammer der Nacht und Kammer der Reue werden ins Spiel gebracht. Jeder Ermittler beginnt das Spiel in der Kammer der Nacht."
     },
     {
       "id": "set_aside_a",
@@ -35242,19 +35274,19 @@
     },
     {
       "id": "set_aside_epic",
-      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location.",
+      "text": "Folgende Karten werden als nicht im Spiel befindlich beiseitegelegt: Schlüssel der Mysterien, Mysteriöse Spritze, Eixodolon, Eixodolons Haustier, Abbildung der Fäulnis, Abbildung des Hungers, Abbildung des Verfalls, beide Kopien von Gesichtsloser Entführer und alle übrigen Orte.",
       "bullets": [
         {
-          "text": "Because you are playing in <i>Epic Multiplayer Mode</i>, also set The Jailor enemy and each double-sided story card aside, out of play."
+          "text": "Da im <i>Epischen Mehrspielermodus</i> gespielt wird, wird der Gegner Der Kerkermeister und jede doppelseitige Handlungs karte als nicht im Spiel befindlich beiseitegelegt."
         }
       ]
     },
     {
       "id": "set_aside_single_a",
-      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location.",
+      "text": "Folgende Karten werden als nicht im Spiel befindlich beiseitegelegt: Schlüssel der Mysterien, Mysteriöse Spritze, Eixodolon, Eixodolons Haustier, Abbildung der Fäulnis, Abbildung des Hungers, Abbildung des Verfalls, beide Kopien von Gesichtsloser Entführer und alle übrigen Orte.",
       "bullets": [
         {
-          "text": "Because you are playing in <i>Single Group Mode</i>, put the set-aside Key of Mysteries into play in the Chamber of Secrets."
+          "text": "Da im Einzelgruppenmodus gespielt wird, wird die beiseitegelegte Karte Schlüssel der Mysterien in der Kammer der Geheimnisse ins Spiel gebracht."
         }
       ]
     },
@@ -35284,7 +35316,7 @@
     },
     {
       "id": "set_aside_single_b",
-      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location."
+      "text": "Folgende Karten werden als nicht im Spiel befindlich beiseitegelegt: Schlüssel der Mysterien, Mysteriöse Spritze, Eixodolon, Eixodolons Haustier, Abbildung der Fäulnis, Abbildung des Hungers, Abbildung des Verfalls, beide Kopien von Gesichtsloser Entführer und alle übrigen Orte."
     },
     {
       "id": "set_aside_c",
@@ -35312,16 +35344,16 @@
     },
     {
       "id": "set_aside_single_c",
-      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location.",
+      "text": "Folgende Karten werden als nicht im Spiel befindlich beiseitegelegt: Schlüssel der Mysterien, Mysteriöse Spritze, Eixodolon, Eixodolons Haustier, Abbildung der Fäulnis, Abbildung des Hungers, Abbildung des Verfalls, beide Kopien von Gesichtsloser Entführer und alle übrigen Orte.",
       "bullets": [
         {
-          "text": "Because you are playing in <i>Single Group Mode</i>, randomly choose 1 of the 3 set-aside copies of Chamber of Secrets and place it underneath the scenario reference card, without looking at its revealed side."
+          "text": "Da im Einzelgruppenmodus gespielt wird, wird zufällig 1 der 3 beiseitegelegten Kopien von Kammer der Geheimnisse bestimmt und unter die Szenariorübersichtskarte platziert, ohne die enthüllte Seite zu betrachten."
         }
       ]
     },
     {
       "id": "lead_investigator_takes_note",
-      "text": "The lead investigator takes control of Eixodolon’s Note."
+      "text": "Der Ermittlungsleiter übernimmt die Kontrolle über Eixodolons Notiz."
     },
     {
       "id": "add_tokens_a",
@@ -35364,7 +35396,7 @@
     },
     {
       "id": "shuffle_encounter_deck",
-      "text": "Shuffle the rest of the encounter cards to build the encounter deck."
+      "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
     },
     {
       "id": "act_2_setup_a",
@@ -35393,101 +35425,101 @@
     {
       "id": "act_2_setup_a_epic",
       "type": "rule_reminder",
-      "title": "Act 2 Setup",
+      "title": "Vorbereitung für Szene 2",
       "bullets": [
         {
-          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+          "text": "Jeder beiseitegelegte Gesichtslose Entführer und der Begegnungs- Ablagestapel werden in das Begegnungsdeck gemischt."
         },
         {
-          "text": "Because you are playing <i>Epic Multiplayer Mode</i>, choose one of the 3 groups at random. That group shuffles the set-aside The Jailor enemy into the encounter deck."
+          "text": "Falls im <i>Epischen Mehrspielermodus</i> gespielt wird, wird eine der 3 Gruppen zufällig bestimmt. Diese Gruppe mischt den beiseitegelegten Gegner Der Kerkermeister in das Begegnungsdeck."
         },
         {
-          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+          "text": "Die 3 beiseitegelegten Labyrinthischen Flure werden ins Spiel gebracht."
         },
         {
-          "text": "Put the set-aside Chamber of Decay into play."
+          "text": "Die beiseitegelegte Kammer des Verfalls wird ins Spiel gebracht."
         },
         {
-          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+          "text": "Sämtliches Verderben wird aus dem Spiel entfernt und es wird zu Szene 2a & Agenda 2a vorgerückt."
         }
       ]
     },
     {
       "id": "act_2_setup_a_single",
       "type": "rule_reminder",
-      "title": "Act 2 Setup",
+      "title": "Vorbereitung für Szene 2",
       "bullets": [
         {
-          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+          "text": "Jeder beiseitegelegte Gesichtslose Entführer und der Begegnungs- Ablagestapel werden in das Begegnungsdeck gemischt."
         },
         {
-          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+          "text": "Die 3 beiseitegelegten Labyrinthischen Flure werden ins Spiel gebracht."
         },
         {
-          "text": "Put the set-aside Chamber of Decay into play."
+          "text": "Die beiseitegelegte Kammer des Verfalls wird ins Spiel gebracht."
         },
         {
-          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+          "text": "Sämtliches Verderben wird aus dem Spiel entfernt und es wird zu Szene 2a & Agenda 2a vorgerückt."
         }
       ]
     },
     {
       "id": "act_2_setup_b",
       "type": "rule_reminder",
-      "title": "Act 2 Setup",
+      "title": "Vorbereitung für Szene 2",
       "bullets": [
         {
-          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+          "text": "Jeder beiseitegelegte Gesichtslose Entführer und der Begegnungs- Ablagestapel werden in das Begegnungsdeck gemischt."
         },
         {
-          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+          "text": "Die 3 beiseitegelegten Labyrinthischen Flure werden ins Spiel gebracht."
         },
         {
-          "text": "Put the set-aside Chamber of Rot and Chamber of Poison locations into play."
+          "text": "Die beiseitegelegte Kammer der Fäulnis und die beiseitegelegte Kammer des Gifts werden ins Spiel gebracht."
         },
         {
-          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+          "text": "Sämtliches Verderben wird aus dem Spiel entfernt und es wird zu Szene 2a & Agenda 2a vorgerückt."
         }
       ]
     },
     {
       "id": "act_2_setup_c",
       "type": "rule_reminder",
-      "title": "Act 2 Setup",
+      "title": "Vorbereitung für Szene 2",
       "bullets": [
         {
-          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+          "text": "Jeder beiseitegelegte Gesichtslose Entführer und der Begegnungs- Ablagestapel werden in das Begegnungsdeck gemischt."
         },
         {
-          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+          "text": "Die 3 beiseitegelegten Labyrinthischen Flure werden ins Spiel gebracht."
         },
         {
-          "text": "Put the set-aside Chamber of Hunger into play"
+          "text": "Die beiseitegelegte Kammer des Hungers wird ins Spiel gebracht."
         },
         {
-          "text": "Put the set-aside Eixodolon’s Pet into play, near the Chamber of Hunger, but not at any location. While it is not at any location, it is considered to be “locked away.”"
+          "text": "Die beiseitegelegte Karte Eixodolons Haustier wird neben der Kammer des Hungers ins Spiel gebracht, sie befindet sich aber an keinem Ort. Solange sie sich an keinem Ort befindet, gilt sie als „weggesperrt“."
         },
         {
-          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+          "text": "Sämtliches Verderben wird aus dem Spiel entfernt und es wird zu Szene 2a & Agenda 2a vorgerückt."
         }
       ]
     },
     {
       "id": "act_3_setup",
       "type": "rule_reminder",
-      "title": "Act 3 Setup",
+      "title": "Vorbereitung für Szene 3",
       "bullets": [
         {
-          "text": "Put the set-aside Abandoned Warehouse into play."
+          "text": "Das beiseitegelegte Verlassene Lagerhaus wird ins Spiel gebracht."
         },
         {
-          "text": "Disengage all engaged enemies and move each surviving investigator to the Abandoned Warehouse."
+          "text": "Alle in einen Kampf verwickelten Ermittler lösen sich von ihren Gegnern und jeder überlebende Ermittler wird ins Verlassene Lagerhaus bewegt."
         },
         {
-          "text": "Put the set-aside Eixodolon enemy into play at the Abandoned Warehouse."
+          "text": "Der beiseitegelegte Gegner Eixodolon wird im Verlassenen Lagerhaus ins Spiel gebracht."
         },
         {
-          "text": "Remove all doom from play and proceed to act 3a & agenda 3a."
+          "text": "Sämtliches Verderben wird aus dem Spiel entfernt und es wird zu Szene 3a & Agenda 3a vorgerückt."
         }
       ]
     },
@@ -35509,7 +35541,7 @@
                 }
               ]
             },
-            "text": "Act 2 Setup",
+            "text": "Vorbereitung für Szene 2",
             "steps": [
               "act_2_setup"
             ],
@@ -35534,7 +35566,7 @@
                 }
               ]
             },
-            "text": "Act 3 Setup",
+            "text": "Vorbereitung für Szene 3",
             "steps": [
               "act_3_setup"
             ],
@@ -35616,7 +35648,7 @@
     },
     {
       "id": "win",
-      "text": "The investigators win.",
+      "text": "Die Ermittler gewinnen das Spiel.",
       "effects": [
         {
           "type": "campaign_data",
@@ -35627,11 +35659,11 @@
     },
     {
       "id": "survived_new_guest",
-      "text": "The investigators survived, but in another timeline, the labyrinth has a new guest."
+      "text": "Die Ermittler haben überlebt, aber in einer anderen Zeitlinie befindet sich ein neuer Gast im Labyrinth."
     },
     {
       "id": "survived_eixodolon_lives",
-      "text": "The investigators survived, but Eixodolon lives on."
+      "text": "Die Ermittler haben überlebt, aber Eixodolon ist ebenfalls noch am Leben."
     }
   ],
   "resolutions": [
@@ -35650,7 +35682,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "In the wrong hands, your anguish is a powerful weapon. Your blood fuels the arcane glyph carved into the cement floor at the labyrinth’s core. For the cruel mastermind who trapped you here, it is a moment of triumph and vindication. The entire world will feel this pain. This fear. This despair.",
+      "text": "In den falschen Händen ist dein Leid eine mächtige Waffe. Dein Blut nährt das arkane Symbol, das in den Zementboden im Herzen des Labyrinths eingraviert ist. Für das grausame Genie, das für deine Gefangenschaft hier verantwortlich ist, ist dies ein Moment des Triumphs und der Genugtuung. Die gesamte Welt wird diesen Schmerz fühlen. Diese Furcht. Diese Verzweiflung.",
       "steps": [
         "lose"
       ]
@@ -35658,7 +35690,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "The mastermind falls to his knees, his mask cracked. Blood drips from his open wounds onto the cement floor. “Do you really think you can escape?” he wheezes. His distorted voice is pained but triumphant. “Do you really think… I would ever let you leave this place?” His body collapses to the ground. Seeing an opportunity to escape, you rush to the iron doors sealing you in the warehouse. With a desperate effort, you are finally able to break the padlock and push open the heavy doors.\nA sudden gust of cold evening air sweeps over you. You are surprised to see wooden docks on the side of the Miskatonic River. A few ducks quack in surprise and swim away from the nearest dock. Water sloshes along the shore. You hear dockworkers going about their business, their work day almost finished as the sun sets to your left. After taking a few steps, you collapse to the ground. You are too exhausted and injured to go on. “Who’s that?” a dockworker calls out. “Someone is hurt—quick, let’s get them to St. Mary’s!” You drift into unconsciousness just as a muscled man lifts you into his arms.\nYou wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight. A note on the ground nearby reads:\n<fancy>Greetings. I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die…</fancy>",
+      "text": "Das Genie sinkt auf die Knie und seine Maske bekommt Risse. Blut tropft aus seinen offenen Wunden auf den Zementboden. „Glaubst du wirklich, dass du entkommen kannst?“, keucht es. Seine verzerrte Stimme klingt schmerzerfüllt, aber auch triumphierend. „Denkst du wirklich … ich würde dir jemals gestatten diesen Ort zu verlassen?“ Sein Körper fällt zu Boden. Du siehst eine Fluchtmöglichkeit und eilst zu den eisernen Türen, die dich im Lagerhaus gefangen halten. Deine verzweifelten Anstrengungen, das Vorhängeschloss zu knacken und die schweren Türen zu öffnen, sind letztendlich von Erfolg gekrönt. \nEin plötzlicher Hauch kalter Abendluft weht über dich hinweg. Du bist erstaunt, die hölzernen Docks auf beiden Seiten des Miskatonic zu sehen. Einige Enten quaken überrascht und schwimmen vom nächstgelegenen Dock weg. Das Wasser schwappt über das Ufer. Du hörst die Stimmen von Dockarbeitern, die ihrer Arbeit nachgehen. Die untergehende Sonne zu deiner Linken sagt dir, dass sie bald Feierabend haben müssen. Nach wenigen Schritten brichst du zusammen. Du bist zu erschöpft und deine Verletzungen sind zu schwer. „Wer ist da?“, hörst du einen Dockarbeiter rufen. „Hier ist jemand verletzt – schnell, bringt ihn ins St. Mary‘s!“ Als ein muskulöser Mann dich hochhebt, wirst du ohnmächtig. \nDu wachst an einem fremdartigen Ort auf, kannst dich aber nicht daran erinnern, wie du hierher gekommen bist. Deine Muskeln sind schwach und reagieren nicht. Du kannst nur noch verschwommen sehen. Schon das einfache Heben deiner Füße ist eine enorme Anstrengung. Deine Beine sind wacklig und kaum in der Lage, dein Gewicht zu tragen. Auf einem Zettel auf dem Boden neben dir steht:\n<fancy>Grüße. Ich habe euch für ein Experiment an diesen Ort gebracht. Betrachtet dies als eine Prüfung der menschlichen Willenskraft. Ihr werdet überleben. Oder ihr werdet sterben …</fancy>",
       "steps": [
         "survived_new_guest"
       ]
@@ -35666,7 +35698,7 @@
     {
       "id": "R3",
       "title": "Auflösung 3",
-      "text": "The mastermind falls to his knees, his mask cracked. Blood drips from his open wounds onto the cement floor. “Do you really think you can kill me?” he wheezes. His distorted voice is pained but proud. “I am everywhere and everywhen. This vessel is but one. There are others. And if even one of them is proven right, I will never truly die.” His body falls limply to the ground. Seeing an opportunity to escape, you rush to the iron doors sealing you in the warehouse. With a desperate effort, you are finally able to break the padlock and push open the heavy doors.\nA sudden gust of cold evening air sweeps over you. You are surprised to see wooden docks on the side of the Miskatonic River. A few ducks quack in surprise and swim away from the nearest dock. Water sloshes along the shore. You hear dockworkers going about their business, their work day almost finished as the sun sets to your left. After taking a few steps, you collapse to the ground. You are too exhausted and injured to go on. “Who’s that?” a dockworker calls out. “Someone is hurt—quick, let’s get them to St. Mary’s!” A muscled man lifts you into his arms, and you are driven to the hospital.\nYou have somehow made it out of your captor’s hellish labyrinth, but his dying words haunt your thoughts. What did he mean by “others?” You recall the strange visions you saw in his maze, and a terrible thought seeps into your mind. The kidnapper had mentioned other groups, but you were never able to find them, and you have no idea if they made it out alive. You tell the police there are others and insist that they search the docks, but there is no trace of the warehouse you had escaped, nor of the mastermind who trapped you there…",
+      "text": "Das Genie sinkt auf die Knie und seine Maske bekommt Risse. Blut tropft aus seinen offenen Wunden auf den Zementboden. „Glaubst du wirklich, dass du mich töten kannst?“, keucht es. Seine verzerrte Stimme ist schmerzerfüllt, aber auch voller Stolz. „Ich bin an jedem Ort und in jeder Zeit. Dies ist nur eines der Gefäße. Es gibt weitere. Und selbst, wenn einer von ihnen sich bewährt, werde ich doch nie wirklich sterben.“ Sein Körper fällt starr zu Boden. Du siehst eine Fluchtmöglichkeit und eilst zu den eisernen Türen, die dich im Lagerhaus gefangen halten. Deine verzweifelten Anstrengungen, das Vorhängeschloss zu knacken und die schweren Türen zu öffnen, sind letztendlich von Erfolg gekrönt. \nEin plötzlicher Hauch kalter Abendluft weht über dich hinweg. Du bist erstaunt, die hölzernen Docks auf beiden Seiten des Miskatonic zu sehen. Einige Enten quaken überrascht und schwimmen vom nächstgelegenen Dock weg. Das Wasser schwappt über das Ufer. Dann hörst du die Stimmen von Dockarbeitern, die ihrer Arbeit nachgehen. Die untergehende Sonne zu deiner Linken sagt dir, dass sie bald Feierabend haben müssen. Nach wenigen Schritten brichst du zusammen. Du bist zu erschöpft und deine Verletzungen sind zu schwer. „Wer ist da?“, hörst du einen Dockarbeiter rufen. „Hier ist jemand verletzt – schnell, bringt ihn ins St. Mary‘s!“ Ein muskulöser Mann hebt dich hoch und du wirst ins Krankenhaus gefahren. \nIrgendwie hast du es aus dem höllischen Labyrinth deines Entführers geschafft, aber seine letzten Worte suchen deinen Geist heim. Was meinte er mit „andere“? Du erinnerst dich an deine merkwürdigen Visionen in seinem Irrgarten und ein fürchterlicher Gedanke beginnt sich in deinem Geist festzusetzen. Der Entführer hat andere Gruppen erwähnt, aber du hast sie nie gefunden und weißt auch nicht, ob auch sie lebend entkommen sind. Aufgeregt berichtest du der Polizei, dass es noch weitere Opfer gibt, und bestehst darauf, dass sie die Docks durchsuchen, aber dort gibt es keine Spur von dem Lagerhaus, aus dem du entkommen bist oder von dem Genie, das dich dort eingesperrt hat …",
       "steps": [
         "survived_eixodolon_lives"
       ]
@@ -35674,7 +35706,7 @@
     {
       "id": "R4",
       "title": "Auflösung 4",
-      "text": "The mastermind falls to his knees, his mask cracked. Blood drips from his open wounds onto the cement floor. The outline of his body twists and blurs, like a wrinkle in the fabric of space and time. “So, the ritual has failed!” His bitter cackle descends into a cry of pain. “Perhaps humanity has a chance after all. This agony, this suffering! Such power is not meant for humans to wield. It is for the ones beyond!” He gasps and wheezes, collapsing to the ground. “Do not follow the path I followed,” he begs, “it leads only to… despair.” His breathing stops.\nYou have somehow defeated your captor, but many questions remain. Deciding to explore the labyrinth further, you find a way to break open the iron doors leading into the other sections of the complex. To your surprise, you find no other victims trapped in the labyrinth—only signs of their struggles, and of their survival.\nIt takes only one solid strike to break open the padlock sealing the warehouse’s iron doors. The sound of metal slamming against metal is tripled in its volume. You do not believe your kidnapper meant for you to ever leave, but somehow you have defied the odds stacked against you. You wonder if the others are opening these heavy doors at this very moment, too.\nA sudden gust of cold evening air sweeps over you. You are surprised to see wooden docks on the side of the Miskatonic River. A few ducks quack in surprise and swim away from the nearest dock. Water sloshes along the shore. You hear dockworkers going about their business, their work day almost finished as the sun sets to your left. You watch the sun disappear under the horizon, and the others watch in turn.",
+      "text": "Das Genie sinkt auf die Knie und seine Maske bekommt Risse. Blut tropft aus seinen offenen Wunden auf den Zementboden. Die Konturen seines Körpers verzerren sich und verschwimmen, als ob sich das Gewebe von Raum und Zeit verschieben würde. „Das Ritual ist also schiefgegangen!“ Sein bitteres Gelächter wird zu einem Schmerzensschrei. „Vielleicht hat die Menschheit doch noch eine Chance! Dieses Leid, diese Qual! Menschen sollten eine solche Macht nicht haben. Sie steht den Jenseitigen zu!“ Scharf saugt er Luft ein und atmet pfeifend aus, dann bricht er zusammen. „Folge nicht dem Weg, dem ich gefolgt bin“, fleht er, „er führt nur zu … Verzweiflung.“ Dann setzt sein Atem aus. \nIrgendwie hast du es geschafft, deinen Entführer zu besiegen, aber es bleiben viele Fragen offen. Du entscheidest dich dafür, das Labyrinth weiter zu erkunden und findest schließlich einen Weg, die Eisentüren aufzubrechen, die dich in einen anderen Bereich der Anlage führen. Zu deiner Überraschung findest du dort keine weiteren Gefangenen im Labyrinth – nur die Spuren ihrer Kämpfe und Hinweise auf ihr Überleben. \nMit einem einzigen festen Schlag kannst du das Vorhängeschloss der Eisentüren des Lagerhauses knacken. Das Geräusch von Metall auf Metall schwillt an und klingt dreimal so laut in deinen Ohren. Du glaubst nicht, dass dein Entführer vorgesehen hatte, dass du diesen Ort lebend verlässt. Aber irgendwie hast du es geschafft, allen Widrigkeiten zu trotzen. Nun fragst du dich, ob die anderen in diesem Moment ebenfalls diese schweren Türen öffnen. \nEin plötzlicher Hauch kalter Abendluft weht über dich hinweg. Du bist erstaunt, die hölzernen Docks auf beiden Seiten des Miskatonic zu sehen. Einige Enten quaken überrascht und schwimmen vom nächst gelegenen Dock weg. Das Wasser schwappt über das Ufer. Dann hörst du die Stimmen von Dockarbeitern, die ihrer Arbeit nachgehen. Die untergehende Sonne zu deiner Linken sagt dir, dass sie bald Feierabend haben müssen. Du siehst zu, wie die Sonne hinter dem Horizont verschwindet. Und die anderen tun dasselbe.",
       "steps": [
         "win"
       ]
@@ -39929,6 +39961,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Weiter und immer weiter trägt dich dein Ross in den tintenfarbenen Albtraum der Leere jenseits des Raumes. Du traust dich nicht zurückzublicken. Du bist dir sicher, dass das, was du zu sehen bekommst, dein Herz brechen lassen wird. Oder vielleicht auch deinen Geist. Große mit Tentakeln bewehrte Schrecken gleiten düster durch die Schwärze und Einsamkeit des Kosmos. Du hofftest, ein wunderschönes, glitzerndes Sternen feld bewundern zu können. Stattdessen bleibt dir nur ein ungutes Gefühl im Magen, als die uner messliche Weite des finsteren, kalten Universums vor dir aufragt. Weit entfernt kannst du eine Melodie hören – ihre Töne, die man auf keinem dir bekannten Instrument nachspielen könnte, sollten deine Ohren unmöglich hören können, wenn sie nicht gerade in diesem Moment in deinem Kopf erklingen würden.\nEin Luftzug streift dich, als du die Kuppel einer albtraumhaften onyxfarbenen Barriere durchbrichst und in eine endlose Höhle aus schwarzem Stein mit einer unmöglichen Architektur herabsinkst. Die Klänge schwellen an, als du unbeirrt in ein unwirkliches Tal eintauchst, durch Schwärme gestaltloser Wesen hindurch und vorbei an Dingen, die in der Schwärze dahinter lauern und tanzen. Du kannst nicht anders, als der fremden Melodie zu lauschen und jeden einzelnen dieser schrecklichen, disharmonischen Töne in Erinnerung zu behalten. Kein Gedanke oder Traum der Menschheit kann bis hierher reichen; an diesen Ort, der schon uralt war, als die Erde geboren wurde. Du hoffst, dass du dein Ross dorthin leiten kannst, wo deine Bestimmung liegt … zum Thron, auf dem Azathoth selbst sitzt."
     },
@@ -40323,6 +40359,10 @@
     },
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.investigator_defeat",
+        "name": "Investigator Defeat"
+      },
       "title": "Besiegter Ermittler",
       "text": "Dein Ross fängt dich nicht, als du zu fallen beginnst. Hinab und hinab fällst du durch endlose Leere gefühlter Schwärze. Und fällst. Und fällst. Und fällst. Du bittest und schreist und fehlst und betest für ein Ende, selbst nur für ein Boden, auf dem du zerschmettern kannst - aber er kommt nicht. Du wirst immer noch hinab fallen, wenn das Universum endet.",
       "steps": [
@@ -40331,6 +40371,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Das Urchaos erwacht. Sein Hunger ist unerträglich. Es renkt seinen kosmischen Kiefer aus. Der Schlund öffnet sich weit. Das Universum verstummt. Äonen vergehen. Alles ist still. Im Zentrum des leeren Kosmos wurde der blinde Idiotengott erneut in den Schlaf gewogen. Er träumt. In seinen Träumen breitet sich kosmische Energie explosionsartig in alle Richtungen aus. Ein Universum wird geboren. Sternennebel kollabieren und werden zu Sternen. Neue Welten werden geschmiedet und neue Wesen entstehen, diese Welten zu bevölkern. Unweigerlich wird einer von ihnen von Azathoth erfahren. Seine Verehrung wächst. Am Ende wird alles dem Wahnsinn verfallen oder zu dir in die Vergessenheit stoßen… Im großen Plan des Schicksals sind wir nichts als Staubkörner, im Äther treibend, nur dank der Laune eines gleichgültigen Kosmos am Leben.",
       "steps": [
@@ -40341,6 +40385,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Erst kürzlich hast du den Sinn dieses schrecklichen Pfeifens verstanden, das du immer wieder bei deinen Ermittlungen gehört hast. Es ist eine Art Schlaflied, um den vergessenen Gott nicht aufwachen zu lassen. Nur für einen kurzen Augenblick wurde die Melodie der Pfeifer unterbrochen und Azathoth begann sich zu rühren. Jetzt ist dir klar, warum dich Anna in dieser schicksalhaften Nacht anflehte, dir die Zukunft vorauszusagen. Sie kannte deine Bestimmung, der du nach deiner Ankunft hier nachgehen würdest.\nDu setzt dich an die Kante des nächtlichen Throns der Kreatur, nimmst deine Flöte heraus und beginnst zu spielen.\nAn diesem Ort, wo Zeit und Hunger und Alter und Erschöpfung keinerlei Bedeutung mehr haben, ist es deine Bestimmung, weiter zu spielen. Ohne Unterbrechung. Ohne ein Ende.",
       "steps": [
@@ -40355,6 +40403,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Du wirst dieser Kreatur nicht erlauben, all das zu zerstören, was du jemals geliebt hast. Du sammelst alles Nötige für dein Ritual zusammen: ein wenig schattenhafte Essenz aus den Hexenmänteln, ein Fragment des Nebels der Geister, die du verbannt hast und das Wissen, welches du aus Arkhams Vergangenheit gelernt hast. Langsam und ruhig webst du deine Wand, vernähst Dunkelheit mit Blut, Blut mit Seelen, Seelen mit Onyx. Du benötigst Tage. Als du fertig bist, ist deine Belohnung das Vergessen. Eine Bewegungslosigkeit und Stille, so perfekt, dass keine Störung sie durchdringen kann. Diese Barriere kann Azathoth nicht zurückhalten - nichts kann das wirklich. Aber vielleicht wird er sich nicht rühren, wenn die Narren der Erde seinen Namen rufen oder an seriner Macht teilhaben wollen. Nachdem deine Aufgabe vollbracht ist, drehst du dich im, siehst in die Dunkelheit und rufst dein Ross. Es ist Zeit, nach Hause zurückzukehren.",
       "steps": [
@@ -40367,6 +40419,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "text": "Du hast den nächtlichen Thron von Azathoth erreicht, aber von hier aus gibt es keinen einfachen Weg, die Kreatur zu erreichen - und selbst wenn du es könntest, du bist dir nicht sicher, wie du sie aufhalten solltest. Du kannst sie nicht töten und selbst der Versuch, sie zu verletzen, würde sie wahrscheinlich nur wecken. Verzweifelt wendest du dich Keziahs Schwarzem Buch zu. Als du es öffnest, erscheint eine Schreibfeder in deiner Hand und eine Stimme aus dem Jenseits gelangt an deine Ohren. „Unterschreibe mit deinem Blut. Nimm einen neuen, geheimen Namen an und dein Wunsch soll wahr werden. Du und deine Welt werden verschont.“ Dir ist bewusst, dass dies die Stimme des Bösen ist. Die Stimme, die Walter Gilman hörte und die seinen Niedergang einleitete. Die Stimme, die Keziah Mason verführte und damit diesen Weg hierher überhaupt erst ermöglichte… aber welche andere Wahl hast du schon?",
       "steps": [
@@ -40375,6 +40431,10 @@
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Auflösung 5",
       "text": "Du stichst mit der Feder in deinen Arm und unterschreibst mit Blut.",
       "steps": [
@@ -40944,21 +41004,37 @@
     },
     {
       "id": "anette_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.arrested_anette",
+        "name": "Arrested Anette"
+      },
       "type": "story",
       "text": "„Verschwunden? Was heißt, sie ist verschwunden?!“, fragt Sheriff Engle und fordert eine Erklärung.\n„Sehen Sie selbst“, antwrotet der Officer. Er führt den Sheriff durch den langen Zellentrakt. „Sie wurde die ganze Zeit bewacht, glauben Sie mir. Im einen Moment war sie noch da, im nächsten…“ Er bleibt vor Anettes Zelle stehen und kann Sheriff Engles Verwunderung sehen. An die Zellenwände wurde mit einer klebrigen roten Substanz ein feines Muster geschmiert. Die Frau ist nirgends zu sehen."
     },
     {
       "id": "lodge_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.assumed_control_of_the_silver_twilight_lodge",
+        "name": "Assumed control of The Silver Twilight Lodge"
+      },
       "type": "story",
       "text": "Du nickst, als der Ritter die von dir verlangte Akte auf den Schreibtisch legt. Alle Einträge Carl Sanfords zu finden, war nicht einfach, aber jetzt liegen alle Geheimnisse des Ordens offen vor dir. „Was ist der nächste Schritt?“, fragt er dich dienlich. Du informierst ihn darüber, dass heute Nacht eine Versammlung im Innersten Heiligtum stattfinden muss. „Bestens. Ich werde unsere loyalsten Mitglieder zusammenrufen.“ Du entlässt ihn und blickst aus dem Fenster deines neuen Büros. Arkham ist finster und launisch wie eh und je… aber zumindest kennst du nun seine Geheimnisse."
     },
     {
       "id": "watcher_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.survived_the_watchers_embrace",
+        "name": "Survived the Watcher's embrace"
+      },
       "type": "story",
       "text": "Anna betrachtet dich ruhig, als du eintrittst. Ihre Voraussicht ist immer noch beunruhigend, aber du hast dich langsam daran gewöhnt. „Ich warte schon eine Weile auf dich“, gibt sie zu. „Ich nehme an, du hast Fragen an mich. Nun gut. Frag. Obwohl ich mir sicher bin, dass du die Antwort mittlerweise kennen musst.“ Sie bietet dir weder einen Sitzplatz noch etwas zu Trinken an. Du beginnst, deine Situation zu beschreiben, obwohl dein wahrer Zustand für jemanden mit ihrer Gabe (und kaum für andere) klar zu sehen ist. Du hattest auf eine weitere Erklärung gehofft - irgendeine Erklärung - aber es war nur ein verzweifelter Versuch, sich an eine Hoffnung zu klammern. Anna wirft dir einen bemitleidenden Blick zu und schüttelt den Kopf. „Sicherlich musst du es jetzt schon wissen. Du hast deine Bestimmung erfüllt. Deine Geschäfte hier sind beendet. Jetzt ist es für dich an der Zeit, in Frieden Ruhe zu finden.“\nFrieden? Nein, du kannst nicht in Frieden ruhen! Es gibt noch so vieles, was getan werden muss…!"
     },
     {
       "id": "black_book_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.signed_the_black_book_of_azathoth",
+        "name": "Signed the Black Book of Azathoth"
+      },
       "type": "story",
       "text": "In deinen Träumen erscheint dir ein hochgewachsener Mann. Sein Grinsen ist voll von Häme. „Es ist an der Zeit, deinen Beitrag zu leisten“, erklärt er dir. „Du hast bekommen, was du wolltest. Jetzt bin ich an der Reihe.“"
     },
@@ -40998,6 +41074,10 @@
     },
     {
       "id": "being_hunted",
+      "narration": {
+        "id": "the_circle_undone.epilogue.you_are_being_hunted",
+        "name": "You are being hunted"
+      },
       "type": "story",
       "text": "Egal was du auch versuchst, die Angriffe der Kreatur auf deinen Geist ebben nicht ab. Ihr Blick verfolgt dich überall hin. Sie kontrolliert jeden deiner Gedanken - deine Hoffnungen, deine Bindungen, deine Ängste, dein Streben. Eine Mahnung deines fruchtlosen Daseins. Jede Nacht wälzt du dich umher, unfähig, dich von diesem Gefühl der Wertlosigkeit zu befreien. Deine Gedanken wandern zu einer düsteren, unsicheren Zukunft. Eine Zukungt ohne Leben. Eine Zukunft ohne dich. Dies ist das eine Martyrium, das jeder Sterbliche erleiden muss - und ist trotzdem diese eine Erfahrung, die kein Sterblicher je beschreiben könnte. Geister? Reiche jenseits des Irdischen? Nichts als ein letzter Strohhalm für deinen Geist, der am Leben hängt.\nAls die Kreatur erneut auftaucht, bist du zu einem neuen Schluss gekommen. Ein eisiger Luftzug umgibt dich, als das Ding sich vor dir formt. Deine Kehle schnürt sich zu, Tränen sammeln sich in deinen Augen, aber du stehst aufrecht. Du hast keine Angst. Die Kreatur sieht dich neugierig an und das Pfeifen der infernalischen Flöten verstummt. Es reicht dir seine Klauenhand, welche du schüttelst. Du wirst nie wirklich frei sein von ihrem Griff, aber vielleicht kannst du mit der Kreatur eine Abmachung treffen. Vielleicht kannst du deine Ängste zähmen. Es ist gleich, ob die Welt Sinn macht. Ees ist deine, verdammt nochmal, und nichts wird dich davon abhalten, sie nach deinen Vorstellungen zu verändern."
     }
@@ -41488,6 +41568,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Nachdem was du auf der Unerforschten Insel gesehen hast, scheint dein Glaube an die Menschheit auf Sand gebaut zu sein. Du fühlst dich wie ein getriebener Geist, ziellos durch die Straßen wandernd. Du wünschst dir einfach nach Hause gehen zu können und all die Geschehnisse der letzten Wochen zu vergessen. Aber das ist nur ein Wunschtraum. Nach Stunden endlosen Umherwanderns wird dir plötzlich bewusst, dass du zum Independence Square gelaufen bist. Eine sanfte Brise weht trockenes Laub über das Gras und du hebst deinen Blick. Inmitten eines Kreises aus herbst farbenen Blättern sitzt Anna Kaslow. Sie befindet sich in einer tiefen Trance, die Augen geschlossen, die Finger an die Schläfen gepresst. Vor ihr im Gras liegt eine Wolldecke, auf der verdeckte Tarot karten sich überlappend kreisförmig ausgelegt sind. Du näherst dich und setzt dich vor die Wahrsagerin. Erst jetzt wird dir bewusst, wie müde und erschöpft du bist. Jeder deiner Muskeln schmerzt und du musst dich anstrengen, um nicht sofort in Ohnmacht zu fallen."
     },
@@ -41516,16 +41600,28 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Du kennst die Wahrsagerin noch von deinen Ermittlungen zu den Vermisstenfällen auf Josef Meigers Anwesen. Es war ihr Rat, der dazu geführt hatte, dass die zweite Welle an Opfern in ihr Verderben ging. Zumindest vermutest du das. Seltsamerweise scheint sie dich auch zu erkennen. Sie fährt mit ihrem Finger über den Kreis, den die Karten vor ihr bilden. „Ich nehme an, dass die vergangenen Wochen sehr mühsam für dich waren. Bist du hier, um dich leiten zu lassen?“ Dein Gesicht spricht Bände. Das letzte Mal, als Anna jemandem die Zukunft gelesen hatte, endete dies nicht gut für ihn. Warum sollte das bei dir jetzt anders sein?"
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Anna öffnet ihre Augen. „Ich hatte mich schon gefragt, wann wir uns wiedersehen.“ Du fragst dich offensichtlich zu deutlich, wie sie das nicht wissen konnte, obwohl all ihre Vorhersagen eingetroffen sind. Sie antwortet dir mit einem herzhaften Kichern und erklärt: „Das heißt nicht, dass ich alles weiß, mein Lieber.“ Sie fährt mit ihrem Finger über den Kreis, den die Karten vor ihr bilden. „Ich nehme an, dass die vergangenen Wochen sehr mühsam für dich waren. Bist du hier, um dich leiten zu lassen?“ Dein Gesicht spricht Bände. Alles begann mit dem Lesen deines Schicksals. Warum denkst du, sollte sich das alles mit einer erneuten Sitzung in Wohlgefallen auflösen?"
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Noch bevor du antworten kannst, dreht Anna die ihr am nächsten liegende Karte um. Sie zeigt eine vermummte Gestalt, vor der im Boden fünf Schwerter stecken. Andere kauern oder fliehen vor der triumphierenden Gestalt und ein Mahlstrom dunkler Wolken braut sich über ihrem Kopf zusammen. Darüber steht FÜNF DER SCHWERTER geschrieben. „Du fühlst dich vielleicht geschlagen, aber du darfst dich nicht der Verzweiflung hingeben. Der Kampf mag zwar vorüber sein, aber dein Ringen ist noch nicht zu Ende.“ Kummer und Leid schnüren dir deine Kehle zu. Du wünschst dir nichts mehr, als dass dieser Albtraum endet. Aber Annas Worte sind wahr: Du weißt, dass es kein Ende nehmen wird, wenn du ihm nicht selbst ein Ende bereitest.\nEin heller Blitz brennt sich in den Himmel, gefolgt von einem starken Donnern. Die Wolken über dir sind nicht natürlichen Ursprungs. Geisterhafte Gestalten wirbeln im Nebel über dir umher. Wenn du genau hinhörst, kannst du ihr von Schmerz und Trauer durchdrungenes Heulen im Wind wahrnehmen. „Es hat begonnen“, gibt Anna leise von sich. Du stehst auf und ignorierst deine Erschöpfung, deinen Schmerz und deine Angst."
     },
@@ -42134,6 +42230,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
       "investigator_status": [
         "resigned",
@@ -42147,6 +42247,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Der Geist kichert, als er deine Worte hört, doch das Gelächter ist schnell verstummt. Der Rest von Anettes Hexenzirkel - angeführt von der rothaarigen Hexe Erynn - bricht durchs Dickicht des Waldes und umringt Anette wortlos. Erynn nickt dir stumm zu. Ihre Absichten kannst du leicht an ihrem ernsten Auftreten ablesen. Nachdem dir bewusst wird, warum sie gekommen sind, trittst du zur Seite und lässt sie ihrem Werk nachgehen.\nEine der Hexen zieht um Anette einen Kreis auf der Erde, während die anderen sie mit schlängelnden Spitzen versengender Energie binden. Der Wiedergänger kreischt und heult in Agonie, aber die Hexen lassen nicht ab. Als ihre Gesänge im Crescendo enden, durchstößt Erynn den vollkommenen Kreis mit ihrem Messer. Sie drückt es fest gegen die Luft - mit einer Anstrengung, als müsse sie festes Gestein durchbohren. Keziahs Geist verschwindet in einem Strudel geisterhaften Nebels und löst sich mit einem letzten Schrei in Luft auf. Anettes Körper bricht auf dem Boden zusammen. „Es ist vorbei“, sagst du und legst Erynn eine Hand auf die Schulter.\n„Nein“, antwortet sie barsch und zeigt in den Himmel. Die Sturmwolken sind verschwunden, aber du kannst nicht einen einzigen Stern am Nachthimmel erkennen. Die Grenzen des Horizonts rahmen die Leere über dir ein. Ein so enormer Riss, dass du ihn zuerst gar nicht wahrgenommen hast. Wie lange ragt er wohl schon über der Stadt auf, während du noch damit beschäftigt warst, unbedeutendere Durchbrüche abzuwehren?\nDu fragst, was getan werden kann, um einen Riss solchen Ausmaßes zu schließen. Sie presst die Kiefer aufeinander. „Ich weiß´es nicht. Aber ich weiß, wer.“ Sie kniet sich über Anette, erhebt ihren Arm und ohrfeigt sie hart. Anette schreckt hoch, herausgerissen aus ihrem katatonischen Zustand.\n„Ist es das, was du wolltest, Schwester?“ Erynn zerrt sie auf die Beine, damit sie die von ihr verursachte Katastrophe sehen kann.\n„Du weißt, dass ich das nicht wollte“, antwortete Anette mit kratziger Stimme. „Ich wollte doch nur, dass wir alle an ihrer Stärke teilhaben können. Ich hatte nicht vor, sie auf die gleiche Art zu nutzen. Aber der Geist hat Besitz von mir ergriffen und ich konnte ihm nicht widerstehen.“ Sie senkt resigniert ihren Kopf. „Es tut mir leid, meine Schwestern. Ich habe uns im Stich gelassen. Ich war nicht stark genug.“",
       "steps": [
@@ -42156,6 +42260,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Du traust dem Präsidenten der Silberloge der Dämmerung durchaus zu, dich über die Konsequenzen deines Handelns anzulügen - schließlich hat er dich schon mehr als ein Mal getäuscht. Du fragst ihn, was er damit meint, wenn er davon redet, dass wir alle ausgelöscht werden. Er bedeutet dir, nach draußen zu sehen.\nDie Sturmwolken sind verschwunden, aber du kannst nicht einen einzigen Stern am Nachthimmel erkennen. Die Grenzen des Horizonts rahmen die Leere über dir ein. Ein so enormer Riss, dass du ihn zuerst gar nicht wahrgenommen hast. Wie lange ragt er wohl schon über der Stadt auf, während du noch damit beschäftigt warst, unbedeutendere Durchbrüche zu abzuwehren?\nSanford humpelt dir hinterher und späht in den Nachthimmel. Du fragst, was getan werden kann, um einen Riss solchen Ausmaßes zu schließen. Aber bevor er antworten kann, lösen sich düstere Wirbel aus den Schatten, die zu dunklen Mänteln werden. Innerhalb weniger Sekunden seid ihr von Anettes Hexenzirkel umringt. Die Hohepriesterin schreitet nach vorne und starrt Carl Sanford mit höllengleicher Intensität an.\n„Glaub diesem unheilvollen Wurm kein Wort“, warnt sie dich. „Alles, was er bisher getan hat, war, rein zu seinem eigenen Nutzen. Er würde zu gerne die ganze Welt als Geisel nehmen, nur um den Hauch einer Chance auf Macht zu erringen.“\nTrotz seiner Verwundungen steht Sanford auf und brüllt zurück: „Was für eine Heuchelei! Haben Sie schon vergessen, dass Sie und Ihre irregeleitete Sekte all dies begonnen haben? Die Toten zu beschwören um sie um Macht zu bitten?“ Er schnaubt verächtlich. „Wir hätten die gesamte Menschheit emporgehoben. Aber Sie haben nur danach gestrebt, sich selbst emporzuheben.“ Sanford wendet sich dir erneut zu, um ein letztes Mal an deine Entscheidung zu appellieren. „Seien Sie kein Narr“, sagt er leise. „Dieser Ausgang ist nicht im Sinne der Loge. Lassen Sie mich Ihnen helfen und wir können das hier gemeinsam beenden.“",
       "steps": [
@@ -42165,6 +42273,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Anette steht noch inmitten eines Kreises aus Hexen, ihre Augen glühen vor grenzenloser Macht. Über ihnen dringen Hunderte von geisterhaften Schemen heraus, ein Geflecht der Macht, welches die Hexen und ihre verstorbenen Geschwister verbindet. Die Geister sinken herab, jeder für sich einen Körper fordern, um ihn nach Belieben zu manipulieren. Das einzige Zeichen von Widerstand ist das Blut, das aus den Augen der Hexen tropft, als ihr Zauber seinen Höhepunkt findet.\n„Es ist an der Zeit!“ Die körperlose Stimme Keziahs kommt über Anettes Lippen. „Das Urchaos erwartet uns! Höre uns an, Dämonensultan!“ Ihre Stimme erhebt sich in die Nacht und ein Riss, größer als der Himmel selbst, öffnet sich. Die Grenzen des Horizonts rahmen die Leere über dir ein. Er reicht bis hin zu Unendlichkeit, über die Grenzen des dreidimensionalen Raumes hinweg. „Ich habe getan, wie du mir befohlen hast“, sagt sie zu einem Wesen, das nicht hier ist, aber jedes Wort hören kann. „Ernte nun diese Welt der Lebenden und lasse sie für ihre Fehler leiden.“ Mit einem Mal verschwinden die geisterhaften Schemen einer nach dem anderen in der Leere über dir. Anette und ihre Schwestern brechen auf dem Boden zusammen. Feine, disharmonische Flötenklänge ziehen sich durch das Gefüge der Welt…",
       "steps": [
@@ -42174,6 +42286,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "text": "Carl Sanford steht in eine silberblauen Robe gekleidet an einem Podium im Innersten Heiligtum der Loge. Vor ihm knien unterwürfig seine Anhänger. Sie sind bereit, die ihnen versprochene Macht zu erhalten und damit ihren rechtmäßigen Platz in der neuen Weltordnung zu beanspruchen. Das Buch, aus welchem Sanford liest, leuchtet mit Hexenfeuer. „Die Fesseln der Sterblichkeit haben uns zu lange zurückgehalten!“ Als die Zeremonie ihren Höhepunkt erreicht, erklärt er: „Wir werden die Fesseln durchbrechen und zu einer höheren Ebene aufsteigen!“\nÜber dem Gebäude, in dem sie sich versammelt haben, öffnet sich ein Riss, größer als der Himmel selbst. Die Grenzen des Horizonts rahmen die Leere über dir ein. Er reicht bis hin zur Unendlichkeit, über die Grenzen des dreidimensionalen Raumes hinweg. Plötzlich erlöschen alle Kerzen im Innersten Heiligtum der Loge. Die Gesänge verstummen, gefolgt von nervösem Gemurmel. „Was geschieht hier?“ Sanford versucht, weiter aus dem vor ihm liegenden Buch zu lesen. Aber es ist zu spät. Die Loge hat lediglich ihr eigenes Verderben beschleunigt. Wahre Unsterblichkeit kann nur von denen erlangt werden, die ihrer würdig sind. Feine, disharmonische Flötenklänge ziehen sich durch das Gefüge der Welt…",
       "steps": [
@@ -44652,6 +44768,10 @@
   "steps": [
     {
       "id": "tof_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.twist_of_fate_1",
+        "name": "Twist of Fate 1"
+      },
       "type": "story",
       "text": "Du stehst staunend unterhalb des Risses. Alles, was die Wahrsagerin vorhergesagt hat, ist eingetreten. „Es geht um Leben und Tod“, hatte sie dir erzählt. Wie Recht sie hatte. Hinter dem kosmischen Durchbruch erwartet dich der Nukleus des Kosmos. Jetzt wird dir klar, was auf der anderen Seite haust und hungrig am Schleier der Realität nagt: das Verderben der Menschheit. Nein, nicht nur der Menschheit. Das Verderben allen Lebens im Universum.\nEin bitterer Geschmack legt sich auf deine Zunge. Tränen sammeln sich in deinen Augen. Du ballst deine Hand so fest zur Faust, dass sich deine Nägel in dein eigenes Fleisch graben. Wenn du sterben musst, dann wird es so sein. Aber du wirst nicht einfach nur herumsitzen, bis es soweit ist."
     },
@@ -44689,6 +44809,10 @@
     },
     {
       "id": "know_what_you_have_to_do",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.if_you_accepted_your_fate",
+        "name": "If you accepted your fate"
+      },
       "bullet_type": "small",
       "text": "Du weißt, was du zu tun hast. Notiere 1 Zählstrich.",
       "effects": [
@@ -44722,6 +44846,10 @@
     },
     {
       "id": "anette_assistance",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.asked_annette_for_assistance",
+        "name": "Asked Annette for assistance"
+      },
       "type": "story",
       "text": "Der Gesandte eines uralten Wesens ersuchte Keziah, ein Buch zu unterschreiben: Das Schwarze Buch von Azathoth.“ Allein dieser Name erschüttert dich bis ins Mark. Anette ballt ihre Faust. „Ich war eine Närrin, dass ich das nicht sah. Das war die Quelle ihrer Macht. Nicht die Hexenkunst, sondern der Pakt mit einem schrecklichen, dunklen Gott. All das, diese Durchbrüche in unsere Welt, die abgestreiften Fesseln des Todes: das ist es, was Keziah immer wollte. Es war der stumme Wille Azathoths“, sagt sie verbittert."
     },
@@ -44746,6 +44874,10 @@
     },
     {
       "id": "sanford_assistance",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.asked_sanford_for_assistance",
+        "name": "Asked Sanford for assistance"
+      },
       "type": "story",
       "text": "„Es ist ein Tor“, erklärt Sanford, „welches unsere Welt mit dem größeren Kosmos verbindet. Die meisten verabscheuungswürdigen Bücher, die ich gelesen habe, besagen, dass im Zentrum eine Kreatur namens Azathoth schläft.“ Allein dieser Name erschüttert dich bis ins Mark. „Ich fürchte, wir haben ihn geweckt. All das, diese Durchbrüche im Raum, die gebrochenen Barrieren zwischen den Welten: all das nur, da wir für einen kurzen Moment, für den Bruchteil einer Sekunde, Azathoths Träume unterbrochen haben. Verstehen Sie das?“"
     },
@@ -44872,11 +45004,19 @@
     },
     {
       "id": "two_or_fewer_mementos",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.2_or_fewer_mementos_discovered",
+        "name": "2 or fewer Mementos discovered"
+      },
       "bullet_type": "small",
       "text": "Du bist für diese Reise jämmerlich vorbereitet. (Nichts geschieht.)"
     },
     {
       "id": "three_to_five_mementos",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.3_5_mementos_discovered",
+        "name": "3-5 Mementos discovered"
+      },
       "bullet_type": "small",
       "text": "Dank der Beweise, die du gefunden hast, verstehst du den Weg, den du nehmen musst, ein wenig besser. Aber da ist so viel, was du noch nicht weißt. Notiere 1 Zählstrich.",
       "effects": [
@@ -44891,6 +45031,10 @@
     },
     {
       "id": "six_or_more_mementos",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.6_or_more_mementos_discovered",
+        "name": "6 or more Mementos discovered"
+      },
       "bullet_type": "small",
       "text": "Du siehst die Reise klar vor dir. Notiere 2 Zählstriche.",
       "effects": [
@@ -44922,6 +45066,10 @@
     },
     {
       "id": "have_black_book",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.has_the_black_book",
+        "name": "Has The Black Book"
+      },
       "bullet_type": "small",
       "text": "Es enthält Wissen über das Land jenseits von Raum und Zeit. Notiere 1 Zählstrich.",
       "effects": [
@@ -44953,6 +45101,10 @@
     },
     {
       "id": "doom_draws_ever_closer",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.if_doom_draws_ever_closer",
+        "name": "If doom draws ever closer"
+      },
       "bullet_type": "small",
       "text": "Azathoths Schlund beginnt sich zu öffnen. Notiere 2 Zählstriche.",
       "effects": [
@@ -44967,6 +45119,10 @@
     },
     {
       "id": "tof_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.twist_of_fate_2",
+        "name": "Twist of Fate 2"
+      },
       "type": "story",
       "text": "Seit fast einer Stunde starrst du in die leere Kluft und denkst über deine Optionen und dein Schicksal nach. Eine Schar gesichtsloser, geflügelter Kreaturen kreist um das Feld, auf dem du sitzt. Sie bewegen sich fast wie Aasgeier, die nur auf dein Ableben warten, um sich danach an deinem Leichnam zu laben. Sie ziehen immer engere Kreise und du fragst dich, ob sie vielleicht deine Gedanken lesen können, die an der Oberfläche deines Geistes schweben. Du stehst auf, hebst deinen Arm und rufst eine der Kreaturen zu dir. Das könnte das Dümmste sein, was du je getan hast. Aber du hast richtig gelegen: die Kreatur gleitet auf schwarzen, ledrigen Flügeln herunter und landet auf dem nassen Gras direkt vor dir. Sie beugt sich soweit herab, dass sie mit dir auf Schulter höhe ist, und bietet dir ihren Rücken an. Nachdem du die letzten Zweifel und deine Angst heruntergeschluckt hast, erklimmst du die Kreatur. Mit raschen Flügelschlägen trägt sie dich in die Leere, jenseits der Schranken des Raumes … ins Reich Azathoths."
     }
@@ -45001,6 +45157,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Die Unerforschte Insel liegt inmitten des Miskatonic zwischen zwei Brücken, welche die Innenstadt mit dem Hafenviertel Arkhams verbinden. Von Schlingpflanzen, Dornen und einem widernatürlichen Dickicht überwuchert, ist die Insel frei von Bewohnern menschlicher und tierischer Natur. Reihen von mysteriösen Steinsäulen erheben sich auf der gesamten Insel weit bis über die Baumkronen hinweg. Unzählige Theorien existieren darüber, jedoch kann keine davon schlüssig erklären, welchem Zweck diese Säulen dienen oder wer sie errichtet hat. Wenige trauen sich an die Ufer dieser geheimnisvollen Insel und jene, die es gewagt haben, kehren mit merkwürdigen Geschichten zurück. Feuer im Wald in den tiefsten Stunden der Nacht – Steinaltare mit tief eingemeißelten, unverständlichen Inschriften – Wälder ohne ein Anzeichen von Leben, mit Ausnahme pechschwarzer Raben und Ziegenmelker, die sich auf den Ästen niedergelassen haben und Eindringlinge mit wachen Augen verfolgen.\nArkhams Straßen sind leerer und ruhiger als je zuvor. Ein vertrauter grauer Nebel hat die Stadt verschlungen. Der Schleier wird immer dichter, je näher du dem Fluss kommst. Du bewegst dich schnell, in der Hoffnung, niemandem auf dem Weg zur Ritualstätte zu begegnen, ganz gleich ob lebendig oder tot. Du findest mehrere am Kai vertäute Ruderboote und kletterst in eines hinein. Da das Wasser sehr ruhig und kaum eine Strömung zu verspüren ist, sollte das Rudern zur Insel ein einfaches Unterfangen sein. Der dichte Nebel macht es jedoch schwer, den richtigen Kurs zu finden. Bald bist du von einer grauen Wand eingeschlossen und kannst weder das Flussufer noch die Küste der Insel sehen. Gestalten zeichnen sich im Nebel ab. Wellen kräuseln sich auf der Wasseroberfläche. Du kannst den Blick des Beobachters spüren.\nGenau in diesem Moment steigt eine Säule geisterhafter Energie in den Himmel empor und erleuchtet ihn taghell. Die Umrisse richten ihre Aufmerksamkeit nun auf dieses Leuchtfeuer und du spürst, wie der Blick des Beobachters von deiner Seele ablässt. Das Ritual hat begonnen. Du ruderst schneller in Richtung des Lichts. Nun ist es an der Zeit, eine Entscheidung zu treffen, warum du hierher gekommen bist: Um der Silberloge der Dämmerung zu helfen? Oder um ihre Pläne zu vereiteln?"
     },
@@ -46648,6 +46808,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
       "investigator_status": [
         "resigned",
@@ -46662,6 +46826,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Der Wiedergänger windet sich in Agonie. Ohne seine Verbindung ins Reich der Geister kann er nicht flüchten. Carl Sanford tritt nach vorne, öffnet ein dickes, in Leder gebundenes Buch und die Erinnerungen des Geistes werden mitsamt dem Rest seiner Erscheinung kurzerhand in die Seiten gezogen.\n„Was habt ihr getan?“ schreit Anette. Einige Mitglieder ihres Kreises haben sich um sie herum versammelt. Du hast keinen Zweifel daran, dass sie ihr Leben dafür geben würden, ihre Hohepriesterin vor Schaden zu bewahren.\n„Was ich getan habe? Nun, ich hab den Teufel betrogen“, antwortet Sanford mit einem sinistren Grinsen. Du bemerkst, wie die Worte in seinem Buch geisterhaft schimmern. „Keziah hat das Schwarze Buch von Azathoth unterschrieben, um die Geheimnisse des Universums zu erfahren. Meiner Meinung nach ein fataler Fehler, hat sie sich doch damit in die Fänge von Etwas begeben, das weitaus mächtiger ist als sie.“ Er liest die Seiten und fährt dabei fort: „Sie hat den Preis dafür bezahlt, aber ich werde die Ernte einfahren.“\nAnette presst ihre Kiefer zusammen und dreht sich zu dir. „Du kannst dir nicht im Geringsten vorstellen, welche Geheimnisse dieses Monster nun besitzt. Glaubst du wirklich, dass er diese Macht nur zum Guten einsetzen wird?“, fragt sie dich.",
       "steps": [
@@ -46670,6 +46838,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Du stehst aufrecht und erklärst stolz deine Loyalität. Die anderen Mitglieder des Ordens nicken zustimmend. Carl Sanford wird die Menschheit in eine Ära des Friedens führen und sie vor den Bedrohungen des Kosmos schützen. Es wird Zeit benötigen, bis sich die Gesellschaft angepasst hat, aber die Menschheit wird nur überdauern können, wenn diese Geheimnisse in den Händen des Ordens sind. Die Hexen ziehen sich in den Wald zurück und lassen dich alleine mit deinen Brüdern und Schwestern des inneren Kreises zurück. Ihr versammelt euch um euren Anführer. Als er aus dem Neuen Glaubensbekenntnis des Ordens der Silbernen Dämmerung liest, offenbart er dir seine Pläne: die höheren Wesen des Kosmos, der Aufstieg der Menschheit, die Großen Alten, Leben und Tod, Azathoth und das Ende von Allem. Schritt für Schritt plant der Orden die Zukunft der Erde und du wirst dieser neuen Weltordnung dienlich sein.",
       "steps": [
@@ -46679,6 +46851,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Anette hat Recht. Sanford hat dich getäuscht. Das ist es, was er von Anfang an geplant hatte. Vielleicht hält er dies wirklich für ein „Schützen der Menschheit“, aber die Wahrheit ist, dass er immer und immer wieder die Leben anderer gefährdete, um seine eigene Gier und das Verlangen nach Macht zu stillen. Du schüttelst den Kopf.\n„Wie schade“, äußert Mr. Sanford sein Bedauern. „Ich dachte, Sie wären klüger.“ Du gehst ein paar Schritte in Richtung der Hexen zurück. Sanford wendet sich den anderen Mitgliedern des Ordens zu, zeigt auf dich und befiehlt: „Tötet sie.“\n„Erynn, gib uns Deckung!“, schreit Anette zur rothaarigen Hexe neben ihr. Die Hexe nickt und schwenkt einen hölzernen Stab. Eine Nebelwolke bildet sich und lässt dich in ihr verschwinden. „Wir müssen weg von hier. Los!“, schreit Anette.\nDu erinnerst dich nur an Fetzen deiner Flucht. Gewandete Mitglieder des Kults der Silbernen Dämmerung jagen dich unnachgiebig durch die verlassenen Wälder. Du schaffst es gerade noch zurück an den Strand, bevor sie dich einholen. Du bedeutest Anette und den anderen mit dir zu kommen, aber sie schüttelt den Kopf. „Wir werden uns bald wiedersehen.“ Die Mantelsäume der Hexen gehen in den Nachthimmel über und mit einem düsteren Wirbeln verschwindet eine nach der anderen.",
       "steps": [
@@ -46688,6 +46864,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "text": "Anette nähert sich der ätherischen Hülle der Überreste des Wiedergängers. „Schwester! Wir sind die, welche dich aus dem großen Jenseits hierher gerufen haben.“ Der zerschmetterte Wiedergänger richtet seine Aufmerksamkeit auf Anette; der Rest ihres Hexenzirkels sieht wartend zu.\n„Was tun Sie da, Sie Närrin? Dieser Geist ist keine bloße Hexe!“, schreit Calrd Sanford. Aber es ist zu spät. Anette schenkt Mr. Sanford keine Beachtung und redet weiter mit der geisterhaften Präsenz. „Seit Jahren haben wir Unrecht über Unrecht erlitten. Teile deine Geheimnisse mit mir, Schwester. Zusammen, als ein Geist, ein Körper und eine Seele können wir von Neuem beginnen.“\nDer Geist streckt ihr seinen langen, knöchernen Arm entgegen. Anettes Schwestern atmen hörbar ein, als ihre Hohepriesterin nach vorne geht und vor dem Wesen kniet, um sich anzubieten. Mit einem plötzlichen Fluss aus Energie wird die geisterhafe Seele in Anette hineingesogen. Sie bricht verkrümmt durch den Aufschlag zusammen. Ihr Körper windet sich vor Qualen, aber keine der anderen Hexen kommt ihr zu Hilfe. In ihren Augen sieht man eine Mischung aus Schrecken und Faszination. Dann erhebt sich Anette wieder, die Augen vor mystischer Kraft leuchtend. Als sie spricht, ist es nicht mehr ihre Stimme. „Schwestern. Freut euch, denn ich bin wiedergeboren.“, verkündet Keziah.\nCarl Sanford stupst dich mit seinem Gehstock an. Du warst von dem, was vor deinen Augen geschehen ist, so gebannt, dass du nicht bemerkt hast, wie sich die Logenmitglieder an den Rand der Lichtung geschlichen haben. Einer aus dem inneren Kreis der Loge zieht einen Revolver und versucht zu schießen, aber ein einfacher Blick der Hohepriesterin genügt und sein Arm verrottet vor deinen Augen. Seine Waffe fällt zu Boden und er kann nur noch ein Krächzen von sich geben, bevor er als vermoderter Haufen auf dem Boden endet. „Wir müssen sofort von hier verschwinden“, sagt Sanford in aller Ruhe. „Dieses Wesen hat Macht über Leben und Tod. Es wird unsere Anwesenheit nicht länger ertragen wollen.“\nAnette - nein, Keziah - richtet ihre Aufmerksamkeit auf dich. Ihre Augen beginnen zu leuchten. „Du wirkst vertraut, mein Kind. Komm., komm. Hab keine Angst. Du hast nichts zu befürchten.“ Sie lächelt boshaft. Es ist, als ob ihre Stimme wie ein Messer in deine Seele schneidet. Du willst es nicht wahrhaben, aber Sanford hat Recht. Du drehst dich um und verschwindest mit dem Rest der Loge, in der Hoffnung, schnell genug zu sein, um der Magie der Hexe entfliehen zu können.\nDu erinnerst dich nur an Fetzen deiner Flucht. Hexen und Geister jagen dich unnachgiebig durch die verlassenen Wälder. Du schaffst es gerade noch zurück an den Strand, bevor sie dich einholen. Andere Mitglieder der Loge haben vielleicht nicht dieses Glück. Nachdem ihr euch aufgeteilt habt, weißt du nicht, wie viele flüchten konnten und du kannst Carl Sanford nirgends erblicken. Aber du vermutest, dass er auch für diesen Ausgang einen Plan hatte.",
       "steps": [
@@ -46698,6 +46878,10 @@
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Auflösung 5",
       "investigator_status": [
         "resigned",
@@ -46714,6 +46898,10 @@
     },
     {
       "id": "R6",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_6",
+        "name": "Resolution 6"
+      },
       "title": "Auflösung 6",
       "text": "Als du wieder zu Sinnen kommst, ist der Wind abgeflaut und der dunkle Nebel verschwunden. Mit dem vollendeten Ritual scheint die Insel wieder zur Normalität zurückgekehrt zu sein - aber ist das Ritual geglückt oder misslungen? Du schlägst dich zur Mitte der Insel durch, um herauszufinden, was geschehen ist. Als du ankommst, findest du den schwer verletzten Hexenzirkel und Anette. Die Loge hat gesiegt. Carl Sanford hält ein dickes, in Leder gebundenes Buch in den Händen, dessen Seiten mit arkaner Kraft glühen. „Was habt ihr getan?!“ schreit Anette. Einige Mitglieder ihres Zirkels haben sich um sie versammelt. Du hast keinen Zweifel daran, dass sie ihr Leben dafür geben würden, ihre Hohepriesterin vor Schaden zu bewahren.\n„Was ich getan habe? Nun, ich habe den Teufel betrogen“, antwortet Carl Sanford mit einem sinistren Grinsen. Du bemerkst, wie die Worte in seinem Buch geisterhaft schimmern. „Keziah hat das Schwarze Buch von Azathoth unterschrieben, um die Geheimnisse des Universums zu erfahren. Meiner Meinung nach ein fataler Fehler, hat sie sich doch damit in die Fänge von Etwas begeben, das weitaus mächtiger ist als sie.“ Er liest die Seiten und fährt dabei fort: „Sie hat den Preis dafür bezahlt, aber ich werde die Ernte einfahren.“\nAnette presst ihre Kiefer zusammen und wendet sich dir zu. „Hör mir zu. Du kannst dir nicht im Geringsten vorstellen, welche Geheimnisse dieses Monster nun besitzt. Du musst ihn aufhalten. Egal zu welchem Preis.“\nDu hältst den Mund, aber irgendwas sagt dir, dass Anette Recht haben könnte. Sanford hat dich getäuscht. Das ist es, was er von Anfang an geplant hat. Vielleicht hält er dies wirklich für ein „Schützen der Menschheit“, aber die Wahrheit ist, dass er immer und immer wieder das Leben anderer gefährdete, um seine eigene Gier und sein Verlangen nach Macht zu stillen. Bevor du jedoch Sanford damit konfrontieren kannst, wendet er sich den anderen Mitgliedern des Ordens zu und zeigt auf dich. „Dieser hier ist uns nicht länger von Nutzen“, erklärt er. „Tötet sie alle.“\n„Erynn, gib uns Deckung!“, schreit Anette zur rothaarigen Hexe neben ihr. Die Hexe nickt und schwenkt einen hölzerenen Stab. Eine Nebelwolke bildet sich und lässt dich in ihr verschwinden. „Wir müssen weg von hier. Los!“, schreit Anette.\nDu erinnerst dich nur an Fetzen deiner Flucht. Gewandete Mitglieder des Kults der Silbernen Dämmerung jagen dich unnachgiebig durch die verlassenen Wälder. Du schaffst es gerade noch zurück an den Strand, bevor sie dich einholen. Du bedeutest Anette und den anderen mit dir zu kommen, aber sie schüttelt den Kopf. „Wir werden uns bald wiedersehen.“ Die Mantelsäume der Hexen gehen in den Nachthimmel über und mit einem düsteren Wirbeln verschwindet eine nach der anderen.",
       "steps": [
@@ -46723,6 +46911,10 @@
     },
     {
       "id": "R7",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_7",
+        "name": "Resolution 7"
+      },
       "title": "Auflösung 7",
       "text": "Als du wieder zu Sinnen kommst, ist der Wind abgeflaut und der dunkle Nebel verschwunden. Mit dem vollendeten Ritual scheint die Insel wieder zur Normalität zurückgekehrt zu sein - aber ist das Ritual geglückt oder misslungen? Du schlägst dich zur Mitte der Insel durch, um herauszufinden, was geschehen ist. Als du ankommst, findest du den schwer verletzten Orden und Carl Sanford. Anette und ihr Hexenzirkel haben gesiegt. Anette steht in der Mitte der Lichtung mit vor mystischer Kraft leuchtenden Augen. Als sie spricht, ist es nicht mehr ihre Stimme. „Schwestern. Freut euch, denn ich bin wiedergeboren.“, verkündet Kezia, verkündet Keziah.\nCarl Sandorf stupst dich mit dem Gehstock an. Du warst von dem, was vor deinen Augen passiert ist, so gebannt, dass du nicht bemerkt hast, wie sich die Logenmitglieder an den Rand der Lichtung geschlichen haben. Einer aus dem inneren Kreis der Loge zieht einen Revolver und versucht zu schießen, aber ein einfacher Blick der Hohepriesterin genügt und sein Arm verrottet vor deinen Augen. Seine Waffe wällt zu Boden und er kann nur noch ein Krächzen von sich geben, bevor er als vermoderter Haufen auf dem Boden endet. „Wir müssen sofort von hier verschwinden“, sagt Sanford in aller Ruhe. „Dieses Wesen hat Macht über Leben und Tod. Es wird unsere Anwesenheit nicht länger ertragen wollen.“\nAnette - nein, Keziah - richtet ihre Aufmerksamkeit auf dich. Ihre Augen beginnen zu leuchten. „Du wirkst vertraut, mein Kind. Komm, komm. Hab keine Angst. Du hast nichts zu befürchten.“ Sie lächelt boshaft. Es ist, als ob ihre Stimme wie ein Messer in deine Seele schneidet. Du willst es nicht wahrhaben, aber Sanford hat Recht. Du drehst dic hum und verschwindest mit dem Rest der Loge, in der Hoffnung, schnell genug zu sein, um der Magie der Hexe entfliehen zu können.\nDu erinnerst dich nur an Fetzen deiner Flucht. Hexen und Geister jagen dich unnachgiebig durch die verlassenen Wälder. Du schaffst es gerade noch zurück an den Strand, bevor sie dich einholen. Andere Mitglieder der Loge haben vielleicht nicht dieses Glück. Nachdem ihr euch aufgeteilt habt, weißt du nicht, wie viele flüchten konnten und du kannst Carl Sanford nirgends erblicken. Aber du vermutest, dass er auch für diesen Ausgang einen Plan hatte.",
       "steps": [
@@ -46732,6 +46924,10 @@
     },
     {
       "id": "R8",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_8",
+        "name": "Resolution 8"
+      },
       "title": "Auflösung 8",
       "text": "Als du endlich am Ufer des Miskatonic ankommst, versuchst du einen Überblick über die Situation zu erhalten…",
       "steps": [
@@ -62765,7 +62961,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "text": "Der Chaosbeutel wird aus folgenden Markern zusammengestellt: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -62797,15 +62993,15 @@
     },
     {
       "id": "setup_standalone_log_1",
-      "text": "<i>You are not forging your own path.</i>"
+      "text": "<i>Du hast nicht deinen eigenen Weg gewählt.</i>"
     },
     {
       "id": "setup_standalone_log_2",
-      "text": "<i>Ichtaca's faith is not restored.</i>"
+      "text": "<i>Ichtacas Vertrauen ist nicht wiederhergestellt.</i>"
     },
     {
       "id": "setup_standalone_log_3",
-      "text": "<i>The relic is missing.</i>",
+      "text": "<i>Das Relikt ist verschwunden.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -62817,25 +63013,25 @@
     },
     {
       "id": "explain_difficulty",
-      "text": "The investigators may choose how many tally marks are under “Yig’s Fury.” The lower the number chosen, the safer and easier the scenario will be.",
+      "text": "Die Ermittler dürfen wählen, wie viele Zählstriche sie unter „Yigs Zorn“ notierten. Je niedriger die Zahl ist, desto sicherer und einfacher wird das Szenario.",
       "bullets": [
         {
-          "text": "For a safer and easier experience, choose 0 or 5."
+          "text": "Für eine sichere und einfache Spielerfahrung sollte 0 oder 5 gewählt werden."
         },
         {
-          "text": "For an average experience, choose 10 or 14."
+          "text": "Für eine normale Spielerfahrung wäre 10 oder 14 die richtige Wahl."
         },
         {
-          "text": "For a more brutal experience, choose 17 or 20. "
+          "text": "Für eine deutlich brutalere Spielerfahrung sollten die Spieler 17 oder 20 wählen. "
         },
         {
-          "text": "For the ultimate challenge, choose 21 or higher."
+          "text": "Die ultimative Herausforderung erhalten sie bei einer Wahl von 21 oder mehr."
         }
       ]
     },
     {
       "id": "choose_yigs_fury",
-      "text": "Choose the amount of \"Yig's Fury\" to start with:",
+      "text": "Wähle die Anzahl der Zählstriche unter „Yigs Zorn“:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -62929,11 +63125,11 @@
     },
     {
       "id": "setup_standalone_supplies",
-      "text": "<i>You have no supplies.</i>"
+      "text": "<i>Du hast keine Ausrüstung.</i>"
     },
     {
       "id": "standalone_unwinnable",
-      "text": "This scenario is <b>unwinnable</b> in Standalone Mode. Your goal is to continue playing for as long as you can. Once each investigator has been defeated, the current depth level will determine how well you performed."
+      "text": "Dieses Szenario kann im Einzelspielmodus <b>nicht gewonnen</b> werden. Das Ziel ist es, so lange wie möglich zu spielen. Sobald jeder Ermittler besiegt worden ist, wird durch die aktuelle Tiefenstufe bestimmt, wie erfolgreich sie waren."
     },
     {
       "id": "intro_1",
@@ -67510,6 +67706,30 @@
       "type": "input",
       "input": {
         "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "Die Gezeiten sind stärker geworden.",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "tide_has_grown_stronger",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "tide_has_grown_stronger",
+                "text": "die Gezeiten sind stärker geworden."
+              }
+            ]
+          }
+        ],
         "branches": [
           {
             "id": "keys",
@@ -67799,6 +68019,65 @@
     {
       "id": "proceed_keys",
       "text": "Der lila, schwarze und weiße Schlüssel sollten noch nicht von ihrer aktuellen Position entfernt werden, da ihre Position im <b>Zwischenspiel III: Unter den Wellen</b> noch wichtig wird."
+    },
+    {
+      "id": "maybe_ask_tide_has_grown_stronger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "scenario_data",
+            "scenario_data": "resolution",
+            "options": [
+              {
+                "condition": "R1"
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "tide_has_grown_stronger",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_tide_has_grown_stronger"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_tide_has_grown_stronger",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cheat",
+            "text": "Soll <i>die Gezeiten sind stärker geworden</i> zum Kampagnenlogbuch hinzugefügt werden?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "tide_has_grown_stronger",
+                "text": "die Gezeiten sind stärker geworden."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -67820,6 +68099,7 @@
       "title": "Auflösung 1",
       "text": "Mit dem schwindenden Tageslicht und dem steigenden Wasser, das die verschiedenen Inseln vor Innsmouth nach und nach verschluckt, entscheidest du dich, mit deinen Entdeckungen zum Hafen zurückzukehren. „Haben Sie gefunden, wonach Sie gesucht haben?“, möchte Mr. Moore von dir wissen, als du sicher die Küste erreicht hast. \nUm ehrlich zu sein, bist du dir da nicht ganz sicher. Was du gefunden hast, war alarmierend. In den Gezeitenhöhlen des Teufelsriffs waren nicht nur die Relikte des Esoterischen Ordens von Dagon untergebracht, sondern sie waren auch die Heimat einer Horde seltsamer Kreaturen: Hybride zwischen Fisch, Mensch und Monster. Du bist zwar mit dem Leben davongekommen, aber an die Schrecken, die du in diesen Höhlen gesehen hast, wirst du dich dein Leben lang erinnern. Scharfe, spitze Zähne – blutbefleckte Altäre – unheilige Gebete – Anzeichen einer kommenden Katastrophe – all das wird dich auch noch nach deiner Flucht weiter heimsuchen. \nAber ist Innsmouth wirklich sicher? Kann es an Land überhaupt noch sicher sein?",
       "steps": [
+        "maybe_ask_tide_has_grown_stronger",
         "earn_xp",
         "ask_terror_of_devil_reef",
         "proceed_keys"
@@ -69834,7 +70114,7 @@
       "text": "Wähle die Spur, die erledigt werden soll:",
       "input": {
         "type": "checklist",
-        "text": "Spur erledigen",
+        "text": "Erledigen",
         "choices": [
           {
             "id": "burnham",
@@ -71130,7 +71410,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "mission_succeeded",
-          "text": "the mission was successful."
+          "text": "Die Mission war erfolgreich."
         }
       ]
     }

@@ -680,6 +680,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Recent events in the Museum have forced you to re-evaluate Armitage’s tale about Dunwich. It cannot be a coincidence—Wilbur Whateley, the Necronomicon, the creature from Dunwich, and the people and creatures who attacked here in Arkham—everything must be connected. You’re certain now where you must head: the lonely and dismal town of Dunwich Village.\nYou consider telling the Massachusetts State Police what you know, but the negative consequences outweigh the potential gain. Given the nature of your story, they would likely write your stories off as an absurd hoax. Worse, they could lock you up. After all, you were present in an illegal speakeasy, and you also trespassed in the museum. Instead, you decide to head to Dunwich yourself, in order to investigate further.\nYou pack everything you think you might need and manage to get some rest for the night. In the morning, you head to the train station in Northside and purchase a last-minute express ticket. Dunwich is several hours by train northwest along the Miskatonic River Valley. There is no train station in Dunwich, but you manage to phone one of Armitage’s acquaintances in the small village: a man by the name of Zebulon Whateley who was present during the events several months ago.\nArmitage’s notes indicate that the Whateley family is spread across many branches, some decadent and unscrupulous, others “undecayed” or otherwise untouched by nefarious and diabolic rites. According to Armitage, Zebulon’s branch of the family lay somewhere between the decayed and undecayed Whateleys, who knew of the traditions of his ancestors, but was not corrupted by them. He agrees to pick you up at the closest station and drive you into town\nAs the train departs from Arkham, you feel the events of the previous night catching up to you, and exhaustion sets in. But before you can safely reach your destination, the train car suddenly rumbles and shakes, startling you out of your reverie. The train loudly skids to a violent halt, and you hear a rattling noise behind you…"
     },
@@ -980,6 +984,10 @@
   "resolutions": [
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.investigator_defeat",
+        "name": "Investigator Defeat"
+      },
       "title": "Investigator Defeat",
       "text": "Your experience beyond the gate is simultaneously terrifying and impossible to recall with clarity. A hypnotic spectacle of lights, otherworldly sensations, and altered geometry dances at the tattered edges of your mind. An unearthly voice from beyond rings in your ears, its significance an enigma. When you awaken, you find yourself in the woods, several miles from the Miskatonic River. Destroyed train cars surround you. They are crumpled as if from a severe impact; they are also decayed as if years of rust and squalor have claimed them. There is no sign of the other passengers.",
       "steps": ["across_space_and_time", "bonus_xp", "lose_necronomicon", "lose_henry_armitage", "lose_francis_morgan", "lose_warren_rice"]
@@ -996,6 +1004,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_1",
+        "name": "Resolution 1"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -1008,6 +1020,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_2",
+        "name": "Resolution 2"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -7734,7 +7750,7 @@
     {
       "id": "house_choice",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.intro",
+        "id": "the_path_to_carcosa.interlude_1.intro",
         "name": "Intro"
       },
       "type": "input",
@@ -8015,7 +8031,7 @@
     {
       "id": "reward_1",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_1",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_1",
         "name": "Lunacy's Reward 1"
       },
       "type": "story",
@@ -8024,7 +8040,7 @@
     {
       "id": "reward_2",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_2",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_2",
         "name": "Lunacy's Reward 2"
       },
       "type": "story",
@@ -8033,7 +8049,7 @@
     {
       "id": "reward_3",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_3",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_3",
         "name": "Lunacy's Reward 3"
       },
       "type": "story",
@@ -10423,6 +10439,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Recent events in the Museum have forced you to re-evaluate Armitage’s tale about Dunwich. It cannot be a coincidence—Wilbur Whateley, the Necronomicon, the creature from Dunwich, and the people and creatures who attacked here in Arkham—everything must be connected. You’re certain now where you must head: the lonely and dismal town of Dunwich Village.\nYou consider telling the Massachusetts State Police what you know, but the negative consequences outweigh the potential gain. Given the nature of your story, they would likely write your stories off as an absurd hoax. Worse, they could lock you up. After all, you were present in an illegal speakeasy, and you also trespassed in the museum. Instead, you decide to head to Dunwich yourself, in order to investigate further.\nYou pack everything you think you might need and manage to get some rest for the night. In the morning, you head to the train station in Northside and purchase a last-minute express ticket. Dunwich is several hours by train northwest along the Miskatonic River Valley. There is no train station in Dunwich, but you manage to phone one of Armitage’s acquaintances in the small village: a man by the name of Zebulon Whateley who was present during the events several months ago.\nArmitage’s notes indicate that the Whateley family is spread across many branches, some decadent and unscrupulous, others “undecayed” or otherwise untouched by nefarious and diabolic rites. According to Armitage, Zebulon’s branch of the family lay somewhere between the decayed and undecayed Whateleys, who knew of the traditions of his ancestors, but was not corrupted by them. He agrees to pick you up at the closest station and drive you into town\nAs the train departs from Arkham, you feel the events of the previous night catching up to you, and exhaustion sets in. But before you can safely reach your destination, the train car suddenly rumbles and shakes, startling you out of your reverie. The train loudly skids to a violent halt, and you hear a rattling noise behind you…"
     },
@@ -10756,6 +10776,10 @@
   "resolutions": [
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.investigator_defeat",
+        "name": "Investigator Defeat"
+      },
       "title": "Investigator Defeat",
       "text": "Your experience beyond the gate is simultaneously terrifying and impossible to recall with clarity. A hypnotic spectacle of lights, otherworldly sensations, and altered geometry dances at the tattered edges of your mind. An unearthly voice from beyond rings in your ears, its significance an enigma. When you awaken, you find yourself in the woods, several miles from the Miskatonic River. Destroyed train cars surround you. They are crumpled as if from a severe impact; they are also decayed as if years of rust and squalor have claimed them. There is no sign of the other passengers.",
       "steps": [
@@ -10782,6 +10806,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_1",
+        "name": "Resolution 1"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -10797,6 +10825,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_2",
+        "name": "Resolution 2"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -15322,7 +15354,7 @@
     {
       "id": "house_choice",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.intro",
+        "id": "the_path_to_carcosa.interlude_1.intro",
         "name": "Intro"
       },
       "type": "input",
@@ -15616,7 +15648,7 @@
     {
       "id": "reward_1",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_1",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_1",
         "name": "Lunacy's Reward 1"
       },
       "type": "story",
@@ -15625,7 +15657,7 @@
     {
       "id": "reward_2",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_2",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_2",
         "name": "Lunacy's Reward 2"
       },
       "type": "story",
@@ -15634,7 +15666,7 @@
     {
       "id": "reward_3",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_3",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_3",
         "name": "Lunacy's Reward 3"
       },
       "type": "story",
@@ -32676,13 +32708,13 @@
       "id": "intro_b",
       "type": "story",
       "title": "Group B Instructions",
-      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a tall glass tank, and water fills the chamber to your ankles. Outside the dull glass, you can see many more tanks like yours, wreathed in mist. You are a prisoner here, with no means of escape. There is a note lying on the ground just outside the tank. It reads:. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
     },
     {
       "id": "intro_c",
       "type": "story",
       "title": "Group C Instructions",
-      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You are in a dark chamber, lit only by a few candles. Old barrels, crates and rotten storage shelves fill the cramped chamber. You cannot see any windows or doors leading out. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
     },
     {
       "id": "gather_encounter_sets",
@@ -36849,6 +36881,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Onward and onward, your steed carries you into the inky nightmare of the void beyond. You dare not turn and look behind you, for you know that what you see will likely break your heart, or perhaps your mind. Great polypous horrors slide darkly amidst the blackness and loneliness of the cosmos. You had hoped to marvel at a beautiful, glimmering array of stars, but instead you are left with an empty pit in your stomach, as the unabated vastness of the dark, cold universe looms before you. In the distance, a far-off melody rings its chords, a melody you could not possibly recreate in your universe with any known instrument, nor could your ears interpret its notes were it not ringing in your head this very moment.\nThere is a rush of air as you breach the turret of a nightmarish onyx barrier and descend into an infinite cavern of black stone and impossible architecture. The music grows as you plunge unswerving through an impossible valley, through shoals of shapeless beings, and between things that lurk and dance in the blackness beyond. You cannot help but listen to the strange music, committing each terrible, dissonant note to memory. No thought or dream of humanity can reach you here, in this place that was long ancient when Earth was born. You can only hope to guide your steed to the place where you must go… The throne upon which Azathoth itself sits."
     },
@@ -37168,36 +37204,60 @@
     },
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.investigator_defeat",
+        "name": "Investigator Defeat"
+      },
       "title": "Investigator Defeat",
       "text": "Your steed does not catch you when you fall. Down and down and down, through endless voids of sentient blackness, you fall. And fall. And fall. And fall. You beg and scream and plead and pray for an end, even for a floor upon which to crash upon, but it never comes. You will still be falling when the universe ends.",
       "steps": ["defeated_insane"]
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolution 1",
       "text": "The Primal Chaos awakens. Its hunger is unbearable. It unhinges its cosmic jaw. The maw opens wide. The universe is silenced. Aeons pass. All is still. At the center of the empty cosmos, the Blind Idiot God is lulled to sleep once more. It dreams. Within its dream, a burst of cosmic energy expands outward in all directions. A universe is born. Nebulae collapse and become stars. New worlds are forged, and new beings evolve to inhabit them. Inevitably, one learns of Azathoth. Its worship grows. In the end, all will succumb to madness or join you in oblivion… For in the grand scheme of fate, we are but specks of dust adrift in the aether, living only by the whim of an uncaring cosmos.",
       "steps": ["azathoth_devoured_the_universe", "all_killed", "lose"]
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "It was not until recently that you understood the purpose of the awful piping which you have heard constantly throughout your investigation. It is a lullaby of sorts, meant to keep the oblivious god from waking. For just a brief moment, the pipers’ song was interrupted, and Azathoth began to stir. Now you understand why Anna came to you that fateful night and begged to read your fortune. She knew the part you would have to play when you arrived here.\nSitting down at the edge of the creature’s nighted throne, you take out your flute, and begin to play.\nIn this place where time and hunger and age and weariness are mortal aspects of no concern to you, it is your duty to continue to play. Without fail. Without end.",
       "steps": ["lead_investigator_joins_pipers", "azathoth_slumbers", "lead_investigator_insane", "earn_xp_bonus_5", "two_mental_trauma", "$upgrade_decks", "win"]
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolution 3",
       "text": "You refuse to allow this creature to destroy everything you have ever loved. You gather together what you need for your ritual—a bit of shadowy essence from the witches’ cloaks, a fragment of spectral mist from the wraiths you banished, and the knowledge you’ve gained from delving into Arkham’s past. Slowly, quietly, you weave your wall together, stitching darkness with blood, blood with souls, souls with onyx stone. It takes ages to complete. When you are done, your reward is oblivion. A stillness and silence so pure, so perfect, no disturbance can penetrate it. The barrier cannot hold Azathoth—nothing truly can—but perhaps now it will not stir when fools on Earth call forth its name or draw from its power. With your task complete, you turn and face the darkness, summoning your steed. It is time to go home.",
       "steps": ["azathoth_slumbers", "earn_xp_bonus_5", "two_physical_trauma", "$upgrade_decks", "win"]
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Resolution 4",
       "text": "You have reached the nighted throne of Azathoth, but there is no easy way to reach the creature from here—and even if you did, you’re not sure what you could do to stop it. You cannot kill it, and even attempting to harm it would only risk stirring it. Desperate, you turn to Keziah’s Black Book for answers. A quill appears in your hands as you open the tome, and a voice from beyond reaches your ears. “Sign it with your blood. Take a new secret name, and your desire shall become truth. You and your world will be spared.” You know it is the voice of evil, the voice Walter Gilman heard which surely led to his demise, the voice which seduced Keziah Mason and led to this path in the first place…but what other choice to you have?",
       "steps": ["choose_final_resolution"]
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Resolution 5",
       "text": "Pricking your arm with the quill, you sign in blood.",
       "steps": ["azathoth_slumbers", "signed_the_black_book", "earn_xp_bonus_10", "two_physical_and_mental_trauma", "$upgrade_decks", "win_question_mark"]
@@ -37717,21 +37777,37 @@
     },
     {
       "id": "anette_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.arrested_anette",
+        "name": "Arrested Anette"
+      },
       "type": "story",
       "text": "“Gone? What do you mean she’s gone?!” Sheriff Engle demands.\n“See for yourself,” the officer replies. He guides the sheriff through a long hallway flanked by holding cells. “She was guarded at all hours, trust me. One moment she was there, the next…” He stops in front of Anette’s cell, and watches as Sheriff Engle’s jaw drops. Smeared along the walls of the cell is a sticky red substance, painted in a delicate pattern. The woman is nowhere to be seen."
     },
     {
       "id": "lodge_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.assumed_control_of_the_silver_twilight_lodge",
+        "name": "Assumed control of The Silver Twilight Lodge"
+      },
       "type": "story",
       "text": "You nod to the knight as he places the file you had requested onto your hardwood desk. Finding all of Carl Sanford’s records hadn’t been easy, but now all of the secrets of the Order were within your grasp. “What is the next step?” he asks, eager to serve. You inform him that there is to be a meeting in the sanctum this very night. “Very well. I will summon our most loyal members.” You dismiss him and turn to look out the window of your new office. The city of Arkham is as grim and moody as ever…but at least now you can protect it from the forces that lay beyond the Earth."
     },
     {
       "id": "watcher_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.survived_the_watchers_embrace",
+        "name": "Survived the Watcher's embrace"
+      },
       "type": "story",
       "text": "Anna regards you calmly as you enter. As always, her prescience is disconcerting, but by now you have gotten used to it. “I’ve been expecting you for some time,” she admits. “I suppose you have questions for me. Very well. Ask away. Though I imagine that by now you must know the answer.” She neither offers you a seat nor a drink. You begin to describe your situation, though the truth of your condition is plain to see for somebody with her gifts (and few else). You had hoped for another explanation— any explanation at all—but it was only a desperate clinging to hope, without justification. Anna gives you a pitying grimace and shakes her head. “Surely by now you must understand. You have completed your task. Your business here has concluded. Now is the time for you to rest and be at peace.”\nPeace? No, you cannot be at peace! There is still so much left for you to do…!"
     },
     {
       "id": "black_book_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.signed_the_black_book_of_azathoth",
+        "name": "Signed the Black Book of Azathoth"
+      },
       "type": "story",
       "text": "In your dream, a tall man approaches. His grin is full of malice. “It is time to pay your due,” he announces. “You got what you wanted. Now it is my turn.”"
     },
@@ -37769,6 +37845,10 @@
     },
     {
       "id": "being_hunted",
+      "narration": {
+        "id": "the_circle_undone.epilogue.you_are_being_hunted",
+        "name": "You are being hunted"
+      },
       "type": "story",
       "text": "No matter what you do, the creature’s assault on your mind never ceases. Its gaze haunts you everywhere you look. It controls your every thought—your hopes, your bonds, your fears, your ambitions. A reminder of your futile existence. Each night, you toss and turn, unable to wrench free from this sensation of worthlessness. Your thoughts turn to a grim, uncertain future. A future without life. A future without <i>you</i>. It is the one ordeal every mortal must endure, and yet the one experience no mortal could possibly describe. Ghosts? Realms beyond our mortal coil? Nothing but a last resort for a mind desperate to cling to life.\nWhen the creature next invades, you have come to a new conclusion. An icy draft surrounds you as the thing coalesces before you. Your throat constricts and tears well in your eyes, but you stand tall. You are unafraid. The creature gazes at you curiously, and the piping of infernal flutes fades into silence. It extends its clawed hand, and you shake it. You will never truly be free from its grasp, but perhaps you and the creature can work in agreement. Perhaps you can tame your fear. It doesn’t matter if the world has no point. It’s yours, damnit, and nothing will stop you from altering it to your liking."
     }
@@ -38191,6 +38271,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "After what you saw at the Unvisited Isle, your faith in humanity is on thin ice. You feel like a wayward spirit, wandering the streets with no destination in mind. You wish you could just return home and forget everything that has happened in the last few weeks, but you know that is just a pipe dream. After hours of aimless meandering, you snap back to reality when you realize you have wandered into Independence Square. A soft breeze carries a trail of brittle leaves across the grass of the clearing, drawing your eyes upward. There, sitting amidst a circle of autumn-colored leaves, sits Anna Kaslow. Her eyes are closed in a deep trance, her fingers pressed against the temples of her head. Laid out on the grass in front of her is a wool blanket, and on top of that, a circle of overlapping facedown tarot cards. You approach and take a seat in front of the fortune teller. It’s only now that you realize just how sore and tired you are. Every one of your muscles aches with pain, and it takes a significant amount of effort for you to not immediately pass out."
     },
@@ -38215,16 +38299,28 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "You recognize the soothsayer from your investigation into the disappearances at Josef Meiger’s manor. It was her advice that led the second set of victims to their doom, or so you suspect. Oddly enough, she appears to recognize you, as well. She runs her fingers along the circle of cards before her. “I suspect the past few weeks have been quite arduous for you. Are you here for guidance?” You grimace. The last time Anna read somebody’s fortune, it did not end well for them. What makes you think you will be any different?"
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Anna opens her eyes. “I was wondering when we would meet again.” You wonder aloud how she could possibly not know, when everything else she has predicted has come to pass. Your remark earns you a hearty chuckle from the soothsayer. “That doesn’t mean I know everything, my dear.” She runs her fingers across the circle of cards. “I suspect the past few weeks have been quite arduous for you. Are you here for more guidance?” You grimace. This all began with a reading of your fortune. What makes you think another reading will make this all go away?"
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Before you can answer, Anna turns over the card closest to her. It depicts a furtive hooded figure with five swords embedded in the ground around it. Others cower and flee before the victorious figure, and a maelstrom of dark clouds brew over its head. Above this image, the card reads: FIVE OF SWORDS. “You may feel as though you have been defeated, but you must not give in to despair. The battle may be over, but your struggle has not yet ended.” Misery catches in your throat. You want nothing more than for this nightmare to be over, but Anna’s words ring true: you know it will not end unless you put an end to it yourself.\nA flash of light burns across the sky, followed swiftly by a resounding crack of thunder. The clouds above are not natural. Phantasmal shapes shift and churn within the mist above. If you listen closely, you can faintly hear their howls of pain and sadness drifting on the wind. “It has begun,” Anna utters quietly. You rise to your feet, ignoring your exhaustion, your pain, and your fear."
     },
@@ -38743,6 +38839,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "investigator_status": [
         "resigned",
@@ -38754,24 +38854,40 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolution 1",
       "text": "The spirit cackles as she hears your words, but her laughter is soon cut short. Emerging from the trees, the remainder of Anette’s coven–led by the red-haired witch Erynn–surround Anette wordlessly. Erynn gives you a solemn nod, her conviction showing through her stern demeanor. Understanding why they have come, you step aside and allow them to do their work.\nOne of the witches draws a circle in the dirt around Anette, while the rest bind her with tendrils of searing energy. The revenant shrieks and wails in agony, but the witches dare not cease. Finally, as their chants rise to a crescendo, Erynn pierces the sanctity of the circle with her knife, pressing firmly against the air and straining as though she were attempting to pierce solid stone. Keziah’s ghost departs in a whirl of spectral mist, dissipating into thin air with a final cry. Anette’s body, unsupported, collapses to the ground. “It’s over,” you say, placing a hand on Erynn’s shoulder.\n“No,” she replies harshly, gesturing to the sky above. The storm clouds have all disappeared, yet you count not a single star in the night sky. The borders of the horizon frame the empty void above you, a breach so enormous you had not even realized it was there. How long had it loomed over the city while you spent your time warding against lesser incursions?\nYou ask what can be done to close a breach of such size. She clenches her jaw. “I don’t know. But I know who does.” She kneels over Anette, raises her hand, and slaps her hard across the face. Anette jerks awake, startled out of her catatonic state.\n“Is this what you wanted, sister?” Erynn drags her to her feet, forcing her to look up at the catastrophe she has wrought.\n“You know it isn’t,” Anette replies, her voice ragged. “I only wanted us all to have some semblance of the strength she possessed. I had no desire to use it in the same way she did. But the spirit took control, and I could not resist.” She lowers her head in resignation. “I’m sorry, sisters. I failed us all. I was not strong enough.”",
       "steps": ["choose_anettes_fate", "earn_xp"]
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "You wouldn’t put it past the president of the Silver Twilight Lodge to lie about the consequences of your actions – after all, he has already deceived you more than once before. You ask him what he means when he says you will all be extinct. He grimaces and tells you to look outside.\nThe storm clouds have all disappeared, yet you count not a single star in the night sky. The borders of the horizon frame the empty void above you, a breach so enormous you had not even realized it was there. How long had it loomed over the city while you spent your time warding against lesser incursions?\nSanford limps after you, peering up at the night sky. You ask what can be done to close a breach of such size, but before he can respond, coils of darkness emerge from the shadows, twisting into dark cloaks. In seconds you are surrounded by the witches of Anette’s coven. The high priestess steps forward, glaring at Carl Sanford with all of the intensity of hell itself.\n“Do not trust the word of this sinister worm,” she warns you. “Everything he has done, he has done to further his own agenda. He would gladly hold the world hostage if it meant one last chance at power.”\nDespite his wounds, Sanford rises to his feet and bellows back at her: “What hypocrisy! Do you forget that it was you and your misguided sect who started all of this? Summoning the dead, asking them for power?” He scoffs. “We would have elevated all of humanity. You sought only to elevate yourselves.” Sanford turns to appeal to your judgment one last time. “Do not be a fool,” he says quietly. “This outcome is not what the Lodge desires. Allow me to help, and together maybe we can return things to normal.”",
       "steps": ["choose_carls_fate", "earn_xp"]
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolution 3",
       "text": "Anette stands at the center of her circle of witches, her eyes aglow with boundless power. Above, hundreds of phantasmal shapes reach out, a web of power linking the witches and their deceased brethren. The wraiths descend, each claiming a body for themselves, manipulating it to their own ends. The witches’ only show of resistance is the blood that drips from their eyes as their unwilling spell reaches its culmination.\n“It is time!” The disembodied voice of Keziah declares through Anette’s lips. “The Primal Chaos awaits! Hear us, Daemon Sultan!” Her voice rises into the night, and a breach greater than the sky itself opens. The borders of the horizon frame the empty void above. It reaches into infinity, beyond the confines of three-dimensional space. “I have done as you commanded of me,” she says to a being who is not present, but can hear her every word. “Now reap this world of the living, and let them suffer for their mistakes.” With that, the spectral figures vanish one by one, whisked away by the emptiness above. Anette and her sisters collapse to the ground unceremoniously. A thin, discordant flute warbles throughout the fabric of the world…",
       "steps": ["doom_draws_ever_closer", "earn_xp"]
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Resolution 4",
       "text": "Carl Sanford stands at the podium of the Lodge’s Inner Sanctum, clad in silver-and-blue robes. Before him, his subjects kneel in subjugation, ready to receive the power promised to them and claim their rightful place in the new world that they will create. The tome Sanford reads from glows with witch-light. “The bonds of mortality have held us back for too long!” He declares as the ceremony reaches its climax. “We will break these bonds and ascend to a higher plane!”\nAbove the very building they stand in, a breach greater than the sky itself opens. The borders of the horizon frame the empty void above. It reaches into infinity, beyond the confines of three-dimensional space. Then all of the candles in the Lodge’s sanctum are snuffed out at once, and the chanting ceases, followed by quiet, nervous murmuring. “What is going on?” Sanford demands, trying desperately to read from the tome in front of him. But it is too late. The Lodge has succeeded only in accelerating their doom. True immortality can only be achieved by those who are worthy. A thin, discordant flute warbles throughout the fabric of the world…",
       "steps": ["doom_draws_ever_closer", "earn_xp"]
@@ -40933,6 +41049,10 @@
   "steps": [
     {
       "id": "tof_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.twist_of_fate_1",
+        "name": "Twist of Fate 1"
+      },
       "type": "story",
       "text": "You stand underneath the breach, in awe of its presence. Everything the soothsayer predicted has come to pass. “This is a matter of life and death,” she had told you. How right she was. Beyond the cosmic ingress, the nucleus of the cosmos awaits. Now you understand what dwells on the other side, gnawing hungrily at the fabric of reality: the doom of all humanity; no, not just humanity. The doom of all life in the universe.\nThere is a bitter taste in your mouth. Tears well in your eyes. You close your fist so hard your nails dig into your flesh. If you have to die, then die you will. But you’re not going to die sitting down."
     },
@@ -40968,6 +41088,10 @@
     },
     {
       "id": "know_what_you_have_to_do",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.if_you_accepted_your_fate",
+        "name": "If you accepted your fate"
+      },
       "bullet_type": "small",
       "text": "You know what you have to do. Record 1 tally mark.",
       "effects": [
@@ -40997,6 +41121,10 @@
     },
     {
       "id": "anette_assistance",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.asked_annette_for_assistance",
+        "name": "Asked Annette for assistance"
+      },
       "type": "story",
       "text": "“Keziah was beseeched to sign a book by the messenger of an ancient being. The Black Book of Azathoth.” Just the name of the thing shakes you to your core. Anette clenches her fist. “I was a fool to not have understood before. That was the source of her power. Not witchcraft, but a pact with a terrible, dark god. All of this, these incursions into our world, the broken bonds of death: it is what Keziah wanted all along. It was the silent will of Azathoth,” she says resentfully."
     },
@@ -41017,6 +41145,10 @@
     },
     {
       "id": "sanford_assistance",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.asked_sanford_for_assistance",
+        "name": "Asked Sanford for assistance"
+      },
       "type": "story",
       "text": "“It is a gateway,” Sanford explains, “ joining our world and the greater Cosmos. According to some of the most heinous tomes I have read, at the center, there sleeps a creature known as Azathoth.” Just the name of the thing shakes you to your core. “I fear we have stirred it in its slumber. All of this, these breaches in space, these broken barriers between worlds: it is all because for just a brief moment, for one fragment of a second, we interrupted Azathoth’s dreaming. Do you understand?”"
     },
@@ -41121,11 +41253,19 @@
     },
     {
       "id": "two_or_fewer_mementos",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.2_or_fewer_mementos_discovered",
+        "name": "2 or fewer Mementos discovered"
+      },
       "bullet_type": "small",
       "text": "You are woefully unprepared for this journey. (Nothing happens.)"
     },
     {
       "id": "three_to_five_mementos",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.3_5_mementos_discovered",
+        "name": "3-5 Mementos discovered"
+      },
       "bullet_type": "small",
       "text": "From the evidence you have uncovered, you understand the path you must take a little better. But there is still much you do not know. Record 1 tally mark.",
       "effects": [
@@ -41140,6 +41280,10 @@
     },
     {
       "id": "six_or_more_mementos",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.6_or_more_mementos_discovered",
+        "name": "6 or more Mementos discovered"
+      },
       "bullet_type": "small",
       "text": "Your journey is laid bare before you. Record 2 tally marks.",
       "effects": [
@@ -41169,6 +41313,10 @@
     },
     {
       "id": "have_black_book",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.has_the_black_book",
+        "name": "Has The Black Book"
+      },
       "bullet_type": "small",
       "text": "It contains knowledge of the land beyond ordered time and space. Record 1 tally mark.",
       "effects": [
@@ -41198,6 +41346,10 @@
     },
     {
       "id": "doom_draws_ever_closer",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.if_doom_draws_ever_closer",
+        "name": "If doom draws ever closer"
+      },
       "bullet_type": "small",
       "text": "Azathoth’s maw begins to open. Record 2 tally marks.",
       "effects": [
@@ -41212,6 +41364,10 @@
     },
     {
       "id": "tof_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.twist_of_fate_2",
+        "name": "Twist of Fate 2"
+      },
       "type": "story",
       "text": "For almost an hour, you stare up into the empty abyss, pondering your options and your fate. A flock of faceless winged creatures circle the field where you sit. They almost move like vultures, waiting for your demise so as to feast on your corpse. They draw ever nearer, and you begin to wonder if they can read the thoughts that hover on the surface of your mind. Rising to your feet, you raise your arm and call out to one of them. This may be the most foolish thing you have ever done, you think to yourself. But your instinct proves to be the right move: the creatures descend on black leathery wings, landing on the wet grass in front of you. One lowers itself until it reaches the height of your shoulders, offering its back to you. Swallowing the very last of your doubts and your fear, you climb aboard the creature. With a swift flap of its wings, it carries you off into the void, beyond the limits of space…to the domain of Azathoth."
     }
@@ -41246,6 +41402,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "The Unvisited Isle lies in the midst of the Miskatonic River, in between two of the bridges that span the river and connect the Downtown and Rivertown neighborhoods of Arkham. Overgrown with vines, thorns, and unnatural underbrush, the island is home to no residents and very few fauna. Rows of mysterious stone pillars stand sentry throughout the island, rising high above the treetops. Though many theories abound, none know for sure what purpose these stone pillars serve, or who built them. Very few dare to venture onto the shores of the enigmatic island, and those who do return with strange tales: bonfires in the woods at the darkest hours of night—stone altars with deep carvings impossible to translate—empty woods devoid of life, save for the stark-black ravens and whippoorwills who perch on the tree branches and watch trespassers with eager eyes. Unfortunately for you, the stakes are too high for you to heed these many warnings.\nThe streets of Arkham are emptier and quieter than you have ever seen them before. A familiar grey mist has enveloped the town. The haze grows denser and thicker the closer you get to the river. You move with haste, not wanting to encounter any others on your way to the site of the ritual, whether they be living or dead. You find several rowboats moored by the docks and climb aboard one of them. With the waters unnaturally still and barely any current carrying the boat, rowing toward the island should be a simple endeavor. Even so, the dense fog makes it difficult for you to get your bearings. Soon, you are completely enclosed by the grey mist, unable to see the banks of the river or the coast of the island. Shapes emerge from the fog. Ripples appear on the surface of the water. The gaze of the watcher is upon you.\nJust then, a pillar of spectral energy ascends into the sky, clear as day even through the haze. The shapes all turn their attention to this beacon, and you sense the watcher’s gaze slipping from your soul. The rite has begun. You row faster, using the light to guide you. It is time to decide once and for all why you have come—are you here to aid the Silver Twilight Lodge? Or to disrupt them?"
     },
@@ -42759,6 +42919,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "investigator_status": [
         "resigned",
@@ -42771,30 +42935,50 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolution 1",
       "text": "The revenant thrashes and writhes in torment, unable to escape with its connection to the spectral realm torn away. Carl Sanford steps forward, opens a thick leather tome, and the ghost’s memories—along with the remainder of its form—are unceremoniously pulled into its pages.\n“What have you done?!” Anette yells. Several members of her coven surround her. They are embattled, but you have no doubt they would lay down their life to protect their high priestess from harm.\n“What have I done? Why, I have cheated the Devil,” Sanford responds with a sinister grin. You notice the words of his tome are now glowing with a spectral radiance. “Keziah signed the Black Book of Azathoth in order to learn the secrets of the universe. A fatal error, in my estimation, for it put her in the clutches of one far more powerful than she.” He begins to read from the pages as he explains further. “She paid the price, but I shall reap the harvest.”\nAnette clenches her jaw and turns toward you. “You cannot even begin to fathom the secrets this monster now possesses. Do you truly believe he will use this power for good?” She asks.",
       "steps": ["choose_if_sanford_is_good"]
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "You stand tall and declare your loyalty proudly. The other members of the Order nod in affirmation. Carl Sanford will lead mankind to an era of peace, and protect them from the threats of the cosmos. It may take time for society to adjust, but humanity can only survive if these secrets are in the hands of the Order. The witches retreat into the woods, and you are left alone with your brothers and sisters of the Inner Circle. You gather around your leader, and as he reads from the New Creed of the Silver Twilight Order, he informs you of his plans: of the higher beings of the cosmos, of humanity’s ascension, of the Great Old Ones, of life and death, of Azathoth and the End of Everything. Step by step, the Order plots the future of the Earth, and you will become instrumental in the new world order.",
       "steps": ["true_work_of_silver_twilight_lodge_has_begun", "silver_twilight_wins_campaign"]
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolution 3",
       "text": "Anette is right. Sanford tricked you. This is what he was after all along. Perhaps he considers this “protecting humanity,” but the truth is that he has endangered the lives of others over and over again in order to serve his own greed and lust for power. You shake your head.\n“A pity,” Mr. Sanford complains, “I thought you were smarter than this.” You take several steps back, retreating to where the witches are gathered. Sanford turns to the other members of his Order and points to you. “Kill them,” he commands.\n“Erynn, give us cover!” Anette barks to the red-haired witch next to her. The witch nods in response and waves a wooden rod in front of her, creating a cloud of mist that masks your presence. “We have to get out of here. Go!” Anette yells.\nYour escape is a blur. Robed members of the Silver Twilight cult chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. You motion for Anette and the others to join you, but she shakes her head. “We’ll meet again soon.” The edges of the witches’ cloaks bleed into the night sky, and with a swirl of darkness, they vanish one by one.",
       "steps": ["carl_sanford_possesses_the_secrets_of_the_universe", "resolution_8"]
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Resolution 4",
       "text": "Anette approaches, confronting the remnant’s ethereal shell. “Sister! We are the ones who have called you here from the great beyond.” The shattered revenant turns its attention to Anette, and the rest of her coven watch in anticipation.\n“What are you doing, you fool? This spirit is no mere witch!” Carl Sanford yells out. But it is too late. Anette ignores Mr. Sanford, continuing to speak with the spectral presence. “For years we have suffered injustice after injustice. Share with me your secrets, sister. Together, as one mind, body, and soul, we can begin anew.”\nThe ghost reaches out to her with a long, skeletal arm. Anette’s sisters gasp as their high priestess steps forward and kneels before the being, offering herself. With a sudden rush of energy, the phantom soul is drawn inside Anette. She collapses to the ground, reeling from the spiritual impact. Her body writhes in torment, but none of the other witches step forward to help, instead watching with equal parts terror and fascination. Finally, Anette rises to her feet, her eyes aglow with mystical power. When she speaks, it is not her voice. “Sisters. Rejoice, for I am reborn,” Keziah says.\nCarl Sanford taps you with his cane. You were so transfixed by the events occurring in front of you that you hadn’t noticed the Lodge members slinking toward the edges of the clearing. One of the Lodge’s inner circle raises a revolver and attempts to fire, but the high priestess simply glares at him, and his arm withers and rots before your eyes. His gun clatters to the ground and he makes one final croak before he is nothing but a decayed husk on the ground. “We must leave this place at once,” Sanford says stoically. “This being possesses power over life and death itself. It will not suffer our presence any longer.”\nAnette—no, Keziah—turns her attention to you, and her eyes brighten. “You look familiar, child. Come, come. Do not be afraid. You have nothing to fear from me.” She grins wickedly. Her voice is like knives driving into your soul. You hate to admit it, but Sanford is right. You turn and flee with the rest of the Lodge, hoping you are fast enough to escape the witch’s magic. \nYour escape is a blur. Witches and spirits chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. Other members of the Lodge are perhaps not so fortunate. Having scattered in many directions, you’re not sure how many of them escaped, and you don’t see Carl Sanford anywhere, though you suspect he had a plan for this outcome.",
       "steps": ["maybe_adjust_chaos_bag", "anette_mason_is_possessed_by_evil", "resolution_8"]
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Resolution 5",
       "investigator_status": [
         "resigned",
@@ -42811,18 +42995,30 @@
     },
     {
       "id": "R6",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_6",
+        "name": "Resolution 6"
+      },
       "title": "Resolution 6",
       "text": "When you come to your senses, the wind has subsided and the dark mist has vanished. With the ritual concluded, the island seems to have returned to normal—but was the ritual successful, or did it fail? You make your way to the center of the island to find out what happened. As you arrive, you find Anette and her coven heavily wounded, and the Lodge stands victorious. Carl Sanford holds a thick leather tome in his hands, its pages glowing with arcane power. “What have you done?!” Anette yells. Several members of her coven surround her. They are embattled, but you have no doubt they would lay down their life to protect their high priestess from harm.\n“What have I done? Why, I have cheated the Devil,” Sanford responds with a sinister grin. You notice the words of his tome are now glowing with a spectral radiance. “Keziah signed the Black Book of Azathoth in order to learn the secrets of the universe. A fatal error, in my estimation, for it put her in the clutches of one far more powerful than she.” He begins to read from the pages as he explains further. “She paid the price, but I shall reap the harvest.”\nAnette clenches her jaw and turns toward you. “Listen to me. You cannot even begin to fathom the secrets this monster now possesses. You must stop him, no matter the cost.”\nYou hold your tongue, but in the back of your mind, you suspect Anette is right. Sanford has tricked you. This is what he was after all along. Perhaps he considers this “protecting humanity,” but the truth is that he has endangered the lives of others over and over again in order to serve his own greed and lust for power. However, before you can confront Sanford, he turns to the other members of his Order and points to you. “This one is no longer useful,” he explains. “Kill them all.”\n“Erynn, give us cover!” Anette barks to the red-haired witch next to her. The witch nods in response and waves a wooden rod in front of her, creating a cloud of mist that masks your presence. “We have to get out of here. Go!” Anette yells.\nYour escape is a blur. Robed members of the Silver Twilight cult chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. You motion for Anette and the others to join you, but she shakes her head. “We’ll meet again soon.” The edges of the witches’ cloaks bleed into the night sky, and with a swirl of darkness, they vanish one by one.",
       "steps": ["carl_sanford_possesses_the_secrets_of_the_universe", "resolution_8"]
     },
     {
       "id": "R7",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_7",
+        "name": "Resolution 7"
+      },
       "title": "Resolution 7",
       "text": "When you come to your senses, the wind has subsided and the dark mist has vanished. With the ritual concluded, the island seems to have returned to normal—but was the ritual successful, or did it fail? You make your way to the center of the island to find out what happened. As you arrive, you find Carl Sanford and the other members of his Order heavily wounded, and Anette and her coven stand victorious. Anette stands at the center of the clearing, her eyes aglow with mystical power. When she speaks, it is not her voice. “Sisters. Rejoice, for I am reborn,” Keziah says.\nCarl Sanford taps you with his cane. You were so transfixed by the events occurring in front of you that you hadn’t noticed the Lodge members slinking toward the edges of the clearing. One of the Lodge’s inner circle raises a revolver and attempts to fire, but the high priestess simply glares at him, and his arm withers and rots before your eyes. His gun clatters to the ground and he makes one final croak before he is nothing but a decayed husk on the ground. “We must leave this place at once,” Sanford says stoically. “This being possesses power over life and death itself. It will not suffer our presence any longer.”\nAnette—no, Keziah—turns her attention to you, and her eyes brighten. “You look familiar, child. Come, come. Do not be afraid. You have nothing to fear from me.” She grins wickedly. Her voice is like knives driving into your soul. You hate to admit it, but Sanford is right. You turn and flee with the rest of the Lodge, hoping you are fast enough to escape the witch’s magic.\nYour escape is a blur. Witches and spirits chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. Other members of the Lodge are perhaps not so fortunate. Having scattered in many directions, you’re not sure how many of them escaped, and you don’t see Carl Sanford anywhere, though you suspect he had a plan for this outcome.",
       "steps": ["anette_mason_is_possessed_by_evil", "resolution_8"]
     },
     {
       "id": "R8",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_8",
+        "name": "Resolution 8"
+      },
       "title": "Resolution 8",
       "text": "When you finally return to the banks of the Miskatonic River, you take stock of the situation…",
       "steps": [
@@ -61378,6 +61574,30 @@
       "type": "input",
       "input": {
         "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "The tide has grown stronger.",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "tide_has_grown_stronger",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "tide_has_grown_stronger",
+                "text": "the tide has grown stronger."
+              }
+            ]
+          }
+        ],
         "branches": [
           {
             "id": "keys",
@@ -61651,6 +61871,63 @@
     {
       "id": "proceed_keys",
       "text": "Do not move the purple, black, or white keys from their current position just yet—the location of each of these keys will be important during <b>Interlude III: Beneath the Waves</b>."
+    },
+    {
+      "id": "maybe_ask_tide_has_grown_stronger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "scenario_data",
+            "scenario_data": "resolution",
+            "options": [
+              {
+                "condition": "R1"
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "tide_has_grown_stronger",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["ask_tide_has_grown_stronger"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_tide_has_grown_stronger",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cheat",
+            "text": "Should <i>the tide has grown stronger</i> be added to the Campaign Log?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "tide_has_grown_stronger",
+                "text": "the tide has grown stronger."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -61669,7 +61946,7 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "With daylight fading and the tide rising to swallow the various islands off the coast of Innsmouth, you decide to make your way back to the harbor with your discoveries. \"Found what yer lookin' for?\" Mr. Moore asks oncce you've made it to the coast safely.\nTruth be told, you're not completely sure. What you found was startling. The coves and tidal caverns of Devil Reef were home not just to relics of the Esoteric Order of Dagon, but also to a horde of strange creatures: hybrids between fish, man, and monster. You might have escaped with your life, but the horrors you saw in those caves will stay with you forever. Sharp jagged teeth—blood-stained altars—unholy prayers—signs of a coming catastrophe—it still haunts you even after your escape.\nBut is Innsmouth truly safe? Is any land at all?",
-      "steps": ["earn_xp", "ask_terror_of_devil_reef", "proceed_keys"]
+      "steps": ["maybe_ask_tide_has_grown_stronger", "earn_xp", "ask_terror_of_devil_reef", "proceed_keys"]
     }
   ]
 }

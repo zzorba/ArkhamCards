@@ -814,6 +814,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Los recientes acontecimientos en el museo os han obligado a reconsiderar el relato de Armitage sobre Dunwich. No puede ser una coincidencia: Wilbur Whateley, el Necronomicón, la criatura de Dunwich y la gente y criaturas que os atacaron aquí, en Arkham... todo debe de estar conectado. Ahora estáis seguros de adónde debéis dirigiros: a la solitaria y lúgubre ciudad de Dunwich.\nOs planteáis contarle a la policía estatal de Massachusetts lo que sabéis, pero las consecuencias negativas superan a cualquier posible beneficio. Dada la naturaleza de vuestra historia, probablemente pensarían que es un fraude absurdo. O peor, podrían encerraros. Después de todo, estuvisteis presentes en un garito ilegal y también os colasteis en el museo. Así que desecháis la idea y decidís dirigiros a Dunwich vosotros mismos para seguir investigando.\nMetéis en el equipaje todo lo que creéis que podréis necesitar y lográis descansar un poco durante la noche. Por la mañana, vais a la estación de tren del Barrio Norte y compráis billetes de última hora para el tren expreso. Dunwich está a varias horas en tren hacia el noroeste, siguiendo el valle del río Miskatonic. En la localidad no hay estación de tren, pero lográis hablar por teléfono con uno de los conocidos de Armitage que viven allí: se trata de un hombre llamado Zebulon Whateley, que estuvo presente durante los sucesos de hace unos meses.\nLas notas de Armitage indican que el árbol genealógico de la familia Whateley tiene una gran cantidad de ramas, algunas repletas de miembros de la familia decadentes y sin escrúpulos, y otras “limpias” o libres de la influencia de los ritos diabólicos y siniestros. Según Armitage, la rama de la familia de Zebulon se encuentra entre los Whateley podridos y los no podridos, y aunque conocían las tradiciones de sus ancestros, no fueron corrompidos por ellas. Zebulon accede a recogeros en la estación más cercana y llevaros a la ciudad.\nCuando el tren sale de Arkham, notáis que los acontecimientos de la noche anterior empiezan a pasaros factura, y el cansancio os vence. Pero antes de que podáis llegar a vuestro destino sanos y salvos, el vagón empieza a temblar y sacudirse y os saca de vuestro sopor. El tren se detiene brusca y ruidosamente, y oís un traqueteo a vuestra espalda…"
     },
@@ -1142,6 +1146,10 @@
   "resolutions": [
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.investigator_defeat",
+        "name": "Investigator Defeat"
+      },
       "title": "Investigador derrotado",
       "text": "Vuestra experiencia al otro lado del portal es a la vez aterradora e imposible de recordar claramente. Un hipnótico espectáculo de luces, sensaciones sobrenaturales y geometría alterada baila en los límites hechos jirones de vuestra mente. Una voz fantasmal que viene del más allá resuena en vuestros oídos, pero su significado es un enigma. Cuando despertáis, os encontráis en los bosques, a varias millas del río Miskatonic. Estáis rodeados de vagones de tren destruidos, que han quedado arrugados como si hubieran sufrido un impacto tremendo, y también están deteriorados de una forma que parece como si años de óxido y suciedad hubieran hecho estragos en ellos. No hay ni rastro de los demás pasajeros.",
       "steps": [
@@ -1168,6 +1176,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_1",
+        "name": "Resolution 1"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -1183,6 +1195,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_2",
+        "name": "Resolution 2"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -8896,7 +8912,7 @@
     {
       "id": "house_choice",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.intro",
+        "id": "the_path_to_carcosa.interlude_1.intro",
         "name": "Intro"
       },
       "type": "input",
@@ -9190,7 +9206,7 @@
     {
       "id": "reward_1",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_1",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_1",
         "name": "Lunacy's Reward 1"
       },
       "type": "story",
@@ -9199,7 +9215,7 @@
     {
       "id": "reward_2",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_2",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_2",
         "name": "Lunacy's Reward 2"
       },
       "type": "story",
@@ -9208,7 +9224,7 @@
     {
       "id": "reward_3",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_3",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_3",
         "name": "Lunacy's Reward 3"
       },
       "type": "story",
@@ -11795,6 +11811,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Los recientes acontecimientos en el museo os han obligado a reconsiderar el relato de Armitage sobre Dunwich. No puede ser una coincidencia: Wilbur Whateley, el Necronomicón, la criatura de Dunwich y la gente y criaturas que os atacaron aquí, en Arkham... todo debe de estar conectado. Ahora estáis seguros de adónde debéis dirigiros: a la solitaria y lúgubre ciudad de Dunwich.\nOs planteáis contarle a la policía estatal de Massachusetts lo que sabéis, pero las consecuencias negativas superan a cualquier posible beneficio. Dada la naturaleza de vuestra historia, probablemente pensarían que es un fraude absurdo. O peor, podrían encerraros. Después de todo, estuvisteis presentes en un garito ilegal y también os colasteis en el museo. Así que desecháis la idea y decidís dirigiros a Dunwich vosotros mismos para seguir investigando.\nMetéis en el equipaje todo lo que creéis que podréis necesitar y lográis descansar un poco durante la noche. Por la mañana, vais a la estación de tren del Barrio Norte y compráis billetes de última hora para el tren expreso. Dunwich está a varias horas en tren hacia el noroeste, siguiendo el valle del río Miskatonic. En la localidad no hay estación de tren, pero lográis hablar por teléfono con uno de los conocidos de Armitage que viven allí: se trata de un hombre llamado Zebulon Whateley, que estuvo presente durante los sucesos de hace unos meses.\nLas notas de Armitage indican que el árbol genealógico de la familia Whateley tiene una gran cantidad de ramas, algunas repletas de miembros de la familia decadentes y sin escrúpulos, y otras “limpias” o libres de la influencia de los ritos diabólicos y siniestros. Según Armitage, la rama de la familia de Zebulon se encuentra entre los Whateley podridos y los no podridos, y aunque conocían las tradiciones de sus ancestros, no fueron corrompidos por ellas. Zebulon accede a recogeros en la estación más cercana y llevaros a la ciudad.\nCuando el tren sale de Arkham, notáis que los acontecimientos de la noche anterior empiezan a pasaros factura, y el cansancio os vence. Pero antes de que podáis llegar a vuestro destino sanos y salvos, el vagón empieza a temblar y sacudirse y os saca de vuestro sopor. El tren se detiene brusca y ruidosamente, y oís un traqueteo a vuestra espalda…"
     },
@@ -12128,6 +12148,10 @@
   "resolutions": [
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.investigator_defeat",
+        "name": "Investigator Defeat"
+      },
       "title": "Investigador derrotado",
       "text": "Vuestra experiencia al otro lado del portal es a la vez aterradora e imposible de recordar claramente. Un hipnótico espectáculo de luces, sensaciones sobrenaturales y geometría alterada baila en los límites hechos jirones de vuestra mente. Una voz fantasmal que viene del más allá resuena en vuestros oídos, pero su significado es un enigma. Cuando despertáis, os encontráis en los bosques, a varias millas del río Miskatonic. Estáis rodeados de vagones de tren destruidos, que han quedado arrugados como si hubieran sufrido un impacto tremendo, y también están deteriorados de una forma que parece como si años de óxido y suciedad hubieran hecho estragos en ellos. No hay ni rastro de los demás pasajeros.",
       "steps": [
@@ -12154,6 +12178,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_1",
+        "name": "Resolution 1"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -12169,6 +12197,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.essex_county_express.resolution_2",
+        "name": "Resolution 2"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
@@ -16694,7 +16726,7 @@
     {
       "id": "house_choice",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.intro",
+        "id": "the_path_to_carcosa.interlude_1.intro",
         "name": "Intro"
       },
       "type": "input",
@@ -16988,7 +17020,7 @@
     {
       "id": "reward_1",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_1",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_1",
         "name": "Lunacy's Reward 1"
       },
       "type": "story",
@@ -16997,7 +17029,7 @@
     {
       "id": "reward_2",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_2",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_2",
         "name": "Lunacy's Reward 2"
       },
       "type": "story",
@@ -17006,7 +17038,7 @@
     {
       "id": "reward_3",
       "narration": {
-        "id": "the_path_to_carcosa.lunacys_reward.lunacys_reward_3",
+        "id": "the_path_to_carcosa.interlude_1.lunacys_reward_3",
         "name": "Lunacy's Reward 3"
       },
       "type": "story",
@@ -35134,13 +35166,13 @@
       "id": "intro_b",
       "type": "story",
       "title": "Group B Instructions",
-      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a tall glass tank, and water fills the chamber to your ankles. Outside the dull glass, you can see many more tanks like yours, wreathed in mist. You are a prisoner here, with no means of escape. There is a note lying on the ground just outside the tank. It reads:. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
     },
     {
       "id": "intro_c",
       "type": "story",
       "title": "Group C Instructions",
-      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You are in a dark chamber, lit only by a few candles. Old barrels, crates and rotten storage shelves fill the cramped chamber. You cannot see any windows or doors leading out. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
     },
     {
       "id": "gather_encounter_sets",
@@ -39929,6 +39961,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Vuestros corceles siguen adelante y os llevan por la oscura pesadilla del vacío que hay al otro lado. No os atrevéis a giraros y mirar a vuestra espalda, pues sabéis que lo que veréis probablemente os rompa el corazón, o tal vez os haga pedazos la mente. Hay grandes horrores poliposos que se deslizan siniestramente entre la oscuridad y la soledad del cosmos. Habíais esperado maravillaros ante un precioso y resplandeciente despliegue de estrellas pero, en lugar de eso, tenéis una sensación de vacío en el estómago cuando la incesante extensión del frío y oscuro universo se alza ante vosotros. A lo lejos, una distante melodía hace sonar sus acordes. Una melodía que no podríais recrear en vuestro universo con ningún instrumento conocido, ni vuestros oídos podrían interpretar sus notas si no estuvieran sonando en vuestra cabeza en este preciso instante.\nSe produce una ráfaga de aire cuando rompéis la torrecilla de una barrera de ónice de pesadilla y descendéis por una caverna infinita de piedra negra y arquitectura imposible. La música crece mientras os lanzáis por un valle imposible, a través de cardúmenes de seres informes y entre cosas que acechan y bailan en la oscuridad que hay más allá. No podéis evitar escuchar la extraña música y memorizar cada una de las terribles notas disonantes. Aquí, en este lugar que ya era antiguo cuando nació la Tierra, no llega ningún pensamiento ni sueño de la humanidad. Tenéis la esperanza de poder guiar a vuestros corceles al lugar adonde deben ir... Al trono sobre el que se sienta el propio Azathoth."
     },
@@ -40323,6 +40359,10 @@
     },
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.investigator_defeat",
+        "name": "Investigator Defeat"
+      },
       "title": "Investigador derrotado",
       "text": "Tu corcel no te coge cuando caes. Abajo, abajo, cada vez más abajo, por vacíos infinitos de negrura consciente. Caes y caes. Y caes. Y caes. Ruegas y gritas y suplicas y rezas para que llegue el fin, incluso un suelo sobre el que estrellarte, pero nunca llega. Seguirás cayendo cuando el universo se acabe.",
       "steps": [
@@ -40331,6 +40371,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "El Caos Primordial despierta. Su hambre es insoportable. Desencaja su mandíbula cósmica. Las fauces se abren de par en par. El universo queda en silencio. Pasan eones. Todo calla. En el centro del cosmos vacío, el Dios Ciego e Idiota vuelve a dormirse. Sueña. En su sueño, una descarga de energía cósmica se expande en todas direcciones. Nace un universo. Nébulas se colapsan y se convierten en estrellas. Nuevos mundos se forjan, y nuevos seres evolucionan para vivir en ellos. Inevitablemente, uno descubre la existencia de Azathoth. Su culto crece. Al final, todos sucumben a la locura o se unen a vosotros en el olvido... En el gran plan del destino, no somos más que motas de polvo que vagan en el éter y que sólo viven por el capricho de un cosmos al que le da igual.",
       "steps": [
@@ -40341,6 +40385,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Hasta hace muy poco no entendisteis el propósito del terrible sonido de flauta que escuchasteis constantemente a lo largo de la investigación. Es como una especie de nana que trataba de evitar que despertase el dios. Por un breve instante, la canción del flautista fue interrumpida, y Azathoth comenzó a agitarse. Ahora entendéis por qué acudió Anna a vosotros esa fatídica noche y os suplicó echaros las cartas. Sabía el papel que desempeñaríais cuando llegaseis aquí\nSentado en el borde del trono nocturno de la criatura, sacas la flauta y comienzas a tocar\nEn este lugar donde el tiempo, el hambre, la edad y el cansancio son aspectos mortales que no te atañen, tu labor es seguir tocando. Sin errores. Sin final.",
       "steps": [
@@ -40355,6 +40403,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "text": "Os negáis a permitir que esta criatura destruya todo lo que amáis. Reunís lo que necesitáis para el ritual: un poco de esencia sombría de las capas de las brujas, un fragmento de niebla espectral de los espectros que desterrasteis y el conocimiento que obtuvisteis por ahondar en el pasado de Arkham. Lenta y sigilosamente, tejéis vuestro muro, uniendo la oscuridad con la sangre, la sangre con las almas y las almas con el ónice. Os lleva una eternidad completarlo. Cuando acabáis, vuestra recompensa es el olvido. Una quietud y un silencio tan puros y perfectos que ninguna perturbación puede penetrarlos. La barrera no puede contener a Azathoth, pues nada puede hacerlo realmente, pero quizás ahora no se agitará cuando unos necios terrestres llamen su nombre o busquen su poder. Tras completar vuestra tarea, os dais media vuelta y afrontáis la oscuridad tras llamar a vuestros corceles. Es hora de ir a casa.",
       "steps": [
@@ -40367,6 +40419,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Resolución 4",
       "text": "Habéis llegado al trono nocturno de Azathoth, pero no hay ninguna forma sencilla de alcanzar a la criatura desde aquí; y aunque la hubiera, no estáis seguros de qué podríais hacer para detenerla. No podéis matarla, e intentar siquiera dañarla tendría el riesgo de agitarla. Desesperados, recurrís al Libro Negro de Keziah en busca de respuestas. Al abrir el tomo, aparece una pluma, y una voz de ultratumba resuena en vuestros oídos: –Firmadlo con vuestra sangre. Tomad un nuevo nombre secreto y vuestro deseo se hará realidad. Vuestro mundo y vosotros seréis perdonados.\nSabéis que es la voz del mal, la voz que oyó Walter Gilman y que seguramente lo llevó a su muerte, la voz que sedujo a Keziah Mason e inició este camino... pero ¿qué alternativa tenéis?",
       "steps": [
@@ -40375,6 +40431,10 @@
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_circle_undone.before_the_black_throne.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Resolución 5",
       "text": "Os pincháis el brazo con la pluma y firmáis con sangre.",
       "steps": [
@@ -40944,21 +41004,37 @@
     },
     {
       "id": "anette_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.arrested_anette",
+        "name": "Arrested Anette"
+      },
       "type": "story",
       "text": "–¿Desaparecido? ¡¿Cómo que ha desaparecido?! –pregunta el sheriff Engle.\n–Véalo usted mismo –contesta el agente. Lleva al sheriff por un largo pasillo flanqueado por celdas–. Estaba vigilada constantemente, de verdad. Un instante estaba ahí, y al siguiente... Se detiene frente a la celda de Anette y mira cómo el sheriff Engle se queda boquiabierto. Las paredes de la celda están embadurnadas de una pegajosa sustancia roja que traza un delicado diseño. La mujer ha desaparecido sin dejar rastro."
     },
     {
       "id": "lodge_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.assumed_control_of_the_silver_twilight_lodge",
+        "name": "Assumed control of The Silver Twilight Lodge"
+      },
       "type": "story",
       "text": "Le hacéis un gesto al caballero, que deja sobre el escritorio de madera el archivo que habíais pedido. Encontrar todos los registros de Carl Sanford no ha sido fácil, pero ahora tenéis a vuestro alcance todos los secretos de la Orden. –¿Cuál es el siguiente paso? –pregunta, ansioso por servir. Le informáis de que habrá una reunión en el santuario esta misma noche–. Muy bien. Convocaré a nuestros miembros más leales. Le dejáis marchar y miráis por la ventana de vuestro nuevo despacho. La ciudad de Arkham es tan sombría y deprimente como siempre... pero, al menos, ahora tenéis sus secretos a vuestro alcance."
     },
     {
       "id": "watcher_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.survived_the_watchers_embrace",
+        "name": "Survived the Watcher's embrace"
+      },
       "type": "story",
       "text": "Anna os mira con calma cuando entráis. Como siempre, su presciencia es desconcertante pero, a estas alturas, ya os habéis acostumbrado: –Llevo tiempo esperándoos –admite–. Supongo que tenéis preguntas para mí. Muy bien. Preguntad. Aunque imagino que ya sabréis la respuesta. No os ofrece asiento ni nada de beber. Comenzáis a describir vuestra situación, aunque la verdad de vuestro estado está a simple vista para alguien con sus dones (y para pocos más). Esperabais otra explicación, cualquier explicación, pero sólo estabais tratando de aferraros a la esperanza sin motivo alguno. Anna os dedica una mueca de compasión y sacude la cabeza: –Seguramente ya lo entendéis. Habéis completado vuestra tarea. No tenéis más asuntos aquí y es hora de que descanséis en paz.\n¿Paz? ¡No, no podéis estar en paz! ¡Aún os queda mucho por hacer...!"
     },
     {
       "id": "black_book_story",
+      "narration": {
+        "id": "the_circle_undone.epilogue.signed_the_black_book_of_azathoth",
+        "name": "Signed the Black Book of Azathoth"
+      },
       "type": "story",
       "text": "Un hombre alto se acerca en vuestros sueños. Su sonrisa está llena de malicia. –Es hora de que paguéis vuestra deuda –anuncia–. Conseguisteis lo que queríais. Ahora es mi turno."
     },
@@ -40998,6 +41074,10 @@
     },
     {
       "id": "being_hunted",
+      "narration": {
+        "id": "the_circle_undone.epilogue.you_are_being_hunted",
+        "name": "You are being hunted"
+      },
       "type": "story",
       "text": "Hagáis lo que hagáis, el asalto de la criatura contra vuestra mente nunca cesa. Su mirada os sigue por todas partes. Controla cada uno de vuestros pensamientos: vuestras esperanzas, vuestros lazos, vuestros miedos, vuestras ambiciones. Es un recordatorio de vuestra fútil existencia. Cada noche, dais vueltas en la cama, incapaces de liberaros de esta sensación de inutilidad. Vuestros pensamientos cambian a un futuro siniestro e incierto. Un futuro sin vida. Un futuro sin vosotros. Es la prueba que debe soportar cada mortal, pero la experiencia que ningún mortal podría describir. ¿Fantasmas? ¿Reinos más allá de nuestro espacio mortal? No son más que un último recurso de una mente desesperada por aferrarse a la vida.\nLa próxima vez que se produce la invasión de la criatura, llegáis a una nueva conclusión. Un soplo gélido os rodea cuando la cosa toma forma ante vosotros. Se os encoge la garganta y los ojos se os llenan de lágrimas, pero aguantáis. No tenéis miedo. La criatura os mira con curiosidad, y el sonido de las infernales flautas queda en silencio. La cosa extiende su garra y se la estrecháis. Nunca seréis verdaderamente libres de su influencia, pero quizás la criatura y vosotros podáis colaborar. Tal vez podáis domar vuestro miedo. No importa que el mundo no tenga razón de ser. Es vuestro, maldición, y nada evitará que lo modifiquéis a vuestro antojo."
     }
@@ -41488,6 +41568,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Después de lo que visteis en la Isla ignota, vuestra fe en la humanidad está en la cuerda floja. Os sentís como espíritus descarriados, deambulando por las calles sin ningún destino en mente. Desearíais poder volver a casa y olvidar todo lo que ha ocurrido en las últimas semanas, pero sabéis que es un sueño imposible. Tras horas de caminar sin rumbo, volvéis de golpe a la realidad cuando os dais cuenta de que habéis llegado a la Plaza de la Independencia. Una suave brisa lleva unas cuantas hojas quebradizas por el césped y os hace levantar la mirada. Allí está Anna Kaslow, sentada en un círculo de hojas otoñales. Tiene los ojos cerrados, sumida en un profundo trance con los dedos apretados contra las sienes. Frente a ella, sobre la hierba, hay una manta de lana sobre la que se extiende un círculo de cartas del tarot superpuestas. Os acercáis y os sentáis frente a la adivinadora. Hasta ahora no habíais sido conscientes de lo cansados y doloridos que estabais. Os duelen todos los músculos, y os cuesta un gran esfuerzo no desmayaros en ese instante."
     },
@@ -41516,16 +41600,28 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Reconocéis a la pitonisa de vuestra investigación sobre las desapariciones de la mansión de Josef Meiger. Su consejo fue lo que llevó a la perdición a la segunda oleada de víctimas, o eso sospecháis. Extrañamente, ella también parece reconoceros. Pasa los dedos por el círculo de cartas que tiene delante y dice: –Sospecho que las últimas semanas han sido arduas para vosotros. ¿Acudís en busca de algo que os guíe?\nHacéis una mueca. La última vez que Anna le echó las cartas a alguien, la cosa no acabó bien para ellos. ¿Por qué deberíais pensar que esta vez será distinto?"
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Anna abre los ojos: –Me preguntaba cuándo volveríamos a encontrarnos.\nOs preguntáis en voz alga cómo podría no haberlo sabido cuando todo lo demás que ha predicho se ha cumplido. Vuestro comentario hace que la pitonisa se ría con ganas: – Eso no significa que lo sepa todo, queridos –contesta mientras pasa los dedos por el círculo de cartas que tiene delante–. Sospecho que las últimas semanas han sido arduas para vosotros. ¿Acudís en busca de algo que os vuelva a guiar?\nHacéis una mueca. Todo esto empezó cuando os echó las cartas. ¿Por qué deberíais pensar que otra lectura hará que todo se solucione?"
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Antes de que podáis responder, Anna le da la vuelta a la carta que tiene más cerca. En ella se ve una figura furtiva que va encapuchada y en torno a la cual hay cinco espadas clavadas en el suelo. Hay otras figuras que temen al personaje victorioso y huyen de él, mientras una tormenta de nubes negras se arremolina sobre su cabeza. El título de la carta es: CINCO DE ESPADAS.\n–Quizá tengáis la sensación de haber sido derrotados, pero no debéis rendiros ante la desesperación. Puede que la batalla haya acabado, pero vuestra lucha no ha concluido.\nLa angustia os atenaza la garganta. No hay nada que queráis más que el fin de esta pesadilla, pero las palabras de Anna parecen ciertas: sabéis que no acabará hasta que le pongáis fin vosotros mismos."
     },
@@ -42134,6 +42230,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -42147,6 +42247,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "El espíritu se ríe como loca cuando oye vuestras palabras, pero se le corta la risa de golpe. De entre los árboles sale lo que queda del aquelarre de Anette, con la bruja pelirroja Erynn a la cabeza, y rodean a Anette sin decir palabra. Erynn os hace un asentimiento solemne, mostrando su convicción a través de su adusto comportamiento. Comprendéis por qué han venido y os hacéis a un lado para que hagan su trabajo.\nUna de las brujas dibuja un círculo en la tierra en torno a Anette, mientras el resto la atan con líneas de ardiente energía. La resucitada aúlla y gime de agonía, pero las brujas no se atreven a detenerse: por fin, cuando sus cánticos llegan a un crescendo, Erynn perfora la santidad del círculo con su cuchillo, haciendo fuerza contra el aire y esforzándose como si intentara penetrar en roca sólida. El fantasma de Keziah se marcha en un remolino de niebla espectral, desapareciendo en el aire con un último grito. El cuerpo de Anette se desploma sobre el suelo al perder su apoyo.\n–Se ha acabado –le dice uno de vosotros a Erynn mientras le pone una mano en el hombro.\n–No –replica ésta con brusquedad mientras señala el cielo. Las nubes de tormenta han desaparecido, pero no lográis ver ni una estrella en el firmamento nocturno. Los bordes del horizonte enmarcan el vacío que hay sobre vuestras cabezas; es una brecha tan enorme que ni siquiera os habíais dado cuenta de que estaba ahí. ¿Cuánto tiempo ha alzado sobre la ciudad mientras os dedicabais a acabar con incursiones menores?\nLe preguntáis qué puede hacerse para cerrar una brecha de ese tamaño. La bruja tensa la mandíbula y responde: –No lo sé. Pero hay alguien que sí lo sabe.\nSe arrodilla junto a Anette, levanta la mano y le asesta una bofetada en el rostro. Anette sale de sus estado catatónico y se despierta sobresaltada.\n–¿Es esto lo que querías, hermana? –le pregunta Erynn mientras la pone en pie para obligarla a mirar la catástrofe que ha desencadenado.\n–Sabes que no es así –responde Anette con voz rota–. Sólo quería que todas tuviéramos alguna parte de la fuerza que poseyó en su tiempo. No tenía el menor deseo de emplearla del mismo modo que ella. Pero el espíritu se hizo con el control, y no pude resistirme –Baja la cabeza con resignación–. Lo siento, hermanas. Nos he fallado a todas. No fui lo bastante fuerte.",
       "steps": [
@@ -42156,6 +42260,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "No os extrañaría lo más mínimo que el presidente de la Logia del Crepúsculo de Plata mintiera sobre las consecuencias de vuestras acciones; al fin y al cabo, ya os ha engañado más de una vez anteriormente. Le preguntáis a qué se refiere con lo de la extinción, pero sólo hace una mueca y os dice que miréis fuera.\nLas nubes de tormenta han desaparecido, pero no lográis ver ni una estrella en el firmamento nocturno. Los bordes del horizonte enmarcan el vacío que hay sobre vuestras cabezas; es una brecha tan enorme que ni siquiera os habíais dado cuenta de que estaba ahí. ¿Cuánto tiempo ha alzado sobre la ciudad mientras os dedicabais a acabar con incursiones menores?\nSanford os sigue, cojeando, y levanta la mirada hacia el cielo nocturno. Le preguntáis qué puede hacerse para cerrar una brecha de ese tamaño pero, antes de que pueda responder, unos hilos de oscuridad surgen de entre las sombras y se arremolinan formando capas oscuras. En pocos segundos, estáis rodeados por las brujas del aquelarre de Anette. La suma sacerdotisa se adelanta, mirando a Carl Sanford con toda la intensidad del mismísimo infierno.\n–No confiéis en la palabra de este gusano infecto –os advierte–. Todo lo que ha hecho ha sido para perseguir sus propios planes. Estaría encantado de tomar todo el planeta como rehén si eso supusiera una última oportunidad de obtener poder.\nPese a sus heridas, Sanford se pone en pie y empieza a vociferar: –¡Cuánta hipocresía! ¿Has olvidado que fuisteis tú y tu desatinada secta quienes empezasteis todo esto? ¿Quienes invocasteis a los muertos y les pedisteis poder? – Se mofa–. Nosotros habríamos elevado a toda la humanidad. Vosotras sólo buscabais vuestra propia mejora –Sanford se vuelve para apelar a vuestro juicio una última vez–. No seáis necios –dice en voz baja–. Este resultado no es lo que desea la Logia. Permitidme ayudar, y juntos quizá logremos regresar a la normalidad.",
       "steps": [
@@ -42165,6 +42273,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "text": "Anette se encuentra en el centro de su círculo de brujas, con los ojos brillantes de poder sin límites. Sobre ella, cientos de siluetas fantasmales extienden los brazos, y una red de poder une a las brujas con sus hermanas muertas. Los espíritus descienden y cada uno reclama un cuerpo para sí, manipulándolo para sus propios fines. La única muestra de resistencia de las brujas es la sangre que gotea de sus ojos cuando el hechizo que han lanzado en contra de su voluntad llega a su culmen.\n–¡Es el momento!– declara la voz incorpórea de Keziah a través de los labios de Anette–. ¡El Caos Primordial nos aguarda! ¡Escúchanos, Sultán Demoníaco!\nSu voz se eleva en la noche, y una brecha más grande que el mismo cielo se abre. Los bordes del horizonte enmarcan el vacío sobre vuestras cabezas. Se extiende hacia el infinito, más allá de los confines del espacio tridimensional.\n–He hecho lo que me ordenaste –le dice a un ser que no está presente, pero que puede oír todas sus palabras–. Ahora, cosecha este mundo de vivos y haz que sufran por sus errores.\nTras decir esto, las siluetas espectrales se desvanecen una a una, arrebatadas por el vacío de arriba. Anette y sus hermanas se desploman bruscamente. Una aguda flauta discordante trina en el tejido del mundo…",
       "steps": [
@@ -42174,6 +42286,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_circle_undone.in_the_clutches_of_chaos.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Resolución 4",
       "text": "Carl Sanford se encuentra en el podio del santuario interior de la Logia, ataviado con una túnica de color azul y plata. Ante él, sus súbditos dominados se arrodillan, listos para recibir el poder prometido y reclamar su sitio por derecho en el nuevo mundo que van a crear. El tomo del que está leyendo Sanford brilla con una luz mágica: –¡Las ataduras de la mortalidad nos han retenido durante demasiado tiempo! –declara cuando la ceremonia alcanza su clímax–. ¡Romperemos esas ataduras y ascenderemos a un plano superior!\nSobre el edificio en el que se encuentran, se abre una brecha más grande que el mismo cielo. Los bordes del horizonte enmarcan el vacío sobre vuestras cabezas. Se extiende hacia el infinito, más allá de los confines del espacio tridimensional. Después, todas las velas del santuario de la Logia se apagan a la vez, y el cántico cesa, seguido de un leve murmullo nervioso.\n–¿Qué está pasando? –pregunta Sanford, tratando desesperadamente de leer del tomo que tiene delante. Pero es demasiado tarde. En lo único que ha tenido éxito la Logia es en acelerar su perdición. Sólo quienes son dignos pueden alcanzar la verdadera inmortalidad. Una aguda flauta discordante trina en el tejido del mundo…",
       "steps": [
@@ -44652,6 +44768,10 @@
   "steps": [
     {
       "id": "tof_1",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.twist_of_fate_1",
+        "name": "Twist of Fate 1"
+      },
       "type": "story",
       "text": "Estáis de pie bajo la brecha, anonadados ante su presencia. Todo lo que dijo la pitonisa se ha cumplido. “Se trata de un asunto de vida o muerte”, os dijo. Cuánta razón tenía. Al otro lado del acceso cósmico aguarda el núcleo del cosmos. Ahora entendéis lo que habita al otro lado, royendo ávidamente el tejido de la realidad: la perdición de toda la humanidad; no, no sólo de la humanidad. La perdición de toda la vida del universo.\nTenéis un sabor amargo en la boca y lágrimas en los ojos. Cerráis los puños tan fuerte que se os clavan las uñas en la carne. Si tenéis que morir, moriréis. Pero no vais a morir quedándoos sentados."
     },
@@ -44689,6 +44809,10 @@
     },
     {
       "id": "know_what_you_have_to_do",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.if_you_accepted_your_fate",
+        "name": "If you accepted your fate"
+      },
       "bullet_type": "small",
       "text": "Sabéis lo que tenéis que hacer. Anota 1 marca.",
       "effects": [
@@ -44722,6 +44846,10 @@
     },
     {
       "id": "anette_assistance",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.asked_annette_for_assistance",
+        "name": "Asked Annette for assistance"
+      },
       "type": "story",
       "text": "–El mensajero de un antiguo ser le pidió a Keziah que firmara un libro. El Libro Negro de Azathoth –La mera mención del objeto os hace estremecer. Anette aprieta el puño con fuerza–. Fui una necia por no haberlo comprendido antes. Era la fuente de su poder. No era brujería, sino un pacto con un terrible dios oscuro. Todo esto, todas estas incursiones en nuestro mundo, los lazos de la muerte rotos... es lo que Keziah siempre quiso. Era la silenciosa voluntad de Azathoth –dice con resentimiento."
     },
@@ -44746,6 +44874,10 @@
     },
     {
       "id": "sanford_assistance",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.asked_sanford_for_assistance",
+        "name": "Asked Sanford for assistance"
+      },
       "type": "story",
       "text": "–Es un portal –explica Sanford–. Uno que une nuestro mundo y el gran cosmos. Según algunos de los tomos más atroces que he leído, en su centro duerme una criatura conocida como Azathoth –La mera mención del ser os hace estremecer–. Temo que hayamos perturbado su letargo. Todo esto, todas estas brechas en el espacio, estas barreras rotas entre los mundos son debidas a que, por un breve instante, durante la mínima parte de un segundo, interrumpimos el sueño de Azathoth. ¿Lo entendéis?"
     },
@@ -44872,11 +45004,19 @@
     },
     {
       "id": "two_or_fewer_mementos",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.2_or_fewer_mementos_discovered",
+        "name": "2 or fewer Mementos discovered"
+      },
       "bullet_type": "small",
       "text": "Desafortunadamente, estáis muy poco preparados para este viaje. No ocurre nada."
     },
     {
       "id": "three_to_five_mementos",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.3_5_mementos_discovered",
+        "name": "3-5 Mementos discovered"
+      },
       "bullet_type": "small",
       "text": "Gracias a las pruebas que habéis descubierto, entendéis un poco mejor el camino que debéis recorrer. Pero aún hay muchas cosas que no sabéis. Anota 1 marca.",
       "effects": [
@@ -44891,6 +45031,10 @@
     },
     {
       "id": "six_or_more_mementos",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.6_or_more_mementos_discovered",
+        "name": "6 or more Mementos discovered"
+      },
       "bullet_type": "small",
       "text": "Veis claramente el viaje que os espera. Anota 2 marcas.",
       "effects": [
@@ -44922,6 +45066,10 @@
     },
     {
       "id": "have_black_book",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.has_the_black_book",
+        "name": "Has The Black Book"
+      },
       "bullet_type": "small",
       "text": "Contiene información sobre el territorio que hay más allá del tiempo y el espacio ordenados. Anota 1 marca.",
       "effects": [
@@ -44953,6 +45101,10 @@
     },
     {
       "id": "doom_draws_ever_closer",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.if_doom_draws_ever_closer",
+        "name": "If doom draws ever closer"
+      },
       "bullet_type": "small",
       "text": "Las fauces de Azathoth empiezan a abrirse. Anota 2 marcas.",
       "effects": [
@@ -44967,6 +45119,10 @@
     },
     {
       "id": "tof_2",
+      "narration": {
+        "id": "the_circle_undone.interlude_4.twist_of_fate_2",
+        "name": "Twist of Fate 2"
+      },
       "type": "story",
       "text": "Os pasáis casi una hora mirando el vacío abismo y considerando vuestras opciones y vuestro destino. Una bandada de criaturas aladas sin rostro sobrevuela en círculos el campo en el que estáis sentados. Se mueven casi como buitres que esperan vuestra muerte para poder darse un festín con vuestro cadáver. Se acercan cada vez más, y comenzáis a preguntaros si pueden leer los pensamientos que flotan en la superficie de vuestra mente. Os ponéis en pie, levantáis un brazo y cada uno de vosotros llama a una de las criaturas. Pensáis para vuestros adentros que tal vez sea lo más estúpido que hayáis hecho jamás. Pero vuestro instinto resulta ser el paso correcto: las criaturas descienden con sus coriáceas alas negras y aterrizan sobre la hierba húmeda, frente a vosotros. Varias de ellas se agachan hasta ponerse a la altura de vuestros hombros y os ofrecen su espalda. Os tragáis los restos de vuestras dudas y miedos y montáis sobre las criaturas. Con un raudo aleteo, os llevan hacia el vacío, más allá de los límites del espacio... A los dominios de Azathoth."
     }
@@ -45001,6 +45157,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "La Isla ignota está en mitad del río Miskatonic, entre dos de los puentes que cruzan el río y conectan el Centro con el Barrio Fluvial de Arkham. Está repleta de enredaderas, espinas y maleza que no parece natural, y no tiene ningún habitante y apenas fauna. Por toda la isla hay hileras de misteriosas columnas de piedra que parecen montar guardia y que se elevan sobre las copas de los árboles. Aunque abundan las teorías, nadie sabe a ciencia cierta cuál es el propósito de estas columnas de piedra o quién las construyó. Muy pocos osan poner el pie en las orillas de la enigmática isla, y quienes lo hacen regresan con extraños relatos: hogueras en el bosque en plena noche, altares de piedra con hondos grabados imposibles de traducir, bosques vacíos de toda vida excepto por los negros cuervos y los chotacabras que se posan en las ramas de los árboles y observan con ojos ávidos a los intrusos. Por desgracia para vosotros, hay demasiado en juego como para hacer caso a tantas advertencias.\nLas calles de Arkham están más vacías y silenciosas de lo que nunca las habíais visto antes. Una familiar niebla gris ha invadido la ciudad. La neblina se vuelve más densa y espesa a medida que os acercáis al río. Os movéis rápidamente, pues no queréis encontraros con nadie de camino al lugar del ritual, ya estén vivos o muertos. Encontráis varias barcas de remo amarradas en los muelles y os subís a una. Las aguas están extrañamente quietas, y apenas hay corriente que mueva la barca, por lo que remar hacia la isla debería ser tarea fácil Aun así, la densa niebla os dificulta orientaros. Pronto os veis completamente engullidos por la niebla gris, incapaces de ver las orillas del río o la costa de la isla. De la niebla surgen siluetas, y en la superficie del agua se forman ondas. La mirada del vigilante se ha posado en vosotros.\nEn ese momento, una columna de energía espectral se eleva hacia el cielo, clara como el día incluso a través de la niebla. Todas las siluetas vuelven su atención hacia esa baliza, y notáis que la mirada del vigilante se aparta de vuestras almas. El rito ha comenzado. Remáis más rápido, usando la luz como guía. Es hora de decidir de una vez por todas por qué habéis venido: ¿estáis aquí para ayudar a la Logia del Crepúsculo de Plata? ¿O para desbaratar sus planes?"
     },
@@ -46648,6 +46808,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -46662,6 +46826,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "La resucitada se debate y se agita atormentada, incapaz de escapar tras ver arrebatada su conexión al reino espectral. Carl Sanford se adelanta y abre un grueso tomo de cuero; los recuerdos del fantasma, junto con lo que queda de su forma, son absorbidos sin ningún miramiento al interior de sus páginas.\n–¡¿Qué has hecho?! –grita Anette. La rodean varios miembros de su aquelarre. Están en desventaja, pero no tenéis ninguna duda de que entregarían su vida por proteger de cualquier daño a su suma sacerdotisa.\n–¿Que qué he hecho? Pues he engañado al Demonio –responde Sanford con una siniestra sonrisa. Os dais cuenta de que las palabras de su tomo ahora emiten un brillo espectral–. Keziah firmó el Libro Negro de Azathoth para descubrir los secretos del universo. En mi opinión, fue un error fatal, pues la puso en las garras de alguien mucho más poderoso que ella –Comienza a leer las páginas mientras prosigue su explicación–. Pagó el precio, pero yo cosecharé la recompensa.\nAnette tensa la mandíbula y se gira hacia vosotros: –Ni siquiera podéis alcanzar a imaginar los secretos que posee ahora este monstruo. ¿De verdad creéis que usará este poder para el bien? –os pregunta.",
       "steps": [
@@ -46670,6 +46838,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Os erguís y proclamáis vuestra lealtad con orgullo. Los demás miembros de la Logia asienten. Carl Sanford llevará a la humanidad a una era de paz y la protegerá frente a las amenazas del cosmos. Puede que a la sociedad le lleve un tiempo adaptarse, pero la humanidad sólo sobrevivirá si estos secretos están en manos de la Orden. Las brujas se retiran al bosque, y os quedáis solos con vuestros hermanos y hermanas del Círculo Interno. Os reunís en torno a vuestro líder mientras lee el Nuevo Credo de la Orden del Crepúsculo de Plata, y os informa de sus planes: de los seres superiores del cosmos, del ascenso de la humanidad, de los Primigenios, de la vida y la muerte, de Azathoth y del Fin de Todo. Paso a paso, la Orden traza el futuro de la Tierra, y seréis una pieza fundamental en el nuevo orden mundial.",
       "steps": [
@@ -46679,6 +46851,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "text": "Anette tiene razón. Sanford os engañó. Esto es lo que buscaba en todo momento. Quizás considere que es “proteger a la humanidad”, pero la verdad es que ha puesto en peligro las vidas de otros una y otra vez por su propia codicia y sed de poder. Sacudís la cabeza.\n–Una pena –se queja el Sr. Sanford–. Pensaba que seríais más inteligentes.\nRetrocedéis unos pasos hacia donde están reunidas las brujas. Sanford se vuelve hacia los demás miembros de su Orden y os señala: –Matadlos –ordena.\n–¡Erynn, cúbrenos! –grita Anette a la bruja pelirroja que tiene al lado. Ésta asiente y agita una vara de madera frente a ella, creando una nube de niebla que esconde nuestra presencia–. Debemos salir de aquí. ¡Vamos!\nVuestra huida es como un borrón. Miembros de la secta del Crepúsculo de Plata encapuchados os persiguen incesantemente por el bosque maldito. Apenas lográis volver a la orilla antes de que os alcancen. Les hacéis señas a Anette y a las demás para que vayan con vosotros, pero niega con la cabeza: –Volveremos a vernos pronto. Los bordes de las capas de las brujas se funden con el cielo nocturno, y se desvanecen una a una en un remolino de oscuridad.",
       "steps": [
@@ -46688,6 +46864,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Resolución 4",
       "text": "Anette se acerca para enfrentarse al etéreo cascarón de la resucitada: –¡Hermana! Somos nosotras quienes te llamamos aquí desde el más allá –La destrozada resucitada vuelve su atención a Anette, y el resto de su aquelarre aguarda expectante.\n–¿Qué estás haciendo, necia? ¡Este espíritu no es una simple bruja! –grita Carl Sanford. Pero es demasiado tarde. Anette ignora al Sr. Sanford y sigue hablando con la presencia espectral.\n–Durante años, hemos sufrido una injusticia tras otra. Comparte conmigo tus secretos, hermana. Juntas, con un solo cuerpo, mente y alma, podremos empezar de nuevo.\nEl fantasma extiende su largo brazo esquelético. Las hermanas de Anette se quedan sin aliento cuando su suma sacerdotisa se adelanta para arrodillarse y ofrecerse ante el ser. Con una repentina oleada de energía, el alma fantasma es absorbida dentro de Anette. Ésta se derrumba en el suelo debido al impacto espiritual. Su cuerpo se retuerce de tormento, pero ninguna de las demás brujas se adelanta a ayudarla; sólo se quedan mirando con terror y fascinación a partes iguales. Al fin, Anette se pone en pie con los ojos brillantes de poder místico. Cuando habla, no suena su voz: –Hermanas, regocijaos, pues he renacido –dice Keziah.\nCarl Sanford le da un golpecito con su bastón a uno de vosotros. Estabais tan ensimismados por los acontecimientos que tenían lugar frente a vosotros que no os habíais dado cuenta de que los miembros de la Logia se retiraban sigilosamente hacia el borde del claro. Uno de los miembros del Círculo Interno de la Logia levanta un revólver e intenta disparar, pero la suma sacerdotisa se limita a mirarlo, y el brazo del hombre se aja y pudre ante vuestros ojos. Su arma cae con estrépito al suelo, y el sectario emite un último gemido ronco antes de quedar como una cáscara marchita en el suelo. –Debemos irnos de este lugar de inmediato –dice Sanford con seriedad–. Este ser posee poder sobre la vida y la muerte. No tolerará nuestra presencia por más tiempo.\nAnette... No, Keziah... vuelve su atención hacia vosotros, y sus ojos se iluminan: –Me parecéis familiares, hijos. Venid, venid. No tengáis miedo. No tenéis nada que temer de mí –Sonríe de forma malévola. Su voz es como cuchillos que se clavan en vuestra alma. Odiáis tener que darle la razón a Sanford. Os dais media vuelta y huis con el resto de la Logia, con la esperanza de ser lo bastante rápidos como para escapar a la magia de la bruja.\nVuestra huida es como un borrón. Brujas y espíritus os persiguen incesantemente por el bosque maldito. Apenas lográis volver a la orilla antes de que os alcancen. Es posible que los demás miembros de la Logia no tuvieran tanta suerte. Tras dispersarse en muchas direcciones, no estáis seguros de cuántos lograron escapar; tampoco veis a Carl Sanford por ninguna parte, aunque sospecháis que tenía un plan previsto para esta contingencia.",
       "steps": [
@@ -46698,6 +46878,10 @@
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Resolución 5",
       "investigator_status": [
         "resigned",
@@ -46714,6 +46898,10 @@
     },
     {
       "id": "R6",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_6",
+        "name": "Resolution 6"
+      },
       "title": "Resolución 6",
       "text": "Cuando os recuperáis, el viento se ha calmado y la oscura niebla ha desaparecido. Tras la finalización del ritual, la isla parece haber vuelto a la normalidad, pero ¿tuvo éxito el ritual o fracasó? Os dirigís al centro de la isla para averiguar qué ha pasado. Al llegar, encontráis a Anette y su aquelarre gravemente heridas, y la Logia se ha hecho con la victoria. Carl Sanford sostiene un grueso tomo de cuero en sus manos, cuyas páginas brillan de poder arcano. –¡¿Qué has hecho?! –grita Anette. La rodean varios miembros de su aquelarre. Están en desventaja, pero no tenéis ninguna duda de que entregarían su vida por proteger de cualquier daño a su suma sacerdotisa.\n–¿Que qué he hecho? Pues he engañado al Demonio –responde Sanford con una siniestra sonrisa. Os dais cuenta de que las palabras de su tomo ahora emiten un brillo espectral–. Keziah firmó el Libro Negro de Azathoth para descubrir los secretos del universo. En mi opinión, fue un error fatal, pues la puso en las garras de alguien mucho más poderoso que ella –Comienza a leer las páginas mientras prosigue su explicación–. Pagó el precio, pero yo cosecharé la recompensa.\nAnette tensa la mandíbula y se gira hacia vosotros: –Escuchadme. Ni siquiera podéis alcanzar a imaginar los secretos que posee ahora este monstruo. Debéis detenerlo a toda costa.\nNo decís nada, pero en el fondo, sospecháis que Anette tiene razón. Sanford os engañó. Esto es lo que buscaba en todo momento. Quizás considere que es “proteger a la humanidad”, pero la verdad es que ha puesto en peligro las vidas de otros una y otra vez por su propia codicia y sed de poder. Sin embargo, antes de poder enfrentaros a Sanford, éste se gira hacia los demás miembros de su Orden y os señala: –Estos ya no tienen ninguna utilidad – afirma–. Matadlos a todos.\n–¡Erynn, cúbrenos! –grita Anette a la bruja pelirroja que tiene al lado. Ésta asiente y agita una vara de madera frente a ella, creando una nube de niebla que esconde nuestra presencia–. Debemos salir de aquí. ¡Vamos!\nVuestra huida es como un borrón. Miembros de la secta del Crepúsculo de Plata encapuchados os persiguen incesantemente por el bosque maldito. Apenas lográis volver a la orilla antes de que os alcancen. Les hacéis señas a Anette y a las demás para que vayan con vosotros, pero niega con la cabeza: –Volveremos a vernos pronto. Los bordes de las capas de las brujas se funden con el cielo nocturno, y se desvanecen una a una en un remolino de oscuridad.",
       "steps": [
@@ -46723,6 +46911,10 @@
     },
     {
       "id": "R7",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_7",
+        "name": "Resolution 7"
+      },
       "title": "Resolución 7",
       "text": "Cuando os recuperáis, el viento se ha calmado y la oscura niebla ha desaparecido. Tras la finalización del ritual, la isla parece haber vuelto a la normalidad, pero ¿tuvo éxito el ritual o fracasó? Os dirigís al centro de la isla para averiguar qué ha pasado. Al llegar, encontráis a Carl Sanford y los demás miembros de su Orden gravemente heridas, y Anette y su aquelarre se ha hecho con la victoria. Anette se encuentra en el centro del claro, y sus ojos refulgen de poder místico. Cuando habla, no suena su voz: –Hermanas, regocijaos, pues he renacido –dice Keziah.\nCarl Sanford le da un golpecito con su bastón a uno de vosotros. Estabais tan ensimismados por los acontecimientos que tenían lugar frente a vosotros que no os habíais dado cuenta de que los miembros de la Logia se retiraban sigilosamente hacia el borde del claro. Uno de los miembros del Círculo Interno de la Logia levanta un revólver e intenta disparar, pero la suma sacerdotisa se limita a mirarlo, y el brazo del hombre se aja y pudre ante vuestros ojos. Su arma cae con estrépito al suelo, y el sectario emite un último gemido ronco antes de quedar como una cáscara marchita en el suelo. –Debemos irnos de este lugar de inmediato –dice Sanford con seriedad–. Este ser posee poder sobre la vida y la muerte. No tolerará nuestra presencia por más tiempo.\nAnette... No, Keziah... vuelve su atención hacia vosotros, y sus ojos se iluminan: –Me parecéis familiares, hijos. Venid, venid. No tengáis miedo. No tenéis nada que temer de mí –Sonríe de forma malévola. Su voz es como cuchillos que se clavan en vuestra alma. Odiáis tener que darle la razón a Sanford. Os dais media vuelta y huis con el resto de la Logia, con la esperanza de ser lo bastante rápidos como para escapar a la magia de la bruja.\nVuestra huida es como un borrón. Brujas y espíritus os persiguen incesantemente por el bosque maldito. Apenas lográis volver a la orilla antes de que os alcancen. Es posible que los demás miembros de la Logia no tuvieran tanta suerte. Tras dispersarse en muchas direcciones, no estáis seguros de cuántos lograron escapar; tampoco veis a Carl Sanford por ninguna parte, aunque sospecháis que tenía un plan previsto para esta contingencia.",
       "steps": [
@@ -46732,6 +46924,10 @@
     },
     {
       "id": "R8",
+      "narration": {
+        "id": "the_circle_undone.union_and_disillusion.resolution_8",
+        "name": "Resolution 8"
+      },
       "title": "Resolución 8",
       "text": "Cuando por fin volvéis a la orilla del Río Miskatonic, sopesáis la situación…",
       "steps": [
@@ -67510,6 +67706,30 @@
       "type": "input",
       "input": {
         "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "The tide has grown stronger.",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "tide_has_grown_stronger",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "tide_has_grown_stronger",
+                "text": "the tide has grown stronger."
+              }
+            ]
+          }
+        ],
         "branches": [
           {
             "id": "keys",
@@ -67799,6 +68019,65 @@
     {
       "id": "proceed_keys",
       "text": "Do not move the purple, black, or white keys from their current position just yet—the location of each of these keys will be important during <b>Interlude III: Beneath the Waves</b>."
+    },
+    {
+      "id": "maybe_ask_tide_has_grown_stronger",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "scenario_data",
+            "scenario_data": "resolution",
+            "options": [
+              {
+                "condition": "R1"
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "tide_has_grown_stronger",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_tide_has_grown_stronger"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_tide_has_grown_stronger",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cheat",
+            "text": "Should <i>the tide has grown stronger</i> be added to the Campaign Log?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "tide_has_grown_stronger",
+                "text": "the tide has grown stronger."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -67820,6 +68099,7 @@
       "title": "Resolución 1",
       "text": "With daylight fading and the tide rising to swallow the various islands off the coast of Innsmouth, you decide to make your way back to the harbor with your discoveries. \"Found what yer lookin' for?\" Mr. Moore asks oncce you've made it to the coast safely.\nTruth be told, you're not completely sure. What you found was startling. The coves and tidal caverns of Devil Reef were home not just to relics of the Esoteric Order of Dagon, but also to a horde of strange creatures: hybrids between fish, man, and monster. You might have escaped with your life, but the horrors you saw in those caves will stay with you forever. Sharp jagged teeth—blood-stained altars—unholy prayers—signs of a coming catastrophe—it still haunts you even after your escape.\nBut is Innsmouth truly safe? Is any land at all?",
       "steps": [
+        "maybe_ask_tide_has_grown_stronger",
         "earn_xp",
         "ask_terror_of_devil_reef",
         "proceed_keys"

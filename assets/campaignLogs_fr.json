@@ -887,11 +887,11 @@
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "les braseros sont allumés."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "les braseros restent éteints."
           },
           {
             "id": "cleared_path_to_temple",
@@ -911,11 +911,11 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "la structure du temps s'est déchirée."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "les investigateurs ont chuté dans les profondeurs."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -963,7 +963,7 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ichtaca est contre vous."
           },
           {
             "id": "ichtacas_faith_restored",
@@ -975,11 +975,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "les investigateurs ont sauvé la civilisation des Serpents."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "les investigateurs ont sauvé la civilisation des Yithiens."
           },
           {
             "id": "jungle_watches",
@@ -991,11 +991,11 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "investigateurs ont comblé la brèche dans la structure du temps."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "le Nexus est proche."
           },
           {
             "id": "paths_known",
@@ -1023,7 +1023,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "la relique a disparu"
           },
           {
             "id": "rescued_alejandro",
@@ -1035,11 +1035,11 @@
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "les investigateurs ont scellé la Relique des Âges pour toujours."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "les investigateurs ont remonté le temps."
           },
           {
             "id": "wait_for_additional_supplies",
@@ -1064,7 +1064,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "#X# de profondeur"
           },
           {
             "id": "ichtaca_left_without_you",
@@ -1150,7 +1150,7 @@
       },
       {
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Canif",
         "description": "Trop petit pour être utilisé comme arme, mais facile à dissimuler.",
         "cost": 2
       },
@@ -1767,7 +1767,7 @@
           },
           {
             "id": "cats_collected_their_tribute",
-            "text": "the cats collected their tribute from the Zoogs."
+            "text": "les chats ont obtenu leur offrande des Zoogs."
           },
           {
             "id": "dreamers_awoke",
@@ -1807,7 +1807,7 @@
           },
           {
             "id": "parleyed_with_zoogs",
-            "text": "the investigators parleyed with the Zoogs."
+            "text": "les investigateurs ont parlementé avec les Zoogs."
           },
           {
             "id": "possess_silver_key",
@@ -1831,11 +1831,11 @@
           },
           {
             "id": "saved_by_randolph_carter",
-            "text": "the investigators were saved by Randolph Carter."
+            "text": "les investigateurs ont été sauvés par Randolph Carter."
           },
           {
             "id": "strayed_from_the_path",
-            "text": "the dreamers strayed from the path."
+            "text": "les rêveurs se sont écartés du chemin"
           },
           {
             "id": "threaten_black_cat",
@@ -2075,11 +2075,11 @@
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "les braseros sont allumés."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "les braseros restent éteints."
           },
           {
             "id": "cleared_path_to_temple",
@@ -2099,11 +2099,11 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "la structure du temps s'est déchirée."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "les investigateurs ont chuté dans les profondeurs."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -2151,7 +2151,7 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ichtaca est contre vous."
           },
           {
             "id": "ichtacas_faith_restored",
@@ -2163,11 +2163,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "les investigateurs ont sauvé la civilisation des Serpents."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "les investigateurs ont sauvé la civilisation des Yithiens."
           },
           {
             "id": "jungle_watches",
@@ -2179,11 +2179,11 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "investigateurs ont comblé la brèche dans la structure du temps."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "le Nexus est proche."
           },
           {
             "id": "paths_known",
@@ -2207,7 +2207,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "la relique a disparu"
           },
           {
             "id": "rescued_alejandro",
@@ -2219,11 +2219,11 @@
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "les investigateurs ont scellé la Relique des Âges pour toujours."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "les investigateurs ont remonté le temps."
           },
           {
             "id": "wait_for_additional_supplies",
@@ -2248,7 +2248,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "#X# de profondeur"
           },
           {
             "id": "ichtaca_left_without_you",
@@ -2305,7 +2305,7 @@
       },
       {
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Canif",
         "description": "Trop petit pour être utilisé comme arme, mais facile à dissimuler.",
         "cost": 2
       },
@@ -2424,6 +2424,10 @@
           {
             "id": "terror_of_devil_reef_is_still_alive",
             "text": "the Terror of Devil Reef is still alive."
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "the tide has grown stronger."
           }
         ]
       },

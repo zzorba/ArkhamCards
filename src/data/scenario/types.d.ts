@@ -181,6 +181,7 @@ export interface MultiCondition {
     | CampaignDataChaosBagCondition
     | CampaignLogCountCondition
     | CampaignDataVersionCondition
+    | ScenarioDataResolutionCondition
   )[];
   count: number;
   options: BoolOption[];
@@ -369,6 +370,17 @@ export interface CampaignDataVersionCondition {
   min_version: number;
   options: BoolOption[];
 }
+export interface ScenarioDataResolutionCondition {
+  type: "scenario_data";
+  scenario_data: "resolution";
+  options: StringOption[];
+}
+export interface StringOption {
+  condition: string;
+  border?: boolean;
+  effects?: Effect[];
+  steps?: string[];
+}
 export interface MathCompareCondition {
   type: "math";
   opA: Operand;
@@ -421,12 +433,6 @@ export interface CampaignDataDifficultyCondition {
   campaign_data: "difficulty";
   options: StringOption[];
 }
-export interface StringOption {
-  condition: string;
-  border?: boolean;
-  effects?: Effect[];
-  steps?: string[];
-}
 export interface CampaignDataScenarioCondition {
   type: "campaign_data";
   campaign_data: "scenario_completed" | "scenario_replayed";
@@ -449,11 +455,6 @@ export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";
   section: string;
   options: BoolOption[];
-}
-export interface ScenarioDataResolutionCondition {
-  type: "scenario_data";
-  scenario_data: "resolution";
-  options: StringOption[];
 }
 export interface ScenarioDataInvestigatorStatusCondition {
   type: "scenario_data";
