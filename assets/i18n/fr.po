@@ -3775,7 +3775,7 @@ msgstr "Importation des données"
 
 #: src/components/settings/DiagnosticsView.tsx:173
 msgid "Side stories"
-msgstr "Histoires secondaires"
+msgstr "Aventure annexe"
 
 #: src/components/deck/DeckHistoryView.tsx:73
 #, javascript-format
@@ -3881,11 +3881,11 @@ msgstr "Scénario terminé"
 
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:44
 msgid "Choose Side-Scenario"
-msgstr "Choisir un scénario secondaire"
+msgstr "Choisir un scénario annexe"
 
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:107
 msgid "Add side scenario"
-msgstr "Ajouter un scénario secondaire"
+msgstr "Ajouter un scénario annexe"
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:168
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:128
@@ -3949,7 +3949,7 @@ msgstr "Coût d'Expérience: ${ xpCost }"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:66
 msgid "Custom side scenario"
-msgstr "Scénario secondaire personnalisé"
+msgstr "Scénario annexe personnalisé"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:74
 msgid "Scenario Name"
@@ -4301,7 +4301,7 @@ msgid ""
 "Side scenarios cannot be added to a campaign until the previous scenario "
 "and following interludes are completed."
 msgstr ""
-"Les scénarios secondaires ne peuvent pas être ajouter avant la fin du "
+"Les scénarios annexes ne peuvent pas être ajouter avant la fin du "
 "scénario précédent et interlude suivant."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:31
