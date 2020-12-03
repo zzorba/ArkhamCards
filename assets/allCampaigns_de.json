@@ -32202,6 +32202,7 @@
     "blob_that_ate_everything",
     "read_or_die",
     "all_or_nothing",
+    "bad_blood",
     "in_the_labyrinths_of_lunacy"
   ],
   "setup": [],
@@ -32790,6 +32791,581 @@
       "steps": [
         "earn_xp",
         "skids_bad_swap",
+        "$upgrade_decks"
+      ]
+    }
+  ]
+},
+{
+  "id": "bad_blood",
+  "scenario_name": "Bad Blood",
+  "full_name": "Bad Blood",
+  "xp_cost": 1,
+  "side_scenario_type": "challenge",
+  "challenge": {
+    "investigator": "01004",
+    "xp_cost": 2,
+    "requirements": []
+  },
+  "standalone_setup": [
+    "choose_difficulty",
+    "intro",
+    "gather_encounter_sets",
+    "new_scenario_card",
+    "setup_locations",
+    "setup_threads_locations",
+    "location_layout",
+    "setup_act_deck",
+    "remove_misc_cards",
+    "setup_elspeth",
+    "setup_memories",
+    "encounter_deck",
+    "patrol_rule",
+    "memories_rule",
+    "elspeth_memories_rule",
+    "$play_scenario"
+  ],
+  "setup": [
+    "xp_cost",
+    "intro",
+    "gather_encounter_sets",
+    "new_scenario_card",
+    "setup_locations",
+    "setup_threads_locations",
+    "location_layout",
+    "setup_act_deck",
+    "remove_misc_cards",
+    "setup_elspeth",
+    "setup_memories",
+    "encounter_deck",
+    "patrol_rule",
+    "memories_rule",
+    "elspeth_memories_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Schwierigkeitsgrad wählen:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Einfach",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "text": "Normal",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Schwer",
+            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "expert",
+            "text": "Experte",
+            "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-7",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "xp_cost",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -1
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "$fixed_investigator",
+          "fixed_investigator": "01002",
+          "bonus": -2
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "You’ve always known there was something…different…about you. From a young age, in your dreams, you saw another realm. Another life. One of magick and majesty, of conquest and persecution. The moment you found that strange, old key—the moment you recognized the filigree along its handle, the pattern of its teeth—you knew those dreams weren’t dreams at all, but memories. Memories of another life. Of a place called “Hyperborea.” And as the memories returned, the magic did, too.\nFor months you practiced in secret, delving into your memories and honing your powers. But lately, your dreams have turned dark and grisly. Your former self was not as caring or forviging as you. She was ruthless. Power-hungry. Terrible to behold. You’ve taken it upon yourself to wield these strange powers only to help others, and not to hurt them.\nBut you’re not the only one whose memories have started to return. Elspeth Baudin first visited the diner a few weeks ago. In the beginning, she was just a patron like any other. She ordered eggs, bacon and a black coffee, not unlike many of the other customers at Velma’s. But there was something in her eyes— some spark of recognition or curiosity—that made you wary of her.\nThen came the questions.\nFirst, she asked about the key you wore on a chain around your neck. You gave her your best smile and told her your usual lie—that it was a family heirloom, a harmless trinket with no worth but its sentimental value. But that didn’t deter her. She started prying about your life, about your family…about your dreams.\nElspeth was no normal patron. She wasn’t making small talk. She was looking for answers, just the same as you. So you did some digging of your own. But there were no records of Elspeth being a resident of Arkham, and the few people you found who knew of her spoke only in hushed, frightened voices, and gave you very little to work with.\nThen came a call from the Curiositie Shoppe in Northside. Elspeth had been searching for more artifacts like your own “hierloom,” even going so far as to utter the name Hyperborea. She is searching for something that can unlock more of her memories, just like you…but she is <i>not</i> like you. That sinister smirk of hers, the way her contacts trembled with fear at the mention of her name—you shudder to think what somebody with foul intentions could do with the sort of powers your memories hold…"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Szenariovorbereitung",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "bad_blood",
+        "threads_of_fate",
+        "pnakotic_brotherhood",
+        "arkham",
+        "locked_doors",
+        "nightgaunts",
+        "pentagram"
+      ],
+      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow) and the following locations: Northside, Downtown <i>(First Bank of Arkham)</i>, Easttown, Miskatonic University, and Rivertown. Do not gather the rest of the locations or the act, agenda, and scenario reference cards from that set."
+    },
+    {
+      "id": "new_scenario_card",
+      "text": "Remove the original scenario reference card from the <i>Threads of Fate</i> encounter set from the game. Use the new scenario reference card provided in the downloadable <i>Bad Blood</i> encounter set."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put Northside, Downtown, Easttown, Miskatonic University, Rivertown, Town Hall, Velma's Diner, and Curiositie Shoppe into play.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play in Velma's Diner."
+        }
+      ]
+    },
+    {
+      "id": "setup_threads_locations",
+      "text": "Search the reverse sides of the original act deck from the <i>Threads of Fate</i> encounter set for the following locations: Eztli Exhibit, Black Cave, Train Tracks, and Arkham Police Station. Choose one at random and put it into play, ignoring its <b>revelation</b> ability. Remove the remainder of the original act and agenda cards from the <i>Threads of Fate</i> encounter set from the game."
+    },
+    {
+      "id": "setup_act_deck",
+      "text": "Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>Bad Blood</i> encounter set."
+    },
+    {
+      "id": "remove_misc_cards",
+      "text": "Remove the Ichtaca <i>(The Forgotten Guardian)</i> story asset and the Expedition Journal story asset from the game."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Platzierung der Orte",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        [
+          "02050_back",
+          "blank",
+          "02056_back",
+          "blank"
+        ],
+        [
+          "blank",
+          "02048_back",
+          "blank",
+          "blank"
+        ],
+        [
+          "02049_back",
+          "blank",
+          "02053_back",
+          "02054_back"
+        ],
+        [
+          "blank",
+          "02051_back",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "02052_back",
+          "blank",
+          "blank"
+        ]
+      ]
+    },
+    {
+      "id": "setup_elspeth",
+      "text": "Place the Elspeth Baudin enemy (provided in the downloadable <i>Bad Blood</i> encounter set) into play at the Curiositie Shoppe."
+    },
+    {
+      "id": "setup_memories",
+      "text": "Place 1 resource on each location in play, as a “memory.”"
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
+    },
+    {
+      "id": "patrol_rule",
+      "title": "Patrol",
+      "type": "rule_reminder",
+      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "bullets": [
+        {
+          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+        },
+        {
+          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+        }
+      ]
+    },
+    {
+      "id": "memories_rule",
+      "title": "Collecting Memories",
+      "type": "rule_reminder",
+      "text": "In this scenario, Agnes and Elspeth are racing to collect memories.",
+      "bullets": [
+        {
+          "text": "Agnes can collect memories using the [fast] ability on act 1a."
+        }
+      ]
+    },
+    {
+      "id": "elspeth_memories_rule",
+      "text": "Elspeth collects memories automatically via the <b>Forced</b> abilities on agenda 1a; when the combined modifier of chaos tokens on her location is 6 or more (ignoring +/–).",
+      "bullets": [
+        {
+          "text": "For the purposes of counting their modifiers only, treat these chaos tokens as having been revealed during a skill test."
+        }
+      ]
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "agnes_bad_swap",
+      "text": "Agnes Baker must either upgrade Dark Memory to its advanced version, or downgrade the advanced version of Heirloom of Hyberborea to its original version",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "dark_memory",
+            "text": "Upgrade to advanced Dark Memory",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01004",
+                "non_story": true,
+                "card": "01013"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01004",
+                "non_story": true,
+                "card": "90019"
+              }
+            ]
+          },
+          {
+            "id": "heirloom",
+            "text": "Downgrade from advanced Heirloom of Hyberborea",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01004",
+                "non_story": true,
+                "card": "90018"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01004",
+                "non_story": true,
+                "card": "01012"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "agnes_good_swap",
+      "text": "Agnes Baker may either upgrade Heirloom of Hyberborea to its advanced version, or downgrade the advanced version of Dark Memory to its original version.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "heirloom",
+            "text": "Upgrade to advanced Heirloom of Hyberborea",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01004",
+                "non_story": true,
+                "card": "90019"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01004",
+                "non_story": true,
+                "card": "90018"
+              }
+            ]
+          },
+          {
+            "id": "dark_memory",
+            "text": "Downgrade advanced Dark Memory",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01004",
+                "non_story": true,
+                "card": "90003"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01004",
+                "non_story": true,
+                "card": "01013"
+              }
+            ]
+          },
+          {
+            "id": "neither",
+            "text": "Nichts verändern"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_agnes_memories",
+      "text": "How many memories did Agnes Baker collect by the end of the scenario?",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Memories:",
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "hidden",
+            "id": "bb_memories",
+            "operation": "set_input"
+          }
+        ]
+      }
+    },
+    {
+      "id": "others_experience",
+      "text": "Each investigator besides Daisy Walker earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Siegpunktestapel:",
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "hidden",
+            "id": "bb_victory_display",
+            "operation": "set_input"
+          },
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "agnes_experience_explanation",
+      "text": "Agnes Baker earns experience equal to either the combined Victory X value of each card in the victory display, or equal to the number of memories she had collected at the end of the game, whichever is higher."
+    },
+    {
+      "id": "agnes_experience",
+      "type": "branch",
+      "condition": {
+        "type": "math",
+        "opA": {
+          "type": "campaign_log_count",
+          "section": "hidden",
+          "id": "bb_memories"
+        },
+        "opB": {
+          "type": "campaign_log_count",
+          "section": "hidden",
+          "id": "bb_victory_display"
+        },
+        "operation": "compare",
+        "options": [
+          {
+            "numCondition": -1
+          },
+          {
+            "numCondition": 0
+          },
+          {
+            "numCondition": 1,
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01004"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "resolution_2"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "Auflösung 1",
+      "text": "It would be so simple. You could end her right now. Prevent her from menacing others with her powers...But then, would you be any different? You lower your hand, and the magic disperses into the cold air. “Why?” she asks, her voice cracked with pain. You shake your head and tell her that she is wrong. True power is the ability to make peace, not the ability to wage war. “Fool,” she barks, clambering to her feet. “You are a weakling, after all. And you will regret letting me live.” You watch her amble off with only fragments of her former life in her head. Her powers are considerably drained, but she still poses a problem. Perhaps you should have dealt with her, as she said. Still, you breathe a sigh of relief. You don’t want this power to change who you are. You won’t let yourself become like her. No matter what. ",
+      "steps": [
+        "ask_agnes_memories",
+        "others_experience",
+        "agnes_experience_explanation",
+        "agnes_experience",
+        "agnes_good_swap",
+        "$upgrade_decks"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "Auflösung 2",
+      "text": "Elspeth has you at her mercy. She raises her hand, her magic threatening to tear you apart. She smirks. You close your eyes and brace yourself...but no killing blow comes. Instead, she yanks you to your feet and wipes dust off your apron. “Come now,” she purrs with a devilish grin. “You are no whimpering animal. Don’t you remember what you truly are? What we truly are?” Then, without any further punishment, she departs, leaving you with only fragments of your former life.",
+      "steps": [
+        "ask_agnes_memories",
+        "others_experience",
+        "agnes_experience_explanation",
+        "agnes_experience",
+        "agnes_bad_swap",
         "$upgrade_decks"
       ]
     }
@@ -35857,15 +36433,15 @@
     },
     {
       "id": "patrol_rule",
-      "title": "Patrouille",
+      "title": "Patrol",
       "type": "rule_reminder",
-      "text": "Einige Gegner haben das Schlüsselwort Patrouille und dahinter einen Zielort in Klammern. Während der Gegnerphase (in Schritt 3.2) bewegt sich jeder spielbereite, nicht in einen Kampf verwickelte Gegner mit dem Schlüsselwort Patrouille auf kürzestem Weg in Richtung seines Zielortes zu einem verbundenen Ort.",
+      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
       "bullets": [
         {
-          "text": "Falls es mehrere Orte gibt, die als Zielort in Frage kommen, entscheidet der Ermittlungsleiter, auf welchen dieser Orte sich der Gegner zubewegt."
+          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
         },
         {
-          "text": "Falls sich ein Gegner mit dem Schlüsselwort Patrouille auf einen Ort bewegen müsste, der Weg aber durch eine Kartenfähigkeit versperrt ist, bewegt sich der Gegner nicht."
+          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
         }
       ]
     },
@@ -37935,7 +38511,7 @@
     },
     {
       "id": "others_experience",
-      "text": "Jeder andere Ermittler neben Daisy Walker verdient Erfahrungspunkte in Höhe des Sieg- X-Wertes aller Karten im Siegpunktestapel.",
+      "text": "Each investigator besides Daisy Walker earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -65054,7 +65630,7 @@
         "nightgaunts",
         "pentagram"
       ],
-      "subtext": "Sobald das Set <i>Die Mitternachtsmasken</i> herausgesucht wird, werden nur die 5 Verratskarten (2x Falsche Fährte und 3x Hetzender Schatten) und folgende Orte herausgesucht: Nordstadt, Innenstadt (Bank von Arkham), Oststadt, Miskatonic Universität und Hafenviertel. Die übrigen Orts-, Szene-, Agenda- und Szenarioübersichtskarten dieses Sets werden nicht herausgesucht."
+      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow) and the following locations: Northside, Downtown <i>(First Bank of Arkham)</i>, Easttown, Miskatonic University, and Rivertown. Do not gather the rest of the locations or the act, agenda, and scenario reference cards from that set."
     },
     {
       "id": "set_aside_alejandro_and_relic",

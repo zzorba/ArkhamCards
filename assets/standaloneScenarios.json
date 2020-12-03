@@ -5,6 +5,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "bad_blood"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "blob_that_ate_everything"
   },
   {
