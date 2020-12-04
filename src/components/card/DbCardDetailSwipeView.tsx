@@ -216,8 +216,10 @@ function DbCardDetailSwipeView(props: Props) {
         sliderWidth={width}
         itemWidth={width}
         useExperimentalSnap
+        shouldOptimizeUpdates
         onScrollIndexChanged={setIndex}
         disableIntervalMomentum
+        apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
       />
       { deckId !== undefined && (
         <DeckNavFooter deckId={deckId} componentId={componentId} controls={deckCountControls} faction={faction} />
