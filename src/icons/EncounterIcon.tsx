@@ -350,6 +350,17 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.circleIcon('in_the_clutches_of_chaos', size, color);
       case 'bbt':
         return this.circleIcon('before_the_black_throne', size, color);
+      case 'wog':
+      case 'war_of_the_outer_gods':
+        return this.standaloneIcon('war_of_the_outer_gods', size, color);
+      case 'children_of_paradise':
+        return this.standaloneIcon('children_of_paradise', size, color);
+      case 'swarm_of_assimilation':
+      case 'assimilating_swarm':
+        return this.standaloneIcon('assimilating_swarm', size, color);
+      case 'death_of_stars':
+      case 'death_of_the_stars':
+        return this.standaloneIcon('death_of_the_stars', size, color);
       case 'the_circle_undone':
       case 'agents_of_azathoth':
       case 'anettes_coven':

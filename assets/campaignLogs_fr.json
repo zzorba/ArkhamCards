@@ -1713,57 +1713,57 @@
         "entries": [
           {
             "id": "broken_the_law_of_ulthar",
-            "masculine_text": "#name# has broken the law of Ulthar.",
-            "feminine_text": "#name# has broken the law of Ulthar."
+            "masculine_text": "#name# a enfreint la loi d’Ulthar",
+            "feminine_text": "#name# a enfreint la loi d’Ulthar"
           },
           {
             "id": "captured",
-            "masculine_text": "#name# was captured.",
-            "feminine_text": "#name# was captured."
+            "masculine_text": "#name# a été capturé",
+            "feminine_text": "#name# a été capturée"
           },
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "le chat noir est à vos côtés"
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "le chat noir est à vos côtés"
           },
           {
             "id": "black_cat_delivered_news",
-            "text": "the black cat delivered news of your plight."
+            "text": "le chat noir a transmis des nouvelles de votre situation désespérée."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "le chat noir a eu un pressentiment"
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "le chat noir est à la recherche de la vérité."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "le chat noir connaît la vérité."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "the black cat shared knowledge of the Dreamlands."
+            "text": "le chat noir a transmis des connaissances sur les Contrées du Rêve."
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
-            "text": "the black cat spoke of Atlach-Nacha."
+            "text": "le chat noir a évoqué Atlach-Nacha."
           },
           {
             "id": "black_cat_spoke_of_nyarlathotep",
-            "text": "the black cat spoke of Nyarlathotep."
+            "text": "le chat noir a évoqué Nyarlathotep."
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "le chat noir a averti les autres."
           },
           {
             "id": "carried_to_the_cold_wastes",
-            "text": "the investigators were carried to the Cold Wastes."
+            "text": "investigateurs ont été emportés dans le Désert Glacé."
           },
           {
             "id": "cats_collected_their_tribute",
@@ -1771,39 +1771,39 @@
           },
           {
             "id": "dreamers_awoke",
-            "text": "the dreamers awoke."
+            "text": "les rêveurs se sont réveillés."
           },
           {
             "id": "dreamers_banished_nyarlathotep",
-            "text": "the dreamers banished Nyarlathotep."
+            "text": "les rêveurs ont banni Nyarlathotep."
           },
           {
             "id": "dreamers_escaped_nyarlathoteps_grasp",
-            "text": "the dreamers escaped from Nyarlathotep's grasp."
+            "text": "les rêveurs ont échappé à l’emprise de Nyarlathotep."
           },
           {
             "id": "dreamers_grow_weaker",
-            "text": "the dreamers grow weaker."
+            "text": "Les rêveurs s’affaiblissent."
           },
           {
             "id": "dreamers_know_of_another_path",
-            "text": "the dreamers know of another path."
+            "text": "les rêveurs connaissent un autre chemin."
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "the dreamers stayed in the Dreamlands forever."
+            "text": "les rêveurs sont restés dans les Contrées du Rêve pour toujours."
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "the dreamers traveled beneath the monasteryr."
+            "text": "les rêveurs sont retournés au monastère."
           },
           {
             "id": "forced_way_into_temple",
-            "text": "the investigators forced their way into the temple."
+            "text": "les investigateurs ont forcé le passage pour entrer dans le temple."
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
-            "text": "Nyarlathotep's invasion has begun."
+            "text": "l’invasion de Nyarlathotep a commencé."
           },
           {
             "id": "parleyed_with_zoogs",
@@ -1811,23 +1811,23 @@
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "les investigateurs possèdent la Clé d’Argent."
           },
           {
             "id": "randolph_did_not_survive_the_voyage",
-            "text": "Randolph Carter did not survive the voyage."
+            "text": "Randolph n’a pas survécu au voyage"
           },
           {
             "id": "randolph_eluded_capture",
-            "text": "Randolph eluded capture."
+            "text": "Randolph n’a pas été capturé."
           },
           {
             "id": "randolph_survived_the_voyage",
-            "text": "Randolph survived the voyage."
+            "text": "Randolph a survécu au voyage."
           },
           {
             "id": "randolph_was_captured",
-            "text": "Randolph was captured."
+            "text": "Randolph a été capturé."
           },
           {
             "id": "saved_by_randolph_carter",
@@ -1839,19 +1839,19 @@
           },
           {
             "id": "threaten_black_cat",
-            "text": "okay, fine, have it your way then."
+            "text": "« Bon, d’accord, débrouillez-vous tout seul alors. »"
           },
           {
             "id": "travelled_to_the_cold_wastes",
-            "text": "the investigators traveled to the Cold Wastes."
+            "text": "les investigateurs ont voyagé vers le Désert Glacé."
           },
           {
             "id": "virgil_was_captured",
-            "text": "Virgil was captured."
+            "text": "Virgil a été capturé."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "vous l’avez bien cherché."
           }
         ]
       },
@@ -1911,23 +1911,23 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "le chat noir est à vos côtés"
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "le chat noir est à vos côtés"
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "le chat noir a eu un pressentiment"
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "le chat noir est à la recherche de la vérité."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "le chat noir connaît la vérité."
           },
           {
             "id": "black_cat_requested_aid",
@@ -1939,7 +1939,7 @@
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "le chat noir a averti les autres."
           },
           {
             "id": "bridge_was_completed",
@@ -1983,7 +1983,7 @@
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "les investigateurs possèdent la Clé d’Argent."
           },
           {
             "id": "randolph_did_not_survive_descent",
@@ -2015,7 +2015,7 @@
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "vous l’avez bien cherché."
           }
         ]
       },

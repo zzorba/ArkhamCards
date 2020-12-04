@@ -40,6 +40,10 @@
     "scenarioId": "the_nights_usurper"
   },
   {
+    "campaignId": "side",
+    "scenarioId": "war_of_the_outer_gods"
+  },
+  {
     "campaignId": "tfa",
     "scenarioId": "the_depths_of_yoth"
   }
