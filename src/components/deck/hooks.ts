@@ -4,7 +4,7 @@ import { ngettext, msgid, t } from 'ttag';
 
 import { Deck, EditDeckState, ParsedDeck } from '@actions/types';
 import { useDispatch, useSelector } from 'react-redux';
-import { useComponentVisible, useDeck, usePlayerCards } from '@components/core/hooks';
+import { useComponentVisible, useDeck, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit } from './actions';
 import { CardsMap } from '@data/Card';
 import { parseDeck } from '@lib/parseDeck';
@@ -84,6 +84,7 @@ export function useParsedDeck(id: number, componentName: string, componentId: st
   const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const cards = usePlayerCards(tabooSetId);
+  const investigators = useInvestigatorCards(tabooSetId);
   const visible = useComponentVisible(componentId);
   const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(deck && cards && fetchIfMissing ?
     parseDeck(deck, deck.meta || {}, deck.slots, deck.ignoreDeckLimitSlots, cards, previousDeck, deck.xp_adjustment || 0) :

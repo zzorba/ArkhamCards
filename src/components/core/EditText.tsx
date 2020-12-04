@@ -15,7 +15,7 @@ interface Props {
   settingsStyle?: boolean;
 }
 
-async function openDialog({
+export async function openDialog({
   title,
   dialogDescription,
   value,

@@ -28,7 +28,7 @@ export default function CheckSuppliesConditionComponent({ step, condition, campa
     if (!option) {
       return null;
     }
-    const sectionName = option.condition || 'Missing';
+    const sectionName = option.prompt || 'Missing';
     const supplyName = condition.name;
     const list = stringList(map(cards, card => card.name));
     return (

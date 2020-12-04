@@ -6,11 +6,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Narration {
-  id: string;
-  name: string;
-}
-
 export type Schema = AllCampaigns | Log | Errata | Rules;
 export type Step =
   | BranchStep
@@ -167,7 +162,7 @@ export interface Campaign {
   setup: string[];
   steps: Step[];
   side_scenario_steps?: Step[];
-  standalone?: any[];
+  campaign_type: "standalone" | "campaign";
 }
 export interface BranchStep {
   id: string;
@@ -186,6 +181,7 @@ export interface MultiCondition {
     | CampaignDataChaosBagCondition
     | CampaignLogCountCondition
     | CampaignDataVersionCondition
+    | ScenarioDataResolutionCondition
   )[];
   count: number;
   options: BoolOption[];
@@ -198,7 +194,7 @@ export interface CampaignLogCondition {
 }
 export interface BoolOption {
   boolCondition: boolean;
-  condition?: string;
+  prompt?: string;
   effects?: Effect[];
   border?: boolean;
   steps?: string[];
@@ -363,6 +359,7 @@ export interface Option {
   boolCondition?: boolean;
   numCondition?: number;
   condition?: string;
+  prompt?: string;
   border?: boolean;
   effects?: Effect[];
   steps?: string[];
@@ -372,6 +369,17 @@ export interface CampaignDataVersionCondition {
   campaign_data: "version";
   min_version: number;
   options: BoolOption[];
+}
+export interface ScenarioDataResolutionCondition {
+  type: "scenario_data";
+  scenario_data: "resolution";
+  options: StringOption[];
+}
+export interface StringOption {
+  condition: string;
+  border?: boolean;
+  effects?: Effect[];
+  steps?: string[];
 }
 export interface MathCompareCondition {
   type: "math";
@@ -425,12 +433,6 @@ export interface CampaignDataDifficultyCondition {
   campaign_data: "difficulty";
   options: StringOption[];
 }
-export interface StringOption {
-  condition: string;
-  border?: boolean;
-  effects?: Effect[];
-  steps?: string[];
-}
 export interface CampaignDataScenarioCondition {
   type: "campaign_data";
   campaign_data: "scenario_completed" | "scenario_replayed";
@@ -453,11 +455,6 @@ export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";
   section: string;
   options: BoolOption[];
-}
-export interface ScenarioDataResolutionCondition {
-  type: "scenario_data";
-  scenario_data: "resolution";
-  options: StringOption[];
 }
 export interface ScenarioDataInvestigatorStatusCondition {
   type: "scenario_data";
@@ -575,6 +572,7 @@ export interface UseSuppliesChoiceInput {
   section: string;
   id: string;
   name: string;
+  prompt: string;
   investigator: "choice";
   min: number;
   max: number;
@@ -585,6 +583,7 @@ export interface UseSuppliesAllInput {
   section: string;
   id: string;
   name: string;
+  prompt: string;
   investigator: "all";
   choices: BoolOption[];
 }
@@ -735,7 +734,7 @@ export interface ResolutionStep {
 export interface RuleReminderStep {
   id: string;
   type: "rule_reminder";
-  text: string;
+  text?: string;
   title?: string;
   bullets?: {
     text: string;
@@ -840,12 +839,13 @@ export interface Scenario {
   scenario_name: string;
   full_name: string;
   xp_cost?: number;
-  side_scenario_type?: "challenge";
+  side_scenario_type?: "challenge" | "standalone";
   challenge?: ChallengeData;
   setup: string[];
   resolutions?: Resolution[];
   steps: Step[];
   type?: "interlude" | "epilogue" | "placeholder";
+  standalone_setup?: string[];
 }
 export interface ChallengeData {
   investigator: string;

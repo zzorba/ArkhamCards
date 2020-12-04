@@ -1,9 +1,10 @@
 import StyleContext from '@styles/StyleContext';
-import React, { useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { InteractionManager, StyleSheet, View } from 'react-native';
 import { filter, map } from 'lodash';
 
 import Ripple from '@lib/react-native-material-ripple';
+import { useEffectUpdate } from './hooks';
 
 interface RenderButton {
   element: (selected: boolean) => React.ReactNode;
@@ -57,14 +58,17 @@ export default function ArkhamButtonGroup({
   onPress,
 }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
-  const selection = new Set(selectedIndexes);
-  const onPressIndex = (idx: number) => {
-    if (selection.has(idx)) {
-      onPress(filter(selectedIndexes, x => x !== idx));
-    } else {
-      onPress([...selectedIndexes, idx]);
-    }
-  };
+  const [localSelectedIndexes, setLocalSelectedIndexes] = useState(selectedIndexes);
+  useEffectUpdate(() => {
+    setLocalSelectedIndexes(selectedIndexes);
+  }, [selectedIndexes]);
+  const onPressIndex = useCallback((idx: number) => {
+    const selection = new Set(selectedIndexes);
+    const newSelection = selection.has(idx) ? filter(selectedIndexes, x => x !== idx) : [...selectedIndexes, idx];
+    setLocalSelectedIndexes(newSelection);
+    InteractionManager.runAfterInteractions(() => onPress(newSelection));
+  }, [selectedIndexes, setLocalSelectedIndexes, onPress]);
+  const selection = useMemo(() => new Set(localSelectedIndexes), [localSelectedIndexes]);
   const height = 18 * fontScale + 20;
   return (
     <View style={styles.wrapper}>

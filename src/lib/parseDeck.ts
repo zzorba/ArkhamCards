@@ -534,7 +534,8 @@ export function parseBasicDeck(
     deck.slots,
     deck.ignoreDeckLimitSlots || {},
     cards,
-    previousDeck
+    previousDeck,
+    deck.xp_adjustment
   );
 }
 

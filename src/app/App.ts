@@ -14,8 +14,6 @@ import COLORS from '@styles/colors';
 import { getLangPreference, AppState, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from '@styles/theme';
 
-export const SHOW_DISSONANT_VOICES = false;
-
 const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';
 const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';

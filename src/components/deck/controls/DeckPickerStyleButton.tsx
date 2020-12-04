@@ -3,8 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
-import space, { s, xs } from '@styles/space';
+import space, { s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
+
 interface Props {
   icon: string;
   title: string;
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 32,
     height: 32,
-    marginRight: xs,
+    marginRight: s,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

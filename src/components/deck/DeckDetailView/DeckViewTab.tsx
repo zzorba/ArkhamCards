@@ -2,7 +2,7 @@ import React, { MutableRefObject, ReactNode, useCallback, useContext, useEffect,
 import { filter, find, flatMap, flatten, forEach, map, sum, sumBy, uniqBy } from 'lodash';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { c, msgid, ngettext, t } from 'ttag';
+import { c, msgid, t } from 'ttag';
 
 import {
   Campaign,
@@ -19,7 +19,6 @@ import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import CardTextComponent from '@components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
-import InvestigatorOptionsModule, { hasInvestigatorOptions } from './InvestigatorOptionsModule';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
@@ -37,10 +36,10 @@ import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
 import DeckMetadataComponent from './DeckMetadataComponent';
-import DeckTabooPickerButton from './DeckTabooPickerButton';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
-import DeckPickerStyleButton from './DeckPickerStyleButton';
+import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
 import { useDeckXpStrings } from '../hooks';
+import DeckMetadataControls from '../controls/DeckMetadataControls';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -246,7 +245,6 @@ interface Props {
   deck: Deck;
   investigatorFront?: Card;
   investigatorBack?: Card;
-  parallelInvestigators: Card[];
   hideCampaign?: boolean;
   campaign?: Campaign;
   parsedDeck: ParsedDeck;
@@ -292,7 +290,6 @@ export default function DeckViewTab(props: Props) {
     investigatorFront,
     investigatorBack,
     deck,
-    parallelInvestigators,
     parsedDeck,
     singleCardView,
     showEditCards,
@@ -542,6 +539,25 @@ export default function DeckViewTab(props: Props) {
     }
   }, [dispatch, deckEditsRef, deck.id, deck.investigator_code]);
   const [xpLabel, xpDetailLabel] = useDeckXpStrings(parsedDeck);
+
+  const renderXpButton = useCallback((last: boolean) => {
+    if (!xpLabel) {
+      return null;
+    }
+    return (
+      <DeckPickerStyleButton
+        title={t`Experience`}
+        valueLabel={xpLabel}
+        valueLabelDescription={xpDetailLabel}
+        editable={editable}
+        onPress={showEditNameDialog}
+        first
+        last={last}
+        icon="xp"
+        noLabelDivider
+      />
+    );
+  }, [xpLabel, xpDetailLabel, showEditNameDialog, editable]);
   const investigatorOptions = useMemo(() => {
     if (!deckEdits?.meta || !investigator) {
       return null;
@@ -549,48 +565,23 @@ export default function DeckViewTab(props: Props) {
     const hasTabooPicker = (tabooOpen || showTaboo || !!tabooSet);
     const changes = parsedDeck.changes;
     const hasXpButton = editable && !!(changes && deck.previous_deck);
-    const hasOptions = hasInvestigatorOptions(investigator, parallelInvestigators);
     return (
       <View style={[styles.optionsContainer, space.paddingS]}>
-        { hasXpButton && !!changes && !!xpLabel && (
-          <DeckPickerStyleButton
-            title={t`Experience`}
-            valueLabel={xpLabel}
-            valueLabelDescription={xpDetailLabel}
-            editable={editable}
-            onPress={showEditNameDialog}
-            first
-            last={!hasTabooPicker && !hasOptions}
-            icon="xp"
-            noLabelDivider
-          />
-        ) }
-        { hasTabooPicker && (
-          <DeckTabooPickerButton
-            open={tabooOpen}
-            faction={investigator.factionCode()}
-            disabled={!editable}
-            tabooSetId={tabooSetId}
-            setTabooSet={setTabooSet}
-            first={!hasXpButton}
-            last={!hasOptions}
-          />
-        ) }
-        <InvestigatorOptionsModule
-          investigator={investigator}
+        <DeckMetadataControls
+          tabooOpen={tabooOpen}
+          editable={editable}
+          tabooSetId={tabooSetId || 0}
+          setTabooSet={hasTabooPicker ? setTabooSet : undefined}
           meta={deckEdits.meta}
-          parallelInvestigators={parallelInvestigators}
+          investigatorCode={deck?.investigator_code}
           setMeta={setMeta}
           setParallel={setParallel}
-          editWarning={!!deck.previous_deck}
-          disabled={!editable}
-          first={!hasTabooPicker && !hasXpButton}
+          firstElement={hasXpButton && !!changes && !!xpLabel ? renderXpButton : undefined}
         />
       </View>
     );
-  }, [investigator, parallelInvestigators, deck, tabooSetId, tabooSet, showTaboo, tabooOpen, editable,
-    deckEdits?.meta, parsedDeck?.changes,
-    showEditNameDialog, setMeta, setParallel, setTabooSet, xpLabel, xpDetailLabel,
+  }, [investigator, deck, tabooSetId, tabooSet, showTaboo, tabooOpen, editable, deckEdits?.meta, parsedDeck?.changes,
+    setMeta, setParallel, setTabooSet, renderXpButton, xpLabel,
   ]);
 
   const investigatorBlock = useMemo(() => {

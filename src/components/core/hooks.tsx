@@ -546,8 +546,26 @@ export function usePressCallback(callback: undefined | (() => void), bufferTime:
   useEffect(() => {
     callbackRef.current = callback;
   }, [callback]);
-  const onPress = useMemo(() => debounce(() => callbackRef.current && callbackRef.current(), bufferTime, { leading: true, trailing: false }), []);
+  const onPress = useMemo(() => {
+    return debounce(() => callbackRef.current && callbackRef.current(), bufferTime, { leading: true, trailing: false });
+  }, [callbackRef, bufferTime]);
   return callback ? onPress : undefined;
+}
+
+export function useInterval(callback: () => void, delay: number) {
+  const savedCallback = useRef<() => void>();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    if (!delay) {
+      return;
+    }
+    const id = setInterval(savedCallback.current, delay);
+    return () => clearInterval(id);
+  }, [delay]);
 }
 
 export function useWhyDidYouUpdate<T>(name: string, props: T) {

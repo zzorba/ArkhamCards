@@ -1,5 +1,6 @@
 import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
 import { Alert, Platform } from 'react-native';
+import { t } from 'ttag';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
 import { Rule as JsonRule } from '@data/scenario/types';
@@ -229,7 +230,43 @@ export const syncCards = async function(
 
       await syncRules(db, lang);
       // console.log(`${await cards.count() } cards after delete`);
-      const cardsToInsert: Card[] = [];
+      const genericInvestigator = Card.fromJson({
+        pack_code: 'custom',
+        pack_name: t`Custom`,
+        type_code: 'investigator',
+        type_name: t`Investigator`,
+        faction_code: 'neutral',
+        faction_name: t`Neutral`,
+        position: 1,
+        code: 'custom_001',
+        name: 'Johnny Anybody',
+        real_name: 'Johnny Anybody',
+        subname: t`The Chameleon`,
+        text: t`This is a custom investigator to allow for building of arbitrary decks.\n[elder_sign]: +X where X is whatever you want it to be.`,
+        quantity: 1,
+        skill_willpower: 3,
+        skill_intellect: 3,
+        skill_combat: 3,
+        skill_agility: 3,
+        health: 7,
+        health_per_investigator: false,
+        sanity: 7,
+        deck_limit: 1,
+        deck_requirements: {
+          size: 30,
+          card: {},
+          random: [{ target: 'subtype', value: 'basicweakness' }],
+        },
+        deck_options: [{
+          faction: ['guardian','seeker','rogue','mystic','survivor','neutral'],
+          level: { min: 0, max: 5 },
+        }],
+        is_unique: true,
+        double_sided: true,
+        back_text: '<b>Deck Size</b>: 30.\n<b>Deckbuilding Options</b>: Guardian cards ([guardian]) level 0-5, Seeker cards ([seeker]) level 0-5, Rogue cards ([rogue]) level 0-5, Mystic cards ([mystic]) level 0-5, Survivor cards ([survivor]) level 0-5, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 1 random basic weakness.',
+      }, packsByCode, cycleNames, lang || 'en');
+      genericInvestigator.browse_visible = 4;
+      const cardsToInsert: Card[] = [genericInvestigator];
       forEach(json, cardJson => {
         try {
           const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');

@@ -12,7 +12,7 @@ import StyleContext from '@styles/StyleContext';
 
 interface Props {
   text?: string;
-  onPress: () => void;
+  onPress?: () => void;
   indent?: boolean;
   children?: ReactNode;
   noBorder?: boolean;

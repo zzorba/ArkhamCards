@@ -40,96 +40,6 @@
           {
             "id": "umordhoth_repelled",
             "text": "Die Ermittler haben Umôrdhoth zurückgetrieben."
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
           }
         ]
       },
@@ -148,43 +58,6 @@
           {
             "id": "$input_value",
             "text": "#name#"
-          }
-        ]
-      },
-      {
-        "section": "hidden",
-        "entries": [
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
-            "text": "dummy"
           }
         ]
       }
@@ -336,96 +209,6 @@
           {
             "id": "zebulon_whateley_survived",
             "text": "Zebulon Whateley hat Das Vermächtnis von Dunwich überlebt."
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
           }
         ]
       },
@@ -434,38 +217,6 @@
         "entries": [
           {
             "id": "tmm_add_chaos_token",
-            "text": "dummy"
-          },
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
             "text": "dummy"
           }
         ]
@@ -609,96 +360,6 @@
           {
             "id": "unable_to_find_nigel",
             "text": "Nigel Engram konnte nicht gefunden werden."
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
           }
         ]
       },
@@ -719,38 +380,6 @@
           },
           {
             "id": "tpm_conviction_or_doubt",
-            "text": "dummy"
-          },
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
             "text": "dummy"
           }
         ]
@@ -941,96 +570,6 @@
           {
             "id": "zebulon_whateley_survived",
             "text": "Zebulon Whateley hat Das Vermächtnis von Dunwich überlebt."
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
           }
         ]
       },
@@ -1039,38 +578,6 @@
         "entries": [
           {
             "id": "tmm_add_chaos_token",
-            "text": "dummy"
-          },
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
             "text": "dummy"
           }
         ]
@@ -1128,96 +635,6 @@
           {
             "id": "umordhoth_repelled",
             "text": "Die Ermittler haben Umôrdhoth zurückgetrieben."
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
           }
         ]
       },
@@ -1236,43 +653,6 @@
           {
             "id": "$input_value",
             "text": "#name#"
-          }
-        ]
-      },
-      {
-        "section": "hidden",
-        "entries": [
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
-            "text": "dummy"
           }
         ]
       }
@@ -1406,96 +786,6 @@
           {
             "id": "unable_to_find_nigel",
             "text": "Nigel Engram konnte nicht gefunden werden."
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
           }
         ]
       },
@@ -1516,38 +806,6 @@
           },
           {
             "id": "tpm_conviction_or_doubt",
-            "text": "dummy"
-          },
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
             "text": "dummy"
           }
         ]
@@ -1786,7 +1044,179 @@
           {
             "id": "wait_for_additional_supplies",
             "text": "Die Ermittler wurden gezwungen, auf zusätzliche Ausrüstung zu warten."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "agenda_5",
+            "text": "versteckt"
           },
+          {
+            "id": "agenda_6",
+            "text": "versteckt"
+          },
+          {
+            "id": "doy_cross_off_rope",
+            "text": "dummy"
+          },
+          {
+            "id": "final_depth",
+            "text": "Tiefenstufe"
+          },
+          {
+            "id": "ichtaca_left_without_you",
+            "text": "Ichtaca ist ohne dich gegangen."
+          },
+          {
+            "id": "listened_to_ichtaca",
+            "text": "Du hast dir Ichtacas Geschichte angehört."
+          },
+          {
+            "id": "rtdoe_gain_mysterious_scepter",
+            "text": "dummy"
+          },
+          {
+            "id": "rthote2_gain_sticky_goop",
+            "text": "dummy"
+          },
+          {
+            "id": "tasks_completed",
+            "text": "#X# Aufgaben wurden abgeschlossen"
+          },
+          {
+            "id": "wilds_add_chaos_token",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": [
+      {
+        "id": "key_of_eztli",
+        "name": "Schlüssel der Eztli",
+        "description": "Der Schlüssel der Eztli.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "mysterious_scepter",
+        "name": "Mysteriöses Zepter",
+        "description": "Ein Mysteriöses Zepter, das im Thronsaal gefunden wurde.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "sticky_goop",
+        "name": "Klebrige Substanz",
+        "description": "Ein mysteriöses Zepter gefunden in einem Thronsaal.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "gasoline",
+        "name": "Benzin",
+        "description": "Ausreichend für eine lange Fahrt mit dem Auto.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "provisions",
+        "name": "Proviant",
+        "description": "Nahrung und Wasser für eine Person. Unverzichtbar auf jeder Reise.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "medicine",
+        "name": "Medikamente",
+        "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
+        "cost": 2,
+        "multiple": true
+      },
+      {
+        "id": "medicine",
+        "name": "Medizin",
+        "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
+        "cost": 2,
+        "multiple": true
+      },
+      {
+        "id": "pendant",
+        "name": "Glücksbringer",
+        "description": "Eigentlich nutzlos, aber angenehme Erinnerungen spenden Reisenden fern der Heimat Behaglichkeit.",
+        "cost": 1
+      },
+      {
+        "id": "chalk",
+        "name": "Kreide",
+        "description": "Für Beschriftungen auf Felswänden.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Feldflasche",
+        "description": "Kann an Bächen und Flüssen aufgefüllt werden.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Kompass",
+        "description": "Kann den Weg weisen, falls man sich verläuft.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "Decke",
+        "description": "Um sich in der Nacht warm zu halten.",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "Fernglas",
+        "description": "Um weit entfernte Orte betrachten zu können.",
+        "cost": 2
+      },
+      {
+        "id": "pocketknife",
+        "name": "Taschenmesser",
+        "description": "Zu klein, um als verlässliche Waffe zu dienen, aber dafür gut zu verbergen.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "Spitzhacke",
+        "description": "Zum Zerschlagen steiniger Oberflächen.",
+        "cost": 2
+      },
+      {
+        "id": "map",
+        "name": "Karte",
+        "description": "Bisher noch unbeschriftet, aber mit der Zeit wirst du deine Umgebung kartografieren können.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Seil",
+        "description": "Einige Rollen eines stabilen Seils. Unverzichtbar, wenn manHöhlen erkunden oder Klettern will.",
+        "cost": 3
+      },
+      {
+        "id": "torches",
+        "name": "Fackeln",
+        "description": "Zum Beleuchten dunkler Orte oder für das Entzünden von Wandleuchten.",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "campaignId": "side",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# wurde vom Abgrund verschlungen.",
@@ -1883,48 +1313,32 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "agenda_5",
-            "text": "versteckt"
-          },
-          {
-            "id": "agenda_6",
-            "text": "versteckt"
-          },
-          {
-            "id": "doy_cross_off_rope",
-            "text": "dummy"
-          },
-          {
-            "id": "final_depth",
-            "text": "Tiefenstufe"
-          },
-          {
-            "id": "ichtaca_left_without_you",
-            "text": "Ichtaca ist ohne dich gegangen."
-          },
-          {
-            "id": "listened_to_ichtaca",
-            "text": "Du hast dir Ichtacas Geschichte angehört."
-          },
-          {
-            "id": "rtdoe_gain_mysterious_scepter",
-            "text": "dummy"
-          },
-          {
-            "id": "rthote2_gain_sticky_goop",
-            "text": "dummy"
-          },
-          {
-            "id": "tasks_completed",
-            "text": "#X# Aufgaben wurden abgeschlossen"
-          },
-          {
-            "id": "wilds_add_chaos_token",
-            "text": "dummy"
-          },
-          {
             "id": "$input_value",
             "text": "#name#"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "act_3_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "epic_multiplayer",
+            "text": "dummy"
+          },
+          {
+            "id": "group_a",
+            "text": "dummy"
+          },
+          {
+            "id": "group_b",
+            "text": "dummy"
+          },
+          {
+            "id": "group_c",
+            "text": "dummy"
           },
           {
             "id": "meh_did_cover_up",
@@ -1957,123 +1371,7 @@
         ]
       }
     ],
-    "supplies": [
-      {
-        "id": "key_of_eztli",
-        "name": "Schlüssel der Eztli",
-        "description": "Der Schlüssel der Eztli.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
-        "id": "mysterious_scepter",
-        "name": "Mysteriöses Zepter",
-        "description": "Ein Mysteriöses Zepter, das im Thronsaal gefunden wurde.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
-        "id": "sticky_goop",
-        "name": "Klebrige Substanz",
-        "description": "Ein mysteriöses Zepter gefunden in einem Thronsaal.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
-        "id": "gasoline",
-        "name": "Benzin",
-        "description": "Ausreichend für eine lange Fahrt mit dem Auto.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
-        "id": "provisions",
-        "name": "Proviant",
-        "description": "Nahrung und Wasser für eine Person. Unverzichtbar auf jeder Reise.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
-        "id": "medicine",
-        "name": "Medikamente",
-        "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
-        "cost": 2,
-        "multiple": true
-      },
-      {
-        "id": "medicine",
-        "name": "Medikamenten",
-        "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
-        "cost": 2,
-        "multiple": true
-      },
-      {
-        "id": "pendant",
-        "name": "Glücksbringer",
-        "description": "Eigentlich nutzlos, aber angenehme Erinnerungen spenden Reisenden fern der Heimat Behaglichkeit.",
-        "cost": 1
-      },
-      {
-        "id": "chalk",
-        "name": "Kreide",
-        "description": "Für Beschriftungen auf Felswänden.",
-        "cost": 2
-      },
-      {
-        "id": "canteen",
-        "name": "Feldflasche",
-        "description": "Kann an Bächen und Flüssen aufgefüllt werden.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Kompass",
-        "description": "Kann den Weg weisen, falls man sich verläuft.",
-        "cost": 2
-      },
-      {
-        "id": "blanket",
-        "name": "Decke",
-        "description": "Um sich in der Nacht warm zu halten.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Fernglas",
-        "description": "Um weit entfernte Orte betrachten zu können.",
-        "cost": 2
-      },
-      {
-        "id": "pocketknife",
-        "name": "Taschenmesser",
-        "description": "Zu klein, um als verlässliche Waffe zu dienen, aber dafür gut zu verbergen.",
-        "cost": 2
-      },
-      {
-        "id": "pickaxe",
-        "name": "Spitzhacke",
-        "description": "Zum Zerschlagen steiniger Oberflächen.",
-        "cost": 2
-      },
-      {
-        "id": "map",
-        "name": "Karte",
-        "description": "Bisher noch unbeschriftet, aber mit der Zeit wirst du deine Umgebung kartografieren können.",
-        "cost": 3
-      },
-      {
-        "id": "rope",
-        "name": "Seil",
-        "description": "Einige Rollen eines stabilen Seils. Unverzichtbar, wenn manHöhlen erkunden oder Klettern will.",
-        "cost": 3
-      },
-      {
-        "id": "torches",
-        "name": "Fackeln",
-        "description": "Zum Beleuchten dunkler Orte oder für das Entzünden von Wandleuchten.",
-        "cost": 3
-      }
-    ]
+    "supplies": []
   },
   {
     "campaignId": "tcu",
@@ -2342,96 +1640,6 @@
           {
             "id": "witches_spell_cast",
             "text": "Der Zauber der Hexen wurde vollendet."
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
           }
         ]
       },
@@ -2460,38 +1668,6 @@
           },
           {
             "id": "uad_no_investigators_alive",
-            "text": "dummy"
-          },
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
             "text": "dummy"
           }
         ]
@@ -2683,96 +1859,6 @@
           {
             "id": "you_asked_for_it",
             "text": "du hast es so gewollt."
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
           }
         ]
       },
@@ -2817,38 +1903,6 @@
           },
           {
             "id": "timeless_realm",
-            "text": "dummy"
-          },
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
             "text": "dummy"
           }
         ]
@@ -2969,96 +2023,6 @@
           {
             "id": "you_asked_for_it",
             "text": "du hast es so gewollt."
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
           }
         ]
       },
@@ -3075,38 +2039,6 @@
           },
           {
             "id": "spider_queen",
-            "text": "dummy"
-          },
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
             "text": "dummy"
           }
         ]
@@ -3303,96 +2235,6 @@
           {
             "id": "wait_for_additional_supplies",
             "text": "Die Ermittler wurden gezwungen, auf zusätzliche Ausrüstung zu warten."
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
           }
         ]
       },
@@ -3430,38 +2272,6 @@
           {
             "id": "wilds_add_chaos_token",
             "text": "dummy"
-          },
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
-            "text": "dummy"
           }
         ]
       }
@@ -3490,7 +2300,7 @@
       },
       {
         "id": "medicine",
-        "name": "Medikamenten",
+        "name": "Medizin",
         "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
         "cost": 2,
         "multiple": true
@@ -3586,6 +2396,14 @@
             "text": "Othera Gilman will Blut sehen."
           },
           {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "Der Kopfschmuck wurde zum Leuchtturm gebracht."
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "Der Götze wurde zum Leuchtturm gebracht."
+          },
+          {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
             "text": "Innsmouth ist durch die steigende Flut verzehrt worden."
           },
@@ -3596,6 +2414,10 @@
           {
             "id": "made_it_safely_to_their_vehicles",
             "text": "Die Ermittler haben es sicher bis zu ihren Fahrzeugen geschafft."
+          },
+          {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "Der Mantel wurde zum Leuchtturm gebracht."
           },
           {
             "id": "marsh_out_for_blood",
@@ -3610,94 +2432,16 @@
             "text": "Die Mission war erfolgreich."
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "Der Schrecken des Teufelsriffs ist tot."
           },
           {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "Der Schrecken des Teufelsriffs ist noch am Leben."
           },
           {
-            "id": "blob_contained",
-            "text": "Die Anomalie wurde eingedämmt."
-          },
-          {
-            "id": "blob_devoured_universe",
-            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
-          },
-          {
-            "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
-          },
-          {
-            "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
-          },
-          {
-            "id": "coh_sun_banished_cnidathqua",
-            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
-          },
-          {
-            "id": "meh_excelsior_claims_another_victim",
-            "text": "Das Excelsior fordert ein weiteres Opfer."
-          },
-          {
-            "id": "meh_excelsior_is_quiet_for_now",
-            "text": "Das Excelsior ist vorerst ruhig."
-          },
-          {
-            "id": "meh_fled_scene_of_the_crime",
-            "text": "Die Ermittler sind vom Tatort geflohen."
-          },
-          {
-            "id": "meh_murders_continue_unsolved",
-            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
-          },
-          {
-            "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
-          },
-          {
-            "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
-          },
-          {
-            "id": "rougarou_escaped_and_embrace_curse",
-            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
-          },
-          {
-            "id": "tes_aware_of_xzharahs_plan",
-            "text": "Du kennst Xzharahs Pläne."
-          },
-          {
-            "id": "tes_brotherhood_schemes_continue",
-            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
-          },
-          {
-            "id": "tes_curse_of_slumber_lifted",
-            "text": "Der Fluch des Schlafs wurde gebrochen."
-          },
-          {
-            "id": "tes_dreamers_in_the_abyss",
-            "text": "Träumer im Abgrund (#X#)"
-          },
-          {
-            "id": "tes_escaped_brotherhood",
-            "text": "Entkommene Agenten der Bruderschaft: #name#"
-          },
-          {
-            "id": "tnu_day_of_reckoning_is_coming",
-            "text": "Der Jüngste Tag steht bevor."
-          },
-          {
-            "id": "tnu_joined_xzharah",
-            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_the_abyss_was_saved",
-            "text": "Der Abgrund wurde gerettet."
+            "id": "tide_has_grown_stronger",
+            "text": "die Gezeiten sind stärker geworden."
           }
         ]
       },
@@ -3757,6 +2501,14 @@
             "text": "dummy"
           },
           {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
             "id": "flashback_2",
             "text": "dummy"
           },
@@ -3785,39 +2537,11 @@
             "text": "dummy"
           },
           {
+            "id": "flashback_9",
+            "text": "dummy"
+          },
+          {
             "id": "the_accusation",
-            "text": "dummy"
-          },
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          },
-          {
-            "id": "meh_did_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_did_not_cover_up",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_have_clues",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_no_innocents_killed",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_are_on_your_side",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_police_dont_believe_you",
-            "text": "dummy"
-          },
-          {
-            "id": "meh_the_truth",
             "text": "dummy"
           }
         ]
@@ -3848,6 +2572,18 @@
           {
             "id": "decision_to_stick_together",
             "text": "der Beschluss zusammenzubleiben"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "eine Entdeckung eines mystischen Relikts."
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "eine Entdeckung eines seltsamen Götzen."
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "eine Entdeckung eines unheiligen Mantels."
           },
           {
             "id": "encounter_with_a_secret_cult",

@@ -10,24 +10,20 @@ import {
 import { Navigation } from 'react-native-navigation';
 import { find, forEach, map, sumBy, throttle } from 'lodash';
 import { Action } from 'redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
-import SettingsSwitch from '@components/core/SettingsSwitch';
-import EditText from '@components/core/EditText';
+import { openDialog } from '@components/core/EditText';
 import RequiredCardSwitch from './RequiredCardSwitch';
-import { showDeckModal } from '@components/nav/helper';
-import TabooSetPicker from '@components/core/TabooSetPicker';
-import CardSectionHeader from '@components/core/CardSectionHeader';
-import SettingsItem from '@components/settings/SettingsItem';
+import { showCard, showCardSwipe, showDeckModal } from '@components/nav/helper';
 import BasicButton from '@components/core/BasicButton';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { saveNewDeck } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
-import { Deck, Slots } from '@actions/types';
-import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { Deck, DeckMeta, Slots } from '@actions/types';
+import { CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card from '@data/Card';
 import { AppState } from '@reducers';
 import space from '@styles/space';
@@ -36,6 +32,12 @@ import starterDecks from '../../../../assets/starter-decks';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useInvestigatorCards, usePlayerCards, useTabooSetId } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
+import DeckMetadataControls from '../controls/DeckMetadataControls';
+import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
+import DeckSectionBlock from '../section/DeckSectionBlock';
+import DeckCheckboxButton from '../controls/DeckCheckboxButton';
+import DeckButton from '../controls/DeckButton';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -60,15 +62,36 @@ function NewDeckOptionsDialog({
   refreshNetworkStatus,
 }: Props) {
   const defaultTabooSetId = useTabooSetId();
+  const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [saving, setSaving] = useState(false);
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
-  const [offlineDeck, toggleOfflineDeck] = useFlag(!signedIn || !isConnected || networkType === NetInfoStateType.none);
+  const [offlineDeck, toggleOfflineDeck] = useFlag(
+    investigatorId === CUSTOM_INVESTIGATOR ||
+    !signedIn ||
+    !isConnected ||
+    networkType === NetInfoStateType.none);
   const [optionSelected, setOptionSelected] = useState<boolean[]>([true]);
   const [tabooSetId, setTabooSetId] = useState<number | undefined>(defaultTabooSetId);
   const [starterDeck, setStarterDeck] = useState(false);
   const investigators = useInvestigatorCards(tabooSetId);
   const cards = usePlayerCards(tabooSetId);
+  const [meta, setMeta] = useState<DeckMeta>({});
+
+  const updateMeta = useCallback((key: keyof DeckMeta, value?: string) => {
+    const newMeta = { ...meta, [key]: value };
+    if (!newMeta[key]) {
+      delete newMeta[key];
+    }
+    setMeta(newMeta);
+  }, [meta, setMeta]);
+  const setParallel = useCallback((front: string, back: string) => {
+    setMeta({
+      ...meta,
+      alternate_front: front,
+      alternate_back: back,
+    });
+  }, [setMeta, meta]);
   const investigator = useMemo(() => (investigators && investigators[investigatorId]) || undefined, [investigatorId, investigators]);
   const defaultDeckName = useMemo(() => {
     if (!investigator || !investigator.name) {
@@ -197,17 +220,64 @@ function NewDeckOptionsDialog({
     setOptionSelected(updatedOptionSelected);
   }, [optionSelected, setOptionSelected]);
 
-  const formContent = useMemo(() => {
-    if (saving) {
-      return (
-        <ActivityIndicator
-          style={styles.spinner}
-          color={colors.lightText}
-          size="large"
-          animating
-        />
+  const showNameDialog = useCallback(() => openDialog({
+    title: t`Name`,
+    dialogDescription: t`Enter a name for this deck.`,
+    value: deckNameChange,
+    onValueChange: setDeckNameChange,
+  }), [deckNameChange, setDeckNameChange]);
+
+  const renderNamePicker = useCallback((last: boolean) => {
+    return (
+      <DeckPickerStyleButton
+        last={last}
+        icon="name"
+        title={t`Name`}
+        valueLabel={deckNameChange || defaultDeckName}
+        onPress={showNameDialog}
+        first
+        editable
+      />
+    );
+  }, [deckNameChange, defaultDeckName, showNameDialog]);
+
+  const onCardPress = useCallback((card: Card) => {
+    if (singleCardView) {
+      showCard(
+        componentId,
+        card.code,
+        card,
+        colors,
+        true,
+        tabooSetId
       );
+      return;
     }
+    let index = 0;
+    const visibleCards: Card[] = [];
+    forEach(requiredCardOptions, requiredCards => {
+      forEach(requiredCards, requiredCard => {
+        if (requiredCard) {
+          visibleCards.push(requiredCard);
+        }
+        if (card.code === requiredCard.code) {
+          index = visibleCards.length;
+        }
+      });
+    });
+    showCardSwipe(
+      componentId,
+      map(visibleCards, card => card.code),
+      index,
+      colors,
+      visibleCards,
+      false,
+      tabooSetId,
+      undefined,
+      investigator
+    );
+  }, [componentId, requiredCardOptions, colors, investigator, singleCardView, tabooSetId]);
+  const formContent = useMemo(() => {
     const cardOptions = requiredCardOptions;
     let hasStarterDeck = false;
     if (investigatorId) {
@@ -215,77 +285,81 @@ function NewDeckOptionsDialog({
     }
     return (
       <>
-        <EditText
-          title={t`Name`}
-          dialogDescription={t`Enter a name for this deck.`}
-          onValueChange={setDeckNameChange}
-          value={deckNameChange}
-          placeholder={defaultDeckName}
-          settingsStyle
-        />
-        { !!investigator && (
-          <TabooSetPicker
-            color={colors.faction[investigator.factionCode()].background}
-            tabooSetId={tabooSetId}
+        <View style={space.paddingS}>
+          <DeckMetadataControls
+            editable
+            tabooSetId={tabooSetId || 0}
             setTabooSet={setTabooSetId}
+            meta={meta}
+            investigatorCode={investigatorId}
+            setMeta={updateMeta}
+            setParallel={setParallel}
+            firstElement={renderNamePicker}
           />
+        </View>
+        { !!find(cardOptions, option => option.length > 0) && (
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
+            <DeckSectionBlock title={t`Required Cards`} faction="neutral">
+              { map(cardOptions, (requiredCards, index) => {
+                return (
+                  <RequiredCardSwitch
+                    key={`${investigatorId}-${index}`}
+                    index={index}
+                    onPress={onCardPress}
+                    disabled={(index === 0 && cardOptions.length === 1) || starterDeck}
+                    cards={requiredCards}
+                    value={optionSelected[index] || false}
+                    onValueChange={toggleOptionsSelected}
+                    last={index === (requiredCards.length - 1)}
+                  />
+                );
+              }) }
+            </DeckSectionBlock>
+          </View>
         ) }
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Required Cards` }}
-        />
-        { map(cardOptions, (requiredCards, index) => {
-          return (
-            <RequiredCardSwitch
-              key={`${investigatorId}-${index}`}
-              index={index}
-              disabled={(index === 0 && cardOptions.length === 1) || starterDeck}
-              label={map(requiredCards, card => card.name).join('\n')}
-              value={optionSelected[index] || false}
-              onValueChange={toggleOptionsSelected}
+        { investigatorId !== CUSTOM_INVESTIGATOR && (
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
+            <DeckCheckboxButton
+              icon="card-outline"
+              title={t`Use Starter Deck`}
+              value={starterDeck}
+              disabled={!hasStarterDeck}
+              onValueChange={setStarterDeck}
             />
-          );
-        }) }
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Deck Type` }}
-        />
-        { signedIn ? (
-          <SettingsSwitch
-            title={t`Create on ArkhamDB`}
-            value={!offlineDeck}
-            disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
-            onValueChange={toggleOfflineDeck}
-            settingsStyle
-          />
-        ) : (
-          <SettingsItem
-            navigation
-            text={t`Sign in to ArkhamDB`}
-            onPress={login}
-          />
-        ) }
-        { (!isConnected || networkType === NetInfoStateType.none) && (
-          <TouchableOpacity onPress={refreshNetworkStatus}>
-            <View style={[space.paddingS, space.paddingLeftM]}>
-              <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
-                { t`You seem to be offline. Refresh Network?` }
-              </Text>
-            </View>
-          </TouchableOpacity>
-        ) }
-        { hasStarterDeck && (
-          <SettingsSwitch
-            title={t`Use Starter Deck`}
-            value={starterDeck}
-            onValueChange={setStarterDeck}
-            settingsStyle
-          />
+            { signedIn ? (
+              <DeckCheckboxButton
+                icon="world"
+                title={t`Create on ArkhamDB`}
+                value={!offlineDeck}
+                disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
+                onValueChange={toggleOfflineDeck}
+                last
+              />
+            ) : (
+              <DeckCheckboxButton
+                icon="world"
+                title={t`Sign in to ArkhamDB`}
+                value={false}
+                onValueChange={login}
+                last
+              />
+            ) }
+            { (!isConnected || networkType === NetInfoStateType.none) && (
+              <TouchableOpacity onPress={refreshNetworkStatus}>
+                <View style={[space.paddingS, space.paddingLeftM]}>
+                  <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
+                    { t`You seem to be offline. Refresh Network?` }
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            ) }
+          </View>
         ) }
       </>
     );
-  }, [colors, defaultDeckName, investigator, typography, investigatorId, signedIn, login, refreshNetworkStatus, networkType, isConnected, saving,
-    deckNameChange, offlineDeck, optionSelected, starterDeck, tabooSetId, toggleOfflineDeck, requiredCardOptions, toggleOptionsSelected]);
+  }, [investigatorId, signedIn, networkType, isConnected,
+    offlineDeck, optionSelected, starterDeck, tabooSetId, requiredCardOptions, meta, typography,
+    onCardPress, toggleOptionsSelected,toggleOfflineDeck, login, refreshNetworkStatus, renderNamePicker, setParallel, updateMeta]);
 
   const cancelPressed = useCallback(() => {
     Navigation.pop(componentId);
@@ -294,24 +368,34 @@ function NewDeckOptionsDialog({
   if (!investigator) {
     return null;
   }
-  const okDisabled = saving || !find(optionSelected, selected => selected);
+  const okDisabled = saving || !(starterDeck || !!find(optionSelected, selected => selected));
+  if (saving) {
+    return (
+      <View style={[styles.container, backgroundStyle]}>
+        <LoadingSpinner large />
+      </View>
+    );
+  }
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       { formContent }
-      { !saving && (
-        <>
-          <BasicButton
-            title={t`Create deck`}
-            disabled={okDisabled}
-            onPress={onOkayPress}
-          />
-          <BasicButton
+      <View style={[space.paddingS, styles.row]}>
+        <View style={[space.marginRightS, styles.flex]}>
+          <DeckButton
             title={t`Cancel`}
-            color={COLORS.red}
+            color="red"
+            icon="dismiss"
             onPress={cancelPressed}
           />
-        </>
-      ) }
+        </View>
+        <View style={styles.flex}>
+          <DeckButton
+            title={t`Create deck`}
+            icon="plus-thin"
+            onPress={okDisabled ? undefined : onOkayPress}
+          />
+        </View>
+      </View>
     </ScrollView>
   );
 }
@@ -324,7 +408,17 @@ export default withLoginState<NavigationProps & NewDeckOptionsProps>(
 );
 
 const styles = StyleSheet.create({
-  spinner: {
-    height: 80,
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  flex: {
+    flex: 1,
   },
 });

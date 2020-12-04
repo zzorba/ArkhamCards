@@ -1,0 +1,46 @@
+[
+  {
+    "campaignId": "side",
+    "scenarioId": "all_or_nothing"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "bad_blood"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "blob_that_ate_everything"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "carnevale_of_horrors"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "curse_of_the_rougarou"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "in_the_labyrinths_of_lunacy"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "murder_at_the_excelsior_hotel"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "read_or_die"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "the_eternal_slumber"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "the_nights_usurper"
+  },
+  {
+    "campaignId": "tfa",
+    "scenarioId": "the_depths_of_yoth"
+  }
+]

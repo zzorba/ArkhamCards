@@ -1,5 +1,5 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
-import { forEach, filter, keys, map, min } from 'lodash';
+import { forEach, filter, keys, map, min, find } from 'lodash';
 import { t } from 'ttag';
 
 import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
@@ -24,6 +24,34 @@ function arkham_num(value: number | null | undefined) {
   }
   return `${value}`;
 }
+
+const REPRINT_CARDS: {
+  [code: string]: string[] | undefined;
+} = {
+  '01017': ['nat'],
+  '01023': ['nat'],
+  '01025': ['nat'],
+  '02186': ['har'],
+  '02020': ['har'],
+  '01039': ['har'],
+  '01044': ['win'],
+  '03030': ['win'],
+  '04107': ['win'],
+  '04232': ['win'],
+  '03194': ['win'],
+  '01053': ['win'],
+  '02029': ['jaq'],
+  '03034': ['jaq'],
+  '02190': ['jaq'],
+  '02153': ['jaq'],
+  '04032': ['jaq'],
+  '01079': ['ste'],
+  '01075': ['ste'],
+  '04201': ['ste'],
+  '04034': ['ste'],
+  '02113': ['ste'],
+  '04200': ['ste'],
+};
 
 const FEMININE_INVESTIGATORS = new Set([
   '01002', // Daisy Walker
@@ -602,6 +630,17 @@ export default class Card {
     return [];
   }
 
+  collectionDeckLimit(packInCollection: { [pack_code: string]: boolean | undefined }): number {
+    if (this.pack_code !== 'core' || packInCollection.core) {
+      return this.deck_limit || 0;
+    }
+    const reprintPacks = REPRINT_CARDS[this.code];
+    if (reprintPacks && find(reprintPacks, pack => !!packInCollection[pack])) {
+      return this.deck_limit || 0;
+    }
+    return Math.min(this.quantity || 0, this.deck_limit || 0);
+  }
+
   static parseRestrictions(json?: {
     investigator?: {
       [key: string]: string;
@@ -860,7 +899,8 @@ export default class Card {
       filter(
         map(real_slot.split('.'), s => s.toLowerCase().trim()),
         s => !!s
-      )
+      ),
+      slot => `#${slot}#`
     ).join(',') : null;
     const slot = json.slot || null;
     const slots_normalized = json.slot ? map(
@@ -1100,6 +1140,17 @@ export default class Card {
         ];
     }
   }
+}
+
+export function cardInCollection(card: Card | PartialCard, packInCollection: { [pack_code: string]: boolean | undefined }): boolean {
+  if (packInCollection[card.pack_code]) {
+    return true;
+  }
+  const reprintPacks = REPRINT_CARDS[card.code];
+  if (!reprintPacks) {
+    return false;
+  }
+  return !!find(reprintPacks, pack => !!packInCollection[pack]);
 }
 
 export type CardKey = keyof Card;

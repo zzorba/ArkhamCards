@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import DialogComponent from '@lib/react-native-dialog';
-import { find, flatMap } from 'lodash';
+import { filter, find, flatMap, map, partition } from 'lodash';
 import { t } from 'ttag';
 
 import Dialog from '@components/core/Dialog';
@@ -11,7 +11,7 @@ import BasicButton from '@components/core/BasicButton';
 import SideScenarioButton from './SideScenarioButton';
 import { NavigationProps } from '@components/nav/types';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import withCampaignGuideContext, { CampaignGuideInputProps, CampaignGuideProps } from '@components/campaignguide/withCampaignGuideContext';
+import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import TabView from '@components/core/TabView';
 import { ScenarioId } from '@data/scenario';
 import { Scenario } from '@data/scenario/types';
@@ -26,7 +26,7 @@ export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
 }
 
-type Props = NavigationProps & AddSideScenarioProps & CampaignGuideProps;
+type Props = NavigationProps & AddSideScenarioProps;
 
 function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
   const { campaignState, campaignGuide } = useContext(CampaignGuideContext);
@@ -99,82 +99,72 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
   }, [customDialogVisible, decCustomXpCost, incCustomXpCost, customScenarioName, customXpCost, typography, cancelCustomScenarioPressed, saveCustomScenario]);
 
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
-  const tabs = [
+  const playableScenarios = useMemo(() => {
+    return filter(campaignGuide.sideScenarios(), scenario => {
+      const alreadyPlayed = !!find(
+        processedCampaign.scenarios,
+        playedScenario => playedScenario.id.scenarioId === scenario.id
+      );
+      return !alreadyPlayed && scenario.side_scenario_type !== 'standalone';
+    });
+  }, [campaignGuide, processedCampaign.scenarios]);
+  const [playableSideScenarios, playableChallengeScenarios] = useMemo(() => partition(playableScenarios, scenario => scenario.side_scenario_type !== 'challenge'), [playableScenarios]);
+  const sideTab = useMemo(() => {
+    return (
+      <ScrollView contentContainerStyle={[styles.scrollView, backgroundStyle]}>
+        <View style={[styles.header, borderStyle]}>
+          <SetupStepWrapper bulletType="none">
+            <CampaignGuideTextComponent
+              text={t`A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs each investigator in the campaign a certain amount of experience. Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign. Each sidestory may only be played once per campaign.\nThe experience required to play these scenarios will be deducted automatically at the end of the scenario.`} />
+          </SetupStepWrapper>
+        </View>
+        { map(playableSideScenarios, scenario => (
+          <SideScenarioButton
+            key={scenario.id}
+            componentId={componentId}
+            scenario={scenario}
+            onPress={onPress}
+          />
+        )) }
+        <BasicButton
+          title={t`Custom scenario`}
+          onPress={customScenarioPressed}
+        />
+      </ScrollView>
+    );
+  }, [borderStyle, backgroundStyle, playableSideScenarios, componentId, onPress, customScenarioPressed]);
+  const challengeTab = useMemo(() => {
+    return (
+      <ScrollView contentContainerStyle={[styles.scrollView, backgroundStyle]}>
+        <View style={[styles.header, borderStyle]}>
+          <SetupStepWrapper bulletType="none">
+            <CampaignGuideTextComponent text={t`Challenge scenarios are special print-and-play scenarios that utilize existing products in the <i>Arkham Horror: The Card Game</i> collection, along with additional print-and-play cards, to create new content. These scenarios are designed with certain prerequisites in mind, in order to craft a challenging puzzle-like experience. Printable cards can be downloaded from Fantasy Flight Games under the \"Parallel Investigators\" section.`} />
+          </SetupStepWrapper>
+          <DownloadParallelCardsButton />
+        </View>
+        { map(playableChallengeScenarios, scenario => (
+          <SideScenarioButton
+            key={scenario.id}
+            componentId={componentId}
+            scenario={scenario}
+            onPress={onPress}
+          />
+        )) }
+      </ScrollView>
+    );
+  }, [backgroundStyle, borderStyle, playableChallengeScenarios, componentId, onPress]);
+  const tabs = useMemo(() => [
     {
       key: 'scenarios',
       title: t`Side`,
-      node: (
-        <ScrollView contentContainerStyle={[styles.scrollView, backgroundStyle]}>
-          <View style={[styles.header, borderStyle]}>
-            <SetupStepWrapper bulletType="none">
-              <CampaignGuideTextComponent
-                text={t`A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs each investigator in the campaign a certain amount of experience. Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign. Each sidestory may only be played once per campaign.\nThe experience required to play these scenarios will be deducted automatically at the end of the scenario.`} />
-            </SetupStepWrapper>
-          </View>
-          { flatMap(campaignGuide.sideScenarios(), scenario => {
-            if (scenario.side_scenario_type === 'challenge') {
-              return null;
-            }
-            const alreadyPlayed = !!find(
-              processedCampaign.scenarios,
-              playedScenario => playedScenario.id.scenarioId === scenario.id
-            );
-            if (alreadyPlayed) {
-              // Already played this one.
-              return [];
-            }
-            return (
-              <SideScenarioButton
-                key={scenario.id}
-                componentId={componentId}
-                scenario={scenario}
-                onPress={onPress}
-              />
-            );
-          }) }
-          <BasicButton
-            title={t`Custom scenario`}
-            onPress={customScenarioPressed}
-          />
-        </ScrollView>
-      ),
+      node: sideTab,
     },
     {
       key: 'challenge',
       title: t`Challenge`,
-      node: (
-        <ScrollView contentContainerStyle={[styles.scrollView, backgroundStyle]}>
-          <View style={[styles.header, borderStyle]}>
-            <SetupStepWrapper bulletType="none">
-              <CampaignGuideTextComponent text={t`Challenge scenarios are special print-and-play scenarios that utilize existing products in the <i>Arkham Horror: The Card Game</i> collection, along with additional print-and-play cards, to create new content. These scenarios are designed with certain prerequisites in mind, in order to craft a challenging puzzle-like experience. Printable cards can be downloaded from Fantasy Flight Games under the \"Parallel Investigators\" section.`} />
-            </SetupStepWrapper>
-            <DownloadParallelCardsButton />
-          </View>
-          { flatMap(campaignGuide.sideScenarios(), scenario => {
-            if (scenario.side_scenario_type !== 'challenge') {
-              return null;
-            }
-            const alreadyPlayed = !!find(
-              processedCampaign.scenarios,
-              playedScenario => playedScenario.id.scenarioId === scenario.id
-            );
-            if (alreadyPlayed) {
-              // Already played this one.
-              return [];
-            }
-            return (
-              <SideScenarioButton
-                key={scenario.id}
-                componentId={componentId}
-                scenario={scenario}
-                onPress={onPress}
-              />
-            );
-          }) }
-        </ScrollView>
-      ),
+      node: challengeTab,
     },
-  ];
+  ], [sideTab, challengeTab]);
   return (
     <>
       <TabView tabs={tabs} />

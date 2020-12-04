@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
 import { campaignNames, campaignColor } from './constants';
-import { Campaign, CUSTOM } from '@actions/types';
+import { Campaign, CUSTOM, STANDALONE } from '@actions/types';
 import Difficulty from './Difficulty';
 import GameHeader from './GameHeader';
 import BackgroundIcon from './BackgroundIcon';
@@ -15,16 +15,18 @@ interface Props {
   campaign: Campaign;
   name?: string;
   hideScenario?: boolean;
+  standaloneName?: string;
 }
 
-export default function CampaignSummaryComponent({ campaign, name, hideScenario }: Props) {
+export default function CampaignSummaryComponent({ campaign, name, hideScenario, standaloneName }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const latestScenario = useMemo(() => last(campaign.scenarioResults), [campaign.scenarioResults]);
   const campaignSection = useMemo(() => {
     const text = campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode];
+    const campaignName = (campaign.cycleCode === STANDALONE && standaloneName) || text;
     return (
       <>
-        <GameHeader text={text} />
+        <GameHeader text={campaignName} />
         { !!name && (
           <Text style={typography.gameFont}>
             { name }
@@ -32,7 +34,7 @@ export default function CampaignSummaryComponent({ campaign, name, hideScenario 
         ) }
       </>
     );
-  }, [campaign, name, typography]);
+  }, [campaign, name, typography, standaloneName]);
   const lastScenarioSection = useMemo(() => {
     if (hideScenario) {
       return null;
@@ -68,14 +70,29 @@ export default function CampaignSummaryComponent({ campaign, name, hideScenario 
     );
   }, [campaign]);
 
-  return (
-    <View style={styles.row}>
-      { campaign.cycleCode !== CUSTOM && (
+  const backgroundIcon = useMemo(() => {
+    if (campaign.cycleCode === CUSTOM) {
+      return null;
+    }
+    if (campaign.cycleCode === STANDALONE && campaign.standaloneId) {
+      return (
         <BackgroundIcon
-          code={campaign.cycleCode}
+          code={campaign.standaloneId.scenarioId}
           color={campaignColor(campaign.cycleCode, colors)}
         />
-      ) }
+      );
+    }
+    return (
+      <BackgroundIcon
+        code={campaign.cycleCode}
+        color={campaignColor(campaign.cycleCode, colors)}
+      />
+    );
+  }, [campaign, colors]);
+
+  return (
+    <View style={styles.row}>
+      { backgroundIcon }
       <View>
         { campaignSection }
         <View style={styles.textRow}>

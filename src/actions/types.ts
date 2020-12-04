@@ -275,6 +275,7 @@ export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
+export const STANDALONE = 'standalone';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -290,7 +291,8 @@ export type CampaignCycleCode =
   typeof TDE |
   typeof TDEA |
   typeof TDEB |
-  typeof TIC;
+  typeof TIC |
+  typeof STANDALONE;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -352,6 +354,7 @@ export interface Campaign {
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
+  standaloneId?: StandaloneId;
   lastUpdated: Date | string;
   showInterludes?: boolean;
   baseDeckIds?: number[];
@@ -609,6 +612,23 @@ export interface NewCampaignAction {
   weaknessSet: WeaknessSet;
   campaignLog: CustomCampaignLog;
   guided: boolean;
+}
+
+export interface StandaloneId {
+  campaignId: string;
+  scenarioId: string;
+}
+
+export const NEW_STANDALONE = 'NEW_STANDALONE';
+export interface NewStandaloneCampaignAction {
+  type: typeof NEW_STANDALONE;
+  now: Date;
+  id: number;
+  name: string;
+  standaloneId: StandaloneId;
+  baseDeckIds: number[];
+  investigatorIds: string[];
+  weaknessSet: WeaknessSet;
 }
 export const NEW_LINKED_CAMPAIGN = 'NEW_LINKED_CAMPAIGN';
 export interface NewLinkedCampaignAction {
@@ -1030,6 +1050,7 @@ export type CampaignActions =
   ReplaceLocalDeckAction |
   CleanBrokenCampaignsAction |
   NewCampaignAction |
+  NewStandaloneCampaignAction |
   NewLinkedCampaignAction |
   UpdateCampaignAction |
   UpdateCampaignSpentXpAction |

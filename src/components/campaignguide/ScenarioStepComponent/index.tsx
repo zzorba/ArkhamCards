@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -26,6 +26,7 @@ import StoryStepComponent from './StoryStepComponent';
 import ScenarioStep from '@data/scenario/ScenarioStep';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import NarrationStepComponent from './NarrationStepComponent';
 
 interface Props {
   componentId: string;
@@ -53,19 +54,23 @@ function ScenarioStepComponentContent({
       );
     case 'branch':
       return (
-        <BranchStepComponent
-          step={step}
-          campaignLog={campaignLog}
-        />
+        <NarrationStepComponent narration={step.narration}>
+          <BranchStepComponent
+            step={step}
+            campaignLog={campaignLog}
+          />
+        </NarrationStepComponent>
       );
     case 'story':
       return (
-        <View style={border && !step.title ? styles.extraTopPadding : {}}>
-          <StoryStepComponent
-            step={step}
-            width={width}
-          />
-        </View>
+        <NarrationStepComponent narration={step.narration}>
+          <View style={border && !step.title ? styles.extraTopPadding : {}}>
+            <StoryStepComponent
+              step={step}
+              width={width}
+            />
+          </View>
+        </NarrationStepComponent>
       );
     case 'encounter_sets':
       return (
@@ -93,12 +98,14 @@ function ScenarioStepComponentContent({
       );
     case 'input':
       return (
-        <InputStepComponent
-          componentId={componentId}
-          step={step}
-          campaignLog={campaignLog}
-          switchCampaignScenario={switchCampaignScenario}
-        />
+        <NarrationStepComponent narration={step.narration}>
+          <InputStepComponent
+            componentId={componentId}
+            step={step}
+            campaignLog={campaignLog}
+            switchCampaignScenario={switchCampaignScenario}
+          />
+        </NarrationStepComponent>
       );
     case 'effects':
       return (
