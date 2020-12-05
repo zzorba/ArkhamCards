@@ -14,6 +14,7 @@ import CampaignGuide from '@data/scenario/CampaignGuide';
 import { ProcessedScenario } from '@data/scenario';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { usePressCallback } from '@components/core/hooks';
 
 interface Props {
   componentId: string;
@@ -50,7 +51,7 @@ export default function ScenarioButton({ componentId, campaignId, campaignGuide,
       showLinkedScenario
     );
   }, [componentId, scenario, campaignId, campaignGuide, linked, showLinkedScenario, campaignState]);
-
+  const debouncedOnPress = usePressCallback(onPress);
   const icon = useMemo(() => {
     const iconSize = 24 * fontScale;
     switch (scenario.type) {
@@ -141,7 +142,7 @@ export default function ScenarioButton({ componentId, campaignId, campaignGuide,
 
   return (
     <NavButton
-      onPress={onPress}
+      onPress={debouncedOnPress}
       disabled={(scenario.type === 'locked' || scenario.type === 'skipped' || scenario.type === 'placeholder')}
     >
       <View style={styles.wrapper}>

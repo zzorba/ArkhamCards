@@ -20,9 +20,10 @@ interface Props {
   campaignId: number;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
+  standalone?: boolean;
 }
 
-export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog }: Props) {
+export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone }: Props) {
   const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
@@ -139,7 +140,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
   }, [componentId, campaignId, campaignLog]);
 
   const chaosBagSection = useMemo(() => {
-    if (!keys(campaignLog.chaosBag).length) {
+    if (!keys(campaignLog.chaosBag).length && !standalone) {
       return null;
     }
     const tokenCount = sum(values(campaignLog.chaosBag));
@@ -163,7 +164,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         />
       </View>
     );
-  }, [borderStyle, typography, campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed]);
+  }, [borderStyle, typography, campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, standalone]);
 
   return (
     <View style={backgroundStyle}>

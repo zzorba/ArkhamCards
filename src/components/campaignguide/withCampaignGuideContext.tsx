@@ -1,7 +1,7 @@
 import React from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import { useCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
 import useCampaignGuideContext from './useCampaignGuideContext';
 import { useInvestigatorCards } from '@components/core/hooks';
@@ -11,12 +11,8 @@ export interface CampaignGuideInputProps {
   campaignId: number;
 }
 
-export interface CampaignGuideProps {
-  campaignData: CampaignGuideContextType;
-}
-
 export default function withCampaignGuideContext<Props>(
-  WrappedComponent: React.ComponentType<Props & CampaignGuideProps>
+  WrappedComponent: React.ComponentType<Props>
 ): React.ComponentType<Props & CampaignGuideInputProps> {
   function CampaignDataComponent(props: Props & CampaignGuideInputProps) {
     const { campaignId } = props;
@@ -30,10 +26,7 @@ export default function withCampaignGuideContext<Props>(
     }
     return (
       <CampaignGuideContext.Provider value={context}>
-        <WrappedComponent
-          {...props as Props}
-          campaignData={context}
-        />
+        <WrappedComponent {...props as Props} />
       </CampaignGuideContext.Provider>
     );
   }

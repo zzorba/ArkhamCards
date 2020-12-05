@@ -4,19 +4,18 @@ import { flatMap, forEach, map, min, max, groupBy } from 'lodash';
 import { t } from 'ttag';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import withCampaignGuideContext, { CampaignGuideInputProps, CampaignGuideProps } from '@components/campaignguide/withCampaignGuideContext';
+import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import { CardsMap } from '@data/Card';
 import space from '@styles/space';
 import { CardErrata } from '@data/scenario/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import StyleContext from '@styles/StyleContext';
 import useCardList from '@components/card/useCardList';
+import CampaignGuideContext from './CampaignGuideContext';
 
 export interface EncounterCardErrataProps extends CampaignGuideInputProps {
   encounterSets: string[];
 }
-
-type Props = EncounterCardErrataProps & CampaignGuideProps;
 
 function CardErrataComponent({ errata, cards }: { errata: CardErrata; cards: CardsMap }) {
   const { fontScale, colors, typography } = useContext(StyleContext);
@@ -55,8 +54,9 @@ function CardErrataComponent({ errata, cards }: { errata: CardErrata; cards: Car
     </View>
   );
 }
-function EncounterCardErrataView({ encounterSets, campaignData }: Props) {
+function EncounterCardErrataView({ encounterSets }: EncounterCardErrataProps) {
   const { colors } = useContext(StyleContext);
+  const campaignData = useContext(CampaignGuideContext);
   const errata = useMemo(() => campaignData.campaignGuide.cardErrata(encounterSets), [campaignData.campaignGuide, encounterSets]);
   const errataCodes = useMemo(() => flatMap(errata, e => e.code), [errata]);
   const [errataCards, loading] = useCardList(errataCodes, 'encounter');

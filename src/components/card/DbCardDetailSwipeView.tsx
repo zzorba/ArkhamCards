@@ -17,7 +17,7 @@ import { FOOTER_HEIGHT } from '@components/DeckNavFooter/constants';
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import { rightButtonsForCard } from './CardDetailView';
 import { CardFaqProps } from './CardFaqView';
-import { makeTabooSetSelector, AppState, getPackSpoilers, getHasSecondCore } from '@reducers';
+import { makeTabooSetSelector, AppState, getPackSpoilers, getPacksInCollection } from '@reducers';
 import { InvestigatorCardsProps } from '../cardlist/InvestigatorCardsView';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
@@ -63,7 +63,7 @@ function DbCardDetailSwipeView(props: Props) {
   const { width, height } = useWindowDimensions();
   const tabooSetSelector = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
-  const hasSecondCore = useSelector(getHasSecondCore);
+  const packInCollection = useSelector(getPacksInCollection);
   const showSpoilers = useSelector(getPackSpoilers);
   const [spoilers, toggleShowSpoilers] = useToggles({});
   const [index, setIndex] = useState(initialIndex);
@@ -166,18 +166,13 @@ function DbCardDetailSwipeView(props: Props) {
     if (deckId === undefined || !currentCard) {
       return null;
     }
-    const deck_limit: number = Math.min(
-      currentCard.pack_code === 'core' ?
-        ((currentCard.quantity || 0) * (hasSecondCore ? 2 : 1)) :
-        (currentCard.deck_limit || 0),
-      currentCard.deck_limit || 0
-    );
+    const deck_limit: number = currentCard.collectionDeckLimit(packInCollection);
     return (
       <View style={{ height: FOOTER_HEIGHT, position: 'relative' }}>
         <DeckQuantityComponent code={currentCard.code} deckId={deckId} forceBig showZeroCount limit={deck_limit} />
       </View>
     );
-  }, [deckId, currentCard, hasSecondCore]);
+  }, [deckId, currentCard, packInCollection]);
   const renderCard = useCallback((
     { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }): React.ReactNode => {
     if (!card) {
@@ -221,8 +216,10 @@ function DbCardDetailSwipeView(props: Props) {
         sliderWidth={width}
         itemWidth={width}
         useExperimentalSnap
+        shouldOptimizeUpdates
         onScrollIndexChanged={setIndex}
         disableIntervalMomentum
+        apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
       />
       { deckId !== undefined && (
         <DeckNavFooter deckId={deckId} componentId={componentId} controls={deckCountControls} faction={faction} />

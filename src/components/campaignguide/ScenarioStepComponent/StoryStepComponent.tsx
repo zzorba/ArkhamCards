@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,10 +9,6 @@ import BulletsComponent from './BulletsComponent';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { StoryStep } from '@data/scenario/types';
 import space from '@styles/space';
-import { playNarration } from '../Narrator';
-import { Icon } from 'react-native-elements';
-import { useSelector } from 'react-redux';
-import { hasDissonantVoices } from '@reducers';
 
 interface Props {
   step: StoryStep;
@@ -20,24 +16,11 @@ interface Props {
 }
 
 export default function StoryStepComponent({ step, width }: Props) {
-  const hasDS = useSelector(hasDissonantVoices);
-  const narrationPlayPressed = useCallback(() => {
-    if (step.narration?.id) {
-      playNarration(step.narration.id);
-    }
-  }, [step.narration]);
   const text = useMemo(() => {
     return (
       <View style={
         step.border ? [space.paddingSideL, space.paddingTopM] : []
       }>
-        <View style={space.marginTopM}>
-          <View style={{ ...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            { hasDS && step.narration && (
-              <Icon name="play-circle-outline" type="material" onPress={narrationPlayPressed} />
-            ) }
-          </View>
-        </View>
         <View style={[styles.step, space.marginTopS, space.paddingSideM]}>
           { !!step.text && (
             <CampaignGuideTextComponent
@@ -49,7 +32,7 @@ export default function StoryStepComponent({ step, width }: Props) {
         <BulletsComponent bullets={step.bullets} />
       </View>
     );
-  }, [step, hasDS, narrationPlayPressed]);
+  }, [step]);
   if (step.border) {
     return (
       <BorderWrapper border width={width}>

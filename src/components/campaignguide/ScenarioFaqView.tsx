@@ -4,20 +4,20 @@ import { map } from 'lodash';
 import { t } from 'ttag';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import withCampaignGuideContext, { CampaignGuideInputProps, CampaignGuideProps } from '@components/campaignguide/withCampaignGuideContext';
+import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import space from '@styles/space';
 import { Question } from '@data/scenario/types';
 import BasicButton from '@components/core/BasicButton';
 import StyleContext from '@styles/StyleContext';
+import CampaignGuideContext from './CampaignGuideContext';
 
 export interface ScenarioFaqProps extends CampaignGuideInputProps {
   scenario: string;
 }
 
-type Props = ScenarioFaqProps & CampaignGuideProps;
-
-function ScenarioFaqView({ scenario, campaignData }: Props) {
+function ScenarioFaqView({ scenario }: ScenarioFaqProps) {
   const { borderStyle, typography } = useContext(StyleContext);
+  const campaignData = useContext(CampaignGuideContext);
   const [spoilers, setShowSpoilers] = useState(false);
 
   const renderErrata = useCallback((errata: Question, key: number) => {

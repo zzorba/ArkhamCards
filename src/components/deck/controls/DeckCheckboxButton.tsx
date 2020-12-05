@@ -27,7 +27,7 @@ export default function DeckCheckboxButton({ title, icon, value, onValueChange, 
   const { borderStyle, colors, typography } = useContext(StyleContext);
   return (
     <View style={[styles.wrapper, space.paddingRightS, { paddingTop: xs + s, paddingBottom: xs + s }, borderStyle, !last ? styles.border : undefined]}>
-      <View style={styles.leftRow}>
+      <View style={[space.marginRightXs, styles.leftRow]}>
         <View style={styles.icon}>
           <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
         </View>

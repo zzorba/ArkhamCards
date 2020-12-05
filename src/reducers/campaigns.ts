@@ -26,6 +26,8 @@ import {
   CampaignActions,
   ChaosBagResults,
   ADJUST_BLESS_CURSE,
+  NEW_STANDALONE,
+  STANDALONE,
 } from '@actions/types';
 
 export interface CampaignsState {
@@ -204,6 +206,44 @@ export default function(
         [newCampaign.id]: NEW_CHAOS_BAG_RESULTS,
         [newCampaignA.id]: NEW_CHAOS_BAG_RESULTS,
         [newCampaignB.id]: NEW_CHAOS_BAG_RESULTS,
+      },
+    };
+  }
+  if (action.type === NEW_STANDALONE) {
+    const newCampaign: Campaign = {
+      id: action.id,
+      uuid: uuid.v4(),
+      name: action.name,
+      showInterludes: true,
+      chaosBag: {},
+      campaignNotes: {
+        sections: [],
+        counts: [],
+        investigatorNotes: {
+          sections: [],
+          counts: [],
+        },
+      },
+      cycleCode: STANDALONE,
+      standaloneId: action.standaloneId,
+      weaknessSet: action.weaknessSet,
+      baseDeckIds: action.baseDeckIds,
+      nonDeckInvestigators: action.investigatorIds,
+      lastUpdated: action.now,
+      investigatorData: {},
+      scenarioResults: [],
+      guided: true,
+      guideVersion: -1,
+    };
+    return {
+      ...state,
+      all: {
+        ...state.all,
+        [action.id]: newCampaign,
+      },
+      chaosBagResults: {
+        ...state.chaosBagResults || {},
+        [action.id]: NEW_CHAOS_BAG_RESULTS,
       },
     };
   }

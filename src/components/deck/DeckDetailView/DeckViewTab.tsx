@@ -19,7 +19,6 @@ import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import CardTextComponent from '@components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
-import InvestigatorOptionsControl, { hasInvestigatorOptions } from '@components/deck/controls/InvestigatorOptionsControl';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
@@ -37,7 +36,6 @@ import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
 import DeckMetadataComponent from './DeckMetadataComponent';
-import DeckTabooPickerButton from '../controls/DeckTabooPickerButton';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
 import { useDeckXpStrings } from '../hooks';
@@ -247,7 +245,6 @@ interface Props {
   deck: Deck;
   investigatorFront?: Card;
   investigatorBack?: Card;
-  parallelInvestigators: Card[];
   hideCampaign?: boolean;
   campaign?: Campaign;
   parsedDeck: ParsedDeck;
@@ -293,7 +290,6 @@ export default function DeckViewTab(props: Props) {
     investigatorFront,
     investigatorBack,
     deck,
-    parallelInvestigators,
     parsedDeck,
     singleCardView,
     showEditCards,

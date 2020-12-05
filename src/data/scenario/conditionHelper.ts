@@ -551,6 +551,19 @@ export function multiConditionResult(
               return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
             case 'version':
               return campaignDataVersionConditionResult(subCondition, campaignLog).option ? 1 : 0;
+            default:
+              return 0;
+          }
+        }
+        case 'scenario_data': {
+          switch (subCondition.scenario_data) {
+            case 'resolution':
+              return stringConditionResult(
+                campaignLog.resolution(),
+                subCondition.options
+              ).option ? 1 : 0;
+            default:
+              return 0;
           }
         }
       }

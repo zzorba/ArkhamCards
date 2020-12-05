@@ -210,11 +210,6 @@ export const getPackSpoilers = createSelector(
   (show_spoilers) => show_spoilers || DEFAULT_OBJECT
 );
 
-export const getHasSecondCore = createSelector(
-  (state: AppState) => state.packs.in_collection,
-  (in_collection) => (in_collection || DEFAULT_OBJECT).core || false,
-);
-
 export const getPacksInCollection = createSelector(
   (state: AppState) => state.packs.in_collection,
   (in_collection) => in_collection || DEFAULT_OBJECT

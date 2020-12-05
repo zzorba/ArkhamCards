@@ -59,6 +59,7 @@ import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPresse
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
+import { CUSTOM_INVESTIGATOR } from '@app_constants';
 
 export interface DeckDetailProps {
   id: number;
@@ -629,6 +630,7 @@ function DeckDetailView({
         deckId={copying ? id : undefined}
         toggleVisible={toggleCopyDialog}
         signedIn={signedIn}
+
       />
     );
   }, [componentId, id, signedIn, copying, toggleCopyDialog]);
@@ -986,7 +988,7 @@ function DeckDetailView({
           onPress={toggleCopyDialog}
           title={t`Clone deck`}
         />
-        { deck.local ? (
+        { deck.investigator_code !== CUSTOM_INVESTIGATOR && (deck.local ? (
           <MenuButton
             icon="world"
             onPress={uploadToArkhamDB}
@@ -1001,7 +1003,7 @@ function DeckDetailView({
             onPress={viewDeck}
             last={!isPrivate}
           />
-        ) }
+        )) }
         { !!isPrivate && (
           <MenuButton
             icon="delete"
@@ -1066,7 +1068,6 @@ function DeckDetailView({
               componentId={componentId}
               visible={visible}
               inCollection={inCollection}
-              parallelInvestigators={parallelInvestigators}
               investigatorFront={investigatorFront}
               investigatorBack={investigatorBack}
               deck={deck}

@@ -55,6 +55,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Settings.MergeBackup': return require('@components/settings/MergeBackupView').default;
     case 'Settings.SafeMode': return require('@components/settings/SafeModeView').default;
     case 'SearchFilters': return require('@components/filter/CardFilterView').default;
+    case 'SearchFilters.Asset': return require('@components/filter/CardAssetFilterView').default;
     case 'SearchFilters.Enemy': return require('@components/filter/CardEnemyFilterView').default;
     case 'SearchFilters.Location': return require('@components/filter/CardLocationFilterView').default;
     case 'SearchFilters.Packs': return require('@components/filter/PackFilterView').default;
@@ -64,7 +65,6 @@ function getStandardComponent(componentName: string | number) {
     case 'My.Spoilers': return require('@components/settings/SpoilersView').default;
     case 'Dialog.CardUpgrade': return require('@components/deck/CardUpgradeDialog').default;
     case 'Dialog.EditChaosBag': return require('@components/campaign/EditChaosBagDialog').default;
-    case 'Dialog.Campaign': return require('@components/campaign/SelectCampaignDialog').default;
     case 'Dialog.CampaignDrawWeakness': return require('@components/campaign/CampaignDrawWeaknessDialog').default;
     case 'Dialog.CampaignEditWeakness': return require('@components/campaign/CampaignEditWeaknessDialog').default;
     case 'Dialog.SealToken': return require('@components/campaign/SealTokenDialog').default;
@@ -82,6 +82,8 @@ function getRootComponent(name: string | number): any {
     case 'Deck.New': return require('@components/deck/NewDeckView').default;
     case 'Guide.Campaign': return require('@components/campaignguide/CampaignGuideView').default;
     case 'Guide.LinkedCampaign': return require('@components/campaignguide/LinkedCampaignGuideView').default;
+    case 'Guide.Standalone': return require('@components/campaignguide/StandaloneGuideView').default;
+    case 'Dialog.Campaign': return require('@components/campaign/SelectCampaignDialog').default;
     case 'Dialog.DeckSelector': return require('@components/campaign/MyDecksSelectorDialog').default;
     default: return undefined;
   }

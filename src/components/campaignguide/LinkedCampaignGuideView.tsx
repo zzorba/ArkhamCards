@@ -21,6 +21,7 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import useCampaignGuideContext from './useCampaignGuideContext';
+import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 
 export interface LinkedCampaignGuideProps {
   campaignId: number;
@@ -39,6 +40,7 @@ function LinkedCampaignGuideView(props: Props) {
   const styleContext = useContext(StyleContext);
   const { backgroundStyle } = styleContext;
   const dispatch = useDispatch();
+  useStopAudioOnUnmount();
 
   const campaign = useCampaign(campaignId);
   const campaignName = (campaign && campaign.name) || '';
@@ -90,7 +92,6 @@ function LinkedCampaignGuideView(props: Props) {
   const contextB = useCampaignGuideContext(campaignIdB, campaignDataB);
   const processedCampaignA = useMemo(() => contextA?.campaignGuide && contextA?.campaignState && contextA.campaignGuide.processAllScenarios(contextA.campaignState), [contextA?.campaignGuide, contextA?.campaignState]);
   const processedCampaignB = useMemo(() => contextB?.campaignGuide && contextB?.campaignState && contextB.campaignGuide.processAllScenarios(contextB.campaignState), [contextB?.campaignGuide, contextB?.campaignState]);
-
   const tabs = useMemo(() => {
     if (!campaignDataA || !campaignDataB || !processedCampaignA || !processedCampaignB || !contextA || !contextB) {
       return null;

@@ -1,4 +1,4 @@
-import { forEach, keys } from 'lodash';
+import { forEach, keys, map } from 'lodash';
 
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -7,8 +7,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import COLORS from '@styles/colors';
 import { Icon } from 'react-native-vector-icons/Icon';
 
-// define your suffixes by yourself..
-// here we use active, big, small, very-big..
 const icons: {
   [iconName: string]: [number, string, typeof Icon];
 } = {
@@ -46,10 +44,11 @@ const iconsMap: {
 } = {};
 
 const iconsLoaded = new Promise((resolve) => {
-  Promise.all(Object.keys(icons).map(iconName => {
-    const [size, color, Provider] = icons[iconName];
-    return Provider.getImageSource(iconName, size, color);
-  })).then(sources => {
+  Promise.all(
+    map(icons, ([size, color, Provider], iconName) => {
+      return Provider.getImageSource(iconName, size, color);
+    })
+  ).then(sources => {
     forEach(keys(icons), (iconName, idx) => {
       iconsMap[iconName] = sources[idx];
     });

@@ -26,6 +26,7 @@ import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import { useInvestigatorCards, usePlayerCards, useToggles } from '@components/core/hooks';
 
 interface Props {
@@ -244,6 +245,15 @@ export default function InvestigatorsListComponent({
         currentBucket.nonCollectionCount = nonCollectionCards.length;
         nonCollectionCards = [];
       }
+    }
+    const customInvestigator = investigators && investigators[CUSTOM_INVESTIGATOR];
+    if (customInvestigator) {
+      results.push({
+        title: t`Custom`,
+        id: 'custom',
+        data: [customInvestigator],
+        nonCollectionCount: 0,
+      });
     }
     return results;
   }, [investigators, in_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);

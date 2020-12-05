@@ -15,6 +15,9 @@ interface Props {
   query?: Brackets;
   tabooSetId?: number;
   capitalize?: boolean;
+  fixedTranslations?: {
+    [key: string]: string;
+  };
 }
 
 export default function FilterChooserButton({
@@ -29,6 +32,7 @@ export default function FilterChooserButton({
   tabooSetId,
   query,
   capitalize,
+  fixedTranslations,
 }: Props) {
   const onChange = useCallback((values: string[]) => {
     onFilterChange(setting, values);
@@ -46,6 +50,7 @@ export default function FilterChooserButton({
       query={query}
       tabooSetId={tabooSetId}
       capitalize={capitalize}
+      fixedTranslations={fixedTranslations}
     />
   );
 }

@@ -11,6 +11,7 @@ export interface CampaignLogProps {
   campaignId: number;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
+  standalone?: boolean;
 }
 
 type Props = CampaignLogProps & NavigationProps;
@@ -20,6 +21,7 @@ export default function CampaignLogView({
   campaignGuide,
   campaignLog,
   componentId,
+  standalone,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   return (
@@ -29,6 +31,7 @@ export default function CampaignLogView({
         campaignId={campaignId}
         campaignGuide={campaignGuide}
         campaignLog={campaignLog}
+        standalone={standalone}
       />
     </ScrollView>
   );
