@@ -18,7 +18,7 @@ function splitSlot(value: string): string[] {
 export function slotsTranslations() {
   return {
     hand: t`Hand`,
-    arcane: t`Arcance`,
+    arcane: t`Arcane`,
     accessory: t`Accessory`,
     body: t`Body`,
     ally: t`Ally`,

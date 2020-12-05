@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2020-12-05 10:15-0500\n"
+"PO-Revision-Date: 2020-12-05 10:22-0500\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"x-generator: Poedit 2.4.1\n"
+"x-generator: Poedit 2.4.2\n"
 "x-poedit-basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n"
 "%100<12 || n%100>14) ? 1 : 2);\n"
@@ -48,7 +48,8 @@ msgstr "Рука. Магический"
 msgid "Hand x2"
 msgstr "Рука ×2"
 
-#: src/lib/parseDeck.ts:77 src/lib/parseDeck.ts:93
+#: src/components/filter/CardAssetFilterView.tsx:21 src/lib/parseDeck.ts:77
+#: src/lib/parseDeck.ts:93
 msgid "Arcane"
 msgstr "Магический"
 
@@ -349,9 +350,9 @@ msgstr[2] ""
 "Чтобы сыграть этот сценарий, каждый сыщик должен потратить ${ entry.xpCost } опыта."
 
 #. This is a deck upgrade action.
-#: src/data/scenario/CampaignStateHelper.ts:184
+#: src/data/scenario/CampaignStateHelper.ts:188
 msgid "Undo deck upgrade"
-msgstr "Сбросить улучшение колоды?"
+msgstr "Сбросить улучшение колоды"
 
 #. This is a deck upgrade action.
 #: src/data/scenario/CampaignStateHelper.ts:185
@@ -372,9 +373,7 @@ msgstr ""
 "Вы можете открыть колоду там и удалить самое последнее улучшение, чтобы вернуть её к "
 "прежнему виду."
 
-#. This is a deck upgrade action.
 #: src/components/campaignguide/ScenarioView.tsx:64
-#: src/data/scenario/CampaignStateHelper.ts:188
 msgid "Undo"
 msgstr "Да, сбросить"
 
@@ -403,7 +402,7 @@ msgstr "Да, сбросить"
 #: src/components/campaignguide/StandaloneGuideView.tsx:34
 #: src/components/core/EditText.tsx:29 src/components/core/EditText.tsx:44
 #: src/components/core/TextEditDialog.tsx:128
-#: src/components/deck/CardUpgradeDialog/index.tsx:219
+#: src/components/deck/CardUpgradeDialog/index.tsx:237
 #: src/components/deck/CopyDeckDialog/index.tsx:235
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:104
 #: src/components/deck/DeckDetailView/index.tsx:324
@@ -3696,7 +3695,7 @@ msgstr "Обновить колоды сыщиков"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:192
 #: src/components/campaign/UpgradeDecksView/index.tsx:81
-#: src/components/deck/CardUpgradeDialog/index.tsx:215
+#: src/components/deck/CardUpgradeDialog/index.tsx:233
 msgid "Upgrade"
 msgstr "Улучшить"
 
@@ -4425,7 +4424,7 @@ msgstr "Не учитывать размер колоды"
 msgid "Menu"
 msgstr "Меню"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:291
+#: src/components/deck/CardUpgradeDialog/index.tsx:307
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
@@ -4735,11 +4734,11 @@ msgstr ""
 "Не удалять карту ${ level } уровня после улучшения\n"
 "Она не будет идти в счёт размера колоды"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:199
+#: src/components/deck/CardUpgradeDialog/index.tsx:217
 msgid "Shrewd Analysis Rule"
 msgstr "Правило «Тонкого анализа»"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:201
+#: src/components/deck/CardUpgradeDialog/index.tsx:219
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
@@ -4747,7 +4746,7 @@ msgstr[0] "Это улучшение будет стоить ${ xpCost } опы�
 msgstr[1] "Это улучшение будет стоить ${ xpCost } опыта."
 msgstr[2] "Это улучшение будет стоить ${ xpCost } опыта."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:206
+#: src/components/deck/CardUpgradeDialog/index.tsx:224
 #, javascript-format
 msgid ""
 "Two random cards will be chosen among the following choice:\n"
@@ -4770,11 +4769,11 @@ msgstr[2] ""
 "\n"
 "${ upgradeCards }"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:211
+#: src/components/deck/CardUpgradeDialog/index.tsx:229
 msgid "You can edit your collection under Settings to adjust the eligible choices."
 msgstr "Вы можете настроить свою коллекцию в Настройках, чтобы изменить доступные карты."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:253
+#: src/components/deck/CardUpgradeDialog/index.tsx:41
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] card, you may "
 "instead pay the full experience cost on the higher level version and leave the lower "
@@ -4782,7 +4781,7 @@ msgid ""
 "copies of that card in your deck)."
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:261
+#: src/components/deck/CardUpgradeDialog/index.tsx:277
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use Shrewd Analysis "
 "to choose both upgrades randomly and only pay for one.\n"
@@ -4796,11 +4795,11 @@ msgstr ""
 "<i>Обратите внимание: приложение увеличит количество полученного вами опыта, чтобы "
 "второе улучшение было «бесплатным».</i>"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:268
+#: src/components/deck/CardUpgradeDialog/index.tsx:284
 msgid "Upgrade results"
 msgstr "Результаты улучшения"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:283
+#: src/components/deck/CardUpgradeDialog/index.tsx:299
 msgid "Upgrade with Shrewd Analysis"
 msgstr "Улучшить «Тонким анализом»"
 
@@ -5135,10 +5134,6 @@ msgstr ""
 "Это ничем не ограниченный сыщик для сборки любых колод.\n"
 "[elder_sign]: +X, где X равен чему угодно."
 
-#: src/components/filter/CardAssetFilterView.tsx:21
-msgid "Arcance"
-msgstr "Мистический"
-
 #: src/components/filter/CardAssetFilterView.tsx:40
 #: src/components/filter/CardAssetFilterView.tsx:124
 msgid "Asset Filters"
@@ -5205,6 +5200,19 @@ msgstr "Переместиться"
 #: src/components/filter/CardFilterView/index.tsx:451
 msgid "Resource"
 msgstr "Взять ресурс"
+
+#. This is a deck upgrade action.
+#: src/data/scenario/CampaignStateHelper.ts:184
+msgid "Undo deck upgrade?"
+msgstr "Сбросить улучшение колоды?"
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:46
+msgid ""
+"<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead pay the full "
+"experience cost on the higher level version and leave the lower level version in your "
+"deck (it does not count towards your deck size or the number of copies of that card in "
+"your deck)."
+msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
 #, javascript-format

@@ -361,7 +361,7 @@ msgstr "Tirer une carte à partir de la collection"
 #: src/components/core/EditText.tsx:29
 #: src/components/core/EditText.tsx:44
 #: src/components/core/TextEditDialog.tsx:128
-#: src/components/deck/CardUpgradeDialog/index.tsx:219
+#: src/components/deck/CardUpgradeDialog/index.tsx:237
 #: src/components/deck/CopyDeckDialog/index.tsx:235
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:104
 #: src/components/deck/DeckDetailView/index.tsx:324
@@ -1674,7 +1674,7 @@ msgstr "Supprimer"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:192
 #: src/components/campaign/UpgradeDecksView/index.tsx:81
-#: src/components/deck/CardUpgradeDialog/index.tsx:215
+#: src/components/deck/CardUpgradeDialog/index.tsx:233
 msgid "Upgrade"
 msgstr "Mise à jour"
 
@@ -2969,10 +2969,11 @@ msgstr "Main. Arcane"
 msgid "Hand x2"
 msgstr "Main x2"
 
+#: src/components/filter/CardAssetFilterView.tsx:21
 #: src/lib/parseDeck.ts:77
 #: src/lib/parseDeck.ts:93
 msgid "Arcane"
-msgstr "Arcane"
+msgstr ""
 
 #: src/components/filter/CardAssetFilterView.tsx:22
 #: src/lib/parseDeck.ts:79
@@ -3563,7 +3564,7 @@ msgstr "Modifier le nom"
 msgid "Guided Campaign"
 msgstr "Campagne avec guide"
 
-#: src/data/scenario/CampaignStateHelper.ts:184
+#: src/data/scenario/CampaignStateHelper.ts:188
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade"
 msgstr "Annuler les améliorations du Deck"
@@ -3589,8 +3590,6 @@ msgstr ""
 "'modification'pour remettre les choses comme elles étaient."
 
 #: src/components/campaignguide/ScenarioView.tsx:64
-#: src/data/scenario/CampaignStateHelper.ts:188
-#. This is a deck upgrade action.
 msgid "Undo"
 msgstr "Annuler"
 
@@ -4301,8 +4300,8 @@ msgid ""
 "Side scenarios cannot be added to a campaign until the previous scenario "
 "and following interludes are completed."
 msgstr ""
-"Les scénarios annexes ne peuvent pas être ajouter avant la fin du "
-"scénario précédent et interlude suivant."
+"Les scénarios annexes ne peuvent pas être ajouter avant la fin du scénario "
+"précédent et interlude suivant."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:31
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:70
@@ -4598,7 +4597,7 @@ msgstr "Scenario FAQ"
 msgid "Interlude FAQ"
 msgstr "Interlude FAQ"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:291
+#: src/components/deck/CardUpgradeDialog/index.tsx:307
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
@@ -4922,18 +4921,18 @@ msgstr ""
 "Conserver le niveau ${ level } après la mise à jour\n"
 "Ne compte pas dans la taille du deck"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:199
+#: src/components/deck/CardUpgradeDialog/index.tsx:217
 msgid "Shrewd Analysis Rule"
 msgstr "Analyse Subtile : "
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:201
+#: src/components/deck/CardUpgradeDialog/index.tsx:219
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
 msgstr[0] "Cette  mise à jour coute ${ xpCost } experience"
 msgstr[1] "Ces  mises à jours coutent ${ xpCost } experience"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:206
+#: src/components/deck/CardUpgradeDialog/index.tsx:224
 #, javascript-format
 msgid ""
 "Two random cards will be chosen among the following choice:\n"
@@ -4952,13 +4951,13 @@ msgstr[1] ""
 "\n"
 "${ upgradeCards }"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:211
+#: src/components/deck/CardUpgradeDialog/index.tsx:229
 msgid "You can edit your collection under Settings to adjust the eligible choices."
 msgstr ""
 "Vous pouvez modifier votre collection dans les paamètre pour ajouster les "
 "choix."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:253
+#: src/components/deck/CardUpgradeDialog/index.tsx:41
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] "
 "card, you may instead pay the full experience cost on the higher level "
@@ -4966,7 +4965,7 @@ msgid ""
 "towards your deck size or the number of copies of that card in your deck)."
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:261
+#: src/components/deck/CardUpgradeDialog/index.tsx:277
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use "
 "Shrewd Analysis to choose both upgrades randomly and only pay for one.\n"
@@ -4981,11 +4980,11 @@ msgstr ""
 "<i>Note : l'application gère cela en ajustant l'expérience pour tenir "
 "comptede l'améliorations  gratuite </i>"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:268
+#: src/components/deck/CardUpgradeDialog/index.tsx:284
 msgid "Upgrade results"
 msgstr "Résultat de l'amélioration"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:283
+#: src/components/deck/CardUpgradeDialog/index.tsx:299
 msgid "Upgrade with Shrewd Analysis"
 msgstr "Amélioration avec Analyse Subtile"
 
@@ -5313,10 +5312,6 @@ msgid ""
 "[elder_sign]: +X where X is whatever you want it to be."
 msgstr ""
 
-#: src/components/filter/CardAssetFilterView.tsx:21
-msgid "Arcance"
-msgstr ""
-
 #: src/components/filter/CardAssetFilterView.tsx:40
 #: src/components/filter/CardAssetFilterView.tsx:124
 msgid "Asset Filters"
@@ -5382,6 +5377,19 @@ msgstr ""
 
 #: src/components/filter/CardFilterView/index.tsx:451
 msgid "Resource"
+msgstr ""
+
+#: src/data/scenario/CampaignStateHelper.ts:184
+#. This is a deck upgrade action.
+msgid "Undo deck upgrade?"
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:46
+msgid ""
+"<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead "
+"pay the full experience cost on the higher level version and leave the "
+"lower level version in your deck (it does not count towards your deck size "
+"or the number of copies of that card in your deck)."
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26

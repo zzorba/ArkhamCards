@@ -46,10 +46,11 @@ msgstr "손. 마법"
 msgid "Hand x2"
 msgstr "손 x2"
 
+#: src/components/filter/CardAssetFilterView.tsx:21
 #: src/lib/parseDeck.ts:77
 #: src/lib/parseDeck.ts:93
 msgid "Arcane"
-msgstr "마법"
+msgstr ""
 
 #: src/components/filter/CardAssetFilterView.tsx:27
 #: src/lib/parseDeck.ts:78
@@ -387,7 +388,7 @@ msgid_plural ""
 "scenario."
 msgstr[0] "이 이야기를 즐기려면 각 조사자는 경험치 ${ entry.xpCost }을/를 소비해야 합니다."
 
-#: src/data/scenario/CampaignStateHelper.ts:184
+#: src/data/scenario/CampaignStateHelper.ts:188
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade"
 msgstr "덱 향상 되돌리기"
@@ -410,8 +411,6 @@ msgstr ""
 "이 과정을 통해서 향상을 수행하기 이전의 덱을 확인할 수 있습니다."
 
 #: src/components/campaignguide/ScenarioView.tsx:64
-#: src/data/scenario/CampaignStateHelper.ts:188
-#. This is a deck upgrade action.
 msgid "Undo"
 msgstr "되돌리기"
 
@@ -440,7 +439,7 @@ msgstr "되돌리기"
 #: src/components/core/EditText.tsx:29
 #: src/components/core/EditText.tsx:44
 #: src/components/core/TextEditDialog.tsx:128
-#: src/components/deck/CardUpgradeDialog/index.tsx:219
+#: src/components/deck/CardUpgradeDialog/index.tsx:237
 #: src/components/deck/CopyDeckDialog/index.tsx:235
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:104
 #: src/components/deck/DeckDetailView/index.tsx:324
@@ -3533,7 +3532,7 @@ msgstr "조사자 덱 향상"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:192
 #: src/components/campaign/UpgradeDecksView/index.tsx:81
-#: src/components/deck/CardUpgradeDialog/index.tsx:215
+#: src/components/deck/CardUpgradeDialog/index.tsx:233
 msgid "Upgrade"
 msgstr "향상"
 
@@ -4456,7 +4455,7 @@ msgstr "시나리오 FAQ"
 msgid "Interlude FAQ"
 msgstr "막간 FAQ"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:291
+#: src/components/deck/CardUpgradeDialog/index.tsx:307
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
@@ -4775,17 +4774,17 @@ msgstr ""
 "향상 후 레벨 ${ level } 카드를 유지합니다\n"
 "덱 크기에 영향을 미치지 않습니다"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:199
+#: src/components/deck/CardUpgradeDialog/index.tsx:217
 msgid "Shrewd Analysis Rule"
 msgstr "재빠른 분석 규칙"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:201
+#: src/components/deck/CardUpgradeDialog/index.tsx:219
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
 msgstr[0] "이 향상은 ${ xpCost } 경험치가 필요합니다."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:206
+#: src/components/deck/CardUpgradeDialog/index.tsx:224
 #, javascript-format
 msgid ""
 "Two random cards will be chosen among the following choice:\n"
@@ -4800,11 +4799,11 @@ msgstr[0] ""
 "\n"
 "${ upgradeCards }"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:211
+#: src/components/deck/CardUpgradeDialog/index.tsx:229
 msgid "You can edit your collection under Settings to adjust the eligible choices."
 msgstr "설정의 보유게임을 수정하여 접근 가능한 선택지를 조정할 수 있습니다."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:253
+#: src/components/deck/CardUpgradeDialog/index.tsx:41
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] "
 "card, you may instead pay the full experience cost on the higher level "
@@ -4815,7 +4814,7 @@ msgstr ""
 "경험치 비용을 전부 지불하고 더 낮은 레벨의 카드를 당신의 덱에 남겨두어도 됩니다(이렇게 남겨둔 카드는 당신의 덱 크기를 계산하거나 "
 "당신의 덱에서 카드 사본 개수를 계산할 때 포함하지 않습니다)."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:261
+#: src/components/deck/CardUpgradeDialog/index.tsx:277
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use "
 "Shrewd Analysis to choose both upgrades randomly and only pay for one.\n"
@@ -4828,11 +4827,11 @@ msgstr ""
 "\n"
 "<i>참고: 이 앱은 두번째 사본의 '무료' 향상을 위해 경험치를 조절합니다.</i>"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:268
+#: src/components/deck/CardUpgradeDialog/index.tsx:284
 msgid "Upgrade results"
 msgstr "향상 결과"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:283
+#: src/components/deck/CardUpgradeDialog/index.tsx:299
 msgid "Upgrade with Shrewd Analysis"
 msgstr "'재빠른 분석'으로 향상하기"
 
@@ -5158,10 +5157,6 @@ msgid ""
 "[elder_sign]: +X where X is whatever you want it to be."
 msgstr ""
 
-#: src/components/filter/CardAssetFilterView.tsx:21
-msgid "Arcance"
-msgstr ""
-
 #: src/components/filter/CardAssetFilterView.tsx:40
 #: src/components/filter/CardAssetFilterView.tsx:124
 msgid "Asset Filters"
@@ -5227,6 +5222,19 @@ msgstr ""
 
 #: src/components/filter/CardFilterView/index.tsx:451
 msgid "Resource"
+msgstr ""
+
+#: src/data/scenario/CampaignStateHelper.ts:184
+#. This is a deck upgrade action.
+msgid "Undo deck upgrade?"
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:46
+msgid ""
+"<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead "
+"pay the full experience cost on the higher level version and leave the "
+"lower level version in your deck (it does not count towards your deck size "
+"or the number of copies of that card in your deck)."
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26

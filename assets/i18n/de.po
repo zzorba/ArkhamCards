@@ -361,7 +361,7 @@ msgstr "Aus Sammlung ziehen"
 #: src/components/core/EditText.tsx:29
 #: src/components/core/EditText.tsx:44
 #: src/components/core/TextEditDialog.tsx:128
-#: src/components/deck/CardUpgradeDialog/index.tsx:219
+#: src/components/deck/CardUpgradeDialog/index.tsx:237
 #: src/components/deck/CopyDeckDialog/index.tsx:235
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:104
 #: src/components/deck/DeckDetailView/index.tsx:324
@@ -1677,7 +1677,7 @@ msgstr "Entfernen"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:192
 #: src/components/campaign/UpgradeDecksView/index.tsx:81
-#: src/components/deck/CardUpgradeDialog/index.tsx:215
+#: src/components/deck/CardUpgradeDialog/index.tsx:233
 msgid "Upgrade"
 msgstr "Upgrade"
 
@@ -2968,10 +2968,11 @@ msgstr "Hand. Arkane"
 msgid "Hand x2"
 msgstr "Hand x2"
 
+#: src/components/filter/CardAssetFilterView.tsx:21
 #: src/lib/parseDeck.ts:77
 #: src/lib/parseDeck.ts:93
 msgid "Arcane"
-msgstr "Arkane"
+msgstr ""
 
 #: src/components/filter/CardAssetFilterView.tsx:22
 #: src/lib/parseDeck.ts:79
@@ -3566,7 +3567,7 @@ msgstr "Name bearbeiten"
 msgid "Guided Campaign"
 msgstr "Geführte Kampagne"
 
-#: src/data/scenario/CampaignStateHelper.ts:184
+#: src/data/scenario/CampaignStateHelper.ts:188
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade"
 msgstr "Deck Upgrade rückgängig machen"
@@ -3591,8 +3592,6 @@ msgstr ""
 "werden, um den Zustand des Decks zurückzusetzen."
 
 #: src/components/campaignguide/ScenarioView.tsx:64
-#: src/data/scenario/CampaignStateHelper.ts:188
-#. This is a deck upgrade action.
 msgid "Undo"
 msgstr "Rückgängig machen"
 
@@ -4608,7 +4607,7 @@ msgstr "Szenario FAQ"
 msgid "Interlude FAQ"
 msgstr "Zwischenspiel FAQ"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:291
+#: src/components/deck/CardUpgradeDialog/index.tsx:307
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
@@ -4932,18 +4931,18 @@ msgstr ""
 "Behalte das Level ${ level } nach dem Upgrade\n"
 "Wird nicht gegen die Deckgröße gezählt"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:199
+#: src/components/deck/CardUpgradeDialog/index.tsx:217
 msgid "Shrewd Analysis Rule"
 msgstr "Regeln für Scharfsinnige Analyse"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:201
+#: src/components/deck/CardUpgradeDialog/index.tsx:219
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
 msgstr[0] "Dieses Upgrade kostet ${ xpCost } Erfahrungspunkte."
 msgstr[1] "Diese Upgrades kosten ${ xpCost } Erfahrungspunkte."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:206
+#: src/components/deck/CardUpgradeDialog/index.tsx:224
 #, javascript-format
 msgid ""
 "Two random cards will be chosen among the following choice:\n"
@@ -4962,13 +4961,13 @@ msgstr[1] ""
 "\n"
 "${ upgradeCards }"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:211
+#: src/components/deck/CardUpgradeDialog/index.tsx:229
 msgid "You can edit your collection under Settings to adjust the eligible choices."
 msgstr ""
 "Die Sammlung kann unter Einstellungen bearbeitet werden, um die erlaubten "
 "Auswahlmöglichkeiten zu verändern."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:253
+#: src/components/deck/CardUpgradeDialog/index.tsx:41
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] "
 "card, you may instead pay the full experience cost on the higher level "
@@ -4981,7 +4980,7 @@ msgstr ""
 "zu behalten (sie zählt nicht gegen die Deckgröße oder die Anzahl der Kopien "
 "dieser Karte im Deck)."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:261
+#: src/components/deck/CardUpgradeDialog/index.tsx:277
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use "
 "Shrewd Analysis to choose both upgrades randomly and only pay for one.\n"
@@ -4996,11 +4995,11 @@ msgstr ""
 "<i>Hinweis: Die App berücksichtig dies indem die Erfahrungspunkte für das "
 "'kostenlose' Upgrade angepasst werden. </i>"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:268
+#: src/components/deck/CardUpgradeDialog/index.tsx:284
 msgid "Upgrade results"
 msgstr "Upgrade Ergebnis"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:283
+#: src/components/deck/CardUpgradeDialog/index.tsx:299
 msgid "Upgrade with Shrewd Analysis"
 msgstr "Upgrade mit Scharfsinniger Analyse"
 
@@ -5329,10 +5328,6 @@ msgid ""
 "[elder_sign]: +X where X is whatever you want it to be."
 msgstr ""
 
-#: src/components/filter/CardAssetFilterView.tsx:21
-msgid "Arcance"
-msgstr ""
-
 #: src/components/filter/CardAssetFilterView.tsx:40
 #: src/components/filter/CardAssetFilterView.tsx:124
 msgid "Asset Filters"
@@ -5398,6 +5393,19 @@ msgstr ""
 
 #: src/components/filter/CardFilterView/index.tsx:451
 msgid "Resource"
+msgstr ""
+
+#: src/data/scenario/CampaignStateHelper.ts:184
+#. This is a deck upgrade action.
+msgid "Undo deck upgrade?"
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:46
+msgid ""
+"<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead "
+"pay the full experience cost on the higher level version and leave the "
+"lower level version in your deck (it does not count towards your deck size "
+"or the number of copies of that card in your deck)."
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
