@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2020-12-05 11:25+0300\n"
+"PO-Revision-Date: 2020-12-05 11:27+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1146,7 +1146,7 @@ msgstr "Myriad"
 #: src/components/card/CardDetailView/BondedCardsComponent.tsx:50
 #: src/components/filter/CardFilterView/index.tsx:548
 msgid "Bonded"
-msgstr "Bonded"
+msgstr "Связанные"
 
 #: src/components/filter/CardFilterView/index.tsx:554
 msgid "Vengeance"
@@ -5003,9 +5003,9 @@ msgstr[2] "${ normalCardCount } · ${ totalCardCount } всего"
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/CardCountLine.tsx:32
 msgid "${ bondedCardCount } bound"
 msgid_plural "${ bondedCardCount } bound"
-msgstr[0] "(${ count }) привязанная"
-msgstr[1] "(${ count }) привязанных"
-msgstr[2] "(${ count }) привязанных"
+msgstr[0] "(${ count }) связанная"
+msgstr[1] "(${ count }) связанных"
+msgstr[2] "(${ count }) связанных"
 
 #: src/components/deck/hooks.ts:29
 msgid "${ unspentXpStr } unspent"
