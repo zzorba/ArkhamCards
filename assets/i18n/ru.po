@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2020-12-05 11:19+0300\n"
+"PO-Revision-Date: 2020-12-05 11:25+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -426,7 +426,7 @@ msgstr "Да, сбросить"
 #: src/components/settings/MergeBackupView/index.tsx:236
 #: src/data/scenario/CampaignStateHelper.ts:194
 msgid "Cancel"
-msgstr "Не надо"
+msgstr "Отменить"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:143
 #: src/data/scenario/fixedSteps.ts:58
