@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2020-12-05 11:27+0300\n"
+"PO-Revision-Date: 2020-12-05 10:15-0500\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,7 +14,7 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : 2);\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: src/reducers/campaigns.ts:171
 #, javascript-format
@@ -5003,9 +5003,9 @@ msgstr[2] "${ normalCardCount } · ${ totalCardCount } всего"
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/CardCountLine.tsx:32
 msgid "${ bondedCardCount } bound"
 msgid_plural "${ bondedCardCount } bound"
-msgstr[0] "(${ count }) связанная"
-msgstr[1] "(${ count }) связанных"
-msgstr[2] "(${ count }) связанных"
+msgstr[0] "${ bondedCardCount } связанная"
+msgstr[1] "${ bondedCardCount } связанных"
+msgstr[2] "${ bondedCardCount } связанных"
 
 #: src/components/deck/hooks.ts:29
 msgid "${ unspentXpStr } unspent"
