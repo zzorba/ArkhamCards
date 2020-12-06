@@ -2973,7 +2973,7 @@ msgstr "Main x2"
 #: src/lib/parseDeck.ts:77
 #: src/lib/parseDeck.ts:93
 msgid "Arcane"
-msgstr ""
+msgstr "Arcane"
 
 #: src/components/filter/CardAssetFilterView.tsx:22
 #: src/lib/parseDeck.ts:79
