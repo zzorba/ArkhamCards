@@ -466,18 +466,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
           text={assetFilterText}
           onPress={onAssetPress}
         />
-        { hasEnemy && (
-          <NavButton
-            text={enemyFilterText}
-            onPress={onEnemyPress}
-          />
-        ) }
-        { hasLocation && (
-          <NavButton
-            text={locationFilterText}
-            onPress={onLocationPress}
-          />
-        ) }
       </View>
       <View style={[styles.toggleStack, borderStyle, space.paddingBottomS]}>
         <View style={[styles.toggleRow, space.marginTopXs]}>
@@ -489,9 +477,9 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
               onChange={onToggleChange}
             />
             <ToggleFilter
-              label={t`Permanent`}
-              setting="permanent"
-              value={permanent}
+              label={t`Unique`}
+              setting="unique"
+              value={unique}
               onChange={onToggleChange}
             />
             <ToggleFilter
@@ -501,21 +489,15 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
               onChange={onToggleChange}
             />
             <ToggleFilter
-              label={t`Fight`}
-              setting="fightAction"
-              value={fightAction}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={t`Investigate`}
-              setting="investigateAction"
-              value={investigateAction}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
               label={t`Victory`}
               setting="victory"
               value={victory}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Vengeance`}
+              setting="vengeance"
+              value={vengeance}
               onChange={onToggleChange}
             />
           </View>
@@ -527,9 +509,9 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
               onChange={onToggleChange}
             />
             <ToggleFilter
-              label={t`Unique`}
-              setting="unique"
-              value={unique}
+              label={t`Permanent`}
+              setting="permanent"
+              value={permanent}
               onChange={onToggleChange}
             />
             <ToggleFilter
@@ -539,26 +521,26 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
               onChange={onToggleChange}
             />
             <ToggleFilter
-              label={t`Evade`}
-              setting="evadeAction"
-              value={evadeAction}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
               label={t`Bonded`}
               setting="bonded"
               value={bonded}
               onChange={onToggleChange}
             />
-            <ToggleFilter
-              label={t`Vengeance`}
-              setting="vengeance"
-              value={vengeance}
-              onChange={onToggleChange}
-            />
           </View>
         </View>
       </View>
+      { hasEnemy && (
+        <NavButton
+          text={enemyFilterText}
+          onPress={onEnemyPress}
+        />
+      ) }
+      { hasLocation && (
+        <NavButton
+          text={locationFilterText}
+          onPress={onLocationPress}
+        />
+      ) }
       <FilterChooserButton
         componentId={componentId}
         title={t`Encounter Sets`}

@@ -103,6 +103,7 @@ export default function ChangesFromPreviousDeck({
         { map(cards, (card, idx) => (
           <CardSearchResult
             onPress={showCardPressed}
+            key={card.code}
             card={card}
             control={{
               type: 'count',

@@ -19,6 +19,7 @@ import DialogComponent from '@lib/react-native-dialog';
 import deepDiff from 'deep-diff';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
+import ActionButton from 'react-native-action-button';
 
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
@@ -50,16 +51,17 @@ import {
   getPacksInCollection,
   AppState,
 } from '@reducers';
-import space, { m } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeck } from '@components/deck/hooks';
-import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
+import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet, useToggles } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
+import AppIcon from '@icons/AppIcon';
 
 export interface DeckDetailProps {
   id: number;
@@ -76,6 +78,9 @@ type Props = NavigationProps &
   LoginStateProps;
 type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
+function FabButton({ title, onPress, color, icon, iconSize }: { title: string; onPress: () => void; color: string; icon: string; iconSize: number }) {
+  const { typography, colors } = useContext(StyleContext);
+}
 
 function DeckDetailView({
   componentId,
@@ -1020,6 +1025,81 @@ function DeckDetailView({
     onEditPressed, onEditSpecialPressed, onChecklistPressed,
   ]);
 
+  const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
+  const [fabOpen, toggleFabOpen] = useFlag(false);
+  const fabIcon = useCallback((active: boolean) => {
+    if (active) {
+      return <AppIcon name="plus-thin" color={colors.L30} size={32} />;
+    }
+    return <AppIcon name="edit" color={colors.L30} size={24} />;
+  }, [colors]);
+
+  const fab = useMemo(() => {
+    const actionLabelStyle = {
+      ...typography.small,
+      color: colors.L30,
+      paddingTop: 5,
+      paddingLeft: s,
+      paddingRight: s,
+    };
+    const actionContainerStyle = {
+      backgroundColor: colors.D20,
+      borderRadius: 16,
+      borderWidth: 0,
+      minHeight: 32,
+      marginTop: -3,
+    };
+    return (
+      <ActionButton
+        active={fabOpen}
+        buttonColor={fabOpen ? colors.D10 : factionColor}
+        renderIcon={fabIcon}
+        onPress={toggleFabOpen}
+      >
+        <ActionButton.Item
+          hideLabelShadow
+          buttonColor={factionColor}
+          textStyle={actionLabelStyle}
+          textContainerStyle={actionContainerStyle}
+          title={t`Draw simulator`}
+          onPress={showDrawSimulatorPressed}
+        >
+          <AppIcon name="draw" color={colors.L30} size={34} />
+        </ActionButton.Item>
+        <ActionButton.Item
+          hideLabelShadow
+          buttonColor={factionColor}
+          textStyle={actionLabelStyle}
+          textContainerStyle={actionContainerStyle}
+          title={t`Charts`}
+          onPress={showCardChartsPressed}
+        >
+          <AppIcon name="chart" color={colors.L30} size={34} />
+        </ActionButton.Item>
+        <ActionButton.Item
+          hideLabelShadow
+          buttonColor={factionColor}
+          textStyle={actionLabelStyle}
+          textContainerStyle={actionContainerStyle}
+          title={t`Upgrade with XP`}
+          onPress={onUpgradePressed}
+        >
+          <AppIcon name="upgrade" color={colors.L30} size={32} />
+        </ActionButton.Item>
+        <ActionButton.Item
+          hideLabelShadow
+          buttonColor={factionColor}
+          textStyle={actionLabelStyle}
+          textContainerStyle={actionContainerStyle}
+          title={t`Edit`}
+          onPress={onEditPressed}
+        >
+          <AppIcon name="edit" color={colors.L30} size={24} />
+        </ActionButton.Item>
+      </ActionButton>
+    );
+  }, [factionColor, fabOpen, fabIcon, colors, toggleFabOpen, onEditPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
+
   if (!deck) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
@@ -1136,5 +1216,11 @@ const styles = StyleSheet.create({
   menu: {
     borderLeftWidth: 2,
     borderColor: COLORS.darkGray,
+  },
+  fabItemText: {
+
+  },
+  fabItemContainer: {
+
   },
 });

@@ -14,6 +14,7 @@ import { ShowTextEditDialog } from '@components/core/withDialogs';
 import { makeAllCyclePacksSelector, getAllStandalonePacks, makePackSelector, AppState } from '@reducers';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { where } from '@data/query';
+import { useCycleScenarios } from '@components/core/hooks';
 
 interface OwnProps {
   componentId: string;
@@ -23,7 +24,7 @@ interface OwnProps {
 }
 
 export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps) {
-  const [allScenarioCards] = useCardsFromQuery({
+  const [allScenarioCards, loading] = useCardsFromQuery({
     query: where('c.type_code = "scenario"'),
     sort: [{ s: 'c.position', direction: 'ASC' }],
   });
@@ -32,7 +33,7 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
   const getAllCyclePacks = useMemo(makeAllCyclePacksSelector, []);
   const cyclePacks = useSelector((state: AppState) => getAllCyclePacks(state, cyclePack));
   const standalonePacks = useSelector(getAllStandalonePacks);
-
+  const fixedCycleScenarios = useCycleScenarios(campaign);
   const showInterludes = !!campaign.showInterludes;
   const allScenarios = useMemo(() => {
     const hasCompletedScenario = completedScenario(campaign.scenarioResults);
@@ -57,11 +58,11 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
     });
     return concat(
       filter(
-        cycleScenarios || cycleScenarios,
+        fixedCycleScenarios || cycleScenarios,
         scenario => !finishedScenarios.has(scenario.name) && !hasCompletedScenario(scenario)),
       standaloneScenarios
     );
-  }, [allScenarioCards, campaign.scenarioResults, campaign.finishedScenarios, cyclePacks, standalonePacks]);
+  }, [allScenarioCards, fixedCycleScenarios, campaign.scenarioResults, campaign.finishedScenarios, cyclePacks, standalonePacks]);
   const [selectedScenario, setSelectedScenario] = useState<Scenario | typeof CUSTOM>(head(allScenarios) || CUSTOM);
   const [customScenario, setCustomScenario] = useState('');
   const [resolution, setResolution] = useState('');
@@ -81,6 +82,13 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
       resolution: resolution,
     });
   }, [selectedScenario, customScenario, resolution, scenarioChanged]);
+
+  useEffect(() => {
+    if (!loading && allScenarios.length) {
+      setSelectedScenario(allScenarios[0]);
+    }
+  }, [allScenarios, setSelectedScenario, loading]);
+
 
   const possibleScenarios = useMemo(() => {
     const scenarios = map(

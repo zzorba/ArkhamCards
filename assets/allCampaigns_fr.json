@@ -535,7 +535,7 @@
                 "type": "campaign_log_cards",
                 "section": "sacrificed",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               },
               {
                 "type": "remove_card",
@@ -3062,7 +3062,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "Chaque investigateur sélectionne dans la collection une faiblesse de base au hasard [[Madness]], [[Injury]], ou [[Pact]] et l’ajoute à son deck pour le reste de la campagne.",
+      "text": "Chaque investigateur sélectionne dans la collection une faiblesse de base au hasard [[Folie,]], [[Blessure]], ou [[Pacte]] et l’ajoute à son deck pour le reste de la campagne.",
       "effects": [
         {
           "type": "add_weakness",
@@ -3099,7 +3099,7 @@
             "section": "campaign_notes",
             "id": "brood_escaped",
             "operation": "set_input",
-            "text": "#W# Rejetons se sont évanouis dans la nature."
+            "text": "#X# Rejetons se sont évanouis dans la nature."
           }
         ]
       }
@@ -4165,7 +4165,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_interrogated",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -4204,7 +4204,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -4243,7 +4243,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -8810,7 +8810,7 @@
           },
           {
             "id": "heed",
-            "text": "<i>Nous devons prendre l'avertissement de Daniel au sérieux, et ne surtout pas prononcer le nom du Roi en Jaune.",
+            "text": "<i>Nous devons prendre l'avertissement de Daniel au sérieux, et ne surtout pas prononcer le nom du Roi en Jaune.</i>",
             "steps": [
               "heed_the_warning",
               "heeded_daniels_warning",
@@ -8879,7 +8879,7 @@
         "name": "Daniel Survived"
       },
       "type": "story",
-      "text": "Vous décidez de faire profil bas quelque temps à la Pension de Ma et vous cachez Daniel aux autorités, bien que vous ne sachiez pas exactement combien de temps vous pourrez rester à Arkham avec un patient échappé de l'asile. Daniel est imprévisible, tantôt hagard et perdu dans le vague, tantôt hurlant comme si sa vie était en jeu. Il lui faut plusieurs jours pour réaliser qu'il n'est plus interné, ce qui le fait d'autant plus paniquer. « Il vient pour moi, il vient pour moi ! », répète-t-il parfois durant plusieurs heures. Enfin, au cours d'une nuit particulièrement douce et étoilée, Daniel parvient à se calmer su\u0017samment longtemps pour s'ouvrir à vous. « Le Roi en Jaune n'est pas une simple pièce de théâtre », explique-t-il. « C'est un être nommé Hastur, et Il m'a déjà réclamé. Mais vous, vous avez encore du temps, vous n'êtes pas possédé. Vous n'avez pas prononcé le Serment. Quoi qu'il advienne, ne prononcez jamais Son nom. Ne vous abandonnez pas à Lui. » Vous le questionnez à propos des étranges événements survenus en ville, ainsi que sur les créatures et les cultistes que vous avez rencontrés. « Ils tentent de trouver Carcosa », annonce-t-il simplement. Vous reconnaissez le nom de la cité fictive de la pièce, celle où règne Le Roi en Jaune. « Ils veulent libérer Hastur de sa prison. Mais vous ! – Vous pouvez ouvrir la route de Carcosa avant eux ! Vous pouvez emprisonner Hastur pour de bon ! » Il s'agrippe désespérément à vous. « Vite, avant que l'Étranger ne découvre nos plans ! »\nQuelques heures plus tard, Daniel est de nouveau incohérent et hagard. Vous décidez d'aller marcher un moment pour vous aérer l'esprit et assimiler toutes ces nouvelles informations. Vous ne savez pas trop quoi faire de ses déclarations. Avant d'avoir pu prendre une décision sur la marche à suivre, vous rentrez à la pension et découvrez la porte de votre chambre fracturée. Daniel repose par terre, le visage blême et les membres relâchés. À en juger par les traces autour de son cou, il semble avoir été étranglé."
+      "text": "Vous décidez de faire profil bas quelque temps à la Pension de Ma et vous cachez Daniel aux autorités, bien que vous ne sachiez pas exactement combien de temps vous pourrez rester à Arkham avec un patient échappé de l'asile. Daniel est imprévisible, tantôt hagard et perdu dans le vague, tantôt hurlant comme si sa vie était en jeu. Il lui faut plusieurs jours pour réaliser qu'il n'est plus interné, ce qui le fait d'autant plus paniquer. « Il vient pour moi, il vient pour moi ! », répète-t-il parfois durant plusieurs heures. Enfin, au cours d'une nuit particulièrement douce et étoilée, Daniel parvient à se calmer sufisamment longtemps pour s'ouvrir à vous. « Le Roi en Jaune n'est pas une simple pièce de théâtre », explique-t-il. « C'est un être nommé Hastur, et Il m'a déjà réclamé. Mais vous, vous avez encore du temps, vous n'êtes pas possédé. Vous n'avez pas prononcé le Serment. Quoi qu'il advienne, ne prononcez jamais Son nom. Ne vous abandonnez pas à Lui. » Vous le questionnez à propos des étranges événements survenus en ville, ainsi que sur les créatures et les cultistes que vous avez rencontrés. « Ils tentent de trouver Carcosa », annonce-t-il simplement. Vous reconnaissez le nom de la cité fictive de la pièce, celle où règne Le Roi en Jaune. « Ils veulent libérer Hastur de sa prison. Mais vous ! – Vous pouvez ouvrir la route de Carcosa avant eux ! Vous pouvez emprisonner Hastur pour de bon ! » Il s'agrippe désespérément à vous. « Vite, avant que l'Étranger ne découvre nos plans ! »\nQuelques heures plus tard, Daniel est de nouveau incohérent et hagard. Vous décidez d'aller marcher un moment pour vous aérer l'esprit et assimiler toutes ces nouvelles informations. Vous ne savez pas trop quoi faire de ses déclarations. Avant d'avoir pu prendre une décision sur la marche à suivre, vous rentrez à la pension et découvrez la porte de votre chambre fracturée. Daniel repose par terre, le visage blême et les membres relâchés. À en juger par les traces autour de son cou, il semble avoir été étranglé."
     },
     {
       "id": "daniel_did_not_survive",
@@ -9124,7 +9124,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03065b",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -9147,7 +9147,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03066b",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -9170,7 +9170,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03067b",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -9193,7 +9193,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03068b",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -9216,7 +9216,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03069b",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -9523,7 +9523,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_interviewed",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -9552,7 +9552,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -11577,7 +11577,7 @@
                 "type": "campaign_log_cards",
                 "section": "sacrificed",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               },
               {
                 "type": "remove_card",
@@ -13816,7 +13816,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "Chaque investigateur sélectionne dans la collection une faiblesse de base au hasard [[Madness]], [[Injury]], ou [[Pact]] et l’ajoute à son deck pour le reste de la campagne.",
+      "text": "Chaque investigateur sélectionne dans la collection une faiblesse de base au hasard [[Folie,]], [[Blessure]], ou [[Pacte]] et l’ajoute à son deck pour le reste de la campagne.",
       "effects": [
         {
           "type": "add_weakness",
@@ -13853,7 +13853,7 @@
             "section": "campaign_notes",
             "id": "brood_escaped",
             "operation": "set_input",
-            "text": "#W# Rejetons se sont évanouis dans la nature."
+            "text": "#X# Rejetons se sont évanouis dans la nature."
           }
         ]
       }
@@ -16035,7 +16035,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_interrogated",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -16074,7 +16074,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -16113,7 +16113,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -16676,7 +16676,7 @@
           },
           {
             "id": "heed",
-            "text": "<i>Nous devons prendre l'avertissement de Daniel au sérieux, et ne surtout pas prononcer le nom du Roi en Jaune.",
+            "text": "<i>Nous devons prendre l'avertissement de Daniel au sérieux, et ne surtout pas prononcer le nom du Roi en Jaune.</i>",
             "steps": [
               "heed_the_warning",
               "heeded_daniels_warning",
@@ -16745,7 +16745,7 @@
         "name": "Daniel Survived"
       },
       "type": "story",
-      "text": "Vous décidez de faire profil bas quelque temps à la Pension de Ma et vous cachez Daniel aux autorités, bien que vous ne sachiez pas exactement combien de temps vous pourrez rester à Arkham avec un patient échappé de l'asile. Daniel est imprévisible, tantôt hagard et perdu dans le vague, tantôt hurlant comme si sa vie était en jeu. Il lui faut plusieurs jours pour réaliser qu'il n'est plus interné, ce qui le fait d'autant plus paniquer. « Il vient pour moi, il vient pour moi ! », répète-t-il parfois durant plusieurs heures. Enfin, au cours d'une nuit particulièrement douce et étoilée, Daniel parvient à se calmer su\\u0017samment longtemps pour s'ouvrir à vous. « Le Roi en Jaune n'est pas une simple pièce de théâtre », explique-t-il. « C'est un être nommé Hastur, et Il m'a déjà réclamé. Mais vous, vous avez encore du temps, vous n'êtes pas possédé. Vous n'avez pas prononcé le Serment. Quoi qu'il advienne, ne prononcez jamais Son nom. Ne vous abandonnez pas à Lui. » Vous le questionnez à propos des étranges événements survenus en ville, ainsi que sur les créatures et les cultistes que vous avez rencontrés. « Ils tentent de trouver Carcosa », annonce-t-il simplement. Vous reconnaissez le nom de la cité fictive de la pièce, celle où règne Le Roi en Jaune. « Ils veulent libérer Hastur de sa prison. Mais vous ! – Vous pouvez ouvrir la route de Carcosa avant eux ! Vous pouvez emprisonner Hastur pour de bon ! » Il s'agrippe désespérément à vous. « Vite, avant que l'Étranger ne découvre nos plans ! »\nQuelques heures plus tard, Daniel est de nouveau incohérent et hagard. Vous décidez d'aller marcher un moment pour vous aérer l'esprit et assimiler toutes ces nouvelles informations. Vous ne savez pas trop quoi faire de ses déclarations. Avant d'avoir pu prendre une décision sur la marche à suivre, vous rentrez à la pension et découvrez la porte de votre chambre fracturée. Daniel repose par terre, le visage blême et les membres relâchés. À en juger par les traces autour de son cou, il semble avoir été étranglé."
+      "text": "Vous décidez de faire profil bas quelque temps à la Pension de Ma et vous cachez Daniel aux autorités, bien que vous ne sachiez pas exactement combien de temps vous pourrez rester à Arkham avec un patient échappé de l'asile. Daniel est imprévisible, tantôt hagard et perdu dans le vague, tantôt hurlant comme si sa vie était en jeu. Il lui faut plusieurs jours pour réaliser qu'il n'est plus interné, ce qui le fait d'autant plus paniquer. « Il vient pour moi, il vient pour moi ! », répète-t-il parfois durant plusieurs heures. Enfin, au cours d'une nuit particulièrement douce et étoilée, Daniel parvient à se calmer sufisamment longtemps pour s'ouvrir à vous. « Le Roi en Jaune n'est pas une simple pièce de théâtre », explique-t-il. « C'est un être nommé Hastur, et Il m'a déjà réclamé. Mais vous, vous avez encore du temps, vous n'êtes pas possédé. Vous n'avez pas prononcé le Serment. Quoi qu'il advienne, ne prononcez jamais Son nom. Ne vous abandonnez pas à Lui. » Vous le questionnez à propos des étranges événements survenus en ville, ainsi que sur les créatures et les cultistes que vous avez rencontrés. « Ils tentent de trouver Carcosa », annonce-t-il simplement. Vous reconnaissez le nom de la cité fictive de la pièce, celle où règne Le Roi en Jaune. « Ils veulent libérer Hastur de sa prison. Mais vous ! – Vous pouvez ouvrir la route de Carcosa avant eux ! Vous pouvez emprisonner Hastur pour de bon ! » Il s'agrippe désespérément à vous. « Vite, avant que l'Étranger ne découvre nos plans ! »\nQuelques heures plus tard, Daniel est de nouveau incohérent et hagard. Vous décidez d'aller marcher un moment pour vous aérer l'esprit et assimiler toutes ces nouvelles informations. Vous ne savez pas trop quoi faire de ses déclarations. Avant d'avoir pu prendre une décision sur la marche à suivre, vous rentrez à la pension et découvrez la porte de votre chambre fracturée. Daniel repose par terre, le visage blême et les membres relâchés. À en juger par les traces autour de son cou, il semble avoir été étranglé."
     },
     {
       "id": "daniel_did_not_survive",
@@ -16990,7 +16990,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03065b",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -17013,7 +17013,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03066b",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -17036,7 +17036,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03067b",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -17059,7 +17059,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03068b",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -17082,7 +17082,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03069b",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -20802,7 +20802,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_interviewed",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -20831,7 +20831,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -34676,7 +34676,7 @@
                 "type": "campaign_log_cards",
                 "section": "hidden",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -37233,7 +37233,7 @@
                 "type": "campaign_log_cards",
                 "section": "hidden",
                 "id": "$input_value",
-                "text": "#nom#"
+                "text": "#name#"
               }
             ]
           }
@@ -51226,7 +51226,7 @@
                 "type": "campaign_log_cards",
                 "section": "hidden",
                 "id": "drifter_dream",
-                "text": "#nom#",
+                "text": "#name#",
                 "cards": "$input_value"
               }
             ]
