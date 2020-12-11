@@ -29,12 +29,13 @@ export function useNavigationButtonPressed(
   handler: (event: NavigationButtonPressedEvent) => void,
   componentId: string,
   deps: any[],
+  debounceDelay: number = 300
 ) {
   const handlerRef = useRef(handler);
   useEffect(() => {
     handlerRef.current = handler;
   }, [handler]);
-  const debouncedHandler = useMemo(() => debounce((event: NavigationButtonPressedEvent) => handlerRef.current && handlerRef.current(event), 300, { leading: true, trailing: false }), []);
+  const debouncedHandler = useMemo(() => debounce((event: NavigationButtonPressedEvent) => handlerRef.current && handlerRef.current(event), debounceDelay, { leading: true, trailing: false }), [debounceDelay]);
   useEffect(() => {
     const sub = Navigation.events().registerNavigationButtonPressedListener((event: NavigationButtonPressedEvent) => {
       if (event.componentId === componentId) {

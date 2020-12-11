@@ -25,6 +25,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "meddling_of_meowlathotep"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "murder_at_the_excelsior_hotel"
   },
   {

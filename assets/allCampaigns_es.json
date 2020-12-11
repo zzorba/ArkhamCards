@@ -321,6 +321,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.blood_on_the_altar.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Cuando por fin llegáis a Dunwich, os reciben Zebulon Whateley y Earl Sawyer, otro hombre del pueblo que conoció al Dr. Armitage durante el incidente de hace unos meses. –Las cosas no pintan bien por aquí –os dice Earl–. Hace varias noches desaparecieron varias personas. Los chotacabras tampoco se callan. No sé a qué han venido, pero la última vez que unos tipos de Arkham estuvieron aquí, no pasó nada bueno. Todo lo contrario. –Sus ojos parpadean rápidamente, y tose a la vez que aparta la mirada.\n–Oigan, ¿por qué no descansan esta noche y ya buscarán lo que estén buscando mañana? –añade Zebulon mientras le pone la arrugada mano en el hombro a uno de vosotros. Queréis protestar, pero vuestros doloridos músculos y agotada mente no os permiten rechazar la idea. El anciano os ofrece alojaros durante la noche, y os lleva hasta su casa, en las afueras del pueblo de Dunwich. Se trata de una población destartalada y fantasmagórica, y os descubrís deseando no haber venido aquí. Os quedáis dormidos durante el trayecto, y apenas recordáis nada más de esa noche.\nCuando despertáis, descubrís que la casa de Zebulon está abandonada, y no hay ni rastro del anciano ni del Sr. Sawyer. Temiendo lo peor, os dirigís al pueblo de Dunwich para investigar, con la esperanza de encontrar respuestas."
     },
@@ -646,6 +650,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_dunwich_legacy.blood_on_the_altar.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -667,6 +675,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.blood_on_the_altar.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "Cuando asestáis el golpe final, el cuerpo de la criatura explota en cientos de apéndices similares a cuerdas que no dejan de retorcerse por el suelo y de trepar por las paredes. Estáis tan sorprendidos que no sois lo suficientemente rápidos como para evitar que escapen de la estancia. Aun así, fuera lo que fuera esa criatura, os alegra que haya muerto.",
       "steps": [
@@ -678,6 +690,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.blood_on_the_altar.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "No tenéis mucho tiempo para reaccionar mientras la criatura en la que se ha convertido Silas trata de atacaros pese a estar encadenada. Sabiendo que el Necronomicón podría contener un hechizo o ensalmo para someter a Silas, rechazáis a la abominación el tiempo suficiente como para encontrar un fragmento que os sea útil. Sin tiempo que perder, recitáis el ensalmo en latín, y descubrís que las palabras acuden a vuestra lengua sin ningún esfuerzo, como si las tuvieseis de un recuerdo anterior. El cuerpo de la criatura comienza a encogerse y fundirse a medida que el ensalmo crece, y sus gritos son aterradores y espectrales. Al final, lo único que queda es el cadáver desfigurado de un hombre: Silas Bishop. Metido en su camisa, encontráis un colgante de plata grabado con una extraña constelación. Os lo lleváis con la esperanza de que pueda resultaros de utilidad.",
       "steps": [
@@ -688,6 +704,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_dunwich_legacy.blood_on_the_altar.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "text": "No tenéis mucho tiempo para reaccionar mientras la criatura en la que se ha convertido Silas trata de atacaros pese a estar encadenada. Pensando que quizá haya algo en la cámara que podáis usar a vuestro favor, rechazáis a la abominación el tiempo suficiente como para encontrar un diario; muchos de sus pasajes están escritos en latín. Parece ser un fragmento manuscrito del Necronomicón, cuyo propósito os es desconocido. Sin tiempo que perder, recitáis el ensalmo, trabucando las palabras y notando cómo se os agarrota la garganta con cada frase. El cuerpo de la criatura comienza a encogerse y fundirse a medida que el ensalmo crece, y sus gritos son aterradores y espectrales. Al final, lo único que queda es un montón de un húmedo y pegajoso icor que emite un pestilente hedor.",
       "steps": [
@@ -1866,6 +1886,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Dentro de la cámara que contenía a la horrible bestia encontráis a los lugareños desaparecidos y a las demás personas de Arkham, atados y engrilletados. También encontráis varios documentos que sugieren que la criatura que encontrasteis no es la única de su especie en Dunwich. Liberáis a las víctimas de la criatura de sus ligaduras y os dan las gracias. Es hora de comenzar a planear vuestro siguiente movimiento."
     },
@@ -1891,6 +1915,10 @@
     },
     {
       "id": "henry_armitage_not_sacrificed",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.dr_henry_armitage",
+        "name": "Dr. Henry Armitage"
+      },
       "type": "story",
       "text": "–Es mucho peor de lo que pensábamos –dice el Dr. Armitage, pálido y tembloroso–. Wilbur Whateley sólo era el principio. Había muchísimos más en Dunwich que conocían a los “Primigenios” y ambicionaban el poder y el conocimiento por encima de todo, aunque con ello condenaran a la Tierra. Sabía que tendría que haber quemado el diario de ese infame. Pero gracias a su contenido, sé cómo podemos detenerlos. ¡Somos los únicos que podemos! Rápido, ayudadme con esta solución... El polvo es la clave, sí, el polvo es la única forma..."
     },
@@ -1956,6 +1984,10 @@
     },
     {
       "id": "warren_rice_not_sacrificed",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.professor_warren_rice",
+        "name": "Professor Warren Rice"
+      },
       "type": "story",
       "text": "El profesor Rice se coloca las gafas y estudia los documentos y manuscritos arcanos que quedan en la cámara. –Pensaba que habíamos acabado con esta pesadilla de una vez por todas –suspira–. Pero tenemos la obligación de llegar hasta el final con esto. Debemos detener a estas criaturas o Dunwich no será el único lugar que tenga problemas. La mezcla en polvo que creó Armitage para ver a las criaturas será nuestra salvación –os explica antes de ponerse a recrear el polvo."
     },
@@ -2021,6 +2053,10 @@
     },
     {
       "id": "francis_morgan_not_sacrificed",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.dr_francis_morgan",
+        "name": "Dr. Francis Morgan"
+      },
       "type": "story",
       "text": "–Gracias por todo lo que habéis hecho –dice el Dr. Morgan mientras revisa vuestras provisiones y munición–. La última vez nos hizo falta algo de ese extraño polvo que preparó Armitage para poder siquiera ver las bestias que aterrorizaban Dunwich. Si hay más de esas cosas ahí fuera, vamos a necesitar ese polvo. Creo que me acuerdo de cómo lo hacía..."
     },
@@ -2085,6 +2121,10 @@
     },
     {
       "id": "zebulon_whateley_not_sacrificed",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.zebulon_whately",
+        "name": "Zebulon Whately"
+      },
       "type": "story",
       "text": "–Dunwich ha vivido no pocos acontecimientos extraños –os explica Zebulon con voz temblorosa–, pero nunca había visto nada tan enfermizo y siniestro como esta... esta... cosa. –Le da una última mirada de repulsión a los restos de la criatura antes de cerrar la puerta tras él, estremeciéndose. Os mira con expresión adusta–. Quien haya hecho esto debe pagar por ello. Haré todo lo que pueda para ayudar"
     },
@@ -2131,6 +2171,10 @@
     },
     {
       "id": "earl_sawyer_not_sacrificed",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.earl_sawyer",
+        "name": "Earl Sawyer"
+      },
       "type": "story",
       "text": "–Nunca habría logrado sobrevivir si no fuera por ustedes –dice Earl con un cierto tartamudeo mientras os estrecha la mano repetidamente–. Si hay cualquier cosa que pueda hacer para devolverles el favor, pídanmela. No se me da muy bien pelear ni nada de eso, pero haré todo lo que pueda. Solamente... no me hagan volver a mirar nada como esa bestia, ¿de acuerdo?"
     },
@@ -5412,16 +5456,28 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Han pasado varios meses desde que El Rey de Amarillo se representara en el Teatro Ward. Tus compañeros y tú habéis estado investigando los extraños incidentes que se produjeron después. Lo que habéis encontrado hace que te preguntes si es sensato proseguir la investigación, pero la verdad te llama, y no puedes evitar responder a su llamada. Parece que no sois los únicos que unisteis las piezas que vinculaban los extraños acontecimientos que rodean a El Rey de Amarillo. Otro grupo de investigadores también ha investigado estos sucesos. Unos días después de la representación en Arkham, fueron ingresados en el manicomio, desvariando acerca del regreso del Rey y de los “monstruos” que los habían atacado. La noticia no te sorprende. Su destino te hace estar aún más seguro de que estás siguiendo el rastro correcto... Y mucho más de que deberías parar mientras aún estás a tiempo.\nHas encontrado los documentos que tenían esos investigadores antes de su ingreso y has seguido las pistas que dejaron. Habían interrogado a parte del elenco y del equipo de El Rey de Amarillo y descubierto varias informaciones de vital importancia. Su investigación también contiene notas sobre sus descubrimientos en la Sociedad Histórica de Arkham, además de la narración del tiempo que pasaron en el manicomio, incluido su encuentro con un paciente llamado “Daniel Chesterfield”. Tras una larga noche de recopilar y comparar notas, te quedas profundamente dormido. En tus sueños, te ves sometido a visiones de Carcosa: de sus estrellas negras, soles gemelos, lunas destrozadas y torres retorcidas."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Han pasado varias semanas desde los sucesos ocurridos en el manicomio, y sigues igual de lejos de la verdad sobre El Rey de Amarillo y Carcosa. Has registrado la ciudad en busca de algún indicio de aquellos que mencionó Daniel, los que estaban “abriendo el camino a Carcosa”, pero no has encontrado nada. O el rastro se ha enfriado o ya no están en Arkham. Puede que Daniel estuviera loco de verdad, y que lo único que estés haciendo sea seguirlo cada vez más dentro de la madriguera del conejo. Cada noche, te agitas mientras duermes al verte expuesto a vívidos sueños de Carcosa: de sus estrellas negras, soles gemelos, lunas destrozadas y torres retorcidas."
     },
     {
       "id": "dream_4",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_4",
+        "name": "Dream 4"
+      },
       "type": "story",
       "text": "Humo y ascuas flotan hacia el cielo nocturno carente de estrellas. Los gritos de criaturas que arden hacen que te invada la horrenda sensación de haberlo logrado. Casi parecen gritos humanos, piensas. Pero sabes que no es verdad."
     },
@@ -5437,6 +5493,10 @@
     },
     {
       "id": "dream_8",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_8",
+        "name": "Dream 8"
+      },
       "type": "story",
       "text": "Miras en el espejo, y el Extranjero te devuelve la mirada. Sus ojos penetran en tu mente. El espejo se hace pedazos."
     },
@@ -5483,6 +5543,10 @@
     },
     {
       "id": "dream_1",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_1",
+        "name": "Dream 1"
+      },
       "type": "story",
       "text": "Caes por el vacío abismal de Hali. Unas criaturas de origen desconocido e imposible acechan en la oscuridad, donde no puedes verlas. Hastur se alza sobre ti de forma gloriosa, pero cautivo de su prisión de locura, manipulando tu tortuoso descenso con un brazo extendido."
     },
@@ -5499,6 +5563,10 @@
     },
     {
       "id": "dream_12",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_12",
+        "name": "Dream 12"
+      },
       "type": "story",
       "text": "Levantas la vista hacia la vidriera por curiosidad. ¿Qué es esa sombra que hay en la ventana? ¿Qué significado tiene este extraño diseño?"
     },
@@ -5516,6 +5584,10 @@
     },
     {
       "id": "dream_2",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_2",
+        "name": "Dream 2"
+      },
       "type": "story",
       "text": "Constance te coge de la mano y te lleva a la reluciente pista de baile. –Vamos, que no te dé vergüenza. ¡Hoy es una noche para bailar! ¡Para celebrar!"
     },
@@ -5597,11 +5669,19 @@
     },
     {
       "id": "dream_9",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_9",
+        "name": "Dream 9"
+      },
       "type": "story",
       "text": "Persigues al Extranjero por oscuros corredores fríos como el hielo y formados por cientos de miles de esqueletos. Los cráneos te miran correr, castañeteando de forma burlona sus mandíbulas cuando pasas. El Extranjero llega a una pared hecha de hueso y unas manos huesudas lo agarran y lo meten en la pared. Sus burlonas risas llegan a un terrible crescendo."
     },
     {
       "id": "dream_7",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_7",
+        "name": "Dream 7"
+      },
       "type": "story",
       "text": "Te encuentras en el interior de la comisaría de policía de Arkham, tratando desesperadamente de explicarle al sargento de guardia lo que ha ocurrido en el Teatro Ward. Éste hace una mueca burlona y se niega a creerte: –Sabemos lo que intentas hacer –dice mientras te pone unas esposas en las muñecas–. Quedas arrestado por robo. Chicos, lleváoslo –Varios agentes te rodean para evitar que huyas. Nadie escucha tus protestas mientras te llevan escaleras abajo y te meten en una fría celda–. Quizás pasarte un tiempo encerrado te haga cambiar el cuento –grita el sargento de guardia. Cierra la puerta de un golpe y te deja sumido en una cascada de pensamientos. ¿Cómo se han enterado? ¿Cómo han podido saberlo?"
     },
@@ -5618,6 +5698,10 @@
     },
     {
       "id": "dream_10",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_10",
+        "name": "Dream 10"
+      },
       "type": "story",
       "text": "Persigues al Extranjero por una empinada escalera de piedra rota mientras una lluvia torrencial descarga sobre ti mientras corres. Ves relámpagos a lo lejos. Un remolino de nubes negras se forma sobre ti, amenazando con tragarse el mundo. El enmascarado atraviesa a la carrera unas anchas puertas que hay en lo alto de las escaleras, y le sigues de cerca. El sonido del trueno queda amortiguado cuando las puertas se cierran a tu espalda. Al levantar la vista, ves una imagen familiar en una vidriera. –¿Verdad que es precioso? –dice el Extranjero en voz baja."
     },
@@ -5648,6 +5732,10 @@
     },
     {
       "id": "dream_11",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_11",
+        "name": "Dream 11"
+      },
       "type": "story",
       "text": "Evitas mirar la vidriera. Si este hombre malvado la considera preciosa, probablemente sea una trampa para atrapar tu mente. Aprietas los puños hasta que se te ponen blancos los nudillos y avanzas para enfrentarte al Extranjero."
     },
@@ -5665,16 +5753,28 @@
     },
     {
       "id": "dream_3",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_3",
+        "name": "Dream 3"
+      },
       "type": "story",
       "text": "–Vaya, vaya, si es nuestro estimado invitado –dice el hombre del bigote y el bastón de mango de plata. Coge una botella de vino de una encimera cercana y te sirve un vaso–. Me han dicho que tiene un gran interés por nuestra modesta producción –dice con una sonrisa–. Dígame, ¿cómo le está pareciendo el segundo acto hasta ahora?"
     },
     {
       "id": "dream_13",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_13",
+        "name": "Dream 13"
+      },
       "type": "story",
       "text": "La voz de Daniel te llama: –Están abriendo el camino a Carcosa."
     },
     {
       "id": "dream_6",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_6",
+        "name": "Dream 6"
+      },
       "type": "story",
       "text": "Las luces del auditorio se atenúan, y un foco ilumina el escenario. –¡Bienvenidos, damas y caballeros! –exclama la criatura. Sus numerosos tentáculos recorren el escenario, llegan hasta el techo y penetran en los pasillos. Arranca el telón, y una andrajosa tela roja cae sobre su bulbosa forma."
     },
@@ -5707,6 +5807,10 @@
     },
     {
       "id": "awakening",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.awakening",
+        "name": "Awakening"
+      },
       "type": "story",
       "text": "Despiertas de tu agitado sueño, sudoroso y boqueante. Esto no puede continuar. Sólo tienes una opción si quieres continuar tu investigación. Debes encontrar a Nigel Engram, director de El Rey de Amarillo y arquitecto de esta locura. Sólo él tendrá las respuestas que buscas. Haces las maletas y preparas tu viaje a París, la Ciudad de la Luz."
     },
@@ -5731,6 +5835,10 @@
     },
     {
       "id": "jordan_information",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.jordans_information",
+        "name": "Jordan's Information"
+      },
       "type": "story",
       "text": "Según el Sr. Jordan Perry, que financió varias representaciones de El Rey de Amarillo por todo el mundo, Nigel Engram era un hombre excéntrico y apasionado, rozando lo obsesivo. Se rumorea que, desde que descubrió El Rey de Amarillo, no ha dirigido ninguna otra obra. Jordan conoció al Sr. Engram en una cafetería de Montparnasse, “L’agneau perdu”. Es allí a donde vas primero, con la esperanza de poder encontrar al Sr. Engram..."
     },
@@ -6197,6 +6305,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -6215,6 +6327,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "Supones que esta casa pertenece a Nigel Engram, el director de El Rey de Amarillo. Por fin has encontrado tu objetivo... y aun así, no alivia tu forzada cordura. Te sientes como un perro al que llevan de una correa, con tu destino decidido por un cruel amo que te mantiene en la ignorancia. Apartas estos pesimistas pensamientos de tu mente y llamas a la puerta del Sr. Engram. No hay respuesta, pero una bandada de urracas sale volando del tejado por el ruido. Agarras el picaporte, esperando no tener que recurrir a la fuerza, pero, para tu sorpresa, la puerta está abierta.\nEl interior del hogar de Nigel es un batiburrillo de notas, viejos libros y extraños diagramas. Sobre la mesita de su sala de estar hay un viejo mapa desvaído con muchos dobleces y bordes desgastados. Parece un mapa incompleto de las catacumbas que hay bajo París, o al menos parte de ellas. La comida de la despensa lleva allí mucho tiempo y está podrida. No parece que nadie haya vivido aquí desde hace años, y aun así, la tinta de las paredes de la sala de estar está húmeda y parece fresca. Cada centímetro del papel pintado está cubierto por una frase que se repite una y otra vez:\n<center><fancy>Ya está aquí.</fancy></center>",
       "steps": [
@@ -6227,6 +6343,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Supones que esta casa pertenece a Nigel Engram, el director de El Rey de Amarillo. Por fin has encontrado tu objetivo... y aun así, no alivia tu forzada cordura. Te sientes como un perro al que llevan de una correa, con tu destino decidido por un cruel amo que te mantiene en la ignorancia. Apartas estos pesimistas pensamientos de tu mente y llamas a la puerta del Sr. Engram. No hay respuesta, pero una bandada de urracas sale volando del tejado por el ruido. Para tu sorpresa, la puerta se abre.\nEn el umbral de la puerta se encuentra un hombre alto con un poblado bigote marrón. Junto al perchero hay un familiar bastón con mango de plata apoyado en la pared. –Así que eres tú –dice el hombre–. Pasa. Llevo tiempo esperándote –Se gira y camina hacia la cocina. Oyes el silbido de una tetera, como si hubiera preparado tu llegada.\nEntras en su casa sin saber muy bien qué hacer. Este amable y sencillo hombre no es precisamente como esperabas. El interior del hogar de Nigel es un batiburrillo de notas, viejos libros y extraños diagramas. Sobre la mesita de su sala de estar hay un viejo mapa desvaído con muchos dobleces y bordes desgastados. Parece un mapa incompleto de las catacumbas que hay bajo París, o al menos parte de ellas. El Sr. Engram regresa poco después con té caliente y un plato de queso y galletas saladas. –¿Has venido para encontrar el camino hacia Carcosa? –pregunta con una sonrisa de emoción. Sacudes la cabeza como respuesta, pero no parece darse cuenta. Va de un lado a otro de la habitación mientras habla rápidamente–. Me dijo que llegarías pronto. Que debería... prepararme –Nigel se vuelve hacia ti con los ojos brillantes mientras extiende la mano hacia la puerta de madera que tienes enfrente–. No te preocupes. Todo está listo. El camino está creado –Abre la puerta de su estudio y entra, dejándote fuera mientras tratas de interpretar sus enigmáticos comentarios. Esperas unos minutos a que vuelva, pero al ver que no lo hace, comienzas a preocuparte. Entonces te das cuenta de que ya ha empezado a aparecer moho sobre el queso que ha traído–. ¿Señor Engram? –le llamas, y das unos golpecitos en la puerta del estudio. No hay respuesta. Cuando entras en la habitación, le encuentras ahorcado del ventilador del techo, podrido tras semanas de descomposición.",
       "steps": [
@@ -6239,6 +6359,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "text": "Cuando el sol vuelve a salir sobre los tejados de París, pierdes de vista a la misteriosa figura. Frustrado por tu fracaso, vuelves a tu hotel para dormir y recuperarte de los horrores de las noches pasadas. Tus agitados sueños regresan: sueños de Carcosa, del Rey Andrajoso y de la sombría figura a la que perseguiste por las calles de París. Cuando despiertas, no estás en tu habitación del hotel.",
       "steps": [
@@ -6278,6 +6402,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "La comunidad isleña de Mont Saint-Michel se encuentra en la costa noroeste de Francia. Es preciosa, elegante y enigmática; un lugar sacado de un cuento de hadas. Sólo que este cuento está lleno de horrores y locura. Durante la marea baja, podrías alcanzar la isla a pie cruzando el paso que emerge del mar. Sin embargo, para cuando llegas a la costa, la marea está mucho más alta de lo que esperabas. Oscuras nubes cubren el cielo, y un lejano trueno señala el inicio de la tormenta que se avecina. Encuentras un barco cuyo capitán está dispuesto a llevarte a la isla, y te preparas para el ritual que va a producirse."
     },
@@ -6302,6 +6430,10 @@
     },
     {
       "id": "ashleighs_information",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.ashleighs_information",
+        "name": "Ashleigh's Information"
+      },
       "type": "story",
       "text": "Recuerdas la noche en la que comenzó todo esto, y tus recuerdos vuelven a la cautivadora canción que interpretó Ashleigh aquella noche. De algún modo, recuerdas perfectamente la letra a pesar del tiempo que ha transcurrido, y su espectral melodía está grabada en tu mente. “Arriba, sobre la ciudad, las nubes truenan y las olas chocan contra la jaula dorada... Abajo, en la tierra, el agua salada se filtra, las sombras caen donde el sol rojo dormita”. Al estudiar la isla que tienes delante, iluminada por los destellos de los relámpagos y asaltada por violentas olas, no puedes evitar preguntarte si Ashleigh cantaba sobre este mismo instante."
     },
@@ -6889,6 +7021,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores fueron derrotados)",
       "investigator_status": [
         "eliminated",
@@ -6901,6 +7037,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "investigator_status": [
         "alive",
@@ -6919,6 +7059,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "investigator_status": [
         "alive",
@@ -6937,6 +7081,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "investigator_status": [
         "alive",
@@ -11447,6 +11595,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.blood_on_the_altar.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Cuando por fin llegáis a Dunwich, os reciben Zebulon Whateley y Earl Sawyer, otro hombre del pueblo que conoció al Dr. Armitage durante el incidente de hace unos meses. –Las cosas no pintan bien por aquí –os dice Earl–. Hace varias noches desaparecieron varias personas. Los chotacabras tampoco se callan. No sé a qué han venido, pero la última vez que unos tipos de Arkham estuvieron aquí, no pasó nada bueno. Todo lo contrario. –Sus ojos parpadean rápidamente, y tose a la vez que aparta la mirada.\n–Oigan, ¿por qué no descansan esta noche y ya buscarán lo que estén buscando mañana? –añade Zebulon mientras le pone la arrugada mano en el hombro a uno de vosotros. Queréis protestar, pero vuestros doloridos músculos y agotada mente no os permiten rechazar la idea. El anciano os ofrece alojaros durante la noche, y os lleva hasta su casa, en las afueras del pueblo de Dunwich. Se trata de una población destartalada y fantasmagórica, y os descubrís deseando no haber venido aquí. Os quedáis dormidos durante el trayecto, y apenas recordáis nada más de esa noche.\nCuando despertáis, descubrís que la casa de Zebulon está abandonada, y no hay ni rastro del anciano ni del Sr. Sawyer. Temiendo lo peor, os dirigís al pueblo de Dunwich para investigar, con la esperanza de encontrar respuestas."
     },
@@ -11790,6 +11942,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_dunwich_legacy.blood_on_the_altar.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -11811,6 +11967,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.blood_on_the_altar.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "Cuando asestáis el golpe final, el cuerpo de la criatura explota en cientos de apéndices similares a cuerdas que no dejan de retorcerse por el suelo y de trepar por las paredes. Estáis tan sorprendidos que no sois lo suficientemente rápidos como para evitar que escapen de la estancia. Aun así, fuera lo que fuera esa criatura, os alegra que haya muerto.",
       "steps": [
@@ -11822,6 +11982,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.blood_on_the_altar.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "No tenéis mucho tiempo para reaccionar mientras la criatura en la que se ha convertido Silas trata de atacaros pese a estar encadenada. Sabiendo que el Necronomicón podría contener un hechizo o ensalmo para someter a Silas, rechazáis a la abominación el tiempo suficiente como para encontrar un fragmento que os sea útil. Sin tiempo que perder, recitáis el ensalmo en latín, y descubrís que las palabras acuden a vuestra lengua sin ningún esfuerzo, como si las tuvieseis de un recuerdo anterior. El cuerpo de la criatura comienza a encogerse y fundirse a medida que el ensalmo crece, y sus gritos son aterradores y espectrales. Al final, lo único que queda es el cadáver desfigurado de un hombre: Silas Bishop. Metido en su camisa, encontráis un colgante de plata grabado con una extraña constelación. Os lo lleváis con la esperanza de que pueda resultaros de utilidad.",
       "steps": [
@@ -11832,6 +11996,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_dunwich_legacy.blood_on_the_altar.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "text": "No tenéis mucho tiempo para reaccionar mientras la criatura en la que se ha convertido Silas trata de atacaros pese a estar encadenada. Pensando que quizá haya algo en la cámara que podáis usar a vuestro favor, rechazáis a la abominación el tiempo suficiente como para encontrar un diario; muchos de sus pasajes están escritos en latín. Parece ser un fragmento manuscrito del Necronomicón, cuyo propósito os es desconocido. Sin tiempo que perder, recitáis el ensalmo, trabucando las palabras y notando cómo se os agarrota la garganta con cada frase. El cuerpo de la criatura comienza a encogerse y fundirse a medida que el ensalmo crece, y sus gritos son aterradores y espectrales. Al final, lo único que queda es un montón de un húmedo y pegajoso icor que emite un pestilente hedor.",
       "steps": [
@@ -14511,6 +14679,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Dentro de la cámara que contenía a la horrible bestia encontráis a los lugareños desaparecidos y a las demás personas de Arkham, atados y engrilletados. También encontráis varios documentos que sugieren que la criatura que encontrasteis no es la única de su especie en Dunwich. Liberáis a las víctimas de la criatura de sus ligaduras y os dan las gracias. Es hora de comenzar a planear vuestro siguiente movimiento."
     },
@@ -14536,6 +14708,10 @@
     },
     {
       "id": "henry_armitage_not_sacrificed",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.dr_henry_armitage",
+        "name": "Dr. Henry Armitage"
+      },
       "type": "story",
       "text": "–Es mucho peor de lo que pensábamos –dice el Dr. Armitage, pálido y tembloroso–. Wilbur Whateley sólo era el principio. Había muchísimos más en Dunwich que conocían a los “Primigenios” y ambicionaban el poder y el conocimiento por encima de todo, aunque con ello condenaran a la Tierra. Sabía que tendría que haber quemado el diario de ese infame. Pero gracias a su contenido, sé cómo podemos detenerlos. ¡Somos los únicos que podemos! Rápido, ayudadme con esta solución... El polvo es la clave, sí, el polvo es la única forma..."
     },
@@ -14601,6 +14777,10 @@
     },
     {
       "id": "warren_rice_not_sacrificed",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.professor_warren_rice",
+        "name": "Professor Warren Rice"
+      },
       "type": "story",
       "text": "El profesor Rice se coloca las gafas y estudia los documentos y manuscritos arcanos que quedan en la cámara. –Pensaba que habíamos acabado con esta pesadilla de una vez por todas –suspira–. Pero tenemos la obligación de llegar hasta el final con esto. Debemos detener a estas criaturas o Dunwich no será el único lugar que tenga problemas. La mezcla en polvo que creó Armitage para ver a las criaturas será nuestra salvación –os explica antes de ponerse a recrear el polvo."
     },
@@ -14666,6 +14846,10 @@
     },
     {
       "id": "francis_morgan_not_sacrificed",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.dr_francis_morgan",
+        "name": "Dr. Francis Morgan"
+      },
       "type": "story",
       "text": "–Gracias por todo lo que habéis hecho –dice el Dr. Morgan mientras revisa vuestras provisiones y munición–. La última vez nos hizo falta algo de ese extraño polvo que preparó Armitage para poder siquiera ver las bestias que aterrorizaban Dunwich. Si hay más de esas cosas ahí fuera, vamos a necesitar ese polvo. Creo que me acuerdo de cómo lo hacía..."
     },
@@ -14730,6 +14914,10 @@
     },
     {
       "id": "zebulon_whateley_not_sacrificed",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.zebulon_whately",
+        "name": "Zebulon Whately"
+      },
       "type": "story",
       "text": "–Dunwich ha vivido no pocos acontecimientos extraños –os explica Zebulon con voz temblorosa–, pero nunca había visto nada tan enfermizo y siniestro como esta... esta... cosa. –Le da una última mirada de repulsión a los restos de la criatura antes de cerrar la puerta tras él, estremeciéndose. Os mira con expresión adusta–. Quien haya hecho esto debe pagar por ello. Haré todo lo que pueda para ayudar"
     },
@@ -14776,6 +14964,10 @@
     },
     {
       "id": "earl_sawyer_not_sacrificed",
+      "narration": {
+        "id": "the_dunwich_legacy.interlude_2.earl_sawyer",
+        "name": "Earl Sawyer"
+      },
       "type": "story",
       "text": "–Nunca habría logrado sobrevivir si no fuera por ustedes –dice Earl con un cierto tartamudeo mientras os estrecha la mano repetidamente–. Si hay cualquier cosa que pueda hacer para devolverles el favor, pídanmela. No se me da muy bien pelear ni nada de eso, pero haré todo lo que pueda. Solamente... no me hagan volver a mirar nada como esa bestia, ¿de acuerdo?"
     },
@@ -17237,16 +17429,28 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Han pasado varios meses desde que El Rey de Amarillo se representara en el Teatro Ward. Tus compañeros y tú habéis estado investigando los extraños incidentes que se produjeron después. Lo que habéis encontrado hace que te preguntes si es sensato proseguir la investigación, pero la verdad te llama, y no puedes evitar responder a su llamada. Parece que no sois los únicos que unisteis las piezas que vinculaban los extraños acontecimientos que rodean a El Rey de Amarillo. Otro grupo de investigadores también ha investigado estos sucesos. Unos días después de la representación en Arkham, fueron ingresados en el manicomio, desvariando acerca del regreso del Rey y de los “monstruos” que los habían atacado. La noticia no te sorprende. Su destino te hace estar aún más seguro de que estás siguiendo el rastro correcto... Y mucho más de que deberías parar mientras aún estás a tiempo.\nHas encontrado los documentos que tenían esos investigadores antes de su ingreso y has seguido las pistas que dejaron. Habían interrogado a parte del elenco y del equipo de El Rey de Amarillo y descubierto varias informaciones de vital importancia. Su investigación también contiene notas sobre sus descubrimientos en la Sociedad Histórica de Arkham, además de la narración del tiempo que pasaron en el manicomio, incluido su encuentro con un paciente llamado “Daniel Chesterfield”. Tras una larga noche de recopilar y comparar notas, te quedas profundamente dormido. En tus sueños, te ves sometido a visiones de Carcosa: de sus estrellas negras, soles gemelos, lunas destrozadas y torres retorcidas."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Han pasado varias semanas desde los sucesos ocurridos en el manicomio, y sigues igual de lejos de la verdad sobre El Rey de Amarillo y Carcosa. Has registrado la ciudad en busca de algún indicio de aquellos que mencionó Daniel, los que estaban “abriendo el camino a Carcosa”, pero no has encontrado nada. O el rastro se ha enfriado o ya no están en Arkham. Puede que Daniel estuviera loco de verdad, y que lo único que estés haciendo sea seguirlo cada vez más dentro de la madriguera del conejo. Cada noche, te agitas mientras duermes al verte expuesto a vívidos sueños de Carcosa: de sus estrellas negras, soles gemelos, lunas destrozadas y torres retorcidas."
     },
     {
       "id": "dream_4",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_4",
+        "name": "Dream 4"
+      },
       "type": "story",
       "text": "Humo y ascuas flotan hacia el cielo nocturno carente de estrellas. Los gritos de criaturas que arden hacen que te invada la horrenda sensación de haberlo logrado. Casi parecen gritos humanos, piensas. Pero sabes que no es verdad."
     },
@@ -17262,6 +17466,10 @@
     },
     {
       "id": "dream_8",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_8",
+        "name": "Dream 8"
+      },
       "type": "story",
       "text": "Miras en el espejo, y el Extranjero te devuelve la mirada. Sus ojos penetran en tu mente. El espejo se hace pedazos."
     },
@@ -17308,6 +17516,10 @@
     },
     {
       "id": "dream_1",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_1",
+        "name": "Dream 1"
+      },
       "type": "story",
       "text": "Caes por el vacío abismal de Hali. Unas criaturas de origen desconocido e imposible acechan en la oscuridad, donde no puedes verlas. Hastur se alza sobre ti de forma gloriosa, pero cautivo de su prisión de locura, manipulando tu tortuoso descenso con un brazo extendido."
     },
@@ -17324,6 +17536,10 @@
     },
     {
       "id": "dream_12",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_12",
+        "name": "Dream 12"
+      },
       "type": "story",
       "text": "Levantas la vista hacia la vidriera por curiosidad. ¿Qué es esa sombra que hay en la ventana? ¿Qué significado tiene este extraño diseño?"
     },
@@ -17341,6 +17557,10 @@
     },
     {
       "id": "dream_2",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_2",
+        "name": "Dream 2"
+      },
       "type": "story",
       "text": "Constance te coge de la mano y te lleva a la reluciente pista de baile. –Vamos, que no te dé vergüenza. ¡Hoy es una noche para bailar! ¡Para celebrar!"
     },
@@ -17422,11 +17642,19 @@
     },
     {
       "id": "dream_9",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_9",
+        "name": "Dream 9"
+      },
       "type": "story",
       "text": "Persigues al Extranjero por oscuros corredores fríos como el hielo y formados por cientos de miles de esqueletos. Los cráneos te miran correr, castañeteando de forma burlona sus mandíbulas cuando pasas. El Extranjero llega a una pared hecha de hueso y unas manos huesudas lo agarran y lo meten en la pared. Sus burlonas risas llegan a un terrible crescendo."
     },
     {
       "id": "dream_7",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_7",
+        "name": "Dream 7"
+      },
       "type": "story",
       "text": "Te encuentras en el interior de la comisaría de policía de Arkham, tratando desesperadamente de explicarle al sargento de guardia lo que ha ocurrido en el Teatro Ward. Éste hace una mueca burlona y se niega a creerte: –Sabemos lo que intentas hacer –dice mientras te pone unas esposas en las muñecas–. Quedas arrestado por robo. Chicos, lleváoslo –Varios agentes te rodean para evitar que huyas. Nadie escucha tus protestas mientras te llevan escaleras abajo y te meten en una fría celda–. Quizás pasarte un tiempo encerrado te haga cambiar el cuento –grita el sargento de guardia. Cierra la puerta de un golpe y te deja sumido en una cascada de pensamientos. ¿Cómo se han enterado? ¿Cómo han podido saberlo?"
     },
@@ -17443,6 +17671,10 @@
     },
     {
       "id": "dream_10",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_10",
+        "name": "Dream 10"
+      },
       "type": "story",
       "text": "Persigues al Extranjero por una empinada escalera de piedra rota mientras una lluvia torrencial descarga sobre ti mientras corres. Ves relámpagos a lo lejos. Un remolino de nubes negras se forma sobre ti, amenazando con tragarse el mundo. El enmascarado atraviesa a la carrera unas anchas puertas que hay en lo alto de las escaleras, y le sigues de cerca. El sonido del trueno queda amortiguado cuando las puertas se cierran a tu espalda. Al levantar la vista, ves una imagen familiar en una vidriera. –¿Verdad que es precioso? –dice el Extranjero en voz baja."
     },
@@ -17473,6 +17705,10 @@
     },
     {
       "id": "dream_11",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_11",
+        "name": "Dream 11"
+      },
       "type": "story",
       "text": "Evitas mirar la vidriera. Si este hombre malvado la considera preciosa, probablemente sea una trampa para atrapar tu mente. Aprietas los puños hasta que se te ponen blancos los nudillos y avanzas para enfrentarte al Extranjero."
     },
@@ -17490,16 +17726,28 @@
     },
     {
       "id": "dream_3",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_3",
+        "name": "Dream 3"
+      },
       "type": "story",
       "text": "–Vaya, vaya, si es nuestro estimado invitado –dice el hombre del bigote y el bastón de mango de plata. Coge una botella de vino de una encimera cercana y te sirve un vaso–. Me han dicho que tiene un gran interés por nuestra modesta producción –dice con una sonrisa–. Dígame, ¿cómo le está pareciendo el segundo acto hasta ahora?"
     },
     {
       "id": "dream_13",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_13",
+        "name": "Dream 13"
+      },
       "type": "story",
       "text": "La voz de Daniel te llama: –Están abriendo el camino a Carcosa."
     },
     {
       "id": "dream_6",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.dream_6",
+        "name": "Dream 6"
+      },
       "type": "story",
       "text": "Las luces del auditorio se atenúan, y un foco ilumina el escenario. –¡Bienvenidos, damas y caballeros! –exclama la criatura. Sus numerosos tentáculos recorren el escenario, llegan hasta el techo y penetran en los pasillos. Arranca el telón, y una andrajosa tela roja cae sobre su bulbosa forma."
     },
@@ -17532,6 +17780,10 @@
     },
     {
       "id": "awakening",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.awakening",
+        "name": "Awakening"
+      },
       "type": "story",
       "text": "Despiertas de tu agitado sueño, sudoroso y boqueante. Esto no puede continuar. Sólo tienes una opción si quieres continuar tu investigación. Debes encontrar a Nigel Engram, director de El Rey de Amarillo y arquitecto de esta locura. Sólo él tendrá las respuestas que buscas. Haces las maletas y preparas tu viaje a París, la Ciudad de la Luz."
     },
@@ -17556,6 +17808,10 @@
     },
     {
       "id": "jordan_information",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.jordans_information",
+        "name": "Jordan's Information"
+      },
       "type": "story",
       "text": "Según el Sr. Jordan Perry, que financió varias representaciones de El Rey de Amarillo por todo el mundo, Nigel Engram era un hombre excéntrico y apasionado, rozando lo obsesivo. Se rumorea que, desde que descubrió El Rey de Amarillo, no ha dirigido ninguna otra obra. Jordan conoció al Sr. Engram en una cafetería de Montparnasse, “L’agneau perdu”. Es allí a donde vas primero, con la esperanza de poder encontrar al Sr. Engram..."
     },
@@ -18027,6 +18283,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -18045,6 +18305,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "Supones que esta casa pertenece a Nigel Engram, el director de El Rey de Amarillo. Por fin has encontrado tu objetivo... y aun así, no alivia tu forzada cordura. Te sientes como un perro al que llevan de una correa, con tu destino decidido por un cruel amo que te mantiene en la ignorancia. Apartas estos pesimistas pensamientos de tu mente y llamas a la puerta del Sr. Engram. No hay respuesta, pero una bandada de urracas sale volando del tejado por el ruido. Agarras el picaporte, esperando no tener que recurrir a la fuerza, pero, para tu sorpresa, la puerta está abierta.\nEl interior del hogar de Nigel es un batiburrillo de notas, viejos libros y extraños diagramas. Sobre la mesita de su sala de estar hay un viejo mapa desvaído con muchos dobleces y bordes desgastados. Parece un mapa incompleto de las catacumbas que hay bajo París, o al menos parte de ellas. La comida de la despensa lleva allí mucho tiempo y está podrida. No parece que nadie haya vivido aquí desde hace años, y aun así, la tinta de las paredes de la sala de estar está húmeda y parece fresca. Cada centímetro del papel pintado está cubierto por una frase que se repite una y otra vez:\n<center><fancy>Ya está aquí.</fancy></center>",
       "steps": [
@@ -18057,6 +18321,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Supones que esta casa pertenece a Nigel Engram, el director de El Rey de Amarillo. Por fin has encontrado tu objetivo... y aun así, no alivia tu forzada cordura. Te sientes como un perro al que llevan de una correa, con tu destino decidido por un cruel amo que te mantiene en la ignorancia. Apartas estos pesimistas pensamientos de tu mente y llamas a la puerta del Sr. Engram. No hay respuesta, pero una bandada de urracas sale volando del tejado por el ruido. Para tu sorpresa, la puerta se abre.\nEn el umbral de la puerta se encuentra un hombre alto con un poblado bigote marrón. Junto al perchero hay un familiar bastón con mango de plata apoyado en la pared. –Así que eres tú –dice el hombre–. Pasa. Llevo tiempo esperándote –Se gira y camina hacia la cocina. Oyes el silbido de una tetera, como si hubiera preparado tu llegada.\nEntras en su casa sin saber muy bien qué hacer. Este amable y sencillo hombre no es precisamente como esperabas. El interior del hogar de Nigel es un batiburrillo de notas, viejos libros y extraños diagramas. Sobre la mesita de su sala de estar hay un viejo mapa desvaído con muchos dobleces y bordes desgastados. Parece un mapa incompleto de las catacumbas que hay bajo París, o al menos parte de ellas. El Sr. Engram regresa poco después con té caliente y un plato de queso y galletas saladas. –¿Has venido para encontrar el camino hacia Carcosa? –pregunta con una sonrisa de emoción. Sacudes la cabeza como respuesta, pero no parece darse cuenta. Va de un lado a otro de la habitación mientras habla rápidamente–. Me dijo que llegarías pronto. Que debería... prepararme –Nigel se vuelve hacia ti con los ojos brillantes mientras extiende la mano hacia la puerta de madera que tienes enfrente–. No te preocupes. Todo está listo. El camino está creado –Abre la puerta de su estudio y entra, dejándote fuera mientras tratas de interpretar sus enigmáticos comentarios. Esperas unos minutos a que vuelva, pero al ver que no lo hace, comienzas a preocuparte. Entonces te das cuenta de que ya ha empezado a aparecer moho sobre el queso que ha traído–. ¿Señor Engram? –le llamas, y das unos golpecitos en la puerta del estudio. No hay respuesta. Cuando entras en la habitación, le encuentras ahorcado del ventilador del techo, podrido tras semanas de descomposición.",
       "steps": [
@@ -18069,6 +18337,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.a_phantom_of_truth.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "text": "Cuando el sol vuelve a salir sobre los tejados de París, pierdes de vista a la misteriosa figura. Frustrado por tu fracaso, vuelves a tu hotel para dormir y recuperarte de los horrores de las noches pasadas. Tus agitados sueños regresan: sueños de Carcosa, del Rey Andrajoso y de la sombría figura a la que perseguiste por las calles de París. Cuando despiertas, no estás en tu habitación del hotel.",
       "steps": [
@@ -18109,6 +18381,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "La comunidad isleña de Mont Saint-Michel se encuentra en la costa noroeste de Francia. Es preciosa, elegante y enigmática; un lugar sacado de un cuento de hadas. Sólo que este cuento está lleno de horrores y locura. Durante la marea baja, podrías alcanzar la isla a pie cruzando el paso que emerge del mar. Sin embargo, para cuando llegas a la costa, la marea está mucho más alta de lo que esperabas. Oscuras nubes cubren el cielo, y un lejano trueno señala el inicio de la tormenta que se avecina. Encuentras un barco cuyo capitán está dispuesto a llevarte a la isla, y te preparas para el ritual que va a producirse."
     },
@@ -18133,6 +18409,10 @@
     },
     {
       "id": "ashleighs_information",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.ashleighs_information",
+        "name": "Ashleigh's Information"
+      },
       "type": "story",
       "text": "Recuerdas la noche en la que comenzó todo esto, y tus recuerdos vuelven a la cautivadora canción que interpretó Ashleigh aquella noche. De algún modo, recuerdas perfectamente la letra a pesar del tiempo que ha transcurrido, y su espectral melodía está grabada en tu mente. “Arriba, sobre la ciudad, las nubes truenan y las olas chocan contra la jaula dorada... Abajo, en la tierra, el agua salada se filtra, las sombras caen donde el sol rojo dormita”. Al estudiar la isla que tienes delante, iluminada por los destellos de los relámpagos y asaltada por violentas olas, no puedes evitar preguntarte si Ashleigh cantaba sobre este mismo instante."
     },
@@ -18736,6 +19016,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores fueron derrotados)",
       "investigator_status": [
         "eliminated",
@@ -18748,6 +19032,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "investigator_status": [
         "alive",
@@ -18766,6 +19054,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "investigator_status": [
         "alive",
@@ -18784,6 +19076,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.black_stars_rise.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Resolución 3",
       "investigator_status": [
         "alive",
@@ -32308,7 +32604,8 @@
     "all_or_nothing",
     "bad_blood",
     "in_the_labyrinths_of_lunacy",
-    "war_of_the_outer_gods"
+    "war_of_the_outer_gods",
+    "meddling_of_meowlathotep"
   ],
   "setup": [],
   "steps": []
@@ -35558,7 +35855,6 @@
   "scenario_name": "The Labyrinths of Lunacy",
   "full_name": "The Labyrinths of Lunacy",
   "side_scenario_type": "standalone",
-  "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
     "paradox_rule",
@@ -36390,6 +36686,543 @@
       "text": "The mastermind falls to his knees, his mask cracked. Blood drips from his open wounds onto the cement floor. The outline of his body twists and blurs, like a wrinkle in the fabric of space and time. “So, the ritual has failed!” His bitter cackle descends into a cry of pain. “Perhaps humanity has a chance after all. This agony, this suffering! Such power is not meant for humans to wield. It is for the ones beyond!” He gasps and wheezes, collapsing to the ground. “Do not follow the path I followed,” he begs, “it leads only to… despair.” His breathing stops.\nYou have somehow defeated your captor, but many questions remain. Deciding to explore the labyrinth further, you find a way to break open the iron doors leading into the other sections of the complex. To your surprise, you find no other victims trapped in the labyrinth—only signs of their struggles, and of their survival.\nIt takes only one solid strike to break open the padlock sealing the warehouse’s iron doors. The sound of metal slamming against metal is tripled in its volume. You do not believe your kidnapper meant for you to ever leave, but somehow you have defied the odds stacked against you. You wonder if the others are opening these heavy doors at this very moment, too.\nA sudden gust of cold evening air sweeps over you. You are surprised to see wooden docks on the side of the Miskatonic River. A few ducks quack in surprise and swim away from the nearest dock. Water sloshes along the shore. You hear dockworkers going about their business, their work day almost finished as the sun sets to your left. You watch the sun disappear under the horizon, and the others watch in turn.",
       "steps": [
         "win"
+      ]
+    }
+  ]
+},
+{
+  "id": "meddling_of_meowlathotep",
+  "scenario_name": "The Meddling of Meowlathotep",
+  "full_name": "The Meddling of Meowlathotep",
+  "side_scenario_type": "standalone",
+  "standalone_setup": [
+    "choose_difficulty",
+    "barkham_rule",
+    "alert_rule",
+    "lousy_with_cats_rule",
+    "sniffing_locations_rule",
+    "hp_quote",
+    "intro_1",
+    "choose_scent_to_follow",
+    "location_layout",
+    "setup_meowsk_cards",
+    "set_aside_cards",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "setup": [],
+  "steps": [
+    {
+      "id": "choose_difficulty",
+      "text": "Elige el nivel de dificultad:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Fácil",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "text": "Normal",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difícil",
+            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "expert",
+            "text": "Experto",
+            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "barkham_rule",
+      "title": "Barkham Horror",
+      "type": "rule_reminder",
+      "text": "<i>Barkham Horror</i> is an alternate universe in which the conflict between humanity and the eldritch forces of the mythos takes a back seat, and the conflict between dogs and cats takes center stage.",
+      "bullets": [
+        {
+          "text": "Investigator and player cards included in <i>Barkham Horror</i> expansions cannot be used in traditional <i>Arkham Horror: The Card Game</i> scenarios."
+        },
+        {
+          "text": "Likewise, only investigators from <i>Barkham Horror</i> expansions should be used while playing a <i>Barkham Horror</i> scenario. Other player cards from any <i>Arkham Horror: The Card Game</i> product may be used."
+        }
+      ]
+    },
+    {
+      "id": "alert_rule",
+      "type": "rule_reminder",
+      "title": "Alerta",
+      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+    },
+    {
+      "id": "lousy_with_cats_rule",
+      "type": "rule_reminder",
+      "title": "“Lousy with cats”",
+      "text": "Six of the locations in this scenario begin play with a facedown [[Meowsk]] enemy beneath them. During this scenario, a location with a facedown encounter card beneath it is “lousy with cats.” <b>This has no inherent game effect.</b> However, some card effects may change depending on whether or not a location is lousy with cats.",
+      "bullets": [
+        {
+          "text": "If the encounter card beneath a location that is lousy with cats enters play or is removed for any reason, that location is no longer lousy with cats."
+        }
+      ]
+    },
+    {
+      "id": "sniffing_locations_rule",
+      "type": "rule_reminder",
+      "title": "“Sniffing” Locations",
+      "text": "Dogs have a fantastic sense of smell. Kate Winthpup in particular has an ability that allows her to “sniff ” a location. You may wish to use a token (such as a resource token) or a piece of scrap paper to record which locations you’ve sniffed. In general, once you sniff a location, it is sniffed for the rest of the game."
+    },
+    {
+      "id": "hp_quote",
+      "type": "story",
+      "text": "“We may, indeed, judge the tone and bias of a civilisation by its relative attitude toward dogs and cats.”\n– H. P. Lovecraft, “Cats and Dogs”"
+    },
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "It is a dark and stormy night in the storied and haunted city of Barkham. By the time you hit the streets, it is raining cats and dogs. But you’ve picked up the scent of something big, and once you sink your teeth into a story, you just can’t let go. A little wet fur has never stopped you from finding the truth.\nStrange happenings have been going on in Barkham. Cat sightings are at an all-time high, and each day more and more pigeons go missing. While this wouldn’t normally be newsworthy, you know that there is more to this story than meets the eye. After all, while a few cats are harmless and adorable, most are nefarious schemers. You have heard the whispers and the howls on the wind. The Order of Dead Rodents on the Doorstep is back, and whatever they are plotting, only you can stop it.\nYou’re heading back to your home in Slobbertown—the Barkham neighborhood closest to the docks—when you catch a whiff of something foul and pungent in the air. Whatever is causing such an acrid stench must be nearby. But just then, another scent—!"
+    },
+    {
+      "id": "choose_scent_to_follow",
+      "type": "input",
+      "text": "The lead investigator must decide (choose one):",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "foul_stench",
+            "text": "Follow the foul stench.",
+            "steps": [
+              "intro_2",
+              "choose_confront_cat"
+            ]
+          },
+          {
+            "id": "bacon",
+            "text": "Follow the scent of bacon.",
+            "steps": [
+              "intro_3",
+              "choose_food"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "No! You cannot be dissuaded, not even by thoughts of tasty bacon and ear scratches from all of the humans who congegrate around Velma’s Doghouse. This investigation is too important. You continue tracking the awful odor until you come upon its source: a hairball, hacked up in an alleyway by the docks. Of course. If this isn’t proof of feline involvement, you don’t know what is. Then you hear it: HRRK! HRRRRK! There’s only one thing that could be!"
+    },
+    {
+      "id": "choose_confront_cat",
+      "type": "input",
+      "text": "The lead investigator must decide (choose one):",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "foul_stench",
+            "text": "Confront the barfy cat.",
+            "steps": [
+              "intro_4",
+              "setup_slobbertown",
+              "gather_encounter_sets",
+              "setup_locations_slobbertown"
+            ]
+          },
+          {
+            "id": "bacon",
+            "text": "Follow the cat to its lair.",
+            "steps": [
+              "intro_5",
+              "setup_snoutside",
+              "gather_encounter_sets",
+              "setup_locations_snoutside"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "The investigation can wait. Bacon is eternal. You follow that lovely smell northeast to Velma’s Doghouse in Beasttown. The sounds of revelry and the sizzling of grilled food make your tail wag faster than the cracking of a whip. And yet, something else tugs at the back of your dog-brain… What was it you were doing before?"
+    },
+    {
+      "id": "choose_food",
+      "type": "input",
+      "text": "The lead investigator must decide (choose one):",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "foul_stench",
+            "text": "Nope, food.",
+            "steps": [
+              "intro_6",
+              "setup_beasttown",
+              "gather_encounter_sets",
+              "setup_locations_beasttown"
+            ]
+          },
+          {
+            "id": "bacon",
+            "text": "Oh yeah, investigating the Order.",
+            "steps": [
+              "intro_7",
+              "setup_tailside",
+              "gather_encounter_sets",
+              "setup_locations_tailside"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_4",
+      "type": "story",
+      "text": "You are too dogged to turn back now. You soon come across the unfortunate creature, the source of the wretched retching. Once it is done, it goes back to licking its fur, and you wonder if cats truly have no sense of cause and effect. “What is the Order plotting?” you ask pointedly.\n“Why should I tell you, mutt?” the cat replies with a hint of apathy in its voice. “You’ll be our prey soon enough.” With that, the cat leaps gracefully from the street to a low-hanging tree branch, and vanishes from sight.\nPrey? You ponder the cat’s words. Conflict between your kind and theirs is as old as time, but you have never been their prey. What exactly is their game…?"
+    },
+    {
+      "id": "setup_slobbertown",
+      "text": "Proceed to <b>Setup</b>. You will begin play in Slobbertown."
+    },
+    {
+      "id": "intro_5",
+      "type": "story",
+      "text": "You track the scent of the cat and follow from a distance. Eventually it leaves the docks and makes its way southwest, toward Snoutside. What could a cat be doing way out here?\nYour question is answered when the creature is picked up by a robed human outside the manor house of the Barkham Hisstorical Society, an organization devoted to educating the populace about the “noble” cats of the city. It makes sense that such a reviled cult would be involved in this plot. The human brings the cat indoors, presumably to feed it and give it treats and such. Your blood boils. Curse you, foul cat! How dare you trick these humans into thinking you are cute and fluffy and not at all evil—!"
+    },
+    {
+      "id": "setup_snoutside",
+      "text": "Proceed to <b>Setup</b>. You will begin play in Snoutside."
+    },
+    {
+      "id": "intro_6",
+      "type": "story",
+      "text": ": It isn’t until your belly is full of yummy food and your tummy has been thoroughly rubbed that you remember why you were out and about in the first place. You patrol the area until you spot several panicked rats scurrying from a nearby sewer drain.\n“What’s the matter?” you bark. They chitter and chirp in response, and it is only then that you remember that rats can’t talk. Still, you glean some of their story from their frantic pantomiming. The Order of Dead Rodents at the Doorstep, as evidenced by their very namesake, has been hunting rats for ages. But now it is not just cats hunting them, but horrid cat-abominations that defy all earthly logic. Sounds like the Order is up to its old tricks once again…"
+    },
+    {
+      "id": "setup_beasttown",
+      "text": "Proceed to <b>Setup</b>. You will begin play in Beasttown."
+    },
+    {
+      "id": "intro_7",
+      "type": "story",
+      "text": "The urgency of your investigation is too important for you to be distracted by thoughts of tasty food. As you turn away from Velma’s, you spot a streak of cat-fur dipping gracefully out of sight. Using your keen sense of smell, you keep a tight pursuit as the cat winds its way west to Tailside, where Barkham’s train station can be found.\nYou follow the cat to the tracks on the western edge of town, where it ducks underneath an abandoned train car marked with a cat’s paw print. “Meowsachusetts Catnip Co.” reads the label beneath the logo. A front for a cult headquarters, no doubt. You are about to eavesdrop on the cats’ refuge when suddenly, a creature bursts forth from underneath the train! It is a hideous hybrid of bird, bat, and cat, with webbed paws and membranous wings notably lacking in fur, though its face is unmistakably feline. The sight of the thing makes your fur stand on end."
+    },
+    {
+      "id": "setup_tailside",
+      "text": "Proceed to <b>Setup</b>. You will begin play in Tailside."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Preparación",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "meddling_of_meowlathotep"
+      ]
+    },
+    {
+      "id": "setup_locations_snoutside",
+      "text": "Put all of the locations into play.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at Snoutside."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations_tailside",
+      "text": "Put all of the locations into play.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at Tailside."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations_beasttown",
+      "text": "Put all of the locations into play.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at Beasttown."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations_slobbertown",
+      "text": "Put all of the locations into play.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at Slobbertown."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Distribución de los Lugares sugerida",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "barkham_asylum",
+          "velmas_doghouse"
+        ],
+        [
+          "blank",
+          "tailside",
+          "beasttown",
+          "arkham_city_pound"
+        ],
+        [
+          "muttskatonic_university",
+          "snoutside",
+          "slobbertown",
+          "blank"
+        ],
+        [
+          "st_marys_animal_hospital",
+          "boneyard",
+          "blank",
+          "blank"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "barkham_asylum",
+          "name": "Barkham Asylum"
+        },
+        {
+          "code": "velmas_doghouse",
+          "name": "Velma's Doghouse"
+        },
+        {
+          "code": "tailside",
+          "name": "Tailside"
+        },
+        {
+          "code": "beasttown",
+          "name": "Beasttown"
+        },
+        {
+          "code": "arkham_city_pound",
+          "name": "Arkham City Pound"
+        },
+        {
+          "code": "muttskatonic_university",
+          "name": "Muttskatonic University"
+        },
+        {
+          "code": "snoutside",
+          "name": "Snoutside"
+        },
+        {
+          "code": "slobbertown",
+          "name": "Slobbertown"
+        },
+        {
+          "code": "st_marys_animal_hospital",
+          "name": "St. Mary's Animal Hospital"
+        },
+        {
+          "code": "boneyard",
+          "name": "Boneyard"
+        }
+      ]
+    },
+    {
+      "id": "setup_meowsk_cards",
+      "text": "Find and shuffle the 7 [[Meowsk]] enemies. Remove 1 of them from the game without looking at it. Place 1 of the remaining [[Meowsk]] enemies facedown beneath each of the following locations: Barkham Asylum, Barkham City Pound, Velma’s Doghouse, Muttskatonic University, Boneyard, and St. Mary’s Animal Hospital.",
+      "bullets": [
+        {
+          "text": "Each of these locations is “lousy with cats” (see “lousy with cats”, above). A location is no longer lousy with cats if the encounter card beneath it is removed for any reason."
+        }
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set Meowlathotep aside, out of play."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Baraja el resto de cartas de Encuentro para formar el mazo de Encuentros."
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "investigators_win",
+      "text": "The investigators win, but only if they, too, are dog people."
+    },
+    {
+      "id": "cat_people_are_traitors",
+      "text": "Cat people complete the scenario successfully but feel like traitors."
+    },
+    {
+      "id": "investigators_lose",
+      "text": "The investigators lose! Players who are cat people win the game, though."
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "resolution_2"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "Resolución 1",
+      "text": "The humans will never know the danger that lurked just beyond the edges of their senses—the danger they could not smell despite its foul scent. You will stay alert and loyally sniff out any hazards to your beloved city, for that is the duty and burden you and all dogkind bear. But, until the next time you are needed, you are content to sleep, play, and eat treat after treat. Victory is sweet.",
+      "steps": [
+        "investigators_win",
+        "cat_people_are_traitors"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "Resolución 2",
+      "text": "It's the end of all dogkind. The a-pawcalypse. A real cat-astrophe. An absolute cat-acylsm.\n\n\n\n…I'll see myself out.",
+      "steps": [
+        "investigators_lose"
       ]
     }
   ]
@@ -45640,7 +46473,7 @@
     {
       "id": "choose_fate",
       "type": "input",
-      "text": "El investigador jefe debe decidir (elige una opción):",
+      "text": "The lead investigator must decide (choose one):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -48530,7 +49363,7 @@
       "id": "alert",
       "type": "rule_reminder",
       "title": "Alerta",
-      "text": "Cada vez que un investigador fracase en una prueba de habilidad al intentar evitar a un Enemigo que tenga la palabra clave “Alerta”, tras aplicar todos los resultados de esa prueba de habilidad, dicho Enemigo realiza un ataque contra el investigador que intenta evitar. El Enemigo no se agota tras realizar un ataque de “Alerta”. Este ataque ocurre tanto si el Enemigo está enfrentado con el investigador que intenta evitar como si no lo está."
+      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
     },
     {
       "id": "story",
