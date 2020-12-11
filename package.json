@@ -81,7 +81,7 @@
     "react-native-track-player": "1.2.3",
     "react-native-uuid": "1.4.9",
     "react-native-vector-icons": "7.1.0",
-    "react-native-webview": "10.10.2",
+    "react-native-webview": "11.0.0",
     "react-native-zoom-view": "1.0.2",
     "react-native-zss-rich-text-editor": "https://github.com/jb-/react-native-zss-rich-text-editor",
     "react-redux": "7.2.2",
