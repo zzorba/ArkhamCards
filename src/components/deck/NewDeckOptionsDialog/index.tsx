@@ -257,11 +257,11 @@ function NewDeckOptionsDialog({
     const visibleCards: Card[] = [];
     forEach(requiredCardOptions, requiredCards => {
       forEach(requiredCards, requiredCard => {
-        if (requiredCard) {
-          visibleCards.push(requiredCard);
-        }
         if (card.code === requiredCard.code) {
           index = visibleCards.length;
+        }
+        if (requiredCard) {
+          visibleCards.push(requiredCard);
         }
       });
     });
@@ -278,7 +278,6 @@ function NewDeckOptionsDialog({
     );
   }, [componentId, requiredCardOptions, colors, investigator, singleCardView, tabooSetId]);
   const formContent = useMemo(() => {
-    const cardOptions = requiredCardOptions;
     let hasStarterDeck = false;
     if (investigatorId) {
       hasStarterDeck = starterDecks[investigatorId] !== undefined;
@@ -297,16 +296,16 @@ function NewDeckOptionsDialog({
             firstElement={renderNamePicker}
           />
         </View>
-        { !!find(cardOptions, option => option.length > 0) && (
+        { !!find(requiredCardOptions, option => option.length > 0) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <DeckSectionBlock title={t`Required Cards`} faction="neutral">
-              { map(cardOptions, (requiredCards, index) => {
+              { map(requiredCardOptions, (requiredCards, index) => {
                 return (
                   <RequiredCardSwitch
                     key={`${investigatorId}-${index}`}
                     index={index}
                     onPress={onCardPress}
-                    disabled={(index === 0 && cardOptions.length === 1) || starterDeck}
+                    disabled={(index === 0 && requiredCardOptions.length === 1) || starterDeck}
                     cards={requiredCards}
                     value={optionSelected[index] || false}
                     onValueChange={toggleOptionsSelected}
