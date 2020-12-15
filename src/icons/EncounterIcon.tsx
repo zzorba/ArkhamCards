@@ -70,6 +70,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.standaloneIcon('jacqueline', size, color);
       case 'ste':
         return this.standaloneIcon('stella', size, color);
+      case 'meddling_of_meowlathotep':
+        return this.standaloneIcon('meddling', size, color);
       case 'rtnotz':
       case 'core':
       case 'agents_of_hastur':
