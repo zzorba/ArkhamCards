@@ -2924,6 +2924,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Auf deiner Suche in Dunwich hast du einige Dokumente, Tagebucheinträge und esoterische Theorien gefunden. Nach der Lektüre dieses Materials bist du erschöpft und emotional ausgelaugt. Die meisten stammen von einem Autor – einem Mann namens Seth Bishop. Als du dich im Ort nach ihm erkundigst, erfährst du, dass dieser Seth ein Einwohner von Dunwich ist. Gemeinsam mit anderen hat Seth die Zerstörung selbst gesehen, die „das Grauen von Dunwich“, wie Armitage die Ereignisse genannt hat, über den Ort gebracht hat. Seltsamerweise haben seitdem nur wenige Menschen Seth im Ort gesehen. Und diese wenigen behaupten, er habe stark geschwitzt, blutunterlaufene Augen und ein bleiches Gesicht gehabt.\nDu zweifelst nicht daran, dass jemand, der mitansehen musste, was Seth gesehen hatte, nervös oder paranoid wirken könnte. Aber je mehr du von seinen hektisch und unzusammenhängend geschriebenen Texten liest, desto mehr glaubst du, dass er mit den aktuellen Ereignissen zu tun hat. Er schreibt davon, die „Überreste eingesammelt“ zu haben und arkane Methoden anwenden zu wollen, um andere Wesen „mit der Essenz des Vaters zu durchdringen“, am Ende sogar andere Menschen. Die Erklärungen und Diagramme, die darauf folgen, sind unfassbar komplex und erschließen sich dir nicht. \nBevor du Seth finden und damit konfrontieren kannst, wenden sich einige Männer und Frauen aus dem Ort ängstlich an dich. „Es ist zurück!“, weint einer von ihnen. Du erkennst ihn als Curtis Whateley, ein Mitglied des nicht verdorbenen Zweigs der Familie. „Was auch immer die Fryes getötet hat, es is' zurück! Hat das Haus der Bishops zerquetscht, wie wenn's aus Papier wär'!“ Curtis und die anderen Dorfbewohner zetern weiter und ihre Stimmen werden vor Panik immer lauter. "
     },
@@ -2955,6 +2959,10 @@
     },
     {
       "id": "part1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_1",
+        "name": "Part 1"
+      },
       "type": "story",
       "text": "Du versuchst die Dorfbewohner zu beruhigen, damit sie dir erklären können, was passiert ist. Du erfährst, dass es im Norden ein Rumpeln gegeben hat und als sie nachschauen wollten, woher es kam, fanden sie das Farmhaus der Bishops in Trümmern vor. Riesige Spuren führen in die nahegelegene Cold-Spring-Schlucht. „Sie wissen, was zu tun ist, oder? Ihr Typen aus Arkham habt das Ding schon mal aufgehalten“, sagt einer der Dorfbewohner. Curtis schüttelt den Kopf und beißt sich auf die Lippe. \n„Wir konnten diese Höllenkreatur nicht mal sehen, bis der alte Professor so'n Pulver drauf gesprüht hat“, sagt er. „Bis heute wünsch' ich mir, ich hätts nich' gesehen ...“ Etwas muss geschehen, um die Zerstörung durch dieses Monster aufzuhalten. Aber falls in den Dokumenten, die du gefunden hast, die Wahrheit steht, ist vielleicht mehr als nur eines dieser Monster in der Gegend unterwegs ... "
     },
@@ -2971,6 +2979,10 @@
     },
     {
       "id": "part2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_2",
+        "name": "Part 2"
+      },
       "type": "story",
       "text": "Du warnst die Dorfbewohner vor der großen Gefahr, in der sie sich befinden, und drängst sie dazu, aus Dunwich zu fliehen, solange sie noch können. Einige von ihnen folgen deinem Rat sofort, weil sie sich noch gut an das Monster erinnern können, das den Ort schon einmal in Gefahr gebracht hat. Curtis sinkt auf die Knie, verzweifelt und schwitzend, als ob er Fieber hätte. „Es ist wieder das <b>Ding</b>, oder? Es ist zurück und holt uns“, stammelt Curtis. „Ich hoffe, Sie haben so Pulver wie der alte Professor damals. Wir konnten das verdammte Ding nich' mal sehen, bevor er es damit besprüht hatte.“ Etwas muss geschehen, um das Monster aufzuhalten. Aber falls in den Dokumenten, die du gefunden hast, die Wahrheit steht, ist vielleicht mehr als nur eines dieser Monster in der Gegend unterwegs ... "
     },
@@ -3224,6 +3236,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
       "investigator_status": [
         "resigned",
@@ -3238,6 +3254,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Du hast alles getan, was du konntest, um die tobenden Monster aufzuhalten, aber es gab mehr von ihnen, als du zunächst erkannt hast, und du warst nicht in der Lage, sie alle zu töten. Erschöpft und verängstigt ziehst du dich in Zebulons Haus zurück und hoffst die Nacht zu überleben.",
       "steps": [
@@ -3249,6 +3269,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Nachdem du die scheinbar letzten tobenden Monster getötet hast, ziehst du dich von dieser Erfahrung aufgewühlt und erschöpft in Zebulons Haus zurück.",
       "steps": [
@@ -13834,6 +13858,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Auf deiner Suche in Dunwich hast du einige Dokumente, Tagebucheinträge und esoterische Theorien gefunden. Nach der Lektüre dieses Materials bist du erschöpft und emotional ausgelaugt. Die meisten stammen von einem Autor – einem Mann namens Seth Bishop. Als du dich im Ort nach ihm erkundigst, erfährst du, dass dieser Seth ein Einwohner von Dunwich ist. Gemeinsam mit anderen hat Seth die Zerstörung selbst gesehen, die „das Grauen von Dunwich“, wie Armitage die Ereignisse genannt hat, über den Ort gebracht hat. Seltsamerweise haben seitdem nur wenige Menschen Seth im Ort gesehen. Und diese wenigen behaupten, er habe stark geschwitzt, blutunterlaufene Augen und ein bleiches Gesicht gehabt.\nDu zweifelst nicht daran, dass jemand, der mitansehen musste, was Seth gesehen hatte, nervös oder paranoid wirken könnte. Aber je mehr du von seinen hektisch und unzusammenhängend geschriebenen Texten liest, desto mehr glaubst du, dass er mit den aktuellen Ereignissen zu tun hat. Er schreibt davon, die „Überreste eingesammelt“ zu haben und arkane Methoden anwenden zu wollen, um andere Wesen „mit der Essenz des Vaters zu durchdringen“, am Ende sogar andere Menschen. Die Erklärungen und Diagramme, die darauf folgen, sind unfassbar komplex und erschließen sich dir nicht. \nBevor du Seth finden und damit konfrontieren kannst, wenden sich einige Männer und Frauen aus dem Ort ängstlich an dich. „Es ist zurück!“, weint einer von ihnen. Du erkennst ihn als Curtis Whateley, ein Mitglied des nicht verdorbenen Zweigs der Familie. „Was auch immer die Fryes getötet hat, es is' zurück! Hat das Haus der Bishops zerquetscht, wie wenn's aus Papier wär'!“ Curtis und die anderen Dorfbewohner zetern weiter und ihre Stimmen werden vor Panik immer lauter. "
     },
@@ -13865,6 +13893,10 @@
     },
     {
       "id": "part1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_1",
+        "name": "Part 1"
+      },
       "type": "story",
       "text": "Du versuchst die Dorfbewohner zu beruhigen, damit sie dir erklären können, was passiert ist. Du erfährst, dass es im Norden ein Rumpeln gegeben hat und als sie nachschauen wollten, woher es kam, fanden sie das Farmhaus der Bishops in Trümmern vor. Riesige Spuren führen in die nahegelegene Cold-Spring-Schlucht. „Sie wissen, was zu tun ist, oder? Ihr Typen aus Arkham habt das Ding schon mal aufgehalten“, sagt einer der Dorfbewohner. Curtis schüttelt den Kopf und beißt sich auf die Lippe. \n„Wir konnten diese Höllenkreatur nicht mal sehen, bis der alte Professor so'n Pulver drauf gesprüht hat“, sagt er. „Bis heute wünsch' ich mir, ich hätts nich' gesehen ...“ Etwas muss geschehen, um die Zerstörung durch dieses Monster aufzuhalten. Aber falls in den Dokumenten, die du gefunden hast, die Wahrheit steht, ist vielleicht mehr als nur eines dieser Monster in der Gegend unterwegs ... "
     },
@@ -13881,6 +13913,10 @@
     },
     {
       "id": "part2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_2",
+        "name": "Part 2"
+      },
       "type": "story",
       "text": "Du warnst die Dorfbewohner vor der großen Gefahr, in der sie sich befinden, und drängst sie dazu, aus Dunwich zu fliehen, solange sie noch können. Einige von ihnen folgen deinem Rat sofort, weil sie sich noch gut an das Monster erinnern können, das den Ort schon einmal in Gefahr gebracht hat. Curtis sinkt auf die Knie, verzweifelt und schwitzend, als ob er Fieber hätte. „Es ist wieder das <b>Ding</b>, oder? Es ist zurück und holt uns“, stammelt Curtis. „Ich hoffe, Sie haben so Pulver wie der alte Professor damals. Wir konnten das verdammte Ding nich' mal sehen, bevor er es damit besprüht hatte.“ Etwas muss geschehen, um das Monster aufzuhalten. Aber falls in den Dokumenten, die du gefunden hast, die Wahrheit steht, ist vielleicht mehr als nur eines dieser Monster in der Gegend unterwegs ... "
     },
@@ -14144,6 +14180,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
       "investigator_status": [
         "resigned",
@@ -14158,6 +14198,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Du hast alles getan, was du konntest, um die tobenden Monster aufzuhalten, aber es gab mehr von ihnen, als du zunächst erkannt hast, und du warst nicht in der Lage, sie alle zu töten. Erschöpft und verängstigt ziehst du dich in Zebulons Haus zurück und hoffst die Nacht zu überleben.",
       "steps": [
@@ -14169,6 +14213,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Nachdem du die scheinbar letzten tobenden Monster getötet hast, ziehst du dich von dieser Erfahrung aufgewühlt und erschöpft in Zebulons Haus zurück.",
       "steps": [

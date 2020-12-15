@@ -2924,6 +2924,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Tras registrar el pueblo de Dunwich, habéis descubierto una serie de documentos, entradas de diarios y teorías esotéricas. Leer todo ese material os deja cansados y agotados emocionalmente. La mayor parte del contenido lo escribió la misma persona: un hombre llamado Seth Bishop. Cuando preguntáis en el pueblo, descubrís que Seth es un habitante de Dunwich. Junto a varias personas más, Seth asistió de primera mano a la devastación causada por los acontecimientos de “el horror de Dunwich”, como Armitage llamó al incidente. Curiosamente, muy poca gente había visto a Seth por el pueblo desde entonces, y quienes lo vieron afirman que tenía los ojos inyectados en sangre y el rostro sudoroso y pálido.\nEstáis seguros de que alguien que hubiera visto lo que Seth ha visto parecería nervioso o paranoico. Pero cuanto más leéis sus frenéticos y delirantes escritos, más creéis que está implicado en los acontecimientos recientes. En ellos habla de haber “reunido los restos” y de haber usado métodos arcanos para “imbuir la esencia de los padres” en otras criaturas y, al final, en otras personas. Las explicaciones y diagramas que hay después son inenarrablemente complejos y desafían toda comprensión.\nAntes de que podáis encontrar a Seth y enfrentaros a él, varios hombres y mujeres del pueblo se os acercan presas del pánico. –¡Ha vuelto! –grita uno de ellos, al que reconocéis como Curtis Whateley, de la rama no podrida–. ¡Lo que sea que matara a los Frye ha vuelto! ¡Ha machacado la casa de los Bishop como si fuera de papel! –Curtis y los demás lugareños no dejan de dar voces, completamente asustados."
     },
@@ -2955,6 +2959,10 @@
     },
     {
       "id": "part1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_1",
+        "name": "Part 1"
+      },
       "type": "story",
       "text": "Queréis calmar a los lugareños para que os puedan explicar qué está pasando. Os informan de que hubo un estruendo al norte, y que cuando fueron a investigarlo, encontraron la granja de los Bishop hecha trizas y un rastro de pesadas huellas que llevaba hacia la cercana cañada de Cold Spring. –Saben lo que tienen que hacer, ¿verdad? Ustedes los de Arkham detuvieron a esa cosa la última vez –dice uno de los lugareños. Curtis sacude la cabeza y se muerde el labio.\n–Ni siquiera podíamos ver a esa cosa infernal hasta que el viejo profesor le echó ese polvo –dice–. Y ahora pienso que ojalá no la hubiera visto nunca... –Hay que hacer algo para detener los desmanes del monstruo. Pero si los documentos que habéis encontrado son ciertos, podría haber más de una de esas criaturas suelta..."
     },
@@ -2971,6 +2979,10 @@
     },
     {
       "id": "part2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_2",
+        "name": "Part 2"
+      },
       "type": "story",
       "text": "Avisáis a los lugareños de que corren un grave peligro y los apremiáis a que huyan de Dunwich mientras puedan. Varios siguen vuestro consejo de inmediato, pues recuerdan a la terrible monstruosidad que ya puso en peligro al pueblo una vez. Curtis cae de rodillas, presa de la desesperación y sudando febrilmente: –Es esa <b>cosa</b> de nuevo, ¿verdad? Ha vuelto a por nosotros –masculla Curtis–. Espero que tengan ese polvo que tenía el viejo profesor la última vez. Ni siquiera podíamos ver a la maldita cosa hasta que la roció con él. Y ahora pienso que ojalá no la hubiera visto nunca... –Hay que hacer algo para detener los desmanes del monstruo. Pero si los documentos que habéis encontrado son ciertos, podría haber más de una de esas criaturas suelta..."
     },
@@ -3224,6 +3236,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -3238,6 +3254,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "Habéis hecho todo lo que habéis podido por detener a los violentos monstruos, pero había más de los que pensabais y no lograsteis matarlos a todos. Agotados y aterrados, os retiráis a casa de Zebulon con la esperanza de sobrevivir a la noche.",
       "steps": [
@@ -3249,6 +3269,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Tras matar al que parece ser el último de los violentos monstruos, os retiráis a casa de Zebulon, agotados y conmocionados por la experiencia.",
       "steps": [
@@ -13834,6 +13858,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Tras registrar el pueblo de Dunwich, habéis descubierto una serie de documentos, entradas de diarios y teorías esotéricas. Leer todo ese material os deja cansados y agotados emocionalmente. La mayor parte del contenido lo escribió la misma persona: un hombre llamado Seth Bishop. Cuando preguntáis en el pueblo, descubrís que Seth es un habitante de Dunwich. Junto a varias personas más, Seth asistió de primera mano a la devastación causada por los acontecimientos de “el horror de Dunwich”, como Armitage llamó al incidente. Curiosamente, muy poca gente había visto a Seth por el pueblo desde entonces, y quienes lo vieron afirman que tenía los ojos inyectados en sangre y el rostro sudoroso y pálido.\nEstáis seguros de que alguien que hubiera visto lo que Seth ha visto parecería nervioso o paranoico. Pero cuanto más leéis sus frenéticos y delirantes escritos, más creéis que está implicado en los acontecimientos recientes. En ellos habla de haber “reunido los restos” y de haber usado métodos arcanos para “imbuir la esencia de los padres” en otras criaturas y, al final, en otras personas. Las explicaciones y diagramas que hay después son inenarrablemente complejos y desafían toda comprensión.\nAntes de que podáis encontrar a Seth y enfrentaros a él, varios hombres y mujeres del pueblo se os acercan presas del pánico. –¡Ha vuelto! –grita uno de ellos, al que reconocéis como Curtis Whateley, de la rama no podrida–. ¡Lo que sea que matara a los Frye ha vuelto! ¡Ha machacado la casa de los Bishop como si fuera de papel! –Curtis y los demás lugareños no dejan de dar voces, completamente asustados."
     },
@@ -13865,6 +13893,10 @@
     },
     {
       "id": "part1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_1",
+        "name": "Part 1"
+      },
       "type": "story",
       "text": "Queréis calmar a los lugareños para que os puedan explicar qué está pasando. Os informan de que hubo un estruendo al norte, y que cuando fueron a investigarlo, encontraron la granja de los Bishop hecha trizas y un rastro de pesadas huellas que llevaba hacia la cercana cañada de Cold Spring. –Saben lo que tienen que hacer, ¿verdad? Ustedes los de Arkham detuvieron a esa cosa la última vez –dice uno de los lugareños. Curtis sacude la cabeza y se muerde el labio.\n–Ni siquiera podíamos ver a esa cosa infernal hasta que el viejo profesor le echó ese polvo –dice–. Y ahora pienso que ojalá no la hubiera visto nunca... –Hay que hacer algo para detener los desmanes del monstruo. Pero si los documentos que habéis encontrado son ciertos, podría haber más de una de esas criaturas suelta..."
     },
@@ -13881,6 +13913,10 @@
     },
     {
       "id": "part2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_2",
+        "name": "Part 2"
+      },
       "type": "story",
       "text": "Avisáis a los lugareños de que corren un grave peligro y los apremiáis a que huyan de Dunwich mientras puedan. Varios siguen vuestro consejo de inmediato, pues recuerdan a la terrible monstruosidad que ya puso en peligro al pueblo una vez. Curtis cae de rodillas, presa de la desesperación y sudando febrilmente: –Es esa <b>cosa</b> de nuevo, ¿verdad? Ha vuelto a por nosotros –masculla Curtis–. Espero que tengan ese polvo que tenía el viejo profesor la última vez. Ni siquiera podíamos ver a la maldita cosa hasta que la roció con él. Y ahora pienso que ojalá no la hubiera visto nunca... –Hay que hacer algo para detener los desmanes del monstruo. Pero si los documentos que habéis encontrado son ciertos, podría haber más de una de esas criaturas suelta..."
     },
@@ -14144,6 +14180,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores desistieron o fueron derrotados)",
       "investigator_status": [
         "resigned",
@@ -14158,6 +14198,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "Habéis hecho todo lo que habéis podido por detener a los violentos monstruos, pero había más de los que pensabais y no lograsteis matarlos a todos. Agotados y aterrados, os retiráis a casa de Zebulon con la esperanza de sobrevivir a la noche.",
       "steps": [
@@ -14169,6 +14213,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Tras matar al que parece ser el último de los violentos monstruos, os retiráis a casa de Zebulon, agotados y conmocionados por la experiencia.",
       "steps": [

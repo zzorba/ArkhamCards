@@ -2924,6 +2924,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Vos recherches dans le village de Dunwich ont permis de mettre à jour un certain nombre de documents, de journaux et de théories ésotériques. Lire tout cela vous laisse exténué et mentalement épuisé. La plupart ont été écrits par un seul homme – Seth Bishop. En vous renseignant dans le village, vous apprenez que Seth est un habitant de Dunwich. Seth faisait partie des personnes qui ont été les témoins directs de la dévastation apportée par les événements de « L’Abomination de Dunwich, » comme l’a surnommé Armitage. Bizarrement, peu de gens ont aperçu Seth au village depuis lors et ceux qui l’ont vu prétendent qu’il avait les yeux injectés de sang et le visage pale et en sueur.\nVous ne doutez pas que quelqu’un ayant vu ce dont Seth a été témoin puisse paraître nerveux ou paranoïaque, mais plus vous lisez ses écrits déments et frénétiques, plus votre certitude qu’il est impliqué dans les derniers événements s’affermit. Ses écrits parlent de « rassembler les restes » et d’utiliser des procédés mystiques pour « imprégner l’essence des pères » dans d’autres créatures, voire dans d’autres personnes. Les explications et diagrammes qui les accompagnent sont d’une incroyable complexité et défient l’entendement.\nAvant que vous ne soyez parvenu à trouver et arrêter Seth, plusieurs hommes et femmes du village viennent vers vous paniqués. « Il est de retour ! » gémit l’un des hommes que vous reconnaissez comme étant Curtis Whateley, de la branche saine. « La chose qui a tué les Frye est revenue ! Elle a détruit la maison des Bishop comme si c’était une brindille ! » Curtis et les autres villageois se mettent à parler tous en même temps et la panique commence à percer dans leurs voix."
     },
@@ -2955,6 +2959,10 @@
     },
     {
       "id": "part1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_1",
+        "name": "Part 1"
+      },
       "type": "story",
       "text": "Vous tentez de calmer les villageois afin qu’ils puissent expliquer ce qu’il se passe. Ils disent avoir entendu un grondement au nord. Quand ils sont allés voir de quoi il retournait, ils ont trouvé la ferme des Bishop réduite en miettes. Une profonde traînée menait jusqu’au vallon de la Source. « Vous savez quoi faire, non ? Vous, les types d’Arkham, vous avez arrêté cette chose la dernière fois, » scande l’un des villageois. Curtis secoue la tête en se mordillant la lèvre.\n« On ne pouvait même pas voir cette satanée chose avant que le professeur ne jette cette poudre sur lui, » dit-il. « Aujourd’hui, je préférerai même ne jamais l’avoir vue... » Il faut faire quelque chose pour arrêter ce carnage, mais si les documents que vous avez trouvés disent vrai, il pourrait y avoir plusieurs de ces créatures..."
     },
@@ -2971,6 +2979,10 @@
     },
     {
       "id": "part2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_2",
+        "name": "Part 2"
+      },
       "type": "story",
       "text": "Vous prévenez les villageois qu’ils sont en grand danger et les pressez de fuir Dunwich dès qu’ils le peuvent. Plusieurs d’entre eux suivent immédiatement votre avertissement, se souvenant de la terrible monstruosité qui a précédemment menacé leur village. Curtis tombe a genou, fébrile et en sueur. Il semble anéanti. « C’est encore cette <b>chose</b>, n’est-ce pas ? Elle est revenue pour nous, » bégaye Curtis. « J’espère que vous avez de cette poudre que le professeur avait la dernière fois, vous ne pourrez même pas voir cette satanée chose sans ça. Aujourd’hui, je préférerai même ne jamais l’avoir vue... » Il faut faire quelque chose pour arrêter ce carnage, mais si les documents que vous avez trouvés disent vrai, il pourrait y avoir plusieurs de ces créatures..."
     },
@@ -3224,6 +3236,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'est atteinte\n(tous les investigateurs ont abandonné ou été vaincus)",
       "investigator_status": [
         "resigned",
@@ -3238,6 +3254,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Vous avez fait tout ce que vous avez pu pour arrêter les monstres en furie, mais ils étaient plus nombreux que ce que vous imaginiez et n’êtes pas parvenu à tous les tuer. Épuisé et terrifié, vous vous repliez vers la maison de Zebulon en espérant survivre à la nuit...",
       "steps": [
@@ -3249,6 +3269,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Après avoir vaincu ce qui semble être le dernier des monstres en furie, vous vous repliez vers la maison de Zebulon, épuisé et ébranlé par les expériences de cette nuit.",
       "steps": [
@@ -13834,6 +13858,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Vos recherches dans le village de Dunwich ont permis de mettre à jour un certain nombre de documents, de journaux et de théories ésotériques. Lire tout cela vous laisse exténué et mentalement épuisé. La plupart ont été écrits par un seul homme – Seth Bishop. En vous renseignant dans le village, vous apprenez que Seth est un habitant de Dunwich. Seth faisait partie des personnes qui ont été les témoins directs de la dévastation apportée par les événements de « L’Abomination de Dunwich, » comme l’a surnommé Armitage. Bizarrement, peu de gens ont aperçu Seth au village depuis lors et ceux qui l’ont vu prétendent qu’il avait les yeux injectés de sang et le visage pale et en sueur.\nVous ne doutez pas que quelqu’un ayant vu ce dont Seth a été témoin puisse paraître nerveux ou paranoïaque, mais plus vous lisez ses écrits déments et frénétiques, plus votre certitude qu’il est impliqué dans les derniers événements s’affermit. Ses écrits parlent de « rassembler les restes » et d’utiliser des procédés mystiques pour « imprégner l’essence des pères » dans d’autres créatures, voire dans d’autres personnes. Les explications et diagrammes qui les accompagnent sont d’une incroyable complexité et défient l’entendement.\nAvant que vous ne soyez parvenu à trouver et arrêter Seth, plusieurs hommes et femmes du village viennent vers vous paniqués. « Il est de retour ! » gémit l’un des hommes que vous reconnaissez comme étant Curtis Whateley, de la branche saine. « La chose qui a tué les Frye est revenue ! Elle a détruit la maison des Bishop comme si c’était une brindille ! » Curtis et les autres villageois se mettent à parler tous en même temps et la panique commence à percer dans leurs voix."
     },
@@ -13865,6 +13893,10 @@
     },
     {
       "id": "part1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_1",
+        "name": "Part 1"
+      },
       "type": "story",
       "text": "Vous tentez de calmer les villageois afin qu’ils puissent expliquer ce qu’il se passe. Ils disent avoir entendu un grondement au nord. Quand ils sont allés voir de quoi il retournait, ils ont trouvé la ferme des Bishop réduite en miettes. Une profonde traînée menait jusqu’au vallon de la Source. « Vous savez quoi faire, non ? Vous, les types d’Arkham, vous avez arrêté cette chose la dernière fois, » scande l’un des villageois. Curtis secoue la tête en se mordillant la lèvre.\n« On ne pouvait même pas voir cette satanée chose avant que le professeur ne jette cette poudre sur lui, » dit-il. « Aujourd’hui, je préférerai même ne jamais l’avoir vue... » Il faut faire quelque chose pour arrêter ce carnage, mais si les documents que vous avez trouvés disent vrai, il pourrait y avoir plusieurs de ces créatures..."
     },
@@ -13881,6 +13913,10 @@
     },
     {
       "id": "part2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.part_2",
+        "name": "Part 2"
+      },
       "type": "story",
       "text": "Vous prévenez les villageois qu’ils sont en grand danger et les pressez de fuir Dunwich dès qu’ils le peuvent. Plusieurs d’entre eux suivent immédiatement votre avertissement, se souvenant de la terrible monstruosité qui a précédemment menacé leur village. Curtis tombe a genou, fébrile et en sueur. Il semble anéanti. « C’est encore cette <b>chose</b>, n’est-ce pas ? Elle est revenue pour nous, » bégaye Curtis. « J’espère que vous avez de cette poudre que le professeur avait la dernière fois, vous ne pourrez même pas voir cette satanée chose sans ça. Aujourd’hui, je préférerai même ne jamais l’avoir vue... » Il faut faire quelque chose pour arrêter ce carnage, mais si les documents que vous avez trouvés disent vrai, il pourrait y avoir plusieurs de ces créatures..."
     },
@@ -14144,6 +14180,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'est atteinte\n(tous les investigateurs ont abandonné ou été vaincus)",
       "investigator_status": [
         "resigned",
@@ -14158,6 +14198,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Vous avez fait tout ce que vous avez pu pour arrêter les monstres en furie, mais ils étaient plus nombreux que ce que vous imaginiez et n’êtes pas parvenu à tous les tuer. Épuisé et terrifié, vous vous repliez vers la maison de Zebulon en espérant survivre à la nuit...",
       "steps": [
@@ -14169,6 +14213,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.undimensioned_and_unseen.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Après avoir vaincu ce qui semble être le dernier des monstres en furie, vous vous repliez vers la maison de Zebulon, épuisé et ébranlé par les expériences de cette nuit.",
       "steps": [
