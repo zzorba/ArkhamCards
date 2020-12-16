@@ -805,11 +805,19 @@
     },
     {
       "id": "epilogue_1",
+      "narration": {
+        "id": "the_dunwich_legacy.epilogue.epilogue_1",
+        "name": "Epilogue 1"
+      },
       "type": "story",
       "text": "Sechs Monate waren vergangen und das Leben von Curtis Whateley verlief endlich wieder in normalen Bahnen. Weil die Ereignisse vertuscht worden waren und sich die Autoritäten von diesem Teil des Ortes fernhielten, hatte Mr. Osborn den Besitz der Familien Ericks und Bishop versteigert. Natürlich hatte Joe einige Kleinigkeiten für sich behalten, aber Curtis wollte damit nichts mehr zu tun haben. Aufgrund der Sünden seiner Familie misstrauten ihm die Einwohner sowieso schon, auch wenn er regelmäßig in die Kirche ging und sich von allem Arkanen fernhielt.\nTrotzdem konnte Curtis einige bange Vorahnungen nicht abschütteln. Er hatte die Zerstörung der Häuser der Ericks, Bishops und Fryes miterlebt. Außerdem hatte er die Kreatur, welche die Leute aus Arkham gebannt hatten, mit eigenen Augen gesehen. An einigen Tagen führten ihn seine Gedanken zur Farm von Wilbur Whateley, wo er dann draußen stand und sie stundenlang betrachtete. Er brachte den Mut nicht auf, sie zu betreten, war aber trotzdem zu neugierig, einfach wieder zu gehen. Vielleicht gab es da etwas, das seine fürchterlichen Visionen verschwinden lassen würde. Etwas, das ihm genug Stärke verleihen könnte, um seinen Albträumen zu widerstehen. Curtis entschied, dass er so etwas finden müsste."
     },
     {
       "id": "epilogue_2",
+      "narration": {
+        "id": "the_dunwich_legacy.epilogue.epilogue_2",
+        "name": "Epilogue 2"
+      },
       "type": "story",
       "text": "Gené kniete sich hin, um das Zeichen im Staub zu untersuchen. Die Form des Zeichens war ihr unbekannt, die Spuren, denen sie hierher gefolgt war, hatte sie noch nie zuvor gesehen. Und dann noch der Bericht von der Universität ... sie wusste einfach nicht, was sie davon halten sollte. „Ms. Beauregard“, rief ihr Assistent ihr zu. „Haben Sie etwas gefunden?“\nGené stand auf und betrachtete den Studienanfänger, der ihr zugewiesen worden war. Er war ein guter Junge, etwas unreif, aber er arbeitete hart und war wild darauf, sich zu beweisen. „Dieser Platz sollte abgesperrt werden“, antwortete Gené. „Hier lebt seit Monaten niemand mehr. Und trotzdem, sehen Sie mal hier, die primitiven Rituale werden bis heute fortgesetzt.“\nDer Student kam näher und untersuchte gemeinsam mit Gené das Zeichen, blätterte in seinen Aufzeichnungen, um das Symbol zu vergleichen. „Was denken Sie, bedeutet es?“, fragte er. Sie schüttelte den Kopf. Fremde kamen nur selten nach Dunwich und alle Schilder, die auf diese Ortschaft hinwiesen, waren demontiert worden. Aber inzwischen hatten auch die Einwohner, dessen Heimat dieser Ort war, ihn verlassen.\n„Ich weiß es nicht“, gab Gené zu. „Aber hier ist jemand und das ist nicht das erste Zeichen dieser Art, das wir gefunden haben. Die Geschichten berichten von einem Altar auf dem Hügel dort, auf dem die Einheimischen heidnische Rituale durchgeführt haben. Vielleicht finden wir da mehr.“"
     }
@@ -1591,6 +1599,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Die Erfahrung, durch das Tor gezogen zu werden, gleicht keiner Erfahrung, die du in deinem Leben bisher gemacht hast. Du spürst, wie dein Körper verdreht und verzerrt und durch die Realitäten gewirbelt wird, um sein eigentliches Ziel zu erreichen – einen Ort, der jenseits der menschlichen Vorstellungskraft liegt.\nPlötzlich ist alles um dich herum still und statt des Chaos deiner Reise fühlst du plötzlich nur noch Einsamkeit und Grauen. Du bist an einem unfassbaren, fremdartigen Ort, weit jenseits dessen, was dein Verstand begreifen kann. Die Landschaft ist surreal und fremd, die Gebäude eigentlich unmöglich. Du bist so weit von deiner Heimat entfernt, dass diese nur noch ein flüchtiger Traum zu sein scheint, an den du dich kaum noch erinnern kannst. Selbst wenn du einen Weg finden würdest, diesen Ort zu verlassen, wärst du doch niemals wieder derselbe wie zuvor."
     },
@@ -1809,6 +1821,10 @@
   "resolutions": [
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Besiegter Ermittler",
       "text": "Woher bist du gekommen? Warum bist du hier? Träumst du oder ist dieser Ort real? Jetzt, wo du darüber nachdenkst, bist du nicht schon einmal hier gewesen? Oder vielleicht warst du auch schon immer hier? Nun erinnerst du dich. Das ist deine wahre Heimat. Der Weg, den du nun nimmst, ist nur ein Sims, unter dem es noch viele weitere gibt. Du musst nur fallen und wirst da sein, wo du hingehörst. Nur noch ein Schritt ...",
       "steps": [
@@ -1829,6 +1845,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Du liegst auf einem nassen Grasflecken auf dem Rücken und starrst sehnsüchtig in den Nachthimmel. Du befindest dich wieder auf dem Gipfel des Sentinel Hill und hast keine Ahnung, wie du dorthin gekommen bist. Du bist wie hypnotisiert vom Nachthimmel. Aus Sekunden werden Minuten, aus Minuten werden Stunden. Endlich findet dich eine Gruppe Dorfbewohner von Dunwich und zieht dich auf deine Füße. „Was ist passiert? Was machen Sie hier?“, fragen sie dich erschrocken und neugierig. Du findest nicht die richtigen Worte, um die Ereignisse jenseits des Tores zu beschreiben ... falls sie wirklich passiert sind. Es scheint keine Spur mehr von Seth Bishop, den Kreaturen, gegen die du gekämpft hast, oder von dem phantastischen und außerirdischen Tor zu geben. Aber im Schlaf träumst du regelmäßig – und wenn du träumst, kommt alles zurück.",
       "steps": [
@@ -1841,6 +1861,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Einige Dorfbewohner aus Dunwich haben den Lärm auf dem Sentinel Hill gehört und sind hergekommen, um herauszufinden, was los ist. Aber das, was sie vorgefunden haben, beantwortete ihre Frage nicht.\n„Was glaubt ihr, ist hier passiert?“, fragt ein verängstigter Curtis Whateley, während sie den Gipfel untersuchen. Die anderen Dorfbewohner wissen es auch nicht und schütteln den Kopf. „Das Letzte, was ich gesehen habe, ist, dass der Himmel aufgerissen ist, und dann war da dieser helle Blitz\", sagt einer von ihnen und blickt vom Gipfel des Sentinel Hill zum Sternenhimmel auf.\n„Ich sehe diese Typen aus Arkham hier nirgends“, fügt Curtis hinzu und blickt auf den zerborstenen Steinaltar. „Nicht mal eine Spur von ihnen. Mr. Bishop und seine Freunde dagegen ...“ Der junge Mann deutet auf einige Leichen am Boden.\n„Schätze, wir sollten diese Cops aus Aylesbury holen?“\n„Warum? Damit sie uns erneut auslachen können?“, spuckt Curtis aus. „Sie werden uns all das sowieso nicht glauben.“ Er blickt auf den Steinaltar und spielt nervös mit seinen Fingern herum. „Wir vergessen die ganze Sache besser. Kommt, begraben wir die Toten und verschwinden von hier.“",
       "steps": [
@@ -1849,6 +1873,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Die Kreatur bricht aus einer kosmischen Zorneswelle aus Geräuschen, Farben und verzerrtem Raum hervor und wirft dich zurück, weg von ihr. Voller Furcht siehst du, wie einer ihrer Arme durch das Gewebe der Welt schneidet und sich ihre amorphe Gestalt durch den Riss presst und die Fäden der Welt mit sich reißt. Du versuchst dich an etwas festzuhalten, aber du wirst in den Riss gezogen. Du hast das Gefühl, dass dein Körper länger wird und dass etwas deinen Geist zerstört. Dann wird alles schwarz.",
       "steps": [
@@ -1859,6 +1887,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "text": "Die Zauberer aus Dunwich, die arkane Macht aus einem Reich außerhalb unserer Dimension suchten, haben erreicht, was Wilbur und der alte Whateley nicht geschafft haben. Durch Blutopfer und unbeschreibliche Experimente ist die dunkle Macht, die sie gesucht haben, nun für sie erreichbar. Aber sie werden keine Gelegenheit erhalten, die Macht wirklich auszuüben. Indem sie Wilburs Vater um Wissen angefleht haben, haben sie Kreaturen aus dem außerdimensionalen Reich herbeigerufen. Yog-Sothoth erscheint aus einem offenen Riss über dem Sentinel Hill, löscht den Himmel aus und umschlingt die Welt. Nun ist er auf die Erde hinabgestiegen und regiert die Reiche, die einst den Menschen gehörten.",
       "steps": [
@@ -3307,6 +3339,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Du wachst durch ein Kreischen auf. Das Schlimmste befürchtend greifst du nach deiner Ausrüstung und eilst auf die Straßen von Dunwich. Als du vor die Tür trittst, spürst du augenblicklich eine Verdorbenheit in der kalten Nachtluft, einen fürchterlichen, stechenden Geruch, der kaum zu beschreiben ist, und eine Schwere in der Luft, die das Atmen fast unmöglich macht. Die Bewohner von Dunwich haben ihre Türen verriegelt und der Ort liegt still und einsam da. In der Ferne siehst du ein schwaches Leuchten von einem Hügel oberhalb des Dorfes. Du hast von diesem Hügel in Armitages Aufzeichnungen gelesen und Zebulon hat von ihm erzählt. Er wird Sentinel Hill genannt. Die Geschichten erzählen von satanischen Ritualen, die dort vollzogen worden sind, und von großen Ritual-Scheiterhaufen, die den Nachthimmel erleuchten, während die Erde zornig bebt. \nSchwärme von Ziegenmelkern sitzen auf den Dächern um dich herum und beobachten dich unheilvoll, während du in Zebulons alten und klapprigen Lastwagen steigst. Auf deiner Fahrt zum Sentinel Hill hörst du das Kreischen, das den Himmel erfüllt, so hoch, dass es in deinen Ohren schmerzt. Alles, was du über Dunwich gelesen und selbst hier erlebt hast, hat zu diesem Ereignis hingeführt. Falls das unheilvolle Ritual, das Seth plant, etwas mit dem zu tun hat, was Armitage und seine Kollegen vor Monaten verhindert haben, geht es darum, die Gnade einer uralten Wesenheit zu gewinnen – <b>Yog-Sothoth</b>. Wenn du das Ritual nicht verhindern kannst, bedeutet das Verderben ... nicht nur für Dunwich, sondern für die ganze Welt."
     },
@@ -3330,6 +3366,10 @@
     },
     {
       "id": "part1",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.part_1",
+        "name": "Part 1"
+      },
       "type": "story",
       "text": "Weil der Pfad, der zum Sentinel Hill hinaufführt, zu eng und steinig für Zebulons Lastwagen ist, parkst du am Fuß des Hügels und bereitest dich darauf vor, den Rest des Weges zu Fuß zu gehen. In dem Moment bemerkst du, dass du nicht allein bist. Einige Männer und Frauen tauchen aus den Wäldern hinter dir auf, fuchteln mit Gewehren und stellen sich vor dir auf. Du hebst deine Hände und bereitest dich auf das Schlimmste vor. „Wartet“, sagt einer von ihnen und gibt den anderen ein Handzeichen. „Ich erkenne Sie – Sie sind der Typ aus dem Clover Club.“ Er grinst breit und senkt seine Waffe. „Naomi lässt Sie grüßen.“ \nNeugierig erkundigst du dich, warum die Gangster hier sind. „Ms. O'Bannion hat uns angewiesen herauszufinden, wer den Club ihres Verlobten angegriffen hat“, erklärt er. „Hat sich herausgestellt, dass einige Männer aus Arkham hinter der ganzen Sache gesteckt haben. Ein Typ namens Bishop und seine Anhänger. Wir haben sie hierher zurückverfolgt, bis hier zu dieser Müllhalde.“ Aber bevor er mehr erklären kann, hörst du das nur zu vertraute Rattern einer Thompson-Maschinenpistole in den Hügeln. „Das muss Vinny sein. Kommt, Jungs!“ Er bedeutet den anderen ihm zu folgen und rennt den Hügel hoch. Kopfschüttelnd folgst du ihm. Diese Gangster wissen nicht, auf was sie sich da einlassen."
     },
@@ -3740,6 +3780,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Bei dem schlecht gebundenen Buch scheint es sich um die Aufzeichnungen des alten Whateley zu handeln, dem Mann, der Wilbur die uralten Geheimnisse der Zauberei beigebracht hat. Du findest einen Abschnitt, in dem ein Ort außerhalb von Zeit und Raum beschrieben wird, wo sich die Welten verbinden und wo Yog-Sothoth lebt. Nur wenn du diesen Nexus am Rande der Realität erreichst, kannst du den Riss schließen, der die Welt aufgerissen hat. Du hast das Gefühl, dass du in dein Verderben rennst, nimmst deinen letzten Rest Mut zusammen und trittst durch das Tor.",
       "steps": [
@@ -3750,6 +3794,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Die Zauberer aus Dunwich, die arkane Macht aus einem Reich außerhalb unserer Dimension suchten, haben erreicht, was Wilbur und der alte Whateley nicht geschafft haben. Durch Blutopfer und unbeschreibliche Experimente ist die dunkle Macht, die sie gesucht haben, nun für sie erreichbar. Aber sie werden keine Gelegenheit erhalten, die Macht wirklich auszuüben. Indem sie Wilburs Vater um Wissen angefleht haben, haben sie Kreaturen aus dem außerdimensionalen Reich herbeigerufen. Yog-Sothoth erscheint aus einem offenen Riss über dem Sentinel Hill, löscht den Himmel aus und umschlingt die Welt. Nun ist er auf die Erde hinabgestiegen und regiert die Reiche, die einst den Menschen gehörten.",
       "steps": [
@@ -7526,11 +7574,19 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Du schwimmst zum Ufer, ziehst dich auf die Felsen und schnappst nach Luft. Einige Zeit bleibst du völlig erschöpft liegen. Jeder Muskel in deinem Körper schmerzt. Vor dir liegt eine einsame Weite des Schmerzes. In der Ferne siehst du die fremdartigen Türme einer verzerrten Stadt in die Wolken reichen. Hinter dir spiegeln sich in der dunklen Oberfläche des Sees, aus dem du gerade aufgetaucht bist, die Zwillingssonnen. Als du zurück in die schlammigen Tiefen blickst, entdeckst du keine Spur von der Kapelle, von der aus du gesprungen bist, oder von Mont Saint-Michel, nicht einmal von der Erde. Dies ist Carcosa – das Reich des Wahnsinns in den Sternen, über das Hastur uneingeschränkt gebietet."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Du landest auf schwarzem Obsidian, der sich an einer Turmspitze entlang windet. Du hustest Blut und ein stechender Schmerz fährt durch deine Eingeweide, als ob du dir eine Rippe gebrochen hättest. Vor dir liegt eine verzerrte, fremdartige Stadt. Ihre sich windenden Straßen und die von jeglicher Norm abweichende Bauweise zeigen nicht das kleinste bisschen Ordnung oder Struktur. In der Ferne spiegelt ein schlammiger See das Gleißen der Zwillingssonnen wider. Als du aufsiehst, bemerkst du hinter den Wolken die auf den Kopf gestellte Abtei von Mont Saint-Michel. Dies ist Carcosa – das Reich des Wahnsinns in den Sternen, über das Hastur uneingeschränkt gebietet."
     },
@@ -8209,6 +8265,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
       "investigator_status": [
         "eliminated",
@@ -8221,6 +8281,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Du stehst auf der Empore des Turms der Abtei von Mont Saint-Michel und ein nasskalter Wind fährt durch deine Haare. Die Bleiche Maske ruht in deiner Hand. Ihr fehlt jegliche Wärme. Du kannst dich kaum dazu überwinden, sie anzusehen. Nun kannst du dich an alles erinnern – wie alles anfing, wie es endete und alles, was dazwischen geschehen ist. Du musst nur noch eine Sache erledigen. Du schleuderst die Maske mit aller Kraft in die Luft und siehst zu, wie sie in die sturmumtosten Wellen tief unter dir fällt.",
       "steps": [
@@ -8234,6 +8298,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Donnernder Applaus lässt dich aus dem Schlaf hochfahren. Das Publikum im Theater springt auf und jubelt scheinbar endlos. Einige Mäzene in der ersten Reihe werfen den Schauspielern, die sich mit warmem, breitem Lächeln verbeugen, Rosen zu. An deinen Schläfen verspürst du einen schneidenden Schmerz. Wie bist du hierher zurückgekommen? Warst du die ganze Zeit über im Theater? Was war mit der Feier? Dem Sanatorium? Den Katakomben? ... Carcosa? War alles nur ein fürchterlicher Albtraum?\nDu verlässt den Zuschauersaal, bevor sich die Menge entscheidet dies ebenfalls zu tun. Deine Wahrnehmung ist von Schwindelgefühlen und Erschöpfung getrübt. Das Gewicht deiner langen Ermittlungen lastet schwer auf deinem Geist. Schließlich erreichst du das Foyer und kriechst mühsam weiter. In diesem Moment ergreift ein Mann in elegantem Anzug deinen Arm und zieht dich hoch. Du willst ihm gerade danken, als du ihn erkennst. Sein Anblick lässt dich für einen Moment schreckerfüllt zurückweichen. Der Schauspieler, der die Rolle des Fremden gespielt hat, trägt immer noch seine bleiche, ausdruckslose Maske. Er verneigt sich wortlos vor dir und wendet sich dann ab, um das Ward-Theater durch den Vordereingang zu verlassen.",
       "steps": [
@@ -8247,6 +8315,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Als du erwachst, sitzt du im Chœur Gothique der Abtei Mont Saint-Michel. Der Regen prasselt nicht mehr auf das Glas der Fenster über dir und du hörst weder Donner noch das Kreischen der geflügelten Schrecken am Himmel. Irgendwie bist du entkommen. Du kriechst zur Tür der Abtei und öffnest sie beklommen. Grelles Licht bohrt sich in deine Augen und du hebst die Hand, um sie vor dem Licht der Sonne zu schützen. Du stehst über dem wunderschönen Mont Saint-Michel. Möwen kreisen am wolkenlosen Himmel über der Abtei. Das Wasser um die Abtei ist ruhig und azurblau.\n„Ich habe Sie überall gesucht!“, hörst du eine Stimme hinter dir ausrufen. Du drehst dich erschrocken um. Einen Moment lang erwartest du, den Fremden und seine Bleiche Maske zu sehen, aber stattdessen steht der Kapitän des Bootes, den du angeheuert hast, um dich nach Mont Saint-Michel zu bringen, am Rand der Stufen und lächelt dich an. „Bereit für die Rückfahrt?“",
       "steps": [
@@ -8260,6 +8332,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "text": "Als du erwachst, sitzt du im Chœur Gothique der Abtei Mont Saint-Michel. Der Regen prasselt nicht mehr auf das Glas der Fenster über dir und du hörst weder Donner noch das Kreischen der geflügelten Schrecken am Himmel. Irgendwie bist du dem sicheren Verderben der Insel entkommen. Du kriechst zur Tür der Abtei und öffnest sie beklommen. Grelles Licht bohrt sich in deine Augen und du hebst die Hand, um sie vor dem gleißenden Licht der Zwillingssonnen zu schützen. Von deiner Position aus kannst du über den See von Hali schauen. Am Himmel über dir stehen schwarze Sterne. Meilenweit in der Ferne siehst du hinter den Wellen die Türme von Carcosa vor dem zersprungenen Mond.",
       "steps": [
@@ -8271,6 +8347,10 @@
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Auflösung 5",
       "text": "Die Welt da draußen wird nie erfahren, wie du versucht hast sie zu retten. Sie behandeln dich mit Mitleid, mit Zorn und Verachtung, aber du kennst die Wahrheit. Sie haben sich ihrem fürchterlichen Schicksal ergeben, aber du versuchst weiterhin jeden Tag ihnen die Botschaft zu überbringen. Du musst sie vor <u>Der König in Gelb</u>, vor Hastur und Carcosa warnen. „Eine weitere verlorene Seele“, sagen sie, aber sie können sich nicht vorstellen, was du durchgemacht hast, bei dem Versuch, sie zu retten. Du warnst sie davor, dass er kommen wird, um sie für sich zu beanspruchen, aber sie glauben dir nie. An den Wänden deiner Zelle schreibst du über Aldebaran und die schwarzen Sterne, aber die Worte verblassen mit den Jahren. Niemand nimmt sich deine Warnung zu Herzen.",
       "steps": [
@@ -8896,6 +8976,10 @@
     },
     {
       "id": "possessed",
+      "narration": {
+        "id": "the_path_to_carcosa.epilogue.possessed",
+        "name": "Possessed"
+      },
       "type": "story",
       "text": "Einige Monate Vorbereitung waren erforderlich, aber endlich bist du bereit dein neuestes Werk der Welt vorzustellen. Zunächst musstest du natürlich Sponsoren finden. Aber dank deiner Verbindungen in Paris hat das nicht lange gedauert. Man hat dir versichert, dass die Besetzung die beste ist, die man für Geld anwerben kann, aber trotzdem strebst du immer noch danach, alles zu perfektionieren. Es muss perfekt sein. Die Geschichte muss so erzählt werden, dass die Welt versteht. Du hörst, wie die Schauspieler hinter deinem Rücken flüstern: ihre Bemerkungen über deine bizarre Leidenschaft, ihre Besorgnis über deine durchdringenden gelben Augen. Aber das interessiert dich nicht. Du machst dir nur Gedanken über die Aufführung. Die Aussprache der Worte. Die Melodie von Cassildas Lied. Die Gestaltung der Maske des Fremden.\nDas wird die größte Aufführung von <u>Der König in Gelb</u> werden, welche die Welt je gesehen hat."
     }
@@ -11588,11 +11672,19 @@
     },
     {
       "id": "epilogue_1",
+      "narration": {
+        "id": "the_dunwich_legacy.epilogue.epilogue_1",
+        "name": "Epilogue 1"
+      },
       "type": "story",
       "text": "Sechs Monate waren vergangen und das Leben von Curtis Whateley verlief endlich wieder in normalen Bahnen. Weil die Ereignisse vertuscht worden waren und sich die Autoritäten von diesem Teil des Ortes fernhielten, hatte Mr. Osborn den Besitz der Familien Ericks und Bishop versteigert. Natürlich hatte Joe einige Kleinigkeiten für sich behalten, aber Curtis wollte damit nichts mehr zu tun haben. Aufgrund der Sünden seiner Familie misstrauten ihm die Einwohner sowieso schon, auch wenn er regelmäßig in die Kirche ging und sich von allem Arkanen fernhielt.\nTrotzdem konnte Curtis einige bange Vorahnungen nicht abschütteln. Er hatte die Zerstörung der Häuser der Ericks, Bishops und Fryes miterlebt. Außerdem hatte er die Kreatur, welche die Leute aus Arkham gebannt hatten, mit eigenen Augen gesehen. An einigen Tagen führten ihn seine Gedanken zur Farm von Wilbur Whateley, wo er dann draußen stand und sie stundenlang betrachtete. Er brachte den Mut nicht auf, sie zu betreten, war aber trotzdem zu neugierig, einfach wieder zu gehen. Vielleicht gab es da etwas, das seine fürchterlichen Visionen verschwinden lassen würde. Etwas, das ihm genug Stärke verleihen könnte, um seinen Albträumen zu widerstehen. Curtis entschied, dass er so etwas finden müsste."
     },
     {
       "id": "epilogue_2",
+      "narration": {
+        "id": "the_dunwich_legacy.epilogue.epilogue_2",
+        "name": "Epilogue 2"
+      },
       "type": "story",
       "text": "Gené kniete sich hin, um das Zeichen im Staub zu untersuchen. Die Form des Zeichens war ihr unbekannt, die Spuren, denen sie hierher gefolgt war, hatte sie noch nie zuvor gesehen. Und dann noch der Bericht von der Universität ... sie wusste einfach nicht, was sie davon halten sollte. „Ms. Beauregard“, rief ihr Assistent ihr zu. „Haben Sie etwas gefunden?“\nGené stand auf und betrachtete den Studienanfänger, der ihr zugewiesen worden war. Er war ein guter Junge, etwas unreif, aber er arbeitete hart und war wild darauf, sich zu beweisen. „Dieser Platz sollte abgesperrt werden“, antwortete Gené. „Hier lebt seit Monaten niemand mehr. Und trotzdem, sehen Sie mal hier, die primitiven Rituale werden bis heute fortgesetzt.“\nDer Student kam näher und untersuchte gemeinsam mit Gené das Zeichen, blätterte in seinen Aufzeichnungen, um das Symbol zu vergleichen. „Was denken Sie, bedeutet es?“, fragte er. Sie schüttelte den Kopf. Fremde kamen nur selten nach Dunwich und alle Schilder, die auf diese Ortschaft hinwiesen, waren demontiert worden. Aber inzwischen hatten auch die Einwohner, dessen Heimat dieser Ort war, ihn verlassen.\n„Ich weiß es nicht“, gab Gené zu. „Aber hier ist jemand und das ist nicht das erste Zeichen dieser Art, das wir gefunden haben. Die Geschichten berichten von einem Altar auf dem Hügel dort, auf dem die Einheimischen heidnische Rituale durchgeführt haben. Vielleicht finden wir da mehr.“"
     }
@@ -12844,6 +12936,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Die Erfahrung, durch das Tor gezogen zu werden, gleicht keiner Erfahrung, die du in deinem Leben bisher gemacht hast. Du spürst, wie dein Körper verdreht und verzerrt und durch die Realitäten gewirbelt wird, um sein eigentliches Ziel zu erreichen – einen Ort, der jenseits der menschlichen Vorstellungskraft liegt.\nPlötzlich ist alles um dich herum still und statt des Chaos deiner Reise fühlst du plötzlich nur noch Einsamkeit und Grauen. Du bist an einem unfassbaren, fremdartigen Ort, weit jenseits dessen, was dein Verstand begreifen kann. Die Landschaft ist surreal und fremd, die Gebäude eigentlich unmöglich. Du bist so weit von deiner Heimat entfernt, dass diese nur noch ein flüchtiger Traum zu sein scheint, an den du dich kaum noch erinnern kannst. Selbst wenn du einen Weg finden würdest, diesen Ort zu verlassen, wärst du doch niemals wieder derselbe wie zuvor."
     },
@@ -13093,6 +13189,10 @@
   "resolutions": [
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Besiegter Ermittler",
       "text": "Woher bist du gekommen? Warum bist du hier? Träumst du oder ist dieser Ort real? Jetzt, wo du darüber nachdenkst, bist du nicht schon einmal hier gewesen? Oder vielleicht warst du auch schon immer hier? Nun erinnerst du dich. Das ist deine wahre Heimat. Der Weg, den du nun nimmst, ist nur ein Sims, unter dem es noch viele weitere gibt. Du musst nur fallen und wirst da sein, wo du hingehörst. Nur noch ein Schritt ...",
       "steps": [
@@ -13113,6 +13213,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Du liegst auf einem nassen Grasflecken auf dem Rücken und starrst sehnsüchtig in den Nachthimmel. Du befindest dich wieder auf dem Gipfel des Sentinel Hill und hast keine Ahnung, wie du dorthin gekommen bist. Du bist wie hypnotisiert vom Nachthimmel. Aus Sekunden werden Minuten, aus Minuten werden Stunden. Endlich findet dich eine Gruppe Dorfbewohner von Dunwich und zieht dich auf deine Füße. „Was ist passiert? Was machen Sie hier?“, fragen sie dich erschrocken und neugierig. Du findest nicht die richtigen Worte, um die Ereignisse jenseits des Tores zu beschreiben ... falls sie wirklich passiert sind. Es scheint keine Spur mehr von Seth Bishop, den Kreaturen, gegen die du gekämpft hast, oder von dem phantastischen und außerirdischen Tor zu geben. Aber im Schlaf träumst du regelmäßig – und wenn du träumst, kommt alles zurück.",
       "steps": [
@@ -13125,6 +13229,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Einige Dorfbewohner aus Dunwich haben den Lärm auf dem Sentinel Hill gehört und sind hergekommen, um herauszufinden, was los ist. Aber das, was sie vorgefunden haben, beantwortete ihre Frage nicht.\n„Was glaubt ihr, ist hier passiert?“, fragt ein verängstigter Curtis Whateley, während sie den Gipfel untersuchen. Die anderen Dorfbewohner wissen es auch nicht und schütteln den Kopf. „Das Letzte, was ich gesehen habe, ist, dass der Himmel aufgerissen ist, und dann war da dieser helle Blitz\", sagt einer von ihnen und blickt vom Gipfel des Sentinel Hill zum Sternenhimmel auf.\n„Ich sehe diese Typen aus Arkham hier nirgends“, fügt Curtis hinzu und blickt auf den zerborstenen Steinaltar. „Nicht mal eine Spur von ihnen. Mr. Bishop und seine Freunde dagegen ...“ Der junge Mann deutet auf einige Leichen am Boden.\n„Schätze, wir sollten diese Cops aus Aylesbury holen?“\n„Warum? Damit sie uns erneut auslachen können?“, spuckt Curtis aus. „Sie werden uns all das sowieso nicht glauben.“ Er blickt auf den Steinaltar und spielt nervös mit seinen Fingern herum. „Wir vergessen die ganze Sache besser. Kommt, begraben wir die Toten und verschwinden von hier.“",
       "steps": [
@@ -13133,6 +13241,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Die Kreatur bricht aus einer kosmischen Zorneswelle aus Geräuschen, Farben und verzerrtem Raum hervor und wirft dich zurück, weg von ihr. Voller Furcht siehst du, wie einer ihrer Arme durch das Gewebe der Welt schneidet und sich ihre amorphe Gestalt durch den Riss presst und die Fäden der Welt mit sich reißt. Du versuchst dich an etwas festzuhalten, aber du wirst in den Riss gezogen. Du hast das Gefühl, dass dein Körper länger wird und dass etwas deinen Geist zerstört. Dann wird alles schwarz.",
       "steps": [
@@ -13143,6 +13255,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "text": "Die Zauberer aus Dunwich, die arkane Macht aus einem Reich außerhalb unserer Dimension suchten, haben erreicht, was Wilbur und der alte Whateley nicht geschafft haben. Durch Blutopfer und unbeschreibliche Experimente ist die dunkle Macht, die sie gesucht haben, nun für sie erreichbar. Aber sie werden keine Gelegenheit erhalten, die Macht wirklich auszuüben. Indem sie Wilburs Vater um Wissen angefleht haben, haben sie Kreaturen aus dem außerdimensionalen Reich herbeigerufen. Yog-Sothoth erscheint aus einem offenen Riss über dem Sentinel Hill, löscht den Himmel aus und umschlingt die Welt. Nun ist er auf die Erde hinabgestiegen und regiert die Reiche, die einst den Menschen gehörten.",
       "steps": [
@@ -14251,6 +14367,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Du wachst durch ein Kreischen auf. Das Schlimmste befürchtend greifst du nach deiner Ausrüstung und eilst auf die Straßen von Dunwich. Als du vor die Tür trittst, spürst du augenblicklich eine Verdorbenheit in der kalten Nachtluft, einen fürchterlichen, stechenden Geruch, der kaum zu beschreiben ist, und eine Schwere in der Luft, die das Atmen fast unmöglich macht. Die Bewohner von Dunwich haben ihre Türen verriegelt und der Ort liegt still und einsam da. In der Ferne siehst du ein schwaches Leuchten von einem Hügel oberhalb des Dorfes. Du hast von diesem Hügel in Armitages Aufzeichnungen gelesen und Zebulon hat von ihm erzählt. Er wird Sentinel Hill genannt. Die Geschichten erzählen von satanischen Ritualen, die dort vollzogen worden sind, und von großen Ritual-Scheiterhaufen, die den Nachthimmel erleuchten, während die Erde zornig bebt. \nSchwärme von Ziegenmelkern sitzen auf den Dächern um dich herum und beobachten dich unheilvoll, während du in Zebulons alten und klapprigen Lastwagen steigst. Auf deiner Fahrt zum Sentinel Hill hörst du das Kreischen, das den Himmel erfüllt, so hoch, dass es in deinen Ohren schmerzt. Alles, was du über Dunwich gelesen und selbst hier erlebt hast, hat zu diesem Ereignis hingeführt. Falls das unheilvolle Ritual, das Seth plant, etwas mit dem zu tun hat, was Armitage und seine Kollegen vor Monaten verhindert haben, geht es darum, die Gnade einer uralten Wesenheit zu gewinnen – <b>Yog-Sothoth</b>. Wenn du das Ritual nicht verhindern kannst, bedeutet das Verderben ... nicht nur für Dunwich, sondern für die ganze Welt."
     },
@@ -14274,6 +14394,10 @@
     },
     {
       "id": "part1",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.part_1",
+        "name": "Part 1"
+      },
       "type": "story",
       "text": "Weil der Pfad, der zum Sentinel Hill hinaufführt, zu eng und steinig für Zebulons Lastwagen ist, parkst du am Fuß des Hügels und bereitest dich darauf vor, den Rest des Weges zu Fuß zu gehen. In dem Moment bemerkst du, dass du nicht allein bist. Einige Männer und Frauen tauchen aus den Wäldern hinter dir auf, fuchteln mit Gewehren und stellen sich vor dir auf. Du hebst deine Hände und bereitest dich auf das Schlimmste vor. „Wartet“, sagt einer von ihnen und gibt den anderen ein Handzeichen. „Ich erkenne Sie – Sie sind der Typ aus dem Clover Club.“ Er grinst breit und senkt seine Waffe. „Naomi lässt Sie grüßen.“ \nNeugierig erkundigst du dich, warum die Gangster hier sind. „Ms. O'Bannion hat uns angewiesen herauszufinden, wer den Club ihres Verlobten angegriffen hat“, erklärt er. „Hat sich herausgestellt, dass einige Männer aus Arkham hinter der ganzen Sache gesteckt haben. Ein Typ namens Bishop und seine Anhänger. Wir haben sie hierher zurückverfolgt, bis hier zu dieser Müllhalde.“ Aber bevor er mehr erklären kann, hörst du das nur zu vertraute Rattern einer Thompson-Maschinenpistole in den Hügeln. „Das muss Vinny sein. Kommt, Jungs!“ Er bedeutet den anderen ihm zu folgen und rennt den Hügel hoch. Kopfschüttelnd folgst du ihm. Diese Gangster wissen nicht, auf was sie sich da einlassen."
     },
@@ -14690,6 +14814,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Bei dem schlecht gebundenen Buch scheint es sich um die Aufzeichnungen des alten Whateley zu handeln, dem Mann, der Wilbur die uralten Geheimnisse der Zauberei beigebracht hat. Du findest einen Abschnitt, in dem ein Ort außerhalb von Zeit und Raum beschrieben wird, wo sich die Welten verbinden und wo Yog-Sothoth lebt. Nur wenn du diesen Nexus am Rande der Realität erreichst, kannst du den Riss schließen, der die Welt aufgerissen hat. Du hast das Gefühl, dass du in dein Verderben rennst, nimmst deinen letzten Rest Mut zusammen und trittst durch das Tor.",
       "steps": [
@@ -14700,6 +14828,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Die Zauberer aus Dunwich, die arkane Macht aus einem Reich außerhalb unserer Dimension suchten, haben erreicht, was Wilbur und der alte Whateley nicht geschafft haben. Durch Blutopfer und unbeschreibliche Experimente ist die dunkle Macht, die sie gesucht haben, nun für sie erreichbar. Aber sie werden keine Gelegenheit erhalten, die Macht wirklich auszuüben. Indem sie Wilburs Vater um Wissen angefleht haben, haben sie Kreaturen aus dem außerdimensionalen Reich herbeigerufen. Yog-Sothoth erscheint aus einem offenen Riss über dem Sentinel Hill, löscht den Himmel aus und umschlingt die Welt. Nun ist er auf die Erde hinabgestiegen und regiert die Reiche, die einst den Menschen gehörten.",
       "steps": [
@@ -16830,6 +16962,10 @@
     },
     {
       "id": "possessed",
+      "narration": {
+        "id": "the_path_to_carcosa.epilogue.possessed",
+        "name": "Possessed"
+      },
       "type": "story",
       "text": "Einige Monate Vorbereitung waren erforderlich, aber endlich bist du bereit dein neuestes Werk der Welt vorzustellen. Zunächst musstest du natürlich Sponsoren finden. Aber dank deiner Verbindungen in Paris hat das nicht lange gedauert. Man hat dir versichert, dass die Besetzung die beste ist, die man für Geld anwerben kann, aber trotzdem strebst du immer noch danach, alles zu perfektionieren. Es muss perfekt sein. Die Geschichte muss so erzählt werden, dass die Welt versteht. Du hörst, wie die Schauspieler hinter deinem Rücken flüstern: ihre Bemerkungen über deine bizarre Leidenschaft, ihre Besorgnis über deine durchdringenden gelben Augen. Aber das interessiert dich nicht. Du machst dir nur Gedanken über die Aufführung. Die Aussprache der Worte. Die Melodie von Cassildas Lied. Die Gestaltung der Maske des Fremden.\nDas wird die größte Aufführung von <u>Der König in Gelb</u> werden, welche die Welt je gesehen hat."
     }
@@ -19600,11 +19736,19 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Du schwimmst zum Ufer, ziehst dich auf die Felsen und schnappst nach Luft. Einige Zeit bleibst du völlig erschöpft liegen. Jeder Muskel in deinem Körper schmerzt. Vor dir liegt eine einsame Weite des Schmerzes. In der Ferne siehst du die fremdartigen Türme einer verzerrten Stadt in die Wolken reichen. Hinter dir spiegeln sich in der dunklen Oberfläche des Sees, aus dem du gerade aufgetaucht bist, die Zwillingssonnen. Als du zurück in die schlammigen Tiefen blickst, entdeckst du keine Spur von der Kapelle, von der aus du gesprungen bist, oder von Mont Saint-Michel, nicht einmal von der Erde. Dies ist Carcosa – das Reich des Wahnsinns in den Sternen, über das Hastur uneingeschränkt gebietet."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Du landest auf schwarzem Obsidian, der sich an einer Turmspitze entlang windet. Du hustest Blut und ein stechender Schmerz fährt durch deine Eingeweide, als ob du dir eine Rippe gebrochen hättest. Vor dir liegt eine verzerrte, fremdartige Stadt. Ihre sich windenden Straßen und die von jeglicher Norm abweichende Bauweise zeigen nicht das kleinste bisschen Ordnung oder Struktur. In der Ferne spiegelt ein schlammiger See das Gleißen der Zwillingssonnen wider. Als du aufsiehst, bemerkst du hinter den Wolken die auf den Kopf gestellte Abtei von Mont Saint-Michel. Dies ist Carcosa – das Reich des Wahnsinns in den Sternen, über das Hastur uneingeschränkt gebietet."
     },
@@ -20292,6 +20436,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
       "investigator_status": [
         "eliminated",
@@ -20304,6 +20452,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Du stehst auf der Empore des Turms der Abtei von Mont Saint-Michel und ein nasskalter Wind fährt durch deine Haare. Die Bleiche Maske ruht in deiner Hand. Ihr fehlt jegliche Wärme. Du kannst dich kaum dazu überwinden, sie anzusehen. Nun kannst du dich an alles erinnern – wie alles anfing, wie es endete und alles, was dazwischen geschehen ist. Du musst nur noch eine Sache erledigen. Du schleuderst die Maske mit aller Kraft in die Luft und siehst zu, wie sie in die sturmumtosten Wellen tief unter dir fällt.",
       "steps": [
@@ -20317,6 +20469,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Donnernder Applaus lässt dich aus dem Schlaf hochfahren. Das Publikum im Theater springt auf und jubelt scheinbar endlos. Einige Mäzene in der ersten Reihe werfen den Schauspielern, die sich mit warmem, breitem Lächeln verbeugen, Rosen zu. An deinen Schläfen verspürst du einen schneidenden Schmerz. Wie bist du hierher zurückgekommen? Warst du die ganze Zeit über im Theater? Was war mit der Feier? Dem Sanatorium? Den Katakomben? ... Carcosa? War alles nur ein fürchterlicher Albtraum?\nDu verlässt den Zuschauersaal, bevor sich die Menge entscheidet dies ebenfalls zu tun. Deine Wahrnehmung ist von Schwindelgefühlen und Erschöpfung getrübt. Das Gewicht deiner langen Ermittlungen lastet schwer auf deinem Geist. Schließlich erreichst du das Foyer und kriechst mühsam weiter. In diesem Moment ergreift ein Mann in elegantem Anzug deinen Arm und zieht dich hoch. Du willst ihm gerade danken, als du ihn erkennst. Sein Anblick lässt dich für einen Moment schreckerfüllt zurückweichen. Der Schauspieler, der die Rolle des Fremden gespielt hat, trägt immer noch seine bleiche, ausdruckslose Maske. Er verneigt sich wortlos vor dir und wendet sich dann ab, um das Ward-Theater durch den Vordereingang zu verlassen.",
       "steps": [
@@ -20330,6 +20486,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Als du erwachst, sitzt du im Chœur Gothique der Abtei Mont Saint-Michel. Der Regen prasselt nicht mehr auf das Glas der Fenster über dir und du hörst weder Donner noch das Kreischen der geflügelten Schrecken am Himmel. Irgendwie bist du entkommen. Du kriechst zur Tür der Abtei und öffnest sie beklommen. Grelles Licht bohrt sich in deine Augen und du hebst die Hand, um sie vor dem Licht der Sonne zu schützen. Du stehst über dem wunderschönen Mont Saint-Michel. Möwen kreisen am wolkenlosen Himmel über der Abtei. Das Wasser um die Abtei ist ruhig und azurblau.\n„Ich habe Sie überall gesucht!“, hörst du eine Stimme hinter dir ausrufen. Du drehst dich erschrocken um. Einen Moment lang erwartest du, den Fremden und seine Bleiche Maske zu sehen, aber stattdessen steht der Kapitän des Bootes, den du angeheuert hast, um dich nach Mont Saint-Michel zu bringen, am Rand der Stufen und lächelt dich an. „Bereit für die Rückfahrt?“",
       "steps": [
@@ -20343,6 +20503,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "text": "Als du erwachst, sitzt du im Chœur Gothique der Abtei Mont Saint-Michel. Der Regen prasselt nicht mehr auf das Glas der Fenster über dir und du hörst weder Donner noch das Kreischen der geflügelten Schrecken am Himmel. Irgendwie bist du dem sicheren Verderben der Insel entkommen. Du kriechst zur Tür der Abtei und öffnest sie beklommen. Grelles Licht bohrt sich in deine Augen und du hebst die Hand, um sie vor dem gleißenden Licht der Zwillingssonnen zu schützen. Von deiner Position aus kannst du über den See von Hali schauen. Am Himmel über dir stehen schwarze Sterne. Meilenweit in der Ferne siehst du hinter den Wellen die Türme von Carcosa vor dem zersprungenen Mond.",
       "steps": [
@@ -20354,6 +20518,10 @@
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Auflösung 5",
       "text": "Die Welt da draußen wird nie erfahren, wie du versucht hast sie zu retten. Sie behandeln dich mit Mitleid, mit Zorn und Verachtung, aber du kennst die Wahrheit. Sie haben sich ihrem fürchterlichen Schicksal ergeben, aber du versuchst weiterhin jeden Tag ihnen die Botschaft zu überbringen. Du musst sie vor <u>Der König in Gelb</u>, vor Hastur und Carcosa warnen. „Eine weitere verlorene Seele“, sagen sie, aber sie können sich nicht vorstellen, was du durchgemacht hast, bei dem Versuch, sie zu retten. Du warnst sie davor, dass er kommen wird, um sie für sich zu beanspruchen, aber sie glauben dir nie. An den Wänden deiner Zelle schreibst du über Aldebaran und die schwarzen Sterne, aber die Worte verblassen mit den Jahren. Niemand nimmt sich deine Warnung zu Herzen.",
       "steps": [
@@ -33451,7 +33619,7 @@
         {
           "type": "earn_xp",
           "investigator": "$fixed_investigator",
-          "fixed_investigator": "01002",
+          "fixed_investigator": "01004",
           "bonus": -2
         }
       ]
@@ -33663,7 +33831,7 @@
                 "investigator": "$fixed_investigator",
                 "fixed_investigator": "01004",
                 "non_story": true,
-                "card": "90019"
+                "card": "01012"
               },
               {
                 "type": "add_card",
@@ -33683,7 +33851,7 @@
                 "investigator": "$fixed_investigator",
                 "fixed_investigator": "01004",
                 "non_story": true,
-                "card": "90003"
+                "card": "90019"
               },
               {
                 "type": "add_card",
@@ -33720,7 +33888,7 @@
     },
     {
       "id": "others_experience",
-      "text": "Each investigator besides Daisy Walker earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Each investigator besides Agnes Baker earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -39497,7 +39665,7 @@
     },
     {
       "id": "others_experience",
-      "text": "Each investigator besides Daisy Walker earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Jeder andere Ermittler neben Daisy Walker verdient Erfahrungspunkte in Höhe des Sieg- X-Wertes aller Karten im Siegpunktestapel.",
       "type": "input",
       "input": {
         "type": "counter",

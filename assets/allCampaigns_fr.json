@@ -805,11 +805,19 @@
     },
     {
       "id": "epilogue_1",
+      "narration": {
+        "id": "the_dunwich_legacy.epilogue.epilogue_1",
+        "name": "Epilogue 1"
+      },
       "type": "story",
       "text": "Six mois avaient passé et la vie de Curtis Whateley était finalement revenu à la normale. Comme ils avaient étouffé l'incident et que les autorités se tenaient à l'écart de tout cela, M. Osborn avait venu aux enchères les biens des familles Ericks et Bishop. Joe avait pris quelques bibelots bien entendu, mais Curtis ne voulait rien avoir à faire avec ça. Les gens ne lui faisaient déjà pas très confiance à cause des méfaits de sa famille bien qu’il aille régulièrement à l’église et se soit tenu à l’écart de tout ce qui semblait magique.\nMalgré tout, Curtis ne pouvait réprimer une sorte d’appréhension. Il avait vu les demeures des Ericks, des Bishop et des Frye être dévastées. Il était même aux premières loges lorsque les gens d’Arkham avaient banni la créature. Certains jours, ses vagabondages l’amenaient jusqu’à la ferme de Wilbur Whateley. Là, il restait debout devant la demeure, à la fixer pendant des heures, trop effrayé pour entrer, mais trop curieux pour partir. Peut-être y avait-t-il quelque chose à l’intérieur qui puisse faire partir ces terribles visions. Quelque chose qui pourrait lui donner assez de force pour résister aux cauchemars. Finalement, Curtis décida d’entrer."
     },
     {
       "id": "epilogue_2",
+      "narration": {
+        "id": "the_dunwich_legacy.epilogue.epilogue_2",
+        "name": "Epilogue 2"
+      },
       "type": "story",
       "text": "Gené s’agenouilla pour examiner la marque sur le sol. La forme de cette marque lui était étrangère, et les traces qui l’avaient conduite ici ne ressemblaient à rien de connu. Ça plus le rapport de l’université... elle ne savait plus que penser. « Mme Beauregard, » héla son assistant, « avez-vous trouvé quelque chose ? »\nGené se releva et se tourna vers le débutant qu’on lui avait assigné. C’était un bon garçon, il n’avait pas encore beaucoup d’expérience, mais c’était un travailleur acharné et avide de faire ses preuves. « Cet endroit était censé être interdit d’accès, » répondit Gené. « Personne n’a vécu ici depuis des mois, et pourtant regarde par toi-même : leurs rituels primitifs ont toujours lieu à ce jour. »\nL’étudiant s’approcha et rejoignit Gené pour examiner la marque, tournant les pages de son journal afin d’identifier les symboles. « Avez-vous une idée de sa signification ? » demanda-t-il. Elle secoua la tête. Les étrangers venaient rarement à Dunwich et tous les panneaux menant au village avaient été enlevés, mais aujourd’hui, même ses habitants l’avaient abandonné.\n« Je ne sais pas, » admit Gené. « Mais il y a quelqu’un ici, et ce n’est pas la première marque de ce genre que nous ayons vu. On dit qu’il y a un autel où les villageois accomplissaient leurs rituels païens au sommet de cette colline. Nous en apprendrons peut-être plus là-haut. »"
     }
@@ -1591,6 +1599,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "La traversée du portail ne ressemble à rien que vous ayez connu. Vous sentez votre corps se tordre et se déformer, tournoyant à travers les réalités jusqu’à ce que le portail vous amène à son ultime destination – un lieu hors de portée de l’imagination des hommes.\nSoudain, tout devient calme et un sentiment de solitude et d’effroi vient remplacer le chaos de la traversée. Vous vous trouvez en un lieu insondable, bien au-delà de vos capacités de raisonnement et clairement d’origine extraterrestre. Le paysage est irréel, étrange et son architecture est inconcevable. Vous êtes tellement loin de votre réalité que vous parvenez à peine à vous la remémorer, comme s’il s’agissait d’un rêve lointain. Quand bien même vous parveniez à revenir de cet endroit maudit, vous ne seriez plus jamais le même..."
     },
@@ -1809,6 +1821,10 @@
   "resolutions": [
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Investigateur vaincu",
       "text": "D'où venez-vous ? Pourquoi êtes-vous là ? Rêvez-vous, ou cet endroit est-il réel ? Maintenant que vous y pensez, n'avez-vous pas déjà été ici ? Ou peut-être êtes-vous là depuis toujours. Oui, vous vous souvenez maintenant. Voilà votre véritable demeure. Le chemin que vous arpentez maintenant n’en est que le rebord, il y a bien plus en dessous. Il vous suffirait de tomber et vous serez enfin à votre véritable place. Plus qu'un pas et...",
       "steps": [
@@ -1829,6 +1845,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Étendu sur le dos dans un carré d'herbe humide, vous fixez longuement le ciel nocturne. Vous êtes à nouveau au sommet de la Colline de la Sentinelle, incapable de vous souvenir comment vous êtes arrivé là. Vous êtes comme hypnotisé par le ciel nocturne. Les secondes deviennent des minutes, les minutes deviennent des heures. Finalement, vous êtes remis sur pied par un groupe de villageois de Dunwich. « Que s’est-il passé ? Que faites-vous ici ? » vous demandent-ils, apeurés mais curieux. Vous ne parvenez pas à trouver de mots pour décrire les événements qui ont eu lieu au-delà du portail... s'ils ont vraiment eu lieu. Il semble n'y avoir aucune trace de Seth Bishop, des créatures que vous avez combattues et de cet étrange portail fantomatique. Mais chaque fois que vous dormez, vous rêvez — et quand vous rêvez, tout vous revient.",
       "steps": [
@@ -1841,6 +1861,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Plusieurs des villageois de Dunwich ont entendu le vacarme venant de la Colline de la Sentinelle et sont venus enquêter. Ce qu'ils ont trouvé n’a répondu à aucune de leurs questions.\n« Vous pensez qu’il s'est passé quoi ? » s’enquiert un Curtis Whateley apeuré en examinant le sommet de la colline. Les autres villageois secouent la tête, en silence. « La dernière chose que j'ai vue était le ciel qui s’ouvrait et y'a eu un grand éclair brillant » dit finalement l'un d’eux en désignant le ciel étoilé au-dessus du sommet de la Colline de la Sentinelle.\n« Ces types d'Arkham sont nulle part, » ajoute Curtis en examinant les pierres brisées de l'autel. « Pas la moind’ trace d'eux. M'sieur Bishop et ses gars, c’t’une autre histoire,. » Le jeune homme désigne les cadavres répandus sur le sol.\n« Tu crois qu'on devrait prév'nir la flicaille d\"Aylesbury ? »\n« Pourquoi, pour qu'ils se moquent encor' de nous ? » répond Curtis en crachant. « Y nous croiront jamais d'toute façon. » Il jette un coup d’œil à l'autel de pierre, en gigotant nerveusement. « Mieux vaut tout oublier. Allez v'nez, enterrons les morts et fichons le camp d'ici. »",
       "steps": [
@@ -1849,6 +1873,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Conclusion 3",
       "text": "La créature s'agite dans un déchaînement cosmique de sons, de couleurs et d'espace distordu, vous repoussant loin d'elle. Vous observez avec horreur l'un de ses appendices déchirer le tissu même de la réalité et la masse informe s'engouffrer dans la faille』emportant avec elle la trame de ce monde. Vous tentez d'agripper quelque chose, mais vous êtes inexorablement aspiré par la faille. Vous sentez votre corps s'étirer et votre esprit être broyé. Puis, tout devient noir.",
       "steps": [
@@ -1859,6 +1887,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Conclusion 4",
       "text": "En cherchant à obtenir des pouvoirs occultes venus d'au-delà du monde, les sorciers de Dunwich ont réussi là où Wilbur et le Vieux Whateley ont échoué. Par des sacrifices de sang et d'indescriptibles expériences, ils ont acquis les sombres pouvoirs qu'ils convoitaient. Ils n'auront cependant pas l'occasion d'utiliser ces pouvoirs. En suppliant le géniteur de Wilbur pour obtenir des connaissances impies, ils ont attiré la créature hors de son royaume extra-dimensionnel. Yog-Sothoth émerge de la faille située au-dessus de la Colline de la Sentinelle éclipsant le ciel et recouvrant le monde. Il règne désormais sur cette Terre que les humains foulaient autrefois.",
       "steps": [
@@ -3307,6 +3339,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Un hurlement vous réveille en sursaut. Craignant le pire, vous rassemblez votre équipement et vous dirigez vers les rues de Dunwich. À peine avez-vous mis le pied dehors qu’une odeur pestilentielle agresse vos sens : un atroce remugle âcre qui peut à peine être décrit par des mots. L’atmosphère est lourde et vous avez du mal à respirer. Les habitants de Dunwich ont barricadé leurs portes et la ville semble tranquille et déserte. Au loin, une faible lueur émane du sommet d’une colline surplombant le village. Vous connaissez cette colline grâce à vos discussions avec Zebulon et aux notes d’Armitage. Il s’agit de la Colline de la Sentinelle. Les notes parlent de rites sataniques pratiqués là-haut – des rites lors desquels de grands bûchers funéraires illuminent le ciel nocturne tandis que le sol gronde furieusement en dessous.\nDes nuées d’engoulevents sont perchées sur les toits des maisons alentour. Ils semblent vous épier alors que vous grimpez dans la vieille camionnette déglinguée de Zebulon. À mesure que vous approchez de la Colline de la Sentinelle, d’autres hurlements emplissent les cieux, si aigus qu’ils vous font mal aux oreilles. Toutes vos lectures et aventures à Dunwich vous ont conduit ici. Si l’infâme rituel que Seth cherche à accomplir a quelque chose à voir avec ce qu’Armitage et ses collègues ont empêché il y a plusieurs mois, alors celui-ci implique les faveurs d’une ancienne créature – <b>Yog-Sothoth</b>. Si le rituel n’est pas arrêté à temps, il pourrait sceller le sort de Dunwich... voire du monde entier."
     },
@@ -3330,6 +3366,10 @@
     },
     {
       "id": "part1",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.part_1",
+        "name": "Part 1"
+      },
       "type": "story",
       "text": "Le chemin menant à la Colline de la Sentinelle est trop étroit et sinueux pour la camionnette de Zebulon, vous la garez donc au pied de la colline et vous préparez à faire le reste de l’ascension à pied. Soudain, vous vous rendez compte que vous n’êtes pas seul. Plusieurs hommes et femmes émergent des bois derrière-vous. Ils brandissent des armes à feu et vous mettent en joug. Vous levez les mains en l’air et vous attendez au pire. « Attendez, » s’écrie l’un d’entre eux en faisant signe aux autres de la main. « Je vous reconnais, vous étiez au Club du Trèfle. » Il esquisse un large sourire et baisse son arme. « Naomi vous transmet ses salutations. »\nCurieux, vous demandez aux gangsters ce qu’ils font ici. « Mme O’Bannion nous a envoyé enquêter sur l’attaque qui s’est déroulée dans le casino de son fiancé. » explique-t-il. « Il s’est avéré qu’il y avait des hommes derrière tout ça, un type nommé Bishop et ses larbins. On les a suivi jusqu’à ce trou à rats. » Avant qu’il ne puisse aller plus loin, le tacatac si familier d’une mitraillette résonne dans les collines. « Ça doit être Vinny. Venez les gars ! » Il fait signe aux autres de le suivre et se précipite vers le sommet de la colline. Vous le suivez en secouant la tête. Ces malfrats ne savent pas dans quoi ils s’engagent."
     },
@@ -3740,6 +3780,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Le grimoire en mauvais état s’avère avoir été écrit par le Vieux Whateley, l’homme qui a enseigné à Wilbur les antiques arcanes de la sorcellerie. Vous trouvez un passage décrivant un lieu hors du temps et de l’espace, là où les mondes convergent et où demeure Yog-Sothoth. Le seul moyen de refermer le trou qui a fendu le monde est d’atteindre ce nexus aux frontières de la réalité. Avec le sentiment que vous courez à votre perte, vous puisez dans le courage qui vous reste et franchissez le portail.",
       "steps": [
@@ -3750,6 +3794,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "En cherchant à obtenir des pouvoirs occultes venus d'au-delà du monde, les sorciers de Dunwich ont réussi là où Wilbur et le Vieux Whateley ont échoué. Par des sacrifices de sang et d'indescriptibles expériences, ils ont acquis les sombres pouvoirs qu'ils convoitaient. Ils n'auront cependant pas l'occasion d'utiliser ces pouvoirs. En suppliant le géniteur de Wilbur pour obtenir des connaissances impies, ils ont attiré la créature hors de son royaume extra-dimensionnel. Yog-Sothoth émerge de la faille située au-dessus de la Colline de la Sentinelle éclipsant le ciel et recouvrant le monde. Il règne désormais sur cette Terre que les humains foulaient autrefois.",
       "steps": [
@@ -7526,11 +7574,19 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Vous nagez jusqu'au bord de l'eau et vous vous jetez sur le rivage rocheux, reprenant votre souffle. Vous restez ici un instant, totalement exténué. Chacun de vos muscles est endolori. Devant vous s'étend une vaste plaine. Au loin, les étranges tours de la cité difforme s'élèvent dans les nuages. Derrière vous, la surface sombre du lac dont vous avez émergé reflète l'image de deux soleils. En scrutant les abysses, vous n'apercevez aucun signe de la chapelle dont vous venez, du Mont Saint-Michel, ni même de la Terre. Vous êtes à Carcosa – le royaume de la folie dans les étoiles, où Hastur règne en maître."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Vous atterrissez sur un bloc d'obsidienne noire entourant une tour sombre. Vous crachez du sang et sentez une douleur fulgurante dans votre ventre, comme si vous vous étiez cassé une côte. Devant vous s'étend une ville étrange et difforme. Ses rues tortueuses et son architecture aberrante semblent n'avoir aucune cohérence. Au loin, un lac sombre reflète l'image de deux soleils. En regardant le ciel, l'abbaye du Mont Saint-Michel apparaît sous la couverture de nuages, sens dessus-dessous. Vous êtes à Carcosa – le royaume de la folie dans les étoiles, où Hastur règne en maître."
     },
@@ -8209,6 +8265,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'a été atteinte\n(tous les investigateurs ont été vaincus)",
       "investigator_status": [
         "eliminated",
@@ -8221,6 +8281,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Vous vous tenez debout sur le balcon de la tour de l'abbaye du Mont Saint-Michel, où un vent humide agite vos cheveux. Le Masque Blême repose entre vos mains, dépourvu de la moindre chaleur. Vous ne parvenez pas à le regarder. Tout vous revient en mémoire – comment cela a commencé, comment l'histoire s'est terminée, et tout ce qui s'est passé entre temps. Il ne reste qu'une seule chose à faire. De toutes vos forces, vous jetez le masque au loin et le regardez sombrer dans les vagues tumultueuses en contrebas.",
       "steps": [
@@ -8234,6 +8298,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Un tonnerre d'applaudissements vous réveille. Le public se lève, redoublant d'enthousiasme. Plusieurs spectateurs du premier rang lancent des roses aux acteurs présents sur scène qui saluent le public, un large sourire aux lèvres. Un mal de crâne insidieux tambourine sous vos tempes. Comment êtes-vous revenu ici ? Êtes-vous resté dans le théâtre tout du long ? Qu'en est-il de la réception ? De l'asile ? Des catacombes ? De Carcosa ? Tout cela n'était-il qu'un terrible cauchemar ?\nVous quittez l'auditorium avant que la foule ne se rue vers la sortie. La fatigue et les vertiges atténuent vos sens. Le poids de votre longue enquête pèse sur votre esprit. Le temps d'atteindre le hall d'entrée, vous ne parvenez plus qu'à ramper sur le sol. À cet instant, un homme vêtu d'un élégant costume se baisse et vous saisit par les épaules, vous aidant à vous relever. Vous vous apprêtez à le remercier quand vous réalisez de qui il s'agit. Sa vue vous fait reculer dans un sursaut d'horreur. L'acteur incarnant l'Étranger porte toujours son masque pâle sans visage. Il vous adresse une révérence silencieuse, tourne les talons et quitte le Théâtre Ward par la porte d'entrée.",
       "steps": [
@@ -8247,6 +8315,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Conclusion 3",
       "text": "Vous vous réveillez dans le choeoeur gothique de l'abbaye du Mont Saint-Michel. Le bruit de la pluie sur les vitraux a cessé et vous n'entendez plus ni le tonnerre, ni le bruissement des horreurs ailées. Vous vous êtes visiblement échappé. Vous rampez jusqu'à la porte de l'abbaye et l'ouvrez avec appréhension. Une lumière aveuglante vous éblouit et vous levez la main pour protéger vos yeux de l'éclat du soleil. Vous restez là un instant, à admirer la beauté saisissante du Mont Saint-Michel. Des mouettes survolent l'abbaye sous un ciel sans nuages. Les eaux entourant l'abbaye sont calmes et d'un bleu azur.\n« Justement, je vous cherchais ! », s'exclame une voix dans votre dos. Vous faites volte-face dans un sursaut. Un court instant, vous craignez de croiser le regarde de l'Étranger et de son Masque Blême ; mais au lieu de cela, le capitaine du bateau qui vous a amené sur le Mont Saint-Michel se tient au sommet de l'escalier, tout sourire. « Êtes-vous prêt à rentrer ? »",
       "steps": [
@@ -8260,6 +8332,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Conclusion 4",
       "text": "Vous vous réveillez dans le choeur gothique de l'abbaye du Mont Saint-Michel. Le bruit de la pluie sur les vitraux a cessé et vous n'entendez plus ni le tonnerre, ni le bruissement des horreurs ailées. Vous avez visiblement échappé au funeste destin de l'île. Vous rampez jusqu'à la porte de l'abbaye et l'ouvrez avec appréhension. Une lumière aveuglante vous éblouit et vous levez la main pour protéger vos yeux de l'éclat des deux soleils. Vous restez là un instant, à observer le lac de Hali et les Étoiles Noires suspendues à la voûte céleste au-dessus de vous. Au-delà, après des lieues d'un océan de nuages tourbillonnants, les hautes tours de Carcosa s'élèvent derrière la lune brisée.",
       "steps": [
@@ -8271,6 +8347,10 @@
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Conclusion 5",
       "text": "Le reste du monde ne saura jamais que vous avez tenté de le sauver. Les gens vous traitent avec miséricorde, mépris ou dédain, mais vous connaissez la vérité. Ils sont résignés à leur atroce destinée, mais vous tentez jour après jour de leur apporter votre message. Vous devez les mettre en garde contre Le Roi en Jaune, Hastur et Carcosa. « Une autre âme perdue », disent-ils, mais ils ne peuvent pas comprendre ce que vous avez traversé pour tenter de les sauver. Vous leur répétez qu'il vient pour les réclamer, mais ils ne vous croient pas. Vous écrivez sur les murs capitonnés de votre cellule des avertissements à propos d'Aldébaran et des étoiles noires, mais les mots s'effacent à mesure que passent les années. Personne n'écoutera jamais vos mises en garde.",
       "steps": [
@@ -8896,6 +8976,10 @@
     },
     {
       "id": "possessed",
+      "narration": {
+        "id": "the_path_to_carcosa.epilogue.possessed",
+        "name": "Possessed"
+      },
       "type": "story",
       "text": "La préparation a pris des mois, mais vous êtes désormais prêt à révéler au monde votre toute dernière æuvre. Votre première tâche avait été de trouver des investisseurs financiers, bien entendu. Cela ne prit pas très longtemps grâce aux contacts que vous vous étiez faits à Paris. On vous a assuré que la troupe réunie était la meilleure que vous pouviez rassembler avec vos moyens financiers, mais vous travaillez toujours d'arrache-pied pour que tout soit parfait. Cela doit être parfait. L'histoire doit être racontée afin que le monde sache. Vous avez entendu les membres de la troupe murmurer derrière votre dos : des remarques à propos de votre étrange passion, des inquiétudes quant à vos yeux jaunes et perçants. Peu vous importe. Tout ce qui vous intéresse, c'est la représentation. La prononciation des mots. La mélodie de la chanson de Cassilda. La forme du masque de l'Étranger.\nCe sera la plus belle représentation du Roi en Jaune que le monde a jamais vue."
     }
@@ -11588,11 +11672,19 @@
     },
     {
       "id": "epilogue_1",
+      "narration": {
+        "id": "the_dunwich_legacy.epilogue.epilogue_1",
+        "name": "Epilogue 1"
+      },
       "type": "story",
       "text": "Six mois avaient passé et la vie de Curtis Whateley était finalement revenu à la normale. Comme ils avaient étouffé l'incident et que les autorités se tenaient à l'écart de tout cela, M. Osborn avait venu aux enchères les biens des familles Ericks et Bishop. Joe avait pris quelques bibelots bien entendu, mais Curtis ne voulait rien avoir à faire avec ça. Les gens ne lui faisaient déjà pas très confiance à cause des méfaits de sa famille bien qu’il aille régulièrement à l’église et se soit tenu à l’écart de tout ce qui semblait magique.\nMalgré tout, Curtis ne pouvait réprimer une sorte d’appréhension. Il avait vu les demeures des Ericks, des Bishop et des Frye être dévastées. Il était même aux premières loges lorsque les gens d’Arkham avaient banni la créature. Certains jours, ses vagabondages l’amenaient jusqu’à la ferme de Wilbur Whateley. Là, il restait debout devant la demeure, à la fixer pendant des heures, trop effrayé pour entrer, mais trop curieux pour partir. Peut-être y avait-t-il quelque chose à l’intérieur qui puisse faire partir ces terribles visions. Quelque chose qui pourrait lui donner assez de force pour résister aux cauchemars. Finalement, Curtis décida d’entrer."
     },
     {
       "id": "epilogue_2",
+      "narration": {
+        "id": "the_dunwich_legacy.epilogue.epilogue_2",
+        "name": "Epilogue 2"
+      },
       "type": "story",
       "text": "Gené s’agenouilla pour examiner la marque sur le sol. La forme de cette marque lui était étrangère, et les traces qui l’avaient conduite ici ne ressemblaient à rien de connu. Ça plus le rapport de l’université... elle ne savait plus que penser. « Mme Beauregard, » héla son assistant, « avez-vous trouvé quelque chose ? »\nGené se releva et se tourna vers le débutant qu’on lui avait assigné. C’était un bon garçon, il n’avait pas encore beaucoup d’expérience, mais c’était un travailleur acharné et avide de faire ses preuves. « Cet endroit était censé être interdit d’accès, » répondit Gené. « Personne n’a vécu ici depuis des mois, et pourtant regarde par toi-même : leurs rituels primitifs ont toujours lieu à ce jour. »\nL’étudiant s’approcha et rejoignit Gené pour examiner la marque, tournant les pages de son journal afin d’identifier les symboles. « Avez-vous une idée de sa signification ? » demanda-t-il. Elle secoua la tête. Les étrangers venaient rarement à Dunwich et tous les panneaux menant au village avaient été enlevés, mais aujourd’hui, même ses habitants l’avaient abandonné.\n« Je ne sais pas, » admit Gené. « Mais il y a quelqu’un ici, et ce n’est pas la première marque de ce genre que nous ayons vu. On dit qu’il y a un autel où les villageois accomplissaient leurs rituels païens au sommet de cette colline. Nous en apprendrons peut-être plus là-haut. »"
     }
@@ -12844,6 +12936,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "La traversée du portail ne ressemble à rien que vous ayez connu. Vous sentez votre corps se tordre et se déformer, tournoyant à travers les réalités jusqu’à ce que le portail vous amène à son ultime destination – un lieu hors de portée de l’imagination des hommes.\nSoudain, tout devient calme et un sentiment de solitude et d’effroi vient remplacer le chaos de la traversée. Vous vous trouvez en un lieu insondable, bien au-delà de vos capacités de raisonnement et clairement d’origine extraterrestre. Le paysage est irréel, étrange et son architecture est inconcevable. Vous êtes tellement loin de votre réalité que vous parvenez à peine à vous la remémorer, comme s’il s’agissait d’un rêve lointain. Quand bien même vous parveniez à revenir de cet endroit maudit, vous ne seriez plus jamais le même..."
     },
@@ -13093,6 +13189,10 @@
   "resolutions": [
     {
       "id": "investigator_defeat",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Investigateur vaincu",
       "text": "D'où venez-vous ? Pourquoi êtes-vous là ? Rêvez-vous, ou cet endroit est-il réel ? Maintenant que vous y pensez, n'avez-vous pas déjà été ici ? Ou peut-être êtes-vous là depuis toujours. Oui, vous vous souvenez maintenant. Voilà votre véritable demeure. Le chemin que vous arpentez maintenant n’en est que le rebord, il y a bien plus en dessous. Il vous suffirait de tomber et vous serez enfin à votre véritable place. Plus qu'un pas et...",
       "steps": [
@@ -13113,6 +13213,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Étendu sur le dos dans un carré d'herbe humide, vous fixez longuement le ciel nocturne. Vous êtes à nouveau au sommet de la Colline de la Sentinelle, incapable de vous souvenir comment vous êtes arrivé là. Vous êtes comme hypnotisé par le ciel nocturne. Les secondes deviennent des minutes, les minutes deviennent des heures. Finalement, vous êtes remis sur pied par un groupe de villageois de Dunwich. « Que s’est-il passé ? Que faites-vous ici ? » vous demandent-ils, apeurés mais curieux. Vous ne parvenez pas à trouver de mots pour décrire les événements qui ont eu lieu au-delà du portail... s'ils ont vraiment eu lieu. Il semble n'y avoir aucune trace de Seth Bishop, des créatures que vous avez combattues et de cet étrange portail fantomatique. Mais chaque fois que vous dormez, vous rêvez — et quand vous rêvez, tout vous revient.",
       "steps": [
@@ -13125,6 +13229,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Plusieurs des villageois de Dunwich ont entendu le vacarme venant de la Colline de la Sentinelle et sont venus enquêter. Ce qu'ils ont trouvé n’a répondu à aucune de leurs questions.\n« Vous pensez qu’il s'est passé quoi ? » s’enquiert un Curtis Whateley apeuré en examinant le sommet de la colline. Les autres villageois secouent la tête, en silence. « La dernière chose que j'ai vue était le ciel qui s’ouvrait et y'a eu un grand éclair brillant » dit finalement l'un d’eux en désignant le ciel étoilé au-dessus du sommet de la Colline de la Sentinelle.\n« Ces types d'Arkham sont nulle part, » ajoute Curtis en examinant les pierres brisées de l'autel. « Pas la moind’ trace d'eux. M'sieur Bishop et ses gars, c’t’une autre histoire,. » Le jeune homme désigne les cadavres répandus sur le sol.\n« Tu crois qu'on devrait prév'nir la flicaille d\"Aylesbury ? »\n« Pourquoi, pour qu'ils se moquent encor' de nous ? » répond Curtis en crachant. « Y nous croiront jamais d'toute façon. » Il jette un coup d’œil à l'autel de pierre, en gigotant nerveusement. « Mieux vaut tout oublier. Allez v'nez, enterrons les morts et fichons le camp d'ici. »",
       "steps": [
@@ -13133,6 +13241,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Conclusion 3",
       "text": "La créature s'agite dans un déchaînement cosmique de sons, de couleurs et d'espace distordu, vous repoussant loin d'elle. Vous observez avec horreur l'un de ses appendices déchirer le tissu même de la réalité et la masse informe s'engouffrer dans la faille』emportant avec elle la trame de ce monde. Vous tentez d'agripper quelque chose, mais vous êtes inexorablement aspiré par la faille. Vous sentez votre corps s'étirer et votre esprit être broyé. Puis, tout devient noir.",
       "steps": [
@@ -13143,6 +13255,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_dunwich_legacy.lost_in_time_and_space.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Conclusion 4",
       "text": "En cherchant à obtenir des pouvoirs occultes venus d'au-delà du monde, les sorciers de Dunwich ont réussi là où Wilbur et le Vieux Whateley ont échoué. Par des sacrifices de sang et d'indescriptibles expériences, ils ont acquis les sombres pouvoirs qu'ils convoitaient. Ils n'auront cependant pas l'occasion d'utiliser ces pouvoirs. En suppliant le géniteur de Wilbur pour obtenir des connaissances impies, ils ont attiré la créature hors de son royaume extra-dimensionnel. Yog-Sothoth émerge de la faille située au-dessus de la Colline de la Sentinelle éclipsant le ciel et recouvrant le monde. Il règne désormais sur cette Terre que les humains foulaient autrefois.",
       "steps": [
@@ -14251,6 +14367,10 @@
   "steps": [
     {
       "id": "prologue",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Un hurlement vous réveille en sursaut. Craignant le pire, vous rassemblez votre équipement et vous dirigez vers les rues de Dunwich. À peine avez-vous mis le pied dehors qu’une odeur pestilentielle agresse vos sens : un atroce remugle âcre qui peut à peine être décrit par des mots. L’atmosphère est lourde et vous avez du mal à respirer. Les habitants de Dunwich ont barricadé leurs portes et la ville semble tranquille et déserte. Au loin, une faible lueur émane du sommet d’une colline surplombant le village. Vous connaissez cette colline grâce à vos discussions avec Zebulon et aux notes d’Armitage. Il s’agit de la Colline de la Sentinelle. Les notes parlent de rites sataniques pratiqués là-haut – des rites lors desquels de grands bûchers funéraires illuminent le ciel nocturne tandis que le sol gronde furieusement en dessous.\nDes nuées d’engoulevents sont perchées sur les toits des maisons alentour. Ils semblent vous épier alors que vous grimpez dans la vieille camionnette déglinguée de Zebulon. À mesure que vous approchez de la Colline de la Sentinelle, d’autres hurlements emplissent les cieux, si aigus qu’ils vous font mal aux oreilles. Toutes vos lectures et aventures à Dunwich vous ont conduit ici. Si l’infâme rituel que Seth cherche à accomplir a quelque chose à voir avec ce qu’Armitage et ses collègues ont empêché il y a plusieurs mois, alors celui-ci implique les faveurs d’une ancienne créature – <b>Yog-Sothoth</b>. Si le rituel n’est pas arrêté à temps, il pourrait sceller le sort de Dunwich... voire du monde entier."
     },
@@ -14274,6 +14394,10 @@
     },
     {
       "id": "part1",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.part_1",
+        "name": "Part 1"
+      },
       "type": "story",
       "text": "Le chemin menant à la Colline de la Sentinelle est trop étroit et sinueux pour la camionnette de Zebulon, vous la garez donc au pied de la colline et vous préparez à faire le reste de l’ascension à pied. Soudain, vous vous rendez compte que vous n’êtes pas seul. Plusieurs hommes et femmes émergent des bois derrière-vous. Ils brandissent des armes à feu et vous mettent en joug. Vous levez les mains en l’air et vous attendez au pire. « Attendez, » s’écrie l’un d’entre eux en faisant signe aux autres de la main. « Je vous reconnais, vous étiez au Club du Trèfle. » Il esquisse un large sourire et baisse son arme. « Naomi vous transmet ses salutations. »\nCurieux, vous demandez aux gangsters ce qu’ils font ici. « Mme O’Bannion nous a envoyé enquêter sur l’attaque qui s’est déroulée dans le casino de son fiancé. » explique-t-il. « Il s’est avéré qu’il y avait des hommes derrière tout ça, un type nommé Bishop et ses larbins. On les a suivi jusqu’à ce trou à rats. » Avant qu’il ne puisse aller plus loin, le tacatac si familier d’une mitraillette résonne dans les collines. « Ça doit être Vinny. Venez les gars ! » Il fait signe aux autres de le suivre et se précipite vers le sommet de la colline. Vous le suivez en secouant la tête. Ces malfrats ne savent pas dans quoi ils s’engagent."
     },
@@ -14690,6 +14814,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Le grimoire en mauvais état s’avère avoir été écrit par le Vieux Whateley, l’homme qui a enseigné à Wilbur les antiques arcanes de la sorcellerie. Vous trouvez un passage décrivant un lieu hors du temps et de l’espace, là où les mondes convergent et où demeure Yog-Sothoth. Le seul moyen de refermer le trou qui a fendu le monde est d’atteindre ce nexus aux frontières de la réalité. Avec le sentiment que vous courez à votre perte, vous puisez dans le courage qui vous reste et franchissez le portail.",
       "steps": [
@@ -14700,6 +14828,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_dunwich_legacy.where_doom_awaits.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "En cherchant à obtenir des pouvoirs occultes venus d'au-delà du monde, les sorciers de Dunwich ont réussi là où Wilbur et le Vieux Whateley ont échoué. Par des sacrifices de sang et d'indescriptibles expériences, ils ont acquis les sombres pouvoirs qu'ils convoitaient. Ils n'auront cependant pas l'occasion d'utiliser ces pouvoirs. En suppliant le géniteur de Wilbur pour obtenir des connaissances impies, ils ont attiré la créature hors de son royaume extra-dimensionnel. Yog-Sothoth émerge de la faille située au-dessus de la Colline de la Sentinelle éclipsant le ciel et recouvrant le monde. Il règne désormais sur cette Terre que les humains foulaient autrefois.",
       "steps": [
@@ -16830,6 +16962,10 @@
     },
     {
       "id": "possessed",
+      "narration": {
+        "id": "the_path_to_carcosa.epilogue.possessed",
+        "name": "Possessed"
+      },
       "type": "story",
       "text": "La préparation a pris des mois, mais vous êtes désormais prêt à révéler au monde votre toute dernière æuvre. Votre première tâche avait été de trouver des investisseurs financiers, bien entendu. Cela ne prit pas très longtemps grâce aux contacts que vous vous étiez faits à Paris. On vous a assuré que la troupe réunie était la meilleure que vous pouviez rassembler avec vos moyens financiers, mais vous travaillez toujours d'arrache-pied pour que tout soit parfait. Cela doit être parfait. L'histoire doit être racontée afin que le monde sache. Vous avez entendu les membres de la troupe murmurer derrière votre dos : des remarques à propos de votre étrange passion, des inquiétudes quant à vos yeux jaunes et perçants. Peu vous importe. Tout ce qui vous intéresse, c'est la représentation. La prononciation des mots. La mélodie de la chanson de Cassilda. La forme du masque de l'Étranger.\nCe sera la plus belle représentation du Roi en Jaune que le monde a jamais vue."
     }
@@ -19600,11 +19736,19 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Vous nagez jusqu'au bord de l'eau et vous vous jetez sur le rivage rocheux, reprenant votre souffle. Vous restez ici un instant, totalement exténué. Chacun de vos muscles est endolori. Devant vous s'étend une vaste plaine. Au loin, les étranges tours de la cité difforme s'élèvent dans les nuages. Derrière vous, la surface sombre du lac dont vous avez émergé reflète l'image de deux soleils. En scrutant les abysses, vous n'apercevez aucun signe de la chapelle dont vous venez, du Mont Saint-Michel, ni même de la Terre. Vous êtes à Carcosa – le royaume de la folie dans les étoiles, où Hastur règne en maître."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Vous atterrissez sur un bloc d'obsidienne noire entourant une tour sombre. Vous crachez du sang et sentez une douleur fulgurante dans votre ventre, comme si vous vous étiez cassé une côte. Devant vous s'étend une ville étrange et difforme. Ses rues tortueuses et son architecture aberrante semblent n'avoir aucune cohérence. Au loin, un lac sombre reflète l'image de deux soleils. En regardant le ciel, l'abbaye du Mont Saint-Michel apparaît sous la couverture de nuages, sens dessus-dessous. Vous êtes à Carcosa – le royaume de la folie dans les étoiles, où Hastur règne en maître."
     },
@@ -20292,6 +20436,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'a été atteinte\n(tous les investigateurs ont été vaincus)",
       "investigator_status": [
         "eliminated",
@@ -20304,6 +20452,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Vous vous tenez debout sur le balcon de la tour de l'abbaye du Mont Saint-Michel, où un vent humide agite vos cheveux. Le Masque Blême repose entre vos mains, dépourvu de la moindre chaleur. Vous ne parvenez pas à le regarder. Tout vous revient en mémoire – comment cela a commencé, comment l'histoire s'est terminée, et tout ce qui s'est passé entre temps. Il ne reste qu'une seule chose à faire. De toutes vos forces, vous jetez le masque au loin et le regardez sombrer dans les vagues tumultueuses en contrebas.",
       "steps": [
@@ -20317,6 +20469,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Un tonnerre d'applaudissements vous réveille. Le public se lève, redoublant d'enthousiasme. Plusieurs spectateurs du premier rang lancent des roses aux acteurs présents sur scène qui saluent le public, un large sourire aux lèvres. Un mal de crâne insidieux tambourine sous vos tempes. Comment êtes-vous revenu ici ? Êtes-vous resté dans le théâtre tout du long ? Qu'en est-il de la réception ? De l'asile ? Des catacombes ? De Carcosa ? Tout cela n'était-il qu'un terrible cauchemar ?\nVous quittez l'auditorium avant que la foule ne se rue vers la sortie. La fatigue et les vertiges atténuent vos sens. Le poids de votre longue enquête pèse sur votre esprit. Le temps d'atteindre le hall d'entrée, vous ne parvenez plus qu'à ramper sur le sol. À cet instant, un homme vêtu d'un élégant costume se baisse et vous saisit par les épaules, vous aidant à vous relever. Vous vous apprêtez à le remercier quand vous réalisez de qui il s'agit. Sa vue vous fait reculer dans un sursaut d'horreur. L'acteur incarnant l'Étranger porte toujours son masque pâle sans visage. Il vous adresse une révérence silencieuse, tourne les talons et quitte le Théâtre Ward par la porte d'entrée.",
       "steps": [
@@ -20330,6 +20486,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Conclusion 3",
       "text": "Vous vous réveillez dans le choeoeur gothique de l'abbaye du Mont Saint-Michel. Le bruit de la pluie sur les vitraux a cessé et vous n'entendez plus ni le tonnerre, ni le bruissement des horreurs ailées. Vous vous êtes visiblement échappé. Vous rampez jusqu'à la porte de l'abbaye et l'ouvrez avec appréhension. Une lumière aveuglante vous éblouit et vous levez la main pour protéger vos yeux de l'éclat du soleil. Vous restez là un instant, à admirer la beauté saisissante du Mont Saint-Michel. Des mouettes survolent l'abbaye sous un ciel sans nuages. Les eaux entourant l'abbaye sont calmes et d'un bleu azur.\n« Justement, je vous cherchais ! », s'exclame une voix dans votre dos. Vous faites volte-face dans un sursaut. Un court instant, vous craignez de croiser le regarde de l'Étranger et de son Masque Blême ; mais au lieu de cela, le capitaine du bateau qui vous a amené sur le Mont Saint-Michel se tient au sommet de l'escalier, tout sourire. « Êtes-vous prêt à rentrer ? »",
       "steps": [
@@ -20343,6 +20503,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Conclusion 4",
       "text": "Vous vous réveillez dans le choeur gothique de l'abbaye du Mont Saint-Michel. Le bruit de la pluie sur les vitraux a cessé et vous n'entendez plus ni le tonnerre, ni le bruissement des horreurs ailées. Vous avez visiblement échappé au funeste destin de l'île. Vous rampez jusqu'à la porte de l'abbaye et l'ouvrez avec appréhension. Une lumière aveuglante vous éblouit et vous levez la main pour protéger vos yeux de l'éclat des deux soleils. Vous restez là un instant, à observer le lac de Hali et les Étoiles Noires suspendues à la voûte céleste au-dessus de vous. Au-delà, après des lieues d'un océan de nuages tourbillonnants, les hautes tours de Carcosa s'élèvent derrière la lune brisée.",
       "steps": [
@@ -20354,6 +20518,10 @@
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_path_to_carcosa.dim_carcosa.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Conclusion 5",
       "text": "Le reste du monde ne saura jamais que vous avez tenté de le sauver. Les gens vous traitent avec miséricorde, mépris ou dédain, mais vous connaissez la vérité. Ils sont résignés à leur atroce destinée, mais vous tentez jour après jour de leur apporter votre message. Vous devez les mettre en garde contre Le Roi en Jaune, Hastur et Carcosa. « Une autre âme perdue », disent-ils, mais ils ne peuvent pas comprendre ce que vous avez traversé pour tenter de les sauver. Vous leur répétez qu'il vient pour les réclamer, mais ils ne vous croient pas. Vous écrivez sur les murs capitonnés de votre cellule des avertissements à propos d'Aldébaran et des étoiles noires, mais les mots s'effacent à mesure que passent les années. Personne n'écoutera jamais vos mises en garde.",
       "steps": [
@@ -33451,7 +33619,7 @@
         {
           "type": "earn_xp",
           "investigator": "$fixed_investigator",
-          "fixed_investigator": "01002",
+          "fixed_investigator": "01004",
           "bonus": -2
         }
       ]
@@ -33663,7 +33831,7 @@
                 "investigator": "$fixed_investigator",
                 "fixed_investigator": "01004",
                 "non_story": true,
-                "card": "90019"
+                "card": "01012"
               },
               {
                 "type": "add_card",
@@ -33683,7 +33851,7 @@
                 "investigator": "$fixed_investigator",
                 "fixed_investigator": "01004",
                 "non_story": true,
-                "card": "90003"
+                "card": "90019"
               },
               {
                 "type": "add_card",
@@ -33720,7 +33888,7 @@
     },
     {
       "id": "others_experience",
-      "text": "Each investigator besides Daisy Walker earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Each investigator besides Agnes Baker earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -39497,7 +39665,7 @@
     },
     {
       "id": "others_experience",
-      "text": "Each investigator besides Daisy Walker earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Chaque investigateur autre que Daisy Walker reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X de chaque carte dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
