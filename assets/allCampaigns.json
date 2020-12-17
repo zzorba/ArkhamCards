@@ -37915,12 +37915,10 @@
       "input": {
         "type": "counter",
         "text": "Victory display:",
-        "confirm_text": "Each investigator earns 2 bonus experience as they have prevented all of the Outer Gods from completing their schemes.",
         "effects": [
           {
             "type": "earn_xp",
-            "investigator": "all",
-            "bonus": 2
+            "investigator": "all"
           }
         ]
       }
@@ -38074,25 +38072,25 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "The hub's many doorways are now sealed tight under your stern control. With the hub sealed, the cults fighting over its ownership should hopefully return to operating in secrecy—perhaps waiting for a time when the hub reopens and they can use it to advance their cruel agendas. Until then, the Earth is safe... relatively speaking",
-      "steps": ["earn_cloak", "earn_pocket_portal", "earn_xp_bonus_2"]
+      "steps": ["earn_cloak", "earn_pocket_portal", "earn_xp_bonus_2", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "The swarm of Ezel is too countless to defeat through normal means. But there is a trick! Otherworldly though they may be, the insects are insects nonetheless, and many hives have among them a queen. Using all of your ingenuity, you devise a plan to crush the queen and thereby scatter the swarm.\nTo your surprise, your plan works. With the queen dispatched, the swarm is aimless, its hunger replaced by a sense of desperation and panic. It is not long before the myriad creatures descend once more into the pit whence they came. Perhaps another queen will come to unite them, but you will seal that accursed pit long before that happens. For now, Earth is safe.",
-      "steps": ["earn_cloak", "earn_enchanted_skull", "earn_xp"]
+      "steps": ["earn_cloak", "earn_enchanted_skull", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "The shape of Silenus is formless, perhaps even devoid of matter altogether, but not without weakness. Using the rituals of its own cult against it, you devise a spell of such incandescent heat that not even the emptiness of space can devour it. When your rite is unleashed, the mists retreat in anguish, letting out no sound but the shrill hiss of air being sucked through a vacuum.\nYou observe the sky in fear, hoping that the mist does not return the moment your ritual has ended. Minutes pass. Then hours. Familiar stars once more fill the night sky. Perhaps the entity is gone for good. If the notes of the creature's many observers are true, it will likely return in the future—maybe hundreds or thousands of years from now. You may have saved the Earth this day, but the understanding of the entity's true nature haunts you still.",
-      "steps": ["earn_cloak", "earn_dreaded_end", "earn_xp"]
+      "steps": ["earn_cloak", "earn_dreaded_end", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R4",
       "title": "Resolution 4",
       "text": "Green blood and sticky pus erupts from the beast's carapace as it collapses, groaning with such force that it rumbles through the Earth. Thanks to your haste, you have felled the beast before it could grow too powerful to stop. Even in its infancy, it was a tremendous foe.\nYou watch in revulsion as its body dissolves into sallow ichor. Some \"paradise\" this thing turned out to be. With the egg hatched and the thing inside destroyed, you hope that the cult of Ark'at will disperse, though you fear that retribution may someday come in return for your meddling.",
-      "steps": ["earn_cloak", "earn_blade", "earn_xp"]
+      "steps": ["earn_cloak", "earn_blade", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R5",

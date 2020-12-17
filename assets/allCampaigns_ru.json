@@ -41138,12 +41138,10 @@
       "input": {
         "type": "counter",
         "text": "Победный счёт:",
-        "confirm_text": "Each investigator earns 2 bonus experience as they have prevented all of the Outer Gods from completing their schemes.",
         "effects": [
           {
             "type": "earn_xp",
-            "investigator": "all",
-            "bonus": 2
+            "investigator": "all"
           }
         ]
       }
@@ -41308,7 +41306,8 @@
       "steps": [
         "earn_cloak",
         "earn_pocket_portal",
-        "earn_xp_bonus_2"
+        "earn_xp_bonus_2",
+        "$upgrade_decks"
       ]
     },
     {
@@ -41318,7 +41317,8 @@
       "steps": [
         "earn_cloak",
         "earn_enchanted_skull",
-        "earn_xp"
+        "earn_xp",
+        "$upgrade_decks"
       ]
     },
     {
@@ -41328,7 +41328,8 @@
       "steps": [
         "earn_cloak",
         "earn_dreaded_end",
-        "earn_xp"
+        "earn_xp",
+        "$upgrade_decks"
       ]
     },
     {
@@ -41338,7 +41339,8 @@
       "steps": [
         "earn_cloak",
         "earn_blade",
-        "earn_xp"
+        "earn_xp",
+        "$upgrade_decks"
       ]
     },
     {
