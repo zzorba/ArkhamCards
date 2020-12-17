@@ -10010,11 +10010,19 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Du fährst aus dem Schlaf hoch, die Luft ist schmutzig und abgestanden und du hast Staub in deiner Kehle. Du liegst auf einer kalten Steinplatte in einem lichtlosen unterirdischen Gang. Wie bist du hierher gekommen? Und wo genau bist du eigentlich? Du erschauderst und deine Nackenhaare sträuben sich. Dann stehst du auf und beginnst mit einer Untersuchung der Umgebung. Die Wände und die Decke sind mit Knochen verziert. Schädel mit aufgerissenen Mündern starren dich an, egal wohin du schaust."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Der Inhalt von Nigels Haus liefert dir keine Antworten auf deine Fragen zu <u>Der König in Gelb</u>. Es gibt aber Hinweise darauf, wo du als Nächstes suchen solltest. Die alte, zerschlissene Karte, die du auf dem Couchtisch gefunden hast, zeigt einen Teil der berüchtigten Katakomben von Paris. Ein Raum wurde auf der Karte durch einen Kreis markiert, daneben befindet sich die Anmerkung: „Der Schlüssel zum Öffnen des Pfads befindet sich hier!“ Du schluckst deine Furcht hinunter und begibst dich sofort auf die Suche nach dem Eingang der Katakomben unter der Rue de la Tombe-Issoire."
     },
@@ -10061,6 +10069,10 @@
     },
     {
       "id": "harukos_information",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.harukos_information",
+        "name": "Haruko's Information"
+      },
       "type": "story",
       "text": "Direkt hinter dem steinernen Torbogen, der dir am nächsten ist, siehst du ein vertrautes Symbol, das in den Schädel eines Schafes eingeritzt wurde: Linien konzentrischer Halbkreise, gesäumt von exotischen Runen. Zwei Wellenlinien führen von der Zeichnung herunter zum Unterkieferknochen des Schädels. Du erkennst das Muster wieder, das Haruko dir gezeigt hat. Du fragst dich, warum du es hier findest, und untersuchst den Schädel genauer. Als du die Unterseite des Kiefers berührst, öffnet sich plötzlich der Mund. Die Knochen fallen zu Boden, die Wände gleiten zur Seite und geben einen neuen Weg frei."
     },
@@ -10526,6 +10538,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
       "investigator_status": [
         "eliminated",
@@ -10544,6 +10560,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Der verbrannte Schädel ist der Schlüssel zu allem. Da bist du dir sicher. Du hast jede dir bekannte Methode angewendet, das Geheimnis der Zeichnung darauf zu entschlüsseln, aber noch immer bleibt die Antwort vor dir verschlossen. Du hast den Schädel Experten, Okkultisten und Professoren gezeigt. Du hast sogar mehr als einmal versucht mit dem Schädel zu sprechen. Verzweifelt legst du ihn auf deinen Nachttisch und versuchst zum ersten Mal seit deiner Flucht aus den Katakomben etwas Schlaf zu finden. Als du einschläfst, kannst du den Anblick der Zeichnung, die auf der Stirn des Schädels eingraviert ist, nicht abschütteln.\nAls du aufwachst, ist dir eine Erkenntnis gekommen und du eilst in den Louvre, das berühmte Pariser Museum, in dem tausende Gemälde, Zeichnungen und archäologische Funde ausgestellt sind. Du verbringst Tage damit, das Museum zu erforschen – jede Ausstellung, jede Sammlung, jedes einzelne Kunstwerk, das den Schlüssel zu der Bedeutung der Zeichnung enthalten könnte. Endlich findest du ein Gemälde, das eine wunderschöne Stadt auf einer Insel in einem starken, sintflutartigen Sturm zeigt. Wellen schlagen heftig gegen die äußere Steinmauer und die Flut droht die Insel als Ganzes zu verschlingen. Blitze zucken um den Turm der Abtei außerhalb der Stadt. Ein Wirbel aus schwarzen Wolken dreht sich am aufgewühlten Himmel. Die Zeichnung auf dem verbrannten Schädel in deiner Hand wiederholt sich perfekt im Buntglas der Fenster der Abtei. Der Name des Kunstwerkes ist „Der Pfad ist offen“.",
       "steps": [
@@ -10556,6 +10576,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Du fällst immer weiter in den leeren Abgrund. Keine Luft bremst deinen Fall oder streicht auch nur durch deine Haare. Es ist ein Durchgang, frei von jeglicher Realität. Schließlich kommst du durch ein unsichtbares Tor und betrittst ein anderes Reich. Über und unter dir siehst du zwei Silhouetten einer Stadt. Die eine stellt eine verzerrte Spiegelung der anderen dar. Zwischen ihnen befindet sich ein Wirbel aus schwarzen Wolken und donnernden Wellen. Du betrachtest beide Seiten genau – die dir vertraute Stadt und ihr seltsames Spiegelbild. Könnte dies der Pfad nach Carcosa sein? Ein Durchgang zwischen den Realitäten, eine Stelle, an der die Reiche zusammentreffen? Falls das so ist, bleibt dir nur noch herauszufinden, wo dieses Tor auf der Erde erscheint. Dann fällst du in den Wirbel unter dir.\nEin Polizist rüttelt dich wach und zieht dich auf die Füße. Du fühlst dich, als ob dich ein Zug überfahren hätte. Der Schmerz ist unerträglich. Der Mann leuchtet dir mit einer Taschenlampe in die Augen und stellt dir auf Französisch einige Fragen. Deine Augen werden groß, als du die Situation erfasst und du reißt dich aus dem Griff des verwirrten Polizisten los. „Ich muss sofort los!“",
       "steps": [
@@ -21576,11 +21600,19 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Du fährst aus dem Schlaf hoch, die Luft ist schmutzig und abgestanden und du hast Staub in deiner Kehle. Du liegst auf einer kalten Steinplatte in einem lichtlosen unterirdischen Gang. Wie bist du hierher gekommen? Und wo genau bist du eigentlich? Du erschauderst und deine Nackenhaare sträuben sich. Dann stehst du auf und beginnst mit einer Untersuchung der Umgebung. Die Wände und die Decke sind mit Knochen verziert. Schädel mit aufgerissenen Mündern starren dich an, egal wohin du schaust."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Der Inhalt von Nigels Haus liefert dir keine Antworten auf deine Fragen zu <u>Der König in Gelb</u>. Es gibt aber Hinweise darauf, wo du als Nächstes suchen solltest. Die alte, zerschlissene Karte, die du auf dem Couchtisch gefunden hast, zeigt einen Teil der berüchtigten Katakomben von Paris. Ein Raum wurde auf der Karte durch einen Kreis markiert, daneben befindet sich die Anmerkung: „Der Schlüssel zum Öffnen des Pfads befindet sich hier!“ Du schluckst deine Furcht hinunter und begibst dich sofort auf die Suche nach dem Eingang der Katakomben unter der Rue de la Tombe-Issoire."
     },
@@ -21627,6 +21659,10 @@
     },
     {
       "id": "harukos_information",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.harukos_information",
+        "name": "Haruko's Information"
+      },
       "type": "story",
       "text": "Direkt hinter dem steinernen Torbogen, der dir am nächsten ist, siehst du ein vertrautes Symbol, das in den Schädel eines Schafes eingeritzt wurde: Linien konzentrischer Halbkreise, gesäumt von exotischen Runen. Zwei Wellenlinien führen von der Zeichnung herunter zum Unterkieferknochen des Schädels. Du erkennst das Muster wieder, das Haruko dir gezeigt hat. Du fragst dich, warum du es hier findest, und untersuchst den Schädel genauer. Als du die Unterseite des Kiefers berührst, öffnet sich plötzlich der Mund. Die Knochen fallen zu Boden, die Wände gleiten zur Seite und geben einen neuen Weg frei."
     },
@@ -22100,6 +22136,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
       "investigator_status": [
         "eliminated",
@@ -22118,6 +22158,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Der verbrannte Schädel ist der Schlüssel zu allem. Da bist du dir sicher. Du hast jede dir bekannte Methode angewendet, das Geheimnis der Zeichnung darauf zu entschlüsseln, aber noch immer bleibt die Antwort vor dir verschlossen. Du hast den Schädel Experten, Okkultisten und Professoren gezeigt. Du hast sogar mehr als einmal versucht mit dem Schädel zu sprechen. Verzweifelt legst du ihn auf deinen Nachttisch und versuchst zum ersten Mal seit deiner Flucht aus den Katakomben etwas Schlaf zu finden. Als du einschläfst, kannst du den Anblick der Zeichnung, die auf der Stirn des Schädels eingraviert ist, nicht abschütteln.\nAls du aufwachst, ist dir eine Erkenntnis gekommen und du eilst in den Louvre, das berühmte Pariser Museum, in dem tausende Gemälde, Zeichnungen und archäologische Funde ausgestellt sind. Du verbringst Tage damit, das Museum zu erforschen – jede Ausstellung, jede Sammlung, jedes einzelne Kunstwerk, das den Schlüssel zu der Bedeutung der Zeichnung enthalten könnte. Endlich findest du ein Gemälde, das eine wunderschöne Stadt auf einer Insel in einem starken, sintflutartigen Sturm zeigt. Wellen schlagen heftig gegen die äußere Steinmauer und die Flut droht die Insel als Ganzes zu verschlingen. Blitze zucken um den Turm der Abtei außerhalb der Stadt. Ein Wirbel aus schwarzen Wolken dreht sich am aufgewühlten Himmel. Die Zeichnung auf dem verbrannten Schädel in deiner Hand wiederholt sich perfekt im Buntglas der Fenster der Abtei. Der Name des Kunstwerkes ist „Der Pfad ist offen“.",
       "steps": [
@@ -22130,6 +22174,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "Du fällst immer weiter in den leeren Abgrund. Keine Luft bremst deinen Fall oder streicht auch nur durch deine Haare. Es ist ein Durchgang, frei von jeglicher Realität. Schließlich kommst du durch ein unsichtbares Tor und betrittst ein anderes Reich. Über und unter dir siehst du zwei Silhouetten einer Stadt. Die eine stellt eine verzerrte Spiegelung der anderen dar. Zwischen ihnen befindet sich ein Wirbel aus schwarzen Wolken und donnernden Wellen. Du betrachtest beide Seiten genau – die dir vertraute Stadt und ihr seltsames Spiegelbild. Könnte dies der Pfad nach Carcosa sein? Ein Durchgang zwischen den Realitäten, eine Stelle, an der die Reiche zusammentreffen? Falls das so ist, bleibt dir nur noch herauszufinden, wo dieses Tor auf der Erde erscheint. Dann fällst du in den Wirbel unter dir.\nEin Polizist rüttelt dich wach und zieht dich auf die Füße. Du fühlst dich, als ob dich ein Zug überfahren hätte. Der Schmerz ist unerträglich. Der Mann leuchtet dir mit einer Taschenlampe in die Augen und stellt dir auf Französisch einige Fragen. Deine Augen werden groß, als du die Situation erfasst und du reißt dich aus dem Griff des verwirrten Polizisten los. „Ich muss sofort los!“",
       "steps": [

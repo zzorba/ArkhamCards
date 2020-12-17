@@ -10010,11 +10010,19 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Vous êtes tiré du sommeil par air vicié sentant le renfermé et par la poussière qui vous irrite la gorge. Vous êtes allongé sur une dalle de pierre froide dans ce qui semble être un sombre couloir souterrain. Comment êtes-vous arrivé jusqu'ici ? Et d'ailleurs, où se trouve « ici » exactement ? Un frisson vous parcourt le corps et vos poils se hérissent. Vous vous mettez debout et tentez de prendre la mesure de la situation. Les murs et les plafonds sont recouverts d'ossements et, où que vous regardiez, des crânes à la bouche ouverte semblent vous observer."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Le contenu de la maison de Nigel Engram ne répond à aucune de vos questions sur Le Roi en Jaune mais vous donne une idée de votre prochaine piste. La vieille carte déchirée trouvée sur la table basse représente une section des infâmes catacombes de Paris. Une pièce en particulier a été entourée au crayon et annotée : « La clé pour ouvrir la Route se trouve ici ! » Vous ravalez vos peurs et vous vous dirigez vers l'entrée des catacombes, rue de la Tombe-Issoire."
     },
@@ -10061,6 +10069,10 @@
     },
     {
       "id": "harukos_information",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.harukos_information",
+        "name": "Haruko's Information"
+      },
       "type": "story",
       "text": "En franchissant l'arche la plus proche, vous apercevez un symbole familier gravé dans le crâne d'un mouton : une série de demi-cercles concentriques alignés avec de drôles de runes. Deux lignes ondulées descendent du tracé jusqu'à la mâchoire du crâne. Vous reconnaissez le dessin qu'Haruko vous a montré. Vous demandant ce qu'il fait là, vous observez le crâne plus en détail. À peine avez-vous touché l'intérieur de la mâchoire que la bouche s'ouvre d'un coup. Les os tombent au sol et les murs dévoilent un nouveau passage."
     },
@@ -10526,6 +10538,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'a été atteinte\n(tous les investigateurs ont été vaincus)",
       "investigator_status": [
         "eliminated",
@@ -10544,6 +10560,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Le crâne calciné est la clé de tout. Vous en êtes sûr. Vous avez employé tous les moyens possibles pour étudier le motif qu'il arbore, mais la réponse vous échappe toujours. Vous avez montré le crâne à des experts, à des occultistes, à des professeurs. Vous vous êtes même surpris à lui parler une fois ou deux. Exaspéré, vous placez le crâne sur votre table de chevet et tentez de trouver le sommeil pour la première fois depuis votre sortie des catacombes. En vous endormant, vous ne parvenez pas à chasser la vision du motif gravé sur le front du crâne.\nVous vous réveillez avec une inspiration subite et foncez au Louvre, le célèbre musée parisien contenant des milliers de peintures, de dessins et de trouvailles archéologiques. Vous passez des jours à explorer le musée – chaque oeuvre, chaque collection, chaque petit objet d'art qui pourrait vous révéler la signification de ce motif. Finalement, vous tombez sur un tableau représentant une magnifique ville insulaire assaillie par une tempête. Des vagues s'écrasent contre les murailles de pierre de la ville, menaçant d'engloutir l'île tout entière. Des AQU éclairs zèbrent le ciel autour du clocher de l'abbaye qui surplombe le village. Une nuée de nuages noirs recouvre le ciel. Et sur le vitrail de l'abbaye, vous apercevez la copie conforme du motif du crâne calciné que vous tenez entre vos mains. Le titre de cette oeuvre : « La Route est Ouverte ».",
       "steps": [
@@ -10556,6 +10576,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Vous tombez sans discontinuer à travers l'abîme infini. Aucun air ne ralentit votre descente ni ne s'engouffre dans vos cheveux. Cet endroit n'est pas réel. Finalement, vous traversez une porte invisible et entrez dans un autre monde. Au-dessus et au-dessous de vous surgissent deux lignes d'horizon, l'une reflétant l'autre. Un tourbillon de nuages noirs et de vagues s'amoncelle entre les deux. Vous observez les deux côtés – la ville familière et son étrange reflet. Cela pourrait-il être la route de Carcosa ? Un passage entre les réalités ? Le lieu où deux mondes convergent ? Si tel est le cas, tout ce qu'il vous reste à faire est de trouver l'endroit où la porte apparaît sur Terre. Vous tombez dans le vortex en dessous.\nUn agent de police vous réveille en vous secouant et vous aide à vous remettre sur pied. Vous avez l'impression d'être passé sous un train. La douleur est intolérable. L'homme vous braque sa torche sur le visage et vous pose des questions en français. Vos yeux s'écarquillent à mesure que vous reprenez conscience. Vous libérez votre bras de la poigne du policier déboussolé. « Il faut que j'y aille, maintenant ! »",
       "steps": [
@@ -21576,11 +21600,19 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Vous êtes tiré du sommeil par air vicié sentant le renfermé et par la poussière qui vous irrite la gorge. Vous êtes allongé sur une dalle de pierre froide dans ce qui semble être un sombre couloir souterrain. Comment êtes-vous arrivé jusqu'ici ? Et d'ailleurs, où se trouve « ici » exactement ? Un frisson vous parcourt le corps et vos poils se hérissent. Vous vous mettez debout et tentez de prendre la mesure de la situation. Les murs et les plafonds sont recouverts d'ossements et, où que vous regardiez, des crânes à la bouche ouverte semblent vous observer."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Le contenu de la maison de Nigel Engram ne répond à aucune de vos questions sur Le Roi en Jaune mais vous donne une idée de votre prochaine piste. La vieille carte déchirée trouvée sur la table basse représente une section des infâmes catacombes de Paris. Une pièce en particulier a été entourée au crayon et annotée : « La clé pour ouvrir la Route se trouve ici ! » Vous ravalez vos peurs et vous vous dirigez vers l'entrée des catacombes, rue de la Tombe-Issoire."
     },
@@ -21627,6 +21659,10 @@
     },
     {
       "id": "harukos_information",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.harukos_information",
+        "name": "Haruko's Information"
+      },
       "type": "story",
       "text": "En franchissant l'arche la plus proche, vous apercevez un symbole familier gravé dans le crâne d'un mouton : une série de demi-cercles concentriques alignés avec de drôles de runes. Deux lignes ondulées descendent du tracé jusqu'à la mâchoire du crâne. Vous reconnaissez le dessin qu'Haruko vous a montré. Vous demandant ce qu'il fait là, vous observez le crâne plus en détail. À peine avez-vous touché l'intérieur de la mâchoire que la bouche s'ouvre d'un coup. Les os tombent au sol et les murs dévoilent un nouveau passage."
     },
@@ -22100,6 +22136,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Aucune conclusion n'a été atteinte\n(tous les investigateurs ont été vaincus)",
       "investigator_status": [
         "eliminated",
@@ -22118,6 +22158,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Conclusion 1",
       "text": "Le crâne calciné est la clé de tout. Vous en êtes sûr. Vous avez employé tous les moyens possibles pour étudier le motif qu'il arbore, mais la réponse vous échappe toujours. Vous avez montré le crâne à des experts, à des occultistes, à des professeurs. Vous vous êtes même surpris à lui parler une fois ou deux. Exaspéré, vous placez le crâne sur votre table de chevet et tentez de trouver le sommeil pour la première fois depuis votre sortie des catacombes. En vous endormant, vous ne parvenez pas à chasser la vision du motif gravé sur le front du crâne.\nVous vous réveillez avec une inspiration subite et foncez au Louvre, le célèbre musée parisien contenant des milliers de peintures, de dessins et de trouvailles archéologiques. Vous passez des jours à explorer le musée – chaque oeuvre, chaque collection, chaque petit objet d'art qui pourrait vous révéler la signification de ce motif. Finalement, vous tombez sur un tableau représentant une magnifique ville insulaire assaillie par une tempête. Des vagues s'écrasent contre les murailles de pierre de la ville, menaçant d'engloutir l'île tout entière. Des AQU éclairs zèbrent le ciel autour du clocher de l'abbaye qui surplombe le village. Une nuée de nuages noirs recouvre le ciel. Et sur le vitrail de l'abbaye, vous apercevez la copie conforme du motif du crâne calciné que vous tenez entre vos mains. Le titre de cette oeuvre : « La Route est Ouverte ».",
       "steps": [
@@ -22130,6 +22174,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Conclusion 2",
       "text": "Vous tombez sans discontinuer à travers l'abîme infini. Aucun air ne ralentit votre descente ni ne s'engouffre dans vos cheveux. Cet endroit n'est pas réel. Finalement, vous traversez une porte invisible et entrez dans un autre monde. Au-dessus et au-dessous de vous surgissent deux lignes d'horizon, l'une reflétant l'autre. Un tourbillon de nuages noirs et de vagues s'amoncelle entre les deux. Vous observez les deux côtés – la ville familière et son étrange reflet. Cela pourrait-il être la route de Carcosa ? Un passage entre les réalités ? Le lieu où deux mondes convergent ? Si tel est le cas, tout ce qu'il vous reste à faire est de trouver l'endroit où la porte apparaît sur Terre. Vous tombez dans le vortex en dessous.\nUn agent de police vous réveille en vous secouant et vous aide à vous remettre sur pied. Vous avez l'impression d'être passé sous un train. La douleur est intolérable. L'homme vous braque sa torche sur le visage et vous pose des questions en français. Vos yeux s'écarquillent à mesure que vous reprenez conscience. Vous libérez votre bras de la poigne du policier déboussolé. « Il faut que j'y aille, maintenant ! »",
       "steps": [

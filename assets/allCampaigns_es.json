@@ -10010,11 +10010,19 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Te despiertan el aire sucio y rancio y el polvo que se cuelan en tu garganta. Estás tendido sobre una losa de fría piedra en un pasadizo subterráneo sin ninguna luz. ¿Cómo has llegado aquí? ¿Y dónde estás exactamente? Un escalofrío te recorre el cuerpo, y se te ponen los pelos de punta. Al levantarte, examinas tus alrededores. Las paredes y el techo están decorados con huesos, y ves cráneos con la boca abierta que te devuelven la mirada allí donde pones los ojos."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Lo que contenía la casa de Nigel Engram no responde ninguna de tus preguntas sobre El Rey de Amarillo, pero sí te da una pista de tu siguiente destino. El viejo y raído mapa que encontraste en la mesita muestra una sección de las infames catacumbas de París. Una de las salas del mapa está rodeada por un círculo a bolígrafo, y junto a ella hay escrito: “¡Aquí está la llave para abrir el camino!”. Te tragas el miedo y te diriges inmediatamente a la entrada a las catacumbas que hay bajo la Rue de la Tombe-Issoire."
     },
@@ -10061,6 +10069,10 @@
     },
     {
       "id": "harukos_information",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.harukos_information",
+        "name": "Haruko's Information"
+      },
       "type": "story",
       "text": "Después del arco más cercano, ves un símbolo familiar grabado en el cráneo de una oveja: filas de semicírculos concéntricos y runas exóticas. Dos líneas onduladas bajan desde el diseño hacia la mandíbula inferior del cráneo. Reconoces el dibujo que te mostró Haruko. Preguntándote por qué aparece aquí, examinas el cráneo con atención. En cuanto tocas la parte inferior de la mandíbula del cráneo, su boca se abre de repente. Varios huesos caen al suelo cuando la pared se desliza para revelar un nuevo camino."
     },
@@ -10526,6 +10538,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores fueron derrotados)",
       "investigator_status": [
         "eliminated",
@@ -10544,6 +10560,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "El cráneo calcinado es la clave de todo. Estás seguro. Has intentado todos los métodos que tienes a tu disposición para estudiar el diagrama que lleva, pero se te sigue escapando la respuesta. Has llevado el cráneo a expertos, ocultistas y profesores. Incluso has tratado de hablar con el cráneo en más de una ocasión. Exasperado, colocas el cráneo en tu mesilla de noche y tratas de dormir por primera vez desde que escapaste de las catacumbas. Cuando te quedas dormido, no logras borrar la imagen del diagrama grabado en la frente del cráneo.\nTe despiertas con una chispa de inspiración y te diriges corriendo al Musée du Louvre, un famoso museo parisino que alberga decenas de miles de cuadros, dibujos y hallazgos arqueológicos. Pasas días explorando el museo; cada exposición, colección y objeto de arte que podría contener alguna pista sobre el significado del diagrama. Por fin lo ves: un cuadro que muestra una preciosa ciudad isleña que soporta una tormenta torrencial. Las olas chocan contra la piedra de la muralla exterior, y la marea amenaza con engullir la isla entera. Hay destellos de relámpagos alrededor de la torre de la abadía que hay sobre la aldea. Un remolino de nubes negras gira en el cielo. El diagrama del cráneo quemado que tienes en las manos aparece perfectamente recreado en una vidriera de la abadía. El título del cuadro es “El camino está abierto”.",
       "steps": [
@@ -10556,6 +10576,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Caes sin cesar por un abismo vacío. No hay aire que ralentice tu descenso ni recorra tu pelo. Es un pasaje desprovisto de realidad. Por fin, atraviesas un portal invisible y entras en otro reino. Por encima y por debajo de ti hay dos firmamentos, y uno es el distorsionado reflejo del otro. Entre ellos se encuentra un remolino de nubes negras y olas rompientes. Estudias ambos lados: la familiar ciudad y su extraño reflejo. ¿Podría ser éste el camino a Carcosa? ¿Un pasaje entre realidades, donde convergen los reinos? Si es así, todo lo que debes hacer es encontrar dónde aparece este portal en la Tierra. Te precipitas al vórtice que tienes debajo.\nTe despierta el zarandeo de un agente de policía que te pone en pie. Te sientes como si un tren se hubiera estrellado contra tu cabeza. El dolor es insoportable. El hombre te apunta con una linterna a los ojos y te hace varias preguntas en francés. Abres los ojos como platos al comprenderlo todo, y te sueltas del agarre del confundido hombre. –¡Debo irme de inmediato!",
       "steps": [
@@ -21576,11 +21600,19 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Te despiertan el aire sucio y rancio y el polvo que se cuelan en tu garganta. Estás tendido sobre una losa de fría piedra en un pasadizo subterráneo sin ninguna luz. ¿Cómo has llegado aquí? ¿Y dónde estás exactamente? Un escalofrío te recorre el cuerpo, y se te ponen los pelos de punta. Al levantarte, examinas tus alrededores. Las paredes y el techo están decorados con huesos, y ves cráneos con la boca abierta que te devuelven la mirada allí donde pones los ojos."
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Lo que contenía la casa de Nigel Engram no responde ninguna de tus preguntas sobre El Rey de Amarillo, pero sí te da una pista de tu siguiente destino. El viejo y raído mapa que encontraste en la mesita muestra una sección de las infames catacumbas de París. Una de las salas del mapa está rodeada por un círculo a bolígrafo, y junto a ella hay escrito: “¡Aquí está la llave para abrir el camino!”. Te tragas el miedo y te diriges inmediatamente a la entrada a las catacumbas que hay bajo la Rue de la Tombe-Issoire."
     },
@@ -21627,6 +21659,10 @@
     },
     {
       "id": "harukos_information",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.harukos_information",
+        "name": "Haruko's Information"
+      },
       "type": "story",
       "text": "Después del arco más cercano, ves un símbolo familiar grabado en el cráneo de una oveja: filas de semicírculos concéntricos y runas exóticas. Dos líneas onduladas bajan desde el diseño hacia la mandíbula inferior del cráneo. Reconoces el dibujo que te mostró Haruko. Preguntándote por qué aparece aquí, examinas el cráneo con atención. En cuanto tocas la parte inferior de la mandíbula del cráneo, su boca se abre de repente. Varios huesos caen al suelo cuando la pared se desliza para revelar un nuevo camino."
     },
@@ -22100,6 +22136,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores fueron derrotados)",
       "investigator_status": [
         "eliminated",
@@ -22118,6 +22158,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolución 1",
       "text": "El cráneo calcinado es la clave de todo. Estás seguro. Has intentado todos los métodos que tienes a tu disposición para estudiar el diagrama que lleva, pero se te sigue escapando la respuesta. Has llevado el cráneo a expertos, ocultistas y profesores. Incluso has tratado de hablar con el cráneo en más de una ocasión. Exasperado, colocas el cráneo en tu mesilla de noche y tratas de dormir por primera vez desde que escapaste de las catacumbas. Cuando te quedas dormido, no logras borrar la imagen del diagrama grabado en la frente del cráneo.\nTe despiertas con una chispa de inspiración y te diriges corriendo al Musée du Louvre, un famoso museo parisino que alberga decenas de miles de cuadros, dibujos y hallazgos arqueológicos. Pasas días explorando el museo; cada exposición, colección y objeto de arte que podría contener alguna pista sobre el significado del diagrama. Por fin lo ves: un cuadro que muestra una preciosa ciudad isleña que soporta una tormenta torrencial. Las olas chocan contra la piedra de la muralla exterior, y la marea amenaza con engullir la isla entera. Hay destellos de relámpagos alrededor de la torre de la abadía que hay sobre la aldea. Un remolino de nubes negras gira en el cielo. El diagrama del cráneo quemado que tienes en las manos aparece perfectamente recreado en una vidriera de la abadía. El título del cuadro es “El camino está abierto”.",
       "steps": [
@@ -22130,6 +22174,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_path_to_carcosa.the_pallid_mask.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolución 2",
       "text": "Caes sin cesar por un abismo vacío. No hay aire que ralentice tu descenso ni recorra tu pelo. Es un pasaje desprovisto de realidad. Por fin, atraviesas un portal invisible y entras en otro reino. Por encima y por debajo de ti hay dos firmamentos, y uno es el distorsionado reflejo del otro. Entre ellos se encuentra un remolino de nubes negras y olas rompientes. Estudias ambos lados: la familiar ciudad y su extraño reflejo. ¿Podría ser éste el camino a Carcosa? ¿Un pasaje entre realidades, donde convergen los reinos? Si es así, todo lo que debes hacer es encontrar dónde aparece este portal en la Tierra. Te precipitas al vórtice que tienes debajo.\nTe despierta el zarandeo de un agente de policía que te pone en pie. Te sientes como si un tren se hubiera estrellado contra tu cabeza. El dolor es insoportable. El hombre te apunta con una linterna a los ojos y te hace varias preguntas en francés. Abres los ojos como platos al comprenderlo todo, y te sueltas del agarre del confundido hombre. –¡Debo irme de inmediato!",
       "steps": [
