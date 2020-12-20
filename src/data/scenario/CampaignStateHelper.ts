@@ -181,11 +181,11 @@ export default class CampaignStateHelper {
     ) {
       // This is a deck upgrade action.
       Alert.alert(
-        t`Undo deck upgrade`,
+        t`Undo deck upgrade?`,
         t`Looks like you are trying to undo a deck upgrade.\n\nNote that the app will NOT delete your latest deck upgrade from ArkhamDB, so your deck will still have the earlier changes applied.\n\nYou can view the deck and delete the most recent 'upgrade' to put things back the way they were.`,
         [
           {
-            text: t`Undo`,
+            text: t`Undo deck upgrade`,
             onPress: () => {
               this.actions.undo(scenarioId);
             },

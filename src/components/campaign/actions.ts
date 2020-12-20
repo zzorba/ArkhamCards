@@ -40,9 +40,12 @@ import {
   RestoreBackupAction,
   AdjustBlessCurseAction,
   ADJUST_BLESS_CURSE,
+  StandaloneId,
+  NewStandaloneCampaignAction,
+  NEW_STANDALONE,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
-import { AppState, getCampaign } from '@reducers';
+import { AppState, makeCampaignSelector } from '@reducers';
 
 function getBaseDeckIds(
   state: AppState,
@@ -156,6 +159,29 @@ export function newLinkedCampaign(
   };
 }
 
+export function newStandalone(
+  id: number,
+  name: string,
+  standaloneId: StandaloneId,
+  deckIds: number[],
+  investigatorIds: string[],
+  weaknessSet: WeaknessSet
+): ThunkAction<void, AppState, null, NewStandaloneCampaignAction> {
+  return (dispatch, getState: () => AppState) => {
+    const action: NewStandaloneCampaignAction = {
+      type: NEW_STANDALONE,
+      id,
+      name: name,
+      standaloneId,
+      weaknessSet,
+      baseDeckIds: getBaseDeckIds(getState(), deckIds),
+      investigatorIds,
+      now: new Date(),
+    };
+    dispatch(action);
+  };
+}
+
 export function newCampaign(
   id: number,
   name: string,
@@ -265,7 +291,7 @@ export function deleteCampaign(
   id: number
 ): ThunkAction<void, AppState, null, DeleteCampaignAction> {
   return (dispatch, getState: () => AppState) => {
-    const campaign = getCampaign(getState(), id);
+    const campaign = makeCampaignSelector()(getState(), id);
     if (campaign && campaign.link) {
       dispatch({
         type: DELETE_CAMPAIGN,

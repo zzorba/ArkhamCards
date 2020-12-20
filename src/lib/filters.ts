@@ -37,14 +37,24 @@ export interface SkillIconsFilters {
   wild: boolean;
   doubleIcons: boolean;
 }
+
+export interface SkillModifierFilters {
+  willpower: boolean;
+  intellect: boolean;
+  combat: boolean;
+  agility: boolean;
+}
+
 export interface FilterState {
-  [key: string]: string[] | boolean | [number, number] | SkillIconsFilters;
+  [key: string]: string[] | boolean | [number, number] | SkillIconsFilters | SkillModifierFilters;
   factions: FactionCodeType[];
   uses: string[];
   types: string[];
   subTypes: string[];
   xpLevels: string[];
   traits: string[];
+  actions: string[];
+  skillModifiers: SkillModifierFilters;
   packs: string[];
   cycleNames: string[];
   slots: string[];
@@ -101,7 +111,23 @@ export interface FilterState {
   enemyHorror: [number, number];
   enemyFight: [number, number];
   enemyEvade: [number, number];
+
+  assetHealthEnabled: boolean;
+  assetHealth: [number, number];
+  assetSanityEnabled: boolean;
+  assetSanity: [number, number];
 }
+
+const ACTION_TEXT: { [key: string]: string } = {
+  fight: '<b>Fight.</b>',
+  engage: '<b>Engage.</b>',
+  investigate: '<b>Investigate.</b>',
+  play: '<b>Play.</b>',
+  draw: '<b>Draw.</b>',
+  move: '<b>Move.</b>',
+  evade: '<b>Evade.</b>',
+  resource: '<b>Resource.</b>',
+};
 
 export const defaultFilterState: FilterState = {
   factions: [],
@@ -109,7 +135,14 @@ export const defaultFilterState: FilterState = {
   types: [],
   subTypes: [],
   xpLevels: [],
+  actions: [],
   traits: [],
+  skillModifiers: {
+    willpower: false,
+    intellect: false,
+    combat: false,
+    agility: false,
+  },
   packs: [],
   cycleNames: [],
   slots: [],
@@ -173,6 +206,10 @@ export const defaultFilterState: FilterState = {
   enemyHorror: [0, 5],
   enemyFight: [0, 6],
   enemyEvade: [0, 6],
+  assetHealthEnabled: false,
+  assetHealth: [0, 4],
+  assetSanityEnabled: false,
+  assetSanity: [0, 4],
 };
 
 
@@ -241,7 +278,7 @@ export default class FilterBuilder {
     return this.complexVectorClause(
       'slot',
       map(slots, slot => `%#${slot}#%`),
-      (valueName: string) => `c.slots_normalized LIKE :${valueName}`
+      (valueName: string) => `c.real_slots_normalized LIKE :${valueName}`
     );
   }
 
@@ -305,6 +342,29 @@ export default class FilterBuilder {
       result.push(where(`c.type_code = 'location' OR linked_card.type_code = 'location'`));
     }
     return result;
+  }
+
+  assetFilters(filters: FilterState): Brackets[] {
+    const {
+      assetHealthEnabled,
+      assetHealth,
+      assetSanityEnabled,
+      assetSanity,
+    } = filters;
+    const result: Brackets[] = [
+      ...(assetHealthEnabled ? this.rangeFilter('health', assetHealth, true) : []),
+      ...(assetSanityEnabled ? this.rangeFilter('sanity', assetSanity, true) : []),
+    ];
+    if (!result.length) {
+      return [];
+    }
+    return [
+      combineQueries(
+        where(`c.type_code = 'asset' OR linked_card.type_code = 'asset'`),
+        result,
+        'and'
+      ),
+    ];
   }
 
   enemyFilters(filters: FilterState): Brackets[] {
@@ -465,6 +525,7 @@ export default class FilterBuilder {
       permanent,
       exile,
       slots,
+      actions,
     } = filters;
     const result: Brackets[] = [
       ...this.slotFilter(slots),
@@ -500,6 +561,18 @@ export default class FilterBuilder {
     if (myriad) {
       result.push(where(`c.real_text LIKE '%Myriad.%' or linked_card.real_text LIKE '%Myriad.%'`));
     }
+    if (actions.length) {
+      const parts: Brackets[] = [];
+      forEach(actions, action => {
+        if (ACTION_TEXT[action]) {
+          parts.push(where(`c.real_text like '%${ACTION_TEXT[action]}%' or linked_card.real_text like '%${ACTION_TEXT[action]}%'`));
+        }
+      });
+      const combined = combineQueriesOpt(parts, 'or');
+      if (combined) {
+        result.push(combined);
+      }
+    }
     return result;
   }
 
@@ -528,8 +601,8 @@ export default class FilterBuilder {
     return combineQueriesOpt(
       [
         ...this.factionFilter(filters.factions),
-        ...this.equalsVectorClause(filters.types, 'type_name'),
-        ...this.equalsVectorClause(filters.subTypes, 'subtype_name'),
+        ...this.equalsVectorClause(filters.types, 'type_code'),
+        ...this.equalsVectorClause(filters.subTypes, 'subtype_code'),
         ...this.playerCardFilters(filters),
         ...this.equalsVectorClause(filters.packs, 'pack_name'),
         ...this.equalsVectorClause(filters.encounters, 'encounter_name'),
@@ -538,6 +611,7 @@ export default class FilterBuilder {
         ...this.levelFilter(filters),
         ...this.costFilter(filters),
         ...this.traitFilter(filters.traits),
+        ...this.assetFilters(filters),
         ...this.enemyFilters(filters),
         ...this.locationFilters(filters),
         ...this.skillIconFilter(filters),

@@ -13,14 +13,15 @@ import { showDeckModal } from '@components/nav/helper';
 import Dialog from '@components/core/Dialog';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import { login } from '@actions';
-import { Deck } from '@actions/types';
+import { CUSTOM, Deck } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
-import { getBaseDeck, getLatestDeck, AppState } from '@reducers';
+import { makeBaseDeckSelector, makeLatestDeckSelector, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useDeck, useEffectUpdate, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
+import { CUSTOM_INVESTIGATOR } from '@app_constants';
 
 interface OwnProps {
   componentId: string;
@@ -37,31 +38,13 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
   const { colors, typography } = useContext(StyleContext);
   const dispatch: DeckDispatch = useDispatch();
   const [deck] = useDeck(deckId, {});
-  const baseDeckSelector = useCallback((state: AppState) => {
-    if (deckId === undefined) {
-      return undefined;
-    }
-    const baseDeck = getBaseDeck(state, deckId);
-    if (!baseDeck || baseDeck.id === deckId) {
-      return undefined;
-    }
-    return baseDeck;
-  }, [deckId]);
-  const baseDeck = useSelector(baseDeckSelector);
-  const laltestDeckSelector = useCallback((state: AppState) => {
-    if (deckId === undefined) {
-      return undefined;
-    }
-    const latestDeck = getLatestDeck(state, deckId);
-    if (!latestDeck || latestDeck.id === deckId) {
-      return undefined;
-    }
-    return latestDeck;
-  }, [deckId]);
-  const latestDeck = useSelector(laltestDeckSelector);
+  const baseDeckSelector = useMemo(makeBaseDeckSelector, []);
+  const baseDeck = useSelector((state: AppState) => baseDeckSelector(state, deckId));
+  const latestDeckSelector = useMemo(makeLatestDeckSelector, []);
+  const latestDeck = useSelector((state: AppState) => latestDeckSelector(state, deckId));
   const [saving, setSaving] = useState(false);
   const [deckName, setDeckName] = useState<string | undefined>();
-  const [offlineDeck, setOfflineDeck] = useState(!!(deck && deck.local));
+  const [offlineDeck, setOfflineDeck] = useState(!!(deck && deck.local && deck.investigator_code !== CUSTOM_INVESTIGATOR));
   const [selectedDeckId, setSelectedDeckId] = useState(deckId);
   const [error, setError] = useState<string | undefined>();
 
@@ -199,24 +182,27 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
           returnKeyType="done"
         />
         { deckSelector }
-        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
-          { t`Deck Type` }
-        </DialogComponent.Description>
-        <DialogComponent.Switch
-          label={t`Create on ArkhamDB`}
-          value={!offlineDeck && signedIn && isConnected && networkType !== NetInfoStateType.none}
-          disabled={!isConnected || networkType === NetInfoStateType.none}
-          onValueChange={onDeckTypeChange}
-          trackColor={COLORS.switchTrackColor}
-        />
-        { (!isConnected || networkType === NetInfoStateType.none) && (
-          <TouchableOpacity onPress={refreshNetworkStatus}>
-            <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
-              { t`You seem to be offline. Refresh Network?` }
+        { deck?.investigator_code !== CUSTOM_INVESTIGATOR && (
+          <>
+            <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+              { t`Deck Type` }
             </DialogComponent.Description>
-          </TouchableOpacity>
+            <DialogComponent.Switch
+              label={t`Create on ArkhamDB`}
+              value={!offlineDeck && signedIn && isConnected && networkType !== NetInfoStateType.none}
+              disabled={!isConnected || networkType === NetInfoStateType.none}
+              onValueChange={onDeckTypeChange}
+              trackColor={COLORS.switchTrackColor}
+            />
+            { (!isConnected || networkType === NetInfoStateType.none) && (
+              <TouchableOpacity onPress={refreshNetworkStatus}>
+                <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
+                  { t`You seem to be offline. Refresh Network?` }
+                </DialogComponent.Description>
+              </TouchableOpacity>
+            ) }
+          </>
         ) }
-
         { !!error && (
           <Text style={[typography.text, typography.center, styles.error, space.marginBottomS]}>
             { error }
@@ -224,7 +210,7 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
         ) }
       </>
     );
-  }, [signedIn, networkType, isConnected, colors, typography, saving, deckName, offlineDeck, error, onDeckNameChange, refreshNetworkStatus, onDeckTypeChange, deckSelector]);
+  }, [signedIn, networkType, isConnected, colors, typography, saving, deckName, offlineDeck, error, deck?.investigator_code, onDeckNameChange, refreshNetworkStatus, onDeckTypeChange, deckSelector]);
 
 
   if (!investigator) {

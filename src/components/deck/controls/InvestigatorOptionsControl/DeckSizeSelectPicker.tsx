@@ -3,7 +3,7 @@ import { findIndex, map } from 'lodash';
 import { t } from 'ttag';
 
 import { FactionCodeType } from '@app_constants';
-import DeckPickerButton from '@components/deck/DeckDetailView/DeckPickerButton';
+import DeckPickerButton from '@components/deck/controls/DeckPickerButton';
 
 interface Props {
   name: string;

@@ -16,7 +16,11 @@ interface Props {
 
 export default function CardCountLine({ parsedDeck: { normalCardCount, totalCardCount }, bondedCardCount, last }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
-  const title = <Text style={[typography.smallLabel, typography.italic, typography.dark]}>{ t`Card count` }</Text>;
+  const title = (
+    <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
+      { t`Card count` }
+    </Text>
+  );
   const icon = <AppIcon name="card-outline" size={36} color={colors.M} />;
   const description = (
     <View style={styles.row}>

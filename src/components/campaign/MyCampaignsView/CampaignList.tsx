@@ -4,28 +4,31 @@ import { map } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { Campaign } from '@actions/types';
+import { Campaign, STANDALONE } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import CampaignItem from './CampaignItem';
 import { CampaignDetailProps } from '@components/campaign/CampaignDetailView';
 import { CampaignGuideProps } from '@components/campaignguide/CampaignGuideView';
+import { StandaloneGuideProps } from '@components/campaignguide/StandaloneGuideView';
 import { LinkedCampaignGuideProps } from '@components/campaignguide/LinkedCampaignGuideView';
 import LinkedCampaignItem from './LinkedCampaignItem';
 import COLORS from '@styles/colors';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import StandaloneItem from './StandaloneItem';
 
 interface Props {
   onScroll: (...args: any[]) => void;
   componentId: string;
   campaigns: Campaign[];
   footer: React.ReactElement;
+  standalonesById: { [campaignId: string]: { [scenarioId: string]: string } };
 }
 
 interface CampaignItemType {
   campaign: Campaign;
 }
 
-export default function CampaignList({ onScroll, componentId, campaigns, footer }: Props) {
+export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById }: Props) {
   const onPress = useCallback((id: number, campaign: Campaign) => {
     Keyboard.dismiss();
     const options: Options = {
@@ -50,13 +53,21 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer 
           },
         ],
       },
-      sideMenu: {
-        right: {
-
-        },
-      },
     };
-    if (campaign.guided) {
+    if (campaign.cycleCode === STANDALONE) {
+      if (campaign.standaloneId) {
+        Navigation.push<StandaloneGuideProps>(componentId, {
+          component: {
+            name: 'Guide.Standalone',
+            passProps: {
+              campaignId: campaign.id,
+              standaloneId: campaign.standaloneId,
+            },
+            options,
+          },
+        });
+      }
+    } else if (campaign.guided) {
       if (campaign.link) {
         Navigation.push<LinkedCampaignGuideProps>(componentId, {
           component: {
@@ -69,17 +80,17 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer 
             options,
           },
         });
-        return;
-      }
-      Navigation.push<CampaignGuideProps>(componentId, {
-        component: {
-          name: 'Guide.Campaign',
-          passProps: {
-            campaignId: campaign.id,
+      } else {
+        Navigation.push<CampaignGuideProps>(componentId, {
+          component: {
+            name: 'Guide.Campaign',
+            passProps: {
+              campaignId: campaign.id,
+            },
+            options,
           },
-          options,
-        },
-      });
+        });
+      }
     } else {
       Navigation.push<CampaignDetailProps>(componentId, {
         component: {
@@ -94,6 +105,16 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer 
   }, [componentId]);
 
   const renderItem = useCallback(({ item: { campaign } }: ListRenderItemInfo<CampaignItemType>) => {
+    if (campaign.cycleCode === STANDALONE) {
+      return campaign.standaloneId ? (
+        <StandaloneItem
+          key={campaign.id}
+          campaign={campaign}
+          onPress={onPress}
+          scenarioName={standalonesById[campaign.standaloneId.campaignId][campaign.standaloneId.scenarioId]}
+        />
+      ) : null;
+    }
     if (campaign.link) {
       return (
         <LinkedCampaignItem
@@ -110,7 +131,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer 
         onPress={onPress}
       />
     );
-  }, [onPress]);
+  }, [onPress, standalonesById]);
 
   const header = useMemo(() => {
     if (Platform.OS === 'android') {

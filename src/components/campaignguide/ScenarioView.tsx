@@ -5,18 +5,18 @@ import {
   ScrollView,
   StyleSheet,
   useWindowDimensions,
-  View,
 } from 'react-native';
 import { last } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
+import { useSelector } from 'react-redux';
 
 import CampaignGuideContext from './CampaignGuideContext';
-import { ScenarioGuideContextType } from './ScenarioGuideContext';
 import StepsComponent from './StepsComponent';
 import { CampaignLogProps } from './CampaignLogView';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
+import { hasDissonantVoices } from '@reducers';
 import { iconsMap } from '@app/NavIcons';
 import BasicButton from '@components/core/BasicButton';
 import { NavigationProps } from '@components/nav/types';
@@ -24,15 +24,22 @@ import COLORS from '@styles/colors';
 import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
+import NarrationWrapper, { NarrationTrack, setNarrationQueue } from '@components/campaignguide/NarrationWrapper';
+import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
+import ScenarioStep from '@data/scenario/ScenarioStep';
+import ScenarioGuideContext from './ScenarioGuideContext';
+import { ProcessedScenario } from '@data/scenario';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 
 interface OwnProps {
   showLinkedScenario?: (
     scenarioId: string
   ) => void;
+  footer?: React.ReactNode;
 }
 type InputProps = NavigationProps & ScenarioGuideInputProps & OwnProps;
 
-type Props = InputProps & ScenarioGuideContextType;
+type Props = InputProps;
 
 export type ScenarioProps = ScenarioGuideInputProps & OwnProps;
 
@@ -64,10 +71,75 @@ function dynamicOptions(undo: boolean) {
   };
 }
 
-function ScenarioView({ componentId, campaignId, showLinkedScenario, processedScenario, scenarioId }: Props) {
+function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: ScenarioStateHelper) {
+  const campaignCode = processedScenario.scenarioGuide.campaignGuide.campaignCycleCode();
+  const campaignName = processedScenario.scenarioGuide.campaignGuide.campaignName();
+  const scenarioName = processedScenario.scenarioGuide.scenarioName();
+
+  const queue: NarrationTrack[] = [];
+  const scenarioSteps: ScenarioStep[] = [];
+  for (const scenarioStep of processedScenario.steps) {
+    if (scenarioStep.step.type === 'effects') {
+      for (const effectsWithInput of scenarioStep.step.effectsWithInput) {
+        for (const effect of effectsWithInput.effects) {
+          if ('steps' in effect) {
+            scenarioSteps.push(...processedScenario.scenarioGuide.expandSteps(
+              effect.steps,
+              scenarioState,
+              scenarioStep.campaignLog
+            ));
+          }
+        }
+      }
+    } else {
+      scenarioSteps.push(scenarioStep);
+    }
+  }
+  for (const scenarioStep of scenarioSteps) {
+    switch(scenarioStep.step.type) {
+      case 'resolution': {
+        const narration = processedScenario.scenarioGuide.resolution(
+          scenarioStep.step.resolution
+        )?.narration;
+        if (narration) {
+          queue.push({
+            ...narration,
+            campaignCode,
+            campaignName,
+            scenarioName,
+          });
+        }
+        break;
+      }
+      case 'story':
+      case 'branch':
+      case 'input': {
+        const narration = scenarioStep.step.narration;
+        if (narration) {
+          queue.push({
+            ...narration,
+            campaignCode,
+            campaignName,
+            scenarioName,
+          });
+        }
+      }
+    }
+  }
+  return queue;
+}
+
+function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId, standalone, footer }: Props) {
   const { campaignState } = useContext(CampaignGuideContext);
+  const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
   const { backgroundStyle } = useContext(StyleContext);
   const { width } = useWindowDimensions();
+  useEffect(() => {
+    if (standalone && processedScenario.type !== 'started' && processedScenario.type !== 'completed') {
+      campaignState.startScenario(scenarioId);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => {
     Navigation.mergeOptions(componentId, dynamicOptions(processedScenario.canUndo));
   }, [componentId, processedScenario.canUndo]);
@@ -84,6 +156,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
           campaignId,
           campaignLog: log.campaignLog,
           campaignGuide: processedScenario.scenarioGuide.campaignGuide,
+          standalone,
         },
         options: {
           topBar: {
@@ -97,7 +170,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
         },
       },
     });
-  }, [componentId, processedScenario, campaignId]);
+  }, [componentId, processedScenario, campaignId, standalone]);
 
   const resetPressed = useCallback(() => {
     Alert.alert(
@@ -137,7 +210,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
         break;
       }
     }
-  }, componentId, [resetPressed, menuPressed, undoPressed]);
+  }, componentId, [resetPressed, menuPressed, undoPressed], 100);
 
 
   const switchCampaignScenario = useCallback(() => {
@@ -159,6 +232,15 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
       },
     });
   }, [componentId, campaignId, processedScenario.id]);
+  const hasDS = useSelector(hasDissonantVoices);
+
+  useEffect(() => {
+    if (!hasDS || !SHOW_DISSONANT_VOICES) {
+      return;
+    }
+    const queue = getNarrationQueue(processedScenario, scenarioState);
+    setNarrationQueue(queue);
+  }, [processedScenario, scenarioState, hasDS]);
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
     processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
@@ -170,21 +252,23 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
       keyboardVerticalOffset={100}
     >
       <KeepAwake />
-      <ScrollView contentContainerStyle={backgroundStyle}>
-        { !!hasInterludeFaq && (
-          <BasicButton
-            title={t`Interlude FAQ`}
-            onPress={showScenarioFaq}
+      <NarrationWrapper>
+        <ScrollView contentContainerStyle={backgroundStyle}>
+          { !!hasInterludeFaq && (
+            <BasicButton
+              title={t`Interlude FAQ`}
+              onPress={showScenarioFaq}
+            />
+          ) }
+          <StepsComponent
+            componentId={componentId}
+            width={width}
+            steps={processedScenario.steps}
+            switchCampaignScenario={switchCampaignScenario}
           />
-        ) }
-        <StepsComponent
-          componentId={componentId}
-          width={width}
-          steps={processedScenario.steps}
-          switchCampaignScenario={switchCampaignScenario}
-        />
-        <View style={styles.footer} />
-      </ScrollView>
+          { !!footer && footer }
+        </ScrollView>
+      </NarrationWrapper>
     </KeyboardAvoidingView>
   );
 }
@@ -196,9 +280,6 @@ ScenarioView.options = () => {
 export default withScenarioGuideContext<InputProps>(ScenarioView);
 
 const styles = StyleSheet.create({
-  footer: {
-    marginTop: 64,
-  },
   keyboardView: {
     flex: 1,
     flexDirection: 'column',

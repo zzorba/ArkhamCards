@@ -124,9 +124,12 @@ export default function CardSearchComponent(props: Props) {
   } = props;
   const { typography } = useContext(StyleContext);
   const visible = useComponentVisible(componentId);
-  const filters = useSelector((state: AppState) => getFilterState(state, componentId));
-  const mythosMode = useSelector((state: AppState) => getMythosMode(state, componentId));
-  const selectedSort = useSelector((state: AppState) => getCardSort(state, componentId));
+  const filterSelector = useCallback((state: AppState) => getFilterState(state, componentId), [componentId]);
+  const filters = useSelector(filterSelector);
+  const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, componentId), [componentId]);
+  const mythosMode = useSelector(mythosModeSelector);
+  const selectedSortSelector = useCallback((state: AppState) => getCardSort(state, componentId), [componentId]);
+  const selectedSort = useSelector(selectedSortSelector);
   const dispatch = useDispatch();
   useEffect(() => {
     Navigation.mergeOptions(componentId,

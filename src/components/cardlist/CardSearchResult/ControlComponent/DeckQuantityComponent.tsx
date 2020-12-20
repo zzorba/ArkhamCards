@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
-
-import { EditSlotsActions, useSimpleDeckEdits } from '@components/core/hooks';
 import { useDispatch } from 'react-redux';
-import { incDeckSlot, decDeckSlot, setDeckSlot } from '@components/deck/DeckDetailView/actions';
+
+import { EditSlotsActions } from '@components/core/hooks';
+import { incDeckSlot, decDeckSlot, setDeckSlot } from '@components/deck/actions';
 import CardQuantityComponent from './CardQuantityComponent';
+import { useDeckSlotCount } from '@components/deck/hooks';
+import { InteractionManager } from 'react-native';
 
 
 interface DeckCardQuantityProps {
@@ -14,21 +16,20 @@ interface DeckCardQuantityProps {
   forceBig?: boolean;
 }
 
-export default function DeckQuantityComponent(props: DeckCardQuantityProps) {
+function DeckQuantityComponent(props: DeckCardQuantityProps) {
   const { deckId, code, limit, showZeroCount, forceBig } = props;
-  const deckEditCounts = useSimpleDeckEdits(deckId);
+  const count = useDeckSlotCount(deckId, code);
   const dispatch = useDispatch();
-  const count = deckEditCounts?.slots[code];
   const countChanged: EditSlotsActions = useMemo(() => {
     return {
       setSlot: (code: string, count: number) => {
-        dispatch(setDeckSlot(deckId, code, count));
+        InteractionManager.runAfterInteractions(() => dispatch(setDeckSlot(deckId, code, count)));
       },
       incSlot: (code: string) => {
-        dispatch(incDeckSlot(deckId, code, limit));
+        InteractionManager.runAfterInteractions(() => dispatch(incDeckSlot(deckId, code, limit)));
       },
       decSlot: (code: string) => {
-        dispatch(decDeckSlot(deckId, code));
+        InteractionManager.runAfterInteractions(() => dispatch(decDeckSlot(deckId, code)));
       },
     };
   }, [dispatch, deckId, limit]);
@@ -43,3 +44,5 @@ export default function DeckQuantityComponent(props: DeckCardQuantityProps) {
     />
   );
 }
+
+export default React.memo(DeckQuantityComponent);

@@ -5,7 +5,7 @@ import DeckListRow from '../decklist/DeckListRow';
 import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import StyleContext from '@styles/StyleContext';
-import { useDeck, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
+import { useDeck, useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
 
 type RenderDeckDetails = (
   deck: Deck,
@@ -45,11 +45,12 @@ export default function DeckRow({
   const cards = usePlayerCards(theDeck?.taboo_id);
   const investigators = useInvestigatorCards(theDeck?.taboo_id);
   const investigator = theDeck && investigators && investigators[theDeck.investigator_code] || undefined;
-  const onDeckPress = useCallback(() => {
+  const onDeckPressFunction = useCallback(() => {
     if (theDeck) {
       showDeckModal(componentId, theDeck, colors, investigator);
     }
   }, [componentId, theDeck, colors, investigator]);
+  const onDeckPress = usePressCallback(onDeckPressFunction);
   const subDetails = useMemo(() => {
     if (theDeck && renderSubDetails) {
       if (!investigator || !cards) {

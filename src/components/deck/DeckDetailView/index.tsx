@@ -19,6 +19,7 @@ import DialogComponent from '@lib/react-native-dialog';
 import deepDiff from 'deep-diff';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
+import ActionButton from 'react-native-action-button';
 
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
@@ -30,8 +31,9 @@ import {
   deleteDeckAction,
   uploadLocalDeck,
   saveDeckChanges,
+  startDeckEdit,
 } from '@components/deck/actions';
-import { Slots, START_DECK_EDIT, UPDATE_DECK_EDIT } from '@actions/types';
+import { Slots, UPDATE_DECK_EDIT } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/Card';
@@ -44,19 +46,22 @@ import EditDeckDetailsDialog from './EditDeckDetailsDialog';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '@components/DeckNavFooter';
 import {
-  getCampaign,
-  getCampaignForDeck,
+  makeCampaignSelector,
+  makeCampaignForDeckSelector,
   getPacksInCollection,
   AppState,
 } from '@reducers';
-import space, { m } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useParsedDeck, useTabooSet } from '@components/core/hooks';
+import { useParsedDeck } from '@components/deck/hooks';
+import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet, useToggles } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
+import { CUSTOM_INVESTIGATOR } from '@app_constants';
+import AppIcon from '@icons/AppIcon';
 
 export interface DeckDetailProps {
   id: number;
@@ -73,6 +78,9 @@ type Props = NavigationProps &
   LoginStateProps;
 type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
+function FabButton({ title, onPress, color, icon, iconSize }: { title: string; onPress: () => void; color: string; icon: string; iconSize: number }) {
+  const { typography, colors } = useContext(StyleContext);
+}
 
 function DeckDetailView({
   componentId,
@@ -100,7 +108,7 @@ function DeckDetailView({
     visible,
     parsedDeck,
     tabooSetId,
-  } = useParsedDeck(id, componentId, true);
+  } = useParsedDeck(id, 'DeckDetail', componentId, true);
 
   const [copying, toggleCopying] = useFlag(false);
   const [saving, setSaving] = useState(false);
@@ -127,9 +135,18 @@ function DeckDetailView({
     });
     return parallelInvestigators;
   }, [investigators, deck?.investigator_code]);
+  const [hasPendingEdits, setHasPendingEdits] = useState(false);
+  const [slotDeltas, setSlotDeltas] = useState<{
+    removals: Slots;
+    additions: Slots;
+    ignoreDeckLimitChanged: boolean
+  }>({ removals: {}, additions: {}, ignoreDeckLimitChanged: false });
 
-  const slotDeltas = useMemo(() => {
-    const result: {
+  useEffect(() => {
+    if (!visible || !deck || !deckEdits) {
+      return;
+    }
+    const slotDeltas: {
       removals: Slots;
       additions: Slots;
       ignoreDeckLimitChanged: boolean;
@@ -138,27 +155,36 @@ function DeckDetailView({
       additions: {},
       ignoreDeckLimitChanged: false,
     };
-    if (!deck || !deckEdits) {
-      return result;
-    }
     forEach(deck.slots, (deckCount, code) => {
       const currentDeckCount = deckEdits.slots[code] || 0;
       if (deckCount > currentDeckCount) {
-        result.removals[code] = deckCount - currentDeckCount;
+        slotDeltas.removals[code] = deckCount - currentDeckCount;
       }
     });
     forEach(deckEdits.slots, (currentCount, code) => {
       const ogDeckCount = deck.slots[code] || 0;
       if (ogDeckCount < currentCount) {
-        result.additions[code] = currentCount - ogDeckCount;
+        slotDeltas.additions[code] = currentCount - ogDeckCount;
       }
       const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
       if (ogIgnoreCount !== (deckEdits.ignoreDeckLimitSlots[code] || 0)) {
-        result.ignoreDeckLimitChanged = true;
+        slotDeltas.ignoreDeckLimitChanged = true;
       }
     });
-    return result;
-  }, [deck, deckEdits]);
+
+    const originalTabooSet: number = (deck.taboo_id || 0);
+    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
+    setHasPendingEdits(
+      (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
+      (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
+      (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
+      keys(slotDeltas.removals).length > 0 ||
+      keys(slotDeltas.additions).length > 0 ||
+      slotDeltas.ignoreDeckLimitChanged ||
+      (!!metaChanges && metaChanges.length > 0)
+    );
+    setSlotDeltas(slotDeltas);
+  }, [deck, deckEdits, visible]);
 
   const [investigatorFront, investigatorBack] = useMemo(() => {
     const altFront = deckEdits?.meta.alternate_front && find(
@@ -175,9 +201,10 @@ function DeckDetailView({
 
   const problem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
-  const campaignSelector = useCallback((state: AppState) => campaignId ? getCampaign(state, campaignId) : getCampaignForDeck(state, deck?.id || id), [deck, id, campaignId]);
+  const campaignSelector = useMemo(makeCampaignSelector, []);
+  const campaignForDeckSelector = useMemo(makeCampaignForDeckSelector, []);
   const inCollection = useSelector(getPacksInCollection);
-  const campaign = useSelector(campaignSelector);
+  const campaign = useSelector((state: AppState) => campaignId ? campaignSelector(state, campaignId) : campaignForDeckSelector(state, deck?.id || id));
 
   const [cardsByName, bondedCardsByName] = useMemo(() => {
     const cardsByName: {
@@ -204,21 +231,6 @@ function DeckDetailView({
     });
     return [cardsByName, bondedCardsByName];
   }, [cards]);
-
-  const hasPendingEdits = useMemo(() => {
-    if (!deck || !deckEdits) {
-      return false;
-    }
-    const originalTabooSet: number = (deck.taboo_id || 0);
-    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
-    return (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
-      (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
-      (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
-      keys(slotDeltas.removals).length > 0 ||
-      keys(slotDeltas.additions).length > 0 ||
-      slotDeltas.ignoreDeckLimitChanged ||
-      (!!metaChanges && metaChanges.length > 0);
-  }, [deck, deckEdits, slotDeltas]);
 
   const addedBasicWeaknesses = useMemo(() => {
     if (!cards || !deck) {
@@ -613,7 +625,7 @@ function DeckDetailView({
   }, [setSaveError, setSaving]);
 
   const clearEdits = useCallback(() => {
-    dispatch({ type: START_DECK_EDIT, id });
+    dispatch(startDeckEdit(id));
   }, [dispatch, id]);
 
   const copyDialog = useMemo(() => {
@@ -623,6 +635,7 @@ function DeckDetailView({
         deckId={copying ? id : undefined}
         toggleVisible={toggleCopyDialog}
         signedIn={signedIn}
+
       />
     );
   }, [componentId, id, signedIn, copying, toggleCopyDialog]);
@@ -920,7 +933,7 @@ function DeckDetailView({
           icon="checklist"
           onPress={onChecklistPressed}
           title={t`Checklist`}
-          description={t`For eady deck assembly`}
+          description={t`For easy deck assembly`}
           last
         />
         { editable && (
@@ -980,7 +993,7 @@ function DeckDetailView({
           onPress={toggleCopyDialog}
           title={t`Clone deck`}
         />
-        { deck.local ? (
+        { deck.investigator_code !== CUSTOM_INVESTIGATOR && (deck.local ? (
           <MenuButton
             icon="world"
             onPress={uploadToArkhamDB}
@@ -995,7 +1008,7 @@ function DeckDetailView({
             onPress={viewDeck}
             last={!isPrivate}
           />
-        ) }
+        )) }
         { !!isPrivate && (
           <MenuButton
             icon="delete"
@@ -1011,6 +1024,81 @@ function DeckDetailView({
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditDetails, showTabooPicker,
     onEditPressed, onEditSpecialPressed, onChecklistPressed,
   ]);
+
+  const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
+  const [fabOpen, toggleFabOpen] = useFlag(false);
+  const fabIcon = useCallback((active: boolean) => {
+    if (active) {
+      return <AppIcon name="plus-thin" color={colors.L30} size={32} />;
+    }
+    return <AppIcon name="edit" color={colors.L30} size={24} />;
+  }, [colors]);
+
+  const fab = useMemo(() => {
+    const actionLabelStyle = {
+      ...typography.small,
+      color: colors.L30,
+      paddingTop: 5,
+      paddingLeft: s,
+      paddingRight: s,
+    };
+    const actionContainerStyle = {
+      backgroundColor: colors.D20,
+      borderRadius: 16,
+      borderWidth: 0,
+      minHeight: 32,
+      marginTop: -3,
+    };
+    return (
+      <ActionButton
+        active={fabOpen}
+        buttonColor={fabOpen ? colors.D10 : factionColor}
+        renderIcon={fabIcon}
+        onPress={toggleFabOpen}
+      >
+        <ActionButton.Item
+          hideLabelShadow
+          buttonColor={factionColor}
+          textStyle={actionLabelStyle}
+          textContainerStyle={actionContainerStyle}
+          title={t`Draw simulator`}
+          onPress={showDrawSimulatorPressed}
+        >
+          <AppIcon name="draw" color={colors.L30} size={34} />
+        </ActionButton.Item>
+        <ActionButton.Item
+          hideLabelShadow
+          buttonColor={factionColor}
+          textStyle={actionLabelStyle}
+          textContainerStyle={actionContainerStyle}
+          title={t`Charts`}
+          onPress={showCardChartsPressed}
+        >
+          <AppIcon name="chart" color={colors.L30} size={34} />
+        </ActionButton.Item>
+        <ActionButton.Item
+          hideLabelShadow
+          buttonColor={factionColor}
+          textStyle={actionLabelStyle}
+          textContainerStyle={actionContainerStyle}
+          title={t`Upgrade with XP`}
+          onPress={onUpgradePressed}
+        >
+          <AppIcon name="upgrade" color={colors.L30} size={32} />
+        </ActionButton.Item>
+        <ActionButton.Item
+          hideLabelShadow
+          buttonColor={factionColor}
+          textStyle={actionLabelStyle}
+          textContainerStyle={actionContainerStyle}
+          title={t`Edit`}
+          onPress={onEditPressed}
+        >
+          <AppIcon name="edit" color={colors.L30} size={24} />
+        </ActionButton.Item>
+      </ActionButton>
+    );
+  }, [factionColor, fabOpen, fabIcon, colors, toggleFabOpen, onEditPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
 
   if (!deck) {
     return (
@@ -1060,7 +1148,6 @@ function DeckDetailView({
               componentId={componentId}
               visible={visible}
               inCollection={inCollection}
-              parallelInvestigators={parallelInvestigators}
               investigatorFront={investigatorFront}
               investigatorBack={investigatorBack}
               deck={deck}
@@ -1089,8 +1176,10 @@ function DeckDetailView({
               campaign={campaign}
               hideCampaign={hideCampaign}
               width={width}
+              deckEdits={deckEdits}
+              deckEditsRef={deckEditsRef}
             />
-            <DeckNavFooter deckId={id} componentId={componentId} />
+            <DeckNavFooter deckId={id} componentId={componentId} faction={investigatorFront?.factionCode()} />
           </View>
           { editDetailsDialog }
         </View>
@@ -1127,5 +1216,11 @@ const styles = StyleSheet.create({
   menu: {
     borderLeftWidth: 2,
     borderColor: COLORS.darkGray,
+  },
+  fabItemText: {
+
+  },
+  fabItemContainer: {
+
   },
 });

@@ -10,7 +10,7 @@ import CardTextComponent from '@components/card/CardTextComponent';
 import CardUpgradeOption from './CardUpgradeOption';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
-import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/DeckDetailView/actions';
+import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/actions';
 import DeckValidation from '@lib/DeckValidation';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
@@ -19,10 +19,11 @@ import space, { m, s, xs } from '@styles/space';
 import DeckNavFooter from '../../DeckNavFooter';
 import { getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
-import { PARALLEL_SKIDS_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
+import { PARALLEL_SKIDS_CODE, PARALLEL_AGNES_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
 import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { useDeck, useSimpleDeckEdits, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useSimpleDeckEdits } from '@components/deck/hooks';
+import { useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
@@ -33,6 +34,23 @@ export interface CardUpgradeDialogProps {
 
 type Props = CardUpgradeDialogProps & NavigationProps;
 
+function ignoreRule(code: string) {
+  switch (code) {
+    case PARALLEL_SKIDS_CODE:
+      return {
+        text: t`<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] card, you may instead pay the full experience cost on the higher level version and leave the lower level version in your deck (it does not count towards your deck size or the number of copies of that card in your deck).`,
+        traits: ['#gambit#', '#fortune#'],
+      };
+    case PARALLEL_AGNES_CODE:
+      return {
+        text: t`<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead pay the full experience cost on the higher level version and leave the lower level version in your deck (it does not count towards your deck size or the number of copies of that card in your deck).`,
+        traits: ['#spell#'],
+      };
+    default:
+      return undefined;
+  }
+}
+
 export default function CardUpgradeDialog({
   componentId,
   cardsByName,
@@ -40,9 +58,7 @@ export default function CardUpgradeDialog({
   id,
 }: Props) {
   const cards = usePlayerCards();
-  const [deck] = useDeck(id, {});
   const deckEdits = useSimpleDeckEdits(id);
-  const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const dispatch = useDispatch();
   const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
@@ -118,13 +134,14 @@ export default function CardUpgradeDialog({
     );
   }, [inCollection, showNonCollection]);
 
-  const specialSkidsRule = useCallback((card: Card, highestLevel: boolean) => {
-    return investigator.code === PARALLEL_SKIDS_CODE &&
-      card.real_traits_normalized &&
-      (card.real_traits_normalized.indexOf('#gambit#') !== -1 || card.real_traits_normalized.indexOf('#fortune#') !== -1) &&
-      !highestLevel;
-  }, [investigator]);
+  const ignoreData = useMemo(() => ignoreRule(investigator.code), [investigator.code]);
 
+  const specialIgnoreRule = useCallback((card: Card, highestLevel: boolean) => {
+    return (!!ignoreData &&
+      !highestLevel &&
+      !!find(ignoreData.traits, trait => !!(card.real_traits_normalized && card.real_traits_normalized.indexOf(trait) !== -1))
+    );
+  }, [ignoreData]);
   const shrewdAnalysisRule = useCallback((card: Card) => {
     if (!deckEdits) {
       return false;
@@ -133,7 +150,7 @@ export default function CardUpgradeDialog({
   }, [deckEdits]);
   const { width } = useWindowDimensions();
   const renderCard = useCallback((card: Card, highestLevel: boolean) => {
-    const allowIgnore = specialSkidsRule(card, highestLevel);
+    const allowIgnore = specialIgnoreRule(card, highestLevel);
     return (
       <View style={[styles.column, borderStyle]} key={card.code}>
         <CardUpgradeOption
@@ -153,14 +170,13 @@ export default function CardUpgradeDialog({
           componentId={componentId}
           card={card}
           showSpoilers
-          tabooSetId={tabooSetId}
           width={width}
           simple
         />
       </View>
     );
-  }, [componentId, tabooSetId, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
-    specialSkidsRule, onIncrementIgnore, onDecrementIgnore, onIncrement, onDecrement]);
+  }, [componentId, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
+    specialIgnoreRule, onIncrementIgnore, onDecrementIgnore, onIncrement, onDecrement]);
 
   const doShrewdAnalysis = useCallback(() => {
     if (!deckEdits) {
@@ -245,15 +261,13 @@ export default function CardUpgradeDialog({
         highestLevel: !find(inCollection, c => (c.xp || 0) > (card.xp || 0)),
       };
     });
-    const skidsRule = !!find(cards, ({ card, highestLevel }) => specialSkidsRule(card, highestLevel));
+    const ignoreRule = !!find(cards, ({ card, highestLevel }) => specialIgnoreRule(card, highestLevel));
     const hasShrewdAnalysisRule = !!find(cards, ({ card }) => shrewdAnalysisRule(card) && deckEdits.slots[card.code] >= 2);
     return (
       <>
-        { skidsRule && (
+        { ignoreRule && !!ignoreData && (
           <View style={space.paddingM}>
-            <CardTextComponent
-              text={t`<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] card, you may instead pay the full experience cost on the higher level version and leave the lower level version in your deck (it does not count towards your deck size or the number of copies of that card in your deck).` }
-            />
+            <CardTextComponent text={ignoreData.text} />
           </View>
         ) }
         { (hasShrewdAnalysisRule || !!shrewdAnalysisCards.length) && (
@@ -300,7 +314,7 @@ export default function CardUpgradeDialog({
         ) : null }
       </>
     );
-  }, [deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, cardInCollection, specialSkidsRule, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
+  }, [deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, cardInCollection, specialIgnoreRule, ignoreData, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
 
 
   const isSurvivor = investigator.faction_code === 'survivor';
@@ -326,7 +340,7 @@ export default function CardUpgradeDialog({
         { cardsSection }
         <View style={styles.footerPadding} />
       </ScrollView>
-      <DeckNavFooter componentId={componentId} deckId={id} />
+      <DeckNavFooter componentId={componentId} deckId={id} faction={investigator.factionCode()} />
     </View>
   );
 }

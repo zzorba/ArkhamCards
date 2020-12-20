@@ -275,6 +275,7 @@ export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
+export const STANDALONE = 'standalone';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -290,7 +291,8 @@ export type CampaignCycleCode =
   typeof TDE |
   typeof TDEA |
   typeof TDEB |
-  typeof TIC;
+  typeof TIC |
+  typeof STANDALONE;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -352,6 +354,7 @@ export interface Campaign {
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
+  standaloneId?: StandaloneId;
   lastUpdated: Date | string;
   showInterludes?: boolean;
   baseDeckIds?: number[];
@@ -523,6 +526,7 @@ export const START_DECK_EDIT = 'START_DECK_EDIT';
 export interface StartDeckEditAction {
   type: typeof START_DECK_EDIT;
   id: number;
+  deck?: Deck;
 }
 
 export const UPDATE_DECK_EDIT = 'UPDATE_DECK_EDIT';
@@ -608,6 +612,23 @@ export interface NewCampaignAction {
   weaknessSet: WeaknessSet;
   campaignLog: CustomCampaignLog;
   guided: boolean;
+}
+
+export interface StandaloneId {
+  campaignId: string;
+  scenarioId: string;
+}
+
+export const NEW_STANDALONE = 'NEW_STANDALONE';
+export interface NewStandaloneCampaignAction {
+  type: typeof NEW_STANDALONE;
+  now: Date;
+  id: number;
+  name: string;
+  standaloneId: StandaloneId;
+  baseDeckIds: number[];
+  investigatorIds: string[];
+  weaknessSet: WeaknessSet;
 }
 export const NEW_LINKED_CAMPAIGN = 'NEW_LINKED_CAMPAIGN';
 export interface NewLinkedCampaignAction {
@@ -997,8 +1018,6 @@ export type SignInActions =
   LogoutAction;
 
 export type DecksActions =
-  ResetDeckChecklistAction |
-  SetDeckChecklistCardAction |
   LogoutAction |
   RestoreComplexBackupAction |
   RestoreBackupAction |
@@ -1011,7 +1030,15 @@ export type DecksActions =
   UpdateDeckAction |
   ClearDecksAction |
   ReplaceLocalDeckAction |
-  EnsureUuidAction |
+  EnsureUuidAction;
+
+export type DeckEditsActions =
+  DeleteDeckAction |
+  ReplaceLocalDeckAction |
+  ResetDeckChecklistAction |
+  SetDeckChecklistCardAction |
+  DeleteDeckAction |
+  UpdateDeckAction |
   StartDeckEditAction |
   UpdateDeckEditAction |
   FinishDeckEditAction |
@@ -1023,6 +1050,7 @@ export type CampaignActions =
   ReplaceLocalDeckAction |
   CleanBrokenCampaignsAction |
   NewCampaignAction |
+  NewStandaloneCampaignAction |
   NewLinkedCampaignAction |
   UpdateCampaignAction |
   UpdateCampaignSpentXpAction |
@@ -1044,3 +1072,30 @@ export type GuideActions =
   GuideSetInputAction |
   GuideUndoInputAction |
   GuideResetScenarioAction;
+
+export const DISSONANT_VOICES_LOGIN_STARTED = 'DISSONANT_VOICES_LOGIN_STARTED';
+interface DissonantVoicesLoginStartedAction {
+  type: typeof DISSONANT_VOICES_LOGIN_STARTED;
+}
+
+export const DISSONANT_VOICES_LOGIN = 'DISSONANT_VOICES_LOGIN';
+interface DissonantVoicesLoginAction {
+  type: typeof DISSONANT_VOICES_LOGIN;
+}
+
+export const DISSONANT_VOICES_LOGIN_ERROR = 'DISSONANT_VOICES_LOGIN_ERROR';
+interface DissonantVoicesLoginErrorAction {
+  type: typeof DISSONANT_VOICES_LOGIN_ERROR;
+  error: Error | string;
+}
+
+export const DISSONANT_VOICES_LOGOUT = 'DISSONANT_VOICES_LOGOUT';
+interface DissonantVoicesLogoutAction {
+  type: typeof DISSONANT_VOICES_LOGOUT;
+}
+
+export type DissonantVoicesActions =
+  DissonantVoicesLoginAction |
+  DissonantVoicesLoginStartedAction |
+  DissonantVoicesLoginErrorAction |
+  DissonantVoicesLogoutAction;

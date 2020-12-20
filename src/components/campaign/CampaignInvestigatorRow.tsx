@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { filter, find, map } from 'lodash';
 import {
   StyleSheet,
@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { Campaign, Deck } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import { getDecks, getLatestCampaignDeckIds, AppState } from '@reducers';
+import { makeLatestCampaignDeckIdsSelector, AppState, makeGetDecksSelector } from '@reducers';
 import { s } from '@styles/space';
 import { useInvestigatorCards } from '@components/core/hooks';
 
@@ -22,17 +22,11 @@ interface CampaignDecks {
   decks: Deck[];
 }
 
-export default function CampaignInvestigatorRow({ campaigns }: Props) {
-  const campaignDecksSelector = useCallback((state: AppState): CampaignDecks[] => {
-    return map(campaigns, campaign => {
-      const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
-      return {
-        campaign,
-        decks: getDecks(state, latestDeckIds),
-      };
-    });
-  }, [campaigns]);
-  const campaignDecks = useSelector(campaignDecksSelector);
+function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
+  const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
+  const getDecks = useMemo(makeGetDecksSelector, []);
+  const deckIds = useSelector((state: AppState) => getLatestCampaignDeckIds(state, campaign));
+  const decks = useSelector((state: AppState) => getDecks(state, deckIds));
   const investigators = useInvestigatorCards();
   const renderInvestigator = useCallback((
     code: string,
@@ -65,23 +59,25 @@ export default function CampaignInvestigatorRow({ campaigns }: Props) {
   }, [renderInvestigator]);
 
 
+  const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
+  return (
+    <View key={campaign.id} style={styles.row}>
+      { map(decks, deck => renderDeck(deck, campaign)) }
+      { map(
+        filter(
+          campaign.nonDeckInvestigators || [],
+          code => !deckInvestigators.has(code)
+        ),
+        code => renderInvestigator(code, campaign)
+      ) }
+    </View>
+  );
+}
+
+export default function CampaignInvestigatorRow({ campaigns }: Props) {
   return (
     <>
-      { map(campaignDecks, ({ campaign, decks }) => {
-        const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
-        return (
-          <View key={campaign.id} style={styles.row}>
-            { map(decks, deck => renderDeck(deck, campaign)) }
-            { map(
-              filter(
-                campaign.nonDeckInvestigators || [],
-                code => !deckInvestigators.has(code)
-              ),
-              code => renderInvestigator(code, campaign)
-            ) }
-          </View>
-        );
-      }) }
+      { map(campaigns, campaign => <SingleCampaignInvestigatorRow campaign={campaign} key={campaign.id} />) }
     </>
   );
 }

@@ -70,6 +70,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.standaloneIcon('jacqueline', size, color);
       case 'ste':
         return this.standaloneIcon('stella', size, color);
+      case 'meddling_of_meowlathotep':
+        return this.standaloneIcon('meddling', size, color);
       case 'rtnotz':
       case 'core':
       case 'agents_of_hastur':
@@ -220,6 +222,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'aon':
       case 'all_or_nothing':
         return this.standaloneIcon('all_or_nothing', size, color);
+      case 'bad':
+      case 'bad_blood':
+        return this.standaloneIcon('bad_blood', size, color);
       case 'parallel':
         return this.standaloneIcon('parallel', size, color);
       case 'cotr':
@@ -347,6 +352,17 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.circleIcon('in_the_clutches_of_chaos', size, color);
       case 'bbt':
         return this.circleIcon('before_the_black_throne', size, color);
+      case 'wog':
+      case 'war_of_the_outer_gods':
+        return this.standaloneIcon('war_of_the_outer_gods', size, color);
+      case 'children_of_paradise':
+        return this.standaloneIcon('children_of_paradise', size, color);
+      case 'swarm_of_assimilation':
+      case 'assimilating_swarm':
+        return this.standaloneIcon('assimilating_swarm', size, color);
+      case 'death_of_stars':
+      case 'death_of_the_stars':
+        return this.standaloneIcon('death_of_the_stars', size, color);
       case 'the_circle_undone':
       case 'agents_of_azathoth':
       case 'anettes_coven':
@@ -414,8 +430,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'in_too_deep':
       case 'itd':
         return this.innsmouthIcon('in_too_deep', size, color);
-      case 'devils_reef':
+      case 'devil_reef':
       case 'def':
+        return this.innsmouthIcon('devil_reef', size, color);
       case 'hhg':
       case 'horror_in_high_gear':
       case 'a_light_in_the_fog':

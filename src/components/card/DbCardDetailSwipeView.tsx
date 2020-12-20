@@ -17,7 +17,7 @@ import { FOOTER_HEIGHT } from '@components/DeckNavFooter/constants';
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import { rightButtonsForCard } from './CardDetailView';
 import { CardFaqProps } from './CardFaqView';
-import { getTabooSet, AppState, getPacksInCollection, getPackSpoilers } from '@reducers';
+import { makeTabooSetSelector, AppState, getPackSpoilers, getPacksInCollection } from '@reducers';
 import { InvestigatorCardsProps } from '../cardlist/InvestigatorCardsView';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
@@ -29,6 +29,7 @@ import { where } from '@data/query';
 import Carousel from 'react-native-snap-carousel';
 import DeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/DeckQuantityComponent';
 import DeckNavFooter from '@components/DeckNavFooter';
+import { FactionCodeType } from '@app_constants';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -38,6 +39,7 @@ export interface CardDetailSwipeProps {
   showAllSpoilers?: boolean;
   tabooSetId?: number;
   deckId?: number;
+  faction?: FactionCodeType;
 }
 
 type Props = NavigationProps &
@@ -55,13 +57,14 @@ const options = (passProps: CardDetailSwipeProps) => {
 };
 
 function DbCardDetailSwipeView(props: Props) {
-  const { componentId, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex } = props;
+  const { componentId, faction, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex } = props;
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
   const { width, height } = useWindowDimensions();
-  const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
-  const hasSecondCore = useSelector((state: AppState) => getPacksInCollection(state).core || false);
-  const showSpoilers = useSelector((state: AppState) => getPackSpoilers(state));
+  const tabooSetSelector = useMemo(makeTabooSetSelector, []);
+  const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
+  const packInCollection = useSelector(getPacksInCollection);
+  const showSpoilers = useSelector(getPackSpoilers);
   const [spoilers, toggleShowSpoilers] = useToggles({});
   const [index, setIndex] = useState(initialIndex);
   const [cards, updateCards] = useCards('code', initialCards);
@@ -163,18 +166,13 @@ function DbCardDetailSwipeView(props: Props) {
     if (deckId === undefined || !currentCard) {
       return null;
     }
-    const deck_limit: number = Math.min(
-      currentCard.pack_code === 'core' ?
-        ((currentCard.quantity || 0) * (hasSecondCore ? 2 : 1)) :
-        (currentCard.deck_limit || 0),
-      currentCard.deck_limit || 0
-    );
+    const deck_limit: number = currentCard.collectionDeckLimit(packInCollection);
     return (
       <View style={{ height: FOOTER_HEIGHT, position: 'relative' }}>
         <DeckQuantityComponent code={currentCard.code} deckId={deckId} forceBig showZeroCount limit={deck_limit} />
       </View>
     );
-  }, [deckId, currentCard, hasSecondCore]);
+  }, [deckId, currentCard, packInCollection]);
   const renderCard = useCallback((
     { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }): React.ReactNode => {
     if (!card) {
@@ -196,14 +194,13 @@ function DbCardDetailSwipeView(props: Props) {
           componentId={componentId}
           card={card}
           showSpoilers={showCardSpoiler(card)}
-          tabooSetId={tabooSetId}
           toggleShowSpoilers={toggleShowSpoilers}
           showInvestigatorCards={showInvestigatorCards}
           width={width}
         />
       </ScrollView>
     );
-  }, [showCardSpoiler, backgroundStyle, tabooSetId, componentId, width, colors, height, toggleShowSpoilers, showInvestigatorCards]);
+  }, [showCardSpoiler, backgroundStyle, componentId, width, colors, height, toggleShowSpoilers, showInvestigatorCards]);
   const data: (Card | undefined)[] = useMemo(() => {
     return map(cardCodes, code => cards[code]);
   }, [cardCodes, cards]);
@@ -219,10 +216,14 @@ function DbCardDetailSwipeView(props: Props) {
         sliderWidth={width}
         itemWidth={width}
         useExperimentalSnap
+        shouldOptimizeUpdates
         onScrollIndexChanged={setIndex}
         disableIntervalMomentum
+        apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
       />
-      { deckId !== undefined && <DeckNavFooter deckId={deckId} componentId={componentId} controls={deckCountControls} /> }
+      { deckId !== undefined && (
+        <DeckNavFooter deckId={deckId} componentId={componentId} controls={deckCountControls} faction={faction} />
+      ) }
       { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
     </View>
   );

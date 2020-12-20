@@ -44,6 +44,11 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
         inactiveColor={colors.lightText}
         indicatorStyle={{ backgroundColor: colors.navButton }}
         style={backgroundStyle}
+        labelStyle={{
+          fontFamily: 'Alegreya-Regular',
+          fontSize: 14 * fontScale,
+          lineHeight: 16 * fontScale,
+        }}
       />
     );
   }, [backgroundStyle, fontScale, colors, scrollEnabled]);

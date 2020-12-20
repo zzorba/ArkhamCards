@@ -33,7 +33,7 @@ export default function configureStore(initialState: AppState) {
 
   const migrations = {
     0: (state: any) => {
-      const newState = Object.assign({}, state);
+      const newState = { ...state };
       if (newState.weaknesses) {
         delete newState.weaknesses;
       }
@@ -49,7 +49,7 @@ export default function configureStore(initialState: AppState) {
     // WHY is that the default behavior?!?!?
     timeout: 0,
     // These all have some transient fields and are handled separately.
-    blacklist: ['cards', 'decks', 'packs', 'signedIn', 'filters'],
+    blacklist: ['cards', 'decks', 'packs', 'signedIn', 'filters', 'deckEdits'],
     migrate: createMigrate(migrations, { debug: false }),
   };
 

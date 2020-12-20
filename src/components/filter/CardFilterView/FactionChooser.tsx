@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { flatMap, map } from 'lodash';
-import { StyleSheet, View } from 'react-native';
+import { InteractionManager, StyleSheet, View } from 'react-native';
 
 import ArkhamButtonGroup from '@components/core/ArkhamButtonGroup';
 import ArkhamIcon from '@icons/ArkhamIcon';

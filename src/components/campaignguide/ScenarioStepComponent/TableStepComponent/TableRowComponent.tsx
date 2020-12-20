@@ -13,14 +13,8 @@ interface Props {
   last?: boolean
 }
 
-const ROW_COLORS = {
-  header: '#a0dba3',
-  light: '#e3fce4',
-  dark: '#c7ebc9',
-};
-
 export default function TableRowComponent({ row, background, last }: Props) {
-  const { borderStyle } = useContext(StyleContext);
+  const { borderStyle, colors: { table } } = useContext(StyleContext);
   return (
     <View style={styles.row}>
       { map(row.cells, (cell, idx) => (
@@ -29,7 +23,7 @@ export default function TableRowComponent({ row, background, last }: Props) {
           borderStyle,
           {
             flex: cell.size,
-            backgroundColor: ROW_COLORS[background],
+            backgroundColor: table[background],
           },
           cell.size === 1 ? { alignItems: 'center' } : {},
           cell.size === 2 ? { paddingLeft: s, paddingRight: s } : {},

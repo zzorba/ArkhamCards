@@ -18,7 +18,8 @@ import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useDeckEdits, useNavigationButtonPressed, useSimpleDeckEdits } from '@components/core/hooks';
+import { useDeckEdits, useDeckSlotCount } from '@components/deck/hooks';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface DeckChecklistProps {
   id: number;
@@ -31,14 +32,15 @@ type Props = DeckChecklistProps & NavigationProps;
 function ChecklistCard({
   id,
   card,
+  checklist,
   pressCard,
 }: {
   id: number,
   card: Card;
+  checklist: string[];
   pressCard: (card: Card) => void;
 }) {
-  const deckEdits = useSimpleDeckEdits(id);
-  const checklist = useSelector((state: AppState) => getDeckChecklist(state, id));
+  const count = useDeckSlotCount(id, card.code);
   const dispatch = useDispatch();
   const toggleValue = useCallback((value: boolean) => {
     dispatch(setDeckChecklistCard(id, card.code, value));
@@ -50,7 +52,7 @@ function ChecklistCard({
       backgroundColor="transparent"
       control={{
         type: 'count_with_toggle',
-        count: deckEdits?.slots[card.code] || 0,
+        count,
         value: !!find(checklist, c => c === card.code),
         toggleValue,
       }}
@@ -66,7 +68,8 @@ function DeckChecklistView({
   const [deckEdits, deckEditsRef] = useDeckEdits(id);
   const dispatch = useDispatch();
   const [sort, setSort] = useState<SortType>(SORT_BY_TYPE);
-  const checklist = useSelector((state: AppState) => getDeckChecklist(state, id));
+  const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, id), [id]);
+  const checklist = useSelector(checklistSelector);
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'sort') {
       showSortDialog(
@@ -98,9 +101,10 @@ function DeckChecklistView({
         id={id}
         card={card}
         pressCard={pressCard}
+        checklist={checklist}
       />
     );
-  }, [id, pressCard]);
+  }, [id, pressCard, checklist]);
 
   const clearChecklist = useCallback(() => {
     dispatch(resetDeckChecklist(id));

@@ -17,9 +17,10 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { useDeck, useDeckEdits, usePlayerCards } from '@components/core/hooks';
+import { useDeck, usePlayerCards } from '@components/core/hooks';
 import { useDispatch } from 'react-redux';
-import { setIgnoreDeckSlot } from './DeckDetailView/actions';
+import { setIgnoreDeckSlot } from './actions';
+import { useDeckEdits } from './hooks';
 
 export interface EditSpecialCardsProps {
   id: number;

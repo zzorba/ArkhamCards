@@ -20,7 +20,7 @@ import { NavigationProps } from '@components/nav/types';
 import { Deck, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/Card';
-import { getAllDecks, getCampaigns, getLatestCampaignDeckIds, AppState } from '@reducers';
+import { getAllDecks, getCampaigns, makeLatestCampaignDeckIdsSelector, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -95,12 +95,12 @@ function MyDecksSelectorDialog(props: Props) {
   }, [campaignId]);
   const otherCampaigns = useSelector(otherCampaignsSelector);
   const otherCampaignDeckIdsSelector = useCallback((state: AppState) => {
-    return flatMap(otherCampaigns, c => getLatestCampaignDeckIds(state, c));
+    return flatMap(otherCampaigns, c => makeLatestCampaignDeckIdsSelector()(state, c));
   }, [otherCampaigns]);
   const otherCampaignDeckIds = useSelector(otherCampaignDeckIdsSelector);
   const campaign = useCampaign(campaignId);
-  const campaignLatestDeckIdsSelector = useCallback((state: AppState) => getLatestCampaignDeckIds(state, campaign), [campaign]);
-  const campaignLatestDeckIds = useSelector(campaignLatestDeckIdsSelector);
+  const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
+  const campaignLatestDeckIds = useSelector((state: AppState) => getLatestCampaignDeckIds(state, campaign));
   const decks = useSelector(getAllDecks);
 
   const [hideOtherCampaignDecks, toggleHideOtherCampaignDecks] = useFlag(true);
@@ -257,9 +257,24 @@ function MyDecksSelectorDialog(props: Props) {
       onlyInvestigators={onlyInvestigators}
     />
   ), [componentId, onDeckSelect, searchOptions, filterDeckIds, onlyDeckIds, filterInvestigators, onlyInvestigators]);
-
+  const investigatorTab = useMemo(() => {
+    if (!onInvestigatorSelect) {
+      return null;
+    }
+    return (
+      <InvestigatorSelectorTab
+        componentId={componentId}
+        sort={selectedSort}
+        onInvestigatorSelect={onInvestigatorSelect}
+        searchOptions={searchOptions(false)}
+        filterDeckIds={filterDeckIds}
+        onlyDeckIds={onlyDeckIds}
+        filterInvestigators={filterInvestigators}
+      />
+    );
+  }, [componentId, selectedSort, onInvestigatorSelect, searchOptions, filterDeckIds, onlyDeckIds, filterInvestigators]);
   const tabs = useMemo(() => {
-    return onInvestigatorSelect ? [
+    return investigatorTab ? [
       {
         key: 'decks',
         title: t`Decks`,
@@ -268,22 +283,12 @@ function MyDecksSelectorDialog(props: Props) {
       {
         key: 'investigators',
         title: t`Investigator`,
-        node: (
-          <InvestigatorSelectorTab
-            componentId={componentId}
-            sort={selectedSort}
-            onInvestigatorSelect={onInvestigatorSelect}
-            searchOptions={searchOptions(false)}
-            filterDeckIds={filterDeckIds}
-            onlyDeckIds={onlyDeckIds}
-            filterInvestigators={filterInvestigators}
-          />
-        ),
+        node: investigatorTab,
       },
-    ] : [];
-  }, [deckTab, componentId, selectedSort, onInvestigatorSelect, searchOptions, filterDeckIds, onlyDeckIds, filterInvestigators]);
+    ] : null;
+  }, [deckTab, investigatorTab]);
 
-  if (onInvestigatorSelect) {
+  if (tabs) {
     return (
       <TabView
         tabs={tabs}

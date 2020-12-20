@@ -132,7 +132,7 @@ export default function InvestigatorRow({
                 <MaterialCommunityIcons
                   name="close"
                   size={36}
-                  color="#222"
+                  color={colors.D10}
                 />
               </TouchableOpacity>
             </View>

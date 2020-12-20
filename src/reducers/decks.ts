@@ -15,33 +15,17 @@ import {
   REPLACE_LOCAL_DECK,
   ENSURE_UUID,
   RESTORE_COMPLEX_BACKUP,
-  RESET_DECK_CHECKLIST,
-  SET_DECK_CHECKLIST_CARD,
   DecksActions,
   NewDeckAvailableAction,
   ReplaceLocalDeckAction,
   UpdateDeckAction,
   Deck,
   DecksMap,
-  EditDeckState,
-  START_DECK_EDIT,
-  FINISH_DECK_EDIT,
-  UPDATE_DECK_EDIT_COUNTS,
-  UPDATE_DECK_EDIT,
 } from '@actions/types';
 import deepDiff from 'deep-diff';
 
 interface DecksState {
   all: DecksMap;
-  checklist?: {
-    [id: number]: string[] | undefined;
-  };
-  edits?: {
-    [id: number]: EditDeckState | undefined;
-  }
-  editting?: {
-    [id: number]: boolean | undefined;
-  };
   myDecks: number[];
   replacedLocalIds?: {
     [id: number]: number;
@@ -54,7 +38,6 @@ interface DecksState {
 
 const DEFAULT_DECK_STATE: DecksState = {
   all: {},
-  checklist: {},
   myDecks: [],
   replacedLocalIds: {},
   dateUpdated: null,
@@ -63,11 +46,11 @@ const DEFAULT_DECK_STATE: DecksState = {
   lastModified: undefined,
 };
 
-function updateDeck(
+export function updateDeck(
   state: DecksState,
   action: NewDeckAvailableAction | UpdateDeckAction | ReplaceLocalDeckAction
 ): Deck {
-  const deck = Object.assign({}, action.deck);
+  const deck = { ...action.deck };
   let scenarioCount = 0;
   let currentDeck = deck;
   while (currentDeck && currentDeck.previous_deck) {
@@ -91,154 +74,6 @@ export default function(
   state = DEFAULT_DECK_STATE,
   action: DecksActions
 ): DecksState {
-  if (action.type === START_DECK_EDIT) {
-    const deck = state.all[action.id];
-    const newEdits = deck ? {
-      ...state.edits || {},
-      [action.id]: {
-        nameChange: undefined,
-        meta: deck.meta || {},
-        slots: deck.slots || {},
-        ignoreDeckLimitSlots: deck.ignoreDeckLimitSlots || {},
-        xpAdjustment: deck.xp_adjustment || 0,
-      },
-    } : state.edits;
-    return {
-      ...state,
-      editting: {
-        ...state.editting || {},
-        [action.id]: true,
-      },
-      edits: newEdits,
-    };
-  }
-  if (action.type === FINISH_DECK_EDIT) {
-    const newEditting = { ...state.editting || {} };
-    delete newEditting[action.id];
-    const newEdits = { ...state.edits || {} };
-    delete newEdits[action.id];
-    return {
-      ...state,
-      editting: newEditting,
-      edits: newEdits,
-    };
-  }
-
-  if (action.type === UPDATE_DECK_EDIT) {
-    const currentEdits = (state.edits || {})[action.id];
-    if (!currentEdits) {
-      // Shouldn't happen
-      return state;
-    }
-    const updatedEdits = { ...currentEdits };
-
-    if (action.updates.nameChange !== undefined) {
-      updatedEdits.nameChange = action.updates.nameChange;
-    }
-    if (action.updates.tabooSetChange !== undefined) {
-      updatedEdits.tabooSetChange = action.updates.tabooSetChange;
-    }
-    if (action.updates.meta !== undefined) {
-      updatedEdits.meta = action.updates.meta;
-    }
-    if (action.updates.slots !== undefined) {
-      updatedEdits.slots = action.updates.slots;
-    }
-    if (action.updates.ignoreDeckLimitSlots !== undefined) {
-      updatedEdits.ignoreDeckLimitSlots = action.updates.ignoreDeckLimitSlots;
-    }
-    if (action.updates.xpAdjustment) {
-      updatedEdits.xpAdjustment = action.updates.xpAdjustment;
-    }
-    return {
-      ...state,
-      edits: {
-        ...state.edits,
-        [action.id]: updatedEdits,
-      },
-    };
-  }
-
-  if (action.type === UPDATE_DECK_EDIT_COUNTS) {
-    const currentEdits = (state.edits || {})[action.id];
-    if (!currentEdits) {
-      // Shouldn't happen
-      return state;
-    }
-    if (action.countType === 'xpAdjustment') {
-      let xpAdjustment = currentEdits.xpAdjustment;
-      switch (action.operation) {
-        case 'inc': xpAdjustment++; break;
-        case 'dec': xpAdjustment--; break;
-        case 'set': xpAdjustment = action.value; break;
-      }
-      return {
-        ...state,
-        edits: {
-          ...state.edits,
-          [action.id]: {
-            ...currentEdits,
-            xpAdjustment,
-          },
-        },
-      };
-    }
-    const currentSlots = {
-      ...(action.countType === 'slots' ? currentEdits.slots : currentEdits.ignoreDeckLimitSlots),
-    };
-    switch (action.operation) {
-      case 'set':
-        currentSlots[action.code] = action.value;
-        break;
-      case 'dec':
-        currentSlots[action.code] = Math.max((currentSlots[action.code] || 0) - 1, 0);
-        break;
-      case 'inc':
-        currentSlots[action.code] = Math.min((currentSlots[action.code] || 0) + 1, action.limit || 2);
-        break;
-    }
-    if (!currentSlots[action.code]) {
-      delete currentSlots[action.code];
-    }
-
-    const updatedEdits = { ...currentEdits };
-    if (action.countType === 'slots') {
-      updatedEdits.slots = currentSlots;
-    } else {
-      updatedEdits.ignoreDeckLimitSlots = currentSlots;
-    }
-
-    return {
-      ...state,
-      edits: {
-        ...state.edits,
-        [action.id]: updatedEdits,
-      },
-    };
-  }
-  if (action.type === RESET_DECK_CHECKLIST) {
-    return {
-      ...state,
-      checklist: {
-        ...(state.checklist || {}),
-        [`${action.id}`]: [],
-      },
-    };
-  }
-  if (action.type === SET_DECK_CHECKLIST_CARD) {
-    const currentChecklist = (state.checklist || {})[action.id] || [];
-    const checklist = action.value ? [
-      ...currentChecklist,
-      action.card,
-    ] : filter(currentChecklist, card => card !== action.card);
-    return {
-      ...state,
-      checklist: {
-        ...(state.checklist || {}),
-        [action.id]: checklist,
-      },
-    };
-  }
   if (action.type === RESTORE_COMPLEX_BACKUP) {
     const all: DecksMap = { ...state.all };
     forEach(action.decks, deck => {
@@ -284,23 +119,16 @@ export default function(
     };
   }
   if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
-    const checklist: { [id: number]: string[] } = {};
     const all: DecksMap = {};
     forEach(state.all, (deck, id: any) => {
       if (deck && deck.local) {
         all[id] = deck;
       }
     });
-    forEach(state.checklist || {}, (c, id: any) => {
-      if (all[id] && c) {
-        checklist[id] = c;
-      }
-    });
     const myDecks = filter(state.myDecks, id => !!all[id]);
     return {
       ...DEFAULT_DECK_STATE,
       all,
-      checklist,
       myDecks,
     };
   }
@@ -405,17 +233,9 @@ export default function(
       ...(state.replacedLocalIds || {}),
       [action.localId]: deck.id,
     };
-    const checklist = {
-      ...(state.checklist || {}),
-    };
-    if (checklist[action.localId]) {
-      checklist[deck.id] = checklist[action.localId];
-      delete checklist[action.localId];
-    }
     return {
       ...state,
       all,
-      checklist,
       myDecks: sortMyDecks(myDecks, all),
       replacedLocalIds,
     };
@@ -457,17 +277,10 @@ export default function(
           return deckId;
         }
       );
-    const checklist = {
-      ...(state.checklist || {}),
-    };
-    if (checklist[action.id]) {
-      delete checklist[action.id];
-    }
     return {
       ...state,
       all,
       myDecks,
-      checklist,
       // There's a bug on ArkhamDB cache around deletes,
       // so drop lastModified when we detect a delete locally.
       lastModified: undefined,
@@ -497,19 +310,6 @@ export default function(
         action.id,
         ...filter(state.myDecks, deckId => deckId !== action.id),
       ];
-    }
-    if ((state.editting || {})[action.id]) {
-      newState.edits = {
-        ...(state.edits || {}),
-        [action.id]: {
-          nameChange: undefined,
-          tabooSetChange: undefined,
-          slots: deck.slots,
-          ignoreDeckLimitSlots: deck.ignoreDeckLimitSlots || {},
-          meta: deck.meta || {},
-          xpAdjustment: deck.xp_adjustment || 0,
-        },
-      };
     }
     return newState;
   }
