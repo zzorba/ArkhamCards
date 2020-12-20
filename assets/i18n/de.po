@@ -2897,7 +2897,7 @@ msgstr "Kartenveränderungen"
 #: src/components/deck/DeckDetailView/index.tsx:979
 #: src/components/deck/DeckProgressComponent/index.tsx:111
 msgid "Upgrade History"
-msgstr "Upgrade verlauf"
+msgstr "Upgrade Verlauf"
 
 #: src/components/deck/DeckHistoryView.tsx:63
 msgid "Original Deck"
@@ -4867,7 +4867,7 @@ msgstr ""
 
 #: src/components/deck/CopyDeckDialog/index.tsx:132
 msgid "Version to copy"
-msgstr ""
+msgstr "Version zum kopieren"
 
 #: src/lib/datetime.ts:81
 msgid "Updated Monday"
@@ -4919,7 +4919,7 @@ msgstr "Entfernt"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:132
 msgid "Exiled"
-msgstr "ins Exil geschickt"
+msgstr "Ins Exil geschickt"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:143
 msgid "Latest upgrade"
@@ -5167,7 +5167,7 @@ msgstr "Gegner"
 
 #: src/components/filter/CardFilterView/index.tsx:392
 msgid "Treachery"
-msgstr ""
+msgstr "Verrat"
 
 #: src/components/filter/CardFilterView/index.tsx:393
 msgid "Location"
@@ -5200,7 +5200,7 @@ msgstr "Ressource"
 #. This is a deck upgrade action.
 #: src/data/scenario/CampaignStateHelper.ts:184
 msgid "Undo deck upgrade?"
-msgstr ""
+msgstr "Deck Upgrade rückgängig machen?"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:46
 msgid ""
@@ -5463,8 +5463,8 @@ msgstr[1] "Fähigkeiten"
 msgctxt "header"
 msgid "Treachery"
 msgid_plural "Treacheries"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Verrat"
+msgstr[1] "Verrate"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:90
 msgctxt "header"
