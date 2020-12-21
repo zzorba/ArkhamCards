@@ -10,7 +10,7 @@ interface Props {
   title: string;
   detail?: string;
   icon: 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit';
-  color?: 'red' | 'gold';
+  color?: 'red' | 'gold' | 'gray';
   onPress?: () => void;
   rightMargin?: boolean;
   thin?: boolean;
@@ -36,22 +36,29 @@ const ICON_STYLE = {
 };
 
 
-export default function DeckButton({ title, detail, icon, color, onPress, rightMargin, thin }: Props) {
+export default function DeckButton({ title, detail, icon, color='gray', onPress, rightMargin, thin }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const backgroundColors = {
     red: colors.warn,
     gold: colors.upgrade,
+    gray: colors.D10,
   };
   const rippleColor = {
     red: colors.faction.survivor.lightBackground,
     gold: colors.faction.dual.lightBackground,
+    gray: colors.M,
+  };
+  const iconColor = {
+    red: colors.L30,
+    gold: colors.D20,
+    gray: colors.L10,
   };
   return (
     <Ripple style={[
       styles.button,
-      { backgroundColor: color ? backgroundColors[color] : colors.D10 },
+      { backgroundColor: backgroundColors[color] },
       rightMargin ? space.marginRightS : undefined,
-    ]} onPress={onPress} rippleColor={color ? rippleColor[color] : colors.M}>
+    ]} onPress={onPress} rippleColor={rippleColor[color] }>
       <View style={[styles.row, space.paddingSideXs, space.paddingTopS, space.paddingBottomS]}>
         <View style={[
           styles.icon,
@@ -59,10 +66,10 @@ export default function DeckButton({ title, detail, icon, color, onPress, rightM
           thin ? { marginLeft: xs, width: 24, height: 24 } : { width: 32, height: 32 },
           ICON_STYLE[icon],
         ]}>
-          <AppIcon name={icon} size={ICON_SIZE[icon]} color={!color ? colors.L10 : colors.L30} />
+          <AppIcon name={icon} size={ICON_SIZE[icon]} color={iconColor[color]} />
         </View>
         <View style={styles.column}>
-          <Text style={[typography.large, color === 'gold' ? undefined : typography.inverted]}>{ title }</Text>
+          <Text style={[typography.large, color === 'gold' ? typography.dark : typography.inverted]}>{ title }</Text>
           { !!detail && <Text style={[typography.smallLabel, typography.italic, color === 'gold' ? typography.dark : typography.inverted]}>{ detail }</Text> }
         </View>
       </View>

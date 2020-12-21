@@ -57,9 +57,11 @@ import AppIcon from '@icons/AppIcon';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import DeckButton from '../controls/DeckButton';
+import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 
 export interface DeckDetailProps {
   id: number;
+  upgrade?: boolean;
   title?: string;
   subtitle?: string;
   campaignId?: number;
@@ -73,10 +75,6 @@ type Props = NavigationProps &
   LoginStateProps;
 type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
-function FabButton({ title, onPress, color, icon, iconSize }: { title: string; onPress: () => void; color: string; icon: string; iconSize: number }) {
-  const { typography, colors } = useContext(StyleContext);
-}
-
 function DeckDetailView({
   componentId,
   id,
@@ -88,12 +86,14 @@ function DeckDetailView({
   modal,
   signedIn,
   login,
+  upgrade,
 }: Props) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { width } = useWindowDimensions();
 
+  const [mode, setMode] = useState<'edit' | 'upgrade' | undefined>(upgrade ? 'upgrade' : undefined);
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const parsedDeckObj = useParsedDeck(id, 'DeckDetail', componentId, true);
   const campaignSelector = useMemo(makeCampaignSelector, []);
@@ -374,6 +374,9 @@ function DeckDetailView({
     if (!deck || !cards) {
       return;
     }
+    if (!mode) {
+      setMode('edit');
+    }
     setMenuOpen(false);
     const investigator = cards[deck.investigator_code];
     Navigation.push<EditSpecialCardsProps>(componentId, {
@@ -404,11 +407,15 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses]);
+  }, [componentId, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses, mode, setMode]);
 
-  const onEditPressed = useCallback(() => {
+
+  const onAddCardsPressed = useCallback(() => {
     if (!deck || !cards) {
       return;
+    }
+    if (!mode) {
+      setMode('edit');
     }
     setMenuOpen(false);
     const investigator = cards[deck.investigator_code];
@@ -438,7 +445,7 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, deck, id, colors, setMenuOpen, cards]);
+  }, [componentId, deck, id, colors, setMenuOpen, cards, mode, setMode]);
 
   const onUpgradePressed = useCallback(() => {
     if (!deck) {
@@ -534,12 +541,15 @@ function DeckDetailView({
     );
   }, [deck, parsedDeck, editDetailsOpen, toggleEditDetailsOpen, updateDeckDetails, deckEdits?.xpAdjustment, deckEdits?.nameChange]);
   const editable = !!isPrivate && !!deck && !deck.next_deck;
-
+  const onEditPressed = useCallback(() => setMode('edit'), [setMode]);
   const buttons = useMemo(() => {
     if (!parsedDeck || !deck || deck.next_deck) {
       return null;
     }
     if (!hasPendingEdits && editable) {
+      if (mode) {
+        return null;
+      }
       const { normalCardCount: normalCards, totalCardCount } = parsedDeck;
       const normalCardCount = ngettext(msgid`${normalCards} card`, `${normalCards} cards`, normalCards);
       const details = ngettext(msgid`${normalCardCount} · ${totalCardCount} total`, `${normalCardCount} · ${totalCardCount} total`, totalCardCount);
@@ -578,7 +588,7 @@ function DeckDetailView({
         />
       </>
     );
-  }, [deck, hasPendingEdits, editable, parsedDeck, onEditPressed, onUpgradePressed, savePressed, clearEdits]);
+  }, [deck, hasPendingEdits, editable, parsedDeck, mode, onEditPressed, onUpgradePressed, savePressed, clearEdits]);
 
   const showCardUpgradeDialog = useCallback((card: Card) => {
     if (!parsedDeck) {
@@ -762,7 +772,7 @@ function DeckDetailView({
           <>
             <DeckBubbleHeader title={t`Cards`} />
             <MenuButton
-              onPress={onEditPressed}
+              onPress={onAddCardsPressed}
               icon="card-outline"
               title={t`Deck Cards`}
               description={ngettext(
@@ -841,10 +851,10 @@ function DeckDetailView({
         ) }
       </ScrollView>
     );
-  }, [backgroundStyle, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
+  }, [backgroundStyle, onAddCardsPressed, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditDetails, showTabooPicker,
-    onEditPressed, onEditSpecialPressed, onChecklistPressed,
+    onEditSpecialPressed, onChecklistPressed,
   ]);
 
   const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
@@ -853,8 +863,11 @@ function DeckDetailView({
     if (active) {
       return <AppIcon name="plus-thin" color={colors.L30} size={32} />;
     }
-    return <AppIcon name="edit" color={colors.L30} size={24} />;
-  }, [colors]);
+    if (editable) {
+      return <AppIcon name="edit" color={colors.L30} size={24} />;
+    }
+    return <AppIcon name="plus-thin" color={colors.L30} size={24} />;
+  }, [colors, editable]);
 
   const fab = useMemo(() => {
     const actionLabelStyle = {
@@ -900,29 +913,33 @@ function DeckDetailView({
         >
           <AppIcon name="chart" color={colors.L30} size={34} />
         </ActionButton.Item>
-        <ActionButton.Item
-          hideLabelShadow
-          buttonColor={factionColor}
-          textStyle={actionLabelStyle}
-          textContainerStyle={actionContainerStyle}
-          title={t`Upgrade with XP`}
-          onPress={onUpgradePressed}
-        >
-          <AppIcon name="upgrade" color={colors.L30} size={32} />
-        </ActionButton.Item>
-        <ActionButton.Item
-          hideLabelShadow
-          buttonColor={factionColor}
-          textStyle={actionLabelStyle}
-          textContainerStyle={actionContainerStyle}
-          title={t`Edit`}
-          onPress={onEditPressed}
-        >
-          <AppIcon name="edit" color={colors.L30} size={24} />
-        </ActionButton.Item>
+        { editable && (
+          <ActionButton.Item
+            hideLabelShadow
+            buttonColor={factionColor}
+            textStyle={actionLabelStyle}
+            textContainerStyle={actionContainerStyle}
+            title={t`Upgrade with XP`}
+            onPress={onUpgradePressed}
+          >
+            <AppIcon name="upgrade" color={colors.L30} size={32} />
+          </ActionButton.Item>
+        ) }
+        { editable && (
+          <ActionButton.Item
+            hideLabelShadow
+            buttonColor={factionColor}
+            textStyle={actionLabelStyle}
+            textContainerStyle={actionContainerStyle}
+            title={t`Edit`}
+            onPress={onAddCardsPressed}
+          >
+            <AppIcon name="edit" color={colors.L30} size={24} />
+          </ActionButton.Item>
+        ) }
       </ActionButton>
     );
-  }, [factionColor, fabOpen, fabIcon, colors, toggleFabOpen, onEditPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
+  }, [factionColor, fabOpen, editable, fabIcon, colors, toggleFabOpen, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
 
   if (!deck) {
     return (
@@ -991,13 +1008,15 @@ function DeckDetailView({
               deckEdits={deckEdits}
               deckEditsRef={deckEditsRef}
             />
-            <DeckNavFooter
-              deckId={id}
-              componentId={componentId}
-              mode="editing"
-              control="fab"
-              campaign={campaign}
-            />
+            { !!mode && (
+              <DeckNavFooter
+                deckId={id}
+                componentId={componentId}
+                mode="editing"
+                control="fab"
+                campaign={campaign}
+              />
+            ) }
             { fab }
           </View>
         </View>
