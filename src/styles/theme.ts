@@ -65,6 +65,7 @@ export interface ThemeColors {
   };
   navButton: string;
   warn: string;
+  upgrade: string;
   warnText: string;
   table: {
     header: string;
@@ -182,6 +183,7 @@ export const LIGHT_THEME: ThemeColors = {
       lightBackground: '#000000',
     },
   },
+  upgrade: '#cfb13a',
   skill: {
     willpower: {
       icon: '#165385',
@@ -301,6 +303,8 @@ export const DARK_THEME: ThemeColors = {
       lightBackground: '#000000',
     },
   },
+
+  upgrade: '#cfb13a',
   skill: {
     willpower: {
       icon: '#2C7FC0',

@@ -40,6 +40,7 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
 import { useDeckXpStrings } from '../hooks';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
+import { FOOTER_HEIGHT } from '@components/DeckNavFooter/constants';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -261,6 +262,7 @@ interface Props {
   isPrivate: boolean;
   buttons?: ReactNode;
   showEditSpecial?: () => void;
+  showXpAdjustmentDialog: () => void;
   showEditNameDialog: () => void;
   showCardUpgradeDialog: (card: Card) => void;
   tabooSet?: TabooSet;
@@ -301,6 +303,7 @@ export default function DeckViewTab(props: Props) {
     showCardUpgradeDialog,
     problem,
     showEditNameDialog,
+    showXpAdjustmentDialog,
     visible,
     tabooSet,
     showTaboo,
@@ -550,14 +553,14 @@ export default function DeckViewTab(props: Props) {
         valueLabel={xpLabel}
         valueLabelDescription={xpDetailLabel}
         editable={editable}
-        onPress={showEditNameDialog}
+        onPress={showXpAdjustmentDialog}
         first
         last={last}
         icon="xp"
         noLabelDivider
       />
     );
-  }, [xpLabel, xpDetailLabel, showEditNameDialog, editable]);
+  }, [xpLabel, xpDetailLabel, showXpAdjustmentDialog, editable]);
   const investigatorOptions = useMemo(() => {
     if (!deckEdits?.meta || !investigator) {
       return null;
@@ -577,6 +580,7 @@ export default function DeckViewTab(props: Props) {
           setMeta={setMeta}
           setParallel={setParallel}
           firstElement={hasXpButton && !!changes && !!xpLabel ? renderXpButton : undefined}
+          hasPreviousDeck={!!deck.previous_deck}
         />
       </View>
     );
@@ -707,6 +711,7 @@ export default function DeckViewTab(props: Props) {
           singleCardView={singleCardView}
         />
       </View>
+      <View style={styles.footerPadding} />
     </ScrollView>
   );
 }
@@ -764,5 +769,8 @@ const styles = StyleSheet.create({
     paddingLeft: xs,
     marginBottom: s,
     marginRight: s,
+  },
+  footerPadding: {
+    height: FOOTER_HEIGHT,
   },
 });

@@ -20,16 +20,18 @@ export default function CardUpgradeButton({ onUpgradePress, card, count }: Props
     <View style={styles.countWrapper}>
       { !!onUpgradePress && (
         <RoundButton onPress={onPress}>
-          <AppIcon
-            size={28}
-            color={colors.M}
-            name="upgrade"
-          />
+          <View style={styles.icon}>
+            <AppIcon
+              size={28}
+              color={colors.M}
+              name="upgrade"
+            />
+          </View>
         </RoundButton>
       ) }
       <View style={styles.count}>
         <Text style={typography.text}>
-          { count }
+          x{ count }
         </Text>
       </View>
     </View>
@@ -48,5 +50,9 @@ const styles = StyleSheet.create({
     minWidth: 25,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+  },
+  icon: {
+    paddingLeft: 1,
+    paddingBottom: 2,
   },
 });

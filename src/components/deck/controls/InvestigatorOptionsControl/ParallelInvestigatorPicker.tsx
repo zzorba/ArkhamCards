@@ -2,7 +2,8 @@ import React, { useCallback, useMemo } from 'react';
 import { t } from 'ttag';
 
 import Card from '@data/Card';
-import DeckPickerButton from '@components/deck/controls/DeckPickerButton';
+import { usePickerDialog } from '@components/deck/dialogs';
+import DeckPickerStyleButton from '../DeckPickerStyleButton';
 
 interface Props {
   investigator: Card;
@@ -27,11 +28,11 @@ export default function ParallelInvestigatorPicker({
   first,
   last,
 }: Props) {
-  const options = useMemo(() => [
-    { label: t`Original front · Original back`, value: 0 },
-    { label: t`Parallel front · Original back`, value: 1 },
-    { label: t`Original front · Parallel back`, value: 2 },
-    { label: t`Parallel front · Parallel back`, value: 3 },
+  const items = useMemo(() => [
+    { title: t`Original front · Original back`, value: 0 },
+    { title: t`Parallel front · Original back`, value: 1 },
+    { title: t`Original front · Parallel back`, value: 2 },
+    { title: t`Parallel front · Parallel back`, value: 3 },
   ], []);
   const selectedValue = (front === investigator.code ? 0 : 1) + (back === investigator.code ? 0 : 2);
   const onChoiceChange = useCallback((index: number | null) => {
@@ -43,19 +44,25 @@ export default function ParallelInvestigatorPicker({
     }
   }, [onChange, alternateInvestigator.code, investigator.code]);
 
+  const { showDialog, dialog } = usePickerDialog({
+    title: t`Select Parallel Investigator`,
+    description: editWarning ? t`Parallel investigator options should only be selected at deck creation time, not between scenarios.` : undefined,
+    items,
+    selectedValue,
+    onValueChange: onChoiceChange,
+  });
   return (
-    <DeckPickerButton
-      icon="parallel"
-      faction={investigator.factionCode()}
-      title={t`Parallel`}
-      editable={!disabled}
-      modalDescription={editWarning ? t`Parallel investigator options should only be selected at deck creation time, not between scenarios.` : undefined}
-      options={options}
-      selectedValue={selectedValue}
-      onChoiceChange={onChoiceChange}
-      valueLabel={options[selectedValue].label}
-      first={first}
-      last={last}
-    />
+    <>
+      <DeckPickerStyleButton
+        title={`Parallel`}
+        icon="parallel"
+        editable={!disabled}
+        onPress={showDialog}
+        valueLabel={items[selectedValue].title}
+        first={first}
+        last={last}
+      />
+      { dialog }
+    </>
   );
 }

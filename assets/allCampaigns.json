@@ -3487,6 +3487,23 @@
   "id": "arkham",
   "scenario_name": "The Midnight Masks",
   "full_name": "Scenario II: The Midnight Masks",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "house_burned",
+    "lita_condition",
+    "intro_3",
+    "gather_encounter_sets",
+    "gather_cult",
+    "setup_locations",
+    "location_layout",
+    "spawn_cultists",
+    "check_house_burned",
+    "check_house_standing",
+    "encounter_deck",
+    "check_ghoul_priest",
+    "doom_note",
+    "$play_scenario"
+  ],
   "setup": [
     "lita_condition",
     "intro_3",
@@ -3503,6 +3520,97 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Choose difficulty level:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Easy <i>(I want to experience the story)</i>",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1", "+1", "0", "0", "0", "-1", "-1", "-1", "-2", "-2", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          },{
+            "id": "standard",
+            "text": "Standard <i>(I want a challenge)</i>",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1", "0", "0", "-1", "-1", "-1", "-2", "-2", "-3", "-4", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          },{
+            "id": "hard",
+            "text": "Hard <i>(I want a true nightmare)</i>",
+            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0", "0", "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-5", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          },{
+            "id": "expert",
+            "text": "Expert <i>(I want Arkham Horror)</i>",
+            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-4", "-5", "-6", "-8", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "house_burned",
+      "text": "<i>Your house has burned to the ground.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "house_burned",
+          "text": "your house has burned to the ground."
+        }
+      ]
+    },
     {
       "id": "lita_condition",
       "type": "branch",
@@ -8398,6 +8506,21 @@
   "id": "the_last_king",
   "scenario_name": "The Last King",
   "full_name": "Scenario II: The Last King",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "lead_investigator_mitpm",
+    "intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "location_layout",
+    "setup_bystanders",
+    "set_aside_cards",
+    "setup_sickening_reality",
+    "encounter_deck",
+    "check_for_mitpm",
+    "$play_scenario"
+  ],
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -8411,6 +8534,79 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1", "0", "0", "-1", "-1", "-1", "-2", "-2", "-3", "-4", "skull", "skull", "skull", "auto_fail", "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["cultist", "cultist"]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["tablet", "tablet"]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["elder_thing", "elder_thing"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lead_investigator_mitpm",
+      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "03059"
+        }
+      ]
+    },
     {
       "id": "intro",
       "narration": {
@@ -8729,6 +8925,26 @@
   "id": "the_pallid_mask",
   "scenario_name": "The Pallid Mask",
   "full_name": "Scenario VI: The Pallid Mask",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "lead_investigator_mitpm",
+    "found_nigels_home",
+    "no_haruko",
+    "check_intro_condition",
+    "check_ishimaru_haruko",
+    "gather_encounter_sets",
+    "set_aside_cards",
+    "check_catacomb_entry",
+    "create_catacombs_deck",
+    "place_investigators",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
+    "set_aside_pallid_mask",
+    "encounter_deck",
+    "location_adjacency_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "check_intro_condition",
     "check_ishimaru_haruko",
@@ -8745,6 +8961,96 @@
     "$play_scenario"
   ],
   "steps": [
+
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1", "0", "0", "-1", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "skull", "skull", "skull", "auto_fail", "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["cultist", "cultist"]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["tablet", "tablet"]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["elder_thing", "elder_thing"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lead_investigator_mitpm",
+      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "03059"
+        }
+      ]
+    },
+    {
+      "id": "found_nigels_home",
+      "text": "<i>You found Nigel's home.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "found_nigels_home",
+          "text": "you found Nigel's home."
+        }
+      ]
+    },
+    {
+      "id": "no_haruko",
+      "text": "<i>Ishimaru Haruko is not listed under VIPs Interviewed or VIPs Slain.</i>"
+    },
     {
       "id": "check_intro_condition",
       "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
@@ -8788,7 +9094,7 @@
     },
     {
       "id": "intro_1",
-      "narration": { 
+      "narration": {
         "id": "the_path_to_carcosa.the_pallid_mask.intro_1",
         "name": "Intro 1"
       },
@@ -8797,7 +9103,7 @@
     },
     {
       "id": "intro_2",
-      "narration": { 
+      "narration": {
         "id": "the_path_to_carcosa.the_pallid_mask.intro_2",
         "name": "Intro 2"
       },
@@ -8844,7 +9150,7 @@
     },
     {
       "id": "harukos_information",
-      "narration": { 
+      "narration": {
         "id": "the_path_to_carcosa.the_pallid_mask.harukos_information",
         "name": "Haruko's Information"
       },
@@ -9292,7 +9598,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "narration": { 
+      "narration": {
         "id": "the_path_to_carcosa.the_pallid_mask.no_resolution",
         "name": "No Resolution"
       },
@@ -9307,7 +9613,7 @@
     },
     {
       "id": "R1",
-      "narration": { 
+      "narration": {
         "id": "the_path_to_carcosa.the_pallid_mask.resolution_1",
         "name": "Resolution 1"
       },
@@ -9318,7 +9624,7 @@
     },
     {
       "id": "R2",
-      "narration": { 
+      "narration": {
         "id": "the_path_to_carcosa.the_pallid_mask.resolution_2",
         "name": "Resolution 2"
       },
@@ -9333,6 +9639,28 @@
   "id": "the_unspeakable_oath",
   "scenario_name": "The Unspeakable Oath",
   "full_name": "Scenario IV: The Unspeakable Oath",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "no_constance",
+    "no_onyx_clasp",
+    "check_followers_of_the_sign_found_way",
+    "intro_3",
+    "check_constance_dumaine",
+    "gather_encounter_sets",
+    "set_aside_monsters",
+    "set_aside_lunatics",
+    "choose_locations",
+    "set_aside_cards",
+    "setup_locations",
+    "location_layout",
+    "select_act_2",
+    "select_act_2_onyx_clasp",
+    "encounter_deck",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
+    "$play_scenario"
+  ],
   "setup": [
     "check_followers_of_the_sign_found_way",
     "intro_3",
@@ -9353,6 +9681,76 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1", "0", "0", "-1", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "skull", "skull", "skull", "auto_fail", "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["cultist", "cultist"]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["tablet", "tablet"]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["elder_thing", "elder_thing"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_constance",
+      "text": "<i>Constance Dumaine is not listed under VIPs Interviewed or VIPs Slain.</i>"
+    },
+    {
+      "id": "no_onyx_clasp",
+      "text": "<i>You did not take the onyx clasp.</i>"
+    },
     {
       "id": "check_followers_of_the_sign_found_way",
       "type": "branch",
@@ -14833,6 +15231,23 @@
   "id": "return_to_the_midnight_masks",
   "scenario_name": "Return to The Midnight Masks",
   "full_name": "Scenario II: Return to The Midnight Masks",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "house_burned",
+    "lita_condition",
+    "intro_3",
+    "gather_encounter_sets",
+    "gather_cult",
+    "setup_locations",
+    "location_layout",
+    "spawn_cultists",
+    "check_house_burned",
+    "check_house_standing",
+    "encounter_deck",
+    "check_ghoul_priest",
+    "doom_note",
+    "$play_scenario"
+  ],
   "setup": [
     "lita_condition",
     "intro_3",
@@ -14850,6 +15265,163 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Choose difficulty level:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Easy <i>(I want to experience the story)</i>",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "text": "Standard <i>(I want a challenge)</i>",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Hard <i>(I want a true nightmare)</i>",
+            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "expert",
+            "text": "Expert <i>(I want Arkham Horror)</i>",
+            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "house_burned",
+      "text": "<i>Your house has burned to the ground.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "house_burned",
+          "text": "your house has burned to the ground."
+        }
+      ]
+    },
     {
       "id": "lita_condition",
       "type": "branch",
@@ -19787,6 +20359,21 @@
   "id": "return_to_the_last_king",
   "scenario_name": "Return to The Last King",
   "full_name": "Scenario II: Return to The Last King",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "lead_investigator_mitpm",
+    "intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "location_layout",
+    "setup_bystanders",
+    "set_aside_cards",
+    "setup_sickening_reality",
+    "encounter_deck",
+    "check_for_mitpm",
+    "$play_scenario"
+  ],
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -19801,6 +20388,102 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-4",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist",
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet",
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing",
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lead_investigator_mitpm",
+      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "03059"
+        }
+      ]
+    },
     {
       "id": "intro",
       "narration": {
@@ -20164,6 +20847,26 @@
   "id": "return_to_the_pallid_mask",
   "scenario_name": "Return to The Pallid Mask",
   "full_name": "Scenario VI: Return to The Pallid Mask",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "lead_investigator_mitpm",
+    "found_nigels_home",
+    "no_haruko",
+    "check_intro_condition",
+    "check_ishimaru_haruko",
+    "gather_encounter_sets",
+    "set_aside_cards",
+    "check_catacomb_entry",
+    "create_catacombs_deck",
+    "place_investigators",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
+    "set_aside_pallid_mask",
+    "encounter_deck",
+    "location_adjacency_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "check_intro_condition",
     "check_ishimaru_haruko",
@@ -20181,6 +20884,119 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-3",
+            "-4",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist",
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet",
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing",
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lead_investigator_mitpm",
+      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "03059"
+        }
+      ]
+    },
+    {
+      "id": "found_nigels_home",
+      "text": "<i>You found Nigel's home.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "found_nigels_home",
+          "text": "you found Nigel's home."
+        }
+      ]
+    },
+    {
+      "id": "no_haruko",
+      "text": "<i>Ishimaru Haruko is not listed under VIPs Interviewed or VIPs Slain.</i>"
+    },
     {
       "id": "check_intro_condition",
       "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
@@ -20824,6 +21640,28 @@
   "id": "return_to_the_unspeakable_oath",
   "scenario_name": "Return to The Unspeakable Oath",
   "full_name": "Scenario IV: Return to The Unspeakable Oath",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "no_constance",
+    "no_onyx_clasp",
+    "check_followers_of_the_sign_found_way",
+    "intro_3",
+    "check_constance_dumaine",
+    "gather_encounter_sets",
+    "set_aside_monsters",
+    "set_aside_lunatics",
+    "choose_locations",
+    "set_aside_cards",
+    "setup_locations",
+    "location_layout",
+    "select_act_2",
+    "select_act_2_onyx_clasp",
+    "encounter_deck",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
+    "$play_scenario"
+  ],
   "setup": [
     "check_followers_of_the_sign_found_way",
     "intro_3",
@@ -20844,6 +21682,100 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-3",
+            "-4",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist",
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet",
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing",
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_constance",
+      "text": "<i>Constance Dumaine is not listed under VIPs Interviewed or VIPs Slain.</i>"
+    },
+    {
+      "id": "no_onyx_clasp",
+      "text": "<i>You did not take the onyx clasp.</i>"
+    },
     {
       "id": "check_followers_of_the_sign_found_way",
       "type": "branch",
@@ -26141,6 +27073,10 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Several hours after you wake, your laborious descent pays dividends. The red glow emanating from the bottom of the steps grows brighter with each step. The stone floor finally levels off, and the choking tunnel walls open to reveal a labyrinthine network of immense, far-reaching caverns. Littered throughout the caverns are the ruins of a vast city, the likes of which you have never seen. The elaborate stone architecture has been worn away by ages of abandonment, but you sense that there is a history here that runs deeper than you can even fathom. When you turn around to question Ichtaca, you notice a faint yellow glow in her eyes, her pupils narrowed and contracted. “Yoth...the last refuge of Valusia...” she quietly intones.\nJust then, a terrifying roar echoes throughout the cavern. The walls and floor shake with tremendous force, and the red glow that permeates the area brightens. A flood of hisses emerges from the tunnels all around you. Ichtaca walks to the edge of a nearby precipice and looks out over the vast depths. “He is here. I feel his presence. The Father of the Serpents...<b>Yig</b>.”"
     },
@@ -26170,6 +27106,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "You realize now that Ichtaca has her own agenda. Alejandro, as well—both have been using you for their own ends, keeping you from the truth. You raise a weapon and demand answers from her, catching her by surprise. “Yig demands the relic be brought to the Nexus,” she responds anxiously. Her eyes glow brightly, and her skin starts to scale over. Your eyes narrow, and you move to corner her against the edge of the precipice, so she cannot escape. “The relic cannot be trusted to the hands of Brotherhood: this much is true...For it is Valusia that shall be restored to glory. Yig has called, and I must answer.” Before you can react, she throws herself off the edge and into the depths below."
     },
@@ -26219,11 +27159,19 @@
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "You approach Ichtaca and rest a hand on her shoulder. Your companion takes a deep breath and turns to face you. Her eyes are cast downward in shame, and they have returned to their normal color. “I...I’m sorry. I have brought you to your ruin. He called out to me, long ago, told me of my heritage, of my people. I did his bidding willingly.”\nShe clenches her fists, her gaze meeting yours. “But now I realize I was wrong. Humanity deserves its time on Earth. You may have inherited it from far more powerful forces, but it is humanity’s time, not theirs.” You don’t completely understand what she is saying, but you understand the implication. Whatever Ichtaca truly is, she is on your side. A calm silence lingers between you, an unspoken bond that joins you as one. “We must get to the Nexus and prevent the serpents from recovering the relic,” she explains after a few moments, breaking the silence. You nod in agreement."
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "You hesitate, unsure what to do next. What are Ichtaca’s true motives? Why has she led you here? Before you have the chance to react, she draws her bow and aims an arrow at your heart. “Thank you for aiding me this far,” Ichtaca says curtly, “but the time has come for us to part ways. Yig has called, and I must answer.” Her yellow eyes narrow and shine brightly."
     },
@@ -26309,11 +27257,19 @@
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "“You must leave this place at once. This is not humanity’s battle. It is ours. We cannot let you or the Brotherhood foil our plans. Not now, not when we are so close.” Her hand wavers for a moment, and her eyes flicker again. You can tell that something is tearing at her, weighing on her mind. Finally, she speaks again. “Go now. Before I change my mind. And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
     },
     {
       "id": "intro_6",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_6",
+        "name": "Intro 6"
+      },
       "type": "story",
       "text": "Now drop your weapons.” The betrayal stings your chest, and you are gripped with anger and despair. Thoughts of escape flash across your mind, but you have seen her skill with a bow—with her steady aim, you would be dead before you took two steps. You have no choice but to comply. Your weapons clatter to the ground, one at a time. “Good. Now the relic: hand it to me.” Grimacing, you take a few steps forward and offer the relic to Ichtaca."
     },
@@ -26347,11 +27303,19 @@
     },
     {
       "id": "intro_7",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_7",
+        "name": "Intro 7"
+      },
       "type": "story",
       "text": "As Ichtaca reaches out to grab the relic, you pull out your concealed pocketknife and quickly attack, catching her by surprise. The blade cuts deeply across her forearm. Blood sprays across your chest, and she staggers with pain, gripping her arm. Her heel clips a rock near the edge of the precipice, and she tumbles over the side of the ledge, her scream growing distant as she falls. You barely have time to recover from the shock of what just happened, as another colossal roar fills the cavern, and the ground shakes. You gather your belongings and continue your descent."
     },
     {
       "id": "intro_8",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_8",
+        "name": "Intro 8"
+      },
       "type": "story",
       "text": "Ichtaca grabs the relic. You can see the skin on the back of her hand growing hard and scaly. You take a few steps back, knuckles white with anger. “Go now. Before I change my mind,” she says. “And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
     },
@@ -28342,6 +29306,25 @@
   "id": "return_to_threads_of_fate",
   "scenario_name": "Return to Threads of Fate",
   "full_name": "Scenario III: Return to Threads of Fate",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "intro_1",
+    "choose_gave_relic_to_alejandro",
+    "choose_talk_to_ichtaca_standalone",
+    "gather_encounter_sets",
+    "set_aside_alejandro_and_relic",
+    "setup_locations",
+    "location_layout",
+    "set_aside_cards",
+    "setup_act_deck",
+    "encounter_deck",
+    "three_acts_three_decks",
+    "setup_act_ab",
+    "setup_act_cd",
+    "setup_act_ef_prompt",
+    "setup_act_ef",
+    "$play_scenario"
+  ],
   "setup": [
     "intro_1",
     "check_gave_relic_to_alejandro",
@@ -28364,6 +29347,43 @@
   ],
   "steps": [
     {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "0",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-5",
+            "skull",
+            "skull",
+            "cultist",
+            "tablet",
+            "elder_thing",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
       "id": "intro_1",
       "narration": {
         "id": "the_forgotten_age.threads_of_fate.intro_1",
@@ -28371,6 +29391,45 @@
       },
       "type": "story",
       "text": "The night passes with Ichtaca resting in your living room. You get no sleep for the remainder of the night, your thoughts drifting between concern and disbelief. Her story is preposterous, but you feel compelled to believe it nonetheless. You’ve known that the relic from the Eztli ruins had some deeper purpose ever since you first laid eyes on it. When you emerge from your bedroom the next morning, your uninvited guest is sitting at your dining-room table, arms crossed tightly across her chest. Her piercing eyes trace your every move like a bird watching its prey. No pleasantries are exchanged. “Where is the relic now?” Ichtaca asks impatiently. “Where have you brought it?” You explain that it is safe, in good hands. She shakes her head, her knuckles white with frustration. “I assure you it is not.”"
+    },
+    {
+      "id": "choose_gave_relic_to_alejandro",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "gave_relic_to_alejandro",
+            "text": "<i>The investigators gave the relic to Alejandro.</i>",
+            "steps": [
+              "intro_2"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gave_relic_to_alejandro",
+                "text": "the investigators gave custody of the relic to Alejandro."
+              }
+            ]
+          },
+          {
+            "id": "gave_relic_to_harlan",
+            "text": "<i>The investigators gave the relic to Harlan Earnstone.</i>",
+            "steps": [
+              "check_alejandro_recovered_relic"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gave_relic_to_harlan",
+                "text": "the investigators gave custody of the relic to Harlan Earnstone."
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "check_gave_relic_to_alejandro",
@@ -28443,6 +29502,33 @@
       },
       "type": "story",
       "text": "Setting aside your many questions for the time being, you call your contact at the Miskatonic University Museum. Despite the early hour, Dr. Horowitz should be at her office preparing for the long day ahead of her. The operator connects you after a short delay. Elli gives you an unusually curt greeting, her voice cracking and unsteady. As soon as you ask about the relic, she scoffs. “Not you, too! Mr. Walsted is practically knocking down my office door, and two reporters have been harrassing me all morning!”\nYou ask her what the trouble is, and she lets out a long sigh. “The relic is missing,” she explains. “None of the security guards knows what happened. One minute it was in its display case; the next it was gone. And before you ask, no, Mr. Vela is nowhere to be found.” Suddenly she is yelling to another party, “One moment please! I am on the telephone!” She apologizes to you tersely and hangs up a moment later.\nSure enough, Alejandro is not answering his telephone, and none of his other associates have seen him since yesterday. “Believe me now?” Ichtaca asks, rising to her feet and gathering her things. “We’ve wasted enough time. Find the relic and meet me back here tonight. Don’t follow me.”"
+    },
+    {
+      "id": "choose_talk_to_ichtaca_standalone",
+      "text": "The lead investigator must decide (choose one):",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "stop_her",
+            "text": "<i>“You’re not going anywhere until you tell me what is going on.”</i>",
+            "steps": [
+              "intro_4",
+              "listened_to_ichtaca"
+            ]
+          },
+          {
+            "id": "let_her_leave",
+            "text": "<i>“Have it your way.”</i>",
+            "steps": [
+              "intro_5",
+              "ichtaca_left_without_you",
+              "check_ignored_ichtaca_and_gave_relic_to_harlan_standalone"
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "choose_talk_to_ichtaca",
@@ -28554,6 +29640,24 @@
       }
     },
     {
+      "id": "check_ignored_ichtaca_and_gave_relic_to_harlan_standalone",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gave_relic_to_harlan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "intro_6",
+              "choose_forging_own_path_standalone"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "intro_6",
       "narration": {
         "id": "the_forgotten_age.threads_of_fate.intro_6",
@@ -28588,6 +29692,34 @@
                   "elder_thing"
                 ]
               },
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "forging_own_path",
+                "text": "you are forging your own path."
+              }
+            ]
+          },
+          {
+            "id": "listen",
+            "text": "“Maybe I should listen to them after all...”",
+            "effects": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_forging_own_path_standalone",
+      "text": "The investigators must decide (choose one):",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "on_your_own",
+            "text": "“We should be wary of them.”",
+            "description": "For the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead.",
+            "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
@@ -30377,16 +31509,28 @@
     },
     {
       "id": "darkness_1",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.darkness_1",
+        "name": "Darkness 1"
+      },
       "type": "story",
       "text": "You stir awake, lying facedown on the cold, hard stone of the cavern. You are bruised and battered but, somehow, alive. It takes several minutes before you regain enough of your strength to stand. You are absolutely and hopelessly lost within the impossibly vast caverns, enveloped by pitch-black darkness. Have you survived all this way only to perish here, lost to all humanity?"
     },
     {
       "id": "darkness_2",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.darkness_2",
+        "name": "Darkness 2"
+      },
       "type": "story",
       "text": "The grim, blood-red caverns and resentful cities of Yoth hold no candle to the terrifying depths that lie below them. You are in the deepest level of this subterranean realm now: the caverns Ichtaca referred to as “N’kai.” Nothing could have prepared you for the impervious murk that surrounds you on all sides, an inky darkness that none of your light sources can penetrate. You grope around in the darkness until you feel the jagged wall of the cavern and begin to follow it aimlessly, desperately hoping to find the way forward. A grim realization dawns on you: Even should you complete your task, you will surely never find a way back to the surface. The overwhelming darkness of the cavern fills you with a dread you have never before experienced. You cannot see your hands as you grope about in the darkness, nor can you tell if you are in a narrow tunnel or a vast open space. The ground beside you could extend for miles or abruptly become a bottomless cavern, and you would not be able to tell the difference unless you stepped there. Hours pass as you stumble in the dark, slowly, carefully, nervously. Every step could be your last."
     },
     {
       "id": "check_found_missing_relic",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.relic_section",
+        "name": "Relic Section"
+      },
       "text": "Check Campaign Log. <i>If the investigators found the missing relic</i>, the lead investigator reads <b>Arcane Thrumming</b>.",
       "type": "branch",
       "condition": {
@@ -30579,6 +31723,10 @@
     },
     {
       "id": "arcane_thrumming",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.arcane_thrumming",
+        "name": "Arcane Thrumming"
+      },
       "type": "story",
       "title": "Arcane Thrumming",
       "text": "Worried that your fall may have damaged the Eztli relic, you pull it out of your pack and examine it. Oddly, the device seems completely undamaged. It vibrates with a growing intensity, humming louder now than ever before."
@@ -30636,6 +31784,10 @@
     },
     {
       "id": "final_dawning",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.final_dawning",
+        "name": "Final Dawning"
+      },
       "type": "story",
       "title": "Final Dawning",
       "text": "Without Alejandro or Ichtaca to distract you, you find yourself studying the relic intently. Both of your “guides” have only fed you lies. They hid the relic’s true nature from you, manipulating you in an attempt to bring the relic to this very place. After your experience with the Great Race of Yith, you think you understand why. The technology behind the device’s design is far beyond what any human could accomplish, but quite possible for the Yithians. You even recognize some elements of the relic’s construction from the technology in Pnakotus. Somehow, it ended up in the hands of the Eztli, who defended it with care from all manner of creatures. Creatures that predate humanity. Creatures who wished to use it to turn back time. And now that the relic is in your possession, only you can stop this from occurring."
@@ -30647,6 +31799,10 @@
     },
     {
       "id": "growing_concern",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.growing_concern",
+        "name": "Growing Concern"
+      },
       "type": "story",
       "title": "Growing Concern",
       "text": "As you rise to your feet, the ground rumbles and growls. Something deep below you is moving. Shifting. Mutating."
@@ -30669,6 +31825,10 @@
     },
     {
       "id": "find_brazier",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.torches_section",
+        "name": "Torches Section"
+      },
       "type": "story",
       "text": "After hours of slow progress, you eventually stumble into a brazier, filled with marble cubes."
     },
@@ -30734,6 +31894,10 @@
     },
     {
       "id": "torchlight",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.torchlight",
+        "name": "Torchlight"
+      },
       "type": "story",
       "title": "Torchlight",
       "text": "Though the light from your torches is snuffed by the overpowering darkness of this realm, you decide to try to light the brazier with the flames. To your surprise, after you hold the torch against the strange cubes for several moments, the brazier erupts in a fury of blue and silver flames, consuming your torch and almost melting your hand to the bone. Though the light from the brilliant flame only reaches a few yards around you, more braziers light up in the distance, their flames guiding your path forward. At least, you hope..."
@@ -30744,6 +31908,10 @@
     },
     {
       "id": "the_abyss",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.the_abyss",
+        "name": "The Abyss"
+      },
       "type": "story",
       "title": "The Abyss",
       "text": "The odd material inside does not seem to accept any source of fire you use to try to light it. Your hope is snuffed out along with the light around you. Miserable, you prepare to endure the darkness ahead."
@@ -30765,6 +31933,10 @@
     },
     {
       "id": "check_map_braziers",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.map_section",
+        "name": "Map Section"
+      },
       "type": "branch",
       "text": "Check Campaign Log. <i>If the braziers are lit</i>, check your supplies. If any investigator has a map, they read <b>Reading Signs</b>.",
       "condition": {
@@ -30798,6 +31970,10 @@
     },
     {
       "id": "reading_signs",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.reading_signs",
+        "name": "Reading Signs"
+      },
       "type": "story",
       "title": "Reading Signs",
       "text": "As you traverse the caverns, something catches your attention: streams of cold, gentle water that drip down the walls of the cavern. Curious, you unfold the previous expedition’s map and sit by one of the lit braziers, mentally retracing your steps. If your calculations are correct, you have traveled much farther south than you could have possibly guessed. Could it be these caverns extend all the way to the coastline? Do the caverns never end?"
@@ -30808,6 +31984,10 @@
     },
     {
       "id": "time_passes",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.final_section",
+        "name": "Time Passes"
+      },
       "type": "story",
       "text": "You have no sense of how much time passes in the cold, terrible abyss of N’kai."
     },
@@ -48894,6 +50074,27 @@
   "id": "the_search_for_kadath",
   "scenario_name": "The Search for Kadath",
   "full_name": "Scenario II–A: The Search for Kadath",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "black_cat_not_at_your_side",
+    "saved_by_randolph_carter",
+    "intro_1",
+    "check_black_cat_at_your_side",
+    "check_luke_robinson",
+    "check_zoogs",
+    "gather_encounter_sets",
+    "setup_locations",
+    "set_aside_locations",
+    "set_aside_cards",
+    "spawn_vooniths",
+    "take_virgil_gray",
+    "encounter_deck",
+    "locations_rule",
+    "veiled_rule",
+    "enemies_swarming_victory_rule",
+    "stop_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -48913,6 +50114,39 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1", "0", "0", "-1", "-1", "-2", "-2", "-3", "-4", "skull", "skull", "skull", "cultist", "tablet", "tablet", "auto_fail", "elder_sign"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "black_cat_not_at_your_side",
+      "text": "<i>The black cat is not at your side.</i>"
+    },
+    {
+      "id": "saved_by_randolph_carter",
+      "text": "<i>The investigators were saved by Randolph Carter.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "saved_by_randolph_carter",
+          "text": "the investigators were saved by Randolph Carter."
+        }
+      ]
+    },
     {
       "id": "intro_1",
       "narration": {
@@ -58938,16 +60172,28 @@
     },
     {
       "id": "darkness_1",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.darkness_1",
+        "name": "Darkness 1"
+      },
       "type": "story",
       "text": "You stir awake, lying facedown on the cold, hard stone of the cavern. You are bruised and battered but, somehow, alive. It takes several minutes before you regain enough of your strength to stand. You are absolutely and hopelessly lost within the impossibly vast caverns, enveloped by pitch-black darkness. Have you survived all this way only to perish here, lost to all humanity?"
     },
     {
       "id": "darkness_2",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.darkness_2",
+        "name": "Darkness 2"
+      },
       "type": "story",
       "text": "The grim, blood-red caverns and resentful cities of Yoth hold no candle to the terrifying depths that lie below them. You are in the deepest level of this subterranean realm now: the caverns Ichtaca referred to as “N’kai.” Nothing could have prepared you for the impervious murk that surrounds you on all sides, an inky darkness that none of your light sources can penetrate. You grope around in the darkness until you feel the jagged wall of the cavern and begin to follow it aimlessly, desperately hoping to find the way forward. A grim realization dawns on you: Even should you complete your task, you will surely never find a way back to the surface. The overwhelming darkness of the cavern fills you with a dread you have never before experienced. You cannot see your hands as you grope about in the darkness, nor can you tell if you are in a narrow tunnel or a vast open space. The ground beside you could extend for miles or abruptly become a bottomless cavern, and you would not be able to tell the difference unless you stepped there. Hours pass as you stumble in the dark, slowly, carefully, nervously. Every step could be your last."
     },
     {
       "id": "check_found_missing_relic",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.relic_section",
+        "name": "Relic Section"
+      },
       "text": "Check Campaign Log. <i>If the investigators found the missing relic</i>, the lead investigator reads <b>Arcane Thrumming</b>.",
       "type": "branch",
       "condition": {
@@ -59106,6 +60352,10 @@
     },
     {
       "id": "arcane_thrumming",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.arcane_thrumming",
+        "name": "Arcane Thrumming"
+      },
       "type": "story",
       "title": "Arcane Thrumming",
       "text": "Worried that your fall may have damaged the Eztli relic, you pull it out of your pack and examine it. Oddly, the device seems completely undamaged. It vibrates with a growing intensity, humming louder now than ever before."
@@ -59160,6 +60410,10 @@
     },
     {
       "id": "final_dawning",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.final_dawning",
+        "name": "Final Dawning"
+      },
       "type": "story",
       "title": "Final Dawning",
       "text": "Without Alejandro or Ichtaca to distract you, you find yourself studying the relic intently. Both of your “guides” have only fed you lies. They hid the relic’s true nature from you, manipulating you in an attempt to bring the relic to this very place. After your experience with the Great Race of Yith, you think you understand why. The technology behind the device’s design is far beyond what any human could accomplish, but quite possible for the Yithians. You even recognize some elements of the relic’s construction from the technology in Pnakotus. Somehow, it ended up in the hands of the Eztli, who defended it with care from all manner of creatures. Creatures that predate humanity. Creatures who wished to use it to turn back time. And now that the relic is in your possession, only you can stop this from occurring."
@@ -59171,6 +60425,10 @@
     },
     {
       "id": "growing_concern",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.growing_concern",
+        "name": "Growing Concern"
+      },
       "type": "story",
       "title": "Growing Concern",
       "text": "As you rise to your feet, the ground rumbles and growls. Something deep below you is moving. Shifting. Mutating."
@@ -59193,6 +60451,10 @@
     },
     {
       "id": "find_brazier",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.torches_section",
+        "name": "Torches Section"
+      },
       "type": "story",
       "text": "After hours of slow progress, you eventually stumble into a brazier, filled with marble cubes."
     },
@@ -59248,6 +60510,10 @@
     },
     {
       "id": "torchlight",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.torchlight",
+        "name": "Torchlight"
+      },
       "type": "story",
       "title": "Torchlight",
       "text": "Though the light from your torches is snuffed by the overpowering darkness of this realm, you decide to try to light the brazier with the flames. To your surprise, after you hold the torch against the strange cubes for several moments, the brazier erupts in a fury of blue and silver flames, consuming your torch and almost melting your hand to the bone. Though the light from the brilliant flame only reaches a few yards around you, more braziers light up in the distance, their flames guiding your path forward. At least, you hope..."
@@ -59258,6 +60524,10 @@
     },
     {
       "id": "the_abyss",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.the_abyss",
+        "name": "The Abyss"
+      },
       "type": "story",
       "title": "The Abyss",
       "text": "The odd material inside does not seem to accept any source of fire you use to try to light it. Your hope is snuffed out along with the light around you. Miserable, you prepare to endure the darkness ahead."
@@ -59279,6 +60549,10 @@
     },
     {
       "id": "check_map_braziers",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.map_section",
+        "name": "Map Section"
+      },
       "type": "branch",
       "text": "Check Campaign Log. <i>If the braziers are lit</i>, check your supplies. If any investigator has a map, they read <b>Reading Signs</b>.",
       "condition": {
@@ -59309,6 +60583,10 @@
     },
     {
       "id": "reading_signs",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.reading_signs",
+        "name": "Reading Signs"
+      },
       "type": "story",
       "title": "Reading Signs",
       "text": "As you traverse the caverns, something catches your attention: streams of cold, gentle water that drip down the walls of the cavern. Curious, you unfold the previous expedition’s map and sit by one of the lit braziers, mentally retracing your steps. If your calculations are correct, you have traveled much farther south than you could have possibly guessed. Could it be these caverns extend all the way to the coastline? Do the caverns never end?"
@@ -59319,6 +60597,10 @@
     },
     {
       "id": "time_passes",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.final_section",
+        "name": "Time Passes"
+      },
       "type": "story",
       "text": "You have no sense of how much time passes in the cold, terrible abyss of N’kai."
     },
@@ -59549,6 +60831,10 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Several hours after you wake, your laborious descent pays dividends. The red glow emanating from the bottom of the steps grows brighter with each step. The stone floor finally levels off, and the choking tunnel walls open to reveal a labyrinthine network of immense, far-reaching caverns. Littered throughout the caverns are the ruins of a vast city, the likes of which you have never seen. The elaborate stone architecture has been worn away by ages of abandonment, but you sense that there is a history here that runs deeper than you can even fathom. When you turn around to question Ichtaca, you notice a faint yellow glow in her eyes, her pupils narrowed and contracted. “Yoth...the last refuge of Valusia...” she quietly intones.\nJust then, a terrifying roar echoes throughout the cavern. The walls and floor shake with tremendous force, and the red glow that permeates the area brightens. A flood of hisses emerges from the tunnels all around you. Ichtaca walks to the edge of a nearby precipice and looks out over the vast depths. “He is here. I feel his presence. The Father of the Serpents...<b>Yig</b>.”"
     },
@@ -59573,6 +60859,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "You realize now that Ichtaca has her own agenda. Alejandro, as well—both have been using you for their own ends, keeping you from the truth. You raise a weapon and demand answers from her, catching her by surprise. “Yig demands the relic be brought to the Nexus,” she responds anxiously. Her eyes glow brightly, and her skin starts to scale over. Your eyes narrow, and you move to corner her against the edge of the precipice, so she cannot escape. “The relic cannot be trusted to the hands of Brotherhood: this much is true...For it is Valusia that shall be restored to glory. Yig has called, and I must answer.” Before you can react, she throws herself off the edge and into the depths below."
     },
@@ -59613,11 +60903,19 @@
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "You approach Ichtaca and rest a hand on her shoulder. Your companion takes a deep breath and turns to face you. Her eyes are cast downward in shame, and they have returned to their normal color. “I...I’m sorry. I have brought you to your ruin. He called out to me, long ago, told me of my heritage, of my people. I did his bidding willingly.”\nShe clenches her fists, her gaze meeting yours. “But now I realize I was wrong. Humanity deserves its time on Earth. You may have inherited it from far more powerful forces, but it is humanity’s time, not theirs.” You don’t completely understand what she is saying, but you understand the implication. Whatever Ichtaca truly is, she is on your side. A calm silence lingers between you, an unspoken bond that joins you as one. “We must get to the Nexus and prevent the serpents from recovering the relic,” she explains after a few moments, breaking the silence. You nod in agreement."
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "You hesitate, unsure what to do next. What are Ichtaca’s true motives? Why has she led you here? Before you have the chance to react, she draws her bow and aims an arrow at your heart. “Thank you for aiding me this far,” Ichtaca says curtly, “but the time has come for us to part ways. Yig has called, and I must answer.” Her yellow eyes narrow and shine brightly."
     },
@@ -59694,11 +60992,19 @@
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "“You must leave this place at once. This is not humanity’s battle. It is ours. We cannot let you or the Brotherhood foil our plans. Not now, not when we are so close.” Her hand wavers for a moment, and her eyes flicker again. You can tell that something is tearing at her, weighing on her mind. Finally, she speaks again. “Go now. Before I change my mind. And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
     },
     {
       "id": "intro_6",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_6",
+        "name": "Intro 6"
+      },
       "type": "story",
       "text": "Now drop your weapons.” The betrayal stings your chest, and you are gripped with anger and despair. Thoughts of escape flash across your mind, but you have seen her skill with a bow—with her steady aim, you would be dead before you took two steps. You have no choice but to comply. Your weapons clatter to the ground, one at a time. “Good. Now the relic: hand it to me.” Grimacing, you take a few steps forward and offer the relic to Ichtaca."
     },
@@ -59726,11 +61032,19 @@
     },
     {
       "id": "intro_7",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_7",
+        "name": "Intro 7"
+      },
       "type": "story",
       "text": "As Ichtaca reaches out to grab the relic, you pull out your concealed pocketknife and quickly attack, catching her by surprise. The blade cuts deeply across her forearm. Blood sprays across your chest, and she staggers with pain, gripping her arm. Her heel clips a rock near the edge of the precipice, and she tumbles over the side of the ledge, her scream growing distant as she falls. You barely have time to recover from the shock of what just happened, as another colossal roar fills the cavern, and the ground shakes. You gather your belongings and continue your descent."
     },
     {
       "id": "intro_8",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_8",
+        "name": "Intro 8"
+      },
       "type": "story",
       "text": "Ichtaca grabs the relic. You can see the skin on the back of her hand growing hard and scaly. You take a few steps back, knuckles white with anger. “Go now. Before I change my mind,” she says. “And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
     },
@@ -60422,12 +61736,20 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Resolution 1",
       "text": "After hours and hours of travel, you’ve only just scratched the surface of this boundless subterranean world. Humanity could spend centuries mapping out these tunnels and never complete the task. No matter how quickly you plumb the depths, the serpents chasing you are hot on your tail. You are intruders in their home, and they know these hellish tunnels better than you. With your wounds slowing you down and panic seeping into every one of your decisions, your death at the hands of these creatures is inevitable. Despair worms its way into your mind. When the serpents inevitably catch up to you, you are crossing one of the cavern’s many long bridges of stone that span a wide, dark chasm. Serpent creatures on both sides of the chasm flank you, spear tips corralling you against the precarious edge of the bridge. A small hunk of stone cracks at your heel and detaches, falling into the inky void below. You do not hear it strike the floor of the chasm. There is no hope to escape or flee this time—you have no choice but to accept your fate. The spear tips press you closer to the edge. You close your eyes and fall.",
       "steps": ["fell_into_depths", "record_final_depth", "check_final_depth", "check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Resolution 2",
       "text": "Somehow, despite the odds stacked against you, you’ve reached your destination. The telltale red glow that has enveloped you since you entered Yoth recedes, replaced with an unpierceable inky darkness. The Nexus must be close... You can feel it.",
       "steps": ["nexus_is_near", "check_harbinger", "record_yigs_fury", "earn_xp_full_depth", "check_investigators_poisoned"]
@@ -61044,6 +62366,25 @@
   "id": "threads_of_fate",
   "scenario_name": "Threads of Fate",
   "full_name": "Scenario III: Threads of Fate",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "intro_1",
+    "choose_gave_relic_to_alejandro",
+    "choose_talk_to_ichtaca_standalone",
+    "gather_encounter_sets",
+    "set_aside_alejandro_and_relic",
+    "setup_locations",
+    "location_layout",
+    "set_aside_cards",
+    "setup_act_deck",
+    "encounter_deck",
+    "three_acts_three_decks",
+    "setup_act_ab",
+    "setup_act_cd",
+    "setup_act_ef_prompt",
+    "setup_act_ef",
+    "$play_scenario"
+  ],
   "setup": [
     "intro_1",
     "check_gave_relic_to_alejandro",
@@ -61064,6 +62405,28 @@
   ],
   "steps": [
     {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1", "0", "0", "0", "-1", "-2", "-2", "-3", "-5", "skull", "skull", "cultist", "tablet", "elder_thing", "auto_fail", "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
       "id": "intro_1",
       "narration": {
         "id": "the_forgotten_age.threads_of_fate.intro_1",
@@ -61071,6 +62434,41 @@
       },
       "type": "story",
       "text": "The night passes with Ichtaca resting in your living room. You get no sleep for the remainder of the night, your thoughts drifting between concern and disbelief. Her story is preposterous, but you feel compelled to believe it nonetheless. You’ve known that the relic from the Eztli ruins had some deeper purpose ever since you first laid eyes on it. When you emerge from your bedroom the next morning, your uninvited guest is sitting at your dining-room table, arms crossed tightly across her chest. Her piercing eyes trace your every move like a bird watching its prey. No pleasantries are exchanged. “Where is the relic now?” Ichtaca asks impatiently. “Where have you brought it?” You explain that it is safe, in good hands. She shakes her head, her knuckles white with frustration. “I assure you it is not.”"
+    },
+    {
+      "id": "choose_gave_relic_to_alejandro",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "gave_relic_to_alejandro",
+            "text": "<i>The investigators gave the relic to Alejandro.</i>",
+            "steps": ["intro_2"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gave_relic_to_alejandro",
+                "text": "the investigators gave custody of the relic to Alejandro."
+              }
+            ]
+          },
+          {
+            "id": "gave_relic_to_harlan",
+            "text": "<i>The investigators gave the relic to Harlan Earnstone.</i>",
+            "steps": ["check_alejandro_recovered_relic"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gave_relic_to_harlan",
+                "text": "the investigators gave custody of the relic to Harlan Earnstone."
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "check_gave_relic_to_alejandro",
@@ -61133,6 +62531,26 @@
       },
       "type": "story",
       "text": "Setting aside your many questions for the time being, you call your contact at the Miskatonic University Museum. Despite the early hour, Dr. Horowitz should be at her office preparing for the long day ahead of her. The operator connects you after a short delay. Elli gives you an unusually curt greeting, her voice cracking and unsteady. As soon as you ask about the relic, she scoffs. “Not you, too! Mr. Walsted is practically knocking down my office door, and two reporters have been harrassing me all morning!”\nYou ask her what the trouble is, and she lets out a long sigh. “The relic is missing,” she explains. “None of the security guards knows what happened. One minute it was in its display case; the next it was gone. And before you ask, no, Mr. Vela is nowhere to be found.” Suddenly she is yelling to another party, “One moment please! I am on the telephone!” She apologizes to you tersely and hangs up a moment later.\nSure enough, Alejandro is not answering his telephone, and none of his other associates have seen him since yesterday. “Believe me now?” Ichtaca asks, rising to her feet and gathering her things. “We’ve wasted enough time. Find the relic and meet me back here tonight. Don’t follow me.”"
+    },
+    {
+      "id": "choose_talk_to_ichtaca_standalone",
+      "text": "The lead investigator must decide (choose one):",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "stop_her",
+            "text": "<i>“You’re not going anywhere until you tell me what is going on.”</i>",
+            "steps": ["intro_4", "listened_to_ichtaca"]
+          },
+          {
+            "id": "let_her_leave",
+            "text": "<i>“Have it your way.”</i>",
+            "steps": ["intro_5", "ichtaca_left_without_you", "check_ignored_ichtaca_and_gave_relic_to_harlan_standalone"]
+          }
+        ]
+      }
     },
     {
       "id": "choose_talk_to_ichtaca",
@@ -61229,6 +62647,21 @@
       }
     },
     {
+      "id": "check_ignored_ichtaca_and_gave_relic_to_harlan_standalone",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gave_relic_to_harlan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_6", "choose_forging_own_path_standalone"]
+          }
+        ]
+      }
+    },
+    {
       "id": "intro_6",
       "narration": {
         "id": "the_forgotten_age.threads_of_fate.intro_6",
@@ -61257,6 +62690,34 @@
                 "type": "add_chaos_token",
                 "tokens": ["elder_thing"]
               },
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "forging_own_path",
+                "text": "you are forging your own path."
+              }
+            ]
+          },
+          {
+            "id": "listen",
+            "text": "“Maybe I should listen to them after all...”",
+            "effects": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_forging_own_path_standalone",
+      "text": "The investigators must decide (choose one):",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "on_your_own",
+            "text": "“We should be wary of them.”",
+            "description": "For the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead.",
+            "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
@@ -63866,7 +65327,7 @@
       "id": "flashback_10_story",
       "title": "Flashback X",
       "type": "story",
-      "text": "You swim through an array of vast undersea halls until at least you come to a circle of pillars. Inside this submerged henge stands an altar covered in an ornate cloth. It is embroidered with rich threads of gold and inlaid with cerulean opals. Despite being immersed in water, the fabric appears perfectly preserved. Wondering what such an object is doing deep in this underwater cavern, you decide to take it with you.\nThe moment you emerge from the depths and onto dry stone, you realize with amazement that the cloth is perfectly dry. Turning it over in your hands, you find a clasp of gold and realize it is not simply shapeless cloth, but a mantle—perhaps even part of a greater outfit. When you don the strange cloak, its gemstones pulse with arcane power."
+      "text": "You swim through an array of vast undersea halls until at last you come to a circle of pillars. Inside this submerged henge stands an altar covered in an ornate cloth. It is embroidered with rich threads of gold and inlaid with cerulean opals. Despite being immersed in water, the fabric appears perfectly preserved. Wondering what such an object is doing deep in this underwater cavern, you decide to take it with you.\nThe moment you emerge from the depths and onto dry stone, you realize with amazement that the cloth is perfectly dry. Turning it over in your hands, you find a clasp of gold and realize it is not simply shapeless cloth, but a mantle—perhaps even part of a greater outfit. When you don the strange cloak, its gemstones pulse with arcane power."
     },
     {
       "id": "flashback_10_effects",
@@ -64050,7 +65511,7 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "With daylight fading and the tide rising to swallow the various islands off the coast of Innsmouth, you decide to make your way back to the harbor with your discoveries. \"Found what yer lookin' for?\" Mr. Moore asks oncce you've made it to the coast safely.\nTruth be told, you're not completely sure. What you found was startling. The coves and tidal caverns of Devil Reef were home not just to relics of the Esoteric Order of Dagon, but also to a horde of strange creatures: hybrids between fish, man, and monster. You might have escaped with your life, but the horrors you saw in those caves will stay with you forever. Sharp jagged teeth—blood-stained altars—unholy prayers—signs of a coming catastrophe—it still haunts you even after your escape.\nBut is Innsmouth truly safe? Is any land at all?",
+      "text": "With daylight fading and the tide rising to swallow the various islands off the coast of Innsmouth, you decide to make your way back to the harbor with your discoveries. \"Found what yer lookin' for?\" Mr. Moore asks once you've made it to the coast safely.\nTruth be told, you're not completely sure. What you found was startling. The coves and tidal caverns of Devil Reef were home not just to relics of the Esoteric Order of Dagon, but also to a horde of strange creatures: hybrids between fish, man, and monster. You might have escaped with your life, but the horrors you saw in those caves will stay with you forever. Sharp jagged teeth—blood-stained altars—unholy prayers—signs of a coming catastrophe—it still haunts you even after your escape.\nBut is Innsmouth truly safe? Is any land at all?",
       "steps": ["maybe_ask_tide_has_grown_stronger", "earn_xp", "ask_terror_of_devil_reef", "proceed_keys"]
     }
   ]

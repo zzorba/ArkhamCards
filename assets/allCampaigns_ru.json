@@ -4014,6 +4014,23 @@
   "id": "arkham",
   "scenario_name": "Полуночные маски",
   "full_name": "Часть II: Полуночные маски",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "house_burned",
+    "lita_condition",
+    "intro_3",
+    "gather_encounter_sets",
+    "gather_cult",
+    "setup_locations",
+    "location_layout",
+    "spawn_cultists",
+    "check_house_burned",
+    "check_house_standing",
+    "encounter_deck",
+    "check_ghoul_priest",
+    "doom_note",
+    "$play_scenario"
+  ],
   "setup": [
     "lita_condition",
     "intro_3",
@@ -4030,6 +4047,163 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Выберите уровень сложности:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "text": "Обычный <i>(чтобы испытать вызов):</i>",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
+            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "expert",
+            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "house_burned",
+      "text": "<i>Your house has burned to the ground.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "house_burned",
+          "text": "ваш дом сгорел дотла."
+        }
+      ]
+    },
     {
       "id": "lita_condition",
       "type": "branch",
@@ -9574,6 +9748,21 @@
   "id": "the_last_king",
   "scenario_name": "Последний король",
   "full_name": "Сценарий II: Последний король",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "lead_investigator_mitpm",
+    "intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "location_layout",
+    "setup_bystanders",
+    "set_aside_cards",
+    "setup_sickening_reality",
+    "encounter_deck",
+    "check_for_mitpm",
+    "$play_scenario"
+  ],
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -9587,6 +9776,102 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-4",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist",
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet",
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing",
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lead_investigator_mitpm",
+      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "03059"
+        }
+      ]
+    },
     {
       "id": "intro",
       "narration": {
@@ -9945,6 +10230,26 @@
   "id": "the_pallid_mask",
   "scenario_name": "Бледная маска",
   "full_name": "Сценарий VI: Бледная маска",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "lead_investigator_mitpm",
+    "found_nigels_home",
+    "no_haruko",
+    "check_intro_condition",
+    "check_ishimaru_haruko",
+    "gather_encounter_sets",
+    "set_aside_cards",
+    "check_catacomb_entry",
+    "create_catacombs_deck",
+    "place_investigators",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
+    "set_aside_pallid_mask",
+    "encounter_deck",
+    "location_adjacency_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "check_intro_condition",
     "check_ishimaru_haruko",
@@ -9961,6 +10266,119 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-3",
+            "-4",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist",
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet",
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing",
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lead_investigator_mitpm",
+      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "03059"
+        }
+      ]
+    },
+    {
+      "id": "found_nigels_home",
+      "text": "<i>You found Nigel's home.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "found_nigels_home",
+          "text": "вы нашли дом Найджела."
+        }
+      ]
+    },
+    {
+      "id": "no_haruko",
+      "text": "<i>Ishimaru Haruko is not listed under VIPs Interviewed or VIPs Slain.</i>"
+    },
     {
       "id": "check_intro_condition",
       "text": "Cверьтесь с журналом. <i>Если вы не укрылись от глаз призрака</i> или <i>вы не смогли найти Найджела</i>",
@@ -10596,6 +11014,28 @@
   "id": "the_unspeakable_oath",
   "scenario_name": "Невыразимая клятва",
   "full_name": "Сценарий IV: Невыразимая клятва",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "no_constance",
+    "no_onyx_clasp",
+    "check_followers_of_the_sign_found_way",
+    "intro_3",
+    "check_constance_dumaine",
+    "gather_encounter_sets",
+    "set_aside_monsters",
+    "set_aside_lunatics",
+    "choose_locations",
+    "set_aside_cards",
+    "setup_locations",
+    "location_layout",
+    "select_act_2",
+    "select_act_2_onyx_clasp",
+    "encounter_deck",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
+    "$play_scenario"
+  ],
   "setup": [
     "check_followers_of_the_sign_found_way",
     "intro_3",
@@ -10616,6 +11056,100 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-3",
+            "-4",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist",
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet",
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing",
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_constance",
+      "text": "<i>Constance Dumaine is not listed under VIPs Interviewed or VIPs Slain.</i>"
+    },
+    {
+      "id": "no_onyx_clasp",
+      "text": "<i>You did not take the onyx clasp.</i>"
+    },
     {
       "id": "check_followers_of_the_sign_found_way",
       "type": "branch",
@@ -16203,6 +16737,23 @@
   "id": "return_to_the_midnight_masks",
   "scenario_name": "Return to The Midnight Masks",
   "full_name": "Scenario II: Return to The Midnight Masks",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "house_burned",
+    "lita_condition",
+    "intro_3",
+    "gather_encounter_sets",
+    "gather_cult",
+    "setup_locations",
+    "location_layout",
+    "spawn_cultists",
+    "check_house_burned",
+    "check_house_standing",
+    "encounter_deck",
+    "check_ghoul_priest",
+    "doom_note",
+    "$play_scenario"
+  ],
   "setup": [
     "lita_condition",
     "intro_3",
@@ -16220,6 +16771,163 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Выберите уровень сложности:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "text": "Обычный <i>(чтобы испытать вызов):</i>",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
+            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "expert",
+            "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
+            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "tablet",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "house_burned",
+      "text": "<i>Your house has burned to the ground.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "house_burned",
+          "text": "ваш дом сгорел дотла."
+        }
+      ]
+    },
     {
       "id": "lita_condition",
       "type": "branch",
@@ -21157,6 +21865,21 @@
   "id": "return_to_the_last_king",
   "scenario_name": "Return to The Last King",
   "full_name": "Scenario II: Return to The Last King",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "lead_investigator_mitpm",
+    "intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "location_layout",
+    "setup_bystanders",
+    "set_aside_cards",
+    "setup_sickening_reality",
+    "encounter_deck",
+    "check_for_mitpm",
+    "$play_scenario"
+  ],
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -21171,6 +21894,102 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-4",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist",
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet",
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing",
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lead_investigator_mitpm",
+      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "03059"
+        }
+      ]
+    },
     {
       "id": "intro",
       "narration": {
@@ -21534,6 +22353,26 @@
   "id": "return_to_the_pallid_mask",
   "scenario_name": "Return to The Pallid Mask",
   "full_name": "Scenario VI: Return to The Pallid Mask",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "lead_investigator_mitpm",
+    "found_nigels_home",
+    "no_haruko",
+    "check_intro_condition",
+    "check_ishimaru_haruko",
+    "gather_encounter_sets",
+    "set_aside_cards",
+    "check_catacomb_entry",
+    "create_catacombs_deck",
+    "place_investigators",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
+    "set_aside_pallid_mask",
+    "encounter_deck",
+    "location_adjacency_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "check_intro_condition",
     "check_ishimaru_haruko",
@@ -21551,6 +22390,119 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-3",
+            "-4",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist",
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet",
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing",
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lead_investigator_mitpm",
+      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "03059"
+        }
+      ]
+    },
+    {
+      "id": "found_nigels_home",
+      "text": "<i>You found Nigel's home.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "found_nigels_home",
+          "text": "вы нашли дом Найджела."
+        }
+      ]
+    },
+    {
+      "id": "no_haruko",
+      "text": "<i>Ishimaru Haruko is not listed under VIPs Interviewed or VIPs Slain.</i>"
+    },
     {
       "id": "check_intro_condition",
       "text": "Cверьтесь с журналом. <i>Если вы не укрылись от глаз призрака</i> или <i>вы не смогли найти Найджела</i>",
@@ -22194,6 +23146,28 @@
   "id": "return_to_the_unspeakable_oath",
   "scenario_name": "Return to The Unspeakable Oath",
   "full_name": "Scenario IV: Return to The Unspeakable Oath",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "randomly_choose_tokens",
+    "no_constance",
+    "no_onyx_clasp",
+    "check_followers_of_the_sign_found_way",
+    "intro_3",
+    "check_constance_dumaine",
+    "gather_encounter_sets",
+    "set_aside_monsters",
+    "set_aside_lunatics",
+    "choose_locations",
+    "set_aside_cards",
+    "setup_locations",
+    "location_layout",
+    "select_act_2",
+    "select_act_2_onyx_clasp",
+    "encounter_deck",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
+    "$play_scenario"
+  ],
   "setup": [
     "check_followers_of_the_sign_found_way",
     "intro_3",
@@ -22214,6 +23188,100 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-3",
+            "-4",
+            "skull",
+            "skull",
+            "skull",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
+      "id": "randomly_choose_tokens",
+      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist",
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet",
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing",
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_constance",
+      "text": "<i>Constance Dumaine is not listed under VIPs Interviewed or VIPs Slain.</i>"
+    },
+    {
+      "id": "no_onyx_clasp",
+      "text": "<i>You did not take the onyx clasp.</i>"
+    },
     {
       "id": "check_followers_of_the_sign_found_way",
       "type": "branch",
@@ -27511,6 +28579,10 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Через несколько часов после пробуждения ваш утомительный спуск приносит плоды. С каждым шагом красный свет, струящийся от подножия лестницы, становится ярче. Наконец каменный пол выравнивается, а тесные стены туннеля расходятся, открывая вид на бесконечный лабиринт необъятных пещер. Их усеивают руины огромного города, подобных которым вы никогда не видели. От долгого запустения грандиозные каменные здания обветшали, но вы чувствуете, что история этого места древнее, чем вы способны осознать. Вопросительно обернувшись к Ичтаке, вы видите, что её зрачки сужены, а глаза тускло светятся жёлтым. «Йот… Последнее прибежище Валузии…» — еле слышно произносит она.\nВнезапно по пещере разносится леденящий душу рык. Стены и пол неистово содрогаются, а заливающий пространство красный свет становится ярче. Со всех сторон из туннелей выплёскивается громкое шипение. Ичтака подходит к краю ближайшего обрыва и всматривается в бездонные глубины. «Он здесь. Я чувствую его. Отец Змей… <b>Йиг</b>»."
     },
@@ -27540,6 +28612,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Теперь вы понимаете, что Ичтака ведёт свою игру. Как и Алехандро — они оба использовали вас в своих целях, скрывая правду. Без лишних слов вы хватаетесь за оружие и требуете объяснений. «Йиг велит доставить реликвию к Средоточию», — с трепетом отвечает Ичтака. Свет в её глазах разгорается, а кожа начинает покрываться чешуёй. Вы прищуриваетесь и оттесняете её к самому краю пропасти, лишая пути к побегу. «Реликвия действительно не должна попасть в руки Братства… Ибо только Валузии суждено возродиться в былой славе! Йиг зовёт, и я должна явиться». Прежде чем вы успеваете что-то сделать, она бросается с обрыва в бездну."
     },
@@ -27589,11 +28665,19 @@
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Вы подходите к Ичтаке и кладёте руку ей на плечо. Воительница делает глубокий вдох и поворачивается к вам. Её виновато опущенные глаза снова приобрели обычный цвет. «П-простите меня. Я привела вас к гибели. Он воззвал ко мне, ещё давно, рассказал о моём наследии, о моём народе. Я была рада исполнить его волю. — Она сжимает кулаки и смотрит вам прямо в глаза. — Но теперь я вижу, что ошибалась. Человечество заслуживает жить на этой планете. Пусть она досталась вам от куда более могущественных сил, но сейчас время человечества — не их время». Вы не вполне её понимаете, но главное ясно: кем бы Ичтака ни была на самом деле, она на вашей стороне. В умиротворённой тишине вы чувствуете, как между ней и вами возникает незримая нерушимая связь. «Нужно добраться до Средоточия и не дать змеям захватить реликвию», — говорит она после минутного молчания. Вы киваете в знак согласия."
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Вы медлите, не зная, как поступить. Что на самом деле нужно Ичтаке? Зачем она привела вас сюда? Прежде чем вы успеваете что-то сделать, Ичтака достаёт лук и направляет стрелу вам в сердце. «Спасибо, что помогли добраться сюда, — сухо произносит она, — но теперь наши пути расходятся. Йиг зовёт, и я должна явиться». Её блестящие жёлтые глаза сужаются."
     },
@@ -27679,11 +28763,19 @@
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "«Вы должны немедленно уйти отсюда. Это наша битва, а не людская. Мы не позволим ни вам, ни Братству нарушить наши планы. Не сейчас, когда успех так близок». Её рука подрагивает, а глаза снова вспыхивают. Вы видите, что она встревожена, что-то не даёт ей покоя. Наконец она продолжает: «Уходите, пока я не передумала. И если хотите жить, не смейте идти за мной. Второго шанса не будет». Ичтака стремительно удаляется, не сводя с вас взгляда, пока не скрывается из виду. Несмотря на предостережение, вам остаётся только последовать за ней. Если не вы спасёте человечество, то кто?"
     },
     {
       "id": "intro_6",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_6",
+        "name": "Intro 6"
+      },
       "type": "story",
       "text": "«Бросьте оружие». Предательство жалит вас в самое сердце, наполняя его гневом и отчаянием. На какой-то миг вы задумываетесь о бегстве, но вспоминаете, как мастерски Ичтака стреляет из лука: вы будете мертвы, не пробежав и пары шагов. Вам остаётся только подчиниться. Вы по очереди роняете оружие на землю. «Отлично. Теперь отдайте мне реликвию». Скривившись, вы делаете несколько шагов вперёд и протягиваете ей реликвию."
     },
@@ -27717,11 +28809,19 @@
     },
     {
       "id": "intro_7",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_7",
+        "name": "Intro 7"
+      },
       "type": "story",
       "text": "Когда Ичтака протягивает руку к реликвии, вы резко выхватываете припрятанный нож и наносите предательнице внезапный удар. Лезвие глубоко рассекает ей предплечье, заливая вашу грудь кровью. Ичтака отшатывается, схватившись за раненую руку, запинается о камень и падает в пропасть. Вскоре её вопль затихает. Вы едва успеваете прийти в себя после случившегося, как раздаётся ещё один ужасный рык и земля сотрясается. Подобрав свои вещи, вы продолжаете спуск."
     },
     {
       "id": "intro_8",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_8",
+        "name": "Intro 8"
+      },
       "type": "story",
       "text": "Ичтака хватает реликвию. Вы видите, что кожа на тыльной стороне её ладоней стала жёсткой и чешуйчатой. Сжав побелевшие от гнева кулаки, вы отступаете. «Уходите, пока я не передумала, — произносит она. — И если хотите жить, не смейте идти за мной. Второго шанса не будет». Ичтака стремительно удаляется, не сводя с вас взгляда, пока не скрывается из виду. Несмотря на предостережение, вам остаётся только последовать за ней. Если не вы спасёте человечество, то кто?"
     },
@@ -29712,6 +30812,25 @@
   "id": "return_to_threads_of_fate",
   "scenario_name": "Return to Threads of Fate",
   "full_name": "Scenario III: Return to Threads of Fate",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "intro_1",
+    "choose_gave_relic_to_alejandro",
+    "choose_talk_to_ichtaca_standalone",
+    "gather_encounter_sets",
+    "set_aside_alejandro_and_relic",
+    "setup_locations",
+    "location_layout",
+    "set_aside_cards",
+    "setup_act_deck",
+    "encounter_deck",
+    "three_acts_three_decks",
+    "setup_act_ab",
+    "setup_act_cd",
+    "setup_act_ef_prompt",
+    "setup_act_ef",
+    "$play_scenario"
+  ],
   "setup": [
     "intro_1",
     "check_gave_relic_to_alejandro",
@@ -29734,6 +30853,43 @@
   ],
   "steps": [
     {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "0",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-5",
+            "skull",
+            "skull",
+            "cultist",
+            "tablet",
+            "elder_thing",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
       "id": "intro_1",
       "narration": {
         "id": "the_forgotten_age.threads_of_fate.intro_1",
@@ -29741,6 +30897,45 @@
       },
       "type": "story",
       "text": "Ичтака до утра дремлет в гостиной, но вам так и не удаётся заснуть. Ваши мысли мечутся между беспокойством и недоверием. Рассказ Ичтаки нелеп, но тем не менее вы склонны ей поверить. С первого взгляда на реликвию из руин Эцтли вам стало ясно, что у неё есть какое-то тайное предназначение. Когда вы утром выходите из спальни, незваная гостья сидит за обеденным столом, крепко скрестив руки на груди. Её пронзительные глаза следят за каждым вашим движе­нием, словно хищная птица за добычей. «Где реликвия? — нетерпеливо спрашивает Ичтака, не тратя времени на любезности. — Куда вы её дели?» Вы объясняете, что она в безопасности, в надёжных руках. Женщина трясёт головой, и костяшки её пальцев белеют от бессилия. «Можете быть уверены, что это не так»."
+    },
+    {
+      "id": "choose_gave_relic_to_alejandro",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "gave_relic_to_alejandro",
+            "text": "<i>The investigators gave the relic to Alejandro.</i>",
+            "steps": [
+              "intro_2"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gave_relic_to_alejandro",
+                "text": "сыщики передали реликвию Алехандро."
+              }
+            ]
+          },
+          {
+            "id": "gave_relic_to_harlan",
+            "text": "<i>The investigators gave the relic to Harlan Earnstone.</i>",
+            "steps": [
+              "check_alejandro_recovered_relic"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gave_relic_to_harlan",
+                "text": "сыщики передали реликвию Харлану."
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "check_gave_relic_to_alejandro",
@@ -29813,6 +31008,33 @@
       },
       "type": "story",
       "text": "Отложив на время свои многочисленные вопросы, вы звоните в музей Мискатоникского университета. Несмотря на ранний час, доктор Горовиц уже должна быть в своём кабинете, готовясь к долгому рабочему дню. После небольшой паузы телефонист соединяет вас. Элли на удивление резко здоровается, её голос надломлен и нетвёрд. Когда вы спрашиваете о реликвии, она фыркает: «И вы туда же! Меня с утра преследуют двое репортёров, а мистер Уолстед чуть не снёс с петель мою дверь!»\nВы интересуетесь, что случилось, и Элли тяжело вздыхает. «Реликвия пропала, — объясняет она. — Никто из охранников не понимает, как это произошло. Только что стояла себе за стеклом — и вдруг её нет. И прежде чем вы спросите: мистер Вела тоже куда-то исчез». Внезапно она кричит кому-то ещё: «Погодите минуту! У меня телефон!», — поспешно извиняется и вешает трубку.\nРазумеется, Алехандро не отвечает на звонки, и никто из его коллег не видел его со вчерашнего дня. «Теперь верите? — спрашивает Ичтака, встав из-за стола и начиная собирать свои вещи. — Хватит терять время. Найдите реликвию. Встретимся здесь вечером. И не смейте ходить за мной»."
+    },
+    {
+      "id": "choose_talk_to_ichtaca_standalone",
+      "text": "Ведущий сыщик должен решить (выберите одно):",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "stop_her",
+            "text": "<i>«Ты никуда не пойдёшь, пока не объяснишь, что происходит».</i>",
+            "steps": [
+              "intro_4",
+              "listened_to_ichtaca"
+            ]
+          },
+          {
+            "id": "let_her_leave",
+            "text": "<i>«Поступай как знаешь».</i>",
+            "steps": [
+              "intro_5",
+              "ichtaca_left_without_you",
+              "check_ignored_ichtaca_and_gave_relic_to_harlan_standalone"
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "choose_talk_to_ichtaca",
@@ -29924,6 +31146,24 @@
       }
     },
     {
+      "id": "check_ignored_ichtaca_and_gave_relic_to_harlan_standalone",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gave_relic_to_harlan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "intro_6",
+              "choose_forging_own_path_standalone"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "intro_6",
       "narration": {
         "id": "the_forgotten_age.threads_of_fate.intro_6",
@@ -29958,6 +31198,34 @@
                   "elder_thing"
                 ]
               },
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "forging_own_path",
+                "text": "вы идёте собственным путём."
+              }
+            ]
+          },
+          {
+            "id": "listen",
+            "text": "«Возможно, к ним стоит прислушаться...»",
+            "effects": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_forging_own_path_standalone",
+      "text": "Сыщики должны решить, что им делать (выберите одно):",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "on_your_own",
+            "text": "«Нельзя доверять им».",
+            "description": "For the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead.",
+            "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
@@ -31747,16 +33015,28 @@
     },
     {
       "id": "darkness_1",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.darkness_1",
+        "name": "Darkness 1"
+      },
       "type": "story",
       "text": "Вы приходите в себя, лёжа ничком на холодном твёрдом камне пещеры. На вас нет живого места — и тем не менее вы остались\nв живых. Несколько минут вы собираетесь с силами, чтобы подняться на ноги. Вы окончательно и безнадёжно заблудились в этих невозможно огромных пещерах, заполненных непроглядной тьмой. Неужели вы выжили только для того, чтобы сгинуть здесь, вдали от всего человечества?"
     },
     {
       "id": "darkness_2",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.darkness_2",
+        "name": "Darkness 2"
+      },
       "type": "story",
       "text": "Зловещие, озарённые багрянцем пещеры и города Йота не идут ни в какое сравнение с глубинами, которые лежат под ними. Вы достигли нижних пределов подземного мира — мест, которые Ичтака называла Н’каем. Ничто не могло подготовить вас к непроницаемому мраку, окружающему со всех сторон, к кромешной тьме, которую не может рассеять ни один фонарь. Вы бродите вслепую, пока не нащупаете щербатую стену пещеры, а затем движетесь вдоль неё в отчаянной надежде найти выход. К вам приходит мрачная мысль: даже если вы справитесь со своей миссией, вам никогда не вернуться на поверхность. Гнетущая тьма пещеры вселяет в вас ужас, равного которому вы никогда не знали. Во мраке вы не видите собственных рук, не знаете, идёте ли по узкому коридору или по огромному залу. Пол под ногами может простираться на мили вперёд — а может внезапно обернуться бездонной пропастью, и вы не узнаете об этом, пока не шагнёте. Часами вы бредёте в темноте — медленно, осторожно, беспокойно. Каждый ваш шаг может оказаться последним."
     },
     {
       "id": "check_found_missing_relic",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.relic_section",
+        "name": "Relic Section"
+      },
       "text": "Сверьтесь с журналом. Если сыщики <i>сыщики нашли пропавшую реликвию</i>, ведущий сыщик читает <b>«Мистический гул»</b>.",
       "type": "branch",
       "condition": {
@@ -31949,6 +33229,10 @@
     },
     {
       "id": "arcane_thrumming",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.arcane_thrumming",
+        "name": "Arcane Thrumming"
+      },
       "type": "story",
       "title": "Мистический гул",
       "text": "Тревожась за сохранность реликвии, вы достаёте её и ощупываете. Удивительно, но устройство совсем не пострадало. Оно всё сильнее гудит и вибрирует."
@@ -32006,6 +33290,10 @@
     },
     {
       "id": "final_dawning",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.final_dawning",
+        "name": "Final Dawning"
+      },
       "type": "story",
       "title": "Последнее прозрение",
       "text": "Отделавшись и от Алехандро, и от Ичтаки, вы принимаетесь тщательно изучать реликвию. Оба ваших спутника только дурачили вас. Они скрывали от вас истинную природу реликвии, манипулируя вами, чтобы доставить её в это самое место. Теперь, после времени, проведённого с Великой Расой Йит, вы, кажется, понимаете, зачем они это делали. Человечество никогда не смогло бы создать подобное устройство — в отличие от йитиан. Вы даже узнаёте некоторые детали реликвии: такие же попадались вам в Пнакоте. Каким-то образом реликвия попала к эцтли, которые оберегали её от врагов. От тех, кто древнее человечества. От тех, кто хотел с её помощью повернуть время вспять. А теперь реликвия досталась вам — и только вы можете им помешать."
@@ -32017,6 +33305,10 @@
     },
     {
       "id": "growing_concern",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.growing_concern",
+        "name": "Growing Concern"
+      },
       "type": "story",
       "title": "Растущее беспокойство",
       "text": "Когда вы поднимаетесь на ноги, земля с грохотом сотрясается. Что-то ворочается в глубине. Движется. Изменяется."
@@ -32039,6 +33331,10 @@
     },
     {
       "id": "find_brazier",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.torches_section",
+        "name": "Torches Section"
+      },
       "type": "story",
       "text": "Несколько часов спустя вы находите похожий на жаровню светильник, чаша которого наполнена мраморными кубиками."
     },
@@ -32104,6 +33400,10 @@
     },
     {
       "id": "torchlight",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.torchlight",
+        "name": "Torchlight"
+      },
       "type": "story",
       "title": "Свет пламени",
       "text": "Хотя гнетущая темнота этих мест и поглощает всякий свет, вы всё-таки зажигаете факел и подносите к загадочным кубикам. К вашему удивлению, почти сразу из светильника вырываются неистовые языки синего и серебряного пламени, которые пожирают факел и едва не сжигают вашу руку. Света сияющего огня хватает всего на несколько метров, но вдалеке загораются новые светильники, указывая вам дальнейший путь. По крайней мере, вы на это надеетесь…"
@@ -32114,6 +33414,10 @@
     },
     {
       "id": "the_abyss",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.the_abyss",
+        "name": "The Abyss"
+      },
       "type": "story",
       "title": "Бездна",
       "text": "Вы перепробовали все источники огня, которые у вас были, но странный светильник не желает загораться. Вместе со светом угасает и ваша надежда. В подавленном настроении вы готовитесь продолжать путь в темноте."
@@ -32135,6 +33439,10 @@
     },
     {
       "id": "check_map_braziers",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.map_section",
+        "name": "Map Section"
+      },
       "type": "branch",
       "text": "Сверьтесь с журналом. Если <i>светильники зажглись<.i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
       "condition": {
@@ -32168,6 +33476,10 @@
     },
     {
       "id": "reading_signs",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.reading_signs",
+        "name": "Reading Signs"
+      },
       "type": "story",
       "title": "Изучая знаки",
       "text": "По дороге ваше внимание привлекают струйки прохладной воды, которые плавно стекают по стенам пещеры. Заинтересовавшись, вы разворачиваете карту предыдущей экспедиции и садитесь под одним из горящих светильников, мысленно восстанавливая свой путь. Если ваши расчёты верны, вы забрались куда дальше на юг, чем могли подумать. Могут ли эти пещеры простираться до самого побережья? Есть ли у них вообще конец?"
@@ -32178,6 +33490,10 @@
     },
     {
       "id": "time_passes",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.final_section",
+        "name": "Time Passes"
+      },
       "type": "story",
       "text": "Вы совсем потеряли счёт времени в леденящей тело и душу бездне Н’кая."
     },
@@ -53583,6 +54899,27 @@
   "id": "the_search_for_kadath",
   "scenario_name": "The Search for Kadath",
   "full_name": "Scenario II–A: The Search for Kadath",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "black_cat_not_at_your_side",
+    "saved_by_randolph_carter",
+    "intro_1",
+    "check_black_cat_at_your_side",
+    "check_luke_robinson",
+    "check_zoogs",
+    "gather_encounter_sets",
+    "setup_locations",
+    "set_aside_locations",
+    "set_aside_cards",
+    "spawn_vooniths",
+    "take_virgil_gray",
+    "encounter_deck",
+    "locations_rule",
+    "veiled_rule",
+    "enemies_swarming_victory_rule",
+    "stop_rule",
+    "$play_scenario"
+  ],
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -53602,6 +54939,55 @@
     "$play_scenario"
   ],
   "steps": [
+    {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "-1",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-4",
+            "skull",
+            "skull",
+            "skull",
+            "cultist",
+            "tablet",
+            "tablet",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "black_cat_not_at_your_side",
+      "text": "<i>The black cat is not at your side.</i>"
+    },
+    {
+      "id": "saved_by_randolph_carter",
+      "text": "<i>The investigators were saved by Randolph Carter.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "saved_by_randolph_carter",
+          "text": "the investigators were saved by Randolph Carter."
+        }
+      ]
+    },
     {
       "id": "intro_1",
       "narration": {
@@ -64866,16 +66252,28 @@
     },
     {
       "id": "darkness_1",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.darkness_1",
+        "name": "Darkness 1"
+      },
       "type": "story",
       "text": "Вы приходите в себя, лёжа ничком на холодном твёрдом камне пещеры. На вас нет живого места — и тем не менее вы остались\nв живых. Несколько минут вы собираетесь с силами, чтобы подняться на ноги. Вы окончательно и безнадёжно заблудились в этих невозможно огромных пещерах, заполненных непроглядной тьмой. Неужели вы выжили только для того, чтобы сгинуть здесь, вдали от всего человечества?"
     },
     {
       "id": "darkness_2",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.darkness_2",
+        "name": "Darkness 2"
+      },
       "type": "story",
       "text": "Зловещие, озарённые багрянцем пещеры и города Йота не идут ни в какое сравнение с глубинами, которые лежат под ними. Вы достигли нижних пределов подземного мира — мест, которые Ичтака называла Н’каем. Ничто не могло подготовить вас к непроницаемому мраку, окружающему со всех сторон, к кромешной тьме, которую не может рассеять ни один фонарь. Вы бродите вслепую, пока не нащупаете щербатую стену пещеры, а затем движетесь вдоль неё в отчаянной надежде найти выход. К вам приходит мрачная мысль: даже если вы справитесь со своей миссией, вам никогда не вернуться на поверхность. Гнетущая тьма пещеры вселяет в вас ужас, равного которому вы никогда не знали. Во мраке вы не видите собственных рук, не знаете, идёте ли по узкому коридору или по огромному залу. Пол под ногами может простираться на мили вперёд — а может внезапно обернуться бездонной пропастью, и вы не узнаете об этом, пока не шагнёте. Часами вы бредёте в темноте — медленно, осторожно, беспокойно. Каждый ваш шаг может оказаться последним."
     },
     {
       "id": "check_found_missing_relic",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.relic_section",
+        "name": "Relic Section"
+      },
       "text": "Сверьтесь с журналом. Если сыщики <i>сыщики нашли пропавшую реликвию</i>, ведущий сыщик читает <b>«Мистический гул»</b>.",
       "type": "branch",
       "condition": {
@@ -65068,6 +66466,10 @@
     },
     {
       "id": "arcane_thrumming",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.arcane_thrumming",
+        "name": "Arcane Thrumming"
+      },
       "type": "story",
       "title": "Мистический гул",
       "text": "Тревожась за сохранность реликвии, вы достаёте её и ощупываете. Удивительно, но устройство совсем не пострадало. Оно всё сильнее гудит и вибрирует."
@@ -65125,6 +66527,10 @@
     },
     {
       "id": "final_dawning",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.final_dawning",
+        "name": "Final Dawning"
+      },
       "type": "story",
       "title": "Последнее прозрение",
       "text": "Отделавшись и от Алехандро, и от Ичтаки, вы принимаетесь тщательно изучать реликвию. Оба ваших спутника только дурачили вас. Они скрывали от вас истинную природу реликвии, манипулируя вами, чтобы доставить её в это самое место. Теперь, после времени, проведённого с Великой Расой Йит, вы, кажется, понимаете, зачем они это делали. Человечество никогда не смогло бы создать подобное устройство — в отличие от йитиан. Вы даже узнаёте некоторые детали реликвии: такие же попадались вам в Пнакоте. Каким-то образом реликвия попала к эцтли, которые оберегали её от врагов. От тех, кто древнее человечества. От тех, кто хотел с её помощью повернуть время вспять. А теперь реликвия досталась вам — и только вы можете им помешать."
@@ -65136,6 +66542,10 @@
     },
     {
       "id": "growing_concern",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.growing_concern",
+        "name": "Growing Concern"
+      },
       "type": "story",
       "title": "Растущее беспокойство",
       "text": "Когда вы поднимаетесь на ноги, земля с грохотом сотрясается. Что-то ворочается в глубине. Движется. Изменяется."
@@ -65158,6 +66568,10 @@
     },
     {
       "id": "find_brazier",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.torches_section",
+        "name": "Torches Section"
+      },
       "type": "story",
       "text": "Несколько часов спустя вы находите похожий на жаровню светильник, чаша которого наполнена мраморными кубиками."
     },
@@ -65223,6 +66637,10 @@
     },
     {
       "id": "torchlight",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.torchlight",
+        "name": "Torchlight"
+      },
       "type": "story",
       "title": "Свет пламени",
       "text": "Хотя гнетущая темнота этих мест и поглощает всякий свет, вы всё-таки зажигаете факел и подносите к загадочным кубикам. К вашему удивлению, почти сразу из светильника вырываются неистовые языки синего и серебряного пламени, которые пожирают факел и едва не сжигают вашу руку. Света сияющего огня хватает всего на несколько метров, но вдалеке загораются новые светильники, указывая вам дальнейший путь. По крайней мере, вы на это надеетесь…"
@@ -65233,6 +66651,10 @@
     },
     {
       "id": "the_abyss",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.the_abyss",
+        "name": "The Abyss"
+      },
       "type": "story",
       "title": "Бездна",
       "text": "Вы перепробовали все источники огня, которые у вас были, но странный светильник не желает загораться. Вместе со светом угасает и ваша надежда. В подавленном настроении вы готовитесь продолжать путь в темноте."
@@ -65254,6 +66676,10 @@
     },
     {
       "id": "check_map_braziers",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.map_section",
+        "name": "Map Section"
+      },
       "type": "branch",
       "text": "Сверьтесь с журналом. Если <i>светильники зажглись<.i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
       "condition": {
@@ -65287,6 +66713,10 @@
     },
     {
       "id": "reading_signs",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.reading_signs",
+        "name": "Reading Signs"
+      },
       "type": "story",
       "title": "Изучая знаки",
       "text": "По дороге ваше внимание привлекают струйки прохладной воды, которые плавно стекают по стенам пещеры. Заинтересовавшись, вы разворачиваете карту предыдущей экспедиции и садитесь под одним из горящих светильников, мысленно восстанавливая свой путь. Если ваши расчёты верны, вы забрались куда дальше на юг, чем могли подумать. Могут ли эти пещеры простираться до самого побережья? Есть ли у них вообще конец?"
@@ -65297,6 +66727,10 @@
     },
     {
       "id": "time_passes",
+      "narration": {
+        "id": "the_forgotten_age.interlude_5.final_section",
+        "name": "Time Passes"
+      },
       "type": "story",
       "text": "Вы совсем потеряли счёт времени в леденящей тело и душу бездне Н’кая."
     },
@@ -65541,6 +66975,10 @@
     },
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "Через несколько часов после пробуждения ваш утомительный спуск приносит плоды. С каждым шагом красный свет, струящийся от подножия лестницы, становится ярче. Наконец каменный пол выравнивается, а тесные стены туннеля расходятся, открывая вид на бесконечный лабиринт необъятных пещер. Их усеивают руины огромного города, подобных которым вы никогда не видели. От долгого запустения грандиозные каменные здания обветшали, но вы чувствуете, что история этого места древнее, чем вы способны осознать. Вопросительно обернувшись к Ичтаке, вы видите, что её зрачки сужены, а глаза тускло светятся жёлтым. «Йот… Последнее прибежище Валузии…» — еле слышно произносит она.\nВнезапно по пещере разносится леденящий душу рык. Стены и пол неистово содрогаются, а заливающий пространство красный свет становится ярче. Со всех сторон из туннелей выплёскивается громкое шипение. Ичтака подходит к краю ближайшего обрыва и всматривается в бездонные глубины. «Он здесь. Я чувствую его. Отец Змей… <b>Йиг</b>»."
     },
@@ -65570,6 +67008,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Теперь вы понимаете, что Ичтака ведёт свою игру. Как и Алехандро — они оба использовали вас в своих целях, скрывая правду. Без лишних слов вы хватаетесь за оружие и требуете объяснений. «Йиг велит доставить реликвию к Средоточию», — с трепетом отвечает Ичтака. Свет в её глазах разгорается, а кожа начинает покрываться чешуёй. Вы прищуриваетесь и оттесняете её к самому краю пропасти, лишая пути к побегу. «Реликвия действительно не должна попасть в руки Братства… Ибо только Валузии суждено возродиться в былой славе! Йиг зовёт, и я должна явиться». Прежде чем вы успеваете что-то сделать, она бросается с обрыва в бездну."
     },
@@ -65619,11 +67061,19 @@
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Вы подходите к Ичтаке и кладёте руку ей на плечо. Воительница делает глубокий вдох и поворачивается к вам. Её виновато опущенные глаза снова приобрели обычный цвет. «П-простите меня. Я привела вас к гибели. Он воззвал ко мне, ещё давно, рассказал о моём наследии, о моём народе. Я была рада исполнить его волю. — Она сжимает кулаки и смотрит вам прямо в глаза. — Но теперь я вижу, что ошибалась. Человечество заслуживает жить на этой планете. Пусть она досталась вам от куда более могущественных сил, но сейчас время человечества — не их время». Вы не вполне её понимаете, но главное ясно: кем бы Ичтака ни была на самом деле, она на вашей стороне. В умиротворённой тишине вы чувствуете, как между ней и вами возникает незримая нерушимая связь. «Нужно добраться до Средоточия и не дать змеям захватить реликвию», — говорит она после минутного молчания. Вы киваете в знак согласия."
     },
     {
       "id": "intro_4",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_4",
+        "name": "Intro 4"
+      },
       "type": "story",
       "text": "Вы медлите, не зная, как поступить. Что на самом деле нужно Ичтаке? Зачем она привела вас сюда? Прежде чем вы успеваете что-то сделать, Ичтака достаёт лук и направляет стрелу вам в сердце. «Спасибо, что помогли добраться сюда, — сухо произносит она, — но теперь наши пути расходятся. Йиг зовёт, и я должна явиться». Её блестящие жёлтые глаза сужаются."
     },
@@ -65709,11 +67159,19 @@
     },
     {
       "id": "intro_5",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_5",
+        "name": "Intro 5"
+      },
       "type": "story",
       "text": "«Вы должны немедленно уйти отсюда. Это наша битва, а не людская. Мы не позволим ни вам, ни Братству нарушить наши планы. Не сейчас, когда успех так близок». Её рука подрагивает, а глаза снова вспыхивают. Вы видите, что она встревожена, что-то не даёт ей покоя. Наконец она продолжает: «Уходите, пока я не передумала. И если хотите жить, не смейте идти за мной. Второго шанса не будет». Ичтака стремительно удаляется, не сводя с вас взгляда, пока не скрывается из виду. Несмотря на предостережение, вам остаётся только последовать за ней. Если не вы спасёте человечество, то кто?"
     },
     {
       "id": "intro_6",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_6",
+        "name": "Intro 6"
+      },
       "type": "story",
       "text": "«Бросьте оружие». Предательство жалит вас в самое сердце, наполняя его гневом и отчаянием. На какой-то миг вы задумываетесь о бегстве, но вспоминаете, как мастерски Ичтака стреляет из лука: вы будете мертвы, не пробежав и пары шагов. Вам остаётся только подчиниться. Вы по очереди роняете оружие на землю. «Отлично. Теперь отдайте мне реликвию». Скривившись, вы делаете несколько шагов вперёд и протягиваете ей реликвию."
     },
@@ -65747,11 +67205,19 @@
     },
     {
       "id": "intro_7",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_7",
+        "name": "Intro 7"
+      },
       "type": "story",
       "text": "Когда Ичтака протягивает руку к реликвии, вы резко выхватываете припрятанный нож и наносите предательнице внезапный удар. Лезвие глубоко рассекает ей предплечье, заливая вашу грудь кровью. Ичтака отшатывается, схватившись за раненую руку, запинается о камень и падает в пропасть. Вскоре её вопль затихает. Вы едва успеваете прийти в себя после случившегося, как раздаётся ещё один ужасный рык и земля сотрясается. Подобрав свои вещи, вы продолжаете спуск."
     },
     {
       "id": "intro_8",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.intro_8",
+        "name": "Intro 8"
+      },
       "type": "story",
       "text": "Ичтака хватает реликвию. Вы видите, что кожа на тыльной стороне её ладоней стала жёсткой и чешуйчатой. Сжав побелевшие от гнева кулаки, вы отступаете. «Уходите, пока я не передумала, — произносит она. — И если хотите жить, не смейте идти за мной. Второго шанса не будет». Ичтака стремительно удаляется, не сводя с вас взгляда, пока не скрывается из виду. Несмотря на предостережение, вам остаётся только последовать за ней. Если не вы спасёте человечество, то кто?"
     },
@@ -66524,6 +67990,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Исход 1",
       "text": "Вы идёте уже много часов, но не видели и малой части этого бескрайнего подземного мира. Люди могли бы веками наносить его на карту — но так и не обойти целиком. Как быстро вы бы ни спускались в глубины, змеи всё время дышат вам в затылок. Вы вторглись на их территорию, и они куда лучше вас знают эти адские туннели. Раны замедляют ваш шаг, ужас мешает принимать верные решения, и смерть от рук этих тварей кажется неизбежной. Червь отчаяния проникает в ваш разум. Вы пересекаете широкую тёмную пропасть по одному из бесчисленных каменных мостов, когда змеи наконец настигают вас. Они приближаются с обеих сторон, гоня вас наконечниками копий к опасному краю моста. Небольшой кусок камня под вашей ногой откалывается и летит в кромешную пустоту. Вы не слышите его удара о дно пропасти. Надежды на спасение нет — вы можете только принять свою судьбу. Остриё копья подталкивает вас ещё ближе к краю. Вы закрываете глаза и падаете.",
       "steps": [
@@ -66538,6 +68008,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_forgotten_age.the_depths_of_yoth.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Исход 2",
       "text": "Всё было против вас — но вы добрались до цели. Назойливый красный свет, который окутывал вас от самого входа в Йот, уступает место непроницаемо-чёрной темноте. Средоточие должно быть рядом… Вы ощущаете его.",
       "steps": [
@@ -67190,6 +68664,25 @@
   "id": "threads_of_fate",
   "scenario_name": "Нити судьбы",
   "full_name": "Сценарий III: Нити судьбы",
+  "standalone_setup": [
+    "setup_standalone_bag",
+    "intro_1",
+    "choose_gave_relic_to_alejandro",
+    "choose_talk_to_ichtaca_standalone",
+    "gather_encounter_sets",
+    "set_aside_alejandro_and_relic",
+    "setup_locations",
+    "location_layout",
+    "set_aside_cards",
+    "setup_act_deck",
+    "encounter_deck",
+    "three_acts_three_decks",
+    "setup_act_ab",
+    "setup_act_cd",
+    "setup_act_ef_prompt",
+    "setup_act_ef",
+    "$play_scenario"
+  ],
   "setup": [
     "intro_1",
     "check_gave_relic_to_alejandro",
@@ -67210,6 +68703,43 @@
   ],
   "steps": [
     {
+      "id": "setup_standalone_bag",
+      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "difficulty",
+          "value": "standard"
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "+1",
+            "0",
+            "0",
+            "0",
+            "-1",
+            "-2",
+            "-2",
+            "-3",
+            "-5",
+            "skull",
+            "skull",
+            "cultist",
+            "tablet",
+            "elder_thing",
+            "auto_fail",
+            "elder_sign"
+          ]
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Do not alter the contents of the chaos bag during the intro."
+        }
+      ]
+    },
+    {
       "id": "intro_1",
       "narration": {
         "id": "the_forgotten_age.threads_of_fate.intro_1",
@@ -67217,6 +68747,45 @@
       },
       "type": "story",
       "text": "Ичтака до утра дремлет в гостиной, но вам так и не удаётся заснуть. Ваши мысли мечутся между беспокойством и недоверием. Рассказ Ичтаки нелеп, но тем не менее вы склонны ей поверить. С первого взгляда на реликвию из руин Эцтли вам стало ясно, что у неё есть какое-то тайное предназначение. Когда вы утром выходите из спальни, незваная гостья сидит за обеденным столом, крепко скрестив руки на груди. Её пронзительные глаза следят за каждым вашим движе­нием, словно хищная птица за добычей. «Где реликвия? — нетерпеливо спрашивает Ичтака, не тратя времени на любезности. — Куда вы её дели?» Вы объясняете, что она в безопасности, в надёжных руках. Женщина трясёт головой, и костяшки её пальцев белеют от бессилия. «Можете быть уверены, что это не так»."
+    },
+    {
+      "id": "choose_gave_relic_to_alejandro",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "gave_relic_to_alejandro",
+            "text": "<i>The investigators gave the relic to Alejandro.</i>",
+            "steps": [
+              "intro_2"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gave_relic_to_alejandro",
+                "text": "сыщики передали реликвию Алехандро."
+              }
+            ]
+          },
+          {
+            "id": "gave_relic_to_harlan",
+            "text": "<i>The investigators gave the relic to Harlan Earnstone.</i>",
+            "steps": [
+              "check_alejandro_recovered_relic"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gave_relic_to_harlan",
+                "text": "сыщики передали реликвию Харлану."
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "check_gave_relic_to_alejandro",
@@ -67289,6 +68858,33 @@
       },
       "type": "story",
       "text": "Отложив на время свои многочисленные вопросы, вы звоните в музей Мискатоникского университета. Несмотря на ранний час, доктор Горовиц уже должна быть в своём кабинете, готовясь к долгому рабочему дню. После небольшой паузы телефонист соединяет вас. Элли на удивление резко здоровается, её голос надломлен и нетвёрд. Когда вы спрашиваете о реликвии, она фыркает: «И вы туда же! Меня с утра преследуют двое репортёров, а мистер Уолстед чуть не снёс с петель мою дверь!»\nВы интересуетесь, что случилось, и Элли тяжело вздыхает. «Реликвия пропала, — объясняет она. — Никто из охранников не понимает, как это произошло. Только что стояла себе за стеклом — и вдруг её нет. И прежде чем вы спросите: мистер Вела тоже куда-то исчез». Внезапно она кричит кому-то ещё: «Погодите минуту! У меня телефон!», — поспешно извиняется и вешает трубку.\nРазумеется, Алехандро не отвечает на звонки, и никто из его коллег не видел его со вчерашнего дня. «Теперь верите? — спрашивает Ичтака, встав из-за стола и начиная собирать свои вещи. — Хватит терять время. Найдите реликвию. Встретимся здесь вечером. И не смейте ходить за мной»."
+    },
+    {
+      "id": "choose_talk_to_ichtaca_standalone",
+      "text": "Ведущий сыщик должен решить (выберите одно):",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "stop_her",
+            "text": "<i>«Ты никуда не пойдёшь, пока не объяснишь, что происходит».</i>",
+            "steps": [
+              "intro_4",
+              "listened_to_ichtaca"
+            ]
+          },
+          {
+            "id": "let_her_leave",
+            "text": "<i>«Поступай как знаешь».</i>",
+            "steps": [
+              "intro_5",
+              "ichtaca_left_without_you",
+              "check_ignored_ichtaca_and_gave_relic_to_harlan_standalone"
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "choose_talk_to_ichtaca",
@@ -67400,6 +68996,24 @@
       }
     },
     {
+      "id": "check_ignored_ichtaca_and_gave_relic_to_harlan_standalone",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gave_relic_to_harlan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "intro_6",
+              "choose_forging_own_path_standalone"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "intro_6",
       "narration": {
         "id": "the_forgotten_age.threads_of_fate.intro_6",
@@ -67434,6 +69048,34 @@
                   "elder_thing"
                 ]
               },
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "forging_own_path",
+                "text": "вы идёте собственным путём."
+              }
+            ]
+          },
+          {
+            "id": "listen",
+            "text": "«Возможно, к ним стоит прислушаться...»",
+            "effects": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_forging_own_path_standalone",
+      "text": "Сыщики должны решить, что им делать (выберите одно):",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "on_your_own",
+            "text": "«Нельзя доверять им».",
+            "description": "For the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead.",
+            "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
@@ -70310,7 +71952,7 @@
       "id": "flashback_10_story",
       "title": "Flashback X",
       "type": "story",
-      "text": "You swim through an array of vast undersea halls until at least you come to a circle of pillars. Inside this submerged henge stands an altar covered in an ornate cloth. It is embroidered with rich threads of gold and inlaid with cerulean opals. Despite being immersed in water, the fabric appears perfectly preserved. Wondering what such an object is doing deep in this underwater cavern, you decide to take it with you.\nThe moment you emerge from the depths and onto dry stone, you realize with amazement that the cloth is perfectly dry. Turning it over in your hands, you find a clasp of gold and realize it is not simply shapeless cloth, but a mantle—perhaps even part of a greater outfit. When you don the strange cloak, its gemstones pulse with arcane power."
+      "text": "You swim through an array of vast undersea halls until at last you come to a circle of pillars. Inside this submerged henge stands an altar covered in an ornate cloth. It is embroidered with rich threads of gold and inlaid with cerulean opals. Despite being immersed in water, the fabric appears perfectly preserved. Wondering what such an object is doing deep in this underwater cavern, you decide to take it with you.\nThe moment you emerge from the depths and onto dry stone, you realize with amazement that the cloth is perfectly dry. Turning it over in your hands, you find a clasp of gold and realize it is not simply shapeless cloth, but a mantle—perhaps even part of a greater outfit. When you don the strange cloak, its gemstones pulse with arcane power."
     },
     {
       "id": "flashback_10_effects",
@@ -70505,7 +72147,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "With daylight fading and the tide rising to swallow the various islands off the coast of Innsmouth, you decide to make your way back to the harbor with your discoveries. \"Found what yer lookin' for?\" Mr. Moore asks oncce you've made it to the coast safely.\nTruth be told, you're not completely sure. What you found was startling. The coves and tidal caverns of Devil Reef were home not just to relics of the Esoteric Order of Dagon, but also to a horde of strange creatures: hybrids between fish, man, and monster. You might have escaped with your life, but the horrors you saw in those caves will stay with you forever. Sharp jagged teeth—blood-stained altars—unholy prayers—signs of a coming catastrophe—it still haunts you even after your escape.\nBut is Innsmouth truly safe? Is any land at all?",
+      "text": "With daylight fading and the tide rising to swallow the various islands off the coast of Innsmouth, you decide to make your way back to the harbor with your discoveries. \"Found what yer lookin' for?\" Mr. Moore asks once you've made it to the coast safely.\nTruth be told, you're not completely sure. What you found was startling. The coves and tidal caverns of Devil Reef were home not just to relics of the Esoteric Order of Dagon, but also to a horde of strange creatures: hybrids between fish, man, and monster. You might have escaped with your life, but the horrors you saw in those caves will stay with you forever. Sharp jagged teeth—blood-stained altars—unholy prayers—signs of a coming catastrophe—it still haunts you even after your escape.\nBut is Innsmouth truly safe? Is any land at all?",
       "steps": [
         "maybe_ask_tide_has_grown_stronger",
         "earn_xp",

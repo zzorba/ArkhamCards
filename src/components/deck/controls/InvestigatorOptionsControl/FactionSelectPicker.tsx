@@ -4,7 +4,8 @@ import { t } from 'ttag';
 
 import { FactionCodeType } from '@app_constants';
 import Card from '@data/Card';
-import DeckPickerButton from '@components/deck/controls/DeckPickerButton';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import { usePickerDialog } from '@components/deck/dialogs';
 
 interface Props {
   name: string;
@@ -21,7 +22,6 @@ export default function FactionSelectPicker({
   factions,
   selection,
   name,
-  investigatorFaction,
   disabled,
   editWarning,
   onChange,
@@ -33,25 +33,31 @@ export default function FactionSelectPicker({
     }
     onChange(factions[index]);
   };
-
+  const { showDialog, dialog } = usePickerDialog({
+    title: t`Select Faction`,
+    description: editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined,
+    items: map(factions, (faction, index) => {
+      return {
+        icon: t`class_${faction}`,
+        title: Card.factionCodeToName(faction, t`Select Faction`),
+        value: index,
+      };
+    }),
+    selectedValue: selection ? findIndex(factions, faction => faction === selection) : 0,
+    onValueChange: onChoiceChange,
+  });
   return (
-    <DeckPickerButton
-      title={name}
-      icon={`class_${selection}`}
-      editable={!disabled}
-      modalDescription={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}
-      options={map(factions, (faction, index) => {
-        return {
-          value: index,
-          label: Card.factionCodeToName(faction, t`Select Faction`),
-        };
-      })}
-      valueLabel={Card.factionCodeToName(selection, t`Select Faction`)}
-      faction={investigatorFaction}
-      selectedValue={selection ? findIndex(factions, faction => faction === selection) : 0}
-      onChoiceChange={onChoiceChange}
-      first={first}
-      last
-    />
+    <>
+      <DeckPickerStyleButton
+        title={name}
+        icon={`class_${selection}`}
+        editable={!disabled}
+        onPress={showDialog}
+        valueLabel={Card.factionCodeToName(selection, t`Select Faction`)}
+        first={first}
+        last
+      />
+      { dialog }
+    </>
   );
 }

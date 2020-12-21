@@ -1,12 +1,15 @@
 import React, { useCallback, useMemo } from 'react';
 import { find, map } from 'lodash';
 import { format } from 'date-fns';
+import { useSelector } from 'react-redux';
 import { c, t } from 'ttag';
 
 import Database from '@data/Database';
-import DeckPickerButton from './DeckPickerButton';
 import useDbData from '@components/core/useDbData';
 import { FactionCodeType } from '@app_constants';
+import { AppState } from '@reducers';
+import { usePickerDialog } from '../dialogs';
+import DeckPickerStyleButton from './DeckPickerStyleButton';
 
 interface Props {
   faction: FactionCodeType;
@@ -27,13 +30,14 @@ async function fetchTaboos(db: Database) {
 }
 
 export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disabled, faction, open, first, last }: Props) {
+  const settingsTabooSetId = useSelector((state: AppState) => state.settings.tabooId);
   const tabooSets = useDbData(fetchTaboos);
-  const options = useMemo(() => [
-    { value: -1, label: c('Taboo List').t`None` },
+  const items = useMemo(() => [
+    { value: -1, title: c('Taboo List').t`None` },
     ...map(tabooSets, set => {
       return {
         value: set.id,
-        label: set.date_start ? format(Date.parse(set.date_start), 'LLL d, yyyy') : 'Unknown',
+        title: set.date_start ? format(Date.parse(set.date_start), 'LLL d, yyyy') : 'Unknown',
       };
     }),
   ], [tabooSets]);
@@ -45,25 +49,28 @@ export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disable
     }
     setTabooSet(tabooId === -1 ? undefined : tabooId);
   }, [tabooSets, setTabooSet]);
-
-
-  if (!tabooSets) {
+  const selectedValue = !tabooSetId ? -1 : tabooSetId;
+  const { showDialog, dialog } = usePickerDialog({
+    title: t`Select Taboo List`,
+    items,
+    selectedValue,
+    onValueChange: onTabooChange,
+  });
+  if (!open && (tabooSetId === undefined || tabooSetId === 0) && (settingsTabooSetId === undefined || settingsTabooSetId === 0)) {
     return null;
   }
-  const selectedValue = !tabooSetId ? -1 : tabooSetId;
   return (
-    <DeckPickerButton
-      icon="taboo_thin"
-      faction={faction}
-      title={t`Taboo List`}
-      valueLabel={find(options, option => option.value === selectedValue)?.label || c('Taboo List').t`None`}
-      onChoiceChange={onTabooChange}
-      selectedValue={selectedValue}
-      options={options}
-      editable={!disabled}
-      first={first}
-      last={last}
-      open={open}
-    />
+    <>
+      <DeckPickerStyleButton
+        title={t`Taboo List`}
+        icon="taboo_thin"
+        editable={!disabled}
+        onPress={showDialog}
+        valueLabel={find(items, option => option.value === selectedValue)?.title || c('Taboo List').t`None`}
+        first={first}
+        last={last}
+      />
+      { dialog }
+    </>
   );
 }

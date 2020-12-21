@@ -4,8 +4,8 @@ import { ngettext, msgid, t } from 'ttag';
 
 import { Deck, EditDeckState, ParsedDeck } from '@actions/types';
 import { useDispatch, useSelector } from 'react-redux';
-import { useComponentVisible, useDeck, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
-import { finishDeckEdit, startDeckEdit } from './actions';
+import { useComponentVisible, useDeck, usePlayerCards } from '@components/core/hooks';
+import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';
 import { CardsMap } from '@data/Card';
 import { parseDeck } from '@lib/parseDeck';
 import { AppState, makeDeckEditsSelector } from '@reducers';
@@ -68,8 +68,7 @@ export function useDeckEdits(id: number | undefined, initialize?: boolean): [Edi
   return [deckEdits, deckEditsRef];
 }
 
-
-interface ParsedDeckResults {
+export interface ParsedDeckResults {
   deck?: Deck;
   cards?: CardsMap;
   previousDeck?: Deck;
@@ -78,13 +77,18 @@ interface ParsedDeckResults {
   tabooSetId: number;
   visible: boolean;
   parsedDeck?: ParsedDeck;
+  editable?: boolean;
 }
-export function useParsedDeck(id: number, componentName: string, componentId: string, fetchIfMissing?: boolean): ParsedDeckResults {
+export function useParsedDeck(
+  id: number,
+  componentName: string,
+  componentId: string,
+  fetchIfMissing?: boolean
+): ParsedDeckResults {
   const [deck, previousDeck] = useDeck(id, { fetchIfMissing });
   const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const cards = usePlayerCards(tabooSetId);
-  const investigators = useInvestigatorCards(tabooSetId);
   const visible = useComponentVisible(componentId);
   const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(deck && cards && fetchIfMissing ?
     parseDeck(deck, deck.meta || {}, deck.slots, deck.ignoreDeckLimitSlots, cards, previousDeck, deck.xp_adjustment || 0) :
@@ -113,5 +117,6 @@ export function useParsedDeck(id: number, componentName: string, componentId: st
     deckEditsRef,
     visible,
     parsedDeck,
+    editable: !deck?.next_deck,
   };
 }

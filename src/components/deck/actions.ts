@@ -170,14 +170,14 @@ export const deleteDeckAction: ActionCreator<
     return new Promise<boolean>((resolve, reject) => {
       if (local) {
         dispatch(removeDeck(id, deleteAllVersion));
-        resolve();
+        resolve(true);
       } else {
         const deleteDeckPromise = deleteDeck(id, deleteAllVersion);
         handleAuthErrors(
           deleteDeckPromise,
           () => {
             dispatch(removeDeck(id, deleteAllVersion));
-            resolve();
+            resolve(true);
           },
           reject,
           () => null,

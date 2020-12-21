@@ -40,6 +40,7 @@ export interface Typography {
   error: TextStyle;
   dark: TextStyle;
   light: TextStyle;
+  inverted: TextStyle;
 }
 
 export default function(fontScale: number, colors: TypographyColors, gameFont: string): Typography {
@@ -168,6 +169,9 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
     },
     uppercase: {
       textTransform: 'uppercase',
+    },
+    inverted: {
+      color: colors.L30,
     },
     white: {
       color: COLORS.white,

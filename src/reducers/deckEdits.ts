@@ -91,7 +91,7 @@ export default function(
     if (action.updates.ignoreDeckLimitSlots !== undefined) {
       updatedEdits.ignoreDeckLimitSlots = action.updates.ignoreDeckLimitSlots;
     }
-    if (action.updates.xpAdjustment) {
+    if (action.updates.xpAdjustment !== undefined) {
       updatedEdits.xpAdjustment = action.updates.xpAdjustment;
     }
     return {

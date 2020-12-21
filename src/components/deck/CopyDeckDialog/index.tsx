@@ -13,7 +13,7 @@ import { showDeckModal } from '@components/nav/helper';
 import Dialog from '@components/core/Dialog';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import { login } from '@actions';
-import { CUSTOM, Deck } from '@actions/types';
+import { Deck } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
 import { makeBaseDeckSelector, makeLatestDeckSelector, AppState } from '@reducers';
 import COLORS from '@styles/colors';

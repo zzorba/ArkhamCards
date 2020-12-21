@@ -1,6 +1,6 @@
 import { find, flatMap, sortBy } from 'lodash';
 
-import { Deck, NumberChoices, StandaloneId } from '@actions/types';
+import { CampaignCycleCode, Deck, NumberChoices, StandaloneId } from '@actions/types';
 import { FullCampaign, Effect, Errata, Scenario } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
@@ -208,6 +208,8 @@ export interface StandaloneScenarioInfo {
   id: StandaloneId;
   name: string;
   code: string;
+  campaign: string;
+  campaignPosition: number;
 }
 
 export function getStandaloneScenarios(
@@ -228,6 +230,8 @@ export function getStandaloneScenarios(
       id,
       name: data.scenario.scenario_name,
       code: data.scenario.id,
+      campaign: data.campaign.campaign.id,
+      campaignPosition: data.campaign.campaign.position,
     };
   }), scenario => scenario.name);
 }

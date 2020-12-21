@@ -2,20 +2,22 @@ import React from 'react';
 import {
   AccessibilityActionEvent,
   StyleSheet,
+  Text,
   TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
+import { flatten } from 'lodash';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { iconSizeScale } from '@styles/space';
+import { xs, iconSizeScale } from '@styles/space';
+import AppIcon from '@icons/AppIcon';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { flatten } from 'lodash';
 
 interface Props {
   count: number;
-  onIncrement: () => void;
-  onDecrement: () => void;
+  onIncrement?: () => void;
+  onDecrement?: () => void;
   max?: number;
   min?: number;
   style?: ViewStyle;
@@ -27,6 +29,7 @@ interface Props {
   allowNegative?: boolean;
   countRender?: React.ReactNode;
   hideDisabledMinus?: boolean;
+  dialogStyle?: boolean;
 }
 
 export default class PlusMinusButtons extends React.PureComponent<Props> {
@@ -64,30 +67,42 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       noFill,
       onIncrement,
       color,
+      dialogStyle,
     } = this.props;
+    const { colors } = this.context;
     const size = (this.props.size || 36) * iconSizeScale;
     if (this.incrementEnabled()) {
       return (
         <TouchableOpacity onPress={onIncrement}>
-          <MaterialCommunityIcons
-            name={noFill ? 'plus-box-outline' : 'plus-box'}
-            size={size}
-            color={this.enabledColor()}
-          />
+          { dialogStyle ? (
+            <AppIcon
+              name="plus-button"
+              size={28}
+              color={colors.M}
+            />
+          ) : (
+            <MaterialCommunityIcons
+              name={noFill ? 'plus-box-outline' : 'plus-box'}
+              size={size}
+              color={this.enabledColor()}
+            />
+          ) }
         </TouchableOpacity>
+      );
+    }
+
+    if (dialogStyle || color === 'light' || color === 'white') {
+      return (
+        <View style={{ width: size, height: size }} />
       );
     }
     return (
       <TouchableOpacity disabled>
-        { color === 'light' || color === 'white' ? (
-          <View style={{ width: size, height: size }} />
-        ) : (
-          <MaterialCommunityIcons
-            name="plus-box-outline"
-            size={size}
-            color={this.disabledColor()}
-          />
-        ) }
+        <MaterialCommunityIcons
+          name="plus-box-outline"
+          size={size}
+          color={this.disabledColor()}
+        />
       </TouchableOpacity>
     );
   }
@@ -98,9 +113,10 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       max,
       disabled,
       disablePlus,
+      onIncrement,
     } = this.props;
     const atMax = max && (count === max);
-    return !(count === null || atMax || disabled || disablePlus || max === 0);
+    return !(count === null || atMax || disabled || disablePlus || max === 0) && onIncrement;
   }
 
   decrementEnabled() {
@@ -109,8 +125,9 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       disabled,
       allowNegative,
       min,
+      onDecrement,
     } = this.props;
-    return (count > (min || 0) || allowNegative) && !disabled;
+    return (count > (min || 0) || allowNegative) && !disabled && !!onDecrement;
   }
 
   renderMinusButton() {
@@ -119,30 +136,41 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       onDecrement,
       color,
       hideDisabledMinus,
+      dialogStyle,
     } = this.props;
+    const { colors } = this.context;
     const size = (this.props.size || 36) * iconSizeScale;
     if (this.decrementEnabled()) {
       return (
         <TouchableOpacity onPress={onDecrement}>
-          <MaterialCommunityIcons
-            name={noFill ? 'minus-box-outline' : 'minus-box'}
-            size={size}
-            color={this.enabledColor()}
-          />
+          { dialogStyle ? (
+            <AppIcon
+              name="minus-button"
+              size={28}
+              color={colors.M}
+            />
+          ) : (
+            <MaterialCommunityIcons
+              name={noFill ? 'minus-box-outline' : 'minus-box'}
+              size={size}
+              color={this.enabledColor()}
+            />
+          ) }
         </TouchableOpacity>
+      );
+    }
+    if (dialogStyle || color === 'light' || hideDisabledMinus) {
+      return (
+        <View style={{ width: size, height: size }} />
       );
     }
     return (
       <TouchableOpacity disabled>
-        { color === 'light' || hideDisabledMinus ? (
-          <View style={{ width: size, height: size }} />
-        ) : (
-          <MaterialCommunityIcons
-            name="minus-box-outline"
-            size={size}
-            color={this.disabledColor()}
-          />
-        ) }
+        <MaterialCommunityIcons
+          name="minus-box-outline"
+          size={size}
+          color={this.disabledColor()}
+        />
       </TouchableOpacity>
     );
   }
@@ -157,14 +185,15 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
   _onAccessibilityAction = (event: AccessibilityActionEvent) => {
     const { onIncrement, onDecrement } = this.props;
     if (event.nativeEvent.actionName === 'increment') {
-      onIncrement();
+      onIncrement && onIncrement();
     } else if (event.nativeEvent.actionName === 'decrement') {
-      onDecrement();
+      onDecrement && onDecrement();
     }
   };
 
   render() {
-    const { countRender, min, max, count } = this.props;
+    const { countRender, min, max, count, dialogStyle, allowNegative } = this.props;
+    const { typography } = this.context;
     return (
       <View
         style={this.props.style || styles.row}
@@ -173,7 +202,11 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
         onAccessibilityAction={this._onAccessibilityAction}
       >
         { this.renderMinusButton() }
-        { countRender }
+        { dialogStyle ? (
+          <View style={styles.count}>
+            <Text style={typography.menuText}>{ allowNegative && count >= 0 ? `+${count}` : count } </Text>
+          </View>
+        ) : countRender }
         { this.renderPlusButton() }
       </View>
     );
@@ -185,5 +218,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+  },
+  count: {
+    minWidth: 32,
+    paddingRight: xs,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
 });

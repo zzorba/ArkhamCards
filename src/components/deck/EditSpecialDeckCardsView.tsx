@@ -54,7 +54,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     const investigator = deck && cards && cards[deck.investigator_code];
     Navigation.push<EditDeckProps>(componentId, {
       component: {
-        name: 'Deck.Edit',
+        name: 'Deck.EditAddCards',
         passProps: {
           id,
           storyOnly: true,

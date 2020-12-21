@@ -370,9 +370,7 @@ function NewDeckOptionsDialog({
   const okDisabled = saving || !(starterDeck || !!find(optionSelected, selected => selected));
   if (saving) {
     return (
-      <View style={[styles.container, backgroundStyle]}>
-        <LoadingSpinner large />
-      </View>
+      <LoadingSpinner large />
     );
   }
   return (
