@@ -1,6 +1,6 @@
 import { find, flatMap, sortBy } from 'lodash';
 
-import { CampaignCycleCode, Deck, NumberChoices, StandaloneId } from '@actions/types';
+import { Deck, NumberChoices, StandaloneId } from '@actions/types';
 import { FullCampaign, Effect, Errata, Scenario } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';

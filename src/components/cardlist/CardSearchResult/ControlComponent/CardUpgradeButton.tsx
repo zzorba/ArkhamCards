@@ -6,14 +6,17 @@ import StyleContext from '@styles/StyleContext';
 import Card from '@data/Card';
 import { xs } from '@styles/space';
 import RoundButton from '@components/core/RoundButton';
+import DeckQuantityComponent from './DeckQuantityComponent';
 
 interface Props {
   card: Card;
   count: number;
   onUpgradePress?: (card: Card) => void;
+  deckId: number;
+  limit: number;
 }
 
-export default function CardUpgradeButton({ onUpgradePress, card, count }: Props) {
+export default function CardUpgradeButton({ onUpgradePress, card, count, deckId, limit }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const onPress = useCallback(() => onUpgradePress && onUpgradePress(card), [onUpgradePress, card]);
   return (
@@ -29,13 +32,12 @@ export default function CardUpgradeButton({ onUpgradePress, card, count }: Props
           </View>
         </RoundButton>
       ) }
-      <View style={styles.count}>
-        <Text style={typography.text}>
-          x{ count }
-        </Text>
-      </View>
+      <DeckQuantityComponent
+        code={card.code}
+        deckId={deckId}
+        limit={limit}
+      />
     </View>
-
   );
 }
 

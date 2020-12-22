@@ -191,8 +191,7 @@ export default function InvestigatorCampaignRow({
         deck,
         colors,
         investigator,
-        campaignId,
-        true
+        { campaignId, hideCampaign: true }
       );
     }
   }, [campaignId, componentId, investigator, deck, colors]);

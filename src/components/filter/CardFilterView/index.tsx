@@ -103,7 +103,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     hauntedEnabled,
     factions,
     actions,
-    skillModifiers,
     traits,
     types,
     subTypes,
@@ -126,9 +125,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     bonded,
     seal,
     myriad,
-    evadeAction,
-    investigateAction,
-    fightAction,
     uses,
     slots,
     assetSanityEnabled,
@@ -316,7 +312,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     cluesFixed,
     hauntedEnabled,
   ]);
-  const { allFactions, hasXp, hasWeakness, hasCost, hasSkill, hasEnemy, hasLocation, hasSlot, hasUses } = cardFilterData;
+  const { allFactions, hasXp, hasWeakness, hasCost, hasSkill, hasEnemy, hasLocation } = cardFilterData;
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
   const { width } = useWindowDimensions();
   const {

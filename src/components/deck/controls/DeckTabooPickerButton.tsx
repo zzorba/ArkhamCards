@@ -6,13 +6,11 @@ import { c, t } from 'ttag';
 
 import Database from '@data/Database';
 import useDbData from '@components/core/useDbData';
-import { FactionCodeType } from '@app_constants';
 import { AppState } from '@reducers';
 import { usePickerDialog } from '../dialogs';
 import DeckPickerStyleButton from './DeckPickerStyleButton';
 
 interface Props {
-  faction: FactionCodeType;
   tabooSetId?: number;
   setTabooSet: (tabooSet?: number) => void;
   disabled?: boolean;
@@ -29,7 +27,7 @@ async function fetchTaboos(db: Database) {
   return tabooSets;
 }
 
-export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disabled, faction, open, first, last }: Props) {
+export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disabled, open, first, last }: Props) {
   const settingsTabooSetId = useSelector((state: AppState) => state.settings.tabooId);
   const tabooSets = useDbData(fetchTaboos);
   const items = useMemo(() => [

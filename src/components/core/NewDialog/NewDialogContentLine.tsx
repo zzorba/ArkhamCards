@@ -11,7 +11,7 @@ interface Props {
   control: React.ReactNode;
   height?: number;
 }
-export default function NewDialogContentLine({ icon, text, control, height, }: Props) {
+export default function NewDialogContentLine({ icon, text, control, height }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <View style={[styles.row, height ? { minHeight: height } : undefined]}>

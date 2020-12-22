@@ -1,4 +1,4 @@
-import { find, flatMap, last } from 'lodash';
+import { find, last } from 'lodash';
 
 import {
   Step,

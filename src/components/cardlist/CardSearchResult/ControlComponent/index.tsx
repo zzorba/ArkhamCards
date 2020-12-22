@@ -25,6 +25,8 @@ export type ControlType = {
 } | {
   type: 'upgrade';
   count: number;
+  deckId: number;
+  limit: number;
   onUpgradePress?: (card: Card) => void;
 } | {
   type: 'toggle';
@@ -48,7 +50,15 @@ export function ControlComponent({ card, control }: Props) {
     case 'count':
       return <CardCount count={control.count} deltaCountMode={control.deltaCountMode} showZeroCount={control.showZeroCount} />;
     case 'upgrade':
-      return <CardUpgradeButton count={control.count} onUpgradePress={control.onUpgradePress} card={card} />;
+      return (
+        <CardUpgradeButton
+          count={control.count}
+          onUpgradePress={control.onUpgradePress}
+          card={card}
+          deckId={control.deckId}
+          limit={control.limit}
+        />
+      );
     case 'toggle':
       return <CardToggle value={control.value} toggleValue={control.toggleValue} />;
     case 'count_with_toggle':

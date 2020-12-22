@@ -361,7 +361,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
 
   const viewDeck = useCallback(() => {
     if (deck) {
-      showDeckModal(componentId, deck, colors, investigator, undefined, true);
+      showDeckModal(componentId, deck, colors, investigator, { hideCampaign: true });
     }
   }, [componentId, colors, investigator, deck]);
 

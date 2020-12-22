@@ -1,5 +1,6 @@
 import { MutableRefObject, useEffect, useMemo, useRef, useState } from 'react';
 import useDebouncedEffect from 'use-debounced-effect-hook';
+import { Platform } from 'react-native';
 import { ngettext, msgid, t } from 'ttag';
 
 import { Deck, EditDeckState, ParsedDeck } from '@actions/types';
@@ -10,14 +11,14 @@ import { CardsMap } from '@data/Card';
 import { parseDeck } from '@lib/parseDeck';
 import { AppState, makeDeckEditsSelector } from '@reducers';
 
-export function useDeckXpStrings(parsedDeck?: ParsedDeck): [string | undefined, string | undefined] {
+export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [string | undefined, string | undefined] {
   return useMemo(() => {
     if (!parsedDeck) {
       return [undefined, undefined];
     }
     if (parsedDeck.deck.previous_deck) {
-      const adjustedXp = parsedDeck.availableExperience;
-      const unspent = adjustedXp - (parsedDeck.changes?.spentXp || 0);
+      const adjustedXp = totalXp ? parsedDeck.experience : parsedDeck.availableExperience;
+      const unspent = parsedDeck.availableExperience - (parsedDeck.changes?.spentXp || 0);
       if (unspent === 0) {
         return [t`${adjustedXp} XP`, t`0 unspent`];
       }
@@ -30,7 +31,7 @@ export function useDeckXpStrings(parsedDeck?: ParsedDeck): [string | undefined, 
     }
     const adjustedXp = parsedDeck.experience;
     return [t`${adjustedXp} XP`, undefined];
-  }, [parsedDeck]);
+  }, [parsedDeck, totalXp]);
 }
 
 export function useSimpleDeckEdits(id: number | undefined): EditDeckState | undefined {
@@ -47,11 +48,15 @@ export function useDeckSlotCount(id: number, code: string): number {
   });
 }
 
-export function useDeckEdits(id: number | undefined, initialize?: boolean): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
+export function useDeckEdits(
+  id: number | undefined,
+  initialize?: boolean,
+  initialMode?: 'edit' | 'upgrade'
+): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
   const dispatch = useDispatch();
   useEffect(() => {
     if (initialize && id !== undefined) {
-      dispatch(startDeckEdit(id));
+      dispatch(startDeckEdit(id, initialMode));
       return function cleanup() {
         dispatch(finishDeckEdit(id));
       };
@@ -78,15 +83,17 @@ export interface ParsedDeckResults {
   visible: boolean;
   parsedDeck?: ParsedDeck;
   editable?: boolean;
+  mode: 'upgrade' | 'edit' | 'view';
 }
 export function useParsedDeck(
   id: number,
   componentName: string,
   componentId: string,
-  fetchIfMissing?: boolean
+  fetchIfMissing?: boolean,
+  upgrade?: boolean
 ): ParsedDeckResults {
   const [deck, previousDeck] = useDeck(id, { fetchIfMissing });
-  const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing);
+  const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing, upgrade ? 'upgrade' : undefined);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const cards = usePlayerCards(tabooSetId);
   const visible = useComponentVisible(componentId);
@@ -107,7 +114,7 @@ export function useParsedDeck(
         )
       );
     }
-  }, [cards, deck, deckEdits, visible, previousDeck], 500);
+  }, [cards, deck, deckEdits, visible, previousDeck], Platform.OS === 'ios' ? 200 : 500);
   return {
     deck,
     cards,
@@ -118,5 +125,6 @@ export function useParsedDeck(
     visible,
     parsedDeck,
     editable: !deck?.next_deck,
+    mode: (deckEdits?.mode) || (upgrade ? 'upgrade' : 'view'),
   };
 }

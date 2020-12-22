@@ -26,18 +26,21 @@ export function getDeckOptions(
     modal,
     title,
     noTitle,
+    upgrade,
   }: {
     inputOptions?: Options;
     modal?: boolean;
     title?: string;
     noTitle?: boolean;
+    upgrade?: boolean;
   } = {},
   investigator?: Card,
 ): Options {
   const topBarOptions: OptionsTopBar = inputOptions.topBar || {};
+  const textColor = upgrade ? colors.darkText : '#FFFFFF';
   const options: Options = {
     statusBar: {
-      style: 'light',
+      style: upgrade ? 'dark' : 'light',
     },
     modalPresentationStyle: Platform.OS === 'ios' ?
       OptionsModalPresentationStyle.overFullScreen :
@@ -45,22 +48,22 @@ export function getDeckOptions(
     topBar: {
       backButton: {
         title: t`Back`,
-        color: '#FFFFFF',
+        color: textColor,
         ...topBarOptions.backButton,
       },
       leftButtons: modal ? [
         Platform.OS === 'ios' ? {
           text: t`Done`,
           id: 'back',
-          color: 'white',
+          color: textColor,
         } : {
           icon: iconsMap['arrow-left'],
           id: 'androidBack',
-          color: 'white',
+          color: textColor,
         },
       ] : topBarOptions.leftButtons || [],
       background: {
-        color: colors.faction[
+        color: upgrade ? colors.upgrade : colors.faction[
           (investigator ? investigator.faction_code : null) || 'neutral'
         ].background,
       },
@@ -80,16 +83,22 @@ export function getDeckOptions(
       fontFamily: 'Alegreya-Medium',
       fontSize: 20,
       text: (investigator ? investigator.name : t`Deck`),
-      color: '#FFFFFF',
+      color: textColor,
     };
     options.topBar.subtitle = {
       text: title,
       fontFamily: 'Alegreya-Medium',
       fontSize: 14,
-      color: '#FFFFFF',
+      color: textColor,
     };
   }
   return options;
+}
+
+interface DeckModalOptions {
+  campaignId?: number;
+  hideCampaign?: boolean;
+  upgrade?: boolean;
 }
 
 export function showDeckModal(
@@ -97,9 +106,9 @@ export function showDeckModal(
   deck: Deck,
   colors: ThemeColors,
   investigator?: Card,
-  campaignId?: number,
-  hideCampaign?: boolean,
+  options: DeckModalOptions = {}
 ) {
+  const { campaignId, hideCampaign, upgrade } = options;
   const passProps: DeckDetailProps = {
     id: deck.id,
     isPrivate: true,
@@ -108,6 +117,7 @@ export function showDeckModal(
     title: investigator ? investigator.name : t`Deck`,
     subtitle: deck.name,
     hideCampaign,
+    upgrade,
   };
 
   Navigation.showModal({
@@ -119,6 +129,7 @@ export function showDeckModal(
           options: getDeckOptions(colors, {
             modal: true,
             title: deck.name,
+            upgrade,
           }, investigator),
         },
       }],

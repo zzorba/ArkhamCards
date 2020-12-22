@@ -15,7 +15,7 @@ interface Props {
 
 export default function ExperienceLine({ parsedDeck }: Props) {
   const { colors, typography, fontScale } = useContext(StyleContext);
-  const [xpString, xpDetailString] = useDeckXpStrings(parsedDeck);
+  const [xpString, xpDetailString] = useDeckXpStrings(parsedDeck, true);
   const title = (
     <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
       { t`Experience` }

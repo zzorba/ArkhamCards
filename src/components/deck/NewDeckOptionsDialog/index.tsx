@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import {
-  ActivityIndicator,
   Text,
   TouchableOpacity,
   ScrollView,
@@ -17,7 +16,6 @@ import { t } from 'ttag';
 import { openDialog } from '@components/core/EditText';
 import RequiredCardSwitch from './RequiredCardSwitch';
 import { showCard, showCardSwipe, showDeckModal } from '@components/nav/helper';
-import BasicButton from '@components/core/BasicButton';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { saveNewDeck } from '@components/deck/actions';
@@ -405,12 +403,6 @@ export default withLoginState<NavigationProps & NewDeckOptionsProps>(
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',

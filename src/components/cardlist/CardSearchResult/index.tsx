@@ -209,7 +209,6 @@ function CardSearchResult(props: Props) {
       </View>
     );
   }, [colors, fontScale, typography, card]);
-
   const cardName = useMemo(() => {
     const color = (card.faction2_code ?
       colors.faction.dual :

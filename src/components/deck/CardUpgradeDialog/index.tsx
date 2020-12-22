@@ -8,15 +8,13 @@ import { t, ngettext, msgid } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import CardTextComponent from '@components/card/CardTextComponent';
 import CardUpgradeOption from './CardUpgradeOption';
-import DeckProblemRow from '@components/core/DeckProblemRow';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/actions';
 import DeckValidation from '@lib/DeckValidation';
 import Card from '@data/Card';
-import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
-import space, { m, s, xs } from '@styles/space';
-import DeckNavFooter from '../../DeckNavFooter';
+import space, { m } from '@styles/space';
+import DeckNavFooter from '@components/deck/NewDeckNavFooter';
 import { getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, PARALLEL_AGNES_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
@@ -24,6 +22,7 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import DeckProblemBanner from '../DeckProblemBanner';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
@@ -315,32 +314,21 @@ export default function CardUpgradeDialog({
       </>
     );
   }, [deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, cardInCollection, specialIgnoreRule, ignoreData, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
-
-
-  const isSurvivor = investigator.faction_code === 'survivor';
   return (
     <View
       style={[styles.wrapper, backgroundStyle]}
     >
+      { overLimit && (
+        <DeckProblemBanner faction={investigator.factionCode()} problem={{ reason: 'too_many_copies' }} />
+      ) }
       <ScrollView
         overScrollMode="never"
         bounces={false}
       >
-        { overLimit && (
-          <View style={[styles.problemBox,
-            { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
-          ]}>
-            <DeckProblemRow
-              problem={{ reason: 'too_many_copies' }}
-              color={isSurvivor ? COLORS.black : COLORS.white}
-              fontSize={14}
-            />
-          </View>
-        ) }
         { cardsSection }
         <View style={styles.footerPadding} />
       </ScrollView>
-      <DeckNavFooter componentId={componentId} deckId={id} faction={investigator.factionCode()} />
+      <DeckNavFooter componentId={componentId} deckId={id} />
     </View>
   );
 }
@@ -355,13 +343,6 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     flexDirection: 'column',
-  },
-  problemBox: {
-    flex: 1,
-    paddingTop: xs,
-    paddingBottom: xs,
-    paddingRight: s,
-    paddingLeft: s,
   },
   footerPadding: {
     height: m,

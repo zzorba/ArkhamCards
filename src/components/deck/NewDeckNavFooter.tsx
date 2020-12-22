@@ -24,9 +24,18 @@ interface Props {
   componentId: string;
   deckId: number;
   controls?: React.ReactNode;
-  mode: 'editing' | 'upgrading';
-  control: 'fab' | 'counts';
+  control?: 'fab' | 'counts' ;
   campaign?: Campaign;
+}
+
+function fabPadding(control?: 'fab' | 'counts') {
+  if (control === 'fab') {
+    return m + (FOOTER_HEIGHT + m);
+  }
+  if (control === 'counts') {
+    return m + (FOOTER_HEIGHT * 2 + m);
+  }
+  return s + xs;
 }
 
 export default function NewDeckNavFooter({
@@ -34,11 +43,10 @@ export default function NewDeckNavFooter({
   deckId,
   control,
   campaign,
-  mode,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const parsedDeckObj = useParsedDeck(deckId, 'NavFooter', componentId);
-  const { savingDialog, saveEdits, hasPendingEdits } = useSaveDialog(parsedDeckObj, campaign);
+  const { savingDialog, saveEdits, mode } = useSaveDialog(parsedDeckObj, campaign);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
   const { deck, parsedDeck, editable } = parsedDeckObj;
   const xpString = useMemo(() => {
@@ -81,28 +89,24 @@ export default function NewDeckNavFooter({
   }, [editable, xpString, deck, showXpAdjustmentDialog, typography, colors]);
   return (
     <>
-      <View style={[styles.marginWrapper, { paddingRight: m + (control === 'fab' ? (FOOTER_HEIGHT + m) : (FOOTER_HEIGHT * 2 + m)) }]}>
+      <View style={[styles.marginWrapper, { paddingRight: fabPadding(control) }]}>
         <View style={[styles.content, { backgroundColor: colors.D10 }]}>
-          { hasPendingEdits ? (
-            <View>
-              <RoundButton
-                onPress={saveEdits}
-                size={FOOTER_HEIGHT - 16}
-                margin={8}
-              >
-                <AppIcon
-                  size={24}
-                  color={colors.M}
-                  name="check"
-                />
-              </RoundButton>
-            </View>
-          ) : (
-            <View style={space.paddingLeftL} />
-          ) }
+          <View>
+            <RoundButton
+              onPress={saveEdits}
+              size={FOOTER_HEIGHT - 16}
+              margin={8}
+            >
+              <AppIcon
+                size={24}
+                color={colors.M}
+                name="check"
+              />
+            </RoundButton>
+          </View>
           <View style={styles.left}>
             <Text style={[typography.smallLabel, typography.italic, typography.inverted]} allowFontScaling={false}>
-              { mode === 'editing' ? t`Editing` : t`Upgrading` }
+              { mode === 'upgrade' ? t`Upgrading` : t`Editing` }
             </Text>
             { xpLine }
           </View>

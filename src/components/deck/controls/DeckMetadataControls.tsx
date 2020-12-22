@@ -58,7 +58,6 @@ export default function DeckMetadataControls({
       { !!setTabooSet && (
         <DeckTabooPickerButton
           open={tabooOpen}
-          faction={investigator.factionCode()}
           disabled={!editable}
           tabooSetId={tabooSetId}
           setTabooSet={setTabooSet}

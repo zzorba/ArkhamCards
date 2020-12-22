@@ -536,13 +536,14 @@ export function updateDeckMeta(
   };
 }
 
-export function startDeckEdit(id: number): ThunkAction<void, AppState, unknown, Action> {
+export function startDeckEdit(id: number, initialMode?: 'upgrade' | 'edit'): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, StartDeckEditAction>, getState: () => AppState): void => {
     const deck = getState().decks.all[id];
     dispatch({
       type: START_DECK_EDIT,
       id,
       deck,
+      mode: initialMode,
     });
   };
 }

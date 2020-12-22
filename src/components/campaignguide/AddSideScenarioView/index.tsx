@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import DialogComponent from '@lib/react-native-dialog';
-import { filter, find, flatMap, map, partition } from 'lodash';
+import { filter, find, map, partition } from 'lodash';
 import { t } from 'ttag';
 
 import Dialog from '@components/core/Dialog';

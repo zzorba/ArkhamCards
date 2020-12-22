@@ -74,7 +74,10 @@ export default function FixedSetChooserButton({
     });
     setPressed(false);
   }, [allValues, colors, componentId, title, setPressed, onChange, selection]);
-  const selectedDescription = useMemo(() => selection && selection.length ? map(selection, item => allValues[item]).join(', ') : t`All`, [allValues, selection])
+  const selectedDescription = useMemo(
+    () => selection && selection.length ? map(selection, item => allValues[item]).join(', ') : t`All`,
+    [allValues, selection]
+  );
   return (
     <NavButton
       text={`${title}: ${selectedDescription}`}

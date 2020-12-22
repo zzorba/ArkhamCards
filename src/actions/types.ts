@@ -521,12 +521,14 @@ export interface EditDeckState {
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
   meta: DeckMeta;
+  mode: 'edit' | 'upgrade' | 'view';
 }
 export const START_DECK_EDIT = 'START_DECK_EDIT';
 export interface StartDeckEditAction {
   type: typeof START_DECK_EDIT;
   id: number;
   deck?: Deck;
+  mode?: 'edit' | 'upgrade' | 'view';
 }
 
 export const UPDATE_DECK_EDIT = 'UPDATE_DECK_EDIT';

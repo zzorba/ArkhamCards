@@ -20,7 +20,7 @@ import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
-import DeckNavFooter from '@components/DeckNavFooter';
+import DeckNavFooter from '@components/deck/NewDeckNavFooter';
 import { getLangPreference } from '@reducers';
 
 const DIGIT_REGEX = /^[0-9]+$/;
@@ -282,8 +282,8 @@ export default function({
     if (searchBack) {
       parts.push(where([
         'c.s_search_name_back like :searchTerm',
-        '(c.linked_card is not null AND c.linked_card.s_search_name like :searchTerm)',
-        '(c.linked_card is not null AND c.linked_card.s_search_name_back like :searchTerm)',
+        '(c.linked_card is not null AND linked_card.s_search_name like :searchTerm)',
+        '(c.linked_card is not null AND linked_card.s_search_name_back like :searchTerm)',
       ].join(' OR '), { searchTerm: safeSearchTerm }
       ));
     }
@@ -292,8 +292,8 @@ export default function({
       if (searchBack) {
         parts.push(where([
           'c.s_search_game_back like :searchTerm',
-          '(c.linked_card is not null AND c.linked_card.s_search_game like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.s_search_game_back like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_game like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_game_back like :searchTerm)',
         ].join(' OR '), { searchTerm: safeSearchTerm }));
       }
     }
@@ -302,8 +302,8 @@ export default function({
       if (searchBack) {
         parts.push(where([
           '(c.s_search_flavor_back like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.s_search_flavor like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.s_search_flavor_back like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_flavor like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_flavor_back like :searchTerm)',
         ].join(' OR '), { searchTerm: safeSearchTerm }));
       }
     }
@@ -390,7 +390,7 @@ export default function({
           />
           { deckId !== undefined && (
             <View style={styles.footer}>
-              <DeckNavFooter deckId={deckId} componentId={componentId} faction={investigator?.factionCode()} />
+              <DeckNavFooter deckId={deckId} componentId={componentId} />
             </View>
           ) }
         </>

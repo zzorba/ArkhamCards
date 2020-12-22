@@ -36,7 +36,7 @@ const ICON_STYLE = {
 };
 
 
-export default function DeckButton({ title, detail, icon, color='gray', onPress, rightMargin, thin }: Props) {
+export default function DeckButton({ title, detail, icon, color = 'gray', onPress, rightMargin, thin }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const backgroundColors = {
     red: colors.warn,

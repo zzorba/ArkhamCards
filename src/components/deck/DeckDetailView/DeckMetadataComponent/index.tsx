@@ -8,12 +8,10 @@ interface Props {
   parsedDeck: ParsedDeck;
   bondedCardCount: number;
   problem?: DeckProblem;
-  hasPreviousDeck: boolean;
-  editable: boolean;
 }
 
-export default function DeckMetadataComponent({ parsedDeck, bondedCardCount, problem, hasPreviousDeck, editable }: Props) {
-  const hasXp = (!editable || !hasPreviousDeck) && (!!parsedDeck.changes || parsedDeck.experience > 0);
+export default function DeckMetadataComponent({ parsedDeck, bondedCardCount, problem }: Props) {
+  const hasXp = (!!parsedDeck.changes || parsedDeck.experience > 0);
   return (
     <>
       <ProblemLine problem={problem} />

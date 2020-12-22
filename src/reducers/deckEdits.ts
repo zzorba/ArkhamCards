@@ -45,6 +45,7 @@ export default function(
         slots: action.deck.slots || {},
         ignoreDeckLimitSlots: action.deck.ignoreDeckLimitSlots || {},
         xpAdjustment: action.deck.xp_adjustment || 0,
+        mode: action.mode || 'view',
       },
     } : state.edits;
     return {
@@ -93,6 +94,9 @@ export default function(
     }
     if (action.updates.xpAdjustment !== undefined) {
       updatedEdits.xpAdjustment = action.updates.xpAdjustment;
+    }
+    if (action.updates.mode !== undefined) {
+      updatedEdits.mode = action.updates.mode;
     }
     return {
       ...state,
@@ -212,6 +216,7 @@ export default function(
             ignoreDeckLimitSlots: action.deck.ignoreDeckLimitSlots || {},
             meta: action.deck.meta || {},
             xpAdjustment: action.deck.xp_adjustment || 0,
+            mode: 'view',
           },
         },
       };

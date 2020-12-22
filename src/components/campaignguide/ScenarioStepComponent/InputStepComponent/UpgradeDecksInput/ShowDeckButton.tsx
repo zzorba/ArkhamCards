@@ -23,8 +23,7 @@ export default function ShowDeckButton({ componentId, deckId, investigator }: Pr
         deck,
         colors,
         investigator,
-        undefined,
-        true
+        { hideCampaign: true }
       );
     }
   }, [componentId, investigator, deck, colors]);

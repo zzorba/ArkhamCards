@@ -3,7 +3,7 @@ import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
 
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
-import space, { s, xs } from '@styles/space';
+import space, { s } from '@styles/space';
 
 interface Props<T> {
   icon?: string;

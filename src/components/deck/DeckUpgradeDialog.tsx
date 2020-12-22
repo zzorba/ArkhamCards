@@ -94,7 +94,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
       }
     }
     if (showNewDeck) {
-      showDeckModal(componentId, deck, colors, investigator);
+      showDeckModal(componentId, deck, colors, investigator, { upgrade: true });
     } else {
       Navigation.pop(componentId);
     }

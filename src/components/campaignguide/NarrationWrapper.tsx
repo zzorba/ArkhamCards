@@ -398,7 +398,6 @@ class TrackView extends React.Component<TrackProps> {
 
   render() {
     const { track, isCurrentTrack } = this.props;
-    const { colors } = this.context;
     return (
       <TouchableHighlight onPress={this._playNarration}>
         <>

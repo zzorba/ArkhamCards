@@ -19,8 +19,6 @@ import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults } from './hooks';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import colors from '@styles/colors';
 
 interface DialogOptions {
   title: string;
@@ -230,11 +228,17 @@ export function useAdjustXpDialog({
   deck,
   deckEdits,
 }: ParsedDeckResults) {
+  const { borderStyle, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const [xpAdjustment, incXp, decXp, setXpAdjustment] = useCounter(deckEdits?.xpAdjustment || 0, {});
   const content = useMemo(() => {
     return (
       <View style={styles.column}>
+        <View style={[space.marginS, space.paddingBottomS, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
+          <Text style={typography.text}>
+            { t`If you have just completed a scenario, use the 'Upgrade' button which will track changes.` }
+          </Text>
+        </View>
         <NewDialog.ContentLine icon="xp" text={t`XP earned`}
           control={(
             <PlusMinusButtons
@@ -254,7 +258,7 @@ export function useAdjustXpDialog({
         )} />
       </View>
     );
-  }, [xpAdjustment, deck, incXp, decXp]);
+  }, [xpAdjustment, typography, borderStyle, deck, incXp, decXp]);
   const saveChanges = useCallback(() => {
     if (deck) {
       dispatch({
@@ -300,6 +304,7 @@ export function useSaveDialog(
     deckEditsRef,
     cards,
     tabooSetId,
+    mode,
   }: ParsedDeckResults,
   campaign?: Campaign,
 ): {
@@ -314,6 +319,7 @@ export function useSaveDialog(
   };
   hasPendingEdits: boolean;
   addedBasicWeaknesses: string[];
+  mode: 'edit' | 'upgrade' | 'view';
 } {
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
@@ -413,44 +419,55 @@ export function useSaveDialog(
     return addedWeaknesses;
   }, [deck, cards, slotDeltas]);
 
-  const actuallySaveEdits = useCallback((dismissAfterSave: boolean, isRetry?: boolean) => {
+  const actuallySaveEdits = useCallback(async(dismissAfterSave: boolean, isRetry?: boolean) => {
     if (saving && !isRetry) {
       return;
     }
     if (!deck || !parsedDeck || !deckEditsRef.current) {
       return;
     }
-    const problem = parsedDeck.problem;
-    const problemField = problem ? problem.reason : '';
     setSaving(true);
-    deckDispatch(saveDeckChanges(
-      deck,
-      {
-        name: deckEditsRef.current.nameChange,
-        slots: deckEditsRef.current.slots,
-        ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
-        problem: problemField,
-        spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
-        xpAdjustment: deckEditsRef.current.xpAdjustment,
-        tabooSetId,
-        meta: deckEditsRef.current.meta,
+    try {
+      if (hasPendingEdits) {
+        const problem = parsedDeck.problem;
+        const problemField = problem ? problem.reason : '';
+        await deckDispatch(saveDeckChanges(
+          deck,
+          {
+            name: deckEditsRef.current.nameChange,
+            slots: deckEditsRef.current.slots,
+            ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
+            problem: problemField,
+            spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
+            xpAdjustment: deckEditsRef.current.xpAdjustment,
+            tabooSetId,
+            meta: deckEditsRef.current.meta,
+          }
+        ));
+        if (addedBasicWeaknesses.length) {
+          updateCampaignWeaknessSet(addedBasicWeaknesses);
+        }
       }
-    )).then(() => {
-      if (addedBasicWeaknesses.length) {
-        updateCampaignWeaknessSet(addedBasicWeaknesses);
-      }
+
       if (dismissAfterSave) {
         Navigation.dismissAllModals();
       } else {
+        dispatch({
+          type: UPDATE_DECK_EDIT,
+          id: deck.id,
+          updates: {
+            mode: 'view',
+          },
+        });
         setSaving(false);
       }
-    }, handleSaveError);
-  }, [deck, saving, addedBasicWeaknesses, parsedDeck, deckEditsRef, tabooSetId, deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet]);
+    } catch(e) {
+      await handleSaveError(e);
+    }
+  }, [deck, saving, addedBasicWeaknesses, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, dispatch, deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
   const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);
-
-
   return {
     saving,
     saveEdits,
@@ -459,6 +476,7 @@ export function useSaveDialog(
     slotDeltas,
     hasPendingEdits,
     addedBasicWeaknesses,
+    mode: hasPendingEdits && mode === 'view' ? 'edit' : mode,
   };
 }
 

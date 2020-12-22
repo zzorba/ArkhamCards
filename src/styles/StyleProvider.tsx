@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
-import { ColorSchemeName, useColorScheme } from 'react-native-appearance';
+import { useColorScheme } from 'react-native-appearance';
 import { ThemeProvider } from 'react-native-elements';
 
 import StyleContext from './StyleContext';
@@ -20,12 +20,6 @@ interface ReduxProps {
 }
 
 type Props = OwnProps & ReduxProps;
-
-interface State {
-  colorScheme: ColorSchemeName;
-  fontScale: number;
-}
-
 
 const LIGHT_ELEMENTS_THEME = {
   Button: {
@@ -64,7 +58,7 @@ export default function StyleProvider({ children } : Props) {
   const context = useMemo(() => {
     return {
       darkMode,
-      fontScale,
+      fontScale: fontScale * appFontScale,
       typography: styleTypography,
       colors,
       gameFont,
@@ -78,7 +72,7 @@ export default function StyleProvider({ children } : Props) {
         backgroundColor: colors.disableOverlay,
       },
     };
-  }, [darkMode, fontScale, styleTypography, colors, gameFont]);
+  }, [darkMode, fontScale, appFontScale, styleTypography, colors, gameFont]);
   return (
     <StyleContext.Provider value={context}>
       <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>
