@@ -4841,7 +4841,7 @@ msgstr "Horreur à Toute Vitesse"
 
 #: src/components/campaign/constants.ts:263
 msgid "A Light in the Fog"
-msgstr ""
+msgstr "Une Lueur dans le Brouillard"
 
 #: src/components/campaign/constants.ts:264
 msgid "The Lair of Dagon"
@@ -5396,92 +5396,94 @@ msgstr ""
 #: src/components/deck/NewDeckNavFooter.tsx:59
 #, javascript-format
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
-msgstr ""
+msgstr "${ spentXP } XP dépensé sur ${ _adjustedXp }"
 
 #: src/components/deck/NewDeckNavFooter.tsx:109
 msgid "Upgrading"
-msgstr ""
+msgstr "Amélioration"
 
 #: src/components/deck/NewDeckNavFooter.tsx:109
 msgid "Editing"
-msgstr ""
+msgstr "Édition"
 
 #: src/components/deck/dialogs.tsx:206
 msgid "Uplodaing deck"
-msgstr ""
+msgstr "Chargement du deck"
 
 #: src/components/deck/dialogs.tsx:239
 msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will "
 "track changes."
 msgstr ""
+"Si vous venez de terminer un scénario, utilisez le bouton 'Amélioration' "
+"qui vous permettra de suivre les changements."
 
 #: src/components/deck/dialogs.tsx:242
 msgid "XP earned"
-msgstr ""
+msgstr "XP gagné"
 
 #: src/components/deck/dialogs.tsx:250
 msgid "Adjustment:"
-msgstr ""
+msgstr "Ajustement :"
 
 #: src/components/deck/dialogs.tsx:274
 msgid "Adjust XP"
-msgstr ""
+msgstr "Ajuster l'XP"
 
 #: src/components/deck/controls/DeckTabooPickerButton.tsx:52
 msgid "Select Taboo List"
-msgstr ""
+msgstr "Sélectionner la liste de Taboo"
 
 #: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:41
 #, javascript-format
 msgid "${ size } Card"
 msgid_plural "${ size } Cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ size } Carte"
+msgstr[1] "${ size } Cartes"
 
 #: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:41
 #, javascript-format
 msgid "class_${ faction }"
-msgstr ""
+msgstr "class_${ faction }"
 
 #: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:48
 msgid "Select Parallel Investigator"
-msgstr ""
+msgstr "Sélectionner un investigateur parallèle"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:567
 msgid "Upgrade experience"
-msgstr ""
+msgstr "Mettre à jour l'expérience"
 
 #: src/components/deck/DeckDetailView/index.tsx:241
 msgid "Upgrading deck"
-msgstr ""
+msgstr "Amélioration du deck"
 
 #: src/components/deck/DeckDetailView/index.tsx:242
 msgid "Editing deck"
-msgstr ""
+msgstr "Modifier le deck"
 
 #: src/components/deck/DeckDetailView/index.tsx:542
 #, javascript-format
 msgid "${ normalCards } card"
 msgid_plural "${ normalCards } cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ normalCards } carte"
+msgstr[1] "${ normalCards } cartes"
 
 #: src/components/deck/DeckDetailView/index.tsx:557
 msgid "Add scenario XP"
-msgstr ""
+msgstr "Ajouter de l'XP au scénario"
 
 #: src/components/deck/DeckDetailView/index.tsx:876
 msgid "Draw simulator"
-msgstr ""
+msgstr "Simulation de pioche"
 
 #: src/components/deck/DeckDetailView/index.tsx:897
 msgid "Upgrade with XP"
-msgstr ""
+msgstr "Améliorer avec de l'XP"
 
 #: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:40
 msgid "Unknown campaign"
-msgstr ""
+msgstr "Campagne inconnue"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
 #, javascript-format
