@@ -120,7 +120,7 @@ msgstr "${ this.name }(${ this.subname })"
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:144
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:146
 #: src/components/core/CardCostIcon.tsx:75
-#: src/components/deck/DeckDetailView/index.tsx:909
+#: src/components/deck/DeckDetailView/index.tsx:722
 #: src/data/Card.ts:558
 #: src/data/Card.ts:574
 msgid "None"
@@ -204,7 +204,7 @@ msgstr "탐구자 / 신비주의자"
 msgid "Mystic / Guardian"
 msgstr "신비주의자 / 수호자"
 
-#: src/components/filter/CardFilterView/index.tsx:409
+#: src/components/filter/CardFilterView/index.tsx:405
 #: src/data/Card.ts:675
 #: src/data/Card.ts:710
 #: src/data/Card.ts:745
@@ -222,7 +222,7 @@ msgid "Unknown"
 msgstr "불명"
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:285
-#: src/components/filter/CardFilterView/index.tsx:394
+#: src/components/filter/CardFilterView/index.tsx:390
 #: src/data/Card.ts:727
 #: src/data/Card.ts:815
 #: src/lib/publicApi.ts:237
@@ -295,19 +295,19 @@ msgstr "자산: 신체. 손 x2"
 msgid "Asset: Other"
 msgstr "자산: 기타"
 
-#: src/components/filter/CardFilterView/index.tsx:386
+#: src/components/filter/CardFilterView/index.tsx:382
 #: src/data/Card.ts:741
 #: src/data/Card.ts:805
 msgid "Event"
 msgstr "이벤트"
 
-#: src/components/filter/CardFilterView/index.tsx:387
+#: src/components/filter/CardFilterView/index.tsx:383
 #: src/data/Card.ts:742
 #: src/data/Card.ts:810
 msgid "Skill"
 msgstr "능력"
 
-#: src/components/filter/CardFilterView/index.tsx:410
+#: src/components/filter/CardFilterView/index.tsx:406
 #: src/data/Card.ts:673
 #: src/data/Card.ts:705
 #: src/data/Card.ts:743
@@ -315,11 +315,11 @@ msgstr "능력"
 msgid "Basic Weakness"
 msgstr "기본 약점"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:118
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:119
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:126
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:127
 #: src/components/campaign/EditScenarioResultView.tsx:115
 #: src/components/campaign/ScenarioDialog.tsx:10
-#: src/components/filter/CardFilterView/index.tsx:395
+#: src/components/filter/CardFilterView/index.tsx:391
 #: src/data/Card.ts:746
 #: src/data/Card.ts:817
 #: src/data/Card.ts:868
@@ -327,7 +327,7 @@ msgid "Scenario"
 msgstr "시나리오"
 
 #: src/components/deck/EditSpecialDeckCardsView.tsx:254
-#: src/components/filter/CardFilterView/index.tsx:390
+#: src/components/filter/CardFilterView/index.tsx:386
 #: src/data/Card.ts:747
 #: src/data/Card.ts:760
 #: src/data/Card.ts:770
@@ -439,25 +439,26 @@ msgstr "되돌리기"
 #: src/components/core/EditText.tsx:29
 #: src/components/core/EditText.tsx:44
 #: src/components/core/TextEditDialog.tsx:128
-#: src/components/deck/CardUpgradeDialog/index.tsx:237
+#: src/components/deck/CardUpgradeDialog/index.tsx:236
 #: src/components/deck/CopyDeckDialog/index.tsx:235
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:104
-#: src/components/deck/DeckDetailView/index.tsx:324
-#: src/components/deck/DeckDetailView/index.tsx:474
-#: src/components/deck/DeckDetailView/index.tsx:795
-#: src/components/deck/DeckDetailView/index.tsx:804
-#: src/components/deck/DeckDetailView/index.tsx:843
+#: src/components/deck/DeckDetailView/index.tsx:210
+#: src/components/deck/DeckDetailView/index.tsx:336
+#: src/components/deck/DeckDetailView/index.tsx:608
+#: src/components/deck/DeckDetailView/index.tsx:617
+#: src/components/deck/DeckDetailView/index.tsx:656
 #: src/components/deck/DeckUpgradeDialog.tsx:184
 #: src/components/deck/DeckUpgradeDialog.tsx:186
 #: src/components/deck/EditSpecialDeckCardsView.tsx:147
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:385
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:380
 #: src/components/deck/NewDeckView.tsx:82
 #: src/components/deck/authHelper.ts:32
-#: src/components/nav/helper.ts:249
-#: src/components/nav/helper.ts:264
-#: src/components/settings/BackupView.tsx:91
-#: src/components/settings/BackupView.tsx:132
-#: src/components/settings/BackupView.tsx:143
+#: src/components/deck/dialogs.tsx:281
+#: src/components/nav/helper.ts:260
+#: src/components/nav/helper.ts:275
+#: src/components/settings/BackupView.tsx:92
+#: src/components/settings/BackupView.tsx:133
+#: src/components/settings/BackupView.tsx:144
 #: src/components/settings/DiagnosticsView.tsx:121
 #: src/components/settings/DissonantVoicesLoginButton.tsx:38
 #: src/components/settings/LanguagePicker.tsx:90
@@ -504,7 +505,7 @@ msgid "Available weaknesses"
 msgstr "접근가능 약점"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:229
-#: src/components/deck/DeckDetailView/index.tsx:722
+#: src/components/deck/dialogs.tsx:331
 #: src/components/weakness/WeaknessDrawComponent.tsx:197
 msgid "Saving"
 msgstr "저장"
@@ -518,7 +519,7 @@ msgid "Draw Another"
 msgstr "새로운 약점 뽑기"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:56
-#: src/components/filter/CardFilterView/index.tsx:455
+#: src/components/filter/CardFilterView/index.tsx:451
 #: src/components/weakness/WeaknessDrawComponent.tsx:229
 msgid "Traits"
 msgstr "특성"
@@ -528,6 +529,7 @@ msgid "Multiplayer"
 msgstr "다인 플레이"
 
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:83
+#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:48
 #: src/components/campaign/constants.ts:59
 #: src/components/campaign/constants.ts:295
 #: src/components/core/PackListComponent/index.tsx:54
@@ -588,7 +590,7 @@ msgstr ""
 msgid "All local decks and campaigns will be overridden"
 msgstr "내부에만 저장된 모든 덱과 모든 캠페인은 삭제될 것입니다."
 
-#: src/components/settings/BackupView.tsx:126
+#: src/components/settings/BackupView.tsx:127
 #: src/components/settings/DiagnosticsView.tsx:90
 msgid "Restore campaign data?"
 msgstr "캠페인 데이터를 복구하시겠습니까?"
@@ -610,7 +612,7 @@ msgstr ""
 msgid "Nevermind"
 msgstr "신경끄기"
 
-#: src/components/settings/BackupView.tsx:129
+#: src/components/settings/BackupView.tsx:130
 #: src/components/settings/DiagnosticsView.tsx:96
 msgid "Import data"
 msgstr "데이터 불러오기"
@@ -619,7 +621,7 @@ msgstr "데이터 불러오기"
 msgid "Paste Backup Here"
 msgstr "백업을 이곳에 붙여넣으십시오"
 
-#: src/components/settings/BackupView.tsx:140
+#: src/components/settings/BackupView.tsx:141
 #: src/components/settings/DiagnosticsView.tsx:118
 msgid "Backup campaign data?"
 msgstr "캠페인 데이터를 백업하시겠습니까?"
@@ -633,7 +635,7 @@ msgstr ""
 "이 기능은 고급 진단 또는 서로 다른 기기들 사이에서 당신의 캠페인 데이터를 옮기기 위하여 제공됩니다. 단순히 해당 데이터를 복사하고, "
 "다른 앱에 가서 붙여넣기만 하면 됩니다."
 
-#: src/components/settings/BackupView.tsx:146
+#: src/components/settings/BackupView.tsx:147
 #: src/components/settings/DiagnosticsView.tsx:124
 msgid "Export Campaign Data"
 msgstr "캠페인 데이터 내보내기"
@@ -660,19 +662,19 @@ msgstr "독립 시나리오"
 msgid "Debug"
 msgstr "디버그"
 
-#: src/components/settings/BackupView.tsx:189
+#: src/components/settings/BackupView.tsx:190
 #: src/components/settings/DiagnosticsView.tsx:239
 #: src/components/settings/SafeModeView.tsx:62
 #: src/components/settings/SettingsView.tsx:110
 msgid "Backup"
 msgstr "백업"
 
-#: src/components/settings/BackupView.tsx:192
+#: src/components/settings/BackupView.tsx:193
 #: src/components/settings/DiagnosticsView.tsx:242
 msgid "Backup Campaign Data"
 msgstr "캠페인 데이터 백업"
 
-#: src/components/settings/BackupView.tsx:197
+#: src/components/settings/BackupView.tsx:198
 #: src/components/settings/DiagnosticsView.tsx:246
 msgid "Restore Campaign Data"
 msgstr "캠페인 데이터 복구"
@@ -718,8 +720,8 @@ msgstr "계정 재연결"
 msgid "Sign out of ArkhamDB"
 msgstr "아컴디비 로그아웃"
 
-#: src/components/deck/DeckDetailView/index.tsx:791
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:341
+#: src/components/deck/DeckDetailView/index.tsx:604
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:338
 #: src/components/settings/LoginButton.tsx:65
 #: src/components/settings/LoginButton.tsx:68
 msgid "Sign in to ArkhamDB"
@@ -753,8 +755,9 @@ msgstr "아컴카드에 대하여"
 #: src/components/core/EditText.tsx:33
 #: src/components/core/EditText.tsx:43
 #: src/components/core/TextEditDialog.tsx:148
-#: src/components/deck/DeckDetailView/index.tsx:365
-#: src/components/nav/helper.ts:53
+#: src/components/deck/DeckDetailView/index.tsx:252
+#: src/components/deck/dialogs.tsx:277
+#: src/components/nav/helper.ts:56
 #: src/components/settings/SafeModeView.tsx:65
 #: src/components/settings/SafeModeView.tsx:112
 #: src/components/settings/SettingsView.tsx:81
@@ -835,15 +838,15 @@ msgstr "불러오는 중"
 #: src/components/campaignguide/prompts/CardChoicePrompt.tsx:158
 #: src/components/card/CardDetailView/index.tsx:66
 #: src/components/card/CardDetailView/index.tsx:111
-#: src/components/card/DbCardDetailSwipeView.tsx:52
-#: src/components/card/DbCardDetailSwipeView.tsx:95
-#: src/components/card/DbCardDetailSwipeView.tsx:116
+#: src/components/card/DbCardDetailSwipeView.tsx:51
+#: src/components/card/DbCardDetailSwipeView.tsx:94
+#: src/components/card/DbCardDetailSwipeView.tsx:115
 #: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:501
 #: src/components/core/ChooserButton.tsx:35
 #: src/components/core/DbChooserButton.tsx:65
 #: src/components/core/PackListComponent/PackRow.tsx:48
-#: src/components/deck/DeckDetailView/index.tsx:531
-#: src/components/deck/DeckDetailView/index.tsx:565
+#: src/components/deck/DeckDetailView/index.tsx:392
+#: src/components/deck/DeckDetailView/index.tsx:430
 #: src/components/deck/EditSpecialDeckCardsView.tsx:72
 #: src/components/deck/EditSpecialDeckCardsView.tsx:129
 #: src/components/deck/EditSpecialDeckCardsView.tsx:175
@@ -852,82 +855,83 @@ msgstr "불러오는 중"
 #: src/components/filter/CardEnemyFilterView.tsx:219
 #: src/components/filter/FixedSetChooserButton.tsx:61
 #: src/components/filter/PackFilterView.tsx:85
-#: src/components/nav/helper.ts:47
-#: src/components/nav/helper.ts:149
-#: src/components/nav/helper.ts:217
-#: src/components/nav/helper.ts:282
-#: src/components/nav/helper.ts:340
+#: src/components/nav/helper.ts:50
+#: src/components/nav/helper.ts:160
+#: src/components/nav/helper.ts:228
+#: src/components/nav/helper.ts:293
+#: src/components/nav/helper.ts:351
 msgid "Back"
 msgstr "뒤로가기"
 
-#: src/components/deck/DeckDetailView/index.tsx:897
-#: src/components/nav/helper.ts:82
-#: src/components/nav/helper.ts:108
+#: src/components/deck/DeckDetailView/index.tsx:710
+#: src/components/nav/helper.ts:85
+#: src/components/nav/helper.ts:117
 msgid "Deck"
 msgstr "덱"
 
-#: src/components/deck/DeckDetailView/index.tsx:917
-#: src/components/nav/helper.ts:170
+#: src/components/deck/DeckDetailView/index.tsx:730
+#: src/components/deck/DeckDetailView/index.tsx:886
+#: src/components/nav/helper.ts:181
 msgid "Charts"
 msgstr "차트"
 
-#: src/components/deck/DeckDetailView/index.tsx:923
-#: src/components/nav/helper.ts:194
+#: src/components/deck/DeckDetailView/index.tsx:736
+#: src/components/nav/helper.ts:205
 msgid "Draw Simulator"
 msgstr "뽑기 시뮬레이터"
 
 #: src/components/filter/CardEnemyFilterView.tsx:137
-#: src/components/filter/CardFilterView/index.tsx:187
+#: src/components/filter/CardFilterView/index.tsx:183
 msgid "Elite"
 msgstr "정예"
 
 #: src/components/filter/CardEnemyFilterView.tsx:143
-#: src/components/filter/CardFilterView/index.tsx:193
+#: src/components/filter/CardFilterView/index.tsx:189
 msgid "Hunter"
 msgstr "사냥꾼"
 
 #: src/components/filter/CardEnemyFilterView.tsx:149
-#: src/components/filter/CardFilterView/index.tsx:205
+#: src/components/filter/CardFilterView/index.tsx:201
 msgid "Alert"
 msgstr "경계"
 
 #: src/components/filter/CardEnemyFilterView.tsx:155
-#: src/components/filter/CardFilterView/index.tsx:208
+#: src/components/filter/CardFilterView/index.tsx:204
 msgid "Spawn"
 msgstr "출현"
 
 #: src/components/filter/CardEnemyFilterView.tsx:161
-#: src/components/filter/CardFilterView/index.tsx:214
+#: src/components/filter/CardFilterView/index.tsx:210
 msgid "Aloof"
 msgstr "냉담한"
 
 #: src/components/filter/CardEnemyFilterView.tsx:167
-#: src/components/filter/CardFilterView/index.tsx:217
+#: src/components/filter/CardFilterView/index.tsx:213
 msgid "Massive"
 msgstr "거대한"
 
 #: src/components/filter/CardEnemyFilterView.tsx:175
-#: src/components/filter/CardFilterView/index.tsx:190
+#: src/components/filter/CardFilterView/index.tsx:186
 msgid "Non-Elite"
 msgstr "정예가 아닌"
 
 #: src/components/filter/CardEnemyFilterView.tsx:181
-#: src/components/filter/CardFilterView/index.tsx:196
+#: src/components/filter/CardFilterView/index.tsx:192
 msgid "Non-Hunter"
 msgstr "사냥꾼이 아닌"
 
 #: src/components/filter/CardEnemyFilterView.tsx:187
-#: src/components/filter/CardFilterView/index.tsx:202
+#: src/components/filter/CardFilterView/index.tsx:198
 msgid "Retaliate"
 msgstr "보복"
 
 #: src/components/filter/CardEnemyFilterView.tsx:193
-#: src/components/filter/CardFilterView/index.tsx:199
+#: src/components/filter/CardFilterView/index.tsx:195
 msgid "Parley"
 msgstr "협상"
 
 #: src/components/filter/CardEnemyFilterView.tsx:199
-#: src/components/filter/CardFilterView/index.tsx:211
+#: src/components/filter/CardFilterView/index.tsx:207
 msgid "Prey"
 msgstr "먹잇감"
 
@@ -936,16 +940,15 @@ msgid "Swarm"
 msgstr "무리"
 
 #: src/components/filter/CardEnemyFilterView.tsx:70
-#: src/components/filter/CardFilterView/index.tsx:233
-#: src/components/filter/CardFilterView/index.tsx:444
-#: src/components/filter/CardFilterView/index.tsx:504
+#: src/components/filter/CardFilterView/index.tsx:229
+#: src/components/filter/CardFilterView/index.tsx:440
 msgid "Fight"
 msgstr "전투"
 
 #: src/components/filter/CardAssetFilterView.tsx:92
 #: src/components/filter/CardEnemyFilterView.tsx:81
-#: src/components/filter/CardFilterView/index.tsx:223
-#: src/components/filter/CardFilterView/index.tsx:273
+#: src/components/filter/CardFilterView/index.tsx:219
+#: src/components/filter/CardFilterView/index.tsx:269
 msgid "Health"
 msgstr "체력"
 
@@ -956,19 +959,18 @@ msgid "Per Investigator"
 msgstr "조사자 당"
 
 #: src/components/filter/CardEnemyFilterView.tsx:102
-#: src/components/filter/CardFilterView/index.tsx:236
-#: src/components/filter/CardFilterView/index.tsx:450
-#: src/components/filter/CardFilterView/index.tsx:542
+#: src/components/filter/CardFilterView/index.tsx:232
+#: src/components/filter/CardFilterView/index.tsx:446
 msgid "Evade"
 msgstr "회피"
 
 #: src/components/filter/CardEnemyFilterView.tsx:113
-#: src/components/filter/CardFilterView/index.tsx:227
+#: src/components/filter/CardFilterView/index.tsx:223
 msgid "Damage"
 msgstr "피해"
 
 #: src/components/filter/CardEnemyFilterView.tsx:124
-#: src/components/filter/CardFilterView/index.tsx:230
+#: src/components/filter/CardFilterView/index.tsx:226
 msgid "Horror"
 msgstr "공포"
 
@@ -977,17 +979,17 @@ msgstr "공포"
 msgid "Enemy Filters"
 msgstr "적 필터"
 
-#: src/components/filter/CardFilterView/index.tsx:300
+#: src/components/filter/CardFilterView/index.tsx:296
 #: src/components/filter/CardLocationFilterView.tsx:47
 msgid "Shroud"
 msgstr "장막"
 
-#: src/components/filter/CardFilterView/index.tsx:296
+#: src/components/filter/CardFilterView/index.tsx:292
 #: src/components/filter/CardLocationFilterView.tsx:58
 msgid "Clues"
 msgstr "단서"
 
-#: src/components/filter/CardFilterView/index.tsx:303
+#: src/components/filter/CardFilterView/index.tsx:299
 #: src/components/filter/CardLocationFilterView.tsx:81
 msgid "Haunted"
 msgstr "신들린"
@@ -1054,132 +1056,131 @@ msgstr "레벨 ${ startXp }"
 msgid "Level ${ startXp } - ${ endXp }"
 msgstr "레벨 ${ startXp } - ${ endXp }"
 
-#: src/components/filter/CardFilterView/index.tsx:596
+#: src/components/filter/CardFilterView/index.tsx:574
 msgid "Filter"
 msgstr "필터"
 
-#: src/components/filter/CardFilterView/index.tsx:142
+#: src/components/filter/CardFilterView/index.tsx:138
 msgid "Packs: All"
 msgstr "팩: 전부"
 
-#: src/components/filter/CardFilterView/index.tsx:172
+#: src/components/filter/CardFilterView/index.tsx:168
 #, javascript-format
 msgid "${ cycleNames[cycle_position] } Cycle"
 msgstr "${ cycleNames[cycle_position] } 사이클"
 
-#: src/components/filter/CardFilterView/index.tsx:181
+#: src/components/filter/CardFilterView/index.tsx:177
 msgid "Packs: ${ allPacksString }"
 msgstr "팩:  ${ allPacksString }"
 
-#: src/components/filter/CardFilterView/index.tsx:221
+#: src/components/filter/CardFilterView/index.tsx:217
 msgid "HPI"
 msgstr "조사자당 체력"
 
-#: src/components/filter/CardFilterView/index.tsx:240
+#: src/components/filter/CardFilterView/index.tsx:236
 msgid "Enemies: All"
 msgstr "적: 전부"
 
-#: src/components/filter/CardFilterView/index.tsx:243
+#: src/components/filter/CardFilterView/index.tsx:239
 #, javascript-format
 msgid "Enemies: ${ searchParts }"
 msgstr "적: ${ searchParts }"
 
-#: src/components/filter/CardFilterView/index.tsx:294
+#: src/components/filter/CardFilterView/index.tsx:290
 msgid "Fixed Clues"
 msgstr "고정 단서"
 
-#: src/components/filter/CardFilterView/index.tsx:307
+#: src/components/filter/CardFilterView/index.tsx:303
 msgid "Locations: All"
 msgstr "장소: 전부"
 
-#: src/components/filter/CardFilterView/index.tsx:310
+#: src/components/filter/CardFilterView/index.tsx:306
 #, javascript-format
 msgid "Locations: ${ searchParts }"
 msgstr "장소: ${ searchParts }"
 
-#: src/components/filter/CardFilterView/index.tsx:347
+#: src/components/filter/CardFilterView/index.tsx:343
 msgid "Level"
 msgstr "레벨"
 
-#: src/components/filter/CardFilterView/index.tsx:360
+#: src/components/filter/CardFilterView/index.tsx:356
 msgid "Exceptional"
 msgstr "특별"
 
-#: src/components/filter/CardFilterView/index.tsx:366
+#: src/components/filter/CardFilterView/index.tsx:362
 msgid "Non-Exceptional"
 msgstr "특별이 아닌"
 
-#: src/components/filter/CardFilterView/index.tsx:377
+#: src/components/filter/CardFilterView/index.tsx:373
 msgid "Types"
 msgstr "종류"
 
-#: src/components/filter/CardFilterView/index.tsx:401
+#: src/components/filter/CardFilterView/index.tsx:397
 msgid "SubTypes"
 msgstr "세부종류"
 
 #: src/components/cardlist/CardSortDialog.tsx:26
-#: src/components/filter/CardFilterView/index.tsx:417
+#: src/components/filter/CardFilterView/index.tsx:413
 msgid "Cost"
 msgstr "비용"
 
 #: src/components/deck/DeckChartsView/SlotsChart.tsx:53
 #: src/components/filter/CardAssetFilterView.tsx:67
-#: src/components/filter/CardFilterView/index.tsx:282
+#: src/components/filter/CardFilterView/index.tsx:278
 msgid "Slots"
 msgstr "슬롯"
 
 #: src/components/filter/CardAssetFilterView.tsx:81
-#: src/components/filter/CardFilterView/index.tsx:279
+#: src/components/filter/CardFilterView/index.tsx:275
 msgid "Uses"
 msgstr "사용"
 
-#: src/components/filter/CardFilterView/index.tsx:486
+#: src/components/filter/CardFilterView/index.tsx:470
 msgid "Fast"
 msgstr "신속"
 
-#: src/components/filter/CardFilterView/index.tsx:492
+#: src/components/filter/CardFilterView/index.tsx:508
 msgid "Permanent"
 msgstr "영속"
 
-#: src/components/filter/CardFilterView/index.tsx:498
+#: src/components/filter/CardFilterView/index.tsx:482
 msgid "Seal"
 msgstr "봉인"
 
-#: src/components/filter/CardFilterView/index.tsx:446
-#: src/components/filter/CardFilterView/index.tsx:510
+#: src/components/filter/CardFilterView/index.tsx:442
 msgid "Investigate"
 msgstr "조사"
 
-#: src/components/filter/CardFilterView/index.tsx:516
+#: src/components/filter/CardFilterView/index.tsx:488
 msgid "Victory"
 msgstr "승점"
 
-#: src/components/filter/CardFilterView/index.tsx:524
+#: src/components/filter/CardFilterView/index.tsx:502
 msgid "Exile"
 msgstr "추방"
 
-#: src/components/filter/CardFilterView/index.tsx:530
+#: src/components/filter/CardFilterView/index.tsx:476
 msgid "Unique"
 msgstr "고유"
 
-#: src/components/filter/CardFilterView/index.tsx:536
+#: src/components/filter/CardFilterView/index.tsx:514
 msgid "Myriad"
 msgstr "무수한"
 
 #: src/components/card/CardDetailView/BondedCardsComponent.tsx:50
-#: src/components/filter/CardFilterView/index.tsx:548
+#: src/components/filter/CardFilterView/index.tsx:520
 msgid "Bonded"
 msgstr "결속"
 
-#: src/components/filter/CardFilterView/index.tsx:554
+#: src/components/filter/CardFilterView/index.tsx:494
 msgid "Vengeance"
 msgstr "복수"
 
-#: src/components/filter/CardFilterView/index.tsx:564
+#: src/components/filter/CardFilterView/index.tsx:542
 msgid "Encounter Sets"
 msgstr "조우 세트"
 
-#: src/components/filter/CardFilterView/index.tsx:580
+#: src/components/filter/CardFilterView/index.tsx:558
 msgid "Illustrators"
 msgstr "일러스트레이터"
 
@@ -1246,7 +1247,7 @@ msgid ""
 "fix the problem, tap here to reauthorize."
 msgstr "예상치 못한 오류가 발생하였습니다 (${ error }). 재시작 이후에도 문제가 해결되지 않으면, 이곳을 눌러서 재인증을 받으십시오."
 
-#: src/components/deck/DeckDetailView/index.tsx:792
+#: src/components/deck/DeckDetailView/index.tsx:605
 #: src/components/decklist/MyDecksComponent.tsx:124
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share "
@@ -1275,8 +1276,8 @@ msgstr "덱"
 #: src/app/App.ts:268
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:61
 #: src/components/deck/CopyDeckDialog/index.tsx:98
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:98
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:202
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:96
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:200
 #: src/components/deck/NewDeckView.tsx:52
 #: src/components/deck/NewDeckView.tsx:76
 #: src/components/decklist/MyDecksView.tsx:84
@@ -1319,7 +1320,7 @@ msgstr "${ humanVersionNumber } 향상: ${ deck.availableExperience } 경험치"
 msgid "Saving..."
 msgstr "저장하는중..."
 
-#: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:67
+#: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:66
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:103
 #: src/components/campaign/UpgradeDecksView/NonDeckDetailsButton.tsx:32
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:185
@@ -1339,8 +1340,6 @@ msgstr "추방된 카드"
 #: src/components/campaign/EditScenarioResultView.tsx:64
 #: src/components/campaign/EditScenarioResultView.tsx:69
 #: src/components/campaign/EditTraumaDialog.tsx:58
-#: src/components/deck/DeckDetailView/index.tsx:353
-#: src/components/deck/DeckDetailView/index.tsx:356
 #: src/components/deck/DeckUpgradeDialog.tsx:165
 #: src/components/deck/DeckUpgradeDialog.tsx:178
 #: src/components/deck/DeckUpgradeDialog.tsx:181
@@ -1359,7 +1358,7 @@ msgstr "뽑기: "
 
 #: src/components/core/ChooserButton.tsx:52
 #: src/components/core/DbChooserButton.tsx:85
-#: src/components/filter/FixedSetChooserButton.tsx:77
+#: src/components/filter/FixedSetChooserButton.tsx:78
 msgid "All"
 msgstr "전부"
 
@@ -1434,7 +1433,7 @@ msgstr ""
 "이 문제가 지속되면, 재인증을 시도해주세요."
 
 #: src/components/deck/authHelper.ts:21
-#: src/components/settings/BackupView.tsx:88
+#: src/components/settings/BackupView.tsx:89
 msgid "Try again"
 msgstr "다시 시도"
 
@@ -1442,49 +1441,49 @@ msgstr "다시 시도"
 msgid "Reauthorize"
 msgstr "재인증"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:102
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:100
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
 msgstr "${ investigator.name }의 모험"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:104
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:102
 msgid "${ investigator.name } Investigates"
 msgstr "조사하는 ${ investigator.name }"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:106
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:104
 #, javascript-format
 msgid "The ${ investigator.name } Mysteries"
 msgstr "수수께끼의 ${ investigator.name }"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:108
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:106
 msgid "The ${ investigator.name } Job"
 msgstr "${ investigator.name }의 과업"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:110
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:108
 #, javascript-format
 msgid "${ investigator.name } on the Road"
 msgstr "방랑하는 ${ investigator.name }"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:112
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:110
 msgid "${ investigator.name } Does It All"
 msgstr "${ investigator.name }는 무엇이든 잘해요"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:131
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:139
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:128
 #: src/components/campaign/NewCampaignView/index.tsx:433
 #: src/components/campaignguide/CampaignGuideView.tsx:52
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:62
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:224
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:235
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:222
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:233
 msgid "Name"
 msgstr "이름"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:225
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:223
 msgid "Enter a name for this deck."
 msgstr "덱의 이름을 입력해주십시오."
 
 #: src/components/card/CardDetailView/SignatureCardsComponent.tsx:38
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:302
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:299
 msgid "Required Cards"
 msgstr "필요 카드"
 
@@ -1493,35 +1492,35 @@ msgid "Deck Type"
 msgstr "카드 종류"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:191
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:332
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:329
 msgid "Create on ArkhamDB"
 msgstr "아컴디비에 생성하기"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:200
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:351
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:348
 msgid "You seem to be offline. Refresh Network?"
 msgstr "오프라인 상태로 보입니다. 인터넷 연결을 확인해주세요."
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:324
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:321
 msgid "Use Starter Deck"
 msgstr "초심자용 덱"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:393
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:388
 msgid "Create deck"
 msgstr "덱 생성하기"
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:137
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:138
 msgid "No Changes"
 msgstr "카드 변동없음"
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:143
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:144
 msgid "Card changes"
 msgstr "카드 변경내역"
 
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:124
 #: src/components/campaign/CampaignDetailView/index.tsx:256
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:83
-#: src/components/deck/DeckDetailView/index.tsx:958
+#: src/components/deck/DeckDetailView/index.tsx:771
 #: src/components/deck/DeckProgressComponent/index.tsx:71
 msgid "Campaign"
 msgstr "캠페인"
@@ -1530,31 +1529,30 @@ msgstr "캠페인"
 msgid "Upgrade Deck with XP"
 msgstr "경험치를 소비해 덱 향상하기"
 
-#: src/components/deck/DeckDetailView/index.tsx:870
-#: src/components/deck/DeckDetailView/index.tsx:979
+#: src/components/deck/DeckDetailView/index.tsx:683
+#: src/components/deck/DeckDetailView/index.tsx:792
 #: src/components/deck/DeckProgressComponent/index.tsx:111
 #. Actually compute the diffs.
 msgid "Upgrade History"
 msgstr "향상 기록"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:224
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:227
 #, javascript-format
 msgid "Bonded Cards (${ count })"
 msgstr "결속 카드 (${ count })"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:364
-#: src/components/deck/DeckDetailView/index.tsx:940
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:370
+#: src/components/deck/DeckDetailView/index.tsx:753
 msgid "Deck Cards"
 msgstr "덱 카드"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:376
-#: src/components/deck/DeckDetailView/index.tsx:950
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:382
+#: src/components/deck/DeckDetailView/index.tsx:763
 msgid "Special Cards"
 msgstr "특수 카드"
 
 #: src/components/campaign/XpComponent.tsx:24
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/ExperienceLine.tsx:21
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:549
 msgid "Experience"
 msgstr "경험치"
 
@@ -1584,16 +1582,15 @@ msgstr "경험치"
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:142
 #: src/components/deck/CopyDeckDialog/index.tsx:239
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:108
-#: src/components/deck/DeckDetailView/index.tsx:689
-#: src/components/deck/DeckDetailView/index.tsx:715
+#: src/components/deck/dialogs.tsx:185
 msgid "Okay"
 msgstr "적용"
 
-#: src/components/deck/DeckDetailView/index.tsx:470
+#: src/components/deck/DeckDetailView/index.tsx:332
 msgid "Delete broken deck"
 msgstr "망가진 덱 삭제"
 
-#: src/components/deck/DeckDetailView/index.tsx:471
+#: src/components/deck/DeckDetailView/index.tsx:333
 msgid "Looks like we are having trouble loading this deck for some reason"
 msgstr "여러가지 이유로 이 덱을 불러오는데 문제가 발생하고 있습니다."
 
@@ -1606,60 +1603,57 @@ msgstr "여러가지 이유로 이 덱을 불러오는데 문제가 발생하고
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:81
 #: src/components/campaignguide/StandaloneGuideView.tsx:30
 #: src/components/campaignguide/StandaloneGuideView.tsx:33
-#: src/components/deck/DeckDetailView/index.tsx:473
-#: src/components/deck/DeckDetailView/index.tsx:837
-#: src/components/deck/DeckDetailView/index.tsx:1010
+#: src/components/deck/DeckDetailView/index.tsx:335
+#: src/components/deck/DeckDetailView/index.tsx:650
 msgid "Delete"
 msgstr "삭제"
 
-#: src/components/deck/DeckDetailView/index.tsx:310
+#: src/components/deck/DeckDetailView/index.tsx:196
 msgid "Save deck changes?"
 msgstr "덱 변경사항을 저장하시겠습니까?"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:64
-#: src/components/deck/DeckDetailView/index.tsx:311
+#: src/components/deck/DeckDetailView/index.tsx:197
 msgid "Looks like you have made some changes that have not been saved."
 msgstr "저장되지 않은 변경사항이 있는 것으로 보입니다."
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:66
-#: src/components/deck/DeckDetailView/index.tsx:313
-#: src/components/deck/DeckDetailView/index.tsx:740
+#: src/components/deck/DeckDetailView/index.tsx:199
 msgid "Save Changes"
 msgstr "변경사항 저장"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:71
-#: src/components/deck/DeckDetailView/index.tsx:318
-#: src/components/deck/DeckDetailView/index.tsx:744
+#: src/components/deck/DeckDetailView/index.tsx:204
 msgid "Discard Changes"
 msgstr "변경사항 취소"
 
-#: src/components/deck/DeckDetailView/index.tsx:527
+#: src/components/deck/DeckDetailView/index.tsx:388
 msgid "Edit Special Cards"
 msgstr "특수 카드 수정"
 
-#: src/components/deck/DeckDetailView/index.tsx:561
+#: src/components/deck/DeckDetailView/index.tsx:426
 msgid "Edit Deck"
 msgstr "덱 수정"
 
-#: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:80
-#: src/components/deck/DeckDetailView/index.tsx:596
-#: src/components/deck/DeckDetailView/index.tsx:970
+#: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:79
+#: src/components/deck/DeckDetailView/index.tsx:461
+#: src/components/deck/DeckDetailView/index.tsx:783
 msgid "Upgrade Deck"
 msgstr "덱 향상"
 
-#: src/components/deck/DeckDetailView/index.tsx:781
+#: src/components/deck/DeckDetailView/index.tsx:594
 msgid "Save Local Changes"
 msgstr "디바이스내 변화 저장"
 
-#: src/components/deck/DeckDetailView/index.tsx:782
+#: src/components/deck/DeckDetailView/index.tsx:595
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
 msgstr "아컴디비에 공유하기 전에 디바이스의 변경사항을 저장해주십시오"
 
-#: src/components/deck/DeckDetailView/index.tsx:786
+#: src/components/deck/DeckDetailView/index.tsx:599
 msgid "Unsupported Operation"
 msgstr "지원하지 않는 기능"
 
-#: src/components/deck/DeckDetailView/index.tsx:787
+#: src/components/deck/DeckDetailView/index.tsx:600
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
 "upload it to ArkhamDB at this time.\n"
@@ -1671,17 +1665,17 @@ msgstr ""
 "\n"
 "이 덱을 업로드하기를 원하면, 이 덱을 복제한 후 복제한 덱을 업로드하는 방법이 있습니다."
 
-#: src/components/deck/DeckDetailView/index.tsx:794
+#: src/components/deck/DeckDetailView/index.tsx:607
 #: src/components/settings/DissonantVoicesLoginButton.tsx:37
 msgid "Sign In"
 msgstr "로그인"
 
-#: src/components/deck/DeckDetailView/index.tsx:800
-#: src/components/deck/DeckDetailView/index.tsx:995
+#: src/components/deck/DeckDetailView/index.tsx:613
+#: src/components/deck/DeckDetailView/index.tsx:808
 msgid "Upload to ArkhamDB"
 msgstr "아컴디비에 업로드"
 
-#: src/components/deck/DeckDetailView/index.tsx:801
+#: src/components/deck/DeckDetailView/index.tsx:614
 msgid ""
 "You can upload your deck to ArkhamDB to share with others.\n"
 "\n"
@@ -1691,33 +1685,34 @@ msgstr ""
 "\n"
 "이 작업 이후에 덱을 변경하기 위해서는 인터넷 연결이 필요하게 됩니다."
 
-#: src/components/deck/DeckDetailView/index.tsx:803
+#: src/components/deck/DeckDetailView/index.tsx:616
 msgid "Upload"
 msgstr "업로드"
 
-#: src/components/deck/DeckDetailView/index.tsx:825
+#: src/components/deck/DeckDetailView/index.tsx:638
 #, javascript-format
 msgid "Delete this upgrade (${ deck.version })"
 msgstr "이번 향상 삭제 (${ deck.version })"
 
-#: src/components/deck/DeckDetailView/index.tsx:830
-#: src/components/deck/DeckDetailView/index.tsx:837
+#: src/components/deck/DeckDetailView/index.tsx:643
+#: src/components/deck/DeckDetailView/index.tsx:650
 msgid "Delete all versions"
 msgstr "모든 버전 삭제"
 
-#: src/components/deck/DeckDetailView/index.tsx:848
+#: src/components/deck/DeckDetailView/index.tsx:661
+#: src/components/deck/DeckDetailView/index.tsx:823
 msgid "Delete deck"
 msgstr "덱 삭제"
 
-#: src/components/deck/DeckDetailView/index.tsx:849
+#: src/components/deck/DeckDetailView/index.tsx:662
 msgid "Are you sure you want to delete this deck?"
 msgstr "정말로 덱을 삭제하기를 원하십니까?"
 
-#: src/components/deck/DeckDetailView/index.tsx:410
+#: src/components/deck/DeckDetailView/index.tsx:287
 msgid "Deck has been deleted"
 msgstr "덱이 삭제되었습니다."
 
-#: src/components/deck/DeckDetailView/index.tsx:411
+#: src/components/deck/DeckDetailView/index.tsx:288
 msgid ""
 "It looks like you deleted this deck from ArkhamDB.\n"
 "\n"
@@ -1728,87 +1723,86 @@ msgstr ""
 "\n"
 "캠페인에 참가하고 있었다면, 동일한 조사자를 추가하여 캠페인 데이터를 복구할 수 있습니다."
 
-#: src/components/deck/DeckDetailView/index.tsx:413
+#: src/components/deck/DeckDetailView/index.tsx:290
 msgid "OK"
 msgstr "OK"
 
-#: src/components/deck/DeckDetailView/index.tsx:684
-#: src/components/deck/DeckDetailView/index.tsx:710
+#: src/components/deck/dialogs.tsx:184
 msgid "Error"
 msgstr "오류"
 
-#: src/components/deck/DeckDetailView/index.tsx:696
+#: src/components/deck/DeckDetailView/index.tsx:115
 msgid "Deleting"
 msgstr "삭제하는중"
 
-#: src/components/deck/DeckDetailView/index.tsx:894
+#: src/components/deck/DeckDetailView/index.tsx:707
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
 msgstr "${ xp } (${ adjustment }) 경험치"
 
 #: src/components/core/TabooSetPicker.tsx:49
-#: src/components/deck/controls/DeckTabooPickerButton.tsx:58
+#: src/components/deck/controls/DeckTabooPickerButton.tsx:63
 #: src/components/settings/SettingsTabooPicker.tsx:24
 msgid "Taboo List"
 msgstr "금기 목록"
 
 #: src/app/App.ts:312
-#: src/components/deck/DeckDetailView/index.tsx:936
+#: src/components/deck/DeckDetailView/index.tsx:749
 msgid "Cards"
 msgstr "카드"
 
-#: src/components/deck/DeckDetailView/index.tsx:941
+#: src/components/deck/DeckDetailView/index.tsx:754
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
 msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
 msgstr[0] "카드 ${ normalCardCount }장 (전체 ${ totalCardCount }장)"
 
-#: src/components/deck/DeckDetailView/index.tsx:972
+#: src/components/deck/DeckDetailView/index.tsx:785
 msgid "Save changes before upgrading"
 msgstr "향상하기 전에 저장하여야 합니다"
 
-#: src/components/deck/DeckDetailView/index.tsx:963
+#: src/components/deck/DeckDetailView/index.tsx:776
 msgid "Available XP"
 msgstr "사용가능한 경험치"
 
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:173
-#: src/components/deck/DeckDetailView/index.tsx:985
+#: src/components/deck/DeckDetailView/index.tsx:798
 msgid "Options"
 msgstr "옵션"
 
-#: src/components/deck/DeckDetailView/index.tsx:1001
+#: src/components/deck/DeckDetailView/index.tsx:814
 msgid "View on ArkhamDB"
 msgstr "아컴디비에서 보기"
 
-#: src/components/deck/DeckDetailView/index.tsx:1033
+#: src/components/deck/DeckDetailView/index.tsx:924
 msgid "Delete Deck"
 msgstr "덱 삭제"
 
-#: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:47
+#: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:36
 #: src/components/deck/controls/InvestigatorOptionsControl/InvestigatorOption.tsx:45
 msgid "Select Deck Size"
 msgstr "덱 크기 선택"
 
-#: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:43
+#: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:37
 msgid ""
 "Note: Deck size should only be selected at deck creation time, not between "
 "scenarios."
 msgstr "참고: 덱 크기는 덱을 생성하는 시점에서 선택하여야 하며, 시나리오 도중 변경할 수 없습니다."
 
-#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:46
-#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:49
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:37
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:42
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:56
 #: src/components/deck/controls/InvestigatorOptionsControl/InvestigatorOption.tsx:63
 msgid "Select Faction"
 msgstr "역할군 선택"
 
-#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:42
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:38
 msgid ""
 "Note: Secondary faction should only be selected at deck creation time, not "
 "between scenarios."
 msgstr "참고: 부 역할군은 덱을 생성하는 시점에서 선택하여야 하며, 시나리오 도중 변경할 수 없습니다."
 
 #: src/components/core/PackListComponent/index.tsx:56
-#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:50
 msgid "Parallel"
 msgstr "평행"
 
@@ -2161,12 +2155,12 @@ msgstr "플레이어 카드"
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:115
 #: src/components/card/CardDetailView/index.tsx:37
 #: src/components/card/CardDetailView/index.tsx:83
-#: src/components/card/DbCardDetailSwipeView.tsx:146
+#: src/components/card/DbCardDetailSwipeView.tsx:145
 msgid "FAQ"
 msgstr "FAQ"
 
 #: src/components/card/CardDetailView/index.tsx:108
-#: src/components/card/DbCardDetailSwipeView.tsx:113
+#: src/components/card/DbCardDetailSwipeView.tsx:112
 msgid "Allowed Cards"
 msgstr "허용된 카드"
 
@@ -2286,7 +2280,7 @@ msgid "Show back"
 msgstr "뒷면 보기"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:66
-#: src/components/deck/DeckDetailView/index.tsx:906
+#: src/components/deck/DeckDetailView/index.tsx:719
 msgid "Taboo"
 msgstr "금기"
 
@@ -2490,7 +2484,7 @@ msgstr "닫기"
 msgid "Choose Investigators"
 msgstr "조사자 선택"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/ShowDeckButton.tsx:37
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/ShowDeckButton.tsx:36
 msgid "View deck upgrade"
 msgstr "향상 덱 보기"
 
@@ -2530,7 +2524,7 @@ msgid "Select deck"
 msgstr "덱 선택"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:387
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:144
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:145
 msgid "View deck"
 msgstr "덱 보기"
 
@@ -2837,11 +2831,11 @@ msgstr "조사자 삭제"
 msgid "Trauma"
 msgstr "트라우마"
 
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:218
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:217
 msgid "View Deck"
 msgstr "덱 보기"
 
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:232
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:231
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:49
 msgid "Select Deck"
 msgstr "덱 선택"
@@ -2938,6 +2932,8 @@ msgid "Count"
 msgstr "셈하는 항목"
 
 #: src/components/campaign/CampaignChaosBagView.tsx:72
+#: src/components/deck/DeckDetailView/index.tsx:548
+#: src/components/deck/DeckDetailView/index.tsx:909
 msgid "Edit"
 msgstr "수정"
 
@@ -2992,12 +2988,12 @@ msgstr "봉인된 토큰"
 msgid "Seal Tokens"
 msgstr "토큰 봉인"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:118
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:126
 #: src/components/campaign/EditScenarioResultView.tsx:115
 msgid "Interlude"
 msgstr "막간"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:139
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:147
 #: src/components/campaign/EditScenarioResultView.tsx:122
 msgid "Resolution"
 msgstr "결말"
@@ -3532,7 +3528,8 @@ msgstr "조사자 덱 향상"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:192
 #: src/components/campaign/UpgradeDecksView/index.tsx:81
-#: src/components/deck/CardUpgradeDialog/index.tsx:233
+#: src/components/deck/CardUpgradeDialog/index.tsx:232
+#: src/components/deck/DeckDetailView/index.tsx:556
 msgid "Upgrade"
 msgstr "향상"
 
@@ -3715,8 +3712,8 @@ msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기�
 msgid "Not Now"
 msgstr "아직 아닙니다"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:132
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:140
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:148
 #: src/components/campaign/NewCampaignView/index.tsx:211
 msgid "(required)"
 msgstr "(요구됨)"
@@ -3855,7 +3852,7 @@ msgstr "약점 세트"
 msgid "Clean up broken campaigns"
 msgstr "부서진 캠페인 삭제"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:112
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:120
 msgid "Show Interludes"
 msgstr "막간 보기"
 
@@ -3876,7 +3873,7 @@ msgstr "저장만 하기"
 msgid "Settings"
 msgstr "설정"
 
-#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:52
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:49
 msgid ""
 "Parallel investigator options should only be selected at deck creation "
 "time, not between scenarios."
@@ -4075,13 +4072,13 @@ msgstr ""
 "캠페인 가이드를 사용하는데 있어서 문제에 직면하셨다면, arkhamcards@gmail.com 로 연락바랍니다. (역자 주: 앱 "
 "제작자의 연락처이며, 번역과는 무관합니다.)"
 
-#: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:72
+#: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:71
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:107
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
 msgstr "${ spentXp }/${ totalXp } 소비됨"
 
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:208
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:207
 msgid "Edit Trauma"
 msgstr "트라우마 수정"
 
@@ -4106,7 +4103,7 @@ msgstr ""
 "\n"
 "해당 조사자와 연관된 캠페인 기록 데이터는 사라집니다."
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:119
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:127
 msgid "Scenario or Interlude"
 msgstr "시나리오 또는 막간"
 
@@ -4192,7 +4189,7 @@ msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } 재보급 경험치 사용가능"
 
-#: src/components/settings/BackupView.tsx:85
+#: src/components/settings/BackupView.tsx:86
 msgid "Unexpected file type"
 msgstr "예상치 못한 파일 종류"
 
@@ -4201,11 +4198,11 @@ msgstr "예상치 못한 파일 종류"
 msgid "Backup Data"
 msgstr "백업 데이터"
 
-#: src/components/settings/BackupView.tsx:86
+#: src/components/settings/BackupView.tsx:87
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
 msgstr "아컴카드 백업 파일 확장자를 가진 파일을 예상하고 있습니다. (.acb/.json)"
 
-#: src/components/settings/BackupView.tsx:127
+#: src/components/settings/BackupView.tsx:128
 msgid ""
 "This feature will let you restore data from a lost device. If you were "
 "signed into ArkhamDB, please reauthorize before importing campaign data.\n"
@@ -4217,22 +4214,22 @@ msgstr ""
 "\n"
 "백업이 선택한 후, 어떠한 데이터를 불러올 지 선택할 수 있습니다."
 
-#: src/components/settings/BackupView.tsx:141
+#: src/components/settings/BackupView.tsx:142
 msgid ""
 "This will let you backup your local decks and campaigns for safe-keeping. "
 "This can also be used to move them to another device."
 msgstr "이 기능은 당신의 로컬 덱과 캠페인을 안전하게 백업하게 해줍니다. 또한 다른 기기로 이동하는데 사용할 수도 있습니다."
 
-#: src/components/settings/BackupView.tsx:169
+#: src/components/settings/BackupView.tsx:170
 msgid "Save backup"
 msgstr "백업 저장"
 
-#: src/components/settings/BackupView.tsx:58
+#: src/components/settings/BackupView.tsx:59
 msgid "Cannot request access"
 msgstr "접근 권한을 요청할 수 없습니다"
 
-#: src/components/settings/BackupView.tsx:55
-#: src/components/settings/BackupView.tsx:58
+#: src/components/settings/BackupView.tsx:56
+#: src/components/settings/BackupView.tsx:59
 msgid ""
 "It looks like you previously denied allowing Arkham Cards to read/write "
 "external files. Please visit your System settings to adjust this "
@@ -4337,8 +4334,8 @@ msgid "Doesn't get any"
 msgstr "아무것도 하지 않기"
 
 #: src/components/deck/DeckChecklistView/index.tsx:146
-#: src/components/deck/DeckDetailView/index.tsx:502
-#: src/components/deck/DeckDetailView/index.tsx:930
+#: src/components/deck/DeckDetailView/index.tsx:360
+#: src/components/deck/DeckDetailView/index.tsx:743
 msgid "Checklist"
 msgstr "체크리스트"
 
@@ -4455,7 +4452,7 @@ msgstr "시나리오 FAQ"
 msgid "Interlude FAQ"
 msgstr "막간 FAQ"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:307
+#: src/components/deck/CardUpgradeDialog/index.tsx:306
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
@@ -4532,7 +4529,7 @@ msgstr "덱 크기에 포함되지 않습니다"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:262
 #: src/components/campaign/MyCampaignsView/CampaignList.tsx:52
-#: src/components/deck/DeckDetailView/index.tsx:349
+#: src/components/deck/DeckDetailView/index.tsx:248
 msgid "Menu"
 msgstr "메뉴"
 
@@ -4774,17 +4771,17 @@ msgstr ""
 "향상 후 레벨 ${ level } 카드를 유지합니다\n"
 "덱 크기에 영향을 미치지 않습니다"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:217
+#: src/components/deck/CardUpgradeDialog/index.tsx:216
 msgid "Shrewd Analysis Rule"
 msgstr "재빠른 분석 규칙"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:219
+#: src/components/deck/CardUpgradeDialog/index.tsx:218
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
 msgstr[0] "이 향상은 ${ xpCost } 경험치가 필요합니다."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:224
+#: src/components/deck/CardUpgradeDialog/index.tsx:223
 #, javascript-format
 msgid ""
 "Two random cards will be chosen among the following choice:\n"
@@ -4799,11 +4796,11 @@ msgstr[0] ""
 "\n"
 "${ upgradeCards }"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:229
+#: src/components/deck/CardUpgradeDialog/index.tsx:228
 msgid "You can edit your collection under Settings to adjust the eligible choices."
 msgstr "설정의 보유게임을 수정하여 접근 가능한 선택지를 조정할 수 있습니다."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:41
+#: src/components/deck/CardUpgradeDialog/index.tsx:40
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] "
 "card, you may instead pay the full experience cost on the higher level "
@@ -4814,7 +4811,7 @@ msgstr ""
 "경험치 비용을 전부 지불하고 더 낮은 레벨의 카드를 당신의 덱에 남겨두어도 됩니다(이렇게 남겨둔 카드는 당신의 덱 크기를 계산하거나 "
 "당신의 덱에서 카드 사본 개수를 계산할 때 포함하지 않습니다)."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:277
+#: src/components/deck/CardUpgradeDialog/index.tsx:276
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use "
 "Shrewd Analysis to choose both upgrades randomly and only pay for one.\n"
@@ -4827,11 +4824,11 @@ msgstr ""
 "\n"
 "<i>참고: 이 앱은 두번째 사본의 '무료' 향상을 위해 경험치를 조절합니다.</i>"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:284
+#: src/components/deck/CardUpgradeDialog/index.tsx:283
 msgid "Upgrade results"
 msgstr "향상 결과"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:299
+#: src/components/deck/CardUpgradeDialog/index.tsx:298
 msgid "Upgrade with Shrewd Analysis"
 msgstr "'재빠른 분석'으로 향상하기"
 
@@ -4935,86 +4932,86 @@ msgstr ""
 msgid "Books"
 msgstr ""
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:129
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:130
 msgid "Upgraded"
 msgstr ""
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:130
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:131
 msgid "Added"
 msgstr ""
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:131
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:132
 msgid "Removed"
 msgstr ""
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:132
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:133
 msgid "Exiled"
 msgstr ""
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:143
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:144
 msgid "Latest upgrade"
 msgstr ""
 
-#: src/components/deck/hooks.ts:32
-#, javascript-format
+#: src/components/deck/NewDeckNavFooter.tsx:62
+#: src/components/deck/hooks.ts:33
 msgid "${ adjustedXp } XP"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:669
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:688
 msgid "Add cards"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:903
+#: src/components/deck/DeckDetailView/index.tsx:716
 #, javascript-format
 msgid "Deck #${ deck.id }"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:914
+#: src/components/deck/DeckDetailView/index.tsx:727
 msgid "Tools"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:919
+#: src/components/deck/DeckDetailView/index.tsx:732
 msgid "For balancing and evaluating"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:925
+#: src/components/deck/DeckDetailView/index.tsx:738
 msgid "Check your deck stability"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:931
+#: src/components/deck/DeckDetailView/index.tsx:744
 msgid "For easy deck assembly"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:951
+#: src/components/deck/DeckDetailView/index.tsx:764
 msgid "Story assets and weaknesses"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:989
+#: src/components/deck/DeckDetailView/index.tsx:802
 msgid "Clone deck"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1002
+#: src/components/deck/DeckDetailView/index.tsx:815
 msgid "Open in browser"
 msgstr ""
 
-#: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:36
+#: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:34
 #, javascript-format
 msgid "${ cardCount } Cards"
 msgstr ""
 
-#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:31
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:32
 msgid "Original front · Original back"
 msgstr ""
 
-#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:32
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:33
 msgid "Parallel front · Original back"
 msgstr ""
 
-#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:33
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:34
 msgid "Original front · Parallel back"
 msgstr ""
 
-#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:34
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:35
 msgid "Parallel front · Parallel back"
 msgstr ""
 
@@ -5023,6 +5020,7 @@ msgid "Card count"
 msgstr ""
 
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/CardCountLine.tsx:28
+#: src/components/deck/DeckDetailView/index.tsx:543
 #, javascript-format
 msgid "${ normalCardCount } · ${ totalCardCount } total"
 msgid_plural "${ normalCardCount } · ${ totalCardCount } total"
@@ -5035,7 +5033,7 @@ msgid_plural "${ bondedCardCount } bound"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/hooks.ts:29
+#: src/components/deck/hooks.ts:30
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
 msgstr[0] ""
@@ -5053,11 +5051,11 @@ msgstr ""
 msgid "Hide splash cards"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:413
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:419
 msgid "Limited Slots"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:419
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:425
 #, javascript-format
 msgid "${ count } of ${ limitSlotCount }"
 msgstr ""
@@ -5085,22 +5083,22 @@ msgstr ""
 msgid "Sign in to Dissonant Voices"
 msgstr ""
 
-#: src/components/deck/hooks.ts:22
-#: src/components/deck/hooks.ts:26
-#: src/components/deck/hooks.ts:29
+#: src/components/deck/hooks.ts:23
+#: src/components/deck/hooks.ts:27
+#: src/components/deck/hooks.ts:30
 #, javascript-format
 msgid "${ _adjustedXp } XP"
 msgstr ""
 
-#: src/components/deck/hooks.ts:22
+#: src/components/deck/hooks.ts:23
 msgid "0 unspent"
 msgstr ""
 
-#: src/components/deck/hooks.ts:26
+#: src/components/deck/hooks.ts:27
 msgid "${ overspent } overspent"
 msgstr ""
 
-#: src/components/settings/BackupView.tsx:55
+#: src/components/settings/BackupView.tsx:56
 msgid "Missing system permission"
 msgstr ""
 
@@ -5126,7 +5124,6 @@ msgstr ""
 msgid "Delete standalone"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:37
 #: src/components/campaign/SelectCampaignDialog/index.tsx:64
 msgid "Standalones"
 msgstr ""
@@ -5163,64 +5160,64 @@ msgid "Asset Filters"
 msgstr ""
 
 #: src/components/filter/CardAssetFilterView.tsx:103
-#: src/components/filter/CardFilterView/index.tsx:276
+#: src/components/filter/CardFilterView/index.tsx:272
 msgid "Sanity"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:285
+#: src/components/filter/CardFilterView/index.tsx:281
 msgid "Assets: All"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:288
+#: src/components/filter/CardFilterView/index.tsx:284
 #, javascript-format
 msgid "Assets: ${ searchParts }"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:385
+#: src/components/filter/CardFilterView/index.tsx:381
 msgid "Asset"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:388
+#: src/components/filter/CardFilterView/index.tsx:384
 msgid "Act"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:389
+#: src/components/filter/CardFilterView/index.tsx:385
 msgid "Agenda"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:391
+#: src/components/filter/CardFilterView/index.tsx:387
 msgid "Enemy"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:392
+#: src/components/filter/CardFilterView/index.tsx:388
 msgid "Treachery"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:393
+#: src/components/filter/CardFilterView/index.tsx:389
 msgid "Location"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:438
+#: src/components/filter/CardFilterView/index.tsx:434
 msgid "Actions"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:445
+#: src/components/filter/CardFilterView/index.tsx:441
 msgid "Engage"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:447
+#: src/components/filter/CardFilterView/index.tsx:443
 msgid "Play"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:448
+#: src/components/filter/CardFilterView/index.tsx:444
 msgid "Draw"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:449
+#: src/components/filter/CardFilterView/index.tsx:445
 msgid "Move"
 msgstr ""
 
-#: src/components/filter/CardFilterView/index.tsx:451
+#: src/components/filter/CardFilterView/index.tsx:447
 msgid "Resource"
 msgstr ""
 
@@ -5229,12 +5226,100 @@ msgstr ""
 msgid "Undo deck upgrade?"
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:46
+#: src/components/deck/CardUpgradeDialog/index.tsx:45
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead "
 "pay the full experience cost on the higher level version and leave the "
 "lower level version in your deck (it does not count towards your deck size "
 "or the number of copies of that card in your deck)."
+msgstr ""
+
+#: src/components/deck/NewDeckNavFooter.tsx:59
+#, javascript-format
+msgid "${ spentXP } of ${ _adjustedXp } XP spent"
+msgstr ""
+
+#: src/components/deck/NewDeckNavFooter.tsx:109
+msgid "Upgrading"
+msgstr ""
+
+#: src/components/deck/NewDeckNavFooter.tsx:109
+msgid "Editing"
+msgstr ""
+
+#: src/components/deck/dialogs.tsx:206
+msgid "Uplodaing deck"
+msgstr ""
+
+#: src/components/deck/dialogs.tsx:239
+msgid ""
+"If you have just completed a scenario, use the 'Upgrade' button which will "
+"track changes."
+msgstr ""
+
+#: src/components/deck/dialogs.tsx:242
+msgid "XP earned"
+msgstr ""
+
+#: src/components/deck/dialogs.tsx:250
+msgid "Adjustment:"
+msgstr ""
+
+#: src/components/deck/dialogs.tsx:274
+msgid "Adjust XP"
+msgstr ""
+
+#: src/components/deck/controls/DeckTabooPickerButton.tsx:52
+msgid "Select Taboo List"
+msgstr ""
+
+#: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:41
+#, javascript-format
+msgid "${ size } Card"
+msgid_plural "${ size } Cards"
+msgstr[0] ""
+
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:41
+#, javascript-format
+msgid "class_${ faction }"
+msgstr ""
+
+#: src/components/deck/controls/InvestigatorOptionsControl/ParallelInvestigatorPicker.tsx:48
+msgid "Select Parallel Investigator"
+msgstr ""
+
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:567
+msgid "Upgrade experience"
+msgstr ""
+
+#: src/components/deck/DeckDetailView/index.tsx:241
+msgid "Upgrading deck"
+msgstr ""
+
+#: src/components/deck/DeckDetailView/index.tsx:242
+msgid "Editing deck"
+msgstr ""
+
+#: src/components/deck/DeckDetailView/index.tsx:542
+#, javascript-format
+msgid "${ normalCards } card"
+msgid_plural "${ normalCards } cards"
+msgstr[0] ""
+
+#: src/components/deck/DeckDetailView/index.tsx:557
+msgid "Add scenario XP"
+msgstr ""
+
+#: src/components/deck/DeckDetailView/index.tsx:876
+msgid "Draw simulator"
+msgstr ""
+
+#: src/components/deck/DeckDetailView/index.tsx:897
+msgid "Upgrade with XP"
+msgstr ""
+
+#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:40
+msgid "Unknown campaign"
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
@@ -5448,83 +5533,83 @@ msgid "All"
 msgstr "전부"
 
 #: src/components/core/TabooSetPicker.tsx:52
-#: src/components/deck/controls/DeckTabooPickerButton.tsx:32
-#: src/components/deck/controls/DeckTabooPickerButton.tsx:59
+#: src/components/deck/controls/DeckTabooPickerButton.tsx:34
+#: src/components/deck/controls/DeckTabooPickerButton.tsx:67
 msgctxt "Taboo List"
 msgid "None"
 msgstr "없음"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:86
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:89
 msgctxt "header"
 msgid "Asset"
 msgid_plural "Assets"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:87
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:90
 msgctxt "header"
 msgid "Event"
 msgid_plural "Events"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:88
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:91
 msgctxt "header"
 msgid "Skill"
 msgid_plural "Skills"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:89
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:92
 msgctxt "header"
 msgid "Treachery"
 msgid_plural "Treacheries"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:90
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:93
 msgctxt "header"
 msgid "Enemy"
 msgid_plural "Enemies"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:91
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:94
 msgctxt "header"
 msgid "Location"
 msgid_plural "Locations"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:92
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:95
 msgctxt "header"
 msgid "Story"
 msgid_plural "Stories"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:93
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:96
 msgctxt "header"
 msgid "Act"
 msgid_plural "Acts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:94
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:97
 msgctxt "header"
 msgid "Agenda"
 msgid_plural "Agendas"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:95
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:98
 msgctxt "header"
 msgid "Investigator"
 msgid_plural "Investigators"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:96
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:99
 msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"

@@ -36,8 +36,13 @@ export default function DeckSizeSelectPicker({
     title: t`Select Deck Size`,
     description: editWarning ? t`Note: Deck size should only be selected at deck creation time, not between scenarios.` : undefined,
     items: map(sizes, (size, index) => {
+      const sizeCount = parseInt(size, 10);
       return {
-        title: ngettext(msgid`${size} Card`, t`${size} Cards`, parseInt(size, 10)),
+        title: ngettext(
+          msgid`${size} Card`,
+          `${size} Cards`,
+          sizeCount
+        ),
         value: index,
       };
     }),
