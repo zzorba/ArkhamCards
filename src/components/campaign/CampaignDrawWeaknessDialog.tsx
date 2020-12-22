@@ -143,7 +143,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
             passProps,
             options: {
               modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.overFullScreen :
+                OptionsModalPresentationStyle.fullScreen :
                 OptionsModalPresentationStyle.overCurrentContext,
             },
           },

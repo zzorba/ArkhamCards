@@ -51,7 +51,7 @@ export default function useChooseDeck() {
             passProps,
             options: {
               modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.overFullScreen :
+                OptionsModalPresentationStyle.fullScreen :
                 OptionsModalPresentationStyle.overCurrentContext,
             },
           },

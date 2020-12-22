@@ -63,7 +63,7 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
                 passProps,
                 options: {
                   modalPresentationStyle: Platform.OS === 'ios' ?
-                    OptionsModalPresentationStyle.overFullScreen :
+                    OptionsModalPresentationStyle.fullScreen :
                     OptionsModalPresentationStyle.overCurrentContext,
                 },
               },

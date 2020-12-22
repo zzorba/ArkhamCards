@@ -43,7 +43,7 @@ export function getDeckOptions(
       style: upgrade ? 'dark' : 'light',
     },
     modalPresentationStyle: Platform.OS === 'ios' ?
-      OptionsModalPresentationStyle.overFullScreen :
+      OptionsModalPresentationStyle.fullScreen :
       OptionsModalPresentationStyle.overCurrentContext,
     topBar: {
       backButton: {

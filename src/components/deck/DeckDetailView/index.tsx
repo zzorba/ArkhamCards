@@ -86,7 +86,7 @@ function DeckDetailView({
   login,
   upgrade,
 }: Props) {
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, colors, darkMode, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { width } = useWindowDimensions();
@@ -230,12 +230,23 @@ function DeckDetailView({
 
   const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
   useEffect(() => {
-    const textColor = mode === 'upgrade' ? colors.darkText : '#FFFFFF';
+    const textColors = {
+      view: '#FFFFFF',
+      edit: colors.L30,
+      upgrade: colors.darkText,
+    };
+    const textColor = textColors[mode];
     const backgroundColors = {
       view: factionColor,
       upgrade: colors.upgrade,
-      edit: colors.D20,
+      edit: colors.D10,
     };
+    const statusBarStyles: { [key: string]: 'light' | 'dark' | undefined } = {
+      view: 'light',
+      edit: darkMode ? 'dark' : 'light',
+      upgrade: 'dark',
+    };
+    const backgroundColor = backgroundColors[mode];
     const titles = {
       view: title,
       upgrade: t`Upgrading deck`,
@@ -261,6 +272,10 @@ function DeckDetailView({
 
 
     Navigation.mergeOptions(componentId, {
+      statusBar: {
+        style: statusBarStyles[mode],
+        backgroundColor,
+      },
       topBar: {
         title: {
           text: titles[mode],
@@ -271,13 +286,13 @@ function DeckDetailView({
           color: textColor,
         },
         background: {
-          color: backgroundColors[mode],
+          color: backgroundColor,
         },
         leftButtons,
         rightButtons,
       },
     });
-  }, [modal, componentId, mode, colors, factionColor, name, subtitle, title]);
+  }, [modal, darkMode, componentId, mode, colors, factionColor, name, subtitle, title]);
   const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(deck, parsedDeck);
 
   useEffect(() => {
@@ -838,11 +853,11 @@ function DeckDetailView({
     if (active) {
       return <AppIcon name="plus-thin" color={colors.L30} size={32} />;
     }
-    if (editable) {
-      return <AppIcon name="edit" color={colors.L30} size={24} />;
+    if (editable && mode === 'view') {
+      return <AppIcon name="edit" color="white" size={24} />;
     }
     return <AppIcon name="plus-thin" color={colors.L30} size={24} />;
-  }, [colors, editable]);
+  }, [colors, editable, mode]);
 
   const fab = useMemo(() => {
     const actionLabelStyle = {
@@ -888,7 +903,7 @@ function DeckDetailView({
         >
           <AppIcon name="chart" color={colors.L30} size={34} />
         </ActionButton.Item>
-        { editable && (
+        { editable && mode === 'view' && (
           <ActionButton.Item
             hideLabelShadow
             buttonColor={factionColor}
@@ -900,21 +915,32 @@ function DeckDetailView({
             <AppIcon name="upgrade" color={colors.L30} size={32} />
           </ActionButton.Item>
         ) }
-        { editable && (
+        { editable && (mode === 'view' ? (
           <ActionButton.Item
             hideLabelShadow
             buttonColor={factionColor}
             textStyle={actionLabelStyle}
             textContainerStyle={actionContainerStyle}
             title={t`Edit`}
-            onPress={onAddCardsPressed}
+            onPress={onEditPressed}
           >
             <AppIcon name="edit" color={colors.L30} size={24} />
           </ActionButton.Item>
-        ) }
+        ) : (
+          <ActionButton.Item
+            hideLabelShadow
+            buttonColor={factionColor}
+            textStyle={actionLabelStyle}
+            textContainerStyle={actionContainerStyle}
+            title={t`Add cards`}
+            onPress={onAddCardsPressed}
+          >
+            <AppIcon name="plus-thin" color={colors.L30} size={24} />
+          </ActionButton.Item>
+        )) }
       </ActionButton>
     );
-  }, [factionColor, fabOpen, editable, fabIcon, colors, toggleFabOpen, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
+  }, [factionColor, fabOpen, editable, mode, fabIcon, colors, toggleFabOpen, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
 
   if (!deck) {
     return (

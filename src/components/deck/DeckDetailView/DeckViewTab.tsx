@@ -503,7 +503,10 @@ export default function DeckViewTab(props: Props) {
 
   const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined): ControlType | undefined => {
     if (mode === 'view') {
-      return undefined;
+      return count !== undefined ? {
+        type: 'count',
+        count,
+      } : undefined;
     }
 
     const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
@@ -534,6 +537,7 @@ export default function DeckViewTab(props: Props) {
         invalid={item.invalid}
         onPressId={showSwipeCard}
         control={controlForCard(item, card, count)}
+        faded={count === 0}
         noBorder={section.last && index === (section.cards.length - 1)}
       />
     );

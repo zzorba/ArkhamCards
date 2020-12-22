@@ -120,7 +120,7 @@ export default function DecksSection({
             passProps,
             options: {
               modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.overFullScreen :
+                OptionsModalPresentationStyle.fullScreen :
                 OptionsModalPresentationStyle.overCurrentContext,
             },
           },

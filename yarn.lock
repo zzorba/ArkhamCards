@@ -10249,10 +10249,10 @@ react-native-navigation-hooks@6.2.0:
   dependencies:
     hoist-non-react-statics "3.3.2"
 
-react-native-navigation@7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.3.0.tgz#9c17ea88a05b072b65b2d13681afb90e5f01a753"
-  integrity sha512-dfC2r/9u7L6rDDV/KTFj0io+4IJEC4Ec/4TPLqhR1DUGx0b3R7yFbnNFWTUs3azRwFua9kYFVsrzCP9aFoqBng==
+react-native-navigation@7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.6.0.tgz#8f28018f8801b9871d085b105f6300c1c12039d1"
+  integrity sha512-loCSdGCoic8UtcANm0uPugWBJTJgxDlfQgvgkH7dFtMkj/bqRpKOvJD1Pt79Tx9v2McZzNTrNu2symkmmN6tGg==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"

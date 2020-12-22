@@ -560,7 +560,7 @@ export function parseDeck(
   const cardIds = flatMap(
     sortBy(
       sortBy(
-        filter(keys(slots), id => !!cards[id]),
+        filter(uniq([...keys(slots), ...keys(deck.slots)]), id => !!cards[id]),
         id => {
           const card = cards[id];
           return (card && card.xp) || 0;
@@ -578,15 +578,19 @@ export function parseDeck(
       }
       return {
         id,
-        quantity: slots[id],
+        quantity: slots[id] || 0,
         invalid: !validation.canIncludeCard(card, false) || (card.deck_limit !== undefined && slots[id] > card.deck_limit),
         limited: validation.isCardLimited(card),
       };
     });
   const specialCards = cardIds.filter(c =>
-    (isSpecialCard(cards[c.id]) && slots[c.id] > 0) || ignoreDeckLimitSlots[c.id] > 0);
+    (isSpecialCard(cards[c.id]) && c.quantity >= 0) || ignoreDeckLimitSlots[c.id] > 0);
   const normalCards = cardIds.filter(c =>
-    !isSpecialCard(cards[c.id]) && slots[c.id] > (ignoreDeckLimitSlots[c.id] || 0));
+    !isSpecialCard(cards[c.id]) && (
+      c.quantity > (ignoreDeckLimitSlots[c.id] || 0)
+    ) || (
+      (ignoreDeckLimitSlots[c.id] || 0) === 0 && c.quantity >= 0
+    ));
 
   const deckCards = getCards(cards, slots, ignoreDeckLimitSlots);
   const problem = validation.getProblem(deckCards) || undefined;

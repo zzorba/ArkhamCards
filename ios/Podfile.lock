@@ -302,11 +302,11 @@ PODS:
     - React-Core (= 0.63.4)
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
-  - ReactNativeNavigation (7.3.0):
+  - ReactNativeNavigation (7.6.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.3.0)
+    - ReactNativeNavigation/Core (= 7.6.0)
   - rn-fetch-blob (0.12.0):
     - React-Core
   - RNCAsyncStorage (1.13.2):
@@ -566,7 +566,7 @@ SPEC CHECKSUMS:
   React-RCTText: 5c51df3f08cb9dedc6e790161195d12bac06101c
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
-  ReactNativeNavigation: c2dcda2b86e32090c443182206c915107d03106f
+  ReactNativeNavigation: 91c082139a6ee8ef7d5c04c70995fdd2e8ababc9
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 05bae7ecfab1cbd5441993f1ca098f7c3b3f8d0e
   RNColorMatrixImageFilters: bad88a55a2b1ea57efcaff5a03297d25bd83947e
