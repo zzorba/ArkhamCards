@@ -229,18 +229,18 @@ function DeckDetailView({
   useEffect(() => {
     const textColors = {
       view: '#FFFFFF',
-      edit: colors.L30,
+      edit: COLORS.L30,
       upgrade: COLORS.D30,
     };
     const textColor = textColors[mode];
     const backgroundColors = {
       view: factionColor,
-      edit: colors.D10,
+      edit: darkMode ? COLORS.D20 : COLORS.D10,
       upgrade: colors.upgrade,
     };
     const statusBarStyles: { [key: string]: 'light' | 'dark' | undefined } = {
       view: 'light',
-      edit: darkMode ? 'dark' : 'light',
+      edit: 'light',
       upgrade: 'dark',
     };
     const backgroundColor = backgroundColors[mode];

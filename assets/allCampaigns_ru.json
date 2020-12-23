@@ -35367,6 +35367,7 @@
     "set_aside_cards",
     "setup_blob",
     "setup_locations",
+    "location_layout",
     "place_countermeasures",
     "encounter_deck",
     "countermeasures_rule",
@@ -35384,6 +35385,7 @@
     "set_aside_cards",
     "setup_blob",
     "setup_locations",
+    "location_layout",
     "place_countermeasures",
     "encounter_deck",
     "countermeasures_rule",
@@ -35538,6 +35540,51 @@
         {
           "text": "Each investigator begins play at the Temporary HQ."
         }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Расположение локаций",
+      "note": "<i>Note: The positions of the Research Site, Temporary HQ, and Fungus Mound may differ from this diagram.</i>",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "85014_back",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "85014_back",
+          "85014_back",
+          "85014_back",
+          "blank"
+        ],
+        [
+          "85014_back",
+          "85012_back",
+          "85010_back",
+          "85014_back",
+          "85013_back"
+        ],
+        [
+          "blank",
+          "85014_back",
+          "85011_back",
+          "85014_back",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "85014_back",
+          "blank",
+          "blank"
+        ]
       ]
     },
     {
@@ -42127,6 +42174,7 @@
     "gather_more_encounter_sets",
     "setup_agenda_deck",
     "setup_locations",
+    "location_layout",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -42145,6 +42193,7 @@
     "gather_more_encounter_sets",
     "setup_agenda_deck",
     "setup_locations",
+    "location_layout",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -42489,6 +42538,123 @@
         {
           "text": "Each investigator begins play at Arkham."
         }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Расположение локаций",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "86019_back",
+          "blank",
+          "86020_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "86018_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "86014_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "86021_back",
+          "blank",
+          "blank",
+          "blank",
+          "86015_back",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "86022_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "86016_back",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "86023_back",
+          "blank",
+          "blank",
+          "blank",
+          "86017_back",
+          "blank",
+          "blank",
+          "blank"
+        ]
       ]
     },
     {
@@ -71488,6 +71654,7 @@
     "setup_locations",
     "set_aside_cards",
     "setup_devil_reef",
+    "location_layout",
     "setup_unfathomable_depths",
     "setup_tidal_tunnels",
     "setup_act_deck",
@@ -71632,6 +71799,99 @@
         {
           "text": "Do not place them <i>adjacent</i> to Churning Waters—these locations are connected not via adjacency, but via their connection symbols."
         }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Расположение локаций",
+      "horizontal": "half",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "07169_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "07169_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "07169_back",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "07168_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "07178",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "07169_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "blank",
+          "07169_back",
+          "blank"
+        ]
       ]
     },
     {
@@ -72232,88 +72492,26 @@
       "vertical": "normal",
       "locations": [
         [
-          "07142",
-          "07129",
-          "07134",
-          "07141",
-          "07132"
+          "07142_back",
+          "07129_back",
+          "07134_back",
+          "07141_back",
+          "07132_back"
         ],
         [
-          "07135",
-          "07137",
-          "07139",
-          "07136",
-          "07138"
+          "07135_back",
+          "07137_back",
+          "07139_back",
+          "07136_back",
+          "07138_back"
         ],
         [
-          "07130",
-          "07140",
-          "07133",
-          "07131",
-          "07143"
+          "07130_back",
+          "07140_back",
+          "07133_back",
+          "07131_back",
+          "07143_back"
         ]
-      ],
-      "location_names": [
-        {
-          "code": "07142",
-          "name": "Railroad Station"
-        },
-        {
-          "code": "07129",
-          "name": "Esoteric Order of Dagon"
-        },
-        {
-          "code": "07134",
-          "name": "New Church Green"
-        },
-        {
-          "code": "07141",
-          "name": "Marsh Refinery"
-        },
-        {
-          "code": "07132",
-          "name": "The House on Water Street"
-        },
-        {
-          "code": "07135",
-          "name": "The Little Bookshop"
-        },
-        {
-          "code": "07137",
-          "name": "First National Grocery"
-        },
-        {
-          "code": "07139",
-          "name": "Innsmouth Square"
-        },
-        {
-          "code": "07136",
-          "name": "Fish Street Bridge"
-        },
-        {
-          "code": "07138",
-          "name": "Innsmouth Harbour"
-        },
-        {
-          "code": "07130",
-          "name": "Sawbone Alley"
-        },
-        {
-          "code": "07140",
-          "name": "Gilman House"
-        },
-        {
-          "code": "07133",
-          "name": "Innsmouth Jail"
-        },
-        {
-          "code": "07131",
-          "name": "Shoreward Slums"
-        },
-        {
-          "code": "07143",
-          "name": "Desolate Coastline"
-        }
       ],
       "resource_dividers": [
         [

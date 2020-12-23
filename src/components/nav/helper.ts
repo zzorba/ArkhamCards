@@ -18,6 +18,7 @@ import { ThemeColors } from '@styles/theme';
 import { StyleContextType } from '@styles/StyleContext';
 import Database from '@data/Database';
 import { where } from '@data/query';
+import COLORS from '@styles/colors';
 
 export function getDeckOptions(
   colors: ThemeColors,
@@ -37,7 +38,7 @@ export function getDeckOptions(
   investigator?: Card,
 ): Options {
   const topBarOptions: OptionsTopBar = inputOptions.topBar || {};
-  const textColor = upgrade ? colors.darkText : '#FFFFFF';
+  const textColor = upgrade ? COLORS.D30 : '#FFFFFF';
   const options: Options = {
     statusBar: {
       style: upgrade ? 'dark' : 'light',

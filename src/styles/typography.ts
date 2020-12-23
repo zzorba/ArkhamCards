@@ -109,16 +109,16 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
     },
     regular: {
       fontFamily: 'Alegreya-Regular',
-      fontWeight: '400',
+      fontWeight: Platform.OS === 'ios' ? '400' : undefined,
     },
     bold: {
       fontFamily: 'Alegreya-Bold',
-      fontWeight: '700',
+      fontWeight: Platform.OS === 'ios' ? '700' : undefined,
       color: colors.darkText,
     },
     boldItalic: {
       fontFamily: 'Alegreya-ExtraBoldItalic',
-      fontWeight: '700',
+      fontWeight: Platform.OS === 'ios' ? '700' : undefined,
       color: colors.darkText,
     },
     italic: {

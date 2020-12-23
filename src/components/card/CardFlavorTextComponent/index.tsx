@@ -47,14 +47,16 @@ function ArkhamIconRule(style: StyleContextType): MarkdownRule<WithIconName, Sta
   };
 }
 
-const CiteTagRule: MarkdownRule<WithText, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<cite>(.+?)<\\/cite>')),
-  order: 1,
-  parse: (capture) => {
-    return { text: `  — ${capture[1]}` };
-  },
-  render: CiteTagNode,
-};
+function CiteTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<cite>(.+?)<\\/cite>')),
+    order: 1,
+    parse: (capture) => {
+      return { text: `  — ${capture[1]}` };
+    },
+    render: CiteTagNode(style),
+  };
+}
 
 function UnderlineHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
   return {
@@ -188,7 +190,7 @@ export default function CardFlavorTextComponent(
         bTag: BoldHtmlTagRule(context),
         uTag: UnderlineHtmlTagRule(context),
         brTag: BreakTagRule(context),
-        citeTag: CiteTagRule,
+        citeTag: CiteTagRule(context),
         fancyTag: FancyHtmlTagRule(context),
         centerTag: CenterHtmlTagRule,
         rightTag: RightHtmlTagRule,
