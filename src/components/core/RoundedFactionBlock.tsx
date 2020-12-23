@@ -13,10 +13,11 @@ interface Props {
 }
 
 export default function RoundedFactionBlock({ header, footer, children, faction }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[
       styles.block,
+      shadow.large,
       {
         borderColor: colors.faction[faction].background,
         backgroundColor: colors.background,
@@ -37,9 +38,5 @@ const styles = StyleSheet.create({
     marginTop: s,
     borderRadius: 9,
     borderWidth: 1,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 8,
-    shadowColor: '#000000',
-    shadowOpacity: 0.25,
   },
 });

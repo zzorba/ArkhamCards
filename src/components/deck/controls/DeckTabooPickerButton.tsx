@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { find, map } from 'lodash';
 import { format } from 'date-fns';
 import { useSelector } from 'react-redux';
@@ -54,6 +54,13 @@ export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disable
     selectedValue,
     onValueChange: onTabooChange,
   });
+  useEffect(() => {
+    if (open) {
+      showDialog();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
   if (!open && (tabooSetId === undefined || tabooSetId === 0) && (settingsTabooSetId === undefined || settingsTabooSetId === 0)) {
     return null;
   }

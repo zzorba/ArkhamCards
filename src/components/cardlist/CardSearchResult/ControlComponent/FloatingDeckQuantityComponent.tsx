@@ -13,9 +13,9 @@ interface Props {
 }
 
 export default function FloatingDeckQuantityComponent({ deckId, code, limit }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { colors, shadow } = useContext(StyleContext);
   return (
-    <View style={[styles.fab, { backgroundColor: colors.D20 }]}>
+    <View style={[styles.fab, shadow.large, { backgroundColor: colors.D20 }]}>
       <DeckQuantityComponent
         deckId={deckId}
         code={code}
@@ -39,9 +39,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 8,
-    shadowColor: '#000000',
-    shadowOpacity: 0.25,
   },
 });

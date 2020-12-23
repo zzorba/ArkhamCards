@@ -1,4 +1,19 @@
-const starterDecks: { [investigatorId: string]: {} } = {
+import { DeckMeta, Slots } from '@actions/types';
+
+const starterDecks: {
+  cards: { [investigatorId: string]: Slots | undefined; };
+  meta: { [investigatorId: string]: DeckMeta | undefined; };
+} = {
+  meta: {
+    '06002': {
+      deck_size_selected: '30',
+      faction_selected: 'rogue',
+    },
+    '06003': {
+      faction_selected: 'guardian',
+    },
+  },
+  cards :{
   // Roland Banks
   '01001': {
     '01000': 1,
@@ -1224,6 +1239,6 @@ const starterDecks: { [investigatorId: string]: {} } = {
     '02113': 2,
     '04201': 2,
   },
-};
+}};
 
 export default starterDecks;

@@ -13,6 +13,11 @@ export interface StyleContextType {
   backgroundStyle: ViewStyle;
   borderStyle: ViewStyle;
   disabledStyle: ViewStyle;
+  shadow: {
+    small: ViewStyle;
+    medium: ViewStyle;
+    large: ViewStyle;
+  };
 }
 
 export const DEFAULLT_STYLE_CONTEXT = {
@@ -29,6 +34,29 @@ export const DEFAULLT_STYLE_CONTEXT = {
   },
   disabledStyle: {
     backgroundColor: LIGHT_THEME.disableOverlay,
+  },
+  shadow: {
+    large: {
+      shadowOffset: { width: 0, height: 4 },
+      shadowRadius: 8,
+      shadowColor: 'black',
+      shadowOpacity: 0.25,
+      elevation: 6,
+    },
+    medium: {
+      shadowOffset: { width: 0, height: 2 },
+      shadowRadius: 4,
+      shadowColor: 'black',
+      shadowOpacity: 0.25,
+      elevation: 4,
+    },
+    small: {
+      shadowOffset: { width: 0, height: 1 },
+      shadowRadius: 2,
+      shadowColor: 'black',
+      shadowOpacity: 0.25,
+      elevation: 2,
+    },
   },
 };
 

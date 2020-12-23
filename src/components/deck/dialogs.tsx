@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState, useCallback, useContext, useRef } from 'react';
 import { forEach, keys, map, range, throttle } from 'lodash';
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeSyntheticEvent, StyleSheet, Text, TextInputSubmitEditingEventData, View } from 'react-native';
 import deepDiff from 'deep-diff';
 import { Navigation } from 'react-native-navigation';
 import { Action } from 'redux';
@@ -16,9 +16,10 @@ import { saveDeckChanges, uploadLocalDeck } from '@components/deck/actions';
 import { updateCampaign } from '@components/campaign/actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
-import space from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults } from './hooks';
+import { TextInput } from 'react-native-gesture-handler';
 
 interface DialogOptions {
   title: string;
@@ -33,6 +34,7 @@ interface DialogOptions {
   content: React.ReactNode;
   allowDismiss?: boolean;
   alignment?: 'center' | 'bottom';
+  avoidKeyboard?: boolean;
 }
 
 export function useDialog({
@@ -42,6 +44,7 @@ export function useDialog({
   content,
   allowDismiss,
   alignment,
+  avoidKeyboard,
 }: DialogOptions): {
   dialog: React.ReactNode;
   visible: boolean;
@@ -72,11 +75,12 @@ export function useDialog({
         } : undefined}
         visible={visible}
         alignment={alignment}
+        avoidKeyboard={avoidKeyboard}
       >
         { content }
       </NewDialog>
     );
-  }, [title, confirm, dismiss, visible, alignment, onDismiss, onConfirm, content, allowDismiss]);
+  }, [title, confirm, dismiss, visible, alignment, onDismiss, onConfirm, content, allowDismiss, avoidKeyboard]);
   return {
     visible,
     setVisible,
@@ -84,6 +88,80 @@ export function useDialog({
   };
 }
 
+interface TextDialogOptions {
+  title: string;
+  value: string;
+  placeholder?: string;
+  onValueChange: (value: string) => void;
+}
+export function useTextDialog({
+  title,
+  value,
+  onValueChange,
+  placeholder,
+}: TextDialogOptions): {
+  dialog: React.ReactNode;
+  showDialog: () => void;
+} {
+  const { colors, typography } = useContext(StyleContext);
+  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const [liveValue, setLiveValue] = useState(value);
+  useEffect(() => {
+    setLiveValue(value);
+  }, [value, setLiveValue]);
+
+  const onSave = useCallback(() => {
+    onValueChange(liveValue);
+    if (setVisibleRef.current) {
+      setVisibleRef.current(false);
+    }
+  }, [onValueChange, setVisibleRef, liveValue]);
+  const onSubmit = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+    onValueChange(e.nativeEvent.text);
+    if (setVisibleRef.current) {
+      setVisibleRef.current(false);
+    }
+  }, [onValueChange, setVisibleRef]);
+  const content = useMemo(() => {
+    return (
+      <View style={[space.marginS, { width: '100% ' }]}>
+        <TextInput
+          style={[
+            { padding: s, paddingTop: xs + s, borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20 },
+            typography.text,
+          ]}
+          value={liveValue}
+          placeholder={placeholder}
+          placeholderTextColor={colors.lightText}
+          onChangeText={setLiveValue}
+          onSubmitEditing={onSubmit}
+        />
+      </View>
+    );
+  }, [setLiveValue, onSubmit, placeholder, liveValue, typography, colors]);
+  const { setVisible, dialog } = useDialog({
+    title,
+    allowDismiss: true,
+    avoidKeyboard: true,
+    content,
+    alignment: 'center',
+    confirm: {
+      title: t`Done`,
+      onPress: onSave,
+    },
+    dismiss: {
+      title: t`Cancel`,
+    },
+  });
+  useEffect(() => {
+    setVisibleRef.current = setVisible;
+  }, [setVisible]);
+  const showDialog = useCallback(() => setVisible(true), [setVisible]);
+  return {
+    dialog,
+    showDialog,
+  };
+}
 
 interface PickerItem<T> {
   icon?: string;
@@ -174,7 +252,9 @@ export function useBasicDialog(title: string): BasicDialogResult {
       { saveError }
     </Text>
   ) : (
-    <LoadingSpinner large inline />
+    <View style={[space.paddingTopL, space.paddingBottomL]}>
+      <LoadingSpinner large inline />
+    </View>
   ), [saveError, typography.small]);
   const {
     visible,
@@ -462,7 +542,7 @@ export function useSaveDialog(
         setSaving(false);
       }
     } catch(e) {
-      await handleSaveError(e);
+      handleSaveError(e);
     }
   }, [deck, saving, addedBasicWeaknesses, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, dispatch, deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet]);
 

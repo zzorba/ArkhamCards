@@ -5,6 +5,7 @@ import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import space, { xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   title: string;
@@ -49,9 +50,14 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
     gray: colors.M,
   };
   const iconColor = {
-    red: colors.L30,
-    gold: colors.D20,
+    red: COLORS.white,
+    gold: COLORS.D20,
     gray: colors.L10,
+  };
+  const textColor = {
+    red: COLORS.white,
+    gold: COLORS.D30,
+    gray: colors.L30,
   };
   return (
     <Ripple style={[
@@ -69,8 +75,8 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
           <AppIcon name={icon} size={ICON_SIZE[icon]} color={iconColor[color]} />
         </View>
         <View style={styles.column}>
-          <Text style={[typography.large, color === 'gold' ? typography.dark : typography.inverted]}>{ title }</Text>
-          { !!detail && <Text style={[typography.smallLabel, typography.italic, color === 'gold' ? typography.dark : typography.inverted]}>{ detail }</Text> }
+          <Text style={[typography.large, { color: textColor[color] }]}>{ title }</Text>
+          { !!detail && <Text style={[typography.smallLabel, typography.italic, { color: textColor[color] }]}>{ detail }</Text> }
         </View>
       </View>
     </Ripple>

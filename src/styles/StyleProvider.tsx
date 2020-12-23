@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useColorScheme } from 'react-native-appearance';
 import { ThemeProvider } from 'react-native-elements';
 
-import StyleContext from './StyleContext';
+import StyleContext, { DEFAULLT_STYLE_CONTEXT } from './StyleContext';
 import { getAppFontScale, getLangPreference, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
@@ -57,6 +57,7 @@ export default function StyleProvider({ children } : Props) {
   const styleTypography = useMemo(() => typography(appFontScale, colors, gameFont), [appFontScale, colors, gameFont]);
   const context = useMemo(() => {
     return {
+      ...DEFAULLT_STYLE_CONTEXT,
       darkMode,
       fontScale: fontScale * appFontScale,
       typography: styleTypography,

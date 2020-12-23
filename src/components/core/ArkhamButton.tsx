@@ -12,13 +12,13 @@ interface Props {
 }
 
 function ArkhamButton({ icon, title, onPress }: Props) {
-  const { colors, fontScale, typography } = useContext(StyleContext);
+  const { colors, fontScale, shadow, typography } = useContext(StyleContext);
   const height = 18 * fontScale + 20;
   return (
     <View style={styles.wrapper}>
       <Ripple
         style={[
-          styles.buttonStyle, {
+          shadow.medium, {
             backgroundColor: colors.M,
             height,
             borderRadius: height / 2,
@@ -50,12 +50,6 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     paddingTop: 10,
     paddingBottom: 10,
-  },
-  buttonStyle: {
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    shadowColor: '#000000',
-    shadowOpacity: 0.25,
   },
   row: {
     flexDirection: 'row',

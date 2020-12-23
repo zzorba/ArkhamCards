@@ -4194,7 +4194,7 @@
     },
     {
       "id": "house_burned",
-      "text": "<i>Your house has burned to the ground.</i>",
+      "text": "<i>Votre maison a entièrement brûlé.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -7015,7 +7015,7 @@
                 }
               ]
             },
-            "text": "Inscrivez une <b>Certitude</b> ou un <b>Doute</b>",
+            "text": "Inscrivez une Certitude ou un Doute",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -9778,7 +9778,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Constituez la réserve du Chaos en utilisant les pions suivants : +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -9808,13 +9808,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Ne modifiez pas la réserve du Chaos pendant l'introduction"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Sélectionnez l'un des pions suivants au hasard : [cultist], [tablet] ou [elder_thing]. Ajoutez 2 exemplaires du pion sélectionné dans la réserve du Chaos.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -9863,7 +9863,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "L'investigateur principal ajoute la faiblesse L'Homme au Masque Blême (La Route de Carcosa #59) à son deck.",
       "effects": [
         {
           "type": "add_card",
@@ -10268,7 +10268,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Constituez la réserve du Chaos en utilisant les pions suivants : +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -10299,13 +10299,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Ne modifiez pas la réserve du Chaos pendant l'introduction"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Sélectionnez l'un des pions suivants au hasard : [cultist], [tablet] ou [elder_thing]. Ajoutez 2 exemplaires du pion sélectionné dans la réserve du Chaos.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -10354,7 +10354,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "L'investigateur principal ajoute la faiblesse L'Homme au Masque Blême (La Route de Carcosa #59) à son deck.",
       "effects": [
         {
           "type": "add_card",
@@ -10365,7 +10365,7 @@
     },
     {
       "id": "found_nigels_home",
-      "text": "<i>You found Nigel's home.</i>",
+      "text": "<i>Vous avez trouvé la demeure de Nigel.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -10377,7 +10377,7 @@
     },
     {
       "id": "no_haruko",
-      "text": "<i>Ishimaru Haruko is not listed under VIPs Interviewed or VIPs Slain.</i>"
+      "text": "<i>Ishimaru Haruko n'est inscrite ni sous la mention « Personnalités Interrogées », ni sous la mention « Personnalités Tuées ».</i>"
     },
     {
       "id": "check_intro_condition",
@@ -10683,7 +10683,7 @@
                 }
               ]
             },
-            "text": "Inscrivez une <b>Certitude</b> ou un <b>Doute</b>",
+            "text": "Inscrivez une Certitude ou un Doute",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -11058,7 +11058,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Constituez la réserve du Chaos en utilisant les pions suivants : +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -11089,13 +11089,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Ne modifiez pas la réserve du Chaos pendant l'introduction"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Sélectionnez l'un des pions suivants au hasard : [cultist], [tablet] ou [elder_thing]. Ajoutez 2 exemplaires du pion sélectionné dans la réserve du Chaos.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -11144,11 +11144,11 @@
     },
     {
       "id": "no_constance",
-      "text": "<i>Constance Dumaine is not listed under VIPs Interviewed or VIPs Slain.</i>"
+      "text": "<i>Constance Dumaine n’est inscrite ni sous la mention « Personnalités Interrogées », ni sous la mention « Personnalités Tuées ».</i>"
     },
     {
       "id": "no_onyx_clasp",
-      "text": "<i>You did not take the onyx clasp.</i>"
+      "text": "<i>Vous n’avez pas pris la broche en onyx.</i>"
     },
     {
       "id": "check_followers_of_the_sign_found_way",
@@ -16918,7 +16918,7 @@
     },
     {
       "id": "house_burned",
-      "text": "<i>Your house has burned to the ground.</i>",
+      "text": "<i>Votre maison a entièrement brûlé.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -19646,7 +19646,7 @@
                 }
               ]
             },
-            "text": "Inscrivez une <b>Certitude</b> ou un <b>Doute</b>",
+            "text": "Inscrivez une Certitude ou un Doute",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -21896,7 +21896,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Constituez la réserve du Chaos en utilisant les pions suivants : +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -21926,13 +21926,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Ne modifiez pas la réserve du Chaos pendant l'introduction"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Sélectionnez l'un des pions suivants au hasard : [cultist], [tablet] ou [elder_thing]. Ajoutez 2 exemplaires du pion sélectionné dans la réserve du Chaos.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -21981,7 +21981,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "L'investigateur principal ajoute la faiblesse L'Homme au Masque Blême (La Route de Carcosa #59) à son deck.",
       "effects": [
         {
           "type": "add_card",
@@ -22392,7 +22392,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Constituez la réserve du Chaos en utilisant les pions suivants : +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -22423,13 +22423,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Ne modifiez pas la réserve du Chaos pendant l'introduction"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Sélectionnez l'un des pions suivants au hasard : [cultist], [tablet] ou [elder_thing]. Ajoutez 2 exemplaires du pion sélectionné dans la réserve du Chaos.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -22478,7 +22478,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "L'investigateur principal ajoute la faiblesse L'Homme au Masque Blême (La Route de Carcosa #59) à son deck.",
       "effects": [
         {
           "type": "add_card",
@@ -22489,7 +22489,7 @@
     },
     {
       "id": "found_nigels_home",
-      "text": "<i>You found Nigel's home.</i>",
+      "text": "<i>Vous avez trouvé la demeure de Nigel.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -22501,7 +22501,7 @@
     },
     {
       "id": "no_haruko",
-      "text": "<i>Ishimaru Haruko is not listed under VIPs Interviewed or VIPs Slain.</i>"
+      "text": "<i>Ishimaru Haruko n'est inscrite ni sous la mention « Personnalités Interrogées », ni sous la mention « Personnalités Tuées ».</i>"
     },
     {
       "id": "check_intro_condition",
@@ -22784,7 +22784,7 @@
                 }
               ]
             },
-            "text": "Inscrivez une <b>Certitude</b> ou un <b>Doute</b>",
+            "text": "Inscrivez une Certitude ou un Doute",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -23190,7 +23190,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Constituez la réserve du Chaos en utilisant les pions suivants : +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -23221,13 +23221,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Ne modifiez pas la réserve du Chaos pendant l'introduction"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "Sélectionnez l'un des pions suivants au hasard : [cultist], [tablet] ou [elder_thing]. Ajoutez 2 exemplaires du pion sélectionné dans la réserve du Chaos.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -23276,11 +23276,11 @@
     },
     {
       "id": "no_constance",
-      "text": "<i>Constance Dumaine is not listed under VIPs Interviewed or VIPs Slain.</i>"
+      "text": "<i>Constance Dumaine n’est inscrite ni sous la mention « Personnalités Interrogées », ni sous la mention « Personnalités Tuées ».</i>"
     },
     {
       "id": "no_onyx_clasp",
-      "text": "<i>You did not take the onyx clasp.</i>"
+      "text": "<i>Vous n’avez pas pris la broche en onyx.</i>"
     },
     {
       "id": "check_followers_of_the_sign_found_way",
@@ -30885,7 +30885,7 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Ne modifiez pas la réserve du Chaos pendant l'introduction"
         }
       ]
     },
@@ -30906,7 +30906,7 @@
         "choices": [
           {
             "id": "gave_relic_to_alejandro",
-            "text": "<i>The investigators gave the relic to Alejandro.</i>",
+            "text": "<i>Les investigateurs ont confié la relique à Alejandro.</i>",
             "steps": [
               "intro_2"
             ],
@@ -30921,7 +30921,7 @@
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "<i>The investigators gave the relic to Harlan Earnstone.</i>",
+            "text": "<i>Les investigateurs ont confié la relique à Harlan Earnstone.</i>",
             "steps": [
               "check_alejandro_recovered_relic"
             ],
@@ -31224,7 +31224,7 @@
           {
             "id": "on_your_own",
             "text": "« Nous devrions nous méfier d'eux. »",
-            "description": "For the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead.",
+            "description": "Pour le reste de la campagne, aucun investigateur ne peut inclure Alejandro Vela ou Ichtaca dans son deck. Chaque fois qu'un investigateur se voit offrir la possibilité d'inclure l'un ou l'autre, chaque investigateur reçoit 2 points d'expérience à la place.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -53093,7 +53093,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "oneironauts_searching_for_the_truth",
-        "prompt": "Si les investigateurs de <i>La Toile des Songes</i>\" demandent si <i>le chat noir est à la recherche de la vérité</i>; dites leur non.",
+        "prompt": "Si les investigateurs de <i>La Toile des Songes</i> demandent si <i>le chat noir est à la recherche de la vérité</i>; dites leur non.",
         "decision": "no_change"
       }
     },
@@ -54941,7 +54941,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+      "text": "ÆÆConstituez la réserve du Chaos en utilisant les pions suivants : +1, 0, 0, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -54974,11 +54974,11 @@
     },
     {
       "id": "black_cat_not_at_your_side",
-      "text": "<i>The black cat is not at your side.</i>"
+      "text": "<i>Le chat noir n’est pas à vos côtés.</i>"
     },
     {
       "id": "saved_by_randolph_carter",
-      "text": "<i>The investigators were saved by Randolph Carter.</i>",
+      "text": "<i>Les investigateurs ont été sauvés par Randolph Carter.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -68735,7 +68735,7 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "Ne modifiez pas la réserve du Chaos pendant l'introduction"
         }
       ]
     },
@@ -68756,7 +68756,7 @@
         "choices": [
           {
             "id": "gave_relic_to_alejandro",
-            "text": "<i>The investigators gave the relic to Alejandro.</i>",
+            "text": "<i>Les investigateurs ont confié la relique à Alejandro.</i>",
             "steps": [
               "intro_2"
             ],
@@ -68771,7 +68771,7 @@
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "<i>The investigators gave the relic to Harlan Earnstone.</i>",
+            "text": "<i>Les investigateurs ont confié la relique à Harlan Earnstone.</i>",
             "steps": [
               "check_alejandro_recovered_relic"
             ],
@@ -69074,7 +69074,7 @@
           {
             "id": "on_your_own",
             "text": "« Nous devrions nous méfier d'eux. »",
-            "description": "For the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead.",
+            "description": "Pour le reste de la campagne, aucun investigateur ne peut inclure Alejandro Vela ou Ichtaca dans son deck. Chaque fois qu'un investigateur se voit offrir la possibilité d'inclure l'un ou l'autre, chaque investigateur reçoit 2 points d'expérience à la place.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -71184,7 +71184,7 @@
 }, "scenarios": [
 {
   "id": "a_light_in_the_fog",
-  "scenario_name": "A Light in the Fog",
+  "scenario_name": "Une Lueur dans le Brouillard",
   "full_name": "Scenario VI: A Light in the Fog",
   "type": "placeholder",
   "setup": [],

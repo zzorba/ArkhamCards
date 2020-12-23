@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import Modal from 'react-native-modal';
 
 import NewDialogContentLine from './NewDialogContentLine';
@@ -23,6 +23,7 @@ interface Props {
   };
   children: React.ReactNode | React.ReactNode[];
   alignment?: 'center' | 'bottom',
+  avoidKeyboard?: boolean;
 }
 function NewDialog({
   title,
@@ -31,10 +32,13 @@ function NewDialog({
   children,
   confirm,
   alignment = 'center',
+  avoidKeyboard,
 }: Props) {
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, colors, shadow, typography } = useContext(StyleContext);
+  const { width } = useWindowDimensions();
   return (
     <Modal
+      avoidKeyboard={avoidKeyboard}
       isVisible={visible}
       animationIn={alignment === 'bottom' ? 'slideInUp' : 'fadeIn'}
       animationOut={alignment === 'bottom' ? 'slideOutDown' : 'fadeOut'}
@@ -51,47 +55,45 @@ function NewDialog({
         padding: m,
       }]}
     >
-      <TouchableWithoutFeedback>
-        <View style={styles.dialog}>
-          <View style={[styles.header, { backgroundColor: colors.D20 }]}>
-            <Text style={[typography.large, typography.inverted]}>{title}</Text>
-            { !!dismiss && (
-              <View style={styles.closeButton}>
-                <TouchableOpacity onPress={dismiss.onPress}>
-                  <AppIcon
-                    name="dismiss"
-                    size={18}
-                    color={colors.L30}
-                  />
-                </TouchableOpacity>
-              </View>
-            ) }
-          </View>
-          <View style={[styles.body, backgroundStyle]}>
-            { children }
-            { (!!dismiss?.title || !!confirm) && (
-              <View style={styles.actionButtons}>
-                { !!dismiss?.title && (
-                  <View style={[styles.button, confirm ? space.marginRightXs : undefined]}>
-                    <DeckButton
-                      icon="dismiss"
-                      color={confirm ? 'red' : undefined}
-                      title={dismiss.title}
-                      thin
-                      onPress={dismiss.onPress}
-                    />
-                  </View>
-                )}
-                { !!confirm && (
-                  <View style={[styles.button, dismiss?.title ? space.marginLeftXs : undefined]}>
-                    <DeckButton icon="check-thin" title={confirm.title} thin onPress={confirm.onPress} />
-                  </View>
-                ) }
-              </View>
-            ) }
-          </View>
+      <View style={[shadow.large, styles.dialog, { width: width - m * 2 }]}>
+        <View style={[styles.header, { backgroundColor: colors.D20 }]}>
+          <Text style={[typography.large, typography.inverted]}>{title}</Text>
+          { !!dismiss && (
+            <View style={styles.closeButton}>
+              <TouchableOpacity onPress={dismiss.onPress}>
+                <AppIcon
+                  name="dismiss"
+                  size={18}
+                  color={colors.L30}
+                />
+              </TouchableOpacity>
+            </View>
+          ) }
         </View>
-      </TouchableWithoutFeedback>
+        <View style={[styles.body, backgroundStyle]}>
+          { children }
+          { (!!dismiss?.title || !!confirm) && (
+            <View style={styles.actionButtons}>
+              { !!dismiss?.title && (
+                <View style={[styles.button, confirm ? space.marginRightXs : undefined]}>
+                  <DeckButton
+                    icon="dismiss"
+                    color={confirm ? 'red' : undefined}
+                    title={dismiss.title}
+                    thin
+                    onPress={dismiss.onPress}
+                  />
+                </View>
+              )}
+              { !!confirm && (
+                <View style={[styles.button, dismiss?.title ? space.marginLeftXs : undefined]}>
+                  <DeckButton icon="check-thin" title={confirm.title} thin onPress={confirm.onPress} />
+                </View>
+              ) }
+            </View>
+          ) }
+        </View>
+      </View>
     </Modal>
   );
 }
@@ -108,11 +110,7 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   dialog: {
-    width: '100%',
     borderRadius: 8,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 8,
-    shadowColor: '#000000',
     shadowOpacity: 0.75,
   },
   header: {

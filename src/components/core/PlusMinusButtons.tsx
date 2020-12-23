@@ -93,18 +93,28 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       );
     }
 
-    if (dialogStyle || color === 'light' || color === 'white') {
+    if (color === 'light' || color === 'white') {
       return (
         <View style={dialogStyle ? { width, height: width } : undefined} />
       );
     }
     return (
       <TouchableOpacity disabled style={dialogStyle ? { width, height: width } : undefined}>
-        <MaterialCommunityIcons
-          name="plus-box-outline"
-          size={size}
-          color={this.disabledColor()}
-        />
+        { dialogStyle ? (
+          <View opacity={0.3}>
+            <AppIcon
+              name="plus-button"
+              size={28}
+              color={colors.M}
+            />
+          </View>
+        ) : (
+          <MaterialCommunityIcons
+            name="plus-box-outline"
+            size={size}
+            color={this.disabledColor()}
+          />
+        ) }
       </TouchableOpacity>
     );
   }
@@ -162,18 +172,29 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
         </TouchableOpacity>
       );
     }
-    if (dialogStyle || color === 'light' || hideDisabledMinus) {
+    if (color === 'light' || hideDisabledMinus) {
       return (
         <View style={dialogStyle ? { width, height: width } : undefined} />
       );
     }
     return (
       <TouchableOpacity disabled style={dialogStyle ? { width, height: width } : undefined}>
-        <MaterialCommunityIcons
-          name="minus-box-outline"
-          size={size}
-          color={this.disabledColor()}
-        />
+        { dialogStyle ? (
+          <View opacity={0.3}>
+            <AppIcon
+              name="minus-button"
+              size={28}
+              color={colors.M}
+            />
+          </View>
+        ) : (
+          <MaterialCommunityIcons
+            name="minus-box-outline"
+            size={size}
+            color={this.disabledColor()}
+          />
+        )}
+
       </TouchableOpacity>
     );
   }

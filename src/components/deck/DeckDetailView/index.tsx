@@ -31,7 +31,6 @@ import { EditDeckProps } from '../DeckEditView';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
 import { DeckHistoryProps } from '../DeckHistoryView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
-import EditDeckDetailsDialog from './EditDeckDetailsDialog';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '@components/deck/NewDeckNavFooter';
 import {
@@ -45,7 +44,7 @@ import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeck } from '@components/deck/hooks';
-import { useAdjustXpDialog, useBasicDialog, useSaveDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
+import { useAdjustXpDialog, useBasicDialog, useSaveDialog, useTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
 import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
@@ -86,7 +85,7 @@ function DeckDetailView({
   login,
   upgrade,
 }: Props) {
-  const { backgroundStyle, colors, darkMode, typography } = useContext(StyleContext);
+  const { backgroundStyle, colors, darkMode, typography, shadow } = useContext(StyleContext);
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { width } = useWindowDimensions();
@@ -115,8 +114,6 @@ function DeckDetailView({
   } = useBasicDialog(t`Deleting`);
   const [menuOpen, toggleMenuOpen, setMenuOpen] = useFlag(false);
   const [tabooOpen, setTabooOpen] = useState(false);
-  const [editDetailsOpen, toggleEditDetailsOpen, setEditDetailsOpen] = useFlag(false);
-
   const tabooSet = useTabooSet(tabooSetId);
   const investigators = useInvestigatorCards(tabooSetId);
 
@@ -233,13 +230,13 @@ function DeckDetailView({
     const textColors = {
       view: '#FFFFFF',
       edit: colors.L30,
-      upgrade: colors.darkText,
+      upgrade: COLORS.D30,
     };
     const textColor = textColors[mode];
     const backgroundColors = {
       view: factionColor,
-      upgrade: colors.upgrade,
       edit: colors.D10,
+      upgrade: colors.upgrade,
     };
     const statusBarStyles: { [key: string]: 'light' | 'dark' | undefined } = {
       view: 'light',
@@ -506,43 +503,20 @@ function DeckDetailView({
     setMenuOpen(false);
   }, [setMenuOpen, setTabooOpen]);
 
-  const showEditDetails = useCallback(() => {
-    setMenuOpen(false);
-    setEditDetailsOpen(true);
-  }, [setMenuOpen, setEditDetailsOpen]);
-
-  const updateDeckDetails = useCallback((name: string, xpAdjustment: number) => {
-    setEditDetailsOpen(false);
+  const updateDeckName = useCallback((name: string) => {
     dispatch({
       type: UPDATE_DECK_EDIT,
       id,
       updates: {
         nameChange: name,
-        xpAdjustment,
       },
     });
-  }, [dispatch, id, setEditDetailsOpen]);
-
-  const editDetailsDialog = useMemo(() => {
-    if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
-      return null;
-    }
-    const {
-      changes,
-    } = parsedDeck;
-    return (
-      <EditDeckDetailsDialog
-        visible={editDetailsOpen}
-        xp={deck.xp || 0}
-        spentXp={changes ? changes.spentXp : 0}
-        xpAdjustment={deckEdits.xpAdjustment}
-        xpAdjustmentEnabled={!!deck.previous_deck && !deck.next_deck}
-        toggleVisible={toggleEditDetailsOpen}
-        name={deckEdits.nameChange || deck.name}
-        updateDetails={updateDeckDetails}
-      />
-    );
-  }, [deck, parsedDeck, editDetailsOpen, toggleEditDetailsOpen, updateDeckDetails, deckEdits?.xpAdjustment, deckEdits?.nameChange]);
+  }, [dispatch, id]);
+  const { dialog: editNameDialog, showDialog: showEditNameDialog } = useTextDialog({
+    title: t`Deck name`,
+    onValueChange: updateDeckName,
+    value: name || '',
+  });
   const editable = !!isPrivate && !!deck && !deck.next_deck;
   const onEditPressed = useCallback(() => setMode('edit'), [setMode]);
   const buttons = useMemo(() => {
@@ -726,7 +700,7 @@ function DeckDetailView({
         { editable && (
           <>
             <MenuButton
-              onPress={showEditDetails}
+              onPress={showEditNameDialog}
               title={deckEdits.nameChange || deck.name}
               description={!deck.local ? t`Deck #${deck.id}` : undefined}
             />
@@ -787,7 +761,7 @@ function DeckDetailView({
             { !!deck.previous_deck && (
               <MenuButton
                 icon="xp"
-                onPress={showEditDetails}
+                onPress={showXpAdjustmentDialog}
                 title={t`Available XP`}
                 description={xpString}
               />
@@ -844,7 +818,7 @@ function DeckDetailView({
     );
   }, [backgroundStyle, onAddCardsPressed, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB,
-    onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditDetails, showTabooPicker,
+    onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
     onEditSpecialPressed, onChecklistPressed,
   ]);
 
@@ -877,14 +851,15 @@ function DeckDetailView({
     return (
       <ActionButton
         active={fabOpen}
-        buttonColor={fabOpen ? colors.D10 : factionColor}
+        buttonColor={(mode !== 'view' || fabOpen) ? colors.D10 : factionColor}
         renderIcon={fabIcon}
         onPress={toggleFabOpen}
         offsetX={s + xs}
         offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+        shadowStyle={shadow.large}
+        fixNativeFeedbackRadius
       >
         <ActionButton.Item
-          hideLabelShadow
           buttonColor={factionColor}
           textStyle={actionLabelStyle}
           textContainerStyle={actionContainerStyle}
@@ -894,7 +869,6 @@ function DeckDetailView({
           <AppIcon name="draw" color={colors.L30} size={34} />
         </ActionButton.Item>
         <ActionButton.Item
-          hideLabelShadow
           buttonColor={factionColor}
           textStyle={actionLabelStyle}
           textContainerStyle={actionContainerStyle}
@@ -905,7 +879,6 @@ function DeckDetailView({
         </ActionButton.Item>
         { editable && mode === 'view' && (
           <ActionButton.Item
-            hideLabelShadow
             buttonColor={factionColor}
             textStyle={actionLabelStyle}
             textContainerStyle={actionContainerStyle}
@@ -917,7 +890,6 @@ function DeckDetailView({
         ) }
         { editable && (mode === 'view' ? (
           <ActionButton.Item
-            hideLabelShadow
             buttonColor={factionColor}
             textStyle={actionLabelStyle}
             textContainerStyle={actionContainerStyle}
@@ -928,7 +900,6 @@ function DeckDetailView({
           </ActionButton.Item>
         ) : (
           <ActionButton.Item
-            hideLabelShadow
             buttonColor={factionColor}
             textStyle={actionLabelStyle}
             textContainerStyle={actionContainerStyle}
@@ -940,7 +911,7 @@ function DeckDetailView({
         )) }
       </ActionButton>
     );
-  }, [factionColor, fabOpen, editable, mode, fabIcon, colors, toggleFabOpen, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
+  }, [factionColor, fabOpen, editable, mode, shadow.large, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
 
   if (!deck) {
     return (
@@ -973,12 +944,6 @@ function DeckDetailView({
       >
         <View>
           <View style={[styles.container, backgroundStyle] }>
-            { !!parsedDeck.problem && mode !== 'view' && (
-              <DeckProblemBanner
-                faction={parsedDeck.investigator.factionCode()}
-                problem={parsedDeck.problem}
-              />
-            ) }
             <DeckViewTab
               componentId={componentId}
               visible={visible}
@@ -1015,19 +980,26 @@ function DeckDetailView({
               deckEditsRef={deckEditsRef}
               mode={mode}
             />
+            { !!parsedDeck.problem && mode !== 'view' && (
+              <DeckProblemBanner
+                faction={parsedDeck.investigator.factionCode()}
+                problem={parsedDeck.problem}
+              />
+            ) }
             { mode !== 'view' && (
               <DeckNavFooter
                 deckId={id}
                 componentId={componentId}
                 control="fab"
                 campaign={campaign}
+                onPress={saveEdits}
               />
             ) }
             { fab }
           </View>
         </View>
       </SideMenu>
-      { editDetailsDialog }
+      { editNameDialog }
       { xpAdjustmentDialog }
       { savingDialog }
       { uploadLocalDeckDialog }

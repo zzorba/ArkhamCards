@@ -23,6 +23,7 @@ export const FOOTER_HEIGHT = (56 * (isBig ? 1.2 : 1));
 interface Props {
   componentId: string;
   deckId: number;
+  onPress: () => void;
   controls?: React.ReactNode;
   control?: 'fab' | 'counts' ;
   campaign?: Campaign;
@@ -43,12 +44,12 @@ export default function NewDeckNavFooter({
   deckId,
   control,
   campaign,
+  onPress,
 }: Props) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors, shadow, typography } = useContext(StyleContext);
   const parsedDeckObj = useParsedDeck(deckId, 'NavFooter', componentId);
-  const { savingDialog, saveEdits, mode } = useSaveDialog(parsedDeckObj, campaign);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
-  const { deck, parsedDeck, editable } = parsedDeckObj;
+  const { deck, parsedDeck, editable, mode } = parsedDeckObj;
   const xpString = useMemo(() => {
     if (!parsedDeck) {
       return [undefined, undefined];
@@ -90,10 +91,10 @@ export default function NewDeckNavFooter({
   return (
     <>
       <View style={[styles.marginWrapper, { paddingRight: fabPadding(control) }]}>
-        <View style={[styles.content, { backgroundColor: colors.D10 }]}>
+        <View style={[styles.content, shadow.large, { backgroundColor: colors.D10 }]}>
           <View>
             <RoundButton
-              onPress={saveEdits}
+              onPress={onPress}
               size={FOOTER_HEIGHT - 16}
               margin={8}
             >
@@ -112,7 +113,6 @@ export default function NewDeckNavFooter({
           </View>
         </View>
       </View>
-      { savingDialog }
       { xpAdjustmentDialog }
     </>
   );
@@ -134,10 +134,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: FOOTER_HEIGHT / 2,
     borderBottomLeftRadius: FOOTER_HEIGHT / 2,
     borderBottomRightRadius: FOOTER_HEIGHT / 2,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 8,
-    shadowColor: '#000000',
-    shadowOpacity: 0.25,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',

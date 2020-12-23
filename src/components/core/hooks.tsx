@@ -299,7 +299,7 @@ interface DecSlotAction {
 
 type SlotsAction = SlotAction | IncSlotAction | DecSlotAction | ClearAction | SyncAction;
 
-export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => void) {
+export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => void, keepZero?: boolean) {
   return useReducer((state: Slots, action: SlotsAction) => {
     switch (action.type) {
       case 'clear':
@@ -313,7 +313,7 @@ export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => vo
           ...state,
           [action.code]: action.value,
         };
-        if (!newState[action.code]) {
+        if (!newState[action.code] && !keepZero) {
           delete newState[action.code];
         }
         updateSlots && updateSlots(newState);
@@ -335,7 +335,7 @@ export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => vo
           ...state,
           [action.code]: (state[action.code] || 0) - 1,
         };
-        if (newState[action.code] <= 0) {
+        if (newState[action.code] <= 0 && !keepZero) {
           delete newState[action.code];
         }
         updateSlots && updateSlots(newState);

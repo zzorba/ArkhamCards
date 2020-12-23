@@ -119,7 +119,9 @@ function DbCardDetailSwipeView(props: Props) {
       },
     });
   }, [componentId]);
-
+  const backPressed = useCallback(() => {
+    Navigation.pop(componentId);
+  }, [componentId]);
   useComponentDidAppear(() => {
     Navigation.mergeOptions(componentId, options(props));
   }, componentId, [componentId]);
@@ -220,7 +222,7 @@ function DbCardDetailSwipeView(props: Props) {
       />
       { deckId !== undefined && (
         <>
-          <DeckNavFooter deckId={deckId} componentId={componentId} control="counts" />
+          <DeckNavFooter deckId={deckId} componentId={componentId} control="counts" onPress={backPressed} />
           { deckCountControls }
         </>
       ) }
