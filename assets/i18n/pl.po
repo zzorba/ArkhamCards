@@ -297,9 +297,9 @@ msgstr ""
 #: src/components/campaignguide/prompts/CardChoicePrompt.tsx:158
 #: src/components/card/CardDetailView/index.tsx:66
 #: src/components/card/CardDetailView/index.tsx:111
-#: src/components/card/DbCardDetailSwipeView.tsx:51
-#: src/components/card/DbCardDetailSwipeView.tsx:94
-#: src/components/card/DbCardDetailSwipeView.tsx:115
+#: src/components/card/DbCardDetailSwipeView.tsx:52
+#: src/components/card/DbCardDetailSwipeView.tsx:95
+#: src/components/card/DbCardDetailSwipeView.tsx:116
 #: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:501
 #: src/components/core/ChooserButton.tsx:35
 #: src/components/core/DbChooserButton.tsx:65
@@ -314,11 +314,11 @@ msgstr ""
 #: src/components/filter/CardEnemyFilterView.tsx:219
 #: src/components/filter/FixedSetChooserButton.tsx:61
 #: src/components/filter/PackFilterView.tsx:85
-#: src/components/nav/helper.ts:50
-#: src/components/nav/helper.ts:160
-#: src/components/nav/helper.ts:228
-#: src/components/nav/helper.ts:293
-#: src/components/nav/helper.ts:351
+#: src/components/nav/helper.ts:51
+#: src/components/nav/helper.ts:161
+#: src/components/nav/helper.ts:229
+#: src/components/nav/helper.ts:294
+#: src/components/nav/helper.ts:352
 msgid "Back"
 msgstr ""
 
@@ -362,7 +362,7 @@ msgstr ""
 #: src/components/core/EditText.tsx:29
 #: src/components/core/EditText.tsx:44
 #: src/components/core/TextEditDialog.tsx:128
-#: src/components/deck/CardUpgradeDialog/index.tsx:238
+#: src/components/deck/CardUpgradeDialog/index.tsx:250
 #: src/components/deck/CopyDeckDialog/index.tsx:235
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:104
 #: src/components/deck/DeckDetailView/index.tsx:207
@@ -377,9 +377,9 @@ msgstr ""
 #: src/components/deck/NewDeckView.tsx:82
 #: src/components/deck/authHelper.ts:32
 #: src/components/deck/dialogs.tsx:153
-#: src/components/deck/dialogs.tsx:359
-#: src/components/nav/helper.ts:260
-#: src/components/nav/helper.ts:275
+#: src/components/deck/dialogs.tsx:361
+#: src/components/nav/helper.ts:261
+#: src/components/nav/helper.ts:276
 #: src/components/settings/BackupView.tsx:92
 #: src/components/settings/BackupView.tsx:133
 #: src/components/settings/BackupView.tsx:144
@@ -477,8 +477,8 @@ msgid "Reauthorize"
 msgstr ""
 
 #: src/components/deck/DeckDetailView/index.tsx:699
-#: src/components/nav/helper.ts:85
-#: src/components/nav/helper.ts:117
+#: src/components/nav/helper.ts:86
+#: src/components/nav/helper.ts:118
 msgid "Deck"
 msgstr ""
 
@@ -488,7 +488,7 @@ msgid "Available weaknesses"
 msgstr ""
 
 #: src/components/deck/CopyDeckDialog/index.tsx:229
-#: src/components/deck/dialogs.tsx:409
+#: src/components/deck/dialogs.tsx:401
 #: src/components/weakness/WeaknessDrawComponent.tsx:197
 msgid "Saving"
 msgstr ""
@@ -627,8 +627,8 @@ msgstr ""
 #: src/components/core/TextEditDialog.tsx:148
 #: src/components/deck/DeckDetailView/index.tsx:260
 #: src/components/deck/dialogs.tsx:149
-#: src/components/deck/dialogs.tsx:355
-#: src/components/nav/helper.ts:56
+#: src/components/deck/dialogs.tsx:357
+#: src/components/nav/helper.ts:57
 #: src/components/settings/SafeModeView.tsx:65
 #: src/components/settings/SafeModeView.tsx:112
 #: src/components/settings/SettingsView.tsx:81
@@ -1569,7 +1569,7 @@ msgstr ""
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:142
 #: src/components/deck/CopyDeckDialog/index.tsx:239
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:108
-#: src/components/deck/dialogs.tsx:263
+#: src/components/deck/dialogs.tsx:265
 msgid "Okay"
 msgstr ""
 
@@ -1668,7 +1668,7 @@ msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:192
 #: src/components/campaign/UpgradeDecksView/index.tsx:81
-#: src/components/deck/CardUpgradeDialog/index.tsx:234
+#: src/components/deck/CardUpgradeDialog/index.tsx:246
 #: src/components/deck/DeckDetailView/index.tsx:545
 msgid "Upgrade"
 msgstr ""
@@ -1931,7 +1931,7 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:262
+#: src/components/deck/dialogs.tsx:264
 msgid "Error"
 msgstr ""
 
@@ -2046,12 +2046,12 @@ msgstr ""
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:115
 #: src/components/card/CardDetailView/index.tsx:37
 #: src/components/card/CardDetailView/index.tsx:83
-#: src/components/card/DbCardDetailSwipeView.tsx:147
+#: src/components/card/DbCardDetailSwipeView.tsx:148
 msgid "FAQ"
 msgstr ""
 
 #: src/components/card/CardDetailView/index.tsx:108
-#: src/components/card/DbCardDetailSwipeView.tsx:112
+#: src/components/card/DbCardDetailSwipeView.tsx:113
 msgid "Allowed Cards"
 msgstr ""
 
@@ -2164,7 +2164,7 @@ msgstr ""
 
 #: src/components/deck/DeckDetailView/index.tsx:719
 #: src/components/deck/DeckDetailView/index.tsx:875
-#: src/components/nav/helper.ts:181
+#: src/components/nav/helper.ts:182
 msgid "Charts"
 msgstr ""
 
@@ -2734,7 +2734,7 @@ msgid "${ xp } (${ adjustment }) XP"
 msgstr ""
 
 #: src/components/deck/DeckDetailView/index.tsx:725
-#: src/components/nav/helper.ts:205
+#: src/components/nav/helper.ts:206
 msgid "Draw Simulator"
 msgstr ""
 
@@ -4347,7 +4347,7 @@ msgstr ""
 msgid "Interlude FAQ"
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:308
+#: src/components/deck/CardUpgradeDialog/index.tsx:321
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
@@ -4667,7 +4667,7 @@ msgid ""
 "Won't count towards deck size"
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:218
+#: src/components/deck/CardUpgradeDialog/index.tsx:243
 msgid "Shrewd Analysis Rule"
 msgstr ""
 
@@ -4678,7 +4678,7 @@ msgid_plural "This upgrade will cost ${ xpCost } experience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:225
+#: src/components/deck/CardUpgradeDialog/index.tsx:227
 #, javascript-format
 msgid ""
 "Two random cards will be chosen among the following choice:\n"
@@ -4691,11 +4691,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:230
+#: src/components/deck/CardUpgradeDialog/index.tsx:234
 msgid "You can edit your collection under Settings to adjust the eligible choices."
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:40
+#: src/components/deck/CardUpgradeDialog/index.tsx:41
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] "
 "card, you may instead pay the full experience cost on the higher level "
@@ -4703,7 +4703,7 @@ msgid ""
 "towards your deck size or the number of copies of that card in your deck)."
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:278
+#: src/components/deck/CardUpgradeDialog/index.tsx:291
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use "
 "Shrewd Analysis to choose both upgrades randomly and only pay for one.\n"
@@ -4712,11 +4712,11 @@ msgid ""
 "'free' upgrade.</i>"
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:285
+#: src/components/deck/CardUpgradeDialog/index.tsx:298
 msgid "Upgrade results"
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:300
+#: src/components/deck/CardUpgradeDialog/index.tsx:313
 msgid "Upgrade with Shrewd Analysis"
 msgstr ""
 
@@ -4839,8 +4839,9 @@ msgstr ""
 msgid "Latest upgrade"
 msgstr ""
 
-#: src/components/deck/NewDeckNavFooter.tsx:63
-#: src/components/deck/hooks.ts:33
+#: src/components/deck/DeckNavFooter.tsx:64
+#: src/components/deck/hooks.ts:35
+#, javascript-format
 msgid "${ adjustedXp } XP"
 msgstr ""
 
@@ -4921,7 +4922,7 @@ msgid_plural "${ bondedCardCount } bound"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/hooks.ts:30
+#: src/components/deck/hooks.ts:32
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
 msgstr[0] ""
@@ -4948,19 +4949,6 @@ msgstr ""
 msgid "${ count } of ${ limitSlotCount }"
 msgstr ""
 
-#: src/components/DeckNavFooter/index.tsx:72
-#, javascript-format
-msgid "${ normalCardCount } Card"
-msgid_plural "${ normalCardCount } Cards"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/components/DeckNavFooter/index.tsx:77
-msgid "${ totalCardCount } Total"
-msgid_plural "${ totalCardCount } Total"
-msgstr[0] ""
-msgstr[1] ""
-
 #: src/components/settings/DissonantVoicesLoginButton.tsx:55
 #: src/components/settings/DissonantVoicesLoginButton.tsx:58
 msgid "Sign out of Dissonant Voices"
@@ -4971,18 +4959,18 @@ msgstr ""
 msgid "Sign in to Dissonant Voices"
 msgstr ""
 
-#: src/components/deck/hooks.ts:23
-#: src/components/deck/hooks.ts:27
-#: src/components/deck/hooks.ts:30
+#: src/components/deck/hooks.ts:25
+#: src/components/deck/hooks.ts:29
+#: src/components/deck/hooks.ts:32
 #, javascript-format
 msgid "${ _adjustedXp } XP"
 msgstr ""
 
-#: src/components/deck/hooks.ts:23
+#: src/components/deck/hooks.ts:25
 msgid "0 unspent"
 msgstr ""
 
-#: src/components/deck/hooks.ts:27
+#: src/components/deck/hooks.ts:29
 msgid "${ overspent } overspent"
 msgstr ""
 
@@ -5114,7 +5102,7 @@ msgstr ""
 msgid "Undo deck upgrade?"
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:45
+#: src/components/deck/CardUpgradeDialog/index.tsx:46
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead "
 "pay the full experience cost on the higher level version and leave the "
@@ -5122,38 +5110,37 @@ msgid ""
 "or the number of copies of that card in your deck)."
 msgstr ""
 
-#: src/components/deck/NewDeckNavFooter.tsx:60
-#, javascript-format
+#: src/components/deck/DeckNavFooter.tsx:61
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
 msgstr ""
 
-#: src/components/deck/NewDeckNavFooter.tsx:110
+#: src/components/deck/DeckNavFooter.tsx:114
 msgid "Upgrading"
 msgstr ""
 
-#: src/components/deck/NewDeckNavFooter.tsx:110
+#: src/components/deck/DeckNavFooter.tsx:114
 msgid "Editing"
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:284
+#: src/components/deck/dialogs.tsx:286
 msgid "Uplodaing deck"
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:317
+#: src/components/deck/dialogs.tsx:319
 msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will "
 "track changes."
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:320
+#: src/components/deck/dialogs.tsx:322
 msgid "XP earned"
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:328
+#: src/components/deck/dialogs.tsx:330
 msgid "Adjustment:"
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:352
+#: src/components/deck/dialogs.tsx:354
 msgid "Adjust XP"
 msgstr ""
 
