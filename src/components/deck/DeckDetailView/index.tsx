@@ -32,7 +32,7 @@ import { UpgradeDeckProps } from '../DeckUpgradeDialog';
 import { DeckHistoryProps } from '../DeckHistoryView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
-import DeckNavFooter from '@components/deck/NewDeckNavFooter';
+import DeckNavFooter from '@components/deck/DeckNavFooter';
 import {
   makeCampaignSelector,
   makeCampaignForDeckSelector,

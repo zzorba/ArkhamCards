@@ -26,9 +26,10 @@ import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards
 import DatabaseContext from '@data/DatabaseContext';
 import { where } from '@data/query';
 import Carousel from 'react-native-snap-carousel';
-import DeckNavFooter from '@components/deck/NewDeckNavFooter';
+import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
+import { useParsedDeck } from '@components/deck/hooks';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];

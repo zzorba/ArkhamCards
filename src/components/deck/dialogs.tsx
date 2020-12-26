@@ -18,7 +18,7 @@ import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import space, { s, xs } from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { ParsedDeckResults } from './hooks';
+import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
 import { TextInput } from 'react-native-gesture-handler';
 
 interface DialogOptions {
@@ -376,31 +376,21 @@ export function useAdjustXpDialog({
 }
 
 export function useSaveDialog(
-  {
-    deck,
-    visible,
-    deckEdits,
-    parsedDeck,
-    deckEditsRef,
-    cards,
-    tabooSetId,
-    mode,
-  }: ParsedDeckResults,
+  parsedDeckResults: ParsedDeckResults,
   campaign?: Campaign,
-): {
+): DeckEditState & {
   saving: boolean;
   saveEdits: () => void;
   saveEditsAndDismiss: () => void;
   savingDialog: React.ReactNode;
-  slotDeltas: {
-    removals: Slots;
-    additions: Slots;
-    ignoreDeckLimitChanged: boolean;
-  };
-  hasPendingEdits: boolean;
-  addedBasicWeaknesses: string[];
-  mode: 'edit' | 'upgrade' | 'view';
 } {
+  const { slotDeltas, hasPendingEdits, addedBasicWeaknesses, mode } = useDeckEditState(parsedDeckResults);
+  const {
+    deck,
+    parsedDeck,
+    deckEditsRef,
+    tabooSetId,
+  } = parsedDeckResults;
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const {
@@ -433,71 +423,6 @@ export function useSaveDialog(
       ));
     }
   }, [campaign, dispatch]);
-
-  const [hasPendingEdits, setHasPendingEdits] = useState(false);
-  const [slotDeltas, setSlotDeltas] = useState<{
-    removals: Slots;
-    additions: Slots;
-    ignoreDeckLimitChanged: boolean
-  }>({ removals: {}, additions: {}, ignoreDeckLimitChanged: false });
-
-  useEffect(() => {
-    if (!visible || !deck || !deckEdits) {
-      return;
-    }
-    const slotDeltas: {
-      removals: Slots;
-      additions: Slots;
-      ignoreDeckLimitChanged: boolean;
-    } = {
-      removals: {},
-      additions: {},
-      ignoreDeckLimitChanged: false,
-    };
-    forEach(deck.slots, (deckCount, code) => {
-      const currentDeckCount = deckEdits.slots[code] || 0;
-      if (deckCount > currentDeckCount) {
-        slotDeltas.removals[code] = deckCount - currentDeckCount;
-      }
-    });
-    forEach(deckEdits.slots, (currentCount, code) => {
-      const ogDeckCount = deck.slots[code] || 0;
-      if (ogDeckCount < currentCount) {
-        slotDeltas.additions[code] = currentCount - ogDeckCount;
-      }
-      const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
-      if (ogIgnoreCount !== (deckEdits.ignoreDeckLimitSlots[code] || 0)) {
-        slotDeltas.ignoreDeckLimitChanged = true;
-      }
-    });
-
-    const originalTabooSet: number = (deck.taboo_id || 0);
-    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
-    setHasPendingEdits(
-      (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
-      (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
-      (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
-      keys(slotDeltas.removals).length > 0 ||
-      keys(slotDeltas.additions).length > 0 ||
-      slotDeltas.ignoreDeckLimitChanged ||
-      (!!metaChanges && metaChanges.length > 0)
-    );
-    setSlotDeltas(slotDeltas);
-  }, [deck, deckEdits, visible]);
-
-  const addedBasicWeaknesses = useMemo(() => {
-    if (!cards || !deck) {
-      return [];
-    }
-    const addedWeaknesses: string[] = [];
-    forEach(slotDeltas.additions, (addition, code) => {
-      const card = cards[code];
-      if (card && card.subtype_code === 'basicweakness') {
-        forEach(range(0, addition), () => addedWeaknesses.push(code));
-      }
-    });
-    return addedWeaknesses;
-  }, [deck, cards, slotDeltas]);
 
   const actuallySaveEdits = useCallback(async(dismissAfterSave: boolean, isRetry?: boolean) => {
     if (saving && !isRetry) {
@@ -556,7 +481,7 @@ export function useSaveDialog(
     slotDeltas,
     hasPendingEdits,
     addedBasicWeaknesses,
-    mode: hasPendingEdits && mode === 'view' ? 'edit' : mode,
+    mode,
   };
 }
 

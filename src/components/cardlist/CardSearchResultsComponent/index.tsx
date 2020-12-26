@@ -17,7 +17,7 @@ import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
-import DeckNavFooter from '@components/deck/NewDeckNavFooter';
+import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { getLangPreference } from '@reducers';
 import ActionButton from 'react-native-action-button';
 import AppIcon from '@icons/AppIcon';

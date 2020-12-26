@@ -1,9 +1,11 @@
 import { MutableRefObject, useEffect, useMemo, useRef, useState } from 'react';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { Platform } from 'react-native';
+import { forEach, keys, range } from 'lodash';
+import deepDiff from 'deep-diff';
 import { ngettext, msgid, t } from 'ttag';
 
-import { Deck, EditDeckState, ParsedDeck } from '@actions/types';
+import { Deck, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useComponentVisible, useDeck, usePlayerCards } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';
@@ -85,6 +87,7 @@ export interface ParsedDeckResults {
   editable?: boolean;
   mode: 'upgrade' | 'edit' | 'view';
 }
+
 export function useParsedDeck(
   id: number,
   componentName: string,
@@ -126,5 +129,97 @@ export function useParsedDeck(
     parsedDeck,
     editable: !deck?.next_deck,
     mode: (deckEdits?.mode) || (upgrade ? 'upgrade' : 'view'),
+  };
+}
+
+export interface DeckEditState {
+  slotDeltas: {
+    removals: Slots;
+    additions: Slots;
+    ignoreDeckLimitChanged: boolean;
+  };
+  hasPendingEdits: boolean;
+  addedBasicWeaknesses: string[];
+  mode: 'edit' | 'upgrade' | 'view';
+}
+
+export function useDeckEditState({
+  deck,
+  visible,
+  deckEdits,
+  cards,
+  mode,
+}: ParsedDeckResults): DeckEditState {
+  const [hasPendingEdits, setHasPendingEdits] = useState(false);
+  const [slotDeltas, setSlotDeltas] = useState<{
+    removals: Slots;
+    additions: Slots;
+    ignoreDeckLimitChanged: boolean
+  }>({ removals: {}, additions: {}, ignoreDeckLimitChanged: false });
+
+  useEffect(() => {
+    if (!visible || !deck || !deckEdits) {
+      return;
+    }
+    const slotDeltas: {
+      removals: Slots;
+      additions: Slots;
+      ignoreDeckLimitChanged: boolean;
+    } = {
+      removals: {},
+      additions: {},
+      ignoreDeckLimitChanged: false,
+    };
+    forEach(deck.slots, (deckCount, code) => {
+      const currentDeckCount = deckEdits.slots[code] || 0;
+      if (deckCount > currentDeckCount) {
+        slotDeltas.removals[code] = deckCount - currentDeckCount;
+      }
+    });
+    forEach(deckEdits.slots, (currentCount, code) => {
+      const ogDeckCount = deck.slots[code] || 0;
+      if (ogDeckCount < currentCount) {
+        slotDeltas.additions[code] = currentCount - ogDeckCount;
+      }
+      const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
+      if (ogIgnoreCount !== (deckEdits.ignoreDeckLimitSlots[code] || 0)) {
+        slotDeltas.ignoreDeckLimitChanged = true;
+      }
+    });
+
+    const originalTabooSet: number = (deck.taboo_id || 0);
+    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
+    setHasPendingEdits(
+      (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
+      (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
+      (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
+      keys(slotDeltas.removals).length > 0 ||
+      keys(slotDeltas.additions).length > 0 ||
+      slotDeltas.ignoreDeckLimitChanged ||
+      (!!metaChanges && metaChanges.length > 0)
+    );
+    setSlotDeltas(slotDeltas);
+  }, [deck, deckEdits, visible]);
+
+
+  const addedBasicWeaknesses = useMemo(() => {
+    if (!cards || !deck) {
+      return [];
+    }
+    const addedWeaknesses: string[] = [];
+    forEach(slotDeltas.additions, (addition, code) => {
+      const card = cards[code];
+      if (card && card.subtype_code === 'basicweakness') {
+        forEach(range(0, addition), () => addedWeaknesses.push(code));
+      }
+    });
+    return addedWeaknesses;
+  }, [deck, cards, slotDeltas]);
+
+  return {
+    slotDeltas,
+    addedBasicWeaknesses,
+    hasPendingEdits,
+    mode: hasPendingEdits && mode === 'view' ? 'edit' : mode,
   };
 }

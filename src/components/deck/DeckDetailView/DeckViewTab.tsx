@@ -40,7 +40,7 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
 import { useDeckXpStrings } from '../hooks';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
-import { FOOTER_HEIGHT } from '@components/DeckNavFooter/constants';
+import { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
 import { getPacksInCollection } from '@reducers';
 

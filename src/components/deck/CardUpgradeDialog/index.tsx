@@ -14,7 +14,7 @@ import DeckValidation from '@lib/DeckValidation';
 import Card from '@data/Card';
 import { NavigationProps } from '@components/nav/types';
 import space, { m } from '@styles/space';
-import DeckNavFooter from '@components/deck/NewDeckNavFooter';
+import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, PARALLEL_AGNES_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';

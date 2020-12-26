@@ -12,8 +12,8 @@ import AppIcon from '@icons/AppIcon';
 import space, { isBig, m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundButton from '@components/core/RoundButton';
-import { useParsedDeck } from '@components/deck/hooks';
-import { useAdjustXpDialog, useSaveDialog } from '@components/deck/dialogs';
+import { useDeckEditState, useParsedDeck } from '@components/deck/hooks';
+import { useAdjustXpDialog } from '@components/deck/dialogs';
 import { Campaign } from '@actions/types';
 
 const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
@@ -39,7 +39,7 @@ function fabPadding(control?: 'fab' | 'counts') {
   return s + xs;
 }
 
-export default function NewDeckNavFooter({
+export default function DeckNavFooter({
   componentId,
   deckId,
   control,
@@ -49,7 +49,8 @@ export default function NewDeckNavFooter({
   const { colors, shadow, typography } = useContext(StyleContext);
   const parsedDeckObj = useParsedDeck(deckId, 'NavFooter', componentId);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
-  const { deck, parsedDeck, editable, mode } = parsedDeckObj;
+  const { deck, parsedDeck, editable } = parsedDeckObj;
+  const { mode } = useDeckEditState(parsedDeckObj);
   const xpString = useMemo(() => {
     if (!parsedDeck) {
       return [undefined, undefined];
@@ -88,6 +89,9 @@ export default function NewDeckNavFooter({
       </TouchableOpacity>
     );
   }, [editable, xpString, deck, showXpAdjustmentDialog, typography, colors]);
+  if (mode === 'view') {
+    return null;
+  }
   return (
     <>
       <View style={[styles.marginWrapper, { paddingRight: fabPadding(control) }]}>
