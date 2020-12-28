@@ -37,7 +37,7 @@ export default function PickerStyleButton({
     switch (widget) {
       case 'shuffle':
         return (
-          <View style={space.marginRightS}>
+          <View style={[space.marginRightS, space.marginLeftS]}>
             <MaterialCommunityIcons
               name="shuffle-variant"
               size={24}
