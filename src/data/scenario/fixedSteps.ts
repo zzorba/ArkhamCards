@@ -114,6 +114,30 @@ function upgradeDecksStep(): InputStep {
   };
 }
 
+const DRAW_STANDALONE_WEAKNESS_STEP_ID = '$draw_standalone_weakness';
+function drawStandaloneWeaknessStep(): InputStep {
+  return {
+    id: DRAW_STANDALONE_WEAKNESS_STEP_ID,
+    type: 'input',
+    bullet_type: 'none',
+    input: {
+      type: 'investigator_counter',
+      text: t`Draw Random Basic Weakness`,
+      max: 5,
+      effects: [
+        {
+          type: 'add_weakness',
+          investigator: '$input_value',
+          count: '$input_value',
+          weakness_traits: [],
+          select_traits: false,
+          standalone: true,
+        },
+      ],
+    },
+  };
+}
+
 const DRAW_WEAKNESS_STEP_ID = '$draw_weakness';
 function drawWeaknessStep(): InputStep {
   return {
@@ -417,6 +441,8 @@ export function getFixedStep(
       return editCampaignLogStep();
     case DRAW_WEAKNESS_STEP_ID:
       return drawWeaknessStep();
+    case DRAW_STANDALONE_WEAKNESS_STEP_ID:
+      return drawStandaloneWeaknessStep();
     case PLAY_SCENARIO_STEP_ID:
       return playScenarioStep();
     case CHOOSE_INVESTIGATORS_STEP_ID:
@@ -441,6 +467,7 @@ export function scenarioStepIds(scenario: Scenario, standalone?: boolean) {
     ] : [
       CHOOSE_INVESTIGATORS_STEP_ID,
       LEAD_INVESTIGATOR_STEP_ID,
+      DRAW_STANDALONE_WEAKNESS_STEP_ID,
       ...((standalone && scenario.standalone_setup) || scenario.setup),
     ];
 }

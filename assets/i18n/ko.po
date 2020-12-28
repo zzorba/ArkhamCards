@@ -21,11 +21,11 @@ msgstr "${ action.name } (캠페인 A)"
 msgid "${ action.name } (Campaign B)"
 msgstr "${ action.name } (캠페인 B)"
 
-#: src/lib/DeckValidation.ts:250
+#: src/lib/DeckValidation.ts:254
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr "조력자 슬롯을 차지하는 자산은 허용되지 않습니다 (On Your Own)."
 
-#: src/lib/DeckValidation.ts:272
+#: src/lib/DeckValidation.ts:276
 msgid "Too many off-class cards for Versatile"
 msgstr "이외의 다른 역할군 카드가 너무 많이 포함되어 있습니다 (다재다능)."
 
@@ -471,31 +471,31 @@ msgstr "되돌리기"
 msgid "Cancel"
 msgstr "취소"
 
-#: src/data/scenario/fixedSteps.ts:189
+#: src/data/scenario/fixedSteps.ts:213
 msgid "In your Campaign Log, record that:"
 msgstr "당신의 캠페인 기록지에 다음을 기록합니다."
 
-#: src/data/scenario/fixedSteps.ts:207
+#: src/data/scenario/fixedSteps.ts:231
 msgid "Choose lead investigator"
 msgstr "대표 조사자를 선택하십시오"
 
-#: src/data/scenario/fixedSteps.ts:215
+#: src/data/scenario/fixedSteps.ts:239
 msgid "Lead Investigator"
 msgstr "대표 조사자"
 
-#: src/data/scenario/fixedSteps.ts:268
+#: src/data/scenario/fixedSteps.ts:292
 msgid "Alive"
 msgstr "생존"
 
-#: src/data/scenario/fixedSteps.ts:273
+#: src/data/scenario/fixedSteps.ts:297
 msgid "Resigned"
 msgstr "탈출"
 
-#: src/data/scenario/fixedSteps.ts:354
+#: src/data/scenario/fixedSteps.ts:378
 msgid "Investigator status at end of scenario:"
 msgstr "시나리오 종료시 조사자 상태"
 
-#: src/data/scenario/fixedSteps.ts:404
+#: src/data/scenario/fixedSteps.ts:428
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr "<b>${ nextScenarioName }</b>으로 진행합니다."
@@ -2384,7 +2384,7 @@ msgstr "카드 선택"
 msgid "Choose additional card"
 msgstr "추가 카드 선택"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:81
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:114
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:47
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/TextBoxInputComponent.tsx:53
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:135
@@ -2673,15 +2673,15 @@ msgstr "어떤 조사자가 ${ card.name } 카드를 덱에서 제거하시겠�
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr "당신은 육체적 트라우마를 1 또는 정신적 트라우마를 1 받습니다 <i>(당신이 선택합니다)</i>."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:55
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:81
 msgid "All weaknesses have been assigned."
 msgstr "모든 약점이 할당되어 있습니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:97
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:45
 msgid "Draw random weakness"
 msgstr "무작위 약점 뽑기"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/index.tsx:41
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/index.tsx:46
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "앱을 이용해서 약점을 무작위로 선택하기를 원하십니까?"
 
@@ -3897,15 +3897,15 @@ msgstr "정신적"
 msgid "Record trauma"
 msgstr "트라우마 기록"
 
-#: src/data/scenario/fixedSteps.ts:278
+#: src/data/scenario/fixedSteps.ts:302
 msgid "Defeated: physical trauma"
 msgstr "쓰러짐: 육체적 트라우마"
 
-#: src/data/scenario/fixedSteps.ts:283
+#: src/data/scenario/fixedSteps.ts:307
 msgid "Defeated: mental trauma"
 msgstr "쓰러짐: 정신적 트라우마"
 
-#: src/data/scenario/fixedSteps.ts:288
+#: src/data/scenario/fixedSteps.ts:312
 msgid "Defeated: no trauma"
 msgstr "쓰러짐: 트라우마 없음"
 
@@ -4129,17 +4129,17 @@ msgstr ""
 "보상은 캠페인을 마칠 때까지 조사자에게 남습니다. 각 외전 이야기는 캠페인마다 1번씩만 즐길 수 있습니다.\n"
 "이러한 시나리오를 즐기기 위해 요구되는 경험치는 시나리오 종료 시 자동으로 공제됩니다."
 
-#: src/data/scenario/fixedSteps.ts:129
+#: src/data/scenario/fixedSteps.ts:153
 msgid "Draw Weakness"
 msgstr "약점 뽑기"
 
-#: src/data/scenario/fixedSteps.ts:150
+#: src/data/scenario/fixedSteps.ts:174
 msgid ""
 "<b>Note:</b> Trauma from investigator defeat is handled during scenario "
 "resolution."
 msgstr "<b>참고:</b> 조사자가 쓰러져서 발생한 트라우마는 시나리오 결말 도중 처리됩니다."
 
-#: src/data/scenario/fixedSteps.ts:158
+#: src/data/scenario/fixedSteps.ts:182
 msgid "Record Trauma"
 msgstr "트라우마 기록"
 
@@ -4341,7 +4341,7 @@ msgstr "아무것도 하지 않기"
 msgid "Checklist"
 msgstr "체크리스트"
 
-#: src/lib/DeckValidation.ts:256
+#: src/lib/DeckValidation.ts:260
 msgid "Limit 1 Covenant per deck."
 msgstr "덱당 Covenant 1장 한정."
 
@@ -5318,6 +5318,20 @@ msgstr ""
 msgid "Deck name"
 msgstr ""
 
+#: src/lib/DeckValidation.ts:194
+#, javascript-format
+msgid "Not enough cards (${ drawDeckSize } / ${ size })."
+msgstr ""
+
+#: src/lib/DeckValidation.ts:201
+#, javascript-format
+msgid "Too many cards (${ drawDeckSize } / ${ size })."
+msgstr ""
+
+#: src/data/scenario/fixedSteps.ts:125
+msgid "Draw Random Basic Weakness"
+msgstr ""
+
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
 #, javascript-format
 msgctxt "masculine"
@@ -5379,27 +5393,27 @@ msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr[0] "${ investigator.name } 조사자는 신체적 트라우마를 ${ effect.physical } 받습니다."
 
-#: src/data/scenario/fixedSteps.ts:266
+#: src/data/scenario/fixedSteps.ts:290
 msgctxt "masculine"
 msgid "Alive"
 msgstr "생존"
 
-#: src/data/scenario/fixedSteps.ts:271
+#: src/data/scenario/fixedSteps.ts:295
 msgctxt "masculine"
 msgid "Resigned"
 msgstr "탈출"
 
-#: src/data/scenario/fixedSteps.ts:276
+#: src/data/scenario/fixedSteps.ts:300
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
 msgstr "쓰러짐: 육체적 트라우마"
 
-#: src/data/scenario/fixedSteps.ts:281
+#: src/data/scenario/fixedSteps.ts:305
 msgctxt "masculine"
 msgid "Defeated: mental trauma"
 msgstr "쓰러짐: 정신적 트라우마"
 
-#: src/data/scenario/fixedSteps.ts:286
+#: src/data/scenario/fixedSteps.ts:310
 msgctxt "masculine"
 msgid "Defeated: no trauma"
 msgstr "쓰러짐: 트라우마 없음"
@@ -5481,27 +5495,27 @@ msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr[0] "${ investigator.name } 조사자는 신체적 트라우마를 ${ effect.physical } 받습니다."
 
-#: src/data/scenario/fixedSteps.ts:266
+#: src/data/scenario/fixedSteps.ts:290
 msgctxt "feminine"
 msgid "Alive"
 msgstr "생존"
 
-#: src/data/scenario/fixedSteps.ts:271
+#: src/data/scenario/fixedSteps.ts:295
 msgctxt "feminine"
 msgid "Resigned"
 msgstr "탈출"
 
-#: src/data/scenario/fixedSteps.ts:276
+#: src/data/scenario/fixedSteps.ts:300
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
 msgstr "쓰러짐: 육체적 트라우마"
 
-#: src/data/scenario/fixedSteps.ts:281
+#: src/data/scenario/fixedSteps.ts:305
 msgctxt "feminine"
 msgid "Defeated: mental trauma"
 msgstr "쓰러짐: 정신적 트라우마"
 
-#: src/data/scenario/fixedSteps.ts:286
+#: src/data/scenario/fixedSteps.ts:310
 msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "쓰러짐: 트라우마 없음"

@@ -586,11 +586,11 @@ export function parseDeck(
   const specialCards = cardIds.filter(c =>
     (isSpecialCard(cards[c.id]) && c.quantity >= 0) || ignoreDeckLimitSlots[c.id] > 0);
   const normalCards = cardIds.filter(c =>
-    !isSpecialCard(cards[c.id]) && (
+    !isSpecialCard(cards[c.id]) && ((
       c.quantity > (ignoreDeckLimitSlots[c.id] || 0)
     ) || (
       (ignoreDeckLimitSlots[c.id] || 0) === 0 && c.quantity >= 0
-    ));
+    )));
 
   const deckCards = getCards(cards, slots, ignoreDeckLimitSlots);
   const problem = validation.getProblem(deckCards) || undefined;

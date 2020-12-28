@@ -226,6 +226,8 @@ export interface AddWeaknessEffect {
   investigator: "all" | "$input_value" | "lead_investigator";
   weakness_traits: string[];
   select_traits?: boolean;
+  count?: "$input_value";
+  standalone?: boolean;
 }
 export interface RemoveCardEffect {
   type: "remove_card";
@@ -510,6 +512,7 @@ export interface EffectsStep {
   stepText: boolean;
   bullet_type?: BulletType;
   narration?: Narration;
+  syntheticId?: boolean;
 }
 export interface EffectsWithInput {
   border?: boolean;

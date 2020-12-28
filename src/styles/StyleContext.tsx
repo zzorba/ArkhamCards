@@ -1,8 +1,8 @@
 import React from 'react';
+import { Platform, ViewStyle } from 'react-native';
 
 import { LIGHT_THEME, ThemeColors } from './theme';
 import typography, { Typography } from '@styles/typography';
-import { ViewStyle } from 'react-native';
 
 export interface StyleContextType {
   darkMode: boolean;
@@ -37,21 +37,21 @@ export const DEFAULLT_STYLE_CONTEXT = {
   },
   shadow: {
     large: {
-      shadowOffset: { width: 0, height: 4 },
+      shadowOffset: Platform.OS === 'ios' ? { width: 0, height: 4 } : undefined,
       shadowRadius: 8,
       shadowColor: 'black',
       shadowOpacity: 0.25,
       elevation: 6,
     },
     medium: {
-      shadowOffset: { width: 0, height: 2 },
+      shadowOffset: Platform.OS === 'ios' ? { width: 0, height: 2 } : undefined,
       shadowRadius: 4,
       shadowColor: 'black',
       shadowOpacity: 0.25,
       elevation: 4,
     },
     small: {
-      shadowOffset: { width: 0, height: 1 },
+      shadowOffset: Platform.OS === 'ios' ? { width: 0, height: 1 } : undefined,
       shadowRadius: 2,
       shadowColor: 'black',
       shadowOpacity: 0.25,

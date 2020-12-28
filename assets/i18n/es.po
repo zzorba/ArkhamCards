@@ -3043,13 +3043,13 @@ msgstr "Último mazo: ${ deck.changes.spentXp } de ${ deck.availableExperience }
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr "Último mazo: ${ deck.availableExperience } XP"
 
-#: src/lib/DeckValidation.ts:250
+#: src/lib/DeckValidation.ts:254
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr ""
 "Por tu cuenta no permite que controles un Apoyo que ocupe un espacio de "
 "aliado."
 
-#: src/lib/DeckValidation.ts:272
+#: src/lib/DeckValidation.ts:276
 msgid "Too many off-class cards for Versatile"
 msgstr "Demasiadas cartas de otras clases para Versátil"
 
@@ -3105,27 +3105,27 @@ msgstr "${ this.name } <i>(${ this.subname })</i>"
 msgid "Campaign Setup"
 msgstr "Preparación de la Campaña"
 
-#: src/data/scenario/fixedSteps.ts:207
+#: src/data/scenario/fixedSteps.ts:231
 msgid "Choose lead investigator"
 msgstr "Elige Investigador jefe"
 
-#: src/data/scenario/fixedSteps.ts:215
+#: src/data/scenario/fixedSteps.ts:239
 msgid "Lead Investigator"
 msgstr "Investigador Jefe"
 
-#: src/data/scenario/fixedSteps.ts:268
+#: src/data/scenario/fixedSteps.ts:292
 msgid "Alive"
 msgstr "Vivo"
 
-#: src/data/scenario/fixedSteps.ts:273
+#: src/data/scenario/fixedSteps.ts:297
 msgid "Resigned"
 msgstr "Desistido"
 
-#: src/data/scenario/fixedSteps.ts:354
+#: src/data/scenario/fixedSteps.ts:378
 msgid "Investigator status at end of scenario:"
 msgstr "Estado del investigador al final del escenario:"
 
-#: src/data/scenario/fixedSteps.ts:404
+#: src/data/scenario/fixedSteps.ts:428
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr "Continua en <b>${ nextScenarioName }</b>."
@@ -3174,7 +3174,7 @@ msgstr "Elegir investigador"
 msgid "No one"
 msgstr "Ninguno"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:81
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:114
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:47
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/TextBoxInputComponent.tsx:53
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:135
@@ -3367,15 +3367,15 @@ msgstr "¿Quién retirará ${ card.name } de su mazo?"
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr "Sufres 1 trauma físico o mental <i>(tu eliges)</i>."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:55
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:81
 msgid "All weaknesses have been assigned."
 msgstr "Todas las debilidades han sido asignadas."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:97
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:45
 msgid "Draw random weakness"
 msgstr "Robar una debilidad aleatoria"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/index.tsx:41
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/index.tsx:46
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "¿Quieres usar la aplicación para seleccionar aleatoriamente las debilidades?"
 
@@ -3586,7 +3586,7 @@ msgstr ""
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/data/scenario/fixedSteps.ts:189
+#: src/data/scenario/fixedSteps.ts:213
 msgid "In your Campaign Log, record that:"
 msgstr "En el Registro de Campaña, anota que:"
 
@@ -3977,15 +3977,15 @@ msgstr ""
 "Campaña B\n"
 "Campaña de 4 partes"
 
-#: src/data/scenario/fixedSteps.ts:278
+#: src/data/scenario/fixedSteps.ts:302
 msgid "Defeated: physical trauma"
 msgstr "Derrotado: trauma físico"
 
-#: src/data/scenario/fixedSteps.ts:283
+#: src/data/scenario/fixedSteps.ts:307
 msgid "Defeated: mental trauma"
 msgstr "Derrotado: trauma mental"
 
-#: src/data/scenario/fixedSteps.ts:288
+#: src/data/scenario/fixedSteps.ts:312
 msgid "Defeated: no trauma"
 msgstr "Derrotado: sin traumas"
 
@@ -4224,11 +4224,11 @@ msgstr "Escenario o Interludio"
 msgid "Alphabetize guide encounter sets"
 msgstr "Alfabetizar conjuntos encuentros (campaña)"
 
-#: src/data/scenario/fixedSteps.ts:129
+#: src/data/scenario/fixedSteps.ts:153
 msgid "Draw Weakness"
 msgstr "Robar Debilidad"
 
-#: src/data/scenario/fixedSteps.ts:150
+#: src/data/scenario/fixedSteps.ts:174
 msgid ""
 "<b>Note:</b> Trauma from investigator defeat is handled during scenario "
 "resolution."
@@ -4236,7 +4236,7 @@ msgstr ""
 "<b>Nota:</b> Los traumas por derrotas de los investigadores se añaden "
 "durante la resolución del escenario."
 
-#: src/data/scenario/fixedSteps.ts:158
+#: src/data/scenario/fixedSteps.ts:182
 msgid "Record Trauma"
 msgstr "Guardar Trauma"
 
@@ -4480,7 +4480,7 @@ msgstr "No se recibieron datos"
 msgid "Checklist"
 msgstr "Checklist"
 
-#: src/lib/DeckValidation.ts:256
+#: src/lib/DeckValidation.ts:260
 msgid "Limit 1 Covenant per deck."
 msgstr "Límite 1 Acuerdo por mazo."
 
@@ -5484,6 +5484,20 @@ msgstr ""
 msgid "Deck name"
 msgstr ""
 
+#: src/lib/DeckValidation.ts:194
+#, javascript-format
+msgid "Not enough cards (${ drawDeckSize } / ${ size })."
+msgstr ""
+
+#: src/lib/DeckValidation.ts:201
+#, javascript-format
+msgid "Too many cards (${ drawDeckSize } / ${ size })."
+msgstr ""
+
+#: src/data/scenario/fixedSteps.ts:125
+msgid "Draw Random Basic Weakness"
+msgstr ""
+
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
 #, javascript-format
 msgctxt "masculine"
@@ -5552,27 +5566,27 @@ msgid_plural "${ investigator.name } suffers ${ effect.physical } physical traum
 msgstr[0] "${ investigator.name } sufre ${ effect.physical } trauma físico."
 msgstr[1] "${ investigator.name } sufre ${ effect.physical } traumas físicos."
 
-#: src/data/scenario/fixedSteps.ts:266
+#: src/data/scenario/fixedSteps.ts:290
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"
 
-#: src/data/scenario/fixedSteps.ts:271
+#: src/data/scenario/fixedSteps.ts:295
 msgctxt "masculine"
 msgid "Resigned"
 msgstr "Desistido"
 
-#: src/data/scenario/fixedSteps.ts:276
+#: src/data/scenario/fixedSteps.ts:300
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
 msgstr "Derrotado: trauma físico"
 
-#: src/data/scenario/fixedSteps.ts:281
+#: src/data/scenario/fixedSteps.ts:305
 msgctxt "masculine"
 msgid "Defeated: mental trauma"
 msgstr "Derrotado: trauma mental"
 
-#: src/data/scenario/fixedSteps.ts:286
+#: src/data/scenario/fixedSteps.ts:310
 msgctxt "masculine"
 msgid "Defeated: no trauma"
 msgstr "Derrotado: sin traumas"
@@ -5663,27 +5677,27 @@ msgid_plural "${ investigator.name } suffers ${ effect.physical } physical traum
 msgstr[0] "${ investigator.name } sufre ${ effect.physical } trauma físico."
 msgstr[1] "${ investigator.name } sufre ${ effect.physical } traumas físicos."
 
-#: src/data/scenario/fixedSteps.ts:266
+#: src/data/scenario/fixedSteps.ts:290
 msgctxt "feminine"
 msgid "Alive"
 msgstr "Viva"
 
-#: src/data/scenario/fixedSteps.ts:271
+#: src/data/scenario/fixedSteps.ts:295
 msgctxt "feminine"
 msgid "Resigned"
 msgstr "Desistido"
 
-#: src/data/scenario/fixedSteps.ts:276
+#: src/data/scenario/fixedSteps.ts:300
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
 msgstr "Derrotada: trauma físico"
 
-#: src/data/scenario/fixedSteps.ts:281
+#: src/data/scenario/fixedSteps.ts:305
 msgctxt "feminine"
 msgid "Defeated: mental trauma"
 msgstr "Derrotada: trauma mental"
 
-#: src/data/scenario/fixedSteps.ts:286
+#: src/data/scenario/fixedSteps.ts:310
 msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "Derrotada: sin traumas"

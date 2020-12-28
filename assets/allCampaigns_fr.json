@@ -42175,6 +42175,8 @@
     "setup_agenda_deck",
     "setup_locations",
     "location_layout",
+    "spawn_cultists",
+    "set_aside_assets",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -42194,6 +42196,8 @@
     "setup_agenda_deck",
     "setup_locations",
     "location_layout",
+    "spawn_cultists",
+    "set_aside_assets",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -42240,7 +42244,7 @@
           {
             "id": "standard",
             "text": "Standard",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skul], [auto_fail], [elder_sign]",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
                 "type": "campaign_data",
@@ -42658,8 +42662,16 @@
       ]
     },
     {
+      "id": "spawn_cultists",
+      "text": "Search the <i>War of the Outer Gods</i> encounter set for 1 copy of Disciple of the Swarm, 1 copy of Nihilistic Stargazer, and 1 copy of Zealot of Paradise. Spawn each of those enemies (as directed by their \"<b>Spawn</b> - \" instructions)."
+    },
+    {
+      "id": "set_aside_assets",
+      "text": "Set the 5 following story assets aside, out of play: Cloak of the Outer Realms, Pocker Portal, Dreaded End, Blade of Ark'at, and Enchanted Skull."
+    },
+    {
       "id": "encounter_deck",
-      "text": "Mélangez les cartes Rencontre restantes pour former le deck Rencontre."
+      "text": "Shuffle the remaining 19 encounter cards to form the encounter deck."
     },
     {
       "id": "earn_xp",

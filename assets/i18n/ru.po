@@ -23,13 +23,13 @@ msgstr "${ action.name } (Кампания А)"
 msgid "${ action.name } (Campaign B)"
 msgstr "${ action.name } (Кампания Б)"
 
-#: src/lib/DeckValidation.ts:250
+#: src/lib/DeckValidation.ts:254
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr ""
 "«Своими силами» не позволяет вам иметь под контролем активы, занимающие "
 "слот союзника."
 
-#: src/lib/DeckValidation.ts:272
+#: src/lib/DeckValidation.ts:276
 msgid "Too many off-class cards for Versatile"
 msgstr "«Versatile» не позволяет иметь так много внеклассовых карт"
 
@@ -502,11 +502,11 @@ msgstr "Исходы"
 msgid "Select resolution"
 msgstr "Выберите исход"
 
-#: src/data/scenario/fixedSteps.ts:129
+#: src/data/scenario/fixedSteps.ts:153
 msgid "Draw Weakness"
 msgstr "Возьмите слабость"
 
-#: src/data/scenario/fixedSteps.ts:150
+#: src/data/scenario/fixedSteps.ts:174
 msgid ""
 "<b>Note:</b> Trauma from investigator defeat is handled during scenario "
 "resolution."
@@ -514,47 +514,47 @@ msgstr ""
 "<b>Внимание:</b> Если ваш сыщик побеждён, полученные травмы будут учтены "
 "при розыгрыше исхода."
 
-#: src/data/scenario/fixedSteps.ts:158
+#: src/data/scenario/fixedSteps.ts:182
 msgid "Record Trauma"
 msgstr "Учёт травм"
 
-#: src/data/scenario/fixedSteps.ts:189
+#: src/data/scenario/fixedSteps.ts:213
 msgid "In your Campaign Log, record that:"
 msgstr "Запишите в журнале кампании:"
 
-#: src/data/scenario/fixedSteps.ts:207
+#: src/data/scenario/fixedSteps.ts:231
 msgid "Choose lead investigator"
 msgstr "Выберите ведущего сыщика"
 
-#: src/data/scenario/fixedSteps.ts:215
+#: src/data/scenario/fixedSteps.ts:239
 msgid "Lead Investigator"
 msgstr "Ведущий сыщик"
 
-#: src/data/scenario/fixedSteps.ts:268
+#: src/data/scenario/fixedSteps.ts:292
 msgid "Alive"
 msgstr "Жив"
 
-#: src/data/scenario/fixedSteps.ts:273
+#: src/data/scenario/fixedSteps.ts:297
 msgid "Resigned"
 msgstr "Совершил побег"
 
-#: src/data/scenario/fixedSteps.ts:278
+#: src/data/scenario/fixedSteps.ts:302
 msgid "Defeated: physical trauma"
 msgstr "Побеждён: физическая травма"
 
-#: src/data/scenario/fixedSteps.ts:283
+#: src/data/scenario/fixedSteps.ts:307
 msgid "Defeated: mental trauma"
 msgstr "Побеждён: ментальная травма"
 
-#: src/data/scenario/fixedSteps.ts:288
+#: src/data/scenario/fixedSteps.ts:312
 msgid "Defeated: no trauma"
 msgstr "Побеждён: без травмы"
 
-#: src/data/scenario/fixedSteps.ts:354
+#: src/data/scenario/fixedSteps.ts:378
 msgid "Investigator status at end of scenario:"
 msgstr "Состояние сыщика в конце сценария:"
 
-#: src/data/scenario/fixedSteps.ts:404
+#: src/data/scenario/fixedSteps.ts:428
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr "Перейдите к сценарию <b>${ nextScenarioName }</b>."
@@ -2579,7 +2579,7 @@ msgstr "Выберите карты"
 msgid "Choose additional card"
 msgstr "Выберите дополнительную карту"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:81
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:114
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:47
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/TextBoxInputComponent.tsx:53
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:135
@@ -2947,15 +2947,15 @@ msgstr "Физическая травма"
 msgid "Mental trauma"
 msgstr "Ментальная травма"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:55
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:81
 msgid "All weaknesses have been assigned."
 msgstr "Все слабости назначены."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:97
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:45
 msgid "Draw random weakness"
 msgstr "Взять случайную слабость"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/index.tsx:41
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/index.tsx:46
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "Взять слабость случайным образом?"
 
@@ -4488,7 +4488,7 @@ msgstr "Назад"
 msgid "Checklist"
 msgstr "Список карт"
 
-#: src/lib/DeckValidation.ts:256
+#: src/lib/DeckValidation.ts:260
 msgid "Limit 1 Covenant per deck."
 msgstr ""
 
@@ -5500,6 +5500,20 @@ msgstr ""
 msgid "Deck name"
 msgstr ""
 
+#: src/lib/DeckValidation.ts:194
+#, javascript-format
+msgid "Not enough cards (${ drawDeckSize } / ${ size })."
+msgstr ""
+
+#: src/lib/DeckValidation.ts:201
+#, javascript-format
+msgid "Too many cards (${ drawDeckSize } / ${ size })."
+msgstr ""
+
+#: src/data/scenario/fixedSteps.ts:125
+msgid "Draw Random Basic Weakness"
+msgstr ""
+
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
 #, javascript-format
 msgctxt "masculine"
@@ -5575,27 +5589,27 @@ msgstr[0] "${ investigator.name } получает ${ effect.physical } физи
 msgstr[1] "${ investigator.name } получает ${ effect.physical } физическую травму."
 msgstr[2] "${ investigator.name } получает ${ effect.physical } физическую травму."
 
-#: src/data/scenario/fixedSteps.ts:266
+#: src/data/scenario/fixedSteps.ts:290
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Жив"
 
-#: src/data/scenario/fixedSteps.ts:271
+#: src/data/scenario/fixedSteps.ts:295
 msgctxt "masculine"
 msgid "Resigned"
 msgstr "Совершил побег"
 
-#: src/data/scenario/fixedSteps.ts:276
+#: src/data/scenario/fixedSteps.ts:300
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
 msgstr "Побеждён: физическая травма"
 
-#: src/data/scenario/fixedSteps.ts:281
+#: src/data/scenario/fixedSteps.ts:305
 msgctxt "masculine"
 msgid "Defeated: mental trauma"
 msgstr "Побеждён: ментальная травма"
 
-#: src/data/scenario/fixedSteps.ts:286
+#: src/data/scenario/fixedSteps.ts:310
 msgctxt "masculine"
 msgid "Defeated: no trauma"
 msgstr "Побеждён: без травмы"
@@ -5693,27 +5707,27 @@ msgstr[0] "${ investigator.name } получает ${ effect.physical } физи
 msgstr[1] "${ investigator.name } получает ${ effect.physical } физическую травму."
 msgstr[2] "${ investigator.name } получает ${ effect.physical } физическую травму."
 
-#: src/data/scenario/fixedSteps.ts:266
+#: src/data/scenario/fixedSteps.ts:290
 msgctxt "feminine"
 msgid "Alive"
 msgstr "Жив"
 
-#: src/data/scenario/fixedSteps.ts:271
+#: src/data/scenario/fixedSteps.ts:295
 msgctxt "feminine"
 msgid "Resigned"
 msgstr "Совершил побег"
 
-#: src/data/scenario/fixedSteps.ts:276
+#: src/data/scenario/fixedSteps.ts:300
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
 msgstr "Побеждён: физическая травма"
 
-#: src/data/scenario/fixedSteps.ts:281
+#: src/data/scenario/fixedSteps.ts:305
 msgctxt "feminine"
 msgid "Defeated: mental trauma"
 msgstr "Побеждён: ментальная травма"
 
-#: src/data/scenario/fixedSteps.ts:286
+#: src/data/scenario/fixedSteps.ts:310
 msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "Побеждён: без травмы"
