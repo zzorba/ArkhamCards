@@ -21,7 +21,6 @@ export default function StandaloneTab({ standaloneChanged }: SelectCampagaignPro
   const sections = useMemo(() => {
     const groups: { [campaign: string]: StandaloneScenarioInfo[] } = {};
     forEach(scenarios, scenario => {
-      console.log(scenario.name);
       if (!groups[scenario.campaign]) {
         groups[scenario.campaign] = [];
       }

@@ -11,6 +11,7 @@ import {
   range,
   sortBy,
   sum,
+  values,
 } from 'lodash';
 
 import { StringChoices } from '@actions/types';
@@ -858,6 +859,31 @@ export default class ScenarioStep {
           }],
           scenarioState,
           { bulletType: 'small' }
+        );
+      }
+      case 'save_decks': {
+        const hasDeckChanges = find(this.campaignLog.investigatorCodes(false), (code: string) => {
+          return !!(find(values(this.campaignLog.storyAssetChanges(code)), count => count !== 0));
+        });
+        if (!hasDeckChanges) {
+          return this.proceedToNextStep(
+            this.remainingStepIds,
+            scenarioState,
+            this.campaignLog
+          );
+        }
+        const choice = scenarioState.decision(this.step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+
+        // Finally do the deck 'save' to bank it.
+        return this.maybeCreateEffectsStep(
+          this.step.id,
+          this.remainingStepIds,
+          [{ effects: [{ type: 'save_decks' }] }],
+          scenarioState,
+          {}
         );
       }
       case 'upgrade_decks': {

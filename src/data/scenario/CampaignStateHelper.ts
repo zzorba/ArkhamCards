@@ -176,19 +176,23 @@ export default class CampaignStateHelper {
       input => input.scenario === scenarioId);
     if (latestInput &&
       latestInput.type === 'choice_list' &&
-      latestInput.step.startsWith('$upgrade_decks#') &&
+      (latestInput.step.startsWith('$upgrade_decks#') || latestInput.step.startsWith('$save_standalone_decks')) &&
       !!latestInput.choices.deckId
     ) {
+      const isUpgrade = latestInput.step.startsWith('$upgrade_decks#');
       // This is a deck upgrade action.
       Alert.alert(
-        t`Undo deck upgrade?`,
-        t`Looks like you are trying to undo a deck upgrade.\n\nNote that the app will NOT delete your latest deck upgrade from ArkhamDB, so your deck will still have the earlier changes applied.\n\nYou can view the deck and delete the most recent 'upgrade' to put things back the way they were.`,
+        isUpgrade ? t`Undo deck upgrade?` : t`Undo deck change?`,
+        isUpgrade ?
+          t`Looks like you are trying to undo a deck upgrade.\n\nNote that the app will NOT delete your latest deck upgrade from ArkhamDB, so your deck will still have the earlier changes applied.\n\nYou can view the deck and delete the most recent 'upgrade' to put things back the way they were.` :
+          t`Looks like you are trying to undo a deck save.\n\nThe app will NOT be able to undo these changes, so if you proceed again the changes might be applied twice. You should view the deck and manually undo the edits before reapplying the changes.`,
         [
           {
-            text: t`Undo deck upgrade`,
+            text: t`Undo anyway`,
             onPress: () => {
               this.actions.undo(scenarioId);
             },
+            style: 'destructive',
           },
           {
             text: t`Cancel`,

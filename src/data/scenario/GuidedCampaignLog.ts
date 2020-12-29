@@ -10,6 +10,7 @@ import {
   sumBy,
   uniq,
   zip,
+  concat,
 } from 'lodash';
 
 import {
@@ -164,6 +165,7 @@ export default class GuidedCampaignLog {
       case 'replace_card':
       case 'earn_xp':
       case 'upgrade_decks':
+      case 'save_decks':
       case 'gain_supplies':
         return true;
       default:
@@ -299,6 +301,9 @@ export default class GuidedCampaignLog {
               break;
             case 'upgrade_decks':
               this.handleUpgradeDecksEffect();
+              break;
+            case 'save_decks':
+              this.handleSaveDecksEffect();
               break;
             default:
               break;
@@ -736,7 +741,6 @@ export default class GuidedCampaignLog {
     const previousSlots = this.storyAssetSlots(this.campaignData.lastSavedInvestigatorData[code] || {});
     const currentNonStorySlots = this.nonStoryCards(code);
     const previousNonStorySlots = this.nonStoryCardSlots(this.campaignData.lastSavedInvestigatorData[code] || {});
-
     const slotDelta: Slots = {};
     forEach(
       uniq([...keys(currentSlots), ...keys(previousSlots), ...keys(currentNonStorySlots), ...keys(previousNonStorySlots)]),
@@ -750,6 +754,21 @@ export default class GuidedCampaignLog {
       }
     );
     return slotDelta;
+  }
+
+
+  private handleSaveDecksEffect() {
+    const investigatorData = cloneDeep(this.campaignData.lastSavedInvestigatorData || {});
+    forEach(this.campaignData.investigatorData, (data, code) => {
+      investigatorData[code] = {
+        ...(investigatorData[code] || {}),
+        storyAssets: [...(data?.storyAssets || [])],
+        ignoreStoryAssets: [...(data?.ignoreStoryAssets || [])],
+        addedCards: [...(data?.addedCards || [])],
+        removedCards: [...(data?.removedCards || [])],
+      };
+    });
+    this.campaignData.lastSavedInvestigatorData = investigatorData;
   }
 
   private handleUpgradeDecksEffect() {
@@ -874,7 +893,7 @@ export default class GuidedCampaignLog {
       new Set(this.getInvestigators(effect.investigator, input)) :
       undefined;
     forEach(
-      keys(this.campaignData.investigatorData),
+      uniq(concat(keys(this.campaignData.investigatorData), this.investigatorCodes(true))),
       investigator => {
         if (!investigatorRestriction || investigatorRestriction.has(investigator)) {
           const data: TraumaAndCardData = this.campaignData.investigatorData[investigator] || {};

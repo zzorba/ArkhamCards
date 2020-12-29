@@ -8,7 +8,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import Switch from '@components/core/Switch';
 import BasicButton from '@components/core/BasicButton';
-import ShowDeckButton from './ShowDeckButton';
 import { Deck, Slots, NumberChoices } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -24,9 +23,42 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
-import { useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
+import { useCounter, useEffectUpdate, useFlag, useDeck } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import { ThunkDispatch } from 'redux-thunk';
+
+
+interface ShowDeckButtonProps {
+  componentId: string;
+  deckId: number;
+  investigator: Card;
+}
+
+function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonProps) {
+  const { colors } = useContext(StyleContext);
+  const [deck] = useDeck(deckId, {});
+  const onPress = useCallback(() => {
+    if (deck) {
+      showDeckModal(
+        componentId,
+        deck,
+        colors,
+        investigator,
+        { hideCampaign: true }
+      );
+    }
+  }, [componentId, investigator, deck, colors]);
+
+  if (!deck) {
+    return null;
+  }
+  return (
+    <Button
+      title={t`View deck upgrade`}
+      onPress={onPress}
+    />
+  );
+}
 
 interface Props {
   componentId: string;

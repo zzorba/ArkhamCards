@@ -48,8 +48,9 @@ export type Effect =
   | CampaignDataEffect
   | ScenarioDataEffect
   | AddRemoveChaosTokenEffect
-  | UpgradeDecksEffect
   | FreeformCampaignLogEffect
+  | UpgradeDecksEffect
+  | SaveDecksEffect
   | GainSuppliesEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
@@ -123,7 +124,8 @@ export type Input =
   | TextBoxInput
   | ReceiveCampaignLinkInput
   | SendCampaignLinkInput
-  | RandomLocationInput;
+  | RandomLocationInput
+  | SaveDecksInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition = InvestigatorCardCondition | BasicTraumaCondition | InvestigatorCondition;
@@ -318,12 +320,15 @@ export interface AddRemoveChaosTokenEffect {
   type: "add_chaos_token" | "remove_chaos_token";
   tokens: ChaosToken[];
 }
-export interface UpgradeDecksEffect {
-  type: "upgrade_decks";
-}
 export interface FreeformCampaignLogEffect {
   type: "freeform_campaign_log";
   section: "campaign_notes";
+}
+export interface UpgradeDecksEffect {
+  type: "upgrade_decks";
+}
+export interface SaveDecksEffect {
+  type: "save_decks";
 }
 export interface GainSuppliesEffect {
   type: "gain_supplies";
@@ -697,6 +702,9 @@ export interface RandomLocationInput {
   type: "random_location";
   cards: string[];
   multiple?: boolean;
+}
+export interface SaveDecksInput {
+  type: "save_decks";
 }
 export interface EncounterSetsStep {
   id: string;

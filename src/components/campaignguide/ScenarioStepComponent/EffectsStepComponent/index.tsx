@@ -130,6 +130,7 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
       case 'earn_xp':
       case 'replace_card':
       case 'scenario_data':
+      case 'save_decks':
       default: {
         // We always write these out.
         return null;

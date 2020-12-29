@@ -8,6 +8,7 @@ import InvestigatorCounterInputComponent from './InvestigatorCounterInputCompone
 import TextBoxInputComponent from './TextBoxInputComponent';
 import PlayScenarioComponent from './PlayScenarioComponent';
 import UpgradeDecksInput from './UpgradeDecksInput';
+import SaveDecksInput from './SaveDecksInput';
 import InvestigatorChoiceWithSuppliesInputComponent from './InvestigatorChoiceWithSuppliesInputComponent';
 import InvestigatorChoiceInputComponent from './InvestigatorChoiceInputComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
@@ -133,6 +134,13 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
     case 'upgrade_decks':
       return (
         <UpgradeDecksInput
+          id={step.id}
+          componentId={componentId}
+        />
+      );
+    case 'save_decks':
+      return (
+        <SaveDecksInput
           id={step.id}
           componentId={componentId}
         />

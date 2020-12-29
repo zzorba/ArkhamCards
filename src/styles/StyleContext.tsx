@@ -38,21 +38,21 @@ export const DEFAULLT_STYLE_CONTEXT = {
   shadow: {
     large: {
       shadowOffset: Platform.OS === 'ios' ? { width: 0, height: 4 } : undefined,
-      shadowRadius: 8,
+      shadowRadius: Platform.OS === 'ios' ? 8 : undefined,
       shadowColor: 'black',
       shadowOpacity: 0.25,
       elevation: 6,
     },
     medium: {
       shadowOffset: Platform.OS === 'ios' ? { width: 0, height: 2 } : undefined,
-      shadowRadius: 4,
+      shadowRadius: Platform.OS === 'ios' ? 4 : undefined,
       shadowColor: 'black',
       shadowOpacity: 0.25,
       elevation: 4,
     },
     small: {
       shadowOffset: Platform.OS === 'ios' ? { width: 0, height: 1 } : undefined,
-      shadowRadius: 2,
+      shadowRadius: Platform.OS === 'ios' ? 2 : undefined,
       shadowColor: 'black',
       shadowOpacity: 0.25,
       elevation: 2,
