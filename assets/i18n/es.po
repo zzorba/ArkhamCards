@@ -356,6 +356,7 @@ msgstr "Robar de colección"
 #: src/components/campaignguide/CampaignGuideView.tsx:73
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:126
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:82
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:86
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:86
 #: src/components/campaignguide/StandaloneGuideView.tsx:34
 #: src/components/core/EditText.tsx:29
@@ -388,7 +389,7 @@ msgstr "Robar de colección"
 #: src/components/settings/LoginButton.tsx:39
 #: src/components/settings/MergeBackupView/index.tsx:153
 #: src/components/settings/MergeBackupView/index.tsx:236
-#: src/data/scenario/CampaignStateHelper.ts:194
+#: src/data/scenario/CampaignStateHelper.ts:198
 #. This is a deck upgrade action.
 msgid "Cancel"
 msgstr "Cancelar"
@@ -1019,7 +1020,7 @@ msgstr "No iniciada"
 #: src/components/campaign/EditTraumaComponent.tsx:50
 #: src/components/campaign/EditTraumaDialog.tsx:48
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:179
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:219
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:251
 msgid "Trauma"
 msgstr "Traumas"
 
@@ -1037,13 +1038,13 @@ msgid "Mental Trauma"
 msgstr "Traumas Mentales"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:104
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:252
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:284
 #: src/data/Card.ts:562
 msgid "Killed"
 msgstr "Muerto"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:114
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:300
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:332
 #: src/data/Card.ts:565
 msgid "Insane"
 msgstr "Loco"
@@ -2582,7 +2583,7 @@ msgid "Multiplayer"
 msgstr "Multijugador"
 
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:83
-#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:48
+#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:47
 #: src/components/campaign/constants.ts:59
 #: src/components/campaign/constants.ts:295
 #: src/components/core/PackListComponent/index.tsx:54
@@ -3105,27 +3106,27 @@ msgstr "${ this.name } <i>(${ this.subname })</i>"
 msgid "Campaign Setup"
 msgstr "Preparación de la Campaña"
 
-#: src/data/scenario/fixedSteps.ts:231
+#: src/data/scenario/fixedSteps.ts:250
 msgid "Choose lead investigator"
 msgstr "Elige Investigador jefe"
 
-#: src/data/scenario/fixedSteps.ts:239
+#: src/data/scenario/fixedSteps.ts:258
 msgid "Lead Investigator"
 msgstr "Investigador Jefe"
 
-#: src/data/scenario/fixedSteps.ts:292
+#: src/data/scenario/fixedSteps.ts:311
 msgid "Alive"
 msgstr "Vivo"
 
-#: src/data/scenario/fixedSteps.ts:297
+#: src/data/scenario/fixedSteps.ts:316
 msgid "Resigned"
 msgstr "Desistido"
 
-#: src/data/scenario/fixedSteps.ts:378
+#: src/data/scenario/fixedSteps.ts:397
 msgid "Investigator status at end of scenario:"
 msgstr "Estado del investigador al final del escenario:"
 
-#: src/data/scenario/fixedSteps.ts:428
+#: src/data/scenario/fixedSteps.ts:447
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr "Continua en <b>${ nextScenarioName }</b>."
@@ -3153,7 +3154,7 @@ msgstr "${ label }: Todos"
 #: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:66
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:103
 #: src/components/campaign/UpgradeDecksView/NonDeckDetailsButton.tsx:32
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:185
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:217
 #: src/components/deck/DeckUpgradeComponent.tsx:159
 msgid "Experience points"
 msgstr "Puntos de experiencia"
@@ -3174,8 +3175,9 @@ msgstr "Elegir investigador"
 msgid "No one"
 msgstr "Ninguno"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:114
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:116
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:47
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:134
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/TextBoxInputComponent.tsx:53
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:135
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:81
@@ -3272,16 +3274,17 @@ msgid_plural "${ startText } These sets are indicated by the following icons:"
 msgstr[0] "${ startText } Este conjunto viene indicado por el siguiente ícono:"
 msgstr[1] "${ startText } Estos conjuntos vienen indicados por los siguientes íconos:"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/index.tsx:160
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/index.tsx:168
 msgid "Choose Investigators"
 msgstr "Elige los investigadores"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/ShowDeckButton.tsx:36
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:57
 msgid "View deck upgrade"
 msgstr "Ver las mejoras del mazo"
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:149
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:172
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:139
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:204
 msgid "Campaign cards"
 msgstr "Cartas de la Campaña"
 
@@ -3289,7 +3292,7 @@ msgstr "Cartas de la Campaña"
 msgid "Physical trauma"
 msgstr "Traumas físicos"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:233
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:265
 #, javascript-format
 msgid " (New Total: ${ totalPhysical })"
 msgstr " (Nuevo Total: ${ totalPhysical })"
@@ -3298,24 +3301,27 @@ msgstr " (Nuevo Total: ${ totalPhysical })"
 msgid "Mental trauma"
 msgstr "Trauma mental"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:281
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:313
 #, javascript-format
 msgid " (New Total: ${ totalMental })"
 msgstr " (Nuevo Total: ${ totalMental })"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:331
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:363
 msgid "Save deck upgrade"
 msgstr "Guardar mejora del mazo"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:341
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:373
 msgid "Save adjustments"
 msgstr "Guardar ajustes"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:383
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:195
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:415
 msgid "Select deck"
 msgstr "Seleccionar mazo"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:387
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:51
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:199
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:419
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:145
 msgid "View deck"
 msgstr "Ver mazo"
@@ -3367,11 +3373,11 @@ msgstr "¿Quién retirará ${ card.name } de su mazo?"
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr "Sufres 1 trauma físico o mental <i>(tu eliges)</i>."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:81
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:83
 msgid "All weaknesses have been assigned."
 msgstr "Todas las debilidades han sido asignadas."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:45
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:47
 msgid "Draw random weakness"
 msgstr "Robar una debilidad aleatoria"
 
@@ -3558,12 +3564,7 @@ msgstr "Editar nombre"
 msgid "Guided Campaign"
 msgstr "Campaña Guiada"
 
-#: src/data/scenario/CampaignStateHelper.ts:188
-#. This is a deck upgrade action.
-msgid "Undo deck upgrade"
-msgstr "Deshacer mejora del mazo"
-
-#: src/data/scenario/CampaignStateHelper.ts:185
+#: src/data/scenario/CampaignStateHelper.ts:187
 #. This is a deck upgrade action.
 msgid ""
 "Looks like you are trying to undo a deck upgrade.\n"
@@ -3586,7 +3587,7 @@ msgstr ""
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/data/scenario/fixedSteps.ts:213
+#: src/data/scenario/fixedSteps.ts:232
 msgid "In your Campaign Log, record that:"
 msgstr "En el Registro de Campaña, anota que:"
 
@@ -3682,7 +3683,7 @@ msgid "Draw random basic weakness"
 msgstr "Robar una debilidad básica aleatoria"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:143
-#: src/data/scenario/fixedSteps.ts:58
+#: src/data/scenario/fixedSteps.ts:60
 msgid "Resolutions"
 msgstr "Resoluciones"
 
@@ -3825,10 +3826,12 @@ msgstr "Cambiar campaña"
 msgid "Close"
 msgstr "Cerrar"
 
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:83
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:83
 msgid "Proceed without saving"
 msgstr "Proceder sin guardar"
 
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:89
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:89
 msgid "Proceed anyway"
 msgstr "Proceder de todos modos"
@@ -3854,6 +3857,7 @@ msgstr ""
 "versiones originales del mazo se pueden seguir consultando en la sección "
 "Mazos)."
 
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:70
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:70
 msgid ""
 "It looks like you edited the experience or trauma for an investigator, but "
@@ -3977,15 +3981,15 @@ msgstr ""
 "Campaña B\n"
 "Campaña de 4 partes"
 
-#: src/data/scenario/fixedSteps.ts:302
+#: src/data/scenario/fixedSteps.ts:321
 msgid "Defeated: physical trauma"
 msgstr "Derrotado: trauma físico"
 
-#: src/data/scenario/fixedSteps.ts:307
+#: src/data/scenario/fixedSteps.ts:326
 msgid "Defeated: mental trauma"
 msgstr "Derrotado: trauma mental"
 
-#: src/data/scenario/fixedSteps.ts:312
+#: src/data/scenario/fixedSteps.ts:331
 msgid "Defeated: no trauma"
 msgstr "Derrotado: sin traumas"
 
@@ -4001,11 +4005,11 @@ msgstr ""
 msgid "Advanced Cards"
 msgstr "Cartas avanzadas"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:226
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:258
 msgid "Physical"
 msgstr "Físico"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:274
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:306
 msgid "Mental"
 msgstr "Mental"
 
@@ -4224,11 +4228,11 @@ msgstr "Escenario o Interludio"
 msgid "Alphabetize guide encounter sets"
 msgstr "Alfabetizar conjuntos encuentros (campaña)"
 
-#: src/data/scenario/fixedSteps.ts:153
+#: src/data/scenario/fixedSteps.ts:172
 msgid "Draw Weakness"
 msgstr "Robar Debilidad"
 
-#: src/data/scenario/fixedSteps.ts:174
+#: src/data/scenario/fixedSteps.ts:193
 msgid ""
 "<b>Note:</b> Trauma from investigator defeat is handled during scenario "
 "resolution."
@@ -4236,7 +4240,7 @@ msgstr ""
 "<b>Nota:</b> Los traumas por derrotas de los investigadores se añaden "
 "durante la resolución del escenario."
 
-#: src/data/scenario/fixedSteps.ts:182
+#: src/data/scenario/fixedSteps.ts:201
 msgid "Record Trauma"
 msgstr "Guardar Trauma"
 
@@ -4261,7 +4265,7 @@ msgstr ""
 "La experiencia requerida para jugar estos escenarios será restada "
 "automáticamente al final del escenario."
 
-#: src/data/scenario/fixedSteps.ts:59
+#: src/data/scenario/fixedSteps.ts:61
 msgid "Select resolution"
 msgstr "Selecciona resolución"
 
@@ -5378,7 +5382,7 @@ msgstr "Mover"
 msgid "Resource"
 msgstr "Recurso"
 
-#: src/data/scenario/CampaignStateHelper.ts:184
+#: src/data/scenario/CampaignStateHelper.ts:185
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
 msgstr ""
@@ -5476,7 +5480,7 @@ msgstr ""
 msgid "Upgrade with XP"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:40
+#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:39
 msgid "Unknown campaign"
 msgstr ""
 
@@ -5494,8 +5498,37 @@ msgstr ""
 msgid "Too many cards (${ drawDeckSize } / ${ size })."
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:125
+#: src/data/scenario/fixedSteps.ts:127
 msgid "Draw Random Basic Weakness"
+msgstr ""
+
+#: src/data/scenario/CampaignStateHelper.ts:185
+#. This is a deck upgrade action.
+msgid "Undo deck change?"
+msgstr ""
+
+#: src/data/scenario/CampaignStateHelper.ts:188
+#. This is a deck upgrade action.
+msgid ""
+"Looks like you are trying to undo a deck save.\n"
+"\n"
+"The app will NOT be able to undo these changes, so if you proceed again the "
+"changes might be applied twice. You should view the deck and manually undo "
+"the edits before reapplying the changes."
+msgstr ""
+
+#: src/data/scenario/CampaignStateHelper.ts:191
+#. This is a deck upgrade action.
+msgid "Undo anyway"
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:153
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:104
+msgid "Save deck changes"
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:50
+msgid "It looks like one or more deck changes are unsaved."
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
@@ -5566,27 +5599,27 @@ msgid_plural "${ investigator.name } suffers ${ effect.physical } physical traum
 msgstr[0] "${ investigator.name } sufre ${ effect.physical } trauma físico."
 msgstr[1] "${ investigator.name } sufre ${ effect.physical } traumas físicos."
 
-#: src/data/scenario/fixedSteps.ts:290
+#: src/data/scenario/fixedSteps.ts:309
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"
 
-#: src/data/scenario/fixedSteps.ts:295
+#: src/data/scenario/fixedSteps.ts:314
 msgctxt "masculine"
 msgid "Resigned"
 msgstr "Desistido"
 
-#: src/data/scenario/fixedSteps.ts:300
+#: src/data/scenario/fixedSteps.ts:319
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
 msgstr "Derrotado: trauma físico"
 
-#: src/data/scenario/fixedSteps.ts:305
+#: src/data/scenario/fixedSteps.ts:324
 msgctxt "masculine"
 msgid "Defeated: mental trauma"
 msgstr "Derrotado: trauma mental"
 
-#: src/data/scenario/fixedSteps.ts:310
+#: src/data/scenario/fixedSteps.ts:329
 msgctxt "masculine"
 msgid "Defeated: no trauma"
 msgstr "Derrotado: sin traumas"
@@ -5677,27 +5710,27 @@ msgid_plural "${ investigator.name } suffers ${ effect.physical } physical traum
 msgstr[0] "${ investigator.name } sufre ${ effect.physical } trauma físico."
 msgstr[1] "${ investigator.name } sufre ${ effect.physical } traumas físicos."
 
-#: src/data/scenario/fixedSteps.ts:290
+#: src/data/scenario/fixedSteps.ts:309
 msgctxt "feminine"
 msgid "Alive"
 msgstr "Viva"
 
-#: src/data/scenario/fixedSteps.ts:295
+#: src/data/scenario/fixedSteps.ts:314
 msgctxt "feminine"
 msgid "Resigned"
 msgstr "Desistido"
 
-#: src/data/scenario/fixedSteps.ts:300
+#: src/data/scenario/fixedSteps.ts:319
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
 msgstr "Derrotada: trauma físico"
 
-#: src/data/scenario/fixedSteps.ts:305
+#: src/data/scenario/fixedSteps.ts:324
 msgctxt "feminine"
 msgid "Defeated: mental trauma"
 msgstr "Derrotada: trauma mental"
 
-#: src/data/scenario/fixedSteps.ts:310
+#: src/data/scenario/fixedSteps.ts:329
 msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "Derrotada: sin traumas"

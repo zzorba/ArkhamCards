@@ -39,9 +39,13 @@ export function getDeckOptions(
 ): Options {
   const topBarOptions: OptionsTopBar = inputOptions.topBar || {};
   const textColor = upgrade ? COLORS.D30 : '#FFFFFF';
+  const backgroundColor = upgrade ? colors.upgrade : colors.faction[
+    (investigator ? investigator.faction_code : null) || 'neutral'
+  ].background;
   const options: Options = {
     statusBar: {
       style: upgrade ? 'dark' : 'light',
+      backgroundColor,
     },
     modalPresentationStyle: Platform.OS === 'ios' ?
       OptionsModalPresentationStyle.fullScreen :
@@ -64,9 +68,7 @@ export function getDeckOptions(
         },
       ] : topBarOptions.leftButtons || [],
       background: {
-        color: upgrade ? colors.upgrade : colors.faction[
-          (investigator ? investigator.faction_code : null) || 'neutral'
-        ].background,
+        color: backgroundColor,
       },
       rightButtons: topBarOptions.rightButtons,
     },

@@ -863,7 +863,7 @@ export default class ScenarioStep {
       }
       case 'save_decks': {
         const hasDeckChanges = find(this.campaignLog.investigatorCodes(false), (code: string) => {
-          return !!(find(values(this.campaignLog.storyAssetChanges(code)), count => count !== 0));
+          return !!find(values(this.campaignLog.storyAssetChanges(code)), count => count !== 0);
         });
         if (!hasDeckChanges) {
           return this.proceedToNextStep(

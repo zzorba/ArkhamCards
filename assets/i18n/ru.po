@@ -145,13 +145,13 @@ msgid "None"
 msgstr "Нет"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:104
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:252
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:284
 #: src/data/Card.ts:562
 msgid "Killed"
 msgstr "Убит"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:114
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:300
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:332
 #: src/data/Card.ts:565
 msgid "Insane"
 msgstr "Сошёл с ума"
@@ -408,12 +408,7 @@ msgstr[2] ""
 "Чтобы сыграть этот сценарий, каждый сыщик должен потратить ${ entry.xpCost "
 "} опыта."
 
-#: src/data/scenario/CampaignStateHelper.ts:188
-#. This is a deck upgrade action.
-msgid "Undo deck upgrade"
-msgstr "Сбросить улучшение колоды"
-
-#: src/data/scenario/CampaignStateHelper.ts:185
+#: src/data/scenario/CampaignStateHelper.ts:187
 #. This is a deck upgrade action.
 msgid ""
 "Looks like you are trying to undo a deck upgrade.\n"
@@ -456,6 +451,7 @@ msgstr "Да, сбросить"
 #: src/components/campaignguide/CampaignGuideView.tsx:73
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:126
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:82
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:86
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:86
 #: src/components/campaignguide/StandaloneGuideView.tsx:34
 #: src/components/core/EditText.tsx:29
@@ -488,25 +484,25 @@ msgstr "Да, сбросить"
 #: src/components/settings/LoginButton.tsx:39
 #: src/components/settings/MergeBackupView/index.tsx:153
 #: src/components/settings/MergeBackupView/index.tsx:236
-#: src/data/scenario/CampaignStateHelper.ts:194
+#: src/data/scenario/CampaignStateHelper.ts:198
 #. This is a deck upgrade action.
 msgid "Cancel"
 msgstr "Отменить"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:143
-#: src/data/scenario/fixedSteps.ts:58
+#: src/data/scenario/fixedSteps.ts:60
 msgid "Resolutions"
 msgstr "Исходы"
 
-#: src/data/scenario/fixedSteps.ts:59
+#: src/data/scenario/fixedSteps.ts:61
 msgid "Select resolution"
 msgstr "Выберите исход"
 
-#: src/data/scenario/fixedSteps.ts:153
+#: src/data/scenario/fixedSteps.ts:172
 msgid "Draw Weakness"
 msgstr "Возьмите слабость"
 
-#: src/data/scenario/fixedSteps.ts:174
+#: src/data/scenario/fixedSteps.ts:193
 msgid ""
 "<b>Note:</b> Trauma from investigator defeat is handled during scenario "
 "resolution."
@@ -514,47 +510,47 @@ msgstr ""
 "<b>Внимание:</b> Если ваш сыщик побеждён, полученные травмы будут учтены "
 "при розыгрыше исхода."
 
-#: src/data/scenario/fixedSteps.ts:182
+#: src/data/scenario/fixedSteps.ts:201
 msgid "Record Trauma"
 msgstr "Учёт травм"
 
-#: src/data/scenario/fixedSteps.ts:213
+#: src/data/scenario/fixedSteps.ts:232
 msgid "In your Campaign Log, record that:"
 msgstr "Запишите в журнале кампании:"
 
-#: src/data/scenario/fixedSteps.ts:231
+#: src/data/scenario/fixedSteps.ts:250
 msgid "Choose lead investigator"
 msgstr "Выберите ведущего сыщика"
 
-#: src/data/scenario/fixedSteps.ts:239
+#: src/data/scenario/fixedSteps.ts:258
 msgid "Lead Investigator"
 msgstr "Ведущий сыщик"
 
-#: src/data/scenario/fixedSteps.ts:292
+#: src/data/scenario/fixedSteps.ts:311
 msgid "Alive"
 msgstr "Жив"
 
-#: src/data/scenario/fixedSteps.ts:297
+#: src/data/scenario/fixedSteps.ts:316
 msgid "Resigned"
 msgstr "Совершил побег"
 
-#: src/data/scenario/fixedSteps.ts:302
+#: src/data/scenario/fixedSteps.ts:321
 msgid "Defeated: physical trauma"
 msgstr "Побеждён: физическая травма"
 
-#: src/data/scenario/fixedSteps.ts:307
+#: src/data/scenario/fixedSteps.ts:326
 msgid "Defeated: mental trauma"
 msgstr "Побеждён: ментальная травма"
 
-#: src/data/scenario/fixedSteps.ts:312
+#: src/data/scenario/fixedSteps.ts:331
 msgid "Defeated: no trauma"
 msgstr "Побеждён: без травмы"
 
-#: src/data/scenario/fixedSteps.ts:378
+#: src/data/scenario/fixedSteps.ts:397
 msgid "Investigator status at end of scenario:"
 msgstr "Состояние сыщика в конце сценария:"
 
-#: src/data/scenario/fixedSteps.ts:428
+#: src/data/scenario/fixedSteps.ts:447
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr "Перейдите к сценарию <b>${ nextScenarioName }</b>."
@@ -597,7 +593,7 @@ msgid "Multiplayer"
 msgstr "Мультиплеер"
 
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:83
-#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:48
+#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:47
 #: src/components/campaign/constants.ts:59
 #: src/components/campaign/constants.ts:295
 #: src/components/core/PackListComponent/index.tsx:54
@@ -1392,7 +1388,7 @@ msgstr "Сохранение..."
 #: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:66
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:103
 #: src/components/campaign/UpgradeDecksView/NonDeckDetailsButton.tsx:32
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:185
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:217
 #: src/components/deck/DeckUpgradeComponent.tsx:159
 msgid "Experience points"
 msgstr "Очки опыта"
@@ -2579,8 +2575,9 @@ msgstr "Выберите карты"
 msgid "Choose additional card"
 msgstr "Выберите дополнительную карту"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:114
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:116
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:47
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:134
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/TextBoxInputComponent.tsx:53
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:135
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:81
@@ -2716,16 +2713,17 @@ msgstr "Взять локацию"
 msgid "Switch campaign"
 msgstr "Сменить кампанию"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/index.tsx:160
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/index.tsx:168
 msgid "Choose Investigators"
 msgstr "Выбрать сыщиков"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/ShowDeckButton.tsx:36
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:57
 msgid "View deck upgrade"
 msgstr "Посмотреть улучшения колоды"
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:149
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:172
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:139
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:204
 msgid "Campaign cards"
 msgstr "Карты кампании"
 
@@ -2733,49 +2731,54 @@ msgstr "Карты кампании"
 #: src/components/campaign/EditTraumaComponent.tsx:50
 #: src/components/campaign/EditTraumaDialog.tsx:48
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:179
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:219
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:251
 msgid "Trauma"
 msgstr "Травма"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:226
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:258
 msgid "Physical"
 msgstr "Физическая"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:233
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:265
 #, javascript-format
 msgid " (New Total: ${ totalPhysical })"
 msgstr " (Всего: ${ totalPhysical })"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:274
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:306
 msgid "Mental"
 msgstr "Ментальная"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:281
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:313
 #, javascript-format
 msgid " (New Total: ${ totalMental })"
 msgstr " (Всего: ${ totalMental })"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:331
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:363
 msgid "Save deck upgrade"
 msgstr "Сохранить улучшение колоды"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:341
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:373
 msgid "Save adjustments"
 msgstr "Сохранить изменения"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:383
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:195
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:415
 msgid "Select deck"
 msgstr "Выбрать колоду"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:387
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:51
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:199
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:419
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:145
 msgid "View deck"
 msgstr "Посмотреть колоду"
 
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:83
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:83
 msgid "Proceed without saving"
 msgstr "Продолжить без сохранения"
 
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:89
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:89
 msgid "Proceed anyway"
 msgstr "Продолжить всё равно"
@@ -2801,6 +2804,7 @@ msgstr ""
 "изменений колоды (оригинальную версию колоды всё так же можно будет увидеть "
 "в меню колоды)."
 
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:70
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:70
 msgid ""
 "It looks like you edited the experience or trauma for an investigator, but "
@@ -2947,11 +2951,11 @@ msgstr "Физическая травма"
 msgid "Mental trauma"
 msgstr "Ментальная травма"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:81
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:83
 msgid "All weaknesses have been assigned."
 msgstr "Все слабости назначены."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:45
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:47
 msgid "Draw random weakness"
 msgstr "Взять случайную слабость"
 
@@ -5394,7 +5398,7 @@ msgstr "Переместиться"
 msgid "Resource"
 msgstr "Взять ресурс"
 
-#: src/data/scenario/CampaignStateHelper.ts:184
+#: src/data/scenario/CampaignStateHelper.ts:185
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
 msgstr "Сбросить улучшение колоды?"
@@ -5492,7 +5496,7 @@ msgstr ""
 msgid "Upgrade with XP"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:40
+#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:39
 msgid "Unknown campaign"
 msgstr ""
 
@@ -5510,8 +5514,37 @@ msgstr ""
 msgid "Too many cards (${ drawDeckSize } / ${ size })."
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:125
+#: src/data/scenario/fixedSteps.ts:127
 msgid "Draw Random Basic Weakness"
+msgstr ""
+
+#: src/data/scenario/CampaignStateHelper.ts:185
+#. This is a deck upgrade action.
+msgid "Undo deck change?"
+msgstr ""
+
+#: src/data/scenario/CampaignStateHelper.ts:188
+#. This is a deck upgrade action.
+msgid ""
+"Looks like you are trying to undo a deck save.\n"
+"\n"
+"The app will NOT be able to undo these changes, so if you proceed again the "
+"changes might be applied twice. You should view the deck and manually undo "
+"the edits before reapplying the changes."
+msgstr ""
+
+#: src/data/scenario/CampaignStateHelper.ts:191
+#. This is a deck upgrade action.
+msgid "Undo anyway"
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:153
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:104
+msgid "Save deck changes"
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:50
+msgid "It looks like one or more deck changes are unsaved."
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
@@ -5589,27 +5622,27 @@ msgstr[0] "${ investigator.name } получает ${ effect.physical } физи
 msgstr[1] "${ investigator.name } получает ${ effect.physical } физическую травму."
 msgstr[2] "${ investigator.name } получает ${ effect.physical } физическую травму."
 
-#: src/data/scenario/fixedSteps.ts:290
+#: src/data/scenario/fixedSteps.ts:309
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Жив"
 
-#: src/data/scenario/fixedSteps.ts:295
+#: src/data/scenario/fixedSteps.ts:314
 msgctxt "masculine"
 msgid "Resigned"
 msgstr "Совершил побег"
 
-#: src/data/scenario/fixedSteps.ts:300
+#: src/data/scenario/fixedSteps.ts:319
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
 msgstr "Побеждён: физическая травма"
 
-#: src/data/scenario/fixedSteps.ts:305
+#: src/data/scenario/fixedSteps.ts:324
 msgctxt "masculine"
 msgid "Defeated: mental trauma"
 msgstr "Побеждён: ментальная травма"
 
-#: src/data/scenario/fixedSteps.ts:310
+#: src/data/scenario/fixedSteps.ts:329
 msgctxt "masculine"
 msgid "Defeated: no trauma"
 msgstr "Побеждён: без травмы"
@@ -5707,27 +5740,27 @@ msgstr[0] "${ investigator.name } получает ${ effect.physical } физи
 msgstr[1] "${ investigator.name } получает ${ effect.physical } физическую травму."
 msgstr[2] "${ investigator.name } получает ${ effect.physical } физическую травму."
 
-#: src/data/scenario/fixedSteps.ts:290
+#: src/data/scenario/fixedSteps.ts:309
 msgctxt "feminine"
 msgid "Alive"
 msgstr "Жив"
 
-#: src/data/scenario/fixedSteps.ts:295
+#: src/data/scenario/fixedSteps.ts:314
 msgctxt "feminine"
 msgid "Resigned"
 msgstr "Совершил побег"
 
-#: src/data/scenario/fixedSteps.ts:300
+#: src/data/scenario/fixedSteps.ts:319
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
 msgstr "Побеждён: физическая травма"
 
-#: src/data/scenario/fixedSteps.ts:305
+#: src/data/scenario/fixedSteps.ts:324
 msgctxt "feminine"
 msgid "Defeated: mental trauma"
 msgstr "Побеждён: ментальная травма"
 
-#: src/data/scenario/fixedSteps.ts:310
+#: src/data/scenario/fixedSteps.ts:329
 msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "Побеждён: без травмы"

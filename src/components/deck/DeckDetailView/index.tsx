@@ -226,6 +226,7 @@ function DeckDetailView({
   useBackButton(handleBackPress);
 
   const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
+  const factionLightColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].lightBackground, [parsedDeck, colors.faction]);
   useEffect(() => {
     const textColors = {
       view: '#FFFFFF',
@@ -383,6 +384,7 @@ function DeckDetailView({
     }
     setMenuOpen(false);
     const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<EditSpecialCardsProps>(componentId, {
       component: {
         name: 'Deck.EditSpecial',
@@ -394,6 +396,7 @@ function DeckDetailView({
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -405,7 +408,7 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },
@@ -423,6 +426,7 @@ function DeckDetailView({
     }
     setMenuOpen(false);
     const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<EditDeckProps>(componentId, {
       component: {
         name: 'Deck.EditAddCards',
@@ -432,6 +436,7 @@ function DeckDetailView({
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -443,7 +448,7 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },
@@ -456,6 +461,7 @@ function DeckDetailView({
       return;
     }
     setMenuOpen(false);
+    const backgroundColor = colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].background;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -467,6 +473,7 @@ function DeckDetailView({
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -478,7 +485,7 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },
@@ -865,6 +872,8 @@ function DeckDetailView({
           textContainerStyle={actionContainerStyle}
           title={t`Draw simulator`}
           onPress={showDrawSimulatorPressed}
+          shadowStyle={shadow.medium}
+          useNativeFeedback={false}
         >
           <AppIcon name="draw" color={colors.L30} size={34} />
         </ActionButton.Item>
@@ -874,6 +883,8 @@ function DeckDetailView({
           textContainerStyle={actionContainerStyle}
           title={t`Charts`}
           onPress={showCardChartsPressed}
+          shadowStyle={shadow.medium}
+          useNativeFeedback={false}
         >
           <AppIcon name="chart" color={colors.L30} size={34} />
         </ActionButton.Item>
@@ -884,6 +895,7 @@ function DeckDetailView({
             textContainerStyle={actionContainerStyle}
             title={t`Upgrade with XP`}
             onPress={onUpgradePressed}
+            useNativeFeedback={false}
           >
             <AppIcon name="upgrade" color={colors.L30} size={32} />
           </ActionButton.Item>
@@ -895,6 +907,8 @@ function DeckDetailView({
             textContainerStyle={actionContainerStyle}
             title={t`Edit`}
             onPress={onEditPressed}
+            shadowStyle={shadow.medium}
+            useNativeFeedback={false}
           >
             <AppIcon name="edit" color={colors.L30} size={24} />
           </ActionButton.Item>
@@ -905,13 +919,15 @@ function DeckDetailView({
             textContainerStyle={actionContainerStyle}
             title={t`Add cards`}
             onPress={onAddCardsPressed}
+            shadowStyle={shadow.medium}
+            useNativeFeedback={false}
           >
             <AppIcon name="plus-thin" color={colors.L30} size={24} />
           </ActionButton.Item>
         )) }
       </ActionButton>
     );
-  }, [factionColor, fabOpen, editable, mode, shadow.large, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
+  }, [factionColor, fabOpen, editable, mode, shadow, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
 
   if (!deck) {
     return (

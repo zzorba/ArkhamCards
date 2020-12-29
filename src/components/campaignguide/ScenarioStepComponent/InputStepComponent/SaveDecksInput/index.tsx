@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -10,6 +10,7 @@ import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import SaveDeckRow from './SaveDeckRow';
+import Card from '@data/Card';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { m, s, xs } from '@styles/space';
@@ -96,6 +97,14 @@ export default function SaveDecksInput({ componentId, id }: Props) {
     }
   }, [proceedMessage, actuallySave]);
   const { borderStyle, typography } = useContext(StyleContext);
+  const hasChanges = useMemo(() => !!find(scenarioInvestigators, (investigator: Card) => {
+    const storyAssetDeltas = campaignLog.storyAssetChanges(investigator.code);
+    return !!find(storyAssetDeltas, (count: number) => count !== 0);
+  }), [campaignLog, scenarioInvestigators]);
+  if (!hasChanges) {
+    return null;
+  }
+
   const hasDecision = scenarioState.decision(id) !== undefined;
   return (
     <View>
@@ -106,14 +115,7 @@ export default function SaveDecksInput({ componentId, id }: Props) {
       </View>
       { map(scenarioInvestigators, investigator => {
         if (campaignLog.isEliminated(investigator)) {
-          return (
-            <InvestigatorRow
-              key={investigator.code}
-              investigator={investigator}
-              description={investigator.traumaString(campaignLog.traumaAndCardData(investigator.code))}
-              eliminated
-            />
-          );
+          return null;
         }
         return (
           <SaveDeckRow

@@ -64,6 +64,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
   }, [campaign, dispatch]);
 
   const showDeckUpgradeDialog = useCallback((deck: Deck, investigator?: Card) => {
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -75,6 +76,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -86,7 +88,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },

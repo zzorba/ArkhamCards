@@ -175,6 +175,7 @@ export default function DecksSection({
   }, [latestDeckIds, decks, removeInvestigator]);
 
   const showDeckUpgradeDialog = useCallback((investigator: Card, deck: Deck) => {
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -186,6 +187,7 @@ export default function DecksSection({
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -197,7 +199,7 @@ export default function DecksSection({
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },
