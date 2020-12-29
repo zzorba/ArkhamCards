@@ -20,7 +20,7 @@ export default function MenuButton({ icon, title, description, onPress, disabled
       <View style={[styles.row, space.paddingTopS, space.paddingBottomS, borderStyle, !last ? styles.border : undefined]}>
         { !!icon && (
           <View style={[styles.icon, space.marginRightXs]}>
-            <AppIcon name={icon} size={28} color={colors.M} />
+            <AppIcon name={icon} size={icon === 'edit' ? 22 : 28} color={colors.M} />
           </View>
         ) }
         <View style={styles.column}>

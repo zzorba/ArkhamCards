@@ -3,7 +3,7 @@ import { BackHandler, InteractionManager } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, ChaosBagResults, SingleCampaign, Slots } from '@actions/types';
+import { Campaign, ChaosBagResults, Deck, SingleCampaign, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState, makeChaosBagResultsSelector, makeDeckSelector, getEffectiveDeckId, makeTabooSetSelector, makeCampaignSelector, makeLatestCampaignDeckIdsSelector, makeLatestCampaignInvestigatorsSelector } from '@reducers';
@@ -507,7 +507,7 @@ export function useChaosBagResults(campaignId: number): ChaosBagResults {
   return useSelector((state: AppState) => chaosBagResultsSelector(state, campaignId));
 }
 
-export function useDeck(id: number | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean }) {
+export function useDeck(id: number | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean } = {}): [Deck | undefined, Deck | undefined] {
   const dispatch = useDispatch();
   const effectiveDeckIdSelector = useCallback((state: AppState) => id !== undefined ? getEffectiveDeckId(state, id) : undefined, [id]);
   const effectiveDeckId = useSelector(effectiveDeckIdSelector);

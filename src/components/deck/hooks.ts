@@ -92,8 +92,13 @@ export function useParsedDeck(
   id: number,
   componentName: string,
   componentId: string,
-  fetchIfMissing?: boolean,
-  upgrade?: boolean
+  {
+    fetchIfMissing,
+    upgrade,
+  }: {
+    fetchIfMissing?: boolean;
+    upgrade?: boolean;
+  } = {}
 ): ParsedDeckResults {
   const [deck, previousDeck] = useDeck(id, { fetchIfMissing });
   const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing, upgrade ? 'upgrade' : undefined);
@@ -191,6 +196,7 @@ export function useDeckEditState({
     const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
     setHasPendingEdits(
       (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
+      (deckEdits.descriptionChange && deck.description_md !== deckEdits.descriptionChange) ||
       (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
       (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
       keys(slotDeltas.removals).length > 0 ||

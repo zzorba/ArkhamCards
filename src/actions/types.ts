@@ -516,6 +516,7 @@ export interface ClearDecksAction {
 
 export interface EditDeckState {
   nameChange?: string;
+  descriptionChange?: string;
   tabooSetChange?: number;
   xpAdjustment: number;
   slots: Slots;

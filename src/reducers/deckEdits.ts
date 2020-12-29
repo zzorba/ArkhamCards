@@ -98,6 +98,9 @@ export default function(
     if (action.updates.mode !== undefined) {
       updatedEdits.mode = action.updates.mode;
     }
+    if (action.updates.descriptionChange !== undefined) {
+      updatedEdits.descriptionChange = action.updates.descriptionChange;
+    }
     return {
       ...state,
       edits: {

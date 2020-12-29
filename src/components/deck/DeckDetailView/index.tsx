@@ -91,7 +91,10 @@ function DeckDetailView({
   const { width } = useWindowDimensions();
 
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
-  const parsedDeckObj = useParsedDeck(id, 'DeckDetail', componentId, true, upgrade);
+  const parsedDeckObj = useParsedDeck(id, 'DeckDetail', componentId, {
+    fetchIfMissing: true,
+    upgrade,
+  });
   const campaignSelector = useMemo(makeCampaignSelector, []);
   const campaignForDeckSelector = useMemo(makeCampaignForDeckSelector, []);
   const campaign = useSelector((state: AppState) => campaignId ? campaignSelector(state, campaignId) : campaignForDeckSelector(state, deck?.id || id));
@@ -226,7 +229,6 @@ function DeckDetailView({
   useBackButton(handleBackPress);
 
   const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
-  const factionLightColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].lightBackground, [parsedDeck, colors.faction]);
   useEffect(() => {
     const textColors = {
       view: '#FFFFFF',
@@ -519,6 +521,21 @@ function DeckDetailView({
       },
     });
   }, [dispatch, id]);
+  const showDescription = useCallback(() => {
+    if (parsedDeck) {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Deck.Description',
+          passProps: {
+            componentId,
+            id,
+          },
+          options: getDeckOptions(colors, { title: t`Notes` }, parsedDeck.investigator),
+        },
+      });
+    }
+    setMenuOpen(false);
+  }, [componentId, parsedDeck, colors, id, setMenuOpen]);
   const { dialog: editNameDialog, showDialog: showEditNameDialog } = useTextDialog({
     title: t`Deck name`,
     onValueChange: updateDeckName,
@@ -716,10 +733,16 @@ function DeckDetailView({
               onPress={showTabooPicker}
               icon="taboo_thin"
               description={tabooSet ? tabooSet.date_start : t`None`}
-              last
             />
           </>
         ) }
+        <MenuButton
+          title={t`Notes`}
+          description={t`Free-form text records`}
+          onPress={showDescription}
+          icon="edit"
+          last
+        />
         <DeckBubbleHeader title={t`Tools`} />
         <MenuButton
           onPress={showCardChartsPressed}
@@ -824,7 +847,7 @@ function DeckDetailView({
       </ScrollView>
     );
   }, [backgroundStyle, onAddCardsPressed, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
-    showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB,
+    showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
     onEditSpecialPressed, onChecklistPressed,
   ]);

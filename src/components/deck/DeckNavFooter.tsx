@@ -27,6 +27,7 @@ interface Props {
   controls?: React.ReactNode;
   control?: 'fab' | 'counts' ;
   campaign?: Campaign;
+  forceShow?: boolean;
 }
 
 function fabPadding(control?: 'fab' | 'counts') {
@@ -45,6 +46,7 @@ export default function DeckNavFooter({
   control,
   campaign,
   onPress,
+  forceShow,
 }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const parsedDeckObj = useParsedDeck(deckId, 'NavFooter', componentId);
@@ -89,7 +91,7 @@ export default function DeckNavFooter({
       </TouchableOpacity>
     );
   }, [editable, xpString, deck, showXpAdjustmentDialog, typography, colors]);
-  if (mode === 'view') {
+  if (mode === 'view' && !forceShow) {
     return null;
   }
   return (

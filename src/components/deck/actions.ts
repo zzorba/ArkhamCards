@@ -494,6 +494,17 @@ export function setDeckTabooSet(id: number, tabooSetId: number): UpdateDeckEditA
   };
 }
 
+
+export function setDeckDescription(id: number, description: string): UpdateDeckEditAction {
+  return {
+    type: UPDATE_DECK_EDIT,
+    id,
+    updates: {
+      descriptionChange: description,
+    },
+  };
+}
+
 export function setDeckXpAdjustment(id: number, xpAdjustment: number): UpdateDeckEditAction {
   return {
     type: UPDATE_DECK_EDIT,
