@@ -14,7 +14,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import { NavigationProps } from '@components/nav/types';
 import ExileCardSelectorComponent from '@components/campaign/ExileCardSelectorComponent';
 import Card from '@data/Card';
-import { DeckChanges } from '@components/deck/actions';
+import { SaveDeckChanges } from '@components/deck/actions';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -29,7 +29,7 @@ interface DeckUpgradeProps extends NavigationProps{
   storyCounts: Slots;
   ignoreStoryCounts: Slots;
   upgradeCompleted: (deck: Deck, xp: number) => void;
-  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
+  saveDeckChanges: (deck: Deck, changes: SaveDeckChanges) => Promise<Deck>;
   saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
   saveButtonText?: string;
 }

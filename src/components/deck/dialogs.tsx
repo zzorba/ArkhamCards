@@ -12,7 +12,7 @@ import { Campaign, Deck, ParsedDeck, Slots, UPDATE_DECK_EDIT } from '@actions/ty
 import { useDispatch } from 'react-redux';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCounter } from '@components/core/hooks';
-import { saveDeckChanges, uploadLocalDeck } from '@components/deck/actions';
+import { SaveDeckChanges, saveDeckChanges, uploadLocalDeck } from '@components/deck/actions';
 import { updateCampaign } from '@components/campaign/actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
@@ -436,18 +436,20 @@ export function useSaveDialog(
       if (hasPendingEdits) {
         const problem = parsedDeck.problem;
         const problemField = problem ? problem.reason : '';
+        const deckChanges: SaveDeckChanges = {
+          name: deckEditsRef.current.nameChange,
+          description: deckEditsRef.current.descriptionChange,
+          slots: deckEditsRef.current.slots,
+          ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
+          problem: problemField,
+          spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
+          xpAdjustment: deckEditsRef.current.xpAdjustment,
+          tabooSetId,
+          meta: deckEditsRef.current.meta,
+        };
         await deckDispatch(saveDeckChanges(
           deck,
-          {
-            name: deckEditsRef.current.nameChange,
-            slots: deckEditsRef.current.slots,
-            ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
-            problem: problemField,
-            spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
-            xpAdjustment: deckEditsRef.current.xpAdjustment,
-            tabooSetId,
-            meta: deckEditsRef.current.meta,
-          }
+          deckChanges,
         ));
         if (addedBasicWeaknesses.length) {
           updateCampaignWeaknessSet(addedBasicWeaknesses);

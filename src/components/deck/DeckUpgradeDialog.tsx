@@ -24,7 +24,7 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
-import { saveDeckChanges, saveDeckUpgrade, DeckChanges } from './actions';
+import { saveDeckChanges, saveDeckUpgrade, SaveDeckChanges } from './actions';
 import { AppState } from '@reducers';
 
 export interface UpgradeDeckProps {
@@ -104,7 +104,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     updateStoryCounts({ type: 'sync', slots: storyCounts });
   }, [updateStoryCounts]);
 
-  const performSaveDeckChanges = useCallback((deck: Deck, changes: DeckChanges): Promise<Deck> => {
+  const performSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
     return deckDispatch(saveDeckChanges(deck, changes));
   }, [deckDispatch]);
 

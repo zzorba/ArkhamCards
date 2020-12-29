@@ -12,10 +12,12 @@ export function newLocalDeck(
   tabooSetId?: number,
   meta?: DeckMeta,
   problem?: DeckProblemType,
+  description_md?: string
 ): Deck {
   const timestamp = (new Date()).toISOString();
   return {
     id,
+    description_md,
     date_creation: timestamp,
     date_update: timestamp,
     name,
@@ -41,6 +43,7 @@ export function updateLocalDeck(
   xp_adjustment?: number,
   tabooSetId?: number,
   meta?: DeckMeta,
+  description_md?: string
 ): Deck {
   const versionParts = (deck.version || '0.1').split('.');
   // @ts-ignore
@@ -58,6 +61,7 @@ export function updateLocalDeck(
     version: versionParts.join('.'),
     taboo_id: tabooSetId,
     meta,
+    description_md,
   };
 }
 

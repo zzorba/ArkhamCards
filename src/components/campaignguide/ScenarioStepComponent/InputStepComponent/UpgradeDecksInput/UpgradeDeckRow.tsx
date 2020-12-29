@@ -16,7 +16,7 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showDeckModal, showCard } from '@components/nav/helper';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import DeckUpgradeComponent, { DeckUpgradeHandles } from '@components/deck/DeckUpgradeComponent';
-import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
+import { saveDeckUpgrade, saveDeckChanges, SaveDeckChanges } from '@components/deck/actions';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card from '@data/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
@@ -447,7 +447,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
   }, [deck, storyAssets, storyAssetDeltas]);
 
 
-  const performSaveDeckChanges = useCallback((deck: Deck, changes: DeckChanges): Promise<Deck> => {
+  const performSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
     return deckDispatch(saveDeckChanges(deck, changes) as any);
   }, [deckDispatch]);
 

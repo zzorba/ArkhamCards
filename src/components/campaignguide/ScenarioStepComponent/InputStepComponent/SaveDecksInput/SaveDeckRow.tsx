@@ -15,7 +15,7 @@ import { showDeckModal, showCard } from '@components/nav/helper';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { useDeck } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
-import { saveDeckChanges, DeckChanges } from '@components/deck/actions';
+import { saveDeckChanges, SaveDeckChanges } from '@components/deck/actions';
 import Card from '@data/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
@@ -97,7 +97,7 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
           delete slots[code];
         }
       });
-      const changes: DeckChanges = { slots };
+      const changes: SaveDeckChanges = { slots };
       deckDispatch(saveDeckChanges(deck, changes) as any).then(saveCampaignLog);
     }
   }, [deck, deckDispatch, storyAssetDeltas, saveCampaignLog]);
