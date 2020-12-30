@@ -12045,6 +12045,120 @@
         ]
       }
     }
+  ],
+  "achievements": [
+    {
+      "id": "what_is_this_stuff",
+      "title": "What Is This Stuff, Anyway?",
+      "text": "Defeat The Experiment using the Alchemical Concoction in “Extracurricular Activities”.",
+      "type": "binary"
+    },
+    {
+      "id": "no_void_for_you",
+      "title": "No Void For You",
+      "text": "Complete “The Miskatonic Museum” without ever defeating the Hunting Horror.",
+      "type": "binary"
+    },
+    {
+      "id": "first_rule_of_arkham",
+      "title": "First Rule of Arkham",
+      "text": "Burn The Necronomicon in “The Miskatonic Museum.”",
+      "type": "binary"
+    },
+    {
+      "id": "all_aboard",
+      "title": "All Aboard",
+      "text": "Complete “The Essex County Express” without letting any Helpless Passengers leave play.",
+      "type": "binary"
+    },
+    {
+      "id": "gangs_all_here",
+      "title": "The Gang’s All Here",
+      "text": "In “The Survivors,” the following characters <i>survived The Dunwich Legacy</i>:",
+      "type": "list",
+      "items": [
+        {
+          "id": "armitage",
+          "text": "Dr. Henry Armitage"
+        },
+        {
+          "id": "morgan",
+          "text": "Dr. Francis Morgan"
+        },
+        {
+          "id": "rice",
+          "text": "Professor Warren Rice"
+        },
+        {
+          "id": "whateley",
+          "text": "Zebulon Whateley"
+        },
+        {
+          "id": "sawyer",
+          "text": "Earl Sawyer"
+        }
+      ]
+    },
+    {
+      "id": "no_brood_left_behind",
+      "title": "No Brood Left Behind",
+      "text": "Have no Broods of Yog-Sothoth escape into the wild in “Undimensioned and Unseen.”",
+      "type": "binary"
+    },
+    {
+      "id": "remind_me_not_to_piss_her_off",
+      "title": "Remind Me Not To Piss Her Off",
+      "text": "Defeat either version of Seth Bishop while Naomi O’Bannion is under your control.",
+      "type": "binary"
+    },
+    {
+      "id": "eureka",
+      "title": "Eureka!",
+      "text": "Identify the Strange Solution.",
+      "type": "binary"
+    },
+    {
+      "id": "beyond_what_veil",
+      "title": "Beyond What Veil?",
+      "text": "Take 10 damage from Beyond the Veil without being defeated.",
+      "type": "binary"
+    },
+    {
+      "id": "here_we_go_again",
+      "title": "Here We Go Again",
+      "text": "Have Dr. Henry Armitage, Dr. Francis Morgan, and Professor Warren Rice in play at the same time.",
+      "type": "binary"
+    },
+    {
+      "id": "bird_hunting",
+      "title": "Bird Hunting",
+      "text": "Defeat 3 Whippoorwills in a single turn.",
+      "type": "binary"
+    },
+    {
+      "id": "they_arent_getting_away_with_this",
+      "title": "They Aren’t Getting Away With This",
+      "text": "Win <i>The Dunwich Legacy</i> campaign as “Ashcan” Pete with Duke listed under “Sacrificed to Yog-Sothoth.”",
+      "type": "binary"
+    },
+    {
+      "id": "tabula_rasa",
+      "title": "Tabula Rasa",
+      "text": "Win The Dunwich Legacy campaign with no [tablet] or [elder_thing] tokens in the chaos bag.",
+      "type": "binary"
+    },
+    {
+      "id": "dwl_line_in_the_sand",
+      "title": "Line in the Sand",
+      "text": "Win <i>The Dunwich Legacy</i> campaign with at least three Ultimatums active.",
+      "type": "binary"
+    },
+    {
+      "id": "dunwich_expertise",
+      "title": "Dunwich Expertise",
+      "text": "Win <i>The Dunwich Legacy</i> campaign on Expert difficulty.",
+      "type": "binary"
+    }
   ]
 }, "scenarios": [
 {
@@ -15962,6 +16076,92 @@
         ]
       }
     }
+  ],
+  "achievements": [
+    {
+      "id": "zealots_revent",
+      "title": "The Zealot's Revenge",
+      "text": "Have Lita Chantler’s [reaction] ability deal the killing blow to the Ghoul Priest.",
+      "type": "binary"
+    },
+    {
+      "id": "dont_trust_her",
+      "title": "I Don't Trust Her",
+      "text": "When given the option to add Lita Chantler to your deck, refuse to do so.",
+      "type": "binary"
+    },
+    {
+      "id": "insurance",
+      "title": "Insurance Doesn’t Cover Ghouls",
+      "text": "Burn your house to the ground in “The Gathering.”",
+      "type": "binary"
+    },
+    {
+      "id": "do_i_have_to",
+      "title": "…But Do I Have To?",
+      "text": "In “The Midnight Masks,” have each investigator remain in Your House for the first three rounds.",
+      "type": "binary"
+    },
+    {
+      "id": "conspiracy_of_silence",
+      "title": "Conspiracy of Silence",
+      "text": "Find and interrogate all six unique cultists in “The Midnight Masks.”",
+      "type": "binary"
+    },
+    {
+      "id": "tour_of_arkham",
+      "title": "Tour of Arkham",
+      "text": "Trigger each of the “once per game” abilities on all of the locations in play in “The Midnight Masks.”",
+      "type": "binary"
+    },
+    {
+      "id": "do_you_get_it_now",
+      "title": "Do You Get It Now?",
+      "text": "Trigger the <b>Forced</b> ability on Billy Cooper by defeating the Ghoul Priest at his location.",
+      "type": "binary"
+    },
+    {
+      "id": "pinch_hitter",
+      "title": "Pinch Hitter",
+      "text": "Defeat three [[Ghoul]] enemies with a Baseball Bat without it breaking.",
+      "type": "binary"
+    },
+    {
+      "id": "even_death_may_die",
+      "title": "Even Death May Die",
+      "text": "Defeat Umôrdhoth while the Vault of Earthly Demise is attached to it.",
+      "type": "binary"
+    },
+    {
+      "id": "break_the_circle",
+      "title": "Break the Circle",
+      "text": "Complete “The Devourer Below” without Umôrdhoth spawning.",
+      "type": "binary"
+    },
+    {
+      "id": "theyre_just_misunderstood",
+      "title": "They’re Just Misunderstood",
+      "text": "Win the <i>Night of the Zealot</i> campaign without defeating a single unique [[Cultist]] enemy.",
+      "type": "binary"
+    },
+    {
+      "id": "umordhoths_favor",
+      "title": "Umôrdhoth’s Favor",
+      "text": "Win the <i>Night of the Zealot</i> campaign without defeating a single [[Ghoul]] enemy.",
+      "type": "binary"
+    },
+    {
+      "id": "notz_line_in_the_sand",
+      "title": "Line in the Sand",
+      "text": " Win the <i>Night of the Zealot</i> campaign with at least three Ultimatums active.",
+      "type": "binary"
+    },
+    {
+      "id": "arkham_expertise",
+      "title": "Arkham Expertise",
+      "text": "Win the <i>Night of the Zealot</i> campaign on Expert difficulty.",
+      "type": "binary"
+    }
   ]
 }, "scenarios": [
 {
@@ -17662,6 +17862,126 @@
           "value": 1
         }
       ]
+    }
+  ],
+  "achievements": [
+    {
+      "id": "fair_warning",
+      "title": "Fair Warning",
+      "text": " Defeat the Royal Emissary three times during a single playthrough of “Curtain Call.”",
+      "type": "binary"
+    },
+    {
+      "id": "first_steps",
+      "title": "First Steps",
+      "text": "Interview the following VIPs in “The Last King”:",
+      "type": "list",
+      "items": [
+        {
+          "id": "constance",
+          "text": "Constance Dumaine"
+        },
+        {
+          "id": "jordan",
+          "text": "Jordan Perry"
+        },
+        {
+          "id": "haruko",
+          "text": "Ishimaru Haruko"
+        },
+        {
+          "id": "sebastien",
+          "text": "Sebastien Moreau"
+        },
+        {
+          "id": "ashleigh",
+          "text": "Ashleigh Clarke"
+        }
+      ]
+    },
+    {
+      "id": "crashing_the_party",
+      "title": "Crashing the Party",
+      "text": "Defeat the [[Lunatic]] version of Dianne Devine in “The Last King.”",
+      "type": "binary"
+    },
+    {
+      "id": "for_prying_eyes",
+      "title": "For Prying Eyes",
+      "text": "Add the Hidden Library to the victory display in “Echoes of the Past.”",
+      "type": "binary"
+    },
+    {
+      "id": "cuckoos_nest",
+      "title": "The Cuckoo's Nest",
+      "text": "Resign with Daniel Chesterfield under an investigator’s control in “The Unspeakable Oath.”",
+      "type": "binary"
+    },
+    {
+      "id": "take_a_look_at_this",
+      "title": "Take A Look At This!",
+      "text": "Parley with the Host of Insanity in “The Unspeakable Oath.”",
+      "type": "binary"
+    },
+    {
+      "id": "path_of_death",
+      "title": "The Path of Death",
+      "text": "Use your Clasp of Black Onyx to find a shortcut in “The Pallid Mask.”",
+      "type": "binary"
+    },
+    {
+      "id": "guessing_game",
+      "title": "Guessing Game",
+      "text": "Advance to the final agenda of one agenda deck before advacing the first agenda of the other agenda deck in “Black Stars Rise.”",
+      "type": "binary"
+    },
+    {
+      "id": "hastur_made_me_do_it",
+      "title": "Hastur Made Me Do It",
+      "text": "Defeat Hastur in “Dim Carcosa” while a Possession treachery is in your hand.",
+      "type": "binary"
+    },
+    {
+      "id": "say_my_name",
+      "title": "Say My Name",
+      "text": "After you have <i>heeded Daniel’s warning</i>, speak the name of HASTUR aloud seven or more times during a single scenario (or its setup).",
+      "type": "binary"
+    },
+    {
+      "id": "get_back_here",
+      "title": "Get Back Here",
+      "text": "Win <i>The Path to Carcosa</i> campaign having never ended a scenario with The Man in the Pallid Mask in play",
+      "type": "binary"
+    },
+    {
+      "id": "path_is_false",
+      "title": "The Path is False",
+      "text": "Win <i>The Path to Carcosa<i/> campaign with <b>8 Doubt</b>.",
+      "type": "binary"
+    },
+    {
+      "id": "path_is_real",
+      "title": "The Path is Real",
+      "text": "Win <i>The Path to Carcosa</i> campaign with <b>8 Conviction</b>.",
+      "type": "binary"
+    },
+    {
+      "id": "path_is_mine",
+      "title": "Sur la Voie",
+      "text": "Win <i>The Path to Carcosa</i> campaign with less than <b>2 Doubt</b> and <b>Conviction</b> in total.",
+      "type": "binary"
+    },
+    {
+      "id": "ptc_line_in_the_sand",
+      "title": "Line in the Sand",
+      "text": "Win <i>The Path to Carcosa</i> campaign with at least three Ultimatums active.",
+      "type": "binary"
+    },
+    {
+      "id": "carcosa_expertise",
+      "title": "Carcosa Expertise=",
+      "text": "Win <i>The Path to Carcosa</i> campaign on Expert difficulty.",
+      "type": "binary"
     }
   ]
 }, "scenarios": [
@@ -24284,6 +24604,105 @@
         }
       ],
       "example": "<i>Exemple : l'Intrigue 1a – « Expédition en Pleine Nature » possède la capacité suivante : « [action]: <b>Explorer</b>. Piochez la carte du dessus du deck Exploration. Si c\\u001eest un lieu connexe, mettez-le en jeu et déplacez-vous vers lui. » Ursula Downs se trouve au Campement de l'Expédition et souhaite découvrir un nouveau lieu vers lequel voyager. Elle dépense sa première action pour explorer en piochant la carte du dessus du deck Exploration. La carte piochée est la Piste Détournée. Étant donné que ce Lieu n'est pas connexe au Campement de l'Expédition, il est posé à côté du deck Exploration et Ursula pioche la carte suivante dans le deck Exploration. Cette fois, elle pioche Épuisement des Réserves, une carte Traîtrise qu'elle résout normalement et place dans la pile de défausse Rencontre. Son exploration se révèle infructueuse et elle doit mélanger dans le deck Exploration la Piste Détournée qu'elle a piochée précédemment. Ursula décide de dépenser une deuxième action pour explorer à nouveau. Cette fois, elle pioche le Chemin de Ronces qui est connexe au Campement de l'Expédition. Son exploration se révèle fructueuse. Le Chemin de Ronces est mis en jeu avec un nombre d'indices égal à sa valeur d'indice et Ursula se déplace immédiatement du Campement de l'Expédition vers le Chemin de Ronces.</i>"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "why_did_it_have_to_be_snakes",
+      "title": "Why Did It Have to Be Snakes?",
+      "text": "Defeat twenty [[Serpent]] enemies.",
+      "type": "count",
+      "max": 20
+    },
+    {
+      "id": "watch_them_unravel",
+      "title": "Watch Them Unravel",
+      "text": "Complete all four act decks during a single playthrough of “Threads of Fate.”",
+      "type": "binary"
+    },
+    {
+      "id": "hope_for_humanity",
+      "title": "Hope for Humanity",
+      "text": "Restore Ichtaca’s faith in humanity in “The Boundary Beyond.”",
+      "type": "binary"
+    },
+    {
+      "id": "scenario_5_what",
+      "title": "Scenario 5-What?",
+      "text": "Skip “Heart of the Elders, Part 1.”",
+      "type": "binary"
+    },
+    {
+      "id": "beyond_perfection",
+      "title": "Beyond Perfection:",
+      "text": "Complete all eight tasks on act 2 of “The City of Archives” during a single playthrough.",
+      "type": "binary"
+    },
+    {
+      "id": "i_remember_everything",
+      "title": "I Remember Everything",
+      "text": "Restore Alejandro’s memories in “The City of Archives.”",
+      "type": "binary"
+    },
+    {
+      "id": "patricide",
+      "title": "Patricide",
+      "text": "Defeat Yig in “The Depths of Yoth.”",
+      "type": "binary"
+    },
+    {
+      "id": "hes_got_a_point",
+      "title": "He's Got a Point",
+      "text": "Side with Alejandro in “Shattered Aeons.”",
+      "type": "binary"
+    },
+    {
+      "id": "valusia_sounds_great",
+      "title": "Valusia Sounds Great",
+      "text": "Side with Ichtaca in “Shattered Aeons.”",
+      "type": "binary"
+    },
+    {
+      "id": "built_up_an_immunity",
+      "title": "I’ve Built Up An Immunity",
+      "text": "Win <i>The Forgotten Age</i> campaign without ever becoming poisoned.",
+      "type": "binary"
+    },
+    {
+      "id": "we_have_an_understanding",
+      "title": "We Have an Understanding",
+      "text": "Win <i>The Forgotten Age</i> campaign without ever dealing any damage to the Harbinger of Valusia.",
+      "type": "binary"
+    },
+    {
+      "id": "who_needs_any_of_this_junk",
+      "title": "Who Needs Any of This Junk?",
+      "text": "Win <i>The Forgotten Age</i> campaign without purchasing any supplies.",
+      "type": "binary"
+    },
+    {
+      "id": "dont_tread_on_me",
+      "title": "Don’t Tread on Me",
+      "text": "Win <i>The Forgotten Age</i> campaign with no tally marks recorded under Yig’s Fury in your Campaign Log",
+      "type": "binary"
+    },
+    {
+      "id": "bane_of_yig",
+      "title": "Bane of Yig",
+      "text": "Win <i>The Forgotten Age</i> campaign with 25+ tally marks recorded under Yig’s Fury in your Campaign Log.",
+      "type": "binary"
+    },
+    {
+      "id": "if_i_could_turn_back_time",
+      "title": "If I Could Turn Back Time",
+      "text": "Forge your own path, unlock Scenario IX, and win <i>The Forgotten Age</i> campaign.",
+      "type": "binary"
+    },
+    {
+      "id": "yoth_expertise",
+      "title": "Yoth Expertise",
+      "text": "Win <i>The Forgotten Age</i> campaign on Expert difficulty",
+      "type": "binary"
     }
   ]
 }, "scenarios": [

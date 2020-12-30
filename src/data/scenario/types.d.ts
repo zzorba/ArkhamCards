@@ -165,6 +165,7 @@ export interface Campaign {
   steps: Step[];
   side_scenario_steps?: Step[];
   campaign_type: "standalone" | "campaign";
+  achievements?: Achievement[];
 }
 export interface BranchStep {
   id: string;
@@ -844,6 +845,17 @@ export interface InternalStep {
   bullet_type?: null;
   title?: null;
   narration?: Narration;
+}
+export interface Achievement {
+  id: string;
+  title: string;
+  text: string;
+  type: "binary" | "count" | "list";
+  max?: number;
+  items?: {
+    id: string;
+    text: string;
+  }[];
 }
 export interface Scenario {
   id: string;

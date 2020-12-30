@@ -1,10 +1,11 @@
-import { forEach, findLastIndex, filter, map } from 'lodash';
+import { find, forEach, findLastIndex, filter, map } from 'lodash';
 
 import {
   RESTORE_BACKUP,
   DELETE_CAMPAIGN,
   GUIDE_SET_INPUT,
   GUIDE_UNDO_INPUT,
+  GUIDE_UPDATE_ACHIEVEMENT,
   GUIDE_RESET_SCENARIO,
   RESTORE_COMPLEX_BACKUP,
   LOGOUT,
@@ -107,6 +108,84 @@ export default function(
       ...state,
       all: newAll,
     };
+  }
+  if (action.type === GUIDE_UPDATE_ACHIEVEMENT) {
+    return updateCampaign(
+      state,
+      action.campaignId,
+      action.now,
+      campaign => {
+        const achievements = campaign.achievements || [];
+        switch (action.operation) {
+          case 'clear':
+            return {
+              ...campaign,
+              achievements: filter(achievements, a => a.id !== action.id),
+            };
+          case 'set':
+            return {
+              ...campaign,
+              achievements: [...filter(achievements, a => a.id !== action.id), { id: action.id, type: 'binary', value: true }],
+            };
+          case 'inc': {
+            const currentEntry = find(achievements, a => a.id === action.id);
+            if (currentEntry && currentEntry.type === 'count') {
+              return {
+                ...campaign,
+                achievements: map(achievements, a => {
+                  if (a.id === action.id && a.type === 'count') {
+                    return {
+                      id: a.id,
+                      type: 'count',
+                      value: action.max !== undefined ? Math.min(a.value + 1, action.max) : (a.value + 1),
+                    };
+                  }
+                  return a;
+                }),
+              };
+            }
+            return {
+              ...campaign,
+              achievements: [...achievements,
+                {
+                  id: action.id,
+                  type: 'count',
+                  value: 1,
+                },
+              ],
+            };
+          }
+          case 'dec': {
+            const currentEntry = find(achievements, a => a.id === action.id);
+            if (currentEntry && currentEntry.type === 'count') {
+              return {
+                ...campaign,
+                achievements: map(achievements, a => {
+                  if (a.id === action.id && a.type === 'count') {
+                    return {
+                      id: a.id,
+                      type: 'count',
+                      value: Math.max(a.value - 1, 0),
+                    };
+                  }
+                  return a;
+                }),
+              };
+            }
+            return {
+              ...campaign,
+              achievements: [...achievements,
+                {
+                  id: action.id,
+                  type: 'count',
+                  value: 0,
+                },
+              ],
+            };
+          }
+        }
+      }
+    );
   }
   if (action.type === GUIDE_SET_INPUT) {
     return updateCampaign(

@@ -104,6 +104,9 @@ export default StyleSheet.create({
   marginRightM: {
     marginRight: m,
   },
+  paddingLeftXs: {
+    paddingLeft: xs,
+  },
   paddingLeftS: {
     paddingLeft: s,
   },

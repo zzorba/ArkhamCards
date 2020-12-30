@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { flatMap, keys, sum, values } from 'lodash';
+import { flatMap, map, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -14,6 +14,7 @@ import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import AchievementComponent from './AchievementComponent';
 
 interface Props {
   componentId: string;
@@ -165,7 +166,22 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
       </View>
     );
   }, [borderStyle, typography, campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, standalone]);
-
+  const achievementsSection = useMemo(() => {
+    const achievements = campaignGuide.achievements();
+    if (!achievements.length) {
+      return null;
+    }
+    return (
+      <View style={[styles.section, styles.topBorder, borderStyle]}>
+        <View style={space.paddingBottomM}>
+          <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
+            { t`Achievements` }
+          </Text>
+        </View>
+        { map(achievements, a => <AchievementComponent achievement={a} />) }
+      </View>
+    );
+  }, [campaignGuide, borderStyle, typography]);
   return (
     <View style={backgroundStyle}>
       { chaosBagSection }
@@ -179,6 +195,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
           </View>
         );
       }) }
+      { achievementsSection }
     </View>
   );
 }
@@ -189,6 +206,9 @@ const styles = StyleSheet.create({
     paddingLeft: m + s,
     paddingRight: m + s,
     borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  topBorder: {
+    borderTopWidth: StyleSheet.hairlineWidth,
   },
   crossedOut: {
     textDecorationLine: 'line-through',

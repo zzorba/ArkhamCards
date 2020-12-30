@@ -83,7 +83,6 @@
     "react-native-vector-icons": "7.1.0",
     "react-native-webview": "11.0.0",
     "react-native-zoom-view": "1.0.2",
-    "react-native-zss-rich-text-editor": "https://github.com/jb-/react-native-zss-rich-text-editor",
     "react-redux": "7.2.2",
     "redux": "4.0.5",
     "redux-logger": "3.0.6",

@@ -8,7 +8,7 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
-import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question } from './types';
+import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement } from './types';
 
 type CampaignLogEntry = {
   id: string;
@@ -103,6 +103,10 @@ export default class CampaignGuide {
       this.sideCampaign.campaign.scenarios,
       scenarioId => find(this.sideCampaign.scenarios, scenario => scenario.id === scenarioId) || []
     );
+  }
+
+  achievements(): Achievement[] {
+    return this.campaign.campaign.achievements || [];
   }
 
   campaignCycleCode() {

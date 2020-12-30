@@ -11,6 +11,8 @@ import {
   NumberChoices,
   StringChoices,
   InvestigatorTraumaData,
+  GUIDE_UPDATE_ACHIEVEMENT,
+  GuideUpdateAchievementAction,
 } from '@actions/types';
 
 export function undo(
@@ -21,6 +23,51 @@ export function undo(
     type: GUIDE_UNDO_INPUT,
     campaignId,
     scenarioId,
+    now: new Date(),
+  };
+}
+
+export function setBinaryAchievement(
+  campaignId: number,
+  achievementId: string,
+  value: boolean,
+): GuideUpdateAchievementAction {
+  return {
+    type: GUIDE_UPDATE_ACHIEVEMENT,
+    campaignId,
+    id: achievementId,
+    operation: value ? 'set' : 'clear',
+    now: new Date(),
+  };
+}
+
+export function incCountAchievement(
+  campaignId: number,
+  achievementId: string,
+  max?: number
+): GuideUpdateAchievementAction {
+  return {
+    type: GUIDE_UPDATE_ACHIEVEMENT,
+    campaignId,
+    id: achievementId,
+    operation: 'inc',
+    max,
+    now: new Date(),
+  };
+}
+
+
+export function decCountAchievement(
+  campaignId: number,
+  achievementId: string,
+  max?: number
+): GuideUpdateAchievementAction {
+  return {
+    type: GUIDE_UPDATE_ACHIEVEMENT,
+    campaignId,
+    id: achievementId,
+    operation: 'dec',
+    max,
     now: new Date(),
   };
 }
@@ -250,4 +297,7 @@ export default {
   setInterScenarioData,
   setCampaignLink,
   undo,
+  setBinaryAchievement,
+  incCountAchievement,
+  decCountAchievement,
 };

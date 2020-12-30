@@ -953,6 +953,17 @@ export interface GuideUndoInputAction {
   now: Date;
 }
 
+
+export const GUIDE_UPDATE_ACHIEVEMENT = 'GUIDE_UPDATE_ACHIEVEMENT';
+export interface GuideUpdateAchievementAction {
+  type: typeof GUIDE_UPDATE_ACHIEVEMENT;
+  campaignId: number;
+  id: string;
+  operation: 'set' | 'clear' | 'inc' | 'dec';
+  max?: number;
+  now: Date;
+}
+
 export interface SupplyCounts {
   [code: string]: {
     [id: string]: number;
@@ -967,8 +978,21 @@ export interface StringChoices {
   [code: string]: string[];
 }
 
+export interface GuideBinaryAchievement {
+  id: string;
+  type: 'binary';
+  value: boolean;
+}
+export interface GuideCountAchievement {
+  id: string;
+  type: 'count';
+  value: number;
+}
+type GuideAchievement = GuideBinaryAchievement | GuideCountAchievement;
+
 export interface CampaignGuideState {
   inputs: GuideInput[];
+  achievements?: GuideAchievement[];
   lastUpdated?: Date;
 }
 
@@ -1074,7 +1098,8 @@ export type GuideActions =
   LogoutAction |
   GuideSetInputAction |
   GuideUndoInputAction |
-  GuideResetScenarioAction;
+  GuideResetScenarioAction |
+  GuideUpdateAchievementAction;
 
 export const DISSONANT_VOICES_LOGIN_STARTED = 'DISSONANT_VOICES_LOGIN_STARTED';
 interface DissonantVoicesLoginStartedAction {

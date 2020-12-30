@@ -37,6 +37,9 @@ export interface CampaignGuideActions {
   ) => void;
   resetScenario: (scenarioId: string) => void;
   undo: (scenarioId: string) => void;
+  setBinaryAchievement: (achievementId: string, value: boolean) => void;
+  incCountAchievement: (achievementId: string, max?: number) => void;
+  decCountAchievement: (achievementId: string, max?: number) => void;
 }
 
 export default class CampaignStateHelper {
@@ -170,6 +173,28 @@ export default class CampaignStateHelper {
     this.actions.setInterScenarioData(investigatorData, scenarioId);
   }
 
+  binaryAchievement(achievementId: string): boolean {
+    return !!find(this.state.achievements, a => a.id === achievementId && a.type === 'binary' && a.value);
+  }
+  countAchievement(achievementId: string): number {
+    const entry = find(this.state.achievements, a => a.id === achievementId && a.type === 'count');
+    if (entry?.type === 'count') {
+      return entry.value;
+    }
+    return 0;
+  }
+
+  setBinaryAchievement(achievementId: string, value: boolean) {
+    this.actions.setBinaryAchievement(achievementId, value);
+  }
+
+  incCountAchievement(achievementId: string, max?: number) {
+    this.actions.incCountAchievement(achievementId, max);
+  }
+
+  decCountAchievement(achievementId: string) {
+    this.actions.decCountAchievement(achievementId);
+  }
 
   undo(scenarioId: string) {
     const latestInput = findLast(this.state.inputs,
