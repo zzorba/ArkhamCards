@@ -433,8 +433,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'devil_reef':
       case 'def':
         return this.innsmouthIcon('devil_reef', size, color);
-      case 'hhg':
       case 'horror_in_high_gear':
+      case 'hhg':
+        return this.innsmouthIcon('horror_in_high_gear', size, color);
       case 'a_light_in_the_fog':
       case 'lif':
       case 'lair_of_dagon':

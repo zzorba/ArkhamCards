@@ -72861,8 +72861,312 @@
   "scenario_name": "Horror in High Gear",
   "full_name": "Scenario V: Horror in High Gear",
   "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "intro",
+    "gather_encounter_sets",
+    "create_road_deck",
+    "setup_locations",
+    "choose_vehicles",
+    "choose_drivers",
+    "spawn_enemies",
+    "agenda_setup",
+    "check_terror_of_devil_reef_is_dead",
+    "encounter_deck",
+    "vehicles_rule",
+    "vehicles_rule_1",
+    "vehicles_rule_2",
+    "vehicles_rule_3",
+    "running_stopped_rule",
+    "road_x_rule",
+    "road_x_rule_1",
+    "road_x_rule_2"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "Trees whizz by as you rumble along the old dirt road just outside of Innsmouth. The sun has set over the western horizon, leaving only the full moon to bathe the dusty roads in its brilliant, eerie glow.\n\"Here,\" Agent Harper shouts from the passenger seat over the rumbling of the automobile engine. She points to a spot on the map she has spread across her lap, tapping it repeatedly. \"Falcon Point Lighthouse. That's where Oceiros should be.\"\nA shudder courses up your spine. If your memories are to be believed, Oceiros is the man who left you to die in those tidal tunnels. You ask Harper how far Falcon Point is from Innsmouth, hoping to arrive before the Order realizes you've escaped.\nShe sighs. \"It's not that far, but these roads are meandering. They could be difficult to navigate. One wrong turn and—\" both you and Harper see the lights in your rearview mirror at the same time. Headlights. And they're growing larger and brighter by the second. Harper curses under her breath. \"I don't suppose those are friends of yours?\"\nYou shake your head and tighten your grip on the wheel. It seems the Order has already caught wind of your flight from Innsmouth. You tell Agent Harper to hold on and slam your foot on the accelerator."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Подготовка к сценарию",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "horror_in_high_gear",
+        "fog_over_innsmouth",
+        "malfunction",
+        "shattered_memories",
+        "ancient_evils"
+      ]
+    },
+    {
+      "id": "create_road_deck",
+      "text": "Create the Road deck. This is done by performing the following steps:",
+      "bullets": [
+        {
+          "text": "Find Falcon Point Approach and all 6 copies of Long Way Around. Each one is a revealed side of an Old Innsmouth Road location. Set each of them aside, out of play."
+        },
+        {
+          "text": "Shuffle the set-aside Falcon Point Approach and two Old Innsmouth Road locations together to form the bottom three cards of the Road deck."
+        },
+        {
+          "text": "Place all of the remaining Old Innsmouth Road locations on top in a random order."
+        },
+        {
+          "text": "All of the cards in the Road deck should be showing only the Old Innsmouth Road side, so that players do not know which is which."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the top 3 cards of the Road deck into play in a straight line from left to right, where left is \"rear\" and right is \"front\"."
+    },
+    {
+      "id": "choose_vehicles",
+      "text": "Choose vehicles. There are two vehicles the investigators can use in this scenario—Thomas Dawson's Car and Elina Harper's Car. Each investigator must choose a vehicle to board. No more than two investigators can board the same vehicle. <i>(See Vehicles below.)</i>",
+      "bullets": [
+        {
+          "text": "Each vehicle that is boarded by at least one investigator begins play at the front Old Innsmouth Road location. Remove each other vehicle from the game."
+        },
+        {
+          "text": "Each vehicle begins play with its <i>(Running)</i> side faceup <i>(see Running/Stopped below)</i>."
+        },
+        {
+          "text": "Each investigator begins play in the vehicle they chose to board."
+        },
+        {
+          "text": "Trigger that location's Road X keyword when it is revealed <i>(see Road X below)</i>."
+        }
+      ]
+    },
+    {
+      "id": "choose_drivers",
+      "text": "Choose drivers. One investigator in each vehicle must be designated as the driver of that vehicle.",
+      "bullets": [
+        {
+          "text": "There must always be a driver for each vehicle with at least one investigator in it. If the driver leaves the vehicle or is eliminated, choose another investigator in that vehicle to become the new driver."
+        }
+      ]
+    },
+    {
+      "id": "spawn_enemies",
+      "type": "branch",
+      "text": "Based on the number of players in the game:",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": [
+              "no_changes"
+            ]
+          },
+          {
+            "numCondition": 2,
+            "steps": [
+              "one_vehicle"
+            ]
+          },
+          {
+            "numCondition": 3,
+            "steps": [
+              "one_vehicle"
+            ]
+          },
+          {
+            "numCondition": 4,
+            "steps": [
+              "two_vehicles"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_changes",
+      "text": "Because there is exactly 1 player in the game, no changes are made.",
+      "bullet_type": "small"
+    },
+    {
+      "id": "one_vehicle",
+      "text": "Because there are 2-3 players in the game, search the gathered encounter sets for 1 random [[Vehicle]] enemy. Spawn that enemy at the rearmost location.",
+      "bullet_type": "small"
+    },
+    {
+      "id": "two_vehicles",
+      "text": "Because there are exactly 4 players in the game, search the gathered encounter sets for 2 random [[Vehicle]] enemies. Spawn each of those enemies at the rearmost location.",
+      "bullet_type": "small"
+    },
+    {
+      "id": "agenda_setup",
+      "text": "Check the Campaign Log. Depending on the following circumstances, a different version of agenda 1 should be used in this scenario. Remove the other version of agenda 1 from the game."
+    },
+    {
+      "id": "check_terror_of_devil_reef_is_dead",
+      "text": "If <i>the terror of Devil Reef is dead</i>:",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "terror_of_devil_reef_is_dead",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "agenda_1_v2"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "agenda_1_v1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "agenda_1_v2",
+      "bullet_type": "small",
+      "text": "Use Agenda 1a—The Chase is On! (v.II)."
+    },
+    {
+      "id": "agenda_1_v1",
+      "bullet_type": "small",
+      "text": "Otherwise, use Agenda 1a—The Chase is On! (v.I)."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
+    },
+    {
+      "id": "vehicles_rule",
+      "type": "rule_reminder",
+      "title": "Vehicles",
+      "text": "An asset with the vehicle keyword represents a vehicle that the investigators may enter or leave. An asset with this keyword is called a vehicle, and follows these rules:"
+    },
+    {
+      "id": "vehicles_rule_1",
+      "text": "While an investigator's mini-card is placed overlapping a vehicle, that investigator is in that vehicle. While an investigator's mini-card is placed overlapping the location, that investigator is instead not in a vehicle <i>(even if they are at the same location as a vehicle)</i>.",
+      "bullets": [
+        {
+          "text": "As a [fast] ability, an investigator may enter or leave a vehicle at their location. Move that investigator's mini-card onto the vehicle or off of the vehicle and onto their location to indicate their new position. Each investigator may perform this ability only once each round."
+        },
+        {
+          "text": "An investigator who is in a vehicle is also at that vehicle's location."
+        },
+        {
+          "text": "While an investigator is in a vehicle, that investigator cannot move indepdently of the vehicle."
+        }
+      ]
+    },
+    {
+      "id": "vehicles_rule_2",
+      "text": "Vehicles generally have one or more abilities that allow them to move to a connecting location. As a vehicle moves from one location to another, all investigators in the vehicle also move with the vehicle."
+    },
+    {
+      "id": "vehicles_rule_3",
+      "text": "Vehicles do not alter enemy movement or enemy engagement in any way unless otherwise noted."
+    },
+    {
+      "id": "running_stopped_rule",
+      "type": "rule_reminder",
+      "title": "Running / Stopped",
+      "text": "Vehicles in this scenario can either be \"running\" or \"stopped,\" as indicated by their two sides. The difference between a running vehicle and a stopped vehicle is indicated by the game text on each side. A vehicles engine can be started or stopped using the ability on that vehicle, flipping it over to its other side.",
+      "bullets": [
+        {
+          "text": "Generally speaking, investigators will only be able to make swift progress in a running vehicle. However, it may sometimes be a good idea to briefly stop your vehicle if you are approaching a dangerous location, such as a Cliffside Road or a Tight Turn. Be careful!"
+        }
+      ]
+    },
+    {
+      "id": "road_x_rule",
+      "type": "rule_reminder",
+      "title": "Road X",
+      "text": "During this scenario, the investigators are traveling the Old Innsmouth Road from Innsmouth to Falcon Point. This road is generally a straight line from left to right, but occasionally contains branching paths.\nEach time a location with the Road X keyword is revealed, if there are no locations ahead of the just revealed location, put X new locations into play in a new column in front of it, Old Innsmouth Road side faceup. The first of these locations must be the top location of the Road deck. Each of the remaining locations to be put into play are taken from among the set-aside Long Way Around locations <i>(if there are not enough Long Way Around locations, use as many as you can)</i>. Shuffle each of those locations so that the players do not know which is which.",
+      "example": "<i>For example: Trish is the driver of Elina Harper's Car, and has just moved that car forward to an unrevealed location. It is a Fork in the Road with the \"Road 2\" keyword. Since there are currently no locations in front of Fork in the Road, she must therefore place 2 Old Innsmouth Road locations in front of Fork in the Road. She takes the top card of the Road deck and one of the set-aside Long Way Around locations, puts both of them into play in a new column in front of Fork in the Road, and shuffles them so that the players do not know which is which.</i>"
+    },
+    {
+      "id": "road_x_rule_1",
+      "text": "Generally, it is wise to avoid taking a Long Way Around, since it will slow you down and reduce the amount of time you have to reach Falcon Point."
+    },
+    {
+      "id": "road_x_rule_2",
+      "text": "<b>During this scenario, each location is connected to each location behind or ahead of it, but not to any other location on its column.</b>"
+    },
+    {
+      "id": "reached_falcon_point_after_sunrise",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "reached_falcon_point_after_sunrise",
+          "text": "the investigators reached Falcon Point after sunrise."
+        }
+      ]
+    },
+    {
+      "id": "reached_falcon_point_before_sunrise",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "reached_falcon_point_before_sunrise",
+          "text": "the investigators reached Falcon Point before sunrise."
+        }
+      ]
+    },
+    {
+      "id": "earn_xp",
+      "text": "Каждый сыщик получает опыт, равный сумме победных значений всех карт на победном счету.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Победный счёт:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "Исход не был достигнут\n(все сыщики побеждены)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "Your drive to Falcon Point is no joyride. Between the cultists on your tail and the creatures that dwell in the woods outside Innsmouth, your vehicle is harried at every turn. With no way to escape unharmed, you are forced to abandon your vehicle and sneak through the woods on foot. By the time you see the distant lighthouse beacon, dawn already bathes the sky in orange radiance. \"Finally,\" Agent Harper groans. With no time to rest, you continue the trek to the Falcon Point lighthouse, exhausted but resolute.",
+      "steps": [
+        "reached_falcon_point_after_sunrise",
+        "earn_xp",
+        "$upgrade_decks"
+      ]
+    },
+    {
+      "id": "R1",
+      "investigator_status": [
+        "alive",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 1",
+      "text": "You breathe a sigh of relief as you see the distant lighthouse beacon pierce the fog. \"Let's pull over here and make the rest of the trip on foot,\" Harper suggests. \"If there's anybody still in that lighthouse, it would be best if they didn't hear us approach.\" Her advice is sound. You're not sure what to expect once you reach Falcon Point, but all signs point to it being another outpost for the Order. You double-check to make sure you aren't being followed, then pull over by the side of the road. Gathering your belongings from the car's trunk, you begin the trek to the Falcon Point lighthouse…",
+      "steps": [
+        "reached_falcon_point_before_sunrise",
+        "earn_xp",
+        "$upgrade_decks"
+      ]
+    }
+  ]
 },
 {
   "id": "in_too_deep",

@@ -2418,6 +2418,14 @@
             "text": "the mission was successful."
           },
           {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "the investigators reached Falcon Point after sunrise."
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "the investigators reached Falcon Point before sunrise."
+          },
+          {
             "id": "terror_of_devil_reef_is_dead",
             "text": "the Terror of Devil Reef is dead."
           },

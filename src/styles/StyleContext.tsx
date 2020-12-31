@@ -36,27 +36,39 @@ export const DEFAULLT_STYLE_CONTEXT = {
     backgroundColor: LIGHT_THEME.disableOverlay,
   },
   shadow: {
-    large: {
-      shadowOffset: Platform.OS === 'ios' ? { width: 0, height: 4 } : undefined,
-      shadowRadius: Platform.OS === 'ios' ? 8 : undefined,
-      shadowColor: 'black',
-      shadowOpacity: 0.25,
-      elevation: 6,
-    },
-    medium: {
-      shadowOffset: Platform.OS === 'ios' ? { width: 0, height: 2 } : undefined,
-      shadowRadius: Platform.OS === 'ios' ? 4 : undefined,
-      shadowColor: 'black',
-      shadowOpacity: 0.25,
-      elevation: 4,
-    },
-    small: {
-      shadowOffset: Platform.OS === 'ios' ? { width: 0, height: 1 } : undefined,
-      shadowRadius: Platform.OS === 'ios' ? 2 : undefined,
-      shadowColor: 'black',
-      shadowOpacity: 0.25,
-      elevation: 2,
-    },
+    large: Platform.select({
+      android: {
+        elevation: 6,
+      },
+      default: {
+        shadowOffset: { width: 0, height: 4 },
+        shadowRadius: 8,
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+      },
+    }),
+    medium: Platform.select({
+      android: {
+        elevation: 4,
+      },
+      default: {
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 4,
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+      },
+    }),
+    small: Platform.select({
+      android: {
+        elevation: 2,
+      },
+      default: {
+        shadowOffset: { width: 0, height: 1 },
+        shadowRadius: 2,
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+      },
+    }),
   },
 };
 
