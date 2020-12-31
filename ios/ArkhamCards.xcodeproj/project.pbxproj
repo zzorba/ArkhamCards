@@ -7,59 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02D002FD495C486485296EE5 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA9558AF96C7453B9D642AC9 /* AppCenter-Config.plist */; };
-		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		6505E52224DA64AC001DF983 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6505E52124DA64AC001DF983 /* libswiftCore.tbd */; };
-		651B383B251ACF8900D9D054 /* AboutDead.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651B383A251ACF8900D9D054 /* AboutDead.ttf */; };
-		652421212054950E00FF6DB9 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652420F42054950D00FF6DB9 /* carcosa.ttf */; };
-		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
-		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
-		652EB73A226BAF7800F6D790 /* de.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB6FA226BAF7800F6D790 /* de.po.json */; };
-		652EB73C226BAF8400F6D790 /* en.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73B226BAF8400F6D790 /* en.po.json */; };
-		652EB73E226BAF9300F6D790 /* es.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73D226BAF9200F6D790 /* es.po.json */; };
-		652EB740226BAF9C00F6D790 /* fr.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73F226BAF9C00F6D790 /* fr.po.json */; };
-		652EB742226BAFA800F6D790 /* it.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB741226BAFA800F6D790 /* it.po.json */; };
-		654257E8248B18220089504E /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654257E7248B18210089504E /* SnapshotHelper.swift */; };
-		654277272365FE7200D394B1 /* libPods-ArkhamCards.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 654277262365FE7200D394B1 /* libPods-ArkhamCards.a */; };
-		65447A8724154F2600961717 /* allCampaigns.json in Resources */ = {isa = PBXBuildFile; fileRef = 65447A8624154F2600961717 /* allCampaigns.json */; };
-		65447A8924154F3200961717 /* campaignLogs.json in Resources */ = {isa = PBXBuildFile; fileRef = 65447A8824154F3200961717 /* campaignLogs.json */; };
-		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
-		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
-		655BAD76248739AD00854210 /* ArkhamCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BAD75248739AD00854210 /* ArkhamCardsUITests.swift */; };
-		6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */; };
-		65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */; };
-		65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */; };
-		65851174250F047800DCB842 /* Alegreya-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851173250F047800DCB842 /* Alegreya-Bold.ttf */; };
-		658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 658AF45324FAAD4D00874CA7 /* Conkordia.ttf */; };
-		659EB1BD25118C55007E69E0 /* Alegreya-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */; };
-		659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */; };
-		659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1C025118E2F007E69E0 /* Alegreya-ExtraBold.ttf */; };
-		659EB1C325118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1C125118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf */; };
-		659EB1C525146636007E69E0 /* innsmouth.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1C425146635007E69E0 /* innsmouth.ttf */; };
-		65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A43C65233EE33F00A79EA3 /* dreameaters.ttf */; };
-		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
-		65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */; };
-		65CF51E0220386F400A1D2FA /* circle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65CF51DF220386F400A1D2FA /* circle.ttf */; };
-		65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65D3FA05210FF315000F8B9D /* Teutonic.ttf */; };
-		65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65EB59142047B67600CC5820 /* arkhamicons.ttf */; };
-		65F2F37F24D47C5D00B716AB /* allCampaigns_es.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F2F37E24D47C5D00B716AB /* allCampaigns_es.json */; };
-		65F2F38224D47DE800B716AB /* campaignLogs_es.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F2F38124D47DE700B716AB /* campaignLogs_es.json */; };
-		65F8DB9E247EE0B500286F16 /* ko.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9B247EE0B500286F16 /* ko.po.json */; };
-		65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9C247EE0B500286F16 /* pl.po.json */; };
-		65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9D247EE0B500286F16 /* uk.po.json */; };
-		65F8DBA4247EEBC100286F16 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8DBA3247EEBC100286F16 /* Bridge.swift */; };
-		8771D18D6FA89F3C71B60A87 /* libPods-ArkhamCards-ArkhamCardsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B12BAED462D323E8F4C844 /* libPods-ArkhamCards-ArkhamCardsUITests.a */; };
+		05FDB9E91A6581C550348E5C4E4A5AEB /* Alegreya-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D494BE2D81D05813D1F6557115EE85C /* Alegreya-BoldItalic.ttf */; };
+		0632BFBDFF19558AE208DABBCB59E67A /* libPods-ArkhamCards.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF7B4626587C712839327F608469182 /* libPods-ArkhamCards.a */; };
+		071CEF2106F2D601703B7E094FD1C04C /* arkhamicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F99BCEFA1B5FD44C62F3BACC53390049 /* arkhamicons.ttf */; };
+		0748D43B0B871B8BB26498D184B28AB6 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C61E2404B03D34D64445B8BD9330B311 /* libswiftCore.tbd */; };
+		107B23D513216EE4908624D8774C7D10 /* Conkordia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1338C06769653F4F27E7562F4716EBDF /* Conkordia.ttf */; };
+		1C05ADC3E0B8F9E24E98C9B2BC6DE3C3 /* ko.po.json in Resources */ = {isa = PBXBuildFile; fileRef = DD34FB3A8F83B75DEF67E33C8DDEF3AA /* ko.po.json */; };
+		1E3577E50B96C733CC84C68704064E9A /* campaignLogs.json in Resources */ = {isa = PBXBuildFile; fileRef = 37CC85B780CAD4A962A32674FB913576 /* campaignLogs.json */; };
+		34EE4A168F830A897D831C17E1489658 /* Alegreya-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52A47F57EC3901AE159EBA46F44EA343 /* Alegreya-ExtraBold.ttf */; };
+		4823E085052745A482FE16ECA323F602 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A88C8CAE2EB3C93A084355E97401683A /* Alegreya-Regular.ttf */; };
+		51FF7B6082565AA609CA6A38BBF2CA2A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9052FC4E12E3C17EDB3D1B98B65D8E9F /* LaunchScreen.xib */; };
+		52AD4BDFC2C34A42F3DF305A554D55AE /* libPods-ArkhamCards-ArkhamCardsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62AAC4AB5C82A37FD6BE5B634B153ACE /* libPods-ArkhamCards-ArkhamCardsUITests.a */; };
+		52E19A4AFD63BDDF100DC29FB9F2E80E /* Alegreya-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55E5372BEC37D6485AC0F572D9B76124 /* Alegreya-Bold.ttf */; };
+		65DCC1DD259E6C1A00B5FDD1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65DCC1DC259E6C1A00B5FDD1 /* GoogleService-Info.plist */; };
+		6DA92B31110D50547B5648807001CB84 /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B1D236601806201F6782D2D18A2C61F /* Alegreya-Medium.ttf */; };
+		6E94FEBCCAF4C57AAEF47A5086B31AFD /* pl.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 18EBBC294F6CF086AA86A5818DE11A28 /* pl.po.json */; };
+		7197BC4E3B3B59B5160784F6F203C2AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A4F7E09E403EAC0D90122915E8C7AA /* AppDelegate.m */; };
+		72DBFB15F06235A68D5FFB999D476106 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE3E96AAB0A1047455DD360001D56D /* SnapshotHelper.swift */; };
+		7374ED3DE4021606019C801F9474548F /* campaignLogs_es.json in Resources */ = {isa = PBXBuildFile; fileRef = FD45509D3715DEC178C6C903B4C4A735 /* campaignLogs_es.json */; };
+		75547602D2164DD24A8EFEF9DD82E392 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB479EE5F05C70E1E609952D0779E9E /* Bridge.swift */; };
+		8BE150F1BDDE2C1248F6B6274EFAD36F /* Alegreya-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C23F5768AFFF692E6B5A14FD213C52E3 /* Alegreya-ExtraBoldItalic.ttf */; };
+		8C61236D0714F8F5C49260578D3599D0 /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E67689B0366D41A533544A1D34848A93 /* forgotten.ttf */; };
+		91E019F20B38C5C78FD9A429B71C524B /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3904F219ACC36E394973EFC7C7D36FF /* Alegreya-Italic.ttf */; };
+		9329045E0E77337AF974AEDEFA43C8BA /* AnkeCalligraphicFG.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCE74D3EFC0CD5BF95E7A4B38E7ADA49 /* AnkeCalligraphicFG.ttf */; };
+		969F4769AC922D7EAF92CD0A05D5D74F /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453C712CF3C040D49490E1BFA526412B /* app.ttf */; };
+		9CD2CCEEA7434BF23B97C3C8CEFF4F14 /* Teutonic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1C42AF51E54CA32E1832C80F18929CC /* Teutonic.ttf */; };
+		A239CE4554BF85A1703B8820CE9C1E60 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3634EF3507E88D476E4509841A15C33B /* dunwich.ttf */; };
+		AA89D7CFAFBF0D7535B3CC7250E53D9D /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1AC79830A086A1FBA51D247B27EE8B6 /* coreset.ttf */; };
+		AB3B5737B149320383AC877AA9985210 /* ArkhamCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A6E7CCD845EB2F7F1D35E979CE1B1 /* ArkhamCardsUITests.swift */; };
+		B0AC043F987B74DCD0044F0D3EAAEA99 /* uk.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 759D321D2A850447EF9454F2C30379EF /* uk.po.json */; };
+		B67504F45496641B1DDA1AA09462B22C /* es.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 694168BF8B72E4C5123A260ED8A3913C /* es.po.json */; };
+		B7287D28211C1F929FA29E85B400EE7F /* de.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C2A5EA1587D92A9D651671276C962C6 /* de.po.json */; };
+		BA54F05E85BFC20F506763C4550A84B2 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD3016340B0C4846FBE60672B4794BF6 /* carcosa.ttf */; };
+		BCAAB09DCBD174421E84B78F9E360518 /* circle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44E87D54A5531AB673B83FD2A2229089 /* circle.ttf */; };
+		C49A090F8B9B289457F9155D478377FD /* it.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A88369A697EA474A989AFAE5CBE7526 /* it.po.json */; };
+		C670780E0148F6F88C532B6C4E055CAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4202DA9ABC7E064EC85E7589139A9E1F /* main.m */; };
+		C97456D9AB1610ADF94D06A1AD74DC84 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C798E3A8857191B003948BCD5C7A0B9 /* standalone.ttf */; };
+		DB14B96B59A39AA13F356E64AF9E3361 /* allCampaigns_es.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AD2FF721DA7BED38975316135583B3B /* allCampaigns_es.json */; };
+		DD34060C92621389AE3C4C4598A7A178 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B3D9417C1ADDBF42095E86996C3F941 /* AppCenter-Config.plist */; };
+		DE5B3DA4E20E9A7A5FF23E134C66D596 /* fr.po.json in Resources */ = {isa = PBXBuildFile; fileRef = EDEED7EDB641314DED65070EDAD43E9A /* fr.po.json */; };
+		E0999B04DEF8FB2A91187490B059334E /* allCampaigns.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A4B599DF756EEDFB1F444BC5C84B3CB /* allCampaigns.json */; };
+		E4E2E1CD02EAD1FC3C002DF4B983BCC8 /* AboutDead.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7482E0E10D2C21FADF4FE71748A9410 /* AboutDead.ttf */; };
+		EC8333A243F732CD5ADA2D2263A1A6F1 /* innsmouth.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D773F4851E4A573E74931133B4CCD300 /* innsmouth.ttf */; };
+		F5FD102DFB0B791EEE89EC2306198EA1 /* en.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 592B67A4558EDFE3B5452AC183EB50E3 /* en.po.json */; };
+		F69EA914E38E928FF402E2AE0E775CFB /* Alegreya-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CABF386F2CD70021C2A952B70D85268B /* Alegreya-MediumItalic.ttf */; };
+		FD9D0CDA244464723D5BDE909877BAA9 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F663D28DC5E5B0C5768BB440AE3AFCD4 /* dreameaters.ttf */; };
+		FF8E09F49B9724076C543226894154FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CE19EBE239EBD1BDEE75B672DC7D9 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		655BAD78248739AD00854210 /* PBXContainerItemProxy */ = {
+		F08FDC3CF8BEC7FBA0C04E341699C3D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			containerPortal = CD1AEE5C1D2D8086130C73752D50A0C5 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteGlobalIDString = 1F23FB9872FA80F9C440F4F9DEDD8071;
 			remoteInfo = ArkhamCards;
 		};
 /* End PBXContainerItemProxy section */
@@ -135,30 +136,101 @@
 		D015900F71F34A5187CC75F4 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		DCFA4586462A01391995CA1B /* Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsTests/Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig"; sourceTree = "<group>"; };
 		EA9558AF96C7453B9D642AC9 /* AppCenter-Config.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "ArkhamCards/AppCenter-Config.plist"; sourceTree = "<group>"; };
+		010218FE7EB06386A5A4651E65CCF625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F1CE19EBE239EBD1BDEE75B672DC7D9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ArkhamCards/Images.xcassets; sourceTree = "<group>"; };
+		1338C06769653F4F27E7562F4716EBDF /* Conkordia.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Conkordia.ttf; path = ../assets/Conkordia.ttf; sourceTree = "<group>"; };
+		18EBBC294F6CF086AA86A5818DE11A28 /* pl.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pl.po.json; path = ../assets/i18n/pl.po.json; sourceTree = "<group>"; };
+		1DF2045D33C378426856791C168EDDE7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		2E6CC06FB8D40B2B5FF2A5A5178B4B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		33AE0EDAE7449AEFA523493FB587ADE2 /* ArkhamCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArkhamCards-Bridging-Header.h"; sourceTree = "<group>"; };
+		3634EF3507E88D476E4509841A15C33B /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
+		37CC85B780CAD4A962A32674FB913576 /* campaignLogs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = campaignLogs.json; path = ../assets/campaignLogs.json; sourceTree = "<group>"; };
+		3AD2FF721DA7BED38975316135583B3B /* allCampaigns_es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = allCampaigns_es.json; path = ../assets/allCampaigns_es.json; sourceTree = "<group>"; };
+		3BB479EE5F05C70E1E609952D0779E9E /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
+		4202DA9ABC7E064EC85E7589139A9E1F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ArkhamCards/main.m; sourceTree = "<group>"; };
+		44E87D54A5531AB673B83FD2A2229089 /* circle.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = circle.ttf; path = ../assets/circle.ttf; sourceTree = "<group>"; };
+		453C712CF3C040D49490E1BFA526412B /* app.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = app.ttf; path = ../assets/app.ttf; sourceTree = "<group>"; };
+		4A88369A697EA474A989AFAE5CBE7526 /* it.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = it.po.json; path = ../assets/i18n/it.po.json; sourceTree = "<group>"; };
+		4F665BC5047E7128B655A67AA76BCC78 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ArkhamCards/Info.plist; sourceTree = "<group>"; };
+		52A47F57EC3901AE159EBA46F44EA343 /* Alegreya-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-ExtraBold.ttf"; path = "../assets/Alegreya-ExtraBold.ttf"; sourceTree = "<group>"; };
+		55E5372BEC37D6485AC0F572D9B76124 /* Alegreya-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Bold.ttf"; path = "../assets/Alegreya-Bold.ttf"; sourceTree = "<group>"; };
+		5902424810D5CD3B7A2DA71842C08433 /* Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		592B67A4558EDFE3B5452AC183EB50E3 /* en.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = en.po.json; path = ../assets/i18n/en.po.json; sourceTree = "<group>"; };
+		5A4B599DF756EEDFB1F444BC5C84B3CB /* allCampaigns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = allCampaigns.json; path = ../assets/allCampaigns.json; sourceTree = "<group>"; };
+		5B3D9417C1ADDBF42095E86996C3F941 /* AppCenter-Config.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "ArkhamCards/AppCenter-Config.plist"; sourceTree = "<group>"; };
+		5C2A5EA1587D92A9D651671276C962C6 /* de.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = de.po.json; path = ../assets/i18n/de.po.json; sourceTree = "<group>"; };
+		5C8A6E7CCD845EB2F7F1D35E979CE1B1 /* ArkhamCardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkhamCardsUITests.swift; sourceTree = "<group>"; };
+		62AAC4AB5C82A37FD6BE5B634B153ACE /* libPods-ArkhamCards-ArkhamCardsUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArkhamCards-ArkhamCardsUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65DCC1DC259E6C1A00B5FDD1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		694168BF8B72E4C5123A260ED8A3913C /* es.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = es.po.json; path = ../assets/i18n/es.po.json; sourceTree = "<group>"; };
+		6F75F6E2F901341A55A53DC713656BF7 /* libReact-jsi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-jsi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70D282076BF19F640D47A7BDDCEB7EA4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		72DC04D590C2264260B482366C575C1F /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		7354662630206E4E258EFE301302696C /* ArkhamCardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArkhamCardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		740AEA8A3AF9D7570A6930550AA486F7 /* Pods-ArkhamCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.debug.xcconfig"; sourceTree = "<group>"; };
+		759D321D2A850447EF9454F2C30379EF /* uk.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = uk.po.json; path = ../assets/i18n/uk.po.json; sourceTree = "<group>"; };
+		7C798E3A8857191B003948BCD5C7A0B9 /* standalone.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = standalone.ttf; path = ../assets/standalone.ttf; sourceTree = "<group>"; };
+		7DD3CDFAFD0CDAC446F6FA72ED5FFE5A /* Pods-ArkhamCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCardsTests/Pods-ArkhamCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		804E5C630080119DC7667A2AD6DED898 /* Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsTests/Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig"; sourceTree = "<group>"; };
+		834CEDF06C7B33190E3A3A7EC7358072 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		8D494BE2D81D05813D1F6557115EE85C /* Alegreya-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-BoldItalic.ttf"; path = "../assets/Alegreya-BoldItalic.ttf"; sourceTree = "<group>"; };
+		94CD72715026C55CAC3B7D20463019E3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		969AB3AAF0BE2CFD5BD3CFC8B54E0E2D /* Pods-ArkhamCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCardsTests/Pods-ArkhamCardsTests.release.xcconfig"; sourceTree = "<group>"; };
+		9963E874E13EF7344AD4DFD59F9F3E8C /* libPods-ArkhamCards-ArkhamCardsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArkhamCards-ArkhamCardsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AF883C2E96D12E5F58722D5C6ECF425 /* Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9B1D236601806201F6782D2D18A2C61F /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Medium.ttf"; path = "../assets/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
+		9CAE3E96AAB0A1047455DD360001D56D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		A15002477BC553F9E85B080D6FE862B0 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		A1C42AF51E54CA32E1832C80F18929CC /* Teutonic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Teutonic.ttf; path = ../assets/Teutonic.ttf; sourceTree = "<group>"; };
+		A88C8CAE2EB3C93A084355E97401683A /* Alegreya-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Regular.ttf"; path = "../assets/Alegreya-Regular.ttf"; sourceTree = "<group>"; };
+		AD3016340B0C4846FBE60672B4794BF6 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
+		AE05BA358BDF68287EE880018C579F32 /* ArkhamCardsDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCardsDebug.entitlements; path = ArkhamCards/ArkhamCardsDebug.entitlements; sourceTree = "<group>"; };
+		AE67EC47E66A3622DB0307BE0C983895 /* ArkhamCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArkhamCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCE74D3EFC0CD5BF95E7A4B38E7ADA49 /* AnkeCalligraphicFG.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AnkeCalligraphicFG.ttf; path = ../assets/AnkeCalligraphicFG.ttf; sourceTree = "<group>"; };
+		BEEA53D4D6DC4C0573B7FEB55E386B89 /* Pods-ArkhamCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.release.xcconfig"; sourceTree = "<group>"; };
+		C06BAECF7EA4BD7CC1E08C419F6747FE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ArkhamCards/AppDelegate.h; sourceTree = "<group>"; };
+		C23F5768AFFF692E6B5A14FD213C52E3 /* Alegreya-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-ExtraBoldItalic.ttf"; path = "../assets/Alegreya-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		C3904F219ACC36E394973EFC7C7D36FF /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Italic.ttf"; path = "../assets/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
+		C61E2404B03D34D64445B8BD9330B311 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
+		CABF386F2CD70021C2A952B70D85268B /* Alegreya-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-MediumItalic.ttf"; path = "../assets/Alegreya-MediumItalic.ttf"; sourceTree = "<group>"; };
+		D773F4851E4A573E74931133B4CCD300 /* innsmouth.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = innsmouth.ttf; path = ../assets/innsmouth.ttf; sourceTree = "<group>"; };
+		DD34FB3A8F83B75DEF67E33C8DDEF3AA /* ko.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ko.po.json; path = ../assets/i18n/ko.po.json; sourceTree = "<group>"; };
+		E0A4F7E09E403EAC0D90122915E8C7AA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ArkhamCards/AppDelegate.m; sourceTree = "<group>"; };
+		E1AC79830A086A1FBA51D247B27EE8B6 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
+		E67689B0366D41A533544A1D34848A93 /* forgotten.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = forgotten.ttf; path = ../assets/forgotten.ttf; sourceTree = "<group>"; };
+		E8AB928B7A008A29047A38761E0A6C88 /* ArkhamCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCards.entitlements; path = ArkhamCards/ArkhamCards.entitlements; sourceTree = "<group>"; };
+		EDEED7EDB641314DED65070EDAD43E9A /* fr.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fr.po.json; path = ../assets/i18n/fr.po.json; sourceTree = "<group>"; };
+		EDF7B4626587C712839327F608469182 /* libPods-ArkhamCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ArkhamCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F663D28DC5E5B0C5768BB440AE3AFCD4 /* dreameaters.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dreameaters.ttf; path = ../assets/dreameaters.ttf; sourceTree = "<group>"; };
+		F66D671A607B837A25FC695F1CA35F38 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F7482E0E10D2C21FADF4FE71748A9410 /* AboutDead.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AboutDead.ttf; path = ../assets/AboutDead.ttf; sourceTree = "<group>"; };
+		F8C53BFAF7E51AA8140B1A7CED9FBA39 /* Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsTests/Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F99BCEFA1B5FD44C62F3BACC53390049 /* arkhamicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arkhamicons.ttf; path = ../assets/arkhamicons.ttf; sourceTree = "<group>"; };
+		FD45509D3715DEC178C6C903B4C4A735 /* campaignLogs_es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = campaignLogs_es.json; path = ../assets/campaignLogs_es.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+		2C09D7017528C304632CA76323CC3280 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				654277272365FE7200D394B1 /* libPods-ArkhamCards.a in Frameworks */,
+				0632BFBDFF19558AE208DABBCB59E67A /* libPods-ArkhamCards.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		655BAD70248739AD00854210 /* Frameworks */ = {
+		6CA20C6CD66C7EF3BE43928A8F87E30F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6505E52224DA64AC001DF983 /* libswiftCore.tbd in Frameworks */,
-				8771D18D6FA89F3C71B60A87 /* libPods-ArkhamCards-ArkhamCardsUITests.a in Frameworks */,
+				52AD4BDFC2C34A42F3DF305A554D55AE /* libPods-ArkhamCards-ArkhamCardsUITests.a in Frameworks */,
+				0748D43B0B871B8BB26498D184B28AB6 /* libswiftCore.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
+		000D8E160098EE2F997355F89B056E14 /* ArkhamCardsUITests */ = {
 			isa = PBXGroup;
 			children = (
 				6530148B259FD4EA009A53AB /* ArkhamCardsDebug.entitlements */,
@@ -206,97 +278,143 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */,
 				65F8DBA3247EEBC100286F16 /* Bridge.swift */,
-			);
-			name = ArkhamCards;
-			sourceTree = "<group>";
-		};
-		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6505E52124DA64AC001DF983 /* libswiftCore.tbd */,
-				6505E51F24DA59A4001DF983 /* libReact-jsi.a */,
-				654277262365FE7200D394B1 /* libPods-ArkhamCards.a */,
-				184A961D85085A21CA4AAC7A /* libPods-ArkhamCards-ArkhamCardsTests.a */,
-				09B12BAED462D323E8F4C844 /* libPods-ArkhamCards-ArkhamCardsUITests.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		655BAD74248739AD00854210 /* ArkhamCardsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				654257E7248B18210089504E /* SnapshotHelper.swift */,
-				655BAD75248739AD00854210 /* ArkhamCardsUITests.swift */,
-				655BAD77248739AD00854210 /* Info.plist */,
+				5C8A6E7CCD845EB2F7F1D35E979CE1B1 /* ArkhamCardsUITests.swift */,
+				010218FE7EB06386A5A4651E65CCF625 /* Info.plist */,
+				9CAE3E96AAB0A1047455DD360001D56D /* SnapshotHelper.swift */,
 			);
 			path = ArkhamCardsUITests;
 			sourceTree = "<group>";
 		};
-		83CBB9F61A601CBA00E9B192 = {
+		04DA16B820CAB0683A6C2926F676A4E0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* ArkhamCards */,
-				655BAD74248739AD00854210 /* ArkhamCardsUITests */,
-				83CBBA001A601CBA00E9B192 /* Products */,
-				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				E81D6506D540436FABC9AC12 /* Resources */,
-				B695F53172B5785163154255 /* Pods */,
-				EA9558AF96C7453B9D642AC9 /* AppCenter-Config.plist */,
+				A15002477BC553F9E85B080D6FE862B0 /* MaterialCommunityIcons.ttf */,
+				834CEDF06C7B33190E3A3A7EC7358072 /* MaterialIcons.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2E6337DCB248A1429A93DDE234F04ABE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8C53BFAF7E51AA8140B1A7CED9FBA39 /* Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig */,
+				804E5C630080119DC7667A2AD6DED898 /* Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig */,
+				9AF883C2E96D12E5F58722D5C6ECF425 /* Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig */,
+				5902424810D5CD3B7A2DA71842C08433 /* Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig */,
+				740AEA8A3AF9D7570A6930550AA486F7 /* Pods-ArkhamCards.debug.xcconfig */,
+				BEEA53D4D6DC4C0573B7FEB55E386B89 /* Pods-ArkhamCards.release.xcconfig */,
+				7DD3CDFAFD0CDAC446F6FA72ED5FFE5A /* Pods-ArkhamCardsTests.debug.xcconfig */,
+				969AB3AAF0BE2CFD5BD3CFC8B54E0E2D /* Pods-ArkhamCardsTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		48BB7D3A65A7A029BCFB9B9427CEF5B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE67EC47E66A3622DB0307BE0C983895 /* ArkhamCards.app */,
+				7354662630206E4E258EFE301302696C /* ArkhamCardsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48F53FB140D49A1042BCAFDC93E587FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9963E874E13EF7344AD4DFD59F9F3E8C /* libPods-ArkhamCards-ArkhamCardsTests.a */,
+				62AAC4AB5C82A37FD6BE5B634B153ACE /* libPods-ArkhamCards-ArkhamCardsUITests.a */,
+				EDF7B4626587C712839327F608469182 /* libPods-ArkhamCards.a */,
+				6F75F6E2F901341A55A53DC713656BF7 /* libReact-jsi.a */,
+				C61E2404B03D34D64445B8BD9330B311 /* libswiftCore.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		707360D08E466B85840B98CAA7B49985 /* ArkhamCards */ = {
+			isa = PBXGroup;
+			children = (
+				65DCC1DC259E6C1A00B5FDD1 /* GoogleService-Info.plist */,
+				F7482E0E10D2C21FADF4FE71748A9410 /* AboutDead.ttf */,
+				55E5372BEC37D6485AC0F572D9B76124 /* Alegreya-Bold.ttf */,
+				8D494BE2D81D05813D1F6557115EE85C /* Alegreya-BoldItalic.ttf */,
+				52A47F57EC3901AE159EBA46F44EA343 /* Alegreya-ExtraBold.ttf */,
+				C23F5768AFFF692E6B5A14FD213C52E3 /* Alegreya-ExtraBoldItalic.ttf */,
+				C3904F219ACC36E394973EFC7C7D36FF /* Alegreya-Italic.ttf */,
+				9B1D236601806201F6782D2D18A2C61F /* Alegreya-Medium.ttf */,
+				CABF386F2CD70021C2A952B70D85268B /* Alegreya-MediumItalic.ttf */,
+				A88C8CAE2EB3C93A084355E97401683A /* Alegreya-Regular.ttf */,
+				BCE74D3EFC0CD5BF95E7A4B38E7ADA49 /* AnkeCalligraphicFG.ttf */,
+				C06BAECF7EA4BD7CC1E08C419F6747FE /* AppDelegate.h */,
+				E0A4F7E09E403EAC0D90122915E8C7AA /* AppDelegate.m */,
+				33AE0EDAE7449AEFA523493FB587ADE2 /* ArkhamCards-Bridging-Header.h */,
+				E8AB928B7A008A29047A38761E0A6C88 /* ArkhamCards.entitlements */,
+				AE05BA358BDF68287EE880018C579F32 /* ArkhamCardsDebug.entitlements */,
+				3BB479EE5F05C70E1E609952D0779E9E /* Bridge.swift */,
+				1338C06769653F4F27E7562F4716EBDF /* Conkordia.ttf */,
+				0F1CE19EBE239EBD1BDEE75B672DC7D9 /* Images.xcassets */,
+				4F665BC5047E7128B655A67AA76BCC78 /* Info.plist */,
+				9052FC4E12E3C17EDB3D1B98B65D8E9F /* LaunchScreen.xib */,
+				A1C42AF51E54CA32E1832C80F18929CC /* Teutonic.ttf */,
+				5A4B599DF756EEDFB1F444BC5C84B3CB /* allCampaigns.json */,
+				3AD2FF721DA7BED38975316135583B3B /* allCampaigns_es.json */,
+				453C712CF3C040D49490E1BFA526412B /* app.ttf */,
+				F99BCEFA1B5FD44C62F3BACC53390049 /* arkhamicons.ttf */,
+				37CC85B780CAD4A962A32674FB913576 /* campaignLogs.json */,
+				FD45509D3715DEC178C6C903B4C4A735 /* campaignLogs_es.json */,
+				AD3016340B0C4846FBE60672B4794BF6 /* carcosa.ttf */,
+				44E87D54A5531AB673B83FD2A2229089 /* circle.ttf */,
+				E1AC79830A086A1FBA51D247B27EE8B6 /* coreset.ttf */,
+				5C2A5EA1587D92A9D651671276C962C6 /* de.po.json */,
+				F663D28DC5E5B0C5768BB440AE3AFCD4 /* dreameaters.ttf */,
+				3634EF3507E88D476E4509841A15C33B /* dunwich.ttf */,
+				592B67A4558EDFE3B5452AC183EB50E3 /* en.po.json */,
+				694168BF8B72E4C5123A260ED8A3913C /* es.po.json */,
+				E67689B0366D41A533544A1D34848A93 /* forgotten.ttf */,
+				EDEED7EDB641314DED65070EDAD43E9A /* fr.po.json */,
+				D773F4851E4A573E74931133B4CCD300 /* innsmouth.ttf */,
+				4A88369A697EA474A989AFAE5CBE7526 /* it.po.json */,
+				DD34FB3A8F83B75DEF67E33C8DDEF3AA /* ko.po.json */,
+				72DC04D590C2264260B482366C575C1F /* main.jsbundle */,
+				4202DA9ABC7E064EC85E7589139A9E1F /* main.m */,
+				18EBBC294F6CF086AA86A5818DE11A28 /* pl.po.json */,
+				7C798E3A8857191B003948BCD5C7A0B9 /* standalone.ttf */,
+				759D321D2A850447EF9454F2C30379EF /* uk.po.json */,
+			);
+			name = ArkhamCards;
+			sourceTree = "<group>";
+		};
+		C17A661B267F8E9339A8306F2689C8CB = {
+			isa = PBXGroup;
+			children = (
+				707360D08E466B85840B98CAA7B49985 /* ArkhamCards */,
+				000D8E160098EE2F997355F89B056E14 /* ArkhamCardsUITests */,
+				48F53FB140D49A1042BCAFDC93E587FD /* Frameworks */,
+				2E6337DCB248A1429A93DDE234F04ABE /* Pods */,
+				48BB7D3A65A7A029BCFB9B9427CEF5B7 /* Products */,
+				04DA16B820CAB0683A6C2926F676A4E0 /* Resources */,
+				5B3D9417C1ADDBF42095E86996C3F941 /* AppCenter-Config.plist */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
 			tabWidth = 2;
 			usesTabs = 0;
 		};
-		83CBBA001A601CBA00E9B192 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				13B07F961A680F5B00A75B9A /* ArkhamCards.app */,
-				655BAD73248739AD00854210 /* ArkhamCardsUITests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		B695F53172B5785163154255 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				77826D98D567F5BAA673BAA1 /* Pods-ArkhamCards.debug.xcconfig */,
-				3B0BDDE31E78DE8A3A314744 /* Pods-ArkhamCards.release.xcconfig */,
-				AF212649A356FC508AC5DF85 /* Pods-ArkhamCardsTests.debug.xcconfig */,
-				05473A831C53C7FA3DC2E1A2 /* Pods-ArkhamCardsTests.release.xcconfig */,
-				715668562027058C00376EED /* Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig */,
-				DCFA4586462A01391995CA1B /* Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig */,
-				B45475752BA6DA496FC3752F /* Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig */,
-				231B73C11372A5E199409AAE /* Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		E81D6506D540436FABC9AC12 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				D015900F71F34A5187CC75F4 /* MaterialCommunityIcons.ttf */,
-				CAB040D549E643C0A271ADCC /* MaterialIcons.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* ArkhamCards */ = {
+		1F23FB9872FA80F9C440F4F9DEDD8071 /* ArkhamCards */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ArkhamCards" */;
+			buildConfigurationList = F11505259809E4FE61AF43636B5C0FA9 /* Build configuration list for PBXNativeTarget "ArkhamCards" */;
 			buildPhases = (
-				D2CF3EC98B2CE98156C3E70B /* [CP] Check Pods Manifest.lock */,
-				71B73B9EB32189B5BE2AF4B8 /* [CP] Prepare Artifacts */,
-				13B07F871A680F5B00A75B9A /* Sources */,
-				13B07F8C1A680F5B00A75B9A /* Frameworks */,
-				13B07F8E1A680F5B00A75B9A /* Resources */,
-				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				1000A2C507B5A91925B8E1EB /* [CP] Copy Pods Resources */,
-				A962467D6DB2A0E4DFAB0361 /* [CP] Embed Pods Frameworks */,
-				8C17681975B46A55B6D66577 /* [CP-User] [RNFB] Core Configuration */,
+				66756FC4F988C5BC9E818C9519357D24 /* [CP] Check Pods Manifest.lock */,
+				12F1F1CFD891CB48ECF290B5E2B39A63 /* [CP] Prepare Artifacts */,
+				B0D85168EC9592205198C12AE7065A96 /* Sources */,
+				2C09D7017528C304632CA76323CC3280 /* Frameworks */,
+				2169B37672849EC7490269BB2EE1DBD0 /* Resources */,
+				8125742CA75B5A5F3F0AD19057C6A361 /* Bundle React Native code and images */,
+				141E7986B205C7DE0243D36894DE1DCE /* [CP] Copy Pods Resources */,
+				BD4288334042E96C62F2F374A56E70B9 /* [CP] Embed Pods Frameworks */,
+				EA3817D768D0635231B989228496C473 /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
@@ -304,35 +422,35 @@
 			);
 			name = ArkhamCards;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* ArkhamCards.app */;
+			productReference = AE67EC47E66A3622DB0307BE0C983895 /* ArkhamCards.app */;
 			productType = "com.apple.product-type.application";
 		};
-		655BAD72248739AD00854210 /* ArkhamCardsUITests */ = {
+		65304092F64BED8AE3C6F127B9AF7CEF /* ArkhamCardsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 655BAD7C248739AD00854210 /* Build configuration list for PBXNativeTarget "ArkhamCardsUITests" */;
+			buildConfigurationList = E18FA5CEBE7DD2360D49A2228FC6409C /* Build configuration list for PBXNativeTarget "ArkhamCardsUITests" */;
 			buildPhases = (
-				AE29C1752D982FDDBA12131F /* [CP] Check Pods Manifest.lock */,
-				D113F71BBA418BE4A9B968DA /* [CP] Prepare Artifacts */,
-				655BAD6F248739AD00854210 /* Sources */,
-				655BAD70248739AD00854210 /* Frameworks */,
-				655BAD71248739AD00854210 /* Resources */,
-				12301E85C125DDC678D7BE91 /* [CP] Copy Pods Resources */,
-				A9A9951E049D1028A72E86DD /* [CP] Embed Pods Frameworks */,
+				E9E8246E1C0D70E7147943C795D6E301 /* [CP] Check Pods Manifest.lock */,
+				AF994B414768CC22EC3C260FCAC8F73B /* [CP] Prepare Artifacts */,
+				530DFFB21288C12C1D7504DE14F05E57 /* Sources */,
+				6CA20C6CD66C7EF3BE43928A8F87E30F /* Frameworks */,
+				27C7FB1B23C6122917FC83D25ECD7D79 /* Resources */,
+				6C83E6A497901C7D826F56D2F811D7E6 /* [CP] Copy Pods Resources */,
+				DABF71EE2AFB9A3967FE21B93F90090F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				655BAD79248739AD00854210 /* PBXTargetDependency */,
+				6F03E45B4928C9CE07A2EC5BF2DFC56D /* PBXTargetDependency */,
 			);
 			name = ArkhamCardsUITests;
 			productName = ArkhamCardsUITests;
-			productReference = 655BAD73248739AD00854210 /* ArkhamCardsUITests.xctest */;
+			productReference = 7354662630206E4E258EFE301302696C /* ArkhamCardsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+		CD1AEE5C1D2D8086130C73752D50A0C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Latest;
@@ -340,20 +458,20 @@
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Daniel Salinas";
 				TargetAttributes = {
-					13B07F861A680F5B00A75B9A = {
+					1F23FB9872FA80F9C440F4F9DEDD8071 = {
 						DevelopmentTeam = 54773FU58P;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
-					655BAD72248739AD00854210 = {
+					65304092F64BED8AE3C6F127B9AF7CEF = {
 						CreatedOnToolsVersion = 11.1;
 						DevelopmentTeam = 54773FU58P;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 13B07F861A680F5B00A75B9A;
+						TestTargetID = 1F23FB9872FA80F9C440F4F9DEDD8071;
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ArkhamCards" */;
+			buildConfigurationList = EBA66271EA122AF0FFC0DCF4952B59D6 /* Build configuration list for PBXProject "ArkhamCards" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -366,63 +484,64 @@
 				it,
 				fr,
 			);
-			mainGroup = 83CBB9F61A601CBA00E9B192;
-			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			mainGroup = C17A661B267F8E9339A8306F2689C8CB;
+			productRefGroup = 48BB7D3A65A7A029BCFB9B9427CEF5B7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* ArkhamCards */,
-				655BAD72248739AD00854210 /* ArkhamCardsUITests */,
+				1F23FB9872FA80F9C440F4F9DEDD8071 /* ArkhamCards */,
+				65304092F64BED8AE3C6F127B9AF7CEF /* ArkhamCardsUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+		2169B37672849EC7490269BB2EE1DBD0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */,
-				658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */,
-				651B383B251ACF8900D9D054 /* AboutDead.ttf in Resources */,
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				652EB73C226BAF8400F6D790 /* en.po.json in Resources */,
-				652EB742226BAFA800F6D790 /* it.po.json in Resources */,
-				65851174250F047800DCB842 /* Alegreya-Bold.ttf in Resources */,
-				655226B5205D68D70065A1F7 /* standalone.ttf in Resources */,
-				652421252054954F00FF6DB9 /* dunwich.ttf in Resources */,
-				659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */,
-				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
-				659EB1C525146636007E69E0 /* innsmouth.ttf in Resources */,
-				655226F4205EEAF10065A1F7 /* app.ttf in Resources */,
-				65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */,
-				65F8DB9E247EE0B500286F16 /* ko.po.json in Resources */,
-				659EB1BD25118C55007E69E0 /* Alegreya-MediumItalic.ttf in Resources */,
-				65CF51E0220386F400A1D2FA /* circle.ttf in Resources */,
-				65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */,
-				65447A8724154F2600961717 /* allCampaigns.json in Resources */,
-				65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				65F2F37F24D47C5D00B716AB /* allCampaigns_es.json in Resources */,
-				65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */,
-				659EB1C325118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf in Resources */,
-				652421212054950E00FF6DB9 /* carcosa.ttf in Resources */,
-				652421232054951A00FF6DB9 /* coreset.ttf in Resources */,
-				652EB740226BAF9C00F6D790 /* fr.po.json in Resources */,
-				65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */,
-				65447A8924154F3200961717 /* campaignLogs.json in Resources */,
-				659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */,
-				65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */,
-				65F2F38224D47DE800B716AB /* campaignLogs_es.json in Resources */,
-				652EB73A226BAF7800F6D790 /* de.po.json in Resources */,
-				652EB73E226BAF9300F6D790 /* es.po.json in Resources */,
-				65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */,
-				02D002FD495C486485296EE5 /* AppCenter-Config.plist in Resources */,
-				6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */,
+				E4E2E1CD02EAD1FC3C002DF4B983BCC8 /* AboutDead.ttf in Resources */,
+				52E19A4AFD63BDDF100DC29FB9F2E80E /* Alegreya-Bold.ttf in Resources */,
+				05FDB9E91A6581C550348E5C4E4A5AEB /* Alegreya-BoldItalic.ttf in Resources */,
+				34EE4A168F830A897D831C17E1489658 /* Alegreya-ExtraBold.ttf in Resources */,
+				8BE150F1BDDE2C1248F6B6274EFAD36F /* Alegreya-ExtraBoldItalic.ttf in Resources */,
+				91E019F20B38C5C78FD9A429B71C524B /* Alegreya-Italic.ttf in Resources */,
+				6DA92B31110D50547B5648807001CB84 /* Alegreya-Medium.ttf in Resources */,
+				F69EA914E38E928FF402E2AE0E775CFB /* Alegreya-MediumItalic.ttf in Resources */,
+				4823E085052745A482FE16ECA323F602 /* Alegreya-Regular.ttf in Resources */,
+				9329045E0E77337AF974AEDEFA43C8BA /* AnkeCalligraphicFG.ttf in Resources */,
+				DD34060C92621389AE3C4C4598A7A178 /* AppCenter-Config.plist in Resources */,
+				65DCC1DD259E6C1A00B5FDD1 /* GoogleService-Info.plist in Resources */,
+				107B23D513216EE4908624D8774C7D10 /* Conkordia.ttf in Resources */,
+				FF8E09F49B9724076C543226894154FD /* Images.xcassets in Resources */,
+				51FF7B6082565AA609CA6A38BBF2CA2A /* LaunchScreen.xib in Resources */,
+				9CD2CCEEA7434BF23B97C3C8CEFF4F14 /* Teutonic.ttf in Resources */,
+				E0999B04DEF8FB2A91187490B059334E /* allCampaigns.json in Resources */,
+				DB14B96B59A39AA13F356E64AF9E3361 /* allCampaigns_es.json in Resources */,
+				969F4769AC922D7EAF92CD0A05D5D74F /* app.ttf in Resources */,
+				071CEF2106F2D601703B7E094FD1C04C /* arkhamicons.ttf in Resources */,
+				1E3577E50B96C733CC84C68704064E9A /* campaignLogs.json in Resources */,
+				7374ED3DE4021606019C801F9474548F /* campaignLogs_es.json in Resources */,
+				BA54F05E85BFC20F506763C4550A84B2 /* carcosa.ttf in Resources */,
+				BCAAB09DCBD174421E84B78F9E360518 /* circle.ttf in Resources */,
+				AA89D7CFAFBF0D7535B3CC7250E53D9D /* coreset.ttf in Resources */,
+				B7287D28211C1F929FA29E85B400EE7F /* de.po.json in Resources */,
+				FD9D0CDA244464723D5BDE909877BAA9 /* dreameaters.ttf in Resources */,
+				A239CE4554BF85A1703B8820CE9C1E60 /* dunwich.ttf in Resources */,
+				F5FD102DFB0B791EEE89EC2306198EA1 /* en.po.json in Resources */,
+				B67504F45496641B1DDA1AA09462B22C /* es.po.json in Resources */,
+				8C61236D0714F8F5C49260578D3599D0 /* forgotten.ttf in Resources */,
+				DE5B3DA4E20E9A7A5FF23E134C66D596 /* fr.po.json in Resources */,
+				EC8333A243F732CD5ADA2D2263A1A6F1 /* innsmouth.ttf in Resources */,
+				C49A090F8B9B289457F9155D478377FD /* it.po.json in Resources */,
+				1C05ADC3E0B8F9E24E98C9B2BC6DE3C3 /* ko.po.json in Resources */,
+				6E94FEBCCAF4C57AAEF47A5086B31AFD /* pl.po.json in Resources */,
+				C97456D9AB1610ADF94D06A1AD74DC84 /* standalone.ttf in Resources */,
+				B0AC043F987B74DCD0044F0D3EAAEA99 /* uk.po.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		655BAD71248739AD00854210 /* Resources */ = {
+		27C7FB1B23C6122917FC83D25ECD7D79 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -432,21 +551,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+		12F1F1CFD891CB48ECF290B5E2B39A63 /* [CP] Prepare Artifacts */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-artifacts.sh",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterAnalytics.xcframework",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenter.xcframework",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterCrashes.xcframework",
 			);
-			name = "Bundle React Native code and images";
+			name = "[CP] Prepare Artifacts";
 			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $PROJECT_DIR/..\nexport BUNDLE_COMMAND=\"ram-bundle\"\nexport NODE_BINARY=node\n./node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		1000A2C507B5A91925B8E1EB /* [CP] Copy Pods Resources */ = {
+		141E7986B205C7DE0243D36894DE1DCE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -498,7 +623,25 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		12301E85C125DDC678D7BE91 /* [CP] Copy Pods Resources */ = {
+		66756FC4F988C5BC9E818C9519357D24 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ArkhamCards-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C83E6A497901C7D826F56D2F811D7E6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -550,7 +693,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		71B73B9EB32189B5BE2AF4B8 /* [CP] Prepare Artifacts */ = {
+		8125742CA75B5A5F3F0AD19057C6A361 /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -560,26 +703,34 @@
 				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenter.xcframework",
 				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterCrashes.xcframework",
 			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd $PROJECT_DIR/..\nexport BUNDLE_COMMAND=\"ram-bundle\"\nexport NODE_BINARY=node\n./node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		AF994B414768CC22EC3C260FCAC8F73B /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-artifacts.sh",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterAnalytics.xcframework",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenter.xcframework",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterCrashes.xcframework",
+			);
 			name = "[CP] Prepare Artifacts";
 			outputPaths = (
 				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-artifacts.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-artifacts.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8C17681975B46A55B6D66577 /* [CP-User] [RNFB] Core Configuration */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "[CP-User] [RNFB] Core Configuration";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    _JSON_OUTPUT_BASE64=$(python -c 'import json,sys,base64;print(base64.b64encode(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"').read())['${_JSON_ROOT}'])))' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\n\n  # config.admob_delay_app_measurement_init\n  _ADMOB_DELAY_APP_MEASUREMENT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"admob_delay_app_measurement_init\")\n  if [[ $_ADMOB_DELAY_APP_MEASUREMENT == \"true\" ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GADDelayAppMeasurementInit\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"YES\")\n  fi\n\n  # config.admob_ios_app_id\n  _ADMOB_IOS_APP_ID=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"admob_ios_app_id\")\n  if [[ $_ADMOB_IOS_APP_ID ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GADApplicationIdentifier\")\n    _PLIST_ENTRY_TYPES+=(\"string\")\n    _PLIST_ENTRY_VALUES+=(\"$_ADMOB_IOS_APP_ID\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
-		};
-		A962467D6DB2A0E4DFAB0361 /* [CP] Embed Pods Frameworks */ = {
+		BD4288334042E96C62F2F374A56E70B9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -596,7 +747,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A9A9951E049D1028A72E86DD /* [CP] Embed Pods Frameworks */ = {
+		DABF71EE2AFB9A3967FE21B93F90090F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -613,7 +764,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AE29C1752D982FDDBA12131F /* [CP] Check Pods Manifest.lock */ = {
+		E9E8246E1C0D70E7147943C795D6E301 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -635,7 +786,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D113F71BBA418BE4A9B968DA /* [CP] Prepare Artifacts */ = {
+		EA3817D768D0635231B989228496C473 /* [CP-User] [RNFB] Core Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -667,52 +818,52 @@
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ArkhamCards-checkManifestLockResult.txt",
 			);
+			name = "[CP-User] [RNFB] Core Configuration";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    _JSON_OUTPUT_BASE64=$(python -c 'import json,sys,base64;print(base64.b64encode(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"').read())['${_JSON_ROOT}'])))' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\n\n  # config.admob_delay_app_measurement_init\n  _ADMOB_DELAY_APP_MEASUREMENT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"admob_delay_app_measurement_init\")\n  if [[ $_ADMOB_DELAY_APP_MEASUREMENT == \"true\" ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GADDelayAppMeasurementInit\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"YES\")\n  fi\n\n  # config.admob_ios_app_id\n  _ADMOB_IOS_APP_ID=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"admob_ios_app_id\")\n  if [[ $_ADMOB_IOS_APP_ID ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GADApplicationIdentifier\")\n    _PLIST_ENTRY_TYPES+=(\"string\")\n    _PLIST_ENTRY_VALUES+=(\"$_ADMOB_IOS_APP_ID\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		13B07F871A680F5B00A75B9A /* Sources */ = {
+		530DFFB21288C12C1D7504DE14F05E57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				65F8DBA4247EEBC100286F16 /* Bridge.swift in Sources */,
+				AB3B5737B149320383AC877AA9985210 /* ArkhamCardsUITests.swift in Sources */,
+				72DBFB15F06235A68D5FFB999D476106 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		655BAD6F248739AD00854210 /* Sources */ = {
+		B0D85168EC9592205198C12AE7065A96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				655BAD76248739AD00854210 /* ArkhamCardsUITests.swift in Sources */,
-				654257E8248B18220089504E /* SnapshotHelper.swift in Sources */,
+				7197BC4E3B3B59B5160784F6F203C2AE /* AppDelegate.m in Sources */,
+				75547602D2164DD24A8EFEF9DD82E392 /* Bridge.swift in Sources */,
+				C670780E0148F6F88C532B6C4E055CAD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		655BAD79248739AD00854210 /* PBXTargetDependency */ = {
+		6F03E45B4928C9CE07A2EC5BF2DFC56D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* ArkhamCards */;
-			targetProxy = 655BAD78248739AD00854210 /* PBXContainerItemProxy */;
+			target = 1F23FB9872FA80F9C440F4F9DEDD8071 /* ArkhamCards */;
+			targetProxy = F08FDC3CF8BEC7FBA0C04E341699C3D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
+		9052FC4E12E3C17EDB3D1B98B65D8E9F /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-				65CA4CEA212893160084A1CE /* es */,
-				65CA4CEB2128932A0084A1CE /* de */,
-				65CA4CEC2128932F0084A1CE /* it */,
-				65CA4CED212893370084A1CE /* fr */,
+				2E6CC06FB8D40B2B5FF2A5A5178B4B13 /* Base */,
+				1DF2045D33C378426856791C168EDDE7 /* de */,
+				70D282076BF19F640D47A7BDDCEB7EA4 /* es */,
+				94CD72715026C55CAC3B7D20463019E3 /* fr */,
+				F66D671A607B837A25FC695F1CA35F38 /* it */,
 			);
 			name = LaunchScreen.xib;
 			path = ArkhamCards;
@@ -721,9 +872,9 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		13B07F941A680F5B00A75B9A /* Debug */ = {
+		0F7AD12EB2D39C7795F94AF4BB09E43E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77826D98D567F5BAA673BAA1 /* Pods-ArkhamCards.debug.xcconfig */;
+			baseConfigurationReference = 740AEA8A3AF9D7570A6930550AA486F7 /* Pods-ArkhamCards.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -839,8 +990,9 @@
 			name = Debug;
 		};
 		655BAD7B248739AD00854210 /* Release */ = {
+		23B1F9704C4AB169931B57890FB6FDFF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 231B73C11372A5E199409AAE /* Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig */;
+			baseConfigurationReference = 5902424810D5CD3B7A2DA71842C08433 /* Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -868,7 +1020,61 @@
 			};
 			name = Release;
 		};
-		83CBBA201A601CBA00E9B192 /* Debug */ = {
+		433A68A9255B1849BAEC9E4A3F1905D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: daniel.salinas@gmail.com (P6WXUAKY7E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6021465BC5E94DDEF0D5CDCB37A35076 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -928,91 +1134,110 @@
 			};
 			name = Debug;
 		};
-		83CBBA211A601CBA00E9B192 /* Release */ = {
+		A2AD8C70CECA4C6B5A3A14572414C163 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AF883C2E96D12E5F58722D5C6ECF425 /* Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 54773FU58P;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ArkhamCardsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arkhamcards.ArkhamCardsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ArkhamCards;
+			};
+			name = Debug;
+		};
+		D0690669353E0E70520C2B530B675B8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEEA53D4D6DC4C0573B7FEB55E386B89 /* Pods-ArkhamCards.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: daniel.salinas@gmail.com (P6WXUAKY7E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
+				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 54773FU58P;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-navigation/ios/**",
+					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
+					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
+					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
+					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
+					"$(SRCROOT)/../node_modules/@matt-block/react-native-in-app-browser/ios/RNInAppBrowser",
 				);
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
+				INFOPLIST_FILE = ArkhamCards/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.9.5;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arkhamcards.ArkhamCards;
+				PRODUCT_NAME = ArkhamCards;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ArkhamCards-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ArkhamCards" */ = {
+		E18FA5CEBE7DD2360D49A2228FC6409C /* Build configuration list for PBXNativeTarget "ArkhamCardsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13B07F941A680F5B00A75B9A /* Debug */,
-				13B07F951A680F5B00A75B9A /* Release */,
+				A2AD8C70CECA4C6B5A3A14572414C163 /* Debug */,
+				23B1F9704C4AB169931B57890FB6FDFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		655BAD7C248739AD00854210 /* Build configuration list for PBXNativeTarget "ArkhamCardsUITests" */ = {
+		EBA66271EA122AF0FFC0DCF4952B59D6 /* Build configuration list for PBXProject "ArkhamCards" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				655BAD7A248739AD00854210 /* Debug */,
-				655BAD7B248739AD00854210 /* Release */,
+				6021465BC5E94DDEF0D5CDCB37A35076 /* Debug */,
+				433A68A9255B1849BAEC9E4A3F1905D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ArkhamCards" */ = {
+		F11505259809E4FE61AF43636B5C0FA9 /* Build configuration list for PBXNativeTarget "ArkhamCards" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				83CBBA201A601CBA00E9B192 /* Debug */,
-				83CBBA211A601CBA00E9B192 /* Release */,
+				0F7AD12EB2D39C7795F94AF4BB09E43E /* Debug */,
+				D0690669353E0E70520C2B530B675B8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+	rootObject = CD1AEE5C1D2D8086130C73752D50A0C5 /* Project object */;
 }
