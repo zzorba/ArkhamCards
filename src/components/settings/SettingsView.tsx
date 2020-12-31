@@ -22,11 +22,12 @@ import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
 import { AppState, getLangPreference, getLangChoice } from '@reducers';
 import SettingsItem from './SettingsItem';
-import LoginButton from './LoginButton';
-import DissonantVoicesLoginButton from './DissonantVoicesLoginButton';
+import ArkhamDbLoginButton from './auth/ArkhamDbLoginButton';
+import DissonantVoicesLoginButton from './auth/DissonantVoicesLoginButton';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
 import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
+import ArkhamCardsLoginButton from './auth/ArkhamCardsLoginButton';
 
 const NATIVE_RULES = true;
 interface OwnProps {
@@ -144,7 +145,8 @@ export default function SettingsView({ componentId }: NavigationProps) {
     <SafeAreaView style={[styles.container, backgroundStyle]}>
       <ScrollView style={[styles.list, { backgroundColor: colors.L20 }]}>
         <CardSectionHeader section={{ title: t`Account` }} />
-        <LoginButton settings />
+        <ArkhamCardsLoginButton settings />
+        <ArkhamDbLoginButton settings />
         { SHOW_DISSONANT_VOICES && <DissonantVoicesLoginButton settings /> }
         <SettingsItem
           navigation

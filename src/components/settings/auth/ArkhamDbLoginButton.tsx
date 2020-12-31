@@ -8,7 +8,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import BasicButton from '@components/core/BasicButton';
-import SettingsItem from './SettingsItem';
+import SettingsItem from '../SettingsItem';
 import { t } from 'ttag';
 import { logout, login } from '@actions';
 import { AppState } from '@reducers';
@@ -18,7 +18,7 @@ interface Props {
   settings?: boolean;
 }
 
-export default function LoginButton({ settings }: Props) {
+export default function ArkhamDbLoginButton({ settings }: Props) {
   const { colors } = useContext(StyleContext);
   const dispatch = useDispatch();
   const loading = useSelector((state: AppState) => state.signedIn.loading);

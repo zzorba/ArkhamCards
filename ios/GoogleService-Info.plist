@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>375702423113-kl6b35ldiclimu9k3ampdvurnj5p1qfs.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.375702423113-kl6b35ldiclimu9k3ampdvurnj5p1qfs</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>375702423113-pvcfsk5bk59k6ocsg0cgh3l9tt6hbc3n.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDb3uTSlVozaog4jNJB3_1wlESBF80sCX0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>375702423113</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.arkhamcards.ArkhamCards</string>
+	<key>PROJECT_ID</key>
+	<string>arkhamblob</string>
+	<key>STORAGE_BUCKET</key>
+	<string>arkhamblob.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:375702423113:ios:ddc3bfe55bd62d38eda198</string>
+	<key>DATABASE_URL</key>
+	<string>https://arkhamblob.firebaseio.com</string>
+</dict>
+</plist>
