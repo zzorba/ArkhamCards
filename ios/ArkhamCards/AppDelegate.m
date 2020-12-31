@@ -1,5 +1,7 @@
 #import "AppDelegate.h"
 
+#import <Firebase.h>
+#import <RNGoogleSignin/RNGoogleSignin.h>
 #import <AppCenterReactNative.h>
 #import <AppCenterReactNativeCrashes.h>
 #import <React/RCTBridge.h>
@@ -13,6 +15,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  if ([FIRApp defaultApp] == nil) {
+    [FIRApp configure];
+  }
   [AppCenterReactNative register];
   [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
 
@@ -24,7 +29,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-  return [RCTLinkingManager application:application openURL:url options:options];
+  return [RNGoogleSignin application:application openURL:url options:options] || [RCTLinkingManager application:application openURL:url options:options];
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

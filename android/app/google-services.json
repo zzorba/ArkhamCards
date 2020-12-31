@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "375702423113",
+    "firebase_url": "https://arkhamblob.firebaseio.com",
+    "project_id": "arkhamblob",
+    "storage_bucket": "arkhamblob.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375702423113:android:41e5dc2407438b22eda198",
+        "android_client_info": {
+          "package_name": "com.arkhamcards"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375702423113-q0d7ub9h0nsflo5ivih9cfkvv5v6ejtr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arkhamcards",
+            "certificate_hash": "8610db7cd701b6cb796cc5121c36190aaf145e54"
+          }
+        },
+        {
+          "client_id": "375702423113-g70bmcovqfqduf2tleg7otk7fkpo1sku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAfjP1PrFsv-xKTANUEkf3qVwjL40tUf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375702423113-g70bmcovqfqduf2tleg7otk7fkpo1sku.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "375702423113-kl6b35ldiclimu9k3ampdvurnj5p1qfs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.arkhamcards.ArkhamCards",
+                "app_store_id": "1424000351"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

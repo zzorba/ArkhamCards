@@ -47,6 +47,7 @@ export function useDialog({
   dialog: React.ReactNode;
   visible: boolean;
   setVisible: (visible: boolean) => void;
+  showDialog: () => void;
 } {
   const [visible, setVisible] = useState(false);
   const confirmOnPress = confirm?.onPress;
@@ -79,10 +80,12 @@ export function useDialog({
       </NewDialog>
     );
   }, [title, confirm, dismiss, visible, alignment, onDismiss, onConfirm, content, allowDismiss, avoidKeyboard]);
+  const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,
     setVisible,
     dialog,
+    showDialog,
   };
 }
 
