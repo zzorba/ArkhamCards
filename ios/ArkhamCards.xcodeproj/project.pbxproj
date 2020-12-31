@@ -287,11 +287,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ArkhamCards" */;
 			buildPhases = (
 				D2CF3EC98B2CE98156C3E70B /* [CP] Check Pods Manifest.lock */,
+				71B73B9EB32189B5BE2AF4B8 /* [CP] Prepare Artifacts */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				1000A2C507B5A91925B8E1EB /* [CP] Copy Pods Resources */,
+				A962467D6DB2A0E4DFAB0361 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -307,10 +309,12 @@
 			buildConfigurationList = 655BAD7C248739AD00854210 /* Build configuration list for PBXNativeTarget "ArkhamCardsUITests" */;
 			buildPhases = (
 				AE29C1752D982FDDBA12131F /* [CP] Check Pods Manifest.lock */,
+				D113F71BBA418BE4A9B968DA /* [CP] Prepare Artifacts */,
 				655BAD6F248739AD00854210 /* Sources */,
 				655BAD70248739AD00854210 /* Frameworks */,
 				655BAD71248739AD00854210 /* Resources */,
 				12301E85C125DDC678D7BE91 /* [CP] Copy Pods Resources */,
+				A9A9951E049D1028A72E86DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -539,6 +543,60 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		71B73B9EB32189B5BE2AF4B8 /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-artifacts.sh",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterAnalytics.xcframework",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenter.xcframework",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterCrashes.xcframework",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A962467D6DB2A0E4DFAB0361 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9A9951E049D1028A72E86DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AE29C1752D982FDDBA12131F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -559,6 +617,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D113F71BBA418BE4A9B968DA /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-artifacts.sh",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterAnalytics.xcframework",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenter.xcframework",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterCrashes.xcframework",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-artifacts.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D2CF3EC98B2CE98156C3E70B /* [CP] Check Pods Manifest.lock */ = {

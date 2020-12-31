@@ -4,24 +4,24 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
-  - appcenter-analytics (3.1.2):
-    - AppCenter/Analytics
-    - AppCenterReactNativeShared
-    - React
-  - appcenter-core (3.1.2):
-    - AppCenterReactNativeShared
-    - React
-  - appcenter-crashes (3.1.2):
-    - AppCenter/Crashes
-    - AppCenterReactNativeShared
-    - React
-  - AppCenter/Analytics (3.3.2):
+  - appcenter-analytics (4.0.2):
+    - AppCenter/Analytics (~> 4.0)
+    - AppCenterReactNativeShared (~> 4.0)
+    - React-Core
+  - appcenter-core (4.0.2):
+    - AppCenterReactNativeShared (~> 4.0)
+    - React-Core
+  - appcenter-crashes (4.0.2):
+    - AppCenter/Crashes (~> 4.0)
+    - AppCenterReactNativeShared (~> 4.0)
+    - React-Core
+  - AppCenter/Analytics (4.1.0):
     - AppCenter/Core
-  - AppCenter/Core (3.3.2)
-  - AppCenter/Crashes (3.3.2):
+  - AppCenter/Core (4.1.0)
+  - AppCenter/Crashes (4.1.0):
     - AppCenter/Core
-  - AppCenterReactNativeShared (3.1.1):
-    - AppCenter/Core (= 3.3.2)
+  - AppCenterReactNativeShared (4.0.2):
+    - AppCenter/Core (= 4.1.0)
   - boost-for-react-native (1.63.0)
   - BVLinearGradient (2.5.6):
     - React
@@ -228,7 +228,7 @@ PODS:
     - react-native-config/App (= 1.4.1)
   - react-native-config/App (1.4.1):
     - React-Core
-  - react-native-document-picker (4.1.0):
+  - react-native-document-picker (4.2.0):
     - React-Core
   - react-native-in-app-browser (3.2.2):
     - React
@@ -240,7 +240,7 @@ PODS:
     - React
   - react-native-track-player (1.2.3):
     - React
-  - react-native-webview (11.0.0):
+  - react-native-webview (11.0.2):
     - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
@@ -302,11 +302,15 @@ PODS:
     - React-Core (= 0.63.4)
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
-  - ReactNativeNavigation (7.6.0):
+  - ReactNativeNavigation (7.7.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.6.0)
+    - ReactNativeNavigation/Core (= 7.7.0)
+  - ReactNativeNavigation/Core (7.7.0):
+    - React-Core
+    - React-RCTImage
+    - React-RCTText
   - rn-fetch-blob (0.12.0):
     - React-Core
   - RNCAsyncStorage (1.13.2):
@@ -329,15 +333,15 @@ PODS:
     - React-Core
   - RNReanimated (1.13.2):
     - React-Core
-  - RNShare (4.1.0):
+  - RNShare (5.1.0):
     - React-Core
   - RNSVG (12.1.0):
     - React
   - RNVectorIcons (7.1.0):
     - React
-  - SDWebImage (5.9.1):
-    - SDWebImage/Core (= 5.9.1)
-  - SDWebImage/Core (5.9.1)
+  - SDWebImage (5.10.2):
+    - SDWebImage/Core (= 5.10.2)
+  - SDWebImage/Core (5.10.2)
   - SDWebImageWebPCoder (0.6.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.7)
@@ -523,11 +527,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
-  AppCenter: aba7de06e4c2184f90dc84f7866bd07f82427d69
-  appcenter-analytics: 86931681ba39a34856727e415d39e7d4693ad7fe
-  appcenter-core: 1cca3f4d1f01e820710dc82e14ad2b4806a4f907
-  appcenter-crashes: 5da5dca952c3d1a3eea2d596748d94ec0412fbd1
-  AppCenterReactNativeShared: b9fa50d999e830e03f086f487b1aa0f9772088c1
+  AppCenter: 8832b158d17e54845c3b88a91076218f0b07174d
+  appcenter-analytics: f1bcf80219acb97acdabeda751a1591869f83dfd
+  appcenter-core: 92618da8986eef80bae39d1bb2b4c9fa0fc873bd
+  appcenter-crashes: 6fe933bbc9a1d2b64e451b348169640a9fea8729
+  AppCenterReactNativeShared: e1db64e8c65dfdca495efd1a1f77892cbc21342b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   DoubleConversion: cde416483dac037923206447da6e1454df403714
@@ -549,13 +553,13 @@ SPEC CHECKSUMS:
   react-native-app-auth: 17266057a5be3e4b5d9e055aa257c43884eac027
   react-native-appearance: 0f0e5fc2fcef70e03d48c8fe6b00b9158c2ba8aa
   react-native-config: d8b45133fd13d4f23bd2064b72f6e2c08b2763ed
-  react-native-document-picker: d870e0a41510b241d5b764e7a2b5ccf129af7967
+  react-native-document-picker: 44ecae7103090b6789cca010f06f5205fd1cb66e
   react-native-in-app-browser: 533839b6e87ec02a7a88bd9f4f7e6e5b586e25fa
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-netinfo: 0212ce8604e88edf686f1481b925b17a42a52449
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
   react-native-track-player: 28b96dd6404dea3eee80e67b74507679235a8dfb
-  react-native-webview: 6b7950628616679d81bdd75747e50cf6de9b5a5f
+  react-native-webview: dfd7202ff115c44d3ea401c2f36122fb3ac79f07
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -566,7 +570,7 @@ SPEC CHECKSUMS:
   React-RCTText: 5c51df3f08cb9dedc6e790161195d12bac06101c
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
-  ReactNativeNavigation: 91c082139a6ee8ef7d5c04c70995fdd2e8ababc9
+  ReactNativeNavigation: 8a9cf15040eeffcf4a6c750ae7e9a63042aea0aa
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 05bae7ecfab1cbd5441993f1ca098f7c3b3f8d0e
   RNColorMatrixImageFilters: bad88a55a2b1ea57efcaff5a03297d25bd83947e
@@ -577,13 +581,13 @@ SPEC CHECKSUMS:
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLocalize: 41026b7c14878f1a1b381bc79f668f1fbf841adb
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
-  RNShare: 106a76243ac90f43ddb9028dcb78ade406b8adff
+  RNShare: fed99fd743f80ca255903c1da46fc9a6430efab6
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
-  SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
+  SDWebImage: b969dcfc02c40a5da71eac0b03b8f1a0c794a86f
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: 7c2fb16334e9e8eb87856d4d116617eef634b330
+PODFILE CHECKSUM: 299a037e32a54dbf63a9f40471192ad1cb7cd408
 
 COCOAPODS: 1.9.3
