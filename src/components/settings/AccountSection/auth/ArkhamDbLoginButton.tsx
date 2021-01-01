@@ -36,7 +36,8 @@ export default function ArkhamDbLoginButton({ last }: Props) {
   return (
     <DeckCheckboxButton
       icon="arkhamdb"
-      title={t`ArkhamDB`}
+      title={signedIn ? t`Synced` : t`Log in to sync decks`}
+      description={t`ArkhamDB`}
       loading={loading}
       value={signedIn}
       onValueChange={signedIn ? logOutPressed : loginPressed}

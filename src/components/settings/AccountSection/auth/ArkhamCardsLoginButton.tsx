@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Input } from 'react-native-elements';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 import uuid from 'react-native-uuid';
 
 import { t } from 'ttag';
@@ -13,7 +13,6 @@ import { useDialog } from '@components/deck/dialogs';
 import space, { s, xs } from '@styles/space';
 import { useFlag } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 GoogleSignin.configure({
@@ -313,7 +312,10 @@ function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
   );
 }
 
-export default function ArkhamCardsLoginButton() {
+interface Props {
+  children: React.ReactNode | React.ReactNode[];
+}
+export default function ArkhamCardsLoginButton({ children }: Props) {
   const { darkMode, typography } = useContext(StyleContext);
   const { user, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
@@ -401,18 +403,21 @@ export default function ArkhamCardsLoginButton() {
   useEffect(() => {
     setVisibleRef.current = setVisible;
   }, [setVisible]);
-
   return (
-    <View style={[space.paddingTopS, styles.wrapper]}>
-      <DeckButton
-        title={user ? t`Sign out` : t`Sign in`}
-        icon="logo"
-        loading={loading}
-        color={user ? 'gray' : 'red'}
-        onPress={user ? doLogout : showDialog}
-      />
-      { dialog }
-    </View>
+    <>
+      { !!user && children }
+      <View style={[space.paddingTopS, styles.wrapper]}>
+        <DeckButton
+          title={user ? t`Sign out` : t`Sign in to app`}
+          icon="logo"
+          loading={loading}
+          color={user ? 'gray' : 'red'}
+          onPress={user ? doLogout : showDialog}
+        />
+        { dialog }
+      </View>
+      { !user && children }
+    </>
   );
 }
 

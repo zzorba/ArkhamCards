@@ -34,7 +34,8 @@ export default function DissonantVoicesLoginButton({ last }: Props) {
   return (
     <DeckCheckboxButton
       icon="mythos-busters"
-      title={t`Dissonant Voices`}
+      title={signedIn ? t`Narration enabled` : t`Log in to enable narration`}
+      description={t`Dissonant Voices`}
       loading={loading}
       value={signedIn}
       onValueChange={signedIn ? logOutPressed : loginPressed}
