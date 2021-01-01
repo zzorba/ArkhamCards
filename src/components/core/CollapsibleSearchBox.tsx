@@ -118,7 +118,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
       outputRange: [-(SEARCH_BAR_HEIGHT + advancedOptions.height), SEARCH_BAR_HEIGHT],
     });
     return (
-      <Animated.View style={[
+      <Animated.View needsOffscreenAlphaCompositing style={[
         styles.advancedOptions,
         shadow.large,
         {

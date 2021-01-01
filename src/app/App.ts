@@ -51,6 +51,7 @@ export default class App {
 
     // We handle arkham cards schema-ref
     DeepLinking.addScheme('arkhamcards://');
+    DeepLinking.addScheme('dissonantvoices://');
 
     Appearance.addChangeListener(({ colorScheme }) => {
       this.setDefaultOptions(colorScheme, true);

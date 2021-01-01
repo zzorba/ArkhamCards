@@ -1,3 +1,4 @@
+import { l } from '@styles/space';
 import { parse } from 'query-string';
 import { AppState, AppStateStatus, Linking } from 'react-native';
 import * as Keychain from 'react-native-keychain';
@@ -65,7 +66,7 @@ export async function authorize(): Promise<string> {
     };
     AppState.addEventListener('change', handleAppStateChange);
 
-    const handleUrl = (event: { url: string; }) => {
+    const handleUrl = async(event: { url: string; }) => {
       abandoned = false;
       const {
         state,
@@ -74,27 +75,31 @@ export async function authorize(): Promise<string> {
       } = parse(event.url.substring(event.url.indexOf('?') + 1));
       if (error === 'access_denied') {
         reject(new Error('Access was denied by user.'));
+        cleanup();
       } else if (state !== originalState) {
         reject(new Error('Stale state detected.'));
+        cleanup();
       } else {
-        fetch(`https://north101.co.uk/token`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ code: code }),
-        })
-          .then(response => {
-            if (response.status !== 200) {
-              throw Error('Invalid token');
-            }
-            return response.text();
-          })
-          .then(text => resolve(text))
-          .catch((error) => reject(error));
+        try {
+          const response = await fetch(`https://north101.co.uk/token`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ code: code }),
+          });
+          if (response.status !== 200) {
+            throw Error('Invalid token');
+          }
+          const text = await response.text();
+          resolve(text);
+          cleanup();
+        } catch(error) {
+          reject(error);
+          cleanup();
+        }
       }
-      cleanup();
     };
     Linking.addEventListener('url', handleUrl);
 

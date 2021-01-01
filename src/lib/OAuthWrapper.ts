@@ -59,8 +59,10 @@ export function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
       } = parse(event.url.substring(event.url.indexOf('?') + 1));
       if (error === 'access_denied') {
         reject(new Error('Access was denied by user.'));
+        cleanup();
       } else if (state !== originalState) {
         reject(new Error('Stale state detected.'));
+        cleanup();
       } else {
         const tokenRequest = {
           code: `${code}`,
@@ -87,9 +89,12 @@ export function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
             accessTokenExpirationDate,
             refreshToken: jsonResponse.refresh_token,
           });
-        })).catch(reject);
+          cleanup();
+        })).catch(() => {
+          reject();
+          cleanup();
+        });
       }
-      cleanup();
     };
     Linking.addEventListener('url', handleUrl);
 
