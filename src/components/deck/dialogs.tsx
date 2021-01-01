@@ -1,14 +1,13 @@
 import React, { useEffect, useMemo, useState, useCallback, useContext, useRef } from 'react';
-import { forEach, keys, map, range, throttle } from 'lodash';
-import { NativeSyntheticEvent, StyleSheet, Text, TextInputSubmitEditingEventData, View } from 'react-native';
-import deepDiff from 'deep-diff';
+import { forEach, map, throttle } from 'lodash';
+import { Platform, NativeSyntheticEvent, StyleSheet, Text, TextInput, TextInputSubmitEditingEventData, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { t } from 'ttag';
 
 import NewDialog from '@components/core/NewDialog';
-import { Campaign, Deck, ParsedDeck, Slots, UPDATE_DECK_EDIT } from '@actions/types';
+import { Campaign, Deck, ParsedDeck, UPDATE_DECK_EDIT } from '@actions/types';
 import { useDispatch } from 'react-redux';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCounter } from '@components/core/hooks';
@@ -19,7 +18,6 @@ import StyleContext from '@styles/StyleContext';
 import space, { s, xs } from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
-import { TextInput } from 'react-native-gesture-handler';
 
 interface DialogOptions {
   title: string;
@@ -106,6 +104,7 @@ export function useTextDialog({
   const { colors, typography } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [liveValue, setLiveValue] = useState(value);
+  const textInputRef = useRef<TextInput>(null);
   useEffect(() => {
     setLiveValue(value);
   }, [value, setLiveValue]);
@@ -126,25 +125,28 @@ export function useTextDialog({
     return (
       <View style={[space.marginS, { width: '100%' }]}>
         <TextInput
+          ref={textInputRef}
           style={[
             { padding: s, paddingTop: xs + s, borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20 },
             typography.text,
           ]}
+          autoFocus={Platform.OS === 'ios'}
           value={liveValue}
           placeholder={placeholder}
           placeholderTextColor={colors.lightText}
           onChangeText={setLiveValue}
           onSubmitEditing={onSubmit}
+          returnKeyType="done"
         />
       </View>
     );
   }, [setLiveValue, onSubmit, placeholder, liveValue, typography, colors]);
-  const { setVisible, dialog } = useDialog({
+  const { setVisible, visible, dialog } = useDialog({
     title,
     allowDismiss: true,
     avoidKeyboard: true,
     content,
-    alignment: 'center',
+    alignment: 'bottom',
     confirm: {
       title: t`Done`,
       onPress: onSave,
@@ -153,6 +155,12 @@ export function useTextDialog({
       title: t`Cancel`,
     },
   });
+  useEffect(() => {
+    if (visible && Platform.OS === 'android') {
+      console.log(`Focusing: ${textInputRef.current}`);
+      setTimeout(() => textInputRef.current?.focus(), 100);
+    }
+  }, [visible]);
   useEffect(() => {
     setVisibleRef.current = setVisible;
   }, [setVisible]);
