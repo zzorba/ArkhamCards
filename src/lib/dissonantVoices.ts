@@ -1,4 +1,3 @@
-import { l } from '@styles/space';
 import { parse } from 'query-string';
 import { AppState, AppStateStatus, Linking } from 'react-native';
 import * as Keychain from 'react-native-keychain';
@@ -89,6 +88,7 @@ export async function authorize(): Promise<string> {
             },
             body: JSON.stringify({ code: code }),
           });
+          console.log(response);
           if (response.status !== 200) {
             throw Error('Invalid token');
           }

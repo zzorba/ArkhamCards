@@ -2424,6 +2424,16 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-10.3.1.tgz#2e9119cb14617c55ee3604598e5fdeb1e4c594f5"
   integrity sha512-JxBsFARyUtp6s37HLOelfaAfwgUMTQZ1xLSRdVFcaPk/Rn2zPTvGsG2frjs5kRAxg+X+4q0NZ0gmfbPDy5ffhg==
 
+"@react-native-firebase/database@^10.4.0":
+  version "10.4.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-10.4.0.tgz#b2d0a202f5e8eb6cc4a29491271ea99fbfe1aba8"
+  integrity sha512-WcTdp8AdI8aK0KcKxuCa+xGcRdh0U2/sEKi1A9xwgGIZdbFldGaaayz91ZGcds+6Zglh/s1NBB4kW/sKD81+CA==
+
+"@react-native-firebase/functions@^10.4.0":
+  version "10.4.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-10.4.0.tgz#a802c61c3bb02569b6938decddd437d73405d4b4"
+  integrity sha512-t4Yb3y1Pgy74MLO/IIZm5+STJcVH1lB+OWzlL6ou8Q0B+Ub3oXs/Y+BG9E2KWnzYP0AH/6/bSVR0+l/Qu7jgAw==
+
 "@redux-offline/redux-offline@2.6.0-native.0":
   version "2.6.0-native.0"
   resolved "https://registry.yarnpkg.com/@redux-offline/redux-offline/-/redux-offline-2.6.0-native.0.tgz#d801d322b6a03a1bed102d7bf9ca8c60e09b4429"

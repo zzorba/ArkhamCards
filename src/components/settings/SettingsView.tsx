@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import { t } from 'ttag';
+import { filter, flatMap, forEach, groupBy, map, partition, uniq } from 'lodash';
+import { msgid, ngettext, t } from 'ttag';
 
 import ThemePicker from './ThemePicker';
 import FontSizePicker from './FontSizePicker';
@@ -19,8 +20,7 @@ import { setSingleCardView, setAlphabetizeEncounterSets } from './actions';
 import { prefetch } from '@lib/auth';
 import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
-import { AppState, getLangPreference, getLangChoice } from '@reducers';
-import SettingsItem from './SettingsItem';
+import { AppState, getLangPreference, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
 import AccountSection from './AccountSection';
@@ -61,6 +61,20 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors } = useContext(StyleContext);
   const dispatch = useDispatch();
 
+  const packsInCollection = useSelector(getPacksInCollection);
+  const spoilerSettings = useSelector(getPackSpoilers);
+  const packs = useSelector(getAllPacks);
+  const summarizePacks = useCallback((selection: { [pack: string]: boolean | undefined }) => {
+    const allPacks = filter(packs, p => !!selection[p.code]);
+    const [cyclePacks, standalonePacks] = partition(allPacks, p => p.cycle_position < 50);
+    const cycleCount = uniq(map(cyclePacks, p => p.cycle_position)).length;
+    const standalonePackCount = filter(standalonePacks, p => p.cycle_position > 50).length;
+    const cyclePart = ngettext(msgid`${cycleCount} Cycle`, `${cycleCount} Cycles`, cycleCount);
+    const packPart = ngettext(msgid`${standalonePackCount} Pack`, `${standalonePackCount} Packs`, standalonePackCount);
+    return `${cyclePart} (${packPart})`;
+  }, [packs]);
+  const collectionSummary = useMemo(() => summarizePacks(packsInCollection), [summarizePacks, packsInCollection]);
+  const spoilerSummary = useMemo(() => summarizePacks(spoilerSettings), [summarizePacks, spoilerSettings]);
   const showCardsingleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const alphabetizeEncounterSets = useSelector((state: AppState) => state.settings.alphabetizeEncounterSets || false);
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
@@ -148,14 +162,14 @@ export default function SettingsView({ componentId }: NavigationProps) {
               <DeckPickerStyleButton
                 icon="card-outline"
                 title={t`Card Collection`}
-                valueLabel={t`6 cycles, 34 packs`}
+                valueLabel={collectionSummary}
                 editable
                 onPress={myCollectionPressed}
               />
               <DeckPickerStyleButton
                 icon="show"
-                title={t`Spoiler Settings`}
-                valueLabel={t`6 cycles, 24 packs`}
+                title={t`Encounter Spoilers`}
+                valueLabel={spoilerSummary}
                 onPress={editSpoilersPressed}
                 editable
               />
@@ -221,7 +235,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
               title={t`Diagnostics`}
             />
             <DeckButton
-              color="red"
+              color="gold"
               icon="logo"
               onPress={contactPressed}
               title={t`Contact us`}

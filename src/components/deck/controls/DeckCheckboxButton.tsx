@@ -8,6 +8,7 @@ import space, { s, xs } from '@styles/space';
 
 interface Props {
   title: string;
+  description?: string;
   icon: string;
   value: boolean;
   onValueChange: (value: boolean) => void;
@@ -30,7 +31,7 @@ function iconSize(icon: string) {
       return 34;
   }
 }
-export default function DeckCheckboxButton({ title, icon, value, onValueChange, disabled, loading, last }: Props) {
+export default function DeckCheckboxButton({ title, description, icon, value, onValueChange, disabled, loading, last }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   return (
     <View style={[styles.wrapper, space.paddingRightS, { paddingTop: xs + s, paddingBottom: xs + s }, borderStyle, !last ? styles.border : undefined]}>
@@ -39,6 +40,7 @@ export default function DeckCheckboxButton({ title, icon, value, onValueChange, 
           <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
         </View>
         <View style={styles.column}>
+          { !!description && <Text style={[typography.smallLabel, typography.italic, typography.dark]}>{ description }</Text> }
           <View style={styles.row}>
             <Text style={[typography.large]}>
               { title }
