@@ -5,6 +5,7 @@ import {
   ViewStyle,
   TextStyle,
   LayoutChangeEvent,
+  Platform,
 } from 'react-native';
 import get from 'lodash/get';
 import map from 'lodash/map';
@@ -26,14 +27,21 @@ const style = StyleSheet.create({
     paddingTop: 20,
     width: '100%',
     height: 300,
-    shadowRadius: 12,
-    shadowColor: '#101010',
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.7,
   },
+  innerShadow: Platform.select({
+    android: {
+      elevation: 4,
+    },
+    default: {
+      shadowRadius: 12,
+      shadowColor: '#101010',
+      shadowOffset: {
+        width: 0,
+        height: 8,
+      },
+      shadowOpacity: 0.7,
+    },
+  }),
   headerWrapper: {
     backgroundColor: 'red',
     position: 'relative',
@@ -176,7 +184,7 @@ class PickerModal extends Component<Props> {
               style={style.cancelTouchable}
             />
           </TouchableWithoutFeedback>
-          <View style={[style.innerWrapper, get(modalStyle, 'innerWrapper')]}>
+          <View style={[style.innerWrapper, style.innerShadow, get(modalStyle, 'innerWrapper')]}>
             <View style={[style.headerWrapper, get(modalStyle, 'header.wrapper')]}>
               <View style={[style.headerTitleWrapper, get(modalStyle, 'header.titleWrapper')]}>
                 <Text style={[style.headerTitle, get(modalStyle, 'header.title')]}>
