@@ -31,7 +31,6 @@
     "@react-native-community/netinfo": "5.9.9",
     "@redux-offline/redux-offline": "2.6.0-native.0",
     "appcenter": "4.0.2",
-    "appcenter-analytics": "4.0.2",
     "appcenter-crashes": "4.0.2",
     "date-fns": "2.16.1",
     "deep-diff": "1.0.2",
