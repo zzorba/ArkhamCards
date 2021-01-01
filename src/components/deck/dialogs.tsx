@@ -157,7 +157,6 @@ export function useTextDialog({
   });
   useEffect(() => {
     if (visible && Platform.OS === 'android') {
-      console.log(`Focusing: ${textInputRef.current}`);
       setTimeout(() => textInputRef.current?.focus(), 100);
     }
   }, [visible]);

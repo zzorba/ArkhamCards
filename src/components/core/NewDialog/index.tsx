@@ -34,7 +34,7 @@ function NewDialog({
   alignment = 'center',
   avoidKeyboard,
 }: Props) {
-  const { backgroundStyle, colors, shadow, typography } = useContext(StyleContext);
+  const { backgroundStyle, darkMode, colors, shadow, typography } = useContext(StyleContext);
   const { width } = useWindowDimensions();
   return (
     <Modal
@@ -45,7 +45,8 @@ function NewDialog({
       onBackdropPress={dismiss?.onPress}
       onBackButtonPress={dismiss?.onPress}
       hasBackdrop
-      backdropColor="#00000088"
+      backdropOpacity={darkMode ? 0.75 : 0.5}
+      backdropColor={darkMode ? '#444444' : '#000000'}
       style={[styles.wrapper, alignment === 'bottom' ? {
         justifyContent: 'flex-end',
         padding: s,
