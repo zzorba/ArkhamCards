@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import AppIcon from '@icons/AppIcon';
@@ -11,6 +11,7 @@ interface Props {
   icon: string;
   value: boolean;
   onValueChange: (value: boolean) => void;
+  loading?: boolean;
   disabled?: boolean;
   last?: boolean;
 }
@@ -18,12 +19,18 @@ interface Props {
 function iconSize(icon: string) {
   switch (icon) {
     case 'world':
+    case 'sort-by-alpha':
       return 30;
+    case 'elder_sign':
+    case 'copy':
+      return 26;
+    case 'sort':
+      return 18;
     default:
       return 34;
   }
 }
-export default function DeckCheckboxButton({ title, icon, value, onValueChange, disabled, last }: Props) {
+export default function DeckCheckboxButton({ title, icon, value, onValueChange, disabled, loading, last }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   return (
     <View style={[styles.wrapper, space.paddingRightS, { paddingTop: xs + s, paddingBottom: xs + s }, borderStyle, !last ? styles.border : undefined]}>
@@ -39,7 +46,11 @@ export default function DeckCheckboxButton({ title, icon, value, onValueChange, 
           </View>
         </View>
       </View>
-      <ArkhamSwitch value={value} onValueChange={onValueChange} disabled={disabled} />
+      { loading ? (
+        <ActivityIndicator color={colors.lightText} size="small" animating />
+      ) : (
+        <ArkhamSwitch value={value} onValueChange={onValueChange} disabled={disabled} />
+      ) }
     </View>
   );
 }
