@@ -14,6 +14,7 @@ import space, { s, xs } from '@styles/space';
 import { useFlag } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 GoogleSignin.configure({
   scopes: ['email'],
@@ -314,33 +315,10 @@ function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
 
 export default function ArkhamCardsLoginButton() {
   const { darkMode, typography } = useContext(StyleContext);
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+  const { user, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [mode, setMode] = useState<'login' | 'create' | undefined>();
-
-  // Handle user state changes
-  const onAuthStateChanged = useCallback((user: FirebaseAuthTypes.User | null) => {
-    setUser(user);
-    if (loading) {
-      setLoading(false);
-    }
-  }, [setLoading, loading, setUser]);
-  const onAuthStateChangedRef = useRef(onAuthStateChanged);
-  useEffect(() => {
-    onAuthStateChangedRef.current = onAuthStateChanged;
-  }, [onAuthStateChanged]);
-
-  useEffect(() => {
-    const callback = (user: FirebaseAuthTypes.User | null) =>{
-      if (onAuthStateChangedRef.current) {
-        onAuthStateChangedRef.current(user);
-      }
-    };
-    const subscriber = auth().onAuthStateChanged(callback);
-    return subscriber; // unsubscribe on unmount
-  }, []);
   const doLogout = useCallback(() => {
     auth().signOut();
   }, []);
