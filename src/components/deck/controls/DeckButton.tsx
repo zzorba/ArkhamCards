@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useContext, useMemo } from 'react';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
@@ -10,14 +11,24 @@ import COLORS from '@styles/colors';
 interface Props {
   title: string;
   detail?: string;
-  icon: 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit';
+  icon: 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
   color?: 'red' | 'gold' | 'gray';
   onPress?: () => void;
   rightMargin?: boolean;
   thin?: boolean;
+  shrink?: boolean;
+  loading?: boolean;
+  bottomMargin?: number;
+  topMargin?: number;
 }
 
 const ICON_SIZE = {
+  settings: 26,
+  book: 22,
+  'arkhamdb': 24,
+  'logo': 28,
+  'login': 24,
+  'email': 24,
   'edit': 24,
   'upgrade': 34,
   'plus-thin': 24,
@@ -25,6 +36,12 @@ const ICON_SIZE = {
   'check-thin': 30,
 };
 const ICON_STYLE = {
+  settings: {},
+  book: {},
+  'arkhamdb': {},
+  'logo': {},
+  'login': {},
+  'email': {},
   'check-thin': {
     marginTop: -6,
   },
@@ -36,8 +53,9 @@ const ICON_STYLE = {
   'plus-thin': {},
 };
 
+const MATERIAL_ICONS = new Set(['email', 'login']);
 
-export default function DeckButton({ title, detail, icon, color = 'gray', onPress, rightMargin, thin }: Props) {
+export default function DeckButton({ title, detail, icon, color = 'gray', onPress, rightMargin, topMargin, thin, shrink, loading, bottomMargin }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const backgroundColors = {
     red: colors.warn,
@@ -59,11 +77,23 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
     gold: COLORS.D30,
     gray: colors.L30,
   };
+  const theIconColor = iconColor[color];
+  const iconContent = useMemo(() => {
+    if (loading) {
+      return <ActivityIndicator animating color={theIconColor} size="small" />;
+    }
+    if (MATERIAL_ICONS.has(icon)) {
+      return <MaterialIcons name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
+    }
+    return <AppIcon name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
+  }, [loading, icon, theIconColor]);
   return (
     <Ripple style={[
       styles.button,
-      { backgroundColor: backgroundColors[color] },
+      { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1 },
       rightMargin ? space.marginRightS : undefined,
+      bottomMargin ? { marginBottom: bottomMargin } : undefined,
+      topMargin ? { marginTop: topMargin } : undefined,
     ]} onPress={onPress} rippleColor={rippleColor[color] }>
       <View style={[styles.row, space.paddingSideXs, space.paddingTopS, space.paddingBottomS]}>
         <View style={[
@@ -72,9 +102,9 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
           thin ? { marginLeft: xs, width: 24, height: 24 } : { width: 32, height: 32 },
           ICON_STYLE[icon],
         ]}>
-          <AppIcon name={icon} size={ICON_SIZE[icon]} color={iconColor[color]} />
+          { iconContent }
         </View>
-        <View style={styles.column}>
+        <View style={[styles.column, space.paddingRightS]}>
           <Text style={[typography.large, { color: textColor[color] }]}>{ title }</Text>
           { !!detail && <Text style={[typography.smallLabel, typography.italic, { color: textColor[color] }]}>{ detail }</Text> }
         </View>
@@ -86,7 +116,6 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
 const styles = StyleSheet.create({
   button: {
     borderRadius: 4,
-    flex: 1,
   },
   row: {
     flexDirection: 'row',
@@ -102,6 +131,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    flex: 1,
   },
 });

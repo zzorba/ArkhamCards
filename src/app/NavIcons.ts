@@ -14,6 +14,7 @@ const icons: {
   intellect: [26, COLORS.M, ArkhamIcon],
   per_investigator: [24, COLORS.M, ArkhamIcon],
   auto_fail: [24, COLORS.M, ArkhamIcon],
+  cultist: [24, COLORS.M, ArkhamIcon],
   edit: [26, COLORS.M, MaterialIcons],
   tune: [28, COLORS.M, AppIcon],
   'content-copy': [28, COLORS.M, MaterialCommunityIcons],

@@ -21,9 +21,12 @@ interface Props {
 function iconSize(icon: string) {
   switch (icon) {
     case 'xp':
+    case 'show':
       return 32;
     case 'card-outline':
       return 34;
+    case 'logo':
+    case 'font-size':
     case 'parallel':
     case 'taboo_thin':
       return 26;

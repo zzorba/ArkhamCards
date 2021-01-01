@@ -1,26 +1,27 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Alert } from 'react-native';
-import { findIndex, map } from 'lodash';
+import { findIndex, find, map } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { fetchCards, setLanguageChoice } from '@components/card/actions';
 import DatabaseContext from '@data/DatabaseContext';
 import { getLangPreference, AppState } from '@reducers';
 import { getSystemLanguage, localizedName, ALL_LANGUAGES } from '@lib/i18n';
-import COLORS from '@styles/colors';
-import StyleContext from '@styles/StyleContext';
+import { usePickerDialog } from '@components/deck/dialogs';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 
 function languages() {
   const systemLang = getSystemLanguage();
   const systemLanguage = localizedName(systemLang);
   return [
-    { label: t`Default (${systemLanguage})`, value: 'system' },
+    { title: t`Default (${systemLanguage})`, value: 'system', valueLabel: systemLanguage },
     ...map(ALL_LANGUAGES, lang => {
+      const label = localizedName(lang);
       return {
-        label: localizedName(lang),
+        title: label,
         value: lang,
+        valueLabel: label,
       };
     }),
   ];
@@ -92,11 +93,10 @@ function dialogStrings(lang: string): DialogStrings {
   }
 }
 
-export default function LanguagePicker() {
+export default function LanguagePicker({ first, last }: { first?: boolean; last?: boolean }) {
   const { db } = useContext(DatabaseContext);
-  const { colors } = useContext(StyleContext);
   const dispatch = useDispatch();
-  const [tempLang, setTempLang] = useState<number | undefined>();
+  const [tempLang, setTempLang] = useState<string | undefined>();
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
   const useSystemLang = useSelector((state: AppState) => state.settings.lang === 'system');
   const lang = useSelector(getLangPreference);
@@ -107,12 +107,10 @@ export default function LanguagePicker() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardsLoading]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const items = useMemo(() => languages(), [lang]);
 
-  const onLanguageChange = useCallback((index: number | null) => {
-    if (index === null) {
-      return;
-    }
-    const newLang = languages()[index].value;
+  const onLanguageChange = useCallback((newLang: string) => {
     const systemLang = getSystemLanguage();
     const newCardLang = newLang === 'system' ? systemLang : newLang;
     if (newCardLang !== lang) {
@@ -130,7 +128,7 @@ export default function LanguagePicker() {
             {
               text: confirmButton,
               onPress: () => {
-                setTempLang(index);
+                setTempLang(newLang);
                 dispatch(fetchCards(db, newCardLang, newLang));
               },
             },
@@ -146,29 +144,33 @@ export default function LanguagePicker() {
     }
   }, [lang, dispatch, setTempLang, db]);
 
-  const allLanguages = languages();
+  const selectedValue = useMemo(() => {
+    if (tempLang !== undefined) {
+      return tempLang;
+    }
+    return useSystemLang ? 'system' : lang;
+  }, [tempLang, useSystemLang, lang]);
+
+  const { showDialog, dialog } = usePickerDialog<string>({
+    title: t`Language`,
+    description: t`Note: not all cards have translations available.`,
+    items,
+    selectedValue,
+    onValueChange: onLanguageChange,
+  });
+
   return (
-    <SinglePickerComponent
-      title={t`Language`}
-      description={t`Note: not all cards have translations available.`}
-      onChoiceChange={onLanguageChange}
-      selectedIndex={tempLang !== undefined ? tempLang : findIndex(allLanguages, x => useSystemLang ? x.value === 'system' : x.value === lang)}
-      choices={map(allLanguages, lang => {
-        return {
-          text: lang.label,
-        };
-      })}
-      colors={{
-        modalColor: COLORS.lightBlue,
-        modalTextColor: '#FFF',
-        backgroundColor: colors.background,
-        textColor: colors.darkText,
-      }}
-      editable={!cardsLoading}
-      settingsStyle
-      noBorder
-      hideWidget
-      formatLabel={formatLabel}
-    />
+    <>
+      <DeckPickerStyleButton
+        title={t`Language`}
+        icon="world"
+        editable={!cardsLoading}
+        onPress={showDialog}
+        valueLabel={find(items, option => option.value === selectedValue)?.valueLabel || 'Unknown'}
+        first={first}
+        last={last}
+      />
+      { dialog }
+    </>
   );
 }

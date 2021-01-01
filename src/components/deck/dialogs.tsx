@@ -26,7 +26,7 @@ interface DialogOptions {
     onPress: () => void;
   };
   dismiss?: {
-    title: string;
+    title?: string;
     onPress?: () => void;
   };
   content: React.ReactNode;
