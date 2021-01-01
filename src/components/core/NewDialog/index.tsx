@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import Modal from 'react-native-modal';
 
 import NewDialogContentLine from './NewDialogContentLine';
@@ -109,10 +109,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 0,
   },
-  dialog: {
-    borderRadius: 8,
-    shadowOpacity: 0.75,
-  },
+  dialog: Platform.select({
+    default: {
+      borderRadius: 8,
+      shadowOpacity: 0.75,
+    },
+    android: {
+      borderRadius: 8,
+    },
+  }),
   header: {
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,

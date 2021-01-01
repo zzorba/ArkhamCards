@@ -127,6 +127,13 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
           height: advancedOptions.height,
           transform: [{ translateY: controlHeight }],
         },
+        Platform.select({
+          default: {},
+          android: {
+            borderBottomWidth: 0.2,
+            borderColor: colors.L20,
+          },
+        }),
       ]}>
         <View style={[styles.textSearchOptions, {
           height: advancedOptions.height,
@@ -145,6 +152,26 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
     advancedToggleAnim.current.interpolate({
       inputRange: [0, 1],
       outputRange: [0.25, 0],
+    }),
+    scrollAnim.current.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 1],
+    }),
+  );
+  const shadowElevation = Animated.multiply(
+    advancedToggleAnim.current.interpolate({
+      inputRange: [0, 1],
+      outputRange: [6, 0],
+    }),
+    scrollAnim.current.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 1],
+    }),
+  );
+  const shadowBorder = Animated.multiply(
+    advancedToggleAnim.current.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0.2, 0],
     }),
     scrollAnim.current.interpolate({
       inputRange: [0, 1],
@@ -178,7 +205,15 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
         },
       ]}>
         { advancedOptionsBlock }
-        <Animated.View style={[styles.fixed, shadow.large, { width, shadowOpacity }]}>
+        <Animated.View needsOffscreenAlphaCompositing style={[
+          styles.fixed,
+          shadow.large,
+          { width },
+          Platform.select({
+            default: { shadowOpacity },
+            android: { elevation: shadowElevation, borderBottomWidth: shadowBorder, borderColor: colors.L20 },
+          }),
+        ]}>
           <SearchBox
             onChangeText={onSearchChange}
             placeholder={prompt}
