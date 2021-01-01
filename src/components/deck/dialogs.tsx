@@ -124,7 +124,7 @@ export function useTextDialog({
   }, [onValueChange, setVisibleRef]);
   const content = useMemo(() => {
     return (
-      <View style={[space.marginS, { width: '100% ' }]}>
+      <View style={[space.marginS, { width: '100%' }]}>
         <TextInput
           style={[
             { padding: s, paddingTop: xs + s, borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20 },
