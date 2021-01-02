@@ -72860,7 +72860,6 @@
   "id": "horror_in_high_gear",
   "scenario_name": "Der reinste Schrecken",
   "full_name": "Szenario V: Der reinste Schrecken",
-  "type": "placeholder",
   "setup": [
     "intro",
     "gather_encounter_sets",

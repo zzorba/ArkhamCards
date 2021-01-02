@@ -65608,7 +65608,7 @@
           "text": "An investigator who is in a vehicle is also at that vehicle's location."
         },
         {
-          "text": "While an investigator is in a vehicle, that investigator cannot move indepdently of the vehicle."
+          "text": "While an investigator is in a vehicle, that investigator cannot move independently of the vehicle."
         }
       ]
     },
@@ -66015,7 +66015,6 @@
   "id": "horror_in_high_gear",
   "scenario_name": "Horror in High Gear",
   "full_name": "Scenario V: Horror in High Gear",
-  "type": "placeholder",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -66202,7 +66201,7 @@
           "text": "An investigator who is in a vehicle is also at that vehicle's location."
         },
         {
-          "text": "While an investigator is in a vehicle, that investigator cannot move indepdently of the vehicle."
+          "text": "While an investigator is in a vehicle, that investigator cannot move independently of the vehicle."
         }
       ]
     },
