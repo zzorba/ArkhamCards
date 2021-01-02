@@ -29,6 +29,7 @@
 		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		655BAD76248739AD00854210 /* ArkhamCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BAD75248739AD00854210 /* ArkhamCardsUITests.swift */; };
+		6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6560EBDC25A012700076B227 /* GoogleService-Info.plist */; };
 		6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */; };
 		65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */; };
 		65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */; };
@@ -102,6 +103,7 @@
 		655BAD73248739AD00854210 /* ArkhamCardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArkhamCardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		655BAD75248739AD00854210 /* ArkhamCardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkhamCardsUITests.swift; sourceTree = "<group>"; };
 		655BAD77248739AD00854210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6560EBDC25A012700076B227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Regular.ttf"; path = "../assets/Alegreya-Regular.ttf"; sourceTree = "<group>"; };
 		6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Italic.ttf"; path = "../assets/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
 		65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Medium.ttf"; path = "../assets/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				6560EBDC25A012700076B227 /* GoogleService-Info.plist */,
 				6530148B259FD4EA009A53AB /* ArkhamCardsDebug.entitlements */,
 				651B383A251ACF8900D9D054 /* AboutDead.ttf */,
 				659EB1C425146635007E69E0 /* innsmouth.ttf */,
@@ -393,6 +396,7 @@
 				652421252054954F00FF6DB9 /* dunwich.ttf in Resources */,
 				659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */,
 				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
+				6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */,
 				659EB1C525146636007E69E0 /* innsmouth.ttf in Resources */,
 				655226F4205EEAF10065A1F7 /* app.ttf in Resources */,
 				65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */,
