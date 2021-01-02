@@ -1,5 +1,5 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, InteractionManager } from 'react-native';
+import { BackHandler, InteractionManager, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
@@ -270,6 +270,29 @@ export function useFlag(initialValue: boolean): [boolean, () => void, (value: bo
   const set = useCallback((value: boolean) => updateState({ type: 'set', value }), [updateState]);
   return [value, toggle, set];
 }
+
+export const useKeyboardHeight = (): [number] => {
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+
+  function onKeyboardDidShow(e: any): void {
+    setKeyboardHeight(e.endCoordinates.height);
+  }
+
+  function onKeyboardDidHide(): void {
+    setKeyboardHeight(0);
+  }
+
+  useEffect(() => {
+    Keyboard.addListener('keyboardDidShow', onKeyboardDidShow);
+    Keyboard.addListener('keyboardDidHide', onKeyboardDidHide);
+    return () => {
+      Keyboard.removeListener('keyboardDidShow', onKeyboardDidShow);
+      Keyboard.removeListener('keyboardDidHide', onKeyboardDidHide);
+    };
+  }, []);
+
+  return [keyboardHeight];
+};
 
 interface ClearAction {
   type: 'clear';

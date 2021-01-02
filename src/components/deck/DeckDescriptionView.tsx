@@ -11,7 +11,7 @@ import { Navigation } from 'react-native-navigation';
 import ActionButton from 'react-native-action-button';
 
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { useFlag, useTabooSetId } from '@components/core/hooks';
+import { useFlag, useKeyboardHeight, useTabooSetId } from '@components/core/hooks';
 import { useDeckEditState, useParsedDeck } from './hooks';
 import CardTextComponent from '@components/card/CardTextComponent';
 import space, { s, xs } from '@styles/space';
@@ -31,7 +31,7 @@ type Props = DeckDescriptionProps & NavigationProps;
 
 export default function DeckDescriptionView({ id, componentId }: Props) {
   const { db } = useContext(DatabaseContext);
-  const { backgroundStyle, colors, shadow } = useContext(StyleContext);
+  const { backgroundStyle, colors, shadow, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const tabooSetId = useTabooSetId();
   const parsedDeckObj = useParsedDeck(id, 'DeckDescription', componentId);
@@ -46,7 +46,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const linkPressed = useCallback(async(url: string, context: StyleContextType) => {
     await openUrl(url, context, db, componentId, tabooSetId);
   }, [componentId, tabooSetId, db]);
-  const fabIcon = useCallback(() => <AppIcon name={edit ? 'check' : 'edit'} color={colors.L30} size={24} />, [edit, colors]);
+  const fabIcon = useCallback(() => <AppIcon name={edit ? 'check' : 'edit'} color={edit ? colors.L30 : '#FFFFFF'} size={24} />, [edit, colors]);
   const saveChanges = useCallback(() => {
     dispatch(setDeckDescription(id, description));
     toggleEdit();
@@ -58,6 +58,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
     Navigation.pop(componentId);
   }, [edit, id, description, dispatch, componentId]);
   const hasDescriptionChange = description !== (deck?.description_md || '');
+  const [keyboardHeight] = useKeyboardHeight();
   const fab = useMemo(() => {
     return (
       <ActionButton
@@ -65,12 +66,12 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
         renderIcon={fabIcon}
         onPress={edit ? saveChanges : toggleEdit}
         offsetX={s + xs}
-        offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+        offsetY={(keyboardHeight || NOTCH_BOTTOM_PADDING) + s + xs}
         shadowStyle={shadow.large}
         fixNativeFeedbackRadius
       />
     );
-  }, [shadow, edit, fabIcon, toggleEdit, saveChanges, colors, mode, factionColor]);
+  }, [shadow, edit, fabIcon, toggleEdit, saveChanges, colors, mode, factionColor, keyboardHeight]);
   return (
     <View style={styles.wrapper}>
       { edit ? (
@@ -78,7 +79,8 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
           <TextInput
             value={description}
             onChangeText={setDescription}
-            style={space.paddingM}
+            style={[space.paddingM, typography.text]}
+            placeholderTextColor={colors.lightText}
             multiline
           />
         </SafeAreaView>
@@ -88,7 +90,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
         </ScrollView>
       ) }
       { (mode === 'edit' || hasDescriptionChange || edit) && (
-        <DeckNavFooter deckId={id} componentId={componentId} forceShow control="fab" onPress={backPressed} />
+        <DeckNavFooter deckId={id} componentId={componentId} forceShow control="fab" onPress={backPressed} yOffset={keyboardHeight} />
       ) }
       { !!editable && fab }
     </View>

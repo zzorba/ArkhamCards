@@ -1,6 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import DeviceInfo from 'react-native-device-info';
 import {
+  KeyboardAvoidingView,
   View,
   Text,
   TouchableOpacity,
@@ -15,6 +16,7 @@ import RoundButton from '@components/core/RoundButton';
 import { useDeckEditState, useParsedDeck } from '@components/deck/hooks';
 import { useAdjustXpDialog } from '@components/deck/dialogs';
 import { Campaign } from '@actions/types';
+import { useKeyboardHeight } from '@components/core/hooks';
 
 const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 
@@ -28,6 +30,7 @@ interface Props {
   control?: 'fab' | 'counts' ;
   campaign?: Campaign;
   forceShow?: boolean;
+  yOffset?: number;
 }
 
 function fabPadding(control?: 'fab' | 'counts') {
@@ -47,6 +50,7 @@ export default function DeckNavFooter({
   campaign,
   onPress,
   forceShow,
+  yOffset,
 }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const parsedDeckObj = useParsedDeck(deckId, 'NavFooter', componentId);
@@ -96,7 +100,7 @@ export default function DeckNavFooter({
   }
   return (
     <>
-      <View style={[styles.marginWrapper, { paddingRight: fabPadding(control) }]}>
+      <View style={[styles.marginWrapper, { bottom: (yOffset || NOTCH_BOTTOM_PADDING) + s, paddingRight: fabPadding(control) }]}>
         <View style={[styles.content, shadow.large, { backgroundColor: colors.D10 }]}>
           <View>
             <RoundButton
@@ -130,7 +134,6 @@ const styles = StyleSheet.create({
     height: FOOTER_HEIGHT + s * 2,
     width: '100%',
     padding: s + xs,
-    bottom: NOTCH_BOTTOM_PADDING + s,
     left: 0,
     backgroundColor: 'transparent',
   },
