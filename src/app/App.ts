@@ -262,6 +262,7 @@ export default class App {
             title: {
               text: t`Decks`,
             },
+            rightButtonColor: COLORS.M,
             rightButtons: [{
               icon: iconsMap.add,
               id: 'add',
@@ -280,6 +281,7 @@ export default class App {
             title: {
               text: t`Campaigns`,
             },
+            rightButtonColor: COLORS.M,
             rightButtons: [{
               icon: iconsMap.add,
               id: 'add',

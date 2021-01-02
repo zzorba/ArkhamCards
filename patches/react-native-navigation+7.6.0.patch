@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-native-navigation/lib/ios/TopBarPresenter.m b/node_modules/react-native-navigation/lib/ios/TopBarPresenter.m
-index 0318a05..7a7603d 100644
+index 2fcc124..2806687 100644
 --- a/node_modules/react-native-navigation/lib/ios/TopBarPresenter.m
 +++ b/node_modules/react-native-navigation/lib/ios/TopBarPresenter.m
 @@ -88,7 +88,6 @@ - (void)updateBackgroundAppearance {
