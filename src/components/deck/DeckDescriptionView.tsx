@@ -1,5 +1,6 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -32,6 +33,7 @@ type Props = DeckDescriptionProps & NavigationProps;
 export default function DeckDescriptionView({ id, componentId }: Props) {
   const { db } = useContext(DatabaseContext);
   const { backgroundStyle, colors, shadow, typography } = useContext(StyleContext);
+  const textInputRef = useRef<TextInput>(null);
   const dispatch = useDispatch();
   const tabooSetId = useTabooSetId();
   const parsedDeckObj = useParsedDeck(id, 'DeckDescription', componentId);
@@ -46,7 +48,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const linkPressed = useCallback(async(url: string, context: StyleContextType) => {
     await openUrl(url, context, db, componentId, tabooSetId);
   }, [componentId, tabooSetId, db]);
-  const fabIcon = useCallback(() => <AppIcon name={edit ? 'check' : 'edit'} color={edit ? colors.L30 : '#FFFFFF'} size={24} />, [edit, colors]);
+  const fabIcon = useCallback(() => <AppIcon name={edit ? 'check' : 'edit'} color={mode === 'view' && !edit ? '#FFFFFF' : colors.L30} size={24} />, [edit, colors]);
   const saveChanges = useCallback(() => {
     dispatch(setDeckDescription(id, description));
     toggleEdit();
@@ -59,26 +61,36 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   }, [edit, id, description, dispatch, componentId]);
   const hasDescriptionChange = description !== (deck?.description_md || '');
   const [keyboardHeight] = useKeyboardHeight();
+  const onEdit = useCallback(() => {
+    toggleEdit();
+    if (Platform.OS === 'android' && textInputRef.current) {
+      setTimeout(() => {
+        textInputRef.current && textInputRef.current.focus();
+      }, 100);
+    }
+  }, [toggleEdit, textInputRef]);
   const fab = useMemo(() => {
     return (
       <ActionButton
         buttonColor={mode === 'view' && !edit ? factionColor : colors.D20}
         renderIcon={fabIcon}
-        onPress={edit ? saveChanges : toggleEdit}
+        onPress={edit ? saveChanges : onEdit}
         offsetX={s + xs}
         offsetY={(keyboardHeight || NOTCH_BOTTOM_PADDING) + s + xs}
         shadowStyle={shadow.large}
         fixNativeFeedbackRadius
       />
     );
-  }, [shadow, edit, fabIcon, toggleEdit, saveChanges, colors, mode, factionColor, keyboardHeight]);
+  }, [shadow, edit, fabIcon, onEdit, saveChanges, colors, mode, factionColor, keyboardHeight]);
   return (
     <View style={styles.wrapper}>
       { edit ? (
         <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
           <TextInput
             value={description}
+            ref={textInputRef}
             onChangeText={setDescription}
+            autoFocus={Platform.OS === 'ios'}
             style={[space.paddingM, typography.text]}
             placeholderTextColor={colors.lightText}
             multiline
