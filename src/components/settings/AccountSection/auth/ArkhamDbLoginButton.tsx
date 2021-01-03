@@ -1,5 +1,6 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import {
+  ActivityIndicator,
   Alert,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +9,8 @@ import { t } from 'ttag';
 import { logout, login } from '@actions';
 import { AppState } from '@reducers';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
+import DeckButton from '@components/deck/controls/DeckButton';
+import DeckActionRow from '@components/deck/controls/DeckActionRow';
 
 interface Props {
   last?: boolean;
@@ -34,13 +37,12 @@ export default function ArkhamDbLoginButton({ last }: Props) {
     );
   }, [doLogout, loginPressed]);
   return (
-    <DeckCheckboxButton
+    <DeckActionRow
       icon="arkhamdb"
-      title={signedIn ? t`Synced` : t`Log in to sync decks`}
+      title={signedIn ? t`Logged in` : t`Log in to sync decks`}
       description={t`ArkhamDB`}
       loading={loading}
-      value={signedIn}
-      onValueChange={signedIn ? logOutPressed : loginPressed}
+      control={<DeckButton onPress={signedIn ? logOutPressed : loginPressed} title={signedIn ? t`Log out` : t`Log in`} />}
       last={last}
     />
   );

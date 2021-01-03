@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { dissonantVoicesLogin, dissonantVoicesLogout } from '@actions';
 import { AppState } from '@reducers';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
+import DeckActionRow from '@components/deck/controls/DeckActionRow';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   last?: boolean;
@@ -32,13 +34,12 @@ export default function DissonantVoicesLoginButton({ last }: Props) {
     );
   }, [doLogin]);
   return (
-    <DeckCheckboxButton
+    <DeckActionRow
       icon="mythos-busters"
       title={signedIn ? t`Narration enabled` : t`Log in to enable narration`}
       description={t`Dissonant Voices`}
+      control={<DeckButton onPress={signedIn ? logOutPressed : loginPressed} title={signedIn ? t`Log out` : t`Log in`} />}
       loading={loading}
-      value={signedIn}
-      onValueChange={signedIn ? logOutPressed : loginPressed}
       last={last}
     />
   );

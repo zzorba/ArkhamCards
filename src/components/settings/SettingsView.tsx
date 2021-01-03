@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import { filter, flatMap, forEach, groupBy, map, partition, uniq } from 'lodash';
+import { filter, map, partition, uniq } from 'lodash';
 import { msgid, ngettext, t } from 'ttag';
 
 import ThemePicker from './ThemePicker';
@@ -20,7 +20,7 @@ import { setSingleCardView, setAlphabetizeEncounterSets } from './actions';
 import { prefetch } from '@lib/auth';
 import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
-import { AppState, getLangPreference, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
+import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
 import AccountSection from './AccountSection';
@@ -30,6 +30,7 @@ import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface OwnProps {
   componentId: string;
@@ -79,7 +80,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const alphabetizeEncounterSets = useSelector((state: AppState) => state.settings.alphabetizeEncounterSets || false);
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
   const cardsError = useSelector((state: AppState) => state.cards.error || undefined);
-  const lang = useSelector(getLangPreference);
+  const { lang } = useContext(LanguageContext);
   const langChoice = useSelector(getLangChoice);
 
   const navButtonPressed = useCallback((screen: string, title: string) => {
@@ -151,9 +152,9 @@ export default function SettingsView({ componentId }: NavigationProps) {
 
   return (
     <SafeAreaView style={[styles.container, backgroundStyle]}>
-      <ScrollView style={[styles.list, { backgroundColor: colors.L20 }]}>
+      <ScrollView style={[styles.list, { backgroundColor: colors.L10 }]} keyboardShouldPersistTaps="always">
         <View style={[space.paddingSideS, space.paddingBottomM]}>
-          <AccountSection />
+          <AccountSection componentId={componentId} />
         </View>
         <View style={[space.paddingSideS, space.paddingBottomM]}>
           <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Cards`} />}>

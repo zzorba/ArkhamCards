@@ -14,9 +14,10 @@ import { Campaign, Deck } from '@actions/types';
 import Card from '@data/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { fetchPublicDeck } from '@components/deck/actions';
-import { getAllDecks, getLangPreference } from '@reducers';
+import { getAllDecks } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   deckIds: number[];
@@ -42,9 +43,9 @@ export default function DeckListComponent({
   isEmpty,
 }: Props) {
   const { typography } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
   const [searchTerm, setSearchTerm] = useState('');
   const decks = useSelector(getAllDecks);
-  const lang = useSelector(getLangPreference);
   const handleDeckClick = useCallback((deck: Deck, investigator?: Card) => {
     Keyboard.dismiss();
     deckClicked(deck, investigator);

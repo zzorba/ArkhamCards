@@ -1,13 +1,14 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { useColorScheme } from 'react-native-appearance';
 import { ThemeProvider } from 'react-native-elements';
 
 import StyleContext, { DEFAULLT_STYLE_CONTEXT } from './StyleContext';
-import { getAppFontScale, getLangPreference, getThemeOverride } from '@reducers';
+import { getAppFontScale, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface OwnProps {
   children: React.ReactNode;
@@ -46,7 +47,7 @@ const DARK_ELEMENTS_THEME = {
 };
 
 export default function StyleProvider({ children } : Props) {
-  const lang = useSelector(getLangPreference);
+  const { lang } = useContext(LanguageContext);
   const themeOverride = useSelector(getThemeOverride);
   const appFontScale = useSelector(getAppFontScale);
   const colorScheme = useColorScheme();

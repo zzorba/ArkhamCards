@@ -23,7 +23,8 @@ interface DialogOptions {
   title: string;
   confirm?: {
     title: string;
-    onPress: () => void;
+    onPress: () => void | Promise<boolean>;
+    loading?: boolean;
   };
   dismiss?: {
     title?: string;
@@ -56,9 +57,17 @@ export function useDialog({
     setVisible(false);
     dismissOnPress && dismissOnPress();
   }, [setVisible, dismissOnPress]);
-  const onConfirm = useCallback(() => {
+  const onConfirm = useCallback(async() => {
+    if (confirmOnPress) {
+      const result = confirmOnPress();
+      if (typeof result === 'object') {
+        const cancel = await result;
+        if (cancel) {
+          return;
+        }
+      }
+    }
     setVisible(false);
-    confirmOnPress && confirmOnPress();
   }, [setVisible, confirmOnPress]);
   const dialog = useMemo(() => {
     return (
@@ -70,6 +79,7 @@ export function useDialog({
         } : undefined}
         confirm={confirm ? {
           title: confirm.title,
+          loading: confirm.loading,
           onPress: onConfirm,
         } : undefined}
         visible={visible}
@@ -93,12 +103,14 @@ interface TextDialogOptions {
   title: string;
   value: string;
   placeholder?: string;
-  onValueChange: (value: string) => void;
+  onValueChange?: (value: string) => void;
+  onValidate?: (value: string) => Promise<string | undefined>;
 }
 export function useTextDialog({
   title,
   value,
   onValueChange,
+  onValidate,
   placeholder,
 }: TextDialogOptions): {
   dialog: React.ReactNode;
@@ -107,31 +119,57 @@ export function useTextDialog({
   const { colors, typography } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [liveValue, setLiveValue] = useState(value);
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [submitting, setSubmitting] = useState(false);
   const textInputRef = useRef<TextInput>(null);
   useEffect(() => {
     setLiveValue(value);
   }, [value, setLiveValue]);
+  useEffect(() => {
+    if (error) {
+      setError(undefined);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [liveValue]);
+
+  const doSubmit = useCallback(async(submitValue: string) => {
+    if (value !== submitValue) {
+      if (onValidate) {
+        setSubmitting(true);
+        const error = await onValidate(submitValue);
+        if (error) {
+          setError(error);
+          setSubmitting(false);
+          // Cancel the close event
+          return true;
+        }
+        setSubmitting(false);
+      } else if (onValueChange) {
+        onValueChange(submitValue);
+      }
+    }
+    if (setVisibleRef.current) {
+      setVisibleRef.current(false);
+    }
+    return false;
+  }, [value, onValidate, onValueChange, setVisibleRef]);
 
   const onSave = useCallback(() => {
-    onValueChange(liveValue);
-    if (setVisibleRef.current) {
-      setVisibleRef.current(false);
-    }
-  }, [onValueChange, setVisibleRef, liveValue]);
+    return doSubmit(liveValue);
+  }, [doSubmit, liveValue]);
   const onSubmit = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
-    onValueChange(e.nativeEvent.text);
-    if (setVisibleRef.current) {
-      setVisibleRef.current(false);
-    }
-  }, [onValueChange, setVisibleRef]);
+    return doSubmit(e.nativeEvent.text);
+  }, [doSubmit]);
   const content = useMemo(() => {
     return (
       <View style={[space.marginS, { width: '100%' }]}>
         <TextInput
           ref={textInputRef}
+          autoCorrect={false}
           style={[
             { padding: s, paddingTop: xs + s, borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20 },
             typography.text,
+            error ? { borderColor: colors.warn } : undefined,
           ]}
           autoFocus={Platform.OS === 'ios'}
           value={liveValue}
@@ -141,9 +179,14 @@ export function useTextDialog({
           onSubmitEditing={onSubmit}
           returnKeyType="done"
         />
+        { !!error && (
+          <View style={space.paddingTopS}>
+            <Text style={[typography.text, typography.error]}>{ error } </Text>
+          </View>
+        ) }
       </View>
     );
-  }, [setLiveValue, onSubmit, placeholder, liveValue, typography, colors]);
+  }, [setLiveValue, onSubmit, placeholder, liveValue, typography, colors, error]);
   const { setVisible, visible, dialog } = useDialog({
     title,
     allowDismiss: true,
@@ -153,6 +196,7 @@ export function useTextDialog({
     confirm: {
       title: t`Done`,
       onPress: onSave,
+      loading: submitting,
     },
     dismiss: {
       title: t`Cancel`,

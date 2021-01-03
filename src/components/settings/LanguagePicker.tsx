@@ -1,15 +1,16 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Alert } from 'react-native';
-import { findIndex, find, map } from 'lodash';
+import { find, map } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { fetchCards, setLanguageChoice } from '@components/card/actions';
 import DatabaseContext from '@data/DatabaseContext';
-import { getLangPreference, AppState } from '@reducers';
+import { AppState } from '@reducers';
 import { getSystemLanguage, localizedName, ALL_LANGUAGES } from '@lib/i18n';
 import { usePickerDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function languages() {
   const systemLang = getSystemLanguage();
@@ -95,11 +96,11 @@ function dialogStrings(lang: string): DialogStrings {
 
 export default function LanguagePicker({ first, last }: { first?: boolean; last?: boolean }) {
   const { db } = useContext(DatabaseContext);
+  const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
   const [tempLang, setTempLang] = useState<string | undefined>();
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
   const useSystemLang = useSelector((state: AppState) => state.settings.lang === 'system');
-  const lang = useSelector(getLangPreference);
 
   useEffect(() => {
     if (!cardsLoading && tempLang !== undefined) {

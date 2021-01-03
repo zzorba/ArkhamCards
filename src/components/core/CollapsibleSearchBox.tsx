@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform, useWindowDimensions } from 'react-native';
 
-import SearchBox, { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import SearchBox, { SearchBoxHandles, SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { m, s, xs } from '@styles/space';
 import { useThrottle } from '@react-hook/throttle';
@@ -15,10 +15,11 @@ interface Props {
   prompt: string;
   advancedOptions?: SearchOptions;
   searchTerm: string;
-  onSearchChange: (text: string) => void;
+  onSearchChange: (text: string, submit: boolean) => void;
   children: (
     handleScroll: (...args: any[]) => void,
-    showHeader: () => void
+    showHeader: () => void,
+    focus: () => void
   ) => React.ReactNode;
 }
 
@@ -26,6 +27,10 @@ const SCROLL_DISTANCE_BUFFER = 50;
 
 export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTerm, onSearchChange, children }: Props) {
   const { backgroundStyle, borderStyle, colors, shadow } = useContext(StyleContext);
+  const searchBoxRef = useRef<SearchBoxHandles>(null);
+  const focus = useCallback(() => {
+    searchBoxRef.current?.focus();
+  }, [searchBoxRef]);
   const [visible, setVisible] = useState(true);
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const scrollAnim = useRef(new Animated.Value(1));
@@ -181,7 +186,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
   return (
     <View style={[styles.wrapper, backgroundStyle]}>
       <View style={[styles.container, backgroundStyle, borderStyle]}>
-        { children(handleScroll, showHeader) }
+        { children(handleScroll, showHeader, focus) }
       </View>
       { advancedOpen && !!advancedOptions && Platform.OS === 'android' && (
         <View style={[
@@ -215,6 +220,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
           }),
         ]}>
           <SearchBox
+            ref={searchBoxRef}
             onChangeText={onSearchChange}
             placeholder={prompt}
             advancedOpen={advancedOpen}

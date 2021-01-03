@@ -1,22 +1,21 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { View } from 'react-native';
 import { forEach, map, sortBy, head } from 'lodash';
-import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { CampaignCycleCode, StandaloneId } from '@actions/types';
-import { getLangPreference } from '@reducers';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { getStandaloneScenarios, StandaloneScenarioInfo } from '@data/scenario';
 import StandaloneItem from './StandaloneItem';
 import { campaignName } from '../constants';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface SelectCampagaignProps {
   standaloneChanged: (id: StandaloneId, text: string, hasGuide: boolean) => void;
 }
 
 export default function StandaloneTab({ standaloneChanged }: SelectCampagaignProps) {
-  const lang = useSelector(getLangPreference);
+  const { lang }= useContext(LanguageContext);
   const scenarios = useMemo(() => getStandaloneScenarios(lang), [lang]);
   const sections = useMemo(() => {
     const groups: { [campaign: string]: StandaloneScenarioInfo[] } = {};

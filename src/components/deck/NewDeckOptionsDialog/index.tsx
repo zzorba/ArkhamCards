@@ -383,7 +383,7 @@ function NewDeckOptionsDialog({
   }
   return (
     <View style={[styles.flex, backgroundStyle]}>
-      <ScrollView contentContainerStyle={backgroundStyle}>
+      <ScrollView contentContainerStyle={backgroundStyle} keyboardShouldPersistTaps="always">
         { formContent }
         <View style={[space.paddingS, styles.row]}>
           <View style={[space.marginRightS, styles.flex]}>

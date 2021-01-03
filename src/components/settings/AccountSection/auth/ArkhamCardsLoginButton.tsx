@@ -315,7 +315,7 @@ function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
 interface Props {
   children: React.ReactNode | React.ReactNode[];
 }
-export default function ArkhamCardsLoginButton({ children }: Props) {
+export default function ArkhamCardsLoginButton() {
   const { darkMode, typography } = useContext(StyleContext);
   const { user, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
@@ -404,20 +404,16 @@ export default function ArkhamCardsLoginButton({ children }: Props) {
     setVisibleRef.current = setVisible;
   }, [setVisible]);
   return (
-    <>
-      { !!user && children }
-      <View style={[space.paddingTopS, styles.wrapper]}>
-        <DeckButton
-          title={user ? t`Sign out` : t`Sign in to app`}
-          icon="logo"
-          loading={loading}
-          color={user ? 'gray' : 'red'}
-          onPress={user ? doLogout : showDialog}
-        />
-        { dialog }
-      </View>
-      { !user && children }
-    </>
+    <View style={[space.paddingTopS, styles.wrapper]}>
+      <DeckButton
+        title={user ? t`Sign out` : t`Sign in to app`}
+        icon="logo"
+        loading={loading}
+        color={user ? 'gray' : 'red'}
+        onPress={user ? doLogout : showDialog}
+      />
+      { dialog }
+    </View>
   );
 }
 

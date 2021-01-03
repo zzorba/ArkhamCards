@@ -724,7 +724,9 @@ function DeckDetailView({
         { editable && (
           <>
             <MenuButton
+              icon="name"
               onPress={showEditNameDialog}
+              numberOfLines={2}
               title={deckEdits.nameChange || deck.name}
               description={!deck.local ? t`Deck #${deck.id}` : undefined}
             />
@@ -1021,7 +1023,6 @@ function DeckDetailView({
             />
             { !!parsedDeck.problem && mode !== 'view' && (
               <DeckProblemBanner
-                faction={parsedDeck.investigator.factionCode()}
                 problem={parsedDeck.problem}
               />
             ) }

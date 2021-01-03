@@ -1,5 +1,4 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
@@ -18,11 +17,11 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
-import { getLangPreference } from '@reducers';
 import ActionButton from 'react-native-action-button';
 import AppIcon from '@icons/AppIcon';
 import { useFilterButton } from '../hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -239,7 +238,7 @@ export default function({
   initialSort,
 }: Props) {
   const { fontScale, colors } = useContext(StyleContext);
-  const lang = useSelector(getLangPreference);
+  const { lang } = useContext(LanguageContext);
   const [searchText, setSearchText] = useState(false);
   const [searchFlavor, setSearchFlavor] = useState(false);
   const [searchBack, setSearchBack] = useState(false);

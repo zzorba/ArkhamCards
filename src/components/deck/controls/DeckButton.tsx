@@ -11,7 +11,7 @@ import COLORS from '@styles/colors';
 interface Props {
   title: string;
   detail?: string;
-  icon: 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
+  icon?: 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
   color?: 'red' | 'gold' | 'gray';
   onPress?: () => void;
   rightMargin?: boolean;
@@ -82,29 +82,38 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
     if (loading) {
       return <ActivityIndicator animating color={theIconColor} size="small" />;
     }
+    if (!icon) {
+      return null;
+    }
     if (MATERIAL_ICONS.has(icon)) {
       return <MaterialIcons name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
     }
     return <AppIcon name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
   }, [loading, icon, theIconColor]);
   return (
-    <Ripple style={[
-      styles.button,
-      { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1 },
-      rightMargin ? space.marginRightS : undefined,
-      bottomMargin ? { marginBottom: bottomMargin } : undefined,
-      topMargin ? { marginTop: topMargin } : undefined,
-    ]} onPress={onPress} rippleColor={rippleColor[color] }>
+    <Ripple
+      style={[
+        styles.button,
+        { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1 },
+        rightMargin ? space.marginRightS : undefined,
+        bottomMargin ? { marginBottom: bottomMargin } : undefined,
+        topMargin ? { marginTop: topMargin } : undefined,
+      ]}
+      onPress={onPress}
+      rippleColor={rippleColor[color]}
+    >
       <View style={[styles.row, space.paddingSideXs, space.paddingTopS, space.paddingBottomS]}>
-        <View style={[
-          styles.icon,
-          space.marginRightS,
-          thin ? { marginLeft: xs, width: 24, height: 24 } : { width: 32, height: 32 },
-          ICON_STYLE[icon],
-        ]}>
-          { iconContent }
-        </View>
-        <View style={[styles.column, space.paddingRightS]}>
+        { !!icon && (
+          <View style={[
+            styles.icon,
+            space.marginRightS,
+            thin ? { marginLeft: xs, width: 24, height: 24 } : { width: 32, height: 32 },
+            ICON_STYLE[icon],
+          ]}>
+            { iconContent }
+          </View>
+        ) }
+        <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined]}>
           <Text style={[typography.large, { color: textColor[color] }]}>{ title }</Text>
           { !!detail && <Text style={[typography.smallLabel, typography.italic, { color: textColor[color] }]}>{ detail }</Text> }
         </View>

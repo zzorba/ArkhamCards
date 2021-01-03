@@ -16,7 +16,7 @@ import { campaignNames } from '@components/campaign/constants';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
-import { getCampaigns, getLangPreference } from '@reducers';
+import { getCampaigns } from '@reducers';
 import COLORS from '@styles/colors';
 import { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -24,10 +24,11 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import { getStandaloneScenarios } from '@data/scenario';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
-  const lang = useSelector(getLangPreference);
+  const { lang } = useContext(LanguageContext);
   const standalonesById = useMemo(() => {
     const scenarios = getStandaloneScenarios(lang);
     const result: {

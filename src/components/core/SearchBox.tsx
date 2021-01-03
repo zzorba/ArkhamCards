@@ -1,7 +1,9 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { forwardRef, useCallback, useContext, useImperativeHandle, useMemo, useRef } from 'react';
 import {
+  NativeSyntheticEvent,
   Platform,
   StyleSheet,
+  TextInputSubmitEditingEventData,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -17,18 +19,37 @@ export const SEARCH_BAR_HEIGHT = 60;
 export const SEARCH_BAR_INPUT_HEIGHT = SEARCH_BAR_HEIGHT - 20;
 
 interface Props {
-  onChangeText: (search: string) => void;
+  onChangeText: (search: string, submit: boolean) => void;
   placeholder: string;
   value?: string;
   toggleAdvanced?: () => void;
   advancedOpen?: boolean;
 }
 
-export default function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedOpen }: Props) {
+
+export interface SearchBoxHandles {
+  focus: () => void;
+}
+
+function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedOpen }: Props, ref: any) {
   const { borderStyle, colors } = useContext(StyleContext);
+  const textInputRef = useRef<Input>(null);
   const clear = useCallback(() => {
-    onChangeText('');
+    onChangeText('', true);
   }, [onChangeText]);
+
+  const onSearchUpdated = useCallback((value: string) => {
+    onChangeText(value, false);
+  }, [onChangeText]);
+  const onSubmit = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+    onChangeText(e.nativeEvent.text, true);
+  }, [onChangeText]);
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      textInputRef.current?.focus();
+    },
+  }), [textInputRef]);
 
   const renderClearButton = useCallback((rightPadding?: boolean) => {
     if (!value) {
@@ -61,11 +82,13 @@ export default function SearchBox({ onChangeText, placeholder, value, toggleAdva
 
   return (
     <Input
+      ref={textInputRef}
       clearButtonMode="never"
       autoCorrect={false}
       autoCapitalize="none"
       multiline={false}
-      containerStyle={[styles.container, borderStyle, { backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : {}]}
+      textInputRef={textInputRef}
+      containerStyle={[styles.container, borderStyle, { backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : undefined]}
       inputContainerStyle={[
         styles.searchInput,
         {
@@ -83,11 +106,14 @@ export default function SearchBox({ onChangeText, placeholder, value, toggleAdva
       }}
       underlineColorAndroid="rgba(0,0,0,0)"
       allowFontScaling={false}
-      onChangeText={onChangeText}
+      onChangeText={onSearchUpdated}
       placeholder={placeholder}
       placeholderTextColor={colors.D20}
       leftIcon={<View style={styles.searchIcon}><AppIcon name="search" color={colors.M} size={18} /></View>}
       rightIcon={toggleButton}
+      returnKeyType="search"
+      onSubmitEditing={onSubmit}
+      blurOnSubmit
       rightIconContainerStyle={{
         marginRight: -13,
       }}
@@ -95,6 +121,9 @@ export default function SearchBox({ onChangeText, placeholder, value, toggleAdva
     />
   );
 }
+
+
+export default forwardRef(SearchBox);
 
 const styles = StyleSheet.create({
   underline: {
