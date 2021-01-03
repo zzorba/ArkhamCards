@@ -15,6 +15,7 @@ interface Props {
   visible: boolean;
   confirm?: {
     onPress: () => void;
+    loading?: boolean;
     title: string;
   };
   dismiss?: {
@@ -88,7 +89,13 @@ function NewDialog({
               )}
               { !!confirm && (
                 <View style={[styles.button, dismiss?.title ? space.marginLeftXs : undefined]}>
-                  <DeckButton icon="check-thin" title={confirm.title} thin onPress={confirm.onPress} />
+                  <DeckButton
+                    icon="check-thin"
+                    title={confirm.title}
+                    thin
+                    onPress={confirm.onPress}
+                    loading={confirm?.loading}
+                  />
                 </View>
               ) }
             </View>

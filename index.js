@@ -10,6 +10,7 @@ import DatabaseProvider from './src/data/DatabaseProvider';
 import { registerScreens } from './src/app/screens';
 import configureStore from './src/app/store';
 import StyleProvider from './src/styles/StyleProvider';
+import LanguageProvider from './src/lib/i18n/LanguageProvider';
 import ArkhamCardsAuthProvider from './src/lib/ArkhamCardsAuthProvider';
 import App from './src/app/App';
 
@@ -19,11 +20,13 @@ function MyProvider({ store: { redux, persistor }, children}) {
       <AppearanceProvider>
         <Provider store={redux}>
           <PersistGate loading={null} persistor={persistor}>
-            <DatabaseProvider>
-              <StyleProvider>
-                { children }
-              </StyleProvider>
-            </DatabaseProvider>
+            <LanguageProvider>
+              <DatabaseProvider>
+                <StyleProvider>
+                  { children }
+                </StyleProvider>
+              </DatabaseProvider>
+            </LanguageProvider>
           </PersistGate>
         </Provider>
       </AppearanceProvider>

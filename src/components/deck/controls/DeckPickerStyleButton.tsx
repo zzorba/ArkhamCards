@@ -5,6 +5,7 @@ import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
+import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface Props {
   icon: string;
@@ -25,6 +26,7 @@ function iconSize(icon: string) {
       return 32;
     case 'card-outline':
       return 34;
+    case 'per_investigator':
     case 'logo':
     case 'font-size':
     case 'parallel':
@@ -63,7 +65,11 @@ export default function DeckPickerStyleButton({
       <View style={[styles.row, space.paddingBottomS, !last ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         <View style={styles.leftRow}>
           <View style={styles.icon}>
-            <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
+            { icon === 'per_investigator' ? (
+              <ArkhamIcon name={icon} size={iconSize(icon)} color={colors.M} />
+            ) : (
+              <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
+            ) }
           </View>
           <View style={styles.column}>
             <Text style={[typography.smallLabel, typography.dark, typography.italic]}>

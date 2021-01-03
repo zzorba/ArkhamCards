@@ -898,7 +898,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderBottomWidth: 1,
   },
-
   searchBarPadding: {
     height: SEARCH_BAR_HEIGHT,
   },

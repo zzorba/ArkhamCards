@@ -9,9 +9,10 @@ interface Props {
   margin?: number;
   onPress: () => void;
   children: React.ReactNode;
+  disabled?: boolean;
 }
 
-export default function RoundButton({ onPress, children, size = 32, margin = 0 }: Props) {
+export default function RoundButton({ onPress, children, disabled, size = 32, margin = 0 }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <Ripple style={[
@@ -24,7 +25,7 @@ export default function RoundButton({ onPress, children, size = 32, margin = 0 }
         borderRadius: size / 2,
         margin,
       },
-    ]} onPress={onPress} rippleColor={colors.M} rippleSize={size}>
+    ]} onPress={onPress} rippleColor={colors.M} rippleSize={size} disabled={disabled}>
       { children }
     </Ripple>
   );
