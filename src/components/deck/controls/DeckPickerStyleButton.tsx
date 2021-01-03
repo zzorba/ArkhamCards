@@ -17,6 +17,7 @@ interface Props {
   editable: boolean;
   onPress: () => void;
   noLabelDivider?: boolean;
+  editIcon?: string;
 }
 
 function iconSize(icon: string) {
@@ -47,6 +48,7 @@ export default function DeckPickerStyleButton({
   editable,
   onPress,
   noLabelDivider,
+  editIcon = 'edit',
 }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   return (
@@ -89,7 +91,7 @@ export default function DeckPickerStyleButton({
         </View>
         { !!editable && (
           <View style={styles.editIcon}>
-            <AppIcon name="edit" size={20} color={colors.M} />
+            <AppIcon name={editIcon} size={20} color={colors.M} />
           </View>
         ) }
       </View>
