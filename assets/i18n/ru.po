@@ -125,7 +125,7 @@ msgid "${ listOfThings }, and ${ lastThing }"
 msgstr "${ listOfThings }, и ${ lastThing }"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/ReceiveCampaignLinkInputComponent.tsx:50
-#: src/lib/react-native-settings-components/picker/picker.modal.tsx:152
+#: src/lib/react-native-settings-components/picker/picker.modal.tsx:160
 #: src/lib/react-native-settings-components/picker/picker.tsx:107
 msgid "Close"
 msgstr "Закрыть"
@@ -138,7 +138,7 @@ msgstr "${ this.name } <i>(${ this.subname })</i>"
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:144
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:146
 #: src/components/core/CardCostIcon.tsx:75
-#: src/components/deck/DeckDetailView/index.tsx:711
+#: src/components/deck/DeckDetailView/index.tsx:737
 #: src/data/Card.ts:558
 #: src/data/Card.ts:574
 msgid "None"
@@ -344,7 +344,7 @@ msgstr "Базовая слабость"
 msgid "Scenario"
 msgstr "Сценарий"
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:254
+#: src/components/deck/EditSpecialDeckCardsView.tsx:259
 #: src/components/filter/CardFilterView/index.tsx:386
 #: src/data/Card.ts:747
 #: src/data/Card.ts:760
@@ -373,12 +373,12 @@ msgstr "Сцена ${ linked_card.stage }"
 msgid "Agenda ${ linked_card.stage }"
 msgstr "Замысел ${ linked_card.stage }"
 
-#: src/data/scenario/CampaignGuide.ts:280
-#: src/data/scenario/CampaignGuide.ts:281
+#: src/data/scenario/CampaignGuide.ts:284
+#: src/data/scenario/CampaignGuide.ts:285
 msgid "Campaign Setup"
 msgstr "Подготовка к кампании"
 
-#: src/data/scenario/CampaignGuide.ts:421
+#: src/data/scenario/CampaignGuide.ts:425
 msgid ""
 "Each investigator earns experience equal to the Victory X value of each "
 "card in the victory display."
@@ -386,11 +386,11 @@ msgstr ""
 "Каждый сыщик получает опыт, равынй сумме победных значений всех карт на "
 "победном счету."
 
-#: src/data/scenario/CampaignGuide.ts:425
+#: src/data/scenario/CampaignGuide.ts:429
 msgid "Victory display:"
 msgstr "Победный счёт:"
 
-#: src/data/scenario/CampaignGuide.ts:444
+#: src/data/scenario/CampaignGuide.ts:448
 #, javascript-format
 msgid ""
 "Each investigator pays ${ entry.xpCost } experience point to play this "
@@ -408,7 +408,7 @@ msgstr[2] ""
 "Чтобы сыграть этот сценарий, каждый сыщик должен потратить ${ entry.xpCost "
 "} опыта."
 
-#: src/data/scenario/CampaignStateHelper.ts:187
+#: src/data/scenario/CampaignStateHelper.ts:212
 #. This is a deck upgrade action.
 msgid ""
 "Looks like you are trying to undo a deck upgrade.\n"
@@ -440,18 +440,18 @@ msgstr "Да, сбросить"
 #: src/components/campaign/EditChaosBagDialog/index.tsx:129
 #: src/components/campaign/EditChaosBagDialog/index.tsx:132
 #: src/components/campaign/EditTraumaDialog.tsx:57
-#: src/components/campaign/MyCampaignsView/index.tsx:59
+#: src/components/campaign/MyCampaignsView/index.tsx:60
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:55
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:77
 #: src/components/campaign/NewCampaignView/index.tsx:289
 #: src/components/campaign/SealTokenDialog.tsx:98
-#: src/components/campaign/UpgradeDecksView/index.tsx:137
+#: src/components/campaign/UpgradeDecksView/index.tsx:139
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:65
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:88
 #: src/components/campaignguide/CampaignGuideView.tsx:73
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:126
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:82
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:86
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:87
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:86
 #: src/components/campaignguide/StandaloneGuideView.tsx:34
 #: src/components/core/EditText.tsx:29
@@ -460,31 +460,33 @@ msgstr "Да, сбросить"
 #: src/components/deck/CardUpgradeDialog/index.tsx:250
 #: src/components/deck/CopyDeckDialog/index.tsx:235
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:104
-#: src/components/deck/DeckDetailView/index.tsx:207
-#: src/components/deck/DeckDetailView/index.tsx:348
-#: src/components/deck/DeckDetailView/index.tsx:597
-#: src/components/deck/DeckDetailView/index.tsx:606
-#: src/components/deck/DeckDetailView/index.tsx:645
+#: src/components/deck/DeckDetailView/index.tsx:210
+#: src/components/deck/DeckDetailView/index.tsx:351
+#: src/components/deck/DeckDetailView/index.tsx:621
+#: src/components/deck/DeckDetailView/index.tsx:630
+#: src/components/deck/DeckDetailView/index.tsx:669
 #: src/components/deck/DeckUpgradeDialog.tsx:184
 #: src/components/deck/DeckUpgradeDialog.tsx:186
-#: src/components/deck/EditSpecialDeckCardsView.tsx:147
+#: src/components/deck/EditSpecialDeckCardsView.tsx:151
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:391
 #: src/components/deck/NewDeckView.tsx:82
 #: src/components/deck/authHelper.ts:32
-#: src/components/deck/dialogs.tsx:153
-#: src/components/deck/dialogs.tsx:361
-#: src/components/nav/helper.ts:261
-#: src/components/nav/helper.ts:276
+#: src/components/deck/dialogs.tsx:202
+#: src/components/deck/dialogs.tsx:415
+#: src/components/nav/helper.ts:263
+#: src/components/nav/helper.ts:278
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:305
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:37
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:49
+#: src/components/settings/AccountSection/auth/DissonantVoicesLoginButton.tsx:32
 #: src/components/settings/BackupView.tsx:92
 #: src/components/settings/BackupView.tsx:133
 #: src/components/settings/BackupView.tsx:144
-#: src/components/settings/DiagnosticsView.tsx:121
-#: src/components/settings/DissonantVoicesLoginButton.tsx:38
-#: src/components/settings/LanguagePicker.tsx:90
-#: src/components/settings/LoginButton.tsx:39
+#: src/components/settings/DiagnosticsView.tsx:122
+#: src/components/settings/LanguagePicker.tsx:84
 #: src/components/settings/MergeBackupView/index.tsx:153
 #: src/components/settings/MergeBackupView/index.tsx:236
-#: src/data/scenario/CampaignStateHelper.ts:198
+#: src/data/scenario/CampaignStateHelper.ts:223
 #. This is a deck upgrade action.
 msgid "Cancel"
 msgstr "Отменить"
@@ -569,7 +571,7 @@ msgid "Available weaknesses"
 msgstr "Доступные слабости"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:229
-#: src/components/deck/dialogs.tsx:401
+#: src/components/deck/dialogs.tsx:455
 #: src/components/weakness/WeaknessDrawComponent.tsx:197
 msgid "Saving"
 msgstr "Сохранение"
@@ -593,7 +595,7 @@ msgid "Multiplayer"
 msgstr "Мультиплеер"
 
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:83
-#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:47
+#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:46
 #: src/components/campaign/constants.ts:59
 #: src/components/campaign/constants.ts:295
 #: src/components/core/PackListComponent/index.tsx:54
@@ -620,11 +622,11 @@ msgstr "Все слабости взяты."
 msgid "Save to Deck"
 msgstr "Сохранить колоду"
 
-#: src/components/settings/DiagnosticsView.tsx:81
+#: src/components/settings/DiagnosticsView.tsx:82
 msgid "Problem with import"
 msgstr "Ошибка импорта"
 
-#: src/components/settings/DiagnosticsView.tsx:82
+#: src/components/settings/DiagnosticsView.tsx:83
 msgid ""
 "We were not able to parse any campaigns from that pasted data.\n"
 "\n"
@@ -646,39 +648,39 @@ msgid "Try again"
 msgstr "Попытаться снова"
 
 #: src/components/settings/BackupView.tsx:127
-#: src/components/settings/DiagnosticsView.tsx:90
+#: src/components/settings/DiagnosticsView.tsx:91
 msgid "Restore campaign data?"
 msgstr "Восстановить кампанию?"
 
 #: src/components/settings/BackupView.tsx:130
-#: src/components/settings/DiagnosticsView.tsx:96
+#: src/components/settings/DiagnosticsView.tsx:97
 msgid "Import data"
 msgstr "Импортировать"
 
 #: src/components/settings/BackupView.tsx:141
-#: src/components/settings/DiagnosticsView.tsx:118
+#: src/components/settings/DiagnosticsView.tsx:119
 msgid "Backup campaign data?"
 msgstr "Сделать резервную копию кампании?"
 
 #: src/components/settings/BackupView.tsx:147
-#: src/components/settings/DiagnosticsView.tsx:124
+#: src/components/settings/DiagnosticsView.tsx:125
 msgid "Export Campaign Data"
 msgstr "Экспортировать"
 
 #: src/components/settings/BackupView.tsx:190
-#: src/components/settings/DiagnosticsView.tsx:239
+#: src/components/settings/DiagnosticsView.tsx:240
 #: src/components/settings/SafeModeView.tsx:62
-#: src/components/settings/SettingsView.tsx:110
+#: src/components/settings/SettingsView.tsx:103
 msgid "Backup"
 msgstr "Резервная копия"
 
 #: src/components/settings/BackupView.tsx:193
-#: src/components/settings/DiagnosticsView.tsx:242
+#: src/components/settings/DiagnosticsView.tsx:243
 msgid "Backup Campaign Data"
 msgstr "Сделать резервную копию кампании"
 
 #: src/components/settings/BackupView.tsx:198
-#: src/components/settings/DiagnosticsView.tsx:246
+#: src/components/settings/DiagnosticsView.tsx:247
 msgid "Restore Campaign Data"
 msgstr "Восстановить кампанию"
 
@@ -698,17 +700,17 @@ msgstr "Вторая база"
 #: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:306
 #: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:369
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:270
-#: src/components/deck/EditSpecialDeckCardsView.tsx:146
+#: src/components/deck/EditSpecialDeckCardsView.tsx:150
 #: src/components/settings/CollectionEditView.tsx:51
-#: src/components/settings/SettingsView.tsx:94
+#: src/components/settings/SettingsView.tsx:87
 msgid "Edit Collection"
 msgstr "Изменить коллекцию"
 
-#: src/components/settings/DiagnosticsView.tsx:88
+#: src/components/settings/DiagnosticsView.tsx:89
 msgid "All local decks and campaigns will be overridden"
 msgstr "Все локальные колоды и кампании будут перезаписаны"
 
-#: src/components/settings/DiagnosticsView.tsx:91
+#: src/components/settings/DiagnosticsView.tsx:92
 #, javascript-format
 msgid ""
 "This feature is intended for advanced diagnostics or to import data from "
@@ -722,15 +724,15 @@ msgstr ""
 "${ erasedCopy }"
 
 #: src/components/campaignguide/ScenarioView.tsx:180
-#: src/components/settings/DiagnosticsView.tsx:93
+#: src/components/settings/DiagnosticsView.tsx:94
 msgid "Nevermind"
 msgstr "Отмена"
 
-#: src/components/settings/DiagnosticsView.tsx:100
+#: src/components/settings/DiagnosticsView.tsx:101
 msgid "Paste Backup Here"
 msgstr "Скопируйте сюда резервную копию"
 
-#: src/components/settings/DiagnosticsView.tsx:119
+#: src/components/settings/DiagnosticsView.tsx:120
 msgid ""
 "This feature is intended for advanced diagnostics or if you are trying to "
 "move your campaign data from one device to another. Just copy the data and "
@@ -740,46 +742,46 @@ msgstr ""
 "захотите перенести прогресс в кампании на другое устройство. Просто "
 "скопируйте эти данные в другое приложение."
 
-#: src/components/settings/DiagnosticsView.tsx:184
+#: src/components/settings/DiagnosticsView.tsx:185
 msgid "Debug Card Json"
 msgstr "Отладка данных карты"
 
 #: src/components/core/PackListComponent/index.tsx:52
-#: src/components/settings/DiagnosticsView.tsx:167
+#: src/components/settings/DiagnosticsView.tsx:168
 msgid "Return to..."
 msgstr ""
 
 #: src/components/core/PackListComponent/index.tsx:53
-#: src/components/settings/DiagnosticsView.tsx:170
+#: src/components/settings/DiagnosticsView.tsx:171
 msgid "Investigator Starter Decks"
 msgstr ""
 
-#: src/components/settings/DiagnosticsView.tsx:173
+#: src/components/settings/DiagnosticsView.tsx:174
 msgid "Side stories"
 msgstr "Сценарии-ответвления"
 
-#: src/components/settings/DiagnosticsView.tsx:219
+#: src/components/settings/DiagnosticsView.tsx:220
 msgid "Debug"
 msgstr "Отладка"
 
-#: src/components/settings/DiagnosticsView.tsx:248
+#: src/components/settings/DiagnosticsView.tsx:249
 msgid "Caches"
 msgstr "Кэш"
 
-#: src/components/settings/DiagnosticsView.tsx:251
+#: src/components/settings/DiagnosticsView.tsx:252
 #: src/components/settings/SafeModeView.tsx:107
 msgid "Clear cache"
 msgstr "Очистить кэш"
 
-#: src/components/settings/LanguagePicker.tsx:153
+#: src/components/settings/LanguagePicker.tsx:149
 msgid "Note: not all cards have translations available."
 msgstr "Обратите внимание: перевод есть не для всех карт."
 
-#: src/components/settings/LoginButton.tsx:34
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:32
 msgid "Are you sure you want to sign out?"
 msgstr "Вы уверены, что хотите выйти из аккаунта?"
 
-#: src/components/settings/LoginButton.tsx:35
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:33
 msgid ""
 "Data on ArkhamDB will be preserved, but all Campaign data and any edits "
 "made without internet might be lost.\n"
@@ -791,121 +793,97 @@ msgstr ""
 "\n"
 "Если у вас проблемы с аккаунтом, попробуйте переподключить его."
 
-#: src/components/settings/LoginButton.tsx:37
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:35
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:47
 msgid "Sign Out"
 msgstr "Выйти из аккаунта"
 
-#: src/components/settings/LoginButton.tsx:38
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:36
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:48
 msgid "Reconnect Account"
 msgstr "Переподключить аккаунт"
 
-#: src/components/settings/LoginButton.tsx:56
-#: src/components/settings/LoginButton.tsx:59
-msgid "Sign out of ArkhamDB"
-msgstr "Выйти из ArkhamDB"
-
-#: src/components/deck/DeckDetailView/index.tsx:593
+#: src/components/deck/DeckDetailView/index.tsx:617
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:348
-#: src/components/settings/LoginButton.tsx:65
-#: src/components/settings/LoginButton.tsx:68
 msgid "Sign in to ArkhamDB"
 msgstr "Войти в ArkhamDB"
 
 #: src/components/core/TabooSetPicker.tsx:49
 #: src/components/deck/controls/DeckTabooPickerButton.tsx:70
-#: src/components/settings/SettingsTabooPicker.tsx:24
 msgid "Taboo List"
 msgstr "Список табу"
 
-#: src/components/settings/SettingsTabooPicker.tsx:34
-msgid "Changes the default taboo list for newly created decks and search."
-msgstr "Изменение списка табу по умолчанию для новых колод и поиска."
-
-#: src/components/settings/SettingsView.tsx:98
+#: src/components/settings/SettingsView.tsx:91
 msgid "Edit Spoilers"
 msgstr "Настроить спойлеры"
 
-#: src/components/settings/SettingsView.tsx:102
-#: src/components/settings/SettingsView.tsx:195
+#: src/components/settings/SettingsView.tsx:95
+#: src/components/settings/SettingsView.tsx:211
 msgid "Diagnostics"
 msgstr "Диагностика"
 
-#: src/components/settings/SettingsView.tsx:106
-#: src/components/settings/SettingsView.tsx:197
-#: src/components/settings/SettingsView.tsx:201
+#: src/components/settings/SettingsView.tsx:99
+#: src/components/settings/SettingsView.tsx:199
 msgid "About Arkham Cards"
 msgstr "О приложении"
 
 #: src/components/campaign/NewCampaignView/index.tsx:128
 #: src/components/campaign/NewCampaignView/index.tsx:132
 #: src/components/campaign/SealTokenDialog.tsx:83
-#: src/components/campaign/UpgradeDecksView/index.tsx:118
+#: src/components/campaign/UpgradeDecksView/index.tsx:120
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:100
 #: src/components/campaignguide/ScenarioStepComponent/index.tsx:180
 #: src/components/core/EditText.tsx:33
 #: src/components/core/EditText.tsx:43
 #: src/components/core/TextEditDialog.tsx:148
-#: src/components/deck/DeckDetailView/index.tsx:260
-#: src/components/deck/dialogs.tsx:149
-#: src/components/deck/dialogs.tsx:357
-#: src/components/nav/helper.ts:57
+#: src/components/deck/DeckDetailView/index.tsx:263
+#: src/components/deck/dialogs.tsx:197
+#: src/components/deck/dialogs.tsx:411
+#: src/components/nav/helper.ts:61
 #: src/components/settings/SafeModeView.tsx:65
 #: src/components/settings/SafeModeView.tsx:112
-#: src/components/settings/SettingsView.tsx:81
+#: src/components/settings/SettingsView.tsx:74
 msgid "Done"
 msgstr "Готово"
 
-#: src/components/settings/SettingsView.tsx:127
+#: src/components/settings/SettingsView.tsx:112
 msgid "Updating cards"
 msgstr "Обновление карт"
 
-#: src/components/settings/SettingsView.tsx:130
+#: src/components/settings/SettingsView.tsx:115
 msgid "Error: Check for Cards Again"
 msgstr "Ошибка: перепроверить карты"
 
-#: src/components/settings/SettingsView.tsx:131
+#: src/components/settings/SettingsView.tsx:116
 msgid "Check ArkhamDB for updates"
 msgstr "Обновить карты с ArkhamDB"
 
-#: src/components/settings/SettingsView.tsx:146
-msgid "Account"
-msgstr "Аккаунт"
-
 #: src/components/settings/SafeModeView.tsx:96
-#: src/components/settings/SettingsView.tsx:152
+#: src/components/settings/SettingsView.tsx:205
 msgid "Backup Data"
 msgstr "Сделать резервную копию"
 
-#: src/components/settings/SettingsView.tsx:154
-msgid "Card Settings"
-msgstr "Настройки карт"
-
-#: src/components/settings/SettingsView.tsx:158
+#: src/components/settings/SettingsView.tsx:141
 msgid "Card Collection"
 msgstr "Коллекция карт"
 
 #: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:498
-#: src/components/settings/SettingsView.tsx:163
 msgid "Spoiler Settings"
 msgstr "Настройки спойлеров"
 
-#: src/components/settings/SettingsView.tsx:166
-msgid "Card Data"
-msgstr "Данные карт"
-
-#: src/components/settings/SettingsView.tsx:177
+#: src/components/settings/SettingsView.tsx:172
 msgid "Preferences"
 msgstr "Настройки"
 
-#: src/components/settings/SettingsView.tsx:181
+#: src/components/settings/SettingsView.tsx:179
 msgid "Swipe between card results"
 msgstr "Свайпать между картами в поиске"
 
-#: src/components/settings/SettingsView.tsx:187
+#: src/components/settings/SettingsView.tsx:185
 msgid "Alphabetize guide encounter sets"
 msgstr "Расположить наборы контактов по алфавиту"
 
-#: src/components/settings/SettingsView.tsx:206
+#: src/components/settings/SettingsView.tsx:217
 msgid "Contact us"
 msgstr "Обратная связь"
 
@@ -917,20 +895,20 @@ msgstr ""
 "Отметьте, какие сценарии вы прошли, чтобы карты из них начали отображаться "
 "в поиске."
 
-#: src/components/deck/DeckDetailView/index.tsx:699
-#: src/components/nav/helper.ts:86
-#: src/components/nav/helper.ts:118
+#: src/components/deck/DeckDetailView/index.tsx:723
+#: src/components/nav/helper.ts:88
+#: src/components/nav/helper.ts:120
 msgid "Deck"
 msgstr "Колода"
 
-#: src/components/deck/DeckDetailView/index.tsx:719
-#: src/components/deck/DeckDetailView/index.tsx:875
-#: src/components/nav/helper.ts:182
+#: src/components/deck/DeckDetailView/index.tsx:751
+#: src/components/deck/DeckDetailView/index.tsx:909
+#: src/components/nav/helper.ts:184
 msgid "Charts"
 msgstr "Диаграммы"
 
-#: src/components/deck/DeckDetailView/index.tsx:725
-#: src/components/nav/helper.ts:206
+#: src/components/deck/DeckDetailView/index.tsx:757
+#: src/components/nav/helper.ts:208
 msgid "Draw Simulator"
 msgstr "Тест взятия карт"
 
@@ -1269,11 +1247,11 @@ msgstr "Доступно опыта: ${ xp }"
 msgid "${ parsedDeck.experience } experience required"
 msgstr "Требуется ${ parsedDeck.experience } опыта"
 
-#: src/components/decklist/MyDecksComponent.tsx:94
+#: src/components/decklist/MyDecksComponent.tsx:93
 msgid "Unable to update: you appear to be offline."
 msgstr "Не удалось обновить данные: кажется, вы не в сети."
 
-#: src/components/decklist/MyDecksComponent.tsx:103
+#: src/components/decklist/MyDecksComponent.tsx:102
 msgid ""
 "We're having trouble updating your decks at this time. If the problem "
 "persists tap here to reauthorize."
@@ -1281,7 +1259,7 @@ msgstr ""
 "Нам не удаётся обновить ваши колоды. Если проблема повторяется, нажмите "
 "здесь, чтобы заново авторизоваться."
 
-#: src/components/decklist/MyDecksComponent.tsx:111
+#: src/components/decklist/MyDecksComponent.tsx:110
 #, javascript-format
 msgid ""
 "An unexpected error occurred (${ error }). If restarting the app doesn't "
@@ -1290,8 +1268,8 @@ msgstr ""
 "Произошла неизвестная ошибка (${ error }). Если перезапуск приложения не "
 "решит проблему, нажмите здесь, чтобы заново авторизоваться."
 
-#: src/components/deck/DeckDetailView/index.tsx:594
-#: src/components/decklist/MyDecksComponent.tsx:124
+#: src/components/deck/DeckDetailView/index.tsx:618
+#: src/components/decklist/MyDecksComponent.tsx:123
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share "
 "decks with others.\n"
@@ -1303,12 +1281,12 @@ msgstr ""
 "\n"
 "Подключите аккаунт ArkhamDB, чтобы получить доступ к своим колодам."
 
-#: src/components/decklist/MyDecksComponent.tsx:126
+#: src/components/decklist/MyDecksComponent.tsx:125
 msgid "Connect to ArkhamDB"
 msgstr "Подключиться к ArkhamDB"
 
-#: src/app/App.ts:262
-#: src/app/App.ts:324
+#: src/app/App.ts:263
+#: src/app/App.ts:327
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:280
 #: src/components/campaignguide/CampaignGuideView.tsx:130
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:102
@@ -1317,7 +1295,7 @@ msgstr "Подключиться к ArkhamDB"
 msgid "Decks"
 msgstr "Колоды"
 
-#: src/app/App.ts:268
+#: src/app/App.ts:270
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:61
 #: src/components/deck/CopyDeckDialog/index.tsx:98
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:101
@@ -1333,7 +1311,7 @@ msgstr "Новая колода"
 msgid "Hide ArkhamDB Decks"
 msgstr "Скрыть колоды с ArkhamDB"
 
-#: src/components/decklist/DeckListComponent/index.tsx:74
+#: src/components/decklist/DeckListComponent/index.tsx:75
 msgid ""
 "No decks yet.\n"
 "\n"
@@ -1343,12 +1321,12 @@ msgstr ""
 "\n"
 "Нажмите кнопку +, чтобы создать новую."
 
-#: src/components/decklist/DeckListComponent/index.tsx:86
+#: src/components/decklist/DeckListComponent/index.tsx:87
 #, javascript-format
 msgid "No matching decks for \"${ searchTerm }\"."
 msgstr "По запросу «${ searchTerm }» колод не найдено."
 
-#: src/components/decklist/DeckListComponent/index.tsx:103
+#: src/components/decklist/DeckListComponent/index.tsx:104
 msgid "Search decks"
 msgstr "Поиск по колодам"
 
@@ -1443,18 +1421,18 @@ msgstr "Перемешать"
 msgid "Reset"
 msgstr "Сбросить"
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:68
-#: src/components/deck/EditSpecialDeckCardsView.tsx:268
+#: src/components/deck/EditSpecialDeckCardsView.tsx:70
+#: src/components/deck/EditSpecialDeckCardsView.tsx:273
 msgid "Edit Story Cards"
 msgstr "Настроить сюжетные карты"
 
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:168
-#: src/components/deck/EditSpecialDeckCardsView.tsx:142
-#: src/components/deck/EditSpecialDeckCardsView.tsx:191
+#: src/components/deck/EditSpecialDeckCardsView.tsx:146
+#: src/components/deck/EditSpecialDeckCardsView.tsx:196
 msgid "Draw Basic Weakness"
 msgstr "Взять базовую слабость"
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:143
+#: src/components/deck/EditSpecialDeckCardsView.tsx:147
 msgid ""
 "This deck does not seem to be part of a campaign yet.\n"
 "\n"
@@ -1470,13 +1448,13 @@ msgstr ""
 "\n"
 "Или же можете выбрать случайную слабость из всей вашей коллекции."
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:145
+#: src/components/deck/EditSpecialDeckCardsView.tsx:149
 msgid "Draw From Collection"
 msgstr "Взять из коллекции"
 
 #: src/components/campaign/nav.tsx:121
-#: src/components/deck/EditSpecialDeckCardsView.tsx:125
-#: src/components/deck/EditSpecialDeckCardsView.tsx:171
+#: src/components/deck/EditSpecialDeckCardsView.tsx:129
+#: src/components/deck/EditSpecialDeckCardsView.tsx:176
 msgid "Draw Weaknesses"
 msgstr "Взять слабости"
 
@@ -1584,7 +1562,7 @@ msgstr "Изменения"
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:124
 #: src/components/campaign/CampaignDetailView/index.tsx:256
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:83
-#: src/components/deck/DeckDetailView/index.tsx:760
+#: src/components/deck/DeckDetailView/index.tsx:792
 #: src/components/deck/DeckProgressComponent/index.tsx:71
 msgid "Campaign"
 msgstr "Кампания"
@@ -1593,8 +1571,8 @@ msgstr "Кампания"
 msgid "Upgrade Deck with XP"
 msgstr "Улучшить колоду за опыт"
 
-#: src/components/deck/DeckDetailView/index.tsx:672
-#: src/components/deck/DeckDetailView/index.tsx:781
+#: src/components/deck/DeckDetailView/index.tsx:696
+#: src/components/deck/DeckDetailView/index.tsx:813
 #: src/components/deck/DeckProgressComponent/index.tsx:111
 #. Actually compute the diffs.
 msgid "Upgrade History"
@@ -1606,12 +1584,12 @@ msgid "Bonded Cards (${ count })"
 msgstr "Связанные карты (${ count })"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:370
-#: src/components/deck/DeckDetailView/index.tsx:742
+#: src/components/deck/DeckDetailView/index.tsx:774
 msgid "Deck Cards"
 msgstr "Карты в колоде"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:382
-#: src/components/deck/DeckDetailView/index.tsx:752
+#: src/components/deck/DeckDetailView/index.tsx:784
 msgid "Special Cards"
 msgstr "Особые карты"
 
@@ -1646,15 +1624,15 @@ msgstr "Опыт"
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:142
 #: src/components/deck/CopyDeckDialog/index.tsx:239
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:108
-#: src/components/deck/dialogs.tsx:265
+#: src/components/deck/dialogs.tsx:319
 msgid "Okay"
 msgstr "Ок"
 
-#: src/components/deck/DeckDetailView/index.tsx:344
+#: src/components/deck/DeckDetailView/index.tsx:347
 msgid "Delete broken deck"
 msgstr "Удалить повреждённую колоду"
 
-#: src/components/deck/DeckDetailView/index.tsx:345
+#: src/components/deck/DeckDetailView/index.tsx:348
 msgid "Looks like we are having trouble loading this deck for some reason"
 msgstr "При загрузке колоды что-то пошло не так"
 
@@ -1667,57 +1645,57 @@ msgstr "При загрузке колоды что-то пошло не так"
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:81
 #: src/components/campaignguide/StandaloneGuideView.tsx:30
 #: src/components/campaignguide/StandaloneGuideView.tsx:33
-#: src/components/deck/DeckDetailView/index.tsx:347
-#: src/components/deck/DeckDetailView/index.tsx:639
+#: src/components/deck/DeckDetailView/index.tsx:350
+#: src/components/deck/DeckDetailView/index.tsx:663
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/components/deck/DeckDetailView/index.tsx:193
+#: src/components/deck/DeckDetailView/index.tsx:196
 msgid "Save deck changes?"
 msgstr "Сохранить изменения?"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:64
-#: src/components/deck/DeckDetailView/index.tsx:194
+#: src/components/deck/DeckDetailView/index.tsx:197
 msgid "Looks like you have made some changes that have not been saved."
 msgstr "Кажется, вы внесли изменения, которые ещё не сохранены."
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:66
-#: src/components/deck/DeckDetailView/index.tsx:196
+#: src/components/deck/DeckDetailView/index.tsx:199
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:71
-#: src/components/deck/DeckDetailView/index.tsx:201
+#: src/components/deck/DeckDetailView/index.tsx:204
 msgid "Discard Changes"
 msgstr "Отменить изменения"
 
-#: src/components/deck/DeckDetailView/index.tsx:400
+#: src/components/deck/DeckDetailView/index.tsx:405
 msgid "Edit Special Cards"
 msgstr "Править особые карты"
 
-#: src/components/deck/DeckDetailView/index.tsx:438
+#: src/components/deck/DeckDetailView/index.tsx:445
 msgid "Edit Deck"
 msgstr "Править колоду"
 
 #: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:79
-#: src/components/deck/DeckDetailView/index.tsx:473
-#: src/components/deck/DeckDetailView/index.tsx:772
+#: src/components/deck/DeckDetailView/index.tsx:482
+#: src/components/deck/DeckDetailView/index.tsx:804
 msgid "Upgrade Deck"
 msgstr "Улучшить колоду"
 
-#: src/components/deck/DeckDetailView/index.tsx:583
+#: src/components/deck/DeckDetailView/index.tsx:607
 msgid "Save Local Changes"
 msgstr "Сохранить локальные изменения"
 
-#: src/components/deck/DeckDetailView/index.tsx:584
+#: src/components/deck/DeckDetailView/index.tsx:608
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
 msgstr "Сохраните локальные изменения перед публикацией на ArkhamDB"
 
-#: src/components/deck/DeckDetailView/index.tsx:588
+#: src/components/deck/DeckDetailView/index.tsx:612
 msgid "Unsupported Operation"
 msgstr "Неподдерживаемая операция"
 
-#: src/components/deck/DeckDetailView/index.tsx:589
+#: src/components/deck/DeckDetailView/index.tsx:613
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
 "upload it to ArkhamDB at this time.\n"
@@ -1731,17 +1709,17 @@ msgstr ""
 "Если вы хотите её загрузить, можете Клонировать её и загрузить копию "
 "текущей колоды."
 
-#: src/components/deck/DeckDetailView/index.tsx:596
-#: src/components/settings/DissonantVoicesLoginButton.tsx:37
+#: src/components/deck/DeckDetailView/index.tsx:620
+#: src/components/settings/AccountSection/auth/DissonantVoicesLoginButton.tsx:31
 msgid "Sign In"
 msgstr "Войти"
 
-#: src/components/deck/DeckDetailView/index.tsx:602
-#: src/components/deck/DeckDetailView/index.tsx:797
+#: src/components/deck/DeckDetailView/index.tsx:626
+#: src/components/deck/DeckDetailView/index.tsx:829
 msgid "Upload to ArkhamDB"
 msgstr "Загрузить на ArkhamDB"
 
-#: src/components/deck/DeckDetailView/index.tsx:603
+#: src/components/deck/DeckDetailView/index.tsx:627
 msgid ""
 "You can upload your deck to ArkhamDB to share with others.\n"
 "\n"
@@ -1752,34 +1730,34 @@ msgstr ""
 "После того как вы загрузите её, вам будет нужен интернет, чтобы "
 "редактировать её."
 
-#: src/components/deck/DeckDetailView/index.tsx:605
+#: src/components/deck/DeckDetailView/index.tsx:629
 msgid "Upload"
 msgstr "Загрузить"
 
-#: src/components/deck/DeckDetailView/index.tsx:627
+#: src/components/deck/DeckDetailView/index.tsx:651
 #, javascript-format
 msgid "Delete this upgrade (${ deck.version })"
 msgstr "Удалить улучшение (${ deck.version })"
 
-#: src/components/deck/DeckDetailView/index.tsx:632
-#: src/components/deck/DeckDetailView/index.tsx:639
+#: src/components/deck/DeckDetailView/index.tsx:656
+#: src/components/deck/DeckDetailView/index.tsx:663
 msgid "Delete all versions"
 msgstr "Удалить все версии"
 
-#: src/components/deck/DeckDetailView/index.tsx:650
-#: src/components/deck/DeckDetailView/index.tsx:812
+#: src/components/deck/DeckDetailView/index.tsx:674
+#: src/components/deck/DeckDetailView/index.tsx:844
 msgid "Delete deck"
 msgstr "Удалить колоду"
 
-#: src/components/deck/DeckDetailView/index.tsx:651
+#: src/components/deck/DeckDetailView/index.tsx:675
 msgid "Are you sure you want to delete this deck?"
 msgstr "Вы уверены, что хотите удалить эту колоду?"
 
-#: src/components/deck/DeckDetailView/index.tsx:299
+#: src/components/deck/DeckDetailView/index.tsx:302
 msgid "Deck has been deleted"
 msgstr "Колода удалена"
 
-#: src/components/deck/DeckDetailView/index.tsx:300
+#: src/components/deck/DeckDetailView/index.tsx:303
 msgid ""
 "It looks like you deleted this deck from ArkhamDB.\n"
 "\n"
@@ -1791,29 +1769,30 @@ msgstr ""
 "Если эта колода участвовала в кампании, вы можете добавить в неё того же "
 "сыщика, чтобы восстановить данные кампании."
 
-#: src/components/deck/DeckDetailView/index.tsx:302
+#: src/components/deck/DeckDetailView/index.tsx:305
 msgid "OK"
 msgstr "Ок"
 
-#: src/components/deck/dialogs.tsx:264
+#: src/components/deck/dialogs.tsx:318
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/components/deck/DeckDetailView/index.tsx:114
+#: src/components/deck/DeckDetailView/index.tsx:117
 msgid "Deleting"
 msgstr "Удаление"
 
-#: src/components/deck/DeckDetailView/index.tsx:696
+#: src/components/deck/DeckDetailView/index.tsx:720
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
 msgstr "${ xp } (${ adjustment }) опыта"
 
-#: src/app/App.ts:312
-#: src/components/deck/DeckDetailView/index.tsx:738
+#: src/app/App.ts:315
+#: src/components/deck/DeckDetailView/index.tsx:770
+#: src/components/settings/SettingsView.tsx:136
 msgid "Cards"
 msgstr "Карты"
 
-#: src/components/deck/DeckDetailView/index.tsx:743
+#: src/components/deck/DeckDetailView/index.tsx:775
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
 msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
@@ -1821,29 +1800,29 @@ msgstr[0] "${ normalCardCount } карта (${ totalCardCount } всего)"
 msgstr[1] "${ normalCardCount } карты (${ totalCardCount } всего)"
 msgstr[2] "${ normalCardCount } карт (${ totalCardCount } всего)"
 
-#: src/components/deck/DeckDetailView/index.tsx:774
+#: src/components/deck/DeckDetailView/index.tsx:806
 msgid "Save changes before upgrading"
 msgstr "Сохраните изменения перед улучшением"
 
-#: src/components/deck/DeckDetailView/index.tsx:765
+#: src/components/deck/DeckDetailView/index.tsx:797
 msgid "Available XP"
 msgstr "Доступный опыт"
 
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:173
-#: src/components/deck/DeckDetailView/index.tsx:787
+#: src/components/deck/DeckDetailView/index.tsx:819
 msgid "Options"
 msgstr "Опции"
 
-#: src/components/deck/DeckDetailView/index.tsx:803
+#: src/components/deck/DeckDetailView/index.tsx:835
 msgid "View on ArkhamDB"
 msgstr "Просмотреть на ArkhamDB"
 
-#: src/components/deck/DeckDetailView/index.tsx:921
+#: src/components/deck/DeckDetailView/index.tsx:962
 msgid "Delete Deck"
 msgstr "Удалить колоду"
 
 #: src/components/deck/controls/InvestigatorOptionsControl/DeckSizeSelectPicker.tsx:36
-#: src/components/deck/controls/InvestigatorOptionsControl/InvestigatorOption.tsx:45
+#: src/components/deck/controls/InvestigatorOptionsControl/InvestigatorOption.tsx:44
 msgid "Select Deck Size"
 msgstr "Укажите размер колоды"
 
@@ -1855,14 +1834,14 @@ msgstr ""
 "Обратите внимание: Размер колоды может быть выбран только при создании "
 "колоды, но не между сценариями."
 
-#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:37
-#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:42
-#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:56
-#: src/components/deck/controls/InvestigatorOptionsControl/InvestigatorOption.tsx:63
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:36
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:41
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:55
+#: src/components/deck/controls/InvestigatorOptionsControl/InvestigatorOption.tsx:61
 msgid "Select Faction"
 msgstr "Выберите класс"
 
-#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:38
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:37
 msgid ""
 "Note: Secondary faction should only be selected at deck creation time, not "
 "between scenarios."
@@ -2194,24 +2173,24 @@ msgstr "Цена: —"
 msgid "All Cards"
 msgstr "Все карты"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:86
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:85
 msgid "Game Text"
 msgstr "Игровой текст"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:96
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:95
 msgid "Flavor Text"
 msgstr "Художественный текст"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:106
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:105
 msgid "Card Backs"
 msgstr "Обороты карт"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:197
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:196
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
 msgstr "Очистить поиск «${ searchTerm }»"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:357
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:356
 msgid "Search for a card"
 msgstr "Найти карту"
 
@@ -2223,7 +2202,7 @@ msgstr "Применить"
 msgid "Encounter Cards"
 msgstr "Карты контактов"
 
-#: src/app/App.ts:250
+#: src/app/App.ts:251
 #: src/components/cardlist/CardSearchComponent/index.tsx:159
 msgid "Player Cards"
 msgstr "Карты игроков"
@@ -2395,7 +2374,7 @@ msgid "Show back"
 msgstr "Показать оборотную сторону"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:66
-#: src/components/deck/DeckDetailView/index.tsx:708
+#: src/components/deck/DeckDetailView/index.tsx:734
 msgid "Taboo"
 msgstr "Табу"
 
@@ -2474,23 +2453,23 @@ msgstr ""
 "\n"
 "Однако вы можете больше не включать его в будущие сценарии этой кампании."
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:248
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:250
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:168
 msgid "Remove investigators"
 msgstr "Удалить сыщиков"
 
 #: src/components/campaign/CampaignDeckList.tsx:75
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:267
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:269
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:222
 msgid "Add Investigator"
 msgstr "Добавить сыщика"
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:273
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:275
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:228
 msgid "Finished removing investigators"
 msgstr "Сыщики удалены"
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:282
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:284
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:236
 msgid "Killed and Insane Investigators"
 msgstr "Убитые и сошедшие с ума сыщики"
@@ -2577,7 +2556,7 @@ msgstr "Выберите дополнительную карту"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:116
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:47
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:134
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:136
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/TextBoxInputComponent.tsx:53
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:135
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:81
@@ -2773,12 +2752,12 @@ msgstr "Выбрать колоду"
 msgid "View deck"
 msgstr "Посмотреть колоду"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:83
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:84
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:83
 msgid "Proceed without saving"
 msgstr "Продолжить без сохранения"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:89
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:90
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:89
 msgid "Proceed anyway"
 msgstr "Продолжить всё равно"
@@ -2804,7 +2783,7 @@ msgstr ""
 "изменений колоды (оригинальную версию колоды всё так же можно будет увидеть "
 "в меню колоды)."
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:70
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:71
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:70
 msgid ""
 "It looks like you edited the experience or trauma for an investigator, but "
@@ -2826,8 +2805,8 @@ msgstr "Обновить колоды результатами сценария"
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:270
 #: src/components/campaign/nav.tsx:59
 #: src/components/campaign/nav.tsx:78
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:131
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:151
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:132
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:152
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:71
 msgid "Chaos Bag"
 msgstr "Мешок хаоса"
@@ -2840,7 +2819,7 @@ msgstr "Выберите запись для добавления в журна�
 msgid "Edit campaign log"
 msgstr "Редактировать журнал кампании"
 
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:158
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:159
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:125
 msgid "Draw chaos tokens"
 msgstr "Вытянуть жетон хаоса"
@@ -3142,11 +3121,11 @@ msgstr "${ scenarioName } (Попытка ${ attempt })"
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:161
 #: src/components/campaign/CampaignDetailView/ChaosBagSection.tsx:47
 #: src/components/campaign/nav.tsx:100
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:109
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:110
 msgid "Odds Calculator"
 msgstr "Калькулятор вероятностей"
 
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:162
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:163
 msgid "Odds calculator"
 msgstr "Калькулятор вероятностей"
 
@@ -3240,7 +3219,7 @@ msgstr ""
 "английском языке с сайта FFG, а на русском – на странице карточного «Ужаса "
 "Аркхэма» издательства Hobby World в разделе «Правила игры»."
 
-#: src/components/campaignguide/AddSideScenarioView/DownloadParallelCardsButton.tsx:26
+#: src/components/campaignguide/AddSideScenarioView/DownloadParallelCardsButton.tsx:25
 msgid "Download printable cards"
 msgstr "Скачать карты для самостоятельной печати"
 
@@ -3257,8 +3236,8 @@ msgid "Count"
 msgstr "Количество"
 
 #: src/components/campaign/CampaignChaosBagView.tsx:72
-#: src/components/deck/DeckDetailView/index.tsx:537
-#: src/components/deck/DeckDetailView/index.tsx:896
+#: src/components/deck/DeckDetailView/index.tsx:561
+#: src/components/deck/DeckDetailView/index.tsx:933
 msgid "Edit"
 msgstr "Править"
 
@@ -3865,18 +3844,18 @@ msgstr "${ xp } опыта доступно, (${ parsedDeck.changes.spentXp } п
 msgid "${ totalXp } total"
 msgstr "всего ${ totalXp }"
 
-#: src/components/campaign/UpgradeDecksView/index.tsx:131
+#: src/components/campaign/UpgradeDecksView/index.tsx:133
 msgid "Update investigator decks"
 msgstr "Обновить колоды сыщиков"
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:192
-#: src/components/campaign/UpgradeDecksView/index.tsx:81
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:194
+#: src/components/campaign/UpgradeDecksView/index.tsx:83
 #: src/components/deck/CardUpgradeDialog/index.tsx:246
-#: src/components/deck/DeckDetailView/index.tsx:545
+#: src/components/deck/DeckDetailView/index.tsx:569
 msgid "Upgrade"
 msgstr "Улучшить"
 
-#: src/components/campaign/UpgradeDecksView/index.tsx:105
+#: src/components/campaign/UpgradeDecksView/index.tsx:107
 msgid ""
 "By upgrading a deck, you can track XP and story card upgrades as your "
 "campaign develops.\n"
@@ -4026,10 +4005,10 @@ msgstr "Сложность"
 msgid " (Per Investigator)"
 msgstr " (за сыщика)"
 
-#: src/app/App.ts:286
-#: src/components/campaign/MyCampaignsView/index.tsx:56
-#: src/components/campaign/MyCampaignsView/index.tsx:117
-#: src/components/campaign/MyCampaignsView/index.tsx:154
+#: src/app/App.ts:289
+#: src/components/campaign/MyCampaignsView/index.tsx:57
+#: src/components/campaign/MyCampaignsView/index.tsx:118
+#: src/components/campaign/MyCampaignsView/index.tsx:155
 #: src/components/campaign/NewCampaignView/index.tsx:125
 #: src/components/campaign/NewCampaignView/index.tsx:507
 msgid "New Campaign"
@@ -4044,22 +4023,22 @@ msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
 #: src/components/campaign/campaignHelper.ts:43
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
 #: src/components/campaign/campaignHelper.ts:44
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
 #: src/components/campaign/campaignHelper.ts:49
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
 #: src/components/campaign/campaignHelper.ts:50
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -4141,20 +4120,20 @@ msgstr "Показывать только прежних участников к
 msgid "Edit name"
 msgstr "Редактировать название"
 
-#: src/app/App.ts:280
-#: src/app/App.ts:336
-#: src/components/campaign/MyCampaignsView/index.tsx:148
+#: src/app/App.ts:282
+#: src/app/App.ts:339
+#: src/components/campaign/MyCampaignsView/index.tsx:149
 #: src/components/campaign/SelectCampaignDialog/index.tsx:50
 #: src/components/settings/MergeBackupView/index.tsx:169
 msgid "Campaigns"
 msgstr "Кампании"
 
-#: src/components/campaign/MyCampaignsView/index.tsx:93
+#: src/components/campaign/MyCampaignsView/index.tsx:94
 #, javascript-format
 msgid "No matching campaigns for \"${ search }\"."
 msgstr "Нет кампаний по запросу «${ search }»."
 
-#: src/components/campaign/MyCampaignsView/index.tsx:101
+#: src/components/campaign/MyCampaignsView/index.tsx:102
 msgid ""
 "No campaigns yet.\n"
 "\n"
@@ -4172,7 +4151,7 @@ msgstr ""
 "жетоны хаоса, слабости, заметки в журнале кампании и опыт, полученный "
 "каждым из сыщиков."
 
-#: src/components/campaign/MyCampaignsView/index.tsx:127
+#: src/components/campaign/MyCampaignsView/index.tsx:128
 msgid "Search campaigns"
 msgstr "Поиск по кампаниям"
 
@@ -4292,8 +4271,8 @@ msgstr "Сохранить и улучшить колоды"
 msgid "Only Save"
 msgstr "Только сохранить"
 
-#: src/app/App.ts:298
-#: src/app/App.ts:348
+#: src/app/App.ts:301
+#: src/app/App.ts:351
 msgid "Settings"
 msgstr "Настройки"
 
@@ -4416,11 +4395,11 @@ msgstr ""
 "\n"
 "Во время кампании травмы можно редактировать в путеводителе."
 
-#: src/components/settings/LanguagePicker.tsx:87
+#: src/components/settings/LanguagePicker.tsx:81
 msgid "Confirm"
 msgstr "Подтвердить"
 
-#: src/components/settings/LanguagePicker.tsx:88
+#: src/components/settings/LanguagePicker.tsx:82
 msgid ""
 "Changing app language requires downloading the translated card information "
 "from ArkhamDB. This requires network and can take some time."
@@ -4429,7 +4408,7 @@ msgstr ""
 "процесс требует интернет-соединения и займет какое-то время."
 
 #: src/components/card/FetchCardsGate.tsx:124
-#: src/components/settings/LanguagePicker.tsx:89
+#: src/components/settings/LanguagePicker.tsx:83
 msgid "Download now"
 msgstr "Загрузить сейчас"
 
@@ -4449,8 +4428,8 @@ msgstr "Начальные травмы можно изменить после �
 #: src/components/campaign/nav.tsx:81
 #: src/components/campaign/nav.tsx:103
 #: src/components/campaign/nav.tsx:124
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:112
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:134
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:113
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:135
 #: src/components/campaignguide/EncounterCardErrataView.tsx:96
 #: src/components/campaignguide/ScenarioFaqView.tsx:57
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:47
@@ -4468,27 +4447,27 @@ msgstr "Начальные травмы можно изменить после �
 #: src/components/core/ChooserButton.tsx:35
 #: src/components/core/DbChooserButton.tsx:65
 #: src/components/core/PackListComponent/PackRow.tsx:48
-#: src/components/deck/DeckDetailView/index.tsx:404
-#: src/components/deck/DeckDetailView/index.tsx:442
-#: src/components/deck/EditSpecialDeckCardsView.tsx:72
-#: src/components/deck/EditSpecialDeckCardsView.tsx:129
-#: src/components/deck/EditSpecialDeckCardsView.tsx:175
-#: src/components/deck/EditSpecialDeckCardsView.tsx:306
+#: src/components/deck/DeckDetailView/index.tsx:409
+#: src/components/deck/DeckDetailView/index.tsx:449
+#: src/components/deck/EditSpecialDeckCardsView.tsx:74
+#: src/components/deck/EditSpecialDeckCardsView.tsx:133
+#: src/components/deck/EditSpecialDeckCardsView.tsx:180
+#: src/components/deck/EditSpecialDeckCardsView.tsx:311
 #: src/components/filter/CardAssetFilterView.tsx:120
 #: src/components/filter/CardEnemyFilterView.tsx:219
 #: src/components/filter/FixedSetChooserButton.tsx:61
 #: src/components/filter/PackFilterView.tsx:85
-#: src/components/nav/helper.ts:51
-#: src/components/nav/helper.ts:161
-#: src/components/nav/helper.ts:229
-#: src/components/nav/helper.ts:294
-#: src/components/nav/helper.ts:352
+#: src/components/nav/helper.ts:55
+#: src/components/nav/helper.ts:163
+#: src/components/nav/helper.ts:231
+#: src/components/nav/helper.ts:296
+#: src/components/nav/helper.ts:354
 msgid "Back"
 msgstr "Назад"
 
 #: src/components/deck/DeckChecklistView/index.tsx:146
-#: src/components/deck/DeckDetailView/index.tsx:372
-#: src/components/deck/DeckDetailView/index.tsx:732
+#: src/components/deck/DeckDetailView/index.tsx:375
+#: src/components/deck/DeckDetailView/index.tsx:764
 msgid "Checklist"
 msgstr "Список карт"
 
@@ -4552,7 +4531,8 @@ msgstr "Обновлено ${ dayOfWeek }"
 msgid "Updated ${ dateString }"
 msgstr "Обновлено ${ dateString }"
 
-#: src/components/settings/LanguagePicker.tsx:152
+#: src/components/settings/LanguagePicker.tsx:148
+#: src/components/settings/LanguagePicker.tsx:158
 msgid "Language"
 msgstr "Язык"
 
@@ -4582,29 +4562,30 @@ msgstr "Запустить в нормальном режиме"
 msgid "Cache cleared"
 msgstr "Кэш очищается"
 
-#: src/components/settings/SettingsView.tsx:115
-#: src/components/settings/SettingsView.tsx:170
+#: src/components/settings/SettingsView.tsx:128
+#: src/components/settings/SettingsView.tsx:166
 msgid "Rules"
 msgstr "Правила"
 
-#: src/components/settings/ThemePicker.tsx:18
-#: src/components/settings/ThemePicker.tsx:32
-#: src/components/settings/ThemePicker.tsx:50
+#: src/components/settings/ThemePicker.tsx:19
+#: src/components/settings/ThemePicker.tsx:33
+#: src/components/settings/ThemePicker.tsx:47
 msgid "Dark"
 msgstr "Тёмная"
 
-#: src/components/settings/ThemePicker.tsx:18
-#: src/components/settings/ThemePicker.tsx:28
-#: src/components/settings/ThemePicker.tsx:47
+#: src/components/settings/ThemePicker.tsx:19
+#: src/components/settings/ThemePicker.tsx:29
+#: src/components/settings/ThemePicker.tsx:45
 msgid "Light"
 msgstr "Светлая"
 
-#: src/components/settings/ThemePicker.tsx:24
+#: src/components/settings/ThemePicker.tsx:25
 #, javascript-format
 msgid "Default (${ systemSchemeName })"
 msgstr "По умолчанию (${ systemSchemeName })"
 
-#: src/components/settings/ThemePicker.tsx:55
+#: src/components/settings/ThemePicker.tsx:51
+#: src/components/settings/ThemePicker.tsx:60
 msgid "Theme"
 msgstr "Тема"
 
@@ -4612,17 +4593,17 @@ msgstr "Тема"
 msgid "Enable"
 msgstr "Разрешить"
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:217
+#: src/components/deck/EditSpecialDeckCardsView.tsx:222
 msgid "Basic weakness"
 msgstr "Базовая слабость"
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:288
+#: src/components/deck/EditSpecialDeckCardsView.tsx:293
 msgid "Do not count towards deck size"
 msgstr "Не учитывать размер колоды"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:262
 #: src/components/campaign/MyCampaignsView/CampaignList.tsx:52
-#: src/components/deck/DeckDetailView/index.tsx:256
+#: src/components/deck/DeckDetailView/index.tsx:259
 msgid "Menu"
 msgstr "Меню"
 
@@ -4688,7 +4669,7 @@ msgstr "Бой: ${ combat }"
 msgid "Agility: ${ agility }"
 msgstr "Ловкость: ${ agility }"
 
-#: src/components/core/SearchBox.tsx:57
+#: src/components/core/SearchBox.tsx:78
 msgid "Search options"
 msgstr "Опции поиска"
 
@@ -4712,27 +4693,27 @@ msgstr[0] "Показать ${ spoilerCardsCount } спойлер"
 msgstr[1] "Показать ${ spoilerCardsCount } спойлера"
 msgstr[2] "Показать ${ spoilerCardsCount } спойлеров"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:80
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:79
 msgid "Search in:"
 msgstr "Поиск в:"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:141
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:140
 msgid "Search player cards"
 msgstr "Поиск карт игрока"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:141
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:140
 msgid "Search encounter cards"
 msgstr "Поиск карт контактов"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:148
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:147
 msgid "Clear search filters"
 msgstr "Очистить фильтр поиска"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:204
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:203
 msgid "Search game text"
 msgstr "Искать по тексту карт"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:211
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:210
 msgid "Search card backs"
 msgstr "Искать на обороте"
 
@@ -4892,35 +4873,37 @@ msgstr ""
 msgid "In Bag"
 msgstr "В мешке"
 
-#: src/components/settings/FontSizePicker.tsx:21
+#: src/components/settings/FontSizePicker.tsx:23
 msgid "Smaller"
 msgstr "Мелкий"
 
-#: src/components/settings/FontSizePicker.tsx:25
+#: src/components/settings/FontSizePicker.tsx:27
+#: src/components/settings/FontSizePicker.tsx:68
 msgid "Default"
 msgstr "По умолчанию"
 
-#: src/components/settings/FontSizePicker.tsx:29
+#: src/components/settings/FontSizePicker.tsx:31
 msgid "Medium"
 msgstr "Средний"
 
-#: src/components/settings/FontSizePicker.tsx:33
+#: src/components/settings/FontSizePicker.tsx:35
 msgid "Large"
 msgstr "Большой"
 
-#: src/components/settings/FontSizePicker.tsx:37
+#: src/components/settings/FontSizePicker.tsx:39
 msgid "X-Large"
 msgstr "X-Большой"
 
-#: src/components/settings/FontSizePicker.tsx:41
+#: src/components/settings/FontSizePicker.tsx:43
 msgid "XX-Large"
 msgstr "XX-Большой"
 
 #: src/components/settings/FontSizePicker.tsx:53
+#: src/components/settings/FontSizePicker.tsx:64
 msgid "Font Size"
 msgstr "Размер шрифта"
 
-#: src/components/settings/FontSizePicker.tsx:63
+#: src/components/settings/FontSizePicker.tsx:54
 msgid ""
 "This can be used to make the app font size larger, though it may impact "
 "layout on some screens."
@@ -5132,47 +5115,47 @@ msgstr "Изгнано"
 msgid "Latest upgrade"
 msgstr "Последнее обновление"
 
-#: src/components/deck/DeckNavFooter.tsx:64
+#: src/components/deck/DeckNavFooter.tsx:70
 #: src/components/deck/hooks.ts:35
 #, javascript-format
 msgid "${ adjustedXp } XP"
 msgstr "${ adjustedXp } опыта"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:692
-#: src/components/deck/DeckDetailView/index.tsx:906
+#: src/components/deck/DeckDetailView/index.tsx:945
 msgid "Add cards"
 msgstr "Добавить карты"
 
-#: src/components/deck/DeckDetailView/index.tsx:705
+#: src/components/deck/DeckDetailView/index.tsx:731
 #, javascript-format
 msgid "Deck #${ deck.id }"
 msgstr "Колода №${ deck.id }"
 
-#: src/components/deck/DeckDetailView/index.tsx:716
+#: src/components/deck/DeckDetailView/index.tsx:748
 msgid "Tools"
 msgstr "Утилиты"
 
-#: src/components/deck/DeckDetailView/index.tsx:721
+#: src/components/deck/DeckDetailView/index.tsx:753
 msgid "For balancing and evaluating"
 msgstr "Для балансировки и оценки"
 
-#: src/components/deck/DeckDetailView/index.tsx:727
+#: src/components/deck/DeckDetailView/index.tsx:759
 msgid "Check your deck stability"
 msgstr "Потестируйте колоду"
 
-#: src/components/deck/DeckDetailView/index.tsx:733
+#: src/components/deck/DeckDetailView/index.tsx:765
 msgid "For easy deck assembly"
 msgstr "Для удобства сборки колоды"
 
-#: src/components/deck/DeckDetailView/index.tsx:753
+#: src/components/deck/DeckDetailView/index.tsx:785
 msgid "Story assets and weaknesses"
 msgstr "Сюжетные активы и слабости"
 
-#: src/components/deck/DeckDetailView/index.tsx:791
+#: src/components/deck/DeckDetailView/index.tsx:823
 msgid "Clone deck"
 msgstr "Копировать колоду"
 
-#: src/components/deck/DeckDetailView/index.tsx:804
+#: src/components/deck/DeckDetailView/index.tsx:836
 msgid "Open in browser"
 msgstr "Открыть в браузере"
 
@@ -5202,7 +5185,7 @@ msgid "Card count"
 msgstr "Число карт"
 
 #: src/components/deck/DeckDetailView/DeckMetadataComponent/CardCountLine.tsx:28
-#: src/components/deck/DeckDetailView/index.tsx:532
+#: src/components/deck/DeckDetailView/index.tsx:556
 #, javascript-format
 msgid "${ normalCardCount } · ${ totalCardCount } total"
 msgid_plural "${ normalCardCount } · ${ totalCardCount } total"
@@ -5245,16 +5228,6 @@ msgstr "Скрыть карты с ограниченным доступом"
 msgid "${ count } of ${ limitSlotCount }"
 msgstr "${ count } из ${ limitSlotCount }"
 
-#: src/components/settings/DissonantVoicesLoginButton.tsx:55
-#: src/components/settings/DissonantVoicesLoginButton.tsx:58
-msgid "Sign out of Dissonant Voices"
-msgstr ""
-
-#: src/components/settings/DissonantVoicesLoginButton.tsx:64
-#: src/components/settings/DissonantVoicesLoginButton.tsx:67
-msgid "Sign in to Dissonant Voices"
-msgstr ""
-
 #: src/components/deck/hooks.ts:25
 #: src/components/deck/hooks.ts:29
 #: src/components/deck/hooks.ts:32
@@ -5278,11 +5251,11 @@ msgstr "Нет системных разрешений\\"
 msgid "Reads \"${ badThing.prompt }\""
 msgstr "Читает «${ badThing.prompt }»"
 
-#: src/components/settings/DissonantVoicesLoginButton.tsx:34
+#: src/components/settings/AccountSection/auth/DissonantVoicesLoginButton.tsx:28
 msgid "Sign in to Dissonant Voices?"
 msgstr ""
 
-#: src/components/settings/DissonantVoicesLoginButton.tsx:35
+#: src/components/settings/AccountSection/auth/DissonantVoicesLoginButton.tsx:29
 msgid ""
 "Dissonant Voices is an ongoing project by Mythos Busters to narrate the "
 "english scenario text for each Arkham Horror campaign."
@@ -5398,7 +5371,7 @@ msgstr "Переместиться"
 msgid "Resource"
 msgstr "Взять ресурс"
 
-#: src/data/scenario/CampaignStateHelper.ts:185
+#: src/data/scenario/CampaignStateHelper.ts:210
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
 msgstr "Сбросить улучшение колоды?"
@@ -5411,37 +5384,37 @@ msgid ""
 "or the number of copies of that card in your deck)."
 msgstr ""
 
-#: src/components/deck/DeckNavFooter.tsx:61
+#: src/components/deck/DeckNavFooter.tsx:67
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
 msgstr ""
 
-#: src/components/deck/DeckNavFooter.tsx:114
+#: src/components/deck/DeckNavFooter.tsx:120
 msgid "Upgrading"
 msgstr ""
 
-#: src/components/deck/DeckNavFooter.tsx:114
+#: src/components/deck/DeckNavFooter.tsx:120
 msgid "Editing"
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:286
+#: src/components/deck/dialogs.tsx:340
 msgid "Uplodaing deck"
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:319
+#: src/components/deck/dialogs.tsx:373
 msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will "
 "track changes."
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:322
+#: src/components/deck/dialogs.tsx:376
 msgid "XP earned"
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:330
+#: src/components/deck/dialogs.tsx:384
 msgid "Adjustment:"
 msgstr ""
 
-#: src/components/deck/dialogs.tsx:354
+#: src/components/deck/dialogs.tsx:408
 msgid "Adjust XP"
 msgstr ""
 
@@ -5456,7 +5429,7 @@ msgid_plural "${ size } Cards"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:41
+#: src/components/deck/controls/InvestigatorOptionsControl/FactionSelectPicker.tsx:40
 #, javascript-format
 msgid "class_${ faction }"
 msgstr ""
@@ -5469,38 +5442,38 @@ msgstr ""
 msgid "Upgrade experience"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:249
+#: src/components/deck/DeckDetailView/index.tsx:252
 msgid "Upgrading deck"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:250
+#: src/components/deck/DeckDetailView/index.tsx:253
 msgid "Editing deck"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:531
+#: src/components/deck/DeckDetailView/index.tsx:555
 #, javascript-format
 msgid "${ normalCards } card"
 msgid_plural "${ normalCards } cards"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/deck/DeckDetailView/index.tsx:546
+#: src/components/deck/DeckDetailView/index.tsx:570
 msgid "Add scenario XP"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:866
+#: src/components/deck/DeckDetailView/index.tsx:898
 msgid "Draw simulator"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:885
+#: src/components/deck/DeckDetailView/index.tsx:921
 msgid "Upgrade with XP"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:39
+#: src/components/campaign/SelectCampaignDialog/StandaloneTab.tsx:38
 msgid "Unknown campaign"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:516
+#: src/components/deck/DeckDetailView/index.tsx:540
 msgid "Deck name"
 msgstr ""
 
@@ -5518,12 +5491,12 @@ msgstr ""
 msgid "Draw Random Basic Weakness"
 msgstr ""
 
-#: src/data/scenario/CampaignStateHelper.ts:185
+#: src/data/scenario/CampaignStateHelper.ts:210
 #. This is a deck upgrade action.
 msgid "Undo deck change?"
 msgstr ""
 
-#: src/data/scenario/CampaignStateHelper.ts:188
+#: src/data/scenario/CampaignStateHelper.ts:213
 #. This is a deck upgrade action.
 msgid ""
 "Looks like you are trying to undo a deck save.\n"
@@ -5533,18 +5506,310 @@ msgid ""
 "the edits before reapplying the changes."
 msgstr ""
 
-#: src/data/scenario/CampaignStateHelper.ts:191
+#: src/data/scenario/CampaignStateHelper.ts:216
 #. This is a deck upgrade action.
 msgid "Undo anyway"
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/SaveDeckRow.tsx:153
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:104
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:113
 msgid "Save deck changes"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:50
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/SaveDecksInput/index.tsx:51
 msgid "It looks like one or more deck changes are unsaved."
+msgstr ""
+
+#: src/components/settings/FriendsView.tsx:173
+#, javascript-format
+msgid "${ handle }'s Friends"
+msgstr ""
+
+#: src/components/settings/AccountSection/ArkhamCardsAccountDetails.tsx:84
+#: src/components/settings/FriendsView.tsx:173
+#: src/components/settings/FriendsView.tsx:252
+msgid "Friends"
+msgstr ""
+
+#: src/components/settings/FriendsView.tsx:226
+#: src/components/settings/FriendsView.tsx:281
+#, javascript-format
+msgid "Search for ${ searchTerm }"
+msgstr ""
+
+#: src/components/settings/FriendsView.tsx:236
+msgid "Friend Requeusts"
+msgstr ""
+
+#: src/components/settings/FriendsView.tsx:244
+msgid "Pending Friend Requeusts"
+msgstr ""
+
+#: src/components/settings/FriendsView.tsx:262
+msgid "Search for friends to add"
+msgstr ""
+
+#: src/components/settings/FriendsView.tsx:268
+msgid "Search Results"
+msgstr ""
+
+#: src/components/settings/FriendsView.tsx:276
+#, javascript-format
+msgid "No results found for search '${ searchResults.term }'."
+msgstr ""
+
+#: src/components/settings/FriendsView.tsx:277
+msgid "Clear search"
+msgstr ""
+
+#: src/components/settings/FriendsView.tsx:334
+msgid "Search friends"
+msgstr ""
+
+#: src/components/settings/SettingsView.tsx:51
+#, javascript-format
+msgid "${ cycleCount } Cycle"
+msgid_plural "${ cycleCount } Cycles"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/settings/SettingsView.tsx:52
+msgid "${ standalonePackCount } Pack"
+msgid_plural "${ standalonePackCount } Packs"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/settings/SettingsView.tsx:148
+msgid "Encounter Spoilers"
+msgstr ""
+
+#: src/components/settings/SettingsView.tsx:193
+msgid "Support"
+msgstr ""
+
+#: src/components/settings/AccountSection/ArkhamCardsAccountDetails.tsx:25
+msgid "Account Name"
+msgstr ""
+
+#: src/components/settings/AccountSection/ArkhamCardsAccountDetails.tsx:28
+msgid "Choose a handle for your account"
+msgstr ""
+
+#: src/components/settings/AccountSection/ArkhamCardsAccountDetails.tsx:41
+msgid "Your Friends"
+msgstr ""
+
+#: src/components/settings/AccountSection/ArkhamCardsAccountDetails.tsx:65
+msgid ""
+"This app works just fine without an account.\n"
+"But signing in will allow you to sync campaigns between devices, with more "
+"features planned for the future."
+msgstr ""
+
+#: src/components/settings/AccountSection/ArkhamCardsAccountDetails.tsx:69
+#, javascript-format
+msgid "${ pendingFriendCount } pending request"
+msgid_plural "${ pendingFriendCount } pending requests"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/settings/AccountSection/ArkhamCardsAccountDetails.tsx:70
+msgid "${ friendCount } friend"
+msgid_plural "${ friendCount } friends"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/components/settings/AccountSection/ArkhamCardsAccountDetails.tsx:76
+msgid "Account name"
+msgstr ""
+
+#: src/components/settings/AccountSection/ArkhamCardsAccountDetails.tsx:77
+msgid "Choose a handle"
+msgstr ""
+
+#: src/components/settings/AccountSection/index.tsx:19
+msgid "Other Accounts"
+msgstr ""
+
+#: src/components/settings/AccountSection/index.tsx:19
+#: src/components/settings/AccountSection/index.tsx:21
+msgid "ArkhamDB Account"
+msgstr ""
+
+#: src/components/settings/AccountSection/index.tsx:21
+msgid "Accounts"
+msgstr ""
+
+#: src/components/settings/AccountSection/index.tsx:27
+msgid "Arkham Cards Account"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:102
+msgid "Looks like there is already an account registered with this email address."
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:108
+msgid "That doesn't look like a valid email address"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:113
+msgid "That password seems to be too weak."
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:118
+msgid "Your account has been disabled."
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:122
+msgid "There doesn't appear to be an account with that email address."
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:128
+msgid "Invalid password."
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:135
+msgid "Unknown error"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:229
+msgid "Email address"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:244
+msgid "Password"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:266
+msgid "Would you like to create a new account instead?"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:277
+msgid "Are you trying to sign in to an existing account?"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:288
+#, javascript-format
+msgid ""
+"A password reset email has been sent to '${ emailAddress }'.\n"
+"\n"
+"Please follow the instructions and then return to the app to continue."
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:294
+msgid "Would you like to reset your password via email?"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:308
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:393
+msgid "Sign up"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:308
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:393
+msgid "Sign in"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:345
+msgid ""
+"Using an Arkham Cards account will allow you to backup and sync your "
+"campaign data between devices.\n"
+"More features are in the works."
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:349
+msgid "Sign in to your account"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:352
+msgid "Create a new account"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:363
+msgid "Sign up with email"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:363
+msgid "Sign in with email"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:409
+msgid "Sign out"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamCardsLoginButton.tsx:409
+msgid "Sign in to app"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:44
+msgid "Problem reading from ArkhamDB"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:45
+msgid ""
+"If you are having trouble with your account you should try to reconnect.\n"
+"\n"
+"If the problem persists, you may sign out but campaigns will have ArkhamDB "
+"decks disconnected."
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:55
+msgid "Authorization issues"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:55
+msgid "Reconnect"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:58
+msgid "Logged in"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:58
+msgid "Synchronize decks"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:59
+#: src/components/settings/AccountSection/auth/DissonantVoicesLoginButton.tsx:42
+msgid "Log out"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:59
+#: src/components/settings/AccountSection/auth/DissonantVoicesLoginButton.tsx:42
+msgid "Log in"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/ArkhamDbLoginButton.tsx:66
+msgid "ArkhamDB"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/DissonantVoicesLoginButton.tsx:39
+msgid "Narration enabled"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/DissonantVoicesLoginButton.tsx:39
+msgid "Audio narration"
+msgstr ""
+
+#: src/components/settings/AccountSection/auth/DissonantVoicesLoginButton.tsx:40
+msgid "Dissonant Voices"
+msgstr ""
+
+#: src/components/deck/DeckDetailView/index.tsx:533
+#: src/components/deck/DeckDetailView/index.tsx:742
+msgid "Notes"
+msgstr ""
+
+#: src/components/deck/DeckDetailView/index.tsx:743
+msgid "Free-form text records"
+msgstr ""
+
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:178
+msgid "Achievements"
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
