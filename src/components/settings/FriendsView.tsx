@@ -19,13 +19,15 @@ import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import { SearchResults, useSearchUsers, useUpdateFriendRequest } from '@data/firebase/api';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { NavigationProps } from '@components/nav/types';
+import { Navigation } from 'react-native-navigation';
 
 export interface FriendsViewProps {
   userId: string;
 }
 
 interface UserItem {
-  type: 'friend' | 'pending' | 'received';
+  type: 'user';
   user: FriendUser;
 }
 interface HeaderItem {
@@ -48,7 +50,7 @@ type Item = UserItem | HeaderItem | ButtonItem | PlaceholderItem;
 function UserRow({ user, status, showUser, acceptRequest, rejectRequest }: {
   user: FriendUser;
   status?: FriendStatus;
-  showUser?: (userId: string) => Promise<void>;
+  showUser?: (userId: string, handle?: string) => Promise<void>;
   acceptRequest: (userId: string) => Promise<void>;
   rejectRequest: (userId: string) => Promise<void>;
 }) {
@@ -57,8 +59,8 @@ function UserRow({ user, status, showUser, acceptRequest, rejectRequest }: {
     return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
   }, [colors]);
   const onPress = useCallback(() => {
-    showUser?.(user.userId);
-  }, [showUser, user.userId]);
+    showUser?.(user.userId, user.handle);
+  }, [showUser, user]);
   const [submitting, setSubmitting] = useState<'accept' | 'reject'>();
   const onAcceptPress = useCallback(async() => {
     setSubmitting('accept');
@@ -102,7 +104,7 @@ function UserRow({ user, status, showUser, acceptRequest, rejectRequest }: {
     return (
       <>
         { map(buttons, (button, idx) => (
-          <View key={idx} style={[styles.button, idx !== buttons.length -1 ? space.marginRightM : undefined]}>
+          <View key={idx} style={[styles.button, idx !== buttons.length - 1 ? space.marginRightM : undefined]}>
             { button }
           </View>
         )) }
@@ -110,11 +112,13 @@ function UserRow({ user, status, showUser, acceptRequest, rejectRequest }: {
     );
   }, [onAcceptPress, onRejectPress, colors, status, submitting]);
   return (
-    <TouchableOpacity style={[styles.userRow, borderStyle, space.paddingM]} onPress={onPress} disabled={!showUser}>
+    <View style={[styles.userRow, borderStyle, space.paddingM]}>
       { user.handle ? (
-        <Text style={typography.large}>
-          { user.handle }
-        </Text>
+        <TouchableOpacity style={styles.pressable} onPress={onPress} disabled={!showUser}>
+          <Text style={typography.large}>
+            { user.handle }
+          </Text>
+        </TouchableOpacity>
       ) : (
         <Placeholder Animation={fadeAnim}>
           <PlaceholderLine noMargin style={styles.textPlaceholder} color={colors.M} />
@@ -123,11 +127,12 @@ function UserRow({ user, status, showUser, acceptRequest, rejectRequest }: {
       <View style={styles.controls}>
         { controls }
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
 
-function FriendFeed({ userId, handleScroll, showHeader, focus, searchResults, searchTerm, onSearchChange, performSearch }: FriendsViewProps & {
+function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, searchResults, searchTerm, onSearchChange, performSearch }: FriendsViewProps & {
+  componentId: string;
   handleScroll: (...args: any[]) => void;
   showHeader: () => void;
   focus: () => void;
@@ -152,21 +157,35 @@ function FriendFeed({ userId, handleScroll, showHeader, focus, searchResults, se
   const acceptRequest = useCallback((userId: string) => {
     return updateFriendRequest(userId, 'request');
   }, [updateFriendRequest]);
-
   const rejectRequest = useCallback((userId: string) => {
     return updateFriendRequest(userId, 'revoke');
   }, [updateFriendRequest]);
+  const showUser = useCallback((userId: string, handle?: string) => {
+    Navigation.push(componentId, {
+      component: {
+        name: 'Friends',
+        passProps: {
+          userId: userId,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: handle ? t`${handle}'s Friends` : t`Friends`,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId]);
   const renderItem = useCallback(({ item, index }: ListRenderItemInfo<Item>): React.ReactElement | null => {
     switch (item.type) {
-      case 'friend':
-      case 'pending':
-      case 'received':
+      case 'user':
         return (
           <UserRow
             key={index}
             user={item.user}
             status={item.user.userId !== user?.uid ? selfFriendStatus?.[item.user.userId] || FriendStatus.NONE : undefined}
-
+            showUser={item.user.userId !== user?.uid ? showUser : undefined}
             acceptRequest={acceptRequest}
             rejectRequest={rejectRequest}
           />
@@ -217,7 +236,7 @@ function FriendFeed({ userId, handleScroll, showHeader, focus, searchResults, se
       feed.push({ type: 'header', header: t`Friend Requeusts` });
       forEach(receivedRequests, f => {
         if (matchesSearch(f)) {
-          feed.push({ type: 'received', user: f });
+          feed.push({ type: 'user', user: f });
         }
       });
     }
@@ -225,7 +244,7 @@ function FriendFeed({ userId, handleScroll, showHeader, focus, searchResults, se
       feed.push({ type: 'header', header: t`Pending Friend Requeusts` });
       forEach(pendingRequests, f => {
         if (matchesSearch(f)) {
-          feed.push({ type: 'pending', user: f });
+          feed.push({ type: 'user', user: f });
         }
       });
     }
@@ -233,14 +252,14 @@ function FriendFeed({ userId, handleScroll, showHeader, focus, searchResults, se
       feed.push({ type: 'header', header: t`Friends` });
       forEach(friends, f => {
         if (matchesSearch(f)) {
-          feed.push({ type: 'friend', user: f });
+          feed.push({ type: 'user', user: f });
         }
       });
     }
     if (isSelf && !searchTerm) {
       feed.push({
         type: 'button',
-        title: t`Search for new friends`,
+        title: t`Search for friends to add`,
         icon: 'search',
         onPress: searchFriendsPressed,
       });
@@ -250,7 +269,7 @@ function FriendFeed({ userId, handleScroll, showHeader, focus, searchResults, se
       if (find(searchResults.results || [], matchesSearch)) {
         forEach(searchResults.results, f => {
           if (matchesSearch(f)) {
-            feed.push({ type: 'friend', user: f });
+            feed.push({ type: 'user', user: f });
           }
         });
       } else if (searchResults.term === searchTerm) {
@@ -297,7 +316,7 @@ function FriendFeed({ userId, handleScroll, showHeader, focus, searchResults, se
     />
   );
 }
-export default function FriendsView({ userId }: FriendsViewProps) {
+export default function FriendsView({ userId, componentId }: FriendsViewProps & NavigationProps) {
   const [searchTerm, updateSearchTerm] = useState<string>('');
   const { search, searchResults } = useSearchUsers();
   const onSearchChange = useCallback((value: string, submit: boolean) => {
@@ -318,6 +337,7 @@ export default function FriendsView({ userId }: FriendsViewProps) {
     >
       { (handleScroll, showHeader, focus) => (
         <FriendFeed
+          componentId={componentId}
           userId={userId}
           handleScroll={handleScroll}
           showHeader={showHeader}
@@ -351,5 +371,11 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 32,
+  },
+  pressable: {
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });
