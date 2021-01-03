@@ -12,7 +12,6 @@ interface Props {
   factions: FactionCodeType[];
   selection: FactionCodeType;
   onChange: (faction: FactionCodeType) => void;
-  investigatorFaction: FactionCodeType;
   disabled?: boolean;
   editWarning: boolean;
   first: boolean;

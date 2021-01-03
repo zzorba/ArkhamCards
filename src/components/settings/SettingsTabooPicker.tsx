@@ -14,8 +14,8 @@ export default function SettingsTabooPicker({ last }: Props) {
   const onSetTabooSet = useCallback((tabooSetId?: number) => {
     dispatch(setTabooSet(tabooSetId));
   }, [dispatch]);
-  const tabooSetSelector = useMemo(makeTabooSetSelector, []);
-  const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state));
+  const tabooSetSelector: (state: AppState, tabooSetId?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
+  const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, undefined));
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
   return (
     <DeckTabooPickerButton

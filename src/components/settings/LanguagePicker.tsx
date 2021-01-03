@@ -28,14 +28,6 @@ function languages() {
   ];
 }
 
-function formatLabel(idx: number) {
-  if (idx === 0) {
-    const systemLang = getSystemLanguage();
-    return localizedName(systemLang);
-  }
-  return languages()[idx].label;
-}
-
 interface DialogStrings {
   title: string;
   description: string;

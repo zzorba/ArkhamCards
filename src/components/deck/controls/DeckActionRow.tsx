@@ -12,6 +12,7 @@ interface Props {
   control: React.ReactNode;
   last?: boolean;
   loading?: boolean;
+  growControl?: boolean;
 }
 
 function iconSize(icon: string) {
@@ -28,7 +29,7 @@ function iconSize(icon: string) {
       return 34;
   }
 }
-export default function DeckActionRow({ title, description, icon, last, control, loading }: Props) {
+export default function DeckActionRow({ title, description, icon, last, control, loading, growControl }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   return (
     <View style={[styles.wrapper, space.paddingRightS, { paddingTop: xs + s, paddingBottom: xs + s }, borderStyle, !last ? styles.border : undefined]}>
@@ -45,14 +46,20 @@ export default function DeckActionRow({ title, description, icon, last, control,
           </View>
         </View>
       </View>
-      { loading ? <ActivityIndicator color={colors.lightText} size="small" animating /> : <View style={styles.control}>{control}</View> }
+      { loading ? (
+        <ActivityIndicator color={colors.lightText} size="small" animating />
+      ) : (
+        <View style={[styles.control, growControl ? styles.flex : undefined]}>{control}</View>
+      ) }
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   control: {
-    maxWidth: 100,
+    maxWidth: 120,
+  },
+  flex: {
     flex: 1,
   },
   wrapper: {
