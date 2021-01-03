@@ -465,7 +465,7 @@ export const makeChaosBagResultsSelector = () =>
 
 export const makeTabooSetSelector = () =>
   createSelector(
-    (state: AppState) => state.settings.tabooId,
+    (state: AppState, tabooSetOverride?: number) => state.settings.tabooId,
     (state: AppState, tabooSetOverride?: number) => tabooSetOverride,
     (tabooId: number | undefined, tabooSetOverride: number | undefined): number | undefined => {
       if (tabooSetOverride !== undefined) {

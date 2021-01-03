@@ -118,7 +118,7 @@ export interface FilterState {
   assetSanity: [number, number];
 }
 
-const ACTION_TEXT: { [key: string]: string}= {
+const ACTION_TEXT: { [key: string]: string } = {
   fight: '<b>Fight.</b>',
   engage: '<b>Engage.</b>',
   investigate: '<b>Investigate.</b>',

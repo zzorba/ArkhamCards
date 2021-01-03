@@ -1,68 +1,64 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { find, forEach, keys, range, throttle } from 'lodash';
+import { find, forEach } from 'lodash';
 import {
   Alert,
   AlertButton,
-  ActivityIndicator,
   Linking,
   Platform,
   ScrollView,
   StyleSheet,
-  Text,
   View,
   useWindowDimensions,
 } from 'react-native';
 import { Action } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
-import DialogComponent from '@lib/react-native-dialog';
-import deepDiff from 'deep-diff';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
+import ActionButton from 'react-native-action-button';
 
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
-import Dialog from '@components/core/Dialog';
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
-import {
-  deleteDeckAction,
-  uploadLocalDeck,
-  saveDeckChanges,
-  startDeckEdit,
-} from '@components/deck/actions';
-import { Slots, UPDATE_DECK_EDIT } from '@actions/types';
-import { updateCampaign } from '@components/campaign/actions';
+import { deleteDeckAction } from '@components/deck/actions';
+import { UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/Card';
 import { EditDeckProps } from '../DeckEditView';
-import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
 import { DeckHistoryProps } from '../DeckHistoryView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
-import EditDeckDetailsDialog from './EditDeckDetailsDialog';
 import DeckViewTab from './DeckViewTab';
-import DeckNavFooter from '@components/DeckNavFooter';
+import DeckNavFooter from '@components/deck/DeckNavFooter';
 import {
   makeCampaignSelector,
   makeCampaignForDeckSelector,
   getPacksInCollection,
   AppState,
 } from '@reducers';
-import space, { m } from '@styles/space';
+import space, { xs, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeck } from '@components/deck/hooks';
+import { useAdjustXpDialog, useBasicDialog, useSaveDialog, useTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
 import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
-import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
+import AppIcon from '@icons/AppIcon';
+import LoadingSpinner from '@components/core/LoadingSpinner';
+import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import DeckButton from '../controls/DeckButton';
+import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
+import DeckProblemBanner from '../DeckProblemBanner';
 
 export interface DeckDetailProps {
   id: number;
+  upgrade?: boolean;
   title?: string;
   subtitle?: string;
   campaignId?: number;
@@ -76,7 +72,6 @@ type Props = NavigationProps &
   LoginStateProps;
 type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
-
 function DeckDetailView({
   componentId,
   id,
@@ -88,13 +83,23 @@ function DeckDetailView({
   modal,
   signedIn,
   login,
+  upgrade,
 }: Props) {
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, colors, darkMode, typography, shadow } = useContext(StyleContext);
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { width } = useWindowDimensions();
 
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
+  const parsedDeckObj = useParsedDeck(id, 'DeckDetail', componentId, {
+    fetchIfMissing: true,
+    upgrade,
+  });
+  const campaignSelector = useMemo(makeCampaignSelector, []);
+  const campaignForDeckSelector = useMemo(makeCampaignForDeckSelector, []);
+  const campaign = useSelector((state: AppState) => campaignId ? campaignSelector(state, campaignId) : campaignForDeckSelector(state, deck?.id || id));
+  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj, campaign);
+  const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
   const {
     deck,
     cards,
@@ -103,17 +108,15 @@ function DeckDetailView({
     visible,
     parsedDeck,
     tabooSetId,
-  } = useParsedDeck(id, 'DeckDetail', componentId, true);
-
+  } = parsedDeckObj;
   const [copying, toggleCopying] = useFlag(false);
-  const [saving, setSaving] = useState(false);
-  const [saveError, setSaveError] = useState<string | undefined>();
-  const [deleting, setDeleting] = useState(false);
-  const [deleteError, setDeleteError] = useState<string | undefined>();
+  const {
+    saving: deleting,
+    setSaving: setDeleting,
+    savingDialog: deletingDialog,
+  } = useBasicDialog(t`Deleting`);
   const [menuOpen, toggleMenuOpen, setMenuOpen] = useFlag(false);
   const [tabooOpen, setTabooOpen] = useState(false);
-  const [editDetailsOpen, toggleEditDetailsOpen, setEditDetailsOpen] = useFlag(false);
-
   const tabooSet = useTabooSet(tabooSetId);
   const investigators = useInvestigatorCards(tabooSetId);
 
@@ -130,56 +133,6 @@ function DeckDetailView({
     });
     return parallelInvestigators;
   }, [investigators, deck?.investigator_code]);
-  const [hasPendingEdits, setHasPendingEdits] = useState(false);
-  const [slotDeltas, setSlotDeltas] = useState<{
-    removals: Slots;
-    additions: Slots;
-    ignoreDeckLimitChanged: boolean
-  }>({ removals: {}, additions: {}, ignoreDeckLimitChanged: false });
-
-  useEffect(() => {
-    if (!visible || !deck || !deckEdits) {
-      return;
-    }
-    const slotDeltas: {
-      removals: Slots;
-      additions: Slots;
-      ignoreDeckLimitChanged: boolean;
-    } = {
-      removals: {},
-      additions: {},
-      ignoreDeckLimitChanged: false,
-    };
-    forEach(deck.slots, (deckCount, code) => {
-      const currentDeckCount = deckEdits.slots[code] || 0;
-      if (deckCount > currentDeckCount) {
-        slotDeltas.removals[code] = deckCount - currentDeckCount;
-      }
-    });
-    forEach(deckEdits.slots, (currentCount, code) => {
-      const ogDeckCount = deck.slots[code] || 0;
-      if (ogDeckCount < currentCount) {
-        slotDeltas.additions[code] = currentCount - ogDeckCount;
-      }
-      const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
-      if (ogIgnoreCount !== (deckEdits.ignoreDeckLimitSlots[code] || 0)) {
-        slotDeltas.ignoreDeckLimitChanged = true;
-      }
-    });
-
-    const originalTabooSet: number = (deck.taboo_id || 0);
-    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
-    setHasPendingEdits(
-      (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
-      (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
-      (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
-      keys(slotDeltas.removals).length > 0 ||
-      keys(slotDeltas.additions).length > 0 ||
-      slotDeltas.ignoreDeckLimitChanged ||
-      (!!metaChanges && metaChanges.length > 0)
-    );
-    setSlotDeltas(slotDeltas);
-  }, [deck, deckEdits, visible]);
 
   const [investigatorFront, investigatorBack] = useMemo(() => {
     const altFront = deckEdits?.meta.alternate_front && find(
@@ -196,10 +149,7 @@ function DeckDetailView({
 
   const problem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
-  const campaignSelector = useMemo(makeCampaignSelector, []);
-  const campaignForDeckSelector = useMemo(makeCampaignForDeckSelector, []);
   const inCollection = useSelector(getPacksInCollection);
-  const campaign = useSelector((state: AppState) => campaignId ? campaignSelector(state, campaignId) : campaignForDeckSelector(state, deck?.id || id));
 
   const [cardsByName, bondedCardsByName] = useMemo(() => {
     const cardsByName: {
@@ -227,79 +177,15 @@ function DeckDetailView({
     return [cardsByName, bondedCardsByName];
   }, [cards]);
 
-  const addedBasicWeaknesses = useMemo(() => {
-    if (!cards || !deck) {
-      return [];
-    }
-    const addedWeaknesses: string[] = [];
-    forEach(slotDeltas.additions, (addition, code) => {
-      const card = cards[code];
-      if (card && card.subtype_code === 'basicweakness') {
-        forEach(range(0, addition), () => addedWeaknesses.push(code));
-      }
+  const setMode = useCallback((mode: 'view' | 'edit' | 'upgrade') => {
+    dispatch({
+      type: UPDATE_DECK_EDIT,
+      id,
+      updates: {
+        mode,
+      },
     });
-    return addedWeaknesses;
-  }, [deck, cards, slotDeltas]);
-  const updateCampaignWeaknessSet = useCallback((newAssignedCards: string[]) => {
-    if (campaign) {
-      const assignedCards = {
-        ...(campaign.weaknessSet && campaign.weaknessSet.assignedCards) || {},
-      };
-      forEach(newAssignedCards, code => {
-        assignedCards[code] = (assignedCards[code] || 0) + 1;
-      });
-      dispatch(updateCampaign(
-        campaign.id,
-        {
-          weaknessSet: {
-            ...(campaign.weaknessSet || {}),
-            assignedCards,
-          },
-        },
-      ));
-    }
-  }, [campaign, dispatch]);
-
-  const handleSaveError = useCallback((err: Error) => {
-    setSaving(false);
-    setSaveError(err.message || 'Unknown Error');
-  }, [setSaveError, setSaving]);
-
-  const actuallySaveEdits = useCallback((dismissAfterSave: boolean, isRetry?: boolean) => {
-    if (saving && !isRetry) {
-      return;
-    }
-    if (!deck || !parsedDeck || !deckEditsRef.current) {
-      return;
-    }
-    const problemField = problem ? problem.reason : '';
-    setSaving(true);
-    deckDispatch(saveDeckChanges(
-      deck,
-      {
-        name: deckEditsRef.current.nameChange,
-        slots: deckEditsRef.current.slots,
-        ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
-        problem: problemField,
-        spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
-        xpAdjustment: deckEditsRef.current.xpAdjustment,
-        tabooSetId,
-        meta: deckEditsRef.current.meta,
-      }
-    )).then(() => {
-      updateCampaignWeaknessSet(addedBasicWeaknesses);
-      if (dismissAfterSave) {
-        Navigation.dismissAllModals();
-      } else {
-        setSaving(false);
-      }
-    }, handleSaveError);
-  }, [deck, saving, parsedDeck, deckEditsRef, tabooSetId, addedBasicWeaknesses, problem,
-    deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet,
-  ]);
-
-  const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
-  const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);
+  }, [dispatch, id]);
 
   const handleBackPress = useCallback(() => {
     if (!visible) {
@@ -341,67 +227,73 @@ function DeckDetailView({
     }
   }, componentId, [saveEdits, toggleMenuOpen, handleBackPress]);
   useBackButton(handleBackPress);
-  const rightButtons = useMemo(() => {
+
+  const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
+  useEffect(() => {
+    const textColors = {
+      view: '#FFFFFF',
+      edit: COLORS.L30,
+      upgrade: COLORS.D30,
+    };
+    const textColor = textColors[mode];
+    const backgroundColors = {
+      view: factionColor,
+      edit: darkMode ? COLORS.D20 : COLORS.D10,
+      upgrade: colors.upgrade,
+    };
+    const statusBarStyles: { [key: string]: 'light' | 'dark' | undefined } = {
+      view: 'light',
+      edit: 'light',
+      upgrade: 'dark',
+    };
+    const backgroundColor = backgroundColors[mode];
+    const titles = {
+      view: title,
+      upgrade: t`Upgrading deck`,
+      edit: t`Editing deck`,
+    };
     const rightButtons: OptionsTopBarButton[] = [{
       id: 'menu',
       icon: iconsMap.menu,
-      color: 'white',
+      color: textColor,
       accessibilityLabel: t`Menu`,
     }];
-    if (hasPendingEdits) {
-      rightButtons.push({
-        text: t`Save`,
-        id: 'save',
-        color: 'white',
-        accessibilityLabel: t`Save`,
-      });
-    }
-    return rightButtons;
-  }, [hasPendingEdits]);
-
-  useEffect(() => {
     const leftButtons = modal ? [
       Platform.OS === 'ios' ? {
         text: t`Done`,
         id: 'back',
-        color: 'white',
+        color: textColor,
       } : {
         icon: iconsMap['arrow-left'],
         id: 'androidBack',
-        color: 'white',
+        color: textColor,
       },
     ] : [];
 
+
     Navigation.mergeOptions(componentId, {
+      statusBar: {
+        style: statusBarStyles[mode],
+        backgroundColor,
+      },
       topBar: {
         title: {
-          text: title,
-          color: '#FFFFFF',
+          text: titles[mode],
+          color: textColor,
         },
         subtitle: {
           text: name || subtitle,
-          color: '#FFFFFF',
+          color: textColor,
+        },
+        background: {
+          color: backgroundColor,
         },
         leftButtons,
         rightButtons,
       },
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [modal, rightButtons, componentId]);
-
-  const doUploadLocalDeck = useMemo(() => throttle((isRetry?: boolean) => {
-    if (!parsedDeck || !deck) {
-      return;
-    }
-    if (!saving || isRetry) {
-      setSaving(true);
-      deckDispatch(uploadLocalDeck(deck)).then(() => {
-        setSaving(false);
-      }, () => {
-        setSaving(false);
-      });
-    }
-  }, 200), [deckDispatch, parsedDeck, saving, deck, setSaving]);
+  }, [modal, darkMode, componentId, mode, colors, factionColor, name, subtitle, title]);
+  const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(deck, parsedDeck);
 
   useEffect(() => {
     if (!deck) {
@@ -420,21 +312,6 @@ function DeckDetailView({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deck]);
-
-  useEffect(() => {
-    const newName = deckEdits?.nameChange || deck?.name;
-    if (newName) {
-      Navigation.mergeOptions(componentId, {
-        topBar: {
-          subtitle: {
-            text: newName,
-            color: '#FFFFFF',
-          },
-        },
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deckEdits?.nameChange]);
 
   const deleteDeck = useCallback((deleteAllVersions: boolean) => {
     if (!deleting) {
@@ -481,10 +358,6 @@ function DeckDetailView({
     toggleCopying();
   }, [toggleCopying, setMenuOpen]);
 
-  const savePressed = useCallback(() => {
-    saveEdits();
-  }, [saveEdits]);
-
   const onChecklistPressed = useCallback(() => {
     if (!deck || !cards || !deckEditsRef.current) {
       return;
@@ -508,8 +381,12 @@ function DeckDetailView({
     if (!deck || !cards) {
       return;
     }
+    if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
+      setMode('edit');
+    }
     setMenuOpen(false);
     const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<EditSpecialCardsProps>(componentId, {
       component: {
         name: 'Deck.EditSpecial',
@@ -521,6 +398,7 @@ function DeckDetailView({
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -532,29 +410,35 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },
       },
     });
-  }, [componentId, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses]);
+  }, [componentId, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses, deckEditsRef, setMode]);
 
-  const onEditPressed = useCallback(() => {
+
+  const onAddCardsPressed = useCallback(() => {
     if (!deck || !cards) {
       return;
     }
+    if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
+      setMode('edit');
+    }
     setMenuOpen(false);
     const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<EditDeckProps>(componentId, {
       component: {
-        name: 'Deck.Edit',
+        name: 'Deck.EditAddCards',
         passProps: {
           id,
         },
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -566,19 +450,20 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },
       },
     });
-  }, [componentId, deck, id, colors, setMenuOpen, cards]);
+  }, [componentId, deck, id, colors, setMenuOpen, cards, deckEditsRef, setMode]);
 
   const onUpgradePressed = useCallback(() => {
     if (!deck) {
       return;
     }
     setMenuOpen(false);
+    const backgroundColor = colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].background;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -590,6 +475,7 @@ function DeckDetailView({
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -601,27 +487,13 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },
       },
     });
   }, [componentId, deck, campaign, colors, parsedDeck, setMenuOpen]);
-
-  const dismissDeleteError = useCallback(() => {
-    setDeleting(false);
-    setDeleteError(undefined);
-  }, [setDeleting, setDeleteError]);
-
-  const dismissSaveError = useCallback(() => {
-    setSaveError(undefined);
-    setSaving(false);
-  }, [setSaveError, setSaving]);
-
-  const clearEdits = useCallback(() => {
-    dispatch(startDeckEdit(id));
-  }, [dispatch, id]);
 
   const copyDialog = useMemo(() => {
     return (
@@ -640,114 +512,72 @@ function DeckDetailView({
     setMenuOpen(false);
   }, [setMenuOpen, setTabooOpen]);
 
-  const showEditDetails = useCallback(() => {
-    setMenuOpen(false);
-    setEditDetailsOpen(true);
-  }, [setMenuOpen, setEditDetailsOpen]);
-
-  const updateDeckDetails = useCallback((name: string, xpAdjustment: number) => {
-    setEditDetailsOpen(false);
+  const updateDeckName = useCallback((name: string) => {
     dispatch({
       type: UPDATE_DECK_EDIT,
       id,
       updates: {
         nameChange: name,
-        xpAdjustment,
       },
     });
-  }, [dispatch, id, setEditDetailsOpen]);
-
-  const editDetailsDialog = useMemo(() => {
-    if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
-      return null;
+  }, [dispatch, id]);
+  const showDescription = useCallback(() => {
+    if (parsedDeck) {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Deck.Description',
+          passProps: {
+            componentId,
+            id,
+          },
+          options: getDeckOptions(colors, { title: t`Notes` }, parsedDeck.investigator),
+        },
+      });
     }
-    const {
-      changes,
-    } = parsedDeck;
-    return (
-      <EditDeckDetailsDialog
-        visible={editDetailsOpen}
-        xp={deck.xp || 0}
-        spentXp={changes ? changes.spentXp : 0}
-        xpAdjustment={deckEdits.xpAdjustment}
-        xpAdjustmentEnabled={!!deck.previous_deck && !deck.next_deck}
-        toggleVisible={toggleEditDetailsOpen}
-        name={deckEdits.nameChange || deck.name}
-        updateDetails={updateDeckDetails}
-      />
-    );
-  }, [deck, parsedDeck, editDetailsOpen, toggleEditDetailsOpen, updateDeckDetails, deckEdits?.xpAdjustment, deckEdits?.nameChange]);
-
-  const deletingDialog = useMemo(() => {
-    if (deleteError) {
-      return (
-        <Dialog title={t`Error`} visible={deleting}>
-          <Text style={[styles.errorMargin, typography.small]}>
-            { deleteError }
-          </Text>
-          <DialogComponent.Button
-            label={t`Okay`}
-            onPress={dismissDeleteError}
-          />
-        </Dialog>
-      );
-    }
-    return (
-      <Dialog title={t`Deleting`} visible={deleting}>
-        <ActivityIndicator
-          style={styles.spinner}
-          color={colors.lightText}
-          size="large"
-          animating
-        />
-      </Dialog>
-    );
-  }, [colors, typography, deleting, deleteError, dismissDeleteError]);
-
-  const savingDialog = useMemo(() => {
-    if (saveError) {
-      return (
-        <Dialog title={t`Error`} visible={saving}>
-          <Text style={[styles.errorMargin, typography.small]}>
-            { saveError }
-          </Text>
-          <DialogComponent.Button
-            label={t`Okay`}
-            onPress={dismissSaveError}
-          />
-        </Dialog>
-      );
-    }
-    return (
-      <Dialog title={t`Saving`} visible={saving}>
-        <ActivityIndicator
-          style={styles.spinner}
-          color={colors.lightText}
-          size="large"
-          animating
-        />
-      </Dialog>
-    );
-  }, [colors, typography, saving, saveError, dismissSaveError]);
-
+    setMenuOpen(false);
+  }, [componentId, parsedDeck, colors, id, setMenuOpen]);
+  const { dialog: editNameDialog, showDialog: showEditNameDialog } = useTextDialog({
+    title: t`Deck name`,
+    onValueChange: updateDeckName,
+    value: name || '',
+  });
+  const editable = !!isPrivate && !!deck && !deck.next_deck;
+  const onEditPressed = useCallback(() => setMode('edit'), [setMode]);
   const buttons = useMemo(() => {
-    if (!deck || deck.next_deck || !hasPendingEdits) {
+    if (!parsedDeck || !deck || deck.next_deck) {
       return null;
     }
-    return (
-      <>
-        <BasicButton
-          title={t`Save Changes`}
-          onPress={savePressed}
-        />
-        <BasicButton
-          title={t`Discard Changes`}
-          color={COLORS.red}
-          onPress={clearEdits}
-        />
-      </>
-    );
-  }, [deck, hasPendingEdits, savePressed, clearEdits]);
+    if (!hasPendingEdits && editable) {
+      if (!deckEdits?.mode || deckEdits.mode !== 'view') {
+        return null;
+      }
+      const { normalCardCount: normalCards, totalCardCount } = parsedDeck;
+      const normalCardCount = ngettext(msgid`${normalCards} card`, `${normalCards} cards`, normalCards);
+      const details = ngettext(msgid`${normalCardCount} · ${totalCardCount} total`, `${normalCardCount} · ${totalCardCount} total`, totalCardCount);
+      return (
+        <View style={[styles.row, space.marginS]}>
+          <View style={[space.marginRightXs, styles.flex]}>
+            <DeckButton
+              title={t`Edit`}
+              detail={details}
+              icon="edit"
+              onPress={onEditPressed}
+            />
+          </View>
+          <View style={[space.marginLeftXs, styles.flex]}>
+            <DeckButton
+              title={t`Upgrade`}
+              detail={t`Add scenario XP`}
+              icon="upgrade"
+              color="gold"
+              onPress={onUpgradePressed}
+            />
+          </View>
+        </View>
+      );
+    }
+    return null;
+  }, [deck, hasPendingEdits, editable, parsedDeck, deckEdits, onEditPressed, onUpgradePressed]);
 
   const showCardUpgradeDialog = useCallback((card: Card) => {
     if (!parsedDeck) {
@@ -766,10 +596,6 @@ function DeckDetailView({
       },
     });
   }, [componentId, cardsByName, parsedDeck, id, colors]);
-
-  const uploadLocalDeckPressed = useCallback(() => {
-    doUploadLocalDeck();
-  }, [doUploadLocalDeck]);
 
   const uploadToArkhamDB = useCallback(() => {
     if (!deck) {
@@ -800,12 +626,12 @@ function DeckDetailView({
         t`Upload to ArkhamDB`,
         t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
         [
-          { text: t`Upload`, onPress: uploadLocalDeckPressed },
+          { text: t`Upload`, onPress: uploadLocalDeck },
           { text: t`Cancel`, style: 'cancel' },
         ],
       );
     }
-  }, [signedIn, login, deck, hasPendingEdits, setMenuOpen, uploadLocalDeckPressed]);
+  }, [signedIn, login, deck, hasPendingEdits, setMenuOpen, uploadLocalDeck]);
 
   const viewDeck = useCallback(() => {
     if (deck) {
@@ -898,7 +724,7 @@ function DeckDetailView({
         { editable && (
           <>
             <MenuButton
-              onPress={showEditDetails}
+              onPress={showEditNameDialog}
               title={deckEdits.nameChange || deck.name}
               description={!deck.local ? t`Deck #${deck.id}` : undefined}
             />
@@ -907,10 +733,16 @@ function DeckDetailView({
               onPress={showTabooPicker}
               icon="taboo_thin"
               description={tabooSet ? tabooSet.date_start : t`None`}
-              last
             />
           </>
         ) }
+        <MenuButton
+          title={t`Notes`}
+          description={t`Free-form text records`}
+          onPress={showDescription}
+          icon="edit"
+          last
+        />
         <DeckBubbleHeader title={t`Tools`} />
         <MenuButton
           onPress={showCardChartsPressed}
@@ -935,7 +767,7 @@ function DeckDetailView({
           <>
             <DeckBubbleHeader title={t`Cards`} />
             <MenuButton
-              onPress={onEditPressed}
+              onPress={onAddCardsPressed}
               icon="card-outline"
               title={t`Deck Cards`}
               description={ngettext(
@@ -959,7 +791,7 @@ function DeckDetailView({
             { !!deck.previous_deck && (
               <MenuButton
                 icon="xp"
-                onPress={showEditDetails}
+                onPress={showXpAdjustmentDialog}
                 title={t`Available XP`}
                 description={xpString}
               />
@@ -1007,28 +839,123 @@ function DeckDetailView({
         { !!isPrivate && (
           <MenuButton
             icon="delete"
-            title={t`Delete`}
+            title={t`Delete deck`}
             onPress={deleteDeckPressed}
             last
           />
         ) }
       </ScrollView>
     );
-  }, [backgroundStyle, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
-    showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB,
-    onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditDetails, showTabooPicker,
-    onEditPressed, onEditSpecialPressed, onChecklistPressed,
+  }, [backgroundStyle, onAddCardsPressed, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
+    showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
+    onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
+    onEditSpecialPressed, onChecklistPressed,
   ]);
+
+  const [fabOpen, toggleFabOpen] = useFlag(false);
+  const fabIcon = useCallback((active: boolean) => {
+    if (active) {
+      return <AppIcon name="plus-thin" color={colors.L30} size={32} />;
+    }
+    if (editable && mode === 'view') {
+      return <AppIcon name="edit" color="white" size={24} />;
+    }
+    return <AppIcon name="plus-thin" color={colors.L30} size={24} />;
+  }, [colors, editable, mode]);
+
+  const fab = useMemo(() => {
+    const actionLabelStyle = {
+      ...typography.small,
+      color: colors.L30,
+      paddingTop: 5,
+      paddingLeft: s,
+      paddingRight: s,
+    };
+    const actionContainerStyle = {
+      backgroundColor: colors.D20,
+      borderRadius: 16,
+      borderWidth: 0,
+      minHeight: 32,
+      marginTop: -3,
+    };
+    return (
+      <ActionButton
+        active={fabOpen}
+        buttonColor={(mode !== 'view' || fabOpen) ? colors.D10 : factionColor}
+        renderIcon={fabIcon}
+        onPress={toggleFabOpen}
+        offsetX={s + xs}
+        offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+        shadowStyle={shadow.large}
+        fixNativeFeedbackRadius
+      >
+        <ActionButton.Item
+          buttonColor={factionColor}
+          textStyle={actionLabelStyle}
+          textContainerStyle={actionContainerStyle}
+          title={t`Draw simulator`}
+          onPress={showDrawSimulatorPressed}
+          shadowStyle={shadow.medium}
+          useNativeFeedback={false}
+        >
+          <AppIcon name="draw" color={colors.L30} size={34} />
+        </ActionButton.Item>
+        <ActionButton.Item
+          buttonColor={factionColor}
+          textStyle={actionLabelStyle}
+          textContainerStyle={actionContainerStyle}
+          title={t`Charts`}
+          onPress={showCardChartsPressed}
+          shadowStyle={shadow.medium}
+          useNativeFeedback={false}
+        >
+          <AppIcon name="chart" color={colors.L30} size={34} />
+        </ActionButton.Item>
+        { editable && mode === 'view' && (
+          <ActionButton.Item
+            buttonColor={factionColor}
+            textStyle={actionLabelStyle}
+            textContainerStyle={actionContainerStyle}
+            title={t`Upgrade with XP`}
+            onPress={onUpgradePressed}
+            useNativeFeedback={false}
+          >
+            <AppIcon name="upgrade" color={colors.L30} size={32} />
+          </ActionButton.Item>
+        ) }
+        { editable && (mode === 'view' ? (
+          <ActionButton.Item
+            buttonColor={factionColor}
+            textStyle={actionLabelStyle}
+            textContainerStyle={actionContainerStyle}
+            title={t`Edit`}
+            onPress={onEditPressed}
+            shadowStyle={shadow.medium}
+            useNativeFeedback={false}
+          >
+            <AppIcon name="edit" color={colors.L30} size={24} />
+          </ActionButton.Item>
+        ) : (
+          <ActionButton.Item
+            buttonColor={factionColor}
+            textStyle={actionLabelStyle}
+            textContainerStyle={actionContainerStyle}
+            title={t`Add cards`}
+            onPress={onAddCardsPressed}
+            shadowStyle={shadow.medium}
+            useNativeFeedback={false}
+          >
+            <AppIcon name="plus-thin" color={colors.L30} size={24} />
+          </ActionButton.Item>
+        )) }
+      </ActionButton>
+    );
+  }, [factionColor, fabOpen, editable, mode, shadow, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
 
   if (!deck) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
-        <ActivityIndicator
-          style={styles.spinner}
-          color={colors.lightText}
-          size="small"
-          animating
-        />
+        <LoadingSpinner inline />
         <BasicButton
           title={t`Delete Deck`}
           onPress={deleteBrokenDeck}
@@ -1039,18 +966,10 @@ function DeckDetailView({
   }
   if (!parsedDeck || !cards || !deckEdits) {
     return (
-      <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
-        <ActivityIndicator
-          style={styles.spinner}
-          color={colors.lightText}
-          size="small"
-          animating
-        />
-      </View>
+      <LoadingSpinner large />
     );
   }
   const menuWidth = Math.min(width * 0.60, 240);
-  const editable = !!isPrivate && !!deck && !deck.next_deck;
   const showTaboo: boolean = !!(tabooSetId !== deck.taboo_id && (tabooSetId || deck.taboo_id));
   return (
     <View style={[styles.flex, backgroundStyle]}>
@@ -1085,10 +1004,10 @@ function DeckDetailView({
               bondedCardsByName={bondedCardsByName}
               isPrivate={!!isPrivate}
               buttons={buttons}
-              showEditCards={onEditPressed}
+              showEditCards={onAddCardsPressed}
               showDeckUpgrade={onUpgradePressed}
               showDeckHistory={showUpgradeHistoryPressed}
-              showEditNameDialog={showEditDetails}
+              showXpAdjustmentDialog={showXpAdjustmentDialog}
               showCardUpgradeDialog={showCardUpgradeDialog}
               showEditSpecial={deck.next_deck ? undefined : onEditSpecialPressed}
               signedIn={signedIn}
@@ -1098,13 +1017,31 @@ function DeckDetailView({
               width={width}
               deckEdits={deckEdits}
               deckEditsRef={deckEditsRef}
+              mode={mode}
             />
-            <DeckNavFooter deckId={id} componentId={componentId} faction={investigatorFront?.factionCode()} />
+            { !!parsedDeck.problem && mode !== 'view' && (
+              <DeckProblemBanner
+                faction={parsedDeck.investigator.factionCode()}
+                problem={parsedDeck.problem}
+              />
+            ) }
+            { mode !== 'view' && (
+              <DeckNavFooter
+                deckId={id}
+                componentId={componentId}
+                control="fab"
+                campaign={campaign}
+                onPress={saveEdits}
+              />
+            ) }
+            { fab }
           </View>
-          { editDetailsDialog }
         </View>
       </SideMenu>
+      { editNameDialog }
+      { xpAdjustmentDialog }
       { savingDialog }
+      { uploadLocalDeckDialog }
       { deletingDialog }
       { copyDialog }
     </View>
@@ -1122,19 +1059,18 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
-  spinner: {
-    height: 80,
-  },
   activityIndicatorContainer: {
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
   },
-  errorMargin: {
-    padding: m,
-  },
   menu: {
     borderLeftWidth: 2,
     borderColor: COLORS.darkGray,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

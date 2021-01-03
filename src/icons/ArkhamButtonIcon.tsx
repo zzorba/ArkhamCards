@@ -6,7 +6,7 @@ import AppIcon from './AppIcon';
 import ArkhamIcon from './ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
 
-export type ArkhamButtonIconType = 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide';
+export type ArkhamButtonIconType = 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm';
 interface Props {
   icon: ArkhamButtonIconType;
   color: 'light' | 'dark';
@@ -42,6 +42,10 @@ export default function ArkhamButtonIcon({ icon, color }: Props) {
       return <AppIcon name="show" size={22 * fontScale} color={iconColor} />;
     case 'hide':
       return <AppIcon name="hide" size={22 * fontScale} color={iconColor} />;
+    case 'dismiss':
+      return <AppIcon name="hide" size={22 * fontScale} color={iconColor} />;
+    case 'confirm':
+      return <AppIcon name="check" size={22 * fontScale} color={iconColor} />;
   }
 }
 

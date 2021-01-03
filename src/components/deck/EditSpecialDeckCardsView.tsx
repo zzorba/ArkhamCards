@@ -52,9 +52,10 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
 
   const editStoryPressed = useCallback(() => {
     const investigator = deck && cards && cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<EditDeckProps>(componentId, {
       component: {
-        name: 'Deck.Edit',
+        name: 'Deck.EditAddCards',
         passProps: {
           id,
           storyOnly: true,
@@ -62,6 +63,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -73,7 +75,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },
@@ -109,6 +111,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
       return;
     }
     const investigator = deck && cards && cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<DrawWeaknessProps>(componentId, {
       component: {
         name: 'Weakness.Draw',
@@ -119,6 +122,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         options: {
           statusBar: {
             style: 'light',
+            backgroundColor,
           },
           topBar: {
             title: {
@@ -130,7 +134,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },
@@ -153,6 +157,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
       return;
     }
     const investigator = deck && cards && cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<CampaignDrawWeaknessProps>(componentId, {
       component: {
         name: 'Dialog.CampaignDrawWeakness',
@@ -176,7 +181,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
+              color: backgroundColor,
             },
           },
         },

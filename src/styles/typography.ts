@@ -40,6 +40,7 @@ export interface Typography {
   error: TextStyle;
   dark: TextStyle;
   light: TextStyle;
+  inverted: TextStyle;
 }
 
 export default function(fontScale: number, colors: TypographyColors, gameFont: string): Typography {
@@ -108,16 +109,16 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
     },
     regular: {
       fontFamily: 'Alegreya-Regular',
-      fontWeight: '400',
+      fontWeight: Platform.OS === 'ios' ? '400' : undefined,
     },
     bold: {
       fontFamily: 'Alegreya-Bold',
-      fontWeight: '700',
+      fontWeight: Platform.OS === 'ios' ? '700' : undefined,
       color: colors.darkText,
     },
     boldItalic: {
       fontFamily: 'Alegreya-ExtraBoldItalic',
-      fontWeight: '700',
+      fontWeight: Platform.OS === 'ios' ? '700' : undefined,
       color: colors.darkText,
     },
     italic: {
@@ -168,6 +169,9 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
     },
     uppercase: {
       textTransform: 'uppercase',
+    },
+    inverted: {
+      color: colors.L30,
     },
     white: {
       color: COLORS.white,

@@ -1,8 +1,8 @@
 import React from 'react';
+import { Platform, ViewStyle } from 'react-native';
 
 import { LIGHT_THEME, ThemeColors } from './theme';
 import typography, { Typography } from '@styles/typography';
-import { ViewStyle } from 'react-native';
 
 export interface StyleContextType {
   darkMode: boolean;
@@ -13,6 +13,11 @@ export interface StyleContextType {
   backgroundStyle: ViewStyle;
   borderStyle: ViewStyle;
   disabledStyle: ViewStyle;
+  shadow: {
+    small: ViewStyle;
+    medium: ViewStyle;
+    large: ViewStyle;
+  };
 }
 
 export const DEFAULLT_STYLE_CONTEXT = {
@@ -29,6 +34,41 @@ export const DEFAULLT_STYLE_CONTEXT = {
   },
   disabledStyle: {
     backgroundColor: LIGHT_THEME.disableOverlay,
+  },
+  shadow: {
+    large: Platform.select({
+      android: {
+        elevation: 6,
+      },
+      default: {
+        shadowOffset: { width: 0, height: 4 },
+        shadowRadius: 8,
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+      },
+    }),
+    medium: Platform.select({
+      android: {
+        elevation: 4,
+      },
+      default: {
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 4,
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+      },
+    }),
+    small: Platform.select({
+      android: {
+        elevation: 2,
+      },
+      default: {
+        shadowOffset: { width: 0, height: 1 },
+        shadowRadius: 2,
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+      },
+    }),
   },
 };
 

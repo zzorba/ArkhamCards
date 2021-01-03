@@ -21,11 +21,12 @@ interface Props {
   id: string;
   effect: AddWeaknessEffect;
   input?: string[];
+  numberInput?: number[];
 }
 
 const FILTER_BUILDER = new FilterBuilder('weakness');
 
-export default function AddWeaknessEffectComponent({ id, effect, input }: Props) {
+export default function AddWeaknessEffectComponent({ id, effect, input, numberInput }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
   const firstDecisionId = `${id}_use_app`;
@@ -34,6 +35,10 @@ export default function AddWeaknessEffectComponent({ id, effect, input }: Props)
   const cards = usePlayerCards();
 
   const firstPrompt = useMemo(() => {
+    if (effect.count === '$input_value') {
+      // When drawing multiple weaknesses at a time, don't prompt for the app.
+      return null;
+    }
     return (
       <BinaryPrompt
         id={firstDecisionId}
@@ -41,7 +46,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input }: Props)
         text={t`Do you want to use the app to randomize weaknesses?`}
       />
     );
-  }, [firstDecisionId]);
+  }, [effect.count, firstDecisionId]);
 
   const renderCardChoice = useCallback((cards: Card[], investigators: Card[]) => {
     return (
@@ -82,12 +87,17 @@ export default function AddWeaknessEffectComponent({ id, effect, input }: Props)
     investigators: Card[],
     scenarioState: ScenarioStateHelper
   ) => {
-    const useAppDecision = scenarioState.decision(firstDecisionId);
-    if (useAppDecision === undefined || !weaknessCards || !cards) {
+    if (!weaknessCards || !cards) {
       return null;
     }
-    if (!useAppDecision) {
-      return possibleWeaknessCardsLoading ? null : renderCardChoice(possibleWeaknessCards, investigators);
+    if (effect.count !== '$input_value') {
+      const useAppDecision = scenarioState.decision(firstDecisionId);
+      if (useAppDecision === undefined) {
+        return null;
+      }
+      if (!useAppDecision) {
+        return possibleWeaknessCardsLoading ? null : renderCardChoice(possibleWeaknessCards, investigators);
+      }
     }
     const traitsChoice = effect.select_traits ?
       scenarioState.stringChoices(traitsDecisionId) :
@@ -112,11 +122,13 @@ export default function AddWeaknessEffectComponent({ id, effect, input }: Props)
             scenarioState={scenarioState}
             weaknessCards={weaknessCards}
             cards={cards}
+            count={effect.count === '$input_value' && numberInput ? numberInput[0] : 1}
+            standalone={!!effect.standalone}
           />
         ) }
       </>
     );
-  }, [saveTraits, id, firstDecisionId, renderCardChoice, traitsDecisionId, effect, weaknessCards, cards, campaignLog, possibleWeaknessCards, possibleWeaknessCardsLoading]);
+  }, [saveTraits, id, numberInput, firstDecisionId, renderCardChoice, traitsDecisionId, effect, weaknessCards, cards, campaignLog, possibleWeaknessCards, possibleWeaknessCardsLoading]);
 
   return (
     <>

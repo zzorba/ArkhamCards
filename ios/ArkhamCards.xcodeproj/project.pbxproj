@@ -90,6 +90,7 @@
 		652EB73D226BAF9200F6D790 /* es.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = es.po.json; path = ../assets/i18n/es.po.json; sourceTree = "<group>"; };
 		652EB73F226BAF9C00F6D790 /* fr.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fr.po.json; path = ../assets/i18n/fr.po.json; sourceTree = "<group>"; };
 		652EB741226BAFA800F6D790 /* it.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = it.po.json; path = ../assets/i18n/it.po.json; sourceTree = "<group>"; };
+		6530148B259FD4EA009A53AB /* ArkhamCardsDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCardsDebug.entitlements; path = ArkhamCards/ArkhamCardsDebug.entitlements; sourceTree = "<group>"; };
 		654257E7248B18210089504E /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		654277262365FE7200D394B1 /* libPods-ArkhamCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ArkhamCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArkhamCards-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				6530148B259FD4EA009A53AB /* ArkhamCardsDebug.entitlements */,
 				651B383A251ACF8900D9D054 /* AboutDead.ttf */,
 				659EB1C425146635007E69E0 /* innsmouth.ttf */,
 				659EB1C025118E2F007E69E0 /* Alegreya-ExtraBold.ttf */,
@@ -287,11 +289,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ArkhamCards" */;
 			buildPhases = (
 				D2CF3EC98B2CE98156C3E70B /* [CP] Check Pods Manifest.lock */,
+				71B73B9EB32189B5BE2AF4B8 /* [CP] Prepare Artifacts */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				1000A2C507B5A91925B8E1EB /* [CP] Copy Pods Resources */,
+				A962467D6DB2A0E4DFAB0361 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -307,10 +311,12 @@
 			buildConfigurationList = 655BAD7C248739AD00854210 /* Build configuration list for PBXNativeTarget "ArkhamCardsUITests" */;
 			buildPhases = (
 				AE29C1752D982FDDBA12131F /* [CP] Check Pods Manifest.lock */,
+				D113F71BBA418BE4A9B968DA /* [CP] Prepare Artifacts */,
 				655BAD6F248739AD00854210 /* Sources */,
 				655BAD70248739AD00854210 /* Frameworks */,
 				655BAD71248739AD00854210 /* Resources */,
 				12301E85C125DDC678D7BE91 /* [CP] Copy Pods Resources */,
+				A9A9951E049D1028A72E86DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -539,6 +545,59 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		71B73B9EB32189B5BE2AF4B8 /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-artifacts.sh",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenter.xcframework",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterCrashes.xcframework",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A962467D6DB2A0E4DFAB0361 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9A9951E049D1028A72E86DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AE29C1752D982FDDBA12131F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -559,6 +618,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D113F71BBA418BE4A9B968DA /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-artifacts.sh",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenter.xcframework",
+				"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/AppCenterCrashes.xcframework",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-artifacts.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D2CF3EC98B2CE98156C3E70B /* [CP] Check Pods Manifest.lock */ = {
@@ -634,10 +712,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCardsDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
@@ -655,7 +733,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.9.2;
+				MARKETING_VERSION = 2.9.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -681,7 +759,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -698,7 +776,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.9.2;
+				MARKETING_VERSION = 2.9.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -823,7 +901,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
@@ -876,7 +954,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",

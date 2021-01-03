@@ -1,16 +1,15 @@
 import React from 'react';
 import { findIndex, map } from 'lodash';
-import { t } from 'ttag';
+import { ngettext, msgid, t } from 'ttag';
 
-import { FactionCodeType } from '@app_constants';
-import DeckPickerButton from '@components/deck/controls/DeckPickerButton';
+import { usePickerDialog } from '@components/deck/dialogs';
+import DeckPickerStyleButton from '../DeckPickerStyleButton';
 
 interface Props {
   name: string;
   sizes: string[];
   selection: string;
   onChange: (selection: string) => void;
-  investigatorFaction: FactionCodeType;
   disabled?: boolean;
   editWarning: boolean;
   first: boolean;
@@ -20,7 +19,6 @@ export default function DeckSizeSelectPicker({
   sizes,
   selection,
   name,
-  investigatorFaction,
   disabled,
   editWarning,
   onChange,
@@ -34,23 +32,34 @@ export default function DeckSizeSelectPicker({
   };
   const cardCount = selection;
   const valueLabel = t`${cardCount} Cards`;
+  const { showDialog, dialog } = usePickerDialog({
+    title: t`Select Deck Size`,
+    description: editWarning ? t`Note: Deck size should only be selected at deck creation time, not between scenarios.` : undefined,
+    items: map(sizes, (size, index) => {
+      const sizeCount = parseInt(size, 10);
+      return {
+        title: ngettext(
+          msgid`${size} Card`,
+          `${size} Cards`,
+          sizeCount
+        ),
+        value: index,
+      };
+    }),
+    selectedValue: selection ? findIndex(sizes, size => size === selection) : 0,
+    onValueChange: onChoiceChange,
+  });
   return (
-    <DeckPickerButton
-      icon="card-outline"
-      title={name}
-      faction={investigatorFaction}
-      editable={!disabled}
-      modalDescription={editWarning ? t`Note: Deck size should only be selected at deck creation time, not between scenarios.` : undefined}
-      options={map(sizes, (size, index) => {
-        return {
-          value: index,
-          label: size || t`Select Deck Size`,
-        };
-      })}
-      selectedValue={selection ? findIndex(sizes, size => size === selection) : 0}
-      onChoiceChange={onChoiceChange}
-      valueLabel={valueLabel}
-      first={first}
-    />
+    <>
+      <DeckPickerStyleButton
+        title={name}
+        icon="card-outline"
+        editable={!disabled}
+        onPress={showDialog}
+        valueLabel={valueLabel}
+        first={first}
+      />
+      { dialog }
+    </>
   );
 }

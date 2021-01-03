@@ -37,6 +37,9 @@ export interface CampaignGuideActions {
   ) => void;
   resetScenario: (scenarioId: string) => void;
   undo: (scenarioId: string) => void;
+  setBinaryAchievement: (achievementId: string, value: boolean) => void;
+  incCountAchievement: (achievementId: string, max?: number) => void;
+  decCountAchievement: (achievementId: string, max?: number) => void;
 }
 
 export default class CampaignStateHelper {
@@ -170,25 +173,51 @@ export default class CampaignStateHelper {
     this.actions.setInterScenarioData(investigatorData, scenarioId);
   }
 
+  binaryAchievement(achievementId: string): boolean {
+    return !!find(this.state.achievements, a => a.id === achievementId && a.type === 'binary' && a.value);
+  }
+  countAchievement(achievementId: string): number {
+    const entry = find(this.state.achievements, a => a.id === achievementId && a.type === 'count');
+    if (entry?.type === 'count') {
+      return entry.value;
+    }
+    return 0;
+  }
+
+  setBinaryAchievement(achievementId: string, value: boolean) {
+    this.actions.setBinaryAchievement(achievementId, value);
+  }
+
+  incCountAchievement(achievementId: string, max?: number) {
+    this.actions.incCountAchievement(achievementId, max);
+  }
+
+  decCountAchievement(achievementId: string) {
+    this.actions.decCountAchievement(achievementId);
+  }
 
   undo(scenarioId: string) {
     const latestInput = findLast(this.state.inputs,
       input => input.scenario === scenarioId);
     if (latestInput &&
       latestInput.type === 'choice_list' &&
-      latestInput.step.startsWith('$upgrade_decks#') &&
+      (latestInput.step.startsWith('$upgrade_decks#') || latestInput.step.startsWith('$save_standalone_decks')) &&
       !!latestInput.choices.deckId
     ) {
+      const isUpgrade = latestInput.step.startsWith('$upgrade_decks#');
       // This is a deck upgrade action.
       Alert.alert(
-        t`Undo deck upgrade`,
-        t`Looks like you are trying to undo a deck upgrade.\n\nNote that the app will NOT delete your latest deck upgrade from ArkhamDB, so your deck will still have the earlier changes applied.\n\nYou can view the deck and delete the most recent 'upgrade' to put things back the way they were.`,
+        isUpgrade ? t`Undo deck upgrade?` : t`Undo deck change?`,
+        isUpgrade ?
+          t`Looks like you are trying to undo a deck upgrade.\n\nNote that the app will NOT delete your latest deck upgrade from ArkhamDB, so your deck will still have the earlier changes applied.\n\nYou can view the deck and delete the most recent 'upgrade' to put things back the way they were.` :
+          t`Looks like you are trying to undo a deck save.\n\nThe app will NOT be able to undo these changes, so if you proceed again the changes might be applied twice. You should view the deck and manually undo the edits before reapplying the changes.`,
         [
           {
-            text: t`Undo`,
+            text: t`Undo anyway`,
             onPress: () => {
               this.actions.undo(scenarioId);
             },
+            style: 'destructive',
           },
           {
             text: t`Cancel`,

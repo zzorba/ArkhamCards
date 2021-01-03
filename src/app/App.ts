@@ -51,6 +51,7 @@ export default class App {
 
     // We handle arkham cards schema-ref
     DeepLinking.addScheme('arkhamcards://');
+    DeepLinking.addScheme('dissonantvoices://');
 
     Appearance.addChangeListener(({ colorScheme }) => {
       this.setDefaultOptions(colorScheme, true);
@@ -261,6 +262,7 @@ export default class App {
             title: {
               text: t`Decks`,
             },
+            rightButtonColor: COLORS.M,
             rightButtons: [{
               icon: iconsMap.add,
               id: 'add',
@@ -279,6 +281,7 @@ export default class App {
             title: {
               text: t`Campaigns`,
             },
+            rightButtonColor: COLORS.M,
             rightButtons: [{
               icon: iconsMap.add,
               id: 'add',

@@ -25,7 +25,7 @@ interface Props {
 const SCROLL_DISTANCE_BUFFER = 50;
 
 export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTerm, onSearchChange, children }: Props) {
-  const { backgroundStyle, borderStyle, colors } = useContext(StyleContext);
+  const { backgroundStyle, borderStyle, colors, shadow } = useContext(StyleContext);
   const [visible, setVisible] = useState(true);
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const scrollAnim = useRef(new Animated.Value(1));
@@ -118,14 +118,22 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
       outputRange: [-(SEARCH_BAR_HEIGHT + advancedOptions.height), SEARCH_BAR_HEIGHT],
     });
     return (
-      <Animated.View style={[
+      <Animated.View needsOffscreenAlphaCompositing style={[
         styles.advancedOptions,
+        shadow.large,
         {
           backgroundColor: colors.L20,
           width,
           height: advancedOptions.height,
           transform: [{ translateY: controlHeight }],
         },
+        Platform.select({
+          default: {},
+          android: {
+            borderBottomWidth: 0.2,
+            borderColor: colors.L20,
+          },
+        }),
       ]}>
         <View style={[styles.textSearchOptions, {
           height: advancedOptions.height,
@@ -134,7 +142,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
         </View>
       </Animated.View>
     );
-  }, [advancedOptions, width, advancedToggleAnim, colors]);
+  }, [advancedOptions, width, advancedToggleAnim, colors, shadow.large]);
 
   const translateY = advancedOpen ? 0 : scrollAnim.current.interpolate({
     inputRange: [0, 1],
@@ -144,6 +152,26 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
     advancedToggleAnim.current.interpolate({
       inputRange: [0, 1],
       outputRange: [0.25, 0],
+    }),
+    scrollAnim.current.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 1],
+    }),
+  );
+  const shadowElevation = Animated.multiply(
+    advancedToggleAnim.current.interpolate({
+      inputRange: [0, 1],
+      outputRange: [6, 0],
+    }),
+    scrollAnim.current.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 1],
+    }),
+  );
+  const shadowBorder = Animated.multiply(
+    advancedToggleAnim.current.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0.2, 0],
     }),
     scrollAnim.current.interpolate({
       inputRange: [0, 1],
@@ -177,7 +205,15 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
         },
       ]}>
         { advancedOptionsBlock }
-        <Animated.View style={[styles.fixed, { width, shadowOpacity }]}>
+        <Animated.View needsOffscreenAlphaCompositing style={[
+          styles.fixed,
+          shadow.large,
+          { width },
+          Platform.select({
+            default: { shadowOpacity },
+            android: { elevation: shadowElevation, borderBottomWidth: shadowBorder, borderColor: colors.L20 },
+          }),
+        ]}>
           <SearchBox
             onChangeText={onSearchChange}
             placeholder={prompt}
@@ -209,10 +245,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 8,
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
   },
   wrapper: {
     position: 'relative',
@@ -233,10 +265,5 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 8,
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
-    flexDirection: 'column',
   },
 });

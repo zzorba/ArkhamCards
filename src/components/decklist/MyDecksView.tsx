@@ -36,7 +36,7 @@ function MyDecksView({ componentId }: NavigationProps) {
               name: 'Deck.New',
               options: {
                 modalPresentationStyle: Platform.OS === 'ios' ?
-                  OptionsModalPresentationStyle.overFullScreen :
+                  OptionsModalPresentationStyle.fullScreen :
                   OptionsModalPresentationStyle.overCurrentContext,
               },
             },

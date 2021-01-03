@@ -1,4 +1,5 @@
 import AppIcon from '@icons/AppIcon';
+import { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import React, { useContext, useEffect, useState } from 'react';
 import { Animated, ActivityIndicator, Easing, StyleSheet, View } from 'react-native';
@@ -78,10 +79,17 @@ export function NewLoading({ size }: Props) {
   );
 }
 
-export default function LoadingSpinner({ large }: { large?: boolean }) {
-  const { colors } = useContext(StyleContext);
+export default function LoadingSpinner({ large, inline }: { large?: boolean, inline?: boolean }) {
+  const { backgroundStyle, colors } = useContext(StyleContext);
+  if (inline) {
+    return (
+      <View style={styles.inline}>
+        <ActivityIndicator size={large ? 'large' : 'small'} color={colors.lightText} animating />
+      </View>
+    );
+  }
   return (
-    <View style={styles.loading}>
+    <View style={[styles.loading, backgroundStyle]}>
       <ActivityIndicator size={large ? 'large' : 'small'} color={colors.lightText} animating />
     </View>
   );
@@ -93,6 +101,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
+  },
+  inline: {
+    padding: m,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   outerWrapper: {
     position: 'relative',

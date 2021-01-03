@@ -39,8 +39,7 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
       deck,
       colors,
       investigator,
-      undefined,
-      true
+      { hideCampaign: true }
     );
   }, [colors, componentId, deck, investigator]);
 

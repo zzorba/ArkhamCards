@@ -10,6 +10,7 @@ interface Props {
   widget?: 'shuffle' | 'nav';
   disabled?: boolean;
   onPress: (code: string) => void;
+  hideName?: boolean;
 }
 
 export default function InvestigatorButton({
@@ -18,11 +19,12 @@ export default function InvestigatorButton({
   widget,
   onPress,
   disabled,
+  hideName,
 }: Props) {
   const { colors } = useContext(StyleContext);
   return (
     <PickerStyleButton
-      title={investigator.name}
+      title={hideName ? '' : investigator.name}
       value={value}
       id={investigator.code}
       onPress={onPress}

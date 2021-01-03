@@ -6,34 +6,38 @@ import StyleContext from '@styles/StyleContext';
 import Card from '@data/Card';
 import { xs } from '@styles/space';
 import RoundButton from '@components/core/RoundButton';
+import DeckQuantityComponent from './DeckQuantityComponent';
 
 interface Props {
   card: Card;
   count: number;
   onUpgradePress?: (card: Card) => void;
+  deckId: number;
+  limit: number;
 }
 
-export default function CardUpgradeButton({ onUpgradePress, card, count }: Props) {
+export default function CardUpgradeButton({ onUpgradePress, card, count, deckId, limit }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const onPress = useCallback(() => onUpgradePress && onUpgradePress(card), [onUpgradePress, card]);
   return (
     <View style={styles.countWrapper}>
       { !!onUpgradePress && (
         <RoundButton onPress={onPress}>
-          <AppIcon
-            size={28}
-            color={colors.M}
-            name="upgrade"
-          />
+          <View style={styles.icon}>
+            <AppIcon
+              size={28}
+              color={colors.M}
+              name="upgrade"
+            />
+          </View>
         </RoundButton>
       ) }
-      <View style={styles.count}>
-        <Text style={typography.text}>
-          { count }
-        </Text>
-      </View>
+      <DeckQuantityComponent
+        code={card.code}
+        deckId={deckId}
+        limit={limit}
+      />
     </View>
-
   );
 }
 
@@ -48,5 +52,9 @@ const styles = StyleSheet.create({
     minWidth: 25,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+  },
+  icon: {
+    paddingLeft: 1,
+    paddingBottom: 2,
   },
 });

@@ -71,6 +71,7 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
             id={id}
             effect={effect}
             input={input}
+            numberInput={numberInput}
           />
         );
       case 'add_card':
@@ -129,6 +130,7 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
       case 'earn_xp':
       case 'replace_card':
       case 'scenario_data':
+      case 'save_decks':
       default: {
         // We always write these out.
         return null;
@@ -143,6 +145,8 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
         if (foundSpecialEffect) {
           return null;
         }
+        const key = `${step.id}_${outerIdx}`;
+        const id = step.syntheticId ? key : step.id;
         return (
           <BorderWrapper
             key={`${step.id}_${outerIdx}`}
@@ -153,7 +157,7 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
               if (foundSpecialEffect) {
                 return null;
               }
-              const specialEffectChoice = getSpecialEffectChoiceList(step.id, effect);
+              const specialEffectChoice = getSpecialEffectChoiceList(id, effect);
               if (specialEffectChoice && specialEffectChoice !== '$fixed_investigator' &&
                 scenarioState.stringChoices(specialEffectChoice) === undefined
               ) {
@@ -161,7 +165,7 @@ export default function EffectsStepComponent({ componentId, width, step, campaig
               }
               return (
                 <View key={`${step.id}_${outerIdx}_${innerIdx}`}>
-                  { renderEffect(step.id, effect, !!effectsWithInput.border, effectsWithInput.input, effectsWithInput.numberInput) }
+                  { renderEffect(id, effect, !!effectsWithInput.border, effectsWithInput.input, effectsWithInput.numberInput) }
                 </View>
               );
             }) }

@@ -1,12 +1,9 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { useDebounceCallback } from '@react-hook/debounce';
 
@@ -20,8 +17,12 @@ import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
-import DeckNavFooter from '@components/DeckNavFooter';
+import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { getLangPreference } from '@reducers';
+import ActionButton from 'react-native-action-button';
+import AppIcon from '@icons/AppIcon';
+import { useFilterButton } from '../hooks';
+import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -237,7 +238,7 @@ export default function({
   storyOnly,
   initialSort,
 }: Props) {
-  const { fontScale } = useContext(StyleContext);
+  const { fontScale, colors } = useContext(StyleContext);
   const lang = useSelector(getLangPreference);
   const [searchText, setSearchText] = useState(false);
   const [searchFlavor, setSearchFlavor] = useState(false);
@@ -282,8 +283,8 @@ export default function({
     if (searchBack) {
       parts.push(where([
         'c.s_search_name_back like :searchTerm',
-        '(c.linked_card is not null AND c.linked_card.s_search_name like :searchTerm)',
-        '(c.linked_card is not null AND c.linked_card.s_search_name_back like :searchTerm)',
+        '(c.linked_card is not null AND linked_card.s_search_name like :searchTerm)',
+        '(c.linked_card is not null AND linked_card.s_search_name_back like :searchTerm)',
       ].join(' OR '), { searchTerm: safeSearchTerm }
       ));
     }
@@ -292,8 +293,8 @@ export default function({
       if (searchBack) {
         parts.push(where([
           'c.s_search_game_back like :searchTerm',
-          '(c.linked_card is not null AND c.linked_card.s_search_game like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.s_search_game_back like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_game like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_game_back like :searchTerm)',
         ].join(' OR '), { searchTerm: safeSearchTerm }));
       }
     }
@@ -302,8 +303,8 @@ export default function({
       if (searchBack) {
         parts.push(where([
           '(c.s_search_flavor_back like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.s_search_flavor like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.s_search_flavor_back like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_flavor like :searchTerm)',
+          '(c.linked_card is not null AND linked_card.s_search_flavor_back like :searchTerm)',
         ].join(' OR '), { searchTerm: safeSearchTerm }));
       }
     }
@@ -343,6 +344,14 @@ export default function({
     );
   }, [baseQuery, mythosToggle, selectedSort, mythosMode]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters), [filters]);
+  const [hasFilters, showFiltersPress] = useFilterButton(componentId, baseQuery);
+  const renderFabIcon = useCallback(() => (
+    <View style={styles.relative}>
+      <AppIcon name="filter" color={colors.L30} size={24} />
+      { hasFilters && <View style={styles.chiclet} /> }
+    </View>
+  ), [colors, hasFilters]);
+  const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);
   return (
     <CollapsibleSearchBox
       prompt={t`Search for a card`}
@@ -389,9 +398,16 @@ export default function({
             initialSort={initialSort}
           />
           { deckId !== undefined && (
-            <View style={styles.footer}>
-              <DeckNavFooter deckId={deckId} componentId={componentId} faction={investigator?.factionCode()} />
-            </View>
+            <>
+              <DeckNavFooter deckId={deckId} componentId={componentId} control="fab" onPress={backPressed} />
+              <ActionButton
+                buttonColor={colors.D10}
+                renderIcon={renderFabIcon}
+                onPress={showFiltersPress}
+                offsetX={s + xs}
+                offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+              />
+            </>
           ) }
         </>
       ) }
@@ -400,12 +416,6 @@ export default function({
 }
 
 const styles = StyleSheet.create({
-  footer: {
-    position: 'absolute',
-    left: 0,
-    bottom: 0,
-    width: '100%',
-  },
   column: {
     flexDirection: 'column',
     alignItems: 'flex-end',
@@ -419,5 +429,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
+  },
+  relative: {
+    position: 'relative',
+  },
+  chiclet: {
+    position: 'absolute',
+    top: -12,
+    right: -14,
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

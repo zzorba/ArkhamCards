@@ -28,6 +28,7 @@ interface Props {
   invalid?: boolean;
   control?: ControlType;
   noBorder?: boolean;
+  faded?: boolean;
 }
 
 function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
@@ -138,6 +139,7 @@ function CardSearchResult(props: Props) {
     backgroundColor,
     invalid,
     noBorder,
+    faded,
   } = props;
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const handleCardPressFunction = useCallback(() => {
@@ -209,7 +211,6 @@ function CardSearchResult(props: Props) {
       </View>
     );
   }, [colors, fontScale, typography, card]);
-
   const cardName = useMemo(() => {
     const color = (card.faction2_code ?
       colors.faction.dual :
@@ -306,7 +307,7 @@ function CardSearchResult(props: Props) {
         delayPressOut={5}
         delayLongPress={5}
       >
-        <View style={[
+        <View opacity={faded ? 0.5 : 1.0} style={[
           styles.cardTextRow,
         ]}>
           <CardIcon card={card} />

@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import {
-  ActivityIndicator,
   Text,
   TouchableOpacity,
   ScrollView,
@@ -14,10 +13,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
-import { openDialog } from '@components/core/EditText';
 import RequiredCardSwitch from './RequiredCardSwitch';
 import { showCard, showCardSwipe, showDeckModal } from '@components/nav/helper';
-import BasicButton from '@components/core/BasicButton';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { saveNewDeck } from '@components/deck/actions';
@@ -38,6 +35,7 @@ import DeckSectionBlock from '../section/DeckSectionBlock';
 import DeckCheckboxButton from '../controls/DeckCheckboxButton';
 import DeckButton from '../controls/DeckButton';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import { useTextDialog } from '../dialogs';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -72,26 +70,31 @@ function NewDeckOptionsDialog({
     !isConnected ||
     networkType === NetInfoStateType.none);
   const [optionSelected, setOptionSelected] = useState<boolean[]>([true]);
-  const [tabooSetId, setTabooSetId] = useState<number | undefined>(defaultTabooSetId);
+  const [tabooSetIdChoice, setTabooSetId] = useState<number | undefined>(defaultTabooSetId);
   const [starterDeck, setStarterDeck] = useState(false);
+  const tabooSetId = useMemo(() => {
+    if (starterDeck) {
+      return undefined;
+    }
+    return tabooSetIdChoice;
+  }, [starterDeck, tabooSetIdChoice]);
   const investigators = useInvestigatorCards(tabooSetId);
   const cards = usePlayerCards(tabooSetId);
-  const [meta, setMeta] = useState<DeckMeta>({});
-
+  const [metaState, setMeta] = useState<DeckMeta>({});
   const updateMeta = useCallback((key: keyof DeckMeta, value?: string) => {
-    const newMeta = { ...meta, [key]: value };
+    const newMeta = { ...metaState, [key]: value };
     if (!newMeta[key]) {
       delete newMeta[key];
     }
     setMeta(newMeta);
-  }, [meta, setMeta]);
+  }, [metaState, setMeta]);
   const setParallel = useCallback((front: string, back: string) => {
     setMeta({
-      ...meta,
+      ...metaState,
       alternate_front: front,
       alternate_back: back,
     });
-  }, [setMeta, meta]);
+  }, [setMeta, metaState]);
   const investigator = useMemo(() => (investigators && investigators[investigatorId]) || undefined, [investigatorId, investigators]);
   const defaultDeckName = useMemo(() => {
     if (!investigator || !investigator.name) {
@@ -143,9 +146,16 @@ function NewDeckOptionsDialog({
     );
     return result;
   }, [cards, investigator]);
+  const meta = useMemo((): DeckMeta =>{
+    const starterDeckMeta = starterDeck && investigator && starterDecks.meta[investigator.code];
+    if (starterDeckMeta) {
+      return starterDeckMeta;
+    }
+    return metaState || {};
+  }, [starterDeck, metaState, investigator]);
   const slots = useMemo(() => {
-    if (starterDeck && investigator && starterDecks[investigator.code]) {
-      return starterDecks[investigator.code];
+    if (starterDeck && investigator && starterDecks.cards[investigator.code]) {
+      return starterDecks.cards[investigator.code];
     }
     const slots: Slots = {
       // Random basic weakness.
@@ -199,11 +209,12 @@ function NewDeckOptionsDialog({
       setSaving(true);
       dispatch(saveNewDeck({
         local,
+        meta,
         deckName: deckName || t`New Deck`,
         investigatorCode: investigator.code,
         slots: slots,
         tabooSetId,
-        problem: (starterDeck && starterDecks[investigator.code]) ? undefined : 'too_few_cards',
+        problem: (starterDeck && starterDecks.cards[investigator.code]) ? undefined : 'too_few_cards',
       })).then(
         showNewDeck,
         () => {
@@ -211,7 +222,7 @@ function NewDeckOptionsDialog({
         }
       );
     }
-  }, [signedIn, dispatch, showNewDeck, slots,networkType, isConnected, offlineDeck, saving, starterDeck, tabooSetId, deckNameChange, investigator, defaultDeckName]);
+  }, [signedIn, dispatch, showNewDeck, slots, meta, networkType, isConnected, offlineDeck, saving, starterDeck, tabooSetId, deckNameChange, investigator, defaultDeckName]);
 
   const onOkayPress = useMemo(() => throttle(() => createDeck(), 200), [createDeck]);
   const toggleOptionsSelected = useCallback((index: number, value: boolean) => {
@@ -220,12 +231,12 @@ function NewDeckOptionsDialog({
     setOptionSelected(updatedOptionSelected);
   }, [optionSelected, setOptionSelected]);
 
-  const showNameDialog = useCallback(() => openDialog({
+  const { dialog: nameDialog, showDialog: showNameDialog } = useTextDialog({
     title: t`Name`,
-    dialogDescription: t`Enter a name for this deck.`,
-    value: deckNameChange,
     onValueChange: setDeckNameChange,
-  }), [deckNameChange, setDeckNameChange]);
+    value: deckNameChange || '',
+    placeholder: t`Enter a name for this deck.`
+  });
 
   const renderNamePicker = useCallback((last: boolean) => {
     return (
@@ -257,11 +268,11 @@ function NewDeckOptionsDialog({
     const visibleCards: Card[] = [];
     forEach(requiredCardOptions, requiredCards => {
       forEach(requiredCards, requiredCard => {
-        if (requiredCard) {
-          visibleCards.push(requiredCard);
-        }
         if (card.code === requiredCard.code) {
           index = visibleCards.length;
+        }
+        if (requiredCard) {
+          visibleCards.push(requiredCard);
         }
       });
     });
@@ -278,16 +289,12 @@ function NewDeckOptionsDialog({
     );
   }, [componentId, requiredCardOptions, colors, investigator, singleCardView, tabooSetId]);
   const formContent = useMemo(() => {
-    const cardOptions = requiredCardOptions;
-    let hasStarterDeck = false;
-    if (investigatorId) {
-      hasStarterDeck = starterDecks[investigatorId] !== undefined;
-    }
+    const hasStarterDeck = !!investigatorId && starterDecks.cards[investigatorId] !== undefined;
     return (
       <>
         <View style={space.paddingS}>
           <DeckMetadataControls
-            editable
+            editable={!starterDeck}
             tabooSetId={tabooSetId || 0}
             setTabooSet={setTabooSetId}
             meta={meta}
@@ -297,16 +304,16 @@ function NewDeckOptionsDialog({
             firstElement={renderNamePicker}
           />
         </View>
-        { !!find(cardOptions, option => option.length > 0) && (
+        { !!find(requiredCardOptions, option => option.length > 0) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <DeckSectionBlock title={t`Required Cards`} faction="neutral">
-              { map(cardOptions, (requiredCards, index) => {
+              { map(requiredCardOptions, (requiredCards, index) => {
                 return (
                   <RequiredCardSwitch
                     key={`${investigatorId}-${index}`}
                     index={index}
                     onPress={onCardPress}
-                    disabled={(index === 0 && cardOptions.length === 1) || starterDeck}
+                    disabled={(index === 0 && requiredCardOptions.length === 1) || starterDeck}
                     cards={requiredCards}
                     value={optionSelected[index] || false}
                     onValueChange={toggleOptionsSelected}
@@ -371,32 +378,33 @@ function NewDeckOptionsDialog({
   const okDisabled = saving || !(starterDeck || !!find(optionSelected, selected => selected));
   if (saving) {
     return (
-      <View style={[styles.container, backgroundStyle]}>
-        <LoadingSpinner large />
-      </View>
+      <LoadingSpinner large />
     );
   }
   return (
-    <ScrollView contentContainerStyle={backgroundStyle}>
-      { formContent }
-      <View style={[space.paddingS, styles.row]}>
-        <View style={[space.marginRightS, styles.flex]}>
-          <DeckButton
-            title={t`Cancel`}
-            color="red"
-            icon="dismiss"
-            onPress={cancelPressed}
-          />
+    <View style={[styles.flex, backgroundStyle]}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        { formContent }
+        <View style={[space.paddingS, styles.row]}>
+          <View style={[space.marginRightS, styles.flex]}>
+            <DeckButton
+              title={t`Cancel`}
+              color="red"
+              icon="dismiss"
+              onPress={cancelPressed}
+            />
+          </View>
+          <View style={styles.flex}>
+            <DeckButton
+              title={t`Create deck`}
+              icon="plus-thin"
+              onPress={okDisabled ? undefined : onOkayPress}
+            />
+          </View>
         </View>
-        <View style={styles.flex}>
-          <DeckButton
-            title={t`Create deck`}
-            icon="plus-thin"
-            onPress={okDisabled ? undefined : onOkayPress}
-          />
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      { nameDialog }
+    </View>
   );
 }
 
@@ -408,12 +416,6 @@ export default withLoginState<NavigationProps & NewDeckOptionsProps>(
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',

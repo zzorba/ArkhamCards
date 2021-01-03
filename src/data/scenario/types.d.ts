@@ -48,8 +48,9 @@ export type Effect =
   | CampaignDataEffect
   | ScenarioDataEffect
   | AddRemoveChaosTokenEffect
-  | UpgradeDecksEffect
   | FreeformCampaignLogEffect
+  | UpgradeDecksEffect
+  | SaveDecksEffect
   | GainSuppliesEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
@@ -123,7 +124,8 @@ export type Input =
   | TextBoxInput
   | ReceiveCampaignLinkInput
   | SendCampaignLinkInput
-  | RandomLocationInput;
+  | RandomLocationInput
+  | SaveDecksInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition = InvestigatorCardCondition | BasicTraumaCondition | InvestigatorCondition;
@@ -163,6 +165,7 @@ export interface Campaign {
   steps: Step[];
   side_scenario_steps?: Step[];
   campaign_type: "standalone" | "campaign";
+  achievements?: Achievement[];
 }
 export interface BranchStep {
   id: string;
@@ -226,6 +229,8 @@ export interface AddWeaknessEffect {
   investigator: "all" | "$input_value" | "lead_investigator";
   weakness_traits: string[];
   select_traits?: boolean;
+  count?: "$input_value";
+  standalone?: boolean;
 }
 export interface RemoveCardEffect {
   type: "remove_card";
@@ -316,12 +321,15 @@ export interface AddRemoveChaosTokenEffect {
   type: "add_chaos_token" | "remove_chaos_token";
   tokens: ChaosToken[];
 }
-export interface UpgradeDecksEffect {
-  type: "upgrade_decks";
-}
 export interface FreeformCampaignLogEffect {
   type: "freeform_campaign_log";
   section: "campaign_notes";
+}
+export interface UpgradeDecksEffect {
+  type: "upgrade_decks";
+}
+export interface SaveDecksEffect {
+  type: "save_decks";
 }
 export interface GainSuppliesEffect {
   type: "gain_supplies";
@@ -510,6 +518,7 @@ export interface EffectsStep {
   stepText: boolean;
   bullet_type?: BulletType;
   narration?: Narration;
+  syntheticId?: boolean;
 }
 export interface EffectsWithInput {
   border?: boolean;
@@ -695,6 +704,9 @@ export interface RandomLocationInput {
   cards: string[];
   multiple?: boolean;
 }
+export interface SaveDecksInput {
+  type: "save_decks";
+}
 export interface EncounterSetsStep {
   id: string;
   type: "encounter_sets";
@@ -833,6 +845,17 @@ export interface InternalStep {
   bullet_type?: null;
   title?: null;
   narration?: Narration;
+}
+export interface Achievement {
+  id: string;
+  title: string;
+  text: string;
+  type: "binary" | "count" | "list";
+  max?: number;
+  items?: {
+    id: string;
+    text: string;
+  }[];
 }
 export interface Scenario {
   id: string;

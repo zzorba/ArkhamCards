@@ -65,7 +65,13 @@ export interface ThemeColors {
   };
   navButton: string;
   warn: string;
+  upgrade: string;
   warnText: string;
+  table: {
+    header: string;
+    light: string;
+    dark: string;
+  };
 }
 const light10 = '#D7D3C6';
 const light20 = '#F5F0E1';
@@ -177,6 +183,7 @@ export const LIGHT_THEME: ThemeColors = {
       lightBackground: '#000000',
     },
   },
+  upgrade: '#cfb13a',
   skill: {
     willpower: {
       icon: '#165385',
@@ -208,6 +215,11 @@ export const LIGHT_THEME: ThemeColors = {
   navButton: '#007AFF',
   warn: '#FB4135',
   warnText: '#C50707',
+  table: {
+    header: '#a0dba3',
+    light: '#e3fce4',
+    dark: '#c7ebc9',
+  },
 };
 
 export const DARK_THEME: ThemeColors = {
@@ -291,6 +303,8 @@ export const DARK_THEME: ThemeColors = {
       lightBackground: '#000000',
     },
   },
+
+  upgrade: '#cfb13a',
   skill: {
     willpower: {
       icon: '#2C7FC0',
@@ -322,4 +336,9 @@ export const DARK_THEME: ThemeColors = {
   navButton: '#4aa1ff',
   warn: '#C50707',
   warnText: '#FB4135',
+  table: {
+    header: '#293d2a',
+    light: '#455245',
+    dark: '#203021',
+  },
 };

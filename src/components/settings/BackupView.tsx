@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import base64 from 'react-native-base64';
 import Share from 'react-native-share';
 import { t } from 'ttag';
+import utf8 from 'utf8';
 
 import { MergeBackupProps } from './MergeBackupView';
 import { Campaign } from '@actions/types';
@@ -168,7 +169,7 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
               await Share.open({
                 title: t`Save backup`,
                 message: filename,
-                url: `data:application/json;base64,${base64.encode(JSON.stringify(backupData))}`,
+                url: `data:application/json;base64,${base64.encode(utf8.encode(JSON.stringify(backupData)))}`,
                 type: 'data:application/json',
                 filename,
                 failOnCancel: false,

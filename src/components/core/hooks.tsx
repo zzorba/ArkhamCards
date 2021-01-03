@@ -1,9 +1,9 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, InteractionManager } from 'react-native';
+import { BackHandler, InteractionManager, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, ChaosBagResults, SingleCampaign, Slots } from '@actions/types';
+import { Campaign, ChaosBagResults, Deck, SingleCampaign, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState, makeChaosBagResultsSelector, makeDeckSelector, getEffectiveDeckId, makeTabooSetSelector, makeCampaignSelector, makeLatestCampaignDeckIdsSelector, makeLatestCampaignInvestigatorsSelector } from '@reducers';
@@ -29,12 +29,13 @@ export function useNavigationButtonPressed(
   handler: (event: NavigationButtonPressedEvent) => void,
   componentId: string,
   deps: any[],
+  debounceDelay: number = 300
 ) {
   const handlerRef = useRef(handler);
   useEffect(() => {
     handlerRef.current = handler;
   }, [handler]);
-  const debouncedHandler = useMemo(() => debounce((event: NavigationButtonPressedEvent) => handlerRef.current && handlerRef.current(event), 300, { leading: true, trailing: false }), []);
+  const debouncedHandler = useMemo(() => debounce((event: NavigationButtonPressedEvent) => handlerRef.current && handlerRef.current(event), debounceDelay, { leading: true, trailing: false }), [debounceDelay]);
   useEffect(() => {
     const sub = Navigation.events().registerNavigationButtonPressedListener((event: NavigationButtonPressedEvent) => {
       if (event.componentId === componentId) {
@@ -270,6 +271,29 @@ export function useFlag(initialValue: boolean): [boolean, () => void, (value: bo
   return [value, toggle, set];
 }
 
+export const useKeyboardHeight = (): [number] => {
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+
+  function onKeyboardDidShow(e: any): void {
+    setKeyboardHeight(e.endCoordinates.height);
+  }
+
+  function onKeyboardDidHide(): void {
+    setKeyboardHeight(0);
+  }
+
+  useEffect(() => {
+    Keyboard.addListener('keyboardDidShow', onKeyboardDidShow);
+    Keyboard.addListener('keyboardDidHide', onKeyboardDidHide);
+    return () => {
+      Keyboard.removeListener('keyboardDidShow', onKeyboardDidShow);
+      Keyboard.removeListener('keyboardDidHide', onKeyboardDidHide);
+    };
+  }, []);
+
+  return [keyboardHeight];
+};
+
 interface ClearAction {
   type: 'clear';
 }
@@ -298,7 +322,7 @@ interface DecSlotAction {
 
 type SlotsAction = SlotAction | IncSlotAction | DecSlotAction | ClearAction | SyncAction;
 
-export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => void) {
+export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => void, keepZero?: boolean) {
   return useReducer((state: Slots, action: SlotsAction) => {
     switch (action.type) {
       case 'clear':
@@ -312,7 +336,7 @@ export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => vo
           ...state,
           [action.code]: action.value,
         };
-        if (!newState[action.code]) {
+        if (!newState[action.code] && !keepZero) {
           delete newState[action.code];
         }
         updateSlots && updateSlots(newState);
@@ -334,7 +358,7 @@ export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => vo
           ...state,
           [action.code]: (state[action.code] || 0) - 1,
         };
-        if (newState[action.code] <= 0) {
+        if (newState[action.code] <= 0 && !keepZero) {
           delete newState[action.code];
         }
         updateSlots && updateSlots(newState);
@@ -506,7 +530,7 @@ export function useChaosBagResults(campaignId: number): ChaosBagResults {
   return useSelector((state: AppState) => chaosBagResultsSelector(state, campaignId));
 }
 
-export function useDeck(id: number | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean }) {
+export function useDeck(id: number | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean } = {}): [Deck | undefined, Deck | undefined] {
   const dispatch = useDispatch();
   const effectiveDeckIdSelector = useCallback((state: AppState) => id !== undefined ? getEffectiveDeckId(state, id) : undefined, [id]);
   const effectiveDeckId = useSelector(effectiveDeckIdSelector);

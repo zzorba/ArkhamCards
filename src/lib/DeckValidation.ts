@@ -8,7 +8,7 @@ import {
   minBy,
   indexOf,
 } from 'lodash';
-import { t } from 'ttag';
+import { ngettext, msgid, t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, Slots } from '@actions/types';
 import { ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
@@ -190,11 +190,15 @@ export default class DeckValidation {
     const drawDeckSize = this.getDrawDeckSize(cards);
       // at least 60 others cards
     if (drawDeckSize < size) {
+      const removeCount = size - drawDeckSize;
+      this.problem_list.push(t`Not enough cards (${drawDeckSize} / ${size}).`);
       return 'too_few_cards';
     }
 
     // at least 60 others cards
     if (drawDeckSize > size) {
+      const removeCount = size - drawDeckSize;
+      this.problem_list.push(t`Too many cards (${drawDeckSize} / ${size}).`);
       return 'too_many_cards';
     }
     return null;

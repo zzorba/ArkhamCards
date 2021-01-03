@@ -13,7 +13,6 @@ import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 import { find, filter, map, slice } from 'lodash';
 
-import { FOOTER_HEIGHT } from '@components/DeckNavFooter/constants';
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import { rightButtonsForCard } from './CardDetailView';
 import { CardFaqProps } from './CardFaqView';
@@ -27,9 +26,10 @@ import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards
 import DatabaseContext from '@data/DatabaseContext';
 import { where } from '@data/query';
 import Carousel from 'react-native-snap-carousel';
-import DeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/DeckQuantityComponent';
-import DeckNavFooter from '@components/DeckNavFooter';
+import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
+import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
+import { useParsedDeck } from '@components/deck/hooks';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -57,11 +57,11 @@ const options = (passProps: CardDetailSwipeProps) => {
 };
 
 function DbCardDetailSwipeView(props: Props) {
-  const { componentId, faction, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex } = props;
+  const { componentId, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex } = props;
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
   const { width, height } = useWindowDimensions();
-  const tabooSetSelector = useMemo(makeTabooSetSelector, []);
+  const tabooSetSelector: (state: AppState, tabooSetOverride?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
   const packInCollection = useSelector(getPacksInCollection);
   const showSpoilers = useSelector(getPackSpoilers);
@@ -120,7 +120,9 @@ function DbCardDetailSwipeView(props: Props) {
       },
     });
   }, [componentId]);
-
+  const backPressed = useCallback(() => {
+    Navigation.pop(componentId);
+  }, [componentId]);
   useComponentDidAppear(() => {
     Navigation.mergeOptions(componentId, options(props));
   }, componentId, [componentId]);
@@ -168,9 +170,7 @@ function DbCardDetailSwipeView(props: Props) {
     }
     const deck_limit: number = currentCard.collectionDeckLimit(packInCollection);
     return (
-      <View style={{ height: FOOTER_HEIGHT, position: 'relative' }}>
-        <DeckQuantityComponent code={currentCard.code} deckId={deckId} forceBig showZeroCount limit={deck_limit} />
-      </View>
+      <FloatingDeckQuantityComponent code={currentCard.code} deckId={deckId} limit={deck_limit} />
     );
   }, [deckId, currentCard, packInCollection]);
   const renderCard = useCallback((
@@ -222,7 +222,10 @@ function DbCardDetailSwipeView(props: Props) {
         apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
       />
       { deckId !== undefined && (
-        <DeckNavFooter deckId={deckId} componentId={componentId} controls={deckCountControls} faction={faction} />
+        <>
+          <DeckNavFooter deckId={deckId} componentId={componentId} control="counts" onPress={backPressed} />
+          { deckCountControls }
+        </>
       ) }
       { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
     </View>

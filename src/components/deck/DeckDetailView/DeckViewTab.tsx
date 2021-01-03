@@ -1,7 +1,7 @@
 import React, { MutableRefObject, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, find, flatMap, flatten, forEach, map, sum, sumBy, uniqBy } from 'lodash';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { c, msgid, t } from 'ttag';
 
 import {
@@ -40,6 +40,9 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
 import { useDeckXpStrings } from '../hooks';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
+import { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
+import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
+import { getPacksInCollection } from '@reducers';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -261,7 +264,7 @@ interface Props {
   isPrivate: boolean;
   buttons?: ReactNode;
   showEditSpecial?: () => void;
-  showEditNameDialog: () => void;
+  showXpAdjustmentDialog: () => void;
   showCardUpgradeDialog: (card: Card) => void;
   tabooSet?: TabooSet;
   tabooOpen: boolean;
@@ -280,6 +283,7 @@ interface Props {
   };
   deckEdits?: EditDeckState;
   deckEditsRef: MutableRefObject<EditDeckState | undefined>;
+  mode: 'view' | 'edit' | 'upgrade';
 }
 
 export default function DeckViewTab(props: Props) {
@@ -300,7 +304,7 @@ export default function DeckViewTab(props: Props) {
     editable,
     showCardUpgradeDialog,
     problem,
-    showEditNameDialog,
+    showXpAdjustmentDialog,
     visible,
     tabooSet,
     showTaboo,
@@ -313,8 +317,10 @@ export default function DeckViewTab(props: Props) {
     showDeckHistory,
     deckEdits,
     deckEditsRef,
+    mode,
   } = props;
   const { backgroundStyle, colors } = useContext(StyleContext);
+  const packInCollection = useSelector(getPacksInCollection);
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
   const [data, setData] = useState<DeckSection[]>([]);
@@ -495,6 +501,26 @@ export default function DeckViewTab(props: Props) {
     return !!(deck.previous_deck && !deck.next_deck);
   }, [deck.previous_deck, deck.next_deck]);
 
+  const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined): ControlType | undefined => {
+    if (mode === 'view') {
+      return count !== undefined ? {
+        type: 'count',
+        count,
+      } : undefined;
+    }
+
+    const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
+    if (count !== undefined) {
+      return {
+        type: 'upgrade',
+        deckId: deck.id,
+        limit: card.collectionDeckLimit(packInCollection),
+        count,
+        onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
+      };
+    }
+  }, [mode, deck.id, showCardUpgradeDialog, showDeckUpgrades, packInCollection]);
+
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection) => {
     const card = cards[item.id];
     if (!card) {
@@ -503,7 +529,6 @@ export default function DeckViewTab(props: Props) {
     const count = (item.special && (deckEditsRef.current?.ignoreDeckLimitSlots[item.id] || 0) > 0) ?
       deckEditsRef.current?.ignoreDeckLimitSlots[item.id] :
       (item.quantity - (deckEditsRef.current?.ignoreDeckLimitSlots[item.id] || 0));
-    const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
     return (
       <CardSearchResult
         key={item.index}
@@ -511,15 +536,12 @@ export default function DeckViewTab(props: Props) {
         id={`${item.index}`}
         invalid={item.invalid}
         onPressId={showSwipeCard}
-        control={count !== undefined ? {
-          type: 'upgrade',
-          count,
-          onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
-        } : undefined}
+        control={controlForCard(item, card, count)}
+        faded={count === 0}
         noBorder={section.last && index === (section.cards.length - 1)}
       />
     );
-  }, [showSwipeCard, deckEditsRef, showDeckUpgrades, showCardUpgradeDialog, cards]);
+  }, [showSwipeCard, deckEditsRef, controlForCard, cards]);
 
   const dispatch = useDispatch();
   const setTabooSet = useCallback((tabooSetId: number | undefined) => {
@@ -546,18 +568,18 @@ export default function DeckViewTab(props: Props) {
     }
     return (
       <DeckPickerStyleButton
-        title={t`Experience`}
+        title={t`Upgrade experience`}
         valueLabel={xpLabel}
         valueLabelDescription={xpDetailLabel}
         editable={editable}
-        onPress={showEditNameDialog}
+        onPress={showXpAdjustmentDialog}
         first
         last={last}
         icon="xp"
         noLabelDivider
       />
     );
-  }, [xpLabel, xpDetailLabel, showEditNameDialog, editable]);
+  }, [xpLabel, xpDetailLabel, showXpAdjustmentDialog, editable]);
   const investigatorOptions = useMemo(() => {
     if (!deckEdits?.meta || !investigator) {
       return null;
@@ -577,6 +599,7 @@ export default function DeckViewTab(props: Props) {
           setMeta={setMeta}
           setParallel={setParallel}
           firstElement={hasXpButton && !!changes && !!xpLabel ? renderXpButton : undefined}
+          hasPreviousDeck={!!deck.previous_deck}
         />
       </View>
     );
@@ -638,20 +661,20 @@ export default function DeckViewTab(props: Props) {
             <View style={styles.container}>
               { investigatorBlock }
             </View>
-            <DeckMetadataComponent
-              parsedDeck={parsedDeck}
-              bondedCardCount={bondedCardsCount}
-              problem={problem}
-              hasPreviousDeck={!!deck.previous_deck}
-              editable={editable}
-            />
+            { deckEdits?.mode === 'view' && (
+              <DeckMetadataComponent
+                parsedDeck={parsedDeck}
+                bondedCardCount={bondedCardsCount}
+                problem={problem}
+              />
+            ) }
             { investigatorOptions }
           </View>
           { buttons }
         </View>
       </View>
     );
-  }, [investigatorBlock, investigatorOptions, buttons, parsedDeck, bondedCardsCount, problem, editable, deck.previous_deck]);
+  }, [investigatorBlock, investigatorOptions, buttons, parsedDeck, bondedCardsCount, problem, deckEdits]);
 
   const renderedData = useMemo(() => {
     return (
@@ -707,6 +730,7 @@ export default function DeckViewTab(props: Props) {
           singleCardView={singleCardView}
         />
       </View>
+      <View style={styles.footerPadding} />
     </ScrollView>
   );
 }
@@ -764,5 +788,8 @@ const styles = StyleSheet.create({
     paddingLeft: xs,
     marginBottom: s,
     marginRight: s,
+  },
+  footerPadding: {
+    height: FOOTER_HEIGHT,
   },
 });

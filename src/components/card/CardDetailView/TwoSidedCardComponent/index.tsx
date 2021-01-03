@@ -69,7 +69,7 @@ interface State {
 }
 
 export default function TwoSidedCardComponent({ componentId, card, linked, notFirst, simple, width }: Props) {
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, shadow, colors, typography } = useContext(StyleContext);
   const [showBack, toggleShowBack] = useFlag(false);
   const isHorizontal = card.type_code === 'act' ||
     card.type_code === 'agenda' ||
@@ -305,7 +305,7 @@ export default function TwoSidedCardComponent({ componentId, card, linked, notFi
     const noHeader = (card.name === card.back_name || !card.back_name) && !backFirst;
     return (
       <View style={[styles.container, styles.containerPadding, { width }]} key={key}>
-        <View style={[styles.card, backgroundStyle, {
+        <View style={[styles.card, shadow.large, backgroundStyle, {
           borderColor: colors.faction[
             card.faction2_code ? 'dual' : card.factionCode()
           ].background,
@@ -360,7 +360,7 @@ export default function TwoSidedCardComponent({ componentId, card, linked, notFi
         </View>
       </View>
     );
-  }, [card, componentId, simple, width, linked,
+  }, [card, componentId, simple, width, linked, shadow.large,
     colors, backgroundStyle, typography, showBack, typeLine, cardFooter, flavorFirst,
     toggleShowBack, showTaboo, showFaq]);
 
@@ -436,6 +436,7 @@ export default function TwoSidedCardComponent({ componentId, card, linked, notFi
       <View style={[styles.container, styles.containerPadding]} key={key}>
         <View style={[
           styles.card,
+          shadow.large,
           {
             borderColor: colors.faction[
               card.faction2_code ? 'dual' : card.factionCode()
@@ -489,7 +490,7 @@ export default function TwoSidedCardComponent({ componentId, card, linked, notFi
         </View>
       </View>
     );
-  }, [card, simple, width, linked, cardText,
+  }, [card, simple, width, linked, cardText, shadow.large,
     cardFooter, colors, backgroundStyle, showBack, flavorFirst, image, metadataBlock, playdataBlock,
     toggleShowBack, showFaq, showTaboo]);
 
@@ -559,10 +560,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderTopWidth: 0,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 8,
-    shadowColor: '#000000',
-    shadowOpacity: 0.25,
   },
   cardBody: {
     paddingTop: xs,

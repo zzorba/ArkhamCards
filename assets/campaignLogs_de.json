@@ -2432,6 +2432,14 @@
             "text": "Die Mission war erfolgreich."
           },
           {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "the investigators reached Falcon Point after sunrise."
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "the investigators reached Falcon Point before sunrise."
+          },
+          {
             "id": "terror_of_devil_reef_is_dead",
             "text": "Der Schrecken des Teufelsriffs ist tot."
           },

@@ -121,7 +121,7 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag }: Props) {
             passProps,
             options: {
               modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.overFullScreen :
+                OptionsModalPresentationStyle.fullScreen :
                 OptionsModalPresentationStyle.overCurrentContext,
             },
           },

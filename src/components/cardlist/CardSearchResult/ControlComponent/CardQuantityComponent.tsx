@@ -1,16 +1,13 @@
 import React, { useCallback, useContext, useReducer } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { rowHeight, toggleButtonMode } from '../constants';
-import { s, xs } from '@styles/space';
+import { xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { EditSlotsActions, useCounter, useEffectUpdate } from '@components/core/hooks';
-import RoundButton from '@components/core/RoundButton';
+import StackedCardCount from './StackedCardCount';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface Props {
   code: string;
@@ -22,7 +19,7 @@ interface Props {
 }
 
 function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { setSlot }, limit }: Props) {
-  const { fontScale, typography } = useContext(StyleContext);
+  const { fontScale } = useContext(StyleContext);
   const [count, updateCount] = useReducer((count: number, action: 'cycle' | 'sync') => {
     if (action === 'cycle') {
       const newCount = (count + 1) % (limit + 1);
@@ -42,19 +39,15 @@ function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { se
 
   return (
     <View style={[styles.row, { height: rowHeight(fontScale) }]}>
-      <RoundButton onPress={onPress}>
-        <View style={styles.centerText}>
-          <Text style={[typography.text, styles.count, typography.center]}>
-            { count }
-          </Text>
-        </View>
-      </RoundButton>
+      <TouchableOpacity onPress={onPress}>
+        <StackedCardCount count={count} showZeroCount />
+      </TouchableOpacity>
     </View>
   );
 }
 
-function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { incSlot, decSlot }, limit, showZeroCount, forceBig }: Props) {
-  const { fontScale, typography } = useContext(StyleContext);
+function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { incSlot, decSlot }, limit, showZeroCount }: Props) {
+  const { fontScale } = useContext(StyleContext);
   const [count, incCount, decCount, setCount] = useCounter(propsCount, { min: 0, max: limit });
   useEffectUpdate(() => {
     setCount(propsCount);
@@ -77,13 +70,10 @@ function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { 
         onIncrement={inc}
         onDecrement={dec}
         max={limit}
-        color={forceBig ? 'white' : undefined}
         hideDisabledMinus
-        countRender={
-          <Text style={[typography.text, styles.count, forceBig ? { color: 'white', fontSize: 22 } : {}]}>
-            { (showZeroCount || count !== 0) ? count : ' ' }
-          </Text>
-        }
+        dialogStyle
+        countRender={<StackedCardCount count={count} showZeroCount={showZeroCount} />}
+        showZeroCount={showZeroCount}
       />
     </View>
   );
@@ -107,18 +97,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingRight: xs,
-  },
-  count: {
-    marginLeft: xs,
-    width: 16,
-    textAlign: 'center',
-    marginRight: s,
-    fontWeight: '600',
-  },
-  centerText: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingLeft: 4,
   },
 });

@@ -147,8 +147,8 @@ android {
         applicationId "com.arkhamcards"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 294
-        versionName "2.9.1"
+        versionCode 310
+        versionName "2.9.6"
         manifestPlaceholders = [
             appAuthRedirectScheme: 'arkhamcards'
         ]
@@ -232,9 +232,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-
-project.afterEvaluate {
-    apply from: '../../node_modules/react-native-zss-rich-text-editor/htmlCopy.gradle';
-    copyEditorHtmlToAppAssets(file('../../node_modules/react-native-zss-rich-text-editor'))
-}
 

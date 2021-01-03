@@ -24,7 +24,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Deck.Checklist': return require('@components/deck/DeckChecklistView').default;
     case 'Deck.DrawSimulator': return require('@components/deck/DrawSimulatorView').default;
     case 'Deck.Description': return require('@components/deck/DeckDescriptionView').default;
-    case 'Deck.Edit': return require('@components/deck/DeckEditView').default;
+    case 'Deck.EditAddCards': return require('@components/deck/DeckEditView').default;
     case 'Deck.EditSpecial': return require('@components/deck/EditSpecialDeckCardsView').default;
     case 'Deck.NewOptions': return require('@components/deck/NewDeckOptionsDialog').default;
     case 'Card': return require('@components/card/CardDetailView').default;

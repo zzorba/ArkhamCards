@@ -1,5 +1,21 @@
 [
   {
+    "campaignId": "core",
+    "scenarioId": "arkham"
+  },
+  {
+    "campaignId": "ptc",
+    "scenarioId": "the_last_king"
+  },
+  {
+    "campaignId": "ptc",
+    "scenarioId": "the_pallid_mask"
+  },
+  {
+    "campaignId": "ptc",
+    "scenarioId": "the_unspeakable_oath"
+  },
+  {
     "campaignId": "side",
     "scenarioId": "all_or_nothing"
   },
@@ -25,6 +41,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "meddling_of_meowlathotep"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "murder_at_the_excelsior_hotel"
   },
   {
@@ -44,7 +64,15 @@
     "scenarioId": "war_of_the_outer_gods"
   },
   {
+    "campaignId": "tdea",
+    "scenarioId": "the_search_for_kadath"
+  },
+  {
     "campaignId": "tfa",
     "scenarioId": "the_depths_of_yoth"
+  },
+  {
+    "campaignId": "tfa",
+    "scenarioId": "threads_of_fate"
   }
 ]

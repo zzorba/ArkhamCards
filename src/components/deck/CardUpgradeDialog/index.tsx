@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { filter, find, map, reverse, partition, sortBy, sumBy, shuffle, flatMap, uniq } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,15 +8,13 @@ import { t, ngettext, msgid } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import CardTextComponent from '@components/card/CardTextComponent';
 import CardUpgradeOption from './CardUpgradeOption';
-import DeckProblemRow from '@components/core/DeckProblemRow';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/actions';
 import DeckValidation from '@lib/DeckValidation';
 import Card from '@data/Card';
-import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
-import space, { m, s, xs } from '@styles/space';
-import DeckNavFooter from '../../DeckNavFooter';
+import space, { m } from '@styles/space';
+import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, PARALLEL_AGNES_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
@@ -24,6 +22,8 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import DeckProblemBanner from '../DeckProblemBanner';
+import { useDialog } from '../dialogs';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
@@ -64,7 +64,9 @@ export default function CardUpgradeDialog({
   const inCollection = useSelector(getPacksInCollection);
   const [showNonCollection, setShowNonCollection] = useState(false);
   const [shrewdAnalysisResult, setShrewdAnalysisResult] = useState<string[]>([]);
-
+  const backPressed = useCallback(() => {
+    Navigation.pop(componentId);
+  }, [componentId]);
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'back') {
       Navigation.pop(componentId);
@@ -200,47 +202,59 @@ export default function CardUpgradeDialog({
     }
   }, [deckEdits, namedCards, dispatch, id, cardInCollection, shrewdAnalysisRule]);
 
-  const askShrewdAnalysis = useCallback(() => {
+  const shrewdAnalysisContent = useMemo(() => {
     if (!deckEdits) {
       return;
     }
-    const [inCollection] = partition(
-      namedCards,
-      card => cardInCollection(card) || deckEdits.slots[card.code] > 0);
+    const [inCollection] = partition(namedCards, card => cardInCollection(card) || deckEdits.slots[card.code] > 0);
     const [baseCards, eligibleCards] = partition(inCollection, card => shrewdAnalysisRule(card));
     if (eligibleCards.length && baseCards.length) {
       const baseCard = baseCards[0];
       const sampleCard = eligibleCards[0];
       const xpCost = (sampleCard.xp || 0) + (sampleCard.extra_xp || 0) - ((baseCard.xp || 0) + (baseCard.extra_xp || 0));
-      const upgradeCards = map(eligibleCards, eligibleCards => eligibleCards.subname || eligibleCards.name).join('\n');
-      Alert.alert(
-        t`Shrewd Analysis Rule`,
-        [
-          ngettext(
-            msgid`This upgrade will cost ${xpCost} experience.`,
-            `This upgrade will cost ${xpCost} experience.`,
-            xpCost
-          ),
-          ngettext(
-            msgid`Two random cards will be chosen among the following choice:\n\n${upgradeCards}`,
-            `Two random cards will be chosen among the following choices:\n\n${upgradeCards}`,
-            upgradeCards.length
-          ),
-          t`You can edit your collection under Settings to adjust the eligible choices.`,
-        ].join('\n\n'),
-        [
-          {
-            text: t`Upgrade`,
-            onPress: doShrewdAnalysis,
-          },
-          {
-            text: t`Cancel`,
-            style: 'cancel',
-          },
-        ]
+      const upgradeCardsArray = map(eligibleCards, eligibleCards => `\t- ${eligibleCards.subname || eligibleCards.name}`);
+      const upgradeCards = upgradeCardsArray.join('\n');
+      return (
+        <View style={[space.paddingTopM, space.paddingBottomM, space.paddingSideS]}>
+          <Text style={[typography.text, space.paddingBottomS]}>
+            { ngettext(
+              msgid`This upgrade will cost ${xpCost} experience.`,
+              `This upgrade will cost ${xpCost} experience.`,
+              xpCost
+            ) }
+          </Text>
+          <Text style={[typography.text, space.paddingBottomM]}>
+            { ngettext(
+              msgid`Two random cards will be chosen among the following choice:\n\n${upgradeCards}`,
+              `Two random cards will be chosen among the following choices:\n\n${upgradeCards}`,
+              upgradeCardsArray.length
+            ) }
+          </Text>
+          <Text style={typography.text}>
+            { t`You can edit your collection under Settings to adjust the eligible choices.` }
+          </Text>
+        </View>
       );
     }
-  }, [deckEdits, namedCards, doShrewdAnalysis, cardInCollection, shrewdAnalysisRule]);
+    return null;
+  }, [typography, cardInCollection, deckEdits, namedCards, shrewdAnalysisRule]);
+
+  const { dialog: shrewdAnalysisDialog, setVisible: setShrewdAnalysisDialogVisible } = useDialog({
+    title: t`Shrewd Analysis Rule`,
+    content: shrewdAnalysisContent,
+    confirm: {
+      title: t`Upgrade`,
+      onPress: doShrewdAnalysis,
+    },
+    dismiss: {
+      title: t`Cancel`,
+    },
+  });
+
+  const askShrewdAnalysis = useCallback(() => {
+    setShrewdAnalysisDialogVisible(true);
+  }, [setShrewdAnalysisDialogVisible]);
+
   const shrewdAnalysisCards: Card[] = useMemo(() => {
     return flatMap(uniq(shrewdAnalysisResult), code => {
       const card = cards && cards[code];
@@ -315,9 +329,6 @@ export default function CardUpgradeDialog({
       </>
     );
   }, [deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, cardInCollection, specialIgnoreRule, ignoreData, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
-
-
-  const isSurvivor = investigator.faction_code === 'survivor';
   return (
     <View
       style={[styles.wrapper, backgroundStyle]}
@@ -326,21 +337,14 @@ export default function CardUpgradeDialog({
         overScrollMode="never"
         bounces={false}
       >
-        { overLimit && (
-          <View style={[styles.problemBox,
-            { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
-          ]}>
-            <DeckProblemRow
-              problem={{ reason: 'too_many_copies' }}
-              color={isSurvivor ? COLORS.black : COLORS.white}
-              fontSize={14}
-            />
-          </View>
-        ) }
         { cardsSection }
         <View style={styles.footerPadding} />
       </ScrollView>
-      <DeckNavFooter componentId={componentId} deckId={id} faction={investigator.factionCode()} />
+      <DeckNavFooter componentId={componentId} deckId={id} onPress={backPressed} />
+      { overLimit && (
+        <DeckProblemBanner problem={{ reason: 'too_many_copies' }} />
+      ) }
+      { shrewdAnalysisDialog }
     </View>
   );
 }
@@ -355,13 +359,6 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     flexDirection: 'column',
-  },
-  problemBox: {
-    flex: 1,
-    paddingTop: xs,
-    paddingBottom: xs,
-    paddingRight: s,
-    paddingLeft: s,
   },
   footerPadding: {
     height: m,

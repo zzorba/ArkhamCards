@@ -11,10 +11,12 @@ import {
   InputStep,
   Step,
   Scenario,
+  GenericStep,
 } from '@data/scenario/types';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
+import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 
 export enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
@@ -110,6 +112,47 @@ function upgradeDecksStep(): InputStep {
     type: 'input',
     input: {
       type: 'upgrade_decks',
+    },
+  };
+}
+
+const DRAW_STANDALONE_WEAKNESS_STEP_ID = '$draw_standalone_weakness';
+function drawStandaloneWeaknessStep(): InputStep {
+  return {
+    id: DRAW_STANDALONE_WEAKNESS_STEP_ID,
+    type: 'input',
+    bullet_type: 'none',
+    input: {
+      type: 'investigator_counter',
+      text: t`Draw Random Basic Weakness`,
+      max: 5,
+      effects: [
+        {
+          type: 'add_weakness',
+          investigator: '$input_value',
+          count: '$input_value',
+          weakness_traits: [],
+          select_traits: false,
+          standalone: true,
+        },
+        {
+          type: 'remove_card',
+          investigator: '$input_value',
+          card: RANDOM_BASIC_WEAKNESS,
+          non_story: true,
+        },
+      ],
+    },
+  };
+}
+
+const SAVE_STANDALONE_DECKS_ID = '$save_standalone_decks';
+function saveStandaloneDecksStep(): InputStep {
+  return {
+    id: SAVE_STANDALONE_DECKS_ID,
+    type: 'input',
+    input: {
+      type: 'save_decks',
     },
   };
 }
@@ -417,6 +460,8 @@ export function getFixedStep(
       return editCampaignLogStep();
     case DRAW_WEAKNESS_STEP_ID:
       return drawWeaknessStep();
+    case DRAW_STANDALONE_WEAKNESS_STEP_ID:
+      return drawStandaloneWeaknessStep();
     case PLAY_SCENARIO_STEP_ID:
       return playScenarioStep();
     case CHOOSE_INVESTIGATORS_STEP_ID:
@@ -425,6 +470,8 @@ export function getFixedStep(
       return upgradeDecksStep();
     case LEAD_INVESTIGATOR_STEP_ID:
       return leadInvestigatorStep();
+    case SAVE_STANDALONE_DECKS_ID:
+      return saveStandaloneDecksStep();
     case RECORD_TRAUMA_STEP_ID:
       return recordTraumaStep();
     default:
@@ -441,6 +488,7 @@ export function scenarioStepIds(scenario: Scenario, standalone?: boolean) {
     ] : [
       CHOOSE_INVESTIGATORS_STEP_ID,
       LEAD_INVESTIGATOR_STEP_ID,
+      ...(standalone ? [DRAW_STANDALONE_WEAKNESS_STEP_ID, SAVE_STANDALONE_DECKS_ID] : []),
       ...((standalone && scenario.standalone_setup) || scenario.setup),
     ];
 }

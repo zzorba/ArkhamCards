@@ -57,7 +57,7 @@ export default function ArkhamButtonGroup({
   selectedIndexes,
   onPress,
 }: Props) {
-  const { colors, fontScale } = useContext(StyleContext);
+  const { colors, fontScale, shadow } = useContext(StyleContext);
   const [localSelectedIndexes, setLocalSelectedIndexes] = useState(selectedIndexes);
   useEffectUpdate(() => {
     setLocalSelectedIndexes(selectedIndexes);
@@ -72,7 +72,7 @@ export default function ArkhamButtonGroup({
   const height = 18 * fontScale + 20;
   return (
     <View style={styles.wrapper}>
-      <View style={[styles.buttonWrapper, { borderRadius: height / 2, height, backgroundColor: colors.M }]}>
+      <View style={[styles.buttonWrapper, shadow.medium, { borderRadius: height / 2, height, backgroundColor: colors.M }]}>
         { map(buttons, (button, idx) => {
           const last = idx === (buttons.length - 1);
           return (
@@ -98,10 +98,6 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    shadowColor: '#000000',
-    shadowOpacity: 0.25,
   },
   button: {
     flex: 1,

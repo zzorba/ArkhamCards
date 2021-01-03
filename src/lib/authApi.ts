@@ -126,7 +126,8 @@ export function newCustomDeck(
   ignoreDeckLimitSlots: { [code: string]: number },
   problem?: DeckProblemType,
   tabooSetId?: number,
-  meta?: DeckMeta
+  meta?: DeckMeta,
+  description?: string
 ) {
   return newDeck(investigator, name, tabooSetId)
     .then(deck => saveDeck(
@@ -138,7 +139,8 @@ export function newCustomDeck(
       0,
       0,
       tabooSetId,
-      meta)
+      meta,
+      description)
     );
 }
 
@@ -181,7 +183,8 @@ export function saveDeck(
   spentXp: number,
   xpAdjustment?: number,
   tabooSetId?: number,
-  meta?: DeckMeta
+  meta?: DeckMeta,
+  description_md?: string
 ): Promise<Deck> {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
@@ -203,6 +206,9 @@ export function saveDeck(
     }
     if (ignoreDeckLimitSlots && keys(ignoreDeckLimitSlots).length) {
       bodyParams.ignored = JSON.stringify(ignoreDeckLimitSlots);
+    }
+    if (description_md !== undefined) {
+      bodyParams.description_md = description_md;
     }
     const body = encodeParams(bodyParams);
     return fetch(uri, {

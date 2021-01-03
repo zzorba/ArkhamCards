@@ -45,15 +45,17 @@
           <data
             android:host="auth"  
             android:scheme="arkhamcards" />  
-        </intent-filter>  
+        </intent-filter>
         <intent-filter>
-          <action android:name="android.intent.action.VIEW" />  
-          <category android:name="android.intent.category.DEFAULT" />  
+          <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
           <category android:name="android.intent.category.BROWSABLE" />
           <data
+            android:host=""
             android:scheme="dissonantvoices"
-            android:path="/redirect" /> 
-        </intent-filter>  
+            android:path="/redirect"
+          />
+        </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>

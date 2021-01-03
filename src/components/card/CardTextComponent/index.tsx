@@ -62,6 +62,7 @@ function ArkahmIconSpanRule(style: StyleContextType): MarkdownRule<WithIconName,
     match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"( title="[^"]*")?></span>')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
+      console.log(capture[1]);
       return { name: capture[1] };
     },
     render: ArkhamIconNode(style),
@@ -225,8 +226,11 @@ interface Props {
 export default function CardTextComponent({ text, onLinkPress }: Props) {
   const context = useContext(StyleContext);
   const cleanText = text
+    .replace(/\\u2022/g, '•')
+    .replace(/<span class="icon-(.+?)"><\/span>/g, '[$1]')
     .replace(/&rarr;/g, '→')
     .replace(/\/n/g, '\n')
+    .replace(/^---*$/gm, '<hr>')
     .replace(/(^\s?-|^—\s+)(.+)$/gm,
       onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
     );

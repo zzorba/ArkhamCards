@@ -49,7 +49,7 @@ export default function configureStore(initialState: AppState) {
     // WHY is that the default behavior?!?!?
     timeout: 0,
     // These all have some transient fields and are handled separately.
-    blacklist: ['cards', 'decks', 'packs', 'signedIn', 'filters', 'deckEdits'],
+    blacklist: ['cards', 'decks', 'packs', 'dissonantVoices', 'guides', 'signedIn', 'filters', 'deckEdits'],
     migrate: createMigrate(migrations, { debug: false }),
   };
 

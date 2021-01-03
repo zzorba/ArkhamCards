@@ -10,6 +10,7 @@ import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import Card from '@data/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import StackedCardCount from '@components/cardlist/CardSearchResult/ControlComponent/StackedCardCount';
 
 interface Props {
   card: Card;
@@ -57,15 +58,14 @@ export default function CardUpgradeOption({ card, code, count, ignoreCount, onIn
             { t`Level ${level}` }
           </Text>
         </View>
-        <Text style={[typography.dialogLabel, styles.countText]}>
-          { count }
-        </Text>
         <PlusMinusButtons
           count={count}
           max={card.deck_limit || 2}
           onIncrement={inc}
           onDecrement={dec}
           size={36}
+          dialogStyle
+          countRender={<StackedCardCount count={count} showZeroCount />}
           color="dark"
         />
       </View>

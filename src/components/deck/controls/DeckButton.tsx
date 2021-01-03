@@ -4,27 +4,80 @@ import { StyleSheet, Text, View } from 'react-native';
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
-import space from '@styles/space';
+import space, { xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   title: string;
-  icon: 'plus-thin' | 'dismiss';
-  color?: 'red';
+  detail?: string;
+  icon: 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit';
+  color?: 'red' | 'gold' | 'gray';
   onPress?: () => void;
+  rightMargin?: boolean;
+  thin?: boolean;
 }
 
-export default function DeckButton({ title, icon, color, onPress }: Props) {
+const ICON_SIZE = {
+  'edit': 24,
+  'upgrade': 34,
+  'plus-thin': 24,
+  'dismiss': 18,
+  'check-thin': 30,
+};
+const ICON_STYLE = {
+  'check-thin': {
+    marginTop: -6,
+  },
+  'edit': {},
+  'upgrade': {
+    marginTop: 0,
+  },
+  'dismiss': {},
+  'plus-thin': {},
+};
+
+
+export default function DeckButton({ title, detail, icon, color = 'gray', onPress, rightMargin, thin }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const backgroundColors = {
+    red: colors.warn,
+    gold: colors.upgrade,
+    gray: colors.D10,
+  };
+  const rippleColor = {
+    red: colors.faction.survivor.lightBackground,
+    gold: colors.faction.dual.lightBackground,
+    gray: colors.M,
+  };
+  const iconColor = {
+    red: COLORS.white,
+    gold: COLORS.D20,
+    gray: colors.L10,
+  };
+  const textColor = {
+    red: COLORS.white,
+    gold: COLORS.D30,
+    gray: colors.L30,
+  };
   return (
     <Ripple style={[
       styles.button,
-      { backgroundColor: color === 'red' ? colors.warn : colors.D10 },
-    ]} onPress={onPress} rippleColor={color === 'red' ? colors.faction.survivor.lightBackground : colors.M}>
+      { backgroundColor: backgroundColors[color] },
+      rightMargin ? space.marginRightS : undefined,
+    ]} onPress={onPress} rippleColor={rippleColor[color] }>
       <View style={[styles.row, space.paddingSideXs, space.paddingTopS, space.paddingBottomS]}>
-        <View style={[styles.icon, space.marginRightS]}>
-          <AppIcon name={icon} size={icon === 'plus-thin' ? 24 : 20} color={colors.background} />
+        <View style={[
+          styles.icon,
+          space.marginRightS,
+          thin ? { marginLeft: xs, width: 24, height: 24 } : { width: 32, height: 32 },
+          ICON_STYLE[icon],
+        ]}>
+          <AppIcon name={icon} size={ICON_SIZE[icon]} color={iconColor[color]} />
         </View>
-        <Text style={[typography.large, { color: colors.background }]}>{ title }</Text>
+        <View style={styles.column}>
+          <Text style={[typography.large, { color: textColor[color] }]}>{ title }</Text>
+          { !!detail && <Text style={[typography.smallLabel, typography.italic, { color: textColor[color] }]}>{ detail }</Text> }
+        </View>
       </View>
     </Ripple>
   );
@@ -32,7 +85,7 @@ export default function DeckButton({ title, icon, color, onPress }: Props) {
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 8,
+    borderRadius: 4,
     flex: 1,
   },
   row: {
@@ -41,10 +94,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   icon: {
-    width: 32,
-    height: 32,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  column: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    flex: 1,
   },
 });

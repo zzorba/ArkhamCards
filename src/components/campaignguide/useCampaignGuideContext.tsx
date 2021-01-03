@@ -35,6 +35,18 @@ export default function useCampaignGuideContext(campaignId: number, campaignData
     }
   }, [campaignId, campaignChooseDeck, campaignInvestigators]);
 
+  const setBinaryAchievement = useCallback((achievementId: string, value: boolean) => {
+    dispatch(guideActions.setBinaryAchievement(campaignId, achievementId, value));
+  }, [dispatch, campaignId]);
+
+  const incCountAchievement = useCallback((achievementId: string, max?: number) => {
+    dispatch(guideActions.incCountAchievement(campaignId, achievementId, max));
+  }, [dispatch, campaignId]);
+
+  const decCountAchievement = useCallback((achievementId: string) => {
+    dispatch(guideActions.decCountAchievement(campaignId, achievementId));
+  }, [dispatch, campaignId]);
+
   const removeDeck = useCallback((
     deck: Deck
   ) => {
@@ -171,9 +183,13 @@ export default function useCampaignGuideContext(campaignId: number, campaignData
       resetScenario,
       setInterScenarioData,
       undo,
+      setBinaryAchievement,
+      incCountAchievement,
+      decCountAchievement,
     };
   }, [showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
-    setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo]);
+    setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo,
+    setBinaryAchievement, incCountAchievement, decCountAchievement]);
   const campaignStateHelper = useMemo(() => investigators && campaignData ? new CampaignStateHelper(
     campaignData.campaignState,
     investigators,

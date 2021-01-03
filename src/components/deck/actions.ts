@@ -142,17 +142,6 @@ export function fetchPublicDeck(
   };
 }
 
-export interface DeckChanges {
-  name?: string;
-  slots?: Slots;
-  ignoreDeckLimitSlots?: Slots;
-  problem?: string;
-  spentXp?: number;
-  xpAdjustment?: number;
-  tabooSetId?: number;
-  meta?: DeckMeta;
-}
-
 function handleUpgradeDeckResult(
   result: UpgradeDeckResult,
   dispatch: ThunkDispatch<AppState, unknown, Action>
@@ -170,14 +159,14 @@ export const deleteDeckAction: ActionCreator<
     return new Promise<boolean>((resolve, reject) => {
       if (local) {
         dispatch(removeDeck(id, deleteAllVersion));
-        resolve();
+        resolve(true);
       } else {
         const deleteDeckPromise = deleteDeck(id, deleteAllVersion);
         handleAuthErrors(
           deleteDeckPromise,
           () => {
             dispatch(removeDeck(id, deleteAllVersion));
-            resolve();
+            resolve(true);
           },
           reject,
           () => null,
@@ -239,11 +228,23 @@ export const saveDeckUpgrade: ActionCreator<
   };
 };
 
+export interface SaveDeckChanges {
+  name?: string;
+  description?: string;
+  slots?: Slots;
+  ignoreDeckLimitSlots?: Slots;
+  problem?: string;
+  spentXp?: number;
+  xpAdjustment?: number;
+  tabooSetId?: number;
+  meta?: DeckMeta;
+}
+
 export const saveDeckChanges: ActionCreator<
   ThunkAction<Promise<Deck>, AppState, unknown, Action>
 > = (
   deck: Deck,
-  changes: DeckChanges
+  changes: SaveDeckChanges
 ) => {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>): Promise<Deck> => {
     return new Promise((resolve, reject) => {
@@ -257,7 +258,8 @@ export const saveDeckChanges: ActionCreator<
           (changes.spentXp !== undefined && changes.spentXp !== null) ? changes.spentXp : (deck.spentXp || 0),
           (changes.xpAdjustment !== undefined && changes.xpAdjustment !== null) ? changes.xpAdjustment : (deck.xp_adjustment || 0),
           changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id,
-          (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta
+          (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta,
+          (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md
         );
         dispatch(updateDeck(newDeck.id, newDeck, true));
         setTimeout(() => {
@@ -273,7 +275,8 @@ export const saveDeckChanges: ActionCreator<
           (changes.spentXp !== undefined && changes.spentXp !== null) ? changes.spentXp : (deck.spentXp || 0),
           (changes.xpAdjustment !== undefined && changes.xpAdjustment !== null) ? changes.xpAdjustment : (deck.xp_adjustment || 0),
           changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id,
-          (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta
+          (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta,
+          (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md
         );
         handleAuthErrors<Deck>(
           savePromise,
@@ -306,6 +309,7 @@ export interface NewDeckParams {
   tabooSetId?: number;
   meta?: DeckMeta;
   problem?: DeckProblemType;
+  description?: string;
 }
 export const saveNewDeck: ActionCreator<
   ThunkAction<Promise<Deck>, AppState, unknown, Action>
@@ -326,7 +330,8 @@ export const saveNewDeck: ActionCreator<
           params.slots,
           params.tabooSetId,
           params.meta,
-          params.problem
+          params.problem,
+          params.description
         );
         dispatch(setNewDeck(deck.id, deck));
         setTimeout(() => {
@@ -340,7 +345,8 @@ export const saveNewDeck: ActionCreator<
           params.ignoreDeckLimitSlots || {},
           params.problem,
           params.tabooSetId,
-          params.meta
+          params.meta,
+          params.description
         );
         handleAuthErrors<Deck>(
           newDeckPromise,
@@ -381,6 +387,7 @@ export const saveClonedDeck: ActionCreator<
         tabooSetId: cloneDeck.taboo_id,
         meta: cloneDeck.meta,
         problem: cloneDeck.problem,
+        description: cloneDeck.description_md,
       })).then(deck => {
         setTimeout(() => {
           dispatch(saveDeckChanges(
@@ -392,6 +399,7 @@ export const saveClonedDeck: ActionCreator<
               spentXp: 0,
               xpAdjustment: 0,
               tabooSetId: cloneDeck.taboo_id,
+              description: cloneDeck.description_md,
             }
           )).then(resolve, reject);
         },
@@ -494,6 +502,17 @@ export function setDeckTabooSet(id: number, tabooSetId: number): UpdateDeckEditA
   };
 }
 
+
+export function setDeckDescription(id: number, description: string): UpdateDeckEditAction {
+  return {
+    type: UPDATE_DECK_EDIT,
+    id,
+    updates: {
+      descriptionChange: description,
+    },
+  };
+}
+
 export function setDeckXpAdjustment(id: number, xpAdjustment: number): UpdateDeckEditAction {
   return {
     type: UPDATE_DECK_EDIT,
@@ -536,13 +555,14 @@ export function updateDeckMeta(
   };
 }
 
-export function startDeckEdit(id: number): ThunkAction<void, AppState, unknown, Action> {
+export function startDeckEdit(id: number, initialMode?: 'upgrade' | 'edit'): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, StartDeckEditAction>, getState: () => AppState): void => {
     const deck = getState().decks.all[id];
     dispatch({
       type: START_DECK_EDIT,
       id,
       deck,
+      mode: initialMode,
     });
   };
 }

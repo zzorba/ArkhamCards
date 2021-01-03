@@ -210,7 +210,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId,
         break;
       }
     }
-  }, componentId, [resetPressed, menuPressed, undoPressed]);
+  }, componentId, [resetPressed, menuPressed, undoPressed], 100);
 
 
   const switchCampaignScenario = useCallback(() => {

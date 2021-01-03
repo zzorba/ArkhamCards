@@ -8,7 +8,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import Switch from '@components/core/Switch';
 import BasicButton from '@components/core/BasicButton';
-import ShowDeckButton from './ShowDeckButton';
 import { Deck, Slots, NumberChoices } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -17,16 +16,49 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showDeckModal, showCard } from '@components/nav/helper';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import DeckUpgradeComponent, { DeckUpgradeHandles } from '@components/deck/DeckUpgradeComponent';
-import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
+import { saveDeckUpgrade, saveDeckChanges, SaveDeckChanges } from '@components/deck/actions';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card from '@data/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
-import { useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
+import { useCounter, useEffectUpdate, useFlag, useDeck } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import { ThunkDispatch } from 'redux-thunk';
+
+
+interface ShowDeckButtonProps {
+  componentId: string;
+  deckId: number;
+  investigator: Card;
+}
+
+function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonProps) {
+  const { colors } = useContext(StyleContext);
+  const [deck] = useDeck(deckId, {});
+  const onPress = useCallback(() => {
+    if (deck) {
+      showDeckModal(
+        componentId,
+        deck,
+        colors,
+        investigator,
+        { hideCampaign: true }
+      );
+    }
+  }, [componentId, investigator, deck, colors]);
+
+  if (!deck) {
+    return null;
+  }
+  return (
+    <Button
+      title={t`View deck upgrade`}
+      onPress={onPress}
+    />
+  );
+}
 
 interface Props {
   componentId: string;
@@ -361,7 +393,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
 
   const viewDeck = useCallback(() => {
     if (deck) {
-      showDeckModal(componentId, deck, colors, investigator, undefined, true);
+      showDeckModal(componentId, deck, colors, investigator, { hideCampaign: true });
     }
   }, [componentId, colors, investigator, deck]);
 
@@ -415,7 +447,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
   }, [deck, storyAssets, storyAssetDeltas]);
 
 
-  const performSaveDeckChanges = useCallback((deck: Deck, changes: DeckChanges): Promise<Deck> => {
+  const performSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
     return deckDispatch(saveDeckChanges(deck, changes) as any);
   }, [deckDispatch]);
 

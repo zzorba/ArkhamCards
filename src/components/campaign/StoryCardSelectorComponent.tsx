@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { flatMap, forEach } from 'lodash';
 import { t } from 'ttag';
 
@@ -40,17 +40,12 @@ export default function StoryCardSelectorComponent({
 }: Props) {
   const { colors } = useContext(StyleContext);
   const [initialized, setInitialized] = useState(false);
-  const [storyCounts, setStoryCounts] = useSlots({});
   const [deck] = useDeck(deckId, {});
+  const [storyCounts, setStoryCounts] = useSlots({}, updateStoryCounts, true);
   const tabooSetId = deck?.taboo_id || 0;
-  useEffect(() => {
-    updateStoryCounts(storyCounts);
-  }, [storyCounts, updateStoryCounts]);
-
   const updateCount = useCallback((card: Card, count: number) => {
     setStoryCounts({ type: 'set-slot', code: card.code, value: count });
   }, [setStoryCounts]);
-
   const [allStoryCards, loading] = useCardsFromQuery({
     query: QUERY,
     sort: SORT,
@@ -65,6 +60,9 @@ export default function StoryCardSelectorComponent({
     }));
   }, [encounterCodes]);
   const [storyCards, deckStoryCards] = useMemo(() => {
+    if (!allStoryCards.length) {
+      return [[], []];
+    }
     const deckStorySlots: Slots = {};
     const storyCards: Card[] = [];
     const deckStoryCards: Card[] = [];
@@ -82,7 +80,6 @@ export default function StoryCardSelectorComponent({
     }
     return [storyCards, deckStoryCards];
   }, [allStoryCards, deck, encounterCodesSet, initialized, setStoryCounts, setInitialized]);
-
   const storyCardsSection = useMemo(() => {
     if (!storyCards.length) {
       return null;

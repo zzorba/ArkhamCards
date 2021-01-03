@@ -104,6 +104,9 @@ export default StyleSheet.create({
   marginRightM: {
     marginRight: m,
   },
+  paddingLeftXs: {
+    paddingLeft: xs,
+  },
   paddingLeftS: {
     paddingLeft: s,
   },
@@ -121,6 +124,10 @@ export default StyleSheet.create({
   },
   paddingTopXs: {
     paddingTop: xs,
+  },
+  paddingVerticalXs: {
+    paddingTop: xs,
+    paddingBottom: xs,
   },
   paddingLeftL: {
     paddingLeft: l,
