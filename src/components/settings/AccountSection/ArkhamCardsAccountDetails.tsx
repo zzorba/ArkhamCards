@@ -2,7 +2,6 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View } from 'react-native';
 import { forEach } from 'lodash';
 import database from '@react-native-firebase/database';
-import functions from '@react-native-firebase/functions';
 import { ngettext, msgid, t } from 'ttag';
 import { useObjectVal } from 'react-firebase-hooks/database';
 
@@ -84,6 +83,7 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
         valueLabel={requestLabel || label}
         valueLabelDescription={requestLabel ? label : undefined}
         onPress={editFriendsPressed}
+        editIcon="plus-thin"
         last
       />
       { dialog }

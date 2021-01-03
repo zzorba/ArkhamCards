@@ -18,6 +18,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import { SearchResults, useSearchUsers, useUpdateFriendRequest } from '@data/firebase/api';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export interface FriendsViewProps {
   userId: string;
@@ -44,9 +45,10 @@ interface PlaceholderItem {
 
 type Item = UserItem | HeaderItem | ButtonItem | PlaceholderItem;
 
-function UserRow({ user, status = FriendStatus.NONE, acceptRequest, rejectRequest }: {
+function UserRow({ user, status, showUser, acceptRequest, rejectRequest }: {
   user: FriendUser;
   status?: FriendStatus;
+  showUser?: (userId: string) => Promise<void>;
   acceptRequest: (userId: string) => Promise<void>;
   rejectRequest: (userId: string) => Promise<void>;
 }) {
@@ -54,6 +56,9 @@ function UserRow({ user, status = FriendStatus.NONE, acceptRequest, rejectReques
   const fadeAnim = useCallback((props: any) => {
     return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
   }, [colors]);
+  const onPress = useCallback(() => {
+    showUser?.(user.userId);
+  }, [showUser, user.userId]);
   const [submitting, setSubmitting] = useState<'accept' | 'reject'>();
   const onAcceptPress = useCallback(async() => {
     setSubmitting('accept');
@@ -83,7 +88,7 @@ function UserRow({ user, status = FriendStatus.NONE, acceptRequest, rejectReques
         </RoundButton>
       ));
     }
-    if (status !== FriendStatus.NONE) {
+    if (status && status !== FriendStatus.NONE) {
       buttons.push((
         <RoundButton onPress={onRejectPress} disabled={!!submitting}>
           { submitting === 'reject' ? (
@@ -105,7 +110,7 @@ function UserRow({ user, status = FriendStatus.NONE, acceptRequest, rejectReques
     );
   }, [onAcceptPress, onRejectPress, colors, status, submitting]);
   return (
-    <View style={[styles.userRow, borderStyle, space.paddingM]}>
+    <TouchableOpacity style={[styles.userRow, borderStyle, space.paddingM]} onPress={onPress} disabled={!showUser}>
       { user.handle ? (
         <Text style={typography.large}>
           { user.handle }
@@ -118,7 +123,7 @@ function UserRow({ user, status = FriendStatus.NONE, acceptRequest, rejectReques
       <View style={styles.controls}>
         { controls }
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -160,7 +165,8 @@ function FriendFeed({ userId, handleScroll, showHeader, focus, searchResults, se
           <UserRow
             key={index}
             user={item.user}
-            status={item.user.userId !== user?.uid ? selfFriendStatus?.[item.user.userId] : undefined}
+            status={item.user.userId !== user?.uid ? selfFriendStatus?.[item.user.userId] || FriendStatus.NONE : undefined}
+
             acceptRequest={acceptRequest}
             rejectRequest={rejectRequest}
           />
