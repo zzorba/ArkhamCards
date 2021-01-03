@@ -36,8 +36,9 @@ export default function DissonantVoicesLoginButton({ last }: Props) {
   return (
     <DeckActionRow
       icon="mythos-busters"
-      title={signedIn ? t`Narration enabled` : t`Log in to enable narration`}
+      title={signedIn ? t`Narration enabled` : t`Audio narration`}
       description={t`Dissonant Voices`}
+      growControl
       control={<DeckButton onPress={signedIn ? logOutPressed : loginPressed} title={signedIn ? t`Log out` : t`Log in`} />}
       loading={loading}
       last={last}

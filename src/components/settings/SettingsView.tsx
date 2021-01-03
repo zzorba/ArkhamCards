@@ -18,7 +18,6 @@ import SettingsTabooPicker from './SettingsTabooPicker';
 import { fetchCards } from '@components/card/actions';
 import { setSingleCardView, setAlphabetizeEncounterSets } from './actions';
 import { prefetch } from '@lib/auth';
-import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
 import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
 import StyleContext from '@styles/StyleContext';
@@ -31,27 +30,6 @@ import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButt
 import DeckButton from '@components/deck/controls/DeckButton';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
-
-interface OwnProps {
-  componentId: string;
-}
-
-interface ReduxProps {
-  showCardsingleCardView: boolean;
-  alphabetizeEncounterSets: boolean;
-  lang: string;
-  langChoice: string;
-  cardsLoading?: boolean;
-  cardsError?: string;
-  deckCount: number;
-}
-
-interface ReduxActionProps {
-  fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
-  clearDecks: () => void;
-  setSingleCardView: (value: boolean) => void;
-  setAlphabetizeEncounterSets: (value: boolean) => void;
-}
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -153,10 +131,8 @@ export default function SettingsView({ componentId }: NavigationProps) {
   return (
     <SafeAreaView style={[styles.container, backgroundStyle]}>
       <ScrollView style={[styles.list, { backgroundColor: colors.L10 }]} keyboardShouldPersistTaps="always">
-        <View style={[space.paddingSideS, space.paddingBottomM]}>
-          <AccountSection componentId={componentId} />
-        </View>
-        <View style={[space.paddingSideS, space.paddingBottomM]}>
+        <AccountSection componentId={componentId} />
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
           <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Cards`} />}>
             <View style={[space.paddingTopS, space.paddingBottomS]}>
               <LanguagePicker first />
@@ -192,7 +168,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
             />
           </RoundedFactionBlock>
         </View>
-        <View style={[space.paddingSideS, space.paddingBottomM]}>
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
           <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Preferences`} />}>
             <View style={[space.paddingTopS, space.paddingBottomS]}>
               <ThemePicker />
@@ -213,8 +189,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
             />
           </RoundedFactionBlock>
         </View>
-
-        <View style={[space.paddingSideS, space.paddingBottomM]}>
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
           <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Support`} />}>
             <DeckButton
               icon="logo"

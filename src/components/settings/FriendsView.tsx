@@ -50,7 +50,7 @@ type Item = UserItem | HeaderItem | ButtonItem | PlaceholderItem;
 function UserRow({ user, status, showUser, acceptRequest, rejectRequest }: {
   user: FriendUser;
   status?: FriendStatus;
-  showUser?: (userId: string, handle?: string) => Promise<void>;
+  showUser?: (userId: string, handle?: string) => void;
   acceptRequest: (userId: string) => Promise<void>;
   rejectRequest: (userId: string) => Promise<void>;
 }) {

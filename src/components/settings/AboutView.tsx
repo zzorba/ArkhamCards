@@ -26,11 +26,11 @@ export default function AboutView() {
       </View>
       <View style={space.marginTopM}>
         <CardTextComponent onLinkPress={linkPressed}
-          text={'<b>Additional Contributionos:</b>\n• Visual Design: [Eugene Sarnetsky](https://t.me/sarnetsky)\n• Digital chaos bag + odds calculator: Joshua Payne (@suxur)\n• Tooling and build support: Akaan'} />
+          text={'<b>Additional Contributions:</b>\n• Visual Design: [Eugene Sarnetsky](https://t.me/sarnetsky)\n• Digital chaos bag + odds calculator: Joshua Payne (@suxur)\n• Tooling and build support: Akaan'} />
       </View>
       <View style={space.marginTopM}>
         <CardTextComponent onLinkPress={linkPressed}
-          text={'<b>Icon Attribution:</b>\n• \'Cards\', \'Decks\', \'Campaigns\' and \'Settings\' icons by Eugene Sarnetsky\n• \'FAQ\' icon by Gregor Cresnar from the Noun Project.\n• \'Cards\' icon by Dmitriy Ivanov from the Noun Project.\n• \'Cards\' icon by Dmitriy Ivanov from the Noun Project.\n• \'crate\' by Imogen Oh from the Noun Project\n• Octopus Vectors by [Vecteezy](https://www.vecteezy.com/free-vector/octopus)'} />
+          text={'<b>Icon Attribution:</b>\n• Original icon designs: [Eugene Sarnetsky](https://t.me/sarnetsky)\n• \'FAQ\' icon by Gregor Cresnar from the Noun Project.\n• \'Cards\' icon by Dmitriy Ivanov from the Noun Project.\n• \'Cards\' icon by Dmitriy Ivanov from the Noun Project.\n• \'crate\' by Imogen Oh from the Noun Project'} />
       </View>
       <View style={styles.footer} />
     </ScrollView>

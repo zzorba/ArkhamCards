@@ -14,8 +14,10 @@ import { NavigationProps } from '@components/nav/types';
 import { Navigation } from 'react-native-navigation';
 import { FriendsViewProps } from '../FriendsView';
 import { useUpdateHandle } from '@data/firebase/api';
+import StyleContext from '@styles/StyleContext';
 
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
+  const { typography } = useContext(StyleContext);
   const { user, loading } = useContext(ArkhamCardsAuthContext);
   const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(user ? database().ref('/profiles').child(user.uid) : undefined);
   const updateHandle = useUpdateHandle();
@@ -36,7 +38,7 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
           options: {
             topBar: {
               title: {
-                text: t`Friends`,
+                text: t`Your Friends`,
               },
             },
           },
@@ -59,8 +61,8 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
   }, [friends]);
   if (!user) {
     return (
-      <View style={[space.paddingBottomS, space.paddingTopS]}>
-        <Text>{t`An Arkham Cards account will let you sync campaigns between devices.`}</Text>
+      <View style={[space.paddingBottomS, space.paddingTopS, space.paddingSideS]}>
+        <Text style={typography.text}>{t`This app works just fine without an account.\nBut signing in will allow you to sync campaigns between devices, with more features planned for the future.`}</Text>
       </View>
     );
   }

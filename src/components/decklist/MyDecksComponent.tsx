@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { refreshMyDecks } from '@actions';
-import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
+import { NetworkStatusProps, useNetworkStatus } from '@components/core/withNetworkStatus';
 import { Deck } from '@actions/types';
 import Card from '@data/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
@@ -37,7 +37,7 @@ interface OwnProps {
   customFooter?: ReactNode;
 }
 
-type Props = OwnProps & LoginStateProps & NetworkStatusProps;
+type Props = OwnProps & LoginStateProps;
 
 function MyDecksComponent({
   deckClicked,
@@ -49,9 +49,8 @@ function MyDecksComponent({
   customFooter,
   login,
   signedIn,
-  networkType,
-  isConnected,
 }: Props) {
+  const [{ networkType, isConnected }] = useNetworkStatus();
   const { colors, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const reLogin = useCallback(() => {
@@ -180,9 +179,7 @@ function MyDecksComponent({
   );
 }
 
-export default withNetworkStatus<OwnProps>(
-  withLoginState<OwnProps & NetworkStatusProps>(MyDecksComponent)
-);
+export default withLoginState<OwnProps & NetworkStatusProps>(MyDecksComponent);
 
 const styles = StyleSheet.create({
   stack: {
