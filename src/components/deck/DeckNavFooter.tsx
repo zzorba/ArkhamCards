@@ -1,7 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import DeviceInfo from 'react-native-device-info';
 import {
-  KeyboardAvoidingView,
   View,
   Text,
   TouchableOpacity,
@@ -16,7 +15,6 @@ import RoundButton from '@components/core/RoundButton';
 import { useDeckEditState, useParsedDeck } from '@components/deck/hooks';
 import { useAdjustXpDialog } from '@components/deck/dialogs';
 import { Campaign } from '@actions/types';
-import { useKeyboardHeight } from '@components/core/hooks';
 
 const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 
