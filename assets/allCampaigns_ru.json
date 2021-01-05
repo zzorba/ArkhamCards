@@ -35445,57 +35445,44 @@
       "text": "Search the reverse sides of the original act deck from the <i>Threads of Fate</i> encounter set for the following locations: Eztli Exhibit, Black Cave, Train Tracks, and Arkham Police Station. Choose one at random and put it into play, ignoring its <b>revelation</b> ability. Remove the remainder of the original act and agenda cards from the <i>Threads of Fate</i> encounter set from the game."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Расположение локаций",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "04142_back",
+          "blank",
+          "01134_back",
+          "blank",
+          "01130_back",
+          "blank",
+          "01132_back",
+          "blank",
+          "04141_back"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "01129_back",
+          "blank",
+          "01125_back",
+          "blank",
+          "blank",
+          "blank"
+        ]
+      ],
+      "note": "<i><b>Note</b>: Based on the random location, one of the following will also be in play: Eztli Exhibit, Black Cave, Train Tracks, or Arkham Police Station."
+    },
+    {
       "id": "setup_act_deck",
       "text": "Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>Bad Blood</i> encounter set."
     },
     {
       "id": "remove_misc_cards",
       "text": "Remove the Ichtaca <i>(The Forgotten Guardian)</i> story asset and the Expedition Journal story asset from the game."
-    },
-    {
-      "id": "location_layout",
-      "type": "location_setup",
-      "text": "Расположение локаций",
-      "horizontal": "normal",
-      "vertical": "half",
-      "locations": [
-        [
-          "02050_back",
-          "blank",
-          "02056_back",
-          "blank"
-        ],
-        [
-          "blank",
-          "02048_back",
-          "blank",
-          "blank"
-        ],
-        [
-          "02049_back",
-          "blank",
-          "02053_back",
-          "02054_back"
-        ],
-        [
-          "blank",
-          "02051_back",
-          "blank",
-          "blank"
-        ],
-        [
-          "blank",
-          "blank",
-          "blank",
-          "blank"
-        ],
-        [
-          "blank",
-          "02052_back",
-          "blank",
-          "blank"
-        ]
-      ]
     },
     {
       "id": "setup_elspeth",
@@ -55488,7 +55475,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<fancy>Friday, February 13th, 1922</fancy>\nSomething odd was happening in Arkham, Massachusetts.\nTypically, this would not be a surprise to the residents of the dreary New England town. Indeed, Arkham has always been well-known for its strange—some would say supernatural—occurrences. The nature of this particular circumstance, however, was anything but typical.\nIt all began in the latest issue of <i>Tales from Nevermore</i>. A writer by the name of Virgil Gray described a journey he had taken in his dreams—a journey he claimed was not a work of fiction on his part. He wrote of a long, spiraling staircase, an unbearably hot pillar of sentient fire, a tree that came from the moon, and a curious talking cat…among other things equally difficult to believe. But it wasn’t this extraordinary tale that first drew your attention. Soon after Virgil’s tale was published, <i>Tales from Nevermore</i> began to receive and publish letter after letter from those who had read Virgil’s story and claimed to have experienced the same exact dream. Before long, the Arkham Advertiser picked up the story, and news of this strange phenomenon reached the ears of experts.\nVirgil Gray was convinced to undergo therapy at the local asylum, and many more who shared in the writer’s psychosis were committed as well. The prevailing theory among academics is that Virgil’s dream felt so real that he could not separate fact from fiction, and his writings spread his delusions to others like a form of shared hysteria. You remain unconvinced. After all, there is much that is not known about the simple act of dreaming. Medical experts have wildly differing theories on the state of one’s brain during sleep. Recently, experts like Sigmund Freud have proposed that dreams are manifestations of one’s subconscious desires, fears, or obsessions. Fortune tellers, for their part, have long believed that dreams can be sifted and interpreted in order to tell the dreamer’s past or future. But if these theories are true, how could multiple parties—all from very different walks of life—have the same shared experiences in their dreams? What if our modern understanding of sleep is all wrong? What if there really is a place our consciousness travels to when we sleep—a land of dreams that exists beyond our waking world?\nYou and your companions have gathered together to get to the bottom of this strange phenomenon. If others in town can travel to another world in their dreams, perhaps you can, too. You’ve re-created the circumstances of Virgil’s journey perfectly. If all goes well, half of you will take the trip to this “dreamland” and back. The rest will stay in the waking world, studying your companions’ sleep patterns to ensure nothing goes wrong…"
+      "text": "<fancy>Friday, February 13th, 1925</fancy>\nSomething odd was happening in Arkham, Massachusetts.\nTypically, this would not be a surprise to the residents of the dreary New England town. Indeed, Arkham has always been well-known for its strange—some would say supernatural—occurrences. The nature of this particular circumstance, however, was anything but typical.\nIt all began in the latest issue of <i>Tales from Nevermore</i>. A writer by the name of Virgil Gray described a journey he had taken in his dreams—a journey he claimed was not a work of fiction on his part. He wrote of a long, spiraling staircase, an unbearably hot pillar of sentient fire, a tree that came from the moon, and a curious talking cat…among other things equally difficult to believe. But it wasn’t this extraordinary tale that first drew your attention. Soon after Virgil’s tale was published, <i>Tales from Nevermore</i> began to receive and publish letter after letter from those who had read Virgil’s story and claimed to have experienced the same exact dream. Before long, the Arkham Advertiser picked up the story, and news of this strange phenomenon reached the ears of experts.\nVirgil Gray was convinced to undergo therapy at the local asylum, and many more who shared in the writer’s psychosis were committed as well. The prevailing theory among academics is that Virgil’s dream felt so real that he could not separate fact from fiction, and his writings spread his delusions to others like a form of shared hysteria. You remain unconvinced. After all, there is much that is not known about the simple act of dreaming. Medical experts have wildly differing theories on the state of one’s brain during sleep. Recently, experts like Sigmund Freud have proposed that dreams are manifestations of one’s subconscious desires, fears, or obsessions. Fortune tellers, for their part, have long believed that dreams can be sifted and interpreted in order to tell the dreamer’s past or future. But if these theories are true, how could multiple parties—all from very different walks of life—have the same shared experiences in their dreams? What if our modern understanding of sleep is all wrong? What if there really is a place our consciousness travels to when we sleep—a land of dreams that exists beyond our waking world?\nYou and your companions have gathered together to get to the bottom of this strange phenomenon. If others in town can travel to another world in their dreams, perhaps you can, too. You’ve re-created the circumstances of Virgil’s journey perfectly. If all goes well, half of you will take the trip to this “dreamland” and back. The rest will stay in the waking world, studying your companions’ sleep patterns to ensure nothing goes wrong…"
     }
   ]
 },
@@ -60748,7 +60735,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<fancy>Friday, February 13th, 1922</fancy>\nSomething odd was happening in Arkham, Massachusetts.\nTypically, this would not be a surprise to the residents of the dreary New England town. Indeed, Arkham has always been well-known for its strange—some would say supernatural—occurrences. The nature of this particular circumstance, however, was anything but typical.\nIt all began in the latest issue of <i>Tales from Nevermore</i>. A writer by the name of Virgil Gray described a journey he had taken in his dreams—a journey he claimed was not a work of fiction on his part. He wrote of a long, spiraling staircase, an unbearably hot pillar of sentient fire, a tree that came from the moon, and a curious talking cat…among other things equally difficult to believe. But it wasn’t this extraordinary tale that first drew your attention. Soon after Virgil’s tale was published, <i>Tales from Nevermore</i> began to receive and publish letter after letter from those who had read Virgil’s story and claimed to have experienced the same exact dream. Before long, the Arkham Advertiser picked up the story, and news of this strange phenomenon reached the ears of experts.\nVirgil Gray was convinced to undergo therapy at the local asylum, and many more who shared in the writer’s psychosis were committed as well. The prevailing theory among academics is that Virgil’s dream felt so real that he could not separate fact from fiction, and his writings spread his delusions to others like a form of shared hysteria. You remain unconvinced. After all, there is much that is not known about the simple act of dreaming. Medical experts have wildly differing theories on the state of one’s brain during sleep. Recently, experts like Sigmund Freud have proposed that dreams are manifestations of one’s subconscious desires, fears, or obsessions. Fortune tellers, for their part, have long believed that dreams can be sifted and interpreted in order to tell the dreamer’s past or future. But if these theories are true, how could multiple parties—all from very different walks of life—have the same shared experiences in their dreams? What if our modern understanding of sleep is all wrong? What if there really is a place our consciousness travels to when we sleep—a land of dreams that exists beyond our waking world?\nYou and your companions have gathered together to get to the bottom of this strange phenomenon. If others in town can travel to another world in their dreams, perhaps you can, too. You’ve re-created the circumstances of Virgil’s journey perfectly. If all goes well, half of you will take the trip to this “dreamland” and back. The rest will stay in the waking world, studying your companions’ sleep patterns to ensure nothing goes wrong…"
+      "text": "<fancy>Friday, February 13th, 1925</fancy>\nSomething odd was happening in Arkham, Massachusetts.\nTypically, this would not be a surprise to the residents of the dreary New England town. Indeed, Arkham has always been well-known for its strange—some would say supernatural—occurrences. The nature of this particular circumstance, however, was anything but typical.\nIt all began in the latest issue of <i>Tales from Nevermore</i>. A writer by the name of Virgil Gray described a journey he had taken in his dreams—a journey he claimed was not a work of fiction on his part. He wrote of a long, spiraling staircase, an unbearably hot pillar of sentient fire, a tree that came from the moon, and a curious talking cat…among other things equally difficult to believe. But it wasn’t this extraordinary tale that first drew your attention. Soon after Virgil’s tale was published, <i>Tales from Nevermore</i> began to receive and publish letter after letter from those who had read Virgil’s story and claimed to have experienced the same exact dream. Before long, the Arkham Advertiser picked up the story, and news of this strange phenomenon reached the ears of experts.\nVirgil Gray was convinced to undergo therapy at the local asylum, and many more who shared in the writer’s psychosis were committed as well. The prevailing theory among academics is that Virgil’s dream felt so real that he could not separate fact from fiction, and his writings spread his delusions to others like a form of shared hysteria. You remain unconvinced. After all, there is much that is not known about the simple act of dreaming. Medical experts have wildly differing theories on the state of one’s brain during sleep. Recently, experts like Sigmund Freud have proposed that dreams are manifestations of one’s subconscious desires, fears, or obsessions. Fortune tellers, for their part, have long believed that dreams can be sifted and interpreted in order to tell the dreamer’s past or future. But if these theories are true, how could multiple parties—all from very different walks of life—have the same shared experiences in their dreams? What if our modern understanding of sleep is all wrong? What if there really is a place our consciousness travels to when we sleep—a land of dreams that exists beyond our waking world?\nYou and your companions have gathered together to get to the bottom of this strange phenomenon. If others in town can travel to another world in their dreams, perhaps you can, too. You’ve re-created the circumstances of Virgil’s journey perfectly. If all goes well, half of you will take the trip to this “dreamland” and back. The rest will stay in the waking world, studying your companions’ sleep patterns to ensure nothing goes wrong…"
     }
   ]
 },
@@ -74597,7 +74584,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<center><game>WEDNESDAY, AUGUST 17, 1927</game></center>\n<center><game>FIVE WEEKS EARLIER</game></center>\n\"Wake up, dammit!\" Agent Dawson shakes you awake with his right hand. You are in the passenger seat of a pristine, state-of-the-art motorcar, its polished body glowing with light from the moon as it rolls through the foggy Massuchusetts countryside. \"We're almost there,\" Dawson informs you. Unfortunately, Innsmouth lacks a working railroad, which you would have preferred. There is a bus that runs from Boston to Newburyport and another that runs from Newburyport to Innsmouth... but Dawson had insisted on driving you there himself, perhaps to provide you an escape route should things go sour, or to show off his expensive automobile. Probably both.\nAs you arrive in Innsmouth, the stale odor of day-old fish and decrepit, musty buildings washes over you. Many of the buildings along the western side of the town seem to be abandoned, though you occasionally spot figures in some of the windows. You imagine Agent Dawson's opulent car must make quite an impression in such a dirty and dingy town. You joke that perhaps he should have driven here in a jalopy, to which he replies with a smirk: \"That's never been my style.\"\nEventually, you reach a defunct railroad station that was given up years ago. A few train cars sit abandoned on the tracks, and the depot is boarded up and condemned. Dawson suddenly grimaces and points to another vehicle in the open lot. \"That's Agent Harper's breezer. Let's park here and continue on foot. We can move through the town a little easier that way,\" he reasons.\nYou check Agent Harper's vehicle before continuing, but it contains no clues as to her whereabouts. From there, you head eastward beside the Manuxet River, passing numerous deserted warehouses, sodden alleyways, and standoffish townsfolk. \"Harper's got to be somewhere in this forsaken town. Residents don't look all too friendly. Wouldn't be surprised if she drew too much attention from a local mob or the like...\" Dawson begins to contemplate aloud. You ask how he knows his agent isn't simply keeping a low profile. \"Ah yes—well, we have a code phrase for that. If she had sent me a letter saying she 'had some errands to run,' that would have signalled that she would be out of touch for a short while. Without that signal, I have to assume the worst.\" To the northeast, several factory buildings loom over the rest of the town's sagging gambrel roofs, cupolas, and widow's walks. None of the locals stop to greet you along your way. Given the repulsive countenance that many of them bear, their aversion to the usual small-town pleasantries is a relief.\nEventually, you reach the town square just south of Manuxet, though even these crumbling brick buildings that surround the supposed heart of the town inspire little confidence in Agent Harper's safety. An old bus idles nearby, its greasy-looking driver leaning against the door and eyeing you suspiciously. With little else to go on, you decide to split up, knowing that you can cover much more ground that way. \"Canvass the locals and learn more about this town,\" Dawson says. \"Find out who the big shots are in this hellhole. One of them is bound to know where Harper was last seen, or who she was with. I'm going to see if I can find where she was hiding out and look for some sign of her. Meet up with me here at 1900 hours. Understood?\" You nod in agreement and go your separate ways.\nThe first person you check with is the bus driver, who probably has a decent understanding of the town. His coarse, greyish skin is the first thing you notice, followed swiftly by unusually deep and shadowed creases in the flesh of his neck, almost as if he were prematurely aged. His bulging eyes are unsettling, and you're suddenly unsure whether you've seen him blink even once as you approach. You start to offer your hand as you introduce yourself, then think better of it, just in case the man has some kind of disease you've never heard of. He introduces himself as Joe Sargent and gives you a useful—if cursory—rundown of some of the nearby buildings."
+      "text": "<center><game>WEDNESDAY, AUGUST 17, 1927</game></center>\n<center><game>FIVE WEEKS EARLIER</game></center>\n\"Wake up, dammit!\" Agent Dawson shakes you awake with his right hand. You are in the passenger seat of a pristine, state-of-the-art motorcar, its polished body glowing with light from the moon as it rolls through the foggy Massachusetts countryside. \"We're almost there,\" Dawson informs you. Unfortunately, Innsmouth lacks a working railroad, which you would have preferred. There is a bus that runs from Boston to Newburyport and another that runs from Newburyport to Innsmouth... but Dawson had insisted on driving you there himself, perhaps to provide you an escape route should things go sour, or to show off his expensive automobile. Probably both.\nAs you arrive in Innsmouth, the stale odor of day-old fish and decrepit, musty buildings washes over you. Many of the buildings along the western side of the town seem to be abandoned, though you occasionally spot figures in some of the windows. You imagine Agent Dawson's opulent car must make quite an impression in such a dirty and dingy town. You joke that perhaps he should have driven here in a jalopy, to which he replies with a smirk: \"That's never been my style.\"\nEventually, you reach a defunct railroad station that was given up years ago. A few train cars sit abandoned on the tracks, and the depot is boarded up and condemned. Dawson suddenly grimaces and points to another vehicle in the open lot. \"That's Agent Harper's breezer. Let's park here and continue on foot. We can move through the town a little easier that way,\" he reasons.\nYou check Agent Harper's vehicle before continuing, but it contains no clues as to her whereabouts. From there, you head eastward beside the Manuxet River, passing numerous deserted warehouses, sodden alleyways, and standoffish townsfolk. \"Harper's got to be somewhere in this forsaken town. Residents don't look all too friendly. Wouldn't be surprised if she drew too much attention from a local mob or the like...\" Dawson begins to contemplate aloud. You ask how he knows his agent isn't simply keeping a low profile. \"Ah yes—well, we have a code phrase for that. If she had sent me a letter saying she 'had some errands to run,' that would have signalled that she would be out of touch for a short while. Without that signal, I have to assume the worst.\" To the northeast, several factory buildings loom over the rest of the town's sagging gambrel roofs, cupolas, and widow's walks. None of the locals stop to greet you along your way. Given the repulsive countenance that many of them bear, their aversion to the usual small-town pleasantries is a relief.\nEventually, you reach the town square just south of Manuxet, though even these crumbling brick buildings that surround the supposed heart of the town inspire little confidence in Agent Harper's safety. An old bus idles nearby, its greasy-looking driver leaning against the door and eyeing you suspiciously. With little else to go on, you decide to split up, knowing that you can cover much more ground that way. \"Canvass the locals and learn more about this town,\" Dawson says. \"Find out who the big shots are in this hellhole. One of them is bound to know where Harper was last seen, or who she was with. I'm going to see if I can find where she was hiding out and look for some sign of her. Meet up with me here at 1900 hours. Understood?\" You nod in agreement and go your separate ways.\nThe first person you check with is the bus driver, who probably has a decent understanding of the town. His coarse, greyish skin is the first thing you notice, followed swiftly by unusually deep and shadowed creases in the flesh of his neck, almost as if he were prematurely aged. His bulging eyes are unsettling, and you're suddenly unsure whether you've seen him blink even once as you approach. You start to offer your hand as you introduce yourself, then think better of it, just in case the man has some kind of disease you've never heard of. He introduces himself as Joe Sargent and gives you a useful—if cursory—rundown of some of the nearby buildings."
     },
     {
       "id": "info_summary",

@@ -35445,57 +35445,44 @@
       "text": "Search the reverse sides of the original act deck from the <i>Threads of Fate</i> encounter set for the following locations: Eztli Exhibit, Black Cave, Train Tracks, and Arkham Police Station. Choose one at random and put it into play, ignoring its <b>revelation</b> ability. Remove the remainder of the original act and agenda cards from the <i>Threads of Fate</i> encounter set from the game."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Distribución de los Lugares sugerida",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "04142_back",
+          "blank",
+          "01134_back",
+          "blank",
+          "01130_back",
+          "blank",
+          "01132_back",
+          "blank",
+          "04141_back"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "01129_back",
+          "blank",
+          "01125_back",
+          "blank",
+          "blank",
+          "blank"
+        ]
+      ],
+      "note": "<i><b>Note</b>: Based on the random location, one of the following will also be in play: Eztli Exhibit, Black Cave, Train Tracks, or Arkham Police Station."
+    },
+    {
       "id": "setup_act_deck",
       "text": "Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>Bad Blood</i> encounter set."
     },
     {
       "id": "remove_misc_cards",
       "text": "Remove the Ichtaca <i>(The Forgotten Guardian)</i> story asset and the Expedition Journal story asset from the game."
-    },
-    {
-      "id": "location_layout",
-      "type": "location_setup",
-      "text": "Distribución de los Lugares sugerida",
-      "horizontal": "normal",
-      "vertical": "half",
-      "locations": [
-        [
-          "02050_back",
-          "blank",
-          "02056_back",
-          "blank"
-        ],
-        [
-          "blank",
-          "02048_back",
-          "blank",
-          "blank"
-        ],
-        [
-          "02049_back",
-          "blank",
-          "02053_back",
-          "02054_back"
-        ],
-        [
-          "blank",
-          "02051_back",
-          "blank",
-          "blank"
-        ],
-        [
-          "blank",
-          "blank",
-          "blank",
-          "blank"
-        ],
-        [
-          "blank",
-          "02052_back",
-          "blank",
-          "blank"
-        ]
-      ]
     },
     {
       "id": "setup_elspeth",
