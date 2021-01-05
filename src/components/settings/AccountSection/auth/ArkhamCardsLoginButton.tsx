@@ -360,9 +360,16 @@ export default function ArkhamCardsLoginButton() {
     return (
       <View style={styles.center}>
         <View style={{ paddingBottom: s + xs }}>
-          <DeckButton thin color="red" icon="email" title={mode === 'create' ? t`Sign up with email` : t`Sign in with email`} onPress={toggleEmailLogin} shrink />
+          <DeckButton
+            thin
+            color="red"
+            icon="email"
+            title={mode === 'create' ? t`Sign up with email` : t`Sign in with email`}
+            onPress={toggleEmailLogin}
+            shrink
+          />
         </View>
-        { (Platform.OS === 'ios' || appleAuthAndroid.isSupported) && (
+        { ((Platform.OS === 'ios' && appleAuth.isSupported) || (Platform.OS === 'android' && appleAuthAndroid.isSupported)) && (
           <AppleButton
             buttonStyle={darkMode ? AppleButton.Style.WHITE : AppleButton.Style.BLACK}
             buttonType={appleAuth.isSignUpButtonSupported && mode === 'create' ? AppleButton.Type.SIGN_UP : AppleButton.Type.SIGN_IN}

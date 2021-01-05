@@ -94,7 +94,7 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
     <Ripple
       style={[
         styles.button,
-        { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1 },
+        { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1, maxHeight: thin ? 40 : 48 },
         rightMargin ? space.marginRightS : undefined,
         bottomMargin ? { marginBottom: bottomMargin } : undefined,
         topMargin ? { marginTop: topMargin } : undefined,
@@ -106,6 +106,7 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
         { !!icon && (
           <View style={[
             styles.icon,
+            space.marginLeftXs,
             space.marginRightS,
             thin ? { marginLeft: xs, width: 24, height: 24 } : { width: 32, height: 32 },
             ICON_STYLE[icon],
@@ -113,8 +114,8 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
             { iconContent }
           </View>
         ) }
-        <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined]}>
-          <Text style={[typography.large, { color: textColor[color] }]}>{ title }</Text>
+        <View style={[styles.column, space.paddingRightS, { height: thin ? 24 : 32 }, !icon ? space.paddingLeftS : undefined]}>
+          <Text numberOfLines={1} ellipsizeMode="clip" style={[typography.large, { color: textColor[color] }]}>{ title }</Text>
           { !!detail && <Text style={[typography.smallLabel, typography.italic, { color: textColor[color] }]}>{ detail }</Text> }
         </View>
       </View>

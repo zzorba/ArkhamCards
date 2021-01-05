@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { dissonantVoicesLogin, dissonantVoicesLogout } from '@actions';
 import { AppState } from '@reducers';
-import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import DeckActionRow from '@components/deck/controls/DeckActionRow';
 import DeckButton from '@components/deck/controls/DeckButton';
 

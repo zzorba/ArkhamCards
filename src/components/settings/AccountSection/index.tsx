@@ -12,7 +12,7 @@ import ArkhamCardsAccountDetails from './ArkhamCardsAccountDetails';
 import { NavigationProps } from '@components/nav/types';
 import space from '@styles/space';
 
-const SHOW_ARKHAM_CARDS_ACCOUNT = false;
+const SHOW_ARKHAM_CARDS_ACCOUNT = true;
 export default function AccountSection({ componentId }: NavigationProps) {
   const otherHeader = useMemo(() => {
     if (SHOW_ARKHAM_CARDS_ACCOUNT) {

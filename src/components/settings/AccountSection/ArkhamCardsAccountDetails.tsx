@@ -74,7 +74,7 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
         icon="name"
         editable
         title={t`Account name`}
-        valueLabel={profile?.handle || t`Choose a handle`}
+        valueLabel={loading || loadingProfile ? t`Loading` : (profile?.handle || t`Choose a handle`)}
         onPress={showDialog}
         first
       />
