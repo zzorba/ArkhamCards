@@ -78,11 +78,6 @@ export default function LinkedScenarioListComponent({ componentId, campaignA, ca
 
   return (
     <>
-      <CampaignGuideSummary
-        difficulty={campaignA.campaignLog.campaignData.difficulty}
-        campaignGuide={campaignDataA.campaignGuide}
-        inverted
-      />
       <CampaignGuideContext.Provider value={campaignDataA}>
         <ScenarioListComponent
           campaignId={campaignDataA.campaignId}
@@ -90,13 +85,15 @@ export default function LinkedScenarioListComponent({ componentId, campaignA, ca
           processedCampaign={campaignA}
           componentId={componentId}
           showLinkedScenario={linkHelper.showCampaignScenarioB}
+          header={
+            <CampaignGuideSummary
+              difficulty={campaignA.campaignLog.campaignData.difficulty}
+              campaignGuide={campaignDataA.campaignGuide}
+              inverted
+            />
+          }
         />
       </CampaignGuideContext.Provider>
-      <CampaignGuideSummary
-        difficulty={campaignB.campaignLog.campaignData.difficulty}
-        campaignGuide={campaignDataB.campaignGuide}
-        inverted
-      />
       <CampaignGuideContext.Provider value={campaignDataB}>
         <ScenarioListComponent
           campaignId={campaignDataB.campaignId}
@@ -104,6 +101,13 @@ export default function LinkedScenarioListComponent({ componentId, campaignA, ca
           processedCampaign={campaignB}
           componentId={componentId}
           showLinkedScenario={linkHelper.showCampaignScenarioA}
+          header={
+            <CampaignGuideSummary
+              difficulty={campaignB.campaignLog.campaignData.difficulty}
+              campaignGuide={campaignDataB.campaignGuide}
+              inverted
+            />
+          }
         />
       </CampaignGuideContext.Provider>
     </>

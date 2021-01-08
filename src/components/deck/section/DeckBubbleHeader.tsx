@@ -7,13 +7,14 @@ import StyleContext from '@styles/StyleContext';
 interface Props {
   title: string;
   color?: string;
+  inverted?: boolean;
 }
 
-export default function DeckBubbleHeader({ title, color }: Props) {
+export default function DeckBubbleHeader({ title, color, inverted }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
-    <View style={[space.marginTopS, space.marginBottomS, styles.header, { backgroundColor: color || colors.L20 }]}>
-      <Text style={typography.subHeaderText}>
+    <View style={[space.marginTopS, space.marginBottomS, styles.header, { backgroundColor: color || (inverted ? colors.D20 : colors.L20) }]}>
+      <Text style={[typography.subHeaderText, inverted ? typography.inverted : undefined]}>
         { title }
       </Text>
     </View>

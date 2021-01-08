@@ -1532,22 +1532,22 @@ msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
 #: src/components/campaign/campaignHelper.ts:43
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
 #: src/components/campaign/campaignHelper.ts:44
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
 #: src/components/campaign/campaignHelper.ts:49
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
 #: src/components/campaign/campaignHelper.ts:50
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -3521,7 +3521,7 @@ msgstr "Investigadores muertos y locos"
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:259
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:134
-msgid "Delete Campaign"
+msgid "Delete campaign"
 msgstr "Borrar Campaña"
 
 #: src/components/campaign/SelectCampaignDialog/CampaignTab.tsx:52

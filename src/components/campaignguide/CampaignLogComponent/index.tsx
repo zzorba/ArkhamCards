@@ -4,7 +4,6 @@ import { flatMap, map, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
 import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
 import ChaosBagLine from '@components/core/ChaosBagLine';
@@ -15,6 +14,9 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import AchievementComponent from './AchievementComponent';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   componentId: string;
@@ -22,78 +24,74 @@ interface Props {
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
   standalone?: boolean;
+  header?: React.ReactNode;
 }
 
-export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone }: Props) {
-  const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
+function CampaignLogSection({ title, children, noSpace }: { title: string; children: null | React.ReactNode | React.ReactNode[]; noSpace?: boolean }) {
+  const { colors, typography } = useContext(StyleContext);
+  return (
+    <RoundedFactionBlock
+      noSpace={noSpace}
+      header={
+        <View style={[space.paddingTopS, space.paddingBottomS, space.marginBottomS, styles.header, { backgroundColor: colors.L20 }]}>
+          <Text style={[typography.bigGameFont, typography.center]}>
+            { title }
+          </Text>
+        </View>
+      }
+      faction="neutral"
+    >
+      { children }
+    </RoundedFactionBlock>
+  );
+}
+
+export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, header }: Props) {
+  const { backgroundStyle } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
-          <View style={[styles.section, borderStyle]}>
-            <Text style={typography.bigGameFont}>
-              { title }: { count }
-            </Text>
+          <View style={space.paddingSideS}>
+            <DeckBubbleHeader inverted title={`${title}: ${count}`} />
           </View>
         );
       }
       case 'supplies': {
         const section = campaignLog.investigatorSections[id];
-        if (!section) {
-          return (
-            <View style={[styles.section, borderStyle]}>
-              <Text style={[typography.bigGameFont, typography.underline]}>
-                { title }
-              </Text>
-            </View>
-          );
-        }
         return (
-          <View style={space.paddingTopM}>
-            <View style={space.paddingBottomM}>
-              <Text style={[
-                typography.bigGameFont,
-                typography.underline,
-                typography.center,
-              ]}>
-                { title }
-              </Text>
-            </View>
-            <CampaignLogSuppliesComponent
-              sectionId={id}
-              section={section}
-              campaignGuide={campaignGuide}
-            />
+          <View style={[space.paddingSideS, space.paddingBottomM]}>
+            <DeckBubbleHeader title={title} />
+            { !!section && (
+              <CampaignLogSuppliesComponent
+                sectionId={id}
+                section={section}
+                campaignGuide={campaignGuide}
+              />
+            ) }
           </View>
         );
       }
       default: {
         const section = campaignLog.sections[id];
         return (
-          <View style={[styles.section, borderStyle]}>
-            <View style={space.paddingBottomM}>
-              <Text style={[
-                typography.bigGameFont,
-                typography.underline,
-                typography.center,
-                (section && section.sectionCrossedOut) ? styles.crossedOut : {},
-              ]}>
-                { title }
-              </Text>
-            </View>
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
+            <DeckBubbleHeader title={title} />
             { !!section && (
-              <CampaignLogSectionComponent
-                sectionId={id}
-                campaignGuide={campaignGuide}
-                section={section}
-              />
+              <View style={[space.paddingTopS, space.paddingSideS]}>
+                <CampaignLogSectionComponent
+                  sectionId={id}
+                  campaignGuide={campaignGuide}
+                  section={section}
+                />
+              </View>
             ) }
           </View>
         );
       }
     }
-  }, [campaignLog, campaignGuide, borderStyle, typography]);
+  }, [campaignLog, campaignGuide]);
 
   const oddsCalculatorPressed = useCallback(() => {
     Navigation.push<GuideOddsCalculatorProps>(componentId, {
@@ -146,61 +144,73 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
     }
     const tokenCount = sum(values(campaignLog.chaosBag));
     return (
-      <View style={[styles.section, borderStyle]}>
-        <View style={space.paddingBottomM}>
-          <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
-            { t`Chaos Bag` }{ ` (${tokenCount})` }
-          </Text>
+      <View style={[space.paddingSideS, space.paddingBottomM]}>
+        <DeckBubbleHeader title={t`Chaos Bag (${tokenCount})`} />
+        <View style={space.paddingSideS}>
+          <ChaosBagLine
+            chaosBag={campaignLog.chaosBag}
+          />
+          <DeckButton
+            thin
+            icon="elder_sign"
+            title={t`Draw chaos tokens`}
+            onPress={chaosBagSimulatorPressed}
+            bottomMargin={s}
+          />
+          <DeckButton
+            thin
+            icon="chart"
+            title={t`Odds calculator`}
+            onPress={oddsCalculatorPressed}
+          />
         </View>
-        <ChaosBagLine
-          chaosBag={campaignLog.chaosBag}
-        />
-        <BasicButton
-          title={t`Draw chaos tokens`}
-          onPress={chaosBagSimulatorPressed}
-        />
-        <BasicButton
-          title={t`Odds calculator`}
-          onPress={oddsCalculatorPressed}
-        />
       </View>
     );
-  }, [borderStyle, typography, campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, standalone]);
+  }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, standalone]);
   const achievementsSection = useMemo(() => {
     const achievements = campaignGuide.achievements();
     if (!achievements.length) {
       return null;
     }
     return (
-      <View style={[styles.section, styles.topBorder, borderStyle]}>
-        <View style={space.paddingBottomM}>
-          <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
-            { t`Achievements` }
-          </Text>
-        </View>
-        { map(achievements, a => <AchievementComponent achievement={a} />) }
+      <View style={[space.paddingSideS, space.paddingBottomM]}>
+        <CampaignLogSection title={t`Achievements`}>
+          { map(achievements, a => <AchievementComponent achievement={a} />) }
+        </CampaignLogSection>
       </View>
     );
-  }, [campaignGuide, borderStyle, typography]);
+  }, [campaignGuide]);
   return (
     <View style={backgroundStyle}>
-      { chaosBagSection }
-      { flatMap(campaignGuide.campaignLogSections(), log => {
-        if (log.type === 'hidden') {
-          return null;
-        }
-        return (
-          <View key={log.id}>
-            { renderLogEntrySectionContent(log.id, log.title, log.type) }
-          </View>
-        );
-      }) }
+      <View style={[space.paddingSideS, space.paddingBottomM]}>
+        <RoundedFactionBlock
+          header={header}
+          faction="neutral"
+          noSpace
+        >
+          { chaosBagSection }
+          { flatMap(campaignGuide.campaignLogSections(), log => {
+            if (log.type === 'hidden') {
+              return null;
+            }
+            return (
+              <View key={log.id}>
+                { renderLogEntrySectionContent(log.id, log.title, log.type) }
+              </View>
+            );
+          }) }
+        </RoundedFactionBlock>
+      </View>
       { achievementsSection }
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  header: {
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  },
   section: {
     padding: m,
     paddingLeft: m + s,

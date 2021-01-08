@@ -209,6 +209,7 @@ export default function useCampaignGuideContext(campaignId: number, campaignData
     }
     return {
       campaignId: campaignId,
+      serverCampaignId: campaignData.campaign.serverId,
       campaignName: campaignData.campaign.name,
       campaignGuideVersion: campaignData.campaign.guideVersion === undefined ? -1 : campaignData.campaign.guideVersion,
       campaignGuide: campaignData.campaignGuide,

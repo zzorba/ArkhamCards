@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { AppState, Button, Text } from 'react-native';
+import { AppState, Button, Text, View } from 'react-native';
 import { flatMap, forEach, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 import { Action } from 'redux';
@@ -26,6 +26,8 @@ import StyleContext from '@styles/StyleContext';
 import { useCounter, useEffectUpdate, useFlag, useDeck } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import { ThunkDispatch } from 'redux-thunk';
+import DeckButton from '@components/deck/controls/DeckButton';
+import space from '@styles/space';
 
 
 interface ShowDeckButtonProps {
@@ -359,20 +361,28 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     }
     if (deck) {
       return (
-        <BasicButton
-          title={t`Save deck upgrade`}
-          onPress={save}
-        />
+        <View style={space.paddingM}>
+          <DeckButton
+            icon="upgrade"
+            color="gold"
+            title={t`Save deck upgrade`}
+            onPress={save}
+          />
+        </View>
       );
     }
     if (!unsavedEdits) {
       return null;
     }
     return (
-      <BasicButton
-        title={t`Save adjustments`}
-        onPress={save}
-      />
+      <View style={space.paddingM}>
+        <DeckButton
+          icon="upgrade"
+          color="gold"
+          title={t`Save adjustments`}
+          onPress={save}
+        />
+      </View>
     );
   }, [choices, editable, deck, save, unsavedEdits]);
 

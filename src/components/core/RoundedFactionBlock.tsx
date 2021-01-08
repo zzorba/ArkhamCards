@@ -10,9 +10,10 @@ interface Props {
   header: React.ReactNode;
   children: React.ReactNode | React.ReactNode[];
   footer?: React.ReactNode;
+  noSpace?: boolean;
 }
 
-export default function RoundedFactionBlock({ header, footer, children, faction }: Props) {
+export default function RoundedFactionBlock({ header, footer, children, faction, noSpace }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[
@@ -25,7 +26,7 @@ export default function RoundedFactionBlock({ header, footer, children, faction 
       },
     ]}>
       { header }
-      <View style={space.marginSideS}>
+      <View style={noSpace ? undefined : space.marginSideS}>
         { children }
       </View>
       { !!footer && footer }

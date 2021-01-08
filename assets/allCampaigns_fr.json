@@ -12049,32 +12049,32 @@
   "achievements": [
     {
       "id": "what_is_this_stuff",
-      "title": "What Is This Stuff, Anyway?",
-      "text": "Defeat The Experiment using the Alchemical Concoction in “Extracurricular Activities”.",
+      "title": "À quoi sert ce truc, de toute façon ?",
+      "text": "Vainquez l'Expérience en utilisant le Mélange Alchimique dans <i>Activité Extrascolaire</i>.",
       "type": "binary"
     },
     {
       "id": "no_void_for_you",
-      "title": "No Void For You",
-      "text": "Complete “The Miskatonic Museum” without ever defeating the Hunting Horror.",
+      "title": "Pas de Néan pour toi",
+      "text": "Terminez <i>Le Musée Miskatonic</i> sans jamais vaincre l'Horeur Chasseresse.",
       "type": "binary"
     },
     {
       "id": "first_rule_of_arkham",
-      "title": "First Rule of Arkham",
-      "text": "Burn The Necronomicon in “The Miskatonic Museum.”",
+      "title": "La première règle d'Arkham",
+      "text": "Brûlez le Nécronomicon dans <i>Le Musée Miskatonic</i>",
       "type": "binary"
     },
     {
       "id": "all_aboard",
-      "title": "All Aboard",
-      "text": "Complete “The Essex County Express” without letting any Helpless Passengers leave play.",
+      "title": "Tous à bord",
+      "text": "Terminez <i>L'Express du Comté d'Essex</i> sans laisser un seul Passager Sans Défense quitter le jeu.",
       "type": "binary"
     },
     {
       "id": "gangs_all_here",
-      "title": "The Gang’s All Here",
-      "text": "In “The Survivors,” the following characters <i>survived The Dunwich Legacy</i>:",
+      "title": "Tout le monde est là",
+      "text": "Dans <i>Les Survivants</i>, les personnages suivants ont « survécu à L'Héritage de Dunwich » :",
       "type": "list",
       "items": [
         {
@@ -12087,7 +12087,7 @@
         },
         {
           "id": "rice",
-          "text": "Professor Warren Rice"
+          "text": "Professeur Warren Rice"
         },
         {
           "id": "whateley",
@@ -12101,62 +12101,62 @@
     },
     {
       "id": "no_brood_left_behind",
-      "title": "No Brood Left Behind",
-      "text": "Have no Broods of Yog-Sothoth escape into the wild in “Undimensioned and Unseen.”",
+      "title": "Aucun rejeton en liberté",
+      "text": "Dans <i>Aux Frontière du Visible</i>, ne laissez aucun Rejeton de Yog-Sothoth s'échapper dans la nature.",
       "type": "binary"
     },
     {
       "id": "remind_me_not_to_piss_her_off",
-      "title": "Remind Me Not To Piss Her Off",
-      "text": "Defeat either version of Seth Bishop while Naomi O’Bannion is under your control.",
+      "title": "Rappelez-moi de ne pas l'énerver",
+      "text": "Vainquez n'importe quelle version de Seth Bishop alors que Naom O'Bannion est sous votre contrôle.",
       "type": "binary"
     },
     {
       "id": "eureka",
-      "title": "Eureka!",
-      "text": "Identify the Strange Solution.",
+      "title": "Euréka !",
+      "text": "Identifiez l'Étrange Solution.",
       "type": "binary"
     },
     {
       "id": "beyond_what_veil",
-      "title": "Beyond What Veil?",
-      "text": "Take 10 damage from Beyond the Veil without being defeated.",
+      "title": "Au-delà de quel voile ?",
+      "text": "Subissez 10 Dégats de Au-delà du Voile sans être vaincu.",
       "type": "binary"
     },
     {
       "id": "here_we_go_again",
-      "title": "Here We Go Again",
-      "text": "Have Dr. Henry Armitage, Dr. Francis Morgan, and Professor Warren Rice in play at the same time.",
+      "title": "Nous y revoilà",
+      "text": "Ayez le Dr. Henry Armitage, le Dr. Francis Morgan, et le Professeur Warren Rice en jeu en même temps.",
       "type": "binary"
     },
     {
       "id": "bird_hunting",
-      "title": "Bird Hunting",
-      "text": "Defeat 3 Whippoorwills in a single turn.",
+      "title": "Chasse aux oiseaux",
+      "text": "Vainquez 3 Engoulevents en un seul tour.",
       "type": "binary"
     },
     {
       "id": "they_arent_getting_away_with_this",
-      "title": "They Aren’t Getting Away With This",
-      "text": "Win <i>The Dunwich Legacy</i> campaign as “Ashcan” Pete with Duke listed under “Sacrificed to Yog-Sothoth.”",
+      "title": "Ils ne s'en tireront pas comme ça",
+      "text": "Gagnez la campagne <i>L'Héritage de Dunwich</i> en tant qu'« Ashcan » Pete avec Duke inscrit sous la mention « Sacrifiés à Yog-Sothoth ».",
       "type": "binary"
     },
     {
       "id": "tabula_rasa",
       "title": "Tabula Rasa",
-      "text": "Win The Dunwich Legacy campaign with no [tablet] or [elder_thing] tokens in the chaos bag.",
+      "text": "Gagnez la campagne <i>L'Héritage de Dunwich</i> sans pion [tablet] ou [elder_thing] dans la réserve du chaos.",
       "type": "binary"
     },
     {
       "id": "dwl_line_in_the_sand",
-      "title": "Line in the Sand",
-      "text": "Win <i>The Dunwich Legacy</i> campaign with at least three Ultimatums active.",
+      "title": "Fixer les limites",
+      "text": "Gagnez la campagne <i>L'Héritage de Dunwich</i> avec au moins trois Ultimatums activés.",
       "type": "binary"
     },
     {
       "id": "dunwich_expertise",
-      "title": "Dunwich Expertise",
-      "text": "Win <i>The Dunwich Legacy</i> campaign on Expert difficulty.",
+      "title": "Expertise de Dunwich",
+      "text": "Gagnez la campagne <i>L'Héritage de Dunwich</i> en difficulté Expert.",
       "type": "binary"
     }
   ]
@@ -16080,86 +16080,86 @@
   "achievements": [
     {
       "id": "zealots_revent",
-      "title": "The Zealot's Revenge",
-      "text": "Have Lita Chantler’s [reaction] ability deal the killing blow to the Ghoul Priest.",
+      "title": "La vengeance de la Zélatrice",
+      "text": "Faites en sorte que la capacité [reaction] de Lita Chantler inflige le coup fatal au Prêtre Goule.",
       "type": "binary"
     },
     {
       "id": "dont_trust_her",
-      "title": "I Don't Trust Her",
-      "text": "When given the option to add Lita Chantler to your deck, refuse to do so.",
+      "title": "Je ne lui fais pas confiance",
+      "text": "Lorsqu’on vous donne la possibilité d’inclure Lita Chantler dans votre deck, refusez cette proposition.",
       "type": "binary"
     },
     {
       "id": "insurance",
-      "title": "Insurance Doesn’t Cover Ghouls",
-      "text": "Burn your house to the ground in “The Gathering.”",
+      "title": "L’assurance ne couvre pas les goules.",
+      "text": "Brûlez votre maison dans Le Rassemblement.",
       "type": "binary"
     },
     {
       "id": "do_i_have_to",
-      "title": "…But Do I Have To?",
-      "text": "In “The Midnight Masks,” have each investigator remain in Your House for the first three rounds.",
+      "title": "… Suis-je obligé d’y aller ?",
+      "text": "Dans <i>Les  Masques  de  Minuit</i>, faites en sorte que chaque investigateur reste dans Votre Maison lors des trois premiers rounds.",
       "type": "binary"
     },
     {
       "id": "conspiracy_of_silence",
-      "title": "Conspiracy of Silence",
-      "text": "Find and interrogate all six unique cultists in “The Midnight Masks.”",
+      "title": "Conspiration du silence ",
+      "text": "Trouvez et interrogez les six cultistes uniques dans <i> Masques de Minuit</i>",
       "type": "binary"
     },
     {
       "id": "tour_of_arkham",
-      "title": "Tour of Arkham",
-      "text": "Trigger each of the “once per game” abilities on all of the locations in play in “The Midnight Masks.”",
+      "title": "Visite guidée d’Arkham",
+      "text": "déclenchez chaque capacité « une fois parpartie » de tous les lieux en jeu dans <i>Masques de Minuit</i>.",
       "type": "binary"
     },
     {
       "id": "do_you_get_it_now",
-      "title": "Do You Get It Now?",
-      "text": "Trigger the <b>Forced</b> ability on Billy Cooper by defeating the Ghoul Priest at his location.",
+      "title": "Vous l’avez maintenant ? ",
+      "text": "Déclenchez la capacité <b>Forcé</b> de Billy Cooper en vainquant le Prêtre Goule dans son lieu.",
       "type": "binary"
     },
     {
       "id": "pinch_hitter",
-      "title": "Pinch Hitter",
-      "text": "Defeat three [[Ghoul]] enemies with a Baseball Bat without it breaking.",
+      "title": "Frappeur suppléant",
+      "text": "Vainquez trois ennemis [[Goule]] avec la Batte de Base-Ball sans la casser.",
       "type": "binary"
     },
     {
       "id": "even_death_may_die",
-      "title": "Even Death May Die",
-      "text": "Defeat Umôrdhoth while the Vault of Earthly Demise is attached to it.",
+      "title": "Même la mort peut mourir",
+      "text": "Vainquez Umôrdhoth alors que le Caveau du Trépas Terrestre lui est attaché.",
       "type": "binary"
     },
     {
       "id": "break_the_circle",
-      "title": "Break the Circle",
-      "text": "Complete “The Devourer Below” without Umôrdhoth spawning.",
+      "title": "Briser le cercle",
+      "text": "Finissez <i>Le Dévoreur du Dessous</i> sans qu’Umôrdhoth ne soit généré.",
       "type": "binary"
     },
     {
       "id": "theyre_just_misunderstood",
-      "title": "They’re Just Misunderstood",
-      "text": "Win the <i>Night of the Zealot</i> campaign without defeating a single unique [[Cultist]] enemy.",
+      "title": "Ce ne sont que des incompris",
+      "text": "Gagnez la campagne <i>La Nuit de la Zélatrice</i> sans vaincre un seul ennemi [[Cultiste]] unique.",
       "type": "binary"
     },
     {
       "id": "umordhoths_favor",
-      "title": "Umôrdhoth’s Favor",
-      "text": "Win the <i>Night of the Zealot</i> campaign without defeating a single [[Ghoul]] enemy.",
+      "title": "Faveur d’Umôrdhoth",
+      "text": "Gagnez la campagne <i>La Nuit de la Zélatrice</i> sans vaincre un seul ennemi [[Goule]].",
       "type": "binary"
     },
     {
       "id": "notz_line_in_the_sand",
-      "title": "Line in the Sand",
-      "text": " Win the <i>Night of the Zealot</i> campaign with at least three Ultimatums active.",
+      "title": "Fixer les limites",
+      "text": "Gagnez la campagne <i>La Nuit de la Zélatrice</i> avec au moins trois Ultimatums activés.",
       "type": "binary"
     },
     {
       "id": "arkham_expertise",
-      "title": "Arkham Expertise",
-      "text": "Win the <i>Night of the Zealot</i> campaign on Expert difficulty.",
+      "title": "Expertise d’Arkham",
+      "text": "Gagnez la campagne <i>La Nuit de la Zélatrice</i> en difficulté Expert.",
       "type": "binary"
     }
   ]
@@ -17867,14 +17867,14 @@
   "achievements": [
     {
       "id": "fair_warning",
-      "title": "Fair Warning",
-      "text": " Defeat the Royal Emissary three times during a single playthrough of “Curtain Call.”",
+      "title": "Avertissement formel",
+      "text": "Vainquez trois foisl'Émissaire Royal lors d'une seule partei de <i>Baisser deRideau</i>.",
       "type": "binary"
     },
     {
       "id": "first_steps",
-      "title": "First Steps",
-      "text": "Interview the following VIPs in “The Last King”:",
+      "title": "Premiers pas",
+      "text": "Dans <i>Le Dernier Roi</i>, interrogez les personnalités suivante : ",
       "type": "list",
       "items": [
         {
@@ -17901,86 +17901,86 @@
     },
     {
       "id": "crashing_the_party",
-      "title": "Crashing the Party",
-      "text": "Defeat the [[Lunatic]] version of Dianne Devine in “The Last King.”",
+      "title": "Gâcher la fête",
+      "text": "Vainquez la version Aliéné de Dianne Devine dans <i>Le Dernier Roi</i>.",
       "type": "binary"
     },
     {
       "id": "for_prying_eyes",
-      "title": "For Prying Eyes",
-      "text": "Add the Hidden Library to the victory display in “Echoes of the Past.”",
+      "title": "Pour les regards indiscrets",
+      "text": "Ajoutez la Bibliothèque Cachée à la pile de victoire dans <i>Les Échos du Passé</i>.",
       "type": "binary"
     },
     {
       "id": "cuckoos_nest",
-      "title": "The Cuckoo's Nest",
-      "text": "Resign with Daniel Chesterfield under an investigator’s control in “The Unspeakable Oath.”",
+      "title": "Un nid de coucou",
+      "text": "Abandonnez avec Daniel Chesterfield sous le contrôle d'un investigateur dans <i>Le Serment Indicible</i>.",
       "type": "binary"
     },
     {
       "id": "take_a_look_at_this",
-      "title": "Take A Look At This!",
-      "text": "Parley with the Host of Insanity in “The Unspeakable Oath.”",
+      "title": "Jetez un coup d'œil à ça !",
+      "text": "Effectuez l'action Discussion avec l'Incantation de la Folie dans <i>Le Serment Indicible</i>.",
       "type": "binary"
     },
     {
       "id": "path_of_death",
-      "title": "The Path of Death",
-      "text": "Use your Clasp of Black Onyx to find a shortcut in “The Pallid Mask.”",
+      "title": "Le Chemin de la Mort",
+      "text": "Utilisez votre Broche d'Onyx Noir pour trouver un raccourci dans <i>Le Masque Blême</i>.",
       "type": "binary"
     },
     {
       "id": "guessing_game",
-      "title": "Guessing Game",
-      "text": "Advance to the final agenda of one agenda deck before advacing the first agenda of the other agenda deck in “Black Stars Rise.”",
+      "title": "Jeu de devinettes",
+      "text": "Avancez à la dernièreintrigue d'un deck Intrigue avant d'avancer la première intrigue de l'autre deck Intrigue dans <i>Sous les Étoiles Noires</i>.",
       "type": "binary"
     },
     {
       "id": "hastur_made_me_do_it",
-      "title": "Hastur Made Me Do It",
-      "text": "Defeat Hastur in “Dim Carcosa” while a Possession treachery is in your hand.",
+      "title": "C'est Hastur qui me l'a demandé",
+      "text": "Vainquez Hastur dans <i>La Pâle Carcosa</i> alors que vous avez une traîtrise Possession dans votre main.",
       "type": "binary"
     },
     {
       "id": "say_my_name",
-      "title": "Say My Name",
-      "text": "After you have <i>heeded Daniel’s warning</i>, speak the name of HASTUR aloud seven or more times during a single scenario (or its setup).",
+      "title": "Dis mon nom",
+      "text": "Après avoir <i>tenu compte de l'avertissement de Daniel</i>, prononcez le nom d'HASTUR au moins sept fois à voix haute au cours d'un même scénario (ou de sa mise en place).",
       "type": "binary"
     },
     {
       "id": "get_back_here",
-      "title": "Get Back Here",
-      "text": "Win <i>The Path to Carcosa</i> campaign having never ended a scenario with The Man in the Pallid Mask in play",
+      "title": "Reviens ici",
+      "text": "Gagnez la campagne <i>La Route de Carcosa</i> en n'ayant jamais terminé un scénario avec l'Homme au Masque Blême en jeu.",
       "type": "binary"
     },
     {
       "id": "path_is_false",
-      "title": "The Path is False",
-      "text": "Win <i>The Path to Carcosa<i/> campaign with <b>8 Doubt</b>.",
+      "title": "La Route est fausse",
+      "text": "Gangez la campagne <i>La Route de Carcosa</i> en ayant 8 <b>Doutes</b>.",
       "type": "binary"
     },
     {
       "id": "path_is_real",
-      "title": "The Path is Real",
-      "text": "Win <i>The Path to Carcosa</i> campaign with <b>8 Conviction</b>.",
+      "title": "La Route est vraie",
+      "text": "Gangez la campagne <i>La Route de Carcosa</i> en ayant 8 <b>Certitudes</b>.",
       "type": "binary"
     },
     {
       "id": "path_is_mine",
       "title": "Sur la Voie",
-      "text": "Win <i>The Path to Carcosa</i> campaign with less than <b>2 Doubt</b> and <b>Conviction</b> in total.",
+      "text": "Gangez la campagne <i>La Route de Carcosa</i> en ayant un total de <b>Doutes</b> et de <b>Certitudes</b> inférieur à 2.",
       "type": "binary"
     },
     {
       "id": "ptc_line_in_the_sand",
-      "title": "Line in the Sand",
-      "text": "Win <i>The Path to Carcosa</i> campaign with at least three Ultimatums active.",
+      "title": "Fixer les limites",
+      "text": "Gangez la campagne <i>La Route de Carcosa</i> avec au moins trois Ultimatums activés.",
       "type": "binary"
     },
     {
       "id": "carcosa_expertise",
-      "title": "Carcosa Expertise=",
-      "text": "Win <i>The Path to Carcosa</i> campaign on Expert difficulty.",
+      "title": "Expertise de Carcosa",
+      "text": "Gangez la campagne <i>La Route de Carcosa</i> en difficulté Expert.",
       "type": "binary"
     }
   ]
@@ -24585,13 +24585,13 @@
       "text": "Lors de cette campagne, certaines capacités sont précédées de l'indicatif d'action <b>Explorer</b>. De telles capacités servent en général à trouver de nouveaux lieux à mettre en jeu et sont initiées en utilisant une action « Activer ».\nLes capacités <b>Explorer</b> vous demandent de piocher la carte du dessus du « deck Exploration », un deck spéci\\u001bque qui est construit lors de la mise en place de certains scénarios. Ce deck est constitué de plusieurs cartes Lieu mono-face ainsi que de cartes Traîtrise.",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "Chaque capacité <b>Explorer</b> indique une catégorie de lieu spécifique que vous cherchez à piocher. <b>Si un lieu appartenant à cette catégorie est pioché, il est mis en jeu et vous vous déplacez dans ce lieu.</b> Cette exploration est considérée comme « fructueuse »."
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "Si n'importe quel autre lieu est pioché, posez-le à côté du deck Exploration et piochez la carte suivante du deck Exploration. Répétez ce processus jusqu'à ce qu'un lieu de la catégorie indiquée ou une traîtrise soit pioché. Après la fin de cette action, mélangez dans le deck Exploration tous les lieux posés à côté du deck Exploration."
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "Si une carte Traîtrise est piochée, elle est résolue normalement. Si elle est défaussée, placez-la dans la pile de défausse Rencontre comme en temps normal. Il n'y a pas de pile de défausse pour le deck Exploration. Ceci est considéré comme une exploration « infructueuse »."
         },
         {
           "text": "Quand un lieu mono-face est mis en jeu depuis le deck Exploration, placez dessus un nombre d'indices égal à sa valeur d'indice."
@@ -37176,8 +37176,8 @@
 },
 {
   "id": "carnevale_of_horrors",
-  "scenario_name": "Carnevale of Horrors",
-  "full_name": "Carnevale of Horrors",
+  "scenario_name": "Le Carnaval des Horreurs",
+  "full_name": "Le Carnaval des Horreurs",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -37303,7 +37303,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "\"Look,\" Sheriff Engel insists, \"I know it sounds crazy, but that's really all there is to it.\" He sighs and sits back down, pouring a cup of joe for you and one for himself. \"A dame in Uptown spotted a cracked egg wearing this mask and holdin' a bloody butcher's cleaver,\" he says, motioning to the black leather mask sitting on his desk. It has a comicaly long nose and a strange symbol scrawled in yellow on its forehead. \"So, she calls it in. My boys and I picked him up on the corner of Saltonstall & Garrison.\" The sheriff's jaw clenches and his brows furrow as he recounts the story. \"Fella did nothing but laugh as we slapped the bracelets on him. Called himself Zanni. Said nothing except the 'carnival is coming'; whatever the hell that meant. Wasn't until the next day we found the victim's body. Defense wanted him in a straitjacket. We were happy to oblige.\"\nThere isn't much time to spare. If your research is right, there is more to this case than meets the eye. This \"Zanni\" wasn't talking about Darke's Carnival, but rather the Carnevale of Venice, which begins just before the next full moon."
+      "text": "« Écoutez », insiste le shérif Engel, « je sais que cela parait fou, mais on ne sait rien de plus. » II soupire et se rassoit en servant une tasse de café à chacun. « Une femme du centre-ville a aperçu un cinglé portant ce masque et armé d'un couteau de boucher maculé de sang », explique-t-il en vous montrant du doigt le masque de cuir noir posé sur son bureau. Celui-ci possède un nez drôlement long, et un étrange symbole jaune est dessiné sur son front. « Du coup, elle nous a appelés. Mes gars et moi, on a cueilli l'homme au croisement de Saltonstall et Garrison. » La mâchoire du shérif se crispe et ses sourcils se froncent à mesure qu'il se remémore les événements. « Le type n'a rien fait d'autre que de rire pendant qu'on lui passait les menottes. Il se fait appeler Zanni. Il n'a rien dit à part \"le Carnaval approche\", quoi que cela veuille dire. On n'a retrouvé le corps de la victime que le lendemain. La défense voulait le faire interner. On était trop heureux de leur rendre ce service. »\nIl n'y a plus de temps à perdre. Si vos recherches sont exactes, cette affaire cache plus de choses qu'il n'y parait. Ce « Zanni » ne parlait pas du Carnaval de Darke mais plutôt du Carnaval de Venise, qui débute juste avant la prochaine pleine lune…"
     },
     {
       "id": "gather_encounter_sets",
@@ -37315,19 +37315,19 @@
     },
     {
       "id": "remove_random_location",
-      "text": "Choose 1 location at random and remove it from the game. If San Marco Basilica or Canal-side is chosen, randomly choose a different location instead."
+      "text": "Prenez 1 lieu au hasard et retirez-le de la partie. S'il s'agit de la Basilique Saint-Marc ou du Bord du Canal, prenez 1 autre lieu au hasard à la place."
     },
     {
       "id": "setup_locations",
-      "text": "Put the other 8 locations into play, in a random circular formation. Each investigator begins play in San Marco Basilica. Put Abbess Allegria Di Biase into play at San Marco Basilica."
+      "text": "Mettez en jeu les 8 autres lieux aléatoirement en formant un cercle. Chaque investigateur débute la partie dans la Basilique Saint-Marc. Mettez en jeu l'Abbesse Allegria Di Biase dans la Basilique Saint-Marc."
     },
     {
       "id": "setup_masked_people",
-      "text": "Shuffle the 7 Masked Carnevale-Goers and put 1 into play at each location other than San Marco Basilica, Masked Carnevale-Goers side face-up. Do not look at their other sides."
+      "text": "Mélangez les 7 exemplaires du Carnavalier Masqué et mettez-en 1 en jeu dans chaque lieu, excepté la Basilique Saint-Marc. La face Carnavalier Masqué doit être visible ; ne regardez pas l'autre face de ces cartes."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Cnidathqua, Pantalone, Medico Della Peste, Bauta, Gilded Volto."
+      "text": "Mettez de côté les cartes suivantes, hors jeu : Cnidathqua, Pantalone, Medico Della Peste, Bauta et Volto Doré."
     },
     {
       "id": "encounter_deck",
@@ -37336,20 +37336,20 @@
     {
       "id": "circle_rule",
       "type": "rule_reminder",
-      "title": "Location Setup",
-      "text": "In this scenario, locations are placed in a circle. Due to the parade during the Carnevale, each location is connectd only to the location in the clockwise direction. This means that investigators and monsters can only travel (or count the nearest location) in the clockwise direction unless otherwise noted."
+      "title": "Placement des lieux",
+      "text": "Dans ce scénario, les lieux sont placés en cercle. Afin de représenter la progression du défilé lors du carnaval, chaque lieu n'est connexe qu'au lieu suivant dans le sens horaire. Cela signifie que les investigateurs et les monstres ne peuvent se déplacer (ou déterminer le lieu le plus proche) que dans le sens horaire, sauf indications contraires."
     },
     {
       "id": "counter_clockwise_rule",
       "type": "rule_reminder",
-      "title": "Counter-clockwise",
-      "text": "Some cards instruct the players to find the nearest location in the counter-clockwise direction. This is an exception to the above rule and should be followed as though locations are connected counter-clockwise."
+      "title": "Antihoraire",
+      "text": "Certaines cartes demandent aux joueurs de déterminer le lieu le plus proche dans le sens antihoraire. Il s'agit d'une exception à la règle décrite ci-dessus. Agissez comme si les lieux étaient connexes dans le sens antihoraire."
     },
     {
       "id": "across_from_rule",
       "type": "rule_reminder",
-      "title": "\"Across from\"",
-      "text": "The location \"across from\" another l ocation is the farthest location, equidistant in both the clockwise and counter-clockwise directions. For hte purpose of this scenario, \"across from your location\" and \"across from you\" have the same meaning."
+      "title": "« En face »",
+      "text": "Le lieu « en face » d'un autre lieu est le lieu le plus éloigné, à la fois dans le sens horaire et dans le sens antihoraire. Pour les besoins de ce scénario, les locutions « en face de votre lieu » et « en face de vous » ont la même signification."
     },
     {
       "id": "earn_xp",
@@ -37373,7 +37373,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_many_were_sacrificed_to_cnidathqua",
-          "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          "text": "de nombreuses personnes ont été sacrifiées à Cnidathqua lors du Carnaval."
         }
       ]
     },
@@ -37384,7 +37384,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_sun_banished_cnidathqua",
-          "text": "the sun banished Cnidathqua into the depths."
+          "text": "le soleil a banni Cnidathqua dans les profondeurs."
         }
       ]
     },
@@ -37395,18 +37395,18 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_cnidathqua_retreated",
-          "text": "Cnidathqua retreated to nurse its wounds."
+          "text": "Cnidathqua s'est retiré pour soigner ses blessures."
         }
       ]
     },
     {
       "id": "move_innocent_reveler",
-      "text": "Move 1 Innocent Reveler from underneath the act deck to underneath the agenda deck, if able."
+      "text": "Déplacez 1 Participant Innocent situé sous le deck Acte vers le dessous du deck Intrigue, si possible."
     },
     {
       "id": "choose_masks",
-      "title": "Additional Rewards",
-      "text": "In player order, each investigator may choose one of the following [[Mask]] cards to add to his or her deck: Pantalone, Medico Della Peste, Bauta, Gilded Volto. The chosen card does not count towards that investigator's deck size.",
+      "title": "Récompenses supplémentaires",
+      "text": "Dans l'ordre des joueurs, chaque investigateur a le droit de choisir l'une des cartes [[Masque]]suivantes et de l'ajouter à son deck : Pantalone, Medico Della Peste, Bauta, Volto Doré. La carte choisie ne compte pas dans la limite de taille du deck de cet investigateur.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -37448,7 +37448,7 @@
           },
           {
             "id": "82026",
-            "text": "Gilded Volto",
+            "text": "Volto Doré",
             "effects": [
               {
                 "type": "add_card",
@@ -37463,7 +37463,7 @@
     {
       "id": "ask_innocent_revelers_saved",
       "type": "input",
-      "text": "How many Innocent Revelers are underneath the act deck?",
+      "text": "Combien de Participant Innocent sont sous le deck Acte ?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -37476,14 +37476,14 @@
           },
           {
             "id": "one_or_two",
-            "text": "One or Two",
+            "text": "Un ou Deux",
             "steps": [
               "no_further_rewards"
             ]
           },
           {
             "id": "three",
-            "text": "Three",
+            "text": "Trois",
             "steps": [
               "abbess_satisfied",
               "earn_abbess"
@@ -37495,11 +37495,11 @@
     {
       "id": "no_further_rewards",
       "bullet_type": "small",
-      "text": "No further rewards."
+      "text": "Pas d'autre récompenses"
     },
     {
       "id": "ask_innocent_revelers_killed",
-      "text": "How many Innocent Revelers are underneath the agenda deck?",
+      "text": "Combien de Participant Innocent sont sous le deck Intrigue ?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -37510,7 +37510,7 @@
           },
           {
             "id": "one_or_more",
-            "text": "One or more",
+            "text": " Un ou plus",
             "steps": [
               "sacrifice_made",
               "random_weakness"
@@ -37522,11 +37522,11 @@
     {
       "id": "abbess_satisfied",
       "type": "story",
-      "text": "\"Grazie mille—thank you for all your help.\" Allegria says as you return to the basilica. \"Thanks to you, there were few casualties. I shudder to think what might have happened had you not arrived. Should you ever require assistance, please do not hesitate to ask.\""
+      "text": "« Grazie mille – merci infiniment pour votre aide », déclare Allegria lorsque vous revenez vers la Basilique. « Grâce à vous, il n'y a eu que peu de victimes. Je tremble à l'idée de ce qui se serait passé si vous n'aviez pas été là. Si vous avez besoin de quoi que ce soit, n'hésitez pas à solliciter mon assistance. »"
     },
     {
       "id": "earn_abbess",
-      "text": "Any one investigator may choose to add Abbess Allegria Di Biase to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter l'Abbesse Allegria Di Biase à son deck. Cette carte ne compte pas dans la limite de taille du deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -37538,11 +37538,11 @@
     {
       "id": "sacrifice_made",
       "type": "story",
-      "text": "Too many lives were lost during the eclipse to stop the machinations of Cnidathqua's servants. The beast has been fed, its minions empowered. You find yourself hoping you don't live long enough to see the fallout of your failure."
+      "text": "Trop de vies ont été perdues durant l'éclipse pour pouvoir stopper les machinations des serviteurs de Cnidathqua. La bête a été nourrie et ses servants ont gagné en puissance. Vous ne pouvez qu'espérer que vous ne vivrez pas assez longtemps pour être témoin des conséquences de votre échec."
     },
     {
       "id": "random_weakness",
-      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Injury]], or [[Monster]] weakness and adds it to their deck for the remainder of the campaign.",
+      "text": "Chaque investigateur prend au hasard une faiblesse de base [[Folie]], [[Blessure]] ou [[Monstre]] dans la collection et l'ajoute à son deck pour le reste de la campagne.",
       "effects": [
         {
           "type": "add_weakness",
@@ -37566,7 +37566,7 @@
         "physical",
         "mental"
       ],
-      "text": "You sputter awake as an oar gently taps yoru shoulder. \"Tutto bene?\" The goldolier holding the oars says with a concerned expression. You nod and drag yourself onto the docks from his gondola, drenched and aching all over. The city is devestated. Most of the boats in the canal are wrecked. The streets are covered not in confetti, but in blood.",
+      "text": "Vous vous réveillez en crachotant quand une rame vous tapote doucement l'épaule. « Tutto bene ? », vous demande le gondolier qui tient la rame d'un air inquiet. Vous acquiescez et vous vous hissez sur les quais depuis sa gondole, trempé et perclus de douleur. La ville est en ruines. La plupart des bateaux sont des épaves, et les rues ne sont plus couvertes de confettis mais de sang…",
       "steps": [
         "many_were_sacrificed_to_cnidathqua",
         "earn_xp",
@@ -37579,7 +37579,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "The city is still recovering from the events during the eclipse. With nearly all evidence of the creature melted away by the hot sun, many attribute the violence during the Carnevale to local crime lord Cascio Di Boerio and his crew. Those that know the truth know better than to speak of the elder creature that lives in Laguna Veneta. With any luck, its name will never be spoken again.",
+      "text": "La ville se remet doucement des événements qui ont eu lieu pendant l'éclipse. Toutes les preuves de la présence de créatures ayant été consumées par le soleil, beaucoup accusent un baron du crime local, Cascio Di Boerio, d'être à l'origine des violences survenues au cours du carnaval. Ceux qui connaissent la vérité savent qu'il vaut mieux ne plus parler de l'ancienne créature qui vit dans la Laguna Veneta. Avec un peu de chance, son nom ne sera plus jamais prononcé.",
       "steps": [
         "sun_banished_cnidathqua",
         "earn_xp",
@@ -37591,7 +37591,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "The creature recoils as globules of its jelly-like flesh rip and tear from its body, splashing into the lagoon. It makes no sound as its torn body sinks into the depths. The chanting in the city plunges into mournful silence. As you return to the canal-side streets, black feathers fall from the sky where bright confetti once fluttered. You can only wonder how long it will take for the creature to recover.",
+      "text": "La créature recule tandis que des masses de sa chair gélatineuse se détachent de son corps et tombent dans la lagune. Elle n'émet aucun son lorsque son corps ravagé sombre dans les profondeurs. La mélopée provenant de la ville se change en un morne silence. Vous retournez vers les rues qui bordent les canaux et des plumes noires se mettent à tomber du ciel, là où voltigeaient naguère les confettis. Vous ne pouvez vous empêcher de vous demander combien de temps il faudra à la créature pour se remettre de ses blessures.",
       "steps": [
         "cnidathqua_retreated",
         "earn_xp",
@@ -37604,8 +37604,8 @@
 },
 {
   "id": "curse_of_the_rougarou",
-  "scenario_name": "Curse of the Rougarou",
-  "full_name": "Curse of the Rougarou",
+  "scenario_name": "La Malédiction du Rougarou",
+  "full_name": "La Malédiction du Rougarou",
   "xp_cost": 1,
   "standalone_setup": [
     "choose_difficulty",
@@ -37734,7 +37734,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Minnie Klein, your contact at the Arkham Advertiser, had slipped you a draft of the article over a cup of coffee at Velma's Diner. It would have gone to print had Doyle Jeffries, the lead editor, not scoffed at the concept. \"I believe his exact words were, 'I ain't printing it off as news,'\" she explained. From the sly grin spreading across her face, you could tell she smelled a story.\nThe headline was sensaltionalist. Three killings in nine days was enough to spook a town, sure. But you doubt all of New Orleans is gripped by terror, or even knows about the killings. Still, something piqued your interest. \"Lady Esprit,\" the Voodoo priestess from the article, claimed that a malign curse had taken root in the bayou.\n\"There's something to this, isn't there? I know that look,\" Minnie said. You weren't sure. If Lady Esprit was right, this \"roux-ga-roux\" wouldn't stop killing at three, that's for sure. But curses? Wolf-people? How could such things be real? Only one way to find out. You put on your coat and head for the Northside Station."
+      "text": "Minnie Klein, votre contact à l'Annonceur d'Arkham, vous a remis le premier jet de son article autour d'une tasse de café Chez Velma. L'article aurait déjà été envoyé sous presse si Doyle Jeffries, son responsable éditorial, ne lui avait pas ri au nez. « Je crois que ses mots exacts étaient \"J'vais tout de même pas publier les divagations de je ne sais quelle tarée vaudou et faire passer ça pour de l'info\" », vous relata-t-elle. Vous pouviez deviner à son air narquois qu'elle avait flairé une bonne histoire.\nLa une était digne d'un journal à sensation. Trois meurtres en neuf jours suffisaient certes à effrayer une ville, mais vous doutiez sincèrement que toute La Nouvelle-Orléans tremble de peur ni même qu'elle ait connaissance de ces morts. Quelque chose retint cependant votre attention. « Lady Esprit », la prêtresse vaudou de l'article, expliquait qu'une terrible malédiction avait pris racine dans le bayou.\n« Il y a quelque chose là-dessous, n'est-ce pas ? Je connais ce regard », ajouta Minnie. Vous ne saviez que penser. Si Lady Esprit disait vrai, ce « roux-ga-roux » ne s'arrêterait certainement pas à trois victimes. Mais des malédictions ? Des hommes-loups ? Comment de telles choses pourraient-elles exister ? Il n'y avait qu'un seul moyen de le savoir. Enfilant votre veste, vous vous dirigeâtes vers la gare du Quartier Nord…"
     },
     {
       "id": "gather_encounter_sets",
@@ -37747,15 +37747,15 @@
     },
     {
       "id": "set_aside_rougarou",
-      "text": "Set the Curse of the Rougarou encounter set aside, out of play."
+      "text": "Mettez de côté le set de rencontre La Malédiction du Rougarou, hors jeu."
     },
     {
       "id": "setup_locations",
-      "text": "Sort each of the locations into 4 piles, by trait ([[New Orleans]], [[Riverside]], [[Wilderness]], and [[Unhallowed]]). Randomly choose 1 of these pile s and remove those locations from the game. Randomly chooseanother 1 of these piles and put those locations into play. Set each location in the other 2 piles aside, out of play. Each investigator begins play at a [[Bayou]] location in play."
+      "text": "Classez tous les lieux en 4 piles selon leur trait : [[La Nouvelle-Orléans]], [[Berges]], [[Contrée Sauvage]] et [[Non Consacré]]. Prenez 1 de ces piles au hasard et retirez-la de la partie. Prenez 1 autre de ces piles au hasard et mettez ces lieux en jeu. Mettez de côté chaque lieu des 2 autres piles, hors jeu. Chaque investigateur débute la partie dans un lieu [[Bayou]] en jeu."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Lady Esprit, Bear Trap, and Fishing Net."
+      "text": "Mettez de côté les carte suivantes, hors jeu : Lady Esprit, Piège à Ours et Filet de Pêche."
     },
     {
       "id": "encounter_deck",
@@ -37778,13 +37778,13 @@
     },
     {
       "id": "rougarou_destroyed_and_curse_is_lifted",
-      "text": "In your Campaign Log, record that <i>the Rougarou is destroyed, and the curse is lifted</i>. Remove the Curse of the Rougarou weakness from it's bearers deck. Any one investigator may choose to add Lady Esprit to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>le Rougarou a été abattu et la malédiction levée</i>. Retirez la faiblesse La Malédiction du Rougarou du deck de son détenteur. N'importe quel investigateur a le droit d'ajouter Lady Esprit à son deck. Cette carte ne compte pas dans la limite de taille du deck de cet investigateur.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rougarou_destroyed_and_curse_is_lifted",
-          "text": "the Rougarou is destroyed, and the curse is lifted."
+          "text": "le Rougarou a été abattu et la malédiction levée"
         },
         {
           "type": "add_card",
@@ -37795,13 +37795,13 @@
     },
     {
       "id": "rougarou_escaped_and_embrace_curse",
-      "text": "In your Campaign Log, record that <i>the Rougarou escaped, and you embraced the curse</i>. The bearer of the Curse of the Rougarou weakness must add Monstrous Transformation to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>le Rougarou s'est enfui et vous avez été maudit</i>. Le détenteur de la faiblesse La Malédiction du Rougarou doit ajouter Transformation Monstrueuse à son deck. Cette carte ne compte pas dans la limite de taille du deck de cet investigateur.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rougarou_escaped_and_embrace_curse",
-          "text": "the Rougarou escaped, and you embraced the curse."
+          "text": "le Rougarou s'est enfui et vous avez été maudit"
         },
         {
           "type": "add_card",
@@ -37822,7 +37822,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rougarou_continues_to_haunt_the_bayou",
-          "text": "the Rougarou continues to haunt the bayou."
+          "text": "le Rougarou continue de hanter le bayou."
         },
         {
           "type": "add_card",
@@ -37854,7 +37854,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "Somehow, you manage to make it back to safety before daybreak, resting until late in the afternoon. It isn't until you seek out Lady Esprit the next day that you realize who last night's victim was. With a heavy heart and an unshakable dread, you choose to bury her body instead of contacting the authorities—the less people who delve this deep into the bayou, the better.",
+      "text": "Vous parvenez tout juste à vous mettre à l'abri avant l'aube et vous vous reposez jusque tard dans l'après-midi. Ce n'est qu'en partant à la recherche de Lady Esprit le lendemain que vous réalisez l'identité de la dernière victime de la nuit. Le coeur lourd et empli de remords, vous décidez d'enterrer son corps plutôt que de contacter les autorités – moins nombreux seront les gens à s'aventurer dans ce bayou, mieux ce sera.",
       "steps": [
         "rougarou_continues_to_haunt_the_bayou",
         "earn_xp",
@@ -37864,7 +37864,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "The creature givs a pitiful wail as dark miry blood oozes from its wounds. By the time its body collapses into the mud, it has transformed back into its original form—the form of a young dark-skinned man, his expression twisted in agony. You bring his body back to Lady Esprit and she works her strange magic, removing the stain of the curse from the land. \"Call on me should you ever need my help,\" the mysterious woman tells you.",
+      "text": "La créature émet un gémissement pitoyable tandis qu'un sang sombre et bourbeux s'échappe de ses blessures. Le temps qu'il s'effondre dans la boue, son corps a repris sa forme originelle – celle d'un jeune homme à la peau sombre et au visage déformé par la douleur. Vous rapportez sa dépouille à Lady Esprit, qui utilise son étrange magie pour chasser la malédiction de ces terres. « N'hésitez pas à faire appel à moi si vous avez encore besoin de mon aide », ajoute la mystérieuse femme.",
       "steps": [
         "rougarou_destroyed_and_curse_is_lifted",
         "earn_xp",
@@ -37874,7 +37874,7 @@
     {
       "id": "R3",
       "title": "Conclusion 3",
-      "text": "Somehow you have managed to quell the rage and bloodlust of the curse within the creature, and in moments the shape of a young, dark-skinned man stands before you, panting and sweating. He seems to only just now understand everything he's done, and agrees to flee to a secluded corner of the earth where he can harm no one. However, the curse lives on. He sees it in your eyes and grips your arm tightly. \"Don't let it take control,\" he warns. \"I was weak, but you—I can tell you are strong. Control the curse as I could not.\"",
+      "text": "Vous êtes parvenu à dissiper la rage et la soif de sang de la créature. Un instant plus tard, un jeune homme à la peau sombre se tient devant vous, suant et haletant. Il semble à peine réaliser ce qu'il a fait et accepte d'aller s'exiler dans un coin isolé de la Terre où il ne pourrait blesser personne. Toutefois, la malédiction subsiste. Il le voit dans vos yeux et vous agrippe fermement le bras. « Ne la laissez pas prendre le contrôle », vous prévient-il. « J'étais faible, mais vous – je peux voir votre force. Contrôlez cette malédiction, comme je n'ai pas su le faire. »",
       "steps": [
         "rougarou_escaped_and_embrace_curse",
         "earn_xp",
@@ -37885,8 +37885,8 @@
 },
 {
   "id": "in_the_labyrinths_of_lunacy",
-  "scenario_name": "The Labyrinths of Lunacy",
-  "full_name": "The Labyrinths of Lunacy",
+  "scenario_name": "Les Labyrinthes de la Folie",
+  "full_name": "Les Labyrinthes de la Folie",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -37976,19 +37976,19 @@
     {
       "id": "paradox_rule",
       "type": "rule_reminder",
-      "title": "Paradox",
-      "text": "The Labyrinths of Lunacy is a strange place. You will sometimes be confronted with seemingly impossible situations. Game text on cards might not make sense at first. Solving these paradoxes is the key to your survival. Keep a keen eye and be aware of your surroundings, and you <i>might</i> escape."
+      "title": "Paradoxe",
+      "text": "Les Labyrinthe de la Folie sont un endroit étrange. Vous serez parfois confronté à des situations apparemment inextricables. Le texte des cartes pourra n'avoir aucun sens à première vue. Résoudre ces paradoxes est la clé de votre survie. Gardez l'oeil ouvert et soyez vigilant vis-à-vis de ce qui vous entoure et vous aurez <i>peut-être</i> une chance de vous échapper."
     },
     {
       "id": "ask_epic_multiplayer",
       "type": "input",
-      "text": "Select how you would like to play this scenario:",
+      "text": "Choisissez le mode de jeu :",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "epic_multiplayer",
-            "text": "Epic Multiplayer",
+            "text": "Multijoueur Épique",
             "effects": [
               {
                 "type": "campaign_log",
@@ -38007,7 +38007,7 @@
           },
           {
             "id": "single_group",
-            "text": "Single Group",
+            "text": "Groupe Unique",
             "steps": [
               "timed_objective_rule_single",
               "story_rule",
@@ -38020,83 +38020,83 @@
     {
       "id": "timed_objective_rule_single",
       "type": "rule_reminder",
-      "title": "“Timed” objectives",
-      "text": "Many act cards in this scenario have special objectives marked with the word <b>Timed</b>. These act cards represent a task or condition the investigators must perform by the time the agenda advances. <b>Investigators do not advance the act card as soon as this condition is met. They must first wait for the agenda to advance.</b>\nIn this scenario, the act and agenda cards do not advance independently of one another; when the agenda advances, it will instruct you to advance the act card, as well. The back of each act card will have further instructions based on whether or not you were able to succeed in your task.\nWhen playing in <i>Single Group Mode</i>, if the investigators feel that they have completed their objective with time to spare, when adding doom tokens to the agenda during the mythos phase, they may choose to add doom tokens to the agenda until its doom threshold is satisfied."
+      "title": "Objectifs « Différés »",
+      "text": "Plusieurs cartes Acte de ce scénario ont des objectifs spéciaux repérables au mot <b>Différé</b>. Ces cartes Acte représentent des tâches ou des conditions que les investigateurs doivent remplir avant que l'intrigue n'avance. <b>Les investigateurs ne doivent pas faire avancer l'acte dès que les conditions sont remplies. Ils doivent d'abord attendre que l'intrigue avance.</b>\nDans ce scénario, les cartes Acte et Intrigue n'avancent pas de manière indépendante l'une de l'autre ; quand l'intrigue avance, elle vous demandera d'avancer l'acte en même temps. Le dos de chaque carte Acte comporte des instructions supplémentaires selon que vous avez réussi ou non vos tâches.\nQuand vous jouez en mode <i>Groupe Unique</i>, si les investigateurs pensent qu'ils ont rempli leurs objectifs et qu'il leur reste du temps, quand ils ajoutent des pions Fatalité à l'intrigue lors de la phase du Mythe, ils ont le droit d'ajouter plusieurs pions Fatalité jusqu'à atteindre le seuil de fatalité de l'intrigue."
     },
     {
       "id": "timed_objective_rule_epic",
       "type": "rule_reminder",
-      "title": "“Timed” objectives",
-      "text": "Many act cards in this scenario have special objectives marked with the word <b>Timed</b>. These act cards represent a task or condition the investigators must perform by the time the agenda advances. <b>Investigators do not advance the act card as soon as this condition is met. They must first wait for the agenda to advance.</b>\nIn this scenario, the act and agenda cards do not advance independently of one another; when the agenda advances, it will instruct you to advance the act card, as well. The back of each act card will have further instructions based on whether or not you were able to succeed in your task.\nWhen playing in <i>Epic Multiplayer Mode</i>, a group cannot advance to the next act and agenda until all other groups are ready to advance to the next act and agenda."
+      "title": "Objectifs « Différés »",
+      "text": "Plusieurs cartes Acte de ce scénario ont des objectifs spéciaux repérables au mot <b>Différé</b>. Ces cartes Acte représentent des tâches ou des conditions que les investigateurs doivent remplir avant que l'intrigue n'avance. <b>Les investigateurs ne doivent pas faire avancer l'acte dès que les conditions sont remplies. Ils doivent d'abord attendre que l'intrigue avance.</b>\nDans ce scénario, les cartes Acte et Intrigue n'avancent pas de manière indépendante l'une de l'autre ; quand l'intrigue avance, elle vous demandera d'avancer l'acte en même temps. Le dos de chaque carte Acte comporte des instructions supplémentaires selon que vous avez réussi ou non vos tâches.\nQuand vous jouez en mode <i>Multijoueur Épique</i>, un groupe ne peut pas avancer à l'acte/intrigue suivant(e) tant que les autres groupes ne sont pas prêts à avancer à l'acte/intrigue suivant(e).\n"
     },
     {
       "id": "story_rule",
       "type": "rule_reminder",
       "title": "Cartes Histoire",
-      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and game text. When a story card is drawn, read its story text and resolve its <b>Revelation</b> effect. Its game text is considered active for as long as the card is in play. The story cards in this scenario are double sided, with one side entitled “Deep Within the Labyrinth.” Do not flip them to this  until you are instructed to do so."
+      "text": "Les cartes Histoire sont un nouveau type de cartes. Ces cartes ont pour but d'accroître l'aspect narratif du jeu. Quand une carte Histoire est piochée, lisez son texte narratif et résolvez son effet <b>Révélation</b>. Son texte de jeu est considéré comme actif aussi longtemps que la carte est en jeu. Les cartes Histoire de ce scénario sont recto-verso et leur verso s'intitule « Dans les Entrailles du Labyrinthe ». Ne regardez pas cette face tant qu'on ne vous dit pas de le faire."
     },
     {
       "id": "time_limit_rule",
       "type": "rule_reminder",
-      "title": "Time Limit",
-      "text": "When playing in <i>Epic Multiplayer Mode</i>, the players (or your event organizer) may impose a time restriction for each act and agenda of the game. The default limit for each act and agenda is <b>60 minutes</b>. The players (or your event organizer) may impose a different time restriction, often depending on the number of players. If time runs out, any groups that have not yet completed the current round should continue playing until the next mythos phase, then place doom on the current agenda until its doom threshold is met and advance the agenda."
+      "title": "Limite de temps",
+      "text": "Quand vous jouez en mode Multijoueur Épique, les joueurs (ou l'organisateur de l'événement) peuvent imposer une limite de temps pour chaque acte et intrigue de la partie. La limite par défaut est de <b>60 minutes</b>. Les joueurs (ou l'organisateur de l'événement) peuvent choisir une durée différente, souvent en fonction du nombre de joueurs. Si la limite est atteinte, tout groupe qui n'a pas encore terminé le round continue de jouer jusqu'à la phase du Mythe. Ensuite, il place des fatalités sur l'intrigue en cours de manière à atteindre son seuil de fatalité et faire avancer l'intrigue."
     },
     {
       "id": "giving_and_exchanging_rule",
       "type": "rule_reminder",
-      "title": "Giving and Exchanging Cards and Tokens",
-      "text": "When playing this scenario in Epic Multiplayer Mode, there are some effects that allow investigators the option to give tokens, cards in hand, or assets in play to investigators in other groups.\nPlease be courteous when receiving cards from another player, and treat those cards with respect. Once the game has ended, make sure any cards or tokens that changed control are returned to their respective owners."
+      "title": "Donner et échanger des cartes et des pions",
+      "text": "Quand vous jouez ce scénario en mode Multijoueur Épique, certains effets donnent aux investigateurs l'opportunité de donner des pions, des cartes de leur main ou des soutiens en jeu à des investigateurs des autres groupes.\nSoyez courtois en recevant les cartes d'un autre joueur et traitez ces cartes avec respect. Une fois la partie terminée, n'oubliez pas de rendre les cartes et les pions échangés à leurs propriétaires respectifs."
     },
     {
       "id": "epic_multiplayer_mode",
       "type": "rule_reminder",
-      "title": "Epic Multiplayer Mode",
-      "text": "To play <i>The Labyrinths of Lunacy</i> in <i>Epic Multiplayer Mode</i>, first divide the investigators into three separate groups—Group A, Group B, and Group C. Each group requires its own copy of The Labyrinths of Lunacy in order to play. At least 1 investigator must be assigned to each group, and no more than 4 investigators may be assigned to a single group.\nDuring gameplay, observe the following additional rules:",
+      "title": "Mode Multijoueur Épique",
+      "text": "Pour jouer <i>Les Labyrinthes de la Folie</i> en mode <i>Multijoueur Épique</i>, divisez dans un premier temps les investigateurs en trois groupes distincts – le Groupe A, le Groupe B et le Groupe C. Chaque groupe doit posséder son propre exemplaire de l'extension Les Labyrinthes de la Folie et doit comprendre entre 1 et 4 investigateurs.\nPendant la partie, respectez les règles suivantes :",
       "bullets": [
         {
-          "text": "When constructing decks for <i>The Labyrinths of Lunacy</i>, use the rules for standalone mode on page 19 of the Rules Reference. You do not need to start with 0 experience."
+          "text": "Pour construire les decks afin de jouer <i>Les Labyrinthes de la Folie</i>, utilisez les règles du mode Indépendant. Vous n'êtes pas tenu de démarrer avec 0 expérience."
         },
         {
-          "text": "Each group has its own play area, and plays the game separately from one another. Rules, actions, and card effects cannot affect investigators in other groups, unless explicitly stated otherwise."
+          "text": "Chaque groupe possède sa propre zone de jeu et joue indépendamment des autres. Les règles, actions et effets de carte ne peuvent pas affecter les investigateurs des autres groupes à moins que le contraire ne soit explicitement spécifié."
         },
         {
-          "text": "At the end of each round, investigators must pause the game and wait until all three groups have reached the end of the round. At that point, each group may trigger “At the end of the round” abilities, in any order. Once all three groups have triggered “At the end of the round” abilities, continue to the next round."
+          "text": "À la fin de chaque round, les investigateurs doivent faire une pause dans la partie et attendre que chacun des trois groupes atteigne la fin du round. À ce stade, chaque groupe peut déclencher les capacités À la fin du round, dans n'importe quel ordre. Quand les trois groupes ont déclenché les capacités À la fin du round, continuez au round suivant."
         },
         {
-          "text": "With the exception of asking other groups whether they have reached the end of the round, <b>investigators cannot communicate with investigators in other groups</b>, unless a scenario card permits them to do so. Investigators also cannot examine other groups’ play areas. <i>(For the best effect, groups should play at different tables or in different rooms.)</i>"
+          "text": "<b>Les investigateurs n'ont pas le droit de communiquer avec les investigateurs des autres groupes</b> sauf pour savoir s'ils ont ou non atteint la fin du round ou si une carte Scénario le permet spécifiquement. Les investigateurs n'ont pas non plus le droit d'examiner la zone de jeu des autres groupes. (<i>Dans l'idéal, les groupes devraient jouer sur des tables différentes, voire dans des pièces différentes.</i>)"
         }
       ]
     },
     {
       "id": "single_group_mode",
       "type": "rule_reminder",
-      "title": "Single Group Mode",
-      "text": "When played in <i>Single Group Mode</i>, <i>The Labyrinths of Lunacy</i> can be played in one of two ways—as a single standalone scenario, or over a series of three games, like a mini-campaign.\nWhen played as a single standalone scenario, you may play as either Group A, B, or C. Use the setup instructions for the group chosen to set up the game.\nWhen played as a mini-campaign, play three consecutive games—one for each group—in an order of your choosing. Unlike a normal campaign, the following rules apply:",
+      "title": "Mode Groupe Unique",
+      "text": "Quand vous jouez <i>Les Labyrinthes de la Folie</i> en mode <i>Groupe Unique</i>, vous pouvez jouer de deux manières différentes – comme un scénario indépendant ou comme une mini-campagne de trois scénarios.\nSi vous optez pour un scénario indépendant, vous avez le droit de choisir de jouer le Groupe A, Groupe B ou Groupe C. Utilisez les instructions de mise en place du groupe choisi.\nSi vous optez pour la mini-campagne, jouez les trois parties consécutivement – une par groupe – dans l'ordre de votre choix. Contrairement aux campagnes habituelles, les règles suivantes s'appliquent :",
       "bullets": [
         {
-          "text": "When constructing decks for <i>The Labyrinths of Lunacy</i>, use the rules for standalone mode on page 19 of the Rules Reference. You do not need to start with 0 experience."
+          "text": "Pour construire les decks afin de jouer <i>Les Labyrinthes de la Folie</i>, utilisez les règles du mode Indépendant. Vous n'êtes pas tenu de démarrer avec 0 expérience."
         },
         {
-          "text": "Players may swap investigators and/or decks in between each scenario, in order to represent the different groups of investigators who have been trapped inside the Labyrinths."
+          "text": "Les joueurs ont le droit de changer d'investigateur et/ou de deck entre chaque scénario afin de représenter les différents groupes d'investigateurs qui ont été piégés dans les labyrinthes."
         },
         {
-          "text": "Experience is not earned or spent in between scenarios during this campaign."
+          "text": "Aucun point d'expérience ne peut être gagné ou dépensé entre les scénarios de cette campagne."
         },
         {
-          "text": "There is no Campaign Log for this campaign. During this campaign, investigators do not earn trauma, and investigators who are <b>killed</b> or driven <b>insane</b> may still be used in other scenarios."
+          "text": "Il n'y a pas de Carnet de Campagne pour cette campagne. Lors de cette campagne, les investigateurs ne subissent pas de traumatismes et ceux qui sont tués ou rendus déments peuvent toujours être utilisés pour les autres scénarios."
         }
       ]
     },
     {
       "id": "ask_group",
       "type": "input",
-      "text": "Which group's setup instruction do you want to read:",
+      "text": "Quelles Mise en place souhaitez vous lire ?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "group_a",
-            "text": "Group A",
+            "text": "Groupe A",
             "effects": [
               {
                 "type": "campaign_log",
@@ -38119,7 +38119,7 @@
           },
           {
             "id": "group_b",
-            "text": "Group B",
+            "text": "Groupe B",
             "effects": [
               {
                 "type": "campaign_log",
@@ -38142,7 +38142,7 @@
           },
           {
             "id": "group_c",
-            "text": "Group C",
+            "text": "Groupe C",
             "effects": [
               {
                 "type": "campaign_log",
@@ -38169,20 +38169,20 @@
     {
       "id": "intro_a",
       "type": "story",
-      "title": "Group A Instructions",
-      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a windowless chamber, which is filled with copper pipes. The faint whistling of escaping air surrounds you on all sides. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+      "title": "Instructions pour le Groupe A",
+      "text": "Vous vous réveillez dans un lieu étrange, sans le moindre souvenir de ce qui vous est arrivé. Vos muscles sont engourdis et peu réactifs. Votre vue est troublée. Vous lever vous demande un effort presque surhumain. Vos jambes sont flageolantes et peuvent à peine soutenir votre poids.\nPour la première fois depuis votre réveil, vous jetez un oeil autour de vous. Vous êtes enfermé dans une chambre sans fenêtre, remplie de tuyaux de cuivre. Le léger bruissement de l'air qui s'en échappe vous entoure de toutes parts. Vous êtes prisonnier, sans aucune échappatoire. Une note repose non loin sur le sol. Elle dit :\n<fancy>Salutations,</fancy>\n<fancy>Je vous ai amenés ici pour une expérience. Voyez cela comme une mise à l'épreuve de la volonté humaine. Vous survivrez ou vous mourrez. Vous n'êtes pas seuls. Deux autres groupes partagent votre sort. Risquerez-vous vos vies pour les aider ? Ou vous frayerez-vous un chemin vers la sortie sur leurs cadavres ?</fancy>\n<fancy>Je vous laisserai partir si vous faites preuve de force, de volonté et d'intelligence. Dans le cas contraire, vos douleurs et vos tourments vous rappelleront que les humains ne sont pas les héritiers de la Terre.</fancy>"
     },
     {
       "id": "intro_b",
       "type": "story",
-      "title": "Group B Instructions",
-      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You have been sealed in a tall glass tank, and water fills the chamber to your ankles. Outside the dull glass, you can see many more tanks like yours, wreathed in mist. You are a prisoner here, with no means of escape. There is a note lying on the ground just outside the tank. It reads:. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+      "title": "Instructions pour le Groupe B",
+      "text": "Vous vous réveillez dans un lieu étrange, sans le moindre souvenir de ce qui vous est arrivé. Vos muscles sont engourdis et peu réactifs. Votre vue est troublée. Vous lever vous demande un effort presque surhumain. Vos jambes sont flageolantes et peuvent à peine soutenir votre poids.\nPour la première fois depuis votre réveil, vous jetez un oeil autour de vous. Vous êtes enfermé dans un grand réservoir de verre, et le niveau de l'eau monte jusqu'à vos chevilles. A travers le verre sale, vous pouvez apercevoir d'autres réservoirs identiques, baignés de brume. Vous êtes prisonnier, sans aucune échappatoire. Une note repose sur le sol à l'extérieur du réservoir. Elle dit :\n<fancy>Salutations,</fancy>\n<fancy>Je vous ai amenés ici pour une expérience. Voyez cela comme une mise à l'épreuve de la volonté humaine. Vous survivrez ou vous mourrez. Vous n'êtes pas seuls. Deux autres groupes partagent votre sort. Risquerez-vous vos vies pour les aider ? Ou vous frayerez-vous un chemin vers la sortie sur leurs cadavres ?</fancy>\n<fancy>Je vous laisserai partir si vous faites preuve de force, de volonté et d'intelligence. Dans le cas contraire, vos douleurs et vos tourments vous rappelleront que les humains ne sont pas les héritiers de la Terre.</fancy>"
     },
     {
       "id": "intro_c",
       "type": "story",
-      "title": "Group C Instructions",
-      "text": "You wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight.\nFor the first time since awakening, you study your surroundings. You are in a dark chamber, lit only by a few candles. Old barrels, crates and rotten storage shelves fill the cramped chamber. You cannot see any windows or doors leading out. You are a prisoner here, with no means of escape. There is a note lying on the ground nearby. It reads:\n<fancy>Greetings.</fancy>\n<fancy>I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die.</fancy><fancy>You are not alone. Two other groups share in your fate. Will you risk your lives to aid them? Or will you find freedom upon the backs of their corpses?</fancy>\n<fancy>I will allow you to escape, should you prove strong of will and quick of wit. If not, your pain and anguish shall serve as a reminder that humans are not the inheritors of Earth.</fancy>"
+      "title": "Instructions pour le Groupe C",
+      "text": "Vous vous réveillez dans un lieu étrange, sans le moindre souvenir de ce qui vous est arrivé. Vos muscles sont engourdis et peu réactifs. Votre vue est troublée. Vous lever vous demande un effort presque surhumain. Vos jambes sont flageolantes et peuvent à peine soutenir votre poids.\nPour la première fois depuis votre réveil, vous jetez un oeil autour de vous. Vous vous trouvez dans une chambre obscure seulement éclairée par quelques bougies. De vieux tonneaux, des caisses et des étagères décrépies emplissent l'étroite pièce. Il semble n'y avoir aucune porte ou fenêtre menant vers l'extérieur. Vous êtes prisonnier, sans aucune échappatoire. Une note repose sur le sol non loin. Elle dit :\n<fancy>Salutations,</fancy>\n<fancy>Je vous ai amenés ici pour une expérience. Voyez cela comme une mise à l'épreuve de la volonté humaine. Vous survivrez ou vous mourrez. Vous n'êtes pas seuls. Deux autres groupes partagent votre sort. Risquerez-vous vos vies pour les aider ? Ou vous frayerez-vous un chemin vers la sortie sur leurs cadavres ?</fancy>\n<fancy>Je vous laisserai partir si vous faites preuve de force, de volonté et d'intelligence. Dans le cas contraire, vos douleurs et vos tourments vous rappelleront que les humains ne sont pas les héritiers de la Terre.</fancy>"
     },
     {
       "id": "gather_encounter_sets",
@@ -38218,45 +38218,45 @@
     },
     {
       "id": "gather_epic_encounter_sets",
-      "text": "Because you are playing in <i>Epic Multiplayer Mode</i>, gather all cards from the <i>Epic Multiplayer</i> encounter set.",
+      "text": "Comme vous jouez en mode <i>Multijoueur Épique</i>, réunissez toutes les cartes du set de rencontre <i>Multijoueur Épique</i>",
       "type": "encounter_sets",
       "encounter_sets": [
         "epic_multiplayer"
       ],
-      "subtext": "Remove all cards from the <i>Single Group</i> encounter set from the game."
+      "subtext": "Retirez de la partie toutes les cartes du set de rencontre <i>Groupe Unique</i>."
     },
     {
       "id": "gather_single_encounter_sets",
-      "text": "Because you are playing in <i>Single Group Mode</i>, gather all cards from the <i>Single Group</i> encounter set.",
+      "text": "Comme vous jouez en mode <i>Groupe Unique</i>, réunissez toutes les cartes du set de rencontre <i>Groupe Unique</i>",
       "type": "encounter_sets",
       "encounter_sets": [
         "single_group"
       ],
-      "subtext": "Remove all cards from the <i>Epic Multiplayer</i> encounter set from the game."
+      "subtext": "Retirez de la partie toutes les cartes du set de rencontre <i>Multijoueur Épique</i>."
     },
     {
       "id": "construct_act_deck_a",
-      "text": "Construct the act deck using only the (Group A) versions of acts 1 and 2. Remove each other version of those acts from the game."
+      "text": "Constituez le deck Acte et Intrigue en n'utilisant que les versions (Groupe A) des Acte la et Acte 2a. Retirez de la partie toutes les autres versions de ces actes."
     },
     {
       "id": "construct_act_deck_b",
-      "text": "Construct the act deck using only the (Group B) versions of acts 1 and 2. Remove each other version of those acts from the game."
+      "text": "Constituez le deck Acte et Intrigue en n'utilisant que les versions (Groupe B) des Acte la et Acte 2a. Retirez de la partie toutes les autres versions de ces actes."
     },
     {
       "id": "construct_act_deck_c",
-      "text": "Construct the act deck using only the (Group C) versions of acts 1 and 2. Remove each other version of those acts from the game."
+      "text": "Constituez le deck Acte et Intrigue en n'utilisant que les versions (Groupe C) des Acte la et Acte 2a. Retirez de la partie toutes les autres versions de ces actes."
     },
     {
       "id": "setup_locations_a",
-      "text": "Randomly choose 1 of the 3 copies of Chamber of Secrets to put into play. Remove the other 2 copies from the game. Each investigator begins play in the Chamber of Secrets."
+      "text": "Prenez au hasard l des 3 exemplaires de la Chambre des Secrets et mettez-le en jeu. Retirez les 2 autres exemplaires de la partie. Chaque investigateur commence la partie dans la Chambre des Secrets."
     },
     {
       "id": "setup_locations_b",
-      "text": "Put the Chamber of Rain and Chamber of Sorrows locations into play. Randomly choose an investigator to begin play in the Chamber of Rain. Each other investigator begins play in the Chamber of Sorrows."
+      "text": "Mettez en jeu la Chambre de la Pluie et la Chambre de l'Affliction. Désignez un investigateur au hasard ; ce dernier commence la partie dans la Chambre de la Pluie. Chaque autre investigateur commence la partie dans la Chambre de l'Affliction."
     },
     {
       "id": "setup_locations_c",
-      "text": "Put the Chamber of Night and Chamber of Regret locations into play. Each investigator begins play at the Chamber of Night"
+      "text": "Mettez en jeu la Chambre de la Nuit et la Chambre des Regrets. Chaque investigateur commence la partie dans la Chambre de la Nuit."
     },
     {
       "id": "set_aside_a",
@@ -38284,19 +38284,19 @@
     },
     {
       "id": "set_aside_epic",
-      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location.",
+      "text": "Mettez de côté les cartes suivantes, hors jeu : Clé des Mystères, Mystérieuse Seringue, Eixodolon, Familier d'Eixodolon, Diagramme de la Putréfaction, Diagramme de la Faim, Diagramme de la Décrépitude, les 2 exemplaires du Ravisseur Sans Visage et tous les autres lieux.",
       "bullets": [
         {
-          "text": "Because you are playing in <i>Epic Multiplayer Mode</i>, also set The Jailor enemy and each double-sided story card aside, out of play."
+          "text": "Comme vous jouez en mode <i>Multijoueur Épique</i>, mettez également de côté Le Geôlier et toutes les cartes Histoire recto-verso, hors jeu."
         }
       ]
     },
     {
       "id": "set_aside_single_a",
-      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location.",
+      "text": "Mettez de côté les cartes suivantes, hors jeu : Clé des Mystères, Mystérieuse Seringue, Eixodolon, Familier d'Eixodolon, Diagramme de la Putréfaction, Diagramme de la Faim, Diagramme de la Décrépitude, les 2 exemplaires du Ravisseur Sans Visage et tous les autres lieux.",
       "bullets": [
         {
-          "text": "Because you are playing in <i>Single Group Mode</i>, put the set-aside Key of Mysteries into play in the Chamber of Secrets."
+          "text": "Comme vous jouez en mode <i>Groupe Unique</i>, mettez en jeu la Clé des Mystères dans la Chambre des Secrets."
         }
       ]
     },
@@ -38326,7 +38326,7 @@
     },
     {
       "id": "set_aside_single_b",
-      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location."
+      "text": "Mettez de côté les cartes suivantes, hors jeu : Clé des Mystères, Mystérieuse Seringue, Eixodolon, Familier d'Eixodolon, Diagramme de la Putréfaction, Diagramme de la Faim, Diagramme de la Décrépitude, les 2 exemplaires du Ravisseur Sans Visage et tous les autres lieux."
     },
     {
       "id": "set_aside_c",
@@ -38354,16 +38354,16 @@
     },
     {
       "id": "set_aside_single_c",
-      "text": "Set the following cards aside, out of play: Key of Mysteries, Mysterious Syringe, Eixodolon, Eixodolon’s Pet, Rot Diagram, Hunger Diagram, Decay Diagram, both copies of Faceless Abductor, and each other location.",
+      "text": "Mettez de côté les cartes suivantes, hors jeu : Clé des Mystères, Mystérieuse Seringue, Eixodolon, Familier d'Eixodolon, Diagramme de la Putréfaction, Diagramme de la Faim, Diagramme de la Décrépitude, les 2 exemplaires du Ravisseur Sans Visage et tous les autres lieux.",
       "bullets": [
         {
-          "text": "Because you are playing in <i>Single Group Mode</i>, randomly choose 1 of the 3 set-aside copies of Chamber of Secrets and place it underneath the scenario reference card, without looking at its revealed side."
+          "text": "Comme vous jouez en mode <i>Groupe Unique</i>, sélectionnez au hasard l des 3 exemplaires de la Chambre des Secrets et placez-le sous la carte de référence du scénario sans regarder son côté révélé."
         }
       ]
     },
     {
       "id": "lead_investigator_takes_note",
-      "text": "The lead investigator takes control of Eixodolon’s Note."
+      "text": "L'investigateur principal prend le contrôle de la Note d'Eixodolon."
     },
     {
       "id": "add_tokens_a",
@@ -38406,7 +38406,7 @@
     },
     {
       "id": "shuffle_encounter_deck",
-      "text": "Shuffle the rest of the encounter cards to build the encounter deck."
+      "text": "Mélangez les cartes Rencontre restantes pour former le deck Rencontre."
     },
     {
       "id": "act_2_setup_a",
@@ -38435,101 +38435,101 @@
     {
       "id": "act_2_setup_a_epic",
       "type": "rule_reminder",
-      "title": "Act 2 Setup",
+      "title": "Mise en place de l'Acte 2",
       "bullets": [
         {
-          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+          "text": "Mélangez chaque Ravisseur Sans Visage et la pile de défausse Rencontre dans le deck Rencontre."
         },
         {
-          "text": "Because you are playing <i>Epic Multiplayer Mode</i>, choose one of the 3 groups at random. That group shuffles the set-aside The Jailor enemy into the encounter deck."
+          "text": "Comme vous jouez en mode <i>Multijoueur Épique</i>, désignez au hasard l'un des 3 groupes. Ce groupe mélange Le Geôlier dans le deck Rencontre."
         },
         {
-          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+          "text": "Mettez en jeu les 3 Couloirs Labyrinthiques."
         },
         {
-          "text": "Put the set-aside Chamber of Decay into play."
+          "text": "Mettez en jeu la Chambre de la Décrépitude."
         },
         {
-          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+          "text": "Retirez toutes les fatalités en jeu et passez à l'Acte 2a et à l'Intrigue 2a."
         }
       ]
     },
     {
       "id": "act_2_setup_a_single",
       "type": "rule_reminder",
-      "title": "Act 2 Setup",
+      "title": "Mise en place de l'Acte 2",
       "bullets": [
         {
-          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+          "text": "Mélangez chaque Ravisseur Sans Visage et la pile de défausse Rencontre dans le deck Rencontre."
         },
         {
-          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+          "text": "Mettez en jeu les 3 Couloirs Labyrinthiques."
         },
         {
-          "text": "Put the set-aside Chamber of Decay into play."
+          "text": "Mettez en jeu la Chambre de la Décrépitude."
         },
         {
-          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+          "text": "Retirez toutes les fatalités en jeu et passez à l'Acte 2a et à l'Intrigue 2a."
         }
       ]
     },
     {
       "id": "act_2_setup_b",
       "type": "rule_reminder",
-      "title": "Act 2 Setup",
+      "title": "Mise en place de l'Acte 2",
       "bullets": [
         {
-          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+          "text": "Mélangez chaque Ravisseur Sans Visage et la pile de défausse Rencontre dans le deck Rencontre."
         },
         {
-          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+          "text": "Mettez en jeu les 3 Couloirs Labyrinthiques."
         },
         {
-          "text": "Put the set-aside Chamber of Rot and Chamber of Poison locations into play."
+          "text": "Mettez en jeu la Chambre de la Putréfaction et la Chambre du Poison"
         },
         {
-          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+          "text": "Retirez toutes les fatalités en jeu et passez à l'Acte 2a et à l'Intrigue 2a."
         }
       ]
     },
     {
       "id": "act_2_setup_c",
       "type": "rule_reminder",
-      "title": "Act 2 Setup",
+      "title": "Mise en place de l'Acte 2",
       "bullets": [
         {
-          "text": "Shuffle each set-aside Faceless Abductor and the encounter discard pile into the encounter deck."
+          "text": "Mélangez chaque Ravisseur Sans Visage et la pile de défausse Rencontre dans le deck Rencontre."
         },
         {
-          "text": "Put the 3 set-aside Labyrinthine Halls into play."
+          "text": "Mettez en jeu les 3 Couloirs Labyrinthiques."
         },
         {
-          "text": "Put the set-aside Chamber of Hunger into play"
+          "text": "Mettez en jeu la Chambre de la Faim."
         },
         {
-          "text": "Put the set-aside Eixodolon’s Pet into play, near the Chamber of Hunger, but not at any location. While it is not at any location, it is considered to be “locked away.”"
+          "text": "Mettez en jeu le Familier d'Eixodolon à côté de la Chambre de la Faim, mais pas dans un lieu. Tant qu'il n'est pas dans un lieu, il est considéré comme étant <i>enfermé.</i>"
         },
         {
-          "text": "Remove all doom from play and proceed to act 2a & agenda 2a"
+          "text": "Retirez toutes les fatalités en jeu et passez à l'Acte 2a et à l'Intrigue 2a."
         }
       ]
     },
     {
       "id": "act_3_setup",
       "type": "rule_reminder",
-      "title": "Act 3 Setup",
+      "title": "Mise en place de l'Acte 3",
       "bullets": [
         {
-          "text": "Put the set-aside Abandoned Warehouse into play."
+          "text": "Mettez en jeu l'Entrepôt Désaffecté."
         },
         {
-          "text": "Disengage all engaged enemies and move each surviving investigator to the Abandoned Warehouse."
+          "text": "Désengagez tous les ennemis engagés et déplacez chaque investigateur survivant vers l'Entrepôt Désaffecté."
         },
         {
-          "text": "Put the set-aside Eixodolon enemy into play at the Abandoned Warehouse."
+          "text": "Mettez en jeu l'ennemi Eixodolon dans l'Entrepôt Désaffecté."
         },
         {
-          "text": "Remove all doom from play and proceed to act 3a & agenda 3a."
+          "text": "Retirez toutes les fatalités en jeu et passez à l'Acte 3a et à l'Intrigue 3a."
         }
       ]
     },
@@ -38551,7 +38551,7 @@
                 }
               ]
             },
-            "text": "Act 2 Setup",
+            "text": "Mise en place de l'Acte 2",
             "steps": [
               "act_2_setup"
             ],
@@ -38576,7 +38576,7 @@
                 }
               ]
             },
-            "text": "Act 3 Setup",
+            "text": "Mise en place de l'Acte 3",
             "steps": [
               "act_3_setup"
             ],
@@ -38658,7 +38658,7 @@
     },
     {
       "id": "win",
-      "text": "The investigators win.",
+      "text": "Les investigateurs ont gagné !",
       "effects": [
         {
           "type": "campaign_data",
@@ -38669,11 +38669,11 @@
     },
     {
       "id": "survived_new_guest",
-      "text": "The investigators survived, but in another timeline, the labyrinth has a new guest."
+      "text": "Les investigateurs ont survécu, mais sur une autre ligne temporelle, le labyrinthe a un nouvel invité."
     },
     {
       "id": "survived_eixodolon_lives",
-      "text": "The investigators survived, but Eixodolon lives on."
+      "text": "Les investigateurs ont survécu, mais Eixodolon vit toujours."
     }
   ],
   "resolutions": [
@@ -38692,7 +38692,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "In the wrong hands, your anguish is a powerful weapon. Your blood fuels the arcane glyph carved into the cement floor at the labyrinth’s core. For the cruel mastermind who trapped you here, it is a moment of triumph and vindication. The entire world will feel this pain. This fear. This despair.",
+      "text": "Entre de mauvaises mains, vos tourments deviennent une arme puissante. Votre sang alimente les glyphes ésotériques gravés dans le sol en ciment au coeur du labyrinthe. Pour le cruel instigateur de votre enlèvement, c'est un moment de triomphe et de jubilation. Le monde entier va ressentir cette douleur. Cette peur. Ce désespoir.",
       "steps": [
         "lose"
       ]
@@ -38700,7 +38700,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "The mastermind falls to his knees, his mask cracked. Blood drips from his open wounds onto the cement floor. “Do you really think you can escape?” he wheezes. His distorted voice is pained but triumphant. “Do you really think… I would ever let you leave this place?” His body collapses to the ground. Seeing an opportunity to escape, you rush to the iron doors sealing you in the warehouse. With a desperate effort, you are finally able to break the padlock and push open the heavy doors.\nA sudden gust of cold evening air sweeps over you. You are surprised to see wooden docks on the side of the Miskatonic River. A few ducks quack in surprise and swim away from the nearest dock. Water sloshes along the shore. You hear dockworkers going about their business, their work day almost finished as the sun sets to your left. After taking a few steps, you collapse to the ground. You are too exhausted and injured to go on. “Who’s that?” a dockworker calls out. “Someone is hurt—quick, let’s get them to St. Mary’s!” You drift into unconsciousness just as a muscled man lifts you into his arms.\nYou wake up and realize you are in a strange place, with no memory of how you arrived. Your muscles are weak and uncooperative. Your vision is blurred. Simply rising to your feet takes a tremendous effort. Your legs are wobbly and can barely support your weight. A note on the ground nearby reads:\n<fancy>Greetings. I have gathered you here as an experiment. Think of this as a test of human will. You will survive. Or you will die…</fancy>",
+      "text": "L'instigateur de toute cette histoire tombe à genoux, le masque brisé. Du sang s'échappe de ses plaies béantes et coulent sur le sol en ciment. « Vous pensez réellement que vous allez pouvoir vous échapper ? » souffle-t-il. Sa voix est déformée par la douleur, mais néanmoins triomphante. « Vous pensez réellement… que je vais vous laisser quitter cet endroit ? » Son corps s'effondre au sol. Voyant une opportunité de vous enfuir, vous vous ruez sur les portes en fer qui vous retiennent dans l'entrepôt. Dans un effort désespéré, vous parvenez à briser le cadenas et à ouvrir les lourdes portes.\nLa brise fraîche du soir s'engouffre autour de vous. Vous constatez avec surprise que vous vous trouvez sur les docks du fleuve Miskatonic. Quelques canards cancanent de surprise et prennent la fuite. L'eau clapote sur la rive. Vous pouvez entendre les dockers aller et venir, tout à leur travail qui touche à sa fin alors que le soleil se couche à votre gauche. Vous faites quelques pas et vous écroulez au sol, trop exténué et blessé pour aller plus loin. « Qui va là ? » s'exclame un docker. « Quelqu'un est blessé – vite, il faut aller à Sainte Marie ! » Vous sombrez dans l'inconscience au moment où un homme tout en muscles vous prend dans ses bras.\nVous vous réveillez dans un lieu étrange, sans le moindre souvenir de ce qui vous est arrivé. Vos muscles sont engourdis et peu réactifs. Votre vue est troublée. Vous lever vous demande un effort presque surhumain. Vos jambes sont flageolantes et peuvent à peine soutenir votre poids. Une note repose sur le sol non loin. Elle dit :\n<fancy>Salutations, Je vous ai amenés ici pour une expérience. Voyez cela comme une mise à l'épreuve de la volonté humaine. Vous survivrez. Ou vous mourrez…</fancy>",
       "steps": [
         "survived_new_guest"
       ]
@@ -38708,7 +38708,7 @@
     {
       "id": "R3",
       "title": "Conclusion 3",
-      "text": "The mastermind falls to his knees, his mask cracked. Blood drips from his open wounds onto the cement floor. “Do you really think you can kill me?” he wheezes. His distorted voice is pained but proud. “I am everywhere and everywhen. This vessel is but one. There are others. And if even one of them is proven right, I will never truly die.” His body falls limply to the ground. Seeing an opportunity to escape, you rush to the iron doors sealing you in the warehouse. With a desperate effort, you are finally able to break the padlock and push open the heavy doors.\nA sudden gust of cold evening air sweeps over you. You are surprised to see wooden docks on the side of the Miskatonic River. A few ducks quack in surprise and swim away from the nearest dock. Water sloshes along the shore. You hear dockworkers going about their business, their work day almost finished as the sun sets to your left. After taking a few steps, you collapse to the ground. You are too exhausted and injured to go on. “Who’s that?” a dockworker calls out. “Someone is hurt—quick, let’s get them to St. Mary’s!” A muscled man lifts you into his arms, and you are driven to the hospital.\nYou have somehow made it out of your captor’s hellish labyrinth, but his dying words haunt your thoughts. What did he mean by “others?” You recall the strange visions you saw in his maze, and a terrible thought seeps into your mind. The kidnapper had mentioned other groups, but you were never able to find them, and you have no idea if they made it out alive. You tell the police there are others and insist that they search the docks, but there is no trace of the warehouse you had escaped, nor of the mastermind who trapped you there…",
+      "text": "L'instigateur de toute cette histoire tombe à genoux, le masque brisé. Du sang s'échappe de ses plaies béantes et coulent sur le sol en ciment. « Vous pensez réellement pouvoir me tuer ? » souffle-t-il. Sa voix est déformée par la douleur mais néanmoins fière. « Je suis partout et tout le temps. Cet avatar n'est pas le seul. Il y en a d'autres. Et même si l'un d'entre eux est vaincu, je ne mourrai jamais vraiment. » Son corps s'écrase mollement au sol. Voyant une opportunité de vous enfuir, vous vous ruez sur les portes en fer qui vous retiennent dans l'entrepôt. Dans un effort désespéré, vous parvenez à briser le cadenas et à ouvrir les lourdes portes.\nLa brise fraîche du soir s'engouffre autour de vous. Vous constatez avec surprise que vous vous trouvez sur les docks du fleuve Miskatonic. Quelques canards cancanent de surprise et prennent la fuite. L'eau clapote sur la rive. Vous pouvez entendre les dockers aller et venir, tout à leur travail qui touche à sa fin alors que le soleil se couche à votre gauche. Vous faites quelques pas et vous écroulez au sol, trop exténué et blessé pour aller plus loin. « Qui va là ? » s'exclame un docker. « Quelqu'un est blessé – vite, il faut aller à Sainte Marie ! » Vous sombrez dans l'inconscience au moment où un homme tout en muscles vous prend dans ses bras.\nVous êtes parvenu à fuir l'infernal labyrinthe de votre ravisseur mais ses derniers mots hantent vos pensées. Que voulait-il dire par « d'autres » ? Vous vous remémorez les étranges visions que vous avez eues dans le dédale et de terribles pensées s'insinuent dans votre esprit. Le kidnappeur a mentionné d'autres groupes, mais vous n'avez jamais été capable de les trouver, et vous ne savez pas s'ils ont pu s'en tirer vivants. Vous avez bien prévenu la police qu'il y en avait d'autres, et bien insisté sur le fait qu'il fallait fouiller les docks mais il n'y a aucune trace de l'entrepôt dont vous vous êtes échappé, ni de l'instigateur de votre enlèvement…",
       "steps": [
         "survived_eixodolon_lives"
       ]
@@ -38716,7 +38716,7 @@
     {
       "id": "R4",
       "title": "Conclusion 4",
-      "text": "The mastermind falls to his knees, his mask cracked. Blood drips from his open wounds onto the cement floor. The outline of his body twists and blurs, like a wrinkle in the fabric of space and time. “So, the ritual has failed!” His bitter cackle descends into a cry of pain. “Perhaps humanity has a chance after all. This agony, this suffering! Such power is not meant for humans to wield. It is for the ones beyond!” He gasps and wheezes, collapsing to the ground. “Do not follow the path I followed,” he begs, “it leads only to… despair.” His breathing stops.\nYou have somehow defeated your captor, but many questions remain. Deciding to explore the labyrinth further, you find a way to break open the iron doors leading into the other sections of the complex. To your surprise, you find no other victims trapped in the labyrinth—only signs of their struggles, and of their survival.\nIt takes only one solid strike to break open the padlock sealing the warehouse’s iron doors. The sound of metal slamming against metal is tripled in its volume. You do not believe your kidnapper meant for you to ever leave, but somehow you have defied the odds stacked against you. You wonder if the others are opening these heavy doors at this very moment, too.\nA sudden gust of cold evening air sweeps over you. You are surprised to see wooden docks on the side of the Miskatonic River. A few ducks quack in surprise and swim away from the nearest dock. Water sloshes along the shore. You hear dockworkers going about their business, their work day almost finished as the sun sets to your left. You watch the sun disappear under the horizon, and the others watch in turn.",
+      "text": "L'instigateur de toute cette histoire tombe à genoux, le masque brisé. Du sang s'échappe de ses plaies béantes et coulent sur le sol en ciment. Les contours de sa silhouette tremblent et deviennent flous, comme une ride dans la structure de l'espace-temps. « Ainsi, le rituel a échoué ! » Sa voix grésillante se mue en un cri d'agonie. « Peut-être que l'humanité a une chance après tout. Cette douleur, cette souffrance ! Un tel pouvoir n'est pas fait pour les humains. Il est pour ceux d'au-delà ! » Il halète et souffle en s'écroulant au sol. « Ne suivez pas la voie que j'ai choisie, » implore-t-il, « elle ne mène qu'au… désespoir. » Sa respiration s'éteint.\nVous avez vaincu votre geôlier mais nombre de questions demeurent. Vous décidez d'explorer plus avant le labyrinthe et trouvez un moyen de forcer les portes de fer qui mènent à d'autres sections de ce complexe. À votre grande surprise, vous ne trouvez aucun signe d'autres victimes piégées dans le labyrinthe – juste des signes de leurs luttes, et de leur survie.\nIl suffit d'un solide coup pour briser le cadenas verrouillant les portes de fer de l'entrepôt. Le son du métal cognant sur le métal paraît décuplé. Vous ne pensez pas que votre kidnappeur ait une seconde envisagé que vous lui échappiez, mais vous avez néanmoins réussi à fuir. Vous vous demandez si les autres sont eux aussi en train d'ouvrir ces lourdes portes.\nLa brise fraîche du soir s'engouffre autour de vous. Vous constatez avec surprise que vous vous trouvez sur les docks du fleuve Miskatonic. Quelques canards cancanent de surprise et prennent la fuite. L'eau clapote sur la rive. Vous pouvez entendre les dockers aller et venir, tout à leur travail qui touche à sa fin alors que le soleil se couche à votre gauche. Vous contemplez le soleil qui se couche à l'horizon, et les autres contemplent à leur tour.",
       "steps": [
         "win"
       ]
@@ -41585,8 +41585,8 @@
 },
 {
   "id": "the_eternal_slumber",
-  "scenario_name": "The Eternal Slumber",
-  "full_name": "The Eternal Slumber",
+  "scenario_name": "Éternelle Torpeur",
+  "full_name": "Éternelle Torpeur",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -41721,50 +41721,50 @@
     },
     {
       "id": "explore_rule",
-      "title": "explore",
+      "title": "Explorer",
       "type": "rule_reminder",
-      "text": "Some abilities in <i>Guardians of the Abyss</i> are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that will be constructed during this scenario. This deck consists of several single-sided locations and treachery cards.",
+      "text": "Certaines capacités dans <i>Gardiens de l'Abîme</i> sont précédées de l'indicatif d'action <b>Explorer</b>. De telles capacités servent en général à trouver de nouveaux lieux à mettre en jeu et sont initiées en utilisant une action « Activer ».\nLes capacités <b>Explorer</b> vous demandent de piocher la carte du dessus du deck Exploration, un deck spécifique qui est construit lors de la mise en place de certains scénarios. Ce deck est constitué de plusieurs cartes Lieu mono-face ainsi que de cartes Traîtrise.",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "Chaque capacité <b>Explorer</b> indique une catégorie de lieu spécifique que vous cherchez à piocher. <b>Si un lieu appartenant à cette catégorie est pioché, il est mis en jeu et vous vous déplacez dans ce lieu.</b> Cette exploration est considérée comme « fructueuse »."
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "Si n'importe quel autre lieu est pioché, posez-le à côté du deck Exploration et piochez la carte suivante du deck Exploration. Répétez ce processus jusqu'à ce qu'un lieu de la catégorie indiquée ou une traîtrise soit pioché. Après la fin de cette action, mélangez dans le deck Exploration tous les lieux posés à côté du deck Exploration."
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "Si une carte Traîtrise est piochée, elle est résolue normalement. Si elle est défaussée, placez-la dans la pile de défausse Rencontre comme en temps normal. Il n'y a pas de pile de défausse pour le deck Exploration. Ceci est considéré comme une exploration « infructueuse »."
         },
         {
-          "text": "When a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
+          "text": "Quand un lieu mono-face est mis en jeu depuis le deck Exploration, placez dessus un nombre d'indices égal à sa valeur d'indice."
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "Si la totalité du deck Eploration est révélé sans trouver ni carte Traîtrise ni Lieu spécifié par la capacité <b>Explorer</b>, l'exploration prend tout simplement fin : elle n'est ni réussie, ni ratée. Tous les lieux piochés pendant sa résolution doivent être remélangés dans le deck Exploration, et l'action de l'investigateur se termine."
         }
       ],
-      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River.</i>"
+      "example": "<i>Exemple : l'Acte 1a – « À la Recherche du Portail » possède la capacité suivante : « [action] : <b>Explorer.</b> Piochez la carte du dessus du deck Exploration. Si c'est un lieu connexe, mettez le en jeu et déplacez-vous vers lui. » Ursula Downs se trouve au Campement de l'Expédition et souhaite découvrir un nouveau lieu vers lequel voyager. Elle dépense sa première action pour explorer en piochant la carte du dessus du deck Exploration. La carte piochée est l'Oasis du Désert. Étant donné que ce lieu n'est pas connexe au Campement de l'Expédition, il est posé à côté du deck Exploration et Ursula pioche la carte suivante dans le deck Exploration. Cette fois, elle pioche Tempête de Sable, une carte Traîtrise qu'elle résout normalement et place dans la pile de défausse Rencontre. Son exploration se révèle infructueuse et elle doit mélanger dans le deck Exploration l'Oasis du Désert qu'elle a piochée précédemment. Ursula décide de dépenser une deuxième action pour explorer à nouveau. Cette fois, elle pioche Le Nil, qui est connexe au Campement de l'Expédition. Son exploration se révèle fructueuse. Le Nil est mis en jeu avec un nombre d'indices égal à sa valeur d'indice, et Ursula se déplace immédiatement du Campement de l'Expédition vers Le Nil."
     },
     {
       "id": "story_cards",
       "title": "Cartes Histoire",
       "type": "rule_reminder",
-      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any.\n<i>(Note: When a location or enemy that is in play is flipped over to a story card on its other side, that location or enemy is still considered to be in play while that story card is being resolved.)</i>"
+      "text": "Les cartes Histoire sont un nouveau type de cartes qui apparaissent dans ce scénario. Elles ont pour but d'accroître l'aspect narratif du jeu et apparaissent généralement au dos d'une autre carte Scénario. Quand on vous demande de résoudre une carte Histoire, lisez simplement son texte narratif, puis résolvez son texte de jeu s'il y en a un.\n<i>(Note : quand un lieu ou un ennemi en jeu est retourné pour afficher la carte Histoire située sur son verso, ce lieu ou cet ennemi est toujours considéré en jeu tant que la carte Histoire n'est pas résolue.)</i>"
     },
     {
       "id": "strength_of_the_abyss",
-      "title": "Strength of the Abyss",
+      "title": "Force de l'Abîme",
       "type": "rule_reminder",
-      "text": "During this scenario, resources on the scenario reference card represent the current strength of the abyss. When you are instructed to add strength to the abyss or remove strength from the abyss, adjust the number of resource tokens on the scenario reference card accordingly. The strength of the abyss has no inherent game effect on its own, though certain encounter card effects may grow stronger or change depending on the current strength of the abyss. Beware—as the abyss grows in strength, so too will the forces set against you. Should it grow too powerful, you will surely fail as Guardians of the Abyss."
+      "text": "Lors de ce scénario, les pions situées sur la carte de référence du scénario représentent la force actuelle de l'abîme. Quand on vous demande d'ajouter ou de retirer de la force à l'abîme, ajustez en conséquence le nombre de pions sur la carte de référence du scénario. La force de l'abîme n'a pas d'effet direct sur la partie, mais certains effets de cartes Rencontre peuvent devenir plus puissants ou changer en fonction d'elle. Attention : plus l'abîme se renforce, plus vos adversaires sont redoutables. Si la force de l'abîme devient trop puissante, vous échouerez probablement en tant que Gardiens de l'Abîme."
     },
     {
       "id": "taken_by_the_abyss",
-      "title": "“Taken by the Abyss”",
+      "title": "« Pris(e) par l'Abîme »",
       "type": "rule_reminder",
-      "text": "If an effect states that a defeated investigator or [[Ally]] asset has been <i>“taken by the abyss,”</i> that character has been afflicted by a curse which puts them in a comatose state. When an investigator or [[Ally]] asset is <i>taken by the abyss</i>, first add 1 strength to the abyss. Then, if that card was unique, record in the campaign log that <i>“(card name) was taken by the abyss.”</i> An investigator who has been <i>taken by the abyss</i> is treated as if he or she was killed or driven insane. Additionally, for the remainder of the campaign, players cannot play copies of any unique [[Ally]] asset who has been <i>taken by the abyss.</i>"
+      "text": "Si un effet indique qu'un investigateur ou un soutien [[Allié]] a été « pris par l'abîme », ce personnage a été atteint par une malédiction qui le plonge dans une profonde léthargie. Quand un investigateur ou un soutien [[Allié]] est <i>pris par l'abîme</i>, ajoutez d'abord 1 force à l'abîme. Ensuite, si cette carte était unique, indiquez dans le Carnet de Campagne que <i>« [nom de la carte] a été Pris(e) par l'abîme »</i>. Un investigateur qui a été <i>pris par l'abîme</i> est considéré comme s'il avait été tué ou était devenu dément. De plus, les joueurs ne peuvent plus jouer d'exemplaires d'un soutien [[Allié]] unique qui a été <i>pris par l'abîme</i> pour le reste de la campagne."
     },
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<fancy>Greetings,</fancy>\n<fancy>I'm sorry. I know it has been some time since my last correspondence. I am writing to you now because there is nobody I can trust here in Cairo. I don't even know if this letter will make it to you safely. I can only hope it does, for all our sakes.</fancy>\n<fancy>There's something wrong in this city. It started a few weeks ago. The head curator of the Museum of Egyptian Antiquities fell asleep and simply never awoke. I thought nothing of it at first; just a medical curiosity, a mystery the doctors would solve in due time. But then it happened again. And again. More and more, people all across the city started falling into comas. Now it's happening every night. . . And as I write to you, they are taking my husband John to the hospital.</fancy>\n<fancy>I'm scared. I don't want to fall asleep and never wake up again. But more than that, I'm worried that there are people purposely inflicting this curse on others. And if so, why?</fancy>\n<fancy>Please, I am begging you. I need your help.</fancy>\n<fancy>Yours sincerely,</fancy>\n<fancy>Jessie Burk</fancy>"
+      "text": "<fancy>Mes amis,</fancy>\n<fancy>Je suis désolée. Ma dernière missive remonte déjà à un certain temps, j'en suis consciente. Je vous contacte à présent car il n'y a personne ici, au Caire, à qui je puisse me fier. Je ne sais même pas si cette lettre vous parviendra. Je ne peux que l'espérer, pour notre survie à tous.</fancy>\n<fancy>Quelque chose ne tourne pas rond dans cette ville. Tout a commencé il y à quelques semaines. Le conservateur en chef du Musée des Antiquités Égyptiennes s'est endormi pour ne jamais se réveiller. Au début, cela ne m'a pas particulièrement inquiétée ; j'ai pensé à une simple curiosité médicale, un mystère que les médecins résoudraient avec le temps. Mais cela a recommencé. Encore et encore. De plus en plus de gens, partout en ville, ont commencé à tomber dans le coma. Maintenant, cela arrive toutes les nuits… et à l'heure où je vous écris cette lettre, mon époux, John, est emmené à l'hôpital.</fancy>\n<fancy>J'ai peur. Je ne veux pas m'endormir pour ne jamais me réveiller. Plus que tout, je crains que cette malédiction ne soit propagée à dessein par quelqu'un. Mais pourquoi ?</fancy>\n<fancy>S'il vous plaît. Je vous en supplie. J'ai besoin de votre aide.</fancy>\n<fancy>Cordialement,</fancy>\n<fancy>Jessie Burke</fancy>"
     },
     {
       "id": "gather_encounter_sets",
@@ -41779,7 +41779,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the following locations into play: Streets of Cairo, Outskirts of Cairo, Temple Courtyard, Museum of Egyptian Antiquities, Cairo Bazaar, and Expedition Camp. Each investigator begins play in the Streets of Cairo."
+      "text": "Mettez en jeu les lieux suivants : Rues du Caire, Faubourgs du Caire, Cour du Temple, Musée des Antiquités Égyptiennes, Bazar du Caire et Campement de l'Expédition. Chaque investigateur débute la partie dans les Rues du Caire."
     },
     {
       "id": "location_layout",
@@ -41810,15 +41810,15 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Neith, John & Jessie Burke, Ancient Ankh, both copies of Abyssal Revenant, and each of the 7 single-sided locations (Nile River, Sands of Dashur, Dunes of the Sahara, Untouched Vault, Faceless Sphinx, Desert Oasis, and Sandswept Ruins)."
+      "text": "Mettez de côté les cartes suivantes, hors jeu : Neith, John & Jessie Burke, Ankh Antique, les deux exemplaires du Revenant de l'Abîme et chacun des 7 lieux mono-face (Le Nil, Sables de Dahchour, Dunes du Sahara, Caveau Inviolé, Sphinx Sans Visage, Oasis du Désert et Ruines Ensablées)."
     },
     {
       "id": "create_brotherhood_deck",
-      "text": "Find the 6 double-sided [[Brotherhood]] enemies (Professor Nathaniel Taylor, Dr. Layla El Masri, Dr. Wentworth Moore, Nadia Nimr, Farid, and Nassor). These enemies have story cards on their reverse sides <i>(see “Story Cards” on page 6).</i> For the best experience, do not look at the story cards on their reverse sides. Shuffle these 6 enemies together and place them beneath the scenario reference card."
+      "text": "Prenez les 6 ennemis [[Fraternité]] double-face (Professeur Nathaniel Taylor, Dr Layla El Masri, Dr Wentworth Moore, Nadia Nimr, Farid et Nassor). Ces ennemies possèdent une carte Histoire sur leur verso. Pour une meilleure expérience de jeu, ne regardez pas les cartes Histoire au verso. Mélangez ces 6 ennemis ensemble et placez-les sous la carte de référence du scénario."
     },
     {
       "id": "set_strength_of_the_abyss",
-      "text": "For each investigator in the game, place 1 resource token on the scenario reference card, under “Strength of the Abyss.” For the remainder of this scenario, resources on the scenario reference card represent the current strength of the abyss <i>(see “Strength of the Abyss”).</i>"
+      "text": "Pour chaque investigateur dans la partie, placez 1 pion sur la carte de référence du scénario, sous la mention « Force de l'Abîme ». Pour le reste du scénario, les pions sur la carte de référence du scénario représentent la force actuelle de l'abîme. <i>(voir « Force de l'Abîme »</i>."
     },
     {
       "id": "encounter_deck",
@@ -41841,18 +41841,18 @@
     },
     {
       "id": "record_dreamers_in_abyss",
-      "text": "In your Campaign Log, record <i>dreamers in the abyss (X)</i>. X is the strength of the abyss when the scenario ended.",
+      "text": "Dans votre Carnet de Campagne, inscrivez <i>Rêveurs dans l'abîme (X)</i>. X est la force de l'abîme à la fin du scénario.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Strength of the Abyss:",
+        "text": "Force de l'Abîme :",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "tes_dreamers_in_the_abyss",
             "operation": "set_input",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "Rêveurs dans l'abîme (#X#)"
           }
         ]
       }
@@ -41860,7 +41860,7 @@
     {
       "id": "record_escaped_brotherhood",
       "type": "input",
-      "text": "In your Campaign Log, record <i>Brotherhood Agents Who Escaped:</i> and list the names of each unique [[Cultist]] enemy that was in play or beneath the scenario reference card when the game ended.",
+      "text": "Dans votre Carnet de Campagne, inscrivez <i>Agents de la Fraternité qui se sont échappés :</i> suivit de la liste des noms de chaque ennemi [[Cultiste]] unique qui était en jeu ou sous la carte de référence du scénario lorsque la partie s'est terminée.",
       "input": {
         "type": "card_choice",
         "query": [
@@ -41873,13 +41873,13 @@
         "choices": [
           {
             "id": "escaped",
-            "text": "Escaped",
+            "text": "Échappés",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_escaped_brotherhood",
-                "text": "Brotherhood Agents Who Escaped: #name#"
+                "text": "Agents de la Fraternité qui se sont échappés : #name#"
               }
             ]
           }
@@ -41888,7 +41888,7 @@
     },
     {
       "id": "earn_ancient_ankh",
-      "text": "Any one investigator may choose to add the Ancient Ankh to their deck. It does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter l'Ankh Antique à son deck. Cette carte ne compte pas dans la limite de taille du deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -41899,7 +41899,7 @@
     },
     {
       "id": "earn_john_and_jessie",
-      "text": "Any one investigator may choose to add John & Jessie Burke to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter John & Jessie Burke à son deck. Cette carte ne compte pas dans la limite de taille du deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -41915,7 +41915,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tes_brotherhood_schemes_continue",
-          "text": "the Brotherhood’s schemes continue unabated."
+          "text": "les machinations de la Fraternité se poursuivent sans relâche."
         }
       ]
     },
@@ -41926,19 +41926,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tes_aware_of_xzharahs_plan",
-          "text": "you are aware of Xzharah’s plans."
+          "text": "vous êtes au courant des plans de Xzharah."
         }
       ]
     },
     {
       "id": "curse_of_slumber_lifted",
-      "text": "In your Campaign Log, record that <i>the curse of slumber was lifted</i>. Cross off all <i>“(card name) was taken by the abyss”</i> notes in your Campaign Log.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>la malédiction de torpeur a été levée</i>. Rayez toutes les mentions « [nom de la carte] a été Pris(e) par l'abîme » de votre Carnet de Campagne.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tes_curse_of_slumber_lifted",
-          "text": "the curse of slumber was lifted."
+          "text": "la malédiction de torpeur a été levée"
         },
         {
           "type": "campaign_log",
@@ -41963,15 +41963,15 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "Pris(e) par l'Abîme",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# was taken by the abyss.",
-                "feminine_text": "#name# was taken by the abyss."
+                "masculine_text": "#name#\" a été Pris par l'Abîme",
+                "feminine_text": "#name#\" a été Prise par l'Abîme"
               }
             ]
           }
@@ -41988,15 +41988,15 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "Pris(e) par l'Abîme",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# was taken by the abyss.",
-                "feminine_text": "#name# was taken by the abyss."
+                "masculine_text": "#name#\" a été Pris par l'Abîme",
+                "feminine_text": "#name#\" a été Prise par l'Abîme"
               }
             ]
           }
@@ -42011,14 +42011,14 @@
         "branches": [
           {
             "id": "record_ally_taken_by_the_abyss",
-            "text": "Unique ally was taken by the abyss.",
+            "text": "Allié unique Pris par l'Abîme",
             "steps": [
               "record_ally_taken_by_the_abyss"
             ]
           },
           {
             "id": "record_investigator_taken_by_the_abyss",
-            "text": "Investigator was taken by the abyss.",
+            "text": "Investigateur Pris par l'Abîme",
             "steps": [
               "record_investigator_taken_by_the_abyss"
             ]
@@ -42037,7 +42037,7 @@
         "physical",
         "mental"
       ],
-      "text": "The city of Cairo sleeps and will never wake. In the west, the Brotherhood rejoices, fortheir prophecy is about to be fulfilled. And deep in the landof dreams, their Chosen grips his weapon for the first time.",
+      "text": "La ville du Caire dort et ne se réveillera jamais. À l'ouest, la Fraternité exulte : sa prophétie est sur le point de s'accomplir et, au plus profond du royaume des songes, l'Élu saisit son arme pour la première fois.",
       "steps": [
         "earn_xp",
         "record_dreamers_in_abyss",
@@ -42049,7 +42049,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "Jessie Burke cries with joy as her husband opens his eyes for the first time in weeks. “J… Jessie?” John trembles as he tries and fails to stand. His wife places a hand on his shoulder to steady him. “I thought you would never wake,” she admits, wiping tears from her eyes. “If it weren’t for our friends here, you’d still be under.” John turns to you, his expression dire. “Then you’re the only ones who can stop what is coming,” he says cryptically. “In my dreams, I saw him. The one they called Xzharah.” He swallows hard. “And he is like nothing we’ve ever seen before.”",
+      "text": "Jessie Burke pleure de joie en voyant son époux ouvrir les yeux pour la première fois depuis des semaines. « J… Jessie ? » John tremble et tente en vain de se lever. Sa femme pose une main sur son épaule pour l'apaiser. « Je pensais que tu ne te réveillerais jamais », confesse-t-elle en s'essuyant une larme au coin de l'oeil. « Sans nos amis ici présents, tu serais toujours endormi. » John se tourne vers vous, l'air grave. « Alors vous êtes les seuls à pouvoir arrêter ce qui vient », déclaret-il mystérieusement. « Dans mes rêves, je l'ai vu. Celui qu'ils appellent Xzharah. » II déglutit. « Et il ne ressemble à rien de ce que nous avons pu voir auparavant. »",
       "steps": [
         "curse_of_slumber_lifted",
         "earn_john_and_jessie",
@@ -42062,7 +42062,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "Neith rises to her feet. Most of her power has been drained, but the strength of several dreamers still sustains her. “They have planned for centuries. Their day of reckoning is coming. Nothing can stop that. Not I. Certainly not you.” You notice she speaks as if she were a third party, and you press further. “Do you think I had a choice?” She scoffs. “None can withstand Xzharah. You will see. He will bend your will just as he did mine.” Her shadow grows and warps , misshapen. “It is the Abyss he wants. If you wish to stop him, head west. Xzharah awaits beyond the Gate.” Neith’s shadow consumes her body whole, and she vanishes from sight. Only her amulet remains.",
+      "text": "Neith se relève. La plupart de ses pouvoirs ont été drainés, mais la force de plusieurs rêveurs demeure en elle. « Ils ont tout planifié depuis des siècles. Le jour fatidique arrive. Rien ne peut les arrêter. Ni moi, et encore moins vous. » Vous remarquez qu'elle parle d'elle comme si elle constituait une tierce partie, et vous la questionnez à ce propos. « Pensez-vous que j'avais le choix ? » se moque-t-elle. « Nul ne peut résister à Xzharah. Vous verrez. Il vous pliera à sa volonté comme il l'a fait avec moi. » Son ombre grandit et se déforme. « C'est l'Abîme qu'il désire. Si vous voulez l'arrêter, allez à l'ouest. Xzharah attend derrière le Portail. » L'ombre de Neith consume son corps entier et elle disparaît. Seule son amulette subsiste.",
       "steps": [
         "aware_of_xzharahs_plan",
         "earn_ancient_ankh",
@@ -42076,8 +42076,8 @@
 },
 {
   "id": "the_nights_usurper",
-  "scenario_name": "The Night's Usurper",
-  "full_name": "The Night's Usurper",
+  "scenario_name": "L'Usurpateur de la Nuit",
+  "full_name": "L'Usurpateur de la Nuit",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42210,50 +42210,50 @@
     },
     {
       "id": "explore_rule",
-      "title": "explore",
+      "title": "Explorer",
       "type": "rule_reminder",
-      "text": "Some abilities in <i>Guardians of the Abyss</i> are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that will be constructed during this scenario. This deck consists of several single-sided locations and treachery cards.",
+      "text": "Certaines capacités dans <i>Gardiens de l'Abîme</i> sont précédées de l'indicatif d'action <b>Explorer</b>. De telles capacités servent en général à trouver de nouveaux lieux à mettre en jeu et sont initiées en utilisant une action « Activer ».\nLes capacités <b>Explorer</b> vous demandent de piocher la carte du dessus du deck Exploration, un deck spécifique qui est construit lors de la mise en place de certains scénarios. Ce deck est constitué de plusieurs cartes Lieu mono-face ainsi que de cartes Traîtrise.",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "Chaque capacité <b>Explorer</b> indique une catégorie de lieu spécifique que vous cherchez à piocher. <b>Si un lieu appartenant à cette catégorie est pioché, il est mis en jeu et vous vous déplacez dans ce lieu.</b> Cette exploration est considérée comme « fructueuse »."
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "Si n'importe quel autre lieu est pioché, posez-le à côté du deck Exploration et piochez la carte suivante du deck Exploration. Répétez ce processus jusqu'à ce qu'un lieu de la catégorie indiquée ou une traîtrise soit pioché. Après la fin de cette action, mélangez dans le deck Exploration tous les lieux posés à côté du deck Exploration."
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "Si une carte Traîtrise est piochée, elle est résolue normalement. Si elle est défaussée, placez-la dans la pile de défausse Rencontre comme en temps normal. Il n'y a pas de pile de défausse pour le deck Exploration. Ceci est considéré comme une exploration « infructueuse »."
         },
         {
-          "text": "When a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
+          "text": "Quand un lieu mono-face est mis en jeu depuis le deck Exploration, placez dessus un nombre d'indices égal à sa valeur d'indice."
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "Si la totalité du deck Eploration est révélé sans trouver ni carte Traîtrise ni Lieu spécifié par la capacité <b>Explorer</b>, l'exploration prend tout simplement fin : elle n'est ni réussie, ni ratée. Tous les lieux piochés pendant sa résolution doivent être remélangés dans le deck Exploration, et l'action de l'investigateur se termine."
         }
       ],
-      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River.</i>"
+      "example": "<i>Exemple : l'Acte 1a – « À la Recherche du Portail » possède la capacité suivante : « [action] : <b>Explorer.</b> Piochez la carte du dessus du deck Exploration. Si c'est un lieu connexe, mettez le en jeu et déplacez-vous vers lui. » Ursula Downs se trouve au Campement de l'Expédition et souhaite découvrir un nouveau lieu vers lequel voyager. Elle dépense sa première action pour explorer en piochant la carte du dessus du deck Exploration. La carte piochée est l'Oasis du Désert. Étant donné que ce lieu n'est pas connexe au Campement de l'Expédition, il est posé à côté du deck Exploration et Ursula pioche la carte suivante dans le deck Exploration. Cette fois, elle pioche Tempête de Sable, une carte Traîtrise qu'elle résout normalement et place dans la pile de défausse Rencontre. Son exploration se révèle infructueuse et elle doit mélanger dans le deck Exploration l'Oasis du Désert qu'elle a piochée précédemment. Ursula décide de dépenser une deuxième action pour explorer à nouveau. Cette fois, elle pioche Le Nil, qui est connexe au Campement de l'Expédition. Son exploration se révèle fructueuse. Le Nil est mis en jeu avec un nombre d'indices égal à sa valeur d'indice, et Ursula se déplace immédiatement du Campement de l'Expédition vers Le Nil."
     },
     {
       "id": "strength_of_the_abyss",
-      "title": "Strength of the Abyss",
+      "title": "Force de l'Abîme",
       "type": "rule_reminder",
-      "text": "During this scenario, resources on the scenario reference card represent the current strength of the abyss. When you are instructed to add strength to the abyss or remove strength from the abyss, adjust the number of resource tokens on the scenario reference card accordingly. The strength of the abyss has no inherent game effect on its own, though certain encounter card effects may grow stronger or change depending on the current strength of the abyss. Beware—as the abyss grows in strength, so too will the forces set against you. Should it grow too powerful, you will surely fail as Guardians of the Abyss."
+      "text": "Lors de ce scénario, les pions situées sur la carte de référence du scénario représentent la force actuelle de l'abîme. Quand on vous demande d'ajouter ou de retirer de la force à l'abîme, ajustez en conséquence le nombre de pions sur la carte de référence du scénario. La force de l'abîme n'a pas d'effet direct sur la partie, mais certains effets de cartes Rencontre peuvent devenir plus puissants ou changer en fonction d'elle. Attention : plus l'abîme se renforce, plus vos adversaires sont redoutables. Si la force de l'abîme devient trop puissante, vous échouerez probablement en tant que Gardiens de l'Abîme."
     },
     {
       "id": "taken_by_the_abyss",
-      "title": "“Taken by the Abyss”",
+      "title": "« Pris(e) par l'Abîme »",
       "type": "rule_reminder",
-      "text": "If an effect states that a defeated investigator or [[Ally]] asset has been <i>“taken by the abyss,”</i> that character has been afflicted by a curse which puts them in a comatose state. When an investigator or [[Ally]] asset is <i>taken by the abyss</i>, first add 1 strength to the abyss. Then, if that card was unique, record in the campaign log that <i>“(card name) was taken by the abyss.”</i> An investigator who has been <i>taken by the abyss</i> is treated as if he or she was killed or driven insane. Additionally, for the remainder of the campaign, players cannot play copies of any unique [[Ally]] asset who has been <i>taken by the abyss.</i>"
+      "text": "Si un effet indique qu'un investigateur ou un soutien [[Allié]] a été « pris par l'abîme », ce personnage a été atteint par une malédiction qui le plonge dans une profonde léthargie. Quand un investigateur ou un soutien [[Allié]] est <i>pris par l'abîme</i>, ajoutez d'abord 1 force à l'abîme. Ensuite, si cette carte était unique, indiquez dans le Carnet de Campagne que <i>« [nom de la carte] a été Pris(e) par l'abîme »</i>. Un investigateur qui a été <i>pris par l'abîme</i> est considéré comme s'il avait été tué ou était devenu dément. De plus, les joueurs ne peuvent plus jouer d'exemplaires d'un soutien [[Allié]] unique qui a été <i>pris par l'abîme</i> pour le reste de la campagne."
     },
     {
       "id": "story_cards",
       "title": "Cartes Histoire",
       "type": "rule_reminder",
-      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any.\n<i>(Note: When a location or enemy that is in play is flipped over to a story card on its other side, that location or enemy is still considered to be in play while that story card is being resolved.)</i>"
+      "text": "Les cartes Histoire sont un nouveau type de cartes qui apparaissent dans ce scénario. Elles ont pour but d'accroître l'aspect narratif du jeu et apparaissent généralement au dos d'une autre carte Scénario. Quand on vous demande de résoudre une carte Histoire, lisez simplement son texte narratif, puis résolvez son texte de jeu s'il y en a un.\n<i>(Note : quand un lieu ou un ennemi en jeu est retourné pour afficher la carte Histoire située sur son verso, ce lieu ou cet ennemi est toujours considéré en jeu tant que la carte Histoire n'est pas résolue.)</i>"
     },
     {
       "id": "intro_1",
       "type": "story",
-      "text": "Winlock fiddles with his mustache for a moment while he considers your words. As the leader of the expedition currently scouring through Dashur, the decision of whether or not to let you join the expedition is up to him. “Look, I read through the evidence you gathered. I know about what happened in Cairo. I believe your story. But, still…” He lets out an exasperated sigh. “I just don’t know how I’m going to convince the rest of the expedition crew. Ancient temples is one thing, but a gate to another dimension? This ‘Xzharah’ fellow? None of this can be real, right?”\nYour research and your experience says otherwise. The threat is real. There is a secret organization operating within Egypt—The Brotherhood of the Beast—and if they are not stopped, their newfound “Chosen One” will begin a campaign of destruction that ends with the Earth.\nYou insist one last time to be allowed access to the expedition’s resources. “Alright, alright,” Winlock relents. “I don’t know what it is you’re looking for out there in the desert, but I hope you find it.” You shake your head in reply. You’d rather come up empty‑handed."
+      "text": "Winlock lisse sa moustache pendant un moment tout en réfléchissant à vos paroles. En tant que chef de l'expédition actuellement en train de réaliser des fouilles à Dahchour, la décision de vous laisser ou non rejoindre l'expédition lui revient. « Écoutez, j'ai étudié les preuves que vous avez rassemblées. J'ai entendu parler de ce qui est arrivé au Caire, et je crois à votre histoire. Cependant… » Il pousse un soupire exaspéré. « J'ignore comment convaincre le reste de l'équipe. Des temples antiques, c'est une chose, mais des portails menant à une autre dimension ? Et ce “Xzharah” ? Rien de tout cela ne peut être réel, n'est-ce pas ? »\nVos recherches et votre expérience vous disent le contraire. La menace est concrète. Il existe une cabale secrète opérant en Égypte – la Fraternité de la Bête – et, si personne ne l'arrête, son nouvel « Élu » débutera une campagne de destruction qui s'achèvera sur Terre.\nVous insistez une dernière fois pour accéder aux ressources de l'expédition. « Très bien, très bien », concède Winlock. « Je ne sais pas ce que vous espérez trouver dans le désert, mais je vous souhaite de réussir. » Vous hochez la tête. En vérité, vous préféreriez rentrer les mains vides."
     },
     {
       "id": "gather_encounter_sets",
@@ -42268,15 +42268,15 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Expedition Camp into play. Each investigator begins play in the Expedition Camp."
+      "text": "Mettez en jeu le Campement de l'Expédition. Chaque investigateur débute la partie dans le Campement de l'Expédition."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Khopesh of the Abyss, Summoned Nightgaunt, the single-sided Eldritch Gate location, the double-sided Xzharah enemy, each of the 5 double-sided [[Otherworld]] locations, and both copies of Dreaded Shantak. Xzharah and the [[Otherworld]] locations have story cards on their reverse sides. For the best experience, do not look at the story cards on their reverse sides <i>(see “Story Cards”)</i>."
+      "text": "Mettez de côté les cartes suivantes, hors jeu : Khépesh de l'Abîme, Maigre Bête de la Nuit Invoquée, le lieu mono-face Portail Surnaturel, l'ennemi double-face Xzharah, chacun des 5 lieux double-face [[Autre Monde]] et les 2 exemplaires du Terrifiant Shantak. Xzharah et les lieux double-face [[Autre Monde]] possèdent une carte Histoire sur ler verso. Pour une meilleure expérience de jeu, ne regardez pas les cartes Histoire au verso."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by shuffling together each of the 7 remaining single-sided locations, along with 1 copy each of the following treachery cards: Abyssal Reach, The Black Wind, Terror Under the Pyramids, and Swarm of Locusts."
+      "text": "Constituez le deck Exploration en mélangeant les 7 lieux mono-face Expédition restants avec 1 exemplaire de chacune des cartes Traîtrise suivantes : Expansion de l'Abîme, Le Vent Noir, Terreur sous les Pyramides et Nuée de Sauterelles."
     },
     {
       "id": "check_played_eternal_slumber",
@@ -42306,37 +42306,37 @@
     },
     {
       "id": "create_brotherhood_deck_without_eternal_slumber",
-      "text": "Find the 6 double-sided [[Brotherhood]] enemies. These enemies have story cards on their reverse sides <i>(see “Story Cards”)</i>. Some of these enemies are placed beneath the scenario reference card, as follows. The rest are removed from the game.",
+      "text": "Prenez les 6 ennemis [[Fraternité]] double-face. Ces ennemis possèdent une carte Histoire sur leur verso. Certains de ces ennemis sont placés sous la carte de référence du scénario, comme expliqué ci-dessous. Les autres sont retirés de la partie.",
       "bullets": [
         {
-          "text": "Because you have not played <b>The Eternal Slumber</b>, shuffle these 6 enemies together and place 3 of them beneath the scenario reference card without looking at them."
+          "text": "Comme vous n'avez pas jouez <b>Éternelle Torpeur</b>, mélangez ces 6 ennemis ensemble et placez-en 3 sous la carte de référence du scénario, sans les regarder."
         }
       ]
     },
     {
       "id": "create_brotherhood_deck",
-      "text": "Find the 6 double-sided [[Brotherhood]] enemies. These enemies have story cards on their reverse sides <i>(see “Story Cards”)</i>. Some of these enemies are placed beneath the scenario reference card, as follows. The rest are removed from the game.",
+      "text": "Prenez les 6 ennemis [[Fraternité]] double-face. Ces ennemis possèdent une carte Histoire sur leur verso. Certains de ces ennemis sont placés sous la carte de référence du scénario, comme expliqué ci-dessous. Les autres sont retirés de la partie.",
       "bullets": [
         {
-          "text": "Place each of the enemies listed next to <i>“Brotherhood Agents Who Escaped”</i> in your Campaign Log beneath the scenario reference card."
+          "text": "Placez sous la carte de référence du scénario chaque ennemi inscrit sous la mention « Agents de la Fraternité qui se sont échappés » dans votre Carnet de Campagne."
         }
       ]
     },
     {
       "id": "set_strength_of_the_abyss_without_eternal_slumber",
-      "text": "Place a number of resource tokens on the scenario reference card (under “Strength of the Abyss”), as follows. <i>(see “Strength of the Abyss”)</i>",
+      "text": "Placez un nombre de pions Ressource sur la carte de référence du scénario (sous la mention « Force de l'Abîme ») en suivant les instructions ci-dessous :",
       "bullets": [
         {
-          "text": "Because you have not played The Eternal Slumber, place 1 resource for each investigator in the game."
+          "text": "Comme vous n'avez pas jouez <b>Éternelle Torpeur</b>, placez 1 ressource pour chaque investigateur dans la partie."
         }
       ]
     },
     {
       "id": "set_strength_of_the_abyss",
-      "text": "Place a number of resource tokens on the scenario reference card (under “Strength of the Abyss”), as follows. <i>(see “Strength of the Abyss”)</i>",
+      "text": "Placez un nombre de pions Ressource sur la carte de référence du scénario (sous la mention « Force de l'Abîme ») en suivant les instructions ci-dessous :",
       "bullets": [
         {
-          "text": "Place resources equal to the number listed in parentheses next to <i>“dreamers in the abyss”</i> in your Campaign Log."
+          "text": "Placez un nombre de ressources égal au nombre écrit après la mention « Rêveurs dans l'abîme » de votre Carnet de Campagne."
         }
       ]
     },
@@ -42371,19 +42371,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tnu_day_of_reckoning_is_coming",
-          "text": "the Day of Reckoning is coming."
+          "text": "le Jour Fatidique est arrivé."
         }
       ]
     },
     {
       "id": "abyss_was_saved",
-      "text": "In your Campaign Log, record that <i>the Abyss was saved</i>. Cross off all <i>“(card name) was taken by the abyss”</i> notes in your Campaign Log. ",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>l'Abîme a été sauvé</i>. Rayez toutes les mentions « [nom de la carte] a été Pris(e) par l'abîme » de votre Carnet de Campagne.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tnu_the_abyss_was_saved",
-          "text": "the Abyss was saved."
+          "text": "l'Abîme a été sauvé"
         },
         {
           "type": "campaign_log",
@@ -42406,13 +42406,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tnu_joined_xzharah",
-          "text": "you joined forces with Xzharah."
+          "text": "vous avez rejoint les forces de Xzharah."
         }
       ]
     },
     {
       "id": "earn_summoned_nightgaunt",
-      "text": "Any one investigator may choose to add Summoned Nightgaunt to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter la Maigre Bête de la Nuit Invoquée à son deck. Cette carte ne compte pas dans la limite de taille du deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -42423,7 +42423,7 @@
     },
     {
       "id": "earn_kopesh_of_the_abyss",
-      "text": "Any one investigator may choose to add Khopesh of the Abyss to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter le Khépesh de l'Abîme à son deck. Cette carte ne compte pas dans la limite de taille du deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -42447,15 +42447,15 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "Pris(e) par l'Abîme",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# was taken by the abyss.",
-                "feminine_text": "#name# was taken by the abyss."
+                "masculine_text": "#name#\" a été Prise par l'Abîme",
+                "feminine_text": "#name#\" a été Prise par l'Abîme"
               }
             ]
           }
@@ -42472,15 +42472,15 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "Pris(e) par l'Abîme",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# was taken by the abyss.",
-                "feminine_text": "#name# was taken by the abyss."
+                "masculine_text": "#name#\" a été Prise par l'Abîme",
+                "feminine_text": "#name#\" a été Prise par l'Abîme"
               }
             ]
           }
@@ -42495,14 +42495,14 @@
         "branches": [
           {
             "id": "record_ally_taken_by_the_abyss",
-            "text": "Unique ally was taken by the abyss.",
+            "text": "Allié unique Pris par l'Abîme",
             "steps": [
               "record_ally_taken_by_the_abyss"
             ]
           },
           {
             "id": "record_investigator_taken_by_the_abyss",
-            "text": "Investigator was taken by the abyss.",
+            "text": "Investigateur Pris par l'Abîme",
             "steps": [
               "record_investigator_taken_by_the_abyss"
             ]
@@ -42528,7 +42528,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "“It’s just an arch. Why’re you so worked up, boss?” Winlock crossed his arms. Something about all of this felt wrong. He was sure that this was the place those folks from Arkham were looking for—a delicately patterned archway that led nowhere at all—and yet, Winlock was certain there was something <i>on the other side</i>. “It’s not Egyptian,” he noted, staring at the thing with narrow eyes. “It doesn’t even look…human.”\n“You believed those loons? Look boss, it’s nothing!” one of his men laughed.\n“Is it?” Winlock snapped, eyes wide. “Is it?”",
+      "text": "« Ce n'est qu'une arche. Pourquoi vous mettez-vous dans cet état, chef ? » Winlock croisa les bras. Quelque chose n'allait pas. À n'en pas douter, il s'agissait bien de l'endroit que ces gens d'Arkham cherchaient – une arche subtilement décorée ne menant nulle part – et pourtant Winlock était certain qu'il y avait quelque chose de l’autre côté. « Ce n’est pas égyptien », nota-t-il en fixant l’objet intensément. « Cela n’a même pas l’air… humain. »\n« Vous avez cru ces toqués ? écoutez, chef, ce n'est rien du tout ! » plaisanta l'un de ses hommes.\n« Vraiment ? » répondit Winlock, les yeux écarquillés. « Vraiment ? »",
       "steps": [
         "day_of_reckoning_is_coming",
         "earn_xp",
@@ -42538,7 +42538,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "The essence fades from Xzharah’s body. Swirling clouds of mist surround him and force him to his knees. Creatures of the abyss appear wordlessly at your side, surrounding Xzharah with a quiet, expressionless hate. Xzharah’s sword betrays him and falls from his grip, the blade fracturing as it clatters to the ground. “…The prophecy must be fulfilled…” It is the last of his vile whispers. His physical form vanishes into the realm’s ethereal mist, and all is silent in the Great Abyss.",
+      "text": "L'essence de Xzharah suinte de son corps. Des volutes brumeuses tourbillonnent au-dessus de lui et le forcent à s'agenouiller. Les créatures de l'abîme surgissent en silence tout autour de vous, encerclant Xzharah avec une expression de haine froide. Son épée le trahit en s'échappant de sa main, et la lame se brise lorsqu'elle touche le sol. « … la prophétie doit être accomplie… » est le dernier de ses vils murmures. La forme physique de Xzharah disparaît dans le monde des brumes éthérées, et tout redevient silencieux dans le Grand Abîme.",
       "steps": [
         "abyss_was_saved",
         "earn_summoned_nightgaunt",
@@ -42549,7 +42549,7 @@
     {
       "id": "R3",
       "title": "Conclusion 3",
-      "text": "Xzharah places an ice-cold hand on your shoulder as you kneel before him. “You have proven your loyalty,” he decrees. Creatures of the abyss surround you, heads bowed in reverence to their new master. There are none left to oppose him. “Few of your kind have the wit or the will to see beyond the present. To see our prophecy fulfilled. But you are worthy enough to have your eyes opened. Far worthier than the fools I have trusted in the past.” He bids you to stand, and places the handle of his blood-soaked sword in your hands. “Now arise, Servant of the Beast, and take your place among us.”",
+      "text": "Xzharah pose sa main glacée sur votre épaule tandis que vous vous agenouillez devant lui. « Vous avez prouvé votre loyauté », déclare-t-il. Les créatures de l'abîme vous entourent, et toutes baissent la tête en signe de soumission envers leur nouveau maître. Plus personne ne peut s'opposer à lui. « Peu de gens de votre race ont assez d'intelligence ou de volonté pour voir par-delà le présent. Pour assister à l'accomplissement de notre prophétie. Mais vous êtes digne que je vous ouvre les yeux ; bien plus que les imbéciles en lesquels j'avais placé mes espoirs par le passé. » Il vous invite à vous relever et place la poignée de son épée trempée de sang entre vos mains. « À présent relevez-vous, Serviteur de la Bête, et prenez votre place parmi nous. »",
       "steps": [
         "joined_xzharah",
         "earn_kopesh_of_the_abyss",
@@ -42748,13 +42748,13 @@
     {
       "id": "ask_epic_multiplayer",
       "type": "input",
-      "text": "Select how you would like to play this scenario:",
+      "text": "Choisissez le mode de jeu :",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "epic_multiplayer",
-            "text": "Epic Multiplayer",
+            "text": "Multijoueur Épique",
             "effects": [
               {
                 "type": "campaign_log",
@@ -42766,7 +42766,7 @@
           },
           {
             "id": "single_group",
-            "text": "Single Group"
+            "text": "Groupe Unique"
           }
         ]
       }
@@ -62361,19 +62361,19 @@
       "text": "Lors de cette campagne, certaines capacités sont précédées de l'indicatif d'action <b>Explorer</b>. De telles capacités servent en général à trouver de nouveaux lieux à mettre en jeu et sont initiées en utilisant une action « Activer ».\nLes capacités <b>Explorer</b> vous demandent de piocher la carte du dessus du « deck Exploration », un deck spéci\u001bque qui est construit lors de la mise en place de certains scénarios. Ce deck est constitué de plusieurs cartes Lieu mono-face ainsi que de cartes Traîtrise.",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "Chaque capacité <b>Explorer</b> indique une catégorie de lieu spécifique que vous cherchez à piocher. <b>Si un lieu appartenant à cette catégorie est pioché, il est mis en jeu et vous vous déplacez dans ce lieu.</b> Cette exploration est considérée comme « fructueuse »."
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "Si n'importe quel autre lieu est pioché, posez-le à côté du deck Exploration et piochez la carte suivante du deck Exploration. Répétez ce processus jusqu'à ce qu'un lieu de la catégorie indiquée ou une traîtrise soit pioché. Après la fin de cette action, mélangez dans le deck Exploration tous les lieux posés à côté du deck Exploration."
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "Si une carte Traîtrise est piochée, elle est résolue normalement. Si elle est défaussée, placez-la dans la pile de défausse Rencontre comme en temps normal. Il n'y a pas de pile de défausse pour le deck Exploration. Ceci est considéré comme une exploration « infructueuse »."
         },
         {
           "text": "Quand un lieu mono-face est mis en jeu depuis le deck Exploration, placez dessus un nombre d'indices égal à sa valeur d'indice."
         },
         {
-          "text": "If the entire exploration deck is revealed without finding either a treachery card or a location specified by the explore ability, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+          "text": "Si la totalité du deck Eploration est révélé sans trouver ni carte Traîtrise ni Lieu spécifié par la capacité <b>Explorer</b>, l'exploration prend tout simplement fin : elle n'est ni réussie, ni ratée. Tous les lieux piochés pendant sa résolution doivent être remélangés dans le deck Exploration, et l'action de l'investigateur se termine."
         }
       ],
       "example": "<i>Exemple : l'Intrigue 1a – « Expédition en Pleine Nature » possède la capacité suivante : « [action]: <b>Explorer</b>. Piochez la carte du dessus du deck Exploration. Si c\u001eest un lieu connexe, mettez-le en jeu et déplacez-vous vers lui. » Ursula Downs se trouve au Campement de l'Expédition et souhaite découvrir un nouveau lieu vers lequel voyager. Elle dépense sa première action pour explorer en piochant la carte du dessus du deck Exploration. La carte piochée est la Piste Détournée. Étant donné que ce Lieu n'est pas connexe au Campement de l'Expédition, il est posé à côté du deck Exploration et Ursula pioche la carte suivante dans le deck Exploration. Cette fois, elle pioche Épuisement des Réserves, une carte Traîtrise qu'elle résout normalement et place dans la pile de défausse Rencontre. Son exploration se révèle infructueuse et elle doit mélanger dans le deck Exploration la Piste Détournée qu'elle a piochée précédemment. Ursula décide de dépenser une deuxième action pour explorer à nouveau. Cette fois, elle pioche le Chemin de Ronces qui est connexe au Campement de l'Expédition. Son exploration se révèle fructueuse. Le Chemin de Ronces est mis en jeu avec un nombre d'indices égal à sa valeur d'indice et Ursula se déplace immédiatement du Campement de l'Expédition vers le Chemin de Ronces.</i>"

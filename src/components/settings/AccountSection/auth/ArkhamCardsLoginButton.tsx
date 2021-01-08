@@ -340,15 +340,15 @@ export default function ArkhamCardsLoginButton() {
   const welcomeContent = useMemo(() => {
     return (
       <View style={styles.center}>
-        <View style={[space.paddingSideXs, space.paddingTopXs, space.paddingBottomS]}>
+        <View style={[space.paddingSideS, space.paddingTopXs, space.paddingBottomM]}>
           <Text style={typography.text}>
             { t`Using an Arkham Cards account will allow you to backup and sync your campaign data between devices.\nMore features are in the works.`}
           </Text>
         </View>
-        <View style={[styles.row, space.paddingBottomS]}>
+        <View style={[styles.row, space.paddingSideS, space.paddingBottomM]}>
           <DeckButton thin icon="login" title={t`Sign in to your account`} onPress={loginPressed} />
         </View>
-        <View style={[styles.row, space.paddingBottomS]}>
+        <View style={[styles.row, space.paddingSideS, space.paddingBottomS]}>
           <DeckButton thin icon="plus-thin" title={t`Create a new account`} onPress={createAccountPressed} />
         </View>
       </View>

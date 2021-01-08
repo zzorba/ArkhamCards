@@ -1,6 +1,6 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { BackHandler, InteractionManager, Keyboard } from 'react-native';
-import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent } from 'react-native-navigation';
+import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
 import { Campaign, ChaosBagResults, Deck, SingleCampaign, Slots } from '@actions/types';
@@ -25,6 +25,21 @@ export function useBackButton(handler: () => boolean) {
   }, [handler]);
 }
 
+export function useNavigationConstants(): Partial<NavigationConstants> {
+  const [constants, setConstants] = useState<NavigationConstants>();
+  useEffect(() => {
+    let canceled = false;
+    Navigation.constants().then(r => {
+      if (!canceled) {
+        setConstants(r);
+      }
+    });
+    return () => {
+      canceled = true;
+    };
+  }, []);
+  return constants || {};
+}
 export function useNavigationButtonPressed(
   handler: (event: NavigationButtonPressedEvent) => void,
   componentId: string,

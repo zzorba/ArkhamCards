@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { EventEmitter } from 'events';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+
+import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
 import ArkhamCardsAuthContext from './ArkhamCardsAuthContext';
 
 interface Props {
@@ -15,43 +17,37 @@ interface State {
   user?: FirebaseAuthTypes.User;
   loading: boolean;
 }
-export default class ArkhamCardsAuthProvider extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    if (eventListener === null) {
-      // We only want to listen to this once, hence the singleton pattern.
-      eventListener = new EventEmitter();
-      const callback = (user: FirebaseAuthTypes.User | null) => {
-        currentUserLoading = false;
-        currentUser = user || undefined;
-        eventListener?.emit('onAuthStateChanged', currentUser);
+export default function ArkhamCardsAuthProvider({ children }: Props) {
+  const [state, setState] = useState<State>({ user: currentUser, loading: currentUserLoading });
+  useEffect(() => {
+    if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
+      const authUserChanged = (user?: FirebaseAuthTypes.User) => {
+        setState({
+          user,
+          loading: false,
+        });
       };
-      auth().onAuthStateChanged(callback);
+      if (eventListener === null) {
+        // We only want to listen to this once, hence the singleton pattern.
+        eventListener = new EventEmitter();
+        eventListener.addListener('onAuthStateChanged', authUserChanged);
+        const callback = (user: FirebaseAuthTypes.User | null) => {
+          currentUserLoading = false;
+          currentUser = user || undefined;
+          eventListener?.emit('onAuthStateChanged', currentUser);
+        };
+        auth().onAuthStateChanged(callback);
+      } else {
+        eventListener.addListener('onAuthStateChanged', authUserChanged);
+      }
+      return () => {
+        eventListener?.removeListener('onAuthStateChanged', authUserChanged);
+      };
     }
-    eventListener.addListener('onAuthStateChanged', this._authUserChanged);
-    this.state = {
-      user: currentUser,
-      loading: currentUserLoading,
-    };
-  }
-
-  componentWillUnmount() {
-    eventListener?.removeListener('onAuthStateChanged', this._authUserChanged);
-  }
-
-  _authUserChanged = (user?: FirebaseAuthTypes.User) => {
-    this.setState({
-      user,
-      loading: false,
-    });
-  };
-
-  render() {
-    return (
-      <ArkhamCardsAuthContext.Provider value={{ user: this.state.user, loading: this.state.loading }}>
-        { this.props.children }
-      </ArkhamCardsAuthContext.Provider>
-    );
-  }
+  }, []);
+  return (
+    <ArkhamCardsAuthContext.Provider value={state}>
+      { children }
+    </ArkhamCardsAuthContext.Provider>
+  );
 }
