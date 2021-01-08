@@ -65964,18 +65964,22 @@
         "choices": [
           {
             "id": "cheat",
-            "text": "Should <i>the tide has grown stronger</i> be added to the Campaign Log?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "tide_has_grown_stronger",
-                "text": "the tide has grown stronger."
-              }
-            ]
+            "text": "Did you reach <b>Resolution 1</b> by advancing Agenda 2b?",
+            "steps": ["record_tide_has_grown_stronger"]
           }
         ]
       }
+    },
+    {
+      "id": "record_tide_has_grown_stronger",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tide_has_grown_stronger",
+          "text": "the tide has grown stronger."
+        }
+      ]
     }
   ],
   "resolutions": [

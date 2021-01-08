@@ -72794,18 +72794,24 @@
         "choices": [
           {
             "id": "cheat",
-            "text": "Soll <i>die Gezeiten sind stärker geworden</i> zum Kampagnenlogbuch hinzugefügt werden?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "tide_has_grown_stronger",
-                "text": "die Gezeiten sind stärker geworden."
-              }
+            "text": "Did you reach <b>Resolution 1</b> by advancing Agenda 2b?",
+            "steps": [
+              "record_tide_has_grown_stronger"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "record_tide_has_grown_stronger",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tide_has_grown_stronger",
+          "text": "die Gezeiten sind stärker geworden."
+        }
+      ]
     }
   ],
   "resolutions": [

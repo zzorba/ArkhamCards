@@ -40,10 +40,10 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
       <TabBar
         {...props}
         scrollEnabled={scrollEnabled || (fontScale > 1)}
-        activeColor={colors.L20}
-        inactiveColor={colors.D30}
-        indicatorStyle={{ backgroundColor: colors.L20 }}
-        style={{ backgroundColor: colors.M }}
+        activeColor={colors.D20}
+        inactiveColor={colors.M}
+        indicatorStyle={{ backgroundColor: colors.D20 }}
+        style={{ backgroundColor: colors.L20 }}
         labelStyle={{
           fontFamily: 'Alegreya-Regular',
           fontSize: 14 * fontScale,

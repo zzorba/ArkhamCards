@@ -18,6 +18,8 @@ do
   : 
   if [ $COMMAND = "extract" ]; then 
     npm run i18n-extract-$CODE
+    grep -v "^#:" assets/i18n/$CODE.po > assets/i18n/temp.po
+    mv assets/i18n/temp.po assets/i18n/$CODE.po
   elif [ $COMMAND = "validate" ]; then 
     echo Validating $CODE
     npx ttag validate assets/i18n/$CODE.po
