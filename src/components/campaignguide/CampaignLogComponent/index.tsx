@@ -11,7 +11,7 @@ import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import space, { m, s } from '@styles/space';
+import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import AchievementComponent from './AchievementComponent';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
@@ -27,27 +27,8 @@ interface Props {
   header?: React.ReactNode;
 }
 
-function CampaignLogSection({ title, children, noSpace }: { title: string; children: null | React.ReactNode | React.ReactNode[]; noSpace?: boolean }) {
-  const { colors, typography } = useContext(StyleContext);
-  return (
-    <RoundedFactionBlock
-      noSpace={noSpace}
-      header={
-        <View style={[space.paddingTopS, space.paddingBottomS, space.marginBottomS, styles.header, { backgroundColor: colors.L20 }]}>
-          <Text style={[typography.bigGameFont, typography.center]}>
-            { title }
-          </Text>
-        </View>
-      }
-      faction="neutral"
-    >
-      { children }
-    </RoundedFactionBlock>
-  );
-}
-
 export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, header }: Props) {
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
       case 'count': {
@@ -77,7 +58,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         const section = campaignLog.sections[id];
         return (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
-            <DeckBubbleHeader title={title} />
+            <DeckBubbleHeader title={title} crossedOut={section && section.sectionCrossedOut} />
             { !!section && (
               <View style={[space.paddingTopS, space.paddingSideS]}>
                 <CampaignLogSectionComponent
@@ -174,12 +155,21 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
     }
     return (
       <View style={[space.paddingSideS, space.paddingBottomM]}>
-        <CampaignLogSection title={t`Achievements`}>
+        <RoundedFactionBlock
+          header={
+            <View style={[space.paddingTopS, space.paddingBottomS, space.marginBottomS, styles.header, { backgroundColor: colors.L20 }]}>
+              <Text style={[typography.bigGameFont, typography.center]}>
+                { t`Achievements` }
+              </Text>
+            </View>
+          }
+          faction="neutral"
+        >
           { map(achievements, a => <AchievementComponent achievement={a} />) }
-        </CampaignLogSection>
+        </RoundedFactionBlock>
       </View>
     );
-  }, [campaignGuide]);
+  }, [campaignGuide, colors, typography]);
   return (
     <View style={backgroundStyle}>
       <View style={[space.paddingSideS, space.paddingBottomM]}>
@@ -210,17 +200,5 @@ const styles = StyleSheet.create({
   header: {
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
-  },
-  section: {
-    padding: m,
-    paddingLeft: m + s,
-    paddingRight: m + s,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  topBorder: {
-    borderTopWidth: StyleSheet.hairlineWidth,
-  },
-  crossedOut: {
-    textDecorationLine: 'line-through',
   },
 });
