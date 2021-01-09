@@ -181,7 +181,7 @@ export default function DeckListRow({
       <InvestigatorRow
         investigator={investigator}
         bigImage={!compact}
-        noFactionIcon={!compact}
+        noFactionIcon={!compact || TINY_PHONE}
         eliminated={eliminated}
         yithian={yithian}
         superTitle={compact ? undefined : deck.name}

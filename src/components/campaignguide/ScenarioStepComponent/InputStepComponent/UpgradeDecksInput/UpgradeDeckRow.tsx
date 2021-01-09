@@ -504,6 +504,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
       investigator={investigator}
       yithian={isYithian}
       button={deckButton}
+      noFactionIcon={TINY_PHONE}
     >
       { detailsSection }
     </InvestigatorRow>

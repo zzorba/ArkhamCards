@@ -4,6 +4,7 @@ import InvestigatorRow from '@components/core/InvestigatorRow';
 import { Deck } from '@actions/types';
 import Card from '@data/Card';
 import { useDeck, useInvestigatorCards } from '@components/core/hooks';
+import { TINY_PHONE } from '@styles/sizes';
 
 interface Props {
   id: number;
@@ -33,6 +34,7 @@ export default function InvestigatorDeckRow({ id, deckRemoved }: Props) {
     <InvestigatorRow
       investigator={investigator}
       onRemove={deckRemoved ? onRemove : undefined}
+      noFactionIcon={TINY_PHONE}
     />
   );
 }

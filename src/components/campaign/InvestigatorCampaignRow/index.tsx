@@ -20,6 +20,7 @@ import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { TINY_PHONE } from '@styles/sizes';
 
 interface Props {
   componentId: string;
@@ -247,6 +248,7 @@ export default function InvestigatorCampaignRow({
       description={eliminated ? investigator.traumaString(traumaAndCardData) : undefined}
       button={button}
       eliminated={eliminated}
+      noFactionIcon={TINY_PHONE}
       yithian={!!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN)}
     >
       { eliminated ? undefined : details }

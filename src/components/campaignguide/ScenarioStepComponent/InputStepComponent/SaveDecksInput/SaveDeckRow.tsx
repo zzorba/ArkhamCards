@@ -22,6 +22,7 @@ import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { TINY_PHONE } from '@styles/sizes';
 
 interface ShowDeckButtonProps {
   componentId: string;
@@ -218,6 +219,7 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
       investigator={investigator}
       yithian={isYithian}
       button={deckButton}
+      noFactionIcon={TINY_PHONE}
     >
       { campaignSection }
     </InvestigatorRow>
