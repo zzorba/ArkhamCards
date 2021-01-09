@@ -1,15 +1,11 @@
 import { useCallback, useReducer } from 'react';
-import { FriendUser, useFunction } from './hooks';
-
-interface ErrorResponse {
-  error?: string;
-}
+import { FriendUser, useFunction, EmptyRequest, ErrorResponse } from './hooks';
 
 interface UpdateHandleRequest {
   handle: string;
 }
 export function useUpdateHandle() {
-  const apiCall = useFunction<UpdateHandleRequest, ErrorResponse>('social-updateHandle');
+  const apiCall = useFunction<UpdateHandleRequest>('social-updateHandle');
   return useCallback(async(handle: string) => {
     const data = await apiCall({ handle });
     return data.error || undefined;
@@ -22,7 +18,7 @@ interface UpdateFriendRequest {
 }
 
 export function useUpdateFriendRequest(setError: (error: string) => void) {
-  const apiCall = useFunction<UpdateFriendRequest, ErrorResponse>('social-updateFriendRequest');
+  const apiCall = useFunction<UpdateFriendRequest>('social-updateFriendRequest');
   return useCallback(async(userId: string, action: 'request' | 'revoke') => {
     const data = await apiCall({ userId, action });
     if (data.error) {
@@ -31,8 +27,19 @@ export function useUpdateFriendRequest(setError: (error: string) => void) {
   }, [apiCall, setError]);
 }
 
-
-
+interface CampaignResponse extends ErrorResponse {
+  campaignId: string;
+}
+export function useCreateCampaignRequest() {
+  const apiCall = useFunction<EmptyRequest, CampaignResponse>('campaign-create');
+  return useCallback(async(): Promise<string> => {
+    const data = await apiCall({});
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    return data.campaignId;
+  }, [apiCall]);
+}
 
 interface StartSearchAction {
   type: 'start';

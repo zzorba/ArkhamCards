@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { AppState, Button } from 'react-native';
+import { AppState, Button, StyleSheet, View } from 'react-native';
 import { flatMap, find, forEach, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 import { Action } from 'redux';
@@ -21,6 +21,7 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface ShowDeckButtonProps {
   componentId: string;
@@ -47,7 +48,9 @@ function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonPro
     return null;
   }
   return (
-    <Button
+    <ArkhamButton
+      icon="deck"
+      grow
       title={t`View deck`}
       onPress={onPress}
     />
@@ -180,11 +183,13 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
   const deckButton = useMemo(() => {
     if (deck && choices !== undefined && choices.deckId) {
       return (
-        <ShowDeckButton
-          componentId={componentId}
-          deckId={choices.deckId[0]}
-          investigator={investigator}
-        />
+        <View style={styles.row}>
+          <ShowDeckButton
+            componentId={componentId}
+            deckId={choices.deckId[0]}
+            investigator={investigator}
+          />
+        </View>
       );
     }
     if (!editable) {
@@ -192,11 +197,15 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
     }
     if (!deck) {
       return (
-        <Button title={t`Select deck`} onPress={selectDeck} />
+        <View style={styles.row}>
+          <ArkhamButton icon="deck" grow title={t`Select deck`} onPress={selectDeck} />
+        </View>
       );
     }
     return (
-      <Button title={t`View deck`} onPress={viewDeck} />
+      <View style={styles.row}>
+        <ArkhamButton icon="deck" title={t`View deck`} onPress={viewDeck} />
+      </View>
     );
   }, [componentId, deck, editable, investigator, choices, selectDeck, viewDeck]);
 
@@ -217,3 +226,10 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
 
 SaveDeckRow.choiceId = computeChoiceId;
 export default SaveDeckRow;
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'column',
+    flex: 1,
+  },
+});

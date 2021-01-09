@@ -6,12 +6,10 @@ import { t } from 'ttag';
 
 import LinkedScenarioListComponent from './LinkedScenarioListComponent';
 import CampaignGuideSummary from './CampaignGuideSummary';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { Campaign } from '@actions/types';
 import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import TabView from '@components/core/TabView';
 import { updateCampaign } from '@components/campaign/actions';
 import { useCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
@@ -24,6 +22,8 @@ import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import space from '@styles/space';
 import CampaignGuideFab from './CampaignGuideFab';
+import { useTextDialog } from '@components/deck/dialogs';
+import useTraumaDialog from '@components/campaign/useTraumaDialog';
 
 export interface LinkedCampaignGuideProps {
   campaignId: number;
@@ -31,19 +31,17 @@ export interface LinkedCampaignGuideProps {
   campaignIdB: number;
 }
 
-type Props = LinkedCampaignGuideProps &
-  NavigationProps &
-  InjectedDialogProps &
-  TraumaProps;
+type Props = LinkedCampaignGuideProps & NavigationProps;
 
-function LinkedCampaignGuideView(props: Props) {
-  const { componentId, campaignId, campaignIdA, campaignIdB, showTraumaDialog, showTextEditDialog } = props;
+export default function LinkedCampaignGuideView(props: Props) {
+  const { componentId, campaignId, campaignIdA, campaignIdB } = props;
   const investigators = useInvestigatorCards();
   const styleContext = useContext(StyleContext);
   const { backgroundStyle } = styleContext;
   const dispatch = useDispatch();
   useStopAudioOnUnmount();
 
+  const { showTraumaDialog, traumaDialog } = useTraumaDialog({ hideKilledInsane: true });
   const campaign = useCampaign(campaignId);
   const campaignName = (campaign && campaign.name) || '';
   const campaignDataA = useCampaignGuideReduxData(campaignIdA, investigators);
@@ -60,9 +58,12 @@ function LinkedCampaignGuideView(props: Props) {
     });
   }, [campaignId, dispatch, componentId]);
 
-  const showEditNameDialog = useCallback(() => {
-    showTextEditDialog(t`Name`, campaignName, updateCampaignName);
-  }, [campaignName, showTextEditDialog, updateCampaignName]);
+
+  const { dialog, showDialog: showEditNameDialog } = useTextDialog({
+    title: t`Name`,
+    value: campaignName,
+    onValueChange: updateCampaignName,
+  });
 
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'edit') {
@@ -282,13 +283,13 @@ function LinkedCampaignGuideView(props: Props) {
     return null;
   }
   return (
-    <TabView tabs={tabs} />
+    <View style={styles.wrapper}>
+      <TabView tabs={tabs} />
+      { dialog }
+      { traumaDialog }
+    </View>
   );
 }
-
-export default withDialogs(
-  withTraumaDialog(LinkedCampaignGuideView, { hideKilledInsane: true })
-);
 
 const styles = StyleSheet.create({
   wrapper: {

@@ -25,9 +25,6 @@ export default function DeckSelector({
   componentId,
   deckIds,
   investigatorIds,
-  deckAdded,
-  investigatorAdded,
-  campaignId,
 }: Props) {
   const investigators = useInvestigatorCards();
   const renderDeck = useCallback((deckId: number) => {
@@ -59,11 +56,8 @@ export default function DeckSelector({
       renderDeck={renderDeck}
       renderInvestigator={renderInvestigator}
       componentId={componentId}
-      campaignId={campaignId}
       deckIds={deckIds}
       investigatorIds={investigatorIds}
-      deckAdded={deckAdded}
-      investigatorAdded={investigatorAdded}
     />
   );
 }

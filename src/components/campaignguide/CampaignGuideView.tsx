@@ -5,14 +5,12 @@ import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import CampaignGuideSummary from './CampaignGuideSummary';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { Campaign } from '@actions/types';
 import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
 import ScenarioListComponent from '@components/campaignguide/ScenarioListComponent';
 import TabView from '@components/core/TabView';
 import { updateCampaign } from '@components/campaign/actions';
-import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
 import space from '@styles/space';
@@ -23,21 +21,18 @@ import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import CampaignGuideFab from './CampaignGuideFab';
+import { useTextDialog } from '@components/deck/dialogs';
+import useTraumaDialog from '@components/campaign/useTraumaDialog';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
-type Props = CampaignGuideProps &
-  NavigationProps &
-  InjectedDialogProps &
-  TraumaProps;
+type Props = CampaignGuideProps & NavigationProps;
 
 function CampaignGuideView(props: Props) {
   const { backgroundStyle } = useContext(StyleContext);
-  const { campaignId, componentId, showTextEditDialog, showTraumaDialog } = props;
+  const { campaignId, componentId } = props;
   const campaignData = useContext(CampaignGuideContext);
   const dispatch = useDispatch();
-  useStopAudioOnUnmount();
-
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
     Navigation.mergeOptions(componentId, {
@@ -48,11 +43,15 @@ function CampaignGuideView(props: Props) {
       },
     });
   }, [campaignId, dispatch, componentId]);
+  const { showTraumaDialog, traumaDialog } = useTraumaDialog({ hideKilledInsane: true });
 
-  const showEditNameDialog = useCallback(() => {
-    showTextEditDialog(t`Name`, campaignData.campaignName, updateCampaignName);
-  }, [updateCampaignName, campaignData.campaignName, showTextEditDialog]);
+  const { dialog, showDialog: showEditNameDialog } = useTextDialog({
+    title: t`Name`,
+    value: campaignData.campaignName,
+    onValueChange: updateCampaignName,
+  });
 
+  useStopAudioOnUnmount();
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'edit') {
       showEditNameDialog();
@@ -171,20 +170,17 @@ function CampaignGuideView(props: Props) {
   ], [decksTab, scenariosTab, logTab]);
 
   return (
-    <TabView
-      tabs={tabs}
-    />
+    <View style={styles.wrapper}>
+      <TabView
+        tabs={tabs}
+      />
+      { dialog }
+      { traumaDialog }
+    </View>
   );
 }
 
-export default withCampaignGuideContext<CampaignGuideProps & NavigationProps>(
-  withDialogs<CampaignGuideProps & NavigationProps>(
-    withTraumaDialog<CampaignGuideProps & InjectedDialogProps & NavigationProps>(
-      CampaignGuideView,
-      { hideKilledInsane: true }
-    )
-  )
-);
+export default withCampaignGuideContext<CampaignGuideProps & NavigationProps>(CampaignGuideView);
 
 const styles = StyleSheet.create({
   wrapper: {

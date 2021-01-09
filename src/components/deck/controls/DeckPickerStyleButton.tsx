@@ -10,7 +10,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 interface Props {
   icon: string;
   title: string;
-  valueLabel: string;
+  valueLabel: string | React.ReactNode;
   valueLabelDescription?: string;
   first?: boolean;
   last?: boolean;
@@ -78,9 +78,11 @@ export default function DeckPickerStyleButton({
               { title }
             </Text>
             <View style={styles.row}>
-              <Text style={[typography.large]}>
-                { valueLabel }
-              </Text>
+              { typeof valueLabel === 'string' ? (
+                <Text style={[typography.large]}>
+                  { valueLabel }
+                </Text>
+              ) : valueLabel }
               { !!valueLabelDescription && (
                 <Text style={[typography.small, { color: colors.M, lineHeight: 24 * fontScale }]}>
                   { noLabelDivider ? `  ${valueLabelDescription}` : ` · ${valueLabelDescription}` }

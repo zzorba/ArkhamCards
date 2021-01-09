@@ -4,6 +4,7 @@ import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 const URLS: { [lang: string]: string | undefined } = {
   de: 'https://asmodee.de/Arkham-Horror-LCG-Print_Play',
@@ -20,7 +21,8 @@ export default function DownloadParallelCardsButton() {
     );
   }, [lang]);
   return (
-    <BasicButton
+    <ArkhamButton
+      icon="world"
       onPress={onPress}
       title={t`Download printable cards`}
     />

@@ -6,7 +6,7 @@ import AppIcon from './AppIcon';
 import ArkhamIcon from './ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
 
-export type ArkhamButtonIconType = 'check' | 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm';
+export type ArkhamButtonIconType = 'world' | 'check' | 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm';
 interface Props {
   icon: ArkhamButtonIconType;
   color: 'light' | 'dark';
@@ -16,6 +16,8 @@ export default function ArkhamButtonIcon({ icon, color }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
   const iconColor = color === 'light' ? colors.L20 : colors.D20;
   switch (icon) {
+    case 'world':
+      return <View style={styles.worldIcon}><AppIcon name="world" size={24 * fontScale} color={iconColor} /></View>;
     case 'check':
       return <AppIcon name="check-thin" size={22 * fontScale} color={iconColor} />;
     case 'card':
@@ -53,6 +55,9 @@ export default function ArkhamButtonIcon({ icon, color }: Props) {
 
 
 const styles = StyleSheet.create({
+  worldIcon: {
+    marginTop: -4,
+  },
   deckIcon: {
     marginTop: -4,
   },

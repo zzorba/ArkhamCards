@@ -5,13 +5,14 @@ import { useDispatch } from 'react-redux';
 import ActionButton from 'react-native-action-button';
 import { t } from 'ttag';
 
-import { deleteCampaign } from '@components/campaign/actions';
+import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useNavigationConstants } from '@components/core/hooks';
+import { useFlag } from '@components/core/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import { useCreateCampaignRequest } from '@data/firebase/api';
 
 
 interface Props {
@@ -48,10 +49,15 @@ export default function CampaignGuideFab({
       ],
     );
   }, [campaignName, actuallyDeleteCampaign]);
-  const { bottomTabsHeight = 0 } = useNavigationConstants();
-  const confirmUploadCampaign = useCallback(() => {
-
-  }, []);
+  const createCampaign = useCreateCampaignRequest();
+  const confirmUploadCampaign = useCallback(async() => {
+    try {
+      const serverId = await createCampaign();
+      dispatch(updateCampaign(campaignId, { serverId }));
+    } catch (e) {
+      // TODO(error handling)
+    }
+  }, [dispatch, campaignId, createCampaign]);
 
   const [fabOpen, toggleFabOpen, setFabOpen] = useFlag(false);
   const fabIcon = useCallback(() => {
@@ -85,7 +91,7 @@ export default function CampaignGuideFab({
       renderIcon={fabIcon}
       onPress={removeMode ? toggleRemoveInvestigator : toggleFabOpen}
       offsetX={s + xs}
-      offsetY={bottomTabsHeight + s + xs}
+      offsetY={s + xs}
       shadowStyle={shadow.large}
       fixNativeFeedbackRadius
     >

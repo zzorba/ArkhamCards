@@ -57,11 +57,18 @@ interface DetailProps {
 function DetailLine({ text, icon, last }: { text: string; icon: React.ReactNode; last?: boolean }) {
   const { borderStyle, typography } = useContext(StyleContext);
   return (
-    <View style={[styles.detailLine, space.paddingSideXs, space.paddingBottomS, space.marginBottomS, borderStyle, !last ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined]}>
+    <View style={[
+      styles.detailLine,
+      space.paddingSideXs,
+      space.paddingBottomS,
+      space.marginBottomS,
+      borderStyle,
+      !last ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
+    ]}>
       <View style={space.marginRightS}>
         { icon }
       </View>
-      <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
+      <Text style={[typography.smallLabel, typography.italic, typography.dark, styles.flex]}>
         { text }
       </Text>
     </View>
@@ -117,7 +124,7 @@ function DeckListRowDetails({
     );
   }
   return (
-    <View>
+    <View style={styles.column}>
       <DetailLine
         icon={<ArkhamButtonIcon icon="campaign" color="dark" />}
         text={campaignLines.join('\n')}
@@ -324,5 +331,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
+  },
+  flex: {
+    flex: 1,
   },
 });

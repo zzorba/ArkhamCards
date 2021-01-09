@@ -13,9 +13,10 @@ interface Props {
   disabled?: boolean;
   settingsStyle?: boolean;
   noDisableText?: boolean;
+  last?: boolean;
 }
 
-export default function SettingsSwitch({ title, description, noDisableText, onValueChange, value, disabled, settingsStyle }: Props) {
+export default function SettingsSwitch({ title, description, noDisableText, onValueChange, value, disabled, settingsStyle, last }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const titleStyle = settingsStyle ? typography.text : typography.mediumGameFont;
   return (
@@ -23,7 +24,9 @@ export default function SettingsSwitch({ title, description, noDisableText, onVa
       title={title}
       titleStyle={titleStyle}
       containerStyle={{
-        ...styles.switch,
+        paddingTop: s,
+        paddingBottom: s,
+        borderBottomWidth: last ? 0 : StyleSheet.hairlineWidth,
         borderColor: colors.divider,
       }}
       descriptionStyle={typography.small}
@@ -36,10 +39,3 @@ export default function SettingsSwitch({ title, description, noDisableText, onVa
   );
 }
 
-const styles = StyleSheet.create({
-  switch: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    paddingTop: s,
-    paddingBottom: s,
-  },
-});

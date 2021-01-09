@@ -11,7 +11,7 @@ import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import space, { s } from '@styles/space';
+import space, { s, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import AchievementComponent from './AchievementComponent';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
@@ -136,7 +136,8 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
             icon="elder_sign"
             title={t`Draw chaos tokens`}
             onPress={chaosBagSimulatorPressed}
-            bottomMargin={s}
+            topMargin={s}
+            bottomMargin={m}
           />
           <DeckButton
             thin

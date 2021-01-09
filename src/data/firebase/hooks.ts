@@ -8,7 +8,13 @@ import { ArkhamCardsProfile, FriendStatus } from './types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
-export function useFunction<RequestT, ResponseT>(functionName: string) {
+export interface ErrorResponse {
+  error?: string;
+}
+
+export interface EmptyRequest {}
+
+export function useFunction<RequestT=EmptyRequest, ResponseT=ErrorResponse>(functionName: string) {
   const { lang } = useContext(LanguageContext);
   return useCallback(async(request: RequestT): Promise<ResponseT> => {
     const response = await functions().httpsCallable(functionName)({ ...request, locale: lang });

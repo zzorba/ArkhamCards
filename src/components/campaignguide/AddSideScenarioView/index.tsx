@@ -21,6 +21,7 @@ import DownloadParallelCardsButton from './DownloadParallelCardsButton';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import StyleContext from '@styles/StyleContext';
 import { useCounter } from '@components/core/hooks';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
@@ -126,7 +127,8 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
             onPress={onPress}
           />
         )) }
-        <BasicButton
+        <ArkhamButton
+          icon="expand"
           title={t`Custom scenario`}
           onPress={customScenarioPressed}
         />

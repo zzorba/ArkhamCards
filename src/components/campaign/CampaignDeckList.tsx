@@ -14,11 +14,8 @@ import Card from '@data/Card';
 
 export interface CampaignDeckListProps {
   componentId: string;
-  campaignId: number;
   deckIds: number[];
   investigatorIds: string[];
-  deckAdded?: (deck: Deck) => void;
-  investigatorAdded?: (investigator: Card) => void;
 }
 
 interface Props extends CampaignDeckListProps {
@@ -27,41 +24,11 @@ interface Props extends CampaignDeckListProps {
 }
 
 export default function CampaignDeckList({
-  campaignId,
   deckIds,
   investigatorIds,
-  deckAdded,
-  investigatorAdded,
   renderDeck,
   renderInvestigator,
 }: Props) {
-  const showDeckSelector = useCallback(() => {
-    if (deckAdded) {
-      const passProps: MyDecksSelectorProps = {
-        campaignId: campaignId,
-        onDeckSelect: deckAdded,
-        onInvestigatorSelect: investigatorAdded,
-        selectedDeckIds: deckIds,
-        selectedInvestigatorIds: investigatorIds,
-      };
-      Navigation.showModal<MyDecksSelectorProps>({
-        stack: {
-          children: [{
-            component: {
-              name: 'Dialog.DeckSelector',
-              passProps,
-              options: {
-                modalPresentationStyle: Platform.OS === 'ios' ?
-                  OptionsModalPresentationStyle.fullScreen :
-                  OptionsModalPresentationStyle.overCurrentContext,
-              },
-            },
-          }],
-        },
-      });
-    }
-  }, [deckIds, investigatorIds, deckAdded, investigatorAdded, campaignId]);
-
   return (
     <View>
       { map(deckIds, deckId => (
@@ -70,12 +37,6 @@ export default function CampaignDeckList({
       { !!renderInvestigator && map(investigatorIds, investigator => (
         renderInvestigator(investigator)
       )) }
-      { !!deckAdded && (
-        <BasicButton
-          title={investigatorAdded ? t`Add Investigator` : t`Add Investigator Deck`}
-          onPress={showDeckSelector}
-        />
-      ) }
     </View>
   );
 }

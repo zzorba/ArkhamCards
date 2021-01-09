@@ -59,7 +59,7 @@ export default function PickerStyleButton({
             <MaterialIcons
               name="delete"
               size={26}
-              color={pickerColors ? pickerColors.textColor : colors.darkText}
+              color={pickerColors ? pickerColors.textColor : colors.D10}
             />
           </View>
         );

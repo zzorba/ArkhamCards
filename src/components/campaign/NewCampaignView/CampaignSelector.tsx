@@ -3,8 +3,8 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { CampaignSelection, SelectCampagaignProps } from '@components/campaign/SelectCampaignDialog';
-import PickerStyleButton from '@components/core/PickerStyleButton';
 import { CUSTOM, CORE } from '@actions/types';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 
 interface Props {
   componentId: string;
@@ -79,12 +79,13 @@ export default function CampaignSelector({ componentId, campaignChanged }: Props
   } = campaignState;
 
   return (
-    <PickerStyleButton
+    <DeckPickerStyleButton
+      first
+      editable
       title={selection.type === 'campaign' ? t`Campaign` : t`Standalone`}
-      value={selectedCampaign}
-      id="campaign"
+      valueLabel={selectedCampaign}
       onPress={campaignPressed}
-      widget="nav"
+      icon="book"
     />
   );
 }
