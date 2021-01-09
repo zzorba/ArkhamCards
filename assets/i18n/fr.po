@@ -3788,7 +3788,7 @@ msgstr "Amélioration"
 msgid "Editing"
 msgstr "Édition"
 
-msgid "Uplodaing deck"
+msgid "Uploading deck"
 msgstr "Chargement du deck en cours"
 
 msgid ""

@@ -23,7 +23,7 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
         style={[styles.header, { backgroundColor: colors.faction[faction].background }]}
         rippleColor={colors.faction[faction].text}
       >
-        <Text style={[typography.header, typography.regular, typography.white]}>
+        <Text style={[typography.header, typography.white]}>
           { title }
         </Text>
         <View style={[styles.icon, { height: 40, width: 40 }]}>
@@ -34,7 +34,7 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
   }
   return (
     <View style={[styles.header, { backgroundColor: colors.faction[faction].background }]}>
-      <Text style={[typography.header, typography.regular, typography.white]}>
+      <Text style={[typography.header, typography.white]}>
         { title }
       </Text>
     </View>

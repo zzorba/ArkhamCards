@@ -52,11 +52,11 @@ export default function ArkhamDbLoginButton({ last }: Props) {
   }, [doLogout, loginPressed]);
   const [status, control] = useMemo(() => {
     if (isConnected && error) {
-      return [t`Authorization issues`, <DeckButton color="red" key="reauth-control" onPress={reauthPressed} title={t`Reconnect`} />];
+      return [t`Authorization issues`, <DeckButton thin color="red" key="reauth-control" onPress={reauthPressed} title={t`Reconnect`} />];
     }
     return [
       signedIn ? t`Logged in` : t`Synchronize decks`,
-      <DeckButton key="auth-control" onPress={signedIn ? logOutPressed : loginPressed} title={signedIn ? t`Log out` : t`Log in`} />,
+      <DeckButton key="auth-control" thin onPress={signedIn ? logOutPressed : loginPressed} title={signedIn ? t`Log out` : t`Log in`} />,
     ];
   }, [error, isConnected, signedIn, reauthPressed, loginPressed, logOutPressed]);
   return (

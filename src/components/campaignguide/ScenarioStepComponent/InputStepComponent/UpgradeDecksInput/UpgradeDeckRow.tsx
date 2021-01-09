@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { AppState, Button, Text, View, StyleSheet } from 'react-native';
+import { AppState, Text, View, StyleSheet } from 'react-native';
 import { flatMap, forEach, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
+import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -24,10 +25,10 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useEffectUpdate, useFlag, useDeck } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
-import { ThunkDispatch } from 'redux-thunk';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { TINY_PHONE } from '@styles/sizes';
 
 
 interface ShowDeckButtonProps {
@@ -426,13 +427,13 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     if (!deck) {
       return (
         <View style={styles.row}>
-          <ArkhamButton grow icon="deck" title={t`Select deck`} onPress={selectDeck} />
+          <ArkhamButton variant="outline" grow icon="deck" title={t`Select deck`} onPress={selectDeck} />
         </View>
       );
     }
     return (
       <View style={styles.row}>
-        <ArkhamButton grow icon="deck" title={t`View deck`} onPress={viewDeck} />
+        <ArkhamButton variant="outline" grow icon="deck" title={t`View deck`} onPress={viewDeck} />
       </View>
     );
   }, [componentId, deck, editable, investigator, choices, selectDeck, viewDeck]);

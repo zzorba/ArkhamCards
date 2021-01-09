@@ -14,7 +14,7 @@ import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
 import Card from '@data/Card';
 import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize } from './constants';
-import { isBig, s, xs } from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ControlComponent, ControlType } from './ControlComponent';
 import { usePressCallback } from '@components/core/hooks';
@@ -29,6 +29,7 @@ interface Props {
   control?: ControlType;
   noBorder?: boolean;
   faded?: boolean;
+  noSidePadding?: boolean;
 }
 
 function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
@@ -36,7 +37,7 @@ function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
   if (count === 0) {
     return null;
   }
-  const SKILL_ICON_SIZE = (isBig ? 26 : 16) * fontScale;
+  const SKILL_ICON_SIZE = 16 * fontScale;
   return (
     <>
       { map(range(0, count), key => (
@@ -55,7 +56,7 @@ function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
 function FactionIcon({ card }: { card: Card }) {
   const { fontScale, colors } = useContext(StyleContext);
   const size = iconSize(fontScale);
-  const SMALL_ICON_SIZE = (isBig ? 38 : 26) * fontScale;
+  const SMALL_ICON_SIZE = 26 * fontScale;
 
   if (!card.encounter_code && card.linked_card) {
     return <FactionIcon card={card.linked_card} />;
@@ -140,6 +141,7 @@ function CardSearchResult(props: Props) {
     invalid,
     noBorder,
     faded,
+    noSidePadding,
   } = props;
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const handleCardPressFunction = useCallback(() => {
@@ -156,7 +158,7 @@ function CardSearchResult(props: Props) {
     if (!card.faction2_code) {
       return null;
     }
-    const SKILL_ICON_SIZE = (isBig ? 26 : 16) * fontScale;
+    const SKILL_ICON_SIZE = 16 * fontScale;
     return (
       <View style={styles.dualFactionIcons}>
         <View style={styles.skillIcon}>
@@ -197,7 +199,7 @@ function CardSearchResult(props: Props) {
     if (!card.taboo_set_id || card.taboo_set_id === 0 || card.taboo_placeholder) {
       return null;
     }
-    const TABOO_ICON_SIZE = (isBig ? 18 : 14) * fontScale;
+    const TABOO_ICON_SIZE = 14 * fontScale;
     return (
       <View style={styles.tabooBlock}>
         { !!card.extra_xp && (
@@ -218,9 +220,9 @@ function CardSearchResult(props: Props) {
     ).text;
     return (
       <View style={styles.cardNameBlock}>
-        <View style={styles.row}>
+        <View style={[styles.row, space.paddingTopXs, { backgroundColor: 'transparent' }]}>
           <Text style={[
-            typography.large,
+            typography.cardName,
             { color },
             invalid ? { textDecorationLine: 'line-through' } : {},
           ]} numberOfLines={1} ellipsizeMode="clip">
@@ -233,17 +235,19 @@ function CardSearchResult(props: Props) {
             </View>
           ) }
         </View>
-        <View style={[styles.row, { backgroundColor: 'transparent' }]}>
-          { skillIcons }
-          { !!card.renderSubname && (
-            <View style={styles.row}>
-              <Text style={[typography.small, typography.italic, typography.light, styles.subname]} numberOfLines={1} ellipsizeMode="clip">
-                { card.renderSubname }
-              </Text>
-            </View>
-          ) }
-          { dualFactionIcons }
-        </View>
+        { true && (
+          <View style={[styles.row, { backgroundColor: 'transparent' }]}>
+            { skillIcons }
+            { !!card.renderSubname && (
+              <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
+                <Text style={typography.cardTraits} numberOfLines={1} ellipsizeMode="clip">
+                  { card.renderSubname }
+                </Text>
+              </View>
+            ) }
+            { dualFactionIcons }
+          </View>
+        ) }
       </View>
     );
   }, [colors, fontScale, typography, card, invalid, tabooBlock, skillIcons, dualFactionIcons]);
@@ -258,7 +262,7 @@ function CardSearchResult(props: Props) {
           height: rowHeight(fontScale),
           backgroundColor: backgroundColor || colors.background,
         },
-        !control ? styles.rowPadding : {},
+        (!control && !noSidePadding) ? styles.rowPadding : {},
       ]}>
         <View style={styles.cardNameBlock}>
           <View style={styles.row}>
@@ -280,7 +284,7 @@ function CardSearchResult(props: Props) {
           height: rowHeight(fontScale),
           backgroundColor: backgroundColor || colors.background,
         },
-        !control ? styles.rowPadding : {},
+        (!control && !noSidePadding) ? styles.rowPadding : {},
       ]}>
         <Text>No Text</Text>;
       </View>
@@ -290,13 +294,13 @@ function CardSearchResult(props: Props) {
   return (
     <View style={[
       styles.rowContainer,
-      noBorder ? {} : styles.rowBorder,
+      !noBorder ? styles.rowBorder : undefined,
       borderStyle,
       {
         height: rowHeight(fontScale),
         backgroundColor: backgroundColor || colors.background,
       },
-      !control ? styles.rowPadding : {},
+      (!control && !noSidePadding) ? styles.rowPadding : undefined,
     ]}>
       <TouchableOpacity
         onPress={handleCardPress}
@@ -309,6 +313,7 @@ function CardSearchResult(props: Props) {
       >
         <View opacity={faded ? 0.5 : 1.0} style={[
           styles.cardTextRow,
+          !noSidePadding ? space.paddingLeftS : undefined,
         ]}>
           <CardIcon card={card} />
           { cardName }
@@ -362,8 +367,7 @@ const styles = StyleSheet.create({
     marginRight: xs / 2,
   },
   subname: {
-    marginTop: xs,
-    marginRight: s,
+    backgroundColor: 'transparent',
   },
   factionIcon: {
     flexDirection: 'column',
@@ -374,7 +378,7 @@ const styles = StyleSheet.create({
   cardTextRow: {
     flex: 2,
     flexDirection: 'row',
-    paddingLeft: s,
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   tabooBlock: {

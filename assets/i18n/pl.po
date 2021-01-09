@@ -3493,7 +3493,7 @@ msgstr ""
 msgid "Editing"
 msgstr ""
 
-msgid "Uplodaing deck"
+msgid "Uploading deck"
 msgstr ""
 
 msgid ""

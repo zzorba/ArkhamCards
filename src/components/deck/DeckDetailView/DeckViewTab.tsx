@@ -539,6 +539,7 @@ export default function DeckViewTab(props: Props) {
         control={controlForCard(item, card, count)}
         faded={count === 0}
         noBorder={section.last && index === (section.cards.length - 1)}
+        noSidePadding
       />
     );
   }, [showSwipeCard, deckEditsRef, controlForCard, cards]);
@@ -576,7 +577,6 @@ export default function DeckViewTab(props: Props) {
         first
         last={last}
         icon="xp"
-        noLabelDivider
       />
     );
   }, [xpLabel, xpDetailLabel, showXpAdjustmentDialog, editable]);

@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import DialogComponent from '@lib/react-native-dialog';
 
 import EditTraumaDialogContent from './EditTraumaDialogContent';
 import Dialog from '@components/core/NewDialog';

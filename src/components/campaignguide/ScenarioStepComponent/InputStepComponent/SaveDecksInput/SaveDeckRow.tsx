@@ -50,6 +50,7 @@ function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonPro
   }
   return (
     <ArkhamButton
+      variant="outline"
       icon="deck"
       grow
       title={t`View deck`}
@@ -199,13 +200,13 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
     if (!deck) {
       return (
         <View style={styles.row}>
-          <ArkhamButton icon="deck" grow title={t`Select deck`} onPress={selectDeck} />
+          <ArkhamButton variant="outline" icon="deck" grow title={t`Select deck`} onPress={selectDeck} />
         </View>
       );
     }
     return (
       <View style={styles.row}>
-        <ArkhamButton icon="deck" title={t`View deck`} onPress={viewDeck} />
+        <ArkhamButton variant="outline" icon="deck" title={t`View deck`} onPress={viewDeck} />
       </View>
     );
   }, [componentId, deck, editable, investigator, choices, selectDeck, viewDeck]);

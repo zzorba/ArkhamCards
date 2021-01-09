@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     marginTop: -4,
   },
   deckIcon: {
-    marginTop: -4,
+    marginTop: -7,
   },
   cardIcon: {
     marginTop: -2,

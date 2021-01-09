@@ -77,14 +77,14 @@ export default function DeckPickerStyleButton({
             <Text style={[typography.smallLabel, typography.dark, typography.italic]}>
               { title }
             </Text>
-            <View style={styles.row}>
+            <View style={[styles.row, space.paddingTopXs]}>
               { typeof valueLabel === 'string' ? (
                 <Text style={[typography.large]}>
                   { valueLabel }
                 </Text>
               ) : valueLabel }
               { !!valueLabelDescription && (
-                <Text style={[typography.small, { color: colors.M, lineHeight: 24 * fontScale }]}>
+                <Text style={[typography.small, { color: colors.M, lineHeight: 16 * fontScale }]}>
                   { noLabelDivider ? `  ${valueLabelDescription}` : ` · ${valueLabelDescription}` }
                 </Text>
               ) }

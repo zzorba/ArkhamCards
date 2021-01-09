@@ -3792,7 +3792,7 @@ msgstr "Улучшение"
 msgid "Editing"
 msgstr "Редактирование"
 
-msgid "Uplodaing deck"
+msgid "Uploading deck"
 msgstr "Загрузка колоды"
 
 msgid ""

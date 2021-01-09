@@ -337,7 +337,7 @@ export function useUploadLocalDeckDialog(
   uploadLocalDeckDialog: React.ReactNode;
   uploadLocalDeck: () => void;
 } {
-  const { saving, setSaving, savingDialog } = useBasicDialog(t`Uplodaing deck`);
+  const { saving, setSaving, savingDialog } = useBasicDialog(t`Uploading deck`);
   const deckDispatch: DeckDispatch = useDispatch();
   const doUploadLocalDeck = useMemo(() => throttle((isRetry?: boolean) => {
     if (!parsedDeck || !deck) {

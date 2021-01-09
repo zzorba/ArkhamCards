@@ -217,6 +217,7 @@ export default function InvestigatorCampaignRow({
       return (
         <View style={styles.column}>
           <ArkhamButton
+            variant="outline"
             title={t`View deck`}
             icon="deck"
             onPress={viewDeck}
@@ -236,6 +237,7 @@ export default function InvestigatorCampaignRow({
           grow
           title={t`Select deck`}
           onPress={selectDeck}
+          variant="outline"
         />
         { traumaButton }
       </View>
