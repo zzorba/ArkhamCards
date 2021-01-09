@@ -3880,10 +3880,10 @@ msgstr ""
 msgid "Search for ${ searchTerm }"
 msgstr ""
 
-msgid "Friend Requeusts"
+msgid "Friend Requests"
 msgstr ""
 
-msgid "Pending Friend Requeusts"
+msgid "Pending Friend Requests"
 msgstr ""
 
 msgid "Search for friends to add"

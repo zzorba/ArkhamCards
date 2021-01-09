@@ -233,7 +233,7 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
       return !normalizedSearch || !f.handle || f.handle.toLocaleLowerCase(lang).indexOf(normalizedSearch) !== -1;
     };
     if (find(receivedRequests, matchesSearch) && isSelf) {
-      feed.push({ type: 'header', header: t`Friend Requeusts` });
+      feed.push({ type: 'header', header: t`Friend Requests` });
       forEach(receivedRequests, f => {
         if (matchesSearch(f)) {
           feed.push({ type: 'user', user: f });
@@ -241,7 +241,7 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
       });
     }
     if (find(pendingRequests, matchesSearch) && isSelf) {
-      feed.push({ type: 'header', header: t`Pending Friend Requeusts` });
+      feed.push({ type: 'header', header: t`Pending Friend Requests` });
       forEach(pendingRequests, f => {
         if (matchesSearch(f)) {
           feed.push({ type: 'user', user: f });

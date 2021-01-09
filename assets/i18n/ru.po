@@ -3905,10 +3905,10 @@ msgstr "Друзья"
 msgid "Search for ${ searchTerm }"
 msgstr "Поиск «${ searchTerm }»"
 
-msgid "Friend Requeusts"
+msgid "Friend Requests"
 msgstr "Заявки в друзья"
 
-msgid "Pending Friend Requeusts"
+msgid "Pending Friend Requests"
 msgstr "Новые заявки в друзья"
 
 msgid "Search for friends to add"
