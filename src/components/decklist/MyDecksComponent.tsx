@@ -179,7 +179,7 @@ function MyDecksComponent({
   );
 }
 
-export default withLoginState<OwnProps & NetworkStatusProps>(MyDecksComponent);
+export default withLoginState<OwnProps>(MyDecksComponent);
 
 const styles = StyleSheet.create({
   stack: {
