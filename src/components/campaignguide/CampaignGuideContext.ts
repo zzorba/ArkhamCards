@@ -8,6 +8,7 @@ import Card, { CardsMap } from '@data/Card';
 
 export interface CampaignGuideContextType {
   campaignId: number;
+  serverCampaignId?: string;
   campaignGuideVersion: number;
   campaignName: string;
   campaignGuide: CampaignGuide;

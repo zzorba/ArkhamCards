@@ -4194,7 +4194,7 @@
     },
     {
       "id": "house_burned",
-      "text": "<i>Your house has burned to the ground.</i>",
+      "text": "<i>Dein Haus wurde niedergebrannt.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -17118,7 +17118,7 @@
     },
     {
       "id": "house_burned",
-      "text": "<i>Your house has burned to the ground.</i>",
+      "text": "<i>Dein Haus wurde niedergebrannt.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -35445,57 +35445,44 @@
       "text": "Search the reverse sides of the original act deck from the <i>Threads of Fate</i> encounter set for the following locations: Eztli Exhibit, Black Cave, Train Tracks, and Arkham Police Station. Choose one at random and put it into play, ignoring its <b>revelation</b> ability. Remove the remainder of the original act and agenda cards from the <i>Threads of Fate</i> encounter set from the game."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Platzierung der Orte",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "04142_back",
+          "blank",
+          "01134_back",
+          "blank",
+          "01130_back",
+          "blank",
+          "01132_back",
+          "blank",
+          "04141_back"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "01129_back",
+          "blank",
+          "01125_back",
+          "blank",
+          "blank",
+          "blank"
+        ]
+      ],
+      "note": "<i><b>Note</b>: Based on the random location, one of the following will also be in play: Eztli Exhibit, Black Cave, Train Tracks, or Arkham Police Station."
+    },
+    {
       "id": "setup_act_deck",
       "text": "Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>Bad Blood</i> encounter set."
     },
     {
       "id": "remove_misc_cards",
       "text": "Remove the Ichtaca <i>(The Forgotten Guardian)</i> story asset and the Expedition Journal story asset from the game."
-    },
-    {
-      "id": "location_layout",
-      "type": "location_setup",
-      "text": "Platzierung der Orte",
-      "horizontal": "normal",
-      "vertical": "half",
-      "locations": [
-        [
-          "02050_back",
-          "blank",
-          "02056_back",
-          "blank"
-        ],
-        [
-          "blank",
-          "02048_back",
-          "blank",
-          "blank"
-        ],
-        [
-          "02049_back",
-          "blank",
-          "02053_back",
-          "02054_back"
-        ],
-        [
-          "blank",
-          "02051_back",
-          "blank",
-          "blank"
-        ],
-        [
-          "blank",
-          "blank",
-          "blank",
-          "blank"
-        ],
-        [
-          "blank",
-          "02052_back",
-          "blank",
-          "blank"
-        ]
-      ]
     },
     {
       "id": "setup_elspeth",
@@ -35965,7 +35952,7 @@
       "id": "location_layout",
       "type": "location_setup",
       "text": "Platzierung der Orte",
-      "note": "<i>Note: The positions of the Research Site, Temporary HQ, and Fungus Mound may differ from this diagram.</i>",
+      "note": "<i>Hinweis: Die Positionen des Forschungsgeländes, des provisorischen HQs und des Pilzhügels können von denen dieser Abbildung abweichen.</i>",
       "horizontal": "normal",
       "vertical": "normal",
       "locations": [
@@ -38738,8 +38725,8 @@
 },
 {
   "id": "meddling_of_meowlathotep",
-  "scenario_name": "The Meddling of Meowlathotep",
-  "full_name": "The Meddling of Meowlathotep",
+  "scenario_name": "Die Verstrickungen des Miaulathotep",
+  "full_name": "Die Verstrickungen des Miaulathotep",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -38911,13 +38898,13 @@
       "id": "barkham_rule",
       "title": "Barkham Horror",
       "type": "rule_reminder",
-      "text": "<i>Barkham Horror</i> is an alternate universe in which the conflict between humanity and the eldritch forces of the mythos takes a back seat, and the conflict between dogs and cats takes center stage.",
+      "text": "<i>Barkham Horror</i> ist ein alternatives Universum, in dem der Kampf zwischen den Menschen und den schauerlichen Kräften des Mythos in den Hintergrund tritt. Stattdessen steht der uralte Konflikt zwischen Hunden und Katzen im Mittelpunkt.",
       "bullets": [
         {
-          "text": "Investigator and player cards included in <i>Barkham Horror</i> expansions cannot be used in traditional <i>Arkham Horror: The Card Game</i> scenarios."
+          "text": "Ermittler- und Spielerkarten aus <i>Barkham Horror</i>- Erweiterungen können nicht in traditionellen Szenarien von <i>Arkham Horror: Das Kartenspiel</i> verwendet werden."
         },
         {
-          "text": "Likewise, only investigators from <i>Barkham Horror</i> expansions should be used while playing a <i>Barkham Horror</i> scenario. Other player cards from any <i>Arkham Horror: The Card Game</i> product may be used."
+          "text": "In Barkham Horror-Szenarien können nur <i>Barkham</i>- Ermittler verwendet werden. Alle anderen Spielerkarten aus <i>Arkham Horror: Das Kartenspiel</i>-Erweiterungen können normal verwendet werden."
         }
       ]
     },
@@ -38925,45 +38912,45 @@
       "id": "alert_rule",
       "type": "rule_reminder",
       "title": "Alarmiert",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "text": "Immer wenn einem Ermittler bei einem Entkommen-Versuch gegen einen Gegner mit dem Schlüsselwort Alarmiert eine Fertigkeitsprobe misslingt, führt der Gegner nach der Anwendung aller Ergebnisse jener Fertigkeitsprobe einen Angriff gegen diesen Ermittler durch. Ein Gegner wird nicht erschöpft, nachdem er einen Alarmiert-Angriff durchgeführt hat. Dieser Angriff wird durchgeführt, egal ob der Gegner mit dem Ermittler in einen Kampf verwickelt ist oder nicht."
     },
     {
       "id": "lousy_with_cats_rule",
       "type": "rule_reminder",
-      "title": "“Lousy with cats”",
-      "text": "Six of the locations in this scenario begin play with a facedown [[Meowsk]] enemy beneath them. During this scenario, a location with a facedown encounter card beneath it is “lousy with cats.” <b>This has no inherent game effect.</b> However, some card effects may change depending on whether or not a location is lousy with cats.",
+      "title": "„Voller Katzen“",
+      "text": "In diesem Szenario wird zu Beginn des Spiels unter sechs der Orte je ein verdeckter [[Tatze]]-Gegner platziert. Während des Szenarios gilt ein Ort mit verdeckter Begegnungskarte darunter als „voller Katzen“. <b>Dies hat für sich keinen eigenständigen Spieleffekt.</b> Andere Karteneffekte können sich jedoch ändern, je nachdem ob ein Ort voller Katzen ist oder nicht.",
       "bullets": [
         {
-          "text": "If the encounter card beneath a location that is lousy with cats enters play or is removed for any reason, that location is no longer lousy with cats."
+          "text": "Falls eine Begegnungskarte unter einem Ort voller Katzen aus irgendeinem Grund ins Spiel kommt oder entfernt wird, gilt der Ort nicht länger als voller Katzen."
         }
       ]
     },
     {
       "id": "sniffing_locations_rule",
       "type": "rule_reminder",
-      "title": "“Sniffing” Locations",
-      "text": "Dogs have a fantastic sense of smell. Kate Winthpup in particular has an ability that allows her to “sniff ” a location. You may wish to use a token (such as a resource token) or a piece of scrap paper to record which locations you’ve sniffed. In general, once you sniff a location, it is sniffed for the rest of the game."
+      "title": "„Schnüffeln“ / „erschnüffelte“ Orte",
+      "text": "Hunde haben einen hervorragenden Geruchssinn und ganz besonders Kate Winselrop. Ihre Fähigkeit erlaubt ihr, an einem Ort zu „schnüffeln“. Als Erinnerung kann sie z. B. einen Ressourcenmarker neben den Ort legen. Ein einmal erschnüffelter Ort gilt für den Rest des Spiels als „erschnüffelt“."
     },
     {
       "id": "hp_quote",
       "type": "story",
-      "text": "“We may, indeed, judge the tone and bias of a civilisation by its relative attitude toward dogs and cats.”\n– H. P. Lovecraft, “Cats and Dogs”"
+      "text": "„Wir können den Umgangston und die Voreingenommenheit einer Zivilisation in der Tat an ihrer relativen Haltung gegenüber Hunden und Katzen beurteilen.“ \n– H. P. Lovecraft, „Katzen und Hunde“"
     },
     {
       "id": "intro_1",
       "type": "story",
-      "text": "It is a dark and stormy night in the storied and haunted city of Barkham. By the time you hit the streets, it is raining cats and dogs. But you’ve picked up the scent of something big, and once you sink your teeth into a story, you just can’t let go. A little wet fur has never stopped you from finding the truth.\nStrange happenings have been going on in Barkham. Cat sightings are at an all-time high, and each day more and more pigeons go missing. While this wouldn’t normally be newsworthy, you know that there is more to this story than meets the eye. After all, while a few cats are harmless and adorable, most are nefarious schemers. You have heard the whispers and the howls on the wind. The Order of Dead Rodents on the Doorstep is back, and whatever they are plotting, only you can stop it.\nYou’re heading back to your home in Slobbertown—the Barkham neighborhood closest to the docks—when you catch a whiff of something foul and pungent in the air. Whatever is causing such an acrid stench must be nearby. But just then, another scent—!"
+      "text": "Es ist eine dunkle und stürmische Nacht in der sagenumwobenen und ruhelosen Stadt Barkham. Während du durch die Straßen läufst, regnet es Katzen und Hunde, wie man hier so sagt. Doch du hast den Geruch von etwas Großem wahrgenommen. Und wenn du dich einmal in eine Geschichte verbissen hast, kannst du einfach nicht mehr loslassen. Ein bisschen nasses Fell hat dich noch nie davon abgehalten, die Wahrheit herauszufinden. \nIn Barkham ereignen sich in letzter Zeit seltsame Dinge. Noch nie wurden so viele Katzen gesichtet und jeden Tag werden mehr und mehr Tauben vermisst. Das alleine wäre noch nicht berichtenswert, doch deine feine Spürnase sagt dir, dass an dieser Geschichte mehr dran ist. Einige wenige Katzen mögen zwar harmlos und gar liebenswert sein, doch die meisten sind heimtückische Intriganten. Du hast das Flüstern und das Heulen im Wind gehört. „Der Orden der toten Nagetiere auf der Türschwelle“ soll zurück sein. Was auch immer diese verrückten Katzen planen, nur du kannst sie aufhalten. \nHeute wirst du jedoch sicher nichts mehr herausfinden und so trottest du in Richtung deines Zuhauses im Sabberviertel bei den Barkham-Docks. Doch was ist das? Der Hauch von etwas Fauligem und Stechendem liegt in der Luft. Was auch immer diesen beißenden Gestank verursacht, muss in der Nähe sein. Aber halt, da ist noch ein Geruch\u001f…!"
     },
     {
       "id": "choose_scent_to_follow",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Der Ermittlungsleiter muss entscheiden (wähle eins):",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "foul_stench",
-            "text": "Follow the foul stench.",
+            "text": "Folge dem fauligen Gestank.",
             "steps": [
               "intro_2",
               "choose_confront_cat"
@@ -38971,7 +38958,7 @@
           },
           {
             "id": "bacon",
-            "text": "Follow the scent of bacon.",
+            "text": "Folge dem Geruch nach Speck.",
             "steps": [
               "intro_3",
               "choose_food"
@@ -38983,18 +38970,18 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "No! You cannot be dissuaded, not even by thoughts of tasty bacon and ear scratches from all of the humans who congegrate around Velma’s Doghouse. This investigation is too important. You continue tracking the awful odor until you come upon its source: a hairball, hacked up in an alleyway by the docks. Of course. If this isn’t proof of feline involvement, you don’t know what is. Then you hear it: HRRK! HRRRRK! There’s only one thing that could be!"
+      "text": "Nein! Du darfst dich jetzt nicht von deinen Ermittlungen ablenken lassen, auch nicht durch den Gedanken an leckeren Speck und liebevolle Ohrenkrauler von all den Menschen, die bei Velma’s Hundehütte vorbeikommen. Diese Sache ist zu wichtig. Du verfolgst den schrecklichen Geruch weiter, bis du auf seine Quelle stößt: einen Haarball, der in einer Gasse bei den Docks ausgewürgt wurde. Natürlich. Wenn das kein Beweis dafür ist, dass hier Katzen am Werk sind! Dann hörst du es: HRRK! HRRRRK! Dieses schaurige Geräusch kann nur eins bedeuten!"
     },
     {
       "id": "choose_confront_cat",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Der Ermittlungsleiter muss entscheiden (wähle eins):",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "foul_stench",
-            "text": "Confront the barfy cat.",
+            "text": "Konfrontiere die würgende Katze.",
             "steps": [
               "intro_4",
               "setup_slobbertown",
@@ -39004,7 +38991,7 @@
           },
           {
             "id": "bacon",
-            "text": "Follow the cat to its lair.",
+            "text": "Folge der Katze zu ihrem Versteck.",
             "steps": [
               "intro_5",
               "setup_snoutside",
@@ -39018,18 +39005,18 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "The investigation can wait. Bacon is eternal. You follow that lovely smell northeast to Velma’s Doghouse in Beasttown. The sounds of revelry and the sizzling of grilled food make your tail wag faster than the cracking of a whip. And yet, something else tugs at the back of your dog-brain… What was it you were doing before?"
+      "text": "Die Ermittlungen können warten. Speck geht immer vor! Du folgst dem verführerischen Duft nach Nordosten zu Velma’s Hundehütte, gleich hinter Bieststadt. Die Geräusche von ausgelassenen Hunden und das Brutzeln von gegrilltem Essen lassen deinen Schwanz schneller als eine Peitsche wedeln. Das duftet köstlich! Und doch nagt da etwas an deinem Hundehirn ... Was hattest du noch mal vorgehabt?"
     },
     {
       "id": "choose_food",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Der Ermittlungsleiter muss entscheiden (wähle eins):",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "foul_stench",
-            "text": "Nope, food.",
+            "text": "Egal, Fresschen!",
             "steps": [
               "intro_6",
               "setup_beasttown",
@@ -39039,7 +39026,7 @@
           },
           {
             "id": "bacon",
-            "text": "Oh yeah, investigating the Order.",
+            "text": "Ach ja, den Orden aufspüren.",
             "steps": [
               "intro_7",
               "setup_tailside",
@@ -39053,38 +39040,38 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "You are too dogged to turn back now. You soon come across the unfortunate creature, the source of the wretched retching. Once it is done, it goes back to licking its fur, and you wonder if cats truly have no sense of cause and effect. “What is the Order plotting?” you ask pointedly.\n“Why should I tell you, mutt?” the cat replies with a hint of apathy in its voice. “You’ll be our prey soon enough.” With that, the cat leaps gracefully from the street to a low-hanging tree branch, and vanishes from sight.\nPrey? You ponder the cat’s words. Conflict between your kind and theirs is as old as time, but you have never been their prey. What exactly is their game…?"
+      "text": "Du hast dich schon zu fest in die Sache verbissen, um jetzt zu zögern oder kehrtzumachen. Schon bald entdeckst du die unglückliche Kreatur und Quelle des fürchterlichen Würgens. Als die Katze fertig ist, beginnt sie ihr Fell zu lecken. Du fragst dich, ob Katzen wirklich keinen Sinn für Ursache und Wirkung haben. „Was plant der Orden?“, fragst du sie geradeheraus. \n„Warum sollte ich dir das verraten, Köter?“, fragt die Katze gleichgültig. „Du wirst bald schon unsere Beute sein.“ Und damit springt sie anmutig von der Straße auf einen tief hängenden Ast und verschwindet aus deinem Blickfeld. \nBeute? Du denkst über die Worte der Katze nach. Der Konflikt zwischen deiner Art und den Katzen ist so alt wie die Zeit selbst, aber ihr wart nie ihre Beute. Was haben die Haarwürger nur vor ...?"
     },
     {
       "id": "setup_slobbertown",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Slobbertown."
+      "text": "Lies die <b>Vorbereitung</b>. Jeder Ermittler beginnt im Sabberviertel."
     },
     {
       "id": "intro_5",
       "type": "story",
-      "text": "You track the scent of the cat and follow from a distance. Eventually it leaves the docks and makes its way southwest, toward Snoutside. What could a cat be doing way out here?\nYour question is answered when the creature is picked up by a robed human outside the manor house of the Barkham Hisstorical Society, an organization devoted to educating the populace about the “noble” cats of the city. It makes sense that such a reviled cult would be involved in this plot. The human brings the cat indoors, presumably to feed it and give it treats and such. Your blood boils. Curse you, foul cat! How dare you trick these humans into thinking you are cute and fluffy and not at all evil—!"
+      "text": "Du nimmst die Witterung auf und folgst der Katze mit etwas Abstand. Schließlich verlässt sie den Hafen und läuft nach Südwesten, Richtung Schnauzstadt. Was hat eine Katze bloß in dieser Gegend zu schaffen? Deine Frage wird bald beantwortet, als sie vor dem Herrenhaus der Barkham Gesellschaft für Katzengeschichte stehen bleibt, einer Organisation, die sich der Aufklärung der Bevölkerung über die „edlen Katzen“ verschrieben hat. Ein in Roben gehüllter Mensch kommt heraus, hebt sie auf und bringt sie ins Haus. Es ergibt Sinn, dass ein solch geschmähter Kult in die Sache verwickelt ist! Vermutlich wird die Katze nun von dem Menschen gefüttert und gestreichelt. Dein Blut kocht. Verflucht seist du, verdorbene Kreatur! Wie kannst du den Menschen nur vorgaukeln, du seist süß und flauschig und gar nicht böse? WUFF!"
     },
     {
       "id": "setup_snoutside",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Snoutside."
+      "text": "Lies die <b>Vorbereitung</b>. Jeder Ermittler beginnt in Schnauzstadt."
     },
     {
       "id": "intro_6",
       "type": "story",
-      "text": ": It isn’t until your belly is full of yummy food and your tummy has been thoroughly rubbed that you remember why you were out and about in the first place. You patrol the area until you spot several panicked rats scurrying from a nearby sewer drain.\n“What’s the matter?” you bark. They chitter and chirp in response, and it is only then that you remember that rats can’t talk. Still, you glean some of their story from their frantic pantomiming. The Order of Dead Rodents at the Doorstep, as evidenced by their very namesake, has been hunting rats for ages. But now it is not just cats hunting them, but horrid cat-abominations that defy all earthly logic. Sounds like the Order is up to its old tricks once again…"
+      "text": "Erst als dein Bauch voll mit leckerem Futter ist und du ausgiebig gestreichelt wurdest, erinnerst du dich wieder, warum du überhaupt unterwegs warst. Du schnüffelst etwas in der Gegend herum, bis du mehrere Ratten bemerkst, die panisch aus einem nahe gelegenen Kanalisationsrohr fliehen. \n„Was ist los?“, bellst du. Sie fiepen und piepsen als Antwort, und erst da erinnerst du dich, dass Ratten gar nicht sprechen können. Dennoch kannst du dir ein wenig aus ihren hektischen Pantomimen zusammenreimen. „Der Orden der toten Nagetiere auf der Türschwelle“ macht seinem Namen alle Ehre und jagt bereits seit Ewigkeiten Ratten. Doch nun sind nicht nur Katzen auf der Jagd, sondern auch schreckliche katzenartige Abscheulichkeiten, die jeder irdischen Logik widersprechen. Klingt, als ob der Orden wieder einmal einen finsteren Plan verfolgt …"
     },
     {
       "id": "setup_beasttown",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Beasttown."
+      "text": "Lies die <b>Vorbereitung</b>. Jeder Ermittler beginnt in Bieststadt."
     },
     {
       "id": "intro_7",
       "type": "story",
-      "text": "The urgency of your investigation is too important for you to be distracted by thoughts of tasty food. As you turn away from Velma’s, you spot a streak of cat-fur dipping gracefully out of sight. Using your keen sense of smell, you keep a tight pursuit as the cat winds its way west to Tailside, where Barkham’s train station can be found.\nYou follow the cat to the tracks on the western edge of town, where it ducks underneath an abandoned train car marked with a cat’s paw print. “Meowsachusetts Catnip Co.” reads the label beneath the logo. A front for a cult headquarters, no doubt. You are about to eavesdrop on the cats’ refuge when suddenly, a creature bursts forth from underneath the train! It is a hideous hybrid of bird, bat, and cat, with webbed paws and membranous wings notably lacking in fur, though its face is unmistakably feline. The sight of the thing makes your fur stand on end."
+      "text": "Du darfst dich jetzt nicht von Velma’s schmackhaftem Futter ablenken lassen. Aus den Augenwinkeln kannst du erkennen, wie eine katzenhafte Silhouette anmutig um die Ecke davonschleicht. Mit deinem feinen Geruchssinn verfolgst du die Katze nach Westen bis zum Schwanzende, wo sich der Bahnhof von Barkham befindet. Bei den Gleisen am Stadtrand verschwindet sie dann unter einem verlassenen Zugwaggon, der mit einem Katzenpfotenabdruck gekennzeichnet ist. „Mausachusetts Katzenminze Co.“ steht auf der Außenseite. Zweifellos eine Fassade für ein Geheimquartier des Ordens! Du willst dich gerade anschleichen und lauschen, als plötzlich etwas unter dem Zug hervorspringt – eine schreckliche Mischung aus Vogel, Fledermaus und Katze, mit Schwimmhäuten und ledrigen Flügeln! Die Kreatur hat keine Haare, obwohl ihr Gesicht eindeutig katzenartig ist. Dann fliegt sie in die Nacht davon. Der Anblick lässt dir das Fell zu Berge stehen."
     },
     {
       "id": "setup_tailside",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Tailside."
+      "text": "Lies die <b>Vorbereitung</b>. Jeder Ermittler beginnt beim Schwanzende."
     },
     {
       "id": "gather_encounter_sets",
@@ -39096,37 +39083,37 @@
     },
     {
       "id": "setup_locations_snoutside",
-      "text": "Put all of the locations into play.",
+      "text": "Es werden alle Orte ins Spiel gebracht.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Snoutside."
+          "text": "Jeder Ermittler beginnt in Schnauzstadt."
         }
       ]
     },
     {
       "id": "setup_locations_tailside",
-      "text": "Put all of the locations into play.",
+      "text": "Es werden alle Orte ins Spiel gebracht.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Tailside."
+          "text": "Jeder Ermittler beginnt beim Schwanzende."
         }
       ]
     },
     {
       "id": "setup_locations_beasttown",
-      "text": "Put all of the locations into play.",
+      "text": "Es werden alle Orte ins Spiel gebracht.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Beasttown."
+          "text": "Jeder Ermittler beginnt in Bieststadt."
         }
       ]
     },
     {
       "id": "setup_locations_slobbertown",
-      "text": "Put all of the locations into play.",
+      "text": "Es werden alle Orte ins Spiel gebracht.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Slobbertown."
+          "text": "Jeder Ermittler beginnt im Sabberviertel."
         }
       ]
     },
@@ -39165,58 +39152,58 @@
       "location_names": [
         {
           "code": "barkham_asylum",
-          "name": "Barkham Asylum"
+          "name": "Barkham Sanatorium"
         },
         {
           "code": "velmas_doghouse",
-          "name": "Velma's Doghouse"
+          "name": "Velma’s Hundehütte"
         },
         {
           "code": "tailside",
-          "name": "Tailside"
+          "name": "Schwanzende"
         },
         {
           "code": "beasttown",
-          "name": "Beasttown"
+          "name": "Bieststadt"
         },
         {
           "code": "arkham_city_pound",
-          "name": "Arkham City Pound"
+          "name": "Barkham Tierheim"
         },
         {
           "code": "muttskatonic_university",
-          "name": "Muttskatonic University"
+          "name": "Mopskatonic Universität"
         },
         {
           "code": "snoutside",
-          "name": "Snoutside"
+          "name": "Schnauzstadt"
         },
         {
           "code": "slobbertown",
-          "name": "Slobbertown"
+          "name": "Sabberviertel"
         },
         {
           "code": "st_marys_animal_hospital",
-          "name": "St. Mary's Animal Hospital"
+          "name": "St. Mary’s Tierklinik"
         },
         {
           "code": "boneyard",
-          "name": "Boneyard"
+          "name": "Knochenhof"
         }
       ]
     },
     {
       "id": "setup_meowsk_cards",
-      "text": "Find and shuffle the 7 [[Meowsk]] enemies. Remove 1 of them from the game without looking at it. Place 1 of the remaining [[Meowsk]] enemies facedown beneath each of the following locations: Barkham Asylum, Barkham City Pound, Velma’s Doghouse, Muttskatonic University, Boneyard, and St. Mary’s Animal Hospital.",
+      "text": "Die 7 [[Tatze]]-Gegner werden gemischt. Einer von ihnen wird aus dem Spiel entfernt, ohne ihn anzusehen. Je einer der übrigen Tatze-Gegner wird verdeckt unter jedem der folgenden Orte platziert: Barkham Sanatorium, Barkham Tierheim, Velma’s Hundehütte, Mopskatonic Universität, Knochenhof und St. Mary’s Tierklinik.",
       "bullets": [
         {
-          "text": "Each of these locations is “lousy with cats” (see “lousy with cats”, above). A location is no longer lousy with cats if the encounter card beneath it is removed for any reason."
+          "text": "Jeder dieser Orte ist „voller Katzen“ (siehe „Voller Katzen“ weiter oben). Ein Ort gilt nicht länger als voller Katzen, sobald die Begegnungskarte darunter aus irgendeinem Grund ins Spiel kommt oder entfernt wird."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set Meowlathotep aside, out of play."
+      "text": "Der Gegner Miaulathotep wird als nicht im Spiel befindlich beiseitegelegt."
     },
     {
       "id": "encounter_deck",
@@ -39229,15 +39216,15 @@
     },
     {
       "id": "investigators_win",
-      "text": "The investigators win, but only if they, too, are dog people."
+      "text": "Die Ermittler gewinnen – aber nur, wenn sie auch Hundeliebhaber sind!"
     },
     {
       "id": "cat_people_are_traitors",
-      "text": "Cat people complete the scenario successfully but feel like traitors."
+      "text": "Katzenliebhaber haben das Szenario erfolgreich beendet, fühlen sich aber wie Verräter …"
     },
     {
       "id": "investigators_lose",
-      "text": "The investigators lose! Players who are cat people win the game, though."
+      "text": "Die Ermittler verlieren! Katzenliebhaber können sich dennoch als Gewinner fühlen."
     }
   ],
   "resolutions": [
@@ -39257,7 +39244,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "The humans will never know the danger that lurked just beyond the edges of their senses—the danger they could not smell despite its foul scent. You will stay alert and loyally sniff out any hazards to your beloved city, for that is the duty and burden you and all dogkind bear. But, until the next time you are needed, you are content to sleep, play, and eat treat after treat. Victory is sweet.",
+      "text": "Die Menschen werden nie etwas von der Bedrohung erfahren, die knapp jenseits ihrer Sinnesgrenzen lauerte – eine Gefahr, die sie trotz des fauligen Gestanks nicht riechen konnten. Du wirst weiterhin wachsam bleiben und loyal alle Schrecken erschnüffeln, die deine geliebte Stadt heimsuchen, denn das ist die Pflicht und die Bürde, die alle Hunde tragen! Doch bis du wieder gebraucht wirst, bist du damit zufrieden, zu schlafen, zu spielen und ein Leckerli nach dem anderen zu fressen. Siege sind toll!",
       "steps": [
         "investigators_win",
         "cat_people_are_traitors"
@@ -39266,7 +39253,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "It's the end of all dogkind. The a-pawcalypse. A real cat-astrophe. An absolute cat-acylsm.\n\n\n\n…I'll see myself out.",
+      "text": "Dies ist das Ende für alle Hunde auf der Welt …Die A-pfote-kalypse! Eine wahre Katzastrophe! Ein schrecklicher Katerklysmus! Der Super-MIAU! …\n\n\n\nIch finde selbst hinaus, danke.",
       "steps": [
         "investigators_lose"
       ]
@@ -43082,15 +43069,15 @@
     },
     {
       "id": "spawn_cultists",
-      "text": "Search the <i>War of the Outer Gods</i> encounter set for 1 copy of Disciple of the Swarm, 1 copy of Nihilistic Stargazer, and 1 copy of Zealot of Paradise. Spawn each of those enemies (as directed by their \"<b>Spawn</b> - \" instructions)."
+      "text": "Das Begegnungsset <i>Krieg der Äußeren Götter</i> wird nach je 1 Kopie der Gegner Jünger des Schwarms, Nihilistischer Sternengucker und Zelotin des Paradieses durchsucht. Diese Gegner erscheinen an Orten entsprechend ihren <b>Erscheinen</b>-Anweisungen."
     },
     {
       "id": "set_aside_assets",
-      "text": "Set the 5 following story assets aside, out of play: Cloak of the Outer Realms, Pocker Portal, Dreaded End, Blade of Ark'at, and Enchanted Skull."
+      "text": "Die folgenden 5 Storyvorteilskarten werden als nicht im Spiel befindlich beiseitegelegt: Umhang aus dem Äußeren Reich, Taschenportal, Gefürchtetes Ende, Klinge von Ark’at und Verzauberter Schädel."
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remaining 19 encounter cards to form the encounter deck."
+      "text": "Die übrigen 19 Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
     },
     {
       "id": "earn_xp",
@@ -48652,7 +48639,7 @@
     {
       "id": "choose_fate",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Der Ermittlungsleiter muss entscheiden (wähle eins):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -51542,7 +51529,7 @@
       "id": "alert",
       "type": "rule_reminder",
       "title": "Alarmiert",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "text": "Immer wenn einem Ermittler bei einem Entkommen-Versuch gegen einen Gegner mit dem Schlüsselwort Alarmiert eine Fertigkeitsprobe misslingt, führt der Gegner nach der Anwendung aller Ergebnisse jener Fertigkeitsprobe einen Angriff gegen diesen Ermittler durch. Ein Gegner wird nicht erschöpft, nachdem er einen Alarmiert-Angriff durchgeführt hat. Dieser Angriff wird durchgeführt, egal ob der Gegner mit dem Ermittler in einen Kampf verwickelt ist oder nicht."
     },
     {
       "id": "story",
@@ -72807,18 +72794,24 @@
         "choices": [
           {
             "id": "cheat",
-            "text": "Soll <i>die Gezeiten sind stärker geworden</i> zum Kampagnenlogbuch hinzugefügt werden?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "tide_has_grown_stronger",
-                "text": "die Gezeiten sind stärker geworden."
-              }
+            "text": "Did you reach <b>Resolution 1</b> by advancing Agenda 2b?",
+            "steps": [
+              "record_tide_has_grown_stronger"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "record_tide_has_grown_stronger",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tide_has_grown_stronger",
+          "text": "die Gezeiten sind stärker geworden."
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -72884,7 +72877,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Trees whizz by as you rumble along the old dirt road just outside of Innsmouth. The sun has set over the western horizon, leaving only the full moon to bathe the dusty roads in its brilliant, eerie glow.\n\"Here,\" Agent Harper shouts from the passenger seat over the rumbling of the automobile engine. She points to a spot on the map she has spread across her lap, tapping it repeatedly. \"Falcon Point Lighthouse. That's where Oceiros should be.\"\nA shudder courses up your spine. If your memories are to be believed, Oceiros is the man who left you to die in those tidal tunnels. You ask Harper how far Falcon Point is from Innsmouth, hoping to arrive before the Order realizes you've escaped.\nShe sighs. \"It's not that far, but these roads are meandering. They could be difficult to navigate. One wrong turn and—\" both you and Harper see the lights in your rearview mirror at the same time. Headlights. And they're growing larger and brighter by the second. Harper curses under her breath. \"I don't suppose those are friends of yours?\"\nYou shake your head and tighten your grip on the wheel. It seems the Order has already caught wind of your flight from Innsmouth. You tell Agent Harper to hold on and slam your foot on the accelerator."
+      "text": "Du fährst über die alte, unbefestigte Straße aus Innsmouth hinaus. Die Sonne ist bereits am westlichen Horizont untergegangen. Die staubige Straße und die vorbeiziehenden Baumreihen werden nur noch vom hellen, unheimlichen Schein des Vollmondes beleuchtet. \n„Hier“, ruft dir Agent Harper vom Beifahrersitz aus entgegen, wobei sie den Motorenlärm des Automobils zu übertönen versucht. Sie tippt immer wieder auf einen Punkt auf der Landkarte, die sie auf ihrem Schoß ausgebreitet hat. „Der Leuchtturm von Falcon Point. Hier sollte Oceiros sein.“ \nDir läuft ein Schauder den Rücken hinab. Wenn du deinen Erinnerungen trauen kannst, ist Oceiros der Mann, der dich in den Gezeitentunneln zum Sterben zurückgelassen hat. Du fragst Agent Harper, wie weit Falcon Point von Innsmouth entfernt ist, in der Hoffnung, dort anzukommen, bevor der Orden herausgefunden hat, dass du entkommen bist. \nSie seufzt. „So weit ist es nicht, aber die Straße ist sehr kurvenreich und schwer zu befahren. Einmal falsch abgebogen und …“ Du bemerkst zeitgleich mit Agent Harper die Lichter im Rückspiegel. Scheinwerfer, die mit jeder Sekunde heller und größer werden. Harper flucht leise vor sich hin. „Ich nehme nicht an, dass das Ihre Freunde sind?“ \nKopfschüttelnd verstärkst du deinen Griff um das Lenkrad. Wie es aussieht, hat der Orden bereits Wind von deiner Flucht aus Innsmouth bekommen. Du warnst Agent Harper, sie solle sich festzuhalten, und trittst das Gaspedal durch."
     },
     {
       "id": "gather_encounter_sets",
@@ -72900,57 +72893,57 @@
     },
     {
       "id": "create_road_deck",
-      "text": "Create the Road deck. This is done by performing the following steps:",
+      "text": "Mit den folgenden Schritten wird das Straßendeck erstellt:",
       "bullets": [
         {
-          "text": "Find Falcon Point Approach and all 6 copies of Long Way Around. Each one is a revealed side of an Old Innsmouth Road location. Set each of them aside, out of play."
+          "text": "Der Ort Anstieg zum Falcon Point und alle 6 Kopien von Ein großer Umweg werden als nicht im Spiel befindlich beiseitegelegt. Diese Orte befinden sich jeweils auf der enthüllten Seite eines Ortes Alte Innsmouth-Straße."
         },
         {
-          "text": "Shuffle the set-aside Falcon Point Approach and two Old Innsmouth Road locations together to form the bottom three cards of the Road deck."
+          "text": "2 zufällige Orte Alte Innsmouth-Straße und der beiseitegelegte Ort Anstieg zum Falcon Point werden zusammengemischt. Diese bilden die untersten 3 Karten des Straßendecks."
         },
         {
-          "text": "Place all of the remaining Old Innsmouth Road locations on top in a random order."
+          "text": "Die übrigen Orte Alte Innsmouth-Straße werden in zufälliger Reihenfolge oben auf dem Deck platziert."
         },
         {
-          "text": "All of the cards in the Road deck should be showing only the Old Innsmouth Road side, so that players do not know which is which."
+          "text": "Alle Karten im Straßendeck sollten die „Alte Innsmouth-Straße“-Seite zeigen, sodass die Ermittler nicht wissen können, welche Karte welche ist."
         }
       ]
     },
     {
       "id": "setup_locations",
-      "text": "Put the top 3 cards of the Road deck into play in a straight line from left to right, where left is \"rear\" and right is \"front\"."
+      "text": "Die obersten 3\u001fKarten des Straßendecks werden in gerader Linie von links nach rechts ins Spiel gebracht, wobei links „hinten“ und rechts „vorne“ ist."
     },
     {
       "id": "choose_vehicles",
-      "text": "Choose vehicles. There are two vehicles the investigators can use in this scenario—Thomas Dawson's Car and Elina Harper's Car. Each investigator must choose a vehicle to board. No more than two investigators can board the same vehicle. <i>(See Vehicles below.)</i>",
+      "text": "Fahrzeuge wählen: In diesem Szenario können die Ermittler aus 2 Fahrzeugen wählen – Thomas Dawsons Wagen und Elina Harpers Wagen. Jeder Ermittler muss wählen, in welches Fahrzeug er einsteigen will. In einem Fahrzeug dürfen sich nicht mehr als 2 Ermittler befinden <i>(siehe dazu „Fahrzeuge“ weiter unten)</i>.",
       "bullets": [
         {
-          "text": "Each vehicle that is boarded by at least one investigator begins play at the front Old Innsmouth Road location. Remove each other vehicle from the game."
+          "text": "Jedes Fahrzeug mit mindestens 1 Ermittler an Bord beginnt das Spiel auf dem vordersten Ort Alte Innsmouth-Straße. Jedes andere Fahrzeug wird aus dem Spiel entfernt."
         },
         {
-          "text": "Each vehicle begins play with its <i>(Running)</i> side faceup <i>(see Running/Stopped below)</i>."
+          "text": "Jedes Fahrzeug beginnt das Spiel mit der Seite <i>(In Bewegung)</i> nach oben <i>(siehe dazu „In Bewegung/Angehalten“ weiter unten)</i>."
         },
         {
-          "text": "Each investigator begins play in the vehicle they chose to board."
+          "text": "Jeder Ermittler beginnt das Spiel in dem Fahrzeug, in das er eingestiegen ist."
         },
         {
-          "text": "Trigger that location's Road X keyword when it is revealed <i>(see Road X below)</i>."
+          "text": "Sobald der Ort enthüllt wird, wird sein Schlüsselwort Straße X ausgelöst <i>(siehe dazu „Straße X“ weiter unten)</i>."
         }
       ]
     },
     {
       "id": "choose_drivers",
-      "text": "Choose drivers. One investigator in each vehicle must be designated as the driver of that vehicle.",
+      "text": "Fahrer wählen: 1 Ermittler in jedem Fahrzeug muss zum Fahrer jenes Fahrzeugs bestimmt werden.",
       "bullets": [
         {
-          "text": "There must always be a driver for each vehicle with at least one investigator in it. If the driver leaves the vehicle or is eliminated, choose another investigator in that vehicle to become the new driver."
+          "text": "In jedem Fahrzeug, in dem sich mindestens 1 Ermittler befindet, muss es immer einen Fahrer geben. Falls der Fahrer aus dem Fahrzeug aussteigt oder aus dem Spiel ausscheidet, wird ein anderer Ermittler in jenem Fahrzeug zum neuen Fahrer gewählt."
         }
       ]
     },
     {
       "id": "spawn_enemies",
       "type": "branch",
-      "text": "Based on the number of players in the game:",
+      "text": "Folgende Punkte sind abhängig von der Anzahl der Ermittler im Spiel:",
       "condition": {
         "type": "scenario_data",
         "scenario_data": "player_count",
@@ -72984,26 +72977,26 @@
     },
     {
       "id": "no_changes",
-      "text": "Because there is exactly 1 player in the game, no changes are made.",
+      "text": "Falls sich genau 1 Ermittler im Spiel befindet, wird nichts verändert.",
       "bullet_type": "small"
     },
     {
       "id": "one_vehicle",
-      "text": "Because there are 2-3 players in the game, search the gathered encounter sets for 1 random [[Vehicle]] enemy. Spawn that enemy at the rearmost location.",
+      "text": "Falls sich 2-3 Ermittler im Spiel befinden, werden die herausgesuchten Begegnungssets nach 1 zufällig bestimmten [[Fahrzeug]]-Gegner durchsucht. Jener Gegner erscheint am hintersten Ort.",
       "bullet_type": "small"
     },
     {
       "id": "two_vehicles",
-      "text": "Because there are exactly 4 players in the game, search the gathered encounter sets for 2 random [[Vehicle]] enemies. Spawn each of those enemies at the rearmost location.",
+      "text": "Falls sich 4 Ermittler im Spiel befinden, werden die herausgesuchten Begegnungssets nach 2 zufällig bestimmten [[Fahrzeug]]-Gegnern durchsucht. Jene Gegner erscheinen am hintersten Ort.",
       "bullet_type": "small"
     },
     {
       "id": "agenda_setup",
-      "text": "Check the Campaign Log. Depending on the following circumstances, a different version of agenda 1 should be used in this scenario. Remove the other version of agenda 1 from the game."
+      "text": "Überprüfe das Kampagnenlogbuch. Abhängig von den folgenden Umständen wird eine unterschiedliche Version von Agenda 1a in diesem Szenario verwendet. Die andere Version von Agenda 1 wird aus dem Spiel entfernt."
     },
     {
       "id": "check_terror_of_devil_reef_is_dead",
-      "text": "If <i>the terror of Devil Reef is dead</i>:",
+      "text": "Falls <i>der Schrecken des Teufelsriffs tot ist</i>:",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -73029,12 +73022,12 @@
     {
       "id": "agenda_1_v2",
       "bullet_type": "small",
-      "text": "Use Agenda 1a—The Chase is On! (v.II)."
+      "text": "Agenda 1a – Die Jagd geht los! (II) wird verwendet."
     },
     {
       "id": "agenda_1_v1",
       "bullet_type": "small",
-      "text": "Otherwise, use Agenda 1a—The Chase is On! (v.I)."
+      "text": "Ansonsten wird Agenda 1a – Die Jagd geht los! (I) verwendet."
     },
     {
       "id": "encounter_deck",
@@ -73072,28 +73065,28 @@
     {
       "id": "running_stopped_rule",
       "type": "rule_reminder",
-      "title": "Running / Stopped",
-      "text": "Vehicles in this scenario can either be \"running\" or \"stopped,\" as indicated by their two sides. The difference between a running vehicle and a stopped vehicle is indicated by the game text on each side. A vehicles engine can be started or stopped using the ability on that vehicle, flipping it over to its other side.",
+      "title": "In Bewegung/Angehalten",
+      "text": "In diesem Szenario können Fahrzeuge entweder „in Bewegung“ sein oder sie haben „angehalten“, was durch ihre zwei Seiten (In Bewegung) und (Angehalten) veranschaulicht wird. Der Text auf beiden Seiten des Fahrzeugs beschreibt auch den Unterschied zwischen einem Fahrzeug in Bewegung und einem Fahrzeug, das angehalten hat. Ein Fahrzeug kann durch seine Fähigkeit gestartet oder angehalten werden, wodurch dessen Karte auf die andere Seite umgedreht wird.",
       "bullets": [
         {
-          "text": "Generally speaking, investigators will only be able to make swift progress in a running vehicle. However, it may sometimes be a good idea to briefly stop your vehicle if you are approaching a dangerous location, such as a Cliffside Road or a Tight Turn. Be careful!"
+          "text": "Normalerweise kommen die Ermittler nur dann im Szenario gut voran, wenn ihr Fahrzeug in Bewegung ist. Manchmal kann es aber auch eine gute Idee sein, vor gefährlichen Orten wie z. B. vor der Klippenstraße oder einer Scharfen Kurve kurz anzuhalten. Hier ist Vorsicht geboten!"
         }
       ]
     },
     {
       "id": "road_x_rule",
       "type": "rule_reminder",
-      "title": "Road X",
-      "text": "During this scenario, the investigators are traveling the Old Innsmouth Road from Innsmouth to Falcon Point. This road is generally a straight line from left to right, but occasionally contains branching paths.\nEach time a location with the Road X keyword is revealed, if there are no locations ahead of the just revealed location, put X new locations into play in a new column in front of it, Old Innsmouth Road side faceup. The first of these locations must be the top location of the Road deck. Each of the remaining locations to be put into play are taken from among the set-aside Long Way Around locations <i>(if there are not enough Long Way Around locations, use as many as you can)</i>. Shuffle each of those locations so that the players do not know which is which.",
-      "example": "<i>For example: Trish is the driver of Elina Harper's Car, and has just moved that car forward to an unrevealed location. It is a Fork in the Road with the \"Road 2\" keyword. Since there are currently no locations in front of Fork in the Road, she must therefore place 2 Old Innsmouth Road locations in front of Fork in the Road. She takes the top card of the Road deck and one of the set-aside Long Way Around locations, puts both of them into play in a new column in front of Fork in the Road, and shuffles them so that the players do not know which is which.</i>"
+      "title": "Straße X",
+      "text": "In diesem Szenario fahren die Ermittler auf der alten Innsmouth-Straße von Innsmouth nach Falcon Point. Die Straße verläuft normalerweise in gerader Linie von links nach rechts. Manchmal kann es aber auch zu Abzweigungen kommen. \nImmer wenn ein Ort mit dem Schlüsselwort Straße X enthüllt wird und falls sich keine Orte vor dem gerade enthüllten Ort befinden, werden davor X neue Orte in einer neuen Spalte (senkrecht zueinander) mit der „Alte Innsmouth-Straße“-Seite nach oben ins Spiel gebracht. Einer der Orte muss der oberste Ort des Straßendecks sein. Jeder der übrigen Orte, die ins Spiel gebracht werden müssen, muss ein beiseitegelegter Ort Ein großer Umweg sein <i>(falls es nicht mehr genug Orte Ein großer Umweg gibt, werden so viele wie möglich verwendet)</i>. Jene Orte werden gemischt und so untereinander platziert, dass die Ermittler nicht wissen, welcher welcher ist.",
+      "example": "<i>Beispiel: Trish ist die Fahrerin von Elina Harpers Wagen und hat ihr Fahrzeug gerade zu einem verhüllten Ort bewegt. Er stellt sich als eine Weggabelung mit dem Schlüsselwort Straße 2 heraus. Da sich aktuell keine Orte vor der Weggabelung befinden, muss sie 2 Orte Alte Innsmouth-Straße vor der Weggabelung platzieren. Sie nimmt die oberste Karte vom Straßendeck und 1 beiseitegelegten Ort Ein großer Umweg, mischt sie und bringt sie beide in einer neuen Spalte ins Spiel, sodass die Ermittler nicht wissen, welcher Ort welcher ist.</i>"
     },
     {
       "id": "road_x_rule_1",
-      "text": "Generally, it is wise to avoid taking a Long Way Around, since it will slow you down and reduce the amount of time you have to reach Falcon Point."
+      "text": "Normalerweise ist es klug, einen großen Umweg zu vermeiden, weil dieser Ort viel Zeit frisst und die Ermittler auf ihrem Weg nach Falcon Point ausbremst."
     },
     {
       "id": "road_x_rule_2",
-      "text": "<b>During this scenario, each location is connected to each location behind or ahead of it, but not to any other location on its column.</b>"
+      "text": "<b>In diesem Szenario ist jeder Ort mit jedem Ort vor oder hinter sich verbunden, aber nicht mit anderen Orten in seiner Spalte.</b>"
     },
     {
       "id": "reached_falcon_point_after_sunrise",
@@ -73102,7 +73095,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "reached_falcon_point_after_sunrise",
-          "text": "the investigators reached Falcon Point after sunrise."
+          "text": "Die Ermittler haben Falcon Point nach Sonnenaufgang erreicht."
         }
       ]
     },
@@ -73113,7 +73106,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "reached_falcon_point_before_sunrise",
-          "text": "the investigators reached Falcon Point before sunrise."
+          "text": "Die Ermittler haben Falcon Point vor Sonnenaufgang erreicht."
         }
       ]
     },
@@ -73142,7 +73135,7 @@
         "physical",
         "mental"
       ],
-      "text": "Your drive to Falcon Point is no joyride. Between the cultists on your tail and the creatures that dwell in the woods outside Innsmouth, your vehicle is harried at every turn. With no way to escape unharmed, you are forced to abandon your vehicle and sneak through the woods on foot. By the time you see the distant lighthouse beacon, dawn already bathes the sky in orange radiance. \"Finally,\" Agent Harper groans. With no time to rest, you continue the trek to the Falcon Point lighthouse, exhausted but resolute.",
+      "text": "Deine Fahrt nach Falcon Point ist wahrlich keine Vergnügungsfahrt. Wegen der Kultisten auf deinen Fersen und den Kreaturen, die in den Wäldern außerhalb von Innsmouth hausen, hast du den Wagen in jeder Biegung an die Grenzen seiner Belastbarkeit gebracht. Du siehst keinen anderen Weg, um unbeschadet aus der Sache herauszukommen, als das Fahrzeug zurückzulassen und zu Fuß durch den Wald zu schleichen. Als du das Leuchtfeuer des Leuchtturms in der Ferne erblickst, hat die Morgendämmerung den Himmel bereits in orangefarbenes Licht getaucht. „Endlich“, ächzt Agent Harper. Ohne Zeit für eine Rast macht ihr euch sogleich erschöpft, aber entschlossen an den letzten Anstieg zum Leuchtturm von Falcon Point.",
       "steps": [
         "reached_falcon_point_after_sunrise",
         "earn_xp",
@@ -73158,7 +73151,7 @@
         "mental"
       ],
       "title": "Auflösung 1",
-      "text": "You breathe a sigh of relief as you see the distant lighthouse beacon pierce the fog. \"Let's pull over here and make the rest of the trip on foot,\" Harper suggests. \"If there's anybody still in that lighthouse, it would be best if they didn't hear us approach.\" Her advice is sound. You're not sure what to expect once you reach Falcon Point, but all signs point to it being another outpost for the Order. You double-check to make sure you aren't being followed, then pull over by the side of the road. Gathering your belongings from the car's trunk, you begin the trek to the Falcon Point lighthouse…",
+      "text": "Du atmest erleichtert aus, als du in der Ferne das Leuchtfeuer des Leuchtturms durch den Nebel dringen siehst. „Am besten fahren Sie rechts ran. Wir sollten das letzte Stück zu Fuß gehen“, schlägt Harper vor. „Wenn sich noch jemand im Leuchtturm aufhalten sollte, wäre es das Beste, wenn er uns nicht kommen hört.“ Ihr Ratschlag klingt vernünftig. Du bist nicht sicher, was euch am Falcon Point erwartet, aber alles deutet darauf hin, dass der Leuchtturm ein weiterer Außenposten des Ordens ist. Du stellst noch einmal sicher, dass euch niemand folgt, und hältst dann am Straßenrand an. Nachdem du deine Ausrüstung aus dem Kofferraum des Wagens geholt hast, macht ihr euch an den letzten Anstieg zum Leuchtturm von Falcon Point …",
       "steps": [
         "reached_falcon_point_before_sunrise",
         "earn_xp",

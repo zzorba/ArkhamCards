@@ -11,9 +11,10 @@ interface Props {
   onPress: () => void;
   disabled?: boolean;
   last?: boolean;
+  numberOfLines?: number;
 }
 
-export default function MenuButton({ icon, title, description, onPress, disabled, last }: Props) {
+export default function MenuButton({ icon, title, description, onPress, disabled, numberOfLines, last }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   return (
     <TouchableOpacity onPress={onPress} disabled={disabled}>
@@ -24,7 +25,7 @@ export default function MenuButton({ icon, title, description, onPress, disabled
           </View>
         ) }
         <View style={styles.column}>
-          <Text style={typography.menuText}>
+          <Text style={typography.menuText} numberOfLines={numberOfLines || 1} ellipsizeMode="clip">
             { title }
           </Text>
           <Text style={[typography.smallLabel, typography.italic, { color: colors.M }]}>
@@ -56,5 +57,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    flex: 1,
   },
 });

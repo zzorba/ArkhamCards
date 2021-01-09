@@ -19,13 +19,14 @@ import { clearDecks } from '@actions';
 import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
 import Card from '@data/Card';
-import { getBackupData, getAllPacks, getLangPreference, getLangChoice } from '@reducers';
+import { getBackupData, getAllPacks, getLangChoice } from '@reducers';
 import { fetchCards } from '@components/card/actions';
 import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
 import { saveAuthResponse } from '@lib/dissonantVoices';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface ReduxProps {
   backupData: {
@@ -57,10 +58,10 @@ type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
 function DiagnosticsView({ showTextEditDialog }: Props) {
   const { db } = useContext(DatabaseContext);
   const { colors } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
   const backupData = useSelector(getBackupData);
   const packs = useSelector(getAllPacks);
-  const lang = useSelector(getLangPreference);
   const langChoice = useSelector(getLangChoice);
 
   const importBackupDataJson = useCallback((json: string) => {

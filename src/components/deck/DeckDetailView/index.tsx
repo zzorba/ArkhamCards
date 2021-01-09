@@ -554,9 +554,10 @@ function DeckDetailView({
       const { normalCardCount: normalCards, totalCardCount } = parsedDeck;
       const normalCardCount = ngettext(msgid`${normalCards} card`, `${normalCards} cards`, normalCards);
       const details = ngettext(msgid`${normalCardCount} · ${totalCardCount} total`, `${normalCardCount} · ${totalCardCount} total`, totalCardCount);
+      const showUpgradeButton = !campaign || !campaign.guided;
       return (
         <View style={[styles.row, space.marginS]}>
-          <View style={[space.marginRightXs, styles.flex]}>
+          <View style={[showUpgradeButton ? space.marginRightXs : undefined, styles.flex]}>
             <DeckButton
               title={t`Edit`}
               detail={details}
@@ -564,20 +565,22 @@ function DeckDetailView({
               onPress={onEditPressed}
             />
           </View>
-          <View style={[space.marginLeftXs, styles.flex]}>
-            <DeckButton
-              title={t`Upgrade`}
-              detail={t`Add scenario XP`}
-              icon="upgrade"
-              color="gold"
-              onPress={onUpgradePressed}
-            />
-          </View>
+          { !!showUpgradeButton && (
+            <View style={[space.marginLeftXs, styles.flex]}>
+              <DeckButton
+                title={t`Upgrade`}
+                detail={t`Add scenario XP`}
+                icon="upgrade"
+                color="gold"
+                onPress={onUpgradePressed}
+              />
+            </View>
+          ) }
         </View>
       );
     }
     return null;
-  }, [deck, hasPendingEdits, editable, parsedDeck, deckEdits, onEditPressed, onUpgradePressed]);
+  }, [deck, hasPendingEdits, editable, parsedDeck, deckEdits, campaign, onEditPressed, onUpgradePressed]);
 
   const showCardUpgradeDialog = useCallback((card: Card) => {
     if (!parsedDeck) {
@@ -724,7 +727,9 @@ function DeckDetailView({
         { editable && (
           <>
             <MenuButton
+              icon="name"
               onPress={showEditNameDialog}
+              numberOfLines={2}
               title={deckEdits.nameChange || deck.name}
               description={!deck.local ? t`Deck #${deck.id}` : undefined}
             />
@@ -1021,7 +1026,6 @@ function DeckDetailView({
             />
             { !!parsedDeck.problem && mode !== 'view' && (
               <DeckProblemBanner
-                faction={parsedDeck.investigator.factionCode()}
                 problem={parsedDeck.problem}
               />
             ) }

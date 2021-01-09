@@ -4,53 +4,32 @@ import {
   ScrollView,
   StyleSheet,
   Linking,
+  View,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import { t } from 'ttag';
+import { filter, map, partition, uniq } from 'lodash';
+import { msgid, ngettext, t } from 'ttag';
 
 import ThemePicker from './ThemePicker';
 import FontSizePicker from './FontSizePicker';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
-import SettingsSwitch from '@components/core/SettingsSwitch';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import { fetchCards } from '@components/card/actions';
 import { setSingleCardView, setAlphabetizeEncounterSets } from './actions';
 import { prefetch } from '@lib/auth';
-import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
-import { AppState, getLangPreference, getLangChoice } from '@reducers';
-import SettingsItem from './SettingsItem';
-import LoginButton from './LoginButton';
-import DissonantVoicesLoginButton from './DissonantVoicesLoginButton';
+import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
-import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
-
-const NATIVE_RULES = true;
-interface OwnProps {
-  componentId: string;
-}
-
-interface ReduxProps {
-  showCardsingleCardView: boolean;
-  alphabetizeEncounterSets: boolean;
-  lang: string;
-  langChoice: string;
-  cardsLoading?: boolean;
-  cardsError?: string;
-  deckCount: number;
-}
-
-interface ReduxActionProps {
-  fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
-  clearDecks: () => void;
-  setSingleCardView: (value: boolean) => void;
-  setAlphabetizeEncounterSets: (value: boolean) => void;
-}
-
-type Props = OwnProps & ReduxProps & ReduxActionProps;
+import AccountSection from './AccountSection';
+import space, { s } from '@styles/space';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import DeckButton from '@components/deck/controls/DeckButton';
+import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -61,11 +40,25 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors } = useContext(StyleContext);
   const dispatch = useDispatch();
 
+  const packsInCollection = useSelector(getPacksInCollection);
+  const spoilerSettings = useSelector(getPackSpoilers);
+  const packs = useSelector(getAllPacks);
+  const summarizePacks = useCallback((selection: { [pack: string]: boolean | undefined }) => {
+    const allPacks = filter(packs, p => !!selection[p.code]);
+    const [cyclePacks, standalonePacks] = partition(allPacks, p => p.cycle_position < 50);
+    const cycleCount = uniq(map(cyclePacks, p => p.cycle_position)).length;
+    const standalonePackCount = filter(standalonePacks, p => p.cycle_position > 50).length;
+    const cyclePart = ngettext(msgid`${cycleCount} Cycle`, `${cycleCount} Cycles`, cycleCount);
+    const packPart = ngettext(msgid`${standalonePackCount} Pack`, `${standalonePackCount} Packs`, standalonePackCount);
+    return `${cyclePart} (${packPart})`;
+  }, [packs]);
+  const collectionSummary = useMemo(() => summarizePacks(packsInCollection), [summarizePacks, packsInCollection]);
+  const spoilerSummary = useMemo(() => summarizePacks(spoilerSettings), [summarizePacks, spoilerSettings]);
   const showCardsingleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const alphabetizeEncounterSets = useSelector((state: AppState) => state.settings.alphabetizeEncounterSets || false);
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
   const cardsError = useSelector((state: AppState) => state.cards.error || undefined);
-  const lang = useSelector(getLangPreference);
+  const { lang } = useContext(LanguageContext);
   const langChoice = useSelector(getLangChoice);
 
   const navButtonPressed = useCallback((screen: string, title: string) => {
@@ -110,14 +103,6 @@ export default function SettingsView({ componentId }: NavigationProps) {
     navButtonPressed('Settings.Backup', t`Backup`);
   }, [navButtonPressed]);
 
-  const rulesPressed = useCallback(() => {
-    if (NATIVE_RULES) {
-      navButtonPressed('Rules', t`Rules`);
-    } else {
-      Linking.openURL('https://arkhamdb.com/rules');
-    }
-  }, [navButtonPressed]);
-
   const doSyncCards = useCallback(() => {
     dispatch(fetchCards(db, lang, langChoice));
   }, [dispatch, db, lang, langChoice]);
@@ -128,7 +113,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
     }
     return cardsError ?
       t`Error: Check for Cards Again` :
-      t`Check for New Cards on ArkhamDB`;
+      t`Check ArkhamDB for updates`;
   }, [cardsLoading, cardsError]);
 
   const swipeBetweenCardsChanged = useCallback((value: boolean) => {
@@ -139,72 +124,100 @@ export default function SettingsView({ componentId }: NavigationProps) {
     dispatch(setAlphabetizeEncounterSets(value));
   }, [dispatch]);
 
+  const rulesPressed = useCallback(() => {
+    navButtonPressed('Rules', t`Rules`);
+  }, [navButtonPressed]);
 
   return (
     <SafeAreaView style={[styles.container, backgroundStyle]}>
-      <ScrollView style={[styles.list, { backgroundColor: colors.L20 }]}>
-        <CardSectionHeader section={{ title: t`Account` }} />
-        <LoginButton settings />
-        { SHOW_DISSONANT_VOICES && <DissonantVoicesLoginButton settings /> }
-        <SettingsItem
-          navigation
-          onPress={backupPressed}
-          text={t`Backup Data`}
-        />
-        <CardSectionHeader section={{ title: t`Card Settings` }} />
-        <SettingsItem
-          navigation
-          onPress={myCollectionPressed}
-          text={t`Card Collection`}
-        />
-        <SettingsItem
-          navigation
-          onPress={editSpoilersPressed}
-          text={t`Spoiler Settings`}
-        />
-        <SettingsTabooPicker />
-        <CardSectionHeader section={{ title: t`Card Data` }} />
-        <SettingsItem
-          navigation
-          onPress={rulesPressed}
-          text={t`Rules`}
-        />
-        <SettingsItem
-          onPress={cardsLoading ? undefined : doSyncCards}
-          text={syncCardsText}
-        />
-        <LanguagePicker />
-        <CardSectionHeader section={{ title: t`Preferences` }} />
-        <ThemePicker />
-        <FontSizePicker />
-        <SettingsSwitch
-          title={t`Swipe between card results`}
-          value={!showCardsingleCardView}
-          onValueChange={swipeBetweenCardsChanged}
-          settingsStyle
-        />
-        <SettingsSwitch
-          title={t`Alphabetize guide encounter sets`}
-          value={alphabetizeEncounterSets}
-          onValueChange={alphabetizeEncounterSetsChanged}
-          settingsStyle
-        />
-        <SettingsItem
-          navigation
-          onPress={diagnosticsPressed}
-          text={t`Diagnostics`}
-        />
-        <CardSectionHeader section={{ title: t`About Arkham Cards` }} />
-        <SettingsItem
-          navigation
-          onPress={aboutPressed}
-          text={t`About Arkham Cards`}
-        />
-        <SettingsItem
-          navigation
-          onPress={contactPressed}
-          text={t`Contact us`}
-        />
+      <ScrollView style={[styles.list, { backgroundColor: colors.L10 }]} keyboardShouldPersistTaps="always">
+        <AccountSection componentId={componentId} />
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
+          <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Cards`} />}>
+            <View style={[space.paddingTopS, space.paddingBottomS]}>
+              <LanguagePicker first />
+              <DeckPickerStyleButton
+                icon="card-outline"
+                title={t`Card Collection`}
+                valueLabel={collectionSummary}
+                editable
+                onPress={myCollectionPressed}
+              />
+              <DeckPickerStyleButton
+                icon="show"
+                title={t`Encounter Spoilers`}
+                valueLabel={spoilerSummary}
+                onPress={editSpoilersPressed}
+                editable
+              />
+              <SettingsTabooPicker last />
+            </View>
+            <DeckButton
+              icon="arkhamdb"
+              onPress={cardsLoading ? undefined : doSyncCards}
+              title={syncCardsText}
+              loading={cardsLoading}
+              thin
+              bottomMargin={s}
+            />
+            <DeckButton
+              icon="book"
+              onPress={rulesPressed}
+              title={t`Rules`}
+              thin
+            />
+          </RoundedFactionBlock>
+        </View>
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
+          <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Preferences`} />}>
+            <View style={[space.paddingTopS, space.paddingBottomS]}>
+              <ThemePicker />
+              <FontSizePicker />
+            </View>
+            <DeckCheckboxButton
+              icon="copy"
+              title={t`Swipe between card results`}
+              value={!showCardsingleCardView}
+              onValueChange={swipeBetweenCardsChanged}
+            />
+            <DeckCheckboxButton
+              icon="sort-by-alpha"
+              title={t`Alphabetize guide encounter sets`}
+              value={alphabetizeEncounterSets}
+              onValueChange={alphabetizeEncounterSetsChanged}
+              last
+            />
+          </RoundedFactionBlock>
+        </View>
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
+          <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Support`} />}>
+            <DeckButton
+              icon="logo"
+              topMargin={s}
+              bottomMargin={s}
+              onPress={aboutPressed}
+              title={t`About Arkham Cards`}
+            />
+            <DeckButton
+              bottomMargin={s}
+              icon="book"
+              onPress={backupPressed}
+              title={t`Backup Data`}
+            />
+            <DeckButton
+              bottomMargin={s}
+              icon="settings"
+              onPress={diagnosticsPressed}
+              title={t`Diagnostics`}
+            />
+            <DeckButton
+              color="gold"
+              icon="logo"
+              onPress={contactPressed}
+              title={t`Contact us`}
+            />
+          </RoundedFactionBlock>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

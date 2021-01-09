@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react';
-import { Button } from 'react-native';
+import { View } from 'react-native';
 import { t } from 'ttag';
 
 import { Deck } from '@actions/types';
 import Card from '@data/Card';
+import DeckButton from '@components/deck/controls/DeckButton';
+import space from '@styles/space';
 
 interface Props {
   deck: Deck;
@@ -17,9 +19,14 @@ export default function UpgradeDeckButton({ deck, investigator, onPress }: Props
   }, [deck, investigator, onPress]);
 
   return (
-    <Button
-      title={t`Upgrade deck`}
-      onPress={buttonOnPress}
-    />
+    <View style={[space.paddingTopS, space.paddingBottomS, space.paddingRightM]}>
+      <DeckButton
+        thin
+        icon="upgrade"
+        color="gold"
+        title={t`Upgrade deck`}
+        onPress={buttonOnPress}
+      />
+    </View>
   );
 }

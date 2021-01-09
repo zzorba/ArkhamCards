@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { Linking } from 'react-native';
-import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { getLangPreference } from '@reducers';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 const URLS: { [lang: string]: string | undefined } = {
   de: 'https://asmodee.de/Arkham-Horror-LCG-Print_Play',
@@ -13,7 +13,7 @@ const URLS: { [lang: string]: string | undefined } = {
 };
 
 export default function DownloadParallelCardsButton() {
-  const lang = useSelector(getLangPreference);
+  const { lang } = useContext(LanguageContext);
   const onPress = useCallback(() => {
     const languageUrl = URLS[lang];
     Linking.openURL(languageUrl ||
@@ -21,7 +21,8 @@ export default function DownloadParallelCardsButton() {
     );
   }, [lang]);
   return (
-    <BasicButton
+    <ArkhamButton
+      icon="world"
       onPress={onPress}
       title={t`Download printable cards`}
     />

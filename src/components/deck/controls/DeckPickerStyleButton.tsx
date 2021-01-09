@@ -5,25 +5,31 @@ import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
+import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface Props {
   icon: string;
   title: string;
-  valueLabel: string;
+  valueLabel: string | React.ReactNode;
   valueLabelDescription?: string;
   first?: boolean;
   last?: boolean;
   editable: boolean;
   onPress: () => void;
   noLabelDivider?: boolean;
+  editIcon?: string;
 }
 
 function iconSize(icon: string) {
   switch (icon) {
     case 'xp':
+    case 'show':
       return 32;
     case 'card-outline':
       return 34;
+    case 'per_investigator':
+    case 'logo':
+    case 'font-size':
     case 'parallel':
     case 'taboo_thin':
       return 26;
@@ -42,6 +48,7 @@ export default function DeckPickerStyleButton({
   editable,
   onPress,
   noLabelDivider,
+  editIcon = 'edit',
 }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   return (
@@ -60,16 +67,22 @@ export default function DeckPickerStyleButton({
       <View style={[styles.row, space.paddingBottomS, !last ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         <View style={styles.leftRow}>
           <View style={styles.icon}>
-            <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
+            { icon === 'per_investigator' ? (
+              <ArkhamIcon name={icon} size={iconSize(icon)} color={colors.M} />
+            ) : (
+              <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
+            ) }
           </View>
           <View style={styles.column}>
             <Text style={[typography.smallLabel, typography.dark, typography.italic]}>
               { title }
             </Text>
             <View style={styles.row}>
-              <Text style={[typography.large]}>
-                { valueLabel }
-              </Text>
+              { typeof valueLabel === 'string' ? (
+                <Text style={[typography.large]}>
+                  { valueLabel }
+                </Text>
+              ) : valueLabel }
               { !!valueLabelDescription && (
                 <Text style={[typography.small, { color: colors.M, lineHeight: 24 * fontScale }]}>
                   { noLabelDivider ? `  ${valueLabelDescription}` : ` · ${valueLabelDescription}` }
@@ -80,7 +93,7 @@ export default function DeckPickerStyleButton({
         </View>
         { !!editable && (
           <View style={styles.editIcon}>
-            <AppIcon name="edit" size={20} color={colors.M} />
+            <AppIcon name={editIcon} size={20} color={colors.M} />
           </View>
         ) }
       </View>

@@ -124,7 +124,7 @@ export default function InvestigatorsListComponent({
       return null;
     }
     return (
-      <>
+      <View style={styles.column}>
         <Text style={typography.text}>
           { t`${investigator.deck_requirements.size} Cards` }
         </Text>
@@ -143,7 +143,7 @@ export default function InvestigatorsListComponent({
             </Text>
           );
         }) }
-      </>
+      </View>
     );
   }, [cards, hideDeckbuildingRules, typography]);
 
@@ -343,5 +343,9 @@ const styles = StyleSheet.create({
   },
   searchBarPadding: {
     height: SEARCH_BAR_HEIGHT,
+  },
+  column: {
+    flexDirection: 'column',
+    flex: 1,
   },
 });

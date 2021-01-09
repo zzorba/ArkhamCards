@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Icon, Text } from 'react-native-elements';
+import { StyleSheet, Text, View } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 import { StyleContext } from '@styles/StyleContext';
 import { STATE_PLAYING, usePlaybackState } from 'react-native-track-player';

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { useColorScheme } from 'react-native-appearance';
 import { findIndex } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,63 +9,62 @@ import { getThemeOverride } from '@reducers';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import StyleContext from '@styles/StyleContext';
 import COLORS from '@styles/colors';
+import { usePickerDialog } from '@components/deck/dialogs';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 
 export default function ThemePicker() {
   const dispatch = useDispatch();
-  const { colors } = useContext(StyleContext);
   const override = useSelector(getThemeOverride);
   const systemScheme = useColorScheme();
   const systemSchemeName = systemScheme === 'dark' ? t`Dark` : t`Light`;
-  const choices: {
-    text: string;
+  const items: {
+    title: string;
     value: 'system' | 'light' | 'dark',
   }[] = [
     {
-      text: t`Default (${systemSchemeName})`,
+      title: t`Default (${systemSchemeName})`,
       value: 'system',
     },
     {
-      text: t`Light`,
+      title: t`Light`,
       value: 'light',
     },
     {
-      text: t`Dark`,
+      title: t`Dark`,
       value: 'dark',
     },
   ];
-  const onThemeChange = (index: number | null) => {
-    if (index === null) {
-      return;
-    }
-    dispatch(setTheme(choices[index].value));
+  const onThemeChange = (theme: 'light' | 'dark' | 'system') => {
+    dispatch(setTheme(theme));
   };
-  const formatLabel = (index: number) => {
-    switch (index) {
-      case 0:
-        return systemSchemeName;
-      case 1:
-        return t`Light`;
-      case 2:
-      default:
-        return t`Dark`;
+  const valueLabel = useMemo(() => {
+    if (!override) {
+      return systemSchemeName;
     }
-  };
+    if (override === 'light') {
+      return t`Light`;
+    }
+    return t`Dark`;
+  }, [override, systemSchemeName]);
+
+  const { showDialog, dialog } = usePickerDialog<'light' | 'dark' | 'system'>({
+    title: t`Theme`,
+    items,
+    selectedValue: override || 'system',
+    onValueChange: onThemeChange,
+  });
+
   return (
-    <SinglePickerComponent
-      title={t`Theme`}
-      onChoiceChange={onThemeChange}
-      selectedIndex={findIndex(choices, x => !override ? x.value === 'system' : x.value === override)}
-      choices={choices}
-      colors={{
-        modalColor: COLORS.lightBlue,
-        modalTextColor: '#FFF',
-        backgroundColor: colors.background,
-        textColor: colors.darkText,
-      }}
-      editable
-      settingsStyle
-      hideWidget
-      formatLabel={formatLabel}
-    />
+    <>
+      <DeckPickerStyleButton
+        title={t`Theme`}
+        icon="logo"
+        editable
+        onPress={showDialog}
+        valueLabel={valueLabel}
+        first
+      />
+      { dialog }
+    </>
   );
 }

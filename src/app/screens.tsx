@@ -7,8 +7,8 @@ import TuneButton from '@components/cardlist/CardSearchComponent/TuneButton';
 import SortButton from '@components/cardlist/CardSearchComponent/SortButton';
 import MyCampaignsView from '@components/campaign/MyCampaignsView';
 import MyDecksView from '@components/decklist/MyDecksView';
-import SettingsView from '@components/settings/SettingsView';
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
+import SettingsView from '@components/settings/SettingsView';
 
 interface ProviderProps<S> {
   store: S;
@@ -45,6 +45,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Guide.Log': return require('@components/campaignguide/CampaignLogView').default;
     case 'Guide.LocationSetup': return require('@components/campaignguide/LocationSetupView').default;
     case 'Guide.CardSelector': return require('@components/campaignguide/CardSelectorView').default;
+    case 'Friends': return require('@components/settings/FriendsView').default;
     case 'Campaign.UpgradeDecks': return require('@components/campaign/UpgradeDecksView').default;
     case 'Campaign.EditResult': return require('@components/campaign/EditScenarioResultView').default;
     case 'Campaign.Scenarios': return require('@components/campaign/CampaignScenarioView').default;
@@ -71,6 +72,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Weakness.Draw': return require('@components/weakness/WeaknessDrawDialog').default;
     case 'Rules': return require('@components/settings/RulesView').default;
     case 'Rule': return require('@components/settings/RuleView').default;
+
     default: return undefined;
   }
 }

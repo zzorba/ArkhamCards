@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import NetInfo, { NetInfoState, NetInfoStateType } from '@react-native-community/netinfo';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
@@ -8,58 +8,62 @@ export interface NetworkStatusProps {
   refreshNetworkStatus: () => void;
 }
 
-export default function withNetworkStatus<P>(
-  WrappedComponent: React.ComponentType<P & NetworkStatusProps>
-) {
-  interface State {
-    networkType?: NetInfoStateType;
-    isConnected: boolean;
-  }
+interface NetworkState {
+  networkType?: NetInfoStateType;
+  isConnected: boolean;
+}
+export function useNetworkStatus(): [NetworkState, () => void] {
+  const [networkState, setNetworkState] = useState<NetworkState>({ isConnected: true });
 
-  class NetworkStatusComponent extends React.Component<P, State> {
-    state: State = {
-      isConnected: true,
-    };
-    unmounted: boolean = false;
-    listenerUnsubscribe?: () => void = undefined;
-
-    componentDidMount() {
-      this._refreshNetworkStatus();
-      this.listenerUnsubscribe = NetInfo.addEventListener(this._networkStatusChanged);
-    }
-
-    componentWillUnmount() {
-      this.unmounted = true;
-      if (this.listenerUnsubscribe) {
-        this.listenerUnsubscribe();
-      }
-    }
-
-    _refreshNetworkStatus = () => {
-      NetInfo.fetch().then(this._networkStatusChanged);
-    };
-
-    _networkStatusChanged = (state: NetInfoState) => {
-      if (!this.unmounted) {
-        this.setState({
+  useEffect(() => {
+    let canceled = false;
+    const updateNetworkState = (state: NetInfoState) => {
+      if (!canceled) {
+        setNetworkState({
           networkType: state.type,
           isConnected: state.isConnected,
         });
       }
     };
+    const refreshNetworkStatus = () => {
+      NetInfo.fetch().then(updateNetworkState);
+    };
 
-    render() {
-      return (
-        <WrappedComponent
-          {...this.props}
-          isConnected={this.state.isConnected}
-          networkType={this.state.networkType}
-          refreshNetworkStatus={this._refreshNetworkStatus}
-        />
-      );
-    }
+    const unregister = NetInfo.addEventListener(refreshNetworkStatus);
+    return () => {
+      canceled = true;
+      unregister();
+    };
+  }, [setNetworkState]);
+
+  const refreshNetworkStatus = useCallback(() => {
+    NetInfo.fetch().then(state => {
+      setNetworkState({
+        networkType: state.type,
+        isConnected: state.isConnected,
+      });
+    });
+  }, [setNetworkState]);
+
+  return [networkState, refreshNetworkStatus];
+}
+
+
+export default function withNetworkStatus<P>(
+  WrappedComponent: React.ComponentType<P & NetworkStatusProps>
+) {
+
+  function NetworkStatusComponent(props: P) {
+    const [state, refreshNetworkStatus] = useNetworkStatus();
+    return (
+      <WrappedComponent
+        {...props}
+        isConnected={state.isConnected}
+        networkType={state.networkType}
+        refreshNetworkStatus={refreshNetworkStatus}
+      />
+    );
   }
   hoistNonReactStatic(NetworkStatusComponent, WrappedComponent);
-
   return NetworkStatusComponent;
 }

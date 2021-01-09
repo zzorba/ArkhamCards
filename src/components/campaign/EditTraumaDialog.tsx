@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import DialogComponent from '@lib/react-native-dialog';
 
 import EditTraumaDialogContent from './EditTraumaDialogContent';
-import Dialog from '@components/core/Dialog';
+import Dialog from '@components/core/NewDialog';
 import { t } from 'ttag';
 import { Trauma } from '@actions/types';
 import Card from '@data/Card';
@@ -47,6 +47,14 @@ export default function EditTraumaDialog({ visible, investigator, trauma, update
         t`${investigator.firstName}’s Trauma` :
         t`Trauma`}
       visible={visible}
+      dismiss={{
+        title: t`Cancel`,
+        onPress: onCancel,
+      }}
+      confirm={{
+        title: t`Save`,
+        onPress: onSubmit,
+      }}
     >
       <EditTraumaDialogContent
         investigator={investigator}
@@ -54,8 +62,6 @@ export default function EditTraumaDialog({ visible, investigator, trauma, update
         mutateTrauma={mutateTrauma}
         hideKilledInsane={hideKilledInsane}
       />
-      <DialogComponent.Button label={t`Cancel`} onPress={onCancel} />
-      <DialogComponent.Button label={t`Save`} onPress={onSubmit} />
     </Dialog>
   );
 }

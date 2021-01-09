@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { AppState, Button, Text } from 'react-native';
+import { AppState, Button, Text, View, StyleSheet } from 'react-native';
 import { flatMap, forEach, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 import { Action } from 'redux';
@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Switch from '@components/core/Switch';
-import BasicButton from '@components/core/BasicButton';
 import { Deck, Slots, NumberChoices } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -26,6 +25,9 @@ import StyleContext from '@styles/StyleContext';
 import { useCounter, useEffectUpdate, useFlag, useDeck } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import { ThunkDispatch } from 'redux-thunk';
+import DeckButton from '@components/deck/controls/DeckButton';
+import space from '@styles/space';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 
 interface ShowDeckButtonProps {
@@ -53,7 +55,8 @@ function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonPro
     return null;
   }
   return (
-    <Button
+    <ArkhamButton
+      icon="deck"
       title={t`View deck upgrade`}
       onPress={onPress}
     />
@@ -359,20 +362,28 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     }
     if (deck) {
       return (
-        <BasicButton
-          title={t`Save deck upgrade`}
-          onPress={save}
-        />
+        <View style={space.paddingM}>
+          <DeckButton
+            icon="upgrade"
+            color="gold"
+            title={t`Save deck upgrade`}
+            onPress={save}
+          />
+        </View>
       );
     }
     if (!unsavedEdits) {
       return null;
     }
     return (
-      <BasicButton
-        title={t`Save adjustments`}
-        onPress={save}
-      />
+      <View style={space.paddingM}>
+        <DeckButton
+          icon="upgrade"
+          color="gold"
+          title={t`Save adjustments`}
+          onPress={save}
+        />
+      </View>
     );
   }, [choices, editable, deck, save, unsavedEdits]);
 
@@ -400,11 +411,13 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
   const deckButton = useMemo(() => {
     if (deck && choices !== undefined && choices.deckId) {
       return (
-        <ShowDeckButton
-          componentId={componentId}
-          deckId={choices.deckId[0]}
-          investigator={investigator}
-        />
+        <View style={styles.row}>
+          <ShowDeckButton
+            componentId={componentId}
+            deckId={choices.deckId[0]}
+            investigator={investigator}
+          />
+        </View>
       );
     }
     if (!editable) {
@@ -412,11 +425,15 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     }
     if (!deck) {
       return (
-        <Button title={t`Select deck`} onPress={selectDeck} />
+        <View style={styles.row}>
+          <ArkhamButton grow icon="deck" title={t`Select deck`} onPress={selectDeck} />
+        </View>
       );
     }
     return (
-      <Button title={t`View deck`} onPress={viewDeck} />
+      <View style={styles.row}>
+        <ArkhamButton grow icon="deck" title={t`View deck`} onPress={viewDeck} />
+      </View>
     );
   }, [componentId, deck, editable, investigator, choices, selectDeck, viewDeck]);
 
@@ -495,3 +512,10 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
 
 UpgradeDeckRow.choiceId = computeChoiceId;
 export default UpgradeDeckRow;
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'column',
+    flex: 1,
+  },
+});

@@ -6,26 +6,26 @@ import { useAppState } from '@react-native-community/hooks';
 import { t } from 'ttag';
 
 import { Campaign, InvestigatorData, Trauma } from '@actions/types';
-import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import Card from '@data/Card';
-import { s, l } from '@styles/space';
-import COLORS from '@styles/colors';
+import space, { s, l } from '@styles/space';
 import { useComponentDidDisappear, useCounters, useEffectUpdate, useFlag } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
+import DeckButton from '@components/deck/controls/DeckButton';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface Props {
   componentId: string;
   campaignData: CampaignGuideContextType;
   processedCampaign: ProcessedCampaign;
+  removeMode: boolean;
   updateCampaign: (
     id: number,
     sparseCampaign: Partial<Campaign>,
     now?: Date
   ) => void;
-  deleteCampaign?: () => void;
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
 }
 
@@ -37,12 +37,11 @@ function getDate(date: string | Date) {
 }
 
 export default function CampaignInvestigatorsComponent(props: Props) {
-  const { componentId, campaignData, processedCampaign, updateCampaign, deleteCampaign, showTraumaDialog } = props;
+  const { componentId, campaignData, processedCampaign, removeMode, updateCampaign, showTraumaDialog } = props;
   const { campaignState, latestDecks, campaignInvestigators, campaignId, playerCards } = useContext(CampaignGuideContext);
   const { borderStyle, typography } = useContext(StyleContext);
 
   const [spentXp, incSpentXp, decSpentXp] = useCounters(mapValues(campaignData.adjustedInvestigatorData, data => (data && data.spentXp) || 0));
-  const [removeMode, toggleRemoveInvestigator] = useFlag(false);
   const [xpDirty, setXpDirty] = useState(false);
   useEffectUpdate(() => {
     setXpDirty(true);
@@ -110,9 +109,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     }
   }, componentId, [syncCampaignData]);
 
-  const addInvestigatorPressed = useCallback(() => {
-    campaignState.showChooseDeck();
-  }, [campaignState]);
   const showChooseDeckForInvestigator = useCallback((investigator: Card) =>{
     campaignState.showChooseDeck(investigator);
   }, [campaignState]);
@@ -157,20 +153,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     campaignInvestigators,
     investigator => processedCampaign.campaignLog.isEliminated(investigator)
   ), [processedCampaign.campaignLog, campaignInvestigators]);
-
-  const removeButton = useMemo(() => {
-    if (!aliveInvestigators.length) {
-      return null;
-    }
-
-    return (
-      <BasicButton
-        title={t`Remove investigators`}
-        color={COLORS.red}
-        onPress={toggleRemoveInvestigator}
-      />
-    );
-  }, [toggleRemoveInvestigator, aliveInvestigators]);
 
   const updateTraumaData = useCallback((code: string, trauma: Trauma) => {
     const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed');
@@ -217,19 +199,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           showTraumaDialog={canEditTrauma ? showTraumaPressed : disabledShowTraumaPressed}
         />
       )) }
-      { !removeMode && (
-        <BasicButton
-          title={t`Add Investigator`}
-          onPress={addInvestigatorPressed}
-        />
-      ) }
-      { removeMode ?
-        <BasicButton
-          title={t`Finished removing investigators`}
-          color={COLORS.red}
-          onPress={toggleRemoveInvestigator}
-        /> : removeButton
-      }
       { killedInvestigators.length > 0 && (
         <View style={styles.header}>
           <Text style={[typography.bigGameFont, typography.center, typography.underline]}>
@@ -254,13 +223,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           />
         )) }
       </View>
-      { !!deleteCampaign && !removeMode && (
-        <BasicButton
-          title={t`Delete Campaign`}
-          color={COLORS.red}
-          onPress={deleteCampaign}
-        />
-      ) }
     </>
   );
 }

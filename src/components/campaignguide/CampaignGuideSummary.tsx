@@ -39,11 +39,9 @@ export default function CampaignSummaryComponent({
       />
       <View>
         <GameHeader text={campaignGuide.campaignName()} />
-        { difficultyText && (
-          <Text style={typography.text}>
-            { difficultyText }
-          </Text>
-        ) }
+        <Text style={typography.text}>
+          { difficultyText || '' }
+        </Text>
       </View>
     </View>
   );
@@ -51,8 +49,9 @@ export default function CampaignSummaryComponent({
 
 const styles = StyleSheet.create({
   row: {
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
     flexDirection: 'row',
-    width: '100%',
     position: 'relative',
     paddingTop: 24,
     paddingBottom: 24,

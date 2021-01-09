@@ -1,14 +1,14 @@
-import { Platform, StyleSheet, TextStyle } from 'react-native';
+import { ColorValue, Platform, StyleSheet, TextStyle } from 'react-native';
 
 import COLORS from './colors';
 
 export interface TypographyColors {
-  D10: string;
-  D30: string;
-  L30: string;
-  L20: string;
-  lightText: string;
-  darkText: string;
+  D10: ColorValue;
+  D30: ColorValue;
+  L30: ColorValue;
+  L20: ColorValue;
+  lightText: ColorValue;
+  darkText: ColorValue;
 }
 
 export interface Typography {

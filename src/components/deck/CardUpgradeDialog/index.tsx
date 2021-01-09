@@ -14,7 +14,7 @@ import DeckValidation from '@lib/DeckValidation';
 import Card from '@data/Card';
 import { NavigationProps } from '@components/nav/types';
 import space, { m } from '@styles/space';
-import DeckNavFooter from '@components/deck/DeckNavFooter';
+import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, PARALLEL_AGNES_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
@@ -24,6 +24,7 @@ import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 import DeckProblemBanner from '../DeckProblemBanner';
 import { useDialog } from '../dialogs';
+import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
@@ -361,7 +362,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   footerPadding: {
-    height: m,
+    height: FOOTER_HEIGHT + NOTCH_BOTTOM_PADDING,
   },
   shrewdAnalysisResults: {
     borderBottomWidth: StyleSheet.hairlineWidth,

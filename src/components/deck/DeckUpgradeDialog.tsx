@@ -162,7 +162,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
           saveDeckChanges={performSaveDeckChanges}
           upgradeCompleted={deckUpgradeComplete}
           campaignSection={campaignSection}
-          saveButtonText={t`Save`}
+          saveButtonText={t`Save upgrade`}
           ref={deckUpgradeComponent}
         />
       </ScrollView>

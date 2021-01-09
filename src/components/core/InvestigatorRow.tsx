@@ -113,7 +113,9 @@ export default function InvestigatorRow({
                 <PlaceholderLine color={colors.L10} height={28 * fontScale * 0.6} width={40} style={{ marginTop: 4, marginBottom: 4 }} />
               </Placeholder>
             ) }
-            { !!button && button }
+            <View style={styles.buttonRow}>
+              { !!button && button }
+            </View>
           </View>
           { !noFactionIcon && (
             <View style={space.marginRightM}>
@@ -130,8 +132,8 @@ export default function InvestigatorRow({
             <View style={styles.closeIcon}>
               <TouchableOpacity onPress={handleOnRemove}>
                 <MaterialCommunityIcons
-                  name="close"
-                  size={36}
+                  name="delete"
+                  size={26}
                   color={colors.D10}
                 />
               </TouchableOpacity>
@@ -215,5 +217,8 @@ const styles = StyleSheet.create({
   },
   headerColor: {
     height: 16,
+  },
+  buttonRow: {
+    flexDirection: 'row',
   },
 });

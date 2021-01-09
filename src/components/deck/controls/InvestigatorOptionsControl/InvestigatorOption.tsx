@@ -34,7 +34,6 @@ export default function InvestigatorOption({
       setMeta('deck_size_selected', selection);
     }
   }, [option, setMeta]);
-  const faction = investigator.factionCode();
   if (option.deck_size_select && option.deck_size_select.length) {
     const selection = (
       meta.deck_size_selected &&
@@ -46,7 +45,6 @@ export default function InvestigatorOption({
         sizes={option.deck_size_select}
         onChange={onChange}
         selection={selection || option.deck_size_select[0]}
-        investigatorFaction={faction}
         disabled={disabled}
         editWarning={editWarning}
         first={first}
@@ -64,7 +62,6 @@ export default function InvestigatorOption({
         factions={option.faction_select}
         onChange={onChange}
         selection={selection || option.faction_select[0]}
-        investigatorFaction={faction}
         disabled={disabled}
         editWarning={editWarning}
         first={first}

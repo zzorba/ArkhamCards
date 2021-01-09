@@ -9,16 +9,19 @@ interface Props {
   icon: ArkhamButtonIconType;
   title: string;
   onPress: () => void;
+  grow?: boolean;
 }
 
-function ArkhamButton({ icon, title, onPress }: Props) {
+function ArkhamButton({ icon, title, onPress, grow }: Props) {
   const { colors, fontScale, shadow, typography } = useContext(StyleContext);
   const height = 18 * fontScale + 20;
   return (
-    <View style={styles.wrapper}>
+    <View style={[styles.wrapper, grow ? { flexDirection: 'row' } : styles.inline]}>
       <Ripple
         style={[
-          shadow.medium, {
+          shadow.medium,
+          grow ? styles.grow : undefined,
+          {
             backgroundColor: colors.M,
             height,
             borderRadius: height / 2,
@@ -46,10 +49,15 @@ export default ArkhamButton;
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingLeft: 12,
     paddingRight: 12,
     paddingTop: 10,
     paddingBottom: 10,
+  },
+  grow: {
+    flex: 1,
+  },
+  inline: {
+    paddingLeft: 12,
   },
   row: {
     flexDirection: 'row',

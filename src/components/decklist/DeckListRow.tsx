@@ -100,7 +100,7 @@ function DeckListRowDetails({
   const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate), lang) : undefined;
   const traumaData = campaign && campaign.investigatorData[investigator.code];
   return (
-    <View>
+    <View style={styles.column}>
       <Text style={typography.small}>
         { campaign ? campaign.name :
           ngettext(
@@ -241,13 +241,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    flex: 1,
   },
   investigatorBlock: {
     paddingBottom: s,
-    width: '100%',
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    flex: 1,
   },
   loading: {
     marginLeft: 10,

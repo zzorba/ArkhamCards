@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Text, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { find, findLast, findLastIndex } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -11,6 +11,7 @@ import CampaignGuide from '@data/scenario/CampaignGuide';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
 
 interface Props {
   componentId: string;
@@ -22,36 +23,6 @@ interface Props {
 
 export default function AddSideScenarioButton({ componentId, campaignId, processedCampaign, campaignGuide, campaignState }: Props) {
   const { typography } = useContext(StyleContext);
-
-  const onPress = useCallback(() => {
-    const lastCompletedScenario = findLast(
-      processedCampaign.scenarios,
-      scenario => scenario.type === 'completed'
-    );
-    if (!lastCompletedScenario) {
-      return null;
-    }
-    Navigation.push<AddSideScenarioProps>(componentId, {
-      component: {
-        name: 'Guide.SideScenario',
-        passProps: {
-          campaignId,
-          latestScenarioId: lastCompletedScenario.id,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Choose Side-Scenario`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, campaignId, processedCampaign.scenarios]);
-
   const canAddScenario = useMemo(() => {
     const lastCompletedScenarioIndex = findLastIndex(
       processedCampaign.scenarios,
@@ -101,20 +72,47 @@ export default function AddSideScenarioButton({ componentId, campaignId, process
     return true;
   }, [processedCampaign.scenarios, processedCampaign.campaignLog, campaignGuide, campaignState]);
 
+  const onPress = useCallback(() => {
+    if (!canAddScenario) {
+      Alert.alert(
+        t`Can't add side scenario right now.`,
+        t`Side scenarios cannot be added to a campaign until the previous scenario and following interludes are completed.`
+      );
+      return;
+    }
+    const lastCompletedScenario = findLast(
+      processedCampaign.scenarios,
+      scenario => scenario.type === 'completed'
+    );
+    if (!lastCompletedScenario) {
+      return null;
+    }
+    Navigation.push<AddSideScenarioProps>(componentId, {
+      component: {
+        name: 'Guide.SideScenario',
+        passProps: {
+          campaignId,
+          latestScenarioId: lastCompletedScenario.id,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Choose Side-Scenario`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, campaignId, processedCampaign.scenarios, canAddScenario]);
+
   return (
-    <>
-      <BasicButton
-        title={t`Add side scenario`}
-        onPress={onPress}
-        disabled={!canAddScenario}
-      />
-      { !canAddScenario && (
-        <View style={[space.marginTopM, space.marginBottomL, space.marginSideM]}>
-          <Text style={typography.text}>
-            { t`Side scenarios cannot be added to a campaign until the previous scenario and following interludes are completed.` }
-          </Text>
-        </View>
-      ) }
-    </>
+    <RoundedFooterButton
+      icon="expand"
+      title={t`Add side scenario`}
+      onPress={onPress}
+    />
   );
 }

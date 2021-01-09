@@ -1,13 +1,14 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, forEach, map, throttle } from 'lodash';
 import {
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
@@ -24,6 +25,7 @@ import {
   Deck,
   Slots,
   INCOMPLETE_GUIDED_CAMPAIGNS,
+  DIFFICULTIES,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
@@ -47,6 +49,12 @@ import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
 import { CampaignSelection } from '../SelectCampaignDialog';
+import { usePickerDialog, useTextDialog } from '@components/deck/dialogs';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import { diff } from 'react-native-reanimated';
 
 interface CampaignChoice {
   selection: CampaignSelection;
@@ -293,10 +301,17 @@ function NewCampaignView({ componentId }: NavigationProps) {
       },
     });
   }, [componentId, customChaosBag, setCustomChaosBag]);
-
-  const showDifficultyDialog = useCallback(() => {
-    showCampaignDifficultyDialog(setDifficulty);
-  }, [setDifficulty]);
+  const { dialog: difficultyDialog, showDialog: showDifficultyDialog } = usePickerDialog({
+    title: t`Difficulty`,
+    items: map(DIFFICULTIES, difficulty => {
+      return {
+        title: difficultyString(difficulty),
+        value: difficulty,
+      };
+    }),
+    selectedValue: difficulty,
+    onValueChange: setDifficulty,
+  });
 
   const campaignChanged = useCallback((selection: CampaignSelection, campaign: string, hasGuide: boolean) => {
     setCampaignChoice({
@@ -305,41 +320,34 @@ function NewCampaignView({ componentId }: NavigationProps) {
       hasGuide,
     });
   }, [setCampaignChoice]);
-
-  const chaosBagLine = useMemo(() => {
-    return (
-      <View style={styles.block}>
-        <Text style={typography.mediumGameFont}>
-          { t`Chaos Bag` }
-        </Text>
-        <View style={space.marginTopS}>
-          <ChaosBagLine chaosBag={chaosBag} />
-        </View>
-      </View>
-    );
-  }, [typography, chaosBag]);
-
   const weaknessSetSection = useMemo(() => {
     return (
-      <View style={[space.paddingBottomS, styles.underline, borderStyle]}>
-        <View style={styles.block}>
-          <Text style={typography.mediumGameFont}>
-            { t`Weakness Set` }
-          </Text>
-          <Text style={typography.small}>
-            { t`Include all basic weaknesses from these expansions` }
-          </Text>
-        </View>
-        <View style={[space.paddingXs, space.paddingRightS]}>
-          <WeaknessSetPackChooserComponent
-            componentId={componentId}
-            compact
-            onSelectedPacksChanged={setWeaknessPacks}
-          />
-        </View>
+      <View style={space.paddingS}>
+        <RoundedFactionBlock
+          faction="neutral"
+          header={(
+            <View style={[styles.block, { backgroundColor: colors.L20 }]}>
+              <Text style={[typography.mediumGameFont, typography.center]}>
+                { t`Weakness Set` }
+              </Text>
+              <Text style={typography.small}>
+                { t`Include all basic weaknesses from these expansions` }
+              </Text>
+            </View>
+          )}
+          noSpace
+        >
+          <View style={[space.paddingXs, space.paddingRightS]}>
+            <WeaknessSetPackChooserComponent
+              componentId={componentId}
+              compact
+              onSelectedPacksChanged={setWeaknessPacks}
+            />
+          </View>
+        </RoundedFactionBlock>
       </View>
     );
-  }, [componentId, borderStyle, typography, setWeaknessPacks]);
+  }, [componentId, typography, colors, setWeaknessPacks]);
 
   const campaignSectionDialog = useMemo(() => {
     return (
@@ -351,21 +359,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
     );
   }, [campaignLogDialogVisible, addCampaignNoteSection, hideCampaignLogDialog]);
 
-  const chaosBagSection = useMemo(() => {
-    if (guided || selection.type === 'standalone') {
-      return null;
-    }
-    return hasDefinedChaosBag ? (
-      <View style={[styles.underline, borderStyle]}>
-        { chaosBagLine }
-      </View>
-    ) : (
-      <NavButton onPress={showChaosBagDialog} color={colors.background}>
-        { chaosBagLine }
-      </NavButton>
-    );
-  }, [hasDefinedChaosBag, chaosBagLine, showChaosBagDialog, guided, borderStyle, colors, selection]);
-
   const campaignLogSection = useMemo(() => {
     if (isGuided || selection.type === 'standalone') {
       return null;
@@ -374,109 +367,169 @@ function NewCampaignView({ componentId }: NavigationProps) {
       undefined :
       deleteCampaignNoteSection;
     return (
-      <View style={[styles.underline, borderStyle]}>
-        <View style={styles.block}>
-          <Text style={typography.mediumGameFont}>
-            { t`Campaign Log` }
-          </Text>
-        </View>
-        { map(campaignLog.sections || [], section => (
-          <CampaignNoteSectionRow
-            key={section}
-            name={section}
-            onPress={onPress}
-          />
-        )) }
-        { map(campaignLog.counts || [], section => (
-          <CampaignNoteSectionRow
-            key={section}
-            name={section}
-            isCount
-            onPress={onPress}
-          />
-        )) }
-        { map(campaignLog.investigatorSections || [], section => (
-          <CampaignNoteSectionRow
-            key={section}
-            name={section}
-            perInvestigator
-            onPress={onPress}
-          />
-        )) }
-        { map(campaignLog.investigatorCounts || [], section => (
-          <CampaignNoteSectionRow
-            key={section}
-            name={section}
-            perInvestigator
-            isCount
-            onPress={onPress}
-          />
-        )) }
-        { !hasDefinedChaosBag && (
-          <View style={space.marginTopS}>
-            <BasicButton title={t`Add Log Section`} onPress={showCampaignLogDialog} />
-          </View>
-        ) }
+      <View style={space.paddingS}>
+        <RoundedFactionBlock
+          faction="neutral"
+          header={(
+            <View style={[styles.block, { backgroundColor: colors.L20 }]}>
+              <Text style={[typography.mediumGameFont, typography.center]}>
+                { t`Campaign Log` }
+              </Text>
+            </View>
+          )}
+          footer={!hasDefinedChaosBag ? <RoundedFooterButton icon="expand" title={t`Add Log Section`} onPress={showCampaignLogDialog} /> : undefined}
+        >
+          { map(campaignLog.sections || [], section => (
+            <CampaignNoteSectionRow
+              key={section}
+              name={section}
+              onPress={onPress}
+            />
+          )) }
+          { map(campaignLog.counts || [], section => (
+            <CampaignNoteSectionRow
+              key={section}
+              name={section}
+              isCount
+              onPress={onPress}
+            />
+          )) }
+          { map(campaignLog.investigatorSections || [], section => (
+            <CampaignNoteSectionRow
+              key={section}
+              name={section}
+              perInvestigator
+              onPress={onPress}
+            />
+          )) }
+          { map(campaignLog.investigatorCounts || [], section => (
+            <CampaignNoteSectionRow
+              key={section}
+              name={section}
+              perInvestigator
+              isCount
+              onPress={onPress}
+            />
+          )) }
+        </RoundedFactionBlock>
       </View>
     );
-  }, [borderStyle, typography, hasDefinedChaosBag, hasDefinedCampaignLog, isGuided, campaignLog, selection,
+  }, [typography, colors, hasDefinedChaosBag, hasDefinedCampaignLog, isGuided, campaignLog, selection,
     showCampaignLogDialog, deleteCampaignNoteSection]);
 
+  const showDeckSelector = useCallback(() => {
+    if (deckAdded) {
+      const passProps: MyDecksSelectorProps = {
+        campaignId: nextId,
+        onDeckSelect: deckAdded,
+        onInvestigatorSelect: guided ? investigatorAdded : undefined,
+        selectedDeckIds: deckIds,
+        selectedInvestigatorIds: investigatorIds,
+      };
+      Navigation.showModal<MyDecksSelectorProps>({
+        stack: {
+          children: [{
+            component: {
+              name: 'Dialog.DeckSelector',
+              passProps,
+              options: {
+                modalPresentationStyle: Platform.OS === 'ios' ?
+                  OptionsModalPresentationStyle.fullScreen :
+                  OptionsModalPresentationStyle.overCurrentContext,
+              },
+            },
+          }],
+        },
+      });
+    }
+  }, [deckIds, investigatorIds, deckAdded, investigatorAdded, nextId, guided]);
+  const { dialog, showDialog } = useTextDialog({
+    title: t`Name`,
+    placeholder: placeholderName,
+    value: name,
+    onValueChange: onNameChange,
+  });
   return (
     <View style={backgroundStyle}>
       <ScrollView contentContainerStyle={backgroundStyle}>
-        <CampaignSelector
-          componentId={componentId}
-          campaignChanged={campaignChanged}
-        />
-        <EditText
-          title={t`Name`}
-          placeholder={placeholderName}
-          onValueChange={onNameChange}
-          value={name}
-        />
+        <View style={space.paddingS}>
+          <CampaignSelector
+            componentId={componentId}
+            campaignChanged={campaignChanged}
+          />
+          <DeckPickerStyleButton
+            icon="name"
+            title={t`Name`}
+            valueLabel={name || placeholderName}
+            onPress={showDialog}
+            editable
+            last
+          />
+        </View>
         { hasGuide && selection.type === 'campaign' && (
           <SettingsSwitch
             title={t`Guided Campaign`}
             description={guided ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
             onValueChange={toggleGuided}
             value={guided}
+            last
           />
         ) }
+        { selection.type === 'campaign' && !isGuided && (
+          <View style={space.paddingS}>
+            <DeckPickerStyleButton
+              editable
+              title={t`Difficulty`}
+              onPress={showDifficultyDialog}
+              valueLabel={difficultyString(difficulty)}
+              icon="class_neutral"
+              first
+            />
+            <DeckPickerStyleButton
+              icon="card-outline"
+              editable={!hasDefinedChaosBag}
+              title={t`Chaos Bag`}
+              valueLabel={<ChaosBagLine chaosBag={chaosBag} />}
+              onPress={showChaosBagDialog}
+              last
+            />
+          </View>
+        ) }
         { hasGuide && guided && selection.type === 'campaign' && INCOMPLETE_GUIDED_CAMPAIGNS.has(selection.code) && (
-          <View style={[styles.block, styles.underline, borderStyle]}>
+          <View style={styles.block}>
             <Text style={typography.text}>
               { t`Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\nAs new scenarios are released, I will try to update the app promptly but there may be some slight delays.` }</Text>
           </View>
         ) }
-        { !isGuided && selection.type === 'campaign' && (
-          <PickerStyleButton
-            title={t`Difficulty`}
-            id="difficulty"
-            onPress={showDifficultyDialog}
-            value={difficultyString(difficulty)}
-            widget="nav"
-          />
-        ) }
-        { chaosBagSection }
         { campaignLogSection }
         { (selection.type !== 'campaign' || selection.code !== TDE) && (
-          <View style={[styles.underline, borderStyle]}>
-            <View style={styles.block}>
-              <Text style={typography.mediumGameFont}>
-                { t`Investigators` }
-              </Text>
-            </View>
-            <DeckSelector
-              componentId={componentId}
-              campaignId={nextId}
-              deckIds={deckIds}
-              investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
-              deckAdded={deckAdded}
-              deckRemoved={deckRemoved}
-              investigatorAdded={guided ? investigatorAdded : undefined}
-              investigatorRemoved={guided ? investigatorRemoved : undefined}
-            />
+          <View style={space.paddingS}>
+            <RoundedFactionBlock
+              faction="neutral"
+              header={(
+                <View style={[styles.block, { backgroundColor: colors.L20 }]}>
+                  <Text style={[typography.mediumGameFont, typography.center]}>
+                    { t`Investigators` }
+                  </Text>
+                </View>
+              )}
+              footer={(
+                <RoundedFooterButton
+                  icon="expand"
+                  title={guided ? t`Add Investigator` : t`Add Investigator Deck`}
+                  onPress={showDeckSelector}
+                />
+              )}
+              noSpace
+            >
+              <DeckSelector
+                componentId={componentId}
+                deckIds={deckIds}
+                investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
+                deckRemoved={deckRemoved}
+                investigatorRemoved={guided ? investigatorRemoved : undefined}
+              />
+            </RoundedFactionBlock>
           </View>
         ) }
         { weaknessSetSection }
@@ -496,6 +549,8 @@ function NewCampaignView({ componentId }: NavigationProps) {
         </View>
       </ScrollView>
       { campaignSectionDialog }
+      { difficultyDialog }
+      { dialog }
     </View>
   );
 }
@@ -513,9 +568,6 @@ NewCampaignView.options = () => {
 export default NewCampaignView;
 
 const styles = StyleSheet.create({
-  underline: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   footer: {
     minHeight: 100,
   },
@@ -523,5 +575,7 @@ const styles = StyleSheet.create({
     padding: s,
     paddingLeft: m,
     paddingRight: m,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
   },
 });

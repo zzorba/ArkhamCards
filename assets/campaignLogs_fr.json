@@ -1212,13 +1212,13 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "masculine_text": "#name#\" a été Pris par l'Abîme",
+            "feminine_text": "#name#\" a été Prise par l'Abîme"
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "masculine_text": "#name#\" a été Prise par l'Abîme",
+            "feminine_text": "#name#\" a été Prise par l'Abîme"
           },
           {
             "id": "blob_contained",
@@ -1230,15 +1230,15 @@
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua s'est retiré pour soigner ses blessures."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "de nombreuses personnes ont été sacrifiées à Cnidathqua lors du Carnaval."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "le soleil a banni Cnidathqua dans les profondeurs."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -1258,47 +1258,47 @@
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "le Rougarou continue de hanter le bayou."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "le Rougarou a été abattu et la malédiction levée"
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "le Rougarou s'est enfui et vous avez été maudit"
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "vous êtes au courant des plans de Xzharah."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "les machinations de la Fraternité se poursuivent sans relâche."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "la malédiction de torpeur a été levée"
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "Rêveurs dans l'abîme (#X#)"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
+            "text": "Agents de la Fraternité qui se sont échappés : #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "le Jour Fatidique est arrivé."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
+            "text": "vous avez rejoint les forces de Xzharah."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "l'Abîme a été sauvé"
           }
         ]
       },

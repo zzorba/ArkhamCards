@@ -350,6 +350,7 @@ export interface CampaignNotes {
 
 export interface Campaign {
   id: number;
+  serverId?: string;
   uuid?: string;
   name: string;
   difficulty?: CampaignDifficulty;

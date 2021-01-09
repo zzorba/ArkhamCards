@@ -40,10 +40,10 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
       <TabBar
         {...props}
         scrollEnabled={scrollEnabled || (fontScale > 1)}
-        activeColor={colors.navButton}
-        inactiveColor={colors.lightText}
-        indicatorStyle={{ backgroundColor: colors.navButton }}
-        style={backgroundStyle}
+        activeColor={colors.D20}
+        inactiveColor={colors.M}
+        indicatorStyle={{ backgroundColor: colors.D20 }}
+        style={{ backgroundColor: colors.L20 }}
         labelStyle={{
           fontFamily: 'Alegreya-Regular',
           fontSize: 14 * fontScale,
@@ -51,7 +51,7 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
         }}
       />
     );
-  }, [backgroundStyle, fontScale, colors, scrollEnabled]);
+  }, [fontScale, colors, scrollEnabled]);
 
   const renderTab = useCallback(({ route }: { route: { key: string } }) => {
     const tab = find(tabs, t => t.key === route.key);

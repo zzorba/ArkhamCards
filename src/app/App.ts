@@ -350,7 +350,7 @@ export default class App {
           bottomTab: {
             text: t`Settings`,
             icon: iconsMap.settings,
-            testId: 'Bottom_Settings',
+            testId: 'Bottom_Account',
           },
         },
       },

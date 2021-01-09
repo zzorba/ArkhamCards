@@ -20,6 +20,7 @@ import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import BasicButton from '@components/core/BasicButton';
 import { useCounter, useSlots } from '@components/core/hooks';
+import DeckButton from './controls/DeckButton';
 
 interface DeckUpgradeProps extends NavigationProps{
   investigator: Card;
@@ -181,7 +182,11 @@ function DeckUpgradeComponent({
         updateExileCount={onExileCountChange}
       />
       { !!campaignSection && campaignSection }
-      { !!saveButtonText && <BasicButton onPress={throttledSaveUpgrade} title={saveButtonText} /> }
+      { !!saveButtonText && (
+        <View style={space.paddingM}>
+          <DeckButton icon="upgrade" color="gold" onPress={throttledSaveUpgrade} title={saveButtonText} />
+        </View>
+      ) }
     </View>
   );
 }

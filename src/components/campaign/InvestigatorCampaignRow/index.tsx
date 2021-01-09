@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Button, Text, View, Platform } from 'react-native';
+import { Button, Text, View, Platform, StyleSheet } from 'react-native';
 import { find , map } from 'lodash';
 import { t } from 'ttag';
 
@@ -19,6 +19,7 @@ import PickerStyleButton from '@components/core/PickerStyleButton';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface Props {
   componentId: string;
@@ -203,39 +204,42 @@ export default function InvestigatorCampaignRow({
 
   const button = useMemo(() => {
     const traumaButton = (!!showTraumaDialog && eliminated) && (
-      <Button
+      <ArkhamButton
+        icon="edit"
         title={t`Edit Trauma`}
-        color={Platform.OS === 'ios' ? colors.navButton : undefined}
         onPress={onTraumaPress}
+        grow
       />
     );
 
     if (deck) {
       return (
-        <>
-          <Button
-            title={t`View Deck`}
-            color={Platform.OS === 'ios' ? colors.navButton : undefined}
+        <View style={styles.column}>
+          <ArkhamButton
+            title={t`View deck`}
+            icon="deck"
             onPress={viewDeck}
+            grow
           />
           { traumaButton }
-        </>
+        </View>
       );
     }
     if (!chooseDeckForInvestigator) {
       return traumaButton || <View />;
     }
     return (
-      <>
-        <Button
-          title={t`Select Deck`}
-          color={Platform.OS === 'ios' ? colors.navButton : undefined}
+      <View style={styles.column}>
+        <ArkhamButton
+          icon="deck"
+          grow
+          title={t`Select deck`}
           onPress={selectDeck}
         />
         { traumaButton }
-      </>
+      </View>
     );
-  }, [colors, eliminated, deck, chooseDeckForInvestigator, showTraumaDialog, onTraumaPress, viewDeck, selectDeck]);
+  }, [eliminated, deck, chooseDeckForInvestigator, showTraumaDialog, onTraumaPress, viewDeck, selectDeck]);
 
   return (
     <InvestigatorRow
@@ -249,3 +253,12 @@ export default function InvestigatorCampaignRow({
     </InvestigatorRow>
   );
 }
+
+const styles = StyleSheet.create({
+  column: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+});
