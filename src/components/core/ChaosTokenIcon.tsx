@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -34,20 +34,10 @@ export default function ChaosTokenIcon({ icon, size, color, fontFamily }: Props)
   };
   return (
     <Text
-      style={[styles.label, textStyle]}
+      style={textStyle}
       allowFontScaling={false}
     >
       { icon }
     </Text>
   );
 }
-
-interface Styles {
-  label: TextStyle;
-}
-
-const styles = StyleSheet.create<Styles>({
-  label: {
-    fontSize: 28,
-  },
-});

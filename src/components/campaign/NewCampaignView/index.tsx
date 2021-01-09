@@ -478,15 +478,15 @@ function NewCampaignView({ componentId }: NavigationProps) {
         { selection.type === 'campaign' && !isGuided && (
           <View style={space.paddingS}>
             <DeckPickerStyleButton
-              editable
+              icon="difficulty"
               title={t`Difficulty`}
               onPress={showDifficultyDialog}
               valueLabel={difficultyString(difficulty)}
-              icon="class_neutral"
+              editable
               first
             />
             <DeckPickerStyleButton
-              icon="card-outline"
+              icon="chaos_bag"
               editable={!hasDefinedChaosBag}
               title={t`Chaos Bag`}
               valueLabel={<ChaosBagLine chaosBag={chaosBag} />}

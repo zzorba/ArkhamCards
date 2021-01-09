@@ -17,7 +17,7 @@ const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
   'auto-fail': 'auto_fail',
 };
 
-export default function ArkhamIconNode({ colors, fontScale }: StyleContextType) {
+export default function ArkhamIconNode({ colors, fontScale }: StyleContextType, sizeScale: number) {
   return (
     node: Node & WithIconName,
     output: OutputFunction,
@@ -27,7 +27,7 @@ export default function ArkhamIconNode({ colors, fontScale }: StyleContextType) 
       <ArkhamIcon
         key={state.key}
         name={BAD_ICON_NAMES[node.name] || node.name}
-        size={16 * fontScale}
+        size={16 * fontScale * sizeScale}
         color={colors.darkText}
       />
     );

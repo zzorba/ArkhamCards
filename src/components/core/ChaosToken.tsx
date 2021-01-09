@@ -6,7 +6,7 @@ import {
 
 import ChaosTokenIcon from './ChaosTokenIcon';
 import { ChaosTokenType } from '@app_constants';
-import space, { iconSizeScale } from '@styles/space';
+import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
@@ -21,7 +21,7 @@ export default function ChaosToken({ id, status }: Props) {
     case 'removed': color = colors.faction.survivor.lightBackground; break;
   }
   const SCALE = ((fontScale - 1) / 4 + 1);
-  const SIZE = 36 * SCALE * iconSizeScale;
+  const SIZE = 36 * SCALE;
 
   return (
     <View style={[
@@ -34,7 +34,7 @@ export default function ChaosToken({ id, status }: Props) {
         borderColor: colors.D30,
       },
     ]}>
-      <ChaosTokenIcon icon={id} size={28 * SCALE * iconSizeScale} color={colors.darkText} />
+      <ChaosTokenIcon icon={id} size={28 * SCALE} color={colors.darkText} />
     </View>
   );
 }

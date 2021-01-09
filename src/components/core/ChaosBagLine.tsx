@@ -1,53 +1,26 @@
-import React, { useContext } from 'react';
-import { keys, map, range, sortBy } from 'lodash';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import React from 'react';
+import { keys, flatMap, map, range, sortBy } from 'lodash';
 
-import ChaosTokenIcon from './ChaosTokenIcon';
-import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
-import space, { iconSizeScale } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType, SPECIAL_TOKENS } from '@app_constants';
+import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
+
+const SPECIAL_TOKENS_SET: Set<ChaosTokenType> = new Set(SPECIAL_TOKENS);
 
 interface Props {
   chaosBag: ChaosBag;
 }
 
 export default function ChaosBagLine({ chaosBag }: Props) {
-  const { colors, fontScale, typography } = useContext(StyleContext);
   const bagKeys = sortBy(
     keys(chaosBag),
     (token: ChaosTokenType) => CHAOS_TOKEN_ORDER[token]);
+  const tokensLine = flatMap(bagKeys, (token: ChaosTokenType) => (
+    map(range(0, chaosBag[token] || 0), () => SPECIAL_TOKENS_SET.has(token) ? `[${token}]` : `${token}`)
+  )).join(', ');
   return (
-    <View style={[styles.row, space.marginBottomXs]}>
-      { map(bagKeys, (token: ChaosTokenType, tokenIdx: number) => (
-        map(range(0, chaosBag[token] || 0), idx => {
-          const isLast = (idx === ((chaosBag[token] || 0) - 1)) &&
-            (tokenIdx === (bagKeys.length - 1));
-          return (
-            <View key={`${token}-${idx}`} style={styles.commaView}>
-              <ChaosTokenIcon
-                icon={token}
-                size={24 * iconSizeScale * fontScale}
-                color={colors.darkText}
-              />
-              { !isLast && <Text style={typography.header}>, </Text> }
-            </View>
-          );
-        })
-      )) }
-    </View>
+    <CardFlavorTextComponent
+      sizeScale={1.3}
+      text={`<game>${tokensLine}</game>`}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  commaView: {
-    flexDirection: 'row',
-  },
-});

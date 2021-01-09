@@ -133,7 +133,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
           />
           <DeckButton
             thin
-            icon="elder_sign"
+            icon="chaos_bag"
             title={t`Draw chaos tokens`}
             onPress={chaosBagSimulatorPressed}
             topMargin={s}
@@ -141,7 +141,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
           />
           <DeckButton
             thin
-            icon="chart"
+            icon="difficulty"
             title={t`Odds calculator`}
             onPress={oddsCalculatorPressed}
           />

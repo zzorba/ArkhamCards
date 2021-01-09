@@ -22,6 +22,7 @@ import StrikethroughTextNode from './StrikethroughTextNode';
 import SmallCapsNode from './SmallCapsNode';
 import CenterNode from './CenterNode';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { size } from 'lodash';
 
 const BASE_ORDER = 0;
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
@@ -35,29 +36,29 @@ const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
   render: ParagraphHtmlTagNode,
 };
 
-function ArkhamIconRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
+function ArkhamIconRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=$|[^(])')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style),
+    render: ArkhamIconNode(style, sizeScale),
   };
 }
 
-function ArkhamIconSkillTextRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
+function ArkhamIconSkillTextRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=\\([0-9X]+\\))')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style),
+    render: ArkhamIconNode(style, sizeScale),
   };
 }
 
-function ArkahmIconSpanRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
+function ArkahmIconSpanRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"( title="[^"]*")?></span>')),
     order: BASE_ORDER + 1,
@@ -65,7 +66,7 @@ function ArkahmIconSpanRule(style: StyleContextType): MarkdownRule<WithIconName,
       console.log(capture[1]);
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style),
+    render: ArkhamIconNode(style, sizeScale),
   };
 }
 
@@ -221,9 +222,10 @@ function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, 
 interface Props {
   text: string;
   onLinkPress?: (url: string, context: StyleContextType) => void;
+  sizeScale?: number;
 }
 
-export default function CardTextComponent({ text, onLinkPress }: Props) {
+export default function CardTextComponent({ text, onLinkPress, sizeScale = 1 }: Props) {
   const context = useContext(StyleContext);
   const cleanText = text
     .replace(/\\u2022/g, '•')
@@ -243,7 +245,7 @@ export default function CardTextComponent({ text, onLinkPress }: Props) {
     <MarkdownView
       rules={{
         emMarkdown: EmphasisMarkdownTagRule(context),
-        arkhamIconSpan: ArkahmIconSpanRule(context),
+        arkhamIconSpan: ArkahmIconSpanRule(context, sizeScale),
         hrTag: HrTagRule,
         blockquoteTag: BlockquoteHtmlTagRule,
         delTag: DelHtmlTagRule(context),
@@ -257,8 +259,8 @@ export default function CardTextComponent({ text, onLinkPress }: Props) {
         iTag: ItalicHtmlTagRule(context),
         smallcapsTag: SmallCapsHtmlTagRule(context),
         center: CenterHtmlTagRule,
-        arkhamIcon: ArkhamIconRule(context),
-        arkhamIconSkillTestRule: ArkhamIconSkillTextRule(context),
+        arkhamIcon: ArkhamIconRule(context, sizeScale),
+        arkhamIconSkillTestRule: ArkhamIconSkillTextRule(context, sizeScale),
       }}
       style={{ width: '100%' }}
       styles={{
@@ -275,8 +277,8 @@ export default function CardTextComponent({ text, onLinkPress }: Props) {
         paragraph: {
           fontFamily: 'Alegreya-Regular',
           color: context.colors.darkText,
-          fontSize: 16 * context.fontScale,
-          lineHeight: 20 * context.fontScale,
+          fontSize: 16 * context.fontScale * sizeScale,
+          lineHeight: 20 * context.fontScale * sizeScale,
           marginTop: 4,
           marginBottom: 4,
         },

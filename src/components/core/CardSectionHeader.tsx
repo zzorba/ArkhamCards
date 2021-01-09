@@ -8,7 +8,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Ripple from '@lib/react-native-material-ripple';
 import Card from '@data/Card';
-import { m, s, xs, iconSizeScale } from '@styles/space';
+import { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
 export interface CardSectionHeaderData {
@@ -40,7 +40,7 @@ export default function CardSectionHeader({ investigator, section }: Props) {
   const { colors, borderStyle, backgroundStyle, fontScale, typography } = useContext(StyleContext);
 
   const renderSuperTitle = useCallback((investigator: Card, superTitle: string, noIcon?: boolean) => {
-    const SMALL_EDIT_ICON_SIZE = 30 * iconSizeScale * fontScale;
+    const SMALL_EDIT_ICON_SIZE = 30 * fontScale;
     return (
       <>
         <View style={styles.superHeaderPadding}>

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import StyleContext from '@styles/StyleContext';
 import EncounterIcon from '@icons/EncounterIcon';
-import { s, iconSizeScale } from '@styles/space';
+import { s } from '@styles/space';
 
 interface Props {
   packCode: string;
@@ -26,7 +26,7 @@ export default function ItemContent({ packCode, text, disabled, description }: P
       <View style={styles.campaignIcon}>
         <EncounterIcon
           encounter_code={packCode}
-          size={36 * iconSizeScale * fontScale}
+          size={36 * fontScale}
           color={colors.darkText}
         />
       </View>
