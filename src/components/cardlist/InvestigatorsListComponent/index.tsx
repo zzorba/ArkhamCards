@@ -124,7 +124,7 @@ export default function InvestigatorsListComponent({
       return null;
     }
     return (
-      <View style={styles.column}>
+      <View style={[styles.column, space.paddingBottomS]}>
         <Text style={typography.text}>
           { t`${investigator.deck_requirements.size} Cards` }
         </Text>

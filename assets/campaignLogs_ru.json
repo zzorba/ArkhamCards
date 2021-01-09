@@ -1552,7 +1552,7 @@
           },
           {
             "id": "hid_knowledge_of_coven",
-            "text": "the investigators hid their knowledge of the coven."
+            "text": "сыщики скрыли информацию о ковене."
           },
           {
             "id": "inducted_into_the_inner_circle",
@@ -1620,7 +1620,7 @@
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "the investigators told the Lodge about the coven."
+            "text": "сыщики рассказали Ложе о ковене."
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
@@ -1674,11 +1674,11 @@
           },
           {
             "id": "gilmans_journal",
-            "text": "Gilman's Journal"
+            "text": "Дневник Гилмана"
           },
           {
             "id": "keziahs_formulae",
-            "text": "Keziah's Formulae"
+            "text": "Формула Кассии"
           },
           {
             "id": "mesmerizing_flute",
@@ -1698,7 +1698,7 @@
           },
           {
             "id": "worn_crucific",
-            "text": "Worn Crucifix"
+            "text": "Потёртое распятие"
           }
         ]
       }

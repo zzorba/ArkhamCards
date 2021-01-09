@@ -251,7 +251,7 @@
         "name": "Armitage's Fate 2"
       },
       "type": "story",
-      "text": "Вернувшись в Саутсайд, вы заходите в дом доктора Армитеджа. Хозяин сидит за столом, его лицо бледно и покрыто пот́ом. Он благодарит вас за помощь в поиске его коллег, но его голос по-прежнему напряжён. После долгой паузы он поправляет очки и объясняет:\n«Должен извиниться перед вами. Есть кое-что, о чём я умолчал». С этими словами доктор Армитедж начинает рассказ, которому вы бы вряд ли поверили, если бы не жуткие события этой ночи…"
+      "text": "Вернувшись в Саутсайд, вы заходите в дом доктора Армитеджа. Хозяин сидит за столом, его лицо бледно и покрыто по́том. Он благодарит вас за помощь в поиске его коллег, но его голос по-прежнему напряжён. После долгой паузы он поправляет очки и объясняет:\n«Должен извиниться перед вами. Есть кое-что, о чём я умолчал». С этими словами доктор Армитедж начинает рассказ, которому вы бы вряд ли поверили, если бы не жуткие события этой ночи…"
     },
     {
       "id": "henry_armitage_kidnapped",
@@ -12214,7 +12214,7 @@
         "name": "Armitage's Fate 2"
       },
       "type": "story",
-      "text": "Вернувшись в Саутсайд, вы заходите в дом доктора Армитеджа. Хозяин сидит за столом, его лицо бледно и покрыто пот́ом. Он благодарит вас за помощь в поиске его коллег, но его голос по-прежнему напряжён. После долгой паузы он поправляет очки и объясняет:\n«Должен извиниться перед вами. Есть кое-что, о чём я умолчал». С этими словами доктор Армитедж начинает рассказ, которому вы бы вряд ли поверили, если бы не жуткие события этой ночи…"
+      "text": "Вернувшись в Саутсайд, вы заходите в дом доктора Армитеджа. Хозяин сидит за столом, его лицо бледно и покрыто по́том. Он благодарит вас за помощь в поиске его коллег, но его голос по-прежнему напряжён. После долгой паузы он поправляет очки и объясняет:\n«Должен извиниться перед вами. Есть кое-что, о чём я умолчал». С этими словами доктор Армитедж начинает рассказ, которому вы бы вряд ли поверили, если бы не жуткие события этой ночи…"
     },
     {
       "id": "henry_armitage_kidnapped",
@@ -31515,7 +31515,7 @@
     },
     {
       "id": "add_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "Добавьте в мешок хаоса 1 жетон [cultist] до конца кампании.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -47696,7 +47696,7 @@
 {
   "id": "the_secret_name",
   "scenario_name": "Тайное имя",
-  "full_name": "Scenario III: The Secret Name",
+  "full_name": "Сценарий III: Тайное имя",
   "setup": [
     "check_members_of_the_lodge",
     "gather_encounter_sets",
@@ -47802,7 +47802,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "The upstairs study of the Silver Twilight Lodge is cozy, if a little cramped. The floor is covered in a plush carpet, and several comfortable sofas and small round tables fill the warmly lit room. Portraits of world-weary Lodge members line the walls around you. Carl Sanford, president of the Lodge, sits across from you, idly swirling a glass of Merlot in his wrinkled hand.\n“The Silver Twilight Lodge pursues knowledge that can help us elevate our understanding of the universe,” Mr. Sanford explains, pausing to take a sip from his wine. “The creature you encountered in Josef Meiger’s estate—its appearance is not the only peculiar happening in Arkham as of late. Tell me: have you experienced anything else recently that might be connected to these events?”"
+      "text": "Кабинет на верхнем этаже Ложи Серебряных Сумерек немного тесноват, но оттого не менее уютен. Тепло освещённая комната обставлена мягкими диванами и круглыми столиками, а пол укрыт мягким ковром. С портретов на стенах устало глядят уважаемые члены Ложи. Карл Сэнфорд, президент Ложи, сидит напротив вас, отвлечённо вертя в морщинистых пальцах бокал мерло.\n«Ложа Серебряных Сумерек ищет знаний, раскрывающих тайны устройства Вселенной, — объясняет мистер Сэнфорд, прерываясь, чтобы пригубить вина. — Появление существа, свидетелями которого вы стали в поместье Джозефа Майгера, — не единственная странность, произошедшая в последнее время в Аркхэме. Вам случайно не довелось столкнуться с чем-то, что может быть связано с недавними событиями?»"
     },
     {
       "id": "choose_tell_lodge_about_witches",
@@ -47812,7 +47812,7 @@
         "choices": [
           {
             "id": "tell_lodge",
-            "text": "Tell the Lodge of the witches in the woods.",
+            "text": "Рассказать Ложе о ведьмах в лесах.",
             "steps": [
               "intro_2",
               "told_lodge_about_coven",
@@ -47821,7 +47821,7 @@
           },
           {
             "id": "lie",
-            "text": "Tell him you know of no possible connection. (You are lying.)",
+            "text": "Сказать, что вы не знаете ни о чём подобном. (Вы лжёте.)",
             "steps": [
               "intro_3",
               "check_mystic_investigator",
@@ -47839,7 +47839,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "You tell Mr. Sanford about your experience last week—waking up in the middle of the woods, the strange mist that weaved throughout the trees, the witches and their spell. He leans forward and listens intently as you explain the night’s strange events, your memories still somewhat of a haze. You conclude your story, and the elderly man considers your words. “Interesting,” he says at last. “I know of this coven. They are led by a witch named Anette Mason. Their magic is no trivial thing. They have passed down arcane secrets that can manipulate the energies of the universe. It is dangerous knowledge they possess—knowledge I believe they derived from a powerful witch who fled from Salem over two hundred years ago. Does the name ‘Keziah’ mean anything to you?”\nYou nod. Everyone in Arkham has at least some passing knowledge of the witch whose ghost supposedly haunts the old condemned “Witch House” in French Hill. Most believe her to be a work of fiction; a tall tale meant to scare young children away from the decrepit house. Mr. Sanford’s steely gaze and humorless tone makes it clear to you that this is not the case. “Perhaps this Anette is a true descendant of Keziah, or perhaps she is simply using her name. In any event, I believe these events are connected. To that end, I have a task for you, on behalf of the Silver Twilight Lodge.” Carl Sanford rises to his feet, using his cane more for show than for balance. You rise as well, ready to perform whatever duties are necessary to get to the bottom of this mystery.\n“We need as much information about this coven as we can obtain. If there is any place that will have these answers, it is the house where Keziah herself lived all those years ago.” You nod in agreement—there are too many questions you need answered. What spell were the witches casting that night in the woods? What is their motive? And what is their connection to the creature that kidnapped those four unfortunate souls? You shake Mr. Sanford’s hand and depart for the Witch House."
+      "text": "Вы рассказываете о том, что случилось с вами на прошлой неделе — как вы проснулись в лесу, как странная мгла растекалась между деревьями, про ведьм и их заклятие. Сэнфорд наклоняется вперёд, вниматель­но слушая ваши немного спутанные воспоминания о событиях той странной ночи. Когда вы завершаете рассказ, пожилой мужчина обдумывает услы­шанное. «Любопытно, — говорит он наконец. — Я знаю об этом ковене. Во главе у них ведьма по имени Анетта Мейсон. Их магия непроста. Они передают из поколения в поколение тайные знания, дающие власть над силами Вселенной. Насколько мне известно, они унаследовали эти опас­ные знания от могущественной ведьмы, которая сбежала из Салема больше двухсот лет назад. Вам о чём-нибудь говорит имя Кассия?»\nВы киваете. Каждый в Аркхэме хоть раз слышал истории о ведьме, чей призрак обитает в заброшенном доме во Френч-Хилле. Большинство считает эти рассказы вымыслом, страшилкой для детей, чтобы те держа­лись подальше от разваливающегося дома. Судя по твёрдому взгляду мистера Сэнфорда и его серьёзному тону, это вовсе не выдумка. «Возможно, Анетта действительно потомок Кассии, а может, она просто присвоила её фамилию. В любом случае я считаю, что эти события связаны. А раз так, то у меня для вас задание от имени Ложи Серебряных Сумерек». Карл Сэнфорд вста­ёт, используя трость скорее для вида, чем для опоры. Вы тоже поднимаетесь в готовности сделать всё необходимое, чтобы разгадать эти тайны.\n«Нам нужно узнать об этом ковене как можно больше. Если где-то и есть ответы, то в доме, где некогда жила Кассия». Вы согласно киваете: у вас и у самих много вопросов. Что за заклятие ведьмы пытались наложить той ночью в лесу? Какова их цель? И как с этим связано существо, похитившее тех четырёх несчастных? Вы жмёте руку мистера Сэнфорда и отправляетесь в Ведьмин дом."
     },
     {
       "id": "told_lodge_about_coven",
@@ -47848,13 +47848,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "told_lodge_about_coven",
-          "text": "the investigators told the Lodge about the coven."
+          "text": "сыщики рассказали Ложе о ковене."
         }
       ]
     },
     {
       "id": "add_cultist_token",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "Добавьте в мешок хаоса 1 жетон [cultist] до конца кампании.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -47871,7 +47871,7 @@
         "name": "Intro 3"
       },
       "type": "story",
-      "text": "You shake your head. You’re not sure if the events that took place in the woods are connected, or if they even really happened—some part of you still believes it was all a strange dream. Mr. Sanford examines you with a cold, piercing glare. You get the feeling that he is looking directly through you. “Very well,” he says. “Out of curiosity, does the name ‘Keziah Mason’ mean anything to you?”\nYou nod. Everyone in Arkham has at least some passing knowledge of the witch whose ghost supposedly haunts the old condemned “Witch House” in French Hill. Most believe her to be a work of fiction; a tall tale meant to scare young children away from the decrepit house. Mr. Sanford’s steely gaze and humorless tone makes it clear to you that this is not the case. He motions to an old, worn tome which lies on the table in front of you, open to a page filled with strange inscriptions and arcane glyphs. “I believe the creature you encountered in Josef ’s manor is tied to Keziah and the secret knowledge she possessed. See for yourself.” You pick up the tome and examine the markings on the page closely."
+      "text": "Вы качаете головой. Вы полагаете, что произошедшее в лесах вряд ли имеет какое-то отношение к делу, вы даже не уверены, произошло ли это на самом деле, — хочется верить, что это был странный сон. Мистер Сэнфорд холодно и пристально глядит на вас. Вам кажется, будто он видит вас насквозь. «Хорошо, — произносит он. — Любопытства ради: вам о чём-нибудь говорит имя Кассия Мейсон?» \nВы киваете. Каждый в Аркхэме хоть раз слышал истории о ведьме, чей призрак обитает в заброшенном доме во Френч-Хилле. Большинство считает эти рассказы вымыслом, страшилкой для детей, чтобы те держа­лись подальше от разваливающегося дома. Судя по твёрдому взгляду мистера Сэнфорда и его серьёзному тону, это вовсе не выдумка. Он указывает на старую потрёпанную книгу, лежащую на столе перед вами. Она открыта на странице, заполненной непонятными надписями и таинственными сим­волами. «Я считаю, что существо, с которым вы встретились в поместье Джозефа, связано с Кассией и тайными знаниями, которыми она владела. Взгляните». Вы берёте книгу и внимательно изучаете символы на странице."
     },
     {
       "id": "check_mystic_investigator",
@@ -47899,28 +47899,28 @@
     },
     {
       "id": "has_mystic",
-      "text": "Because at least one investigator is a Mystic ([mystic]):"
+      "text": "Поскольку среди сыщиков есть мистик ([mystic]):"
     },
     {
       "id": "no_mystic",
-      "text": "Because no investigator is a Mystic ([mystic]):"
+      "text": "Поскольку среди сыщиков нет мистика ([mystic]):"
     },
     {
       "id": "read_mystic_text",
       "border": true,
       "type": "story",
-      "text": "The markings on the tome form the basis for some kind of spell or ritual. It involves calling out to the dead – beseeching them for power, for secrets, or perhaps for aid. But who was beseeching whom, and for what purpose?"
+      "text": "Написанное в книге служит основой некоего заклинания или ритуала. Помимо прочего, эта магия взывает к мёртвым, испрашивая у них силы, знаний или, возможно, помощи. Но кто обращается, к кому и зачем?"
     },
     {
       "id": "read_gibberish",
       "border": true,
       "type": "story",
-      "text": "It all looks like gibberish to you."
+      "text": "Вы не понимаете ни единого написанного в книге слова."
     },
     {
       "id": "intro_3_continued",
       "type": "story",
-      "text": "“To this end, I have a task for you, on behalf of the Silver Twilight Lodge.” Carl Sanford rises to his feet, using his cane more for show than for balance. You rise as well, ready to perform whatever duties are necessary to get to the bottom of this mystery.\n“We need as much information about this creature as we can obtain. If there is any place that will have these answers, it is the house where Keziah herself lived all those years ago.” You nod in agreement—there are too many questions you need answered. Perhaps this is connected to the spell the witches were casting that night in the woods, after all. If so, what is their motive? And what does this have to do with the creature that kidnapped those four unfortunate souls? You nod to Mr. Sanford and depart for the Witch House."
+      "text": "«В связи с этим у меня для вас задание от имени Ложи Серебряных Сумерек». Карл Сэнфорд встаёт, используя трость скорее для вида, чем для опоры. Вы тоже поднимаетесь в готовности сделать всё необходимое, чтобы разгадать эти тайны.\n«Нам нужно узнать об этом существе как можно больше. Если где-то и есть ответы, то в доме, где некогда жила Кассия». Вы согласно киваете: у вас и у самих много вопросов. Ведьминское заклятие в лесах вполне может иметь какое-то отношение к исчезновениям. Если так, то что нужно ведьмам? И как с этим связано существо, похитившее тех четырёх несчастных? Вы киваете мистеру Сэнфорду и отправляетесь в Ведьмин дом."
     },
     {
       "id": "hid_knowledge_of_coven",
@@ -47929,7 +47929,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "hid_knowledge_of_coven",
-          "text": "the investigators hid their knowledge of the coven."
+          "text": "сыщики скрыли информацию о ковене."
         }
       ]
     },
@@ -47940,7 +47940,7 @@
         "name": "Intro 4"
       },
       "type": "story",
-      "text": "After your confrontation with the president of the Silver Twilight Lodge, you travel to the manor of the Arkham Historical Society in Southside. You are positive that the events you experienced in the woods last week have something to do with the creature that kidnapped those four unfortunate souls. It’s just a hunch—a feeling that crawls along the back of your neck, imploring you to look away—but you’re sure that everything is connected. You’re just not sure how.\nAs you enter, one of the Historical Society’s many researchers greets you and asks if she can help in any way. You give a cursory description of the information you’re looking for; just enough that she can direct you where to look, but vague enough to leave your motives at the door. “I don’t know why you are researching such morbid affairs, but the records you are looking for should be in the library on the third floor,” the researcher says.\nYou thank her and head to the third floor, where you begin to study the history of witchcraft in Arkham. In the late 17th century, Arkham was one of the New England towns caught up in the hysteria of witch trials. Accusations of witchcraft spread like wildfire, and many of the accused were executed by hanging or burning, guilty and innocent alike. But there was one witch whose infamy rose above the rest, and whose mystical power was never in question: Keziah Mason.\nYou recognize the name as the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But the Historical Society’s records indicate that Keziah was a real person: a powerful witch who had fled from Salem over two hundred years ago.\nYou are no stranger to real witchcraft. If Keziah Mason has anything to do with the coven you encountered in the woods, you must discover that connection. You leave the manor and head toward French Hill, where the Witch House awaits…"
+      "text": "После стычки с президентом Ложи Серебряных Сумерек вы отправляетесь в особняк Исторического общества Аркхэма в Саутсайде. Вы не сомневаетесь, что случившееся на прошлой неделе в лесах имеет какое-то отношение к существу, похитившему тех четырёх несчастных. Это лишь чутьё — как чувство, что щекочет шею, заставляя обернуться, — но вы уверены, что всё взаимосвязано. Осталось понять как.\nВ особняке вас встречает одна из многочисленных сотрудниц Исторического общества. Она интересуется, чем может вам помочь. Вы в общих чертах описываете, что вас интересует: достаточно ясно, чтобы вам указали, где искать, но без деталей, раскрывающих ваши цели. «Не понимаю, зачем вам влезать в эти тёмные дела, но записи о них должны быть в библиотеке на третьем этаже», — отвечает сотрудница.\nПоблагодарив её, вы поднимаетесь на третий этаж, где погружаетесь в историю аркхэмского ведьмовства. В конце XVII века Аркхэм был одним из очагов охоты на ведьм в Новой Англии. Обвинения в ведьмовстве распространялись как пожар, и многих обвинённых повесили или сожгли — как заслуженно, так и несправедливо. Но дурная слава одной ведьмы выделяется на фоне других, и в её мистических способностях никогда не было сомнений: Кассия Мейсон.\nВы узнаёте это имя. По слухам, именно её призрак обитает в старом Ведьмином доме во Френч-Хилле. Вы всегда считали эти рассказы вымыслом, страшилкой для детей, чтобы те держались подальше от заброшенного дома. Но архивы Исторического общества свидетельствуют, что Кассия — могущественная ведьма, которая сбежала из Салема больше двухсот лет назад, — действительно существовала.\nВы не понаслышке знакомы с ведьмовством. Если Кассия Мейсон имеет какое-то отношение к тому ковену в лесах, вам надо узнать, как именно они связаны. Вы направляетесь во Френч-Хилл, где вас ждёт Ведьмин дом…"
     },
     {
       "id": "intro_5",
@@ -47949,7 +47949,7 @@
         "name": "Intro 5"
       },
       "type": "story",
-      "text": "Your lead regarding the Silver Twilight Lodge’s charity gala turned out to be a bust, but Anna Kaslow’s reading still plays out over and over in your mind. You cannot help but feel as though you are missing a piece of this puzzle—something you can use to avoid the dire fate the tarot reader described. Turning your attention back to the coven of witches you encountered in the woods last week, you travel to the manor of the Arkham Historical Society in Southside. Perhaps there is some piece of information you have overlooked that will shed light on their identity, or their motives.\nAs you enter, one of the Historical Society’s many researchers greets you and asks if she can help in any way. You give a cursory description of the information you’re looking for; just enough that she can direct you where to look, but vague enough to leave your motives at the door. “I don’t know why you are researching such morbid affairs, but the records you are looking for should be in the library on the third floor,” the researcher says.\nYou thank her and head to the third floor, where you begin to study the history of witchcraft in Arkham. In the late 17th century, Arkham was one of the New England towns caught up in the hysteria of witch trials. Accusations of witchcraft spread like wildfire, and many of the accused were executed by hanging or burning, guilty and innocent alike. But there was one witch whose infamy rose above the rest, and whose mystical power was never in question: Keziah Mason.\nYou recognize the name as the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But the Historical Society’s records indicate that Keziah was a real person: a powerful witch who had fled from Salem over two hundred years ago.\nYou are no stranger to real witchcraft. If Keziah Mason has anything to do with the coven you encountered in the woods, you must discover that connection. You leave the manor and head toward French Hill, where the Witch House awaits…"
+      "text": "Ваше предположение о причастности благотворительного вечера Ложи Серебряных Сумерек к исчезновениям не подтвердилось, но предсказание Анны Каслоу не идёт у вас из головы. Вы не можете отделаться от чувства, что вам не хватает какой-то детали, чтобы разгадать эту головоломку и избежать предначертанной судьбы. Решив сосредоточить своё внимание на том ведьмовском ковене, с которым вы столкнулись в лесах на прошлой неделе, вы отправляетесь в Историческое общество Аркхэма в Саутсайде. Возможно, там вы найдёте упущенную деталь и сможете пролить свет на происхождение ковена или его мотивы.\nВ особняке вас встречает одна из многочисленных сотрудниц Исторического общества. Она интересуется, чем может вам помочь. Вы в общих чертах описываете, что вас интересует: достаточно ясно, чтобы вам указали, где искать, но без деталей, раскрывающих ваши цели. «Не понимаю, зачем вам влезать в эти тёмные дела, но записи о них должны быть в библиотеке на третьем этаже», — отвечает сотрудница.\nПоблагодарив её, вы поднимаетесь на третий этаж, где погружаетесь в историю аркхэмского ведьмовства. В конце XVII века Аркхэм был одним из очагов охоты на ведьм в Новой Англии. Обвинения в ведьмовстве распространялись как пожар, и многих обвинённых повесили или сожгли — как заслуженно, так и несправедливо. Но дурная слава одной ведьмы выделяется на фоне других, и в её мистических способностях никогда не было сомнений: Кассия Мейсон.\nВы узнаёте это имя. По слухам, именно её призрак обитает в старом Ведьмином доме во Френч-Хилле. Вы всегда считали эти рассказы вымыслом, страшилкой для детей, чтобы те держались подальше от заброшенного дома. Но архивы Исторического общества свидетельствуют, что Кассия — могущественная ведьма, которая сбежала из Салема больше двухсот лет назад, — действительно существовала.\nВы не понаслышке знакомы с ведьмовством. Если Кассия Мейсон имеет какое-то отношение к тому ковену в лесах, вам надо узнать, как именно они связаны. Вы направляетесь во Френч-Хилл, где вас ждёт Ведьмин дом…"
     },
     {
       "id": "intro_6",
@@ -47958,7 +47958,7 @@
         "name": "Intro 6"
       },
       "type": "story",
-      "text": "You pin the newspaper article up on your wall along with the rest of the evidence you’ve found. Whatever is happening in Josef Meiger’s manor, it’s getting out of hand. First, there were the four disappearances on the twenty-second, at the Silver Twilight Lodge’s annual charity gala. Now more have gone missing after a second event at the same estate. Is the Lodge somehow involved? Why else would they move this dinner to Mr. Meiger’s estate?\nThat’s not the only headline, either. Strange sightings have been occuring throughout the city: ghostly figures, an ashen mist, and a hunched, cloaked figure whose identity is hotly debated by the community. The name on the tips of everybody’s tongues is Keziah Mason—the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But with all of the disappearances and odd sightings occuring throughout town, you’re not so sure. Perhaps there is something to this old ghost story, after all."
+      "text": "Вы прикрепляете газетную статью на стену к остальным свидетельствам, которые вам удалось найти. Что бы ни происходило в особняке Джозефа Майгера, это выходит из-под контроля. Сначала четыре исчезновения на ежегодном благотворительном вечере Ложи Серебряных Сумерек. Теперь новые пропавшие после второго мероприятия в том же поместье. Замешана ли в этом Ложа? Иначе зачем они перенесли этот ужин в поместье мистера Майгера?\nИ это не единственное. По всему городу что-то происходит: люди рассказывают о призрачных фигурах, о пепельной мгле и о скрюченной фигуре в плаще, личность которой вызывает у жителей горячие споры. У всех на устах одно имя: Кассия Мейсон — призрак, обитающий в старом Ведьмином доме во Френч-Хилле. Вы всегда считали эти рассказы вымыслом, страшилкой для детей, чтобы те держались подальше от заброшенного дома. Но все эти исчезновения и загадочные явления в городе заставляют вас задуматься. Возможно, за этой историей о призраках действительно что-то стоит."
     },
     {
       "id": "gather_encounter_sets",
@@ -47975,7 +47975,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Moldy Halls, Walter Gilman’s Room, and the three Decrepit Door locations into play. Each investigator begins play in the Moldy Halls."
+      "text": "Введите в игру локации «Затхлый коридор», «Комната Уолтера Гилмана» и три локации «Прогнившая дверь». Все сыщики начинают игру в «Затхлом коридоре»."
     },
     {
       "id": "location_layout",
@@ -48003,19 +48003,19 @@
     },
     {
       "id": "create_unknown_place_deck",
-      "text": "Set the seven “Unknown Places” locations aside as a separate “Unknown Places Deck.” To do this, perform the following:",
+      "text": "Возьмите семь локаций «Неизведанные места», соберите из них отдельную колоду неизведанных мест и отложите её в сторону. Колода неизведанных мест составляется следующим образом:",
       "bullets": [
         {
-          "text": "Shuffle the Unknown Places with Witch House Ruins on its revealed side and three other random Unknown Places locations together to form the bottom four cards of the Unknown Places Deck, unrevealed side faceup."
+          "text": "Найдите карту «Неизведанные места» с «Руинами Ведьминого дома» на открытой стороне и перемешайте её с тремя другими случайными картами «Неизведанные места» закрытой стороной вниз. Это будут четыре нижние карты колоды неизведанных мест."
         },
         {
-          "text": "Then, place the other three Unknown Places locations on top, in a random order. All seven cards of the Unknown Places deck should be showing only the unrevealed side, so the players do not know which of the Unknown Places is the Witch House Ruins."
+          "text": "Затем положите сверху в случайном порядке три оставшиеся карты «Неизведанные места». Все семь карт должны лежать закрытой стороной вверх, чтобы игроки не знали, какая из них — «Руины Ведьминого дома»."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Nahab, Site of the Sacrifice, Keziah’s Room, The Black Book, both copies of Strange Geometry, and both copies of Ghostly Presence."
+      "text": "Отложите в сторону следующие карты: «Нахаб», «Место жертвоприношения», «Комната Кассии», «Чёрная книга», оба экземпляра «Чуждой геометрии» и оба экземпляра «Призрачного присутствия»."
     },
     {
       "id": "encounter_deck",
@@ -48044,7 +48044,7 @@
         "choices": [
           {
             "id": "brown_jenkin_defeated",
-            "text": "Was Brown Jenkin defeated at least once?",
+            "text": "Был ли Бурый Дженкин побеждён хотя бы 1 раз?",
             "steps": [
               "brown_jenkin_xp"
             ]
@@ -48055,7 +48055,7 @@
     {
       "id": "brown_jenkin_xp",
       "bullet_type": "small",
-      "text": "Each investigator earns 1 bonus experience.",
+      "text": "Каждый сыщик получает 1 опыт дополнительно.",
       "effects": [
         {
           "type": "earn_xp",
@@ -48072,7 +48072,7 @@
         "choices": [
           {
             "id": "nehab_defeated",
-            "text": "Was Nahab defeated at least once?",
+            "text": "Была ли Нахаб побеждена хотя бы 1 раз?",
             "steps": [
               "nahab_xp"
             ]
@@ -48083,7 +48083,7 @@
     {
       "id": "nahab_xp",
       "bullet_type": "small",
-      "text": "Each investigator earns 1 bonus experience.",
+      "text": "Каждый сыщик получает 1 опыт дополнительно.",
       "effects": [
         {
           "type": "earn_xp",
@@ -48095,7 +48095,7 @@
     {
       "id": "check_act_deck",
       "type": "input",
-      "text": "Check the act deck. What act was in play when the scenario ended?",
+      "text": "Проверьте колоду сцен. В какой сцене завершилась партия?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -48133,56 +48133,56 @@
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "Дневник Гилмана"
         }
       ]
     },
     {
       "id": "record_journal_and_formulae",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Gilman’s Journal</i> and <i>Keziah’s Formulae</i>.",
+      "text": "Запишите в графе журнала «Собранные свидетельства»: <i>Дневник Гилмана</i> и <i>Формула Кассии</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "Дневник Гилмана"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "keziahs_formulae",
-          "text": "Keziah's Formulae"
+          "text": "Формула Кассии"
         }
       ]
     },
     {
       "id": "all_mementos",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Gilman’s Journal</i>, <i>Keziah’s Formulae</i>, and <i>Worn Crucifix</i>.",
+      "text": "Запишите в графе журнала «Собранные свидетельства»: <i>Дневник Гилмана</i>, <i>Формула Кассии</i> и <i>Потёртое распятие</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "Дневник Гилмана"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "keziahs_formulae",
-          "text": "Keziah's Formulae"
+          "text": "Формула Кассии"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "worn_crucific",
-          "text": "Worn Crucifix"
+          "text": "Потёртое распятие"
         }
       ]
     },
     {
       "id": "choose_black_book_small_prompt",
       "bullet_type": "small",
-      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the chaos bag for the remainder of the campaign."
+      "text": "Кроме того, любой сыщик может включить в свою колоду сюжетный актив «Чёрная книга». Эта карта не идёт в счёт размера колоды. Если кто-то из сыщиков решил включить эту карту в свою колоду, добавьте в мешок хаоса 1 жетон [skull] до конца кампании."
     },
     {
       "id": "choose_black_book_small",
@@ -48193,7 +48193,7 @@
         "choices": [
           {
             "id": "keep_book",
-            "text": "Keep the Black Book?",
+            "text": "Взять Чёрную книгу?",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -48213,7 +48213,7 @@
     },
     {
       "id": "choose_black_book_prompt",
-      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the chaos bag for the remainder of the campaign."
+      "text": "Кроме того, любой сыщик может включить в свою колоду сюжетный актив «Чёрная книга». Эта карта не идёт в счёт размера колоды. Если кто-то из сыщиков решил включить эту карту в свою колоду, добавьте в мешок хаоса 1 жетон [skull] до конца кампании."
     },
     {
       "id": "choose_black_book",
@@ -48223,7 +48223,7 @@
         "choices": [
           {
             "id": "keep_book",
-            "text": "Keep the Black Book?",
+            "text": "Взять Чёрную книгу?",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -48247,7 +48247,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into Arkham’s mysterious past.",
+        "confirm_text": "Каждый сыщик получает 2 опыта дополнительно, заглянув в загадочное прошлое Аркхэма.",
         "text": "Победный счёт:",
         "effects": [
           {
@@ -48278,7 +48278,7 @@
         "physical",
         "mental"
       ],
-      "text": "Flashes of vision spark your memory as you are dragged along the dirty wooden floor. A foul ceremony—the house—Nahab—a rhythmic chant—the spiraling black vortex—a dark revelry—the Primal Chaos—a child’s cries—a writhing tunnel inside your chest.",
+      "text": "Вспышки видений озаряют вашу память, пока вас тащат по грязному деревянному полу. Нечестивый ритуал — дом — Нахаб — монотонное пение — спираль чёрной воронки — мрачное ликование — Первородный Хаос — плач ребёнка — тун­нель, что скручивается в вашей груди.",
       "steps": [
         "resolution_1"
       ]
@@ -48290,7 +48290,7 @@
         "name": "Resolution 1"
       },
       "title": "Исход 1",
-      "text": "You awaken in the muddy lawn at the base of some crooked wooden steps, the front door of the Witch House looming above you. Every fiber of your being is filled with regret. You know you have failed to prevent something awful, though you are not sure exactly what. The evidence of your eyes and ears suggests what you saw inside the Witch House was not concurrent with here and now. Regardless, you’ve learned several things about Keziah Mason, the witch who once inhabited this old and forsaken house. With your spirit diminished and your body aching, this information will have to suffice. You dare not venture back into this infernal house.",
+      "text": "Вы приходите в себя на грязном газоне у подножия кривой лестницы. Над вами нависает парадная дверь Ведьминого дома. Всё ваше существо преисполнено скорбью. Вы осознаёте, что не смогли предотвратить нечто ужасное, но не вполне понимаете, что именно. То, что вы видели своими глазами и слышали своими ушами внутри Ведьминого дома, произошло не здесь и не сейчас. Но в любом случае вы кое-что узнали о Кассии Мейсон — ведьме, некогда обитавшей в этом старом и ныне заброшенном доме. Ваш дух настолько истощён, а тело так измучено, что вам придётся довольствоваться добытыми крупицами знаний. Вы не осмелитесь снова войти в этот треклятый дом.",
       "steps": [
         "earn_xp",
         "check_brown_jenkin_xp",
@@ -48306,7 +48306,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "When you come to, you are lying on the wooden floor of Walter Gilman’s room. The trappings of Keziah’s foul practices are nowhere to be found, nor is the fanged, bearded rat – Keziah’s “ familiar,” as you now understand. Just as you are about to rise to your feet, you spot something glinting in a corner of the room. Crawling underneath Gilman’s bed, you reach out and grab the trinket. It is a worn nickel crucifix, similar to the ones you saw in the loomfixer’s room. You shove it into your pocket before leaving the troubling room and its strange angles behind. You’ve learned as much as you care to uncover about Keziah Mason, the witch who once inhabited this old and forsaken house. As you step out into the chilly November air, you turn and take one last look at the decrepit Witch House. You fear that though you may never enter this place again, in your thoughts and your dreams, you will never truly leave it behind.",
+      "text": "Когда вы приходите в себя, вы лежите на деревянном полу в комнате Уолтера Гилмана. Нигде не видно ни следов от мерзких ритуалов Кассии, ни зубастой бородатой крысы — как оказалось, «фамильяра» Кассии. Собравшись уже подняться на ноги, вы замечаете какой-то блеск в углу комнаты. Вы забираетесь под кровать Гилмана и тянетесь за вещицей. Это потёртый никелевый крестик вроде тех, что висели в комнате мастера по ткацким станкам. Вы кладёте крестик в карман и уходите из проклятой комнаты с её непостижимыми углами. Вы узнали всё, что хотели, о Кассии Мейсон — ведьме, некогда обитавшей в этом старом и ныне заброшенном доме. Выйдя на зябкий ноябрьский воздух, вы оборачиваетесь, чтобы ещё раз взглянуть на покосившийся Ведьмин дом. Хотя вы наверняка больше не вернётесь сюда, этот дом всегда будет преследовать вас в снах и мыслях.",
       "steps": [
         "earn_xp_bonus_2",
         "all_mementos",
@@ -69530,7 +69530,7 @@
     },
     {
       "id": "add_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "Добавьте в мешок хаоса 1 жетон [cultist] до конца кампании.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -71840,7 +71840,7 @@
     },
     {
       "id": "purple_key_token",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "Добавьте в мешок хаоса 1 жетон [cultist] до конца кампании.",
       "effects": [
         {
           "type": "add_chaos_token",

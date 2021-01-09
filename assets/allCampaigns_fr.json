@@ -24354,7 +24354,7 @@
   "id": "rttfa",
   "position": 3,
   "version": 1,
-  "name": "Renouveau: La Civilisation Oubliée",
+  "name": "Renouveau - La Civilisation Oubliée",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -26935,7 +26935,7 @@
 },
 {
   "id": "return_to_shattered_aeons",
-  "scenario_name": "Renouveau: Paradoxes Temporels",
+  "scenario_name": "Renouveau - Paradoxes Temporels",
   "full_name": "Scenario VIII: Return to Shattered Aeons",
   "setup": [
     "check_braziers_are_lit",
@@ -27476,7 +27476,7 @@
 },
 {
   "id": "return_to_the_boundary_beyond",
-  "scenario_name": "Renouveau: Par-delà les Limites",
+  "scenario_name": "Renouveau - Par-delà les Limites",
   "full_name": "Scenario IV: Return to The Boundary Beyond",
   "setup": [
     "intro",
@@ -28300,7 +28300,7 @@
 },
 {
   "id": "return_to_the_city_of_archives",
-  "scenario_name": "Renouveau: La Cité des Archives",
+  "scenario_name": "Renouveau - La Cité des Archives",
   "full_name": "Scenario VI: Return to The City of Archives",
   "setup": [
     "intro_1",
@@ -28777,7 +28777,7 @@
 },
 {
   "id": "return_to_the_depths_of_yoth",
-  "scenario_name": "Renouveau: Les Profondeurs de Yoth",
+  "scenario_name": "Renouveau - Les Profondeurs de Yoth",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -30131,7 +30131,7 @@
 },
 {
   "id": "return_to_the_doom_of_eztli",
-  "scenario_name": "Renouveau: Le Fléau des Eztli",
+  "scenario_name": "Renouveau - Le Fléau des Eztli",
   "full_name": "Scenario II: Return to The Doom of Eztli",
   "setup": [
     "check_wait_for_additional_supplies",
@@ -30780,7 +30780,7 @@
 },
 {
   "id": "return_to_the_untamed_wilds",
-  "scenario_name": "Renouveau: Une Contrée Sauvage",
+  "scenario_name": "Renouveau - Une Contrée Sauvage",
   "full_name": "Scenario I: Return to The Untamed Wilds",
   "setup": [
     "intro",
@@ -31229,7 +31229,7 @@
 },
 {
   "id": "return_to_threads_of_fate",
-  "scenario_name": "Renouveau: Les Fils du Destin",
+  "scenario_name": "Renouveau - Les Fils du Destin",
   "full_name": "Scenario III: Return to Threads of Fate",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -71427,15 +71427,15 @@
     },
     {
       "id": "memories_recovered",
-      "title": "Memories Recovered"
+      "title": "Les Souvenirs Retrouvés"
     },
     {
       "id": "possible_suspects",
-      "title": "Suspects possibles"
+      "title": "Suspects Possibles"
     },
     {
       "id": "possible_hideouts",
-      "title": "Les cachettes possibles"
+      "title": "Les Possibles Cachettes"
     },
     {
       "id": "hidden",
@@ -71776,7 +71776,7 @@
 },
 {
   "id": "beneath_the_waves",
-  "scenario_name": "Beneath the Waves",
+  "scenario_name": "Sous les Vagues",
   "full_name": "Interlude III: Beneath the Waves",
   "type": "interlude",
   "setup": [
@@ -72843,7 +72843,7 @@
 },
 {
   "id": "hidden_truths",
-  "scenario_name": "Hidden Truths",
+  "scenario_name": "Vérités Cachées",
   "full_name": "Interlude IV: Hidden Truths",
   "type": "placeholder",
   "setup": [],
@@ -73775,7 +73775,7 @@
 },
 {
   "id": "into_the_maelstrom",
-  "scenario_name": "Into the Maelstrom",
+  "scenario_name": "Dans le Maelstrom",
   "full_name": "Scenario VIII: Into the Maelstrom",
   "type": "placeholder",
   "setup": [],
@@ -73783,7 +73783,7 @@
 },
 {
   "id": "puzzle_pieces",
-  "scenario_name": "Puzzle Pieces",
+  "scenario_name": "Les Pièces du Puzzle",
   "full_name": "Interlude I: Puzzle Pieces",
   "type": "interlude",
   "setup": [
@@ -73994,7 +73994,7 @@
 },
 {
   "id": "the_lair_of_dagon",
-  "scenario_name": "The Lair of Dagon",
+  "scenario_name": "Le Repère de Dagon",
   "full_name": "Scenario VII: The Lair of Dagon",
   "type": "placeholder",
   "setup": [],
@@ -74002,7 +74002,7 @@
 },
 {
   "id": "the_pit_of_despair",
-  "scenario_name": "The Pit of Despair",
+  "scenario_name": "La Fosse du Désespoir",
   "full_name": "Scenario I: The Pit of Despair",
   "setup": [
     "intro",
@@ -74470,7 +74470,7 @@
 },
 {
   "id": "the_syzygy",
-  "scenario_name": "The Syzygy",
+  "scenario_name": "Le Syzygy",
   "full_name": "Interlude II: The Syzygy",
   "type": "interlude",
   "setup": [
@@ -74568,7 +74568,7 @@
 },
 {
   "id": "the_vanishing_of_elina_harper",
-  "scenario_name": "The Vanishing of Elina Harper",
+  "scenario_name": "La Disparition d'Elina Harper",
   "full_name": "Scenario II: The Vanishing of Elina Harper",
   "setup": [
     "intro_1",
