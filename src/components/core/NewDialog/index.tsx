@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Platform, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, useWindowDimensions, ScrollView, View } from 'react-native';
 import Modal from 'react-native-modal';
 
 import NewDialogContentLine from './NewDialogContentLine';
@@ -57,7 +57,7 @@ function NewDialog({
         padding: m,
       }]}
     >
-      <View style={[shadow.large, styles.dialog, { width: width - m * 2 }]}>
+      <View style={[shadow.large, styles.dialog, { maxHeight: '60%', width: width - m * 2 }]}>
         <View style={[styles.header, { backgroundColor: colors.D20 }]}>
           <Text style={[typography.large, typography.inverted]}>{title}</Text>
           { !!dismiss && (
@@ -72,7 +72,7 @@ function NewDialog({
             </View>
           ) }
         </View>
-        <View style={[styles.body, backgroundStyle]}>
+        <ScrollView overScrollMode="never" bounces={false} showsVerticalScrollIndicator style={[styles.body, backgroundStyle]}>
           { children }
           { (!!dismiss?.title || !!confirm) && (
             <View style={styles.actionButtons}>
@@ -100,7 +100,7 @@ function NewDialog({
               ) }
             </View>
           ) }
-        </View>
+        </ScrollView>
       </View>
     </Modal>
   );

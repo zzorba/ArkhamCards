@@ -1839,9 +1839,6 @@ msgstr "조사자 삭제"
 msgid "Trauma"
 msgstr "트라우마"
 
-msgid "View Deck"
-msgstr "덱 보기"
-
 msgid "Select Deck"
 msgstr "덱 선택"
 
@@ -3941,6 +3938,9 @@ msgstr ""
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
+msgstr ""
+
+msgid "Save upgrade"
 msgstr ""
 
 #, javascript-format

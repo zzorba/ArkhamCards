@@ -2334,9 +2334,6 @@ msgstr "Log"
 msgid "${ scenarioName } (Attempt ${ attempt })"
 msgstr "${ scenarioName } (Versuch ${ attempt })"
 
-msgid "View Deck"
-msgstr "Deck anzeigen"
-
 msgid "Select Deck"
 msgstr "Deck auswählen"
 
@@ -4117,6 +4114,9 @@ msgstr ""
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
+msgstr ""
+
+msgid "Save upgrade"
 msgstr ""
 
 #, javascript-format

@@ -2323,9 +2323,6 @@ msgstr "Registro"
 msgid "${ scenarioName } (Attempt ${ attempt })"
 msgstr "${ scenarioName } (Intento ${ attempt })"
 
-msgid "View Deck"
-msgstr "Ver Mazo"
-
 msgid "Select Deck"
 msgstr "Seleccionar mazo"
 
@@ -4105,6 +4102,9 @@ msgstr ""
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
+msgstr ""
+
+msgid "Save upgrade"
 msgstr ""
 
 #, javascript-format

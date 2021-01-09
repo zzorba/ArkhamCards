@@ -1778,9 +1778,6 @@ msgstr ""
 msgid "Trauma"
 msgstr ""
 
-msgid "View Deck"
-msgstr ""
-
 msgid "Select Deck"
 msgstr ""
 
@@ -3826,6 +3823,9 @@ msgstr ""
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
+msgstr ""
+
+msgid "Save upgrade"
 msgstr ""
 
 #, javascript-format
