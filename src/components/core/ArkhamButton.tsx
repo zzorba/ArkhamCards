@@ -16,7 +16,7 @@ interface Props {
 
 function ArkhamButton({ icon, title, onPress, grow, variant = 'fill' }: Props) {
   const { colors, fontScale, shadow, typography } = useContext(StyleContext);
-  const height = 18 * fontScale + 20;
+  const height = (18 * fontScale) + 20;
   return (
     <View style={[styles.wrapper, grow ? { flexDirection: 'row' } : styles.inline]}>
       <Ripple
@@ -36,7 +36,9 @@ function ArkhamButton({ icon, title, onPress, grow, variant = 'fill' }: Props) {
         onPress={onPress}
       >
         <View pointerEvents="box-none" style={styles.row}>
-          <View style={[styles.icon, space.marginRightXs]}><ArkhamButtonIcon icon={icon} color={variant === 'fill' ? 'light' : 'dark'} /></View>
+          <View style={[{ width: 24 * fontScale, height: 20 * fontScale }, space.marginRightXs]}>
+            <ArkhamButtonIcon icon={icon} color={variant === 'fill' ? 'light' : 'dark'} />
+          </View>
           <Text style={[typography.button, { color: variant === 'fill' ? colors.L30 : colors.D20 }]}>
             { title }
           </Text>
@@ -52,10 +54,6 @@ ArkhamButton.Height = (fontScale: number) => {
 export default ArkhamButton;
 
 const styles = StyleSheet.create({
-  icon: {
-    width: 24,
-    height: 20,
-  },
   wrapper: {
     paddingRight: 12,
     paddingTop: 10,
