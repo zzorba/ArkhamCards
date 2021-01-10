@@ -6,7 +6,16 @@ import { forEach, debounce, find } from 'lodash';
 import { Campaign, ChaosBagResults, Deck, SingleCampaign, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState, makeChaosBagResultsSelector, makeDeckSelector, getEffectiveDeckId, makeTabooSetSelector, makeCampaignSelector, makeLatestCampaignDeckIdsSelector, makeLatestCampaignInvestigatorsSelector } from '@reducers';
+import {
+  AppState,
+  makeChaosBagResultsSelector,
+  makeDeckSelector,
+  getEffectiveDeckId,
+  makeTabooSetSelector,
+  makeCampaignSelector,
+  makeLatestCampaignDeckIdsSelector,
+  makeLatestCampaignInvestigatorsSelector,
+} from '@reducers';
 import DatabaseContext from '@data/DatabaseContext';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
@@ -607,6 +616,7 @@ export function useInterval(callback: () => void, delay: number) {
   }, [delay]);
 }
 
+/*
 export function useWhyDidYouUpdate<T>(name: string, props: T) {
   // Get a mutable ref object where we can store props ...
   // ... for comparison next time this hook runs.
@@ -640,3 +650,4 @@ export function useWhyDidYouUpdate<T>(name: string, props: T) {
     previousProps.current = props;
   });
 }
+*/

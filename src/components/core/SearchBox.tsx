@@ -32,7 +32,7 @@ export interface SearchBoxHandles {
 }
 
 function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedOpen }: Props, ref: any) {
-  const { borderStyle, colors } = useContext(StyleContext);
+  const { colors } = useContext(StyleContext);
   const textInputRef = useRef<Input>(null);
   const clear = useCallback(() => {
     onChangeText('', true);
@@ -87,8 +87,7 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
       autoCorrect={false}
       autoCapitalize="none"
       multiline={false}
-      textInputRef={textInputRef}
-      containerStyle={[styles.container, borderStyle, { backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : undefined]}
+      containerStyle={[styles.container, { borderColor: colors.L10, backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : undefined]}
       inputContainerStyle={[
         styles.searchInput,
         {

@@ -12,8 +12,6 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import PickerStyleButton from '@components/core/PickerStyleButton';
-import EditText from '@components/core/EditText';
 import {
   CORE,
   CUSTOM,
@@ -33,12 +31,10 @@ import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import { getCampaignLog, getChaosBag, difficultyString } from '../constants';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
-import NavButton from '@components/core/NavButton';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
-import { showCampaignDifficultyDialog } from '@components/campaign/CampaignDifficultyDialog';
 import { getNextCampaignId } from '@reducers';
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
@@ -54,7 +50,6 @@ import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButt
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
-import { diff } from 'react-native-reanimated';
 
 interface CampaignChoice {
   selection: CampaignSelection;
@@ -79,7 +74,7 @@ function getKeyName(
 }
 
 function NewCampaignView({ componentId }: NavigationProps) {
-  const { backgroundStyle, borderStyle, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const nextId = useSelector(getNextCampaignId);
   const cards = usePlayerCards();
   const dispatch = useDispatch();

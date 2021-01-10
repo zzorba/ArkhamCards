@@ -14,7 +14,7 @@ import ChartLabel from './ChartLabel';
 import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from '@actions/types';
 import { PLAYER_FACTION_CODES, FactionCodeType } from '@app_constants';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   parsedDeck: ParsedDeck;
@@ -101,8 +101,7 @@ export default function FactionChart({ parsedDeck, width }: Props) {
             x="faction"
             y="dual"
             barRatio={1.6}
-            // @ts-ignore TS2769
-            labels={this._getDualValue}
+            labels={getDualValue}
             style={{
               data: {
                 fill: colors.faction.dual.background,
@@ -122,8 +121,7 @@ export default function FactionChart({ parsedDeck, width }: Props) {
             x="faction"
             y="count"
             barRatio={1.6}
-            // @ts-ignore TS2769
-            labels={this._getTotalValue}
+            labels={getTotalValue}
             style={{
               data: {
                 fill: colorFill,

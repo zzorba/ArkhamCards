@@ -1,8 +1,5 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import {
-  ActivityIndicator,
-  Alert,
-} from 'react-native';
+import React, { useCallback, useMemo } from 'react';
+import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { t } from 'ttag';
@@ -10,7 +7,7 @@ import { logout, login } from '@actions';
 import { AppState, getMyDecksState } from '@reducers';
 import DeckButton from '@components/deck/controls/DeckButton';
 import DeckActionRow from '@components/deck/controls/DeckActionRow';
-import { useNetworkStatus } from '@components/core/withNetworkStatus';
+import useNetworkStatus from '@components/core/useNetworkStatus';
 
 interface Props {
   last?: boolean;
@@ -20,7 +17,7 @@ export default function ArkhamDbLoginButton({ last }: Props) {
   const loading = useSelector((state: AppState) => state.signedIn.loading);
   const signedIn = useSelector((state: AppState) => state.signedIn.status);
   const { error } = useSelector(getMyDecksState);
-  const [{ networkType, isConnected }] = useNetworkStatus();
+  const [{ isConnected }] = useNetworkStatus();
   const doLogout = useCallback(() => {
     dispatch(logout());
   }, [dispatch]);

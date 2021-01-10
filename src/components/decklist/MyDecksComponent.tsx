@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { refreshMyDecks } from '@actions';
-import { NetworkStatusProps, useNetworkStatus } from '@components/core/withNetworkStatus';
+import useNetworkStatus from '@components/core/useNetworkStatus';
 import { Deck } from '@actions/types';
 import Card from '@data/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';

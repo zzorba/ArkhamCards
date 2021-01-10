@@ -22,7 +22,6 @@ import StrikethroughTextNode from './StrikethroughTextNode';
 import SmallCapsNode from './SmallCapsNode';
 import CenterNode from './CenterNode';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { size } from 'lodash';
 
 const BASE_ORDER = 0;
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {

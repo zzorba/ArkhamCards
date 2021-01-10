@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { AppState, Button, StyleSheet, View } from 'react-native';
+import { AppState, StyleSheet, View } from 'react-native';
 import { flatMap, find, forEach, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 import { Action } from 'redux';

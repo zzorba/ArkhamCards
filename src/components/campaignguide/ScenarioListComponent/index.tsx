@@ -4,7 +4,6 @@ import { map } from 'lodash';
 
 import { ProcessedCampaign } from '@data/scenario';
 import ScenarioButton from './ScenarioButton';
-import CampaignGuideSummary from '@components/campaignguide/CampaignGuideSummary';
 import AddSideScenarioButton from './AddSideScenarioButton';
 import { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import space from '@styles/space';

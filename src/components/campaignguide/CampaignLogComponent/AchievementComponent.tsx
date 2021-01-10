@@ -6,7 +6,6 @@ import space from '@styles/space';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CardTextComponent from '@components/card/CardTextComponent';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { useCounter } from '@components/core/hooks';
 import { Achievement } from '@data/scenario/types';
 import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';

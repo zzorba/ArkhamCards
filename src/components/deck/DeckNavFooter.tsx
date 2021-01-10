@@ -14,7 +14,6 @@ import StyleContext from '@styles/StyleContext';
 import RoundButton from '@components/core/RoundButton';
 import { useDeckEditState, useParsedDeck } from '@components/deck/hooks';
 import { useAdjustXpDialog } from '@components/deck/dialogs';
-import { Campaign } from '@actions/types';
 
 const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 
@@ -26,7 +25,6 @@ interface Props {
   onPress: () => void;
   controls?: React.ReactNode;
   control?: 'fab' | 'counts' ;
-  campaign?: Campaign;
   forceShow?: boolean;
   yOffset?: number;
 }
@@ -45,7 +43,6 @@ export default function DeckNavFooter({
   componentId,
   deckId,
   control,
-  campaign,
   onPress,
   forceShow,
   yOffset,

@@ -48,7 +48,9 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const linkPressed = useCallback(async(url: string, context: StyleContextType) => {
     await openUrl(url, context, db, componentId, tabooSetId);
   }, [componentId, tabooSetId, db]);
-  const fabIcon = useCallback(() => <AppIcon name={edit ? 'check' : 'edit'} color={mode === 'view' && !edit ? '#FFFFFF' : colors.L30} size={24} />, [edit, colors]);
+  const fabIcon = useCallback(() => (
+    <AppIcon name={edit ? 'check' : 'edit'} color={mode === 'view' && !edit ? '#FFFFFF' : colors.L30} size={24} />
+  ), [edit, colors, mode]);
   const saveChanges = useCallback(() => {
     dispatch(setDeckDescription(id, description));
     toggleEdit();

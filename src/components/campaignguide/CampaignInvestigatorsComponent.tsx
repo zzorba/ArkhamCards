@@ -10,11 +10,9 @@ import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRo
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import Card from '@data/Card';
-import space, { s, l } from '@styles/space';
-import { useComponentDidDisappear, useCounters, useEffectUpdate, useFlag } from '@components/core/hooks';
+import { s, l } from '@styles/space';
+import { useComponentDidDisappear, useCounters, useEffectUpdate } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
-import DeckButton from '@components/deck/controls/DeckButton';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface Props {
   componentId: string;

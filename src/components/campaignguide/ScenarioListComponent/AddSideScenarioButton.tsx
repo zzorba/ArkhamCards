@@ -1,16 +1,13 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { Alert, Text, View } from 'react-native';
+import React, { useCallback, useMemo } from 'react';
+import { Alert } from 'react-native';
 import { find, findLast, findLastIndex } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { AddSideScenarioProps } from '@components/campaignguide/AddSideScenarioView';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
-import space from '@styles/space';
-import StyleContext from '@styles/StyleContext';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 
 interface Props {
@@ -22,7 +19,6 @@ interface Props {
 }
 
 export default function AddSideScenarioButton({ componentId, campaignId, processedCampaign, campaignGuide, campaignState }: Props) {
-  const { typography } = useContext(StyleContext);
   const canAddScenario = useMemo(() => {
     const lastCompletedScenarioIndex = findLastIndex(
       processedCampaign.scenarios,

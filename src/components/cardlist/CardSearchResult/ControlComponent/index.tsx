@@ -24,7 +24,6 @@ export type ControlType = {
   showZeroCount?: boolean;
 } | {
   type: 'upgrade';
-  count: number;
   deckId: number;
   limit: number;
   onUpgradePress?: (card: Card) => void;
@@ -52,7 +51,6 @@ export function ControlComponent({ card, control }: Props) {
     case 'upgrade':
       return (
         <CardUpgradeButton
-          count={control.count}
           onUpgradePress={control.onUpgradePress}
           card={card}
           deckId={control.deckId}

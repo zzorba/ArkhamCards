@@ -2,7 +2,6 @@ import React, { useCallback, useContext } from 'react';
 import { Linking } from 'react-native';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 

@@ -1,8 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { find, map } from 'lodash';
-import {
-  Dimensions,
-} from 'react-native';
+import { Dimensions } from 'react-native';
 import { TabView, SceneRendererProps, NavigationState, TabBar, Route } from 'react-native-tab-view';
 
 import StyleContext from '@styles/StyleContext';
@@ -25,7 +23,7 @@ interface TabRoute extends Route {
 const initialLayout = { width: Dimensions.get('window').width };
 
 export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Props) {
-  const { backgroundStyle, fontScale, colors } = useContext(StyleContext);
+  const { fontScale, colors } = useContext(StyleContext);
   const [index, setIndex] = useState(0);
 
   const onIndexChange = useCallback((index: number) => {

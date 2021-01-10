@@ -510,15 +510,12 @@ export default function DeckViewTab(props: Props) {
     }
 
     const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
-    if (count !== undefined) {
-      return {
-        type: 'upgrade',
-        deckId: deck.id,
-        limit: card.collectionDeckLimit(packInCollection),
-        count,
-        onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
-      };
-    }
+    return {
+      type: 'upgrade',
+      deckId: deck.id,
+      limit: card.collectionDeckLimit(packInCollection),
+      onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
+    };
   }, [mode, deck.id, showCardUpgradeDialog, showDeckUpgrades, packInCollection]);
 
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection) => {

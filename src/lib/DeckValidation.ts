@@ -8,7 +8,7 @@ import {
   minBy,
   indexOf,
 } from 'lodash';
-import { ngettext, msgid, t } from 'ttag';
+import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, Slots } from '@actions/types';
 import { ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';

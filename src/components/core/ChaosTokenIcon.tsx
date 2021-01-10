@@ -1,9 +1,5 @@
-import React, { useContext } from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextStyle,
-} from 'react-native';
+import React from 'react';
+import { Text, TextStyle } from 'react-native';
 
 import { SPECIAL_TOKENS, ChaosTokenType } from '@app_constants';
 import ArkhamIcon from '@icons/ArkhamIcon';

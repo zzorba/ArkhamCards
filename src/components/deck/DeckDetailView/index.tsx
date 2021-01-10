@@ -1034,7 +1034,6 @@ function DeckDetailView({
                 deckId={id}
                 componentId={componentId}
                 control="fab"
-                campaign={campaign}
                 onPress={saveEdits}
               />
             ) }

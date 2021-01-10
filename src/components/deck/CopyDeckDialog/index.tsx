@@ -11,7 +11,7 @@ import SelectDeckSwitch from './SelectDeckSwitch';
 import { saveClonedDeck } from '../actions';
 import { showDeckModal } from '@components/nav/helper';
 import Dialog from '@components/core/Dialog';
-import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
+import useNetworkStatus from '@components/core/useNetworkStatus';
 import { login } from '@actions';
 import { Deck } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
@@ -23,19 +23,18 @@ import { useDeck, useEffectUpdate, useInvestigatorCards, usePlayerCards } from '
 import { ThunkDispatch } from 'redux-thunk';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   toggleVisible: () => void;
   deckId?: number;
   signedIn?: boolean;
 }
 
-type Props = OwnProps & NetworkStatusProps;
-
 type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
-function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnected, networkType, refreshNetworkStatus }: Props) {
+export default function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const dispatch: DeckDispatch = useDispatch();
   const [deck] = useDeck(deckId, {});
   const baseDeckSelector = useMemo(makeBaseDeckSelector, []);
@@ -244,8 +243,6 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
     </Dialog>
   );
 }
-
-export default withNetworkStatus(CopyDeckDialog);
 
 const styles = StyleSheet.create({
   spinner: {

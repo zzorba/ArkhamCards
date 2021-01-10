@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Button, Text, View, Platform, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { find , map } from 'lodash';
 import { t } from 'ttag';
 

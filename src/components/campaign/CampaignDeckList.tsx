@@ -1,16 +1,6 @@
-import React, { ReactNode, useCallback } from 'react';
+import React, { ReactNode } from 'react';
 import { map } from 'lodash';
-import {
-  Platform,
-  View,
-} from 'react-native';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
-import { t } from 'ttag';
-
-import BasicButton from '@components/core/BasicButton';
-import { Deck } from '@actions/types';
-import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
-import Card from '@data/Card';
+import { View } from 'react-native';
 
 export interface CampaignDeckListProps {
   componentId: string;

@@ -317,7 +317,7 @@ function PlaybackButton({ name, type = 'material', size = 30, onPress }: Playbac
 }
 
 interface ButtonProps {
-  onPress: () => void;
+  onPress?: () => void;
 }
 function PreviousButton({ onPress }: ButtonProps) {
   return <PlaybackButton name="skip-previous" onPress={onPress} />;
@@ -370,10 +370,6 @@ function TrackView({ track, isCurrentTrack }: TrackProps) {
 interface PlaylistProps {
   style?: ViewStyle;
   queue: TrackPlayer.Track[];
-}
-
-interface PlaylistState {
-  currentTrackId: string | null;
 }
 
 function PlaylistView({ style, queue }: PlaylistProps) {

@@ -1,10 +1,8 @@
-import React, { useCallback, useEffect, useRef } from 'react';
-import {
-  View,
-} from 'react-native';
+import React, { useCallback } from 'react';
+import { View } from 'react-native';
+import { t } from 'ttag';
 
 import NewDialog from '@components/core/NewDialog';
-import { t } from 'ttag';
 import { Trauma } from '@actions/types';
 import Card from '@data/Card';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';

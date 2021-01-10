@@ -18,7 +18,6 @@ import { SaveDeckChanges } from '@components/deck/actions';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import BasicButton from '@components/core/BasicButton';
 import { useCounter, useSlots } from '@components/core/hooks';
 import DeckButton from './controls/DeckButton';
 
