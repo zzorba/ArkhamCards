@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   SafeAreaView,
@@ -11,12 +11,12 @@ import {
 } from 'react-native';
 import { Divider, Icon } from 'react-native-elements';
 import { useSelector } from 'react-redux';
-import TrackPlayer, { usePlaybackState, useTrackPlayerEvents, useTrackPlayerProgress } from 'react-native-track-player';
+import TrackPlayer, { EmitterSubscription, usePlaybackState, useTrackPlayerEvents, useTrackPlayerProgress } from 'react-native-track-player';
 
 import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
 import { hasDissonantVoices } from '@reducers';
-import { StyleContext, StyleContextType } from '@styles/StyleContext';
+import { StyleContext } from '@styles/StyleContext';
 import space, { m } from '@styles/space';
 import { SHOW_DISSONANT_VOICES, narrationPlayer, useCurrentTrackId, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
@@ -255,36 +255,30 @@ interface ArtworkProps {
   state: TrackPlayer.State | null;
 }
 
-class ArtworkView extends React.Component<ArtworkProps> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  render() {
-    const { track } = this.props;
-    const { colors } = this.context;
-    return (
-      <View style={{ width: 48, height: 48, marginRight: 4 }}>
-        {track?.artwork && (
-          <View
-            style={{
-              marginRight: 4,
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-            }}
-          >
-            <EncounterIcon
-              encounter_code={track?.artwork ?? ''}
-              size={48}
-              color={colors.D30}
-            />
-          </View>
-        )}
-      </View>
-    );
-  }
+function ArtworkView({ track }: ArtworkProps) {
+  const { colors } = useContext(StyleContext);
+  return (
+    <View style={{ width: 48, height: 48, marginRight: 4 }}>
+      { !!track?.artwork && (
+        <View
+          style={{
+            marginRight: 4,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+          }}
+        >
+          <EncounterIcon
+            encounter_code={track?.artwork ?? ''}
+            size={48}
+            color={colors.D30}
+          />
+        </View>
+      )}
+    </View>
+  );
 }
 
 interface TitleProps {
@@ -292,95 +286,53 @@ interface TitleProps {
   track: TrackPlayer.Track | null;
 }
 
-class TitleView extends React.Component<TitleProps> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  onTrackChange!: TrackPlayer.EmitterSubscription;
-
-  constructor(props: TitleProps) {
-    super(props);
-
-    this.state = {};
-  }
-
-  render() {
-    const { style, track } = this.props;
-    const { typography } = this.context;
-
-    return (
-      <View style={style}>
-        <Text style={typography.text} numberOfLines={1} ellipsizeMode="tail">
-          {track?.title}
-        </Text>
-        <Text style={typography.text} numberOfLines={1} ellipsizeMode="tail">
-          {track?.album}
-        </Text>
-      </View>
-    );
-  }
+function TitleView({ style, track }: TitleProps) {
+  const { typography } = useContext(StyleContext);
+  return (
+    <View style={style}>
+      <Text style={typography.text} numberOfLines={1} ellipsizeMode="tail">
+        {track?.title}
+      </Text>
+      <Text style={typography.text} numberOfLines={1} ellipsizeMode="tail">
+        {track?.album}
+      </Text>
+    </View>
+  );
 }
 
 interface PlaybackButtonProps {
   name: string;
-  type: string;
-  size: number;
+  type?: string;
+  size?: number;
   onPress?: () => void;
 }
 
-abstract class PlaybackButton extends React.Component<PlaybackButtonProps> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static defaultProps = {
-    type: 'material',
-    size: 30,
-  };
-
-  render() {
-    const { name, type, size, onPress } = this.props;
-    const { colors } = this.context;
-    return (
-      <View style={{ padding: 2 }}>
-        <Icon name={name} type={type} size={size} onPress={onPress} color={colors.D30} />
-      </View>
-    );
-  }
+function PlaybackButton({ name, type = 'material', size = 30, onPress }: PlaybackButtonProps) {
+  const { colors } = useContext(StyleContext);
+  return (
+    <View style={{ padding: 2 }}>
+      <Icon name={name} type={type} size={size} onPress={onPress} color={colors.D30} />
+    </View>
+  );
 }
 
-class PreviousButton extends PlaybackButton {
-  static defaultProps = {
-    ...PlaybackButton.defaultProps,
-    name: 'skip-previous',
-  };
+interface ButtonProps {
+  onPress: () => void;
 }
-
-class PlayButton extends PlaybackButton {
-  static defaultProps = {
-    ...PlaybackButton.defaultProps,
-    name: 'play-arrow',
-  };
+function PreviousButton({ onPress }: ButtonProps) {
+  return <PlaybackButton name="skip-previous" onPress={onPress} />;
 }
-
-class PauseButton extends PlaybackButton {
-  static defaultProps = {
-    ...PlaybackButton.defaultProps,
-    name: 'pause',
-  };
+function PlayButton({ onPress }: ButtonProps) {
+  return <PlaybackButton name="play-arrow" onPress={onPress} />;
 }
-
-class NextButton extends PlaybackButton {
-  static defaultProps = {
-    ...PlaybackButton.defaultProps,
-    name: 'skip-next',
-  };
+function PauseButton({ onPress }: ButtonProps) {
+  return <PlaybackButton name="pause" onPress={onPress} />;
 }
-
-class ReplayButton extends PlaybackButton {
-  static defaultProps = {
-    ...PlaybackButton.defaultProps,
-    name: 'replay',
-  };
+function NextButton({ onPress }: ButtonProps) {
+  return <PlaybackButton name="skip-next" onPress={onPress} />;
+}
+function ReplayButton({ onPress }: ButtonProps) {
+  return <PlaybackButton name="replay" onPress={onPress} />;
 }
 
 interface TrackProps {
@@ -388,38 +340,31 @@ interface TrackProps {
   isCurrentTrack: boolean;
 }
 
-class TrackView extends React.Component<TrackProps> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _playNarration = () => {
-    playNarrationTrack(this.props.track.id);
-  };
-
-  render() {
-    const { track, isCurrentTrack } = this.props;
-    return (
-      <TouchableHighlight onPress={this._playNarration}>
-        <>
-          <Divider />
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              height: 64,
-              width: '100%',
-              alignItems: 'center',
-              padding: m,
-              backgroundColor: isCurrentTrack ? 'grey' : 'transparent',
-            }}
-          >
-            <ArtworkView track={track} state={null} />
-            <TitleView style={{ flex: 1 }} track={track} />
-          </View>
-        </>
-      </TouchableHighlight>
-    );
-  }
+function TrackView({ track, isCurrentTrack }: TrackProps) {
+  const playNarration = useCallback(() => {
+    playNarrationTrack(track.id);
+  }, [track.id]);
+  return (
+    <TouchableHighlight onPress={playNarration}>
+      <>
+        <Divider />
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            height: 64,
+            width: '100%',
+            alignItems: 'center',
+            padding: m,
+            backgroundColor: isCurrentTrack ? 'grey' : 'transparent',
+          }}
+        >
+          <ArtworkView track={track} state={null} />
+          <TitleView style={{ flex: 1 }} track={track} />
+        </View>
+      </>
+    </TouchableHighlight>
+  );
 }
 
 interface PlaylistProps {
@@ -431,54 +376,45 @@ interface PlaylistState {
   currentTrackId: string | null;
 }
 
-class PlaylistView extends React.Component<PlaylistProps, PlaylistState> {
-  onPlaybackTrackChange?: TrackPlayer.EmitterSubscription;
-
-  constructor(props: PlaylistProps) {
-    super(props);
-
-    this.state = {
-      currentTrackId: null,
-    };
-  }
-
-  componentDidMount() {
+function PlaylistView({ style, queue }: PlaylistProps) {
+  const [currentTrackId, setCurrenTrackId] = useState<string | null>(null);
+  useEffect(() => {
+    let canceled = false;
+    let listener: EmitterSubscription | undefined = undefined;
     narrationPlayer().then(trackPlayer => {
-      this.onPlaybackTrackChange = trackPlayer.addEventListener(
+      listener = trackPlayer.addEventListener(
         'playback-track-changed',
         (data) => {
-          this.setState({
-            currentTrackId: data.nextTrack,
-          });
+          if (!canceled) {
+            setCurrenTrackId(data.nextTrack);
+          }
         }
       );
-      trackPlayer.getCurrentTrack().then((currentTrackId) =>
-        this.setState({ currentTrackId })
-      );
+      trackPlayer.getCurrentTrack().then(currentTrackId => {
+        if (!canceled) {
+          setCurrenTrackId(currentTrackId);
+        }
+      });
     });
-  }
-
-  componentWillUnmount() {
-    this.onPlaybackTrackChange?.remove();
-  }
-
-  render() {
-    const { style, queue } = this.props;
-    const { currentTrackId } = this.state;
-
-    return (
-      <View style={style}>
-        { queue.map((track) => (
-          <TrackView
-            key={track.id}
-            track={track}
-            isCurrentTrack={currentTrackId === track.id}
-          />
-        ))}
-        <Divider />
-      </View>
-    );
-  }
+    return () => {
+      canceled = true;
+      if (listener) {
+        listener.remove();
+      }
+    };
+  }, []);
+  return (
+    <View style={style}>
+      { queue.map((track) => (
+        <TrackView
+          key={track.id}
+          track={track}
+          isCurrentTrack={currentTrackId === track.id}
+        />
+      ))}
+      <Divider />
+    </View>
+  );
 }
 
 interface NarratorContainerProps {

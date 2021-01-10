@@ -39,7 +39,7 @@ const ICON_SIZE = {
   'edit': 24,
   'upgrade': 34,
   'plus-thin': 24,
-  'dismiss': 18,
+  'dismiss': 22,
   'check-thin': 30,
 };
 const ICON_STYLE = {
@@ -91,7 +91,7 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
   };
   const textColor = {
     red_outline: colors.L30,
-    red: COLORS.white,
+    red: COLORS.L30,
     gold: COLORS.D30,
     gray: colors.L30,
   };
@@ -136,7 +136,7 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
           </View>
         ) }
         <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined]}>
-          <Text numberOfLines={1} ellipsizeMode="clip" style={[space.marginTopXs, typography.large, { color: textColor[color] }]}>
+          <Text numberOfLines={1} ellipsizeMode="clip" style={[space.marginTopXs, detail ? typography.large : typography.cardName, { color: textColor[color] }]}>
             { title }
           </Text>
           { !!detail && (

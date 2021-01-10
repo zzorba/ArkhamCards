@@ -1,0 +1,12 @@
+diff --git a/node_modules/@types/react-native/index.d.ts b/node_modules/@types/react-native/index.d.ts
+index 999bfb6..c736bf5 100644
+--- a/node_modules/@types/react-native/index.d.ts
++++ b/node_modules/@types/react-native/index.d.ts
+@@ -2438,6 +2438,7 @@ export interface ViewProps
+         GestureResponderHandlers,
+         Touchable,
+         AccessibilityProps {
++    opacity?: number;
+     /**
+      * This defines how far a touch event can start away from the view.
+      * Typical interface guidelines recommend touch targets that are at least

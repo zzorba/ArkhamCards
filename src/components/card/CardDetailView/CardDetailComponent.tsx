@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
+import { forEach, map } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -15,6 +16,8 @@ import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { useInvestigatorCards } from '@components/core/hooks';
+import CardDetailSectionHeader from './CardDetailSectionHeader';
 
 interface Props {
   componentId?: string;
@@ -28,6 +31,19 @@ interface Props {
 
 export default function CardDetailComponent({ componentId, card, width, showSpoilers, toggleShowSpoilers, showInvestigatorCards, simple }: Props) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const investigators = useInvestigatorCards();
+  const parallelInvestigators = useMemo(() => {
+    if (card.type_code !== 'investigator') {
+      return [];
+    }
+    const parallelInvestigators: Card[] = [];
+    forEach(investigators, c => {
+      if (c && c.alternate_of_code === card.code) {
+        parallelInvestigators.push(c);
+      }
+    });
+    return parallelInvestigators;
+  }, [investigators, card]);
   const editSpoilersPressed = useCallback(() => {
     if (componentId) {
       Navigation.push(componentId, {
@@ -55,6 +71,20 @@ export default function CardDetailComponent({ componentId, card, width, showSpoi
     }
     return (
       <View style={styles.investigatorContent}>
+        { parallelInvestigators.length > 0 && (
+          <>
+            <CardDetailSectionHeader title={t`Parallel`} />
+            { map(parallelInvestigators, parallel => (
+              <TwoSidedCardComponent
+                key={parallel.code}
+                componentId={componentId}
+                card={parallel}
+                width={width}
+                simple={!!simple}
+              />
+            )) }
+          </>
+        ) }
         <View style={styles.maxWidth}>
           <View style={[styles.deckbuildingSection, { backgroundColor: colors.L20 }]}>
             <Text style={[typography.large, typography.center, typography.uppercase]}>
@@ -74,7 +104,7 @@ export default function CardDetailComponent({ componentId, card, width, showSpoi
         />
       </View>
     );
-  }, [componentId, card, width, typography, colors, showInvestigatorCardsPressed]);
+  }, [componentId, card, width, typography, colors, showInvestigatorCardsPressed, simple, parallelInvestigators]);
 
   const toggleShowSpoilersPressed = useCallback(() => {
     toggleShowSpoilers && toggleShowSpoilers(card.code);
@@ -131,8 +161,8 @@ const styles = StyleSheet.create({
     marginLeft: -8,
     marginRight: -8,
     marginBottom: 8,
-    padding: 4,
-    paddingTop: 6,
+    padding: s,
+    paddingTop: m,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

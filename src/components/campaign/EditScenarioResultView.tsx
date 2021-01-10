@@ -8,11 +8,10 @@ import {
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-
 import { t } from 'ttag';
+
 import { ScenarioResult, CUSTOM } from '@actions/types';
 import LabeledTextBox from '@components/core/LabeledTextBox';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { NavigationProps } from '@components/nav/types';
 import XpComponent from './XpComponent';
 import { editScenarioResult } from './actions';
@@ -20,26 +19,16 @@ import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useNavigationButtonPressed } from '@components/core/hooks';
+import { useTextDialog } from '@components/deck/dialogs';
 
 export interface EditScenarioResultProps {
   campaignId: number;
   index: number;
 }
 
-interface ReduxProps {
-  scenarioResult?: ScenarioResult;
-}
+type Props = NavigationProps & EditScenarioResultProps;
 
-interface ReduxActionProps {
-  editScenarioResult: (id: number, index: number, scenarioResult: ScenarioResult) => void;
-}
-
-type Props = NavigationProps & EditScenarioResultProps & InjectedDialogProps;
-interface State {
-  scenarioResult?: ScenarioResult;
-}
-
-function EditScenarioResultView({ campaignId, index, componentId, showTextEditDialog }: Props) {
+export default function EditScenarioResultView({ campaignId, index, componentId }: Props) {
   const { backgroundStyle, typography } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
@@ -81,13 +70,11 @@ function EditScenarioResultView({ campaignId, index, componentId, showTextEditDi
     }
   }, [scenarioResult, setScenarioResult]);
 
-  const showResolutionDialog = useCallback(() => {
-    showTextEditDialog(
-      'Resolution',
-      existingScenarioResult ? existingScenarioResult.resolution : '',
-      resolutionChanged
-    );
-  }, [showTextEditDialog, existingScenarioResult, resolutionChanged]);
+  const { dialog, showDialog: showResolutionDialog } = useTextDialog({
+    title: t`Resolution`,
+    value: existingScenarioResult?.resolution || '',
+    onValueChange: resolutionChanged,
+  });
 
   const xpChanged = useCallback((xp: number) => {
     if (scenarioResult) {
@@ -109,29 +96,31 @@ function EditScenarioResultView({ campaignId, index, componentId, showTextEditDi
     resolution,
   } = scenarioResult;
   return (
-    <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
-      <View style={space.marginSideS}>
-        <Text style={typography.smallLabel}>
-          { (interlude ? t`Interlude` : t`Scenario`).toUpperCase() }
-        </Text>
-        <Text style={typography.text}>
-          { scenario }
-        </Text>
-        { (scenarioCode === CUSTOM || !interlude) && (
-          <LabeledTextBox
-            label={t`Resolution`}
-            onPress={showResolutionDialog}
-            value={resolution}
-            column
-          />
-        ) }
-      </View>
-      <XpComponent xp={xp || 0} onChange={xpChanged} />
-      <View style={styles.footer} />
-    </ScrollView>
+    <View style={styles.wrapper}>
+      <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
+        <View style={space.marginSideS}>
+          <Text style={typography.smallLabel}>
+            { (interlude ? t`Interlude` : t`Scenario`).toUpperCase() }
+          </Text>
+          <Text style={typography.text}>
+            { scenario }
+          </Text>
+          { (scenarioCode === CUSTOM || !interlude) && (
+            <LabeledTextBox
+              label={t`Resolution`}
+              onPress={showResolutionDialog}
+              value={resolution}
+              column
+            />
+          ) }
+        </View>
+        <XpComponent xp={xp || 0} onChange={xpChanged} />
+        <View style={styles.footer} />
+      </ScrollView>
+      { dialog }
+    </View>
   );
 }
-export default withDialogs(EditScenarioResultView);
 
 const styles = StyleSheet.create({
   container: {
@@ -143,5 +132,8 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
+  },
+  wrapper: {
+    flex: 1,
   },
 });
