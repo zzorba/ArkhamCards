@@ -129,7 +129,16 @@ export default class CardCostIcon extends React.PureComponent<Props> {
           ) : (
             <Text style={[
               styles.costNumber,
-              { fontSize: ((card.cost || 0) >= 10 ? 14 : 18) * scaleFactor, color: textColor },
+              { color: textColor },
+              card.cost === -2 ? {
+                fontFamily: 'Teutonic',
+                fontSize: 24,
+                paddingTop: 3,
+              } : {
+                fontFamily: 'cost',
+                fontSize: ((card.cost || 0) >= 10 ? 14 : 18) * scaleFactor,
+                paddingTop: 1,
+              },
             ]} allowFontScaling={false}>
               { this.cardCost() }
             </Text>
@@ -157,7 +166,6 @@ const styles = StyleSheet.create({
   },
   costNumber: {
     paddingTop: 1,
-    fontFamily: 'cost',
     color: COLORS.white,
   },
   factionIcon: {
