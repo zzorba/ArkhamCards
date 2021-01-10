@@ -206,13 +206,13 @@ export default function SettingsView({ componentId }: NavigationProps) {
             />
             <DeckButton
               bottomMargin={s}
-              icon="settings"
+              icon="tools"
               onPress={diagnosticsPressed}
               title={t`Diagnostics`}
             />
             <DeckButton
               color="gold"
-              icon="logo"
+              icon="email"
               onPress={contactPressed}
               title={t`Contact us`}
             />

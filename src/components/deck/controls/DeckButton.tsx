@@ -12,7 +12,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 interface Props {
   title: string;
   detail?: string;
-  icon?: 'difficulty' | 'chaos_bag' | 'chart' | 'elder_sign' | 'delete' | 'per_investigator' | 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
+  icon?: 'tools' | 'difficulty' | 'chaos_bag' | 'chart' | 'elder_sign' | 'delete' | 'per_investigator' | 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
   color?: 'red' | 'red_outline' | 'gold' | 'gray';
   onPress?: () => void;
   rightMargin?: boolean;
@@ -24,6 +24,7 @@ interface Props {
 }
 
 const ICON_SIZE = {
+  tools: 26,
   difficulty: 26,
   chaos_bag: 26,
   chart: 26,
@@ -43,6 +44,7 @@ const ICON_SIZE = {
   'check-thin': 30,
 };
 const ICON_STYLE = {
+  tools: {},
   difficulty: {},
   chaos_bag: {},
   chart: {},
