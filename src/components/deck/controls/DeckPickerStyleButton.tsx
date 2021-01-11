@@ -15,7 +15,7 @@ interface Props {
   first?: boolean;
   last?: boolean;
   editable: boolean;
-  onPress: () => void;
+  onPress?: () => void;
   noLabelDivider?: boolean;
   editIcon?: string;
 }

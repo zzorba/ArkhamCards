@@ -72871,7 +72871,8 @@
     "running_stopped_rule",
     "road_x_rule",
     "road_x_rule_1",
-    "road_x_rule_2"
+    "road_x_rule_2",
+    "$play_scenario"
   ],
   "steps": [
     {

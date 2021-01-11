@@ -4,16 +4,13 @@ import {
   Alert,
   StyleSheet,
   Text,
-  Platform,
   View,
 } from 'react-native';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
-import { maybeShowWeaknessPrompt } from '../campaignHelper';
-import { Campaign, Deck, DecksMap, InvestigatorData, Slots, Trauma, TraumaAndCardData, WeaknessSet } from '@actions/types';
+import { Campaign, Deck, DecksMap, InvestigatorData, Trauma, TraumaAndCardData } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
 import space from '@styles/space';
@@ -30,10 +27,9 @@ interface Props {
   allInvestigators: Card[];
   investigatorData: InvestigatorData;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
-  weaknessSet: WeaknessSet;
   updateLatestDeckIds: (latestDeckIds: number[]) => void;
   updateNonDeckInvestigators: (nonDeckInvestigators: string[]) => void;
-  updateWeaknessSet: (weaknessSet: WeaknessSet) => void;
+  showChooseDeck: (investigator?: Card) => void;
   incSpentXp: (code: string) => void;
   decSpentXp: (code: string) => void;
   header?: React.ReactNode;
@@ -53,85 +49,15 @@ export default function DecksSection({
   allInvestigators,
   investigatorData,
   showTraumaDialog,
-  weaknessSet,
   updateLatestDeckIds,
   updateNonDeckInvestigators,
-  updateWeaknessSet,
   incSpentXp,
   decSpentXp,
   removeMode,
   toggleRemoveMode,
+  showChooseDeck,
 }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
-
-  const updateWeaknessAssignedCards = useCallback((weaknessCards: Slots) => {
-    updateWeaknessSet({
-      ...weaknessSet,
-      assignedCards: weaknessCards,
-    });
-  }, [updateWeaknessSet, weaknessSet]);
-
-  const checkForWeaknessPrompt = useCallback((deck: Deck) => {
-    maybeShowWeaknessPrompt(
-      deck,
-      cards,
-      weaknessSet.assignedCards,
-      updateWeaknessAssignedCards
-    );
-  }, [cards, weaknessSet, updateWeaknessAssignedCards]);
-
-  const addDeck = useCallback((deck: Deck) => {
-    const newLatestDeckIds = [...(latestDeckIds || []), deck.id];
-    updateLatestDeckIds(newLatestDeckIds);
-    checkForWeaknessPrompt(deck);
-  }, [latestDeckIds, updateLatestDeckIds, checkForWeaknessPrompt]);
-
-  const addInvestigator = useCallback((card: Card) => {
-    const newInvestigators = [
-      ...map(allInvestigators, investigator => investigator.code),
-      card.code,
-    ];
-    updateNonDeckInvestigators(newInvestigators);
-  }, [allInvestigators, updateNonDeckInvestigators]);
-
-  const showChooseDeck = useCallback((
-    singleInvestigator?: Card,
-  ) => {
-    const campaignInvestigators = flatMap(latestDeckIds, deckId => {
-      const deck = decks[deckId];
-      return (deck && cards[deck.investigator_code]) || [];
-    });
-
-    const passProps: MyDecksSelectorProps = singleInvestigator ? {
-      campaignId: campaign.id,
-      singleInvestigator: singleInvestigator.code,
-      onDeckSelect: addDeck,
-    } : {
-      campaignId: campaign.id,
-      selectedInvestigatorIds: map(
-        campaignInvestigators,
-        investigator => investigator.code
-      ),
-      onDeckSelect: addDeck,
-      onInvestigatorSelect: addInvestigator,
-      simpleOptions: true,
-    };
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Dialog.DeckSelector',
-            passProps,
-            options: {
-              modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.fullScreen :
-                OptionsModalPresentationStyle.overCurrentContext,
-            },
-          },
-        }],
-      },
-    });
-  }, [campaign, latestDeckIds, decks, cards, addDeck, addInvestigator]);
 
   const removeInvestigator = useCallback((investigator: Card, removedDeckId?: number) =>{
     if (removedDeckId) {

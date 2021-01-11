@@ -129,23 +129,28 @@ export function refresh(
     };
     const s: string[] = [];
     forEach(tokenRequest, (value, key) => {
-      s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+      if (value !== undefined) {
+        s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+      }
     });
-
-    fetch(config.serviceConfiguration.tokenEndpoint, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: s.join('&'),
-    }).then(response => response.json().then(jsonResponse => {
-      resolve({
-        accessToken: jsonResponse.access_token,
-        accessTokenExpirationDate: new Date().getTime() + jsonResponse.expires_in * 1000,
-        refreshToken: jsonResponse.refresh_token,
-      });
-    })).catch(reject);
+    if (!config.serviceConfiguration) {
+      reject();
+    } else {
+      fetch(config.serviceConfiguration.tokenEndpoint, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: s.join('&'),
+      }).then(response => response.json().then(jsonResponse => {
+        resolve({
+          accessToken: jsonResponse.access_token,
+          accessTokenExpirationDate: new Date().getTime() + jsonResponse.expires_in * 1000,
+          refreshToken: jsonResponse.refresh_token,
+        });
+      })).catch(reject);
+    }
   });
 }
 
@@ -153,12 +158,12 @@ export function refresh(
 export function revoke(
   config: AppAuthConfig,
   tokenToRevoke: string
-): Promise<AuthorizeResponse> {
+): Promise<void> {
   if (Platform.OS === 'ios') {
     const { revoke } = require('react-native-app-auth');
     return revoke(config, { tokenToRevoke });
   }
-  return new Promise<AuthorizeResponse>((resolve, reject) => {
+  return new Promise<void>((resolve, reject) => {
     const tokenRequest = {
       token: tokenToRevoke,
       client_id: config.clientId,
@@ -167,14 +172,17 @@ export function revoke(
     forEach(tokenRequest, (value, key) => {
       s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
     });
-
-    fetch(config.serviceConfiguration.revocationEndpoint, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: s.join('&'),
-    }).then(() => resolve()).catch(reject);
+    if (config.serviceConfiguration?.revocationEndpoint) {
+      fetch(config.serviceConfiguration.revocationEndpoint, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: s.join('&'),
+      }).then(() => resolve()).catch(reject);
+    } else {
+      reject();
+    }
   });
 }

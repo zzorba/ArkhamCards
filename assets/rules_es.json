@@ -348,7 +348,7 @@
   },
   {
     "id": "Drawing_Cards",
-    "title": "Drawing CArds",
+    "title": "Drawing Cards",
     "text": "When a player is instructed to draw one or more cards, those cards are drawn from the top of his or her investigator deck and added to his or her hand.\nWhen a player is instructed to draw one or more encounter cards, those cards are drawn from the top of the encounter deck, and resolved following the rules for drawing encounter cards under framework step \"[1.4 Each investigator draws 1 encounter card](#Mythos_Phase)\".\n- When a player draws two or more cards as the result of a single ability or game step, those cards are drawn simultaneously. If a deck empties middraw, reset the deck and complete the draw.\n- There is no limit to the number of cards a player may draw each round.\n- If an investigator with an empty investigator deck needs to draw a card, that investigator shuffles his or her discard pile back into his or her deck, then draws the card, and upon completion of the entire draw takes one horror."
   },
   {

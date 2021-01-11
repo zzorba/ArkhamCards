@@ -99,6 +99,72 @@ export function useDialog({
   };
 }
 
+interface CounterDialogOptions {
+  title: string;
+  description?: string;
+  label: string;
+  count: number;
+  onCountChange: (count: number) => void;
+  max?: number;
+  min?: number;
+}
+export function useCounterDialog({
+  title,
+  label,
+  description,
+  count,
+  onCountChange,
+  max,
+  min,
+}: CounterDialogOptions) {
+  const { borderStyle, typography } = useContext(StyleContext);
+  const [liveCount, incCount, decCount, setCount] = useCounter(count, { min, max });
+  useEffect(() => {
+    setCount(count);
+  }, [count]);
+  const content = useMemo(() => {
+    return (
+      <View style={styles.column}>
+        { !!description && (
+          <View style={[space.marginS, space.paddingBottomS, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
+            <Text style={typography.text}>
+              { description }
+            </Text>
+          </View>
+        ) }
+        <NewDialog.ContentLine text={label} control={(
+          <PlusMinusButtons
+            onIncrement={incCount}
+            onDecrement={decCount}
+            count={liveCount}
+            dialogStyle
+            allowNegative
+          />
+        )} />
+      </View>
+    );
+  }, [liveCount, typography, borderStyle, description, label, incCount, decCount]);
+  const saveChanges = useCallback(() => {
+    onCountChange(liveCount);
+  }, [onCountChange, liveCount]);
+  const { visible, setVisible, dialog } = useDialog({
+    title,
+    content,
+    confirm: {
+      title: t`Done`,
+      onPress: saveChanges,
+    },
+    dismiss: {
+      title: t`Cancel`,
+    },
+  });
+  const showCountDialog = useMemo(() => throttle(() => setVisible(true), 500), [setVisible]);
+  return {
+    showCountDialog,
+    countDialog: dialog,
+  };
+}
+
 interface TextDialogOptions {
   title: string;
   value: string;

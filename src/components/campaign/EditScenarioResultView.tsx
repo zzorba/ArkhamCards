@@ -19,7 +19,9 @@ import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useNavigationButtonPressed } from '@components/core/hooks';
-import { useTextDialog } from '@components/deck/dialogs';
+import { useCounterDialog, useTextDialog } from '@components/deck/dialogs';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 export interface EditScenarioResultProps {
   campaignId: number;
@@ -84,7 +86,12 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
       });
     }
   }, [scenarioResult, setScenarioResult]);
-
+  const { countDialog, showCountDialog } = useCounterDialog({
+    title: t`Experience`,
+    label: t`Earned experience:`,
+    count: scenarioResult?.xp || 0,
+    onCountChange: xpChanged,
+  });
   if (!scenarioResult) {
     return null;
   }
@@ -98,26 +105,38 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
   return (
     <View style={styles.wrapper}>
       <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
-        <View style={space.marginSideS}>
-          <Text style={typography.smallLabel}>
-            { (interlude ? t`Interlude` : t`Scenario`).toUpperCase() }
-          </Text>
-          <Text style={typography.text}>
-            { scenario }
-          </Text>
+        <View style={space.paddingS}>
+          <DeckPickerStyleButton
+            title={interlude ? t`Interlude` : t`Scenario`}
+            valueLabel={scenario}
+            editable={false}
+            icon="name"
+            first
+          />
           { (scenarioCode === CUSTOM || !interlude) && (
-            <LabeledTextBox
-              label={t`Resolution`}
+            <DeckPickerStyleButton
+              title={t`Resolution`}
+              valueLabel={resolution}
               onPress={showResolutionDialog}
-              value={resolution}
-              column
+              icon="book"
+              editable
             />
           ) }
+          <DeckPickerStyleButton
+            title={t`Experience`}
+            icon="xp"
+            editable
+            onPress={showCountDialog}
+            valueLabel={`${xp || 0}`}
+            last
+          />
         </View>
-        <XpComponent xp={xp || 0} onChange={xpChanged} />
-        <View style={styles.footer} />
+        <View style={[space.paddingS, styles.row]}>
+          <DeckButton icon="check-thin" title={t`Save`} onPress={doSave} thin />
+        </View>
       </ScrollView>
       { dialog }
+      { countDialog }
     </View>
   );
 }
@@ -130,10 +149,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
   },
-  footer: {
-    height: 100,
-  },
   wrapper: {
     flex: 1,
+  },
+  row: {
+    flexDirection: 'row',
   },
 });

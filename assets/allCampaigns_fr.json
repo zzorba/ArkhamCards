@@ -41970,8 +41970,8 @@
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name#\" a été Pris par l'Abîme",
-                "feminine_text": "#name#\" a été Prise par l'Abîme"
+                "masculine_text": "#name# a été Pris par l'Abîme",
+                "feminine_text": "#name# a été Prise par l'Abîme"
               }
             ]
           }
@@ -41995,8 +41995,8 @@
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name#\" a été Pris par l'Abîme",
-                "feminine_text": "#name#\" a été Prise par l'Abîme"
+                "masculine_text": "#name# a été Pris par l'Abîme",
+                "feminine_text": "#name# a été Prise par l'Abîme"
               }
             ]
           }
@@ -42454,8 +42454,8 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name#\" a été Prise par l'Abîme",
-                "feminine_text": "#name#\" a été Prise par l'Abîme"
+                "masculine_text": "#name# a été Prise par l'Abîme",
+                "feminine_text": "#name# a été Prise par l'Abîme"
               }
             ]
           }
@@ -42479,8 +42479,8 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name#\" a été Prise par l'Abîme",
-                "feminine_text": "#name#\" a été Prise par l'Abîme"
+                "masculine_text": "#name# a été Prise par l'Abîme",
+                "feminine_text": "#name# a été Prise par l'Abîme"
               }
             ]
           }
@@ -72871,7 +72871,8 @@
     "running_stopped_rule",
     "road_x_rule",
     "road_x_rule_1",
-    "road_x_rule_2"
+    "road_x_rule_2",
+    "$play_scenario"
   ],
   "steps": [
     {

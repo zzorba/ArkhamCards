@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { keys, map, filter } from 'lodash';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { keys, map, filter, flatMap } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, CUSTOM, InvestigatorData, WeaknessSet } from '@actions/types';
+import { CampaignNotes, CUSTOM, Deck, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
 import CampaignLogSection from '../CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
@@ -33,6 +33,9 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useTextDialog } from '@components/deck/dialogs';
 import CampaignGuideFab from '@components/campaignguide/CampaignGuideFab';
+import { maybeShowWeaknessPrompt } from '../campaignHelper';
+import Card from '@data/Card';
+import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 
 export interface CampaignDetailProps {
   id: number;
@@ -44,7 +47,7 @@ function ScenarioResultButton({ name, campaignId, componentId, status, index, on
   name: string;
   campaignId: number;
   componentId: string;
-  status: 'played' | 'playable';
+  status: 'completed' | 'playable';
   index: number;
   onPress?: () => void;
 }) {
@@ -186,6 +189,87 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       showEditNameDialog();
     }
   }, componentId, [showEditNameDialog]);
+
+
+  const updateWeaknessAssignedCards = useCallback((weaknessCards: Slots) => {
+    if (campaign) {
+      updateWeaknessSet({
+        ...campaign.weaknessSet,
+        assignedCards: weaknessCards,
+      });
+    }
+  }, [updateWeaknessSet, campaign]);
+
+  const checkForWeaknessPrompt = useCallback((deck: Deck) => {
+    if (cards && campaign) {
+      maybeShowWeaknessPrompt(
+        deck,
+        cards,
+        campaign.weaknessSet.assignedCards,
+        updateWeaknessAssignedCards
+      );
+    }
+  }, [cards, campaign, updateWeaknessAssignedCards]);
+
+  const addDeck = useCallback((deck: Deck) => {
+    const newLatestDeckIds = [...(latestDeckIds || []), deck.id];
+    updateLatestDeckIds(newLatestDeckIds);
+    checkForWeaknessPrompt(deck);
+  }, [latestDeckIds, updateLatestDeckIds, checkForWeaknessPrompt]);
+
+  const addInvestigator = useCallback((card: Card) => {
+    const newInvestigators = [
+      ...map(allInvestigators, investigator => investigator.code),
+      card.code,
+    ];
+    updateNonDeckInvestigators(newInvestigators);
+  }, [allInvestigators, updateNonDeckInvestigators]);
+
+  const showChooseDeck = useCallback((
+    singleInvestigator?: Card,
+  ) => {
+    if (!cards || !campaign) {
+      return;
+    }
+    const campaignInvestigators = flatMap(latestDeckIds, deckId => {
+      const deck = decks[deckId];
+      return (deck && cards[deck.investigator_code]) || [];
+    });
+
+    const passProps: MyDecksSelectorProps = singleInvestigator ? {
+      campaignId: campaign.id,
+      singleInvestigator: singleInvestigator.code,
+      onDeckSelect: addDeck,
+    } : {
+      campaignId: campaign.id,
+      selectedInvestigatorIds: map(
+        campaignInvestigators,
+        investigator => investigator.code
+      ),
+      onDeckSelect: addDeck,
+      onInvestigatorSelect: addInvestigator,
+      simpleOptions: true,
+    };
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Dialog.DeckSelector',
+            passProps,
+            options: {
+              modalPresentationStyle: Platform.OS === 'ios' ?
+                OptionsModalPresentationStyle.fullScreen :
+                OptionsModalPresentationStyle.overCurrentContext,
+            },
+          },
+        }],
+      },
+    });
+  }, [campaign, latestDeckIds, decks, cards, addDeck, addInvestigator]);
+
+  const showAddInvestigator = useCallback(() => {
+    showChooseDeck();
+  }, [showChooseDeck]);
   const [removeMode, toggleRemoveMode] = useFlag(false);
   const decksTab = useMemo(() => {
     if (!campaign) {
@@ -207,7 +291,6 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
                 }
                 componentId={componentId}
                 campaign={campaign}
-                weaknessSet={campaign.weaknessSet}
                 latestDeckIds={latestDeckIds || []}
                 decks={decks}
                 allInvestigators={allInvestigators}
@@ -216,11 +299,11 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
                 showTraumaDialog={showTraumaDialog}
                 updateLatestDeckIds={updateLatestDeckIds}
                 updateNonDeckInvestigators={updateNonDeckInvestigators}
-                updateWeaknessSet={updateWeaknessSet}
                 incSpentXp={incSpentXp}
                 decSpentXp={decSpentXp}
                 removeMode={removeMode}
                 toggleRemoveMode={toggleRemoveMode}
+                showChooseDeck={showChooseDeck}
               />
             ) }
           </View>
@@ -233,8 +316,8 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       </View>
     );
   }, [campaign, latestDeckIds, decks, allInvestigators, cards, backgroundStyle, componentId, removeMode,
-    toggleRemoveMode,
-    drawWeaknessPressed, showTraumaDialog, updateLatestDeckIds, updateNonDeckInvestigators, updateWeaknessSet, incSpentXp, decSpentXp]);
+    toggleRemoveMode, showChooseDeck,
+    drawWeaknessPressed, showTraumaDialog, updateLatestDeckIds, updateNonDeckInvestigators, incSpentXp, decSpentXp]);
   const [cycleScenarios] = useCampaignScenarios(campaign);
   const scenariosTab = useMemo(() => {
     if (!campaign) {
@@ -256,16 +339,19 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
                 header={undefined}
                 footer={<RoundedFooterButton icon="expand" title={t`Record Scenario Result`} onPress={addScenarioResultPressed} />}
               >
-                { map(campaign.scenarioResults, (scenario, idx) => (
-                  <ScenarioResultButton
-                    key={idx}
-                    componentId={componentId}
-                    campaignId={campaign.id}
-                    name={scenario.scenario}
-                    index={idx}
-                    status="played"
-                  />
-                )) }
+                { map(campaign.scenarioResults, (scenario, idx) => {
+                  console.log(campaign);
+                  return (
+                    <ScenarioResultButton
+                      key={idx}
+                      componentId={componentId}
+                      campaignId={campaign.id}
+                      name={scenario.interlude ? scenario.scenario : `${scenario.scenario} (${scenario.resolution}, ${scenario.xp || 0} XP)`}
+                      index={idx}
+                      status="completed"
+                    />
+                  );
+                }) }
                 { map(
                   filter(cycleScenarios, scenario => !hasCompletedScenario(scenario)),
                   (scenario, idx) => (
@@ -326,15 +412,12 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
         node: scenariosTab,
       },
       {
-        keu: 'log',
+        key: 'log',
         title: t`Log`,
         node: logsTab,
       },
     ];
   }, [decksTab, scenariosTab, logsTab]);
-  const showAddInvestigator = useCallback(() => {
-
-  }, []);
   if (!campaign) {
     return (
       <View>

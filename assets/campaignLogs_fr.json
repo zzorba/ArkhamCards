@@ -1212,13 +1212,13 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name#\" a été Pris par l'Abîme",
-            "feminine_text": "#name#\" a été Prise par l'Abîme"
+            "masculine_text": "#name# a été Pris par l'Abîme",
+            "feminine_text": "#name# a été Prise par l'Abîme"
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name#\" a été Prise par l'Abîme",
-            "feminine_text": "#name#\" a été Prise par l'Abîme"
+            "masculine_text": "#name# a été Prise par l'Abîme",
+            "feminine_text": "#name# a été Prise par l'Abîme"
           },
           {
             "id": "blob_contained",
