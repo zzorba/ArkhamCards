@@ -11,16 +11,15 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { t } from 'ttag';
 
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
-import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import { Campaign, Deck, DecksMap, InvestigatorData, Slots, Trauma, TraumaAndCardData, WeaknessSet } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useFlag } from '@components/core/hooks';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
 
 interface Props {
   componentId: string;
@@ -37,11 +36,15 @@ interface Props {
   updateWeaknessSet: (weaknessSet: WeaknessSet) => void;
   incSpentXp: (code: string) => void;
   decSpentXp: (code: string) => void;
+  header?: React.ReactNode;
+  removeMode: boolean;
+  toggleRemoveMode: () => void;
 }
 
 const EMPTY_TRAUMA_DATA: TraumaAndCardData = {};
 
 export default function DecksSection({
+  header,
   componentId,
   campaign,
   latestDeckIds,
@@ -56,9 +59,10 @@ export default function DecksSection({
   updateWeaknessSet,
   incSpentXp,
   decSpentXp,
+  removeMode,
+  toggleRemoveMode,
 }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
-  const [removeMode, toggleRemoveMode] = useFlag(false);
 
   const updateWeaknessAssignedCards = useCallback((weaknessCards: Slots) => {
     updateWeaknessSet({
@@ -240,43 +244,31 @@ export default function DecksSection({
       return investigator.eliminated(investigatorData[investigator.code]);
     });
   }, [allInvestigators, investigatorData]);
-
-  const removeButton = useMemo(() => {
-    if (!aliveInvestigators.length) {
-      return null;
-    }
-    return (
-      <BasicButton
-        title={t`Remove investigators`}
-        color={COLORS.red}
-        onPress={toggleRemoveMode}
-      />
-    );
-  }, [aliveInvestigators, toggleRemoveMode]);
-
-  const showAddInvestigator = useCallback(() => {
-    showChooseDeck();
-  }, [showChooseDeck]);
-
   return (
-    <View style={[styles.underline, borderStyle]}>
+    <RoundedFactionBlock
+      faction="neutral"
+      noSpace
+      header={header}
+      footer={
+        removeMode ? (
+          <RoundedFooterButton
+            icon="check"
+            title={t`Finished Removing Investigarors`}
+            onPress={toggleRemoveMode}
+          />
+        ) : (
+          <RoundedFooterButton
+            icon="expand"
+            title={t`Add Investigator`}
+            onPress={showChooseDeck}
+          />
+        )
+      }
+    >
       { flatMap(aliveInvestigators, investigator => {
         const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
         return renderInvestigator(investigator, false, deck);
       }) }
-      { !removeMode && (
-        <BasicButton
-          title={t`Add Investigator`}
-          onPress={showAddInvestigator}
-        />
-      ) }
-      { removeMode ?
-        <BasicButton
-          title={t`Finished removing investigators`}
-          color={COLORS.red}
-          onPress={toggleRemoveMode}
-        /> : removeButton
-      }
       { killedInvestigators.length > 0 && (
         <View style={[styles.underline, borderStyle]}>
           <View style={space.paddingS}>
@@ -290,7 +282,7 @@ export default function DecksSection({
           }) }
         </View>
       ) }
-    </View>
+    </RoundedFactionBlock>
   );
 }
 

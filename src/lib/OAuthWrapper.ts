@@ -1,18 +1,10 @@
 import { forEach } from 'lodash';
 import { parse } from 'query-string';
 import { AppState, AppStateStatus, Linking, Platform } from 'react-native';
+import { authorize as appAuthAuthorize, AuthConfiguration } from 'react-native-app-auth';
 
-export interface AppAuthConfig {
-  issuer: string;
-  clientId: string;
-  clientSecret: string;
-  redirectUrl: string;
-  serviceConfiguration: {
-    authorizationEndpoint: string;
-    tokenEndpoint: string;
-    revocationEndpoint: string;
-  };
-}
+
+export type AppAuthConfig = AuthConfiguration;
 
 export interface AuthorizeResponse {
   accessToken: string;
@@ -20,16 +12,25 @@ export interface AuthorizeResponse {
   refreshToken: string;
 }
 
-export function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
-  if (Platform.OS === 'ios') {
-    const { authorize } = require('react-native-app-auth');
-    return authorize(config);
+export async function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
+  try {
+    const r = await appAuthAuthorize(config);
+    return {
+      accessToken: r.accessToken,
+      accessTokenExpirationDate: Date.parse(r.accessTokenExpirationDate),
+      refreshToken: r.refreshToken,
+    };
+  } catch (e) {
+    if (Platform.OS !== 'android' || e.code !== 'browser_not_found') {
+      return Promise.reject(e.message);
+    }
   }
-  if (!config.serviceConfiguration) {
+  const serviceConfiguration = config.serviceConfiguration;
+  // Fallback for android;
+  if (!serviceConfiguration) {
     return Promise.reject();
   }
   const originalState: string = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-
   return new Promise<AuthorizeResponse>((resolve, reject) => {
     /* eslint-disable @typescript-eslint/no-empty-function */
     let cleanup: () => void = () => {};
@@ -73,9 +74,11 @@ export function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
         };
         const s: string[] = [];
         forEach(tokenRequest, (value, key) => {
-          s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+          if (value !== undefined) {
+            s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+          }
         });
-        fetch(config.serviceConfiguration.tokenEndpoint, {
+        fetch(serviceConfiguration.tokenEndpoint, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -103,7 +106,7 @@ export function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
       AppState.removeEventListener('change', handleAppStateChange);
     };
 
-    const authUrl = `${config.serviceConfiguration.authorizationEndpoint}?redirect_uri=${encodeURIComponent(config.redirectUrl)}&client_id=${encodeURIComponent(config.clientId)}&response_type=code&state=${encodeURIComponent(originalState)}`;
+    const authUrl = `${serviceConfiguration.authorizationEndpoint}?redirect_uri=${encodeURIComponent(config.redirectUrl)}&client_id=${encodeURIComponent(config.clientId)}&response_type=code&state=${encodeURIComponent(originalState)}`;
     Linking.openURL(authUrl);
   });
 }

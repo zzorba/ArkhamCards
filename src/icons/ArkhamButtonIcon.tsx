@@ -47,7 +47,7 @@ export default function ArkhamButtonIcon({ icon, color }: Props) {
     case 'hide':
       return <AppIcon name="hide" size={22 * fontScale} color={iconColor} />;
     case 'dismiss':
-      return <AppIcon name="hide" size={22 * fontScale} color={iconColor} />;
+      return <AppIcon name="dismiss" size={22 * fontScale} color={iconColor} />;
     case 'confirm':
       return <AppIcon name="check" size={22 * fontScale} color={iconColor} />;
   }

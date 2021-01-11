@@ -993,6 +993,7 @@ type GuideAchievement = GuideBinaryAchievement | GuideCountAchievement;
 
 export interface CampaignGuideState {
   inputs: GuideInput[];
+  undo?: string[];
   achievements?: GuideAchievement[];
   lastUpdated?: Date;
 }

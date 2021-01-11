@@ -1,6 +1,7 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { map } from 'lodash';
 import {
+  StyleSheet,
   View,
 } from 'react-native';
 
@@ -9,6 +10,10 @@ import NotesSection from './NotesSection';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import { InvestigatorNotes } from '@actions/types';
 import Card from '@data/Card';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
+import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
 
 interface Props {
   investigator: Card;
@@ -23,6 +28,7 @@ export default function InvestigatorSectionRow({
   investigatorNotes,
   showDialog,
 }: Props) {
+  const { borderStyle } = useContext(StyleContext);
   const notesChanged = useCallback((index: number, notes: string[]) => {
     const sections = (investigatorNotes.sections || []).slice();
     const newNotes = Object.assign({}, sections[index].notes, { [investigator.code]: notes });
@@ -36,17 +42,16 @@ export default function InvestigatorSectionRow({
     counts[index] = Object.assign({}, counts[index], { counts: newCounts });
     updateInvestigatorNotes(Object.assign({}, investigatorNotes, { counts }));
   }, [investigator, updateInvestigatorNotes, investigatorNotes]);
+  const hasCounts = investigatorNotes.counts.length > 0;
 
   const notesSection = useMemo(() => {
     return (
-      <View>
+      <View style={[borderStyle, hasCounts ? styles.border : undefined]}>
         { map(investigatorNotes.sections, (section, idx) => {
-          const name = investigator.firstName || 'Unknown';
-          const title = `${name}’s ${section.title}`;
           return (
             <NotesSection
               key={idx}
-              title={title}
+              title={section.title}
               notes={section.notes[investigator.code] || []}
               index={idx}
               notesChanged={notesChanged}
@@ -57,34 +62,42 @@ export default function InvestigatorSectionRow({
         }) }
       </View>
     );
-  }, [investigator, investigatorNotes.sections, notesChanged, showDialog]);
+  }, [investigator, investigatorNotes.sections, notesChanged, showDialog, borderStyle, hasCounts]);
 
   const countsSection = useMemo(() => {
     return (
       <View>
         { map(investigatorNotes.counts, (section, idx) => {
-          const name = investigator.firstName ?
-            investigator.firstName.toUpperCase() :
-            'Unknown';
-          const title = `${name}’S ${section.title}`;
           return (
             <EditCountComponent
               key={idx}
               index={idx}
-              title={title}
+              title={section.title}
               count={section.counts[investigator.code] || 0}
               countChanged={countChanged}
+              last={idx === investigatorNotes.counts.length - 1}
             />
           );
         }) }
       </View>
     );
   }, [investigator, investigatorNotes.counts, countChanged]);
-
+  const faction = investigator.factionCode();
   return (
-    <View>
-      { notesSection }
-      { countsSection }
+    <View style={space.paddingBottomS}>
+      <RoundedFactionBlock
+        header={<DeckSectionHeader faction={faction} title={investigator.name} />}
+        faction={faction}
+      >
+        { notesSection }
+        { countsSection }
+      </RoundedFactionBlock>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  border: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+});

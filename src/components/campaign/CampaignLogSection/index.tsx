@@ -9,8 +9,9 @@ import Card from '@data/Card';
 import InvestigatorSectionList from './InvestigatorSectionList';
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
-import BasicButton from '@components/core/BasicButton';
-import { s, xs } from '@styles/space';
+import space, { s, xs } from '@styles/space';
+import ArkhamButton from '@components/core/ArkhamButton';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 
 interface Props {
   campaignNotes: CampaignNotes;
@@ -96,24 +97,26 @@ export default function CampaignLogSection(props: Props) {
 
   const notesSection = useMemo(() => {
     return (
-      <View>
-        { map(campaignNotes.sections, (section, idx) => (
-          <NotesSection
-            key={idx}
-            title={section.title}
-            notes={section.notes}
-            index={idx}
-            notesChanged={notesChanged}
-            showDialog={showTextEditDialog}
-          />
-        )) }
+      <View style={[space.paddingSideS, space.paddingBottomS]}>
+        <RoundedFactionBlock faction="neutral" header={undefined}>
+          { map(campaignNotes.sections, (section, idx) => (
+            <NotesSection
+              key={idx}
+              title={section.title}
+              notes={section.notes}
+              index={idx}
+              notesChanged={notesChanged}
+              showDialog={showTextEditDialog}
+            />
+          )) }
+        </RoundedFactionBlock>
       </View>
     );
   }, [campaignNotes.sections, notesChanged, showTextEditDialog]);
 
   const countsSection = useMemo(() => {
     return (
-      <View>
+      <>
         { map(campaignNotes.counts, (section, idx) => (
           <EditCountComponent
             key={idx}
@@ -123,21 +126,19 @@ export default function CampaignLogSection(props: Props) {
             countChanged={countChanged}
           />
         )) }
-      </View>
+      </>
     );
   }, [campaignNotes.counts, countChanged]);
 
   const investigatorSection = useMemo(() => {
     const investigatorNotes = campaignNotes.investigatorNotes;
     return (
-      <View style={styles.investigatorSection}>
-        <InvestigatorSectionList
-          allInvestigators={allInvestigators}
-          investigatorNotes={investigatorNotes}
-          updateInvestigatorNotes={updateInvestigatorNotes}
-          showDialog={showTextEditDialog}
-        />
-      </View>
+      <InvestigatorSectionList
+        allInvestigators={allInvestigators}
+        investigatorNotes={investigatorNotes}
+        updateInvestigatorNotes={updateInvestigatorNotes}
+        showDialog={showTextEditDialog}
+      />
     );
   }, [campaignNotes.investigatorNotes, allInvestigators, showTextEditDialog, updateInvestigatorNotes]);
   return (
@@ -145,7 +146,7 @@ export default function CampaignLogSection(props: Props) {
       { notesSection }
       { countsSection }
       { investigatorSection }
-      <BasicButton title={t`Add Log Section`} onPress={addSectionDialogPressed} />
+      <ArkhamButton icon="expand" title={t`Add Log Section`} onPress={addSectionDialogPressed} />
     </View>
   );
 }
@@ -154,8 +155,5 @@ const styles = StyleSheet.create({
   underline: {
     paddingBottom: s,
     marginBottom: xs,
-  },
-  investigatorSection: {
-    marginTop: s,
   },
 });

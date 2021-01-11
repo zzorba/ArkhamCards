@@ -1,15 +1,11 @@
-import React, { useCallback, useContext, useEffect, useReducer } from 'react';
+import React, { useCallback, useEffect, useReducer } from 'react';
 import { filter, map } from 'lodash';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import NoteRow from './NoteRow';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import { s, xs } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 
 interface Props {
   notesChanged: (index: number, notes: string[]) => void;
@@ -56,7 +52,6 @@ function notesReducer(notes: string[], action: UpdateNoteAction | AppendNoteActi
 
 export default function NotesSection(props: Props) {
   const { notesChanged, index, title, notes, showDialog, isInvestigator } = props;
-  const { typography } = useContext(StyleContext);
   const [currentNotes, updateCurrentNotes] = useReducer(notesReducer, notes);
   useEffect(() => {
     if (notes !== currentNotes) {
@@ -73,15 +68,8 @@ export default function NotesSection(props: Props) {
   }, [updateCurrentNotes]);
 
   return (
-    <View style={isInvestigator ? {} : styles.container}>
-      <Text style={[
-        typography.mediumGameFont,
-        typography.center,
-        typography.underline,
-        styles.margin,
-      ]}>
-        { title }
-      </Text>
+    <View>
+      <DeckBubbleHeader title={title} />
       <View>
         { map(notes, (note, idx) => (
           <NoteRow
@@ -108,13 +96,4 @@ export default function NotesSection(props: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: s,
-    paddingLeft: s,
-    paddingRight: s,
-  },
-  margin: {
-    marginTop: s,
-    marginBottom: xs,
-  },
 });

@@ -3,7 +3,6 @@ import { Text, View, StyleSheet } from 'react-native';
 import { find , map } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import DeckXpSection from './DeckXpSection';
 import BasicListRow from '@components/core/BasicListRow';
@@ -14,13 +13,14 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card, { CardsMap } from '@data/Card';
-import COLORS from '@styles/colors';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { TINY_PHONE } from '@styles/sizes';
+import DeckButton from '@components/deck/controls/DeckButton';
+import space from '@styles/space';
 
 interface Props {
   componentId: string;
@@ -165,13 +165,7 @@ export default function InvestigatorCampaignRow({
 
   const details = useMemo(() => {
     if (removeInvestigator) {
-      return (
-        <BasicButton
-          title={deck ? t`Remove deck` : t`Remove investigator`}
-          onPress={removePressed}
-          color={COLORS.red}
-        />
-      );
+      return null
     }
     return (
       <>
@@ -204,6 +198,18 @@ export default function InvestigatorCampaignRow({
   const eliminated = useMemo(() => investigator.eliminated(traumaAndCardData), [investigator, traumaAndCardData]);
 
   const button = useMemo(() => {
+    if (removeInvestigator) {
+      return (
+        <View style={{ flex: 1 }}>
+          <ArkhamButton
+            variant="outline"
+            icon="dismiss"
+            title={deck ? t`Remove deck` : t`Remove investigator`}
+            onPress={removePressed}
+          />
+        </View>
+      );
+    }
     const traumaButton = (!!showTraumaDialog && eliminated) && (
       <ArkhamButton
         icon="edit"
@@ -242,7 +248,7 @@ export default function InvestigatorCampaignRow({
         { traumaButton }
       </View>
     );
-  }, [eliminated, deck, chooseDeckForInvestigator, showTraumaDialog, onTraumaPress, viewDeck, selectDeck]);
+  }, [eliminated, deck, removeInvestigator, removePressed, chooseDeckForInvestigator, showTraumaDialog, onTraumaPress, viewDeck, selectDeck]);
 
   return (
     <InvestigatorRow

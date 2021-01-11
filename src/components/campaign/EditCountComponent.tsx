@@ -14,9 +14,10 @@ interface Props {
   index: number;
   title: string;
   count?: number;
+  last?: boolean;
 }
 
-export default function EditCountComponent({ countChanged, index, title, count: initialCount }: Props) {
+export default function EditCountComponent({ countChanged, index, title, count: initialCount, last }: Props) {
   const { typography } = useContext(StyleContext);
   const [count, increment, decrement] = useCounter(initialCount || 0, { min: 0 });
   useEffect(() => {
@@ -24,7 +25,7 @@ export default function EditCountComponent({ countChanged, index, title, count: 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count]);
   return (
-    <BasicListRow>
+    <BasicListRow noBorder={last}>
       <Text style={typography.mediumGameFont}>
         { title }
       </Text>

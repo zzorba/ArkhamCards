@@ -1,4 +1,4 @@
-import { find, forEach, findLastIndex, filter, map } from 'lodash';
+import { find, forEach, findLastIndex, filter, map, flatMap } from 'lodash';
 
 import {
   RESTORE_BACKUP,
@@ -13,6 +13,7 @@ import {
   CampaignGuideState,
   DEFAULT_CAMPAIGN_GUIDE_STATE,
   NumberChoices,
+  GuideInput,
 } from '@actions/types';
 
 export interface GuidesState {
@@ -24,6 +25,10 @@ export interface GuidesState {
 const DEFAULT_GUIDES_STATE: GuidesState = {
   all: {},
 };
+
+function guideInputToId(input: GuideInput) {
+  return `${input.scenario || ''}***${input.step || ''}***${input.type}`;
+}
 
 function updateCampaign(
   state: GuidesState,
@@ -204,6 +209,7 @@ export default function(
         const inputs = [...existingInputs, action.input];
         return {
           ...campaign,
+          undo: filter(campaign.undo || [], id => id !== guideInputToId(action.input)),
           inputs,
         };
       });
@@ -227,20 +233,27 @@ export default function(
         if (latestInputIndex === -1) {
           return campaign;
         }
-        const inputs = filter(
-          campaign.inputs,
-          (input, idx) => {
-            if (SYSTEM_BASED_INPUTS.has(input.type)) {
-              return (
-                idx < latestInputIndex ||
-                input.scenario !== action.scenarioId
-              );
+        const inputs: GuideInput[] = [];
+        const removedInputs: GuideInput[] = [];
+        forEach(campaign.inputs, (input: GuideInput, idx: number) => {
+          if (SYSTEM_BASED_INPUTS.has(input.type)) {
+            if (idx < latestInputIndex || input.scenario !== action.scenarioId) {
+              inputs.push(input);
+            } else {
+              removedInputs.push(input);
             }
-            return idx !== latestInputIndex;
+          } else {
+            if (idx !== latestInputIndex) {
+              inputs.push(input);
+            } else {
+              removedInputs.push(input);
+            }
           }
+        }
         );
         return {
           ...campaign,
+          undo: [...(campaign.undo || []), ...map(removedInputs, guideInputToId)],
           inputs,
         };
       });

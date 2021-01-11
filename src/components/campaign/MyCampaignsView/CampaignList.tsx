@@ -40,16 +40,11 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
           title: t`Back`,
         },
         rightButtons: [
-          campaign.guided ? {
+          {
             icon: iconsMap.edit,
             id: 'edit',
             color: COLORS.M,
             accessibilityLabel: t`Edit name`,
-          } : {
-            icon: iconsMap.menu,
-            id: 'menu',
-            color: COLORS.M,
-            accessibilityLabel: t`Menu`,
           },
         ],
       },

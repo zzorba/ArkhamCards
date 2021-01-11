@@ -15,6 +15,9 @@ import { makeAllCyclePacksSelector, getAllStandalonePacks, makePackSelector, App
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { where } from '@data/query';
 import { useCycleScenarios } from '@components/core/hooks';
+import { usePickerDialog } from '@components/deck/dialogs';
+import PickerStyleButton from '@components/core/PickerStyleButton';
+import { QuerySort } from '@data/types';
 
 interface OwnProps {
   componentId: string;
@@ -23,10 +26,13 @@ interface OwnProps {
   showTextEditDialog: ShowTextEditDialog;
 }
 
+const SCENARIO_QUERY = where('c.type_code = "scenario"');
+const SCENARIO_SORT: QuerySort[] = [{ s: 'c.position', direction: 'ASC' }];
+
 export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps) {
   const [allScenarioCards, loading] = useCardsFromQuery({
-    query: where('c.type_code = "scenario"'),
-    sort: [{ s: 'c.position', direction: 'ASC' }],
+    query: SCENARIO_QUERY,
+    sort: SCENARIO_SORT,
   });
   const getPack = useMemo(makePackSelector, []);
   const cyclePack = useSelector((state: AppState) => getPack(state, campaign.cycleCode));
@@ -63,6 +69,7 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
       standaloneScenarios
     );
   }, [allScenarioCards, fixedCycleScenarios, campaign.scenarioResults, campaign.finishedScenarios, cyclePacks, standalonePacks]);
+
   const [selectedScenario, setSelectedScenario] = useState<Scenario | typeof CUSTOM>(head(allScenarios) || CUSTOM);
   const [customScenario, setCustomScenario] = useState('');
   const [resolution, setResolution] = useState('');
@@ -84,55 +91,53 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
   }, [selectedScenario, customScenario, resolution, scenarioChanged]);
 
   useEffect(() => {
-    if (!loading && allScenarios.length) {
+    console.log('Use effect');
+    if (!loading && allScenarios.length && allScenarios[0] !== selectedScenario) {
       setSelectedScenario(allScenarios[0]);
     }
-  }, [allScenarios, setSelectedScenario, loading]);
-
-
+  }, [allScenarioCards]);
   const possibleScenarios = useMemo(() => {
-    const scenarios = map(
+    const scenarios: { title: string, value: Scenario | typeof CUSTOM }[] = map(
       filter(allScenarios, scenario => showInterludes || !scenario.interlude),
-      card => card.name);
-    scenarios.push(CUSTOM);
+      scenario => {
+        return {
+          title: scenario.name,
+          value: scenario,
+        };
+      });
+    scenarios.push({
+      title: t`Custom`,
+      value: CUSTOM,
+    });
     return scenarios;
   }, [allScenarios, showInterludes]);
-
-  const handleScenarioChange = useCallback((index: number | null) => {
-    if (index === null) {
-      return;
-    }
-    const scenarioName = possibleScenarios[index];
-    setSelectedScenario(find(allScenarios, scenario => scenario.name === scenarioName) || CUSTOM,);
-  }, [allScenarios, possibleScenarios]);
-
+  const { dialog, showDialog } = usePickerDialog({
+    title: showInterludes ? t`Scenario or Interlude` : t`Scenario`,
+    items: possibleScenarios,
+    selectedValue: selectedScenario,
+    onValueChange: setSelectedScenario,
+  });
   const customScenarioTextChanged = useCallback((value?: string) => {
     setCustomScenario(value || '');
   }, [setCustomScenario]);
-
   const resolutionChanged = useCallback((value?: string) => {
     setResolution(value || '');
   }, [setResolution]);
 
   return (
     <View>
+      { dialog }
       <SettingsSwitch
         title={t`Show Interludes`}
         value={showInterludes}
         onValueChange={toggleShowInterludes}
         settingsStyle
       />
-      <SinglePickerComponent
+      <PickerStyleButton
+        id="scenario"
         title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}
-        modalTitle={showInterludes ? t`Scenario or Interlude` : t`Scenario`}
-        choices={map(possibleScenarios, name => {
-          return {
-            text: name,
-          };
-        })}
-        onChoiceChange={handleScenarioChange}
-        selectedIndex={findIndex(possibleScenarios, name => name === (selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name))}
-        editable
+        value={selectedScenario === CUSTOM ? t`Custom` : selectedScenario.name}
+        onPress={showDialog}
       />
       { selectedScenario === CUSTOM && (
         <EditText
