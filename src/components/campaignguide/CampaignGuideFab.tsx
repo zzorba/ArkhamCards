@@ -17,6 +17,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import { useCreateCampaignRequest, useDeleteCampaignRequest } from '@data/firebase/api';
 import { Campaign } from '@actions/types';
 import useNetworkStatus from '@components/core/useNetworkStatus';
+import { HAS_NOTCH } from '@styles/sizes';
 
 
 interface Props {
@@ -112,7 +113,7 @@ export default function CampaignGuideFab({
       renderIcon={fabIcon}
       onPress={removeMode ? toggleRemoveInvestigator : toggleFabOpen}
       offsetX={s + xs}
-      offsetY={bottomTabsHeight + s + xs}
+      offsetY={(HAS_NOTCH ? bottomTabsHeight : 0) + s + xs}
       shadowStyle={shadow.large}
       fixNativeFeedbackRadius
     >
