@@ -127,7 +127,7 @@ function DelHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> 
 }
 
 const HrTagRule: MarkdownRule<WithChildren, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<hr>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<hr[/]?>')),
   order: BASE_ORDER + 1,
   parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return { children: nestedParse(capture[1], state) };
