@@ -2,6 +2,7 @@ import {
   GUIDE_SET_INPUT,
   GUIDE_RESET_SCENARIO,
   GUIDE_UNDO_INPUT,
+  UpdateCampaignAction,
   GuideSetInputAction,
   GuideResetScenarioAction,
   GuideStartSideScenarioInput,
@@ -13,8 +14,40 @@ import {
   InvestigatorTraumaData,
   GUIDE_UPDATE_ACHIEVEMENT,
   GuideUpdateAchievementAction,
+  guideInputToId,
 } from '@actions/types';
+import { updateCampaign } from '@components/campaign/actions';
+import database from '@react-native-firebase/database';
+import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
+import { map } from 'lodash';
+import { ThunkAction } from 'redux-thunk';
 
+export function uploadCampaign(
+  campaignId: number,
+  serverId: string,
+  guided: boolean
+): ThunkAction<void, AppState, null, UpdateCampaignAction> {
+  return async(dispatch, getState) => {
+    const state = getState();
+    const campaign = makeCampaignSelector()(state, campaignId);
+    await database().ref('/campaigns').child(serverId).child('campaign').set(campaign);
+    // Do something with deck uploads?
+    if (guided) {
+      const guide = makeCampaignGuideStateSelector()(state, campaignId);
+      const ref = database().ref('/campaigns').child(serverId);
+      const guideRef = ref.child('guide');
+      await Promise.all([
+        ...map(guide.inputs, input => {
+          return guideRef.child('inputs').child(guideInputToId(input)).set(input);
+        }),
+        ...map(guide.undo, undo => {
+          guideRef.child('undo').child(undo).set(true);
+        }),
+      ]);
+    }
+    dispatch(updateCampaign(campaignId, { serverId }));
+  };
+}
 export function undo(
   campaignId: number,
   scenarioId: string

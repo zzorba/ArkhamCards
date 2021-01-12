@@ -41,6 +41,20 @@ export function useCreateCampaignRequest() {
   }, [apiCall]);
 }
 
+
+interface DeleteCampaignRequest extends ErrorResponse {
+  campaignId: string;
+}
+export function useDeleteCampaignRequest() {
+  const apiCall = useFunction<DeleteCampaignRequest, ErrorResponse>('campaign-delete');
+  return useCallback(async(campaignId: string): Promise<void> => {
+    const data = await apiCall({ campaignId });
+    if (data.error) {
+      throw new Error(data.error);
+    }
+  }, [apiCall]);
+}
+
 interface StartSearchAction {
   type: 'start';
   term: string;

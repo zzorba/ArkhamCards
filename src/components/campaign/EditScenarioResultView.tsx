@@ -63,6 +63,21 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
     });
   }, [componentId, scenarioResult]);
 
+  const nameChanged = useCallback((value: string) => {
+    if (scenarioResult && scenarioResult.scenarioCode === CUSTOM) {
+      setScenarioResult({
+        ...scenarioResult,
+        scenario: value,
+      });
+    }
+  }, [scenarioResult, setScenarioResult]);
+
+  const { dialog: nameDialog, showDialog: showNameDialog } = useTextDialog({
+    title: t`Scenario`,
+    value: existingScenarioResult?.scenario || '',
+    onValueChange: nameChanged,
+  });
+
   const resolutionChanged = useCallback((value: string) => {
     if (scenarioResult) {
       setScenarioResult({
@@ -72,7 +87,7 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
     }
   }, [scenarioResult, setScenarioResult]);
 
-  const { dialog, showDialog: showResolutionDialog } = useTextDialog({
+  const { dialog: resolutionDialog, showDialog: showResolutionDialog } = useTextDialog({
     title: t`Resolution`,
     value: existingScenarioResult?.resolution || '',
     onValueChange: resolutionChanged,
@@ -109,8 +124,9 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
           <DeckPickerStyleButton
             title={interlude ? t`Interlude` : t`Scenario`}
             valueLabel={scenario}
-            editable={false}
+            editable={scenarioCode === CUSTOM}
             icon="name"
+            onPress={showNameDialog}
             first
           />
           { (scenarioCode === CUSTOM || !interlude) && (
@@ -135,7 +151,8 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
           <DeckButton icon="check-thin" title={t`Save`} onPress={doSave} thin />
         </View>
       </ScrollView>
-      { dialog }
+      { nameDialog }
+      { resolutionDialog }
       { countDialog }
     </View>
   );

@@ -14,6 +14,7 @@ import {
   DEFAULT_CAMPAIGN_GUIDE_STATE,
   NumberChoices,
   GuideInput,
+  guideInputToId,
 } from '@actions/types';
 
 export interface GuidesState {
@@ -26,9 +27,6 @@ const DEFAULT_GUIDES_STATE: GuidesState = {
   all: {},
 };
 
-function guideInputToId(input: GuideInput) {
-  return `${input.scenario || ''}***${input.step || ''}***${input.type}`;
-}
 
 function updateCampaign(
   state: GuidesState,

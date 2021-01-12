@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import signedIn from './signedIn';
 import campaigns from './campaigns';
-import guides from './guides';
+import guides, { GuidesState } from './guides';
 import filters from './filters';
 import cards from './cards';
 import decks from './decks';
@@ -556,7 +556,7 @@ export const getDefaultFilterState = createSelector(
   }
 );
 
-const DEFAULT_GUIDE_STATE = {
+const DEFAULT_GUIDE_STATE: CampaignGuideState = {
   inputs: [],
 };
 

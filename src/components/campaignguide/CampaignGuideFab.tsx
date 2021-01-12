@@ -3,43 +3,57 @@ import { Alert } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import ActionButton from 'react-native-action-button';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { t } from 'ttag';
 
-import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
+import { deleteCampaign } from '@components/campaign/actions';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useFlag } from '@components/core/hooks';
+import { useFlag, useNavigationConstants } from '@components/core/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { uploadCampaign } from '@components//campaignguide/actions';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
-import { useCreateCampaignRequest } from '@data/firebase/api';
+import { useCreateCampaignRequest, useDeleteCampaignRequest } from '@data/firebase/api';
+import { Campaign } from '@actions/types';
+import useNetworkStatus from '@components/core/useNetworkStatus';
 
 
 interface Props {
   componentId: string;
   campaignId: number;
+  campaign?: Campaign;
   serverCampaignId?: string;
   campaignName: string;
   removeMode: boolean;
+  guided: boolean;
   showEditNameDialog: () => void;
   showAddInvestigator: () => void;
   toggleRemoveInvestigator: () => void;
 }
 
 export default function CampaignGuideFab({
-  campaignId, componentId, campaignName, removeMode, serverCampaignId,
+  campaignId, componentId, campaignName, removeMode, serverCampaignId, guided,
   showEditNameDialog, showAddInvestigator, toggleRemoveInvestigator,
 }: Props) {
+  const [{ isConnected }] = useNetworkStatus();
   const { user } = useContext(ArkhamCardsAuthContext);
   const { colors, shadow, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
+  const [fabOpen, toggleFabOpen, setFabOpen] = useFlag(false);
+
+  const deleteServerCampaign = useDeleteCampaignRequest();
+  const createServerCampaign = useCreateCampaignRequest();
 
   const actuallyDeleteCampaign = useCallback(() => {
     dispatch(deleteCampaign(campaignId));
+    if (serverCampaignId && user) {
+      deleteServerCampaign(serverCampaignId);
+    }
     Navigation.pop(componentId);
-  }, [dispatch, componentId, campaignId]);
-
+  }, [dispatch, componentId, campaignId, deleteServerCampaign, user, serverCampaignId]);
   const confirmDeleteCampaign = useCallback(() => {
+    setFabOpen(false);
     Alert.alert(
       t`Delete`,
       t`Are you sure you want to delete the campaign: ${campaignName}`,
@@ -48,18 +62,17 @@ export default function CampaignGuideFab({
         { text: t`Cancel`, style: 'cancel' },
       ],
     );
-  }, [campaignName, actuallyDeleteCampaign]);
-  const createCampaign = useCreateCampaignRequest();
+  }, [campaignName, actuallyDeleteCampaign, setFabOpen]);
   const confirmUploadCampaign = useCallback(async() => {
+    setFabOpen(false);
     try {
-      const serverId = await createCampaign();
-      dispatch(updateCampaign(campaignId, { serverId }));
+      const serverId = await createServerCampaign();
+      dispatch(uploadCampaign(campaignId, serverId, guided));
     } catch (e) {
       // TODO(error handling)
     }
-  }, [dispatch, campaignId, createCampaign]);
+  }, [dispatch, campaignId, createServerCampaign, setFabOpen, guided]);
 
-  const [fabOpen, toggleFabOpen, setFabOpen] = useFlag(false);
   const fabIcon = useCallback(() => {
     if (removeMode) {
       return <AppIcon name="check-thin" color={colors.L30} size={32} />;
@@ -84,6 +97,14 @@ export default function CampaignGuideFab({
     minHeight: 32,
     marginTop: -3,
   };
+  const disabledActionContainerStyle = {
+    backgroundColor: colors.D10,
+    borderRadius: 16,
+    borderWidth: 0,
+    minHeight: 32,
+    marginTop: -3,
+  };
+  const { bottomTabsHeight = 0 } = useNavigationConstants();
   return (
     <ActionButton
       active={fabOpen}
@@ -91,7 +112,7 @@ export default function CampaignGuideFab({
       renderIcon={fabIcon}
       onPress={removeMode ? toggleRemoveInvestigator : toggleFabOpen}
       offsetX={s + xs}
-      offsetY={s + xs}
+      offsetY={bottomTabsHeight + s + xs}
       shadowStyle={shadow.large}
       fixNativeFeedbackRadius
     >
@@ -106,6 +127,19 @@ export default function CampaignGuideFab({
       >
         <AppIcon name="delete" color={colors.L30} size={34} />
       </ActionButton.Item>
+      { !!user && !serverCampaignId && guided && (
+        <ActionButton.Item
+          buttonColor={isConnected ? colors.D20 : colors.M}
+          textStyle={actionLabelStyle}
+          textContainerStyle={isConnected ? actionContainerStyle : disabledActionContainerStyle}
+          title={isConnected ? t`Upload campaign` : t`Upload campaign (network required)`}
+          onPress={isConnected ? confirmUploadCampaign : undefined}
+          shadowStyle={shadow.medium}
+          useNativeFeedback={false}
+        >
+          <MaterialIcons name="backup" color={isConnected ? colors.L30 : colors.L20} size={34} />
+        </ActionButton.Item>
+      ) }
       <ActionButton.Item
         buttonColor={colors.D20}
         textStyle={actionLabelStyle}
@@ -117,19 +151,6 @@ export default function CampaignGuideFab({
       >
         <AppIcon name="edit" color={colors.L30} size={24} />
       </ActionButton.Item>
-      { !!user && !serverCampaignId && (
-        <ActionButton.Item
-          buttonColor={colors.D20}
-          textStyle={actionLabelStyle}
-          textContainerStyle={actionContainerStyle}
-          title={t`Upload campaign`}
-          onPress={confirmUploadCampaign}
-          shadowStyle={shadow.medium}
-          useNativeFeedback={false}
-        >
-          <AppIcon name="world" color={colors.L30} size={34} />
-        </ActionButton.Item>
-      ) }
       <ActionButton.Item
         buttonColor={colors.D20}
         textStyle={actionLabelStyle}

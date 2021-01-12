@@ -203,6 +203,7 @@ export default function LinkedCampaignGuideView(props: Props) {
             removeMode={removeMode}
             showEditNameDialog={showEditNameDialog}
             showAddInvestigator={showAddInvestigator}
+            guided
           />
         </View>
       ),

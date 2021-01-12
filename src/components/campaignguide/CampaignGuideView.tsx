@@ -117,6 +117,7 @@ function CampaignGuideView(props: Props) {
           showEditNameDialog={showEditNameDialog}
           showAddInvestigator={addInvestigatorPressed}
           toggleRemoveInvestigator={toggleRemoveInvestigator}
+          guided
         />
       </View>
     );

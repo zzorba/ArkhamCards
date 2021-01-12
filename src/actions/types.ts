@@ -930,6 +930,10 @@ export type GuideInput =
   GuideStartCustomSideScenarioInput |
   GuideInterScenarioInput;
 
+export function guideInputToId(input: GuideInput) {
+  return `${input.scenario || ''}***${input.step || ''}***${input.type}`.replace(/[.$[\]#\\/]/g, '_');
+}
+
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
 export interface GuideResetScenarioAction {
   type: typeof GUIDE_RESET_SCENARIO;
