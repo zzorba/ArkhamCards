@@ -35,7 +35,7 @@ export default function CampaignSummaryHeader({
     ]}>
       <BackgroundIcon
         code={cycle}
-        color={inverted ? colors.darkText : color}
+        color={inverted ? colors.background : color}
         small
       />
       <View>

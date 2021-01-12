@@ -174,10 +174,10 @@ export default class CampaignStateHelper {
   }
 
   binaryAchievement(achievementId: string): boolean {
-    return !!find(this.state.achievements, a => a.id === achievementId && a.type === 'binary' && a.value);
+    return !!find(this.state.achievements || [], a => a.id === achievementId && a.type === 'binary' && a.value);
   }
   countAchievement(achievementId: string): number {
-    const entry = find(this.state.achievements, a => a.id === achievementId && a.type === 'count');
+    const entry = find(this.state.achievements || [], a => a.id === achievementId && a.type === 'count');
     if (entry?.type === 'count') {
       return entry.value;
     }

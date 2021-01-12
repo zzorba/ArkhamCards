@@ -32,6 +32,7 @@ export default function CampaignLogView({
         campaignGuide={campaignGuide}
         campaignLog={campaignLog}
         standalone={standalone}
+        hideAchievements
       />
     </ScrollView>
   );

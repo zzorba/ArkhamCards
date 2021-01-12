@@ -25,9 +25,10 @@ interface Props {
   campaignLog: GuidedCampaignLog;
   standalone?: boolean;
   header?: React.ReactNode;
+  hideAchievements?: boolean;
 }
 
-export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, header }: Props) {
+export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, header, hideAchievements }: Props) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
@@ -150,6 +151,9 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
     );
   }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, standalone]);
   const achievementsSection = useMemo(() => {
+    if (hideAchievements) {
+      return null;
+    }
     const achievements = campaignGuide.achievements();
     if (!achievements.length) {
       return null;
@@ -170,7 +174,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         </RoundedFactionBlock>
       </View>
     );
-  }, [campaignGuide, colors, typography]);
+  }, [campaignGuide, colors, typography, hideAchievements]);
   return (
     <View style={backgroundStyle}>
       <View style={[space.paddingSideS, space.paddingBottomM]}>
