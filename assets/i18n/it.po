@@ -3774,13 +3774,7 @@ msgstr ""
 msgid "Choose a handle"
 msgstr ""
 
-msgid "Other Accounts"
-msgstr ""
-
 msgid "ArkhamDB Account"
-msgstr ""
-
-msgid "Accounts"
 msgstr ""
 
 msgid "Arkham Cards Account"
@@ -3928,6 +3922,21 @@ msgid "Chaos Bag (${ tokenCount })"
 msgstr ""
 
 msgid "Save upgrade"
+msgstr ""
+
+msgid "Sorry, you don't seem to be a Mythos Buster patron."
+msgstr ""
+
+msgid "Upload campaign (network required)"
+msgstr ""
+
+msgid "Earned experience:"
+msgstr ""
+
+msgid "Finished Removing Investigarors"
+msgstr ""
+
+msgid "Record Scenario Result"
 msgstr ""
 
 #, javascript-format

@@ -3983,14 +3983,8 @@ msgstr "Имя аккаунта"
 msgid "Choose a handle"
 msgstr "Придумайте ник"
 
-msgid "Other Accounts"
-msgstr "Другие аккаунты"
-
 msgid "ArkhamDB Account"
 msgstr "Аккаунт ArkhamDB"
-
-msgid "Accounts"
-msgstr "Аккаунты"
 
 msgid "Arkham Cards Account"
 msgstr "Аккаунт Arkham Cards"
@@ -4148,6 +4142,21 @@ msgid "Chaos Bag (${ tokenCount })"
 msgstr "Мешок хаоса (${ tokenCount })"
 
 msgid "Save upgrade"
+msgstr ""
+
+msgid "Sorry, you don't seem to be a Mythos Buster patron."
+msgstr ""
+
+msgid "Upload campaign (network required)"
+msgstr ""
+
+msgid "Earned experience:"
+msgstr ""
+
+msgid "Finished Removing Investigarors"
+msgstr ""
+
+msgid "Record Scenario Result"
 msgstr ""
 
 #, javascript-format
