@@ -30,6 +30,8 @@ import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButt
 import DeckButton from '@components/deck/controls/DeckButton';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
+import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -185,8 +187,9 @@ export default function SettingsView({ componentId }: NavigationProps) {
               title={t`Alphabetize guide encounter sets`}
               value={alphabetizeEncounterSets}
               onValueChange={alphabetizeEncounterSetsChanged}
-              last
+              last={!SHOW_DISSONANT_VOICES}
             />
+            { SHOW_DISSONANT_VOICES && <DissonantVoicesLoginButton last /> }
           </RoundedFactionBlock>
         </View>
         <View style={[space.paddingSideS, space.paddingBottomS]}>

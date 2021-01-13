@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import { Platform } from 'react-native';
 import { isEqual } from 'lodash';
 import TrackPlayer, { EmitterSubscription, EventType, Track, State, useTrackPlayerEvents } from 'react-native-track-player';
 import { useInterval } from '@components/core/hooks';
 import { useSelector } from 'react-redux';
 import { hasDissonantVoices } from '@reducers';
 
-export const SHOW_DISSONANT_VOICES = true;
+export const SHOW_DISSONANT_VOICES = Platform.OS === 'android';
 
 interface TrackPlayerFunctions {
   getQueue: () => Promise<Track[]>;

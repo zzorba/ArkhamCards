@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { keys, map, filter, flatMap } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
@@ -430,7 +430,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
     );
   }
   return (
-    <View style={[styles.flex, backgroundStyle]}>
+    <SafeAreaView style={[styles.flex, backgroundStyle]}>
       <TabView tabs={tabs} />
       <AddCampaignNoteSectionDialog
         visible={addSectionVisible}
@@ -450,7 +450,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       />
       { traumaDialog }
       { dialog }
-    </View>
+    </SafeAreaView>
   );
 }
 

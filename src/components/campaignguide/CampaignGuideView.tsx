@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
@@ -70,7 +70,7 @@ function CampaignGuideView(props: Props) {
 
   const decksTab = useMemo(() => {
     return (
-      <View style={[styles.wrapper, backgroundStyle]}>
+      <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
         <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
           <View style={[space.paddingSideS, space.paddingBottomL]}>
             <RoundedFactionBlock
@@ -119,7 +119,7 @@ function CampaignGuideView(props: Props) {
           toggleRemoveInvestigator={toggleRemoveInvestigator}
           guided
         />
-      </View>
+      </SafeAreaView>
     );
   }, [componentId, backgroundStyle, removeMode, campaignData, processedCampaign, campaignGuide, campaignId,
     addInvestigatorPressed, toggleRemoveInvestigator, saveCampaignUpdate, showTraumaDialog, showEditNameDialog,

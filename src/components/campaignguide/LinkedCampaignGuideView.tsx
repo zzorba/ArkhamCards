@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
@@ -118,7 +118,7 @@ export default function LinkedCampaignGuideView(props: Props) {
       key: 'investigators',
       title: t`Decks`,
       node: (
-        <View style={styles.wrapper}>
+        <SafeAreaView style={styles.wrapper}>
           <ScrollView contentContainerStyle={backgroundStyle}>
             <View style={[space.paddingSideS, space.paddingBottomS]}>
               <RoundedFactionBlock
@@ -205,8 +205,8 @@ export default function LinkedCampaignGuideView(props: Props) {
             showAddInvestigator={showAddInvestigator}
             guided
           />
-        </View>
-      ),
+        </SafeAreaView>
+       ),
     };
   }, [showTraumaDialog, addInvestigatorAPressed, addInvestigatorBPressed, showEditNameDialog, showAddInvestigator, toggleRemoveMode, handleUpdateCampaign,
     componentId, contextA, contextB, processedCampaignA, processedCampaignB, backgroundStyle, campaignDataA, campaignDataB, campaignId, campaignName, removeMode,
