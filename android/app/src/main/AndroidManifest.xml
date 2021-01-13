@@ -33,22 +33,7 @@
         android:launchMode="singleTask"
         android:windowSoftInputMode="adjustResize"
         android:theme="@style/SplashScreen"
-      >
-        <intent-filter>
-          <action android:name="android.intent.action.MAIN" />
-          <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        <intent-filter>
-          <action android:name="android.intent.action.VIEW" />
-          <category android:name="android.intent.category.DEFAULT" />
-          <category android:name="android.intent.category.BROWSABLE" />
-          <data
-            android:host=""
-            android:scheme="dissonantvoices"
-            android:path="/redirect"
-          />
-        </intent-filter>
-      </activity>
+      />
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
 

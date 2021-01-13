@@ -47,7 +47,9 @@ export default function DeckActionRow({ title, description, icon, last, control,
         </View>
       </View>
       { loading ? (
-        <ActivityIndicator color={colors.lightText} size="small" animating />
+        <View style={[styles.control, growControl ? styles.flex : undefined]}>
+          <ActivityIndicator color={colors.lightText} size="small" animating />
+        </View>
       ) : (
         <View style={[styles.control, growControl ? styles.flex : undefined]}>{control}</View>
       ) }
