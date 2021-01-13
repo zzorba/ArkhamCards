@@ -1,4 +1,5 @@
 import * as Keychain from 'react-native-keychain';
+import { t } from 'ttag';
 
 import { authorize, AppAuthConfig } from './OAuthWrapper';
 
@@ -41,15 +42,25 @@ export function prefetch(): Promise<void> {
 
 export function signInFlow(): Promise<SignInResult> {
   return authorizeDissonantVoices()
-    .then(saveAuthResponse)
-    .then(() => {
-      return {
-        success: true,
-      };
-    }, (error: Error) => {
+    .then(async({
+      success,
+      token,
+      error,
+    }) => {
+      if (success && token) {
+        await saveAuthResponse(token);
+        return {
+          success: true,
+        };
+      }
       return {
         success: false,
-        error: error.message || error,
+        error,
+      };
+    }, () => {
+      return {
+        success: false,
+        error: '',
       };
     });
 }
@@ -58,7 +69,12 @@ export async function signOutFlow() {
   Keychain.resetInternetCredentials('dissonantvoices');
 }
 
-export async function authorizeDissonantVoices(): Promise<string> {
+interface DissonantVoicesAuthResponse {
+  success: boolean;
+  token?: string;
+  error?: string;
+}
+export async function authorizeDissonantVoices(): Promise<DissonantVoicesAuthResponse> {
   const { accessToken } = await authorize(config);
   const response = await fetch(`https://north101.co.uk/api/token`, {
     method: 'POST',
@@ -66,14 +82,23 @@ export async function authorizeDissonantVoices(): Promise<string> {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ code: accessToken, client_id: 'arkhamcards' }),
+    body: JSON.stringify({ code: accessToken, type: 'app', client_id: 'arkhamcards' }),
   });
-  console.log(response);
   if (response.status !== 200) {
+    console.log(response.status, response);
     throw Error('Invalid token');
   }
-  const text = await response.text();
-  return text;
+  const { token, is_patron } = await response.json();
+  if (!is_patron) {
+    return {
+      success: false,
+      error: t`Sorry, you don't seem to be a Mythos Buster patron.`,
+    };
+  }
+  return {
+    success: true,
+    token,
+  };
 }
 
 export default {
