@@ -4,6 +4,7 @@ import { Dimensions } from 'react-native';
 import { TabView, SceneRendererProps, NavigationState, TabBar, Route } from 'react-native-tab-view';
 
 import StyleContext from '@styles/StyleContext';
+import { isTablet } from '@styles/space';
 
 interface Props {
   tabs: {
@@ -37,7 +38,7 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
     return (
       <TabBar
         {...props}
-        scrollEnabled={scrollEnabled || (fontScale > 1)}
+        scrollEnabled={scrollEnabled || (!isTablet && fontScale > 1)}
         activeColor={colors.D20}
         inactiveColor={colors.M}
         indicatorStyle={{ backgroundColor: colors.D20 }}
