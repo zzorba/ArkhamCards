@@ -1,3 +1,7 @@
+import { forEach, keys, map } from 'lodash';
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+
 import {
   GUIDE_SET_INPUT,
   GUIDE_RESET_SCENARIO,
@@ -19,8 +23,16 @@ import {
 import { updateCampaign } from '@components/campaign/actions';
 import database from '@react-native-firebase/database';
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
-import { map } from 'lodash';
-import { ThunkAction } from 'redux-thunk';
+
+export function refreshCampaigns(userId: string): ThunkAction<void, AppState, null, Action> {
+  return async(dispatch, getState) => {
+    const campaignIds: string[] = keys((await database().ref('/user_campaigns').child(userId).child('campaigns').once('value')).val());
+    Promise.all(map(campaignIds, campaignId => {
+      return database().ref('/campaigns').child(campaignId).once('value');
+    }));
+    const state = getState();
+  };
+}
 
 export function uploadCampaign(
   campaignId: number,

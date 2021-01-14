@@ -1,11 +1,11 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, forEach, throttle } from 'lodash';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -25,9 +25,12 @@ import { useNavigationButtonPressed } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import { getStandaloneScenarios } from '@data/scenario';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 function MyCampaignsView({ componentId }: NavigationProps) {
+  const { user } = useContext(ArkhamCardsAuthContext);
   const [search, setSearch] = useState('');
+  const dispatch = useDispatch();
   const { lang } = useContext(LanguageContext);
   const standalonesById = useMemo(() => {
     const scenarios = getStandaloneScenarios(lang);
@@ -108,7 +111,17 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       <View style={styles.footer} />
     );
   }, [filteredCampaigns, search, typography]);
-
+  const [refreshing, setRefreshing] = useState<boolean>(false);
+  const refreshCampaigns = useCallback(() => {
+    console.log('Refreshing campaigns');
+    setRefreshing(true);
+    setTimeout(() => setRefreshing(false), 5000);
+  }, [setRefreshing]);
+  useEffect(() => {
+    if (user) {
+      refreshCampaigns();
+    }
+  }, [user, refreshCampaigns]);
   const footer = useMemo(() => {
     return (
       <View>
@@ -135,6 +148,8 @@ function MyCampaignsView({ componentId }: NavigationProps) {
           componentId={componentId}
           campaigns={filteredCampaigns}
           standalonesById={standalonesById}
+          onRefresh={user ? refreshCampaigns : undefined}
+          refreshing={refreshing}
           footer={footer}
         />
       ) }

@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
-import { FlatList, ListRenderItemInfo, Keyboard, Platform, View, StyleSheet } from 'react-native';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { FlatList, ListRenderItemInfo, Keyboard, Platform, View, StyleSheet, RefreshControl } from 'react-native';
 import { map } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -15,6 +15,7 @@ import LinkedCampaignItem from './LinkedCampaignItem';
 import COLORS from '@styles/colors';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StandaloneItem from './StandaloneItem';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   onScroll: (...args: any[]) => void;
@@ -22,13 +23,16 @@ interface Props {
   campaigns: Campaign[];
   footer: React.ReactElement;
   standalonesById: { [campaignId: string]: { [scenarioId: string]: string } };
+  onRefresh?: () => void;
+  refreshing?: boolean;
 }
 
 interface CampaignItemType {
   campaign: Campaign;
 }
 
-export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById }: Props) {
+export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing }: Props) {
+  const { colors } = useContext(StyleContext);
   const onPress = useCallback((id: number, campaign: Campaign) => {
     Keyboard.dismiss();
     const options: Options = {
@@ -141,6 +145,14 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     <FlatList
       contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
       contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+      refreshControl={onRefresh ? (
+        <RefreshControl
+          refreshing={!!refreshing}
+          onRefresh={onRefresh}
+          tintColor={colors.lightText}
+          progressViewOffset={SEARCH_BAR_HEIGHT}
+        />
+      ) : undefined}
       onScroll={onScroll}
       data={map(campaigns, campaign => {
         return {

@@ -170,7 +170,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
           }
           faction="neutral"
         >
-          { map(achievements, a => <AchievementComponent achievement={a} />) }
+          { map(achievements, (a, idx) => <AchievementComponent key={idx} achievement={a} />) }
         </RoundedFactionBlock>
       </View>
     );

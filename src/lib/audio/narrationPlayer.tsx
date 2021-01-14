@@ -1,9 +1,10 @@
+import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { Platform } from 'react-native';
 import { isEqual } from 'lodash';
 import TrackPlayer, { EmitterSubscription, EventType, Track, State, useTrackPlayerEvents } from 'react-native-track-player';
+import { Platform } from 'react-native';
+
 import { useInterval } from '@components/core/hooks';
-import { useSelector } from 'react-redux';
 import { hasDissonantVoices } from '@reducers';
 
 export const SHOW_DISSONANT_VOICES = Platform.OS === 'android';

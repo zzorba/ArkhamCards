@@ -5,7 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
-import space, { xs } from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import COLORS from '@styles/colors';
 import ArkhamIcon from '@icons/ArkhamIcon';
 
@@ -72,7 +72,7 @@ const MATERIAL_ICONS = new Set(['email', 'delete', 'login']);
 const ARKHAM_ICONS = new Set(['per_investigator', 'elder_sign']);
 
 export default function DeckButton({ title, detail, icon, color = 'gray', onPress, rightMargin, topMargin, thin, shrink, loading, bottomMargin }: Props) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors, fontScale, typography } = useContext(StyleContext);
   const backgroundColors = {
     red_outline: colors.D30,
     red: colors.warn,
@@ -113,11 +113,12 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
     }
     return <AppIcon name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
   }, [loading, icon, theIconColor]);
+  const height = (detail ? 32 : 20) * fontScale + s * 2 + xs * 2;
   return (
     <Ripple
       style={[
         styles.button,
-        { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1, height: thin ? 40 : 50 },
+        { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1, height },
         rightMargin ? space.marginRightS : undefined,
         bottomMargin ? { marginBottom: bottomMargin } : undefined,
         topMargin ? { marginTop: topMargin } : undefined,
@@ -125,14 +126,20 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
       onPress={onPress}
       rippleColor={rippleColor[color]}
     >
-      <View style={[styles.row, space.paddingSideXs, space.paddingTopS, space.paddingBottomS]}>
+      <View style={[
+        styles.row,
+        icon ? { justifyContent: 'flex-start' } : { justifyContent: 'center' },
+        space.paddingSideXs,
+        space.paddingTopS,
+        space.paddingBottomS,
+      ]}>
         { !!icon && (
           <View style={[
             styles.icon,
             space.marginLeftXs,
             space.marginRightS,
-            thin ? { marginLeft: xs, width: 24, height: 24 } : { width: 32, height: 32 },
-            ICON_STYLE[icon],
+            thin ? { marginLeft: xs, width: 24, height: height - s * 2 } : { width: 32, height: height - s * 2 },
+            loading ? undefined : ICON_STYLE[icon],
           ]}>
             { iconContent }
           </View>
