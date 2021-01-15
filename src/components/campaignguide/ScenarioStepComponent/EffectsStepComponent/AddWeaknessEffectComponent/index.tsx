@@ -77,7 +77,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
   const query = useMemo(() => {
     return combineQueries(
       BASIC_WEAKNESS_QUERY,
-      FILTER_BUILDER.traitFilter(effect.weakness_traits),
+      FILTER_BUILDER.traitFilter(effect.weakness_traits, false),
       'and'
     );
   }, [effect.weakness_traits]);

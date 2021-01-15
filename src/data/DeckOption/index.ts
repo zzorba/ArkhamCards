@@ -147,7 +147,7 @@ export class DeckOptionQueryBuilder {
       ...this.filterBuilder.slotFilter(this.option.slot || []),
       ...this.filterBuilder.equalsVectorClause(this.option.uses || [], 'uses'),
       ...this.textClause(),
-      ...this.filterBuilder.traitFilter(this.option.trait || []),
+      ...this.filterBuilder.traitFilter(this.option.trait || [], false),
       ...(this.option.level ? this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true) : []),
       ...this.filterBuilder.equalsVectorClause(this.option.type_code || [], 'type_code'),
     ];

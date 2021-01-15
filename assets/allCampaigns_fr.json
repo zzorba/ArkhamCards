@@ -24597,10 +24597,10 @@
           "text": "Quand un lieu mono-face est mis en jeu depuis le deck Exploration, placez dessus un nombre d'indices égal à sa valeur d'indice."
         },
         {
-          "text": "If an enemy is drawn from the exploration deck, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. This is considered an \"unsuccessful\" exploration."
+          "text": "Si un ennemi est pioché du deck Exploration, il est résol normalement. S'il est défaussé, placé-le dans la pile de défausse Rencontre, comme d'habitude. Cette exploration est considérée comme « infructueuse »."
         },
         {
-          "text": "In some scenarios, there are additional changes to the explore rules. These changes are noted on the setup card for each scenario."
+          "text": "Dans certain scénario, il existe d'autre changements aux règles d'exploration. Ces changements sont indiqués sur la carte de mise en place du scénario."
         }
       ],
       "example": "<i>Exemple : l'Intrigue 1a – « Expédition en Pleine Nature » possède la capacité suivante : « [action]: <b>Explorer</b>. Piochez la carte du dessus du deck Exploration. Si c\\u001eest un lieu connexe, mettez-le en jeu et déplacez-vous vers lui. » Ursula Downs se trouve au Campement de l'Expédition et souhaite découvrir un nouveau lieu vers lequel voyager. Elle dépense sa première action pour explorer en piochant la carte du dessus du deck Exploration. La carte piochée est la Piste Détournée. Étant donné que ce Lieu n'est pas connexe au Campement de l'Expédition, il est posé à côté du deck Exploration et Ursula pioche la carte suivante dans le deck Exploration. Cette fois, elle pioche Épuisement des Réserves, une carte Traîtrise qu'elle résout normalement et place dans la pile de défausse Rencontre. Son exploration se révèle infructueuse et elle doit mélanger dans le deck Exploration la Piste Détournée qu'elle a piochée précédemment. Ursula décide de dépenser une deuxième action pour explorer à nouveau. Cette fois, elle pioche le Chemin de Ronces qui est connexe au Campement de l'Expédition. Son exploration se révèle fructueuse. Le Chemin de Ronces est mis en jeu avec un nombre d'indices égal à sa valeur d'indice et Ursula se déplace immédiatement du Campement de l'Expédition vers le Chemin de Ronces.</i>"
@@ -24609,99 +24609,99 @@
   "achievements": [
     {
       "id": "why_did_it_have_to_be_snakes",
-      "title": "Why Did It Have to Be Snakes?",
-      "text": "Defeat twenty [[Serpent]] enemies.",
+      "title": "Fallait que ce soit des Serpents…",
+      "text": "Vainquez vingt ennemis [[Serpent]].",
       "type": "count",
       "max": 20
     },
     {
       "id": "watch_them_unravel",
-      "title": "Watch Them Unravel",
-      "text": "Complete all four act decks during a single playthrough of “Threads of Fate.”",
+      "title": "Tous les Démêler",
+      "text": "Complétez les quatre decks Acte dans <i>Les Fils du Destin</i> en une seule partie.",
       "type": "binary"
     },
     {
       "id": "hope_for_humanity",
-      "title": "Hope for Humanity",
-      "text": "Restore Ichtaca’s faith in humanity in “The Boundary Beyond.”",
+      "title": "De l'Espoir pour l'Humanité",
+      "text": "Resturez la foi en l'humanité d'Ichtaca dans <i>Par-delà les Limites</i>.",
       "type": "binary"
     },
     {
       "id": "scenario_5_what",
-      "title": "Scenario 5-What?",
-      "text": "Skip “Heart of the Elders, Part 1.”",
+      "title": "\"Scénario 5-Quoi ?",
+      "text": "Sautre <i>Le Cœur des Anciens, Partie 1/i>.",
       "type": "binary"
     },
     {
       "id": "beyond_perfection",
-      "title": "Beyond Perfection:",
-      "text": "Complete all eight tasks on act 2 of “The City of Archives” during a single playthrough.",
+      "title": "Plus Que Parfait",
+      "text": "Accomplissez les huit tâches de l'Acte 2 de <i>La Cité des Archives</i> en une seule partie.",
       "type": "binary"
     },
     {
       "id": "i_remember_everything",
-      "title": "I Remember Everything",
-      "text": "Restore Alejandro’s memories in “The City of Archives.”",
+      "title": "Je me Souviens de Tout !",
+      "text": "Restaurez la mémoire d'Alejandro dans <i>La Cité des Archive</i>.",
       "type": "binary"
     },
     {
       "id": "patricide",
-      "title": "Patricide",
-      "text": "Defeat Yig in “The Depths of Yoth.”",
+      "title": "Parricide",
+      "text": "Vainquez Yig dans <i>Les Profondeurs de Yoth</i>.",
       "type": "binary"
     },
     {
       "id": "hes_got_a_point",
-      "title": "He's Got a Point",
-      "text": "Side with Alejandro in “Shattered Aeons.”",
+      "title": "Un Point pour Lui",
+      "text": "Faite cause commune avec Alejandro dans <i>Paradoxes Temporels</i>.",
       "type": "binary"
     },
     {
       "id": "valusia_sounds_great",
-      "title": "Valusia Sounds Great",
-      "text": "Side with Ichtaca in “Shattered Aeons.”",
+      "title": "Valusia a l'air Superbe",
+      "text": "Faite cause commune avec Ichtaca dans <i>Paradoxes Temporels</i>.",
       "type": "binary"
     },
     {
       "id": "built_up_an_immunity",
-      "title": "I’ve Built Up An Immunity",
-      "text": "Win <i>The Forgotten Age</i> campaign without ever becoming poisoned.",
+      "title": "Je Suis Imminisé",
+      "text": "Gagnez la campagne <i>La Civilisation Oubliée</i> sans avoir été empoisonné",
       "type": "binary"
     },
     {
       "id": "we_have_an_understanding",
-      "title": "We Have an Understanding",
-      "text": "Win <i>The Forgotten Age</i> campaign without ever dealing any damage to the Harbinger of Valusia.",
+      "title": "Nous Nous Comprenons",
+      "text": "Gagnez la campagne <i>La Civilisation Oubliée</i> sans infliger un seul dégât au Hérault de Valusia.",
       "type": "binary"
     },
     {
       "id": "who_needs_any_of_this_junk",
-      "title": "Who Needs Any of This Junk?",
-      "text": "Win <i>The Forgotten Age</i> campaign without purchasing any supplies.",
+      "title": "Qui a Besoin de Tout ce Fatras ?",
+      "text": "Gagnez la campagne <i>La Civilisation Oubliée</i> sans acheter le moindre  équipement.",
       "type": "binary"
     },
     {
       "id": "dont_tread_on_me",
-      "title": "Don’t Tread on Me",
-      "text": "Win <i>The Forgotten Age</i> campaign with no tally marks recorded under Yig’s Fury in your Campaign Log",
+      "title": "Ne me Cherchez Pas",
+      "text": "Gagnez la campagne <i>La Civilisation Oubliée</i> sans aucun trait inscrit sous la mention « Colère de Yig » de votre Carnet de Campagne.",
       "type": "binary"
     },
     {
       "id": "bane_of_yig",
-      "title": "Bane of Yig",
-      "text": "Win <i>The Forgotten Age</i> campaign with 25+ tally marks recorded under Yig’s Fury in your Campaign Log.",
+      "title": "Fléau de Yig",
+      "text": "Gagnez la campagne <i>La Civilisation Oubliée</i> avec au moins 25 traits sous la mention « Colère de Yig » de votre Carnet de Campagne.",
       "type": "binary"
     },
     {
       "id": "if_i_could_turn_back_time",
-      "title": "If I Could Turn Back Time",
-      "text": "Forge your own path, unlock Scenario IX, and win <i>The Forgotten Age</i> campaign.",
+      "title": "Si je Pouvais Remonter le Temps",
+      "text": "Forgez votre propre chemin en débloquant le scénario IX et en gagnant la campagne <i>La Civilisation Oubliée</i>.",
       "type": "binary"
     },
     {
       "id": "yoth_expertise",
-      "title": "Yoth Expertise",
-      "text": "Win <i>The Forgotten Age</i> campaign on Expert difficulty",
+      "title": "Expertise de Yoth",
+      "text": "Gagnez la campagne <i>La Civilisation Oubliée</i> en difficulté Expert.",
       "type": "binary"
     }
   ]
@@ -25889,8 +25889,8 @@
 },
 {
   "id": "return_to_heart_of_the_elders_part_1",
-  "scenario_name": "Return to Heart of the Elders, Part 1",
-  "full_name": "Scenario V–A: Return to Heart of the Elders, Part 1",
+  "scenario_name": "Renouveau - Le Cœur des Anciens, Partie 1",
+  "full_name": "Scénario V-A : Renouveau - Le Cœur des Anciens, Partie 1",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -26269,50 +26269,50 @@
     },
     {
       "id": "remove_act_1a",
-      "text": "Remove the Act 1a—\"Search for the Pattern\" from the game and replace it with the new Act 1a—\"A Familiar Pattern.\""
+      "text": "Retirez de la partie l'Acte 1a - « Trouver le Bon Agencement » et remplacez-le par le nouvel Acte 1a « Un Agencement Familier »."
     },
     {
       "id": "create_exploration_deck",
       "type": "location_connectors",
-      "text": "Create the exploration deck. Gather all of the single-sided [[Jungle]] locations. Include only 1 of the 2 locations with each of the following connection symbols, chosen at random.",
+      "text": "Constituez le deck Exploration en prenant tous les lieux [[Jungle]]. N'incluer que 1 des 2 lieux possédant chacun des symboles suivants au hasard.",
       "location_connectors": [
         "purple_moon",
         "blue_triangle",
         "red_square",
         "orange_heart"
       ],
-      "subtext": "Remove the other 4 [[Jungle]] locations from the game. Do not include any of the other encounter cards listed in the original setup instructions."
+      "subtext": "Retirez les 4 autres lieux [[Jungle]] de la partie sans les regarder. N'incluez aucune des autres cartes Rencontre indiquées par les instructions originelles de mise en place."
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rules apply:",
+      "text": "Pour la durée de ce scénario, appliquez les règles suivantes :",
       "bullets": [
         {
-          "text": "The 'check your supplies' ability on the Mouth of K'n-yan can be used from any location."
+          "text": "La capacité « vérifiez votre équipement » de la Bouche de K'n-yan peut être utilisée depuis n'importe quel lieu."
         },
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Forcé</b> - Après avoir terminé une exploration fructueuse : mélangez la carte du dessus du deck Rencontre dasns le deck Exploration."
         }
       ]
     },
     {
       "id": "replay_scenario",
       "type": "input",
-      "text": "The puzzle has not been solved, you can either try again or choose to proceed anyway. The investigators must decide (choose one):",
+      "text": "Le puzzle n'a pas été résolu, vous pouvez soit réessayer, soit choisir de continuer quand même. Les investigateurs doivent décider (en choisir un) :",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "replay",
-            "text": "Continue to try by replaying <b>Scenario V-A: Heart of the Elders, Part 1</b>.",
+            "text": "Réessayer en rejouant le <b>Scénario V-A : Le Cœur des Anciens, Partie 1</b>.",
             "steps": [
               "chose_replay"
             ]
           },
           {
             "id": "resolution_2",
-            "text": "Proceed to <b>Resolution 2</b>",
-            "description": "<i>You have a bad feeling about this...</i>",
+            "text": "Passer à la <b>Conclusion 2</b>",
+            "description": "<i>Vous avez un mauvais pressentiment…</i>",
             "steps": [
               "resolution_2"
             ]
@@ -26322,7 +26322,7 @@
     },
     {
       "id": "chose_replay",
-      "text": "The investigators must replay <b>Scenario V-A: Return to Heart of the Elders, Part 1</b>. Reset the game to this scenario’s <b>Setup</b>. Do not record anything else in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game. Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal.",
+      "text": "Les investigateurs doivent rejouer le Scénario V-A : Renouveau - Le Cœur des Anciens, Partie 1. Réinitialisez la partie à la Mise en Place de ce scénario. N'inscrivez rien dans le Carnet de Campagne, à l'exception des éventuels traumatismes subis lors de votre partie précédente. Aucun point d'expérience n'est reçu pour cette partie. Tout joueur dont l'investigateur a été tué ou rendu dément doit choisir un nouvel investigateur à incarner, selon la règle habituelle.",
       "effects": [
         {
           "type": "campaign_data",
@@ -26343,7 +26343,7 @@
     },
     {
       "id": "trespassed_in_hostile_land",
-      "text": "You have trespassed in a hostile land. Place pillar tokens on the Mouth of K'n-yan until there are exactly 6 pillar tokens. For every pillar token added in this way, record two tally marks under \"Yig's Fury\" in your Campaign Log.",
+      "text": "Vous avez pénétré dans un territoire hostile. Placez des pions Pilier sur la Bouche de k'n-yan jusqu'à ce qu'il y ait exactement 6 pions Pilier. Ensuite, pour chaque pion Pilier ainsi ajouté, inscrivez 2 traits sous la mention « Colère de Yig » de votre Carnet de Campagne.",
       "type": "branch",
       "condition": {
         "type": "campaign_log_count",
@@ -26395,7 +26395,7 @@
     {
       "id": "6_paths_12_fury",
       "bullet_type": "small",
-      "text": "Record 12 tally marks under \"Yig's Fury\".",
+      "text": "Inscrire 12 traits sous la mention « Colère de Yig »",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -26408,7 +26408,7 @@
     {
       "id": "5_paths_10_fury",
       "bullet_type": "small",
-      "text": "Record 10 tally marks under \"Yig's Fury\".",
+      "text": "Inscrire 10 traits sous la mention « Colère de Yig »",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -26421,7 +26421,7 @@
     {
       "id": "4_paths_8_fury",
       "bullet_type": "small",
-      "text": "Record 8 tally marks under \"Yig's Fury\".",
+      "text": "Inscrire 8 traits sous la mention « Colère de Yig »",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -26434,7 +26434,7 @@
     {
       "id": "3_paths_6_fury",
       "bullet_type": "small",
-      "text": "Record 6 tally marks under \"Yig's Fury\".",
+      "text": "Inscrire 6 traits sous la mention « Colère de Yig »",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -26447,7 +26447,7 @@
     {
       "id": "2_paths_4_fury",
       "bullet_type": "small",
-      "text": "Record 4 tally marks under \"Yig's Fury\".",
+      "text": "Inscrire 4 traits sous la mention « Colère de Yig »",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -26460,7 +26460,7 @@
     {
       "id": "1_path_2_fury",
       "bullet_type": "small",
-      "text": "Record 2 tally marks under \"Yig's Fury\".",
+      "text": "Inscrire 2 traits sous la mention « Colère de Yig »",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -26472,7 +26472,7 @@
     },
     {
       "id": "pass_pillars_take_trauma_or_poison",
-      "text": "As you pass the pillars, intense pain wrenches its way through your body, and you are afflicted with a terrible curse. Each investigator who is poisoned takes 1 mental trauma. Each investigator who is not poisoned adds a set-aside Poisoned weakness to their deck."
+      "text": "Lorsque vous passez les pilier, une intense douleur s'empare de votre corps tout entier. Vous êtes touché par une terrible malédiction. Chaque investigateur empoisonné subit 1 traumatisme mental. Chaque investigateur qui n'est pas empoisonné ajoute à son deck une faiblesse Empoisonné mise de côté."
     },
     {
       "id": "poison_or_trauma",
@@ -26508,7 +26508,7 @@
     },
     {
       "id": "proceed_resolution_1",
-      "text": "Proceed to <b>Resolution 1</b>."
+      "text": "Passez à la <b>Conclusion 1</b>."
     }
   ],
   "resolutions": [
@@ -26542,7 +26542,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "You haven't yet completed the puzzle of the six pillars that serve as the entrance to K'n-yan, but you don't wish to tarry any further in this hostile jungle. You decide to enter the cavern anyway, hoping that whatever \"wards\" the pillars represent are nothing but ancient superstition...",
+      "text": "Vous n'avez pas réussi à compléter le puzzle des six piliers qui servent de passage ves K'n-yan, mais vous n'avez pas l'intention de vous attarder dans cette jungle hostile. Vous décidez d'entrer dans la grotte malgré tout, priant pour que la « protection » des piliers ne soit qu'une sorte de superstition…",
       "steps": [
         "trespassed_in_hostile_land",
         "pass_pillars_take_trauma_or_poison",
@@ -26555,8 +26555,8 @@
 },
 {
   "id": "return_to_heart_of_the_elders_part_2",
-  "scenario_name": "Return to Heart of the Elders, Part 2",
-  "full_name": "Scenario V–B: Return to Heart of the Elders, Part 2",
+  "scenario_name": "Renouveau - Le Cœur des Anciens, Partie 2",
+  "full_name": "Scénario V-B : Renouveau - Le Cœur des Anciens, Partie 2",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -26786,29 +26786,29 @@
     },
     {
       "id": "set_aside_harbinger",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one."
+      "text": "Cherchez dans la collection le nouveau Héraut de Valusia (<i>Le Retour du Dormeur</i>) et mettez-le de côté, hors jeu. Si le Héraut de Valusia est censé entrer en jeu lors de ce scénario, utilisez cette version au lieu de la version d'origine."
     },
     {
       "id": "create_exploration_deck",
       "type": "location_connectors",
-      "text": "Create the exploration deck. This is done by taking the 5 remaining single-sided locations from the <i>K’n-yan</i> encounter set. Include only 1 of the 2 locations with each of the following connection symbols, chosen at random.",
+      "text": "Constituez le deck Exploration en prenant les 5 lieux mono-face restants du set de rencontre K'n-yan.N\"incluez que 1 des 2 lieux possédant chacun des symboles suivant au hasard.",
       "location_connectors": [
         "purple_moon",
         "blue_triangle",
         "red_square",
         "green_diamond"
       ],
-      "subtext": "Remove the other 4 [[Ancient]] locations from the game. Do not include any of the other encounter cards listed in the original setup instructions. (There should be a total of 5 cards, not counting the set-aside Descent to Yoth.)"
+      "subtext": "Retirez les 4 autre lieux [[Antique]] de la partie sans les regarder. N'incluez aucune des autres cartes Rencontre indiquées par les instructions originelles (Le deck devrait donc avoir un total de 5 cartes, sans compterla Descente de Yoth mise de côté.)"
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rules apply:",
+      "text": "Pour la durée de ce scénario, appliquez les règles suivantes :",
       "bullets": [
         {
-          "text": "The 'check your supplies' ability on the Mouth of K'n-yan can be used from any location, and it discards enemies as well as treacheries."
+          "text": "La capacité « Vérifiez votre équipement » de la Bouche de K'n-yan peut être utilisée depuis n'importe quel lieu et elle défausse les ennemis aussi bien que les traîtrises."
         },
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Forcé</b> - Après avoir terminé une exploration fructueuse : mélangez la carte du dessus du deck Rencontre dasns le deck Exploration."
         }
       ]
     },
@@ -26841,7 +26841,7 @@
     },
     {
       "id": "adjust_supplies_choice",
-      "text": "Which investigator should add the \"Sticky Goop\" to their supplies?"
+      "text": "Quel investigateur doit ajouter la « substance visqueuse » à son équipement ?"
     },
     {
       "id": "gain_sticky_goop",
@@ -26853,7 +26853,7 @@
         "choices": [
           {
             "id": "gain_sticky_goop",
-            "text": "Found \"Sticky Goop\"",
+            "text": "Vous avez trouvé la « substance visqueuse ».",
             "effects": [
               {
                 "type": "gain_supplies",
@@ -26862,8 +26862,8 @@
                 "supplies": [
                   {
                     "id": "sticky_goop",
-                    "name": "Sticky Goop",
-                    "description": "A mysterious scepter you found in a subterranean swamp.",
+                    "name": "Substance visqueuse",
+                    "description": "La substance visqueuse que vous avez trouvé dnas le Marais Souterrain",
                     "cost": 0,
                     "multiple": false
                   }
@@ -26936,7 +26936,7 @@
 {
   "id": "return_to_shattered_aeons",
   "scenario_name": "Renouveau - Paradoxes Temporels",
-  "full_name": "Scenario VIII: Return to Shattered Aeons",
+  "full_name": "Scénario VIII : Renouveau - Paradoxes Temporels",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -27360,18 +27360,18 @@
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the 4 single-sided [[Otherworld]] locations. Do not include any of the other encounter cards listed in the original setup instructions."
+      "text": "Constituez le deck Exploration. Pour ce faire, utilisez uniquement les 4 lieux [[Autre Monde]] mono-face. N'incluez aucune autre carte Rencontre indiquée dans les instruction de mise en place d'origine."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Formless Spawn, Relic of Ages (Unleash the Timestream), A Pocket in Time, Act 4a—“Paradise Lost”, Act 4a—“Timelock”, and all of the single-sided [[Shattered]] locations."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : Rejeton Informe, Relique des Âges (<i>Libérer le Flux Temporel</i>), Une Bulle Hors du Temps, Acte 4a – « Paradis Perdu », Acte 4a – « Verrou Temporel », et tous les lieux [[Dévasté]] mono-face."
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rule applies:",
+      "text": "Pour la durée de ce scénario, appliquez la règle supplémentaire suivante :",
       "bullets": [
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Forcé</b> - Après avoir terminé une exploration fructueuse : mélangez la carte du dessus du deck Rencontre dasns le deck Exploration."
         }
       ]
     }
@@ -27477,7 +27477,7 @@
 {
   "id": "return_to_the_boundary_beyond",
   "scenario_name": "Renouveau - Par-delà les Limites",
-  "full_name": "Scenario IV: Return to The Boundary Beyond",
+  "full_name": "Scénario IV : Renouveau - Par-delà les Limites",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -28228,15 +28228,15 @@
     },
     {
       "id": "setup_locations",
-      "text": "Combine the new [[Present-Day]] locations with the original versions from <i>The Boundary Beyond</i>. Remove 1 of the 2 copies of each location from the game at random. Then put Metropolitan Cathedral, Zócalo, Temple Ruins, Xochimilco, Chapultepec Park, and Coyoacán into play. Each investigator begins play in either Zócalo or Coyoacán (their choice)."
+      "text": "Ajoutez les nouveaux lieux [[Contemporain]] aux lieu d'origine du set de rencontre <i>Par-delà les Limites</i>. Retirez de la partie 1 des 2 exemplaires de chacun de ces lieux au hasard. Mettez en jeu la Cathédrale Métropolitaine, Zócalo, les Ruines du Temple, Xochimilco, le Parc de Chapultepec et Coyoacán. Chaque investigateur débute la partie soit à Zócalo, soit à Coyoacán (au choix de l'investigateur)"
     },
     {
       "id": "set_aside_harbinger",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one."
+      "text": "Cherchez dans la collection le nouveau Héraut de Valusia (<i>Le Retour du Dormeur</i>) et mettez-le de côté, hors jeu. Si le Héraut de Valusia est censé entrer en jeu lors de ce scénario, utilisez cette version au lieu de la version d'origine."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the 12 single-sided [[Ancient]] locations and shuffling them together. Do not include any of the other encounter cards listed in the original setup instructions."
+      "text": "Constituez le deck Exploration. Pour ce faire, prenez les 12 lieux [[Antique]] mono-face et mélangez-les. N'incluez aucune des autres cartes de Rencontre indiquées dans les instructions de mise en place originelles."
     }
   ],
   "resolutions": [
@@ -28301,7 +28301,7 @@
 {
   "id": "return_to_the_city_of_archives",
   "scenario_name": "Renouveau - La Cité des Archives",
-  "full_name": "Scenario VI: Return to The City of Archives",
+  "full_name": "Scénario VI : Renouveau - La Cité des Archives",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -28664,10 +28664,10 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the four Halls of Pnakotus locations into play (the 3 from the original set and the new Halls of Pnakotus <i>(Southern Corridors)</i>). Set each remaining location aside, out of play.",
+      "text": "Mettez en jeu les quatres lieux Couloirs de Pnakotus (les 3 originaux et le nouveau Couloirs de Pnakotus (<i>Couloirs Sud</i>)). Mettez chaque lieu restant de côté, hors jeu.",
       "bullets": [
         {
-          "text": "When instructed to put locations into play during act 1b, put Cyclopean Vaults and Alien Conservatory into play as well."
+          "text": "Lors qu'il vous est demendé de mettre en jeu des lieux durant l'acte 1b, mettez aussi en jeu les Caveaux Cyclopéens et la Ménagerie Extraterrestre."
         }
       ]
     },
@@ -28700,7 +28700,7 @@
     },
     {
       "id": "remove_act2a",
-      "text": "Remove Act 2a—\"Restricted Access\" from the game and replace it with the new Act 2a—\"Unrestricted Access.\""
+      "text": "Retirez de la partie l'Acte 2a - « Accès Restreint » et remplacez -le par le nouvel Acte 2a - «Accès Illimité »."
     },
     {
       "id": "record_number_of_tasks",
@@ -28723,7 +28723,7 @@
     },
     {
       "id": "process_was_perfected",
-      "text": "Because at least 6 tasks were completed, record in your Campaign Log that <i>the process was perfected</i>. Each investigator earns 4 bonus experience as they gain insight into the secrets of the Earth.",
+      "text": "Si au moins 6 tâches ont été complétées, indiquez dans le Carnet de Campagne que <i>le processus a parfaitement fonctionné</i>. Chaque investigateur reçoit 4 points d'expérience bonus pour avoir entraperçu les secrets de la Terre.",
       "effects": [
         {
           "type": "campaign_log",
@@ -28777,8 +28777,8 @@
 },
 {
   "id": "return_to_the_depths_of_yoth",
-  "scenario_name": "Renouveau - Les Profondeurs de Yoth",
-  "full_name": "Scenario VII: Return to The Depths of Yoth",
+  "scenario_name": "Renouveau - La Civilisation Oubliée",
+  "full_name": "Scénario VII : Renouveau - La Civilisation Oubliée",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -29986,27 +29986,27 @@
     {
       "id": "put_harbinger_in_pursuit",
       "bullet_type": "small",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. Because it is agenda 5a or 6a, place it in the pursuit area. (See “Pursuit,” below.)"
+      "text": "Cherchez dans la collection le nouveau Hérault de Valusia (<i>Le Retour du Dormeur</i>) et placez sur lui un montant de dégâts égal à celui inscrit entre parenthèses dans votre Carnet de Campagne. Si vous êtes à l'Intrigue 5a ou 6a, déplacez le dans la zone de poursuite. (Voir « Poursuite » ci-après.)"
     },
     {
       "id": "set_aside_harbinger",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. Place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one. "
+      "text": "Cherchez dans la collection le nouveau Hérault de Valusia (<i>Le Retour du Dormeur</i>) et mettez-le de côté, hors jeu. Placez sur lui un montant de dégâts égal à celui inscrit entre parenthèses dans votre Carnet de Campagne. Si le Hérault de Valusia est censé entrer en jeu lors de ce scénario, utilisez cette version au lieu de la version d'origine."
     },
     {
       "id": "create_exploration_deck",
       "text": "Constituez le deck Exploration. Pour ce faire, prenez les Marches de Yoth et 4 des lieux mono-face restants mis de côté (prenez-les au hasard) et mélangez-les.",
       "bullets": [
         {
-          "text": "Shuffle the Perils of Yoth treachery into the exploration deck."
+          "text": "Mélangez la traîtrise Péril de Yoth dans le deck Exploration."
         }
       ]
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rule applies:",
+      "text": "Pour la durée de ce scénario, appliquez la règle supplémentaire suivante :",
       "bullets": [
         {
-          "text": "<b>Forced</b> - After a new exploration deck is created during act 1b: Search the encounter deck, discard pile, and all out-of-play areas for Perils of Yoth and shuffle it into the exploration deck. Shuffle the encounter deck if it was searched."
+          "text": "<b>Forcé</b> - Après qu'un nouveau deck Exploration a été créé lors de l'Acte 1b : cherchez la traîtrise Péril de Yoth dans le deck Rencontre, la pile de défausse Rencontre ou n'importe quelle zone hors jeu et mélangez-la dans le deck Exploration. Mélangez le deck Rencontre s'il a été consulté"
         }
       ]
     },
@@ -30018,7 +30018,7 @@
         "choices": [
           {
             "id": "strange_liquid",
-            "text": "Do you remember that you “collected a strange liquid”?",
+            "text": "Un investigateur a-t-il « collecté un étrange liquide »?",
             "steps": [
               "check_goop"
             ]
@@ -30030,13 +30030,13 @@
       "id": "check_goop",
       "bullet_type": "small",
       "type": "branch",
-      "text": "Check your supplies. If any investigator has sticky goop:",
+      "text": "Vérifiez votre équipement. Si n'importe quel investigateur a une substance visqueuse : ",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "any",
         "id": "sticky_goop",
-        "name": "Sticky Goop",
+        "name": "Substance visqueuse",
         "options": [
           {
             "boolCondition": true,
@@ -30051,7 +30051,7 @@
     {
       "id": "key_of_eztli_story",
       "type": "story",
-      "text": "The liquid from the fountain dissolves the viscous substance, revealing a solid object beneath the ooze. Record \"Key of Eztli\" in any one investigator's supplies."
+      "text": "Le liquide de la fontaine dissout la substance visqueuse, révélant un objet solide à l'intérieur. Inscrivez la « Clé des Eztli » dans l'équipement de n'importe quel investigateur."
     },
     {
       "id": "gain_key_of_eztli",
@@ -30063,7 +30063,7 @@
         "choices": [
           {
             "id": "gain_key_of_eztli",
-            "text": "Key of Eztli",
+            "text": "Clé des Eztli",
             "effects": [
               {
                 "type": "gain_supplies",
@@ -30072,8 +30072,8 @@
                 "supplies": [
                   {
                     "id": "key_of_eztli",
-                    "name": "Key of Eztli",
-                    "description": "The Key of Eztli.",
+                    "name": "Clé des Eztli",
+                    "description": "La Clé des Eztli",
                     "cost": 0,
                     "multiple": false
                   }
@@ -30132,7 +30132,7 @@
 {
   "id": "return_to_the_doom_of_eztli",
   "scenario_name": "Renouveau - Le Fléau des Eztli",
-  "full_name": "Scenario II: Return to The Doom of Eztli",
+  "full_name": "Scénario II : Renouveau - Le Fléau des Eztli",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -30558,30 +30558,30 @@
     },
     {
       "id": "remove_cards",
-      "text": "Remove the original Burial Pit, Underground Ruins, Secret Passage locations from the game."
+      "text": "Retirez de la partie les lieux Fosse Funéraire, Ruines Souterraines et Passage Secret d'origine."
     },
     {
       "id": "replace_cards",
-      "text": "Replace the original Entryway, Ancient Hall, Grand Chamber, and Chamber of Time locations with the new versions from <i>The Return to The Doom of Eztli</i> encounter set."
+      "text": "Remplacez les lieux Entrée des Ruines, Couloir Antique, Grande Chambre et Chambre du Temps d'irigine par les nouvelles versions du set de rencontre <i>Renouveau - Le Fléau d'Eztli</i>."
     },
     {
       "id": "replace_harbinger",
-      "text": "Replace the original Harbinger of Valusia enemy with the new Harbinger of Valusia <i>(The Sleeper Returns</i>."
+      "text": "Remplacez l'ennemi Hérault de Valusia d'origine par le nouveau Hérault de Valusia (<i>Le Retour du Dormeur</i>)."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking Sealed Passage, Mosaic Chamber, Tomb of the Ancients, Throne Room, Snake Pit, Ancient Hall, and Grand Chamber and shuffling them together. Do not include any encounter cards listed in the original setup instructions."
+      "text": "Constituez le deck Exploration en utilisant uniquement le PAssage Scellé, la Chambre à Mosaïque, la Tombe des Anciens, la Salle du Trône, la Fosse aux Serpents, le Couloir Antique et la Grande Chambre. N'incluez aucune des cartes Rencontre indiqué dans les instruction de mise en place d'origine."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Harbinger of Valusia enemy, the 3 Pit Viper cards from the <i>Serpents</i> encounter set, and the Chamber of Time location, and the Relic of Ages asset."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : l'ennemi Hérault de Valusia, les 3 cartes Crotal le lieu Chambre du Temps et le soutien Relique des Âges."
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rule applies:",
+      "text": "Pour la durée de ce scénario, appliquez la règle supplémentaire suivante :",
       "bullets": [
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Forcé</b> - Après avoir terminé une exploration fructueuse : mélangez la carte du dessus du deck Rencontre dasns le deck Exploration."
         }
       ]
     },
@@ -30614,7 +30614,7 @@
     },
     {
       "id": "adjust_supplies_choice",
-      "text": "Which investigator should add the \"Mysterious Scepter\" to their supplies?"
+      "text": "Quel investigateur doit ajouter le « mystérieux sceptre » à son équipement ?"
     },
     {
       "id": "gain_mysterious_scepter",
@@ -30626,7 +30626,7 @@
         "choices": [
           {
             "id": "gain_mysterious_scepter",
-            "text": "Mysterious Scepter",
+            "text": "Mystérieux sceptre",
             "effects": [
               {
                 "type": "gain_supplies",
@@ -30635,8 +30635,8 @@
                 "supplies": [
                   {
                     "id": "mysterious_scepter",
-                    "name": "Mysterious Scepter",
-                    "description": "A mysterious scepter you found in the throne room.",
+                    "name": "Mystérieux sceptre",
+                    "description": "Un mysterieux sceptre que vous avez trouvé dans la salle du trône.",
                     "cost": 0,
                     "multiple": false
                   }
@@ -30655,7 +30655,7 @@
     },
     {
       "id": "replay_scenario",
-      "text": "The investigators must replay <b>Scenario II: Return to The Doom of Eztli</b>. Reset the game to this scenario’s Setup. Do not record anything in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game.",
+      "text": "msgstr \"Les investigateurs doivent rejouer le <b>Scénario II : Renouveau - Le Fléau des Eztli</b>. Réinitialisez la partie à la <b>Mise en Place</b> de ce scénario. N'inscrivez rien dans le Carnet de Campagne à l'exception des éventuels traumatismes subis lors de votre partie précédente. Aucun point d'expérience n'est reçu pour votre partie précédente.",
       "effects": [
         {
           "type": "campaign_data",
@@ -30781,7 +30781,7 @@
 {
   "id": "return_to_the_untamed_wilds",
   "scenario_name": "Renouveau - Une Contrée Sauvage",
-  "full_name": "Scenario I: Return to The Untamed Wilds",
+  "full_name": "Scénario I : Renouveau - Une Contrée Sauvage",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -31144,24 +31144,24 @@
     {
       "id": "create_exploration_deck",
       "type": "location_connectors",
-      "text": "Create the exploration deck. Gather all of the single-sided [[Jungle]] locations. Include only 1 of the 2 locations with each of the following connection symbols, chosen at random.",
+      "text": "Constituez le deck Exploration en prenant tous les lieux [[Jungle]]. N'incluer que 1 des 2 lieux possédant chacun des symboles suivants au hasard.",
       "location_connectors": [
         "purple_moon",
         "blue_triangle",
         "red_square",
         "orange_heart"
       ],
-      "subtext": "Remove the other 4 [[Jungle]] locations from the game. Do not include any of the other encounter cards listed in the original setup instructions (There should be a total of 5 cards.)"
+      "subtext": "Retirez les 4 autres lieux [[Jungle]] de la partie sans les regarder. N'incluez aucune des cautres cartes Rencontre indiquées par les instructions originelles de mise en place. (Le deck devrait donc avoir un total de 5 cartes.)"
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rules apply:",
+      "text": "Pour la durée de ce scénario, appliquez les règles suivantes :",
       "bullets": [
         {
-          "text": "The 'check your supplies' ability on the Expedition Camp can be used from any location."
+          "text": "La capacité « vérifiez votre équipement » du Campement de l'Expédition peut être utilisée depuis n'importe quel lieu."
         },
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Forcé</b> - Après avoir terminé une exploration fructueuse : mélangez la carte du dessus du deck Rencontre dasns le deck Exploration."
         }
       ]
     }
@@ -31230,7 +31230,7 @@
 {
   "id": "return_to_threads_of_fate",
   "scenario_name": "Renouveau - Les Fils du Destin",
-  "full_name": "Scenario III: Return to Threads of Fate",
+  "full_name": "Scénario III : Renouveau - Les Fils du Destin",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -32174,7 +32174,7 @@
     {
       "id": "intro_7",
       "type": "story",
-      "text": "As if you didn't already have several other pressing concerns, this morning's article in the <i>Arkham Advertiser</i> piques your interest: \"Chaos in French Hill!\" The article goes on to describe several strange happenings sighted around the estate of one Marshall Hastings in French Hill, an old and storied neighborhood of Arkham. According to the article's source—who goes unnamed—the mansion has become a tangled mess of overgrowth and serpents. The article reports that a recent expedition returned with several strange artifacts in tow, meant to be displayed in the Hastings manor. You wonder if this has anything to do with your expedition to find the Eztli. Even if these events are unrelated, your investigation might connect you with others who can assist you in turn."
+      "text": "Comme si vous n'aviez pas assez de sujets de préoccupation comme cela, un article de <i>L'Annonceur d'Arkham</i> de ce matin éveille votre interêt : « Chaos à French Hill ! » L'article décrit plusieur événement étranges ayant eu lieu aux alentours de la propriété de Marshall Hasting à French Hill, un des plus anciens quartiers d'Arkham. D'après la source de l'article - qui préfère garder l'anonymat - la demeure s'est retrouvée envahie par une végétation luxuriante et des serpents. L'article ajoute qu'une expédition est récemment rentrée avec plusieurs artefacts étrange destinés à être exposés au Manoir Hastings. Vous vous demandez si cela a quelque rapport avec votre propre expédition. Même si ces événements ne sont pas liés, une enquête pourrait vous mettre en relation avec les membres d'une autre expédition qui pourraient vous apporter leur aide."
     },
     {
       "id": "gather_encounter_sets",
@@ -32193,25 +32193,25 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Veda Whitsley asset, the Town Hall location, the Ichtaca <i>(The Forgotten Guardian)</i> asset, and the Expedition Journal asset aside, out of play."
+      "text": "msgstr \"Mettez de côté Veda Whitsley, l'Hôtel de Ville, Ichtaca <i>(La Gardienne Oubliée)</i> et le Journal de l'Expédition, hors jeu."
     },
     {
       "id": "setup_act_gh",
-      "text": "The investigators must choose one of the following options, and adjust the contents of the “g/h” deck accordingly:",
+      "text": "Les investigateurs doivent coisir une des option suivante et ajuster le contenu du deck Acte « g/h » en fonction de leur choix",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "police",
-            "text": "If you wish to find the source named in the <i>Advertiser's</i> story.",
+            "text": "Si vous souhaitez retrouver la source anonyme de l'histoire de l'<i>Annonceur</i>.",
             "steps": [
               "find_advertiser_source"
             ]
           },
           {
             "id": "search_alone",
-            "text": "If you wish to find the root of the problem.",
+            "text": "SI  vous souhaitez découvrir la racine du problème.",
             "steps": [
               "find_root_of_problem"
             ]
@@ -32222,12 +32222,12 @@
     {
       "id": "find_advertiser_source",
       "bullet_type": "small",
-      "text": "Remove the following act cards from the “g/h” deck: Search for the Meaning, both copies of The Overgrown Estate, and 1 of the 2 copies of Seeking Trouble, at random."
+      "text": "Retirez les cartes Acte suivantes du deck « g/h » : À la recherche d'une Signification, les deux exemplaires d'Un Domaine Luxuriant et 1 des 2 exemplaires de Chercher les Ennuis pris au hasard."
     },
     {
       "id": "find_root_of_problem",
       "bullet_type": "small",
-      "text": "Remove the following act cards from the “g/h” deck: Search for the Source, both copies of Seeking Trouble, and 1 of the 2 copies of The Overgrown Estate, at random."
+      "text": "Retirez les cartes Acte suivantes du deck « g/h » : À la recherche dde la source, les deux exemplaires de Chercher les Ennuis et 1 des 2 exemplaires d'Un Domaine Luxuriant pris au hasard."
     },
     {
       "id": "recruited_help_of_another_expedition",
@@ -32237,14 +32237,14 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "recruited_help_of_another_expedition",
-          "text": "the investigators recruited the help of another expedition."
+          "text": "les investigateus ont obtenu l'assistance d'une autre expédition."
         }
       ]
     },
     {
       "id": "earn_veda_whitsley",
       "bullet_type": "small",
-      "text": "Any one investigator may choose to include the Veda Whitsley story asset in their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'inclure le soutien d'histoire Veda Whitsley dans son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -32287,13 +32287,13 @@
     {
       "id": "check_act_ab",
       "type": "input",
-      "text": "Which stage of the act “a/b” deck was in play?",
+      "text": "Quelle carte du deck Acte « a/b » était-il en jeu ?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1",
-            "text": "Act 1a",
+            "text": "Acte 1a",
             "steps": [
               "relic_is_missing",
               "maybe_remove_relic_of_ages"
@@ -32301,7 +32301,7 @@
           },
           {
             "id": "act_2",
-            "text": "Act 2a",
+            "text": "Acte 2a",
             "steps": [
               "relic_is_missing",
               "maybe_remove_relic_of_ages"
@@ -32317,7 +32317,7 @@
           },
           {
             "id": "act_3",
-            "text": "Act 3a",
+            "text": "Acte 3a",
             "steps": [
               "relic_is_missing",
               "maybe_remove_relic_of_ages"
@@ -32352,14 +32352,14 @@
     },
     {
       "id": "check_act_cd",
-      "text": "Which stage of the act “c/d” deck was in play?",
+      "text": "Quelle carte du deck Acte « c/d » était-il en jeu ?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1",
-            "text": "Act 1c",
+            "text": "Acte 1c",
             "steps": [
               "alejandro_is_missing",
               "maybe_remove_alejandro"
@@ -32367,7 +32367,7 @@
           },
           {
             "id": "act_2",
-            "text": "Act 2c",
+            "text": "Acte 2c",
             "steps": [
               "alejandro_is_missing",
               "maybe_remove_alejandro"
@@ -32383,7 +32383,7 @@
           },
           {
             "id": "act_3",
-            "text": "Act 3c",
+            "text": "Acte 3c",
             "steps": [
               "alejandro_is_missing",
               "maybe_remove_alejandro"
@@ -32418,21 +32418,21 @@
     },
     {
       "id": "check_act_ef",
-      "text": "Which stage of the act “e/f” deck was in play?",
+      "text": "Quelle carte du deck Acte « e/f » était-il en jeu ?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1",
-            "text": "Act 1e",
+            "text": "Acte 1e",
             "steps": [
               "ichtaca_in_the_dark"
             ]
           },
           {
             "id": "act_2",
-            "text": "Act 2e",
+            "text": "Acte 2e",
             "steps": [
               "ichtaca_in_the_dark"
             ],
@@ -32447,7 +32447,7 @@
           },
           {
             "id": "act_3",
-            "text": "Act 3e",
+            "text": "Acte 3e",
             "steps": [
               "ichtaca_in_the_dark"
             ],
@@ -32481,19 +32481,19 @@
     },
     {
       "id": "check_act_gh",
-      "text": "Which stage of the act “g/h” deck was in play?",
+      "text": "Quelle carte du deck Acte « g/h » était-il en jeu ?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1",
-            "text": "Act 1g",
+            "text": "Acte 1g",
             "steps": []
           },
           {
             "id": "act_2",
-            "text": "Act 2g",
+            "text": "Acte 2g",
             "effects": [
               {
                 "type": "earn_xp",
@@ -32505,7 +32505,7 @@
           },
           {
             "id": "act_3",
-            "text": "Act 3g",
+            "text": "Acte 3g",
             "effects": [
               {
                 "type": "earn_xp",
@@ -32517,7 +32517,7 @@
           },
           {
             "id": "completed",
-            "text": "Act 3h was completed.",
+            "text": "l'Acte 3h a été complété",
             "steps": [
               "recruited_help_of_another_expedition",
               "earn_veda_whitsley"
@@ -32536,24 +32536,24 @@
     },
     {
       "id": "earn_act_xp",
-      "text": "Each investigator earns 1 additional experience for each act 1, act 2, or act 3 card that was completed during this scenario, as you gain insight into the schemes of the Brotherhood.",
+      "text": "Chanque investigateur reçoit 1 point d'expérience supplémentaire pour chaque carte Acte 2 et Acte 3 qui ont été complétées lors de ce scénario pour avoir entrevu les machination de la Fraternité.",
       "bullets": [
         {
-          "text": "This additional experience cannot be spent to purchase cards."
+          "text": "Ces points d'experience ne peuvent pas être utilisé acheter des cartes"
         },
         {
-          "text": "Instead, it must be spent to remove poison or cure trauma, or it must be converted to supply points during the upcoming <b>Resupply Point</b>"
+          "text": "À la place, ils doivent être dépensés pour soigner le poison, soigner un traumatisme ou converti en point d'équipement."
         }
       ]
     },
     {
       "id": "resupply_point_explanation",
-      "text": "When spending experience points during this section, experience earned from completing acts will be spent first. You may also convert up to 10 points of experience to supply points, at a rate of 1 supply point for every 2 experience converted."
+      "text": "De plus, chaque investigateur a le droit de convertir jusqu'à 10  de ses points d'expérience en points d'équipement avec un taux de 1 point d'équipement pour 2 points d'expériences convertis."
     },
     {
       "id": "choose_to_heal_trauma",
       "bullet_type": "small",
-      "text": "Each investigator may spend 5 experience points to remove physical or mental trauma from their investigator."
+      "text": "Chaque investigateur a le droit de dépenser 5 points d'expérience par point de traumatisme physique ou mental à enlever de sa carte Investigateur"
     },
     {
       "id": "show_resupply_xp",
@@ -32566,7 +32566,7 @@
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Physical trauma to remove",
+        "text": "Traumatisme physique à enlever",
         "investigator_max": "physical_trauma",
         "show_special_xp": "resupply_points",
         "effects": [
@@ -32591,7 +32591,7 @@
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Mental trauma to remove",
+        "text": "Traumatisme mental à enlever",
         "investigator_max": "mental_trauma",
         "show_special_xp": "resupply_points",
         "effects": [
@@ -32613,7 +32613,7 @@
     {
       "id": "choose_to_buy_supply_points",
       "bullet_type": "small",
-      "text": "Each investigator may convert additional experience into supply points, at a rate of 1 supply point for every 2 experience converted. Any unspent resupply experience will be lost."
+      "text": "Chaque investigateur a le droit de convertir jusqu'à 10  de ses points d'expérience en points d'équipement avec un taux de 1 point d'équipement pour 2 points d'expériences convertis."
     },
     {
       "id": "buy_supply_points",
@@ -32621,7 +32621,7 @@
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Supply points to purchase (2 experience each)",
+        "text": "Points d'équipement à prendre (2 points d'expérience chacun)",
         "max": 5,
         "show_special_xp": "resupply_points",
         "effects": [
@@ -32642,7 +32642,7 @@
     {
       "id": "buy_supplies",
       "type": "input",
-      "text": "Each investigator may spend supply points to purchase one or more of the supplies listed below. The number of supply points available to each investigator is based on the number of investigators in the campaign.",
+      "text": "Chaque investigateur a le droit de dépenser des points d'équipement pour acheter un ou plusieurs éléments de la liste ci-après. La quantité de points d'équipement disponibles pour chaque investigateur dépend du nombre d'investigateurs dans la campagne.",
       "input": {
         "type": "supplies",
         "section": "supplies",
@@ -32722,13 +32722,13 @@
     },
     {
       "id": "setup_act_deck",
-      "text": "Adjust the contents of each act deck, as noted below under <b>Four Acts, Four Threads</b>."
+      "text": "Ajustez le contenu de chaque deck Acte comme indiqué ci-après à la rubrique <b>Quatre Actes, Quatre Fils</b>."
     },
     {
       "id": "three_acts_three_decks",
       "type": "rule_reminder",
-      "title": "Four Acts, Four Threads.",
-      "text": "This scenario contains four different act decks —an “a/b” deck, a “c/d” deck, an “e/f” deck, and a “g/h” deck. Each of these act decks is constructed separately, in numerical order, as usual. During the course of this scenario, all four of these act decks will be in play, and players may choose which acts to pursue and which to ignore. The text of all four acts is considered active at all times. You might not have time to accomplish all four tasks, so choose which leads you wish to pursue wisely!\nThe contents of each of these act decks is altered depending on the circumstances below."
+      "title": "Quatre Actes, Quatre Fils",
+      "text": "Ce scénario contient quatre decks Acte différents – un deck « a/b », un deck « c/d », un deck « e/f » et un deck « g/h ». Chacun de ces decks Acte est construit séparément en suivant l'ordre numérique, comme d'habitude. Lors du scénario, les trois decks Acte seront en jeu et les joueurs auront le droit de choisir quels actes avancer et lesquels ignorer. Les textes des trois actes sont considérés comme actifs à tout moment. Vous n'aurez peut-être pas le temps d'accomplir les trois tâches, alors choisissez judicieusement quelles pistes suivre.\nLe contenu de chaque deck Acte est modifié en fonction des circonstances suivantes :"
     },
     {
       "id": "check_harbinger",
@@ -32847,8 +32847,8 @@
 },
 {
   "id": "return_to_turn_back_time",
-  "scenario_name": "Return to Turn Back Time",
-  "full_name": "Scenario IX: Return to Turn Back Time",
+  "scenario_name": "Renouveau - Remonter le temps",
+  "full_name": "Scénario IX : Renouveau - Remonter le temps",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -33310,30 +33310,30 @@
     },
     {
       "id": "remove_cards",
-      "text": "Remove the original Burial Pit, Underground Ruins, Secret Passage locations from the game."
+      "text": "Retirez de la partie les lieux Fosse Funéraire, Ruines Souterraines et Passage Secret d'origine."
     },
     {
       "id": "replace_cards",
-      "text": "Replace the original Entryway, Ancient Hall, Grand Chamber, and Chamber of Time locations with the new versions from <i>The Return to The Doom of Eztli</i> encounter set."
+      "text": "Remplacez les lieux Entrée des Ruines, Couloir Antique, Grande Chambre et Chambre du Temps d'irigine par les nouvelles versions du set de rencontre <i>Renouveau - Le Fléau d'Eztli</i>."
     },
     {
       "id": "replace_harbinger",
-      "text": "Replace the original Harbinger of Valusia enemy with the new Harbinger of Valusia <i>(The Sleeper Returns</i>."
+      "text": "Remplacez l'ennemi Hérault de Valusia d'origine par le nouveau Hérault de Valusia (<i>Le Retour du Dormeur</i>)."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Harbinger of Valusia enemy, the 3 Pit Viper cards from the <i>Serpents</i> encounter set, and the Chamber of Time location."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : l'ennemi Héraut de Valusia, les3 cartes Crotale du set de rencontre <i>Serpent</i> et le lieu Chambre du Temps."
     },
     {
       "id": "create_explore_deck",
-      "text": "Create the exploration deck. This is done by taking Sealed Passage, Mosaic Chamber, Tomb of the Ancients, Throne Room, Snake Pit, Ancient Hall, and Grand Chamber and shuffling them together. Do not include any encounter cards listed in the original setup instructions."
+      "text": "Constituez le deck Exploration en utilisant uniquement le PAssage Scellé, la Chambre à Mosaïque, la Tombe des Anciens, la Salle du Trône, la Fosse aux Serpents, le Couloir Antique et la Grande Chambre. N'incluez aucune des cartes Rencontre indiqué dans les instruction de mise en place d'origine."
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rule applies:",
+      "text": "Pour la durée de ce scénario, appliquez la règle supplémentaire suivante :",
       "bullets": [
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Forcé</b> - Après avoir terminé une exploration fructueuse : mélangez la carte du dessus du deck Rencontre dasns le deck Exploration."
         }
       ]
     }
@@ -35199,8 +35199,8 @@
 },
 {
   "id": "bad_blood",
-  "scenario_name": "Bad Blood",
-  "full_name": "Bad Blood",
+  "scenario_name": "Mauvais Sang",
+  "full_name": "Mauvais Sang",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -35410,7 +35410,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You’ve always known there was something…different…about you. From a young age, in your dreams, you saw another realm. Another life. One of magick and majesty, of conquest and persecution. The moment you found that strange, old key—the moment you recognized the filigree along its handle, the pattern of its teeth—you knew those dreams weren’t dreams at all, but memories. Memories of another life. Of a place called “Hyperborea.” And as the memories returned, the magic did, too.\nFor months you practiced in secret, delving into your memories and honing your powers. But lately, your dreams have turned dark and grisly. Your former self was not as caring or forviging as you. She was ruthless. Power-hungry. Terrible to behold. You’ve taken it upon yourself to wield these strange powers only to help others, and not to hurt them.\nBut you’re not the only one whose memories have started to return. Elspeth Baudin first visited the diner a few weeks ago. In the beginning, she was just a patron like any other. She ordered eggs, bacon and a black coffee, not unlike many of the other customers at Velma’s. But there was something in her eyes— some spark of recognition or curiosity—that made you wary of her.\nThen came the questions.\nFirst, she asked about the key you wore on a chain around your neck. You gave her your best smile and told her your usual lie—that it was a family heirloom, a harmless trinket with no worth but its sentimental value. But that didn’t deter her. She started prying about your life, about your family…about your dreams.\nElspeth was no normal patron. She wasn’t making small talk. She was looking for answers, just the same as you. So you did some digging of your own. But there were no records of Elspeth being a resident of Arkham, and the few people you found who knew of her spoke only in hushed, frightened voices, and gave you very little to work with.\nThen came a call from the Curiositie Shoppe in Northside. Elspeth had been searching for more artifacts like your own “hierloom,” even going so far as to utter the name Hyperborea. She is searching for something that can unlock more of her memories, just like you…but she is <i>not</i> like you. That sinister smirk of hers, the way her contacts trembled with fear at the mention of her name—you shudder to think what somebody with foul intentions could do with the sort of powers your memories hold…"
+      "text": "Vous avez toujours su que vous étiez… différente. Depuis votre plus jeune âge, vous rêvez d’un autre monde. D’une autre vie. Une vie de magie et de grandeur, de conquête et de persécution. Dès l’instant où vous avez découvert cette vieille clé, où vous avez reconnu les ciselures de l’anneau et le motif du panneton, vous avez compris qu’il ne s’agissait pas de rêves, mais de souvenirs. Les souvenirs d’une vie antérieure en un lieu appelé « Hyperborée ». Et à mesure que les souvenirs revenaient, la magie revenait également.\nPendant des mois, vous l’avez pratiquée en secret, plongeant dans vos souvenirs, renforçant vos pouvoirs. Mais dernièrement, vos rêves ont pris un tour plus sombre, plus macabre. Votre ancien « vous » était loin d’être aussi charitable et attentionnée que vous. Elle était rude, assoiffée de pouvoir, imposante. Vous avez toujours mis un point d’honneur à n’utiliser ces étranges pouvoirs que pour aider les autres, jamais pour les blesser.\nMais vous n’êtes pas la seule dont les souvenirs sont revenus. Elspeth Baudin a mis pour la première fois les pieds dans votre restaurant il y a quelques semaines. Au début, elle avait l’air d’une cliente comme une autre. Elle commandait des oeufs, du bacon et un expresso comme de nombreux autres habitués du Restaurant de Velma. Mais elle avait quelque chose dans les yeux — une étincelle de curiosité, comme si elle vous reconnaissait — qui a attiré votre attention.\nPuis vinrent les questions.\nD’abord, elle vous interrogea à propos de la clé que vous portiez autour du cou. Armée de votre plus beau sourire, vous lui racontâtes le mensonge habituel ; il s’agissait d’un héritage familial, une babiole sans valeur autre que sentimentale. Mais cela ne suffit pas à étancher sa curiosité. Elle commença à s’intéresser à votre vie, à votre famille… à vos rêves.\nElspeth n’était pas une simple cliente. Elle ne discutait pas par politesse. Elle cherchait des réponses, tout comme vous. Alors vous entamâtes quelques recherches de votre côté. Mais Elspeth n’était visiblement pas originaire d’Arkham et les rares personnes qui la connaissaient ne l’évoquaient qu’à mi-voix, apeurées. Et elles ne furent pas d’une grande aide.\nPuis vint un coup de fil de la Boutique de Curiosités du Quartier Nord. Elspeth y avait cherché d’autres artefacts comme votre « héritage ». Elle y avait même mentionné le nom d’Hyperborée ! Elle cherche de quoi débloquer ses souvenirs, tout comme vous. Mais elle n’est pas comme vous. Son sourire sinistre, la manière dont les gens qui la connaissent tremblent de peur à la simple évocation de son nom… Vous frissonnez à l’idée de ce que quelqu’un de mal intentionné pourrait faire avec le genre de pouvoirs que renferment vos souvenirs…"
     },
     {
       "id": "gather_encounter_sets",
@@ -35425,24 +35425,24 @@
         "nightgaunts",
         "pentagram"
       ],
-      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow) and the following locations: Northside, Downtown <i>(First Bank of Arkham)</i>, Easttown, Miskatonic University, and Rivertown. Do not gather the rest of the locations or the act, agenda, and scenario reference cards from that set."
+      "subtext": "Quand vous réunissez les cartes du set de rencontre <i>Les Masques de Minuit</i>, ne prenez que les 5 cartes Traîtrise (2x Fausse Piste et 3x Ombre Chasseresse) et les lieux suivants : Quartier Nord, Centre-Ville (<i>Première Banque d’Arkham</i>), Quartier Est, Université Miskatonic et Quartier de la Rivière. Ne prenez ni les autres lieux ni les cartes Acte, Intrigue ou Référence de Scénario de ce set."
     },
     {
       "id": "new_scenario_card",
-      "text": "Remove the original scenario reference card from the <i>Threads of Fate</i> encounter set from the game. Use the new scenario reference card provided in the downloadable <i>Bad Blood</i> encounter set."
+      "text": "Retirez de la partie la carte de référence du scénario <i>Les Fils du Destin</i>. Utilisez la nouvelle carte de référence du scénario <i>Mauvais Sang</i> fournie dans le set de rencontre téléchargeable du même nom."
     },
     {
       "id": "setup_locations",
-      "text": "Put Northside, Downtown, Easttown, Miskatonic University, Rivertown, Town Hall, Velma's Diner, and Curiositie Shoppe into play.",
+      "text": "Mettez en jeu chacun des lieux suivants : Quartier Nord, Centre-Ville, Quartier Est, Université Miskatonic, Quartier de la Rivière, Hôtel de Ville, Restaurant de Velma et Boutique de Curiosités.",
       "bullets": [
         {
-          "text": "Each investigator begins play in Velma's Diner."
+          "text": "Chaque investigateur commence la partie dans le Restaurant de Velma."
         }
       ]
     },
     {
       "id": "setup_threads_locations",
-      "text": "Search the reverse sides of the original act deck from the <i>Threads of Fate</i> encounter set for the following locations: Eztli Exhibit, Black Cave, Train Tracks, and Arkham Police Station. Choose one at random and put it into play, ignoring its <b>revelation</b> ability. Remove the remainder of the original act and agenda cards from the <i>Threads of Fate</i> encounter set from the game."
+      "text": "Cherchez les lieux suivants au verso des cartes Acte d’origine du set de rencontre <i>Les Fils du Destin</i> : Exposition sur les Eztli, Grotte Noire, Voies Ferrées et Poste de Police d’Arkham. Prenez-en un au hasard et mettez-le en jeu en ignorant sa capacité <b>Révélation</b>. Retirez de la partie les autres cartes Acte et Intrigue du set de rencontre Les Fils du Destin."
     },
     {
       "id": "location_layout",
@@ -35474,23 +35474,23 @@
           "blank"
         ]
       ],
-      "note": "<i><b>Note</b>: Based on the random location, one of the following will also be in play: Eztli Exhibit, Black Cave, Train Tracks, or Arkham Police Station."
+      "note": "<i><b>Note</b> : En fonction du lieu choisi au hasard, l'un des lieux suivants sera également en jeu : Exposition sur les Eztli, Grotte Noire, Voies Ferrées et Poste de Police d’Arkham."
     },
     {
       "id": "setup_act_deck",
-      "text": "Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>Bad Blood</i> encounter set."
+      "text": "Constituez les decks Acte et Intrigue en utilisant uniquement les nouvelles cartes Acte et Intrigue fournies dans le set de rencontre téléchargeable <i>Mauvais Sang</i>."
     },
     {
       "id": "remove_misc_cards",
-      "text": "Remove the Ichtaca <i>(The Forgotten Guardian)</i> story asset and the Expedition Journal story asset from the game."
+      "text": "Retirez de la partie les soutiens d’histoire Ichtaca (<i>La Gardienne Oubliée</i>) et Journal de l’Expédition."
     },
     {
       "id": "setup_elspeth",
-      "text": "Place the Elspeth Baudin enemy (provided in the downloadable <i>Bad Blood</i> encounter set) into play at the Curiositie Shoppe."
+      "text": "Mettez en jeu, dans la Boutique de Curiosités, l’ennemi Elspeth Baudin (fournie dans le set de rencontre téléchargeable <i>Mauvais Sang</i>)."
     },
     {
       "id": "setup_memories",
-      "text": "Place 1 resource on each location in play, as a “memory.”"
+      "text": "Placez 1 ressource sur chaque lieu en jeu, en tant que « souvenir »."
     },
     {
       "id": "encounter_deck",
@@ -35498,35 +35498,35 @@
     },
     {
       "id": "patrol_rule",
-      "title": "Patrol",
+      "title": "Patrouille",
       "type": "rule_reminder",
-      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "text": "Certains ennemis possèdent le mot-clé Patrouille. Lors de la phase des ennemis (à l’étape structurelle 3.2), chaque ennemi redressé et non-engagé ayant le mot-clé Patrouille se déplace vers un lieu connexe en direction du lieu désigné (entre parenthèses à côté du mot-clé Patrouille) par le chemin le plus court possible.",
       "bullets": [
         {
-          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+          "text": "Si plusieurs lieux peuvent correspondre au lieu désigné, l’investigateur principal a le droit de choisir en direction de quel lieu l’ennemi se déplace."
         },
         {
-          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+          "text": "Si un ennemi ayant le mot-clé Patrouille est censé se déplacer dans un lieu qui est bloqué par une capacité de carte, cet ennemi ne se déplace pas."
         }
       ]
     },
     {
       "id": "memories_rule",
-      "title": "Collecting Memories",
+      "title": "Récupérer des Souvenirs",
       "type": "rule_reminder",
-      "text": "In this scenario, Agnes and Elspeth are racing to collect memories.",
+      "text": "Dans ce scénario, Agnes et Elspeth s’affrontent afin de récupérer des souvenirs.",
       "bullets": [
         {
-          "text": "Agnes can collect memories using the [fast] ability on act 1a."
+          "text": "Agnes peut récupérer des souvenirs en utilisant la capacité [fast] de l’Acte 1a."
         }
       ]
     },
     {
       "id": "elspeth_memories_rule",
-      "text": "Elspeth collects memories automatically via the <b>Forced</b> abilities on agenda 1a; when the combined modifier of chaos tokens on her location is 6 or more (ignoring +/–).",
+      "text": "Elspeth récupère des souvenirs automatiquement via la capacité <b>Forcé</b> de l’Intrigue 1a, quand la somme des valeurs des pions Chaos sur son lieu est supérieure ou égale à 6 (sans tenir compte des signes +/–).",
       "bullets": [
         {
-          "text": "For the purposes of counting their modifiers only, treat these chaos tokens as having been revealed during a skill test."
+          "text": "Lorsque vous comptez les valeurs des pions Chaos (et uniquement pour ce propos), considérez-les comme ayant été révélés lors d’un test de compétence."
         }
       ]
     },
@@ -35537,14 +35537,14 @@
     },
     {
       "id": "agnes_bad_swap",
-      "text": "Agnes Baker must either upgrade Dark Memory to its advanced version, or downgrade the advanced version of Heirloom of Hyberborea to its original version",
+      "text": "Agnes Baker doit soit améliorer Sombre Souvenir en sa version avancée, soit rétrograder sa version avancée d’Héritage d’Hyperborée en sa version d’origine.",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "dark_memory",
-            "text": "Upgrade to advanced Dark Memory",
+            "text": "Améliorer Sombre Souvenir en sa version avancée",
             "effects": [
               {
                 "type": "remove_card",
@@ -35564,7 +35564,7 @@
           },
           {
             "id": "heirloom",
-            "text": "Downgrade from advanced Heirloom of Hyberborea",
+            "text": "Rétrograder Héritage d’Hyperborée en sa version d’origine.",
             "effects": [
               {
                 "type": "remove_card",
@@ -35587,14 +35587,14 @@
     },
     {
       "id": "agnes_good_swap",
-      "text": "Agnes Baker may either upgrade Heirloom of Hyberborea to its advanced version, or downgrade the advanced version of Dark Memory to its original version.",
+      "text": "Agnes Baker <b>a le droit</b> d’améliorer l’Héritage d’Hyperborée en sa version avancée ou à l’inverse de rétrograder sa version avancée de Sombre Souvenir en sa version d’origine.",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "heirloom",
-            "text": "Upgrade to advanced Heirloom of Hyberborea",
+            "text": "Améliorer Héritage d’Hyperborée en sa version avancée",
             "effects": [
               {
                 "type": "remove_card",
@@ -35614,7 +35614,7 @@
           },
           {
             "id": "dark_memory",
-            "text": "Downgrade advanced Dark Memory",
+            "text": "Rétrograder Sombre Souvenir en sa version d’origine.",
             "effects": [
               {
                 "type": "remove_card",
@@ -35641,11 +35641,11 @@
     },
     {
       "id": "ask_agnes_memories",
-      "text": "How many memories did Agnes Baker collect by the end of the scenario?",
+      "text": "Combien de souvenirs Agnes Baker a-t-elle récupérés ?",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Memories:",
+        "text": "Souvenirs :",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -35658,7 +35658,7 @@
     },
     {
       "id": "others_experience",
-      "text": "Each investigator besides Agnes Baker earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Chaque autre investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X de chaque carte dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -35679,7 +35679,7 @@
     },
     {
       "id": "agnes_experience_explanation",
-      "text": "Agnes Baker earns experience equal to either the combined Victory X value of each card in the victory display, or equal to the number of memories she had collected at the end of the game, whichever is higher."
+      "text": "Agnes Baker reçoit un total de points d’expérience qui est soit égal à la somme des valeurs de Victoire X de chaque carte dans la pile de victoire, soit égal au nombre de souvenirs qu’elle a récupérés (prenez le nombre le plus grand)."
     },
     {
       "id": "agnes_experience",
@@ -35734,7 +35734,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "It would be so simple. You could end her right now. Prevent her from menacing others with her powers...But then, would you be any different? You lower your hand, and the magic disperses into the cold air. “Why?” she asks, her voice cracked with pain. You shake your head and tell her that she is wrong. True power is the ability to make peace, not the ability to wage war. “Fool,” she barks, clambering to her feet. “You are a weakling, after all. And you will regret letting me live.” You watch her amble off with only fragments of her former life in her head. Her powers are considerably drained, but she still poses a problem. Perhaps you should have dealt with her, as she said. Still, you breathe a sigh of relief. You don’t want this power to change who you are. You won’t let yourself become like her. No matter what. ",
+      "text": "Ce serait si simple. Vous pourriez en finir maintenant. L’empêcher de menacer d’autres personnes avec ses pouvoirs… Mais en ce cas, en quoi seriez-vous différentes ? Vous abaissez votre main et la magie se dissipe dans l’air glacé. « Pourquoi ? » demande-t-elle, la voix éraillée de douleur. Vous secouez la tête et lui répondez qu’elle a tort. Le véritable pouvoir est d’apporter la paix, pas la guerre. « Idiote ! » aboie-t-elle en se redressant tant bien que mal. « Tu es trop faible, et tu finiras par regretter de m’avoir laissé la vie sauve. » Vous la regardez partir en boitant, délestée de la majorité des souvenirs de sa vie antérieure. Ses pouvoirs ont été considérablement affaiblis, mais elle reste une menace. Peut-être auriez-vous dû vous occuper d’elle comme elle le suggérait. Vous poussez malgré tout un soupir de soulagement. Vous refusez que ces pouvoirs changent votre nature. Vous ne deviendrez pas comme elle. Quel qu’en soit le prix.",
       "steps": [
         "ask_agnes_memories",
         "others_experience",
@@ -35747,7 +35747,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "Elspeth has you at her mercy. She raises her hand, her magic threatening to tear you apart. She smirks. You close your eyes and brace yourself...but no killing blow comes. Instead, she yanks you to your feet and wipes dust off your apron. “Come now,” she purrs with a devilish grin. “You are no whimpering animal. Don’t you remember what you truly are? What we truly are?” Then, without any further punishment, she departs, leaving you with only fragments of your former life.",
+      "text": "Vous êtes à la merci d’Elspeth. Elle lève la main, sa puissance magique sur le point de vous détruire. Elle esquisse un sourire. Vous fermez les yeux et vous recroquevillez… mais le coup fatal ne vient pas. À la place, elle vous tend la main et vous aide à vous relever. « Viens maintenant », vous lance-t-elle un sourire démoniaque aux lèvres. « Tu n’es pas un animal apeuré. Ne te rappelles-tu pas qui tu es vraiment ? Qui nous sommes vraiment ? » Puis elle s’en va sans plus de cérémonie, vous laissant avec à peine quelques fragments de votre ancienne vie.",
       "steps": [
         "ask_agnes_memories",
         "others_experience",
@@ -35761,8 +35761,8 @@
 },
 {
   "id": "blob_that_ate_everything",
-  "scenario_name": "The Blob That Ate Everything",
-  "full_name": "The Blob That Ate Everything",
+  "scenario_name": "Le Dévoreur de Toute Chose",
+  "full_name": "Le Dévoreur de Toute Chose",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -35892,12 +35892,12 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<i>Incident Report: 8L-08</i>\n<i>Thursday, 07/05/1928</i>\n<i>Blackwater, MA</i>\n\n<i>0312 hours - Impact event just outside of Blackwater. Intercepted police call, agents sent to investigate. Interviewed local farmer, Ron Graham; claims meteor was several feet wide, greenish hue. Crater roughly 100 yards in diameter. Radiation detected in outlying area. Recommend immediate quarantine and further observation by research team. Situation under control.</i>"
+      "text": "<i>Rapport d'incident : 8L-08</i>\n<i>Jeudi 5 juillet 1928</i>\n<i>Blackwater, Massachusetts</i>\n\n<i>03:12 - Impact survenu dasn la périphérie de Blackwater. Appel de police intercepté, agents envoyés pour enquêter. Fermier local questionné, Ron Graham ; a déclaré que le météore était large de plusieurs pieds et de couleur verdâtre. Diamètre du cratère : environ 90m. Radiations détectées aux alentours. Quarantaine immédiate requise en attendant de plus amples informations de l'équipe de recherche. Situation sous contrôle.</i>"
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "It wasn't under control.\nThat was the report the G-men took when they first arrived. For the next few days, the town of Blackwater was on lockdown. The impact was all that was talked about in the papers, but not much was known aside from the enormous crater and the effect it had on the countryside. Nobody was allowed to leave the town, and only those approved by the shadow government agency was allowed to enter. Those unfortunate few included high-ranking government agent, and a team of researchers from the nearby Miskatonic University, who were summoned to investigate the meteor itself. For the rest of the town's inhabitants, it was a strange occurence, nothing more… that is, until the meteor <i>hatched</i>.\nI saw it with my own eyes. When the anomaly emerged, the first thing it did was devour the team of researchers who have been sent to collect and study samples from the meteor. The next thing it did was devour their lab equipment. Then Ron Graham's tractor. Then his house, in its entirety. It continued to grow and spread, devouring everything in its path. I barely escaped with my life.\nWhen the army arrived, they thought they could kill it with bullets and shells. Everything they threw at the creature was devoured, one round after the next. Then it split into hundreds of smaller pieces of itself, and the army was quickly overwhelmed. While the battle raged on, myself and others back in town saw lights and shapes in the sky above. Something was up there, waiting. Biding time.\nThe quarantine still holds, and we're stuck in the middle of it. It won't be long before the anomaly has grown large enough to devour everything in Blackwater. And if that happens, who could possibly stop its rampage?"
+      "text": "Mais elle n'était pas sous contrôle.\nVoici le rapport rédigé par les agents du gouvernement à leur arrivée. Les jours suivants, la ville de Blackwater fut mise en quarantaine absolue. L'incident était sur toutes les lèvres et à la une de tous les journaux, mais on ne savait presque rien de dehors de l'énorme cratère et de ses effets sur la campagne environnante. Personne n\"était autorisé à quitter la ville, et seules les personnes accréditées par cette obscure agence gouvernementale pouvaient y entrer. Convoqués pour venir étudier le météore, de hauts fonctionnaires du gouvernement et des cercheurs de l'université voisine de Miskatonic constituaient la majeure partie de ces quelques infortunés. Pour les autres occupants de la ville, ce n'était qu'un événement inhabituel, rien de plus… jusqu'à ce que le météore <i>éclose</i>.\nJe l'ai vu de mes propres yeux. Quand l'anomalie en sortit, la première chose qu'elle fit fut de dévorer l'équipe de recherche qui avait été envoyée pour récolter et étudier des échantillons du météore. La suivante fut d'engloutir l'équipement de laboratoire. Puis le tracteur de Ron Graham. Puis sa maison tout entière. La chose continua à grossir et à se répandre en dévorant tout sur son chemin. Je n'en réchappai que de justesse.\nLes militaires survinrent, persuadés de pouvoir la tuer avec des balles ou des obus. Mais tout ce qu'ils tiraient sur la créature était immédiatement dévoré. Ensuite, elle se divisa en centaines de répliques plus petites d'elle-même et l'armée fut vite submergée. Pendant que les combats faisaient rage, moi-même et d'autres habitants de la ville aperçûmes des lumières et des formes dans le ciel. Quelque chose était là, en train d'attendre. Patiemment.\nLa quarantaine est toujours en vigueur et nous sommes coincés au milieu. D'ici peu de temps, l'anomalie aura suffisamment grandi pour recouvrir tout Blackwater. Et si cela se produit, comment sera-t-il possible d'arrêter ce carnage ?</i>"
     },
     {
       "id": "gather_encounter_sets",
@@ -35918,33 +35918,33 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Search <i>The Blob That Ate Everything</i> encounter set for the following encounter cards and set them aside out of play: Vulnerable Heart, 1 copy of Grasping Ooze, 1 copy of Cubic Ooze, and both copies of Oozewraith."
+      "text": "Cherchez les cartes suivantes dans le set de rencontre <i>Le dévoreur de Toute Chose</i> e mettez-les de côté, hors jeu : Cœur Vulnérable, 1 exemplaire de Mucus Agrippant, 1 exemplaire de Mucus Cubique et les deux exemplaire du Mucuspectre."
     },
     {
       "id": "setup_blob",
-      "text": "Put the Subject 8L-08 enemy into play next to the agenda deck. It is not at any location."
+      "text": "Mettez en jeu l'ennemi Sujet 8L-08 à côté du deck Intrigue. Il n'est dans aucun lieu."
     },
     {
       "id": "setup_locations",
-      "text": "Set up the locations acccording to the guidelines below.",
+      "text": "Mettez en jeu les lieux en suivant le guide ci-dessous.",
       "bullets": [
         {
-          "text": "Shuffle the Quarantine Zone locations together and remove 1 of them from the game."
+          "text": "Mélangez les lieux Zone de Quarantaine ensemble et retirez-en 1 de la partie."
         },
         {
-          "text": "Put The Crater into play."
+          "text": "Mettez en jeu Le Cratère."
         },
         {
-          "text": "Take the Research Site, the Temporary HQ, and 2 random Quarantine Zone locations. Shuffle them and place each of them connected to the Crater, in a random order."
+          "text": "Prenez le Site de Recherche, le QG Temporaire et 2 lieux Zone de Quarantaine au Hazard. Mélangez-les ensemble et placez chacun d'entre eux connexe au Cratère, de manière aléatoire."
         },
         {
-          "text": "Take the Fungus Mound and 3 random Qurantine Zone locations. Shuffle them and place each of them in 1 of the 4 positions in the outer ring, farthest from the Crater."
+          "text": "Prenez la Butte Fongique et 3 lieux Zone de Quarantaine au hasard. Mélangez-les ensemble et placez chacun d'entre eux dans 1 des 4 emplacements de l'anneau extérieur les plus éloingnés du Cratère."
         },
         {
-          "text": "Put the remaining Quarantine Zone locations into play."
+          "text": "Mettez en jeu les lieux Zone de Quarantaine restants."
         },
         {
-          "text": "Each investigator begins play at the Temporary HQ."
+          "text": "Chaque investigateur commence la partie dans le QG Temporaire."
         }
       ]
     },
@@ -35952,7 +35952,7 @@
       "id": "location_layout",
       "type": "location_setup",
       "text": "Suggestion de Placement des Lieux",
-      "note": "<i>Note: The positions of the Research Site, Temporary HQ, and Fungus Mound may differ from this diagram.</i>",
+      "note": "<i>Note : les emplacements du Site de Recherche, du QG Temporaire etde la Butte Fongique peuvent différer de ce schéma.</i>",
       "horizontal": "normal",
       "vertical": "normal",
       "locations": [
@@ -36030,12 +36030,12 @@
     {
       "id": "one_countermeasure",
       "bullet_type": "small",
-      "text": "Place 1 resource on the scenario reference card as a countermeasure."
+      "text": "Placez 1 ressource sur la carte de référence du scénario en tant que contre-mesure."
     },
     {
       "id": "two_countermeasure",
       "bullet_type": "small",
-      "text": "Place 2 resources on the scenario reference card as a countermeasures."
+      "text": "Placez 2 ressources sur la carte de référence du scénario en tant que contre-mesure."
     },
     {
       "id": "encounter_deck",
@@ -36044,37 +36044,37 @@
     {
       "id": "devour_rule",
       "type": "rule_reminder",
-      "title": "Devour",
-      "text": "During this scenario, Subject 8L-08 can \"devour\" a variety of things.",
+      "title": "Dévorer",
+      "text": "Lors de ce scénario, le sujet 8L-08 peut dévorer toute sorte de choses. Si vous le jouez dans le cadre d'une campagne, ces éléments redeviennent disponibles au début du prochain scénario.",
       "bullets": [
         {
-          "text": "If a card is devoured, it is placed beneath Subject 8L-08. Cards beneath Subject 8L-08 are considered out of play. Each devoured card is returned to its owner's deck at the end of the game. If an investigator is devoured, he or she is killed."
+          "text": "Si une carte est dévorée, elle est placée sous le sujet 8L-08. Les cartes sous le sujet 8L- 08 sont considérées comme étant hors jeu. Chaque carte dévorée est renvoyée dans le deck de son propriétaire à la fin de la partie. Si un investigateur et dévoré il est tué."
         },
         {
-          "text": "If a token is devoured, it is placed in the token pool."
+          "text": "Si un pion est dévoré, il est placé dans la réserve de pions."
         },
         {
-          "text": "When choosing a location to be devoured, you cannot choose to devour a location if it causes another location to have no valid connections."
+          "text": "Quand vous choisissez un lieu pour qu'il soit dévoré, vous ne pouvez pas choisir un lieu qui ferait en sorte qu'un autre lieu se retrouve sans connexion visa valide."
         },
         {
-          "text": "Subject 8L-08 can also devour certain aspect of reality or metaphysical objects. If it does so, you will be instructed of the consequences."
+          "text": "Le sujet 8L-08 peut également dévorer différents aspects de la réalité et objets métaphysiques. Dans ce cas vous serez informé des conséquences."
         }
       ]
     },
     {
       "id": "countermeasures_rule",
       "type": "rule_reminder",
-      "title": "Countermeasures",
-      "text": "Countermeasures represent supplies, research, or military equipment which may aid the investigators in their survival. Countermeasures may be spent via certain card abilities in order to trigger powerful effects. However, gaining new countermeasures is rare, so be careful how you spend them!"
+      "title": "Contre-Mesures",
+      "text": "Les contre-mesures représentent les fournitures, recherches ou équipements militaires qui peuvent aider les investigateurs à survivre. Les contre-mesure peuvent être dépensées via certaines capacotés de carte afin de déclancher de puissants effets. Cependant, il n'est pas facile d'obtenir de nouvelle contre-mesures alors faites attention à la manière dont vous les dépensez !"
     },
     {
       "id": "blob_x_rule",
       "type": "rule_reminder",
       "title": "Blob X",
-      "text": "Many of the enemies in this scenario are pieces of the anomaly which have broken apart and have their own sentience. Defeating these enemies damages the anomaly. As an enemy with <b>Blox X</b> is defeated, deal X damage to Subject 8L-08.",
+      "text": "De nombreux ennemis de ce scénario sont des morceaux issus de l'anomalie et qui agissent de leur propre chef. Vaincre ces ennemis endommage l'anomalie. Quand un ennemi avec <b>Blob X</b> est vaincu, infligez X dégats au Sujet 8L-08.",
       "bullets": [
         {
-          "text": "Enemies with <b>Blox X</b> are not placed in the victory display when they are defeated unless they also have <b>Victory X</b>."
+          "text": "Les ennemis avec <b>Blob X</b> ne sont pas placés dans la pile de victoire quand ils sont vaincus, sauf s'ils ont également <b>Victoire X</b>."
         }
       ]
     },
@@ -36085,7 +36085,7 @@
       "input": {
         "type": "counter",
         "text": "Pile de victoire :",
-        "confirm_text": "Each investigator earns 3 bonus experience as they have saved the fabric of existence.",
+        "confirm_text": "Chaque investigateur reçoit 3 points d'expérience bonus pour avoir sauvé l'existence même de l'univers.",
         "effects": [
           {
             "type": "earn_xp",
@@ -36102,24 +36102,24 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "blob_devoured_universe",
-          "text": "Subject 8L-08 devoured the entire universe."
+          "text": "le Sujet 8L-08 a dévoré l'univers tout entier."
         }
       ]
     },
     {
       "id": "reality_acid",
       "type": "table",
-      "title": "Reality Acid",
+      "title": "Acide de Réalité",
       "bullet_type": "none",
-      "text": "<smallcaps>Subject 8L-08 opens its maw, and devours…</smallcaps>\n<i>(If the combination of chaos tokens revealed is not listed, or if the listed aspect cannot be devoured, reveal two new chaos tokens and consult the chart again.)</i> ",
+      "text": "<smallcaps>Le Sujet 8L-08 ouvre grand ses mâchoires ett dévore…</smallcaps>\n<i>(Si la combinaison des poins Chaos révélés n'apparait pas dans la liste ou si l'aspect mentionné ne peut être dévoré, révélez deux nouveaux pions Chaos et consultez à nouveau la liste.)</i>",
       "header": {
         "cells": [
           {
-            "text": "<b>Chaos Tokens</b>\n<i>(in any order)</i>",
+            "text": "<b>Pions Chaos</b>\n<i>(peu importe l'ordre)</i>",
             "size": 2
           },
           {
-            "text": "<center><b>Aspect of Reality Devoured</b></center>",
+            "text": "<center>Aspect de la Réalité Dévoré</center>",
             "size": 4
           }
         ]
@@ -36136,7 +36136,7 @@
               "size": 1
             },
             {
-              "text": "…the non-[[Elite]] enemy nearest to you.",
+              "text": "… l'ennemi non-[[Élite]] le plus proche de vous.",
               "size": 4
             }
           ]
@@ -36152,7 +36152,7 @@
               "size": 1
             },
             {
-              "text": "…a treachery at your location.",
+              "text": "… une traîtrise dans votre lieu.",
               "size": 4
             }
           ]
@@ -36164,11 +36164,11 @@
               "size": 1
             },
             {
-              "text": "‑1 to ‑8",
+              "text": "-1 à -8",
               "size": 1
             },
             {
-              "text": "…1 horror and 1 damage from your investigator card.",
+              "text": "… 1 horreur et 1 dégat sur votre carte Investigateur.",
               "size": 4
             }
           ]
@@ -36184,7 +36184,7 @@
               "size": 1
             },
             {
-              "text": "…your greatest flaw. Search your deck for any 1 weakness card. It is devoured.",
+              "text": "… votre point faible. Cherchez 1 carte Faiblesse dans votre deck. Elle est dévorée.",
               "size": 4
             }
           ]
@@ -36200,7 +36200,7 @@
               "size": 1
             },
             {
-              "text": "…the [elder_sign] token just revealed.",
+              "text": "… le pion [elder_sign] que vous venez de révéler.",
               "size": 4
             }
           ]
@@ -36216,7 +36216,7 @@
               "size": 1
             },
             {
-              "text": "…your caution. Resolve Reality Acid three more times, ignoring this result.",
+              "text": "… votre prudence. Résolvez Acide de Réalité trois fois de plus en ignorant ce résultat.",
               "size": 4
             }
           ]
@@ -36232,7 +36232,7 @@
               "size": 1
             },
             {
-              "text": "…your ignorance. Discover 1 clue at your location.",
+              "text": "… votre ignorance. Découvrez 1 indice dans votre lieu.",
               "size": 4
             }
           ]
@@ -36244,11 +36244,11 @@
               "size": 1
             },
             {
-              "text": "‑1 to ‑8",
+              "text": "-1 à -8",
               "size": 1
             },
             {
-              "text": "…friendships. Until the end of the round, investigators cannot commit cards to each others' skill tests.",
+              "text": "… votre camaraderie. Jusqu'à la fin du round, les investigateurs ne peuvent pas attribuer de cartes aux tests de compétence des autres investigateurs.",
               "size": 4
             }
           ]
@@ -36264,7 +36264,7 @@
               "size": 1
             },
             {
-              "text": "…your player reference card.",
+              "text": "… votre carte de Référence du Joueur.",
               "size": 4
             }
           ]
@@ -36280,7 +36280,7 @@
               "size": 1
             },
             {
-              "text": "…1 [per_investigator] clues from your location.",
+              "text": "… 1 [per_investigator] indice de votre lieu.",
               "size": 4
             }
           ]
@@ -36296,7 +36296,7 @@
               "size": 1
             },
             {
-              "text": "…your voice. Until the end of the round, you cannot speak or make noise.",
+              "text": "… votre voix. Jusqu'à la fin du round, vous ne pouvez ni parler ni faire de bruit.",
               "size": 4
             }
           ]
@@ -36312,7 +36312,7 @@
               "size": 1
             },
             {
-              "text": "…your group's food and drinks. It cannot be consumed until your group has dealt at least 3 damage to Subject 8L-08.",
+              "text": "… les provisions de votre groupe. Vous ne pouvez consommer ni nourriture ni boisson jusqu'à ce que votre groupe ait infligé au moins 3 dégâts au Sujet 8L-08.",
               "size": 4
             }
           ]
@@ -36328,7 +36328,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of language. Until the end of the investigation phase, you can only speak in gibberish.",
+              "text": "… le concept de langage. Jusqu'à la fin de la phase d'Investigation, vous n'avez le droit de parler qu'en charabia.",
               "size": 4
             }
           ]
@@ -36344,7 +36344,7 @@
               "size": 1
             },
             {
-              "text": "…light. Until the end of the round, investigators must play with all nearby light sources turned off or covered (except for flashlights).",
+              "text": "… la lumière. Jusqu'à la fin du round, les investigateur doivent jouer avec toutes les sources de lumière à proximité éteintes ou couvertes (sauf les lampes-torches).",
               "size": 4
             }
           ]
@@ -36360,7 +36360,7 @@
               "size": 1
             },
             {
-              "text": "…itself, and then regurgitates itself. Deal 1 damage to Subject 8L-08.",
+              "text": "… lui-même, puis il s'auto-régurgite. Infligez 1 dégât au Sujet 8L-08.",
               "size": 4
             }
           ]
@@ -36376,7 +36376,7 @@
               "size": 1
             },
             {
-              "text": "…all damage from each [[Manifold]] enemy.",
+              "text": "… tous les dégâts sur tous les ennemis [[Répliques]].",
               "size": 4
             }
           ]
@@ -36388,11 +36388,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 à -8",
               "size": 1
             },
             {
-              "text": "…all of the supplies, ammo, charges, and secrets among assets you control.",
+              "text": "… toutes les provisions, munitions, charges et secrets sur les soutiens que vous contrôlez.",
               "size": 4
             }
           ]
@@ -36408,7 +36408,7 @@
               "size": 1
             },
             {
-              "text": "…your hope. Until the end of the next mythos phase, set your base [willpower] to 0.",
+              "text": "… votre espoir. Jusqu'à la fin de la prochaine phase du Mythe, fixez votre [willpower] de base à 0.",
               "size": 4
             }
           ]
@@ -36424,7 +36424,7 @@
               "size": 1
             },
             {
-              "text": "…your curiosity. Until the end of the next mythos phase, set your base [intellect] to 0.",
+              "text": "… votre curiosité. Jusqu'à la fin de la prochaine phase du Mythe, fixez votre [intellect] de base à 0.",
               "size": 4
             }
           ]
@@ -36440,7 +36440,7 @@
               "size": 1
             },
             {
-              "text": "…your precision. Until the end of the next mythos phase, set your base [combat] to 0.",
+              "text": "… précision. Jusqu'à la fin de la prochaine phase du Mythe, fixez votre [combat] de base à 0.",
               "size": 4
             }
           ]
@@ -36456,7 +36456,7 @@
               "size": 1
             },
             {
-              "text": "…your attention. Until the end of the next mythos phase, set your base [agility] to 0.",
+              "text": "… attention. Jusqu'à la fin de la prochaine phase du Mythe, fixez votre [agility] de base à 0.",
               "size": 4
             }
           ]
@@ -36472,7 +36472,7 @@
               "size": 1
             },
             {
-              "text": "…your versatility. Until the end of the round, you cannot play or use cards that do not match your investigator's class.",
+              "text": "… votre versatilité. Jusqu'à la fin du round, vous ne pouvez ni jouer ni utiliser de cartes qui ne correspondet pas à la classe de votre investigateur.",
               "size": 4
             }
           ]
@@ -36488,7 +36488,7 @@
               "size": 1
             },
             {
-              "text": "…your cell phone.",
+              "text": "… votre téléphone portable.",
               "size": 4
             }
           ]
@@ -36504,7 +36504,7 @@
               "size": 1
             },
             {
-              "text": "…the chaos bag. Remove all tokens from it and place them in a different container.",
+              "text": "… la reserve du Chaos. Retirez-en tous les pions et placez-les dans un récipient différent.",
               "size": 4
             }
           ]
@@ -36516,11 +36516,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 à -8",
               "size": 1
             },
             {
-              "text": "…level 1 - 5 cards of your choice with at least 5 total levels from among your deck, discard pile, hand, and play area.",
+              "text": "… les cartes de niveau 1 à 5 de votre choix pour un total d'au moins 5 niveaux parmis les cartes de votre deck, pile de défausse, main et zone de jeu.",
               "size": 4
             }
           ]
@@ -36536,7 +36536,7 @@
               "size": 1
             },
             {
-              "text": "…the top three cards of your deck.",
+              "text": "… les 3 cartes du dessus de votre deck.",
               "size": 4
             }
           ]
@@ -36552,7 +36552,7 @@
               "size": 1
             },
             {
-              "text": "…the top 3 cards of your discard pile.",
+              "text": "… les 3 cartes du dessus de votre pile de défausse.",
               "size": 4
             }
           ]
@@ -36568,7 +36568,7 @@
               "size": 1
             },
             {
-              "text": "…the deckbox you store your deck in.",
+              "text": "… la boite dans laquelle vous rangez votre deck.",
               "size": 4
             }
           ]
@@ -36584,7 +36584,7 @@
               "size": 1
             },
             {
-              "text": "…your investigator's card sleeve.",
+              "text": "… le protège-carte de votre carte Investigateur",
               "size": 4
             }
           ]
@@ -36596,11 +36596,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 à -8",
               "size": 1
             },
             {
-              "text": "…your party's teamwork. Each investigator loses 1 action.",
+              "text": "… votre travail d'équipe. Chaque investigateur perd 1 action.",
               "size": 4
             }
           ]
@@ -36616,7 +36616,7 @@
               "size": 1
             },
             {
-              "text": "…a [[Talent]], [[Connection]], or [[Condition]] asset you control.",
+              "text": "… un soutien [[Talent]], [[Relation]] ou [[État]] que vous contrôlez.",
               "size": 4
             }
           ]
@@ -36628,11 +36628,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 à -8",
               "size": 1
             },
             {
-              "text": "…your sense of time. Until you advance the agenda, investigators cannot use time-keeping devices, ask about the time, or trigger abilities on any card with \"time\", \"watch\", or \"chrono\" in its title.",
+              "text": "… votre perception du temps. Jusqu'à ce que vous fassiez avancer l'intrigue, les investigateurs ne peuvent ni utiliser un appareil servant à mesurer le temps, ni demander l'heure, ni déclencher des capacités sur des cartes ayant « temps », « temporel », « montre », « chrono » ou « sursis » dans leur titre.",
               "size": 4
             }
           ]
@@ -36640,7 +36640,7 @@
         {
           "cells": [
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 à -8",
               "size": 1
             },
             {
@@ -36648,7 +36648,7 @@
               "size": 1
             },
             {
-              "text": "…your investigator mini card. (Use something else to mark your location.)",
+              "text": "… la mini-carte de votre investigateur. (Utilisez autre chose pour indiquer votre lieu.)",
               "size": 4
             }
           ]
@@ -36656,7 +36656,7 @@
         {
           "cells": [
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 à -8",
               "size": 1
             },
             {
@@ -36664,7 +36664,7 @@
               "size": 1
             },
             {
-              "text": "…your house. Search the collection for Your House (Core #124); it is devoured.",
+              "text": "… votre maison. Cherchez Votre Maison (Base #124) dans la collection ; elle est dévorée.",
               "size": 4
             }
           ]
@@ -36672,15 +36672,15 @@
         {
           "cells": [
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 à -8",
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 à -8",
               "size": 1
             },
             {
-              "text": "…your soul. Record in your Campaign Log that <i>you have no soul.</i>",
+              "text": "… votre âme. Dans votre Carnet de Campagne, indiquez que <i>vous n'avez pas d'âme</i>.",
               "size": 4
             }
           ]
@@ -36696,7 +36696,7 @@
               "size": 1
             },
             {
-              "text": "…the highest-cost [[Ally]] asset you control.",
+              "text": "… le soutien [[Allié]] que vous contrôlez avec le coût le plus élevé.",
               "size": 4
             }
           ]
@@ -36712,7 +36712,7 @@
               "size": 1
             },
             {
-              "text": "…all event cards in your hand.",
+              "text": "… toutes les cartes Événementdasn votre main.",
               "size": 4
             }
           ]
@@ -36728,7 +36728,7 @@
               "size": 1
             },
             {
-              "text": "…all of your resources.",
+              "text": "… toutes vos resources.",
               "size": 4
             }
           ]
@@ -36744,7 +36744,7 @@
               "size": 1
             },
             {
-              "text": "…all skill cards in your hand.",
+              "text": "… toutes les cartes de Compétence dans votre main.",
               "size": 4
             }
           ]
@@ -36760,7 +36760,7 @@
               "size": 1
             },
             {
-              "text": "…all cards that have been exiled.",
+              "text": "… toutes les cartes qui ont été bannies.",
               "size": 4
             }
           ]
@@ -36776,7 +36776,7 @@
               "size": 1
             },
             {
-              "text": "…your identity. Until the end of the round, treat your investigator's text box as if it were blank (including [[Traits]]).",
+              "text": "… votre identité. Jusqu'à la fin du round, votre investigateur perd le texte imprimé dans sa boite de texte (y compris les [[Trais]]).",
               "size": 4
             }
           ]
@@ -36792,7 +36792,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of speed. Until the end of the round, investigators cannot gain or take additional actions.",
+              "text": "… le concept de vitesse. Jusqu'à la fin du round, les investigateur ne peuvent ni gagner ni effectuer d'action supplémentaires.",
               "size": 4
             }
           ]
@@ -36808,7 +36808,7 @@
               "size": 1
             },
             {
-              "text": "…your sense of urgency. Until the end of the round, you cannot move.",
+              "text": "… votre sens de l'urgence. Jusqu'à la fin du round, vous ne pouvez pas vous déplacer.",
               "size": 4
             }
           ]
@@ -36824,7 +36824,7 @@
               "size": 1
             },
             {
-              "text": "…your potential. Until the end of the round, your skills cannot be increased.",
+              "text": "… vitre potentiel. Jusqu'à la fin du round, vos compétences ne peuvent pas être augmentées.",
               "size": 4
             }
           ]
@@ -36840,7 +36840,7 @@
               "size": 1
             },
             {
-              "text": "…your patience. Place 1 doom on the current agenda.",
+              "text": "… votre patience. Placez 1 fatalité sur l'intrigue en cours.",
               "size": 4
             }
           ]
@@ -36856,7 +36856,7 @@
               "size": 1
             },
             {
-              "text": "…all [[Spell]] and [[Ritual]] assets you control.",
+              "text": "… tous les soutiens [[Sort]] et [[Rituel]] que vous contrôlez.",
               "size": 4
             }
           ]
@@ -36872,7 +36872,7 @@
               "size": 1
             },
             {
-              "text": "…all [[Item]] assets you control.",
+              "text": "… tous les soutiens [[Objet]] que vous contrôlez.",
               "size": 4
             }
           ]
@@ -36888,7 +36888,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of a \"discard pile.\" Until the end of the next mythos phase, each card that would be placed in any investigator's discard pile is instead devoured.",
+              "text": "… le concept de « pile de défausse ». Jusqu'à la fin de la prochaine phase du Mythe, chaque carte qui devrait être placée dans la pile de défausse d'un investigateur est dévorée à la place.",
               "size": 4
             }
           ]
@@ -36904,7 +36904,7 @@
               "size": 1
             },
             {
-              "text": "…one of your hands. For the remainder of the game, you have 1 fewer hand slot.",
+              "text": "… l'une de vos mains. Pour le reste de la partie, vous disposez de 1 emplacement de main en moins.",
               "size": 4
             }
           ]
@@ -36920,7 +36920,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of success. The next time an investigator would succeed at a test by 2 or more, that investigator instead automatically fails.",
+              "text": "… le concept de réussite. La prochaine fois qu'un investigateur devrait réussir un test de compétence avec une différence de 2 ou plus, cet investigateur échoue automatiquement à la place.",
               "size": 4
             }
           ]
@@ -36936,7 +36936,7 @@
               "size": 1
             },
             {
-              "text": "…1 countermeasure.",
+              "text": "… 1 contre-mesure.",
               "size": 4
             }
           ]
@@ -36948,11 +36948,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 à -8",
               "size": 1
             },
             {
-              "text": "…the concept of easiness. Until lthe end of the game, flip the scenario reference card to its Hard/Expert side.",
+              "text": "… lecconcept de facilité. Jusqu'à la fin de la partie, retournez la carte de Référence du Scénario pour afficher sa face Difficile / Expert.",
               "size": 4
             }
           ]
@@ -36966,7 +36966,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "blob_contained",
-          "text": "the anomaly was contained."
+          "text": "l'anomalie a été contenue."
         }
       ]
     },
@@ -36983,7 +36983,7 @@
     },
     {
       "id": "earn_assets",
-      "text": "For each of the following assets that are in play, any one investigator may choose to add that asset to their deck.",
+      "text": "Pourchacun des soutiens suivants en jeu, n'importe quel investigateur à le droit de choisir d'ajouter ce soutien à son deck.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -37000,7 +37000,7 @@
         "choices": [
           {
             "id": "in_play",
-            "text": "In play",
+            "text": "En jeu",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -37033,7 +37033,7 @@
     },
     {
       "id": "earn_asset_85029",
-      "text": "Any one investigator may choose to add Universal Solvent to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur à le droit de choisir d'ajouter Solvant Universel à son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -37062,7 +37062,7 @@
     },
     {
       "id": "earn_asset_85030",
-      "text": "Any one investigator may choose to add Pet Oozeling to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur à le droit de choisir d'ajouter Mucosité Apprivoisée à son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -37091,7 +37091,7 @@
     },
     {
       "id": "earn_asset_85031",
-      "text": "Any one investigator may choose to add Mi-Go Weapon to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur à le droit de choisir d'ajouter Arme Mi-Go à son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -37120,7 +37120,7 @@
     },
     {
       "id": "earn_asset_85032",
-      "text": "Any one investigator may choose to add Lt. Wilson Stewart to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur à le droit de choisir d'ajouter Lt Wilson Stewart à son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -37151,7 +37151,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "Nothing is left of Blackwater now. The quarantine is broken. The anomaly cannot be contained. First it will spread throughout the countryside, devouring all in its path. Soon all of Massachusetts will be devoured. Then the entirety of New England. It has burrowed beneath the ground and cannot be stopped even by the oceans. No continent is safe. Every living organism on the planet will be devoured. And then, so too will the Earth.\n…but that won't be the end.\nNot even the void of space can stop the creature's growth. In time, it will continue to expand and devour until there is nothing left but the cold emptiness of space and the blob that ate everything.",
+      "text": "Il ne reste plus rien de Blackwater. La quarantaine n'est pas parvenue à contenir l'anomalie. Elle se répendra d'abord dans la campagne environnante en dévorant tout sur son chemin. Bientôt, tout le Massachussetts sera consumé. Puis le reste de la Nouvelle Angleterre. Elle s'est enracinée profondément dans le sol et même les océans ne peuvent l'arrêter. Aucun continent n'est a l'abri. Chaque organisme vivant sur la planète sera dévoré. Pour finir, ce sera au tour de la Terre elle-même.\n… Mais ce ne sera pas terminé.\nMême le vide de l'espace ne peut contenir la croissance de la créature. Avec le temps, elle va continuer à grossir et à dévorer jusqu'à ce qu'il ne reste plus rien d'autre que le néant glacial de l'espace et le dévoreur de toute chose.",
       "steps": [
         "blob_devoured_universe",
         "lose_campaign"
@@ -37160,7 +37160,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "<i>Incident Report: 8L-08, continued</i>\n<i>Wednesday, 07/11/1928</i>\n<i>Blackwater, MA</i>\n<i>0742 hours - Contact made with ████████████ subject. Subject ███████████ meteor; researchers are unsure whether meteor served as an avenue for ██████████ or as some kind of ██████████████. Initiated immediate emergency response procedures. At roughly 0500 hours, subject was eliminated by third party. As per operational protocol, samples have been collected and sent to ██████ for further study. Agents are currently scrubbing remainder of subject's presence from quarantine zone. Strongly recommend immediate expunging of previous conflicting incident report.</i>\n<i>Citizens of Blackwater have been informed ██████████ quarantine ████████ contagion of airborne virus. ███████ several infections ████████; medical teams en route to confirm.</i>\n<i>Agents are attempting to meet with unlicensed combatants for debriefing. Due to sensitive nature of incident, recommend release followed by close observation. Story must be kept ████████████. ████████████████████████████████████████████.</i>\n<i>Destroy the incident report immediately. Additional instructions to follow.</i>",
+      "text": "<i>Rapport d'incident : 8L-08, suite</i>\n<i>Mercredi 11 juillet 1928</i>\n<i>Blackwater, Massachusetts</i>\n<i>07:42 - Contact pris avec le sujet ███████████████. Il est ██████████████ météore ; les chercheurs ignorent si le météor a servi ███████████ ou s'il s'agissait d'une sorte d'█████████. Réponse d'urgence immédiate initiée. À environ 05:00, le sujet a été éliminé par une tierce partie. Comme indiqué dans le protocole opérationnel, des échantillons on été collectés et envoyés à ███████ pour étude approfondie. Agents actuellement en train d'effacer les traces de la présence du sujet dans la zone de quarantaine. Recommandons viviement l'explurgation du rapport d'incident antérieur contradictoire.</i>\n<i>Les citoyens de Blackwater ont été informés ████████████ de la quarantaine ███████████ par un virus aérien. ████████████████ plusieurs infections ██████████████████████████████████ équipes médicales en route pour corroborer.</i>\n<i>Agents tentent d'entrer en contact avec les combattants non enregistrés pour débriefing. De par la nature sensible de l'incident, recommandons que leur remise en liberté soit assortie d'une étroite surveillance. Cette histoire ne doit pas██████████████████████████████████████████████████████████████████████████████████████.</i>\n<i>Détruisez ce rapport d'incident immédiatement après réception. Instructions supplémentaires à suivre.</i>",
       "steps": [
         "blob_contained",
         "earn_assets",
@@ -39404,15 +39404,15 @@
     },
     {
       "id": "patrol_rule",
-      "title": "Patrol",
+      "title": "Patrouille",
       "type": "rule_reminder",
-      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "text": "Certains ennemis possèdent le mot-clé Patrouille. Lors de la phase des ennemis (à l’étape structurelle 3.2), chaque ennemi redressé et non-engagé ayant le mot-clé Patrouille se déplace vers un lieu connexe en direction du lieu désigné (entre parenthèses à côté du mot-clé Patrouille) par le chemin le plus court possible.",
       "bullets": [
         {
-          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+          "text": "Si plusieurs lieux peuvent correspondre au lieu désigné, l’investigateur principal a le droit de choisir en direction de quel lieu l’ennemi se déplace."
         },
         {
-          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+          "text": "Si un ennemi ayant le mot-clé Patrouille est censé se déplacer dans un lieu qui est bloqué par une capacité de carte, cet ennemi ne se déplace pas."
         }
       ]
     },
@@ -40093,7 +40093,7 @@
         "choices": [
           {
             "id": "in_play",
-            "text": "In play",
+            "text": "En jeu",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -41465,7 +41465,7 @@
     },
     {
       "id": "ask_daisy_tomes",
-      "text": "Combien de soutiens [[Livre]] qu’elle avait en jeu à la fin de la partie",
+      "text": "Combien de soutiens [[Livre]] Daisy Walker avait-elle en jeu à la fin de la partie",
       "type": "input",
       "input": {
         "type": "counter",
@@ -42561,8 +42561,8 @@
 },
 {
   "id": "war_of_the_outer_gods",
-  "scenario_name": "War of the Outer Gods",
-  "full_name": "War of the Outer Gods",
+  "scenario_name": "La Guerre des Dieux Extérieurs",
+  "full_name": "La Guerre des Dieux Extérieurs",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -42785,139 +42785,139 @@
       "id": "factions_rule",
       "type": "rule_reminder",
       "title": "Factions",
-      "text": "This scenario introduces three warring factions, each with their own set of enemies, treacheries, and agendas. These factions can be differentiated by color—blue, green, or red.",
+      "text": "Ce scénario comprend trois factions belligérantes, chacune disposant de son propre set d'ennemis, de traitrises et d'intrigues. Ces factions sont associées à des couleurs différentes – bleu, vert ou rouge – ce qui permet de les différencier.",
       "bullets": [
         {
-          "text": "The <b>Cult of Silenus</b> is the <b>blue</b> faction. Blue cards can also be identified by their star and constellationi patterns."
+          "text": "le <b>Culte de Silemus</b> est la faction <b>bleue</b>. les cartes bleues sont également reconnaissables à leurs motifs d'étoiles et de constéllations."
         },
         {
-          "text": "The <b>Cult of Magh'an Ark'at</b> is the <b>green</b> faction. Green cards can also be identified by their scales and tendrils."
+          "text": "le <b>Culte de Magh'an Ark'at</b> est la faction <b>verte</b>. Les cartes vertes sont également reconnaissable à leurs motifs d'écailles et de vrilles tentaculaires."
         },
         {
-          "text": "The <b>Cult of Ezel-zen-rezl</b> is the <b>red</b> faction. Red cards can also be identified by their hive patterns and insect wings."
+          "text": "Le <b>Culte d'Ezel-zen-rezl</b> est la faction <b>rouge</b>. Les cartes rouges sont également reconnaissable à leurs motifs d'alvéoles hexagonales et d'ailes d'insectes."
         },
         {
-          "text": "Unless otherwise noted, each faction's cards operate like normal cards of their type (enemies, treacheries, or agenda)."
+          "text": "À moinsque le contraire ne soit indiqué, les cartes de chaque faction fonctionnent comme les cartes habituelles du même type (ennemi, traîtrise ou intrigue)."
         },
         {
-          "text": "If investigators are instructed to perform a sequence \"in faction order,\" first resolve that sequence for the green faction. Then resolve that sequence for the blue faction. Finally resolve that sequence for the red faction. <i>(Note: This is also the order of agendas from top to bottom as depicted during setup.)</i>"
+          "text": "Si l'on demand aux investigateurs d'effectuer une séquence « dans l'ordre des factions », résolvez d'abord cette séquence pour la faction verte, puis pour la faction bleue et enfin pour la faction rouge. (<i>Note : c'est également l'ordre des intrigues du haut vers le bas comme indiqué lors de la mise en place.</i>)"
         }
       ]
     },
     {
       "id": "faction_agendas_rule",
       "type": "rule_reminder",
-      "title": "Faction Agendas",
-      "text": "During setup, three different agenda decks are assembled, one for each faction (green, blue, and red). These agenda decks represent the progress of each faction towards their goals.",
+      "title": "Intrigues de Faction",
+      "text": "Lors de la mise en place, trois decks Intrigue diférents sont constitués, un pour chaque faction (vert, bleue, rouge). Ces decks Intrigue représentent le progrès de chaque faction pour atteindre son but.",
       "bullets": [
         {
-          "text": "During the \"place doom on the current agenda\" step of the mythos phase, place 1 doom on each agenda, in faction order."
+          "text": "Lors de l'étape « placer 1 fatalité sur l'intrigue en cours » de la phase du Myhte, placez 1 fatalité sur chaque intrigue, dans l'ordre des factions."
         },
         {
-          "text": "During the \"check doom threshhold\" step of the mythos phase, check the doom threshhold for each agenda one at a time, in faction order (or if you are playing in Epic Multiplayer Mode, in the order announced by the event organizer)."
+          "text": "Lors de l'étape « vérifier le seuil de fatalité » de la phase du Mythe, vérifiez le seuil de fatalité de chaque intrigue, une à la fois, dans l'ordre des faction (ou, si vous jouez en mode <i>Multijoueur Épique</i>, dans l'ordre annoncé par l'organisateur de l'événement)."
         },
         {
-          "text": "While there are three agendas in play, doom on player cards does not contribute to the doom thresholds of any of those agendas."
+          "text": "Tant qu'il y a trois intrigues en jeu, les fatalités sur les cartes Joueur ne contribuent au seuil de fatalité d'aucune de ces intrigues."
         },
         {
-          "text": "If a card effect instructs an investigator to place doom on \"the current agenda,\" the players may choose which agenda to place it on."
+          "text": "SI un effet de carte demande à un investigateur de placer des fatalités sur « l'intrigue en cours », le joueur a le droit de choisir sur quelle intrigue les placer."
         },
         {
-          "text": "When an agenda advances, all doom on each other agenda remains. Remove all doom from each other card in play (player cards, enemies, and locations), as normal."
+          "text": "Quand une intrigue avance, toutes ls fatalités sur chaque autre intrigue restent en place. Retirez normalement toutes les fatalités sur les autres cartes en jeu (cartes Joueur, Ennemi et Lieu)."
         }
       ]
     },
     {
       "id": "in_the_lead_rule",
       "type": "rule_reminder",
-      "title": "\"In the lead\"",
-      "text": "Each faction is trying to advance through their agenda deck before their opposition can do the same. The faction that is \"in the lead\" is the faction that has advanced the farthest through their agenda deck. If there is a tie between two or more factions, the tied faction with the most doom on their agenda is the faction in the lead. If there is still a tie, the faction with the most enemies in play is the one in the lead."
+      "title": "« En Tête »",
+      "text": "Chaque faction essaye d'avancer son deck Intrigue avant que les autres ne puissent faire la même chose. La faction qui est « en tête » est la faction dont le deck Intrigue a avancé le plus loin. Si au moins deux factions sont à égalité, la faction à égalité ayant le plus de fatalités sur son intrigue es en tête. S'il y a toujours égalité, la faction avec le plus d'ennemis en jeu est en tête."
     },
     {
       "id": "warring_rule",
       "type": "rule_reminder",
-      "title": "Warring",
-      "text": "Warring is a keyword ability that causes the warring factions to move toward and attack one another during the enemy phase.\nDuring the \"hunter enemies move\" step of the enemy phase, each ready, unengaged enemy with the warring keyword moves once toward the nearest warring enemy of a different faction.",
+      "title": "Belligérant",
+      "text": "Belligérant est une capacité mot-clé qui fait se déplacer et attaquer entre elles les différentes factions belligérantes lors de la phase des Ennemis.\nLors de l'étape « les ennemis Chasseur se déplacent » de la phase des Ennemis, chaque ennemi redressé et non-engagé ayant le mot-clé Belligérant se déplace une fois en direction de l'ennemi Belligérant le plus proche appartenant à une autre faction.",
       "bullets": [
         {
-          "text": "Warring enemies move in faction order."
+          "text": "Les ennemis Beligérant se déplacent dans l'ordre des factions."
         },
         {
-          "text": "Warring enemies already at a location with one or more enemies belonging to a different faction do not move."
+          "text": "Les ennemis Belligérant qui se trouvent déjà dans un lieu avec au moins un ennemi appartenant à une autre faction ne se déplacent pas."
         },
         {
-          "text": "If there are multiple equidistant enemies who qualify as a target for this movement, the lead investigator chooses a target for the enemy to move towards."
+          "text": "S'il y a plusieur ennemis équidistants susceptibles d'être la cible de ce mouvement, l'investigateur principal choisit la cible de ce mouvement."
         },
         {
-          "text": "If there are no enemies who qualify as a target for this movement, the enemy does not move."
+          "text": "S'il n'y a aucun ennemi susceptible d'être la cible de ce mouvement, l'ennemi ne se déplace pas."
         },
         {
-          "text": "If a warring enemy would be compelled to move to a location where the move is blocked by a card ability, the enemy does not move."
+          "text": "Si un ennemi Belligérant est censé se déplacer vers un lieu où son déplacement est bloqué par une capacité de carte, l'ennemi ne se déplace pas."
         }
       ]
     },
     {
       "id": "warring_rule_2",
       "type": "rule_reminder",
-      "text": "During the \"resolve enemy attacks,\" step of the enemy phase, each unengaged enemy with the warring keyword attacks a warring enemy at its location of a different faction.",
+      "text": "Lors de l'étape « résoudre les attaques ennemies » de la phase des Ennemis, chaque ennemi non-engagé ayant le mot-clé Belligérant attaque un ennemi Belligérant d'une autre faction dans son lieu.",
       "bullets": [
         {
-          "text": "Warring enemies attack in faction order."
+          "text": "Les ennemis Belligérant attaquent dasn l'ordre des factions."
         },
         {
-          "text": "If there are multiple enemies who qualify as a target for this attack, the warring enemy attacks the enemy (of a different faction) with the least remaining health. If there is a tie, the lead investigator may choose the target of the attack."
+          "text": "S'il y a plusieurs ennemis susceptible d'être la cible de cette attaque, l'ennemi Belligérant attaque l'ennemi (d'une autre faction) qui a le moins de vie restante. En cas d'égalité, l'investigateur principal choisit la cible de l'attaque."
         },
         {
-          "text": "An attack made in this way deals damage equal to the attacking enemy's combined damage and horror values."
+          "text": "Une attaque effectuée de cette manière inflige des dégâts égaux à la somme des valeurs de dégâts et d'horreur de l'ennemi attaquant."
         },
         {
-          "text": "<b>If an enemy attacks and defeats another enemy (other than a swarm card), place 1 doom on the agenda matching the attacking enemy's faction.</b>"
+          "text": "<b>Si un ennemi attaque et vainc un autre ennemi (autre qu'une carte de nuée); placez 1 fatalité sur l'intrigue correspondant à la faction de l'ennemi attaquant.</b>"
         }
       ],
-      "example": "Warring Example:\n<i>A Disciple of the Swarm is in Streets of New York, a Hune-Stitched Herald is in Arkham, and a Zealot of Paradise is in Streets of Montréal. Each of them has the warring keyword, and each is ready and unengaged.</i>\n<i>During the \"hunter enemies move\" step of the enemy phase, each of these enemies moves once toward the nearest warring enemy of a different faction. In this case, the green enemy moves first, to Arkham. The Hune-Stitched Herald does not move, since there is already an enemy at its location. Finally, the Disciple of the Swarm moves to Arkham, as well.</i>\n<i>During the \"resolve enemy attacks\" step of the enemy phase, each of these enemies attacks a warring enemy of a different faction. First the Zealot of Paradise attacks the Disciple of the Swarm for 1 damage, since it has fewer remaining health than the Hune-Stitched Herald. Next, the Hune-Stitched Herald also attacks the Disciple of the Swarm, dealing 3 damage. This defeats the Disciple of the Swarm before it gets a chance to attack and causes 1 doom to be placed on the blue agenda.</i>"
+      "example": "<i>Exemple de fonctionnement de Belligérant :</i>\n<i>Un Disciple de la Nuée est dans les Rues de New York, un Héraut Fait de Hune à Arkham et une Zélatrice du Paradis dans les Rue de Montréal. Chacun d'eux possède le mot-clé Belligérant et est redressé et non-engagé.</i>\n<i>Lors de l'étape « les ennemis Chasseur se déplacent » de la phase des Ennemis, chacun de ces ennemisse déplace une fois en direction de l'ennemi Belligérant le plus proche appartenant à une autre faction. Dans ce cas, l'ennemi vert se déplace en primier, vers Arkham. Le héraut Fait de Hune ne se déplace pas étant donné qu'il y a déjà un ennemi d'une autre faction dasns son lieu. Enfin le Disciple de la Nuée se déplace également vers Arkham.</i>\n<i>Lors de l'étape « résoudre les attaques ennemies » de la phase des Ennemis, chacun de ces ennemis attaque un ennemi Belligérant appartenant à une autre faction. Tout d'abord, la Zélatrice du Paradis attaque le Disciple de la Nuée qui a moins de vie restante que le Héraut Fait de Hune et lui inflige 1 dégât. Ensuite, le Héraut Fait de Hune attaque également le Disciple de la Nuée et lui inflige 3 dégâts. Ce dernier est vaincu avant d'avoir l'opportunité d'attaquer et 1 fatalité est placée sur l'intrigue bleue.</i>"
     },
     {
       "id": "wards_rule",
       "type": "rule_reminder",
-      "title": "Wards",
-      "text": "Wards allow investigators to reduce the amount of doom placed on agendas. When doom would be placed on an agenda, for each ward on that agenda, prevent the amount of doom from being placed. Then remove wards from that agenda equal to the amount of doom prevented."
+      "title": "Remparts",
+      "text": "Les remparts (symbolisés par des pions Ressource pros dans la éserve de pions) permettent aux investigateurs de réduire le nombre de fatalités placées sur les intrigues. Quand au moins une fatalité devrait être placée sur une intrigue, pour chaque rempart sur cette intrigue, prévenez 1 fatalité qui devrait être placée. Ensuite, retirez de cette intrigue un nombre de remparts égal au nombre de fatalité prévenues."
     },
     {
       "id": "place_around_location_rule",
       "type": "rule_reminder",
-      "title": "\"Place around this location\"",
-      "text": "If investigators are instructed to place 1 or more clues \"around\" a location, those clues should be placed such that they are physically bordering the location card, but not placed onto the location card itself. Clues that are \"around\" a location are not considered to be \"on\" the location and cannot be discovered by any means."
+      "title": "« Placer autour de ce lieu »",
+      "text": "S'il est demandé aux investigateurs de placer 1 ou plusieurs indices « autour » d'un lieu, ces indices doivent êtreplacés de manière à former une bordure physique autour de la carte Lieu, mais pas sur la carte elle-même. Les indices « autour » d'un lieu ne sont pas considérés comme étant « sur » ce lieu et ne peuvent être découverts par aucun moyen."
     },
     {
       "id": "swarming",
       "type": "rule_reminder",
-      "title": "Swarming X",
-      "text": "An enemy with the swarming X keyword is actually a pack of enemies operating in unison. After you put an enemy with the swarming X keyword into play, place the top X cards of your deck facedown underneath the enemy as swarm cards, without looking at them. The enemy they are underneath is called the “host enemy.” Some scenario card effects may also instruct a player to add swarm cards to an enemy. This is done using the same process.",
+      "title": "Nuée X",
+      "text": "Un ennemi avec le mot-clé Nuée X est en réalité une meute d'ennemis agissant ensemble. Après avoir mis en jeu un ennemi avec le mot-clé Nuée X, placez sans les regarder les X cartes du dessus de votre deck face cachée sous cet ennemi, en tant que cartes de nuée. L'ennemi sous lequel elles se trouvent est appelé « ennemi hôte ». Certain effets de cartes Scénario peuvent également demander à un joueur d'ajouter des cartes de nuée à un ennemi. Pour ce faire, procédez de la même manière.",
       "bullets": [
         {
-          "text": "If it is ever unclear which investigator should add swarm cards, the lead investigator does so."
+          "text": "En cas de doute sur l'investigateur qui est censé ajouter des cartes de nuée, c'est l'investigateur principal qui s'en charge."
         },
         {
-          "text": "Each swarm card underneath the host enemy acts as a separate instance of that enemy for most purposes. Each swarm card has the same values and text as its host card. <i>(For example, if an investigator is engaged with a host enemy with 2 swarm cards underneath it, that investigator is engaged with 3 enemies in total.)</i>"
+          "text": "Chaque carte de nuée sous l'ennemi hôte agit comme un exemplaire distinct de cet ennemi. Chaque carte de nuée a les mêmes valeurs et le même texte que sa carte hôte. (<i>Par exemple, si un investigateur est engagé avec un ennemi hôte ayant 2 cartes de nuée sous lui, cet investigateur est engagé avec 3 ennemis en tout.</i>)"
         },
         {
-          "text": "Each swarm card attacks separately when enemies attack during the enemy phase. Once the host enemy and all of its swarm cards have attacked during this step, exhaust all of them."
+          "text": "Chaque carte de nuée attaque séparément quand les ennemis attaquent lors de la phase des Ennemis. Une fois que l'ennemi hôte et toutes ses cartes de nuée ont attaqué lors de cette étape, inclinez-les tous."
         },
         {
-          "text": "Each swarm card can be attacked or dealt damage separately, but the host enemy cannot be defeated while it still has swarm cards underneath it. When a swarm card is defeated, any excess damage may be dealt to another swarm card underneath the same host enemy or to the host enemy itself. <i>(For example, Tony Morgan uses a .41 Derringer to attack a Stealthy Zoog with 2 swarm cards. The attack deals 2 damage. The first point of damage defeats 1 of the 2 swarm cards, so the excess point of damage may be dealt to another swarm card, defeating it as well.)</i>"
+          "text": "Chaque carte de nuée peut être attaquée et subir des dégats séparément, mais l'ennemi hôte ne put pas être vaincu tant qu'il y a encore au moins une carte de nuée sous lui. Quand une carte de nuée est vaincue, tout dégât en excès peut être infligé à une autre carte de nuéesous le même ennemi hôte, ou à l'ennemi hôte lui-mêmes'il ne reste que lui. (<i>Par exemple, Roland Banks utilise un .45 Automatique pour attaquer un Trylogog avec 2 cartes de nuée. L'attaque inflige 2 dégâts. Le promier point de dégât vainc 1 des 2 cartes de nuée; le point en excès peut donc être infligé à l'autre carte de nuée, qui est également vaincue.</i>)"
         },
         {
-          "text": "Anytime a swarm card leaves play, place it on the bottom of its owner’s deck. If you are unsure of the owner of the swarm card, you may look at it to determine its owner."
+          "text": "Chaque fois qu'une carte de nuée quitte le jeu, placez-la sous le deck de son propriétaire. Si vous ne vous rappelez plus qui en est le propriétaire, vous avez le droit de la regarder pour déterminer à qui elle appartient."
         },
         {
-          "text": "The host enemy and all of its swarm cards move, engage, and exhaust as a single entity. (For example, if a host enemy or any of its swarm cards are evaded, all of them exhaust and become disengaged.)"
+          "text": "L'ennemi hôte et toutes ses cartes de nuée se déplacent engagent et s'inclinent comme une seule entité. (<i>Par exemple, si vous echappezà un ennemi hôte ou à n'importe laquelle de ses cartes de nuée, vous les inclinez tous et devenez déengagé de toutes ces cartes.</i>)"
         }
       ]
     },
     {
       "id": "intro",
       "type": "story",
-      "text": "Over a decade after the Great War, another kind of war has come to Earth—a conflict wrought by factions long hidden in the shadows of society.\nIt began with the murders in Arkham—over a dozen bodies in half as many days. The police thought the perpetrator to be a serial killer at first, until the sixth victim's corpse turned up as a mangled heap of meat and viscera, like a meal chewed up and spit back out. No human could have performed such a grisly murder.\nWhen similar killings started to sprout up in other cities across North America, you sought to uncover the truth. A serial killer could not be in Arkham, Providence, Montréal, and New York City all at once. This had to be the work of an organization. But that wasn't all you discovered: there were commonalities between many of the victims, sorting them into three distinct groups.\nIn Providence, many victims were older and well-educated. In Montréal, those killed lived in the woods outside the city, or had professions dealings with nature or biology in some capacity. In New York, bodies turned up deep in the sewers and underground subway tunnels, their identities shrouded in mystery.\nYou have spent the past few weeks trying to unearth the truth behind these murders and the various factions carrying them out. In this time, the conflict has grown exponentially. Massacres. Bombings. Sightings of strange ceremonies in the streets. Entities blotting out the stars in the night sky. Swarms of locust-like insects devouring people whole. Mutated lizard creatures prowling the sewers. And worse yet, while Arkham seems to be conflict's epicenter, these incidents are spreading all across the world.\nThis is no ordinary war, and not one the authorities can deal with. You are the only one who suspects the truth. Somehow, you have to find out what these factions are fighting over, and put a stop to the conflict before it consumes the entire world in its madness."
+      "text": "Plus de dix années se sont écoulées depuis la Grande Guerre, et une guerre d'un genre nouveau a éclaté sur Terre ; un conflit mené par des factions restées longtemps cachées en marge de la société.\nTout commença avec les meurtres commis à Arkham ; plus d'une douzaine de corps, en moins d'une semaine. Au début, la police pensait avoir affaire à un tueur en série, mais le corps de la sixième victime s'avéra n'être plus qu'un amas de chair et de viscères mutilées, comme un repas qui aurait été mâchouillé, puis recraché. Aucun être humain n'aurait pu commettre un meurtre aussi macabre.\nDes tueries similaires commencèrent à éclater dans plisieurs autres villes d'Amérique du Nord. Un tueur en série ne pouvait pas sévir à la fois à Arkham, à Providence, à Montréal et à New York. Ce devait être l'œvre de quelque organisation. Mais ce n'est pas la seule chose que vous avez découverte : il y avait des similitudes entre les victimes permettant de les classer en trois groupes distincts.\nÀ Providence, de nombreuses victimes étaient âgées et diplômées. Celles de Montréal vivaient dans les bois entourant la ville ou avaient des professions en rapport avec la nature ou la biologie. À New York, les corps ont été retrouvés dans les égouts et les tunnels les plus profonds du métro ; leur identité demeure un mystère.\nVous avez passé les dernières semaines à essayer de découvrir la vérité cachée derière ces meutres et les différentes factions impliquées. Pendant ce temps, le conflit s'est transformé en guerre. Massacres, bombardements, étranges cérémonies en pleine rue. Des entités qui surgissent des étoiles dans le ciel nocturne.Des nuées d'insectes ressemblant à des sauterelles et qui dévorent des personnes en entier. Des lézard mutants qui rampent dans les égouts. Mais le pire de tout, si Arkham semble bien être l'épicentre du conflit, ce dernier est en train de se répandre dans le monde entier.\nCe n'est pas une simple guerre, et surtout pas une que les autorités compétentes peuvent gérer. Vous êtes le seul à soupçonner la vérité. Vous devez découvrir la raison pour laquelle ces factions se battent et mettre un terme à ce conflit avant que le monde entier ne sombre dans la folie."
     },
     {
       "id": "gather_encounter_sets",
@@ -42935,18 +42935,18 @@
         "swarm_of_assimilation",
         "death_of_stars"
       ],
-      "text": "Gather all 9 cards from each of the three other encounter sets: <i>Children of Paradise</i>, <i>Swarm of Assimilation</i>, and <i>Death of Stars</i>. Set these encounter sets aside, out of play. <i>(Note: 1 Ethereal Entity, 1 Trylogog, and 1 Bringer of Paradise are included in the</i> War of the Outer Gods <i>encounter set, while the rest are included in these three encounter sets.)</i>"
+      "text": "Réunissez les 9 cartes de chacun des trois autres sets de rencontre : <i>Les Enfants du Paradis</i>, <i>La Nuées de l'assimilation</i> et <i>La Mort des Étoiles</i<. Mettez-les de côté, hors jeu. (<i>Note : 1 Entité Éthérée, 1 Trylogog et 1 Annonciateur du Paradis sont inclus dans le set de rencontre </i>La Guerre des Dieux Extérieurs<i> alors que les autres se trouvent dasn chacun de ces trois sets de rencontre.</i>)"
     },
     {
       "id": "setup_agenda_deck",
-      "text": "When setting up the agenda deck, put all three agenda decks into play, in this order (from top to bottom): green, blue, and then red."
+      "text": "Quand vous mettez en place le deck Intrigue, mettez en jeu les trois decks Intrigue dans cet ordre (de haut en bas) : vert, bleu et rouge."
     },
     {
       "id": "setup_locations",
-      "text": "Set the Hub Dimension location aside and put the remaining 10 locations into play.",
+      "text": "Mettez de côté le Nexus Dimensionnel, hors jeu et mettez en jeu les 10 lieux restants.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Arkham."
+          "text": "Chaque investigateur commence la partie à Arkham."
         }
       ]
     },
@@ -43069,15 +43069,15 @@
     },
     {
       "id": "spawn_cultists",
-      "text": "Search the <i>War of the Outer Gods</i> encounter set for 1 copy of Disciple of the Swarm, 1 copy of Nihilistic Stargazer, and 1 copy of Zealot of Paradise. Spawn each of those enemies (as directed by their \"<b>Spawn</b> - \" instructions)."
+      "text": "Cherchez 1 exemplaire du Disciple de la Nuée, 1 exemplaire de l'Astronome Nihiliste et 1 exemplaire de la Zélatrice du Paradis dans le set de rencontre <i>La Guerre des Dieux Extérieurs</i>. Générez chacun de ces ennemis (comme indiqué par leur instruction  « <b>Génération</b> »)."
     },
     {
       "id": "set_aside_assets",
-      "text": "Set the 5 following story assets aside, out of play: Cloak of the Outer Realms, Pocker Portal, Dreaded End, Blade of Ark'at, and Enchanted Skull."
+      "text": "Mettez de côté les 5 soutiens d'histoire suivant, hors jeu : Cape du Royaume Extérieur, Portail de poche, Fin Redoutable, Lame d'Ark'at et Crâne Enchanté."
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remaining 19 encounter cards to form the encounter deck."
+      "text": "Mélangez les 19 cartes Rencontre restantes pour former le deck Rencontre."
     },
     {
       "id": "earn_xp",
@@ -43135,27 +43135,27 @@
     {
       "id": "ask_faction_in_lead",
       "type": "input",
-      "text": "Find the faction that is in the lead and proceed accordingly:",
+      "text": "Déterminez la faction qui était en tête et lisez la conclusion correspondante :",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "red",
-            "text": "Red faction was in the lead",
+            "text": "La faction rouge était en tête",
             "steps": [
               "resolution_5"
             ]
           },
           {
             "id": "blue",
-            "text": "Blue faction was in the lead",
+            "text": "La faction bleue était en tête",
             "steps": [
               "resolution_6"
             ]
           },
           {
             "id": "green",
-            "text": "Green faction was in the lead",
+            "text": "La faction verte était en tête",
             "steps": [
               "resolution_7"
             ]
@@ -43180,7 +43180,7 @@
     },
     {
       "id": "earn_cloak",
-      "text": "Any one investigator may choose to add the Cloak of the Outer Realms story asset to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter à son deck le soutien d'histoire Cape du Royaume Extérieur. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -43191,7 +43191,7 @@
     },
     {
       "id": "earn_pocket_portal",
-      "text": "Any one investigator may choose to add the Pocket Portal story asset to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter à son deck le soutien d'histoire Portail de Poche. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -43202,7 +43202,7 @@
     },
     {
       "id": "earn_enchanted_skull",
-      "text": "Any one investigator may choose to add the Enchanted Skull story asset to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter à son deck le soutien d'histoire Crâne Enchanté. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -43213,7 +43213,7 @@
     },
     {
       "id": "earn_dreaded_end",
-      "text": "Any one investigator may choose to add the Dreaded End story asset to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter à son deck le soutien d'histoire Fin Redoutable. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -43224,7 +43224,7 @@
     },
     {
       "id": "earn_blade",
-      "text": "Any one investigator may choose to add the Blade of Ark'at story asset to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "N'importe quel investigateur a le droit d'ajouter à son deck le soutien d'histoire Lame d'Ark'at. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -43250,7 +43250,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "The hub's many doorways are now sealed tight under your stern control. With the hub sealed, the cults fighting over its ownership should hopefully return to operating in secrecy—perhaps waiting for a time when the hub reopens and they can use it to advance their cruel agendas. Until then, the Earth is safe... relatively speaking",
+      "text": "Les nombreux portails du nexus sontsormaisscéllés et sous votre contrôle. Grâce à cela, la lutte entre les différents cultes devrait à nouveau se dérouler en secret. Peut-être mettront-ils à profit le temps qui leur reste avant une éventuelle réouverture du nexus pour avancer dans leur plans cruels. En attendant, la Terre est en sécurité… enfin presque.",
       "steps": [
         "earn_cloak",
         "earn_pocket_portal",
@@ -43261,7 +43261,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "The swarm of Ezel is too countless to defeat through normal means. But there is a trick! Otherworldly though they may be, the insects are insects nonetheless, and many hives have among them a queen. Using all of your ingenuity, you devise a plan to crush the queen and thereby scatter the swarm.\nTo your surprise, your plan works. With the queen dispatched, the swarm is aimless, its hunger replaced by a sense of desperation and panic. It is not long before the myriad creatures descend once more into the pit whence they came. Perhaps another queen will come to unite them, but you will seal that accursed pit long before that happens. For now, Earth is safe.",
+      "text": "Les innombrables nuées d'Ezel sont trop vastes pour être vaincues par des moyens normaux. Mais il existe un moyen ! Aussi étrange qu'ils soient, les insectes restent des insectes et les insectes vivant en essaim disposent d'une reine. Avec toute votre ingéniosité, vous mettez au point un plan pour vaincre la reine et disperser la nuée.\nVous êtes le premier surpris de voir votre plan fonctionner. Leur reine vaincue, les nuées sont inoffensives, leur voracité est remplacée par une panique désespérée. Très vite, les créatures replongent dans la fournaise qui les a vu naitre. Une autre reine viendra peut-être les unir à nouveau, mais vous comblerez ce gouffre maudit avant que cela n'arrive. Pour l'instant, la Terre est sauve.",
       "steps": [
         "earn_cloak",
         "earn_enchanted_skull",
@@ -43272,7 +43272,7 @@
     {
       "id": "R3",
       "title": "Conclusion 3",
-      "text": "The shape of Silenus is formless, perhaps even devoid of matter altogether, but not without weakness. Using the rituals of its own cult against it, you devise a spell of such incandescent heat that not even the emptiness of space can devour it. When your rite is unleashed, the mists retreat in anguish, letting out no sound but the shrill hiss of air being sucked through a vacuum.\nYou observe the sky in fear, hoping that the mist does not return the moment your ritual has ended. Minutes pass. Then hours. Familiar stars once more fill the night sky. Perhaps the entity is gone for good. If the notes of the creature's many observers are true, it will likely return in the future—maybe hundreds or thousands of years from now. You may have saved the Earth this day, but the understanding of the entity's true nature haunts you still.",
+      "text": "Silenus est peut-être dénué de consistance, voire même de matière, mais cela ne veut pas dire qu'il n'a pas de point faible. En utilisant les rituels de son propre culte, vous invoquez un sortilège d'une telle incandescence que même le néant spatial ne peut le dévorer. Une fois votre sort lancé, les nuages reculent apeurés sans plus de bruit qu'un vague sifflement évoquant de l'air aspiré dans le vide.\nVous observez fébrilement le ciel, priant pour que les nuages ne reviennent pas sitôt que votre rituel se dissipera. Des minutes s'écoulent. Puis des heures. Les constellations familières emplissent à nouveau le ciel nocturne. Peut -être l'entité est-elle partie pour de bon. Si les notes des différents astronomes disent vrai, elle reviendra un jour ; peut-être dans quelques centaines ou milliers d'années. Vous avez sauvé la Terre aujourd'hui ; mais la compréhension de la vrai nature de l'entité vous hantera a jamais.",
       "steps": [
         "earn_cloak",
         "earn_dreaded_end",
@@ -43283,7 +43283,7 @@
     {
       "id": "R4",
       "title": "Conclusion 4",
-      "text": "Green blood and sticky pus erupts from the beast's carapace as it collapses, groaning with such force that it rumbles through the Earth. Thanks to your haste, you have felled the beast before it could grow too powerful to stop. Even in its infancy, it was a tremendous foe.\nYou watch in revulsion as its body dissolves into sallow ichor. Some \"paradise\" this thing turned out to be. With the egg hatched and the thing inside destroyed, you hope that the cult of Ark'at will disperse, though you fear that retribution may someday come in return for your meddling.",
+      "text": "Un mélange de pus odorant et de sang vert sécoule de la carapace de la bête tandis qu'elle s'effondre en poussant un grognement si terrible qu'il résonne sur la Terre entière? Grâce à votre célérité, la bête a été vaincue avant qu'elle ne devienne trop puissante pour pouvoir être stoppée. Même si elle venait de naitre, c'était un ennemi formidable.\nVous observez avec dégoût son corps se dissoudre en une substance jaunâtre. Le fameux « paradis » dont cette chose était constituée. l'œuf ayant éclot et la créature à l'intérieur étant détruite, vous espérez voir disparaitre le culte d'Ark'at, mais vous craignez également qu'un jour il ne reprenne ses manigances.",
       "steps": [
         "earn_cloak",
         "earn_blade",
@@ -43294,7 +43294,7 @@
     {
       "id": "R5",
       "title": "Conclusion 5",
-      "text": "Little by little, the swarm deconstructs all matter on Earth, transforming each and every molecule to resemble their own. Your consciousness remains, trapped eternally in the awful, buzzing swarm. But all is well. You are with the queen now. A strange hunger gnaws at you. Your only desire is to assimilate. The swarm must grow!",
+      "text": "Ptit à petit, la nuée détruit tout ce qui existe sur Terre assimilant chaque molécule. Votre conscience demeure, piégée éternellement dans l'immode nuée bourdonnante. Mais tout va bien. Vous êtres avec la reine désormais. Une faim étrange vous étreint. Vous n'avez plus qu'une envie : assimiler. La nuée doit grossir !",
       "steps": [
         "all_killed",
         "lose"
@@ -43302,8 +43302,8 @@
     },
     {
       "id": "R6",
-      "title": "Resolution 6",
-      "text": "The Earth is just the first planet to be engulfed by Silenus, embodiment of the Empty Sky, the ravenous end of all things. As the planet's core plunges to absolute zero, all life is instantly snuffed out. From the opening made by the nexus on Earth, the entity then stretches out to all corners of the solar system, devouring all warmth along the way. Nothing can stop it now.",
+      "title": "Conclusion 6",
+      "text": "La Terre n'est que la première planète engloutie par Silenus, l'incarnation du Néant Céleste, la fin vorace de toute chose. La température du noyau de la planète atteint le zéro absolu et toute vie disparaît instantanément. Émergeant de l'ouverture que le nexus a vouverte sur la Terre, l'entité se répand dans chaque recoin du système solaire, dévorant toute forme de chaleur sur son passage. Rien ne peut plus l'arrêter.",
       "steps": [
         "all_killed",
         "lose"
@@ -43311,8 +43311,8 @@
     },
     {
       "id": "R7",
-      "title": "Resolution 7",
-      "text": "The beast's rampage is impossible to stop. You were the only ones with any knowledge of how to defeat the thing. One by one, as it makes its way across continents and through the oceans, cities fall. Armies are obliterated. Governments collapse. The monstrous creatures hatched by the cult of Ark'at continue their ravenous war until there is nothing left to rule over but the vast wastes of Earth and the crumbling ruins of human civilization. The \"paradise\" they so willingly killed for has come.",
+      "title": "Conclusion 7",
+      "text": "La bête est impossible à arrêter. Vous étiez l'un des seuls à savoir comment la vaincre. Elle traverse les continents et les océans, un à la fois, détruisant toutes les villes sur son passage. Les armées sont submergées. Les gouvernement s'effondrent. La monstrueuse créature invoquée par le culte d'Arl'at continue sa guerre fatidique jusqu'à ce qu'il ne reste plus de la Terre que les ruines de l'ancienne civilisation des Hommes. Le « paradis » pour lequel ils avaient si argemment tué est enfin là.",
       "steps": [
         "all_killed",
         "lose"
@@ -51210,7 +51210,7 @@
         "id": "the_circle_undone.union_and_disillusion.resolution_6",
         "name": "Resolution 6"
       },
-      "title": "Resolution 6",
+      "title": "Conclusion 6",
       "text": "Quand vous recouvrez vos esprits, le vent est tombé et la brume sombre a disparu. Le rituel terminé, l’île a retrouvé son état normal. Mais le rituel a-t-il fonctionné ? Ou a-t-il échoué ? Vous vous frayez un chemin jusqu’au centre de l’île pour découvrir ce qui s’est passé. En arrivant, vous découvrez Anette et sa congrégation grièvement blessées et la Loge victorieuse. Carl Sanford tient un épais grimoire en cuir dont les pages luisent d’un pouvoir mystique. « Qu’avez-vous fait !? » hurle Anette, flanquée de plusieurs membres de sa congrégation. Le combat les a épuisées, mais vous ne doutez pas une seconde qu’elles donneront leur vie pour protéger leur grande prêtresse.\n« Ce que j’ai fait ? Eh bien, j’ai trompé le Diable », répond Sanford, un rictus sinistre aux lèvres. Vous remarquez alors que les mots sur le livre brillent maintenant d’une lueur spectrale. « Keziah a signé le Livre Noir d’Azathoth afin d’apprendre les secrets de l’univers ? Une erreur fatale, si vous voulez mon avis, qui l’a précipitée dans les griffes d’un être bien plus puissant qu’elle. » Il commence à feuilleter les pages et ajoute : « Elle a payé le prix, mais c’est moi qui en récolterai les fruits. »\nAnette serre les dents et se tourne vers vous. « Écoutez-moi. Vous pouvez à peine imaginer les secrets que ce monstre détient à présent. Vous devez l’arrêter, quel qu’en soit le prix. »\nVous retenez votre langue, mais au fond de vous, vous savez qu’Anette a raison, Sanford vous a trompé. C’est cela qu’il cherchait depuis le début. Peut-être qu’il est sincère dans son désir de « protéger l’humanité », mais la vérité est qu’il a plusieurs fois mis en danger la vie des autres pour servir son avidité et son désir de pouvoir. Avant même que vous n’ayez pu vous tourner contre lui, Sanford se tourne vers les autres membres de son Ordre et vous désigne du doigt. « Ils ne sont plus d’aucune utilité », explique-t-il. « Tuez les tous. »\n« Erynn, couvre-nous ! » lance Anette à la sorcière aux cheveux roux à côté d’elle. La sorcière acquiesce et agite sa baguette de bois devant elle, créant un nuage de brume qui masque votre présence. « Nous devons filer d’ici. Maintenant ! » crie Anette.\nVotre fuite reste floue dans votre esprit. Les membres du Crépuscule d’Argent vous poursuivent sans relâche à travers la forêt abandonnée. Vous parvenez tout juste à atteindre les berges avant qu’ils ne vous rattrapent. Vous faites signe à Anette et aux autres de se joindre à vous, mais elle secoue la tête. « Nous nous reverrons bientôt. » Le contour des robes des sorcières commence à se fondre dans le ciel nocturne et elles disparaissent l’une après l’autre dans un tourbillon de ténèbres.",
       "steps": [
         "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -51223,7 +51223,7 @@
         "id": "the_circle_undone.union_and_disillusion.resolution_7",
         "name": "Resolution 7"
       },
-      "title": "Resolution 7",
+      "title": "Conclusion 7",
       "text": "Quand vous recouvrez vos esprits, le vent est tombé et la brume sombre a disparu. Le rituel terminé, l’île a retrouvé son état normal. Mais le rituel a-t-il fonctionné ? Ou a-t-il échoué ? Vous vous frayez un chemin jusqu’au centre de l’île pour découvrir ce qui s’est passé. En arrivant, vous découvrez Carl Sanford et le reste de l’Ordre grièvement blessés et Anette et sa congrégation, victorieuses. Anette se tient au centre de la clairière, ses yeux luisant d’un pouvoir mystique. Quand elle parle, ce n’est pas sa voix qui retentit. « Mes soeurs. Réjouissez-vous car je renais », déclare Keziah.\nCarl Sanford vous sort de votre hébétude d’un coup de canne. Vous étiez tellement pris par les événements que vous n’aviez pas remarqué que les membres de la Loge s’éclipsaient discrètement en direction de l’orée de la clairière. L’un des membres du Cercle Restreint sort son pistolet et tente de faire feu, mais d’un simple regard, la grande prêtresse fait se flétrir son bras. Il lâche son arme et pousse un dernier râle avant de n’être plus qu’une coquille desséchée qui tombe au sol. « Nous devons vite filer d’ici », annonce Sanford, imperturbable. « Cet être possède un pouvoir sur la vie et la mort elles-mêmes. Il ne tolérera pas notre présence très longtemps. »\nAnette – ou plutôt Keziah – se tourne vers vous, les yeux brillants. « Vous m’êtes familier, mon enfant. Venez, venez. N’ayez pas peur. Vous n’avez rien à craindre de moi. » Son sourire est démoniaque et sa voix semblable à des couteaux qui vous lacèrent l’âme. Vous détestez l’admettre, mais Sanford a raison. Vous faites demi-tour et fuyez avec le reste de la Loge, espérant être assez rapide pour échapper à la magie de la sorcière.\nVotre fuite reste floue dans votre esprit. Les sorcières et les spectres vous poursuivent sans relâche à travers la forêt abandonnée. Vous parvenez tout juste à atteindre les berges avant qu’ils ne vous rattrapent. Les autres membres de la Loge n’ont pas tous cette chance. Ils se sont éparpillés dans toutes les directions et vous ignorez combien on pu s’enfuir. Vous ne voyez Carl Sanford nulle part mais vous le soupçonnez d’avoir eu un plan de repli pour ce genre d’éventualité.",
       "steps": [
         "anette_mason_is_possessed_by_evil",
@@ -51540,26 +51540,26 @@
     {
       "id": "swarming",
       "type": "rule_reminder",
-      "title": "Swarming X",
-      "text": "An enemy with the swarming X keyword is actually a pack of enemies operating in unison. After you put an enemy with the swarming X keyword into play, place the top X cards of your deck facedown underneath the enemy as swarm cards, without looking at them. The enemy they are underneath is called the “host enemy.” Some scenario card effects may also instruct a player to add swarm cards to an enemy. This is done using the same process.",
+      "title": "Nuée X",
+      "text": "Un ennemi avec le mot-clé Nuée X est en réalité une meute d'ennemis agissant ensemble. Après avoir mis en jeu un ennemi avec le mot-clé Nuée X, placez sans les regarder les X cartes du dessus de votre deck face cachée sous cet ennemi, en tant que cartes de nuée. L'ennemi sous lequel elles se trouvent est appelé « ennemi hôte ». Certain effets de cartes Scénario peuvent également demander à un joueur d'ajouter des cartes de nuée à un ennemi. Pour ce faire, procédez de la même manière.",
       "bullets": [
         {
-          "text": "If it is ever unclear which investigator should add swarm cards, the lead investigator does so."
+          "text": "En cas de doute sur l'investigateur qui est censé ajouter des cartes de nuée, c'est l'investigateur principal qui s'en charge."
         },
         {
-          "text": "Each swarm card underneath the host enemy acts as a separate instance of that enemy for most purposes. Each swarm card has the same values and text as its host card. <i>(For example, if an investigator is engaged with a host enemy with 2 swarm cards underneath it, that investigator is engaged with 3 enemies in total.)</i>"
+          "text": "Chaque carte de nuée sous l'ennemi hôte agit comme un exemplaire distinct de cet ennemi. Chaque carte de nuée a les mêmes valeurs et le même texte que sa carte hôte. (<i>Par exemple, si un investigateur est engagé avec un ennemi hôte ayant 2 cartes de nuée sous lui, cet investigateur est engagé avec 3 ennemis en tout.</i>)"
         },
         {
-          "text": "Each swarm card attacks separately when enemies attack during the enemy phase. Once the host enemy and all of its swarm cards have attacked during this step, exhaust all of them."
+          "text": "Chaque carte de nuée attaque séparément quand les ennemis attaquent lors de la phase des Ennemis. Une fois que l'ennemi hôte et toutes ses cartes de nuée ont attaqué lors de cette étape, inclinez-les tous."
         },
         {
-          "text": "Each swarm card can be attacked or dealt damage separately, but the host enemy cannot be defeated while it still has swarm cards underneath it. When a swarm card is defeated, any excess damage may be dealt to another swarm card underneath the same host enemy or to the host enemy itself. <i>(For example, Tony Morgan uses a .41 Derringer to attack a Stealthy Zoog with 2 swarm cards. The attack deals 2 damage. The first point of damage defeats 1 of the 2 swarm cards, so the excess point of damage may be dealt to another swarm card, defeating it as well.)</i>"
+          "text": "Chaque carte de nuée peut être attaquée et subir des dégats séparément, mais l'ennemi hôte ne put pas être vaincu tant qu'il y a encore au moins une carte de nuée sous lui. Quand une carte de nuée est vaincue, tout dégât en excès peut être infligé à une autre carte de nuéesous le même ennemi hôte, ou à l'ennemi hôte lui-mêmes'il ne reste que lui. (<i>Par exemple, Roland Banks utilise un .45 Automatique pour attaquer un Trylogog avec 2 cartes de nuée. L'attaque inflige 2 dégâts. Le promier point de dégât vainc 1 des 2 cartes de nuée; le point en excès peut donc être infligé à l'autre carte de nuée, qui est également vaincue.</i>)"
         },
         {
-          "text": "Anytime a swarm card leaves play, place it on the bottom of its owner’s deck. If you are unsure of the owner of the swarm card, you may look at it to determine its owner."
+          "text": "Chaque fois qu'une carte de nuée quitte le jeu, placez-la sous le deck de son propriétaire. Si vous ne vous rappelez plus qui en est le propriétaire, vous avez le droit de la regarder pour déterminer à qui elle appartient."
         },
         {
-          "text": "The host enemy and all of its swarm cards move, engage, and exhaust as a single entity. (For example, if a host enemy or any of its swarm cards are evaded, all of them exhaust and become disengaged.)"
+          "text": "L'ennemi hôte et toutes ses cartes de nuée se déplacent engagent et s'inclinent comme une seule entité. (<i>Par exemple, si vous echappezà un ennemi hôte ou à n'importe laquelle de ses cartes de nuée, vous les inclinez tous et devenez déengagé de toutes ces cartes.</i>)"
         }
       ]
     },
@@ -60301,7 +60301,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "You have finally reached the Dreamlands, but it is not as you expected. This cyclopean cavern is far from the wondrous lands and fabulous cities described in Virgil Gray’s writings. Perhaps the author never ventured this far underground, never found the horrors that lurk beneath the surface of the Dreamlands. You suspect he wouldn’t have left out tales of such a spine-chilling nature. As you venture into the dark and barren realm, you are filled with hollow despair—an emptiness that gnaws at your heart and mirrors the bleak landscape all around you. You came here to help your friends, and now your only guide through this realm is gone. What if this was all a horrible mistake?\nYou shake these dark thoughts from your mind and focus on the path that lies ahead of you. It’s too late to dwell on what you could have done differently. This is your way forward now. Even if you cannot help your friends, even if you are too late to help Randolph, you have another mission now. Clearly this region of the Dreamlands has something to do with the creatures invading your reality. The answers must lie here. Besides, it’s not like you have much choice anymore.\nYou walk to the edge of a jagged cliff overlooking the cavernous realm below. This realm is staggeringly vast. In the distance, along the cliffs, you see a walled city, of all things. Among its many towers, a black spire rises so high it must pierce the surface of the Dreamlands. To the south is a stretch of plains that looks over the vale below, and you can see shapes moving throughout the grey, phosphorescent light. You hope the beings who inhabit this realm are ones you might be able to reason with. You have your doubts…but at least now you have a plan. Whether or not it is a good plan remains to be seen."
+      "text": "Vous avez finalement atteint les Contrées du Rêve, mais cela ne ressemble pas à ce que vous imaginiez. Cette grotte cyclopéenne est très éloignée des terres merveilleuses et des cités fabuleuses décrites par Virgil Gray dans ses récits. Peut-être que l’auteur ne s’est jamais aventuré aussi loin sous terre et n’a jamais été confronté aux horreurs qui grouillent sous la surface des Contrées du Rêve. Vous présumez qu’il n’aurait jamais conté d’histoires aussi effrayantes. Le désespoir vous envahit à mesure que vous explorez ce monde sombre et désolé ; un vide étreint votre coeur et reflète la noirceur du paysage qui vous entoure. Vous êtes venus ici pour aider vos amis, et votre seul guide au sein de ce monde est désormais parti. Et si tout ça n’était qu’une terrible erreur ?\nVous chassez ces noires pensées de votre esprit et vous vous concentrez sur le chemin qui s’ouvre devant vous. Il est trop tard pour se demander si les choses auraient pu être différentes : c’est la voie que vous devez suivre à présent. Même si vous ne pouvez pas venir en aide à vos amis, même s’il est trop tard pour sauver Randolph, vous avez à présent une autre mission. Cette région des Contrées du Rêve est clairement liée aux créatures qui envahissent votre réalité. Il doit y avoir des réponses ici. Et puis, ce n’est pas comme si vous aviez d’autres options.\nVous marchez jusqu’au rebord d’une falaise irrégulière dominant l’immense caverne en contrebas. Ce royaume est réellement vaste. Au loin, le long de la muraille, vous apercevez une cité fortifiée. Parmi ses nombreuses tours, un clocher noir monte si haut qu’il perce la surface des Contrées du Rêve. Au sud s’étend une vaste plaine qui surplombe une vallée. Vous pouvez y apercevoir des formes se mouvant à travers la lumière grise phosphorescente. Vous espérez que les êtres qui peuplent ce royaume sont de ceux avec qui il est possible de raisonner, mais vous en doutez… au moins, vous avez un plan. Quant à savoir s’il est bon, seul le temps le dira."
     },
     {
       "id": "intro_2",
@@ -60310,7 +60310,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "Vous avez finalement atteint les Contrées du Rêve, mais cela ne ressemble pas à ce que vous imaginiez. Cette grotte cyclopéenne est très éloignée des terres merveilleuses et des cités fabuleuses décrites par Virgil Gray dans ses récits. Peut-être que l’auteur ne s’est jamais aventuré aussi loin sous terre et n’a jamais été confronté aux horreurs qui grouillent sous la surface des Contrées du Rêve. Vous présumez qu’il n’aurait jamais conté d’histoires aussi effrayantes. Le désespoir vous envahit à mesure que vous explorez ce monde sombre et désolé ; un vide étreint votre coeur et reflète la noirceur du paysage qui vous entoure. Vous êtes venus ici pour aider vos amis, et votre seul guide au sein de ce monde est désormais parti. Et si tout ça n’était qu’une terrible erreur ?\nVous chassez ces noires pensées de votre esprit et vous vous concentrez sur le chemin qui s’ouvre devant vous. Il est trop tard pour se demander si les choses auraient pu être différentes : c’est la voie que vous devez suivre à présent. Même si vous ne pouvez pas venir en aide à vos amis, même s’il est trop tard pour sauver Randolph, vous avez à présent une autre mission. Cette région des Contrées du Rêve est clairement liée aux créatures qui envahissent votre réalité. Il doit y avoir des réponses ici. Et puis, ce n’est pas comme si vous aviez d’autres options.\nVous marchez jusqu’au rebord d’une falaise irrégulière dominant l’immense caverne en contrebas. Ce royaume est réellement vaste. Au loin, le long de la muraille, vous apercevez une cité fortifiée. Parmi ses nombreuses tours, un clocher noir monte si haut qu’il perce la surface des Contrées du Rêve. Au sud s’étend une vaste plaine qui surplombe une vallée. Vous pouvez y apercevoir des formes se mouvant à travers la lumière grise phosphorescente. Vous espérez que les êtres qui peuplent ce royaume sont de ceux avec qui il est possible de raisonner, mais vous en doutez… au moins, vous avez un plan. Quant à savoir s’il est bon, seul le temps le dira."
+      "text": "Vous avez finalement atteint les Contrées du Rêve, mais cela ne ressemble pas à ce que vous imaginiez. Cette grotte cyclopéenne est très éloignée des terres merveilleuses et des cités fabuleuses décrites par Virgil Gray dans ses récits. Peut-être que l’auteur ne s’est jamais aventuré aussi loin sous terre et n’a jamais été confronté aux horreurs qui grouillent sous la surface des Contrées du Rêve. Vous présumez qu’il n’aurait jamais conté d’histoires aussi effrayantes. Vous explorez ce monde sombre et désolé en partageant vos inquiétudes avec Randolph. « Il est vrai que nous sommes plus loin de vos compagnons que je ne l’espérais », affirme-t-il. « Cependant, si cela peut vous rassurer, je pense que c’est en fait une bonne chose. Il semble évident que les créatures qui envahissent notre réalité ont un rapport avec le Monde Souterrain. Je pense que nous devrions enquêter ici tant que nous en avons l’occasion. Nous pourrons regagner la surface des Contrées du Rêve une fois que nous aurons découvert la vérité. »\nVous demandez à Randolph s’il a une idée de l’endroit où commencer les recherches, et il vous mène jusqu’au rebord d’une falaise irrégulière dominant l’immense caverne en contrebas. « Je suis déjà venu ici », dit-il calmement en ramassant ses affaires. « Les murailles que vous pouvez voir au loin sont celles de la Ville des Gugs. Au sud s’étend une vaste plaine surplombant une vallée où vivent les goules. Peut-être pourrions-nous en apprendre davantage là-bas. » Vous exprimez vos doutes quant à la possibilité d’avoir une conversation civilisée avec de telles créatures. « Elles sont plus intelligentes que vous ne l’imaginez et pourraient se révéler particulièrement utiles, du moins si nous parvenons à les convaincre de nous aider. En fait, l’une d’elles fait même partie de mes amis : c’est un artiste du nom de Richard Pickman. Si nous avons la chance de le trouver, il sera sûrement notre meilleur atout. » Vous êtes toujours dubitatifs… mais au moins, vous avez un plan. Quant à savoir s’il est bon, seul le temps le dira."
     },
     {
       "id": "gather_encounter_sets",
@@ -69688,7 +69688,7 @@
         "nightgaunts",
         "pentagram"
       ],
-      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow) and the following locations: Northside, Downtown <i>(First Bank of Arkham)</i>, Easttown, Miskatonic University, and Rivertown. Do not gather the rest of the locations or the act, agenda, and scenario reference cards from that set."
+      "subtext": "Quand vous réunissez les cartes du set de rencontre <i>Les Masques de Minuit</i>, ne prenez que les 5 cartes Traîtrise (2x Fausse Piste et 3x Ombre Chasseresse) et les lieux suivants : Quartier Nord, Centre-Ville (<i>Première Banque d’Arkham</i>), Quartier Est, Université Miskatonic et Quartier de la Rivière. Ne prenez ni les autres lieux ni les cartes Acte, Intrigue ou Référence de Scénario de ce set."
     },
     {
       "id": "set_aside_alejandro_and_relic",
@@ -69851,7 +69851,7 @@
       "id": "three_acts_three_decks",
       "type": "rule_reminder",
       "title": "Trois Actes, Trois Fils",
-      "text": "Ce scénario contient trois decks Acte différents – un deck « a/b », un deck « c/d » et un deck « e/f ». Chacun de ces decks Acte est construit séparément en suivant l'ordre numérique, comme d'habitude. Lors du scénario, les trois decks Acte seront en jeu et les joueurs auront le droit de choisir quels actes avancer et lesquels ignorer. Les textes des trois actes sont considérés comme actifs à tout moment. Vous n'aurez peut-être pas le temps d'accomplir les trois tâches, alors choisissez judicieusement quelles pistes suivre.\nLe contenu de chaque deck Acte est modi\u001fé en fonction des circonstances suivantes :"
+      "text": "Ce scénario contient trois decks Acte différents – un deck « a/b », un deck « c/d » et un deck « e/f ». Chacun de ces decks Acte est construit séparément en suivant l'ordre numérique, comme d'habitude. Lors du scénario, les trois decks Acte seront en jeu et les joueurs auront le droit de choisir quels actes avancer et lesquels ignorer. Les textes des trois actes sont considérés comme actifs à tout moment. Vous n'aurez peut-être pas le temps d'accomplir les trois tâches, alors choisissez judicieusement quelles pistes suivre.\nLe contenu de chaque deck Acte est modifié en fonction des circonstances suivantes :"
     },
     {
       "id": "check_act_ab",

@@ -1019,7 +1019,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "the investigators recruited the help of another expedition."
+            "text": "les investigateus ont obtenu l'assistance d'une autre expédition."
           },
           {
             "id": "relic_is_missing",
@@ -1095,23 +1095,23 @@
     ],
     "supplies": [
       {
+        "id": "key_of_eztli",
+        "name": "Clé des Eztli",
+        "description": "La Clé des Eztli",
+        "cost": 0,
+        "multiple": false
+      },
+      {
         "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "name": "Substance visqueuse",
+        "description": "La substance visqueuse que vous avez trouvé dnas le Marais Souterrain",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
-        "id": "key_of_eztli",
-        "name": "Key of Eztli",
-        "description": "The Key of Eztli.",
+        "name": "Mystérieux sceptre",
+        "description": "Un mysterieux sceptre que vous avez trouvé dans la salle du trône.",
         "cost": 0,
         "multiple": false
       },
@@ -1222,11 +1222,11 @@
           },
           {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "l'anomalie a été contenue."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "le Sujet 8L-08 a dévoré l'univers tout entier."
           },
           {
             "id": "coh_cnidathqua_retreated",
