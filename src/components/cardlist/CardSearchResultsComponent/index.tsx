@@ -342,7 +342,7 @@ export default function({
       'and'
     );
   }, [baseQuery, mythosToggle, selectedSort, mythosMode]);
-  const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters), [filters]);
+  const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, true), [filters]);
   const [hasFilters, showFiltersPress] = useFilterButton(componentId, baseQuery);
   const renderFabIcon = useCallback(() => (
     <View style={styles.relative}>

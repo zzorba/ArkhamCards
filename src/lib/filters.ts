@@ -282,11 +282,12 @@ export default class FilterBuilder {
     );
   }
 
-  traitFilter(traits: string[]): Brackets[] {
+  traitFilter(traits: string[], localizedTraits: boolean): Brackets[] {
+    const traits_field = localizedTraits ? 'traits_normalized' : 'real_traits_normalized';
     return this.complexVectorClause(
       'trait',
       map(traits, trait => `%#${trait}#%`),
-      (valueName: string) => `c.real_traits_normalized LIKE :${valueName} OR (linked_card.real_traits_normalized is not null AND linked_card.real_traits_normalized LIKE :${valueName})`
+      (valueName: string) => `c.${traits_field} LIKE :${valueName} OR (linked_card.${traits_field} is not null AND linked_card.${traits_field} LIKE :${valueName})`
     );
   }
 
@@ -597,7 +598,7 @@ export default class FilterBuilder {
     );
   }
 
-  filterToQuery(filters: FilterState): Brackets | undefined {
+  filterToQuery(filters: FilterState, localizedTraits: boolean): Brackets | undefined {
     return combineQueriesOpt(
       [
         ...this.factionFilter(filters.factions),
@@ -610,7 +611,7 @@ export default class FilterBuilder {
         ...this.miscFilter(filters),
         ...this.levelFilter(filters),
         ...this.costFilter(filters),
-        ...this.traitFilter(filters.traits),
+        ...this.traitFilter(filters.traits, localizedTraits),
         ...this.assetFilters(filters),
         ...this.enemyFilters(filters),
         ...this.locationFilters(filters),
