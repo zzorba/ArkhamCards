@@ -951,9 +951,6 @@ msgstr ""
 msgid "${ totalXp } total"
 msgstr ""
 
-msgid "EXPERIENCE"
-msgstr ""
-
 msgid "Upgrade Deck"
 msgstr ""
 
@@ -1048,9 +1045,6 @@ msgstr ""
 msgid "${ investigator.name } Does It All"
 msgstr ""
 
-msgid "NAME"
-msgstr ""
-
 msgid "Create on ArkhamDB"
 msgstr ""
 
@@ -1079,10 +1073,6 @@ msgid "Reshuffle"
 msgstr ""
 
 msgid "Reset"
-msgstr ""
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
 msgstr ""
 
 #, javascript-format
@@ -1295,13 +1285,6 @@ msgid "Loading latest cards..."
 msgstr ""
 
 msgid "Charts"
-msgstr ""
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
-msgstr ""
-
-msgid "Deck Details"
 msgstr ""
 
 msgid "Card Costs"
@@ -1559,9 +1542,6 @@ msgid "Swarm"
 msgstr ""
 
 msgid "Seal"
-msgstr ""
-
-msgid "Investigate"
 msgstr ""
 
 msgid "Myriad"
@@ -3458,21 +3438,6 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-msgid "Engage"
-msgstr ""
-
-msgid "Play"
-msgstr ""
-
-msgid "Draw"
-msgstr ""
-
-msgid "Move"
-msgstr ""
-
-msgid "Resource"
-msgstr ""
-
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
 msgstr ""
@@ -4008,6 +3973,38 @@ msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
 "Campaign Log."
+msgstr ""
+
+msgctxt "action"
+msgid "Fight"
+msgstr ""
+
+msgctxt "action"
+msgid "Engage"
+msgstr ""
+
+msgctxt "action"
+msgid "Investigate"
+msgstr ""
+
+msgctxt "action"
+msgid "Play"
+msgstr ""
+
+msgctxt "action"
+msgid "Draw"
+msgstr ""
+
+msgctxt "action"
+msgid "Move"
+msgstr ""
+
+msgctxt "action"
+msgid "Evade"
+msgstr ""
+
+msgctxt "action"
+msgid "Resource"
 msgstr ""
 
 msgctxt "Draw Cards"

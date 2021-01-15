@@ -964,9 +964,6 @@ msgstr "Aggiungi Nota"
 msgid "${ totalXp } total"
 msgstr "${ totalXp } Totali"
 
-msgid "EXPERIENCE"
-msgstr "ESPERIENZA"
-
 msgid "Upgrade Deck"
 msgstr "Aggiorna Mazzo"
 
@@ -1061,9 +1058,6 @@ msgstr "${ investigator.name } in Azione"
 msgid "${ investigator.name } Does It All"
 msgstr "${ investigator.name } Fa Tutto"
 
-msgid "NAME"
-msgstr "NOME"
-
 msgid "Create on ArkhamDB"
 msgstr "Crea su ArkhamDB"
 
@@ -1093,10 +1087,6 @@ msgstr "Rimescola"
 
 msgid "Reset"
 msgstr "Annulla"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
-msgstr "PE: ${ spentXp } di ${ adjustedExperience } (${ adjustment })"
 
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
@@ -1315,13 +1305,6 @@ msgstr "Caricando le ultime carte."
 
 msgid "Charts"
 msgstr "Tabelle"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
-msgstr "PE: ${ spentXp } di ${ adjustedExperience } (+0)"
-
-msgid "Deck Details"
-msgstr "Dettagli del Mazzo"
 
 msgid "Card Costs"
 msgstr "Costo delle Carte"
@@ -1650,9 +1633,6 @@ msgstr "Sciame"
 
 msgid "Seal"
 msgstr "Sigillo"
-
-msgid "Investigate"
-msgstr "Investiga"
 
 msgid "Myriad"
 msgstr "Miriade"
@@ -3560,21 +3540,6 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-msgid "Engage"
-msgstr ""
-
-msgid "Play"
-msgstr ""
-
-msgid "Draw"
-msgstr ""
-
-msgid "Move"
-msgstr ""
-
-msgid "Resource"
-msgstr ""
-
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
 msgstr ""
@@ -4110,6 +4075,38 @@ msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
 "Campaign Log."
+msgstr ""
+
+msgctxt "action"
+msgid "Fight"
+msgstr ""
+
+msgctxt "action"
+msgid "Engage"
+msgstr ""
+
+msgctxt "action"
+msgid "Investigate"
+msgstr ""
+
+msgctxt "action"
+msgid "Play"
+msgstr ""
+
+msgctxt "action"
+msgid "Draw"
+msgstr ""
+
+msgctxt "action"
+msgid "Move"
+msgstr ""
+
+msgctxt "action"
+msgid "Evade"
+msgstr ""
+
+msgctxt "action"
+msgid "Resource"
 msgstr ""
 
 msgctxt "Draw Cards"

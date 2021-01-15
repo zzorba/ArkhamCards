@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { useSelector } from 'react-redux';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
@@ -437,14 +437,14 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
           setting="actions"
           onFilterChange={onFilterChange}
           allValues={{
-            'fight': t`Fight`,
-            'engage': t`Engage`,
-            'investigate': t`Investigate`,
-            'play': t`Play`,
-            'draw': t`Draw`,
-            'move': t`Move`,
-            'evade': t`Evade`,
-            'resource': t`Resource`,
+            'fight': c('action').t`Fight`,
+            'engage': c('action').t`Engage`,
+            'investigate': c('action').t`Investigate`,
+            'play': c('action').t`Play`,
+            'draw': c('action').t`Draw`,
+            'move': c('action').t`Move`,
+            'evade': c('action').t`Evade`,
+            'resource': c('action').t`Resource`,
           }}
         />
         <FilterChooserButton

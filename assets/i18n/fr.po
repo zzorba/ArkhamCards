@@ -139,7 +139,6 @@ msgstr "Rechercher des Decks"
 msgid "No matching decks for \"${ searchTerm }\"."
 msgstr "Pas de Decks correspondants pour « ${searchTerm} »."
 
-#, fuzzy
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
 msgstr[0] "${ scenarioCount } Scénario terminé"
@@ -957,9 +956,6 @@ msgstr "Ajouter une note"
 msgid "${ totalXp } total"
 msgstr "${totalXp} total"
 
-msgid "EXPERIENCE"
-msgstr "EXPÉRIENCE"
-
 msgid "Upgrade Deck"
 msgstr "Améliorer le Deck"
 
@@ -1054,9 +1050,6 @@ msgstr "${investigator.name} sur la Route"
 msgid "${ investigator.name } Does It All"
 msgstr "${investigator.name} fait Tout"
 
-msgid "NAME"
-msgstr "NOM"
-
 msgid "Create on ArkhamDB"
 msgstr "Créer sur ArkhamDB"
 
@@ -1086,10 +1079,6 @@ msgstr "Remélanger"
 
 msgid "Reset"
 msgstr "Réinitialiser"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
-msgstr "XP: ${ spentXp } sur ${ adjustedExperience } (${ adjustment })"
 
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
@@ -1316,13 +1305,6 @@ msgstr "Chargement des dernières cartes en cours..."
 
 msgid "Charts"
 msgstr "Graphiques"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
-msgstr "XP : ${spentXp} sur ${adjustedExperience} (+ 0)"
-
-msgid "Deck Details"
-msgstr "Détails du Deck"
 
 msgid "Card Costs"
 msgstr "Coût des Cartes"
@@ -1642,9 +1624,6 @@ msgstr "Essaim"
 
 msgid "Seal"
 msgstr "Sceller"
-
-msgid "Investigate"
-msgstr "Enquêter"
 
 msgid "Myriad"
 msgstr "Myriade"
@@ -2297,9 +2276,6 @@ msgstr "Journal"
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
 msgstr "${ scenarioName } (Tentative ${ attempt })"
-
-msgid "View Deck"
-msgstr "Voir le Deck"
 
 msgid "Select Deck"
 msgstr "Choisir un Deck"
@@ -3688,21 +3664,6 @@ msgstr "Lieu"
 msgid "Actions"
 msgstr "Actions"
 
-msgid "Engage"
-msgstr "Engager"
-
-msgid "Play"
-msgstr "Jouer"
-
-msgid "Draw"
-msgstr "Piocher"
-
-msgid "Move"
-msgstr "Se déplacer"
-
-msgid "Resource"
-msgstr "Ressource"
-
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
 msgstr "Annuler les améliorations du Deck ?"
@@ -3726,10 +3687,6 @@ msgstr "Amélioration"
 
 msgid "Editing"
 msgstr "Édition"
-
-#, fuzzy
-msgid "Uplodaing deck"
-msgstr "Chargement du deck en cours"
 
 msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will track changes."
@@ -3842,13 +3799,6 @@ msgstr "Amis"
 msgid "Search for ${ searchTerm }"
 msgstr "Rechercher ${ searchTerm }"
 
-#, fuzzy
-msgid "Friend Requeusts"
-msgstr "Demandes d'Amis"
-
-msgid "Pending Friend Requeusts"
-msgstr "Demandes d'Amis en Attente"
-
 msgid "Search for friends to add"
 msgstr "Rechercher des amis à ajouter"
 
@@ -3917,14 +3867,8 @@ msgstr "Nom du Compte"
 msgid "Choose a handle"
 msgstr ""
 
-msgid "Other Accounts"
-msgstr "Autres Comptes"
-
 msgid "ArkhamDB Account"
 msgstr "Compte ArkhamDB"
-
-msgid "Accounts"
-msgstr "Comptes"
 
 msgid "Arkham Cards Account"
 msgstr "Compte Arkham Cards"
@@ -4079,6 +4023,33 @@ msgstr "Ne peut pas ajouter de scénario indépendant maintenant."
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
 msgstr "Réserve du Chaos (${ tokenCount })"
+
+msgid "Sorry, you don't seem to be a Mythos Buster patron."
+msgstr ""
+
+msgid "Friend Requests"
+msgstr ""
+
+msgid "Pending Friend Requests"
+msgstr ""
+
+msgid "Save upgrade"
+msgstr ""
+
+msgid "Uploading deck"
+msgstr ""
+
+msgid "Upload campaign (network required)"
+msgstr ""
+
+msgid "Earned experience:"
+msgstr ""
+
+msgid "Finished Removing Investigarors"
+msgstr ""
+
+msgid "Record Scenario Result"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -4264,6 +4235,38 @@ msgid ""
 msgstr ""
 "Si <i>${ card.name }</i> est noté sous la mention ‘${ entry.section }’ dans votre Carnet "
 "de Campagne."
+
+msgctxt "action"
+msgid "Fight"
+msgstr ""
+
+msgctxt "action"
+msgid "Engage"
+msgstr "Engager"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr ""
+
+msgctxt "action"
+msgid "Play"
+msgstr "Jouer"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "Piocher"
+
+msgctxt "action"
+msgid "Move"
+msgstr "Se déplacer"
+
+msgctxt "action"
+msgid "Evade"
+msgstr ""
+
+msgctxt "action"
+msgid "Resource"
+msgstr "Ressource"
 
 msgctxt "Draw Cards"
 msgid "All"

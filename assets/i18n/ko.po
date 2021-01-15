@@ -655,9 +655,6 @@ msgstr "영속"
 msgid "Seal"
 msgstr "봉인"
 
-msgid "Investigate"
-msgstr "조사"
-
 msgid "Victory"
 msgstr "승점"
 
@@ -924,23 +921,6 @@ msgid "Special Cards"
 msgstr "특수 카드"
 
 msgid "Experience"
-msgstr "경험치"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
-msgstr "경험치: ${ spentXp }/${ adjustedExperience } (${ adjustment })"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
-msgstr "경험치: ${ spentXp }/${ adjustedExperience } (+0)"
-
-msgid "Deck Details"
-msgstr "덱 세부내역"
-
-msgid "NAME"
-msgstr "이름"
-
-msgid "EXPERIENCE"
 msgstr "경험치"
 
 msgid "Okay"
@@ -3573,21 +3553,6 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-msgid "Engage"
-msgstr ""
-
-msgid "Play"
-msgstr ""
-
-msgid "Draw"
-msgstr ""
-
-msgid "Move"
-msgstr ""
-
-msgid "Resource"
-msgstr ""
-
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
 msgstr ""
@@ -4126,6 +4091,38 @@ msgid ""
 msgstr ""
 "당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 있으면, 다음 지시를 "
 "수행합니다."
+
+msgctxt "action"
+msgid "Fight"
+msgstr ""
+
+msgctxt "action"
+msgid "Engage"
+msgstr ""
+
+msgctxt "action"
+msgid "Investigate"
+msgstr ""
+
+msgctxt "action"
+msgid "Play"
+msgstr ""
+
+msgctxt "action"
+msgid "Draw"
+msgstr ""
+
+msgctxt "action"
+msgid "Move"
+msgstr ""
+
+msgctxt "action"
+msgid "Evade"
+msgstr ""
+
+msgctxt "action"
+msgid "Resource"
+msgstr ""
 
 msgctxt "Draw Cards"
 msgid "All"

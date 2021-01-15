@@ -955,9 +955,6 @@ msgstr "Agregar nota"
 msgid "${ totalXp } total"
 msgstr "${totalXp} total"
 
-msgid "EXPERIENCE"
-msgstr "EXPERIENCIA"
-
 msgid "Upgrade Deck"
 msgstr "Mejorar mazo"
 
@@ -1052,9 +1049,6 @@ msgstr "${investigator.name} de Viaje"
 msgid "${ investigator.name } Does It All"
 msgstr "${investigator.name} Lo Hace Todo"
 
-msgid "NAME"
-msgstr "NOMBRE"
-
 msgid "Create on ArkhamDB"
 msgstr "Crear en ArkhamDB"
 
@@ -1084,10 +1078,6 @@ msgstr "Volver a barajar"
 
 msgid "Reset"
 msgstr "Reiniciar"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
-msgstr "XP: ${spentXp} de ${adjustedExperience} (${adjustment})"
 
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
@@ -1314,13 +1304,6 @@ msgstr "Cargando las últimas cartas..."
 
 msgid "Charts"
 msgstr "Gráficos"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
-msgstr "XP: ${ spentXp } de ${ adjustedExperience } (+ 0)"
-
-msgid "Deck Details"
-msgstr "Detalles del mazo"
 
 msgid "Card Costs"
 msgstr "Costes de las cartas"
@@ -1643,9 +1626,6 @@ msgstr "Multitud"
 
 msgid "Seal"
 msgstr "Sello"
-
-msgid "Investigate"
-msgstr "Investigar"
 
 msgid "Myriad"
 msgstr "Miríada"
@@ -3666,21 +3646,6 @@ msgstr "Lugar"
 msgid "Actions"
 msgstr "Acciones"
 
-msgid "Engage"
-msgstr "Enfrentar"
-
-msgid "Play"
-msgstr "Jugar"
-
-msgid "Draw"
-msgstr "Robar"
-
-msgid "Move"
-msgstr "Mover"
-
-msgid "Resource"
-msgstr "Recurso"
-
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
 msgstr "¿Deshacer mejora del mazo?"
@@ -4246,6 +4211,38 @@ msgid ""
 msgstr ""
 "Si <i>${ card.name }</i> aparece en la sección ‘${ entry.section }’ de tu Registro de "
 "Campaña."
+
+msgctxt "action"
+msgid "Fight"
+msgstr ""
+
+msgctxt "action"
+msgid "Engage"
+msgstr "Enfrentar"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "Investigar"
+
+msgctxt "action"
+msgid "Play"
+msgstr "Jugar"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "Robar"
+
+msgctxt "action"
+msgid "Move"
+msgstr "Mover"
+
+msgctxt "action"
+msgid "Evade"
+msgstr ""
+
+msgctxt "action"
+msgid "Resource"
+msgstr "Recurso"
 
 msgctxt "Draw Cards"
 msgid "All"
