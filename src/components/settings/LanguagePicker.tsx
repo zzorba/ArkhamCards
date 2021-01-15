@@ -73,6 +73,12 @@ function dialogStrings(lang: string): DialogStrings {
         cancelButton: 'Cancelar',
       };
     case 'en':
+      return {
+        title: 'Confirm',
+        description: 'Changing app language requires downloading the translated card information from ArkhamDB. This requires network and can take some time.',
+        confirmButton: 'Download now',
+        cancelButton: 'Cancel',
+      };
     case 'it':
     case 'pl':
     case 'uk':
