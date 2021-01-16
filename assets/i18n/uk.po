@@ -2337,9 +2337,6 @@ msgstr ""
 msgid "New Campaign"
 msgstr ""
 
-msgid "Campaign Name"
-msgstr ""
-
 msgid "Adjust Weakness Set"
 msgstr ""
 
@@ -2437,19 +2434,6 @@ msgstr ""
 
 #, javascript-format
 msgid "${ counts.assigned } / ${ counts.total } have been drawn."
-msgstr ""
-
-#, javascript-format
-msgid "Are you sure you want to delete the campaign: ${ campaign.name }"
-msgstr ""
-
-msgid "Scenario History"
-msgstr ""
-
-msgid "Edit Tokens"
-msgstr ""
-
-msgid "Draw Tokens"
 msgstr ""
 
 msgid "Weakness Set"

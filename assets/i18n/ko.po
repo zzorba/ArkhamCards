@@ -2409,9 +2409,6 @@ msgstr "난이도"
 msgid "New Campaign"
 msgstr "새로운 캠페인"
 
-msgid "Campaign Name"
-msgstr "캠페인 이름"
-
 msgid "Adjust Weakness Set"
 msgstr "약점 세트 조정"
 
@@ -2516,19 +2513,6 @@ msgstr "기본 약점 세트"
 #, javascript-format
 msgid "${ counts.assigned } / ${ counts.total } have been drawn."
 msgstr "${ counts.assigned } / ${ counts.total } 약점이 뽑혔습니다."
-
-#, javascript-format
-msgid "Are you sure you want to delete the campaign: ${ campaign.name }"
-msgstr "다음 캠페인을 정말로 삭제하시겠습니까? ${ campaign.name }"
-
-msgid "Scenario History"
-msgstr "시나리오 이력"
-
-msgid "Edit Tokens"
-msgstr "토큰 수정"
-
-msgid "Draw Tokens"
-msgstr "토큰 뽑기"
 
 msgid "Weakness Set"
 msgstr "약점 세트"

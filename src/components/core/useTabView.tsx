@@ -1,6 +1,6 @@
-import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { find, map } from 'lodash';
-import { Dimensions } from 'react-native';
+import { useWindowDimensions } from 'react-native';
 import { TabView, SceneRendererProps, NavigationState, TabBar, Route } from 'react-native-tab-view';
 
 import StyleContext from '@styles/StyleContext';
@@ -21,10 +21,9 @@ interface TabRoute extends Route {
   title: string;
 }
 
-const initialLayout = { width: Dimensions.get('window').width };
-
 export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props): [React.ReactNode, (index: number) => void] {
   const { fontScale, colors } = useContext(StyleContext);
+  const { width } = useWindowDimensions();
   const [index, setIndex] = useState(0);
 
   const onIndexChange = useCallback((index: number) => {
@@ -73,10 +72,10 @@ export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props):
         navigationState={navigationState}
         renderScene={renderTab}
         onIndexChange={onIndexChange}
-        initialLayout={initialLayout}
+        initialLayout={{ width }}
       />
     );
-  }, [renderTab, navigationState, renderTab, onIndexChange, initialLayout]);
+  }, [renderTab, navigationState, onIndexChange, renderTabBar, width]);
 
   return [tabView, setIndex];
 }

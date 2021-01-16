@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { Deck } from '@actions/types';
@@ -16,6 +16,7 @@ interface Props {
 }
 
 export default function InvestigatorDeckRow({ id, deckRemoved }: Props) {
+  const { lang } = useContext(LanguageContext);
   const [theDeck] = useDeck(id, { fetchIfMissing: true });
   const investigators = useInvestigatorCards(theDeck?.taboo_id || 0);
   const investigator = theDeck && investigators && investigators[theDeck.investigator_code];
@@ -34,7 +35,7 @@ export default function InvestigatorDeckRow({ id, deckRemoved }: Props) {
     <InvestigatorRow
       investigator={investigator}
       onRemove={deckRemoved ? onRemove : undefined}
-      noFactionIcon={TINY_PHONE}
+      noFactionIcon={TINY_PHONE || lang !== 'en'}
     />
   );
 }

@@ -868,9 +868,6 @@ msgstr ""
 msgid "Chaos Bag"
 msgstr ""
 
-msgid "Campaign Name"
-msgstr ""
-
 msgid "Adjust Weakness Set"
 msgstr ""
 
@@ -974,10 +971,6 @@ msgid "${ counts.assigned } / ${ counts.total } have been drawn."
 msgstr ""
 
 msgid "Delete"
-msgstr ""
-
-#, javascript-format
-msgid "Are you sure you want to delete the campaign: ${ campaign.name }"
 msgstr ""
 
 msgid "Show Interludes"
@@ -1724,15 +1717,6 @@ msgid "Succeed By 3 or More"
 msgstr ""
 
 msgid "Change Scenario"
-msgstr ""
-
-msgid "Scenario History"
-msgstr ""
-
-msgid "Edit Tokens"
-msgstr ""
-
-msgid "Draw Tokens"
 msgstr ""
 
 msgid "Weakness Set"

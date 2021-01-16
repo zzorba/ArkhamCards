@@ -111,6 +111,8 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     position: 'relative',
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
   },
   textRow: {
     flexDirection: 'row',
