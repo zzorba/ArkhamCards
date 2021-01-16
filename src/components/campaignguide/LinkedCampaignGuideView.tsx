@@ -206,7 +206,7 @@ export default function LinkedCampaignGuideView(props: Props) {
             guided
           />
         </SafeAreaView>
-       ),
+      ),
     };
   }, [showTraumaDialog, addInvestigatorAPressed, addInvestigatorBPressed, showEditNameDialog, showAddInvestigator, toggleRemoveMode, handleUpdateCampaign,
     componentId, contextA, contextB, processedCampaignA, processedCampaignB, backgroundStyle, campaignDataA, campaignDataB, campaignId, campaignName, removeMode,

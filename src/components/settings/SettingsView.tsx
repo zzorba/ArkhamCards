@@ -52,7 +52,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
     const standalonePackCount = filter(standalonePacks, p => p.cycle_position > 50).length;
     const cyclePart = ngettext(msgid`${cycleCount} Cycle`, `${cycleCount} Cycles`, cycleCount);
     const packPart = ngettext(msgid`${standalonePackCount} Pack`, `${standalonePackCount} Packs`, standalonePackCount);
-    return `${cyclePart} (${packPart})`;
+    return `${cyclePart} + ${packPart}`;
   }, [packs]);
   const collectionSummary = useMemo(() => summarizePacks(packsInCollection), [summarizePacks, packsInCollection]);
   const spoilerSummary = useMemo(() => summarizePacks(spoilerSettings), [summarizePacks, spoilerSettings]);

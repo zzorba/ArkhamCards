@@ -67425,7 +67425,7 @@
       "id": "flashback_2_story",
       "title": "Flashback II",
       "type": "story",
-      "text": "An old fishing vessel rocks side to side beneath your feat, assaulted by tempestuous waters and tentacles of some enormous creature looming just beneath the waves. \"Somebody kill that damned thing!\" the ship's captain shouts. A loud crash erupts across the vessel, and the hull howls in protest as a vast tentacle encircles it and draws tight. \"It's got us in its grip! It ain't goin' nowhere. Now's your chance!\" the grizzled, old captain yells. With fire in your eyes, you raise your weapon and swing...\nYou return to the present, a sickness churning in your stomach. The skeletal remains of the creature stare back at you. What on Earth was that thing?"
+      "text": "An old fishing vessel rocks side to side beneath your feet, assaulted by tempestuous waters and tentacles of some enormous creature looming just beneath the waves. \"Somebody kill that damned thing!\" the ship's captain shouts. A loud crash erupts across the vessel, and the hull howls in protest as a vast tentacle encircles it and draws tight. \"It's got us in its grip! It ain't goin' nowhere. Now's your chance!\" the grizzled, old captain yells. With fire in your eyes, you raise your weapon and swing...\nYou return to the present, a sickness churning in your stomach. The skeletal remains of the creature stare back at you. What on Earth was that thing?"
     },
     {
       "id": "flashback_2_effects",
@@ -67503,7 +67503,7 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "In the distance, the sky is a dark crimson, and the full moon hangs just below the blackened sun. You are about to close your eyes and surrender to unconsciousness when a stranger's voice startles you back too your feet. \"Oh! You are alive?\" Even through her strained voice, you can hear a rhythmic Indian accent and the unwavering confidence of a trained professional. Standing in front of you is a woman with long, raven-black hair. Her tattered trench coat has seen better days, and bruises splash across her dirt-covered skin. \"You seem confused. Why are you looking at me like that?\" the stranger asks.",
+      "text": "In the distance, the sky is a dark crimson, and the full moon hangs just below the blackened sun. You are about to close your eyes and surrender to unconsciousness when a stranger's voice startles you back to your feet. \"Oh! You are alive?\" Even through her strained voice, you can hear a rhythmic Indian accent and the unwavering confidence of a trained professional. Standing in front of you is a woman with long, raven-black hair. Her tattered trench coat has seen better days, and bruises splash across her dirt-covered skin. \"You seem confused. Why are you looking at me like that?\" the stranger asks.",
       "steps": ["earn_xp"]
     }
   ]

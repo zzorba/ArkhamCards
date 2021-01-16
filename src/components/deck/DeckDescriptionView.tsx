@@ -78,7 +78,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
         renderIcon={fabIcon}
         onPress={edit ? saveChanges : onEdit}
         offsetX={s + xs}
-        offsetY={(keyboardHeight || NOTCH_BOTTOM_PADDING) + s + xs}
+        offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + s + xs}
         shadowStyle={shadow.large}
         fixNativeFeedbackRadius
       />
@@ -104,7 +104,13 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
         </ScrollView>
       ) }
       { (mode === 'edit' || hasDescriptionChange || edit) && (
-        <DeckNavFooter deckId={id} componentId={componentId} forceShow control="fab" onPress={backPressed} yOffset={keyboardHeight} />
+        <DeckNavFooter
+          deckId={id}
+          componentId={componentId}
+          forceShow
+          control="fab"
+          onPress={backPressed}
+          yOffset={Platform.OS === 'ios' ? keyboardHeight : undefined} />
       ) }
       { !!editable && fab }
     </View>

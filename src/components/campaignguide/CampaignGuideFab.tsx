@@ -7,7 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { t } from 'ttag';
 
 import { deleteCampaign } from '@components/campaign/actions';
-import { s, xs } from '@styles/space';
+import { isTablet, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useNavigationConstants } from '@components/core/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -112,7 +112,7 @@ export default function CampaignGuideFab({
       renderIcon={fabIcon}
       onPress={removeMode ? toggleRemoveInvestigator : toggleFabOpen}
       offsetX={s + xs}
-      offsetY={(Platform.OS === 'ios' ? bottomTabsHeight : 0) + s + xs}
+      offsetY={(isTablet ? bottomTabsHeight : 0) + s + xs}
       shadowStyle={shadow.large}
       fixNativeFeedbackRadius
     >
