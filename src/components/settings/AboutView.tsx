@@ -26,7 +26,7 @@ export default function AboutView() {
       </View>
       <View style={space.marginTopM}>
         <CardTextComponent onLinkPress={linkPressed}
-          text={'<b>Additional Contributions:</b>\n• Visual Design: [Eugene Sarnetsky](https://t.me/sarnetsky)\n• Digital chaos bag + odds calculator: Joshua Payne (@suxur)\n• Tooling and build support: Akaan'} />
+          text={'<b>Additional Contributions:</b>\n• Visual Design: [Eugene Sarnetsky](https://t.me/sarnetsky)\n• Digital chaos bag + odds calculator: Joshua Payne (@suxur)\n• Dissonant Voices audio integration: North101\n• Tooling and build support: Akaan'} />
       </View>
       <View style={space.marginTopM}>
         <CardTextComponent onLinkPress={linkPressed}

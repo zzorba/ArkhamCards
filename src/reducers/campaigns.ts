@@ -3,7 +3,7 @@ import uuid from 'react-native-uuid';
 import { t } from 'ttag';
 
 import {
-  LOGOUT,
+  ARKHAMDB_LOGOUT,
   NEW_CAMPAIGN,
   NEW_LINKED_CAMPAIGN,
   UPDATE_CAMPAIGN,
@@ -130,7 +130,7 @@ export default function(
       all,
     };
   }
-  if (action.type === LOGOUT) {
+  if (action.type === ARKHAMDB_LOGOUT) {
     const all: { [id: string]: Campaign } = {};
     forEach(state.all, (campaign, id) => {
       all[id] = {

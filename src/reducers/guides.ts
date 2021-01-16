@@ -8,7 +8,7 @@ import {
   GUIDE_UPDATE_ACHIEVEMENT,
   GUIDE_RESET_SCENARIO,
   RESTORE_COMPLEX_BACKUP,
-  LOGOUT,
+  ARKHAMDB_LOGOUT,
   GuideActions,
   CampaignGuideState,
   DEFAULT_CAMPAIGN_GUIDE_STATE,
@@ -52,7 +52,7 @@ export default function(
   state: GuidesState = DEFAULT_GUIDES_STATE,
   action: GuideActions
 ): GuidesState {
-  if (action.type === LOGOUT) {
+  if (action.type === ARKHAMDB_LOGOUT) {
     return state;
   }
   if (action.type === RESTORE_COMPLEX_BACKUP) {

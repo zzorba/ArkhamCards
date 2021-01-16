@@ -9,10 +9,10 @@ import {
   MY_DECKS_ERROR,
   SET_IN_COLLECTION,
   SET_PACK_SPOILER,
-  LOGIN_STARTED,
-  LOGIN,
-  LOGIN_ERROR,
-  LOGOUT,
+  ARKHAMDB_LOGIN_STARTED,
+  ARKHAMDB_LOGIN,
+  ARKHAMDB_LOGIN_ERROR,
+  ARKHAMDB_LOGOUT,
   DISSONANT_VOICES_LOGIN_STARTED,
   DISSONANT_VOICES_LOGIN,
   DISSONANT_VOICES_LOGIN_ERROR,
@@ -28,17 +28,17 @@ import { decks } from '@lib/authApi';
 export function login(): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>): void => {
     dispatch({
-      type: LOGIN_STARTED,
+      type: ARKHAMDB_LOGIN_STARTED,
     });
     signInFlow().then(response => {
       if (response.success) {
         dispatch({
-          type: LOGIN,
+          type: ARKHAMDB_LOGIN,
         });
         dispatch(refreshMyDecks());
       } else {
         dispatch({
-          type: LOGIN_ERROR,
+          type: ARKHAMDB_LOGIN_ERROR,
           error: response.error,
         });
       }
@@ -49,11 +49,11 @@ export function login(): ThunkAction<void, AppState, unknown, Action> {
 export function logout(): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
     dispatch({
-      type: LOGIN_STARTED,
+      type: ARKHAMDB_LOGIN_STARTED,
     });
     signOutFlow().then(() => {
       dispatch({
-        type: LOGOUT,
+        type: ARKHAMDB_LOGOUT,
       });
     });
   };
@@ -64,11 +64,11 @@ export function verifyLogin(): ThunkAction<void, AppState, null, Action<string>>
     getAccessToken().then(accessToken => {
       if (accessToken) {
         dispatch({
-          type: LOGIN,
+          type: ARKHAMDB_LOGIN,
         });
       } else {
         dispatch({
-          type: LOGOUT,
+          type: ARKHAMDB_LOGOUT,
         });
       }
     });

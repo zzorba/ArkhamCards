@@ -761,25 +761,25 @@ export const NEW_WEAKNESS_SET = 'NEW_WEAKNESS_SET';
 export const EDIT_WEAKNESS_SET = 'EDIT_WEAKNESS_SET';
 export const DELETE_WEAKNESS_SET = 'DELETE_WEAKNESS_SET';
 
-export const LOGIN_STARTED = 'LOGIN_STARTED';
-interface LoginStartedAction {
-  type: typeof LOGIN_STARTED;
+export const ARKHAMDB_LOGIN_STARTED = 'ARKHAMDB_LOGIN_STARTED';
+interface ArkhamDbLoginStartedAction {
+  type: typeof ARKHAMDB_LOGIN_STARTED;
 }
 
-export const LOGIN = 'LOGIN';
-interface LoginAction {
-  type: typeof LOGIN;
+export const ARKHAMDB_LOGIN = 'ARKHAMDB_LOGIN';
+interface ArkhamDbLoginAction {
+  type: typeof ARKHAMDB_LOGIN;
 }
 
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-interface LoginErrorAction {
-  type: typeof LOGIN_ERROR;
+export const ARKHAMDB_LOGIN_ERROR = 'ARKHAMDB_LOGIN_ERROR';
+interface ArkhamDbLoginErrorAction {
+  type: typeof ARKHAMDB_LOGIN_ERROR;
   error: Error | string;
 }
 
-export const LOGOUT = 'LOGOUT';
-interface LogoutAction {
-  type: typeof LOGOUT;
+export const ARKHAMDB_LOGOUT = 'ARKHAMDB_LOGOUT';
+interface ArkhamDbLogoutAction {
+  type: typeof ARKHAMDB_LOGOUT;
 }
 
 export const CLEAR_FILTER = 'CLEAR_FILTER';
@@ -795,6 +795,7 @@ export interface ToggleFilterAction {
   key: keyof FilterState;
   value: boolean;
 }
+
 export const UPDATE_FILTER = 'UPDATE_FILTER';
 export interface UpdateFilterAction {
   type: typeof UPDATE_FILTER;
@@ -1050,13 +1051,13 @@ export type PacksActions =
   UpdatePromptDismissedAction;
 
 export type SignInActions =
-  LoginAction |
-  LoginStartedAction |
-  LoginErrorAction |
-  LogoutAction;
+  ArkhamDbLoginAction |
+  ArkhamDbLoginStartedAction |
+  ArkhamDbLoginErrorAction |
+  ArkhamDbLogoutAction;
 
 export type DecksActions =
-  LogoutAction |
+  ArkhamDbLogoutAction |
   RestoreComplexBackupAction |
   RestoreBackupAction |
   MyDecksStartRefreshAction |
@@ -1083,7 +1084,7 @@ export type DeckEditsActions =
   UpdateDeckEditCountsAction;
 
 export type CampaignActions =
-  LogoutAction |
+  ArkhamDbLogoutAction |
   RestoreComplexBackupAction |
   ReplaceLocalDeckAction |
   CleanBrokenCampaignsAction |
@@ -1106,7 +1107,7 @@ export type GuideActions =
   DeleteCampaignAction |
   RestoreComplexBackupAction |
   RestoreBackupAction |
-  LogoutAction |
+  ArkhamDbLogoutAction |
   GuideSetInputAction |
   GuideUndoInputAction |
   GuideResetScenarioAction |

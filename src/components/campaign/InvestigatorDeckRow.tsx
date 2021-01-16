@@ -5,6 +5,7 @@ import { Deck } from '@actions/types';
 import Card from '@data/Card';
 import { useDeck, useInvestigatorCards } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   id: number;

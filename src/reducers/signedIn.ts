@@ -1,8 +1,8 @@
 import {
-  LOGIN_STARTED,
-  LOGIN,
-  LOGIN_ERROR,
-  LOGOUT,
+  ARKHAMDB_LOGIN_STARTED,
+  ARKHAMDB_LOGIN,
+  ARKHAMDB_LOGIN_ERROR,
+  ARKHAMDB_LOGOUT,
   SignInActions,
 } from '@actions/types';
 
@@ -21,25 +21,25 @@ export default function(
   state: SignedInState = DEFAULT_SIGNED_IN_STATE,
   action: SignInActions
 ): SignedInState {
-  if (action.type === LOGIN_STARTED) {
+  if (action.type === ARKHAMDB_LOGIN_STARTED) {
     return Object.assign({}, state, {
       loading: true,
     });
   }
-  if (action.type === LOGIN) {
+  if (action.type === ARKHAMDB_LOGIN) {
     return Object.assign({}, state, {
       loading: false,
       status: true,
       error: null,
     });
   }
-  if (action.type === LOGIN_ERROR) {
+  if (action.type === ARKHAMDB_LOGIN_ERROR) {
     return Object.assign({}, state, {
       loading: false,
       error: action.error.toString() === 'User Cancelled.' ? action.error : null,
     });
   }
-  if (action.type === LOGOUT) {
+  if (action.type === ARKHAMDB_LOGOUT) {
     return Object.assign({}, state, {
       loading: false,
       status: false,

@@ -2,7 +2,7 @@ import { concat, uniq, flatMap, filter, forEach, map, reverse, sortBy, values } 
 import uuid from 'react-native-uuid';
 
 import {
-  LOGOUT,
+  ARKHAMDB_LOGOUT,
   RESTORE_BACKUP,
   MY_DECKS_START_REFRESH,
   MY_DECKS_CACHE_HIT,
@@ -118,7 +118,7 @@ export default function(
       all,
     };
   }
-  if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
+  if (action.type === ARKHAMDB_LOGOUT || action.type === CLEAR_DECKS) {
     const all: DecksMap = {};
     forEach(state.all, (deck, id: any) => {
       if (deck && deck.local) {

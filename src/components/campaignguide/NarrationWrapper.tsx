@@ -135,6 +135,7 @@ function ProgressView() {
         height: 1,
         width: '100%',
         flexDirection: 'row',
+        backgroundColor: colors.divider,
       }}
     >
       <View style={{ flex: position, backgroundColor: colors.D30 }} />
