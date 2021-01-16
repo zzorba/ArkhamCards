@@ -31,7 +31,7 @@ export default function ArkhamDbLoginButton({ last }: Props) {
       [
         { text: t`Sign Out`, style: 'destructive', onPress: doLogout },
         { text: t`Reconnect Account`, onPress: loginPressed },
-        { text: t`Cancel` },
+        { text: t`Cancel`, style: 'cancel' },
       ],
     );
   }, [doLogout, loginPressed]);
@@ -43,7 +43,7 @@ export default function ArkhamDbLoginButton({ last }: Props) {
       [
         { text: t`Sign Out`, style: 'destructive', onPress: doLogout },
         { text: t`Reconnect Account`, onPress: loginPressed },
-        { text: t`Cancel` },
+        { text: t`Cancel`, style: 'cancel' },
       ],
     );
   }, [doLogout, loginPressed]);

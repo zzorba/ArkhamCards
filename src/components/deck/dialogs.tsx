@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, useCallback, useContext, useRef } from 'react';
-import { forEach, map, throttle } from 'lodash';
+import { find, forEach, map, throttle } from 'lodash';
 import { Platform, NativeSyntheticEvent, StyleSheet, Text, TextInput, TextInputSubmitEditingEventData, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Action } from 'redux';
@@ -18,6 +18,7 @@ import StyleContext from '@styles/StyleContext';
 import space, { s, xs } from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
+import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
 
 interface DialogOptions {
   title: string;
@@ -69,27 +70,49 @@ export function useDialog({
     }
     setVisible(false);
   }, [setVisible, confirmOnPress]);
+  const buttons = useMemo(() => {
+    const result: React.ReactNode[] = [];
+    if (dismiss?.title) {
+      result.push(
+        <DeckButton
+          key="cancel"
+          icon="dismiss"
+          color={confirm ? 'red' : undefined}
+          title={dismiss.title}
+          thin
+          onPress={onDismiss}
+        />
+      );
+    }
+    if (confirm) {
+      result.push(
+        <DeckButton
+          key="save"
+          icon="check-thin"
+          title={confirm.title}
+          thin
+          loading={confirm.loading}
+          onPress={onConfirm}
+        />
+      );
+    }
+    return result;
+  }, [confirm, onConfirm, onDismiss, dismiss]);
   const dialog = useMemo(() => {
     return (
       <NewDialog
         title={title}
-        dismiss={dismiss || allowDismiss ? {
-          title: dismiss?.title,
-          onPress: onDismiss,
-        } : undefined}
-        confirm={confirm ? {
-          title: confirm.title,
-          loading: confirm.loading,
-          onPress: onConfirm,
-        } : undefined}
+        dismissable={!!dismiss || allowDismiss}
+        onDismiss={onDismiss}
         visible={visible}
+        buttons={buttons}
         alignment={alignment}
         avoidKeyboard={avoidKeyboard}
       >
         { content }
       </NewDialog>
     );
-  }, [title, confirm, dismiss, visible, alignment, onDismiss, onConfirm, content, allowDismiss, avoidKeyboard]);
+  }, [title, dismiss, visible, alignment, onDismiss, buttons, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,
@@ -97,6 +120,106 @@ export function useDialog({
     dialog,
     showDialog,
   };
+}
+
+interface AlertButton {
+  text: string;
+  onPress?: () => void;
+  style?: 'default' | 'cancel' | 'destructive';
+  icon?: DeckButtonIcon;
+}
+interface AlertState {
+  title: string;
+  description: string;
+  buttons: AlertButton[];
+}
+
+function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClose: () => void }) {
+  const onPress = useCallback(() => {
+    if (button.onPress) {
+      button.onPress();
+    }
+    onClose();
+  }, [button, onClose]);
+  const icon = useMemo(() => {
+    if (button.icon) {
+      return button.icon;
+    }
+    if (button.style === 'destructive') {
+      return 'delete';
+    }
+    if (button.style === 'cancel') {
+      return 'dismiss';
+    }
+    return 'check-thin';
+  }, [button]);
+  const color = useMemo(() => {
+    if (button.style === 'cancel') {
+      return 'red_outline';
+    }
+    if (button.style === 'destructive') {
+      return 'red';
+    }
+    return 'gray';
+  }, [button.style]);
+  return (
+    <DeckButton
+      title={button.text}
+      color={color}
+      onPress={onPress}
+      thin
+      icon={icon}
+    />
+  );
+}
+export type ShowAlert = (title: string, description: string, buttons?: AlertButton[]) => void;
+export function useAlertDialog(): [React.ReactNode, ShowAlert] {
+  const { typography } = useContext(StyleContext);
+  const [state, setState] = useState<AlertState | undefined>();
+  const onClose = useCallback(() => {
+    setState(undefined);
+  }, [setState]);
+  const onDismiss = useCallback(() => {
+    forEach(state?.buttons || [], button => {
+      if (button.style === 'cancel' && button.onPress) {
+        button.onPress();
+      }
+    });
+    onClose();
+  }, [onClose, state]);
+  const buttons = useMemo(() => {
+    if (!state) {
+      return [];
+    }
+    return map(state.buttons, (button, idx) => {
+      return <AlertButtonComponent key={idx} button={button} onClose={onClose} />;
+    });
+  }, [state, onClose]);
+  const dialog = useMemo(() => {
+    return (
+      <NewDialog
+        title={state?.title || ''}
+        dismissable={!!state && (state.buttons.length === 0 || !!find(state.buttons, button => button.style === 'cancel'))}
+        onDismiss={onDismiss}
+        visible={!!state}
+        buttons={buttons}
+        alignment="center"
+      >
+        <View style={space.paddingS}>
+          <Text style={typography.text}>{ state?.description || '' }</Text>
+        </View>
+      </NewDialog>
+    );
+  }, [state, buttons, onDismiss, typography]);
+
+  const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }]) => {
+    setState({
+      title,
+      description,
+      buttons: buttons.length > 0 ? buttons : [{ text: t`Okay` }],
+    });
+  }, [setState]);
+  return [dialog, showAlert];
 }
 
 interface CounterDialogOptions {

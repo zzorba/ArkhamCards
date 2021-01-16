@@ -9,10 +9,12 @@ import space, { s, xs } from '@styles/space';
 import COLORS from '@styles/colors';
 import ArkhamIcon from '@icons/ArkhamIcon';
 
+export type DeckButtonIcon = 'tools' | 'difficulty' | 'chaos_bag' | 'chart' | 'elder_sign' | 'delete' | 'per_investigator' | 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
+
 interface Props {
   title: string;
   detail?: string;
-  icon?: 'tools' | 'difficulty' | 'chaos_bag' | 'chart' | 'elder_sign' | 'delete' | 'per_investigator' | 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
+  icon?: DeckButtonIcon;
   color?: 'red' | 'red_outline' | 'gold' | 'gray';
   onPress?: () => void;
   rightMargin?: boolean;

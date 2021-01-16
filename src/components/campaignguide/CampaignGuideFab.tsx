@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import { Alert } from 'react-native';
+import { Alert, Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import ActionButton from 'react-native-action-button';
@@ -126,7 +126,7 @@ export default function CampaignGuideFab({
         renderIcon={fabIcon}
         onPress={toggleRemoveInvestigator}
         offsetX={s + xs}
-        offsetY={(isTablet ? bottomTabsHeight : 0) + s + xs}
+        offsetY={(isTablet || Platform.OS === 'ios' ? bottomTabsHeight : 0) + s + xs}
         shadowStyle={shadow.large}
         fixNativeFeedbackRadius
       />
@@ -140,7 +140,7 @@ export default function CampaignGuideFab({
       renderIcon={fabIcon}
       onPress={removeMode ? toggleRemoveInvestigator : toggleFabOpen}
       offsetX={s + xs}
-      offsetY={(isTablet ? bottomTabsHeight : 0) + s + xs}
+      offsetY={(isTablet || Platform.OS === 'ios' ? bottomTabsHeight : 0) + s + xs}
       shadowStyle={shadow.large}
       fixNativeFeedbackRadius
     >

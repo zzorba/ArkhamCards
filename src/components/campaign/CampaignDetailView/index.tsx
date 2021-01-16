@@ -31,7 +31,7 @@ import space from '@styles/space';
 import CampaignSummaryHeader from '../CampaignSummaryHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import { useTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, useTextDialog } from '@components/deck/dialogs';
 import CampaignGuideFab from '@components/campaignguide/CampaignGuideFab';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import Card from '@data/Card';
@@ -278,6 +278,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
     showChooseDeck();
   }, [showChooseDeck]);
   const [removeMode, toggleRemoveMode] = useFlag(false);
+  const [alertDialog, showAlert] = useAlertDialog();
   const decksTab = useMemo(() => {
     if (!campaign) {
       return <LoadingSpinner />;
@@ -288,6 +289,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             { !!cards && (
               <DecksSection
+                showAlert={showAlert}
                 header={
                   <CampaignSummaryHeader
                     name={campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode]}
@@ -323,7 +325,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       </View>
     );
   }, [campaign, latestDeckIds, decks, allInvestigators, cards, backgroundStyle, componentId, removeMode,
-    toggleRemoveMode, showChooseDeck,
+    toggleRemoveMode, showChooseDeck, showAlert,
     drawWeaknessPressed, showTraumaDialog, updateLatestDeckIds, updateNonDeckInvestigators, incSpentXp, decSpentXp]);
   const [cycleScenarios] = useCampaignScenarios(campaign);
   const scenariosTab = useMemo(() => {
@@ -457,6 +459,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
         toggleRemoveInvestigator={toggleRemoveMode}
         guided={false}
       />
+      { alertDialog }
       { traumaDialog }
       { dialog }
     </SafeAreaView>

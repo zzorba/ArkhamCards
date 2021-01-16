@@ -17,6 +17,7 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import { ShowAlert, useAlertDialog } from '@components/deck/dialogs';
 
 interface Props {
   componentId: string;
@@ -35,6 +36,7 @@ interface Props {
   header?: React.ReactNode;
   removeMode: boolean;
   toggleRemoveMode: () => void;
+  showAlert: ShowAlert;
 }
 
 const EMPTY_TRAUMA_DATA: TraumaAndCardData = {};
@@ -56,9 +58,9 @@ export default function DecksSection({
   removeMode,
   toggleRemoveMode,
   showChooseDeck,
+  showAlert,
 }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
-
   const removeInvestigator = useCallback((investigator: Card, removedDeckId?: number) =>{
     if (removedDeckId) {
       const newLatestDeckIds = filter(
@@ -85,7 +87,7 @@ export default function DecksSection({
       const deck = decks[deckId];
       return deck && deck.investigator_code === investigator.code;
     });
-    Alert.alert(
+    showAlert(
       t`Remove ${investigator.name}?`,
       deckId ?
         t`Are you sure you want to remove this deck from the campaign?\n\nThe deck will remain on ArkhamDB.` :
@@ -102,7 +104,7 @@ export default function DecksSection({
         },
       ],
     );
-  }, [latestDeckIds, decks, removeInvestigator]);
+  }, [latestDeckIds, decks, removeInvestigator, showAlert]);
 
   const showDeckUpgradeDialog = useCallback((investigator: Card, deck: Deck) => {
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;

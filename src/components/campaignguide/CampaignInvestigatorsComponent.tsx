@@ -13,6 +13,7 @@ import Card from '@data/Card';
 import { s, l } from '@styles/space';
 import { useComponentDidDisappear, useCounters, useEffectUpdate } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
+import { ShowAlert } from '@components/deck/dialogs';
 
 interface Props {
   componentId: string;
@@ -25,6 +26,7 @@ interface Props {
     now?: Date
   ) => void;
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
+  showAlert: ShowAlert;
 }
 
 function getDate(date: string | Date) {
@@ -35,10 +37,9 @@ function getDate(date: string | Date) {
 }
 
 export default function CampaignInvestigatorsComponent(props: Props) {
-  const { componentId, campaignData, processedCampaign, removeMode, updateCampaign, showTraumaDialog } = props;
+  const { componentId, campaignData, processedCampaign, removeMode, updateCampaign, showTraumaDialog, showAlert } = props;
   const { campaignState, latestDecks, campaignInvestigators, campaignId, playerCards } = useContext(CampaignGuideContext);
   const { borderStyle, typography } = useContext(StyleContext);
-
   const [spentXp, incSpentXp, decSpentXp] = useCounters(mapValues(campaignData.adjustedInvestigatorData, data => (data && data.spentXp) || 0));
   const [xpDirty, setXpDirty] = useState(false);
   useEffectUpdate(() => {
@@ -113,7 +114,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
   const removeInvestigatorPressed = useCallback((investigator: Card) => {
     const deck = latestDecks[investigator.code];
     if (deck) {
-      Alert.alert(
+      showAlert(
         t`Remove deck from campaign`,
         t`Are you sure you want to remove this deck from the campaign?\n\nAfter removing the deck you will be able to select a different deck, but experience and story assets will only be saved as you complete new scenarios.`,
         [
@@ -129,7 +130,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
       );
     } else {
       if (processedCampaign.campaignLog.hasInvestigatorPlayedScenario(investigator)) {
-        Alert.alert(
+        showAlert(
           t`Cannot remove`,
           t`Since this investigator has participated in one or more scenarios during this campaign, they cannot be removed.\n\nHowever, you can choose to have them not participate in future scenarios of this campaign.`,
           [
@@ -140,7 +141,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
         campaignState.removeInvestigator(investigator);
       }
     }
-  }, [latestDecks, processedCampaign.campaignLog, campaignState]);
+  }, [latestDecks, processedCampaign.campaignLog, campaignState, showAlert]);
 
   const canEditTrauma = useMemo(() => {
     return !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&
@@ -169,13 +170,13 @@ export default function CampaignInvestigatorsComponent(props: Props) {
 
   const disabledShowTraumaPressed = useCallback(() => {
     const campaignSetupCompleted = !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed');
-    Alert.alert(
+    showAlert(
       t`Investigator trauma`,
       campaignSetupCompleted ?
         t`You can only edit trauma here between scenarios.\n\nDuring scenario play it can be edited using the scenario guide.` :
         t`Starting trauma can be adjusted after 'Campaign Setup' has been completed.`
     );
-  }, [processedCampaign.scenarios]);
+  }, [processedCampaign.scenarios, showAlert]);
 
   return (
     <>

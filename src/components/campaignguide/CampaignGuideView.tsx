@@ -21,7 +21,7 @@ import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import CampaignGuideFab from './CampaignGuideFab';
-import { useTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, useTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
@@ -68,7 +68,7 @@ function CampaignGuideView(props: Props) {
   const addInvestigatorPressed = useCallback(() => {
     campaignState.showChooseDeck();
   }, [campaignState]);
-
+  const [alertDialog, showAlert] = useAlertDialog();
   const decksTab = useMemo(() => {
     return (
       <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
@@ -100,6 +100,7 @@ function CampaignGuideView(props: Props) {
             >
               <CampaignInvestigatorsComponent
                 componentId={componentId}
+                showAlert={showAlert}
                 updateCampaign={saveCampaignUpdate}
                 campaignData={campaignData}
                 processedCampaign={processedCampaign}
@@ -112,7 +113,7 @@ function CampaignGuideView(props: Props) {
       </SafeAreaView>
     );
   }, [componentId, backgroundStyle, removeMode, campaignData, processedCampaign, campaignGuide,
-    addInvestigatorPressed, toggleRemoveInvestigator, saveCampaignUpdate, showTraumaDialog,
+    addInvestigatorPressed, toggleRemoveInvestigator, saveCampaignUpdate, showTraumaDialog, showAlert,
   ]);
   const scenariosTab = useMemo(() => {
     return (
@@ -174,6 +175,7 @@ function CampaignGuideView(props: Props) {
         toggleRemoveInvestigator={toggleRemoveInvestigator}
         guided
       />
+      { alertDialog }
       { dialog }
       { traumaDialog }
     </SafeAreaView>

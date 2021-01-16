@@ -32,6 +32,7 @@ import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
 import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
+import { useAlertDialog } from '@components/deck/dialogs';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -129,11 +130,11 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
   }, [navButtonPressed]);
-
+  const [alertDialog, showAlert] = useAlertDialog();
   return (
     <SafeAreaView style={[styles.container, backgroundStyle]}>
       <ScrollView style={[styles.list, { backgroundColor: colors.L10 }]} keyboardShouldPersistTaps="always">
-        <AccountSection componentId={componentId} />
+        <AccountSection componentId={componentId} showAlert={showAlert} />
         <View style={[space.paddingSideS, space.paddingBottomS]}>
           <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Cards`} />}>
             <View style={[space.paddingTopS, space.paddingBottomS]}>
@@ -189,7 +190,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
               onValueChange={alphabetizeEncounterSetsChanged}
               last={!SHOW_DISSONANT_VOICES}
             />
-            { SHOW_DISSONANT_VOICES && <DissonantVoicesLoginButton last /> }
+            { SHOW_DISSONANT_VOICES && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
           </RoundedFactionBlock>
         </View>
         <View style={[space.paddingSideS, space.paddingBottomS]}>
@@ -222,6 +223,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
           </RoundedFactionBlock>
         </View>
       </ScrollView>
+      { alertDialog }
     </SafeAreaView>
   );
 }

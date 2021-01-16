@@ -9,7 +9,7 @@ import uuid from 'react-native-uuid';
 
 import { t } from 'ttag';
 import StyleContext from '@styles/StyleContext';
-import { useDialog } from '@components/deck/dialogs';
+import { ShowAlert, useDialog } from '@components/deck/dialogs';
 import space, { s, xs } from '@styles/space';
 import { useFlag } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -313,9 +313,10 @@ function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
 }
 
 interface Props {
-  children: React.ReactNode | React.ReactNode[];
+  showAlert: ShowAlert;
 }
-export default function ArkhamCardsLoginButton() {
+
+export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const { darkMode, typography } = useContext(StyleContext);
   const { user, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
@@ -323,6 +324,10 @@ export default function ArkhamCardsLoginButton() {
   const [mode, setMode] = useState<'login' | 'create' | undefined>();
   const doLogout = useCallback(() => {
     auth().signOut();
+  }, []);
+
+  const logoutPressed = useCallback(() => {
+
   }, []);
   const createAccountPressed = useCallback(() => setMode('create'), [setMode]);
   const loginPressed = useCallback(() => setMode('login'), [setMode]);
@@ -396,7 +401,7 @@ export default function ArkhamCardsLoginButton() {
     return emailLogin ? emailContent : signInContent;
   }, [mode, welcomeContent, emailLogin, emailContent, signInContent]);
 
-  const { dialog, showDialog, setVisible } = useDialog({
+  const { dialog: loginDialog, showDialog: showLoginDialog, setVisible } = useDialog({
     title: mode === 'create' ? t`Sign up` : t`Sign in`,
     alignment: 'bottom',
     content: dialogContent,
@@ -417,9 +422,9 @@ export default function ArkhamCardsLoginButton() {
         icon="logo"
         loading={loading}
         color={user ? 'gray' : 'red'}
-        onPress={user ? doLogout : showDialog}
+        onPress={user ? logoutPressed : showLoginDialog}
       />
-      { dialog }
+      { loginDialog }
     </View>
   );
 }

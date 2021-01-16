@@ -22,7 +22,7 @@ import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import space from '@styles/space';
 import CampaignGuideFab from './CampaignGuideFab';
-import { useTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, useTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 
 export interface LinkedCampaignGuideProps {
@@ -94,7 +94,7 @@ export default function LinkedCampaignGuideView(props: Props) {
   const addInvestigatorBPressed = useCallback(() => {
     contextB?.campaignState.showChooseDeck();
   }, [contextB?.campaignState]);
-
+  const [alertDialog, showAlert] = useAlertDialog();
   const showAddInvestigator = useCallback(() => {
     if (contextA && contextB) {
       Alert.alert(
@@ -157,6 +157,7 @@ export default function LinkedCampaignGuideView(props: Props) {
                   <CampaignInvestigatorsComponent
                     removeMode={removeMode}
                     componentId={componentId}
+                    showAlert={showAlert}
                     updateCampaign={handleUpdateCampaign}
                     campaignData={contextA}
                     processedCampaign={processedCampaignA}
@@ -194,6 +195,7 @@ export default function LinkedCampaignGuideView(props: Props) {
                   <CampaignInvestigatorsComponent
                     removeMode={removeMode}
                     componentId={componentId}
+                    showAlert={showAlert}
                     updateCampaign={handleUpdateCampaign}
                     processedCampaign={processedCampaignB}
                     campaignData={contextB}
@@ -206,7 +208,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         </SafeAreaView>
       ),
     };
-  }, [showTraumaDialog, addInvestigatorAPressed, addInvestigatorBPressed, showEditNameDialog, showAddInvestigator, toggleRemoveMode, handleUpdateCampaign,
+  }, [showTraumaDialog, showAlert, addInvestigatorAPressed, addInvestigatorBPressed, showEditNameDialog, showAddInvestigator, toggleRemoveMode, handleUpdateCampaign,
     componentId, contextA, contextB, processedCampaignA, processedCampaignB, backgroundStyle, campaignDataA, campaignDataB, campaignId, campaignName, removeMode,
   ]);
   const scenarioTab = useMemo(() => {
@@ -296,6 +298,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         showAddInvestigator={showAddInvestigator}
         guided
       />
+      { alertDialog }
       { dialog }
       { traumaDialog }
     </SafeAreaView>

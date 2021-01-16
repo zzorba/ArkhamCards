@@ -9,12 +9,14 @@ import DeckActionRow from '@components/deck/controls/DeckActionRow';
 import DeckButton from '@components/deck/controls/DeckButton';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
+import { ShowAlert } from '@components/deck/dialogs';
 
 interface Props {
+  showAlert: ShowAlert;
   last?: boolean;
 }
 
-export default function DissonantVoicesLoginButton({ last }: Props) {
+export default function DissonantVoicesLoginButton({ last, showAlert }: Props) {
   const { typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const { loading, status, error } = useSelector((state: AppState) => state.dissonantVoices);
@@ -25,7 +27,7 @@ export default function DissonantVoicesLoginButton({ last }: Props) {
     dispatch(dissonantVoicesLogout());
   }, [dispatch]);
   const loginPressed = useCallback(() => {
-    Alert.alert(
+    showAlert(
       t`Sign in to Dissonant Voices?`,
       t`Dissonant Voices is an ongoing project by Mythos Busters to narrate the english scenario text for each Arkham Horror campaign.`,
       [
@@ -33,7 +35,7 @@ export default function DissonantVoicesLoginButton({ last }: Props) {
         { text: t`Cancel`, style: 'cancel' },
       ],
     );
-  }, [doLogin]);
+  }, [doLogin, showAlert]);
   return (
     <View>
       <DeckActionRow
