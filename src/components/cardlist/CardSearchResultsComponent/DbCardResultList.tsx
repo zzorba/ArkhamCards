@@ -870,6 +870,7 @@ export default function({
       keyboardShouldPersistTaps="always"
       keyboardDismissMode="on-drag"
       scrollEventThrottle={1}
+      removeClippedSubviews
     />
   );
 }

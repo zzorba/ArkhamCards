@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import {
   Placeholder,
   PlaceholderLine,

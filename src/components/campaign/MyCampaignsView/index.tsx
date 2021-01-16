@@ -18,7 +18,7 @@ import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
 import { getCampaigns } from '@reducers';
 import COLORS from '@styles/colors';
-import { m } from '@styles/space';
+import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { useNavigationButtonPressed } from '@components/core/hooks';
@@ -92,7 +92,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
     if (filteredCampaigns.length === 0) {
       if (search) {
         return (
-          <View style={styles.footer}>
+          <View style={[styles.footer, space.paddingTopS]}>
             <Text style={[typography.text]}>
               { t`No matching campaigns for "${search}".` }
             </Text>
@@ -100,7 +100,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
         );
       }
       return (
-        <View style={styles.footer}>
+        <View style={[styles.footer, space.paddingTopS]}>
           <Text style={[typography.text]}>
             { t`No campaigns yet.\n\nUse the + button to create a new one.\n\nYou can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all decks.` }
           </Text>
@@ -180,8 +180,11 @@ export default withFetchCardsGate<NavigationProps>(
 
 const styles = StyleSheet.create({
   footer: {
-    margin: m,
-    alignItems: 'center',
+    marginLeft: m,
+    marginRight: m,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   gutter: {
     marginBottom: 60,

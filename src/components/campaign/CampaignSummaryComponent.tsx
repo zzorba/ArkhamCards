@@ -16,9 +16,10 @@ interface Props {
   name?: string;
   hideScenario?: boolean;
   standaloneName?: string;
+  children: React.ReactNode
 }
 
-export default function CampaignSummaryComponent({ campaign, name, hideScenario, standaloneName }: Props) {
+export default function CampaignSummaryComponent({ campaign, name, hideScenario, standaloneName, children }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const latestScenario = useMemo(() => last(campaign.scenarioResults), [campaign.scenarioResults]);
   const campaignSection = useMemo(() => {
@@ -70,6 +71,7 @@ export default function CampaignSummaryComponent({ campaign, name, hideScenario,
     );
   }, [campaign]);
 
+  const color = useMemo(() => campaignColor(campaign.cycleCode, colors), [campaign.cycleCode, colors]);
   const backgroundIcon = useMemo(() => {
     if (campaign.cycleCode === CUSTOM) {
       return null;
@@ -78,20 +80,20 @@ export default function CampaignSummaryComponent({ campaign, name, hideScenario,
       return (
         <BackgroundIcon
           code={campaign.standaloneId.scenarioId}
-          color={campaignColor(campaign.cycleCode, colors)}
+          color={colors.L30}
         />
       );
     }
     return (
       <BackgroundIcon
         code={campaign.cycleCode}
-        color={campaignColor(campaign.cycleCode, colors)}
+        color={colors.L30}
       />
     );
-  }, [campaign, colors]);
+  }, [colors, campaign.cycleCode, campaign.standaloneId]);
 
   return (
-    <View style={styles.row}>
+    <View style={[styles.row, space.paddingS, { backgroundColor: color }]}>
       { backgroundIcon }
       <View>
         { campaignSection }
@@ -99,6 +101,7 @@ export default function CampaignSummaryComponent({ campaign, name, hideScenario,
           { difficultySection }
           { lastScenarioSection }
         </View>
+        { children }
       </View>
     </View>
   );
@@ -107,7 +110,6 @@ export default function CampaignSummaryComponent({ campaign, name, hideScenario,
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    width: '100%',
     position: 'relative',
   },
   textRow: {

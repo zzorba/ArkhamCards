@@ -19,7 +19,7 @@ import BackgroundIcon from '@components/campaign/BackgroundIcon';
 import { Campaign, CampaignDifficulty, CUSTOM } from '@actions/types';
 import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '@app_constants';
 import Card from '@data/Card';
-import { s } from '@styles/space';
+import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useCounters } from '@components/core/hooks';
 
@@ -255,7 +255,7 @@ export default function OddsCalculatorComponent({
           ) }
           <View style={styles.button}>
             { !!campaign.difficulty && <Difficulty difficulty={campaign.difficulty} /> }
-            { !!currentScenario && <GameHeader text={currentScenario.name} /> }
+            { !!currentScenario && <View style={space.marginTopXs}><GameHeader text={currentScenario.name} /></View> }
             { !!scenarioText && (
               <CardTextComponent text={scenarioText} />
             ) }

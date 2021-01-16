@@ -35,6 +35,10 @@ interface Item {
   deckId: number;
 }
 
+function keyExtractor(item: Item) {
+  return `${item.deckId}`;
+}
+
 export default function DeckList({ lang, deckIds, header, searchTerm, deckToCampaign, refreshing, decks, footer, onRefresh, onScroll, deckClicked }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { width } = useWindowDimensions();
@@ -85,6 +89,7 @@ export default function DeckList({ lang, deckIds, header, searchTerm, deckToCamp
           progressViewOffset={SEARCH_BAR_HEIGHT}
         />
       }
+      initialNumToRender={8}
       contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
       contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
       onScroll={onScroll}
@@ -93,8 +98,10 @@ export default function DeckList({ lang, deckIds, header, searchTerm, deckToCamp
       style={[styles.container, backgroundStyle]}
       data={items}
       renderItem={renderItem}
+      keyExtractor={keyExtractor}
       extraData={decks}
       ListHeaderComponent={header}
+      removeClippedSubviews
       ListFooterComponent={footer(items.length === 0)}
     />
   );

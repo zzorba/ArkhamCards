@@ -21,6 +21,7 @@ interface Props {
   loading?: boolean;
   bottomMargin?: number;
   topMargin?: number;
+  disabled?: boolean;
 }
 
 const ICON_SIZE = {
@@ -71,7 +72,20 @@ const ICON_STYLE = {
 const MATERIAL_ICONS = new Set(['email', 'delete', 'login']);
 const ARKHAM_ICONS = new Set(['per_investigator', 'elder_sign']);
 
-export default function DeckButton({ title, detail, icon, color = 'gray', onPress, rightMargin, topMargin, thin, shrink, loading, bottomMargin }: Props) {
+export default function DeckButton({
+  disabled,
+  title,
+  detail,
+  icon,
+  color = 'gray',
+  onPress,
+  rightMargin,
+  topMargin,
+  thin,
+  shrink,
+  loading,
+  bottomMargin,
+}: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const backgroundColors = {
     red_outline: colors.D30,
@@ -97,6 +111,12 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
     gold: COLORS.D30,
     gray: colors.L30,
   };
+  const disabledTextColor = {
+    red_outline: colors.L10,
+    red: COLORS.L30,
+    gold: COLORS.D10,
+    gray: colors.L10,
+  };
   const theIconColor = iconColor[color];
   const iconContent = useMemo(() => {
     if (loading) {
@@ -116,9 +136,10 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
   const height = (detail ? 32 : 20) * fontScale + s * 2 + xs * 2;
   return (
     <Ripple
+      disabled={disabled}
       style={[
         styles.button,
-        { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1, height },
+        { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1 },
         rightMargin ? space.marginRightS : undefined,
         bottomMargin ? { marginBottom: bottomMargin } : undefined,
         topMargin ? { marginTop: topMargin } : undefined,
@@ -144,12 +165,12 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
             { iconContent }
           </View>
         ) }
-        <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined]}>
-          <Text numberOfLines={1} ellipsizeMode="clip" style={[space.marginTopXs, detail ? typography.large : typography.cardName, { color: textColor[color] }]}>
+        <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, { flex: 1 }, space.paddingTopXs]}>
+          <Text numberOfLines={1} ellipsizeMode="clip" style={[detail ? typography.large : typography.cardName, { color: disabled ? disabledTextColor[color] : textColor[color] }]}>
             { title }
           </Text>
           { !!detail && (
-            <Text style={[typography.smallButtonLabel, { marginTop: 1, color: textColor[color] }]}>
+            <Text style={[typography.smallButtonLabel, { marginTop: 1, color: textColor[color] }]} numberOfLines={2}>
               { detail }
             </Text>
           ) }

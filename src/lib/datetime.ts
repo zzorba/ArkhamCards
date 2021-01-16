@@ -66,7 +66,13 @@ export function toDateStringMonthName(timestamp: number) {
   return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 }
 
-export function toRelativeDateString(date: Date, locale: string) {
+export function toRelativeDateString(date: Date | string, locale: string) {
+  if (date === undefined) {
+    return '???';
+  }
+  if (typeof date === 'string') {
+    date = new Date(Date.parse(date));
+  }
   const nowDate = new Date();
   const startOfNowDate = startOfDay(nowDate);
   if (isAfter(date, startOfNowDate)) {

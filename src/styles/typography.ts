@@ -97,7 +97,7 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
     large: {
       fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(18 * fontScale),
-      lineHeight: Math.ceil(18 * fontScale),
+      lineHeight: Math.ceil(20 * fontScale),
       color: colors.darkText,
     },
     header: {

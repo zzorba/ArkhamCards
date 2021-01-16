@@ -1,6 +1,5 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
 import {
-  Button,
   Platform,
   StyleSheet,
   Text,
@@ -20,11 +19,14 @@ import Card from '@data/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import COLORS from '@styles/colors';
-import space, { m, s, xs } from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import { getAllDecks, getMyDecksState, getDeckToCampaignMap } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
 
 interface OwnProps {
   componentId: string;
@@ -118,14 +120,25 @@ function MyDecksComponent({
       return null;
     }
     return (
-      <View style={[styles.signInFooter, { backgroundColor: colors.L20, width }]}>
-        <Text style={[typography.text, space.marginBottomM]}>
-          { t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.` }
-        </Text>
-        <Button onPress={login} title={t`Connect to ArkhamDB`} />
+      <View style={styles.signInFooter}>
+        <RoundedFactionBlock
+          header={<DeckSectionHeader title={t`ArkhamDB Account`} faction="neutral" />}
+          footer={<RoundedFooterButton
+            icon="world"
+            title={t`Connect to ArkhamDB`}
+            onPress={login}
+          />}
+          faction="neutral"
+        >
+          <View style={space.paddingS}>
+            <Text style={typography.text}>
+              { t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.` }
+            </Text>
+          </View>
+        </RoundedFactionBlock>
       </View>
     );
-  }, [login, signedIn, width, colors, typography]);
+  }, [login, signedIn, typography]);
 
   const footer = useMemo(() => {
     return (
@@ -201,8 +214,8 @@ const styles = StyleSheet.create({
     color: COLORS.white,
   },
   signInFooter: {
-    padding: m,
-    marginTop: s,
+    padding: s,
+    paddingTop: 0,
   },
   footer: {
     width: '100%',

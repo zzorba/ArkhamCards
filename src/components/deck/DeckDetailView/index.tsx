@@ -752,12 +752,14 @@ function DeckDetailView({
         <MenuButton
           onPress={showCardChartsPressed}
           title={t`Charts`}
+          numberOfLines={2}
           icon="chart"
           description={t`For balancing and evaluating`}
         />
         <MenuButton
           onPress={showDrawSimulatorPressed}
           title={t`Draw Simulator`}
+          numberOfLines={2}
           icon="draw"
           description={t`Check your deck stability`}
         />
@@ -808,6 +810,7 @@ function DeckDetailView({
               disabled={!!hasPendingEdits}
               description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
               last={!deck.previous_deck}
+              numberOfLines={2}
             />
             { !!deck.previous_deck && (
               <MenuButton
@@ -830,6 +833,7 @@ function DeckDetailView({
             icon="world"
             onPress={uploadToArkhamDB}
             title={t`Upload to ArkhamDB`}
+            numberOfLines={2}
             last={!isPrivate}
           />
         ) : (

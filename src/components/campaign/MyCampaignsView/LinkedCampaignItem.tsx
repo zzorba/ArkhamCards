@@ -1,58 +1,65 @@
-import React, { useCallback, useContext } from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, { useCallback, useMemo } from 'react';
+import { max } from 'lodash';
 
 import { Campaign, CUSTOM } from '@actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
-import { m, s } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
-import { useCampaign, usePressCallback } from '@components/core/hooks';
+import { useCampaign } from '@components/core/hooks';
+import GenericCampaignItem from './GenericCampaignItem';
 
 interface Props {
   campaign: Campaign;
   onPress: (id: number, campaign: Campaign) => void;
 }
 
+function getTime(date: Date | string) {
+  if (typeof date === 'string') {
+    return Date.parse(date);
+  }
+  return date.getTime();
+}
+
 export default function LinkedCampaignItem({ campaign, onPress }: Props) {
-  const { borderStyle } = useContext(StyleContext);
   const campaignA = useCampaign(campaign.link ? campaign.link.campaignIdA : undefined);
   const campaignB = useCampaign(campaign.link ? campaign.link.campaignIdB : undefined);
 
   const onCampaignPress = useCallback(() => {
     onPress(campaign.id, campaign);
   }, [campaign, onPress]);
-  const debouncedOnPress = usePressCallback(onCampaignPress);
+
+  const lastUpdated = useMemo(() => {
+    const dates = [
+      getTime(campaign.lastUpdated),
+    ];
+    if (campaignA) {
+      dates.push(getTime(campaignA.lastUpdated));
+    }
+    if (campaignB) {
+      dates.push(getTime(campaignB.lastUpdated));
+    }
+    const latest = max(dates);
+    if (latest) {
+      return new Date(latest);
+    }
+    return campaign.lastUpdated;
+  }, [campaign.lastUpdated, campaignA, campaignB]);
 
   return (
-    <TouchableOpacity onPress={debouncedOnPress}>
-      <View style={[styles.container, borderStyle]}>
-        <CampaignSummaryComponent
-          campaign={campaign}
-          hideScenario
-          name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
-        />
+    <GenericCampaignItem
+      lastUpdated={lastUpdated}
+      onPress={onCampaignPress}
+    >
+      <CampaignSummaryComponent
+        campaign={campaign}
+        hideScenario
+        name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
+      >
         { !!campaignA && !!campaignB && (
           <CampaignInvestigatorRow
             campaigns={[campaignA, campaignB]}
           />
         ) }
-      </View>
-    </TouchableOpacity>
+      </CampaignSummaryComponent>
+    </GenericCampaignItem>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingLeft: m,
-    paddingRight: s,
-    paddingTop: s,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    position: 'relative',
-  },
-});

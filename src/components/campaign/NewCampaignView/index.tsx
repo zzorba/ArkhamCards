@@ -50,6 +50,7 @@ import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButt
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface CampaignChoice {
   selection: CampaignSelection;
@@ -528,11 +529,13 @@ function NewCampaignView({ componentId }: NavigationProps) {
           </View>
         ) }
         { weaknessSetSection }
-        <BasicButton
-          disabled={selection.type === 'campaign' && selection.code === CUSTOM && !name}
-          title={selection.type === 'campaign' ? t`Create Campaign` : t`Create Standalone`}
-          onPress={savePressed}
-        />
+        <View style={space.paddingS}>
+          <DeckButton
+            disabled={selection.type === 'campaign' && selection.code === CUSTOM && !name}
+            title={selection.type === 'campaign' ? t`Create Campaign` : t`Create Standalone`}
+            onPress={savePressed}
+          />
+        </View>
         <View style={styles.footer}>
           { isGuided && (
             <View style={styles.block}>
