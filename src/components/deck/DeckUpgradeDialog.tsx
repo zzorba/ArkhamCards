@@ -88,7 +88,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     if (campaign) {
       if (investigatorData) {
         dispatch(updateCampaign(
-          campaign.id,
+          { campaignId: campaign.id, serverId: campaign.serverId },
           { investigatorData }
         ));
       }

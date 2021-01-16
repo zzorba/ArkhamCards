@@ -21,7 +21,7 @@ import { useCampaign, useCampaignDetails, useCampaignScenarios, useFlag, useInve
 import useTraumaDialog from '../useTraumaDialog';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { showAddScenarioResult, showChaosBagOddsCalculator, showDrawWeakness, showDrawChaosBag } from '@components/campaign/nav';
-import TabView from '@components/core/TabView';
+import useTabView from '@components/core/useTabView';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { EditScenarioResultProps } from '../EditScenarioResultView';
@@ -80,6 +80,13 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const campaign = useCampaign(id);
+  const serverId = campaign?.serverId;
+  const campaignId = useMemo(() => {
+    return {
+      campaignId: id,
+      serverId,
+    };
+  }, [id, serverId]);
   const decks = useSelector(getAllDecks);
   const {
     showTraumaDialog,
@@ -90,23 +97,23 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
 
   const dispatch = useDispatch();
   const updateNonDeckInvestigators = useCallback((nonDeckInvestigators: string[]) => {
-    dispatch(updateCampaign(id, { nonDeckInvestigators }));
-  }, [dispatch, id]);
+    dispatch(updateCampaign(campaignId, { nonDeckInvestigators }));
+  }, [dispatch, campaignId]);
   const updateLatestDeckIds = useCallback((latestDeckIds: number[]) => {
-    dispatch(updateCampaign(id, { latestDeckIds }));
-  }, [dispatch, id]);
+    dispatch(updateCampaign(campaignId, { latestDeckIds }));
+  }, [dispatch, campaignId]);
   const updateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
-    dispatch(updateCampaign(id, { campaignNotes }));
-  }, [dispatch, id]);
+    dispatch(updateCampaign(campaignId, { campaignNotes }));
+  }, [dispatch, campaignId]);
   const updateInvestigatorData = useCallback((investigatorData: InvestigatorData) => {
-    dispatch(updateCampaign(id, { investigatorData }));
-  }, [dispatch, id]);
+    dispatch(updateCampaign(campaignId, { investigatorData }));
+  }, [dispatch, campaignId]);
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
-    dispatch(updateCampaign(id, { chaosBag }));
-  }, [dispatch, id]);
+    dispatch(updateCampaign(campaignId, { chaosBag }));
+  }, [dispatch, campaignId]);
   const updateWeaknessSet = useCallback((weaknessSet: WeaknessSet) => {
-    dispatch(updateCampaign(id, { weaknessSet }));
-  }, [dispatch, id]);
+    dispatch(updateCampaign(campaignId, { weaknessSet }));
+  }, [dispatch, campaignId]);
   const addSectionCallback = useRef<AddSectionFunction>();
   const [addSectionVisible, setAddSectionVisible] = useState(false);
   const incSpentXp = useCallback((code: string) => {
@@ -169,7 +176,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   }, [componentId, id]);
 
   const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(id, { name, lastUpdated: new Date() }));
+    dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -177,7 +184,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
         },
       },
     });
-  }, [id, dispatch, componentId]);
+  }, [campaignId, dispatch, componentId]);
   const { dialog, showDialog: showEditNameDialog } = useTextDialog({
     title: t`Name`,
     value: campaign?.name || '',
@@ -418,6 +425,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       },
     ];
   }, [decksTab, scenariosTab, logsTab]);
+  const [tabView, setSelectedTab] = useTabView({ tabs });
   if (!campaign) {
     return (
       <View>
@@ -431,15 +439,16 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   }
   return (
     <SafeAreaView style={[styles.flex, backgroundStyle]}>
-      <TabView tabs={tabs} />
+      { tabView }
       <AddCampaignNoteSectionDialog
         visible={addSectionVisible}
         addSection={addSectionCallback.current}
         hide={hideAddSectionDialog}
       />
       <CampaignGuideFab
+        setSelectedTab={setSelectedTab}
         componentId={componentId}
-        campaignId={id}
+        campaignId={campaignId}
         serverCampaignId={campaign?.serverId}
         campaignName={''}
         removeMode={removeMode}

@@ -348,6 +348,11 @@ export interface CampaignNotes {
   investigatorNotes: InvestigatorNotes;
 }
 
+export interface CampaignId {
+  campaignId: number;
+  serverId?: string;
+}
+
 export interface Campaign {
   id: number;
   serverId?: string;

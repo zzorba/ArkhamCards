@@ -9,10 +9,11 @@ import { CampaignGuideContextType } from '@components/campaignguide/CampaignGuid
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import { CampaignId } from '@actions/types';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: CampaignId;
   header?: React.ReactNode;
   processedCampaign: ProcessedCampaign;
   campaignData: CampaignGuideContextType;
@@ -40,7 +41,7 @@ export default function ScenarioListTab({
         footer={
           <AddSideScenarioButton
             componentId={componentId}
-            campaignId={campaignId}
+            campaignId={campaignId.campaignId}
             processedCampaign={processedCampaign}
             campaignGuide={campaignGuide}
             campaignState={campaignState}
@@ -52,7 +53,7 @@ export default function ScenarioListTab({
             key={idx}
             componentId={componentId}
             scenario={scenario}
-            campaignId={campaignId}
+            campaignId={campaignId.campaignId}
             campaignGuide={campaignGuide}
             showLinkedScenario={showLinkedScenario}
             linked={processedCampaign.campaignLog.linked}

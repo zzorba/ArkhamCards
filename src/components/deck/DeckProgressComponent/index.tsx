@@ -8,9 +8,9 @@ import { t } from 'ttag';
 
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import CampaignSummaryComponent from '@components/campaign/CampaignSummaryComponent';
-import { Campaign, Deck, ParsedDeck } from '@actions/types';
+import { Campaign, CUSTOM, Deck, ParsedDeck } from '@actions/types';
 import { CardsMap } from '@data/Card';
-import space, { l, s, xs } from '@styles/space';
+import space, { l, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckSectionBlock from '../section/DeckSectionBlock';
@@ -71,16 +71,18 @@ export default function DeckProgressComponent({
           title={t`Campaign`}
           faction={investigator.factionCode()}
           footerButton={footerButton}
+          noSpace
         >
           { !!campaign && !hideCampaign && (
-            <View style={styles.campaign}>
-              <View style={space.marginBottomM}>
-                <CampaignSummaryComponent campaign={campaign} hideScenario />
-              </View>
-              <Text style={[typography.text, space.marginBottomS]}>
-                { campaign.name }
-              </Text>
-            </View>
+            <CampaignSummaryComponent campaign={campaign} hideScenario>
+              { campaign.cycleCode !== CUSTOM && (
+                <View style={[space.paddingTopS, space.paddingBottomS]}>
+                  <Text style={typography.text}>
+                    { campaign.name }
+                  </Text>
+                </View>
+              ) }
+            </CampaignSummaryComponent>
           ) }
         </DeckSectionBlock>
       </View>
@@ -123,10 +125,5 @@ const styles = StyleSheet.create({
   container: {
     marginTop: xs,
     marginBottom: l,
-  },
-  campaign: {
-    marginTop: s,
-    marginLeft: s,
-    marginRight: s,
   },
 });

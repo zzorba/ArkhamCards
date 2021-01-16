@@ -9,6 +9,7 @@ import {
   Share,
   StyleSheet,
 } from 'react-native';
+import database from '@react-native-firebase/database';
 import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -54,6 +55,15 @@ interface ReduxActionProps {
 }
 
 type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
+
+
+function goOffline() {
+  database().goOffline();
+}
+
+function goOnline() {
+  database().goOnline();
+}
 
 function DiagnosticsView({ showTextEditDialog }: Props) {
   const { db } = useContext(DatabaseContext);
@@ -229,6 +239,15 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
         <SettingsItem
           onPress={setDissonantVoicesToken}
           text={'Set Dissonant Voices Token'}
+        />
+        <CardSectionHeader section={{ title: 'Firebase' }} />
+        <SettingsItem
+          onPress={goOffline}
+          text={'Go offline'}
+        />
+        <SettingsItem
+          onPress={goOnline}
+          text={'Go online'}
         />
       </>
     );

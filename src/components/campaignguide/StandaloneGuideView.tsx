@@ -4,7 +4,7 @@ import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
-import { StandaloneId } from '@actions/types';
+import { CampaignId, StandaloneId } from '@actions/types';
 import { deleteCampaign } from '@components/campaign/actions';
 import BasicButton from '@components/core/BasicButton';
 import { NavigationProps } from '@components/nav/types';
@@ -13,7 +13,7 @@ import ScenarioView from './ScenarioView';
 import StyleContext from '@styles/StyleContext';
 
 export interface StandaloneGuideProps {
-  campaignId: number;
+  campaignId: CampaignId;
   standaloneId: StandaloneId;
 }
 export default function StandaloneGuideView({ campaignId, standaloneId, componentId }: StandaloneGuideProps & NavigationProps) {
@@ -39,7 +39,7 @@ export default function StandaloneGuideView({ campaignId, standaloneId, componen
   return (
     <ScenarioView
       componentId={componentId}
-      campaignId={campaignId}
+      campaignId={campaignId.campaignId}
       scenarioId={standaloneId.scenarioId}
       standalone
       footer={<BasicButton onPress={deletePressed} title={t`Delete standalone`} color={colors.warn} />}

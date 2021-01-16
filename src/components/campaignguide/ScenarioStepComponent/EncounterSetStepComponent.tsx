@@ -19,15 +19,16 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import space from '@styles/space';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import StyleContext from '@styles/StyleContext';
+import { CampaignId } from '@actions/types';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: CampaignId;
   step: EncounterSetsStep;
   campaignGuide: CampaignGuide
 }
 
-export default function EncounterSetStepComponent({ componentId, campaignId, step, campaignGuide }: Props) {
+export default function EncounterSetStepComponent({ componentId, campaignId: { campaignId }, step, campaignGuide }: Props) {
   const alphabetizeEncounterSets = useSelector<AppState>(state => state.settings.alphabetizeEncounterSets || false);
   const { colors } = useContext(StyleContext);
 

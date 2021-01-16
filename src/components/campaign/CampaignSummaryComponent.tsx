@@ -16,7 +16,7 @@ interface Props {
   name?: string;
   hideScenario?: boolean;
   standaloneName?: string;
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export default function CampaignSummaryComponent({ campaign, name, hideScenario, standaloneName, children }: Props) {
@@ -101,7 +101,7 @@ export default function CampaignSummaryComponent({ campaign, name, hideScenario,
           { difficultySection }
           { lastScenarioSection }
         </View>
-        { children }
+        { !!children && children }
       </View>
     </View>
   );

@@ -359,7 +359,7 @@ export default function ArkhamCardsLoginButton() {
   const signInContent = useMemo(() => {
     return (
       <View style={styles.center}>
-        <View style={{ paddingBottom: s + xs }}>
+        <View style={{ flexDirection: 'row', paddingBottom: s + xs }}>
           <DeckButton
             thin
             color="red"

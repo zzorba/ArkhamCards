@@ -8,7 +8,7 @@ import DeckXpSection from './DeckXpSection';
 import BasicListRow from '@components/core/BasicListRow';
 import { showCard, showDeckModal } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { Deck, TraumaAndCardData } from '@actions/types';
+import { CampaignId, Deck, TraumaAndCardData } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
@@ -19,12 +19,10 @@ import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { TINY_PHONE } from '@styles/sizes';
-import DeckButton from '@components/deck/controls/DeckButton';
-import space from '@styles/space';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: CampaignId;
   investigator: Card;
   spentXp: number;
   totalXp: number;
@@ -165,7 +163,7 @@ export default function InvestigatorCampaignRow({
 
   const details = useMemo(() => {
     if (removeInvestigator) {
-      return null
+      return null;
     }
     return (
       <>
@@ -178,7 +176,7 @@ export default function InvestigatorCampaignRow({
         { storyAssetSection }
       </>
     );
-  }, [investigator, removeInvestigator, deck, removePressed, xpSection, traumaSection, storyAssetSection]);
+  }, [investigator, removeInvestigator, xpSection, traumaSection, storyAssetSection]);
 
   const viewDeck = useCallback(() => {
     if (deck) {
@@ -187,7 +185,7 @@ export default function InvestigatorCampaignRow({
         deck,
         colors,
         investigator,
-        { campaignId, hideCampaign: true }
+        { campaignId: campaignId.campaignId, hideCampaign: true }
       );
     }
   }, [campaignId, componentId, investigator, deck, colors]);

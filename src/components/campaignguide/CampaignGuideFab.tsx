@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import { Alert, Platform } from 'react-native';
+import { Alert } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import ActionButton from 'react-native-action-button';
@@ -11,22 +11,23 @@ import { isTablet, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useNavigationConstants } from '@components/core/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { uploadCampaign } from '@components//campaignguide/actions';
+import { uploadCampaign } from '@components/campaignguide/actions';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { useCreateCampaignRequest, useDeleteCampaignRequest } from '@data/firebase/api';
-import { Campaign } from '@actions/types';
+import { Campaign, CampaignId } from '@actions/types';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: CampaignId;
   campaign?: Campaign;
   serverCampaignId?: string;
   campaignName: string;
   removeMode: boolean;
   guided: boolean;
+  setSelectedTab: (tab: number) => void;
   showEditNameDialog: () => void;
   showAddInvestigator: () => void;
   toggleRemoveInvestigator: () => void;
@@ -34,7 +35,7 @@ interface Props {
 
 export default function CampaignGuideFab({
   campaignId, componentId, campaignName, removeMode, serverCampaignId, guided,
-  showEditNameDialog, showAddInvestigator, toggleRemoveInvestigator,
+  showEditNameDialog, showAddInvestigator, toggleRemoveInvestigator, setSelectedTab,
 }: Props) {
   const [{ isConnected }] = useNetworkStatus();
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -67,7 +68,7 @@ export default function CampaignGuideFab({
     setFabOpen(false);
     try {
       const serverId = await createServerCampaign();
-      dispatch(uploadCampaign(campaignId, serverId, guided));
+      dispatch(uploadCampaign(campaignId.campaignId, serverId, guided));
     } catch (e) {
       // TODO(error handling)
     }
@@ -79,10 +80,21 @@ export default function CampaignGuideFab({
     }
     return <AppIcon name="plus-thin" color={colors.L30} size={32} />;
   }, [colors, removeMode]);
+  const editNamePressed = useCallback(() => {
+    setFabOpen(false);
+    showEditNameDialog();
+  }, [setFabOpen, showEditNameDialog]);
   const removeInvestigatorsPressed = useCallback(() => {
     setFabOpen(false);
+    setSelectedTab(0);
     toggleRemoveInvestigator();
-  }, [setFabOpen, toggleRemoveInvestigator]);
+  }, [setFabOpen, setSelectedTab, toggleRemoveInvestigator]);
+
+  const addInvestigatorsPressed = useCallback(() => {
+    setFabOpen(false);
+    setSelectedTab(0);
+    showAddInvestigator();
+  }, [setFabOpen, setSelectedTab, showAddInvestigator]);
   const actionLabelStyle = {
     ...typography.small,
     color: colors.L30,
@@ -104,10 +116,26 @@ export default function CampaignGuideFab({
     minHeight: 32,
     marginTop: -3,
   };
+  const onReset = useCallback(() => setFabOpen(false), [setFabOpen]);
   const { bottomTabsHeight = 0 } = useNavigationConstants();
+  if (removeMode) {
+    return (
+      <ActionButton
+        active={fabOpen}
+        buttonColor={fabOpen ? colors.M : colors.D10}
+        renderIcon={fabIcon}
+        onPress={toggleRemoveInvestigator}
+        offsetX={s + xs}
+        offsetY={(isTablet ? bottomTabsHeight : 0) + s + xs}
+        shadowStyle={shadow.large}
+        fixNativeFeedbackRadius
+      />
+    );
+  }
   return (
     <ActionButton
       active={fabOpen}
+      onReset={onReset}
       buttonColor={fabOpen ? colors.M : colors.D10}
       renderIcon={fabIcon}
       onPress={removeMode ? toggleRemoveInvestigator : toggleFabOpen}
@@ -145,7 +173,7 @@ export default function CampaignGuideFab({
         textStyle={actionLabelStyle}
         textContainerStyle={actionContainerStyle}
         title={t`Edit name`}
-        onPress={showEditNameDialog}
+        onPress={editNamePressed}
         shadowStyle={shadow.medium}
         useNativeFeedback={false}
       >
@@ -156,7 +184,7 @@ export default function CampaignGuideFab({
         textStyle={actionLabelStyle}
         textContainerStyle={actionContainerStyle}
         title={t`Add investigators`}
-        onPress={showAddInvestigator}
+        onPress={addInvestigatorsPressed}
         shadowStyle={shadow.medium}
         useNativeFeedback={false}
       >

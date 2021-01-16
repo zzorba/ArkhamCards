@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   labeledRow: {
     flexDirection: 'column',
   },
-  border :{
+  border: {
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   row: {

@@ -43,6 +43,7 @@ import {
   StandaloneId,
   NewStandaloneCampaignAction,
   NEW_STANDALONE,
+  CampaignId,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector } from '@reducers';
@@ -99,7 +100,7 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 }
 
 export function addInvestigator(
-  campaignId: number,
+  { campaignId, serverId }: CampaignId,
   investigator: string,
   deckId?: number
 ): ThunkAction<void, AppState, null, CampaignAddInvestigatorAction> {
@@ -119,7 +120,7 @@ export function addInvestigator(
 }
 
 export function removeInvestigator(
-  campaignId: number,
+  { campaignId, serverId }: CampaignId,
   investigator: string,
   deckId?: number
 ): ThunkAction<void, AppState, null, CampaignRemoveInvestigatorAction> {
@@ -238,7 +239,7 @@ export function updateCampaignSpentXp(
  * }
  */
 export function updateCampaign(
-  id: number,
+  { campaignId, serverId }: CampaignId,
   sparseCampaign: Partial<Campaign>,
   now?: Date
 ): ThunkAction<void, AppState, null, UpdateCampaignAction> {
@@ -250,7 +251,7 @@ export function updateCampaign(
     }
     dispatch({
       type: UPDATE_CAMPAIGN,
-      id,
+      id: campaignId,
       campaign,
       now: (now || new Date()),
     });
@@ -288,10 +289,10 @@ export function adjustBlessCurseChaosBagResults(
 }
 
 export function deleteCampaign(
-  id: number
+  { campaignId, serverId }: CampaignId
 ): ThunkAction<void, AppState, null, DeleteCampaignAction> {
   return (dispatch, getState: () => AppState) => {
-    const campaign = makeCampaignSelector()(getState(), id);
+    const campaign = makeCampaignSelector()(getState(), campaignId);
     if (campaign && campaign.link) {
       dispatch({
         type: DELETE_CAMPAIGN,
@@ -304,7 +305,7 @@ export function deleteCampaign(
     }
     dispatch({
       type: DELETE_CAMPAIGN,
-      id,
+      id: campaignId,
     });
   };
 }

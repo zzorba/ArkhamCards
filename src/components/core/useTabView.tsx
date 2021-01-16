@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
 import { find, map } from 'lodash';
 import { Dimensions } from 'react-native';
 import { TabView, SceneRendererProps, NavigationState, TabBar, Route } from 'react-native-tab-view';
@@ -23,7 +23,7 @@ interface TabRoute extends Route {
 
 const initialLayout = { width: Dimensions.get('window').width };
 
-export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Props) {
+export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props): [React.ReactNode, (index: number) => void] {
   const { fontScale, colors } = useContext(StyleContext);
   const [index, setIndex] = useState(0);
 
@@ -66,13 +66,17 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
   const navigationState = useMemo(() => {
     return { index, routes };
   }, [index, routes]);
-  return (
-    <TabView
-      renderTabBar={renderTabBar}
-      navigationState={navigationState}
-      renderScene={renderTab}
-      onIndexChange={onIndexChange}
-      initialLayout={initialLayout}
-    />
-  );
+  const tabView = useMemo(() => {
+    return (
+      <TabView
+        renderTabBar={renderTabBar}
+        navigationState={navigationState}
+        renderScene={renderTab}
+        onIndexChange={onIndexChange}
+        initialLayout={initialLayout}
+      />
+    );
+  }, [renderTab, navigationState, renderTab, onIndexChange, initialLayout]);
+
+  return [tabView, setIndex];
 }

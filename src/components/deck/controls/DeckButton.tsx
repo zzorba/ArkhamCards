@@ -139,7 +139,8 @@ export default function DeckButton({
       disabled={disabled}
       style={[
         styles.button,
-        { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1 },
+        { backgroundColor: backgroundColors[color] },
+        shrink ? undefined : styles.grow,
         rightMargin ? space.marginRightS : undefined,
         bottomMargin ? { marginBottom: bottomMargin } : undefined,
         topMargin ? { marginTop: topMargin } : undefined,
@@ -165,7 +166,7 @@ export default function DeckButton({
             { iconContent }
           </View>
         ) }
-        <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, { flex: 1 }, space.paddingTopXs]}>
+        <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, shrink ? undefined : styles.grow, space.paddingTopXs]}>
           <Text numberOfLines={1} ellipsizeMode="clip" style={[detail ? typography.large : typography.cardName, { color: disabled ? disabledTextColor[color] : textColor[color] }]}>
             { title }
           </Text>
@@ -183,6 +184,9 @@ export default function DeckButton({
 const styles = StyleSheet.create({
   button: {
     borderRadius: 4,
+  },
+  grow: {
+    flex: 1,
   },
   row: {
     flexDirection: 'row',

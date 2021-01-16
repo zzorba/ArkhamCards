@@ -53,7 +53,7 @@ function MyDecksComponent({
   signedIn,
 }: Props) {
   const [{ networkType, isConnected }] = useNetworkStatus();
-  const { colors, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const reLogin = useCallback(() => {
     login();

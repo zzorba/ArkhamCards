@@ -59,7 +59,10 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
           component: {
             name: 'Guide.Standalone',
             passProps: {
-              campaignId: campaign.id,
+              campaignId: {
+                campaignId: campaign.id,
+                serverId: campaign.serverId,
+              },
               standaloneId: campaign.standaloneId,
             },
             options,

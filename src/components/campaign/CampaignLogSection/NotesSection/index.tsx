@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
 import { filter, map } from 'lodash';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 
 import NoteRow from './NoteRow';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
-import { s, xs } from '@styles/space';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 
 interface Props {
@@ -51,7 +50,7 @@ function notesReducer(notes: string[], action: UpdateNoteAction | AppendNoteActi
 }
 
 export default function NotesSection(props: Props) {
-  const { notesChanged, index, title, notes, showDialog, isInvestigator } = props;
+  const { notesChanged, index, title, notes, showDialog } = props;
   const [currentNotes, updateCurrentNotes] = useReducer(notesReducer, notes);
   useEffect(() => {
     if (notes !== currentNotes) {
@@ -94,6 +93,3 @@ export default function NotesSection(props: Props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-});

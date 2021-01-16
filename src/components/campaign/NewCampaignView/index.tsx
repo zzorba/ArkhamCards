@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import {
   CORE,
   CUSTOM,

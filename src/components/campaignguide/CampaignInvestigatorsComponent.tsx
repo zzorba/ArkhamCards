@@ -5,7 +5,7 @@ import { isAfter } from 'date-fns';
 import { useAppState } from '@react-native-community/hooks';
 import { t } from 'ttag';
 
-import { Campaign, InvestigatorData, Trauma } from '@actions/types';
+import { Campaign, CampaignId, InvestigatorData, Trauma } from '@actions/types';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
@@ -20,7 +20,7 @@ interface Props {
   processedCampaign: ProcessedCampaign;
   removeMode: boolean;
   updateCampaign: (
-    id: number,
+    id: CampaignId,
     sparseCampaign: Partial<Campaign>,
     now?: Date
   ) => void;

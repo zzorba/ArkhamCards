@@ -7,7 +7,7 @@ import {
   CampaignCycleCode, StandaloneId,
 } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import TabView from '@components/core/TabView';
+import useTabView from '@components/core/useTabView';
 import StandaloneTab from './StandaloneTab';
 import CampaignTab from './CampaignTab';
 import StyleContext from '@styles/StyleContext';
@@ -77,10 +77,8 @@ function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaig
       ),
     },
   ], [campaignChanged, standaloneChanged, editCollection, backgroundStyle, typography]);
-
-  return (
-    <TabView tabs={tabs} />
-  );
+  const [tabView] = useTabView({ tabs });
+  return tabView;
 }
 
 SelectCampaignDialog.options = () => {

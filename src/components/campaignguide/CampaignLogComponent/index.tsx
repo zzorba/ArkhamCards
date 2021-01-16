@@ -80,7 +80,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
       component: {
         name: 'Guide.OddsCalculator',
         passProps: {
-          campaignId: campaignId,
+          campaignId,
           investigatorIds: campaignLog.investigatorCodesSafe(),
           chaosBag: campaignLog.chaosBag,
         },

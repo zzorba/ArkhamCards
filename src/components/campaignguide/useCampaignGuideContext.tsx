@@ -23,12 +23,19 @@ import { CampaignGuideContextType } from './CampaignGuideContext';
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 
-export default function useCampaignGuideContext(campaignId: number, campaignData?: CampaignGuideReduxData): CampaignGuideContextType | undefined {
+export default function useCampaignGuideContext(id: number, campaignData?: CampaignGuideReduxData): CampaignGuideContextType | undefined {
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch = useDispatch();
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const campaignChooseDeck = useChooseDeck();
+  const serverId = campaignData?.campaign?.serverId;
+  const campaignId = useMemo(() => {
+    return {
+      campaignId: id,
+      serverId,
+    };
+  }, [id, serverId]);
   const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => void) => {
     if (campaignInvestigators !== undefined) {
       campaignChooseDeck(campaignId, campaignInvestigators, singleInvestigator, callback);
@@ -209,7 +216,6 @@ export default function useCampaignGuideContext(campaignId: number, campaignData
     }
     return {
       campaignId: campaignId,
-      serverCampaignId: campaignData.campaign.serverId,
       campaignName: campaignData.campaign.name,
       campaignGuideVersion: campaignData.campaign.guideVersion === undefined ? -1 : campaignData.campaign.guideVersion,
       campaignGuide: campaignData.campaignGuide,

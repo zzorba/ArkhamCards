@@ -3,7 +3,6 @@ import { throttle } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
@@ -11,9 +10,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { ScenarioResult, CUSTOM } from '@actions/types';
-import LabeledTextBox from '@components/core/LabeledTextBox';
 import { NavigationProps } from '@components/nav/types';
-import XpComponent from './XpComponent';
 import { editScenarioResult } from './actions';
 import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
@@ -31,7 +28,7 @@ export interface EditScenarioResultProps {
 type Props = NavigationProps & EditScenarioResultProps;
 
 export default function EditScenarioResultView({ campaignId, index, componentId }: Props) {
-  const { backgroundStyle, typography } = useContext(StyleContext);
+  const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
   const existingScenarioResult = campaign && campaign.scenarioResults[index];

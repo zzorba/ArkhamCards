@@ -6,11 +6,11 @@ import { t } from 'ttag';
 
 import LinkedScenarioListComponent from './LinkedScenarioListComponent';
 import CampaignGuideSummary from './CampaignGuideSummary';
-import { Campaign } from '@actions/types';
+import { Campaign, CampaignId } from '@actions/types';
 import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import TabView from '@components/core/TabView';
+import useTabView from '@components/core/useTabView';
 import { updateCampaign } from '@components/campaign/actions';
 import { useCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
 import { NavigationProps } from '@components/nav/types';
@@ -34,7 +34,7 @@ export interface LinkedCampaignGuideProps {
 type Props = LinkedCampaignGuideProps & NavigationProps;
 
 export default function LinkedCampaignGuideView(props: Props) {
-  const { componentId, campaignId, campaignIdA, campaignIdB } = props;
+  const { componentId, campaignIdA, campaignIdB } = props;
   const investigators = useInvestigatorCards();
   const styleContext = useContext(StyleContext);
   const { backgroundStyle } = styleContext;
@@ -42,10 +42,18 @@ export default function LinkedCampaignGuideView(props: Props) {
   useStopAudioOnUnmount();
 
   const { showTraumaDialog, traumaDialog } = useTraumaDialog({ hideKilledInsane: true });
-  const campaign = useCampaign(campaignId);
+  const campaign = useCampaign(props.campaignId);
   const campaignName = (campaign && campaign.name) || '';
   const campaignDataA = useCampaignGuideReduxData(campaignIdA, investigators);
   const campaignDataB = useCampaignGuideReduxData(campaignIdB, investigators);
+
+  const serverId = campaign?.serverId;
+  const campaignId = useMemo(() => {
+    return {
+      campaignId: props.campaignId,
+      serverId,
+    };
+  }, [props.campaignId, serverId]);
 
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
@@ -71,7 +79,7 @@ export default function LinkedCampaignGuideView(props: Props) {
     }
   }, componentId, [showEditNameDialog]);
 
-  const handleUpdateCampaign = useCallback((id: number, sparseCampaign: Partial<Campaign>, now?: Date) => {
+  const handleUpdateCampaign = useCallback((id: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
     dispatch(updateCampaign(id, sparseCampaign, now));
   }, [dispatch]);
   const [removeMode, toggleRemoveMode] = useFlag(false);
@@ -195,16 +203,6 @@ export default function LinkedCampaignGuideView(props: Props) {
               </RoundedFactionBlock>
             </View>
           </ScrollView>
-          <CampaignGuideFab
-            campaignId={campaignId}
-            campaignName={campaignName}
-            componentId={componentId}
-            toggleRemoveInvestigator={toggleRemoveMode}
-            removeMode={removeMode}
-            showEditNameDialog={showEditNameDialog}
-            showAddInvestigator={showAddInvestigator}
-            guided
-          />
         </SafeAreaView>
       ),
     };
@@ -249,7 +247,7 @@ export default function LinkedCampaignGuideView(props: Props) {
                   inverted
                 />
               }
-              campaignId={contextA.campaignId}
+              campaignId={contextA.campaignId.campaignId}
               campaignGuide={contextA.campaignGuide}
               campaignLog={processedCampaignA.campaignLog}
               componentId={componentId}
@@ -264,7 +262,7 @@ export default function LinkedCampaignGuideView(props: Props) {
                   inverted
                 />
               }
-              campaignId={contextB.campaignId}
+              campaignId={contextB.campaignId.campaignId}
               campaignGuide={contextB.campaignGuide}
               campaignLog={processedCampaignB.campaignLog}
               componentId={componentId}
@@ -280,15 +278,27 @@ export default function LinkedCampaignGuideView(props: Props) {
     }
     return [investigatorTab, scenarioTab, logTab];
   }, [investigatorTab, scenarioTab, logTab]);
+  const [tabView, setSelectedTab] = useTabView({ tabs: tabs || [] });
   if (!tabs) {
     return null;
   }
   return (
-    <View style={styles.wrapper}>
-      <TabView tabs={tabs} />
+    <SafeAreaView style={styles.wrapper}>
+      { tabView }
+      <CampaignGuideFab
+        setSelectedTab={setSelectedTab}
+        campaignId={campaignId}
+        campaignName={campaignName}
+        componentId={componentId}
+        toggleRemoveInvestigator={toggleRemoveMode}
+        removeMode={removeMode}
+        showEditNameDialog={showEditNameDialog}
+        showAddInvestigator={showAddInvestigator}
+        guided
+      />
       { dialog }
       { traumaDialog }
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -11,7 +11,7 @@ import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { showInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
-import TabView from '@components/core/TabView';
+import useTabView from '@components/core/useTabView';
 import InvestigatorSelectorTab from './InvestigatorSelectorTab';
 import DeckSelectorTab from './DeckSelectorTab';
 import { NewDeckProps } from '@components/deck/NewDeckView';
@@ -287,14 +287,9 @@ function MyDecksSelectorDialog(props: Props) {
       },
     ] : null;
   }, [deckTab, investigatorTab]);
-
+  const [tabView] = useTabView({ tabs: tabs || [], onTabChange });
   if (tabs) {
-    return (
-      <TabView
-        tabs={tabs}
-        onTabChange={onTabChange}
-      />
-    );
+    return tabView;
   }
   return deckTab;
 }

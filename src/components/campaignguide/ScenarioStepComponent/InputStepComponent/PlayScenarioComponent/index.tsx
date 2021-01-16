@@ -15,15 +15,16 @@ import { PlayScenarioInput } from '@data/scenario/types';
 import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
+import { CampaignId } from '@actions/types';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: CampaignId;
   id: string;
   input: PlayScenarioInput;
 }
 
-export default function PlayScenarioComponent({ componentId, campaignId, id, input }: Props) {
+export default function PlayScenarioComponent({ componentId, campaignId: { campaignId }, id, input }: Props) {
   const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
 

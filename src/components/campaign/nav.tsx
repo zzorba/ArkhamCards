@@ -8,30 +8,8 @@ import { AddScenarioResultProps } from './AddScenarioResultView';
 import { CampaignChaosBagProps } from './CampaignChaosBagView';
 import { CampaignDrawWeaknessProps } from './CampaignDrawWeaknessDialog';
 
-import { CampaignScenarioProps } from './CampaignScenarioView';
 import { EditChaosBagProps } from './EditChaosBagDialog';
 import { OddsCalculatorProps } from './OddsCalculatorView';
-
-export function showCampaignScenarios(componentId: string, campaignId: number) {
-  Navigation.push<CampaignScenarioProps>(componentId, {
-    component: {
-      name: 'Campaign.Scenarios',
-      passProps: {
-        id: campaignId,
-      },
-      options: {
-        topBar: {
-          title: {
-            text: t`Scenarios`,
-          },
-          backButton: {
-            title: t`Back`,
-          },
-        },
-      },
-    },
-  });
-}
 
 export function showAddScenarioResult(componentId: string, campaignId: number) {
   Navigation.push<AddScenarioResultProps>(componentId, {

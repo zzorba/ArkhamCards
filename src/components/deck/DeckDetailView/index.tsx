@@ -116,6 +116,7 @@ function DeckDetailView({
     savingDialog: deletingDialog,
   } = useBasicDialog(t`Deleting`);
   const [menuOpen, toggleMenuOpen, setMenuOpen] = useFlag(false);
+  const [fabOpen, toggleFabOpen, setFabOpen] = useFlag(false);
   const [tabooOpen, setTabooOpen] = useState(false);
   const tabooSet = useTabooSet(tabooSetId);
   const investigators = useInvestigatorCards(tabooSetId);
@@ -354,14 +355,16 @@ function DeckDetailView({
   }, [actuallyDeleteBrokenDeck]);
 
   const toggleCopyDialog = useCallback(() => {
+    setFabOpen(false);
     setMenuOpen(false);
     toggleCopying();
-  }, [toggleCopying, setMenuOpen]);
+  }, [toggleCopying, setFabOpen, setMenuOpen]);
 
   const onChecklistPressed = useCallback(() => {
     if (!deck || !cards || !deckEditsRef.current) {
       return;
     }
+    setFabOpen(false);
     setMenuOpen(false);
     const investigator = cards[deck.investigator_code];
     Navigation.push<DeckChecklistProps>(componentId, {
@@ -375,7 +378,7 @@ function DeckDetailView({
         options: getDeckOptions(colors, { title: t`Checklist`, noTitle: true }, investigator),
       },
     });
-  }, [componentId, deck, cards, tabooSetId, deckEditsRef, colors, setMenuOpen]);
+  }, [componentId, deck, cards, tabooSetId, deckEditsRef, colors, setFabOpen, setMenuOpen]);
 
   const onEditSpecialPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -384,6 +387,7 @@ function DeckDetailView({
     if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
       setMode('edit');
     }
+    setFabOpen(false);
     setMenuOpen(false);
     const investigator = cards[deck.investigator_code];
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
@@ -416,7 +420,7 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses, deckEditsRef, setMode]);
+  }, [componentId, setFabOpen, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses, deckEditsRef, setMode]);
 
 
   const onAddCardsPressed = useCallback(() => {
@@ -426,6 +430,7 @@ function DeckDetailView({
     if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
       setMode('edit');
     }
+    setFabOpen(false);
     setMenuOpen(false);
     const investigator = cards[deck.investigator_code];
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
@@ -456,12 +461,13 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, deck, id, colors, setMenuOpen, cards, deckEditsRef, setMode]);
+  }, [componentId, deck, id, colors, setFabOpen, setMenuOpen, cards, deckEditsRef, setMode]);
 
   const onUpgradePressed = useCallback(() => {
     if (!deck) {
       return;
     }
+    setFabOpen(false);
     setMenuOpen(false);
     const backgroundColor = colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].background;
     Navigation.push<UpgradeDeckProps>(componentId, {
@@ -493,7 +499,7 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, deck, campaign, colors, parsedDeck, setMenuOpen]);
+  }, [componentId, deck, campaign, colors, parsedDeck, setFabOpen, setMenuOpen]);
 
   const copyDialog = useMemo(() => {
     return (
@@ -509,8 +515,9 @@ function DeckDetailView({
 
   const showTabooPicker = useCallback(() => {
     setTabooOpen(true);
+    setFabOpen(false);
     setMenuOpen(false);
-  }, [setMenuOpen, setTabooOpen]);
+  }, [setMenuOpen, setFabOpen, setTabooOpen]);
 
   const updateDeckName = useCallback((name: string) => {
     dispatch({
@@ -534,15 +541,19 @@ function DeckDetailView({
         },
       });
     }
+    setFabOpen(false);
     setMenuOpen(false);
-  }, [componentId, parsedDeck, colors, id, setMenuOpen]);
+  }, [componentId, parsedDeck, colors, id, setFabOpen, setMenuOpen]);
   const { dialog: editNameDialog, showDialog: showEditNameDialog } = useTextDialog({
     title: t`Deck name`,
     onValueChange: updateDeckName,
     value: name || '',
   });
   const editable = !!isPrivate && !!deck && !deck.next_deck;
-  const onEditPressed = useCallback(() => setMode('edit'), [setMode]);
+  const onEditPressed = useCallback(() => {
+    setFabOpen(false);
+    setMode('edit');
+  }, [setMode, setFabOpen]);
   const buttons = useMemo(() => {
     if (!parsedDeck || !deck || deck.next_deck) {
       return null;
@@ -604,6 +615,7 @@ function DeckDetailView({
     if (!deck) {
       return;
     }
+    setFabOpen(false);
     setMenuOpen(false);
     if (hasPendingEdits) {
       Alert.alert(
@@ -634,7 +646,7 @@ function DeckDetailView({
         ],
       );
     }
-  }, [signedIn, login, deck, hasPendingEdits, setMenuOpen, uploadLocalDeck]);
+  }, [signedIn, login, deck, hasPendingEdits, setFabOpen, setMenuOpen, uploadLocalDeck]);
 
   const viewDeck = useCallback(() => {
     if (deck) {
@@ -646,6 +658,7 @@ function DeckDetailView({
     if (!deck) {
       return;
     }
+    setFabOpen(false);
     setMenuOpen(false);
     const options: AlertButton[] = [];
     const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
@@ -678,16 +691,18 @@ function DeckDetailView({
       t`Are you sure you want to delete this deck?`,
       options,
     );
-  }, [deck, setMenuOpen, deleteSingleDeck, deleteAllDecks]);
+  }, [deck, setFabOpen, setMenuOpen, deleteSingleDeck, deleteAllDecks]);
 
   const showCardChartsPressed = useCallback(() => {
+    setFabOpen(false);
     setMenuOpen(false);
     if (parsedDeck) {
       showCardCharts(componentId, parsedDeck, colors);
     }
-  }, [componentId, parsedDeck, colors, setMenuOpen]);
+  }, [componentId, parsedDeck, colors, setFabOpen, setMenuOpen]);
 
   const showUpgradeHistoryPressed = useCallback(() => {
+    setFabOpen(false);
     setMenuOpen(false);
     if (parsedDeck) {
       Navigation.push<DeckHistoryProps>(componentId, {
@@ -700,14 +715,15 @@ function DeckDetailView({
         },
       });
     }
-  }, [componentId, id, colors, parsedDeck, setMenuOpen]);
+  }, [componentId, id, colors, parsedDeck, setFabOpen, setMenuOpen]);
 
   const showDrawSimulatorPressed = useCallback(() => {
+    setFabOpen(false);
     setMenuOpen(false);
     if (parsedDeck) {
       showDrawSimulator(componentId, parsedDeck, colors);
     }
-  }, [componentId, parsedDeck, colors, setMenuOpen]);
+  }, [componentId, parsedDeck, colors, setFabOpen, setMenuOpen]);
 
   const sideMenu = useMemo(() => {
     if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
@@ -861,7 +877,6 @@ function DeckDetailView({
     onEditSpecialPressed, onChecklistPressed,
   ]);
 
-  const [fabOpen, toggleFabOpen] = useFlag(false);
   const fabIcon = useCallback((active: boolean) => {
     if (active) {
       return <AppIcon name="plus-thin" color={colors.L30} size={32} />;

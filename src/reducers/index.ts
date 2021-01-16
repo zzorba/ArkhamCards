@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import signedIn from './signedIn';
 import campaigns from './campaigns';
-import guides, { GuidesState } from './guides';
+import guides from './guides';
 import filters from './filters';
 import cards from './cards';
 import decks from './decks';

@@ -1,4 +1,4 @@
-import { find, forEach, findLastIndex, filter, map, flatMap } from 'lodash';
+import { find, forEach, findLastIndex, filter, map } from 'lodash';
 
 import {
   RESTORE_BACKUP,

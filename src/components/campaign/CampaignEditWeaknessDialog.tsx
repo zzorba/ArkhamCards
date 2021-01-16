@@ -17,6 +17,7 @@ function CampaignEditWeaknessDialog({ componentId, campaignId }: CampaignEditWea
   const campaignSelector = useMemo(makeCampaignSelector, []);
   const campaign = useSelector((state: AppState) => campaignSelector(state, campaignId));
   const weaknessSet = campaign && campaign.weaknessSet;
+  const serverId = campaign?.serverId;
   const updateAssignedCards = useCallback((assignedCards: Slots) => {
     if (weaknessSet) {
       const updatedWeaknessSet = {
@@ -24,11 +25,14 @@ function CampaignEditWeaknessDialog({ componentId, campaignId }: CampaignEditWea
         assignedCards,
       };
       dispatch(updateCampaign(
-        campaignId,
+        {
+          campaignId,
+          serverId,
+        },
         { weaknessSet: updatedWeaknessSet } as Campaign
       ));
     }
-  }, [dispatch, campaignId, weaknessSet]);
+  }, [dispatch, campaignId, serverId, weaknessSet]);
   if (!weaknessSet) {
     return null;
   }

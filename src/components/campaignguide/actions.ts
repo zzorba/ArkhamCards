@@ -1,8 +1,10 @@
-import { forEach, keys, map } from 'lodash';
+import { keys, map } from 'lodash';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import {
+  CampaignId,
+  GuideInput,
   GUIDE_SET_INPUT,
   GUIDE_RESET_SCENARIO,
   GUIDE_UNDO_INPUT,
@@ -57,11 +59,12 @@ export function uploadCampaign(
         }),
       ]);
     }
-    dispatch(updateCampaign(campaignId, { serverId }));
+    dispatch(updateCampaign({ campaignId, serverId }, { serverId }));
   };
 }
+
 export function undo(
-  campaignId: number,
+  { campaignId, serverId }: CampaignId,
   scenarioId: string
 ): GuideUndoInputAction {
   return {
@@ -73,7 +76,7 @@ export function undo(
 }
 
 export function setBinaryAchievement(
-  campaignId: number,
+  { campaignId, serverId }: CampaignId,
   achievementId: string,
   value: boolean,
 ): GuideUpdateAchievementAction {
@@ -87,7 +90,7 @@ export function setBinaryAchievement(
 }
 
 export function incCountAchievement(
-  campaignId: number,
+  { campaignId, serverId }: CampaignId,
   achievementId: string,
   max?: number
 ): GuideUpdateAchievementAction {
@@ -101,9 +104,8 @@ export function incCountAchievement(
   };
 }
 
-
 export function decCountAchievement(
-  campaignId: number,
+  { campaignId, serverId }: CampaignId,
   achievementId: string,
   max?: number
 ): GuideUpdateAchievementAction {
@@ -118,7 +120,7 @@ export function decCountAchievement(
 }
 
 export function resetScenario(
-  campaignId: number,
+  { campaignId, serverId }: CampaignId,
   scenarioId: string
 ): GuideResetScenarioAction {
   return {
@@ -129,203 +131,156 @@ export function resetScenario(
   };
 }
 
-export function startScenario(
-  campaignId: number,
-  scenario: string
-): GuideSetInputAction {
+function setGuideInputAction({ campaignId, serverId }: CampaignId, input: GuideInput): GuideSetInputAction {
   return {
     type: GUIDE_SET_INPUT,
     campaignId,
-    input: {
-      type: 'start_scenario',
-      scenario,
-      step: undefined,
-    },
+    input,
     now: new Date(),
   };
+}
+export function startScenario(
+  campaignId: CampaignId,
+  scenario: string
+): GuideSetInputAction {
+  return setGuideInputAction(campaignId, {
+    type: 'start_scenario',
+    scenario,
+    step: undefined,
+  });
 }
 
 
 export function startSideScenario(
-  campaignId: number,
+  campaignId: CampaignId,
   scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
 ): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: scenario,
-    now: new Date(),
-  };
+  return setGuideInputAction(campaignId, scenario);
 }
 
 export function setScenarioDecision(
-  campaignId: number,
+  campaignId: CampaignId,
   step: string,
   value: boolean,
   scenario?: string
 ): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: {
-      type: 'decision',
-      scenario,
-      step,
-      decision: value,
-    },
-    now: new Date(),
-  };
+  return setGuideInputAction(campaignId, {
+    type: 'decision',
+    scenario,
+    step,
+    decision: value,
+  });
 }
 
 export function setInterScenarioData(
-  campaignId: number,
+  campaignId: CampaignId,
   value: InvestigatorTraumaData,
   scenario?: string
 ): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: {
-      type: 'inter_scenario',
-      scenario,
-      investigatorData: value,
-      step: undefined,
-    },
-    now: new Date(),
-  };
+  return setGuideInputAction(campaignId, {
+    type: 'inter_scenario',
+    scenario,
+    investigatorData: value,
+    step: undefined,
+  });
 }
 
 export function setScenarioCount(
-  campaignId: number,
+  campaignId: CampaignId,
   step: string,
   value: number,
   scenario?: string
 ): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: {
-      type: 'count',
-      scenario,
-      step,
-      count: value,
-    },
-    now: new Date(),
-  };
+  return setGuideInputAction(campaignId, {
+    type: 'count',
+    scenario,
+    step,
+    count: value,
+  });
 }
 
 export function setScenarioSupplies(
-  campaignId: number,
+  campaignId: CampaignId,
   step: string,
   supplies: SupplyCounts,
   scenario?: string
 ): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: {
-      type: 'supplies',
-      scenario,
-      step,
-      supplies,
-    },
-    now: new Date(),
-  };
+  return setGuideInputAction(campaignId, {
+    type: 'supplies',
+    scenario,
+    step,
+    supplies,
+  });
 }
 
 export function setScenarioNumberChoices(
-  campaignId: number,
+  campaignId: CampaignId,
   step: string,
   choices: NumberChoices,
   scenario?: string
 ): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: {
-      type: 'choice_list',
-      scenario,
-      step,
-      choices,
-    },
-    now: new Date(),
-  };
+  return setGuideInputAction(campaignId, {
+    type: 'choice_list',
+    scenario,
+    step,
+    choices,
+  });
 }
 
 export function setScenarioStringChoices(
-  campaignId: number,
+  campaignId: CampaignId,
   step: string,
   choices: StringChoices,
   scenario?: string
 ): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: {
-      type: 'string_choices',
-      scenario,
-      step,
-      choices,
-    },
-    now: new Date(),
-  };
+  return setGuideInputAction(campaignId, {
+    type: 'string_choices',
+    scenario,
+    step,
+    choices,
+  });
 }
 
 export function setScenarioChoice(
-  campaignId: number,
+  campaignId: CampaignId,
   step: string,
   choice: number,
   scenario?: string
 ): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: {
-      type: 'choice',
-      scenario,
-      step,
-      choice,
-    },
-    now: new Date(),
-  };
+  return setGuideInputAction(campaignId, {
+    type: 'choice',
+    scenario,
+    step,
+    choice,
+  });
 }
 
 export function setScenarioText(
-  campaignId: number,
+  campaignId: CampaignId,
   step: string,
   text: string,
   scenario?: string
 ): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: {
-      type: 'text',
-      scenario,
-      step,
-      text,
-    },
-    now: new Date(),
-  };
+  return setGuideInputAction(campaignId, {
+    type: 'text',
+    scenario,
+    step,
+    text,
+  });
 }
 
 export function setCampaignLink(
-  campaignId: number,
+  campaignId: CampaignId,
   step: string,
   decision: string,
   scenario?: string
 ): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: {
-      type: 'campaign_link',
-      scenario,
-      step,
-      decision,
-    },
-    now: new Date(),
-  };
+  return setGuideInputAction(campaignId, {
+    type: 'campaign_link',
+    scenario,
+    step,
+    decision,
+  });
 }
 
 export default {

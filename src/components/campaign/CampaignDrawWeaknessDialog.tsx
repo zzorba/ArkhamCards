@@ -54,11 +54,18 @@ function updateSlots(slots: Slots, pendingNextCard: string, replaceRandomBasicWe
 }
 
 export default function CampaignDrawWeaknessDialog(props: Props) {
-  const { campaignId, saveWeakness, componentId } = props;
+  const { saveWeakness, componentId } = props;
   const { borderStyle } = useContext(StyleContext);
   const dispatch: DeckDispatch = useDispatch();
 
-  const campaign = useCampaign(campaignId);
+  const campaign = useCampaign(props.campaignId);
+  const serverId = campaign?.serverId;
+  const campaignId = useMemo(() => {
+    return {
+      campaignId: props.campaignId,
+      serverId,
+    };
+  }, [props.campaignId, serverId]);
   const latestDeckIds = useCampaignLatestDeckIds(campaign);
   const decks = useSelector(getAllDecks);
   const investigators = useInvestigatorCards();
@@ -97,11 +104,11 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       component: {
         name: 'Dialog.CampaignEditWeakness',
         passProps: {
-          campaignId: campaignId,
+          campaignId: props.campaignId,
         },
       },
     });
-  }, [componentId, campaignId]);
+  }, [componentId, props.campaignId]);
 
   const showEditWeaknessDialogPressed = useMemo(() => throttle(showEditWeaknessDialog, 200), [showEditWeaknessDialog]);
   useEffect(() => {
@@ -130,7 +137,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
 
   const onPressInvestigator = useCallback(() => {
     const passProps: MyDecksSelectorProps = {
-      campaignId: campaignId,
+      campaignId: props.campaignId,
       onDeckSelect: selectDeck,
       selectedDeckIds: latestDeckIds,
       onlyShowSelected: true,
@@ -150,7 +157,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
         }],
       },
     });
-  }, [latestDeckIds, campaignId, selectDeck]);
+  }, [latestDeckIds, props.campaignId, selectDeck]);
 
   const updateDrawnCard = useCallback((nextCard: string, assignedCards: Slots) => {
     setPendingNextCard(nextCard);

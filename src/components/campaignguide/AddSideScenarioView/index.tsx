@@ -11,7 +11,7 @@ import SideScenarioButton from './SideScenarioButton';
 import { NavigationProps } from '@components/nav/types';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
-import TabView from '@components/core/TabView';
+import useTabView from '@components/core/useTabView';
 import { ScenarioId } from '@data/scenario';
 import { Scenario } from '@data/scenario/types';
 import space from '@styles/space';
@@ -166,9 +166,10 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
       node: challengeTab,
     },
   ], [sideTab, challengeTab]);
+  const [tabView] = useTabView({ tabs });
   return (
     <>
-      <TabView tabs={tabs} />
+      { tabView }
       { customDialog }
     </>
   );

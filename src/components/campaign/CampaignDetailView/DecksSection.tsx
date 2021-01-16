@@ -140,14 +140,19 @@ export default function DecksSection({
   const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
     showChooseDeck(investigator);
   }, [showChooseDeck]);
-
+  const campaignId = useMemo(() => {
+    return {
+      campaignId: campaign.id,
+      serverId: campaign.serverId,
+    };
+  }, [campaign.id, campaign.serverId]);
   const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: Deck) => {
     const traumaAndCardData = campaign.investigatorData[investigator.code] || EMPTY_TRAUMA_DATA;
     return (
       <InvestigatorCampaignRow
         key={investigator.code}
         componentId={componentId}
-        campaignId={campaign.id}
+        campaignId={campaignId}
         investigator={investigator}
         spentXp={traumaAndCardData.spentXp || 0}
         totalXp={traumaAndCardData.availableXp || 0}
@@ -162,7 +167,7 @@ export default function DecksSection({
         removeInvestigator={removeMode ? removeDeckPrompt : undefined}
       />
     );
-  }, [componentId, campaign, cards, showTraumaDialog, incSpentXp, decSpentXp, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator, removeMode]);
+  }, [componentId, campaignId, campaign.investigatorData, cards, showTraumaDialog, incSpentXp, decSpentXp, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator, removeMode]);
 
   const latestDecks: Deck[] = useMemo(() => flatMap(latestDeckIds, deckId => decks[deckId] || []), [latestDeckIds, decks]);
   const [killedInvestigators, aliveInvestigators] = useMemo(() => {

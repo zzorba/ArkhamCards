@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { concat, filter, find, findIndex, forEach, head, map } from 'lodash';
+import { concat, filter, forEach, head, map } from 'lodash';
 import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -9,7 +9,6 @@ import SettingsSwitch from '@components/core/SettingsSwitch';
 import EditText from '@components/core/EditText';
 import { updateCampaign } from '../actions';
 import { completedScenario, scenarioFromCard, Scenario } from '../constants';
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import { makeAllCyclePacksSelector, getAllStandalonePacks, makePackSelector, AppState } from '@reducers';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
@@ -77,7 +76,7 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
 
   const toggleShowInterludes = useCallback(() => {
     const campaignUpdate: Campaign = { showInterludes: !showInterludes } as any;
-    dispatch(updateCampaign(campaign.id, campaignUpdate));
+    dispatch(updateCampaign({ campaignId: campaign.id, serverId: campaign.serverId }, campaignUpdate));
   }, [campaign, showInterludes, dispatch]);
 
   useEffect(() => {
@@ -95,6 +94,7 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
     if (!loading && allScenarios.length && allScenarios[0] !== selectedScenario) {
       setSelectedScenario(allScenarios[0]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allScenarioCards]);
   const possibleScenarios = useMemo(() => {
     const scenarios: { title: string, value: Scenario | typeof CUSTOM }[] = map(

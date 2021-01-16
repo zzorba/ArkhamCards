@@ -121,6 +121,7 @@ export function useCounterDialog({
   const [liveCount, incCount, decCount, setCount] = useCounter(count, { min, max });
   useEffect(() => {
     setCount(count);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count]);
   const content = useMemo(() => {
     return (
@@ -147,7 +148,7 @@ export function useCounterDialog({
   const saveChanges = useCallback(() => {
     onCountChange(liveCount);
   }, [onCountChange, liveCount]);
-  const { visible, setVisible, dialog } = useDialog({
+  const { setVisible, dialog } = useDialog({
     title,
     content,
     confirm: {
@@ -533,7 +534,10 @@ export function useSaveDialog(
         assignedCards[code] = (assignedCards[code] || 0) + 1;
       });
       dispatch(updateCampaign(
-        campaign.id,
+        {
+          campaignId: campaign.id,
+          serverId: campaign.serverId,
+        },
         {
           weaknessSet: {
             ...(campaign.weaknessSet || {}),

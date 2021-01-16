@@ -51,7 +51,10 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
     if (campaign) {
       const investigatorData = campaign.investigatorData[investigator.code] || {};
       const oldXp = investigatorData.availableXp || 0;
-      dispatch(updateCampaign(campaign.id, {
+      dispatch(updateCampaign({
+        campaignId: campaign.id,
+        serverId: campaign.serverId,
+      }, {
         investigatorData: {
           ...campaign.investigatorData || {},
           [investigator.code]: {

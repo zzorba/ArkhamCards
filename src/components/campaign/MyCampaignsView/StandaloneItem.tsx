@@ -18,7 +18,7 @@ export default function StandaloneItem({ campaign, onPress, scenarioName }: Prop
   }, [onPress, campaign]);
   return (
     <GenericCampaignItem
-      campaign={campaign}
+      lastUpdated={campaign.lastUpdated}
       onPress={handleOnPress}
     >
       <CampaignSummaryComponent

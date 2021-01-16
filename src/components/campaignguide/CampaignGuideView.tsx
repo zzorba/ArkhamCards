@@ -5,11 +5,11 @@ import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import CampaignGuideSummary from './CampaignGuideSummary';
-import { Campaign } from '@actions/types';
+import { Campaign, CampaignId } from '@actions/types';
 import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
 import ScenarioListComponent from '@components/campaignguide/ScenarioListComponent';
-import TabView from '@components/core/TabView';
+import useTabView from '@components/core/useTabView';
 import { updateCampaign } from '@components/campaign/actions';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
@@ -30,8 +30,9 @@ type Props = CampaignGuideProps & NavigationProps;
 
 function CampaignGuideView(props: Props) {
   const { backgroundStyle } = useContext(StyleContext);
-  const { campaignId, componentId } = props;
+  const { componentId } = props;
   const campaignData = useContext(CampaignGuideContext);
+  const campaignId = campaignData.campaignId;
   const dispatch = useDispatch();
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
@@ -58,8 +59,8 @@ function CampaignGuideView(props: Props) {
     }
   }, componentId, [showEditNameDialog]);
 
-  const saveCampaignUpdate = useCallback((id: number, sparseCampaign: Partial<Campaign>, now?: Date) => {
-    dispatch(updateCampaign(id, sparseCampaign, now));
+  const saveCampaignUpdate = useCallback((campaignId: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
+    dispatch(updateCampaign(campaignId, sparseCampaign, now));
   }, [dispatch]);
   const { campaignGuide, campaignState } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
@@ -108,21 +109,10 @@ function CampaignGuideView(props: Props) {
             </RoundedFactionBlock>
           </View>
         </ScrollView>
-        <CampaignGuideFab
-          campaignId={campaignId}
-          componentId={componentId}
-          campaignName={campaignData.campaignName}
-          removeMode={removeMode}
-          serverCampaignId={campaignData.serverCampaignId}
-          showEditNameDialog={showEditNameDialog}
-          showAddInvestigator={addInvestigatorPressed}
-          toggleRemoveInvestigator={toggleRemoveInvestigator}
-          guided
-        />
       </SafeAreaView>
     );
-  }, [componentId, backgroundStyle, removeMode, campaignData, processedCampaign, campaignGuide, campaignId,
-    addInvestigatorPressed, toggleRemoveInvestigator, saveCampaignUpdate, showTraumaDialog, showEditNameDialog,
+  }, [componentId, backgroundStyle, removeMode, campaignData, processedCampaign, campaignGuide,
+    addInvestigatorPressed, toggleRemoveInvestigator, saveCampaignUpdate, showTraumaDialog,
   ]);
   const scenariosTab = useMemo(() => {
     return (
@@ -143,7 +133,7 @@ function CampaignGuideView(props: Props) {
       <View style={[styles.wrapper, backgroundStyle]}>
         <ScrollView contentContainerStyle={backgroundStyle}>
           <CampaignLogComponent
-            campaignId={campaignId}
+            campaignId={campaignId.campaignId}
             campaignGuide={campaignGuide}
             campaignLog={processedCampaign.campaignLog}
             componentId={componentId}
@@ -169,15 +159,24 @@ function CampaignGuideView(props: Props) {
       node: logTab,
     },
   ], [decksTab, scenariosTab, logTab]);
-
+  const [tabView, setSelectedTab] = useTabView({ tabs });
   return (
-    <View style={styles.wrapper}>
-      <TabView
-        tabs={tabs}
+    <SafeAreaView style={styles.wrapper}>
+      { tabView }
+      <CampaignGuideFab
+        setSelectedTab={setSelectedTab}
+        campaignId={campaignData.campaignId}
+        componentId={componentId}
+        campaignName={campaignData.campaignName}
+        removeMode={removeMode}
+        showEditNameDialog={showEditNameDialog}
+        showAddInvestigator={addInvestigatorPressed}
+        toggleRemoveInvestigator={toggleRemoveInvestigator}
+        guided
       />
       { dialog }
       { traumaDialog }
-    </View>
+    </SafeAreaView>
   );
 }
 

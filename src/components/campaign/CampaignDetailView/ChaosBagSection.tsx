@@ -1,8 +1,5 @@
 import React, { useCallback } from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 import { sum, values } from 'lodash';
 import { t } from 'ttag';
 
@@ -89,9 +86,3 @@ export default function ChaosBagSection({
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  bottomBorder: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-});
