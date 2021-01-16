@@ -6,6 +6,7 @@ import CampaignGuideSummary from './CampaignGuideSummary';
 import ScenarioListComponent from './ScenarioListComponent';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import { ShowAlert } from '@components/deck/dialogs';
 
 interface Props {
   componentId: string;
@@ -13,6 +14,7 @@ interface Props {
   campaignDataA: CampaignGuideContextType;
   campaignB: ProcessedCampaign;
   campaignDataB: CampaignGuideContextType;
+  showAlert: ShowAlert;
 }
 
 class CampaignLinkHelper {
@@ -71,7 +73,7 @@ class CampaignLinkHelper {
   };
 }
 
-export default function LinkedScenarioListComponent({ componentId, campaignA, campaignDataA, campaignB, campaignDataB }: Props) {
+export default function LinkedScenarioListComponent({ componentId, campaignA, campaignDataA, campaignB, campaignDataB, showAlert }: Props) {
   const linkHelper = useMemo(() => {
     return new CampaignLinkHelper(componentId, campaignA, campaignDataA, campaignB, campaignDataB);
   }, [componentId, campaignA, campaignDataA, campaignB, campaignDataB]);
@@ -80,6 +82,7 @@ export default function LinkedScenarioListComponent({ componentId, campaignA, ca
     <>
       <CampaignGuideContext.Provider value={campaignDataA}>
         <ScenarioListComponent
+          showAlert={showAlert}
           campaignId={campaignDataA.campaignId}
           campaignData={campaignDataA}
           processedCampaign={campaignA}
@@ -96,6 +99,7 @@ export default function LinkedScenarioListComponent({ componentId, campaignA, ca
       </CampaignGuideContext.Provider>
       <CampaignGuideContext.Provider value={campaignDataB}>
         <ScenarioListComponent
+          showAlert={showAlert}
           campaignId={campaignDataB.campaignId}
           campaignData={campaignDataB}
           processedCampaign={campaignB}

@@ -120,6 +120,7 @@ function CampaignGuideView(props: Props) {
       <View style={[styles.wrapper, backgroundStyle]}>
         <ScrollView contentContainerStyle={backgroundStyle}>
           <ScenarioListComponent
+            showAlert={showAlert}
             campaignId={campaignId}
             campaignData={campaignData}
             processedCampaign={processedCampaign}
@@ -128,7 +129,7 @@ function CampaignGuideView(props: Props) {
         </ScrollView>
       </View>
     );
-  }, [backgroundStyle, campaignData, campaignId, processedCampaign, componentId]);
+  }, [backgroundStyle, campaignData, campaignId, processedCampaign, componentId, showAlert]);
   const logTab = useMemo(() => {
     return (
       <View style={[styles.wrapper, backgroundStyle]}>
@@ -174,6 +175,7 @@ function CampaignGuideView(props: Props) {
         showAddInvestigator={addInvestigatorPressed}
         toggleRemoveInvestigator={toggleRemoveInvestigator}
         guided
+        showAlert={showAlert}
       />
       { alertDialog }
       { dialog }

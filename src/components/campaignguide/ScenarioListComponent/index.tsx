@@ -10,6 +10,7 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import { CampaignId } from '@actions/types';
+import { ShowAlert } from '@components/deck/dialogs';
 
 interface Props {
   componentId: string;
@@ -18,9 +19,10 @@ interface Props {
   processedCampaign: ProcessedCampaign;
   campaignData: CampaignGuideContextType;
   showLinkedScenario?: (scenarioId: string) => void;
+  showAlert: ShowAlert;
 }
 
-export default function ScenarioListTab({
+export default function ScenarioListComponent({
   componentId,
   campaignId,
   header,
@@ -30,6 +32,7 @@ export default function ScenarioListTab({
     campaignState,
   },
   showLinkedScenario,
+  showAlert,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   return (
@@ -45,6 +48,7 @@ export default function ScenarioListTab({
             processedCampaign={processedCampaign}
             campaignGuide={campaignGuide}
             campaignState={campaignState}
+            showAlert={showAlert}
           />
         }
       >

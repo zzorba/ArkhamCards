@@ -1,5 +1,4 @@
 import React, { useCallback, useMemo } from 'react';
-import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { t } from 'ttag';
@@ -8,11 +7,13 @@ import { AppState, getMyDecksState } from '@reducers';
 import DeckButton from '@components/deck/controls/DeckButton';
 import DeckActionRow from '@components/deck/controls/DeckActionRow';
 import useNetworkStatus from '@components/core/useNetworkStatus';
+import { ShowAlert } from '@components/deck/dialogs';
 
 interface Props {
   last?: boolean;
+  showAlert: ShowAlert
 }
-export default function ArkhamDbLoginButton({ last }: Props) {
+export default function ArkhamDbLoginButton({ last, showAlert }: Props) {
   const dispatch = useDispatch();
   const loading = useSelector((state: AppState) => state.signedIn.loading);
   const signedIn = useSelector((state: AppState) => state.signedIn.status);
@@ -25,28 +26,28 @@ export default function ArkhamDbLoginButton({ last }: Props) {
     dispatch(login());
   }, [dispatch]);
   const logOutPressed = useCallback(() => {
-    Alert.alert(
+    showAlert(
       t`Are you sure you want to sign out?`,
       t`Data on ArkhamDB will be preserved, but all Campaign data and any edits made without internet might be lost.\n\n If you are having trouble with your account you can also reconnect.`,
       [
         { text: t`Sign Out`, style: 'destructive', onPress: doLogout },
-        { text: t`Reconnect Account`, onPress: loginPressed },
+        { text: t`Reconnect Account`, onPress: loginPressed, icon: 'login' },
         { text: t`Cancel`, style: 'cancel' },
       ],
     );
-  }, [doLogout, loginPressed]);
+  }, [doLogout, loginPressed, showAlert]);
 
   const reauthPressed = useCallback(() => {
-    Alert.alert(
+    showAlert(
       t`Problem reading from ArkhamDB`,
       t`If you are having trouble with your account you should try to reconnect.\n\nIf the problem persists, you may sign out but campaigns will have ArkhamDB decks disconnected.`,
       [
         { text: t`Sign Out`, style: 'destructive', onPress: doLogout },
-        { text: t`Reconnect Account`, onPress: loginPressed },
+        { text: t`Reconnect Account`, onPress: loginPressed, icon: 'login' },
         { text: t`Cancel`, style: 'cancel' },
       ],
     );
-  }, [doLogout, loginPressed]);
+  }, [doLogout, loginPressed, showAlert]);
   const [status, control] = useMemo(() => {
     if (isConnected && error) {
       return [t`Authorization issues`, <DeckButton thin color="red" key="reauth-control" onPress={reauthPressed} title={t`Reconnect`} />];

@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import { Alert, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import ActionButton from 'react-native-action-button';
@@ -17,6 +17,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import { useCreateCampaignRequest, useDeleteCampaignRequest } from '@data/firebase/api';
 import { Campaign, CampaignId } from '@actions/types';
 import useNetworkStatus from '@components/core/useNetworkStatus';
+import { ShowAlert } from '@components/deck/dialogs';
 
 
 interface Props {
@@ -31,11 +32,12 @@ interface Props {
   showEditNameDialog: () => void;
   showAddInvestigator: () => void;
   toggleRemoveInvestigator: () => void;
+  showAlert: ShowAlert;
 }
 
 export default function CampaignGuideFab({
   campaignId, componentId, campaignName, removeMode, serverCampaignId, guided,
-  showEditNameDialog, showAddInvestigator, toggleRemoveInvestigator, setSelectedTab,
+  showEditNameDialog, showAddInvestigator, toggleRemoveInvestigator, setSelectedTab, showAlert,
 }: Props) {
   const [{ isConnected }] = useNetworkStatus();
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -55,15 +57,15 @@ export default function CampaignGuideFab({
   }, [dispatch, componentId, campaignId, deleteServerCampaign, user, serverCampaignId]);
   const confirmDeleteCampaign = useCallback(() => {
     setFabOpen(false);
-    Alert.alert(
+    showAlert(
       t`Delete`,
       t`Are you sure you want to delete the campaign: ${campaignName}`,
       [
-        { text: t`Delete`, onPress: actuallyDeleteCampaign, style: 'destructive' },
         { text: t`Cancel`, style: 'cancel' },
+        { text: t`Delete`, onPress: actuallyDeleteCampaign, style: 'destructive' },
       ],
     );
-  }, [campaignName, actuallyDeleteCampaign, setFabOpen]);
+  }, [campaignName, actuallyDeleteCampaign, setFabOpen, showAlert]);
   const confirmUploadCampaign = useCallback(async() => {
     setFabOpen(false);
     try {

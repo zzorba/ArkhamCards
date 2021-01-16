@@ -94,13 +94,13 @@ export default function DecksSection({
         t`Are you sure you want to remove ${investigator.name} from this campaign?\n\nCampaign log data associated with them may be lost.`,
       [
         {
+          text: t`Cancel`,
+          style: 'cancel',
+        },
+        {
           text: t`Remove`,
           onPress: () => removeInvestigator(investigator, deckId),
           style: 'destructive',
-        },
-        {
-          text: t`Cancel`,
-          style: 'cancel',
         },
       ],
     );

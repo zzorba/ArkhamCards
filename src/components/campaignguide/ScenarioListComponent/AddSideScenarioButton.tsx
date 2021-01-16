@@ -9,6 +9,7 @@ import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import { ShowAlert } from '@components/deck/dialogs';
 
 interface Props {
   componentId: string;
@@ -16,9 +17,10 @@ interface Props {
   processedCampaign: ProcessedCampaign;
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;
+  showAlert: ShowAlert;
 }
 
-export default function AddSideScenarioButton({ componentId, campaignId, processedCampaign, campaignGuide, campaignState }: Props) {
+export default function AddSideScenarioButton({ componentId, campaignId, processedCampaign, campaignGuide, campaignState, showAlert}: Props) {
   const canAddScenario = useMemo(() => {
     const lastCompletedScenarioIndex = findLastIndex(
       processedCampaign.scenarios,
@@ -70,7 +72,7 @@ export default function AddSideScenarioButton({ componentId, campaignId, process
 
   const onPress = useCallback(() => {
     if (!canAddScenario) {
-      Alert.alert(
+      showAlert(
         t`Can't add side scenario right now.`,
         t`Side scenarios cannot be added to a campaign until the previous scenario and following interludes are completed.`
       );
@@ -102,7 +104,7 @@ export default function AddSideScenarioButton({ componentId, campaignId, process
         },
       },
     });
-  }, [componentId, campaignId, processedCampaign.scenarios, canAddScenario]);
+  }, [componentId, campaignId, processedCampaign.scenarios, canAddScenario, showAlert]);
 
   return (
     <RoundedFooterButton

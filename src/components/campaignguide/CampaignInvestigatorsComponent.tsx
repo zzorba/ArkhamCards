@@ -132,10 +132,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
       if (processedCampaign.campaignLog.hasInvestigatorPlayedScenario(investigator)) {
         showAlert(
           t`Cannot remove`,
-          t`Since this investigator has participated in one or more scenarios during this campaign, they cannot be removed.\n\nHowever, you can choose to have them not participate in future scenarios of this campaign.`,
-          [
-            { text: t`Okay` },
-          ]
+          t`Since this investigator has participated in one or more scenarios during this campaign, they cannot be removed.\n\nHowever, you can choose to have them not participate in future scenarios of this campaign.`
         );
       } else {
         campaignState.removeInvestigator(investigator);

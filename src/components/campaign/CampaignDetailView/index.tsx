@@ -458,6 +458,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
         showAddInvestigator={showAddInvestigator}
         toggleRemoveInvestigator={toggleRemoveMode}
         guided={false}
+        showAlert={showAlert}
       />
       { alertDialog }
       { traumaDialog }

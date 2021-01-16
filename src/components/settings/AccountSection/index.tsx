@@ -29,7 +29,7 @@ export default function AccountSection({ componentId, showAlert }: Props) {
       ) }
       <View style={[space.paddingSideS, space.paddingBottomS]}>
         <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`ArkhamDB Account`} />}>
-          <ArkhamDbLoginButton last />
+          <ArkhamDbLoginButton last showAlert={showAlert} />
         </RoundedFactionBlock>
       </View>
     </>

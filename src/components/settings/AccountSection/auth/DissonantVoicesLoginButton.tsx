@@ -31,8 +31,8 @@ export default function DissonantVoicesLoginButton({ last, showAlert }: Props) {
       t`Sign in to Dissonant Voices?`,
       t`Dissonant Voices is an ongoing project by Mythos Busters to narrate the english scenario text for each Arkham Horror campaign.`,
       [
-        { text: t`Sign In`, onPress: doLogin },
         { text: t`Cancel`, style: 'cancel' },
+        { text: t`Sign In`, onPress: doLogin },
       ],
     );
   }, [doLogin, showAlert]);

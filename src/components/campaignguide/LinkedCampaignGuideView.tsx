@@ -208,8 +208,8 @@ export default function LinkedCampaignGuideView(props: Props) {
         </SafeAreaView>
       ),
     };
-  }, [showTraumaDialog, showAlert, addInvestigatorAPressed, addInvestigatorBPressed, showEditNameDialog, showAddInvestigator, toggleRemoveMode, handleUpdateCampaign,
-    componentId, contextA, contextB, processedCampaignA, processedCampaignB, backgroundStyle, campaignDataA, campaignDataB, campaignId, campaignName, removeMode,
+  }, [showTraumaDialog, showAlert, addInvestigatorAPressed, addInvestigatorBPressed, toggleRemoveMode, handleUpdateCampaign,
+    componentId, contextA, contextB, processedCampaignA, processedCampaignB, backgroundStyle, campaignDataA, campaignDataB, removeMode,
   ]);
   const scenarioTab = useMemo(() => {
     if (!processedCampaignA || !processedCampaignB || !contextA || !contextB) {
@@ -226,11 +226,12 @@ export default function LinkedCampaignGuideView(props: Props) {
             campaignDataA={contextA}
             campaignB={processedCampaignB}
             campaignDataB={contextB}
+            showAlert={showAlert}
           />
         </ScrollView>
       ),
     };
-  }, [backgroundStyle, componentId, processedCampaignA, processedCampaignB, contextA, contextB]);
+  }, [backgroundStyle, componentId, processedCampaignA, processedCampaignB, contextA, contextB, showAlert]);
   const logTab = useMemo(() => {
     if (!processedCampaignA || !processedCampaignB || !contextA || !contextB) {
       return null;
@@ -297,6 +298,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         showEditNameDialog={showEditNameDialog}
         showAddInvestigator={showAddInvestigator}
         guided
+        showAlert={showAlert}
       />
       { alertDialog }
       { dialog }

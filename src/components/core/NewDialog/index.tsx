@@ -71,10 +71,13 @@ function NewDialog({
         <ScrollView overScrollMode="never" bounces={false} showsVerticalScrollIndicator style={[styles.body, backgroundStyle]}>
           { children }
           { (buttons.length > 0) && (
-            <View style={styles.actionButtons}>
+            <View style={[styles.actionButtons, { flexDirection: buttons.length > 2 ? 'column' : 'row' }]}>
               { map(buttons, (button, idx) => {
                 return (
-                  <View key={idx} style={[styles.button, (idx < buttons.length - 1) ? space.marginRightS : undefined]}>
+                  <View key={idx} style={[styles.button, (idx < buttons.length - 1) ? {
+                    marginRight: buttons.length <= 2 ? s : undefined,
+                    marginBottom: buttons.length > 2 ? s : undefined,
+                  } : undefined]}>
                     { button }
                   </View>
                 );
@@ -129,7 +132,6 @@ const styles = StyleSheet.create({
   },
   actionButtons: {
     marginTop: s,
-    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
