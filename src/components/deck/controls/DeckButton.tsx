@@ -8,8 +8,9 @@ import AppIcon from '@icons/AppIcon';
 import space, { s, xs } from '@styles/space';
 import COLORS from '@styles/colors';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import EncounterIcon from '@icons/EncounterIcon';
 
-export type DeckButtonIcon = 'tools' | 'difficulty' | 'chaos_bag' | 'chart' | 'elder_sign' | 'delete' | 'per_investigator' | 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
+export type DeckButtonIcon = 'draw' | 'tdea' | 'tdeb' | 'tools' | 'difficulty' | 'chaos_bag' | 'chart' | 'elder_sign' | 'delete' | 'per_investigator' | 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
 
 interface Props {
   title: string;
@@ -27,6 +28,8 @@ interface Props {
 }
 
 const ICON_SIZE = {
+  tdea: 28,
+  tdeb: 28,
   tools: 26,
   difficulty: 26,
   chaos_bag: 26,
@@ -36,6 +39,7 @@ const ICON_SIZE = {
   per_investigator: 26,
   settings: 26,
   book: 22,
+  'draw': 24,
   'arkhamdb': 24,
   'logo': 28,
   'login': 24,
@@ -47,6 +51,9 @@ const ICON_SIZE = {
   'check-thin': 30,
 };
 const ICON_STYLE = {
+  draw: {},
+  tdea: {},
+  tdeb: {},
   tools: {},
   difficulty: {},
   chaos_bag: {},
@@ -73,7 +80,7 @@ const ICON_STYLE = {
 
 const MATERIAL_ICONS = new Set(['email', 'delete', 'login']);
 const ARKHAM_ICONS = new Set(['per_investigator', 'elder_sign']);
-
+const ENCOUNTER_ICONS = new Set(['tdea', 'tdeb']);
 export default function DeckButton({
   disabled,
   title,
@@ -132,6 +139,9 @@ export default function DeckButton({
     }
     if (ARKHAM_ICONS.has(icon)) {
       return <ArkhamIcon name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
+    }
+    if (ENCOUNTER_ICONS.has(icon)) {
+      return <EncounterIcon encounter_code={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
     }
     return <AppIcon name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
   }, [loading, icon, theIconColor]);

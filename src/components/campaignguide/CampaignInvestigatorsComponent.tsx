@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { Alert, InteractionManager, Text, StyleSheet, View } from 'react-native';
+import { InteractionManager, Text, StyleSheet, View } from 'react-native';
 import { find, findLast, flatMap, forEach, map, mapValues, partition } from 'lodash';
 import { isAfter } from 'date-fns';
 import { useAppState } from '@react-native-community/hooks';

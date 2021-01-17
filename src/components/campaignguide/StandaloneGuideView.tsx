@@ -1,5 +1,4 @@
 import React, { useCallback, useContext } from 'react';
-import { Alert } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
@@ -11,6 +10,7 @@ import { NavigationProps } from '@components/nav/types';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import ScenarioView from './ScenarioView';
 import StyleContext from '@styles/StyleContext';
+import { useAlertDialog } from '@components/deck/dialogs';
 
 export interface StandaloneGuideProps {
   campaignId: CampaignId;
@@ -24,25 +24,28 @@ export default function StandaloneGuideView({ campaignId, standaloneId, componen
     dispatch(deleteCampaign(campaignId));
     Navigation.pop(componentId);
   }, [campaignId, componentId, dispatch]);
-
+  const [alertDialog, showAlert] = useAlertDialog();
   const deletePressed = useCallback(() => {
-    Alert.alert(
+    showAlert(
       t`Delete`,
       t`Are you sure you want to delete this standalone?`,
       [
-        { text: t`Delete`, onPress: handleDelete, style: 'destructive' },
         { text: t`Cancel`, style: 'cancel' },
+        { text: t`Delete`, onPress: handleDelete, style: 'destructive' },
       ],
     );
-  }, [handleDelete]);
+  }, [handleDelete, showAlert]);
 
   return (
-    <ScenarioView
-      componentId={componentId}
-      campaignId={campaignId.campaignId}
-      scenarioId={standaloneId.scenarioId}
-      standalone
-      footer={<BasicButton onPress={deletePressed} title={t`Delete standalone`} color={colors.warn} />}
-    />
+    <>
+      <ScenarioView
+        componentId={componentId}
+        campaignId={campaignId.campaignId}
+        scenarioId={standaloneId.scenarioId}
+        standalone
+        footer={<BasicButton onPress={deletePressed} title={t`Delete standalone`} color={colors.warn} />}
+      />
+      { alertDialog }
+    </>
   );
 }

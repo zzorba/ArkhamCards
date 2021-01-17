@@ -1,6 +1,6 @@
 import { t } from 'ttag';
 import React, { useCallback, useContext } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { dissonantVoicesLogin, dissonantVoicesLogout } from '@actions';

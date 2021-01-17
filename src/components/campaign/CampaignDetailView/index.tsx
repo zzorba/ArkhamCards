@@ -206,6 +206,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       });
     }
   }, [updateWeaknessSet, campaign]);
+  const [alertDialog, showAlert] = useAlertDialog();
 
   const checkForWeaknessPrompt = useCallback((deck: Deck) => {
     if (cards && campaign) {
@@ -213,10 +214,11 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
         deck,
         cards,
         campaign.weaknessSet.assignedCards,
-        updateWeaknessAssignedCards
+        updateWeaknessAssignedCards,
+        showAlert
       );
     }
-  }, [cards, campaign, updateWeaknessAssignedCards]);
+  }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
 
   const addDeck = useCallback((deck: Deck) => {
     const newLatestDeckIds = [...(latestDeckIds || []), deck.id];
@@ -278,7 +280,6 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
     showChooseDeck();
   }, [showChooseDeck]);
   const [removeMode, toggleRemoveMode] = useFlag(false);
-  const [alertDialog, showAlert] = useAlertDialog();
   const decksTab = useMemo(() => {
     if (!campaign) {
       return <LoadingSpinner />;

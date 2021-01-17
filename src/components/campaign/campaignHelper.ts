@@ -4,6 +4,7 @@ import { t } from 'ttag';
 
 import { Deck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
+import { ShowAlert } from '@components/deck/dialogs';
 
 function weaknessString(deck: Deck, cards: CardsMap) {
   let weaknessCount = 0;
@@ -31,12 +32,13 @@ export function maybeShowWeaknessPrompt(
   deck: Deck,
   cards: CardsMap,
   weaknessCards: Slots,
-  updateWeaknessCards: (weaknessCards: Slots) => void
+  updateWeaknessCards: (weaknessCards: Slots) => void,
+  showAlert: ShowAlert
 ) {
   const { count, message, weaknesses } = weaknessString(deck, cards);
   if (weaknesses.length) {
     setTimeout(() => {
-      Alert.alert(
+      showAlert(
         t`Adjust Weakness Set`,
         /* eslint-disable prefer-template */
         (count > 1 ?

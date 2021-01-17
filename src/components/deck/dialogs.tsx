@@ -122,7 +122,7 @@ export function useDialog({
   };
 }
 
-interface AlertButton {
+export interface AlertButton {
   text: string;
   onPress?: () => void;
   style?: 'default' | 'cancel' | 'destructive';
@@ -206,7 +206,7 @@ export function useAlertDialog(): [React.ReactNode, ShowAlert] {
         alignment="center"
       >
         <View style={space.paddingS}>
-          <Text style={typography.text}>{ state?.description || '' }</Text>
+          <Text style={typography.small}>{ state?.description || '' }</Text>
         </View>
       </NewDialog>
     );

@@ -6,9 +6,8 @@ import { map } from 'lodash';
 import NewDialogContentLine from './NewDialogContentLine';
 import StyleContext from '@styles/StyleContext';
 import ItemPickerLine from './ItemPickerLine';
-import space, { m, s } from '@styles/space';
+import { m, s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
-import DeckButton from '@components/deck/controls/DeckButton';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 
 interface Props {

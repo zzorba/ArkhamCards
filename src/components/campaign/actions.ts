@@ -288,11 +288,9 @@ export function adjustBlessCurseChaosBagResults(
   };
 }
 
-export function deleteCampaign(
-  { campaignId, serverId }: CampaignId
-): ThunkAction<void, AppState, null, DeleteCampaignAction> {
-  return (dispatch, getState: () => AppState) => {
-    const campaign = makeCampaignSelector()(getState(), campaignId);
+
+export function removeLocalCampaign(campaign: Campaign): ThunkAction<void, AppState, null, DeleteCampaignAction> {
+  return (dispatch) => {
     if (campaign && campaign.link) {
       dispatch({
         type: DELETE_CAMPAIGN,
@@ -305,8 +303,19 @@ export function deleteCampaign(
     }
     dispatch({
       type: DELETE_CAMPAIGN,
-      id: campaignId,
+      id: campaign.id,
     });
+  };
+}
+
+export function deleteCampaign(
+  { campaignId, serverId }: CampaignId
+): ThunkAction<void, AppState, null, DeleteCampaignAction> {
+  return (dispatch, getState: () => AppState) => {
+    const campaign = makeCampaignSelector()(getState(), campaignId);
+    if (campaign) {
+      dispatch(removeLocalCampaign(campaign));
+    }
   };
 }
 

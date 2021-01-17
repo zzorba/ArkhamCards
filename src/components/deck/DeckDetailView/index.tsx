@@ -1,8 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { find, forEach } from 'lodash';
 import {
-  Alert,
-  AlertButton,
   Linking,
   Platform,
   ScrollView,
@@ -44,7 +42,7 @@ import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeck } from '@components/deck/hooks';
-import { useAdjustXpDialog, useBasicDialog, useSaveDialog, useTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
+import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
 import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
@@ -187,20 +185,19 @@ function DeckDetailView({
       },
     });
   }, [dispatch, id]);
+  const [alertDialog, showAlert] = useAlertDialog();
 
   const handleBackPress = useCallback(() => {
     if (!visible) {
       return false;
     }
     if (hasPendingEdits) {
-      Alert.alert(
+      showAlert(
         t`Save deck changes?`,
         t`Looks like you have made some changes that have not been saved.`,
         [{
-          text: t`Save Changes`,
-          onPress: () => {
-            saveEditsAndDismiss();
-          },
+          text: t`Cancel`,
+          style: 'cancel',
         }, {
           text: t`Discard Changes`,
           style: 'destructive',
@@ -208,15 +205,17 @@ function DeckDetailView({
             Navigation.dismissAllModals();
           },
         }, {
-          text: t`Cancel`,
-          style: 'cancel',
+          text: t`Save Changes`,
+          onPress: () => {
+            saveEditsAndDismiss();
+          },
         }],
       );
     } else {
       Navigation.dismissAllModals();
     }
     return true;
-  }, [visible, hasPendingEdits, saveEditsAndDismiss]);
+  }, [visible, hasPendingEdits, saveEditsAndDismiss, showAlert]);
 
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'back' || buttonId === 'androidBack') {
@@ -299,11 +298,11 @@ function DeckDetailView({
   useEffect(() => {
     if (!deck) {
       if (!deleting && id > 0) {
-        Alert.alert(
+        showAlert(
           t`Deck has been deleted`,
           t`It looks like you deleted this deck from ArkhamDB.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.`,
           [{
-            text: t`OK`,
+            text: t`Okay`,
             onPress: () => {
               Navigation.dismissAllModals();
             },
@@ -344,15 +343,15 @@ function DeckDetailView({
     }
   }, [id, deckDispatch, deleting, setDeleting]);
   const deleteBrokenDeck = useCallback(() => {
-    Alert.alert(
+    showAlert(
       t`Delete broken deck`,
       t`Looks like we are having trouble loading this deck for some reason`,
       [
-        { text: t`Delete`, style: 'destructive', onPress: actuallyDeleteBrokenDeck },
         { text: t`Cancel`, style: 'cancel' },
+        { text: t`Delete`, style: 'destructive', onPress: actuallyDeleteBrokenDeck },
       ]
     );
-  }, [actuallyDeleteBrokenDeck]);
+  }, [actuallyDeleteBrokenDeck, showAlert]);
 
   const toggleCopyDialog = useCallback(() => {
     setFabOpen(false);
@@ -618,35 +617,35 @@ function DeckDetailView({
     setFabOpen(false);
     setMenuOpen(false);
     if (hasPendingEdits) {
-      Alert.alert(
+      showAlert(
         t`Save Local Changes`,
         t`Please save any local edits to this deck before sharing to ArkhamDB`
       );
     } else if (deck.next_deck || deck.previous_deck) {
-      Alert.alert(
+      showAlert(
         t`Unsupported Operation`,
         t`This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time.\n\nIf you would like to upload it, you can use Clone to upload a clone of the current deck.`
       );
     } else if (!signedIn) {
-      Alert.alert(
+      showAlert(
         t`Sign in to ArkhamDB`,
         t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.`,
         [
-          { text: t`Sign In`, onPress: login },
           { text: t`Cancel`, style: 'cancel' },
+          { text: t`Sign In`, onPress: login },
         ],
       );
     } else {
-      Alert.alert(
+      showAlert(
         t`Upload to ArkhamDB`,
         t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
         [
-          { text: t`Upload`, onPress: uploadLocalDeck },
           { text: t`Cancel`, style: 'cancel' },
+          { text: t`Upload`, onPress: uploadLocalDeck },
         ],
       );
     }
-  }, [signedIn, login, deck, hasPendingEdits, setFabOpen, setMenuOpen, uploadLocalDeck]);
+  }, [signedIn, login, deck, hasPendingEdits, showAlert, setFabOpen, setMenuOpen, uploadLocalDeck]);
 
   const viewDeck = useCallback(() => {
     if (deck) {
@@ -660,7 +659,10 @@ function DeckDetailView({
     }
     setFabOpen(false);
     setMenuOpen(false);
-    const options: AlertButton[] = [];
+    const options: AlertButton[] = [{
+      text: t`Cancel`,
+      style: 'cancel',
+    }];
     const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
     if (isLatestUpgrade) {
       options.push({
@@ -681,17 +683,13 @@ function DeckDetailView({
         style: 'destructive',
       });
     }
-    options.push({
-      text: t`Cancel`,
-      style: 'cancel',
-    });
 
-    Alert.alert(
+    showAlert(
       t`Delete deck`,
       t`Are you sure you want to delete this deck?`,
       options,
     );
-  }, [deck, setFabOpen, setMenuOpen, deleteSingleDeck, deleteAllDecks]);
+  }, [deck, setFabOpen, setMenuOpen, deleteSingleDeck, deleteAllDecks, showAlert]);
 
   const showCardChartsPressed = useCallback(() => {
     setFabOpen(false);
@@ -1066,6 +1064,7 @@ function DeckDetailView({
       { uploadLocalDeckDialog }
       { deletingDialog }
       { copyDialog }
+      { alertDialog }
     </View>
   );
 }

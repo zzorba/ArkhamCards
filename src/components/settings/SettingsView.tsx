@@ -132,99 +132,101 @@ export default function SettingsView({ componentId }: NavigationProps) {
   }, [navButtonPressed]);
   const [alertDialog, showAlert] = useAlertDialog();
   return (
-    <SafeAreaView style={[styles.container, backgroundStyle]}>
-      <ScrollView style={[styles.list, { backgroundColor: colors.L10 }]} keyboardShouldPersistTaps="always">
-        <AccountSection componentId={componentId} showAlert={showAlert} />
-        <View style={[space.paddingSideS, space.paddingBottomS]}>
-          <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Cards`} />}>
-            <View style={[space.paddingTopS, space.paddingBottomS]}>
-              <LanguagePicker first />
-              <DeckPickerStyleButton
-                icon="card-outline"
-                title={t`Card Collection`}
-                valueLabel={collectionSummary}
-                editable
-                onPress={myCollectionPressed}
+    <>
+      <SafeAreaView style={[styles.container, backgroundStyle]}>
+        <ScrollView style={[styles.list, { backgroundColor: colors.L10 }]} keyboardShouldPersistTaps="always">
+          <AccountSection componentId={componentId} showAlert={showAlert} />
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
+            <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Cards`} />}>
+              <View style={[space.paddingTopS, space.paddingBottomS]}>
+                <LanguagePicker first showAlert={showAlert} />
+                <DeckPickerStyleButton
+                  icon="card-outline"
+                  title={t`Card Collection`}
+                  valueLabel={collectionSummary}
+                  editable
+                  onPress={myCollectionPressed}
+                />
+                <DeckPickerStyleButton
+                  icon="show"
+                  title={t`Encounter Spoilers`}
+                  valueLabel={spoilerSummary}
+                  onPress={editSpoilersPressed}
+                  editable
+                />
+                <SettingsTabooPicker last />
+              </View>
+              <DeckButton
+                icon="arkhamdb"
+                onPress={cardsLoading ? undefined : doSyncCards}
+                title={syncCardsText}
+                loading={cardsLoading}
+                thin
+                bottomMargin={s}
               />
-              <DeckPickerStyleButton
-                icon="show"
-                title={t`Encounter Spoilers`}
-                valueLabel={spoilerSummary}
-                onPress={editSpoilersPressed}
-                editable
+              <DeckButton
+                icon="book"
+                onPress={rulesPressed}
+                title={t`Rules`}
+                thin
               />
-              <SettingsTabooPicker last />
-            </View>
-            <DeckButton
-              icon="arkhamdb"
-              onPress={cardsLoading ? undefined : doSyncCards}
-              title={syncCardsText}
-              loading={cardsLoading}
-              thin
-              bottomMargin={s}
-            />
-            <DeckButton
-              icon="book"
-              onPress={rulesPressed}
-              title={t`Rules`}
-              thin
-            />
-          </RoundedFactionBlock>
-        </View>
-        <View style={[space.paddingSideS, space.paddingBottomS]}>
-          <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Preferences`} />}>
-            <View style={[space.paddingTopS, space.paddingBottomS]}>
-              <ThemePicker />
-              <FontSizePicker />
-            </View>
-            <DeckCheckboxButton
-              icon="copy"
-              title={t`Swipe between card results`}
-              value={!showCardsingleCardView}
-              onValueChange={swipeBetweenCardsChanged}
-            />
-            <DeckCheckboxButton
-              icon="sort-by-alpha"
-              title={t`Alphabetize guide encounter sets`}
-              value={alphabetizeEncounterSets}
-              onValueChange={alphabetizeEncounterSetsChanged}
-              last={!SHOW_DISSONANT_VOICES}
-            />
-            { SHOW_DISSONANT_VOICES && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
-          </RoundedFactionBlock>
-        </View>
-        <View style={[space.paddingSideS, space.paddingBottomS]}>
-          <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Support`} />}>
-            <DeckButton
-              icon="logo"
-              topMargin={s}
-              bottomMargin={s}
-              onPress={aboutPressed}
-              title={t`About Arkham Cards`}
-            />
-            <DeckButton
-              bottomMargin={s}
-              icon="book"
-              onPress={backupPressed}
-              title={t`Backup Data`}
-            />
-            <DeckButton
-              bottomMargin={s}
-              icon="tools"
-              onPress={diagnosticsPressed}
-              title={t`Diagnostics`}
-            />
-            <DeckButton
-              color="gold"
-              icon="email"
-              onPress={contactPressed}
-              title={t`Contact us`}
-            />
-          </RoundedFactionBlock>
-        </View>
-      </ScrollView>
+            </RoundedFactionBlock>
+          </View>
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
+            <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Preferences`} />}>
+              <View style={[space.paddingTopS, space.paddingBottomS]}>
+                <ThemePicker />
+                <FontSizePicker />
+              </View>
+              <DeckCheckboxButton
+                icon="copy"
+                title={t`Swipe between card results`}
+                value={!showCardsingleCardView}
+                onValueChange={swipeBetweenCardsChanged}
+              />
+              <DeckCheckboxButton
+                icon="sort-by-alpha"
+                title={t`Alphabetize guide encounter sets`}
+                value={alphabetizeEncounterSets}
+                onValueChange={alphabetizeEncounterSetsChanged}
+                last={!SHOW_DISSONANT_VOICES}
+              />
+              { SHOW_DISSONANT_VOICES && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
+            </RoundedFactionBlock>
+          </View>
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
+            <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Support`} />}>
+              <DeckButton
+                icon="logo"
+                topMargin={s}
+                bottomMargin={s}
+                onPress={aboutPressed}
+                title={t`About Arkham Cards`}
+              />
+              <DeckButton
+                bottomMargin={s}
+                icon="book"
+                onPress={backupPressed}
+                title={t`Backup Data`}
+              />
+              <DeckButton
+                bottomMargin={s}
+                icon="tools"
+                onPress={diagnosticsPressed}
+                title={t`Diagnostics`}
+              />
+              <DeckButton
+                color="gold"
+                icon="email"
+                onPress={contactPressed}
+                title={t`Contact us`}
+              />
+            </RoundedFactionBlock>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
       { alertDialog }
-    </SafeAreaView>
+    </>
   );
 }
 

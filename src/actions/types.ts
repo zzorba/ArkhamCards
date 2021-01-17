@@ -761,6 +761,17 @@ export const NEW_WEAKNESS_SET = 'NEW_WEAKNESS_SET';
 export const EDIT_WEAKNESS_SET = 'EDIT_WEAKNESS_SET';
 export const DELETE_WEAKNESS_SET = 'DELETE_WEAKNESS_SET';
 
+export const ARKHAM_CARDS_LOGIN = 'ARKHAM_CARDS_LOGIN';
+interface ArkhamCardsLoginAction {
+  type: typeof ARKHAM_CARDS_LOGIN;
+  user: string;
+}
+
+export const ARKHAM_CARDS_LOGOUT = 'ARKHAM_CARDS_LOGOUT';
+interface ArkhamCardsLogoutAction {
+  type: typeof ARKHAM_CARDS_LOGOUT;
+}
+
 export const ARKHAMDB_LOGIN_STARTED = 'ARKHAMDB_LOGIN_STARTED';
 interface ArkhamDbLoginStartedAction {
   type: typeof ARKHAMDB_LOGIN_STARTED;
@@ -1051,6 +1062,8 @@ export type PacksActions =
   UpdatePromptDismissedAction;
 
 export type SignInActions =
+  ArkhamCardsLoginAction |
+  ArkhamCardsLogoutAction |
   ArkhamDbLoginAction |
   ArkhamDbLoginStartedAction |
   ArkhamDbLoginErrorAction |

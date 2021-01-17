@@ -44,7 +44,7 @@ import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
 import { CampaignSelection } from '../SelectCampaignDialog';
-import { usePickerDialog, useTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, usePickerDialog, useTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
@@ -130,7 +130,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
         rightButtons: [{
           text: t`Done`,
           id: 'save',
-          enabled: selection.type !== 'campaign' || selection.code !== CUSTOM || !!name,
           color: COLORS.M,
           accessibilityLabel: t`Done`,
         }],
@@ -172,12 +171,12 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const updateWeaknessAssigned = useCallback((weaknessAssignedCards: Slots) => {
     updateWeaknessAssignedCards({ type: 'sync', slots: weaknessAssignedCards });
   }, [updateWeaknessAssignedCards]);
-
+  const [alertDialog, showAlert] = useAlertDialog();
   const checkDeckForWeaknessPrompt = useCallback((deck: Deck) => {
     if (cards) {
-      maybeShowWeaknessPrompt(deck, cards, weaknessAssignedCards, updateWeaknessAssigned);
+      maybeShowWeaknessPrompt(deck, cards, weaknessAssignedCards, updateWeaknessAssigned, showAlert);
     }
-  }, [cards, weaknessAssignedCards, updateWeaknessAssigned]);
+  }, [cards, weaknessAssignedCards, updateWeaknessAssigned, showAlert]);
 
   const investigatorAdded = useCallback((card: Card) => {
     setInvestigatorIds([...investigatorIds, card.code]);
@@ -220,6 +219,11 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [campaign, selection]);
 
   const onSave = useCallback(() => {
+    if (selection.type === 'campaign' && selection.code === CUSTOM && !name) {
+      showAlert(t`Name required`, t`You must specify a name for custom campaigns.`);
+      return;
+    }
+
     if (selection.type === 'campaign') {
       if (selection.code === TDE) {
         dispatch(newLinkedCampaign(
@@ -265,7 +269,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       ));
     }
     Navigation.pop(componentId);
-  }, [dispatch, componentId, campaignLog, chaosBag, placeholderName, nextId, name, selection,
+  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, nextId, name, selection,
     difficulty, deckIds, investigatorIds, weaknessPacks, weaknessAssignedCards, isGuided]);
 
   const savePressed = useMemo(() => throttle(onSave, 200), [onSave]);
@@ -548,6 +552,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       { campaignSectionDialog }
       { difficultyDialog }
       { dialog }
+      { alertDialog }
     </View>
   );
 }

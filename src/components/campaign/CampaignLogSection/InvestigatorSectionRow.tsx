@@ -83,6 +83,9 @@ export default function InvestigatorSectionRow({
     );
   }, [investigator, investigatorNotes.counts, countChanged]);
   const faction = investigator.factionCode();
+  if (investigatorNotes.sections.length === 0 && investigatorNotes.counts.length === 0) {
+    return null;
+  }
   return (
     <View style={space.paddingBottomS}>
       <RoundedFactionBlock

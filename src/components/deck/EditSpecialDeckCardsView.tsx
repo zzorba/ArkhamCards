@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { forEach, keys, map, sortBy } from 'lodash';
-import { Alert, ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -21,6 +21,7 @@ import { useDeck, usePlayerCards } from '@components/core/hooks';
 import { useDispatch } from 'react-redux';
 import { setIgnoreDeckSlot } from './actions';
 import { useDeckEdits } from './hooks';
+import { useAlertDialog } from './dialogs';
 
 export interface EditSpecialCardsProps {
   id: number;
@@ -141,16 +142,17 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
       },
     });
   }, [componentId, cards, deck, colors, deckEditsRef, saveWeakness]);
+  const [alertDialog, showAlert] = useAlertDialog();
   const drawWeakness = useCallback(() => {
-    Alert.alert(
+    showAlert(
       t`Draw Basic Weakness`,
       t`This deck does not seem to be part of a campaign yet.\n\nIf you add this deck to a campaign, the app can keep track of the available weaknesses between multiple decks.\n\nOtherwise, you can draw random weaknesses from your entire collection.`,
       [
-        { text: t`Draw From Collection`, style: 'default', onPress: showWeaknessDialog },
-        { text: t`Edit Collection`, onPress: editCollection },
+        { text: t`Draw From Collection`, icon: 'draw', style: 'default', onPress: showWeaknessDialog },
+        { text: t`Edit Collection`, icon: 'edit', onPress: editCollection },
         { text: t`Cancel`, style: 'cancel' },
       ]);
-  }, [showWeaknessDialog, editCollection]);
+  }, [showWeaknessDialog, editCollection, showAlert]);
 
   const showCampaignWeaknessDialog = useCallback(() => {
     if (!campaignId || !deckEditsRef.current) {
@@ -296,11 +298,14 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   }, [componentId, setIgnoreCardCount, deckEdits, isSpecial]);
 
   return (
-    <ScrollView style={[styles.wrapper, backgroundStyle]}>
-      { ignoreCardsSection }
-      { storySection }
-      { basicWeaknessSection }
-    </ScrollView>
+    <>
+      <ScrollView style={[styles.wrapper, backgroundStyle]}>
+        { ignoreCardsSection }
+        { storySection }
+        { basicWeaknessSection }
+      </ScrollView>
+      { alertDialog }
+    </>
   );
 }
 

@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { find, flatMap, filter, map, partition } from 'lodash';
 import {
-  Alert,
   StyleSheet,
   Text,
   View,
@@ -17,7 +16,7 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
-import { ShowAlert, useAlertDialog } from '@components/deck/dialogs';
+import { ShowAlert } from '@components/deck/dialogs';
 
 interface Props {
   componentId: string;

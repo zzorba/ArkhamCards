@@ -4,16 +4,46 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Input } from 'react-native-elements';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
-import auth from '@react-native-firebase/auth';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import uuid from 'react-native-uuid';
-
+import { useDispatch } from 'react-redux';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
 import { t } from 'ttag';
+
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, useDialog } from '@components/deck/dialogs';
 import space, { s, xs } from '@styles/space';
 import { useFlag } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT } from '@actions/types';
+import { AppState } from '@reducers';
+import { removeLocalCampaign } from '@components/campaign/actions';
+
+
+function login(user: string): ThunkAction<void, AppState, unknown, Action> {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>): void => {
+    dispatch({
+      type: ARKHAM_CARDS_LOGIN,
+      user,
+    });
+  };
+}
+
+function logout(): ThunkAction<void, AppState, null, Action> {
+  return (dispatch, getState) => {
+    const state = getState();
+    forEach(state.campaigns?.all || {}, campaign => {
+      if (campaign && campaign.serverId) {
+        dispatch(removeLocalCampaign(campaign));
+      }
+    });
+    dispatch({
+      type: ARKHAM_CARDS_LOGOUT,
+    });
+  };
+}
 
 GoogleSignin.configure({
   scopes: ['email'],
@@ -137,11 +167,11 @@ function errorMessage(code: string): {
   }
 }
 
-function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
+function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   mode: 'create' | 'login' | undefined;
   setMode: (mode: 'create' | 'login') => void;
-  closeDialog: () => void;
   backPressed: () => void;
+  loginSucceeded: (user: FirebaseAuthTypes.UserCredential) => void;
 }) {
   const { typography } = useContext(StyleContext);
   const [emailAddress, setEmailAddress] = useState('');
@@ -163,9 +193,9 @@ function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
       auth().createUserWithEmailAndPassword(emailAddress, password) :
       auth().signInWithEmailAndPassword(emailAddress, password);
     promise.then(
-      () => {
+      (user) => {
         setSubmitting(false);
-        closeDialog();
+        loginSucceeded(user);
       },
       (error) => {
         if (error.code) {
@@ -178,7 +208,7 @@ function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
         setSubmitting(false);
       }
     );
-  }, [emailAddress, password, setSubmitting, closeDialog, setEmailErrorCodes, mode]);
+  }, [emailAddress, password, setSubmitting, setEmailErrorCodes, loginSucceeded, mode]);
   const focusPasswordField = useCallback(() => {
     passwordInputRef.current && passwordInputRef.current.focus();
   }, [passwordInputRef]);
@@ -318,17 +348,33 @@ interface Props {
 
 export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const { darkMode, typography } = useContext(StyleContext);
+  const dispatch = useDispatch();
   const { user, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [mode, setMode] = useState<'login' | 'create' | undefined>();
-  const doLogout = useCallback(() => {
-    auth().signOut();
-  }, []);
+  const doLogout = useCallback(async() => {
+    await auth().signOut();
+    dispatch(logout());
+  }, [dispatch]);
 
   const logoutPressed = useCallback(() => {
-
-  }, []);
+    showAlert(
+      t`Sign out of Arkham Cards?`,
+      t`Are you sure you want to sign out of Arkham Cards?\n\nAny campaigns you uploaded or have had shared with you will be removed from this device. They can be resynced if you sign in again.\n\nNote: if you have made recent changes while offline, they may be lost.`,
+      [
+        {
+          text: t`Cancel`,
+          style: 'cancel',
+        },
+        {
+          text: t`Sign out`,
+          style: 'destructive',
+          onPress: doLogout,
+        },
+      ]
+    );
+  }, [showAlert, doLogout]);
   const createAccountPressed = useCallback(() => setMode('create'), [setMode]);
   const loginPressed = useCallback(() => setMode('login'), [setMode]);
   const resetDialog = useCallback(() => {
@@ -339,8 +385,13 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
     }
   }, [setMode, setEmailLogin, setVisibleRef]);
 
-  const signInToApple = useCallback(() => onAppleButtonPress().then(() => resetDialog()), [resetDialog]);
-  const signInToGoogle = useCallback(() => onGoogleButtonPress().then(() => resetDialog()), [resetDialog]);
+  const loginSucceeded = useCallback((user: FirebaseAuthTypes.UserCredential) => {
+    dispatch(login(user.user.uid));
+    resetDialog();
+  }, [resetDialog, dispatch]);
+
+  const signInToApple = useCallback(() => onAppleButtonPress().then(loginSucceeded), [loginSucceeded]);
+  const signInToGoogle = useCallback(() => onGoogleButtonPress().then(loginSucceeded), [loginSucceeded]);
 
   const welcomeContent = useMemo(() => {
     return (
@@ -360,7 +411,16 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
     );
   }, [typography, loginPressed, createAccountPressed]);
 
-  const emailContent = useMemo(() => <EmailSubmitForm setMode={setMode} closeDialog={resetDialog} backPressed={toggleEmailLogin} mode={mode} />, [resetDialog, toggleEmailLogin, mode]);
+  const emailContent = useMemo(() => {
+    return (
+      <EmailSubmitForm
+        setMode={setMode}
+        backPressed={toggleEmailLogin}
+        mode={mode}
+        loginSucceeded={loginSucceeded}
+      />
+    );
+  }, [toggleEmailLogin, loginSucceeded, mode]);
   const signInContent = useMemo(() => {
     return (
       <View style={styles.center}>

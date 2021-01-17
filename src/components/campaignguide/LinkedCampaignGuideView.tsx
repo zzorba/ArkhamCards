@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Alert, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
@@ -97,17 +97,19 @@ export default function LinkedCampaignGuideView(props: Props) {
   const [alertDialog, showAlert] = useAlertDialog();
   const showAddInvestigator = useCallback(() => {
     if (contextA && contextB) {
-      Alert.alert(
+      showAlert(
         t`Add investigator to which campaign?`,
         t`Which campaign would you like to add an investigator to?`,
         [
           {
             text: contextA.campaignGuide.campaignName(),
             onPress: addInvestigatorAPressed,
+            icon: 'tdea',
           },
           {
             text: contextB.campaignGuide.campaignName(),
             onPress: addInvestigatorBPressed,
+            icon: 'tdeb',
           },
           {
             text: t`Cancel`,
@@ -116,7 +118,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         ],
       );
     }
-  }, [contextA, contextB, addInvestigatorAPressed, addInvestigatorBPressed]);
+  }, [contextA, contextB, addInvestigatorAPressed, addInvestigatorBPressed, showAlert]);
 
   const investigatorTab = useMemo(() => {
     if (!campaignDataA || !campaignDataB || !processedCampaignA || !processedCampaignB || !contextA || !contextB) {
