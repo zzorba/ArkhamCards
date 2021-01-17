@@ -8,7 +8,7 @@ import StyleContext from '@styles/StyleContext';
 import ItemPickerLine from './ItemPickerLine';
 import { m, s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import { NOTCH_BOTTOM_PADDING, TINY_PHONE } from '@styles/sizes';
 
 interface Props {
   title: string;
@@ -32,6 +32,7 @@ function NewDialog({
 }: Props) {
   const { backgroundStyle, darkMode, colors, shadow, typography } = useContext(StyleContext);
   const { width } = useWindowDimensions();
+  const verticalButtons = buttons.length > 2 || TINY_PHONE;
   return (
     <Modal
       avoidKeyboard={avoidKeyboard}
@@ -49,10 +50,10 @@ function NewDialog({
         paddingBottom: NOTCH_BOTTOM_PADDING + m,
       } : {
         justifyContent: 'center',
-        padding: m,
+        padding: s,
       }]}
     >
-      <View style={[shadow.large, styles.dialog, { maxHeight: '60%', width: width - m * 2 }]}>
+      <View style={[shadow.large, styles.dialog, { maxHeight: '60%', width: width - s * 2 }]}>
         <View style={[styles.header, { backgroundColor: colors.D20 }]}>
           <Text style={[typography.large, typography.inverted]}>{title}</Text>
           { !!dismissable && (
@@ -70,12 +71,12 @@ function NewDialog({
         <ScrollView overScrollMode="never" bounces={false} showsVerticalScrollIndicator style={[styles.body, backgroundStyle]}>
           { children }
           { (buttons.length > 0) && (
-            <View style={[styles.actionButtons, { flexDirection: buttons.length > 2 ? 'column' : 'row' }]}>
+            <View style={[styles.actionButtons, { flexDirection: verticalButtons ? 'column' : 'row' }]}>
               { map(buttons, (button, idx) => {
                 return (
                   <View key={idx} style={[styles.button, (idx < buttons.length - 1) ? {
-                    marginRight: buttons.length <= 2 ? s : undefined,
-                    marginBottom: buttons.length > 2 ? s : undefined,
+                    marginRight: !verticalButtons ? s : undefined,
+                    marginBottom: verticalButtons ? s : undefined,
                   } : undefined]}>
                     { button }
                   </View>

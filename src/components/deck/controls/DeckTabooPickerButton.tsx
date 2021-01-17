@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { find, map } from 'lodash';
-import { format } from 'date-fns';
 import { useSelector } from 'react-redux';
 import { c, t } from 'ttag';
 
@@ -8,6 +7,7 @@ import Database from '@data/Database';
 import useDbData from '@components/core/useDbData';
 import { AppState } from '@reducers';
 import { usePickerDialog } from '../dialogs';
+import { utcFormat} from '@lib/datetime';
 import DeckPickerStyleButton from './DeckPickerStyleButton';
 
 interface Props {
@@ -17,6 +17,7 @@ interface Props {
   open?: boolean;
   first?: boolean;
   last?: boolean;
+  show?: boolean;
 }
 
 async function fetchTaboos(db: Database) {
@@ -27,7 +28,7 @@ async function fetchTaboos(db: Database) {
   return tabooSets;
 }
 
-export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disabled, open, first, last }: Props) {
+export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disabled, show, open, first, last }: Props) {
   const settingsTabooSetId = useSelector((state: AppState) => state.settings.tabooId);
   const tabooSets = useDbData(fetchTaboos);
   const items = useMemo(() => [
@@ -35,7 +36,7 @@ export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disable
     ...map(tabooSets, set => {
       return {
         value: set.id,
-        title: set.date_start ? format(Date.parse(set.date_start), 'LLL d, yyyy') : 'Unknown',
+        title: set.date_start ? utcFormat(Date.parse(set.date_start) / 1000, 'LLL d, yyyy') : 'Unknown',
       };
     }),
   ], [tabooSets]);
@@ -61,7 +62,7 @@ export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disable
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  if (!open && (tabooSetId === undefined || tabooSetId === 0) && (settingsTabooSetId === undefined || settingsTabooSetId === 0)) {
+  if (!show && !open && (tabooSetId === undefined || tabooSetId === 0) && (settingsTabooSetId === undefined || settingsTabooSetId === 0)) {
     return null;
   }
   return (
