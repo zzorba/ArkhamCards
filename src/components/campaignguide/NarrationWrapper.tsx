@@ -220,7 +220,7 @@ function PlayerView({ style }: PlayerProps) {
           ...(style || {}),
           display: 'flex',
           flexDirection: 'row',
-          height: 64,
+          height: m * 2 + 32,
           alignItems: 'center',
           padding: m,
         }}
@@ -353,7 +353,7 @@ function TrackView({ track, isCurrentTrack }: TrackProps) {
           style={{
             display: 'flex',
             flexDirection: 'row',
-            height: 64,
+            height: m * 2 + 32,
             width: '100%',
             alignItems: 'center',
             padding: m,
