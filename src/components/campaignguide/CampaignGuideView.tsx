@@ -163,7 +163,7 @@ function CampaignGuideView(props: Props) {
   ], [decksTab, scenariosTab, logTab]);
   const [tabView, setSelectedTab] = useTabView({ tabs });
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <View style={styles.wrapper}>
       { tabView }
       <CampaignGuideFab
         setSelectedTab={setSelectedTab}
@@ -180,7 +180,7 @@ function CampaignGuideView(props: Props) {
       { alertDialog }
       { dialog }
       { traumaDialog }
-    </SafeAreaView>
+    </View>
   );
 }
 

@@ -288,7 +288,7 @@ export default function LinkedCampaignGuideView(props: Props) {
     return null;
   }
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <View style={styles.wrapper}>
       { tabView }
       <CampaignGuideFab
         setSelectedTab={setSelectedTab}
@@ -305,7 +305,7 @@ export default function LinkedCampaignGuideView(props: Props) {
       { alertDialog }
       { dialog }
       { traumaDialog }
-    </SafeAreaView>
+    </View>
   );
 }
 

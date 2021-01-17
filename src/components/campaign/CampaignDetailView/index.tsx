@@ -441,7 +441,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
     );
   }
   return (
-    <SafeAreaView style={[styles.flex, backgroundStyle]}>
+    <View style={[styles.flex, backgroundStyle]}>
       { tabView }
       <AddCampaignNoteSectionDialog
         visible={addSectionVisible}
@@ -464,7 +464,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       { alertDialog }
       { traumaDialog }
       { dialog }
-    </SafeAreaView>
+    </View>
   );
 }
 
