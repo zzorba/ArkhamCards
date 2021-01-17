@@ -14,6 +14,7 @@ import StyleContext from '@styles/StyleContext';
 import RoundButton from '@components/core/RoundButton';
 import { useDeckEditState, useParsedDeck } from '@components/deck/hooks';
 import { useAdjustXpDialog } from '@components/deck/dialogs';
+import { DeckId } from '@actions/types';
 
 const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 
@@ -21,7 +22,7 @@ export const FOOTER_HEIGHT = (56 * (isBig ? 1.2 : 1));
 
 interface Props {
   componentId: string;
-  deckId: number;
+  deckId: DeckId;
   onPress: () => void;
   controls?: React.ReactNode;
   control?: 'fab' | 'counts' ;
@@ -56,7 +57,7 @@ export default function DeckNavFooter({
     if (!parsedDeck) {
       return [undefined, undefined];
     }
-    if (parsedDeck.deck.previous_deck) {
+    if (parsedDeck.deck.previousDeckId) {
       const adjustedXp = parsedDeck.availableExperience;
       const spentXP = (parsedDeck.changes?.spentXp || 0);
       return t`${spentXP} of ${adjustedXp} XP spent`;
@@ -66,7 +67,7 @@ export default function DeckNavFooter({
   }, [parsedDeck]);
 
   const xpLine = useMemo(() => {
-    if (!editable || !deck || !deck.previous_deck) {
+    if (!editable || !deck || !deck.previousDeckId) {
       return (
         <Text style={[typography.button, typography.bold, typography.inverted]} allowFontScaling={false}>
           { xpString }

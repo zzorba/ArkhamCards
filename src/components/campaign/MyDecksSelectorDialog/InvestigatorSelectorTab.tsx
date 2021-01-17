@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { Navigation } from 'react-native-navigation';
 
-import { SortType } from '@actions/types';
+import { DeckId, SortType } from '@actions/types';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
 import Card from '@data/Card';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
@@ -12,8 +12,8 @@ interface Props {
   searchOptions?: SearchOptions;
   sort: SortType;
 
-  onlyDeckIds?: number[];
-  filterDeckIds: number[];
+  onlyDeckIds?: DeckId[];
+  filterDeckIds: DeckId[];
   filterInvestigators: string[];
 }
 

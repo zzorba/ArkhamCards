@@ -17,10 +17,10 @@ import DeckSelectorTab from './DeckSelectorTab';
 import { NewDeckProps } from '@components/deck/NewDeckView';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { NavigationProps } from '@components/nav/types';
-import { Deck, SortType, SORT_BY_PACK } from '@actions/types';
+import { Deck, DeckId, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/Card';
-import { getAllDecks, getCampaigns, makeLatestCampaignDeckIdsSelector, AppState } from '@reducers';
+import { getAllDecks, getCampaigns, makeLatestCampaignDeckIdsSelector, AppState, getDeck } from '@reducers';
 import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -33,7 +33,7 @@ export interface MyDecksSelectorProps {
   onInvestigatorSelect?: (card: Card) => void;
 
   singleInvestigator?: string;
-  selectedDeckIds?: number[];
+  selectedDeckIds?: DeckId[];
   selectedInvestigatorIds?: string[];
 
   onlyShowSelected?: boolean;
@@ -122,7 +122,7 @@ function MyDecksSelectorDialog(props: Props) {
     return uniq([
       ...(hideEliminatedInvestigators ? eliminatedInvestigators : []),
       ...flatMap(selectedDeckIds, deckId => {
-        const deck = decks[deckId];
+        const deck = getDeck(decks, deckId);
         if (deck) {
           return [deck.investigator_code];
         }
@@ -176,7 +176,7 @@ function MyDecksSelectorDialog(props: Props) {
     return undefined;
   }, [selectedDeckIds, campaign, campaignLatestDeckIds, onlyShowSelected, onlyShowPreviousCampaignMembers]);
 
-  const filterDeckIds: number[] = useMemo(() => {
+  const filterDeckIds: DeckId[] = useMemo(() => {
     if (onlyShowSelected) {
       return [];
     }

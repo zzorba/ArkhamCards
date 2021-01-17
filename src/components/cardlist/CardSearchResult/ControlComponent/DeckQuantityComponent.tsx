@@ -6,10 +6,11 @@ import { incDeckSlot, decDeckSlot, setDeckSlot } from '@components/deck/actions'
 import CardQuantityComponent from './CardQuantityComponent';
 import { useDeckSlotCount } from '@components/deck/hooks';
 import { InteractionManager } from 'react-native';
+import { DeckId } from '@actions/types';
 
 
 interface DeckCardQuantityProps {
-  deckId: number;
+  deckId: DeckId;
   code: string;
   limit: number;
   showZeroCount?: boolean;

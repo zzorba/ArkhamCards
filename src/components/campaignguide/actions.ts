@@ -21,6 +21,8 @@ import {
   GUIDE_UPDATE_ACHIEVEMENT,
   GuideUpdateAchievementAction,
   guideInputToId,
+  Campaign,
+  DeckId,
 } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import database from '@react-native-firebase/database';
@@ -217,6 +219,7 @@ export function setScenarioNumberChoices(
   campaignId: CampaignId,
   step: string,
   choices: NumberChoices,
+  deckId?: DeckId,
   scenario?: string
 ): GuideSetInputAction {
   return setGuideInputAction(campaignId, {
@@ -224,6 +227,7 @@ export function setScenarioNumberChoices(
     scenario,
     step,
     choices,
+    deckId,
   });
 }
 
@@ -269,6 +273,20 @@ export function setScenarioText(
   });
 }
 
+export function setScenarioDeckChoice(
+  campaignId: CampaignId,
+  step: string,
+  deckId: DeckId,
+  scenario?: string
+): GuideSetInputAction {
+  return setGuideInputAction(campaignId, {
+    type: 'deck',
+    scenario,
+    step,
+    deckId,
+  });
+}
+
 export function setCampaignLink(
   campaignId: CampaignId,
   step: string,
@@ -300,4 +318,5 @@ export default {
   setBinaryAchievement,
   incCountAchievement,
   decCountAchievement,
+  setScenarioDeckChoice,
 };

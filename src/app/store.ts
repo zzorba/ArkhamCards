@@ -1,12 +1,15 @@
-import { filter } from 'lodash';
+import { filter, flatMap, forEach, omit, values } from 'lodash';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createOffline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import { createMigrate, persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import uuid from 'react-native-uuid';
 
 import reducers, { AppState } from '@reducers';
+import { Campaign, Deck, DeckId, DecksMap, DeprecatedCampaign, getDeckId, ChaosBagResults, CampaignGuideState } from '@actions/types';
+import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
 // import Reactotron from './ReactotronConfig';
 
 /**
@@ -30,6 +33,47 @@ export default function configureStore(initialState: AppState) {
     // @ts-ignore
     persist: false,
   });
+
+  function migrateV1(state: AppState): AppState {
+    const newState: AppState = { ...state };
+
+    let deckMap: { [key: string]: DeckId | undefined} = {};
+    if (state.decks && state.decks.all) {
+      const [all, newDeckMap] = migrateDecks(values(state.decks.all));
+      deckMap = newDeckMap;
+      newState.decks = {
+        ...state.decks,
+        all,
+        replacedLocalIds: {},
+      };
+    }
+    if (state.campaigns && state.campaigns.all) {
+      const [all, campaignMapping] = migrateCampaigns(
+        values(state.campaigns.all) as DeprecatedCampaign[],
+        deckMap,
+        newState.decks.all,
+      );
+      const chaosBagResults: { [uuid: string]: ChaosBagResults | undefined } = {};
+      forEach(state.campaigns.chaosBagResults || {}, (bag, id) => {
+        if (campaignMapping[id]) {
+          chaosBagResults[campaignMapping[id]] = bag;
+        }
+      });
+      newState.campaigns = {
+        ...state.campaigns,
+        all,
+        chaosBagResults,
+      };
+
+      if (state.guides && state.guides.all) {
+        newState.guides = {
+          ...state.guides,
+          all: migrateGuides(state.guides.all, campaignMapping, deckMap),
+        };
+      }
+    }
+    return newState;
+  }
 
   const migrations = {
     0: (state: any) => {

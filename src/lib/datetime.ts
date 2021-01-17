@@ -81,7 +81,7 @@ export function toRelativeDateString(date: Date | string, locale: string) {
   if (isAfter(date, addDays(startOfNowDate, -1))) {
     return t`Updated yesterday`;
   }
-  if (isAfter(date, addDays(startOfNowDate, -7))) {
+  if (isAfter(date, addDays(startOfNowDate, -6))) {
     const dayOfWeek = format(date, 'EEEE');
     switch (dayOfWeek) {
       case 'Monday': return t`Updated Monday`;

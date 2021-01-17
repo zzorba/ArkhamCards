@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Switch from '@components/core/Switch';
-import { Deck, Slots, NumberChoices } from '@actions/types';
+import { Deck, Slots, NumberChoices, DeckId, getDeckId } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -33,7 +33,7 @@ import { TINY_PHONE } from '@styles/sizes';
 
 interface ShowDeckButtonProps {
   componentId: string;
-  deckId: number;
+  deckId: DeckId;
   investigator: Card;
 }
 
@@ -116,13 +116,10 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
       killed: [killedAdjust ? 1 : 0],
       insane: [insaneAdjust ? 1 : 0],
     };
-    if (deck) {
-      choices.deckId = [deck.id];
-    }
-    scenarioState.setNumberChoices(choiceId, choices);
+    scenarioState.setNumberChoices(choiceId, choices, deck ? getDeckId(deck) : undefined);
   }, [scenarioState, earnedXp, choiceId, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust]);
 
-  const choices = useMemo(() => scenarioState.numberChoices(choiceId), [scenarioState, choiceId]);
+  const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
 
   const xp: number = useMemo(() => {
     if (choices === undefined) {
@@ -410,12 +407,12 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
   }, [componentId, colors, investigator, deck]);
 
   const deckButton = useMemo(() => {
-    if (deck && choices !== undefined && choices.deckId) {
+    if (deck && deckChoice !== undefined) {
       return (
         <View style={styles.row}>
           <ShowDeckButton
             componentId={componentId}
-            deckId={choices.deckId[0]}
+            deckId={deckChoice}
             investigator={investigator}
           />
         </View>
@@ -436,7 +433,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
         <ArkhamButton variant="outline" grow icon="deck" title={t`View deck`} onPress={viewDeck} />
       </View>
     );
-  }, [componentId, deck, editable, investigator, choices, selectDeck, viewDeck]);
+  }, [componentId, deck, editable, investigator, deckChoice, selectDeck, viewDeck]);
 
   const storyCountsForDeck = useMemo(() => {
     if (!deck) {

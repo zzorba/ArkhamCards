@@ -6,7 +6,7 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, CUSTOM, Deck, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
+import { CampaignNotes, CUSTOM, Deck, DeckId, getDeckId, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
 import CampaignLogSection from '../CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
@@ -14,7 +14,7 @@ import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaign
 import { ChaosBag } from '@app_constants';
 import { updateCampaign, updateCampaignSpentXp, cleanBrokenCampaigns } from '../actions';
 import { NavigationProps } from '@components/nav/types';
-import { getAllDecks } from '@reducers';
+import { getAllDecks, getDeck } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignDetails, useCampaignScenarios, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
@@ -99,7 +99,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   const updateNonDeckInvestigators = useCallback((nonDeckInvestigators: string[]) => {
     dispatch(updateCampaign(campaignId, { nonDeckInvestigators }));
   }, [dispatch, campaignId]);
-  const updateLatestDeckIds = useCallback((latestDeckIds: number[]) => {
+  const updateLatestDeckIds = useCallback((latestDeckIds: DeckId[]) => {
     dispatch(updateCampaign(campaignId, { latestDeckIds }));
   }, [dispatch, campaignId]);
   const updateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
@@ -221,7 +221,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
 
   const addDeck = useCallback((deck: Deck) => {
-    const newLatestDeckIds = [...(latestDeckIds || []), deck.id];
+    const newLatestDeckIds = [...(latestDeckIds || []), getDeckId(deck)];
     updateLatestDeckIds(newLatestDeckIds);
     checkForWeaknessPrompt(deck);
   }, [latestDeckIds, updateLatestDeckIds, checkForWeaknessPrompt]);
@@ -241,7 +241,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       return;
     }
     const campaignInvestigators = flatMap(latestDeckIds, deckId => {
-      const deck = decks[deckId];
+      const deck = getDeck(decks, deckId);
       return (deck && cards[deck.investigator_code]) || [];
     });
 

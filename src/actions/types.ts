@@ -49,16 +49,18 @@ export interface DeckMeta {
   alternate_back?: string;
 }
 
-export interface Deck {
+export interface DeckId {
   id: number;
-  uuid?: string;
+  local: boolean;
+  uuid: string;
+}
+
+export interface ArkhamDbApiDeck {
+  id: number;
   name: string;
   description_md?: string;
   taboo_id?: number;
   investigator_code: string;
-  next_deck?: number;
-  previous_deck?: number;
-  local?: boolean;
   meta?: DeckMeta;
   date_update: string;
   date_creation: string;
@@ -71,10 +73,61 @@ export interface Deck {
   xp?: number;
   xp_adjustment?: number;
   spentXp?: number;
+  next_deck?: number;
+  previous_deck?: number;
 }
 
+interface BaseDeck {
+  id: number;
+  name: string;
+  description_md?: string;
+  taboo_id?: number;
+  investigator_code: string;
+  meta?: DeckMeta;
+  date_update: string;
+  date_creation: string;
+  scenarioCount?: number;
+  slots: Slots;
+  ignoreDeckLimitSlots: Slots;
+  exile_string?: string;
+  problem?: DeckProblemType;
+  version?: string;
+  xp?: number;
+  xp_adjustment?: number;
+  spentXp?: number;
+  nextDeckId?: DeckId;
+  previousDeckId?: DeckId;
+}
+
+interface ArkhamDbDeck extends BaseDeck {
+  local: undefined;
+  uuid: undefined;
+}
+
+interface LocalDeck extends BaseDeck {
+  local: true;
+  uuid: string;
+}
+
+export function getDeckId(deck: Deck): DeckId {
+  if (deck.local) {
+    return {
+      id: deck.id,
+      local: true,
+      uuid: deck.uuid,
+    };
+  }
+  return {
+    id: deck.id,
+    local: false,
+    uuid: `${deck.id}`,
+  };
+}
+
+export type Deck = ArkhamDbDeck | LocalDeck;
+
 export interface DecksMap {
-  [id: number]: Deck;
+  [uuid: string]: Deck;
 }
 
 export type FactionCounts = {
@@ -119,6 +172,7 @@ export interface SplitCards {
 export type CardSplitType = keyof SplitCards;
 
 export interface ParsedDeck {
+  id: DeckId;
   investigator: Card;
   deck: Deck;
   slots: Slots;
@@ -353,18 +407,15 @@ export interface CampaignId {
   serverId?: string;
 }
 
-export interface Campaign {
-  id: number;
+interface BaseCampaign {
   serverId?: string;
-  uuid?: string;
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
   standaloneId?: StandaloneId;
   lastUpdated: Date | string;
   showInterludes?: boolean;
-  baseDeckIds?: number[];
-  latestDeckIds?: number[]; // deprecated
+  deckIds?: DeckId[];
   nonDeckInvestigators?: string[];
   guided?: boolean;
   guideVersion?: number;
@@ -375,11 +426,26 @@ export interface Campaign {
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
   // Used for Dream-Eaters and other nonsense.
+  linkUuid?: {
+    campaignIdA: string;
+    campaignIdB: string;
+  };
+  linkedCampaignUuid?: string;
+}
+export interface Campaign extends BaseCampaign {
+  uuid: string;
+}
+
+export interface DeprecatedCampaign extends BaseCampaign {
+  id: number;
+  latestDeckIds?: number[]; // deprecated
+  baseDeckIds?: number[];
+  uuid: string | undefined;
+  linkedCampaignId?: number;
   link?: {
     campaignIdA: number;
     campaignIdB: number;
   };
-  linkedCampaignId?: number;
 }
 
 export interface SingleCampaign extends Campaign {
@@ -493,26 +559,26 @@ export interface UpdatePromptDismissedAction {
 export const NEW_DECK_AVAILABLE = 'NEW_DECK_AVAILABLE';
 export interface NewDeckAvailableAction {
   type: typeof NEW_DECK_AVAILABLE;
-  id: number;
+  id: DeckId;
   deck: Deck;
 }
 export const REPLACE_LOCAL_DECK = 'REPLACE_LOCAL_DECK';
 export interface ReplaceLocalDeckAction {
   type: typeof REPLACE_LOCAL_DECK;
-  localId: number;
+  localId: DeckId;
   deck: Deck;
 }
 export const UPDATE_DECK = 'UPDATE_DECK';
 export interface UpdateDeckAction {
   type: typeof UPDATE_DECK;
-  id: number;
+  id: DeckId;
   deck: Deck;
   isWrite: boolean;
 }
 export const DELETE_DECK = 'DELETE_DECK';
 export interface DeleteDeckAction {
   type: typeof DELETE_DECK;
-  id: number;
+  id: DeckId;
   deleteAllVersions: boolean;
 }
 export const CLEAR_DECKS = 'CLEAR_DECKS';
@@ -533,7 +599,7 @@ export interface EditDeckState {
 export const START_DECK_EDIT = 'START_DECK_EDIT';
 export interface StartDeckEditAction {
   type: typeof START_DECK_EDIT;
-  id: number;
+  id: DeckId;
   deck?: Deck;
   mode?: 'edit' | 'upgrade' | 'view';
 }
@@ -541,7 +607,7 @@ export interface StartDeckEditAction {
 export const UPDATE_DECK_EDIT = 'UPDATE_DECK_EDIT';
 export interface UpdateDeckEditAction {
   type: typeof UPDATE_DECK_EDIT;
-  id: number;
+  id: DeckId;
   updates: Partial<EditDeckState>;
 }
 
@@ -549,7 +615,7 @@ export const UPDATE_DECK_EDIT_COUNTS = 'UPDATE_DECK_EDIT_COUNTS';
 
 interface UpdateDeckEditCountsSetAction {
   type: typeof UPDATE_DECK_EDIT_COUNTS;
-  id: number;
+  id: DeckId;
   code: string;
   operation: 'set';
   value: number;
@@ -557,7 +623,7 @@ interface UpdateDeckEditCountsSetAction {
 }
 interface UpdateDeckEditCountsAdjustAction {
   type: typeof UPDATE_DECK_EDIT_COUNTS;
-  id: number;
+  id: DeckId;
   code: string;
   operation: 'inc' | 'dec';
   limit?: number;
@@ -568,7 +634,7 @@ export type UpdateDeckEditCountsAction = UpdateDeckEditCountsSetAction | UpdateD
 export const FINISH_DECK_EDIT = 'FINISH_DECK_EDIT';
 export interface FinishDeckEditAction {
   type: typeof FINISH_DECK_EDIT;
-  id: number;
+  id: DeckId;
 }
 
 export const SET_MY_DECKS = 'SET_MY_DECKS';
@@ -615,7 +681,7 @@ export interface NewCampaignAction {
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
-  baseDeckIds: number[];
+  deckIds: DeckId[];
   investigatorIds: string[];
   chaosBag: ChaosBag;
   weaknessSet: WeaknessSet;
@@ -632,10 +698,9 @@ export const NEW_STANDALONE = 'NEW_STANDALONE';
 export interface NewStandaloneCampaignAction {
   type: typeof NEW_STANDALONE;
   now: Date;
-  id: number;
   name: string;
   standaloneId: StandaloneId;
-  baseDeckIds: number[];
+  deckIds: DeckId[];
   investigatorIds: string[];
   weaknessSet: WeaknessSet;
 }
@@ -643,7 +708,6 @@ export const NEW_LINKED_CAMPAIGN = 'NEW_LINKED_CAMPAIGN';
 export interface NewLinkedCampaignAction {
   type: typeof NEW_LINKED_CAMPAIGN;
   now: Date;
-  id: number;
   name: string;
   weaknessSet: WeaknessSet;
   cycleCode: CampaignCycleCode;
@@ -673,16 +737,21 @@ export interface RestoreComplexBackupAction {
   deckRemapping: {
     [key: string]: number;
   };
+  deckIds: {
+    [key: string]: DeckId;
+  }
   campaignRemapping: {
     [key: string]: number;
   };
 }
 
 export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
+type CampaignUpdate = Partial<Campaign>;
+
 export interface UpdateCampaignAction {
   type: typeof UPDATE_CAMPAIGN;
   id: number;
-  campaign: Partial<Campaign>;
+  campaign: CampaignUpdate;
   now: Date;
 }
 
@@ -728,7 +797,7 @@ export interface CampaignAddInvestigatorAction {
   type: typeof CAMPAIGN_ADD_INVESTIGATOR;
   id: number;
   investigator: string;
-  baseDeckId?: number;
+  deckId?: DeckId;
   now: Date;
 }
 
@@ -737,7 +806,7 @@ export interface CampaignRemoveInvestigatorAction {
   type: typeof CAMPAIGN_REMOVE_INVESTIGATOR;
   id: number;
   investigator: string;
-  removeDeckId?: number;
+  removeDeckId?: DeckId;
   now: Date;
 }
 
@@ -874,6 +943,7 @@ export interface GuideNumberChoicesInput extends BasicInput {
   type: 'choice_list';
   step: string;
   choices: NumberChoices;
+  deckId?: DeckId;
 }
 
 export interface GuideStringChoicesInput extends BasicInput {
@@ -898,6 +968,12 @@ export interface GuideChoiceInput extends BasicInput {
   type: 'choice';
   step: string;
   choice: number;
+}
+
+export interface GuideDeckInput extends BasicInput {
+  type: 'deck';
+  step: string;
+  deckId: DeckId;
 }
 
 export interface GuideStartScenarioInput extends BasicInput {
@@ -941,6 +1017,7 @@ export type GuideInput =
   GuideCountInput |
   GuideChoiceInput |
   GuideStringInput |
+  GuideDeckInput |
   GuideStartScenarioInput |
   GuideCampaignLinkInput |
   GuideStartSideScenarioInput |
@@ -1031,13 +1108,13 @@ export interface EnsureUuidAction {
 export const RESET_DECK_CHECKLIST = 'RESET_DECK_CHECKLIST';
 export interface ResetDeckChecklistAction {
   type: typeof RESET_DECK_CHECKLIST;
-  id: number;
+  id: DeckId;
 }
 
 export const SET_DECK_CHECKLIST_CARD = 'SET_DECK_CHECKLIST_CARD';
 export interface SetDeckChecklistCardAction {
   type: typeof SET_DECK_CHECKLIST_CARD;
-  id: number;
+  id: DeckId;
   card: string;
   value: boolean;
 }

@@ -5,7 +5,7 @@ import { Brackets } from 'typeorm/browser';
 import { Navigation, OptionsTopBarButton, OptionsTopBar } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { SortType } from '@actions/types';
+import { DeckId, SortType } from '@actions/types';
 import Card from '@data/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
@@ -28,7 +28,7 @@ interface Props {
   sort?: SortType;
 
   investigator?: Card;
-  deckId?: number;
+  deckId?: DeckId;
   hideVersatile?: boolean;
   setHideVersatile?: (value: boolean) => void;
   storyOnly?: boolean;

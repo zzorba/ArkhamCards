@@ -452,6 +452,7 @@ export function usePickerDialog<T>({
             text={item.title}
             value={item.value}
             onValueChange={onValuePress}
+            // tslint:disable-next-line
             selected={selectedValue === item.value}
             last={idx === items.length - 1}
           />

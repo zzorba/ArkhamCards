@@ -5,9 +5,10 @@ import { View, StyleSheet } from 'react-native';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import DeckQuantityComponent from './DeckQuantityComponent';
+import { DeckId } from '@actions/types';
 
 interface Props {
-  deckId: number;
+  deckId: DeckId;
   code: string;
   limit: number;
 }

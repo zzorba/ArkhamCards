@@ -25,10 +25,11 @@ import { useNavigationButtonPressed, usePlayerCards } from '@components/core/hoo
 import DeckProblemBanner from '../DeckProblemBanner';
 import { useDialog } from '../dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import { DeckId } from '@actions/types';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
-  id: number;
+  id: DeckId;
   cardsByName: Card[];
   investigator: Card;
 }

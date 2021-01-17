@@ -61,7 +61,9 @@ export default function(
       const remappedGuide = {
         ...guide,
         inputs: map(guide.inputs, input => {
-          if (input.step && input.step.startsWith('$upgrade_decks') && input.type === 'choice_list') {
+          if (input.step && input.type === 'choice_list' && (
+            input.step.startsWith('$upgrade_decks') || input.step.startsWith('$save_standalone_decks')
+          )) {
             const choices: NumberChoices = { ...input.choices };
             if (choices.deckId && choices.deckId.length) {
               const deckId = choices.deckId[0];

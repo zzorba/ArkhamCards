@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import { Deck, Slots } from '@actions/types';
+import { Deck, getDeckId, Slots } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { NavigationProps } from '@components/nav/types';
@@ -132,6 +132,7 @@ function DeckUpgradeComponent({
   const onExileCountChange = useCallback((card: Card, count: number) => {
     updateExileCounts({ type: 'set-slot', code: card.code, value: count });
   }, [updateExileCounts]);
+  const deckId = useMemo(() => getDeckId(deck), [deck]);
   if (!deck) {
     return null;
   }
@@ -170,7 +171,7 @@ function DeckUpgradeComponent({
       </BasicListRow>
       <ExileCardSelectorComponent
         componentId={componentId}
-        id={deck.id}
+        id={deckId}
         label={(
           <CardSectionHeader
             section={{ superTitle: t`Exiled cards` }}

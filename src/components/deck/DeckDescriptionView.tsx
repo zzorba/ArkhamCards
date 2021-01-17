@@ -23,9 +23,10 @@ import AppIcon from '@icons/AppIcon';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { setDeckDescription } from './actions';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
+import { DeckId } from '@actions/types';
 
 export interface DeckDescriptionProps {
-  id: number;
+  id: DeckId;
 }
 
 type Props = DeckDescriptionProps & NavigationProps;

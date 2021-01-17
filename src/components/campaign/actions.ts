@@ -1,4 +1,4 @@
-import { map } from 'lodash';
+import { map, omit } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -44,21 +44,27 @@ import {
   NewStandaloneCampaignAction,
   NEW_STANDALONE,
   CampaignId,
+  DeckId,
+  getDeckId,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
-import { AppState, makeCampaignSelector } from '@reducers';
+import { AppState, makeCampaignSelector, getDeck } from '@reducers';
 
 function getBaseDeckIds(
   state: AppState,
-  latestDeckIds: number[]
-): number[] {
+  deckIds: DeckId[]
+): DeckId[] {
   const decks = state.decks.all || {};
-  return map(latestDeckIds, deckId => {
-    let deck = decks[deckId];
-    while (deck && deck.previous_deck && deck.previous_deck in decks) {
-      deck = decks[deck.previous_deck];
+  return map(deckIds, deckId => {
+    let deck = getDeck(decks, deckId);
+    while (deck && deck.previousDeckId) {
+      const previousDeck = getDeck(decks, deck.previousDeckId);
+      if (!previousDeck) {
+        break;
+      }
+      deck = previousDeck;
     }
-    return deck ? deck.id : deckId;
+    return deck ? getDeckId(deck) : deckId;
   });
 }
 
@@ -81,7 +87,8 @@ export function restoreComplexBackup(
   guides: { [id: string]: CampaignGuideState },
   campaignRemapping: { [id: string]: number },
   decks: Deck[],
-  deckRemapping: { [id: string]: number }
+  deckRemapping: { [id: string]: number },
+  deckIds: { [id: string]: DeckId },
 ): RestoreComplexBackupAction {
   return {
     type: RESTORE_COMPLEX_BACKUP,
@@ -90,6 +97,7 @@ export function restoreComplexBackup(
     decks,
     deckRemapping,
     campaignRemapping,
+    deckIds,
   };
 }
 
@@ -102,7 +110,7 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 export function addInvestigator(
   { campaignId, serverId }: CampaignId,
   investigator: string,
-  deckId?: number
+  deckId?: DeckId
 ): ThunkAction<void, AppState, null, CampaignAddInvestigatorAction> {
   return (dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
@@ -112,7 +120,7 @@ export function addInvestigator(
       type: CAMPAIGN_ADD_INVESTIGATOR,
       id: campaignId,
       investigator,
-      baseDeckId,
+      deckId: baseDeckId,
       now: new Date(),
     };
     dispatch(action);
@@ -122,7 +130,7 @@ export function addInvestigator(
 export function removeInvestigator(
   { campaignId, serverId }: CampaignId,
   investigator: string,
-  deckId?: number
+  deckId?: DeckId
 ): ThunkAction<void, AppState, null, CampaignRemoveInvestigatorAction> {
   return (dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
@@ -164,7 +172,7 @@ export function newStandalone(
   id: number,
   name: string,
   standaloneId: StandaloneId,
-  deckIds: number[],
+  deckIds: DeckId[],
   investigatorIds: string[],
   weaknessSet: WeaknessSet
 ): ThunkAction<void, AppState, null, NewStandaloneCampaignAction> {
@@ -175,7 +183,7 @@ export function newStandalone(
       name: name,
       standaloneId,
       weaknessSet,
-      baseDeckIds: getBaseDeckIds(getState(), deckIds),
+      deckIds: getBaseDeckIds(getState(), deckIds),
       investigatorIds,
       now: new Date(),
     };
@@ -188,7 +196,7 @@ export function newCampaign(
   name: string,
   pack_code: CampaignCycleCode,
   difficulty: CampaignDifficulty | undefined,
-  deckIds: number[],
+  deckIds: DeckId[],
   investigatorIds: string[],
   chaosBag: ChaosBag,
   campaignLog: CustomCampaignLog,
@@ -205,7 +213,7 @@ export function newCampaign(
       chaosBag,
       campaignLog,
       weaknessSet,
-      baseDeckIds: getBaseDeckIds(getState(), deckIds),
+      deckIds: getBaseDeckIds(getState(), deckIds),
       investigatorIds,
       guided,
       now: new Date(),
@@ -240,14 +248,15 @@ export function updateCampaignSpentXp(
  */
 export function updateCampaign(
   { campaignId, serverId }: CampaignId,
-  sparseCampaign: Partial<Campaign>,
+  sparseCampaign: Partial<Campaign & {
+    latestDeckIds?: DeckId[];
+  }>,
   now?: Date
 ): ThunkAction<void, AppState, null, UpdateCampaignAction> {
   return (dispatch, getState: () => AppState) => {
-    const campaign: Partial<Campaign> = { ...sparseCampaign };
-    if (campaign.latestDeckIds) {
-      campaign.baseDeckIds = getBaseDeckIds(getState(), campaign.latestDeckIds);
-      delete campaign.latestDeckIds;
+    const campaign: Partial<Campaign> = omit(sparseCampaign, 'latestDeckIds');
+    if (sparseCampaign.latestDeckIds) {
+      campaign.deckIds = getBaseDeckIds(getState(), sparseCampaign.latestDeckIds);
     }
     dispatch({
       type: UPDATE_CAMPAIGN,

@@ -15,7 +15,7 @@ import CampaignMergeSection from './CampaignMergeSection';
 import DeckMergeSection from './DeckMergeSection';
 import { Campaign, CampaignGuideState, Deck, BackupState } from '@actions/types';
 import { AppState } from '@reducers';
-import { mergeCampaigns, mergeDecks } from '@lib/cloudHelper';
+import { mergeCampaigns, mergeDecks } from './backupHelper';
 import { restoreComplexBackup } from '@components/campaign/actions';
 import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';

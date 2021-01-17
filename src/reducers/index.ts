@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { concat, find, filter, flatMap, forEach, keys, map, max, minBy, last, sortBy, uniq, values } from 'lodash';
+import { concat, find, filter, flatMap, forEach, keys, map, max, minBy, last, sortBy, uniq, values, reverse } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -29,9 +29,12 @@ import {
   NEW_CHAOS_BAG_RESULTS,
   SORT_BY_TYPE,
   EditDeckState,
+  DeckId,
+  getDeckId,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { ChaosBag } from '@app_constants';
+import uuid from 'react-native-uuid';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -176,7 +179,7 @@ export const getAllPacks = createSelector(
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const EMPTY_PACKS: Pack[] = [];
-export const makeAllCyclePacksSelector = () =>
+export const makeAllCyclePacksSelector = (): (state: AppState, cyclePack?: Pack) => Pack[] =>
   createSelector(
     (state: AppState, cyclePack?: Pack) => getAllPacks(state),
     (state: AppState, cyclePack?: Pack) => cyclePack,
@@ -220,38 +223,46 @@ export const getAllDecks = createSelector(
   (all) => all || DEFAULT_OBJECT
 );
 
-export const makeBaseDeckSelector = () =>
+export const makeBaseDeckSelector = (): (state: AppState, deckId?: DeckId) => Deck | undefined =>
   createSelector(
     (state: AppState) => getAllDecks(state),
-    (state: AppState, deckId?: number) => deckId,
+    (state: AppState, deckId?: DeckId) => deckId,
     (decks, deckId): Deck | undefined => {
       if (deckId === undefined) {
         return undefined;
       }
-      let baseDeck = decks[deckId];
-      while (baseDeck && baseDeck.previous_deck && decks[baseDeck.previous_deck]) {
-        baseDeck = decks[baseDeck.previous_deck];
+      let baseDeck = getDeck(decks, deckId);
+      while (baseDeck && baseDeck.previousDeckId) {
+        const previousDeck = getDeck(decks, baseDeck.previousDeckId);
+        if (!previousDeck) {
+          break;
+        }
+        baseDeck = previousDeck;
       }
-      if (!baseDeck || baseDeck.id === deckId) {
+      if (!baseDeck || getDeckId(baseDeck).uuid === deckId.uuid) {
         return undefined;
       }
       return baseDeck;
     }
   );
 
-export const makeLatestDeckSelector = () =>
+export const makeLatestDeckSelector = (): (state: AppState, deckId?: DeckId) => Deck | undefined =>
   createSelector(
     getAllDecks,
-    (state: AppState, deckId?: number) => deckId,
+    (state: AppState, deckId?: DeckId) => deckId,
     (decks, deckId): Deck | undefined => {
       if (deckId === undefined) {
         return undefined;
       }
-      let latestDeck = decks[deckId];
-      while (latestDeck && latestDeck.next_deck && decks[latestDeck.next_deck]) {
-        latestDeck = decks[latestDeck.next_deck];
+      let latestDeck = getDeck(decks, deckId);
+      while (latestDeck && latestDeck.nextDeckId) {
+        const nextDeck = getDeck(decks, latestDeck.nextDeckId);
+        if (!nextDeck) {
+          break;
+        }
+        latestDeck = nextDeck;
       }
-      if (!latestDeck || latestDeck.id === deckId) {
+      if (!latestDeck || getDeckId(latestDeck).uuid === deckId.uuid) {
         return undefined;
       }
       return latestDeck;
@@ -264,19 +275,19 @@ export const getDeckToCampaignMap = createSelector(
   (
     allCampaigns: { [id: string]: Campaign },
     allDecks: DecksMap
-  ): { [id: string]: Campaign } => {
+  ): { [uuid: string]: Campaign } => {
     const decks = allDecks || {};
     const campaigns = allCampaigns || {};
-    const result: { [id: string]: Campaign } = {};
+    const result: { [uuid: string]: Campaign } = {};
     forEach(
       values(campaigns),
       campaign => {
-        forEach(campaign.baseDeckIds || [], deckId => {
-          let deck = decks[deckId];
+        forEach(campaign.deckIds || [], deckId => {
+          let deck = getDeck(decks, deckId);
           while (deck) {
-            result[deck.id] = campaign;
-            if (deck.next_deck) {
-              deck = decks[deck.next_deck];
+            result[getDeckId(deck).uuid] = campaign;
+            if (deck.nextDeckId) {
+              deck = getDeck(decks, deck.nextDeckId);
             } else {
               break;
             }
@@ -296,7 +307,7 @@ const EMPTY_INVESTIGATOR_IDS: string[] = [];
 
 
 export function makeLatestCampaignInvestigatorsSelector(): (state: AppState, investigators?: CardsMap, campaign?: Campaign) => Card[] {
-  const getLatestCampaignDeckIds: (state: AppState, campaign?: Campaign) => number[] = makeLatestCampaignDeckIdsSelector();
+  const getLatestCampaignDeckIds: (state: AppState, campaign?: Campaign) => DeckId[] = makeLatestCampaignDeckIdsSelector();
   const getNonDeckInvestigatorsForCampaignInvestigators = createSelector(
     (campaign?: Campaign) => campaign?.nonDeckInvestigators,
     (nonDeckInvestigators) => {
@@ -314,7 +325,7 @@ export function makeLatestCampaignInvestigatorsSelector(): (state: AppState, inv
       if (!investigators) {
         return [];
       }
-      const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
+      const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || []);
       return uniq([
         ...flatMap(
           filter(latestDecks, deck => !!(deck && deck.investigator_code)),
@@ -326,48 +337,61 @@ export function makeLatestCampaignInvestigatorsSelector(): (state: AppState, inv
   );
 }
 
-const EMPTY_DECK_ID_LIST: number[] = [];
+const EMPTY_DECK_ID_LIST: DeckId[] = [];
 
-export const makeLatestCampaignDeckIdsSelector = () =>
+export const makeLatestCampaignDeckIdsSelector = (): (state: AppState, campaign?: Campaign) => DeckId[] =>
   createSelector(
     (state: AppState) => state.decks.all,
     (state: AppState, campaign?: Campaign) => !campaign,
-    (state: AppState, campaign?: Campaign) => campaign?.baseDeckIds,
-    (state: AppState, campaign?: Campaign) => campaign?.latestDeckIds,
-    (decks, noCampaign, baseDeckIds, latestDeckIds) => {
+    (state: AppState, campaign?: Campaign) => campaign?.deckIds,
+    (decks, noCampaign, baseDeckIds) => {
       if (noCampaign) {
         return EMPTY_DECK_ID_LIST;
       }
       if (baseDeckIds) {
         return flatMap(baseDeckIds, deckId => {
-          let deck = decks[deckId];
-          while (deck && deck.next_deck && deck.next_deck in decks) {
-            deck = decks[deck.next_deck];
+          let deck = getDeck(decks, deckId);
+          while (deck && deck.nextDeckId) {
+            const nextDeck = getDeck(decks, deck.nextDeckId);
+            if (!nextDeck) {
+              break;
+            }
+            deck = nextDeck;
           }
-          return deck ? [deck.id] : [];
+          return deck ? [getDeckId(deck)] : [];
         });
       }
-      return flatMap(latestDeckIds || [], deckId => {
-        let deck = decks[deckId];
-        while (deck && deck.next_deck && deck.next_deck in decks) {
-          deck = decks[deck.next_deck];
-        }
-        return deck ? [deck.id] : [];
-      });
+      return [];
     }
+  );
+
+export const makeLatestDecksSelector = (): (state: AppState, campaign?: Campaign) => Deck[] =>
+  createSelector(
+    (state: AppState) => getAllDecks(state),
+    makeLatestCampaignDeckIdsSelector(),
+    (decks: DecksMap, latestDeckIds: DeckId[]) => flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || [])
   );
 
 const EMPTY_MY_DECKS: number[] = [];
 
+interface MyDecksState {
+  myDecks: DeckId[];
+  myDecksUpdated?: Date;
+  refreshing: boolean,
+  error?: string;
+}
 const myDecksUpdatedSelector = (state: AppState) => state.decks.dateUpdated;
 const myDecksRefreshingSelector = (state: AppState) => state.decks.refreshing;
 const myDecksErrorSelector = (state: AppState) => state.decks.error;
-export const getMyDecksState = createSelector(
-  (state: AppState) => state.decks.myDecks,
+export const getMyDecksState: (state: AppState) => MyDecksState = createSelector(
+  (state: AppState) => state.decks.all,
   myDecksUpdatedSelector,
   myDecksRefreshingSelector,
   myDecksErrorSelector,
-  (myDecks, dateUpdated, refreshing, error) => {
+  (allDecks, dateUpdated, refreshing, error) => {
+    const myDecks = map(reverse(sortBy(filter(values(allDecks), deck => {
+      return !!deck && !deck.nextDeckId;
+    }), deck => deck.date_update)), deck => getDeckId(deck));
     return {
       myDecks: myDecks || EMPTY_MY_DECKS,
       myDecksUpdated: dateUpdated ? new Date(dateUpdated) : undefined,
@@ -377,25 +401,29 @@ export const getMyDecksState = createSelector(
   }
 );
 
-export const getEffectiveDeckId = (state: AppState, id: number): number => {
-  if (state.decks.replacedLocalIds && state.decks.replacedLocalIds[id]) {
-    return state.decks.replacedLocalIds[id];
+export const getEffectiveDeckId = (state: AppState, id: DeckId): DeckId => {
+  if (state.decks.replacedLocalIds && state.decks.replacedLocalIds[id.id]) {
+    return state.decks.replacedLocalIds[id.uuid];
   }
   return id;
 };
 
+export function getDeck(all: DecksMap, id: DeckId): Deck | undefined {
+  if (id.uuid in all) {
+    return all[id.uuid] || undefined;
+  }
+  return undefined;
+}
+
 export const makeDeckSelector = () => {
   return createSelector(
     (state: AppState) => state.decks.all,
-    (state: AppState, id: number) => id,
-    (all, id) => {
-      if (!id) {
-        return null;
+    (state: AppState, id: DeckId) => id,
+    (all, id): Deck | undefined => {
+      if (!id || !id.id) {
+        return undefined;
       }
-      if (id in all) {
-        return all[id];
-      }
-      return null;
+      return getDeck(all, id);
     }
   );
 };
@@ -403,12 +431,12 @@ export const makeDeckSelector = () => {
 export const makeGetDecksSelector = () =>
   createSelector(
     (state: AppState) => state.decks.all,
-    (state: AppState, deckIds: number[]) => deckIds,
+    (state: AppState, deckIds: DeckId[]) => deckIds,
     (allDecks, deckIds) => {
       const decks: Deck[] = [];
       forEach(deckIds, deckId => {
         if (deckId) {
-          const deck = allDecks[deckId];
+          const deck = getDeck(allDecks, deckId);
           if (deck && deck.id) {
             decks.push(deck);
           }
@@ -448,6 +476,19 @@ export const makeCampaignSelector = () =>
     }
   );
 
+
+export const makeNetworkCampaignSelector = () => {
+  const campaignSelector = makeCampaignSelector();
+  return createSelector(
+    campaignSelector,
+    (state: AppState, campaignId: number) => state.guides.all[campaignId],
+    (state: AppState) => state.decks.all,
+    (campaign: SingleCampaign | undefined, guideOpt, decks) => {
+      return null;
+    }
+  );
+};
+
 export const makeChaosBagResultsSelector = () =>
   createSelector(
     (state: AppState) => state.campaigns.chaosBagResults,
@@ -463,7 +504,7 @@ export const makeChaosBagResultsSelector = () =>
     }
   );
 
-export const makeTabooSetSelector = () =>
+export const makeTabooSetSelector = (): (state: AppState, tabooSetOverride?: number) => number | undefined =>
   createSelector(
     (state: AppState, tabooSetOverride?: number) => state.settings.tabooId,
     (state: AppState, tabooSetOverride?: number) => tabooSetOverride,
@@ -478,10 +519,10 @@ export const makeTabooSetSelector = () =>
 export const makeCampaignForDeckSelector = () =>
   createSelector(
     (state: AppState) => getDeckToCampaignMap(state),
-    (state: AppState, deckId: number) => deckId,
+    (state: AppState, deckId: DeckId) => deckId,
     (deckToCampaign, deckId): SingleCampaign | undefined => {
-      if (deckId in deckToCampaign) {
-        return processCampaign(deckToCampaign[deckId]);
+      if (deckId.uuid in deckToCampaign) {
+        return processCampaign(deckToCampaign[deckId.uuid]);
       }
       return undefined;
     }
@@ -490,29 +531,29 @@ export const makeCampaignForDeckSelector = () =>
 export const getNextLocalDeckId = createSelector(
   (state: AppState) => state.decks.all,
   (state: AppState) =>state.decks.replacedLocalIds,
-  (all, replacedLocalIds): number => {
+  (all, replacedLocalIds = {}): DeckId => {
     const smallestDeckId = minBy(
-      map(
-        concat(
-          keys(all),
-          keys(replacedLocalIds || DEFAULT_OBJECT)
-        ),
-        x => parseInt(x, 10)
-      )
+      concat(
+        flatMap(values(all), deck => deck.local ? [deck.id] : []),
+        map(values(replacedLocalIds), deck => deck.id)
+      ),
+      x => x
     ) || 0;
-    if (smallestDeckId < 0) {
-      return smallestDeckId - 1;
-    }
-    return -1;
+    const legacyId = (smallestDeckId < 0) ? (smallestDeckId - 1) : -1;
+    return {
+      id: legacyId,
+      local: true,
+      uuid: uuid.v4(),
+    };
   }
 );
 
 const EMTPY_CHECKLIST: string[] = [];
 export const getDeckChecklist = createSelector(
   (state: AppState) => state.deckEdits.checklist,
-  (state: AppState, id: number) => id,
-  (checklist: { [id: number]: string[] | undefined }, id: number) => {
-    return (checklist || {})[id] || EMTPY_CHECKLIST;
+  (state: AppState, id: DeckId) => id,
+  (checklist: { [id: string]: string[] | undefined }, id: DeckId) => {
+    return (checklist || {})[id.uuid] || EMTPY_CHECKLIST;
   }
 );
 
@@ -625,12 +666,12 @@ export const makeDeckEditsSelector = () =>
   createSelector(
     (state: AppState) => state.deckEdits.editting,
     (state: AppState) => state.deckEdits.edits,
-    (state: AppState, id: number | undefined) => id,
-    (editting, edits, id: number | undefined): EditDeckState | undefined => {
-      if (id === undefined || !editting || !editting[id] || !edits || !edits[id]) {
+    (state: AppState, id: DeckId | undefined) => id,
+    (editting, edits, id: DeckId | undefined): EditDeckState | undefined => {
+      if (id === undefined || !id.id || !editting || !editting[id.id] || !edits || !edits[id.id]) {
         return undefined;
       }
-      return edits[id];
+      return edits[id.id];
     }
   );
 

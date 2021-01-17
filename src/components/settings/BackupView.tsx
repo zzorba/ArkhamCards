@@ -24,7 +24,7 @@ import { NavigationProps } from '@components/nav/types';
 import { getBackupData } from '@reducers';
 import SettingsItem from './SettingsItem';
 import { ensureUuid } from './actions';
-import { campaignFromJson } from '@lib/cloudHelper';
+import { campaignFromJson } from './MergeBackupView/backupHelper';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
 

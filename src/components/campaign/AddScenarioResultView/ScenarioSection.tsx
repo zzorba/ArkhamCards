@@ -90,7 +90,7 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
   }, [selectedScenario, customScenario, resolution, scenarioChanged]);
 
   useEffect(() => {
-    console.log('Use effect');
+    // tslint:disable-next-line
     if (!loading && allScenarios.length && allScenarios[0] !== selectedScenario) {
       setSelectedScenario(allScenarios[0]);
     }

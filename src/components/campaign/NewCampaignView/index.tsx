@@ -23,6 +23,8 @@ import {
   Slots,
   INCOMPLETE_GUIDED_CAMPAIGNS,
   DIFFICULTIES,
+  DeckId,
+  getDeckId,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
@@ -90,9 +92,9 @@ function NewCampaignView({ componentId }: NavigationProps) {
   });
   const [guided, toggleGuided] = useFlag(true);
   const [difficulty, setDifficulty] = useState<CampaignDifficulty>(CampaignDifficulty.STANDARD);
-  const [deckIds, setDeckIds] = useState<number[]>([]);
+  const [deckIds, setDeckIds] = useState<DeckId[]>([]);
   const [investigatorIds, setInvestigatorIds] = useState<string[]>([]);
-  const [investigatorToDeck, setInvestigatorToDeck] = useState<{ [code: string]: number }>({});
+  const [investigatorToDeck, setInvestigatorToDeck] = useState<{ [code: string]: DeckId }>({});
   const [weaknessPacks, setWeaknessPacks] = useState<string[]>([]);
   const [weaknessAssignedCards, updateWeaknessAssignedCards] = useSlots({});
   const [customChaosBag, setCustomChaosBag] = useState<ChaosBag>(getChaosBag(CORE, CampaignDifficulty.STANDARD));
@@ -187,23 +189,23 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [investigatorIds, setInvestigatorIds]);
 
   const deckAdded = useCallback((deck: Deck) => {
-    setDeckIds([...deckIds, deck.id]);
+    setDeckIds([...deckIds, getDeckId(deck)]);
     setInvestigatorIds([...investigatorIds, deck.investigator_code]);
     setInvestigatorToDeck({
       ...investigatorToDeck,
-      [deck.investigator_code]: deck.id,
+      [deck.investigator_code]: getDeckId(deck),
     });
     checkDeckForWeaknessPrompt(deck);
   }, [setDeckIds, setInvestigatorIds, setInvestigatorToDeck, checkDeckForWeaknessPrompt, deckIds, investigatorIds, investigatorToDeck]);
 
-  const deckRemoved = useCallback((id: number, deck?: Deck) => {
-    const updatedInvestigatorToDeck: { [code: string]: number } = {};
+  const deckRemoved = useCallback((id: DeckId, deck?: Deck) => {
+    const updatedInvestigatorToDeck: { [code: string]: DeckId } = {};
     forEach(investigatorToDeck, (deckId, code) => {
-      if (deckId !== id) {
+      if (deckId.uuid !== id.uuid) {
         updatedInvestigatorToDeck[code] = deckId;
       }
     });
-    setDeckIds(filter(deckIds, deckId => deckId !== id));
+    setDeckIds(filter(deckIds, deckId => deckId.uuid !== id.uuid));
     setInvestigatorIds(!deck ? investigatorIds : filter([...investigatorIds], code => deck.investigator_code !== code));
     setInvestigatorToDeck(updatedInvestigatorToDeck);
   }, [investigatorToDeck, deckIds, investigatorIds, setDeckIds, setInvestigatorIds, setInvestigatorToDeck]);

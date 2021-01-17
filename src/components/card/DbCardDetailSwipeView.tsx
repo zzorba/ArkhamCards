@@ -28,6 +28,7 @@ import Carousel from 'react-native-snap-carousel';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
+import { DeckId } from '@actions/types';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -36,7 +37,7 @@ export interface CardDetailSwipeProps {
   whiteNav: boolean;
   showAllSpoilers?: boolean;
   tabooSetId?: number;
-  deckId?: number;
+  deckId?: DeckId;
   faction?: FactionCodeType;
 }
 

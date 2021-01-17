@@ -8,7 +8,7 @@ import ChoiceListItemComponent from '@components/campaignguide/prompts/ChoiceLis
 import Card, { CardsMap } from '@data/Card';
 import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';
-import { Deck } from '@actions/types';
+import { Deck, DeckId } from '@actions/types';
 import { useSelector } from 'react-redux';
 import { AppState, makeDeckSelector } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
@@ -21,7 +21,7 @@ interface Props {
 function SpentDeckXpComponent({ deck, campaignLog, previousDeckId, playerCards, children }: {
   deck: Deck;
   campaignLog: GuidedCampaignLog;
-  previousDeckId: number;
+  previousDeckId: DeckId;
   playerCards: CardsMap;
   children: (xp: number) => JSX.Element | null;
 }) {
@@ -47,7 +47,7 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   const deck = latestDecks[investigator.code];
   const earnedXp = campaignLog.earnedXp(investigator.code);
   if (deck) {
-    if (!deck.previous_deck) {
+    if (!deck.previousDeckId) {
       return children(earnedXp);
     }
     return (
@@ -55,7 +55,7 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
         deck={deck}
         campaignLog={campaignLog}
         playerCards={playerCards}
-        previousDeckId={deck.previous_deck}
+        previousDeckId={deck.previousDeckId}
       >
         { children }
       </SpentDeckXpComponent>

@@ -6,11 +6,12 @@ import StyleContext from '@styles/StyleContext';
 import Card from '@data/Card';
 import RoundButton from '@components/core/RoundButton';
 import DeckQuantityComponent from './DeckQuantityComponent';
+import { DeckId } from '@actions/types';
 
 interface Props {
   card: Card;
   onUpgradePress?: (card: Card) => void;
-  deckId: number;
+  deckId: DeckId;
   limit: number;
 }
 

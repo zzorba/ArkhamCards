@@ -6,10 +6,11 @@ import CardUpgradeButton from './CardUpgradeButton';
 import CardToggle from './CardToggle';
 import CardQuantityComponent from './CardQuantityComponent';
 import { EditSlotsActions } from '@components/core/hooks';
+import { DeckId } from '@actions/types';
 
 export type ControlType = {
   type: 'deck';
-  deckId: number;
+  deckId: DeckId;
   limit: number;
 } | {
   type: 'quantity';
@@ -24,7 +25,7 @@ export type ControlType = {
   showZeroCount?: boolean;
 } | {
   type: 'upgrade';
-  deckId: number;
+  deckId: DeckId;
   limit: number;
   onUpgradePress?: (card: Card) => void;
 } | {

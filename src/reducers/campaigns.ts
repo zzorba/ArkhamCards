@@ -1,4 +1,4 @@
-import { find, filter, flatMap, forEach, map, uniq } from 'lodash';
+import { find, filter, flatMap, forEach, map, uniq, omit } from 'lodash';
 import uuid from 'react-native-uuid';
 import { t } from 'ttag';
 
@@ -28,14 +28,15 @@ import {
   ADJUST_BLESS_CURSE,
   NEW_STANDALONE,
   STANDALONE,
+  DeprecatedCampaign,
 } from '@actions/types';
 
 export interface CampaignsState {
   all: {
-    [id: string]: Campaign;
+    [uuid: string]: Campaign;
   };
   chaosBagResults?: {
-    [id: string]: ChaosBagResults | undefined;
+    [uuid: string]: ChaosBagResults | undefined;
   };
 }
 
@@ -45,14 +46,12 @@ const DEFAULT_CAMPAIGNS_STATE: CampaignsState = {
 };
 
 function newBlankGuidedCampaign(
-  id: number,
   name: string,
   cycleCode: CampaignCycleCode,
   weaknessSet: WeaknessSet,
   now: Date
 ): Campaign {
   return {
-    id,
     uuid: uuid.v4(),
     name,
     cycleCode,
@@ -70,7 +69,7 @@ function newBlankGuidedCampaign(
         counts: [],
       },
     },
-    baseDeckIds: [],
+    deckIds: [],
     nonDeckInvestigators: [],
     investigatorData: {},
     scenarioResults: [],
@@ -85,23 +84,20 @@ export default function(
     const all = { ...state.all };
     const chaosBagResults = { ...state.chaosBagResults };
     forEach(action.campaigns, campaign => {
-      const remappedCampaign = {
-        ...campaign,
-        id: action.campaignRemapping[campaign.id],
-        baseDeckIds: flatMap(campaign.baseDeckIds, deckId => {
-          if (deckId < 0) {
-            const newDeckId = action.deckRemapping[deckId];
-            if (newDeckId) {
-              return [newDeckId];
-            }
-            // They chose not to import this deck.
-            return [];
-          }
-          return [deckId];
-        }),
+      const deprecatedCampaign = campaign as DeprecatedCampaign;
+      const remappedCampaign: Campaign = {
+        ...omit(campaign, ['baseDeckIds', 'deckIds', 'id']) as Campaign,
+        deckIds: [],
       };
-      all[remappedCampaign.id] = remappedCampaign;
-      chaosBagResults[remappedCampaign.id] = {
+      if (campaign.deckIds) {
+        remappedCampaign.deckIds = campaign.deckIds;
+      } else if (deprecatedCampaign.baseDeckIds) {
+        remappedCampaign.deckIds = flatMap(deprecatedCampaign.baseDeckIds, deckId => {
+          return action.deckIds[deckId] || [];
+        });
+      }
+      all[remappedCampaign.uuid] = remappedCampaign;
+      chaosBagResults[remappedCampaign.uuid] = {
         drawnTokens: [],
         sealedTokens: [],
         totalDrawnTokens: 0,
@@ -135,8 +131,7 @@ export default function(
     forEach(state.all, (campaign, id) => {
       all[id] = {
         ...campaign,
-        latestDeckIds: undefined,
-        baseDeckIds: filter(campaign.baseDeckIds, deckId => deckId < 0),
+        deckIds: filter(campaign.deckIds || [], deckId => deckId.local),
       };
     });
     return {
@@ -167,14 +162,12 @@ export default function(
   }
   if (action.type === NEW_LINKED_CAMPAIGN) {
     const newCampaignA = newBlankGuidedCampaign(
-      action.id + 1,
       t`${action.name} (Campaign A)`,
       action.cycleCodeA,
       action.weaknessSet,
       action.now,
     );
     const newCampaignB = newBlankGuidedCampaign(
-      action.id + 2,
       t`${action.name} (Campaign B)`,
       action.cycleCodeB,
       action.weaknessSet,
@@ -211,7 +204,6 @@ export default function(
   }
   if (action.type === NEW_STANDALONE) {
     const newCampaign: Campaign = {
-      id: action.id,
       uuid: uuid.v4(),
       name: action.name,
       showInterludes: true,
@@ -227,7 +219,7 @@ export default function(
       cycleCode: STANDALONE,
       standaloneId: action.standaloneId,
       weaknessSet: action.weaknessSet,
-      baseDeckIds: action.baseDeckIds,
+      deckIds: action.deckIds,
       nonDeckInvestigators: action.investigatorIds,
       lastUpdated: action.now,
       investigatorData: {},
@@ -275,7 +267,7 @@ export default function(
       chaosBag: { ...action.chaosBag },
       campaignNotes,
       weaknessSet: action.weaknessSet,
-      baseDeckIds: action.baseDeckIds,
+      deckIds: action.deckIds,
       nonDeckInvestigators: action.investigatorIds,
       lastUpdated: action.now,
       investigatorData: {},
@@ -314,10 +306,11 @@ export default function(
       ...state.all[action.id],
       lastUpdated: action.now,
     };
-    if (action.removeDeckId) {
-      campaign.baseDeckIds = filter(
-        campaign.baseDeckIds || [],
-        deckId => deckId !== action.removeDeckId
+    const removeId = action.removeDeckId;
+    if (removeId) {
+      campaign.deckIds = filter(
+        campaign.deckIds || [],
+        deckId => deckId.uuid !== removeId.uuid
       );
     } else {
       campaign.nonDeckInvestigators = filter(
@@ -338,10 +331,10 @@ export default function(
       ...state.all[action.id],
       lastUpdated: action.now,
     };
-    if (action.baseDeckId) {
-      campaign.baseDeckIds = [
-        ...(campaign.baseDeckIds || []),
-        action.baseDeckId,
+    if (action.deckId) {
+      campaign.deckIds = [
+        ...(campaign.deckIds || []),
+        action.deckId,
       ];
     }
     campaign.nonDeckInvestigators = uniq([
@@ -427,12 +420,16 @@ export default function(
   if (action.type === REPLACE_LOCAL_DECK) {
     const all = { ...state.all };
     forEach(all, (campaign, campaignId) => {
-      if (find(campaign.baseDeckIds || [], deckId => deckId === action.localId)) {
+      if (find(campaign.deckIds || [], deckId => deckId.uuid === action.localId.uuid)) {
         all[campaignId] = {
           ...campaign,
-          baseDeckIds: map(campaign.baseDeckIds, deckId => {
-            if (deckId === action.localId) {
-              return action.deck.id;
+          deckIds: map(campaign.deckIds, deckId => {
+            if (deckId.uuid === action.localId.uuid) {
+              return {
+                id: action.deck.id,
+                local: false,
+                uuid: `${action.deck.id}`,
+              };
             }
             return deckId;
           }),

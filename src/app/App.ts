@@ -112,6 +112,7 @@ export default class App {
         iconsLoaded.then(() => {
           this.startApp(lang);
         }).catch(error => console.log(error));
+        // tslint:disable-next-line
       } else if (this.currentThemeOverride !== themeOverride) {
         this.currentThemeOverride = themeOverride;
         this.setDefaultOptions(Appearance.getColorScheme(), true);

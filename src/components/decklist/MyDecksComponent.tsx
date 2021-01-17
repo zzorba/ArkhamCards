@@ -13,13 +13,13 @@ import { t } from 'ttag';
 
 import { refreshMyDecks } from '@actions';
 import useNetworkStatus from '@components/core/useNetworkStatus';
-import { Deck } from '@actions/types';
+import { Deck, DeckId } from '@actions/types';
 import Card from '@data/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import COLORS from '@styles/colors';
 import space, { s, xs } from '@styles/space';
-import { getAllDecks, getMyDecksState, getDeckToCampaignMap } from '@reducers';
+import { getAllDecks, getMyDecksState, getDeckToCampaignMap, getDeck } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
@@ -30,9 +30,9 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 interface OwnProps {
   componentId: string;
   deckClicked: (deck: Deck, investigator?: Card) => void;
-  onlyDeckIds?: number[];
+  onlyDeckIds?: DeckId[];
   onlyInvestigators?: string[];
-  filterDeckIds?: number[];
+  filterDeckIds?: DeckId[];
   filterInvestigators?: string[];
   searchOptions?: SearchOptions;
   customFooter?: ReactNode;
@@ -169,7 +169,7 @@ function MyDecksComponent({
     const filterDeckIdsSet = new Set(filterDeckIds);
     const filterInvestigatorsSet = new Set(filterInvestigators);
     return filter(onlyDeckIds || myDecks, deckId => {
-      const deck = decks[deckId];
+      const deck = getDeck(decks, deckId);
       return !filterDeckIdsSet.has(deckId) && (
         !deck || !filterInvestigatorsSet.has(deck.investigator_code)
       ) && (!deck || !onlyInvestigatorSet || onlyInvestigatorSet.has(deck.investigator_code));

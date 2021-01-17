@@ -89,7 +89,7 @@ export default function DeckProgressComponent({
     );
   }, [campaign, editable, hideCampaign, investigator, typography, footerButton]);
 
-  if (!deck.previous_deck && !deck.next_deck && !campaign && !editable && !title) {
+  if (!deck.previousDeckId && !deck.nextDeckId && !campaign && !editable && !title) {
     return null;
   }
 
@@ -97,7 +97,7 @@ export default function DeckProgressComponent({
   return (
     <View style={styles.container}>
       { campaignSection }
-      { !!(!campaignSection || deck.previous_deck) && (
+      { !!(!campaignSection || deck.previousDeckId) && (
         <ChangesFromPreviousDeck
           componentId={componentId}
           title={title}
@@ -107,7 +107,7 @@ export default function DeckProgressComponent({
           singleCardView={singleCardView}
           editable={editable}
           onTitlePress={onTitlePress}
-          footerButton={!!editable && !!deck.previous_deck && !!showDeckHistory && (
+          footerButton={!!editable && !!deck.previousDeckId && !!showDeckHistory && (
             <RoundedFooterButton
               icon="deck"
               title={t`Upgrade History`}

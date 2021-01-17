@@ -31,13 +31,15 @@ import {
   START_DECK_EDIT,
   FinishDeckEditAction,
   FINISH_DECK_EDIT,
+  DeckId,
+  getDeckId,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
-import { AppState, getNextLocalDeckId } from '@reducers/index';
+import { AppState, getNextLocalDeckId, makeDeckSelector } from '@reducers/index';
 
 function setNewDeck(
-  id: number,
+  id: DeckId,
   deck: Deck
 ): NewDeckAvailableAction {
   return {
@@ -48,7 +50,7 @@ function setNewDeck(
 }
 
 function updateDeck(
-  id: number,
+  id: DeckId,
   deck: Deck,
   isWrite: boolean
 ): UpdateDeckAction {
@@ -61,7 +63,7 @@ function updateDeck(
 }
 
 export function resetDeckChecklist(
-  id: number
+  id: DeckId
 ): ResetDeckChecklistAction {
   return {
     type: RESET_DECK_CHECKLIST,
@@ -70,7 +72,7 @@ export function resetDeckChecklist(
 }
 
 export function setDeckChecklistCard(
-  id: number,
+  id: DeckId,
   card: string,
   value: boolean
 ): SetDeckChecklistCardAction {
@@ -83,7 +85,7 @@ export function setDeckChecklistCard(
 }
 
 export function removeDeck(
-  id: number,
+  id: DeckId,
   deleteAllVersions?: boolean
 ): DeleteDeckAction {
   return {
@@ -94,7 +96,7 @@ export function removeDeck(
 }
 
 export function replaceLocalDeck(
-  localId: number,
+  localId: DeckId,
   deck: Deck
 ): ReplaceLocalDeckAction {
   return {
@@ -105,10 +107,10 @@ export function replaceLocalDeck(
 }
 
 export function fetchPrivateDeck(
-  id: number
+  id: DeckId
 ): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
-    loadDeck(id).then(deck => {
+    loadDeck(id.id).then(deck => {
       dispatch(updateDeck(id, deck, false));
     }).catch(err => {
       if (err.message === 'Not Found') {
@@ -119,11 +121,11 @@ export function fetchPrivateDeck(
 }
 
 export function fetchPublicDeck(
-  id: number,
+  id: DeckId,
   useDeckEndpoint: boolean
 ): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
-    const uri = `${Config.OAUTH_SITE}api/public/${useDeckEndpoint ? 'deck' : 'decklist'}/${id}`;
+    const uri = `${Config.OAUTH_SITE}api/public/${useDeckEndpoint ? 'deck' : 'decklist'}/${id.id}`;
     fetch(uri, { method: 'GET' })
       .then(response => {
         if (response.ok === true) {
@@ -146,13 +148,13 @@ function handleUpgradeDeckResult(
   result: UpgradeDeckResult,
   dispatch: ThunkDispatch<AppState, unknown, Action>
 ) {
-  dispatch(updateDeck(result.deck.id, result.deck, false));
-  dispatch(setNewDeck(result.upgradedDeck.id, result.upgradedDeck));
+  dispatch(updateDeck(getDeckId(result.deck), result.deck, false));
+  dispatch(setNewDeck(getDeckId(result.upgradedDeck), result.upgradedDeck));
 }
 
 export const deleteDeckAction: ActionCreator<
   ThunkAction<Promise<boolean>, AppState, unknown, Action>
-> = (id: number, deleteAllVersion: boolean, local: boolean) => {
+> = (id: DeckId, deleteAllVersion: boolean, local: boolean) => {
   return (
     dispatch: ThunkDispatch<AppState, unknown, Action>,
   ) => {
@@ -161,7 +163,7 @@ export const deleteDeckAction: ActionCreator<
         dispatch(removeDeck(id, deleteAllVersion));
         resolve(true);
       } else {
-        const deleteDeckPromise = deleteDeck(id, deleteAllVersion);
+        const deleteDeckPromise = deleteDeck(id.id, deleteAllVersion);
         handleAuthErrors(
           deleteDeckPromise,
           () => {
@@ -261,7 +263,7 @@ export const saveDeckChanges: ActionCreator<
           (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta,
           (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md
         );
-        dispatch(updateDeck(newDeck.id, newDeck, true));
+        dispatch(updateDeck(getDeckId(newDeck), newDeck, true));
         setTimeout(() => {
           resolve(newDeck);
         }, 1000);
@@ -282,7 +284,7 @@ export const saveDeckChanges: ActionCreator<
           savePromise,
           // onSuccess
           (deck: Deck) => {
-            dispatch(updateDeck(deck.id, deck, true));
+            dispatch(updateDeck(getDeckId(deck), deck, true));
             resolve(deck);
           },
           reject,
@@ -333,7 +335,7 @@ export const saveNewDeck: ActionCreator<
           params.problem,
           params.description
         );
-        dispatch(setNewDeck(deck.id, deck));
+        dispatch(setNewDeck(getDeckId(deck), deck));
         setTimeout(() => {
           resolve(deck);
         }, 1000);
@@ -352,7 +354,7 @@ export const saveNewDeck: ActionCreator<
           newDeckPromise,
           // onSuccess
           (deck: Deck) => {
-            dispatch(setNewDeck(deck.id, deck));
+            dispatch(setNewDeck(getDeckId(deck), deck));
             resolve(deck);
           },
           reject,
@@ -421,14 +423,14 @@ export const uploadLocalDeck: ActionCreator<
       localDeck,
       localDeck.name
     )).then(deck => {
-      dispatch(replaceLocalDeck(localDeck.id, deck));
+      dispatch(replaceLocalDeck(getDeckId(localDeck), deck));
       return deck;
     });
   };
 };
 
 
-export function incIgnoreDeckSlot(id: number, code: string, limit?: number): UpdateDeckEditCountsAction {
+export function incIgnoreDeckSlot(id: DeckId, code: string, limit?: number): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -439,7 +441,7 @@ export function incIgnoreDeckSlot(id: number, code: string, limit?: number): Upd
   };
 }
 
-export function decIgnoreDeckSlot(id: number, code: string): UpdateDeckEditCountsAction {
+export function decIgnoreDeckSlot(id: DeckId, code: string): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -449,7 +451,7 @@ export function decIgnoreDeckSlot(id: number, code: string): UpdateDeckEditCount
   };
 }
 
-export function setIgnoreDeckSlot(id: number, code: string, value: number): UpdateDeckEditCountsAction {
+export function setIgnoreDeckSlot(id: DeckId, code: string, value: number): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -460,7 +462,7 @@ export function setIgnoreDeckSlot(id: number, code: string, value: number): Upda
   };
 }
 
-export function incDeckSlot(id: number, code: string, limit?: number): UpdateDeckEditCountsAction {
+export function incDeckSlot(id: DeckId, code: string, limit?: number): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -471,7 +473,7 @@ export function incDeckSlot(id: number, code: string, limit?: number): UpdateDec
   };
 }
 
-export function decDeckSlot(id: number, code: string): UpdateDeckEditCountsAction {
+export function decDeckSlot(id: DeckId, code: string): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -481,7 +483,7 @@ export function decDeckSlot(id: number, code: string): UpdateDeckEditCountsActio
   };
 }
 
-export function setDeckSlot(id: number, code: string, value: number): UpdateDeckEditCountsAction {
+export function setDeckSlot(id: DeckId, code: string, value: number): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -492,7 +494,7 @@ export function setDeckSlot(id: number, code: string, value: number): UpdateDeck
   };
 }
 
-export function setDeckTabooSet(id: number, tabooSetId: number): UpdateDeckEditAction {
+export function setDeckTabooSet(id: DeckId, tabooSetId: number): UpdateDeckEditAction {
   return {
     type: UPDATE_DECK_EDIT,
     id,
@@ -503,7 +505,7 @@ export function setDeckTabooSet(id: number, tabooSetId: number): UpdateDeckEditA
 }
 
 
-export function setDeckDescription(id: number, description: string): UpdateDeckEditAction {
+export function setDeckDescription(id: DeckId, description: string): UpdateDeckEditAction {
   return {
     type: UPDATE_DECK_EDIT,
     id,
@@ -513,7 +515,7 @@ export function setDeckDescription(id: number, description: string): UpdateDeckE
   };
 }
 
-export function setDeckXpAdjustment(id: number, xpAdjustment: number): UpdateDeckEditAction {
+export function setDeckXpAdjustment(id: DeckId, xpAdjustment: number): UpdateDeckEditAction {
   return {
     type: UPDATE_DECK_EDIT,
     id,
@@ -524,7 +526,7 @@ export function setDeckXpAdjustment(id: number, xpAdjustment: number): UpdateDec
 }
 
 export function updateDeckMeta(
-  id: number,
+  id: DeckId,
   investigator_code: string,
   deckEdits: EditDeckState,
   updates: {
@@ -555,19 +557,21 @@ export function updateDeckMeta(
   };
 }
 
-export function startDeckEdit(id: number, initialMode?: 'upgrade' | 'edit'): ThunkAction<void, AppState, unknown, Action> {
+export function startDeckEdit(id: DeckId, initialMode?: 'upgrade' | 'edit'): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, StartDeckEditAction>, getState: () => AppState): void => {
-    const deck = getState().decks.all[id];
-    dispatch({
-      type: START_DECK_EDIT,
-      id,
-      deck,
-      mode: initialMode,
-    });
+    const deck = makeDeckSelector()(getState(), id);
+    if (deck) {
+      dispatch({
+        type: START_DECK_EDIT,
+        id,
+        deck,
+        mode: initialMode,
+      });
+    }
   };
 }
 
-export function finishDeckEdit(id: number): FinishDeckEditAction {
+export function finishDeckEdit(id: DeckId): FinishDeckEditAction {
   return {
     type: FINISH_DECK_EDIT,
     id,

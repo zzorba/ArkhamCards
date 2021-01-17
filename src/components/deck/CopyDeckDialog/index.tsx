@@ -13,7 +13,7 @@ import { showDeckModal } from '@components/nav/helper';
 import Dialog from '@components/core/Dialog';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { login } from '@actions';
-import { Deck } from '@actions/types';
+import { Deck, DeckId, getDeckId } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
 import { makeBaseDeckSelector, makeLatestDeckSelector, AppState } from '@reducers';
 import COLORS from '@styles/colors';
@@ -26,7 +26,7 @@ import { CUSTOM_INVESTIGATOR } from '@app_constants';
 interface Props {
   componentId: string;
   toggleVisible: () => void;
-  deckId?: number;
+  deckId?: DeckId;
   signedIn?: boolean;
 }
 
@@ -67,10 +67,10 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
   }, [dispatch, signedIn, setOfflineDeck]);
 
   const selectedDeck: Deck | undefined = useMemo(() => {
-    if (baseDeck && baseDeck.id === selectedDeckId) {
+    if (baseDeck && getDeckId(baseDeck).uuid === selectedDeckId?.uuid) {
       return baseDeck;
     }
-    if (latestDeck && latestDeck.id === selectedDeckId) {
+    if (latestDeck && getDeckId(latestDeck).uuid === selectedDeckId?.uuid) {
       return latestDeck;
     }
     return deck;
@@ -111,7 +111,7 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
     setDeckName(value);
   }, [setDeckName]);
 
-  const selectedDeckIdChanged = useCallback((deckId: number, value: boolean) => {
+  const selectedDeckIdChanged = useCallback((deckId: DeckId, value: boolean) => {
     setSelectedDeckId(value ? deckId : undefined);
   }, [setSelectedDeckId]);
 
@@ -132,25 +132,25 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
         </DialogComponent.Description>
         { parsedBaseDeck ? (
           <SelectDeckSwitch
-            deckId={parsedBaseDeck.deck.id}
+            deckId={parsedBaseDeck.id}
             label={t`Base Version\n${parsedBaseDeck.experience} XP`}
-            value={selectedDeckId === parsedBaseDeck.deck.id}
+            value={selectedDeckId?.uuid === parsedBaseDeck.id.uuid}
             onValueChange={selectedDeckIdChanged}
           />
         ) : null }
         { parsedCurrentDeck ? (
           <SelectDeckSwitch
-            deckId={parsedCurrentDeck.deck.id}
+            deckId={parsedCurrentDeck.id}
             label={t`Current Version ${parsedCurrentDeck.deck.version}\n${parsedCurrentDeck.experience} XP`}
-            value={selectedDeckId === parsedCurrentDeck.deck.id}
+            value={selectedDeckId?.uuid === parsedCurrentDeck.id.uuid}
             onValueChange={selectedDeckIdChanged}
           />
         ) : null }
         { parsedLatestDeck ? (
           <SelectDeckSwitch
-            deckId={parsedLatestDeck.deck.id}
+            deckId={parsedLatestDeck.id}
             label={t`Latest Version ${parsedLatestDeck.deck.version}\n${parsedLatestDeck.experience} XP`}
-            value={selectedDeckId === parsedLatestDeck.deck.id}
+            value={selectedDeckId?.uuid === parsedLatestDeck.id.uuid}
             onValueChange={selectedDeckIdChanged}
           />
         ) : null }

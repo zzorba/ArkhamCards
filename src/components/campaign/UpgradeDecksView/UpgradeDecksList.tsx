@@ -9,7 +9,7 @@ import { t } from 'ttag';
 
 import NonDeckDetailsButton from './NonDeckDetailsButton';
 import UpgradeDeckButton from './UpgradeDeckButton';
-import { Deck, InvestigatorData, ParsedDeck } from '@actions/types';
+import { Deck, getDeckId, InvestigatorData, ParsedDeck } from '@actions/types';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import Card, { CardsMap } from '@data/Card';
 import { parseBasicDeck } from '@lib/parseDeck';
@@ -23,7 +23,7 @@ interface Props {
   showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
   updateInvestigatorXp: (investigator: Card, xp: number) => void;
   investigatorData: InvestigatorData;
-  originalDeckIds: Set<number>;
+  originalDeckUuids: Set<string>;
   componentId: string;
   decks: Deck[];
   allInvestigators: Card[];
@@ -46,7 +46,7 @@ export default function UpgradeDecksList({
   showDeckUpgradeDialog,
   updateInvestigatorXp,
   investigatorData,
-  originalDeckIds,
+  originalDeckUuids,
   componentId,
   decks,
   allInvestigators,
@@ -67,7 +67,7 @@ export default function UpgradeDecksList({
     if (eliminated) {
       return null;
     }
-    if (!originalDeckIds.has(deck.id)) {
+    if (!originalDeckUuids.has(getDeckId(deck).uuid)) {
       const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
       if (!parsedDeck) {
         return null;
@@ -90,7 +90,7 @@ export default function UpgradeDecksList({
         onPress={showDeckUpgradeDialog}
       />
     );
-  }, [investigatorData, originalDeckIds, typography, showDeckUpgradeDialog]);
+  }, [investigatorData, originalDeckUuids, typography, showDeckUpgradeDialog]);
 
   const saveXp = useCallback((investigator: Card, xp: number) => {
     updateInvestigatorXp(investigator, xp);
@@ -112,7 +112,7 @@ export default function UpgradeDecksList({
               key={deck.id}
               lang={lang}
               componentId={componentId}
-              id={deck.id}
+              id={getDeckId(deck)}
               renderDetails={renderDetails}
               compact
               viewDeckButton

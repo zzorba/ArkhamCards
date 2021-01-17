@@ -6,6 +6,7 @@ import {
   DecksMap,
   StandaloneId,
   STANDALONE,
+  DeckId,
 } from '@actions/types';
 import { createSelector } from 'reselect';
 import CampaignGuide from '@data/scenario/CampaignGuide';
@@ -19,6 +20,7 @@ import {
   makeLatestCampaignDeckIdsSelector,
   getLangPreference,
   makeCampaignSelector,
+  makeLatestDecksSelector,
 } from '@reducers';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
@@ -32,7 +34,7 @@ export interface CampaignGuideReduxData {
   latestDecks: Deck[];
 }
 
-const makeCampaignGuideSelector = () =>
+const makeCampaignGuideSelector = (): (state: AppState, campaign?: SingleCampaign) => CampaignGuide | undefined =>
   createSelector(
     (state: AppState) => getLangPreference(state),
     (state: AppState, campaign?: SingleCampaign) => campaign?.cycleCode,
@@ -47,14 +49,6 @@ const makeCampaignGuideSelector = () =>
       return getCampaignGuide(campaignCode, lang);
     }
   );
-
-const makeLatestDecksSelector = () =>
-  createSelector(
-    (state: AppState) => getAllDecks(state),
-    makeLatestCampaignDeckIdsSelector(),
-    (decks: DecksMap, latestDeckIds: number[]) => flatMap(latestDeckIds, deckId => decks[deckId])
-  );
-
 
 export function useCampaignGuideReduxData(campaignId: number, investigators?: CardsMap): CampaignGuideReduxData | undefined {
   const campaignSelector = useMemo(makeCampaignSelector, []);

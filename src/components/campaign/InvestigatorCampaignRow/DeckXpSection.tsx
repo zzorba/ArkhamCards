@@ -24,7 +24,7 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
   const { colors } = useContext(StyleContext);
   const previousDeckSelector = useMemo(makeDeckSelector, []);
   const previousDeck = useSelector((state: AppState) => {
-    return (deck.previous_deck && previousDeckSelector(state, deck.previous_deck)) || undefined;
+    return deck.previousDeckId ? previousDeckSelector(state, deck.previousDeckId) : undefined;
   });
 
   const showDeckUpgradePress = useCallback(() => {

@@ -56,8 +56,8 @@ function MyDecksView({ componentId }: NavigationProps) {
   }, [componentId, colors]);
 
   const searchOptionControls = useMemo(() => {
-    const hasLocalDeck = find(myDecks, deckId => deckId < 0) !== null;
-    const hasOnlineDeck = find(myDecks, deckId => deckId > 0) !== null;
+    const hasLocalDeck = !!find(myDecks, deckId => deckId.local);
+    const hasOnlineDeck = !!find(myDecks, deckId => !deckId.local);
     if (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck)) {
       // need to have both to show the toggle.
       return null;
