@@ -12,6 +12,7 @@ import {
   CampaignGuideState,
   GuideInput,
   guideInputToId,
+  REDUX_MIGRATION,
 } from '@actions/types';
 
 export interface GuidesState {
@@ -52,41 +53,11 @@ export default function(
   if (action.type === ARKHAMDB_LOGOUT) {
     return state;
   }
-  if (action.type === RESTORE_COMPLEX_BACKUP) {
+  if (action.type === RESTORE_COMPLEX_BACKUP || (action.type === REDUX_MIGRATION && action.version === 1)) {
     const all = { ...state.all };
     forEach(action.guides, guide => {
       all[guide.uuid] = guide;
     });
-    /*
-    forEach(action.guides, (guide, id) => {
-      const remappedGuide = {
-        ...guide,
-        inputs: map(guide.inputs, input => {
-          if (input.step && input.type === 'choice_list' && (
-            input.step.startsWith('$upgrade_decks') || input.step.startsWith('$save_standalone_decks')
-          )) {
-            const choices: NumberChoices = { ...input.choices };
-            if (choices.deckId && choices.deckId.length) {
-              const deckId = choices.deckId[0];
-              if (deckId < 0) {
-                const newDeckId = action.deckRemapping[deckId];
-                if (newDeckId) {
-                  choices.deckId = [newDeckId];
-                } else {
-                  delete choices.deckId;
-                }
-              }
-            }
-            return {
-              ...input,
-              choices,
-            };
-          }
-          return input;
-        }),
-      };
-      all[action.campaignRemapping[id]] = remappedGuide;
-    });*/
     return {
       ...state,
       all,

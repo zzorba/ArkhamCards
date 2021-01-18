@@ -13,6 +13,8 @@ import {
   SetThemeAction,
   SET_FONT_SCALE,
   SetFontScaleAction,
+  ReduxMigrationAction,
+  REDUX_MIGRATION,
 } from '@actions/types';
 
 interface SettingsState {
@@ -35,7 +37,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   version: 2,
 };
 
-type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetSingleCardViewAction | SetAlphabetizeEncounterSetsAction | CardFetchSuccessAction | SetThemeAction | SetFontScaleAction;
+type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetSingleCardViewAction | SetAlphabetizeEncounterSetsAction | CardFetchSuccessAction | SetThemeAction | SetFontScaleAction | ReduxMigrationAction;
 
 
 export default function(
@@ -43,6 +45,11 @@ export default function(
   action: SettingAction
 ): SettingsState {
   switch (action.type) {
+    case REDUX_MIGRATION:
+      return {
+        ...state,
+        version: action.version,
+      };
     case SET_FONT_SCALE:
       return {
         ...state,

@@ -1119,6 +1119,21 @@ export interface SetDeckChecklistCardAction {
   value: boolean;
 }
 
+
+export const REDUX_MIGRATION = 'REDUX_MIGRATION';
+interface ReduxMigrationV1Action {
+  type: typeof REDUX_MIGRATION;
+  version: 1;
+  campaigns: Campaign[];
+  decks: Deck[];
+  guides: CampaignGuideState[];
+  chaosBags: {
+    [uuid: string]: ChaosBagResults;
+  };
+}
+
+export type ReduxMigrationAction = ReduxMigrationV1Action;
+
 export type FilterActions =
   ClearFilterAction |
   ToggleFilterAction |
@@ -1158,7 +1173,8 @@ export type DecksActions =
   UpdateDeckAction |
   ClearDecksAction |
   ReplaceLocalDeckAction |
-  EnsureUuidAction;
+  EnsureUuidAction |
+  ReduxMigrationAction;
 
 export type DeckEditsActions =
   DeleteDeckAction |
@@ -1189,7 +1205,8 @@ export type CampaignActions =
   CampaignAddInvestigatorAction |
   CampaignRemoveInvestigatorAction |
   AdjustBlessCurseAction |
-  EnsureUuidAction;
+  EnsureUuidAction |
+  ReduxMigrationAction;
 
 export type GuideActions =
   DeleteCampaignAction |
@@ -1198,7 +1215,8 @@ export type GuideActions =
   GuideSetInputAction |
   GuideUndoInputAction |
   GuideResetScenarioAction |
-  GuideUpdateAchievementAction;
+  GuideUpdateAchievementAction |
+  ReduxMigrationAction;
 
 export const DISSONANT_VOICES_LOGIN_STARTED = 'DISSONANT_VOICES_LOGIN_STARTED';
 interface DissonantVoicesLoginStartedAction {

@@ -20,6 +20,7 @@ import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useEffectUpdate } from '@components/core/hooks';
 import { values } from 'lodash';
+import useReduxMigrator from '@components/settings/useReduxMigrator';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -56,7 +57,8 @@ type Props = ReduxProps & ReduxActionProps & OwnProps;
  */
 export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   const { db } = useContext(DatabaseContext);
-  const version = useSelector((state: AppState) => state.settings.version || 0);
+  const [needsMigration, migrating, doMigrate] = useReduxMigrator();
+
   const dispatch = useDispatch();
   const fetchNeeded = useSelector((state: AppState) => state.packs.all.length === 0);
   const currentCardLang = useSelector((state: AppState) => state.cards.card_lang || 'en');
@@ -72,10 +74,6 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   }, [db]);
 
   const decks = useSelector((state: AppState) => state.legacyDecks.all);
-
-  const doMigrate = useCallback(() => {
-
-  }, []);
 
   const doFetch = useCallback(() => {
     dispatch(fetchCards(db, choiceLang, useSystemLang ? 'system' : choiceLang));
@@ -170,19 +168,27 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
       </View>
     );
   }
-  if (version < 2) {
-    const deckCount = values(decks).length;
-    const campaignCount = values(campaigns.length)
+  if (needsMigration) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
         <Text style={[typography.header, space.paddingBottomS]}>
           { t`Database migration required` }
         </Text>
-        <Text style={[typography.text, space.paddingM]}>
-          { t`This should only take a few seconds and no network is required.` }
-          {  }
-        </Text>
-        <BasicButton onPress={doMigrate} title={t`Migrate now`} />
+        { migrating ? (
+          <ActivityIndicator
+            style={styles.spinner}
+            size="small"
+            animating
+            color={colors.lightText}
+          />
+        ) : (
+          <>
+            <Text style={[typography.text, space.paddingM]}>
+              { t`This should only take a few seconds and no network is required.` }
+            </Text>
+            <BasicButton onPress={doMigrate} title={t`Migrate now`} />
+          </>
+        ) }
       </View>
     );
   }

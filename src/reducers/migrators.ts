@@ -107,8 +107,8 @@ export function migrateGuides(
   guides: { [id: string]: LegacyCampaignGuideState | undefined },
   campaignMapping: { [id: string]: string },
   deckMap: { [numberId: number]: DeckId | undefined },
-): { [id: string]: CampaignGuideState | undefined } {
-  const all: { [uuid: string]: CampaignGuideState | undefined } = {};
+): { [id: string]: CampaignGuideState } {
+  const all: { [uuid: string]: CampaignGuideState } = {};
   forEach(guides, (guide, id) => {
     if (guide && campaignMapping[id]) {
       const inputs: GuideInput[] = map(guide.inputs || [], input => {

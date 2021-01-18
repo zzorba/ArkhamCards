@@ -33,46 +33,6 @@ export default function configureStore(initialState: AppState) {
     persist: false,
   });
 
-  function migrateV1(state: AppState): AppState {
-    const newState: AppState = { ...state };
-    let deckMap: { [key: string]: DeckId | undefined} = {};
-    if (state.decks && state.decks.all) {
-      const [all, newDeckMap] = migrateDecks(values(state.decks.all) as LegacyDeck[]);
-      deckMap = newDeckMap;
-      newState.decks = {
-        ...state.decks,
-        all,
-        replacedLocalIds: {},
-      };
-    }
-    if (state.campaigns && state.campaigns.all) {
-      const [all, campaignMapping] = migrateCampaigns(
-        values(state.campaigns.all) as LegacyCampaign[],
-        deckMap,
-        newState.decks.all,
-      );
-      const chaosBagResults: { [uuid: string]: ChaosBagResults | undefined } = {};
-      forEach(state.campaigns.chaosBagResults || {}, (bag, id) => {
-        if (campaignMapping[id]) {
-          chaosBagResults[campaignMapping[id]] = bag;
-        }
-      });
-      newState.campaigns = {
-        ...state.campaigns,
-        all,
-        chaosBagResults,
-      };
-
-      if (state.guides && state.guides.all) {
-        newState.guides = {
-          ...state.guides,
-          all: migrateGuides(state.guides.all as { [id: string]: LegacyCampaignGuideState | undefined }, campaignMapping, deckMap),
-        };
-      }
-    }
-    return newState;
-  }
-
   const migrations = {
     0: (state: any) => {
       const newState = { ...state };
@@ -80,9 +40,6 @@ export default function configureStore(initialState: AppState) {
         delete newState.weaknesses;
       }
       return newState;
-    },
-    1: (state: any) => {
-      return migrateV1(state) as any;
     },
   };
 
@@ -94,7 +51,12 @@ export default function configureStore(initialState: AppState) {
     // WHY is that the default behavior?!?!?
     timeout: 0,
     // These all have some transient fields and are handled separately.
-    blacklist: ['cards', 'decks', 'packs', 'dissonantVoices', 'guides', 'signedIn', 'filters', 'deckEdits'],
+    blacklist: [
+      'cards', 'signedIn', 'filters', 'deckEdits', 'packs', 'dissonantVoices',
+      // These are replacement fields.
+      'guides_2', 'campaigns_2', 'decks_2',
+      // These are the legacy fields (campaigns as well, but it didn't have its own persistor)
+      'decks', 'guides'],
     migrate: createMigrate(migrations, { debug: true }),
   };
 

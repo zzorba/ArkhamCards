@@ -27,6 +27,7 @@ import {
   ADJUST_BLESS_CURSE,
   NEW_STANDALONE,
   STANDALONE,
+  REDUX_MIGRATION,
 } from '@actions/types';
 
 export interface CampaignsState {
@@ -88,25 +89,21 @@ export default function(
         sealedTokens: [],
         totalDrawnTokens: 0,
       };
-      /*
-      const deprecatedCampaign = campaign as LegacyCampaign;
-      const remappedCampaign: Campaign = {
-        ...omit(campaign, ['baseDeckIds', 'deckIds', 'id']) as Campaign,
-        deckIds: [],
-      };
-      if (campaign.deckIds) {
-        remappedCampaign.deckIds = campaign.deckIds;
-      } else if (deprecatedCampaign.baseDeckIds) {
-        remappedCampaign.deckIds = flatMap(deprecatedCampaign.baseDeckIds, deckId => {
-          return action.deckIds[deckId] || [];
-        });
-      }
-      all[remappedCampaign.uuid] = remappedCampaign;
-      chaosBagResults[remappedCampaign.uuid] = {
-        drawnTokens: [],
-        sealedTokens: [],
-        totalDrawnTokens: 0,
-      };*/
+    });
+    return {
+      ...state,
+      all,
+      chaosBagResults,
+    };
+  }
+  if (action.type === REDUX_MIGRATION) {
+    const all = { ...state.all };
+    const chaosBagResults = { ...state.chaosBagResults };
+    forEach(action.campaigns, campaign => {
+      all[campaign.uuid] = campaign;
+    });
+    forEach(action.chaosBags, (chaosBag, uuid) => {
+      chaosBagResults[uuid] = chaosBag;
     });
     return {
       ...state,

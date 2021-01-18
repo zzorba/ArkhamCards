@@ -22,10 +22,9 @@ import {
   DecksMap,
   getDeckId,
   DeckId,
+  REDUX_MIGRATION,
 } from '@actions/types';
 import deepDiff from 'deep-diff';
-import { Action } from 'redux';
-
 
 interface DecksState {
   all: DecksMap;
@@ -70,61 +69,21 @@ export default function(
     const all: DecksMap = { ...state.all };
     forEach(action.decks, deck => {
       all[getDeckId(deck).uuid] = deck;
-      /*
-      const remappedDeck: Deck = { ...omit(deck, ['previous_deck', 'next_deck']) as Deck };
-      if (action.deckRemapping[deck.id]) {
-        remappedDeck.id = action.deckRemapping[deck.id];
-      }
-      const legacyDeck = deck as ArkhamDbApiDeck;
-      if (legacyDeck.previous_deck) {
-        if (action.deckRemapping[legacyDeck.previous_deck]) {
-          const previousId = action.deckRemapping[legacyDeck.previous_deck];
-          const previousUuid = find(action.decks, deck => deck.id === previousId)?.uuid;
-          if (previousUuid) {
-            remappedDeck.previousDeckId = {
-              id: previousId,
-              local: true,
-              uuid: previousUuid,
-            };
-          }
-        } else if (legacyDeck.previous_deck > 0) {
-          remappedDeck.previousDeckId = {
-            id: legacyDeck.previous_deck,
-            local: false,
-            uuid: `${legacyDeck.previous_deck}`,
-          };
-        }
-      } else if (deck.previousDeckId && deck.previousDeckId.local && action.deckRemapping[deck.previousDeckId.id]) {
-        deck.previousDeckId.id = action.deckRemapping[deck.previousDeckId.id];
-      }
-
-      if (legacyDeck.next_deck) {
-        if (action.deckRemapping[legacyDeck.next_deck]) {
-          const nextId = action.deckRemapping[legacyDeck.next_deck];
-          const nextUuid = find(action.decks, deck => deck.id === nextId)?.uuid;
-          if (nextUuid) {
-            remappedDeck.nextDeckId = {
-              id: nextId,
-              local: true,
-              uuid: nextUuid,
-            };
-          }
-        } else if (legacyDeck.next_deck > 0) {
-          remappedDeck.nextDeckId = {
-            id: legacyDeck.next_deck,
-            local: false,
-            uuid: `${legacyDeck.next_deck}`,
-          };
-        }
-      } else if (deck.nextDeckId && deck.nextDeckId.local && action.deckRemapping[deck.nextDeckId.id]) {
-        deck.nextDeckId.id = action.deckRemapping[deck.nextDeckId.id];
-      }
-      all[getDeckId(remappedDeck).uuid] = remappedDeck;*/
     });
     return {
       ...state,
       all,
       replacedLocalIds: {},
+    };
+  }
+  if (action.type === REDUX_MIGRATION) {
+    const all: DecksMap = { ...state.all };
+    forEach(action.decks, deck => {
+      all[getDeckId(deck).uuid] = deck;
+    });
+    return {
+      ...DEFAULT_DECK_STATE,
+      all,
     };
   }
   if (action.type === ENSURE_UUID) {
