@@ -45094,6 +45094,8 @@
           {
             "id": "taken_by_the_watcher",
             "text": "Vom Beobachter entführt",
+            "masculine_text": "Vom Beobachter entführt",
+            "feminine_text": "Vom Beobachter entführt",
             "effects": [
               {
                 "type": "campaign_log_cards",

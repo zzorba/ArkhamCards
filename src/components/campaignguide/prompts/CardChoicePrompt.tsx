@@ -223,6 +223,7 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
             return {
               code: card.code,
               name: card.name,
+              masculine: card.grammarGenderMasculine(),
             };
           })}
           loading={loading}

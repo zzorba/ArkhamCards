@@ -38944,7 +38944,7 @@
     {
       "id": "choose_scent_to_follow",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "El investigador jefe debe decidir (elige una opción):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -38975,7 +38975,7 @@
     {
       "id": "choose_confront_cat",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "El investigador jefe debe decidir (elige una opción):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -39010,7 +39010,7 @@
     {
       "id": "choose_food",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "El investigador jefe debe decidir (elige una opción):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -45094,6 +45094,8 @@
           {
             "id": "taken_by_the_watcher",
             "text": "Atrapado por el vigilante",
+            "masculine_text": "Atrapado por el vigilante",
+            "feminine_text": "Atrapada por el vigilante",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -48639,7 +48641,7 @@
     {
       "id": "choose_fate",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "El investigador jefe debe decidir (elige una opción):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -71795,7 +71797,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You bounce through your memories, struggling to return to the present. You remember a dark cell. A knife at your throat. A man with wide, unblinking eyes, wearing a long hooded robe. \"Oceiros,\" another voice calls, \"these ones were found in Dagon's lair as well. We believe they were the ones snooping around Devil Reef.\"\nOceiros nods. The knife at your throat digs deeper. \"Take what they have stolen to the lighthouse at once,\" he commands. \"It is time to begin our great work. None will disrupt the Order's business every again.\"\nYour mind snaps back to the present. The rumbling of an automobile engine grows as your senses return. Agent Harper grips your shoulder and peers into your eyes. \"Another vision,\" she utters with a hint of surprise. \"Do you remember something? What was it?\"\nYou shake the ache from your pounding skull and ask Harper if the name Oceiros means anything. \"Oceiros Marsh? He's the keeper of the old lighthouse on Falcon Point,\" she replies. \"Why? What did you see?\""
+      "text": "You bounce through your memories, struggling to return to the present. You remember a dark cell. A knife at your throat. A man with wide, unblinking eyes, wearing a long hooded robe. \"Oceiros,\" another voice calls, \"these ones were found in Dagon's lair as well. We believe they were the ones snooping around Devil Reef.\"\nOceiros nods. The knife at your throat digs deeper. \"Take what they have stolen to the lighthouse at once,\" he commands. \"It is time to begin our great work. None will disrupt the Order's business ever again.\"\nYour mind snaps back to the present. The rumbling of an automobile engine grows as your senses return. Agent Harper grips your shoulder and peers into your eyes. \"Another vision,\" she utters with a hint of surprise. \"Do you remember something? What was it?\"\nYou shake the ache from your pounding skull and ask Harper if the name Oceiros means anything. \"Oceiros Marsh? He's the keeper of the old lighthouse on Falcon Point,\" she replies. \"Why? What did you see?\""
     },
     {
       "id": "section_intro",
