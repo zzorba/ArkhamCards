@@ -1020,9 +1020,6 @@ msgstr ""
 "\n"
 "캠페인에 참가하고 있었다면, 동일한 조사자를 추가하여 캠페인 데이터를 복구할 수 있습니다."
 
-msgid "OK"
-msgstr "OK"
-
 msgid "Error"
 msgstr "오류"
 
@@ -2782,6 +2779,7 @@ msgid ""
 "settings."
 msgstr "#${ code } 카드를 발견할 수 없습니다. 설정에서 아컴디비 카드 업데이트를 수행해주십시오."
 
+#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } 재보급 경험치 사용가능"
@@ -3901,6 +3899,24 @@ msgstr ""
 msgid "Record Scenario Result"
 msgstr ""
 
+msgid "Sign out of Arkham Cards?"
+msgstr ""
+
+msgid ""
+"Are you sure you want to sign out of Arkham Cards?\n"
+"\n"
+"Any campaigns you uploaded or have had shared with you will be removed from "
+"this device. They can be resynced if you sign in again.\n"
+"\n"
+"Note: if you have made recent changes while offline, they may be lost."
+msgstr ""
+
+msgid "Name required"
+msgstr ""
+
+msgid "You must specify a name for custom campaigns."
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -3990,6 +4006,11 @@ msgstr ""
 "당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 있으면, 다음 지시를 "
 "수행합니다."
 
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr ""
+
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
@@ -4075,6 +4096,10 @@ msgid ""
 msgstr ""
 "당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 있으면, 다음 지시를 "
 "수행합니다."
+
+msgctxt "feminine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr ""
 
 msgctxt "action"
 msgid "Fight"

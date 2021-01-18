@@ -888,9 +888,6 @@ msgstr "Nuova Campagna"
 msgid "Chaos Bag"
 msgstr "Sacchetto del Caos"
 
-msgid "Campaign Name"
-msgstr "Nome della Campagna"
-
 msgid "Adjust Weakness Set"
 msgstr "Modifica Debolezze Base"
 
@@ -995,10 +992,6 @@ msgstr "${ counts.assigned } / ${ counts.total } sono state pescate."
 
 msgid "Delete"
 msgstr "Cancella"
-
-#, javascript-format
-msgid "Are you sure you want to delete the campaign: ${ campaign.name }"
-msgstr "Sei sicuro che vuoi eliminare la Campagna: ${ campaign.name }"
 
 msgid "Show Interludes"
 msgstr "Mostra Interludi"
@@ -1141,9 +1134,6 @@ msgstr "Modifica Mazzo"
 
 msgid "Deck has been deleted"
 msgstr "Il Mazzo è stato cancellato"
-
-msgid "OK"
-msgstr "OK"
 
 msgid "Error"
 msgstr "Errore"
@@ -1831,15 +1821,6 @@ msgstr "Successo di 3 o più"
 
 msgid "Change Scenario"
 msgstr "Cambia Scenario"
-
-msgid "Scenario History"
-msgstr "Resoconto degli Scenari"
-
-msgid "Edit Tokens"
-msgstr "Modifica Segnalini"
-
-msgid "Draw Tokens"
-msgstr "Pesca Segnalini"
 
 msgid "Weakness Set"
 msgstr "Set Debolezze"
@@ -2805,6 +2786,7 @@ msgid ""
 "settings."
 msgstr ""
 
+#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] ""
@@ -3904,6 +3886,24 @@ msgstr ""
 msgid "Record Scenario Result"
 msgstr ""
 
+msgid "Sign out of Arkham Cards?"
+msgstr ""
+
+msgid ""
+"Are you sure you want to sign out of Arkham Cards?\n"
+"\n"
+"Any campaigns you uploaded or have had shared with you will be removed from "
+"this device. They can be resynced if you sign in again.\n"
+"\n"
+"Note: if you have made recent changes while offline, they may be lost."
+msgstr ""
+
+msgid "Name required"
+msgstr ""
+
+msgid "You must specify a name for custom campaigns."
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -3992,6 +3992,11 @@ msgid ""
 "Campaign Log."
 msgstr ""
 
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr ""
+
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""
@@ -4075,6 +4080,10 @@ msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
 "Campaign Log."
+msgstr ""
+
+msgctxt "feminine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr ""
 
 msgctxt "action"

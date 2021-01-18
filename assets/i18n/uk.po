@@ -981,9 +981,6 @@ msgid ""
 "restore your campaign data."
 msgstr ""
 
-msgid "OK"
-msgstr ""
-
 msgid "Error"
 msgstr ""
 
@@ -2687,6 +2684,7 @@ msgid ""
 "settings."
 msgstr ""
 
+#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] ""
@@ -3786,6 +3784,24 @@ msgstr ""
 msgid "Record Scenario Result"
 msgstr ""
 
+msgid "Sign out of Arkham Cards?"
+msgstr ""
+
+msgid ""
+"Are you sure you want to sign out of Arkham Cards?\n"
+"\n"
+"Any campaigns you uploaded or have had shared with you will be removed from "
+"this device. They can be resynced if you sign in again.\n"
+"\n"
+"Note: if you have made recent changes while offline, they may be lost."
+msgstr ""
+
+msgid "Name required"
+msgstr ""
+
+msgid "You must specify a name for custom campaigns."
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -3874,6 +3890,11 @@ msgid ""
 "Campaign Log."
 msgstr ""
 
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr ""
+
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""
@@ -3957,6 +3978,10 @@ msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
 "Campaign Log."
+msgstr ""
+
+msgctxt "feminine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr ""
 
 msgctxt "action"
