@@ -13,17 +13,15 @@ export function migrateDecks(
     if (!deck) {
       return;
     }
-
-    const updatedDeck: Deck = ((deck.id < 0 || deck.local)) ?
-      {
-        ...omit(deck, ['id', 'uuid']),
-        local: true,
-        uuid: deck.uuid || uuid.v4(),
-      } : {
-        ...omit(deck, ['local', 'uuid']),
-        local: undefined,
-        uuid: undefined,
-      };
+    const updatedDeck: Deck = ((deck.id < 0 || deck.local)) ? {
+      ...omit(deck, ['id', 'uuid']),
+      local: true,
+      uuid: deck.uuid || uuid.v4(),
+    } : {
+      ...omit(deck, ['local', 'uuid']),
+      local: undefined,
+      uuid: undefined,
+    };
     const deckId = getDeckId(updatedDeck);
     all[deckId.uuid] = updatedDeck;
     deckMap[deck.id] = deckId;
@@ -41,6 +39,36 @@ export function migrateDecks(
   return [all, deckMap];
 }
 
+function migrateCampaignDeckIds(
+  campaign: LegacyCampaign,
+  deckMap: { [numberId: number]: DeckId | undefined },
+  allDecks: { [uuid: string]: Deck }
+): DeckId[] {
+  if (campaign.deckIds) {
+    // Already migrated, nothing needed.
+    return campaign.deckIds;
+  }
+  if (campaign.baseDeckIds) {
+    return flatMap(campaign.baseDeckIds, id => deckMap[id] || []);
+  }
+  if (campaign.latestDeckIds) {
+    // Very old campaign
+    return flatMap(campaign.latestDeckIds, oldDeckId => {
+      const deckId = deckMap[oldDeckId];
+      if (!deckId) {
+        return [];
+      }
+      let deck = allDecks[deckId.uuid];
+      while (deck && deck.previousDeckId && deck.previousDeckId.uuid in allDecks) {
+        deck = allDecks[deck.previousDeckId.uuid];
+      }
+      return deck ? getDeckId(deck) : [];
+    });
+  }
+  // This is weird... I guess we have nothing?
+  return [];
+}
+
 export function migrateCampaigns(
   legacyCampaigns: LegacyCampaign[],
   deckMap: { [numberId: number]: DeckId | undefined },
@@ -54,36 +82,14 @@ export function migrateCampaigns(
   const all: { [uuid: string]: Campaign } = {};
   const campaignUuids: { [id: string]: string} = {};
   forEach(legacyCampaigns, (campaign: LegacyCampaign) => {
-    if (!campaign.uuid) {
-      campaign.uuid = uuid.v4();
-    }
-    campaignUuids[campaign.id] = campaign.uuid;
+    campaignUuids[campaign.id] = campaign.uuid || uuid.v4();
   });
   forEach(legacyCampaigns, (campaign: LegacyCampaign) => {
     if (!campaign) {
       return;
     }
-    let deckIds: DeckId[] = [];
-    if (campaign.deckIds) {
-      // Already migrated, nothing needed.
-      deckIds = campaign.deckIds;
-    } else if (campaign.baseDeckIds) {
-      deckIds = flatMap(campaign.baseDeckIds, id => deckMap[id] || []);
-    } else if (campaign.latestDeckIds) {
-      // Very old campaign
-      deckIds = flatMap(campaign.latestDeckIds, oldDeckId => {
-        const deckId = deckMap[oldDeckId];
-        if (!deckId) {
-          return [];
-        }
-        let deck = allDecks[deckId.uuid];
-        while (deck && deck.previousDeckId && deck.previousDeckId.uuid in allDecks) {
-          deck = allDecks[deck.previousDeckId.uuid];
-        }
-        return deck ? getDeckId(deck) : [];
-      });
-    }
-    const campaignUuid = campaign.uuid || uuid.v4();
+    const deckIds = migrateCampaignDeckIds(campaign, deckMap, allDecks);
+    const campaignUuid = campaignUuids[campaign.id];
     const newCampaign: Campaign = {
       ...omit(campaign, ['baseDeckIds', 'latestDeckIds', 'uuid', 'id', 'linkedCampaignId', 'link']),
       deckIds,

@@ -36,7 +36,7 @@ interface Item {
 }
 
 function keyExtractor(item: Item) {
-  return `${item.deckId}`;
+  return item.deckId.uuid;
 }
 
 export default function DeckList({ lang, deckIds, header, searchTerm, deckToCampaign, refreshing, decks, footer, onRefresh, onScroll, deckClicked }: Props) {
