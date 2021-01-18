@@ -45095,7 +45095,7 @@
             "id": "taken_by_the_watcher",
             "text": "Забрал Страж",
             "masculine_text": "Забрал Страж",
-            "feminine_text": "Taken by the Watcher",
+            "feminine_text": "Забрал Страж",
             "effects": [
               {
                 "type": "campaign_log_cards",
