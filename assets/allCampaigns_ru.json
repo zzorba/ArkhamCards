@@ -34822,7 +34822,7 @@
     },
     {
       "id": "gather_encounter_sets",
-      "title": "Scenario Setup",
+      "title": "Подготовка к сценарию",
       "type": "encounter_sets",
       "encounter_sets": [
         "all_or_nothing",
@@ -35034,7 +35034,7 @@
           },
           {
             "id": "neither",
-            "text": "No change"
+            "text": "Без изменений"
           }
         ]
       }
@@ -35414,7 +35414,7 @@
     },
     {
       "id": "gather_encounter_sets",
-      "title": "Scenario Setup",
+      "title": "Подготовка к сценарию",
       "type": "encounter_sets",
       "encounter_sets": [
         "bad_blood",
@@ -35634,7 +35634,7 @@
           },
           {
             "id": "neither",
-            "text": "No change"
+            "text": "Без изменений"
           }
         ]
       }
@@ -41242,7 +41242,7 @@
     },
     {
       "id": "gather_encounter_sets",
-      "title": "Scenario Setup",
+      "title": "Подготовка к сценарию",
       "type": "encounter_sets",
       "encounter_sets": [
         "read_or_die",
@@ -41458,7 +41458,7 @@
           },
           {
             "id": "neither",
-            "text": "No change"
+            "text": "Без изменений"
           }
         ]
       }
@@ -42454,7 +42454,7 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# взята Бездной.",
+                "masculine_text": "#name# взят Бездной.",
                 "feminine_text": "#name# взята Бездной."
               }
             ]
@@ -42479,7 +42479,7 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# взята Бездной.",
+                "masculine_text": "#name# взят Бездной.",
                 "feminine_text": "#name# взята Бездной."
               }
             ]

@@ -35498,15 +35498,15 @@
     },
     {
       "id": "patrol_rule",
-      "title": "Patrol",
+      "title": "Patrouille",
       "type": "rule_reminder",
-      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "text": "Einige Gegner haben das Schlüsselwort Patrouille und dahinter einen Zielort in Klammern. Während der Gegnerphase (in Schritt 3.2) bewegt sich jeder spielbereite, nicht in einen Kampf verwickelte Gegner mit dem Schlüsselwort Patrouille auf kürzestem Weg in Richtung seines Zielortes zu einem verbundenen Ort.",
       "bullets": [
         {
-          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+          "text": "Falls es mehrere Orte gibt, die als Zielort in Frage kommen, entscheidet der Ermittlungsleiter, auf welchen dieser Orte sich der Gegner zubewegt."
         },
         {
-          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+          "text": "Falls sich ein Gegner mit dem Schlüsselwort Patrouille auf einen Ort bewegen müsste, der Weg aber durch eine Kartenfähigkeit versperrt ist, bewegt sich der Gegner nicht."
         }
       ]
     },
@@ -39404,15 +39404,15 @@
     },
     {
       "id": "patrol_rule",
-      "title": "Patrol",
+      "title": "Patrouille",
       "type": "rule_reminder",
-      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "text": "Einige Gegner haben das Schlüsselwort Patrouille und dahinter einen Zielort in Klammern. Während der Gegnerphase (in Schritt 3.2) bewegt sich jeder spielbereite, nicht in einen Kampf verwickelte Gegner mit dem Schlüsselwort Patrouille auf kürzestem Weg in Richtung seines Zielortes zu einem verbundenen Ort.",
       "bullets": [
         {
-          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+          "text": "Falls es mehrere Orte gibt, die als Zielort in Frage kommen, entscheidet der Ermittlungsleiter, auf welchen dieser Orte sich der Gegner zubewegt."
         },
         {
-          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+          "text": "Falls sich ein Gegner mit dem Schlüsselwort Patrouille auf einen Ort bewegen müsste, der Weg aber durch eine Kartenfähigkeit versperrt ist, bewegt sich der Gegner nicht."
         }
       ]
     },

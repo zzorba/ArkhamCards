@@ -35498,15 +35498,15 @@
     },
     {
       "id": "patrol_rule",
-      "title": "Patrol",
+      "title": "Errante",
       "type": "rule_reminder",
-      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "text": "Algunos Enemigos tienen la palabra clave Errante. Durante la fase de Enemigos (en el paso de estructura 3.2), cada Enemigo preparado y sin enfrentar que tenga la palabra clave Errante se mueve a un Lugar conectado por la ruta más corta hacia el Lugar designado (como se describe entre paréntesis junto a la palabra Errante).",
       "bullets": [
         {
-          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+          "text": "Si hay varios Lugares válidos como posible Lugar designado, el investigador jefe puede elegir hacia qué Lugar se mueve el Enemigo."
         },
         {
-          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+          "text": "Si un enemigo con Errante tuviera que moverse a un Lugar que esté bloqueado por la capacidad de una carta, el Enemigo no se mueve."
         }
       ]
     },
@@ -38912,7 +38912,7 @@
       "id": "alert_rule",
       "type": "rule_reminder",
       "title": "Alerta",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "text": "Cada vez que un investigador fracase en una prueba de habilidad al intentar evitar a un Enemigo que tenga la palabra clave “Alerta”, tras aplicar todos los resultados de esa prueba de habilidad, dicho Enemigo realiza un ataque contra el investigador que intenta evitar. El Enemigo no se agota tras realizar un ataque de “Alerta”. Este ataque ocurre tanto si el Enemigo está enfrentado con el investigador que intenta evitar como si no lo está."
     },
     {
       "id": "lousy_with_cats_rule",
@@ -39404,15 +39404,15 @@
     },
     {
       "id": "patrol_rule",
-      "title": "Patrol",
+      "title": "Errante",
       "type": "rule_reminder",
-      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "text": "Algunos Enemigos tienen la palabra clave Errante. Durante la fase de Enemigos (en el paso de estructura 3.2), cada Enemigo preparado y sin enfrentar que tenga la palabra clave Errante se mueve a un Lugar conectado por la ruta más corta hacia el Lugar designado (como se describe entre paréntesis junto a la palabra Errante).",
       "bullets": [
         {
-          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+          "text": "Si hay varios Lugares válidos como posible Lugar designado, el investigador jefe puede elegir hacia qué Lugar se mueve el Enemigo."
         },
         {
-          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+          "text": "Si un enemigo con Errante tuviera que moverse a un Lugar que esté bloqueado por la capacidad de una carta, el Enemigo no se mueve."
         }
       ]
     },
@@ -42454,7 +42454,7 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# ha sido atrapada por el Abismo.",
+                "masculine_text": "#name# ha sido atrapado por el Abismo.",
                 "feminine_text": "#name# ha sido atrapada por el Abismo."
               }
             ]
@@ -42479,7 +42479,7 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# ha sido atrapada por el Abismo.",
+                "masculine_text": "#name# ha sido atrapado por el Abismo.",
                 "feminine_text": "#name# ha sido atrapada por el Abismo."
               }
             ]
@@ -51531,7 +51531,7 @@
       "id": "alert",
       "type": "rule_reminder",
       "title": "Alerta",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "text": "Cada vez que un investigador fracase en una prueba de habilidad al intentar evitar a un Enemigo que tenga la palabra clave “Alerta”, tras aplicar todos los resultados de esa prueba de habilidad, dicho Enemigo realiza un ataque contra el investigador que intenta evitar. El Enemigo no se agota tras realizar un ataque de “Alerta”. Este ataque ocurre tanto si el Enemigo está enfrentado con el investigador que intenta evitar como si no lo está."
     },
     {
       "id": "story",
@@ -72049,7 +72049,7 @@
     },
     {
       "id": "spend_xp",
-      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
+      "text": "Tras recuperar un fragmento de tus recuerdos, los acontecimientos pasados se han vuelto más claros. En este momento, cada investigador puede gastar la experiencia anotada en la sección «Experiencia sin gastar» del registro de campaña.",
       "effects": [
         {
           "type": "earn_xp",
@@ -72379,7 +72379,7 @@
     },
     {
       "id": "add_flood_tokens",
-      "text": "Add the flood tokens to the token pool."
+      "text": "Añade las fichas de Inundación a la reserva de fichas."
     },
     {
       "id": "encounter_deck",
@@ -72392,13 +72392,13 @@
       "text": "During this scenario, [[Island]] and [[Cave]] locations are arranged in a set pattern, with new locations from the Tidal Tunnel deck emerging, below, to the left, or to the right of some [[Island]] locations. However, [[Island]] locations and Churning Waters are not adjacent to one another, and are instead connected through connection icons as normal.",
       "bullets": [
         {
-          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+          "text": "<b>Durante este escenario, los Lugares adyacentes se consideran conectados entre sí.</b>"
         },
         {
           "text": "A location that is put into play adjacent to another location should be set next to that location, with no other locations between them."
         },
         {
-          "text": "Locations are only adjacent orthogonally (left, right, above, or below); they are not adjacent diagonally."
+          "text": "Los Lugares solo están adyacentes de forma ortogonal (izquierda, derecha, arriba y abajo); no hay adyacencia en diagonal."
         }
       ]
     },
@@ -72555,10 +72555,10 @@
     {
       "id": "ask_keys",
       "type": "input",
-      "text": "Which keys do you want to read the representation of:",
+      "text": "¿De qué Llave quieres conocer su representación?",
       "input": {
         "type": "checklist",
-        "text": "Read",
+        "text": "Leer",
         "choices": [
           {
             "id": "red",
@@ -72569,7 +72569,7 @@
           },
           {
             "id": "purple",
-            "text": "Purple",
+            "text": "Morada",
             "steps": [
               "purple_key"
             ]
@@ -72677,7 +72677,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "text": "Cada investigador obtiene una cantidad de experiencia igual al valor de Victoria X de cada carta que haya en la zona de victoria. Anota esta experiencia en la sección «Experiencia sin gastar» del registro de campaña, pero <b>no gastes nada aún</b>. Se te indicará que gastes esta experiencia posteriormente.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -73294,7 +73294,7 @@
     },
     {
       "id": "setup_keys",
-      "text": "Place each key as follows:",
+      "text": "Coloca cada llave del siguiente modo:",
       "bullets": [
         {
           "text": "Check the \"Possible Hideouts\" section of the Campaign Log for the location that is underlined. Place the black key on that location. <i>(If no location is underlined, skip this step.)</i>"
@@ -73318,7 +73318,7 @@
     },
     {
       "id": "flood_tokens",
-      "text": "Add the flood tokens to the token pool.",
+      "text": "Añade las fichas de Inundación a la reserva de fichas.",
       "bullets": [
         {
           "text": "Increase the flood level of each of the following locations: The House on Water Street, Innsmouth Harbour, and Desolate Coastline."
@@ -73353,7 +73353,7 @@
       "text": "During this scenario, locations are arranged in a set pattern, with each location adjacent to one or more other locations.",
       "bullets": [
         {
-          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+          "text": "<b>Durante este escenario, los Lugares adyacentes se consideran conectados entre sí.</b>"
         },
         {
           "text": "Locations are only adjacent orthogonally (north, east, south, or west); they are not adjacent diagonally."
@@ -73363,7 +73363,7 @@
     {
       "id": "keys_rule",
       "title": "Llaves",
-      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+      "text": "En este escenario, cada llave representa un objeto diferente. Puedes usar el botón \"Llaves\" más abajo para revelar su rol según entren en juego."
     },
     {
       "id": "$play_scenario",
@@ -73489,10 +73489,10 @@
     {
       "id": "ask_keys",
       "type": "input",
-      "text": "Which keys do you want to read the representation of:",
+      "text": "¿De qué Llave quieres conocer su representación?",
       "input": {
         "type": "checklist",
-        "text": "Read",
+        "text": "Leer",
         "choices": [
           {
             "id": "black",
@@ -73700,7 +73700,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "text": "Cada investigador obtiene una cantidad de experiencia igual al valor de Victoria X de cada carta que haya en la zona de victoria. Anota esta experiencia en la sección «Experiencia sin gastar» del registro de campaña, pero <b>no gastes nada aún</b>. Se te indicará que gastes esta experiencia posteriormente.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -74049,7 +74049,7 @@
     },
     {
       "id": "setup_keys",
-      "text": "Place each key as follows:",
+      "text": "Coloca cada llave del siguiente modo:",
       "bullets": [
         {
           "text": "Pon aparte las llaves azul y verde, boca arriba."
@@ -74103,7 +74103,7 @@
     },
     {
       "id": "setup_flood_markers",
-      "text": "Add the flood tokens to the token pool."
+      "text": "Añade las fichas de Inundación a la reserva de fichas."
     },
     {
       "id": "encounter_deck",
@@ -74132,13 +74132,13 @@
       "text": "Durante este escenario, los Lugares se colocan siguiendo un diseño fijo, y los nuevos Lugares del mazo de Túneles de marea aparecerán debajo, a la izquierda o a la derecha de Lugares ya existentes. <i>Nota: el mazo de Túneles de marea no existe al comienzo de este escenario. Se te indicará cuándo y cómo crearlo en un momento posterior del escenario.</i>",
       "bullets": [
         {
-          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+          "text": "<b>Durante este escenario, los Lugares adyacentes se consideran conectados entre sí.</b>"
         },
         {
           "text": "Un Lugar que sea puesto en juego debajo, a la izquierda o a la derecha de otro Lugar deberá colocarse junto a ese Lugar en la posición indicada, sin que haya otros Lugares entremedias. Un Lugar que esté junto a otro Lugar de este modo se considera «adyacente»."
         },
         {
-          "text": "Locations are only adjacent orthogonally (left, right, above, or below); they are not adjacent diagonally."
+          "text": "Los Lugares solo están adyacentes de forma ortogonal (izquierda, derecha, arriba y abajo); no hay adyacencia en diagonal."
         },
         {
           "text": "No puedes poner en juego un Lugar donde ya haya otro Lugar. Si se te indica que coloques un nuevo Lugar del mazo de Túneles de marea en un sitio que ya está ocupado por otro Lugar, el nuevo Lugar no entra en juego."
@@ -74153,11 +74153,11 @@
     {
       "id": "keys_rule",
       "title": "Llaves",
-      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+      "text": "En este escenario, cada llave representa un objeto diferente. Puedes usar el botón \"Llaves\" más abajo para revelar su rol según entren en juego."
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "text": "Cada investigador obtiene una cantidad de experiencia igual al valor de Victoria X de cada carta que haya en la zona de victoria. Anota esta experiencia en la sección «Experiencia sin gastar» del registro de campaña, pero <b>no gastes nada aún</b>. Se te indicará que gastes esta experiencia posteriormente.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -74294,10 +74294,10 @@
     {
       "id": "ask_keys",
       "type": "input",
-      "text": "Which keys do you want to read the representation of:",
+      "text": "¿De qué Llave quieres conocer su representación?",
       "input": {
         "type": "checklist",
-        "text": "Read",
+        "text": "Leer",
         "choices": [
           {
             "id": "blue",
@@ -74329,7 +74329,7 @@
           },
           {
             "id": "purple",
-            "text": "Purple",
+            "text": "Morada",
             "steps": [
               "purple_key"
             ]
@@ -74558,7 +74558,7 @@
     },
     {
       "id": "spend_xp",
-      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
+      "text": "Tras recuperar un fragmento de tus recuerdos, los acontecimientos pasados se han vuelto más claros. En este momento, cada investigador puede gastar la experiencia anotada en la sección «Experiencia sin gastar» del registro de campaña.",
       "effects": [
         {
           "type": "earn_xp",

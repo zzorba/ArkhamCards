@@ -38912,7 +38912,7 @@
       "id": "alert_rule",
       "type": "rule_reminder",
       "title": "Alerte",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "text": "Chaque fois qu’un investigateur échoue à un test de compétence lorsqu’il tente d’échapper à un ennemi avec le mot-clé Alerte, après avoir appliqué tous les résultats du test de compétence, cet ennemi effectue une attaque contre l’investigateur ayant tenté de s’échapper. Un ennemi ne s’incline pas après avoir effectué une attaque consécutive au mot-clé Alerte. Cette attaque a lieu que l’ennemi soit engagé ou non avec l’investigateur qui tente de lui échapper."
     },
     {
       "id": "lousy_with_cats_rule",
@@ -42454,7 +42454,7 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# a été Prise par l'Abîme",
+                "masculine_text": "#name# a été Pris par l'Abîme",
                 "feminine_text": "#name# a été Prise par l'Abîme"
               }
             ]
@@ -42479,7 +42479,7 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# a été Prise par l'Abîme",
+                "masculine_text": "#name# a été Pris par l'Abîme",
                 "feminine_text": "#name# a été Prise par l'Abîme"
               }
             ]
@@ -51531,7 +51531,7 @@
       "id": "alert",
       "type": "rule_reminder",
       "title": "Alerte",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "text": "Chaque fois qu’un investigateur échoue à un test de compétence lorsqu’il tente d’échapper à un ennemi avec le mot-clé Alerte, après avoir appliqué tous les résultats du test de compétence, cet ennemi effectue une attaque contre l’investigateur ayant tenté de s’échapper. Un ennemi ne s’incline pas après avoir effectué une attaque consécutive au mot-clé Alerte. Cette attaque a lieu que l’ennemi soit engagé ou non avec l’investigateur qui tente de lui échapper."
     },
     {
       "id": "story",
