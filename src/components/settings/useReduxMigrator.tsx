@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { AppState } from '@reducers';
 import { migrateRedux } from './actions';
-
-const CURRENT_VERSION = 1;
+import { CURRENT_REDUX_VERSION } from '@reducers/settings';
 
 export default function useReduxMigrator(): [boolean, boolean, () => void] {
   const [migrating, setMigrating] = useState(false);
@@ -14,5 +13,5 @@ export default function useReduxMigrator(): [boolean, boolean, () => void] {
     setMigrating(true);
     dispatch(migrateRedux());
   }, [setMigrating, dispatch]);
-  return [version < CURRENT_VERSION, migrating, doMigrate];
+  return [version < CURRENT_REDUX_VERSION, migrating, doMigrate];
 }

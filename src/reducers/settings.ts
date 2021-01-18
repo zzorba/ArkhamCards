@@ -27,6 +27,7 @@ interface SettingsState {
 
   version?: number;
 }
+export const CURRENT_REDUX_VERSION = 1;
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
   tabooId: undefined,
@@ -34,7 +35,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   alphabetizeEncounterSets: false,
   lang: 'system',
   fontScale: undefined,
-  version: 2,
+  version: CURRENT_REDUX_VERSION,
 };
 
 type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetSingleCardViewAction | SetAlphabetizeEncounterSetsAction | CardFetchSuccessAction | SetThemeAction | SetFontScaleAction | ReduxMigrationAction;
