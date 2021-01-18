@@ -7,7 +7,7 @@ import { createMigrate, persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import reducers, { AppState } from '@reducers';
-import { DeckId, LegacyCampaign, ChaosBagResults, LegacyDeck } from '@actions/types';
+import { DeckId, LegacyCampaign, ChaosBagResults, LegacyDeck, LegacyCampaignGuideState } from '@actions/types';
 import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
 // import Reactotron from './ReactotronConfig';
 
@@ -67,7 +67,7 @@ export default function configureStore(initialState: AppState) {
       if (state.guides && state.guides.all) {
         newState.guides = {
           ...state.guides,
-          all: migrateGuides(state.guides.all, campaignMapping, deckMap),
+          all: migrateGuides(state.guides.all as { [id: string]: LegacyCampaignGuideState | undefined }, campaignMapping, deckMap),
         };
       }
     }
@@ -81,6 +81,9 @@ export default function configureStore(initialState: AppState) {
         delete newState.weaknesses;
       }
       return newState;
+    },
+    1: (state: any) => {
+      return migrateV1(state) as any;
     },
   };
 

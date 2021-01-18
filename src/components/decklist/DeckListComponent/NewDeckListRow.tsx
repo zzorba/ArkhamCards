@@ -13,7 +13,7 @@ import {
   Fade,
 } from 'rn-placeholder';
 
-import { Campaign, Deck } from '@actions/types';
+import { Campaign, Deck, getDeckId } from '@actions/types';
 import Card from '@data/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { getProblemMessage } from '@components/core/DeckProblemRow';
@@ -34,7 +34,7 @@ interface Props {
   lang: string;
   deck: Deck;
   previousDeck?: Deck;
-  deckToCampaign?: { [deck_id: number]: Campaign };
+  deckToCampaign?: { [deck_id: string]: Campaign };
   investigator?: Card;
   onPress?: (deck: Deck, investigator?: Card) => void;
   details?: ReactNode;
@@ -172,7 +172,7 @@ export default function NewDeckListRow({
   }, [deck, investigator, onPress]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
   const yithian = useMemo(() => (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.slots]);
-  const campaign = deck && deckToCampaign && deckToCampaign[deck.id];
+  const campaign = deck && deckToCampaign && deckToCampaign[getDeckId(deck).uuid];
   const eliminated = useMemo(() => {
     if (killedOrInsane) {
       return true;
@@ -180,9 +180,9 @@ export default function NewDeckListRow({
     if (!investigator) {
       return false;
     }
-    const traumaData = campaign && campaign.investigatorData[deck.id];
+    const traumaData = campaign && campaign.investigatorData[investigator.code];
     return investigator.eliminated(traumaData);
-  }, [killedOrInsane, investigator, campaign, deck]);
+  }, [killedOrInsane, investigator, campaign]);
 
   const contents = useMemo(() => {
     const faction = investigator?.factionCode();

@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -30,7 +30,6 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 function MyCampaignsView({ componentId }: NavigationProps) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const [search, setSearch] = useState('');
-  const dispatch = useDispatch();
   const { lang } = useContext(LanguageContext);
   const standalonesById = useMemo(() => {
     const scenarios = getStandaloneScenarios(lang);

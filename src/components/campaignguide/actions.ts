@@ -28,12 +28,11 @@ import database from '@react-native-firebase/database';
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 
 export function refreshCampaigns(userId: string): ThunkAction<void, AppState, null, Action> {
-  return async(dispatch, getState) => {
+  return async() => {
     const campaignIds: string[] = keys((await database().ref('/user_campaigns').child(userId).child('campaigns').once('value')).val());
     Promise.all(map(campaignIds, campaignId => {
       return database().ref('/campaigns').child(campaignId).once('value');
     }));
-    const state = getState();
   };
 }
 

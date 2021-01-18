@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { find, filter, flatMap, forEach, keys, map, max, last, sortBy, uniq, values, reverse } from 'lodash';
+import { find, filter, flatMap, forEach, map, last, sortBy, uniq, values, reverse } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -31,6 +31,7 @@ import {
   EditDeckState,
   DeckId,
   getDeckId,
+  LocalDeck,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { ChaosBag } from '@app_constants';
@@ -141,7 +142,7 @@ export const getBackupData = createSelector(
     return {
       version: 1,
       campaigns: values(campaigns || {}),
-      decks: filter(values(decks), deck => !!deck.local),
+      decks: filter(values(decks), deck => !!deck.local) as LocalDeck[],
       guides: flatMap(values(guides || {}), x => x || []),
     };
   }
@@ -441,13 +442,6 @@ function processCampaign(campaign: Campaign): SingleCampaign {
     finishedScenarios,
   };
 }
-
-export const getNextCampaignId = createSelector(
-  (state: AppState) => state.campaigns.all,
-  (all): number => {
-    return 1 + (max(map(keys(all), id => parseInt(id, 10))) || 0);
-  }
-);
 
 export const makeCampaignSelector = () =>
   createSelector(

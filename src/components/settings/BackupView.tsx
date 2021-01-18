@@ -19,12 +19,12 @@ import { t } from 'ttag';
 import utf8 from 'utf8';
 
 import { MergeBackupProps } from './MergeBackupView';
-import { Campaign } from '@actions/types';
+import { BackupState, Campaign, LegacyBackupState, LegacyCampaign } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { getBackupData } from '@reducers';
 import SettingsItem from './SettingsItem';
 import { ensureUuid } from './actions';
-import { campaignFromJson } from './MergeBackupView/backupHelper';
+import { campaignFromJson } from '@components/settings/MergeBackupView/backupHelper';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
 
@@ -101,17 +101,25 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
       forEach(values(json.campaigns), campaign => {
         campaigns.push(campaignFromJson(campaign));
       });
+
+      const backupData: BackupState | LegacyBackupState = json.version && json.version === 1 ? {
+        version: 1,
+        guides: json.guides,
+        decks: json.decks,
+        campaigns: json.campaigns,
+      } : {
+        version: undefined,
+        guides: json.guides,
+        decks: values(json.decks),
+        campaigns: campaigns as LegacyCampaign[],
+        deckIds: json.deckIds,
+        campaignIds: json.campaignIds,
+      };
       Navigation.push<MergeBackupProps>(componentId, {
         component: {
           name: 'Settings.MergeBackup',
           passProps: {
-            backupData: {
-              guides: json.guides,
-              decks: values(json.decks),
-              campaigns,
-              deckIds: json.deckIds,
-              campaignIds: json.campaignIds,
-            },
+            backupData,
           },
         },
       });

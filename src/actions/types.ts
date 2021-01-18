@@ -110,7 +110,7 @@ export interface ArkhamDbDeck extends BaseDeck {
   uuid: undefined;
 }
 
-interface LocalDeck extends BaseDeck {
+export interface LocalDeck extends BaseDeck {
   local: true;
   uuid: string;
 }
@@ -317,7 +317,7 @@ export interface LegacyBackupState {
 export interface BackupState {
   version: 1;
   campaigns: Campaign[];
-  decks: Deck[];
+  decks: LocalDeck[];
   guides: CampaignGuideState[];
 }
 

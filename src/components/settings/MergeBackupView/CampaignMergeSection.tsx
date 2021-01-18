@@ -29,10 +29,10 @@ export default function CampaignMergeSection({ title, campaigns, values, inverte
       <>
         { map(campaigns, campaign => (
           <CampaignMergeItem
-            key={campaign.uuid || campaign.id}
+            key={campaign.uuid}
             campaign={campaign}
             inverted={!!inverted}
-            value={!!values[campaign.id]}
+            value={!!values[campaign.uuid]}
             onValueChange={onValueChange}
           />
         )) }
@@ -43,9 +43,9 @@ export default function CampaignMergeSection({ title, campaigns, values, inverte
   const headerSection = useMemo(() => {
     const selected = sumBy(campaigns, campaign => {
       if (inverted) {
-        return values[campaign.id] ? 0 : 1;
+        return values[campaign.uuid] ? 0 : 1;
       }
-      return values[campaign.id] ? 1 : 0;
+      return values[campaign.uuid] ? 1 : 0;
     });
     return (
       <View style={[styles.headerRow, { backgroundColor: colors.L10 }, borderStyle, space.paddingS, space.paddingLeftM]}>

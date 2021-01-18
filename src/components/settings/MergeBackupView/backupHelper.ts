@@ -1,7 +1,7 @@
 import { find, forEach } from 'lodash';
 
-import { Deck, DecksMap, Campaign } from '@actions/types';
-import { getNextLocalDeckId, getNextCampaignId, AppState } from '@reducers';
+import { Deck, DecksMap, Campaign, LocalDeck } from '@actions/types';
+import { AppState } from '@reducers';
 
 enum CloudMergeStatus {
   NEW = 'new',
@@ -12,23 +12,21 @@ enum CloudMergeStatus {
 
 interface CloudMergeResult {
   status: CloudMergeStatus;
-  cloudId: number;
-  localId: number;
+  cloudId: string;
 }
 
 export function campaignFromJson(json: any) {
   return json;
 }
 
-function mergeLocalDeck(cloudDeck: Deck, decks: DecksMap, nextLocalDeckId: number): CloudMergeResult {
+function mergeLocalDeck(cloudDeck: LocalDeck, decks: DecksMap): CloudMergeResult {
   const localDeck = find(decks, deck => {
     return !!(deck.local && deck.uuid && deck.uuid === cloudDeck.uuid);
   });
   if (!localDeck) {
     return {
       status: CloudMergeStatus.NEW,
-      cloudId: cloudDeck.id,
-      localId: nextLocalDeckId,
+      cloudId: cloudDeck.uuid,
     };
   }
   const cloudUpdated = Date.parse(cloudDeck.date_update);
@@ -36,15 +34,13 @@ function mergeLocalDeck(cloudDeck: Deck, decks: DecksMap, nextLocalDeckId: numbe
   if (cloudUpdated === localUpdated) {
     return {
       status: CloudMergeStatus.NO_CHANGE,
-      cloudId: cloudDeck.id,
-      localId: localDeck.id,
+      cloudId: cloudDeck.uuid,
     };
   }
   const stale = (cloudUpdated < localUpdated);
   return {
     status: stale ? CloudMergeStatus.STALE : CloudMergeStatus.UPDATE,
-    cloudId: cloudDeck.id,
-    localId: localDeck.id,
+    cloudId: cloudDeck.uuid,
   };
 }
 
@@ -59,23 +55,13 @@ export interface DeckMergeResult {
   scenarioCount: {
     [key: string]: number;
   };
-
-  localRemapping: {
-    // Map json-id to local-id.
-    [key: number]: number;
-  };
 }
 
-export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult {
-  let nextLocalDeckId = getNextLocalDeckId(state);
-  const localRemapping: { [key: number]: number } = {};
+export function mergeDecks(cloudDecks: LocalDeck[], state: AppState): DeckMergeResult {
   const deckStatus: { [id: string]: CloudMergeStatus } = {};
   forEach(cloudDecks, cloudDeck => {
-    const { status, cloudId, localId } = mergeLocalDeck(cloudDeck, state.decks.all, nextLocalDeckId);
-    nextLocalDeckId = Math.min(localId - 1, nextLocalDeckId);
-    localRemapping[cloudId] = localId;
-
-    deckStatus[cloudDeck.id] = status;
+    const { status, cloudId } = mergeLocalDeck(cloudDeck, state.decks.all);
+    deckStatus[cloudId] = status;
   });
 
 
@@ -86,9 +72,9 @@ export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult
   const upgradeDecks: DecksMap = {};
   const scenarioCount: { [key: string]: number } = {};
   forEach(cloudDecks, deck => {
-    if (deck.previous_deck) {
+    if (deck.previousDeckId) {
       // Part of an upgrade chain, and not the latest.
-      upgradeDecks[deck.id] = deck;
+      upgradeDecks[deck.previousDeckId.uuid] = deck;
       return;
     }
     let hasUpdate = false;
@@ -98,7 +84,7 @@ export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult
     let count = 0;
     do {
       count++;
-      switch (deckStatus[currentDeck.id]) {
+      switch (deckStatus[currentDeck.uuid]) {
         case CloudMergeStatus.NEW:
           hasNew = true;
           break;
@@ -111,11 +97,11 @@ export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult
           hasStale = true;
           break;
       }
-      if (!currentDeck.next_deck) {
-        scenarioCount[deck.id] = count;
+      if (!currentDeck.nextDeckId) {
+        scenarioCount[deck.uuid] = count;
         break;
       }
-      currentDeck = find(cloudDecks, d => !!currentDeck && d.id === currentDeck.next_deck);
+      currentDeck = find(cloudDecks, d => !!currentDeck && d.uuid === currentDeck.nextDeckId?.uuid);
     } while (currentDeck);
     if (hasNew) {
       newDecks.push(deck);
@@ -133,7 +119,6 @@ export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult
     staleDecks,
     sameDecks,
     upgradeDecks,
-    localRemapping,
     scenarioCount,
   };
 }
@@ -145,15 +130,14 @@ function lastUpdated(campaign: Campaign): Date {
   return campaign.lastUpdated;
 }
 
-function mergeLocalCampaign(cloudCampaign: Campaign, campaigns: { [key: number]: Campaign }, nextLocalCampaignId: number): CloudMergeResult {
+function mergeLocalCampaign(cloudCampaign: Campaign, campaigns: { [key: number]: Campaign }): CloudMergeResult {
   const localCampaign = find(campaigns, campaign => {
     return !!campaign.uuid && campaign.uuid === cloudCampaign.uuid;
   });
   if (!localCampaign) {
     return {
       status: CloudMergeStatus.NEW,
-      localId: nextLocalCampaignId,
-      cloudId: cloudCampaign.id,
+      cloudId: cloudCampaign.uuid,
     };
   }
   const cloudTime = lastUpdated(cloudCampaign);
@@ -161,16 +145,14 @@ function mergeLocalCampaign(cloudCampaign: Campaign, campaigns: { [key: number]:
   if (cloudTime.getTime() === localTime.getTime()) {
     return {
       status: CloudMergeStatus.NO_CHANGE,
-      localId: localCampaign.id,
-      cloudId: cloudCampaign.id,
+      cloudId: cloudCampaign.uuid,
     };
   }
 
   const stale = (cloudTime.getTime() < localTime.getTime());
   return {
     status: stale ? CloudMergeStatus.STALE : CloudMergeStatus.UPDATE,
-    localId: localCampaign.id,
-    cloudId: cloudCampaign.id,
+    cloudId: cloudCampaign.uuid,
   };
 }
 
@@ -180,24 +162,15 @@ export interface CampaignMergeResult {
   updatedCampaigns: Campaign[];
   staleCampaigns: Campaign[];
   sameCampaigns: Campaign[];
-
-  localRemapping: {
-    // Map json-id to local-id.
-    [key: number]: number;
-  };
 }
 
 export function mergeCampaigns(cloudCampaigns: Campaign[], state: AppState): CampaignMergeResult {
-  let nextCampaignId = getNextCampaignId(state);
-  const localRemapping: { [key: number]: number } = {};
   const newCampaigns: Campaign[] = [];
   const updatedCampaigns: Campaign[] = [];
   const staleCampaigns: Campaign[] = [];
   const sameCampaigns: Campaign[] = [];
   forEach(cloudCampaigns, cloudCampaign => {
-    const { status, cloudId, localId } = mergeLocalCampaign(cloudCampaign, state.campaigns.all, nextCampaignId);
-    nextCampaignId = Math.max(localId + 1, nextCampaignId);
-    localRemapping[cloudId] = localId;
+    const { status } = mergeLocalCampaign(cloudCampaign, state.campaigns.all);
     switch (status) {
       case CloudMergeStatus.NEW:
         newCampaigns.push({ ...cloudCampaign });
@@ -217,7 +190,6 @@ export function mergeCampaigns(cloudCampaigns: Campaign[], state: AppState): Cam
     newCampaigns,
     updatedCampaigns,
     staleCampaigns,
-    localRemapping,
     sameCampaigns,
   };
 }

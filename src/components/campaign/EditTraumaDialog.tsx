@@ -6,7 +6,6 @@ import { t } from 'ttag';
 import { Trauma } from '@actions/types';
 import Card from '@data/Card';
 import DeckButton from '@components/deck/controls/DeckButton';
-import { onChange } from 'react-native-reanimated';
 
 interface Props {
   visible: boolean;

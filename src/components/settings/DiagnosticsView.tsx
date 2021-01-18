@@ -2,7 +2,6 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { forEach } from 'lodash';
 import {
   Alert,
-  InteractionManager,
   Keyboard,
   SafeAreaView,
   ScrollView,
@@ -22,7 +21,6 @@ import DatabaseContext from '@data/DatabaseContext';
 import Card from '@data/Card';
 import { getBackupData, getAllPacks, getLangChoice } from '@reducers';
 import { fetchCards } from '@components/card/actions';
-import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';

@@ -7,7 +7,7 @@ import Database from '@data/Database';
 import useDbData from '@components/core/useDbData';
 import { AppState } from '@reducers';
 import { usePickerDialog } from '../dialogs';
-import { utcFormat} from '@lib/datetime';
+import { utcFormat } from '@lib/datetime';
 import DeckPickerStyleButton from './DeckPickerStyleButton';
 
 interface Props {
