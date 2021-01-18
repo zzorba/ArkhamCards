@@ -2,7 +2,6 @@ import { map, omit } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
-  RESTORE_BACKUP,
   NEW_CAMPAIGN,
   NEW_LINKED_CAMPAIGN,
   DELETE_CAMPAIGN,
@@ -37,7 +36,6 @@ import {
   UpdateCampaignSpentXpAction,
   UpdateChaosBagResultsAction,
   DeleteCampaignAction,
-  RestoreBackupAction,
   AdjustBlessCurseAction,
   ADJUST_BLESS_CURSE,
   StandaloneId,
@@ -68,36 +66,16 @@ function getBaseDeckIds(
   });
 }
 
-export function restoreBackup(
-  campaigns: Campaign[],
-  guides: { [id: string]: CampaignGuideState },
-  decks: Deck[]
-): RestoreBackupAction {
-  return {
-    type: RESTORE_BACKUP,
-    campaigns,
-    guides,
-    decks,
-  };
-}
-
-
 export function restoreComplexBackup(
   campaigns: Campaign[],
-  guides: { [id: string]: CampaignGuideState },
-  campaignRemapping: { [id: string]: number },
+  guides: CampaignGuideState[],
   decks: Deck[],
-  deckRemapping: { [id: string]: number },
-  deckIds: { [id: string]: DeckId },
 ): RestoreComplexBackupAction {
   return {
     type: RESTORE_COMPLEX_BACKUP,
     campaigns,
     guides,
     decks,
-    deckRemapping,
-    campaignRemapping,
-    deckIds,
   };
 }
 
@@ -351,7 +329,6 @@ export function editScenarioResult(
 }
 
 export default {
-  restoreBackup,
   newCampaign,
   updateCampaign,
   deleteCampaign,

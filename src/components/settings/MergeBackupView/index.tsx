@@ -13,8 +13,8 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import CampaignMergeSection from './CampaignMergeSection';
 import DeckMergeSection from './DeckMergeSection';
-import { Campaign, CampaignGuideState, Deck, BackupState } from '@actions/types';
-import { AppState } from '@reducers';
+import { Campaign, CampaignGuideState, Deck, BackupState, LegacyBackupState, getDeckId } from '@actions/types';
+import { AppState, getAllDecks } from '@reducers';
 import { mergeCampaigns, mergeDecks } from './backupHelper';
 import { restoreComplexBackup } from '@components/campaign/actions';
 import COLORS from '@styles/colors';
@@ -22,28 +22,45 @@ import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { useInvestigatorCards, useToggles } from '@components/core/hooks';
+import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
 
 export interface MergeBackupProps {
-  backupData: BackupState;
+  backupData: BackupState | LegacyBackupState;
 }
 
 type Props = MergeBackupProps & NavigationProps;
 
-interface State {
-  importCampaigns: {
-    [key: string]: boolean;
-  };
-  importDecks: {
-    [key: string]: boolean;
-  };
-}
-
 function MergeBackupView({ backupData, componentId }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
+  const decks = useSelector(getAllDecks);
+  const migratedBackupData = useMemo(() => {
+    if (backupData.version === 1) {
+      // Already migrated.
+      return backupData;
+    }
+    const [updatedDecks, deckMap] = migrateDecks(backupData.decks);
+    const allDecks = {
+      ...decks,
+      ...updatedDecks,
+    };
+    forEach(decks, deck => {
+      if (!deck.local) {
+        deckMap[deck.id] = getDeckId(deck);
+      }
+    });
+    const [updatedCampaigns, campaignMap] = migrateCampaigns(backupData.campaigns, deckMap, allDecks);
+    const updatedGuides = migrateGuides(backupData.guides, campaignMap, deckMap);
+    return {
+      version: 1,
+      guides: updatedGuides,
+      decks: updatedDecks,
+      campaigns: updatedCampaigns,
+    };
+  }, [backupData, decks]);
   const dispatch = useDispatch();
-  const campaignMergeSelector = useCallback((state: AppState) => mergeCampaigns(backupData.campaigns, state), [backupData.campaigns]);
+  const campaignMergeSelector = useCallback((state: AppState) => mergeCampaigns(migratedBackupData.campaigns, state), [migratedBackupData.campaigns]);
   const campaignMerge = useSelector(campaignMergeSelector);
-  const deckMergeSelector = useCallback((state: AppState) => mergeDecks(backupData.decks, state), [backupData.decks]);
+  const deckMergeSelector = useCallback((state: AppState) => mergeDecks(migratedBackupData.decks, state), [migratedBackupData.decks]);
   const deckMerge = useSelector(deckMergeSelector);
   const [importCampaigns,, setImportCampaigns] = useToggles({});
   const [importDecks,, setImportDecks] = useToggles({});

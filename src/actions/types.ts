@@ -305,21 +305,20 @@ export interface ScenarioResult {
   interlude?: boolean;
 }
 
-export interface BackupState {
-  version: 1;
-  campaigns: Campaign[];
-  decks: Deck[];
-  guides: { [id: string]: CampaignGuideState };
+export interface LegacyBackupState {
+  version: undefined;
+  campaigns: LegacyCampaign[];
+  decks: LegacyDeck[];
+  guides: { [id: string]: LegacyCampaignGuideState };
   deckIds: { [id: string]: string };
   campaignIds: { [id: string]: string };
 }
 
-export interface LegacyBackupState {
-  campaigns: LegacyCampaign[];
+export interface BackupState {
+  version: 1;
+  campaigns: Campaign[];
   decks: Deck[];
-  guides: { [id: string]: CampaignGuideState };
-  deckIds: { [id: string]: string };
-  campaignIds: { [id: string]: string };
+  guides: CampaignGuideState[];
 }
 
 export enum CampaignDifficulty {
@@ -742,34 +741,13 @@ export interface NewLinkedCampaignAction {
   cycleCodeB: CampaignCycleCode;
   guided: true;
 }
-export const RESTORE_BACKUP = 'RESTORE_BACKUP';
-export interface RestoreBackupAction {
-  type: typeof RESTORE_BACKUP;
-  campaigns: Campaign[];
-  decks: Deck[];
-  guides: {
-    [id: string]: CampaignGuideState;
-  };
-}
-
 
 export const RESTORE_COMPLEX_BACKUP = 'RESTORE_COMPLEX_BACKUP';
 export interface RestoreComplexBackupAction {
   type: typeof RESTORE_COMPLEX_BACKUP;
   campaigns: Campaign[];
   decks: Deck[];
-  guides: {
-    [id: string]: CampaignGuideState;
-  };
-  deckRemapping: {
-    [key: string]: number;
-  };
-  deckIds: {
-    [key: string]: DeckId;
-  }
-  campaignRemapping: {
-    [key: string]: number;
-  };
+  guides: CampaignGuideState[];
 }
 
 export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
@@ -1109,16 +1087,18 @@ export interface GuideCountAchievement {
 }
 type GuideAchievement = GuideBinaryAchievement | GuideCountAchievement;
 
-export interface CampaignGuideState {
+interface BaseCampaignGuideState {
   inputs: GuideInput[];
   undo?: string[];
   achievements?: GuideAchievement[];
   lastUpdated?: Date;
 }
-
-export const DEFAULT_CAMPAIGN_GUIDE_STATE: CampaignGuideState = {
-  inputs: [],
-};
+export interface CampaignGuideState extends BaseCampaignGuideState {
+  uuid: string;
+}
+export interface LegacyCampaignGuideState extends BaseCampaignGuideState {
+  uuid: undefined;
+}
 
 export const ENSURE_UUID = 'ENSURE_UUID';
 export interface EnsureUuidAction {
@@ -1169,7 +1149,6 @@ export type SignInActions =
 export type DecksActions =
   ArkhamDbLogoutAction |
   RestoreComplexBackupAction |
-  RestoreBackupAction |
   MyDecksStartRefreshAction |
   MyDecksCacheHitAction |
   MyDecksErrorAction |
@@ -1206,7 +1185,6 @@ export type CampaignActions =
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |
   EditCampaignScenarioResultAction |
-  RestoreBackupAction |
   UpdateChaosBagResultsAction |
   CampaignAddInvestigatorAction |
   CampaignRemoveInvestigatorAction |
@@ -1216,7 +1194,6 @@ export type CampaignActions =
 export type GuideActions =
   DeleteCampaignAction |
   RestoreComplexBackupAction |
-  RestoreBackupAction |
   ArkhamDbLogoutAction |
   GuideSetInputAction |
   GuideUndoInputAction |

@@ -1,7 +1,6 @@
 import { find, forEach, findLastIndex, filter, map } from 'lodash';
 
 import {
-  RESTORE_BACKUP,
   DELETE_CAMPAIGN,
   GUIDE_SET_INPUT,
   GUIDE_UNDO_INPUT,
@@ -11,8 +10,6 @@ import {
   ARKHAMDB_LOGOUT,
   GuideActions,
   CampaignGuideState,
-  DEFAULT_CAMPAIGN_GUIDE_STATE,
-  NumberChoices,
   GuideInput,
   guideInputToId,
 } from '@actions/types';
@@ -34,7 +31,7 @@ function updateCampaign(
   now: Date,
   update: (campaign: CampaignGuideState) => CampaignGuideState
 ): GuidesState {
-  const campaign: CampaignGuideState = state.all[campaignId] || DEFAULT_CAMPAIGN_GUIDE_STATE;
+  const campaign: CampaignGuideState = state.all[campaignId] || { uuid: campaignId, inputs: [] };
   const updatedCampaign = update(campaign);
   updatedCampaign.lastUpdated = now;
   return {
@@ -57,6 +54,10 @@ export default function(
   }
   if (action.type === RESTORE_COMPLEX_BACKUP) {
     const all = { ...state.all };
+    forEach(action.guides, guide => {
+      all[guide.uuid] = guide;
+    });
+    /*
     forEach(action.guides, (guide, id) => {
       const remappedGuide = {
         ...guide,
@@ -85,23 +86,10 @@ export default function(
         }),
       };
       all[action.campaignRemapping[id]] = remappedGuide;
-    });
+    });*/
     return {
       ...state,
       all,
-    };
-  }
-  if (action.type === RESTORE_BACKUP) {
-    const newAll: { [id: string]: CampaignGuideState } = {};
-    forEach(action.guides, (guide, id) => {
-      if (guide) {
-        newAll[id] = {
-          inputs: guide.inputs || [],
-        };
-      }
-    });
-    return {
-      all: newAll,
     };
   }
   if (action.type === DELETE_CAMPAIGN) {
@@ -119,24 +107,24 @@ export default function(
       state,
       action.campaignId,
       action.now,
-      campaign => {
-        const achievements = campaign.achievements || [];
+      guide => {
+        const achievements = guide.achievements || [];
         switch (action.operation) {
           case 'clear':
             return {
-              ...campaign,
+              ...guide,
               achievements: filter(achievements, a => a.id !== action.id),
             };
           case 'set':
             return {
-              ...campaign,
+              ...guide,
               achievements: [...filter(achievements, a => a.id !== action.id), { id: action.id, type: 'binary', value: true }],
             };
           case 'inc': {
             const currentEntry = find(achievements, a => a.id === action.id);
             if (currentEntry && currentEntry.type === 'count') {
               return {
-                ...campaign,
+                ...guide,
                 achievements: map(achievements, a => {
                   if (a.id === action.id && a.type === 'count') {
                     return {
@@ -150,7 +138,7 @@ export default function(
               };
             }
             return {
-              ...campaign,
+              ...guide,
               achievements: [...achievements,
                 {
                   id: action.id,
@@ -164,7 +152,7 @@ export default function(
             const currentEntry = find(achievements, a => a.id === action.id);
             if (currentEntry && currentEntry.type === 'count') {
               return {
-                ...campaign,
+                ...guide,
                 achievements: map(achievements, a => {
                   if (a.id === action.id && a.type === 'count') {
                     return {
@@ -178,7 +166,7 @@ export default function(
               };
             }
             return {
-              ...campaign,
+              ...guide,
               achievements: [...achievements,
                 {
                   id: action.id,

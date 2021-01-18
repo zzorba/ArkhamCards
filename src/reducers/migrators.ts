@@ -1,7 +1,7 @@
 import { flatMap, map, forEach, omit } from 'lodash';
 import uuid from 'react-native-uuid';
 
-import { LegacyCampaign, Campaign, DeckId, Deck, getDeckId, CampaignGuideState, GuideInput, DecksMap, LegacyDeck } from '@actions/types';
+import { LegacyCampaign, Campaign, DeckId, Deck, getDeckId, CampaignGuideState, GuideInput, DecksMap, LegacyDeck, LegacyCampaignGuideState } from '@actions/types';
 
 export function migrateDecks(
   decks: LegacyDeck[]
@@ -104,7 +104,7 @@ export function migrateCampaigns(
 }
 
 export function migrateGuides(
-  guides: { [id: string]: CampaignGuideState | undefined },
+  guides: { [id: string]: LegacyCampaignGuideState | undefined },
   campaignMapping: { [id: string]: string },
   deckMap: { [numberId: number]: DeckId | undefined },
 ): { [id: string]: CampaignGuideState | undefined } {
@@ -124,8 +124,10 @@ export function migrateGuides(
         }
         return input;
       });
-      all[campaignMapping[id]] = {
+      const campaignId = campaignMapping[id];
+      all[campaignId] = {
         ...guide,
+        uuid: guide.uuid || campaignId,
         inputs,
       };
     }

@@ -132,18 +132,6 @@ export const getBackupData = createSelector(
   (state: AppState) => state.campaigns.all,
   (state: AppState) => state.guides.all,
   (decks, campaigns, guides): BackupState => {
-    const deckIds: { [id: string]: string } = {};
-    forEach(decks, deck => {
-      if (deck.local && deck.uuid) {
-        deckIds[deck.id] = deck.uuid;
-      }
-    });
-    const campaignIds: { [id: string]: string } = {};
-    forEach(campaigns, campaign => {
-      if (campaign.uuid) {
-        campaignIds[campaign.id] = campaign.uuid;
-      }
-    });
     const guidesState: { [id: string]: CampaignGuideState } = {};
     forEach(guides, (guide, id) => {
       if (guide) {
@@ -151,11 +139,10 @@ export const getBackupData = createSelector(
       }
     });
     return {
+      version: 1,
       campaigns: values(campaigns || {}),
       decks: filter(values(decks), deck => !!deck.local),
-      guides: guidesState,
-      deckIds,
-      campaignIds,
+      guides: flatMap(values(guides || {}), x => x || []),
     };
   }
 );
@@ -401,7 +388,7 @@ export const getMyDecksState: (state: AppState) => MyDecksState = createSelector
 );
 
 export const getEffectiveDeckId = (state: AppState, id: DeckId): DeckId => {
-  if (state.decks.replacedLocalIds && state.decks.replacedLocalIds[id.id]) {
+  if (state.decks.replacedLocalIds && state.decks.replacedLocalIds[id.uuid]) {
     return state.decks.replacedLocalIds[id.uuid];
   }
   return id;
@@ -576,16 +563,15 @@ export const getDefaultFilterState = createSelector(
   }
 );
 
-const DEFAULT_GUIDE_STATE: CampaignGuideState = {
-  inputs: [],
-};
-
 export const makeCampaignGuideStateSelector = () =>
   createSelector(
     (state: AppState) => state.guides?.all,
     (state: AppState, campaignUuid: string) => campaignUuid,
     (guideState: undefined | { [campaignId: string]: CampaignGuideState | undefined }, campaignUuid: string) => {
-      return (guideState && guideState[campaignUuid]) || DEFAULT_GUIDE_STATE;
+      return (guideState && guideState[campaignUuid]) || {
+        uuid: campaignUuid,
+        inputs: [],
+      };
     }
   );
 

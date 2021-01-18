@@ -16,7 +16,6 @@ import {
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
   EDIT_CAMPAIGN_SCENARIO_RESULT,
-  RESTORE_BACKUP,
   REPLACE_LOCAL_DECK,
   NEW_CHAOS_BAG_RESULTS,
   ENSURE_UUID,
@@ -28,7 +27,6 @@ import {
   ADJUST_BLESS_CURSE,
   NEW_STANDALONE,
   STANDALONE,
-  LegacyCampaign,
 } from '@actions/types';
 
 export interface CampaignsState {
@@ -84,6 +82,13 @@ export default function(
     const all = { ...state.all };
     const chaosBagResults = { ...state.chaosBagResults };
     forEach(action.campaigns, campaign => {
+      all[campaign.uuid] = campaign;
+      chaosBagResults[campaign.uuid] = {
+        drawnTokens: [],
+        sealedTokens: [],
+        totalDrawnTokens: 0,
+      };
+      /*
       const deprecatedCampaign = campaign as LegacyCampaign;
       const remappedCampaign: Campaign = {
         ...omit(campaign, ['baseDeckIds', 'deckIds', 'id']) as Campaign,
@@ -101,7 +106,7 @@ export default function(
         drawnTokens: [],
         sealedTokens: [],
         totalDrawnTokens: 0,
-      };
+      };*/
     });
     return {
       ...state,
@@ -137,16 +142,6 @@ export default function(
     return {
       ...state,
       all,
-    };
-  }
-  if (action.type === RESTORE_BACKUP) {
-    const all: { [id: string]: Campaign } = {};
-    forEach(action.campaigns, campaign => {
-      all[campaign.uuid] = campaign;
-    });
-    return {
-      all,
-      chaosBagResults: {},
     };
   }
   if (action.type === DELETE_CAMPAIGN) {

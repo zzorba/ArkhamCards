@@ -1,9 +1,8 @@
-import { forEach, omit, find } from 'lodash';
+import { forEach, omit } from 'lodash';
 import uuid from 'react-native-uuid';
 
 import {
   ARKHAMDB_LOGOUT,
-  RESTORE_BACKUP,
   MY_DECKS_START_REFRESH,
   MY_DECKS_CACHE_HIT,
   MY_DECKS_ERROR,
@@ -21,7 +20,6 @@ import {
   UpdateDeckAction,
   Deck,
   DecksMap,
-  ArkhamDbApiDeck,
   getDeckId,
   DeckId,
 } from '@actions/types';
@@ -69,6 +67,8 @@ export default function(
   if (action.type === RESTORE_COMPLEX_BACKUP) {
     const all: DecksMap = { ...state.all };
     forEach(action.decks, deck => {
+      all[getDeckId(deck).uuid] = deck;
+      /*
       const remappedDeck: Deck = { ...omit(deck, ['previous_deck', 'next_deck']) as Deck };
       if (action.deckRemapping[deck.id]) {
         remappedDeck.id = action.deckRemapping[deck.id];
@@ -117,7 +117,7 @@ export default function(
       } else if (deck.nextDeckId && deck.nextDeckId.local && action.deckRemapping[deck.nextDeckId.id]) {
         deck.nextDeckId.id = action.deckRemapping[deck.nextDeckId.id];
       }
-      all[getDeckId(remappedDeck).uuid] = remappedDeck;
+      all[getDeckId(remappedDeck).uuid] = remappedDeck;*/
     });
     return {
       ...state,
@@ -152,24 +152,6 @@ export default function(
     return {
       ...DEFAULT_DECK_STATE,
       all,
-    };
-  }
-  if (action.type === RESTORE_BACKUP) {
-    const all: DecksMap = {};
-    forEach(state.all, (deck, id: string) => {
-      if (deck && !deck.local) {
-        all[id] = deck;
-      }
-    });
-    forEach(action.decks, deck => {
-      if (deck) {
-        all[getDeckId(deck).uuid] = deck;
-      }
-    });
-    return {
-      ...DEFAULT_DECK_STATE,
-      all,
-      replacedLocalIds: {},
     };
   }
   if (action.type === MY_DECKS_START_REFRESH) {
@@ -264,7 +246,7 @@ export default function(
   }
   if (action.type === UPDATE_DECK) {
     const deck = updateDeck(state, action);
-    const diff = deepDiff(state.all[action.deck.id] || {}, deck);
+    const diff = deepDiff(state.all[action.id.uuid] || {}, deck);
     if (!diff || !diff.length) {
       return state;
     }
