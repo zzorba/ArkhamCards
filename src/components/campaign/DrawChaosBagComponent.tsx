@@ -21,7 +21,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import { useChaosBagResults } from '@components/core/hooks';
 
 interface Props {
-  campaignId: number;
+  campaignId: string;
   chaosBag: ChaosBag;
 }
 

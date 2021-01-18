@@ -13,7 +13,7 @@ import SealTokenButton from './SealTokenButton';
 import { useChaosBagResults, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface SealTokenDialogProps {
-  campaignId: number;
+  campaignId: string;
   chaosBag: ChaosBag;
 }
 

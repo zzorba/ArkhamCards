@@ -27,7 +27,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { useCampaign, useCampaignLatestDeckIds, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
 
 export interface CampaignDrawWeaknessProps {
-  campaignId: number;
+  campaignId: string;
   deckSlots?: Slots;
   unsavedAssignedCards?: string[];
   saveWeakness?: (code: string, replaceRandomBasicWeakness: boolean) => void;

@@ -26,7 +26,7 @@ import { DeckId } from '@actions/types';
 
 export interface EditSpecialCardsProps {
   id: DeckId;
-  campaignId?: number;
+  campaignId?: string;
   assignedWeaknesses?: string[];
 }
 

@@ -2,7 +2,7 @@ import Config from 'react-native-config';
 import { flatMap, keys, map, omit } from 'lodash';
 
 import { getAccessToken } from './auth';
-import { Deck, DeckMeta, DeckProblemType, ArkhamDbApiDeck } from '@actions/types';
+import { Deck, DeckMeta, DeckProblemType, ArkhamDbApiDeck, ArkhamDbDeck } from '@actions/types';
 
 interface Params {
   [key: string]: string | number;
@@ -153,7 +153,7 @@ export function newCustomDeck(
 ) {
   return newDeck(investigator, name, tabooSetId)
     .then(deck => saveDeck(
-      deck.id,
+      (deck as ArkhamDbDeck).id,
       deck.name,
       slots,
       ignoreDeckLimitSlots,

@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { keys, map, filter, flatMap } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
@@ -38,14 +38,14 @@ import Card from '@data/Card';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 
 export interface CampaignDetailProps {
-  id: number;
+  id: string;
 }
 
 type Props = NavigationProps & CampaignDetailProps & InjectedDialogProps
 
 function ScenarioResultButton({ name, campaignId, componentId, status, index, onPress }: {
   name: string;
-  campaignId: number;
+  campaignId: string;
   componentId: string;
   status: 'completed' | 'playable';
   index: number;
@@ -246,11 +246,11 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
     });
 
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
-      campaignId: campaign.id,
+      campaignId: campaign.uuid,
       singleInvestigator: singleInvestigator.code,
       onDeckSelect: addDeck,
     } : {
-      campaignId: campaign.id,
+      campaignId: campaign.uuid,
       selectedInvestigatorIds: map(
         campaignInvestigators,
         investigator => investigator.code
@@ -355,7 +355,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
                     <ScenarioResultButton
                       key={idx}
                       componentId={componentId}
-                      campaignId={campaign.id}
+                      campaignId={campaign.uuid}
                       name={scenario.interlude ? scenario.scenario : `${scenario.scenario} (${scenario.resolution}, ${scenario.xp || 0} XP)`}
                       index={idx}
                       status="completed"
@@ -368,7 +368,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
                     <ScenarioResultButton
                       key={idx}
                       componentId={componentId}
-                      campaignId={campaign.id}
+                      campaignId={campaign.uuid}
                       name={scenario.name}
                       index={-1}
                       status="playable"

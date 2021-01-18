@@ -9,7 +9,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
-import { Campaign, Deck, DeckId, DecksMap, getDeckId, InvestigatorData, Trauma, TraumaAndCardData } from '@actions/types';
+import { Campaign, Deck, DeckId, DecksMap, getCampaignId, getDeckId, InvestigatorData, Trauma, TraumaAndCardData } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
 import space from '@styles/space';
@@ -113,7 +113,7 @@ export default function DecksSection({
         name: 'Deck.Upgrade',
         passProps: {
           id: getDeckId(deck),
-          campaignId: campaign.id,
+          campaignId: campaign.uuid,
           showNewDeck: false,
         },
         options: {
@@ -142,12 +142,7 @@ export default function DecksSection({
   const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
     showChooseDeck(investigator);
   }, [showChooseDeck]);
-  const campaignId = useMemo(() => {
-    return {
-      campaignId: campaign.id,
-      serverId: campaign.serverId,
-    };
-  }, [campaign.id, campaign.serverId]);
+  const campaignId = useMemo(() => getCampaignId(campaign), [campaign]);
   const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: Deck) => {
     const traumaAndCardData = campaign.investigatorData[investigator.code] || EMPTY_TRAUMA_DATA;
     return (

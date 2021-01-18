@@ -300,20 +300,12 @@ export default class CampaignStateHelper {
     return undefined;
   }
 
-  deckChoice(id: string, scenario?: string): DeckId | undefined {
-    const entry = this.entry('deck', id, scenario);
-    if (entry && entry.type === 'deck') {
-      return entry.deckId;
-    }
-    return undefined;
-  }
-
   numberChoices(id: string, scenario?: string): [NumberChoices | undefined, DeckId | undefined] {
     const entry = this.entry('choice_list', id, scenario);
     if (entry && entry.type === 'choice_list') {
       return [entry.choices, entry.deckId];
     }
-    return [undefined];
+    return [undefined, undefined];
   }
 
   stringChoices(id: string, scenario?: string): StringChoices | undefined {

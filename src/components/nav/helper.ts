@@ -99,7 +99,7 @@ export function getDeckOptions(
 }
 
 interface DeckModalOptions {
-  campaignId?: number;
+  campaignId?: string;
   hideCampaign?: boolean;
   upgrade?: boolean;
 }

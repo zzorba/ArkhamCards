@@ -148,7 +148,6 @@ export function removeInvestigator(
 }
 
 export function newLinkedCampaign(
-  id: number,
   name: string,
   cycleCode: CampaignCycleCode,
   cycleCodeA: CampaignCycleCode,
@@ -157,7 +156,6 @@ export function newLinkedCampaign(
 ): NewLinkedCampaignAction {
   return {
     type: NEW_LINKED_CAMPAIGN,
-    id,
     name,
     cycleCode,
     cycleCodeA,
@@ -169,7 +167,6 @@ export function newLinkedCampaign(
 }
 
 export function newStandalone(
-  id: number,
   name: string,
   standaloneId: StandaloneId,
   deckIds: DeckId[],
@@ -179,7 +176,6 @@ export function newStandalone(
   return (dispatch, getState: () => AppState) => {
     const action: NewStandaloneCampaignAction = {
       type: NEW_STANDALONE,
-      id,
       name: name,
       standaloneId,
       weaknessSet,
@@ -192,7 +188,6 @@ export function newStandalone(
 }
 
 export function newCampaign(
-  id: number,
   name: string,
   pack_code: CampaignCycleCode,
   difficulty: CampaignDifficulty | undefined,
@@ -206,7 +201,6 @@ export function newCampaign(
   return (dispatch, getState: () => AppState) => {
     const action: NewCampaignAction = {
       type: NEW_CAMPAIGN,
-      id,
       name: name,
       cycleCode: pack_code,
       difficulty,
@@ -223,7 +217,7 @@ export function newCampaign(
 }
 
 export function updateCampaignSpentXp(
-  id: number,
+  id: string,
   investigator: string,
   operation: 'inc' | 'dec'
 ): UpdateCampaignSpentXpAction {
@@ -268,7 +262,7 @@ export function updateCampaign(
 }
 
 export function updateChaosBagResults(
-  id: number,
+  id: string,
   chaosBagResults: ChaosBagResults
 ): ThunkAction<void, AppState, null, UpdateChaosBagResultsAction> {
   return (dispatch) => {
@@ -282,7 +276,7 @@ export function updateChaosBagResults(
 }
 
 export function adjustBlessCurseChaosBagResults(
-  id: number,
+  id: string,
   type: 'bless' | 'curse',
   direction: 'inc' | 'dec'
 ): ThunkAction<void, AppState, null, AdjustBlessCurseAction> {
@@ -300,19 +294,19 @@ export function adjustBlessCurseChaosBagResults(
 
 export function removeLocalCampaign(campaign: Campaign): ThunkAction<void, AppState, null, DeleteCampaignAction> {
   return (dispatch) => {
-    if (campaign && campaign.link) {
+    if (campaign && campaign.linkUuid) {
       dispatch({
         type: DELETE_CAMPAIGN,
-        id: campaign.link.campaignIdA,
+        id: campaign.linkUuid.campaignIdA,
       });
       dispatch({
         type: DELETE_CAMPAIGN,
-        id: campaign.link.campaignIdB,
+        id: campaign.linkUuid.campaignIdB,
       });
     }
     dispatch({
       type: DELETE_CAMPAIGN,
-      id: campaign.id,
+      id: campaign.uuid,
     });
   };
 }
@@ -329,7 +323,7 @@ export function deleteCampaign(
 }
 
 export function addScenarioResult(
-  id: number,
+  id: string,
   scenarioResult: ScenarioResult,
   campaignNotes?: CampaignNotes
 ): AddCampaignScenarioResultAction {
@@ -343,7 +337,7 @@ export function addScenarioResult(
 }
 
 export function editScenarioResult(
-  id: number,
+  id: string,
   index: number,
   scenarioResult: ScenarioResult
 ): EditCampaignScenarioResultAction {

@@ -9,7 +9,7 @@ import { ProcessedScenario } from '@data/scenario';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: string;
   campaignGuide: CampaignGuide;
   scenario: ProcessedScenario;
   linked: boolean;

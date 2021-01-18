@@ -1,14 +1,13 @@
-import { filter, flatMap, forEach, omit, values } from 'lodash';
+import { filter, forEach, values } from 'lodash';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createOffline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import { createMigrate, persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import uuid from 'react-native-uuid';
 
 import reducers, { AppState } from '@reducers';
-import { Campaign, Deck, DeckId, DecksMap, DeprecatedCampaign, getDeckId, ChaosBagResults, CampaignGuideState } from '@actions/types';
+import { DeckId, LegacyCampaign, ChaosBagResults, LegacyDeck } from '@actions/types';
 import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
 // import Reactotron from './ReactotronConfig';
 
@@ -39,7 +38,7 @@ export default function configureStore(initialState: AppState) {
 
     let deckMap: { [key: string]: DeckId | undefined} = {};
     if (state.decks && state.decks.all) {
-      const [all, newDeckMap] = migrateDecks(values(state.decks.all));
+      const [all, newDeckMap] = migrateDecks(values(state.decks.all) as LegacyDeck[]);
       deckMap = newDeckMap;
       newState.decks = {
         ...state.decks,
@@ -49,7 +48,7 @@ export default function configureStore(initialState: AppState) {
     }
     if (state.campaigns && state.campaigns.all) {
       const [all, campaignMapping] = migrateCampaigns(
-        values(state.campaigns.all) as DeprecatedCampaign[],
+        values(state.campaigns.all) as LegacyCampaign[],
         deckMap,
         newState.decks.all,
       );

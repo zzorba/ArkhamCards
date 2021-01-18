@@ -49,11 +49,17 @@ export interface DeckMeta {
   alternate_back?: string;
 }
 
-export interface DeckId {
-  id: number;
-  local: boolean;
+export interface LocalDeckId {
+  id: undefined;
+  local: true;
   uuid: string;
 }
+export interface ArkhamDbDeckId {
+  id: number;
+  local: false;
+  uuid: string;
+}
+export type DeckId = LocalDeckId | ArkhamDbDeckId;
 
 export interface ArkhamDbApiDeck {
   id: number;
@@ -78,7 +84,6 @@ export interface ArkhamDbApiDeck {
 }
 
 interface BaseDeck {
-  id: number;
   name: string;
   description_md?: string;
   taboo_id?: number;
@@ -99,7 +104,8 @@ interface BaseDeck {
   previousDeckId?: DeckId;
 }
 
-interface ArkhamDbDeck extends BaseDeck {
+export interface ArkhamDbDeck extends BaseDeck {
+  id: number;
   local: undefined;
   uuid: undefined;
 }
@@ -112,7 +118,7 @@ interface LocalDeck extends BaseDeck {
 export function getDeckId(deck: Deck): DeckId {
   if (deck.local) {
     return {
-      id: deck.id,
+      id: undefined,
       local: true,
       uuid: deck.uuid,
     };
@@ -125,6 +131,12 @@ export function getDeckId(deck: Deck): DeckId {
 }
 
 export type Deck = ArkhamDbDeck | LocalDeck;
+
+export interface LegacyDeck extends BaseDeck {
+  id: number;
+  local?: string;
+  uuid?: string;
+}
 
 export interface DecksMap {
   [uuid: string]: Deck;
@@ -294,7 +306,16 @@ export interface ScenarioResult {
 }
 
 export interface BackupState {
+  version: 1;
   campaigns: Campaign[];
+  decks: Deck[];
+  guides: { [id: string]: CampaignGuideState };
+  deckIds: { [id: string]: string };
+  campaignIds: { [id: string]: string };
+}
+
+export interface LegacyBackupState {
+  campaigns: LegacyCampaign[];
   decks: Deck[];
   guides: { [id: string]: CampaignGuideState };
   deckIds: { [id: string]: string };
@@ -403,7 +424,7 @@ export interface CampaignNotes {
 }
 
 export interface CampaignId {
-  campaignId: number;
+  campaignId: string;
   serverId?: string;
 }
 
@@ -436,7 +457,14 @@ export interface Campaign extends BaseCampaign {
   uuid: string;
 }
 
-export interface DeprecatedCampaign extends BaseCampaign {
+export function getCampaignId(campaign: Campaign): CampaignId {
+  return {
+    campaignId: campaign.uuid,
+    serverId: campaign.serverId,
+  };
+}
+
+export interface LegacyCampaign extends BaseCampaign {
   id: number;
   latestDeckIds?: number[]; // deprecated
   baseDeckIds?: number[];
@@ -566,7 +594,7 @@ export const REPLACE_LOCAL_DECK = 'REPLACE_LOCAL_DECK';
 export interface ReplaceLocalDeckAction {
   type: typeof REPLACE_LOCAL_DECK;
   localId: DeckId;
-  deck: Deck;
+  deck: ArkhamDbDeck;
 }
 export const UPDATE_DECK = 'UPDATE_DECK';
 export interface UpdateDeckAction {
@@ -677,7 +705,6 @@ export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export interface NewCampaignAction {
   type: typeof NEW_CAMPAIGN;
   now: Date;
-  id: number;
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
@@ -750,7 +777,7 @@ type CampaignUpdate = Partial<Campaign>;
 
 export interface UpdateCampaignAction {
   type: typeof UPDATE_CAMPAIGN;
-  id: number;
+  id: string;
   campaign: CampaignUpdate;
   now: Date;
 }
@@ -758,7 +785,7 @@ export interface UpdateCampaignAction {
 export const UPDATE_CAMPAIGN_SPENT_XP = 'UPDATE_CAMPAIGN_SPENT_XP';
 export interface UpdateCampaignSpentXpAction {
   type: typeof UPDATE_CAMPAIGN_SPENT_XP;
-  id: number;
+  id: string;
   investigator: string;
   operation: 'inc' | 'dec';
   now: Date;
@@ -767,7 +794,7 @@ export interface UpdateCampaignSpentXpAction {
 export const UPDATE_CHAOS_BAG_RESULTS = 'UPDATE_CHAOS_BAG_RESULTS';
 export interface UpdateChaosBagResultsAction {
   type: typeof UPDATE_CHAOS_BAG_RESULTS;
-  id: number;
+  id: string;
   chaosBagResults: ChaosBagResults;
   now: Date;
 }
@@ -775,7 +802,7 @@ export interface UpdateChaosBagResultsAction {
 export const ADJUST_BLESS_CURSE = 'ADJUST_BLESS_CURSE';
 export interface AdjustBlessCurseAction {
   type: typeof ADJUST_BLESS_CURSE;
-  id: number;
+  id: string;
   bless: boolean;
   direction: 'inc' | 'dec';
   now: Date;
@@ -789,13 +816,13 @@ export interface CleanBrokenCampaignsAction {
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export interface DeleteCampaignAction {
   type: typeof DELETE_CAMPAIGN;
-  id: number;
+  id: string;
 }
 
 export const CAMPAIGN_ADD_INVESTIGATOR = 'CAMPAIGN_ADD_INVESTIGATOR';
 export interface CampaignAddInvestigatorAction {
   type: typeof CAMPAIGN_ADD_INVESTIGATOR;
-  id: number;
+  id: string;
   investigator: string;
   deckId?: DeckId;
   now: Date;
@@ -804,7 +831,7 @@ export interface CampaignAddInvestigatorAction {
 export const CAMPAIGN_REMOVE_INVESTIGATOR = 'CAMPAIGN_REMOVE_INVESTIGATOR';
 export interface CampaignRemoveInvestigatorAction {
   type: typeof CAMPAIGN_REMOVE_INVESTIGATOR;
-  id: number;
+  id: string;
   investigator: string;
   removeDeckId?: DeckId;
   now: Date;
@@ -813,7 +840,7 @@ export interface CampaignRemoveInvestigatorAction {
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
 export interface AddCampaignScenarioResultAction {
   type: typeof ADD_CAMPAIGN_SCENARIO_RESULT;
-  id: number;
+  id: string;
   scenarioResult: ScenarioResult;
   campaignNotes?: CampaignNotes;
   now: Date;
@@ -821,7 +848,7 @@ export interface AddCampaignScenarioResultAction {
 export const EDIT_CAMPAIGN_SCENARIO_RESULT = 'EDIT_CAMPAIGN_SCENARIO_RESULT';
 export interface EditCampaignScenarioResultAction {
   type: typeof EDIT_CAMPAIGN_SCENARIO_RESULT;
-  id: number;
+  id: string;
   index: number;
   scenarioResult: ScenarioResult;
   now: Date;
@@ -970,12 +997,6 @@ export interface GuideChoiceInput extends BasicInput {
   choice: number;
 }
 
-export interface GuideDeckInput extends BasicInput {
-  type: 'deck';
-  step: string;
-  deckId: DeckId;
-}
-
 export interface GuideStartScenarioInput extends BasicInput {
   type: 'start_scenario';
   step: undefined;
@@ -1017,7 +1038,6 @@ export type GuideInput =
   GuideCountInput |
   GuideChoiceInput |
   GuideStringInput |
-  GuideDeckInput |
   GuideStartScenarioInput |
   GuideCampaignLinkInput |
   GuideStartSideScenarioInput |
@@ -1031,7 +1051,7 @@ export function guideInputToId(input: GuideInput) {
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
 export interface GuideResetScenarioAction {
   type: typeof GUIDE_RESET_SCENARIO;
-  campaignId: number;
+  campaignId: string;
   scenarioId: string;
   now: Date;
 }
@@ -1039,7 +1059,7 @@ export interface GuideResetScenarioAction {
 export const GUIDE_SET_INPUT = 'GUIDE_SET_INPUT';
 export interface GuideSetInputAction {
   type: typeof GUIDE_SET_INPUT;
-  campaignId: number;
+  campaignId: string;
   input: GuideInput;
   now: Date;
 }
@@ -1047,7 +1067,7 @@ export interface GuideSetInputAction {
 export const GUIDE_UNDO_INPUT = 'GUIDE_UNDO_INPUT';
 export interface GuideUndoInputAction {
   type: typeof GUIDE_UNDO_INPUT;
-  campaignId: number;
+  campaignId: string;
   scenarioId: string;
   now: Date;
 }
@@ -1056,7 +1076,7 @@ export interface GuideUndoInputAction {
 export const GUIDE_UPDATE_ACHIEVEMENT = 'GUIDE_UPDATE_ACHIEVEMENT';
 export interface GuideUpdateAchievementAction {
   type: typeof GUIDE_UPDATE_ACHIEVEMENT;
-  campaignId: number;
+  campaignId: string;
   id: string;
   operation: 'set' | 'clear' | 'inc' | 'dec';
   max?: number;

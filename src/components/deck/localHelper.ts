@@ -1,10 +1,10 @@
 import { forEach } from 'lodash';
+import uuid from 'react-native-uuid';
 
 import { UpgradeDeckResult } from '@lib/authApi';
 import { Deck, DeckProblemType, DeckMeta, Slots, DeckId, getDeckId } from '@actions/types';
 
 export function newLocalDeck(
-  id: DeckId,
   name: string,
   investigator_code: string,
   slots: Slots,
@@ -15,8 +15,7 @@ export function newLocalDeck(
 ): Deck {
   const timestamp = (new Date()).toISOString();
   return {
-    id: id.id,
-    uuid: id.uuid,
+    uuid: uuid.v4(),
     description_md,
     date_creation: timestamp,
     date_update: timestamp,
@@ -65,7 +64,6 @@ export function updateLocalDeck(
 }
 
 export function upgradeLocalDeck(
-  id: DeckId,
   previousDeck: Deck,
   xp: number,
   exiles: string[]
@@ -83,6 +81,11 @@ export function upgradeLocalDeck(
     }
   });
   const timestamp = (new Date()).toISOString();
+  const id: DeckId = {
+    id: undefined,
+    local: true,
+    uuid: uuid.v4(),
+  };
   return {
     deck: {
       ...previousDeck,
@@ -90,7 +93,6 @@ export function upgradeLocalDeck(
     },
     upgradedDeck: {
       ...previousDeck,
-      id: id.id,
       local: true,
       uuid: id.uuid,
       slots,

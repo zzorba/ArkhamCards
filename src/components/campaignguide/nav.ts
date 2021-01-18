@@ -8,7 +8,7 @@ import { ProcessedScenario } from '@data/scenario';
 export function showScenario(
   componentId: string,
   scenario: ProcessedScenario,
-  campaignId: number,
+  campaignId: string,
   campaignState: CampaignStateHelper,
   subtitle?: string,
   showLinkedScenario?: (

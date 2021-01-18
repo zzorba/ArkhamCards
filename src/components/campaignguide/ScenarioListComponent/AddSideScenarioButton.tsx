@@ -1,5 +1,4 @@
 import React, { useCallback, useMemo } from 'react';
-import { Alert } from 'react-native';
 import { find, findLast, findLastIndex } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -13,14 +12,14 @@ import { ShowAlert } from '@components/deck/dialogs';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: string;
   processedCampaign: ProcessedCampaign;
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;
   showAlert: ShowAlert;
 }
 
-export default function AddSideScenarioButton({ componentId, campaignId, processedCampaign, campaignGuide, campaignState, showAlert}: Props) {
+export default function AddSideScenarioButton({ componentId, campaignId, processedCampaign, campaignGuide, campaignState, showAlert }: Props) {
   const canAddScenario = useMemo(() => {
     const lastCompletedScenarioIndex = findLastIndex(
       processedCampaign.scenarios,

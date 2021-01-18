@@ -33,10 +33,12 @@ import {
   FINISH_DECK_EDIT,
   DeckId,
   getDeckId,
+  ArkhamDbDeck,
+  ArkhamDbDeckId,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
-import { AppState, getNextLocalDeckId, makeDeckSelector } from '@reducers/index';
+import { AppState, makeDeckSelector } from '@reducers/index';
 
 function setNewDeck(
   id: DeckId,
@@ -97,7 +99,7 @@ export function removeDeck(
 
 export function replaceLocalDeck(
   localId: DeckId,
-  deck: Deck
+  deck: ArkhamDbDeck
 ): ReplaceLocalDeckAction {
   return {
     type: REPLACE_LOCAL_DECK,
@@ -107,7 +109,7 @@ export function replaceLocalDeck(
 }
 
 export function fetchPrivateDeck(
-  id: DeckId
+  id: ArkhamDbDeckId
 ): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
     loadDeck(id.id).then(deck => {
@@ -121,7 +123,7 @@ export function fetchPrivateDeck(
 }
 
 export function fetchPublicDeck(
-  id: DeckId,
+  id: ArkhamDbDeckId,
   useDeckEndpoint: boolean
 ): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
@@ -154,7 +156,7 @@ function handleUpgradeDeckResult(
 
 export const deleteDeckAction: ActionCreator<
   ThunkAction<Promise<boolean>, AppState, unknown, Action>
-> = (id: DeckId, deleteAllVersion: boolean, local: boolean) => {
+> = (id: ArkhamDbDeckId, deleteAllVersion: boolean, local: boolean) => {
   return (
     dispatch: ThunkDispatch<AppState, unknown, Action>,
   ) => {
@@ -188,10 +190,7 @@ export const saveDeckUpgrade: ActionCreator<
   xp: number,
   exileCounts: Slots,
 ) => {
-  return (
-    dispatch: ThunkDispatch<AppState, unknown, Action>,
-    getState: () => AppState
-  ) => {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
     return new Promise<Deck>((resolve, reject) => {
       const exileParts: string[] = [];
       forEach(exileCounts, (count, code) => {
@@ -200,8 +199,7 @@ export const saveDeckUpgrade: ActionCreator<
         }
       });
       if (deck.local) {
-        const nextLocalDeckId = getNextLocalDeckId(getState());
-        const result = upgradeLocalDeck(nextLocalDeckId, deck, xp, exileParts);
+        const result = upgradeLocalDeck(deck, xp, exileParts);
         handleUpgradeDeckResult(result, dispatch);
         resolve(result.upgradedDeck);
       } else {
@@ -318,15 +316,10 @@ export const saveNewDeck: ActionCreator<
 > = (
   params: NewDeckParams
 ) => {
-  return (
-    dispatch: ThunkDispatch<AppState, unknown, Action>,
-    getState: () => AppState
-  ): Promise<Deck> => {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>): Promise<Deck> => {
     return new Promise<Deck>((resolve, reject) => {
       if (params.local) {
-        const nextLocalDeckId = getNextLocalDeckId(getState());
         const deck = newLocalDeck(
-          nextLocalDeckId,
           params.deckName,
           params.investigatorCode,
           params.slots,
@@ -423,7 +416,7 @@ export const uploadLocalDeck: ActionCreator<
       localDeck,
       localDeck.name
     )).then(deck => {
-      dispatch(replaceLocalDeck(getDeckId(localDeck), deck));
+      dispatch(replaceLocalDeck(getDeckId(localDeck), deck as ArkhamDbDeck));
       return deck;
     });
   };

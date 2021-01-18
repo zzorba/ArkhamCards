@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { concat, find, filter, flatMap, forEach, keys, map, max, minBy, last, sortBy, uniq, values, reverse } from 'lodash';
+import { find, filter, flatMap, forEach, keys, map, max, last, sortBy, uniq, values, reverse } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -34,7 +34,6 @@ import {
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { ChaosBag } from '@app_constants';
-import uuid from 'react-native-uuid';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -108,10 +107,10 @@ const allDecksSelector = (state: AppState) => state.decks.all;
 
 export const getCampaigns = createSelector(
   allCampaignsSelector,
-  allCampaigns => sortBy(
+  (allCampaigns): Campaign[] => sortBy(
     filter(
       values(allCampaigns),
-      campaign => !campaign.linkedCampaignId
+      campaign => !campaign.linkedCampaignUuid
     ),
     campaign => {
       if (!campaign.lastUpdated) {
@@ -437,7 +436,7 @@ export const makeGetDecksSelector = () =>
       forEach(deckIds, deckId => {
         if (deckId) {
           const deck = getDeck(allDecks, deckId);
-          if (deck && deck.id) {
+          if (deck && (deck.local || deck.id)) {
             decks.push(deck);
           }
         }
@@ -466,7 +465,7 @@ export const getNextCampaignId = createSelector(
 export const makeCampaignSelector = () =>
   createSelector(
     (state: AppState,) => state.campaigns.all,
-    (state: AppState, id: number) => id,
+    (state: AppState, id: string) => id,
     (allCampaigns, id): SingleCampaign | undefined => {
       if (id in allCampaigns) {
         const campaign = allCampaigns[id];
@@ -481,7 +480,7 @@ export const makeNetworkCampaignSelector = () => {
   const campaignSelector = makeCampaignSelector();
   return createSelector(
     campaignSelector,
-    (state: AppState, campaignId: number) => state.guides.all[campaignId],
+    (state: AppState, campaignId: string) => state.guides.all[campaignId],
     (state: AppState) => state.decks.all,
     (campaign: SingleCampaign | undefined, guideOpt, decks) => {
       return null;
@@ -492,7 +491,7 @@ export const makeNetworkCampaignSelector = () => {
 export const makeChaosBagResultsSelector = () =>
   createSelector(
     (state: AppState) => state.campaigns.chaosBagResults,
-    (state: AppState, id: number) => id,
+    (state: AppState, id: string) => id,
     (chaosBagResults, id): ChaosBagResults => {
       if (chaosBagResults) {
         const result = chaosBagResults[id];
@@ -527,26 +526,6 @@ export const makeCampaignForDeckSelector = () =>
       return undefined;
     }
   );
-
-export const getNextLocalDeckId = createSelector(
-  (state: AppState) => state.decks.all,
-  (state: AppState) =>state.decks.replacedLocalIds,
-  (all, replacedLocalIds = {}): DeckId => {
-    const smallestDeckId = minBy(
-      concat(
-        flatMap(values(all), deck => deck.local ? [deck.id] : []),
-        map(values(replacedLocalIds), deck => deck.id)
-      ),
-      x => x
-    ) || 0;
-    const legacyId = (smallestDeckId < 0) ? (smallestDeckId - 1) : -1;
-    return {
-      id: legacyId,
-      local: true,
-      uuid: uuid.v4(),
-    };
-  }
-);
 
 const EMTPY_CHECKLIST: string[] = [];
 export const getDeckChecklist = createSelector(
@@ -604,9 +583,9 @@ const DEFAULT_GUIDE_STATE: CampaignGuideState = {
 export const makeCampaignGuideStateSelector = () =>
   createSelector(
     (state: AppState) => state.guides?.all,
-    (state: AppState, campaignId: number) => campaignId,
-    (guideState: undefined | { [campaignId: string]: CampaignGuideState | undefined }, campaignId: number) => {
-      return (guideState && guideState[campaignId]) || DEFAULT_GUIDE_STATE;
+    (state: AppState, campaignUuid: string) => campaignUuid,
+    (guideState: undefined | { [campaignId: string]: CampaignGuideState | undefined }, campaignUuid: string) => {
+      return (guideState && guideState[campaignUuid]) || DEFAULT_GUIDE_STATE;
     }
   );
 
@@ -679,8 +658,8 @@ const EMPTY_CHAOS_BAG: ChaosBag = {};
 export const makeCampaignChaosBagSelector = () =>
   createSelector(
     (state: AppState) => state.campaigns.all,
-    (state: AppState, campaignId: number) => campaignId,
-    (campaigns: { [id: string]: Campaign }, campaignId: number) => {
+    (state: AppState, campaignId: string) => campaignId,
+    (campaigns: { [id: string]: Campaign }, campaignId: string) => {
       const campaign = campaigns[campaignId];
       return (campaign && campaign.chaosBag) || EMPTY_CHAOS_BAG;
     }

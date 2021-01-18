@@ -94,7 +94,7 @@ export default function DeckHistoryView({
     <ScrollView contentContainerStyle={[backgroundStyle, space.paddingSideS]}>
       { map(historicDecks, (deck, idx) => (
         <DeckProgressComponent
-          key={deck.deck.id}
+          key={deck.id.uuid}
           title={deckTitle(deck, historicDecks.length - idx)}
           onTitlePress={idx === 0 ? undefined : onDeckPress}
           componentId={componentId}

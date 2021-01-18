@@ -28,7 +28,7 @@ import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { useCampaign, useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface MyDecksSelectorProps {
-  campaignId: number;
+  campaignId: string;
   onDeckSelect: (deck: Deck) => void;
   onInvestigatorSelect?: (card: Card) => void;
 
@@ -91,7 +91,7 @@ function MyDecksSelectorDialog(props: Props) {
   const { componentId, campaignId, onDeckSelect, onInvestigatorSelect, singleInvestigator, selectedDeckIds, selectedInvestigatorIds, onlyShowSelected, simpleOptions } = props;
 
   const otherCampaignsSelector = useCallback((state: AppState) => {
-    return filter(getCampaigns(state), campaign => campaign.id !== campaignId);
+    return filter(getCampaigns(state), campaign => campaign.uuid !== campaignId);
   }, [campaignId]);
   const otherCampaigns = useSelector(otherCampaignsSelector);
   const otherCampaignDeckIdsSelector = useCallback((state: AppState) => {

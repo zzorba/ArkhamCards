@@ -9,12 +9,12 @@ import GenericCampaignItem from './GenericCampaignItem';
 interface Props {
   campaign: Campaign;
   scenarioName: string;
-  onPress: (id: number, campaign: Campaign) => void;
+  onPress: (id: string, campaign: Campaign) => void;
 }
 
 export default function StandaloneItem({ campaign, onPress, scenarioName }: Props) {
   const handleOnPress = useCallback(() => {
-    onPress(campaign.id, campaign);
+    onPress(campaign.uuid, campaign);
   }, [onPress, campaign]);
   return (
     <GenericCampaignItem

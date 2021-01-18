@@ -30,7 +30,7 @@ const DEFAULT_GUIDES_STATE: GuidesState = {
 
 function updateCampaign(
   state: GuidesState,
-  campaignId: number,
+  campaignId: string,
   now: Date,
   update: (campaign: CampaignGuideState) => CampaignGuideState
 ): GuidesState {

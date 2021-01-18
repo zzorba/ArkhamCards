@@ -9,7 +9,7 @@ import { updateCampaign } from './actions';
 import { AppState, makeCampaignSelector } from '@reducers';
 
 export interface CampaignEditWeaknessProps {
-  campaignId: number;
+  campaignId: string;
 }
 
 function CampaignEditWeaknessDialog({ componentId, campaignId }: CampaignEditWeaknessProps & NavigationProps) {

@@ -510,7 +510,7 @@ export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined 
   return playerCards?.weaknessCards;
 }
 
-export function useCampaign(campaignId?: number): SingleCampaign | undefined {
+export function useCampaign(campaignId?: string): SingleCampaign | undefined {
   const getCampaign = useMemo(makeCampaignSelector, []);
   return useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId) : undefined);
 }
@@ -549,7 +549,7 @@ export function useCampaignScenarios(campaign?: Campaign): [Scenario[], { [code:
   return [cycleScenarios, scenarioByCode];
 }
 
-export function useChaosBagResults(campaignId: number): ChaosBagResults {
+export function useChaosBagResults(campaignId: string): ChaosBagResults {
   const chaosBagResultsSelector = useMemo(makeChaosBagResultsSelector, []);
   return useSelector((state: AppState) => chaosBagResultsSelector(state, campaignId));
 }
@@ -569,7 +569,7 @@ export function useDeck(id: DeckId | undefined, { fetchIfMissing }: { fetchIfMis
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    if (!thePreviousDeck && theDeck?.previousDeckId && fetchIfMissing && !theDeck.local) {
+    if (!thePreviousDeck && theDeck?.previousDeckId && fetchIfMissing && !theDeck.local && !theDeck.previousDeckId.local) {
       dispatch(fetchPrivateDeck(theDeck.previousDeckId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

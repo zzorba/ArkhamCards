@@ -4,7 +4,7 @@ import DrawChaosBagComponent from '@components/campaign/DrawChaosBagComponent';
 import { ChaosBag } from '@app_constants';
 
 export interface GuideChaosBagProps {
-  campaignId: number;
+  campaignId: string;
   chaosBag: ChaosBag;
 }
 

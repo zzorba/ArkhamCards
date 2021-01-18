@@ -6,7 +6,7 @@ import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import { Deck, Slots, NumberChoices, DeckId, getDeckId } from '@actions/types';
+import { Deck, Slots, DeckId, getDeckId } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import BasicButton from '@components/core/BasicButton';
 import CardSectionHeader from '@components/core/CardSectionHeader';

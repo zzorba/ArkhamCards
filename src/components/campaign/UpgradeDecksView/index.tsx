@@ -11,7 +11,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Deck, getDeckId, ScenarioResult } from '@actions/types';
+import { Deck, getCampaignId, getDeckId, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
 import { getAllDecks, getDeck, getLangPreference } from '@reducers';
@@ -25,7 +25,7 @@ import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface UpgradeDecksProps {
-  id: number;
+  id: string;
   scenarioResult: ScenarioResult;
 }
 
@@ -51,10 +51,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
     if (campaign) {
       const investigatorData = campaign.investigatorData[investigator.code] || {};
       const oldXp = investigatorData.availableXp || 0;
-      dispatch(updateCampaign({
-        campaignId: campaign.id,
-        serverId: campaign.serverId,
-      }, {
+      dispatch(updateCampaign(getCampaignId(campaign), {
         investigatorData: {
           ...campaign.investigatorData || {},
           [investigator.code]: {

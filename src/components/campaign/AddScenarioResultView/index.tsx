@@ -26,7 +26,7 @@ import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignInvestigators, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface AddScenarioResultProps {
-  id: number;
+  id: string;
 }
 
 type Props = NavigationProps &

@@ -21,7 +21,7 @@ import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButt
 import DeckButton from '@components/deck/controls/DeckButton';
 
 export interface EditScenarioResultProps {
-  campaignId: number;
+  campaignId: string;
   index: number;
 }
 

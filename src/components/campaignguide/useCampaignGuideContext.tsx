@@ -25,7 +25,7 @@ import { CampaignGuideContextType } from './CampaignGuideContext';
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 
-export default function useCampaignGuideContext(id: number, campaignData?: CampaignGuideReduxData): CampaignGuideContextType | undefined {
+export default function useCampaignGuideContext(id: string, campaignData?: CampaignGuideReduxData): CampaignGuideContextType | undefined {
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch = useDispatch();
   const investigators = useInvestigatorCards();

@@ -12,7 +12,7 @@ import { AppState, makeCampaignChaosBagSelector } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface CampaignChaosBagProps {
-  campaignId: number;
+  campaignId: string;
   updateChaosBag: (chaosBag: ChaosBag) => void;
 }
 

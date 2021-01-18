@@ -58,7 +58,7 @@ export interface DeckDetailProps {
   upgrade?: boolean;
   title?: string;
   subtitle?: string;
-  campaignId?: number;
+  campaignId?: string;
   hideCampaign?: boolean;
   isPrivate?: boolean;
   modal?: boolean;
@@ -397,7 +397,7 @@ function DeckDetailView({
       component: {
         name: 'Deck.EditSpecial',
         passProps: {
-          campaignId: campaign ? campaign.id : undefined,
+          campaignId: campaign ? campaign.uuid : undefined,
           id,
           assignedWeaknesses: addedBasicWeaknesses,
         },
@@ -478,7 +478,7 @@ function DeckDetailView({
         passProps: {
           id: deckId,
           showNewDeck: true,
-          campaignId: campaign ? campaign.id : undefined,
+          campaignId: campaign ? campaign.uuid : undefined,
         },
         options: {
           statusBar: {
@@ -651,7 +651,7 @@ function DeckDetailView({
   }, [signedIn, login, deck, hasPendingEdits, showAlert, setFabOpen, setMenuOpen, uploadLocalDeck]);
 
   const viewDeck = useCallback(() => {
-    if (deck) {
+    if (deck && !deck.local) {
       Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
     }
   }, [deck]);

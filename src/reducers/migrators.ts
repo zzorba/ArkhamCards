@@ -1,10 +1,10 @@
 import { flatMap, map, forEach, omit } from 'lodash';
 import uuid from 'react-native-uuid';
 
-import { DeprecatedCampaign, Campaign, DeckId, Deck, getDeckId, CampaignGuideState, GuideInput, DecksMap } from '@actions/types';
+import { LegacyCampaign, Campaign, DeckId, Deck, getDeckId, CampaignGuideState, GuideInput, DecksMap, LegacyDeck } from '@actions/types';
 
 export function migrateDecks(
-  decks: Deck[]
+  decks: LegacyDeck[]
 ): [DecksMap, { [key: string]: DeckId | undefined}] {
   const all: DecksMap = {};
   const deckMap: { [key: string]: DeckId | undefined} = {};
@@ -14,15 +14,19 @@ export function migrateDecks(
       return;
     }
 
-    const updatedDeck: Deck = ((deck.id < 0 || deck.local) && !deck.uuid) ?
+    const updatedDeck: Deck = ((deck.id < 0 || deck.local)) ?
       {
-        ...deck,
+        ...omit(deck, ['id', 'uuid']),
         local: true,
-        uuid: uuid.v4(),
-      } : { ...deck };
+        uuid: deck.uuid || uuid.v4(),
+      } : {
+        ...omit(deck, ['local', 'uuid']),
+        local: undefined,
+        uuid: undefined,
+      };
     const deckId = getDeckId(updatedDeck);
     all[deckId.uuid] = updatedDeck;
-    deckMap[deckId.id] = deckId;
+    deckMap[deck.id] = deckId;
   });
   forEach(all, (deck: any) => {
     if (deck.previous_deck) {
@@ -38,7 +42,7 @@ export function migrateDecks(
 }
 
 export function migrateCampaigns(
-  legacyCampaigns: DeprecatedCampaign[],
+  legacyCampaigns: LegacyCampaign[],
   deckMap: { [numberId: number]: DeckId | undefined },
   allDecks: { [uuid: string]: Deck }
 ): [{
@@ -49,13 +53,13 @@ export function migrateCampaigns(
 
   const all: { [uuid: string]: Campaign } = {};
   const campaignUuids: { [id: string]: string} = {};
-  forEach(legacyCampaigns, (campaign: DeprecatedCampaign) => {
+  forEach(legacyCampaigns, (campaign: LegacyCampaign) => {
     if (!campaign.uuid) {
       campaign.uuid = uuid.v4();
     }
     campaignUuids[campaign.id] = campaign.uuid;
   });
-  forEach(legacyCampaigns, (campaign: DeprecatedCampaign) => {
+  forEach(legacyCampaigns, (campaign: LegacyCampaign) => {
     if (!campaign) {
       return;
     }

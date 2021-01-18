@@ -7,7 +7,7 @@ import { ChaosTokenType } from '@app_constants';
 import { useChaosBagResults } from '@components/core/hooks';
 
 interface Props {
-  campaignId: number;
+  campaignId: string;
   id: string;
   iconKey: ChaosTokenType;
   sealed?: boolean;

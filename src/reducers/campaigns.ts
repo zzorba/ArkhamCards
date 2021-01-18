@@ -28,7 +28,7 @@ import {
   ADJUST_BLESS_CURSE,
   NEW_STANDALONE,
   STANDALONE,
-  DeprecatedCampaign,
+  LegacyCampaign,
 } from '@actions/types';
 
 export interface CampaignsState {
@@ -84,7 +84,7 @@ export default function(
     const all = { ...state.all };
     const chaosBagResults = { ...state.chaosBagResults };
     forEach(action.campaigns, campaign => {
-      const deprecatedCampaign = campaign as DeprecatedCampaign;
+      const deprecatedCampaign = campaign as LegacyCampaign;
       const remappedCampaign: Campaign = {
         ...omit(campaign, ['baseDeckIds', 'deckIds', 'id']) as Campaign,
         deckIds: [],
@@ -142,7 +142,7 @@ export default function(
   if (action.type === RESTORE_BACKUP) {
     const all: { [id: string]: Campaign } = {};
     forEach(action.campaigns, campaign => {
-      all[campaign.id] = campaign;
+      all[campaign.uuid] = campaign;
     });
     return {
       all,
@@ -174,31 +174,30 @@ export default function(
       action.now
     );
     const newCampaign = newBlankGuidedCampaign(
-      action.id,
       action.name,
       action.cycleCode,
       action.weaknessSet,
       action.now
     );
-    newCampaignA.linkedCampaignId = newCampaignB.id;
-    newCampaignB.linkedCampaignId = newCampaignA.id;
-    newCampaign.link = {
-      campaignIdA: newCampaignA.id,
-      campaignIdB: newCampaignB.id,
+    newCampaignA.linkedCampaignUuid = newCampaignB.uuid;
+    newCampaignB.linkedCampaignUuid = newCampaignA.uuid;
+    newCampaign.linkUuid = {
+      campaignIdA: newCampaignA.uuid,
+      campaignIdB: newCampaignB.uuid,
     };
     return {
       ...state,
       all: {
         ...state.all,
-        [newCampaign.id]: newCampaign,
-        [newCampaignA.id]: newCampaignA,
-        [newCampaignB.id]: newCampaignB,
+        [newCampaign.uuid]: newCampaign,
+        [newCampaignA.uuid]: newCampaignA,
+        [newCampaignB.uuid]: newCampaignB,
       },
       chaosBagResults: {
         ...state.chaosBagResults || {},
-        [newCampaign.id]: NEW_CHAOS_BAG_RESULTS,
-        [newCampaignA.id]: NEW_CHAOS_BAG_RESULTS,
-        [newCampaignB.id]: NEW_CHAOS_BAG_RESULTS,
+        [newCampaign.uuid]: NEW_CHAOS_BAG_RESULTS,
+        [newCampaignA.uuid]: NEW_CHAOS_BAG_RESULTS,
+        [newCampaignB.uuid]: NEW_CHAOS_BAG_RESULTS,
       },
     };
   }
@@ -231,11 +230,11 @@ export default function(
       ...state,
       all: {
         ...state.all,
-        [action.id]: newCampaign,
+        [newCampaign.uuid]: newCampaign,
       },
       chaosBagResults: {
         ...state.chaosBagResults || {},
-        [action.id]: NEW_CHAOS_BAG_RESULTS,
+        [newCampaign.uuid]: NEW_CHAOS_BAG_RESULTS,
       },
     };
   }
@@ -258,7 +257,6 @@ export default function(
     };
 
     const newCampaign: Campaign = {
-      id: action.id,
       uuid: uuid.v4(),
       name: action.name,
       showInterludes: true,
@@ -279,11 +277,11 @@ export default function(
       ...state,
       all: {
         ...state.all,
-        [action.id]: newCampaign,
+        [newCampaign.uuid]: newCampaign,
       },
       chaosBagResults: {
         ...state.chaosBagResults || {},
-        [action.id]: NEW_CHAOS_BAG_RESULTS,
+        [newCampaign.uuid]: NEW_CHAOS_BAG_RESULTS,
       },
     };
   }
@@ -292,7 +290,7 @@ export default function(
       ...state.all,
     };
     forEach(state.all, (campaign, id) => {
-      if (!campaign.id) {
+      if (!campaign.uuid) {
         delete all[id];
       }
     });

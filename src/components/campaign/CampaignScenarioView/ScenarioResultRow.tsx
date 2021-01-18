@@ -12,7 +12,7 @@ import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: string;
   index: number;
   scenarioResult: ScenarioResult;
   scenarioByCode?: { [code: string]: Scenario };

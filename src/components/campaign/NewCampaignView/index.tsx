@@ -7,7 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -36,7 +36,6 @@ import SettingsSwitch from '@components/core/SettingsSwitch';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
-import { getNextCampaignId } from '@reducers';
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
@@ -77,7 +76,6 @@ function getKeyName(
 
 function NewCampaignView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
-  const nextId = useSelector(getNextCampaignId);
   const cards = usePlayerCards();
   const dispatch = useDispatch();
 
@@ -229,7 +227,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
     if (selection.type === 'campaign') {
       if (selection.code === TDE) {
         dispatch(newLinkedCampaign(
-          nextId,
           name || placeholderName,
           TDE,
           TDEA,
@@ -242,7 +239,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
       } else {
         // Save to redux.
         dispatch(newCampaign(
-          nextId,
           name || placeholderName,
           selection.code,
           isGuided ? undefined : difficulty,
@@ -259,7 +255,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
       }
     } else {
       dispatch(newStandalone(
-        nextId,
         name || placeholderName,
         selection.id,
         deckIds,
@@ -271,7 +266,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       ));
     }
     Navigation.pop(componentId);
-  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, nextId, name, selection,
+  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, name, selection,
     difficulty, deckIds, investigatorIds, weaknessPacks, weaknessAssignedCards, isGuided]);
 
   const savePressed = useMemo(() => throttle(onSave, 200), [onSave]);
@@ -421,7 +416,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const showDeckSelector = useCallback(() => {
     if (deckAdded) {
       const passProps: MyDecksSelectorProps = {
-        campaignId: nextId,
+        campaignId: 'new-deck',
         onDeckSelect: deckAdded,
         onInvestigatorSelect: guided ? investigatorAdded : undefined,
         selectedDeckIds: deckIds,
@@ -443,7 +438,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         },
       });
     }
-  }, [deckIds, investigatorIds, deckAdded, investigatorAdded, nextId, guided]);
+  }, [deckIds, investigatorIds, deckAdded, investigatorAdded, guided]);
   const { dialog, showDialog } = useTextDialog({
     title: t`Name`,
     placeholder: placeholderName,

@@ -8,7 +8,7 @@ import { useInvestigatorCards } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 
 export interface CampaignGuideInputProps {
-  campaignId: number;
+  campaignId: string;
 }
 
 export default function withCampaignGuideContext<Props>(

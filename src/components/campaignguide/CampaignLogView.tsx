@@ -8,7 +8,7 @@ import CampaignLogComponent from './CampaignLogComponent';
 import StyleContext from '@styles/StyleContext';
 
 export interface CampaignLogProps {
-  campaignId: number;
+  campaignId: string;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
   standalone?: boolean;

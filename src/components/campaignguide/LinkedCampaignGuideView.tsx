@@ -26,9 +26,9 @@ import { useAlertDialog, useTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 
 export interface LinkedCampaignGuideProps {
-  campaignId: number;
-  campaignIdA: number;
-  campaignIdB: number;
+  campaignId: string;
+  campaignIdA: string;
+  campaignIdB: string;
 }
 
 type Props = LinkedCampaignGuideProps & NavigationProps;

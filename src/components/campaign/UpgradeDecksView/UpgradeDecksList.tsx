@@ -109,7 +109,7 @@ export default function UpgradeDecksList({
         if (deck) {
           return (
             <DeckRow
-              key={deck.id}
+              key={deck.local ? deck.uuid : deck.id}
               lang={lang}
               componentId={componentId}
               id={getDeckId(deck)}

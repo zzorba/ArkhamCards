@@ -21,7 +21,6 @@ import {
   GUIDE_UPDATE_ACHIEVEMENT,
   GuideUpdateAchievementAction,
   guideInputToId,
-  Campaign,
   DeckId,
 } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
@@ -39,7 +38,7 @@ export function refreshCampaigns(userId: string): ThunkAction<void, AppState, nu
 }
 
 export function uploadCampaign(
-  campaignId: number,
+  campaignId: string,
   serverId: string,
   guided: boolean
 ): ThunkAction<void, AppState, null, UpdateCampaignAction> {
@@ -273,20 +272,6 @@ export function setScenarioText(
   });
 }
 
-export function setScenarioDeckChoice(
-  campaignId: CampaignId,
-  step: string,
-  deckId: DeckId,
-  scenario?: string
-): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
-    type: 'deck',
-    scenario,
-    step,
-    deckId,
-  });
-}
-
 export function setCampaignLink(
   campaignId: CampaignId,
   step: string,
@@ -318,5 +303,4 @@ export default {
   setBinaryAchievement,
   incCountAchievement,
   decCountAchievement,
-  setScenarioDeckChoice,
 };

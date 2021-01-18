@@ -11,7 +11,7 @@ import { CampaignDrawWeaknessProps } from './CampaignDrawWeaknessDialog';
 import { EditChaosBagProps } from './EditChaosBagDialog';
 import { OddsCalculatorProps } from './OddsCalculatorView';
 
-export function showAddScenarioResult(componentId: string, campaignId: number) {
+export function showAddScenarioResult(componentId: string, campaignId: string) {
   Navigation.push<AddScenarioResultProps>(componentId, {
     component: {
       name: 'Campaign.AddResult',
@@ -42,7 +42,7 @@ export function showEditChaosBag(componentId: string, campaign: Campaign, update
   });
 }
 
-export function showDrawChaosBag(componentId: string, campaignId: number, updateChaosBag: (chaosBag: ChaosBag) => void) {
+export function showDrawChaosBag(componentId: string, campaignId: string, updateChaosBag: (chaosBag: ChaosBag) => void) {
   Navigation.push<CampaignChaosBagProps>(componentId, {
     component: {
       name: 'Campaign.ChaosBag',
@@ -64,7 +64,7 @@ export function showDrawChaosBag(componentId: string, campaignId: number, update
   });
 }
 
-export function showChaosBagOddsCalculator(componentId: string, campaignId: number, allInvestigators: Card[]) {
+export function showChaosBagOddsCalculator(componentId: string, campaignId: string, allInvestigators: Card[]) {
   Navigation.push<OddsCalculatorProps>(componentId, {
     component: {
       name: 'OddsCalculator',
@@ -86,7 +86,7 @@ export function showChaosBagOddsCalculator(componentId: string, campaignId: numb
   });
 }
 
-export function showDrawWeakness(componentId: string, campaignId: number) {
+export function showDrawWeakness(componentId: string, campaignId: string) {
   Navigation.push<CampaignDrawWeaknessProps>(componentId, {
     component: {
       name: 'Dialog.CampaignDrawWeakness',

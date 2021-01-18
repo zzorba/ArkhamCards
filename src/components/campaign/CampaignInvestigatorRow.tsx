@@ -61,7 +61,7 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
 
   const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
   return (
-    <View key={campaign.id} style={styles.row}>
+    <View key={campaign.uuid} style={styles.row}>
       { map(decks, deck => renderDeck(deck, campaign)) }
       { map(
         filter(
@@ -77,7 +77,7 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
 export default function CampaignInvestigatorRow({ campaigns }: Props) {
   return (
     <>
-      { map(campaigns, campaign => <SingleCampaignInvestigatorRow campaign={campaign} key={campaign.id} />) }
+      { map(campaigns, campaign => <SingleCampaignInvestigatorRow campaign={campaign} key={campaign.uuid} />) }
     </>
   );
 }
