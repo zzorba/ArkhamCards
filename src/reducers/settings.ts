@@ -22,6 +22,8 @@ interface SettingsState {
   lang?: string;
   theme?: 'dark' | 'light';
   fontScale?: number;
+
+  version?: number;
 }
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
@@ -30,6 +32,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   alphabetizeEncounterSets: false,
   lang: 'system',
   fontScale: undefined,
+  version: 2,
 };
 
 type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetSingleCardViewAction | SetAlphabetizeEncounterSetsAction | CardFetchSuccessAction | SetThemeAction | SetFontScaleAction;

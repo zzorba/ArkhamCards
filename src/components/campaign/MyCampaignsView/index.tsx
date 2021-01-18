@@ -16,7 +16,7 @@ import { campaignNames } from '@components/campaign/constants';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
-import { getCampaigns } from '@reducers';
+import { AppState, getCampaigns } from '@reducers';
 import COLORS from '@styles/colors';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';

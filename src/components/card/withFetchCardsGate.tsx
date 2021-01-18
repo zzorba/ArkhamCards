@@ -1,6 +1,8 @@
 import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import FetchCardsGate from './FetchCardsGate';
+import { useSelector } from 'react-redux';
+import { AppState } from '@reducers/';
 
 interface Arguments {
   promptForUpdate?: boolean;

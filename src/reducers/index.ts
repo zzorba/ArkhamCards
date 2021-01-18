@@ -10,6 +10,7 @@ import guides from './guides';
 import filters from './filters';
 import cards from './cards';
 import decks from './decks';
+import { legacyDecks, legacyCampaigns, legacyGuides } from './legacy';
 import deckEdits from './deckEdits';
 import packs from './packs';
 import settings from './settings';
@@ -50,17 +51,38 @@ const cardsPersistConfig = {
   blacklist: ['loading', 'error'],
 };
 
-const guidesPersistConfig = {
+const legacyGuidesPersistConfig = {
   key: 'guides',
   timeout: 0,
   storage: AsyncStorage,
 };
 
-const decksPersistConfig = {
+
+const guidesPersistConfig = {
+  key: 'guides_2',
+  timeout: 0,
+  storage: AsyncStorage,
+};
+
+const legacyDecksPersistConfig = {
   key: 'decks',
   timeout: 0,
   storage: AsyncStorage,
   blacklist: ['refreshing', 'error', 'edits', 'editting'],
+};
+
+const decksPersistConfig = {
+  key: 'decks_2',
+  timeout: 0,
+  storage: AsyncStorage,
+  blacklist: ['refreshing', 'error', 'edits', 'editting'],
+};
+
+const campaignsPersistConfig = {
+  key: 'campaigns_2',
+  timeout: 0,
+  storage: AsyncStorage,
+  blacklist: [],
 };
 
 const settingsPeristConfig = {
@@ -85,14 +107,18 @@ const dissonantVoicesPersistConfig = {
 const rootReducer = combineReducers({
   packs: persistReducer(packsPersistConfig, packs),
   cards: persistReducer(cardsPersistConfig, cards),
-  decks: persistReducer(decksPersistConfig, decks),
+  legacyDecks: persistReducer(legacyDecksPersistConfig, legacyDecks),
   guides: persistReducer(guidesPersistConfig, guides),
-  campaigns,
+  campaigns_2: persistReducer(campaignsPersistConfig, campaigns),
   signedIn: persistReducer(signedInPersistConfig, signedIn),
   settings: persistReducer(settingsPeristConfig, settings),
   filters,
   deckEdits,
   dissonantVoices: persistReducer(dissonantVoicesPersistConfig, dissonantVoices),
+
+  decks: persistReducer(decksPersistConfig, decks),
+  legacyGuides: persistReducer(legacyGuidesPersistConfig, legacyGuides),
+  campaigns: legacyCampaigns,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
@@ -102,7 +128,7 @@ export default rootReducer;
 const DEFAULT_OBJECT = {};
 const DEFAULT_PACK_LIST: Pack[] = [];
 
-const allCampaignsSelector = (state: AppState) => state.campaigns.all;
+const allCampaignsSelector = (state: AppState) => state.campaigns_2.all;
 const allPacksSelector = (state: AppState) => state.packs.all;
 const allDecksSelector = (state: AppState) => state.decks.all;
 
@@ -130,7 +156,7 @@ export const getCampaigns = createSelector(
 
 export const getBackupData = createSelector(
   (state: AppState) => state.decks.all,
-  (state: AppState) => state.campaigns.all,
+  (state: AppState) => state.campaigns_2.all,
   (state: AppState) => state.guides.all,
   (decks, campaigns, guides): BackupState => {
     const guidesState: { [id: string]: CampaignGuideState } = {};
@@ -445,7 +471,7 @@ function processCampaign(campaign: Campaign): SingleCampaign {
 
 export const makeCampaignSelector = () =>
   createSelector(
-    (state: AppState,) => state.campaigns.all,
+    (state: AppState,) => state.campaigns_2.all,
     (state: AppState, id: string) => id,
     (allCampaigns, id): SingleCampaign | undefined => {
       if (id in allCampaigns) {
@@ -471,7 +497,7 @@ export const makeNetworkCampaignSelector = () => {
 
 export const makeChaosBagResultsSelector = () =>
   createSelector(
-    (state: AppState) => state.campaigns.chaosBagResults,
+    (state: AppState) => state.campaigns_2.chaosBagResults,
     (state: AppState, id: string) => id,
     (chaosBagResults, id): ChaosBagResults => {
       if (chaosBagResults) {
@@ -637,7 +663,7 @@ export const makeDeckEditsSelector = () =>
 const EMPTY_CHAOS_BAG: ChaosBag = {};
 export const makeCampaignChaosBagSelector = () =>
   createSelector(
-    (state: AppState) => state.campaigns.all,
+    (state: AppState) => state.campaigns_2.all,
     (state: AppState, campaignId: string) => campaignId,
     (campaigns: { [id: string]: Campaign }, campaignId: string) => {
       const campaign = campaigns[campaignId];

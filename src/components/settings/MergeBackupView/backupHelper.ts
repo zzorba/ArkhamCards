@@ -130,7 +130,7 @@ function lastUpdated(campaign: Campaign): Date {
   return campaign.lastUpdated;
 }
 
-function mergeLocalCampaign(cloudCampaign: Campaign, campaigns: { [key: number]: Campaign }): CloudMergeResult {
+function mergeLocalCampaign(cloudCampaign: Campaign, campaigns: { [uuid: string]: Campaign }): CloudMergeResult {
   const localCampaign = find(campaigns, campaign => {
     return !!campaign.uuid && campaign.uuid === cloudCampaign.uuid;
   });
@@ -170,7 +170,7 @@ export function mergeCampaigns(cloudCampaigns: Campaign[], state: AppState): Cam
   const staleCampaigns: Campaign[] = [];
   const sameCampaigns: Campaign[] = [];
   forEach(cloudCampaigns, cloudCampaign => {
-    const { status } = mergeLocalCampaign(cloudCampaign, state.campaigns.all);
+    const { status } = mergeLocalCampaign(cloudCampaign, state.campaigns_2.all);
     switch (status) {
       case CloudMergeStatus.NEW:
         newCampaigns.push({ ...cloudCampaign });

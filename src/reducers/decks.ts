@@ -24,6 +24,8 @@ import {
   DeckId,
 } from '@actions/types';
 import deepDiff from 'deep-diff';
+import { Action } from 'redux';
+
 
 interface DecksState {
   all: DecksMap;

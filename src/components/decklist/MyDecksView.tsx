@@ -11,7 +11,7 @@ import { iconsMap } from '@app/NavIcons';
 import { showDeckModal } from '@components/nav/helper';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
-import { getMyDecksState } from '@reducers';
+import { AppState, getMyDecksState } from '@reducers';
 import COLORS from '@styles/colors';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';

@@ -1,4 +1,4 @@
-import { filter, forEach, values } from 'lodash';
+import { filter, forEach, keys, values } from 'lodash';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createOffline } from '@redux-offline/redux-offline';
@@ -35,7 +35,6 @@ export default function configureStore(initialState: AppState) {
 
   function migrateV1(state: AppState): AppState {
     const newState: AppState = { ...state };
-
     let deckMap: { [key: string]: DeckId | undefined} = {};
     if (state.decks && state.decks.all) {
       const [all, newDeckMap] = migrateDecks(values(state.decks.all) as LegacyDeck[]);
@@ -96,7 +95,7 @@ export default function configureStore(initialState: AppState) {
     timeout: 0,
     // These all have some transient fields and are handled separately.
     blacklist: ['cards', 'decks', 'packs', 'dissonantVoices', 'guides', 'signedIn', 'filters', 'deckEdits'],
-    migrate: createMigrate(migrations, { debug: false }),
+    migrate: createMigrate(migrations, { debug: true }),
   };
 
   const reducer = persistReducer(
