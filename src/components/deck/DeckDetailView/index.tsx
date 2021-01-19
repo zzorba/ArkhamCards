@@ -6,7 +6,6 @@ import {
   ScrollView,
   StyleSheet,
   View,
-  useWindowDimensions,
 } from 'react-native';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
@@ -83,10 +82,9 @@ function DeckDetailView({
   login,
   upgrade,
 }: Props) {
-  const { backgroundStyle, colors, darkMode, typography, shadow } = useContext(StyleContext);
+  const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
-  const { width } = useWindowDimensions();
 
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const parsedDeckObj = useParsedDeck(id, 'DeckDetail', componentId, {

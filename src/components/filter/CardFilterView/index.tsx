@@ -3,7 +3,6 @@ import { keys, forEach, map, filter, partition } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
   View,
 } from 'react-native';
 import { useSelector } from 'react-redux';
@@ -313,8 +312,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     hauntedEnabled,
   ]);
   const { allFactions, hasXp, hasWeakness, hasCost, hasSkill, hasEnemy, hasLocation } = cardFilterData;
-  const { backgroundStyle, borderStyle } = useContext(StyleContext);
-  const { width } = useWindowDimensions();
+  const { backgroundStyle, borderStyle, width } = useContext(StyleContext);
   const {
     componentId,
     baseQuery,

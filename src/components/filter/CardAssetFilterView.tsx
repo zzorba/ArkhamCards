@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ScrollView, useWindowDimensions } from 'react-native';
+import { ScrollView } from 'react-native';
 import { filter, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -57,8 +57,7 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
   } = filters;
   const { hasSlot, hasUses } = cardFilterData;
 
-  const { width } = useWindowDimensions();
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, width } = useContext(StyleContext);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       { hasSlot && (

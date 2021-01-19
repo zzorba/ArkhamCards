@@ -5,7 +5,6 @@ import {
   Platform,
   RefreshControl,
   StyleSheet,
-  useWindowDimensions,
 } from 'react-native';
 
 import { Campaign, Deck, DecksMap } from '@actions/types';
@@ -40,8 +39,7 @@ function keyExtractor(item: Item) {
 }
 
 export default function DeckList({ lang, deckIds, header, searchTerm, deckToCampaign, refreshing, decks, footer, onRefresh, onScroll, deckClicked }: Props) {
-  const { backgroundStyle, colors } = useContext(StyleContext);
-  const { width } = useWindowDimensions();
+  const { backgroundStyle, colors, width } = useContext(StyleContext);
   const investigators = useInvestigatorCards();
   const renderItem = useCallback(({ item: { deckId } }: { item: Item }) => {
     const deck = decks[deckId];

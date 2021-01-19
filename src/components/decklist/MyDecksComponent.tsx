@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  useWindowDimensions,
   View,
 } from 'react-native';
 import { filter } from 'lodash';
@@ -53,7 +52,7 @@ function MyDecksComponent({
   signedIn,
 }: Props) {
   const [{ networkType, isConnected }] = useNetworkStatus();
-  const { typography } = useContext(StyleContext);
+  const { typography, width } = useContext(StyleContext);
   const dispatch = useDispatch();
   const reLogin = useCallback(() => {
     login();
@@ -83,7 +82,6 @@ function MyDecksComponent({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const { width } = useWindowDimensions();
   const errorLine = useMemo(() => {
     if (!error && networkType !== NetInfoStateType.none) {
       return null;

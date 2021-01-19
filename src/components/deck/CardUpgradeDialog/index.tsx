@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { filter, find, map, reverse, partition, sortBy, sumBy, shuffle, flatMap, uniq } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
@@ -61,7 +61,7 @@ export default function CardUpgradeDialog({
   const cards = usePlayerCards();
   const deckEdits = useSimpleDeckEdits(id);
   const dispatch = useDispatch();
-  const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
+  const { backgroundStyle, borderStyle, typography, width } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
   const [showNonCollection, setShowNonCollection] = useState(false);
   const [shrewdAnalysisResult, setShrewdAnalysisResult] = useState<string[]>([]);
@@ -151,7 +151,6 @@ export default function CardUpgradeDialog({
     }
     return (deckEdits.slots[SHREWD_ANALYSIS_CODE] > 0) && UNIDENTIFIED_UNTRANSLATED.has(card.code);
   }, [deckEdits]);
-  const { width } = useWindowDimensions();
   const renderCard = useCallback((card: Card, highestLevel: boolean) => {
     const allowIgnore = specialIgnoreRule(card, highestLevel);
     return (

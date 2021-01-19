@@ -18,10 +18,14 @@ export interface StyleContextType {
     medium: ViewStyle;
     large: ViewStyle;
   };
+  width: number;
+  height: number;
 }
 
 export const DEFAULLT_STYLE_CONTEXT = {
   darkMode: false,
+  width: 100,
+  height: 100,
   colors: LIGHT_THEME,
   gameFont: 'Teutonic',
   fontScale: 1,

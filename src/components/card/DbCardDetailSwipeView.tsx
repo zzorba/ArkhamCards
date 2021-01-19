@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Platform,
   View,
-  useWindowDimensions,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -57,9 +56,8 @@ const options = (passProps: CardDetailSwipeProps) => {
 
 function DbCardDetailSwipeView(props: Props) {
   const { componentId, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex } = props;
-  const { backgroundStyle, colors } = useContext(StyleContext);
+  const { backgroundStyle, colors, width, height } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
-  const { width, height } = useWindowDimensions();
   const tabooSetSelector: (state: AppState, tabooSetOverride?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
   const packInCollection = useSelector(getPacksInCollection);

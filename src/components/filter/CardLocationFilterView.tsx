@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import {
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
   View,
 } from 'react-native';
 import { t } from 'ttag';
@@ -31,7 +30,6 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
       'hauntedEnabled',
     ],
   });
-  const { width } = useWindowDimensions();
   const {
     shroud,
     shroudEnabled,
@@ -40,7 +38,7 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
     cluesFixed,
     hauntedEnabled,
   } = filters;
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, width } = useContext(StyleContext);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       <SliderChooser

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Platform, StyleSheet, Text, TouchableOpacity, useWindowDimensions, ScrollView, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, ScrollView, View } from 'react-native';
 import Modal from 'react-native-modal';
 import { map } from 'lodash';
 
@@ -30,8 +30,7 @@ function NewDialog({
   alignment = 'center',
   avoidKeyboard,
 }: Props) {
-  const { backgroundStyle, darkMode, colors, shadow, typography } = useContext(StyleContext);
-  const { width } = useWindowDimensions();
+  const { backgroundStyle, darkMode, colors, shadow, typography, width } = useContext(StyleContext);
   const verticalButtons = buttons.length > 2 || TINY_PHONE;
   return (
     <Modal

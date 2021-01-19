@@ -3,7 +3,6 @@ import {
   Linking,
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
   Text,
   View,
 } from 'react-native';
@@ -89,8 +88,7 @@ function showFaq(componentId: string, id: string) {
 }
 
 function CardDetailView({ componentId, id, pack_code, showSpoilers: propsShowSpoilers, tabooSetId: tabooSetIdOverride }: Props) {
-  const { backgroundStyle, typography } = useContext(StyleContext);
-  const { width } = useWindowDimensions();
+  const { backgroundStyle, typography, width } = useContext(StyleContext);
   const showSpoilersSelector = useCallback((state: AppState) => propsShowSpoilers || getShowSpoilers(state, pack_code), [propsShowSpoilers, pack_code]);
   const showSpoilersSetting = useSelector(showSpoilersSelector);
 

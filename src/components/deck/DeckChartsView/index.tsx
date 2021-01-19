@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import {
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
 } from 'react-native';
 
 import { ParsedDeck } from '@actions/types';
@@ -20,8 +19,7 @@ export interface DeckChartsProps {
 }
 
 export default function DeckChartsView({ parsedDeck }: DeckChartsProps) {
-  const { backgroundStyle } = useContext(StyleContext);
-  const { width } = useWindowDimensions();
+  const { backgroundStyle, width } = useContext(StyleContext);
 
   if (!parsedDeck) {
     return null;
