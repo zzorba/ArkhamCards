@@ -1,4 +1,4 @@
-import { ChaosBagResults, LegacyCampaign, LegacyCampaignGuideState, LegacyDeck } from '@actions/types';
+import { ChaosBagResults, LegacyCampaign, LegacyCampaignGuideState, LegacyDeck, ReduxMigrationAction, REDUX_MIGRATION } from '@actions/types';
 
 interface LegacyDecksState {
   all: {
@@ -24,8 +24,14 @@ const DEFAULT_LEGACY_DECK_STATE: LegacyDecksState = {
 };
 
 export function legacyDecks(
-  state: LegacyDecksState = DEFAULT_LEGACY_DECK_STATE
+  state: LegacyDecksState = DEFAULT_LEGACY_DECK_STATE,
+  action: ReduxMigrationAction
 ): LegacyDecksState {
+  if (action.type === REDUX_MIGRATION) {
+    if (action.version === 1) {
+      return DEFAULT_LEGACY_DECK_STATE;
+    }
+  }
   return state;
 }
 
@@ -44,8 +50,15 @@ const DEFAULT_LEGACY_CAMPAIGNS_STATE: LegacyCampaignState = {
 };
 
 export function legacyCampaigns(
-  state: LegacyCampaignState = DEFAULT_LEGACY_CAMPAIGNS_STATE
+  state: LegacyCampaignState = DEFAULT_LEGACY_CAMPAIGNS_STATE,
+  action: ReduxMigrationAction
 ): LegacyCampaignState {
+  if (action.type === REDUX_MIGRATION) {
+    if (action.version === 1) {
+      return DEFAULT_LEGACY_CAMPAIGNS_STATE;
+    }
+    return state;
+  }
   return state;
 }
 
@@ -60,7 +73,14 @@ const DEFAULT_GUIDES_STATE: LegacyGuidesState = {
 };
 
 export function legacyGuides(
-  state: LegacyGuidesState = DEFAULT_GUIDES_STATE
+  state: LegacyGuidesState = DEFAULT_GUIDES_STATE,
+  action: ReduxMigrationAction
 ): LegacyGuidesState {
+  if (action.type === REDUX_MIGRATION) {
+    if (action.version === 1) {
+      return DEFAULT_GUIDES_STATE;
+    }
+    return state;
+  }
   return state;
 }
