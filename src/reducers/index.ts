@@ -433,7 +433,7 @@ export const makeDeckSelector = () => {
     (state: AppState) => state.decks.all,
     (state: AppState, id: DeckId) => id,
     (all, id): Deck | undefined => {
-      if (!id || !id.id) {
+      if (!id || !id.uuid) {
         return undefined;
       }
       return getDeck(all, id);
@@ -653,10 +653,10 @@ export const makeDeckEditsSelector = () =>
     (state: AppState) => state.deckEdits.edits,
     (state: AppState, id: DeckId | undefined) => id,
     (editting, edits, id: DeckId | undefined): EditDeckState | undefined => {
-      if (id === undefined || !id.id || !editting || !editting[id.id] || !edits || !edits[id.id]) {
+      if (id === undefined || !id.uuid || !editting || !editting[id.uuid] || !edits || !edits[id.uuid]) {
         return undefined;
       }
-      return edits[id.id];
+      return edits[id.uuid];
     }
   );
 

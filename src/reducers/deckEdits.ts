@@ -173,7 +173,7 @@ export default function(
       ...state,
       checklist: {
         ...(state.checklist || {}),
-        [`${action.id}`]: [],
+        [action.id.uuid]: [],
       },
     };
   }
