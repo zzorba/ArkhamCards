@@ -246,26 +246,11 @@ msgstr "Enregistrer dans le Deck"
 msgid "Nevermind"
 msgstr "Peu importe"
 
-msgid "Problem with import"
-msgstr "Problème avec l’importation"
-
 msgid "Restore campaign data?"
 msgstr "Restaurer les données de campagne ?"
 
-msgid "Paste Backup Here"
-msgstr "Coller la Sauvegarde ici"
-
 msgid "Backup campaign data?"
 msgstr "Sauvegarder les données de campagne ?"
-
-msgid ""
-"This feature is intended for advanced diagnostics or if you are trying to "
-"move your campaign data from one device to another. Just copy the data and "
-"paste it into the other app."
-msgstr ""
-"Cette fonctionnalité est destinée aux diagnostics avancés ou si vous tentez "
-"de déplacer vos données de campagne d’un appareil à un autre. Copiez "
-"simplement les données et collez-les dans l’autre application."
 
 msgid "Export Campaign Data"
 msgstr "Exporter les Données de Campagne"
@@ -1379,30 +1364,6 @@ msgstr ""
 "Veuillez régler le filtre de traits."
 
 msgid ""
-"We were not able to parse any campaigns from that pasted data.\n"
-"\n"
-"Make sure its an exact copy of the text provided by the Backup feature of "
-"an Arkham Cards app."
-msgstr ""
-"Nous n’avons pas été en mesure d’analyser toutes les campagnes à partir de "
-"ces données collées.\n"
-"\n"
-"Assurez-vous que c’est une copie exacte du texte fourni par la "
-"fonctionnalité de sauvegarde d’une application Arkham Cards."
-
-#, javascript-format
-msgid ""
-"This feature is intended for advanced diagnostics or to import data from "
-"another app.\n"
-"\n"
-"${ erasedCopy }"
-msgstr ""
-"Cette fonctionnalité sert à faire des diagnostics avancés ou à importer des "
-"données à partir d’une autre application.\n"
-"\n"
-"${erasedCopy}"
-
-msgid ""
 "Data on ArkhamDB will be preserved, but all Campaign data and any edits "
 "made without internet might be lost.\n"
 "\n"
@@ -2468,9 +2429,6 @@ msgstr[0] ""
 msgstr[1] ""
 "Chaque Investigateur paye ${ entry.xpCost } points d'expérience pour jouer "
 "ce scénario."
-
-msgid "All local decks and campaigns will be overridden"
-msgstr "Tous les Decks et les campagnes seront supprimés"
 
 msgid "Import data"
 msgstr "Importation des données"
@@ -4121,17 +4079,35 @@ msgid ""
 msgstr ""
 "Êtes-vous sûr de vouloir vous déconnecter d'Arkham Cards ?\n"
 "\n"
-"Toutes les campagnes que vous avez transférées ou que vous avez partagées avec "
-"vous seront supprimées de cet appareil. Elles peuvent être resynchronisées si "
-"vous vous connectez à nouveau.\n"
+"Toutes les campagnes que vous avez transférées ou que vous avez partagées "
+"avec vous seront supprimées de cet appareil. Elles peuvent être "
+"resynchronisées si vous vous connectez à nouveau.\n"
 "\n"
-"Note : si vous avez effectué des modifications récentes hors ligne, elles peuvent être perdues."
+"Note : si vous avez effectué des modifications récentes hors ligne, elles "
+"peuvent être perdues."
 
 msgid "Name required"
 msgstr "Nom Requis"
 
 msgid "You must specify a name for custom campaigns."
 msgstr "Vous devez spécifier un nom pour les campagnes personnalisées."
+
+msgid "Export diagnostic data"
+msgstr ""
+
+msgid ""
+"This feature is intended for advanced diagnostics. Just copy the data "
+"presented here and email it to arkhamcards@gmail.com"
+msgstr ""
+
+msgid "Database migration required"
+msgstr ""
+
+msgid "This should only take a few seconds and no network is required."
+msgstr ""
+
+msgid "Migrate now"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"

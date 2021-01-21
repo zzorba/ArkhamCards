@@ -324,35 +324,8 @@ msgstr "두번째 기본판"
 msgid "Edit Collection"
 msgstr "보유게임 수정"
 
-msgid "Problem with import"
-msgstr "불러오기 문제"
-
-msgid ""
-"We were not able to parse any campaigns from that pasted data.\n"
-"\n"
-"Make sure its an exact copy of the text provided by the Backup feature of "
-"an Arkham Cards app."
-msgstr ""
-"해당 데이터를 어떠한 캠페인으로도 해석하는데 실패하였습니다.\n"
-"\n"
-"아컴카드 앱의 백업 기능을 활용하여 작성된 텍스트와 정확히 일치하는지 한번 확인해 주십시오."
-
-msgid "All local decks and campaigns will be overridden"
-msgstr "내부에만 저장된 모든 덱과 모든 캠페인은 삭제될 것입니다."
-
 msgid "Restore campaign data?"
 msgstr "캠페인 데이터를 복구하시겠습니까?"
-
-#, javascript-format
-msgid ""
-"This feature is intended for advanced diagnostics or to import data from "
-"another app.\n"
-"\n"
-"${ erasedCopy }"
-msgstr ""
-"이 기능은 고급 진단 혹은 다른 앱에서 데이터를 불러오기 위하여 제공됩니다.\n"
-"\n"
-"${ erasedCopy }"
 
 msgid "Nevermind"
 msgstr "신경끄기"
@@ -360,19 +333,8 @@ msgstr "신경끄기"
 msgid "Import data"
 msgstr "데이터 불러오기"
 
-msgid "Paste Backup Here"
-msgstr "백업을 이곳에 붙여넣으십시오"
-
 msgid "Backup campaign data?"
 msgstr "캠페인 데이터를 백업하시겠습니까?"
-
-msgid ""
-"This feature is intended for advanced diagnostics or if you are trying to "
-"move your campaign data from one device to another. Just copy the data and "
-"paste it into the other app."
-msgstr ""
-"이 기능은 고급 진단 또는 서로 다른 기기들 사이에서 당신의 캠페인 데이터를 옮기기 위하여 제공됩니다. 단순히 해당 데이터를 복사하고, "
-"다른 앱에 가서 붙여넣기만 하면 됩니다."
 
 msgid "Export Campaign Data"
 msgstr "캠페인 데이터 내보내기"
@@ -3915,6 +3877,23 @@ msgid "Name required"
 msgstr ""
 
 msgid "You must specify a name for custom campaigns."
+msgstr ""
+
+msgid "Export diagnostic data"
+msgstr ""
+
+msgid ""
+"This feature is intended for advanced diagnostics. Just copy the data "
+"presented here and email it to arkhamcards@gmail.com"
+msgstr ""
+
+msgid "Database migration required"
+msgstr ""
+
+msgid "This should only take a few seconds and no network is required."
+msgstr ""
+
+msgid "Migrate now"
 msgstr ""
 
 #, javascript-format
