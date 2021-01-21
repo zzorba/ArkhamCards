@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { filter } from 'lodash';
+import { filter, map } from 'lodash';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -166,11 +166,11 @@ function MyDecksComponent({
 
   const deckIds = useMemo(() => {
     const onlyInvestigatorSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
-    const filterDeckIdsSet = new Set(filterDeckIds);
+    const filterDeckIdsSet = new Set(map(filterDeckIds, id => id.uuid));
     const filterInvestigatorsSet = new Set(filterInvestigators);
     return filter(onlyDeckIds || myDecks, deckId => {
       const deck = getDeck(decks, deckId);
-      return !filterDeckIdsSet.has(deckId) && (
+      return !filterDeckIdsSet.has(deckId.uuid) && (
         !deck || !filterInvestigatorsSet.has(deck.investigator_code)
       ) && (!deck || !onlyInvestigatorSet || onlyInvestigatorSet.has(deck.investigator_code));
     });

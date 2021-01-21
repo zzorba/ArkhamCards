@@ -20,7 +20,7 @@ import { NavigationProps } from '@components/nav/types';
 import { Deck, DeckId, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/Card';
-import { getAllDecks, getCampaigns, makeLatestCampaignDeckIdsSelector, AppState, getDeck } from '@reducers';
+import { getAllDecks, makeLatestCampaignDeckIdsSelector, AppState, getDeck, makeOtherCampiagnDeckIdsSelector } from '@reducers';
 import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -90,15 +90,9 @@ function MyDecksSelectorDialog(props: Props) {
   const { fontScale, typography } = useContext(StyleContext);
   const { componentId, campaignId, onDeckSelect, onInvestigatorSelect, singleInvestigator, selectedDeckIds, selectedInvestigatorIds, onlyShowSelected, simpleOptions } = props;
 
-  const otherCampaignsSelector = useCallback((state: AppState) => {
-    return filter(getCampaigns(state), campaign => campaign.uuid !== campaignId);
-  }, [campaignId]);
-  const otherCampaigns = useSelector(otherCampaignsSelector);
-  const otherCampaignDeckIdsSelector = useCallback((state: AppState) => {
-    return flatMap(otherCampaigns, c => makeLatestCampaignDeckIdsSelector()(state, c));
-  }, [otherCampaigns]);
-  const otherCampaignDeckIds = useSelector(otherCampaignDeckIdsSelector);
   const campaign = useCampaign(campaignId);
+  const otherCampaignsDeckIdsSelector = useMemo(() => makeOtherCampiagnDeckIdsSelector(), []);
+  const otherCampaignDeckIds = useSelector((state: AppState) => otherCampaignsDeckIdsSelector(state, campaign));
   const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
   const campaignLatestDeckIds = useSelector((state: AppState) => getLatestCampaignDeckIds(state, campaign));
   const decks = useSelector(getAllDecks);
@@ -181,7 +175,7 @@ function MyDecksSelectorDialog(props: Props) {
       return [];
     }
     if (hideOtherCampaignDecks) {
-      return uniqBy(concat(otherCampaignDeckIds, selectedDeckIds || []), x => x);
+      return uniqBy(concat(otherCampaignDeckIds, selectedDeckIds || []), x => x.uuid);
     }
     return selectedDeckIds || [];
   }, [selectedDeckIds, otherCampaignDeckIds, onlyShowSelected, hideOtherCampaignDecks]);
@@ -238,7 +232,6 @@ function MyDecksSelectorDialog(props: Props) {
   }, [campaign, onlyShowSelected, singleInvestigator, simpleOptions, typography, fontScale,
     hideOtherCampaignDecks, hideEliminatedInvestigators, onlyShowPreviousCampaignMembers,
     toggleHideOtherCampaignDecks, toggleHideEliminatedInvestigators, toggleOnlyShowPreviousCampaignMembers]);
-
   const onTabChange = useCallback((tab: string) => {
     Navigation.mergeOptions(
       componentId,

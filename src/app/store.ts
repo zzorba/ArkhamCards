@@ -1,4 +1,4 @@
-import { filter, forEach, keys, values } from 'lodash';
+import { filter } from 'lodash';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createOffline } from '@redux-offline/redux-offline';
@@ -7,8 +7,7 @@ import { createMigrate, persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import reducers, { AppState } from '@reducers';
-import { DeckId, LegacyCampaign, ChaosBagResults, LegacyDeck, LegacyCampaignGuideState } from '@actions/types';
-import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
+
 // import Reactotron from './ReactotronConfig';
 
 /**

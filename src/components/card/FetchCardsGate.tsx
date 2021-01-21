@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -19,7 +19,6 @@ import space, { l, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useEffectUpdate } from '@components/core/hooks';
-import { values } from 'lodash';
 import useReduxMigrator from '@components/settings/useReduxMigrator';
 
 const REFETCH_DAYS = 7;
@@ -45,17 +44,15 @@ interface ReduxActionProps {
   dismissUpdatePrompt: () => void;
 }
 
-interface OwnProps {
+interface Props {
   promptForUpdate?: boolean;
-  children: ReactNode;
+  children: JSX.Element;
 }
-
-type Props = ReduxProps & ReduxActionProps & OwnProps;
 
 /**
  * Simple component to block children rendering until cards/packs are loaded.
  */
-export default function FetchCardsGate({ promptForUpdate, children }: Props) {
+export default function FetchCardsGate({ promptForUpdate, children }: Props): JSX.Element {
   const { db } = useContext(DatabaseContext);
   const [needsMigration, migrating, doMigrate] = useReduxMigrator();
 
@@ -72,8 +69,6 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
     const cards = await db.cards();
     return await cards.count();
   }, [db]);
-
-  const decks = useSelector((state: AppState) => state.legacyDecks.all);
 
   const doFetch = useCallback(() => {
     dispatch(fetchCards(db, choiceLang, useSystemLang ? 'system' : choiceLang));
@@ -130,6 +125,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffectUpdate(() => {
     if (fetchNeeded && promptForUpdate) {

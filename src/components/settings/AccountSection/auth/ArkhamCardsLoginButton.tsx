@@ -34,7 +34,7 @@ function login(user: string): ThunkAction<void, AppState, unknown, Action> {
 function logout(): ThunkAction<void, AppState, null, Action> {
   return (dispatch, getState) => {
     const state = getState();
-    forEach(state.campaigns?.all || {}, campaign => {
+    forEach(state.campaigns_2.all || {}, campaign => {
       if (campaign && campaign.serverId) {
         dispatch(removeLocalCampaign(campaign));
       }
