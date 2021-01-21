@@ -9,7 +9,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
-import { Campaign, Deck, DecksMap, InvestigatorData, Trauma, TraumaAndCardData } from '@actions/types';
+import { Campaign, Deck, DeckId, DecksMap, getCampaignId, getDeckId, InvestigatorData, Trauma, TraumaAndCardData } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
 import space from '@styles/space';
@@ -17,17 +17,18 @@ import StyleContext from '@styles/StyleContext';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { ShowAlert } from '@components/deck/dialogs';
+import { getDeck } from '@reducers';
 
 interface Props {
   componentId: string;
   campaign: Campaign;
-  latestDeckIds: number[];
+  latestDeckIds: DeckId[];
   decks: DecksMap;
   cards: CardsMap;
   allInvestigators: Card[];
   investigatorData: InvestigatorData;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
-  updateLatestDeckIds: (latestDeckIds: number[]) => void;
+  updateLatestDeckIds: (latestDeckIds: DeckId[]) => void;
   updateNonDeckInvestigators: (nonDeckInvestigators: string[]) => void;
   showChooseDeck: (investigator?: Card) => void;
   incSpentXp: (code: string) => void;
@@ -60,13 +61,13 @@ export default function DecksSection({
   showAlert,
 }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
-  const removeInvestigator = useCallback((investigator: Card, removedDeckId?: number) =>{
+  const removeInvestigator = useCallback((investigator: Card, removedDeckId?: DeckId) =>{
     if (removedDeckId) {
       const newLatestDeckIds = filter(
         latestDeckIds,
-        deckId => deckId !== removedDeckId
+        deckId => deckId.uuid !== removedDeckId.uuid
       );
-      const deck = decks[removedDeckId];
+      const deck = getDeck(decks, removedDeckId);
       if (deck && !find(allInvestigators, card => card.code === investigator.code)) {
         updateNonDeckInvestigators(map(allInvestigators, card => card.code));
       }
@@ -83,8 +84,8 @@ export default function DecksSection({
 
   const removeDeckPrompt = useCallback((investigator: Card) => {
     const deckId = find(latestDeckIds, deckId => {
-      const deck = decks[deckId];
-      return deck && deck.investigator_code === investigator.code;
+      const deck = getDeck(decks, deckId);
+      return !!(deck && deck.investigator_code === investigator.code);
     });
     showAlert(
       t`Remove ${investigator.name}?`,
@@ -111,8 +112,8 @@ export default function DecksSection({
       component: {
         name: 'Deck.Upgrade',
         passProps: {
-          id: deck.id,
-          campaignId: campaign.id,
+          id: getDeckId(deck),
+          campaignId: campaign.uuid,
           showNewDeck: false,
         },
         options: {
@@ -141,12 +142,7 @@ export default function DecksSection({
   const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
     showChooseDeck(investigator);
   }, [showChooseDeck]);
-  const campaignId = useMemo(() => {
-    return {
-      campaignId: campaign.id,
-      serverId: campaign.serverId,
-    };
-  }, [campaign.id, campaign.serverId]);
+  const campaignId = useMemo(() => getCampaignId(campaign), [campaign]);
   const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: Deck) => {
     const traumaAndCardData = campaign.investigatorData[investigator.code] || EMPTY_TRAUMA_DATA;
     return (
@@ -170,7 +166,7 @@ export default function DecksSection({
     );
   }, [componentId, campaignId, campaign.investigatorData, cards, showTraumaDialog, incSpentXp, decSpentXp, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator, removeMode]);
 
-  const latestDecks: Deck[] = useMemo(() => flatMap(latestDeckIds, deckId => decks[deckId] || []), [latestDeckIds, decks]);
+  const latestDecks: Deck[] = useMemo(() => flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || []), [latestDeckIds, decks]);
   const [killedInvestigators, aliveInvestigators] = useMemo(() => {
     return partition(allInvestigators, investigator => {
       return investigator.eliminated(investigatorData[investigator.code]);

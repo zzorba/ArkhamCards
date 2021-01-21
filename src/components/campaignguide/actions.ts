@@ -21,23 +21,23 @@ import {
   GUIDE_UPDATE_ACHIEVEMENT,
   GuideUpdateAchievementAction,
   guideInputToId,
+  DeckId,
 } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import database from '@react-native-firebase/database';
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 
 export function refreshCampaigns(userId: string): ThunkAction<void, AppState, null, Action> {
-  return async(dispatch, getState) => {
+  return async() => {
     const campaignIds: string[] = keys((await database().ref('/user_campaigns').child(userId).child('campaigns').once('value')).val());
     Promise.all(map(campaignIds, campaignId => {
       return database().ref('/campaigns').child(campaignId).once('value');
     }));
-    const state = getState();
   };
 }
 
 export function uploadCampaign(
-  campaignId: number,
+  campaignId: string,
   serverId: string,
   guided: boolean
 ): ThunkAction<void, AppState, null, UpdateCampaignAction> {
@@ -217,6 +217,7 @@ export function setScenarioNumberChoices(
   campaignId: CampaignId,
   step: string,
   choices: NumberChoices,
+  deckId?: DeckId,
   scenario?: string
 ): GuideSetInputAction {
   return setGuideInputAction(campaignId, {
@@ -224,6 +225,7 @@ export function setScenarioNumberChoices(
     scenario,
     step,
     choices,
+    deckId,
   });
 }
 

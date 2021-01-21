@@ -1,5 +1,6 @@
 import { Action } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { values } from 'lodash';
 
 import {
   CLEAR_DECKS,
@@ -131,7 +132,7 @@ export function clearDecks(): Action<string> {
 }
 
 function getDecksLastModified(state: AppState): string | undefined {
-  return (state.decks.myDecks && state.decks.myDecks.length) ?
+  return values(state.decks.all) ?
     state.decks.lastModified :
     undefined;
 }

@@ -10,7 +10,7 @@ import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 
 export interface OddsCalculatorProps {
-  campaignId: number;
+  campaignId: string;
   investigatorIds: string[];
 }
 

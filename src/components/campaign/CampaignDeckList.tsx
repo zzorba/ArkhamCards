@@ -1,15 +1,16 @@
 import React, { ReactNode } from 'react';
 import { map } from 'lodash';
 import { View } from 'react-native';
+import { DeckId } from '@actions/types';
 
 export interface CampaignDeckListProps {
   componentId: string;
-  deckIds: number[];
+  deckIds: DeckId[];
   investigatorIds: string[];
 }
 
 interface Props extends CampaignDeckListProps {
-  renderDeck: (deckId: number) => ReactNode;
+  renderDeck: (deckId: DeckId) => ReactNode;
   renderInvestigator?: (investigator: string) => ReactNode;
 }
 

@@ -21,7 +21,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { UPDATE_DECK_EDIT } from '@actions/types';
+import { DeckId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/Card';
 import { EditDeckProps } from '../DeckEditView';
@@ -54,11 +54,11 @@ import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import DeckProblemBanner from '../DeckProblemBanner';
 
 export interface DeckDetailProps {
-  id: number;
+  id: DeckId;
   upgrade?: boolean;
   title?: string;
   subtitle?: string;
-  campaignId?: number;
+  campaignId?: string;
   hideCampaign?: boolean;
   isPrivate?: boolean;
   modal?: boolean;
@@ -91,10 +91,6 @@ function DeckDetailView({
     fetchIfMissing: true,
     upgrade,
   });
-  const campaignSelector = useMemo(makeCampaignSelector, []);
-  const campaignForDeckSelector = useMemo(makeCampaignForDeckSelector, []);
-  const campaign = useSelector((state: AppState) => campaignId ? campaignSelector(state, campaignId) : campaignForDeckSelector(state, deck?.id || id));
-  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj, campaign);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
   const {
     deck,
@@ -105,6 +101,15 @@ function DeckDetailView({
     parsedDeck,
     tabooSetId,
   } = parsedDeckObj;
+
+  const campaignSelector = useMemo(makeCampaignSelector, []);
+  const campaignForDeckSelector = useMemo(makeCampaignForDeckSelector, []);
+  const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
+  const campaign = useSelector((state: AppState) => {
+    return campaignId ? campaignSelector(state, campaignId) : campaignForDeckSelector(state, deckId);
+  });
+  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj, campaign);
+
   const [copying, toggleCopying] = useFlag(false);
   const {
     saving: deleting,
@@ -295,7 +300,7 @@ function DeckDetailView({
 
   useEffect(() => {
     if (!deck) {
-      if (!deleting && id > 0) {
+      if (!deleting && !id.local) {
         showAlert(
           t`Deck has been deleted`,
           t`It looks like you deleted this deck from ArkhamDB.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.`,
@@ -315,7 +320,7 @@ function DeckDetailView({
     if (!deleting) {
       setDeleting(true);
 
-      deckDispatch(deleteDeckAction(id, deleteAllVersions, deck ? deck.local : id < 0)).then(() => {
+      deckDispatch(deleteDeckAction(id, deleteAllVersions, deck ? deck.local : id.local)).then(() => {
         Navigation.dismissAllModals();
         setDeleting(false);
       });
@@ -334,7 +339,7 @@ function DeckDetailView({
     if (!deleting) {
       setDeleting(true);
 
-      deckDispatch(deleteDeckAction(id, false, id < 0)).then(() => {
+      deckDispatch(deleteDeckAction(id, false, id.local)).then(() => {
         Navigation.dismissAllModals();
         setDeleting(false);
       });
@@ -368,14 +373,14 @@ function DeckDetailView({
       component: {
         name: 'Deck.Checklist',
         passProps: {
-          id: deck.id,
+          id: deckId,
           slots: deckEditsRef.current.slots,
           tabooSetOverride: tabooSetId,
         },
         options: getDeckOptions(colors, { title: t`Checklist`, noTitle: true }, investigator),
       },
     });
-  }, [componentId, deck, cards, tabooSetId, deckEditsRef, colors, setFabOpen, setMenuOpen]);
+  }, [componentId, deck, deckId, cards, tabooSetId, deckEditsRef, colors, setFabOpen, setMenuOpen]);
 
   const onEditSpecialPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -392,7 +397,7 @@ function DeckDetailView({
       component: {
         name: 'Deck.EditSpecial',
         passProps: {
-          campaignId: campaign ? campaign.id : undefined,
+          campaignId: campaign ? campaign.uuid : undefined,
           id,
           assignedWeaknesses: addedBasicWeaknesses,
         },
@@ -471,9 +476,9 @@ function DeckDetailView({
       component: {
         name: 'Deck.Upgrade',
         passProps: {
-          id: deck.id,
+          id: deckId,
           showNewDeck: true,
-          campaignId: campaign ? campaign.id : undefined,
+          campaignId: campaign ? campaign.uuid : undefined,
         },
         options: {
           statusBar: {
@@ -496,7 +501,7 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, deck, campaign, colors, parsedDeck, setFabOpen, setMenuOpen]);
+  }, [componentId, deck, deckId, campaign, colors, parsedDeck, setFabOpen, setMenuOpen]);
 
   const copyDialog = useMemo(() => {
     return (
@@ -546,13 +551,13 @@ function DeckDetailView({
     onValueChange: updateDeckName,
     value: name || '',
   });
-  const editable = !!isPrivate && !!deck && !deck.next_deck;
+  const editable = !!isPrivate && !!deck && !deck.nextDeckId;
   const onEditPressed = useCallback(() => {
     setFabOpen(false);
     setMode('edit');
   }, [setMode, setFabOpen]);
   const buttons = useMemo(() => {
-    if (!parsedDeck || !deck || deck.next_deck) {
+    if (!parsedDeck || !deck || deck.nextDeckId) {
       return null;
     }
     if (!hasPendingEdits && editable) {
@@ -619,7 +624,7 @@ function DeckDetailView({
         t`Save Local Changes`,
         t`Please save any local edits to this deck before sharing to ArkhamDB`
       );
-    } else if (deck.next_deck || deck.previous_deck) {
+    } else if (deck.nextDeckId || deck.previousDeckId) {
       showAlert(
         t`Unsupported Operation`,
         t`This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time.\n\nIf you would like to upload it, you can use Clone to upload a clone of the current deck.`
@@ -646,7 +651,7 @@ function DeckDetailView({
   }, [signedIn, login, deck, hasPendingEdits, showAlert, setFabOpen, setMenuOpen, uploadLocalDeck]);
 
   const viewDeck = useCallback(() => {
-    if (deck) {
+    if (deck && !deck.local) {
       Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
     }
   }, [deck]);
@@ -661,7 +666,7 @@ function DeckDetailView({
       text: t`Cancel`,
       style: 'cancel',
     }];
-    const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
+    const isLatestUpgrade = deck.previousDeckId && !deck.nextDeckId;
     if (isLatestUpgrade) {
       options.push({
         text: t`Delete this upgrade (${deck.version})`,
@@ -674,7 +679,7 @@ function DeckDetailView({
         style: 'destructive',
       });
     } else {
-      const isUpgraded = !!deck.next_deck;
+      const isUpgraded = !!deck.nextDeckId;
       options.push({
         text: isUpgraded ? t`Delete all versions` : t`Delete`,
         onPress: deleteAllDecks,
@@ -729,7 +734,7 @@ function DeckDetailView({
       normalCardCount,
       totalCardCount,
     } = parsedDeck;
-    const editable = isPrivate && deck && !deck.next_deck;
+    const editable = isPrivate && deck && !deck.nextDeckId;
     const xp = (deck.xp || 0) + deckEdits.xpAdjustment;
     const adjustment = deckEdits.xpAdjustment >= 0 ? `+${deckEdits.xpAdjustment}` : `${deckEdits.xpAdjustment}`;
     const xpString = t`${xp} (${adjustment}) XP`;
@@ -807,7 +812,7 @@ function DeckDetailView({
         { editable && (
           <>
             <DeckBubbleHeader title={t`Campaign`} />
-            { !!deck.previous_deck && (
+            { !!deck.previousDeckId && (
               <MenuButton
                 icon="xp"
                 onPress={showXpAdjustmentDialog}
@@ -821,10 +826,10 @@ function DeckDetailView({
               title={t`Upgrade Deck`}
               disabled={!!hasPendingEdits}
               description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
-              last={!deck.previous_deck}
+              last={!deck.previousDeckId}
               numberOfLines={2}
             />
-            { !!deck.previous_deck && (
+            { !!deck.previousDeckId && (
               <MenuButton
                 icon="deck"
                 onPress={showUpgradeHistoryPressed}
@@ -1029,7 +1034,7 @@ function DeckDetailView({
               showDeckHistory={showUpgradeHistoryPressed}
               showXpAdjustmentDialog={showXpAdjustmentDialog}
               showCardUpgradeDialog={showCardUpgradeDialog}
-              showEditSpecial={deck.next_deck ? undefined : onEditSpecialPressed}
+              showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               signedIn={signedIn}
               login={login}
               campaign={campaign}

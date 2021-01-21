@@ -13,7 +13,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DeckUpgradeComponent, { DeckUpgradeHandles } from './DeckUpgradeComponent';
-import { Deck, Slots } from '@actions/types';
+import { Deck, DeckId, getCampaignId, getDeckId, Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { showDeckModal } from '@components/nav/helper';
 import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
@@ -28,8 +28,8 @@ import { saveDeckChanges, saveDeckUpgrade, SaveDeckChanges } from './actions';
 import { AppState } from '@reducers';
 
 export interface UpgradeDeckProps {
-  id: number;
-  campaignId?: number;
+  id: DeckId;
+  campaignId?: string;
   showNewDeck: boolean;
 }
 
@@ -88,7 +88,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     if (campaign) {
       if (investigatorData) {
         dispatch(updateCampaign(
-          { campaignId: campaign.id, serverId: campaign.serverId },
+          getCampaignId(campaign),
           { investigatorData }
         ));
       }
@@ -129,7 +129,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
         <StoryCardSelectorComponent
           componentId={componentId}
           investigator={investigator}
-          deckId={deck.id}
+          deckId={getDeckId(deck)}
           updateStoryCounts={onStoryCountsChange}
           encounterCodes={storyEncounterCodes}
           scenarioName={scenarioName}

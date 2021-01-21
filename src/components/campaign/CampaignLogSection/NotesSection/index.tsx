@@ -53,6 +53,7 @@ export default function NotesSection(props: Props) {
   const { notesChanged, index, title, notes, showDialog } = props;
   const [currentNotes, updateCurrentNotes] = useReducer(notesReducer, notes);
   useEffect(() => {
+    // tslint:disable-next-line
     if (notes !== currentNotes) {
       notesChanged(index, currentNotes);
     }

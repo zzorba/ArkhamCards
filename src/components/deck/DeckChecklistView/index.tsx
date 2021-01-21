@@ -6,7 +6,7 @@ import { find } from 'lodash';
 import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
-import { Slots, SORT_BY_TYPE, SortType } from '@actions/types';
+import { Slots, SORT_BY_TYPE, SortType, DeckId } from '@actions/types';
 import { AppState, getDeckChecklist } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
 import { showCard } from '@components/nav/helper';
@@ -22,7 +22,7 @@ import { useDeckEdits, useDeckSlotCount } from '@components/deck/hooks';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface DeckChecklistProps {
-  id: number;
+  id: DeckId;
   slots: Slots;
   tabooSetOverride?: number;
 }
@@ -35,7 +35,7 @@ function ChecklistCard({
   checklist,
   pressCard,
 }: {
-  id: number,
+  id: DeckId,
   card: Card;
   checklist: string[];
   pressCard: (card: Card) => void;

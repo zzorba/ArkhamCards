@@ -12,6 +12,8 @@ import {
   GuideStartCustomSideScenarioInput,
   InvestigatorTraumaData,
   InvestigatorData,
+  getDeckId,
+  DeckId,
 } from '@actions/types';
 import Card from '@data/Card';
 import { useCallback, useMemo } from 'react';
@@ -23,7 +25,7 @@ import { CampaignGuideContextType } from './CampaignGuideContext';
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 
-export default function useCampaignGuideContext(id: number, campaignData?: CampaignGuideReduxData): CampaignGuideContextType | undefined {
+export default function useCampaignGuideContext(id: string, campaignData?: CampaignGuideReduxData): CampaignGuideContextType | undefined {
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch = useDispatch();
   const investigators = useInvestigatorCards();
@@ -57,7 +59,7 @@ export default function useCampaignGuideContext(id: number, campaignData?: Campa
   const removeDeck = useCallback((
     deck: Deck
   ) => {
-    dispatch(campaignActions.removeInvestigator(campaignId, deck.investigator_code, deck.id));
+    dispatch(campaignActions.removeInvestigator(campaignId, deck.investigator_code, getDeckId(deck)));
   }, [dispatch, campaignId]);
 
   const removeInvestigator = useCallback((investigator: Card) => {
@@ -126,11 +128,12 @@ export default function useCampaignGuideContext(id: number, campaignData?: Campa
     ));
   }, [dispatch, campaignId]);
 
-  const setNumberChoices = useCallback((stepId: string, choices: NumberChoices, scenarioId?: string) => {
+  const setNumberChoices = useCallback((stepId: string, choices: NumberChoices, deckId?: DeckId, scenarioId?: string) => {
     dispatch(guideActions.setScenarioNumberChoices(
       campaignId,
       stepId,
       choices,
+      deckId,
       scenarioId
     ));
   }, [dispatch, campaignId]);

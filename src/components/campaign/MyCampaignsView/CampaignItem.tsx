@@ -7,12 +7,12 @@ import GenericCampaignItem from './GenericCampaignItem';
 
 interface Props {
   campaign: Campaign;
-  onPress: (id: number, campaign: Campaign) => void;
+  onPress: (id: string, campaign: Campaign) => void;
 }
 
 export default function CampaignItem({ campaign, onPress }: Props) {
   const handleOnPress = useCallback(() => {
-    onPress(campaign.id, campaign);
+    onPress(campaign.uuid, campaign);
   }, [onPress, campaign]);
   return (
     <GenericCampaignItem

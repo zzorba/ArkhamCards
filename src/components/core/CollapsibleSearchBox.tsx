@@ -123,7 +123,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
     return (
       <Animated.View needsOffscreenAlphaCompositing style={[
         styles.advancedOptions,
-        shadow.large,
+        shadow.medium,
         {
           backgroundColor: colors.L20,
           width,
@@ -145,7 +145,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
         </View>
       </Animated.View>
     );
-  }, [advancedOptions, width, advancedToggleAnim, colors, shadow.large]);
+  }, [advancedOptions, width, advancedToggleAnim, colors, shadow.medium]);
 
   const translateY = advancedOpen ? 0 : scrollAnim.current.interpolate({
     inputRange: [0, 1],
@@ -210,7 +210,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
         { advancedOptionsBlock }
         <Animated.View needsOffscreenAlphaCompositing style={[
           styles.fixed,
-          shadow.large,
+          shadow.small,
           { width },
           Platform.select({
             default: { shadowOpacity },

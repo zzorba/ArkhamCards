@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useRef } from 'react';
-import { flatMap } from 'lodash';
+import React, { useCallback, useContext, useMemo, useRef } from 'react';
+import { flatMap, map } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -11,10 +11,10 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Deck, ScenarioResult } from '@actions/types';
+import { Deck, getCampaignId, getDeckId, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
-import { getAllDecks, getLangPreference } from '@reducers';
+import { getAllDecks, getDeck, getLangPreference } from '@reducers';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { updateCampaign } from '@components/campaign/actions';
@@ -25,7 +25,7 @@ import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface UpgradeDecksProps {
-  id: number;
+  id: string;
   scenarioResult: ScenarioResult;
 }
 
@@ -37,7 +37,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
   const [latestDeckIds, allInvestigators] = useCampaignDetails(campaign, investigators);
   const lang = useSelector(getLangPreference);
   const decks = useSelector(getAllDecks);
-  const originalDeckIds = useRef(new Set(latestDeckIds));
+  const originalDeckUuids = useRef(new Set(map(latestDeckIds, id => id.uuid)));
   const close = useCallback(() => {
     Navigation.dismissModal(componentId);
   }, [componentId]);
@@ -51,10 +51,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
     if (campaign) {
       const investigatorData = campaign.investigatorData[investigator.code] || {};
       const oldXp = investigatorData.availableXp || 0;
-      dispatch(updateCampaign({
-        campaignId: campaign.id,
-        serverId: campaign.serverId,
-      }, {
+      dispatch(updateCampaign(getCampaignId(campaign), {
         investigatorData: {
           ...campaign.investigatorData || {},
           [investigator.code]: {
@@ -72,7 +69,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
       component: {
         name: 'Deck.Upgrade',
         passProps: {
-          id: deck.id,
+          id: getDeckId(deck),
           campaignId: id,
           showNewDeck: false,
         },
@@ -98,7 +95,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
       },
     });
   }, [componentId, id, colors]);
-
+  const latestDecks = useMemo(() => flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || []), [decks, latestDeckIds]);
 
   if (!campaign) {
     return null;
@@ -115,8 +112,8 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
         lang={lang}
         investigatorData={campaign.investigatorData}
         allInvestigators={allInvestigators}
-        decks={flatMap(latestDeckIds, deckId => decks[deckId] || [])}
-        originalDeckIds={originalDeckIds.current}
+        decks={latestDecks}
+        originalDeckUuids={originalDeckUuids.current}
         showDeckUpgradeDialog={showDeckUpgradeDialog}
         updateInvestigatorXp={updateInvestigatorXp}
       />

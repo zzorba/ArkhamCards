@@ -7,7 +7,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { t } from 'ttag';
 
 import NewDialog from '@components/core/NewDialog';
-import { Campaign, Deck, ParsedDeck, UPDATE_DECK_EDIT } from '@actions/types';
+import { Campaign, Deck, getCampaignId, getDeckId, ParsedDeck, UPDATE_DECK_EDIT } from '@actions/types';
 import { useDispatch } from 'react-redux';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCounter } from '@components/core/hooks';
@@ -452,6 +452,7 @@ export function usePickerDialog<T>({
             text={item.title}
             value={item.value}
             onValueChange={onValuePress}
+            // tslint:disable-next-line
             selected={selectedValue === item.value}
             last={idx === items.length - 1}
           />
@@ -587,7 +588,7 @@ export function useAdjustXpDialog({
     if (deck) {
       dispatch({
         type: UPDATE_DECK_EDIT,
-        id: deck.id,
+        id: getDeckId(deck),
         updates: {
           xpAdjustment,
         },
@@ -657,10 +658,7 @@ export function useSaveDialog(
         assignedCards[code] = (assignedCards[code] || 0) + 1;
       });
       dispatch(updateCampaign(
-        {
-          campaignId: campaign.id,
-          serverId: campaign.serverId,
-        },
+        getCampaignId(campaign),
         {
           weaknessSet: {
             ...(campaign.weaknessSet || {}),
@@ -708,7 +706,7 @@ export function useSaveDialog(
       } else {
         dispatch({
           type: UPDATE_DECK_EDIT,
-          id: deck.id,
+          id: getDeckId(deck),
           updates: {
             mode: 'view',
           },

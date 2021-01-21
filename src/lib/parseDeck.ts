@@ -26,6 +26,7 @@ import {
   DeckChanges,
   DeckMeta,
   FactionCounts,
+  getDeckId,
   ParsedDeck,
   SkillCounts,
   SlotCounts,
@@ -56,6 +57,7 @@ function filterBy(
 ): CardId[] {
   return cardIds.filter(c => {
     const card = cards[c.id];
+    // tslint:disable-next-line
     return card && card[field] === value;
   });
 }
@@ -273,7 +275,7 @@ function getDeckChanges(
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
-  if (!deck.previous_deck || !previousDeck) {
+  if (!deck.previousDeckId || !previousDeck) {
     return undefined;
   }
   const previous_investigator_code = (previousDeck.meta || {}).alternate_back ||
@@ -617,6 +619,7 @@ export function parseDeck(
     slotCounts[slot] = slotCount(cardIds, cards, slot);
   });
   return {
+    id: getDeckId(deck),
     investigator,
     deck,
     slots,

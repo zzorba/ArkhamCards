@@ -20,7 +20,7 @@ import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: string;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
   standalone?: boolean;

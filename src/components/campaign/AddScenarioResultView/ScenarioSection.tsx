@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Campaign, SingleCampaign, ScenarioResult, CUSTOM } from '@actions/types';
+import { Campaign, SingleCampaign, ScenarioResult, CUSTOM, getCampaignId } from '@actions/types';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import EditText from '@components/core/EditText';
 import { updateCampaign } from '../actions';
@@ -76,7 +76,7 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
 
   const toggleShowInterludes = useCallback(() => {
     const campaignUpdate: Campaign = { showInterludes: !showInterludes } as any;
-    dispatch(updateCampaign({ campaignId: campaign.id, serverId: campaign.serverId }, campaignUpdate));
+    dispatch(updateCampaign(getCampaignId(campaign), campaignUpdate));
   }, [campaign, showInterludes, dispatch]);
 
   useEffect(() => {
@@ -90,7 +90,7 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
   }, [selectedScenario, customScenario, resolution, scenarioChanged]);
 
   useEffect(() => {
-    console.log('Use effect');
+    // tslint:disable-next-line
     if (!loading && allScenarios.length && allScenarios[0] !== selectedScenario) {
       setSelectedScenario(allScenarios[0]);
     }

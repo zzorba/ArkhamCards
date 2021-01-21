@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { scenarioRewards } from '@components/campaign/constants';
-import { Slots } from '@actions/types';
+import { DeckId, Slots } from '@actions/types';
 import Card from '@data/Card';
 import { PLAYER_CARDS_QUERY, combineQueries, MYTHOS_CARDS_QUERY } from '@data/query';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
@@ -18,7 +18,7 @@ import { ActivityIndicator } from 'react-native';
 interface Props {
   componentId: string;
   investigator: Card;
-  deckId: number;
+  deckId: DeckId;
   encounterCodes: string[];
   scenarioName?: string;
   updateStoryCounts: (exileCounts: Slots) => void;

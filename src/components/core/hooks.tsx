@@ -3,7 +3,7 @@ import { BackHandler, InteractionManager, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, ChaosBagResults, Deck, SingleCampaign, Slots } from '@actions/types';
+import { Campaign, ChaosBagResults, Deck, DeckId, SingleCampaign, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -510,7 +510,7 @@ export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined 
   return playerCards?.weaknessCards;
 }
 
-export function useCampaign(campaignId?: number): SingleCampaign | undefined {
+export function useCampaign(campaignId?: string): SingleCampaign | undefined {
   const getCampaign = useMemo(makeCampaignSelector, []);
   return useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId) : undefined);
 }
@@ -521,13 +521,13 @@ export function useCampaignInvestigators(campaign?: Campaign, investigators?: Ca
   return useSelector((state: AppState) => investigators && campaign ? getLatestCampaignInvestigators(state, investigators, campaign) : EMPTY_INVESTIGATORS);
 }
 
-const EMPTY_DECK_IDS: number[] = [];
-export function useCampaignLatestDeckIds(campaign?: Campaign): number[] {
+const EMPTY_DECK_IDS: DeckId[] = [];
+export function useCampaignLatestDeckIds(campaign?: Campaign): DeckId[] {
   const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
   return useSelector((state: AppState) => campaign ? getLatestCampaignDeckIds(state, campaign) : EMPTY_DECK_IDS);
 }
 
-export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [number[], Card[]] {
+export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [DeckId[], Card[]] {
   const allInvestigators = useCampaignInvestigators(campaign, investigators);
   const latestDeckIds = useCampaignLatestDeckIds(campaign);
   return [latestDeckIds, allInvestigators];
@@ -549,28 +549,28 @@ export function useCampaignScenarios(campaign?: Campaign): [Scenario[], { [code:
   return [cycleScenarios, scenarioByCode];
 }
 
-export function useChaosBagResults(campaignId: number): ChaosBagResults {
+export function useChaosBagResults(campaignId: string): ChaosBagResults {
   const chaosBagResultsSelector = useMemo(makeChaosBagResultsSelector, []);
   return useSelector((state: AppState) => chaosBagResultsSelector(state, campaignId));
 }
 
-export function useDeck(id: number | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean } = {}): [Deck | undefined, Deck | undefined] {
+export function useDeck(id: DeckId | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean } = {}): [Deck | undefined, Deck | undefined] {
   const dispatch = useDispatch();
   const effectiveDeckIdSelector = useCallback((state: AppState) => id !== undefined ? getEffectiveDeckId(state, id) : undefined, [id]);
   const effectiveDeckId = useSelector(effectiveDeckIdSelector);
   const deckSelector = useMemo(makeDeckSelector, []);
   const previousDeckSelector = useMemo(makeDeckSelector, []);
   const theDeck = useSelector((state: AppState) => effectiveDeckId !== undefined ? deckSelector(state, effectiveDeckId) : undefined) || undefined;
-  const thePreviousDeck = useSelector((state: AppState) => theDeck && theDeck.previous_deck && previousDeckSelector(state, theDeck.previous_deck)) || undefined;
+  const thePreviousDeck = useSelector((state: AppState) => (theDeck && theDeck.previousDeckId) ? previousDeckSelector(state, theDeck.previousDeckId) : undefined);
   useEffect(() => {
-    if (!theDeck && fetchIfMissing && id !== undefined && id > 0) {
+    if (!theDeck && fetchIfMissing && id !== undefined && !id.local) {
       dispatch(fetchPrivateDeck(id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    if (!thePreviousDeck && theDeck?.previous_deck && fetchIfMissing && !theDeck.local) {
-      dispatch(fetchPrivateDeck(theDeck.previous_deck));
+    if (!thePreviousDeck && theDeck?.previousDeckId && fetchIfMissing && !theDeck.local && !theDeck.previousDeckId.local) {
+      dispatch(fetchPrivateDeck(theDeck.previousDeckId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theDeck]);

@@ -7,7 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -23,6 +23,8 @@ import {
   Slots,
   INCOMPLETE_GUIDED_CAMPAIGNS,
   DIFFICULTIES,
+  DeckId,
+  getDeckId,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
@@ -34,7 +36,6 @@ import SettingsSwitch from '@components/core/SettingsSwitch';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
-import { getNextCampaignId } from '@reducers';
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
@@ -75,7 +76,6 @@ function getKeyName(
 
 function NewCampaignView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
-  const nextId = useSelector(getNextCampaignId);
   const cards = usePlayerCards();
   const dispatch = useDispatch();
 
@@ -90,9 +90,9 @@ function NewCampaignView({ componentId }: NavigationProps) {
   });
   const [guided, toggleGuided] = useFlag(true);
   const [difficulty, setDifficulty] = useState<CampaignDifficulty>(CampaignDifficulty.STANDARD);
-  const [deckIds, setDeckIds] = useState<number[]>([]);
+  const [deckIds, setDeckIds] = useState<DeckId[]>([]);
   const [investigatorIds, setInvestigatorIds] = useState<string[]>([]);
-  const [investigatorToDeck, setInvestigatorToDeck] = useState<{ [code: string]: number }>({});
+  const [investigatorToDeck, setInvestigatorToDeck] = useState<{ [code: string]: DeckId }>({});
   const [weaknessPacks, setWeaknessPacks] = useState<string[]>([]);
   const [weaknessAssignedCards, updateWeaknessAssignedCards] = useSlots({});
   const [customChaosBag, setCustomChaosBag] = useState<ChaosBag>(getChaosBag(CORE, CampaignDifficulty.STANDARD));
@@ -187,23 +187,23 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [investigatorIds, setInvestigatorIds]);
 
   const deckAdded = useCallback((deck: Deck) => {
-    setDeckIds([...deckIds, deck.id]);
+    setDeckIds([...deckIds, getDeckId(deck)]);
     setInvestigatorIds([...investigatorIds, deck.investigator_code]);
     setInvestigatorToDeck({
       ...investigatorToDeck,
-      [deck.investigator_code]: deck.id,
+      [deck.investigator_code]: getDeckId(deck),
     });
     checkDeckForWeaknessPrompt(deck);
   }, [setDeckIds, setInvestigatorIds, setInvestigatorToDeck, checkDeckForWeaknessPrompt, deckIds, investigatorIds, investigatorToDeck]);
 
-  const deckRemoved = useCallback((id: number, deck?: Deck) => {
-    const updatedInvestigatorToDeck: { [code: string]: number } = {};
+  const deckRemoved = useCallback((id: DeckId, deck?: Deck) => {
+    const updatedInvestigatorToDeck: { [code: string]: DeckId } = {};
     forEach(investigatorToDeck, (deckId, code) => {
-      if (deckId !== id) {
+      if (deckId.uuid !== id.uuid) {
         updatedInvestigatorToDeck[code] = deckId;
       }
     });
-    setDeckIds(filter(deckIds, deckId => deckId !== id));
+    setDeckIds(filter(deckIds, deckId => deckId.uuid !== id.uuid));
     setInvestigatorIds(!deck ? investigatorIds : filter([...investigatorIds], code => deck.investigator_code !== code));
     setInvestigatorToDeck(updatedInvestigatorToDeck);
   }, [investigatorToDeck, deckIds, investigatorIds, setDeckIds, setInvestigatorIds, setInvestigatorToDeck]);
@@ -227,7 +227,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
     if (selection.type === 'campaign') {
       if (selection.code === TDE) {
         dispatch(newLinkedCampaign(
-          nextId,
           name || placeholderName,
           TDE,
           TDEA,
@@ -240,7 +239,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
       } else {
         // Save to redux.
         dispatch(newCampaign(
-          nextId,
           name || placeholderName,
           selection.code,
           isGuided ? undefined : difficulty,
@@ -257,7 +255,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
       }
     } else {
       dispatch(newStandalone(
-        nextId,
         name || placeholderName,
         selection.id,
         deckIds,
@@ -269,7 +266,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       ));
     }
     Navigation.pop(componentId);
-  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, nextId, name, selection,
+  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, name, selection,
     difficulty, deckIds, investigatorIds, weaknessPacks, weaknessAssignedCards, isGuided]);
 
   const savePressed = useMemo(() => throttle(onSave, 200), [onSave]);
@@ -419,7 +416,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const showDeckSelector = useCallback(() => {
     if (deckAdded) {
       const passProps: MyDecksSelectorProps = {
-        campaignId: nextId,
+        campaignId: 'new-deck',
         onDeckSelect: deckAdded,
         onInvestigatorSelect: guided ? investigatorAdded : undefined,
         selectedDeckIds: deckIds,
@@ -441,7 +438,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         },
       });
     }
-  }, [deckIds, investigatorIds, deckAdded, investigatorAdded, nextId, guided]);
+  }, [deckIds, investigatorIds, deckAdded, investigatorAdded, guided]);
   const { dialog, showDialog } = useTextDialog({
     title: t`Name`,
     placeholder: placeholderName,

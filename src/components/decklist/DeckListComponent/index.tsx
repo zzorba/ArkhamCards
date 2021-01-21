@@ -10,21 +10,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import DeckList from './DeckList';
-import { Campaign, Deck } from '@actions/types';
+import { Campaign, Deck, DeckId } from '@actions/types';
 import Card from '@data/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { fetchPublicDeck } from '@components/deck/actions';
-import { getAllDecks } from '@reducers';
+import { getAllDecks, getDeck } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
-  deckIds: number[];
+  deckIds: DeckId[];
   deckClicked: (deck: Deck, investigator?: Card) => void;
   onRefresh?: () => void;
   refreshing?: boolean;
-  deckToCampaign?: { [id: number]: Campaign };
+  deckToCampaign?: { [uuid: string]: Campaign };
   customHeader?: ReactNode;
   customFooter?: ReactNode;
   searchOptions?: SearchOptions;
@@ -54,7 +54,7 @@ export default function DeckListComponent({
   useEffect(() => {
     // Only do this once, even though it might want to be done a second time.
     forEach(deckIds, deckId => {
-      if (!decks[deckId] && deckId > 0) {
+      if (!getDeck(decks, deckId) && !deckId.local) {
         dispatch(fetchPublicDeck(deckId, false));
       }
     });

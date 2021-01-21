@@ -10,7 +10,7 @@ import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
 import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
-import { Deck, ParsedDeck } from '@actions/types';
+import { Deck, DeckId, getDeckId, ParsedDeck } from '@actions/types';
 import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';
 import { CardImageProps } from '@components/card/CardImageView';
@@ -99,7 +99,7 @@ export function getDeckOptions(
 }
 
 interface DeckModalOptions {
-  campaignId?: number;
+  campaignId?: string;
   hideCampaign?: boolean;
   upgrade?: boolean;
 }
@@ -113,7 +113,7 @@ export function showDeckModal(
 ) {
   const { campaignId, hideCampaign, upgrade } = options;
   const passProps: DeckDetailProps = {
-    id: deck.id,
+    id: getDeckId(deck),
     isPrivate: true,
     modal: true,
     campaignId,
@@ -220,7 +220,7 @@ export function showCardSwipe(
   initialCards?: Card[],
   showSpoilers?: boolean,
   tabooSetId?: number,
-  deckId?: number,
+  deckId?: DeckId,
   investigator?: Card
 ) {
   const options = investigator ?

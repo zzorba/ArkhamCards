@@ -1,9 +1,7 @@
-import { flatMap } from 'lodash';
 import {
   Deck,
   SingleCampaign,
   CampaignGuideState,
-  DecksMap,
   StandaloneId,
   STANDALONE,
 } from '@actions/types';
@@ -15,10 +13,9 @@ import {
   AppState,
   makeCampaignGuideStateSelector,
   makeLatestCampaignInvestigatorsSelector,
-  getAllDecks,
-  makeLatestCampaignDeckIdsSelector,
   getLangPreference,
   makeCampaignSelector,
+  makeLatestDecksSelector,
 } from '@reducers';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
@@ -32,7 +29,7 @@ export interface CampaignGuideReduxData {
   latestDecks: Deck[];
 }
 
-const makeCampaignGuideSelector = () =>
+const makeCampaignGuideSelector = (): (state: AppState, campaign?: SingleCampaign) => CampaignGuide | undefined =>
   createSelector(
     (state: AppState) => getLangPreference(state),
     (state: AppState, campaign?: SingleCampaign) => campaign?.cycleCode,
@@ -48,15 +45,7 @@ const makeCampaignGuideSelector = () =>
     }
   );
 
-const makeLatestDecksSelector = () =>
-  createSelector(
-    (state: AppState) => getAllDecks(state),
-    makeLatestCampaignDeckIdsSelector(),
-    (decks: DecksMap, latestDeckIds: number[]) => flatMap(latestDeckIds, deckId => decks[deckId])
-  );
-
-
-export function useCampaignGuideReduxData(campaignId: number, investigators?: CardsMap): CampaignGuideReduxData | undefined {
+export function useCampaignGuideReduxData(campaignId: string, investigators?: CardsMap): CampaignGuideReduxData | undefined {
   const campaignSelector = useMemo(makeCampaignSelector, []);
   const campaignGuideSelector = useMemo(makeCampaignGuideSelector, []);
   const latestCampaignInvestigatorsSelector = useMemo(makeLatestCampaignInvestigatorsSelector, []);
@@ -69,7 +58,7 @@ export function useCampaignGuideReduxData(campaignId: number, investigators?: Ca
   const campaignInvestigators = useSelector((state: AppState) => latestCampaignInvestigatorsSelector(state, investigators, campaign));
   const campaignState = useSelector((state: AppState) => campaignGuideStateSelector(state, campaignId));
   const latestDecks = useSelector((state: AppState) => latestDecksSelector(state, campaign));
-  const linkedCampaignState = useSelector((state: AppState) => campaign?.linkedCampaignId ? linkedCampaignStateSelector(state, campaign.linkedCampaignId) : undefined);
+  const linkedCampaignState = useSelector((state: AppState) => campaign?.linkedCampaignUuid ? linkedCampaignStateSelector(state, campaign.linkedCampaignUuid) : undefined);
   return useMemo(() => {
     if (!campaign) {
       return undefined;

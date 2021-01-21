@@ -9,7 +9,7 @@ import GenericCampaignItem from './GenericCampaignItem';
 
 interface Props {
   campaign: Campaign;
-  onPress: (id: number, campaign: Campaign) => void;
+  onPress: (id: string, campaign: Campaign) => void;
 }
 
 function getTime(date: Date | string) {
@@ -20,11 +20,11 @@ function getTime(date: Date | string) {
 }
 
 export default function LinkedCampaignItem({ campaign, onPress }: Props) {
-  const campaignA = useCampaign(campaign.link ? campaign.link.campaignIdA : undefined);
-  const campaignB = useCampaign(campaign.link ? campaign.link.campaignIdB : undefined);
+  const campaignA = useCampaign(campaign.linkUuid ? campaign.linkUuid.campaignIdA : undefined);
+  const campaignB = useCampaign(campaign.linkUuid ? campaign.linkUuid.campaignIdB : undefined);
 
   const onCampaignPress = useCallback(() => {
-    onPress(campaign.id, campaign);
+    onPress(campaign.uuid, campaign);
   }, [campaign, onPress]);
 
   const lastUpdated = useMemo(() => {

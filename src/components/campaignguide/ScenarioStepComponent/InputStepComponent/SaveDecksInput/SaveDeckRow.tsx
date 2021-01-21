@@ -6,7 +6,7 @@ import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import { Deck, Slots, NumberChoices } from '@actions/types';
+import { Deck, Slots, DeckId, getDeckId } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import BasicButton from '@components/core/BasicButton';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -26,7 +26,7 @@ import { TINY_PHONE } from '@styles/sizes';
 
 interface ShowDeckButtonProps {
   componentId: string;
-  deckId: number;
+  deckId: DeckId;
   investigator: Card;
 }
 
@@ -83,14 +83,10 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
   }, [id, investigator]);
 
   const saveCampaignLog = useCallback((deck?: Deck) => {
-    const choices: NumberChoices = {};
-    if (deck) {
-      choices.deckId = [deck.id];
-    }
-    scenarioState.setNumberChoices(choiceId, choices);
+    scenarioState.setNumberChoices(choiceId, {}, deck ? getDeckId(deck) : undefined);
   }, [scenarioState, choiceId]);
 
-  const choices = useMemo(() => scenarioState.numberChoices(choiceId), [scenarioState, choiceId]);
+  const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
   const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
 
   const save = useCallback(() => {
@@ -183,12 +179,12 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
   }, [componentId, colors, investigator, deck]);
 
   const deckButton = useMemo(() => {
-    if (deck && choices !== undefined && choices.deckId) {
+    if (deck && deckChoice !== undefined) {
       return (
         <View style={styles.row}>
           <ShowDeckButton
             componentId={componentId}
-            deckId={choices.deckId[0]}
+            deckId={deckChoice}
             investigator={investigator}
           />
         </View>
@@ -209,7 +205,7 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
         <ArkhamButton variant="outline" icon="deck" title={t`View deck`} onPress={viewDeck} />
       </View>
     );
-  }, [componentId, deck, editable, investigator, choices, selectDeck, viewDeck]);
+  }, [componentId, deck, editable, investigator, deckChoice, selectDeck, viewDeck]);
 
   if (!find(storyAssetDeltas, (count: number) => count !== 0)) {
     return null;

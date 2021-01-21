@@ -1,4 +1,3 @@
-import { Alert } from 'react-native';
 import { flatMap, forEach } from 'lodash';
 import { t } from 'ttag';
 

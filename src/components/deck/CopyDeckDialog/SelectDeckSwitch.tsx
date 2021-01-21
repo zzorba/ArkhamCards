@@ -2,12 +2,13 @@ import React, { useCallback } from 'react';
 import DialogComponent from '@lib/react-native-dialog';
 
 import COLORS from '@styles/colors';
+import { DeckId } from '@actions/types';
 
 interface Props {
-  deckId: number;
+  deckId: DeckId;
   label: string;
   value: boolean;
-  onValueChange: (deckId: number, value: boolean) => void;
+  onValueChange: (deckId: DeckId, value: boolean) => void;
 }
 
 export default function SelectDeckSwitch({ deckId, label, value, onValueChange }: Props) {

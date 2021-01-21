@@ -2,10 +2,9 @@ import { forEach } from 'lodash';
 import uuid from 'react-native-uuid';
 
 import { UpgradeDeckResult } from '@lib/authApi';
-import { Deck, DeckProblemType, DeckMeta, Slots } from '@actions/types';
+import { Deck, DeckProblemType, DeckMeta, Slots, DeckId, getDeckId } from '@actions/types';
 
 export function newLocalDeck(
-  id: number,
   name: string,
   investigator_code: string,
   slots: Slots,
@@ -16,7 +15,7 @@ export function newLocalDeck(
 ): Deck {
   const timestamp = (new Date()).toISOString();
   return {
-    id,
+    uuid: uuid.v4(),
     description_md,
     date_creation: timestamp,
     date_update: timestamp,
@@ -27,7 +26,6 @@ export function newLocalDeck(
     taboo_id: tabooSetId,
     ignoreDeckLimitSlots: {},
     local: true,
-    uuid: uuid.v4(),
     problem,
     version: '0.1',
   };
@@ -66,17 +64,16 @@ export function updateLocalDeck(
 }
 
 export function upgradeLocalDeck(
-  id: number,
-  deck: Deck,
+  previousDeck: Deck,
   xp: number,
   exiles: string[]
 ): UpgradeDeckResult {
-  const versionParts = (deck.version || '0.1').split('.');
+  const versionParts = (previousDeck.version || '0.1').split('.');
   // @ts-ignore
   versionParts[0]++;
   // @ts-ignore
   versionParts[1] = 0;
-  const slots = Object.assign({}, deck.slots);
+  const slots = Object.assign({}, previousDeck.slots);
   forEach(exiles, code => {
     slots[code]--;
     if (slots[code] <= 0) {
@@ -84,24 +81,29 @@ export function upgradeLocalDeck(
     }
   });
   const timestamp = (new Date()).toISOString();
+  const id: DeckId = {
+    id: undefined,
+    local: true,
+    uuid: uuid.v4(),
+  };
   return {
     deck: {
-      ...deck,
-      next_deck: id,
+      ...previousDeck,
+      nextDeckId: id,
     },
     upgradedDeck: {
-      ...deck,
-      id,
-      uuid: uuid.v4(),
+      ...previousDeck,
+      local: true,
+      uuid: id.uuid,
       slots,
       date_creation: timestamp,
       date_update: timestamp,
-      problem: exiles.length ? 'too_few_cards' : deck.problem,
-      xp: xp + (deck.xp || 0) + (deck.xp_adjustment || 0) - (deck.spentXp || 0),
+      problem: exiles.length ? 'too_few_cards' : previousDeck.problem,
+      xp: xp + (previousDeck.xp || 0) + (previousDeck.xp_adjustment || 0) - (previousDeck.spentXp || 0),
       xp_adjustment: 0,
       spentXp: 0,
       version: versionParts.join('.'),
-      previous_deck: deck.id,
+      previousDeckId: getDeckId(previousDeck),
       exile_string: exiles && exiles.length ? exiles.join(',') : '',
     },
   };

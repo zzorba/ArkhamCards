@@ -26,7 +26,7 @@ import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignInvestigators, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface AddScenarioResultProps {
-  id: number;
+  id: string;
 }
 
 type Props = NavigationProps &
@@ -143,7 +143,7 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
       (campaign && campaign.campaignNotes);
   }, [campaignNotes, campaign]);
 
-  const hasDecks = !!campaign && !!campaign.baseDeckIds && campaign.baseDeckIds.length > 0;
+  const hasDecks = !!campaign && !!campaign.deckIds && campaign.deckIds.length > 0;
   return (
     <View style={[styles.flex, backgroundStyle]}>
       <AddCampaignNoteSectionDialog

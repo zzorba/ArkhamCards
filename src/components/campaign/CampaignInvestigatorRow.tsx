@@ -36,7 +36,7 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
     const { investigatorData } = campaign;
     const card = investigators?.[code];
     const killedOrInsane = card && card.eliminated(investigatorData[code]);
-    const yithian = !!find(investigatorData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN) ||
+    const yithian = !!find(investigatorData[code]?.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN) ||
       (deck && (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0);
     return (
       <View key={code} style={styles.investigator}>
@@ -61,7 +61,7 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
 
   const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
   return (
-    <View key={campaign.id} style={styles.row}>
+    <View key={campaign.uuid} style={styles.row}>
       { map(decks, deck => renderDeck(deck, campaign)) }
       { map(
         filter(
@@ -77,7 +77,7 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
 export default function CampaignInvestigatorRow({ campaigns }: Props) {
   return (
     <>
-      { map(campaigns, campaign => <SingleCampaignInvestigatorRow campaign={campaign} key={campaign.id} />) }
+      { map(campaigns, campaign => <SingleCampaignInvestigatorRow campaign={campaign} key={campaign.uuid} />) }
     </>
   );
 }

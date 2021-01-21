@@ -1,3 +1,6 @@
+import { forEach, values } from 'lodash';
+import { ThunkAction } from 'redux-thunk';
+
 import {
   SET_TABOO_SET,
   SET_SINGLE_CARD_VIEW,
@@ -10,7 +13,15 @@ import {
   SET_THEME,
   SET_FONT_SCALE,
   SetFontScaleAction,
+  ReduxMigrationAction,
+  LegacyDeck,
+  LegacyCampaign,
+  LegacyCampaignGuideState,
+  ChaosBagResults,
+  REDUX_MIGRATION,
 } from '@actions/types';
+import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
+import { AppState } from '@reducers';
 
 export function setTabooSet(tabooId?: number): SetTabooSetAction {
   return {
@@ -51,5 +62,40 @@ export function setAlphabetizeEncounterSets(value: boolean): SetAlphabetizeEncou
 export function ensureUuid(): EnsureUuidAction {
   return {
     type: ENSURE_UUID,
+  };
+}
+
+
+function migrateV1(
+  legacyDecks: { [id: string]: LegacyDeck },
+  legacyCampaigns: { [id: string]: LegacyCampaign },
+  legacyGuides: { [id: string]: LegacyCampaignGuideState | undefined },
+  legacyChaosBags?: { [id: string]: ChaosBagResults | undefined },
+): ReduxMigrationAction {
+  const [decks, deckMap] = migrateDecks(values(legacyDecks));
+  const [campaigns, campaignMapping] = migrateCampaigns(values(legacyCampaigns), deckMap, decks);
+  const chaosBags: { [uuid: string]: ChaosBagResults } = {};
+  forEach(legacyChaosBags || {}, (bag, id) => {
+    if (campaignMapping[id] && bag) {
+      chaosBags[campaignMapping[id]] = bag;
+    }
+  });
+  const guides = migrateGuides(legacyGuides, campaignMapping, deckMap);
+  return {
+    type: REDUX_MIGRATION,
+    version: 1,
+    decks: values(decks),
+    campaigns: values(campaigns),
+    guides: values(guides),
+    chaosBags,
+  };
+}
+export function migrateRedux(): ThunkAction<void, AppState, null, ReduxMigrationAction> {
+  return (dispatch, getState) => {
+    const state = getState();
+    const version = state.settings.version || 0;
+    if (version < 1) {
+      dispatch(migrateV1(state.legacyDecks.all, state.campaigns.all, state.legacyGuides.all, state.campaigns.chaosBagResults));
+    }
   };
 }

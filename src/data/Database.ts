@@ -113,6 +113,7 @@ export default class Database {
 
   async removeSubscriber(subscriber: EntitySubscriberInterface) {
     const connection = await this.connectionP;
+    // tslint:disable-next-line
     const index = findIndex(connection.subscribers, sub => sub === subscriber);
     if (index !== -1) {
       connection.subscribers.splice(index, 1);

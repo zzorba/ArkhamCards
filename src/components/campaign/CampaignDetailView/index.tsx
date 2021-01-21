@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { keys, map, filter, flatMap } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, CUSTOM, Deck, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
+import { CampaignNotes, CUSTOM, Deck, DeckId, getDeckId, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
 import CampaignLogSection from '../CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
@@ -14,7 +14,7 @@ import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaign
 import { ChaosBag } from '@app_constants';
 import { updateCampaign, updateCampaignSpentXp, cleanBrokenCampaigns } from '../actions';
 import { NavigationProps } from '@components/nav/types';
-import { getAllDecks } from '@reducers';
+import { getAllDecks, getDeck } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignDetails, useCampaignScenarios, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
@@ -38,14 +38,14 @@ import Card from '@data/Card';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 
 export interface CampaignDetailProps {
-  id: number;
+  id: string;
 }
 
 type Props = NavigationProps & CampaignDetailProps & InjectedDialogProps
 
 function ScenarioResultButton({ name, campaignId, componentId, status, index, onPress }: {
   name: string;
-  campaignId: number;
+  campaignId: string;
   componentId: string;
   status: 'completed' | 'playable';
   index: number;
@@ -99,7 +99,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   const updateNonDeckInvestigators = useCallback((nonDeckInvestigators: string[]) => {
     dispatch(updateCampaign(campaignId, { nonDeckInvestigators }));
   }, [dispatch, campaignId]);
-  const updateLatestDeckIds = useCallback((latestDeckIds: number[]) => {
+  const updateLatestDeckIds = useCallback((latestDeckIds: DeckId[]) => {
     dispatch(updateCampaign(campaignId, { latestDeckIds }));
   }, [dispatch, campaignId]);
   const updateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
@@ -221,7 +221,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
 
   const addDeck = useCallback((deck: Deck) => {
-    const newLatestDeckIds = [...(latestDeckIds || []), deck.id];
+    const newLatestDeckIds = [...(latestDeckIds || []), getDeckId(deck)];
     updateLatestDeckIds(newLatestDeckIds);
     checkForWeaknessPrompt(deck);
   }, [latestDeckIds, updateLatestDeckIds, checkForWeaknessPrompt]);
@@ -241,16 +241,16 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       return;
     }
     const campaignInvestigators = flatMap(latestDeckIds, deckId => {
-      const deck = decks[deckId];
+      const deck = getDeck(decks, deckId);
       return (deck && cards[deck.investigator_code]) || [];
     });
 
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
-      campaignId: campaign.id,
+      campaignId: campaign.uuid,
       singleInvestigator: singleInvestigator.code,
       onDeckSelect: addDeck,
     } : {
-      campaignId: campaign.id,
+      campaignId: campaign.uuid,
       selectedInvestigatorIds: map(
         campaignInvestigators,
         investigator => investigator.code
@@ -355,7 +355,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
                     <ScenarioResultButton
                       key={idx}
                       componentId={componentId}
-                      campaignId={campaign.id}
+                      campaignId={campaign.uuid}
                       name={scenario.interlude ? scenario.scenario : `${scenario.scenario} (${scenario.resolution}, ${scenario.xp || 0} XP)`}
                       index={idx}
                       status="completed"
@@ -368,7 +368,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
                     <ScenarioResultButton
                       key={idx}
                       componentId={componentId}
-                      campaignId={campaign.id}
+                      campaignId={campaign.uuid}
                       name={scenario.name}
                       index={-1}
                       status="playable"

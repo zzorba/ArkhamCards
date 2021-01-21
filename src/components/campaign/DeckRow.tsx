@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useMemo } from 'react';
 
 import { showDeckModal } from '@components/nav/helper';
 import DeckListRow from '../decklist/DeckListRow';
-import { Deck } from '@actions/types';
+import { Deck, DeckId } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import StyleContext from '@styles/StyleContext';
 import { useDeck, useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
@@ -16,7 +16,7 @@ type RenderDeckDetails = (
 
 export interface DeckRowProps {
   componentId: string;
-  id: number;
+  id: DeckId;
   lang: string;
   renderSubDetails?: RenderDeckDetails;
   renderDetails?: RenderDeckDetails;

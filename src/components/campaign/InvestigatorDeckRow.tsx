@@ -1,16 +1,16 @@
 import React, { useCallback, useContext } from 'react';
 
 import InvestigatorRow from '@components/core/InvestigatorRow';
-import { Deck } from '@actions/types';
+import { Deck, DeckId } from '@actions/types';
 import Card from '@data/Card';
 import { useDeck, useInvestigatorCards } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
-  id: number;
+  id: DeckId;
   deckRemoved?: (
-    id: number,
+    id: DeckId,
     deck?: Deck,
     investigator?: Card
   ) => void;

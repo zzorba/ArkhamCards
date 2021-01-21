@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { map } from 'lodash';
 
-import { CampaignId, Deck } from '@actions/types';
+import { CampaignId, Deck, DeckId, getDeckId } from '@actions/types';
 import { addInvestigator } from '@components/campaign/actions';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
 import Card from '@data/Card';
@@ -11,7 +11,7 @@ import { Platform } from 'react-native';
 
 export default function useChooseDeck() {
   const dispatch = useDispatch();
-  const doAddInvestigator = useCallback((campaignId: CampaignId, code: string, deckId?: number) => {
+  const doAddInvestigator = useCallback((campaignId: CampaignId, code: string, deckId?: DeckId) => {
     dispatch(addInvestigator(campaignId, code, deckId));
   }, [dispatch]);
 
@@ -22,7 +22,7 @@ export default function useChooseDeck() {
     callback?: (code: string) => void
   ) => {
     const onDeckSelect = (deck: Deck) => {
-      doAddInvestigator(campaignId, deck.investigator_code, deck.id);
+      doAddInvestigator(campaignId, deck.investigator_code, getDeckId(deck));
       callback && callback(deck.investigator_code);
     };
     const onInvestigatorSelect = (card: Card) => {

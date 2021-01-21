@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Navigation } from 'react-native-navigation';
 
 import MyDecksComponent from '@components/decklist/MyDecksComponent';
-import { Deck } from '@actions/types';
+import { Deck, DeckId } from '@actions/types';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 
 interface Props {
@@ -10,9 +10,9 @@ interface Props {
   onDeckSelect: (deck: Deck) => void;
   searchOptions?: SearchOptions;
 
-  onlyDeckIds?: number[];
+  onlyDeckIds?: DeckId[];
   onlyInvestigators?: string[];
-  filterDeckIds: number[];
+  filterDeckIds: DeckId[];
   filterInvestigators: string[];
 }
 
