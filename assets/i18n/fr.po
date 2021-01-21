@@ -3845,7 +3845,7 @@ msgstr ""
 
 #, javascript-format
 msgid "${ handle }'s Friends"
-msgstr ""
+msgstr "Amis de ${ handle }"
 
 msgid "Friends"
 msgstr "Amis"
@@ -3891,7 +3891,7 @@ msgid "Account Name"
 msgstr "Nom du Compte"
 
 msgid "Choose a handle for your account"
-msgstr ""
+msgstr "Choisissez un identifiant pour votre compte"
 
 msgid "Your Friends"
 msgstr "Vos Amis"
@@ -3920,7 +3920,7 @@ msgid "Account name"
 msgstr "Nom du Compte"
 
 msgid "Choose a handle"
-msgstr ""
+msgstr "Choisissez un identifiant"
 
 msgid "ArkhamDB Account"
 msgstr "Compte ArkhamDB"
@@ -4082,34 +4082,34 @@ msgid "Chaos Bag (${ tokenCount })"
 msgstr "Réserve du Chaos (${ tokenCount })"
 
 msgid "Sorry, you don't seem to be a Mythos Buster patron."
-msgstr ""
+msgstr "Désolé, vous ne semblez pas être un mécène de Mythos Buster."
 
 msgid "Friend Requests"
-msgstr ""
+msgstr "Demandes d'amis"
 
 msgid "Pending Friend Requests"
-msgstr ""
+msgstr "Demandes d'amis en cours"
 
 msgid "Save upgrade"
-msgstr ""
+msgstr "Enregistrer la modification"
 
 msgid "Uploading deck"
-msgstr ""
+msgstr "Transfert de deck"
 
 msgid "Upload campaign (network required)"
-msgstr ""
+msgstr "Transfert de campagne (reseau requis)"
 
 msgid "Earned experience:"
-msgstr ""
+msgstr "Expérience gagnée :"
 
 msgid "Finished Removing Investigarors"
-msgstr ""
+msgstr "Suppression des investigateurs terminé"
 
 msgid "Record Scenario Result"
-msgstr ""
+msgstr "Enregistrement du résultat du scénario"
 
 msgid "Sign out of Arkham Cards?"
-msgstr ""
+msgstr "Se déconnecter d'Arkham Cards ?"
 
 msgid ""
 "Are you sure you want to sign out of Arkham Cards?\n"
@@ -4119,12 +4119,19 @@ msgid ""
 "\n"
 "Note: if you have made recent changes while offline, they may be lost."
 msgstr ""
+"Êtes-vous sûr de vouloir vous déconnecter d'Arkham Cards ?\n"
+"\n"
+"Toutes les campagnes que vous avez transférées ou que vous avez partagées avec "
+"vous seront supprimées de cet appareil. Elles peuvent être resynchronisées si "
+"vous vous connectez à nouveau.\n"
+"\n"
+"Note : si vous avez effectué des modifications récentes hors ligne, elles peuvent être perdues."
 
 msgid "Name required"
-msgstr ""
+msgstr "Nom Requis"
 
 msgid "You must specify a name for custom campaigns."
-msgstr ""
+msgstr "Vous devez spécifier un nom pour les campagnes personnalisées."
 
 #, javascript-format
 msgctxt "masculine"
@@ -4229,7 +4236,7 @@ msgstr ""
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
 
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4330,11 +4337,11 @@ msgstr ""
 
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
 
 msgctxt "action"
 msgid "Fight"
-msgstr ""
+msgstr "Combattre"
 
 msgctxt "action"
 msgid "Engage"
@@ -4342,7 +4349,7 @@ msgstr "Engager"
 
 msgctxt "action"
 msgid "Investigate"
-msgstr ""
+msgstr "Enquêter"
 
 msgctxt "action"
 msgid "Play"
@@ -4358,7 +4365,7 @@ msgstr "Se déplacer"
 
 msgctxt "action"
 msgid "Evade"
-msgstr ""
+msgstr "Échapper à "
 
 msgctxt "action"
 msgid "Resource"
