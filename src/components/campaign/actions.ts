@@ -1,4 +1,4 @@
-import { map, omit } from 'lodash';
+import { forEach, map, omit } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -44,9 +44,11 @@ import {
   CampaignId,
   DeckId,
   getDeckId,
+  RemoveUploadDeckAction,
+  REMOVE_UPLOAD_DECK,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
-import { AppState, makeCampaignSelector, getDeck } from '@reducers';
+import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 
 function getBaseDeckIds(
   state: AppState,
@@ -269,17 +271,28 @@ export function adjustBlessCurseChaosBagResults(
   };
 }
 
-
-export function removeLocalCampaign(campaign: Campaign): ThunkAction<void, AppState, null, DeleteCampaignAction> {
-  return (dispatch) => {
-    if (campaign && campaign.linkUuid) {
-      dispatch({
-        type: DELETE_CAMPAIGN,
-        id: campaign.linkUuid.campaignIdA,
-      });
-      dispatch({
-        type: DELETE_CAMPAIGN,
-        id: campaign.linkUuid.campaignIdB,
+export function removeLocalCampaign(campaign: Campaign): ThunkAction<void, AppState, null, DeleteCampaignAction | RemoveUploadDeckAction> {
+  return (dispatch, getState) => {
+    if (campaign.serverId) {
+      // Delink all of the decks.
+      const state = getState();
+      const getDeck = makeDeckSelector();
+      forEach(campaign.deckIds || [], deckId => {
+        let deck = getDeck(state, deckId);
+        while (deck) {
+          dispatch({
+            type: REMOVE_UPLOAD_DECK,
+            deckId: getDeckId(deck),
+            campaignId: {
+              campaignId: campaign.uuid,
+              serverId: campaign.serverId,
+            },
+          });
+          if (!deck.nextDeckId) {
+            break;
+          }
+          deck = getDeck(state, deck.nextDeckId);
+        }
       });
     }
     dispatch({
@@ -291,10 +304,22 @@ export function removeLocalCampaign(campaign: Campaign): ThunkAction<void, AppSt
 
 export function deleteCampaign(
   { campaignId, serverId }: CampaignId
-): ThunkAction<void, AppState, null, DeleteCampaignAction> {
+): ThunkAction<void, AppState, null, DeleteCampaignAction | RemoveUploadDeckAction> {
   return (dispatch, getState: () => AppState) => {
-    const campaign = makeCampaignSelector()(getState(), campaignId);
+    const state = getState();
+    const getCampaign = makeCampaignSelector();
+    const campaign = getCampaign(getState(), campaignId);
     if (campaign) {
+      if (campaign.linkUuid) {
+        const campaignA = getCampaign(state, campaign.linkUuid.campaignIdA);
+        if (campaignA) {
+          dispatch(removeLocalCampaign(campaignA));
+        }
+        const campaignB = getCampaign(state, campaign.linkUuid.campaignIdB);
+        if (campaignB) {
+          dispatch(removeLocalCampaign(campaignB));
+        }
+      }
       dispatch(removeLocalCampaign(campaign));
     }
   };

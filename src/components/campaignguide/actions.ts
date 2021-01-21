@@ -1,4 +1,4 @@
-import { keys, map } from 'lodash';
+import { forEach, keys, map } from 'lodash';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
@@ -22,10 +22,13 @@ import {
   GuideUpdateAchievementAction,
   guideInputToId,
   DeckId,
+  Campaign,
+  getDeckId,
+  UPLOAD_DECK,
 } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import database from '@react-native-firebase/database';
-import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
+import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector, makeDeckSelector } from '@reducers';
 
 export function refreshCampaigns(userId: string): ThunkAction<void, AppState, null, Action> {
   return async() => {
@@ -36,19 +39,46 @@ export function refreshCampaigns(userId: string): ThunkAction<void, AppState, nu
   };
 }
 
-export function uploadCampaign(
-  campaignId: string,
+function uploadCampaignDeckHelper(campaignId: string, serverId: string, deckId: DeckId): ThunkAction<void, AppState, null, Action> {
+  return async(dispatch, getState) => {
+    const state = getState();
+    const deckSelector = makeDeckSelector();
+    const uploads: Promise<void>[] = [];
+    const ref = database().ref('/campaigns').child(serverId).child('decks');
+
+    let deck = deckSelector(state, deckId);
+    while (deck) {
+      const deckId = getDeckId(deck);
+      uploads.push(ref.child(deckId.uuid).set(deck));
+      dispatch({
+        type: UPLOAD_DECK,
+        deckId,
+        campaignId: {
+          campaignId,
+          serverId,
+        },
+      });
+      if (!deck.nextDeckId) {
+        break;
+      }
+      deck = deckSelector(state, deck.nextDeckId);
+    }
+    await Promise.all(uploads);
+  };
+}
+
+function uploadCampaignHelper(
+  campaign: Campaign,
   serverId: string,
   guided: boolean
 ): ThunkAction<void, AppState, null, UpdateCampaignAction> {
   return async(dispatch, getState) => {
-    const state = getState();
-    const campaign = makeCampaignSelector()(state, campaignId);
-    await database().ref('/campaigns').child(serverId).child('campaign').set(campaign);
+    const ref = database().ref('/campaigns').child(serverId);
+    await ref.child('campaign').set(campaign);
     // Do something with deck uploads?
     if (guided) {
-      const guide = makeCampaignGuideStateSelector()(state, campaignId);
-      const ref = database().ref('/campaigns').child(serverId);
+      const state = getState();
+      const guide = makeCampaignGuideStateSelector()(state, campaign.uuid);
       const guideRef = ref.child('guide');
       await Promise.all([
         ...map(guide.inputs, input => {
@@ -59,7 +89,39 @@ export function uploadCampaign(
         }),
       ]);
     }
-    dispatch(updateCampaign({ campaignId, serverId }, { serverId }));
+    dispatch(updateCampaign({ campaignId: campaign.uuid, serverId }, { serverId }));
+
+    forEach(campaign.deckIds || [], deckId => {
+      dispatch(uploadCampaignDeckHelper(campaign.uuid, serverId, deckId));
+    });
+  };
+}
+
+export function uploadCampaign(
+  campaignId: string,
+  serverId: string,
+  guided: boolean,
+  linkServerIds?: {
+    serverIdA: string;
+    serverIdB: string;
+  }
+): ThunkAction<void, AppState, null, UpdateCampaignAction> {
+  return async(dispatch, getState) => {
+    const state = getState();
+    const campaign = makeCampaignSelector()(state, campaignId);
+    if (campaign) {
+      if (linkServerIds && campaign?.linkUuid) {
+        const campaignA = makeCampaignSelector()(state, campaign.linkUuid.campaignIdA);
+        if (campaignA) {
+          dispatch(uploadCampaignHelper(campaignA, linkServerIds.serverIdA, guided));
+        }
+        const campaignB = makeCampaignSelector()(state, campaign.linkUuid.campaignIdB);
+        if (campaignB) {
+          dispatch(uploadCampaignHelper(campaignB, linkServerIds.serverIdB, guided));
+        }
+      }
+      dispatch(uploadCampaignHelper(campaign, serverId, guided));
+    }
   };
 }
 

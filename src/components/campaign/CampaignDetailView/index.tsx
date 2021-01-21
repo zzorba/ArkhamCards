@@ -452,7 +452,6 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
         setSelectedTab={setSelectedTab}
         componentId={componentId}
         campaignId={campaignId}
-        serverCampaignId={campaign?.serverId}
         campaignName={''}
         removeMode={removeMode}
         showEditNameDialog={showEditNameDialog}

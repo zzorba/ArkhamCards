@@ -23,11 +23,16 @@ import {
   getDeckId,
   DeckId,
   REDUX_MIGRATION,
+  CampaignId,
+  UPLOAD_DECK,
 } from '@actions/types';
 import deepDiff from 'deep-diff';
 
 interface DecksState {
   all: DecksMap;
+  uploaded?: {
+    [uuid: string]: CampaignId[] | undefined;
+  };
   replacedLocalIds?: {
     [uuid: string]: DeckId;
   };
@@ -101,6 +106,19 @@ export default function(
     return {
       ...state,
       all,
+    };
+  }
+  if (action.type === UPLOAD_DECK) {
+    const uploaded = state.uploaded || {};
+    return {
+      ...state,
+      uploaded: {
+        ...(uploaded),
+        [action.deckId.uuid]: [
+          ...(uploaded[action.deckId.uuid] || []),
+          action.campaignId,
+        ],
+      },
     };
   }
   if (action.type === ARKHAMDB_LOGOUT || action.type === CLEAR_DECKS) {

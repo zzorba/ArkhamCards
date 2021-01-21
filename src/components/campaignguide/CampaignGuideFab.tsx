@@ -9,13 +9,13 @@ import { t } from 'ttag';
 import { deleteCampaign } from '@components/campaign/actions';
 import { isTablet, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useNavigationConstants } from '@components/core/hooks';
+import { useCampaign, useFlag, useNavigationConstants } from '@components/core/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { uploadCampaign } from '@components/campaignguide/actions';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { useCreateCampaignRequest, useDeleteCampaignRequest } from '@data/firebase/api';
-import { Campaign, CampaignId } from '@actions/types';
+import { CampaignId } from '@actions/types';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { ShowAlert } from '@components/deck/dialogs';
 
@@ -23,8 +23,6 @@ import { ShowAlert } from '@components/deck/dialogs';
 interface Props {
   componentId: string;
   campaignId: CampaignId;
-  campaign?: Campaign;
-  serverCampaignId?: string;
   campaignName: string;
   removeMode: boolean;
   guided: boolean;
@@ -36,9 +34,10 @@ interface Props {
 }
 
 export default function CampaignGuideFab({
-  campaignId, componentId, campaignName, removeMode, serverCampaignId, guided,
+  campaignId: { campaignId, serverId }, componentId, campaignName, removeMode, guided,
   showEditNameDialog, showAddInvestigator, toggleRemoveInvestigator, setSelectedTab, showAlert,
 }: Props) {
+  const campaign = useCampaign(campaignId);
   const [{ isConnected }] = useNetworkStatus();
   const { user } = useContext(ArkhamCardsAuthContext);
   const { colors, shadow, typography } = useContext(StyleContext);
@@ -49,12 +48,12 @@ export default function CampaignGuideFab({
   const createServerCampaign = useCreateCampaignRequest();
 
   const actuallyDeleteCampaign = useCallback(() => {
-    dispatch(deleteCampaign(campaignId));
-    if (serverCampaignId && user) {
-      deleteServerCampaign(serverCampaignId);
+    dispatch(deleteCampaign({ campaignId, serverId }));
+    if (serverId && user) {
+      deleteServerCampaign(serverId);
     }
     Navigation.pop(componentId);
-  }, [dispatch, componentId, campaignId, deleteServerCampaign, user, serverCampaignId]);
+  }, [dispatch, componentId, campaignId, deleteServerCampaign, user, serverId]);
   const confirmDeleteCampaign = useCallback(() => {
     setFabOpen(false);
     showAlert(
@@ -67,14 +66,20 @@ export default function CampaignGuideFab({
     );
   }, [campaignName, actuallyDeleteCampaign, setFabOpen, showAlert]);
   const confirmUploadCampaign = useCallback(async() => {
-    setFabOpen(false);
-    try {
-      const serverId = await createServerCampaign();
-      dispatch(uploadCampaign(campaignId.campaignId, serverId, guided));
-    } catch (e) {
-      // TODO(error handling)
+    if (campaign) {
+      setFabOpen(false);
+      try {
+        const serverId = await createServerCampaign();
+        const linkServerIds = campaign.linkUuid && {
+          serverIdA: await createServerCampaign(),
+          serverIdB: await createServerCampaign(),
+        };
+        dispatch(uploadCampaign(campaignId, serverId, guided, linkServerIds));
+      } catch (e) {
+        // TODO(error handling)
+      }
     }
-  }, [dispatch, campaignId, createServerCampaign, setFabOpen, guided]);
+  }, [dispatch, campaignId, createServerCampaign, setFabOpen, guided, campaign]);
 
   const fabIcon = useCallback(() => {
     if (removeMode) {
@@ -157,7 +162,7 @@ export default function CampaignGuideFab({
       >
         <AppIcon name="delete" color={colors.L30} size={34} />
       </ActionButton.Item>
-      { !!user && !serverCampaignId && guided && (
+      { !!user && !serverId && guided && (
         <ActionButton.Item
           buttonColor={isConnected ? colors.D20 : colors.M}
           textStyle={actionLabelStyle}

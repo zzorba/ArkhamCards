@@ -602,6 +602,20 @@ export interface UpdateDeckAction {
   deck: Deck;
   isWrite: boolean;
 }
+
+export const UPLOAD_DECK = 'UPLOAD_DECK';
+export interface UploadDeckAction {
+  type: typeof UPLOAD_DECK;
+  deckId: DeckId;
+  campaignId: CampaignId;
+}
+export const REMOVE_UPLOAD_DECK = 'REMOVE_UPLOAD_DECK';
+export interface RemoveUploadDeckAction {
+  type: typeof REMOVE_UPLOAD_DECK;
+  deckId: DeckId;
+  campaignId: CampaignId;
+}
+
 export const DELETE_DECK = 'DELETE_DECK';
 export interface DeleteDeckAction {
   type: typeof DELETE_DECK;
@@ -1119,7 +1133,6 @@ export interface SetDeckChecklistCardAction {
   value: boolean;
 }
 
-
 export const REDUX_MIGRATION = 'REDUX_MIGRATION';
 interface ReduxMigrationV1Action {
   type: typeof REDUX_MIGRATION;
@@ -1174,7 +1187,8 @@ export type DecksActions =
   ClearDecksAction |
   ReplaceLocalDeckAction |
   EnsureUuidAction |
-  ReduxMigrationAction;
+  ReduxMigrationAction |
+  UploadDeckAction;
 
 export type DeckEditsActions =
   DeleteDeckAction |
