@@ -31929,7 +31929,7 @@
     {
       "id": "darkness_1",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_1",
+        "id": "the_forgotten_age.interlude_5.the_darkness_1",
         "name": "Darkness 1"
       },
       "type": "story",
@@ -31938,7 +31938,7 @@
     {
       "id": "darkness_2",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_2",
+        "id": "the_forgotten_age.interlude_5.the_darkness_2",
         "name": "Darkness 2"
       },
       "type": "story",
@@ -60640,7 +60640,7 @@
     {
       "id": "darkness_1",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_1",
+        "id": "the_forgotten_age.interlude_5.the_darkness_1",
         "name": "Darkness 1"
       },
       "type": "story",
@@ -60649,7 +60649,7 @@
     {
       "id": "darkness_2",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_2",
+        "id": "the_forgotten_age.interlude_5.the_darkness_2",
         "name": "Darkness 2"
       },
       "type": "story",

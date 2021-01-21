@@ -1242,19 +1242,19 @@
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "l'Excelsior a fait une nouvelle victime."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "l'Excelsior est calme, pour le moment."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "les investigateurs int fui la scène de crime."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "les meurtres continuent, irrésolus."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
@@ -2460,7 +2460,7 @@
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "La Maison de Water Street"
           },
           {
             "id": "accuse_little",
@@ -2472,23 +2472,23 @@
           },
           {
             "id": "accuse_new_church_green",
-            "text": "New Church Green"
+            "text": "Square de New Chruch"
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ordre Ésotérique de Dagon"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Prison d'Innsmouth"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Allée des Rebouteux"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Taudis sur les Berges"
           },
           {
             "id": "flashback_1",
@@ -2594,27 +2594,27 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "La Maison de Water Street"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Prison d'Innsmouth"
           },
           {
             "id": "new_church_green",
-            "text": "New Church Green"
+            "text": "Square de New Chruch"
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ordre Ésotérique de Dagon"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Allée des Rebouteux"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Taudis sur les Berges"
           }
         ]
       },
