@@ -3280,25 +3280,25 @@ msgid "A Light in the Fog"
 msgstr "Une Lueur dans le Brouillard"
 
 msgid "The Lair of Dagon"
-msgstr "Le Repère de Dagon"
+msgstr "La Tanière de Dagon"
 
 msgid "Hidden Truths"
 msgstr "Vérités Cachées"
 
 msgid "Into the Maelstrom"
-msgstr "Dans le Maelstrom"
+msgstr "Dans le Maelström"
 
 msgid "Possible Suspects"
 msgstr "Suspects Possibles"
 
 msgid "Possible Hideouts"
-msgstr "Les Possibles Cachettes"
+msgstr "Cachettes Possibles"
 
 msgid "In Bag"
 msgstr "Dans la Réserve"
 
 msgid "The Syzygy"
-msgstr "Le Syzygy"
+msgstr "La Syzygie"
 
 msgid "Coming soon"
 msgstr "Prochainement"
@@ -3403,7 +3403,7 @@ msgid "Upgrade with Shrewd Analysis"
 msgstr "Améliorer avec Analyse Subtile"
 
 msgid "The Pit of Despair"
-msgstr "La Fosse du Désespoir"
+msgstr "Le Gouffre du Désespoir"
 
 msgid "Puzzle Pieces"
 msgstr "Les Pièces du Puzzle"
@@ -3415,7 +3415,7 @@ msgid "Beneath the Waves"
 msgstr "Sous les Vagues"
 
 msgid "Memories Recovered"
-msgstr "Les Souvenirs Retrouvés"
+msgstr "Souvenirs Retrouvés"
 
 msgid ""
 "Note: this campaign is still being released and so the guide is incomplete "
