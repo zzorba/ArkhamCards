@@ -2367,19 +2367,19 @@
         "entries": [
           {
             "id": "allen_out_for_blood",
-            "text": "Zadok Allen is out for blood."
+            "text": "Zadok Allen veut votre peaux."
           },
           {
             "id": "burnham_out_for_blood",
-            "text": "Brian Burnham is out for blood."
+            "text": "Brian Burnham veut votre peaux."
           },
           {
             "id": "friendly_out_for_blood",
-            "text": "Robert Friendly is out for blood."
+            "text": "Robert Friendly veut votre peaux."
           },
           {
             "id": "gilman_out_for_blood",
-            "text": "Othera Gilman is out for blood."
+            "text": "Othera Gilman veut votre peaux."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
@@ -2395,7 +2395,7 @@
           },
           {
             "id": "little_out_for_blood",
-            "text": "Joyce Little is out for blood."
+            "text": "Joyce Little veut votre peaux."
           },
           {
             "id": "made_it_safely_to_their_vehicles",
@@ -2407,15 +2407,15 @@
           },
           {
             "id": "marsh_out_for_blood",
-            "text": "Barnabas Marsh is out for blood."
+            "text": "Barnabas Marsh veut votre peaux."
           },
           {
             "id": "mission_failed",
-            "text": "the mission failed."
+            "text": "la mission a échoué."
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission was successful."
+            "text": "la mission a réussi."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
@@ -2561,11 +2561,11 @@
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "Un combat contre un monstre terrifiant"
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "Une décision de rester groupés"
           },
           {
             "id": "discovery_of_a_mystical_relic",
@@ -2581,11 +2581,11 @@
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "Une rencontre avec un culte secret"
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "Un rendez-vous avec Thomas Dawson"
           }
         ]
       },
