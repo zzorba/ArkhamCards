@@ -23,7 +23,6 @@ import { AppState } from '@reducers';
 
 import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 import * as dissonantVoices from '@lib/dissonantVoices';
-// @ts-ignore
 import { decks } from '@lib/authApi';
 
 export function login(): ThunkAction<void, AppState, unknown, Action> {

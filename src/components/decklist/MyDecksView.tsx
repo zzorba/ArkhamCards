@@ -90,8 +90,7 @@ function MyDecksView({ componentId }: NavigationProps) {
 
   const onlyDeckIds = useMemo(() => {
     if (localDecksOnly) {
-      // @ts-ignore
-      return filter(myDecks, deckId => parseInt(deckId, 10) < 0);
+      return filter(myDecks, deckId => deckId.local);
     }
     return undefined;
   }, [myDecks, localDecksOnly]);
