@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { filter, find, flatMap, forEach, head, map } from 'lodash';
 import { ScrollView, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { t } from 'ttag';
@@ -11,9 +11,8 @@ import VariableTokenInput from './VariableTokenInput';
 import CardTextComponent from '@components/card/CardTextComponent';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { campaignColor, Scenario, completedScenario } from '@components/campaign/constants';
+import { campaignColor, Scenario, completedScenario, scenarioFromCard } from '@components/campaign/constants';
 import Difficulty from '@components/campaign/Difficulty';
-import { showScenarioDialog } from '@components/campaign/ScenarioDialog';
 import GameHeader from '@components/campaign/GameHeader';
 import BackgroundIcon from '@components/campaign/BackgroundIcon';
 import { Campaign, CampaignDifficulty, CUSTOM } from '@actions/types';
@@ -22,6 +21,13 @@ import Card from '@data/Card';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useCounters } from '@components/core/hooks';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import { SCENARIO_CARDS_QUERY } from '@data/query';
+import LoadingSpinner from '@components/core/LoadingSpinner';
+import { useSelector } from 'react-redux';
+import { getAllStandalonePacks } from '@reducers';
+import { Item, usePickerDialog } from '@components/deck/dialogs';
+import EncounterIcon from '@icons/EncounterIcon';
 
 interface Props {
   campaign: Campaign;
@@ -114,10 +120,11 @@ export default function OddsCalculatorComponent({
   chaosBag,
   cycleScenarios,
   allInvestigators,
-  scenarioCards,
 }: Props) {
+  const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
   const { backgroundStyle, borderStyle, colors, typography } = useContext(StyleContext);
   const [testDifficulty, incTestDifficulty, decTestDifficulty] = useCounter(3, { min: 0 });
+  const standalonePacks = useSelector(getAllStandalonePacks);
   const [currentScenario, setCurrentScenario] = useState<Scenario | undefined>(() => {
     const hasCompletedScenario = completedScenario(campaign ? campaign.scenarioResults : []);
     return head(
@@ -137,12 +144,18 @@ export default function OddsCalculatorComponent({
     }
     return encounterCode;
   }, [currentScenario]);
-  const possibleScenarios = useMemo(() => {
-    return map(
-      filter(cycleScenarios, scenario => !scenario.interlude),
-      card => card.name
-    );
-  }, [cycleScenarios]);
+  const standaloneScenarios = useMemo(() => {
+    const standalonePackCodes = new Set(map(standalonePacks, pack => pack.code));
+    return flatMap(scenarioCards, card => {
+      if (standalonePackCodes.has(card.pack_code)) {
+        const scenario = scenarioFromCard(card);
+        if (scenario) {
+          return[scenario];
+        }
+      }
+      return [];
+    });
+  }, [standalonePacks, scenarioCards]);
   const { currentScenarioCard, specialTokenValues, difficulty } = useMemo(() => {
     const difficulty = campaign ? campaign.difficulty : undefined;
     const currentScenarioCard = (scenarioCards && encounterCode) ?
@@ -162,16 +175,31 @@ export default function OddsCalculatorComponent({
     elder_thing: 0,
   });
 
-  const scenarioChanged = useCallback((value: string) => {
-    setCurrentScenario(find(cycleScenarios, scenario => scenario.name === value));
-  }, [cycleScenarios, setCurrentScenario]);
-
-  const showScenarioDialogPressed = useCallback(() => {
-    if (!currentScenario) {
-      return;
-    }
-    showScenarioDialog(possibleScenarios, scenarioChanged);
-  }, [currentScenario, possibleScenarios, scenarioChanged]);
+  const items: Item<Scenario>[] = useMemo(() => {
+    return [
+      ...map(filter(cycleScenarios, scenario => !scenario.interlude), scenario => {
+        return {
+          title: scenario.name,
+          value: scenario,
+          iconNode: <EncounterIcon encounter_code={scenario.code} size={24} color={colors.M} />,
+        };
+      }),
+      { type: 'header', title: t`Standalone` },
+      ...map(standaloneScenarios, scenario => {
+        return {
+          title: scenario.name,
+          value: scenario,
+          iconNode: <EncounterIcon encounter_code={scenario.code} size={24} color={colors.M} />,
+        };
+      }),
+    ];
+  }, [colors, cycleScenarios, standaloneScenarios]);
+  const { dialog, showDialog } = usePickerDialog<Scenario>({
+    title: t`Scenario`,
+    items,
+    onValueChange: setCurrentScenario,
+    selectedValue: currentScenario,
+  });
 
   const allSpecialTokenValues = useMemo(() => {
     return map(specialTokenValues, tokenValue => {
@@ -242,6 +270,12 @@ export default function OddsCalculatorComponent({
       currentScenarioCard.back_text :
       currentScenarioCard.text
   );
+
+  if (loading) {
+    return (
+      <LoadingSpinner />
+    );
+  }
   return (
     <View style={[styles.container, backgroundStyle]}>
       <KeepAwake />
@@ -262,7 +296,7 @@ export default function OddsCalculatorComponent({
           </View>
           <BasicButton
             title={t`Change Scenario`}
-            onPress={showScenarioDialogPressed}
+            onPress={showDialog}
           />
         </View>
         { specialTokenInputs }
@@ -296,6 +330,7 @@ export default function OddsCalculatorComponent({
           </View>
         </View>
       </SafeAreaView>
+      { dialog }
     </View>
   );
 }

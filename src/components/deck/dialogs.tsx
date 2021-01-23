@@ -19,6 +19,7 @@ import space, { s, xs } from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
 import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
+import DeckBubbleHeader from './section/DeckBubbleHeader';
 
 interface DialogOptions {
   title: string;
@@ -407,15 +408,24 @@ export function useTextDialog({
   };
 }
 
+interface PickerItemHeader {
+  type: 'header';
+  title: string;
+  value?: undefined;
+}
+
 interface PickerItem<T> {
-  icon?: string;
+  type?: undefined;
   title: string;
   value: T;
+  icon?: string;
+  iconNode?: React.ReactNode;
 }
+export type Item<T> = PickerItemHeader | PickerItem<T>;
 interface PickerDialogOptions<T> {
   title: string;
   description?: string;
-  items: PickerItem<T>[];
+  items: Item<T>[];
   selectedValue?: T;
   onValueChange: (value: T) => void;
 }
@@ -445,16 +455,19 @@ export function usePickerDialog<T>({
             <Text style={typography.text}>{ description } </Text>
           </View>
         )}
-        { map(items, (item, idx) => (
+        { map(items, (item, idx) => item.type === 'header' ? (
+          <DeckBubbleHeader title={item.title} key={idx} />
+        ) : (
           <NewDialog.PickerItem<T>
             key={idx}
-            icon={item.icon}
+            iconName={item.icon}
+            iconNode={item.iconNode}
             text={item.title}
             value={item.value}
             onValueChange={onValuePress}
             // tslint:disable-next-line
             selected={selectedValue === item.value}
-            last={idx === items.length - 1}
+            last={idx === items.length - 1 || items[idx + 1].type === 'header'}
           />
         )) }
       </View>

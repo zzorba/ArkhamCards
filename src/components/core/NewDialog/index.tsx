@@ -6,7 +6,7 @@ import { map } from 'lodash';
 import NewDialogContentLine from './NewDialogContentLine';
 import StyleContext from '@styles/StyleContext';
 import ItemPickerLine from './ItemPickerLine';
-import { m, s } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import { NOTCH_BOTTOM_PADDING, TINY_PHONE } from '@styles/sizes';
 
@@ -69,7 +69,7 @@ function NewDialog({
         </View>
         <ScrollView overScrollMode="never" bounces={false} showsVerticalScrollIndicator style={[styles.body, backgroundStyle]}>
           { children }
-          { (buttons.length > 0) && (
+          { (buttons.length > 0) ? (
             <View style={[styles.actionButtons, { flexDirection: verticalButtons ? 'column' : 'row' }]}>
               { map(buttons, (button, idx) => {
                 return (
@@ -82,7 +82,7 @@ function NewDialog({
                 );
               }) }
             </View>
-          ) }
+          ) : <View style={space.paddingBottomS} /> }
         </ScrollView>
       </View>
     </Modal>
