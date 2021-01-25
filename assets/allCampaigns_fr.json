@@ -35897,7 +35897,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "Mais elle n'était pas sous contrôle.\nVoici le rapport rédigé par les agents du gouvernement à leur arrivée. Les jours suivants, la ville de Blackwater fut mise en quarantaine absolue. L'incident était sur toutes les lèvres et à la une de tous les journaux, mais on ne savait presque rien de dehors de l'énorme cratère et de ses effets sur la campagne environnante. Personne n'était autorisé à quitter la ville, et seules les personnes accréditées par cette obscure agence gouvernementale pouvaient y entrer. Convoqués pour venir étudier le météore, de hauts fonctionnaires du gouvernement et des cercheurs de l'université voisine de Miskatonic constituaient la majeure partie de ces quelques infortunés. Pour les autres occupants de la ville, ce n'était qu'un événement inhabituel, rien de plus… jusqu'à ce que le météore <i>éclose</i>.\nJe l'ai vu de mes propres yeux. Quand l'anomalie en sortit, la première chose qu'elle fit fut de dévorer l'équipe de recherche qui avait été envoyée pour récolter et étudier des échantillons du météore. La suivante fut d'engloutir l'équipement de laboratoire. Puis le tracteur de Ron Graham. Puis sa maison tout entière. La chose continua à grossir et à se répandre en dévorant tout sur son chemin. Je n'en réchappai que de justesse.\nLes militaires survinrent, persuadés de pouvoir la tuer avec des balles ou des obus. Mais tout ce qu'ils tiraient sur la créature était immédiatement dévoré. Ensuite, elle se divisa en centaines de répliques plus petites d'elle-même et l'armée fut vite submergée. Pendant que les combats faisaient rage, moi-même et d'autres habitants de la ville aperçûmes des lumières et des formes dans le ciel. Quelque chose était là, en train d'attendre. Patiemment.\nLa quarantaine est toujours en vigueur et nous sommes coincés au milieu. D'ici peu de temps, l'anomalie aura suffisamment grandi pour recouvrir tout Blackwater. Et si cela se produit, comment sera-t-il possible d'arrêter ce carnage ?</i>"
+      "text": "Mais elle n'était pas sous contrôle.\nVoici le rapport rédigé par les agents du gouvernement à leur arrivée. Les jours suivants, la ville de Blackwater fut mise en quarantaine absolue. L'incident était sur toutes les lèvres et à la une de tous les journaux, mais on ne savait presque rien de dehors de l'énorme cratère et de ses effets sur la campagne environnante. Personne n'était autorisé à quitter la ville, et seules les personnes accréditées par cette obscure agence gouvernementale pouvaient y entrer. Convoqués pour venir étudier le météore, de hauts fonctionnaires du gouvernement et des cercheurs de l'université voisine de Miskatonic constituaient la majeure partie de ces quelques infortunés. Pour les autres occupants de la ville, ce n'était qu'un événement inhabituel, rien de plus… jusqu'à ce que le météore <i>éclose</i>.\nJe l'ai vu de mes propres yeux. Quand l'anomalie en sortit, la première chose qu'elle fit fut de dévorer l'équipe de recherche qui avait été envoyée pour récolter et étudier des échantillons du météore. La suivante fut d'engloutir l'équipement de laboratoire. Puis le tracteur de Ron Graham. Puis sa maison tout entière. La chose continua à grossir et à se répandre en dévorant tout sur son chemin. Je n'en réchappai que de justesse.\nLes militaires survinrent, persuadés de pouvoir la tuer avec des balles ou des obus. Mais tout ce qu'ils tiraient sur la créature était immédiatement dévoré. Ensuite, elle se divisa en centaines de répliques plus petites d'elle-même et l'armée fut vite submergée. Pendant que les combats faisaient rage, moi-même et d'autres habitants de la ville aperçûmes des lumières et des formes dans le ciel. Quelque chose était là, en train d'attendre. Patiemment.\nLa quarantaine est toujours en vigueur et nous sommes coincés au milieu. D'ici peu de temps, l'anomalie aura suffisamment grandi pour recouvrir tout Blackwater. Et si cela se produit, comment sera-t-il possible d'arrêter ce carnage ?"
     },
     {
       "id": "gather_encounter_sets",
@@ -35918,7 +35918,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Cherchez les cartes suivantes dans le set de rencontre <i>Le dévoreur de Toute Chose</i> e mettez-les de côté, hors jeu : Cœur Vulnérable, 1 exemplaire de Mucus Agrippant, 1 exemplaire de Mucus Cubique et les deux exemplaire du Mucuspectre."
+      "text": "Cherchez les cartes suivantes dans le set de rencontre <i>Le dévoreur de Toute Chose</i> et mettez-les de côté, hors jeu : Cœur Vulnérable, 1 exemplaire de Mucus Agrippant, 1 exemplaire de Mucus Cubique et les deux exemplaire du Mucuspectre."
     },
     {
       "id": "setup_blob",
@@ -36111,7 +36111,7 @@
       "type": "table",
       "title": "Acide de Réalité",
       "bullet_type": "none",
-      "text": "<smallcaps>Le Sujet 8L-08 ouvre grand ses mâchoires ett dévore…</smallcaps>\n<i>(Si la combinaison des poins Chaos révélés n'apparait pas dans la liste ou si l'aspect mentionné ne peut être dévoré, révélez deux nouveaux pions Chaos et consultez à nouveau la liste.)</i>",
+      "text": "<smallcaps>Le Sujet 8L-08 ouvre grand ses mâchoires et dévore…</smallcaps>\n<i>(Si la combinaison des poins Chaos révélés n'apparait pas dans la liste ou si l'aspect mentionné ne peut être dévoré, révélez deux nouveaux pions Chaos et consultez à nouveau la liste.)</i>",
       "header": {
         "cells": [
           {
@@ -36712,7 +36712,7 @@
               "size": 1
             },
             {
-              "text": "… toutes les cartes Événementdasn votre main.",
+              "text": "… toutes les cartes Événement dans votre main.",
               "size": 4
             }
           ]
@@ -36824,7 +36824,7 @@
               "size": 1
             },
             {
-              "text": "… vitre potentiel. Jusqu'à la fin du round, vos compétences ne peuvent pas être augmentées.",
+              "text": "… votre potentiel. Jusqu'à la fin du round, vos compétences ne peuvent pas être augmentées.",
               "size": 4
             }
           ]
@@ -36952,7 +36952,7 @@
               "size": 1
             },
             {
-              "text": "… lecconcept de facilité. Jusqu'à la fin de la partie, retournez la carte de Référence du Scénario pour afficher sa face Difficile / Expert.",
+              "text": "… le concept de facilité. Jusqu'à la fin de la partie, retournez la carte de Référence du Scénario pour afficher sa face Difficile / Expert.",
               "size": 4
             }
           ]
@@ -36983,7 +36983,7 @@
     },
     {
       "id": "earn_assets",
-      "text": "Pourchacun des soutiens suivants en jeu, n'importe quel investigateur à le droit de choisir d'ajouter ce soutien à son deck.",
+      "text": "Pour chacun des soutiens suivants en jeu, n'importe quel investigateur à le droit de choisir d'ajouter ce soutien à son deck.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -37160,7 +37160,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "<i>Rapport d'incident : 8L-08, suite</i>\n<i>Mercredi 11 juillet 1928</i>\n<i>Blackwater, Massachusetts</i>\n<i>07:42 - Contact pris avec le sujet ███████████████. Il est ██████████████ météore ; les chercheurs ignorent si le météor a servi ███████████ ou s'il s'agissait d'une sorte d'█████████. Réponse d'urgence immédiate initiée. À environ 05:00, le sujet a été éliminé par une tierce partie. Comme indiqué dans le protocole opérationnel, des échantillons on été collectés et envoyés à ███████ pour étude approfondie. Agents actuellement en train d'effacer les traces de la présence du sujet dans la zone de quarantaine. Recommandons viviement l'explurgation du rapport d'incident antérieur contradictoire.</i>\n<i>Les citoyens de Blackwater ont été informés ████████████ de la quarantaine ███████████ par un virus aérien. ████████████████ plusieurs infections ██████████████████████████████████ équipes médicales en route pour corroborer.</i>\n<i>Agents tentent d'entrer en contact avec les combattants non enregistrés pour débriefing. De par la nature sensible de l'incident, recommandons que leur remise en liberté soit assortie d'une étroite surveillance. Cette histoire ne doit pas██████████████████████████████████████████████████████████████████████████████████████.</i>\n<i>Détruisez ce rapport d'incident immédiatement après réception. Instructions supplémentaires à suivre.</i>",
+      "text": "<i>Rapport d'incident : 8L-08, suite</i>\n<i>Mercredi 11 juillet 1928</i>\n<i>Blackwater, Massachusetts</i>\n<i>07:42 - Contact pris avec le sujet ███████████████. Il est ██████████████ météore ; les chercheurs ignorent si le météore a servi ███████████ ou s'il s'agissait d'une sorte d'█████████. Réponse d'urgence immédiate initiée. À environ 05:00, le sujet a été éliminé par une tierce partie. Comme indiqué dans le protocole opérationnel, des échantillons on été collectés et envoyés à ███████ pour étude approfondie. Agents actuellement en train d'effacer les traces de la présence du sujet dans la zone de quarantaine. Recommandons viviement l'explurgation du rapport d'incident antérieur contradictoire.</i>\n<i>Les citoyens de Blackwater ont été informés ████████████ de la quarantaine ███████████ par un virus aérien. ████████████████ plusieurs infections ██████████████████████████████████ équipes médicales en route pour corroborer.</i>\n<i>Agents tentent d'entrer en contact avec les combattants non enregistrés pour débriefing. De par la nature sensible de l'incident, recommandons que leur remise en liberté soit assortie d'une étroite surveillance. Cette histoire ne doit pas██████████████████████████████████████████████████████████████████████████████████████.</i>\n<i>Détruisez ce rapport d'incident immédiatement après réception. Instructions supplémentaires à suivre.</i>",
       "steps": [
         "blob_contained",
         "earn_assets",
@@ -71779,7 +71779,7 @@
 {
   "id": "beneath_the_waves",
   "scenario_name": "Sous les Vagues",
-  "full_name": "Interlude III: Beneath the Waves",
+  "full_name": "Interlude III : Sous les Vagues",
   "type": "interlude",
   "setup": [
     "intro",
@@ -71797,12 +71797,12 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You bounce through your memories, struggling to return to the present. You remember a dark cell. A knife at your throat. A man with wide, unblinking eyes, wearing a long hooded robe. \"Oceiros,\" another voice calls, \"these ones were found in Dagon's lair as well. We believe they were the ones snooping around Devil Reef.\"\nOceiros nods. The knife at your throat digs deeper. \"Take what they have stolen to the lighthouse at once,\" he commands. \"It is time to begin our great work. None will disrupt the Order's business ever again.\"\nYour mind snaps back to the present. The rumbling of an automobile engine grows as your senses return. Agent Harper grips your shoulder and peers into your eyes. \"Another vision,\" she utters with a hint of surprise. \"Do you remember something? What was it?\"\nYou shake the ache from your pounding skull and ask Harper if the name Oceiros means anything. \"Oceiros Marsh? He's the keeper of the old lighthouse on Falcon Point,\" she replies. \"Why? What did you see?\""
+      "text": "Vous luttez pour revenir dans le présent, mais vous rebondissez de souvenir en souvenir. Vous vous remémorez une cellule sombre. Un couteau contre votre gorge. Un homme aux yeux exorbités et qui ne clignent pas, vêtu d'une longue robe à capuche. « Oceiros » lance une autre voix, « ceux-là ont été découverts dans la Tanière de Dagon également. Nous pensons que ce sont ceux qui furetaient autour du Récif du Diable. »\nOceiros hoche la tête. Le couteau s'enfonce un peu plus dans votre cou. « Prenez immédiatement ce qu'ils ont dérobé au phare », ordonne-t-il. « Il est temps d'entamer notre grand œuvre. Personne ne se mettra plus en fravers des plans de l’Ordre. »\nVotre esprit revient brutalement dans le présent. Le vrombissement d'un moteur de voiture se fait plu sfort à mesure que vous recouvrez vos esprits. L'agent Harper vous tient par l'épaule et vous regarde droit dans les yeux. « Une autre vision ? » demande-t-elle, surprise. « Vous souvenez-vous de quelque chose ? Qu'était-ce ? »\nVous tentez d'ignorer votre mal de crâne et demandez à Harper si le nom d'Oceiros lui dit quelque chose. « Oceiros Marsh ? C'est le gardien du vieux phare situé sur la Pointe du Faucon », répond-elle. « Pourquoi ? Qu'avez-vous vu ? »"
     },
     {
       "id": "section_intro",
       "type": "rule_reminder",
-      "text": "Depending on which keys were on the current act or controlled by an investigator when <b>Scenario IV: Devil Reef</b> ended, read each of the sections below that apply. Then, proceed to the following text."
+      "text": "En fonction de la position des clés, sur l'acte en cours ou sous le contrôle d'un investigateur, quand le <b>Scénario IV : Le Récif du Diable</b> s'est terminé, lisez chacune des sections suivantes qui s'applique. Puis, passez à la suite."
     },
     {
       "id": "ask_purple_key",
@@ -71812,7 +71812,7 @@
         "choices": [
           {
             "id": "purple_key",
-            "text": "Was the purple key on the current act or controlled by an investigator when the scenario ended?",
+            "text": "La clé violette était-elle sur l'acte en cours ou contrôlée par un investigateur quand le scénario s'est terminé ?",
             "steps": [
               "purple_key_story",
               "purple_key_xp",
@@ -71826,11 +71826,11 @@
     {
       "id": "purple_key_story",
       "type": "story",
-      "text": "You describe the idol found in the undersea grotto. Agent Harper nods along with you. \"I remember seeing something like that in some of the notes I found while you were off investigating the reef. It depicts some kind of ancient diety—something those vile creatures worship.\" Her voice lowers to little more than a whisper. \"Something I suspect is no myth.\" You ask where the idol is now, and she shakes her head. \"I suspect it was taken from you when you were thrown into that pit,\" she replies."
+      "text": "Vous décrivez à l'agent Harper l'idole que vous avez trouvée dans la grotte sous-marine « Je me souviens avoir vu quelque chose comme ça dans les notes que j'ai trouvées pendant que vous enquêtiez sur le récif. Elle représente une sorte d'antique divinité ; quelque chose que ces créatures vénèrent. » Elle baisse la voix jusqu'à ce qu'elle ne soit plus qu'un murmure. « Je pense que ce n'est peut-être pas un mythe. » Vous lui demandez où se trouve l'idole maintenant, mais elle secoue la tête. «Je crois qu'ils vous l'ont pris quand -ils vous ont jeté dans ce gouffre», répond-elle."
     },
     {
       "id": "purple_key_xp",
-      "text": "The conspiracy deepens. Every investigator records 2 additional experience under \"Unspent Experience.\"",
+      "text": "Le mystère s'épaissit. Chaque investigateur inscrit 2 points d'expérience supplémentaires sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -71854,13 +71854,13 @@
     },
     {
       "id": "idol_brought_to_the_lighthouse",
-      "text": "In your Campaign Log, record <i>the idol was brought to the lighthouse.</i> <i>(Do not add the Waveworn Idol story asset to any investigator's deck. It must be recovered first.)</i>",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>l'idole été emportée au phare. (N’ajoutez pas l’Idole Érodée au deck d’un joueur, elle doit d’abord être retrouvée.)</i>",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "idol_brought_to_the_lighthouse",
-          "text": "the idol was brought to the lighthouse."
+          "text": "l'idole été emportée au phare."
         }
       ]
     },
@@ -71872,7 +71872,7 @@
         "choices": [
           {
             "id": "white_key",
-            "text": "Was the white key on the current act or controlled by an investigator when the scenario ended?",
+            "text": "La clé blanche était-elle sur l'acte en cours ou contrôlée par un investigateur quand le scénario s'est terminé ?",
             "steps": [
               "white_key_story",
               "white_key_xp",
@@ -71886,11 +71886,11 @@
     {
       "id": "white_key_story",
       "type": "story",
-      "text": "You recall the strange mantle you found submerged in the depths of Devil Reef. \"Yes, I remember seeing that,\" Harper says with a snap of her fingers. \"One of the 'priests' in that accursed Esoteric Order of Dagon wore it when I first arrived in Innsmouth. It must have been taken to the lighthouse with the rest of your belongings when you were captured at the Order's headquarters. If we're lucky, it'll still be there...\""
+      "text": "Vous vous souvenez de la drôle de cape que vous avez trouvée dans les profondeurs du Récif du Diable. « Oui, je me souviens l'avoir vue » dit l'agent Harper en claquant des doigts. « Un des “prêtres” de ce maudit Ordre Ésotérique de Dagon la portait quand je suis arrivée à Innsmouth pour la première fois, Elle doit avoir été emportée au phare avec le reste de vos possessions quand vous avez été capturé au quartier général de l'Ordre. Avec de la chance, elle s'y trouve toujours… »"
     },
     {
       "id": "white_key_xp",
-      "text": "The conspiracy deepens. Every investigator records 2 additional experience under \"Unspent Experience.\"",
+      "text": "Le mystère s'épaissit. Chaque investigateur inscrit 2 points d'expérience supplémentaires sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -71914,13 +71914,13 @@
     },
     {
       "id": "mantle_brought_to_the_lighthouse",
-      "text": "In your Campaign Log, record <i>the mantle was brought to the lighthouse.</i> <i>(Do not add the Awakened Mantle story asset to any investigator's deck. It must be recovered first.)</i>",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>la cape a été emportée au phare. (N'ajoutez pas la Cape de l'Éveillé au deck d'un joueur, elle doit d'abord être retrouvée.)</i>",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "mantle_brought_to_the_lighthouse",
-          "text": "the mantle was brought to the lighthouse."
+          "text": "la cape a été emportée au phare."
         }
       ]
     },
@@ -71932,7 +71932,7 @@
         "choices": [
           {
             "id": "black_key",
-            "text": "Was the black key on the current act or controlled by an investigator when the scenario ended?",
+            "text": "La clé noire était-elle sur l'acte en cours ou contrôlée par un investigateur quand le scénario s'est terminé ?",
             "steps": [
               "black_key_story",
               "black_key_xp",
@@ -71946,11 +71946,11 @@
     {
       "id": "black_key_story",
       "type": "story",
-      "text": "You tell Agent Harper about the temple with the two statues you discovered within Devil Reef, and about the crown you stole. \"That sounds like the 'Headdress of Y'ha-nthlei' I read about while I was researching the Order. I'm impressed you were able to make off with it. Whatever it is, it sounds pretty important to the Order. Although I still have no clue what 'Y'ha-nthlei' is.\" You remark that you don't have the crown anymore, and she nods. \"It must have been taken from you and brought to the lighthouse with the rest of your things before you lost your memories,\" she explains."
+      "text": "Vous parlez à l'agent Harper du temple avec les deux statues que vous avez découvert dans le Récif du Diable et de la couronne que vous avez dérobée. « On dirait la Tiare de “Y'ha-nthlei”, j'ai lu quelque chose à son propos quand je faisais des recherches sur l'Ordre, mais je n'ai toujours aucune idée de ce qu'est “Y'ha-nthlei” exactement. » Vous lui signalez que vous n'avez plus la couronne et elle hoche la tête. « Ils doivent vous l'avoir prise et emportée au phare avec le reste de vos affaires avant que vous ne perdiez la mémoire », explique-t-elle."
     },
     {
       "id": "black_key_xp",
-      "text": "The conspiracy deepens. Every investigator records 2 additional experience under \"Unspent Experience.\"",
+      "text": "Le mystère s'épaissit. Chaque investigateur inscrit 2 points d'expérience supplémentaires sous la mention « Expérience non dépensée ».",
       "effects": [
         {
           "type": "earn_xp",
@@ -71962,7 +71962,7 @@
     },
     {
       "id": "black_key_token",
-      "text": "Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "text": "Ajoutez 1 pion [elder_thing] à la réserve du Chaos pour le reste de la campagne.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -71974,19 +71974,19 @@
     },
     {
       "id": "headdress_brought_to_the_lighthouse",
-      "text": "In your Campaign Log, record <i>the headress was brought to the lighthouse.</i> <i>(Do not add the Headdress of Y'ha-nthlei story asset to any investigator's deck. It must be recovered first.)</i>",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>la tiare a été emportée au phare. (N'ajoutez pas la Tiare de Y'ha-nthlei au deck d'un joueur, elle doit d 'abord être retrouvée.)</i>",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "headdress_brought_to_the_lighthouse",
-          "text": "the headdress was brought to the lighthouse."
+          "text": "la tiare a été emportée au phare."
         }
       ]
     },
     {
       "id": "check_no_keys",
-      "text": "If no keys were on the current act or controlled by an investigator when the scenario ended:",
+      "text": "Si aucune clé n'était sur l'acte en cours ou contrôlée par un investigateur quand le scénario s'est terminé :",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -72036,20 +72036,20 @@
     {
       "id": "no_keys_story",
       "type": "story",
-      "text": "You struggle to remember anything of value beyond your initial exploration of the reef. You recall the uncanny creatures you fought, the various islands you explored, and the rising tides, but no more. Secrets must be hidden in those reefs, but either you were unable to find them, or you simply don't recall. Your head throbs with pain as you struggle to summon memories from the void within your mind. \"That's okay,\" Agent Harper says, placing a hand on your shoulder. \"We'll figure this out together.\""
+      "text": "Vous vous concentrez pour vous souvenir de -quelque chose d'utile concernant votre première exploration du récif. Vous vous souvenez des créatures monstrueuses que vous avez combattues, des diverses îles que vous avez explorées et de la marée qui montait inlassablement, mais rien de plus. Ces récifs doivent abriter des secrets, mais soit vous n'êtes pas parvenu à les percer, soit vous ne vous en souvenez pas. Plus vous tentez de faire ressurgir les souvenirs du vide de votre esprit, plus votre mal de tête S'accentue. « C'est bon », dit l'agent Harper en posant une main sur votre épaule. « Nous trouverons une solution ensemble. »"
     },
     {
       "id": "outro",
       "type": "story",
-      "text": "\"It seems your memories are starting to return,\" Agent Harper says with a tentative grin. \"How do you feel?\"\nYou struggle to find a reply that fits. Part of you is relieved to have your memories returning, but the rest of you wishes they hadn't been so vivid. You wonder once more if you should simply take this opportunity to drive back to Arkham and never set foot in Innsmouth again. Then your gaze meets Harper's, and you see that fierce resolve within her eyes. The same resolve that stirs in you.\nYou say nothing, but she seems to understand. \"This must be a lot to take in. For now, let's focus on getting to Falcon Point. If what you say is true, and Oceiros is part of the Esoteric Order of Dagon, there should be answers there.\" She looks over her shoulder, peering into the western horizon. The sun dips just below the treeline, bathing the sky in deep scarlet. \"Something tells me this isn't over.\""
+      "text": "« On dirait que vos souvenirs commencent à revenir » dit l'agent Harper avec un léger sourire. « Comment vous sentez-vous ? »\nVous avez du mal à trouver une réponse qui convienne. D'un côté vous êtes soulagé que vos souvenirs soient de retour, mais d'un autre, vous auriez préféré qu'ils ne reviennent pas d'une manière aussi brutale. Vous vous demandez une fois de plus si vous ne devriez pas simplement profiter de cette occasion pour rentrer à Arkham et ne jamais remettre les pieds à Innsmouth. Mais vous croisez le regard de l'agent Harper, et y lisez une féroce résolution. La même résolution qui s'élève en vous.\nVous ne prononcez pas un mot, mais elle semble comprendre. « Cela fait beaucoup de choses à encaisser. Pour l'instant, concentrons-nous sur la Pointe du Faucon. Si vous avez dit vrai et si Oceiros fait partie de l'Ordre Ésotérique de Dagon, alors nous devrions y trouver des réponses. » Elle regarde par-dessus son épaule, scrutant l'horizon à l'ouest. Le soleil se couche juste derrière la cime des arbres, baignant le ciel d'une lueur écarlate. « Quelque chose me dit que ce n'est pas terminé. »"
     },
     {
       "id": "return_thomas_dawson",
-      "text": "Return Thomas Dawson to the collection. If an investigator earned Elina Harper (at any point during this campaign), they may add her back to their deck."
+      "text": "Remettez Thomas Dawson dans la collection. Si un investigateur a gagné Elina Harper (à n'importe quel point de cette campagne), il peut l'ajouter à son deck."
     },
     {
       "id": "spend_xp",
-      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
+      "text": "Avec tous ces souvenirs retrouvés, les événements passés vous paraissent plus clairs. Chaque investigateur a maintenant le droit de dépenser l'expérience inscrite sous la mention « Expérience non dépensée » de votre Carnet de Campagne.",
       "effects": [
         {
           "type": "earn_xp",
@@ -72063,7 +72063,7 @@
 {
   "id": "devil_reef",
   "scenario_name": "Le Récif du Diable",
-  "full_name": "Scenario IV: Devil Reef",
+  "full_name": "Scénario IV : Le Récif du Diable",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -72092,7 +72092,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<center><game>FRIDAY, SEPTEMBER 2, 1927</game></center>\n<center><game>THREE WEEKS EARLIER</game></center>\nThe rumbling of the boat's engine startles you from your thoughts. \"Yeh all right there?\" the ship's captain growls. \"Yeh look like ye've seen a ghost. Pale as a sheet, yeh are.\"\nYou turn and face the grizzled old man. Mr. Moore was the only ship captain you could find in Innsmouth who was unafflicted by whatever curse or deformity has gripped most of the town. His apparent hunanity, however, has done nothing to spare his broken teeth, crooked jaw, or the massive scar torn down his right cheek. Still, he is a welcome sight, considering the way the rest of your investigation has gone.\n\"Can't believe you want to head to that accurs'd Devil Reef,\" he exclaims, shaking his head. \"It's a fool's errand.\"\nYou point out that the sailor was happy enough to provide passage after you showed him his payment, earning a raspy chuckle out of him.\n\"Yeh got me there,\" he admits. \"Now get ready. We set off in ten.\" He stumbles from the main deck into the bridge to chart a course while you prepare for the journey ahead."
+      "text": "<center><game>VENDREDI 2 SEPTEMBRE 1927</game></center>\n<center><game>TROIS SEMAINES PLUS TÔT</game></center>\nLe grondement du moteur du bateau vous tire de vos pensées. « Tout va bien ici ? » grogne le capitaine. « On dirait qu'vous avez vu un fantôme. Z'êtes blanc comme un linge. »\nVous vous tournez vers le vieil homme. M. Moore est le seul capitaine d 'Innsmouth qui n'est pas atteint par l'espèce de malédiction ou de difformité qui semble toucher la plupart des habitants de la ville. Son apparence humaine est néanmoins gâchée par des dents gâtées, une mâchoire tordue et une longue cicatrice balafrant sa joue droite. Sa compagnie reste la bienvenue compte tenu de I 'avancée de votre enquête.\n« J'arrive toujours pas à croire qu'vous vouliez aller voir ce satané Récif du Diable » s'exclame-t-il en secouant la tête. « Quelle idée stupide. »\nVous faites remarquer au marin 'il était moins réticent à vous emmener au moment où vous l'avez payé, ce qui le fait éclater de rire.\n« C'est pas faux » admet-il. « Préparez-vous à partir, on largue les amarres dans dix minutes. » Il quitte te pont principal pour la passerelle afin de calculer votre itinéraire et vous commencez vos préparatifs."
     },
     {
       "id": "check_mission_succeeded",
@@ -72120,21 +72120,21 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "Agent Dawson boards the ship at last. He sports a heavy overcoat and carries a shotgun slugged over his shoulder. \"Agent Harper had a cache with some extra firepower,\" he explains. \"I figured, given the rumors, it couldn't hurt.\"\nYou know what rumors Dawson refers to: Devil Reef is supposedly haunted, or perhaps infested, with some manner of devilish sea creature. The sailors of Innsmouth speak of silhouettes crawling in and out of caves along the reef's many islands, of strangely misshapen fins sighted along the surface of the sea, and of entire boats crashing against the jagged rocks and vanishing beneath the waves.\n\"All of our research has led to this. Whatever is going on in this town, the Esoteric Order of Dagon and this 'Devil Reef' are at the heart of it. Agent Harper suspects these rumors were spread by the Order to keep sailors away from the reef. If that's true, there must be something the Order is hiding.\"\nYou ask where Harper is, and Dawson shoots you a hard glance. \"She has her mission. We have ours.\" You remind Dawson that you've already accomplished the mission you were hired to perform, which yields a smirk from the hardened vet. \"True. And yet here you are.\"\nHe has a point. You could have left right after Harper was rescued, but you stayed to assist with their investigation. Perhaps out of a sense of duty, or perhaps curiosity. Whatever it was, you're here now, and there's no going back."
+      "text": "L'agent Dawson embarque en dernier. Il a revêtu un épais manteau et porte un fusil de chasse sur son épaule. « L'agent Harper avait une cache avec quelques armes supplémentaires », explique-t-il. « Compte tenu des rumeurs, je me suis dit que cela ne pouvait pas faire de mal. »\nVous connaissez les rumeurs dont parle Dawson : le Récif du Diable est réputé hanté, ou peut-être infesté, par des créatures marines démoniaques. Les marins d'Innsmouth parlent de silhouettes rampant dans et hors des grottes le long des nombreuses îles du récif, de nageoires difformes observées à la surface de la mer, et de bateaux entiers s'échouant contre les rochers tranchants et disparaissant sous les vagues.\n« Toutes nos recherches nous mènent là. Quoi qu'il se passe dans cette ville, l'Ordre Ésotérique de Dagon et ce Récif du Diable sont au centre de tout. L'agent Harper pense que ces rumeurs ont été répandues par I 'Ordre pour éloigner les marins du récif. Si c'est vrai, il doit y avoir là quelque chose que l'Ordre cache. »\nVous lui demandez où se trouve Harper et Dawson vous jette un regard mauvais. « Elle a sa mission. Nous avons la nôtre. » Vous rappelez à Dawson que vous avez déjà accompli la mission pour laquelle vous avez été engagé, ce qui fait sourire te vétéran endurci. « Exact. Et pourtant, vous êtes là. »\nIl marque un point. Vous auriez pu partir juste après avoir secouru Harper, mais vous êtes resté pour les aider dans leur enquête. Peut-être par sens du devoir, peut-être par curiosité. Quoi qu'il en soit, vous êtes resté, et vous ne pouvez plus faire demi-tour."
     },
     {
       "id": "intro_3",
       "type": "story",
-      "text": "Agent Dawson boards the ship at last. Heavy bags uner his weary eye. \"All of our leads are cold,\" he says with resignation. \"Wherever Agent Harper is now, she's beyond our reach.\"\nYou attempt to console Dawson by reminding him why you've chosen to investigate Devil Reef. The rumors say it is haunted, or perhaps infested, with some manner of devilish sea creature. The sailors of Innsmouth speak of silhouettes crawling in and out of caves along the reef's many islands, of strangely misshapen fins sighted along the surface of the sea, and of entire boats crashing against the jagged rocks and vanishing beneath the waves.\n\"You're right,\" Dawson admits with a sigh. \"Whatever happened to Agent Harper has something to do with the Esoteric Order of Dagon. That book that was slipped under your hotel room door is evidence enough of that. And if my hypothesis is right, the ones who have been spreading these rumors about Devil Reef are none other than the Order themselves. If that's true, there must be something they're hiding.\"\nYou nod and begin preparing for the mission. Agent Dawson gazes at you inquisitively the entire time. \"Why did you stay?\" he finally asks. \"You could have left Innsmouth after we failed to rescue Agent Harper, but you chose to stick around. Why?\"\nTruth be told, you aren't sure. Perhaps it was a sense of duty. Perhaps it was curiosity. You shrug and tell him it doesn't matter. You're here now, and there's no going back. Your admission earns you a smile from the hardened vet.\n\"Right. Let's go find what they're hiding,\" he says."
+      "text": "L'agent Dawson embarque en dernier. Il a d'énormes cernes sous les yeux. « Toutes nos pistes sont froides » annonce-t-il avec résignation. « Où que soit l'agent Harper en ce moment, elle est hors de notre portée. »\nVous tentez de remettre Dawson d'aplomb en lui rappelant pourquoi vous avez choisi d'enquêter sur le Récif du Diable. Les rumeurs disent le Récif du Diable hanté, ou peut-être infesté, par des créatures marines démoniaques. Les marins d 'Innsmouth parlent de silhouettes rampant dans et hors des grottes le long des nombreuses îles du récif, de nageoires difformes observées à la surface de la mer, et de bateaux entiers s'échouant contre les rochers tranchants et disparaissant sous les vagues.\n« Vous avez raison » admet Dawson en soupirant. « Quoi qu'il soit advenu de l'agent Harper, cela a à voir avec l'Ordre Ésotérique de Dagon. Ce carnet glissé sous la porte de votre chambre d'hôtel en est une preuve flagrante. Et si mon hypothèse se révèle exacte, ce sont les membres de l'Ordre qui ont répandu ces rumeurs sur le Récif du Diable afin d'éloigner les marins. Si j'ai vu juste, ils doivent y cacher quelque chose. »\nVous acquiescez et commencez les préparatifs de la mission. L'agent Dawson vous observe attentivement durant tout ce temps. « Pourquoi êtes-vous resté ? » finit-il par vous demander. « Vous auriez pu quitter Innsmouth après que nous avons échoué à retrouver l'agent Harper, mais vous avez choisi de rester. Pourquoi »\nÀ vrai dire, vous n'en êtes pas certain vous-même. Peut-être par sens du devoir, peut-être par curiosité. Vous haussez les épaules et lui répondez que cela n 'a aucune importance. Vous êtes là et vous ne reculerez pas. Cette réponse vous vaut un sourire de la part du vétéran endurci.\n« Très bien. Allons découvrir ce qu’ils cachent. »"
     },
     {
       "id": "investigator_setup",
       "type": "rule_reminder",
       "title": "Mise en Place des Investigateurs",
-      "text": "Perform this step before setting up your investigator.",
+      "text": "Effectuez cette étape avant de mettre en place votre investigateur.",
       "bullets": [
         {
-          "text": "Search each investigator's deck for Elina Harper and remove her from the game for the duration of this scenario."
+          "text": "Cherchez Elina Harper dans les decks de tous les investigateurs et retirez-la de la partie pour la durée de ce scénario."
         }
       ]
     },
@@ -72164,12 +72164,12 @@
     {
       "id": "add_agent_dawson_hand",
       "bullet_type": "small",
-      "text": "Search the collection for Agent Dawson and add him to any investigator's opening hand, as an additional card."
+      "text": "Cherchez Thomas Dawson dans la collection et ajoutez-le à la main de départ de n'importe quel investigateur, en tant que carte supplémentaire."
     },
     {
       "id": "add_agent_dawson_deck",
       "bullet_type": "small",
-      "text": "Search the collection for Agent Dawson and shuffle him into any investigator's deck for the duration of this scenario."
+      "text": "Cherchez Thomas Dawson dans la collection et mélangez-le dans le deck de n'importe quel investigateur pour la durée de ce scénario."
     },
     {
       "id": "gather_encounter_sets",
@@ -72186,38 +72186,38 @@
     },
     {
       "id": "setup_keys",
-      "text": "Set each key aside, as follows:",
+      "text": "Préparez les clés de la manière suivante :",
       "bullets": [
         {
-          "text": "Set the purple, white, and black keys aside, faceup."
+          "text": "Mettez de côté face visible la clé violette, la clé blanche et la clé noire."
         },
         {
-          "text": "Set the yellow, green, red, and blue keys aside, facedown. Shuffle them so you do not know which is which."
+          "text": "Mettez de côté face cachée la Clé jaune, la clé verte, la clé rouge et la clé bleue. Mélangez-les de manière à ne pas pouvoir les distinguer."
         }
       ]
     },
     {
       "id": "setup_locations",
-      "text": "Put the Churning Waters location into play. <i>(It enters play fully flooded.)</i>",
+      "text": "Mettez en jeu le lieu Eaux Grouillantes. (Ce lieu entre en jeu complètement inondé.)",
       "bullets": [
         {
-          "text": "Put the Fishing Vessel story asset into play at Churning Waters."
+          "text": "Mettez en jeu le soutien d'histoire Bateau de Pêche dans les Eaux Grouillantes."
         },
         {
-          "text": "Each investigator begins play in the Fishing Vessel <i>(see Vehicles, below)</i>."
+          "text": "Chaque investigateur commence la partie dans le Bateau de Pêche (voir véhicules, ci-dessous)."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following story assets aside, out of play: Awakened Mantle, Headdress of Y'ha-nthlei, and Waveworn Idol."
+      "text": "Mettez de côté les soutiens d'histoire suivants, hors jeu : Cape de l'Éveillé, Idole Érodée et Tiare de Y'ha-nthlei."
     },
     {
       "id": "setup_devil_reef",
-      "text": "Shuffle the 5 Devil Reef locations and put each of them into play, unrevealed side faceup.",
+      "text": "Mélangez les 5 lieux Récif du Diable et mettez-les en jeu, face non-révélée visible.",
       "bullets": [
         {
-          "text": "Do not place them <i>adjacent</i> to Churning Waters—these locations are connected not via adjacency, but via their connection symbols."
+          "text": "Ne les placez pas <i>adjacents</i> aux Eaux Grouillantes — ces lieux ne sont pas connexes par l'adjacence mais via leurs icônes de connexion."
         }
       ]
     },
@@ -72316,35 +72316,35 @@
     },
     {
       "id": "setup_unfathomable_depths",
-      "text": "Prepare the Unfathomable Depths by performing the following steps:",
+      "text": "Préparez les Profondeurs Insondables en effectuant les étapes suivantes :",
       "bullets": [
         {
-          "text": "First, remove 1 of each of the following locations from the game without looking at them: Cyclopean Ruins, Deep One Grotto, and Temple of the Union. Each of these locations is the revealed side of an Unfathomable Depths location."
+          "text": "Premièrement, retirez de la partie 1 exemplaire de chacun des lieux suivants sans les regarder : Ruines Cyclopéennes, Grotte des Profonds et Temple de l'Union. Chacun de ces lieux est la face révélée d'un lieu ProfondeursInsondables."
         },
         {
-          "text": "Set the remaining 3 Unfathomable Depths locations aside, out of play."
+          "text": "Mettez de côté les 3 lieux Profondeurs Insondables restants, hors jeu."
         }
       ]
     },
     {
       "id": "setup_tidal_tunnels",
-      "text": "Shuffle the 8 Tidal Tunnel locations to form the Tidal Tunnel deck.",
+      "text": "Mélangez les 8 lieux Tunnel Aquatique pour constituer le deck Tunnel Aquatique.",
       "bullets": [
         {
-          "text": "Each of the cards in the Tidal Tunnel deck should have its unrevealed side faceup so that only the \"Tidal Tunnel\" side is showing."
+          "text": "Chaque carte du deck Tunnel Aquatique doit avoir sa face non-révélée visible, c'est à dire de telle manière à ce que seule sa face « Tunnel Aquatique » soit visible."
         },
         {
-          "text": "Place this deck near the encounter deck."
+          "text": "Placez ce deck à côté du deck Rencontre."
         }
       ]
     },
     {
       "id": "setup_act_deck",
-      "text": "Check the \"Memories Recovered\" section of the Campaign Log. Depending on the following circumstances, a different version of agenda 1 should be used in this scenario. Remove the other version of agenda 1 from the game."
+      "text": "Vérifiez la section « Souvenirs Retrouvés » de votre Carnet de Campagne. En fonction des circonstances suivantes, une version différente de l’'Intrigue 1 sera utilisée dans ce scénario. Retirez de la partie l'autre version de l'Intrigue 1."
     },
     {
       "id": "check_battle_with_a_horrifying_devil",
-      "text": "If <i>a battle with a horrifying devil</i> is listed under Memories Recovered.",
+      "text": "Si <i>un combat contre un monstre terrifiant</i> est inscrit sous la mention « Souvenirs Retrouvés ».",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -72370,16 +72370,16 @@
     {
       "id": "agenda_1_v1",
       "bullet_type": "small",
-      "text": "Use Agenda 1a—Secrets of the Sea (v.I)."
+      "text": "Utilisez l'Intrigue la — Secrets de la Mer (v. I)."
     },
     {
       "id": "agenda_1_v2",
       "bullet_type": "small",
-      "text": "Otherwise, use Agenda 1a—Secrets of the Sea (v.II)."
+      "text": "Sinon, utilisez I 'Intrigue la — Secrets de la Mer (v. II)."
     },
     {
       "id": "add_flood_tokens",
-      "text": "Add the flood tokens to the token pool."
+      "text": "Ajoutez les pions Inondation à la réserve de pions."
     },
     {
       "id": "encounter_deck",
@@ -72388,48 +72388,48 @@
     {
       "id": "location_adjacency_rule",
       "type": "rule_reminder",
-      "title": "Location Adjacency in Devil Reef",
-      "text": "During this scenario, [[Island]] and [[Cave]] locations are arranged in a set pattern, with new locations from the Tidal Tunnel deck emerging, below, to the left, or to the right of some [[Island]] locations. However, [[Island]] locations and Churning Waters are not adjacent to one another, and are instead connected through connection icons as normal.",
+      "title": "Lieux Adjacents dans Le Récif du Diable",
+      "text": "Lors de ce scénario, les lieux [[Île]] et [[Grotte]] sont disposés selon un arrangement prédéfini, avec de nouveaux lieux issus du deck Tunnel Aquatique émergeant en dessous, à gauche ou à droite de certains lieux [[Île]]. Cependant les lieux [[Île]] et Eaux Grouillantes ne sont pas adjacents les uns aux autre, à la place, ils sont connexes via leurs icônes de connexion comme d'habitude.",
       "bullets": [
         {
-          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+          "text": "<b>Lors de ce scénario, les lieux adjacents sont considérés comme connexes les uns aux autres.</b>"
         },
         {
-          "text": "A location that is put into play adjacent to another location should be set next to that location, with no other locations between them."
+          "text": "Un lieu qui est mis en jeu adjacent à un autre lieu doit être placé près de ce lieu, sans autre lieu entre eux."
         },
         {
-          "text": "Locations are only adjacent orthogonally (left, right, above, or below); they are not adjacent diagonally."
+          "text": "Les lieux sont adjacents orthogonalement (gauche, droite, dessus, dessous), pas en diagonale."
         }
       ]
     },
     {
       "id": "vehicles_rule",
       "type": "rule_reminder",
-      "title": "Vehicles",
-      "text": "An asset with the vehicle keyword represents a vehicle that the investigators may enter or leave. An asset with this keyword is called a vehicle, and follows these rules:"
+      "title": "Véhicules",
+      "text": "Un soutien avec le mot-clé Véhicule représente un véhicule dans lequel les investigateurs peuvent entrer ou sortir. Un soutien avec ce mot-clé est appelé « un véhicule » et suit les règles suivantes :"
     },
     {
       "id": "vehicles_rule_1",
-      "text": "While an investigator's mini-card is placed overlapping a vehicle, that investigator is in that vehicle. While an investigator's mini-card is placed overlapping the location, that investigator is instead not in a vehicle <i>(even if they are at the same location as a vehicle)</i>.",
+      "text": "Tant que la mini-carte d'un investigateur est placée sur un véhicule, cet investigateur est dans ce véhicule. Tant que la mini-carte d'un investigateur est placée sur le lieu où se trouve ce véhicule, cet investigateur n'est pas dans le véhicule (<i>même s'il est dans le même lieu que le véhicule</i>).",
       "bullets": [
         {
-          "text": "As a [fast] ability, an investigator may enter or leave a vehicle at their location. Move that investigator's mini-card onto the vehicle or off of the vehicle and onto their location to indicate their new position. Each investigator may perform this ability only once each round."
+          "text": "En tant que capacité [fast], un investigateur a le droit d'entrer ou de sortir d'un véhicule dans son lieu. Déplacez la mini-carte de cet investigateur du lieu vers le véhicule  ou du véhicule vers le lieu pour indiquer sa nouvelle position. Chaque investigateur ne peut effectuer cette capacité qu'une fois par round."
         },
         {
-          "text": "An investigator who is in a vehicle is also at that vehicle's location."
+          "text": "Un investigateur dans un véhicule est également considéré comme étant dans le lieu de ce véhicule."
         },
         {
-          "text": "While an investigator is in a vehicle, that investigator cannot move independently of the vehicle."
+          "text": "Tant qu'un investigateur est dans un véhicule, cet investigateur ne peut pas se déplacer indépendamment du véhicule."
         }
       ]
     },
     {
       "id": "vehicles_rule_2",
-      "text": "Vehicles generally have one or more abilities that allow them to move to a connecting location. As a vehicle moves from one location to another, all investigators in the vehicle also move with the vehicle."
+      "text": "Les véhicules possèdent généralement une ou plusieurs capacités qui leur permettent de se déplacer vers un lieu connexe. Quand un véhicule se déplace lesinvestigateurs dans ce véhicule se déplacent avec le véhicule."
     },
     {
       "id": "vehicles_rule_3",
-      "text": "Vehicles do not alter enemy movement or enemy engagement in any way unless otherwise noted."
+      "text": "Les véhicules ne modifient ni le déplacement ni l'engagement des ennemis à moins que le contraire ne soit spécifiquement indiqué."
     },
     {
       "id": "$play_scenario",
@@ -72439,7 +72439,7 @@
         "campaign_log": [
           {
             "id": "tide_has_grown_stronger",
-            "text": "The tide has grown stronger.",
+            "text": "La marée s'est renforcée.",
             "condition": {
               "type": "campaign_log",
               "section": "campaign_notes",
@@ -72455,7 +72455,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "tide_has_grown_stronger",
-                "text": "the tide has grown stronger."
+                "text": "la marée s'est renforcée."
               }
             ]
           }
@@ -72555,35 +72555,35 @@
     {
       "id": "ask_keys",
       "type": "input",
-      "text": "Which keys do you want to read the representation of:",
+      "text": "Les clé représentent les éléments suivants :",
       "input": {
         "type": "checklist",
-        "text": "Read",
+        "text": "Lire",
         "choices": [
           {
             "id": "red",
-            "text": "Red / Blue / Green / Yellow",
+            "text": "Rouge / Bleu / Vert / Jaune",
             "steps": [
               "red_key"
             ]
           },
           {
             "id": "purple",
-            "text": "Purple",
+            "text": "Violet",
             "steps": [
               "purple_key"
             ]
           },
           {
             "id": "black",
-            "text": "Black",
+            "text": "Noir",
             "steps": [
               "black_key"
             ]
           },
           {
             "id": "white",
-            "text": "White",
+            "text": "Blanc",
             "steps": [
               "white_key"
             ]
@@ -72593,25 +72593,25 @@
     },
     {
       "id": "red_key",
-      "text": "Red / Blue / Green / Yellow: Various devices used to gain entrance into the deeper parts of Devil Reef."
+      "text": "Rouge / Bleu / Vert / Jaune : divers objets utilisés pour atteindre la partie la plus profonde du Récif du Diable."
     },
     {
       "id": "purple_key",
-      "text": "Purple: A strange idol."
+      "text": "Violet : une étrange idole."
     },
     {
       "id": "black_key",
-      "text": "Black: A mystical headdress."
+      "text": "Noir : une tiare mystique."
     },
     {
       "id": "white_key",
-      "text": "White: An unholy mantle."
+      "text": "Blanc : une cape blasphématoire."
     },
     {
       "id": "flashback_9_story",
       "title": "Flashback IX",
       "type": "story",
-      "text": "As you wade through the flooded cavern, your foot strikes something hard and metallic. The water is too dark and murky for you to see what lies beneath the surface. Holding your breath, you dive into the water and grope around for the object. Eventually, your hands wrap around something smooth and heavy. You drag it up to the surface and heave it onto an outcropping of rock.\nIt is a statue depicting some kind of entity—or perhaps a deity—although it is unlike any religious figure you have ever seen. The sight of its uncanny spined tendrils and its sole glaring eye of translucent crystal makes your skin crawl. And yet, it also calls to you, like the sound of ocean waves crashing on the shore on a foggy overcast day..."
+      "text": "Vous pataugez dans les cavernes inondées quand votre pied heurte soudain quelque chose de métallique, L'eau est trop sombre et boueuse pour que vous puissiez voir sous sa surface. Retenant votre souffle, vous plongez sous l'eau et cherchez l'objet à tâtons. Enfin, vous finissez par trouver un objet lisse et pesant. Vous le tirez vers la surface et le posez sur un affleurement rocheux.\nIl s'agit d'une statuette représentant une sorte d'entité — peut-être me divinité — mais qui ne ressemble à aucune icône religieuse de votre connaissance. La vue de ses tentacules enroulés et de son unique œil fait d'un cristal translucide brillant vous donne la chair de poule. Et pourtant, elle semble vous appeler, comme le bruit des vagues s'écrasant sur le rivage un jour brumeux."
     },
     {
       "id": "flashback_9_effects",
@@ -72620,19 +72620,19 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_a_strange_idol",
-          "text": "discovery of a strange idol."
+          "text": "découverte d'une étrange idole."
         }
       ]
     },
     {
       "id": "flashback_9_assets",
-      "text": "Take control of both the purple key and the set-aside Waveworn Idol story asset. Place the purple key on the Waveworn Idol. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the purple key also takes control of the Waveworn Idol, as well. If the purple key is placed on another card, place the Waveworn Idol near that card, uncontrolled. If the purple key leaves play, remove the Waveworn Idol from the game."
+      "text": "Prenez le contrôle de la clé violette et du soutien d'histoire Idole Érodée. Placez la clé violette sur l'Idole Érodée. (<i>La clé est toujours sous le contrôle de cet investigateur.</i<) Pour le reste de la partie, quiconque prend le contrôle de la clé violette prend également le contrôle de l'Idole Érodée. Si la clé violette est placée sur une autre carte, placez l'Idole Érodée à côté de cette carte, sous le contrôle de personne. Si la clé violette quitte le jeu, retirez l'Idole Érodée de la partie."
     },
     {
       "id": "flashback_10_story",
       "title": "Flashback X",
       "type": "story",
-      "text": "You swim through an array of vast undersea halls until at last you come to a circle of pillars. Inside this submerged henge stands an altar covered in an ornate cloth. It is embroidered with rich threads of gold and inlaid with cerulean opals. Despite being immersed in water, the fabric appears perfectly preserved. Wondering what such an object is doing deep in this underwater cavern, you decide to take it with you.\nThe moment you emerge from the depths and onto dry stone, you realize with amazement that the cloth is perfectly dry. Turning it over in your hands, you find a clasp of gold and realize it is not simply shapeless cloth, but a mantle—perhaps even part of a greater outfit. When you don the strange cloak, its gemstones pulse with arcane power."
+      "text": "Vous nagez à travers une série de vastes couloirs sous-marins jusqu'à des piliers disposés en cercle. Au centre de ce mégalithe englouti se trouve un autel recouvert d'un tissu décoré. Ce dernier est bordé de fils d'or et serti d'opales céruléennes. Malgré son immersion dans l'eau le tissu semble parfaitement préservé. Vous vous demandez ce qu'un tel objet peut bien faire à de telles profondeurs et vous décidez de l'emporter avec vous.\nAu moment où vous émergez des profondeurs, vous réalisez avec stupeur que le tissu est parfaitement sec. Après l'avoir retourné dans tous les sens, vous finissez par trouver un fermoir doré et réalisez qu'il ne s'agit pas d'un bout de tissu informe, mais d 'une sorte de cape ; peut-être un élément d'une tenue plus grande. Quand vous enfilez la cape, ses pierres précieuses se mettent à briller d 'un étrange pouvoir."
     },
     {
       "id": "flashback_10_effects",
@@ -72641,19 +72641,19 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_an_unholy_mantle",
-          "text": "discovery of an unholy mantle."
+          "text": "découverte d'une cape blasphématoire."
         }
       ]
     },
     {
       "id": "flashback_10_assets",
-      "text": "Take control of both the white key and the set-aside Awakened Mantle story asset. Place the white key on the Awakened Mantle. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the white key also takes control of the Awakened Mantle, as well. If the white key is placed on another card, place the Awakened Mantle near that card, uncontrolled. If the white key leaves play, remove the Awakened Mantle from the game."
+      "text": "Prenez le contrôle de la clé blanche et du soutien d'histoire Cape de l'Éveillé. Placez la clé blanche sur la Cape de l'Éveillé. (<i>La clé est toujours sous le contrôle de cet investigateur.</i>) Pour le reste de la partie, quiconque prend le contrôle de la clé blanche prend également le contrôle de la Cape de l'Éveillé. Si la clé blanche est placée sur une autre carte, placez la Cape de l'Éveillé à côté de cette carte, sous le contrôle de personne. Si la clé blanche quitte le jeu, retirez la Cape de l'Éveillé de la partie."
     },
     {
       "id": "flashback_11_story",
       "title": "Flashback XI",
       "type": "story",
-      "text": "You reach an outcropping of rock overlooking a ceremony of sorts. Horrifying fish-like creatures prostrate themselves in front of two enormous statues: one of onyx, one of white marble. At the precipice of this ridge sits a golden crown sporting a shell-like pattern and three distinct horns. Whatever this artifact is, it is clearly important to these creatures. Summoning your courage, you snatch the artifact and escape while you still can. The relic thrums with power in your hands as you flee."
+      "text": "Vous atteignez un affleurement rocheux surplombant une sorte de cérémonie. D'immondes créatures ichtyoïdes se prosternent devant deux immenses statues : l'une d'onyx, l'autre de marbre blanc. En contrebas de la crête où vous vous trouvez, vous pouvez voir une couronne décorée de coquillages et munie de trois cornes. Quel que soit cet artefact, il semble d'une importance capitale pour ces créatures. Rassemblant votre courage, vous attrapez l'artefact et fuyez aussi vite que vous le pouvez. La relique vibre de pouvoir dans votre tandis que vous courrez."
     },
     {
       "id": "flashback_11_effects",
@@ -72662,13 +72662,13 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_a_mystical_relic",
-          "text": "discovery of a mystical relic."
+          "text": "découverte d'une relique mystique."
         }
       ]
     },
     {
       "id": "flashback_11_assets",
-      "text": "Take control of both the blck key and the set-aside Headdress of Y'ha-nthlei story asset. Place the black key on the Headdress of Y'ha-nthlei. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the black key also takes control of the Headdress of Y'ha-nthlei, as well. If the black key is placed on another card, place the Headdress of Y'ha-nthlei near that card, uncontrolled. If the black key leaves play, remove the Headdress of Y'ha-nthlei from the game."
+      "text": "Prenez le contrôle de la clé noire et du soutien d'histoire Tiare de Y'ha-nthlei. Placez la clé noire sur la Tiare de Y'ha-nthlei. (<i>La clé est toujours sous le contrôle de cet investigateur.</i>) Pour le reste de la partie, quiconque prend le contrôle de la clé noire prend également le contrôle de la Tiare de Y'ha-nthlei. Si la clé noire est placée sur une autre carte, placez la Tiare de Y 'ha-nthlei à côté de cette carte, sous le contrôle de personne. Si la clé noire quitte le jeu, retirez la Tiare de Y'ha-nthlei de la partie."
     },
     {
       "id": "resolution_1",
@@ -72677,7 +72677,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "text": "Chaque investigateur reçoit un total de points d'expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire. Inscrivez cette expérience sous la mention « Expérience non dépensée » de votre Carnet de Campagne, <b>mais ne la dépensez pas tout de suite</b>. Il vous sera indiqué ultérieurement quand dépenser cette expérience.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -72694,27 +72694,27 @@
     {
       "id": "ask_terror_of_devil_reef",
       "type": "input",
-      "text": "Find the Terror of Devil Reef. Then choose one of the following options:",
+      "text": "Trouvez La Terreur du Récif du Diable. Ensuite choisissez une option :",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "agenda_1",
-            "text": "It was agenda 1a when the game ended.",
+            "text": "Vous étiez à l'Intrigue 1a quand la partie s'est terminée.",
             "steps": [
               "terror_of_devil_reef_is_still_alive"
             ]
           },
           {
             "id": "in_play",
-            "text": "The Terror of Devil Reef is in play.",
+            "text": "La Terreur du Récif du Diable est en jeu.",
             "steps": [
               "terror_of_devil_reef_is_still_alive"
             ]
           },
           {
             "id": "victory_display",
-            "text": "The Terror of Devil Reef is in the victory display.",
+            "text": "La Terreur du Récif du Diable est dans la pile de victoire.",
             "steps": [
               "terror_of_devil_reef_is_dead"
             ]
@@ -72730,7 +72730,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "terror_of_devil_reef_is_still_alive",
-          "text": "the Terror of Devil Reef is still alive."
+          "text": "la Terreur du Récif du Diable est encore en vie."
         }
       ]
     },
@@ -72742,13 +72742,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "terror_of_devil_reef_is_dead",
-          "text": "the Terror of Devil Reef is dead."
+          "text": "la Terreur du Récif du Diable est morte."
         }
       ]
     },
     {
       "id": "proceed_keys",
-      "text": "Do not move the purple, black, or white keys from their current position just yet—the location of each of these keys will be important during <b>Interlude III: Beneath the Waves</b>."
+      "text": "Continuez à l'<b>Interlude III : Sous les Vagues</b>. Ne déplacez pas la clé violette/noire/blanche de sa position actuelle ; le lieu où se trouve chaque clé aura son importance dans l'<b>Interlude III : Sous les Vagues</b>."
     },
     {
       "id": "maybe_ask_tide_has_grown_stronger",
@@ -72796,7 +72796,7 @@
         "choices": [
           {
             "id": "cheat",
-            "text": "Did you reach <b>Resolution 1</b> by advancing Agenda 2b?",
+            "text": "Avez-vous atteint la <b>Conlution 1</b> en faisant avancer l'Intrigue 2b ?",
             "steps": [
               "record_tide_has_grown_stronger"
             ]
@@ -72811,7 +72811,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tide_has_grown_stronger",
-          "text": "the tide has grown stronger."
+          "text": "la marée s'est renforcée."
         }
       ]
     }
@@ -72833,7 +72833,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "With daylight fading and the tide rising to swallow the various islands off the coast of Innsmouth, you decide to make your way back to the harbor with your discoveries. \"Found what yer lookin' for?\" Mr. Moore asks once you've made it to the coast safely.\nTruth be told, you're not completely sure. What you found was startling. The coves and tidal caverns of Devil Reef were home not just to relics of the Esoteric Order of Dagon, but also to a horde of strange creatures: hybrids between fish, man, and monster. You might have escaped with your life, but the horrors you saw in those caves will stay with you forever. Sharp jagged teeth—blood-stained altars—unholy prayers—signs of a coming catastrophe—it still haunts you even after your escape.\nBut is Innsmouth truly safe? Is any land at all?",
+      "text": "Le soleil se couche et marée monte, avalant peu à peu les îles de côte d 'Innsmouth. Vous décidez de rentrer au port avec vos découvertes. « Z'avez trouvé ce que vous cherchiez ? » vous demande M. Moore une fois en sécurité sur la côte.\nÀ dire vrai, vous n'en savez trop rien. Vos découvertes sont déconcertantes. Les criques et les grottes du Récif du Diable ne sont pas juste le reliquaire de l'Ordre Ésotérique de Dagon, mais également la demeure d'une horde d'étranges créatures hybrides d'homme, de monstre et de poisson. Vous en avez réchappé, mais les horreurs que vous avez vues vous marqueront à tout jamais. Des dents tranchantes comme des rasoir, des autels couvert de sang, des prières impies, les signes d'une catastrophe annoncée… tout cela vous hante encore, même après votre fuite.\nInnsmouth est-elle réellement en sécurité ? Aucune terre l'est-elle ?",
       "steps": [
         "maybe_ask_tide_has_grown_stronger",
         "earn_xp",
@@ -72854,7 +72854,7 @@
 {
   "id": "horror_in_high_gear",
   "scenario_name": "Horreur à Toute Vitesse",
-  "full_name": "Scenario V: Horror in High Gear",
+  "full_name": "Scénario V : Horreur à Toute Vitesse",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -72880,7 +72880,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Trees whizz by as you rumble along the old dirt road just outside of Innsmouth. The sun has set over the western horizon, leaving only the full moon to bathe the dusty roads in its brilliant, eerie glow.\n\"Here,\" Agent Harper shouts from the passenger seat over the rumbling of the automobile engine. She points to a spot on the map she has spread across her lap, tapping it repeatedly. \"Falcon Point Lighthouse. That's where Oceiros should be.\"\nA shudder courses up your spine. If your memories are to be believed, Oceiros is the man who left you to die in those tidal tunnels. You ask Harper how far Falcon Point is from Innsmouth, hoping to arrive before the Order realizes you've escaped.\nShe sighs. \"It's not that far, but these roads are meandering. They could be difficult to navigate. One wrong turn and—\" both you and Harper see the lights in your rearview mirror at the same time. Headlights. And they're growing larger and brighter by the second. Harper curses under her breath. \"I don't suppose those are friends of yours?\"\nYou shake your head and tighten your grip on the wheel. It seems the Order has already caught wind of your flight from Innsmouth. You tell Agent Harper to hold on and slam your foot on the accelerator."
+      "text": "Les arbres défilent le long de la vieille route terreuse à I 'extérieur d'Innsmouth, Le soleil s'est couché à l'ouest, ne laissant que la lumière de la lune pour éclairer les routes poussiéreuses de sa lumière féerique.\n« Là », s'exclame ['agent Harper depuis le siège passager en criant pour couvrir le vrombissement du moteur. Elle vous montre du doigt un point sur la carte qu'elle a déployée sur ses genoux. « Le Phare de la Pointe du Faucon, c'est là que doit se trouver Oceiros. »\nUn frisson vous parcourt l'échine. Si vos souvenirs sont exacts, Oceiros est celui qui vous a laissé pour mort dans les tunnels aquatiques. Vous demandez à Harper si la Pointe du Faucon est loin d'Innsmouth, vous espérez y parvenir avant que l'Ordre ne s'aperçoive que vous avez disparu.\nElle soupire. « Ce n'est pas très loin, mais les routes sont particulièrement sinueuses. Elles peuvent se révéler impraticables. Un virage loupé et… » Harper et vous apercevez les lumières dans le rétroviseur en même temps. Des phares. Ils apparaissent plus gros et plus lumineux à chaque seconde. Harper laisse échapper un juron. « J'imagine que ce ne sont pas des amis à vous ? »\nVous secouez la tête et raffermissez votre prise sur le volant. Il semble que l'Ordre a déjà eu vent de votre fuite d'Innsmouth. Vous dites à l'agent Harper de bien s’accrocher et écrasez le champignon."
     },
     {
       "id": "gather_encounter_sets",
@@ -72896,57 +72896,57 @@
     },
     {
       "id": "create_road_deck",
-      "text": "Create the Road deck. This is done by performing the following steps:",
+      "text": "Constituez le deck Route en effectuant les étapes suivantes :",
       "bullets": [
         {
-          "text": "Find Falcon Point Approach and all 6 copies of Long Way Around. Each one is a revealed side of an Old Innsmouth Road location. Set each of them aside, out of play."
+          "text": "Trouvez le lieu Abords de la Pointe du Faucon et les 6 exemplaires du lieu Long Détour. Tous se trouvent au verso d'un lieu Vieille Route d'Innsmouth. Mettez-les tous de côté, hors jeu. (<i>Les lieux Long Détour ne sont pas utilisés dans le deck Route.</i>)"
         },
         {
-          "text": "Shuffle the set-aside Falcon Point Approach and two Old Innsmouth Road locations together to form the bottom three cards of the Road deck."
+          "text": "Mélangez le lieu Abords de la Pointe du Faucon mis de côté avec deux lieux Vieille Route d'Innsmouth restants pour former la base du deck Route."
         },
         {
-          "text": "Place all of the remaining Old Innsmouth Road locations on top in a random order."
+          "text": "Placez aléatoirement tous les lieux Vieille Route d'Innsmouth restants au-dessus."
         },
         {
-          "text": "All of the cards in the Road deck should be showing only the Old Innsmouth Road side, so that players do not know which is which."
+          "text": "Toutes les cartes du deck Route doivent avoir leur face Vieille Route d 'Innsmouth visible, de manière à ce que les joueurs ne puissent pas distinguer leurs versos."
         }
       ]
     },
     {
       "id": "setup_locations",
-      "text": "Put the top 3 cards of the Road deck into play in a straight line from left to right, where left is \"rear\" and right is \"front\"."
+      "text": "Mettez en jeu les 3 cartes du dessus du deck Route en formant une ligne droite allant de la gauche vers la droite, où la gauche correspond à « l'arrière » et la droite « l'avant »."
     },
     {
       "id": "choose_vehicles",
-      "text": "Choose vehicles. There are two vehicles the investigators can use in this scenario—Thomas Dawson's Car and Elina Harper's Car. Each investigator must choose a vehicle to board. No more than two investigators can board the same vehicle. <i>(See Vehicles below.)</i>",
+      "text": "Choisissez les véhicules. Les investigateurs peuvent utiliser deux véhicules différents dans ce scénario la Voiture de Thomas Dawson et la Voiture d'Elina Harper. Chaque investigateur doit choisir un véhicule dans lequel monter. Pas plus de deux investigateurs peuvent monter dans le même véhicule.  (<i>Voir Véhicules ci-dessous.</i>)",
       "bullets": [
         {
-          "text": "Each vehicle that is boarded by at least one investigator begins play at the front Old Innsmouth Road location. Remove each other vehicle from the game."
+          "text": "Chaque véhicule dans lequel au moins un investigateur est monté commence la partie dans le lieu Vieille Route d'Innsmouth situé à l'avant. Retirez chaque autre véhicule de la partie."
         },
         {
-          "text": "Each vehicle begins play with its <i>(Running)</i> side faceup <i>(see Running/Stopped below)</i>."
+          "text": "Chaque véhicule commence la partie avec sa face (<i>En Marche</i>) visible (<i>voir En Marche/À l'Arrêt ci-dessous</i>)."
         },
         {
-          "text": "Each investigator begins play in the vehicle they chose to board."
+          "text": "Chaque investigateur commence la partie dans le véhicule à bord duquel il a choisi de monter."
         },
         {
-          "text": "Trigger that location's Road X keyword when it is revealed <i>(see Road X below)</i>."
+          "text": "Déclenchez le mot-clé Route X de ce lieu quand il est révélé (<i>voir Route X ci-dessous</i>)."
         }
       ]
     },
     {
       "id": "choose_drivers",
-      "text": "Choose drivers. One investigator in each vehicle must be designated as the driver of that vehicle.",
+      "text": "Choisissez les conducteurs. Un investigateur dans chaque véhicule doit être désigné comme le conducteur de ce véhicule.",
       "bullets": [
         {
-          "text": "There must always be a driver for each vehicle with at least one investigator in it. If the driver leaves the vehicle or is eliminated, choose another investigator in that vehicle to become the new driver."
+          "text": "Il doit toujours y avoir un conducteur dans chaque véhicule ayant au moins un investigateur à bord. Si le conducteur quitte le véhicule ou est éliminé, choisissez un autre investigateur dans ce véhicule pour devenir le nouveau conducteur."
         }
       ]
     },
     {
       "id": "spawn_enemies",
       "type": "branch",
-      "text": "Based on the number of players in the game:",
+      "text": "En fonction du nombre de joueurs dans la partie :",
       "condition": {
         "type": "scenario_data",
         "scenario_data": "player_count",
@@ -72980,26 +72980,26 @@
     },
     {
       "id": "no_changes",
-      "text": "Because there is exactly 1 player in the game, no changes are made.",
+      "text": "S'il y a 1 seul joueur dans la partie, aucun changement n'est effectué.",
       "bullet_type": "small"
     },
     {
       "id": "one_vehicle",
-      "text": "Because there are 2-3 players in the game, search the gathered encounter sets for 1 random [[Vehicle]] enemy. Spawn that enemy at the rearmost location.",
+      "text": "S'il y a 2 ou 3 joueurs dans la partie, prenez aléatoirement l’ennemi [[Véhicule]] dans les sets de rencontre réunis. Générez cet ennemi dans le lieu situé le plus à l'arrière.",
       "bullet_type": "small"
     },
     {
       "id": "two_vehicles",
-      "text": "Because there are exactly 4 players in the game, search the gathered encounter sets for 2 random [[Vehicle]] enemies. Spawn each of those enemies at the rearmost location.",
+      "text": "S'il y a 4 joueurs dans la partie, prenez aléatoirement 2 ennemis [[Véhicule]] dans les sets de rencontre réunis. Générez cet ennemi dans le lieu situé le plus à l'arrière.",
       "bullet_type": "small"
     },
     {
       "id": "agenda_setup",
-      "text": "Check the Campaign Log. Depending on the following circumstances, a different version of agenda 1 should be used in this scenario. Remove the other version of agenda 1 from the game."
+      "text": "Vérifiez votre Carnet de Campagne. En fonction des circonstances suivantes, une version différente de l'Intrigue 1 sera utilisée dans ce scénario. Retirez de la partie l'autre version de l'Intrigue 1."
     },
     {
       "id": "check_terror_of_devil_reef_is_dead",
-      "text": "If <i>the terror of Devil Reef is dead</i>:",
+      "text": "Si <i>la Terreur du Récif du Diable est morte</i> :",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -73025,12 +73025,12 @@
     {
       "id": "agenda_1_v2",
       "bullet_type": "small",
-      "text": "Use Agenda 1a—The Chase is On! (v.II)."
+      "text": "Utilisez l'Intrigue 1a — La Poursuite est Lancée ! (v. II)."
     },
     {
       "id": "agenda_1_v1",
       "bullet_type": "small",
-      "text": "Otherwise, use Agenda 1a—The Chase is On! (v.I)."
+      "text": "Sinon, utilisez l'Intrigue 1a — La Poursuite est Lancée ! (v. I)."
     },
     {
       "id": "encounter_deck",
@@ -73039,57 +73039,57 @@
     {
       "id": "vehicles_rule",
       "type": "rule_reminder",
-      "title": "Vehicles",
-      "text": "An asset with the vehicle keyword represents a vehicle that the investigators may enter or leave. An asset with this keyword is called a vehicle, and follows these rules:"
+      "title": "Véhicules",
+      "text": "Un soutien avec le mot-clé Véhicule représente un véhicule dans lequel les investigateurs peuvent entrer ou sortir. Un soutien avec ce mot-clé est appelé « un véhicule » et suit les règles suivantes :"
     },
     {
       "id": "vehicles_rule_1",
-      "text": "While an investigator's mini-card is placed overlapping a vehicle, that investigator is in that vehicle. While an investigator's mini-card is placed overlapping the location, that investigator is instead not in a vehicle <i>(even if they are at the same location as a vehicle)</i>.",
+      "text": "Tant que la mini-carte d'un investigateur est placée sur un véhicule, cet investigateur est dans ce véhicule. Tant que la mini-carte d'un investigateur est placée sur le lieu où se trouve ce véhicule, cet investigateur n'est pas dans le véhicule (<i>même s'il est dans le même lieu que le véhicule</i>).",
       "bullets": [
         {
-          "text": "As a [fast] ability, an investigator may enter or leave a vehicle at their location. Move that investigator's mini-card onto the vehicle or off of the vehicle and onto their location to indicate their new position. Each investigator may perform this ability only once each round."
+          "text": "En tant que capacité [fast], un investigateur a le droit d'entrer ou de sortir d'un véhicule dans son lieu. Déplacez la mini-carte de cet investigateur du lieu vers le véhicule  ou du véhicule vers le lieu pour indiquer sa nouvelle position. Chaque investigateur ne peut effectuer cette capacité qu'une fois par round."
         },
         {
-          "text": "An investigator who is in a vehicle is also at that vehicle's location."
+          "text": "Un investigateur dans un véhicule est également considéré comme étant dans le lieu de ce véhicule."
         },
         {
-          "text": "While an investigator is in a vehicle, that investigator cannot move independently of the vehicle."
+          "text": "Tant qu'un investigateur est dans un véhicule, cet investigateur ne peut pas se déplacer indépendamment du véhicule."
         }
       ]
     },
     {
       "id": "vehicles_rule_2",
-      "text": "Vehicles generally have one or more abilities that allow them to move to a connecting location. As a vehicle moves from one location to another, all investigators in the vehicle also move with the vehicle."
+      "text": "Les véhicules possèdent généralement une ou plusieurs capacités qui leur permettent de se déplacer vers un lieu connexe. Quand un véhicule se déplace lesinvestigateurs dans ce véhicule se déplacent avec le véhicule."
     },
     {
       "id": "vehicles_rule_3",
-      "text": "Vehicles do not alter enemy movement or enemy engagement in any way unless otherwise noted."
+      "text": "Les véhicules ne modifient ni le déplacement ni l'engagement des ennemis à moins que le contraire ne soit spécifiquement indiqué."
     },
     {
       "id": "running_stopped_rule",
       "type": "rule_reminder",
-      "title": "Running / Stopped",
-      "text": "Vehicles in this scenario can either be \"running\" or \"stopped,\" as indicated by their two sides. The difference between a running vehicle and a stopped vehicle is indicated by the game text on each side. A vehicles engine can be started or stopped using the ability on that vehicle, flipping it over to its other side.",
+      "title": "En Marche / À l'Arrêt",
+      "text": "Dans ce scénario, les véhicules peuvent être « en marche » ou à l'arrêt » comme indiqué sur leurs deux faces. La différence entre un véhicule en marche et un véhicule à l'arrêt est indiquée par le texte de jeu sur chaque face. Le moteur d 'un véhicule peut être démarré ou arrêté en utilisant la capacité de ce véhicule et en le retournant sur son autre face.",
       "bullets": [
         {
-          "text": "Generally speaking, investigators will only be able to make swift progress in a running vehicle. However, it may sometimes be a good idea to briefly stop your vehicle if you are approaching a dangerous location, such as a Cliffside Road or a Tight Turn. Be careful!"
+          "text": "De manière générale, les investigateurs ne pourront progresser que dans un véhicule en marche. Cependant, il peut parfois être utile de s'arrêter à l'approche d'un lieu dangereux comme une Route à Flanc de Falaise ou un Virage Serré. Soyez prudent au volant !"
         }
       ]
     },
     {
       "id": "road_x_rule",
       "type": "rule_reminder",
-      "title": "Road X",
-      "text": "During this scenario, the investigators are traveling the Old Innsmouth Road from Innsmouth to Falcon Point. This road is generally a straight line from left to right, but occasionally contains branching paths.\nEach time a location with the Road X keyword is revealed, if there are no locations ahead of the just revealed location, put X new locations into play in a new column in front of it, Old Innsmouth Road side faceup. The first of these locations must be the top location of the Road deck. Each of the remaining locations to be put into play are taken from among the set-aside Long Way Around locations <i>(if there are not enough Long Way Around locations, use as many as you can)</i>. Shuffle each of those locations so that the players do not know which is which.",
-      "example": "<i>For example: Trish is the driver of Elina Harper's Car, and has just moved that car forward to an unrevealed location. It is a Fork in the Road with the \"Road 2\" keyword. Since there are currently no locations in front of Fork in the Road, she must therefore place 2 Old Innsmouth Road locations in front of Fork in the Road. She takes the top card of the Road deck and one of the set-aside Long Way Around locations, puts both of them into play in a new column in front of Fork in the Road, and shuffles them so that the players do not know which is which.</i>"
+      "title": "Route X",
+      "text": "Lors de ce scénario, les investigateurs voyagent sur la Vieille Route d'Innsmouth pour rejoindre la Pointe du Faucon. Cette route est globalement rectiligne, de la gauche vers la droite, mais elle comporte occasionnellement quelques embranchements.\nChaque fois qu'un lieu avec le mot-clé Route X est révélé, s'il n'y a pas de lieu devant le lieu que vous venez de révéler, mettez en jeu X nouveaux lieux devant en formant une colonne, face Vieille Route d'Innsmouth visible. Le premier de ces lieux doit être le lieu du dessus du deck Route. Chaque autre lieu doit être pris parmi les lieux Long Détour mis de côté (<i>s'il ne reste pas assez de lieux Long Détour de côté, utilisez-en autant que possible</i>). Mélangez ces lieux afin que les joueurs ne puissent pas savoir lequel est lequel.",
+      "example": "<i>Exemple : Trish est la conductrice de la Voiture d'Elina Harper et elle vient de déplacer cette voiture sur un lieu non-révélé. Il s'agit d'une Bifurcation avec le mot-clé « Route 2 ». Étant donné qu'il n'y a pas encore de lieu devant la Bifurcation, elle doit placer 2 lieux Vieille Route d'Innsmouth devant la Bifurcation. Elle prend la carte du dessus du deck Route et une carte Long Détour mise de côté, elle mélange ces deux cartes pour ne pas pouvoir les distinguer et les met en jeu en formant une colonne devant la Bifurcation.</i>"
     },
     {
       "id": "road_x_rule_1",
-      "text": "Generally, it is wise to avoid taking a Long Way Around, since it will slow you down and reduce the amount of time you have to reach Falcon Point."
+      "text": "De manière générale, il vaut mieux éviter de faire un Long Détour car cela vous ralentira et vous fera perdre du temps pour atteindre la Pointe du Faucon."
     },
     {
       "id": "road_x_rule_2",
-      "text": "<b>During this scenario, each location is connected to each location behind or ahead of it, but not to any other location on its column.</b>"
+      "text": "<b>Lors de ce scénario, chaque lieu est connexe à chaque lieu situé derrière lui et à chaque lieu situé devant lui. Par contre les lieux situés dans la même colonne ne sont pas connexes entre eux.</b>"
     },
     {
       "id": "reached_falcon_point_after_sunrise",
@@ -73098,7 +73098,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "reached_falcon_point_after_sunrise",
-          "text": "the investigators reached Falcon Point after sunrise."
+          "text": "les investigateurs ont atteint le phare après le lever du soleil."
         }
       ]
     },
@@ -73109,7 +73109,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "reached_falcon_point_before_sunrise",
-          "text": "the investigators reached Falcon Point before sunrise."
+          "text": "les investigateurs ont atteint le phare avant le lever du soleil."
         }
       ]
     },
@@ -73138,7 +73138,7 @@
         "physical",
         "mental"
       ],
-      "text": "Your drive to Falcon Point is no joyride. Between the cultists on your tail and the creatures that dwell in the woods outside Innsmouth, your vehicle is harried at every turn. With no way to escape unharmed, you are forced to abandon your vehicle and sneak through the woods on foot. By the time you see the distant lighthouse beacon, dawn already bathes the sky in orange radiance. \"Finally,\" Agent Harper groans. With no time to rest, you continue the trek to the Falcon Point lighthouse, exhausted but resolute.",
+      "text": "Si aucune conclusion n'a été atteinte (tous les investigateurs ont été vaincus) : Le trajet jusqu'à la Pointe du Faucon est loin d'être une partie de plaisir. Entre les cultistes sur vos talons et les créatures tapies dans les bois jouxtant Innsmouth, votre véhicule est harcelé de tous les côtés. Sans espoir d’en réchapper en un seul morceau, vous abandonnez votre véhicule et vous enfoncez à pied dans les bois. Quand vous apercevez enfin la lumière du phare au loin, l'aube commence déjà à baigner le ciel d'une lueur orangée. « Enfin », grogne l'agent Harper. Sans prendre le temps de vous reposer, vous mettez le cap sur le phare, exténué, mais déterminé.",
       "steps": [
         "reached_falcon_point_after_sunrise",
         "earn_xp",
@@ -73154,7 +73154,7 @@
         "mental"
       ],
       "title": "Conclusion 1",
-      "text": "You breathe a sigh of relief as you see the distant lighthouse beacon pierce the fog. \"Let's pull over here and make the rest of the trip on foot,\" Harper suggests. \"If there's anybody still in that lighthouse, it would be best if they didn't hear us approach.\" Her advice is sound. You're not sure what to expect once you reach Falcon Point, but all signs point to it being another outpost for the Order. You double-check to make sure you aren't being followed, then pull over by the side of the road. Gathering your belongings from the car's trunk, you begin the trek to the Falcon Point lighthouse…",
+      "text": "Vous poussez un soupir de soulagement en apercevant la lumière du phare percer le brouillard. « Garons-nous ici et finissons à pied » suggère Harper. « S'il y a quelqu’un dans le phare, autant qu'il ne nous entende pas approcher. » Cela semble avisé. Vous ne saviez pas trop à quoi vous attendre en atteignant la Pointe du Faucon, mais tout semble indiquer qu'il s'agit d'un autre repaire de l'Ordre. Vous vérifiez par deux fois que vous n'êtes pas suivis, puis vous garez le côté de la route. Vous sortez vos affaires du coffre et continuez votre périple à pied vers le phare de la Pointe du Faucon…",
       "steps": [
         "reached_falcon_point_before_sunrise",
         "earn_xp",
@@ -73318,7 +73318,7 @@
     },
     {
       "id": "flood_tokens",
-      "text": "Add the flood tokens to the token pool.",
+      "text": "Ajoutez les pions Inondation à la réserve de pions.",
       "bullets": [
         {
           "text": "Augmentez le niveau d 'inondation de chacun des lieux suivants : La Maison de Water Street, Port d'Innsmouth et Littoral Désolé."
@@ -73353,7 +73353,7 @@
       "text": "Lors de ce scénario, les lieux sont placé selon un arrangement prédéfini dans lequel chaque lieu est adjacent à au moins un autre lieu.",
       "bullets": [
         {
-          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+          "text": "<b>Lors de ce scénario, les lieux adjacents sont considérés comme connexes les uns aux autres.</b>"
         },
         {
           "text": "Les lieux sont adjacent orthogonalement (nord, est, sud et ouest), jamais en diagonale."
@@ -73489,14 +73489,14 @@
     {
       "id": "ask_keys",
       "type": "input",
-      "text": "Which keys do you want to read the representation of:",
+      "text": "Les clé représentent les éléments suivants :",
       "input": {
         "type": "checklist",
-        "text": "Read",
+        "text": "Lire",
         "choices": [
           {
             "id": "black",
-            "text": "Black",
+            "text": "Noir",
             "steps": [
               "black_key"
             ]
@@ -73700,7 +73700,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "text": "Chaque investigateur reçoit un total de points d'expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire. Inscrivez cette expérience sous la mention « Expérience non dépensée » de votre Carnet de Campagne, <b>mais ne la dépensez pas tout de suite</b>. Il vous sera indiqué ultérieurement quand dépenser cette expérience.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -74103,7 +74103,7 @@
     },
     {
       "id": "setup_flood_markers",
-      "text": "Add the flood tokens to the token pool."
+      "text": "Ajoutez les pions Inondation à la réserve de pions."
     },
     {
       "id": "encounter_deck",
@@ -74132,13 +74132,13 @@
       "text": "Lors de ce scénario, les lieux sont disposés selon un plan préétabli où les nouveaux lieux issus du deck Tunnel Aquatique apparaissent en dessous, à gauche ou à droite des lieux existants. (<i>Note : le deck Tunnel Aquatique n'existe pas au début de ce scénario. Il vous sera expliqué quand et comment le constituer plus tard durant le scénario.</i>)",
       "bullets": [
         {
-          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+          "text": "<b>Lors de ce scénario, les lieux adjacents sont considérés comme connexes les uns aux autres.</b>"
         },
         {
           "text": "Un lieu qui est mis en jeu en dessous, à gauche ou à droite d'un autre lieu doit être placé à côté de ce lieu de manière décrite, sans aucun autre lieu entre les deux. Un lieu qui se trouve ainsi placé à côté d'un autre lieu est considéré comme lui étant « adjacent »."
         },
         {
-          "text": "Locations are only adjacent orthogonally (left, right, above, or below); they are not adjacent diagonally."
+          "text": "Les lieux sont adjacents orthogonalement (gauche, droite, dessus, dessous), pas en diagonale."
         },
         {
           "text": "Vous ne pouvez pas mettre en jeu un lieu là où un autre lieu existe déjà. Si on vous demande de placer un nouveau lieu issu du deck Tunnel Aquatique dans un emplacement qui est déjà occupé par un lieu existant, le nouveau lieu n'entre pas en jeu."
@@ -74157,7 +74157,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "text": "Chaque investigateur reçoit un total de points d'expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire. Inscrivez cette expérience sous la mention « Expérience non dépensée » de votre Carnet de Campagne, <b>mais ne la dépensez pas tout de suite</b>. Il vous sera indiqué ultérieurement quand dépenser cette expérience.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -74294,10 +74294,10 @@
     {
       "id": "ask_keys",
       "type": "input",
-      "text": "Which keys do you want to read the representation of:",
+      "text": "Les clé représentent les éléments suivants :",
       "input": {
         "type": "checklist",
-        "text": "Read",
+        "text": "Lire",
         "choices": [
           {
             "id": "blue",
@@ -74329,7 +74329,7 @@
           },
           {
             "id": "purple",
-            "text": "Purple",
+            "text": "Violet",
             "steps": [
               "purple_key"
             ]
@@ -74558,7 +74558,7 @@
     },
     {
       "id": "spend_xp",
-      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
+      "text": "Avec tous ces souvenirs retrouvés, les événements passés vous paraissent plus clairs. Chaque investigateur a maintenant le droit de dépenser l'expérience inscrite sous la mention « Expérience non dépensée » de votre Carnet de Campagne.",
       "effects": [
         {
           "type": "earn_xp",
@@ -75363,7 +75363,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "text": "Chaque investigateur reçoit un total de points d'expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire. Inscrivez cette expérience sous la mention « Expérience non dépensée » de votre Carnet de Campagne, <b>mais ne la dépensez pas tout de suite</b>. Il vous sera indiqué ultérieurement quand dépenser cette expérience.",
       "type": "input",
       "input": {
         "type": "counter",
