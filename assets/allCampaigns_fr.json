@@ -71771,7 +71771,7 @@
 {
   "id": "a_light_in_the_fog",
   "scenario_name": "Une Lueur dans le Brouillard",
-  "full_name": "Scenario VI: A Light in the Fog",
+  "full_name": "Scénario VI : Une Lueur dans le Brouillard",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -72846,7 +72846,7 @@
 {
   "id": "hidden_truths",
   "scenario_name": "Vérités Cachées",
-  "full_name": "Interlude IV: Hidden Truths",
+  "full_name": "Interlude IV : Vérités Cachée",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -73779,7 +73779,7 @@
 {
   "id": "into_the_maelstrom",
   "scenario_name": "Dans le Maelström",
-  "full_name": "Scenario VIII: Into the Maelstrom",
+  "full_name": "Scénario VII : Dans le Maelström",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -73998,7 +73998,7 @@
 {
   "id": "the_lair_of_dagon",
   "scenario_name": "La Tanière de Dagon",
-  "full_name": "Scenario VII: The Lair of Dagon",
+  "full_name": "Scénario VII : La Tanière de Dagon",
   "type": "placeholder",
   "setup": [],
   "steps": []
