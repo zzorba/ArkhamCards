@@ -35,7 +35,7 @@ msgid "Hand x2"
 msgstr "손 x2"
 
 msgid "Arcane"
-msgstr ""
+msgstr "마법"
 
 msgid "Arcane x2"
 msgstr "마법 x2"
@@ -273,7 +273,7 @@ msgid "Alive"
 msgstr "생존"
 
 msgid "Resigned"
-msgstr "탈출"
+msgstr "후퇴"
 
 msgid "Investigator status at end of scenario:"
 msgstr "시나리오 종료시 조사자 상태"
@@ -301,7 +301,7 @@ msgid "Multiplayer"
 msgstr "다인 플레이"
 
 msgid "Standalone"
-msgstr "솔로 플레이"
+msgstr "독립 시나리오"
 
 msgid ""
 "There are no weaknesses that match these trait filters left in the set.\n"
@@ -1935,7 +1935,7 @@ msgid "Night of the Zealot"
 msgstr "광신도의 밤"
 
 msgid "Return to the Night of the Zealot"
-msgstr ""
+msgstr "돌아온 광신도의 밤"
 
 msgid "Return to The Dunwich Legacy"
 msgstr ""
@@ -2151,13 +2151,13 @@ msgid "Before the Black Throne"
 msgstr ""
 
 msgid "Return to The Gathering"
-msgstr ""
+msgstr "돌아온 회합"
 
 msgid "Return to the Midnight Masks"
-msgstr ""
+msgstr "돌아온 한밤의 가면"
 
 msgid "Return to the Devourer Below"
-msgstr ""
+msgstr "돌아온 지하 세계의 포식자"
 
 msgid "Beyond the Gates of Sleep"
 msgstr ""
@@ -2983,7 +2983,7 @@ msgstr "밝음"
 
 #, javascript-format
 msgid "Default (${ systemSchemeName })"
-msgstr "기본 ((${ systemSchemeName })"
+msgstr "기본 (${ systemSchemeName })"
 
 msgid "Theme"
 msgstr "테마"
@@ -3282,318 +3282,330 @@ msgid "Hide versatile cards"
 msgstr "다재다능 카드 숨기기"
 
 msgid "Version to copy"
-msgstr ""
+msgstr "복사할 버전"
 
 msgid "Updated Monday"
-msgstr "월요일 업데이트"
+msgstr "월요일에 갱신됨"
 
 msgid "Updated Tuesday"
-msgstr "화요일 업데이트"
+msgstr "화요일에 갱신됨"
 
 msgid "Updated Wednesday"
-msgstr "수요일 업데이트"
+msgstr "수요일에 갱신됨"
 
 msgid "Updated Thursday"
-msgstr "목요일 업데이트"
+msgstr "목요일에 갱신됨"
 
 msgid "Updated Friday"
-msgstr "금요일 업데이트"
+msgstr "금요일에 갱신됨"
 
 msgid "Updated Saturday"
-msgstr "토요일 업데이트"
+msgstr "토요일에 갱신됨"
 
 msgid "Updated Sunday"
-msgstr "일요일 업데이트"
+msgstr "일요일에 갱신됨"
 
 msgid "Reset Chaos Bag"
-msgstr ""
+msgstr "혼돈 주머니 초기화"
 
 msgid "Books"
-msgstr ""
+msgstr "서적"
 
 msgid "Upgraded"
-msgstr ""
+msgstr "향상된 카드"
 
 msgid "Added"
-msgstr ""
+msgstr "추가된 카드"
 
 msgid "Removed"
-msgstr ""
+msgstr "제거된 카드"
 
 msgid "Exiled"
-msgstr ""
+msgstr "추방된 카드"
 
 msgid "Latest upgrade"
-msgstr ""
+msgstr "마지막 향상"
 
 #, javascript-format
 msgid "${ adjustedXp } XP"
-msgstr ""
+msgstr "${ adjustedXp } 경험치"
 
 msgid "Add cards"
-msgstr ""
+msgstr "카드 추가"
 
 #, javascript-format
 msgid "Deck #${ deck.id }"
-msgstr ""
+msgstr "덱 #${ deck.id }"
 
 msgid "Tools"
-msgstr ""
+msgstr "도구"
 
 msgid "For balancing and evaluating"
-msgstr ""
+msgstr "균형과 평가를 위하여"
 
 msgid "Check your deck stability"
-msgstr ""
+msgstr "덱 안정성 확인"
 
 msgid "For easy deck assembly"
-msgstr ""
+msgstr "쉬운 덱 조립을 위하여"
 
 msgid "Story assets and weaknesses"
-msgstr ""
+msgstr "이야기 자산 및 약점"
 
 msgid "Clone deck"
-msgstr ""
+msgstr "덱 복사하기"
 
 msgid "Open in browser"
-msgstr ""
+msgstr "브라우저에서 열기"
 
 #, javascript-format
 msgid "${ cardCount } Cards"
-msgstr ""
+msgstr "카드 ${ cardCount }장"
 
 msgid "Original front · Original back"
-msgstr ""
+msgstr "일반 앞면 · 일반 뒷면"
 
 msgid "Parallel front · Original back"
-msgstr ""
+msgstr "평행 앞면 · 일반 뒷면"
 
 msgid "Original front · Parallel back"
-msgstr ""
+msgstr "일반 앞면 · 평행 뒷면"
 
 msgid "Parallel front · Parallel back"
-msgstr ""
+msgstr "평행 앞면 · 평행 뒷면"
 
 msgid "Card count"
-msgstr ""
+msgstr "카드 개수"
 
 #, javascript-format
 msgid "${ normalCardCount } · ${ totalCardCount } total"
 msgid_plural "${ normalCardCount } · ${ totalCardCount } total"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ normalCardCount }장 · 전체 ${ totalCardCount }장"
+msgstr[1] "${ normalCardCount }장 · 전체 ${ totalCardCount }장"
 
 msgid "${ bondedCardCount } bound"
 msgid_plural "${ bondedCardCount } bound"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "결속 ${ bondedCardCount }장"
+msgstr[1] "결속 ${ bondedCardCount }장"
 
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ unspentXpStr } 미사용"
+msgstr[1] "${ unspentXpStr } 미사용"
 
 msgid "Deck is invalid"
-msgstr ""
+msgstr "덱 구성 조건을 만족하지 않습니다"
 
 msgid "Show splash cards"
-msgstr ""
+msgstr "포함된 카드 보기"
 
 msgid "Hide splash cards"
-msgstr ""
+msgstr "포함된 카드 숨기기"
 
 msgid "Limited Slots"
-msgstr ""
+msgstr "제한된 슬롯"
 
 #, javascript-format
 msgid "${ count } of ${ limitSlotCount }"
-msgstr ""
+msgstr "${ limitSlotCount }장 중 ${ count }장 포함"
 
 #, javascript-format
 msgid "${ _adjustedXp } XP"
-msgstr ""
+msgstr "${ _adjustedXp } 경험치"
 
 msgid "0 unspent"
-msgstr ""
+msgstr "0 미사용"
 
 msgid "${ overspent } overspent"
-msgstr ""
+msgstr "${ overspent } 초과 사용"
 
 msgid "Missing system permission"
-msgstr ""
+msgstr "시스템 권한 부족"
 
 msgid "Reads \"${ badThing.prompt }\""
-msgstr ""
+msgstr "\"${ badThing.prompt }\"을 확인하세요"
 
 msgid "Sign in to Dissonant Voices?"
-msgstr ""
+msgstr "Dissonant Voices에 로그인 하시겠습니까?"
 
 msgid ""
 "Dissonant Voices is an ongoing project by Mythos Busters to narrate the "
 "english scenario text for each Arkham Horror campaign."
 msgstr ""
+"Dissonant Voices는 Mythos Busters에서 진행 중인 프로젝트로 "
+"아컴 호러 캠페인의 영어 시나리오 지문을 읽어주는 것 입니다."
 
 msgid "Are you sure you want to delete this standalone?"
-msgstr ""
+msgstr "독립시나리오를 삭제하기를 원합니까?"
 
 msgid "Delete standalone"
-msgstr ""
+msgstr "독립 시나리오 삭제"
 
 msgid "Standalones"
-msgstr ""
+msgstr "독립 시나리오"
 
 msgid ""
 "Don't see your favorite Standalone scenario here? Let me know at "
 "arkhamcards@gmail.com, and I'll see about including it in a future release."
 msgstr ""
+"좋아하는 독립 시나리오가 여기 없습니까? arkhamcards@gmail.com로 메일을 "
+"주시면 이후에 추가해보겠습니다. (참고: 영문으로 보내야 합니다)."
 
 msgid "New Standalone"
-msgstr ""
+msgstr "새로운 독립 시나리오"
 
 msgid "Create Standalone"
-msgstr ""
+msgstr "독립 시나리오 생성"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "The Chameleon"
-msgstr ""
+msgstr "카멜레온"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid ""
 "This is a custom investigator to allow for building of arbitrary decks.\n"
 "[elder_sign]: +X where X is whatever you want it to be."
 msgstr ""
+"임의의 덱 구성을 위한 커스텀 조사자입니다.\n"
+"[elder_sign]: +X. X는 당신이 원하는 숫자입니다."
 
 msgid "Asset Filters"
-msgstr ""
+msgstr "자산 필터"
 
 msgid "Sanity"
-msgstr ""
+msgstr "정신력"
 
 msgid "Assets: All"
-msgstr ""
+msgstr "자산: 전체"
 
 #, javascript-format
 msgid "Assets: ${ searchParts }"
-msgstr ""
+msgstr "자산: ${ searchParts }"
 
 msgid "Asset"
-msgstr ""
+msgstr "자산"
 
 msgid "Act"
-msgstr ""
+msgstr "주요목적"
 
 msgid "Agenda"
-msgstr ""
+msgstr "주요사건"
 
 msgid "Enemy"
-msgstr ""
+msgstr "적"
 
 msgid "Treachery"
-msgstr ""
+msgstr "음모"
 
 msgid "Location"
-msgstr ""
+msgstr "장소"
 
 msgid "Actions"
-msgstr ""
+msgstr "행동"
 
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
-msgstr ""
+msgstr "덱 향상을 되돌리겠습니까?"
 
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead "
 "pay the full experience cost on the higher level version and leave the "
 "lower level version in your deck (it does not count towards your deck size "
 "or the number of copies of that card in your deck)."
+
 msgstr ""
+"<b>추가 선택지</b>: 당신이 [[마법]] 카드를 향상할 때, 일반적인 향상 대신에 더 높은 레벨의 카드의 "
+"경험치 비용을 전부 지불하고 더 낮은 레벨의 카드를 당신의 덱에 남겨두어도 됩니다"
+"(이렇게 남겨둔 카드는 당신의 덱 크기를 계산하거나 "
+"당신의 덱에서 카드 사본 개수를 계산할 때 포함하지 않습니다)."
 
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
-msgstr ""
+msgstr "{ _adjustedXp } 소비 경험치 중 ${ spentXP }"
 
 msgid "Upgrading"
-msgstr ""
+msgstr "향상 중"
 
 msgid "Editing"
-msgstr ""
+msgstr "수정 중"
 
 msgid "Uploading deck"
-msgstr ""
+msgstr "덱 업로드 중"
 
 msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will "
 "track changes."
 msgstr ""
+"시나리오를 방금 완료했다면, '향상' 버튼을 이용해서 덱 변경 내역을 추적해보십시오."
 
 msgid "XP earned"
-msgstr ""
+msgstr "얻은 경험치"
 
 msgid "Adjustment:"
-msgstr ""
+msgstr "조정:"
 
 msgid "Adjust XP"
-msgstr ""
+msgstr "조정 경험치"
 
 msgid "Select Taboo List"
-msgstr ""
+msgstr "금기 목록 선택"
 
 #, javascript-format
 msgid "${ size } Card"
 msgid_plural "${ size } Cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "카드 ${ size }장"
+msgstr[1] "카드 ${ size }장"
 
 #, javascript-format
 msgid "class_${ faction }"
-msgstr ""
+msgstr "역할군_${ faction }"
 
 msgid "Select Parallel Investigator"
-msgstr ""
+msgstr "평행 조사자 선택"
 
 msgid "Upgrade experience"
 msgstr ""
 
 msgid "Upgrading deck"
-msgstr ""
+msgstr "덱 향상 중"
 
 msgid "Editing deck"
-msgstr ""
+msgstr "덱 수정 중"
 
 #, javascript-format
 msgid "${ normalCards } card"
 msgid_plural "${ normalCards } cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "카드 ${ normalCards }장"
+msgstr[1] "카드 ${ normalCards }장"
 
 msgid "Add scenario XP"
-msgstr ""
+msgstr "시나리오 경험치 추가"
 
 msgid "Draw simulator"
-msgstr ""
+msgstr "뽑기 시뮬레이터"
 
 msgid "Upgrade with XP"
-msgstr ""
+msgstr "경험치로 향상"
 
 msgid "Unknown campaign"
-msgstr ""
+msgstr "미지의 캠페인"
 
 msgid "Deck name"
-msgstr ""
+msgstr "덱 이름"
 
 #, javascript-format
 msgid "Not enough cards (${ drawDeckSize } / ${ size })."
-msgstr ""
+msgstr "카드 장수가 부족합니다. (${ drawDeckSize } / ${ size })"
 
 #, javascript-format
 msgid "Too many cards (${ drawDeckSize } / ${ size })."
-msgstr ""
+msgstr "카드가 너무 많습니다. (${ drawDeckSize } / ${ size })"
 
 msgid "Draw Random Basic Weakness"
-msgstr ""
+msgstr "무작위 기본 약점 뽑기"
 
 #. This is a deck upgrade action.
 msgid "Undo deck change?"
-msgstr ""
+msgstr "덱 변경을 되돌리시겠습니까?"
 
 #. This is a deck upgrade action.
 msgid ""
@@ -3603,137 +3615,145 @@ msgid ""
 "changes might be applied twice. You should view the deck and manually undo "
 "the edits before reapplying the changes."
 msgstr ""
+"저장된 덱을 되돌리려고 하는 것으로 보입니다.\n"
+"\n"
+"이런 변경을 되돌릴 수 없습니다. 그러므로, 변경을 다시 수행하면 중복해서 변경 사항이 "
+"적용될 수도 있습니다. 변화를 다시 적용하기 전에, 덱을 확인하고 수동으로 변경 사항을 "
+"되돌리십시오."
 
 #. This is a deck upgrade action.
 msgid "Undo anyway"
-msgstr ""
+msgstr "어찌되었든 되돌리기"
 
 msgid "Save deck changes"
-msgstr ""
+msgstr "덱 변경 저장"
 
 msgid "It looks like one or more deck changes are unsaved."
-msgstr ""
+msgstr "하나 이상의 덱의 변경사항이 저장되지 않은 것으로 보입니다."
 
 #, javascript-format
 msgid "${ handle }'s Friends"
-msgstr ""
+msgstr "${ handle }의 친구"
 
 msgid "Friends"
-msgstr ""
+msgstr "친구"
 
 #, javascript-format
 msgid "Search for ${ searchTerm }"
-msgstr ""
+msgstr "${ searchTerm } 검색"
 
 msgid "Friend Requests"
-msgstr ""
+msgstr "친구 요청"
 
 msgid "Pending Friend Requests"
-msgstr ""
+msgstr "보류된 친구 요청"
 
 msgid "Search for friends to add"
-msgstr ""
+msgstr "친구 추가를 위해 검색하기"
 
 msgid "Search Results"
-msgstr ""
+msgstr "검색 결과"
 
 #, javascript-format
 msgid "No results found for search '${ searchResults.term }'."
-msgstr ""
+msgstr "'${ searchResults.term }'의 검색 결과가 없습니다."
 
 msgid "Clear search"
-msgstr ""
+msgstr "검색 초기화"
 
 msgid "Search friends"
-msgstr ""
+msgstr "친구 검색"
 
 #, javascript-format
 msgid "${ cycleCount } Cycle"
 msgid_plural "${ cycleCount } Cycles"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "사이클 ${ cycleCount }개"
+msgstr[1] "사이클 ${ cycleCount }개"
 
 msgid "${ standalonePackCount } Pack"
 msgid_plural "${ standalonePackCount } Packs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "팩 ${ standalonePackCount }개"
+msgstr[1] "팩 ${ standalonePackCount }개"
 
 msgid "Encounter Spoilers"
-msgstr ""
+msgstr "조우 스포일러"
 
 msgid "Support"
-msgstr ""
+msgstr "지원"
 
 msgid "Account Name"
-msgstr ""
+msgstr "계정명"
 
 msgid "Choose a handle for your account"
-msgstr ""
+msgstr "계정 처리 방식 선택"
 
 msgid "Your Friends"
-msgstr ""
+msgstr "당신의 친구"
 
 msgid ""
 "This app works just fine without an account.\n"
 "But signing in will allow you to sync campaigns between devices, with more "
 "features planned for the future."
 msgstr ""
+"이 앱은 계정 없이도 잘 작동합니다.\n"
+"그러나 로그인시 디바이스 사이의 캠페인 연동이 가능합니다. 추후 기능이 "
+"추가될 예정입니다."
 
 #, javascript-format
 msgid "${ pendingFriendCount } pending request"
 msgid_plural "${ pendingFriendCount } pending requests"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "보류된 요청 ${ pendingFriendCount }개"
+msgstr[1] "보류된 요청 ${ pendingFriendCount }개"
 
 msgid "${ friendCount } friend"
 msgid_plural "${ friendCount } friends"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "친구 ${ friendCount }명"
+msgstr[1] "친구 ${ friendCount }명"
 
 msgid "Account name"
-msgstr ""
+msgstr "계정명"
 
 msgid "Choose a handle"
-msgstr ""
+msgstr "처리 방식 선택"
 
 msgid "ArkhamDB Account"
-msgstr ""
+msgstr "ArkhamDB 계정"
 
 msgid "Arkham Cards Account"
-msgstr ""
+msgstr "Arkham Cards 계정"
 
 msgid "Looks like there is already an account registered with this email address."
-msgstr ""
+msgstr "해당 이메일 주소로 가입된 계정이 이미 있는 것으로 보입니다."
 
 msgid "That doesn't look like a valid email address"
-msgstr ""
+msgstr "유효한 이메일 주소가 아닌 것으로 보입니다."
 
 msgid "That password seems to be too weak."
-msgstr ""
+msgstr "비밀번호가 너무 간단합니ㅏ."
 
 msgid "Your account has been disabled."
-msgstr ""
+msgstr "당신의 계정이 비활성화 상태입니다."
 
 msgid "There doesn't appear to be an account with that email address."
-msgstr ""
+msgstr "이메일 주소를 포함하는 계정이 없는 것으로 보입니다"
 
 msgid "Invalid password."
-msgstr ""
+msgstr "유효하지 않은 비밀번호."
 
 msgid "Unknown error"
-msgstr ""
+msgstr "미지의 오류"
 
 msgid "Email address"
-msgstr ""
+msgstr "이메일 주소"
 
 msgid "Password"
-msgstr ""
+msgstr "비밀번호"
 
 msgid "Would you like to create a new account instead?"
-msgstr ""
+msgstr "대신 새로운 계정을 생성하시겠습니까?"
 
 msgid "Are you trying to sign in to an existing account?"
-msgstr ""
+msgstr "기존 계정으로 로그인하시겠습니까?"
 
 #, javascript-format
 msgid ""
@@ -3741,42 +3761,47 @@ msgid ""
 "\n"
 "Please follow the instructions and then return to the app to continue."
 msgstr ""
+"'${ emailAddress }' 주소로 비밀번호 초기화 이메일을 보냈습니다.\n"
+"\n"
+"해당 메일의 지시를 따른 후에 앱으로 돌아와서 계속 진행해 주십시오."
 
 msgid "Would you like to reset your password via email?"
-msgstr ""
+msgstr "이메일을 통해 비밀번호를 초기화하시겠습니까?"
 
 msgid "Sign up"
-msgstr ""
+msgstr "가입"
 
 msgid "Sign in"
-msgstr ""
+msgstr "로그인"
 
 msgid ""
 "Using an Arkham Cards account will allow you to backup and sync your "
 "campaign data between devices.\n"
 "More features are in the works."
 msgstr ""
+"Arkham Cards 계정을 사용하면 디바이스 사이의 캠페인 연동이 가능합니다.\n"
+"추후 기능이 추가될 예정입니다."
 
 msgid "Sign in to your account"
-msgstr ""
+msgstr "당신의 계정으로 로그인"
 
 msgid "Create a new account"
-msgstr ""
+msgstr "새로운 계정 생성"
 
 msgid "Sign up with email"
-msgstr ""
+msgstr "이메일로 가입"
 
 msgid "Sign in with email"
-msgstr ""
+msgstr "이메일로 로그인"
 
 msgid "Sign out"
-msgstr ""
+msgstr "로그아웃"
 
 msgid "Sign in to app"
-msgstr ""
+msgstr "앱에 로그인하기"
 
 msgid "Problem reading from ArkhamDB"
-msgstr ""
+msgstr "ArkhamDB를 읽어오는데 문제 발생"
 
 msgid ""
 "If you are having trouble with your account you should try to reconnect.\n"
@@ -3784,85 +3809,89 @@ msgid ""
 "If the problem persists, you may sign out but campaigns will have ArkhamDB "
 "decks disconnected."
 msgstr ""
+"당신의 계정에 문제가 있다면, 재연결을 시도해야합니다.\n"
+"\n"
+"문제가 지속되는 경우 로그아웃이 가능합니다. 단, 캠페인에 포함된 ArkhamDB 덱은 "
+"연결이 끊길 것입니다."
 
 msgid "Authorization issues"
-msgstr ""
+msgstr "인증 문제"
 
 msgid "Reconnect"
-msgstr ""
+msgstr "재연결"
 
 msgid "Logged in"
-msgstr ""
+msgstr "로그인 상태"
 
 msgid "Synchronize decks"
-msgstr ""
+msgstr "덱 연동하기"
 
 msgid "Log out"
-msgstr ""
+msgstr "로그아웃"
 
 msgid "Log in"
-msgstr ""
+msgstr "로그인"
 
 msgid "ArkhamDB"
-msgstr ""
+msgstr "ArkhamDB"
 
 msgid "Narration enabled"
-msgstr ""
+msgstr "나레이션 활성화"
 
 msgid "Audio narration"
-msgstr ""
+msgstr "오디오 나레이션"
 
 msgid "Dissonant Voices"
-msgstr ""
+msgstr "Dissonant Voices"
 
 msgid "Notes"
-msgstr ""
+msgstr "메모"
 
 msgid "Free-form text records"
-msgstr ""
+msgstr "자유 형식 텍스트 기록"
 
 msgid "Achievements"
-msgstr ""
+msgstr "업적"
 
 msgid "Upload campaign"
-msgstr ""
+msgstr "캠페인 업로드"
 
 msgid "Add investigators"
-msgstr ""
+msgstr "조사자 추가"
 
 msgid "Add investigator to which campaign?"
-msgstr ""
+msgstr "어느 캠페인에 조사자를 추가하시겠습니까?"
 
 msgid "Which campaign would you like to add an investigator to?"
-msgstr ""
+msgstr "조사자를 추가하기를 원하는 캠페인이 무엇입니까?"
 
 msgid "Can't add side scenario right now."
-msgstr ""
+msgstr "외전을 지금 추가할 수는 없습니다."
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
-msgstr ""
+msgstr "혼돈 주머니 (${ tokenCount }개)"
 
 msgid "Save upgrade"
-msgstr ""
+msgstr "향상 저장"
 
 msgid "Sorry, you don't seem to be a Mythos Buster patron."
-msgstr ""
+msgstr "죄송하지만, Mythos Buster 후원자가 아닌 것으로 보입니다."
 
 msgid "Upload campaign (network required)"
-msgstr ""
+msgstr "캠페인 업로드 (네트워크 연결 필요)"
 
 msgid "Earned experience:"
-msgstr ""
+msgstr "획득한 경험치:"
 
 msgid "Finished Removing Investigarors"
-msgstr ""
+msgstr "조사자 삭제 완료"
 
 msgid "Record Scenario Result"
-msgstr ""
+msgstr "시나리오 결과 기록"
 
 msgid "Sign out of Arkham Cards?"
-msgstr ""
+msgstr "Arkham Cards에 로그아웃 하시겠습니까?"
 
 msgid ""
 "Are you sure you want to sign out of Arkham Cards?\n"
@@ -3872,29 +3901,37 @@ msgid ""
 "\n"
 "Note: if you have made recent changes while offline, they may be lost."
 msgstr ""
+"Arkham Cards를 로그아웃 하시겠습니까?\n"
+"\n"
+"업로드 되거나 당신에게 공유된 모든 캠페인은 이 디바이스에서 삭제됩니다. "
+"추후 로그인을 수행하면 다시 동기화할 수 있습니다.\n"
+"\n"
+"참고: 최근에 오프라인으로 수행한 변경사항은 없어질 수도 있습니다."
 
 msgid "Name required"
-msgstr ""
+msgstr "이름 필요"
 
 msgid "You must specify a name for custom campaigns."
-msgstr ""
+msgstr "커스텀 캠페인의 이름을 설정하여야 합니다."
 
 msgid "Export diagnostic data"
-msgstr ""
+msgstr "진단 데이터 추출"
 
 msgid ""
 "This feature is intended for advanced diagnostics. Just copy the data "
 "presented here and email it to arkhamcards@gmail.com"
 msgstr ""
+"이 기능은 추가 진단을 위한 것 입니다. 여기에 나온 데이터를 복사하고 "
+"arkhamcards@gmail.com로 이메일 주십시오"
 
 msgid "Database migration required"
-msgstr ""
+msgstr "데이터베이스 마이그레이션 필요"
 
 msgid "This should only take a few seconds and no network is required."
-msgstr ""
+msgstr "수십초가 소요되며 네트워크 연결이 필요하지는 않습니다."
 
 msgid "Migrate now"
-msgstr ""
+msgstr "지금 마이그레이션하기"
 
 #, javascript-format
 msgctxt "masculine"
@@ -3955,7 +3992,7 @@ msgstr "생존"
 
 msgctxt "masculine"
 msgid "Resigned"
-msgstr "탈출"
+msgstr "후퇴"
 
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
@@ -3988,7 +4025,7 @@ msgstr ""
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 읽습니다."
 
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4047,7 +4084,7 @@ msgstr "생존"
 
 msgctxt "feminine"
 msgid "Resigned"
-msgstr "탈출"
+msgstr "후퇴"
 
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
@@ -4078,39 +4115,39 @@ msgstr ""
 
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 읽습니다."
 
 msgctxt "action"
 msgid "Fight"
-msgstr ""
+msgstr "전투"
 
 msgctxt "action"
 msgid "Engage"
-msgstr ""
+msgstr "교전"
 
 msgctxt "action"
 msgid "Investigate"
-msgstr ""
+msgstr "조사"
 
 msgctxt "action"
 msgid "Play"
-msgstr ""
+msgstr "플레이"
 
 msgctxt "action"
 msgid "Draw"
-msgstr ""
+msgstr "뽑기"
 
 msgctxt "action"
 msgid "Move"
-msgstr ""
+msgstr "이동"
 
 msgctxt "action"
 msgid "Evade"
-msgstr ""
+msgstr "회피"
 
 msgctxt "action"
 msgid "Resource"
-msgstr ""
+msgstr "자원(획득)"
 
 msgctxt "Draw Cards"
 msgid "All"
@@ -4123,68 +4160,68 @@ msgstr "없음"
 msgctxt "header"
 msgid "Asset"
 msgid_plural "Assets"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "자산"
+msgstr[1] "자산"
 
 msgctxt "header"
 msgid "Event"
 msgid_plural "Events"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "이벤트"
+msgstr[1] "이벤트"
 
 msgctxt "header"
 msgid "Skill"
 msgid_plural "Skills"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "능력"
+msgstr[1] "능력"
 
 msgctxt "header"
 msgid "Treachery"
 msgid_plural "Treacheries"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "음모"
+msgstr[1] "음모"
 
 msgctxt "header"
 msgid "Enemy"
 msgid_plural "Enemies"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "적"
+msgstr[1] "적"
 
 msgctxt "header"
 msgid "Location"
 msgid_plural "Locations"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "장소"
+msgstr[1] "장소"
 
 msgctxt "header"
 msgid "Story"
 msgid_plural "Stories"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "이야기"
+msgstr[1] "이야기"
 
 msgctxt "header"
 msgid "Act"
 msgid_plural "Acts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "주요목적"
+msgstr[1] "주요목적"
 
 msgctxt "header"
 msgid "Agenda"
 msgid_plural "Agendas"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "주요사건"
+msgstr[1] "주요사건"
 
 msgctxt "header"
 msgid "Investigator"
 msgid_plural "Investigators"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "조사자"
+msgstr[1] "조사자"
 
 msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "시나리오"
+msgstr[1] "시나리오"
 
 msgctxt "Weakness Card"
 msgid "All"
