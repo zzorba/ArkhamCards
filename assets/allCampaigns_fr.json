@@ -35938,7 +35938,7 @@
           "text": "Prenez le Site de Recherche, le QG Temporaire et 2 lieux Zone de Quarantaine au Hazard. Mélangez-les ensemble et placez chacun d'entre eux connexe au Cratère, de manière aléatoire."
         },
         {
-          "text": "Prenez la Butte Fongique et 3 lieux Zone de Quarantaine au hasard. Mélangez-les ensemble et placez chacun d'entre eux dans 1 des 4 emplacements de l'anneau extérieur les plus éloingnés du Cratère."
+          "text": "Prenez la Butte Fongique et 3 lieux Zone de Quarantaine au hasard. Mélangez-les ensemble et placez chacun d'entre eux dans 1 des 4 emplacements de l'anneau extérieur les plus éloignés du Cratère."
         },
         {
           "text": "Mettez en jeu les lieux Zone de Quarantaine restants."
@@ -36065,7 +36065,7 @@
       "id": "countermeasures_rule",
       "type": "rule_reminder",
       "title": "Contre-Mesures",
-      "text": "Les contre-mesures représentent les fournitures, recherches ou équipements militaires qui peuvent aider les investigateurs à survivre. Les contre-mesure peuvent être dépensées via certaines capacotés de carte afin de déclancher de puissants effets. Cependant, il n'est pas facile d'obtenir de nouvelle contre-mesures alors faites attention à la manière dont vous les dépensez !"
+      "text": "Les contre-mesures représentent les fournitures, recherches ou équipements militaires qui peuvent aider les investigateurs à survivre. Les contre-mesure peuvent être dépensées via certaines capacités de carte afin de déclencher de puissants effets. Cependant, il n'est pas facile d'obtenir de nouvelle contre-mesures alors faites attention à la manière dont vous les dépensez !"
     },
     {
       "id": "blob_x_rule",
