@@ -106,7 +106,7 @@ export function useParsedDeck(
   const cards = usePlayerCards(tabooSetId);
   const visible = useComponentVisible(componentId);
   const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(deck && cards && fetchIfMissing ?
-    parseDeck(deck, deck.meta || {}, deck.slots, deck.ignoreDeckLimitSlots, cards, previousDeck, deck.xp_adjustment || 0) :
+    parseDeck(deck, deck.meta || {}, deck.slots || {}, deck.ignoreDeckLimitSlots, cards, previousDeck, deck.xp_adjustment || 0) :
     undefined);
   useDebouncedEffect(() => {
     if (cards && visible && deckEdits && deck) {
@@ -182,7 +182,7 @@ export function useDeckEditState({
       }
     });
     forEach(deckEdits.slots, (currentCount, code) => {
-      const ogDeckCount = deck.slots[code] || 0;
+      const ogDeckCount = deck.slots?.[code] || 0;
       if (ogDeckCount < currentCount) {
         slotDeltas.additions[code] = currentCount - ogDeckCount;
       }

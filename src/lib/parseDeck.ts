@@ -286,11 +286,11 @@ function getDeckChanges(
   }
   const oldDeckSize = new DeckValidation(
     previousInvestigator,
-    previousDeck.slots,
+    previousDeck.slots || {},
     previousDeck.meta
   ).getDeckSize();
   const previousDeckCards: Card[] = getCards(cards,
-    previousDeck.slots,
+    previousDeck.slots || {},
     previousDeck.ignoreDeckLimitSlots || {}
   );
   const invalidCards = validation.getInvalidCards(previousDeckCards);
@@ -305,7 +305,7 @@ function getDeckChanges(
       const ignoreDelta = (ignoreDeckLimitSlots[code] || 0) - (previousIgnoreDeckLimitSlots[code] || 0);
       const exiledCount = exiledCards[code] || 0;
       const newCount = slots[code] || 0;
-      const oldCount = previousDeck.slots[code] || 0;
+      const oldCount = previousDeck.slots?.[code] || 0;
       const delta = (newCount + exiledCount) - oldCount - (code === ACE_OF_RODS_CODE ? ignoreDelta : 0);
       if (delta !== 0) {
         changedCards[code] = delta;
@@ -533,7 +533,7 @@ export function parseBasicDeck(
   return parseDeck(
     deck,
     deck.meta || {},
-    deck.slots,
+    deck.slots || {},
     deck.ignoreDeckLimitSlots || {},
     cards,
     previousDeck,

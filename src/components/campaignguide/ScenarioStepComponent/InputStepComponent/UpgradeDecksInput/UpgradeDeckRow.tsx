@@ -443,9 +443,9 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     forEach(keys(storyAssets), code => {
       const delta = storyAssetDeltas[code];
       if (delta) {
-        newSlots[code] = (deck.slots[code] || 0) + delta;
+        newSlots[code] = (deck.slots?.[code] || 0) + delta;
       } else {
-        newSlots[code] = (deck.slots[code] || 0);
+        newSlots[code] = (deck.slots?.[code] || 0);
       }
       if (newSlots[code] < 0) {
         newSlots[code] = 0;
@@ -454,7 +454,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     forEach(storyAssetDeltas, (delta, code) => {
       if (storyAssets[code] === undefined) {
         if (delta) {
-          newSlots[code] = (deck.slots[code] || 0) + delta;
+          newSlots[code] = (deck.slots?.[code] || 0) + delta;
         }
       }
     });
@@ -496,7 +496,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     performSaveDeckChanges, performSaveDeckUpgrade, onUpgrade,
     deckUpgradeComponent, campaignSection]);
 
-  const isYithian = (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;
+  const isYithian = storyAssets && (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;
   return (
     <InvestigatorRow
       investigator={investigator}

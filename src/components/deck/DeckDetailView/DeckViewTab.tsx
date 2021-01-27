@@ -605,7 +605,7 @@ export default function DeckViewTab(props: Props) {
   ]);
 
   const investigatorBlock = useMemo(() => {
-    const yithian = (parsedDeck.slots[BODY_OF_A_YITHIAN] || 0) > 0;
+    const yithian = parsedDeck.slots && (parsedDeck.slots[BODY_OF_A_YITHIAN] || 0) > 0;
     const investigatorCard = (yithian ? cards[BODY_OF_A_YITHIAN] : undefined) || investigatorFront;
 
     if (!investigatorCard) {

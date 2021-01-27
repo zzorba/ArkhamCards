@@ -1,4 +1,4 @@
-import { forEach, omit } from 'lodash';
+import { forEach, keys, omit } from 'lodash';
 import uuid from 'react-native-uuid';
 
 import {
@@ -158,8 +158,27 @@ export default function(
   }
   if (action.type === SET_MY_DECKS) {
     const all: DecksMap = { ...state.all };
+    const remoteDecks: { [uuid: string]: boolean | undefined } = {};
+    forEach(state.all, deck => {
+      if (deck) {
+        const deckId = getDeckId(deck);
+        if (!deckId.local) {
+          remoteDecks[deckId.uuid] = true;
+        }
+      }
+    });
     forEach(action.decks, deck => {
-      all[getDeckId(deck).uuid] = deck;
+      const deckId = getDeckId(deck);
+      all[deckId.uuid] = deck;
+      if (remoteDecks[deckId.uuid]) {
+        delete remoteDecks[deckId.uuid];
+      }
+    });
+    // Remove decks that are now missing.
+    forEach(keys(remoteDecks), uuid => {
+      if (all[uuid]) {
+        delete all[uuid];
+      }
     });
     forEach(action.decks, deck => {
       let scenarioCount = 0;

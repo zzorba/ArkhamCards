@@ -216,7 +216,7 @@ export default function(
           [action.id.uuid]: {
             nameChange: undefined,
             tabooSetChange: undefined,
-            slots: action.deck.slots,
+            slots: action.deck.slots || {},
             ignoreDeckLimitSlots: action.deck.ignoreDeckLimitSlots || {},
             meta: action.deck.meta || {},
             xpAdjustment: action.deck.xp_adjustment || 0,

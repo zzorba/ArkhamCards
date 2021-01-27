@@ -92,7 +92,7 @@ interface BaseDeck {
   date_update: string;
   date_creation: string;
   scenarioCount?: number;
-  slots: Slots;
+  slots?: Slots;
   ignoreDeckLimitSlots: Slots;
   exile_string?: string;
   problem?: DeckProblemType;

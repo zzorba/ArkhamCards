@@ -44,7 +44,7 @@ export default function DeckHistoryView({
       const parsedDeck = parseDeck(
         deck,
         (currentDeck && deckEdits?.meta) || (deck.meta || {}),
-        (currentDeck && deckEdits?.slots) || deck.slots,
+        (currentDeck && deckEdits?.slots) || deck.slots || {},
         (currentDeck && deckEdits?.ignoreDeckLimitSlots) || deck.ignoreDeckLimitSlots,
         cards,
         previousDeck,

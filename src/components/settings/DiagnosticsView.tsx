@@ -19,7 +19,7 @@ import { clearDecks } from '@actions';
 import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
 import Card from '@data/Card';
-import { getBackupData, getAllPacks, getLangChoice } from '@reducers';
+import { getBackupData, getAllPacks, getLangChoice, AppState } from '@reducers';
 import { fetchCards } from '@components/card/actions';
 import SettingsItem from './SettingsItem';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -69,6 +69,7 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
   const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
   const backupData = useSelector(getBackupData);
+  const state = useSelector((state: AppState) => state);
   const packs = useSelector(getAllPacks);
   const langChoice = useSelector(getLangChoice);
 
@@ -86,9 +87,23 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
             message: JSON.stringify(backupData),
           });
         },
+      }, {
+        text: t`Export Diagnostic Data`,
+        onPress: () => {
+          Share.share({
+            message: JSON.stringify({
+              legacyDecks: state.legacyDecks,
+              legacyCampaigns: state.campaigns,
+              legacyGuides: state.legacyGuides,
+              decks: state.decks,
+              campaigns: state.campaigns_2,
+              guides: state.guides,
+            }),
+          });
+        },
       }],
     );
-  }, [backupData]);
+  }, [backupData, state]);
 
   const clearDatabase = useCallback(async() => {
     await (await db.cardsQuery()).delete().execute();

@@ -67,7 +67,7 @@ export default function StoryCardSelectorComponent({
     const storyCards: Card[] = [];
     const deckStoryCards: Card[] = [];
     forEach(allStoryCards, card => {
-      if (deck && card.code && deck.slots[card.code] > 0) {
+      if (deck && card.code && deck.slots && (deck.slots?.[card.code] || 0) > 0) {
         deckStoryCards.push(card);
         deckStorySlots[card.code] = deck.slots[card.code];
       } else if (card.encounter_code && encounterCodesSet.has(card.encounter_code)) {

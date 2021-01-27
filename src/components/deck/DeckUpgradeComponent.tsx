@@ -63,7 +63,7 @@ function DeckUpgradeComponent({
 
   const handleStoryCardChanges = useCallback((upgradedDeck: Deck) => {
     const hasStoryChange = !!find(keys(storyCounts), (code) => {
-      return (upgradedDeck.slots[code] || 0) !== storyCounts[code];
+      return (upgradedDeck.slots?.[code] || 0) !== storyCounts[code];
     }) || !!find(keys(ignoreStoryCounts), (code) => {
       return (upgradedDeck.ignoreDeckLimitSlots[code] || 0) !== ignoreStoryCounts[code];
     });

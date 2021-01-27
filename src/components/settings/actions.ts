@@ -72,15 +72,15 @@ function migrateV1(
   legacyGuides: { [id: string]: LegacyCampaignGuideState | undefined },
   legacyChaosBags?: { [id: string]: ChaosBagResults | undefined },
 ): ReduxMigrationAction {
-  const [decks, deckMap] = migrateDecks(values(legacyDecks));
-  const [campaigns, campaignMapping] = migrateCampaigns(values(legacyCampaigns), deckMap, decks);
+  const [decks, deckMap] = migrateDecks(values(legacyDecks || {}));
+  const [campaigns, campaignMapping] = migrateCampaigns(values(legacyCampaigns || {}), deckMap, decks);
   const chaosBags: { [uuid: string]: ChaosBagResults } = {};
   forEach(legacyChaosBags || {}, (bag, id) => {
     if (campaignMapping[id] && bag) {
       chaosBags[campaignMapping[id]] = bag;
     }
   });
-  const guides = migrateGuides(legacyGuides, campaignMapping, deckMap);
+  const guides = migrateGuides(legacyGuides || {}, campaignMapping, deckMap);
   return {
     type: REDUX_MIGRATION,
     version: 1,

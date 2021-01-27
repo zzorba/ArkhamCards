@@ -171,7 +171,7 @@ export default function NewDeckListRow({
     onPress && onPress(deck, investigator);
   }, [deck, investigator, onPress]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
-  const yithian = useMemo(() => (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.slots]);
+  const yithian = useMemo(() => !!deck.slots && (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.slots]);
   const campaign = deck && deckToCampaign && deckToCampaign[getDeckId(deck).uuid];
   const eliminated = useMemo(() => {
     if (killedOrInsane) {

@@ -210,7 +210,7 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
   if (!find(storyAssetDeltas, (count: number) => count !== 0)) {
     return null;
   }
-  const isYithian = (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;
+  const isYithian = storyAssets && (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;
   return (
     <InvestigatorRow
       investigator={investigator}

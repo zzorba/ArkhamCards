@@ -37,7 +37,7 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
     const card = investigators?.[code];
     const killedOrInsane = card && card.eliminated(investigatorData[code]);
     const yithian = !!find(investigatorData[code]?.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN) ||
-      (deck && (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0);
+      (deck && deck.slots && (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0);
     return (
       <View key={code} style={styles.investigator}>
         <InvestigatorImage

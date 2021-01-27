@@ -31,7 +31,7 @@ export default function ExileCardSelectorComponent({ componentId, id, exileCount
   return (
     <CardSelectorComponent
       componentId={componentId}
-      slots={deck.slots}
+      slots={deck.slots || {}}
       counts={exileCounts}
       updateCount={updateExileCount}
       filterCard={isExile}

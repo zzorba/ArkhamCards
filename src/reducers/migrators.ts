@@ -10,7 +10,7 @@ export function migrateDecks(
   const deckMap: { [key: string]: DeckId | undefined} = {};
 
   forEach(decks, deck => {
-    if (!deck) {
+    if (!deck || !deck.slots) {
       return;
     }
     const updatedDeck: Deck = ((deck.id < 0 || deck.local)) ? {

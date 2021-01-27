@@ -252,7 +252,7 @@ export const saveDeckChanges: ActionCreator<
         const newDeck = updateLocalDeck(
           deck,
           changes.name || deck.name,
-          changes.slots || deck.slots,
+          changes.slots || deck.slots || {},
           changes.ignoreDeckLimitSlots || deck.ignoreDeckLimitSlots || {},
           ((changes.problem !== undefined && changes.problem !== null) ? changes.problem : (deck.problem || '')) as DeckProblemType,
           (changes.spentXp !== undefined && changes.spentXp !== null) ? changes.spentXp : (deck.spentXp || 0),
@@ -269,7 +269,7 @@ export const saveDeckChanges: ActionCreator<
         const savePromise = saveDeck(
           deck.id,
           changes.name || deck.name,
-          changes.slots || deck.slots,
+          changes.slots || deck.slots || {},
           changes.ignoreDeckLimitSlots || deck.ignoreDeckLimitSlots || {},
           (changes.problem !== undefined && changes.problem !== null) ? changes.problem : (deck.problem || ''),
           (changes.spentXp !== undefined && changes.spentXp !== null) ? changes.spentXp : (deck.spentXp || 0),

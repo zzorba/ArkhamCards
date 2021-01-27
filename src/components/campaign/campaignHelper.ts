@@ -17,7 +17,7 @@ function weaknessString(deck: Deck, cards: CardsMap) {
       }
       weaknessCount += count;
       weaknesses.push(card);
-      return `${deck.slots[code]}x - ${card.name}`;
+      return `${deck.slots?.[code] || 0}x - ${card.name}`;
     }
   ).join('\n');
   return {
@@ -58,7 +58,7 @@ export function maybeShowWeaknessPrompt(
               const assignedCards = { ...weaknessCards };
               forEach(weaknesses, card => {
                 const code = card.code;
-                const count = deck.slots[code];
+                const count = deck.slots?.[code] || 0;
                 if (!(code in assignedCards)) {
                   assignedCards[code] = 0;
                 }

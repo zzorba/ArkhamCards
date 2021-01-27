@@ -186,7 +186,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
     if (deck && cards) {
       const previousDeck = deck.previousDeckId ? getDeck(decks, deck.previousDeckId) : undefined;
       const newSlots = updateSlots(
-        deck.slots,
+        deck.slots || {},
         pendingNextCard,
         replaceRandomBasicWeakness
       );
