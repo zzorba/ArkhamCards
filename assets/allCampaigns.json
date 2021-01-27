@@ -38504,7 +38504,7 @@
     },
     {
       "id": "explore_rule",
-      "title": "explore",
+      "title": "Explore",
       "type": "rule_reminder",
       "text": "Some abilities in <i>Guardians of the Abyss</i> are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that will be constructed during this scenario. This deck consists of several single-sided locations and treachery cards.",
       "bullets": [
@@ -38912,7 +38912,7 @@
     },
     {
       "id": "explore_rule",
-      "title": "explore",
+      "title": "Explore",
       "type": "rule_reminder",
       "text": "Some abilities in <i>Guardians of the Abyss</i> are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that will be constructed during this scenario. This deck consists of several single-sided locations and treachery cards.",
       "bullets": [
@@ -65118,7 +65118,7 @@
     {
       "id": "purple_key_story",
       "type": "story",
-      "text": "You describe the idol found in the undersea grotto. Agent Harper nods along with you. \"I remember seeing something like that in some of the notes I found while you were off investigating the reef. It depicts some kind of ancient diety—something those vile creatures worship.\" Her voice lowers to little more than a whisper. \"Something I suspect is no myth.\" You ask where the idol is now, and she shakes her head. \"I suspect it was taken from you when you were thrown into that pit,\" she replies."
+      "text": "You describe the idol found in the undersea grotto. Agent Harper nods along with you. \"I remember seeing something like that in some of the notes I found while you were off investigating the reef. It depicts some kind of ancient deity—something those vile creatures worship.\" Her voice lowers to little more than a whisper. \"Something I suspect is no myth.\" You ask where the idol is now, and she shakes her head. \"I suspect it was taken from you when you were thrown into that pit,\" she replies."
     },
     {
       "id": "purple_key_xp",
@@ -65799,7 +65799,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_a_strange_idol",
-          "text": "discovery of a strange idol."
+          "text": "discovery of a strange idol"
         }
       ]
     },
@@ -65820,7 +65820,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_an_unholy_mantle",
-          "text": "discovery of an unholy mantle."
+          "text": "discovery of an unholy mantle"
         }
       ]
     },
@@ -65840,7 +65840,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_a_mystical_relic",
-          "text": "discovery of a mystical relic."
+          "text": "discovery of a mystical relic"
         }
       ]
     },
@@ -66630,7 +66630,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_deal_with_joe_sargent",
-          "text": "a deal with Joe Sargent."
+          "text": "a deal with Joe Sargent"
         }
       ]
     },
@@ -66648,7 +66648,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_followed_lead",
-          "text": "a followed lead."
+          "text": "a followed lead"
         },
         {
           "type": "add_card",
@@ -66671,7 +66671,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "an_intervention",
-          "text": "an intervention."
+          "text": "an intervention"
         },
         {
           "type": "add_chaos_token",
@@ -66694,7 +66694,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_jailbreak",
-          "text": "a jailbreak."
+          "text": "a jailbreak"
         }
       ]
     },
