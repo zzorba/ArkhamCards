@@ -508,6 +508,7 @@ export interface CampaignLogCardsCondition {
 export interface Narration {
   id: string;
   name: string;
+  lang?: string[];
 }
 export interface EffectsStep {
   id: string;
