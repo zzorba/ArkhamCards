@@ -182,6 +182,9 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
             <Text style={[typography.text, space.paddingM]}>
               { t`This should only take a few seconds and no network is required.` }
             </Text>
+            <Text style={[typography.text, space.paddingM]}>
+              { t`If you run into any problems with this migration, please contact arkhamcards@gmail.com.` }
+            </Text>
             <BasicButton onPress={doMigrate} title={t`Migrate now`} />
           </>
         ) }
