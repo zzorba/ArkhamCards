@@ -55,6 +55,7 @@ export interface FilterState {
   traits: string[];
   actions: string[];
   skillModifiers: SkillModifierFilters;
+  skillModifiersEnabled: boolean;
   packs: string[];
   cycleNames: string[];
   slots: string[];
@@ -143,6 +144,7 @@ export const defaultFilterState: FilterState = {
     combat: false,
     agility: false,
   },
+  skillModifiersEnabled: false,
   packs: [],
   cycleNames: [],
   slots: [],
@@ -345,16 +347,44 @@ export default class FilterBuilder {
     return result;
   }
 
+  skillModifierFilters(skillModifiers: SkillModifierFilters): Brackets[] {
+    const result: Brackets[] = [];
+
+    if (skillModifiers.agility) {
+      result.push(where(`c.real_text LIKE '%+_ [agility]%'`));
+    }
+    if (skillModifiers.combat) {
+      result.push(where(`c.real_text LIKE '%+_ [combat]%'`));
+    }
+    if (skillModifiers.willpower) {
+      result.push(where(`c.real_text LIKE '%+_ [willpower]%'`));
+    }
+    if (skillModifiers.intellect) {
+      result.push(where(`c.real_text LIKE '%+_ [intellect]%'`));
+    }
+    if (skillModifiers.agility || skillModifiers.combat || skillModifiers.willpower || skillModifiers.intellect) {
+      result.push(where(`c.real_text LIKE '%+_ skill value%'`));
+    }
+    const combinedResult = combineQueriesOpt(result, 'or');
+    if (combinedResult) {
+      return [combinedResult];
+    }
+    return [];
+  }
+
   assetFilters(filters: FilterState): Brackets[] {
     const {
       assetHealthEnabled,
       assetHealth,
       assetSanityEnabled,
       assetSanity,
+      skillModifiersEnabled,
+      skillModifiers,
     } = filters;
     const result: Brackets[] = [
       ...(assetHealthEnabled ? this.rangeFilter('health', assetHealth, true) : []),
       ...(assetSanityEnabled ? this.rangeFilter('sanity', assetSanity, true) : []),
+      ...(skillModifiersEnabled ? this.skillModifierFilters(skillModifiers) : []),
     ];
     if (!result.length) {
       return [];

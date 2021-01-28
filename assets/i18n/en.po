@@ -3782,6 +3782,35 @@ msgstr ""
 msgid "Migrate now"
 msgstr ""
 
+msgid "Export Diagnostic Data"
+msgstr ""
+
+msgid "Agility"
+msgstr ""
+
+msgid "Combat"
+msgstr ""
+
+msgid "Intellect"
+msgstr ""
+
+msgid "Willpower"
+msgstr ""
+
+msgid "Boost"
+msgstr ""
+
+msgid "Skill Boosts"
+msgstr ""
+
+msgid "Skill Boosts: All"
+msgstr ""
+
+msgid ""
+"If you run into any problems with this migration, please contact "
+"arkhamcards@gmail.com."
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."

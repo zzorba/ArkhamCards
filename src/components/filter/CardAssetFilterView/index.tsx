@@ -3,12 +3,13 @@ import { ScrollView } from 'react-native';
 import { filter, map } from 'lodash';
 import { t } from 'ttag';
 
-import SliderChooser from './SliderChooser';
+import SliderChooser from '../SliderChooser';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
+import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
 import { NavigationProps } from '@components/nav/types';
-import FilterChooserButton from './FilterChooserButton';
+import FilterChooserButton from '../FilterChooserButton';
+import SkillModifierChooser from './SkillModifierChooser';
 
 
 function splitSlot(value: string): string[] {
@@ -41,6 +42,8 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
     clearTraits: [
       'slots',
       'uses',
+      'skillModifiers',
+      'skillModifiersEnabled',
       'assetHealthEnabled',
       'assetHealth',
       'assetSanityEnabled',
@@ -54,6 +57,8 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
     assetHealthEnabled,
     assetSanity,
     assetSanityEnabled,
+    skillModifiers,
+    skillModifiersEnabled,
   } = filters;
   const { hasSlot, hasUses } = cardFilterData;
 
@@ -87,6 +92,12 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
           capitalize
         />
       ) }
+      <SkillModifierChooser
+        enabled={skillModifiersEnabled}
+        onFilterChange={onFilterChange}
+        onToggleChange={onToggleChange}
+        skillModifiers={skillModifiers}
+      />
       <SliderChooser
         label={t`Health`}
         width={width}

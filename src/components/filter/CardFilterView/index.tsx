@@ -23,6 +23,7 @@ import { NavigationProps } from '@components/nav/types';
 import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
 import FixedSetChooserButton from '../FixedSetChooserButton';
 import { slotsTranslations } from '../CardAssetFilterView';
+import SkillModifierChooser from '../CardAssetFilterView/SkillModifierChooser';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {
@@ -34,7 +35,7 @@ function listText(name: string, values: string[], translations?: { [key: string]
   if (translations) {
     return `${name}(${map(values, item => translations[item]).join(', ')})`;
   }
-  return `${name}(${values.join(', ')}`;
+  return `${name}(${values.join(', ')})`;
 }
 
 function splitTraits(value: string): string[] {
@@ -130,6 +131,8 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     assetHealthEnabled,
     assetHealth,
     assetSanity,
+    skillModifiers,
+    skillModifiersEnabled,
   } = filters;
 
   const selectedPacksText = useMemo(() => {
@@ -276,12 +279,28 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     if (slots.length) {
       parts.push(listText(t`Slots`, slots, slotsTranslations()));
     }
+    if (skillModifiersEnabled) {
+      const modifiers: string[] = [];
+      if (skillModifiers.agility) {
+        modifiers.push(t`Agility`);
+      }
+      if (skillModifiers.combat) {
+        modifiers.push(t`Combat`);
+      }
+      if (skillModifiers.intellect) {
+        modifiers.push(t`Intellect`);
+      }
+      if (skillModifiers.willpower) {
+        modifiers.push(t`Willpower`);
+      }
+      parts.push(listText(t`Boost`, modifiers));
+    }
     if (parts.length === 0) {
       return t`Assets: All`;
     }
     const searchParts = parts.join(', ');
     return t`Assets: ${searchParts}`;
-  }, [assetHealthEnabled, assetHealth, assetSanityEnabled, assetSanity, uses, slots]);
+  }, [assetHealthEnabled, assetHealth, assetSanityEnabled, assetSanity, uses, slots, skillModifiersEnabled, skillModifiers]);
   const locationFilterText = useMemo(() => {
     const parts = [];
     if (cluesEnabled) {
