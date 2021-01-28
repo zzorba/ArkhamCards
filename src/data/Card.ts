@@ -735,6 +735,7 @@ export default class Card {
       t`Asset: Permanent`,
       t`Asset: Tarot`,
       t`Asset: Ally. Arcane`,
+      t`Asset: Body. Arcane`,
       t`Asset: Hand. Arcane`,
       t`Asset: Body. Hand x2`,
       t`Asset: Other`,
@@ -789,6 +790,8 @@ export default class Card {
                 return t`Asset: Body`;
               case 'Tarot':
                 return t`Asset: Tarot`;
+              case 'Body. Arcane':
+                return t`Asset: Body. Arcane`;
               case 'Body. Hand x2':
                 return t`Asset: Body. Hand x2`;
               case 'Hand. Arcane':

@@ -21,6 +21,12 @@ import CampaignGuide from '@data/scenario/CampaignGuide';
 import StyleContext from '@styles/StyleContext';
 import { CampaignId } from '@actions/types';
 
+const CORE_SET_ICONS = new Set([
+  'torch', 'arkham', 'cultists', 'tentacles', 'rats', 'ghouls', 'striking_fear',
+  'ancient_evils', 'chilling_cold', 'pentagram', 'nightgaunts', 'locked_doors',
+  'agents_of_hastur', 'agents_of_yog', 'agents_of_shub','agents_of_cthulhu',
+]);
+
 interface Props {
   componentId: string;
   campaignId: CampaignId;
@@ -83,7 +89,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId: { c
                 <EncounterIcon
                   encounter_code={set.code}
                   size={48}
-                  color={colors.darkText}
+                  color={CORE_SET_ICONS.has(set.code) ? colors.skill.willpower.icon : colors.darkText}
                 />
               </View>
             )) }

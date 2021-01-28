@@ -3908,6 +3908,9 @@ msgid ""
 "arkhamcards@gmail.com."
 msgstr ""
 
+msgid "Asset: Body. Arcane"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
