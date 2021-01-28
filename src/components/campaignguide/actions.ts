@@ -23,14 +23,14 @@ import {
   guideInputToId,
   DeckId,
   Campaign,
-  getDeckId,
-  UPLOAD_DECK,
 } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import database from '@react-native-firebase/database';
-import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector, makeDeckSelector } from '@reducers';
+import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
+import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
 
-export function refreshCampaigns(userId: string): ThunkAction<void, AppState, null, Action> {
+export function refreshCampaigns(userId: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return async() => {
     const campaignIds: string[] = keys((await database().ref('/user_campaigns').child(userId).child('campaigns').once('value')).val());
     Promise.all(map(campaignIds, campaignId => {
@@ -39,39 +39,12 @@ export function refreshCampaigns(userId: string): ThunkAction<void, AppState, nu
   };
 }
 
-function uploadCampaignDeckHelper(campaignId: string, serverId: string, deckId: DeckId): ThunkAction<void, AppState, null, Action> {
-  return async(dispatch, getState) => {
-    const state = getState();
-    const deckSelector = makeDeckSelector();
-    const uploads: Promise<void>[] = [];
-    const ref = database().ref('/campaigns').child(serverId).child('decks');
-
-    let deck = deckSelector(state, deckId);
-    while (deck) {
-      const deckId = getDeckId(deck);
-      uploads.push(ref.child(deckId.uuid).set(deck));
-      dispatch({
-        type: UPLOAD_DECK,
-        deckId,
-        campaignId: {
-          campaignId,
-          serverId,
-        },
-      });
-      if (!deck.nextDeckId) {
-        break;
-      }
-      deck = deckSelector(state, deck.nextDeckId);
-    }
-    await Promise.all(uploads);
-  };
-}
-
 function uploadCampaignHelper(
   campaign: Campaign,
   serverId: string,
-  guided: boolean
-): ThunkAction<void, AppState, null, UpdateCampaignAction> {
+  guided: boolean,
+  user: FirebaseAuthTypes.User,
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch, getState) => {
     const ref = database().ref('/campaigns').child(serverId);
     await ref.child('campaign').set(campaign);
@@ -92,7 +65,7 @@ function uploadCampaignHelper(
     dispatch(updateCampaign({ campaignId: campaign.uuid, serverId }, { serverId }));
 
     forEach(campaign.deckIds || [], deckId => {
-      dispatch(uploadCampaignDeckHelper(campaign.uuid, serverId, deckId));
+      dispatch(uploadCampaignDeckHelper(campaign.uuid, serverId, deckId, user));
     });
   };
 }
@@ -101,11 +74,12 @@ export function uploadCampaign(
   campaignId: string,
   serverId: string,
   guided: boolean,
+  user: FirebaseAuthTypes.User,
   linkServerIds?: {
     serverIdA: string;
     serverIdB: string;
-  }
-): ThunkAction<void, AppState, null, UpdateCampaignAction> {
+  },
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch, getState) => {
     const state = getState();
     const campaign = makeCampaignSelector()(state, campaignId);
@@ -113,14 +87,14 @@ export function uploadCampaign(
       if (linkServerIds && campaign?.linkUuid) {
         const campaignA = makeCampaignSelector()(state, campaign.linkUuid.campaignIdA);
         if (campaignA) {
-          dispatch(uploadCampaignHelper(campaignA, linkServerIds.serverIdA, guided));
+          dispatch(uploadCampaignHelper(campaignA, linkServerIds.serverIdA, guided, user));
         }
         const campaignB = makeCampaignSelector()(state, campaign.linkUuid.campaignIdB);
         if (campaignB) {
-          dispatch(uploadCampaignHelper(campaignB, linkServerIds.serverIdB, guided));
+          dispatch(uploadCampaignHelper(campaignB, linkServerIds.serverIdB, guided, user));
         }
       }
-      dispatch(uploadCampaignHelper(campaign, serverId, guided));
+      dispatch(uploadCampaignHelper(campaign, serverId, guided, user));
     }
   };
 }

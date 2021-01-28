@@ -31,7 +31,7 @@ export default class App {
   currentLang: string;
   currentThemeOverride?: 'light' | 'dark';
 
-  constructor(store: Store<AppState, Action>) {
+  constructor(store: Store<AppState, Action<string>>) {
     this.started = false;
     this.currentLang = 'en';
     this.currentThemeOverride = undefined;
@@ -78,7 +78,7 @@ export default class App {
     return 0;
   }
 
-  async initialAppStart(store: Store<AppState, Action>): Promise<boolean> {
+  async initialAppStart(store: Store<AppState, Action<string>>): Promise<boolean> {
     try {
       const previousCrash = await Crashes.hasCrashedInLastSession();
       if (previousCrash && !__DEV__) {
@@ -98,7 +98,7 @@ export default class App {
     return false;
   }
 
-  onStoreUpdate(store: Store<AppState, Action>, appStart?: boolean) {
+  onStoreUpdate(store: Store<AppState, Action<string>>, appStart?: boolean) {
     if (this.started || appStart) {
       const state = store.getState();
       const lang = getLangPreference(state);
@@ -200,7 +200,7 @@ export default class App {
     }
   }
 
-  startSafeMode(store: Store<AppState, Action>) {
+  startSafeMode(store: Store<AppState, Action<string>>) {
     const state = store.getState();
     const lang = getLangPreference(state);
     changeLocale(lang || 'en');

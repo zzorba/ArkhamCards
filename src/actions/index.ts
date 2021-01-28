@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 import { values } from 'lodash';
 
 import {
@@ -25,8 +25,8 @@ import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 import * as dissonantVoices from '@lib/dissonantVoices';
 import { decks } from '@lib/authApi';
 
-export function login(): ThunkAction<void, AppState, unknown, Action> {
-  return (dispatch: ThunkDispatch<AppState, unknown, Action>): void => {
+export function login(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch): void => {
     dispatch({
       type: ARKHAMDB_LOGIN_STARTED,
     });
@@ -46,7 +46,7 @@ export function login(): ThunkAction<void, AppState, unknown, Action> {
   };
 }
 
-export function logout(): ThunkAction<void, AppState, null, Action<string>> {
+export function logout(): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
     dispatch({
       type: ARKHAMDB_LOGIN_STARTED,
@@ -59,7 +59,7 @@ export function logout(): ThunkAction<void, AppState, null, Action<string>> {
   };
 }
 
-export function verifyLogin(): ThunkAction<void, AppState, null, Action<string>> {
+export function verifyLogin(): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
     getAccessToken().then(accessToken => {
       if (accessToken) {
@@ -75,8 +75,8 @@ export function verifyLogin(): ThunkAction<void, AppState, null, Action<string>>
   };
 }
 
-export function dissonantVoicesLogin(): ThunkAction<void, AppState, unknown, Action> {
-  return (dispatch: ThunkDispatch<AppState, unknown, Action>): void => {
+export function dissonantVoicesLogin(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch): void => {
     dispatch({
       type: DISSONANT_VOICES_LOGIN_STARTED,
     });
@@ -95,7 +95,7 @@ export function dissonantVoicesLogin(): ThunkAction<void, AppState, unknown, Act
   };
 }
 
-export function dissonantVoicesLogout(): ThunkAction<void, AppState, null, Action<string>> {
+export function dissonantVoicesLogout(): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
     dispatch({
       type: DISSONANT_VOICES_LOGIN_STARTED,
@@ -108,7 +108,7 @@ export function dissonantVoicesLogout(): ThunkAction<void, AppState, null, Actio
   };
 }
 
-export function dissonantVoicesVerifyLogin(): ThunkAction<void, AppState, null, Action<string>> {
+export function dissonantVoicesVerifyLogin(): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
     dissonantVoices.getAccessToken().then(accessToken => {
       if (accessToken) {
@@ -136,8 +136,8 @@ function getDecksLastModified(state: AppState): string | undefined {
     undefined;
 }
 
-export function refreshMyDecks(): ThunkAction<void, AppState, unknown, Action> {
-  return (dispatch: ThunkDispatch<AppState, unknown, Action>, getState: () => AppState) => {
+export function refreshMyDecks(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch, getState) => {
     dispatch({
       type: MY_DECKS_START_REFRESH,
     });
@@ -166,8 +166,8 @@ export function refreshMyDecks(): ThunkAction<void, AppState, unknown, Action> {
   };
 }
 
-export function setInCollection(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
-  return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
+export function setInCollection(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
     dispatch({
       type: SET_IN_COLLECTION,
       code,
@@ -176,8 +176,8 @@ export function setInCollection(code: string, value: boolean): ThunkAction<void,
   };
 }
 
-export function setCycleInCollection(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
-  return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
+export function setCycleInCollection(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
     dispatch({
       type: SET_IN_COLLECTION,
       cycle_code,
@@ -186,8 +186,8 @@ export function setCycleInCollection(cycle_code: string, value: boolean): ThunkA
   };
 }
 
-export function setPackSpoiler(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
-  return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
+export function setPackSpoiler(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
     dispatch({
       type: SET_PACK_SPOILER,
       code,
@@ -196,8 +196,8 @@ export function setPackSpoiler(code: string, value: boolean): ThunkAction<void, 
   };
 }
 
-export function setCyclePackSpoiler(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
-  return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
+export function setCyclePackSpoiler(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
     dispatch({
       type: SET_PACK_SPOILER,
       cycle_code,

@@ -20,6 +20,7 @@ import DatabaseContext from '@data/DatabaseContext';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
 import TabooSet from '@data/TabooSet';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -556,6 +557,7 @@ export function useChaosBagResults(campaignId: string): ChaosBagResults {
 
 export function useDeck(id: DeckId | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean } = {}): [Deck | undefined, Deck | undefined] {
   const dispatch = useDispatch();
+  const { user } = useContext(ArkhamCardsAuthContext);
   const effectiveDeckIdSelector = useCallback((state: AppState) => id !== undefined ? getEffectiveDeckId(state, id) : undefined, [id]);
   const effectiveDeckId = useSelector(effectiveDeckIdSelector);
   const deckSelector = useMemo(makeDeckSelector, []);
@@ -564,13 +566,13 @@ export function useDeck(id: DeckId | undefined, { fetchIfMissing }: { fetchIfMis
   const thePreviousDeck = useSelector((state: AppState) => (theDeck && theDeck.previousDeckId) ? previousDeckSelector(state, theDeck.previousDeckId) : undefined);
   useEffect(() => {
     if (!theDeck && fetchIfMissing && id !== undefined && !id.local) {
-      dispatch(fetchPrivateDeck(id));
+      dispatch(fetchPrivateDeck(user, id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (!thePreviousDeck && theDeck?.previousDeckId && fetchIfMissing && !theDeck.local && !theDeck.previousDeckId.local) {
-      dispatch(fetchPrivateDeck(theDeck.previousDeckId));
+      dispatch(fetchPrivateDeck(user, theDeck.previousDeckId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theDeck]);

@@ -22,6 +22,7 @@ import StyleContext from '@styles/StyleContext';
 import { useDeck, useEffectUpdate, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface Props {
   componentId: string;
@@ -30,10 +31,11 @@ interface Props {
   signedIn?: boolean;
 }
 
-type DeckDispatch = ThunkDispatch<AppState, any, Action>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 export default function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const dispatch: DeckDispatch = useDispatch();
   const [deck] = useDeck(deckId, {});
@@ -94,7 +96,7 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
     if (investigator && (!saving || isRetry)) {
       setSaving(true);
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
-      dispatch(saveClonedDeck(local, selectedDeck, deckName || t`New Deck`)).then(
+      dispatch(saveClonedDeck(user, local, selectedDeck, deckName || t`New Deck`)).then(
         showNewDeck,
         (err) => {
           setSaving(false);
@@ -102,7 +104,7 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
         }
       );
     }
-  }, [signedIn, isConnected, networkType,
+  }, [signedIn, isConnected, networkType, user,
     deckName, offlineDeck, selectedDeck, saving, investigator,
     dispatch, setSaving, setError, showNewDeck]);
   const onOkayPress = useMemo(() => throttle(() => saveCopy(false), 200), [saveCopy]);

@@ -29,7 +29,7 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { TINY_PHONE } from '@styles/sizes';
-
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface ShowDeckButtonProps {
   componentId: string;
@@ -75,7 +75,7 @@ interface Props {
   setUnsavedEdits: (investigator: string, edits: boolean) => void;
   editable: boolean;
 }
-type DeckDispatch = ThunkDispatch<AppState, any, Action<unknown>>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 function computeChoiceId(stepId: string, investigator: Card) {
   return `${stepId}#${investigator.code}`;
@@ -83,6 +83,7 @@ function computeChoiceId(stepId: string, investigator: Card) {
 
 function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investigator, deck, campaignLog, setUnsavedEdits, editable }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>();
   const earnedXp = useMemo(() => campaignLog.earnedXp(investigator.code), [campaignLog, investigator]);
@@ -463,12 +464,12 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
 
 
   const performSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
-    return deckDispatch(saveDeckChanges(deck, changes) as any);
-  }, [deckDispatch]);
+    return deckDispatch(saveDeckChanges(user, deck, changes) as any);
+  }, [deckDispatch, user]);
 
   const performSaveDeckUpgrade = useCallback((deck: Deck, xp: number, exileCounts: Slots): Promise<Deck> => {
-    return deckDispatch(saveDeckUpgrade(deck, xp, exileCounts) as any);
-  }, [deckDispatch]);
+    return deckDispatch(saveDeckUpgrade(user, deck, xp, exileCounts) as any);
+  }, [deckDispatch, user]);
 
   const detailsSection = useMemo(() => {
     if (!deck) {

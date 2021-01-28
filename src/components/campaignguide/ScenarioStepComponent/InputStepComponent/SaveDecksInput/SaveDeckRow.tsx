@@ -23,6 +23,7 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { TINY_PHONE } from '@styles/sizes';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface ShowDeckButtonProps {
   componentId: string;
@@ -69,7 +70,7 @@ interface Props {
   campaignLog: GuidedCampaignLog;
   editable: boolean;
 }
-type DeckDispatch = ThunkDispatch<AppState, any, Action<unknown>>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 function computeChoiceId(stepId: string, investigator: Card) {
   return `${stepId}#${investigator.code}`;
@@ -77,6 +78,7 @@ function computeChoiceId(stepId: string, investigator: Card) {
 
 function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigator, deck, campaignLog, editable }: Props) {
   const { colors } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
@@ -99,9 +101,9 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
         }
       });
       const changes: SaveDeckChanges = { slots };
-      deckDispatch(saveDeckChanges(deck, changes) as any).then(saveCampaignLog);
+      deckDispatch(saveDeckChanges(user, deck, changes) as any).then(saveCampaignLog);
     }
-  }, [deck, deckDispatch, storyAssetDeltas, saveCampaignLog]);
+  }, [deck, user, deckDispatch, storyAssetDeltas, saveCampaignLog]);
 
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);

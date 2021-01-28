@@ -18,6 +18,7 @@ import { getAllDecks, getDeck } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface Props {
   deckIds: DeckId[];
@@ -44,6 +45,7 @@ export default function DeckListComponent({
 }: Props) {
   const { typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const [searchTerm, setSearchTerm] = useState('');
   const decks = useSelector(getAllDecks);
   const handleDeckClick = useCallback((deck: Deck, investigator?: Card) => {
@@ -55,7 +57,7 @@ export default function DeckListComponent({
     // Only do this once, even though it might want to be done a second time.
     forEach(deckIds, deckId => {
       if (!getDeck(decks, deckId) && !deckId.local) {
-        dispatch(fetchPublicDeck(deckId, false));
+        dispatch(fetchPublicDeck(user, deckId, false));
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -90,7 +90,7 @@ function migrateV1(
     chaosBags,
   };
 }
-export function migrateRedux(): ThunkAction<void, AppState, null, ReduxMigrationAction> {
+export function migrateRedux(): ThunkAction<void, AppState, unknown, ReduxMigrationAction> {
   return (dispatch, getState) => {
     const state = getState();
     const version = state.settings.version || 0;

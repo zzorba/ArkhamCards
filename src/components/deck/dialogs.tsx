@@ -20,6 +20,7 @@ import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
 import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
 import DeckBubbleHeader from './section/DeckBubbleHeader';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface DialogOptions {
   title: string;
@@ -533,7 +534,7 @@ export function useBasicDialog(title: string): BasicDialogResult {
 }
 
 
-type DeckDispatch = ThunkDispatch<AppState, any, Action>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 export function useUploadLocalDeckDialog(
   deck?: Deck,
   parsedDeck?: ParsedDeck,
@@ -541,6 +542,7 @@ export function useUploadLocalDeckDialog(
   uploadLocalDeckDialog: React.ReactNode;
   uploadLocalDeck: () => void;
 } {
+  const { user } = useContext(ArkhamCardsAuthContext);
   const { saving, setSaving, savingDialog } = useBasicDialog(t`Uploading deck`);
   const deckDispatch: DeckDispatch = useDispatch();
   const doUploadLocalDeck = useMemo(() => throttle((isRetry?: boolean) => {
@@ -549,13 +551,13 @@ export function useUploadLocalDeckDialog(
     }
     if (!saving || isRetry) {
       setSaving(true);
-      deckDispatch(uploadLocalDeck(deck)).then(() => {
+      deckDispatch(uploadLocalDeck(user, deck)).then(() => {
         setSaving(false);
       }, () => {
         setSaving(false);
       });
     }
-  }, 200), [deckDispatch, parsedDeck, saving, deck, setSaving]);
+  }, 200), [deckDispatch, parsedDeck, saving, deck, user, setSaving]);
   return {
     uploadLocalDeckDialog: savingDialog,
     uploadLocalDeck: doUploadLocalDeck,
@@ -651,6 +653,7 @@ export function useSaveDialog(
   } = parsedDeckResults;
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
+  const { user } = useContext(ArkhamCardsAuthContext);
   const {
     saving,
     setSaving,
@@ -706,6 +709,7 @@ export function useSaveDialog(
           meta: deckEditsRef.current.meta,
         };
         await deckDispatch(saveDeckChanges(
+          user,
           deck,
           deckChanges,
         ));
@@ -729,7 +733,8 @@ export function useSaveDialog(
     } catch(e) {
       handleSaveError(e);
     }
-  }, [deck, saving, addedBasicWeaknesses, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, dispatch, deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet]);
+  }, [deck, saving, addedBasicWeaknesses, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, user,
+    dispatch, deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
   const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);

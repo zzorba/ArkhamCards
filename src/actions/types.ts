@@ -603,6 +603,12 @@ export interface UpdateDeckAction {
   isWrite: boolean;
 }
 
+export const CAMPAIGN_SYNC_REQUIRED = 'CAMPAIGN_SYNC_REQUIRED';
+export interface CampaignSyncRequiredAction {
+  type: typeof CAMPAIGN_SYNC_REQUIRED;
+  campaignId: CampaignId;
+}
+
 export const UPLOAD_DECK = 'UPLOAD_DECK';
 export interface UploadDeckAction {
   type: typeof UPLOAD_DECK;

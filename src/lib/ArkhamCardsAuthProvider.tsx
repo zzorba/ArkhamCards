@@ -21,7 +21,7 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
   const [state, setState] = useState<State>({ user: currentUser, loading: currentUserLoading });
   useEffect(() => {
     if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
-      const authUserChanged = (user?: FirebaseAuthTypes.User) => {
+      const authUserChanged = (user: FirebaseAuthTypes.User | undefined) => {
         setState({
           user,
           loading: false,

@@ -7,7 +7,7 @@ import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import uuid from 'react-native-uuid';
 import { useDispatch } from 'react-redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
 import { t } from 'ttag';
 
@@ -22,8 +22,8 @@ import { AppState } from '@reducers';
 import { removeLocalCampaign } from '@components/campaign/actions';
 
 
-function login(user: string): ThunkAction<void, AppState, unknown, Action> {
-  return (dispatch: ThunkDispatch<AppState, unknown, Action>): void => {
+function login(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
     dispatch({
       type: ARKHAM_CARDS_LOGIN,
       user,
@@ -31,7 +31,7 @@ function login(user: string): ThunkAction<void, AppState, unknown, Action> {
   };
 }
 
-function logout(): ThunkAction<void, AppState, null, Action> {
+function logout(): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch, getState) => {
     const state = getState();
     forEach(state.campaigns_2.all || {}, campaign => {

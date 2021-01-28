@@ -33,6 +33,7 @@ import {
   DeckId,
   getDeckId,
   LocalDeck,
+  CampaignId,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { ChaosBag } from '@app_constants';
@@ -454,6 +455,12 @@ export function getDeck(all: DecksMap, id: DeckId): Deck | undefined {
     return all[id.uuid] || undefined;
   }
   return undefined;
+}
+
+const EMPTY_CAMPAIGN_IDS: CampaignId[] = [];
+export function getDeckUploadedCampaigns(state: AppState, id: DeckId): CampaignId[] {
+  const uploaded = state.decks.uploaded || {};
+  return uploaded[id.uuid] || EMPTY_CAMPAIGN_IDS;
 }
 
 export const makeDeckSelector = () => {

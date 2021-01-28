@@ -66,7 +66,7 @@ export default function CampaignGuideFab({
     );
   }, [campaignName, actuallyDeleteCampaign, setFabOpen, showAlert]);
   const confirmUploadCampaign = useCallback(async() => {
-    if (campaign) {
+    if (campaign && user) {
       setFabOpen(false);
       try {
         const serverId = await createServerCampaign();
@@ -74,12 +74,12 @@ export default function CampaignGuideFab({
           serverIdA: await createServerCampaign(),
           serverIdB: await createServerCampaign(),
         };
-        dispatch(uploadCampaign(campaignId, serverId, guided, linkServerIds));
+        dispatch(uploadCampaign(campaignId, serverId, guided, user, linkServerIds));
       } catch (e) {
         // TODO(error handling)
       }
     }
-  }, [dispatch, campaignId, createServerCampaign, setFabOpen, guided, campaign]);
+  }, [dispatch, campaignId, createServerCampaign, setFabOpen, guided, user, campaign]);
 
   const fabIcon = useCallback(() => {
     if (removeMode) {

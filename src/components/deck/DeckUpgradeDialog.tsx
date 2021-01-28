@@ -26,6 +26,7 @@ import { useCampaign, useDeck, useInvestigatorCards, useNavigationButtonPressed,
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import { saveDeckChanges, saveDeckUpgrade, SaveDeckChanges } from './actions';
 import { AppState } from '@reducers';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface UpgradeDeckProps {
   id: DeckId;
@@ -33,9 +34,10 @@ export interface UpgradeDeckProps {
   showNewDeck: boolean;
 }
 
-type DeckDispatch = ThunkDispatch<AppState, any, Action>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const [deck] = useDeck(id, {});
   const campaign = useCampaign(campaignId);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>(null);
@@ -105,12 +107,12 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   }, [updateStoryCounts]);
 
   const performSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
-    return deckDispatch(saveDeckChanges(deck, changes));
-  }, [deckDispatch]);
+    return deckDispatch(saveDeckChanges(user, deck, changes));
+  }, [deckDispatch, user]);
 
   const performSaveDeckUpgrade = useCallback((deck: Deck, xp: number, exileCounts: Slots): Promise<Deck> => {
-    return deckDispatch(saveDeckUpgrade(deck, xp, exileCounts));
-  }, [deckDispatch]);
+    return deckDispatch(saveDeckUpgrade(user, deck, xp, exileCounts));
+  }, [deckDispatch, user]);
 
   const campaignSection = useMemo(() => {
     if (!deck || !campaign || !investigator) {

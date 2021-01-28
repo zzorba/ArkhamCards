@@ -36,6 +36,7 @@ import DeckCheckboxButton from '../controls/DeckCheckboxButton';
 import DeckButton from '../controls/DeckButton';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useTextDialog } from '../dialogs';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -46,7 +47,7 @@ type Props = NavigationProps &
   NewDeckOptionsProps &
   LoginStateProps;
 
-type DeckDispatch = ThunkDispatch<AppState, any, Action>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 function NewDeckOptionsDialog({
   investigatorId,
@@ -56,6 +57,7 @@ function NewDeckOptionsDialog({
   login,
 }: Props) {
   const defaultTabooSetId = useTabooSetId();
+  const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
@@ -150,9 +152,9 @@ function NewDeckOptionsDialog({
     }
     return metaState || {};
   }, [starterDeck, metaState, investigator]);
-  const slots = useMemo(() => {
+  const slots: Slots = useMemo(() => {
     if (starterDeck && investigator && starterDecks.cards[investigator.code]) {
-      return starterDecks.cards[investigator.code];
+      return starterDecks.cards[investigator.code] || {};
     }
     const slots: Slots = {
       // Random basic weakness.
@@ -192,7 +194,6 @@ function NewDeckOptionsDialog({
     return slots;
   }, [cards, optionSelected, requiredCardOptions, investigator, starterDeck]);
   const dispatch: DeckDispatch = useDispatch();
-
   const showNewDeck = useCallback((deck: Deck) => {
     setSaving(false);
     // Change the deck options for required cards, if present.
@@ -204,7 +205,7 @@ function NewDeckOptionsDialog({
     if (investigator && (!saving || isRetry)) {
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
       setSaving(true);
-      dispatch(saveNewDeck({
+      dispatch(saveNewDeck(user, {
         local,
         meta,
         deckName: deckName || t`New Deck`,
@@ -219,7 +220,7 @@ function NewDeckOptionsDialog({
         }
       );
     }
-  }, [signedIn, dispatch, showNewDeck,
+  }, [signedIn, dispatch, showNewDeck, user,
     slots, meta, networkType, isConnected, offlineDeck, saving, starterDeck, tabooSetId, deckNameChange, investigator, defaultDeckName]);
 
   const onOkayPress = useMemo(() => throttle(() => createDeck(), 200), [createDeck]);

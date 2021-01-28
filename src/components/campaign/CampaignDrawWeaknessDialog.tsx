@@ -25,6 +25,7 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { ThunkDispatch } from 'redux-thunk';
 import { useCampaign, useCampaignLatestDeckIds, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface CampaignDrawWeaknessProps {
   campaignId: string;
@@ -35,7 +36,7 @@ export interface CampaignDrawWeaknessProps {
 
 type Props = NavigationProps & CampaignDrawWeaknessProps;
 
-type DeckDispatch = ThunkDispatch<AppState, any, Action>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 const EMPTY_WEAKNESS_SET = { packCodes: [], assignedCards: {} };
 
 function updateSlots(slots: Slots, pendingNextCard: string, replaceRandomBasicWeakness: boolean) {
@@ -57,7 +58,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
   const { saveWeakness, componentId } = props;
   const { borderStyle } = useContext(StyleContext);
   const dispatch: DeckDispatch = useDispatch();
-
+  const { user } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(props.campaignId);
   const serverId = campaign?.serverId;
   const campaignId = useMemo(() => {
@@ -201,7 +202,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       const problem = parsedDeck && parsedDeck.problem ? parsedDeck.problem.reason : '';
 
       setSaving(true);
-      dispatch(saveDeckChanges(deck, {
+      dispatch(saveDeckChanges(user, deck, {
         slots: newSlots,
         problem,
         spentXp: parsedDeck && parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
@@ -220,7 +221,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       });
     }
   }, [pendingNextCard, pendingAssignedCards, campaignId, weaknessSet, decks, cards, selectedDeckId, replaceRandomBasicWeakness, deckSlots,
-    unsavedAssignedCards, updateDeckSlots, saveWeakness, dispatch, setSaving, updatePendingAssignedCards, setPendingNextCard]);
+    unsavedAssignedCards, user, updateDeckSlots, saveWeakness, dispatch, setSaving, updatePendingAssignedCards, setPendingNextCard]);
 
   const investigatorChooser = useMemo(() => {
     const deck = selectedDeckId && getDeck(decks, selectedDeckId);

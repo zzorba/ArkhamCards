@@ -75,7 +75,7 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
   const dispatch = useDispatch();
 
   const toggleShowInterludes = useCallback(() => {
-    const campaignUpdate: Campaign = { showInterludes: !showInterludes } as any;
+    const campaignUpdate: Partial<Campaign> = { showInterludes: !showInterludes };
     dispatch(updateCampaign(getCampaignId(campaign), campaignUpdate));
   }, [campaign, showInterludes, dispatch]);
 

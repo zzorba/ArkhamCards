@@ -1,4 +1,4 @@
-import { forEach, keys, omit } from 'lodash';
+import { forEach, keys, omit, uniqBy } from 'lodash';
 import uuid from 'react-native-uuid';
 
 import {
@@ -114,10 +114,10 @@ export default function(
       ...state,
       uploaded: {
         ...(uploaded),
-        [action.deckId.uuid]: [
+        [action.deckId.uuid]: uniqBy([
           ...(uploaded[action.deckId.uuid] || []),
           action.campaignId,
-        ],
+        ], c => c.campaignId),
       },
     };
   }

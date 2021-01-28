@@ -54,7 +54,7 @@ export function fetchCards(
   db: Database,
   cardLang: string,
   choiceLang: string
-): ThunkAction<void, AppState, null, CardSetSchemaVersionAction | CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
+): ThunkAction<void, AppState, unknown, CardSetSchemaVersionAction | CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
   return async(dispatch, getState) => {
     VERBOSE && console.log('Fetch Cards called');
     if (!shouldFetchCards(getState())) {
@@ -115,7 +115,7 @@ export function fetchCards(
 type PackActions = PacksFetchStartAction | PacksFetchErrorAction | PacksCacheHitAction | PacksAvailableAction;
 export function fetchPacks(
   lang: string
-): ThunkAction<Promise<Pack[]>, AppState, null, PackActions> {
+): ThunkAction<Promise<Pack[]>, AppState, unknown, PackActions> {
   return async(dispatch: Dispatch<PackActions>, getState: () => AppState) => {
     try {
       VERBOSE && console.log('entered fetchPacks');
