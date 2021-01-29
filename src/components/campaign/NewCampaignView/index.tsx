@@ -51,6 +51,7 @@ import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckButton from '@components/deck/controls/DeckButton';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface CampaignChoice {
   selection: CampaignSelection;
@@ -78,6 +79,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const cards = usePlayerCards();
   const dispatch = useDispatch();
+  const { user } = useContext(ArkhamCardsAuthContext);
 
   const [name, setName] = useState('');
   const [{ selection, campaign, hasGuide }, setCampaignChoice] = useState<CampaignChoice>({
@@ -227,6 +229,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
     if (selection.type === 'campaign') {
       if (selection.code === TDE) {
         dispatch(newLinkedCampaign(
+          user,
           name || placeholderName,
           TDE,
           TDEA,
@@ -239,6 +242,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       } else {
         // Save to redux.
         dispatch(newCampaign(
+          user,
           name || placeholderName,
           selection.code,
           isGuided ? undefined : difficulty,
@@ -255,6 +259,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       }
     } else {
       dispatch(newStandalone(
+        user,
         name || placeholderName,
         selection.id,
         deckIds,
@@ -266,7 +271,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       ));
     }
     Navigation.pop(componentId);
-  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, name, selection,
+  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, name, selection, user,
     difficulty, deckIds, investigatorIds, weaknessPacks, weaknessAssignedCards, isGuided]);
 
   const savePressed = useMemo(() => throttle(onSave, 200), [onSave]);
@@ -416,7 +421,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const showDeckSelector = useCallback(() => {
     if (deckAdded) {
       const passProps: MyDecksSelectorProps = {
-        campaignId: 'new-deck',
+        campaignId: { campaignId: 'new-deck' },
         onDeckSelect: deckAdded,
         onInvestigatorSelect: guided ? investigatorAdded : undefined,
         selectedDeckIds: deckIds,

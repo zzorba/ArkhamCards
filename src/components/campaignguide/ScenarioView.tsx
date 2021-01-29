@@ -128,8 +128,8 @@ function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: 
   return queue;
 }
 
-function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId, standalone, footer }: Props) {
-  const { campaignState } = useContext(CampaignGuideContext);
+function ScenarioView({ componentId, showLinkedScenario, scenarioId, standalone, footer }: Props) {
+  const { campaignState, campaignId } = useContext(CampaignGuideContext);
   const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
   const { backgroundStyle, width } = useContext(StyleContext);
   useEffect(() => {
@@ -225,7 +225,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId,
         name: 'Guide.ScenarioFaq',
         passProps: {
           scenario: processedScenario.id.scenarioId,
-          campaignId,
+          campaignId: campaignId.campaignId,
         },
       },
     });

@@ -113,7 +113,7 @@ export default function DecksSection({
         name: 'Deck.Upgrade',
         passProps: {
           id: getDeckId(deck),
-          campaignId: campaign.uuid,
+          campaignId: getCampaignId(campaign),
           showNewDeck: false,
         },
         options: {

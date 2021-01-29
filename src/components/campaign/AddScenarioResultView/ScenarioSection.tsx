@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { concat, filter, forEach, head, map } from 'lodash';
 import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,6 +17,7 @@ import { useCycleScenarios } from '@components/core/hooks';
 import { usePickerDialog } from '@components/deck/dialogs';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import { QuerySort } from '@data/types';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface OwnProps {
   componentId: string;
@@ -33,6 +34,7 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
     query: SCENARIO_QUERY,
     sort: SCENARIO_SORT,
   });
+  const { user } = useContext(ArkhamCardsAuthContext);
   const getPack = useMemo(makePackSelector, []);
   const cyclePack = useSelector((state: AppState) => getPack(state, campaign.cycleCode));
   const getAllCyclePacks = useMemo(makeAllCyclePacksSelector, []);
@@ -76,8 +78,8 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
 
   const toggleShowInterludes = useCallback(() => {
     const campaignUpdate: Partial<Campaign> = { showInterludes: !showInterludes };
-    dispatch(updateCampaign(getCampaignId(campaign), campaignUpdate));
-  }, [campaign, showInterludes, dispatch]);
+    dispatch(updateCampaign(user, getCampaignId(campaign), campaignUpdate));
+  }, [campaign, showInterludes, user, dispatch]);
 
   useEffect(() => {
     scenarioChanged({

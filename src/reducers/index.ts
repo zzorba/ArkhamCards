@@ -457,12 +457,6 @@ export function getDeck(all: DecksMap, id: DeckId): Deck | undefined {
   return undefined;
 }
 
-const EMPTY_CAMPAIGN_IDS: CampaignId[] = [];
-export function getDeckUploadedCampaigns(state: AppState, id: DeckId): CampaignId[] {
-  const uploaded = state.decks.uploaded || {};
-  return uploaded[id.uuid] || EMPTY_CAMPAIGN_IDS;
-}
-
 export const makeDeckSelector = () => {
   return createSelector(
     (state: AppState) => state.decks.all,
@@ -705,3 +699,9 @@ export const makeCampaignChaosBagSelector = () =>
       return (campaign && campaign.chaosBag) || EMPTY_CHAOS_BAG;
     }
   );
+
+const EMPTY_CAMPAIGN_IDS: CampaignId[] = [];
+export function getDeckUploadedCampaigns(state: AppState, id: DeckId): CampaignId[] {
+  const uploaded = state.decks.uploaded || {};
+  return uploaded[id.uuid] || EMPTY_CAMPAIGN_IDS;
+}

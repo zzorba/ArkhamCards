@@ -11,7 +11,7 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, ScenarioResult } from '@actions/types';
+import { CampaignId, CampaignNotes, ScenarioResult } from '@actions/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { NavigationProps } from '@components/nav/types';
 import ScenarioSection from './ScenarioSection';
@@ -24,9 +24,10 @@ import { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignInvestigators, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface AddScenarioResultProps {
-  id: string;
+  id: CampaignId;
 }
 
 type Props = NavigationProps &
@@ -35,9 +36,10 @@ type Props = NavigationProps &
 
 function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
 
-  const campaign = useCampaign(id);
+  const campaign = useCampaign(id.campaignId);
   const investigators = useInvestigatorCards();
   const [scenario, setScenario] = useState<ScenarioResult | undefined>();
   const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();
@@ -49,7 +51,7 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
   const doSave = useCallback((showDeckUpgrade: boolean) => {
     if (scenario) {
       const scenarioResult: ScenarioResult = { ...scenario, xp };
-      dispatch(addScenarioResult(id, scenarioResult, campaignNotes));
+      dispatch(addScenarioResult(user, id, scenarioResult, campaignNotes));
       const passProps: UpgradeDecksProps = {
         id,
         scenarioResult,
@@ -77,7 +79,7 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
         Navigation.pop(componentId);
       }
     }
-  }, [componentId, id, dispatch, scenario, xp, campaignNotes]);
+  }, [componentId, id, dispatch, user, scenario, xp, campaignNotes]);
 
   const savePressed = useMemo(() => throttle((showDeckUpgrade: boolean) => doSave(showDeckUpgrade), 200), [doSave]);
   useNavigationButtonPressed(({ buttonId }) => {

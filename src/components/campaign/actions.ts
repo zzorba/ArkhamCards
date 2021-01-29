@@ -49,6 +49,8 @@ import {
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
+import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { removeCampaignDeckHelper, uploadCampaignDeckHelper } from '@lib/firebaseApi';
 
 function getBaseDeckIds(
   state: AppState,
@@ -88,6 +90,7 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 }
 
 export function addInvestigator(
+  user: FirebaseAuthTypes.User | undefined,
   { campaignId, serverId }: CampaignId,
   investigator: string,
   deckId?: DeckId
@@ -104,10 +107,14 @@ export function addInvestigator(
       now: new Date(),
     };
     dispatch(action);
+    if (deckId && serverId && user) {
+      dispatch(uploadCampaignDeckHelper(campaignId, serverId, deckId, user));
+    }
   };
 }
 
 export function removeInvestigator(
+  user: FirebaseAuthTypes.User | undefined,
   { campaignId, serverId }: CampaignId,
   investigator: string,
   deckId?: DeckId
@@ -124,10 +131,14 @@ export function removeInvestigator(
       now: new Date(),
     };
     dispatch(action);
+    if (deckId && user && serverId) {
+      dispatch(removeCampaignDeckHelper(campaignId, serverId, deckId, true));
+    }
   };
 }
 
 export function newLinkedCampaign(
+  user: FirebaseAuthTypes.User | undefined,
   name: string,
   cycleCode: CampaignCycleCode,
   cycleCodeA: CampaignCycleCode,
@@ -147,6 +158,7 @@ export function newLinkedCampaign(
 }
 
 export function newStandalone(
+  user: FirebaseAuthTypes.User | undefined,
   name: string,
   standaloneId: StandaloneId,
   deckIds: DeckId[],
@@ -168,6 +180,7 @@ export function newStandalone(
 }
 
 export function newCampaign(
+  user: FirebaseAuthTypes.User | undefined,
   name: string,
   pack_code: CampaignCycleCode,
   difficulty: CampaignDifficulty | undefined,
@@ -197,13 +210,13 @@ export function newCampaign(
 }
 
 export function updateCampaignSpentXp(
-  id: string,
+  { campaignId, serverId }: CampaignId,
   investigator: string,
   operation: 'inc' | 'dec'
 ): UpdateCampaignSpentXpAction {
   return {
     type: UPDATE_CAMPAIGN_SPENT_XP,
-    id,
+    id: campaignId,
     investigator,
     operation,
     now: new Date(),
@@ -221,6 +234,7 @@ export function updateCampaignSpentXp(
  * }
  */
 export function updateCampaign(
+  user: FirebaseAuthTypes.User | undefined,
   { campaignId, serverId }: CampaignId,
   sparseCampaign: Partial<Campaign & {
     latestDeckIds?: DeckId[];
@@ -242,13 +256,13 @@ export function updateCampaign(
 }
 
 export function updateChaosBagResults(
-  id: string,
+  { campaignId, serverId }: CampaignId,
   chaosBagResults: ChaosBagResults
 ): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
   return (dispatch) => {
     dispatch({
       type: UPDATE_CHAOS_BAG_RESULTS,
-      id,
+      id: campaignId,
       chaosBagResults,
       now: new Date(),
     });
@@ -256,14 +270,14 @@ export function updateChaosBagResults(
 }
 
 export function adjustBlessCurseChaosBagResults(
-  id: string,
+  id: CampaignId,
   type: 'bless' | 'curse',
   direction: 'inc' | 'dec'
 ): ThunkAction<void, AppState, unknown, AdjustBlessCurseAction> {
   return (dispatch) => {
     dispatch({
       type: ADJUST_BLESS_CURSE,
-      id,
+      id: id.campaignId,
       bless: type === 'bless',
       direction,
       now: new Date(),
@@ -271,7 +285,9 @@ export function adjustBlessCurseChaosBagResults(
   };
 }
 
-export function removeLocalCampaign(campaign: Campaign): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
+export function removeLocalCampaign(
+  campaign: Campaign
+): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
   return (dispatch, getState) => {
     if (campaign.serverId) {
       // Delink all of the decks.
@@ -303,9 +319,10 @@ export function removeLocalCampaign(campaign: Campaign): ThunkAction<void, AppSt
 }
 
 export function deleteCampaign(
-  { campaignId, serverId }: CampaignId
+  user: FirebaseAuthTypes.User | undefined,
+  { campaignId }: CampaignId
 ): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
-  return (dispatch, getState: () => AppState) => {
+  return (dispatch, getState) => {
     const state = getState();
     const getCampaign = makeCampaignSelector();
     const campaign = getCampaign(getState(), campaignId);
@@ -326,27 +343,30 @@ export function deleteCampaign(
 }
 
 export function addScenarioResult(
-  id: string,
+  user: FirebaseAuthTypes.User | undefined,
+  campaignId: CampaignId,
   scenarioResult: ScenarioResult,
   campaignNotes?: CampaignNotes
-): AddCampaignScenarioResultAction {
-  return {
-    type: ADD_CAMPAIGN_SCENARIO_RESULT,
-    id,
-    scenarioResult,
-    campaignNotes,
-    now: new Date(),
+): ThunkAction<void, AppState, unknown, AddCampaignScenarioResultAction> {
+  return async(dispatch) => {
+    dispatch({
+      type: ADD_CAMPAIGN_SCENARIO_RESULT,
+      campaignId,
+      scenarioResult,
+      campaignNotes,
+      now: new Date(),
+    });
   };
 }
 
 export function editScenarioResult(
-  id: string,
+  campaignId: CampaignId,
   index: number,
   scenarioResult: ScenarioResult
 ): EditCampaignScenarioResultAction {
   return {
     type: EDIT_CAMPAIGN_SCENARIO_RESULT,
-    id,
+    campaignId,
     index,
     scenarioResult,
     now: new Date(),

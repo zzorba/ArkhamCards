@@ -62,7 +62,7 @@ function uploadCampaignHelper(
         }),
       ]);
     }
-    dispatch(updateCampaign({ campaignId: campaign.uuid, serverId }, { serverId }));
+    dispatch(updateCampaign(user, { campaignId: campaign.uuid, serverId }, { serverId }));
 
     forEach(campaign.deckIds || [], deckId => {
       dispatch(uploadCampaignDeckHelper(campaign.uuid, serverId, deckId, user));

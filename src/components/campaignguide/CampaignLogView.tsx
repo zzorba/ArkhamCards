@@ -6,9 +6,10 @@ import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignLogComponent from './CampaignLogComponent';
 import StyleContext from '@styles/StyleContext';
+import { CampaignId } from '@actions/types';
 
 export interface CampaignLogProps {
-  campaignId: string;
+  campaignId: CampaignId;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
   standalone?: boolean;

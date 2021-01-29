@@ -11,7 +11,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Deck, getCampaignId, getDeckId, ScenarioResult } from '@actions/types';
+import { CampaignId, Deck, getCampaignId, getDeckId, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
 import { getAllDecks, getDeck, getLangPreference } from '@reducers';
@@ -23,17 +23,19 @@ import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface UpgradeDecksProps {
-  id: string;
+  id: CampaignId;
   scenarioResult: ScenarioResult;
 }
 
 function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const investigators = useInvestigatorCards();
-  const campaign = useCampaign(id);
+  const campaign = useCampaign(id.campaignId);
   const [latestDeckIds, allInvestigators] = useCampaignDetails(campaign, investigators);
   const lang = useSelector(getLangPreference);
   const decks = useSelector(getAllDecks);
@@ -51,7 +53,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
     if (campaign) {
       const investigatorData = campaign.investigatorData[investigator.code] || {};
       const oldXp = investigatorData.availableXp || 0;
-      dispatch(updateCampaign(getCampaignId(campaign), {
+      dispatch(updateCampaign(user, getCampaignId(campaign), {
         investigatorData: {
           ...campaign.investigatorData || {},
           [investigator.code]: {
@@ -61,7 +63,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
         },
       }));
     }
-  }, [campaign, dispatch]);
+  }, [campaign, user, dispatch]);
 
   const showDeckUpgradeDialog = useCallback((deck: Deck, investigator?: Card) => {
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;

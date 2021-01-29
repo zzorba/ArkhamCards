@@ -674,6 +674,7 @@ export function useSaveDialog(
         assignedCards[code] = (assignedCards[code] || 0) + 1;
       });
       dispatch(updateCampaign(
+        user,
         getCampaignId(campaign),
         {
           weaknessSet: {
@@ -683,7 +684,7 @@ export function useSaveDialog(
         },
       ));
     }
-  }, [campaign, dispatch]);
+  }, [campaign, dispatch, user]);
 
   const actuallySaveEdits = useCallback(async(dismissAfterSave: boolean, isRetry?: boolean) => {
     if (saving && !isRetry) {

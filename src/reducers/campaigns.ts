@@ -432,7 +432,7 @@ export default function(
     };
   }
   if (action.type === EDIT_CAMPAIGN_SCENARIO_RESULT) {
-    const campaign = { ...state.all[action.id] };
+    const campaign = { ...state.all[action.campaignId.campaignId] };
     const scenarioResults = [
       ...campaign.scenarioResults || [],
     ];
@@ -444,13 +444,16 @@ export default function(
     };
     return {
       ...state,
-      all: { ...state.all, [action.id]: updatedCampaign },
+      all: {
+        ...state.all,
+        [action.campaignId.campaignId]: updatedCampaign,
+      },
     };
   }
   if (action.type === ADD_CAMPAIGN_SCENARIO_RESULT) {
-    const campaign = { ...state.all[action.id] };
+    const campaign = { ...state.all[action.campaignId.campaignId] };
     const scenarioResults = [
-      ...campaign.scenarioResults || [],
+      ...(campaign.scenarioResults || []),
       { ...action.scenarioResult },
     ];
     const updatedCampaign = {
@@ -463,7 +466,10 @@ export default function(
     }
     return {
       ...state,
-      all: { ...state.all, [action.id]: updatedCampaign },
+      all: {
+        ...state.all,
+        [action.campaignId.campaignId]: updatedCampaign,
+      },
     };
   }
   return state;

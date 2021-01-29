@@ -5,15 +5,16 @@ import OddsCalculatorComponent from '@components/campaign/OddsCalculatorComponen
 import { ChaosBag } from '@app_constants';
 import Card from '@data/Card';
 import { useCampaign, useCycleScenarios, useInvestigatorCards } from '@components/core/hooks';
+import { CampaignId } from '@actions/types';
 
 export interface GuideOddsCalculatorProps {
-  campaignId: string;
+  campaignId: CampaignId;
   investigatorIds: string[];
   chaosBag: ChaosBag;
 }
 
 export default function GuideOddsCalculatorView({ campaignId, investigatorIds, chaosBag }: GuideOddsCalculatorProps) {
-  const campaign = useCampaign(campaignId);
+  const campaign = useCampaign(campaignId.campaignId);
   const cycleScenarios = useCycleScenarios(campaign);
 
   const investigators = useInvestigatorCards();

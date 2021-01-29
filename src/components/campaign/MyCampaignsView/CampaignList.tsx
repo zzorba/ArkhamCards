@@ -95,7 +95,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
         component: {
           name: 'Campaign',
           passProps: {
-            id,
+            campaignId: campaign.uuid,
           },
           options,
         },

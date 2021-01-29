@@ -6,7 +6,7 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, CUSTOM, Deck, DeckId, getDeckId, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
+import { CampaignId, CampaignNotes, CUSTOM, Deck, DeckId, getCampaignId, getDeckId, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
 import CampaignLogSection from '../CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
@@ -36,16 +36,17 @@ import CampaignGuideFab from '@components/campaignguide/CampaignGuideFab';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import Card from '@data/Card';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface CampaignDetailProps {
-  id: string;
+  campaignId: string;
 }
 
 type Props = NavigationProps & CampaignDetailProps & InjectedDialogProps
 
 function ScenarioResultButton({ name, campaignId, componentId, status, index, onPress }: {
   name: string;
-  campaignId: string;
+  campaignId: CampaignId;
   componentId: string;
   status: 'completed' | 'playable';
   index: number;
@@ -75,18 +76,20 @@ function ScenarioResultButton({ name, campaignId, componentId, status, index, on
   );
 }
 
-function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
+function CampaignDetailView(props: Props) {
+  const { componentId, showTextEditDialog } = props;
   const { backgroundStyle } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
-  const campaign = useCampaign(id);
+  const campaign = useCampaign(props.campaignId);
   const serverId = campaign?.serverId;
   const campaignId = useMemo(() => {
     return {
-      campaignId: id,
+      campaignId: props.campaignId,
       serverId,
     };
-  }, [id, serverId]);
+  }, [props.campaignId, serverId]);
   const decks = useSelector(getAllDecks);
   const {
     showTraumaDialog,
@@ -97,31 +100,31 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
 
   const dispatch = useDispatch();
   const updateNonDeckInvestigators = useCallback((nonDeckInvestigators: string[]) => {
-    dispatch(updateCampaign(campaignId, { nonDeckInvestigators }));
-  }, [dispatch, campaignId]);
+    dispatch(updateCampaign(user, campaignId, { nonDeckInvestigators }));
+  }, [dispatch, campaignId, user]);
   const updateLatestDeckIds = useCallback((latestDeckIds: DeckId[]) => {
-    dispatch(updateCampaign(campaignId, { latestDeckIds }));
-  }, [dispatch, campaignId]);
+    dispatch(updateCampaign(user, campaignId, { latestDeckIds }));
+  }, [dispatch, campaignId, user]);
   const updateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
-    dispatch(updateCampaign(campaignId, { campaignNotes }));
-  }, [dispatch, campaignId]);
+    dispatch(updateCampaign(user, campaignId, { campaignNotes }));
+  }, [dispatch, campaignId, user]);
   const updateInvestigatorData = useCallback((investigatorData: InvestigatorData) => {
-    dispatch(updateCampaign(campaignId, { investigatorData }));
-  }, [dispatch, campaignId]);
+    dispatch(updateCampaign(user, campaignId, { investigatorData }));
+  }, [dispatch, campaignId, user]);
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
-    dispatch(updateCampaign(campaignId, { chaosBag }));
-  }, [dispatch, campaignId]);
+    dispatch(updateCampaign(user, campaignId, { chaosBag }));
+  }, [dispatch, campaignId, user]);
   const updateWeaknessSet = useCallback((weaknessSet: WeaknessSet) => {
-    dispatch(updateCampaign(campaignId, { weaknessSet }));
-  }, [dispatch, campaignId]);
+    dispatch(updateCampaign(user, campaignId, { weaknessSet }));
+  }, [dispatch, campaignId, user]);
   const addSectionCallback = useRef<AddSectionFunction>();
   const [addSectionVisible, setAddSectionVisible] = useState(false);
   const incSpentXp = useCallback((code: string) => {
-    dispatch(updateCampaignSpentXp(id, code, 'inc'));
-  }, [id, dispatch]);
+    dispatch(updateCampaignSpentXp(campaignId, code, 'inc'));
+  }, [campaignId, dispatch]);
   const decSpentXp = useCallback((code: string) => {
-    dispatch(updateCampaignSpentXp(id, code, 'dec'));
-  }, [id, dispatch]);
+    dispatch(updateCampaignSpentXp(campaignId, code, 'dec'));
+  }, [campaignId, dispatch]);
 
   const showAddSectionDialog = useCallback((addSectionFunction: AddSectionFunction) => {
     addSectionCallback.current = addSectionFunction;
@@ -155,8 +158,8 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   }, [investigatorDataUpdates, updateInvestigatorData]);
 
   const oddsCalculatorPressed = useCallback(() => {
-    showChaosBagOddsCalculator(componentId, id, allInvestigators);
-  }, [componentId, id, allInvestigators]);
+    showChaosBagOddsCalculator(componentId, campaignId, allInvestigators);
+  }, [componentId, campaignId, allInvestigators]);
 
   const cleanBrokenCampaignsPressed = useCallback(() => {
     dispatch(cleanBrokenCampaigns());
@@ -164,19 +167,19 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   }, [componentId, dispatch]);
 
   const addScenarioResultPressed = useCallback(() => {
-    showAddScenarioResult(componentId, id);
-  }, [id, componentId]);
+    showAddScenarioResult(componentId, campaignId);
+  }, [campaignId, componentId]);
 
   const drawChaosBagPressed = useCallback(() => {
-    showDrawChaosBag(componentId, id, updateChaosBag);
-  }, [id, componentId, updateChaosBag]);
+    showDrawChaosBag(componentId, campaignId, updateChaosBag);
+  }, [campaignId, componentId, updateChaosBag]);
 
   const drawWeaknessPressed = useCallback(() => {
-    showDrawWeakness(componentId, id);
-  }, [componentId, id]);
+    showDrawWeakness(componentId, campaignId);
+  }, [componentId, campaignId]);
 
   const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
+    dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -184,7 +187,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
         },
       },
     });
-  }, [campaignId, dispatch, componentId]);
+  }, [campaignId, dispatch, user, componentId]);
   const { dialog, showDialog: showEditNameDialog } = useTextDialog({
     title: t`Name`,
     value: campaign?.name || '',
@@ -246,11 +249,11 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
     });
 
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
-      campaignId: campaign.uuid,
+      campaignId: getCampaignId(campaign),
       singleInvestigator: singleInvestigator.code,
       onDeckSelect: addDeck,
     } : {
-      campaignId: campaign.uuid,
+      campaignId: getCampaignId(campaign),
       selectedInvestigatorIds: map(
         campaignInvestigators,
         investigator => investigator.code
@@ -355,7 +358,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
                     <ScenarioResultButton
                       key={idx}
                       componentId={componentId}
-                      campaignId={campaign.uuid}
+                      campaignId={campaignId}
                       name={scenario.interlude ? scenario.scenario : `${scenario.scenario} (${scenario.resolution}, ${scenario.xp || 0} XP)`}
                       index={idx}
                       status="completed"
@@ -368,7 +371,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
                     <ScenarioResultButton
                       key={idx}
                       componentId={componentId}
-                      campaignId={campaign.uuid}
+                      campaignId={campaignId}
                       name={scenario.name}
                       index={-1}
                       status="playable"
@@ -382,7 +385,7 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
         </ScrollView>
       </View>
     );
-  }, [backgroundStyle, campaign, addScenarioResultPressed, componentId, cycleScenarios]);
+  }, [backgroundStyle, campaign, campaignId, addScenarioResultPressed, componentId, cycleScenarios]);
   const logsTab = useMemo(() => {
     if (!campaign) {
       return <LoadingSpinner />;

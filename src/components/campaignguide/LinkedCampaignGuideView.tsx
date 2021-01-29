@@ -24,6 +24,7 @@ import space from '@styles/space';
 import CampaignGuideFab from './CampaignGuideFab';
 import { useAlertDialog, useTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface LinkedCampaignGuideProps {
   campaignId: string;
@@ -37,6 +38,7 @@ export default function LinkedCampaignGuideView(props: Props) {
   const { componentId, campaignIdA, campaignIdB } = props;
   const investigators = useInvestigatorCards();
   const styleContext = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const { backgroundStyle } = styleContext;
   const dispatch = useDispatch();
   useStopAudioOnUnmount();
@@ -56,7 +58,7 @@ export default function LinkedCampaignGuideView(props: Props) {
   }, [props.campaignId, serverId]);
 
   const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
+    dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -64,7 +66,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         },
       },
     });
-  }, [campaignId, dispatch, componentId]);
+  }, [campaignId, dispatch, user, componentId]);
 
 
   const { dialog, showDialog: showEditNameDialog } = useTextDialog({
@@ -80,8 +82,8 @@ export default function LinkedCampaignGuideView(props: Props) {
   }, componentId, [showEditNameDialog]);
 
   const handleUpdateCampaign = useCallback((id: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
-    dispatch(updateCampaign(id, sparseCampaign, now));
-  }, [dispatch]);
+    dispatch(updateCampaign(user, id, sparseCampaign, now));
+  }, [dispatch, user]);
   const [removeMode, toggleRemoveMode] = useFlag(false);
   const contextA = useCampaignGuideContext(campaignIdA, campaignDataA);
   const contextB = useCampaignGuideContext(campaignIdB, campaignDataB);
@@ -252,7 +254,7 @@ export default function LinkedCampaignGuideView(props: Props) {
                   inverted
                 />
               }
-              campaignId={contextA.campaignId.campaignId}
+              campaignId={contextA.campaignId}
               campaignGuide={contextA.campaignGuide}
               campaignLog={processedCampaignA.campaignLog}
               componentId={componentId}
@@ -267,7 +269,7 @@ export default function LinkedCampaignGuideView(props: Props) {
                   inverted
                 />
               }
-              campaignId={contextB.campaignId.campaignId}
+              campaignId={contextB.campaignId}
               campaignGuide={contextB.campaignGuide}
               campaignLog={processedCampaignB.campaignLog}
               componentId={componentId}

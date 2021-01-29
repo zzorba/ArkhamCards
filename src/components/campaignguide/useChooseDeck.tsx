@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { map } from 'lodash';
 
@@ -8,12 +8,14 @@ import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog
 import Card from '@data/Card';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { Platform } from 'react-native';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export default function useChooseDeck() {
+  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const doAddInvestigator = useCallback((campaignId: CampaignId, code: string, deckId?: DeckId) => {
-    dispatch(addInvestigator(campaignId, code, deckId));
-  }, [dispatch]);
+    dispatch(addInvestigator(user, campaignId, code, deckId));
+  }, [dispatch, user]);
 
   const showChooseDeck = useCallback((
     campaignId: CampaignId,
@@ -30,11 +32,11 @@ export default function useChooseDeck() {
       callback && callback(card.code);
     };
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
-      campaignId: campaignId.campaignId,
+      campaignId: campaignId,
       singleInvestigator: singleInvestigator.code,
       onDeckSelect,
     } : {
-      campaignId: campaignId.campaignId,
+      campaignId: campaignId,
       selectedInvestigatorIds: map(
         campaignInvestigators,
         investigator => investigator.code

@@ -13,7 +13,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DeckUpgradeComponent, { DeckUpgradeHandles } from './DeckUpgradeComponent';
-import { Deck, DeckId, getCampaignId, getDeckId, Slots } from '@actions/types';
+import { CampaignId, Deck, DeckId, getCampaignId, getDeckId, Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { showDeckModal } from '@components/nav/helper';
 import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
@@ -30,7 +30,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface UpgradeDeckProps {
   id: DeckId;
-  campaignId?: string;
+  campaignId?: CampaignId;
   showNewDeck: boolean;
 }
 
@@ -39,7 +39,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const [deck] = useDeck(id, {});
-  const campaign = useCampaign(campaignId);
+  const campaign = useCampaign(campaignId?.campaignId);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>(null);
 
   const latestScenario = useMemo(() => campaign && last(campaign.scenarioResults || []), [campaign]);
@@ -90,6 +90,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     if (campaign) {
       if (investigatorData) {
         dispatch(updateCampaign(
+          user,
           getCampaignId(campaign),
           { investigatorData }
         ));
@@ -100,7 +101,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     } else {
       Navigation.pop(componentId);
     }
-  }, [showNewDeck, componentId, dispatch, campaign, colors, investigator, investigatorData]);
+  }, [showNewDeck, componentId, dispatch, user, campaign, colors, investigator, investigatorData]);
 
   const onStoryCountsChange = useCallback((storyCounts: Slots) => {
     updateStoryCounts({ type: 'sync', slots: storyCounts });

@@ -11,6 +11,7 @@ import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import ScenarioView from './ScenarioView';
 import StyleContext from '@styles/StyleContext';
 import { useAlertDialog } from '@components/deck/dialogs';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface StandaloneGuideProps {
   campaignId: CampaignId;
@@ -18,12 +19,13 @@ export interface StandaloneGuideProps {
 }
 export default function StandaloneGuideView({ campaignId, standaloneId, componentId }: StandaloneGuideProps & NavigationProps) {
   const { colors } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   useStopAudioOnUnmount();
   const dispatch = useDispatch();
   const handleDelete = useCallback(() => {
-    dispatch(deleteCampaign(campaignId));
+    dispatch(deleteCampaign(user, campaignId));
     Navigation.pop(componentId);
-  }, [campaignId, componentId, dispatch]);
+  }, [campaignId, componentId, user, dispatch]);
   const [alertDialog, showAlert] = useAlertDialog();
   const deletePressed = useCallback(() => {
     showAlert(

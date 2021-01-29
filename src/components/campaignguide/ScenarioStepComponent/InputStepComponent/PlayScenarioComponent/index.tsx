@@ -24,7 +24,7 @@ interface Props {
   input: PlayScenarioInput;
 }
 
-export default function PlayScenarioComponent({ componentId, campaignId: { campaignId }, id, input }: Props) {
+export default function PlayScenarioComponent({ componentId, campaignId, id, input }: Props) {
   const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
 
@@ -52,7 +52,7 @@ export default function PlayScenarioComponent({ componentId, campaignId: { campa
         name: 'Guide.ScenarioFaq',
         passProps: {
           scenario: processedScenario.id.scenarioId,
-          campaignId,
+          campaignId: campaignId.campaignId,
         },
       },
     });

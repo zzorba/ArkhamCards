@@ -36,7 +36,7 @@ import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
 import { AppState, getDeckUploadedCampaigns, makeDeckSelector } from '@reducers/index';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
+import { removeCampaignDeckHelper, uploadCampaignDeckHelper } from '@lib/firebaseApi';
 
 function setNewDeck(
   user: FirebaseAuthTypes.User | undefined,
@@ -54,7 +54,7 @@ function setNewDeck(
       if (uploads.length) {
         forEach(uploads, ({ campaignId, serverId }) => {
           if (serverId) {
-            dispatch(uploadCampaignDeckHelper(campaignId, serverId, id, user));
+            dispatch(uploadCampaignDeckHelper(campaignId, serverId, id, user, deck));
           }
         });
       }
@@ -80,7 +80,7 @@ function updateDeck(
       if (uploads.length) {
         forEach(uploads, ({ campaignId, serverId }) => {
           if (serverId) {
-            dispatch(uploadCampaignDeckHelper(campaignId, serverId, id, user));
+            dispatch(uploadCampaignDeckHelper(campaignId, serverId, id, user, deck));
           }
         });
       }
@@ -93,12 +93,20 @@ export function removeDeck(
   id: DeckId,
   deleteAllVersions?: boolean
 ): ThunkAction<Promise<boolean>, AppState, unknown, Action<string>> {
-  return async(dispatch) => {
+  return async(dispatch, getState) => {
+    const uploads = getDeckUploadedCampaigns(getState(), id);
     dispatch({
       type: DELETE_DECK,
       id,
       deleteAllVersions: !!deleteAllVersions,
     });
+    if (user) {
+      forEach(uploads, ({ campaignId, serverId }) => {
+        if (serverId) {
+          dispatch(removeCampaignDeckHelper(campaignId, serverId, id, false));
+        }
+      });
+    }
     return true;
   };
 }

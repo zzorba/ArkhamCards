@@ -17,7 +17,7 @@ import DeckSelectorTab from './DeckSelectorTab';
 import { NewDeckProps } from '@components/deck/NewDeckView';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { NavigationProps } from '@components/nav/types';
-import { Deck, DeckId, SortType, SORT_BY_PACK } from '@actions/types';
+import { CampaignId, Deck, DeckId, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/Card';
 import { getAllDecks, makeLatestCampaignDeckIdsSelector, AppState, getDeck, makeOtherCampiagnDeckIdsSelector } from '@reducers';
@@ -28,7 +28,7 @@ import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { useCampaign, useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface MyDecksSelectorProps {
-  campaignId: string;
+  campaignId: CampaignId;
   onDeckSelect: (deck: Deck) => void;
   onInvestigatorSelect?: (card: Card) => void;
 
@@ -90,7 +90,7 @@ function MyDecksSelectorDialog(props: Props) {
   const { fontScale, typography } = useContext(StyleContext);
   const { componentId, campaignId, onDeckSelect, onInvestigatorSelect, singleInvestigator, selectedDeckIds, selectedInvestigatorIds, onlyShowSelected, simpleOptions } = props;
 
-  const campaign = useCampaign(campaignId);
+  const campaign = useCampaign(campaignId.campaignId);
   const otherCampaignsDeckIdsSelector = useMemo(() => makeOtherCampiagnDeckIdsSelector(), []);
   const otherCampaignDeckIds = useSelector((state: AppState) => otherCampaignsDeckIdsSelector(state, campaign));
   const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);

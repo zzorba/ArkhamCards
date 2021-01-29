@@ -17,10 +17,11 @@ import AchievementComponent from './AchievementComponent';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
+import { CampaignId } from '@actions/types';
 
 interface Props {
   componentId: string;
-  campaignId: string;
+  campaignId: CampaignId;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
   standalone?: boolean;

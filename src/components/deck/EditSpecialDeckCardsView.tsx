@@ -22,11 +22,11 @@ import { useDispatch } from 'react-redux';
 import { setIgnoreDeckSlot } from './actions';
 import { useDeckEdits } from './hooks';
 import { useAlertDialog } from './dialogs';
-import { DeckId } from '@actions/types';
+import { CampaignId, DeckId } from '@actions/types';
 
 export interface EditSpecialCardsProps {
   id: DeckId;
-  campaignId?: string;
+  campaignId?: CampaignId;
   assignedWeaknesses?: string[];
 }
 

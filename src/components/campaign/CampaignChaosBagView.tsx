@@ -10,9 +10,10 @@ import COLORS from '@styles/colors';
 import { EditChaosBagProps } from './EditChaosBagDialog';
 import { AppState, makeCampaignChaosBagSelector } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
+import { CampaignId } from '@actions/types';
 
 export interface CampaignChaosBagProps {
-  campaignId: string;
+  campaignId: CampaignId;
   updateChaosBag: (chaosBag: ChaosBag) => void;
 }
 
@@ -20,7 +21,7 @@ type Props = NavigationProps & CampaignChaosBagProps;
 
 function CampaignChaosBagView({ componentId, campaignId, updateChaosBag }: Props) {
   const chaosBagSelector = useMemo(makeCampaignChaosBagSelector, []);
-  const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId));
+  const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId.campaignId));
 
   const showChaosBagDialog = useCallback(() => {
     if (!updateChaosBag) {

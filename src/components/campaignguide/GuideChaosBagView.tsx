@@ -2,9 +2,10 @@ import React from 'react';
 
 import DrawChaosBagComponent from '@components/campaign/DrawChaosBagComponent';
 import { ChaosBag } from '@app_constants';
+import { CampaignId } from '@actions/types';
 
 export interface GuideChaosBagProps {
-  campaignId: string;
+  campaignId: CampaignId;
   chaosBag: ChaosBag;
 }
 

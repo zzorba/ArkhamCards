@@ -23,6 +23,7 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import CampaignGuideFab from './CampaignGuideFab';
 import { useAlertDialog, useTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -30,12 +31,13 @@ type Props = CampaignGuideProps & NavigationProps;
 
 function CampaignGuideView(props: Props) {
   const { backgroundStyle } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const { componentId } = props;
   const campaignData = useContext(CampaignGuideContext);
   const campaignId = campaignData.campaignId;
   const dispatch = useDispatch();
   const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
+    dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -43,7 +45,7 @@ function CampaignGuideView(props: Props) {
         },
       },
     });
-  }, [campaignId, dispatch, componentId]);
+  }, [campaignId, user, dispatch, componentId]);
   const { showTraumaDialog, traumaDialog } = useTraumaDialog({ hideKilledInsane: true });
 
   const { dialog, showDialog: showEditNameDialog } = useTextDialog({
@@ -60,8 +62,8 @@ function CampaignGuideView(props: Props) {
   }, componentId, [showEditNameDialog]);
 
   const saveCampaignUpdate = useCallback((campaignId: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
-    dispatch(updateCampaign(campaignId, sparseCampaign, now));
-  }, [dispatch]);
+    dispatch(updateCampaign(user, campaignId, sparseCampaign, now));
+  }, [dispatch, user]);
   const { campaignGuide, campaignState } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [removeMode, toggleRemoveInvestigator] = useFlag(false);
@@ -135,7 +137,7 @@ function CampaignGuideView(props: Props) {
       <View style={[styles.wrapper, backgroundStyle]}>
         <ScrollView contentContainerStyle={backgroundStyle}>
           <CampaignLogComponent
-            campaignId={campaignId.campaignId}
+            campaignId={campaignId}
             campaignGuide={campaignGuide}
             campaignLog={processedCampaign.campaignLog}
             componentId={componentId}

@@ -21,7 +21,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { DeckId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
+import { DeckId, getCampaignId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/Card';
 import { EditDeckProps } from '../DeckEditView';
@@ -398,7 +398,7 @@ function DeckDetailView({
       component: {
         name: 'Deck.EditSpecial',
         passProps: {
-          campaignId: campaign ? campaign.uuid : undefined,
+          campaignId: campaign ? getCampaignId(campaign) : undefined,
           id,
           assignedWeaknesses: addedBasicWeaknesses,
         },
@@ -479,7 +479,7 @@ function DeckDetailView({
         passProps: {
           id: deckId,
           showNewDeck: true,
-          campaignId: campaign ? campaign.uuid : undefined,
+          campaignId: campaign ? getCampaignId(campaign) : undefined,
         },
         options: {
           statusBar: {

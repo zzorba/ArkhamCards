@@ -23,7 +23,6 @@ import { NavigationProps } from '@components/nav/types';
 import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
 import FixedSetChooserButton from '../FixedSetChooserButton';
 import { slotsTranslations } from '../CardAssetFilterView';
-import SkillModifierChooser from '../CardAssetFilterView/SkillModifierChooser';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {

@@ -838,7 +838,7 @@ export interface CampaignRemoveInvestigatorAction {
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
 export interface AddCampaignScenarioResultAction {
   type: typeof ADD_CAMPAIGN_SCENARIO_RESULT;
-  id: string;
+  campaignId: CampaignId;
   scenarioResult: ScenarioResult;
   campaignNotes?: CampaignNotes;
   now: Date;
@@ -846,7 +846,7 @@ export interface AddCampaignScenarioResultAction {
 export const EDIT_CAMPAIGN_SCENARIO_RESULT = 'EDIT_CAMPAIGN_SCENARIO_RESULT';
 export interface EditCampaignScenarioResultAction {
   type: typeof EDIT_CAMPAIGN_SCENARIO_RESULT;
-  id: string;
+  campaignId: CampaignId;
   index: number;
   scenarioResult: ScenarioResult;
   now: Date;

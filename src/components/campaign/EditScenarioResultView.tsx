@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { ScenarioResult, CUSTOM } from '@actions/types';
+import { ScenarioResult, CUSTOM, CampaignId } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { editScenarioResult } from './actions';
 import COLORS from '@styles/colors';
@@ -21,7 +21,7 @@ import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButt
 import DeckButton from '@components/deck/controls/DeckButton';
 
 export interface EditScenarioResultProps {
-  campaignId: string;
+  campaignId: CampaignId;
   index: number;
 }
 
@@ -29,7 +29,7 @@ type Props = NavigationProps & EditScenarioResultProps;
 
 export default function EditScenarioResultView({ campaignId, index, componentId }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
-  const campaign = useCampaign(campaignId);
+  const campaign = useCampaign(campaignId.campaignId);
   const dispatch = useDispatch();
   const existingScenarioResult = campaign && campaign.scenarioResults[index];
   const [scenarioResult, setScenarioResult] = useState<ScenarioResult | undefined>(existingScenarioResult);

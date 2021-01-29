@@ -3,7 +3,7 @@ import { BackHandler, InteractionManager, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, ChaosBagResults, Deck, DeckId, SingleCampaign, Slots } from '@actions/types';
+import { Campaign, CampaignId, ChaosBagResults, Deck, DeckId, SingleCampaign, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -550,7 +550,7 @@ export function useCampaignScenarios(campaign?: Campaign): [Scenario[], { [code:
   return [cycleScenarios, scenarioByCode];
 }
 
-export function useChaosBagResults(campaignId: string): ChaosBagResults {
+export function useChaosBagResults({ campaignId }: CampaignId): ChaosBagResults {
   const chaosBagResultsSelector = useMemo(makeChaosBagResultsSelector, []);
   return useSelector((state: AppState) => chaosBagResultsSelector(state, campaignId));
 }

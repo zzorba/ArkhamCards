@@ -5,16 +5,17 @@ import { useSelector } from 'react-redux';
 import OddsCalculatorComponent from './OddsCalculatorComponent';
 import { AppState, makeCampaignSelector } from '@reducers';
 import { useCycleScenarios, useInvestigatorCards } from '@components/core/hooks';
+import { CampaignId } from '@actions/types';
 
 export interface OddsCalculatorProps {
-  campaignId: string;
+  campaignId: CampaignId;
   investigatorIds: string[];
 }
 
 const EMPTY_CHAOS_BAG = {};
 export default function OddsCalculatorView({ campaignId, investigatorIds }: OddsCalculatorProps) {
   const getCampaign = useMemo(makeCampaignSelector, []);
-  const campaign = useSelector((state: AppState) => getCampaign(state, campaignId));
+  const campaign = useSelector((state: AppState) => getCampaign(state, campaignId.campaignId));
   const chaosBag = campaign?.chaosBag || EMPTY_CHAOS_BAG;
   const cycleScenarios = useCycleScenarios(campaign);
   const investigators = useInvestigatorCards();

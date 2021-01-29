@@ -16,16 +16,19 @@ import {
   DeckId,
 } from '@actions/types';
 import Card from '@data/Card';
-import { useCallback, useMemo } from 'react';
-import useChooseDeck from './useChooseDeck';
+import { useCallback, useContext, useMemo } from 'react';
 import { forEach } from 'lodash';
+
+import useChooseDeck from './useChooseDeck';
 import { useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 
 export default function useCampaignGuideContext(id: string, campaignData?: CampaignGuideReduxData): CampaignGuideContextType | undefined {
+  const { user } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch = useDispatch();
   const investigators = useInvestigatorCards();
@@ -59,12 +62,12 @@ export default function useCampaignGuideContext(id: string, campaignData?: Campa
   const removeDeck = useCallback((
     deck: Deck
   ) => {
-    dispatch(campaignActions.removeInvestigator(campaignId, deck.investigator_code, getDeckId(deck)));
-  }, [dispatch, campaignId]);
+    dispatch(campaignActions.removeInvestigator(user, campaignId, deck.investigator_code, getDeckId(deck)));
+  }, [dispatch, campaignId, user]);
 
   const removeInvestigator = useCallback((investigator: Card) => {
-    dispatch(campaignActions.removeInvestigator(campaignId, investigator.code));
-  }, [dispatch, campaignId]);
+    dispatch(campaignActions.removeInvestigator(user, campaignId, investigator.code));
+  }, [dispatch, campaignId, user]);
 
   const startScenario = useCallback((scenarioId: string) => {
     dispatch(guideActions.startScenario(campaignId, scenarioId));

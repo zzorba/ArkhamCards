@@ -48,7 +48,7 @@ export default function CampaignGuideFab({
   const createServerCampaign = useCreateCampaignRequest();
 
   const actuallyDeleteCampaign = useCallback(() => {
-    dispatch(deleteCampaign({ campaignId, serverId }));
+    dispatch(deleteCampaign(user, { campaignId, serverId }));
     if (serverId && user) {
       deleteServerCampaign(serverId);
     }
