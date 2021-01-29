@@ -70,97 +70,106 @@ export default function useCampaignGuideContext(id: string, campaignData?: Campa
   }, [dispatch, campaignId, user]);
 
   const startScenario = useCallback((scenarioId: string) => {
-    dispatch(guideActions.startScenario(campaignId, scenarioId));
-  }, [dispatch, campaignId]);
+    dispatch(guideActions.startScenario(user, campaignId, scenarioId));
+  }, [dispatch, campaignId, user]);
 
   const startSideScenario = useCallback((scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput) => {
-    dispatch(guideActions.startSideScenario(campaignId, scenario));
-  }, [dispatch, campaignId]);
+    dispatch(guideActions.startSideScenario(user, campaignId, scenario));
+  }, [dispatch, campaignId, user]);
 
   const setDecision = useCallback((stepId: string, value: boolean, scenarioId?: string) => {
     dispatch(guideActions.setScenarioDecision(
+      user,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId]);
+  }, [dispatch, campaignId, user]);
 
   const setCount = useCallback((stepId: string, value: number, scenarioId?: string) => {
     dispatch(guideActions.setScenarioCount(
+      user,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId]);
+  }, [dispatch, campaignId, user]);
 
   const setText = useCallback((stepId: string, value: string, scenarioId?: string) => {
     dispatch(guideActions.setScenarioText(
+      user,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId]);
+  }, [dispatch, campaignId, user]);
 
   const setSupplies = useCallback((stepId: string, supplyCounts: SupplyCounts, scenarioId?: string) => {
     dispatch(guideActions.setScenarioSupplies(
+      user,
       campaignId,
       stepId,
       supplyCounts,
       scenarioId
     ));
-  }, [dispatch, campaignId]);
+  }, [dispatch, campaignId, user]);
 
   const setStringChoices = useCallback((stepId: string, choices: StringChoices, scenarioId?: string) => {
     dispatch(guideActions.setScenarioStringChoices(
+      user,
       campaignId,
       stepId,
       choices,
       scenarioId
     ));
-  }, [dispatch, campaignId]);
+  }, [dispatch, campaignId, user]);
 
   const setCampaignLink = useCallback((stepId: string, value: string, scenarioId?: string) => {
     dispatch(guideActions.setCampaignLink(
+      user,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId]);
+  }, [dispatch, campaignId, user]);
 
   const setNumberChoices = useCallback((stepId: string, choices: NumberChoices, deckId?: DeckId, scenarioId?: string) => {
     dispatch(guideActions.setScenarioNumberChoices(
+      user,
       campaignId,
       stepId,
       choices,
       deckId,
       scenarioId
     ));
-  }, [dispatch, campaignId]);
+  }, [dispatch, campaignId, user]);
 
   const setChoice = useCallback((stepId: string, choice: number, scenarioId?: string) => {
     dispatch(guideActions.setScenarioChoice(
+      user,
       campaignId,
       stepId,
       choice,
       scenarioId
     ));
-  }, [dispatch, campaignId]);
+  }, [dispatch, campaignId, user]);
 
   const setInterScenarioData = useCallback((investigatorData: InvestigatorTraumaData, scenarioId?: string) => {
     dispatch(guideActions.setInterScenarioData(
+      user,
       campaignId,
       investigatorData,
       scenarioId
     ));
-  }, [dispatch, campaignId]);
+  }, [dispatch, campaignId, user]);
 
   const undo = useCallback((scenarioId: string) => {
-    dispatch(guideActions.undo(campaignId, scenarioId));
-  }, [dispatch, campaignId]);
+    dispatch(guideActions.undo(user, campaignId, scenarioId));
+  }, [dispatch, campaignId, user]);
 
   const resetScenario = useCallback((scenarioId: string) => {
     dispatch(guideActions.resetScenario(campaignId, scenarioId));

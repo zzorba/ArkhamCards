@@ -100,6 +100,7 @@ export function uploadCampaign(
 }
 
 export function undo(
+  user: FirebaseAuthTypes.User | undefined,
   { campaignId, serverId }: CampaignId,
   scenarioId: string
 ): GuideUndoInputAction {
@@ -167,7 +168,11 @@ export function resetScenario(
   };
 }
 
-function setGuideInputAction({ campaignId, serverId }: CampaignId, input: GuideInput): GuideSetInputAction {
+function setGuideInputAction(
+  user: FirebaseAuthTypes.User | undefined,
+  { campaignId, serverId }: CampaignId,
+  input: GuideInput
+): GuideSetInputAction {
   return {
     type: GUIDE_SET_INPUT,
     campaignId,
@@ -176,10 +181,11 @@ function setGuideInputAction({ campaignId, serverId }: CampaignId, input: GuideI
   };
 }
 export function startScenario(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   scenario: string
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
+  return setGuideInputAction(user, campaignId, {
     type: 'start_scenario',
     scenario,
     step: undefined,
@@ -188,19 +194,21 @@ export function startScenario(
 
 
 export function startSideScenario(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, scenario);
+  return setGuideInputAction(user, campaignId, scenario);
 }
 
 export function setScenarioDecision(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   step: string,
   value: boolean,
   scenario?: string
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
+  return setGuideInputAction(user, campaignId, {
     type: 'decision',
     scenario,
     step,
@@ -209,11 +217,12 @@ export function setScenarioDecision(
 }
 
 export function setInterScenarioData(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   value: InvestigatorTraumaData,
   scenario?: string
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
+  return setGuideInputAction(user, campaignId, {
     type: 'inter_scenario',
     scenario,
     investigatorData: value,
@@ -222,12 +231,13 @@ export function setInterScenarioData(
 }
 
 export function setScenarioCount(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   step: string,
   value: number,
   scenario?: string
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
+  return setGuideInputAction(user, campaignId, {
     type: 'count',
     scenario,
     step,
@@ -236,12 +246,13 @@ export function setScenarioCount(
 }
 
 export function setScenarioSupplies(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   step: string,
   supplies: SupplyCounts,
   scenario?: string
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
+  return setGuideInputAction(user, campaignId, {
     type: 'supplies',
     scenario,
     step,
@@ -250,13 +261,14 @@ export function setScenarioSupplies(
 }
 
 export function setScenarioNumberChoices(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   step: string,
   choices: NumberChoices,
   deckId?: DeckId,
   scenario?: string
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
+  return setGuideInputAction(user, campaignId, {
     type: 'choice_list',
     scenario,
     step,
@@ -266,12 +278,13 @@ export function setScenarioNumberChoices(
 }
 
 export function setScenarioStringChoices(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   step: string,
   choices: StringChoices,
   scenario?: string
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
+  return setGuideInputAction(user, campaignId, {
     type: 'string_choices',
     scenario,
     step,
@@ -280,12 +293,13 @@ export function setScenarioStringChoices(
 }
 
 export function setScenarioChoice(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   step: string,
   choice: number,
   scenario?: string
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
+  return setGuideInputAction(user, campaignId, {
     type: 'choice',
     scenario,
     step,
@@ -294,12 +308,13 @@ export function setScenarioChoice(
 }
 
 export function setScenarioText(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   step: string,
   text: string,
   scenario?: string
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
+  return setGuideInputAction(user, campaignId, {
     type: 'text',
     scenario,
     step,
@@ -308,12 +323,13 @@ export function setScenarioText(
 }
 
 export function setCampaignLink(
+  user: FirebaseAuthTypes.User | undefined,
   campaignId: CampaignId,
   step: string,
   decision: string,
   scenario?: string
 ): GuideSetInputAction {
-  return setGuideInputAction(campaignId, {
+  return setGuideInputAction(user, campaignId, {
     type: 'campaign_link',
     scenario,
     step,

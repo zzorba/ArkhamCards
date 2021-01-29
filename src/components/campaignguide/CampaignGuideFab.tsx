@@ -34,10 +34,10 @@ interface Props {
 }
 
 export default function CampaignGuideFab({
-  campaignId: { campaignId, serverId }, componentId, campaignName, removeMode, guided,
+  campaignId, componentId, campaignName, removeMode, guided,
   showEditNameDialog, showAddInvestigator, toggleRemoveInvestigator, setSelectedTab, showAlert,
 }: Props) {
-  const campaign = useCampaign(campaignId);
+  const campaign = useCampaign(campaignId.campaignId);
   const [{ isConnected }] = useNetworkStatus();
   const { user } = useContext(ArkhamCardsAuthContext);
   const { colors, shadow, typography } = useContext(StyleContext);
@@ -48,12 +48,12 @@ export default function CampaignGuideFab({
   const createServerCampaign = useCreateCampaignRequest();
 
   const actuallyDeleteCampaign = useCallback(() => {
-    dispatch(deleteCampaign(user, { campaignId, serverId }));
-    if (serverId && user) {
-      deleteServerCampaign(serverId);
+    dispatch(deleteCampaign(user, campaignId));
+    if (campaignId.serverId && user) {
+      deleteServerCampaign(campaignId.serverId);
     }
     Navigation.pop(componentId);
-  }, [dispatch, componentId, campaignId, deleteServerCampaign, user, serverId]);
+  }, [dispatch, componentId, campaignId, deleteServerCampaign, user]);
   const confirmDeleteCampaign = useCallback(() => {
     setFabOpen(false);
     showAlert(
@@ -74,7 +74,7 @@ export default function CampaignGuideFab({
           serverIdA: await createServerCampaign(),
           serverIdB: await createServerCampaign(),
         };
-        dispatch(uploadCampaign(campaignId, serverId, guided, user, linkServerIds));
+        dispatch(uploadCampaign(campaignId.campaignId, serverId, guided, user, linkServerIds));
       } catch (e) {
         // TODO(error handling)
       }
@@ -162,7 +162,7 @@ export default function CampaignGuideFab({
       >
         <AppIcon name="delete" color={colors.L30} size={34} />
       </ActionButton.Item>
-      { !!user && !serverId && guided && (
+      { !!user && !campaignId.serverId && guided && (
         <ActionButton.Item
           buttonColor={isConnected ? colors.D20 : colors.M}
           textStyle={actionLabelStyle}

@@ -1,5 +1,6 @@
 import { forEach, map, omit } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
+import database from '@react-native-firebase/database';
 
 import {
   NEW_CAMPAIGN,
@@ -46,6 +47,8 @@ import {
   getDeckId,
   RemoveUploadDeckAction,
   REMOVE_UPLOAD_DECK,
+  CampaignSyncRequiredAction,
+  CAMPAIGN_SYNC_REQUIRED,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
@@ -240,8 +243,8 @@ export function updateCampaign(
     latestDeckIds?: DeckId[];
   }>,
   now?: Date
-): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
-  return (dispatch, getState: () => AppState) => {
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction | CampaignSyncRequiredAction> {
+  return async(dispatch, getState: () => AppState) => {
     const campaign: Partial<Campaign> = omit(sparseCampaign, 'latestDeckIds');
     if (sparseCampaign.latestDeckIds) {
       campaign.deckIds = getBaseDeckIds(getState(), sparseCampaign.latestDeckIds);
@@ -252,6 +255,27 @@ export function updateCampaign(
       campaign,
       now: (now || new Date()),
     });
+    if (user && serverId) {
+      try {
+        await Promise.all(
+          map(omit(sparseCampaign, ['serverId']), (value, key) => {
+            const ref = database().ref('/campaigns').child(serverId).child('campaign').child(key);
+            if (!value) {
+              return ref.remove();
+            }
+            return ref.set(value);
+          })
+        );
+      } catch (e) {
+        dispatch({
+          type: CAMPAIGN_SYNC_REQUIRED,
+          campaignId: {
+            campaignId,
+            serverId,
+          },
+        });
+      }
+    }
   };
 }
 
