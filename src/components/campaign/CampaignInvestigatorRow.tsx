@@ -17,11 +17,6 @@ interface Props {
   campaigns: Campaign[];
 }
 
-interface CampaignDecks {
-  campaign: Campaign;
-  decks: Deck[];
-}
-
 function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
   const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
   const getDecks = useMemo(makeGetDecksSelector, []);

@@ -66,7 +66,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     });
     const hasXpDifference = xpDirty || !!find(spentXp, (xp, code) => {
       const adjust = campaignData.adjustedInvestigatorData[code];
-      return !adjust || adjust.spentXp !== xp;
+      return !adjust || (adjust.spentXp || 0) !== xp;
     });
     const guideLastUpdated = getDate(campaignState.lastUpdated());
     const newLastUpdated = isAfter(getDate(lastUpdated), guideLastUpdated) ? lastUpdated : guideLastUpdated;

@@ -6,24 +6,25 @@ import StyleContext from '@styles/StyleContext';
 
 interface Props {
   type: 'health' | 'sanity';
+  size?: number;
 }
 
-export default function HealthSanityIcon({ type }: Props) {
+export default function HealthSanityIcon({ type, size = 24 }: Props) {
   const { colors } = useContext(StyleContext);
   if (type === 'health') {
     return (
-      <View style={styles.healthWrapper}>
+      <View style={{ width: size, height: size }}>
         <View style={styles.icon}>
           <ArkhamIcon
             name="health_inverted"
-            size={24}
+            size={size}
             color="#FFFFFF"
           />
         </View>
         <View style={styles.icon}>
           <ArkhamIcon
             name="health"
-            size={24}
+            size={size}
             color={colors.health}
           />
         </View>
@@ -31,18 +32,18 @@ export default function HealthSanityIcon({ type }: Props) {
     );
   }
   return (
-    <View style={styles.sanityWrapper}>
+    <View style={{ width: size * 1.25, height: size }}>
       <View style={styles.icon}>
         <ArkhamIcon
           name="sanity_inverted"
-          size={24}
+          size={size}
           color="#FFFFFF"
         />
       </View>
       <View style={styles.icon}>
         <ArkhamIcon
           name="sanity"
-          size={24}
+          size={size}
           color={colors.sanity}
         />
       </View>
@@ -51,14 +52,6 @@ export default function HealthSanityIcon({ type }: Props) {
 }
 
 const styles = StyleSheet.create({
-  healthWrapper: {
-    width: 24,
-    height: 24,
-  },
-  sanityWrapper: {
-    width: 30,
-    height: 24,
-  },
   icon: {
     position: 'absolute',
     top: 0,

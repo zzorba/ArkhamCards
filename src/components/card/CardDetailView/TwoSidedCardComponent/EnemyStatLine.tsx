@@ -13,7 +13,7 @@ import { TINY_PHONE } from '@styles/sizes';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import SkillIcon from '@components/core/SkillIcon';
-import HealthSanityIcon from './HealthSanityIcon';
+import HealthSanityIcon from '../../../core/HealthSanityIcon';
 
 interface Props {
   enemy: Card;
