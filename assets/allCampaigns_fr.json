@@ -38725,8 +38725,8 @@
 },
 {
   "id": "meddling_of_meowlathotep",
-  "scenario_name": "The Meddling of Meowlathotep",
-  "full_name": "The Meddling of Meowlathotep",
+  "scenario_name": "La Cabale de Myarlathotep",
+  "full_name": "La Cabale de Myarlathotep",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -38896,15 +38896,15 @@
     },
     {
       "id": "barkham_rule",
-      "title": "Barkham Horror",
+      "title": "Horreur à Warkham",
       "type": "rule_reminder",
-      "text": "<i>Barkham Horror</i> is an alternate universe in which the conflict between humanity and the eldritch forces of the mythos takes a back seat, and the conflict between dogs and cats takes center stage.",
+      "text": "<i>Horreur à Warkham</i> se déroule dans un univers alternatif où le conflit entre l'humanité et les forces surnaturelles du Mythe s'efface face à celui qui oppose les chiens et les chats.",
       "bullets": [
         {
-          "text": "Investigator and player cards included in <i>Barkham Horror</i> expansions cannot be used in traditional <i>Arkham Horror: The Card Game</i> scenarios."
+          "text": "Les cartes Investigateur et Joueur incluses dans les extensions <i>Horreur à Warkham</i> ne peuvent pas être utilisées dans les scénarios traditionnels d'<i>Horreur à Arkham</i>."
         },
         {
-          "text": "Likewise, only investigators from <i>Barkham Horror</i> expansions should be used while playing a <i>Barkham Horror</i> scenario. Other player cards from any <i>Arkham Horror: The Card Game</i> product may be used."
+          "text": "De même, seuls les investigateurs d'<i>Horreur à Warkham</i> peuvent être utilisés lorsque vous jouez un scénario d'Horreur à Warkham. Les autres cartes Joueur issues de n'importe quelle extension pour <i>Horreur à Arkham</i> le Jeu de Cartes peuvent être utilisées."
         }
       ]
     },
@@ -38917,29 +38917,29 @@
     {
       "id": "lousy_with_cats_rule",
       "type": "rule_reminder",
-      "title": "“Lousy with cats”",
-      "text": "Six of the locations in this scenario begin play with a facedown [[Meowsk]] enemy beneath them. During this scenario, a location with a facedown encounter card beneath it is “lousy with cats.” <b>This has no inherent game effect.</b> However, some card effects may change depending on whether or not a location is lousy with cats.",
+      "title": "« Grouiller de Chats »",
+      "text": "Six lieux de ce scénario débutent la partie avec un ennemi [[Miaousque]] face cachée au-dessous d'eux. Lors de ce scénario, un lieu avec une carte Rencontre sous lui « grouille de chats » <b>Cela n'a aucun effet direct sur la partie.</b> Cependant, certains effets de carte peuvent changer selon qu'un lieu grouille de chats ou non.",
       "bullets": [
         {
-          "text": "If the encounter card beneath a location that is lousy with cats enters play or is removed for any reason, that location is no longer lousy with cats."
+          "text": "Si la carte Rencontre sous un lieu qui grouille de chats entre enjeu ou est retirée pour quelque raison que ce soit, ce lieu ne grouille plus de chats."
         }
       ]
     },
     {
       "id": "sniffing_locations_rule",
       "type": "rule_reminder",
-      "title": "“Sniffing” Locations",
-      "text": "Dogs have a fantastic sense of smell. Kate Winthpup in particular has an ability that allows her to “sniff ” a location. You may wish to use a token (such as a resource token) or a piece of scrap paper to record which locations you’ve sniffed. In general, once you sniff a location, it is sniffed for the rest of the game."
+      "title": "« Flairer » des Lieux",
+      "text": "Les chiens ont un fantastique sens de l'odorat. Kate Winthrott, en particulier, possède une capacité qui lui permet de « flairer » un lieu. Vous avez le droit d'utiliser un pion (par exemple une ressource) ou un bout de papier pour marquer les lieux que vous avez flairés. En général, une fois que vous avez flairé un lieu, il est flairé pour le reste de la partie."
     },
     {
       "id": "hp_quote",
       "type": "story",
-      "text": "“We may, indeed, judge the tone and bias of a civilisation by its relative attitude toward dogs and cats.”\n– H. P. Lovecraft, “Cats and Dogs”"
+      "text": "« Nous pouvons, sans aucun doute, juger de la qualité d 'une civilisation par son attitude relative envers les chiens et les chats. »\n— H.P. Lovecraft, « Chats et Chiens »"
     },
     {
       "id": "intro_1",
       "type": "story",
-      "text": "It is a dark and stormy night in the storied and haunted city of Barkham. By the time you hit the streets, it is raining cats and dogs. But you’ve picked up the scent of something big, and once you sink your teeth into a story, you just can’t let go. A little wet fur has never stopped you from finding the truth.\nStrange happenings have been going on in Barkham. Cat sightings are at an all-time high, and each day more and more pigeons go missing. While this wouldn’t normally be newsworthy, you know that there is more to this story than meets the eye. After all, while a few cats are harmless and adorable, most are nefarious schemers. You have heard the whispers and the howls on the wind. The Order of Dead Rodents on the Doorstep is back, and whatever they are plotting, only you can stop it.\nYou’re heading back to your home in Slobbertown—the Barkham neighborhood closest to the docks—when you catch a whiff of something foul and pungent in the air. Whatever is causing such an acrid stench must be nearby. But just then, another scent—!"
+      "text": "La nuit est sombre et orageuse dans la cité hantée et chargée d'histoire qu'est warkham. Le temps que vous atteigniez la rue, il se met à pleuvoir des cordes. Mais vous avez flairé un mystère de taille et une fois que vous avez quelque chose entre les crocs, pas question de le laisser filer. Mouiller un peu votrefourrure ne vous a jamais empêché de découvrir la vérité.\nD'étranges événements sont survenus à Warkham. Jamais l'on n'avait vu autant de chats dans la ville, et de plus en plus de pigeons disparaissent chaque jour. Bien que cela aurait d'ordinaire paru anordin, vous savez que cela cache quelque chose de louche. Après tout, si quelques chats s'avèrent adorables et inoffensifs, la plupart ne sont que d'infâmes conspirateurs. Vous avez entendu les murmures et les hurlements dans le vent. L'Ordre des Rongeurs Morts sur le Seuil est de retour : quoiqu'il soit en train de comploter, vous devez l'arrêter.\nVous retournez vers votre niche, dans le Faubourg des Babines — le quartier de Warkham le plus proche des quais — lorsque vous humez un remugle répugnant dans l'air. Quelle que soit la source d'une telle puanteur, elle doit être proche. Mais là soudain, une autre odeur — !"
     },
     {
       "id": "choose_scent_to_follow",
@@ -38950,7 +38950,7 @@
         "choices": [
           {
             "id": "foul_stench",
-            "text": "Follow the foul stench.",
+            "text": "Suivre l'odeur répugnante.",
             "steps": [
               "intro_2",
               "choose_confront_cat"
@@ -38958,7 +38958,7 @@
           },
           {
             "id": "bacon",
-            "text": "Follow the scent of bacon.",
+            "text": "Suivre l'arôme de bacon.",
             "steps": [
               "intro_3",
               "choose_food"
@@ -38970,7 +38970,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "No! You cannot be dissuaded, not even by thoughts of tasty bacon and ear scratches from all of the humans who congegrate around Velma’s Doghouse. This investigation is too important. You continue tracking the awful odor until you come upon its source: a hairball, hacked up in an alleyway by the docks. Of course. If this isn’t proof of feline involvement, you don’t know what is. Then you hear it: HRRK! HRRRRK! There’s only one thing that could be!"
+      "text": "Non ! Ni l'odeur alléchante du bacon ni les grattouilles des humains qui traînent près de la Niche de Velma ne pourrint vous détourner de votre piste. Cette enquête est trop importante. Vous continuez à suivre l'horrible odeur jusqu'à sa source : une boule de poils régurgitée dans une ruelle non loin des docks. Bien sûr. Voici la preuve que les félin trament quelque chose. C'est alors que vous l'entendez : HRRK ! HRRRRK ! Une seule chose peut produire ce son !"
     },
     {
       "id": "choose_confront_cat",
@@ -38981,7 +38981,7 @@
         "choices": [
           {
             "id": "foul_stench",
-            "text": "Confront the barfy cat.",
+            "text": "Affronter le chat qui régurgite.",
             "steps": [
               "intro_4",
               "setup_slobbertown",
@@ -38991,7 +38991,7 @@
           },
           {
             "id": "bacon",
-            "text": "Follow the cat to its lair.",
+            "text": "Suivre le félin jusqu'à son repaire.",
             "steps": [
               "intro_5",
               "setup_snoutside",
@@ -39005,7 +39005,7 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "The investigation can wait. Bacon is eternal. You follow that lovely smell northeast to Velma’s Doghouse in Beasttown. The sounds of revelry and the sizzling of grilled food make your tail wag faster than the cracking of a whip. And yet, something else tugs at the back of your dog-brain… What was it you were doing before?"
+      "text": "L'enquête peut attendre. Le gras, c'est la vie ! Vous suivez l'odeur alléchante vers le nord-est jusqu'à la Niche de Velma dans le District Canin. Le son des festivités et le crépitement de la viande en train de griller vous font remuer la queue plus vite qu'un fouet. Pourtant, quelque chose vous tracasse… qu'étiez-vous en train de faire juste avant, déjà ?"
     },
     {
       "id": "choose_food",
@@ -39016,7 +39016,7 @@
         "choices": [
           {
             "id": "foul_stench",
-            "text": "Nope, food.",
+            "text": "Peu importe, à la bouffe !",
             "steps": [
               "intro_6",
               "setup_beasttown",
@@ -39026,7 +39026,7 @@
           },
           {
             "id": "bacon",
-            "text": "Oh yeah, investigating the Order.",
+            "text": "Ah ouais… enquêter sur l'Ordre.",
             "steps": [
               "intro_7",
               "setup_tailside",
@@ -39040,38 +39040,38 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "You are too dogged to turn back now. You soon come across the unfortunate creature, the source of the wretched retching. Once it is done, it goes back to licking its fur, and you wonder if cats truly have no sense of cause and effect. “What is the Order plotting?” you ask pointedly.\n“Why should I tell you, mutt?” the cat replies with a hint of apathy in its voice. “You’ll be our prey soon enough.” With that, the cat leaps gracefully from the street to a low-hanging tree branch, and vanishes from sight.\nPrey? You ponder the cat’s words. Conflict between your kind and theirs is as old as time, but you have never been their prey. What exactly is their game…?"
+      "text": "Vous vous êtes donné un mal de chien pour arriver jusqu'ici, ce n'est pas pour reculer maintenant. Vous barrez la route de l'infortunée créature prise de haut-le-cœur. Sitôt qu'elle a fini de vomir, elle se remet à lécher sa fourrure et vous ne pouvez vous empêcher de vous demander s'il n'y a pas un lien de cause à effet. « Que complote l'Ordre ? » demandez-vous directement.\n« Pourquoi te le dirais-je, cabot ? » répond le chat, l'air désabusé. « Vous serez bientôt sa proie. » Sur ces mots, il bondit gracieusement sur la branche la plus basse d'un arbre et disparaît dans la nuit.\nUne proie ? Vous pesez les mots du chat. Le conflit entre vos deux espèces est aussi vieux que le monde, mais vous n'avez jamais été leurs proies. À quoi jouent-ils donc… ?"
     },
     {
       "id": "setup_slobbertown",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Slobbertown."
+      "text": "Passez à la <b>Mise en Place</b>. Vous commencez la partie dans le Faubourg des Babines."
     },
     {
       "id": "intro_5",
       "type": "story",
-      "text": "You track the scent of the cat and follow from a distance. Eventually it leaves the docks and makes its way southwest, toward Snoutside. What could a cat be doing way out here?\nYour question is answered when the creature is picked up by a robed human outside the manor house of the Barkham Hisstorical Society, an organization devoted to educating the populace about the “noble” cats of the city. It makes sense that such a reviled cult would be involved in this plot. The human brings the cat indoors, presumably to feed it and give it treats and such. Your blood boils. Curse you, foul cat! How dare you trick these humans into thinking you are cute and fluffy and not at all evil—!"
+      "text": "Vous pistez le félin en restant à distance. Il quitte finalement les docks et se dirige au sud-ouest, vers le Quartier de la Truffe. Qu'est-ce qu'un chat irait faire là-bas ?\nVous découvrez la réponse à cette question lorsqu'un humain en robe le ramasse devant le manoir de la Société des Historiens de Warkham, une organisation dont le but est d'informer la population sur les « nobles » chats de la ville. Il semble évident qu'un culte aussi abject est impliqué dans ce complot. L'humain emmène le chat à l'intérieur, probablement pour le nourrir et lui donner des friandises. Nom d'un chien ! Comment ce maudit animal ose-t-il duper ces humains en se faisant passer pour un être doux et mignon alors qu'il est le mal incarné ?!"
     },
     {
       "id": "setup_snoutside",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Snoutside."
+      "text": "Passez à la <b>Mise en Place</b<. Vous commencez la partie dans le Quartier de la Truffe."
     },
     {
       "id": "intro_6",
       "type": "story",
-      "text": ": It isn’t until your belly is full of yummy food and your tummy has been thoroughly rubbed that you remember why you were out and about in the first place. You patrol the area until you spot several panicked rats scurrying from a nearby sewer drain.\n“What’s the matter?” you bark. They chitter and chirp in response, and it is only then that you remember that rats can’t talk. Still, you glean some of their story from their frantic pantomiming. The Order of Dead Rodents at the Doorstep, as evidenced by their very namesake, has been hunting rats for ages. But now it is not just cats hunting them, but horrid cat-abominations that defy all earthly logic. Sounds like the Order is up to its old tricks once again…"
+      "text": "Ce n'est qu'une fois le ventre plein de nourriture savoureuse et repu de grattouilles que vous vous rappelez pourquoi vous étiez dehors et à l'affût. Vous patrouillez dans les environs jusqu'à remarquer groupe de rats paniqués qui surgit d 'une conduite d'égout.\n« Que se passe-t-il ? » aboyez-vous. Ils couinent pour toute réponse, et vous vous souvenez alors que les rats ne savent pas parler. À leur comportement frénétique, vous devinez tout de même la raison de leur terreur. Comme son nom l'indique, l'Ordre des Rongeurs Morts sur le Seuil chasse les rats depuis des siècles… sauf que ces derniers ne sont plus seulement traqués par de simples félins mais par d'immondes chabominations défiant toute logique. On dirait que l'Ordre a repris ses vieilles habitudes, une fois encore…"
     },
     {
       "id": "setup_beasttown",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Beasttown."
+      "text": "Passez à la <b>Mise en Place</b>. Vous commencez la partie dans le District Canin."
     },
     {
       "id": "intro_7",
       "type": "story",
-      "text": "The urgency of your investigation is too important for you to be distracted by thoughts of tasty food. As you turn away from Velma’s, you spot a streak of cat-fur dipping gracefully out of sight. Using your keen sense of smell, you keep a tight pursuit as the cat winds its way west to Tailside, where Barkham’s train station can be found.\nYou follow the cat to the tracks on the western edge of town, where it ducks underneath an abandoned train car marked with a cat’s paw print. “Meowsachusetts Catnip Co.” reads the label beneath the logo. A front for a cult headquarters, no doubt. You are about to eavesdrop on the cats’ refuge when suddenly, a creature bursts forth from underneath the train! It is a hideous hybrid of bird, bat, and cat, with webbed paws and membranous wings notably lacking in fur, though its face is unmistakably feline. The sight of the thing makes your fur stand on end."
+      "text": "Votre enquête est trop importante pour que vous vous laissiez distraire par de la nourriture, même délicieuse. Vous vous éloignez de la Niche de Velma et apercevez la fourrure d'un chat qui disparaît d'un bond gracieux. Grâce à votre odorat développé, vous vous élancez à sa poursuite vers le Quartier de la Queue, où se trouve la gare de Warkham.\nVous suivez le félin le long des rails de la rive ouest jusqu'à ce qu'il se glisse sous un wagon marqué d'une empreinte de patte de chat. « Compagnie Herbe-à-Chat du Miaoussachussetts » est inscrit sous ce logo. Une façade pour un quartier général de culte, sans aucun doute. Vous êtes sur le point de plaquer votre oreille sur la paroi pour espionner quand, tout à coup, une créature jaillit de sous le train ! Il s'agit d'un immonde hybride d'oiseau, de chauve-souris et de chat, avec des pattes palmées et des ailes membraneuses dépourvues de fourrure. Son visage, lui, est indéniablement celui d’un félin. La vue de cette chose vous hérisse le poil."
     },
     {
       "id": "setup_tailside",
-      "text": "Proceed to <b>Setup</b>. You will begin play in Tailside."
+      "text": "Passez à la <b>Mise en Place</b>. Vous commencez la partie dans le Quartier de la Queue."
     },
     {
       "id": "gather_encounter_sets",
@@ -39083,37 +39083,37 @@
     },
     {
       "id": "setup_locations_snoutside",
-      "text": "Put all of the locations into play.",
+      "text": "Mettez en jeu tous les lieux.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Snoutside."
+          "text": "Chaque investigateur commence la partie dans le Quartier de la Truffe."
         }
       ]
     },
     {
       "id": "setup_locations_tailside",
-      "text": "Put all of the locations into play.",
+      "text": "Mettez en jeu tous les lieux.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Tailside."
+          "text": "Chaque investigateur commence la partie dans le Quartier de la Queue."
         }
       ]
     },
     {
       "id": "setup_locations_beasttown",
-      "text": "Put all of the locations into play.",
+      "text": "Mettez en jeu tous les lieux.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Beasttown."
+          "text": "Chaque investigateur commence la partie dans le District Canin."
         }
       ]
     },
     {
       "id": "setup_locations_slobbertown",
-      "text": "Put all of the locations into play.",
+      "text": "Mettez en jeu tous les lieux.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Slobbertown."
+          "text": "Chaque investigateur commence la partie dans le Faubourg des Babines."
         }
       ]
     },
@@ -39152,58 +39152,58 @@
       "location_names": [
         {
           "code": "barkham_asylum",
-          "name": "Barkham Asylum"
+          "name": "Asile de Warkham"
         },
         {
           "code": "velmas_doghouse",
-          "name": "Velma's Doghouse"
+          "name": "Niche de Velma"
         },
         {
           "code": "tailside",
-          "name": "Tailside"
+          "name": "Quartier de la Queue"
         },
         {
           "code": "beasttown",
-          "name": "Beasttown"
+          "name": "District Canin"
         },
         {
           "code": "arkham_city_pound",
-          "name": "Arkham City Pound"
+          "name": "Fourrière de Warkham"
         },
         {
           "code": "muttskatonic_university",
-          "name": "Muttskatonic University"
+          "name": "Université Miscabotic"
         },
         {
           "code": "snoutside",
-          "name": "Snoutside"
+          "name": "Quartier de la Truffe"
         },
         {
           "code": "slobbertown",
-          "name": "Slobbertown"
+          "name": "Faubourg des Babines"
         },
         {
           "code": "st_marys_animal_hospital",
-          "name": "St. Mary's Animal Hospital"
+          "name": "Clinique Vétérinaire St. Mary"
         },
         {
           "code": "boneyard",
-          "name": "Boneyard"
+          "name": "Champ d'Os"
         }
       ]
     },
     {
       "id": "setup_meowsk_cards",
-      "text": "Find and shuffle the 7 [[Meowsk]] enemies. Remove 1 of them from the game without looking at it. Place 1 of the remaining [[Meowsk]] enemies facedown beneath each of the following locations: Barkham Asylum, Barkham City Pound, Velma’s Doghouse, Muttskatonic University, Boneyard, and St. Mary’s Animal Hospital.",
+      "text": "Cherchez et mélangez les 7 ennemis [[Miaousque]]. Retirez-en 1 de la partie sans le regarder. Placez 1 exemplaire de chaque ennemi [[Miaousque]] restant, face cachée, sous chacun des lieux suivants : Asile de Warkham, Fourrière de Warkham, Niche de Velma, Université Miscabotic, Champ d'Os et Clinique Vétérinaire St. Mary.",
       "bullets": [
         {
-          "text": "Each of these locations is “lousy with cats” (see “lousy with cats”, above). A location is no longer lousy with cats if the encounter card beneath it is removed for any reason."
+          "text": "Chacun de ces lieux « grouille de chats » (voir grouiller de chats » ci-dessus). Un lieu ne grouille plus de chats si la carte Rencontre au-dessous est retirée pour n'importe quelle raison."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set Meowlathotep aside, out of play."
+      "text": "Mettez Myarlathotep de côté, hors jeu."
     },
     {
       "id": "encounter_deck",
@@ -39216,15 +39216,15 @@
     },
     {
       "id": "investigators_win",
-      "text": "The investigators win, but only if they, too, are dog people."
+      "text": "Les investigateurs ont gangé, mais seulement s'ils préfèrent les chiens aux chats."
     },
     {
       "id": "cat_people_are_traitors",
-      "text": "Cat people complete the scenario successfully but feel like traitors."
+      "text": "Les investigateurs qui préfèrent les chats ont également gagné, mais ils ont l'impressions dêtre des traîtres."
     },
     {
       "id": "investigators_lose",
-      "text": "The investigators lose! Players who are cat people win the game, though."
+      "text": "Les investigateurs ont perdu ! Sauf s'ils préfèrent les chats aux chiens : ceux-là gagnent quand même la partie."
     }
   ],
   "resolutions": [
@@ -39244,7 +39244,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "The humans will never know the danger that lurked just beyond the edges of their senses—the danger they could not smell despite its foul scent. You will stay alert and loyally sniff out any hazards to your beloved city, for that is the duty and burden you and all dogkind bear. But, until the next time you are needed, you are content to sleep, play, and eat treat after treat. Victory is sweet.",
+      "text": "Les humains ne se rendront jamais compte du danger qui rôde par-delà les limites de leur sens — celui qu'ils ne peuvent sentir malgré son odeur fétide. Vous resterez en alerte, écartant tous les périls qui menacent votre belle cité, car tels spnt le devoir et le fardeau de toute l'espèce canine. Mais jusqu'à la prochaine menace, vous vous contenterez de dormir, jouer et manger des tas de biscuits pour chien. Que la victoire est douce !",
       "steps": [
         "investigators_win",
         "cat_people_are_traitors"
@@ -39253,7 +39253,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "It's the end of all dogkind. The a-pawcalypse. A real cat-astrophe. An absolute cat-acylsm.\n\n\n\n…I'll see myself out.",
+      "text": "C'est la fin de toute la canidité. L'Apo-chat-lypse. Une vraie chat-astrophe. Un chat-aclysme absolu.\n\n\n\n… je suis déjà dehors.",
       "steps": [
         "investigators_lose"
       ]
@@ -72620,7 +72620,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_a_strange_idol",
-          "text": "découverte d'une étrange idole."
+          "text": "découverte d'une étrange idole"
         }
       ]
     },
@@ -72641,7 +72641,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_an_unholy_mantle",
-          "text": "découverte d'une cape blasphématoire."
+          "text": "découverte d'une cape blasphématoire"
         }
       ]
     },
@@ -72662,7 +72662,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_a_mystical_relic",
-          "text": "découverte d'une relique mystique."
+          "text": "découverte d'une relique mystique"
         }
       ]
     },
@@ -73533,7 +73533,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_deal_with_joe_sargent",
-          "text": "Un marché conclu avec Joe Sargent."
+          "text": "Un marché conclu avec Joe Sargent"
         }
       ]
     },
@@ -73551,7 +73551,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_followed_lead",
-          "text": "Une piste suivie."
+          "text": "Une piste suivie"
         },
         {
           "type": "add_card",
@@ -73574,7 +73574,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "an_intervention",
-          "text": "Une intervention."
+          "text": "Une intervention"
         },
         {
           "type": "add_chaos_token",
@@ -73598,7 +73598,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_jailbreak",
-          "text": "Une évasion."
+          "text": "Une évasion"
         }
       ]
     },
