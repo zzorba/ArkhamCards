@@ -30,7 +30,7 @@ function NewDialog({
   alignment = 'center',
   avoidKeyboard,
 }: Props) {
-  const { backgroundStyle, darkMode, colors, shadow, typography, width } = useContext(StyleContext);
+  const { backgroundStyle, darkMode, colors, shadow, typography, width, height } = useContext(StyleContext);
   const verticalButtons = buttons.length > 2 || TINY_PHONE;
   return (
     <Modal
@@ -52,7 +52,7 @@ function NewDialog({
         padding: s,
       }]}
     >
-      <View style={[shadow.large, styles.dialog, { maxHeight: '60%', width: width - s * 2 }]}>
+      <View style={[shadow.large, styles.dialog, { width: width - s * 2 }]}>
         <View style={[styles.header, { backgroundColor: colors.D20 }]}>
           <Text style={[typography.large, typography.inverted]}>{title}</Text>
           { !!dismissable && (
@@ -67,10 +67,18 @@ function NewDialog({
             </View>
           ) }
         </View>
-        <ScrollView overScrollMode="never" bounces={false} showsVerticalScrollIndicator style={[styles.body, backgroundStyle]}>
-          { children }
-          { (buttons.length > 0) ? (
-            <View style={[styles.actionButtons, { flexDirection: verticalButtons ? 'column' : 'row' }]}>
+        <View style={[styles.body, backgroundStyle]}>
+          <ScrollView
+            overScrollMode="never"
+            bounces={false}
+            showsVerticalScrollIndicator
+            style={{ maxHeight: height * 0.5 }}
+            contentContainerStyle={[space.paddingTopS, buttons.length > 0 ? space.paddingBottomS : undefined]}
+          >
+            { children }
+          </ScrollView>
+          { (buttons.length > 0) && (
+            <View style={[styles.actionButtons, space.paddingBottomS, { flexDirection: verticalButtons ? 'column' : 'row' }]}>
               { map(buttons, (button, idx) => {
                 return (
                   <View key={idx} style={[styles.button, (idx < buttons.length - 1) ? {
@@ -82,8 +90,8 @@ function NewDialog({
                 );
               }) }
             </View>
-          ) : <View style={space.paddingBottomS} /> }
-        </ScrollView>
+          ) }
+        </View>
       </View>
     </Modal>
   );
@@ -125,12 +133,12 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   body: {
-    padding: s,
+    paddingLeft: s,
+    paddingRight: s,
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
   },
   actionButtons: {
-    marginTop: s,
     justifyContent: 'center',
     alignItems: 'center',
   },
