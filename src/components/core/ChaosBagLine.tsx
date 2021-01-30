@@ -17,6 +17,9 @@ export default function ChaosBagLine({ chaosBag }: Props) {
   const tokensLine = flatMap(bagKeys, (token: ChaosTokenType) => (
     map(range(0, chaosBag[token] || 0), () => SPECIAL_TOKENS_SET.has(token) ? `[${token}]` : `${token}`)
   )).join(', ');
+  if (!tokensLine) {
+    return null;
+  }
   return (
     <CardFlavorTextComponent
       sizeScale={1.3}
