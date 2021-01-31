@@ -62,7 +62,6 @@ function ArkahmIconSpanRule(style: StyleContextType, sizeScale: number): Markdow
     match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"( title="[^"]*")?></span>')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
-      console.log(capture[1]);
       return { name: capture[1] };
     },
     render: ArkhamIconNode(style, sizeScale),

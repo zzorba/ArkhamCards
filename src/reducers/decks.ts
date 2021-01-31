@@ -23,15 +23,15 @@ import {
   getDeckId,
   DeckId,
   REDUX_MIGRATION,
-  CampaignId,
   UPLOAD_DECK,
+  UploadedCampaignId,
 } from '@actions/types';
 import deepDiff from 'deep-diff';
 
 interface DecksState {
   all: DecksMap;
   uploaded?: {
-    [uuid: string]: CampaignId[] | undefined;
+    [uuid: string]: UploadedCampaignId[] | undefined;
   };
   replacedLocalIds?: {
     [uuid: string]: DeckId;

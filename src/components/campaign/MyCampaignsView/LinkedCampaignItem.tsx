@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { max } from 'lodash';
 
-import { Campaign, CUSTOM } from '@actions/types';
+import { Campaign, CUSTOM, getCampaignId } from '@actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { useCampaign } from '@components/core/hooks';
@@ -20,8 +20,15 @@ function getTime(date: Date | string) {
 }
 
 export default function LinkedCampaignItem({ campaign, onPress }: Props) {
-  const campaignA = useCampaign(campaign.linkUuid ? campaign.linkUuid.campaignIdA : undefined);
-  const campaignB = useCampaign(campaign.linkUuid ? campaign.linkUuid.campaignIdB : undefined);
+  const campaignId = getCampaignId(campaign);
+  const [campaignIdA, campaignIdB] = useMemo(() => {
+    return [
+      campaign.linkUuid ? { campaignId: campaign.linkUuid.campaignIdA, serverId: campaignId.serverId } : undefined,
+      campaign.linkUuid ? { campaignId: campaign.linkUuid.campaignIdB, serverId: campaignId.serverId } : undefined,
+    ];
+  }, [campaign.linkUuid, campaignId.serverId]);
+  const campaignA = useCampaign(campaignIdA);
+  const campaignB = useCampaign(campaignIdB);
 
   const onCampaignPress = useCallback(() => {
     onPress(campaign.uuid, campaign);

@@ -72,7 +72,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
           component: {
             name: 'Guide.LinkedCampaign',
             passProps: {
-              campaignId: campaign.uuid,
+              campaignId: getCampaignId(campaign),
               campaignIdA: campaign.linkUuid.campaignIdA,
               campaignIdB: campaign.linkUuid.campaignIdB,
             },
@@ -84,7 +84,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
           component: {
             name: 'Guide.Campaign',
             passProps: {
-              campaignId: campaign.uuid,
+              campaignId: getCampaignId(campaign),
             },
             options,
           },
@@ -95,7 +95,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
         component: {
           name: 'Campaign',
           passProps: {
-            campaignId: campaign.uuid,
+            campaignId: getCampaignId(campaign),
           },
           options,
         },

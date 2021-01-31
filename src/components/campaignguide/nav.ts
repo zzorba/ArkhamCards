@@ -4,11 +4,12 @@ import { t } from 'ttag';
 import { ScenarioProps } from '@components/campaignguide/ScenarioView';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { ProcessedScenario } from '@data/scenario';
+import { CampaignId } from '@actions/types';
 
 export function showScenario(
   componentId: string,
   scenario: ProcessedScenario,
-  campaignId: string,
+  campaignId: CampaignId,
   campaignState: CampaignStateHelper,
   subtitle?: string,
   showLinkedScenario?: (

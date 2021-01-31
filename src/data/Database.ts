@@ -162,9 +162,11 @@ export default class Database {
   async getRulesPaged(
     page: number,
     pageSize: number,
-    query?: Brackets
+    query?: Brackets,
   ): Promise<Rule[]> {
-    let rulesQuery = (await this.rules()).createQueryBuilder('r').leftJoinAndSelect('r.rules', 'sub_rules');
+    let rulesQuery = (await this.rules()).createQueryBuilder('r')
+      .leftJoinAndSelect('r.rules', 'sub_rules')
+      .leftJoinAndSelect('sub_rules.rules', 'sub_rules_2');
     if (query) {
       rulesQuery = rulesQuery.where(query);
     }

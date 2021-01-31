@@ -27,14 +27,14 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
-type Props = CampaignGuideProps & NavigationProps;
+type Props = CampaignGuideProps & NavigationProps & { setCampaignServerId: (serverId: string) => void };
 
 function CampaignGuideView(props: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
-  const { componentId } = props;
+  const { componentId, setCampaignServerId } = props;
   const campaignData = useContext(CampaignGuideContext);
-  const campaignId = campaignData.campaignId;
+  const { campaignId } = campaignData;
   const dispatch = useDispatch();
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
@@ -169,6 +169,7 @@ function CampaignGuideView(props: Props) {
       { tabView }
       <CampaignGuideFab
         setSelectedTab={setSelectedTab}
+        setCampaignServerId={setCampaignServerId}
         campaignId={campaignData.campaignId}
         componentId={componentId}
         campaignName={campaignData.campaignName}
@@ -186,7 +187,7 @@ function CampaignGuideView(props: Props) {
   );
 }
 
-export default withCampaignGuideContext<CampaignGuideProps & NavigationProps>(CampaignGuideView);
+export default withCampaignGuideContext(CampaignGuideView);
 
 const styles = StyleSheet.create({
   wrapper: {

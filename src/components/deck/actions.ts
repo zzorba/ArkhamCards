@@ -52,10 +52,8 @@ function setNewDeck(
     if (deck.previousDeckId && user) {
       const uploads = getDeckUploadedCampaigns(getState(), deck.previousDeckId);
       if (uploads.length) {
-        forEach(uploads, ({ campaignId, serverId }) => {
-          if (serverId) {
-            dispatch(uploadCampaignDeckHelper(campaignId, serverId, id, user, deck));
-          }
+        forEach(uploads, campaignId => {
+          dispatch(uploadCampaignDeckHelper(campaignId, id, user, deck));
         });
       }
     }
@@ -78,10 +76,8 @@ function updateDeck(
     if (user) {
       const uploads = getDeckUploadedCampaigns(getState(), id);
       if (uploads.length) {
-        forEach(uploads, ({ campaignId, serverId }) => {
-          if (serverId) {
-            dispatch(uploadCampaignDeckHelper(campaignId, serverId, id, user, deck));
-          }
+        forEach(uploads, campaignId => {
+          dispatch(uploadCampaignDeckHelper(campaignId, id, user, deck));
         });
       }
     }
@@ -101,10 +97,8 @@ export function removeDeck(
       deleteAllVersions: !!deleteAllVersions,
     });
     if (user) {
-      forEach(uploads, ({ campaignId, serverId }) => {
-        if (serverId) {
-          dispatch(removeCampaignDeckHelper(campaignId, serverId, id, false));
-        }
+      forEach(uploads, campaignId => {
+        dispatch(removeCampaignDeckHelper(campaignId, id, false));
       });
     }
     return true;

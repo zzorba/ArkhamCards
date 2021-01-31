@@ -5,8 +5,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, Options } from 'react-native-navigation';
+import { ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
@@ -16,7 +18,7 @@ import { campaignNames } from '@components/campaign/constants';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
-import { getCampaigns } from '@reducers';
+import { AppState, getCampaigns } from '@reducers';
 import COLORS from '@styles/colors';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -26,8 +28,12 @@ import { NavigationProps } from '@components/nav/types';
 import { getStandaloneScenarios } from '@data/scenario';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { refreshCampaigns } from '@components/campaignguide/actions';
+
+type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 function MyCampaignsView({ componentId }: NavigationProps) {
+  const dispatch: Dispatch = useDispatch();
   const { user } = useContext(ArkhamCardsAuthContext);
   const [search, setSearch] = useState('');
   const { lang } = useContext(LanguageContext);
@@ -111,16 +117,19 @@ function MyCampaignsView({ componentId }: NavigationProps) {
     );
   }, [filteredCampaigns, search, typography]);
   const [refreshing, setRefreshing] = useState<boolean>(false);
-  const refreshCampaigns = useCallback(() => {
-    console.log('Refreshing campaigns');
-    setRefreshing(true);
-    setTimeout(() => setRefreshing(false), 5000);
-  }, [setRefreshing]);
+  const doRefreshCampaigns = useCallback(async() => {
+    if (!refreshing && user) {
+      setRefreshing(true);
+      await dispatch(refreshCampaigns(user));
+      setRefreshing(false);
+    }
+  }, [setRefreshing, refreshing, user, dispatch]);
   useEffect(() => {
     if (user) {
-      refreshCampaigns();
+      doRefreshCampaigns();
     }
-  }, [user, refreshCampaigns]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
   const footer = useMemo(() => {
     return (
       <View>
@@ -147,7 +156,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
           componentId={componentId}
           campaigns={filteredCampaigns}
           standalonesById={standalonesById}
-          onRefresh={user ? refreshCampaigns : undefined}
+          onRefresh={user ? doRefreshCampaigns : undefined}
           refreshing={refreshing}
           footer={footer}
         />

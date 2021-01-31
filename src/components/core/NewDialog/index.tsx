@@ -73,7 +73,7 @@ function NewDialog({
             bounces={false}
             showsVerticalScrollIndicator
             style={{ maxHeight: height * 0.5 }}
-            contentContainerStyle={[space.paddingTopS, buttons.length > 0 ? space.paddingBottomS : undefined]}
+            contentContainerStyle={[space.paddingTopS, space.paddingBottomS]}
           >
             { children }
           </ScrollView>

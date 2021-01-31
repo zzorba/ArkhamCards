@@ -14,7 +14,7 @@ export interface GuideOddsCalculatorProps {
 }
 
 export default function GuideOddsCalculatorView({ campaignId, investigatorIds, chaosBag }: GuideOddsCalculatorProps) {
-  const campaign = useCampaign(campaignId.campaignId);
+  const campaign = useCampaign(campaignId);
   const cycleScenarios = useCycleScenarios(campaign);
 
   const investigators = useInvestigatorCards();

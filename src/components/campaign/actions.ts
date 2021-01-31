@@ -1,6 +1,5 @@
 import { forEach, map, omit } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
-import database from '@react-native-firebase/database';
 
 import {
   NEW_CAMPAIGN,
@@ -48,7 +47,7 @@ import {
   RemoveUploadDeckAction,
   REMOVE_UPLOAD_DECK,
   CampaignSyncRequiredAction,
-  CAMPAIGN_SYNC_REQUIRED,
+  getCampaignId,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
@@ -94,7 +93,7 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 
 export function addInvestigator(
   user: FirebaseAuthTypes.User | undefined,
-  { campaignId, serverId }: CampaignId,
+  id: CampaignId,
   investigator: string,
   deckId?: DeckId
 ): ThunkAction<void, AppState, unknown, CampaignAddInvestigatorAction> {
@@ -104,21 +103,21 @@ export function addInvestigator(
       undefined;
     const action: CampaignAddInvestigatorAction = {
       type: CAMPAIGN_ADD_INVESTIGATOR,
-      id: campaignId,
+      id,
       investigator,
       deckId: baseDeckId,
       now: new Date(),
     };
     dispatch(action);
-    if (deckId && serverId && user) {
-      dispatch(uploadCampaignDeckHelper(campaignId, serverId, deckId, user));
+    if (deckId && id.serverId && user) {
+      dispatch(uploadCampaignDeckHelper(id, deckId, user));
     }
   };
 }
 
 export function removeInvestigator(
   user: FirebaseAuthTypes.User | undefined,
-  { campaignId, serverId }: CampaignId,
+  id: CampaignId,
   investigator: string,
   deckId?: DeckId
 ): ThunkAction<void, AppState, unknown, CampaignRemoveInvestigatorAction> {
@@ -128,14 +127,14 @@ export function removeInvestigator(
       undefined;
     const action: CampaignRemoveInvestigatorAction = {
       type: CAMPAIGN_REMOVE_INVESTIGATOR,
-      id: campaignId,
+      id,
       investigator,
       removeDeckId: baseDeckId,
       now: new Date(),
     };
     dispatch(action);
-    if (deckId && user && serverId) {
-      dispatch(removeCampaignDeckHelper(campaignId, serverId, deckId, true));
+    if (deckId && user && id.serverId) {
+      dispatch(removeCampaignDeckHelper(id, deckId, true));
     }
   };
 }
@@ -213,13 +212,13 @@ export function newCampaign(
 }
 
 export function updateCampaignSpentXp(
-  { campaignId, serverId }: CampaignId,
+  id: CampaignId,
   investigator: string,
   operation: 'inc' | 'dec'
 ): UpdateCampaignSpentXpAction {
   return {
     type: UPDATE_CAMPAIGN_SPENT_XP,
-    id: campaignId,
+    id,
     investigator,
     operation,
     now: new Date(),
@@ -238,7 +237,7 @@ export function updateCampaignSpentXp(
  */
 export function updateCampaign(
   user: FirebaseAuthTypes.User | undefined,
-  { campaignId, serverId }: CampaignId,
+  id: CampaignId,
   sparseCampaign: Partial<Campaign & {
     latestDeckIds?: DeckId[];
   }>,
@@ -251,15 +250,16 @@ export function updateCampaign(
     }
     dispatch({
       type: UPDATE_CAMPAIGN,
-      id: campaignId,
+      id,
       campaign,
       now: (now || new Date()),
     });
-    if (user && serverId) {
+    /*
+    if (user && id.serverId) {
       try {
         await Promise.all(
           map(omit(sparseCampaign, ['serverId']), (value, key) => {
-            const ref = database().ref('/campaigns').child(serverId).child('campaign').child(key);
+            const ref = fbdb.campaignDetail(id).child(key);
             if (!value) {
               return ref.remove();
             }
@@ -269,24 +269,22 @@ export function updateCampaign(
       } catch (e) {
         dispatch({
           type: CAMPAIGN_SYNC_REQUIRED,
-          campaignId: {
-            campaignId,
-            serverId,
-          },
+          campaignId: id,
         });
       }
     }
+    */
   };
 }
 
 export function updateChaosBagResults(
-  { campaignId, serverId }: CampaignId,
+  id: CampaignId,
   chaosBagResults: ChaosBagResults
 ): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
   return (dispatch) => {
     dispatch({
       type: UPDATE_CHAOS_BAG_RESULTS,
-      id: campaignId,
+      id,
       chaosBagResults,
       now: new Date(),
     });
@@ -301,7 +299,7 @@ export function adjustBlessCurseChaosBagResults(
   return (dispatch) => {
     dispatch({
       type: ADJUST_BLESS_CURSE,
-      id: id.campaignId,
+      id,
       bless: type === 'bless',
       direction,
       now: new Date(),
@@ -337,7 +335,7 @@ export function removeLocalCampaign(
     }
     dispatch({
       type: DELETE_CAMPAIGN,
-      id: campaign.uuid,
+      id: getCampaignId(campaign),
     });
   };
 }

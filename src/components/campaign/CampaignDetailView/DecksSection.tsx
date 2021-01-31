@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { find, flatMap, filter, map, partition } from 'lodash';
+import { find, flatMap, partition } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -9,7 +9,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
-import { Campaign, Deck, DeckId, DecksMap, getCampaignId, getDeckId, InvestigatorData, Trauma, TraumaAndCardData } from '@actions/types';
+import { Campaign, CampaignId, Deck, DeckId, DecksMap, getCampaignId, getDeckId, InvestigatorData, Trauma, TraumaAndCardData } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
 import space from '@styles/space';
@@ -21,6 +21,7 @@ import { getDeck } from '@reducers';
 
 interface Props {
   componentId: string;
+  campaignId: CampaignId;
   campaign: Campaign;
   latestDeckIds: DeckId[];
   decks: DecksMap;
@@ -28,8 +29,7 @@ interface Props {
   allInvestigators: Card[];
   investigatorData: InvestigatorData;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
-  updateLatestDeckIds: (latestDeckIds: DeckId[]) => void;
-  updateNonDeckInvestigators: (nonDeckInvestigators: string[]) => void;
+  removeInvestigator: (investigator: Card, removedDeckId?: DeckId) => void;
   showChooseDeck: (investigator?: Card) => void;
   incSpentXp: (code: string) => void;
   decSpentXp: (code: string) => void;
@@ -44,6 +44,7 @@ const EMPTY_TRAUMA_DATA: TraumaAndCardData = {};
 export default function DecksSection({
   header,
   componentId,
+  campaignId,
   campaign,
   latestDeckIds,
   decks,
@@ -51,8 +52,7 @@ export default function DecksSection({
   allInvestigators,
   investigatorData,
   showTraumaDialog,
-  updateLatestDeckIds,
-  updateNonDeckInvestigators,
+  removeInvestigator,
   incSpentXp,
   decSpentXp,
   removeMode,
@@ -61,27 +61,6 @@ export default function DecksSection({
   showAlert,
 }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
-  const removeInvestigator = useCallback((investigator: Card, removedDeckId?: DeckId) =>{
-    if (removedDeckId) {
-      const newLatestDeckIds = filter(
-        latestDeckIds,
-        deckId => deckId.uuid !== removedDeckId.uuid
-      );
-      const deck = getDeck(decks, removedDeckId);
-      if (deck && !find(allInvestigators, card => card.code === investigator.code)) {
-        updateNonDeckInvestigators(map(allInvestigators, card => card.code));
-      }
-      updateLatestDeckIds(newLatestDeckIds);
-    } else {
-      updateNonDeckInvestigators(
-        filter(
-          map(allInvestigators, card => card.code),
-          code => code !== investigator.code
-        )
-      );
-    }
-  }, [latestDeckIds, allInvestigators, updateLatestDeckIds, updateNonDeckInvestigators, decks]);
-
   const removeDeckPrompt = useCallback((investigator: Card) => {
     const deckId = find(latestDeckIds, deckId => {
       const deck = getDeck(decks, deckId);
@@ -142,7 +121,6 @@ export default function DecksSection({
   const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
     showChooseDeck(investigator);
   }, [showChooseDeck]);
-  const campaignId = useMemo(() => getCampaignId(campaign), [campaign]);
   const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: Deck) => {
     const traumaAndCardData = campaign.investigatorData[investigator.code] || EMPTY_TRAUMA_DATA;
     return (

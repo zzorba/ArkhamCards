@@ -34,7 +34,7 @@ interface Props {
   campaignGuide: CampaignGuide
 }
 
-export default function EncounterSetStepComponent({ componentId, campaignId: { campaignId }, step, campaignGuide }: Props) {
+export default function EncounterSetStepComponent({ componentId, campaignId, step, campaignGuide }: Props) {
   const alphabetizeEncounterSets = useSelector<AppState>(state => state.settings.alphabetizeEncounterSets || false);
   const { colors } = useContext(StyleContext);
 

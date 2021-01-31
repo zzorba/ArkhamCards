@@ -29,7 +29,7 @@ type Props = NavigationProps & EditScenarioResultProps;
 
 export default function EditScenarioResultView({ campaignId, index, componentId }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
-  const campaign = useCampaign(campaignId.campaignId);
+  const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
   const existingScenarioResult = campaign && campaign.scenarioResults[index];
   const [scenarioResult, setScenarioResult] = useState<ScenarioResult | undefined>(existingScenarioResult);

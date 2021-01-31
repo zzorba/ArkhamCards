@@ -47,7 +47,7 @@ class CampaignLinkHelper {
       showScenario(
         this.componentId,
         scenario,
-        this.campaignDataA.campaignId.campaignId,
+        this.campaignDataA.campaignId,
         this.campaignDataA.campaignState,
         this.campaignDataA.campaignGuide.campaignName(),
         this.showCampaignScenarioB
@@ -64,7 +64,7 @@ class CampaignLinkHelper {
       showScenario(
         this.componentId,
         scenario,
-        this.campaignDataB.campaignId.campaignId,
+        this.campaignDataB.campaignId,
         this.campaignDataB.campaignState,
         this.campaignDataB.campaignGuide.campaignName(),
         this.showCampaignScenarioA

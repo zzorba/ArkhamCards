@@ -39,7 +39,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const [deck] = useDeck(id, {});
-  const campaign = useCampaign(campaignId?.campaignId);
+  const campaign = useCampaign(campaignId);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>(null);
 
   const latestScenario = useMemo(() => campaign && last(campaign.scenarioResults || []), [campaign]);

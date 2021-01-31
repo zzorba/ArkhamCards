@@ -42,7 +42,7 @@ export default function StandaloneGuideView({ campaignId, standaloneId, componen
     <>
       <ScenarioView
         componentId={componentId}
-        campaignId={campaignId.campaignId}
+        campaignId={campaignId}
         scenarioId={standaloneId.scenarioId}
         standalone
         footer={<BasicButton onPress={deletePressed} title={t`Delete standalone`} color={colors.warn} />}

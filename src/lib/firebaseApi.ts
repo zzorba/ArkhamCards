@@ -1,20 +1,19 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { CAMPAIGN_SYNC_REQUIRED, Deck, DeckId, getDeckId, UPLOAD_DECK } from '@actions/types';
-import database from '@react-native-firebase/database';
+import { CAMPAIGN_SYNC_REQUIRED, Deck, DeckId, getDeckId, UploadedCampaignId, UPLOAD_DECK } from '@actions/types';
 import { AppState, getAllDecks, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import fbdb from '@data/firebase/fbdb';
 
 
 export function removeCampaignDeckHelper(
-  campaignId: string,
-  serverId: string,
+  campaignId: UploadedCampaignId,
   deckId: DeckId,
   removeAll: boolean
 ): ThunkAction<void, AppState, unknown, Action<string>> {
   return async(dispatch, getState) => {
-    const ref = database().ref('/campaigns').child(serverId).child('decks');
+    const ref = fbdb.campaignDecks(campaignId);
     const removals: Promise<void>[] = [ref.child(deckId.uuid).remove()];
     if (removeAll) {
       const all = getAllDecks(getState());
@@ -31,18 +30,14 @@ export function removeCampaignDeckHelper(
     } catch (e) {
       dispatch({
         type: CAMPAIGN_SYNC_REQUIRED,
-        campaignId: {
-          campaignId,
-          serverId,
-        },
+        campaignId,
       });
     }
   };
 }
 
 export function uploadCampaignDeckHelper(
-  campaignId: string,
-  serverId: string,
+  campaignId: UploadedCampaignId,
   deckId: DeckId,
   user: FirebaseAuthTypes.User,
   singleDeck?: Deck
@@ -51,7 +46,7 @@ export function uploadCampaignDeckHelper(
     const state = getState();
     const deckSelector = makeDeckSelector();
     const uploads: Promise<void>[] = [];
-    const ref = database().ref('/campaigns').child(serverId).child('decks');
+    const ref = fbdb.campaignDecks(campaignId);
     if (singleDeck) {
       uploads.push(ref.child(deckId.uuid).set({
         ...singleDeck,
@@ -68,10 +63,7 @@ export function uploadCampaignDeckHelper(
         dispatch({
           type: UPLOAD_DECK,
           deckId,
-          campaignId: {
-            campaignId,
-            serverId,
-          },
+          campaignId,
         });
         if (!deck.nextDeckId) {
           break;
@@ -84,10 +76,7 @@ export function uploadCampaignDeckHelper(
     } catch (e) {
       dispatch({
         type: CAMPAIGN_SYNC_REQUIRED,
-        campaignId: {
-          campaignId,
-          serverId,
-        },
+        campaignId,
       });
     }
   };

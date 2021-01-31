@@ -354,12 +354,12 @@ export function useTextDialog({
   }, [doSubmit]);
   const content = useMemo(() => {
     return (
-      <View style={[space.marginS, { width: '100%' }]}>
+      <View style={space.marginS}>
         <TextInput
           ref={textInputRef}
           autoCorrect={false}
           style={[
-            { padding: s, paddingTop: xs + s, borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20 },
+            { padding: s, paddingTop: xs + s, width: '100%', borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20 },
             typography.text,
             error ? { borderColor: colors.warn } : undefined,
           ]}

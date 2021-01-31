@@ -35,7 +35,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const investigators = useInvestigatorCards();
-  const campaign = useCampaign(id.campaignId);
+  const campaign = useCampaign(id);
   const [latestDeckIds, allInvestigators] = useCampaignDetails(campaign, investigators);
   const lang = useSelector(getLangPreference);
   const decks = useSelector(getAllDecks);

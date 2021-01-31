@@ -90,7 +90,7 @@ function MyDecksSelectorDialog(props: Props) {
   const { fontScale, typography } = useContext(StyleContext);
   const { componentId, campaignId, onDeckSelect, onInvestigatorSelect, singleInvestigator, selectedDeckIds, selectedInvestigatorIds, onlyShowSelected, simpleOptions } = props;
 
-  const campaign = useCampaign(campaignId.campaignId);
+  const campaign = useCampaign(campaignId);
   const otherCampaignsDeckIdsSelector = useMemo(() => makeOtherCampiagnDeckIdsSelector(), []);
   const otherCampaignDeckIds = useSelector((state: AppState) => otherCampaignsDeckIdsSelector(state, campaign));
   const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);

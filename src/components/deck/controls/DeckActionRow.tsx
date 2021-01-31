@@ -8,7 +8,7 @@ import space, { s, xs } from '@styles/space';
 interface Props {
   title: string;
   description?: string;
-  icon: string;
+  icon: string | React.ReactNode;
   control: React.ReactNode;
   last?: boolean;
   loading?: boolean;
@@ -35,7 +35,9 @@ export default function DeckActionRow({ title, description, icon, last, control,
     <View style={[styles.wrapper, space.paddingRightS, { paddingTop: xs + s, paddingBottom: xs + s }, borderStyle, !last ? styles.border : undefined]}>
       <View style={[space.marginRightXs, styles.leftRow]}>
         <View style={styles.icon}>
-          <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
+          { typeof icon === 'string' ? (
+            <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
+          ) : icon }
         </View>
         <View style={styles.column}>
           { !!description && <Text style={[typography.smallLabel, typography.italic, typography.dark]}>{ description }</Text> }

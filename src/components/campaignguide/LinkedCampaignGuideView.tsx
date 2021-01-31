@@ -25,9 +25,10 @@ import CampaignGuideFab from './CampaignGuideFab';
 import { useAlertDialog, useTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useCampaignId } from '@components/campaign/hooks';
 
 export interface LinkedCampaignGuideProps {
-  campaignId: string;
+  campaignId: CampaignId;
   campaignIdA: string;
   campaignIdB: string;
 }
@@ -35,7 +36,14 @@ export interface LinkedCampaignGuideProps {
 type Props = LinkedCampaignGuideProps & NavigationProps;
 
 export default function LinkedCampaignGuideView(props: Props) {
-  const { componentId, campaignIdA, campaignIdB } = props;
+  const { componentId } = props;
+  const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
+  const [campaignIdA, campaignIdB] = useMemo(() => {
+    return [
+      { campaignId: props.campaignIdA, serverId: campaignId.serverId },
+      { campaignId: props.campaignIdB, serverId: campaignId.serverId },
+    ];
+  }, [props.campaignIdA, props.campaignIdB, campaignId.serverId]);
   const investigators = useInvestigatorCards();
   const styleContext = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -44,18 +52,10 @@ export default function LinkedCampaignGuideView(props: Props) {
   useStopAudioOnUnmount();
 
   const { showTraumaDialog, traumaDialog } = useTraumaDialog({ hideKilledInsane: true });
-  const campaign = useCampaign(props.campaignId);
+  const campaign = useCampaign(campaignId);
   const campaignName = (campaign && campaign.name) || '';
   const campaignDataA = useCampaignGuideReduxData(campaignIdA, investigators);
   const campaignDataB = useCampaignGuideReduxData(campaignIdB, investigators);
-
-  const serverId = campaign?.serverId;
-  const campaignId = useMemo(() => {
-    return {
-      campaignId: props.campaignId,
-      serverId,
-    };
-  }, [props.campaignId, serverId]);
 
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
@@ -294,6 +294,7 @@ export default function LinkedCampaignGuideView(props: Props) {
       { tabView }
       <CampaignGuideFab
         setSelectedTab={setSelectedTab}
+        setCampaignServerId={setCampaignServerId}
         campaignId={campaignId}
         campaignName={campaignName}
         componentId={componentId}

@@ -33,6 +33,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { SHOW_DISSONANT_VOICES } from '@lib/audio/narrationPlayer';
 import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
 import { useAlertDialog } from '@components/deck/dialogs';
+import { CURRENT_REDUX_VERSION } from '@reducers/settings';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -42,6 +43,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const { db } = useContext(DatabaseContext);
   const { backgroundStyle, colors } = useContext(StyleContext);
   const dispatch = useDispatch();
+  const reduxMigrationCurrent = useSelector((state: AppState) => state.settings.version === CURRENT_REDUX_VERSION);
 
   const packsInCollection = useSelector(getPacksInCollection);
   const spoilerSettings = useSelector(getPackSpoilers);
@@ -203,12 +205,14 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 onPress={aboutPressed}
                 title={t`About Arkham Cards`}
               />
-              <DeckButton
-                bottomMargin={s}
-                icon="book"
-                onPress={backupPressed}
-                title={t`Backup Data`}
-              />
+              { reduxMigrationCurrent && (
+                <DeckButton
+                  bottomMargin={s}
+                  icon="book"
+                  onPress={backupPressed}
+                  title={t`Backup Data`}
+                />
+              ) }
               <DeckButton
                 bottomMargin={s}
                 icon="tools"

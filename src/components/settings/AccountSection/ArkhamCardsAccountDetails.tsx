@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View } from 'react-native';
 import { forEach } from 'lodash';
-import database from '@react-native-firebase/database';
 import { ngettext, msgid, t } from 'ttag';
 import { useObjectVal } from 'react-firebase-hooks/database';
 
@@ -15,11 +14,12 @@ import { Navigation } from 'react-native-navigation';
 import { FriendsViewProps } from '../FriendsView';
 import { useUpdateHandle } from '@data/firebase/api';
 import StyleContext from '@styles/StyleContext';
+import fbdb from '@data/firebase/fbdb';
 
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
   const { typography } = useContext(StyleContext);
   const { user, loading } = useContext(ArkhamCardsAuthContext);
-  const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(user ? database().ref('/profiles').child(user.uid) : undefined);
+  const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(user ? fbdb.profile(user) : undefined);
   const updateHandle = useUpdateHandle();
   const { dialog, showDialog } = useTextDialog({
     title: t`Account Name`,

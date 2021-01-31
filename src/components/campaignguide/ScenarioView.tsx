@@ -225,7 +225,7 @@ function ScenarioView({ componentId, showLinkedScenario, scenarioId, standalone,
         name: 'Guide.ScenarioFaq',
         passProps: {
           scenario: processedScenario.id.scenarioId,
-          campaignId: campaignId.campaignId,
+          campaignId,
         },
       },
     });

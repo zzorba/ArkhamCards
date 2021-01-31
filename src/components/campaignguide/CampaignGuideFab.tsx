@@ -26,6 +26,7 @@ interface Props {
   campaignName: string;
   removeMode: boolean;
   guided: boolean;
+  setCampaignServerId: (serverId: string) => void;
   setSelectedTab: (tab: number) => void;
   showEditNameDialog: () => void;
   showAddInvestigator: () => void;
@@ -36,8 +37,9 @@ interface Props {
 export default function CampaignGuideFab({
   campaignId, componentId, campaignName, removeMode, guided,
   showEditNameDialog, showAddInvestigator, toggleRemoveInvestigator, setSelectedTab, showAlert,
+  setCampaignServerId,
 }: Props) {
-  const campaign = useCampaign(campaignId.campaignId);
+  const campaign = useCampaign(campaignId);
   const [{ isConnected }] = useNetworkStatus();
   const { user } = useContext(ArkhamCardsAuthContext);
   const { colors, shadow, typography } = useContext(StyleContext);
@@ -50,7 +52,7 @@ export default function CampaignGuideFab({
   const actuallyDeleteCampaign = useCallback(() => {
     dispatch(deleteCampaign(user, campaignId));
     if (campaignId.serverId && user) {
-      deleteServerCampaign(campaignId.serverId);
+      deleteServerCampaign(campaignId);
     }
     Navigation.pop(componentId);
   }, [dispatch, componentId, campaignId, deleteServerCampaign, user]);
@@ -69,24 +71,23 @@ export default function CampaignGuideFab({
     if (campaign && user) {
       setFabOpen(false);
       try {
-        const serverId = await createServerCampaign();
-        const linkServerIds = campaign.linkUuid && {
-          serverIdA: await createServerCampaign(),
-          serverIdB: await createServerCampaign(),
-        };
-        dispatch(uploadCampaign(campaignId.campaignId, serverId, guided, user, linkServerIds));
+        dispatch(uploadCampaign(user, createServerCampaign, setCampaignServerId, campaign, guided));
       } catch (e) {
         // TODO(error handling)
       }
     }
-  }, [dispatch, campaignId, createServerCampaign, setFabOpen, guided, user, campaign]);
+  }, [dispatch, createServerCampaign, setCampaignServerId, setFabOpen, guided, user, campaign]);
 
   const fabIcon = useCallback(() => {
     if (removeMode) {
       return <AppIcon name="check-thin" color={colors.L30} size={32} />;
     }
-    return <AppIcon name="plus-thin" color={colors.L30} size={32} />;
-  }, [colors, removeMode]);
+    if (fabOpen) {
+      return <AppIcon name="plus-thin" color={colors.L30} size={32} />;
+
+    }
+    return <AppIcon name="edit" color={colors.L30} size={24} />;
+  }, [colors, removeMode, fabOpen]);
   const editNamePressed = useCallback(() => {
     setFabOpen(false);
     showEditNameDialog();
@@ -162,7 +163,7 @@ export default function CampaignGuideFab({
       >
         <AppIcon name="delete" color={colors.L30} size={34} />
       </ActionButton.Item>
-      { !!user && !campaignId.serverId && guided && (
+      { !!user && !campaignId.serverId && (
         <ActionButton.Item
           buttonColor={isConnected ? colors.D20 : colors.M}
           textStyle={actionLabelStyle}

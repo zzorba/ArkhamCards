@@ -422,10 +422,17 @@ export interface CampaignNotes {
   investigatorNotes: InvestigatorNotes;
 }
 
-export interface CampaignId {
+export interface LocalCampaignId {
   campaignId: string;
-  serverId?: string;
+  serverId?: undefined;
 }
+
+export interface UploadedCampaignId {
+  campaignId: string;
+  serverId: string;
+}
+
+export type CampaignId = LocalCampaignId | UploadedCampaignId;
 
 interface BaseCampaign {
   serverId?: string;
@@ -613,7 +620,7 @@ export const UPLOAD_DECK = 'UPLOAD_DECK';
 export interface UploadDeckAction {
   type: typeof UPLOAD_DECK;
   deckId: DeckId;
-  campaignId: CampaignId;
+  campaignId: UploadedCampaignId;
 }
 export const REMOVE_UPLOAD_DECK = 'REMOVE_UPLOAD_DECK';
 export interface RemoveUploadDeckAction {
@@ -775,7 +782,7 @@ type CampaignUpdate = Partial<Campaign>;
 
 export interface UpdateCampaignAction {
   type: typeof UPDATE_CAMPAIGN;
-  id: string;
+  id: CampaignId;
   campaign: CampaignUpdate;
   now: Date;
 }
@@ -783,7 +790,7 @@ export interface UpdateCampaignAction {
 export const UPDATE_CAMPAIGN_SPENT_XP = 'UPDATE_CAMPAIGN_SPENT_XP';
 export interface UpdateCampaignSpentXpAction {
   type: typeof UPDATE_CAMPAIGN_SPENT_XP;
-  id: string;
+  id: CampaignId;
   investigator: string;
   operation: 'inc' | 'dec';
   now: Date;
@@ -792,7 +799,7 @@ export interface UpdateCampaignSpentXpAction {
 export const UPDATE_CHAOS_BAG_RESULTS = 'UPDATE_CHAOS_BAG_RESULTS';
 export interface UpdateChaosBagResultsAction {
   type: typeof UPDATE_CHAOS_BAG_RESULTS;
-  id: string;
+  id: CampaignId;
   chaosBagResults: ChaosBagResults;
   now: Date;
 }
@@ -800,7 +807,7 @@ export interface UpdateChaosBagResultsAction {
 export const ADJUST_BLESS_CURSE = 'ADJUST_BLESS_CURSE';
 export interface AdjustBlessCurseAction {
   type: typeof ADJUST_BLESS_CURSE;
-  id: string;
+  id: CampaignId;
   bless: boolean;
   direction: 'inc' | 'dec';
   now: Date;
@@ -814,13 +821,13 @@ export interface CleanBrokenCampaignsAction {
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export interface DeleteCampaignAction {
   type: typeof DELETE_CAMPAIGN;
-  id: string;
+  id: CampaignId;
 }
 
 export const CAMPAIGN_ADD_INVESTIGATOR = 'CAMPAIGN_ADD_INVESTIGATOR';
 export interface CampaignAddInvestigatorAction {
   type: typeof CAMPAIGN_ADD_INVESTIGATOR;
-  id: string;
+  id: CampaignId;
   investigator: string;
   deckId?: DeckId;
   now: Date;
@@ -829,7 +836,7 @@ export interface CampaignAddInvestigatorAction {
 export const CAMPAIGN_REMOVE_INVESTIGATOR = 'CAMPAIGN_REMOVE_INVESTIGATOR';
 export interface CampaignRemoveInvestigatorAction {
   type: typeof CAMPAIGN_REMOVE_INVESTIGATOR;
-  id: string;
+  id: CampaignId;
   investigator: string;
   removeDeckId?: DeckId;
   now: Date;
@@ -1049,7 +1056,7 @@ export function guideInputToId(input: GuideInput) {
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
 export interface GuideResetScenarioAction {
   type: typeof GUIDE_RESET_SCENARIO;
-  campaignId: string;
+  campaignId: CampaignId;
   scenarioId: string;
   now: Date;
 }
@@ -1057,7 +1064,7 @@ export interface GuideResetScenarioAction {
 export const GUIDE_SET_INPUT = 'GUIDE_SET_INPUT';
 export interface GuideSetInputAction {
   type: typeof GUIDE_SET_INPUT;
-  campaignId: string;
+  campaignId: CampaignId;
   input: GuideInput;
   now: Date;
 }
@@ -1065,7 +1072,7 @@ export interface GuideSetInputAction {
 export const GUIDE_UNDO_INPUT = 'GUIDE_UNDO_INPUT';
 export interface GuideUndoInputAction {
   type: typeof GUIDE_UNDO_INPUT;
-  campaignId: string;
+  campaignId: CampaignId;
   scenarioId: string;
   now: Date;
 }
@@ -1074,7 +1081,7 @@ export interface GuideUndoInputAction {
 export const GUIDE_UPDATE_ACHIEVEMENT = 'GUIDE_UPDATE_ACHIEVEMENT';
 export interface GuideUpdateAchievementAction {
   type: typeof GUIDE_UPDATE_ACHIEVEMENT;
-  campaignId: string;
+  campaignId: CampaignId;
   id: string;
   operation: 'set' | 'clear' | 'inc' | 'dec';
   max?: number;

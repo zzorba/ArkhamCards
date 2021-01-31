@@ -9,10 +9,11 @@ import CampaignGuide from '@data/scenario/CampaignGuide';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { ShowAlert } from '@components/deck/dialogs';
+import { CampaignId } from '@actions/types';
 
 interface Props {
   componentId: string;
-  campaignId: string;
+  campaignId: CampaignId;
   processedCampaign: ProcessedCampaign;
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;

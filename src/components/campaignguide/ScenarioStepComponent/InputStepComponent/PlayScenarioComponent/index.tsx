@@ -52,7 +52,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
         name: 'Guide.ScenarioFaq',
         passProps: {
           scenario: processedScenario.id.scenarioId,
-          campaignId: campaignId.campaignId,
+          campaignId,
         },
       },
     });

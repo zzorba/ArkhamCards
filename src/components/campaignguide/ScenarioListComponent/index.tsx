@@ -44,7 +44,7 @@ export default function ScenarioListComponent({
         footer={
           <AddSideScenarioButton
             componentId={componentId}
-            campaignId={campaignId.campaignId}
+            campaignId={campaignId}
             processedCampaign={processedCampaign}
             campaignGuide={campaignGuide}
             campaignState={campaignState}
@@ -57,7 +57,7 @@ export default function ScenarioListComponent({
             key={idx}
             componentId={componentId}
             scenario={scenario}
-            campaignId={campaignId.campaignId}
+            campaignId={campaignId}
             campaignGuide={campaignGuide}
             showLinkedScenario={showLinkedScenario}
             linked={processedCampaign.campaignLog.linked}

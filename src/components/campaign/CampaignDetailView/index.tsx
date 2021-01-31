@@ -12,7 +12,7 @@ import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
 import { ChaosBag } from '@app_constants';
-import { updateCampaign, updateCampaignSpentXp, cleanBrokenCampaigns } from '../actions';
+import { updateCampaign, updateCampaignSpentXp, cleanBrokenCampaigns, addInvestigator, removeInvestigator } from '../actions';
 import { NavigationProps } from '@components/nav/types';
 import { getAllDecks, getDeck } from '@reducers';
 import COLORS from '@styles/colors';
@@ -37,9 +37,10 @@ import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import Card from '@data/Card';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useCampaignId } from '../hooks';
 
 export interface CampaignDetailProps {
-  campaignId: string;
+  campaignId: CampaignId;
 }
 
 type Props = NavigationProps & CampaignDetailProps & InjectedDialogProps
@@ -78,18 +79,12 @@ function ScenarioResultButton({ name, campaignId, componentId, status, index, on
 
 function CampaignDetailView(props: Props) {
   const { componentId, showTextEditDialog } = props;
+  const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
   const { backgroundStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
-  const campaign = useCampaign(props.campaignId);
-  const serverId = campaign?.serverId;
-  const campaignId = useMemo(() => {
-    return {
-      campaignId: props.campaignId,
-      serverId,
-    };
-  }, [props.campaignId, serverId]);
+  const campaign = useCampaign(campaignId);
   const decks = useSelector(getAllDecks);
   const {
     showTraumaDialog,
@@ -99,12 +94,6 @@ function CampaignDetailView(props: Props) {
   const [latestDeckIds, allInvestigators] = useCampaignDetails(campaign, investigators);
 
   const dispatch = useDispatch();
-  const updateNonDeckInvestigators = useCallback((nonDeckInvestigators: string[]) => {
-    dispatch(updateCampaign(user, campaignId, { nonDeckInvestigators }));
-  }, [dispatch, campaignId, user]);
-  const updateLatestDeckIds = useCallback((latestDeckIds: DeckId[]) => {
-    dispatch(updateCampaign(user, campaignId, { latestDeckIds }));
-  }, [dispatch, campaignId, user]);
   const updateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
     dispatch(updateCampaign(user, campaignId, { campaignNotes }));
   }, [dispatch, campaignId, user]);
@@ -223,19 +212,18 @@ function CampaignDetailView(props: Props) {
     }
   }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
 
-  const addDeck = useCallback((deck: Deck) => {
-    const newLatestDeckIds = [...(latestDeckIds || []), getDeckId(deck)];
-    updateLatestDeckIds(newLatestDeckIds);
+  const onAddDeck = useCallback((deck: Deck) => {
+    dispatch(addInvestigator(user, campaignId, deck.investigator_code, getDeckId(deck)));
     checkForWeaknessPrompt(deck);
-  }, [latestDeckIds, updateLatestDeckIds, checkForWeaknessPrompt]);
+  }, [user, campaignId, dispatch, checkForWeaknessPrompt]);
 
-  const addInvestigator = useCallback((card: Card) => {
-    const newInvestigators = [
-      ...map(allInvestigators, investigator => investigator.code),
-      card.code,
-    ];
-    updateNonDeckInvestigators(newInvestigators);
-  }, [allInvestigators, updateNonDeckInvestigators]);
+  const onAddInvestigator = useCallback((card: Card) => {
+    dispatch(addInvestigator(user, campaignId, card.code));
+  }, [user, campaignId, dispatch]);
+
+  const onRemoveInvestigator = useCallback((investigator: Card, removedDeckId?: DeckId) => {
+    dispatch(removeInvestigator(user, campaignId, investigator.code, removedDeckId));
+  }, [user, campaignId, dispatch]);
 
   const showChooseDeck = useCallback((
     singleInvestigator?: Card,
@@ -251,15 +239,15 @@ function CampaignDetailView(props: Props) {
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
       campaignId: getCampaignId(campaign),
       singleInvestigator: singleInvestigator.code,
-      onDeckSelect: addDeck,
+      onDeckSelect: onAddDeck,
     } : {
       campaignId: getCampaignId(campaign),
       selectedInvestigatorIds: map(
         campaignInvestigators,
         investigator => investigator.code
       ),
-      onDeckSelect: addDeck,
-      onInvestigatorSelect: addInvestigator,
+      onDeckSelect: onAddDeck,
+      onInvestigatorSelect: onAddInvestigator,
       simpleOptions: true,
     };
     Navigation.showModal({
@@ -277,7 +265,7 @@ function CampaignDetailView(props: Props) {
         }],
       },
     });
-  }, [campaign, latestDeckIds, decks, cards, addDeck, addInvestigator]);
+  }, [campaign, latestDeckIds, decks, cards, onAddDeck, onAddInvestigator]);
 
   const showAddInvestigator = useCallback(() => {
     showChooseDeck();
@@ -304,14 +292,14 @@ function CampaignDetailView(props: Props) {
                 }
                 componentId={componentId}
                 campaign={campaign}
+                campaignId={campaignId}
                 latestDeckIds={latestDeckIds || []}
                 decks={decks}
                 allInvestigators={allInvestigators}
                 cards={cards}
                 investigatorData={campaign.investigatorData || {}}
                 showTraumaDialog={showTraumaDialog}
-                updateLatestDeckIds={updateLatestDeckIds}
-                updateNonDeckInvestigators={updateNonDeckInvestigators}
+                removeInvestigator={onRemoveInvestigator}
                 incSpentXp={incSpentXp}
                 decSpentXp={decSpentXp}
                 removeMode={removeMode}
@@ -328,9 +316,9 @@ function CampaignDetailView(props: Props) {
         </ScrollView>
       </View>
     );
-  }, [campaign, latestDeckIds, decks, allInvestigators, cards, backgroundStyle, componentId, removeMode,
+  }, [campaign, latestDeckIds, decks, allInvestigators, cards, backgroundStyle, componentId, removeMode, campaignId,
     toggleRemoveMode, showChooseDeck, showAlert,
-    drawWeaknessPressed, showTraumaDialog, updateLatestDeckIds, updateNonDeckInvestigators, incSpentXp, decSpentXp]);
+    drawWeaknessPressed, showTraumaDialog, onRemoveInvestigator, incSpentXp, decSpentXp]);
   const [cycleScenarios] = useCampaignScenarios(campaign);
   const scenariosTab = useMemo(() => {
     if (!campaign) {
@@ -453,6 +441,7 @@ function CampaignDetailView(props: Props) {
       />
       <CampaignGuideFab
         setSelectedTab={setSelectedTab}
+        setCampaignServerId={setCampaignServerId}
         componentId={componentId}
         campaignId={campaignId}
         campaignName={''}

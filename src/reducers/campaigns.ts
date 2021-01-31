@@ -144,8 +144,8 @@ export default function(
   if (action.type === DELETE_CAMPAIGN) {
     const newCampaigns = Object.assign({}, state.all);
     const newChaosBags = Object.assign({}, state.chaosBagResults || {});
-    delete newCampaigns[action.id];
-    delete newChaosBags[action.id];
+    delete newCampaigns[action.id.campaignId];
+    delete newChaosBags[action.id.campaignId];
     return {
       ...state,
       all: newCampaigns,
@@ -293,7 +293,7 @@ export default function(
   }
   if (action.type === CAMPAIGN_REMOVE_INVESTIGATOR) {
     const campaign: Campaign = {
-      ...state.all[action.id],
+      ...state.all[action.id.campaignId],
       lastUpdated: action.now,
     };
     const removeId = action.removeDeckId;
@@ -312,13 +312,13 @@ export default function(
       ...state,
       all: {
         ...state.all,
-        [action.id]: campaign,
+        [action.id.campaignId]: campaign,
       },
     };
   }
   if (action.type === CAMPAIGN_ADD_INVESTIGATOR) {
     const campaign: Campaign = {
-      ...state.all[action.id],
+      ...state.all[action.id.campaignId],
       lastUpdated: action.now,
     };
     if (action.deckId) {
@@ -335,7 +335,7 @@ export default function(
       ...state,
       all: {
         ...state.all,
-        [action.id]: campaign,
+        [action.id.campaignId]: campaign,
       },
     };
   }
@@ -344,13 +344,13 @@ export default function(
       ...state,
       chaosBagResults: {
         ...state.chaosBagResults || {},
-        [action.id]: action.chaosBagResults,
+        [action.id.campaignId]: action.chaosBagResults,
       },
     };
   }
   if (action.type === ADJUST_BLESS_CURSE) {
     const chaosBagResults = {
-      ...((state.chaosBagResults || {})[action.id] || NEW_CHAOS_BAG_RESULTS),
+      ...((state.chaosBagResults || {})[action.id.campaignId] || NEW_CHAOS_BAG_RESULTS),
     };
     if (action.bless) {
       chaosBagResults.blessTokens = (chaosBagResults.blessTokens || 0) + (action.direction === 'inc' ? 1 : -1);
@@ -362,12 +362,12 @@ export default function(
       ...state,
       chaosBagResults: {
         ...state.chaosBagResults || {},
-        [action.id]: chaosBagResults,
+        [action.id.campaignId]: chaosBagResults,
       },
     };
   }
   if (action.type === UPDATE_CAMPAIGN_SPENT_XP) {
-    const existingCampaign = state.all[action.id];
+    const existingCampaign = state.all[action.id.campaignId];
     if (!existingCampaign) {
       // Can't update a campaign that doesn't exist.
       return state;
@@ -388,11 +388,11 @@ export default function(
     };
     return {
       ...state,
-      all: { ...state.all, [action.id]: campaign },
+      all: { ...state.all, [action.id.campaignId]: campaign },
     };
   }
   if (action.type === UPDATE_CAMPAIGN) {
-    const existingCampaign = state.all[action.id];
+    const existingCampaign = state.all[action.id.campaignId];
     if (!existingCampaign) {
       // Can't update a campaign that doesn't exist.
       return state;
@@ -404,7 +404,7 @@ export default function(
     };
     return {
       ...state,
-      all: { ...state.all, [action.id]: campaign },
+      all: { ...state.all, [action.id.campaignId]: campaign },
     };
   }
   if (action.type === REPLACE_LOCAL_DECK) {

@@ -6,10 +6,11 @@ import { showScenario } from '@components/campaignguide/nav';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { ProcessedScenario } from '@data/scenario';
+import { CampaignId } from '@actions/types';
 
 interface Props {
   componentId: string;
-  campaignId: string;
+  campaignId: CampaignId;
   campaignGuide: CampaignGuide;
   scenario: ProcessedScenario;
   linked: boolean;

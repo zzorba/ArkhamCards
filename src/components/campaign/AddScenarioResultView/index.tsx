@@ -39,7 +39,7 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
 
-  const campaign = useCampaign(id.campaignId);
+  const campaign = useCampaign(id);
   const investigators = useInvestigatorCards();
   const [scenario, setScenario] = useState<ScenarioResult | undefined>();
   const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();

@@ -227,8 +227,13 @@ export function useCounters(initialValue: Counters): [Counters, (code: string, m
   return [value, inc, dec, set];
 }
 
+export interface Toggles {
+  [key: string]: boolean | undefined;
+}
+
 interface ClearAction {
   type: 'clear';
+  state?: Toggles;
 }
 
 interface SetToggleAction {
@@ -249,15 +254,18 @@ interface RemoveAction {
 
 type SectionToggleAction = SetToggleAction | ToggleAction | ClearAction | RemoveAction;
 
-export interface Toggles {
-  [key: string]: boolean | undefined;
-}
 
-export function useToggles(initialState: Toggles): [Toggles, (code: string) => void, (code: string | number, value: boolean) => void, () => void, (code: string) => void] {
+export function useToggles(initialState: Toggles): [
+  Toggles,
+  (code: string) => void,
+  (code: string | number, value: boolean) => void,
+  (state?: Toggles) => void,
+  (code: string) => void,
+] {
   const [toggles, updateToggles] = useReducer((state: Toggles, action: SectionToggleAction) => {
     switch (action.type) {
       case 'clear':
-        return initialState;
+        return action.state || initialState;
       case 'remove': {
         const newState = { ...state };
         delete newState[action.key];
@@ -277,7 +285,7 @@ export function useToggles(initialState: Toggles): [Toggles, (code: string) => v
   }, initialState);
   const toggle = useCallback((code: string) => updateToggles({ type: 'toggle', key: code }), [updateToggles]);
   const set = useCallback((code: string | number, value: boolean) => updateToggles({ type: 'set', key: code, value }), [updateToggles]);
-  const clear = useCallback(() => updateToggles({ type: 'clear' }), [updateToggles]);
+  const clear = useCallback((state?: Toggles) => updateToggles({ type: 'clear', state }), [updateToggles]);
   const remove = useCallback((code: string) => updateToggles({ type: 'remove', key: code }), [updateToggles]);
   return [toggles, toggle, set, clear, remove];
 }
@@ -511,9 +519,9 @@ export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined 
   return playerCards?.weaknessCards;
 }
 
-export function useCampaign(campaignId?: string): SingleCampaign | undefined {
+export function useCampaign(campaignId?: CampaignId): SingleCampaign | undefined {
   const getCampaign = useMemo(makeCampaignSelector, []);
-  return useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId) : undefined);
+  return useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId.campaignId) : undefined);
 }
 
 const EMPTY_INVESTIGATORS: Card[] = [];

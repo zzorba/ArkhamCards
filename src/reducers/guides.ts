@@ -13,6 +13,7 @@ import {
   GuideInput,
   guideInputToId,
   REDUX_MIGRATION,
+  CampaignId,
 } from '@actions/types';
 
 export interface GuidesState {
@@ -28,18 +29,18 @@ const DEFAULT_GUIDES_STATE: GuidesState = {
 
 function updateCampaign(
   state: GuidesState,
-  campaignId: string,
+  campaignId: CampaignId,
   now: Date,
   update: (campaign: CampaignGuideState) => CampaignGuideState
 ): GuidesState {
-  const campaign: CampaignGuideState = state.all[campaignId] || { uuid: campaignId, inputs: [] };
+  const campaign: CampaignGuideState = state.all[campaignId.campaignId] || { uuid: campaignId.campaignId, inputs: [] };
   const updatedCampaign = update(campaign);
   updatedCampaign.lastUpdated = now;
   return {
     ...state,
     all: {
       ...state.all,
-      [campaignId]: updatedCampaign,
+      [campaignId.campaignId]: updatedCampaign,
     },
   };
 }
@@ -67,7 +68,7 @@ export default function(
     const newAll = {
       ...state.all,
     };
-    delete newAll[action.id];
+    delete newAll[action.id.campaignId];
     return {
       ...state,
       all: newAll,
@@ -161,7 +162,9 @@ export default function(
           filter(campaign.inputs,
             input => !(
               input.type === action.input.type &&
+              // tslint:disable-next-line
               input.step === action.input.step &&
+              // tslint:disable-next-line
               input.scenario === action.input.scenario
             )
           ) : campaign.inputs;

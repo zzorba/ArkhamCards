@@ -90,12 +90,14 @@ function migrateV1(
     chaosBags,
   };
 }
-export function migrateRedux(): ThunkAction<void, AppState, unknown, ReduxMigrationAction> {
-  return (dispatch, getState) => {
+
+export function migrateReduxV1(): ThunkAction<Promise<true>, AppState, unknown, ReduxMigrationAction> {
+  return async(dispatch, getState) => {
     const state = getState();
     const version = state.settings.version || 0;
     if (version < 1) {
       dispatch(migrateV1(state.legacyDecks.all, state.campaigns.all, state.legacyGuides.all, state.campaigns.chaosBagResults));
     }
+    return true;
   };
 }
