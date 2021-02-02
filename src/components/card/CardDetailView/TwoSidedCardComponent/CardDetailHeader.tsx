@@ -10,7 +10,7 @@ import space, { xs } from '@styles/space';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { useSelector } from 'react-redux';
-import { AppState } from '@reducers/';
+import { AppState } from '@reducers';
 
 interface Props {
   card: Card;

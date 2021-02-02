@@ -40,7 +40,7 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
           killedOrInsane={killedOrInsane}
           yithian={yithian}
           border
-          small
+          size="small"
         />
       </View>
     );
