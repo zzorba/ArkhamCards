@@ -379,7 +379,10 @@ export default function(
         ...existingCampaign.investigatorData,
         [action.investigator]: {
           ...investigatorData,
-          spentXp: action.value,
+          spentXp: action.operation === 'inc' ?
+            (investigatorData.spentXp || 0) + 1 :
+            Math.max((investigatorData.spentXp || 0) - 1, 0),
+          // spentXp: action.value,
         },
       },
       lastUpdated: action.now,

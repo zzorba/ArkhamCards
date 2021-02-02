@@ -787,8 +787,8 @@ export interface UpdateCampaignSpentXpAction {
   type: typeof UPDATE_CAMPAIGN_SPENT_XP;
   id: CampaignId;
   investigator: string;
-  operation: 'set';
-  value: number;
+  operation: 'set' | 'inc' | 'dec';
+  // value: number;
   now: Date;
 }
 
