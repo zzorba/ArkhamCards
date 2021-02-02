@@ -92,7 +92,6 @@ export default function LinkedScenarioListComponent({ componentId, campaignA, ca
             <CampaignGuideSummary
               difficulty={campaignA.campaignLog.campaignData.difficulty}
               campaignGuide={campaignDataA.campaignGuide}
-              inverted
             />
           }
         />
@@ -109,7 +108,6 @@ export default function LinkedScenarioListComponent({ componentId, campaignA, ca
             <CampaignGuideSummary
               difficulty={campaignB.campaignLog.campaignData.difficulty}
               campaignGuide={campaignDataB.campaignGuide}
-              inverted
             />
           }
         />

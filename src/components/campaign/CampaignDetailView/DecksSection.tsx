@@ -14,10 +14,9 @@ import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
-import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { ShowAlert } from '@components/deck/dialogs';
 import { getDeck } from '@reducers';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface Props {
   componentId: string;
@@ -31,18 +30,13 @@ interface Props {
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   removeInvestigator: (investigator: Card, removedDeckId?: DeckId) => void;
   showChooseDeck: (investigator?: Card) => void;
-  incSpentXp: (code: string) => void;
-  decSpentXp: (code: string) => void;
-  header?: React.ReactNode;
-  removeMode: boolean;
-  toggleRemoveMode: () => void;
+  showXpDialog: (investigator: Card) => void;
   showAlert: ShowAlert;
 }
 
 const EMPTY_TRAUMA_DATA: TraumaAndCardData = {};
 
 export default function DecksSection({
-  header,
   componentId,
   campaignId,
   campaign,
@@ -51,12 +45,9 @@ export default function DecksSection({
   cards,
   allInvestigators,
   investigatorData,
+  showXpDialog,
   showTraumaDialog,
   removeInvestigator,
-  incSpentXp,
-  decSpentXp,
-  removeMode,
-  toggleRemoveMode,
   showChooseDeck,
   showAlert,
 }: Props) {
@@ -131,18 +122,17 @@ export default function DecksSection({
         investigator={investigator}
         spentXp={traumaAndCardData.spentXp || 0}
         totalXp={traumaAndCardData.availableXp || 0}
-        incSpentXp={incSpentXp}
-        decSpentXp={decSpentXp}
+        showXpDialog={showXpDialog}
         traumaAndCardData={traumaAndCardData}
         showTraumaDialog={showTraumaDialog}
         showDeckUpgrade={showDeckUpgradeDialog}
         playerCards={cards}
         chooseDeckForInvestigator={showChooseDeckForInvestigator}
         deck={deck}
-        removeInvestigator={removeMode ? removeDeckPrompt : undefined}
+        removeInvestigator={removeDeckPrompt}
       />
     );
-  }, [componentId, campaignId, campaign.investigatorData, cards, showTraumaDialog, incSpentXp, decSpentXp, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator, removeMode]);
+  }, [componentId, campaignId, campaign.investigatorData, cards, showTraumaDialog, showXpDialog, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator]);
 
   const latestDecks: Deck[] = useMemo(() => flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || []), [latestDeckIds, decks]);
   const [killedInvestigators, aliveInvestigators] = useMemo(() => {
@@ -151,26 +141,7 @@ export default function DecksSection({
     });
   }, [allInvestigators, investigatorData]);
   return (
-    <RoundedFactionBlock
-      faction="neutral"
-      noSpace
-      header={header}
-      footer={
-        removeMode ? (
-          <RoundedFooterButton
-            icon="check"
-            title={t`Finished Removing Investigarors`}
-            onPress={toggleRemoveMode}
-          />
-        ) : (
-          <RoundedFooterButton
-            icon="expand"
-            title={t`Add Investigator`}
-            onPress={showChooseDeck}
-          />
-        )
-      }
-    >
+    <>
       { flatMap(aliveInvestigators, investigator => {
         const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
         return renderInvestigator(investigator, false, deck);
@@ -188,7 +159,7 @@ export default function DecksSection({
           }) }
         </View>
       ) }
-    </RoundedFactionBlock>
+    </>
   );
 }
 

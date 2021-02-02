@@ -5,7 +5,7 @@ import { map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { AddScenarioResultProps } from './AddScenarioResultView';
-import { CampaignChaosBagProps } from './CampaignChaosBagView';
+import { CampaignDrawChaosBagProps } from './CampaignDrawChaosBagView';
 import { CampaignDrawWeaknessProps } from './CampaignDrawWeaknessDialog';
 
 import { EditChaosBagProps } from './EditChaosBagDialog';
@@ -43,9 +43,9 @@ export function showEditChaosBag(componentId: string, campaign: Campaign, update
 }
 
 export function showDrawChaosBag(componentId: string, campaignId: CampaignId, updateChaosBag: (chaosBag: ChaosBag) => void) {
-  Navigation.push<CampaignChaosBagProps>(componentId, {
+  Navigation.push<CampaignDrawChaosBagProps>(componentId, {
     component: {
-      name: 'Campaign.ChaosBag',
+      name: 'Campaign.DrawChaosBag',
       passProps: {
         campaignId,
         updateChaosBag,

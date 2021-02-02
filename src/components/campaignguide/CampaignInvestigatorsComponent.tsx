@@ -10,16 +10,16 @@ import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRo
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import Card from '@data/Card';
-import { s, l } from '@styles/space';
+import space, { s, l } from '@styles/space';
 import { useComponentDidDisappear, useCounters, useEffectUpdate } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert } from '@components/deck/dialogs';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   componentId: string;
   campaignData: CampaignGuideContextType;
   processedCampaign: ProcessedCampaign;
-  removeMode: boolean;
   updateCampaign: (
     id: CampaignId,
     sparseCampaign: Partial<Campaign>,
@@ -37,7 +37,7 @@ function getDate(date: string | Date) {
 }
 
 export default function CampaignInvestigatorsComponent(props: Props) {
-  const { componentId, campaignData, processedCampaign, removeMode, updateCampaign, showTraumaDialog, showAlert } = props;
+  const { componentId, campaignData, processedCampaign, updateCampaign, showTraumaDialog, showAlert } = props;
   const { campaignState, latestDecks, campaignInvestigators, campaignId, playerCards } = useContext(CampaignGuideContext);
   const { borderStyle, typography } = useContext(StyleContext);
   const [spentXp, incSpentXp, decSpentXp] = useCounters(mapValues(campaignData.adjustedInvestigatorData, data => (data && data.spentXp) || 0));
@@ -108,7 +108,11 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     }
   }, componentId, [syncCampaignData]);
 
-  const showChooseDeckForInvestigator = useCallback((investigator: Card) =>{
+  const showAddInvestigator = useCallback(() => {
+    campaignState.showChooseDeck();
+  }, [campaignState]);
+
+  const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
     campaignState.showChooseDeck(investigator);
   }, [campaignState]);
   const removeInvestigatorPressed = useCallback((investigator: Card) => {
@@ -165,6 +169,10 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     showTraumaDialog(investigator, traumaData, updateTraumaData);
   }, [showTraumaDialog, updateTraumaData]);
 
+  const showXpDialogPressed = useCallback((investigator: Card) => {
+
+  }, []);
+
   const disabledShowTraumaPressed = useCallback(() => {
     const campaignSetupCompleted = !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed');
     showAlert(
@@ -174,9 +182,14 @@ export default function CampaignInvestigatorsComponent(props: Props) {
         t`Starting trauma can be adjusted after 'Campaign Setup' has been completed.`
     );
   }, [processedCampaign.scenarios, showAlert]);
-
+  const investigatorCount = campaignInvestigators.length;
   return (
     <>
+      <View style={[space.paddingBottomS, space.paddingTopS]}>
+        <Text style={[typography.large, typography.center, typography.light]}>
+          { t`— Investigators · ${investigatorCount} —` }
+        </Text>
+      </View>
       { map(aliveInvestigators, investigator => (
         <InvestigatorCampaignRow
           key={investigator.code}
@@ -184,14 +197,13 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           playerCards={playerCards}
           spentXp={spentXp[investigator.code] || 0}
           totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
-          incSpentXp={incSpentXp}
-          decSpentXp={decSpentXp}
           deck={latestDecks[investigator.code]}
           componentId={componentId}
           investigator={investigator}
+          showXpDialog={showXpDialogPressed}
           traumaAndCardData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
           chooseDeckForInvestigator={showChooseDeckForInvestigator}
-          removeInvestigator={removeMode ? removeInvestigatorPressed : undefined}
+          removeInvestigator={removeInvestigatorPressed}
           showTraumaDialog={canEditTrauma ? showTraumaPressed : disabledShowTraumaPressed}
         />
       )) }
@@ -202,15 +214,14 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           </Text>
         </View>
       ) }
-      <View style={[styles.bottomBorder, borderStyle]}>
+      <View style={[space.paddingBottomS]}>
         { map(killedInvestigators, investigator => (
           <InvestigatorCampaignRow
             key={investigator.code}
             playerCards={playerCards}
             spentXp={spentXp[investigator.code] || 0}
             totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
-            incSpentXp={incSpentXp}
-            decSpentXp={decSpentXp}
+            showXpDialog={showXpDialogPressed}
             campaignId={campaignId}
             deck={latestDecks[investigator.code]}
             componentId={componentId}
@@ -218,6 +229,15 @@ export default function CampaignInvestigatorsComponent(props: Props) {
             traumaAndCardData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
           />
         )) }
+      </View>
+      <View style={space.paddingBottomS}>
+        <DeckButton
+          icon="per_investigator"
+          title={t`Add Investigator`}
+          onPress={showAddInvestigator}
+          color="light_gray"
+          thin
+        />
       </View>
     </>
   );

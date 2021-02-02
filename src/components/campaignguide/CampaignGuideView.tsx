@@ -24,6 +24,7 @@ import CampaignGuideFab from './CampaignGuideFab';
 import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -67,55 +68,30 @@ function CampaignGuideView(props: Props) {
   const { campaignGuide, campaignState } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [removeMode, toggleRemoveInvestigator] = useFlag(false);
-  const addInvestigatorPressed = useCallback(() => {
-    campaignState.showChooseDeck();
-  }, [campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
   const decksTab = useMemo(() => {
     return (
       <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
         <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
           <View style={[space.paddingSideS, space.paddingBottomL]}>
-            <RoundedFactionBlock
-              faction="neutral"
-              noSpace
-              header={
-                <CampaignGuideSummary
-                  inverted
-                  difficulty={processedCampaign.campaignLog.campaignData.difficulty}
-                  campaignGuide={campaignGuide}
-                />
-              }
-              footer={removeMode ? (
-                <RoundedFooterButton
-                  icon="check"
-                  title={t`Finished removing investigators`}
-                  onPress={toggleRemoveInvestigator}
-                />
-              ) : (
-                <RoundedFooterButton
-                  icon="expand"
-                  title={t`Add Investigator`}
-                  onPress={addInvestigatorPressed}
-                />
-              )}
-            >
-              <CampaignInvestigatorsComponent
-                componentId={componentId}
-                showAlert={showAlert}
-                updateCampaign={saveCampaignUpdate}
-                campaignData={campaignData}
-                processedCampaign={processedCampaign}
-                showTraumaDialog={showTraumaDialog}
-                removeMode={removeMode}
-              />
-            </RoundedFactionBlock>
+            <CampaignGuideSummary
+              difficulty={processedCampaign.campaignLog.campaignData.difficulty}
+              campaignGuide={campaignGuide}
+            />
+            <CampaignInvestigatorsComponent
+              componentId={componentId}
+              showAlert={showAlert}
+              updateCampaign={saveCampaignUpdate}
+              campaignData={campaignData}
+              processedCampaign={processedCampaign}
+              showTraumaDialog={showTraumaDialog}
+            />
           </View>
         </ScrollView>
       </SafeAreaView>
     );
-  }, [componentId, backgroundStyle, removeMode, campaignData, processedCampaign, campaignGuide,
-    addInvestigatorPressed, toggleRemoveInvestigator, saveCampaignUpdate, showTraumaDialog, showAlert,
+  }, [componentId, backgroundStyle, campaignData, processedCampaign, campaignGuide,
+    saveCampaignUpdate, showTraumaDialog, showAlert,
   ]);
   const scenariosTab = useMemo(() => {
     return (
@@ -168,17 +144,10 @@ function CampaignGuideView(props: Props) {
     <View style={styles.wrapper}>
       { tabView }
       <CampaignGuideFab
-        setSelectedTab={setSelectedTab}
         setCampaignServerId={setCampaignServerId}
         campaignId={campaignData.campaignId}
-        componentId={componentId}
-        campaignName={campaignData.campaignName}
-        removeMode={removeMode}
         showEditNameDialog={showEditNameDialog}
-        showAddInvestigator={addInvestigatorPressed}
-        toggleRemoveInvestigator={toggleRemoveInvestigator}
         guided
-        showAlert={showAlert}
       />
       { alertDialog }
       { dialog }

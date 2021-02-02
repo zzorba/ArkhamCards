@@ -11,6 +11,7 @@ import Card, { CardsMap } from '@data/Card';
 import { AppState, makeDeckSelector } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
+import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 
 interface Props {
   componentId: string;
@@ -61,23 +62,20 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
   const totalXp = (deck.xp || 0) + (deck.xp_adjustment || 0);
   return (
     <>
-      <CardSectionHeader
-        investigator={investigator}
-        section={{ superTitle: t`Experience points` }}
+      <MiniPickerStyleButton
+        title={t`Experience`}
+        valueLabel={t`${spentXp} of ${totalXp} spent`}
+        first
+        editable
+        onPress={onPress}
       />
-      { !!changes && (
-        <PickerStyleButton
-          id="xp"
-          title={t`${spentXp} of ${totalXp} spent`}
-          onPress={onPress}
-          widget="nav"
-          settingsStyle
-        />
-      ) }
       { !!showDeckUpgrade && (
-        <BasicButton
+        <MiniPickerStyleButton
           title={t`Upgrade Deck`}
+          valueLabel={t`Add XP from scenario`}
+          icon="upgrade"
           onPress={showDeckUpgradePress}
+          editable
         />
       ) }
     </>

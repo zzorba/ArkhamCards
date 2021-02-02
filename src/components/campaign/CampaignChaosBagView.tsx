@@ -1,82 +1,60 @@
-import React, { useCallback, useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import { Navigation, Options } from 'react-native-navigation';
-import { t } from 'ttag';
+import React, { useCallback, useContext } from 'react';
 
-import DrawChaosBagComponent from './DrawChaosBagComponent';
-import { NavigationProps } from '@components/nav/types';
-import { ChaosBag } from '@app_constants';
-import COLORS from '@styles/colors';
-import { EditChaosBagProps } from './EditChaosBagDialog';
-import { AppState, makeCampaignChaosBagSelector } from '@reducers';
-import { useNavigationButtonPressed } from '@components/core/hooks';
 import { CampaignId } from '@actions/types';
+import { NavigationProps } from '@components/nav/types';
+import LoadingSpinner from '@components/core/LoadingSpinner';
+import { useCampaign, useCampaignDetails, useInvestigatorCards } from '@components/core/hooks';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import StyleContext from '@styles/StyleContext';
+import ChaosBagSection from './CampaignDetailView/ChaosBagSection';
+import { ChaosBag } from '@app_constants';
+import { useDispatch } from 'react-redux';
+import { showChaosBagOddsCalculator, showDrawChaosBag } from '@components/campaign/nav';
+import { updateCampaign } from './actions';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface CampaignChaosBagProps {
   campaignId: CampaignId;
-  updateChaosBag: (chaosBag: ChaosBag) => void;
 }
 
-type Props = NavigationProps & CampaignChaosBagProps;
+export default function CampaignChaosBagView({ campaignId, componentId }: CampaignChaosBagProps & NavigationProps) {
+  const campaign = useCampaign(campaignId);
+  const investigators = useInvestigatorCards();
+  const [, allInvestigators] = useCampaignDetails(campaign, investigators);
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const dispatch = useDispatch();
+  const { backgroundStyle } = useContext(StyleContext);
+  const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
+    dispatch(updateCampaign(user, campaignId, { chaosBag }));
+  }, [dispatch, campaignId, user]);
+  const oddsCalculatorPressed = useCallback(() => {
+    showChaosBagOddsCalculator(componentId, campaignId, allInvestigators);
+  }, [componentId, campaignId, allInvestigators]);
 
-function CampaignChaosBagView({ componentId, campaignId, updateChaosBag }: Props) {
-  const chaosBagSelector = useMemo(makeCampaignChaosBagSelector, []);
-  const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId.campaignId));
+  const drawChaosBagPressed = useCallback(() => {
+    showDrawChaosBag(componentId, campaignId, updateChaosBag);
+  }, [campaignId, componentId, updateChaosBag]);
 
-  const showChaosBagDialog = useCallback(() => {
-    if (!updateChaosBag) {
-      return;
-    }
-    Navigation.push<EditChaosBagProps>(componentId, {
-      component: {
-        name: 'Dialog.EditChaosBag',
-        passProps: {
-          chaosBag,
-          updateChaosBag: updateChaosBag,
-          trackDeltas: true,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos Bag`,
-            },
-            backButton: {
-              title: t`Cancel`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, chaosBag, updateChaosBag]);
-
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'back' || buttonId === 'androidBack') {
-      Navigation.pop(componentId);
-    } else if (buttonId === 'edit') {
-      showChaosBagDialog();
-    }
-  }, componentId, [componentId, showChaosBagDialog]);
-
+  if (!campaign) {
+    return <LoadingSpinner />;
+  }
   return (
-    <DrawChaosBagComponent
-      campaignId={campaignId}
-      chaosBag={chaosBag}
-    />
+    <View style={[styles.flex, backgroundStyle]}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        <ChaosBagSection
+          componentId={componentId}
+          updateChaosBag={updateChaosBag}
+          chaosBag={campaign.chaosBag}
+          showChaosBag={drawChaosBagPressed}
+          showOddsCalculator={oddsCalculatorPressed}
+        />
+      </ScrollView>
+    </View>
   );
 }
 
-CampaignChaosBagView.options = (): Options => {
-  return {
-    topBar: {
-      rightButtons: [{
-        systemItem: 'save',
-        text: t`Edit`,
-        id: 'edit',
-        color: COLORS.M,
-        accessibilityLabel: t`Edit Chaos Bag`,
-      }],
-    },
-  };
-};
-
-export default CampaignChaosBagView;
+const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
+});

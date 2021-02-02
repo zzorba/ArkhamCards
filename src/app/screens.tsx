@@ -33,6 +33,8 @@ function getStandardComponent(componentName: string | number) {
     case 'Card.Taboo': return require('@components/card/CardTabooView').default;
     case 'Card.Image': return require('@components/card/CardImageView').default;
     case 'Campaign': return require('@components/campaign/CampaignDetailView').default;
+    case 'Campaign.Log': return require('@components/campaign/CampaignLogView').default;
+    case 'Campaign.Scenarios': return require('@components/campaign/CampaignScenariosView').default;
     case 'Campaign.New': return require('@components/campaign/NewCampaignView').default;
     case 'Campaign.AddResult': return require('@components/campaign/AddScenarioResultView').default;
     case 'Guide.SideScenario': return require('@components/campaignguide/AddSideScenarioView').default;
@@ -47,8 +49,9 @@ function getStandardComponent(componentName: string | number) {
     case 'Guide.CardSelector': return require('@components/campaignguide/CardSelectorView').default;
     case 'Friends': return require('@components/settings/FriendsView').default;
     case 'Campaign.UpgradeDecks': return require('@components/campaign/UpgradeDecksView').default;
-    case 'Campaign.EditResult': return require('@components/campaign/EditScenarioResultView').default;
     case 'Campaign.ChaosBag': return require('@components/campaign/CampaignChaosBagView').default;
+    case 'Campaign.EditResult': return require('@components/campaign/EditScenarioResultView').default;
+    case 'Campaign.DrawChaosBag': return require('@components/campaign/CampaignDrawChaosBagView').default;
     case 'OddsCalculator': return require('@components/campaign/OddsCalculatorView').default;
     case 'Settings.Diagnostics': return require('@components/settings/DiagnosticsView').default;
     case 'Settings.Backup': return require('@components/settings/BackupView').default;

@@ -423,7 +423,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       const passProps: MyDecksSelectorProps = {
         campaignId: { campaignId: 'new-deck' },
         onDeckSelect: deckAdded,
-        onInvestigatorSelect: guided ? investigatorAdded : undefined,
+        onInvestigatorSelect: investigatorAdded,
         selectedDeckIds: deckIds,
         selectedInvestigatorIds: investigatorIds,
       };

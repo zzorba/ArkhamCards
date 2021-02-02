@@ -1,20 +1,33 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { range, map } from 'lodash';
+import { c, t } from 'ttag';
 
 import { TraumaAndCardData } from '@actions/types';
 import HealthSanityIcon from '@components/core/HealthSanityIcon';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
+import Card from '@data/Card';
 
 
 interface Props {
   trauma: TraumaAndCardData;
+  investigator: Card;
 }
-export default function TraumaSummary({ trauma }: Props) {
+
+export default function TraumaSummary({ trauma, investigator }: Props) {
   const { typography } = useContext(StyleContext);
   const physical = (trauma.physical || 0);
   const mental = (trauma.mental || 0);
+  if (investigator.eliminated(trauma)) {
+    if (trauma.killed || physical >= (investigator.health || 0)) {
+      return <Text style={typography.gameFont}>{t`Killed`}</Text>;
+    }
+    return <Text style={typography.gameFont}>{t`Insane`}</Text>;
+  }
+  if (physical + mental === 0) {
+    return <Text style={typography.gameFont}>{c('trauma').t`None`}</Text>;
+  }
   if (physical + mental > 3) {
     // compact mode;
     return (

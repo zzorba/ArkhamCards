@@ -15,7 +15,7 @@ import { updateCampaign } from '@components/campaign/actions';
 import { useCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign, useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useCampaign, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import useCampaignGuideContext from './useCampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
@@ -84,7 +84,6 @@ export default function LinkedCampaignGuideView(props: Props) {
   const handleUpdateCampaign = useCallback((id: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
     dispatch(updateCampaign(user, id, sparseCampaign, now));
   }, [dispatch, user]);
-  const [removeMode, toggleRemoveMode] = useFlag(false);
   const contextA = useCampaignGuideContext(campaignIdA, campaignDataA);
   const contextB = useCampaignGuideContext(campaignIdB, campaignDataB);
   const processedCampaignA = useMemo(() => contextA?.campaignGuide && contextA?.campaignState && contextA.campaignGuide.processAllScenarios(contextA.campaignState), [contextA?.campaignGuide, contextA?.campaignState]);
@@ -138,18 +137,11 @@ export default function LinkedCampaignGuideView(props: Props) {
                 noSpace
                 header={
                   <CampaignGuideSummary
-                    inverted
                     difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
                     campaignGuide={contextA.campaignGuide}
                   />
                 }
-                footer={removeMode ? (
-                  <RoundedFooterButton
-                    icon="check"
-                    title={t`Finished removing investigators`}
-                    onPress={toggleRemoveMode}
-                  />
-                ) : (
+                footer={(
                   <RoundedFooterButton
                     icon="expand"
                     title={t`Add Investigator`}
@@ -159,7 +151,6 @@ export default function LinkedCampaignGuideView(props: Props) {
               >
                 <CampaignGuideContext.Provider value={contextA}>
                   <CampaignInvestigatorsComponent
-                    removeMode={removeMode}
                     componentId={componentId}
                     showAlert={showAlert}
                     updateCampaign={handleUpdateCampaign}
@@ -178,16 +169,9 @@ export default function LinkedCampaignGuideView(props: Props) {
                   <CampaignGuideSummary
                     difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
                     campaignGuide={contextB.campaignGuide}
-                    inverted
                   />
                 }
-                footer={removeMode ? (
-                  <RoundedFooterButton
-                    icon="check"
-                    title={t`Finished removing investigators`}
-                    onPress={toggleRemoveMode}
-                  />
-                ) : (
+                footer={(
                   <RoundedFooterButton
                     icon="expand"
                     title={t`Add Investigator`}
@@ -197,7 +181,6 @@ export default function LinkedCampaignGuideView(props: Props) {
               >
                 <CampaignGuideContext.Provider value={contextB}>
                   <CampaignInvestigatorsComponent
-                    removeMode={removeMode}
                     componentId={componentId}
                     showAlert={showAlert}
                     updateCampaign={handleUpdateCampaign}
@@ -212,8 +195,8 @@ export default function LinkedCampaignGuideView(props: Props) {
         </SafeAreaView>
       ),
     };
-  }, [showTraumaDialog, showAlert, addInvestigatorAPressed, addInvestigatorBPressed, toggleRemoveMode, handleUpdateCampaign,
-    componentId, contextA, contextB, processedCampaignA, processedCampaignB, backgroundStyle, campaignDataA, campaignDataB, removeMode,
+  }, [showTraumaDialog, showAlert, addInvestigatorAPressed, addInvestigatorBPressed, handleUpdateCampaign,
+    componentId, contextA, contextB, processedCampaignA, processedCampaignB, backgroundStyle, campaignDataA, campaignDataB,
   ]);
   const scenarioTab = useMemo(() => {
     if (!processedCampaignA || !processedCampaignB || !contextA || !contextB) {
@@ -251,7 +234,6 @@ export default function LinkedCampaignGuideView(props: Props) {
                 <CampaignGuideSummary
                   difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
                   campaignGuide={contextA.campaignGuide}
-                  inverted
                 />
               }
               campaignId={contextA.campaignId}
@@ -266,7 +248,6 @@ export default function LinkedCampaignGuideView(props: Props) {
                 <CampaignGuideSummary
                   difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
                   campaignGuide={contextB.campaignGuide}
-                  inverted
                 />
               }
               campaignId={contextB.campaignId}
@@ -293,17 +274,10 @@ export default function LinkedCampaignGuideView(props: Props) {
     <View style={styles.wrapper}>
       { tabView }
       <CampaignGuideFab
-        setSelectedTab={setSelectedTab}
         setCampaignServerId={setCampaignServerId}
         campaignId={campaignId}
-        campaignName={campaignName}
-        componentId={componentId}
-        toggleRemoveInvestigator={toggleRemoveMode}
-        removeMode={removeMode}
         showEditNameDialog={showEditNameDialog}
-        showAddInvestigator={showAddInvestigator}
         guided
-        showAlert={showAlert}
       />
       { alertDialog }
       { dialog }
