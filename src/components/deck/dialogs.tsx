@@ -162,7 +162,7 @@ function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClos
     if (button.style === 'destructive') {
       return 'red';
     }
-    return 'gray';
+    return 'default';
   }, [button.style]);
   return (
     <DeckButton

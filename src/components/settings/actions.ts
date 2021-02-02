@@ -3,12 +3,10 @@ import { ThunkAction } from 'redux-thunk';
 
 import {
   SET_TABOO_SET,
-  SET_SINGLE_CARD_VIEW,
-  SET_ALPHABETIZE_ENCOUNTER_SETS,
+  SET_MISC_SETTING,
   ENSURE_UUID,
   SetTabooSetAction,
-  SetSingleCardViewAction,
-  SetAlphabetizeEncounterSetsAction,
+  SetMiscSettingAction,
   EnsureUuidAction,
   SET_THEME,
   SET_FONT_SCALE,
@@ -45,17 +43,27 @@ export function setFontSize(fontScale: number): SetFontScaleAction {
   };
 }
 
-export function setSingleCardView(value: boolean): SetSingleCardViewAction {
+export function setSingleCardView(value: boolean): SetMiscSettingAction {
   return {
-    type: SET_SINGLE_CARD_VIEW,
-    singleCardView: value,
+    type: SET_MISC_SETTING,
+    setting: 'single_card',
+    value,
   };
 }
 
-export function setAlphabetizeEncounterSets(value: boolean): SetAlphabetizeEncounterSetsAction {
+export function setAlphabetizeEncounterSets(value: boolean): SetMiscSettingAction {
   return {
-    type: SET_ALPHABETIZE_ENCOUNTER_SETS,
-    alphabetizeEncounterSets: value,
+    type: SET_MISC_SETTING,
+    setting: 'alphabetize',
+    value,
+  };
+}
+
+export function setColorblind(value: boolean): SetMiscSettingAction {
+  return {
+    type: SET_MISC_SETTING,
+    setting: 'colorblind',
+    value,
   };
 }
 

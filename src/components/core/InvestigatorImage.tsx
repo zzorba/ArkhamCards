@@ -17,31 +17,40 @@ import { showCard, showCardImage } from '@components/nav/helper';
 import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constants';
 import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
-import { isBig } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-
-const scaleFactor = isBig ? 1.2 : 1.0;
 
 interface Props {
   card?: Card;
   componentId?: string;
   border?: boolean;
-  small?: boolean;
+  size?: 'large' | 'small' | 'tiny';
   killedOrInsane?: boolean;
   yithian?: boolean;
   imageLink?: boolean;
 }
 
+const IMAGE_SIZE = {
+  tiny: 40,
+  small: 65,
+  large: 110,
+};
+
+const ICON_SIZE = {
+  tiny: 20,
+  small: 40,
+  large: 55,
+};
+
 export default function InvestigatorImage({
   card,
   componentId,
   border,
-  small,
+  size = 'large',
   killedOrInsane,
   yithian,
   imageLink,
 }: Props) {
-  const { colors, fontScale } = useContext(StyleContext);
+  const { colors, fontScale, shadow } = useContext(StyleContext);
 
   const onPress = useCallback(() => {
     if (componentId && card) {
@@ -53,16 +62,21 @@ export default function InvestigatorImage({
     }
   }, [card, componentId, imageLink, colors]);
 
-  const isSmall = useMemo(() => {
-    return small || toggleButtonMode(fontScale);
-  }, [small, fontScale]);
+  const impliedSize = useMemo(() => {
+    if (size === 'small' || size === 'tiny') {
+      return size;
+    }
+    return toggleButtonMode(fontScale) ? 'small' : 'large';
+  }, [size, fontScale]);
+
 
   const imageStyle = useMemo(() => {
-    if (yithian) {
-      return isSmall ? styles.smallYithianImage : styles.bigImage;
+    switch (impliedSize) {
+      case 'tiny': return yithian ? styles.yithianTiny : styles.tiny;
+      case 'small': return yithian ? styles.yithianSmall : styles.small;
+      case 'large': return yithian ? styles.yithianLarge : styles.large;
     }
-    return isSmall ? styles.image : styles.bigImage;
-  }, [isSmall, yithian]);
+  }, [impliedSize, yithian]);
 
   const investigatorImage = useMemo(() => {
     if (card) {
@@ -91,9 +105,11 @@ export default function InvestigatorImage({
     }
     return investigatorImage;
   }, [killedOrInsane, investigatorImage]);
+
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />, [colors]);
+
   const image = useMemo(() => {
-    const size = (isSmall ? 65 : 110) * scaleFactor;
+    const size = IMAGE_SIZE[impliedSize];
     if (!card) {
       return (
         <View style={[styles.container, { width: size, height: size }]}>
@@ -107,41 +123,47 @@ export default function InvestigatorImage({
       );
     }
     return (
-      <View style={[styles.container, { width: size, height: size }]}>
-        <View style={styles.relative}>
-          <View style={[
-            styles.placeholder,
-            {
-              width: size,
-              height: size,
-              backgroundColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
-            },
-          ]}>
-            <Text style={styles.placeholderIcon} allowFontScaling={false}>
-              <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={isSmall ? 40 : 55} />
-            </Text>
-          </View>
-        </View>
-        { !!card.imagesrc && (
+      <View style={border && impliedSize === 'tiny' ? shadow.large : undefined}>
+        <View style={[
+          styles.container,
+          border ? styles.border : undefined,
+          {
+            width: size,
+            height: size,
+            borderColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].border,
+            overflow: 'hidden',
+          },
+        ]}>
           <View style={styles.relative}>
-            { styledImage }
-          </View>
-        ) }
-        <View style={styles.relative}>
-          { !!border && (
             <View style={[
-              styles.border,
+              styles.placeholder,
               {
-                borderColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
                 width: size,
                 height: size,
+                backgroundColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
               },
-            ]} />
+            ]}>
+              <Text style={styles.placeholderIcon} allowFontScaling={false}>
+                <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={ICON_SIZE[impliedSize]} />
+              </Text>
+            </View>
+          </View>
+          { !!card.imagesrc && (
+            <View style={styles.relative}>
+              { styledImage }
+            </View>
           ) }
+          <View style={styles.relative}>
+            { !!border && (
+              <View style={[
+
+              ]} />
+            ) }
+          </View>
         </View>
       </View>
     );
-  }, [card, killedOrInsane, border, colors, isSmall, styledImage, loadingAnimation]);
+  }, [card, killedOrInsane, border, colors, impliedSize, styledImage, loadingAnimation, shadow]);
 
   if (componentId && card) {
     return (
@@ -154,34 +176,54 @@ export default function InvestigatorImage({
 }
 
 const styles = StyleSheet.create({
+  yithianTiny: {
+    position: 'absolute',
+    top: -18,
+    left: -8,
+    width: (166 + 44) * 0.5,
+    height: (136 + 34) * 0.5,
+  },
+  yithianSmall: {
+    position: 'absolute',
+    top: -36,
+    left: -20,
+    width: (166 + 24),
+    height: (136 + 14),
+  },
+  yithianLarge: {
+    position: 'absolute',
+    top: -44,
+    left: -20,
+    width: (166 + 44) * 1.25,
+    height: (136 + 34) * 1.25,
+  },
   container: {
     position: 'relative',
-    overflow: 'hidden',
     borderRadius: 6,
   },
   relative: {
     position: 'relative',
   },
-  smallYithianImage: {
+  tiny: {
     position: 'absolute',
-    top: -36 * scaleFactor,
-    left: -20 * scaleFactor,
-    width: (166 + 24) * scaleFactor,
-    height: (136 + 14) * scaleFactor,
+    top: -18,
+    left: -8,
+    width: (166 + 44) * 0.5,
+    height: (136 + 34) * 0.5,
   },
-  image: {
+  small: {
     position: 'absolute',
-    top: -36 * scaleFactor,
-    left: -20 * scaleFactor,
-    width: (166 + 44) * scaleFactor,
-    height: (136 + 34) * scaleFactor,
+    top: -36,
+    left: -20,
+    width: (166 + 44),
+    height: (136 + 34),
   },
-  bigImage: {
+  large: {
     position: 'absolute',
-    top: -44 * scaleFactor,
-    left: -20 * scaleFactor,
-    width: (166 + 44) * 1.25 * scaleFactor,
-    height: (136 + 34) * 1.25 * scaleFactor,
+    top: -44,
+    left: -20,
+    width: (166 + 44) * 1.25,
+    height: (136 + 34) * 1.25,
   },
   placeholder: {
     position: 'absolute',

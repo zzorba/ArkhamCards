@@ -1,11 +1,9 @@
 import {
   SET_TABOO_SET,
-  SET_SINGLE_CARD_VIEW,
-  SET_ALPHABETIZE_ENCOUNTER_SETS,
+  SET_MISC_SETTING,
   SET_LANGUAGE_CHOICE,
   SetTabooSetAction,
-  SetSingleCardViewAction,
-  SetAlphabetizeEncounterSetsAction,
+  SetMiscSettingAction,
   SetLanguageChoiceAction,
   CardFetchSuccessAction,
   CARD_FETCH_SUCCESS,
@@ -21,6 +19,7 @@ interface SettingsState {
   tabooId?: number;
   singleCardView?: boolean;
   alphabetizeEncounterSets?: boolean;
+  colorblind?: boolean;
   lang?: string;
   theme?: 'dark' | 'light';
   fontScale?: number;
@@ -33,12 +32,13 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   tabooId: undefined,
   singleCardView: false,
   alphabetizeEncounterSets: false,
+  colorblind: false,
   lang: 'system',
   fontScale: undefined,
   version: CURRENT_REDUX_VERSION,
 };
 
-type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetSingleCardViewAction | SetAlphabetizeEncounterSetsAction | CardFetchSuccessAction | SetThemeAction | SetFontScaleAction | ReduxMigrationAction;
+type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetMiscSettingAction | CardFetchSuccessAction | SetThemeAction | SetFontScaleAction | ReduxMigrationAction;
 
 
 export default function(
@@ -74,17 +74,25 @@ export default function(
         tabooId: action.tabooId,
       };
     }
-    case SET_ALPHABETIZE_ENCOUNTER_SETS:
-      return {
-        ...state,
-        alphabetizeEncounterSets: action.alphabetizeEncounterSets,
-      };
-    case SET_SINGLE_CARD_VIEW: {
-      return {
-        ...state,
-        singleCardView: action.singleCardView,
-      };
-    }
+    case SET_MISC_SETTING:
+      switch (action.setting) {
+        case 'alphabetize':
+          return {
+            ...state,
+            alphabetizeEncounterSets: action.value,
+          };
+        case 'single_card':
+          return {
+            ...state,
+            singleCardView: action.value,
+          };
+        case 'colorblind':
+          return {
+            ...state,
+            colorblind: action.value,
+          };
+      }
+      return state;
     case CARD_FETCH_SUCCESS: {
       return {
         ...state,

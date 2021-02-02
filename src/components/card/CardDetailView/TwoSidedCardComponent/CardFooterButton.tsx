@@ -7,6 +7,7 @@ import StyleContext from '@styles/StyleContext';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import AppIcon from '@icons/AppIcon';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 
 interface Props {
   onPressFaq: () => void;
@@ -18,56 +19,14 @@ export default function CardFooterButton({ onPressFaq, onPressTaboo }: Props) {
   const height = 18 * fontScale + 20;
   if (onPressTaboo) {
     return (
-      <View style={[
-        styles.buttonStyle,
-        {
-          backgroundColor: colors.L10,
-          height,
-          paddingLeft: 0,
-        },
-      ]}>
-        <Ripple
-          style={[
-            styles.buttonStyle,
-            {
-              flex: 1,
-              borderBottomRightRadius: 0,
-              backgroundColor: colors.L10,
-              height,
-            },
-          ]}
-          rippleColor={colors.L20}
-          onPress={onPressFaq}
-        >
-          <View pointerEvents="box-none" style={styles.row}>
-            <ArkhamIcon name="wild" size={18 * fontScale} color={colors.D20} />
-            <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
-              { t`FAQ` }
-            </Text>
-          </View>
-        </Ripple>
-        <View style={[styles.divider, { height: height - 16, backgroundColor: colors.background }]} />
-        <Ripple
-          style={[
-            styles.buttonStyle,
-            {
-              flex: 1,
-              borderBottomLeftRadius: 0,
-              backgroundColor: colors.L10,
-              height,
-            },
-          ]}
-          rippleColor={colors.L20}
-          onPress={onPressTaboo}
-        >
-          <View pointerEvents="box-none" style={styles.row}>
-            <AppIcon name="taboo" size={18 * fontScale} color={colors.D20} />
-            <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
-              { t`Taboo` }
-            </Text>
-          </View>
-        </Ripple>
-      </View>
+      <RoundedFooterDoubleButton
+        onPressA={onPressFaq}
+        iconA="faq"
+        titleA={t`FAQ`}
+        onPressB={onPressTaboo}
+        iconB="taboo"
+        titleB={t`Taboo`}
+      />
     );
   }
   return (

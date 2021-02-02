@@ -9,6 +9,8 @@ import CardCostIcon from '@components/core/CardCostIcon';
 import space, { xs } from '@styles/space';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import { useSelector } from 'react-redux';
+import { AppState } from '@reducers/';
 
 interface Props {
   card: Card;
@@ -20,14 +22,17 @@ interface Props {
 const ICON_SIZE = 28;
 
 function DualFactionIcons({ card }: { card: Card }) {
-  if (!card.faction2_code || !card.faction_code) {
+  const faction_code = card.factionCode();
+  const colorblind = useSelector((state: AppState) => !!state.settings.colorblind);
+  if (!card.faction_code ||
+    (!card.faction2_code && (!colorblind || faction_code === 'neutral' || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill'))) {
     return null;
   }
   return (
-    <>
+    <View style={[space.paddingBottomS, styles.row]}>
       <ArkhamIcon name={card.faction_code} size={36} color="white" />
-      <ArkhamIcon name={card.faction2_code} size={36} color="white" />
-    </>
+      { !!card.faction2_code && <ArkhamIcon name={card.faction2_code} size={36} color="white" /> }
+    </View>
   );
 }
 function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {

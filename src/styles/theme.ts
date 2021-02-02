@@ -9,6 +9,7 @@ export interface ThemeFonts {
 export interface FactionColors {
   invertedText: string;
   text: string;
+  border: string;
   background: string;
   darkBackground: string;
   lightBackground: string;
@@ -81,6 +82,8 @@ const dark20 = '#475259';
 const dark30 = '#24303C';
 const medium = '#9B9B9B';
 
+const neutralBorder = medium;
+
 const guardianLightText = '#1072C2';
 const seekerLightText = '#DB7C07';
 const rogueLightText = '#219428';
@@ -122,9 +125,10 @@ export const LIGHT_THEME: ThemeColors = {
     guardian: {
       invertedText: guardianDarkText,
       text: guardianLightText,
-      background: '#1072C2',
+      background: guardianLightText,
       darkBackground: '#2b80c5',
       lightBackground: '#d5e6f3',
+      border: guardianDarkText,
     },
     seeker: {
       invertedText: seekerDarkText,
@@ -132,6 +136,7 @@ export const LIGHT_THEME: ThemeColors = {
       background: '#DB7C07',
       darkBackground: '#db7c07',
       lightBackground: '#fbe6d4',
+      border: seekerDarkText,
     },
     rogue: {
       invertedText: rogueDarkText,
@@ -139,6 +144,7 @@ export const LIGHT_THEME: ThemeColors = {
       background: '#219428',
       darkBackground: '#107116',
       lightBackground: '#cfe3d0',
+      border: rogueDarkText,
     },
     mystic: {
       invertedText: mysticDarkText,
@@ -146,6 +152,7 @@ export const LIGHT_THEME: ThemeColors = {
       background: '#7554AB',
       darkBackground: '#4331B9',
       lightBackground: '#d9d6f1',
+      border: mysticDarkText,
     },
     survivor: {
       invertedText: survivorDarkText,
@@ -153,6 +160,7 @@ export const LIGHT_THEME: ThemeColors = {
       background: '#CC3038',
       darkBackground: '#cc3038',
       lightBackground: '#f5d6d7',
+      border: survivorDarkText,
     },
     neutral: {
       invertedText: neutralDarkText,
@@ -160,6 +168,7 @@ export const LIGHT_THEME: ThemeColors = {
       background: dark20,
       darkBackground: '#444444',
       lightBackground: '#e6e6e6',
+      border: neutralBorder,
     },
     dual: {
       invertedText: dualDarkText,
@@ -167,6 +176,7 @@ export const LIGHT_THEME: ThemeColors = {
       background: '#cfb13a',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',
+      border: dualLightText,
     },
     dead: {
       invertedText: deadDarkText,
@@ -174,6 +184,7 @@ export const LIGHT_THEME: ThemeColors = {
       background: '#704214',
       darkBackground: '#5a3510',
       lightBackground: '#d4c6b9',
+      border: deadLightText,
     },
     mythos: {
       invertedText: mythosDarkText,
@@ -181,6 +192,7 @@ export const LIGHT_THEME: ThemeColors = {
       background: dark30,
       darkBackground: '#000000',
       lightBackground: '#000000',
+      border: mythosLightText,
     },
   },
   upgrade: '#cfb13a',
@@ -242,9 +254,10 @@ export const DARK_THEME: ThemeColors = {
     guardian: {
       invertedText: guardianLightText,
       text: guardianDarkText,
-      background: '#1072C2',
+      background: guardianLightText,
       darkBackground: '#2b80c5',
       lightBackground: '#004880',
+      border: guardianDarkText,
     },
     seeker: {
       invertedText: seekerLightText,
@@ -252,6 +265,7 @@ export const DARK_THEME: ThemeColors = {
       background: '#DB7C07',
       darkBackground: '#db7c07',
       lightBackground: '#bf5c00',
+      border: seekerDarkText,
     },
     rogue: {
       invertedText: rogueLightText,
@@ -259,6 +273,7 @@ export const DARK_THEME: ThemeColors = {
       background: '#219428',
       darkBackground: '#107116',
       lightBackground: '#015906',
+      border: rogueDarkText,
     },
     mystic: {
       invertedText: mysticLightText,
@@ -266,6 +281,7 @@ export const DARK_THEME: ThemeColors = {
       background: '#7554AB',
       darkBackground: '#7554AB',
       lightBackground: '#46018f',
+      border: mysticDarkText,
     },
     survivor: {
       invertedText: survivorLightText,
@@ -273,6 +289,7 @@ export const DARK_THEME: ThemeColors = {
       background: '#CC3038',
       darkBackground: '#cc3038',
       lightBackground: '#7a0105',
+      border: survivorDarkText,
     },
     neutral: {
       invertedText: neutralLightText,
@@ -280,6 +297,7 @@ export const DARK_THEME: ThemeColors = {
       background: dark20,
       darkBackground: '#444444',
       lightBackground: '#292929',
+      border: neutralBorder,
     },
     dual: {
       invertedText: dualLightText,
@@ -287,6 +305,7 @@ export const DARK_THEME: ThemeColors = {
       background: '#cfb13a',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',
+      border: dualDarkText,
     },
     dead: {
       invertedText: deadLightText,
@@ -294,6 +313,7 @@ export const DARK_THEME: ThemeColors = {
       background: '#704214',
       darkBackground: '#5a3510',
       lightBackground: '#d4c6b9',
+      border: deadDarkText,
     },
     mythos: {
       invertedText: mythosLightText,
@@ -301,6 +321,7 @@ export const DARK_THEME: ThemeColors = {
       background: '#444',
       darkBackground: '#000000',
       lightBackground: '#000000',
+      border: mythosDarkText,
     },
   },
 

@@ -10,13 +10,38 @@ import COLORS from '@styles/colors';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
-export type DeckButtonIcon = 'draw' | 'tdea' | 'tdeb' | 'tools' | 'difficulty' | 'chaos_bag' | 'chart' | 'elder_sign' | 'delete' | 'per_investigator' | 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
+export type DeckButtonIcon =
+  'right-arrow' |
+  'weakness' |
+  'card-outline' |
+  'deck' |
+  'draw' |
+  'tdea' |
+  'tdeb' |
+  'tools' |
+  'difficulty' |
+  'chaos_bag' |
+  'chart' |
+  'elder_sign' |
+  'delete' |
+  'per_investigator' |
+  'settings' |
+  'book' |
+  'arkhamdb' |
+  'plus-thin' |
+  'dismiss' |
+  'check-thin' |
+  'upgrade' |
+  'edit' |
+  'email' |
+  'login' |
+  'logo';
 
 interface Props {
   title: string;
   detail?: string;
   icon?: DeckButtonIcon;
-  color?: 'red' | 'red_outline' | 'gold' | 'gray';
+  color?: 'red' | 'red_outline' | 'gold' | 'default' | 'dark_gray' | 'light_gray';
   onPress?: () => void;
   rightMargin?: boolean;
   thin?: boolean;
@@ -28,6 +53,10 @@ interface Props {
 }
 
 const ICON_SIZE = {
+  'right-arrow': 32,
+  weakness: 24,
+  'card-outline': 24,
+  deck: 26,
   tdea: 28,
   tdeb: 28,
   tools: 26,
@@ -51,6 +80,13 @@ const ICON_SIZE = {
   'check-thin': 30,
 };
 const ICON_STYLE = {
+  'right-arrow': {},
+  weakness: {
+    marginLeft: -3,
+  },
+  'card-outline': {},
+  deck: {
+  },
   draw: {},
   tdea: {},
   tdeb: {},
@@ -79,14 +115,14 @@ const ICON_STYLE = {
 };
 
 const MATERIAL_ICONS = new Set(['email', 'delete', 'login']);
-const ARKHAM_ICONS = new Set(['per_investigator', 'elder_sign']);
+const ARKHAM_ICONS = new Set(['per_investigator', 'elder_sign', 'weakness']);
 const ENCOUNTER_ICONS = new Set(['tdea', 'tdeb']);
 export default function DeckButton({
   disabled,
   title,
   detail,
   icon,
-  color = 'gray',
+  color = 'default',
   onPress,
   rightMargin,
   topMargin,
@@ -95,36 +131,54 @@ export default function DeckButton({
   loading,
   bottomMargin,
 }: Props) {
-  const { colors, fontScale, typography } = useContext(StyleContext);
+  const { colors, fontScale, typography, shadow } = useContext(StyleContext);
   const backgroundColors = {
     red_outline: colors.D30,
     red: colors.warn,
     gold: colors.upgrade,
-    gray: colors.D10,
+    default: colors.D10,
+    light_gray: colors.L20,
+    dark_gray: colors.L10,
   };
   const rippleColor = {
     red_outline: colors.D10,
     red: colors.faction.survivor.lightBackground,
     gold: colors.faction.dual.lightBackground,
-    gray: colors.M,
+    default: colors.M,
+    light_gray: colors.L30,
+    dark_gray: colors.L20,
   };
   const iconColor = {
     red_outline: colors.warn,
     red: COLORS.white,
     gold: COLORS.D20,
-    gray: colors.L10,
+    default: colors.L10,
+    light_gray: colors.M,
+    dark_gray: colors.D10,
   };
   const textColor = {
     red_outline: colors.L30,
     red: COLORS.L30,
     gold: COLORS.D30,
-    gray: colors.L30,
+    default: colors.L30,
+    light_gray: colors.D20,
+    dark_gray: colors.D20,
+  };
+  const detailTextColor = {
+    red_outline: colors.L30,
+    red: COLORS.L30,
+    gold: COLORS.D30,
+    default: colors.L30,
+    light_gray: colors.D10,
+    dark_gray: colors.D10,
   };
   const disabledTextColor = {
     red_outline: colors.L10,
     red: COLORS.L30,
     gold: COLORS.D10,
-    gray: colors.L10,
+    default: colors.L10,
+    light_gray: colors.D10,
+    dark_gray: colors.D10,
   };
   const theIconColor = iconColor[color];
   const iconContent = useMemo(() => {
@@ -150,8 +204,11 @@ export default function DeckButton({
     <Ripple
       disabled={disabled}
       style={[
-        styles.button,
-        { backgroundColor: backgroundColors[color] },
+        {
+          borderRadius: color === 'dark_gray' || color === 'light_gray' ? 8 : 4,
+          backgroundColor: backgroundColors[color],
+        },
+        color === 'dark_gray' ? shadow.large : undefined,
         shrink ? undefined : styles.grow,
         rightMargin ? space.marginRightS : undefined,
         bottomMargin ? { marginBottom: bottomMargin } : undefined,
@@ -183,7 +240,7 @@ export default function DeckButton({
             { title }
           </Text>
           { !!detail && (
-            <Text style={[typography.smallButtonLabel, { marginTop: 1, color: textColor[color] }]} numberOfLines={2}>
+            <Text style={[typography.smallButtonLabel, { marginTop: 1, color: detailTextColor[color] }]} numberOfLines={2}>
               { detail }
             </Text>
           ) }
@@ -194,9 +251,6 @@ export default function DeckButton({
 }
 
 const styles = StyleSheet.create({
-  button: {
-    borderRadius: 4,
-  },
   grow: {
     flex: 1,
   },

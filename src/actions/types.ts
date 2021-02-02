@@ -506,16 +506,11 @@ export interface SetTabooSetAction {
   tabooId?: number;
 }
 
-export const SET_SINGLE_CARD_VIEW = 'SET_SINGLE_CARD_VIEW';
-export interface SetSingleCardViewAction {
-  type: typeof SET_SINGLE_CARD_VIEW;
-  singleCardView: boolean;
-}
-
-export const SET_ALPHABETIZE_ENCOUNTER_SETS = 'SET_ALPHABETIZE_ENCOUNTER_SETS';
-export interface SetAlphabetizeEncounterSetsAction {
-  type: typeof SET_ALPHABETIZE_ENCOUNTER_SETS;
-  alphabetizeEncounterSets: boolean;
+export const SET_MISC_SETTING = 'SET_MISC_SETTING';
+export interface SetMiscSettingAction {
+  type: typeof SET_MISC_SETTING;
+  setting: 'single_card' | 'alphabetize' | 'colorblind';
+  value: boolean;
 }
 
 export const PACKS_FETCH_START = 'PACKS_FETCH_START';
@@ -792,7 +787,8 @@ export interface UpdateCampaignSpentXpAction {
   type: typeof UPDATE_CAMPAIGN_SPENT_XP;
   id: CampaignId;
   investigator: string;
-  operation: 'inc' | 'dec';
+  operation: 'set';
+  value: number;
   now: Date;
 }
 

@@ -436,8 +436,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'horror_in_high_gear':
       case 'hhg':
         return this.innsmouthIcon('horror_in_high_gear', size, color);
-      case 'a_light_in_the_fog':
-      case 'lif':
       case 'lair_of_dagon':
       case 'lod':
       case 'itm':
@@ -456,6 +454,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.innsmouthIcon('grotto_of_despair', size, color);
       case 'flooded_caverns':
         return this.innsmouthIcon('flooded_caves', size, color);
+      case 'a_light_in_the_fog':
+      case 'lif':
+        return this.innsmouthIcon('a_light_in_the_fog', size, color);
 
       case 'agents_of_dagon':
       case 'agents_of_hydra':

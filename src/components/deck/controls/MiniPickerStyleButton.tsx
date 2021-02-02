@@ -9,6 +9,7 @@ import AppIcon from '@icons/AppIcon';
 interface Props {
   title: string;
   valueLabel: string | React.ReactNode;
+  icon?: string;
   first?: boolean;
   last?: boolean;
   editable: boolean;
@@ -18,6 +19,7 @@ interface Props {
 export default function MiniPickerStyleButton({
   title,
   valueLabel,
+  icon = 'edit',
   first,
   last,
   editable,
@@ -30,20 +32,26 @@ export default function MiniPickerStyleButton({
       disabled={!editable}
       style={[
         space.paddingSideS,
-        space.paddingTopS,
+        space.paddingTopXs,
         first ? styles.roundTop : undefined,
         last ? styles.roundBottom : undefined,
-        { backgroundColor: colors.L20 },
+        {
+          backgroundColor: colors.L20,
+          minHeight: 32,
+        },
       ]}
       rippleColor={colors.L30}
     >
-      <View style={[styles.row, space.paddingBottomS, !last ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
+      <View style={[
+        styles.row,
+        space.paddingBottomXs,
+        !last ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         <View style={styles.leftRow}>
-          <View style={styles.column}>
-            <Text style={[typography.smallLabel, typography.dark, typography.italic]}>
+          <View style={styles.row}>
+            <Text style={[typography.small, typography.dark, typography.italic, { flex: 1 }]}>
               { title }
             </Text>
-            <View style={[styles.row, space.paddingTopXs]}>
+            <View style={[styles.row, space.paddingTopXs, { flex: 2 }]}>
               { typeof valueLabel === 'string' ? (
                 <Text style={[typography.large]}>
                   { valueLabel }
@@ -54,7 +62,7 @@ export default function MiniPickerStyleButton({
         </View>
         { !!editable && (
           <View style={styles.editIcon}>
-            <AppIcon name="edit" size={20} color={colors.M} />
+            <AppIcon name={icon} size={icon === 'edit' ? 20 : 26} color={colors.M} />
           </View>
         ) }
       </View>
@@ -63,12 +71,6 @@ export default function MiniPickerStyleButton({
 }
 
 const styles = StyleSheet.create({
-  column: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    flex: 1,
-  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -81,8 +83,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   editIcon: {
-    width: 32,
-    height: 32,
+    width: 24,
+    height: 24,
     marginLeft: s,
     flexDirection: 'row',
     justifyContent: 'center',

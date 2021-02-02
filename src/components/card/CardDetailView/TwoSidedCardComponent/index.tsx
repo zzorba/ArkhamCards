@@ -64,10 +64,6 @@ interface Props {
   width: number;
 }
 
-interface State {
-  showBack: boolean;
-}
-
 export default function TwoSidedCardComponent({ componentId, card, linked, notFirst, simple, width }: Props) {
   const { backgroundStyle, shadow, colors, typography } = useContext(StyleContext);
   const [showBack, toggleShowBack] = useFlag(false);

@@ -95,7 +95,7 @@ export default function InvestigatorRow({
               card={investigator}
               killedOrInsane={eliminated}
               yithian={yithian}
-              small={!bigImage}
+              size={bigImage ? 'large' : 'small'}
               border
             />
           </View>

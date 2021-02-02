@@ -626,7 +626,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
         title={user ? t`Sign out` : t`Sign in to app`}
         icon="logo"
         loading={loading}
-        color={user ? 'gray' : 'red'}
+        color={user ? 'default' : 'red'}
         onPress={user ? logoutPressed : showLoginDialog}
       />
       { loginDialog }
