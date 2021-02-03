@@ -4132,6 +4132,21 @@ msgstr ""
 msgid "Asset: Body. Arcane"
 msgstr ""
 
+msgid "Color blind friendly icons"
+msgstr ""
+
+msgid "Uploading"
+msgstr ""
+
+msgid "Upload campaigns"
+msgstr ""
+
+msgid "Campaigns can be uploaded to your Arkham Cards account."
+msgstr ""
+
+msgid "Uploaded campaigns will be synced between devices."
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."

@@ -18,6 +18,7 @@ export default function DeckCheckboxButton({ title, description, icon, value, on
   return (
     <DeckActionRow
       title={title}
+      titleFirst
       description={description}
       icon={icon}
       last={last}

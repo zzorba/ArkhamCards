@@ -25,7 +25,7 @@ function DualFactionIcons({ card }: { card: Card }) {
   const faction_code = card.factionCode();
   const colorblind = useSelector((state: AppState) => !!state.settings.colorblind);
   if (!card.faction_code ||
-    (!card.faction2_code && (!colorblind || faction_code === 'neutral' || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill'))) {
+    (!card.faction2_code && (!colorblind || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill'))) {
     return null;
   }
   return (

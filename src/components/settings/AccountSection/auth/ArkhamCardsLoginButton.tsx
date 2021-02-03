@@ -426,7 +426,9 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
       <View style={styles.column}>
         <View style={space.paddingS}>
           <Text style={typography.text}>
-            { t`Campaigns can now be uploaded to your Arkham Cards account, to serve as a backup and allow them to be synced between devices.` }
+            { t`Campaigns can be uploaded to your Arkham Cards account.` }
+            { '\n' }
+            { t`Uploaded campaigns will be synced between devices.` }
           </Text>
         </View>
         { map(localCampaigns, (campaign, idx) => (

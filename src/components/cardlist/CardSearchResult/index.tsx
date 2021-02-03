@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
@@ -16,6 +17,7 @@ import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize } from './constants';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { AppState } from '@reducers';
 import { ControlComponent, ControlType } from './ControlComponent';
 import { usePressCallback } from '@components/core/hooks';
 
@@ -153,9 +155,10 @@ function CardSearchResult(props: Props) {
     }
   }, [onPress, onPressId, id, card]);
   const handleCardPress = usePressCallback(handleCardPressFunction);
-
+  const colorblind = useSelector((state: AppState) => state.settings.colorblind);
   const dualFactionIcons = useMemo(() => {
-    if (!card.faction2_code) {
+    const faction_code = card.factionCode();
+    if (!card.faction2_code && (!colorblind || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill')) {
       return null;
     }
     const SKILL_ICON_SIZE = 16 * fontScale;
@@ -163,21 +166,23 @@ function CardSearchResult(props: Props) {
       <View style={styles.dualFactionIcons}>
         <View style={styles.skillIcon}>
           <ArkhamIcon
-            name={card.factionCode()}
+            name={faction_code}
             size={SKILL_ICON_SIZE}
-            color={colors.faction[card.factionCode()].text}
+            color={colors.faction[faction_code].text}
           />
         </View>
-        <View style={styles.skillIcon}>
-          <ArkhamIcon
-            name={card.faction2_code}
-            size={SKILL_ICON_SIZE}
-            color={colors.faction[card.faction2_code].text}
-          />
-        </View>
+        { !!card.faction2_code && (
+          <View style={styles.skillIcon}>
+            <ArkhamIcon
+              name={card.faction2_code}
+              size={SKILL_ICON_SIZE}
+              color={colors.faction[card.faction2_code].text}
+            />
+          </View>
+        ) }
       </View>
     );
-  }, [fontScale, colors, card]);
+  }, [fontScale, colors, card, colorblind]);
 
   const skillIcons = useMemo(() => {
     if (card.type_code === 'investigator' || (
@@ -237,6 +242,7 @@ function CardSearchResult(props: Props) {
         </View>
         { true && (
           <View style={[styles.row, { backgroundColor: 'transparent' }]}>
+            { dualFactionIcons }
             { skillIcons }
             { !!card.renderSubname && (
               <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
@@ -245,7 +251,6 @@ function CardSearchResult(props: Props) {
                 </Text>
               </View>
             ) }
-            { dualFactionIcons }
           </View>
         ) }
       </View>
@@ -358,10 +363,11 @@ const styles = StyleSheet.create({
   skillIcons: {
     flexDirection: 'row',
     backgroundColor: 'transparent',
+    marginRight: s,
   },
   dualFactionIcons: {
-    marginLeft: s,
     flexDirection: 'row',
+    marginRight: s,
   },
   skillIcon: {
     marginRight: xs / 2,

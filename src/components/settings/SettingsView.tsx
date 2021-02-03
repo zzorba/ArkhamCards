@@ -193,7 +193,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
               />
               <DeckCheckboxButton
                 icon="show"
-                title={t`Colorblind mode`}
+                title={t`Color blind friendly icons`}
                 value={colorblind}
                 onValueChange={colorblindChanged}
               />
