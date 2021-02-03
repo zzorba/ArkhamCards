@@ -299,7 +299,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'venom':
         return this.forgottenIcon('yigs_venom', size, color);
       case 'k\'n-yan':
+      case 'heart_of_the_elders_part_2':
         return this.forgottenIcon('knyan', size, color);
+      case 'heart_of_the_elders_part_1':
       case 'pillars_of_judgment':
         return this.forgottenIcon('pillars_of_judgement', size, color);
       case 'rttfa':

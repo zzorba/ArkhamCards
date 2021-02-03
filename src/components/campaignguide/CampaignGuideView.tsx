@@ -25,6 +25,7 @@ import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import DeckButton from '@components/deck/controls/DeckButton';
+import ScenarioCarouselComponent from './ScenarioCarouselComponent';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -67,17 +68,23 @@ function CampaignGuideView(props: Props) {
   }, [dispatch, user]);
   const { campaignGuide, campaignState } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
-  const [removeMode, toggleRemoveInvestigator] = useFlag(false);
   const [alertDialog, showAlert] = useAlertDialog();
   const decksTab = useMemo(() => {
     return (
       <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
         <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
-          <View style={[space.paddingSideS, space.paddingBottomL]}>
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
             <CampaignGuideSummary
               difficulty={processedCampaign.campaignLog.campaignData.difficulty}
               campaignGuide={campaignGuide}
             />
+          </View>
+          <ScenarioCarouselComponent
+            componentId={componentId}
+            processedCampaign={processedCampaign}
+            showAlert={showAlert}
+          />
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
             <CampaignInvestigatorsComponent
               componentId={componentId}
               showAlert={showAlert}

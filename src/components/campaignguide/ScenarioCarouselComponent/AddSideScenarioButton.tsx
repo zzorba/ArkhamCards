@@ -7,7 +7,6 @@ import { AddSideScenarioProps } from '@components/campaignguide/AddSideScenarioV
 import { ProcessedCampaign } from '@data/scenario';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { ShowAlert } from '@components/deck/dialogs';
-import { CampaignId } from '@actions/types';
 import CampaignGuideContext from '../CampaignGuideContext';
 
 interface Props {
@@ -102,11 +101,13 @@ export default function AddSideScenarioButton({ componentId, processedCampaign, 
       },
     });
   }, [componentId, campaignId, processedCampaign.scenarios, canAddScenario, showAlert]);
-
+  if (!canAddScenario) {
+    return null;
+  }
   return (
     <RoundedFooterButton
       icon="expand"
-      title={t`Add side scenario`}
+      title={t`Insert standalone`}
       onPress={onPress}
     />
   );
