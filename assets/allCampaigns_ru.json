@@ -24956,7 +24956,7 @@
     },
     {
       "id": "alejandro_on_his_own",
-      "text": "Запишите в журнал кампании, что <i>Алехандро Вела продолжает исследования в одиночку</i>. Если карта «Алехандро Вела» находится в колоде какого-либо сыщика, удалите её.\nиз этой колоды.",
+      "text": "Запишите в журнал кампании, что <i>Алехандро Вела продолжает исследования в одиночку</i>. Если карта «Алехандро Вела» находится в колоде какого-либо сыщика, удалите её из этой колоды.",
       "effects": [
         {
           "type": "campaign_log",
@@ -48322,7 +48322,7 @@
 {
   "id": "the_wages_of_sin",
   "scenario_name": "Расплата за грехи",
-  "full_name": "Scenario IV: The Wages of Sin",
+  "full_name": "Сценарий IV: Расплата за грехи",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -48343,7 +48343,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "Ever since your encounter with the ghost in the Witch House, you have been forced to reconsider everything you know about life and death. Keziah Mason died over two hundred years ago, but her spirit remains in the spectral mist—the same mist you encountered in Josef Meiger’s manor. One question lingers in your mind as you consider the events that have transpired: Does Keziah’s spirit linger because of the mist, or is the mist caused by her presence? Which is the disease, and which the symptom?\nThe more you delve into Arkham’s history of witchcraft and persecution, the more restless you become. Night after night, you are assaulted by terrible dreams—dreams of death and decay, of guilt and sin. There is an evil that dwells in this city, an evil that has long remained hidden in the darkness of Arkham’s past. What’s worse, your inquiry has reached an impasse. You believe that if you can find the coven of witches you saw in the woods that fateful night, you might be able to learn more about Keziah Mason or of this unspoken evil.\nAs you go through your morning routine, your eyes drift across one of the smaller headlines of today’s newspaper: “Ghost Sightings on Hangman’s Hill? Residents of Uptown claim to have seen human shapes in the thick fog emanating from Hangman’s Brook…” It couldn’t be a coincidence, could it?\nThen the realization dawns on you—if it is witches you seek, the only place you can be certain to find them is six feet underground, in the place where professed witches were executed all those years ago. Searching for specters in a graveyard may not be your safest bet, but you’re not sure one can stay safe in this city anymore."
+      "text": "Встреча с призраком в Ведьмином доме заставила вас переосмыслить всё, что вы знаете о жизни и смерти. Кассия Мейсон умерла больше двухсот лет назад, но её дух остался в призрачной мгле — той самой, что приходила в особняк Джозефа Майгера. Обдумывая последние события, вы задаётесь одним вопросом: призрак Кассии существует благодаря мгле или же мгла — следствие его присутствия? Что из этого болезнь, а что симптом?\nЧем глубже вы погружаетесь в историю аркхэмских ведьм и их гонений, тем хуже вам спится. Каждую ночь вас терзают ужасные сны о смерти и разложении, о грехах и преступлениях. Зло живёт в этом городе, зло, которое долго скрывалось во тьме аркхэмского прошлого. Но что хуже всего, ваше расследование зашло в тупик. Вы приходите к выводу, что, если вам удастся найти ковен, с которым вы столкнулись той судьбоносной ночью в лесу, вы сможете больше узнать о Кассии Мейсон или об этом невыразимом зле.\nОдним утром, пока вы занимаетесь привычными делами, ваш взгляд цепляется за небольшой заголовок в свежей газете: «Привидения на Висельном холме? Жители Аптауна сообщают о человеческих силуэтах в густом тумане над Висельным ручьём…» Это ведь не может быть простым совпадением?\nВас осеняет: раз вам нужны ведьмы, их нужно искать в шести футах под \nземлёй — там, где когда-то проходили казни по обвинениям в ведьмовстве. Погоня за призраками на кладбище — занятие небезопасное, но может ли теперь хоть кто-то в этом городе считать себя в безопасности?"
     },
     {
       "id": "gather_encounter_sets",
@@ -48369,13 +48369,13 @@
     },
     {
       "id": "setup_locations",
-      "text": "Randomly choose one of the two The Gallows locations, one of the two Heretics’ Graves locations, one of the two Chapel Attic locations, and one of the two Chapel Crypt locations, and put them into play. Remove the other versions of The Gallows, Heretics’ Graves, Chapel Attic, and Chapel Crypt from the game. Then, put Haunted Fields, Abandoned Chapel, and Hangman’s Brook into play.",
+      "text": "Случайным образом выберите по 1 экземпляру следующих локаций: «Эшафот», «Могилы еретиков», «Чердак часовни» и «Склеп под часовней» и введите их в игру. Удалите другие экземпляры этих локаций из игры. Затем введите в игру локации «Проклятые поля», «Заброшенная часовня» и «Висельный ручей».",
       "bullets": [
         {
-          "text": "These locations have revealed versions on both sides. One side has the [[Spectral]] trait, and one side does not. When putting these locations into play, use the revealed sides without the [[Spectral]] trait."
+          "text": "Обе стороны этих локаций открытые. На одной стороне есть черта [[потусторонняя]], а на другой нет. Вводя локации в игру, кладите их вверх той стороной, где нет черты [[потусторонняя]]."
         },
         {
-          "text": "Each investigator begins play in Hangman’s Brook."
+          "text": "Все сыщики начинают игру в локации «Висельный ручей»."
         }
       ]
     },
@@ -48411,44 +48411,44 @@
     },
     {
       "id": "set_aside_spectral_web",
-      "text": "Set the four Spectral Web assets aside, out of play."
+      "text": "Отложите в сторону 4 карты активов «Призрачная сеть»."
     },
     {
       "id": "shuffle_heretics",
-      "text": "Shuffle the six Heretic enemies and set aside four of them, at random. Remove the other two copies from the game. These cards are double-sided and have story cards on their reverse side. For the best experience, do not look at the story cards on their other side."
+      "text": "Перемешайте 6 экземпляров врагов «Еретичка» и случайным образом отложите 4 из них. Оставшиеся 2 экземпляра удалите из игры. Эти карты двусторонние, с картой сюжета на обороте. Чтобы игра была интереснее, не смотрите обратную сторону этих карт."
     },
     {
       "id": "create_encounter_decks",
-      "text": "This scenario utilizes two separate encounter decks.",
+      "text": "В этом сценарии используются две разные колоды контактов.",
       "bullets": [
         {
-          "text": "Separate each of the remaining cards with the [[Spectral]] trait and shuffle them together to build the spectral encounter deck <i>(see “The Spectral Encounter Deck,” below)</i>."
+          "text": "Соберите и перемешайте колоду потусторонних контактов изо всех оставшихся карт с чертой [[потусторонняя]] (см. «Колода потусторонних контактов» ниже)."
         },
         {
-          "text": "Shuffle each of the remaining non-[[Spectral]] cards together to build the standard encounter deck."
+          "text": "Соберите и перемешайте обычную колоду контактов изо всех остав­шихся карт без черты [[потусторонняя]]."
         }
       ]
     },
     {
       "id": "spectral_encounter_deck",
       "type": "rule_reminder",
-      "title": "The Spectral Encounter Deck",
-      "text": "During the setup of this scenario, two encounter decks are constructed: a “standard” encounter deck and a “spectral” encounter deck. Generally speaking, whenever an investigator would interact with the encounter deck, that investigator should use the standard encounter deck.\nHowever, at a certain point during this scenario, locations may flip over to their [[Spectral]] side. While an investigator is at a location with the [[Spectral]] trait, that investigator should use the spectral encounter deck instead of the standard encounter deck for all purposes, unless otherwise noted. This includes drawing cards from the encounter deck, as well as searching, looking at, revealing, or otherwise interacting with the encounter deck (or encounter discard pile) in any way. This also includes abilities that trigger when the encounter deck runs out of cards. If an effect specifically refers to the standard encounter deck or spectral encounter deck, it interacts with the specified deck regardless of the investigator’s location.\nEach of the two encounter decks have their own discard pile. Whenever a card with the [[Spectral]] trait would be discarded, it is placed in the discard pile for the spectral encounter deck. All other encounter cards are discarded to the discard pile for the standard encounter deck.\n<i>Note: Flipping a location over from one side to another during this scenario does not “reveal” the new location.</i>"
+      "title": "Колода потусторонних контактов",
+      "text": "При подготовке к этому сценарию вам нужно собрать две колоды контактов: одну с обычными контактами, а другую — с «потусторонними». Когда сыщик должен каким-либо образом взаимодействовать с колодой контактов, по умолчанию ему следует использовать обычную колоду.\nОднако в определённый момент в ходе сценария локации могут перевернуться потусторонней стороной вверх. Пока сыщик находится в локации с чертой потусторонняя, он должен использовать всякий раз колоду потусторонних контактов вместо обычной колоды контактов, если не сказано иного. Сюда входят случаи, когда сыщику нужно взять карту контакта, найти, раскрыть или посмотреть карту в колоде контактов, а также любые другие взаимодействия с колодой и сбросом контактов, включая розыгрыш свойств, срабатывающих, когда в колоде контактов заканчиваются карты. Если эффект прямо указывает на обычную колоду контактов или колоду потусторонних контактов, то этот эффект взаимодействует с указанной колодой контактов независимо от того, в какой локации находится сыщик.\nУ каждой из двух колод контактов свой сброс. Каждый раз, когда сбрасывается карта контакта с чертой потусторонняя, её следует поместить в сброс колоды потусторонних контактов. Все остальные карты контактов кладутся в сброс обычной колоды контактов.\n<i>Обратите внимание: Когда в этом сценарии локация переворачивается на другую сторону, не считается, что при этом была открыта новая локация.</i>"
     },
     {
       "id": "record_heretics_released",
       "type": "input",
-      "text": "In your Campaign Log, record <i>X heretics were unleashed unto Arkham</i>. X is the number of Heretic enemies in play. (If it is act 1, instead record <i>4 heretics were unleashed unto Arkham</i>.)",
+      "text": "Запишите в журнал кампании, что <i>в Аркхэм проникли Х еретичек</i>. X равен числу «Еретичек» в игре. (Если партия завершилась в сцене 1, вместо этого запишите, что <i>в Аркхэм проникли 4 еретички</i>.)",
       "input": {
         "type": "counter",
-        "text": "Heretic enemies in play:",
+        "text": "Число «Еретичек» в игре:",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "heretics_released",
             "operation": "set_input",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "В Аркхэм проникли #X# еретичек."
           }
         ]
       }
@@ -48477,13 +48477,13 @@
           "type": "campaign_log",
           "section": "mementos",
           "id": "corn_husk_doll",
-          "text": "Corn Husk Doll"
+          "text": "Соломенная кукла"
         }
       ]
     },
     {
       "id": "check_earned_wisp",
-      "text": "If 3 or fewer <i>heretics were unleashed unto Arkham</i>...",
+      "text": "Если в Аркхэм проникли 3 еретички или меньше…",
       "type": "branch",
       "condition": {
         "type": "campaign_log_count",
@@ -48510,7 +48510,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "survived_the_watchers_embrace",
-          "text": "the investigators survived the watcher’s embrace."
+          "text": "сыщики пережили объятия Стража."
         }
       ]
     },
@@ -48522,7 +48522,7 @@
           "type": "campaign_log",
           "section": "mementos",
           "id": "wisp_of_spectral_mist",
-          "text": "Wisp of Spectral Mist"
+          "text": "Клок потусторонней мглы"
         }
       ]
     },
@@ -48555,7 +48555,7 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(each investigator defeated)",
+      "title": "Исход не достигнут\n(Все сыщики побеждены)",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -48585,7 +48585,7 @@
         "id": "the_circle_undone.the_wages_of_sin.resolution_1",
         "name": "Resolution 1"
       },
-      "text": "Rays of faded sunlight stream through the haze, and the unnatural mist finally recedes. As it does, Hangman’s Hill returns to its original state. No other spiteful ghosts emerge to haunt you, and the witches who summoned them have retreated into the shadows once more. You hope that you have done enough to prevent the rest of Arkham to succumbing to this horror.",
+      "text": "Лучи приглушённого солнечного света пробиваются сквозь дымку, и неестественная мгла наконец рассеивается. Как только она отступает, Висельный холм становится прежним. Вас больше не преследуют разъярённые духи, а призвавшие их ведьмы снова отступили в тень. Вы надеетесь, что сделанного вами достаточно, чтобы защитить Аркхэм от этого ужаса.",
       "steps": [
         "maybe_corn_husk_doll",
         "record_heretics_released",
@@ -48601,7 +48601,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "Resigned to your fate, you fall to your knees. The mist parts. Time slows to a crawl as the watcher emerges. Its spectral form glides along the ground, approaching with the slow surety of a ticking clock. You close your eyes, unwilling to look upon your killer. Your fingers dig into your palm, and you brace yourself.\nThe moment passes.\nWhen you open your eyes again, the creature is gone, along with the spectral mist.\n…Have you been spared?",
+      "text": "Отдавшись воле судьбы, вы падаете на колени. Мгла \nрасступается. Время словно замирает, когда появляется Страж. \nЕго призрачные очертания скользят над землёй, медленно приближаясь с неотвратимостью тикающих часов. Вы закрываете глаза, не желая смотреть на собственную погибель. Крепко сжав кулаки, вы собираетесь с духом.\nНапряжение спадает.\nКогда вы снова открываете глаза, больше нет ни существа, ни потусторонней мглы.\n…Вас пощадили?",
       "steps": [
         "survived_the_watchers_embrace",
         "record_heretics_released",
@@ -62767,7 +62767,7 @@
     },
     {
       "id": "alejandro_on_his_own",
-      "text": "Запишите в журнал кампании, что <i>Алехандро Вела продолжает исследования в одиночку</i>. Если карта «Алехандро Вела» находится в колоде какого-либо сыщика, удалите её.\nиз этой колоды.",
+      "text": "Запишите в журнал кампании, что <i>Алехандро Вела продолжает исследования в одиночку</i>. Если карта «Алехандро Вела» находится в колоде какого-либо сыщика, удалите её из этой колоды.",
       "effects": [
         {
           "type": "campaign_log",
@@ -71772,9 +71772,1119 @@
   "id": "a_light_in_the_fog",
   "scenario_name": "A Light in the Fog",
   "full_name": "Scenario VI: A Light in the Fog",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "location_layout",
+    "location_layout_act_3",
+    "setup_keys",
+    "setup_captured",
+    "set_aside_cards",
+    "check_for_story_assets",
+    "check_idol",
+    "check_mantle",
+    "check_headdress",
+    "check_for_doom",
+    "check_reached_falcon_point_after_sunrise",
+    "check_tide_has_grown_stronger",
+    "add_flood_tokens",
+    "encounter_deck",
+    "keys_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "Crimson-tinted fog bathes the sky as you reach the gatehouse of Falcon Point. Atop the cliffs above you, the lighthouse beacon pierces through the mist. Considering the state of Innsmouth, you wonder what purpose the signal serves now. You doubt there are any ships out at sea given the inclement weather.\nSomewhere inside is the evidence you found weeks ago. You suspect that Oceiros—the man who captured you and left you in that pit to die—also resides within. \"Are you ready?\" Agent Harper asks. \"We have no real escape route here, should things go south. Be prepared for anything.\"\nYou nod. It's too late to turn back now. Steadily, you make your way toward the cliffs. One way or another, this ends today."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Подготовка",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "a_light_in_the_fog",
+        "creatures_of_the_deep",
+        "flooded_caverns",
+        "rising_tide",
+        "syzygy",
+        "striking_fear"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put Falcon Point Gatehouse, Falcon Point Cliffside, Lighthouse Stairwell, and Lighthouse Keeper's Cottage into play on the same row. Put Lantern Room into play directly above Lighthouse Stairwell. <i>(See Location Placement (Act 1))</i>.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at Falcon Point Gatehouse."
+        },
+        {
+          "text": "From among the Tidal Tunnel locations, remove the 2 Underground River locations from the game."
+        },
+        {
+          "text": "Set each other location aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement (Act 1)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "note": "Note: The order of the locations in this row does not matter, so long as Lantern Room is directly above Lighthouse Stairwell.",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "lantern_room",
+          "blank"
+        ],
+        [
+          "gatehouse",
+          "cliff",
+          "lighthouse_stairwell",
+          "keepers_cottage"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "lantern_room",
+          "name": "Lantern Room"
+        },
+        {
+          "code": "gatehouse",
+          "name": "Falcon Point Gatehouse"
+        },
+        {
+          "code": "cliff",
+          "name": "Falcon Point Cliffside"
+        },
+        {
+          "code": "lighthouse_stairwell",
+          "name": "Lighthouse Stairwell"
+        },
+        {
+          "code": "keepers_cottage",
+          "name": "Lighthouse Keeper's Cottage"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_act_3",
+      "type": "location_setup",
+      "text": "Location Placement (Act 3 / Agenda 3)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "note": "Note: The order of the locations on each row does not matter, so long as Lantern Room, Lighthouse Stairwell, and each Sunken Grotto are on the same column, as depicted.",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "lantern_room",
+          "blank"
+        ],
+        [
+          "gatehouse",
+          "cliff",
+          "lighthouse_stairwell",
+          "keepers_cottage"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "sunken_grotto_upper_depths",
+          "07052_back"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "sunken_grotto_lower_depths",
+          "07052_back"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "sunken_grotto_final_depths",
+          "07052_back"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "lantern_room",
+          "name": "Lantern Room"
+        },
+        {
+          "code": "gatehouse",
+          "name": "Falcon Point Gatehouse"
+        },
+        {
+          "code": "cliff",
+          "name": "Falcon Point Cliffside"
+        },
+        {
+          "code": "lighthouse_stairwell",
+          "name": "Lighthouse Stairwell"
+        },
+        {
+          "code": "keepers_cottage",
+          "name": "Lighthouse Keeper's Cottage"
+        },
+        {
+          "code": "sunken_grotto_upper_depths",
+          "name": "Sunken Grotto (Upper Depths)"
+        },
+        {
+          "code": "sunken_grotto_lower_depths",
+          "name": "Sunken Grotto (Lower Depths)"
+        },
+        {
+          "code": "sunken_grotto_final_depths",
+          "name": "Sunken Grotto (Final Depths)"
+        }
+      ]
+    },
+    {
+      "id": "setup_keys",
+      "text": "Set each key aside, as follows:",
+      "bullets": [
+        {
+          "text": "Set the white, black, blue, yellow and red keys aside, faceup."
+        },
+        {
+          "text": "Set the purple and green keys aside, facedown. Shuffle them so you do not know which is which."
+        }
+      ]
+    },
+    {
+      "id": "setup_captured",
+      "text": "Put the double-sided “Captured!” story card into play next to the scenario reference card, with its story side faceup. (This card is on the reverse side of the Holding Cell location.) Its text is active."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: the Oceiros Marsh enemy, both copies of the Worth His Salt treachery, and both copies of the Taken Captive treachery."
+    },
+    {
+      "id": "keys_rule",
+      "title": "Keys",
+      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+    },
+    {
+      "id": "check_for_story_assets",
+      "text": "Check Campaign Log:"
+    },
+    {
+      "id": "check_idol",
+      "bullet_type": "small",
+      "text": "If <i>the idol was brought to the lighthouse</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "idol_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_idol"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_idol",
+      "bullet_type": "small",
+      "text": "Search the collection for the Waveworn Idol and set it aside, out of play."
+    },
+    {
+      "id": "check_mantle",
+      "bullet_type": "small",
+      "text": "If <i>the mantle was brought to the lighthouse</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mantle_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_mantle"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_mantle",
+      "bullet_type": "small",
+      "text": "Search the collection for the Awakened Mantle and set it aside, out of play."
+    },
+    {
+      "id": "check_headdress",
+      "bullet_type": "small",
+      "text": "If <i>the headdress was brought to the lighthouse</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "headdress_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_headdress"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_headdress",
+      "bullet_type": "small",
+      "text": "Search the collection for the Headdress of Y'ha-nthlei and set it aside, out of play."
+    },
+    {
+      "id": "check_for_doom",
+      "text": "Check Campaign Log:"
+    },
+    {
+      "id": "check_reached_falcon_point_after_sunrise",
+      "bullet_type": "small",
+      "text": "If <i>the investigators reached Falcon Point after sunrise</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "reached_falcon_point_after_sunrise",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_falcon_point_doom"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_falcon_point_doom",
+      "bullet_type": "small",
+      "text": "Place 1 doom on Agenda 1."
+    },
+    {
+      "id": "check_tide_has_grown_stronger",
+      "bullet_type": "small",
+      "text": "If <i>the tide has grown stronger</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "tide_has_grown_stronger",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_tide_doom"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_tide_doom",
+      "bullet_type": "small",
+      "text": "Place 1 doom on Agenda 1."
+    },
+    {
+      "id": "add_flood_tokens",
+      "text": "Add the flood tokens to the token pool."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Keys",
+            "steps": [
+              "ask_keys"
+            ]
+          },
+          {
+            "id": "flashback_12",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_12",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback XII",
+            "steps": [
+              "flashback_12_story",
+              "flashback_12_effects",
+              "flashback_12_tokens",
+              "flashback_12_clues"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_12",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_13",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_13",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback XIII",
+            "steps": [
+              "flashback_13_story",
+              "flashback_13_effects",
+              "flashback_13_tokens"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_13",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Which keys do you want to read the representation of:",
+      "input": {
+        "type": "checklist",
+        "text": "Read",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Red",
+            "steps": [
+              "red_key"
+            ]
+          },
+          {
+            "id": "blue",
+            "text": "Blue",
+            "steps": [
+              "blue_key"
+            ]
+          },
+          {
+            "id": "green",
+            "text": "Green",
+            "steps": [
+              "green_key"
+            ]
+          },
+          {
+            "id": "yellow",
+            "text": "Yellow",
+            "steps": [
+              "yellow_key"
+            ]
+          },
+          {
+            "id": "purple",
+            "text": "Purple",
+            "steps": [
+              "purple_key"
+            ]
+          },
+          {
+            "id": "black",
+            "text": "Black",
+            "steps": [
+              "black_key"
+            ]
+          },
+          {
+            "id": "white",
+            "text": "White",
+            "steps": [
+              "white_key"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "red_key",
+      "text": "Red: A gilded key made of coral and covered in strange, glowing runes. The word \"Y'ha-nthlei\" is inscribed upon the handle."
+    },
+    {
+      "id": "blue_key",
+      "text": "Blue: A key carved with a symbol of an engorged fish eye."
+    },
+    {
+      "id": "green_key",
+      "text": "Green: A fist-sized cluster of raw peridot that pulses and glows with unnatural light."
+    },
+    {
+      "id": "yellow_key",
+      "text": "Yellow: A heavy iron ring crowded with prison cell keys."
+    },
+    {
+      "id": "purple_key",
+      "text": "Purple: The deceased larva of a malformed fish."
+    },
+    {
+      "id": "black_key",
+      "text": "Black: A map of the depths beneath Devil Reef."
+    },
+    {
+      "id": "white_key",
+      "text": "White: A pocket telescope."
+    },
+    {
+      "id": "flashback_12_story",
+      "title": "Flashback XII",
+      "type": "story",
+      "text": "You peer up at Falcon Point lighthouse, but from much further below. You are aboard Mr. Moore's fishing vessel, during your voyage to Devil Reef several weeks earlier. The ship sways back and forth as angry waves thrash against its hull. \"'Fraid it's gon' be a bit rocky,\" the ship captain shouts over the crashing of the tumultuous sea. \"Weather's been awful wild of late. Strange tides an' stranger winds.\"\nBut still you stare up at the ominous lighthouse, its beacon a guiding light, a warning sign, or both. Curious what knowledge he might have, you ask Mr. Moore about the lighthouse. \"That ol' thing? Been there longer'n Innsmouth itself. Marsh family's kept it runnin' as long as I remember. Oceiros is keeper now. Strange fella, that Oceiros. They say the only place in town he visits is the Order o' Dagon hall by New Church Green.\" He shakes his head.\nYou wonder if there are more secrets inside the lighthouse than meets the eye. Mr. Moore seems to note your curiosity. \"I've heard them Marshes've carved out caverns beneath the lighthouse goin' all the way down to sea level an' beyond,\" he claims. \"Dunno if that's true, but sometimes when I'm out at sea I've seen groups of 'em up by the cliffside, all wavin' an kneelin' like they're prayin' or something. Never really paid it much mind, but...\" his voice grows quieter. \"Jus' thought you oughta know.\"\nYou nod and thank him. If what he's saying is true, perhaps you should give this lighthouse a visit. You make a mental note to research more about Falcon Point once you return to town.\nWhen your mind snaps back to the present, you recall the legwork you'd done after your expedition to Devil Reef, and the information you found on the vast network of tunnels beneath the lighthouse..."
+    },
+    {
+      "id": "flashback_12_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "conversation_with_mr_moore",
+          "text": "a conversation with Mr. Moore"
+        }
+      ]
+    },
+    {
+      "id": "flashback_12_tokens",
+      "text": "Choose and remove one of the following chaos tokens from the chaos bag for the remainder of the campaign ([cultist], [tablet], or [elder_thing])",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "Remove [cultist]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "cultist",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "Remove [tablet]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "tablet",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "Remove [elder_thing]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "elder_thing",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flashback_12_clues",
+      "text": "The lead investigator gains 1 [per_investigator] clues from the token pool."
+    },
+    {
+      "id": "flashback_13_story",
+      "title": "Flashback XIII",
+      "type": "story",
+      "text": "You speak with one of the many sailors who frequent a ramshackle tavern by the docks of Innsmouth, somewhere in the southeastern slums of the decrepit seaport. He's found his own little corner of the pub in which to hide and drown himself in alcohol. So much the better—you'd prefer to keep your investigation quiet.\nYou jot down notes as the drunken man rambles on about the creatures he's seen swimming off the coast and prowling around the reefs. \"Deep Ones,\" he names them. \"Caught one in my net once,\" he blabbers through slurred speach. \"She an' her eggs—tha's right!—'er eggs, bigger'n your fist, an' squirmin' an' wrigglin', too!\"\nAbsorbed in the ritual of telling a tale for his fellow sailors, he elaborates: \"She had one of 'em in her arms. Tiny little devil, with bulgin', hateful eyes. Couldn't stand the sight of it. I threw the net o'er as soon as I realized what I'd caught, an' came right back 'ere. If I had my way I'd never sail 'gain.\"\nYou mull this new information over in your head. If this man speaks the truth, these creatures seem to have a lifecycle similar to that of a fish. But then, what is the purpose of the uncanny hybrid creatures you have seen skulking about the town? Are they but figments of your frightened imagination? Or is there a much more sinister part of this lifecycle that you are missing?"
+    },
+    {
+      "id": "flashback_13_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "lifecycle_of_a_deep_one",
+          "text": "the lifecycle of a \"Deep One\""
+        }
+      ]
+    },
+    {
+      "id": "flashback_13_tokens",
+      "text": "Choose and remove one of the following chaos tokens from the chaos bag for the remainder of the campaign ([cultist], [tablet], or [elder_thing])",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "Remove [cultist]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "cultist",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "Remove [tablet]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "tablet",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "Remove [elder_thing]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "elder_thing",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_final_agenda",
+      "type": "input",
+      "text": "What agenda was active when the scenario ended?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "agenda_1",
+            "text": "Agenda 1",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "agenda_2",
+            "text": "Agenda 2",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "agenda_3",
+            "text": "Agenda 3",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "agenda_4",
+            "text": "Agenda 4",
+            "steps": [
+              "resolution_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Победный счёт:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unspect_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "all_killed",
+      "text": "Все сыщики <b>убиты</b>.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "killed": true
+        }
+      ]
+    },
+    {
+      "id": "lose_campaign",
+      "text": "Сыщики проиграли.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "tic_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
+    },
+    {
+      "id": "ask_moon_room_resigned",
+      "text": "Which location did each investigator resign at?",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "resigned",
+        "source": "scenario",
+        "choices": [
+          {
+            "id": "moon_room",
+            "text": "Moon Room",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "campaign_notes",
+                "id": "possesses_a_diving_suite",
+                "cards": "$input_value",
+                "masculine_text": "#name# possesses a diving suit.",
+                "feminine_text": "#name# possesses a diving suit."
+              }
+            ]
+          },
+          {
+            "id": "falcon_point",
+            "text": "Falcon Point"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_black_key_on_act",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Was the black key on the current act when the game ended?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "possess_a_map_of_yhanthlei",
+                "text": "the investigators possess a map of Y'ha-nthlei."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_red_key_on_act",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Was the red key on the current act when the game ended?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "possess_the_key_to_yhanthlei",
+                "text": "the investigators possess the key to Y'ha-nthlei."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_story_relics",
+      "text": "For each set-aside [[Relic]] story asset that was added to an investigator's hand during this scenario, any investigator may choose to add that story asset to their deck. It does not count toward that investigator's deck size."
+    },
+    {
+      "id": "maybe_ask_idol",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "idol_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_idol"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_idol",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "earn_idol",
+            "text": "Was Waveworn Idol added to an investigator's hand during this scenario?",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "choice",
+                "card": "07179"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_mantle",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mantle_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_mantle"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_mantle",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "earn_idol",
+            "text": "Was Awakened Mantle added to an investigator's hand during this scenario?",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "choice",
+                "card": "07180"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_headdress",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "headdress_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_headdress"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_headdress",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "earn_idol",
+            "text": "Was Headdress of Y'ha-nthlei added to an investigator's hand during this scenario?",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "choice",
+                "card": "07181"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution_defeated",
+      "title": "Исход не был достигнут\n(все сыщики побеждены)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "ask_final_agenda"
+      ]
+    },
+    {
+      "id": "R1",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 1",
+      "text": "Exhausted, you throw yourself onto the rocky shore. Waves lap at your ankles as you stare up into the sky. Behind the clouds, deep crimson hues spell on ominous end for all of humankind. Your skull pounds with agony as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe over the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes your senses once more.",
+      "steps": [
+        "ask_moon_room_resigned",
+        "ask_black_key_on_act",
+        "ask_red_key_on_act",
+        "ask_story_relics",
+        "maybe_ask_idol",
+        "maybe_ask_mantle",
+        "maybe_ask_headdress",
+        "earn_xp"
+      ]
+    },
+    {
+      "id": "R2",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 2",
+      "text": "Exhaustion and despair eat at your muscles as you escape into the dark woods surrounding Falcon Point. You know it is too dangerous to stop moving, but you can hardly stand. You brace yourself against a nearby tree and stare up into the sky. Behind the clouds, deep crimson hues spell an ominous end for all of humankind. Your skull pounds as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe above the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes your senses once more.",
+      "steps": [
+        "ask_black_key_on_act",
+        "ask_red_key_on_act",
+        "ask_story_relics",
+        "maybe_ask_idol",
+        "maybe_ask_mantle",
+        "maybe_ask_headdress",
+        "earn_xp"
+      ]
+    },
+    {
+      "id": "R3",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 3",
+      "text": "You panic as the water level rises all the way to the ceiling of the cavern. There is no air left to breathe. You feel the currents pulling you deeper and deeper below the surface, where the bulging, glowing eyes of Deep Ones lie in wait. Desperately, you swim up to the cellar door of the lighthouse. Your only hope is to force it open and crawl up into the buildings above, where sweet oxygen awaits. You shove and push with all of your might, hoping, imagining, praying that any moment now your strength will spring the hatch open. Your lungs are about to burst. No! This cannot be the end! You struggle and fight for survival, but the lock does not budge. Hungry for air, your lungs give. Your throat fills with cold saltwater. The sensation of your ankles being gripped by webbed hands is the last thing you feel.",
+      "steps": [
+        "all_killed",
+        "lose_campaign"
+      ]
+    },
+    {
+      "id": "R4",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 4",
+      "text": "Coming here was a terrible mistake. Falcon Point is no simple lighthouse, but a headquarter for the Order of Dagon, even more hostile and deadly than the town of Innsmouth you left behind. With danger at every turn and the hateful lighthouse keeper hot on your tail, you leave the secrets of the lighthouse behind and flee into the dark woods.\nBy the time you are too deep into the treeline to see the lighthouse beacon, you are utterly exhausted. You know it is too dangerous to stop moving, but you can hardly stand. You brace yourself against a nearby treeand stare up into the sky. Behind the clouds, deep crimson hues spell an ominous end for all of humankind. Your skull pounds as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe above the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes you once more.",
+      "steps": [
+        "ask_black_key_on_act",
+        "ask_red_key_on_act",
+        "ask_story_relics",
+        "maybe_ask_idol",
+        "maybe_ask_mantle",
+        "maybe_ask_headdress",
+        "earn_xp"
+      ]
+    }
+  ]
 },
 {
   "id": "beneath_the_waves",

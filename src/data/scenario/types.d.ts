@@ -600,7 +600,7 @@ export interface UseSuppliesAllInput {
 export interface InvestigatorChoiceInput {
   type: "investigator_choice";
   source: "campaign" | "scenario";
-  investigator: "all" | "choice" | "any";
+  investigator: "all" | "choice" | "any" | "resigned";
   special_mode?: "detailed" | "sequential";
   choices: InvestigatorConditionalChoice[];
 }

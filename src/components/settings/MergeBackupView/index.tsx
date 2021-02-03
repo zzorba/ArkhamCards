@@ -21,8 +21,9 @@ import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import { useInvestigatorCards, useToggles } from '@components/core/hooks';
+import { useInvestigatorCards, useNavigationButtonPressed, useToggles } from '@components/core/hooks';
 import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
+import { useNavigation } from 'react-native-navigation-hooks/dist';
 
 export interface MergeBackupProps {
   backupData: BackupState | LegacyBackupState;
@@ -154,6 +155,12 @@ function MergeBackupView({ backupData, componentId }: Props) {
       actuallyDoImport();
     }
   }, [deckMerge, selectedCampaigns, selectedDecks, actuallyDoImport]);
+
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'import' && canImport) {
+      doImport();
+    }
+  }, componentId, [doImport, canImport]);
 
   const cancel = useCallback(() => {
     Navigation.pop(componentId);

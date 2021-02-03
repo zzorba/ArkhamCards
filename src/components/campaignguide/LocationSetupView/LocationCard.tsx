@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    padding: m,
+    padding: s,
     width: '100%',
     height: '100%',
     borderRadius: 8,

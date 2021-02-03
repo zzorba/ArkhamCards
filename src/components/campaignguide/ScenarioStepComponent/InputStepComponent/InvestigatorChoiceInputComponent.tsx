@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { keys, slice } from 'lodash';
+import { filter, keys, slice } from 'lodash';
 
 import InvestigatorCheckListComponent from '@components/campaignguide/prompts/InvestigatorCheckListComponent';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
@@ -78,12 +78,14 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
       </>
     );
   }
+  const options = investigatorChoiceInputChoices(input, campaignLog);
   return (
     <InvestigatorChoicePrompt
       id={step.id}
       text={step.text}
       bulletType={step.bullet_type}
-      options={investigatorChoiceInputChoices(input, campaignLog)}
+      investigators={input.investigator === 'resigned' ? filter(campaignLog.investigators(false), card => campaignLog.resigned(card.code)) : undefined}
+      options={options}
       detailed={input.special_mode === 'detailed'}
       optional={input.investigator === 'choice'}
     />

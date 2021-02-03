@@ -2366,6 +2366,11 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "possesses_a_diving_suite",
+            "masculine_text": "#name# possesses a diving suit.",
+            "feminine_text": "#name# possesses a diving suit."
+          },
+          {
             "id": "allen_out_for_blood",
             "text": "Zadok Allen está sediento de sangre."
           },
@@ -2416,6 +2421,14 @@
           {
             "id": "mission_succeeded",
             "text": "la misión tuvo éxito."
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "the investigators possess a map of Y'ha-nthlei."
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "the investigators possess the key to Y'ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
@@ -2503,6 +2516,14 @@
             "text": "dummy"
           },
           {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
             "id": "flashback_2",
             "text": "dummy"
           },
@@ -2564,6 +2585,10 @@
             "text": "una batalla con un horripilante demonio"
           },
           {
+            "id": "conversation_with_mr_moore",
+            "text": "a conversation with Mr. Moore"
+          },
+          {
             "id": "decision_to_stick_together",
             "text": "una decisión de no separarse"
           },
@@ -2582,6 +2607,10 @@
           {
             "id": "encounter_with_a_secret_cult",
             "text": "un encuentro con una secta secreta"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "the lifecycle of a \"Deep One\""
           },
           {
             "id": "meeting_with_thomas_dawson",
