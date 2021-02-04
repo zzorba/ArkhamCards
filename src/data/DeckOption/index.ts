@@ -43,6 +43,9 @@ export default class DeckOption {
   @Column('boolean', { nullable: true })
   public not?: boolean;
 
+  @Column('boolean', { nullable: true })
+  public ignore_match?: boolean;
+
   @Column('text', { nullable: true })
   public real_name?: string;
 
@@ -86,6 +89,7 @@ export default class DeckOption {
     deck_option.limit = json.limit;
     deck_option.error = json.error;
     deck_option.not = json.not ? true : undefined;
+    deck_option.ignore_match = json.ignore_match ? true : undefined;
     deck_option.real_name = json.name || undefined;
     if (json.level) {
       const level = new DeckOptionLevel();
@@ -96,7 +100,12 @@ export default class DeckOption {
 
     if (json.atleast) {
       const atleast = new DeckAtLeastOption();
-      atleast.factions = json.atleast.factions;
+      if (json.atleast.factions) {
+        atleast.factions = json.atleast.factions;
+      }
+      if (json.atleast.types) {
+        atleast.types = json.atleast.types;
+      }
       atleast.min = json.atleast.min;
       deck_option.atleast = atleast;
     }

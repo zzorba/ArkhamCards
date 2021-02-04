@@ -11,12 +11,13 @@ import {
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, Slots } from '@actions/types';
-import { ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
+import { ANCESTRAL_KNOWLEDGE_CODE, ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
 import Card from '@data/Card';
 import DeckOption from '@data/DeckOption';
 
 
 interface SpecialCardCounts {
+  ancestralKnowledge: number;
   versatile: number;
   onYourOwn: number;
 }
@@ -28,7 +29,7 @@ interface SpecialCardCounts {
 interface DeckOptionsCount {
   limit: number,
   atleast: {
-    [faction_code: string]: number,
+    [code: string]: number;
   };
 }
 
@@ -47,6 +48,7 @@ export default class DeckValidation {
 
   specialCardCounts(): SpecialCardCounts {
     return {
+      ancestralKnowledge: this.slots[ANCESTRAL_KNOWLEDGE_CODE] || 0,
       versatile: this.slots[VERSATILE_CODE] || 0,
       onYourOwn: this.slots[ON_YOUR_OWN_CODE] || 0,
     };
@@ -62,7 +64,7 @@ export default class DeckValidation {
         size = this.investigator.deck_requirements.size;
       }
     }
-    return size + (specialCards.versatile * 5);
+    return size + (5 * (specialCards.versatile + specialCards.ancestralKnowledge));
   }
 
   getPhysicalDrawDeck(cards: Card[]): Card[] {
@@ -183,6 +185,19 @@ export default class DeckValidation {
             }
             return 'investigator';
           }
+        } else if (atleast.types && atleast.min) {
+          var type_count = 0;
+          forEach(this.deck_options_counts[i].atleast, (value) => {
+            if (value >= atleast.min){
+              type_count++;
+            }
+          })
+          if (type_count < atleast.types){
+            if (option.error){
+              this.problem_list.push(option.error);
+            }
+            return 'investigator';
+          }
         }
       }
     }
@@ -216,13 +231,20 @@ export default class DeckValidation {
     // For the new global covenant restriction.
     this.deck_options_counts.push({
       limit: 0,
-      atleast: {}
+      atleast: {},
     });
+
+    if (specialCards.ancestralKnowledge) {
+      this.deck_options_counts.push({
+        limit: 0,
+        atleast: {},
+      });
+    }
     if (this.investigator && this.investigator.deck_options) {
       for (var i = 0; i < this.investigator.deck_options.length; i++){
         this.deck_options_counts.push({
           limit: 0,
-          atleast: {}
+          atleast: {},
         });
       }
     }
@@ -261,6 +283,17 @@ export default class DeckValidation {
       error: t`Limit 1 Covenant per deck.`,
       dynamic: true,
     });
+    if (specialCards.ancestralKnowledge) {
+      deck_options.push(DeckOption.parse({
+        type: ['skill'],
+        ignore_match: true,
+        atleast: {
+          types: 1,
+          min: 10,
+        },
+        error: t`Decks with Ancestral Knowledge must include at least 10 skills.`,
+      }));
+    }
     if (this.investigator &&
         this.investigator.deck_options &&
         this.investigator.deck_options.length) {
@@ -433,16 +466,23 @@ export default class DeckValidation {
           return undefined;
         } else {
           if (processDeckCounts && option.atleast && card.faction_code) {
-            if (!this.deck_options_counts[i].atleast[card.faction_code]) {
-              this.deck_options_counts[i].atleast[card.faction_code] = 0;
-            }
-            this.deck_options_counts[i].atleast[card.faction_code] += 1;
-
-            if (card.faction2_code){
-              if (!this.deck_options_counts[i].atleast[card.faction2_code]){
-                this.deck_options_counts[i].atleast[card.faction2_code] = 0;
+            if (option.atleast.factions) {
+              if (!this.deck_options_counts[i].atleast[card.faction_code]) {
+                this.deck_options_counts[i].atleast[card.faction_code] = 0;
               }
-              this.deck_options_counts[i].atleast[card.faction2_code] += 1;
+              this.deck_options_counts[i].atleast[card.faction_code] += 1;
+
+              if (card.faction2_code){
+                if (!this.deck_options_counts[i].atleast[card.faction2_code]){
+                  this.deck_options_counts[i].atleast[card.faction2_code] = 0;
+                }
+                this.deck_options_counts[i].atleast[card.faction2_code] += 1;
+              }
+            } else if (option.atleast.types) {
+              if (!this.deck_options_counts[i].atleast[card.type_code]) {
+                this.deck_options_counts[i].atleast[card.type_code] = 0;
+              }
+              this.deck_options_counts[i].atleast[card.type_code] += 1;
             }
           }
           if (processDeckCounts && option.limit) {
@@ -451,6 +491,9 @@ export default class DeckValidation {
               return option;
             }
           } else {
+            if (option.ignore_match) {
+              continue;
+            }
             return option;
           }
         }
