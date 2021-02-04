@@ -71841,7 +71841,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Crimson-tinted fog bathes the sky as you reach the gatehouse of Falcon Point. Atop the cliffs above you, the lighthouse beacon pierces through the mist. Considering the state of Innsmouth, you wonder what purpose the signal serves now. You doubt there are any ships out at sea given the inclement weather.\nSomewhere inside is the evidence you found weeks ago. You suspect that Oceiros—the man who captured you and left you in that pit to die—also resides within. \"Are you ready?\" Agent Harper asks. \"We have no real escape route here, should things go south. Be prepared for anything.\"\nYou nod. It's too late to turn back now. Steadily, you make your way toward the cliffs. One way or another, this ends today."
+      "text": "Blutrote Nebelschwaden wabern durch die Luft, als du das Torhaus von Falcon Point erreichst. Auf der Spitze der Klippe über dir durchdringt das Lichtsignal des Leuchtturms den dichten Nebel. Wenn du bedenkst, was aus Innsmouth geworden ist, fragst du dich, welchen Zweck das Lichtsignal jetzt noch hat. Bei diesen unfreundlichen Wetterbedingungen wird sich wohl kein Schiff auf das Meer wagen. \nIrgendwo im Inneren befindet sich der Beweis, den du schon vor Wochen gefunden hast. Du befürchtest aber auch, dass Oceiros – der Mann, der dich gefangen genommen und in der Grotte zum Sterben zurückgelassen hat – hier wohnt. „Sind Sie bereit?“, will Agent Harper von dir wissen. „Uns steht hier kein wirklicher Fluchtweg zur Verfügung, wenn die Sache den Bach runtergeht. Also seien Sie auf alles vorbereitet.“ \nDu nickst. Jetzt ist es zu spät, um umzukehren. Langsam nähert ihr euch der Klippe. Auf die eine oder andere Weise wird die Sache heute eine Ende finden."
     },
     {
       "id": "gather_encounter_sets",
@@ -71858,13 +71858,13 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Falcon Point Gatehouse, Falcon Point Cliffside, Lighthouse Stairwell, and Lighthouse Keeper's Cottage into play on the same row. Put Lantern Room into play directly above Lighthouse Stairwell. <i>(See Location Placement (Act 1))</i>.",
+      "text": "Folgende Orte werden in der gleichen Reihe ins Spiel gebracht: Torhaus von Falcon Point, Klippe von Falcon Point, Treppe des Leuchtturms und Hütte des Leuchtturmwärters. Direkt über der Treppe des Leuchtturms wird der Ort Lampenhaus ins Spiel gebracht <i>(siehe dazu den Vorschlag für die Platzierung der Orte für Szene 1)</i>.",
       "bullets": [
         {
-          "text": "Each investigator begins play at Falcon Point Gatehouse."
+          "text": "Jeder Ermittler beginnt das Spiel am Torhaus von Falcon Point."
         },
         {
-          "text": "From among the Tidal Tunnel locations, remove the 2 Underground River locations from the game."
+          "text": "Die 2 Orte Unterirdischer Fluss (auf der Rückseite von Gezeitentunnel) werden aus dem Spiel entfernt."
         },
         {
           "text": "Alle anderen Orte werden als nicht im Spiel befindlich beiseitegelegt."
@@ -71874,10 +71874,10 @@
     {
       "id": "location_layout",
       "type": "location_setup",
-      "text": "Location Placement (Act 1)",
+      "text": "Vorschlag für die Platzierung der Orte für Szene 1",
       "horizontal": "normal",
       "vertical": "normal",
-      "note": "Note: The order of the locations in this row does not matter, so long as Lantern Room is directly above Lighthouse Stairwell.",
+      "note": "Hinweis: Die Reihenfolge der Orte in dieser Reihe spielt keine Rolle. Wichtig ist nur, dass sich das Lampenhaus direkt oberhalb der Treppe des Leuchtturms befindet.",
       "locations": [
         [
           "blank",
@@ -71895,33 +71895,33 @@
       "location_names": [
         {
           "code": "lantern_room",
-          "name": "Lantern Room"
+          "name": "Lampenhaus"
         },
         {
           "code": "gatehouse",
-          "name": "Falcon Point Gatehouse"
+          "name": "Torhaus von Falcon Point"
         },
         {
           "code": "cliff",
-          "name": "Falcon Point Cliffside"
+          "name": "Klippe von Falcon Point"
         },
         {
           "code": "lighthouse_stairwell",
-          "name": "Lighthouse Stairwell"
+          "name": "Treppe des Leuchtturms"
         },
         {
           "code": "keepers_cottage",
-          "name": "Lighthouse Keeper's Cottage"
+          "name": "Hütte des Leuchtturmwärters"
         }
       ]
     },
     {
       "id": "location_layout_act_3",
       "type": "location_setup",
-      "text": "Location Placement (Act 3 / Agenda 3)",
+      "text": "Vorschlag zur Platzierung der Orte für Szene 3 / Agenda 3",
       "horizontal": "normal",
       "vertical": "normal",
-      "note": "Note: The order of the locations on each row does not matter, so long as Lantern Room, Lighthouse Stairwell, and each Sunken Grotto are on the same column, as depicted.",
+      "note": "Hinweis: Die Reihenfolge der Orte in jeder Reihe spielt keine Rolle. Wichtig ist nur, dass sich das Lampenhaus, die Treppe des Leuchtturms und jede Versunkene Grotte wie angegeben in derselben Spalte befinden.",
       "locations": [
         [
           "blank",
@@ -71957,35 +71957,35 @@
       "location_names": [
         {
           "code": "lantern_room",
-          "name": "Lantern Room"
+          "name": "Lampenhaus"
         },
         {
           "code": "gatehouse",
-          "name": "Falcon Point Gatehouse"
+          "name": "Torhaus von Falcon Point"
         },
         {
           "code": "cliff",
-          "name": "Falcon Point Cliffside"
+          "name": "Klippe von Falcon Point"
         },
         {
           "code": "lighthouse_stairwell",
-          "name": "Lighthouse Stairwell"
+          "name": "Treppe des Leuchtturms"
         },
         {
           "code": "keepers_cottage",
-          "name": "Lighthouse Keeper's Cottage"
+          "name": "Hütte des Leuchtturmwärters"
         },
         {
           "code": "sunken_grotto_upper_depths",
-          "name": "Sunken Grotto (Upper Depths)"
+          "name": "Versunkene Grotte (Obere Tiefen)"
         },
         {
           "code": "sunken_grotto_lower_depths",
-          "name": "Sunken Grotto (Lower Depths)"
+          "name": "Versunkene Grotte (Untere Tiefen)"
         },
         {
           "code": "sunken_grotto_final_depths",
-          "name": "Sunken Grotto (Final Depths)"
+          "name": "Versunkene Grotte (Endgültige Tiefen)"
         }
       ]
     },
@@ -71994,20 +71994,20 @@
       "text": "Die Schlüssel werden wie folgt beiseitegelegt:",
       "bullets": [
         {
-          "text": "Set the white, black, blue, yellow and red keys aside, faceup."
+          "text": "Der weiße, schwarze, blaue, gelbe und rote Schlüssel werden offen beiseitegelegt."
         },
         {
-          "text": "Set the purple and green keys aside, facedown. Shuffle them so you do not know which is which."
+          "text": "Der lila und grüne Schlüssel werden verdeckt beiseitegelegt und gemischt, sodass die Ermittler nicht wissen, welcher welcher ist."
         }
       ]
     },
     {
       "id": "setup_captured",
-      "text": "Put the double-sided “Captured!” story card into play next to the scenario reference card, with its story side faceup. (This card is on the reverse side of the Holding Cell location.) Its text is active."
+      "text": "Die doppelseitige Handlungskarte „Gefangen!“ wird neben der Szenarioübersichtskarte mit der Handlung-Seite nach oben ins Spiel gebracht und ihr Text ist aktiv. (Auf der Rückseite dieser Karte befindet sich der Ort Gefängniszellen.)"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: the Oceiros Marsh enemy, both copies of the Worth His Salt treachery, and both copies of the Taken Captive treachery."
+      "text": "Die folgenden Karten werden als nicht im Spiel befindlich beiseitegelegt: Der Gegner Oceiros Marsh, beide Kopien der Verratskarte Er ist sein Geld wert und beide Kopien der Verratskarte Gefangen genommen."
     },
     {
       "id": "keys_rule",
@@ -72016,12 +72016,12 @@
     },
     {
       "id": "check_for_story_assets",
-      "text": "Check Campaign Log:"
+      "text": "Überprüfe das Kampagnenlogbuch:"
     },
     {
       "id": "check_idol",
       "bullet_type": "small",
-      "text": "If <i>the idol was brought to the lighthouse</i>:",
+      "text": "Falls <i>der Götze zum Leuchtturm gebracht wurde</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -72040,12 +72040,12 @@
     {
       "id": "set_aside_idol",
       "bullet_type": "small",
-      "text": "Search the collection for the Waveworn Idol and set it aside, out of play."
+      "text": "Die Sammlung wird nach Verwitterter Götze durchsucht, der als nicht im Spiel befindlich beiseitegelegt wird."
     },
     {
       "id": "check_mantle",
       "bullet_type": "small",
-      "text": "If <i>the mantle was brought to the lighthouse</i>:",
+      "text": "Falls <i>der Mantel zum Leuchtturm gebracht wurde</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -72064,12 +72064,12 @@
     {
       "id": "set_aside_mantle",
       "bullet_type": "small",
-      "text": "Search the collection for the Awakened Mantle and set it aside, out of play."
+      "text": "Die Sammlung wird nach Mantel des Erwachten durchsucht, der als nicht im Spiel befindlich beiseitegelegt wird."
     },
     {
       "id": "check_headdress",
       "bullet_type": "small",
-      "text": "If <i>the headdress was brought to the lighthouse</i>:",
+      "text": "Falls <i>der Kopfschmuck zum Leuchtturm gebracht wurde</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -72088,16 +72088,16 @@
     {
       "id": "set_aside_headdress",
       "bullet_type": "small",
-      "text": "Search the collection for the Headdress of Y'ha-nthlei and set it aside, out of play."
+      "text": "Die Sammlung wird nach Kopfschmuck aus Y’ha-nthlei durchsucht, der als nicht im Spiel befindlich beiseitegelegt wird."
     },
     {
       "id": "check_for_doom",
-      "text": "Check Campaign Log:"
+      "text": "Überprüfe das Kampagnenlogbuch:"
     },
     {
       "id": "check_reached_falcon_point_after_sunrise",
       "bullet_type": "small",
-      "text": "If <i>the investigators reached Falcon Point after sunrise</i>:",
+      "text": "Falls <i>die Ermittler Falcon Point nach Sonnenaufgang erreicht haben</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -72116,12 +72116,12 @@
     {
       "id": "add_falcon_point_doom",
       "bullet_type": "small",
-      "text": "Place 1 doom on Agenda 1."
+      "text": "Es wird 1 Verderben auf Agenda\u001f1 platziert."
     },
     {
       "id": "check_tide_has_grown_stronger",
       "bullet_type": "small",
-      "text": "If <i>the tide has grown stronger</i>:",
+      "text": "Falls <i>die Flut stärker geworden ist</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -72140,7 +72140,7 @@
     {
       "id": "add_tide_doom",
       "bullet_type": "small",
-      "text": "Place 1 doom on Agenda 1."
+      "text": "Es wird 1 Verderben auf Agenda\u001f1 platziert."
     },
     {
       "id": "add_flood_tokens",
@@ -72175,7 +72175,7 @@
                 }
               ]
             },
-            "text": "Flashback XII",
+            "text": "RÜCKBLENDE XII",
             "steps": [
               "flashback_12_story",
               "flashback_12_effects",
@@ -72203,7 +72203,7 @@
                 }
               ]
             },
-            "text": "Flashback XIII",
+            "text": "RÜCKBLENDE XIII",
             "steps": [
               "flashback_13_story",
               "flashback_13_effects",
@@ -72283,37 +72283,37 @@
     },
     {
       "id": "red_key",
-      "text": "Red: A gilded key made of coral and covered in strange, glowing runes. The word \"Y'ha-nthlei\" is inscribed upon the handle."
+      "text": "Rot: Ein vergoldeter Schlüssel aus Korallen, der mit seltsamen glühenden Runen bedeckt ist. Das Wort „Y’ha-nthlei“ ist auf dem Griff eingraviert."
     },
     {
       "id": "blue_key",
-      "text": "Blue: A key carved with a symbol of an engorged fish eye."
+      "text": "Blau: Ein Schlüssel, in den das Symbol eines angeschwollenen Fischauges geschnitzt ist."
     },
     {
       "id": "green_key",
-      "text": "Green: A fist-sized cluster of raw peridot that pulses and glows with unnatural light."
+      "text": "Grün: Ein faustgroßer Brocken aus unbearbeitetem Peridot, der in einem unnatürlich glühenden Licht pulsiert."
     },
     {
       "id": "yellow_key",
-      "text": "Yellow: A heavy iron ring crowded with prison cell keys."
+      "text": "Gelb: Ein schwerer Eisenring, an dem unzählige Zellenschlüssel hängen."
     },
     {
       "id": "purple_key",
-      "text": "Purple: The deceased larva of a malformed fish."
+      "text": "Lila: Die verendete Larve eines missgestalteten Fisches."
     },
     {
       "id": "black_key",
-      "text": "Black: A map of the depths beneath Devil Reef."
+      "text": "Schwarz: Eine Karte der Tiefen unter dem Teufelsriff."
     },
     {
       "id": "white_key",
-      "text": "White: A pocket telescope."
+      "text": "Weiß: Ein handliches Taschenteleskop."
     },
     {
       "id": "flashback_12_story",
-      "title": "Flashback XII",
+      "title": "RÜCKBLENDE XII",
       "type": "story",
-      "text": "You peer up at Falcon Point lighthouse, but from much further below. You are aboard Mr. Moore's fishing vessel, during your voyage to Devil Reef several weeks earlier. The ship sways back and forth as angry waves thrash against its hull. \"'Fraid it's gon' be a bit rocky,\" the ship captain shouts over the crashing of the tumultuous sea. \"Weather's been awful wild of late. Strange tides an' stranger winds.\"\nBut still you stare up at the ominous lighthouse, its beacon a guiding light, a warning sign, or both. Curious what knowledge he might have, you ask Mr. Moore about the lighthouse. \"That ol' thing? Been there longer'n Innsmouth itself. Marsh family's kept it runnin' as long as I remember. Oceiros is keeper now. Strange fella, that Oceiros. They say the only place in town he visits is the Order o' Dagon hall by New Church Green.\" He shakes his head.\nYou wonder if there are more secrets inside the lighthouse than meets the eye. Mr. Moore seems to note your curiosity. \"I've heard them Marshes've carved out caverns beneath the lighthouse goin' all the way down to sea level an' beyond,\" he claims. \"Dunno if that's true, but sometimes when I'm out at sea I've seen groups of 'em up by the cliffside, all wavin' an kneelin' like they're prayin' or something. Never really paid it much mind, but...\" his voice grows quieter. \"Jus' thought you oughta know.\"\nYou nod and thank him. If what he's saying is true, perhaps you should give this lighthouse a visit. You make a mental note to research more about Falcon Point once you return to town.\nWhen your mind snaps back to the present, you recall the legwork you'd done after your expedition to Devil Reef, and the information you found on the vast network of tunnels beneath the lighthouse..."
+      "text": "Du schaust zum Leuchtturm von Falcon Point hinauf, aber von viel weiter unten. Du befindest dich auf dem Fischkutter von Mr. Moore auf deiner Fahrt zum Teufelsriff einige Wochen zuvor. Das Schiff schaukelt auf und ab, während sich die Wellen an seinem Rumpf brechen. „Ich fürchte, es wird ein wenig holprig heute“, ruft dir der Schiffskapitän über den Lärm des aufbrausenden Meeres hinweg zu. „Das Wetter ist in letzter Zeit recht stürmisch. Seltsame Strömungen und seltsame Winde.“ \nDu blickst noch immer unentwegt auf den ominösen Leuchtturm, dessen Leuchtsignal Wegweiser oder Warnung ist, vielleicht sogar beides. Neugierig fragst du Mr. Moore, was er über den Leuchtturm weiß. „Das alte Ding? Das ist schon älter als Innsmouth selbst. Die Familie Marsh kümmert sich schon darum, solange ich denken kann. Jetzt ist Oceiros der Leuchtturmwärter. Ein seltsamer Bursche, dieser Oceiros. Den einzigen Ort, den er in Innsmouth aufsucht, ist das Gebäude des Ordens von Dagon beim Neuen Kirchplatz.“ Zur Bekräftigung seiner Worte schüttelt er den Kopf. \nDu fragst dich, ob der Leuchtturm mehr Geheimnisse birgt, als er den Anschein macht. Mr. Moore scheint deine Neugierde zu bemerken. „Ich habe gehört, die Marshes hätten Höhlen unter dem Leuchtturm angelegt, die bis zum Meeresspiegel und sogar noch in die Tiefen darunter reichen sollen“, behauptet er. „Keine Ahnung, ob das stimmt. Aber manchmal, wenn ich auf dem Meer bin, kann ich eine Gruppe von ihnen auf der Klippe sehen, wie sie winken und sich hinknien und beten oder so was. Ich habe mir darüber noch keine weiteren Gedanken gemacht, aber …“, sagt er und senkt seine Stimme. „Na ja, ich dachte, Sie sollten das wissen.“ \nDu nickst und bedankst dich bei ihm. Wenn das, was er sagt, wahr sein sollte, solltest du diesem Leuchtturm vielleicht einen Besuch abstatten. Du nimmst dir vor, mehr über Falcon Point herauszufinden, sobald du wieder zurück in Innsmouth bist. \nAls dein Verstand wieder in die Gegenwart zurückkehrt, kannst du dich an die Zeit nach deiner Expedition zum Teufelsriff erinnern, als du nach einiger Laufarbeit Informationen über den Leuchtturm und sein Tunnelsystem gefunden hast …"
     },
     {
       "id": "flashback_12_effects",
@@ -72322,13 +72322,13 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "conversation_with_mr_moore",
-          "text": "a conversation with Mr. Moore"
+          "text": "eine Unterhaltung mit Mr. Moore"
         }
       ]
     },
     {
       "id": "flashback_12_tokens",
-      "text": "Choose and remove one of the following chaos tokens from the chaos bag for the remainder of the campaign ([cultist], [tablet], or [elder_thing])",
+      "text": "Wähle 1\u001fder folgenden Chaosmarker aus dem Chaosbeutel und entferne ihn für den Rest der Kampagne daraus: [cultist], [tablet], oder [elder_thing]",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -72431,13 +72431,13 @@
     },
     {
       "id": "flashback_12_clues",
-      "text": "The lead investigator gains 1 [per_investigator] clues from the token pool."
+      "text": "Der Ermittlungsleiter erhält 1 [per_investigator] Hinweis aus dem Markervorrat."
     },
     {
       "id": "flashback_13_story",
-      "title": "Flashback XIII",
+      "title": "RÜCKBLENDE XIII",
       "type": "story",
-      "text": "You speak with one of the many sailors who frequent a ramshackle tavern by the docks of Innsmouth, somewhere in the southeastern slums of the decrepit seaport. He's found his own little corner of the pub in which to hide and drown himself in alcohol. So much the better—you'd prefer to keep your investigation quiet.\nYou jot down notes as the drunken man rambles on about the creatures he's seen swimming off the coast and prowling around the reefs. \"Deep Ones,\" he names them. \"Caught one in my net once,\" he blabbers through slurred speach. \"She an' her eggs—tha's right!—'er eggs, bigger'n your fist, an' squirmin' an' wrigglin', too!\"\nAbsorbed in the ritual of telling a tale for his fellow sailors, he elaborates: \"She had one of 'em in her arms. Tiny little devil, with bulgin', hateful eyes. Couldn't stand the sight of it. I threw the net o'er as soon as I realized what I'd caught, an' came right back 'ere. If I had my way I'd never sail 'gain.\"\nYou mull this new information over in your head. If this man speaks the truth, these creatures seem to have a lifecycle similar to that of a fish. But then, what is the purpose of the uncanny hybrid creatures you have seen skulking about the town? Are they but figments of your frightened imagination? Or is there a much more sinister part of this lifecycle that you are missing?"
+      "text": "Du unterhältst dich mit einem der vielen Seemänner, die das baufällige Wirtshaus bei den Docks irgendwo im Elendsviertel im Südosten der heruntergekommenen Hafenstadt Innsmouth besuchen. Er hat sich in seiner eigenen kleinen Ecke in der Kneipe zurückgezogen, wo er sich verkriechen und seine Sorgen im Alkohol ertränken kann. Das kann dir nur recht sein – je unauffälliger deine Ermittlungen, desto besser. \nDu machst dir Notizen, während der betrunkene Mann über Kreaturen schwafelt, die vor der Küste im Meer schwimmen und bei den Riffen herumstreifen sollen. „Tiefe Wesen“ nennt er sie. „Hab eines davon mal in meinem Netz gehabt“, plappert er undeutlich weiter. „Ein Weibchen und seine Eier – doch, wirklich! – Eier, größer als eine Faust, die haben sich gewunden und haben gezappelt!“ \nGanz so, als würde er seinen Kollegen Seemannsgarn auftischen, fährt er fort: „Sie hatte eines von ihnen auf dem Arm. Ein winzig kleiner Teufel war das, mit hasserfüllten Glupschaugen. Das habe ich mir nicht länger anschauen können und so habe ich das Netz zurück ins Meer geworfen, als mir klar wurde, was ich da gefangen hatte. Dann bin ich sofort an Land zurück. Wenn ich könnte, würde ich nie wieder aufs Meer fahren.“ \nDu lässt dir die neuen Informationen durch den Kopf gehen. Wenn das, was der Mann behauptet, wahr sein sollte, dann hätten diese Kreaturen einen Lebenszyklus, der Fischen gleicht. Was hat es dann aber mit diesen unheimlichen hybriden Kreaturen auf sich, die du durch die Stadt hast schleichen sehen? Sind sie nur Ausgeburten deiner Fantasie? Oder steckt noch mehr hinter ihrem Lebenszyklus, ein noch düsterer Teil, der dir verborgen geblieben ist?"
     },
     {
       "id": "flashback_13_effects",
@@ -72446,13 +72446,13 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "lifecycle_of_a_deep_one",
-          "text": "the lifecycle of a \"Deep One\""
+          "text": "der Lebenszyklus eines „Tiefen Wesens“"
         }
       ]
     },
     {
       "id": "flashback_13_tokens",
-      "text": "Choose and remove one of the following chaos tokens from the chaos bag for the remainder of the campaign ([cultist], [tablet], or [elder_thing])",
+      "text": "Wähle 1\u001fder folgenden Chaosmarker aus dem Chaosbeutel und entferne ihn für den Rest der Kampagne daraus: [cultist], [tablet], oder [elder_thing]",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -72556,7 +72556,7 @@
     {
       "id": "ask_final_agenda",
       "type": "input",
-      "text": "What agenda was active when the scenario ended?",
+      "text": "Welche Agenda war aktiv, als das Szenario beendet wurde?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -72646,7 +72646,7 @@
     },
     {
       "id": "ask_moon_room_resigned",
-      "text": "Which location did each investigator resign at?",
+      "text": "An welchem Ort hat jeder Ermittler aufgegeben?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -72655,15 +72655,15 @@
         "choices": [
           {
             "id": "moon_room",
-            "text": "Moon Room",
+            "text": "Raum des Mondes",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "possesses_a_diving_suite",
                 "cards": "$input_value",
-                "masculine_text": "#name# possesses a diving suit.",
-                "feminine_text": "#name# possesses a diving suit."
+                "masculine_text": "#name# besitzt einen Taucheranzug.",
+                "feminine_text": "#name# besitzt einen Taucheranzug."
               }
             ]
           },
@@ -72682,13 +72682,13 @@
         "choices": [
           {
             "id": "red",
-            "text": "Was the black key on the current act when the game ended?",
+            "text": "War der schwarze Schlüssel auf der aktuellen Szene als das Spiel beendet wurde?",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "possess_a_map_of_yhanthlei",
-                "text": "the investigators possess a map of Y'ha-nthlei."
+                "text": "Die Ermittler besitzen eine Karte von\u001fY’ha-nthlei."
               }
             ]
           }
@@ -72703,13 +72703,13 @@
         "choices": [
           {
             "id": "red",
-            "text": "Was the red key on the current act when the game ended?",
+            "text": "War der rote Schlüssel auf der aktuellen Szene als das Spiel beendet wurde?",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "possess_the_key_to_yhanthlei",
-                "text": "the investigators possess the key to Y'ha-nthlei."
+                "text": "Die Ermittler besitzen den Schlüssel nach\u001fY’ha-nthlei."
               }
             ]
           }
@@ -72718,7 +72718,7 @@
     },
     {
       "id": "ask_story_relics",
-      "text": "For each set-aside [[Relic]] story asset that was added to an investigator's hand during this scenario, any investigator may choose to add that story asset to their deck. It does not count toward that investigator's deck size."
+      "text": "Für jede beiseitegelegte [[Relikt]]-Storyvorteilskarte, die während dieses Szenarios der Hand eines Ermittlers hinzugefügt worden ist, darf ein beliebiger Ermittler wählen, sie seinem Deck hinzuzufügen. Diese Karte zählt nicht gegen die Deckgröße des Ermittlers."
     },
     {
       "id": "maybe_ask_idol",
@@ -72746,7 +72746,7 @@
         "choices": [
           {
             "id": "earn_idol",
-            "text": "Was Waveworn Idol added to an investigator's hand during this scenario?",
+            "text": "Wurde der Verwitterter Götze während des Szenarios zur Hand eines Ermittler hinzugefügt?",
             "effects": [
               {
                 "type": "add_card",
@@ -72784,7 +72784,7 @@
         "choices": [
           {
             "id": "earn_idol",
-            "text": "Was Awakened Mantle added to an investigator's hand during this scenario?",
+            "text": "Wurde der Mantel des Erwachten während des Szenarios zur Hand eines Ermittler hinzugefügt?",
             "effects": [
               {
                 "type": "add_card",
@@ -72822,7 +72822,7 @@
         "choices": [
           {
             "id": "earn_idol",
-            "text": "Was Headdress of Y'ha-nthlei added to an investigator's hand during this scenario?",
+            "text": "Wurde der Kopfschmuck aus Y’ha-nthlei während des Szenarios zur Hand eines Ermittler hinzugefügt?",
             "effects": [
               {
                 "type": "add_card",
@@ -72858,7 +72858,7 @@
         "mental"
       ],
       "title": "Auflösung 1",
-      "text": "Exhausted, you throw yourself onto the rocky shore. Waves lap at your ankles as you stare up into the sky. Behind the clouds, deep crimson hues spell on ominous end for all of humankind. Your skull pounds with agony as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe over the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes your senses once more.",
+      "text": "Erschöpft wirfst du dich am felsigen Ufer zu Boden. Wellen umspülen deine Knöchel, als du in den Himmel starrst. Hinter den Wolken hat er eine tiefe blutrote Farbe angenommen, die das unheilvolle Ende der gesamten Menschheit verkündet. Dir pocht dein Schädel, als du versuchst darüber nachzudenken, wieso das so ist. Der Mond schiebt sich langsam vor die Sonne. In der Ferne kannst du es donnern hören. Dunkle Wolken ballen sich zusammen und türmen sich über dem Ozean auf. Was bedeutet das alles? Was steckt hinter dem Esoterischen Orden von Dagon? Liegt die Antwort im Teufelsriff verborgen? Dir wird erneut schwarz vor Augen.",
       "steps": [
         "ask_moon_room_resigned",
         "ask_black_key_on_act",
@@ -72880,7 +72880,7 @@
         "mental"
       ],
       "title": "Auflösung 2",
-      "text": "Exhaustion and despair eat at your muscles as you escape into the dark woods surrounding Falcon Point. You know it is too dangerous to stop moving, but you can hardly stand. You brace yourself against a nearby tree and stare up into the sky. Behind the clouds, deep crimson hues spell an ominous end for all of humankind. Your skull pounds as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe above the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes your senses once more.",
+      "text": "Erschöpfung und Verzweiflung nagen an jedem deiner Muskeln und an deinem Verstand, als du in die dunklen Wälder entkommst, die Falcon Point umgeben. Du stützt dich an einem Baum ab und starrst in den Himmel. Hinter den Wolken hat er eine tiefe blutrote Farbe angenommen, die das unheilvolle Ende der gesamten Menschheit verkündet. Dir pocht dein Schädel, als du versuchst darüber nachzudenken, wieso das so ist. Der Mond schiebt sich langsam vor die Sonne. In der Ferne kannst du es donnern hören. Dunkle Wolken ballen sich zusammen und türmen sich über dem Ozean auf. Was bedeutet das alles? Was steckt hinter dem Esoterischen Orden von Dagon? Liegt die Antwort im Teufelsriff verborgen? Dir wird erneut schwarz vor Augen.",
       "steps": [
         "ask_black_key_on_act",
         "ask_red_key_on_act",
@@ -72901,7 +72901,7 @@
         "mental"
       ],
       "title": "Auflösung 3",
-      "text": "You panic as the water level rises all the way to the ceiling of the cavern. There is no air left to breathe. You feel the currents pulling you deeper and deeper below the surface, where the bulging, glowing eyes of Deep Ones lie in wait. Desperately, you swim up to the cellar door of the lighthouse. Your only hope is to force it open and crawl up into the buildings above, where sweet oxygen awaits. You shove and push with all of your might, hoping, imagining, praying that any moment now your strength will spring the hatch open. Your lungs are about to burst. No! This cannot be the end! You struggle and fight for survival, but the lock does not budge. Hungry for air, your lungs give. Your throat fills with cold saltwater. The sensation of your ankles being gripped by webbed hands is the last thing you feel.",
+      "text": "Du gerätst in Panik, als das Wasser immer weiter bis zur Decke der Höhle ansteigt. Es gibt keine Luft mehr zum Atmen. Du spürst, wie dich die Strömung immer tiefer und tiefer unter die Oberfläche zieht, wo die glühenden, hervorquellenden Augen der Tiefen Wesen auf dich lauern. Verzweifelt tauchst du zur Kellertür des Leuchtturms hinauf. Deine einzige Hoffnung ist es, die Tür mit Gewalt aufzubekommen und in das Gebäude darüber hinaufzuklettern, wo der so dringend benötigte Sauerstoff auf dich wartet. Mit all deiner Macht wirfst du dich gegen die Tür, schubst und schiebst, hoffst, stellst dir vor und betest, dass du genug Kraft aufbringen kannst, um die Luke zu öffnen. Deine Lugen sind kurz davor zu bersten. Nein! Das darf nicht das Ende sein! Immer weiter kämpfst du um dein Leben und stemmst dich gegen die Luke, doch sie will einfach nicht aufgehen. Endlich gibst du dem Drang nach und atmest tief ein. Kaltes Salzwasser füllt deine Lungen. Das Letzte, was du spürst, ist, wie dich mit Schwimmhäuten versehene Hände an deinen Knöcheln in die Tiefe ziehen.",
       "steps": [
         "all_killed",
         "lose_campaign"
@@ -72917,7 +72917,7 @@
         "mental"
       ],
       "title": "Auflösung 4",
-      "text": "Coming here was a terrible mistake. Falcon Point is no simple lighthouse, but a headquarter for the Order of Dagon, even more hostile and deadly than the town of Innsmouth you left behind. With danger at every turn and the hateful lighthouse keeper hot on your tail, you leave the secrets of the lighthouse behind and flee into the dark woods.\nBy the time you are too deep into the treeline to see the lighthouse beacon, you are utterly exhausted. You know it is too dangerous to stop moving, but you can hardly stand. You brace yourself against a nearby treeand stare up into the sky. Behind the clouds, deep crimson hues spell an ominous end for all of humankind. Your skull pounds as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe above the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes you once more.",
+      "text": "Hierherzukommen war ein schwerer Fehler. Falcon Point ist nicht nur ein einfacher Leuchtturm, sondern auch das Hauptquartier des Ordens von Dagon. Ein Ort, noch feindseliger und tödlicher als die Stadt Innsmouth selbst. Da hinter jeder Ecke Gefahren lauern und dir der hasserfüllte Leuchtturmwärter dicht auf den Fersen ist, lässt du die Geheimnisse des Leuchtturms hinter dir und fliehst in die dunklen Wälder. \nAls du so weit in den Wald hineingelaufen bist, dass die Bäume den Blick auf den Leuchtturm versperren, bist du völlig erschöpft. Dir ist bewusst, dass es zu gefährlich wäre, jetzt anzuhalten, aber du kannst kaum noch stehen. Du stützt dich an einem Baum ab und starrst in den Himmel. Hinter den Wolken hat er eine tiefe blutrote Farbe angenommen, die das unheilvolle Ende der gesamten Menschheit verkündet. Dir pocht dein Schädel, als du versuchst darüber nachzudenken, wieso das so ist. Der Mond schiebt sich langsam vor die Sonne. In der Ferne kannst du es donnern hören. Dunkle Wolken ballen sich zusammen und türmen sich über dem Ozean auf. Was bedeutet das alles? Was steckt hinter dem Esoterischen Orden von Dagon? Liegt die Antwort im Teufelsriff verborgen? Dir wird erneut schwarz vor Augen.",
       "steps": [
         "ask_black_key_on_act",
         "ask_red_key_on_act",
