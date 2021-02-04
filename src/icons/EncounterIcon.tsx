@@ -291,6 +291,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'eztli':
         return this.forgottenIcon('the_doom_of_eztli', size, color);
       case 'traps':
+      case 'deadly_traps':
         return this.forgottenIcon('deadly_traps', size, color);
       case 'flux':
         return this.forgottenIcon('temporal_flux', size, color);
@@ -438,6 +439,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'horror_in_high_gear':
       case 'hhg':
         return this.innsmouthIcon('horror_in_high_gear', size, color);
+      case 'the_lair_of_dagon':
       case 'lair_of_dagon':
       case 'lod':
       case 'itm':

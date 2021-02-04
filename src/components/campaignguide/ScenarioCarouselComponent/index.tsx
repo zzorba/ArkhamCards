@@ -81,7 +81,7 @@ export default function ScenarioCarouselComponent({
       contentContainerCustomStyle={space.paddingSideS}
       firstItem={selectedIndex}
       shouldOptimizeUpdates
-      enableSnap
+      useExperimentalSnap
       disableIntervalMomentum
       data={processedCampaign.scenarios}
       renderItem={renderScenario}

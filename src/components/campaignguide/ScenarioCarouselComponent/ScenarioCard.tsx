@@ -103,11 +103,9 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
         { scenarioName.trim() }
       </Text>
       { action }
-      { scenario.scenarioGuide.scenarioType() === 'scenario' && (
-        <View style={styles.icon}>
-          <EncounterIcon size={80} color={colors.M} encounter_code={scenario.scenarioGuide.scenarioId()} />
-        </View>
-      ) }
+      <View style={styles.icon}>
+        <EncounterIcon size={80} color={colors.M} encounter_code={scenario.scenarioGuide.scenarioIcon()} />
+      </View>
     </View>
   );
 }

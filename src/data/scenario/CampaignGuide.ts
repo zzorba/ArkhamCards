@@ -281,6 +281,7 @@ export default class CampaignGuide {
         scenario: {
           id: CAMPAIGN_SETUP_ID,
           type: 'interlude',
+          icon: this.campaign.campaign.id,
           scenario_name: t`Campaign Setup`,
           full_name: t`Campaign Setup`,
           setup: this.campaign.campaign.setup,

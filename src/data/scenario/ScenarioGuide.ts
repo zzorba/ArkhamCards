@@ -46,6 +46,10 @@ export default class ScenarioGuide {
     return this.scenario.id;
   }
 
+  scenarioIcon(): string {
+    return this.scenario.icon || this.scenario.id;
+  }
+
   scenarioName(): string {
     return this.scenario.scenario_name;
   }
