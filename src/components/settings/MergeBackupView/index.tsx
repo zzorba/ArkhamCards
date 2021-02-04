@@ -23,7 +23,6 @@ import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { useInvestigatorCards, useNavigationButtonPressed, useToggles } from '@components/core/hooks';
 import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
-import { useNavigation } from 'react-native-navigation-hooks/dist';
 
 export interface MergeBackupProps {
   backupData: BackupState | LegacyBackupState;
