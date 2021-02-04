@@ -142,6 +142,7 @@
   "scenario_name": "Armitage's Fate",
   "full_name": "Interlude I: Armitage's Fate",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "check_unconscious",
     "$upgrade_decks"
@@ -591,6 +592,7 @@
   "scenario_name": "Prologue",
   "full_name": "Prologue",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "intro",
     "scenario_choice"
@@ -645,6 +647,7 @@
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
   "type": "epilogue",
+  "icon": "dunwich",
   "setup": [
     "check_calmed_townsfolk"
   ],
@@ -1659,6 +1662,7 @@
   "scenario_name": "The Survivors",
   "full_name": "Interlude II: The Survivors",
   "type": "interlude",
+  "icon": "whippoorwills",
   "setup": [
     "prologue",
     "check_henry_armitage",
@@ -7913,6 +7917,7 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Epilogue",
+  "icon": "maddening_delusions",
   "full_name": "Epilogue",
   "type": "epilogue",
   "setup": [
@@ -7952,6 +7957,7 @@
   "scenario_name": "Lost Soul",
   "full_name": "Interlude II: Lost Soul",
   "type": "interlude",
+  "icon": "the_stranger",
   "setup": [
     "daniel_choice",
     "warning_choice",
@@ -8126,6 +8132,7 @@
   "scenario_name": "Lunacy's Reward",
   "full_name": "Interlude I: Lunacy's Reward",
   "type": "interlude",
+  "icon": "hasturs_gift",
   "setup": [
     "house_choice",
     "$upgrade_decks"
@@ -8447,6 +8454,7 @@
   "scenario_name": "Prologue",
   "full_name": "Prologue",
   "type": "interlude",
+  "icon": "delusions",
   "setup": [
     "choose_investigators",
     "intro",
@@ -10660,6 +10668,7 @@
   "scenario_name": "Armitage's Fate",
   "full_name": "Interlude I: Armitage's Fate",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "check_unconscious",
     "$upgrade_decks"
@@ -10761,6 +10770,7 @@
   "scenario_name": "Prologue",
   "full_name": "Prologue",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "intro",
     "scenario_choice"
@@ -10809,6 +10819,7 @@
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
   "type": "epilogue",
+  "icon": "dunwich",
   "setup": [
     "check_calmed_townsfolk"
   ],
@@ -14013,6 +14024,7 @@
   "scenario_name": "The Survivors",
   "full_name": "Interlude II: The Survivors",
   "type": "interlude",
+  "icon": "whippoorwills",
   "setup": [
     "prologue",
     "check_henry_armitage",
@@ -16482,6 +16494,7 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Epilogue",
+  "icon": "maddening_delusions",
   "full_name": "Epilogue",
   "type": "epilogue",
   "setup": [
@@ -16522,6 +16535,7 @@
   "scenario_name": "Lost Soul",
   "full_name": "Interlude II: Lost Soul",
   "type": "interlude",
+  "icon": "the_stranger",
   "setup": [
     "daniel_choice",
     "warning_choice",
@@ -16712,6 +16726,7 @@
   "scenario_name": "Lunacy's Reward",
   "full_name": "Interlude I: Lunacy's Reward",
   "type": "interlude",
+  "icon": "hasturs_gift",
   "setup": [
     "house_choice",
     "$upgrade_decks"
@@ -17045,6 +17060,7 @@
   "scenario_name": "Prologue",
   "full_name": "Prologue",
   "type": "interlude",
+  "icon": "delusions",
   "setup": [
     "choose_investigators",
     "intro",
@@ -23205,6 +23221,7 @@
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
   "type": "epilogue",
+  "icon": "temporal_flux",
   "setup": [
     "check_turned_back_time"
   ],
@@ -23271,6 +23288,7 @@
   "scenario_name": "Expedition's End",
   "full_name": "Interlude II: Expedition's End",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "check_investigators_recovered_relic",
     "$upgrade_decks"
@@ -23489,6 +23507,7 @@
   "scenario_name": "The Jungle Beckons",
   "full_name": "Interlude III: The Jungle Beckons",
   "type": "interlude",
+  "icon": "rainforest",
   "setup": [
     "intro",
     "use_gasoline",
@@ -23978,6 +23997,7 @@
   "scenario_name": "Prologue",
   "full_name": "Prologue",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "intro",
     "choose_investigators",
@@ -24097,6 +24117,7 @@
   "scenario_name": "Restless Nights",
   "full_name": "Interlude I: Restless Nights",
   "type": "interlude",
+  "icon": "deadly_traps",
   "setup": [
     "prompt",
     "check_blanket",
@@ -31875,6 +31896,7 @@
   "scenario_name": "The Darkness",
   "full_name": "Interlude V: The Darkness",
   "type": "interlude",
+  "icon": "torch",
   "setup": [
     "check_fell_into_depths",
     "check_found_missing_relic",
@@ -32435,6 +32457,7 @@
   "scenario_name": "Those Held Captive",
   "full_name": "Interlude IV: Those Held Captive",
   "type": "interlude",
+  "icon": "cult_of_pnakotus",
   "setup": [
     "check_process_backfired",
     "explain_mind_recovered",
@@ -41459,6 +41482,7 @@
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
   "type": "epilogue",
+  "icon": "realm_of_death",
   "setup": [
     "check_anette_arrested",
     "check_assumed_control_of_the_silver_twilight_lodge",
@@ -42651,6 +42675,7 @@
   "type": "interlude",
   "scenario_name": "The Inner Circle",
   "full_name": "Interlude III: The Inner Circle",
+  "icon": "trapped_spirits",
   "setup": [
     "ic_1",
     "choose_to_share_info",
@@ -43266,6 +43291,7 @@
   "type": "interlude",
   "scenario_name": "The Price of Progress",
   "full_name": "Interlude II: The Price of Progress",
+  "icon": "silver_twilight_lodge",
   "setup": [
     "check_silver_twilight_investigator",
     "progress_3",
@@ -44786,6 +44812,7 @@
   "type": "interlude",
   "scenario_name": "Twist of Fate",
   "full_name": "Interlude IV: Twist of Fate",
+  "icon": "inexorable_fate",
   "setup": [
     "tof_1",
     "path_winds_before_you",
@@ -47058,6 +47085,7 @@
   "scenario_name": "The Black Cat",
   "full_name": "Interlude I: The Black Cat",
   "type": "interlude",
+  "icon": "tde",
   "setup": [
     "maybe_check_dreamers_grow_weaker",
     "black_cat_1",
@@ -47383,6 +47411,7 @@
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
   "type": "epilogue",
+  "icon": "merging_realities",
   "setup": [
     "check_weaver_of_the_cosmos",
     "check_nyarlathoteps_invasion_has_begun",
@@ -47920,6 +47949,7 @@
   "scenario_name": "The Great Ones",
   "full_name": "Interlude III: The Great Ones",
   "type": "interlude",
+  "icon": "dreamers_curse",
   "setup": [
     "check_point_of_no_return",
     "great_ones_1",
@@ -48631,6 +48661,7 @@
   "scenario_name": "The Oneironauts",
   "full_name": "Interlude II: The Oneironauts",
   "type": "interlude",
+  "icon": "whispers_of_hypnos",
   "setup": [
     "check_a_thousand_shapes_of_horror",
     "wait_oneironauts_decision",
@@ -50521,6 +50552,7 @@
   "scenario_name": "Prologue",
   "full_name": "Prologue",
   "type": "interlude",
+  "icon": "dreamlands",
   "setup": [
     "intro"
   ],
@@ -52887,6 +52919,7 @@
   "scenario_name": "The Black Cat",
   "full_name": "Interlude I: The Black Cat",
   "type": "interlude",
+  "icon": "tde",
   "setup": [
     "check_interconnected_campaign",
     "black_cat_3",
@@ -53118,6 +53151,7 @@
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
   "type": "epilogue",
+  "icon": "merging_realities",
   "setup": [
     "check_where_the_gods_dwell",
     "check_bridge_was_completed"
@@ -53611,6 +53645,7 @@
   "scenario_name": "The Great Ones",
   "full_name": "Interlude III: The Great Ones",
   "type": "interlude",
+  "icon": "dreamers_curse",
   "setup": [
     "check_dark_side_of_the_moon",
     "wait_great_ones_decision",
@@ -54056,6 +54091,7 @@
   "scenario_name": "The Oneironauts",
   "full_name": "Interlude II: The Oneironauts",
   "type": "interlude",
+  "icon": "whispers_of_hypnos",
   "setup": [
     "check_the_search_for_kadath",
     "oneironauts_1",
@@ -54452,7 +54488,7 @@
       "id": "interlude_resolution_no_hunch",
       "type": "branch",
       "hidden": true,
-      "condition": {      
+      "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
         "id": "black_cat_requested_aid",
@@ -55171,6 +55207,7 @@
   "scenario_name": "Prologue",
   "full_name": "Prologue",
   "type": "interlude",
+  "icon": "dreamlands",
   "setup": [
     "intro"
   ],
@@ -56736,6 +56773,7 @@
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
   "type": "epilogue",
+  "icon": "temporal_flux",
   "setup": [
     "check_turned_back_time"
   ],
@@ -56798,6 +56836,7 @@
   "scenario_name": "Expedition's End",
   "full_name": "Interlude II: Expedition's End",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "check_investigators_recovered_relic",
     "$upgrade_decks"
@@ -58150,6 +58189,7 @@
   "scenario_name": "The Jungle Beckons",
   "full_name": "Interlude III: The Jungle Beckons",
   "type": "interlude",
+  "icon": "rainforest",
   "setup": [
     "intro",
     "use_gasoline",
@@ -58610,6 +58650,7 @@
   "scenario_name": "Prologue",
   "full_name": "Prologue",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "intro",
     "choose_investigators",
@@ -58725,6 +58766,7 @@
   "scenario_name": "Restless Nights",
   "full_name": "Interlude I: Restless Nights",
   "type": "interlude",
+  "icon": "deadly_traps",
   "setup": [
     "prompt",
     "check_blanket",
@@ -60593,6 +60635,7 @@
   "scenario_name": "The Darkness",
   "full_name": "Interlude V: The Darkness",
   "type": "interlude",
+  "icon": "torch",
   "setup": [
     "check_fell_into_depths",
     "check_found_missing_relic",
@@ -62229,6 +62272,7 @@
   "scenario_name": "Those Held Captive",
   "full_name": "Interlude IV: Those Held Captive",
   "type": "interlude",
+  "icon": "cult_of_pnakotus",
   "setup": [
     "check_process_backfired",
     "explain_mind_recovered",
@@ -66081,6 +66125,7 @@
   "scenario_name": "Beneath the Waves",
   "full_name": "Interlude III: Beneath the Waves",
   "type": "interlude",
+  "icon": "flooded_caverns",
   "setup": [
     "intro",
     "section_intro",
@@ -67012,6 +67057,7 @@
   "id": "hidden_truths",
   "scenario_name": "Hidden Truths",
   "full_name": "Interlude IV: Hidden Truths",
+  "icon": "agents_of_dagon",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -67873,6 +67919,7 @@
   "scenario_name": "Puzzle Pieces",
   "full_name": "Interlude I: Puzzle Pieces",
   "type": "interlude",
+  "icon": "shattered_memories",
   "setup": [
     "intro",
     "check_memories_recovered",
@@ -68519,6 +68566,7 @@
   "scenario_name": "The Syzygy",
   "full_name": "Interlude II: The Syzygy",
   "type": "interlude",
+  "icon": "syzygy",
   "setup": [
     "syzygy_1",
     "check_mission_failed",
@@ -70430,6 +70478,7 @@
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
   "type": "placeholder",
+  "icon": "rising_tide",
   "setup": [],
   "steps": []
 }

@@ -203,6 +203,7 @@
   "scenario_name": "El destino de Armitage",
   "full_name": "Interludio I: El destino de Armitage",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "check_unconscious",
     "$upgrade_decks"
@@ -724,6 +725,7 @@
   "scenario_name": "Prólogo",
   "full_name": "Prólogo",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "intro",
     "scenario_choice"
@@ -776,6 +778,7 @@
   "scenario_name": "Epílogo",
   "full_name": "Epílogo",
   "type": "epilogue",
+  "icon": "dunwich",
   "setup": [
     "check_calmed_townsfolk"
   ],
@@ -1906,6 +1909,7 @@
   "scenario_name": "Los supervivientes",
   "full_name": "Interludio II: Los supervivientes",
   "type": "interlude",
+  "icon": "whippoorwills",
   "setup": [
     "prologue",
     "check_henry_armitage",
@@ -9124,6 +9128,7 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Epílogo",
+  "icon": "maddening_delusions",
   "full_name": "Epílogo",
   "type": "epilogue",
   "setup": [
@@ -9164,6 +9169,7 @@
   "scenario_name": "Alma perdida",
   "full_name": "Interludio II: Alma perdida",
   "type": "interlude",
+  "icon": "the_stranger",
   "setup": [
     "daniel_choice",
     "warning_choice",
@@ -9354,6 +9360,7 @@
   "scenario_name": "Recompensa de la demencia",
   "full_name": "Interludio I: Recompensa de la demencia",
   "type": "interlude",
+  "icon": "hasturs_gift",
   "setup": [
     "house_choice",
     "$upgrade_decks"
@@ -9687,6 +9694,7 @@
   "scenario_name": "Prólogo",
   "full_name": "Prólogo",
   "type": "interlude",
+  "icon": "delusions",
   "setup": [
     "choose_investigators",
     "intro",
@@ -12166,6 +12174,7 @@
   "scenario_name": "El destino de Armitage",
   "full_name": "Interludio I: El destino de Armitage",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "check_unconscious",
     "$upgrade_decks"
@@ -12267,6 +12276,7 @@
   "scenario_name": "Prólogo",
   "full_name": "Prólogo",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "intro",
     "scenario_choice"
@@ -12315,6 +12325,7 @@
   "scenario_name": "Epílogo",
   "full_name": "Epílogo",
   "type": "epilogue",
+  "icon": "dunwich",
   "setup": [
     "check_calmed_townsfolk"
   ],
@@ -15519,6 +15530,7 @@
   "scenario_name": "Los supervivientes",
   "full_name": "Interludio II: Los supervivientes",
   "type": "interlude",
+  "icon": "whippoorwills",
   "setup": [
     "prologue",
     "check_henry_armitage",
@@ -17988,6 +18000,7 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Epílogo",
+  "icon": "maddening_delusions",
   "full_name": "Epílogo",
   "type": "epilogue",
   "setup": [
@@ -18028,6 +18041,7 @@
   "scenario_name": "Alma perdida",
   "full_name": "Interludio II: Alma perdida",
   "type": "interlude",
+  "icon": "the_stranger",
   "setup": [
     "daniel_choice",
     "warning_choice",
@@ -18218,6 +18232,7 @@
   "scenario_name": "Recompensa de la demencia",
   "full_name": "Interludio I: Recompensa de la demencia",
   "type": "interlude",
+  "icon": "hasturs_gift",
   "setup": [
     "house_choice",
     "$upgrade_decks"
@@ -18551,6 +18566,7 @@
   "scenario_name": "Prólogo",
   "full_name": "Prólogo",
   "type": "interlude",
+  "icon": "delusions",
   "setup": [
     "choose_investigators",
     "intro",
@@ -24711,6 +24727,7 @@
   "scenario_name": "Epílogo",
   "full_name": "Epílogo",
   "type": "epilogue",
+  "icon": "temporal_flux",
   "setup": [
     "check_turned_back_time"
   ],
@@ -24777,6 +24794,7 @@
   "scenario_name": "Fin de la expedición",
   "full_name": "Interludio II: Fin de la expedición",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "check_investigators_recovered_relic",
     "$upgrade_decks"
@@ -24995,6 +25013,7 @@
   "scenario_name": "La atracción de la jungla",
   "full_name": "Interludio III: La atracción de la jungla",
   "type": "interlude",
+  "icon": "rainforest",
   "setup": [
     "intro",
     "use_gasoline",
@@ -25484,6 +25503,7 @@
   "scenario_name": "Prólogo",
   "full_name": "Prólogo",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "intro",
     "choose_investigators",
@@ -25603,6 +25623,7 @@
   "scenario_name": "Noches inquietas",
   "full_name": "Interludio I: Noches inquietas",
   "type": "interlude",
+  "icon": "deadly_traps",
   "setup": [
     "prompt",
     "check_blanket",
@@ -33381,6 +33402,7 @@
   "scenario_name": "La oscuridad",
   "full_name": "Interludio V: La oscuridad",
   "type": "interlude",
+  "icon": "torch",
   "setup": [
     "check_fell_into_depths",
     "check_found_missing_relic",
@@ -33941,6 +33963,7 @@
   "scenario_name": "Los que son prisioneros",
   "full_name": "Interludio IV: Los que son prisioneros",
   "type": "interlude",
+  "icon": "cult_of_pnakotus",
   "setup": [
     "check_process_backfired",
     "explain_mind_recovered",
@@ -45235,6 +45258,7 @@
   "scenario_name": "Epílogo",
   "full_name": "Epílogo",
   "type": "epilogue",
+  "icon": "realm_of_death",
   "setup": [
     "check_anette_arrested",
     "check_assumed_control_of_the_silver_twilight_lodge",
@@ -46614,6 +46638,7 @@
   "type": "interlude",
   "scenario_name": "El Círculo Interno",
   "full_name": "Interludio III: El Círculo Interno",
+  "icon": "trapped_spirits",
   "setup": [
     "ic_1",
     "choose_to_share_info",
@@ -47346,6 +47371,7 @@
   "type": "interlude",
   "scenario_name": "El precio del progreso",
   "full_name": "Interludio II: El precio del progreso",
+  "icon": "silver_twilight_lodge",
   "setup": [
     "check_silver_twilight_investigator",
     "progress_3",
@@ -49063,6 +49089,7 @@
   "type": "interlude",
   "scenario_name": "Giro del destino",
   "full_name": "Interludio IV: Giro del destino",
+  "icon": "inexorable_fate",
   "setup": [
     "tof_1",
     "path_winds_before_you",
@@ -51590,6 +51617,7 @@
   "scenario_name": "El gato negro",
   "full_name": "Interludio I: El gato negro",
   "type": "interlude",
+  "icon": "tde",
   "setup": [
     "maybe_check_dreamers_grow_weaker",
     "black_cat_1",
@@ -51927,6 +51955,7 @@
   "scenario_name": "Epílogo",
   "full_name": "Epílogo",
   "type": "epilogue",
+  "icon": "merging_realities",
   "setup": [
     "check_weaver_of_the_cosmos",
     "check_nyarlathoteps_invasion_has_begun",
@@ -52569,6 +52598,7 @@
   "scenario_name": "Los Primigenios",
   "full_name": "Interludio III: Los Primigenios",
   "type": "interlude",
+  "icon": "dreamers_curse",
   "setup": [
     "check_point_of_no_return",
     "great_ones_1",
@@ -53370,6 +53400,7 @@
   "scenario_name": "Los onironautas",
   "full_name": "Interludio II: Los onironautas",
   "type": "interlude",
+  "icon": "whispers_of_hypnos",
   "setup": [
     "check_a_thousand_shapes_of_horror",
     "wait_oneironauts_decision",
@@ -55466,6 +55497,7 @@
   "scenario_name": "Prólogo",
   "full_name": "Prólogo",
   "type": "interlude",
+  "icon": "dreamlands",
   "setup": [
     "intro"
   ],
@@ -58124,6 +58156,7 @@
   "scenario_name": "El gato negro",
   "full_name": "Interludio I: El gato negro",
   "type": "interlude",
+  "icon": "tde",
   "setup": [
     "check_interconnected_campaign",
     "black_cat_3",
@@ -58380,6 +58413,7 @@
   "scenario_name": "Epílogo",
   "full_name": "Epílogo",
   "type": "epilogue",
+  "icon": "merging_realities",
   "setup": [
     "check_where_the_gods_dwell",
     "check_bridge_was_completed"
@@ -58978,6 +59012,7 @@
   "scenario_name": "Los Primigenios",
   "full_name": "Interludio III: Los Primigenios",
   "type": "interlude",
+  "icon": "dreamers_curse",
   "setup": [
     "check_dark_side_of_the_moon",
     "wait_great_ones_decision",
@@ -59476,6 +59511,7 @@
   "scenario_name": "Los onironautas",
   "full_name": "Interludio II: Los onironautas",
   "type": "interlude",
+  "icon": "whispers_of_hypnos",
   "setup": [
     "check_the_search_for_kadath",
     "oneironauts_1",
@@ -60726,6 +60762,7 @@
   "scenario_name": "Prólogo",
   "full_name": "Prólogo",
   "type": "interlude",
+  "icon": "dreamlands",
   "setup": [
     "intro"
   ],
@@ -62522,6 +62559,7 @@
   "scenario_name": "Epílogo",
   "full_name": "Epílogo",
   "type": "epilogue",
+  "icon": "temporal_flux",
   "setup": [
     "check_turned_back_time"
   ],
@@ -62588,6 +62626,7 @@
   "scenario_name": "Fin de la expedición",
   "full_name": "Interludio II: Fin de la expedición",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "check_investigators_recovered_relic",
     "$upgrade_decks"
@@ -64074,6 +64113,7 @@
   "scenario_name": "La atracción de la jungla",
   "full_name": "Interludio III: La atracción de la jungla",
   "type": "interlude",
+  "icon": "rainforest",
   "setup": [
     "intro",
     "use_gasoline",
@@ -64563,6 +64603,7 @@
   "scenario_name": "Prólogo",
   "full_name": "Prólogo",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "intro",
     "choose_investigators",
@@ -64682,6 +64723,7 @@
   "scenario_name": "Noches inquietas",
   "full_name": "Interludio I: Noches inquietas",
   "type": "interlude",
+  "icon": "deadly_traps",
   "setup": [
     "prompt",
     "check_blanket",
@@ -66785,6 +66827,7 @@
   "scenario_name": "La oscuridad",
   "full_name": "Interludio V: La oscuridad",
   "type": "interlude",
+  "icon": "torch",
   "setup": [
     "check_fell_into_depths",
     "check_found_missing_relic",
@@ -68615,6 +68658,7 @@
   "scenario_name": "Los que son prisioneros",
   "full_name": "Interludio IV: Los que son prisioneros",
   "type": "interlude",
+  "icon": "cult_of_pnakotus",
   "setup": [
     "check_process_backfired",
     "explain_mind_recovered",
@@ -72891,6 +72935,7 @@
   "scenario_name": "Bajo las olas",
   "full_name": "Interludio III: Bajo las olas",
   "type": "interlude",
+  "icon": "flooded_caverns",
   "setup": [
     "intro",
     "section_intro",
@@ -73957,6 +74002,7 @@
   "id": "hidden_truths",
   "scenario_name": "Verdades ocultas",
   "full_name": "Interludio IV: Verdades ocultas",
+  "icon": "agents_of_dagon",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -74899,6 +74945,7 @@
   "scenario_name": "Piezas del puzle",
   "full_name": "Interludio I: Piezas del puzle",
   "type": "interlude",
+  "icon": "shattered_memories",
   "setup": [
     "intro",
     "check_memories_recovered",
@@ -75586,6 +75633,7 @@
   "scenario_name": "La Sicigia",
   "full_name": "Interludio II: La Sicigia",
   "type": "interlude",
+  "icon": "syzygy",
   "setup": [
     "syzygy_1",
     "check_mission_failed",
@@ -77588,6 +77636,7 @@
   "scenario_name": "Epílogo",
   "full_name": "Epílogo",
   "type": "placeholder",
+  "icon": "rising_tide",
   "setup": [],
   "steps": []
 }]}
