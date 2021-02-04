@@ -15,16 +15,13 @@ import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/c
 import { NavigationProps } from '@components/nav/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 import CampaignGuideContext from './CampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
-import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import CampaignGuideFab from './CampaignGuideFab';
 import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import DeckButton from '@components/deck/controls/DeckButton';
 import ScenarioCarouselComponent from './ScenarioCarouselComponent';
 
 export type CampaignGuideProps = CampaignGuideInputProps;

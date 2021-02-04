@@ -8,7 +8,7 @@ import StyleContext from '@styles/StyleContext';
 import { ShowAlert } from '@components/deck/dialogs';
 import ScenarioCard from './ScenarioCard';
 import space, { m } from '@styles/space';
-import { useComponentVisible } from '@components/core/hooks';
+import { useComponentVisible, useEffectUpdate } from '@components/core/hooks';
 import { showScenario } from '../nav';
 
 interface Props {
@@ -45,11 +45,12 @@ export default function ScenarioCarouselComponent({
       showLinkedScenario ? onShowLinkedScenario : undefined
     );
   }, [componentId, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState]);
-  useEffect(() => {
+  useEffectUpdate(() => {
     if (visible) {
       if (scenarioPressed.current) {
         scenarioPressed.current = false;
-        const scenarioIndex = findIndex(processedCampaign.scenarios, s => s.type === 'playable' || s.type === 'started');
+        const scenarioIndex = findIndex(processedCampaign.scenarios, s =>
+          s.type === 'playable' || s.type === 'started' || s.type === 'placeholder');
         if (carousel.current) {
           carousel.current.snapToItem(scenarioIndex);
         }
@@ -57,7 +58,8 @@ export default function ScenarioCarouselComponent({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
-  const [selectedIndex, setIndex] = useState(findIndex(processedCampaign.scenarios, s => s.type === 'playable' || s.type === 'started'));
+  const [selectedIndex, setIndex] = useState(findIndex(processedCampaign.scenarios, s =>
+    s.type === 'playable' || s.type === 'started' || s.type === 'placeholder'));
   const renderScenario = useCallback(({ item, index }: { item: ProcessedScenario; index: number; dataIndex: number }) => {
     return (
       <ScenarioCard

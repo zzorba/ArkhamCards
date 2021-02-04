@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React, { useCallback, useContext, useMemo, useRef } from 'react';
+import { Animated, Easing, Text, View, StyleSheet } from 'react-native';
 import { find , map } from 'lodash';
 import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
@@ -17,7 +17,7 @@ import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import space from '@styles/space';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { useFlag } from '@components/core/hooks';
+import { useEffectUpdate, useFlag } from '@components/core/hooks';
 import AppIcon from '@icons/AppIcon';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 import TraumaSummary from '../TraumaSummary';
@@ -151,6 +151,23 @@ export default function InvestigatorCampaignRow({
 
   const yithian = useMemo(() => !!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN), [traumaAndCardData.storyAssets]);
   const [open, toggleOpen] = useFlag(false);
+  const openAnim = useRef(new Animated.Value(0));
+  useEffectUpdate(() => {
+    Animated.timing(
+      openAnim.current,
+      {
+        toValue: open ? 1 : 0,
+        duration: 200,
+        useNativeDriver: false,
+        easing: Easing.ease,
+      }
+    ).start();
+  }, [open]);
+  const iconRotate = openAnim.current.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['-90deg', '-180deg'],
+    extrapolate: 'clamp',
+  });
   return (
     <View style={space.marginBottomS}>
       <TouchableWithoutFeedback onPress={toggleOpen}>
@@ -165,7 +182,9 @@ export default function InvestigatorCampaignRow({
                 { investigator.subname }
               </Text>
             </View>
-            <AppIcon name={open ? 'expand_less' : 'expand_more'} size={36} color="#FFF" />
+            <Animated.View style={{ width: 36, height: 36, transform: [{ rotate: iconRotate }] }}>
+              <AppIcon name="expand_less" size={36} color="#FFF" />
+            </Animated.View>
           </View>
         </RoundedFactionHeader>
       </TouchableWithoutFeedback>

@@ -88,7 +88,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
           <View style={styles.row}>
             <AppIcon size={32} name="lock" color={color} />
             <Text style={[typography.large, typography.italic, { color: light }]}>
-              { t`Locked` }
+              { scenario.type === 'placeholder' ? t`Coming soon` : t`Locked` }
             </Text>
           </View>
         );
