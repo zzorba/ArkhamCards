@@ -6,20 +6,18 @@ import { CampaignId, CampaignNotes } from '@actions/types';
 import CampaignLogSection from './CampaignLogSection';
 import { useCampaign, useCampaignDetails, useInvestigatorCards } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import withDialogs, { ShowTextEditDialog } from '@components/core/withDialogs';
 import StyleContext from '@styles/StyleContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { updateCampaign } from './actions';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from './AddCampaignNoteSectionDialog';
+import useTextEditDialog from '@components/core/useTextEditDialog';
 
 export interface CampaignLogViewProps {
   campaignId: CampaignId;
 }
 
-interface Props extends CampaignLogViewProps {
-  showTextEditDialog: ShowTextEditDialog;
-}
-function CampaignLogView({ campaignId, showTextEditDialog }: Props) {
+export default function CampaignLogView({ campaignId }: CampaignLogViewProps) {
+  const [dialog, showTextEditDialog] = useTextEditDialog();
   const { backgroundStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(campaignId);
@@ -60,10 +58,10 @@ function CampaignLogView({ campaignId, showTextEditDialog }: Props) {
         addSection={addSectionCallback.current}
         hide={hideAddSectionDialog}
       />
+      { dialog }
     </View>
   );
 }
-export default withDialogs(CampaignLogView);
 
 const styles = StyleSheet.create({
   flex: {

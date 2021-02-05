@@ -221,7 +221,6 @@ function CampaignDetailView(props: Props) {
       onInvestigatorSelect: onAddInvestigator,
       simpleOptions: true,
     };
-    console.log(passProps);
     Navigation.showModal({
       stack: {
         children: [{
@@ -412,7 +411,6 @@ function CampaignDetailView(props: Props) {
                 footer={<RoundedFooterButton icon="expand" title={t`Record Scenario Result`} onPress={addScenarioResultPressed} />}
               >
                 { map(campaign.scenarioResults, (scenario, idx) => {
-                  console.log(campaign);
                   return (
                     <ScenarioResultButton
                       key={idx}

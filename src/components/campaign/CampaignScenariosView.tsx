@@ -84,7 +84,6 @@ export default function CampaignScenariosView({ campaignId, componentId }: Campa
               footer={<RoundedFooterButton icon="expand" title={t`Record Scenario Result`} onPress={addScenarioResultPressed} />}
             >
               { map(campaign.scenarioResults, (scenario, idx) => {
-                console.log(campaign);
                 return (
                   <ScenarioResultButton
                     key={idx}

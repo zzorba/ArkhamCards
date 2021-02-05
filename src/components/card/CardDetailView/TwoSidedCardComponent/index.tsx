@@ -499,9 +499,6 @@ export default function TwoSidedCardComponent({ componentId, card, linked, notFi
   const sideA = backFirst && renderCardBack(backFirst, !notFirst, 'sideA');
   const sideB = renderCardFront(!!backFirst, !notFirst && !sideA, 'sideB');
   const sideC = !backFirst && renderCardBack(!!backFirst, !notFirst && !sideA && !sideB, 'sideC');
-  if (card.code === '86041') {
-    console.log(card);
-  }
   return (
     <View>
       { sideA }
