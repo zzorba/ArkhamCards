@@ -13,6 +13,7 @@ import space, { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import { ShowCountDialog } from '@components/deck/dialogs';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   campaignNotes: CampaignNotes;
@@ -101,18 +102,16 @@ export default function CampaignLogSection(props: Props) {
   const notesSection = useMemo(() => {
     return (
       <View style={[space.paddingSideS, space.paddingBottomS]}>
-        <RoundedFactionBlock faction="neutral" header={undefined}>
-          { map(campaignNotes.sections, (section, idx) => (
-            <NotesSection
-              key={idx}
-              title={section.title}
-              notes={section.notes}
-              index={idx}
-              notesChanged={notesChanged}
-              showDialog={showTextEditDialog}
-            />
-          )) }
-        </RoundedFactionBlock>
+        { map(campaignNotes.sections, (section, idx) => (
+          <NotesSection
+            key={idx}
+            title={section.title}
+            notes={section.notes}
+            index={idx}
+            notesChanged={notesChanged}
+            showDialog={showTextEditDialog}
+          />
+        )) }
       </View>
     );
   }, [campaignNotes.sections, notesChanged, showTextEditDialog]);
@@ -156,7 +155,13 @@ export default function CampaignLogSection(props: Props) {
       { notesSection }
       { countsSection }
       { investigatorSection }
-      <ArkhamButton icon="expand" title={t`Add Log Section`} onPress={addSectionDialogPressed} />
+      <View style={[space.paddingSideS, space.paddingTopS]}>
+        <DeckButton
+          icon="plus-thin"
+          title={t`Add Log Section`}
+          onPress={addSectionDialogPressed}
+        />
+      </View>
     </View>
   );
 }

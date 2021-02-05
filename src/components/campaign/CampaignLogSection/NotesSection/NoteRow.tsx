@@ -9,6 +9,7 @@ import { t } from 'ttag';
 
 import TextBoxButton from '@components/core/TextBoxButton';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   title: string;
@@ -43,16 +44,26 @@ export default function NoteRow(props: Props) {
 
   return (
     <View style={styles.row}>
-      <TouchableOpacity onPress={onPress}>
-        <TextBoxButton
-          crossedOut={crossedOut}
-          value={value}
-          placeholder={appendNote ? t`Add note` : undefined}
-          pointerEvents="none"
-          ellipsizeMode="tail"
-          multiline
+      { appendNote ? (
+        <DeckButton
+          thin
+          icon="edit"
+          title={t`Add note`}
+          onPress={onPress}
+          color="light_gray"
         />
-      </TouchableOpacity>
+      ) : (
+        <TouchableOpacity onPress={onPress}>
+          <TextBoxButton
+            crossedOut={crossedOut}
+            value={value}
+            placeholder={appendNote ? t`Add note` : undefined}
+            pointerEvents="none"
+            ellipsizeMode="tail"
+            multiline
+          />
+        </TouchableOpacity>
+      ) }
     </View>
   );
 }

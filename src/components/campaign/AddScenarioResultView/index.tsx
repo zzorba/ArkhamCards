@@ -10,7 +10,6 @@ import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { CampaignId, CampaignNotes, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import ScenarioSection from './ScenarioSection';
@@ -19,13 +18,14 @@ import XpComponent from '../XpComponent';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
 import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
-import space, { m } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignInvestigators, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useCountDialog } from '@components/deck/dialogs';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 export interface AddScenarioResultProps {
   id: CampaignId;
@@ -164,18 +164,23 @@ function AddScenarioResultView({ componentId, id }: Props) {
             showCountDialog={showCountDialog}
           />
         </View>
-        { hasDecks && (
-          <BasicButton
-            title={t`Save and Upgrade Decks`}
-            onPress={saveAndUpgradeDecks}
-            disabled={!saveEnabled}
-          />
-        ) }
-        <View style={[styles.bottomBorder, borderStyle]}>
-          <BasicButton
+        <View style={space.paddingSideS}>
+          { hasDecks && (
+            <DeckButton
+              icon="upgrade"
+              title={t`Save and Upgrade Decks`}
+              onPress={saveAndUpgradeDecks}
+              disabled={!saveEnabled}
+              bottomMargin={s}
+              color="gold"
+            />
+          ) }
+          <DeckButton
+            icon="check-thin"
             title={hasDecks ? t`Only Save` : t`Save`}
             onPress={saveAndDismiss}
             disabled={!saveEnabled}
+            bottomMargin={s}
           />
         </View>
         { !!notes && (
