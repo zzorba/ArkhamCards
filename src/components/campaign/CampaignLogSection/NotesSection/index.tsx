@@ -3,7 +3,7 @@ import { filter, map } from 'lodash';
 import { View } from 'react-native';
 
 import NoteRow from './NoteRow';
-import { ShowTextEditDialog } from '@components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 
 interface Props {

@@ -8,7 +8,7 @@ import {
 import { t } from 'ttag';
 
 import TextBoxButton from '@components/core/TextBoxButton';
-import { ShowTextEditDialog } from '@components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 
 interface Props {
   title: string;

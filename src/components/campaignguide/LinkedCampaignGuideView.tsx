@@ -22,7 +22,7 @@ import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import space from '@styles/space';
 import CampaignGuideFab from './CampaignGuideFab';
-import { useAlertDialog, useTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaignId } from '@components/campaign/hooks';
@@ -69,7 +69,7 @@ export default function LinkedCampaignGuideView(props: Props) {
   }, [campaignId, dispatch, user, componentId]);
 
 
-  const { dialog, showDialog: showEditNameDialog } = useTextDialog({
+  const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Name`,
     value: campaignName,
     onValueChange: updateCampaignName,

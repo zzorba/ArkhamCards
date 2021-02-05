@@ -11,6 +11,8 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'plus-button' |
+  'minus-button' |
   'right-arrow' |
   'weakness' |
   'card-outline' |
@@ -53,6 +55,8 @@ interface Props {
 }
 
 const ICON_SIZE = {
+  'plus-button': 32,
+  'minus-button': 32,
   'right-arrow': 32,
   weakness: 24,
   'card-outline': 24,
@@ -80,6 +84,8 @@ const ICON_SIZE = {
   'check-thin': 30,
 };
 const ICON_STYLE = {
+  'plus-button': {},
+  'minus-button': {},
   'right-arrow': {},
   weakness: {
     marginLeft: -3,

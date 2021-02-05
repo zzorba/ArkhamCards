@@ -13,10 +13,8 @@ import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Campaign, CampaignGuideState, Deck, DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+import { DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
 import { clearDecks } from '@actions';
-import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
 import Card from '@data/Card';
 import { getBackupData, getAllPacks, getLangChoice, AppState } from '@reducers';
@@ -26,33 +24,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
 import { saveAuthResponse } from '@lib/dissonantVoices';
 import LanguageContext from '@lib/i18n/LanguageContext';
-
-interface ReduxProps {
-  backupData: {
-    campaigns: Campaign[];
-    decks: Deck[];
-    guides: {
-      [id: string]: CampaignGuideState;
-    };
-  };
-  packs: Pack[];
-  lang: string;
-  langChoice: string;
-}
-
-interface ReduxActionProps {
-  fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
-  restoreBackup: (
-    campaigns: Campaign[],
-    guides: {
-      [id: string]: CampaignGuideState;
-    },
-    decks: Deck[]
-  ) => void;
-  clearDecks: () => void;
-}
-
-type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
+import useTextEditDialog from '@components/core/useTextEditDialog';
 
 
 function goOffline() {
@@ -63,7 +35,8 @@ function goOnline() {
   database().goOnline();
 }
 
-function DiagnosticsView({ showTextEditDialog }: Props) {
+export default function DiagnosticsView() {
+  const [dialog, showTextEditDialog] = useTextEditDialog();
   const { db } = useContext(DatabaseContext);
   const { colors } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
@@ -231,11 +204,10 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
         />
         { debugSection }
       </ScrollView>
+      { dialog }
     </SafeAreaView>
   );
 }
-
-export default withDialogs(DiagnosticsView);
 
 const styles = StyleSheet.create({
   container: {

@@ -45,7 +45,7 @@ import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
 import { CampaignSelection } from '../SelectCampaignDialog';
-import { useAlertDialog, usePickerDialog, useTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, usePickerDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
@@ -444,7 +444,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       });
     }
   }, [deckIds, investigatorIds, deckAdded, investigatorAdded, guided]);
-  const { dialog, showDialog } = useTextDialog({
+  const { dialog, showDialog } = useSimpleTextDialog({
     title: t`Name`,
     placeholder: placeholderName,
     value: name,

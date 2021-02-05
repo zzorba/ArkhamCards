@@ -41,7 +41,7 @@ import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeck } from '@components/deck/hooks';
-import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
+import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
 import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
@@ -547,7 +547,7 @@ function DeckDetailView({
     setFabOpen(false);
     setMenuOpen(false);
   }, [componentId, parsedDeck, colors, id, setFabOpen, setMenuOpen]);
-  const { dialog: editNameDialog, showDialog: showEditNameDialog } = useTextDialog({
+  const { dialog: editNameDialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Deck name`,
     onValueChange: updateDeckName,
     value: name || '',

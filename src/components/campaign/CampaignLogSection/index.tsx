@@ -3,7 +3,7 @@ import { InteractionManager, StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
 import { map } from 'lodash';
 
-import { ShowTextEditDialog } from '@components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { CampaignNotes, InvestigatorNotes } from '@actions/types';
 import Card from '@data/Card';
 import InvestigatorSectionList from './InvestigatorSectionList';

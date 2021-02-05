@@ -7,7 +7,7 @@ import { useObjectVal } from 'react-firebase-hooks/database';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import space from '@styles/space';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
-import { useTextDialog } from '@components/deck/dialogs';
+import { useSimpleTextDialog } from '@components/deck/dialogs';
 import { ArkhamCardsProfile, FriendStatus } from '@data/firebase/types';
 import { NavigationProps } from '@components/nav/types';
 import { Navigation } from 'react-native-navigation';
@@ -21,7 +21,7 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
   const { user, loading } = useContext(ArkhamCardsAuthContext);
   const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(user ? fbdb.profile(user) : undefined);
   const updateHandle = useUpdateHandle();
-  const { dialog, showDialog } = useTextDialog({
+  const { dialog, showDialog } = useSimpleTextDialog({
     title: t`Account Name`,
     value: profile?.handle || '',
     onValidate: updateHandle,

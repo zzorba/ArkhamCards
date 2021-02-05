@@ -16,7 +16,7 @@ import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useNavigationButtonPressed } from '@components/core/hooks';
-import { useCounterDialog, useTextDialog } from '@components/deck/dialogs';
+import { useCounterDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 
@@ -69,7 +69,7 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
     }
   }, [scenarioResult, setScenarioResult]);
 
-  const { dialog: nameDialog, showDialog: showNameDialog } = useTextDialog({
+  const { dialog: nameDialog, showDialog: showNameDialog } = useSimpleTextDialog({
     title: t`Scenario`,
     value: existingScenarioResult?.scenario || '',
     onValueChange: nameChanged,
@@ -84,7 +84,7 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
     }
   }, [scenarioResult, setScenarioResult]);
 
-  const { dialog: resolutionDialog, showDialog: showResolutionDialog } = useTextDialog({
+  const { dialog: resolutionDialog, showDialog: showResolutionDialog } = useSimpleTextDialog({
     title: t`Resolution`,
     value: existingScenarioResult?.resolution || '',
     onValueChange: resolutionChanged,

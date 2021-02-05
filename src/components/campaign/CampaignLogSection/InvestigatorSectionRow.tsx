@@ -7,7 +7,7 @@ import {
 
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
-import { ShowTextEditDialog } from '@components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { InvestigatorNotes } from '@actions/types';
 import Card from '@data/Card';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';

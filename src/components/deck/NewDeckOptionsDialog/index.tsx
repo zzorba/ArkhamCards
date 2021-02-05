@@ -35,7 +35,7 @@ import DeckSectionBlock from '../section/DeckSectionBlock';
 import DeckCheckboxButton from '../controls/DeckCheckboxButton';
 import DeckButton from '../controls/DeckButton';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import { useTextDialog } from '../dialogs';
+import { useSimpleTextDialog } from '../dialogs';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface NewDeckOptionsProps {
@@ -230,7 +230,7 @@ function NewDeckOptionsDialog({
     setOptionSelected(updatedOptionSelected);
   }, [optionSelected, setOptionSelected]);
 
-  const { dialog: nameDialog, showDialog: showNameDialog } = useTextDialog({
+  const { dialog: nameDialog, showDialog: showNameDialog } = useSimpleTextDialog({
     title: t`Name`,
     onValueChange: setDeckNameChange,
     value: deckNameChange || '',

@@ -21,7 +21,7 @@ import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import CampaignGuideFab from './CampaignGuideFab';
-import { useAlertDialog, useTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
@@ -48,7 +48,7 @@ function CampaignGuideView(props: Props) {
   }, [campaignId, user, dispatch, componentId]);
   const { showTraumaDialog, traumaDialog } = useTraumaDialog({ hideKilledInsane: true });
 
-  const { dialog, showDialog: showEditNameDialog } = useTextDialog({
+  const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Name`,
     value: campaignData.campaignName,
     onValueChange: updateCampaignName,

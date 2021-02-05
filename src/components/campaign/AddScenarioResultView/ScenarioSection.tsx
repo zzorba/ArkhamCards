@@ -9,7 +9,7 @@ import SettingsSwitch from '@components/core/SettingsSwitch';
 import EditText from '@components/core/EditText';
 import { updateCampaign } from '../actions';
 import { completedScenario, scenarioFromCard, Scenario } from '../constants';
-import { ShowTextEditDialog } from '@components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { makeAllCyclePacksSelector, getAllStandalonePacks, makePackSelector, AppState } from '@reducers';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { where } from '@data/query';

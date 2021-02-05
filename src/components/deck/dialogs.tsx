@@ -291,20 +291,20 @@ export function useCounterDialog({
   };
 }
 
-interface TextDialogOptions {
+interface SimpleTextDialogOptions {
   title: string;
   value: string;
   placeholder?: string;
   onValueChange?: (value: string) => void;
   onValidate?: (value: string) => Promise<string | undefined>;
 }
-export function useTextDialog({
+export function useSimpleTextDialog({
   title,
   value,
   onValueChange,
   onValidate,
   placeholder,
-}: TextDialogOptions): {
+}: SimpleTextDialogOptions): {
   dialog: React.ReactNode;
   showDialog: () => void;
 } {

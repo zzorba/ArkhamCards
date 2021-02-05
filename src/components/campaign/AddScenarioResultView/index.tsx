@@ -12,7 +12,6 @@ import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import { CampaignId, CampaignNotes, ScenarioResult } from '@actions/types';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { NavigationProps } from '@components/nav/types';
 import ScenarioSection from './ScenarioSection';
 import CampaignLogSection from '../CampaignLogSection';
@@ -25,16 +24,17 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignInvestigators, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import useTextEditDialog from '@components/core/useTextEditDialog';
 
 export interface AddScenarioResultProps {
   id: CampaignId;
 }
 
 type Props = NavigationProps &
-  AddScenarioResultProps &
-  InjectedDialogProps;
+  AddScenarioResultProps;
 
-function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
+function AddScenarioResultView({ componentId, id }: Props) {
+  const [dialog, showTextEditDialog] = useTextEditDialog();
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
@@ -183,6 +183,7 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
         ) }
         <View style={styles.footer} />
       </ScrollView>
+      { dialog }
     </View>
   );
 }
@@ -205,7 +206,7 @@ AddScenarioResultView.options = () => {
     },
   };
 };
-export default withDialogs(AddScenarioResultView);
+export default AddScenarioResultView;
 
 const styles = StyleSheet.create({
   container: {

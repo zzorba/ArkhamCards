@@ -78,10 +78,13 @@ function NewDialog({
             { children }
           </ScrollView>
           { (buttons.length > 0) && (
-            <View style={[styles.actionButtons, space.paddingBottomS, { flexDirection: verticalButtons ? 'column' : 'row' }]}>
+            <View style={[styles.actionButtons, space.paddingBottomS, {
+              flexDirection: verticalButtons ? 'column' : 'row',
+            }]}>
               { map(buttons, (button, idx) => {
                 return (
                   <View key={idx} style={[styles.button, (idx < buttons.length - 1) ? {
+                    flex: verticalButtons ? undefined : 1,
                     marginRight: !verticalButtons ? s : undefined,
                     marginBottom: verticalButtons ? s : undefined,
                   } : undefined]}>
@@ -137,13 +140,13 @@ const styles = StyleSheet.create({
     paddingRight: s,
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
+    flexDirection: 'column',
   },
   actionButtons: {
     justifyContent: 'center',
     alignItems: 'center',
   },
   button: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

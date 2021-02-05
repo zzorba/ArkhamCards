@@ -19,7 +19,6 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignDetails, useCampaignScenarios, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 import useTraumaDialog from '../useTraumaDialog';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { showAddScenarioResult, showChaosBagOddsCalculator, showDrawWeakness, showDrawChaosBag } from '@components/campaign/nav';
 import useTabView from '@components/core/useTabView';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
@@ -31,19 +30,20 @@ import space from '@styles/space';
 import CampaignSummaryHeader from '../CampaignSummaryHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import { useAlertDialog, useTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import CampaignGuideFab from '@components/campaignguide/CampaignGuideFab';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import Card from '@data/Card';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaignId } from '../hooks';
+import useTextEditDialog from '@components/core/useTextEditDialog';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
 }
 
-type Props = NavigationProps & CampaignDetailProps & InjectedDialogProps
+type Props = NavigationProps & CampaignDetailProps
 
 function ScenarioResultButton({ name, campaignId, componentId, status, index, onPress }: {
   name: string;
@@ -78,7 +78,8 @@ function ScenarioResultButton({ name, campaignId, componentId, status, index, on
 }
 
 function CampaignDetailView(props: Props) {
-  const { componentId, showTextEditDialog } = props;
+  const { componentId } = props;
+  const [textEditDialog, showTextEditDialog] = useTextEditDialog();
   const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
   const { backgroundStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -177,7 +178,7 @@ function CampaignDetailView(props: Props) {
       },
     });
   }, [campaignId, dispatch, user, componentId]);
-  const { dialog, showDialog: showEditNameDialog } = useTextDialog({
+  const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Name`,
     value: campaign?.name || '',
     onValueChange: updateCampaignName,
@@ -455,6 +456,7 @@ function CampaignDetailView(props: Props) {
       { alertDialog }
       { traumaDialog }
       { dialog }
+      { textEditDialog }
     </View>
   );
 }
@@ -468,7 +470,7 @@ CampaignDetailView.options = () => {
     },
   };
 };
-export default withDialogs(CampaignDetailView);
+export default CampaignDetailView;
 
 const styles = StyleSheet.create({
   flex: {

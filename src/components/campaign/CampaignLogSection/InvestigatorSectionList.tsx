@@ -8,7 +8,7 @@ import {
 import InvestigatorSectionRow from './InvestigatorSectionRow';
 import { InvestigatorNotes } from '@actions/types';
 import Card from '@data/Card';
-import { ShowTextEditDialog } from '@components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { s } from '@styles/space';
 
 interface Props {
