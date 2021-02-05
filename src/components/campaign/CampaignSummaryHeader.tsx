@@ -1,15 +1,11 @@
 import React, { useContext } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { CampaignCycleCode, CampaignDifficulty } from '@actions/types';
-import { campaignColor, difficultyString } from '@components/campaign/constants';
-import GameHeader from '@components/campaign/GameHeader';
-import BackgroundIcon from '@components/campaign/BackgroundIcon';
-import space, { m, s, xs } from '@styles/space';
+import { difficultyString } from '@components/campaign/constants';
+import space, { xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import EncounterIcon from '@icons/EncounterIcon';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import AppIcon from '@icons/AppIcon';
 
 interface Props {
   name: string;

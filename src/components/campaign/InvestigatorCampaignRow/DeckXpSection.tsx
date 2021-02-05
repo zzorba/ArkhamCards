@@ -2,10 +2,7 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { Deck } from '@actions/types';
-import PickerStyleButton from '@components/core/PickerStyleButton';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import { showDeckModal } from '@components/nav/helper';
 import Card, { CardsMap } from '@data/Card';
 import { AppState, makeDeckSelector } from '@reducers';

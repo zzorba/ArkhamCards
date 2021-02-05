@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useRef, useState } from 'react';
 import Carousel from 'react-native-snap-carousel';
 import { findIndex } from 'lodash';
 

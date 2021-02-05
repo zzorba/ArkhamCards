@@ -443,7 +443,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         },
       });
     }
-  }, [deckIds, investigatorIds, deckAdded, investigatorAdded, guided]);
+  }, [deckIds, investigatorIds, deckAdded, investigatorAdded]);
   const { dialog, showDialog } = useSimpleTextDialog({
     title: t`Name`,
     placeholder: placeholderName,
