@@ -15,7 +15,7 @@ import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import space from '@styles/space';
+import space, { s } from '@styles/space';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useEffectUpdate, useFlag } from '@components/core/hooks';
 import AppIcon from '@icons/AppIcon';
@@ -174,7 +174,7 @@ export default function InvestigatorCampaignRow({
   return (
     <View style={space.marginBottomS}>
       <TouchableWithoutFeedback onPress={toggleOpen}>
-        <RoundedFactionHeader faction={investigator.factionCode()} width={width} fullRound={!open}>
+        <RoundedFactionHeader faction={investigator.factionCode()} width={width - s * 2} fullRound={!open}>
           <View style={[styles.row, space.paddingLeftXs]}>
             <InvestigatorImage card={investigator} size="tiny" border yithian={yithian} />
             <View style={[space.paddingLeftXs, styles.textColumn]}>

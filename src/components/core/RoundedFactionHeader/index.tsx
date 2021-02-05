@@ -53,7 +53,7 @@ function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound
         backgroundColor: color,
         borderColor: color,
       },
-    ]} removeClippedSubviews>
+    ]}>
       <FactionPattern faction={faction} width={width} height={30 + 18 * fontScale} />
       { children }
     </View>
