@@ -12,11 +12,13 @@ import NotesSection from './NotesSection';
 import space, { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import { ShowCountDialog } from '@components/deck/dialogs';
 
 interface Props {
   campaignNotes: CampaignNotes;
   updateCampaignNotes: (campaignNotes: CampaignNotes) => void;
   showTextEditDialog: ShowTextEditDialog;
+  showCountDialog: ShowCountDialog;
   showAddSectionDialog: (
     addSection: (
       name: string,
@@ -33,6 +35,7 @@ export default function CampaignLogSection(props: Props) {
     updateCampaignNotes,
     showTextEditDialog,
     showAddSectionDialog,
+    showCountDialog,
     allInvestigators,
   } = props;
   const delayedUpdateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
@@ -115,8 +118,11 @@ export default function CampaignLogSection(props: Props) {
   }, [campaignNotes.sections, notesChanged, showTextEditDialog]);
 
   const countsSection = useMemo(() => {
+    if (campaignNotes.counts.length === 0) {
+      return null;
+    }
     return (
-      <>
+      <View style={space.paddingSideS}>
         { map(campaignNotes.counts, (section, idx) => (
           <EditCountComponent
             key={idx}
@@ -124,11 +130,14 @@ export default function CampaignLogSection(props: Props) {
             title={section.title}
             count={section.count || 0}
             countChanged={countChanged}
+            showCountDialog={showCountDialog}
+            first={idx === 0}
+            last={idx === campaignNotes.counts.length - 1}
           />
         )) }
-      </>
+      </View>
     );
-  }, [campaignNotes.counts, countChanged]);
+  }, [campaignNotes.counts, countChanged, showCountDialog]);
 
   const investigatorSection = useMemo(() => {
     const investigatorNotes = campaignNotes.investigatorNotes;
@@ -138,9 +147,10 @@ export default function CampaignLogSection(props: Props) {
         investigatorNotes={investigatorNotes}
         updateInvestigatorNotes={updateInvestigatorNotes}
         showDialog={showTextEditDialog}
+        showCountDialog={showCountDialog}
       />
     );
-  }, [campaignNotes.investigatorNotes, allInvestigators, showTextEditDialog, updateInvestigatorNotes]);
+  }, [campaignNotes.investigatorNotes, allInvestigators, showTextEditDialog, showCountDialog, updateInvestigatorNotes]);
   return (
     <View style={styles.underline}>
       { notesSection }

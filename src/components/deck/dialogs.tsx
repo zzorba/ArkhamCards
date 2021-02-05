@@ -693,7 +693,9 @@ interface CountDialogOptions {
   max?: number;
 }
 
-export function useCountDialog(): [React.ReactNode, (options: CountDialogOptions) => void] {
+export type ShowCountDialog = (options: CountDialogOptions) => void;
+
+export function useCountDialog(): [React.ReactNode, ShowCountDialog] {
   const [state, setState] = useState<CountDialogOptions | undefined>();
   const [value, inc, dec, setValue] = useCounter(state?.value || 0, { min: state?.min, max: state?.max });
   const saveChanges = useCallback(() => {
@@ -712,12 +714,13 @@ export function useCountDialog(): [React.ReactNode, (options: CountDialogOptions
             onDecrement={dec}
             count={value}
             dialogStyle
-            allowNegative
+            allowNegative={(state?.min || 0) < 0}
+            showZeroCount
           />
         )}
       />
     );
-  }, [inc, dec, value, label]);
+  }, [inc, dec, value, label, state]);
 
   const { setVisible, dialog } = useDialog({
     title: state?.title || '',

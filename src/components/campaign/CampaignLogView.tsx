@@ -11,6 +11,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { updateCampaign } from './actions';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from './AddCampaignNoteSectionDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
+import { useCountDialog } from '@components/deck/dialogs';
 
 export interface CampaignLogViewProps {
   campaignId: CampaignId;
@@ -18,6 +19,7 @@ export interface CampaignLogViewProps {
 
 export default function CampaignLogView({ campaignId }: CampaignLogViewProps) {
   const [dialog, showTextEditDialog] = useTextEditDialog();
+  const [countDialog, showCountDialog] = useCountDialog();
   const { backgroundStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(campaignId);
@@ -50,6 +52,7 @@ export default function CampaignLogView({ campaignId }: CampaignLogViewProps) {
           allInvestigators={allInvestigators}
           updateCampaignNotes={updateCampaignNotes}
           showTextEditDialog={showTextEditDialog}
+          showCountDialog={showCountDialog}
           showAddSectionDialog={showAddSectionDialog}
         />
       </ScrollView>
@@ -59,6 +62,7 @@ export default function CampaignLogView({ campaignId }: CampaignLogViewProps) {
         hide={hideAddSectionDialog}
       />
       { dialog }
+      { countDialog }
     </View>
   );
 }

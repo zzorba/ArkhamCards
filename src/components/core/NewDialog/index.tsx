@@ -83,11 +83,15 @@ function NewDialog({
             }]}>
               { map(buttons, (button, idx) => {
                 return (
-                  <View key={idx} style={[styles.button, (idx < buttons.length - 1) ? {
-                    flex: verticalButtons ? undefined : 1,
-                    marginRight: !verticalButtons ? s : undefined,
-                    marginBottom: verticalButtons ? s : undefined,
-                  } : undefined]}>
+                  <View key={idx} style={[
+                    styles.button,
+                    {
+                      flex: verticalButtons ? undefined : 1,
+                    },
+                    (idx < buttons.length - 1) ? {
+                      marginRight: !verticalButtons ? s : undefined,
+                      marginBottom: verticalButtons ? s : undefined,
+                    } : undefined]}>
                     { button }
                   </View>
                 );

@@ -13,11 +13,12 @@ import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { makeAllCyclePacksSelector, getAllStandalonePacks, makePackSelector, AppState } from '@reducers';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { where } from '@data/query';
+import space from '@styles/space';
 import { useCycleScenarios } from '@components/core/hooks';
 import { usePickerDialog } from '@components/deck/dialogs';
-import PickerStyleButton from '@components/core/PickerStyleButton';
 import { QuerySort } from '@data/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 
 interface OwnProps {
   componentId: string;
@@ -29,7 +30,7 @@ interface OwnProps {
 const SCENARIO_QUERY = where('c.type_code = "scenario"');
 const SCENARIO_SORT: QuerySort[] = [{ s: 'c.position', direction: 'ASC' }];
 
-export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps) {
+export default function ScenarioSection({ campaign, scenarioChanged, showTextEditDialog }: OwnProps) {
   const [allScenarioCards, loading] = useCardsFromQuery({
     query: SCENARIO_QUERY,
     sort: SCENARIO_SORT,
@@ -122,39 +123,50 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
   const customScenarioTextChanged = useCallback((value?: string) => {
     setCustomScenario(value || '');
   }, [setCustomScenario]);
+  const showCustomScenarioDialog = useCallback(() => {
+    showTextEditDialog(t`Scenario name`, customScenario || '', customScenarioTextChanged);
+  }, [showTextEditDialog, customScenario, customScenarioTextChanged]);
   const resolutionChanged = useCallback((value?: string) => {
     setResolution(value || '');
   }, [setResolution]);
+  const showResolutionDialog = useCallback(() => {
+    showTextEditDialog(t`Resolution`, resolution || '', resolutionChanged);
+  }, [showTextEditDialog, resolution, resolutionChanged]);
 
   return (
-    <View>
+    <View style={space.paddingSideS}>
       { dialog }
       <SettingsSwitch
         title={t`Show Interludes`}
         value={showInterludes}
         onValueChange={toggleShowInterludes}
         settingsStyle
+        last
       />
-      <PickerStyleButton
-        id="scenario"
+      <DeckPickerStyleButton
+        icon="book"
         title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}
-        value={selectedScenario === CUSTOM ? t`Custom` : selectedScenario.name}
+        valueLabel={selectedScenario === CUSTOM ? t`Custom` : selectedScenario.name}
+        editable
+        first
         onPress={showDialog}
       />
       { selectedScenario === CUSTOM && (
-        <EditText
+        <DeckPickerStyleButton
+          icon="name"
           title={t`Name`}
-          placeholder={t`(required)`}
-          onValueChange={customScenarioTextChanged}
-          value={customScenario}
+          valueLabel={customScenario || t`(required)`}
+          onPress={showCustomScenarioDialog}
+          editable
         />
       ) }
       { (selectedScenario === CUSTOM || !selectedScenario.interlude) && (
-        <EditText
+        <DeckPickerStyleButton
+          icon="check-thin"
           title={t`Resolution`}
-          placeholder={t`(required)`}
-          onValueChange={resolutionChanged}
-          value={resolution}
+          valueLabel={resolution || t`(required)`}
+          onPress={showResolutionDialog}
+          editable
         />
       ) }
     </View>

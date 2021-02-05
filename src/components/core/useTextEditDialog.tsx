@@ -25,10 +25,6 @@ export type ShowTextEditDialog = (
   onSaveAndAdd?: (text: string) => void,
 ) => void;
 
-export interface InjectedDialogProps {
-  showTextEditDialog: ShowTextEditDialog;
-}
-
 interface ActiveState {
   title: string;
   text: string;
@@ -37,7 +33,6 @@ interface ActiveState {
   numberOfLines: number;
   onSaveAndAdd?: (text: string) => void;
 }
-
 
 function useAdvancedTextEditDialog({
   title,

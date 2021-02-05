@@ -19,7 +19,7 @@ import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/na
 import { campaignNames, completedScenario } from '../constants';
 import space, { s } from '@styles/space';
 import CampaignSummaryHeader from '../CampaignSummaryHeader';
-import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import Card from '@data/Card';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
@@ -80,6 +80,7 @@ function ScenarioResultButton({ name, campaignId, componentId, status, index, on
 function CampaignDetailView(props: Props) {
   const { componentId } = props;
   const [textEditDialog, showTextEditDialog] = useTextEditDialog();
+  const [countDialog, showCountDialog] = useCountDialog();
   const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
   const { backgroundStyle, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -368,6 +369,7 @@ function CampaignDetailView(props: Props) {
               <DecksSection
                 showAlert={showAlert}
                 showTextEditDialog={showTextEditDialog}
+                showCountDialog={showCountDialog}
                 componentId={componentId}
                 campaign={campaign}
                 campaignId={campaignId}
@@ -447,6 +449,7 @@ function CampaignDetailView(props: Props) {
       { dialog }
       { textEditDialog }
       { chaosBagDialog }
+      { countDialog }
     </View>
   );
 }

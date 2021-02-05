@@ -15,7 +15,7 @@ import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { ShowAlert } from '@components/deck/dialogs';
+import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import { getDeck } from '@reducers';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import InvestigatorSectionRow from '../CampaignLogSection/InvestigatorSectionRow';
@@ -38,6 +38,7 @@ interface Props {
   showXpDialog: (investigator: Card) => void;
   showAlert: ShowAlert;
   showTextEditDialog: ShowTextEditDialog;
+  showCountDialog: ShowCountDialog;
 }
 
 const EMPTY_TRAUMA_DATA: TraumaAndCardData = {};
@@ -57,6 +58,7 @@ export default function DecksSection({
   showChooseDeck,
   showAlert,
   showTextEditDialog,
+  showCountDialog,
 }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const removeDeckPrompt = useCallback((investigator: Card) => {
@@ -161,12 +163,13 @@ export default function DecksSection({
           investigatorNotes={campaign.campaignNotes.investigatorNotes}
           updateInvestigatorNotes={updateInvestigatorNotes}
           showDialog={showTextEditDialog}
+          showCountDialog={showCountDialog}
           inline
         />
       </InvestigatorCampaignRow>
     );
   }, [componentId, campaign.campaignNotes.investigatorNotes, campaignId, campaign.investigatorData, cards,
-    showTextEditDialog, updateInvestigatorNotes,
+    showTextEditDialog, updateInvestigatorNotes, showCountDialog,
     showTraumaDialog, showXpDialog, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator]);
 
   const latestDecks: Deck[] = useMemo(() => flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || []), [latestDeckIds, decks]);

@@ -19,12 +19,13 @@ import XpComponent from '../XpComponent';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
 import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
-import { m } from '@styles/space';
+import space, { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignInvestigators, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
+import { useCountDialog } from '@components/deck/dialogs';
 
 export interface AddScenarioResultProps {
   id: CampaignId;
@@ -35,6 +36,7 @@ type Props = NavigationProps &
 
 function AddScenarioResultView({ componentId, id }: Props) {
   const [dialog, showTextEditDialog] = useTextEditDialog();
+  const [countDialog, showCountDialog] = useCountDialog();
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
@@ -155,8 +157,12 @@ function AddScenarioResultView({ componentId, id }: Props) {
       />
       <ScrollView style={styles.flex} contentContainerStyle={styles.container}>
         { scenariosSection }
-        <View style={[styles.bottomBorder, borderStyle]}>
-          <XpComponent xp={xp} onChange={setXp} />
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
+          <XpComponent
+            xp={xp}
+            onChange={setXp}
+            showCountDialog={showCountDialog}
+          />
         </View>
         { hasDecks && (
           <BasicButton
@@ -178,12 +184,14 @@ function AddScenarioResultView({ componentId, id }: Props) {
             allInvestigators={allInvestigators}
             updateCampaignNotes={setCampaignNotes}
             showTextEditDialog={showTextEditDialog}
+            showCountDialog={showCountDialog}
             showAddSectionDialog={showAddSectionDialog}
           />
         ) }
         <View style={styles.footer} />
       </ScrollView>
       { dialog }
+      { countDialog }
     </View>
   );
 }

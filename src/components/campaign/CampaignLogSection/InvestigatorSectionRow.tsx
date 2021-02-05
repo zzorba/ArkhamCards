@@ -14,12 +14,14 @@ import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
+import { ShowCountDialog } from '@components/deck/dialogs';
 
 interface Props {
   investigator: Card;
   updateInvestigatorNotes: (investigatorNotes: InvestigatorNotes) => void;
   investigatorNotes: InvestigatorNotes;
   showDialog: ShowTextEditDialog;
+  showCountDialog: ShowCountDialog;
   inline?: boolean;
 }
 
@@ -28,6 +30,7 @@ export default function InvestigatorSectionRow({
   updateInvestigatorNotes,
   investigatorNotes,
   showDialog,
+  showCountDialog,
   inline,
 }: Props) {
   const { borderStyle } = useContext(StyleContext);
@@ -67,8 +70,11 @@ export default function InvestigatorSectionRow({
   }, [investigator, investigatorNotes.sections, notesChanged, showDialog, borderStyle, hasCounts]);
 
   const countsSection = useMemo(() => {
+    if (investigatorNotes.counts.length === 0) {
+      return null;
+    }
     return (
-      <View>
+      <View style={[space.paddingTopS, space.paddingBottomS]}>
         { map(investigatorNotes.counts, (section, idx) => {
           return (
             <EditCountComponent
@@ -77,13 +83,15 @@ export default function InvestigatorSectionRow({
               title={section.title}
               count={section.counts[investigator.code] || 0}
               countChanged={countChanged}
+              showCountDialog={showCountDialog}
+              first={idx === 0}
               last={idx === investigatorNotes.counts.length - 1}
             />
           );
         }) }
       </View>
     );
-  }, [investigator, investigatorNotes.counts, countChanged]);
+  }, [investigator, investigatorNotes.counts, showCountDialog, countChanged]);
   const faction = investigator.factionCode();
   if (investigatorNotes.sections.length === 0 && investigatorNotes.counts.length === 0) {
     return null;
