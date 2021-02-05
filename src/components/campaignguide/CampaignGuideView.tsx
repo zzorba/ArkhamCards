@@ -8,8 +8,6 @@ import CampaignGuideSummary from './CampaignGuideSummary';
 import { Campaign, CampaignId } from '@actions/types';
 import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
-import ScenarioListComponent from '@components/campaignguide/ScenarioListComponent';
-import useTabView from '@components/core/useTabView';
 import { updateCampaign } from '@components/campaign/actions';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
@@ -66,8 +64,22 @@ function CampaignGuideView(props: Props) {
   const { campaignGuide, campaignState } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
-  const decksTab = useMemo(() => {
+  const logTab = useMemo(() => {
     return (
+      <View style={[styles.wrapper, backgroundStyle]}>
+        <ScrollView contentContainerStyle={backgroundStyle}>
+          <CampaignLogComponent
+            campaignId={campaignId}
+            campaignGuide={campaignGuide}
+            campaignLog={processedCampaign.campaignLog}
+            componentId={componentId}
+          />
+        </ScrollView>
+      </View>
+    );
+  }, [backgroundStyle, campaignId, campaignGuide, processedCampaign.campaignLog, componentId]);
+  return (
+    <View style={styles.wrapper}>
       <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
         <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
           <View style={[space.paddingSideS, space.paddingBottomS]}>
@@ -93,60 +105,6 @@ function CampaignGuideView(props: Props) {
           </View>
         </ScrollView>
       </SafeAreaView>
-    );
-  }, [componentId, backgroundStyle, campaignData, processedCampaign, campaignGuide,
-    saveCampaignUpdate, showTraumaDialog, showAlert,
-  ]);
-  const scenariosTab = useMemo(() => {
-    return (
-      <View style={[styles.wrapper, backgroundStyle]}>
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <ScenarioListComponent
-            showAlert={showAlert}
-            campaignId={campaignId}
-            campaignData={campaignData}
-            processedCampaign={processedCampaign}
-            componentId={componentId}
-          />
-        </ScrollView>
-      </View>
-    );
-  }, [backgroundStyle, campaignData, campaignId, processedCampaign, componentId, showAlert]);
-  const logTab = useMemo(() => {
-    return (
-      <View style={[styles.wrapper, backgroundStyle]}>
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <CampaignLogComponent
-            campaignId={campaignId}
-            campaignGuide={campaignGuide}
-            campaignLog={processedCampaign.campaignLog}
-            componentId={componentId}
-          />
-        </ScrollView>
-      </View>
-    );
-  }, [backgroundStyle, campaignId, campaignGuide, processedCampaign.campaignLog, componentId]);
-  const tabs = useMemo(() => [
-    {
-      key: 'investigators',
-      title: t`Decks`,
-      node: decksTab,
-    },
-    {
-      key: 'scenarios',
-      title: t`Scenarios`,
-      node: scenariosTab,
-    },
-    {
-      key: 'log',
-      title: t`Log`,
-      node: logTab,
-    },
-  ], [decksTab, scenariosTab, logTab]);
-  const [tabView, setSelectedTab] = useTabView({ tabs });
-  return (
-    <View style={styles.wrapper}>
-      { tabView }
       <CampaignGuideFab
         setCampaignServerId={setCampaignServerId}
         campaignId={campaignData.campaignId}

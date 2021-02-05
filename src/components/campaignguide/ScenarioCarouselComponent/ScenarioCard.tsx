@@ -3,7 +3,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { t } from 'ttag';
 
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
-import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import DeckButton from '@components/deck/controls/DeckButton';
 import AppIcon from '@icons/AppIcon';
@@ -12,14 +11,17 @@ import space, { m } from '@styles/space';
 import AddSideScenarioButton from './AddSideScenarioButton';
 import { ShowAlert } from '@components/deck/dialogs';
 
-export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario}: {
+interface Props {
   componentId: string;
   scenario: ProcessedScenario;
   showScenario: (scenario: ProcessedScenario) => void;
   processedCampaign: ProcessedCampaign;
   showAlert: ShowAlert;
-}) {
-  const { colors, shadow, typography, width } = useContext(StyleContext);
+  last?: boolean;
+}
+
+export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, last }: Props) {
+  const { colors, shadow, typography } = useContext(StyleContext);
   const [scenarioNumber, scenarioName] = useMemo(() => {
     const fullScenarioName = scenario.scenarioGuide.fullScenarioName();
     const splitPoint = fullScenarioName.indexOf(':');
@@ -95,7 +97,14 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
     }
   }, [onPress, scenario.type, typography, light, color, componentId, processedCampaign, showAlert]);
   return (
-    <View style={[space.paddingM, space.marginBottomM, styles.card, { backgroundColor: background }, shadow.large]}>
+    <View style={[
+      space.paddingM,
+      space.marginBottomM,
+      styles.card,
+      { backgroundColor: background },
+      shadow.large,
+      last ? space.marginRightM : undefined,
+    ]}>
       <Text style={[typography.small, typography.italic, { color: light }]}>
         { scenarioNumber.trim() }
       </Text>
@@ -125,6 +134,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    maxWidth: '75%',
+    marginRight: 80 + m,
   },
 });

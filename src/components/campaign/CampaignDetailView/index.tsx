@@ -29,7 +29,6 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import DeleteCampaignButton from '../DeleteCampaignButton';
 import { CampaignLogViewProps } from '../CampaignLogView';
 import { CampaignScenariosViewProps } from '../CampaignScenariosView';
-import { CampaignChaosBagProps } from '../CampaignChaosBagView';
 import UploadCampaignButton from '../UploadCampaignButton';
 import ArkhamButton from '@components/core/ArkhamButton';
 import CampaignScenarioButton from '../CampaignScenarioButton';
@@ -37,6 +36,8 @@ import { EditScenarioResultProps } from '../EditScenarioResultView';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
+import useChaosBagDialog from './useChaosBagDialog';
+import useTextEditDialog from '@components/core/useTextEditDialog';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
@@ -78,6 +79,7 @@ function ScenarioResultButton({ name, campaignId, componentId, status, index, on
 
 function CampaignDetailView(props: Props) {
   const { componentId } = props;
+  const [textEditDialog, showTextEditDialog] = useTextEditDialog();
   const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
   const { backgroundStyle, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -282,26 +284,6 @@ function CampaignDetailView(props: Props) {
       },
     });
   }, [componentId, campaignId]);
-  const showChaosBag = useCallback(() => {
-    Navigation.push<CampaignChaosBagProps>(componentId, {
-      component: {
-        name: 'Campaign.ChaosBag',
-        passProps: {
-          campaignId,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos Bag`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, campaignId]);
   const showScenarios = useCallback(() => {
     Navigation.push<CampaignScenariosViewProps>(componentId, {
       component: {
@@ -328,7 +310,7 @@ function CampaignDetailView(props: Props) {
   const addScenarioResultPressed = useCallback(() => {
     showAddScenarioResult(componentId, campaignId);
   }, [campaignId, componentId]);
-
+  const [chaosBagDialog, showChaosBag] = useChaosBagDialog({ componentId, allInvestigators, campaignId, chaosBag: campaign?.chaosBag || {} });
   if (!campaign) {
     return (
       <View>
@@ -345,7 +327,7 @@ function CampaignDetailView(props: Props) {
     <View style={[styles.flex, backgroundStyle]}>
       <View style={[styles.flex, backgroundStyle]}>
         <ScrollView contentContainerStyle={backgroundStyle}>
-          <View style={[space.paddingSideS]}>
+          <View style={space.paddingSideS}>
             <CampaignSummaryHeader
               name={campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode]}
               cycle={campaign.cycleCode}
@@ -386,6 +368,7 @@ function CampaignDetailView(props: Props) {
             { !!cards && (
               <DecksSection
                 showAlert={showAlert}
+                showTextEditDialog={showTextEditDialog}
                 componentId={componentId}
                 campaign={campaign}
                 campaignId={campaignId}
@@ -465,6 +448,7 @@ function CampaignDetailView(props: Props) {
       { xpDialog }
       { dialog }
       { textEditDialog }
+      { chaosBagDialog }
     </View>
   );
 }

@@ -20,6 +20,7 @@ interface Props {
   updateInvestigatorNotes: (investigatorNotes: InvestigatorNotes) => void;
   investigatorNotes: InvestigatorNotes;
   showDialog: ShowTextEditDialog;
+  inline?: boolean;
 }
 
 export default function InvestigatorSectionRow({
@@ -27,6 +28,7 @@ export default function InvestigatorSectionRow({
   updateInvestigatorNotes,
   investigatorNotes,
   showDialog,
+  inline,
 }: Props) {
   const { borderStyle } = useContext(StyleContext);
   const notesChanged = useCallback((index: number, notes: string[]) => {
@@ -85,6 +87,14 @@ export default function InvestigatorSectionRow({
   const faction = investigator.factionCode();
   if (investigatorNotes.sections.length === 0 && investigatorNotes.counts.length === 0) {
     return null;
+  }
+  if (inline) {
+    return (
+      <>
+        { notesSection }
+        { countsSection }
+      </>
+    );
   }
   return (
     <View style={space.paddingBottomS}>

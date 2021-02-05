@@ -392,7 +392,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'tdeb':
         return this.dreamIcon('agents_of_atlach_nacha', size, color);
       case 'tdea':
-        return this.dreamIcon('the_search_for_kadath', size, color);
+        return this.dreamIcon('dreamers_curse', size, color);
       case 'tde':
       case 'the_dream_eaters':
         return this.dreamIcon('dream', size, color);

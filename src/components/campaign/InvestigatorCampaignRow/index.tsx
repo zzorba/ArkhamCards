@@ -39,6 +39,8 @@ interface Props {
   // For legacy system
   showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
   showTraumaDialog?: (investigator: Card, traumaData: TraumaAndCardData) => void;
+
+  children?: React.ReactNode;
 }
 
 function StoryAssetRow({ code, onCardPress, last }: { code: string; last: boolean; onCardPress: (card: Card) => void }) {
@@ -70,6 +72,7 @@ export default function InvestigatorCampaignRow({
   removeInvestigator,
   showDeckUpgrade,
   showTraumaDialog,
+  children,
 }: Props) {
   const { colors, typography, width } = useContext(StyleContext);
   const onCardPress = useCallback((card: Card) => {
@@ -209,7 +212,12 @@ export default function InvestigatorCampaignRow({
                 onPress={onTraumaPress}
               />
             </View>
-            { eliminated ? undefined : storyAssetSection }
+            { eliminated ? undefined : (
+              <>
+                { storyAssetSection }
+                { children }
+              </>
+            ) }
           </View>
           <RoundedFooterDoubleButton
             onPressA={deck ? viewDeck : selectDeck}

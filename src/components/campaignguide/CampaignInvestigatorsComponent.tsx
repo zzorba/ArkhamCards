@@ -39,8 +39,8 @@ function getDate(date: string | Date) {
 export default function CampaignInvestigatorsComponent(props: Props) {
   const { componentId, campaignData, processedCampaign, updateCampaign, showTraumaDialog, showAlert } = props;
   const { campaignState, latestDecks, campaignInvestigators, campaignId, playerCards } = useContext(CampaignGuideContext);
-  const { borderStyle, typography } = useContext(StyleContext);
-  const [spentXp, incSpentXp, decSpentXp] = useCounters(mapValues(campaignData.adjustedInvestigatorData, data => (data && data.spentXp) || 0));
+  const { typography } = useContext(StyleContext);
+  const [spentXp] = useCounters(mapValues(campaignData.adjustedInvestigatorData, data => (data && data.spentXp) || 0));
   const [xpDirty, setXpDirty] = useState(false);
   useEffectUpdate(() => {
     setXpDirty(true);

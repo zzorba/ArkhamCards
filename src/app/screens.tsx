@@ -49,7 +49,6 @@ function getStandardComponent(componentName: string | number) {
     case 'Guide.CardSelector': return require('@components/campaignguide/CardSelectorView').default;
     case 'Friends': return require('@components/settings/FriendsView').default;
     case 'Campaign.UpgradeDecks': return require('@components/campaign/UpgradeDecksView').default;
-    case 'Campaign.ChaosBag': return require('@components/campaign/CampaignChaosBagView').default;
     case 'Campaign.EditResult': return require('@components/campaign/EditScenarioResultView').default;
     case 'Campaign.DrawChaosBag': return require('@components/campaign/CampaignDrawChaosBagView').default;
     case 'OddsCalculator': return require('@components/campaign/OddsCalculatorView').default;

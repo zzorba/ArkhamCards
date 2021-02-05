@@ -19,7 +19,7 @@ export interface CampaignDrawChaosBagProps {
 
 type Props = NavigationProps & CampaignDrawChaosBagProps;
 
-function CampaignChaosBagView({ componentId, campaignId, updateChaosBag }: Props) {
+function CampaignDrawChaosBagView({ componentId, campaignId, updateChaosBag }: Props) {
   const chaosBagSelector = useMemo(makeCampaignChaosBagSelector, []);
   const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId.campaignId));
 
@@ -65,7 +65,7 @@ function CampaignChaosBagView({ componentId, campaignId, updateChaosBag }: Props
   );
 }
 
-CampaignChaosBagView.options = (): Options => {
+CampaignDrawChaosBagView.options = (): Options => {
   return {
     topBar: {
       rightButtons: [{
@@ -79,4 +79,4 @@ CampaignChaosBagView.options = (): Options => {
   };
 };
 
-export default CampaignChaosBagView;
+export default CampaignDrawChaosBagView;

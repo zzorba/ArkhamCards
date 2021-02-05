@@ -18,6 +18,15 @@ interface Props {
   showAlert: ShowAlert;
 }
 
+function getActiveIndex(scenarios: ProcessedScenario[]) {
+  const index = findIndex(scenarios, s =>
+    s.type === 'playable' || s.type === 'started' || s.type === 'placeholder');
+  if (index !== -1) {
+    return index;
+  }
+  return scenarios.length - 1;
+}
+
 export default function ScenarioCarouselComponent({
   componentId,
   processedCampaign,
@@ -49,17 +58,15 @@ export default function ScenarioCarouselComponent({
     if (visible) {
       if (scenarioPressed.current) {
         scenarioPressed.current = false;
-        const scenarioIndex = findIndex(processedCampaign.scenarios, s =>
-          s.type === 'playable' || s.type === 'started' || s.type === 'placeholder');
         if (carousel.current) {
-          carousel.current.snapToItem(scenarioIndex);
+          carousel.current.snapToItem(getActiveIndex(processedCampaign.scenarios));
         }
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
-  const [selectedIndex, setIndex] = useState(findIndex(processedCampaign.scenarios, s =>
-    s.type === 'playable' || s.type === 'started' || s.type === 'placeholder'));
+  const [selectedIndex, setIndex] = useState(getActiveIndex(processedCampaign.scenarios));
+  const numScenarios = processedCampaign.scenarios.length;
   const renderScenario = useCallback(({ item, index }: { item: ProcessedScenario; index: number; dataIndex: number }) => {
     return (
       <ScenarioCard
@@ -69,9 +76,10 @@ export default function ScenarioCarouselComponent({
         showAlert={showAlert}
         processedCampaign={processedCampaign}
         componentId={componentId}
+        last={index === numScenarios - 1}
       />
     );
-  }, [onShowScenario, showAlert, processedCampaign, componentId]);
+  }, [onShowScenario, showAlert, processedCampaign, componentId, numScenarios]);
   return (
     <Carousel
       ref={carousel}
@@ -80,7 +88,6 @@ export default function ScenarioCarouselComponent({
       sliderWidth={width}
       contentContainerCustomStyle={space.paddingSideS}
       firstItem={selectedIndex}
-      shouldOptimizeUpdates
       useExperimentalSnap
       disableIntervalMomentum
       data={processedCampaign.scenarios}
