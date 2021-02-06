@@ -116,7 +116,7 @@ export default function AddSideScenarioButton({ componentId, processedCampaign, 
           <View style={space.paddingRightS}>
             <AppIcon name="plus" size={20} color={colors.D10} />
           </View>
-          <Text style={[typography.button, typography.italic, { color: colors.D10 }, space.marginTopXs]}>{t`Insert standalone`}</Text>
+          <Text style={[typography.button, typography.italic, { color: colors.D10 }, space.marginTopXs]}>{t`Add side scenario`}</Text>
         </View>
       </TouchableOpacity>
     </View>

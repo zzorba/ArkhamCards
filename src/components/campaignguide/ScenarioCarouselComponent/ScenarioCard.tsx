@@ -25,11 +25,14 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
   const [scenarioNumber, scenarioName] = useMemo(() => {
     const fullScenarioName = scenario.scenarioGuide.fullScenarioName();
     const splitPoint = fullScenarioName.indexOf(':');
-    return [
-      fullScenarioName.substr(0, splitPoint),
-      fullScenarioName.substr(splitPoint + 1),
-    ];
-  }, [scenario.scenarioGuide]);
+    const tag = fullScenarioName.substr(0, splitPoint).trim();
+    const scenarioName = fullScenarioName.substr(splitPoint + 1).trim();
+    if (scenario.id.replayAttempt) {
+      const attempt = scenario.id.replayAttempt;
+      return [tag, t`${ scenarioName } (Attempt ${ attempt })`];
+    }
+    return [tag, scenarioName];
+  }, [scenario.scenarioGuide, scenario.id]);
   const onPress = useCallback(() => {
     showScenario(scenario);
   }, [showScenario, scenario]);

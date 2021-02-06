@@ -43,7 +43,7 @@ export default function DeleteCampaignButton({ componentId, campaignId, campaign
     );
   }, [campaignName, actuallyDeleteCampaign, showAlert]);
   return (
-    <TouchableOpacity onPress={confirmDeleteCampaign} accessibilityLabel={t`Delete`}>
+    <TouchableOpacity onPress={confirmDeleteCampaign} accessibilityLabel={t`Delete campaign`}>
       <View style={space.paddingXs}>
         <AppIcon name="dismiss" color={colors.warn} size={18} />
       </View>

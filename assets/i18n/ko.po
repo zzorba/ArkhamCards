@@ -1109,19 +1109,15 @@ msgstr "장수가 제한된 카드가 너무 많습니다."
 msgid "Doesn't comply with the Investigator requirements."
 msgstr "조사자 덱 구성 제한을 만족하지 않습니다."
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Note: This entry is crossed out"
 msgstr "참고: 이 항목은 X표 되어있습니다"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Uncross Out"
 msgstr "X표 해제"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Cross Out"
 msgstr "X표 하기"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Add Another"
 msgstr "다른 것 추가"
 
@@ -1408,9 +1404,6 @@ msgstr "정말로 캠페인을 삭제하시겠습니까?: ${ campaignName }"
 msgid "Scenarios"
 msgstr "시나리오"
 
-msgid "Log"
-msgstr "기록지"
-
 msgid "Show story assets from other campaigns"
 msgstr "다른 캠페인의 이야기 자산 보기"
 
@@ -1515,9 +1508,6 @@ msgstr "닫기"
 
 msgid "Choose Investigators"
 msgstr "조사자 선택"
-
-msgid "View deck upgrade"
-msgstr "향상 덱 보기"
 
 msgid "Campaign cards"
 msgstr "캠페인 카드"
@@ -1772,9 +1762,6 @@ msgstr "확률 계산기"
 msgid "Remove deck"
 msgstr "덱 삭제"
 
-msgid "Remove investigator"
-msgstr "조사자 삭제"
-
 msgid "Trauma"
 msgstr "트라우마"
 
@@ -1809,14 +1796,8 @@ msgstr ""
 "\n"
 "그러나, 캠페인의 추후 시나리오에서 참가하지 않기로 선택할 수는 있습니다."
 
-msgid "Remove investigators"
-msgstr "조사자 제거"
-
 msgid "Add Investigator"
 msgstr "조사자 추가"
-
-msgid "Finished removing investigators"
-msgstr "조사자 제거가 완료되었습니다"
 
 msgid "Killed and Insane Investigators"
 msgstr "사망하거나 미친 조사자"
@@ -2655,9 +2636,6 @@ msgstr ""
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
 msgstr "${ spentXp }/${ totalXp } 소비됨"
-
-msgid "Edit Trauma"
-msgstr "트라우마 수정"
 
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
@@ -3841,15 +3819,6 @@ msgstr "업적"
 msgid "Upload campaign"
 msgstr "캠페인 업로드"
 
-msgid "Add investigators"
-msgstr "조사자 추가"
-
-msgid "Add investigator to which campaign?"
-msgstr "어느 캠페인에 조사자를 추가하시겠습니까?"
-
-msgid "Which campaign would you like to add an investigator to?"
-msgstr "조사자를 추가하기를 원하는 캠페인이 무엇입니까?"
-
 msgid "Can't add side scenario right now."
 msgstr "외전을 지금 추가할 수는 없습니다."
 
@@ -3863,17 +3832,8 @@ msgstr "향상 저장"
 msgid "Sorry, you don't seem to be a Mythos Buster patron."
 msgstr "죄송하지만, Mythos Buster 후원자가 아닌 것으로 보입니다."
 
-msgid "Upload campaign (network required)"
-msgstr "캠페인 업로드 (네트워크 연결 필요)"
-
 msgid "Earned experience:"
 msgstr "획득한 경험치:"
-
-msgid "Finished Removing Investigarors"
-msgstr "조사자 삭제 완료"
-
-msgid "Record Scenario Result"
-msgstr "시나리오 결과 기록"
 
 msgid "Sign out of Arkham Cards?"
 msgstr "Arkham Cards에 로그아웃 하시겠습니까?"
@@ -3960,6 +3920,61 @@ msgid "Campaigns can be uploaded to your Arkham Cards account."
 msgstr ""
 
 msgid "Uploaded campaigns will be synced between devices."
+msgstr ""
+
+msgid "Review records"
+msgstr ""
+
+msgid "Note campaign achievements"
+msgstr ""
+
+msgid "Complete campaign setup"
+msgstr ""
+
+msgid "Review and draw tokens"
+msgstr ""
+
+msgid "Spent experience"
+msgstr ""
+
+#, javascript-format
+msgid "— Investigators · ${ investigatorCount } —"
+msgstr ""
+
+msgid "View upgrade"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "View results"
+msgstr ""
+
+msgid "Skipped"
+msgstr ""
+
+msgid "Locked"
+msgstr ""
+
+msgid "Add scenario result"
+msgstr ""
+
+msgid "Record completed scenario"
+msgstr ""
+
+msgid "Add XP from scenario"
+msgstr ""
+
+msgid "Review scenario results"
+msgstr ""
+
+msgid "Edit chaos bag"
+msgstr ""
+
+msgid "Scenario name"
 msgstr ""
 
 #, javascript-format
@@ -4244,3 +4259,7 @@ msgstr[0] "시나리오"
 msgctxt "Weakness Card"
 msgid "All"
 msgstr "모두"
+
+msgctxt "trauma"
+msgid "None"
+msgstr ""

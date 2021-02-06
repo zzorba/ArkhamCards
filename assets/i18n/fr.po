@@ -481,19 +481,15 @@ msgstr "Sélectionner ${title}"
 msgid "All"
 msgstr "Tout"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Note: This entry is crossed out"
 msgstr "Note : cette entrée est barrée"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Uncross Out"
 msgstr "Débarrer le texte"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Cross Out"
 msgstr "Barrer le texte"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Add Another"
 msgstr "En Ajouter un autre"
 
@@ -2063,9 +2059,6 @@ msgstr[1] "${ startText } Ces sets sont reconnaissables aux icônes suivantes:"
 msgid "Choose Investigators"
 msgstr "Choisissez les Investigateurs"
 
-msgid "View deck upgrade"
-msgstr "Voir les améliorations de Deck"
-
 msgid "Campaign cards"
 msgstr "Cartes de campagne"
 
@@ -2251,9 +2244,6 @@ msgstr "Vérifiez ${ logEntry.section }. <i>Si ${ logEntry.text }</i>"
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
 msgstr "Êtes-vous sûr de vouloir supprimer la campagne : ${ campaignName }"
-
-msgid "Log"
-msgstr "Journal"
 
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
@@ -2527,9 +2517,6 @@ msgstr "Ajouter un Scénario Annexe"
 msgid "Remove deck"
 msgstr "Supprimer le deck"
 
-msgid "Remove investigator"
-msgstr "Supprimer l'investigateur"
-
 msgid "Remove deck from campaign"
 msgstr "Supprimer le deck de la camapagne"
 
@@ -2561,12 +2548,6 @@ msgstr ""
 "\n"
 "Néanmoins, vous pouvez décider de ne pas le faire participer aux prochains "
 "scénarios de cette campagne."
-
-msgid "Remove investigators"
-msgstr "Supprimer les investigateurs"
-
-msgid "Finished removing investigators"
-msgstr "Suppression d'investigateurs terminée"
 
 #, javascript-format
 msgid "Experience cost: ${ xpCost }"
@@ -2774,9 +2755,6 @@ msgstr ""
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
 msgstr "${ spentXp } sur ${ totalXp } dépensées"
-
-msgid "Edit Trauma"
-msgstr "Modifier les Traumatismes"
 
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
@@ -4023,15 +4001,6 @@ msgstr "Succès"
 msgid "Upload campaign"
 msgstr "Télécharger une Campagne"
 
-msgid "Add investigators"
-msgstr "Ajouter des investigateurs"
-
-msgid "Add investigator to which campaign?"
-msgstr "Ajouter l'investigateur à quelle campagne ?"
-
-msgid "Which campaign would you like to add an investigator to?"
-msgstr "À quelle campagne souhaitez-vous ajouter un investigateur ?"
-
 msgid "Can't add side scenario right now."
 msgstr "Ne peut pas ajouter de scénario indépendant maintenant."
 
@@ -4054,17 +4023,8 @@ msgstr "Enregistrer la modification"
 msgid "Uploading deck"
 msgstr "Transfert de deck"
 
-msgid "Upload campaign (network required)"
-msgstr "Transfert de campagne (reseau requis)"
-
 msgid "Earned experience:"
 msgstr "Expérience gagnée :"
-
-msgid "Finished Removing Investigarors"
-msgstr "Suppression des investigateurs terminé"
-
-msgid "Record Scenario Result"
-msgstr "Enregistrement du résultat du scénario"
 
 msgid "Sign out of Arkham Cards?"
 msgstr "Se déconnecter d'Arkham Cards ?"
@@ -4154,6 +4114,61 @@ msgid "Campaigns can be uploaded to your Arkham Cards account."
 msgstr ""
 
 msgid "Uploaded campaigns will be synced between devices."
+msgstr ""
+
+msgid "Review records"
+msgstr ""
+
+msgid "Note campaign achievements"
+msgstr ""
+
+msgid "Complete campaign setup"
+msgstr ""
+
+msgid "Review and draw tokens"
+msgstr ""
+
+msgid "Spent experience"
+msgstr ""
+
+#, javascript-format
+msgid "— Investigators · ${ investigatorCount } —"
+msgstr ""
+
+msgid "View upgrade"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "View results"
+msgstr ""
+
+msgid "Skipped"
+msgstr ""
+
+msgid "Locked"
+msgstr ""
+
+msgid "Add scenario result"
+msgstr ""
+
+msgid "Record completed scenario"
+msgstr ""
+
+msgid "Add XP from scenario"
+msgstr ""
+
+msgid "Review scenario results"
+msgstr ""
+
+msgid "Edit chaos bag"
+msgstr ""
+
+msgid "Scenario name"
 msgstr ""
 
 #, javascript-format
@@ -4471,3 +4486,7 @@ msgstr[1] "Scénarios"
 msgctxt "Weakness Card"
 msgid "All"
 msgstr "Toutes"
+
+msgctxt "trauma"
+msgid "None"
+msgstr ""

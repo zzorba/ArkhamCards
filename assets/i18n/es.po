@@ -481,19 +481,15 @@ msgstr "Seleccionar ${title}"
 msgid "All"
 msgstr "Todos"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Note: This entry is crossed out"
 msgstr "Nota: Este registro está tachado"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Uncross Out"
 msgstr "Destachar"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Cross Out"
 msgstr "Tachar"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Add Another"
 msgstr "Agregar otro"
 
@@ -2052,9 +2048,6 @@ msgstr[1] "${ startText } Estos conjuntos vienen indicados por los siguientes í
 msgid "Choose Investigators"
 msgstr "Elige los investigadores"
 
-msgid "View deck upgrade"
-msgstr "Ver mejoras mazo"
-
 msgid "Campaign cards"
 msgstr "Cartas de la Campaña"
 
@@ -2238,9 +2231,6 @@ msgstr "Revisa en las ${ logEntry.section } si <i>${ logEntry.text }</i>"
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
 msgstr "¿Estás seguro de querer borrar la campaña: ${ campaignName }?"
-
-msgid "Log"
-msgstr "Registro"
 
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
@@ -2513,9 +2503,6 @@ msgstr "Añade una Historia secundaria"
 msgid "Remove deck"
 msgstr "Eliminar mazo"
 
-msgid "Remove investigator"
-msgstr "Eliminar investigador"
-
 msgid "Remove deck from campaign"
 msgstr "Eliminar mazo de la campaña"
 
@@ -2547,12 +2534,6 @@ msgstr ""
 "\n"
 "Sin embargo, puedes elegir que no participe en futuros escenarios de esta "
 "campaña."
-
-msgid "Remove investigators"
-msgstr "Eliminar investigadores"
-
-msgid "Finished removing investigators"
-msgstr "Terminado de eliminar investigadores"
 
 #, javascript-format
 msgid "Experience cost: ${ xpCost }"
@@ -2761,9 +2742,6 @@ msgstr ""
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
 msgstr "${ spentXp } de ${ totalXp } gastados"
-
-msgid "Edit Trauma"
-msgstr "Editar Trauma"
 
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
@@ -4009,15 +3987,6 @@ msgstr "Logros"
 msgid "Upload campaign"
 msgstr "Subir campaña"
 
-msgid "Add investigators"
-msgstr "Añadir investigadores"
-
-msgid "Add investigator to which campaign?"
-msgstr "¿A qué campaña quieres añadir el investigador?"
-
-msgid "Which campaign would you like to add an investigator to?"
-msgstr "¿A qué campaña quieres añadirle un investigador?"
-
 msgid "Can't add side scenario right now."
 msgstr "No pueden añadirse ahora"
 
@@ -4031,17 +4000,8 @@ msgstr "Guardar mejora"
 msgid "Sorry, you don't seem to be a Mythos Buster patron."
 msgstr "Disculpa, no eres mecenas de Mythos Busters."
 
-msgid "Upload campaign (network required)"
-msgstr "Subir campaña (conexión requerida)"
-
 msgid "Earned experience:"
 msgstr "Experiencia ganada:"
-
-msgid "Finished Removing Investigarors"
-msgstr "Finalizar eliminar investigadores"
-
-msgid "Record Scenario Result"
-msgstr "Guardar resultado del escenario"
 
 msgid "Sign out of Arkham Cards?"
 msgstr ""
@@ -4123,6 +4083,61 @@ msgid "Campaigns can be uploaded to your Arkham Cards account."
 msgstr ""
 
 msgid "Uploaded campaigns will be synced between devices."
+msgstr ""
+
+msgid "Review records"
+msgstr ""
+
+msgid "Note campaign achievements"
+msgstr ""
+
+msgid "Complete campaign setup"
+msgstr ""
+
+msgid "Review and draw tokens"
+msgstr ""
+
+msgid "Spent experience"
+msgstr ""
+
+#, javascript-format
+msgid "— Investigators · ${ investigatorCount } —"
+msgstr ""
+
+msgid "View upgrade"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "View results"
+msgstr ""
+
+msgid "Skipped"
+msgstr ""
+
+msgid "Locked"
+msgstr ""
+
+msgid "Add scenario result"
+msgstr ""
+
+msgid "Record completed scenario"
+msgstr ""
+
+msgid "Add XP from scenario"
+msgstr ""
+
+msgid "Review scenario results"
+msgstr ""
+
+msgid "Edit chaos bag"
+msgstr ""
+
+msgid "Scenario name"
 msgstr ""
 
 #, javascript-format
@@ -4436,3 +4451,7 @@ msgstr[1] "Escenarios"
 msgctxt "Weakness Card"
 msgid "All"
 msgstr "Todos"
+
+msgctxt "trauma"
+msgid "None"
+msgstr ""

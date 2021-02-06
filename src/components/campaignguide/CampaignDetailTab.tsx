@@ -76,14 +76,14 @@ export default function CampaignDetailTab({
   const showCampaignAchievements = useCallback(() => {
     Navigation.push<CampaignAchievementsProps>(componentId, {
       component: {
-        name: 'Guide.Achivements',
+        name: 'Guide.Achievements',
         passProps: {
           campaignId,
         },
         options: {
           topBar: {
             title: {
-              text: t`Achivements`,
+              text: t`Achievements`,
             },
             backButton: {
               title: t`Back`,
@@ -119,7 +119,7 @@ export default function CampaignDetailTab({
             <DeckButton
               icon="finish"
               title={t`Achievements`}
-              detail={t`Record campaign achivements`}
+              detail={t`Note campaign achievements`}
               color="light_gray"
               onPress={showCampaignAchievements}
               bottomMargin={s}
@@ -128,7 +128,7 @@ export default function CampaignDetailTab({
           <DeckButton
             icon="chaos_bag"
             title={t`Chaos Bag`}
-            detail={chaosBagDisabled ? t`Complee campaign setup first` : t`Review and draw tokens`}
+            detail={chaosBagDisabled ? t`Complete campaign setup` : t`Review and draw tokens`}
             disabled={chaosBagDisabled}
             color="light_gray"
             onPress={showChaosBag}

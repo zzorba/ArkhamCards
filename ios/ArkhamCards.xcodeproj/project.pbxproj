@@ -756,7 +756,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.10.8;
+				MARKETING_VERSION = 2.10.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -799,7 +799,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.10.8;
+				MARKETING_VERSION = 2.10.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

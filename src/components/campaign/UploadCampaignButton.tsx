@@ -1,6 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -42,7 +43,7 @@ export default function UploadCampaignButton({ campaignId, setCampaignServerId }
   }
   return (
     <View style={space.marginRightS}>
-      <TouchableOpacity onPress={confirmUploadCampaign}>
+      <TouchableOpacity onPress={confirmUploadCampaign} accessibilityLabel={t`Upload campaign`}>
         <View style={space.paddingXs}>
           <MaterialIcons name="backup" color={isConnected ? colors.L20 : colors.M} size={18} />
         </View>
