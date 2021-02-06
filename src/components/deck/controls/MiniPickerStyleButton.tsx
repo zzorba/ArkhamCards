@@ -49,7 +49,7 @@ export default function MiniPickerStyleButton({
         !last ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         <View style={styles.leftRow}>
           <View style={styles.row}>
-            <Text style={[typography.small, typography.dark, typography.italic, { flex: 1, textAlignVertical: 'center' }]}>
+            <Text style={[typography.small, typography.dark, typography.italic, { flex: 1.5, textAlignVertical: 'center' }, space.paddingRightS]}>
               { title }
             </Text>
             <View style={[styles.row, space.paddingTopXs, typeof valueLabel === 'string' ? undefined : space.paddingBottomXs, { flex: 2 }]}>

@@ -6,7 +6,6 @@ import { t } from 'ttag';
 
 import { Campaign, SingleCampaign, ScenarioResult, CUSTOM, getCampaignId } from '@actions/types';
 import SettingsSwitch from '@components/core/SettingsSwitch';
-import EditText from '@components/core/EditText';
 import { updateCampaign } from '../actions';
 import { completedScenario, scenarioFromCard, Scenario } from '../constants';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
@@ -19,6 +18,9 @@ import { usePickerDialog } from '@components/deck/dialogs';
 import { QuerySort } from '@data/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import EncounterIcon from '@icons/EncounterIcon';
+import StyleContext from '@styles/StyleContext';
+import AppIcon from '@icons/AppIcon';
 
 interface OwnProps {
   componentId: string;
@@ -36,6 +38,7 @@ export default function ScenarioSection({ campaign, scenarioChanged, showTextEdi
     sort: SCENARIO_SORT,
   });
   const { user } = useContext(ArkhamCardsAuthContext);
+  const { colors } = useContext(StyleContext);
   const getPack = useMemo(makePackSelector, []);
   const cyclePack = useSelector((state: AppState) => getPack(state, campaign.cycleCode));
   const getAllCyclePacks = useMemo(makeAllCyclePacksSelector, []);
@@ -104,6 +107,7 @@ export default function ScenarioSection({ campaign, scenarioChanged, showTextEdi
       filter(allScenarios, scenario => showInterludes || !scenario.interlude),
       scenario => {
         return {
+          iconNode: scenario.interlude ? <AppIcon name="log" size={24} color={colors.M} /> : <EncounterIcon encounter_code={scenario.code} size={24} color={colors.M} />,
           title: scenario.name,
           value: scenario,
         };
@@ -113,7 +117,7 @@ export default function ScenarioSection({ campaign, scenarioChanged, showTextEdi
       value: CUSTOM,
     });
     return scenarios;
-  }, [allScenarios, showInterludes]);
+  }, [allScenarios, showInterludes, colors]);
   const { dialog, showDialog } = usePickerDialog({
     title: showInterludes ? t`Scenario or Interlude` : t`Scenario`,
     items: possibleScenarios,
@@ -133,6 +137,12 @@ export default function ScenarioSection({ campaign, scenarioChanged, showTextEdi
     showTextEditDialog(t`Resolution`, resolution || '', resolutionChanged);
   }, [showTextEditDialog, resolution, resolutionChanged]);
 
+  const scenarioName = useMemo(() => {
+    if (loading) {
+      return '   ';
+    }
+    return selectedScenario === CUSTOM ? t`Custom` : selectedScenario.name;
+  }, [loading, selectedScenario]);
   return (
     <View style={space.paddingSideS}>
       { dialog }
@@ -146,12 +156,12 @@ export default function ScenarioSection({ campaign, scenarioChanged, showTextEdi
       <DeckPickerStyleButton
         icon="book"
         title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}
-        valueLabel={selectedScenario === CUSTOM ? t`Custom` : selectedScenario.name}
+        valueLabel={scenarioName}
         editable
         first
         onPress={showDialog}
       />
-      { selectedScenario === CUSTOM && (
+      { !loading && selectedScenario === CUSTOM && (
         <DeckPickerStyleButton
           icon="name"
           title={t`Name`}

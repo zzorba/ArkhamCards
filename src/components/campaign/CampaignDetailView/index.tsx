@@ -17,7 +17,7 @@ import { useCampaign, useCampaignDetails, useCampaignScenarios, useInvestigatorC
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
 import { campaignNames, completedScenario } from '../constants';
-import space, { s } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import CampaignSummaryHeader from '../CampaignSummaryHeader';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
@@ -30,7 +30,6 @@ import DeleteCampaignButton from '../DeleteCampaignButton';
 import { CampaignLogViewProps } from '../CampaignLogView';
 import { CampaignScenariosViewProps } from '../CampaignScenariosView';
 import UploadCampaignButton from '../UploadCampaignButton';
-import ArkhamButton from '@components/core/ArkhamButton';
 import CampaignScenarioButton from '../CampaignScenarioButton';
 import { EditScenarioResultProps } from '../EditScenarioResultView';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
@@ -350,16 +349,22 @@ function CampaignDetailView(props: Props) {
               onPress={showChaosBag}
               bottomMargin={s}
             />
-            { false && (
-              <DeckButton
-                icon="right-arrow"
-                title={t`Scenarios`}
-                detail={t`Review and play scenarios`}
-                color="dark_gray"
-                onPress={showScenarios}
-                bottomMargin={s}
-              />
-            ) }
+            <DeckButton
+              icon="book"
+              title={t`Scenarios`}
+              detail={t`Review scenario results`}
+              color="light_gray"
+              onPress={showScenarios}
+              bottomMargin={s}
+            />
+            <DeckButton
+              icon="finish"
+              title={t`Add scenario result`}
+              detail={t`Record completed scenario`}
+              onPress={addScenarioResultPressed}
+              color="dark_gray"
+              bottomMargin={s}
+            />
             <View style={[space.paddingBottomS, space.paddingTopS]}>
               <Text style={[typography.large, typography.center, typography.light]}>
                 { t`— Investigators · ${investigatorCount} —` }
@@ -384,63 +389,22 @@ function CampaignDetailView(props: Props) {
                 showChooseDeck={showChooseDeck}
               />
             ) }
-            <View style={space.paddingBottomS}>
-              <DeckButton
-                icon="plus-thin"
-                title={t`Add Investigator`}
-                onPress={showAddInvestigator}
-                color="light_gray"
-                thin
-              />
-            </View>
+            <DeckButton
+              icon="plus-thin"
+              title={t`Add Investigator`}
+              onPress={showAddInvestigator}
+              color="light_gray"
+              thin
+              bottomMargin={s}
+            />
             <DeckButton
               icon="weakness"
               color="light_gray"
               title={t`Draw random basic weakness`}
               onPress={drawWeaknessPressed}
+              bottomMargin={s}
             />
           </View>
-          { (campaign.scenarioResults.length === 0 && cycleScenarios.length === 0) ? (
-            <ArkhamButton
-              icon="expand"
-              title={t`Record Scenario Result`}
-              onPress={addScenarioResultPressed}
-            />
-          ) : (
-            <View style={[space.paddingSideS, space.paddingBottomS]}>
-              <RoundedFactionBlock faction="neutral"
-                header={<DeckSectionHeader faction="neutral" title={t`Scenarios`} />}
-                footer={<RoundedFooterButton icon="expand" title={t`Record Scenario Result`} onPress={addScenarioResultPressed} />}
-              >
-                { map(campaign.scenarioResults, (scenario, idx) => {
-                  return (
-                    <ScenarioResultButton
-                      key={idx}
-                      componentId={componentId}
-                      campaignId={campaignId}
-                      name={scenario.interlude ? scenario.scenario : `${scenario.scenario} (${scenario.resolution}, ${scenario.xp || 0} XP)`}
-                      index={idx}
-                      status="completed"
-                    />
-                  );
-                }) }
-                { map(
-                  filter(cycleScenarios, scenario => !hasCompletedScenario(scenario)),
-                  (scenario, idx) => (
-                    <ScenarioResultButton
-                      key={idx}
-                      componentId={componentId}
-                      campaignId={campaignId}
-                      name={scenario.name}
-                      index={-1}
-                      status="playable"
-                      onPress={addScenarioResultPressed}
-                    />
-                  ))
-                }
-              </RoundedFactionBlock>
-            </View>
-          ) }
         </ScrollView>
       </View>
       { alertDialog }
