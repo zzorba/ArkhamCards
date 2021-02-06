@@ -158,6 +158,7 @@ export default function CampaignLogSection(props: Props) {
           icon="plus-thin"
           title={t`Add Log Section`}
           onPress={addSectionDialogPressed}
+          color="light_gray"
         />
       </View>
     </View>

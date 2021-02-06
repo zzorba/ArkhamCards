@@ -527,6 +527,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         { weaknessSetSection }
         <View style={space.paddingS}>
           <DeckButton
+            icon="check-thin"
             disabled={selection.type === 'campaign' && selection.code === CUSTOM && !name}
             title={selection.type === 'campaign' ? t`Create Campaign` : t`Create Standalone`}
             onPress={savePressed}
