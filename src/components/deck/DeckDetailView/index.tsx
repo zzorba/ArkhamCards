@@ -56,7 +56,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface DeckDetailProps {
   id: DeckId;
-  upgrade?: boolean;
+  initialMode?: 'upgrade' | 'edit';
   title?: string;
   subtitle?: string;
   campaignId?: string;
@@ -81,7 +81,7 @@ function DeckDetailView({
   modal,
   signedIn,
   login,
-  upgrade,
+  initialMode,
 }: Props) {
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
   const dispatch = useDispatch();
@@ -90,7 +90,7 @@ function DeckDetailView({
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const parsedDeckObj = useParsedDeck(id, 'DeckDetail', componentId, {
     fetchIfMissing: true,
-    upgrade,
+    initialMode,
   });
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
   const {

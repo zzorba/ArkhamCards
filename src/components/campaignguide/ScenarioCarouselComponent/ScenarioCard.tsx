@@ -40,7 +40,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
     switch (scenario.type) {
       case 'started':
         return (
-          <View style={styles.button}>
+          <View style={[styles.button, space.paddingBottomM]}>
             <DeckButton
               icon="right-arrow"
               title={t`Continue`}
@@ -67,18 +67,20 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
         );
       case 'completed':
         return (
-          <TouchableOpacity onPress={onPress}>
-            <View style={styles.row}>
-              <AppIcon size={32} name="toggle" color={light} />
-              <Text style={[space.marginLeftXs, typography.large, typography.italic, { color: light }]}>
-                { t`View results` }
-              </Text>
-            </View>
-          </TouchableOpacity>
+          <View style={space.paddingBottomM}>
+            <TouchableOpacity onPress={onPress}>
+              <View style={styles.row}>
+                <AppIcon size={32} name="toggle" color={light} />
+                <Text style={[space.marginLeftXs, typography.large, typography.italic, { color: light }]}>
+                  { t`View results` }
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         );
       case 'skipped':
         return (
-          <View style={styles.row}>
+          <View style={[styles.row, space.paddingBottomM]}>
             <Text style={[typography.large, typography.italic, { color: light }]}>
               { t`Skipped` }
             </Text>
@@ -87,7 +89,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
       case 'locked':
       case 'placeholder':
         return (
-          <View style={styles.row}>
+          <View style={[styles.row, space.paddingBottomM]}>
             <AppIcon size={32} name="lock" color={light} />
             <Text style={[typography.large, typography.italic, { color: light }]}>
               { scenario.type === 'placeholder' ? t`Coming soon` : t`Locked` }
@@ -98,7 +100,9 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
   }, [onPress, scenario.type, typography, light, componentId, processedCampaign, showAlert]);
   return (
     <View style={[
-      space.paddingM,
+      space.paddingTopM,
+      space.paddingLeftM,
+      space.paddingRightM,
       space.marginBottomM,
       styles.card,
       { backgroundColor: background },

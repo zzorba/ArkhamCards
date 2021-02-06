@@ -86,7 +86,7 @@ export function uploadCampaign(
     }
     const campaign = makeCampaignSelector()(state, campaignId.campaignId);
     if (!campaign) {
-      throw new Error(t`Unable to find campaign to upload`);
+      throw new Error('Something went wrong');
     }
     const newCampaignId = await createServerCampaign(campaignId.campaignId);
     const guided = !!campaign.guided;

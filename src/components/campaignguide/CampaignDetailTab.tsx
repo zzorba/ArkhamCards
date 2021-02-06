@@ -31,9 +31,10 @@ interface Props {
   showLinkedScenario?: ShowScenario;
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
   headerButtons: React.ReactNode;
+  displayLinkScenarioCount?: number;
 }
 export default function CampaignDetailTab({
-  componentId, processedCampaign, headerButtons,
+  componentId, processedCampaign, headerButtons, displayLinkScenarioCount,
   showLinkedScenario, showAlert, showTraumaDialog, showCountDialog,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
@@ -41,6 +42,7 @@ export default function CampaignDetailTab({
   const { campaignId, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
   const dispatch = useDispatch();
   const saveCampaignUpdate = useCallback((campaignId: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
+    console.log('Updating campaign data');
     dispatch(updateCampaign(user, campaignId, sparseCampaign, now));
   }, [dispatch, user]);
 
@@ -136,6 +138,7 @@ export default function CampaignDetailTab({
         <ScenarioCarouselComponent
           componentId={componentId}
           processedCampaign={processedCampaign}
+          displayLinkScenarioCount={displayLinkScenarioCount}
           showLinkedScenario={showLinkedScenario}
           showAlert={showAlert}
         />

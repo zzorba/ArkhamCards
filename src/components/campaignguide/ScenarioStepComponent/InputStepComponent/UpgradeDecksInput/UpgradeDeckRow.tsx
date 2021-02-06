@@ -58,7 +58,7 @@ function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonPro
   return (
     <ArkhamButton
       icon="deck"
-      title={t`View deck upgrade`}
+      title={t`View upgrade`}
       onPress={onPress}
     />
   );

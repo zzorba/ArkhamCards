@@ -14,6 +14,7 @@ import { showScenario } from '../nav';
 interface Props {
   componentId: string;
   processedCampaign: ProcessedCampaign;
+  displayLinkScenarioCount?: number;
   showLinkedScenario?: (scenarioId: string) => void;
   showAlert: ShowAlert;
 }
@@ -30,6 +31,7 @@ function getActiveIndex(scenarios: ProcessedScenario[]) {
 export default function ScenarioCarouselComponent({
   componentId,
   processedCampaign,
+  displayLinkScenarioCount,
   showLinkedScenario,
   showAlert,
 }: Props) {
@@ -38,6 +40,11 @@ export default function ScenarioCarouselComponent({
   const carousel = useRef<Carousel<ProcessedScenario>>(null);
   const scenarioPressed = useRef<boolean>(false);
   const visible = useComponentVisible(componentId);
+  useEffectUpdate(() => {
+    setTimeout(() => {
+      scenarioPressed.current = true;
+    }, 500);
+  }, [displayLinkScenarioCount]);
 
   const onShowLinkedScenario = useCallback((scenarioId: string) => {
     scenarioPressed.current = true;

@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { find, findLast, findLastIndex } from 'lodash';
+import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -8,6 +9,11 @@ import { ProcessedCampaign } from '@data/scenario';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { ShowAlert } from '@components/deck/dialogs';
 import CampaignGuideContext from '../CampaignGuideContext';
+import ArkhamButton from '@components/core/ArkhamButton';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import StyleContext from '@styles/StyleContext';
+import AppIcon from '@icons/AppIcon';
+import space, { m } from '@styles/space';
 
 interface Props {
   componentId: string;
@@ -16,6 +22,7 @@ interface Props {
 }
 
 export default function AddSideScenarioButton({ componentId, processedCampaign, showAlert }: Props) {
+  const { colors, typography } = useContext(StyleContext);
   const { campaignId, campaignGuide, campaignState } = useContext(CampaignGuideContext);
   const canAddScenario = useMemo(() => {
     const lastCompletedScenarioIndex = findLastIndex(
@@ -102,13 +109,26 @@ export default function AddSideScenarioButton({ componentId, processedCampaign, 
     });
   }, [componentId, campaignId, processedCampaign.scenarios, canAddScenario, showAlert]);
   if (!canAddScenario) {
-    return null;
+    return <View style={{ height: m }} />;
   }
   return (
-    <RoundedFooterButton
-      icon="expand"
-      title={t`Insert standalone`}
-      onPress={onPress}
-    />
+    <View style={[space.paddingTopS, space.paddingBottomS]}>
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.row}>
+          <View style={space.paddingRightS}>
+            <AppIcon name="plus" size={20} color={colors.D10} />
+          </View>
+          <Text style={[typography.button, typography.italic, { color: colors.D10 }, space.marginTopXs]}>{t`Insert standalone`}</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+});

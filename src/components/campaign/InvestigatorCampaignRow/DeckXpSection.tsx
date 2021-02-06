@@ -37,7 +37,7 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
       deck,
       colors,
       investigator,
-      { hideCampaign: true }
+      { hideCampaign: true, initialMode: 'upgrade' }
     );
   }, [colors, componentId, deck, investigator]);
 

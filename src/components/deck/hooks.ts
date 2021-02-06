@@ -94,14 +94,14 @@ export function useParsedDeck(
   componentId: string,
   {
     fetchIfMissing,
-    upgrade,
+    initialMode,
   }: {
     fetchIfMissing?: boolean;
-    upgrade?: boolean;
+    initialMode?: 'upgrade' | 'edit';
   } = {}
 ): ParsedDeckResults {
   const [deck, previousDeck] = useDeck(id, { fetchIfMissing });
-  const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing, upgrade ? 'upgrade' : undefined);
+  const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing, initialMode);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const cards = usePlayerCards(tabooSetId);
   const visible = useComponentVisible(componentId);
@@ -133,7 +133,7 @@ export function useParsedDeck(
     visible,
     parsedDeck,
     editable: !deck?.nextDeckId,
-    mode: (deckEdits?.mode) || (upgrade ? 'upgrade' : 'view'),
+    mode: (deckEdits?.mode) || (initialMode || 'view'),
   };
 }
 

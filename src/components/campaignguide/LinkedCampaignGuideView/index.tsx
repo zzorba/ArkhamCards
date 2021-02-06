@@ -51,7 +51,6 @@ export default function LinkedCampaignGuideView(props: Props) {
   const campaignDataA = useCampaignGuideReduxData(campaignIdA, investigators);
   const campaignDataB = useCampaignGuideReduxData(campaignIdB, investigators);
 
-
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
     Navigation.mergeOptions(componentId, {
@@ -62,7 +61,6 @@ export default function LinkedCampaignGuideView(props: Props) {
       },
     });
   }, [campaignId, dispatch, user, componentId]);
-
 
   const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Name`,
@@ -81,8 +79,8 @@ export default function LinkedCampaignGuideView(props: Props) {
   const processedCampaignA = useMemo(() => contextA?.campaignGuide && contextA?.campaignState && contextA.campaignGuide.processAllScenarios(contextA.campaignState), [contextA?.campaignGuide, contextA?.campaignState]);
   const processedCampaignB = useMemo(() => contextB?.campaignGuide && contextB?.campaignState && contextB.campaignGuide.processAllScenarios(contextB.campaignState), [contextB?.campaignGuide, contextB?.campaignState]);
 
-  const setSelectedTabRef = useRef<undefined | ((index: number) => void)>(undefined);
-  const [showCampaignScenarioA, showCampaignScenarioB] = useCampaignLinkHelper({
+  const setSelectedTabRef = useRef<((index: number) => void) | undefined>(undefined);
+  const [showCampaignScenarioA, showCampaignScenarioB, displayLinkScenarioCount] = useCampaignLinkHelper({
     componentId,
     campaignA: processedCampaignA,
     campaignDataA: contextA,
@@ -126,12 +124,14 @@ export default function LinkedCampaignGuideView(props: Props) {
               showAlert={showAlert}
               showCountDialog={showCountDialog}
               showTraumaDialog={showTraumaDialog}
+              displayLinkScenarioCount={displayLinkScenarioCount}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
-  }, [campaignDataA, processedCampaignA, contextA, componentId, headerButtons, showCampaignScenarioB, showCountDialog, showAlert, showTraumaDialog]);
+  }, [campaignDataA, processedCampaignA, contextA, componentId, headerButtons, displayLinkScenarioCount,
+    showCampaignScenarioB, showCountDialog, showAlert, showTraumaDialog]);
   const campaignBTab = useMemo(() => {
     if (!campaignDataB || !processedCampaignB || !contextB) {
       return null;
@@ -150,12 +150,14 @@ export default function LinkedCampaignGuideView(props: Props) {
               showCountDialog={showCountDialog}
               showTraumaDialog={showTraumaDialog}
               headerButtons={headerButtons}
+              displayLinkScenarioCount={displayLinkScenarioCount}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
-  }, [campaignDataB, processedCampaignB, contextB, componentId, headerButtons, showCampaignScenarioA, showCountDialog, showAlert, showTraumaDialog]);
+  }, [campaignDataB, processedCampaignB, contextB, componentId, headerButtons, displayLinkScenarioCount,
+    showCampaignScenarioA, showCountDialog, showAlert, showTraumaDialog]);
   const tabs = useMemo(() => {
     if (!campaignATab || !campaignBTab) {
       return [];

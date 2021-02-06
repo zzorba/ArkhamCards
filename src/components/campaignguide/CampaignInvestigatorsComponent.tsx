@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { InteractionManager, Text, StyleSheet, View } from 'react-native';
 import { filter, find, findLast, flatMap, forEach, map, mapValues, partition } from 'lodash';
 import { isAfter } from 'date-fns';
@@ -8,17 +8,15 @@ import { t } from 'ttag';
 import { Campaign, CampaignId, InvestigatorData, Trauma } from '@actions/types';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from '@data/scenario';
-import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import Card from '@data/Card';
 import space, { s, l } from '@styles/space';
-import { useComponentDidDisappear, useCounters, useEffectUpdate } from '@components/core/hooks';
+import { useCounters, useEffectUpdate } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 import CampaignLogSectionComponent from './CampaignLogComponent/CampaignLogSectionComponent';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
-import { updateCampaignSpentXp } from '@components/campaign/actions';
-import { useDispatch } from 'react-redux';
 
 interface Props {
   componentId: string;
@@ -45,7 +43,12 @@ export default function CampaignInvestigatorsComponent(props: Props) {
   const { componentId, processedCampaign, updateCampaign, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog } = props;
   const { campaignGuideVersion, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, adjustedInvestigatorData, playerCards, lastUpdated } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
-  const [spentXp] = useCounters(mapValues(adjustedInvestigatorData, data => (data && data.spentXp) || 0));
+  const investigatorSpentXp = useMemo(() => mapValues(adjustedInvestigatorData, data => (data && data.spentXp) || 0), [adjustedInvestigatorData]);
+  const [spentXp,,,,syncSpentXp] = useCounters(investigatorSpentXp);
+  useEffectUpdate(() => {
+    syncSpentXp(investigatorSpentXp);
+  }, [syncSpentXp, adjustedInvestigatorData]);
+
   const appState = useAppState();
   const syncCampaignData = useCallback(() => {
     const {
