@@ -62,7 +62,7 @@ export default function DeckProgressComponent({
     );
   }, [showDeckUpgrade]);
   const campaignSection = useMemo(() => {
-    if (!editable) {
+    if (!editable || campaign?.guided) {
       return null;
     }
     return (
