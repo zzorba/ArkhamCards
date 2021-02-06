@@ -18,6 +18,7 @@ import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constant
 import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
 import StyleContext from '@styles/StyleContext';
+import { getPosition } from 'react-native-track-player';
 
 interface Props {
   card?: Card;
@@ -36,9 +37,9 @@ const IMAGE_SIZE = {
 };
 
 const ICON_SIZE = {
-  tiny: 20,
+  tiny: 26,
   small: 40,
-  large: 55,
+  large: 65,
 };
 
 export default function InvestigatorImage({
@@ -138,14 +139,16 @@ export default function InvestigatorImage({
             <View style={[
               styles.placeholder,
               {
+                top: border ? -2 : 0,
+                left: border ? -2 : 0,
                 width: size,
                 height: size,
                 backgroundColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
               },
             ]}>
-              <Text style={styles.placeholderIcon} allowFontScaling={false}>
+              <View style={styles.icon}>
                 <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={ICON_SIZE[impliedSize]} />
-              </Text>
+              </View>
             </View>
           </View>
           { !!card.imagesrc && (
@@ -227,8 +230,6 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     position: 'absolute',
-    top: 0,
-    left: 0,
     borderRadius: 6,
     flexDirection: 'row',
     alignItems: 'center',
@@ -239,7 +240,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: 'transparent',
   },
-  placeholderIcon: {
-    textAlign: 'center',
+  icon: {
+    marginTop: -6,
   },
 });
