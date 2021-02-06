@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { concat, filter, forEach, head, map } from 'lodash';
+import { concat, filter, find, forEach, head, map } from 'lodash';
 import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -27,12 +27,13 @@ interface OwnProps {
   campaign: SingleCampaign;
   scenarioChanged: (result: ScenarioResult) => void;
   showTextEditDialog: ShowTextEditDialog;
+  initialScenarioCode?: string;
 }
 
 const SCENARIO_QUERY = where('c.type_code = "scenario"');
 const SCENARIO_SORT: QuerySort[] = [{ s: 'c.position', direction: 'ASC' }];
 
-export default function ScenarioSection({ campaign, scenarioChanged, showTextEditDialog }: OwnProps) {
+export default function ScenarioSection({ campaign, initialScenarioCode, scenarioChanged, showTextEditDialog }: OwnProps) {
   const [allScenarioCards, loading] = useCardsFromQuery({
     query: SCENARIO_QUERY,
     sort: SCENARIO_SORT,
@@ -97,8 +98,17 @@ export default function ScenarioSection({ campaign, scenarioChanged, showTextEdi
 
   useEffect(() => {
     // tslint:disable-next-line
-    if (!loading && allScenarios.length && allScenarios[0] !== selectedScenario) {
-      setSelectedScenario(allScenarios[0]);
+    if (!loading && allScenarios.length) {
+      if (initialScenarioCode) {
+        const initialScenario = find(allScenarios, s => s.code === initialScenarioCode);
+        if (initialScenario) {
+          setSelectedScenario(initialScenario);
+          return;
+        }
+      }
+      if (selectedScenario !== 'custom' && allScenarios[0].code !== selectedScenario.code) {
+        setSelectedScenario(allScenarios[0]);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allScenarioCards]);

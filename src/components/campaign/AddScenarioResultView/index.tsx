@@ -29,12 +29,13 @@ import DeckButton from '@components/deck/controls/DeckButton';
 
 export interface AddScenarioResultProps {
   id: CampaignId;
+  scenarioCode?: string;
 }
 
 type Props = NavigationProps &
   AddScenarioResultProps;
 
-function AddScenarioResultView({ componentId, id }: Props) {
+function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const [dialog, showTextEditDialog] = useTextEditDialog();
   const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
   const [countDialog, showCountDialog] = useCountDialog();
@@ -127,9 +128,10 @@ function AddScenarioResultView({ componentId, id }: Props) {
         campaign={campaign}
         scenarioChanged={setScenario}
         showTextEditDialog={showTextEditDialog}
+        initialScenarioCode={scenarioCode}
       />
     );
-  }, [componentId, campaign, showTextEditDialog]);
+  }, [componentId, campaign, showTextEditDialog, scenarioCode]);
 
   const notes = useMemo(() => {
     return campaignNotes ||

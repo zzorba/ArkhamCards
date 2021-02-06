@@ -13,12 +13,13 @@ import { CampaignDrawWeaknessProps } from './CampaignDrawWeaknessDialog';
 import { EditChaosBagProps } from './EditChaosBagDialog';
 import { OddsCalculatorProps } from './OddsCalculatorView';
 
-export function showAddScenarioResult(componentId: string, campaignId: CampaignId) {
+export function showAddScenarioResult(componentId: string, campaignId: CampaignId, scenarioCode?: string) {
   Navigation.push<AddScenarioResultProps>(componentId, {
     component: {
       name: 'Campaign.AddResult',
       passProps: {
         id: campaignId,
+        scenarioCode,
       },
     },
   });
