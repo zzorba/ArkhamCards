@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Ripple from '@lib/react-native-material-ripple';
@@ -11,6 +11,9 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'log' |
+  'finish' |
+  'wrench' |
   'plus-button' |
   'minus-button' |
   'right-arrow' |
@@ -54,23 +57,14 @@ interface Props {
   disabled?: boolean;
 }
 
-const ICON_SIZE = {
+const ICON_SIZE: { [icon: string]: number | undefined } = {
   'plus-button': 32,
   'minus-button': 32,
   'right-arrow': 32,
   weakness: 24,
   'card-outline': 24,
-  deck: 26,
   tdea: 28,
   tdeb: 28,
-  tools: 26,
-  difficulty: 26,
-  chaos_bag: 26,
-  chart: 26,
-  elder_sign: 26,
-  delete: 26,
-  per_investigator: 26,
-  settings: 26,
   book: 22,
   'draw': 24,
   'arkhamdb': 24,
@@ -83,41 +77,16 @@ const ICON_SIZE = {
   'dismiss': 22,
   'check-thin': 30,
 };
-const ICON_STYLE = {
-  'plus-button': {},
-  'minus-button': {},
-  'right-arrow': {},
+const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
   weakness: {
     marginLeft: -3,
   },
-  'card-outline': {},
-  deck: {
-  },
-  draw: {},
-  tdea: {},
-  tdeb: {},
-  tools: {},
-  difficulty: {},
-  chaos_bag: {},
-  chart: {},
-  elder_sign: {},
-  delete: {},
-  per_investigator: {},
-  settings: {},
-  book: {},
-  'arkhamdb': {},
-  'logo': {},
-  'login': {},
-  'email': {},
   'check-thin': {
     marginTop: -6,
   },
-  'edit': {},
   'upgrade': {
     marginTop: 0,
   },
-  'dismiss': {},
-  'plus-thin': {},
 };
 
 const MATERIAL_ICONS = new Set(['email', 'delete', 'login']);
@@ -195,15 +164,15 @@ export default function DeckButton({
       return null;
     }
     if (MATERIAL_ICONS.has(icon)) {
-      return <MaterialIcons name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
+      return <MaterialIcons name={icon} size={ICON_SIZE[icon] || 26} color={theIconColor} />;
     }
     if (ARKHAM_ICONS.has(icon)) {
-      return <ArkhamIcon name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
+      return <ArkhamIcon name={icon} size={ICON_SIZE[icon] || 26} color={theIconColor} />;
     }
     if (ENCOUNTER_ICONS.has(icon)) {
-      return <EncounterIcon encounter_code={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
+      return <EncounterIcon encounter_code={icon} size={ICON_SIZE[icon] || 26} color={theIconColor} />;
     }
-    return <AppIcon name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
+    return <AppIcon name={icon} size={ICON_SIZE[icon] || 26} color={theIconColor} />;
   }, [loading, icon, theIconColor]);
   const height = (detail ? 32 : 20) * fontScale + s * 2 + xs * 2;
   return (
@@ -235,7 +204,7 @@ export default function DeckButton({
             styles.icon,
             space.marginLeftXs,
             space.marginRightS,
-            thin ? { marginLeft: xs, width: 24, height: height - s * 2 } : { width: 32, height: height - s * 2 },
+            thin ? { marginLeft: xs, width: 24, height: height - s * 2 - xs } : { width: 32, height: height - s * 2 - xs },
             loading ? undefined : ICON_STYLE[icon],
           ]}>
             { iconContent }

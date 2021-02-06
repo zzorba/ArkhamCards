@@ -1,42 +1,36 @@
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { Platform, ScrollView, StyleSheet, View } from 'react-native';
-import { keys, map, filter, flatMap } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { keys, map, flatMap } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignId, CampaignNotes, CUSTOM, Deck, DeckId, getCampaignId, getDeckId, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
-import CampaignLogSection from '../CampaignLogSection';
-import ChaosBagSection from './ChaosBagSection';
+import { CampaignId, CUSTOM, Deck, DeckId, getCampaignId, getDeckId, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
 import DecksSection from './DecksSection';
-import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
-import { ChaosBag } from '@app_constants';
 import { updateCampaign, updateCampaignSpentXp, cleanBrokenCampaigns, addInvestigator, removeInvestigator } from '../actions';
 import { NavigationProps } from '@components/nav/types';
 import { getAllDecks, getDeck } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign, useCampaignDetails, useCampaignScenarios, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useCampaign, useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 import useTraumaDialog from '../useTraumaDialog';
-import { showAddScenarioResult, showChaosBagOddsCalculator, showDrawWeakness, showDrawChaosBag } from '@components/campaign/nav';
-import useTabView from '@components/core/useTabView';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
-import RoundedFooterButton from '@components/core/RoundedFooterButton';
-import { EditScenarioResultProps } from '../EditScenarioResultView';
-import CampaignScenarioButton from '../CampaignScenarioButton';
-import { campaignNames, completedScenario } from '../constants';
-import space from '@styles/space';
+import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
+import { campaignNames } from '../constants';
+import space, { s } from '@styles/space';
 import CampaignSummaryHeader from '../CampaignSummaryHeader';
-import ArkhamButton from '@components/core/ArkhamButton';
-import LoadingSpinner from '@components/core/LoadingSpinner';
-import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
-import CampaignGuideFab from '@components/campaignguide/CampaignGuideFab';
+import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import Card from '@data/Card';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useCampaignId } from '../hooks';
+import { useCampaignId, useXpDialog } from '../hooks';
+import DeckButton from '@components/deck/controls/DeckButton';
+import DeleteCampaignButton from '../DeleteCampaignButton';
+import { CampaignLogViewProps } from '../CampaignLogView';
+import { CampaignScenariosViewProps } from '../CampaignScenariosView';
+import UploadCampaignButton from '../UploadCampaignButton';
+import useChaosBagDialog from './useChaosBagDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 
 export interface CampaignDetailProps {
@@ -45,43 +39,12 @@ export interface CampaignDetailProps {
 
 type Props = NavigationProps & CampaignDetailProps
 
-function ScenarioResultButton({ name, campaignId, componentId, status, index, onPress }: {
-  name: string;
-  campaignId: CampaignId;
-  componentId: string;
-  status: 'completed' | 'playable';
-  index: number;
-  onPress?: () => void;
-}) {
-  const buttonOnPress = useCallback(() => {
-    if (onPress) {
-      onPress();
-    } else {
-      Navigation.push<EditScenarioResultProps>(componentId, {
-        component: {
-          name: 'Campaign.EditResult',
-          passProps: {
-            campaignId,
-            index,
-          },
-        },
-      });
-    }
-  }, [componentId, campaignId, index, onPress]);
-  return (
-    <CampaignScenarioButton
-      onPress={buttonOnPress}
-      status={status}
-      title={name}
-    />
-  );
-}
-
 function CampaignDetailView(props: Props) {
   const { componentId } = props;
   const [textEditDialog, showTextEditDialog] = useTextEditDialog();
+  const [countDialog, showCountDialog] = useCountDialog();
   const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
@@ -95,35 +58,16 @@ function CampaignDetailView(props: Props) {
   const [latestDeckIds, allInvestigators] = useCampaignDetails(campaign, investigators);
 
   const dispatch = useDispatch();
-  const updateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
-    dispatch(updateCampaign(user, campaignId, { campaignNotes }));
-  }, [dispatch, campaignId, user]);
   const updateInvestigatorData = useCallback((investigatorData: InvestigatorData) => {
     dispatch(updateCampaign(user, campaignId, { investigatorData }));
-  }, [dispatch, campaignId, user]);
-  const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
-    dispatch(updateCampaign(user, campaignId, { chaosBag }));
   }, [dispatch, campaignId, user]);
   const updateWeaknessSet = useCallback((weaknessSet: WeaknessSet) => {
     dispatch(updateCampaign(user, campaignId, { weaknessSet }));
   }, [dispatch, campaignId, user]);
-  const addSectionCallback = useRef<AddSectionFunction>();
-  const [addSectionVisible, setAddSectionVisible] = useState(false);
-  const incSpentXp = useCallback((code: string) => {
-    dispatch(updateCampaignSpentXp(campaignId, code, 'inc'));
-  }, [campaignId, dispatch]);
-  const decSpentXp = useCallback((code: string) => {
-    dispatch(updateCampaignSpentXp(campaignId, code, 'dec'));
-  }, [campaignId, dispatch]);
 
-  const showAddSectionDialog = useCallback((addSectionFunction: AddSectionFunction) => {
-    addSectionCallback.current = addSectionFunction;
-    setAddSectionVisible(true);
-  }, [addSectionCallback, setAddSectionVisible]);
-  const hideAddSectionDialog = useCallback(() => {
-    setAddSectionVisible(false);
-    addSectionCallback.current = undefined;
-  }, [addSectionCallback, setAddSectionVisible]);
+  const updateSpentXp = useCallback((code: string, value: number) => {
+    dispatch(updateCampaignSpentXp(campaignId, code, value));
+  }, [campaignId, dispatch]);
 
   useEffect(() => {
     if (campaign?.name) {
@@ -147,22 +91,11 @@ function CampaignDetailView(props: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [investigatorDataUpdates, updateInvestigatorData]);
 
-  const oddsCalculatorPressed = useCallback(() => {
-    showChaosBagOddsCalculator(componentId, campaignId, allInvestigators);
-  }, [componentId, campaignId, allInvestigators]);
-
   const cleanBrokenCampaignsPressed = useCallback(() => {
     dispatch(cleanBrokenCampaigns());
     Navigation.pop(componentId);
   }, [componentId, dispatch]);
 
-  const addScenarioResultPressed = useCallback(() => {
-    showAddScenarioResult(componentId, campaignId);
-  }, [campaignId, componentId]);
-
-  const drawChaosBagPressed = useCallback(() => {
-    showDrawChaosBag(componentId, campaignId, updateChaosBag);
-  }, [campaignId, componentId, updateChaosBag]);
 
   const drawWeaknessPressed = useCallback(() => {
     showDrawWeakness(componentId, campaignId);
@@ -271,156 +204,74 @@ function CampaignDetailView(props: Props) {
   const showAddInvestigator = useCallback(() => {
     showChooseDeck();
   }, [showChooseDeck]);
-  const [removeMode, toggleRemoveMode] = useFlag(false);
-  const decksTab = useMemo(() => {
-    if (!campaign) {
-      return <LoadingSpinner />;
-    }
+  const [xpDialog, actuallyShowXpDialog] = useXpDialog(updateSpentXp);
+  const headerButtons = useMemo(() => {
     return (
-      <View style={[styles.flex, backgroundStyle]}>
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <View style={[space.paddingSideS, space.paddingBottomS]}>
-            { !!cards && (
-              <DecksSection
-                showAlert={showAlert}
-                header={
-                  <CampaignSummaryHeader
-                    name={campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode]}
-                    cycle={campaign.cycleCode}
-                    difficulty={campaign.difficulty}
-                    inverted
-                  />
-                }
-                componentId={componentId}
-                campaign={campaign}
-                campaignId={campaignId}
-                latestDeckIds={latestDeckIds || []}
-                decks={decks}
-                allInvestigators={allInvestigators}
-                cards={cards}
-                investigatorData={campaign.investigatorData || {}}
-                showTraumaDialog={showTraumaDialog}
-                removeInvestigator={onRemoveInvestigator}
-                incSpentXp={incSpentXp}
-                decSpentXp={decSpentXp}
-                removeMode={removeMode}
-                toggleRemoveMode={toggleRemoveMode}
-                showChooseDeck={showChooseDeck}
-              />
-            ) }
-          </View>
-          <ArkhamButton
-            icon="card"
-            title={t`Draw random basic weakness`}
-            onPress={drawWeaknessPressed}
-          />
-        </ScrollView>
-      </View>
+      <>
+        <UploadCampaignButton
+          campaignId={campaignId}
+          setCampaignServerId={setCampaignServerId}
+        />
+        <DeleteCampaignButton
+          componentId={componentId}
+          campaignId={campaignId}
+          campaignName={campaign?.name || ''}
+          showAlert={showAlert}
+        />
+      </>
     );
-  }, [campaign, latestDeckIds, decks, allInvestigators, cards, backgroundStyle, componentId, removeMode, campaignId,
-    toggleRemoveMode, showChooseDeck, showAlert,
-    drawWeaknessPressed, showTraumaDialog, onRemoveInvestigator, incSpentXp, decSpentXp]);
-  const [cycleScenarios] = useCampaignScenarios(campaign);
-  const scenariosTab = useMemo(() => {
-    if (!campaign) {
-      return <LoadingSpinner />;
-    }
-    const hasCompletedScenario = completedScenario(campaign.scenarioResults);
-    return (
-      <View style={[styles.flex, backgroundStyle]}>
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          { (campaign.scenarioResults.length === 0 && cycleScenarios.length === 0) ? (
-            <ArkhamButton
-              icon="expand"
-              title={t`Record Scenario Result`}
-              onPress={addScenarioResultPressed}
-            />
-          ) : (
-            <View style={[space.paddingSideS, space.paddingBottomS]}>
-              <RoundedFactionBlock faction="neutral"
-                header={undefined}
-                footer={<RoundedFooterButton icon="expand" title={t`Record Scenario Result`} onPress={addScenarioResultPressed} />}
-              >
-                { map(campaign.scenarioResults, (scenario, idx) => {
-                  console.log(campaign);
-                  return (
-                    <ScenarioResultButton
-                      key={idx}
-                      componentId={componentId}
-                      campaignId={campaignId}
-                      name={scenario.interlude ? scenario.scenario : `${scenario.scenario} (${scenario.resolution}, ${scenario.xp || 0} XP)`}
-                      index={idx}
-                      status="completed"
-                    />
-                  );
-                }) }
-                { map(
-                  filter(cycleScenarios, scenario => !hasCompletedScenario(scenario)),
-                  (scenario, idx) => (
-                    <ScenarioResultButton
-                      key={idx}
-                      componentId={componentId}
-                      campaignId={campaignId}
-                      name={scenario.name}
-                      index={-1}
-                      status="playable"
-                      onPress={addScenarioResultPressed}
-                    />
-                  ))
-                }
-              </RoundedFactionBlock>
-            </View>
-          ) }
-        </ScrollView>
-      </View>
-    );
-  }, [backgroundStyle, campaign, campaignId, addScenarioResultPressed, componentId, cycleScenarios]);
-  const logsTab = useMemo(() => {
-    if (!campaign) {
-      return <LoadingSpinner />;
-    }
-    return (
-      <View style={[styles.flex, backgroundStyle]}>
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <ChaosBagSection
-            componentId={componentId}
-            updateChaosBag={updateChaosBag}
-            chaosBag={campaign.chaosBag}
-            showChaosBag={drawChaosBagPressed}
-            showOddsCalculator={oddsCalculatorPressed}
-          />
-          <CampaignLogSection
-            campaignNotes={campaign.campaignNotes}
-            allInvestigators={allInvestigators}
-            updateCampaignNotes={updateCampaignNotes}
-            showTextEditDialog={showTextEditDialog}
-            showAddSectionDialog={showAddSectionDialog}
-          />
-        </ScrollView>
-      </View>
-    );
-  }, [campaign, backgroundStyle, allInvestigators, componentId,
-    updateChaosBag, drawChaosBagPressed, oddsCalculatorPressed, updateCampaignNotes, showTextEditDialog, showAddSectionDialog]);
-  const tabs = useMemo(() => {
-    return [
-      {
-        key: 'investigators',
-        title: t`Decks`,
-        node: decksTab,
+  }, [showAlert, componentId, campaignId, campaign, setCampaignServerId]);
+  const investigatorData = useMemo(() => campaign?.investigatorData || {}, [campaign?.investigatorData]);
+  const showXpDialog = useCallback((investigator: Card) => {
+    const data = investigatorData[investigator.code] || {};
+    actuallyShowXpDialog(investigator, data?.spentXp || 0, data?.availableXp || 0);
+  }, [actuallyShowXpDialog, investigatorData]);
+  const showCampaignLog = useCallback(() => {
+    Navigation.push<CampaignLogViewProps>(componentId, {
+      component: {
+        name: 'Campaign.Log',
+        passProps: {
+          campaignId,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Campaign Log`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
       },
-      {
-        key: 'scenarios',
-        title: t`Scenarios`,
-        node: scenariosTab,
+    });
+  }, [componentId, campaignId]);
+  const showScenarios = useCallback(() => {
+    Navigation.push<CampaignScenariosViewProps>(componentId, {
+      component: {
+        name: 'Campaign.Scenarios',
+        passProps: {
+          campaignId,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Scenarios`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
       },
-      {
-        key: 'log',
-        title: t`Log`,
-        node: logsTab,
-      },
-    ];
-  }, [decksTab, scenariosTab, logsTab]);
-  const [tabView, setSelectedTab] = useTabView({ tabs });
+    });
+  }, [componentId, campaignId]);
+  const investigatorCount = allInvestigators.length;
+
+  const addScenarioResultPressed = useCallback(() => {
+    showAddScenarioResult(componentId, campaignId);
+  }, [campaignId, componentId]);
+  const [chaosBagDialog, showChaosBag] = useChaosBagDialog({ componentId, allInvestigators, campaignId, chaosBag: campaign?.chaosBag || {} });
   if (!campaign) {
     return (
       <View>
@@ -434,29 +285,96 @@ function CampaignDetailView(props: Props) {
   }
   return (
     <View style={[styles.flex, backgroundStyle]}>
-      { tabView }
-      <AddCampaignNoteSectionDialog
-        visible={addSectionVisible}
-        addSection={addSectionCallback.current}
-        hide={hideAddSectionDialog}
-      />
-      <CampaignGuideFab
-        setSelectedTab={setSelectedTab}
-        setCampaignServerId={setCampaignServerId}
-        componentId={componentId}
-        campaignId={campaignId}
-        campaignName={''}
-        removeMode={removeMode}
-        showEditNameDialog={showEditNameDialog}
-        showAddInvestigator={showAddInvestigator}
-        toggleRemoveInvestigator={toggleRemoveMode}
-        guided={false}
-        showAlert={showAlert}
-      />
+      <View style={[styles.flex, backgroundStyle]}>
+        <ScrollView contentContainerStyle={backgroundStyle}>
+          <View style={space.paddingSideS}>
+            <CampaignSummaryHeader
+              name={campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode]}
+              cycle={campaign.cycleCode}
+              difficulty={campaign.difficulty}
+              buttons={headerButtons}
+            />
+            <DeckButton
+              icon="log"
+              title={t`Campaign Log`}
+              detail={t`Review records`}
+              color="light_gray"
+              onPress={showCampaignLog}
+              bottomMargin={s}
+            />
+            <DeckButton
+              icon="chaos_bag"
+              title={t`Chaos Bag`}
+              detail={t`Review and draw tokens`}
+              color="light_gray"
+              onPress={showChaosBag}
+              bottomMargin={s}
+            />
+            <DeckButton
+              icon="book"
+              title={t`Scenarios`}
+              detail={t`Review scenario results`}
+              color="light_gray"
+              onPress={showScenarios}
+              bottomMargin={s}
+            />
+            <DeckButton
+              icon="finish"
+              title={t`Add scenario result`}
+              detail={t`Record completed scenario`}
+              onPress={addScenarioResultPressed}
+              color="dark_gray"
+              bottomMargin={s}
+            />
+            <View style={[space.paddingBottomS, space.paddingTopS]}>
+              <Text style={[typography.large, typography.center, typography.light]}>
+                { t`— Investigators · ${investigatorCount} —` }
+              </Text>
+            </View>
+            { !!cards && (
+              <DecksSection
+                showAlert={showAlert}
+                showTextEditDialog={showTextEditDialog}
+                showCountDialog={showCountDialog}
+                componentId={componentId}
+                campaign={campaign}
+                campaignId={campaignId}
+                latestDeckIds={latestDeckIds || []}
+                decks={decks}
+                allInvestigators={allInvestigators}
+                cards={cards}
+                investigatorData={investigatorData}
+                showTraumaDialog={showTraumaDialog}
+                removeInvestigator={onRemoveInvestigator}
+                showXpDialog={showXpDialog}
+                showChooseDeck={showChooseDeck}
+              />
+            ) }
+            <DeckButton
+              icon="plus-thin"
+              title={t`Add Investigator`}
+              onPress={showAddInvestigator}
+              color="light_gray"
+              thin
+              bottomMargin={s}
+            />
+            <DeckButton
+              icon="weakness"
+              color="light_gray"
+              title={t`Draw random basic weakness`}
+              onPress={drawWeaknessPressed}
+              bottomMargin={s}
+            />
+          </View>
+        </ScrollView>
+      </View>
       { alertDialog }
       { traumaDialog }
+      { xpDialog }
       { dialog }
       { textEditDialog }
+      { chaosBagDialog }
+      { countDialog }
     </View>
   );
 }

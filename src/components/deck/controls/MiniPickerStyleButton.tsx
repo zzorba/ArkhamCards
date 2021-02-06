@@ -45,13 +45,14 @@ export default function MiniPickerStyleButton({
       <View style={[
         styles.row,
         space.paddingBottomXs,
+        { minHeight: 36 },
         !last ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         <View style={styles.leftRow}>
           <View style={styles.row}>
-            <Text style={[typography.small, typography.dark, typography.italic, { flex: 1 }]}>
+            <Text style={[typography.small, typography.dark, typography.italic, { flex: 1.5, textAlignVertical: 'center' }, space.paddingRightS]}>
               { title }
             </Text>
-            <View style={[styles.row, space.paddingTopXs, { flex: 2 }]}>
+            <View style={[styles.row, space.paddingTopXs, typeof valueLabel === 'string' ? undefined : space.paddingBottomXs, { flex: 2 }]}>
               { typeof valueLabel === 'string' ? (
                 <Text style={[typography.large]}>
                   { valueLabel }
@@ -62,7 +63,7 @@ export default function MiniPickerStyleButton({
         </View>
         { !!editable && (
           <View style={styles.editIcon}>
-            <AppIcon name={icon} size={icon === 'edit' ? 20 : 26} color={colors.M} />
+            <AppIcon name={icon} size={icon === 'edit' ? 18 : 26} color={colors.M} />
           </View>
         ) }
       </View>

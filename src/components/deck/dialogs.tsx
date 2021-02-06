@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState, useCallback, useContext, useRef } from 'react';
 import { find, forEach, map, throttle } from 'lodash';
-import { Platform, NativeSyntheticEvent, StyleSheet, Text, TextInput, TextInputSubmitEditingEventData, View } from 'react-native';
+import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
@@ -15,7 +15,7 @@ import { SaveDeckChanges, saveDeckChanges, uploadLocalDeck } from '@components/d
 import { updateCampaign } from '@components/campaign/actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
-import space, { s, xs } from '@styles/space';
+import space from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
 import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
@@ -26,6 +26,7 @@ interface DialogOptions {
   title: string;
   confirm?: {
     title: string;
+    disabled?: boolean;
     onPress: () => void | Promise<boolean>;
     loading?: boolean;
   };
@@ -79,7 +80,7 @@ export function useDialog({
         <DeckButton
           key="cancel"
           icon="dismiss"
-          color={confirm ? 'red' : undefined}
+          color={confirm ? 'red_outline' : undefined}
           title={dismiss.title}
           thin
           onPress={onDismiss}
@@ -92,6 +93,7 @@ export function useDialog({
           key="save"
           icon="check-thin"
           title={confirm.title}
+          disabled={confirm.disabled}
           thin
           loading={confirm.loading}
           onPress={onConfirm}
@@ -224,73 +226,6 @@ export function useAlertDialog(): [React.ReactNode, ShowAlert] {
   return [dialog, showAlert];
 }
 
-interface CounterDialogOptions {
-  title: string;
-  description?: string;
-  label: string;
-  count: number;
-  onCountChange: (count: number) => void;
-  max?: number;
-  min?: number;
-}
-export function useCounterDialog({
-  title,
-  label,
-  description,
-  count,
-  onCountChange,
-  max,
-  min,
-}: CounterDialogOptions) {
-  const { borderStyle, typography } = useContext(StyleContext);
-  const [liveCount, incCount, decCount, setCount] = useCounter(count, { min, max });
-  useEffect(() => {
-    setCount(count);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [count]);
-  const content = useMemo(() => {
-    return (
-      <View style={styles.column}>
-        { !!description && (
-          <View style={[space.marginS, space.paddingBottomS, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
-            <Text style={typography.text}>
-              { description }
-            </Text>
-          </View>
-        ) }
-        <NewDialog.ContentLine text={label} control={(
-          <PlusMinusButtons
-            onIncrement={incCount}
-            onDecrement={decCount}
-            count={liveCount}
-            dialogStyle
-            allowNegative
-          />
-        )} />
-      </View>
-    );
-  }, [liveCount, typography, borderStyle, description, label, incCount, decCount]);
-  const saveChanges = useCallback(() => {
-    onCountChange(liveCount);
-  }, [onCountChange, liveCount]);
-  const { setVisible, dialog } = useDialog({
-    title,
-    content,
-    confirm: {
-      title: t`Done`,
-      onPress: saveChanges,
-    },
-    dismiss: {
-      title: t`Cancel`,
-    },
-  });
-  const showCountDialog = useMemo(() => throttle(() => setVisible(true), 500), [setVisible]);
-  return {
-    showCountDialog,
-    countDialog: dialog,
-  };
-}
-
 interface SimpleTextDialogOptions {
   title: string;
   value: string;
@@ -308,7 +243,6 @@ export function useSimpleTextDialog({
   dialog: React.ReactNode;
   showDialog: () => void;
 } {
-  const { colors, typography } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [liveValue, setLiveValue] = useState(value);
   const [error, setError] = useState<string | undefined>(undefined);
@@ -349,36 +283,20 @@ export function useSimpleTextDialog({
   const onSave = useCallback(() => {
     return doSubmit(liveValue);
   }, [doSubmit, liveValue]);
-  const onSubmit = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
-    return doSubmit(e.nativeEvent.text);
-  }, [doSubmit]);
   const content = useMemo(() => {
     return (
       <View style={space.marginS}>
-        <TextInput
-          ref={textInputRef}
-          autoCorrect={false}
-          style={[
-            { padding: s, paddingTop: xs + s, width: '100%', borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20 },
-            typography.text,
-            error ? { borderColor: colors.warn } : undefined,
-          ]}
-          autoFocus={Platform.OS === 'ios'}
+        <NewDialog.TextInput
+          textInputRef={textInputRef}
           value={liveValue}
+          error={error}
           placeholder={placeholder}
-          placeholderTextColor={colors.lightText}
           onChangeText={setLiveValue}
-          onSubmitEditing={onSubmit}
-          returnKeyType="done"
+          onSubmit={doSubmit}
         />
-        { !!error && (
-          <View style={space.paddingTopS}>
-            <Text style={[typography.text, typography.error]}>{ error } </Text>
-          </View>
-        ) }
       </View>
     );
-  }, [setLiveValue, onSubmit, placeholder, liveValue, typography, colors, error]);
+  }, [setLiveValue, doSubmit, placeholder, liveValue, error]);
   const { setVisible, visible, dialog } = useDialog({
     title,
     allowDismiss: true,
@@ -749,6 +667,63 @@ export function useSaveDialog(
     addedBasicWeaknesses,
     mode,
   };
+}
+
+interface CountDialogOptions {
+  title: string;
+  label: string;
+  value: number;
+  update: (value: number) => void;
+  min?: number;
+  max?: number;
+}
+
+export type ShowCountDialog = (options: CountDialogOptions) => void;
+
+export function useCountDialog(): [React.ReactNode, ShowCountDialog] {
+  const [state, setState] = useState<CountDialogOptions | undefined>();
+  const [value, inc, dec, setValue] = useCounter(state?.value || 0, { min: state?.min, max: state?.max });
+  const saveChanges = useCallback(() => {
+    if (state) {
+      state.update(value);
+    }
+  }, [state, value]);
+  const label = state?.label;
+  const content = useMemo(() => {
+    return (
+      <NewDialog.ContentLine
+        text={label || ''}
+        control={(
+          <PlusMinusButtons
+            onIncrement={inc}
+            onDecrement={dec}
+            count={value}
+            dialogStyle
+            allowNegative={(state?.min || 0) < 0}
+            showZeroCount
+          />
+        )}
+      />
+    );
+  }, [inc, dec, value, label, state]);
+
+  const { setVisible, dialog } = useDialog({
+    title: state?.title || '',
+    content,
+    confirm: {
+      title: t`Done`,
+      onPress: saveChanges,
+    },
+    dismiss: {
+      title: t`Cancel`,
+    },
+  });
+  const show = useCallback((options: CountDialogOptions) => {
+    setState(options);
+    setValue(options.value);
+    setVisible(true);
+  }, [setState, setVisible, setValue]);
+  return [dialog, show];
 }
 
 

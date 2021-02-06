@@ -9,7 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import { t } from 'ttag';
-import { startsWith } from 'lodash';
+import { startsWith, reverse } from 'lodash';
 
 import NewDialog from '@components/core/NewDialog';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -25,10 +25,6 @@ export type ShowTextEditDialog = (
   onSaveAndAdd?: (text: string) => void,
 ) => void;
 
-export interface InjectedDialogProps {
-  showTextEditDialog: ShowTextEditDialog;
-}
-
 interface ActiveState {
   title: string;
   text: string;
@@ -37,7 +33,6 @@ interface ActiveState {
   numberOfLines: number;
   onSaveAndAdd?: (text: string) => void;
 }
-
 
 function useAdvancedTextEditDialog({
   title,
@@ -170,6 +165,9 @@ function useAdvancedTextEditDialog({
         onPress={onCancelPress}
       />
     );
+    if (result.length <= 2) {
+      return reverse(result);
+    }
     return result;
   }, [onDonePress, onSaveAndAddPress, onCancelPress, onCrossOutPress, onAppend, isCrossedOut, textChanged, showCrossOut]);
   const dialog = useMemo(() => {

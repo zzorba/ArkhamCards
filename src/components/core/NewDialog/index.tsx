@@ -6,6 +6,7 @@ import { map } from 'lodash';
 import NewDialogContentLine from './NewDialogContentLine';
 import StyleContext from '@styles/StyleContext';
 import ItemPickerLine from './ItemPickerLine';
+import TextInputLine from './TextInputLine';
 import space, { m, s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import { NOTCH_BOTTOM_PADDING, TINY_PHONE } from '@styles/sizes';
@@ -83,11 +84,15 @@ function NewDialog({
             }]}>
               { map(buttons, (button, idx) => {
                 return (
-                  <View key={idx} style={[styles.button, (idx < buttons.length - 1) ? {
-                    flex: verticalButtons ? undefined : 1,
-                    marginRight: !verticalButtons ? s : undefined,
-                    marginBottom: verticalButtons ? s : undefined,
-                  } : undefined]}>
+                  <View key={idx} style={[
+                    styles.button,
+                    {
+                      flex: verticalButtons ? undefined : 1,
+                    },
+                    (idx < buttons.length - 1) ? {
+                      marginRight: !verticalButtons ? s : undefined,
+                      marginBottom: verticalButtons ? s : undefined,
+                    } : undefined]}>
                     { button }
                   </View>
                 );
@@ -102,6 +107,7 @@ function NewDialog({
 
 NewDialog.ContentLine = NewDialogContentLine;
 NewDialog.PickerItem = ItemPickerLine;
+NewDialog.TextInput = TextInputLine;
 export default NewDialog;
 
 const styles = StyleSheet.create({

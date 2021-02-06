@@ -1,52 +1,61 @@
-import React, { useContext, useEffect } from 'react';
-import {
-  StyleSheet,
-  Text,
-} from 'react-native';
+import React, { useCallback } from 'react';
 
-import BasicListRow from '@components/core/BasicListRow';
-import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import StyleContext from '@styles/StyleContext';
-import { useCounter } from '@components/core/hooks';
+import { ShowCountDialog } from '@components/deck/dialogs';
+import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 
 interface Props {
   countChanged: (index: number, count: number) => void;
+  showCountDialog: ShowCountDialog;
   index: number;
   title: string;
+  icon?: string;
   count?: number;
+  first?: boolean;
   last?: boolean;
 }
 
-export default function EditCountComponent({ countChanged, index, title, count: initialCount, last }: Props) {
-  const { typography } = useContext(StyleContext);
-  const [count, increment, decrement] = useCounter(initialCount || 0, { min: 0 });
-  useEffect(() => {
-    countChanged(index, count);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [count]);
-  return (
-    <BasicListRow noBorder={last}>
-      <Text style={typography.mediumGameFont}>
-        { title }
-      </Text>
-      <PlusMinusButtons
-        count={count || 0}
-        onIncrement={increment}
-        onDecrement={decrement}
-        countRender={(
-          <Text style={[styles.margin, typography.text]}>
-            { count }
-          </Text>
-        )}
-        size={36}
-      />
-    </BasicListRow>
+export default function EditCountComponent({
+  countChanged,
+  showCountDialog,
+  index,
+  icon,
+  title,
+  count: initialCount,
+  first,
+  last,
+}: Props) {
+  const updateCount = useCallback((value: number) => {
+    countChanged(index, value);
+  }, [index, countChanged]);
+  const onPress = useCallback(() => {
+    showCountDialog({
+      title,
+      label: title,
+      value: initialCount || 0,
+      update: updateCount,
+      min: 0,
+    });
+  }, [title, initialCount, updateCount, showCountDialog]);
+
+  return icon ? (
+    <DeckPickerStyleButton
+      icon={icon}
+      title={title}
+      valueLabel={`${initialCount || 0}`}
+      first={first}
+      last={last}
+      editable
+      onPress={onPress}
+    />
+  ) : (
+    <MiniPickerStyleButton
+      title={title}
+      valueLabel={`${initialCount || 0}`}
+      first={first}
+      last={last}
+      editable
+      onPress={onPress}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  margin: {
-    minWidth: 40,
-    textAlign: 'center',
-  },
-});

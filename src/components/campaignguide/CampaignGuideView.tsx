@@ -1,36 +1,28 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
-import CampaignGuideSummary from './CampaignGuideSummary';
-import { Campaign, CampaignId } from '@actions/types';
-import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
-import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
-import ScenarioListComponent from '@components/campaignguide/ScenarioListComponent';
-import useTabView from '@components/core/useTabView';
 import { updateCampaign } from '@components/campaign/actions';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
-import space from '@styles/space';
-import StyleContext from '@styles/StyleContext';
-import { useFlag, useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 import CampaignGuideContext from './CampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
-import RoundedFooterButton from '@components/core/RoundedFooterButton';
-import CampaignGuideFab from './CampaignGuideFab';
-import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import CampaignDetailTab from './CampaignDetailTab';
+import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
+import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
 type Props = CampaignGuideProps & NavigationProps & { setCampaignServerId: (serverId: string) => void };
 
 function CampaignGuideView(props: Props) {
-  const { backgroundStyle } = useContext(StyleContext);
+  const [countDialog, showCountDialog] = useCountDialog();
   const { user } = useContext(ArkhamCardsAuthContext);
   const { componentId, setCampaignServerId } = props;
   const campaignData = useContext(CampaignGuideContext);
@@ -61,128 +53,40 @@ function CampaignGuideView(props: Props) {
     }
   }, componentId, [showEditNameDialog]);
 
-  const saveCampaignUpdate = useCallback((campaignId: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
-    dispatch(updateCampaign(user, campaignId, sparseCampaign, now));
-  }, [dispatch, user]);
-  const { campaignGuide, campaignState } = campaignData;
+  const { campaignGuide, campaignState, campaignName } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
-  const [removeMode, toggleRemoveInvestigator] = useFlag(false);
-  const addInvestigatorPressed = useCallback(() => {
-    campaignState.showChooseDeck();
-  }, [campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
-  const decksTab = useMemo(() => {
+  const headerButtons = useMemo(() => {
     return (
-      <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
-        <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
-          <View style={[space.paddingSideS, space.paddingBottomL]}>
-            <RoundedFactionBlock
-              faction="neutral"
-              noSpace
-              header={
-                <CampaignGuideSummary
-                  inverted
-                  difficulty={processedCampaign.campaignLog.campaignData.difficulty}
-                  campaignGuide={campaignGuide}
-                />
-              }
-              footer={removeMode ? (
-                <RoundedFooterButton
-                  icon="check"
-                  title={t`Finished removing investigators`}
-                  onPress={toggleRemoveInvestigator}
-                />
-              ) : (
-                <RoundedFooterButton
-                  icon="expand"
-                  title={t`Add Investigator`}
-                  onPress={addInvestigatorPressed}
-                />
-              )}
-            >
-              <CampaignInvestigatorsComponent
-                componentId={componentId}
-                showAlert={showAlert}
-                updateCampaign={saveCampaignUpdate}
-                campaignData={campaignData}
-                processedCampaign={processedCampaign}
-                showTraumaDialog={showTraumaDialog}
-                removeMode={removeMode}
-              />
-            </RoundedFactionBlock>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+      <>
+        <UploadCampaignButton
+          campaignId={campaignId}
+          setCampaignServerId={setCampaignServerId}
+        />
+        <DeleteCampaignButton
+          componentId={componentId}
+          campaignId={campaignId}
+          campaignName={campaignName || ''}
+          showAlert={showAlert}
+        />
+      </>
     );
-  }, [componentId, backgroundStyle, removeMode, campaignData, processedCampaign, campaignGuide,
-    addInvestigatorPressed, toggleRemoveInvestigator, saveCampaignUpdate, showTraumaDialog, showAlert,
-  ]);
-  const scenariosTab = useMemo(() => {
-    return (
-      <View style={[styles.wrapper, backgroundStyle]}>
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <ScenarioListComponent
-            showAlert={showAlert}
-            campaignId={campaignId}
-            campaignData={campaignData}
-            processedCampaign={processedCampaign}
-            componentId={componentId}
-          />
-        </ScrollView>
-      </View>
-    );
-  }, [backgroundStyle, campaignData, campaignId, processedCampaign, componentId, showAlert]);
-  const logTab = useMemo(() => {
-    return (
-      <View style={[styles.wrapper, backgroundStyle]}>
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <CampaignLogComponent
-            campaignId={campaignId}
-            campaignGuide={campaignGuide}
-            campaignLog={processedCampaign.campaignLog}
-            componentId={componentId}
-          />
-        </ScrollView>
-      </View>
-    );
-  }, [backgroundStyle, campaignId, campaignGuide, processedCampaign.campaignLog, componentId]);
-  const tabs = useMemo(() => [
-    {
-      key: 'investigators',
-      title: t`Decks`,
-      node: decksTab,
-    },
-    {
-      key: 'scenarios',
-      title: t`Scenarios`,
-      node: scenariosTab,
-    },
-    {
-      key: 'log',
-      title: t`Log`,
-      node: logTab,
-    },
-  ], [decksTab, scenariosTab, logTab]);
-  const [tabView, setSelectedTab] = useTabView({ tabs });
+  }, [showAlert, componentId, campaignId, campaignName, setCampaignServerId]);
+
   return (
     <View style={styles.wrapper}>
-      { tabView }
-      <CampaignGuideFab
-        setSelectedTab={setSelectedTab}
-        setCampaignServerId={setCampaignServerId}
-        campaignId={campaignData.campaignId}
+      <CampaignDetailTab
         componentId={componentId}
-        campaignName={campaignData.campaignName}
-        removeMode={removeMode}
-        showEditNameDialog={showEditNameDialog}
-        showAddInvestigator={addInvestigatorPressed}
-        toggleRemoveInvestigator={toggleRemoveInvestigator}
-        guided
+        processedCampaign={processedCampaign}
         showAlert={showAlert}
+        showCountDialog={showCountDialog}
+        showTraumaDialog={showTraumaDialog}
+        headerButtons={headerButtons}
       />
       { alertDialog }
       { dialog }
       { traumaDialog }
+      { countDialog }
     </View>
   );
 }

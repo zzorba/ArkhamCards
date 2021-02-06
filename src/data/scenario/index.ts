@@ -192,9 +192,6 @@ function findStandaloneScenario(id: StandaloneId, allCampaigns: FullCampaign[], 
   const logEntries = find(allLogEntries, log => log.campaignId === id.campaignId);
   const scenario = campaign && find(campaign.scenarios, scenario => scenario.id === id.scenarioId);
   if (!campaign || !scenario || !logEntries) {
-    console.log(!!campaign);
-    console.log(!!scenario);
-    console.log(!!logEntries);
     return undefined;
   }
   return {

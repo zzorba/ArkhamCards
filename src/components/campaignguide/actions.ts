@@ -76,26 +76,31 @@ function uploadCampaignHelper(
 export function uploadCampaign(
   user: FirebaseAuthTypes.User,
   createServerCampaign: (campaignId: string) => Promise<UploadedCampaignId>,
-  setCampaignServerId: undefined | ((serverId: string) => void),
-  campaign: Campaign,
-  guided: boolean,
-): ThunkAction<Promise<true>, AppState, unknown, UpdateCampaignAction> {
-  return async(dispatch, getState) => {
-    const campaignId = await createServerCampaign(campaign.uuid);
+  campaignId: CampaignId
+): ThunkAction<Promise<UploadedCampaignId>, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch, getState): Promise<UploadedCampaignId> => {
     const state = getState();
+    if (campaignId.serverId) {
+      return campaignId;
+    }
+    const campaign = makeCampaignSelector()(state, campaignId.campaignId);
+    if (!campaign) {
+      throw new Error('Something went wrong');
+    }
+    const newCampaignId = await createServerCampaign(campaignId.campaignId);
+    const guided = !!campaign.guided;
     if (campaign.linkUuid) {
       const campaignA = makeCampaignSelector()(state, campaign.linkUuid.campaignIdA);
       if (campaignA) {
-        dispatch(uploadCampaignHelper(campaignA, { campaignId: campaignA.uuid, serverId: campaignId.serverId }, guided, user));
+        dispatch(uploadCampaignHelper(campaignA, { campaignId: campaignA.uuid, serverId: newCampaignId.serverId }, guided, user));
       }
       const campaignB = makeCampaignSelector()(state, campaign.linkUuid.campaignIdB);
       if (campaignB) {
-        dispatch(uploadCampaignHelper(campaignB, { campaignId: campaignB.uuid, serverId: campaignId.serverId }, guided, user));
+        dispatch(uploadCampaignHelper(campaignB, { campaignId: campaignB.uuid, serverId: newCampaignId.serverId }, guided, user));
       }
     }
-    dispatch(uploadCampaignHelper(campaign, campaignId, guided, user));
-    setCampaignServerId && setCampaignServerId(campaignId.serverId);
-    return true;
+    dispatch(uploadCampaignHelper(campaign, newCampaignId, guided, user));
+    return newCampaignId;
   };
 }
 

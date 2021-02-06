@@ -4,7 +4,8 @@ import { View } from 'react-native';
 
 import NoteRow from './NoteRow';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
-import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
+import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
+import space from '@styles/space';
 
 interface Props {
   notesChanged: (index: number, notes: string[]) => void;
@@ -69,8 +70,8 @@ export default function NotesSection(props: Props) {
 
   return (
     <View>
-      <DeckBubbleHeader title={title} />
-      <View>
+      <DeckSlotHeader title={title} />
+      <View style={space.paddingTopS}>
         { map(notes, (note, idx) => (
           <NoteRow
             key={idx}

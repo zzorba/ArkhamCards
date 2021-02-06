@@ -214,13 +214,14 @@ export function newCampaign(
 export function updateCampaignSpentXp(
   id: CampaignId,
   investigator: string,
-  operation: 'inc' | 'dec'
+  value: number
 ): UpdateCampaignSpentXpAction {
   return {
     type: UPDATE_CAMPAIGN_SPENT_XP,
     id,
     investigator,
-    operation,
+    operation: 'set',
+    value,
     now: new Date(),
   };
 }

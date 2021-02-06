@@ -189,11 +189,15 @@ interface SetCountAction {
   key: string;
   value: number;
 }
+interface SyncCountAction {
+  type: 'sync';
+  values: Counters;
+}
 interface Counters {
   [code: string]: number | undefined;
 }
-export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string) => void, (code: string, value: number) => void] {
-  const [value, updateValue] = useReducer((state: Counters, action: IncCountAction | DecCountAction | SetCountAction) => {
+export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string) => void, (code: string, value: number) => void, (values: Counters) => void] {
+  const [value, updateValue] = useReducer((state: Counters, action: IncCountAction | DecCountAction | SetCountAction | SyncCountAction) => {
     switch (action.type) {
       case 'set':
         return {
@@ -213,6 +217,10 @@ export function useCounters(initialValue: Counters): [Counters, (code: string, m
           [action.key]: Math.max(0, (state[action.key] || 0) - 1),
         };
       }
+      case 'sync':
+        return {
+          ...action.values,
+        };
     }
   }, initialValue);
   const inc = useCallback((code: string, max?: number) => {
@@ -224,7 +232,10 @@ export function useCounters(initialValue: Counters): [Counters, (code: string, m
   const set = useCallback((code: string, value: number) => {
     updateValue({ type: 'set', key: code, value });
   }, [updateValue]);
-  return [value, inc, dec, set];
+  const sync = useCallback((values: Counters) => {
+    updateValue({ type: 'sync', values });
+  }, [updateValue]);
+  return [value, inc, dec, set, sync];
 }
 
 export interface Toggles {

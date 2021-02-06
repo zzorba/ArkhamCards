@@ -226,7 +226,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
               ) }
               <DeckButton
                 bottomMargin={s}
-                icon="tools"
+                icon="wrench"
                 onPress={diagnosticsPressed}
                 title={t`Diagnostics`}
               />

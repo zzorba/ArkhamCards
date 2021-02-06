@@ -291,6 +291,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'eztli':
         return this.forgottenIcon('the_doom_of_eztli', size, color);
       case 'traps':
+      case 'deadly_traps':
         return this.forgottenIcon('deadly_traps', size, color);
       case 'flux':
         return this.forgottenIcon('temporal_flux', size, color);
@@ -299,7 +300,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'venom':
         return this.forgottenIcon('yigs_venom', size, color);
       case 'k\'n-yan':
+      case 'heart_of_the_elders_part_2':
         return this.forgottenIcon('knyan', size, color);
+      case 'heart_of_the_elders_part_1':
       case 'pillars_of_judgment':
         return this.forgottenIcon('pillars_of_judgement', size, color);
       case 'rttfa':
@@ -389,7 +392,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'tdeb':
         return this.dreamIcon('agents_of_atlach_nacha', size, color);
       case 'tdea':
-        return this.dreamIcon('the_search_for_kadath', size, color);
+        return this.dreamIcon('dreamers_curse', size, color);
       case 'tde':
       case 'the_dream_eaters':
         return this.dreamIcon('dream', size, color);
@@ -436,6 +439,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'horror_in_high_gear':
       case 'hhg':
         return this.innsmouthIcon('horror_in_high_gear', size, color);
+      case 'the_lair_of_dagon':
       case 'lair_of_dagon':
       case 'lod':
       case 'itm':

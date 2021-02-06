@@ -16,7 +16,7 @@ import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useNavigationButtonPressed } from '@components/core/hooks';
-import { useCounterDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import { useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 
@@ -98,12 +98,15 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
       });
     }
   }, [scenarioResult, setScenarioResult]);
-  const { countDialog, showCountDialog } = useCounterDialog({
-    title: t`Experience`,
-    label: t`Earned experience:`,
-    count: scenarioResult?.xp || 0,
-    onCountChange: xpChanged,
-  });
+  const [countDialog, showCountDialog] = useCountDialog();
+  const showExperienceDialog = useCallback(() => {
+    showCountDialog({
+      title: t`Experience`,
+      label: t`Earned experience:`,
+      value: scenarioResult?.xp || 0,
+      update: xpChanged,
+    });
+  }, [xpChanged, showCountDialog, scenarioResult]);
   if (!scenarioResult) {
     return null;
   }
@@ -139,7 +142,7 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
             title={t`Experience`}
             icon="xp"
             editable
-            onPress={showCountDialog}
+            onPress={showExperienceDialog}
             valueLabel={`${xp || 0}`}
             last
           />

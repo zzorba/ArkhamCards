@@ -10,13 +10,14 @@ import InvestigatorSectionList from './InvestigatorSectionList';
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
 import space, { s, xs } from '@styles/space';
-import ArkhamButton from '@components/core/ArkhamButton';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import { ShowCountDialog } from '@components/deck/dialogs';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   campaignNotes: CampaignNotes;
   updateCampaignNotes: (campaignNotes: CampaignNotes) => void;
   showTextEditDialog: ShowTextEditDialog;
+  showCountDialog: ShowCountDialog;
   showAddSectionDialog: (
     addSection: (
       name: string,
@@ -33,6 +34,7 @@ export default function CampaignLogSection(props: Props) {
     updateCampaignNotes,
     showTextEditDialog,
     showAddSectionDialog,
+    showCountDialog,
     allInvestigators,
   } = props;
   const delayedUpdateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
@@ -98,25 +100,26 @@ export default function CampaignLogSection(props: Props) {
   const notesSection = useMemo(() => {
     return (
       <View style={[space.paddingSideS, space.paddingBottomS]}>
-        <RoundedFactionBlock faction="neutral" header={undefined}>
-          { map(campaignNotes.sections, (section, idx) => (
-            <NotesSection
-              key={idx}
-              title={section.title}
-              notes={section.notes}
-              index={idx}
-              notesChanged={notesChanged}
-              showDialog={showTextEditDialog}
-            />
-          )) }
-        </RoundedFactionBlock>
+        { map(campaignNotes.sections, (section, idx) => (
+          <NotesSection
+            key={idx}
+            title={section.title}
+            notes={section.notes}
+            index={idx}
+            notesChanged={notesChanged}
+            showDialog={showTextEditDialog}
+          />
+        )) }
       </View>
     );
   }, [campaignNotes.sections, notesChanged, showTextEditDialog]);
 
   const countsSection = useMemo(() => {
+    if (campaignNotes.counts.length === 0) {
+      return null;
+    }
     return (
-      <>
+      <View style={space.paddingSideS}>
         { map(campaignNotes.counts, (section, idx) => (
           <EditCountComponent
             key={idx}
@@ -124,11 +127,14 @@ export default function CampaignLogSection(props: Props) {
             title={section.title}
             count={section.count || 0}
             countChanged={countChanged}
+            showCountDialog={showCountDialog}
+            first={idx === 0}
+            last={idx === campaignNotes.counts.length - 1}
           />
         )) }
-      </>
+      </View>
     );
-  }, [campaignNotes.counts, countChanged]);
+  }, [campaignNotes.counts, countChanged, showCountDialog]);
 
   const investigatorSection = useMemo(() => {
     const investigatorNotes = campaignNotes.investigatorNotes;
@@ -138,15 +144,23 @@ export default function CampaignLogSection(props: Props) {
         investigatorNotes={investigatorNotes}
         updateInvestigatorNotes={updateInvestigatorNotes}
         showDialog={showTextEditDialog}
+        showCountDialog={showCountDialog}
       />
     );
-  }, [campaignNotes.investigatorNotes, allInvestigators, showTextEditDialog, updateInvestigatorNotes]);
+  }, [campaignNotes.investigatorNotes, allInvestigators, showTextEditDialog, showCountDialog, updateInvestigatorNotes]);
   return (
     <View style={styles.underline}>
       { notesSection }
       { countsSection }
       { investigatorSection }
-      <ArkhamButton icon="expand" title={t`Add Log Section`} onPress={addSectionDialogPressed} />
+      <View style={[space.paddingSideS, space.paddingTopS]}>
+        <DeckButton
+          icon="plus-thin"
+          title={t`Add Log Section`}
+          onPress={addSectionDialogPressed}
+          color="light_gray"
+        />
+      </View>
     </View>
   );
 }

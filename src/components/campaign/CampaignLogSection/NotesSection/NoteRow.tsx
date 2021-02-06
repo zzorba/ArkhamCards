@@ -9,6 +9,7 @@ import { t } from 'ttag';
 
 import TextBoxButton from '@components/core/TextBoxButton';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
+import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 
 interface Props {
   title: string;
@@ -43,16 +44,27 @@ export default function NoteRow(props: Props) {
 
   return (
     <View style={styles.row}>
-      <TouchableOpacity onPress={onPress}>
-        <TextBoxButton
-          crossedOut={crossedOut}
-          value={value}
-          placeholder={appendNote ? t`Add note` : undefined}
-          pointerEvents="none"
-          ellipsizeMode="tail"
-          multiline
+      { appendNote ? (
+        <MiniPickerStyleButton
+          first
+          last
+          icon="edit"
+          title={t`Add note`}
+          valueLabel=""
+          editable
+          onPress={onPress}
         />
-      </TouchableOpacity>
+      ) : (
+        <TouchableOpacity onPress={onPress}>
+          <TextBoxButton
+            crossedOut={crossedOut}
+            value={value}
+            pointerEvents="none"
+            ellipsizeMode="tail"
+            multiline
+          />
+        </TouchableOpacity>
+      ) }
     </View>
   );
 }

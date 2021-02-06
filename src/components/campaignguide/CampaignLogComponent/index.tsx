@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { flatMap, map, keys, sum, values } from 'lodash';
+import { View } from 'react-native';
+import { flatMap, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -13,8 +13,6 @@ import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import space, { s, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import AchievementComponent from './AchievementComponent';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { CampaignId } from '@actions/types';
@@ -25,12 +23,11 @@ interface Props {
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
   standalone?: boolean;
-  header?: React.ReactNode;
-  hideAchievements?: boolean;
+  hideChaosBag?: boolean;
 }
 
-export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, header, hideAchievements }: Props) {
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, hideChaosBag }: Props) {
+  const { backgroundStyle } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
       case 'count': {
@@ -102,7 +99,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
   const chaosBagSimulatorPressed = useCallback(() => {
     Navigation.push<GuideChaosBagProps>(componentId, {
       component: {
-        name: 'Guide.ChaosBag',
+        name: 'Guide.DrawChaosBag',
         passProps: {
           campaignId,
           chaosBag: campaignLog.chaosBag,
@@ -122,10 +119,14 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
   }, [componentId, campaignId, campaignLog]);
 
   const chaosBagSection = useMemo(() => {
+    if (hideChaosBag) {
+      return null;
+    }
     if (!keys(campaignLog.chaosBag).length && !standalone) {
       return null;
     }
     const tokenCount = sum(values(campaignLog.chaosBag));
+    console.log('Rendering the chaos bag');
     return (
       <View style={[space.paddingSideS, space.paddingBottomM]}>
         <DeckBubbleHeader title={t`Chaos Bag (${tokenCount})`} />
@@ -150,61 +151,20 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         </View>
       </View>
     );
-  }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, standalone]);
-  const achievementsSection = useMemo(() => {
-    if (hideAchievements) {
-      return null;
-    }
-    const achievements = campaignGuide.achievements();
-    if (!achievements.length) {
-      return null;
-    }
-    return (
-      <View style={[space.paddingSideS, space.paddingBottomM]}>
-        <RoundedFactionBlock
-          header={
-            <View style={[space.paddingTopS, space.paddingBottomS, space.marginBottomS, styles.header, { backgroundColor: colors.L20 }]}>
-              <Text style={[typography.bigGameFont, typography.center]}>
-                { t`Achievements` }
-              </Text>
-            </View>
-          }
-          faction="neutral"
-        >
-          { map(achievements, (a, idx) => <AchievementComponent key={idx} achievement={a} />) }
-        </RoundedFactionBlock>
-      </View>
-    );
-  }, [campaignGuide, colors, typography, hideAchievements]);
+  }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, hideChaosBag, standalone]);
   return (
-    <View style={backgroundStyle}>
-      <View style={[space.paddingSideS, space.paddingBottomM]}>
-        <RoundedFactionBlock
-          header={header}
-          faction="neutral"
-          noSpace
-        >
-          { chaosBagSection }
-          { flatMap(campaignGuide.campaignLogSections(), log => {
-            if (log.type === 'hidden') {
-              return null;
-            }
-            return (
-              <View key={log.id}>
-                { renderLogEntrySectionContent(log.id, log.title, log.type) }
-              </View>
-            );
-          }) }
-        </RoundedFactionBlock>
-      </View>
-      { achievementsSection }
+    <View style={[backgroundStyle, space.paddingBottomM]}>
+      { chaosBagSection }
+      { flatMap(campaignGuide.campaignLogSections(), log => {
+        if (log.type === 'hidden') {
+          return null;
+        }
+        return (
+          <View key={log.id}>
+            { renderLogEntrySectionContent(log.id, log.title, log.type) }
+          </View>
+        );
+      }) }
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  header: {
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-  },
-});

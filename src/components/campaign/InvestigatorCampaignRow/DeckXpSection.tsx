@@ -2,15 +2,13 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { Deck } from '@actions/types';
-import PickerStyleButton from '@components/core/PickerStyleButton';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import { showDeckModal } from '@components/nav/helper';
 import Card, { CardsMap } from '@data/Card';
 import { AppState, makeDeckSelector } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
+import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 
 interface Props {
   componentId: string;
@@ -39,7 +37,7 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
       deck,
       colors,
       investigator,
-      { hideCampaign: true }
+      { hideCampaign: true, initialMode: 'upgrade' }
     );
   }, [colors, componentId, deck, investigator]);
 
@@ -61,23 +59,20 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
   const totalXp = (deck.xp || 0) + (deck.xp_adjustment || 0);
   return (
     <>
-      <CardSectionHeader
-        investigator={investigator}
-        section={{ superTitle: t`Experience points` }}
+      <MiniPickerStyleButton
+        title={t`Experience`}
+        valueLabel={t`${spentXp} of ${totalXp} spent`}
+        first
+        editable
+        onPress={onPress}
       />
-      { !!changes && (
-        <PickerStyleButton
-          id="xp"
-          title={t`${spentXp} of ${totalXp} spent`}
-          onPress={onPress}
-          widget="nav"
-          settingsStyle
-        />
-      ) }
       { !!showDeckUpgrade && (
-        <BasicButton
+        <MiniPickerStyleButton
           title={t`Upgrade Deck`}
+          valueLabel={t`Add XP from scenario`}
+          icon="upgrade"
           onPress={showDeckUpgradePress}
+          editable
         />
       ) }
     </>

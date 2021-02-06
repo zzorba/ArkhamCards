@@ -19,7 +19,7 @@ import space, { s, xs } from '@styles/space';
 import { useFlag, useToggles } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT, Campaign, STANDALONE } from '@actions/types';
+import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT, Campaign, getCampaignId, STANDALONE } from '@actions/types';
 import { AppState, getCampaigns } from '@reducers';
 import { removeLocalCampaign } from '@components/campaign/actions';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
@@ -450,7 +450,7 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
       updateUploadState({ type: 'start', total: uploadCampaigns.length });
       await Promise.all(
         map(uploadCampaigns, c => {
-          return dispatch(uploadCampaign(user, createServerCampaign, undefined, c, !!c.guided)).then(
+          return dispatch(uploadCampaign(user, createServerCampaign, getCampaignId(c))).then(
             () => updateUploadState({ type: 'finish' }),
             () => updateUploadState({ type: 'error' }),
           );

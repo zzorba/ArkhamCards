@@ -8,7 +8,7 @@ import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface Props {
-  icon: string;
+  icon?: string;
   title: string;
   valueLabel: string | React.ReactNode;
   valueLabelDescription?: string;
@@ -66,13 +66,15 @@ export default function DeckPickerStyleButton({
     >
       <View style={[styles.row, space.paddingBottomS, !last ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         <View style={styles.leftRow}>
-          <View style={styles.icon}>
-            { icon === 'per_investigator' ? (
-              <ArkhamIcon name={icon} size={iconSize(icon)} color={colors.M} />
-            ) : (
-              <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
-            ) }
-          </View>
+          { !!icon && (
+            <View style={styles.icon}>
+              { icon === 'per_investigator' ? (
+                <ArkhamIcon name={icon} size={iconSize(icon)} color={colors.M} />
+              ) : (
+                <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
+              ) }
+            </View>
+          ) }
           <View style={styles.column}>
             <Text style={[typography.smallLabel, typography.dark, typography.italic]}>
               { title }
