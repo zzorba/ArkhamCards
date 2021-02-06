@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState, useCallback, useContext, useRef } from 'react';
 import { find, forEach, map, throttle } from 'lodash';
-import { Platform, NativeSyntheticEvent, StyleSheet, Text, TextInput, TextInputSubmitEditingEventData, View } from 'react-native';
+import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
@@ -15,7 +15,7 @@ import { SaveDeckChanges, saveDeckChanges, uploadLocalDeck } from '@components/d
 import { updateCampaign } from '@components/campaign/actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
-import space, { s, xs } from '@styles/space';
+import space from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
 import DeckButton, { DeckButtonIcon } from './controls/DeckButton';

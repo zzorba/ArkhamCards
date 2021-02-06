@@ -9,7 +9,6 @@ import { t } from 'ttag';
 
 import TextBoxButton from '@components/core/TextBoxButton';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
-import DeckButton from '@components/deck/controls/DeckButton';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 
 interface Props {

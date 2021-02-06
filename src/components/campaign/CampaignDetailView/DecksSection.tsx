@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { find, flatMap, map, partition } from 'lodash';
+import { find, flatMap, partition } from 'lodash';
 import {
   InteractionManager,
   StyleSheet,

@@ -1,10 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { Sepia } from 'react-native-color-matrix-image-filters';
 import {
@@ -18,7 +13,6 @@ import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constant
 import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
 import StyleContext from '@styles/StyleContext';
-import { getPosition } from 'react-native-track-player';
 
 interface Props {
   card?: Card;

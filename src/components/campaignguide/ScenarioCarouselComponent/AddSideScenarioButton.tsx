@@ -6,10 +6,8 @@ import { t } from 'ttag';
 
 import { AddSideScenarioProps } from '@components/campaignguide/AddSideScenarioView';
 import { ProcessedCampaign } from '@data/scenario';
-import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { ShowAlert } from '@components/deck/dialogs';
 import CampaignGuideContext from '../CampaignGuideContext';
-import ArkhamButton from '@components/core/ArkhamButton';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';

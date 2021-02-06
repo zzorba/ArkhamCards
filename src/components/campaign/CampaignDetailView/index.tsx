@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { keys, map, filter, flatMap } from 'lodash';
+import { keys, map, flatMap } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -13,11 +13,11 @@ import { NavigationProps } from '@components/nav/types';
 import { getAllDecks, getDeck } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign, useCampaignDetails, useCampaignScenarios, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useCampaign, useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
-import { campaignNames, completedScenario } from '../constants';
-import space, { m, s } from '@styles/space';
+import { campaignNames } from '../constants';
+import space, { s } from '@styles/space';
 import CampaignSummaryHeader from '../CampaignSummaryHeader';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
@@ -30,11 +30,6 @@ import DeleteCampaignButton from '../DeleteCampaignButton';
 import { CampaignLogViewProps } from '../CampaignLogView';
 import { CampaignScenariosViewProps } from '../CampaignScenariosView';
 import UploadCampaignButton from '../UploadCampaignButton';
-import CampaignScenarioButton from '../CampaignScenarioButton';
-import { EditScenarioResultProps } from '../EditScenarioResultView';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
-import RoundedFooterButton from '@components/core/RoundedFooterButton';
-import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import useChaosBagDialog from './useChaosBagDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 
@@ -43,38 +38,6 @@ export interface CampaignDetailProps {
 }
 
 type Props = NavigationProps & CampaignDetailProps
-
-function ScenarioResultButton({ name, campaignId, componentId, status, index, onPress }: {
-  name: string;
-  campaignId: CampaignId;
-  componentId: string;
-  status: 'completed' | 'playable';
-  index: number;
-  onPress?: () => void;
-}) {
-  const buttonOnPress = useCallback(() => {
-    if (onPress) {
-      onPress();
-    } else {
-      Navigation.push<EditScenarioResultProps>(componentId, {
-        component: {
-          name: 'Campaign.EditResult',
-          passProps: {
-            campaignId,
-            index,
-          },
-        },
-      });
-    }
-  }, [componentId, campaignId, index, onPress]);
-  return (
-    <CampaignScenarioButton
-      onPress={buttonOnPress}
-      status={status}
-      title={name}
-    />
-  );
-}
 
 function CampaignDetailView(props: Props) {
   const { componentId } = props;
@@ -304,7 +267,6 @@ function CampaignDetailView(props: Props) {
     });
   }, [componentId, campaignId]);
   const investigatorCount = allInvestigators.length;
-  const [cycleScenarios] = useCampaignScenarios(campaign);
 
   const addScenarioResultPressed = useCallback(() => {
     showAddScenarioResult(componentId, campaignId);
@@ -321,7 +283,6 @@ function CampaignDetailView(props: Props) {
       </View>
     );
   }
-  const hasCompletedScenario = completedScenario(campaign.scenarioResults);
   return (
     <View style={[styles.flex, backgroundStyle]}>
       <View style={[styles.flex, backgroundStyle]}>

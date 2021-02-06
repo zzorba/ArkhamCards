@@ -24,7 +24,6 @@ import {
   DeckId,
   Campaign,
   UploadedCampaignId,
-  LocalCampaignId,
 } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';

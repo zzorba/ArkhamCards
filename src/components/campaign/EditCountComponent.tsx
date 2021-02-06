@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 
 import { ShowCountDialog } from '@components/deck/dialogs';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
-import PickerStyleButton from '@components/core/PickerStyleButton';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 
 interface Props {

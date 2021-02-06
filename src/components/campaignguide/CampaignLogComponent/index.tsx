@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { flatMap, map, keys, sum, values } from 'lodash';
+import { View } from 'react-native';
+import { flatMap, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -13,7 +13,6 @@ import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import space, { s, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { CampaignId } from '@actions/types';
@@ -24,11 +23,10 @@ interface Props {
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
   standalone?: boolean;
-  header?: React.ReactNode;
   hideChaosBag?: boolean;
 }
 
-export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, header, hideChaosBag }: Props) {
+export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, hideChaosBag }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
