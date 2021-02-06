@@ -162,7 +162,7 @@ export default function ScenarioSection({ campaign, scenarioChanged, showTextEdi
       ) }
       { (selectedScenario === CUSTOM || !selectedScenario.interlude) && (
         <DeckPickerStyleButton
-          icon="check-thin"
+          icon="finish"
           title={t`Resolution`}
           valueLabel={resolution || t`(required)`}
           onPress={showResolutionDialog}

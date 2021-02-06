@@ -108,7 +108,7 @@ export default function CampaignDetailTab({
             buttons={headerButtons}
           />
           <DeckButton
-            icon="book"
+            icon="log"
             title={t`Campaign Log`}
             detail={t`Review records`}
             color="light_gray"

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { ScrollView, View, StyleSheet } from 'react-native';
 
@@ -9,7 +9,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import StyleContext from '@styles/StyleContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { updateCampaign } from './actions';
-import AddCampaignNoteSectionDialog, { AddSectionFunction } from './AddCampaignNoteSectionDialog';
+import useAddCampaignNoteSectionDialog from './useAddCampaignNoteSectionDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useCountDialog } from '@components/deck/dialogs';
 
@@ -18,6 +18,7 @@ export interface CampaignLogViewProps {
 }
 
 export default function CampaignLogView({ campaignId }: CampaignLogViewProps) {
+  const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
   const [dialog, showTextEditDialog] = useTextEditDialog();
   const [countDialog, showCountDialog] = useCountDialog();
   const { backgroundStyle } = useContext(StyleContext);
@@ -29,17 +30,6 @@ export default function CampaignLogView({ campaignId }: CampaignLogViewProps) {
   const updateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
     dispatch(updateCampaign(user, campaignId, { campaignNotes }));
   }, [dispatch, campaignId, user]);
-  const addSectionCallback = useRef<AddSectionFunction>();
-  const [addSectionVisible, setAddSectionVisible] = useState(false);
-
-  const showAddSectionDialog = useCallback((addSectionFunction: AddSectionFunction) => {
-    addSectionCallback.current = addSectionFunction;
-    setAddSectionVisible(true);
-  }, [addSectionCallback, setAddSectionVisible]);
-  const hideAddSectionDialog = useCallback(() => {
-    setAddSectionVisible(false);
-    addSectionCallback.current = undefined;
-  }, [addSectionCallback, setAddSectionVisible]);
 
   if (!campaign) {
     return <LoadingSpinner />;
@@ -56,11 +46,7 @@ export default function CampaignLogView({ campaignId }: CampaignLogViewProps) {
           showAddSectionDialog={showAddSectionDialog}
         />
       </ScrollView>
-      <AddCampaignNoteSectionDialog
-        visible={addSectionVisible}
-        addSection={addSectionCallback.current}
-        hide={hideAddSectionDialog}
-      />
+      { addSectionDialog }
       { dialog }
       { countDialog }
     </View>

@@ -10,8 +10,6 @@ import InvestigatorSectionList from './InvestigatorSectionList';
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
 import space, { s, xs } from '@styles/space';
-import ArkhamButton from '@components/core/ArkhamButton';
-import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import { ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 

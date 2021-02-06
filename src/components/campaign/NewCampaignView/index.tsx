@@ -31,7 +31,7 @@ import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import { getCampaignLog, getChaosBag, difficultyString } from '../constants';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
-import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
+import useAddCampaignNoteSectionDialog from '../useAddCampaignNoteSectionDialog';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckSelector from './DeckSelector';
@@ -99,9 +99,9 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const [weaknessAssignedCards, updateWeaknessAssignedCards] = useSlots({});
   const [customChaosBag, setCustomChaosBag] = useState<ChaosBag>(getChaosBag(CORE, CampaignDifficulty.STANDARD));
   const [customCampaignLog, setCustomCampaignLog] = useState<CustomCampaignLog>({ sections: [t`Campaign Notes`] });
-  const [campaignLogDialogVisible, setCampaignLogDialogVisible] = useState(false);
   const isGuided = hasGuide && (guided || (selection.type === 'campaign' && selection.code === 'tde'));
 
+  const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
   const hasDefinedChaosBag = useMemo(() => {
     return selection.type === 'campaign' && selection.code !== CUSTOM && !!getChaosBag(selection.code, difficulty);
   }, [selection, difficulty]);
@@ -140,6 +140,9 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [componentId, name, selection]);
 
   const addCampaignNoteSection = useCallback((name: string, isCount?: boolean, perInvestigator?: boolean) => {
+    if (!name) {
+      return;
+    }
     const updatedCustomCampaignLog = { ...customCampaignLog };
     const keyName: keyof CustomCampaignLog = getKeyName(isCount, perInvestigator);
     updatedCustomCampaignLog[keyName] = [
@@ -159,12 +162,8 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [customCampaignLog, setCustomCampaignLog]);
 
   const showCampaignLogDialog = useCallback(() => {
-    setCampaignLogDialogVisible(true);
-  }, [setCampaignLogDialogVisible]);
-
-  const hideCampaignLogDialog = useCallback(() => {
-    setCampaignLogDialogVisible(false);
-  }, [setCampaignLogDialogVisible]);
+    showAddSectionDialog(addCampaignNoteSection);
+  }, [showAddSectionDialog, addCampaignNoteSection]);
 
   const onNameChange = useCallback((name?: string) => {
     setName(name || '');
@@ -350,16 +349,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
     );
   }, [componentId, typography, colors, setWeaknessPacks]);
 
-  const campaignSectionDialog = useMemo(() => {
-    return (
-      <AddCampaignNoteSectionDialog
-        visible={campaignLogDialogVisible}
-        addSection={addCampaignNoteSection}
-        hide={hideCampaignLogDialog}
-      />
-    );
-  }, [campaignLogDialogVisible, addCampaignNoteSection, hideCampaignLogDialog]);
-
   const campaignLogSection = useMemo(() => {
     if (isGuided || selection.type === 'standalone') {
       return null;
@@ -380,32 +369,32 @@ function NewCampaignView({ componentId }: NavigationProps) {
           )}
           footer={!hasDefinedChaosBag ? <RoundedFooterButton icon="expand" title={t`Add Log Section`} onPress={showCampaignLogDialog} /> : undefined}
         >
-          { map(campaignLog.sections || [], section => (
+          { map(campaignLog.sections || [], (section, idx) => (
             <CampaignNoteSectionRow
-              key={section}
+              key={idx}
               name={section}
               onPress={onPress}
             />
           )) }
-          { map(campaignLog.counts || [], section => (
+          { map(campaignLog.counts || [], (section, idx) => (
             <CampaignNoteSectionRow
-              key={section}
+              key={idx}
               name={section}
               isCount
               onPress={onPress}
             />
           )) }
-          { map(campaignLog.investigatorSections || [], section => (
+          { map(campaignLog.investigatorSections || [], (section, idx) => (
             <CampaignNoteSectionRow
-              key={section}
+              key={idx}
               name={section}
               perInvestigator
               onPress={onPress}
             />
           )) }
-          { map(campaignLog.investigatorCounts || [], section => (
+          { map(campaignLog.investigatorCounts || [], (section, idx) => (
             <CampaignNoteSectionRow
-              key={section}
+              key={idx}
               name={section}
               perInvestigator
               isCount
@@ -553,7 +542,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
           ) }
         </View>
       </ScrollView>
-      { campaignSectionDialog }
+      { addSectionDialog }
       { difficultyDialog }
       { dialog }
       { alertDialog }

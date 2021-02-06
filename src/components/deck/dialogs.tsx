@@ -26,6 +26,7 @@ interface DialogOptions {
   title: string;
   confirm?: {
     title: string;
+    disabled?: boolean;
     onPress: () => void | Promise<boolean>;
     loading?: boolean;
   };
@@ -79,7 +80,7 @@ export function useDialog({
         <DeckButton
           key="cancel"
           icon="dismiss"
-          color={confirm ? 'red' : undefined}
+          color={confirm ? 'red_outline' : undefined}
           title={dismiss.title}
           thin
           onPress={onDismiss}
@@ -92,6 +93,7 @@ export function useDialog({
           key="save"
           icon="check-thin"
           title={confirm.title}
+          disabled={confirm.disabled}
           thin
           loading={confirm.loading}
           onPress={onConfirm}
@@ -241,7 +243,6 @@ export function useSimpleTextDialog({
   dialog: React.ReactNode;
   showDialog: () => void;
 } {
-  const { colors, typography } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [liveValue, setLiveValue] = useState(value);
   const [error, setError] = useState<string | undefined>(undefined);
@@ -282,36 +283,20 @@ export function useSimpleTextDialog({
   const onSave = useCallback(() => {
     return doSubmit(liveValue);
   }, [doSubmit, liveValue]);
-  const onSubmit = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
-    return doSubmit(e.nativeEvent.text);
-  }, [doSubmit]);
   const content = useMemo(() => {
     return (
       <View style={space.marginS}>
-        <TextInput
-          ref={textInputRef}
-          autoCorrect={false}
-          style={[
-            { padding: s, paddingTop: xs + s, width: '100%', borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20 },
-            typography.text,
-            error ? { borderColor: colors.warn } : undefined,
-          ]}
-          autoFocus={Platform.OS === 'ios'}
+        <NewDialog.TextInput
+          textInputRef={textInputRef}
           value={liveValue}
+          error={error}
           placeholder={placeholder}
-          placeholderTextColor={colors.lightText}
           onChangeText={setLiveValue}
-          onSubmitEditing={onSubmit}
-          returnKeyType="done"
+          onSubmit={doSubmit}
         />
-        { !!error && (
-          <View style={space.paddingTopS}>
-            <Text style={[typography.text, typography.error]}>{ error } </Text>
-          </View>
-        ) }
       </View>
     );
-  }, [setLiveValue, onSubmit, placeholder, liveValue, typography, colors, error]);
+  }, [setLiveValue, doSubmit, placeholder, liveValue, error]);
   const { setVisible, visible, dialog } = useDialog({
     title,
     allowDismiss: true,

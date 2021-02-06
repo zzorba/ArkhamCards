@@ -15,7 +15,7 @@ import { NavigationProps } from '@components/nav/types';
 import ScenarioSection from './ScenarioSection';
 import CampaignLogSection from '../CampaignLogSection';
 import XpComponent from '../XpComponent';
-import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
+import useAddCampaignNoteSectionDialog from '../useAddCampaignNoteSectionDialog';
 import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
 import space, { m, s } from '@styles/space';
@@ -36,8 +36,9 @@ type Props = NavigationProps &
 
 function AddScenarioResultView({ componentId, id }: Props) {
   const [dialog, showTextEditDialog] = useTextEditDialog();
+  const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
   const [countDialog, showCountDialog] = useCountDialog();
-  const { backgroundStyle, borderStyle } = useContext(StyleContext);
+  const { backgroundStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
 
@@ -47,8 +48,6 @@ function AddScenarioResultView({ componentId, id }: Props) {
   const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();
   const allInvestigators = useCampaignInvestigators(campaign, investigators);
   const [xp, setXp] = useState(0);
-  const [addSectionVisible, setAddSectionVisible] = useState(false);
-  const addSectionFunction = useRef<AddSectionFunction>();
 
   const doSave = useCallback((showDeckUpgrade: boolean) => {
     if (scenario) {
@@ -118,16 +117,6 @@ function AddScenarioResultView({ componentId, id }: Props) {
     savePressed(true);
   }, [savePressed]);
 
-  const showAddSectionDialog = useCallback((f: AddSectionFunction) => {
-    setAddSectionVisible(true);
-    addSectionFunction.current = f;
-  }, [addSectionFunction, setAddSectionVisible]);
-
-  const hideAddSectionDialog = useCallback(() => {
-    setAddSectionVisible(false);
-    addSectionFunction.current = undefined;
-  }, [addSectionFunction, setAddSectionVisible]);
-
   const scenariosSection = useMemo(() => {
     if (!campaign) {
       return null;
@@ -150,11 +139,6 @@ function AddScenarioResultView({ componentId, id }: Props) {
   const hasDecks = !!campaign && !!campaign.deckIds && campaign.deckIds.length > 0;
   return (
     <View style={[styles.flex, backgroundStyle]}>
-      <AddCampaignNoteSectionDialog
-        visible={addSectionVisible}
-        addSection={addSectionFunction.current}
-        hide={hideAddSectionDialog}
-      />
       <ScrollView style={styles.flex} contentContainerStyle={styles.container}>
         { scenariosSection }
         <View style={[space.paddingSideS, space.paddingBottomS]}>
@@ -195,6 +179,7 @@ function AddScenarioResultView({ componentId, id }: Props) {
         ) }
         <View style={styles.footer} />
       </ScrollView>
+      { addSectionDialog }
       { dialog }
       { countDialog }
     </View>
@@ -230,9 +215,6 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
-  },
-  bottomBorder: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   flex: {
     flex: 1,

@@ -9,7 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import { t } from 'ttag';
-import { startsWith } from 'lodash';
+import { startsWith, reverse } from 'lodash';
 
 import NewDialog from '@components/core/NewDialog';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -165,6 +165,9 @@ function useAdvancedTextEditDialog({
         onPress={onCancelPress}
       />
     );
+    if (result.length <= 2) {
+      return reverse(result);
+    }
     return result;
   }, [onDonePress, onSaveAndAddPress, onCancelPress, onCrossOutPress, onAppend, isCrossedOut, textChanged, showCrossOut]);
   const dialog = useMemo(() => {

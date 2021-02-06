@@ -11,6 +11,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'log' |
   'finish' |
   'wrench' |
   'plus-button' |
@@ -203,7 +204,7 @@ export default function DeckButton({
             styles.icon,
             space.marginLeftXs,
             space.marginRightS,
-            thin ? { marginLeft: xs, width: 24, height: height - s * 2 } : { width: 32, height: height - s * 2 },
+            thin ? { marginLeft: xs, width: 24, height: height - s * 2 - xs } : { width: 32, height: height - s * 2 - xs },
             loading ? undefined : ICON_STYLE[icon],
           ]}>
             { iconContent }

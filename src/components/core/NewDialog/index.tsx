@@ -6,6 +6,7 @@ import { map } from 'lodash';
 import NewDialogContentLine from './NewDialogContentLine';
 import StyleContext from '@styles/StyleContext';
 import ItemPickerLine from './ItemPickerLine';
+import TextInputLine from './TextInputLine';
 import space, { m, s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import { NOTCH_BOTTOM_PADDING, TINY_PHONE } from '@styles/sizes';
@@ -106,6 +107,7 @@ function NewDialog({
 
 NewDialog.ContentLine = NewDialogContentLine;
 NewDialog.PickerItem = ItemPickerLine;
+NewDialog.TextInput = TextInputLine;
 export default NewDialog;
 
 const styles = StyleSheet.create({
