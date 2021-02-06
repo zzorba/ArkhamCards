@@ -39,6 +39,7 @@ interface Props {
   // For legacy system
   showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
   showTraumaDialog?: (investigator: Card, traumaData: TraumaAndCardData) => void;
+  miniButtons?: React.ReactNode;
 
   children?: React.ReactNode;
 }
@@ -73,6 +74,7 @@ export default function InvestigatorCampaignRow({
   showDeckUpgrade,
   showTraumaDialog,
   children,
+  miniButtons,
 }: Props) {
   const { colors, typography, width } = useContext(StyleContext);
   const onCardPress = useCallback((card: Card) => {
@@ -207,10 +209,11 @@ export default function InvestigatorCampaignRow({
                 title={t`Trauma`}
                 valueLabel={<TraumaSummary trauma={traumaAndCardData} investigator={investigator} />}
                 first={!xpButton}
-                last
+                last={!miniButtons}
                 editable={!!showTraumaDialog}
                 onPress={onTraumaPress}
               />
+              { !!miniButtons && miniButtons }
             </View>
             { eliminated ? undefined : (
               <>

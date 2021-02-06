@@ -1,5 +1,7 @@
 import { Campaign, CampaignId } from '@actions/types';
 import { ChaosBag } from '@app_constants';
+import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
+import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
 import Card from '@data/Card';
 import { map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
@@ -42,7 +44,37 @@ export function showEditChaosBag(componentId: string, campaign: Campaign, update
   });
 }
 
-export function showDrawChaosBag(componentId: string, campaignId: CampaignId, updateChaosBag: (chaosBag: ChaosBag) => void) {
+export function showGuideDrawChaosBag(
+  componentId: string,
+  campaignId: CampaignId,
+  chaosBag: ChaosBag
+) {
+  Navigation.push<GuideChaosBagProps>(componentId, {
+    component: {
+      name: 'Guide.DrawChaosBag',
+      passProps: {
+        campaignId,
+        chaosBag,
+      },
+      options: {
+        topBar: {
+          title: {
+            text: t`Chaos Bag`,
+          },
+          backButton: {
+            title: t`Back`,
+          },
+        },
+      },
+    },
+  });
+}
+
+export function showDrawChaosBag(
+  componentId: string,
+  campaignId: CampaignId,
+  updateChaosBag: (chaosBag: ChaosBag) => void,
+) {
   Navigation.push<CampaignDrawChaosBagProps>(componentId, {
     component: {
       name: 'Campaign.DrawChaosBag',
@@ -71,6 +103,30 @@ export function showChaosBagOddsCalculator(componentId: string, campaignId: Camp
       passProps: {
         campaignId,
         investigatorIds: map(allInvestigators, card => card.code),
+      },
+      options: {
+        topBar: {
+          title: {
+            text: t`Odds Calculator`,
+          },
+          backButton: {
+            title: t`Back`,
+          },
+        },
+      },
+    },
+  });
+}
+
+
+export function showGuideChaosBagOddsCalculator(componentId: string, campaignId: CampaignId, chaosBag: ChaosBag, allInvestigators: Card[]) {
+  Navigation.push<GuideOddsCalculatorProps>(componentId, {
+    component: {
+      name: 'Guide.OddsCalculator',
+      passProps: {
+        campaignId,
+        investigatorIds: map(allInvestigators, i => i.code),
+        chaosBag,
       },
       options: {
         topBar: {

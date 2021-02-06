@@ -61,7 +61,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
   const chaosBagSimulatorPressed = useCallback(() => {
     Navigation.push<GuideChaosBagProps>(componentId, {
       component: {
-        name: 'Guide.ChaosBag',
+        name: 'Guide.DrawChaosBag',
         passProps: {
           campaignId,
           chaosBag: campaignLog.chaosBag,

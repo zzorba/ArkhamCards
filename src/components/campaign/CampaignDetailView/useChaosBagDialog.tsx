@@ -14,7 +14,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
 import { updateCampaign } from '../actions';
 import { CampaignId } from '@actions/types';
-import { showChaosBagOddsCalculator, showDrawChaosBag } from '../nav';
+import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
 import { useDialog } from '@components/deck/dialogs';
 
 interface Props {
@@ -22,6 +22,7 @@ interface Props {
   allInvestigators: Card[];
   campaignId: CampaignId;
   chaosBag: ChaosBag;
+  guided?: boolean;
 }
 
 export default function useChaosBagDialog({
@@ -29,6 +30,7 @@ export default function useChaosBagDialog({
   allInvestigators,
   campaignId,
   chaosBag,
+  guided,
 }: Props): [React.ReactNode, () => void] {
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
@@ -38,12 +40,20 @@ export default function useChaosBagDialog({
   }, [dispatch, campaignId, user]);
   const oddsCalculatorPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
-    showChaosBagOddsCalculator(componentId, campaignId, allInvestigators);
-  }, [componentId, campaignId, allInvestigators]);
+    if (guided) {
+      showGuideChaosBagOddsCalculator(componentId, campaignId, chaosBag, allInvestigators);
+    } else {
+      showChaosBagOddsCalculator(componentId, campaignId, allInvestigators);
+    }
+  }, [componentId, campaignId, allInvestigators, chaosBag, guided]);
   const drawChaosBagPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
-    showDrawChaosBag(componentId, campaignId, updateChaosBag);
-  }, [campaignId, componentId, updateChaosBag]);
+    if (guided) {
+      showGuideDrawChaosBag(componentId, campaignId, chaosBag);
+    } else {
+      showDrawChaosBag(componentId, campaignId, updateChaosBag);
+    }
+  }, [campaignId, componentId, guided, chaosBag, updateChaosBag]);
 
   const editChaosBagDialog = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
@@ -76,14 +86,16 @@ export default function useChaosBagDialog({
             chaosBag={chaosBag}
           />
         </View>
-        <DeckButton
-          thin
-          icon="edit"
-          title={t`Edit chaos bag`}
-          onPress={editChaosBagDialog}
-          topMargin={s}
-          bottomMargin={s}
-        />
+        { !guided && (
+          <DeckButton
+            thin
+            icon="edit"
+            title={t`Edit chaos bag`}
+            onPress={editChaosBagDialog}
+            topMargin={s}
+            bottomMargin={s}
+          />
+        ) }
         <DeckButton
           thin
           icon="chaos_bag"
@@ -99,7 +111,7 @@ export default function useChaosBagDialog({
         />
       </>
     );
-  }, [chaosBag, editChaosBagDialog, drawChaosBagPressed, oddsCalculatorPressed]);
+  }, [chaosBag, guided, editChaosBagDialog, drawChaosBagPressed, oddsCalculatorPressed]);
 
   const tokenCount = useMemo(() => sum(values(chaosBag)), [chaosBag]);
   const { dialog, showDialog, setVisible } = useDialog({

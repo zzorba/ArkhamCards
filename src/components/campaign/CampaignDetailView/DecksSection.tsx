@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { find, flatMap, partition } from 'lodash';
+import { find, flatMap, map, partition } from 'lodash';
 import {
   InteractionManager,
   StyleSheet,
@@ -19,6 +19,7 @@ import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import { getDeck } from '@reducers';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import InvestigatorSectionRow from '../CampaignLogSection/InvestigatorSectionRow';
+import InvestigatorCountsSection from '../CampaignLogSection/InvestigatorCountsSection';
 import { useDispatch } from 'react-redux';
 import { updateCampaign } from '../actions';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -157,6 +158,13 @@ export default function DecksSection({
         chooseDeckForInvestigator={showChooseDeckForInvestigator}
         deck={deck}
         removeInvestigator={removeDeckPrompt}
+        miniButtons={campaign.campaignNotes.investigatorNotes.counts.length ?
+          <InvestigatorCountsSection
+            investigator={investigator}
+            updateInvestigatorNotes={updateInvestigatorNotes}
+            investigatorNotes={campaign.campaignNotes.investigatorNotes}
+            showCountDialog={showCountDialog}
+          /> : undefined}
       >
         <InvestigatorSectionRow
           investigator={investigator}
@@ -165,6 +173,7 @@ export default function DecksSection({
           showDialog={showTextEditDialog}
           showCountDialog={showCountDialog}
           inline
+          hideCounts
         />
       </InvestigatorCampaignRow>
     );

@@ -27,9 +27,10 @@ interface Props {
   standalone?: boolean;
   header?: React.ReactNode;
   hideAchievements?: boolean;
+  hideChaosBag?: boolean;
 }
 
-export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, header, hideAchievements }: Props) {
+export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, header, hideAchievements, hideChaosBag }: Props) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
@@ -102,7 +103,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
   const chaosBagSimulatorPressed = useCallback(() => {
     Navigation.push<GuideChaosBagProps>(componentId, {
       component: {
-        name: 'Guide.ChaosBag',
+        name: 'Guide.DrawChaosBag',
         passProps: {
           campaignId,
           chaosBag: campaignLog.chaosBag,
@@ -122,6 +123,9 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
   }, [componentId, campaignId, campaignLog]);
 
   const chaosBagSection = useMemo(() => {
+    if (hideChaosBag) {
+      return null;
+    }
     if (!keys(campaignLog.chaosBag).length && !standalone) {
       return null;
     }
@@ -150,7 +154,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         </View>
       </View>
     );
-  }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, standalone]);
+  }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, hideChaosBag, standalone]);
   const achievementsSection = useMemo(() => {
     if (hideAchievements) {
       return null;

@@ -17,16 +17,18 @@ import { useNavigationButtonPressed } from '@components/core/hooks';
 import CampaignGuideContext from './CampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import CampaignGuideFab from './CampaignGuideFab';
-import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import ScenarioCarouselComponent from './ScenarioCarouselComponent';
+import CampaignDetailTab from './CampaignDetailTab';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
 type Props = CampaignGuideProps & NavigationProps & { setCampaignServerId: (serverId: string) => void };
 
 function CampaignGuideView(props: Props) {
+  const [countDialog, showCountDialog] = useCountDialog();
   const { backgroundStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const { componentId, setCampaignServerId } = props;
@@ -80,31 +82,13 @@ function CampaignGuideView(props: Props) {
   }, [backgroundStyle, campaignId, campaignGuide, processedCampaign.campaignLog, componentId]);
   return (
     <View style={styles.wrapper}>
-      <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
-        <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
-          <View style={[space.paddingSideS, space.paddingBottomS]}>
-            <CampaignGuideSummary
-              difficulty={processedCampaign.campaignLog.campaignData.difficulty}
-              campaignGuide={campaignGuide}
-            />
-          </View>
-          <ScenarioCarouselComponent
-            componentId={componentId}
-            processedCampaign={processedCampaign}
-            showAlert={showAlert}
-          />
-          <View style={[space.paddingSideS, space.paddingBottomS]}>
-            <CampaignInvestigatorsComponent
-              componentId={componentId}
-              showAlert={showAlert}
-              updateCampaign={saveCampaignUpdate}
-              campaignData={campaignData}
-              processedCampaign={processedCampaign}
-              showTraumaDialog={showTraumaDialog}
-            />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+      <CampaignDetailTab
+        componentId={componentId}
+        processedCampaign={processedCampaign}
+        showAlert={showAlert}
+        showCountDialog={showCountDialog}
+        showTraumaDialog={showTraumaDialog}
+      />
       <CampaignGuideFab
         setCampaignServerId={setCampaignServerId}
         campaignId={campaignData.campaignId}
@@ -114,6 +98,7 @@ function CampaignGuideView(props: Props) {
       { alertDialog }
       { dialog }
       { traumaDialog }
+      { countDialog }
     </View>
   );
 }

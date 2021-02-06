@@ -38,9 +38,19 @@ export default function EditCountComponent({
       min: 0,
     });
   }, [title, initialCount, updateCount, showCountDialog]);
-  return (
+
+  return icon ? (
     <DeckPickerStyleButton
       icon={icon}
+      title={title}
+      valueLabel={`${initialCount || 0}`}
+      first={first}
+      last={last}
+      editable
+      onPress={onPress}
+    />
+  ) : (
+    <MiniPickerStyleButton
       title={title}
       valueLabel={`${initialCount || 0}`}
       first={first}

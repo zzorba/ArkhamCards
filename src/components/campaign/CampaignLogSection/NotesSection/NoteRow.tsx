@@ -10,6 +10,7 @@ import { t } from 'ttag';
 import TextBoxButton from '@components/core/TextBoxButton';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import DeckButton from '@components/deck/controls/DeckButton';
+import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 
 interface Props {
   title: string;
@@ -45,19 +46,20 @@ export default function NoteRow(props: Props) {
   return (
     <View style={styles.row}>
       { appendNote ? (
-        <DeckButton
-          thin
+        <MiniPickerStyleButton
+          first
+          last
           icon="edit"
           title={t`Add note`}
+          valueLabel=""
+          editable
           onPress={onPress}
-          color="light_gray"
         />
       ) : (
         <TouchableOpacity onPress={onPress}>
           <TextBoxButton
             crossedOut={crossedOut}
             value={value}
-            placeholder={appendNote ? t`Add note` : undefined}
             pointerEvents="none"
             ellipsizeMode="tail"
             multiline

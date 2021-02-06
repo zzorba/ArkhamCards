@@ -23,6 +23,7 @@ interface Props {
   showDialog: ShowTextEditDialog;
   showCountDialog: ShowCountDialog;
   inline?: boolean;
+  hideCounts?: boolean;
 }
 
 export default function InvestigatorSectionRow({
@@ -32,6 +33,7 @@ export default function InvestigatorSectionRow({
   showDialog,
   showCountDialog,
   inline,
+  hideCounts,
 }: Props) {
   const { borderStyle } = useContext(StyleContext);
   const notesChanged = useCallback((index: number, notes: string[]) => {
@@ -100,7 +102,7 @@ export default function InvestigatorSectionRow({
     return (
       <>
         { notesSection }
-        { countsSection }
+        { !hideCounts && countsSection }
       </>
     );
   }
@@ -111,7 +113,7 @@ export default function InvestigatorSectionRow({
         faction={faction}
       >
         { notesSection }
-        { countsSection }
+        { !hideCounts && countsSection }
       </RoundedFactionBlock>
     </View>
   );

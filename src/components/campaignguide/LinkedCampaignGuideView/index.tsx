@@ -4,7 +4,7 @@ import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
-import CampaignGuideSummary from './CampaignGuideSummary';
+import CampaignGuideSummary from '@components/campaignguide/CampaignGuideSummary';
 import { Campaign, CampaignId } from '@actions/types';
 import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
@@ -15,16 +15,18 @@ import { useCampaignGuideReduxData } from '@components/campaignguide/contextHelp
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
-import useCampaignGuideContext from './useCampaignGuideContext';
+import useCampaignGuideContext from '@components/campaignguide/useCampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import space from '@styles/space';
-import CampaignGuideFab from './CampaignGuideFab';
-import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import CampaignGuideFab from '@components/campaignguide/CampaignGuideFab';
+import { useAlertDialog, useCountDialog, useDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaignId } from '@components/campaign/hooks';
-import ScenarioCarouselComponent from './ScenarioCarouselComponent';
+import ScenarioCarouselComponent from '@components/campaignguide/ScenarioCarouselComponent';
 import DeckButton from '@components/deck/controls/DeckButton';
+import { useCampaignLinkHelper } from './useCampaignLinkHelper';
+import CampaignDetailTab from '../CampaignDetailTab';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -36,6 +38,7 @@ type Props = LinkedCampaignGuideProps & NavigationProps;
 
 export default function LinkedCampaignGuideView(props: Props) {
   const { componentId } = props;
+  const [countDialog, showCountDialog] = useCountDialog();
   const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
   const [campaignIdA, campaignIdB] = useMemo(() => {
     return [
@@ -55,6 +58,7 @@ export default function LinkedCampaignGuideView(props: Props) {
   const campaignName = (campaign && campaign.name) || '';
   const campaignDataA = useCampaignGuideReduxData(campaignIdA, investigators);
   const campaignDataB = useCampaignGuideReduxData(campaignIdB, investigators);
+
 
   const updateCampaignName = useCallback((name: string) => {
     dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
@@ -88,6 +92,14 @@ export default function LinkedCampaignGuideView(props: Props) {
   const processedCampaignA = useMemo(() => contextA?.campaignGuide && contextA?.campaignState && contextA.campaignGuide.processAllScenarios(contextA.campaignState), [contextA?.campaignGuide, contextA?.campaignState]);
   const processedCampaignB = useMemo(() => contextB?.campaignGuide && contextB?.campaignState && contextB.campaignGuide.processAllScenarios(contextB.campaignState), [contextB?.campaignGuide, contextB?.campaignState]);
 
+
+  const [showCampaignScenarioA, showCampaignScenarioB] = useCampaignLinkHelper({
+    componentId,
+    campaignA: processedCampaignA,
+    campaignDataA: contextA,
+    campaignB: processedCampaignB,
+    campaignDataB: contextB,
+  });
   const addInvestigatorAPressed = useCallback(() => {
     contextA?.campaignState.showChooseDeck();
   }, [contextA?.campaignState]);
@@ -129,47 +141,20 @@ export default function LinkedCampaignGuideView(props: Props) {
       title: contextA.campaignGuide.campaignName(),
       node: (
         <SafeAreaView style={styles.wrapper}>
-          <ScrollView contentContainerStyle={backgroundStyle}>
-            <View style={space.paddingSideS}>
-              <CampaignGuideSummary
-                difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
-                campaignGuide={contextA.campaignGuide}
-              />
-            </View>
-            <CampaignGuideContext.Provider value={contextA}>
-              <ScenarioCarouselComponent
-                componentId={componentId}
-                processedCampaign={processedCampaignA}
-                showAlert={showAlert}
-              />
-              <View style={space.paddingSideS}>
-                <CampaignInvestigatorsComponent
-                  componentId={componentId}
-                  showAlert={showAlert}
-                  updateCampaign={handleUpdateCampaign}
-                  campaignData={contextA}
-                  processedCampaign={processedCampaignA}
-                  showTraumaDialog={showTraumaDialog}
-                />
-                <View style={space.paddingBottomS}>
-                  <DeckButton
-                    icon="plus-thin"
-                    title={t`Add Investigator`}
-                    onPress={addInvestigatorAPressed}
-                    color="light_gray"
-                    thin
-                  />
-                </View>
-              </View>
-            </CampaignGuideContext.Provider>
-          </ScrollView>
+          <CampaignGuideContext.Provider value={contextA}>
+            <CampaignDetailTab
+              componentId={componentId}
+              processedCampaign={processedCampaignA}
+              showLinkedScenario={showCampaignScenarioB}
+              showAlert={showAlert}
+              showCountDialog={showCountDialog}
+              showTraumaDialog={showTraumaDialog}
+            />
+          </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
-  }, [campaignDataA, processedCampaignA, contextA, componentId, backgroundStyle,
-    addInvestigatorAPressed, handleUpdateCampaign, showAlert, showTraumaDialog]);
-
-
+  }, [campaignDataA, processedCampaignA, contextA, componentId, showCampaignScenarioB, showCountDialog, showAlert, showTraumaDialog]);
   const campaignBTab = useMemo(() => {
     if (!campaignDataB || !processedCampaignB || !contextB) {
       return null;
@@ -179,45 +164,20 @@ export default function LinkedCampaignGuideView(props: Props) {
       title: contextB.campaignGuide.campaignName(),
       node: (
         <SafeAreaView style={styles.wrapper}>
-          <ScrollView contentContainerStyle={backgroundStyle}>
-            <View style={space.paddingSideS}>
-              <CampaignGuideSummary
-                difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
-                campaignGuide={contextB.campaignGuide}
-              />
-            </View>
-            <CampaignGuideContext.Provider value={contextB}>
-              <ScenarioCarouselComponent
-                componentId={componentId}
-                processedCampaign={processedCampaignB}
-                showAlert={showAlert}
-              />
-              <View style={space.paddingSideS}>
-                <CampaignInvestigatorsComponent
-                  componentId={componentId}
-                  showAlert={showAlert}
-                  updateCampaign={handleUpdateCampaign}
-                  campaignData={contextB}
-                  processedCampaign={processedCampaignB}
-                  showTraumaDialog={showTraumaDialog}
-                />
-                <View style={space.paddingBottomS}>
-                  <DeckButton
-                    icon="plus-thin"
-                    title={t`Add Investigator`}
-                    onPress={addInvestigatorBPressed}
-                    color="light_gray"
-                    thin
-                  />
-                </View>
-              </View>
-            </CampaignGuideContext.Provider>
-          </ScrollView>
+          <CampaignGuideContext.Provider value={contextB}>
+            <CampaignDetailTab
+              componentId={componentId}
+              processedCampaign={processedCampaignB}
+              showLinkedScenario={showCampaignScenarioA}
+              showAlert={showAlert}
+              showCountDialog={showCountDialog}
+              showTraumaDialog={showTraumaDialog}
+            />
+          </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
-  }, [campaignDataB, processedCampaignB, contextB, componentId, backgroundStyle,
-    addInvestigatorBPressed, handleUpdateCampaign, showAlert, showTraumaDialog]);
+  }, [campaignDataB, processedCampaignB, contextB, componentId, showCampaignScenarioA, showCountDialog, showAlert, showTraumaDialog]);
 
   const logTab = useMemo(() => {
     if (!processedCampaignA || !processedCampaignB || !contextA || !contextB) {
@@ -282,6 +242,7 @@ export default function LinkedCampaignGuideView(props: Props) {
       { alertDialog }
       { dialog }
       { traumaDialog }
+      { countDialog }
     </View>
   );
 }
