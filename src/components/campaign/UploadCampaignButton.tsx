@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import { Campaign } from '@actions/types';
+import { CampaignId } from '@actions/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
 import { useCreateCampaignRequest } from '@data/firebase/api';
@@ -10,28 +10,34 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { uploadCampaign } from '@components/campaignguide/actions';
 import useNetworkStatus from '@components/core/useNetworkStatus';
+import { ThunkDispatch } from 'redux-thunk';
+import { AppState } from '@reducers';
+import { Action } from 'redux';
 
 interface Props {
-  campaign?: Campaign;
+  campaignId: CampaignId;
   setCampaignServerId: (serverId: string) => void;
 }
 
-export default function UploadCampaignButton({ campaign, setCampaignServerId }: Props) {
+type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
+
+export default function UploadCampaignButton({ campaignId, setCampaignServerId }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const { colors } = useContext(StyleContext);
   const [{ isConnected }] = useNetworkStatus();
-  const dispatch = useDispatch();
+  const dispatch: Dispatch = useDispatch();
   const createServerCampaign = useCreateCampaignRequest();
   const confirmUploadCampaign = useCallback(async() => {
-    if (campaign && user) {
+    if (user && !campaignId.serverId) {
       try {
-        dispatch(uploadCampaign(user, createServerCampaign, setCampaignServerId, campaign, !!campaign.guided));
+        const newCampaignId = await dispatch(uploadCampaign(user, createServerCampaign, campaignId));
+        setCampaignServerId(newCampaignId.serverId);
       } catch (e) {
         // TODO(error handling)
       }
     }
-  }, [dispatch, createServerCampaign, setCampaignServerId, user, campaign]);
-  if (!user || campaign?.serverId) {
+  }, [dispatch, createServerCampaign, setCampaignServerId, user, campaignId]);
+  if (!user || campaignId.serverId) {
     return null;
   }
   return (

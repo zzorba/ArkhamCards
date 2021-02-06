@@ -2,25 +2,26 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { filter, keys } from 'lodash';
 import { t } from 'ttag';
+import { Navigation } from 'react-native-navigation';
 
 import { ProcessedCampaign } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
-import CampaignGuideSummary from './CampaignGuideSummary';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import space, { s } from '@styles/space';
-import CampaignGuideContext from './CampaignGuideContext';
-import ScenarioCarouselComponent from './ScenarioCarouselComponent';
-import CampaignInvestigatorsComponent from './CampaignInvestigatorsComponent';
 import Card from '@data/Card';
-import { Campaign, CampaignId, Trauma } from '@actions/types';
+import { Campaign, CampaignCycleCode, CampaignId, Trauma } from '@actions/types';
 import { useDispatch } from 'react-redux';
 import { updateCampaign } from '@components/campaign/actions';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ShowScenario } from './LinkedCampaignGuideView/useCampaignLinkHelper';
 import DeckButton from '@components/deck/controls/DeckButton';
-import { Navigation } from 'react-native-navigation';
-import { CampaignLogProps } from './CampaignLogView';
 import useChaosBagDialog from '@components/campaign/CampaignDetailView/useChaosBagDialog';
+import CampaignGuideContext from './CampaignGuideContext';
+import ScenarioCarouselComponent from './ScenarioCarouselComponent';
+import { CampaignLogProps } from './CampaignLogView';
+import { CampaignAchievementsProps } from './CampaignAchievementsView';
+import CampaignInvestigatorsComponent from './CampaignInvestigatorsComponent';
+import CampaignSummaryHeader from '@components/campaign/CampaignSummaryHeader';
 
 interface Props {
   componentId: string;
@@ -29,8 +30,12 @@ interface Props {
   showCountDialog: ShowCountDialog;
   showLinkedScenario?: ShowScenario;
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
+  headerButtons: React.ReactNode;
 }
-export default function CampaignDetailTab({ componentId, processedCampaign, showLinkedScenario, showAlert, showTraumaDialog, showCountDialog }: Props) {
+export default function CampaignDetailTab({
+  componentId, processedCampaign, headerButtons,
+  showLinkedScenario, showAlert, showTraumaDialog, showCountDialog,
+}: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const { campaignId, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
@@ -65,6 +70,28 @@ export default function CampaignDetailTab({ componentId, processedCampaign, show
       },
     });
   }, [componentId, campaignId, campaignGuide, processedCampaign.campaignLog]);
+
+  const showCampaignAchievements = useCallback(() => {
+    Navigation.push<CampaignAchievementsProps>(componentId, {
+      component: {
+        name: 'Guide.Achivements',
+        passProps: {
+          campaignId,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Achivements`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, campaignId]);
+
   const chaosBagDisabled = useMemo(() => !keys(processedCampaign.campaignLog.chaosBag).length, [processedCampaign.campaignLog.chaosBag]);
   const allInvestigators = useMemo(() => filter(campaignInvestigators, investigator => !processedCampaign.campaignLog.isEliminated(investigator)), [campaignInvestigators, processedCampaign.campaignLog]);
   const [chaosBagDialog, showChaosBag] = useChaosBagDialog({ componentId, allInvestigators, campaignId, chaosBag: processedCampaign.campaignLog.chaosBag || {}, guided: true });
@@ -72,9 +99,11 @@ export default function CampaignDetailTab({ componentId, processedCampaign, show
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
         <View style={[space.paddingSideS, space.paddingBottomS]}>
-          <CampaignGuideSummary
+          <CampaignSummaryHeader
             difficulty={processedCampaign.campaignLog.campaignData.difficulty}
-            campaignGuide={campaignGuide}
+            name={campaignGuide.campaignName()}
+            cycle={campaignGuide.campaignCycleCode() as CampaignCycleCode}
+            buttons={headerButtons}
           />
           <DeckButton
             icon="book"
@@ -84,6 +113,16 @@ export default function CampaignDetailTab({ componentId, processedCampaign, show
             onPress={showCampaignLog}
             bottomMargin={s}
           />
+          { campaignGuide.achievements().length > 0 && (
+            <DeckButton
+              icon="finish"
+              title={t`Achievements`}
+              detail={t`Record campaign achivements`}
+              color="light_gray"
+              onPress={showCampaignAchievements}
+              bottomMargin={s}
+            />
+          ) }
           <DeckButton
             icon="chaos_bag"
             title={t`Chaos Bag`}

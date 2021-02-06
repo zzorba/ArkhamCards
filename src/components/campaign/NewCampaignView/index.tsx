@@ -100,7 +100,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const [customChaosBag, setCustomChaosBag] = useState<ChaosBag>(getChaosBag(CORE, CampaignDifficulty.STANDARD));
   const [customCampaignLog, setCustomCampaignLog] = useState<CustomCampaignLog>({ sections: [t`Campaign Notes`] });
   const [campaignLogDialogVisible, setCampaignLogDialogVisible] = useState(false);
-  const isGuided = hasGuide && guided;
+  const isGuided = hasGuide && (guided || (selection.type === 'campaign' && selection.code === 'tde'));
 
   const hasDefinedChaosBag = useMemo(() => {
     return selection.type === 'campaign' && selection.code !== CUSTOM && !!getChaosBag(selection.code, difficulty);
@@ -472,7 +472,9 @@ function NewCampaignView({ componentId }: NavigationProps) {
             title={t`Guided Campaign`}
             description={guided ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
             onValueChange={toggleGuided}
-            value={guided}
+            disabled={selection.code === 'tde'}
+            noDisableText
+            value={selection.code === 'tde' || guided}
             last
           />
         ) }

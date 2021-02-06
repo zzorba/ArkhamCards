@@ -88,14 +88,14 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
       case 'placeholder':
         return (
           <View style={styles.row}>
-            <AppIcon size={32} name="lock" color={color} />
+            <AppIcon size={32} name="lock" color={light} />
             <Text style={[typography.large, typography.italic, { color: light }]}>
               { scenario.type === 'placeholder' ? t`Coming soon` : t`Locked` }
             </Text>
           </View>
         );
     }
-  }, [onPress, scenario.type, typography, light, color, componentId, processedCampaign, showAlert]);
+  }, [onPress, scenario.type, typography, light, componentId, processedCampaign, showAlert]);
   return (
     <View style={[
       space.paddingM,
@@ -105,6 +105,9 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
       shadow.large,
       last ? space.marginRightM : undefined,
     ]}>
+      <View style={styles.icon}>
+        <EncounterIcon size={80} color={colors.M} encounter_code={scenario.scenarioGuide.scenarioIcon()} />
+      </View>
       <Text style={[typography.small, typography.italic, { color: light }]}>
         { scenarioNumber.trim() }
       </Text>
@@ -112,9 +115,6 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
         { scenarioName.trim() }
       </Text>
       { action }
-      <View style={styles.icon}>
-        <EncounterIcon size={80} color={colors.M} encounter_code={scenario.scenarioGuide.scenarioIcon()} />
-      </View>
     </View>
   );
 }

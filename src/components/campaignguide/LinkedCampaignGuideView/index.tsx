@@ -1,32 +1,26 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import React, { useCallback, useContext, useMemo, useRef, useEffect } from 'react';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
-import CampaignGuideSummary from '@components/campaignguide/CampaignGuideSummary';
-import { Campaign, CampaignId } from '@actions/types';
-import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
-import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
+import { CampaignId } from '@actions/types';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import useTabView from '@components/core/useTabView';
 import { updateCampaign } from '@components/campaign/actions';
 import { useCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
 import { NavigationProps } from '@components/nav/types';
-import StyleContext from '@styles/StyleContext';
 import { useCampaign, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import useCampaignGuideContext from '@components/campaignguide/useCampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
-import space from '@styles/space';
-import CampaignGuideFab from '@components/campaignguide/CampaignGuideFab';
-import { useAlertDialog, useCountDialog, useDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaignId } from '@components/campaign/hooks';
-import ScenarioCarouselComponent from '@components/campaignguide/ScenarioCarouselComponent';
-import DeckButton from '@components/deck/controls/DeckButton';
 import { useCampaignLinkHelper } from './useCampaignLinkHelper';
 import CampaignDetailTab from '../CampaignDetailTab';
+import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
+import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -47,9 +41,7 @@ export default function LinkedCampaignGuideView(props: Props) {
     ];
   }, [props.campaignIdA, props.campaignIdB, campaignId.serverId]);
   const investigators = useInvestigatorCards();
-  const styleContext = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
-  const { backgroundStyle } = styleContext;
   const dispatch = useDispatch();
   useStopAudioOnUnmount();
 
@@ -84,53 +76,37 @@ export default function LinkedCampaignGuideView(props: Props) {
     }
   }, componentId, [showEditNameDialog]);
 
-  const handleUpdateCampaign = useCallback((id: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
-    dispatch(updateCampaign(user, id, sparseCampaign, now));
-  }, [dispatch, user]);
   const contextA = useCampaignGuideContext(campaignIdA, campaignDataA);
   const contextB = useCampaignGuideContext(campaignIdB, campaignDataB);
   const processedCampaignA = useMemo(() => contextA?.campaignGuide && contextA?.campaignState && contextA.campaignGuide.processAllScenarios(contextA.campaignState), [contextA?.campaignGuide, contextA?.campaignState]);
   const processedCampaignB = useMemo(() => contextB?.campaignGuide && contextB?.campaignState && contextB.campaignGuide.processAllScenarios(contextB.campaignState), [contextB?.campaignGuide, contextB?.campaignState]);
 
-
+  const setSelectedTabRef = useRef<undefined | ((index: number) => void)>(undefined);
   const [showCampaignScenarioA, showCampaignScenarioB] = useCampaignLinkHelper({
     componentId,
     campaignA: processedCampaignA,
     campaignDataA: contextA,
     campaignB: processedCampaignB,
     campaignDataB: contextB,
+    setSelectedTab: setSelectedTabRef.current,
   });
-  const addInvestigatorAPressed = useCallback(() => {
-    contextA?.campaignState.showChooseDeck();
-  }, [contextA?.campaignState]);
-  const addInvestigatorBPressed = useCallback(() => {
-    contextB?.campaignState.showChooseDeck();
-  }, [contextB?.campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
-  const showAddInvestigator = useCallback(() => {
-    if (contextA && contextB) {
-      showAlert(
-        t`Add investigator to which campaign?`,
-        t`Which campaign would you like to add an investigator to?`,
-        [
-          {
-            text: contextA.campaignGuide.campaignName(),
-            onPress: addInvestigatorAPressed,
-            icon: 'tdea',
-          },
-          {
-            text: contextB.campaignGuide.campaignName(),
-            onPress: addInvestigatorBPressed,
-            icon: 'tdeb',
-          },
-          {
-            text: t`Cancel`,
-            style: 'cancel',
-          },
-        ],
-      );
-    }
-  }, [contextA, contextB, addInvestigatorAPressed, addInvestigatorBPressed, showAlert]);
+  const headerButtons = useMemo(() => {
+    return (
+      <>
+        <UploadCampaignButton
+          campaignId={campaignId}
+          setCampaignServerId={setCampaignServerId}
+        />
+        <DeleteCampaignButton
+          componentId={componentId}
+          campaignId={campaignId}
+          campaignName={campaignName || ''}
+          showAlert={showAlert}
+        />
+      </>
+    );
+  }, [showAlert, componentId, campaignId, campaignName, setCampaignServerId]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA || !processedCampaignA || !contextA) {
@@ -145,6 +121,7 @@ export default function LinkedCampaignGuideView(props: Props) {
             <CampaignDetailTab
               componentId={componentId}
               processedCampaign={processedCampaignA}
+              headerButtons={headerButtons}
               showLinkedScenario={showCampaignScenarioB}
               showAlert={showAlert}
               showCountDialog={showCountDialog}
@@ -154,7 +131,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         </SafeAreaView>
       ),
     };
-  }, [campaignDataA, processedCampaignA, contextA, componentId, showCampaignScenarioB, showCountDialog, showAlert, showTraumaDialog]);
+  }, [campaignDataA, processedCampaignA, contextA, componentId, headerButtons, showCampaignScenarioB, showCountDialog, showAlert, showTraumaDialog]);
   const campaignBTab = useMemo(() => {
     if (!campaignDataB || !processedCampaignB || !contextB) {
       return null;
@@ -172,73 +149,26 @@ export default function LinkedCampaignGuideView(props: Props) {
               showAlert={showAlert}
               showCountDialog={showCountDialog}
               showTraumaDialog={showTraumaDialog}
+              headerButtons={headerButtons}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
-  }, [campaignDataB, processedCampaignB, contextB, componentId, showCampaignScenarioA, showCountDialog, showAlert, showTraumaDialog]);
-
-  const logTab = useMemo(() => {
-    if (!processedCampaignA || !processedCampaignB || !contextA || !contextB) {
-      return null;
-    }
-    return {
-      key: 'log',
-      title: t`Log`,
-      node: (
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <CampaignGuideContext.Provider value={contextA}>
-            <CampaignLogComponent
-              header={
-                <CampaignGuideSummary
-                  difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
-                  campaignGuide={contextA.campaignGuide}
-                />
-              }
-              campaignId={contextA.campaignId}
-              campaignGuide={contextA.campaignGuide}
-              campaignLog={processedCampaignA.campaignLog}
-              componentId={componentId}
-            />
-          </CampaignGuideContext.Provider>
-          <CampaignGuideContext.Provider value={contextB}>
-            <CampaignLogComponent
-              header={
-                <CampaignGuideSummary
-                  difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
-                  campaignGuide={contextB.campaignGuide}
-                />
-              }
-              campaignId={contextB.campaignId}
-              campaignGuide={contextB.campaignGuide}
-              campaignLog={processedCampaignB.campaignLog}
-              componentId={componentId}
-            />
-          </CampaignGuideContext.Provider>
-        </ScrollView>
-      ),
-    };
-  }, [backgroundStyle, processedCampaignA, processedCampaignB, contextA, contextB, componentId]);
+  }, [campaignDataB, processedCampaignB, contextB, componentId, headerButtons, showCampaignScenarioA, showCountDialog, showAlert, showTraumaDialog]);
   const tabs = useMemo(() => {
     if (!campaignATab || !campaignBTab) {
-      return null;
+      return [];
     }
     return [campaignATab, campaignBTab];
   }, [campaignATab, campaignBTab]);
-  const [tabView, setSelectedTab] = useTabView({ tabs: tabs || [] });
-  if (!tabs) {
-    return null;
-  }
+  const [tabView, setSelectedTab] = useTabView({ tabs });
+  useEffect(() => {
+    setSelectedTabRef.current = setSelectedTab;
+  }, [setSelectedTab]);
   return (
     <View style={styles.wrapper}>
       { tabView }
-      <CampaignGuideFab
-        setCampaignServerId={setCampaignServerId}
-        campaignId={campaignId}
-        showEditNameDialog={showEditNameDialog}
-        guided
-      />
       { alertDialog }
       { dialog }
       { traumaDialog }

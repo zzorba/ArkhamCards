@@ -1,27 +1,21 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
-import CampaignGuideSummary from './CampaignGuideSummary';
-import { Campaign, CampaignId } from '@actions/types';
-import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
-import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
 import { updateCampaign } from '@components/campaign/actions';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
-import space from '@styles/space';
-import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import CampaignGuideContext from './CampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
-import CampaignGuideFab from './CampaignGuideFab';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import ScenarioCarouselComponent from './ScenarioCarouselComponent';
 import CampaignDetailTab from './CampaignDetailTab';
+import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
+import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -29,7 +23,6 @@ type Props = CampaignGuideProps & NavigationProps & { setCampaignServerId: (serv
 
 function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
-  const { backgroundStyle } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const { componentId, setCampaignServerId } = props;
   const campaignData = useContext(CampaignGuideContext);
@@ -60,26 +53,26 @@ function CampaignGuideView(props: Props) {
     }
   }, componentId, [showEditNameDialog]);
 
-  const saveCampaignUpdate = useCallback((campaignId: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
-    dispatch(updateCampaign(user, campaignId, sparseCampaign, now));
-  }, [dispatch, user]);
-  const { campaignGuide, campaignState } = campaignData;
+  const { campaignGuide, campaignState, campaignName } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
-  const logTab = useMemo(() => {
+  const headerButtons = useMemo(() => {
     return (
-      <View style={[styles.wrapper, backgroundStyle]}>
-        <ScrollView contentContainerStyle={backgroundStyle}>
-          <CampaignLogComponent
-            campaignId={campaignId}
-            campaignGuide={campaignGuide}
-            campaignLog={processedCampaign.campaignLog}
-            componentId={componentId}
-          />
-        </ScrollView>
-      </View>
+      <>
+        <UploadCampaignButton
+          campaignId={campaignId}
+          setCampaignServerId={setCampaignServerId}
+        />
+        <DeleteCampaignButton
+          componentId={componentId}
+          campaignId={campaignId}
+          campaignName={campaignName || ''}
+          showAlert={showAlert}
+        />
+      </>
     );
-  }, [backgroundStyle, campaignId, campaignGuide, processedCampaign.campaignLog, componentId]);
+  }, [showAlert, componentId, campaignId, campaignName, setCampaignServerId]);
+
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab
@@ -88,12 +81,7 @@ function CampaignGuideView(props: Props) {
         showAlert={showAlert}
         showCountDialog={showCountDialog}
         showTraumaDialog={showTraumaDialog}
-      />
-      <CampaignGuideFab
-        setCampaignServerId={setCampaignServerId}
-        campaignId={campaignData.campaignId}
-        showEditNameDialog={showEditNameDialog}
-        guided
+        headerButtons={headerButtons}
       />
       { alertDialog }
       { dialog }

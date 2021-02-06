@@ -247,7 +247,7 @@ function CampaignDetailView(props: Props) {
     return (
       <>
         <UploadCampaignButton
-          campaign={campaign}
+          campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
         />
         <DeleteCampaignButton

@@ -11,10 +11,11 @@ interface Props {
   campaignDataA?: CampaignGuideContextType;
   campaignB?: ProcessedCampaign;
   campaignDataB?: CampaignGuideContextType;
+  setSelectedTab?: (index: number) => void;
 }
 export type ShowScenario = (scenarioId: string) => void;
 
-export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, campaignB, campaignDataB }: Props): [ShowScenario, ShowScenario] {
+export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, campaignB, campaignDataB, setSelectedTab }: Props): [ShowScenario, ShowScenario] {
   const showScenarioA = useRef<ShowScenario | undefined>();
   const showScenarioB = useRef<ShowScenario | undefined>();
   const showCampaignScenarioA = useCallback((scenarioId: string) => {
@@ -26,6 +27,7 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
       scenario => scenario.id.encodedScenarioId === scenarioId
     );
     if (scenario && showScenarioB.current) {
+      setSelectedTab && setSelectedTab(0);
       showScenario(
         componentId,
         scenario,
@@ -35,7 +37,7 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
         showScenarioB.current
       );
     }
-  }, [campaignA, componentId, campaignDataA]);
+  }, [campaignA, componentId, setSelectedTab, campaignDataA]);
   useEffect(() => {
     showScenarioA.current = showCampaignScenarioA;
   }, [showCampaignScenarioA]);
@@ -48,6 +50,7 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
       scenario => scenario.id.encodedScenarioId === scenarioId
     );
     if (scenario && showScenarioA.current) {
+      setSelectedTab && setSelectedTab(1);
       showScenario(
         componentId,
         scenario,
@@ -57,7 +60,7 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
         showScenarioA.current
       );
     }
-  }, [campaignB, componentId, campaignDataB]);
+  }, [campaignB, componentId, campaignDataB, setSelectedTab]);
   useEffect(() => {
     showScenarioB.current = showCampaignScenarioB;
   }, [showCampaignScenarioB]);

@@ -24,7 +24,7 @@ export default function CampaignLogView({
   campaignLog,
   componentId,
   standalone,
-  hideChaosBag,
+  hideChaosBag = false,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   return (
@@ -36,7 +36,6 @@ export default function CampaignLogView({
         campaignLog={campaignLog}
         standalone={standalone}
         hideChaosBag={hideChaosBag}
-        hideAchievements
       />
     </ScrollView>
   );
