@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-01-18 11:26-0500\n"
+"PO-Revision-Date: 2021-02-07 18:52+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"x-generator: Poedit 2.4.2\n"
+"x-generator: Poedit 2.4.1\n"
 "x-poedit-basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
@@ -3402,8 +3402,8 @@ msgid ""
 "As new scenarios are released, I will try to update the app promptly but "
 "there may be some slight delays."
 msgstr ""
-"Примечание: эта кампания выпущена не полностью, поэтому путеводитель "
-"неполон (и может содержать ошибки).\n"
+"Примечание: эта кампания вышла не полностью, поэтому путеводитель неполон "
+"(и может содержать ошибки).\n"
 "По мере выхода новых сценариев мы постараемся дополнять руководство как "
 "можно скорее, но возможны задержки."
 
@@ -3658,7 +3658,7 @@ msgstr "Действия"
 
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
-msgstr "Сбросить улучшение колоды?"
+msgstr "Удалить улучшение колоды?"
 
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead "
@@ -3675,9 +3675,6 @@ msgstr "Улучшение"
 
 msgid "Editing"
 msgstr "Редактирование"
-
-msgid "Uploading deck"
-msgstr "Загрузка колоды"
 
 msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will "
@@ -3757,7 +3754,7 @@ msgstr "Взять случайную базовую слабость"
 
 #. This is a deck upgrade action.
 msgid "Undo deck change?"
-msgstr "Отменить изменения колоды?"
+msgstr "Вернуться до правки колоды?"
 
 #. This is a deck upgrade action.
 msgid ""
@@ -3767,10 +3764,17 @@ msgid ""
 "changes might be applied twice. You should view the deck and manually undo "
 "the edits before reapplying the changes."
 msgstr ""
+"Действие, которое вы пытаетесь отменить, включает изменения в колоде "
+"сыщика.\n"
+"\n"
+"Приложение не сможет вернуть колоду к состоянию до этих изменений, так что "
+"если вы продолжите, они могут быть применены дважды. Во избежание ошибок "
+"вам следует перейти к колоде и вручную вернуть её к прежнему составу прежде "
+"чем вносить новые изменения."
 
 #. This is a deck upgrade action.
 msgid "Undo anyway"
-msgstr ""
+msgstr "Да, вернуться"
 
 msgid "Save deck changes"
 msgstr "Сохранить изменения колоды"
@@ -3788,12 +3792,6 @@ msgstr "Друзья"
 #, javascript-format
 msgid "Search for ${ searchTerm }"
 msgstr "Поиск «${ searchTerm }»"
-
-msgid "Friend Requests"
-msgstr "Заявки в друзья"
-
-msgid "Pending Friend Requests"
-msgstr "Новые заявки в друзья"
 
 msgid "Search for friends to add"
 msgstr "Найти и добавить друзей"
@@ -3989,10 +3987,10 @@ msgid "ArkhamDB"
 msgstr "ArkhamDB"
 
 msgid "Narration enabled"
-msgstr "Аудиосопровождение включено"
+msgstr "Голосовое сопровождение включено"
 
 msgid "Audio narration"
-msgstr "Аудиосопровождение"
+msgstr "Голосовое сопровождение"
 
 msgid "Dissonant Voices"
 msgstr "Dissonant Voices"
@@ -4016,13 +4014,42 @@ msgstr "Сейчас нельзя добавить сценарий-ответв
 msgid "Chaos Bag (${ tokenCount })"
 msgstr "Мешок хаоса (${ tokenCount })"
 
-msgid "Save upgrade"
-msgstr ""
-
 msgid "Sorry, you don't seem to be a Mythos Buster patron."
 msgstr ""
 
-msgid "Earned experience:"
+msgid "Asset: Body. Arcane"
+msgstr ""
+
+msgid "Export diagnostic data"
+msgstr ""
+
+msgid ""
+"This feature is intended for advanced diagnostics. Just copy the data "
+"presented here and email it to arkhamcards@gmail.com"
+msgstr ""
+
+msgid "Export Diagnostic Data"
+msgstr ""
+
+msgid "Friend Requests"
+msgstr ""
+
+msgid "Pending Friend Requests"
+msgstr ""
+
+msgid "Color blind friendly icons"
+msgstr ""
+
+msgid "Uploading"
+msgstr ""
+
+msgid "Campaigns can be uploaded to your Arkham Cards account."
+msgstr ""
+
+msgid "Uploaded campaigns will be synced between devices."
+msgstr ""
+
+msgid "Upload campaigns"
 msgstr ""
 
 msgid "Sign out of Arkham Cards?"
@@ -4035,32 +4062,6 @@ msgid ""
 "this device. They can be resynced if you sign in again.\n"
 "\n"
 "Note: if you have made recent changes while offline, they may be lost."
-msgstr ""
-
-msgid "Name required"
-msgstr ""
-
-msgid "You must specify a name for custom campaigns."
-msgstr ""
-
-msgid "Export diagnostic data"
-msgstr ""
-
-msgid ""
-"This feature is intended for advanced diagnostics. Just copy the data "
-"presented here and email it to arkhamcards@gmail.com"
-msgstr ""
-
-msgid "Database migration required"
-msgstr ""
-
-msgid "This should only take a few seconds and no network is required."
-msgstr ""
-
-msgid "Migrate now"
-msgstr ""
-
-msgid "Export Diagnostic Data"
 msgstr ""
 
 msgid "Agility"
@@ -4084,27 +4085,30 @@ msgstr ""
 msgid "Skill Boosts: All"
 msgstr ""
 
+msgid "Save upgrade"
+msgstr ""
+
+msgid "Uploading deck"
+msgstr ""
+
+msgid "${ unspentXp } XP unspent"
+msgid_plural "${ unspentXp } XP unspent"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+msgid "Database migration required"
+msgstr ""
+
+msgid "This should only take a few seconds and no network is required."
+msgstr ""
+
 msgid ""
 "If you run into any problems with this migration, please contact "
 "arkhamcards@gmail.com."
 msgstr ""
 
-msgid "Asset: Body. Arcane"
-msgstr ""
-
-msgid "Color blind friendly icons"
-msgstr ""
-
-msgid "Uploading"
-msgstr ""
-
-msgid "Upload campaigns"
-msgstr ""
-
-msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr ""
-
-msgid "Uploaded campaigns will be synced between devices."
+msgid "Migrate now"
 msgstr ""
 
 msgid "Review records"
@@ -4144,6 +4148,15 @@ msgid "Add scenario result"
 msgstr ""
 
 msgid "Record completed scenario"
+msgstr ""
+
+msgid "Earned experience:"
+msgstr ""
+
+msgid "Name required"
+msgstr ""
+
+msgid "You must specify a name for custom campaigns."
 msgstr ""
 
 msgid "Add XP from scenario"
@@ -4266,7 +4279,7 @@ msgstr ""
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
+msgstr ""
 
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4372,7 +4385,7 @@ msgstr ""
 
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
+msgstr ""
 
 msgctxt "action"
 msgid "Fight"
@@ -4380,7 +4393,7 @@ msgstr ""
 
 msgctxt "action"
 msgid "Engage"
-msgstr "Начать сражаться"
+msgstr ""
 
 msgctxt "action"
 msgid "Investigate"
@@ -4388,15 +4401,15 @@ msgstr ""
 
 msgctxt "action"
 msgid "Play"
-msgstr "Сыграть"
+msgstr ""
 
 msgctxt "action"
 msgid "Draw"
-msgstr "Взять карту"
+msgstr ""
 
 msgctxt "action"
 msgid "Move"
-msgstr "Переместиться"
+msgstr ""
 
 msgctxt "action"
 msgid "Evade"
@@ -4404,7 +4417,7 @@ msgstr ""
 
 msgctxt "action"
 msgid "Resource"
-msgstr "Взять ресурс"
+msgstr ""
 
 msgctxt "Draw Cards"
 msgid "All"

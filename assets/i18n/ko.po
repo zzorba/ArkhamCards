@@ -3973,6 +3973,10 @@ msgstr ""
 msgid "Scenario name"
 msgstr ""
 
+msgid "${ unspentXp } XP unspent"
+msgid_plural "${ unspentXp } XP unspent"
+msgstr[0] ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
