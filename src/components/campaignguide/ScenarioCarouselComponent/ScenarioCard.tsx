@@ -25,13 +25,13 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
   const [scenarioNumber, scenarioName] = useMemo(() => {
     const fullScenarioName = scenario.scenarioGuide.fullScenarioName();
     const splitPoint = fullScenarioName.indexOf(':');
-    const tag = fullScenarioName.substr(0, splitPoint).trim();
-    const scenarioName = fullScenarioName.substr(splitPoint + 1).trim();
+    const scenarioName = fullScenarioName.substr(0, splitPoint).trim();
+    const actualName = fullScenarioName.substr(splitPoint + 1).trim();
     if (scenario.id.replayAttempt) {
-      const attempt = scenario.id.replayAttempt;
-      return [tag, t`${ scenarioName } (Attempt ${ attempt })`];
+      const attempt = scenario.id.replayAttempt + 1;
+      return [t`${ scenarioName } (Attempt ${ attempt })`, actualName];
     }
-    return [tag, scenarioName];
+    return [scenarioName, actualName];
   }, [scenario.scenarioGuide, scenario.id]);
   const onPress = useCallback(() => {
     showScenario(scenario);
@@ -116,10 +116,10 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
         <EncounterIcon size={80} color={colors.M} encounter_code={scenario.scenarioGuide.scenarioIcon()} />
       </View>
       <Text style={[typography.small, typography.italic, { color: light }]}>
-        { scenarioNumber.trim() }
+        { scenarioNumber }
       </Text>
-      <Text style={[typography.mediumGameFont, { color: color }, space.marginBottomS]}>
-        { scenarioName.trim() }
+      <Text style={[typography.mediumGameFont, { color: color }, space.marginBottomS]} numberOfLines={2}>
+        { scenarioName }
       </Text>
       { action }
     </View>
