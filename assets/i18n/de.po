@@ -1333,7 +1333,7 @@ msgid ""
 "\n"
 "Sign in to access your decks or share decks you have created with others."
 msgstr ""
-"ArkhamDB ist ein beliebte Deck-Bau-Seite, auf der man Decks verwalten und "
+"ArkhamDB ist eine beliebte Deck-Bau-Seite, auf der man Decks verwalten und "
 "mit anderen teilen kann.\n"
 "\n"
 "Melden Sie sich an, um auf Ihre Decks zuzugreifen oder sie mit anderen zu "
@@ -1365,7 +1365,7 @@ msgid ""
 "If you are having trouble with your account you can also reconnect."
 msgstr ""
 "Die Daten auf ArkhamDB bleiben erhalten, aber alle Kampagnendaten und alle "
-"Edits, die ohne Internet gemacht werden, können verloren gehen.\n"
+"Änderungen, die ohne Internet gemacht werden, können verloren gehen.\n"
 "\n"
 "Wenn Sie Probleme mit Ihrem Konto haben, können Sie sich auch wieder "
 "verbinden."
@@ -1374,8 +1374,7 @@ msgid ""
 "It has been more than a week since you checked for new cards.\n"
 "Check for new cards from ArkhamDB?"
 msgstr ""
-"Mehr als eine Woche ist es her, dass zuletzt nach neuen Karten gesucht "
-"wurde.\n"
+"Zuletzt wurde vor über einer Woche nach neuen Karten gesucht."
 "ArkhamDB auf neue Karten überprüfen?"
 
 msgid "Edit Assigned Weaknesses"
@@ -2916,7 +2915,7 @@ msgid ""
 "more non-ArkhamDB decks. The campaign can still be imported, however the "
 "deck information will be removed."
 msgstr ""
-"Scheinbar wurde ein Kampagne ohne einem oder mehrerer Nicht-ArkhamDB Decks "
+"Scheinbar wurde eine Kampagne ohne ein oder mehrere Nicht-ArkhamDB Decks "
 "importiert. Die Kampagne kann weiterhin importiert werden, allerdings "
 "werden die Deck Informationen entfernt."
 
@@ -3399,7 +3398,7 @@ msgid ""
 "there may be some slight delays."
 msgstr ""
 "Hinweis: Diese Kampagne wird gerade veröffentlicht. Daher ist dieser "
-"Leitfaden noch unvollständig (und kann Fehler enthalten)\n"
+"Leitfaden noch unvollständig (und kann Fehler enthalten).\n"
 "Sobald neue Szenarien veröffentlicht werden, wird dieser Leitfaden so "
 "schnell wie möglich angepasst."
 
@@ -3407,7 +3406,7 @@ msgid "Slot: ${ card.slot }"
 msgstr "Slot: ${ card.slot }"
 
 msgid "Search rules"
-msgstr ""
+msgstr "Regeln durchsuchen"
 
 msgid "Signature Weakness"
 msgstr "Signaturschwäche"
@@ -3423,7 +3422,7 @@ msgstr[0] "Zeige ${ nonCollectionCount } Nicht-Sammlungs-Karte"
 msgstr[1] "Zeige ${ nonCollectionCount } Nicht-Sammlungs-Karten"
 
 msgid "Hide versatile cards"
-msgstr ""
+msgstr "Vielseitig-Karten ausblenden"
 
 msgid "Version to copy"
 msgstr "Version zum kopieren"
@@ -3456,7 +3455,7 @@ msgid "Books"
 msgstr "Bücher"
 
 msgid "Upgraded"
-msgstr ""
+msgstr "Verbessert"
 
 msgid "Added"
 msgstr "Hinzugefügt"
@@ -3472,7 +3471,7 @@ msgstr "Aktuelles Upgrade"
 
 #, javascript-format
 msgid "${ adjustedXp } XP"
-msgstr ""
+msgstr "${ adjustedXp} Erfahrung"
 
 msgid "Add cards"
 msgstr "Karten hinzufügen"
@@ -3485,10 +3484,10 @@ msgid "Tools"
 msgstr "Werkzeuge"
 
 msgid "For balancing and evaluating"
-msgstr ""
+msgstr "Zum Ausgleichen und Evaluieren"
 
 msgid "Check your deck stability"
-msgstr ""
+msgstr "Überprüfe deine Deckstabilität"
 
 msgid "For easy deck assembly"
 msgstr "Für einfachen Deckbau"
@@ -3541,13 +3540,13 @@ msgid "Deck is invalid"
 msgstr "Deck ist ungültig"
 
 msgid "Show splash cards"
-msgstr ""
+msgstr "Splash-Karten einblenden"
 
 msgid "Hide splash cards"
-msgstr ""
+msgstr "Splash-Karten ausblenden"
 
 msgid "Limited Slots"
-msgstr ""
+msgstr "Limitierte Plätze"
 
 #, javascript-format
 msgid "${ count } of ${ limitSlotCount }"
@@ -3555,16 +3554,16 @@ msgstr "${ count } von ${ limitSlotCount }"
 
 #, javascript-format
 msgid "${ _adjustedXp } XP"
-msgstr ""
+msgstr "${ _adjustedXp } Erfahrung"
 
 msgid "0 unspent"
 msgstr "0 nicht ausgegeben"
 
 msgid "${ overspent } overspent"
-msgstr ""
+msgstr "${ overspent } zu viel ausgegeben"
 
 msgid "Missing system permission"
-msgstr "Fehlende System Erlaubnis"
+msgstr "Fehlende System-Erlaubnis"
 
 msgid "Reads \"${ badThing.prompt }\""
 msgstr "Lies \"${ badThing.prompt }\""
@@ -3576,6 +3575,8 @@ msgid ""
 "Dissonant Voices is an ongoing project by Mythos Busters to narrate the "
 "english scenario text for each Arkham Horror campaign."
 msgstr ""
+"Dissonant Voices ist ein fortlaufendes Projekt der Mythos Busters, in dem der"
+"englische Szenariotext aller Arkham-Horror-Kampagnen erzählt wird."
 
 msgid "Are you sure you want to delete this standalone?"
 msgstr "Sind Sie sicher, dass Sie dieses Einzelspielszenario löschen wollen?"
@@ -3656,93 +3657,99 @@ msgid ""
 "lower level version in your deck (it does not count towards your deck size "
 "or the number of copies of that card in your deck)."
 msgstr ""
+"<b>Zusätzliche Optionen</b>: Sobald du eine [[Zauber]]-Karte verbesserst, "
+"darfst du stattdessen die vollständigen Erfahrungspunktekosten der höherstufigen Version "
+"bezahlen und die niedrigstufige Version in deinem Deck behalten (sie zählt nicht gegen deine "
+" Deckgröße oder die Anzahl Kopien dieser Karte in deinem Deck)."
 
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
-msgstr ""
+msgstr "${ spentXP } von ${ _adjustedXp } Erfahrung ausgegeben"
 
 msgid "Upgrading"
-msgstr ""
+msgstr "Verbessern"
 
 msgid "Editing"
-msgstr ""
+msgstr "Bearbeiten"
 
 msgid "Uploading deck"
-msgstr ""
+msgstr "Lade das Deck hoch"
 
 msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will "
 "track changes."
 msgstr ""
+"Wenn du gerade ein Szenario abgeschlossen hast, benutze den 'Verbessern'-Button "
+"um die Änderungen zu protokollieren."
 
 msgid "XP earned"
-msgstr ""
+msgstr "Erhaltene Erfahrung"
 
 msgid "Adjustment:"
-msgstr ""
+msgstr "Anpassung:"
 
 msgid "Adjust XP"
-msgstr ""
+msgstr "Erfahrung anpassen"
 
 msgid "Select Taboo List"
-msgstr ""
+msgstr "Taboo-Liste auswählen"
 
 #, javascript-format
 msgid "${ size } Card"
 msgid_plural "${ size } Cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ size } Karte"
+msgstr[1] "${ size } Karten"
 
 #, javascript-format
 msgid "class_${ faction }"
-msgstr ""
+msgstr "class_${ faction }"
 
 msgid "Select Parallel Investigator"
-msgstr ""
+msgstr "Parallelen Ermittler wählen"
 
 msgid "Upgrade experience"
-msgstr ""
+msgstr "Upgrade-Erfahrung"
 
 msgid "Upgrading deck"
-msgstr ""
+msgstr "Deck verbessern"
 
 msgid "Editing deck"
-msgstr ""
+msgstr "Deck bearbeiten"
 
 #, javascript-format
 msgid "${ normalCards } card"
 msgid_plural "${ normalCards } cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ normalCards } Karte"
+msgstr[1] "${ normalCards } Karten"
 
 msgid "Add scenario XP"
-msgstr ""
+msgstr "Szenario-Erfahrung hinzufügen"
 
 msgid "Draw simulator"
-msgstr ""
+msgstr "Zieh-Simulator"
 
 msgid "Upgrade with XP"
-msgstr ""
+msgstr "Mit Erfahrung verbessern"
 
 msgid "Unknown campaign"
-msgstr ""
+msgstr "Unbekannte Kampagne"
 
 msgid "Deck name"
-msgstr ""
+msgstr "Deckname"
 
 #, javascript-format
 msgid "Not enough cards (${ drawDeckSize } / ${ size })."
-msgstr ""
+msgstr "Nicht genug Karten (${ drawDeckSize } / ${ size })."
 
 #, javascript-format
 msgid "Too many cards (${ drawDeckSize } / ${ size })."
-msgstr ""
+msgstr "Zu viele Karten (${ drawDeckSize } / ${ size })."
 
 msgid "Draw Random Basic Weakness"
-msgstr ""
+msgstr "Zufällige Grundschwäche ziehen"
 
 #. This is a deck upgrade action.
 msgid "Undo deck change?"
-msgstr ""
+msgstr "Deckänderung rückgängig machen?"
 
 #. This is a deck upgrade action.
 msgid ""
@@ -3752,137 +3759,145 @@ msgid ""
 "changes might be applied twice. You should view the deck and manually undo "
 "the edits before reapplying the changes."
 msgstr ""
+"Anscheinend versuchst du, das Abspeichern eines Decks rückgängig zu machen.\n"
+"\n"
+"Die App kann diese Änderungen NICHT rückgängig machen. Solltest du forfahren, "
+"könnten die Änderungen doppelt angewandt werden. Du solltest die Bearbeitungen "
+"manuell rückgrängig machen, bevor du diese Änderungen erneut anwendest."
 
 #. This is a deck upgrade action.
 msgid "Undo anyway"
-msgstr ""
+msgstr "Trotzdem rückgängig machen"
 
 msgid "Save deck changes"
-msgstr ""
+msgstr "Deck-Änderungen speichern"
 
 msgid "It looks like one or more deck changes are unsaved."
-msgstr ""
+msgstr "Offenbar gibt es ungespeicherte Deckänderungen."
 
 #, javascript-format
 msgid "${ handle }'s Friends"
-msgstr ""
+msgstr "Freunde von ${ handle }"
 
 msgid "Friends"
-msgstr ""
+msgstr "Freunde"
 
 #, javascript-format
 msgid "Search for ${ searchTerm }"
-msgstr ""
+msgstr "Suche nach ${ searchTerm }"
 
 msgid "Friend Requests"
-msgstr ""
+msgstr "Freundschaftsanfragen"
 
 msgid "Pending Friend Requests"
-msgstr ""
+msgstr "Unbeantwortete Freundschaftsanfragen"
 
 msgid "Search for friends to add"
-msgstr ""
+msgstr "Suche nach Freunden zum hinzufügen"
 
 msgid "Search Results"
-msgstr ""
+msgstr "Suchergebnisse"
 
 #, javascript-format
 msgid "No results found for search '${ searchResults.term }'."
-msgstr ""
+msgstr "Keine Ergebnisse für '${ searchResults.term }'"
 
 msgid "Clear search"
-msgstr ""
+msgstr "Suche löschen"
 
 msgid "Search friends"
-msgstr ""
+msgstr "Freunde suchen"
 
 #, javascript-format
 msgid "${ cycleCount } Cycle"
 msgid_plural "${ cycleCount } Cycles"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ cycleCount } Zyklus"
+msgstr[1] "${ cycleCount } Zyklen"
 
 msgid "${ standalonePackCount } Pack"
 msgid_plural "${ standalonePackCount } Packs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ standalonePackCount } Pack"
+msgstr[1] "${ standalonePackCount } Packen"
 
 msgid "Encounter Spoilers"
-msgstr ""
+msgstr "Begegnungs-Spoiler"
 
 msgid "Support"
-msgstr ""
+msgstr "Unterstützung"
 
 msgid "Account Name"
-msgstr ""
+msgstr "Kontoname"
 
 msgid "Choose a handle for your account"
-msgstr ""
+msgstr "Wähle einen Handle für dein Konto"
 
 msgid "Your Friends"
-msgstr ""
+msgstr "Deine Freunde"
 
 msgid ""
 "This app works just fine without an account.\n"
 "But signing in will allow you to sync campaigns between devices, with more "
 "features planned for the future."
 msgstr ""
+"Diese App funktioniert auch ohne ein Konto wunderbar.\n"
+"Eine Anmeldung erlaubt dir, Kampagnen zwischen Geräten zu synchronisieren."
+"Es sind noch weitere Funktionalitäten geplant."
 
 #, javascript-format
 msgid "${ pendingFriendCount } pending request"
 msgid_plural "${ pendingFriendCount } pending requests"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ pendingFriendCount } unbeantwortete Anfrage"
+msgstr[1] "${ pendingFriendCount } unbeantwortete Anfragen"
 
 msgid "${ friendCount } friend"
 msgid_plural "${ friendCount } friends"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ friendCount } Freund"
+msgstr[1] "${ friendCount } Freunde"
 
 msgid "Account name"
-msgstr ""
+msgstr "Kontoname"
 
 msgid "Choose a handle"
-msgstr ""
+msgstr "Wähle ein Handle"
 
 msgid "ArkhamDB Account"
-msgstr ""
+msgstr "ArkhamDB-Konto"
 
 msgid "Arkham Cards Account"
-msgstr ""
+msgstr "Arkham-Cards-Konto"
 
 msgid "Looks like there is already an account registered with this email address."
-msgstr ""
+msgstr "Anscheinend ist bereits ein Konto mit dieser E-Mail-Adresse registriert."
 
 msgid "That doesn't look like a valid email address"
-msgstr ""
+msgstr "Das sieht nicht wie eine gültige E-Mail-Adresse aus."
 
 msgid "That password seems to be too weak."
-msgstr ""
+msgstr "Dieses Passwort ist zu schwach."
 
 msgid "Your account has been disabled."
-msgstr ""
+msgstr "Dein Konto wurde deaktiviert."
 
 msgid "There doesn't appear to be an account with that email address."
-msgstr ""
+msgstr "Anscheinend gibt es kein Konto mit dieser E-Mail-Adresse."
 
 msgid "Invalid password."
-msgstr ""
+msgstr "Ungültiges Passwort."
 
 msgid "Unknown error"
-msgstr ""
+msgstr "Unbekannter Fehler"
 
 msgid "Email address"
-msgstr ""
+msgstr "E-Mail-Adresse"
 
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 msgid "Would you like to create a new account instead?"
-msgstr ""
+msgstr "Möchtest du stattdessen ein neues Konto anlegen?"
 
 msgid "Are you trying to sign in to an existing account?"
-msgstr ""
+msgstr "Versuchst du, dich mit einem bestehenden Konto anzumelden?"
 
 #, javascript-format
 msgid ""
@@ -3890,42 +3905,48 @@ msgid ""
 "\n"
 "Please follow the instructions and then return to the app to continue."
 msgstr ""
+"Eine E-Mail zum Zurücksetzen des Passworts wurde an '${ emailAddress }' gesendet.\n"
+"\n"
+"Bitte folge den Anweisungen dort und kehre anschließend zur App zurück, um fortzufahren."
 
 msgid "Would you like to reset your password via email?"
-msgstr ""
+msgstr "Möchtest du dein Passwort via E-Mail zurücksetzen?"
 
 msgid "Sign up"
-msgstr ""
+msgstr "Registrieren"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Anmelden"
 
 msgid ""
 "Using an Arkham Cards account will allow you to backup and sync your "
 "campaign data between devices.\n"
 "More features are in the works."
 msgstr ""
+"Durch ein Arkham-Cards-Konto kannst du deine Kampagnendaten sichern und "
+"auf mehreren Geräten synchronisieren.\n"
+"Zusätzliche Funktionalitäten sind in Arbeit."
 
 msgid "Sign in to your account"
-msgstr ""
+msgstr "Mit deinem Konto anmelden"
 
 msgid "Create a new account"
-msgstr ""
+msgstr "Ein neues Konto anlegen"
 
 msgid "Sign up with email"
-msgstr ""
+msgstr "Mit E-Mail-Adresse registrieren"
 
 msgid "Sign in with email"
-msgstr ""
+msgstr "Mit E-Mail-Adresse anmelden"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Abmelden"
 
 msgid "Sign in to app"
-msgstr ""
+msgstr "In der App anmelden"
 
 msgid "Problem reading from ArkhamDB"
-msgstr ""
+msgstr "Probleme beim Lesen von ArkhamDB"
 
 msgid ""
 "If you are having trouble with your account you should try to reconnect.\n"
@@ -3933,67 +3954,71 @@ msgid ""
 "If the problem persists, you may sign out but campaigns will have ArkhamDB "
 "decks disconnected."
 msgstr ""
+"Bei Problemen mit deinem Konto solltest du versuchen, dich neu anzumelden.\n"
+"\n"
+"Falls das Problem weiterhin besteht, kannst du dich abmelden. Allerdings verlieren "
+"deine Kampagnen die Verbindungen zu ArkhamDB-Decks."
 
 msgid "Authorization issues"
-msgstr ""
+msgstr "Authorisationsprobleme"
 
 msgid "Reconnect"
-msgstr ""
+msgstr "Neu verbinden"
 
 msgid "Logged in"
-msgstr ""
+msgstr "Angemeldet"
 
 msgid "Synchronize decks"
-msgstr ""
+msgstr "Decks synchronisieren"
 
 msgid "Log out"
-msgstr ""
+msgstr "Abmelden"
 
 msgid "Log in"
-msgstr ""
+msgstr "Anmelden"
 
 msgid "ArkhamDB"
-msgstr ""
+msgstr "ArkhamDB"
 
 msgid "Narration enabled"
-msgstr ""
+msgstr "Erzählungen aktiviert"
 
 msgid "Audio narration"
-msgstr ""
+msgstr "Audio-Erzählungen"
 
 msgid "Dissonant Voices"
-msgstr ""
+msgstr "Dissonant Voices"
 
 msgid "Notes"
-msgstr ""
+msgstr "Notizen"
 
 msgid "Free-form text records"
-msgstr ""
+msgstr "Freiform-Text-Einträge"
 
 msgid "Achievements"
-msgstr ""
+msgstr "Erfolge"
 
 msgid "Upload campaign"
-msgstr ""
+msgstr "Kampagne hochladen"
 
 msgid "Can't add side scenario right now."
-msgstr ""
+msgstr "Nebenszenario kann jetzt nicht eingefügt werden."
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
-msgstr ""
+msgstr "Chaosbeutel (${ tokenCount })"
 
 msgid "Save upgrade"
-msgstr ""
+msgstr "Verbesserung speichern"
 
 msgid "Sorry, you don't seem to be a Mythos Buster patron."
-msgstr ""
+msgstr "Entschulde, aber du scheinst kein Patron der Mythos Busters zu sein."
 
 msgid "Earned experience:"
-msgstr ""
+msgstr "Verdiente Erfahrung:"
 
 msgid "Sign out of Arkham Cards?"
-msgstr ""
+msgstr "Von Arkham Cards abmelden?"
 
 msgid ""
 "Are you sure you want to sign out of Arkham Cards?\n"
@@ -4003,127 +4028,137 @@ msgid ""
 "\n"
 "Note: if you have made recent changes while offline, they may be lost."
 msgstr ""
+"Bist du sicher, dass du dich von Arkham Cards abmelden willst?\n"
+"\n"
+"Alle Kampagnen, die doch hochgeladen hast oder die mit dir geteilt wurden werden von "
+"diesem Gerät entfernt. Sie können erneut heruntergeladen werden, wenn du dich wieder anmeldest.\n"
+"\n"
+"Anmerkung: Falls du vor kurzem offline Änderungen vorgenommen hast können diese verloren gehen."
 
 msgid "Name required"
-msgstr ""
+msgstr "Name benötigt"
 
 msgid "You must specify a name for custom campaigns."
-msgstr ""
+msgstr "Benutzerdefinierte Kampagnen benötigen einen Namen."
 
 msgid "Export diagnostic data"
-msgstr ""
+msgstr "Diagnostik-Daten exportieren"
 
 msgid ""
 "This feature is intended for advanced diagnostics. Just copy the data "
 "presented here and email it to arkhamcards@gmail.com"
 msgstr ""
+"Diese Funktionalität ist für detaillierte Diagnostik gedacht. Kopiere einfach die "
+"hier gezeigten Daten in eine E-Mail an arkhamcards@gmail.com"
 
 msgid "Database migration required"
-msgstr ""
+msgstr "Datenbank-Migration benötigt"
 
 msgid "This should only take a few seconds and no network is required."
-msgstr ""
+msgstr "Dies sollte nur ein paar Sekunden dauern und benötigt keine Netzwerkverbindung."
 
 msgid "Migrate now"
-msgstr ""
+msgstr "Jetzt migrieren"
 
 msgid "Export Diagnostic Data"
-msgstr ""
+msgstr "Diagnostik-Daten exportieren"
 
 msgid "Agility"
-msgstr ""
+msgstr "Geschicklichkeit"
 
 msgid "Combat"
-msgstr ""
+msgstr "Kampf"
 
 msgid "Intellect"
-msgstr ""
+msgstr "Intellekt"
 
 msgid "Willpower"
-msgstr ""
+msgstr "Willenskraft"
 
 msgid "Boost"
-msgstr ""
+msgstr "Bonus"
 
 msgid "Skill Boosts"
-msgstr ""
+msgstr "Fertigkeitsboni"
 
 msgid "Skill Boosts: All"
-msgstr ""
+msgstr "Fertigkeitsboni: Alle"
 
 msgid ""
 "If you run into any problems with this migration, please contact "
 "arkhamcards@gmail.com."
 msgstr ""
+"Falls bei dieser Migration irgendwelche Probleme auftreten, kontaktiere bitte "
+"arkhamcards@gmail.com."
 
 msgid "Asset: Body. Arcane"
-msgstr ""
+msgstr "Vorteil: Körper. Arkan"
 
 msgid "Color blind friendly icons"
-msgstr ""
+msgstr "Farbenblindfreundliche Symbole"
 
 msgid "Uploading"
-msgstr ""
+msgstr "Hochladen"
 
 msgid "Upload campaigns"
-msgstr ""
+msgstr "Kampagnen hochladen"
 
 msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr ""
+msgstr "Kampagnen können zu deinem Arkham-Cards-Konto hochgeladen werden."
 
 msgid "Uploaded campaigns will be synced between devices."
-msgstr ""
+msgstr "Hochgeladene Kampagnen werden zwischen Geräten synchronisiert."
 
 msgid "Review records"
-msgstr ""
+msgstr "Einträge überprüfen"
 
 msgid "Note campaign achievements"
-msgstr ""
+msgstr "Kampagnenerfolge notieren"
 
 msgid "Complete campaign setup"
-msgstr ""
+msgstr "Komplette Kampagnenvorbereitung"
 
 msgid "Review and draw tokens"
-msgstr ""
+msgstr "Marker prüfen und ziehen"
 
 msgid "Spent experience"
-msgstr ""
+msgstr "Ausgegebene Erfahrung"
 
 msgid "View upgrade"
-msgstr ""
+msgstr "Verbesserung anzeigen"
 
 msgid "Continue"
-msgstr ""
+msgstr "Weiter"
 
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 msgid "View results"
-msgstr ""
+msgstr "Ergebnisse anzeigen"
 
 msgid "Skipped"
-msgstr ""
+msgstr "Übersprungen"
 
 msgid "Locked"
-msgstr ""
+msgstr "Verschlossen"
 
 msgid "Add scenario result"
-msgstr ""
+msgstr "Szenarioergebnis hinzufügen"
 
 msgid "Record completed scenario"
-msgstr ""
+msgstr "Abgeschlossenes Szenario aufzeichnen"
 
 msgid "Add XP from scenario"
-msgstr ""
+msgstr "Erfahrung eines Szenarios hinzufügen"
 
 msgid "Review scenario results"
-msgstr ""
+msgstr "Szenarioergebnisse anzeigen"
 
 msgid "Edit chaos bag"
-msgstr ""
+msgstr "Chaosbeutel ändern"
 
 msgid "Scenario name"
-msgstr ""
+msgstr "Szenarioname"
 
 #, javascript-format
 msgctxt "masculine"
@@ -4226,7 +4261,7 @@ msgstr ""
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } liest <b>${ sectionName }</b>"
 
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4325,11 +4360,11 @@ msgstr ""
 
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } liest <b>${ sectionName }</b>"
 
 msgctxt "action"
 msgid "Fight"
-msgstr ""
+msgstr "Kampf"
 
 msgctxt "action"
 msgid "Engage"
@@ -4353,7 +4388,7 @@ msgstr "Bewegen"
 
 msgctxt "action"
 msgid "Evade"
-msgstr ""
+msgstr "Entkommen"
 
 msgctxt "action"
 msgid "Resource"
@@ -4388,8 +4423,8 @@ msgstr[1] "Fähigkeiten"
 msgctxt "header"
 msgid "Treachery"
 msgid_plural "Treacheries"
-msgstr[0] "Verrat"
-msgstr[1] "Verrate"
+msgstr[0] "Verratskarte"
+msgstr[1] "Verratskarten"
 
 msgctxt "header"
 msgid "Enemy"
@@ -4413,7 +4448,7 @@ msgctxt "header"
 msgid "Act"
 msgid_plural "Acts"
 msgstr[0] "Szene"
-msgstr[1] "Szene"
+msgstr[1] "Szenen"
 
 msgctxt "header"
 msgid "Agenda"
@@ -4439,4 +4474,4 @@ msgstr "Alle"
 
 msgctxt "trauma"
 msgid "None"
-msgstr ""
+msgstr "Keine"
