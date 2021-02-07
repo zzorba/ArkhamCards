@@ -284,12 +284,12 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag }: Props) {
       return null;
     }
     return (
-      <View style={[styles.advancedButton, styles.advancedButtonRight]}>
+      <View style={[styles.advancedButton, styles.advancedButtonRight, space.paddingTopS]}>
         <TouchableWithoutFeedback onPress={handleClearTokensPressed}>
           <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonRight]}>
             <ChaosToken iconKey="return" tiny />
             <Text style={[typography.cardTraits, space.paddingLeftS]} numberOfLines={2}>
-              { t`Return all tokens\n(including Bless/Curse)` }
+              { t`Return all tokens to bag\n(do not remove Bless/Curse)` }
             </Text>
           </View>
         </TouchableWithoutFeedback>

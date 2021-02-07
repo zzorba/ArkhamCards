@@ -206,7 +206,7 @@ export default function ChaosToken({ iconKey, small, tiny, sealed, shadow: useSh
     );
   }
   if (iconKey === 'another' || iconKey === 'return') {
-    return <NormalChaosToken iconKey={iconKey} size={size} shadowStyle={shadow.small} />
+    return <NormalChaosToken iconKey={iconKey} size={size} shadowStyle={shadow.small} />;
   }
 
   if (sealed) {

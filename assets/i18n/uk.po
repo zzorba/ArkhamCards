@@ -3827,11 +3827,6 @@ msgstr ""
 msgid "Return tokens"
 msgstr ""
 
-msgid ""
-"Return all tokens\n"
-"(including Bless/Curse)"
-msgstr ""
-
 msgid "Seal tokens"
 msgstr ""
 
@@ -3839,6 +3834,11 @@ msgid "Release all"
 msgstr ""
 
 msgid "Remove all bless & curse tokens"
+msgstr ""
+
+msgid ""
+"Return all tokens to bag\n"
+"(do not remove Bless/Curse)"
 msgstr ""
 
 #, javascript-format
