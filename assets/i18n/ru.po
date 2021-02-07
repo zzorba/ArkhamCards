@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-01-09 12:49+0300\n"
+"PO-Revision-Date: 2021-02-07 19:33+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"x-generator: Poedit 2.4.2\n"
+"x-generator: Poedit 2.4.1\n"
 "x-poedit-basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n"
 "%100<12 || n%100>14) ? 1 : 2);\n"
@@ -363,20 +363,6 @@ msgstr "Все слабости взяты."
 msgid "Save to Deck"
 msgstr "Сохранить колоду"
 
-msgid "Problem with import"
-msgstr "Ошибка импорта"
-
-msgid ""
-"We were not able to parse any campaigns from that pasted data.\n"
-"\n"
-"Make sure its an exact copy of the text provided by the Backup feature of an Arkham "
-"Cards app."
-msgstr ""
-"Нам не удалось найти данные кампании в предоставленных данных.\n"
-"\n"
-"Убедитесь, что они точно совпадают с данными из раздела Резервная копия приложения "
-"Arkham Cards."
-
 msgid "Unexpected file type"
 msgstr "Неизвестный формат"
 
@@ -413,34 +399,8 @@ msgstr "Вторая база"
 msgid "Edit Collection"
 msgstr "Изменить коллекцию"
 
-msgid "All local decks and campaigns will be overridden"
-msgstr "Все локальные колоды и кампании будут перезаписаны"
-
-#, javascript-format
-msgid ""
-"This feature is intended for advanced diagnostics or to import data from another app.\n"
-"\n"
-"${ erasedCopy }"
-msgstr ""
-"Эта функция используется для расширенной диагностики или импорта данных из другого "
-"приложения.\n"
-"\n"
-"${ erasedCopy }"
-
 msgid "Nevermind"
 msgstr "Отмена"
-
-msgid "Paste Backup Here"
-msgstr "Скопируйте сюда резервную копию"
-
-msgid ""
-"This feature is intended for advanced diagnostics or if you are trying to move your "
-"campaign data from one device to another. Just copy the data and paste it into the other "
-"app."
-msgstr ""
-"Эта функция используется для расширенной диагностики или на случай, если вы захотите "
-"перенести прогресс в кампании на другое устройство. Просто скопируйте эти данные в "
-"другое приложение."
 
 msgid "Debug Card Json"
 msgstr "Отладка данных карты"
@@ -721,9 +681,6 @@ msgstr "Постоянный"
 msgid "Seal"
 msgstr "Печать"
 
-msgid "Investigate"
-msgstr "Исследование"
-
 msgid "Victory"
 msgstr "Победа"
 
@@ -998,23 +955,6 @@ msgstr "Особые карты"
 msgid "Experience"
 msgstr "Опыт"
 
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
-msgstr "Опыт: ${ spentXp } из ${ adjustedExperience } (${ adjustment })"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
-msgstr "Опыт: ${ spentXp } из ${ adjustedExperience } (+0)"
-
-msgid "Deck Details"
-msgstr "Подробности"
-
-msgid "NAME"
-msgstr "Название"
-
-msgid "EXPERIENCE"
-msgstr "Опыт"
-
 msgid "Okay"
 msgstr "Ок"
 
@@ -1112,9 +1052,6 @@ msgstr ""
 "\n"
 "Если эта колода участвовала в кампании, вы можете добавить в неё того же сыщика, чтобы "
 "восстановить данные кампании."
-
-msgid "OK"
-msgstr "Ок"
 
 msgid "Error"
 msgstr "Ошибка"
@@ -1250,19 +1187,15 @@ msgstr "Слишком много карт ограниченного пула."
 msgid "Doesn't comply with the Investigator requirements."
 msgstr "Не соответствует требованиям к колоде сыщика."
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Note: This entry is crossed out"
 msgstr "Обратите внимание: Этот пункт вычеркнут"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Uncross Out"
 msgstr "Вернуть"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Cross Out"
 msgstr "Вычеркнуть"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Add Another"
 msgstr "Добавить ещё"
 
@@ -1561,9 +1494,6 @@ msgstr "Вы уверены, что хотите удалить кампанию
 msgid "Scenarios"
 msgstr "Сценарии"
 
-msgid "Log"
-msgstr "Журнал"
-
 msgid "Remove deck from campaign"
 msgstr "Удалить колоду из кампании"
 
@@ -1596,14 +1526,8 @@ msgstr ""
 "\n"
 "Однако вы можете больше не включать его в будущие сценарии этой кампании."
 
-msgid "Remove investigators"
-msgstr "Удалить сыщиков"
-
 msgid "Add Investigator"
 msgstr "Добавить сыщика"
-
-msgid "Finished removing investigators"
-msgstr "Сыщики удалены"
 
 msgid "Killed and Insane Investigators"
 msgstr "Убитые и сошедшие с ума сыщики"
@@ -1757,6 +1681,7 @@ msgstr ""
 "${ card.name }\n"
 "(Имеет ${ input.id })"
 
+#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "Доступно ${ specialXp } очко пополнения припасов"
@@ -1774,9 +1699,6 @@ msgstr "Сменить кампанию"
 
 msgid "Choose Investigators"
 msgstr "Выбрать сыщиков"
-
-msgid "View deck upgrade"
-msgstr "Посмотреть улучшения колоды"
 
 msgid "Campaign cards"
 msgstr "Карты кампании"
@@ -2713,9 +2635,6 @@ msgstr " (за сыщика)"
 msgid "New Campaign"
 msgstr "Новая кампания"
 
-msgid "Campaign Name"
-msgstr "Название кампании"
-
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
@@ -2820,15 +2739,6 @@ msgstr "Поиск по кампаниям"
 msgid "${ spentXp } of ${ totalXp } spent"
 msgstr "${ spentXp } из ${ totalXp } потрачено"
 
-msgid "Remove investigator"
-msgstr "Удалить сыщика"
-
-msgid "Edit Trauma"
-msgstr "Править травмы"
-
-msgid "View Deck"
-msgstr "Посмотреть колоду"
-
 msgid "Select Deck"
 msgstr "Выбрать колоду"
 
@@ -2873,19 +2783,6 @@ msgstr "Набор базовых слабостей"
 #, javascript-format
 msgid "${ counts.assigned } / ${ counts.total } have been drawn."
 msgstr "Взято ${ counts.assigned } / ${ counts.total }."
-
-#, javascript-format
-msgid "Are you sure you want to delete the campaign: ${ campaign.name }"
-msgstr "Вы действительно хотите удалить кампанию: ${ campaign.name }"
-
-msgid "Scenario History"
-msgstr "История сценария"
-
-msgid "Edit Tokens"
-msgstr "Редактировать жетоны"
-
-msgid "Draw Tokens"
-msgstr "Тянуть жетоны"
 
 msgid "Clean up broken campaigns"
 msgstr "Почистить сломанные кампании"
@@ -3440,7 +3337,7 @@ msgid ""
 "As new scenarios are released, I will try to update the app promptly but there may be "
 "some slight delays."
 msgstr ""
-"Примечание: эта кампания выпущена не полностью, поэтому путеводитель неполон (и может "
+"Примечание: эта кампания вышла не полностью, поэтому путеводитель неполон (и может "
 "содержать ошибки).\n"
 "По мере выхода новых сценариев мы постараемся дополнять руководство как можно скорее, но "
 "возможны задержки."
@@ -3692,24 +3589,9 @@ msgstr "Локация"
 msgid "Actions"
 msgstr "Действия"
 
-msgid "Engage"
-msgstr "Начать сражаться"
-
-msgid "Play"
-msgstr "Сыграть"
-
-msgid "Draw"
-msgstr "Взять карту"
-
-msgid "Move"
-msgstr "Переместиться"
-
-msgid "Resource"
-msgstr "Взять ресурс"
-
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
-msgstr "Сбросить улучшение колоды?"
+msgstr "Удалить улучшение колоды?"
 
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead pay the full "
@@ -3726,9 +3608,6 @@ msgstr "Улучшение"
 
 msgid "Editing"
 msgstr "Редактирование"
-
-msgid "Uplodaing deck"
-msgstr "Загрузка колоды"
 
 msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will track changes."
@@ -3779,7 +3658,7 @@ msgstr[1] "${ normalCards } карты"
 msgstr[2] "${ normalCards } карт"
 
 msgid "Add scenario XP"
-msgstr "Добавить сценарный опыт"
+msgstr "Добавить новый опыт"
 
 msgid "Draw simulator"
 msgstr "Симулятор взятия"
@@ -3806,7 +3685,7 @@ msgstr "Взять случайную базовую слабость"
 
 #. This is a deck upgrade action.
 msgid "Undo deck change?"
-msgstr "Отменить изменения колоды?"
+msgstr "Вернуться до правки колоды?"
 
 #. This is a deck upgrade action.
 msgid ""
@@ -3816,10 +3695,15 @@ msgid ""
 "might be applied twice. You should view the deck and manually undo the edits before "
 "reapplying the changes."
 msgstr ""
+"Действие, которое вы пытаетесь отменить, включает изменения в колоде сыщика.\n"
+"\n"
+"Приложение не сможет вернуть колоду к состоянию до этих изменений, так что если вы "
+"продолжите, они могут быть применены дважды. Во избежание ошибок вам следует перейти к "
+"колоде и вручную вернуть её к прежнему составу прежде чем вносить новые изменения."
 
 #. This is a deck upgrade action.
 msgid "Undo anyway"
-msgstr ""
+msgstr "Да, вернуться"
 
 msgid "Save deck changes"
 msgstr "Сохранить изменения колоды"
@@ -3837,12 +3721,6 @@ msgstr "Друзья"
 #, javascript-format
 msgid "Search for ${ searchTerm }"
 msgstr "Поиск «${ searchTerm }»"
-
-msgid "Friend Requeusts"
-msgstr "Заявки в друзья"
-
-msgid "Pending Friend Requeusts"
-msgstr "Новые заявки в друзья"
 
 msgid "Search for friends to add"
 msgstr "Найти и добавить друзей"
@@ -3916,20 +3794,14 @@ msgstr "Имя аккаунта"
 msgid "Choose a handle"
 msgstr "Придумайте ник"
 
-msgid "Other Accounts"
-msgstr "Другие аккаунты"
-
 msgid "ArkhamDB Account"
 msgstr "Аккаунт ArkhamDB"
-
-msgid "Accounts"
-msgstr "Аккаунты"
 
 msgid "Arkham Cards Account"
 msgstr "Аккаунт Arkham Cards"
 
 msgid "Looks like there is already an account registered with this email address."
-msgstr "Похоже, на эту электронную почту уже зарегистрирован аккаунт"
+msgstr "Похоже, на эту электронную почту уже зарегистрирован аккаунт."
 
 msgid "That doesn't look like a valid email address"
 msgstr "Неверный формат адреса электронной почты"
@@ -3944,7 +3816,7 @@ msgid "There doesn't appear to be an account with that email address."
 msgstr "На этот адрес электронной почты не зарегистрирован аккаунт."
 
 msgid "Invalid password."
-msgstr "Неверный пароль"
+msgstr "Неверный пароль."
 
 msgid "Unknown error"
 msgstr "Неизвестная ошибка"
@@ -4042,10 +3914,10 @@ msgid "ArkhamDB"
 msgstr "ArkhamDB"
 
 msgid "Narration enabled"
-msgstr "Аудиосопровождение включено"
+msgstr "Голосовое сопровождение включено"
 
 msgid "Audio narration"
-msgstr "Аудиосопровождение"
+msgstr "Голосовое сопровождение"
 
 msgid "Dissonant Voices"
 msgstr "Dissonant Voices"
@@ -4062,21 +3934,178 @@ msgstr "Достижения"
 msgid "Upload campaign"
 msgstr "Загрузить кампанию"
 
-msgid "Add investigators"
-msgstr "Добавить сыщиков"
-
-msgid "Add investigator to which campaign?"
-msgstr "В какую кампанию добавить сыщиков?"
-
-msgid "Which campaign would you like to add an investigator to?"
-msgstr "В какую кампанию вы хотели бы добавить сыщика?"
-
 msgid "Can't add side scenario right now."
 msgstr "Сейчас нельзя добавить сценарий-ответвление."
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
 msgstr "Мешок хаоса (${ tokenCount })"
+
+msgid "Sorry, you don't seem to be a Mythos Buster patron."
+msgstr "Похоже, вы не патрон Mythos Busters."
+
+msgid "Asset: Body. Arcane"
+msgstr "Актив: Одежда. Мистический"
+
+msgid "Export diagnostic data"
+msgstr "Выгрузить данные для диагностики"
+
+msgid ""
+"This feature is intended for advanced diagnostics. Just copy the data presented here and "
+"email it to arkhamcards@gmail.com"
+msgstr ""
+"Эта функция предназначена для глубокой диагностики. Скопируйте полученные данные и "
+"отправьте их как есть на arkhamcards@gmail.com"
+
+msgid "Export Diagnostic Data"
+msgstr "Выгрузить данные для диагностики"
+
+msgid "Friend Requests"
+msgstr "Запросы в друзья"
+
+msgid "Pending Friend Requests"
+msgstr "Непросмотренные запросы в друзья"
+
+msgid "Color blind friendly icons"
+msgstr "Цветовая гамма для дальтоников"
+
+msgid "Uploading"
+msgstr "Загрузка"
+
+msgid "Campaigns can be uploaded to your Arkham Cards account."
+msgstr "Данные кампаний можно загрузить в ваш аккаунт Arkham Cards."
+
+msgid "Uploaded campaigns will be synced between devices."
+msgstr "Загруженные кампании можно синхронизировать между устройствами."
+
+msgid "Upload campaigns"
+msgstr "Загрузить кампании"
+
+msgid "Sign out of Arkham Cards?"
+msgstr "Выйти из Arkham Cards?"
+
+msgid ""
+"Are you sure you want to sign out of Arkham Cards?\n"
+"\n"
+"Any campaigns you uploaded or have had shared with you will be removed from this device. "
+"They can be resynced if you sign in again.\n"
+"\n"
+"Note: if you have made recent changes while offline, they may be lost."
+msgstr ""
+"Выйти из аккаунта Arkham Cards?\n"
+"\n"
+"Если у вас есть кампании, загруженные на Arkham Cards и синхронизированные с другими "
+"игроками, будут удалены с этого устройства. Если вы снова войдёте в аккаунт, они снова "
+"синхронизируются.\n"
+"\n"
+"Обратите внимание: недавние изменения, сделанные без подключения к сети, могут быть "
+"утрачены."
+
+msgid "Agility"
+msgstr "Ловкость"
+
+msgid "Combat"
+msgstr "Сила"
+
+msgid "Intellect"
+msgstr "Интеллект"
+
+msgid "Willpower"
+msgstr "Воля"
+
+msgid "Boost"
+msgstr "Бонусы"
+
+msgid "Skill Boosts"
+msgstr "Бонусы к навыкам"
+
+msgid "Skill Boosts: All"
+msgstr "Бонусы к навыкам: Все"
+
+msgid "Save upgrade"
+msgstr "Сохранить улучшение"
+
+msgid "Uploading deck"
+msgstr "Загрузка колоды"
+
+msgid "${ unspentXp } XP unspent"
+msgid_plural "${ unspentXp } XP unspent"
+msgstr[0] "${ unspentXp } опыта непотрачено"
+msgstr[1] "${ unspentXp } опыта непотрачено"
+msgstr[2] "${ unspentXp } опыта непотрачено"
+
+msgid "Database migration required"
+msgstr "Требуется обновление базы данных"
+
+msgid "This should only take a few seconds and no network is required."
+msgstr "Потребуется несколько секунд. Интернет не нужен."
+
+msgid ""
+"If you run into any problems with this migration, please contact arkhamcards@gmail.com."
+msgstr "Если возникнут проблемы, пишите на arkhamcards@gmail.com."
+
+msgid "Migrate now"
+msgstr "Обновить"
+
+msgid "Review records"
+msgstr "Посмореть записи"
+
+msgid "Note campaign achievements"
+msgstr "Список доступных достижений"
+
+msgid "Complete campaign setup"
+msgstr "Завершить подготовку к кампании"
+
+msgid "Review and draw tokens"
+msgstr "Список жетонов и симулятор взятия"
+
+msgid "Spent experience"
+msgstr "Потраченный опыт"
+
+msgid "View upgrade"
+msgstr "Посмотреть улучшение"
+
+msgid "Continue"
+msgstr "Продолжить"
+
+msgid "Start"
+msgstr "Начать"
+
+msgid "View results"
+msgstr "Посмотреть результаты"
+
+msgid "Skipped"
+msgstr "Пропущено"
+
+msgid "Locked"
+msgstr "Недоступно"
+
+msgid "Add scenario result"
+msgstr "Добавить результаты сценария"
+
+msgid "Record completed scenario"
+msgstr "Записать завершённый сценарий"
+
+msgid "Earned experience:"
+msgstr "Полученный опыт:"
+
+msgid "Name required"
+msgstr "Введите название"
+
+msgid "You must specify a name for custom campaigns."
+msgstr "Пользовательским кампаниям нужно название."
+
+msgid "Add XP from scenario"
+msgstr "Добавить опыт из сценария"
+
+msgid "Review scenario results"
+msgstr "Посмотреть результаты сценария"
+
+msgid "Edit chaos bag"
+msgstr "Править мешок хаоса"
+
+msgid "Scenario name"
+msgstr "Название сценария"
 
 #, javascript-format
 msgctxt "masculine"
@@ -4179,6 +4208,11 @@ msgstr ""
 "Если <i>${ card.name }</i> указана под «Проверьте «${ entry.section }» в вашем журнале "
 "кампании."
 
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
+
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } <b>сошла с ума</b>."
@@ -4277,6 +4311,42 @@ msgstr ""
 "Если <i>${ card.name }</i> указана под «Проверьте «${ entry.section }» в вашем журнале "
 "кампании."
 
+msgctxt "feminine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
+
+msgctxt "action"
+msgid "Fight"
+msgstr "Бой"
+
+msgctxt "action"
+msgid "Engage"
+msgstr "Начать сражаться"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "Исследование"
+
+msgctxt "action"
+msgid "Play"
+msgstr "Сыграть карту"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "Взять карту"
+
+msgctxt "action"
+msgid "Move"
+msgstr "Переместиться"
+
+msgctxt "action"
+msgid "Evade"
+msgstr "Уход"
+
+msgctxt "action"
+msgid "Resource"
+msgstr "Взять ресурс"
+
 msgctxt "Draw Cards"
 msgid "All"
 msgstr "Все"
@@ -4365,3 +4435,7 @@ msgstr[2] "Сценариев"
 msgctxt "Weakness Card"
 msgid "All"
 msgstr "Все"
+
+msgctxt "trauma"
+msgid "None"
+msgstr "Нет"
