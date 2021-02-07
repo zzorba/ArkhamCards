@@ -185,7 +185,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     <>
       <View style={[space.paddingBottomS, space.paddingTopS]}>
         <Text style={[typography.large, typography.center, typography.light]}>
-          { t`— Investigators · ${investigatorCount} —` }
+          { `— ${t`Investigators`} · ${investigatorCount} —` }
         </Text>
       </View>
       { map(aliveInvestigators, investigator => (

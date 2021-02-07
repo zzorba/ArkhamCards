@@ -3937,10 +3937,6 @@ msgstr ""
 msgid "Spent experience"
 msgstr ""
 
-#, javascript-format
-msgid "— Investigators · ${ investigatorCount } —"
-msgstr ""
-
 msgid "View upgrade"
 msgstr ""
 
