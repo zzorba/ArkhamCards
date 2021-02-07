@@ -1,9 +1,8 @@
-import { concat, uniq, flatMap, filter, forEach, map, reverse, sortBy, values } from 'lodash';
+import { forEach, keys, omit, uniqBy } from 'lodash';
 import uuid from 'react-native-uuid';
 
 import {
-  LOGOUT,
-  RESTORE_BACKUP,
+  ARKHAMDB_LOGOUT,
   MY_DECKS_START_REFRESH,
   MY_DECKS_CACHE_HIT,
   MY_DECKS_ERROR,
@@ -21,14 +20,21 @@ import {
   UpdateDeckAction,
   Deck,
   DecksMap,
+  getDeckId,
+  DeckId,
+  REDUX_MIGRATION,
+  UPLOAD_DECK,
+  UploadedCampaignId,
 } from '@actions/types';
 import deepDiff from 'deep-diff';
 
 interface DecksState {
   all: DecksMap;
-  myDecks: number[];
+  uploaded?: {
+    [uuid: string]: UploadedCampaignId[] | undefined;
+  };
   replacedLocalIds?: {
-    [id: number]: number;
+    [uuid: string]: DeckId;
   };
   dateUpdated: number | null;
   refreshing: boolean;
@@ -38,7 +44,6 @@ interface DecksState {
 
 const DEFAULT_DECK_STATE: DecksState = {
   all: {},
-  myDecks: [],
   replacedLocalIds: {},
   dateUpdated: null,
   refreshing: false,
@@ -53,21 +58,12 @@ export function updateDeck(
   const deck = { ...action.deck };
   let scenarioCount = 0;
   let currentDeck = deck;
-  while (currentDeck && currentDeck.previous_deck) {
+  while (currentDeck && currentDeck.previousDeckId) {
     scenarioCount ++;
-    currentDeck = state.all[currentDeck.previous_deck];
+    currentDeck = state.all[currentDeck.previousDeckId.uuid];
   }
   deck.scenarioCount = scenarioCount;
   return deck;
-}
-
-function sortMyDecks(myDecks: number[], allDecks: DecksMap): number[] {
-  return reverse(
-    sortBy(
-      myDecks,
-      deckId => allDecks[deckId].date_update || allDecks[deckId].date_creation
-    )
-  );
 }
 
 export default function(
@@ -77,28 +73,22 @@ export default function(
   if (action.type === RESTORE_COMPLEX_BACKUP) {
     const all: DecksMap = { ...state.all };
     forEach(action.decks, deck => {
-      const remappedDeck = {
-        ...deck,
-        id: action.deckRemapping[deck.id],
-        previous_deck: deck.previous_deck ? action.deckRemapping[deck.previous_deck] : undefined,
-        next_deck: deck.next_deck ? action.deckRemapping[deck.next_deck] : undefined,
-      };
-      all[remappedDeck.id] = remappedDeck;
+      all[getDeckId(deck).uuid] = deck;
     });
-    const myDecks = flatMap(
-      values(all),
-      deck => {
-        if (deck.previous_deck) {
-          return [];
-        }
-        return [deck.id];
-      }
-    );
     return {
       ...state,
       all,
-      myDecks,
-      replacedLocalIds: [],
+      replacedLocalIds: {},
+    };
+  }
+  if (action.type === REDUX_MIGRATION) {
+    const all: DecksMap = { ...state.all };
+    forEach(action.decks, deck => {
+      all[getDeckId(deck).uuid] = deck;
+    });
+    return {
+      ...DEFAULT_DECK_STATE,
+      all,
     };
   }
   if (action.type === ENSURE_UUID) {
@@ -118,46 +108,29 @@ export default function(
       all,
     };
   }
-  if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
+  if (action.type === UPLOAD_DECK) {
+    const uploaded = state.uploaded || {};
+    return {
+      ...state,
+      uploaded: {
+        ...(uploaded),
+        [action.deckId.uuid]: uniqBy([
+          ...(uploaded[action.deckId.uuid] || []),
+          action.campaignId,
+        ], c => c.campaignId),
+      },
+    };
+  }
+  if (action.type === ARKHAMDB_LOGOUT || action.type === CLEAR_DECKS) {
     const all: DecksMap = {};
-    forEach(state.all, (deck, id: any) => {
+    forEach(state.all, (deck, id: string) => {
       if (deck && deck.local) {
         all[id] = deck;
       }
     });
-    const myDecks = filter(state.myDecks, id => !!all[id]);
     return {
       ...DEFAULT_DECK_STATE,
       all,
-      myDecks,
-    };
-  }
-  if (action.type === RESTORE_BACKUP) {
-    const all: DecksMap = {};
-    forEach(state.all, (deck, id: any) => {
-      if (deck && !deck.local) {
-        all[id] = deck;
-      }
-    });
-    forEach(action.decks, deck => {
-      if (deck) {
-        all[deck.id] = deck;
-      }
-    });
-    const myDecks = flatMap(
-      values(all),
-      deck => {
-        if (deck.previous_deck) {
-          return [];
-        }
-        return [deck.id];
-      }
-    );
-    return {
-      ...DEFAULT_DECK_STATE,
-      all,
-      myDecks,
-      replacedLocalIds: [],
     };
   }
   if (action.type === MY_DECKS_START_REFRESH) {
@@ -184,31 +157,41 @@ export default function(
     };
   }
   if (action.type === SET_MY_DECKS) {
-    const allDecks: DecksMap = { ...state.all };
+    const all: DecksMap = { ...state.all };
+    const remoteDecks: { [uuid: string]: boolean | undefined } = {};
+    forEach(state.all, deck => {
+      if (deck) {
+        const deckId = getDeckId(deck);
+        if (!deckId.local) {
+          remoteDecks[deckId.uuid] = true;
+        }
+      }
+    });
     forEach(action.decks, deck => {
-      allDecks[deck.id] = deck;
+      const deckId = getDeckId(deck);
+      all[deckId.uuid] = deck;
+      if (remoteDecks[deckId.uuid]) {
+        delete remoteDecks[deckId.uuid];
+      }
+    });
+    // Remove decks that are now missing.
+    forEach(keys(remoteDecks), uuid => {
+      if (all[uuid]) {
+        delete all[uuid];
+      }
     });
     forEach(action.decks, deck => {
       let scenarioCount = 0;
       let currentDeck = deck;
-      while (currentDeck && currentDeck.previous_deck) {
+      while (currentDeck && currentDeck.previousDeckId) {
         scenarioCount ++;
-        currentDeck = allDecks[currentDeck.previous_deck];
+        currentDeck = all[currentDeck.previousDeckId.uuid];
       }
       deck.scenarioCount = scenarioCount;
     });
-    const localDeckIds: number[] = filter(
-      state.myDecks,
-      id => allDecks[id] ? !!allDecks[id].local : false);
-
-    const actionDeckIds: number[] = map(
-      filter(action.decks, (deck: Deck) => !deck.next_deck),
-      deck => deck.id
-    );
     return {
       ...state,
-      all: allDecks,
-      myDecks: sortMyDecks(concat(localDeckIds, actionDeckIds), allDecks),
+      all,
       dateUpdated: action.timestamp.getTime(),
       lastModified: action.lastModified,
       refreshing: false,
@@ -219,68 +202,41 @@ export default function(
     const deck = updateDeck(state, action);
     const all = {
       ...state.all,
-      [deck.id]: deck,
+      [getDeckId(deck).uuid]: deck,
     };
-    delete all[action.localId];
-    const myDecks = uniq(map(state.myDecks || [], deckId => {
-      if (deckId === action.localId) {
-        return deck.id;
-      }
-      return deckId;
-    }));
-
+    delete all[action.localId.uuid];
     const replacedLocalIds = {
       ...(state.replacedLocalIds || {}),
-      [action.localId]: deck.id,
+      [action.localId.uuid]: getDeckId(deck),
     };
     return {
       ...state,
       all,
-      myDecks: sortMyDecks(myDecks, all),
       replacedLocalIds,
     };
   }
   if (action.type === DELETE_DECK) {
     const all = { ...state.all };
-    let deck = all[action.id];
-    const toDelete = [action.id];
+    let deck = all[action.id.uuid];
+    const toDelete = [action.id.uuid];
     if (deck) {
       if (action.deleteAllVersions) {
-        while (deck.previous_deck && all[deck.previous_deck]) {
-          const id = deck.previous_deck;
-          toDelete.push(id);
-          deck = all[id];
-          delete all[id];
+        while (deck.previousDeckId && all[deck.previousDeckId.uuid]) {
+          const uuid = deck.previousDeckId.uuid;
+          toDelete.push(uuid);
+          deck = all[uuid];
+          delete all[uuid];
         }
       } else {
-        if (deck.previous_deck && all[deck.previous_deck]) {
-          const previousDeck = {
-            ...all[deck.previous_deck],
-          };
-          delete previousDeck.next_deck;
-          all[deck.previous_deck] = previousDeck;
+        if (deck.previousDeckId && all[deck.previousDeckId.uuid]) {
+          all[deck.previousDeckId.uuid] = omit(all[deck.previousDeckId.uuid], ['nextDeckId']) as Deck;
         }
       }
     }
-    delete all[action.id];
-    const toDeleteSet = new Set(toDelete);
-    const myDecks = (action.deleteAllVersions || !deck || !deck.previous_deck) ?
-      filter(state.myDecks, deckId => !toDeleteSet.has(deckId)) :
-      flatMap(state.myDecks,
-        deckId => {
-          if (deckId === action.id) {
-            if (deck.previous_deck) {
-              return deck.previous_deck;
-            }
-            return [];
-          }
-          return deckId;
-        }
-      );
+    delete all[action.id.uuid];
     return {
       ...state,
       all,
-      myDecks,
       // There's a bug on ArkhamDB cache around deletes,
       // so drop lastModified when we detect a delete locally.
       lastModified: undefined,
@@ -288,7 +244,7 @@ export default function(
   }
   if (action.type === UPDATE_DECK) {
     const deck = updateDeck(state, action);
-    const diff = deepDiff(state.all[action.deck.id] || {}, deck);
+    const diff = deepDiff(state.all[action.id.uuid] || {}, deck);
     if (!diff || !diff.length) {
       return state;
     }
@@ -297,21 +253,13 @@ export default function(
       return state;
     }
 
-    const newState = {
+    return {
       ...state,
       all: {
         ...state.all,
-        [action.id]: deck,
+        [action.id.uuid]: deck,
       },
     };
-    if (action.isWrite) {
-      // Writes get moved to the head of the list.
-      newState.myDecks = [
-        action.id,
-        ...filter(state.myDecks, deckId => deckId !== action.id),
-      ];
-    }
-    return newState;
   }
   if (action.type === NEW_DECK_AVAILABLE) {
     const deck = updateDeck(state, action);
@@ -319,12 +267,8 @@ export default function(
       ...state,
       all: {
         ...state.all,
-        [action.id]: deck,
+        [action.id.uuid]: deck,
       },
-      myDecks: [
-        action.id,
-        ...filter(state.myDecks, deckId => deck.previous_deck !== deckId),
-      ],
     };
   }
   return state;

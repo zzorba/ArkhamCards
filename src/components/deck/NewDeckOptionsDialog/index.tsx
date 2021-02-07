@@ -15,7 +15,7 @@ import { t } from 'ttag';
 
 import RequiredCardSwitch from './RequiredCardSwitch';
 import { showCard, showCardSwipe, showDeckModal } from '@components/nav/helper';
-import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
+import useNetworkStatus from '@components/core/useNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { saveNewDeck } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
@@ -35,7 +35,8 @@ import DeckSectionBlock from '../section/DeckSectionBlock';
 import DeckCheckboxButton from '../controls/DeckCheckboxButton';
 import DeckButton from '../controls/DeckButton';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import { useTextDialog } from '../dialogs';
+import { useSimpleTextDialog } from '../dialogs';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -44,22 +45,20 @@ export interface NewDeckOptionsProps {
 
 type Props = NavigationProps &
   NewDeckOptionsProps &
-  NetworkStatusProps &
   LoginStateProps;
 
-type DeckDispatch = ThunkDispatch<AppState, any, Action>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 function NewDeckOptionsDialog({
   investigatorId,
   onCreateDeck,
   componentId,
   signedIn,
-  isConnected,
-  networkType,
   login,
-  refreshNetworkStatus,
 }: Props) {
   const defaultTabooSetId = useTabooSetId();
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [saving, setSaving] = useState(false);
@@ -153,9 +152,9 @@ function NewDeckOptionsDialog({
     }
     return metaState || {};
   }, [starterDeck, metaState, investigator]);
-  const slots = useMemo(() => {
+  const slots: Slots = useMemo(() => {
     if (starterDeck && investigator && starterDecks.cards[investigator.code]) {
-      return starterDecks.cards[investigator.code];
+      return starterDecks.cards[investigator.code] || {};
     }
     const slots: Slots = {
       // Random basic weakness.
@@ -195,7 +194,6 @@ function NewDeckOptionsDialog({
     return slots;
   }, [cards, optionSelected, requiredCardOptions, investigator, starterDeck]);
   const dispatch: DeckDispatch = useDispatch();
-
   const showNewDeck = useCallback((deck: Deck) => {
     setSaving(false);
     // Change the deck options for required cards, if present.
@@ -207,7 +205,7 @@ function NewDeckOptionsDialog({
     if (investigator && (!saving || isRetry)) {
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
       setSaving(true);
-      dispatch(saveNewDeck({
+      dispatch(saveNewDeck(user, {
         local,
         meta,
         deckName: deckName || t`New Deck`,
@@ -222,7 +220,8 @@ function NewDeckOptionsDialog({
         }
       );
     }
-  }, [signedIn, dispatch, showNewDeck, slots, meta, networkType, isConnected, offlineDeck, saving, starterDeck, tabooSetId, deckNameChange, investigator, defaultDeckName]);
+  }, [signedIn, dispatch, showNewDeck, user,
+    slots, meta, networkType, isConnected, offlineDeck, saving, starterDeck, tabooSetId, deckNameChange, investigator, defaultDeckName]);
 
   const onOkayPress = useMemo(() => throttle(() => createDeck(), 200), [createDeck]);
   const toggleOptionsSelected = useCallback((index: number, value: boolean) => {
@@ -231,11 +230,11 @@ function NewDeckOptionsDialog({
     setOptionSelected(updatedOptionSelected);
   }, [optionSelected, setOptionSelected]);
 
-  const { dialog: nameDialog, showDialog: showNameDialog } = useTextDialog({
+  const { dialog: nameDialog, showDialog: showNameDialog } = useSimpleTextDialog({
     title: t`Name`,
     onValueChange: setDeckNameChange,
     value: deckNameChange || '',
-    placeholder: t`Enter a name for this deck.`
+    placeholder: t`Enter a name for this deck.`,
   });
 
   const renderNamePicker = useCallback((last: boolean) => {
@@ -409,9 +408,7 @@ function NewDeckOptionsDialog({
 }
 
 export default withLoginState<NavigationProps & NewDeckOptionsProps>(
-  withNetworkStatus<NavigationProps & NewDeckOptionsProps & LoginStateProps>(
-    NewDeckOptionsDialog
-  ),
+  NewDeckOptionsDialog,
   { noWrapper: true }
 );
 

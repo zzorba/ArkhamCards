@@ -8,17 +8,19 @@ import {
 import InvestigatorSectionRow from './InvestigatorSectionRow';
 import { InvestigatorNotes } from '@actions/types';
 import Card from '@data/Card';
-import { ShowTextEditDialog } from '@components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { s } from '@styles/space';
+import { ShowCountDialog } from '@components/deck/dialogs';
 
 interface Props {
   allInvestigators: Card[];
   updateInvestigatorNotes: (notes: InvestigatorNotes) => void;
   investigatorNotes: InvestigatorNotes;
   showDialog: ShowTextEditDialog;
+  showCountDialog: ShowCountDialog;
 }
 
-export default function InvestigatorSectionList({ allInvestigators, updateInvestigatorNotes, investigatorNotes, showDialog }: Props) {
+export default function InvestigatorSectionList({ allInvestigators, updateInvestigatorNotes, investigatorNotes, showDialog, showCountDialog }: Props) {
   const renderDeckRow = useCallback((investigator: Card) => {
     return (
       <InvestigatorSectionRow
@@ -27,9 +29,10 @@ export default function InvestigatorSectionList({ allInvestigators, updateInvest
         investigatorNotes={investigatorNotes}
         updateInvestigatorNotes={updateInvestigatorNotes}
         showDialog={showDialog}
+        showCountDialog={showCountDialog}
       />
     );
-  }, [investigatorNotes, updateInvestigatorNotes, showDialog]);
+  }, [investigatorNotes, updateInvestigatorNotes, showDialog, showCountDialog]);
 
   return (
     <View style={styles.investigatorNotes}>

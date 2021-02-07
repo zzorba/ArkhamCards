@@ -9,6 +9,8 @@ import CardCostIcon from '@components/core/CardCostIcon';
 import space, { xs } from '@styles/space';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import { useSelector } from 'react-redux';
+import { AppState } from '@reducers';
 
 interface Props {
   card: Card;
@@ -20,14 +22,17 @@ interface Props {
 const ICON_SIZE = 28;
 
 function DualFactionIcons({ card }: { card: Card }) {
-  if (!card.faction2_code || !card.faction_code) {
+  const faction_code = card.factionCode();
+  const colorblind = useSelector((state: AppState) => !!state.settings.colorblind);
+  if (!card.faction_code ||
+    (!card.faction2_code && (!colorblind || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill'))) {
     return null;
   }
   return (
-    <>
+    <View style={[space.paddingBottomS, styles.row]}>
       <ArkhamIcon name={card.faction_code} size={36} color="white" />
-      <ArkhamIcon name={card.faction2_code} size={36} color="white" />
-    </>
+      { !!card.faction2_code && <ArkhamIcon name={card.faction2_code} size={36} color="white" /> }
+    </View>
   );
 }
 function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
@@ -120,13 +125,15 @@ function HeaderContent({ card, back }: { card: Card, back: boolean}) {
   const subname = (card.type_code !== 'location' && back) ? undefined : card.subname;
   return (
     <>
-      <View style={styles.titleRow} removeClippedSubviews>
+      <View style={styles.titleRow}>
         <View style={styles.column}>
-          <Text style={[typography.large, space.marginLeftS, { color: '#FFFFFF' }]}>
-            { `${name}${card.is_unique ? ' ✷' : ''}` }
-          </Text>
+          <View style={[styles.row, space.marginLeftS, space.paddingTopXs]}>
+            <Text style={[typography.cardName, { color: '#FFFFFF' }]}>
+              { `${name}${card.is_unique ? ' ✷' : ''}` }
+            </Text>
+          </View>
           { !!subname && (
-            <Text style={[typography.small, typography.italic, typography.light, space.marginLeftS, { color: '#FFFFFF' }]}>
+            <Text style={[typography.cardTraits, space.marginLeftS, { color: '#FFFFFF' }]}>
               { card.subname }
             </Text>
           ) }
@@ -151,6 +158,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   costIcon: {
     marginLeft: xs,

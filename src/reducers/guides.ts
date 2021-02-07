@@ -1,18 +1,19 @@
 import { find, forEach, findLastIndex, filter, map } from 'lodash';
 
 import {
-  RESTORE_BACKUP,
   DELETE_CAMPAIGN,
   GUIDE_SET_INPUT,
   GUIDE_UNDO_INPUT,
   GUIDE_UPDATE_ACHIEVEMENT,
   GUIDE_RESET_SCENARIO,
   RESTORE_COMPLEX_BACKUP,
-  LOGOUT,
+  ARKHAMDB_LOGOUT,
   GuideActions,
   CampaignGuideState,
-  DEFAULT_CAMPAIGN_GUIDE_STATE,
-  NumberChoices,
+  GuideInput,
+  guideInputToId,
+  REDUX_MIGRATION,
+  CampaignId,
 } from '@actions/types';
 
 export interface GuidesState {
@@ -25,20 +26,21 @@ const DEFAULT_GUIDES_STATE: GuidesState = {
   all: {},
 };
 
+
 function updateCampaign(
   state: GuidesState,
-  campaignId: number,
+  campaignId: CampaignId,
   now: Date,
   update: (campaign: CampaignGuideState) => CampaignGuideState
 ): GuidesState {
-  const campaign: CampaignGuideState = state.all[campaignId] || DEFAULT_CAMPAIGN_GUIDE_STATE;
+  const campaign: CampaignGuideState = state.all[campaignId.campaignId] || { uuid: campaignId.campaignId, inputs: [] };
   const updatedCampaign = update(campaign);
   updatedCampaign.lastUpdated = now;
   return {
     ...state,
     all: {
       ...state.all,
-      [campaignId]: updatedCampaign,
+      [campaignId.campaignId]: updatedCampaign,
     },
   };
 }
@@ -49,61 +51,24 @@ export default function(
   state: GuidesState = DEFAULT_GUIDES_STATE,
   action: GuideActions
 ): GuidesState {
-  if (action.type === LOGOUT) {
+  if (action.type === ARKHAMDB_LOGOUT) {
     return state;
   }
-  if (action.type === RESTORE_COMPLEX_BACKUP) {
+  if (action.type === RESTORE_COMPLEX_BACKUP || (action.type === REDUX_MIGRATION && action.version === 1)) {
     const all = { ...state.all };
-    forEach(action.guides, (guide, id) => {
-      const remappedGuide = {
-        ...guide,
-        inputs: map(guide.inputs, input => {
-          if (input.step && input.step.startsWith('$upgrade_decks') && input.type === 'choice_list') {
-            const choices: NumberChoices = { ...input.choices };
-            if (choices.deckId && choices.deckId.length) {
-              const deckId = choices.deckId[0];
-              if (deckId < 0) {
-                const newDeckId = action.deckRemapping[deckId];
-                if (newDeckId) {
-                  choices.deckId = [newDeckId];
-                } else {
-                  delete choices.deckId;
-                }
-              }
-            }
-            return {
-              ...input,
-              choices,
-            };
-          }
-          return input;
-        }),
-      };
-      all[action.campaignRemapping[id]] = remappedGuide;
+    forEach(action.guides, guide => {
+      all[guide.uuid] = guide;
     });
     return {
       ...state,
       all,
     };
   }
-  if (action.type === RESTORE_BACKUP) {
-    const newAll: { [id: string]: CampaignGuideState } = {};
-    forEach(action.guides, (guide, id) => {
-      if (guide) {
-        newAll[id] = {
-          inputs: guide.inputs || [],
-        };
-      }
-    });
-    return {
-      all: newAll,
-    };
-  }
   if (action.type === DELETE_CAMPAIGN) {
     const newAll = {
       ...state.all,
     };
-    delete newAll[action.id];
+    delete newAll[action.id.campaignId];
     return {
       ...state,
       all: newAll,
@@ -114,24 +79,24 @@ export default function(
       state,
       action.campaignId,
       action.now,
-      campaign => {
-        const achievements = campaign.achievements || [];
+      guide => {
+        const achievements = guide.achievements || [];
         switch (action.operation) {
           case 'clear':
             return {
-              ...campaign,
+              ...guide,
               achievements: filter(achievements, a => a.id !== action.id),
             };
           case 'set':
             return {
-              ...campaign,
+              ...guide,
               achievements: [...filter(achievements, a => a.id !== action.id), { id: action.id, type: 'binary', value: true }],
             };
           case 'inc': {
             const currentEntry = find(achievements, a => a.id === action.id);
             if (currentEntry && currentEntry.type === 'count') {
               return {
-                ...campaign,
+                ...guide,
                 achievements: map(achievements, a => {
                   if (a.id === action.id && a.type === 'count') {
                     return {
@@ -145,7 +110,7 @@ export default function(
               };
             }
             return {
-              ...campaign,
+              ...guide,
               achievements: [...achievements,
                 {
                   id: action.id,
@@ -159,7 +124,7 @@ export default function(
             const currentEntry = find(achievements, a => a.id === action.id);
             if (currentEntry && currentEntry.type === 'count') {
               return {
-                ...campaign,
+                ...guide,
                 achievements: map(achievements, a => {
                   if (a.id === action.id && a.type === 'count') {
                     return {
@@ -173,7 +138,7 @@ export default function(
               };
             }
             return {
-              ...campaign,
+              ...guide,
               achievements: [...achievements,
                 {
                   id: action.id,
@@ -197,13 +162,16 @@ export default function(
           filter(campaign.inputs,
             input => !(
               input.type === action.input.type &&
+              // tslint:disable-next-line
               input.step === action.input.step &&
+              // tslint:disable-next-line
               input.scenario === action.input.scenario
             )
           ) : campaign.inputs;
         const inputs = [...existingInputs, action.input];
         return {
           ...campaign,
+          undo: filter(campaign.undo || [], id => id !== guideInputToId(action.input)),
           inputs,
         };
       });
@@ -227,20 +195,27 @@ export default function(
         if (latestInputIndex === -1) {
           return campaign;
         }
-        const inputs = filter(
-          campaign.inputs,
-          (input, idx) => {
-            if (SYSTEM_BASED_INPUTS.has(input.type)) {
-              return (
-                idx < latestInputIndex ||
-                input.scenario !== action.scenarioId
-              );
+        const inputs: GuideInput[] = [];
+        const removedInputs: GuideInput[] = [];
+        forEach(campaign.inputs, (input: GuideInput, idx: number) => {
+          if (SYSTEM_BASED_INPUTS.has(input.type)) {
+            if (idx < latestInputIndex || input.scenario !== action.scenarioId) {
+              inputs.push(input);
+            } else {
+              removedInputs.push(input);
             }
-            return idx !== latestInputIndex;
+          } else {
+            if (idx !== latestInputIndex) {
+              inputs.push(input);
+            } else {
+              removedInputs.push(input);
+            }
           }
+        }
         );
         return {
           ...campaign,
+          undo: [...(campaign.undo || []), ...map(removedInputs, guideInputToId)],
           inputs,
         };
       });

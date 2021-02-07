@@ -1,11 +1,9 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { find, map } from 'lodash';
-import {
-  Dimensions,
-} from 'react-native';
 import { TabView, SceneRendererProps, NavigationState, TabBar, Route } from 'react-native-tab-view';
 
 import StyleContext from '@styles/StyleContext';
+import { isTablet } from '@styles/space';
 
 interface Props {
   tabs: {
@@ -22,10 +20,8 @@ interface TabRoute extends Route {
   title: string;
 }
 
-const initialLayout = { width: Dimensions.get('window').width };
-
-export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Props) {
-  const { backgroundStyle, fontScale, colors } = useContext(StyleContext);
+export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props): [React.ReactNode, (index: number) => void] {
+  const { fontScale, colors, width } = useContext(StyleContext);
   const [index, setIndex] = useState(0);
 
   const onIndexChange = useCallback((index: number) => {
@@ -39,7 +35,7 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
     return (
       <TabBar
         {...props}
-        scrollEnabled={scrollEnabled || (fontScale > 1)}
+        scrollEnabled={scrollEnabled || (!isTablet && fontScale > 1)}
         activeColor={colors.D20}
         inactiveColor={colors.M}
         indicatorStyle={{ backgroundColor: colors.D20 }}
@@ -67,13 +63,17 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
   const navigationState = useMemo(() => {
     return { index, routes };
   }, [index, routes]);
-  return (
-    <TabView
-      renderTabBar={renderTabBar}
-      navigationState={navigationState}
-      renderScene={renderTab}
-      onIndexChange={onIndexChange}
-      initialLayout={initialLayout}
-    />
-  );
+  const tabView = useMemo(() => {
+    return (
+      <TabView
+        renderTabBar={renderTabBar}
+        navigationState={navigationState}
+        renderScene={renderTab}
+        onIndexChange={onIndexChange}
+        initialLayout={{ width }}
+      />
+    );
+  }, [renderTab, navigationState, onIndexChange, renderTabBar, width]);
+
+  return [tabView, setIndex];
 }

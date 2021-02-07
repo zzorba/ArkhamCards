@@ -6,6 +6,7 @@ import StyleContext from '@styles/StyleContext';
 import { FactionCodeType } from '@app_constants';
 import AppIcon from '@icons/AppIcon';
 import { usePressCallback } from '@components/core/hooks';
+import space from '@styles/space';
 
 interface Props {
   title: string;
@@ -23,9 +24,11 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
         style={[styles.header, { backgroundColor: colors.faction[faction].background }]}
         rippleColor={colors.faction[faction].text}
       >
-        <Text style={[typography.header, typography.regular, typography.white]}>
-          { title }
-        </Text>
+        <View style={space.paddingTopXs}>
+          <Text style={[typography.header, typography.white]}>
+            { title }
+          </Text>
+        </View>
         <View style={[styles.icon, { height: 40, width: 40 }]}>
           <AppIcon name="edit" size={18 * fontScale} color="#FFF" />
         </View>
@@ -34,9 +37,11 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
   }
   return (
     <View style={[styles.header, { backgroundColor: colors.faction[faction].background }]}>
-      <Text style={[typography.header, typography.regular, typography.white]}>
-        { title }
-      </Text>
+      <View style={space.paddingTopXs}>
+        <Text style={[typography.header, typography.white]}>
+          { title }
+        </Text>
+      </View>
     </View>
   );
 }

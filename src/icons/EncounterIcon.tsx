@@ -138,10 +138,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'sorcery':
       case 'the_beyond':
       case 'whippoorwills':
-      case 'return_to_extracurricular_activities':
       case 'return_to_the_house_always_wins':
       case 'return_to_the_miskatonic_museum':
-      case 'return_to_the_essex_county_express':
       case 'return_to_blood_on_the_altar':
       case 'return_to_undimensioned_and_unseen':
       case 'return_to_where_doom_awaits':
@@ -153,6 +151,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'yog_sothoths_emissaries':
       case 'beyond_the_threshold':
         return this.dunwichIcon(encounter_code, size, color);
+      case 'return_to_the_essex_county_express':
+      case 'return_to_essex_county_express':
+        return this.dunwichIcon('return_to_the_essex_county_express', size, color);
+      case 'return_to_extracurricular_activities':
+      case 'return_to_extracurricular_activity':
+        return this.dunwichIcon('return_to_extracurricular_activities', size, color);
 
       case 'ptc': // THE PATH TO CARCOSA
         return this.carcosaIcon('carcosa', size, color);
@@ -207,6 +211,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.carcosaIcon('return_to_the_phantom_of_truth', size, color);
       case 'decay':
         return this.carcosaIcon('decay_and_filth', size, color);
+      case 'the_stranger':
       case 'stranger':
         return this.carcosaIcon('the_stranger', size, color);
       case 'promo': // PROMO
@@ -291,15 +296,19 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'eztli':
         return this.forgottenIcon('the_doom_of_eztli', size, color);
       case 'traps':
+      case 'deadly_traps':
         return this.forgottenIcon('deadly_traps', size, color);
       case 'flux':
+      case 'temporal_flux':
         return this.forgottenIcon('temporal_flux', size, color);
       case 'ruins':
         return this.forgottenIcon('forgotten_ruins', size, color);
       case 'venom':
         return this.forgottenIcon('yigs_venom', size, color);
       case 'k\'n-yan':
+      case 'heart_of_the_elders_part_2':
         return this.forgottenIcon('knyan', size, color);
+      case 'heart_of_the_elders_part_1':
       case 'pillars_of_judgment':
         return this.forgottenIcon('pillars_of_judgement', size, color);
       case 'rttfa':
@@ -326,15 +335,18 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_the_doom_of_eztli':
       case 'return_to_threads_of_fate':
       case 'return_to_the_boundary_beyond':
-      case 'return_to_knyan':
       case 'return_to_the_depths_of_yoth':
       case 'return_to_shattered_aeons':
       case 'return_to_turn_back_time':
       case 'return_to_the_forgotten_age':
         return this.forgottenIcon(encounter_code, size, color);
+      case 'return_to_heart_of_the_elders_part_1':
       case 'return_to_pillars_of_judgement':
       case 'return_to_pillars_of_judgment':
         return this.forgottenIcon('return_to_pillars_of_judgement', size, color);
+      case 'return_to_heart_of_the_elders_part_2':
+      case 'return_to_knyan':
+        return this.forgottenIcon('return_to_knyan', size, color);
       case 'return_to_heart_of_the_elders':
       case 'return_to_the_heart_of_the_elders':
         return this.forgottenIcon('return_to_the_heart_of_the_elders', size, color);
@@ -389,7 +401,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'tdeb':
         return this.dreamIcon('agents_of_atlach_nacha', size, color);
       case 'tdea':
-        return this.dreamIcon('the_search_for_kadath', size, color);
+        return this.dreamIcon('dreamers_curse', size, color);
       case 'tde':
       case 'the_dream_eaters':
         return this.dreamIcon('dream', size, color);
@@ -436,8 +448,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'horror_in_high_gear':
       case 'hhg':
         return this.innsmouthIcon('horror_in_high_gear', size, color);
-      case 'a_light_in_the_fog':
-      case 'lif':
+      case 'the_lair_of_dagon':
       case 'lair_of_dagon':
       case 'lod':
       case 'itm':
@@ -456,6 +467,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.innsmouthIcon('grotto_of_despair', size, color);
       case 'flooded_caverns':
         return this.innsmouthIcon('flooded_caves', size, color);
+      case 'a_light_in_the_fog':
+      case 'lif':
+        return this.innsmouthIcon('a_light_in_the_fog', size, color);
 
       case 'agents_of_dagon':
       case 'agents_of_hydra':

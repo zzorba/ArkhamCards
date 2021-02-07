@@ -1019,7 +1019,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "the investigators recruited the help of another expedition."
+            "text": "les investigateus ont obtenu l'assistance d'une autre expédition."
           },
           {
             "id": "relic_is_missing",
@@ -1095,23 +1095,23 @@
     ],
     "supplies": [
       {
+        "id": "key_of_eztli",
+        "name": "Clé des Eztli",
+        "description": "La Clé des Eztli",
+        "cost": 0,
+        "multiple": false
+      },
+      {
         "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "name": "Substance visqueuse",
+        "description": "La substance visqueuse que vous avez trouvé dnas le Marais Souterrain",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
-        "id": "key_of_eztli",
-        "name": "Key of Eztli",
-        "description": "The Key of Eztli.",
+        "name": "Mystérieux sceptre",
+        "description": "Un mysterieux sceptre que vous avez trouvé dans la salle du trône.",
         "cost": 0,
         "multiple": false
       },
@@ -1212,21 +1212,21 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name#\" a été Pris par l'Abîme",
-            "feminine_text": "#name#\" a été Prise par l'Abîme"
+            "masculine_text": "#name# a été Pris par l'Abîme",
+            "feminine_text": "#name# a été Prise par l'Abîme"
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name#\" a été Prise par l'Abîme",
-            "feminine_text": "#name#\" a été Prise par l'Abîme"
+            "masculine_text": "#name# a été Pris par l'Abîme",
+            "feminine_text": "#name# a été Prise par l'Abîme"
           },
           {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "l'anomalie a été contenue."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "le Sujet 8L-08 a dévoré l'univers tout entier."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -1242,19 +1242,19 @@
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "l'Excelsior a fait une nouvelle victime."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "l'Excelsior est calme, pour le moment."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "les investigateurs int fui la scène de crime."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "les meurtres continuent, irrésolus."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
@@ -2366,76 +2366,89 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "possesses_a_diving_suite",
+            "masculine_text": "#name# possesses a diving suit.",
+            "feminine_text": "#name# possesses a diving suit."
+          },
+          {
             "id": "allen_out_for_blood",
-            "text": "Zadok Allen is out for blood."
+            "text": "Zadok Allen veut votre peaux."
           },
           {
             "id": "burnham_out_for_blood",
-            "text": "Brian Burnham is out for blood."
+            "text": "Brian Burnham veut votre peaux."
           },
           {
             "id": "friendly_out_for_blood",
-            "text": "Robert Friendly is out for blood."
+            "text": "Robert Friendly veut votre peaux."
           },
           {
             "id": "gilman_out_for_blood",
-            "text": "Othera Gilman is out for blood."
+            "text": "Othera Gilman veut votre peaux."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "la tiare a été emportée au phare."
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "l'idole été emportée au phare."
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
-            "text": "Innsmouth was consumed by the rising tide."
+            "text": "Innsmouth a été rayée de la carte par la marée."
           },
           {
             "id": "little_out_for_blood",
-            "text": "Joyce Little is out for blood."
+            "text": "Joyce Little veut votre peaux."
           },
           {
             "id": "made_it_safely_to_their_vehicles",
-            "text": "the investigators made it safely to their vehicles."
+            "text": "les investigateurs ont réussi à rejoindre leurs véhicules sains et sauf."
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "la cape a été emportée au phare."
           },
           {
             "id": "marsh_out_for_blood",
-            "text": "Barnabas Marsh is out for blood."
+            "text": "Barnabas Marsh veut votre peaux."
           },
           {
             "id": "mission_failed",
-            "text": "the mission failed."
+            "text": "la mission a échoué."
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission was successful."
+            "text": "la mission a réussi."
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "the investigators possess a map of Y'ha-nthlei."
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "the investigators possess the key to Y'ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
-            "text": "the investigators reached Falcon Point after sunrise."
+            "text": "les investigateurs ont atteint le phare après le lever du soleil."
           },
           {
             "id": "reached_falcon_point_before_sunrise",
-            "text": "the investigators reached Falcon Point before sunrise."
+            "text": "les investigateurs ont atteint le phare avant le lever du soleil."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "la Terreur du Récif du Diable est morte."
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "la Terreur du Récif du Diable est encore en vie."
           },
           {
             "id": "tide_has_grown_stronger",
-            "text": "the tide has grown stronger."
+            "text": "la marée s'est renforcée."
           }
         ]
       },
@@ -2460,7 +2473,7 @@
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "La Maison de Water Street"
           },
           {
             "id": "accuse_little",
@@ -2472,23 +2485,23 @@
           },
           {
             "id": "accuse_new_church_green",
-            "text": "New Church Green"
+            "text": "Square de New Chruch"
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ordre Ésotérique de Dagon"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Prison d'Innsmouth"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Allée des Rebouteux"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Taudis sur les Berges"
           },
           {
             "id": "flashback_1",
@@ -2500,6 +2513,14 @@
           },
           {
             "id": "flashback_11",
+            "text": "leurre"
+          },
+          {
+            "id": "flashback_12",
+            "text": "leurre"
+          },
+          {
+            "id": "flashback_13",
             "text": "leurre"
           },
           {
@@ -2545,47 +2566,55 @@
         "entries": [
           {
             "id": "a_deal_with_joe_sargent",
-            "text": "a deal with Joe Sargent."
+            "text": "Un marché conclu avec Joe Sargent"
           },
           {
             "id": "a_followed_lead",
-            "text": "a followed lead."
+            "text": "Une piste suivie"
           },
           {
             "id": "a_jailbreak",
-            "text": "a jailbreak."
+            "text": "Une évasion"
           },
           {
             "id": "an_intervention",
-            "text": "an intervention."
+            "text": "Une intervention"
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "Un combat contre un monstre terrifiant"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "a conversation with Mr. Moore"
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "Une décision de rester groupés"
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic."
+            "text": "découverte d'une relique mystique"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol."
+            "text": "découverte d'une étrange idole"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle."
+            "text": "découverte d'une cape blasphématoire"
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "Une rencontre avec un culte secret"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "the lifecycle of a \"Deep One\""
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "Un rendez-vous avec Thomas Dawson"
           }
         ]
       },
@@ -2594,27 +2623,27 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "La Maison de Water Street"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Prison d'Innsmouth"
           },
           {
             "id": "new_church_green",
-            "text": "New Church Green"
+            "text": "Square de New Chruch"
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ordre Ésotérique de Dagon"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Allée des Rebouteux"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Taudis sur les Berges"
           }
         ]
       },

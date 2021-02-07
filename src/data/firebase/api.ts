@@ -1,5 +1,6 @@
+import { UploadedCampaignId } from '@actions/types';
 import { useCallback, useReducer } from 'react';
-import { FriendUser, useFunction, EmptyRequest, ErrorResponse } from './hooks';
+import { FriendUser, useFunction, ErrorResponse } from './hooks';
 
 interface UpdateHandleRequest {
   handle: string;
@@ -27,17 +28,39 @@ export function useUpdateFriendRequest(setError: (error: string) => void) {
   }, [apiCall, setError]);
 }
 
+interface CampaignRequest {
+  campaignId: string;
+}
+
 interface CampaignResponse extends ErrorResponse {
   campaignId: string;
 }
-export function useCreateCampaignRequest() {
-  const apiCall = useFunction<EmptyRequest, CampaignResponse>('campaign-create');
-  return useCallback(async(): Promise<string> => {
-    const data = await apiCall({});
+export function useCreateCampaignRequest(): (campaignId: string) => Promise<UploadedCampaignId> {
+  const apiCall = useFunction<CampaignRequest, CampaignResponse>('campaign-create');
+  return useCallback(async(campaignId: string): Promise<UploadedCampaignId> => {
+    const data = await apiCall({ campaignId });
     if (data.error) {
       throw new Error(data.error);
     }
-    return data.campaignId;
+    return {
+      campaignId,
+      serverId: data.campaignId,
+    };
+  }, [apiCall]);
+}
+
+
+interface DeleteCampaignRequest extends ErrorResponse {
+  campaignId: string;
+  serverId: string;
+}
+export function useDeleteCampaignRequest() {
+  const apiCall = useFunction<DeleteCampaignRequest, ErrorResponse>('campaign-delete');
+  return useCallback(async({ campaignId, serverId }: UploadedCampaignId): Promise<void> => {
+    const data = await apiCall({ campaignId, serverId });
+    if (data.error) {
+      throw new Error(data.error);
+    }
   }, [apiCall]);
 }
 

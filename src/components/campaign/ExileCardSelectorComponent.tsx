@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Deck, Slots } from '@actions/types';
+import { Deck, DeckId, Slots } from '@actions/types';
 import Card from '@data/Card';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import { useDeck } from '@components/core/hooks';
 
 interface OwnProps {
   componentId: string;
-  id: number;
+  id: DeckId;
   exileCounts: Slots;
   updateExileCount: (card: Card, count: number) => void;
   label?: React.ReactNode;
@@ -31,7 +31,7 @@ export default function ExileCardSelectorComponent({ componentId, id, exileCount
   return (
     <CardSelectorComponent
       componentId={componentId}
-      slots={deck.slots}
+      slots={deck.slots || {}}
       counts={exileCounts}
       updateCount={updateExileCount}
       filterCard={isExile}

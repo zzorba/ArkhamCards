@@ -203,6 +203,7 @@
   "scenario_name": "Armitages Schicksal",
   "full_name": "Zwischenspiel I: Armitages Schicksal",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "check_unconscious",
     "$upgrade_decks"
@@ -724,6 +725,7 @@
   "scenario_name": "Prolog",
   "full_name": "Prolog",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "intro",
     "scenario_choice"
@@ -776,6 +778,7 @@
   "scenario_name": "Epilog",
   "full_name": "Epilog",
   "type": "epilogue",
+  "icon": "dunwich",
   "setup": [
     "check_calmed_townsfolk"
   ],
@@ -1906,6 +1909,7 @@
   "scenario_name": "Die Überlebenden",
   "full_name": "Zwischenspiel II: Die Überlebenden",
   "type": "interlude",
+  "icon": "whippoorwills",
   "setup": [
     "prologue",
     "check_henry_armitage",
@@ -9124,6 +9128,7 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Epilog",
+  "icon": "maddening_delusions",
   "full_name": "Epilog",
   "type": "epilogue",
   "setup": [
@@ -9164,6 +9169,7 @@
   "scenario_name": "Verlorene Seele",
   "full_name": "Zwischenspiel II: Verlorene Seele",
   "type": "interlude",
+  "icon": "the_stranger",
   "setup": [
     "daniel_choice",
     "warning_choice",
@@ -9354,6 +9360,7 @@
   "scenario_name": "Belohnung des Wahnsinns",
   "full_name": "Zwischenspiel I: Belohnung des Wahnsinns",
   "type": "interlude",
+  "icon": "hasturs_gift",
   "setup": [
     "house_choice",
     "$upgrade_decks"
@@ -9687,6 +9694,7 @@
   "scenario_name": "Prolog",
   "full_name": "Prolog",
   "type": "interlude",
+  "icon": "delusions",
   "setup": [
     "choose_investigators",
     "intro",
@@ -12049,32 +12057,32 @@
   "achievements": [
     {
       "id": "what_is_this_stuff",
-      "title": "What Is This Stuff, Anyway?",
-      "text": "Defeat The Experiment using the Alchemical Concoction in “Extracurricular Activities”.",
+      "title": "Was ist das überhaupt für ein Zeug?",
+      "text": "Besiege das Experiment, indem du das alchemistische Gebräu in \"Aktivitäten außerhalb des Lehrplans\" verwendest.",
       "type": "binary"
     },
     {
       "id": "no_void_for_you",
-      "title": "No Void For You",
-      "text": "Complete “The Miskatonic Museum” without ever defeating the Hunting Horror.",
+      "title": "Die Leere ist nichts für dich",
+      "text": "Schließe \"Das Miskatonic-Museum\" ab, ohne den hetzenden Schrecken auch nur ein Mal zu besiegen.",
       "type": "binary"
     },
     {
       "id": "first_rule_of_arkham",
-      "title": "First Rule of Arkham",
-      "text": "Burn The Necronomicon in “The Miskatonic Museum.”",
+      "title": "Die erste Regel von Arkham",
+      "text": "Verbrenne das Necronomicon in \"Das Miskatonic-Museum.\"",
       "type": "binary"
     },
     {
       "id": "all_aboard",
-      "title": "All Aboard",
-      "text": "Complete “The Essex County Express” without letting any Helpless Passengers leave play.",
+      "title": "Alle an Bord",
+      "text": "Schließe \"Der Essex-County-Express\" ab, ohne dass auch nur ein hilfloser Passagier das Spiel verlässt.",
       "type": "binary"
     },
     {
       "id": "gangs_all_here",
-      "title": "The Gang’s All Here",
-      "text": "In “The Survivors,” the following characters <i>survived The Dunwich Legacy</i>:",
+      "title": "Die ganze Bande ist hier",
+      "text": "In \"Die Überlebenden\" haben folgende Charaktere <i>„das Vermächtnis von Dunwich überlebt“<i>:",
       "type": "list",
       "items": [
         {
@@ -12101,62 +12109,62 @@
     },
     {
       "id": "no_brood_left_behind",
-      "title": "No Brood Left Behind",
-      "text": "Have no Broods of Yog-Sothoth escape into the wild in “Undimensioned and Unseen.”",
+      "title": "Lass keine Brut zurück",
+      "text": "Lasse in \"Gestaltlos und unsichtbar\" keine Brut von Yog-Sothoth in die Wildnis entkommen.",
       "type": "binary"
     },
     {
       "id": "remind_me_not_to_piss_her_off",
-      "title": "Remind Me Not To Piss Her Off",
-      "text": "Defeat either version of Seth Bishop while Naomi O’Bannion is under your control.",
+      "title": "Erinnere mich daran, ihr nicht auf den Wecker zu gehen",
+      "text": "Besiege eine Version von Seth Bishop, solange sich Naomi O’Bannion unter deiner Kontrolle befindet.",
       "type": "binary"
     },
     {
       "id": "eureka",
-      "title": "Eureka!",
-      "text": "Identify the Strange Solution.",
+      "title": "Heureka!",
+      "text": "Identifiziere die seltsame Lösung.",
       "type": "binary"
     },
     {
       "id": "beyond_what_veil",
-      "title": "Beyond What Veil?",
-      "text": "Take 10 damage from Beyond the Veil without being defeated.",
+      "title": "Hinter welchem Schleier?",
+      "text": "Nimm 10 Schaden von der Karte Hinter dem Schleier, ohne besiegt zu werden.",
       "type": "binary"
     },
     {
       "id": "here_we_go_again",
-      "title": "Here We Go Again",
-      "text": "Have Dr. Henry Armitage, Dr. Francis Morgan, and Professor Warren Rice in play at the same time.",
+      "title": "Jetzt geht‘s wieder los",
+      "text": "Habe Dr. Henry Armitage, Dr. Francis Morgan, and Professor Warren Rice gleichzeitig im Spiel.",
       "type": "binary"
     },
     {
       "id": "bird_hunting",
-      "title": "Bird Hunting",
-      "text": "Defeat 3 Whippoorwills in a single turn.",
+      "title": "Vogeljagd",
+      "text": "Besiege 3 Ziegenmelker in einem einzigen Zug.",
       "type": "binary"
     },
     {
       "id": "they_arent_getting_away_with_this",
-      "title": "They Aren’t Getting Away With This",
-      "text": "Win <i>The Dunwich Legacy</i> campaign as “Ashcan” Pete with Duke listed under “Sacrificed to Yog-Sothoth.”",
+      "title": "Damit werden sie nicht davonkommen",
+      "text": "Gewinne als „Ashcan“ Pete die Kampagne <i>Das Vermächtnis von Dunwich</i>, wobei Duke unter „Yog-Sothoth geopfert“ aufgelistet ist.",
       "type": "binary"
     },
     {
       "id": "tabula_rasa",
       "title": "Tabula Rasa",
-      "text": "Win The Dunwich Legacy campaign with no [tablet] or [elder_thing] tokens in the chaos bag.",
+      "text": "Gewinne die Kampagne <i>Das Vermächtnis von Dunwich</i> ohne [tablet]-oder [elder_thing]-Marker im Chaosbeutel.",
       "type": "binary"
     },
     {
       "id": "dwl_line_in_the_sand",
-      "title": "Line in the Sand",
-      "text": "Win <i>The Dunwich Legacy</i> campaign with at least three Ultimatums active.",
+      "title": "Schlussstrich ziehen",
+      "text": "Gewinne die Kampagne <i>Das Vermächtnis von Dunwich</i> mit mindestens 3 aktiven Ultimaten.",
       "type": "binary"
     },
     {
       "id": "dunwich_expertise",
-      "title": "Dunwich Expertise",
-      "text": "Win <i>The Dunwich Legacy</i> campaign on Expert difficulty.",
+      "title": "Dunwich-Experte",
+      "text": "Gewinne die Kampagne <i>Das Vermächtnis von Dunwich</i> auf dem Schwierigkeitsgrad Experte.",
       "type": "binary"
     }
   ]
@@ -12166,6 +12174,7 @@
   "scenario_name": "Armitages Schicksal",
   "full_name": "Zwischenspiel I: Armitages Schicksal",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "check_unconscious",
     "$upgrade_decks"
@@ -12267,6 +12276,7 @@
   "scenario_name": "Prolog",
   "full_name": "Prolog",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "intro",
     "scenario_choice"
@@ -12315,6 +12325,7 @@
   "scenario_name": "Epilog",
   "full_name": "Epilog",
   "type": "epilogue",
+  "icon": "dunwich",
   "setup": [
     "check_calmed_townsfolk"
   ],
@@ -15519,6 +15530,7 @@
   "scenario_name": "Die Überlebenden",
   "full_name": "Zwischenspiel II: Die Überlebenden",
   "type": "interlude",
+  "icon": "whippoorwills",
   "setup": [
     "prologue",
     "check_henry_armitage",
@@ -16080,86 +16092,86 @@
   "achievements": [
     {
       "id": "zealots_revent",
-      "title": "The Zealot's Revenge",
-      "text": "Have Lita Chantler’s [reaction] ability deal the killing blow to the Ghoul Priest.",
+      "title": "Die Rache des Zeloten",
+      "text": "Sorge dafür, dass die [reaction]-Fähigkeit von Lita Chantler dem Ghulpriester den tödlichen Schlag versetzt.",
       "type": "binary"
     },
     {
       "id": "dont_trust_her",
-      "title": "I Don't Trust Her",
-      "text": "When given the option to add Lita Chantler to your deck, refuse to do so.",
+      "title": "Ich vertraue ihr nicht",
+      "text": "Weigere dich Lita Chantler deinem Deck hinzuzufügen, sobald du die Möglichkeit dazu erhältst.",
       "type": "binary"
     },
     {
       "id": "insurance",
-      "title": "Insurance Doesn’t Cover Ghouls",
-      "text": "Burn your house to the ground in “The Gathering.”",
+      "title": "Schäden durch Ghule deckt die Versicherung nicht ab",
+      "text": "Brenne in \"Die Zusammenkunft\" dein Haus nieder.",
       "type": "binary"
     },
     {
       "id": "do_i_have_to",
-      "title": "…But Do I Have To?",
-      "text": "In “The Midnight Masks,” have each investigator remain in Your House for the first three rounds.",
+      "title": "… muss ich wirklich?",
+      "text": "Sorge dafür, dass in \"Die Mitternachtsmasken\" jeder Ermittler die ersten drei Runden in deinem Dein Haus bleibt.",
       "type": "binary"
     },
     {
       "id": "conspiracy_of_silence",
-      "title": "Conspiracy of Silence",
-      "text": "Find and interrogate all six unique cultists in “The Midnight Masks.”",
+      "title": "Verschwörung des Schweigens",
+      "text": "Finde und befrage alle 6 einzigartigen Kultisten in \"Die Mitternachtsmasken.\"",
       "type": "binary"
     },
     {
       "id": "tour_of_arkham",
-      "title": "Tour of Arkham",
-      "text": "Trigger each of the “once per game” abilities on all of the locations in play in “The Midnight Masks.”",
+      "title": "Tour durch Arkham",
+      "text": "Löse in \"Die Mitternachtsmasken\" jede „Ein Mal pro Spiel“-Fähigkeit auf allen Orten im Spiel aus.",
       "type": "binary"
     },
     {
       "id": "do_you_get_it_now",
-      "title": "Do You Get It Now?",
-      "text": "Trigger the <b>Forced</b> ability on Billy Cooper by defeating the Ghoul Priest at his location.",
+      "title": "Verstehst du es jetzt?",
+      "text": "Löse die <b>Erzwungen</b>-Fähigkeit auf Billy Cooper aus, indem der Ghulpriester an seinem Ort besiegt wird.",
       "type": "binary"
     },
     {
       "id": "pinch_hitter",
       "title": "Pinch Hitter",
-      "text": "Defeat three [[Ghoul]] enemies with a Baseball Bat without it breaking.",
+      "text": "Besiege drei [[Ghul]]-Gegner mit einem Baseballschläger, ohne dass dieser zerbricht.",
       "type": "binary"
     },
     {
       "id": "even_death_may_die",
-      "title": "Even Death May Die",
-      "text": "Defeat Umôrdhoth while the Vault of Earthly Demise is attached to it.",
+      "title": "Bis dass der Tod die Zeit besiegt",
+      "text": "Besiege Umôrdhoth, solange das Gewölbe des irdischen Niedergangs an ihn angehängt ist.",
       "type": "binary"
     },
     {
       "id": "break_the_circle",
-      "title": "Break the Circle",
-      "text": "Complete “The Devourer Below” without Umôrdhoth spawning.",
+      "title": "Den Kreis durchbrechen",
+      "text": "Schließe \"Der Verschlinger aus der Tiefe\" ab, ohne dass Umôrdhoth erscheint.",
       "type": "binary"
     },
     {
       "id": "theyre_just_misunderstood",
-      "title": "They’re Just Misunderstood",
-      "text": "Win the <i>Night of the Zealot</i> campaign without defeating a single unique [[Cultist]] enemy.",
+      "title": "Sie werden bloß missverstanden",
+      "text": "Gewinne die Kampagne <i>Die Nacht des Zeloten</i>, ohne einen einzigartigen [[Kultist]]-Gegner zu besiegen.",
       "type": "binary"
     },
     {
       "id": "umordhoths_favor",
-      "title": "Umôrdhoth’s Favor",
-      "text": "Win the <i>Night of the Zealot</i> campaign without defeating a single [[Ghoul]] enemy.",
+      "title": "Umôrdhoths Gunst",
+      "text": "Gewinne die Kampagne <i>Die Nacht des Zeloten</i>, ohne einen [[Ghul]]-Gegner zu besiegen.",
       "type": "binary"
     },
     {
       "id": "notz_line_in_the_sand",
-      "title": "Line in the Sand",
-      "text": " Win the <i>Night of the Zealot</i> campaign with at least three Ultimatums active.",
+      "title": "Schlussstrich ziehen",
+      "text": "Gewinne die Kampagne <i>Die Nacht des Zeloten</i> mit mindestens drei aktiven Ultimaten.",
       "type": "binary"
     },
     {
       "id": "arkham_expertise",
-      "title": "Arkham Expertise",
-      "text": "Win the <i>Night of the Zealot</i> campaign on Expert difficulty.",
+      "title": "Arkham-Experte",
+      "text": "Gewinne die Kampagne <i>Die Nacht des Zeloten</i> auf dem Schwierigkeitsgrad Experte.",
       "type": "binary"
     }
   ]
@@ -17867,14 +17879,14 @@
   "achievements": [
     {
       "id": "fair_warning",
-      "title": "Fair Warning",
-      "text": " Defeat the Royal Emissary three times during a single playthrough of “Curtain Call.”",
+      "title": "Mit Vorwarnung",
+      "text": "Besiege den königlichen Sendboten 3 Mal in einem einzigen Durchlauf von \"Ruf vor den Vorhang.\"",
       "type": "binary"
     },
     {
       "id": "first_steps",
-      "title": "First Steps",
-      "text": "Interview the following VIPs in “The Last King”:",
+      "title": "Erste Schritte",
+      "text": "Befrage die folgenden VIPs in \"Der letzte König\":",
       "type": "list",
       "items": [
         {
@@ -17901,86 +17913,86 @@
     },
     {
       "id": "crashing_the_party",
-      "title": "Crashing the Party",
-      "text": "Defeat the [[Lunatic]] version of Dianne Devine in “The Last King.”",
+      "title": "In Feierlaune",
+      "text": "Besiege die [[Verrückt]]-Version von Dianne Devine in \"Der letzte König\".",
       "type": "binary"
     },
     {
       "id": "for_prying_eyes",
-      "title": "For Prying Eyes",
-      "text": "Add the Hidden Library to the victory display in “Echoes of the Past.”",
+      "title": "Mit neugierigen Blicken",
+      "text": "Füge die Versteckte Bibliothek dem Siegpunktestapel in \"Widerhall aus der Vergangenheit\" hinzu.",
       "type": "binary"
     },
     {
       "id": "cuckoos_nest",
-      "title": "The Cuckoo's Nest",
-      "text": "Resign with Daniel Chesterfield under an investigator’s control in “The Unspeakable Oath.”",
+      "title": "Das Kuckucksnest",
+      "text": "Gib in \"Der unaussprechliche Eid\" auf, während sich Daniel Chesterfield unter der Kontrolle eines Ermittlers befindet.",
       "type": "binary"
     },
     {
       "id": "take_a_look_at_this",
-      "title": "Take A Look At This!",
-      "text": "Parley with the Host of Insanity in “The Unspeakable Oath.”",
+      "title": "Schau dir das an!",
+      "text": "Verhandle mit dem Überbringer des Irrsinns in \"Der unaussprechliche Eid.\"",
       "type": "binary"
     },
     {
       "id": "path_of_death",
-      "title": "The Path of Death",
-      "text": "Use your Clasp of Black Onyx to find a shortcut in “The Pallid Mask.”",
+      "title": "Der Pfad des Todes",
+      "text": "Verwende in \"Die Bleiche Maske\" deine Spange aus schwarzem Onyx, um eine Abkürzung zu finden.",
       "type": "binary"
     },
     {
       "id": "guessing_game",
-      "title": "Guessing Game",
-      "text": "Advance to the final agenda of one agenda deck before advacing the first agenda of the other agenda deck in “Black Stars Rise.”",
+      "title": "Ratespiel",
+      "text": "Rücke in \"Die schwarzen Sterne\" gehen auf zur letzten Agenda eines Agendadecks vor, bevor von der ersten Agenda des anderen Agendadecks vorgerückt wird.",
       "type": "binary"
     },
     {
       "id": "hastur_made_me_do_it",
-      "title": "Hastur Made Me Do It",
-      "text": "Defeat Hastur in “Dim Carcosa” while a Possession treachery is in your hand.",
+      "title": "Hastur hat mich dazu gebracht",
+      "text": "Besiege Hastur in \"Finsteres Carcosa\", solange du eine Besessenheit-Verratskarte auf der Hand hast.",
       "type": "binary"
     },
     {
       "id": "say_my_name",
-      "title": "Say My Name",
-      "text": "After you have <i>heeded Daniel’s warning</i>, speak the name of HASTUR aloud seven or more times during a single scenario (or its setup).",
+      "title": "Sag meinen Namen",
+      "text": "Nachdem du <i>Daniels Warnung beherzigt hast</i>, sprich während eines einzelnen Szenarios (oder dessen Vorbereitung) den Namen HASTUR mindestens sieben Mal laut aus.",
       "type": "binary"
     },
     {
       "id": "get_back_here",
-      "title": "Get Back Here",
-      "text": "Win <i>The Path to Carcosa</i> campaign having never ended a scenario with The Man in the Pallid Mask in play",
+      "title": "Komm hierhin zurück",
+      "text": "Gewinne die Kampagne <i>Der Pfad nach Carcosa</i>, ohne dabei auch nur ein Szenario mit dem Mann mit der Bleichen Maske im Spiel zu beenden.",
       "type": "binary"
     },
     {
       "id": "path_is_false",
-      "title": "The Path is False",
-      "text": "Win <i>The Path to Carcosa<i/> campaign with <b>8 Doubt</b>.",
+      "title": "Der Pfad ist nicht real",
+      "text": "Gewinne die Kampagne <i>Der Pfad nach Carcosa</i> mit <b>8 Zweifel</b>.",
       "type": "binary"
     },
     {
       "id": "path_is_real",
-      "title": "The Path is Real",
-      "text": "Win <i>The Path to Carcosa</i> campaign with <b>8 Conviction</b>.",
+      "title": "Der Pfad ist real",
+      "text": "Gewinne die Kampagne <i>Der Pfad nach Carcosa</i> mit <b>8 Überzeugung</b>.",
       "type": "binary"
     },
     {
       "id": "path_is_mine",
       "title": "Der Weg ist mein",
-      "text": "Win <i>The Path to Carcosa</i> campaign with less than <b>2 Doubt</b> and <b>Conviction</b> in total.",
+      "text": "Gewinne die Kampagne <i>Der Pfad nach Carcosa</i> mit in Summe weniger als <b>2 Zweifel</b> und <b>Überzeugung</b>.",
       "type": "binary"
     },
     {
       "id": "ptc_line_in_the_sand",
-      "title": "Line in the Sand",
-      "text": "Win <i>The Path to Carcosa</i> campaign with at least three Ultimatums active.",
+      "title": "Schlussstrich ziehen",
+      "text": "Gewinne die Kampagne <i>Der Pfad nach Carcosa</i> mit mindestens 3 aktiven Ultimaten.",
       "type": "binary"
     },
     {
       "id": "carcosa_expertise",
-      "title": "Carcosa Expertise=",
-      "text": "Win <i>The Path to Carcosa</i> campaign on Expert difficulty.",
+      "title": "Carcosa-Experte",
+      "text": "Gewinne die Kampagne <i>Der Pfad nach Carcosa</i> auf dem Schwierigkeitsgrad Experte.",
       "type": "binary"
     }
   ]
@@ -17988,6 +18000,7 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Epilog",
+  "icon": "maddening_delusions",
   "full_name": "Epilog",
   "type": "epilogue",
   "setup": [
@@ -18028,6 +18041,7 @@
   "scenario_name": "Verlorene Seele",
   "full_name": "Zwischenspiel II: Verlorene Seele",
   "type": "interlude",
+  "icon": "the_stranger",
   "setup": [
     "daniel_choice",
     "warning_choice",
@@ -18218,6 +18232,7 @@
   "scenario_name": "Belohnung des Wahnsinns",
   "full_name": "Zwischenspiel I: Belohnung des Wahnsinns",
   "type": "interlude",
+  "icon": "hasturs_gift",
   "setup": [
     "house_choice",
     "$upgrade_decks"
@@ -18551,6 +18566,7 @@
   "scenario_name": "Prolog",
   "full_name": "Prolog",
   "type": "interlude",
+  "icon": "delusions",
   "setup": [
     "choose_investigators",
     "intro",
@@ -24609,99 +24625,99 @@
   "achievements": [
     {
       "id": "why_did_it_have_to_be_snakes",
-      "title": "Why Did It Have to Be Snakes?",
-      "text": "Defeat twenty [[Serpent]] enemies.",
+      "title": "Warum müssen es ausgerechnet Schlangen sein?",
+      "text": "Besiege 20 [[Schlangen]]-Gegner.",
       "type": "count",
       "max": 20
     },
     {
       "id": "watch_them_unravel",
-      "title": "Watch Them Unravel",
-      "text": "Complete all four act decks during a single playthrough of “Threads of Fate.”",
+      "title": "Der Knoten entwirrt sich",
+      "text": "Schließe alle 4 Szenendecks in nur einem Durchgang von \"Fäden des Schicksals\" ab.",
       "type": "binary"
     },
     {
       "id": "hope_for_humanity",
-      "title": "Hope for Humanity",
-      "text": "Restore Ichtaca’s faith in humanity in “The Boundary Beyond.”",
+      "title": "Hoffnung für die Menschheit",
+      "text": "Stelle in \"Die jenseitige Grenze\" Ichtacas Glauben an die Menschheit wieder her.",
       "type": "binary"
     },
     {
       "id": "scenario_5_what",
-      "title": "Scenario 5-What?",
-      "text": "Skip “Heart of the Elders, Part 1.”",
+      "title": "Szenario 5 – War da was?",
+      "text": "Überspringe \"Das Herz der Älteren, Teil 1.\"",
       "type": "binary"
     },
     {
       "id": "beyond_perfection",
-      "title": "Beyond Perfection:",
-      "text": "Complete all eight tasks on act 2 of “The City of Archives” during a single playthrough.",
+      "title": "Perfekter als perfekt",
+      "text": "Schließe in einem einzigen Durchlauf von \"Die Archivstadt\" alle 8 Aufgaben in Szene 2 ab.",
       "type": "binary"
     },
     {
       "id": "i_remember_everything",
-      "title": "I Remember Everything",
-      "text": "Restore Alejandro’s memories in “The City of Archives.”",
+      "title": "Ich erinnere mich an alles!",
+      "text": "Stelle in \"Die Archivstadt\" Alejandros Gedächtnis wieder her.",
       "type": "binary"
     },
     {
       "id": "patricide",
-      "title": "Patricide",
-      "text": "Defeat Yig in “The Depths of Yoth.”",
+      "title": "Vatermord",
+      "text": "Besiege Yig in \"Die Tiefen von Yoth.\"",
       "type": "binary"
     },
     {
       "id": "hes_got_a_point",
-      "title": "He's Got a Point",
-      "text": "Side with Alejandro in “Shattered Aeons.”",
+      "title": "Er hat nicht ganz unrecht",
+      "text": "Stelle dich in \"Zerstörte Zeitalter\" auf Alejandros Seite.",
       "type": "binary"
     },
     {
       "id": "valusia_sounds_great",
-      "title": "Valusia Sounds Great",
-      "text": "Side with Ichtaca in “Shattered Aeons.”",
+      "title": "Valusia hört sich toll an",
+      "text": "Stelle dich in \"Zerstörte Zeitalter\" auf Ichtacas Seite.",
       "type": "binary"
     },
     {
       "id": "built_up_an_immunity",
-      "title": "I’ve Built Up An Immunity",
-      "text": "Win <i>The Forgotten Age</i> campaign without ever becoming poisoned.",
+      "title": "Ich bin wohl immun",
+      "text": "Gewinne die Kampagne <i>Das vergessene Zeitalter</i>, ohne vergift et worden zu sein.",
       "type": "binary"
     },
     {
       "id": "we_have_an_understanding",
-      "title": "We Have an Understanding",
-      "text": "Win <i>The Forgotten Age</i> campaign without ever dealing any damage to the Harbinger of Valusia.",
+      "title": "Wir sind uns einig",
+      "text": "Gewinne die Kampagne <i>Das vergessene Zeitalter</i>, ohne dem Vorboten von Valusia Schaden zugefügt zu haben.",
       "type": "binary"
     },
     {
       "id": "who_needs_any_of_this_junk",
-      "title": "Who Needs Any of This Junk?",
-      "text": "Win <i>The Forgotten Age</i> campaign without purchasing any supplies.",
+      "title": "Wer braucht denn so einen Schrott ?",
+      "text": "Gewinne die Kampagne <i>Das vergessene Zeitalter</i>, ohne eine einzige Ausrüstung zu erwerben.",
       "type": "binary"
     },
     {
       "id": "dont_tread_on_me",
-      "title": "Don’t Tread on Me",
-      "text": "Win <i>The Forgotten Age</i> campaign with no tally marks recorded under Yig’s Fury in your Campaign Log",
+      "title": "Tritt nicht auf mich",
+      "text": "Gewinne die Kampagne <i>Das vergessene Zeitalter</i>, ohne einen einzigen Zählstrich unter Yigs Zorn im Kampagnenlogbuch notiert zu haben.",
       "type": "binary"
     },
     {
       "id": "bane_of_yig",
-      "title": "Bane of Yig",
-      "text": "Win <i>The Forgotten Age</i> campaign with 25+ tally marks recorded under Yig’s Fury in your Campaign Log.",
+      "title": "Fluch des Yig",
+      "text": "Gewinne die Kampagne <i>Das vergessene Zeitalter</i>, wobei mindestens 25 Zählstriche unter Yigs Zorn im Kampagnenlogbuch notiert worden sind.",
       "type": "binary"
     },
     {
       "id": "if_i_could_turn_back_time",
-      "title": "If I Could Turn Back Time",
-      "text": "Forge your own path, unlock Scenario IX, and win <i>The Forgotten Age</i> campaign.",
+      "title": "Wenn ich doch die Zeit zurückdrehen könnte",
+      "text": "Bahne dir deinen eigenen Weg, spiele dir Szenario IX frei und gewinne die Kampagne <i>Das vergessene Zeitalter</i>.",
       "type": "binary"
     },
     {
       "id": "yoth_expertise",
-      "title": "Yoth Expertise",
-      "text": "Win <i>The Forgotten Age</i> campaign on Expert difficulty",
+      "title": "Yoth-Experte",
+      "text": "Gewinne die Kampagne <i>Das vergessene Zeitalter</i> auf dem Schwierigkeitsgrad Experte.",
       "type": "binary"
     }
   ]
@@ -24711,6 +24727,7 @@
   "scenario_name": "Epilog",
   "full_name": "Epilog",
   "type": "epilogue",
+  "icon": "temporal_flux",
   "setup": [
     "check_turned_back_time"
   ],
@@ -24777,6 +24794,7 @@
   "scenario_name": "Das Ende der Expedition",
   "full_name": "Zwischenspiel II: Das Ende der Expedition",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "check_investigators_recovered_relic",
     "$upgrade_decks"
@@ -24995,6 +25013,7 @@
   "scenario_name": "Der Dschungel lockt",
   "full_name": "Zwischenspiel III: Der Dschungel lockt",
   "type": "interlude",
+  "icon": "rainforest",
   "setup": [
     "intro",
     "use_gasoline",
@@ -25484,6 +25503,7 @@
   "scenario_name": "Prolog",
   "full_name": "Prolog",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "intro",
     "choose_investigators",
@@ -25603,6 +25623,7 @@
   "scenario_name": "Ruhelose Nächte",
   "full_name": "Zwischenspiel I: Ruhelose Nächte",
   "type": "interlude",
+  "icon": "deadly_traps",
   "setup": [
     "prompt",
     "check_blanket",
@@ -33381,6 +33402,7 @@
   "scenario_name": "Die Dunkelheit",
   "full_name": "Zwischenspiel V: Die Dunkelheit",
   "type": "interlude",
+  "icon": "torch",
   "setup": [
     "check_fell_into_depths",
     "check_found_missing_relic",
@@ -33435,7 +33457,7 @@
     {
       "id": "darkness_1",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_1",
+        "id": "the_forgotten_age.interlude_5.the_darkness_1",
         "name": "Darkness 1"
       },
       "type": "story",
@@ -33444,7 +33466,7 @@
     {
       "id": "darkness_2",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_2",
+        "id": "the_forgotten_age.interlude_5.the_darkness_2",
         "name": "Darkness 2"
       },
       "type": "story",
@@ -33941,6 +33963,7 @@
   "scenario_name": "Die Gefangenen",
   "full_name": "Zwischenspiel IV: Die Gefangenen",
   "type": "interlude",
+  "icon": "cult_of_pnakotus",
   "setup": [
     "check_process_backfired",
     "explain_mind_recovered",
@@ -35425,7 +35448,7 @@
         "nightgaunts",
         "pentagram"
       ],
-      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow) and the following locations: Northside, Downtown <i>(First Bank of Arkham)</i>, Easttown, Miskatonic University, and Rivertown. Do not gather the rest of the locations or the act, agenda, and scenario reference cards from that set."
+      "subtext": "Sobald das Set <i>Die Mitternachtsmasken</i> herausgesucht wird, werden nur die 5 Verratskarten (2x Falsche Fährte und 3x Hetzender Schatten) und folgende Orte herausgesucht: Nordstadt, Innenstadt (Bank von Arkham), Oststadt, Miskatonic Universität und Hafenviertel. Die übrigen Orts-, Szene-, Agenda- und Szenarioübersichtskarten dieses Sets werden nicht herausgesucht."
     },
     {
       "id": "new_scenario_card",
@@ -35498,15 +35521,15 @@
     },
     {
       "id": "patrol_rule",
-      "title": "Patrol",
+      "title": "Patrouille",
       "type": "rule_reminder",
-      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "text": "Einige Gegner haben das Schlüsselwort Patrouille und dahinter einen Zielort in Klammern. Während der Gegnerphase (in Schritt 3.2) bewegt sich jeder spielbereite, nicht in einen Kampf verwickelte Gegner mit dem Schlüsselwort Patrouille auf kürzestem Weg in Richtung seines Zielortes zu einem verbundenen Ort.",
       "bullets": [
         {
-          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+          "text": "Falls es mehrere Orte gibt, die als Zielort in Frage kommen, entscheidet der Ermittlungsleiter, auf welchen dieser Orte sich der Gegner zubewegt."
         },
         {
-          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+          "text": "Falls sich ein Gegner mit dem Schlüsselwort Patrouille auf einen Ort bewegen müsste, der Weg aber durch eine Kartenfähigkeit versperrt ist, bewegt sich der Gegner nicht."
         }
       ]
     },
@@ -39404,15 +39427,15 @@
     },
     {
       "id": "patrol_rule",
-      "title": "Patrol",
+      "title": "Patrouille",
       "type": "rule_reminder",
-      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "text": "Einige Gegner haben das Schlüsselwort Patrouille und dahinter einen Zielort in Klammern. Während der Gegnerphase (in Schritt 3.2) bewegt sich jeder spielbereite, nicht in einen Kampf verwickelte Gegner mit dem Schlüsselwort Patrouille auf kürzestem Weg in Richtung seines Zielortes zu einem verbundenen Ort.",
       "bullets": [
         {
-          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+          "text": "Falls es mehrere Orte gibt, die als Zielort in Frage kommen, entscheidet der Ermittlungsleiter, auf welchen dieser Orte sich der Gegner zubewegt."
         },
         {
-          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+          "text": "Falls sich ein Gegner mit dem Schlüsselwort Patrouille auf einen Ort bewegen müsste, der Weg aber durch eine Kartenfähigkeit versperrt ist, bewegt sich der Gegner nicht."
         }
       ]
     },
@@ -45094,6 +45117,8 @@
           {
             "id": "taken_by_the_watcher",
             "text": "Vom Beobachter entführt",
+            "masculine_text": "Vom Beobachter entführt",
+            "feminine_text": "Vom Beobachter entführt",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -45233,6 +45258,7 @@
   "scenario_name": "Epilog",
   "full_name": "Epilog",
   "type": "epilogue",
+  "icon": "realm_of_death",
   "setup": [
     "check_anette_arrested",
     "check_assumed_control_of_the_silver_twilight_lodge",
@@ -46612,6 +46638,7 @@
   "type": "interlude",
   "scenario_name": "Der innere Kreis",
   "full_name": "Zwischenspiel III: Der innere Kreis",
+  "icon": "trapped_spirits",
   "setup": [
     "ic_1",
     "choose_to_share_info",
@@ -47344,6 +47371,7 @@
   "type": "interlude",
   "scenario_name": "Der Preis des Fortschritts",
   "full_name": "Zwischenspiel II: Der Preis des Fortschritts",
+  "icon": "silver_twilight_lodge",
   "setup": [
     "check_silver_twilight_investigator",
     "progress_3",
@@ -49061,6 +49089,7 @@
   "type": "interlude",
   "scenario_name": "Wendung des Schicksals",
   "full_name": "Zwischenspiel IV: Wendung des Schicksals",
+  "icon": "inexorable_fate",
   "setup": [
     "tof_1",
     "path_winds_before_you",
@@ -51588,6 +51617,7 @@
   "scenario_name": "Die schwarze Katze",
   "full_name": "Zwischenspiel I: Die schwarze Katze",
   "type": "interlude",
+  "icon": "tde",
   "setup": [
     "maybe_check_dreamers_grow_weaker",
     "black_cat_1",
@@ -51925,6 +51955,7 @@
   "scenario_name": "Epilog",
   "full_name": "Epilog",
   "type": "epilogue",
+  "icon": "merging_realities",
   "setup": [
     "check_weaver_of_the_cosmos",
     "check_nyarlathoteps_invasion_has_begun",
@@ -52567,6 +52598,7 @@
   "scenario_name": "Die Großen",
   "full_name": "Zwischenspiel III: Die Großen",
   "type": "interlude",
+  "icon": "dreamers_curse",
   "setup": [
     "check_point_of_no_return",
     "great_ones_1",
@@ -53368,6 +53400,7 @@
   "scenario_name": "Die Traumreisenden",
   "full_name": "Zwischenspiel II: Die Traumreisenden",
   "type": "interlude",
+  "icon": "whispers_of_hypnos",
   "setup": [
     "check_a_thousand_shapes_of_horror",
     "wait_oneironauts_decision",
@@ -55464,6 +55497,7 @@
   "scenario_name": "Prolog",
   "full_name": "Prolog",
   "type": "interlude",
+  "icon": "dreamlands",
   "setup": [
     "intro"
   ],
@@ -58122,6 +58156,7 @@
   "scenario_name": "Die schwarze Katze",
   "full_name": "Zwischenspiel I: Die schwarze Katze",
   "type": "interlude",
+  "icon": "tde",
   "setup": [
     "check_interconnected_campaign",
     "black_cat_3",
@@ -58378,6 +58413,7 @@
   "scenario_name": "Epilog",
   "full_name": "Epilog",
   "type": "epilogue",
+  "icon": "merging_realities",
   "setup": [
     "check_where_the_gods_dwell",
     "check_bridge_was_completed"
@@ -58976,6 +59012,7 @@
   "scenario_name": "Die Großen",
   "full_name": "Zwischenspiel III: Die Großen",
   "type": "interlude",
+  "icon": "dreamers_curse",
   "setup": [
     "check_dark_side_of_the_moon",
     "wait_great_ones_decision",
@@ -59474,6 +59511,7 @@
   "scenario_name": "Die Traumreisenden",
   "full_name": "Zwischenspiel II: Die Traumreisenden",
   "type": "interlude",
+  "icon": "whispers_of_hypnos",
   "setup": [
     "check_the_search_for_kadath",
     "oneironauts_1",
@@ -60724,6 +60762,7 @@
   "scenario_name": "Prolog",
   "full_name": "Prolog",
   "type": "interlude",
+  "icon": "dreamlands",
   "setup": [
     "intro"
   ],
@@ -62520,6 +62559,7 @@
   "scenario_name": "Epilog",
   "full_name": "Epilog",
   "type": "epilogue",
+  "icon": "temporal_flux",
   "setup": [
     "check_turned_back_time"
   ],
@@ -62586,6 +62626,7 @@
   "scenario_name": "Das Ende der Expedition",
   "full_name": "Zwischenspiel II: Das Ende der Expedition",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "check_investigators_recovered_relic",
     "$upgrade_decks"
@@ -64072,6 +64113,7 @@
   "scenario_name": "Der Dschungel lockt",
   "full_name": "Zwischenspiel III: Der Dschungel lockt",
   "type": "interlude",
+  "icon": "rainforest",
   "setup": [
     "intro",
     "use_gasoline",
@@ -64561,6 +64603,7 @@
   "scenario_name": "Prolog",
   "full_name": "Prolog",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "intro",
     "choose_investigators",
@@ -64680,6 +64723,7 @@
   "scenario_name": "Ruhelose Nächte",
   "full_name": "Zwischenspiel I: Ruhelose Nächte",
   "type": "interlude",
+  "icon": "deadly_traps",
   "setup": [
     "prompt",
     "check_blanket",
@@ -66783,6 +66827,7 @@
   "scenario_name": "Die Dunkelheit",
   "full_name": "Zwischenspiel V: Die Dunkelheit",
   "type": "interlude",
+  "icon": "torch",
   "setup": [
     "check_fell_into_depths",
     "check_found_missing_relic",
@@ -66837,7 +66882,7 @@
     {
       "id": "darkness_1",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_1",
+        "id": "the_forgotten_age.interlude_5.the_darkness_1",
         "name": "Darkness 1"
       },
       "type": "story",
@@ -66846,7 +66891,7 @@
     {
       "id": "darkness_2",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_2",
+        "id": "the_forgotten_age.interlude_5.the_darkness_2",
         "name": "Darkness 2"
       },
       "type": "story",
@@ -68613,6 +68658,7 @@
   "scenario_name": "Die Gefangenen",
   "full_name": "Zwischenspiel IV: Die Gefangenen",
   "type": "interlude",
+  "icon": "cult_of_pnakotus",
   "setup": [
     "check_process_backfired",
     "explain_mind_recovered",
@@ -69688,7 +69734,7 @@
         "nightgaunts",
         "pentagram"
       ],
-      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow) and the following locations: Northside, Downtown <i>(First Bank of Arkham)</i>, Easttown, Miskatonic University, and Rivertown. Do not gather the rest of the locations or the act, agenda, and scenario reference cards from that set."
+      "subtext": "Sobald das Set <i>Die Mitternachtsmasken</i> herausgesucht wird, werden nur die 5 Verratskarten (2x Falsche Fährte und 3x Hetzender Schatten) und folgende Orte herausgesucht: Nordstadt, Innenstadt (Bank von Arkham), Oststadt, Miskatonic Universität und Hafenviertel. Die übrigen Orts-, Szene-, Agenda- und Szenarioübersichtskarten dieses Sets werden nicht herausgesucht."
     },
     {
       "id": "set_aside_alejandro_and_relic",
@@ -71770,15 +71816,1126 @@
   "id": "a_light_in_the_fog",
   "scenario_name": "Ein Licht im Nebel",
   "full_name": "Szenario VI: Ein Licht im Nebel",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "location_layout",
+    "location_layout_act_3",
+    "setup_keys",
+    "setup_captured",
+    "set_aside_cards",
+    "check_for_story_assets",
+    "check_idol",
+    "check_mantle",
+    "check_headdress",
+    "check_for_doom",
+    "check_reached_falcon_point_after_sunrise",
+    "check_tide_has_grown_stronger",
+    "add_flood_tokens",
+    "encounter_deck",
+    "keys_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "Blutrote Nebelschwaden wabern durch die Luft, als du das Torhaus von Falcon Point erreichst. Auf der Spitze der Klippe über dir durchdringt das Lichtsignal des Leuchtturms den dichten Nebel. Wenn du bedenkst, was aus Innsmouth geworden ist, fragst du dich, welchen Zweck das Lichtsignal jetzt noch hat. Bei diesen unfreundlichen Wetterbedingungen wird sich wohl kein Schiff auf das Meer wagen. \nIrgendwo im Inneren befindet sich der Beweis, den du schon vor Wochen gefunden hast. Du befürchtest aber auch, dass Oceiros – der Mann, der dich gefangen genommen und in der Grotte zum Sterben zurückgelassen hat – hier wohnt. „Sind Sie bereit?“, will Agent Harper von dir wissen. „Uns steht hier kein wirklicher Fluchtweg zur Verfügung, wenn die Sache den Bach runtergeht. Also seien Sie auf alles vorbereitet.“ \nDu nickst. Jetzt ist es zu spät, um umzukehren. Langsam nähert ihr euch der Klippe. Auf die eine oder andere Weise wird die Sache heute eine Ende finden."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Vorbereitung",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "a_light_in_the_fog",
+        "creatures_of_the_deep",
+        "flooded_caverns",
+        "rising_tide",
+        "syzygy",
+        "striking_fear"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Folgende Orte werden in der gleichen Reihe ins Spiel gebracht: Torhaus von Falcon Point, Klippe von Falcon Point, Treppe des Leuchtturms und Hütte des Leuchtturmwärters. Direkt über der Treppe des Leuchtturms wird der Ort Lampenhaus ins Spiel gebracht <i>(siehe dazu den Vorschlag für die Platzierung der Orte für Szene 1)</i>.",
+      "bullets": [
+        {
+          "text": "Jeder Ermittler beginnt das Spiel am Torhaus von Falcon Point."
+        },
+        {
+          "text": "Die 2 Orte Unterirdischer Fluss (auf der Rückseite von Gezeitentunnel) werden aus dem Spiel entfernt."
+        },
+        {
+          "text": "Alle anderen Orte werden als nicht im Spiel befindlich beiseitegelegt."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Vorschlag für die Platzierung der Orte für Szene 1",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "note": "Hinweis: Die Reihenfolge der Orte in dieser Reihe spielt keine Rolle. Wichtig ist nur, dass sich das Lampenhaus direkt oberhalb der Treppe des Leuchtturms befindet.",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "lantern_room",
+          "blank"
+        ],
+        [
+          "gatehouse",
+          "cliff",
+          "lighthouse_stairwell",
+          "keepers_cottage"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "lantern_room",
+          "name": "Lampenhaus"
+        },
+        {
+          "code": "gatehouse",
+          "name": "Torhaus von Falcon Point"
+        },
+        {
+          "code": "cliff",
+          "name": "Klippe von Falcon Point"
+        },
+        {
+          "code": "lighthouse_stairwell",
+          "name": "Treppe des Leuchtturms"
+        },
+        {
+          "code": "keepers_cottage",
+          "name": "Hütte des Leuchtturmwärters"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_act_3",
+      "type": "location_setup",
+      "text": "Vorschlag zur Platzierung der Orte für Szene 3 / Agenda 3",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "note": "Hinweis: Die Reihenfolge der Orte in jeder Reihe spielt keine Rolle. Wichtig ist nur, dass sich das Lampenhaus, die Treppe des Leuchtturms und jede Versunkene Grotte wie angegeben in derselben Spalte befinden.",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "lantern_room",
+          "blank"
+        ],
+        [
+          "gatehouse",
+          "cliff",
+          "lighthouse_stairwell",
+          "keepers_cottage"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "sunken_grotto_upper_depths",
+          "07052_back"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "sunken_grotto_lower_depths",
+          "07052_back"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "sunken_grotto_final_depths",
+          "07052_back"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "lantern_room",
+          "name": "Lampenhaus"
+        },
+        {
+          "code": "gatehouse",
+          "name": "Torhaus von Falcon Point"
+        },
+        {
+          "code": "cliff",
+          "name": "Klippe von Falcon Point"
+        },
+        {
+          "code": "lighthouse_stairwell",
+          "name": "Treppe des Leuchtturms"
+        },
+        {
+          "code": "keepers_cottage",
+          "name": "Hütte des Leuchtturmwärters"
+        },
+        {
+          "code": "sunken_grotto_upper_depths",
+          "name": "Versunkene Grotte (Obere Tiefen)"
+        },
+        {
+          "code": "sunken_grotto_lower_depths",
+          "name": "Versunkene Grotte (Untere Tiefen)"
+        },
+        {
+          "code": "sunken_grotto_final_depths",
+          "name": "Versunkene Grotte (Endgültige Tiefen)"
+        }
+      ]
+    },
+    {
+      "id": "setup_keys",
+      "text": "Die Schlüssel werden wie folgt beiseitegelegt:",
+      "bullets": [
+        {
+          "text": "Der weiße, schwarze, blaue, gelbe und rote Schlüssel werden offen beiseitegelegt."
+        },
+        {
+          "text": "Der lila und grüne Schlüssel werden verdeckt beiseitegelegt und gemischt, sodass die Ermittler nicht wissen, welcher welcher ist."
+        }
+      ]
+    },
+    {
+      "id": "setup_captured",
+      "text": "Die doppelseitige Handlungskarte „Gefangen!“ wird neben der Szenarioübersichtskarte mit der Handlung-Seite nach oben ins Spiel gebracht und ihr Text ist aktiv. (Auf der Rückseite dieser Karte befindet sich der Ort Gefängniszellen.)"
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Die folgenden Karten werden als nicht im Spiel befindlich beiseitegelegt: Der Gegner Oceiros Marsh, beide Kopien der Verratskarte Er ist sein Geld wert und beide Kopien der Verratskarte Gefangen genommen."
+    },
+    {
+      "id": "keys_rule",
+      "title": "Schlüssel",
+      "text": "In diesem Szenario steht jeder farbige Schlüssel für ein anderes Objekt. Du kannst die \"Schlüssel\" Option weitere unten verwenden, um ihre Bedeutung zu enthüllen, wenn sie ins Spiel gebracht werden."
+    },
+    {
+      "id": "check_for_story_assets",
+      "text": "Überprüfe das Kampagnenlogbuch:"
+    },
+    {
+      "id": "check_idol",
+      "bullet_type": "small",
+      "text": "Falls <i>der Götze zum Leuchtturm gebracht wurde</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "idol_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_idol"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_idol",
+      "bullet_type": "small",
+      "text": "Die Sammlung wird nach Verwitterter Götze durchsucht, der als nicht im Spiel befindlich beiseitegelegt wird."
+    },
+    {
+      "id": "check_mantle",
+      "bullet_type": "small",
+      "text": "Falls <i>der Mantel zum Leuchtturm gebracht wurde</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mantle_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_mantle"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_mantle",
+      "bullet_type": "small",
+      "text": "Die Sammlung wird nach Mantel des Erwachten durchsucht, der als nicht im Spiel befindlich beiseitegelegt wird."
+    },
+    {
+      "id": "check_headdress",
+      "bullet_type": "small",
+      "text": "Falls <i>der Kopfschmuck zum Leuchtturm gebracht wurde</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "headdress_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_headdress"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_headdress",
+      "bullet_type": "small",
+      "text": "Die Sammlung wird nach Kopfschmuck aus Y’ha-nthlei durchsucht, der als nicht im Spiel befindlich beiseitegelegt wird."
+    },
+    {
+      "id": "check_for_doom",
+      "text": "Überprüfe das Kampagnenlogbuch:"
+    },
+    {
+      "id": "check_reached_falcon_point_after_sunrise",
+      "bullet_type": "small",
+      "text": "Falls <i>die Ermittler Falcon Point nach Sonnenaufgang erreicht haben</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "reached_falcon_point_after_sunrise",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_falcon_point_doom"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_falcon_point_doom",
+      "bullet_type": "small",
+      "text": "Es wird 1 Verderben auf Agenda\u001f1 platziert."
+    },
+    {
+      "id": "check_tide_has_grown_stronger",
+      "bullet_type": "small",
+      "text": "Falls <i>die Flut stärker geworden ist</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "tide_has_grown_stronger",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_tide_doom"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_tide_doom",
+      "bullet_type": "small",
+      "text": "Es wird 1 Verderben auf Agenda\u001f1 platziert."
+    },
+    {
+      "id": "add_flood_tokens",
+      "text": "Die Flutmarker werden dem Markervorrat hinzugefügt."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Schlüssel",
+            "steps": [
+              "ask_keys"
+            ]
+          },
+          {
+            "id": "flashback_12",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_12",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "RÜCKBLENDE XII",
+            "steps": [
+              "flashback_12_story",
+              "flashback_12_effects",
+              "flashback_12_tokens",
+              "flashback_12_clues"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_12",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_13",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_13",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "RÜCKBLENDE XIII",
+            "steps": [
+              "flashback_13_story",
+              "flashback_13_effects",
+              "flashback_13_tokens"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_13",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Von welchem Schlüssel möchtest du die Bedeutung lesen:",
+      "input": {
+        "type": "checklist",
+        "text": "Lesen",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Rot",
+            "steps": [
+              "red_key"
+            ]
+          },
+          {
+            "id": "blue",
+            "text": "Blau",
+            "steps": [
+              "blue_key"
+            ]
+          },
+          {
+            "id": "green",
+            "text": "Grün",
+            "steps": [
+              "green_key"
+            ]
+          },
+          {
+            "id": "yellow",
+            "text": "Gelb",
+            "steps": [
+              "yellow_key"
+            ]
+          },
+          {
+            "id": "purple",
+            "text": "Lila",
+            "steps": [
+              "purple_key"
+            ]
+          },
+          {
+            "id": "black",
+            "text": "Schwarz",
+            "steps": [
+              "black_key"
+            ]
+          },
+          {
+            "id": "white",
+            "text": "Weiß",
+            "steps": [
+              "white_key"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "red_key",
+      "text": "Rot: Ein vergoldeter Schlüssel aus Korallen, der mit seltsamen glühenden Runen bedeckt ist. Das Wort „Y’ha-nthlei“ ist auf dem Griff eingraviert."
+    },
+    {
+      "id": "blue_key",
+      "text": "Blau: Ein Schlüssel, in den das Symbol eines angeschwollenen Fischauges geschnitzt ist."
+    },
+    {
+      "id": "green_key",
+      "text": "Grün: Ein faustgroßer Brocken aus unbearbeitetem Peridot, der in einem unnatürlich glühenden Licht pulsiert."
+    },
+    {
+      "id": "yellow_key",
+      "text": "Gelb: Ein schwerer Eisenring, an dem unzählige Zellenschlüssel hängen."
+    },
+    {
+      "id": "purple_key",
+      "text": "Lila: Die verendete Larve eines missgestalteten Fisches."
+    },
+    {
+      "id": "black_key",
+      "text": "Schwarz: Eine Karte der Tiefen unter dem Teufelsriff."
+    },
+    {
+      "id": "white_key",
+      "text": "Weiß: Ein handliches Taschenteleskop."
+    },
+    {
+      "id": "flashback_12_story",
+      "title": "RÜCKBLENDE XII",
+      "type": "story",
+      "text": "Du schaust zum Leuchtturm von Falcon Point hinauf, aber von viel weiter unten. Du befindest dich auf dem Fischkutter von Mr. Moore auf deiner Fahrt zum Teufelsriff einige Wochen zuvor. Das Schiff schaukelt auf und ab, während sich die Wellen an seinem Rumpf brechen. „Ich fürchte, es wird ein wenig holprig heute“, ruft dir der Schiffskapitän über den Lärm des aufbrausenden Meeres hinweg zu. „Das Wetter ist in letzter Zeit recht stürmisch. Seltsame Strömungen und seltsame Winde.“ \nDu blickst noch immer unentwegt auf den ominösen Leuchtturm, dessen Leuchtsignal Wegweiser oder Warnung ist, vielleicht sogar beides. Neugierig fragst du Mr. Moore, was er über den Leuchtturm weiß. „Das alte Ding? Das ist schon älter als Innsmouth selbst. Die Familie Marsh kümmert sich schon darum, solange ich denken kann. Jetzt ist Oceiros der Leuchtturmwärter. Ein seltsamer Bursche, dieser Oceiros. Den einzigen Ort, den er in Innsmouth aufsucht, ist das Gebäude des Ordens von Dagon beim Neuen Kirchplatz.“ Zur Bekräftigung seiner Worte schüttelt er den Kopf. \nDu fragst dich, ob der Leuchtturm mehr Geheimnisse birgt, als er den Anschein macht. Mr. Moore scheint deine Neugierde zu bemerken. „Ich habe gehört, die Marshes hätten Höhlen unter dem Leuchtturm angelegt, die bis zum Meeresspiegel und sogar noch in die Tiefen darunter reichen sollen“, behauptet er. „Keine Ahnung, ob das stimmt. Aber manchmal, wenn ich auf dem Meer bin, kann ich eine Gruppe von ihnen auf der Klippe sehen, wie sie winken und sich hinknien und beten oder so was. Ich habe mir darüber noch keine weiteren Gedanken gemacht, aber …“, sagt er und senkt seine Stimme. „Na ja, ich dachte, Sie sollten das wissen.“ \nDu nickst und bedankst dich bei ihm. Wenn das, was er sagt, wahr sein sollte, solltest du diesem Leuchtturm vielleicht einen Besuch abstatten. Du nimmst dir vor, mehr über Falcon Point herauszufinden, sobald du wieder zurück in Innsmouth bist. \nAls dein Verstand wieder in die Gegenwart zurückkehrt, kannst du dich an die Zeit nach deiner Expedition zum Teufelsriff erinnern, als du nach einiger Laufarbeit Informationen über den Leuchtturm und sein Tunnelsystem gefunden hast …"
+    },
+    {
+      "id": "flashback_12_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "conversation_with_mr_moore",
+          "text": "eine Unterhaltung mit Mr. Moore"
+        }
+      ]
+    },
+    {
+      "id": "flashback_12_tokens",
+      "text": "Wähle 1\u001fder folgenden Chaosmarker aus dem Chaosbeutel und entferne ihn für den Rest der Kampagne daraus: [cultist], [tablet], oder [elder_thing]",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "Entferne [cultist]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "cultist",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "Entferne [tablet]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "tablet",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "Entferne [elder_thing]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "elder_thing",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flashback_12_clues",
+      "text": "Der Ermittlungsleiter erhält 1 [per_investigator] Hinweis aus dem Markervorrat."
+    },
+    {
+      "id": "flashback_13_story",
+      "title": "RÜCKBLENDE XIII",
+      "type": "story",
+      "text": "Du unterhältst dich mit einem der vielen Seemänner, die das baufällige Wirtshaus bei den Docks irgendwo im Elendsviertel im Südosten der heruntergekommenen Hafenstadt Innsmouth besuchen. Er hat sich in seiner eigenen kleinen Ecke in der Kneipe zurückgezogen, wo er sich verkriechen und seine Sorgen im Alkohol ertränken kann. Das kann dir nur recht sein – je unauffälliger deine Ermittlungen, desto besser. \nDu machst dir Notizen, während der betrunkene Mann über Kreaturen schwafelt, die vor der Küste im Meer schwimmen und bei den Riffen herumstreifen sollen. „Tiefe Wesen“ nennt er sie. „Hab eines davon mal in meinem Netz gehabt“, plappert er undeutlich weiter. „Ein Weibchen und seine Eier – doch, wirklich! – Eier, größer als eine Faust, die haben sich gewunden und haben gezappelt!“ \nGanz so, als würde er seinen Kollegen Seemannsgarn auftischen, fährt er fort: „Sie hatte eines von ihnen auf dem Arm. Ein winzig kleiner Teufel war das, mit hasserfüllten Glupschaugen. Das habe ich mir nicht länger anschauen können und so habe ich das Netz zurück ins Meer geworfen, als mir klar wurde, was ich da gefangen hatte. Dann bin ich sofort an Land zurück. Wenn ich könnte, würde ich nie wieder aufs Meer fahren.“ \nDu lässt dir die neuen Informationen durch den Kopf gehen. Wenn das, was der Mann behauptet, wahr sein sollte, dann hätten diese Kreaturen einen Lebenszyklus, der Fischen gleicht. Was hat es dann aber mit diesen unheimlichen hybriden Kreaturen auf sich, die du durch die Stadt hast schleichen sehen? Sind sie nur Ausgeburten deiner Fantasie? Oder steckt noch mehr hinter ihrem Lebenszyklus, ein noch düsterer Teil, der dir verborgen geblieben ist?"
+    },
+    {
+      "id": "flashback_13_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "lifecycle_of_a_deep_one",
+          "text": "der Lebenszyklus eines „Tiefen Wesens“"
+        }
+      ]
+    },
+    {
+      "id": "flashback_13_tokens",
+      "text": "Wähle 1\u001fder folgenden Chaosmarker aus dem Chaosbeutel und entferne ihn für den Rest der Kampagne daraus: [cultist], [tablet], oder [elder_thing]",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "Entferne [cultist]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "cultist",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "Entferne [tablet]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "tablet",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "Entferne [elder_thing]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "elder_thing",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_final_agenda",
+      "type": "input",
+      "text": "Welche Agenda war aktiv, als das Szenario beendet wurde?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "agenda_1",
+            "text": "Agenda 1",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "agenda_2",
+            "text": "Agenda 2",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "agenda_3",
+            "text": "Agenda 3",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "agenda_4",
+            "text": "Agenda 4",
+            "steps": [
+              "resolution_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_xp",
+      "text": "Jeder Ermittler verdient Erfahrungspunkte in Höhe des Sieg-X-Wertes aller Karten im Siegpunktestapel. Notiere diese Erfahrungspunkte im Kampagnenlogbuch unter „Nicht ausgegebene EP“. <b>Diese Erfahrungspunkte dürfen jetzt noch nicht ausgegeben werden.</b> Die Ermittler werden zu einem späteren Zeitpunkt dazu angewiesen, diese Erfahrungspunkte auszugeben.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Siegpunktestapel:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unspect_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "all_killed",
+      "text": "Jeder Ermittler wird <b>getötet</b>.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "killed": true
+        }
+      ]
+    },
+    {
+      "id": "lose_campaign",
+      "text": "Die Ermittler verlieren die Kampagne!",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "tic_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
+    },
+    {
+      "id": "ask_moon_room_resigned",
+      "text": "An welchem Ort hat jeder Ermittler aufgegeben?",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "resigned",
+        "source": "scenario",
+        "choices": [
+          {
+            "id": "moon_room",
+            "text": "Raum des Mondes",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "campaign_notes",
+                "id": "possesses_a_diving_suite",
+                "cards": "$input_value",
+                "masculine_text": "#name# besitzt einen Taucheranzug.",
+                "feminine_text": "#name# besitzt einen Taucheranzug."
+              }
+            ]
+          },
+          {
+            "id": "falcon_point",
+            "text": "Falcon Point"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_black_key_on_act",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "red",
+            "text": "War der schwarze Schlüssel auf der aktuellen Szene als das Spiel beendet wurde?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "possess_a_map_of_yhanthlei",
+                "text": "Die Ermittler besitzen eine Karte von\u001fY’ha-nthlei."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_red_key_on_act",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "red",
+            "text": "War der rote Schlüssel auf der aktuellen Szene als das Spiel beendet wurde?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "possess_the_key_to_yhanthlei",
+                "text": "Die Ermittler besitzen den Schlüssel nach\u001fY’ha-nthlei."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_story_relics",
+      "text": "Für jede beiseitegelegte [[Relikt]]-Storyvorteilskarte, die während dieses Szenarios der Hand eines Ermittlers hinzugefügt worden ist, darf ein beliebiger Ermittler wählen, sie seinem Deck hinzuzufügen. Diese Karte zählt nicht gegen die Deckgröße des Ermittlers."
+    },
+    {
+      "id": "maybe_ask_idol",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "idol_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_idol"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_idol",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "earn_idol",
+            "text": "Wurde der Verwitterter Götze während des Szenarios zur Hand eines Ermittler hinzugefügt?",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "choice",
+                "card": "07179"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_mantle",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mantle_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_mantle"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_mantle",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "earn_idol",
+            "text": "Wurde der Mantel des Erwachten während des Szenarios zur Hand eines Ermittler hinzugefügt?",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "choice",
+                "card": "07180"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_headdress",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "headdress_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_headdress"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_headdress",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "earn_idol",
+            "text": "Wurde der Kopfschmuck aus Y’ha-nthlei während des Szenarios zur Hand eines Ermittler hinzugefügt?",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "choice",
+                "card": "07181"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution_defeated",
+      "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "ask_final_agenda"
+      ]
+    },
+    {
+      "id": "R1",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Auflösung 1",
+      "text": "Erschöpft wirfst du dich am felsigen Ufer zu Boden. Wellen umspülen deine Knöchel, als du in den Himmel starrst. Hinter den Wolken hat er eine tiefe blutrote Farbe angenommen, die das unheilvolle Ende der gesamten Menschheit verkündet. Dir pocht dein Schädel, als du versuchst darüber nachzudenken, wieso das so ist. Der Mond schiebt sich langsam vor die Sonne. In der Ferne kannst du es donnern hören. Dunkle Wolken ballen sich zusammen und türmen sich über dem Ozean auf. Was bedeutet das alles? Was steckt hinter dem Esoterischen Orden von Dagon? Liegt die Antwort im Teufelsriff verborgen? Dir wird erneut schwarz vor Augen.",
+      "steps": [
+        "ask_moon_room_resigned",
+        "ask_black_key_on_act",
+        "ask_red_key_on_act",
+        "ask_story_relics",
+        "maybe_ask_idol",
+        "maybe_ask_mantle",
+        "maybe_ask_headdress",
+        "earn_xp"
+      ]
+    },
+    {
+      "id": "R2",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Auflösung 2",
+      "text": "Erschöpfung und Verzweiflung nagen an jedem deiner Muskeln und an deinem Verstand, als du in die dunklen Wälder entkommst, die Falcon Point umgeben. Du stützt dich an einem Baum ab und starrst in den Himmel. Hinter den Wolken hat er eine tiefe blutrote Farbe angenommen, die das unheilvolle Ende der gesamten Menschheit verkündet. Dir pocht dein Schädel, als du versuchst darüber nachzudenken, wieso das so ist. Der Mond schiebt sich langsam vor die Sonne. In der Ferne kannst du es donnern hören. Dunkle Wolken ballen sich zusammen und türmen sich über dem Ozean auf. Was bedeutet das alles? Was steckt hinter dem Esoterischen Orden von Dagon? Liegt die Antwort im Teufelsriff verborgen? Dir wird erneut schwarz vor Augen.",
+      "steps": [
+        "ask_black_key_on_act",
+        "ask_red_key_on_act",
+        "ask_story_relics",
+        "maybe_ask_idol",
+        "maybe_ask_mantle",
+        "maybe_ask_headdress",
+        "earn_xp"
+      ]
+    },
+    {
+      "id": "R3",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Auflösung 3",
+      "text": "Du gerätst in Panik, als das Wasser immer weiter bis zur Decke der Höhle ansteigt. Es gibt keine Luft mehr zum Atmen. Du spürst, wie dich die Strömung immer tiefer und tiefer unter die Oberfläche zieht, wo die glühenden, hervorquellenden Augen der Tiefen Wesen auf dich lauern. Verzweifelt tauchst du zur Kellertür des Leuchtturms hinauf. Deine einzige Hoffnung ist es, die Tür mit Gewalt aufzubekommen und in das Gebäude darüber hinaufzuklettern, wo der so dringend benötigte Sauerstoff auf dich wartet. Mit all deiner Macht wirfst du dich gegen die Tür, schubst und schiebst, hoffst, stellst dir vor und betest, dass du genug Kraft aufbringen kannst, um die Luke zu öffnen. Deine Lugen sind kurz davor zu bersten. Nein! Das darf nicht das Ende sein! Immer weiter kämpfst du um dein Leben und stemmst dich gegen die Luke, doch sie will einfach nicht aufgehen. Endlich gibst du dem Drang nach und atmest tief ein. Kaltes Salzwasser füllt deine Lungen. Das Letzte, was du spürst, ist, wie dich mit Schwimmhäuten versehene Hände an deinen Knöcheln in die Tiefe ziehen.",
+      "steps": [
+        "all_killed",
+        "lose_campaign"
+      ]
+    },
+    {
+      "id": "R4",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Auflösung 4",
+      "text": "Hierherzukommen war ein schwerer Fehler. Falcon Point ist nicht nur ein einfacher Leuchtturm, sondern auch das Hauptquartier des Ordens von Dagon. Ein Ort, noch feindseliger und tödlicher als die Stadt Innsmouth selbst. Da hinter jeder Ecke Gefahren lauern und dir der hasserfüllte Leuchtturmwärter dicht auf den Fersen ist, lässt du die Geheimnisse des Leuchtturms hinter dir und fliehst in die dunklen Wälder. \nAls du so weit in den Wald hineingelaufen bist, dass die Bäume den Blick auf den Leuchtturm versperren, bist du völlig erschöpft. Dir ist bewusst, dass es zu gefährlich wäre, jetzt anzuhalten, aber du kannst kaum noch stehen. Du stützt dich an einem Baum ab und starrst in den Himmel. Hinter den Wolken hat er eine tiefe blutrote Farbe angenommen, die das unheilvolle Ende der gesamten Menschheit verkündet. Dir pocht dein Schädel, als du versuchst darüber nachzudenken, wieso das so ist. Der Mond schiebt sich langsam vor die Sonne. In der Ferne kannst du es donnern hören. Dunkle Wolken ballen sich zusammen und türmen sich über dem Ozean auf. Was bedeutet das alles? Was steckt hinter dem Esoterischen Orden von Dagon? Liegt die Antwort im Teufelsriff verborgen? Dir wird erneut schwarz vor Augen.",
+      "steps": [
+        "ask_black_key_on_act",
+        "ask_red_key_on_act",
+        "ask_story_relics",
+        "maybe_ask_idol",
+        "maybe_ask_mantle",
+        "maybe_ask_headdress",
+        "earn_xp"
+      ]
+    }
+  ]
 },
 {
   "id": "beneath_the_waves",
   "scenario_name": "Unter den Wellen",
   "full_name": "Zwischenspiel III: Unter den Wellen",
   "type": "interlude",
+  "icon": "flooded_caverns",
   "setup": [
     "intro",
     "section_intro",
@@ -72794,7 +73951,7 @@
         "choices": [
           {
             "id": "cheat",
-            "text": "Did you reach <b>Resolution 1</b> by advancing Agenda 2b?",
+            "text": "Wurde <b>Auflösung 1</b> durch das Voranschreiten von Agenda 2b erreicht?",
             "steps": [
               "record_tide_has_grown_stronger"
             ]
@@ -72845,6 +74002,7 @@
   "id": "hidden_truths",
   "scenario_name": "Verborgene Wahrheiten",
   "full_name": "Zwischenspiel IV: Verborgene Wahrheiten",
+  "icon": "agents_of_dagon",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -72871,7 +74029,8 @@
     "running_stopped_rule",
     "road_x_rule",
     "road_x_rule_1",
-    "road_x_rule_2"
+    "road_x_rule_2",
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -73786,6 +74945,7 @@
   "scenario_name": "Puzzleteile",
   "full_name": "Zwischenspiel I: Puzzleteile",
   "type": "interlude",
+  "icon": "shattered_memories",
   "setup": [
     "intro",
     "check_memories_recovered",
@@ -74473,6 +75633,7 @@
   "scenario_name": "Das Syzygium",
   "full_name": "Zwischenspiel II: Das Syzygium",
   "type": "interlude",
+  "icon": "syzygy",
   "setup": [
     "syzygy_1",
     "check_mission_failed",
@@ -76475,6 +77636,7 @@
   "scenario_name": "Epilog",
   "full_name": "Epilog",
   "type": "placeholder",
+  "icon": "rising_tide",
   "setup": [],
   "steps": []
 }]}

@@ -8,9 +8,9 @@ import { t } from 'ttag';
 
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import CampaignSummaryComponent from '@components/campaign/CampaignSummaryComponent';
-import { Campaign, Deck, ParsedDeck } from '@actions/types';
+import { Campaign, CUSTOM, Deck, ParsedDeck } from '@actions/types';
 import { CardsMap } from '@data/Card';
-import space, { l, s, xs } from '@styles/space';
+import space, { l, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckSectionBlock from '../section/DeckSectionBlock';
@@ -62,7 +62,7 @@ export default function DeckProgressComponent({
     );
   }, [showDeckUpgrade]);
   const campaignSection = useMemo(() => {
-    if (!editable) {
+    if (!editable || campaign?.guided) {
       return null;
     }
     return (
@@ -71,23 +71,25 @@ export default function DeckProgressComponent({
           title={t`Campaign`}
           faction={investigator.factionCode()}
           footerButton={footerButton}
+          noSpace
         >
           { !!campaign && !hideCampaign && (
-            <View style={styles.campaign}>
-              <View style={space.marginBottomM}>
-                <CampaignSummaryComponent campaign={campaign} hideScenario />
-              </View>
-              <Text style={[typography.text, space.marginBottomS]}>
-                { campaign.name }
-              </Text>
-            </View>
+            <CampaignSummaryComponent campaign={campaign} hideScenario>
+              { campaign.cycleCode !== CUSTOM && (
+                <View style={[space.paddingTopS, space.paddingBottomS]}>
+                  <Text style={typography.text}>
+                    { campaign.name }
+                  </Text>
+                </View>
+              ) }
+            </CampaignSummaryComponent>
           ) }
         </DeckSectionBlock>
       </View>
     );
   }, [campaign, editable, hideCampaign, investigator, typography, footerButton]);
 
-  if (!deck.previous_deck && !deck.next_deck && !campaign && !editable && !title) {
+  if (!deck.previousDeckId && !deck.nextDeckId && !campaign && !editable && !title) {
     return null;
   }
 
@@ -95,7 +97,7 @@ export default function DeckProgressComponent({
   return (
     <View style={styles.container}>
       { campaignSection }
-      { !!(!campaignSection || deck.previous_deck) && (
+      { !!(!campaignSection || deck.previousDeckId) && (
         <ChangesFromPreviousDeck
           componentId={componentId}
           title={title}
@@ -105,7 +107,7 @@ export default function DeckProgressComponent({
           singleCardView={singleCardView}
           editable={editable}
           onTitlePress={onTitlePress}
-          footerButton={!!editable && !!deck.previous_deck && !!showDeckHistory && (
+          footerButton={!!editable && !!deck.previousDeckId && !!showDeckHistory && (
             <RoundedFooterButton
               icon="deck"
               title={t`Upgrade History`}
@@ -123,10 +125,5 @@ const styles = StyleSheet.create({
   container: {
     marginTop: xs,
     marginBottom: l,
-  },
-  campaign: {
-    marginTop: s,
-    marginLeft: s,
-    marginRight: s,
   },
 });

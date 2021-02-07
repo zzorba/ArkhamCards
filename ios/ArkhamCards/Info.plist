@@ -106,6 +106,7 @@
 		<string>MaterialCommunityIcons.ttf</string>
 		<string>MaterialIcons.ttf</string>
 		<string>AnkeCalligraphicFG.ttf</string>
+		<string>cost.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -116,7 +117,7 @@
 	<key>UIRequiresFullScreen</key>
 	<false/>
 	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleDarkContent</string>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

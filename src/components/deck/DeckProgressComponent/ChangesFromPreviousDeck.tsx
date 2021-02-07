@@ -84,11 +84,11 @@ export default function ChangesFromPreviousDeck({
         allCards,
         true,
         tabooSetId,
-        parsedDeck.deck.id,
+        parsedDeck.id,
         investigator
       );
     }
-  }, [colors, allCards, componentId, investigator, parsedDeck.deck.id, tabooSetId, singleCardView]);
+  }, [colors, allCards, componentId, investigator, parsedDeck.id, tabooSetId, singleCardView]);
 
   const faction = parsedDeck.investigator.factionCode();
   const renderSection = useCallback((slots: Slots, id: string, title: string) => {

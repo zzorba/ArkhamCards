@@ -8,14 +8,14 @@ import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface Props {
-  icon: string;
+  icon?: string;
   title: string;
   valueLabel: string | React.ReactNode;
   valueLabelDescription?: string;
   first?: boolean;
   last?: boolean;
   editable: boolean;
-  onPress: () => void;
+  onPress?: () => void;
   noLabelDivider?: boolean;
   editIcon?: string;
 }
@@ -66,25 +66,27 @@ export default function DeckPickerStyleButton({
     >
       <View style={[styles.row, space.paddingBottomS, !last ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         <View style={styles.leftRow}>
-          <View style={styles.icon}>
-            { icon === 'per_investigator' ? (
-              <ArkhamIcon name={icon} size={iconSize(icon)} color={colors.M} />
-            ) : (
-              <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
-            ) }
-          </View>
+          { !!icon && (
+            <View style={styles.icon}>
+              { icon === 'per_investigator' ? (
+                <ArkhamIcon name={icon} size={iconSize(icon)} color={colors.M} />
+              ) : (
+                <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
+              ) }
+            </View>
+          ) }
           <View style={styles.column}>
             <Text style={[typography.smallLabel, typography.dark, typography.italic]}>
               { title }
             </Text>
-            <View style={styles.row}>
+            <View style={[styles.row, space.paddingTopXs]}>
               { typeof valueLabel === 'string' ? (
                 <Text style={[typography.large]}>
                   { valueLabel }
                 </Text>
               ) : valueLabel }
               { !!valueLabelDescription && (
-                <Text style={[typography.small, { color: colors.M, lineHeight: 24 * fontScale }]}>
+                <Text style={[typography.small, { color: colors.M, lineHeight: 16 * fontScale }]}>
                   { noLabelDivider ? `  ${valueLabelDescription}` : ` · ${valueLabelDescription}` }
                 </Text>
               ) }

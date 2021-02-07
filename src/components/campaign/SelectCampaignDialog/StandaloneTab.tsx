@@ -15,7 +15,7 @@ export interface SelectCampagaignProps {
 }
 
 export default function StandaloneTab({ standaloneChanged }: SelectCampagaignProps) {
-  const { lang }= useContext(LanguageContext);
+  const { lang } = useContext(LanguageContext);
   const scenarios = useMemo(() => getStandaloneScenarios(lang), [lang]);
   const sections = useMemo(() => {
     const groups: { [campaign: string]: StandaloneScenarioInfo[] } = {};

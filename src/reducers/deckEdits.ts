@@ -12,17 +12,18 @@ import {
   UPDATE_DECK_EDIT,
   DeckEditsActions,
   REPLACE_LOCAL_DECK,
+  getDeckId,
 } from '@actions/types';
 
 interface DeckEditsState {
   edits: {
-    [id: number]: EditDeckState | undefined;
+    [id: string]: EditDeckState | undefined;
   }
   editting: {
-    [id: number]: boolean | undefined;
+    [id: string]: boolean | undefined;
   };
   checklist: {
-    [id: number]: string[] | undefined;
+    [id: string]: string[] | undefined;
   };
 }
 
@@ -39,7 +40,7 @@ export default function(
   if (action.type === START_DECK_EDIT) {
     const newEdits = action.deck ? {
       ...state.edits || {},
-      [action.id]: {
+      [action.id.uuid]: {
         nameChange: undefined,
         meta: action.deck.meta || {},
         slots: action.deck.slots || {},
@@ -52,16 +53,16 @@ export default function(
       ...state,
       editting: {
         ...state.editting || {},
-        [action.id]: true,
+        [action.id.uuid]: true,
       },
       edits: newEdits,
     };
   }
   if (action.type === FINISH_DECK_EDIT) {
     const newEditting = { ...state.editting || {} };
-    delete newEditting[action.id];
+    delete newEditting[action.id.uuid];
     const newEdits = { ...state.edits || {} };
-    delete newEdits[action.id];
+    delete newEdits[action.id.uuid];
     return {
       ...state,
       editting: newEditting,
@@ -70,7 +71,7 @@ export default function(
   }
 
   if (action.type === UPDATE_DECK_EDIT) {
-    const currentEdits = (state.edits || {})[action.id];
+    const currentEdits = (state.edits || {})[action.id.uuid];
     if (!currentEdits) {
       // Shouldn't happen
       return state;
@@ -105,13 +106,13 @@ export default function(
       ...state,
       edits: {
         ...state.edits,
-        [action.id]: updatedEdits,
+        [action.id.uuid]: updatedEdits,
       },
     };
   }
 
   if (action.type === UPDATE_DECK_EDIT_COUNTS) {
-    const currentEdits = (state.edits || {})[action.id];
+    const currentEdits = (state.edits || {})[action.id.uuid];
     if (!currentEdits) {
       // Shouldn't happen
       return state;
@@ -127,7 +128,7 @@ export default function(
         ...state,
         edits: {
           ...state.edits,
-          [action.id]: {
+          [action.id.uuid]: {
             ...currentEdits,
             xpAdjustment,
           },
@@ -163,7 +164,7 @@ export default function(
       ...state,
       edits: {
         ...state.edits,
-        [action.id]: updatedEdits,
+        [action.id.uuid]: updatedEdits,
       },
     };
   }
@@ -172,12 +173,12 @@ export default function(
       ...state,
       checklist: {
         ...(state.checklist || {}),
-        [`${action.id}`]: [],
+        [action.id.uuid]: [],
       },
     };
   }
   if (action.type === SET_DECK_CHECKLIST_CARD) {
-    const currentChecklist = (state.checklist || {})[action.id] || [];
+    const currentChecklist = (state.checklist || {})[action.id.uuid] || [];
     const checklist = action.value ? [
       ...currentChecklist,
       action.card,
@@ -186,7 +187,7 @@ export default function(
       ...state,
       checklist: {
         ...(state.checklist || {}),
-        [action.id]: checklist,
+        [action.id.uuid]: checklist,
       },
     };
   }
@@ -195,8 +196,8 @@ export default function(
     const checklist = {
       ...(state.checklist || {}),
     };
-    if (checklist[action.id]) {
-      delete checklist[action.id];
+    if (checklist[action.id.uuid]) {
+      delete checklist[action.id.uuid];
     }
     return {
       ...state,
@@ -207,15 +208,15 @@ export default function(
     if (!action.deck) {
       return state;
     }
-    if ((state.editting || {})[action.id]) {
+    if ((state.editting || {})[action.id.uuid]) {
       return {
         ...state,
         edits: {
           ...(state.edits || {}),
-          [action.id]: {
+          [action.id.uuid]: {
             nameChange: undefined,
             tabooSetChange: undefined,
-            slots: action.deck.slots,
+            slots: action.deck.slots || {},
             ignoreDeckLimitSlots: action.deck.ignoreDeckLimitSlots || {},
             meta: action.deck.meta || {},
             xpAdjustment: action.deck.xp_adjustment || 0,
@@ -231,9 +232,9 @@ export default function(
     const checklist = {
       ...(state.checklist || {}),
     };
-    if (checklist[action.localId]) {
-      checklist[action.deck.id] = checklist[action.localId];
-      delete checklist[action.localId];
+    if (checklist[action.localId.uuid]) {
+      checklist[getDeckId(action.deck).uuid] = checklist[action.localId.uuid];
+      delete checklist[action.localId.uuid];
     }
     return {
       ...state,

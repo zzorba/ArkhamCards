@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform, useWindowDimensions } from 'react-native';
+import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform } from 'react-native';
 
 import SearchBox, { SearchBoxHandles, SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
@@ -26,7 +26,7 @@ interface Props {
 const SCROLL_DISTANCE_BUFFER = 50;
 
 export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTerm, onSearchChange, children }: Props) {
-  const { backgroundStyle, borderStyle, colors, shadow } = useContext(StyleContext);
+  const { backgroundStyle, borderStyle, colors, shadow, width } = useContext(StyleContext);
   const searchBoxRef = useRef<SearchBoxHandles>(null);
   const focus = useCallback(() => {
     searchBoxRef.current?.focus();
@@ -112,8 +112,6 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
     });
     setAdvancedOpen(!advancedOpen);
   }, [setAdvancedOpen, advancedToggleAnim, advancedOpen]);
-  const { width } = useWindowDimensions();
-
   const advancedOptionsBlock = useMemo(() => {
     if (!advancedOptions) {
       return null;
@@ -125,7 +123,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
     return (
       <Animated.View needsOffscreenAlphaCompositing style={[
         styles.advancedOptions,
-        shadow.large,
+        shadow.medium,
         {
           backgroundColor: colors.L20,
           width,
@@ -147,7 +145,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
         </View>
       </Animated.View>
     );
-  }, [advancedOptions, width, advancedToggleAnim, colors, shadow.large]);
+  }, [advancedOptions, width, advancedToggleAnim, colors, shadow.medium]);
 
   const translateY = advancedOpen ? 0 : scrollAnim.current.interpolate({
     inputRange: [0, 1],
@@ -212,7 +210,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
         { advancedOptionsBlock }
         <Animated.View needsOffscreenAlphaCompositing style={[
           styles.fixed,
-          shadow.large,
+          shadow.small,
           { width },
           Platform.select({
             default: { shadowOpacity },

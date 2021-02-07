@@ -254,26 +254,11 @@ msgstr "Salva nel Mazzo"
 msgid "Nevermind"
 msgstr "Non importa"
 
-msgid "Problem with import"
-msgstr "Problema con l'acquisizione"
-
 msgid "Restore campaign data?"
 msgstr "Recupera il salvataggio della Campagna?"
 
-msgid "Paste Backup Here"
-msgstr "Incolla il Backup qui"
-
 msgid "Backup campaign data?"
 msgstr "Fare il Backup della Campagna?"
-
-msgid ""
-"This feature is intended for advanced diagnostics or if you are trying to "
-"move your campaign data from one device to another. Just copy the data and "
-"paste it into the other app."
-msgstr ""
-"Questa funzione viene utilizzata per la diagnostica avanzata o se state "
-"cercando di muovere il vostro salvataggio della Campagna da un dispositivo "
-"a un altro. Copiate il salvataggio e incollatelo nell'altra applicazione."
 
 msgid "Export Campaign Data"
 msgstr "Esporta Salvataggio della Campagna"
@@ -504,19 +489,15 @@ msgstr "Seleziona ${ title }"
 msgid "All"
 msgstr "Tutti"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Note: This entry is crossed out"
 msgstr "Nota: Questa voce è sbarrata"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Uncross Out"
 msgstr "Rimuovi Segnalazione"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Cross Out"
 msgstr "Sbarrata"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Add Another"
 msgstr "Aggiungi Altro"
 
@@ -888,9 +869,6 @@ msgstr "Nuova Campagna"
 msgid "Chaos Bag"
 msgstr "Sacchetto del Caos"
 
-msgid "Campaign Name"
-msgstr "Nome della Campagna"
-
 msgid "Adjust Weakness Set"
 msgstr "Modifica Debolezze Base"
 
@@ -964,9 +942,6 @@ msgstr "Aggiungi Nota"
 msgid "${ totalXp } total"
 msgstr "${ totalXp } Totali"
 
-msgid "EXPERIENCE"
-msgstr "ESPERIENZA"
-
 msgid "Upgrade Deck"
 msgstr "Aggiorna Mazzo"
 
@@ -998,10 +973,6 @@ msgstr "${ counts.assigned } / ${ counts.total } sono state pescate."
 
 msgid "Delete"
 msgstr "Cancella"
-
-#, javascript-format
-msgid "Are you sure you want to delete the campaign: ${ campaign.name }"
-msgstr "Sei sicuro che vuoi eliminare la Campagna: ${ campaign.name }"
 
 msgid "Show Interludes"
 msgstr "Mostra Interludi"
@@ -1061,9 +1032,6 @@ msgstr "${ investigator.name } in Azione"
 msgid "${ investigator.name } Does It All"
 msgstr "${ investigator.name } Fa Tutto"
 
-msgid "NAME"
-msgstr "NOME"
-
 msgid "Create on ArkhamDB"
 msgstr "Crea su ArkhamDB"
 
@@ -1093,10 +1061,6 @@ msgstr "Rimescola"
 
 msgid "Reset"
 msgstr "Annulla"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
-msgstr "PE: ${ spentXp } di ${ adjustedExperience } (${ adjustment })"
 
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
@@ -1151,9 +1115,6 @@ msgstr "Modifica Mazzo"
 
 msgid "Deck has been deleted"
 msgstr "Il Mazzo è stato cancellato"
-
-msgid "OK"
-msgstr "OK"
 
 msgid "Error"
 msgstr "Errore"
@@ -1316,13 +1277,6 @@ msgstr "Caricando le ultime carte."
 msgid "Charts"
 msgstr "Tabelle"
 
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
-msgstr "PE: ${ spentXp } di ${ adjustedExperience } (+0)"
-
-msgid "Deck Details"
-msgstr "Dettagli del Mazzo"
-
 msgid "Card Costs"
 msgstr "Costo delle Carte"
 
@@ -1400,30 +1354,6 @@ msgstr ""
 "all'interno della Collezione.\n"
 "\n"
 "Si prega di modificare quel Filtro."
-
-msgid ""
-"We were not able to parse any campaigns from that pasted data.\n"
-"\n"
-"Make sure its an exact copy of the text provided by the Backup feature of "
-"an Arkham Cards app."
-msgstr ""
-"Non siamo stati in grado di analizzare le campagne da questi dati "
-"incollati.\n"
-"\n"
-"Controlla che sia un esatta copia del testo fornito dalla funzione di "
-"Backup presente all'interno di Arkham Cards."
-
-#, javascript-format
-msgid ""
-"This feature is intended for advanced diagnostics or to import data from "
-"another app.\n"
-"\n"
-"${ erasedCopy }"
-msgstr ""
-"Questa funzione è destinata alla diagnostica avanzata o all'importazione di "
-"dati da un'altra App.\n"
-"\n"
-"${ erasedCopy }"
 
 msgid ""
 "Data on ArkhamDB will be preserved, but all Campaign data and any edits "
@@ -1651,9 +1581,6 @@ msgstr "Sciame"
 msgid "Seal"
 msgstr "Sigillo"
 
-msgid "Investigate"
-msgstr "Investiga"
-
 msgid "Myriad"
 msgstr "Miriade"
 
@@ -1851,15 +1778,6 @@ msgstr "Successo di 3 o più"
 
 msgid "Change Scenario"
 msgstr "Cambia Scenario"
-
-msgid "Scenario History"
-msgstr "Resoconto degli Scenari"
-
-msgid "Edit Tokens"
-msgstr "Modifica Segnalini"
-
-msgid "Draw Tokens"
-msgstr "Pesca Segnalini"
 
 msgid "Weakness Set"
 msgstr "Set Debolezze"
@@ -2121,9 +2039,6 @@ msgstr[1] ""
 msgid "Choose Investigators"
 msgstr ""
 
-msgid "View deck upgrade"
-msgstr ""
-
 msgid "Campaign cards"
 msgstr ""
 
@@ -2288,14 +2203,8 @@ msgstr ""
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
 msgstr ""
 
-msgid "Log"
-msgstr ""
-
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
-msgstr ""
-
-msgid "View Deck"
 msgstr ""
 
 msgid "Select Deck"
@@ -2452,9 +2361,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "All local decks and campaigns will be overridden"
-msgstr ""
-
 msgid "Import data"
 msgstr ""
 
@@ -2536,9 +2442,6 @@ msgstr ""
 msgid "Remove deck"
 msgstr ""
 
-msgid "Remove investigator"
-msgstr ""
-
 msgid "Remove deck from campaign"
 msgstr ""
 
@@ -2559,12 +2462,6 @@ msgid ""
 "\n"
 "However, you can choose to have them not participate in future scenarios of "
 "this campaign."
-msgstr ""
-
-msgid "Remove investigators"
-msgstr ""
-
-msgid "Finished removing investigators"
 msgstr ""
 
 #, javascript-format
@@ -2750,9 +2647,6 @@ msgstr ""
 msgid "${ spentXp } of ${ totalXp } spent"
 msgstr ""
 
-msgid "Edit Trauma"
-msgstr ""
-
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
 "\n"
@@ -2828,6 +2722,7 @@ msgid ""
 "settings."
 msgstr ""
 
+#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] ""
@@ -3563,21 +3458,6 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-msgid "Engage"
-msgstr ""
-
-msgid "Play"
-msgstr ""
-
-msgid "Draw"
-msgstr ""
-
-msgid "Move"
-msgstr ""
-
-msgid "Resource"
-msgstr ""
-
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
 msgstr ""
@@ -3598,7 +3478,7 @@ msgstr ""
 msgid "Editing"
 msgstr ""
 
-msgid "Uplodaing deck"
+msgid "Uploading deck"
 msgstr ""
 
 msgid ""
@@ -3706,10 +3586,10 @@ msgstr ""
 msgid "Search for ${ searchTerm }"
 msgstr ""
 
-msgid "Friend Requeusts"
+msgid "Friend Requests"
 msgstr ""
 
-msgid "Pending Friend Requeusts"
+msgid "Pending Friend Requests"
 msgstr ""
 
 msgid "Search for friends to add"
@@ -3777,13 +3657,7 @@ msgstr ""
 msgid "Choose a handle"
 msgstr ""
 
-msgid "Other Accounts"
-msgstr ""
-
 msgid "ArkhamDB Account"
-msgstr ""
-
-msgid "Accounts"
 msgstr ""
 
 msgid "Arkham Cards Account"
@@ -3914,15 +3788,6 @@ msgstr ""
 msgid "Upload campaign"
 msgstr ""
 
-msgid "Add investigators"
-msgstr ""
-
-msgid "Add investigator to which campaign?"
-msgstr ""
-
-msgid "Which campaign would you like to add an investigator to?"
-msgstr ""
-
 msgid "Can't add side scenario right now."
 msgstr ""
 
@@ -3930,6 +3795,153 @@ msgstr ""
 msgid "Chaos Bag (${ tokenCount })"
 msgstr ""
 
+msgid "Save upgrade"
+msgstr ""
+
+msgid "Sorry, you don't seem to be a Mythos Buster patron."
+msgstr ""
+
+msgid "Earned experience:"
+msgstr ""
+
+msgid "Sign out of Arkham Cards?"
+msgstr ""
+
+msgid ""
+"Are you sure you want to sign out of Arkham Cards?\n"
+"\n"
+"Any campaigns you uploaded or have had shared with you will be removed from "
+"this device. They can be resynced if you sign in again.\n"
+"\n"
+"Note: if you have made recent changes while offline, they may be lost."
+msgstr ""
+
+msgid "Name required"
+msgstr ""
+
+msgid "You must specify a name for custom campaigns."
+msgstr ""
+
+msgid "Export diagnostic data"
+msgstr ""
+
+msgid ""
+"This feature is intended for advanced diagnostics. Just copy the data "
+"presented here and email it to arkhamcards@gmail.com"
+msgstr ""
+
+msgid "Database migration required"
+msgstr ""
+
+msgid "This should only take a few seconds and no network is required."
+msgstr ""
+
+msgid "Migrate now"
+msgstr ""
+
+msgid "Export Diagnostic Data"
+msgstr ""
+
+msgid "Agility"
+msgstr ""
+
+msgid "Combat"
+msgstr ""
+
+msgid "Intellect"
+msgstr ""
+
+msgid "Willpower"
+msgstr ""
+
+msgid "Boost"
+msgstr ""
+
+msgid "Skill Boosts"
+msgstr ""
+
+msgid "Skill Boosts: All"
+msgstr ""
+
+msgid ""
+"If you run into any problems with this migration, please contact "
+"arkhamcards@gmail.com."
+msgstr ""
+
+msgid "Asset: Body. Arcane"
+msgstr ""
+
+msgid "Color blind friendly icons"
+msgstr ""
+
+msgid "Uploading"
+msgstr ""
+
+msgid "Upload campaigns"
+msgstr ""
+
+msgid "Campaigns can be uploaded to your Arkham Cards account."
+msgstr ""
+
+msgid "Uploaded campaigns will be synced between devices."
+msgstr ""
+
+msgid "Review records"
+msgstr ""
+
+msgid "Note campaign achievements"
+msgstr ""
+
+msgid "Complete campaign setup"
+msgstr ""
+
+msgid "Review and draw tokens"
+msgstr ""
+
+msgid "Spent experience"
+msgstr ""
+
+msgid "View upgrade"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "View results"
+msgstr ""
+
+msgid "Skipped"
+msgstr ""
+
+msgid "Locked"
+msgstr ""
+
+msgid "Add scenario result"
+msgstr ""
+
+msgid "Record completed scenario"
+msgstr ""
+
+msgid "Add XP from scenario"
+msgstr ""
+
+msgid "Review scenario results"
+msgstr ""
+
+msgid "Edit chaos bag"
+msgstr ""
+
+msgid "Scenario name"
+msgstr ""
+
+msgid "${ unspentXp } XP unspent"
+msgid_plural "${ unspentXp } XP unspent"
+msgstr[0] ""
+msgstr[1] ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4018,6 +4030,11 @@ msgid ""
 "Campaign Log."
 msgstr ""
 
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr ""
+
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""
@@ -4101,6 +4118,42 @@ msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
 "Campaign Log."
+msgstr ""
+
+msgctxt "feminine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr ""
+
+msgctxt "action"
+msgid "Fight"
+msgstr ""
+
+msgctxt "action"
+msgid "Engage"
+msgstr ""
+
+msgctxt "action"
+msgid "Investigate"
+msgstr ""
+
+msgctxt "action"
+msgid "Play"
+msgstr ""
+
+msgctxt "action"
+msgid "Draw"
+msgstr ""
+
+msgctxt "action"
+msgid "Move"
+msgstr ""
+
+msgctxt "action"
+msgid "Evade"
+msgstr ""
+
+msgctxt "action"
+msgid "Resource"
 msgstr ""
 
 msgctxt "Draw Cards"
@@ -4180,3 +4233,7 @@ msgstr[1] ""
 msgctxt "Weakness Card"
 msgid "All"
 msgstr "Tutti"
+
+msgctxt "trauma"
+msgid "None"
+msgstr ""

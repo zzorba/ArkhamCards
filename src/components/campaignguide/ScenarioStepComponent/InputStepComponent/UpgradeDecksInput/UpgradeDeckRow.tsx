@@ -1,13 +1,14 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { AppState, Button, Text, View, StyleSheet } from 'react-native';
+import { AppState, Text, View, StyleSheet } from 'react-native';
 import { flatMap, forEach, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
+import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Switch from '@components/core/Switch';
-import { Deck, Slots, NumberChoices } from '@actions/types';
+import { Deck, Slots, NumberChoices, DeckId, getDeckId } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -24,15 +25,15 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useEffectUpdate, useFlag, useDeck } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
-import { ThunkDispatch } from 'redux-thunk';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
-
+import { TINY_PHONE } from '@styles/sizes';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface ShowDeckButtonProps {
   componentId: string;
-  deckId: number;
+  deckId: DeckId;
   investigator: Card;
 }
 
@@ -57,7 +58,7 @@ function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonPro
   return (
     <ArkhamButton
       icon="deck"
-      title={t`View deck upgrade`}
+      title={t`View upgrade`}
       onPress={onPress}
     />
   );
@@ -74,7 +75,7 @@ interface Props {
   setUnsavedEdits: (investigator: string, edits: boolean) => void;
   editable: boolean;
 }
-type DeckDispatch = ThunkDispatch<AppState, any, Action<unknown>>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 function computeChoiceId(stepId: string, investigator: Card) {
   return `${stepId}#${investigator.code}`;
@@ -82,6 +83,7 @@ function computeChoiceId(stepId: string, investigator: Card) {
 
 function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investigator, deck, campaignLog, setUnsavedEdits, editable }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>();
   const earnedXp = useMemo(() => campaignLog.earnedXp(investigator.code), [campaignLog, investigator]);
@@ -115,13 +117,10 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
       killed: [killedAdjust ? 1 : 0],
       insane: [insaneAdjust ? 1 : 0],
     };
-    if (deck) {
-      choices.deckId = [deck.id];
-    }
-    scenarioState.setNumberChoices(choiceId, choices);
+    scenarioState.setNumberChoices(choiceId, choices, deck ? getDeckId(deck) : undefined);
   }, [scenarioState, earnedXp, choiceId, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust]);
 
-  const choices = useMemo(() => scenarioState.numberChoices(choiceId), [scenarioState, choiceId]);
+  const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);
 
   const xp: number = useMemo(() => {
     if (choices === undefined) {
@@ -409,12 +408,12 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
   }, [componentId, colors, investigator, deck]);
 
   const deckButton = useMemo(() => {
-    if (deck && choices !== undefined && choices.deckId) {
+    if (deck && deckChoice !== undefined) {
       return (
         <View style={styles.row}>
           <ShowDeckButton
             componentId={componentId}
-            deckId={choices.deckId[0]}
+            deckId={deckChoice}
             investigator={investigator}
           />
         </View>
@@ -426,16 +425,16 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     if (!deck) {
       return (
         <View style={styles.row}>
-          <ArkhamButton grow icon="deck" title={t`Select deck`} onPress={selectDeck} />
+          <ArkhamButton variant="outline" grow icon="deck" title={t`Select deck`} onPress={selectDeck} />
         </View>
       );
     }
     return (
       <View style={styles.row}>
-        <ArkhamButton grow icon="deck" title={t`View deck`} onPress={viewDeck} />
+        <ArkhamButton variant="outline" grow icon="deck" title={t`View deck`} onPress={viewDeck} />
       </View>
     );
-  }, [componentId, deck, editable, investigator, choices, selectDeck, viewDeck]);
+  }, [componentId, deck, editable, investigator, deckChoice, selectDeck, viewDeck]);
 
   const storyCountsForDeck = useMemo(() => {
     if (!deck) {
@@ -445,9 +444,9 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     forEach(keys(storyAssets), code => {
       const delta = storyAssetDeltas[code];
       if (delta) {
-        newSlots[code] = (deck.slots[code] || 0) + delta;
+        newSlots[code] = (deck.slots?.[code] || 0) + delta;
       } else {
-        newSlots[code] = (deck.slots[code] || 0);
+        newSlots[code] = (deck.slots?.[code] || 0);
       }
       if (newSlots[code] < 0) {
         newSlots[code] = 0;
@@ -456,7 +455,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     forEach(storyAssetDeltas, (delta, code) => {
       if (storyAssets[code] === undefined) {
         if (delta) {
-          newSlots[code] = (deck.slots[code] || 0) + delta;
+          newSlots[code] = (deck.slots?.[code] || 0) + delta;
         }
       }
     });
@@ -465,12 +464,12 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
 
 
   const performSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
-    return deckDispatch(saveDeckChanges(deck, changes) as any);
-  }, [deckDispatch]);
+    return deckDispatch(saveDeckChanges(user, deck, changes) as any);
+  }, [deckDispatch, user]);
 
   const performSaveDeckUpgrade = useCallback((deck: Deck, xp: number, exileCounts: Slots): Promise<Deck> => {
-    return deckDispatch(saveDeckUpgrade(deck, xp, exileCounts) as any);
-  }, [deckDispatch]);
+    return deckDispatch(saveDeckUpgrade(user, deck, xp, exileCounts) as any);
+  }, [deckDispatch, user]);
 
   const detailsSection = useMemo(() => {
     if (!deck) {
@@ -498,12 +497,13 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     performSaveDeckChanges, performSaveDeckUpgrade, onUpgrade,
     deckUpgradeComponent, campaignSection]);
 
-  const isYithian = (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;
+  const isYithian = storyAssets && (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;
   return (
     <InvestigatorRow
       investigator={investigator}
       yithian={isYithian}
       button={deckButton}
+      noFactionIcon={TINY_PHONE}
     >
       { detailsSection }
     </InvestigatorRow>

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import { Deck, Slots } from '@actions/types';
+import { Deck, getDeckId, Slots } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { NavigationProps } from '@components/nav/types';
@@ -18,7 +18,6 @@ import { SaveDeckChanges } from '@components/deck/actions';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import BasicButton from '@components/core/BasicButton';
 import { useCounter, useSlots } from '@components/core/hooks';
 import DeckButton from './controls/DeckButton';
 
@@ -64,7 +63,7 @@ function DeckUpgradeComponent({
 
   const handleStoryCardChanges = useCallback((upgradedDeck: Deck) => {
     const hasStoryChange = !!find(keys(storyCounts), (code) => {
-      return (upgradedDeck.slots[code] || 0) !== storyCounts[code];
+      return (upgradedDeck.slots?.[code] || 0) !== storyCounts[code];
     }) || !!find(keys(ignoreStoryCounts), (code) => {
       return (upgradedDeck.ignoreDeckLimitSlots[code] || 0) !== ignoreStoryCounts[code];
     });
@@ -133,6 +132,7 @@ function DeckUpgradeComponent({
   const onExileCountChange = useCallback((card: Card, count: number) => {
     updateExileCounts({ type: 'set-slot', code: card.code, value: count });
   }, [updateExileCounts]);
+  const deckId = useMemo(() => getDeckId(deck), [deck]);
   if (!deck) {
     return null;
   }
@@ -171,7 +171,7 @@ function DeckUpgradeComponent({
       </BasicListRow>
       <ExileCardSelectorComponent
         componentId={componentId}
-        id={deck.id}
+        id={deckId}
         label={(
           <CardSectionHeader
             section={{ superTitle: t`Exiled cards` }}

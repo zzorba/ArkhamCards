@@ -9,8 +9,8 @@ import DeckProgressComponent from './DeckProgressComponent';
 import { DeckDetailProps } from './DeckDetailView';
 import { getDeckOptions } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
-import { Deck, ParsedDeck } from '@actions/types';
-import { getAllDecks } from '@reducers';
+import { Deck, DeckId, getDeckId, ParsedDeck } from '@actions/types';
+import { getAllDecks, getDeck } from '@reducers';
 import { parseDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
 import { usePlayerCards } from '@components/core/hooks';
@@ -18,7 +18,7 @@ import { useSimpleDeckEdits } from '@components/deck/hooks';
 import space from '@styles/space';
 
 export interface DeckHistoryProps {
-  id: number;
+  id: DeckId;
 }
 
 export default function DeckHistoryView({
@@ -34,17 +34,17 @@ export default function DeckHistoryView({
       return [];
     }
     const decksResult: ParsedDeck[] = [];
-    let deck: Deck | undefined = decks[id];
+    let deck: Deck | undefined = getDeck(decks, id);
     while (deck) {
-      const currentDeck = deck.id === id;
+      const currentDeck = getDeckId(deck).uuid === id.uuid;
       const previousDeck: Deck | undefined = (
-        deck.previous_deck ? decks[deck.previous_deck] : undefined
+        deck.previousDeckId ? getDeck(decks, deck.previousDeckId) : undefined
       );
       const currentXpAdjustment = currentDeck ? deckEdits?.xpAdjustment : undefined;
       const parsedDeck = parseDeck(
         deck,
         (currentDeck && deckEdits?.meta) || (deck.meta || {}),
-        (currentDeck && deckEdits?.slots) || deck.slots,
+        (currentDeck && deckEdits?.slots) || deck.slots || {},
         (currentDeck && deckEdits?.ignoreDeckLimitSlots) || deck.ignoreDeckLimitSlots,
         cards,
         previousDeck,
@@ -62,7 +62,7 @@ export default function DeckHistoryView({
     if (!deck.changes) {
       return t`Original Deck`;
     }
-    if (deck.deck.id === id) {
+    if (deck.id.uuid === id.uuid) {
       if (deck.changes) {
         return t`Latest Deck: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
       }
@@ -80,7 +80,7 @@ export default function DeckHistoryView({
       component: {
         name: 'Deck',
         passProps: {
-          id: parsedDeck.deck.id,
+          id: parsedDeck.id,
           isPrivate: true,
         },
         options: getDeckOptions(colors, { title: parsedDeck.deck.name }, parsedDeck.investigator),
@@ -94,7 +94,7 @@ export default function DeckHistoryView({
     <ScrollView contentContainerStyle={[backgroundStyle, space.paddingSideS]}>
       { map(historicDecks, (deck, idx) => (
         <DeckProgressComponent
-          key={deck.deck.id}
+          key={deck.id.uuid}
           title={deckTitle(deck, historicDecks.length - idx)}
           onTitlePress={idx === 0 ? undefined : onDeckPress}
           componentId={componentId}

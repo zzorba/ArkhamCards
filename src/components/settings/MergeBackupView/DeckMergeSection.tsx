@@ -5,7 +5,7 @@ import { map, sumBy } from 'lodash';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import DeckMergeItem from './DeckMergeItem';
-import { Deck } from '@actions/types';
+import { Deck, getDeckId } from '@actions/types';
 import space from '@styles/space';
 import { CardsMap } from '@data/Card';
 import StyleContext from '@styles/StyleContext';
@@ -30,27 +30,31 @@ export default function DeckMergeSection({ title, decks, values, inverted, onVal
   const items = useMemo(() => {
     return (
       <>
-        { map(decks, deck => (
-          <DeckMergeItem
-            key={deck.uuid || deck.id}
-            deck={deck}
-            investigators={investigators}
-            inverted={!!inverted}
-            value={!!values[deck.id]}
-            onValueChange={onValueChange}
-            scenarioCount={scenarioCount[deck.id] || 1}
-          />
-        )) }
+        { map(decks, deck => {
+          const id = getDeckId(deck);
+          return (
+            <DeckMergeItem
+              key={id.uuid}
+              deck={deck}
+              investigators={investigators}
+              inverted={!!inverted}
+              value={!!values[id.uuid]}
+              onValueChange={onValueChange}
+              scenarioCount={scenarioCount[id.uuid] || 1}
+            />
+          );
+        }) }
       </>
     );
   }, [decks, inverted, scenarioCount, onValueChange, values, investigators]);
 
   const header = useMemo(() => {
     const selected = sumBy(decks, deck => {
+      const id = getDeckId(deck);
       if (inverted) {
-        return values[deck.id] ? 0 : 1;
+        return values[id.uuid] ? 0 : 1;
       }
-      return values[deck.id] ? 1 : 0;
+      return values[id.uuid] ? 1 : 0;
     });
     return (
       <View style={[styles.headerRow, { backgroundColor: colors.L10 }, borderStyle, space.paddingS, space.paddingLeftM]}>

@@ -3,19 +3,21 @@ import { InteractionManager, StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
 import { map } from 'lodash';
 
-import { ShowTextEditDialog } from '@components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { CampaignNotes, InvestigatorNotes } from '@actions/types';
 import Card from '@data/Card';
 import InvestigatorSectionList from './InvestigatorSectionList';
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
-import BasicButton from '@components/core/BasicButton';
-import { s, xs } from '@styles/space';
+import space, { s, xs } from '@styles/space';
+import { ShowCountDialog } from '@components/deck/dialogs';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   campaignNotes: CampaignNotes;
   updateCampaignNotes: (campaignNotes: CampaignNotes) => void;
   showTextEditDialog: ShowTextEditDialog;
+  showCountDialog: ShowCountDialog;
   showAddSectionDialog: (
     addSection: (
       name: string,
@@ -32,6 +34,7 @@ export default function CampaignLogSection(props: Props) {
     updateCampaignNotes,
     showTextEditDialog,
     showAddSectionDialog,
+    showCountDialog,
     allInvestigators,
   } = props;
   const delayedUpdateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
@@ -96,7 +99,7 @@ export default function CampaignLogSection(props: Props) {
 
   const notesSection = useMemo(() => {
     return (
-      <View>
+      <View style={[space.paddingSideS, space.paddingBottomS]}>
         { map(campaignNotes.sections, (section, idx) => (
           <NotesSection
             key={idx}
@@ -112,8 +115,11 @@ export default function CampaignLogSection(props: Props) {
   }, [campaignNotes.sections, notesChanged, showTextEditDialog]);
 
   const countsSection = useMemo(() => {
+    if (campaignNotes.counts.length === 0) {
+      return null;
+    }
     return (
-      <View>
+      <View style={space.paddingSideS}>
         { map(campaignNotes.counts, (section, idx) => (
           <EditCountComponent
             key={idx}
@@ -121,31 +127,40 @@ export default function CampaignLogSection(props: Props) {
             title={section.title}
             count={section.count || 0}
             countChanged={countChanged}
+            showCountDialog={showCountDialog}
+            first={idx === 0}
+            last={idx === campaignNotes.counts.length - 1}
           />
         )) }
       </View>
     );
-  }, [campaignNotes.counts, countChanged]);
+  }, [campaignNotes.counts, countChanged, showCountDialog]);
 
   const investigatorSection = useMemo(() => {
     const investigatorNotes = campaignNotes.investigatorNotes;
     return (
-      <View style={styles.investigatorSection}>
-        <InvestigatorSectionList
-          allInvestigators={allInvestigators}
-          investigatorNotes={investigatorNotes}
-          updateInvestigatorNotes={updateInvestigatorNotes}
-          showDialog={showTextEditDialog}
-        />
-      </View>
+      <InvestigatorSectionList
+        allInvestigators={allInvestigators}
+        investigatorNotes={investigatorNotes}
+        updateInvestigatorNotes={updateInvestigatorNotes}
+        showDialog={showTextEditDialog}
+        showCountDialog={showCountDialog}
+      />
     );
-  }, [campaignNotes.investigatorNotes, allInvestigators, showTextEditDialog, updateInvestigatorNotes]);
+  }, [campaignNotes.investigatorNotes, allInvestigators, showTextEditDialog, showCountDialog, updateInvestigatorNotes]);
   return (
     <View style={styles.underline}>
       { notesSection }
       { countsSection }
       { investigatorSection }
-      <BasicButton title={t`Add Log Section`} onPress={addSectionDialogPressed} />
+      <View style={[space.paddingSideS, space.paddingTopS]}>
+        <DeckButton
+          icon="plus-thin"
+          title={t`Add Log Section`}
+          onPress={addSectionDialogPressed}
+          color="light_gray"
+        />
+      </View>
     </View>
   );
 }
@@ -154,8 +169,5 @@ const styles = StyleSheet.create({
   underline: {
     paddingBottom: s,
     marginBottom: xs,
-  },
-  investigatorSection: {
-    marginTop: s,
   },
 });

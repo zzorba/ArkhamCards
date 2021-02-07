@@ -10,17 +10,18 @@ import COLORS from '@styles/colors';
 import { EditChaosBagProps } from './EditChaosBagDialog';
 import { AppState, makeCampaignChaosBagSelector } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
+import { CampaignId } from '@actions/types';
 
-export interface CampaignChaosBagProps {
-  campaignId: number;
+export interface CampaignDrawChaosBagProps {
+  campaignId: CampaignId;
   updateChaosBag: (chaosBag: ChaosBag) => void;
 }
 
-type Props = NavigationProps & CampaignChaosBagProps;
+type Props = NavigationProps & CampaignDrawChaosBagProps;
 
-function CampaignChaosBagView({ componentId, campaignId, updateChaosBag }: Props) {
+function CampaignDrawChaosBagView({ componentId, campaignId, updateChaosBag }: Props) {
   const chaosBagSelector = useMemo(makeCampaignChaosBagSelector, []);
-  const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId));
+  const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId.campaignId));
 
   const showChaosBagDialog = useCallback(() => {
     if (!updateChaosBag) {
@@ -64,7 +65,7 @@ function CampaignChaosBagView({ componentId, campaignId, updateChaosBag }: Props
   );
 }
 
-CampaignChaosBagView.options = (): Options => {
+CampaignDrawChaosBagView.options = (): Options => {
   return {
     topBar: {
       rightButtons: [{
@@ -78,4 +79,4 @@ CampaignChaosBagView.options = (): Options => {
   };
 };
 
-export default CampaignChaosBagView;
+export default CampaignDrawChaosBagView;

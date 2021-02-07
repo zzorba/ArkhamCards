@@ -1,5 +1,4 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import database from '@react-native-firebase/database';
 import functions from '@react-native-firebase/functions';
 import { useObjectVal } from 'react-firebase-hooks/database';
 import { filter, forEach, keys } from 'lodash';
@@ -7,6 +6,7 @@ import { filter, forEach, keys } from 'lodash';
 import { ArkhamCardsProfile, FriendStatus } from './types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import fbdb from './fbdb';
 
 export interface ErrorResponse {
   error?: string;
@@ -32,7 +32,7 @@ export function useProfileHandles(userIds: string[]): Handles {
     const userIdsToFetch = filter(userIds, uid => !handles[uid]);
     if (userIdsToFetch.length) {
       const promises = userIdsToFetch.map(async(uid: string) => {
-        const handle = await database().ref('/profiles/').child(uid).child('handle').once('value');
+        const handle = await fbdb.profile({ uid }).child('handle').once('value');
         return { userId: uid, handle: handle.val() as string };
       });
 
@@ -67,8 +67,8 @@ export function useFriends(userId: string): {
 } {
   const { user, loading } = useContext(ArkhamCardsAuthContext);
   const isSelf = !!user && user.uid === userId;
-  const [selfProfileDifferent, loadingSelfProfile] = useObjectVal<ArkhamCardsProfile>(!isSelf && user ? database().ref('/profiles').child(user.uid) : undefined);
-  const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(database().ref('/profiles').child(userId));
+  const [selfProfileDifferent, loadingSelfProfile] = useObjectVal<ArkhamCardsProfile>(!isSelf && user ? fbdb.profile(user) : undefined);
+  const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(fbdb.profile({ uid: userId }));
   const selfProfile = isSelf ? profile : selfProfileDifferent;
   const selfFriendStatus = useMemo(() => selfProfile?.friends || {}, [selfProfile]);
   const handleUserIds = useMemo(() => {

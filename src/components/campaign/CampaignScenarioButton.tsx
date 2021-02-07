@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import {
   Text,
   StyleSheet,
@@ -7,54 +7,23 @@ import {
 import { t } from 'ttag';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { showScenario } from '@components/campaignguide/nav';
 import NavButton from '@components/core/NavButton';
-import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import CampaignGuide from '@data/scenario/CampaignGuide';
-import { ProcessedScenario } from '@data/scenario';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { usePressCallback } from '@components/core/hooks';
 
 interface Props {
-  componentId: string;
-  campaignId: number;
-  campaignGuide: CampaignGuide;
-  scenario: ProcessedScenario;
-  linked: boolean;
-  showLinkedScenario?: (
-    scenarioId: string
-  ) => void;
+  title: string;
+  status: 'placeholder' | 'locked' | 'completed' | 'started' | 'playable' | 'played' | 'skipped';
+  onPress: () => void;
 }
 
-export default function ScenarioButton({ componentId, campaignId, campaignGuide, scenario, linked, showLinkedScenario }: Props) {
-  const { campaignState } = useContext(CampaignGuideContext);
+export default function CampaignScenarioButton({ onPress, status, title }: Props) {
   const { fontScale, colors, typography } = useContext(StyleContext);
-  const name = useMemo(() => {
-    const attempt = (scenario.id.replayAttempt || 0) + 1;
-    const scenarioName = scenario.scenarioGuide.scenarioType() === 'scenario' ?
-      scenario.scenarioGuide.scenarioName() :
-      scenario.scenarioGuide.fullScenarioName();
-    if (attempt > 1) {
-      return t`${scenarioName} (Attempt ${attempt})`;
-    }
-    return scenarioName;
-  }, [scenario]);
-
-  const onPress = useCallback(() => {
-    showScenario(
-      componentId,
-      scenario,
-      campaignId,
-      campaignState,
-      linked ? campaignGuide.campaignName() : undefined,
-      showLinkedScenario
-    );
-  }, [componentId, scenario, campaignId, campaignGuide, linked, showLinkedScenario, campaignState]);
   const debouncedOnPress = usePressCallback(onPress);
   const icon = useMemo(() => {
     const iconSize = 24 * fontScale;
-    switch (scenario.type) {
+    switch (status) {
       case 'placeholder':
       case 'locked':
         return (
@@ -97,21 +66,21 @@ export default function ScenarioButton({ componentId, campaignId, campaignGuide,
           />
         );
     }
-  }, [scenario, colors, fontScale]);
+  }, [status, colors, fontScale]);
 
   const content = useMemo(() => {
-    switch (scenario.type) {
+    switch (status) {
       case 'locked':
         return (
           <Text style={[typography.gameFont, typography.light]} numberOfLines={2}>
-            { name }
+            { title }
           </Text>
         );
       case 'placeholder':
         return (
           <>
             <Text style={[typography.gameFont, typography.light]} numberOfLines={2}>
-              { name }
+              { title }
             </Text>
             <Text style={[typography.small, typography.light]} numberOfLines={1}>
               { t`Coming soon` }
@@ -121,29 +90,29 @@ export default function ScenarioButton({ componentId, campaignId, campaignGuide,
       case 'completed':
         return (
           <Text style={typography.gameFont} numberOfLines={2}>
-            { name }
+            { title }
           </Text>
         );
       case 'started':
       case 'playable':
         return (
           <Text style={[typography.gameFont, styles.playable]} numberOfLines={2}>
-            { name }
+            { title }
           </Text>
         );
       case 'skipped':
         return (
           <Text style={[typography.gameFont, styles.skipped]} numberOfLines={2}>
-            { name }
+            { title }
           </Text>
         );
     }
-  }, [scenario, typography, name]);
+  }, [status, typography, title]);
 
   return (
     <NavButton
       onPress={debouncedOnPress}
-      disabled={(scenario.type === 'locked' || scenario.type === 'skipped' || scenario.type === 'placeholder')}
+      disabled={(status === 'locked' || status === 'skipped' || status === 'placeholder')}
     >
       <View style={styles.wrapper}>
         <View style={[space.marginLeftS, space.marginRightM]}>

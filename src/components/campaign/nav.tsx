@@ -1,44 +1,25 @@
-import { Campaign } from '@actions/types';
+import { Campaign, CampaignId } from '@actions/types';
 import { ChaosBag } from '@app_constants';
+import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
+import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
 import Card from '@data/Card';
 import { map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { AddScenarioResultProps } from './AddScenarioResultView';
-import { CampaignChaosBagProps } from './CampaignChaosBagView';
+import { CampaignDrawChaosBagProps } from './CampaignDrawChaosBagView';
 import { CampaignDrawWeaknessProps } from './CampaignDrawWeaknessDialog';
 
-import { CampaignScenarioProps } from './CampaignScenarioView';
 import { EditChaosBagProps } from './EditChaosBagDialog';
 import { OddsCalculatorProps } from './OddsCalculatorView';
 
-export function showCampaignScenarios(componentId: string, campaignId: number) {
-  Navigation.push<CampaignScenarioProps>(componentId, {
-    component: {
-      name: 'Campaign.Scenarios',
-      passProps: {
-        id: campaignId,
-      },
-      options: {
-        topBar: {
-          title: {
-            text: t`Scenarios`,
-          },
-          backButton: {
-            title: t`Back`,
-          },
-        },
-      },
-    },
-  });
-}
-
-export function showAddScenarioResult(componentId: string, campaignId: number) {
+export function showAddScenarioResult(componentId: string, campaignId: CampaignId, scenarioCode?: string) {
   Navigation.push<AddScenarioResultProps>(componentId, {
     component: {
       name: 'Campaign.AddResult',
       passProps: {
         id: campaignId,
+        scenarioCode,
       },
     },
   });
@@ -64,10 +45,40 @@ export function showEditChaosBag(componentId: string, campaign: Campaign, update
   });
 }
 
-export function showDrawChaosBag(componentId: string, campaignId: number, updateChaosBag: (chaosBag: ChaosBag) => void) {
-  Navigation.push<CampaignChaosBagProps>(componentId, {
+export function showGuideDrawChaosBag(
+  componentId: string,
+  campaignId: CampaignId,
+  chaosBag: ChaosBag
+) {
+  Navigation.push<GuideChaosBagProps>(componentId, {
     component: {
-      name: 'Campaign.ChaosBag',
+      name: 'Guide.DrawChaosBag',
+      passProps: {
+        campaignId,
+        chaosBag,
+      },
+      options: {
+        topBar: {
+          title: {
+            text: t`Chaos Bag`,
+          },
+          backButton: {
+            title: t`Back`,
+          },
+        },
+      },
+    },
+  });
+}
+
+export function showDrawChaosBag(
+  componentId: string,
+  campaignId: CampaignId,
+  updateChaosBag: (chaosBag: ChaosBag) => void,
+) {
+  Navigation.push<CampaignDrawChaosBagProps>(componentId, {
+    component: {
+      name: 'Campaign.DrawChaosBag',
       passProps: {
         campaignId,
         updateChaosBag,
@@ -86,7 +97,7 @@ export function showDrawChaosBag(componentId: string, campaignId: number, update
   });
 }
 
-export function showChaosBagOddsCalculator(componentId: string, campaignId: number, allInvestigators: Card[]) {
+export function showChaosBagOddsCalculator(componentId: string, campaignId: CampaignId, allInvestigators: Card[]) {
   Navigation.push<OddsCalculatorProps>(componentId, {
     component: {
       name: 'OddsCalculator',
@@ -108,7 +119,31 @@ export function showChaosBagOddsCalculator(componentId: string, campaignId: numb
   });
 }
 
-export function showDrawWeakness(componentId: string, campaignId: number) {
+
+export function showGuideChaosBagOddsCalculator(componentId: string, campaignId: CampaignId, chaosBag: ChaosBag, allInvestigators: Card[]) {
+  Navigation.push<GuideOddsCalculatorProps>(componentId, {
+    component: {
+      name: 'Guide.OddsCalculator',
+      passProps: {
+        campaignId,
+        investigatorIds: map(allInvestigators, i => i.code),
+        chaosBag,
+      },
+      options: {
+        topBar: {
+          title: {
+            text: t`Odds Calculator`,
+          },
+          backButton: {
+            title: t`Back`,
+          },
+        },
+      },
+    },
+  });
+}
+
+export function showDrawWeakness(componentId: string, campaignId: CampaignId) {
   Navigation.push<CampaignDrawWeaknessProps>(componentId, {
     component: {
       name: 'Dialog.CampaignDrawWeakness',

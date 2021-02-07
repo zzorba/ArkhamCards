@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
-  useWindowDimensions,
   View,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -65,7 +64,7 @@ function CardImage({ card, width }: { card: Card, width: number }) {
 }
 
 export default function WeaknessDrawComponent({ componentId, weaknessSet, updateDrawnCard, playerCount, campaignMode, customHeader, customFlippedHeader, saving }: Props) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors, typography, width, height } = useContext(StyleContext);
   const [headerHeight, setHeaderHeight] = useState(32);
   const [flippedHeaderHeight, setFlippedHeaderHeight] = useState(32);
   const [selectedTraits, setSelectedTraits] = useState<string[]>([]);
@@ -107,7 +106,6 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
       incDrawCount();
     }
   }, [weaknessSet]);
-  const { width, height } = useWindowDimensions();
   const [cardWidth, cardHeight] = useMemo(() => {
     const wBasedWidth = width - PADDING * 2;
     const wBasedHeight = Math.round(wBasedWidth * CARD_RATIO);

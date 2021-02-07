@@ -6,7 +6,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 interface Props {
   title: string;
   description?: string;
-  icon: string;
+  icon: string | React.ReactNode;
   value: boolean;
   onValueChange: (value: boolean) => void;
   loading?: boolean;
@@ -18,6 +18,7 @@ export default function DeckCheckboxButton({ title, description, icon, value, on
   return (
     <DeckActionRow
       title={title}
+      titleFirst
       description={description}
       icon={icon}
       last={last}

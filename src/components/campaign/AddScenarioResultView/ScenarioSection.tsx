@@ -1,33 +1,45 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { concat, filter, find, findIndex, forEach, head, map } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { concat, filter, find, forEach, head, map } from 'lodash';
 import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Campaign, SingleCampaign, ScenarioResult, CUSTOM } from '@actions/types';
+import { Campaign, SingleCampaign, ScenarioResult, CUSTOM, getCampaignId } from '@actions/types';
 import SettingsSwitch from '@components/core/SettingsSwitch';
-import EditText from '@components/core/EditText';
 import { updateCampaign } from '../actions';
 import { completedScenario, scenarioFromCard, Scenario } from '../constants';
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
-import { ShowTextEditDialog } from '@components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { makeAllCyclePacksSelector, getAllStandalonePacks, makePackSelector, AppState } from '@reducers';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { where } from '@data/query';
+import space from '@styles/space';
 import { useCycleScenarios } from '@components/core/hooks';
+import { usePickerDialog } from '@components/deck/dialogs';
+import { QuerySort } from '@data/types';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import EncounterIcon from '@icons/EncounterIcon';
+import StyleContext from '@styles/StyleContext';
+import AppIcon from '@icons/AppIcon';
 
 interface OwnProps {
   componentId: string;
   campaign: SingleCampaign;
   scenarioChanged: (result: ScenarioResult) => void;
   showTextEditDialog: ShowTextEditDialog;
+  initialScenarioCode?: string;
 }
 
-export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps) {
+const SCENARIO_QUERY = where('c.type_code = "scenario"');
+const SCENARIO_SORT: QuerySort[] = [{ s: 'c.position', direction: 'ASC' }];
+
+export default function ScenarioSection({ campaign, initialScenarioCode, scenarioChanged, showTextEditDialog }: OwnProps) {
   const [allScenarioCards, loading] = useCardsFromQuery({
-    query: where('c.type_code = "scenario"'),
-    sort: [{ s: 'c.position', direction: 'ASC' }],
+    query: SCENARIO_QUERY,
+    sort: SCENARIO_SORT,
   });
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const { colors } = useContext(StyleContext);
   const getPack = useMemo(makePackSelector, []);
   const cyclePack = useSelector((state: AppState) => getPack(state, campaign.cycleCode));
   const getAllCyclePacks = useMemo(makeAllCyclePacksSelector, []);
@@ -63,15 +75,16 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
       standaloneScenarios
     );
   }, [allScenarioCards, fixedCycleScenarios, campaign.scenarioResults, campaign.finishedScenarios, cyclePacks, standalonePacks]);
+
   const [selectedScenario, setSelectedScenario] = useState<Scenario | typeof CUSTOM>(head(allScenarios) || CUSTOM);
   const [customScenario, setCustomScenario] = useState('');
   const [resolution, setResolution] = useState('');
   const dispatch = useDispatch();
 
   const toggleShowInterludes = useCallback(() => {
-    const campaignUpdate: Campaign = { showInterludes: !showInterludes } as any;
-    dispatch(updateCampaign(campaign.id, campaignUpdate));
-  }, [campaign, showInterludes, dispatch]);
+    const campaignUpdate: Partial<Campaign> = { showInterludes: !showInterludes };
+    dispatch(updateCampaign(user, getCampaignId(campaign), campaignUpdate));
+  }, [campaign, showInterludes, user, dispatch]);
 
   useEffect(() => {
     scenarioChanged({
@@ -84,70 +97,96 @@ export default function ScenarioSection({ campaign, scenarioChanged }: OwnProps)
   }, [selectedScenario, customScenario, resolution, scenarioChanged]);
 
   useEffect(() => {
+    // tslint:disable-next-line
     if (!loading && allScenarios.length) {
-      setSelectedScenario(allScenarios[0]);
+      if (initialScenarioCode) {
+        const initialScenario = find(allScenarios, s => s.code === initialScenarioCode);
+        if (initialScenario) {
+          setSelectedScenario(initialScenario);
+          return;
+        }
+      }
+      if (selectedScenario !== 'custom' && allScenarios[0].code !== selectedScenario.code) {
+        setSelectedScenario(allScenarios[0]);
+      }
     }
-  }, [allScenarios, setSelectedScenario, loading]);
-
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allScenarioCards]);
   const possibleScenarios = useMemo(() => {
-    const scenarios = map(
+    const scenarios: { title: string, value: Scenario | typeof CUSTOM }[] = map(
       filter(allScenarios, scenario => showInterludes || !scenario.interlude),
-      card => card.name);
-    scenarios.push(CUSTOM);
+      scenario => {
+        return {
+          iconNode: scenario.interlude ? <AppIcon name="log" size={24} color={colors.M} /> : <EncounterIcon encounter_code={scenario.code} size={24} color={colors.M} />,
+          title: scenario.name,
+          value: scenario,
+        };
+      });
+    scenarios.push({
+      title: t`Custom`,
+      value: CUSTOM,
+    });
     return scenarios;
-  }, [allScenarios, showInterludes]);
-
-  const handleScenarioChange = useCallback((index: number | null) => {
-    if (index === null) {
-      return;
-    }
-    const scenarioName = possibleScenarios[index];
-    setSelectedScenario(find(allScenarios, scenario => scenario.name === scenarioName) || CUSTOM,);
-  }, [allScenarios, possibleScenarios]);
-
+  }, [allScenarios, showInterludes, colors]);
+  const { dialog, showDialog } = usePickerDialog({
+    title: showInterludes ? t`Scenario or Interlude` : t`Scenario`,
+    items: possibleScenarios,
+    selectedValue: selectedScenario,
+    onValueChange: setSelectedScenario,
+  });
   const customScenarioTextChanged = useCallback((value?: string) => {
     setCustomScenario(value || '');
   }, [setCustomScenario]);
-
+  const showCustomScenarioDialog = useCallback(() => {
+    showTextEditDialog(t`Scenario name`, customScenario || '', customScenarioTextChanged);
+  }, [showTextEditDialog, customScenario, customScenarioTextChanged]);
   const resolutionChanged = useCallback((value?: string) => {
     setResolution(value || '');
   }, [setResolution]);
+  const showResolutionDialog = useCallback(() => {
+    showTextEditDialog(t`Resolution`, resolution || '', resolutionChanged);
+  }, [showTextEditDialog, resolution, resolutionChanged]);
 
+  const scenarioName = useMemo(() => {
+    if (loading) {
+      return '   ';
+    }
+    return selectedScenario === CUSTOM ? t`Custom` : selectedScenario.name;
+  }, [loading, selectedScenario]);
   return (
-    <View>
+    <View style={space.paddingSideS}>
+      { dialog }
       <SettingsSwitch
         title={t`Show Interludes`}
         value={showInterludes}
         onValueChange={toggleShowInterludes}
         settingsStyle
+        last
       />
-      <SinglePickerComponent
+      <DeckPickerStyleButton
+        icon="book"
         title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}
-        modalTitle={showInterludes ? t`Scenario or Interlude` : t`Scenario`}
-        choices={map(possibleScenarios, name => {
-          return {
-            text: name,
-          };
-        })}
-        onChoiceChange={handleScenarioChange}
-        selectedIndex={findIndex(possibleScenarios, name => name === (selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name))}
+        valueLabel={scenarioName}
         editable
+        first
+        onPress={showDialog}
       />
-      { selectedScenario === CUSTOM && (
-        <EditText
+      { !loading && selectedScenario === CUSTOM && (
+        <DeckPickerStyleButton
+          icon="name"
           title={t`Name`}
-          placeholder={t`(required)`}
-          onValueChange={customScenarioTextChanged}
-          value={customScenario}
+          valueLabel={customScenario || t`(required)`}
+          onPress={showCustomScenarioDialog}
+          editable
         />
       ) }
       { (selectedScenario === CUSTOM || !selectedScenario.interlude) && (
-        <EditText
+        <DeckPickerStyleButton
+          icon="finish"
           title={t`Resolution`}
-          placeholder={t`(required)`}
-          onValueChange={resolutionChanged}
-          value={resolution}
+          valueLabel={resolution || t`(required)`}
+          onPress={showResolutionDialog}
+          editable
         />
       ) }
     </View>

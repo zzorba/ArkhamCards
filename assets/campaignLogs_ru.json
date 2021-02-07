@@ -1217,7 +1217,7 @@
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# взята Бездной.",
+            "masculine_text": "#name# взят Бездной.",
             "feminine_text": "#name# взята Бездной."
           },
           {
@@ -1548,11 +1548,11 @@
           },
           {
             "id": "heretics_released",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "В Аркхэм проникли #X# еретичек."
           },
           {
             "id": "hid_knowledge_of_coven",
-            "text": "the investigators hid their knowledge of the coven."
+            "text": "сыщики скрыли информацию о ковене."
           },
           {
             "id": "inducted_into_the_inner_circle",
@@ -1616,11 +1616,11 @@
           },
           {
             "id": "survived_the_watchers_embrace",
-            "text": "the investigators survived the watcher’s embrace."
+            "text": "сыщики пережили объятия Стража."
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "the investigators told the Lodge about the coven."
+            "text": "сыщики рассказали Ложе о ковене."
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
@@ -1670,15 +1670,15 @@
         "entries": [
           {
             "id": "corn_husk_doll",
-            "text": "Corn Husk Doll"
+            "text": "Соломенная кукла"
           },
           {
             "id": "gilmans_journal",
-            "text": "Gilman's Journal"
+            "text": "Дневник Гилмана"
           },
           {
             "id": "keziahs_formulae",
-            "text": "Keziah's Formulae"
+            "text": "Формула Кассии"
           },
           {
             "id": "mesmerizing_flute",
@@ -1694,11 +1694,11 @@
           },
           {
             "id": "wisp_of_spectral_mist",
-            "text": "Wisp of Spectral Mist"
+            "text": "Клок потусторонней мглы"
           },
           {
             "id": "worn_crucific",
-            "text": "Worn Crucifix"
+            "text": "Потёртое распятие"
           }
         ]
       }
@@ -2366,6 +2366,11 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "possesses_a_diving_suite",
+            "masculine_text": "#name# possesses a diving suit.",
+            "feminine_text": "#name# possesses a diving suit."
+          },
+          {
             "id": "allen_out_for_blood",
             "text": "Zadok Allen is out for blood."
           },
@@ -2416,6 +2421,14 @@
           {
             "id": "mission_succeeded",
             "text": "the mission was successful."
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "the investigators possess a map of Y'ha-nthlei."
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "the investigators possess the key to Y'ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
@@ -2503,6 +2516,14 @@
             "text": "dummy"
           },
           {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
             "id": "flashback_2",
             "text": "dummy"
           },
@@ -2545,23 +2566,27 @@
         "entries": [
           {
             "id": "a_deal_with_joe_sargent",
-            "text": "a deal with Joe Sargent."
+            "text": "a deal with Joe Sargent"
           },
           {
             "id": "a_followed_lead",
-            "text": "a followed lead."
+            "text": "a followed lead"
           },
           {
             "id": "a_jailbreak",
-            "text": "a jailbreak."
+            "text": "a jailbreak"
           },
           {
             "id": "an_intervention",
-            "text": "an intervention."
+            "text": "an intervention"
           },
           {
             "id": "battle_with_a_horrifying_devil",
             "text": "a battle with a horrifying devil"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "a conversation with Mr. Moore"
           },
           {
             "id": "decision_to_stick_together",
@@ -2569,19 +2594,23 @@
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic."
+            "text": "discovery of a mystical relic"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol."
+            "text": "discovery of a strange idol"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle."
+            "text": "discovery of an unholy mantle"
           },
           {
             "id": "encounter_with_a_secret_cult",
             "text": "an encounter with a secret cult"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "the lifecycle of a \"Deep One\""
           },
           {
             "id": "meeting_with_thomas_dawson",

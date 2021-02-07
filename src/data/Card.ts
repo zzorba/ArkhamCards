@@ -40,11 +40,11 @@ const REPRINT_CARDS: {
   '04232': ['win'],
   '03194': ['win'],
   '01053': ['win'],
-  '02029': ['jaq'],
-  '03034': ['jaq'],
-  '02190': ['jaq'],
-  '02153': ['jaq'],
-  '04032': ['jaq'],
+  '02029': ['jac'],
+  '03034': ['jac'],
+  '02190': ['jac'],
+  '02153': ['jac'],
+  '04032': ['jac'],
   '01079': ['ste'],
   '01075': ['ste'],
   '04201': ['ste'],
@@ -735,6 +735,7 @@ export default class Card {
       t`Asset: Permanent`,
       t`Asset: Tarot`,
       t`Asset: Ally. Arcane`,
+      t`Asset: Body. Arcane`,
       t`Asset: Hand. Arcane`,
       t`Asset: Body. Hand x2`,
       t`Asset: Other`,
@@ -789,6 +790,8 @@ export default class Card {
                 return t`Asset: Body`;
               case 'Tarot':
                 return t`Asset: Tarot`;
+              case 'Body. Arcane':
+                return t`Asset: Body. Arcane`;
               case 'Body. Hand x2':
                 return t`Asset: Body. Hand x2`;
               case 'Hand. Arcane':

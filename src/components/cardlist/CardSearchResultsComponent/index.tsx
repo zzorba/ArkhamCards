@@ -6,7 +6,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { useDebounceCallback } from '@react-hook/debounce';
 
-import { SORT_BY_ENCOUNTER_SET, SortType } from '@actions/types';
+import { SORT_BY_ENCOUNTER_SET, SortType, DeckId } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';
@@ -27,7 +27,7 @@ const DIGIT_REGEX = /^[0-9]+$/;
 
 interface Props {
   componentId: string;
-  deckId?: number;
+  deckId?: DeckId;
   baseQuery?: Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
@@ -342,7 +342,7 @@ export default function({
       'and'
     );
   }, [baseQuery, mythosToggle, selectedSort, mythosMode]);
-  const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters), [filters]);
+  const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, true), [filters]);
   const [hasFilters, showFiltersPress] = useFilterButton(componentId, baseQuery);
   const renderFabIcon = useCallback(() => (
     <View style={styles.relative}>

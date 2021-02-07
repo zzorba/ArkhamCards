@@ -203,6 +203,7 @@
   "scenario_name": "Судьба Армитеджа",
   "full_name": "Интерлюдия I: Судьба Армитеджа",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "check_unconscious",
     "$upgrade_decks"
@@ -251,7 +252,7 @@
         "name": "Armitage's Fate 2"
       },
       "type": "story",
-      "text": "Вернувшись в Саутсайд, вы заходите в дом доктора Армитеджа. Хозяин сидит за столом, его лицо бледно и покрыто пот́ом. Он благодарит вас за помощь в поиске его коллег, но его голос по-прежнему напряжён. После долгой паузы он поправляет очки и объясняет:\n«Должен извиниться перед вами. Есть кое-что, о чём я умолчал». С этими словами доктор Армитедж начинает рассказ, которому вы бы вряд ли поверили, если бы не жуткие события этой ночи…"
+      "text": "Вернувшись в Саутсайд, вы заходите в дом доктора Армитеджа. Хозяин сидит за столом, его лицо бледно и покрыто по́том. Он благодарит вас за помощь в поиске его коллег, но его голос по-прежнему напряжён. После долгой паузы он поправляет очки и объясняет:\n«Должен извиниться перед вами. Есть кое-что, о чём я умолчал». С этими словами доктор Армитедж начинает рассказ, которому вы бы вряд ли поверили, если бы не жуткие события этой ночи…"
     },
     {
       "id": "henry_armitage_kidnapped",
@@ -724,6 +725,7 @@
   "scenario_name": "Пролог",
   "full_name": "Пролог",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "intro",
     "scenario_choice"
@@ -776,6 +778,7 @@
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
   "type": "epilogue",
+  "icon": "dunwich",
   "setup": [
     "check_calmed_townsfolk"
   ],
@@ -1906,6 +1909,7 @@
   "scenario_name": "Выжившие",
   "full_name": "Интерлюдия II: Выжившие",
   "type": "interlude",
+  "icon": "whippoorwills",
   "setup": [
     "prologue",
     "check_henry_armitage",
@@ -9124,6 +9128,7 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Эпилог",
+  "icon": "maddening_delusions",
   "full_name": "Эпилог",
   "type": "epilogue",
   "setup": [
@@ -9164,6 +9169,7 @@
   "scenario_name": "Пропащая душа",
   "full_name": "Интерлюдия II: Пропащая душа",
   "type": "interlude",
+  "icon": "the_stranger",
   "setup": [
     "daniel_choice",
     "warning_choice",
@@ -9354,6 +9360,7 @@
   "scenario_name": "Награда за безумие",
   "full_name": "Интерлюдия I: Награда за безумие",
   "type": "interlude",
+  "icon": "hasturs_gift",
   "setup": [
     "house_choice",
     "$upgrade_decks"
@@ -9687,6 +9694,7 @@
   "scenario_name": "Пролог",
   "full_name": "Пролог",
   "type": "interlude",
+  "icon": "delusions",
   "setup": [
     "choose_investigators",
     "intro",
@@ -9711,7 +9719,7 @@
     },
     {
       "id": "check_lola_hayes",
-      "text": "Если в этой кампании кто-нибудь играет за Лолу Хейз,",
+      "text": "Если в этой кампании кто-нибудь играет за Лолу Хейз:",
       "type": "branch",
       "condition": {
         "type": "campaign_data",
@@ -9731,7 +9739,7 @@
     {
       "id": "lola_hayes_reads",
       "bullet_type": "small",
-      "text": "этот игрок зачитывает вслух <b>«Пролог Лолы».</b>"
+      "text": "Этот игрок зачитывает вслух <b>«Пролог Лолы»</b>."
     },
     {
       "id": "lola_prologue",
@@ -12166,6 +12174,7 @@
   "scenario_name": "Судьба Армитеджа",
   "full_name": "Интерлюдия I: Судьба Армитеджа",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "check_unconscious",
     "$upgrade_decks"
@@ -12214,7 +12223,7 @@
         "name": "Armitage's Fate 2"
       },
       "type": "story",
-      "text": "Вернувшись в Саутсайд, вы заходите в дом доктора Армитеджа. Хозяин сидит за столом, его лицо бледно и покрыто пот́ом. Он благодарит вас за помощь в поиске его коллег, но его голос по-прежнему напряжён. После долгой паузы он поправляет очки и объясняет:\n«Должен извиниться перед вами. Есть кое-что, о чём я умолчал». С этими словами доктор Армитедж начинает рассказ, которому вы бы вряд ли поверили, если бы не жуткие события этой ночи…"
+      "text": "Вернувшись в Саутсайд, вы заходите в дом доктора Армитеджа. Хозяин сидит за столом, его лицо бледно и покрыто по́том. Он благодарит вас за помощь в поиске его коллег, но его голос по-прежнему напряжён. После долгой паузы он поправляет очки и объясняет:\n«Должен извиниться перед вами. Есть кое-что, о чём я умолчал». С этими словами доктор Армитедж начинает рассказ, которому вы бы вряд ли поверили, если бы не жуткие события этой ночи…"
     },
     {
       "id": "henry_armitage_kidnapped",
@@ -12267,6 +12276,7 @@
   "scenario_name": "Пролог",
   "full_name": "Пролог",
   "type": "interlude",
+  "icon": "armitages_fate",
   "setup": [
     "intro",
     "scenario_choice"
@@ -12315,6 +12325,7 @@
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
   "type": "epilogue",
+  "icon": "dunwich",
   "setup": [
     "check_calmed_townsfolk"
   ],
@@ -15519,6 +15530,7 @@
   "scenario_name": "Выжившие",
   "full_name": "Интерлюдия II: Выжившие",
   "type": "interlude",
+  "icon": "whippoorwills",
   "setup": [
     "prologue",
     "check_henry_armitage",
@@ -17988,6 +18000,7 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Эпилог",
+  "icon": "maddening_delusions",
   "full_name": "Эпилог",
   "type": "epilogue",
   "setup": [
@@ -18028,6 +18041,7 @@
   "scenario_name": "Пропащая душа",
   "full_name": "Интерлюдия II: Пропащая душа",
   "type": "interlude",
+  "icon": "the_stranger",
   "setup": [
     "daniel_choice",
     "warning_choice",
@@ -18218,6 +18232,7 @@
   "scenario_name": "Награда за безумие",
   "full_name": "Интерлюдия I: Награда за безумие",
   "type": "interlude",
+  "icon": "hasturs_gift",
   "setup": [
     "house_choice",
     "$upgrade_decks"
@@ -18551,6 +18566,7 @@
   "scenario_name": "Пролог",
   "full_name": "Пролог",
   "type": "interlude",
+  "icon": "delusions",
   "setup": [
     "choose_investigators",
     "intro",
@@ -18575,7 +18591,7 @@
     },
     {
       "id": "check_lola_hayes",
-      "text": "Если в этой кампании кто-нибудь играет за Лолу Хейз,",
+      "text": "Если в этой кампании кто-нибудь играет за Лолу Хейз:",
       "type": "branch",
       "condition": {
         "type": "campaign_data",
@@ -18595,7 +18611,7 @@
     {
       "id": "lola_hayes_reads",
       "bullet_type": "small",
-      "text": "этот игрок зачитывает вслух <b>«Пролог Лолы».</b>"
+      "text": "Этот игрок зачитывает вслух <b>«Пролог Лолы»</b>."
     },
     {
       "id": "lola_prologue",
@@ -24711,6 +24727,7 @@
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
   "type": "epilogue",
+  "icon": "temporal_flux",
   "setup": [
     "check_turned_back_time"
   ],
@@ -24777,6 +24794,7 @@
   "scenario_name": "Финал экспедиции",
   "full_name": "Интерлюдия II: Финал экспедиции",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "check_investigators_recovered_relic",
     "$upgrade_decks"
@@ -24956,7 +24974,7 @@
     },
     {
       "id": "alejandro_on_his_own",
-      "text": "Запишите в журнал кампании, что <i>Алехандро Вела продолжает исследования в одиночку</i>. Если карта «Алехандро Вела» находится в колоде какого-либо сыщика, удалите её.\nиз этой колоды.",
+      "text": "Запишите в журнал кампании, что <i>Алехандро Вела продолжает исследования в одиночку</i>. Если карта «Алехандро Вела» находится в колоде какого-либо сыщика, удалите её из этой колоды.",
       "effects": [
         {
           "type": "campaign_log",
@@ -24977,7 +24995,7 @@
         "name": "Expedition's End 4"
       },
       "type": "story",
-      "text": "От громкого стука в дверь вы роняете перо и вскакиваете. Уже почти полтретьего ночи. Кто может прийти к вам в такой час? Вы снова возвращаетесь мыслями в джунгли и представляете, как змееподобные существа нападают на вас в вашем собственном доме. Вздрогнув, вы достаёте оружие и на цыпочках подходите к двери, готовясь нанести удар. Вы делаете глубокий\\ вдох и открываете дверь.\nЗа дверью стоит знакомая женщина со смуглой кожей, длинными каштановыми волосами и тяжёлым взглядом пронзительных жёлтых глаз. Хотя она и сменила одежду, вы сразу узнаёте Ичтаку, воительницу-эцтли, с которой встретились в джунглях. Теперь на ней длинный плащ, боллмановская шляпа и обувь, явно доставляющая ей неудобство. Её зубы гневно сжаты. Вы уже готовитесь поднять оружие для защиты, когда она глубоко вздыхает, медленно переступает порог вашего дома и закрывает за собой дверь. «Что бы вы ни сделали, вы должны обратить это вспять, — мрачно произносит она. — Иначе всем нам придёт конец»."
+      "text": "От громкого стука в дверь вы роняете перо и вскакиваете. Уже почти полтретьего ночи. Кто может прийти к вам в такой час? Вы снова возвращаетесь мыслями в джунгли и представляете, как змееподобные существа нападают на вас в вашем собственном доме. Вздрогнув, вы достаёте оружие и на цыпочках подходите к двери, готовясь нанести удар. Вы делаете глубокий вдох и открываете дверь.\nЗа дверью стоит знакомая женщина со смуглой кожей, длинными каштановыми волосами и тяжёлым взглядом пронзительных жёлтых глаз. Хотя она и сменила одежду, вы сразу узнаёте Ичтаку, воительницу-эцтли, с которой встретились в джунглях. Теперь на ней длинный плащ, боллмановская шляпа и обувь, явно доставляющая ей неудобство. Её зубы гневно сжаты. Вы уже готовитесь поднять оружие для защиты, когда она глубоко вздыхает, медленно переступает порог вашего дома и закрывает за собой дверь. «Что бы вы ни сделали, вы должны обратить это вспять, — мрачно произносит она. — Иначе всем нам придёт конец»."
     },
     {
       "id": "ee_5",
@@ -24995,6 +25013,7 @@
   "scenario_name": "Зов джунглей",
   "full_name": "Интерлюдия III: Зов джунглей",
   "type": "interlude",
+  "icon": "rainforest",
   "setup": [
     "intro",
     "use_gasoline",
@@ -25484,6 +25503,7 @@
   "scenario_name": "Пролог",
   "full_name": "Пролог",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "intro",
     "choose_investigators",
@@ -25603,6 +25623,7 @@
   "scenario_name": "Бессонные ночи",
   "full_name": "Интерлюдия I: Бессонные ночи",
   "type": "interlude",
+  "icon": "deadly_traps",
   "setup": [
     "prompt",
     "check_blanket",
@@ -31515,7 +31536,7 @@
     },
     {
       "id": "add_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "Добавьте в мешок хаоса 1 жетон [cultist] до конца кампании.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -32333,7 +32354,7 @@
           },
           {
             "id": "completed",
-            "text": "Вы завершили сцену ЗЬ.",
+            "text": "Вы завершили сцену Зb.",
             "steps": [
               "found_missing_relic",
               "maybe_earn_relic_of_ages"
@@ -33381,6 +33402,7 @@
   "scenario_name": "Во тьме",
   "full_name": "Интерлюдия V: Во тьме",
   "type": "interlude",
+  "icon": "torch",
   "setup": [
     "check_fell_into_depths",
     "check_found_missing_relic",
@@ -33435,7 +33457,7 @@
     {
       "id": "darkness_1",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_1",
+        "id": "the_forgotten_age.interlude_5.the_darkness_1",
         "name": "Darkness 1"
       },
       "type": "story",
@@ -33444,7 +33466,7 @@
     {
       "id": "darkness_2",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_2",
+        "id": "the_forgotten_age.interlude_5.the_darkness_2",
         "name": "Darkness 2"
       },
       "type": "story",
@@ -33941,6 +33963,7 @@
   "scenario_name": "На свободе",
   "full_name": "Интерлюдия IV: На свободе",
   "type": "interlude",
+  "icon": "cult_of_pnakotus",
   "setup": [
     "check_process_backfired",
     "explain_mind_recovered",
@@ -34822,7 +34845,7 @@
     },
     {
       "id": "gather_encounter_sets",
-      "title": "Scenario Setup",
+      "title": "Подготовка к сценарию",
       "type": "encounter_sets",
       "encounter_sets": [
         "all_or_nothing",
@@ -35034,7 +35057,7 @@
           },
           {
             "id": "neither",
-            "text": "No change"
+            "text": "Без изменений"
           }
         ]
       }
@@ -35414,7 +35437,7 @@
     },
     {
       "id": "gather_encounter_sets",
-      "title": "Scenario Setup",
+      "title": "Подготовка к сценарию",
       "type": "encounter_sets",
       "encounter_sets": [
         "bad_blood",
@@ -35425,7 +35448,7 @@
         "nightgaunts",
         "pentagram"
       ],
-      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow) and the following locations: Northside, Downtown <i>(First Bank of Arkham)</i>, Easttown, Miskatonic University, and Rivertown. Do not gather the rest of the locations or the act, agenda, and scenario reference cards from that set."
+      "subtext": "Из набора контактов «Полуночные маски» возьмите только 5 карт напастей (2 карты «Ложный след» и 3 карты «Преследующая тень») и следующие локации: «Нортсайд», «Даунтаун (Первый банк Аркхэма)», «Исттаун», «Мискатоникский университет» и «Ривертаун». Не берите остальные локации, сцены, замыслы и памятку сценария из этого набора."
     },
     {
       "id": "new_scenario_card",
@@ -35634,7 +35657,7 @@
           },
           {
             "id": "neither",
-            "text": "No change"
+            "text": "Без изменений"
           }
         ]
       }
@@ -38944,7 +38967,7 @@
     {
       "id": "choose_scent_to_follow",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Ведущий сыщик должен решить (выберите одно):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -38975,7 +38998,7 @@
     {
       "id": "choose_confront_cat",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Ведущий сыщик должен решить (выберите одно):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -39010,7 +39033,7 @@
     {
       "id": "choose_food",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Ведущий сыщик должен решить (выберите одно):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -41242,7 +41265,7 @@
     },
     {
       "id": "gather_encounter_sets",
-      "title": "Scenario Setup",
+      "title": "Подготовка к сценарию",
       "type": "encounter_sets",
       "encounter_sets": [
         "read_or_die",
@@ -41458,7 +41481,7 @@
           },
           {
             "id": "neither",
-            "text": "No change"
+            "text": "Без изменений"
           }
         ]
       }
@@ -41721,7 +41744,7 @@
     },
     {
       "id": "explore_rule",
-      "title": "разведка",
+      "title": "Разведка",
       "type": "rule_reminder",
       "text": "В этом дополнении встречаются свойства, отмеченные словом «Разведка». Как правило, они позволяют отыскать и ввести в игру новые локации. Такие свойства применяются с помощью действия «Активация».\nСвойства разведки предписывают вам взять верхнюю карту колоды разведки. Это отдельная колода, которая составляется в этом сценарии. Она состоит из нескольких односторонних локаций и карт напастей.",
       "bullets": [
@@ -42210,7 +42233,7 @@
     },
     {
       "id": "explore_rule",
-      "title": "разведка",
+      "title": "Разведка",
       "type": "rule_reminder",
       "text": "В этом дополнении встречаются свойства, отмеченные словом «Разведка». Как правило, они позволяют отыскать и ввести в игру новые локации. Такие свойства применяются с помощью действия «Активация».\nСвойства разведки предписывают вам взять верхнюю карту колоды разведки. Это отдельная колода, которая составляется в этом сценарии. Она состоит из нескольких односторонних локаций и карт напастей.",
       "bullets": [
@@ -42454,7 +42477,7 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# взята Бездной.",
+                "masculine_text": "#name# взят Бездной.",
                 "feminine_text": "#name# взята Бездной."
               }
             ]
@@ -42479,7 +42502,7 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "masculine_text": "#name# взята Бездной.",
+                "masculine_text": "#name# взят Бездной.",
                 "feminine_text": "#name# взята Бездной."
               }
             ]
@@ -45094,6 +45117,8 @@
           {
             "id": "taken_by_the_watcher",
             "text": "Забрал Страж",
+            "masculine_text": "Забрал Страж",
+            "feminine_text": "Забрал Страж",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -45233,6 +45258,7 @@
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
   "type": "epilogue",
+  "icon": "realm_of_death",
   "setup": [
     "check_anette_arrested",
     "check_assumed_control_of_the_silver_twilight_lodge",
@@ -46612,6 +46638,7 @@
   "type": "interlude",
   "scenario_name": "Внутренний круг",
   "full_name": "Interlude III: The Inner Circle",
+  "icon": "trapped_spirits",
   "setup": [
     "ic_1",
     "choose_to_share_info",
@@ -47344,6 +47371,7 @@
   "type": "interlude",
   "scenario_name": "Цена прогресса",
   "full_name": "Интерлюдия II: Цена прогресса",
+  "icon": "silver_twilight_lodge",
   "setup": [
     "check_silver_twilight_investigator",
     "progress_3",
@@ -47696,7 +47724,7 @@
 {
   "id": "the_secret_name",
   "scenario_name": "Тайное имя",
-  "full_name": "Scenario III: The Secret Name",
+  "full_name": "Сценарий III: Тайное имя",
   "setup": [
     "check_members_of_the_lodge",
     "gather_encounter_sets",
@@ -47802,7 +47830,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "The upstairs study of the Silver Twilight Lodge is cozy, if a little cramped. The floor is covered in a plush carpet, and several comfortable sofas and small round tables fill the warmly lit room. Portraits of world-weary Lodge members line the walls around you. Carl Sanford, president of the Lodge, sits across from you, idly swirling a glass of Merlot in his wrinkled hand.\n“The Silver Twilight Lodge pursues knowledge that can help us elevate our understanding of the universe,” Mr. Sanford explains, pausing to take a sip from his wine. “The creature you encountered in Josef Meiger’s estate—its appearance is not the only peculiar happening in Arkham as of late. Tell me: have you experienced anything else recently that might be connected to these events?”"
+      "text": "Кабинет на верхнем этаже Ложи Серебряных Сумерек немного тесноват, но оттого не менее уютен. Тепло освещённая комната обставлена мягкими диванами и круглыми столиками, а пол укрыт мягким ковром. С портретов на стенах устало глядят уважаемые члены Ложи. Карл Сэнфорд, президент Ложи, сидит напротив вас, отвлечённо вертя в морщинистых пальцах бокал мерло.\n«Ложа Серебряных Сумерек ищет знаний, раскрывающих тайны устройства Вселенной, — объясняет мистер Сэнфорд, прерываясь, чтобы пригубить вина. — Появление существа, свидетелями которого вы стали в поместье Джозефа Майгера, — не единственная странность, произошедшая в последнее время в Аркхэме. Вам случайно не довелось столкнуться с чем-то, что может быть связано с недавними событиями?»"
     },
     {
       "id": "choose_tell_lodge_about_witches",
@@ -47812,7 +47840,7 @@
         "choices": [
           {
             "id": "tell_lodge",
-            "text": "Tell the Lodge of the witches in the woods.",
+            "text": "Рассказать Ложе о ведьмах в лесах.",
             "steps": [
               "intro_2",
               "told_lodge_about_coven",
@@ -47821,7 +47849,7 @@
           },
           {
             "id": "lie",
-            "text": "Tell him you know of no possible connection. (You are lying.)",
+            "text": "Сказать, что вы не знаете ни о чём подобном. (Вы лжёте.)",
             "steps": [
               "intro_3",
               "check_mystic_investigator",
@@ -47839,7 +47867,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "You tell Mr. Sanford about your experience last week—waking up in the middle of the woods, the strange mist that weaved throughout the trees, the witches and their spell. He leans forward and listens intently as you explain the night’s strange events, your memories still somewhat of a haze. You conclude your story, and the elderly man considers your words. “Interesting,” he says at last. “I know of this coven. They are led by a witch named Anette Mason. Their magic is no trivial thing. They have passed down arcane secrets that can manipulate the energies of the universe. It is dangerous knowledge they possess—knowledge I believe they derived from a powerful witch who fled from Salem over two hundred years ago. Does the name ‘Keziah’ mean anything to you?”\nYou nod. Everyone in Arkham has at least some passing knowledge of the witch whose ghost supposedly haunts the old condemned “Witch House” in French Hill. Most believe her to be a work of fiction; a tall tale meant to scare young children away from the decrepit house. Mr. Sanford’s steely gaze and humorless tone makes it clear to you that this is not the case. “Perhaps this Anette is a true descendant of Keziah, or perhaps she is simply using her name. In any event, I believe these events are connected. To that end, I have a task for you, on behalf of the Silver Twilight Lodge.” Carl Sanford rises to his feet, using his cane more for show than for balance. You rise as well, ready to perform whatever duties are necessary to get to the bottom of this mystery.\n“We need as much information about this coven as we can obtain. If there is any place that will have these answers, it is the house where Keziah herself lived all those years ago.” You nod in agreement—there are too many questions you need answered. What spell were the witches casting that night in the woods? What is their motive? And what is their connection to the creature that kidnapped those four unfortunate souls? You shake Mr. Sanford’s hand and depart for the Witch House."
+      "text": "Вы рассказываете о том, что случилось с вами на прошлой неделе — как вы проснулись в лесу, как странная мгла растекалась между деревьями, про ведьм и их заклятие. Сэнфорд наклоняется вперёд, вниматель­но слушая ваши немного спутанные воспоминания о событиях той странной ночи. Когда вы завершаете рассказ, пожилой мужчина обдумывает услы­шанное. «Любопытно, — говорит он наконец. — Я знаю об этом ковене. Во главе у них ведьма по имени Анетта Мейсон. Их магия непроста. Они передают из поколения в поколение тайные знания, дающие власть над силами Вселенной. Насколько мне известно, они унаследовали эти опас­ные знания от могущественной ведьмы, которая сбежала из Салема больше двухсот лет назад. Вам о чём-нибудь говорит имя Кассия?»\nВы киваете. Каждый в Аркхэме хоть раз слышал истории о ведьме, чей призрак обитает в заброшенном доме во Френч-Хилле. Большинство считает эти рассказы вымыслом, страшилкой для детей, чтобы те держа­лись подальше от разваливающегося дома. Судя по твёрдому взгляду мистера Сэнфорда и его серьёзному тону, это вовсе не выдумка. «Возможно, Анетта действительно потомок Кассии, а может, она просто присвоила её фамилию. В любом случае я считаю, что эти события связаны. А раз так, то у меня для вас задание от имени Ложи Серебряных Сумерек». Карл Сэнфорд вста­ёт, используя трость скорее для вида, чем для опоры. Вы тоже поднимаетесь в готовности сделать всё необходимое, чтобы разгадать эти тайны.\n«Нам нужно узнать об этом ковене как можно больше. Если где-то и есть ответы, то в доме, где некогда жила Кассия». Вы согласно киваете: у вас и у самих много вопросов. Что за заклятие ведьмы пытались наложить той ночью в лесу? Какова их цель? И как с этим связано существо, похитившее тех четырёх несчастных? Вы жмёте руку мистера Сэнфорда и отправляетесь в Ведьмин дом."
     },
     {
       "id": "told_lodge_about_coven",
@@ -47848,13 +47876,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "told_lodge_about_coven",
-          "text": "the investigators told the Lodge about the coven."
+          "text": "сыщики рассказали Ложе о ковене."
         }
       ]
     },
     {
       "id": "add_cultist_token",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "Добавьте в мешок хаоса 1 жетон [cultist] до конца кампании.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -47871,7 +47899,7 @@
         "name": "Intro 3"
       },
       "type": "story",
-      "text": "You shake your head. You’re not sure if the events that took place in the woods are connected, or if they even really happened—some part of you still believes it was all a strange dream. Mr. Sanford examines you with a cold, piercing glare. You get the feeling that he is looking directly through you. “Very well,” he says. “Out of curiosity, does the name ‘Keziah Mason’ mean anything to you?”\nYou nod. Everyone in Arkham has at least some passing knowledge of the witch whose ghost supposedly haunts the old condemned “Witch House” in French Hill. Most believe her to be a work of fiction; a tall tale meant to scare young children away from the decrepit house. Mr. Sanford’s steely gaze and humorless tone makes it clear to you that this is not the case. He motions to an old, worn tome which lies on the table in front of you, open to a page filled with strange inscriptions and arcane glyphs. “I believe the creature you encountered in Josef ’s manor is tied to Keziah and the secret knowledge she possessed. See for yourself.” You pick up the tome and examine the markings on the page closely."
+      "text": "Вы качаете головой. Вы полагаете, что произошедшее в лесах вряд ли имеет какое-то отношение к делу, вы даже не уверены, произошло ли это на самом деле, — хочется верить, что это был странный сон. Мистер Сэнфорд холодно и пристально глядит на вас. Вам кажется, будто он видит вас насквозь. «Хорошо, — произносит он. — Любопытства ради: вам о чём-нибудь говорит имя Кассия Мейсон?» \nВы киваете. Каждый в Аркхэме хоть раз слышал истории о ведьме, чей призрак обитает в заброшенном доме во Френч-Хилле. Большинство считает эти рассказы вымыслом, страшилкой для детей, чтобы те держа­лись подальше от разваливающегося дома. Судя по твёрдому взгляду мистера Сэнфорда и его серьёзному тону, это вовсе не выдумка. Он указывает на старую потрёпанную книгу, лежащую на столе перед вами. Она открыта на странице, заполненной непонятными надписями и таинственными сим­волами. «Я считаю, что существо, с которым вы встретились в поместье Джозефа, связано с Кассией и тайными знаниями, которыми она владела. Взгляните». Вы берёте книгу и внимательно изучаете символы на странице."
     },
     {
       "id": "check_mystic_investigator",
@@ -47899,28 +47927,28 @@
     },
     {
       "id": "has_mystic",
-      "text": "Because at least one investigator is a Mystic ([mystic]):"
+      "text": "Поскольку среди сыщиков есть мистик ([mystic]):"
     },
     {
       "id": "no_mystic",
-      "text": "Because no investigator is a Mystic ([mystic]):"
+      "text": "Поскольку среди сыщиков нет мистика ([mystic]):"
     },
     {
       "id": "read_mystic_text",
       "border": true,
       "type": "story",
-      "text": "The markings on the tome form the basis for some kind of spell or ritual. It involves calling out to the dead – beseeching them for power, for secrets, or perhaps for aid. But who was beseeching whom, and for what purpose?"
+      "text": "Написанное в книге служит основой некоего заклинания или ритуала. Помимо прочего, эта магия взывает к мёртвым, испрашивая у них силы, знаний или, возможно, помощи. Но кто обращается, к кому и зачем?"
     },
     {
       "id": "read_gibberish",
       "border": true,
       "type": "story",
-      "text": "It all looks like gibberish to you."
+      "text": "Вы не понимаете ни единого написанного в книге слова."
     },
     {
       "id": "intro_3_continued",
       "type": "story",
-      "text": "“To this end, I have a task for you, on behalf of the Silver Twilight Lodge.” Carl Sanford rises to his feet, using his cane more for show than for balance. You rise as well, ready to perform whatever duties are necessary to get to the bottom of this mystery.\n“We need as much information about this creature as we can obtain. If there is any place that will have these answers, it is the house where Keziah herself lived all those years ago.” You nod in agreement—there are too many questions you need answered. Perhaps this is connected to the spell the witches were casting that night in the woods, after all. If so, what is their motive? And what does this have to do with the creature that kidnapped those four unfortunate souls? You nod to Mr. Sanford and depart for the Witch House."
+      "text": "«В связи с этим у меня для вас задание от имени Ложи Серебряных Сумерек». Карл Сэнфорд встаёт, используя трость скорее для вида, чем для опоры. Вы тоже поднимаетесь в готовности сделать всё необходимое, чтобы разгадать эти тайны.\n«Нам нужно узнать об этом существе как можно больше. Если где-то и есть ответы, то в доме, где некогда жила Кассия». Вы согласно киваете: у вас и у самих много вопросов. Ведьминское заклятие в лесах вполне может иметь какое-то отношение к исчезновениям. Если так, то что нужно ведьмам? И как с этим связано существо, похитившее тех четырёх несчастных? Вы киваете мистеру Сэнфорду и отправляетесь в Ведьмин дом."
     },
     {
       "id": "hid_knowledge_of_coven",
@@ -47929,7 +47957,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "hid_knowledge_of_coven",
-          "text": "the investigators hid their knowledge of the coven."
+          "text": "сыщики скрыли информацию о ковене."
         }
       ]
     },
@@ -47940,7 +47968,7 @@
         "name": "Intro 4"
       },
       "type": "story",
-      "text": "After your confrontation with the president of the Silver Twilight Lodge, you travel to the manor of the Arkham Historical Society in Southside. You are positive that the events you experienced in the woods last week have something to do with the creature that kidnapped those four unfortunate souls. It’s just a hunch—a feeling that crawls along the back of your neck, imploring you to look away—but you’re sure that everything is connected. You’re just not sure how.\nAs you enter, one of the Historical Society’s many researchers greets you and asks if she can help in any way. You give a cursory description of the information you’re looking for; just enough that she can direct you where to look, but vague enough to leave your motives at the door. “I don’t know why you are researching such morbid affairs, but the records you are looking for should be in the library on the third floor,” the researcher says.\nYou thank her and head to the third floor, where you begin to study the history of witchcraft in Arkham. In the late 17th century, Arkham was one of the New England towns caught up in the hysteria of witch trials. Accusations of witchcraft spread like wildfire, and many of the accused were executed by hanging or burning, guilty and innocent alike. But there was one witch whose infamy rose above the rest, and whose mystical power was never in question: Keziah Mason.\nYou recognize the name as the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But the Historical Society’s records indicate that Keziah was a real person: a powerful witch who had fled from Salem over two hundred years ago.\nYou are no stranger to real witchcraft. If Keziah Mason has anything to do with the coven you encountered in the woods, you must discover that connection. You leave the manor and head toward French Hill, where the Witch House awaits…"
+      "text": "После стычки с президентом Ложи Серебряных Сумерек вы отправляетесь в особняк Исторического общества Аркхэма в Саутсайде. Вы не сомневаетесь, что случившееся на прошлой неделе в лесах имеет какое-то отношение к существу, похитившему тех четырёх несчастных. Это лишь чутьё — как чувство, что щекочет шею, заставляя обернуться, — но вы уверены, что всё взаимосвязано. Осталось понять как.\nВ особняке вас встречает одна из многочисленных сотрудниц Исторического общества. Она интересуется, чем может вам помочь. Вы в общих чертах описываете, что вас интересует: достаточно ясно, чтобы вам указали, где искать, но без деталей, раскрывающих ваши цели. «Не понимаю, зачем вам влезать в эти тёмные дела, но записи о них должны быть в библиотеке на третьем этаже», — отвечает сотрудница.\nПоблагодарив её, вы поднимаетесь на третий этаж, где погружаетесь в историю аркхэмского ведьмовства. В конце XVII века Аркхэм был одним из очагов охоты на ведьм в Новой Англии. Обвинения в ведьмовстве распространялись как пожар, и многих обвинённых повесили или сожгли — как заслуженно, так и несправедливо. Но дурная слава одной ведьмы выделяется на фоне других, и в её мистических способностях никогда не было сомнений: Кассия Мейсон.\nВы узнаёте это имя. По слухам, именно её призрак обитает в старом Ведьмином доме во Френч-Хилле. Вы всегда считали эти рассказы вымыслом, страшилкой для детей, чтобы те держались подальше от заброшенного дома. Но архивы Исторического общества свидетельствуют, что Кассия — могущественная ведьма, которая сбежала из Салема больше двухсот лет назад, — действительно существовала.\nВы не понаслышке знакомы с ведьмовством. Если Кассия Мейсон имеет какое-то отношение к тому ковену в лесах, вам надо узнать, как именно они связаны. Вы направляетесь во Френч-Хилл, где вас ждёт Ведьмин дом…"
     },
     {
       "id": "intro_5",
@@ -47949,7 +47977,7 @@
         "name": "Intro 5"
       },
       "type": "story",
-      "text": "Your lead regarding the Silver Twilight Lodge’s charity gala turned out to be a bust, but Anna Kaslow’s reading still plays out over and over in your mind. You cannot help but feel as though you are missing a piece of this puzzle—something you can use to avoid the dire fate the tarot reader described. Turning your attention back to the coven of witches you encountered in the woods last week, you travel to the manor of the Arkham Historical Society in Southside. Perhaps there is some piece of information you have overlooked that will shed light on their identity, or their motives.\nAs you enter, one of the Historical Society’s many researchers greets you and asks if she can help in any way. You give a cursory description of the information you’re looking for; just enough that she can direct you where to look, but vague enough to leave your motives at the door. “I don’t know why you are researching such morbid affairs, but the records you are looking for should be in the library on the third floor,” the researcher says.\nYou thank her and head to the third floor, where you begin to study the history of witchcraft in Arkham. In the late 17th century, Arkham was one of the New England towns caught up in the hysteria of witch trials. Accusations of witchcraft spread like wildfire, and many of the accused were executed by hanging or burning, guilty and innocent alike. But there was one witch whose infamy rose above the rest, and whose mystical power was never in question: Keziah Mason.\nYou recognize the name as the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But the Historical Society’s records indicate that Keziah was a real person: a powerful witch who had fled from Salem over two hundred years ago.\nYou are no stranger to real witchcraft. If Keziah Mason has anything to do with the coven you encountered in the woods, you must discover that connection. You leave the manor and head toward French Hill, where the Witch House awaits…"
+      "text": "Ваше предположение о причастности благотворительного вечера Ложи Серебряных Сумерек к исчезновениям не подтвердилось, но предсказание Анны Каслоу не идёт у вас из головы. Вы не можете отделаться от чувства, что вам не хватает какой-то детали, чтобы разгадать эту головоломку и избежать предначертанной судьбы. Решив сосредоточить своё внимание на том ведьмовском ковене, с которым вы столкнулись в лесах на прошлой неделе, вы отправляетесь в Историческое общество Аркхэма в Саутсайде. Возможно, там вы найдёте упущенную деталь и сможете пролить свет на происхождение ковена или его мотивы.\nВ особняке вас встречает одна из многочисленных сотрудниц Исторического общества. Она интересуется, чем может вам помочь. Вы в общих чертах описываете, что вас интересует: достаточно ясно, чтобы вам указали, где искать, но без деталей, раскрывающих ваши цели. «Не понимаю, зачем вам влезать в эти тёмные дела, но записи о них должны быть в библиотеке на третьем этаже», — отвечает сотрудница.\nПоблагодарив её, вы поднимаетесь на третий этаж, где погружаетесь в историю аркхэмского ведьмовства. В конце XVII века Аркхэм был одним из очагов охоты на ведьм в Новой Англии. Обвинения в ведьмовстве распространялись как пожар, и многих обвинённых повесили или сожгли — как заслуженно, так и несправедливо. Но дурная слава одной ведьмы выделяется на фоне других, и в её мистических способностях никогда не было сомнений: Кассия Мейсон.\nВы узнаёте это имя. По слухам, именно её призрак обитает в старом Ведьмином доме во Френч-Хилле. Вы всегда считали эти рассказы вымыслом, страшилкой для детей, чтобы те держались подальше от заброшенного дома. Но архивы Исторического общества свидетельствуют, что Кассия — могущественная ведьма, которая сбежала из Салема больше двухсот лет назад, — действительно существовала.\nВы не понаслышке знакомы с ведьмовством. Если Кассия Мейсон имеет какое-то отношение к тому ковену в лесах, вам надо узнать, как именно они связаны. Вы направляетесь во Френч-Хилл, где вас ждёт Ведьмин дом…"
     },
     {
       "id": "intro_6",
@@ -47958,7 +47986,7 @@
         "name": "Intro 6"
       },
       "type": "story",
-      "text": "You pin the newspaper article up on your wall along with the rest of the evidence you’ve found. Whatever is happening in Josef Meiger’s manor, it’s getting out of hand. First, there were the four disappearances on the twenty-second, at the Silver Twilight Lodge’s annual charity gala. Now more have gone missing after a second event at the same estate. Is the Lodge somehow involved? Why else would they move this dinner to Mr. Meiger’s estate?\nThat’s not the only headline, either. Strange sightings have been occuring throughout the city: ghostly figures, an ashen mist, and a hunched, cloaked figure whose identity is hotly debated by the community. The name on the tips of everybody’s tongues is Keziah Mason—the ghost who supposedly haunts the old Witch House in French Hill. You had always thought her to be a work of fiction; a tall tale meant to scare young children away from the condemned house. But with all of the disappearances and odd sightings occuring throughout town, you’re not so sure. Perhaps there is something to this old ghost story, after all."
+      "text": "Вы прикрепляете газетную статью на стену к остальным свидетельствам, которые вам удалось найти. Что бы ни происходило в особняке Джозефа Майгера, это выходит из-под контроля. Сначала четыре исчезновения на ежегодном благотворительном вечере Ложи Серебряных Сумерек. Теперь новые пропавшие после второго мероприятия в том же поместье. Замешана ли в этом Ложа? Иначе зачем они перенесли этот ужин в поместье мистера Майгера?\nИ это не единственное. По всему городу что-то происходит: люди рассказывают о призрачных фигурах, о пепельной мгле и о скрюченной фигуре в плаще, личность которой вызывает у жителей горячие споры. У всех на устах одно имя: Кассия Мейсон — призрак, обитающий в старом Ведьмином доме во Френч-Хилле. Вы всегда считали эти рассказы вымыслом, страшилкой для детей, чтобы те держались подальше от заброшенного дома. Но все эти исчезновения и загадочные явления в городе заставляют вас задуматься. Возможно, за этой историей о призраках действительно что-то стоит."
     },
     {
       "id": "gather_encounter_sets",
@@ -47975,7 +48003,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Moldy Halls, Walter Gilman’s Room, and the three Decrepit Door locations into play. Each investigator begins play in the Moldy Halls."
+      "text": "Введите в игру локации «Затхлый коридор», «Комната Уолтера Гилмана» и три локации «Прогнившая дверь». Все сыщики начинают игру в «Затхлом коридоре»."
     },
     {
       "id": "location_layout",
@@ -48003,19 +48031,19 @@
     },
     {
       "id": "create_unknown_place_deck",
-      "text": "Set the seven “Unknown Places” locations aside as a separate “Unknown Places Deck.” To do this, perform the following:",
+      "text": "Возьмите семь локаций «Неизведанные места», соберите из них отдельную колоду неизведанных мест и отложите её в сторону. Колода неизведанных мест составляется следующим образом:",
       "bullets": [
         {
-          "text": "Shuffle the Unknown Places with Witch House Ruins on its revealed side and three other random Unknown Places locations together to form the bottom four cards of the Unknown Places Deck, unrevealed side faceup."
+          "text": "Найдите карту «Неизведанные места» с «Руинами Ведьминого дома» на открытой стороне и перемешайте её с тремя другими случайными картами «Неизведанные места» закрытой стороной вниз. Это будут четыре нижние карты колоды неизведанных мест."
         },
         {
-          "text": "Then, place the other three Unknown Places locations on top, in a random order. All seven cards of the Unknown Places deck should be showing only the unrevealed side, so the players do not know which of the Unknown Places is the Witch House Ruins."
+          "text": "Затем положите сверху в случайном порядке три оставшиеся карты «Неизведанные места». Все семь карт должны лежать закрытой стороной вверх, чтобы игроки не знали, какая из них — «Руины Ведьминого дома»."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Nahab, Site of the Sacrifice, Keziah’s Room, The Black Book, both copies of Strange Geometry, and both copies of Ghostly Presence."
+      "text": "Отложите в сторону следующие карты: «Нахаб», «Место жертвоприношения», «Комната Кассии», «Чёрная книга», оба экземпляра «Чуждой геометрии» и оба экземпляра «Призрачного присутствия»."
     },
     {
       "id": "encounter_deck",
@@ -48044,7 +48072,7 @@
         "choices": [
           {
             "id": "brown_jenkin_defeated",
-            "text": "Was Brown Jenkin defeated at least once?",
+            "text": "Был ли Бурый Дженкин побеждён хотя бы 1 раз?",
             "steps": [
               "brown_jenkin_xp"
             ]
@@ -48055,7 +48083,7 @@
     {
       "id": "brown_jenkin_xp",
       "bullet_type": "small",
-      "text": "Each investigator earns 1 bonus experience.",
+      "text": "Каждый сыщик получает 1 опыт дополнительно.",
       "effects": [
         {
           "type": "earn_xp",
@@ -48072,7 +48100,7 @@
         "choices": [
           {
             "id": "nehab_defeated",
-            "text": "Was Nahab defeated at least once?",
+            "text": "Была ли Нахаб побеждена хотя бы 1 раз?",
             "steps": [
               "nahab_xp"
             ]
@@ -48083,7 +48111,7 @@
     {
       "id": "nahab_xp",
       "bullet_type": "small",
-      "text": "Each investigator earns 1 bonus experience.",
+      "text": "Каждый сыщик получает 1 опыт дополнительно.",
       "effects": [
         {
           "type": "earn_xp",
@@ -48095,7 +48123,7 @@
     {
       "id": "check_act_deck",
       "type": "input",
-      "text": "Check the act deck. What act was in play when the scenario ended?",
+      "text": "Проверьте колоду сцен. В какой сцене завершилась партия?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -48133,56 +48161,56 @@
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "Дневник Гилмана"
         }
       ]
     },
     {
       "id": "record_journal_and_formulae",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Gilman’s Journal</i> and <i>Keziah’s Formulae</i>.",
+      "text": "Запишите в графе журнала «Собранные свидетельства»: <i>Дневник Гилмана</i> и <i>Формула Кассии</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "Дневник Гилмана"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "keziahs_formulae",
-          "text": "Keziah's Formulae"
+          "text": "Формула Кассии"
         }
       ]
     },
     {
       "id": "all_mementos",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Gilman’s Journal</i>, <i>Keziah’s Formulae</i>, and <i>Worn Crucifix</i>.",
+      "text": "Запишите в графе журнала «Собранные свидетельства»: <i>Дневник Гилмана</i>, <i>Формула Кассии</i> и <i>Потёртое распятие</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "gilmans_journal",
-          "text": "Gilman's Journal"
+          "text": "Дневник Гилмана"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "keziahs_formulae",
-          "text": "Keziah's Formulae"
+          "text": "Формула Кассии"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "worn_crucific",
-          "text": "Worn Crucifix"
+          "text": "Потёртое распятие"
         }
       ]
     },
     {
       "id": "choose_black_book_small_prompt",
       "bullet_type": "small",
-      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the chaos bag for the remainder of the campaign."
+      "text": "Кроме того, любой сыщик может включить в свою колоду сюжетный актив «Чёрная книга». Эта карта не идёт в счёт размера колоды. Если кто-то из сыщиков решил включить эту карту в свою колоду, добавьте в мешок хаоса 1 жетон [skull] до конца кампании."
     },
     {
       "id": "choose_black_book_small",
@@ -48193,7 +48221,7 @@
         "choices": [
           {
             "id": "keep_book",
-            "text": "Keep the Black Book?",
+            "text": "Взять Чёрную книгу?",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -48213,7 +48241,7 @@
     },
     {
       "id": "choose_black_book_prompt",
-      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the chaos bag for the remainder of the campaign."
+      "text": "Кроме того, любой сыщик может включить в свою колоду сюжетный актив «Чёрная книга». Эта карта не идёт в счёт размера колоды. Если кто-то из сыщиков решил включить эту карту в свою колоду, добавьте в мешок хаоса 1 жетон [skull] до конца кампании."
     },
     {
       "id": "choose_black_book",
@@ -48223,7 +48251,7 @@
         "choices": [
           {
             "id": "keep_book",
-            "text": "Keep the Black Book?",
+            "text": "Взять Чёрную книгу?",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -48247,7 +48275,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into Arkham’s mysterious past.",
+        "confirm_text": "Каждый сыщик получает 2 опыта дополнительно, заглянув в загадочное прошлое Аркхэма.",
         "text": "Победный счёт:",
         "effects": [
           {
@@ -48278,7 +48306,7 @@
         "physical",
         "mental"
       ],
-      "text": "Flashes of vision spark your memory as you are dragged along the dirty wooden floor. A foul ceremony—the house—Nahab—a rhythmic chant—the spiraling black vortex—a dark revelry—the Primal Chaos—a child’s cries—a writhing tunnel inside your chest.",
+      "text": "Вспышки видений озаряют вашу память, пока вас тащат по грязному деревянному полу. Нечестивый ритуал — дом — Нахаб — монотонное пение — спираль чёрной воронки — мрачное ликование — Первородный Хаос — плач ребёнка — тун­нель, что скручивается в вашей груди.",
       "steps": [
         "resolution_1"
       ]
@@ -48290,7 +48318,7 @@
         "name": "Resolution 1"
       },
       "title": "Исход 1",
-      "text": "You awaken in the muddy lawn at the base of some crooked wooden steps, the front door of the Witch House looming above you. Every fiber of your being is filled with regret. You know you have failed to prevent something awful, though you are not sure exactly what. The evidence of your eyes and ears suggests what you saw inside the Witch House was not concurrent with here and now. Regardless, you’ve learned several things about Keziah Mason, the witch who once inhabited this old and forsaken house. With your spirit diminished and your body aching, this information will have to suffice. You dare not venture back into this infernal house.",
+      "text": "Вы приходите в себя на грязном газоне у подножия кривой лестницы. Над вами нависает парадная дверь Ведьминого дома. Всё ваше существо преисполнено скорбью. Вы осознаёте, что не смогли предотвратить нечто ужасное, но не вполне понимаете, что именно. То, что вы видели своими глазами и слышали своими ушами внутри Ведьминого дома, произошло не здесь и не сейчас. Но в любом случае вы кое-что узнали о Кассии Мейсон — ведьме, некогда обитавшей в этом старом и ныне заброшенном доме. Ваш дух настолько истощён, а тело так измучено, что вам придётся довольствоваться добытыми крупицами знаний. Вы не осмелитесь снова войти в этот треклятый дом.",
       "steps": [
         "earn_xp",
         "check_brown_jenkin_xp",
@@ -48306,7 +48334,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "When you come to, you are lying on the wooden floor of Walter Gilman’s room. The trappings of Keziah’s foul practices are nowhere to be found, nor is the fanged, bearded rat – Keziah’s “ familiar,” as you now understand. Just as you are about to rise to your feet, you spot something glinting in a corner of the room. Crawling underneath Gilman’s bed, you reach out and grab the trinket. It is a worn nickel crucifix, similar to the ones you saw in the loomfixer’s room. You shove it into your pocket before leaving the troubling room and its strange angles behind. You’ve learned as much as you care to uncover about Keziah Mason, the witch who once inhabited this old and forsaken house. As you step out into the chilly November air, you turn and take one last look at the decrepit Witch House. You fear that though you may never enter this place again, in your thoughts and your dreams, you will never truly leave it behind.",
+      "text": "Когда вы приходите в себя, вы лежите на деревянном полу в комнате Уолтера Гилмана. Нигде не видно ни следов от мерзких ритуалов Кассии, ни зубастой бородатой крысы — как оказалось, «фамильяра» Кассии. Собравшись уже подняться на ноги, вы замечаете какой-то блеск в углу комнаты. Вы забираетесь под кровать Гилмана и тянетесь за вещицей. Это потёртый никелевый крестик вроде тех, что висели в комнате мастера по ткацким станкам. Вы кладёте крестик в карман и уходите из проклятой комнаты с её непостижимыми углами. Вы узнали всё, что хотели, о Кассии Мейсон — ведьме, некогда обитавшей в этом старом и ныне заброшенном доме. Выйдя на зябкий ноябрьский воздух, вы оборачиваетесь, чтобы ещё раз взглянуть на покосившийся Ведьмин дом. Хотя вы наверняка больше не вернётесь сюда, этот дом всегда будет преследовать вас в снах и мыслях.",
       "steps": [
         "earn_xp_bonus_2",
         "all_mementos",
@@ -48320,7 +48348,7 @@
 {
   "id": "the_wages_of_sin",
   "scenario_name": "Расплата за грехи",
-  "full_name": "Scenario IV: The Wages of Sin",
+  "full_name": "Сценарий IV: Расплата за грехи",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -48341,7 +48369,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "Ever since your encounter with the ghost in the Witch House, you have been forced to reconsider everything you know about life and death. Keziah Mason died over two hundred years ago, but her spirit remains in the spectral mist—the same mist you encountered in Josef Meiger’s manor. One question lingers in your mind as you consider the events that have transpired: Does Keziah’s spirit linger because of the mist, or is the mist caused by her presence? Which is the disease, and which the symptom?\nThe more you delve into Arkham’s history of witchcraft and persecution, the more restless you become. Night after night, you are assaulted by terrible dreams—dreams of death and decay, of guilt and sin. There is an evil that dwells in this city, an evil that has long remained hidden in the darkness of Arkham’s past. What’s worse, your inquiry has reached an impasse. You believe that if you can find the coven of witches you saw in the woods that fateful night, you might be able to learn more about Keziah Mason or of this unspoken evil.\nAs you go through your morning routine, your eyes drift across one of the smaller headlines of today’s newspaper: “Ghost Sightings on Hangman’s Hill? Residents of Uptown claim to have seen human shapes in the thick fog emanating from Hangman’s Brook…” It couldn’t be a coincidence, could it?\nThen the realization dawns on you—if it is witches you seek, the only place you can be certain to find them is six feet underground, in the place where professed witches were executed all those years ago. Searching for specters in a graveyard may not be your safest bet, but you’re not sure one can stay safe in this city anymore."
+      "text": "Встреча с призраком в Ведьмином доме заставила вас переосмыслить всё, что вы знаете о жизни и смерти. Кассия Мейсон умерла больше двухсот лет назад, но её дух остался в призрачной мгле — той самой, что приходила в особняк Джозефа Майгера. Обдумывая последние события, вы задаётесь одним вопросом: призрак Кассии существует благодаря мгле или же мгла — следствие его присутствия? Что из этого болезнь, а что симптом?\nЧем глубже вы погружаетесь в историю аркхэмских ведьм и их гонений, тем хуже вам спится. Каждую ночь вас терзают ужасные сны о смерти и разложении, о грехах и преступлениях. Зло живёт в этом городе, зло, которое долго скрывалось во тьме аркхэмского прошлого. Но что хуже всего, ваше расследование зашло в тупик. Вы приходите к выводу, что, если вам удастся найти ковен, с которым вы столкнулись той судьбоносной ночью в лесу, вы сможете больше узнать о Кассии Мейсон или об этом невыразимом зле.\nОдним утром, пока вы занимаетесь привычными делами, ваш взгляд цепляется за небольшой заголовок в свежей газете: «Привидения на Висельном холме? Жители Аптауна сообщают о человеческих силуэтах в густом тумане над Висельным ручьём…» Это ведь не может быть простым совпадением?\nВас осеняет: раз вам нужны ведьмы, их нужно искать в шести футах под \nземлёй — там, где когда-то проходили казни по обвинениям в ведьмовстве. Погоня за призраками на кладбище — занятие небезопасное, но может ли теперь хоть кто-то в этом городе считать себя в безопасности?"
     },
     {
       "id": "gather_encounter_sets",
@@ -48367,13 +48395,13 @@
     },
     {
       "id": "setup_locations",
-      "text": "Randomly choose one of the two The Gallows locations, one of the two Heretics’ Graves locations, one of the two Chapel Attic locations, and one of the two Chapel Crypt locations, and put them into play. Remove the other versions of The Gallows, Heretics’ Graves, Chapel Attic, and Chapel Crypt from the game. Then, put Haunted Fields, Abandoned Chapel, and Hangman’s Brook into play.",
+      "text": "Случайным образом выберите по 1 экземпляру следующих локаций: «Эшафот», «Могилы еретиков», «Чердак часовни» и «Склеп под часовней» и введите их в игру. Удалите другие экземпляры этих локаций из игры. Затем введите в игру локации «Проклятые поля», «Заброшенная часовня» и «Висельный ручей».",
       "bullets": [
         {
-          "text": "These locations have revealed versions on both sides. One side has the [[Spectral]] trait, and one side does not. When putting these locations into play, use the revealed sides without the [[Spectral]] trait."
+          "text": "Обе стороны этих локаций открытые. На одной стороне есть черта [[потусторонняя]], а на другой нет. Вводя локации в игру, кладите их вверх той стороной, где нет черты [[потусторонняя]]."
         },
         {
-          "text": "Each investigator begins play in Hangman’s Brook."
+          "text": "Все сыщики начинают игру в локации «Висельный ручей»."
         }
       ]
     },
@@ -48409,44 +48437,44 @@
     },
     {
       "id": "set_aside_spectral_web",
-      "text": "Set the four Spectral Web assets aside, out of play."
+      "text": "Отложите в сторону 4 карты активов «Призрачная сеть»."
     },
     {
       "id": "shuffle_heretics",
-      "text": "Shuffle the six Heretic enemies and set aside four of them, at random. Remove the other two copies from the game. These cards are double-sided and have story cards on their reverse side. For the best experience, do not look at the story cards on their other side."
+      "text": "Перемешайте 6 экземпляров врагов «Еретичка» и случайным образом отложите 4 из них. Оставшиеся 2 экземпляра удалите из игры. Эти карты двусторонние, с картой сюжета на обороте. Чтобы игра была интереснее, не смотрите обратную сторону этих карт."
     },
     {
       "id": "create_encounter_decks",
-      "text": "This scenario utilizes two separate encounter decks.",
+      "text": "В этом сценарии используются две разные колоды контактов.",
       "bullets": [
         {
-          "text": "Separate each of the remaining cards with the [[Spectral]] trait and shuffle them together to build the spectral encounter deck <i>(see “The Spectral Encounter Deck,” below)</i>."
+          "text": "Соберите и перемешайте колоду потусторонних контактов изо всех оставшихся карт с чертой [[потусторонняя]] (см. «Колода потусторонних контактов» ниже)."
         },
         {
-          "text": "Shuffle each of the remaining non-[[Spectral]] cards together to build the standard encounter deck."
+          "text": "Соберите и перемешайте обычную колоду контактов изо всех остав­шихся карт без черты [[потусторонняя]]."
         }
       ]
     },
     {
       "id": "spectral_encounter_deck",
       "type": "rule_reminder",
-      "title": "The Spectral Encounter Deck",
-      "text": "During the setup of this scenario, two encounter decks are constructed: a “standard” encounter deck and a “spectral” encounter deck. Generally speaking, whenever an investigator would interact with the encounter deck, that investigator should use the standard encounter deck.\nHowever, at a certain point during this scenario, locations may flip over to their [[Spectral]] side. While an investigator is at a location with the [[Spectral]] trait, that investigator should use the spectral encounter deck instead of the standard encounter deck for all purposes, unless otherwise noted. This includes drawing cards from the encounter deck, as well as searching, looking at, revealing, or otherwise interacting with the encounter deck (or encounter discard pile) in any way. This also includes abilities that trigger when the encounter deck runs out of cards. If an effect specifically refers to the standard encounter deck or spectral encounter deck, it interacts with the specified deck regardless of the investigator’s location.\nEach of the two encounter decks have their own discard pile. Whenever a card with the [[Spectral]] trait would be discarded, it is placed in the discard pile for the spectral encounter deck. All other encounter cards are discarded to the discard pile for the standard encounter deck.\n<i>Note: Flipping a location over from one side to another during this scenario does not “reveal” the new location.</i>"
+      "title": "Колода потусторонних контактов",
+      "text": "При подготовке к этому сценарию вам нужно собрать две колоды контактов: одну с обычными контактами, а другую — с «потусторонними». Когда сыщик должен каким-либо образом взаимодействовать с колодой контактов, по умолчанию ему следует использовать обычную колоду.\nОднако в определённый момент в ходе сценария локации могут перевернуться потусторонней стороной вверх. Пока сыщик находится в локации с чертой потусторонняя, он должен использовать всякий раз колоду потусторонних контактов вместо обычной колоды контактов, если не сказано иного. Сюда входят случаи, когда сыщику нужно взять карту контакта, найти, раскрыть или посмотреть карту в колоде контактов, а также любые другие взаимодействия с колодой и сбросом контактов, включая розыгрыш свойств, срабатывающих, когда в колоде контактов заканчиваются карты. Если эффект прямо указывает на обычную колоду контактов или колоду потусторонних контактов, то этот эффект взаимодействует с указанной колодой контактов независимо от того, в какой локации находится сыщик.\nУ каждой из двух колод контактов свой сброс. Каждый раз, когда сбрасывается карта контакта с чертой потусторонняя, её следует поместить в сброс колоды потусторонних контактов. Все остальные карты контактов кладутся в сброс обычной колоды контактов.\n<i>Обратите внимание: Когда в этом сценарии локация переворачивается на другую сторону, не считается, что при этом была открыта новая локация.</i>"
     },
     {
       "id": "record_heretics_released",
       "type": "input",
-      "text": "In your Campaign Log, record <i>X heretics were unleashed unto Arkham</i>. X is the number of Heretic enemies in play. (If it is act 1, instead record <i>4 heretics were unleashed unto Arkham</i>.)",
+      "text": "Запишите в журнал кампании, что <i>в Аркхэм проникли Х еретичек</i>. X равен числу «Еретичек» в игре. (Если партия завершилась в сцене 1, вместо этого запишите, что <i>в Аркхэм проникли 4 еретички</i>.)",
       "input": {
         "type": "counter",
-        "text": "Heretic enemies in play:",
+        "text": "Число «Еретичек» в игре:",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "heretics_released",
             "operation": "set_input",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "В Аркхэм проникли #X# еретичек."
           }
         ]
       }
@@ -48475,13 +48503,13 @@
           "type": "campaign_log",
           "section": "mementos",
           "id": "corn_husk_doll",
-          "text": "Corn Husk Doll"
+          "text": "Соломенная кукла"
         }
       ]
     },
     {
       "id": "check_earned_wisp",
-      "text": "If 3 or fewer <i>heretics were unleashed unto Arkham</i>...",
+      "text": "Если в Аркхэм проникли 3 еретички или меньше…",
       "type": "branch",
       "condition": {
         "type": "campaign_log_count",
@@ -48508,7 +48536,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "survived_the_watchers_embrace",
-          "text": "the investigators survived the watcher’s embrace."
+          "text": "сыщики пережили объятия Стража."
         }
       ]
     },
@@ -48520,7 +48548,7 @@
           "type": "campaign_log",
           "section": "mementos",
           "id": "wisp_of_spectral_mist",
-          "text": "Wisp of Spectral Mist"
+          "text": "Клок потусторонней мглы"
         }
       ]
     },
@@ -48553,7 +48581,7 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(each investigator defeated)",
+      "title": "Исход не достигнут\n(Все сыщики побеждены)",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -48583,7 +48611,7 @@
         "id": "the_circle_undone.the_wages_of_sin.resolution_1",
         "name": "Resolution 1"
       },
-      "text": "Rays of faded sunlight stream through the haze, and the unnatural mist finally recedes. As it does, Hangman’s Hill returns to its original state. No other spiteful ghosts emerge to haunt you, and the witches who summoned them have retreated into the shadows once more. You hope that you have done enough to prevent the rest of Arkham to succumbing to this horror.",
+      "text": "Лучи приглушённого солнечного света пробиваются сквозь дымку, и неестественная мгла наконец рассеивается. Как только она отступает, Висельный холм становится прежним. Вас больше не преследуют разъярённые духи, а призвавшие их ведьмы снова отступили в тень. Вы надеетесь, что сделанного вами достаточно, чтобы защитить Аркхэм от этого ужаса.",
       "steps": [
         "maybe_corn_husk_doll",
         "record_heretics_released",
@@ -48599,7 +48627,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "Resigned to your fate, you fall to your knees. The mist parts. Time slows to a crawl as the watcher emerges. Its spectral form glides along the ground, approaching with the slow surety of a ticking clock. You close your eyes, unwilling to look upon your killer. Your fingers dig into your palm, and you brace yourself.\nThe moment passes.\nWhen you open your eyes again, the creature is gone, along with the spectral mist.\n…Have you been spared?",
+      "text": "Отдавшись воле судьбы, вы падаете на колени. Мгла \nрасступается. Время словно замирает, когда появляется Страж. \nЕго призрачные очертания скользят над землёй, медленно приближаясь с неотвратимостью тикающих часов. Вы закрываете глаза, не желая смотреть на собственную погибель. Крепко сжав кулаки, вы собираетесь с духом.\nНапряжение спадает.\nКогда вы снова открываете глаза, больше нет ни существа, ни потусторонней мглы.\n…Вас пощадили?",
       "steps": [
         "survived_the_watchers_embrace",
         "record_heretics_released",
@@ -48639,7 +48667,7 @@
     {
       "id": "choose_fate",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Ведущий сыщик должен решить (выберите одно):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -49061,6 +49089,7 @@
   "type": "interlude",
   "scenario_name": "Причуда судьбы",
   "full_name": "Interlude IV: Twist of Fate",
+  "icon": "inexorable_fate",
   "setup": [
     "tof_1",
     "path_winds_before_you",
@@ -51588,6 +51617,7 @@
   "scenario_name": "The Black Cat",
   "full_name": "Interlude I: The Black Cat",
   "type": "interlude",
+  "icon": "tde",
   "setup": [
     "maybe_check_dreamers_grow_weaker",
     "black_cat_1",
@@ -51925,6 +51955,7 @@
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
   "type": "epilogue",
+  "icon": "merging_realities",
   "setup": [
     "check_weaver_of_the_cosmos",
     "check_nyarlathoteps_invasion_has_begun",
@@ -52567,6 +52598,7 @@
   "scenario_name": "The Great Ones",
   "full_name": "Interlude III: The Great Ones",
   "type": "interlude",
+  "icon": "dreamers_curse",
   "setup": [
     "check_point_of_no_return",
     "great_ones_1",
@@ -53368,6 +53400,7 @@
   "scenario_name": "The Oneironauts",
   "full_name": "Interlude II: The Oneironauts",
   "type": "interlude",
+  "icon": "whispers_of_hypnos",
   "setup": [
     "check_a_thousand_shapes_of_horror",
     "wait_oneironauts_decision",
@@ -55464,6 +55497,7 @@
   "scenario_name": "Пролог",
   "full_name": "Пролог",
   "type": "interlude",
+  "icon": "dreamlands",
   "setup": [
     "intro"
   ],
@@ -58122,6 +58156,7 @@
   "scenario_name": "The Black Cat",
   "full_name": "Interlude I: The Black Cat",
   "type": "interlude",
+  "icon": "tde",
   "setup": [
     "check_interconnected_campaign",
     "black_cat_3",
@@ -58378,6 +58413,7 @@
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
   "type": "epilogue",
+  "icon": "merging_realities",
   "setup": [
     "check_where_the_gods_dwell",
     "check_bridge_was_completed"
@@ -58976,6 +59012,7 @@
   "scenario_name": "The Great Ones",
   "full_name": "Interlude III: The Great Ones",
   "type": "interlude",
+  "icon": "dreamers_curse",
   "setup": [
     "check_dark_side_of_the_moon",
     "wait_great_ones_decision",
@@ -59474,6 +59511,7 @@
   "scenario_name": "The Oneironauts",
   "full_name": "Interlude II: The Oneironauts",
   "type": "interlude",
+  "icon": "whispers_of_hypnos",
   "setup": [
     "check_the_search_for_kadath",
     "oneironauts_1",
@@ -60724,6 +60762,7 @@
   "scenario_name": "Пролог",
   "full_name": "Пролог",
   "type": "interlude",
+  "icon": "dreamlands",
   "setup": [
     "intro"
   ],
@@ -62520,6 +62559,7 @@
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
   "type": "epilogue",
+  "icon": "temporal_flux",
   "setup": [
     "check_turned_back_time"
   ],
@@ -62586,6 +62626,7 @@
   "scenario_name": "Финал экспедиции",
   "full_name": "Интерлюдия II: Финал экспедиции",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "check_investigators_recovered_relic",
     "$upgrade_decks"
@@ -62765,7 +62806,7 @@
     },
     {
       "id": "alejandro_on_his_own",
-      "text": "Запишите в журнал кампании, что <i>Алехандро Вела продолжает исследования в одиночку</i>. Если карта «Алехандро Вела» находится в колоде какого-либо сыщика, удалите её.\nиз этой колоды.",
+      "text": "Запишите в журнал кампании, что <i>Алехандро Вела продолжает исследования в одиночку</i>. Если карта «Алехандро Вела» находится в колоде какого-либо сыщика, удалите её из этой колоды.",
       "effects": [
         {
           "type": "campaign_log",
@@ -62786,7 +62827,7 @@
         "name": "Expedition's End 4"
       },
       "type": "story",
-      "text": "От громкого стука в дверь вы роняете перо и вскакиваете. Уже почти полтретьего ночи. Кто может прийти к вам в такой час? Вы снова возвращаетесь мыслями в джунгли и представляете, как змееподобные существа нападают на вас в вашем собственном доме. Вздрогнув, вы достаёте оружие и на цыпочках подходите к двери, готовясь нанести удар. Вы делаете глубокий\\ вдох и открываете дверь.\nЗа дверью стоит знакомая женщина со смуглой кожей, длинными каштановыми волосами и тяжёлым взглядом пронзительных жёлтых глаз. Хотя она и сменила одежду, вы сразу узнаёте Ичтаку, воительницу-эцтли, с которой встретились в джунглях. Теперь на ней длинный плащ, боллмановская шляпа и обувь, явно доставляющая ей неудобство. Её зубы гневно сжаты. Вы уже готовитесь поднять оружие для защиты, когда она глубоко вздыхает, медленно переступает порог вашего дома и закрывает за собой дверь. «Что бы вы ни сделали, вы должны обратить это вспять, — мрачно произносит она. — Иначе всем нам придёт конец»."
+      "text": "От громкого стука в дверь вы роняете перо и вскакиваете. Уже почти полтретьего ночи. Кто может прийти к вам в такой час? Вы снова возвращаетесь мыслями в джунгли и представляете, как змееподобные существа нападают на вас в вашем собственном доме. Вздрогнув, вы достаёте оружие и на цыпочках подходите к двери, готовясь нанести удар. Вы делаете глубокий вдох и открываете дверь.\nЗа дверью стоит знакомая женщина со смуглой кожей, длинными каштановыми волосами и тяжёлым взглядом пронзительных жёлтых глаз. Хотя она и сменила одежду, вы сразу узнаёте Ичтаку, воительницу-эцтли, с которой встретились в джунглях. Теперь на ней длинный плащ, боллмановская шляпа и обувь, явно доставляющая ей неудобство. Её зубы гневно сжаты. Вы уже готовитесь поднять оружие для защиты, когда она глубоко вздыхает, медленно переступает порог вашего дома и закрывает за собой дверь. «Что бы вы ни сделали, вы должны обратить это вспять, — мрачно произносит она. — Иначе всем нам придёт конец»."
     },
     {
       "id": "ee_5",
@@ -64072,6 +64113,7 @@
   "scenario_name": "Зов джунглей",
   "full_name": "Интерлюдия III: Зов джунглей",
   "type": "interlude",
+  "icon": "rainforest",
   "setup": [
     "intro",
     "use_gasoline",
@@ -64561,6 +64603,7 @@
   "scenario_name": "Пролог",
   "full_name": "Пролог",
   "type": "interlude",
+  "icon": "expedition",
   "setup": [
     "intro",
     "choose_investigators",
@@ -64680,6 +64723,7 @@
   "scenario_name": "Бессонные ночи",
   "full_name": "Интерлюдия I: Бессонные ночи",
   "type": "interlude",
+  "icon": "deadly_traps",
   "setup": [
     "prompt",
     "check_blanket",
@@ -66783,6 +66827,7 @@
   "scenario_name": "Во тьме",
   "full_name": "Интерлюдия V: Во тьме",
   "type": "interlude",
+  "icon": "torch",
   "setup": [
     "check_fell_into_depths",
     "check_found_missing_relic",
@@ -66837,7 +66882,7 @@
     {
       "id": "darkness_1",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_1",
+        "id": "the_forgotten_age.interlude_5.the_darkness_1",
         "name": "Darkness 1"
       },
       "type": "story",
@@ -66846,7 +66891,7 @@
     {
       "id": "darkness_2",
       "narration": {
-        "id": "the_forgotten_age.interlude_5.darkness_2",
+        "id": "the_forgotten_age.interlude_5.the_darkness_2",
         "name": "Darkness 2"
       },
       "type": "story",
@@ -68613,6 +68658,7 @@
   "scenario_name": "На свободе",
   "full_name": "Интерлюдия IV: На свободе",
   "type": "interlude",
+  "icon": "cult_of_pnakotus",
   "setup": [
     "check_process_backfired",
     "explain_mind_recovered",
@@ -69530,7 +69576,7 @@
     },
     {
       "id": "add_cultist",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "Добавьте в мешок хаоса 1 жетон [cultist] до конца кампании.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -69688,7 +69734,7 @@
         "nightgaunts",
         "pentagram"
       ],
-      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow) and the following locations: Northside, Downtown <i>(First Bank of Arkham)</i>, Easttown, Miskatonic University, and Rivertown. Do not gather the rest of the locations or the act, agenda, and scenario reference cards from that set."
+      "subtext": "Из набора контактов «Полуночные маски» возьмите только 5 карт напастей (2 карты «Ложный след» и 3 карты «Преследующая тень») и следующие локации: «Нортсайд», «Даунтаун (Первый банк Аркхэма)», «Исттаун», «Мискатоникский университет» и «Ривертаун». Не берите остальные локации, сцены, замыслы и памятку сценария из этого набора."
     },
     {
       "id": "set_aside_alejandro_and_relic",
@@ -69851,7 +69897,7 @@
       "id": "three_acts_three_decks",
       "type": "rule_reminder",
       "title": "Три сцены, три нити.",
-      "text": "В этом сценарии три разные колоды сцен: колода а/Ь, колода c/d и колода e/f. Каждая из них составляется отдельно по обычным правилам, в последовательном порядке. В ходе этого сценария все три колоды сцен находятся в игре, и игроки вправе решать, какие из них продвигать, а какие оставить без внимания. Тексты всех трёх активных сцен влияют на игру в любой её момент. Вам может не хватить времени, чтобы выполнить все три задачи, поэтому хорошо подумайте над тем, за какую из нитей потянуть. \nСостав каждой из трёх колод зависит от нижеописанных обстоятельств."
+      "text": "В этом сценарии три разные колоды сцен: колода а/b, колода c/d и колода e/f. Каждая из них составляется отдельно по обычным правилам, в последовательном порядке. В ходе этого сценария все три колоды сцен находятся в игре, и игроки вправе решать, какие из них продвигать, а какие оставить без внимания. Тексты всех трёх активных сцен влияют на игру в любой её момент. Вам может не хватить времени, чтобы выполнить все три задачи, поэтому хорошо подумайте над тем, за какую из нитей потянуть. \nСостав каждой из трёх колод зависит от нижеописанных обстоятельств."
     },
     {
       "id": "check_act_ab",
@@ -69862,7 +69908,7 @@
         "choices": [
           {
             "id": "completed",
-            "text": "Вы завершили сцену ЗЬ.",
+            "text": "Вы завершили сцену Зb.",
             "steps": [
               "found_missing_relic",
               "maybe_earn_relic_of_ages"
@@ -69870,7 +69916,7 @@
           },
           {
             "id": "in_play",
-            "text": "Колода сцен а/Ь ещё в игре.",
+            "text": "Колода сцен a/b ещё в игре.",
             "steps": [
               "relic_is_missing",
               "maybe_remove_relic_of_ages"
@@ -71770,15 +71816,1126 @@
   "id": "a_light_in_the_fog",
   "scenario_name": "A Light in the Fog",
   "full_name": "Scenario VI: A Light in the Fog",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "location_layout",
+    "location_layout_act_3",
+    "setup_keys",
+    "setup_captured",
+    "set_aside_cards",
+    "check_for_story_assets",
+    "check_idol",
+    "check_mantle",
+    "check_headdress",
+    "check_for_doom",
+    "check_reached_falcon_point_after_sunrise",
+    "check_tide_has_grown_stronger",
+    "add_flood_tokens",
+    "encounter_deck",
+    "keys_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "Crimson-tinted fog bathes the sky as you reach the gatehouse of Falcon Point. Atop the cliffs above you, the lighthouse beacon pierces through the mist. Considering the state of Innsmouth, you wonder what purpose the signal serves now. You doubt there are any ships out at sea given the inclement weather.\nSomewhere inside is the evidence you found weeks ago. You suspect that Oceiros—the man who captured you and left you in that pit to die—also resides within. \"Are you ready?\" Agent Harper asks. \"We have no real escape route here, should things go south. Be prepared for anything.\"\nYou nod. It's too late to turn back now. Steadily, you make your way toward the cliffs. One way or another, this ends today."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Подготовка",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "a_light_in_the_fog",
+        "creatures_of_the_deep",
+        "flooded_caverns",
+        "rising_tide",
+        "syzygy",
+        "striking_fear"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put Falcon Point Gatehouse, Falcon Point Cliffside, Lighthouse Stairwell, and Lighthouse Keeper's Cottage into play on the same row. Put Lantern Room into play directly above Lighthouse Stairwell. <i>(See Location Placement (Act 1))</i>.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at Falcon Point Gatehouse."
+        },
+        {
+          "text": "From among the Tidal Tunnel locations, remove the 2 Underground River locations from the game."
+        },
+        {
+          "text": "Set each other location aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement (Act 1)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "note": "Note: The order of the locations in this row does not matter, so long as Lantern Room is directly above Lighthouse Stairwell.",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "lantern_room",
+          "blank"
+        ],
+        [
+          "gatehouse",
+          "cliff",
+          "lighthouse_stairwell",
+          "keepers_cottage"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "lantern_room",
+          "name": "Lantern Room"
+        },
+        {
+          "code": "gatehouse",
+          "name": "Falcon Point Gatehouse"
+        },
+        {
+          "code": "cliff",
+          "name": "Falcon Point Cliffside"
+        },
+        {
+          "code": "lighthouse_stairwell",
+          "name": "Lighthouse Stairwell"
+        },
+        {
+          "code": "keepers_cottage",
+          "name": "Lighthouse Keeper's Cottage"
+        }
+      ]
+    },
+    {
+      "id": "location_layout_act_3",
+      "type": "location_setup",
+      "text": "Location Placement (Act 3 / Agenda 3)",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "note": "Note: The order of the locations on each row does not matter, so long as Lantern Room, Lighthouse Stairwell, and each Sunken Grotto are on the same column, as depicted.",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "lantern_room",
+          "blank"
+        ],
+        [
+          "gatehouse",
+          "cliff",
+          "lighthouse_stairwell",
+          "keepers_cottage"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "sunken_grotto_upper_depths",
+          "07052_back"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "sunken_grotto_lower_depths",
+          "07052_back"
+        ],
+        [
+          "07052_back",
+          "07052_back",
+          "sunken_grotto_final_depths",
+          "07052_back"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "lantern_room",
+          "name": "Lantern Room"
+        },
+        {
+          "code": "gatehouse",
+          "name": "Falcon Point Gatehouse"
+        },
+        {
+          "code": "cliff",
+          "name": "Falcon Point Cliffside"
+        },
+        {
+          "code": "lighthouse_stairwell",
+          "name": "Lighthouse Stairwell"
+        },
+        {
+          "code": "keepers_cottage",
+          "name": "Lighthouse Keeper's Cottage"
+        },
+        {
+          "code": "sunken_grotto_upper_depths",
+          "name": "Sunken Grotto (Upper Depths)"
+        },
+        {
+          "code": "sunken_grotto_lower_depths",
+          "name": "Sunken Grotto (Lower Depths)"
+        },
+        {
+          "code": "sunken_grotto_final_depths",
+          "name": "Sunken Grotto (Final Depths)"
+        }
+      ]
+    },
+    {
+      "id": "setup_keys",
+      "text": "Set each key aside, as follows:",
+      "bullets": [
+        {
+          "text": "Set the white, black, blue, yellow and red keys aside, faceup."
+        },
+        {
+          "text": "Set the purple and green keys aside, facedown. Shuffle them so you do not know which is which."
+        }
+      ]
+    },
+    {
+      "id": "setup_captured",
+      "text": "Put the double-sided “Captured!” story card into play next to the scenario reference card, with its story side faceup. (This card is on the reverse side of the Holding Cell location.) Its text is active."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: the Oceiros Marsh enemy, both copies of the Worth His Salt treachery, and both copies of the Taken Captive treachery."
+    },
+    {
+      "id": "keys_rule",
+      "title": "Keys",
+      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+    },
+    {
+      "id": "check_for_story_assets",
+      "text": "Check Campaign Log:"
+    },
+    {
+      "id": "check_idol",
+      "bullet_type": "small",
+      "text": "If <i>the idol was brought to the lighthouse</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "idol_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_idol"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_idol",
+      "bullet_type": "small",
+      "text": "Search the collection for the Waveworn Idol and set it aside, out of play."
+    },
+    {
+      "id": "check_mantle",
+      "bullet_type": "small",
+      "text": "If <i>the mantle was brought to the lighthouse</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mantle_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_mantle"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_mantle",
+      "bullet_type": "small",
+      "text": "Search the collection for the Awakened Mantle and set it aside, out of play."
+    },
+    {
+      "id": "check_headdress",
+      "bullet_type": "small",
+      "text": "If <i>the headdress was brought to the lighthouse</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "headdress_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_headdress"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_headdress",
+      "bullet_type": "small",
+      "text": "Search the collection for the Headdress of Y'ha-nthlei and set it aside, out of play."
+    },
+    {
+      "id": "check_for_doom",
+      "text": "Check Campaign Log:"
+    },
+    {
+      "id": "check_reached_falcon_point_after_sunrise",
+      "bullet_type": "small",
+      "text": "If <i>the investigators reached Falcon Point after sunrise</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "reached_falcon_point_after_sunrise",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_falcon_point_doom"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_falcon_point_doom",
+      "bullet_type": "small",
+      "text": "Place 1 doom on Agenda 1."
+    },
+    {
+      "id": "check_tide_has_grown_stronger",
+      "bullet_type": "small",
+      "text": "If <i>the tide has grown stronger</i>:",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "tide_has_grown_stronger",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "add_tide_doom"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_tide_doom",
+      "bullet_type": "small",
+      "text": "Place 1 doom on Agenda 1."
+    },
+    {
+      "id": "add_flood_tokens",
+      "text": "Add the flood tokens to the token pool."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Keys",
+            "steps": [
+              "ask_keys"
+            ]
+          },
+          {
+            "id": "flashback_12",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_12",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback XII",
+            "steps": [
+              "flashback_12_story",
+              "flashback_12_effects",
+              "flashback_12_tokens",
+              "flashback_12_clues"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_12",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_13",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_13",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback XIII",
+            "steps": [
+              "flashback_13_story",
+              "flashback_13_effects",
+              "flashback_13_tokens"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_13",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Which keys do you want to read the representation of:",
+      "input": {
+        "type": "checklist",
+        "text": "Read",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Red",
+            "steps": [
+              "red_key"
+            ]
+          },
+          {
+            "id": "blue",
+            "text": "Blue",
+            "steps": [
+              "blue_key"
+            ]
+          },
+          {
+            "id": "green",
+            "text": "Green",
+            "steps": [
+              "green_key"
+            ]
+          },
+          {
+            "id": "yellow",
+            "text": "Yellow",
+            "steps": [
+              "yellow_key"
+            ]
+          },
+          {
+            "id": "purple",
+            "text": "Purple",
+            "steps": [
+              "purple_key"
+            ]
+          },
+          {
+            "id": "black",
+            "text": "Black",
+            "steps": [
+              "black_key"
+            ]
+          },
+          {
+            "id": "white",
+            "text": "White",
+            "steps": [
+              "white_key"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "red_key",
+      "text": "Red: A gilded key made of coral and covered in strange, glowing runes. The word \"Y'ha-nthlei\" is inscribed upon the handle."
+    },
+    {
+      "id": "blue_key",
+      "text": "Blue: A key carved with a symbol of an engorged fish eye."
+    },
+    {
+      "id": "green_key",
+      "text": "Green: A fist-sized cluster of raw peridot that pulses and glows with unnatural light."
+    },
+    {
+      "id": "yellow_key",
+      "text": "Yellow: A heavy iron ring crowded with prison cell keys."
+    },
+    {
+      "id": "purple_key",
+      "text": "Purple: The deceased larva of a malformed fish."
+    },
+    {
+      "id": "black_key",
+      "text": "Black: A map of the depths beneath Devil Reef."
+    },
+    {
+      "id": "white_key",
+      "text": "White: A pocket telescope."
+    },
+    {
+      "id": "flashback_12_story",
+      "title": "Flashback XII",
+      "type": "story",
+      "text": "You peer up at Falcon Point lighthouse, but from much further below. You are aboard Mr. Moore's fishing vessel, during your voyage to Devil Reef several weeks earlier. The ship sways back and forth as angry waves thrash against its hull. \"'Fraid it's gon' be a bit rocky,\" the ship captain shouts over the crashing of the tumultuous sea. \"Weather's been awful wild of late. Strange tides an' stranger winds.\"\nBut still you stare up at the ominous lighthouse, its beacon a guiding light, a warning sign, or both. Curious what knowledge he might have, you ask Mr. Moore about the lighthouse. \"That ol' thing? Been there longer'n Innsmouth itself. Marsh family's kept it runnin' as long as I remember. Oceiros is keeper now. Strange fella, that Oceiros. They say the only place in town he visits is the Order o' Dagon hall by New Church Green.\" He shakes his head.\nYou wonder if there are more secrets inside the lighthouse than meets the eye. Mr. Moore seems to note your curiosity. \"I've heard them Marshes've carved out caverns beneath the lighthouse goin' all the way down to sea level an' beyond,\" he claims. \"Dunno if that's true, but sometimes when I'm out at sea I've seen groups of 'em up by the cliffside, all wavin' an kneelin' like they're prayin' or something. Never really paid it much mind, but...\" his voice grows quieter. \"Jus' thought you oughta know.\"\nYou nod and thank him. If what he's saying is true, perhaps you should give this lighthouse a visit. You make a mental note to research more about Falcon Point once you return to town.\nWhen your mind snaps back to the present, you recall the legwork you'd done after your expedition to Devil Reef, and the information you found on the vast network of tunnels beneath the lighthouse..."
+    },
+    {
+      "id": "flashback_12_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "conversation_with_mr_moore",
+          "text": "a conversation with Mr. Moore"
+        }
+      ]
+    },
+    {
+      "id": "flashback_12_tokens",
+      "text": "Choose and remove one of the following chaos tokens from the chaos bag for the remainder of the campaign ([cultist], [tablet], or [elder_thing])",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "Remove [cultist]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "cultist",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "Remove [tablet]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "tablet",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "Remove [elder_thing]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "elder_thing",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flashback_12_clues",
+      "text": "The lead investigator gains 1 [per_investigator] clues from the token pool."
+    },
+    {
+      "id": "flashback_13_story",
+      "title": "Flashback XIII",
+      "type": "story",
+      "text": "You speak with one of the many sailors who frequent a ramshackle tavern by the docks of Innsmouth, somewhere in the southeastern slums of the decrepit seaport. He's found his own little corner of the pub in which to hide and drown himself in alcohol. So much the better—you'd prefer to keep your investigation quiet.\nYou jot down notes as the drunken man rambles on about the creatures he's seen swimming off the coast and prowling around the reefs. \"Deep Ones,\" he names them. \"Caught one in my net once,\" he blabbers through slurred speach. \"She an' her eggs—tha's right!—'er eggs, bigger'n your fist, an' squirmin' an' wrigglin', too!\"\nAbsorbed in the ritual of telling a tale for his fellow sailors, he elaborates: \"She had one of 'em in her arms. Tiny little devil, with bulgin', hateful eyes. Couldn't stand the sight of it. I threw the net o'er as soon as I realized what I'd caught, an' came right back 'ere. If I had my way I'd never sail 'gain.\"\nYou mull this new information over in your head. If this man speaks the truth, these creatures seem to have a lifecycle similar to that of a fish. But then, what is the purpose of the uncanny hybrid creatures you have seen skulking about the town? Are they but figments of your frightened imagination? Or is there a much more sinister part of this lifecycle that you are missing?"
+    },
+    {
+      "id": "flashback_13_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "lifecycle_of_a_deep_one",
+          "text": "the lifecycle of a \"Deep One\""
+        }
+      ]
+    },
+    {
+      "id": "flashback_13_tokens",
+      "text": "Choose and remove one of the following chaos tokens from the chaos bag for the remainder of the campaign ([cultist], [tablet], or [elder_thing])",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "Remove [cultist]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "cultist",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "Remove [tablet]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "tablet",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "Remove [elder_thing]",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "elder_thing",
+              "options": [
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": [
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_final_agenda",
+      "type": "input",
+      "text": "What agenda was active when the scenario ended?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "agenda_1",
+            "text": "Agenda 1",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "agenda_2",
+            "text": "Agenda 2",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "agenda_3",
+            "text": "Agenda 3",
+            "steps": [
+              "resolution_4"
+            ]
+          },
+          {
+            "id": "agenda_4",
+            "text": "Agenda 4",
+            "steps": [
+              "resolution_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Победный счёт:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unspect_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "all_killed",
+      "text": "Все сыщики <b>убиты</b>.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "killed": true
+        }
+      ]
+    },
+    {
+      "id": "lose_campaign",
+      "text": "Сыщики проиграли.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "tic_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
+    },
+    {
+      "id": "ask_moon_room_resigned",
+      "text": "Which location did each investigator resign at?",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "resigned",
+        "source": "scenario",
+        "choices": [
+          {
+            "id": "moon_room",
+            "text": "Moon Room",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "campaign_notes",
+                "id": "possesses_a_diving_suite",
+                "cards": "$input_value",
+                "masculine_text": "#name# possesses a diving suit.",
+                "feminine_text": "#name# possesses a diving suit."
+              }
+            ]
+          },
+          {
+            "id": "falcon_point",
+            "text": "Falcon Point"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_black_key_on_act",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Was the black key on the current act when the game ended?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "possess_a_map_of_yhanthlei",
+                "text": "the investigators possess a map of Y'ha-nthlei."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_red_key_on_act",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Was the red key on the current act when the game ended?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "possess_the_key_to_yhanthlei",
+                "text": "the investigators possess the key to Y'ha-nthlei."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_story_relics",
+      "text": "For each set-aside [[Relic]] story asset that was added to an investigator's hand during this scenario, any investigator may choose to add that story asset to their deck. It does not count toward that investigator's deck size."
+    },
+    {
+      "id": "maybe_ask_idol",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "idol_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_idol"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_idol",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "earn_idol",
+            "text": "Was Waveworn Idol added to an investigator's hand during this scenario?",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "choice",
+                "card": "07179"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_mantle",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mantle_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_mantle"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_mantle",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "earn_idol",
+            "text": "Was Awakened Mantle added to an investigator's hand during this scenario?",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "choice",
+                "card": "07180"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_headdress",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "headdress_brought_to_the_lighthouse",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_headdress"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_headdress",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "earn_idol",
+            "text": "Was Headdress of Y'ha-nthlei added to an investigator's hand during this scenario?",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "choice",
+                "card": "07181"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution_defeated",
+      "title": "Исход не был достигнут\n(все сыщики побеждены)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": [
+        "ask_final_agenda"
+      ]
+    },
+    {
+      "id": "R1",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 1",
+      "text": "Exhausted, you throw yourself onto the rocky shore. Waves lap at your ankles as you stare up into the sky. Behind the clouds, deep crimson hues spell on ominous end for all of humankind. Your skull pounds with agony as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe over the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes your senses once more.",
+      "steps": [
+        "ask_moon_room_resigned",
+        "ask_black_key_on_act",
+        "ask_red_key_on_act",
+        "ask_story_relics",
+        "maybe_ask_idol",
+        "maybe_ask_mantle",
+        "maybe_ask_headdress",
+        "earn_xp"
+      ]
+    },
+    {
+      "id": "R2",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 2",
+      "text": "Exhaustion and despair eat at your muscles as you escape into the dark woods surrounding Falcon Point. You know it is too dangerous to stop moving, but you can hardly stand. You brace yourself against a nearby tree and stare up into the sky. Behind the clouds, deep crimson hues spell an ominous end for all of humankind. Your skull pounds as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe above the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes your senses once more.",
+      "steps": [
+        "ask_black_key_on_act",
+        "ask_red_key_on_act",
+        "ask_story_relics",
+        "maybe_ask_idol",
+        "maybe_ask_mantle",
+        "maybe_ask_headdress",
+        "earn_xp"
+      ]
+    },
+    {
+      "id": "R3",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 3",
+      "text": "You panic as the water level rises all the way to the ceiling of the cavern. There is no air left to breathe. You feel the currents pulling you deeper and deeper below the surface, where the bulging, glowing eyes of Deep Ones lie in wait. Desperately, you swim up to the cellar door of the lighthouse. Your only hope is to force it open and crawl up into the buildings above, where sweet oxygen awaits. You shove and push with all of your might, hoping, imagining, praying that any moment now your strength will spring the hatch open. Your lungs are about to burst. No! This cannot be the end! You struggle and fight for survival, but the lock does not budge. Hungry for air, your lungs give. Your throat fills with cold saltwater. The sensation of your ankles being gripped by webbed hands is the last thing you feel.",
+      "steps": [
+        "all_killed",
+        "lose_campaign"
+      ]
+    },
+    {
+      "id": "R4",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "title": "Исход 4",
+      "text": "Coming here was a terrible mistake. Falcon Point is no simple lighthouse, but a headquarter for the Order of Dagon, even more hostile and deadly than the town of Innsmouth you left behind. With danger at every turn and the hateful lighthouse keeper hot on your tail, you leave the secrets of the lighthouse behind and flee into the dark woods.\nBy the time you are too deep into the treeline to see the lighthouse beacon, you are utterly exhausted. You know it is too dangerous to stop moving, but you can hardly stand. You brace yourself against a nearby treeand stare up into the sky. Behind the clouds, deep crimson hues spell an ominous end for all of humankind. Your skull pounds as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe above the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes you once more.",
+      "steps": [
+        "ask_black_key_on_act",
+        "ask_red_key_on_act",
+        "ask_story_relics",
+        "maybe_ask_idol",
+        "maybe_ask_mantle",
+        "maybe_ask_headdress",
+        "earn_xp"
+      ]
+    }
+  ]
 },
 {
   "id": "beneath_the_waves",
   "scenario_name": "Beneath the Waves",
   "full_name": "Interlude III: Beneath the Waves",
   "type": "interlude",
+  "icon": "flooded_caverns",
   "setup": [
     "intro",
     "section_intro",
@@ -71795,7 +72952,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You bounce through your memories, struggling to return to the present. You remember a dark cell. A knife at your throat. A man with wide, unblinking eyes, wearing a long hooded robe. \"Oceiros,\" another voice calls, \"these ones were found in Dagon's lair as well. We believe they were the ones snooping around Devil Reef.\"\nOceiros nods. The knife at your throat digs deeper. \"Take what they have stolen to the lighthouse at once,\" he commands. \"It is time to begin our great work. None will disrupt the Order's business every again.\"\nYour mind snaps back to the present. The rumbling of an automobile engine grows as your senses return. Agent Harper grips your shoulder and peers into your eyes. \"Another vision,\" she utters with a hint of surprise. \"Do you remember something? What was it?\"\nYou shake the ache from your pounding skull and ask Harper if the name Oceiros means anything. \"Oceiros Marsh? He's the keeper of the old lighthouse on Falcon Point,\" she replies. \"Why? What did you see?\""
+      "text": "You bounce through your memories, struggling to return to the present. You remember a dark cell. A knife at your throat. A man with wide, unblinking eyes, wearing a long hooded robe. \"Oceiros,\" another voice calls, \"these ones were found in Dagon's lair as well. We believe they were the ones snooping around Devil Reef.\"\nOceiros nods. The knife at your throat digs deeper. \"Take what they have stolen to the lighthouse at once,\" he commands. \"It is time to begin our great work. None will disrupt the Order's business ever again.\"\nYour mind snaps back to the present. The rumbling of an automobile engine grows as your senses return. Agent Harper grips your shoulder and peers into your eyes. \"Another vision,\" she utters with a hint of surprise. \"Do you remember something? What was it?\"\nYou shake the ache from your pounding skull and ask Harper if the name Oceiros means anything. \"Oceiros Marsh? He's the keeper of the old lighthouse on Falcon Point,\" she replies. \"Why? What did you see?\""
     },
     {
       "id": "section_intro",
@@ -71824,7 +72981,7 @@
     {
       "id": "purple_key_story",
       "type": "story",
-      "text": "You describe the idol found in the undersea grotto. Agent Harper nods along with you. \"I remember seeing something like that in some of the notes I found while you were off investigating the reef. It depicts some kind of ancient diety—something those vile creatures worship.\" Her voice lowers to little more than a whisper. \"Something I suspect is no myth.\" You ask where the idol is now, and she shakes her head. \"I suspect it was taken from you when you were thrown into that pit,\" she replies."
+      "text": "You describe the idol found in the undersea grotto. Agent Harper nods along with you. \"I remember seeing something like that in some of the notes I found while you were off investigating the reef. It depicts some kind of ancient deity—something those vile creatures worship.\" Her voice lowers to little more than a whisper. \"Something I suspect is no myth.\" You ask where the idol is now, and she shakes her head. \"I suspect it was taken from you when you were thrown into that pit,\" she replies."
     },
     {
       "id": "purple_key_xp",
@@ -71840,7 +72997,7 @@
     },
     {
       "id": "purple_key_token",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "Добавьте в мешок хаоса 1 жетон [cultist] до конца кампании.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -72618,7 +73775,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_a_strange_idol",
-          "text": "discovery of a strange idol."
+          "text": "discovery of a strange idol"
         }
       ]
     },
@@ -72639,7 +73796,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_an_unholy_mantle",
-          "text": "discovery of an unholy mantle."
+          "text": "discovery of an unholy mantle"
         }
       ]
     },
@@ -72660,7 +73817,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "discovery_of_a_mystical_relic",
-          "text": "discovery of a mystical relic."
+          "text": "discovery of a mystical relic"
         }
       ]
     },
@@ -72845,6 +74002,7 @@
   "id": "hidden_truths",
   "scenario_name": "Hidden Truths",
   "full_name": "Interlude IV: Hidden Truths",
+  "icon": "agents_of_dagon",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -72871,7 +74029,8 @@
     "running_stopped_rule",
     "road_x_rule",
     "road_x_rule_1",
-    "road_x_rule_2"
+    "road_x_rule_2",
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -73530,7 +74689,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_deal_with_joe_sargent",
-          "text": "a deal with Joe Sargent."
+          "text": "a deal with Joe Sargent"
         }
       ]
     },
@@ -73548,7 +74707,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_followed_lead",
-          "text": "a followed lead."
+          "text": "a followed lead"
         },
         {
           "type": "add_card",
@@ -73571,7 +74730,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "an_intervention",
-          "text": "an intervention."
+          "text": "an intervention"
         },
         {
           "type": "add_chaos_token",
@@ -73595,7 +74754,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_jailbreak",
-          "text": "a jailbreak."
+          "text": "a jailbreak"
         }
       ]
     },
@@ -73786,6 +74945,7 @@
   "scenario_name": "Puzzle Pieces",
   "full_name": "Interlude I: Puzzle Pieces",
   "type": "interlude",
+  "icon": "shattered_memories",
   "setup": [
     "intro",
     "check_memories_recovered",
@@ -74375,7 +75535,7 @@
       "id": "flashback_2_story",
       "title": "Flashback II",
       "type": "story",
-      "text": "An old fishing vessel rocks side to side beneath your feat, assaulted by tempestuous waters and tentacles of some enormous creature looming just beneath the waves. \"Somebody kill that damned thing!\" the ship's captain shouts. A loud crash erupts across the vessel, and the hull howls in protest as a vast tentacle encircles it and draws tight. \"It's got us in its grip! It ain't goin' nowhere. Now's your chance!\" the grizzled, old captain yells. With fire in your eyes, you raise your weapon and swing...\nYou return to the present, a sickness churning in your stomach. The skeletal remains of the creature stare back at you. What on Earth was that thing?"
+      "text": "An old fishing vessel rocks side to side beneath your feet, assaulted by tempestuous waters and tentacles of some enormous creature looming just beneath the waves. \"Somebody kill that damned thing!\" the ship's captain shouts. A loud crash erupts across the vessel, and the hull howls in protest as a vast tentacle encircles it and draws tight. \"It's got us in its grip! It ain't goin' nowhere. Now's your chance!\" the grizzled, old captain yells. With fire in your eyes, you raise your weapon and swing...\nYou return to the present, a sickness churning in your stomach. The skeletal remains of the creature stare back at you. What on Earth was that thing?"
     },
     {
       "id": "flashback_2_effects",
@@ -74461,7 +75621,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "In the distance, the sky is a dark crimson, and the full moon hangs just below the blackened sun. You are about to close your eyes and surrender to unconsciousness when a stranger's voice startles you back too your feet. \"Oh! You are alive?\" Even through her strained voice, you can hear a rhythmic Indian accent and the unwavering confidence of a trained professional. Standing in front of you is a woman with long, raven-black hair. Her tattered trench coat has seen better days, and bruises splash across her dirt-covered skin. \"You seem confused. Why are you looking at me like that?\" the stranger asks.",
+      "text": "In the distance, the sky is a dark crimson, and the full moon hangs just below the blackened sun. You are about to close your eyes and surrender to unconsciousness when a stranger's voice startles you back to your feet. \"Oh! You are alive?\" Even through her strained voice, you can hear a rhythmic Indian accent and the unwavering confidence of a trained professional. Standing in front of you is a woman with long, raven-black hair. Her tattered trench coat has seen better days, and bruises splash across her dirt-covered skin. \"You seem confused. Why are you looking at me like that?\" the stranger asks.",
       "steps": [
         "earn_xp"
       ]
@@ -74473,6 +75633,7 @@
   "scenario_name": "The Syzygy",
   "full_name": "Interlude II: The Syzygy",
   "type": "interlude",
+  "icon": "syzygy",
   "setup": [
     "syzygy_1",
     "check_mission_failed",
@@ -74530,7 +75691,7 @@
     {
       "id": "syzygy_2",
       "type": "story",
-      "text": "You tell Harper you remember your mission to find her, but that after a week of searching, you hadn't been able to do so. The last thing you remember was somebody slipping a notebook under your hotel room door with some information regarding an oroganization called the \"Esoteric Order of Dagon.\"\n\"Oh. Yeah, that was me. Sorry I couldn't stick around and chat, but I had some other business to attend to,\" she explains. She tells you that after several days in captivity, she finally managed to get the upper hand against her captor and free herself, but she was injured in the process. As if to prove her story, she opens her trenchcoat, and you see dark bloodstains seeping through her button-up shirt. Several bandages peek out beneath the fabric. \"Just barely missed my kidney. Lucky me, eh?\"\nYou complain that you were wasting your time searching high and low for her, and she scoffs. \"Hardly! You learned more in one week than I did in two. I knew that you were onto something, and I wanted to help out, but I was still being followed. So I dropped off the one solid bit of research I'd found and laid low for a while. It was you who did the rest really.\" Sadly, you remember nothing of \"the rest.\""
+      "text": "You tell Harper you remember your mission to find her, but that after a week of searching, you hadn't been able to do so. The last thing you remember was somebody slipping a notebook under your hotel room door with some information regarding an organization called the \"Esoteric Order of Dagon.\"\n\"Oh. Yeah, that was me. Sorry I couldn't stick around and chat, but I had some other business to attend to,\" she explains. She tells you that after several days in captivity, she finally managed to get the upper hand against her captor and free herself, but she was injured in the process. As if to prove her story, she opens her trenchcoat, and you see dark bloodstains seeping through her button-up shirt. Several bandages peek out beneath the fabric. \"Just barely missed my kidney. Lucky me, eh?\"\nYou complain that you were wasting your time searching high and low for her, and she scoffs. \"Hardly! You learned more in one week than I did in two. I knew that you were onto something, and I wanted to help out, but I was still being followed. So I dropped off the one solid bit of research I'd found and laid low for a while. It was you who did the rest really.\" Sadly, you remember nothing of \"the rest.\""
     },
     {
       "id": "syzygy_3",
@@ -76400,7 +77561,7 @@
         "physical",
         "mental"
       ],
-      "text": "The town of Innsmouth has proven more hostile and unwelcoming than you could have ever imagined. At every turn, you are stalked by sordid brutes and disfigured silhouttes: figures that crawl on all fours and watch you from the shadows with bulging, unblinking eyes. Fearing that you have drawn too much attentin to your investigation, you retreat to your hotel room only to find it ransacked. Your luggage is ravaged, its contents strewn about. Much of your gear has been stolen. Scrawled on the wall in black paint is a warning:\n<innsmouth>INTERLOPERS DROWN IN THE DEEP</innsmouth>",
+      "text": "The town of Innsmouth has proven more hostile and unwelcoming than you could have ever imagined. At every turn, you are stalked by sordid brutes and disfigured silhouttes: figures that crawl on all fours and watch you from the shadows with bulging, unblinking eyes. Fearing that you have drawn too much attention to your investigation, you retreat to your hotel room only to find it ransacked. Your luggage is ravaged, its contents strewn about. Much of your gear has been stolen. Scrawled on the wall in black paint is a warning:\n<innsmouth>INTERLOPERS DROWN IN THE DEEP</innsmouth>",
       "steps": [
         "resolution_1"
       ]
@@ -76475,6 +77636,7 @@
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
   "type": "placeholder",
+  "icon": "rising_tide",
   "setup": [],
   "steps": []
 }]}

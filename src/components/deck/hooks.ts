@@ -5,7 +5,7 @@ import { forEach, keys, range } from 'lodash';
 import deepDiff from 'deep-diff';
 import { ngettext, msgid, t } from 'ttag';
 
-import { Deck, EditDeckState, ParsedDeck, Slots } from '@actions/types';
+import { Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useComponentVisible, useDeck, usePlayerCards } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';
@@ -18,7 +18,7 @@ export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [s
     if (!parsedDeck) {
       return [undefined, undefined];
     }
-    if (parsedDeck.deck.previous_deck) {
+    if (parsedDeck.deck.previousDeckId) {
       const adjustedXp = totalXp ? parsedDeck.experience : parsedDeck.availableExperience;
       const unspent = parsedDeck.availableExperience - (parsedDeck.changes?.spentXp || 0);
       if (unspent === 0) {
@@ -36,22 +36,22 @@ export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [s
   }, [parsedDeck, totalXp]);
 }
 
-export function useSimpleDeckEdits(id: number | undefined): EditDeckState | undefined {
+export function useSimpleDeckEdits(id: DeckId | undefined): EditDeckState | undefined {
   const deckEditsSelector = useMemo(makeDeckEditsSelector, []);
   return useSelector((state: AppState) => deckEditsSelector(state, id));
 }
 
-export function useDeckSlotCount(id: number, code: string): number {
+export function useDeckSlotCount({ uuid }: DeckId, code: string): number {
   return useSelector((state: AppState) => {
-    if (!state.deckEdits.editting || !state.deckEdits.editting[id] || !state.deckEdits.edits || !state.deckEdits.edits[id]) {
+    if (!state.deckEdits.editting || !state.deckEdits.editting[uuid] || !state.deckEdits.edits || !state.deckEdits.edits[uuid]) {
       return 0;
     }
-    return state.deckEdits.edits[id]?.slots[code] || 0;
+    return state.deckEdits.edits[uuid]?.slots[code] || 0;
   });
 }
 
 export function useDeckEdits(
-  id: number | undefined,
+  id: DeckId | undefined,
   initialize?: boolean,
   initialMode?: 'edit' | 'upgrade'
 ): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
@@ -89,24 +89,24 @@ export interface ParsedDeckResults {
 }
 
 export function useParsedDeck(
-  id: number,
+  id: DeckId,
   componentName: string,
   componentId: string,
   {
     fetchIfMissing,
-    upgrade,
+    initialMode,
   }: {
     fetchIfMissing?: boolean;
-    upgrade?: boolean;
+    initialMode?: 'upgrade' | 'edit';
   } = {}
 ): ParsedDeckResults {
   const [deck, previousDeck] = useDeck(id, { fetchIfMissing });
-  const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing, upgrade ? 'upgrade' : undefined);
+  const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing, initialMode);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const cards = usePlayerCards(tabooSetId);
   const visible = useComponentVisible(componentId);
-  const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(deck && cards && fetchIfMissing ?
-    parseDeck(deck, deck.meta || {}, deck.slots, deck.ignoreDeckLimitSlots, cards, previousDeck, deck.xp_adjustment || 0) :
+  const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>((deck && cards && fetchIfMissing) ?
+    parseDeck(deck, deck.meta || {}, deck.slots || {}, deck.ignoreDeckLimitSlots, cards, previousDeck, deck.xp_adjustment || 0) :
     undefined);
   useDebouncedEffect(() => {
     if (cards && visible && deckEdits && deck) {
@@ -132,8 +132,8 @@ export function useParsedDeck(
     deckEditsRef,
     visible,
     parsedDeck,
-    editable: !deck?.next_deck,
-    mode: (deckEdits?.mode) || (upgrade ? 'upgrade' : 'view'),
+    editable: !deck?.nextDeckId,
+    mode: (deckEdits?.mode) || (initialMode || 'view'),
   };
 }
 
@@ -182,7 +182,7 @@ export function useDeckEditState({
       }
     });
     forEach(deckEdits.slots, (currentCount, code) => {
-      const ogDeckCount = deck.slots[code] || 0;
+      const ogDeckCount = deck.slots?.[code] || 0;
       if (ogDeckCount < currentCount) {
         slotDeltas.additions[code] = currentCount - ogDeckCount;
       }
@@ -198,7 +198,7 @@ export function useDeckEditState({
       (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
       (deckEdits.descriptionChange && deck.description_md !== deckEdits.descriptionChange) ||
       (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
-      (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
+      (deck.previousDeckId && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
       keys(slotDeltas.removals).length > 0 ||
       keys(slotDeltas.additions).length > 0 ||
       slotDeltas.ignoreDeckLimitChanged ||

@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
-import { StyleSheet, useWindowDimensions, View } from 'react-native';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { forEach, map } from 'lodash';
 import PinchZoomView from 'react-native-pinch-zoom-view';
 
@@ -10,6 +10,7 @@ import { LocationSetupStep } from '@data/scenario/types';
 import LocationCard from './LocationCard';
 import { CARD_RATIO } from '@styles/sizes';
 import { isTablet } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 export interface LocationSetupProps {
   step: LocationSetupStep;
@@ -28,7 +29,7 @@ interface CardSizes {
 }
 
 export default function LocationSetupView({ step: { locations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
-  const { width, height } = useWindowDimensions();
+  const { width, height } = useContext(StyleContext);
   const rowCount = locations.length;
   const rowSize = locations[0].length;
 

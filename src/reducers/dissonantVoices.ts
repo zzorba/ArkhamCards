@@ -37,7 +37,7 @@ export default function(
     return {
       ...state,
       loading: false,
-      error: action.error.toString() === 'User Cancelled.' ? action.error.toString() : null,
+      error: action.error.toString() !== 'User Cancelled.' ? action.error.toString() : null,
     };
   } else if (action.type === DISSONANT_VOICES_LOGOUT) {
     return {

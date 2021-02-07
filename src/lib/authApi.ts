@@ -1,21 +1,38 @@
 import Config from 'react-native-config';
-import { keys, map } from 'lodash';
+import { flatMap, keys, map, omit } from 'lodash';
 
 import { getAccessToken } from './auth';
-import { Deck, DeckMeta, DeckProblemType } from '@actions/types';
+import { Deck, DeckMeta, DeckProblemType, ArkhamDbApiDeck, ArkhamDbDeck } from '@actions/types';
 
 interface Params {
   [key: string]: string | number;
 }
 
-function cleanDeck(deck: Deck): Deck {
-  if (deck) {
-    if (!deck.ignoreDeckLimitSlots) {
-      deck.ignoreDeckLimitSlots = {};
-    }
-    if (deck.meta && typeof(deck.meta) === 'string') {
-      deck.meta = JSON.parse(deck.meta);
-    }
+function cleanDeck(apiDeck: ArkhamDbApiDeck): Deck {
+  const deck: Deck = {
+    ...omit(apiDeck, ['previous_deck', 'next_deck']),
+    local: undefined,
+    uuid: undefined,
+  };
+  if (!deck.ignoreDeckLimitSlots) {
+    deck.ignoreDeckLimitSlots = {};
+  }
+  if (deck.meta && typeof(deck.meta) === 'string') {
+    deck.meta = JSON.parse(deck.meta);
+  }
+  if (apiDeck.previous_deck) {
+    deck.previousDeckId = {
+      id: apiDeck.previous_deck,
+      local: false,
+      uuid: `${apiDeck.previous_deck}`,
+    };
+  }
+  if (apiDeck.next_deck) {
+    deck.nextDeckId = {
+      id: apiDeck.next_deck,
+      local: false,
+      uuid: `${apiDeck.next_deck}`,
+    };
   }
   return deck;
 }
@@ -55,7 +72,12 @@ export function decks(lastModified?: string): Promise<DecksResponse> {
         const result: DecksResponse = {
           cacheHit: false,
           lastModified: lastModified || undefined,
-          decks: map(json || [], deck => cleanDeck(deck)),
+          decks: flatMap(json || [], deck => {
+            if (deck && deck.id && deck.name && deck.slots) {
+              return cleanDeck(deck);
+            }
+            return [];
+          }),
         };
         return result;
       });
@@ -78,7 +100,7 @@ export function loadDeck(id: number): Promise<Deck> {
       if (response.status !== 200) {
         throw new Error('Invalid Deck Status');
       }
-      return response.json().then(deck => {
+      return response.json().then((deck: ArkhamDbApiDeck) => {
         if (deck && deck.id && deck.name && deck.slots) {
           return cleanDeck(deck);
         }
@@ -131,7 +153,7 @@ export function newCustomDeck(
 ) {
   return newDeck(investigator, name, tabooSetId)
     .then(deck => saveDeck(
-      deck.id,
+      (deck as ArkhamDbDeck).id,
       deck.name,
       slots,
       ignoreDeckLimitSlots,

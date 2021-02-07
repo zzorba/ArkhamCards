@@ -56,8 +56,8 @@ function MyDecksView({ componentId }: NavigationProps) {
   }, [componentId, colors]);
 
   const searchOptionControls = useMemo(() => {
-    const hasLocalDeck = find(myDecks, deckId => deckId < 0) !== null;
-    const hasOnlineDeck = find(myDecks, deckId => deckId > 0) !== null;
+    const hasLocalDeck = !!find(myDecks, deckId => deckId.local);
+    const hasOnlineDeck = !!find(myDecks, deckId => !deckId.local);
     if (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck)) {
       // need to have both to show the toggle.
       return null;
@@ -90,8 +90,7 @@ function MyDecksView({ componentId }: NavigationProps) {
 
   const onlyDeckIds = useMemo(() => {
     if (localDecksOnly) {
-      // @ts-ignore
-      return filter(myDecks, deckId => parseInt(deckId, 10) < 0);
+      return filter(myDecks, deckId => deckId.local);
     }
     return undefined;
   }, [myDecks, localDecksOnly]);

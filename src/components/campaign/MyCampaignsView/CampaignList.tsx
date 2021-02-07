@@ -1,10 +1,10 @@
-import React, { useCallback, useMemo } from 'react';
-import { FlatList, ListRenderItemInfo, Keyboard, Platform, View, StyleSheet } from 'react-native';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { FlatList, ListRenderItemInfo, Keyboard, Platform, View, StyleSheet, RefreshControl } from 'react-native';
 import { map } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { Campaign, STANDALONE } from '@actions/types';
+import { Campaign, getCampaignId, STANDALONE } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import CampaignItem from './CampaignItem';
 import { CampaignDetailProps } from '@components/campaign/CampaignDetailView';
@@ -15,6 +15,7 @@ import LinkedCampaignItem from './LinkedCampaignItem';
 import COLORS from '@styles/colors';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StandaloneItem from './StandaloneItem';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   onScroll: (...args: any[]) => void;
@@ -22,14 +23,17 @@ interface Props {
   campaigns: Campaign[];
   footer: React.ReactElement;
   standalonesById: { [campaignId: string]: { [scenarioId: string]: string } };
+  onRefresh?: () => void;
+  refreshing?: boolean;
 }
 
 interface CampaignItemType {
   campaign: Campaign;
 }
 
-export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById }: Props) {
-  const onPress = useCallback((id: number, campaign: Campaign) => {
+export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing }: Props) {
+  const { colors } = useContext(StyleContext);
+  const onPress = useCallback((id: string, campaign: Campaign) => {
     Keyboard.dismiss();
     const options: Options = {
       topBar: {
@@ -40,16 +44,11 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
           title: t`Back`,
         },
         rightButtons: [
-          campaign.guided ? {
+          {
             icon: iconsMap.edit,
             id: 'edit',
             color: COLORS.M,
             accessibilityLabel: t`Edit name`,
-          } : {
-            icon: iconsMap.menu,
-            id: 'menu',
-            color: COLORS.M,
-            accessibilityLabel: t`Menu`,
           },
         ],
       },
@@ -60,7 +59,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
           component: {
             name: 'Guide.Standalone',
             passProps: {
-              campaignId: campaign.id,
+              campaignId: getCampaignId(campaign),
               standaloneId: campaign.standaloneId,
             },
             options,
@@ -68,14 +67,14 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
         });
       }
     } else if (campaign.guided) {
-      if (campaign.link) {
+      if (campaign.linkUuid) {
         Navigation.push<LinkedCampaignGuideProps>(componentId, {
           component: {
             name: 'Guide.LinkedCampaign',
             passProps: {
-              campaignId: campaign.id,
-              campaignIdA: campaign.link.campaignIdA,
-              campaignIdB: campaign.link.campaignIdB,
+              campaignId: getCampaignId(campaign),
+              campaignIdA: campaign.linkUuid.campaignIdA,
+              campaignIdB: campaign.linkUuid.campaignIdB,
             },
             options,
           },
@@ -85,7 +84,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
           component: {
             name: 'Guide.Campaign',
             passProps: {
-              campaignId: campaign.id,
+              campaignId: getCampaignId(campaign),
             },
             options,
           },
@@ -96,7 +95,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
         component: {
           name: 'Campaign',
           passProps: {
-            id,
+            campaignId: getCampaignId(campaign),
           },
           options,
         },
@@ -108,17 +107,17 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     if (campaign.cycleCode === STANDALONE) {
       return campaign.standaloneId ? (
         <StandaloneItem
-          key={campaign.id}
+          key={campaign.uuid}
           campaign={campaign}
           onPress={onPress}
           scenarioName={standalonesById[campaign.standaloneId.campaignId][campaign.standaloneId.scenarioId]}
         />
       ) : null;
     }
-    if (campaign.link) {
+    if (campaign.linkUuid) {
       return (
         <LinkedCampaignItem
-          key={campaign.id}
+          key={campaign.uuid}
           campaign={campaign}
           onPress={onPress}
         />
@@ -126,7 +125,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     }
     return (
       <CampaignItem
-        key={campaign.id}
+        key={campaign.uuid}
         campaign={campaign}
         onPress={onPress}
       />
@@ -146,10 +145,18 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     <FlatList
       contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
       contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+      refreshControl={onRefresh ? (
+        <RefreshControl
+          refreshing={!!refreshing}
+          onRefresh={onRefresh}
+          tintColor={colors.lightText}
+          progressViewOffset={SEARCH_BAR_HEIGHT}
+        />
+      ) : undefined}
       onScroll={onScroll}
       data={map(campaigns, campaign => {
         return {
-          key: `${campaign.id}`,
+          key: `${campaign.uuid}`,
           campaign,
         };
       })}

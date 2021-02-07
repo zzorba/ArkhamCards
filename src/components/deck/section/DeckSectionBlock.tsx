@@ -15,9 +15,10 @@ interface Props {
 
   toggleCollapsed?: () => void;
   collapsed?: boolean;
+  noSpace?: boolean;
 }
 
-export default function DeckSectionBlock({ title, onTitlePress, children, footerButton, faction, collapsed, toggleCollapsed }: Props) {
+export default function DeckSectionBlock({ title, onTitlePress, children, footerButton, faction, collapsed, toggleCollapsed, noSpace }: Props) {
   return (
     <RoundedFactionBlock
       faction={faction}
@@ -29,6 +30,7 @@ export default function DeckSectionBlock({ title, onTitlePress, children, footer
           onPress={toggleCollapsed}
         />
       ) : footerButton}
+      noSpace={noSpace}
     >
       { children }
     </RoundedFactionBlock>

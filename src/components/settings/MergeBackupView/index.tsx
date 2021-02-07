@@ -7,43 +7,60 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import { filter, find, flatMap, map, forEach } from 'lodash';
+import { filter, find, flatMap, map, forEach, values } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import CampaignMergeSection from './CampaignMergeSection';
 import DeckMergeSection from './DeckMergeSection';
-import { Campaign, CampaignGuideState, Deck, BackupState } from '@actions/types';
-import { AppState } from '@reducers';
-import { mergeCampaigns, mergeDecks } from '@lib/cloudHelper';
+import { Campaign, Deck, BackupState, LegacyBackupState, getDeckId, LocalDeck } from '@actions/types';
+import { AppState, getAllDecks } from '@reducers';
+import { mergeCampaigns, mergeDecks } from './backupHelper';
 import { restoreComplexBackup } from '@components/campaign/actions';
 import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import { useInvestigatorCards, useToggles } from '@components/core/hooks';
+import { useInvestigatorCards, useNavigationButtonPressed, useToggles } from '@components/core/hooks';
+import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
 
 export interface MergeBackupProps {
-  backupData: BackupState;
+  backupData: BackupState | LegacyBackupState;
 }
 
 type Props = MergeBackupProps & NavigationProps;
 
-interface State {
-  importCampaigns: {
-    [key: string]: boolean;
-  };
-  importDecks: {
-    [key: string]: boolean;
-  };
-}
-
 function MergeBackupView({ backupData, componentId }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
+  const decks = useSelector(getAllDecks);
+  const migratedBackupData: BackupState = useMemo(() => {
+    if (backupData.version === 1) {
+      // Already migrated.
+      return backupData;
+    }
+    const [updatedDecks, deckMap] = migrateDecks(backupData.decks);
+    const allDecks = {
+      ...decks,
+      ...updatedDecks,
+    };
+    forEach(decks, deck => {
+      if (!deck.local) {
+        deckMap[deck.id] = getDeckId(deck);
+      }
+    });
+    const [updatedCampaigns, campaignMap] = migrateCampaigns(backupData.campaigns, deckMap, allDecks);
+    const updatedGuides = migrateGuides(backupData.guides, campaignMap, deckMap);
+    return {
+      version: 1,
+      guides: flatMap(values(updatedGuides), x => x || []),
+      decks: filter(values(updatedDecks), d => !!d.local) as LocalDeck[],
+      campaigns: values(updatedCampaigns),
+    };
+  }, [backupData, decks]);
   const dispatch = useDispatch();
-  const campaignMergeSelector = useCallback((state: AppState) => mergeCampaigns(backupData.campaigns, state), [backupData.campaigns]);
+  const campaignMergeSelector = useCallback((state: AppState) => mergeCampaigns(migratedBackupData.campaigns, state), [migratedBackupData.campaigns]);
   const campaignMerge = useSelector(campaignMergeSelector);
-  const deckMergeSelector = useCallback((state: AppState) => mergeDecks(backupData.decks, state), [backupData.decks]);
+  const deckMergeSelector = useCallback((state: AppState) => mergeDecks(migratedBackupData.decks, state), [migratedBackupData.decks]);
   const deckMerge = useSelector(deckMergeSelector);
   const [importCampaigns,, setImportCampaigns] = useToggles({});
   const [importDecks,, setImportDecks] = useToggles({});
@@ -51,8 +68,8 @@ function MergeBackupView({ backupData, componentId }: Props) {
   const dependentDecks = useCallback((decks: Deck[]) => {
     return flatMap(decks, deck => {
       const dependentDecks: Deck[] = [deck];
-      while (deck && deck.next_deck) {
-        deck = deckMerge.upgradeDecks[deck.next_deck];
+      while (deck && deck.nextDeckId) {
+        deck = deckMerge.upgradeDecks[deck.nextDeckId.uuid];
         if (deck) {
           dependentDecks.push(deck);
         }
@@ -63,20 +80,20 @@ function MergeBackupView({ backupData, componentId }: Props) {
 
   const selectedDecks: Deck[] = useMemo(() => {
     const decks = [
-      ...filter(deckMerge.newDecks, c => !importDecks[c.id]),
-      ...filter(deckMerge.updatedDecks, c => !importDecks[c.id]),
-      ...filter(deckMerge.staleDecks, c => !!importDecks[c.id]),
-      ...filter(deckMerge.sameDecks, c => !!importDecks[c.id]),
+      ...filter(deckMerge.newDecks, d => !importDecks[getDeckId(d).uuid]),
+      ...filter(deckMerge.updatedDecks, d => !importDecks[getDeckId(d).uuid]),
+      ...filter(deckMerge.staleDecks, d => !!importDecks[getDeckId(d).uuid]),
+      ...filter(deckMerge.sameDecks, d => !!importDecks[getDeckId(d).uuid]),
     ];
     return dependentDecks(decks);
   }, [deckMerge, importDecks, dependentDecks]);
 
   const selectedCampaigns: Campaign[] = useMemo(() => {
     return [
-      ...filter(campaignMerge.newCampaigns, c => !importCampaigns[c.id]),
-      ...filter(campaignMerge.updatedCampaigns, c => !importCampaigns[c.id]),
-      ...filter(campaignMerge.staleCampaigns, c => !!importCampaigns[c.id]),
-      ...filter(campaignMerge.sameCampaigns, c => !!importCampaigns[c.id]),
+      ...filter(campaignMerge.newCampaigns, c => !importCampaigns[c.uuid]),
+      ...filter(campaignMerge.updatedCampaigns, c => !importCampaigns[c.uuid]),
+      ...filter(campaignMerge.staleCampaigns, c => !!importCampaigns[c.uuid]),
+      ...filter(campaignMerge.sameCampaigns, c => !!importCampaigns[c.uuid]),
     ];
   }, [campaignMerge, importCampaigns]);
 
@@ -97,51 +114,31 @@ function MergeBackupView({ backupData, componentId }: Props) {
 
   const onCampaignChange = useCallback((campaign: Campaign, value: boolean) => {
     if (campaign.uuid) {
-      setImportCampaigns(campaign.id, value);
+      setImportCampaigns(campaign.uuid, value);
     }
   }, [setImportCampaigns]);
 
   const onDeckChange = useCallback((deck: Deck, value: boolean) => {
-    if (deck.uuid) {
-      setImportDecks(deck.id, value);
-    }
+    setImportDecks(getDeckId(deck).uuid, value);
   }, [setImportDecks]);
 
-  const missingDecks: Deck[] = useMemo(() => {
-    const decks = [
-      ...filter(deckMerge.newDecks, c => !!importDecks[c.id]),
-    ];
-    return dependentDecks(decks);
-  }, [deckMerge, importDecks, dependentDecks]);
-
   const actuallyDoImport = useCallback(() => {
-    const selectedGuides: { [key: string]: CampaignGuideState } = {};
-    forEach(selectedCampaigns, campaign => {
-      if (backupData.guides[campaign.id]) {
-        selectedGuides[campaign.id] = backupData.guides[campaign.id];
-      }
-    });
-    const deckRemapping = { ...deckMerge.localRemapping };
-    forEach(missingDecks, deck => {
-      delete deckRemapping[deck.id];
-    });
-
+    const campaignIds = new Set(map(selectedCampaigns, c => c.uuid));
+    const selectedGuides = filter(migratedBackupData.guides, g => !!g && campaignIds.has(g.uuid));
     dispatch(restoreComplexBackup(
       selectedCampaigns,
       selectedGuides,
-      campaignMerge.localRemapping,
       selectedDecks,
-      deckRemapping,
     ));
     Navigation.pop(componentId);
-  }, [componentId, backupData.guides, campaignMerge, deckMerge, selectedCampaigns, selectedDecks, missingDecks, dispatch]);
+  }, [componentId, migratedBackupData.guides, selectedCampaigns, selectedDecks, dispatch]);
 
   const doImport = useCallback(() => {
-    const importedDecks = new Set(map(selectedDecks, deck => deck.id));
-    const newDecks = new Set(map(deckMerge.newDecks, deck => deck.id));
+    const importedDecks = new Set(map(selectedDecks, deck => getDeckId(deck).uuid));
+    const newDecks = new Set(map(deckMerge.newDecks, deck => getDeckId(deck).uuid));
     const campaignWithoutDecks = find(selectedCampaigns, campaign => {
-      return !!find(campaign.baseDeckIds || [], deckId => (
-        deckId < 0 && !importedDecks.has(deckId) && newDecks.has(deckId)
+      return !!find(campaign.deckIds || [], deckId => (
+        deckId.local && !importedDecks.has(deckId.uuid) && newDecks.has(deckId.uuid)
       ));
     });
     if (campaignWithoutDecks) {
@@ -157,6 +154,12 @@ function MergeBackupView({ backupData, componentId }: Props) {
       actuallyDoImport();
     }
   }, [deckMerge, selectedCampaigns, selectedDecks, actuallyDoImport]);
+
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'import' && canImport) {
+      doImport();
+    }
+  }, componentId, [doImport, canImport]);
 
   const cancel = useCallback(() => {
     Navigation.pop(componentId);

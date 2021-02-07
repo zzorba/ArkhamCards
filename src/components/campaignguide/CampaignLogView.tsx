@@ -6,12 +6,14 @@ import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignLogComponent from './CampaignLogComponent';
 import StyleContext from '@styles/StyleContext';
+import { CampaignId } from '@actions/types';
 
 export interface CampaignLogProps {
-  campaignId: number;
+  campaignId: CampaignId;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
   standalone?: boolean;
+  hideChaosBag?: boolean;
 }
 
 type Props = CampaignLogProps & NavigationProps;
@@ -22,6 +24,7 @@ export default function CampaignLogView({
   campaignLog,
   componentId,
   standalone,
+  hideChaosBag = false,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   return (
@@ -32,6 +35,7 @@ export default function CampaignLogView({
         campaignGuide={campaignGuide}
         campaignLog={campaignLog}
         standalone={standalone}
+        hideChaosBag={hideChaosBag}
       />
     </ScrollView>
   );

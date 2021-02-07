@@ -9,13 +9,12 @@ import { t } from 'ttag';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import Card from '@data/Card';
-import { isBig } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export function costIconSize(fontScale: number) {
   const scaleFactor = ((fontScale - 1) / 2 + 1);
-  return (isBig ? 48 : 36) * scaleFactor;
+  return 36 * scaleFactor;
 }
 
 interface Props {
@@ -98,7 +97,7 @@ export default class CardCostIcon extends React.PureComponent<Props> {
     const textColor = !inverted ? colors.background : 'white';
     const level = (card.xp === null || card.xp === undefined) ? 'none' : `${card.xp}`;
     const scaleFactor = ((fontScale - 1) / 2 + 1);
-    const ICON_SIZE = (isBig ? 46 : 32) * scaleFactor;
+    const ICON_SIZE = 32 * scaleFactor;
     const style = { width: costIconSize(fontScale), height: costIconSize(fontScale) };
     return (
       <View style={[styles.level, style]} accessibilityLabel={this.label()}>
@@ -130,7 +129,12 @@ export default class CardCostIcon extends React.PureComponent<Props> {
           ) : (
             <Text style={[
               styles.costNumber,
-              { fontSize: (isBig ? 32 : 23) * scaleFactor, color: textColor },
+              {
+                color: textColor,
+                fontFamily: 'cost',
+                fontSize: ((card.cost || 0) >= 10 ? 14 : 18) * scaleFactor,
+                paddingTop: 1,
+              },
             ]} allowFontScaling={false}>
               { this.cardCost() }
             </Text>
@@ -157,8 +161,7 @@ const styles = StyleSheet.create({
     paddingBottom: 6,
   },
   costNumber: {
-    paddingTop: 3,
-    fontFamily: 'Teutonic',
+    paddingTop: 1,
     color: COLORS.white,
   },
   factionIcon: {

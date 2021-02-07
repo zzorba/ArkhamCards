@@ -68,7 +68,6 @@ export default function InvestigatorOptionsControl({
         return (
           <InvestigatorOption
             key={idx}
-            investigator={investigator}
             option={option}
             setMeta={setMeta}
             meta={meta}

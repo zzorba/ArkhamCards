@@ -469,10 +469,10 @@ export default function DeckViewTab(props: Props) {
       visibleCards,
       false,
       tabooSetId,
-      deck.id,
+      parsedDeck.id,
       investigatorFront
     );
-  }, [componentId, data, colors, investigatorFront, tabooSetId, deck.id, singleCardView, cards]);
+  }, [componentId, data, colors, investigatorFront, tabooSetId, parsedDeck.id, singleCardView, cards]);
 
   const renderSectionHeader = useCallback((section: CardSection) => {
     if (section.superTitle) {
@@ -498,8 +498,8 @@ export default function DeckViewTab(props: Props) {
   }, [faction]);
 
   const showDeckUpgrades = useMemo(() => {
-    return !!(deck.previous_deck && !deck.next_deck);
-  }, [deck.previous_deck, deck.next_deck]);
+    return !!(deck.previousDeckId && !deck.nextDeckId);
+  }, [deck.previousDeckId, deck.nextDeckId]);
 
   const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined): ControlType | undefined => {
     if (mode === 'view') {
@@ -510,16 +510,13 @@ export default function DeckViewTab(props: Props) {
     }
 
     const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
-    if (count !== undefined) {
-      return {
-        type: 'upgrade',
-        deckId: deck.id,
-        limit: card.collectionDeckLimit(packInCollection),
-        count,
-        onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
-      };
-    }
-  }, [mode, deck.id, showCardUpgradeDialog, showDeckUpgrades, packInCollection]);
+    return {
+      type: 'upgrade',
+      deckId: parsedDeck.id,
+      limit: card.collectionDeckLimit(packInCollection),
+      onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
+    };
+  }, [mode, parsedDeck.id, showCardUpgradeDialog, showDeckUpgrades, packInCollection]);
 
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection) => {
     const card = cards[item.id];
@@ -539,27 +536,28 @@ export default function DeckViewTab(props: Props) {
         control={controlForCard(item, card, count)}
         faded={count === 0}
         noBorder={section.last && index === (section.cards.length - 1)}
+        noSidePadding
       />
     );
   }, [showSwipeCard, deckEditsRef, controlForCard, cards]);
 
   const dispatch = useDispatch();
   const setTabooSet = useCallback((tabooSetId: number | undefined) => {
-    dispatch(setDeckTabooSet(deck.id, tabooSetId || 0));
-  }, [dispatch, deck.id]);
+    dispatch(setDeckTabooSet(parsedDeck.id, tabooSetId || 0));
+  }, [dispatch, parsedDeck.id]);
   const setMeta = useCallback((key: keyof DeckMeta, value?: string) => {
     if (deckEditsRef.current) {
-      dispatch(updateDeckMeta(deck.id, deck.investigator_code, deckEditsRef.current, [{ key, value }]));
+      dispatch(updateDeckMeta(parsedDeck.id, deck.investigator_code, deckEditsRef.current, [{ key, value }]));
     }
-  }, [dispatch, deck.id, deck.investigator_code, deckEditsRef]);
+  }, [dispatch, parsedDeck.id, deck.investigator_code, deckEditsRef]);
   const setParallel = useCallback((front: string, back: string) => {
     if (deckEditsRef.current) {
-      dispatch(updateDeckMeta(deck.id, deck.investigator_code, deckEditsRef.current, [
+      dispatch(updateDeckMeta(parsedDeck.id, deck.investigator_code, deckEditsRef.current, [
         { key: 'alternate_front', value: front },
         { key: 'alternate_back', value: back },
       ]));
     }
-  }, [dispatch, deckEditsRef, deck.id, deck.investigator_code]);
+  }, [dispatch, deckEditsRef, parsedDeck.id, deck.investigator_code]);
   const [xpLabel, xpDetailLabel] = useDeckXpStrings(parsedDeck);
 
   const renderXpButton = useCallback((last: boolean) => {
@@ -576,7 +574,6 @@ export default function DeckViewTab(props: Props) {
         first
         last={last}
         icon="xp"
-        noLabelDivider
       />
     );
   }, [xpLabel, xpDetailLabel, showXpAdjustmentDialog, editable]);
@@ -586,7 +583,7 @@ export default function DeckViewTab(props: Props) {
     }
     const hasTabooPicker = (tabooOpen || showTaboo || !!tabooSet);
     const changes = parsedDeck.changes;
-    const hasXpButton = editable && !!(changes && deck.previous_deck);
+    const hasXpButton = editable && !!(changes && deck.previousDeckId);
     return (
       <View style={[styles.optionsContainer, space.paddingS]}>
         <DeckMetadataControls
@@ -599,7 +596,7 @@ export default function DeckViewTab(props: Props) {
           setMeta={setMeta}
           setParallel={setParallel}
           firstElement={hasXpButton && !!changes && !!xpLabel ? renderXpButton : undefined}
-          hasPreviousDeck={!!deck.previous_deck}
+          hasPreviousDeck={!!deck.previousDeckId}
         />
       </View>
     );
@@ -608,7 +605,7 @@ export default function DeckViewTab(props: Props) {
   ]);
 
   const investigatorBlock = useMemo(() => {
-    const yithian = (parsedDeck.slots[BODY_OF_A_YITHIAN] || 0) > 0;
+    const yithian = parsedDeck.slots && (parsedDeck.slots[BODY_OF_A_YITHIAN] || 0) > 0;
     const investigatorCard = (yithian ? cards[BODY_OF_A_YITHIAN] : undefined) || investigatorFront;
 
     if (!investigatorCard) {

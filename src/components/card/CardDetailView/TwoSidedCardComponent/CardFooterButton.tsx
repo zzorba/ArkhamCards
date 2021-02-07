@@ -1,12 +1,8 @@
-import React, { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 import { t } from 'ttag';
 
-import Ripple from '@lib/react-native-material-ripple';
-import StyleContext from '@styles/StyleContext';
-import ArkhamIcon from '@icons/ArkhamIcon';
-import AppIcon from '@icons/AppIcon';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 
 interface Props {
   onPressFaq: () => void;
@@ -14,60 +10,16 @@ interface Props {
 }
 
 export default function CardFooterButton({ onPressFaq, onPressTaboo }: Props) {
-  const { colors, fontScale, typography } = useContext(StyleContext);
-  const height = 18 * fontScale + 20;
   if (onPressTaboo) {
     return (
-      <View style={[
-        styles.buttonStyle,
-        {
-          backgroundColor: colors.L10,
-          height,
-          paddingLeft: 0,
-        },
-      ]}>
-        <Ripple
-          style={[
-            styles.buttonStyle,
-            {
-              flex: 1,
-              borderBottomRightRadius: 0,
-              backgroundColor: colors.L10,
-              height,
-            },
-          ]}
-          rippleColor={colors.L20}
-          onPress={onPressFaq}
-        >
-          <View pointerEvents="box-none" style={styles.row}>
-            <ArkhamIcon name="wild" size={18 * fontScale} color={colors.D20} />
-            <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
-              { t`FAQ` }
-            </Text>
-          </View>
-        </Ripple>
-        <View style={[styles.divider, { height: height - 16, backgroundColor: colors.background }]} />
-        <Ripple
-          style={[
-            styles.buttonStyle,
-            {
-              flex: 1,
-              borderBottomLeftRadius: 0,
-              backgroundColor: colors.L10,
-              height,
-            },
-          ]}
-          rippleColor={colors.L20}
-          onPress={onPressTaboo}
-        >
-          <View pointerEvents="box-none" style={styles.row}>
-            <AppIcon name="taboo" size={18 * fontScale} color={colors.D20} />
-            <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
-              { t`Taboo` }
-            </Text>
-          </View>
-        </Ripple>
-      </View>
+      <RoundedFooterDoubleButton
+        onPressA={onPressFaq}
+        iconA="faq"
+        titleA={t`FAQ`}
+        onPressB={onPressTaboo}
+        iconB="taboo"
+        titleB={t`Taboo`}
+      />
     );
   }
   return (
@@ -78,20 +30,3 @@ export default function CardFooterButton({ onPressFaq, onPressTaboo }: Props) {
     />
   );
 }
-
-const styles = StyleSheet.create({
-  buttonStyle: {
-    paddingLeft: 14,
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  divider: {
-    width: 1,
-  },
-});

@@ -1,5 +1,4 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { Alert } from 'react-native';
 import { find, map } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -8,7 +7,7 @@ import { fetchCards, setLanguageChoice } from '@components/card/actions';
 import DatabaseContext from '@data/DatabaseContext';
 import { AppState } from '@reducers';
 import { getSystemLanguage, localizedName, ALL_LANGUAGES } from '@lib/i18n';
-import { usePickerDialog } from '@components/deck/dialogs';
+import { ShowAlert, usePickerDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
@@ -73,6 +72,12 @@ function dialogStrings(lang: string): DialogStrings {
         cancelButton: 'Cancelar',
       };
     case 'en':
+      return {
+        title: 'Confirm',
+        description: 'Changing app language requires downloading the translated card information from ArkhamDB. This requires network and can take some time.',
+        confirmButton: 'Download now',
+        cancelButton: 'Cancel',
+      };
     case 'it':
     case 'pl':
     case 'uk':
@@ -86,7 +91,7 @@ function dialogStrings(lang: string): DialogStrings {
   }
 }
 
-export default function LanguagePicker({ first, last }: { first?: boolean; last?: boolean }) {
+export default function LanguagePicker({ first, last, showAlert }: { first?: boolean; last?: boolean; showAlert: ShowAlert }) {
   const { db } = useContext(DatabaseContext);
   const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
@@ -114,10 +119,14 @@ export default function LanguagePicker({ first, last }: { first?: boolean; last?
         cancelButton,
       } = dialogStrings(newLang);
       setTimeout(() => {
-        Alert.alert(
+        showAlert(
           title,
           description,
           [
+            {
+              text: cancelButton,
+              style: 'cancel',
+            },
             {
               text: confirmButton,
               onPress: () => {
@@ -125,17 +134,13 @@ export default function LanguagePicker({ first, last }: { first?: boolean; last?
                 dispatch(fetchCards(db, newCardLang, newLang));
               },
             },
-            {
-              text: cancelButton,
-              style: 'cancel',
-            },
           ]
         );
-      }, 200);
+      }, 400);
     } else {
       dispatch(setLanguageChoice(newLang));
     }
-  }, [lang, dispatch, setTempLang, db]);
+  }, [lang, dispatch, setTempLang, db, showAlert]);
 
   const selectedValue = useMemo(() => {
     if (tempLang !== undefined) {

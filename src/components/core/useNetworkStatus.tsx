@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import NetInfo, { NetInfoState, NetInfoStateType } from '@react-native-community/netinfo';
-import hoistNonReactStatic from 'hoist-non-react-statics';
 
 export interface NetworkStatusProps {
   isConnected: boolean;
@@ -12,7 +11,7 @@ interface NetworkState {
   networkType?: NetInfoStateType;
   isConnected: boolean;
 }
-export function useNetworkStatus(): [NetworkState, () => void] {
+export default function useNetworkStatus(): [NetworkState, () => void] {
   const [networkState, setNetworkState] = useState<NetworkState>({ isConnected: true });
 
   useEffect(() => {
@@ -46,24 +45,4 @@ export function useNetworkStatus(): [NetworkState, () => void] {
   }, [setNetworkState]);
 
   return [networkState, refreshNetworkStatus];
-}
-
-
-export default function withNetworkStatus<P>(
-  WrappedComponent: React.ComponentType<P & NetworkStatusProps>
-) {
-
-  function NetworkStatusComponent(props: P) {
-    const [state, refreshNetworkStatus] = useNetworkStatus();
-    return (
-      <WrappedComponent
-        {...props}
-        isConnected={state.isConnected}
-        networkType={state.networkType}
-        refreshNetworkStatus={refreshNetworkStatus}
-      />
-    );
-  }
-  hoistNonReactStatic(NetworkStatusComponent, WrappedComponent);
-  return NetworkStatusComponent;
 }

@@ -1,28 +1,27 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Alert, Text, View } from 'react-native';
 import { find, findLast, findLastIndex } from 'lodash';
+import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { AddSideScenarioProps } from '@components/campaignguide/AddSideScenarioView';
 import { ProcessedCampaign } from '@data/scenario';
-import CampaignGuide from '@data/scenario/CampaignGuide';
-import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
-import space from '@styles/space';
+import { ShowAlert } from '@components/deck/dialogs';
+import CampaignGuideContext from '../CampaignGuideContext';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import StyleContext from '@styles/StyleContext';
-import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import AppIcon from '@icons/AppIcon';
+import space, { m } from '@styles/space';
 
 interface Props {
   componentId: string;
-  campaignId: number;
   processedCampaign: ProcessedCampaign;
-  campaignGuide: CampaignGuide;
-  campaignState: CampaignStateHelper;
+  showAlert: ShowAlert;
 }
 
-export default function AddSideScenarioButton({ componentId, campaignId, processedCampaign, campaignGuide, campaignState }: Props) {
-  const { typography } = useContext(StyleContext);
+export default function AddSideScenarioButton({ componentId, processedCampaign, showAlert }: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const { campaignId, campaignGuide, campaignState } = useContext(CampaignGuideContext);
   const canAddScenario = useMemo(() => {
     const lastCompletedScenarioIndex = findLastIndex(
       processedCampaign.scenarios,
@@ -74,7 +73,7 @@ export default function AddSideScenarioButton({ componentId, campaignId, process
 
   const onPress = useCallback(() => {
     if (!canAddScenario) {
-      Alert.alert(
+      showAlert(
         t`Can't add side scenario right now.`,
         t`Side scenarios cannot be added to a campaign until the previous scenario and following interludes are completed.`
       );
@@ -106,13 +105,28 @@ export default function AddSideScenarioButton({ componentId, campaignId, process
         },
       },
     });
-  }, [componentId, campaignId, processedCampaign.scenarios, canAddScenario]);
-
+  }, [componentId, campaignId, processedCampaign.scenarios, canAddScenario, showAlert]);
+  if (!canAddScenario) {
+    return <View style={{ height: m }} />;
+  }
   return (
-    <RoundedFooterButton
-      icon="expand"
-      title={t`Add side scenario`}
-      onPress={onPress}
-    />
+    <View style={[space.paddingTopS, space.paddingBottomS]}>
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.row}>
+          <View style={space.paddingRightS}>
+            <AppIcon name="plus" size={20} color={colors.D10} />
+          </View>
+          <Text style={[typography.button, typography.italic, { color: colors.D10 }, space.marginTopXs]}>{t`Add side scenario`}</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+});

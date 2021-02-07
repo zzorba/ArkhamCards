@@ -3,44 +3,32 @@ import { throttle } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-
 import { t } from 'ttag';
-import { ScenarioResult, CUSTOM } from '@actions/types';
-import LabeledTextBox from '@components/core/LabeledTextBox';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+
+import { ScenarioResult, CUSTOM, CampaignId } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import XpComponent from './XpComponent';
 import { editScenarioResult } from './actions';
 import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useNavigationButtonPressed } from '@components/core/hooks';
+import { useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 export interface EditScenarioResultProps {
-  campaignId: number;
+  campaignId: CampaignId;
   index: number;
 }
 
-interface ReduxProps {
-  scenarioResult?: ScenarioResult;
-}
+type Props = NavigationProps & EditScenarioResultProps;
 
-interface ReduxActionProps {
-  editScenarioResult: (id: number, index: number, scenarioResult: ScenarioResult) => void;
-}
-
-type Props = NavigationProps & EditScenarioResultProps & InjectedDialogProps;
-interface State {
-  scenarioResult?: ScenarioResult;
-}
-
-function EditScenarioResultView({ campaignId, index, componentId, showTextEditDialog }: Props) {
-  const { backgroundStyle, typography } = useContext(StyleContext);
+export default function EditScenarioResultView({ campaignId, index, componentId }: Props) {
+  const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
   const existingScenarioResult = campaign && campaign.scenarioResults[index];
@@ -72,6 +60,21 @@ function EditScenarioResultView({ campaignId, index, componentId, showTextEditDi
     });
   }, [componentId, scenarioResult]);
 
+  const nameChanged = useCallback((value: string) => {
+    if (scenarioResult && scenarioResult.scenarioCode === CUSTOM) {
+      setScenarioResult({
+        ...scenarioResult,
+        scenario: value,
+      });
+    }
+  }, [scenarioResult, setScenarioResult]);
+
+  const { dialog: nameDialog, showDialog: showNameDialog } = useSimpleTextDialog({
+    title: t`Scenario`,
+    value: existingScenarioResult?.scenario || '',
+    onValueChange: nameChanged,
+  });
+
   const resolutionChanged = useCallback((value: string) => {
     if (scenarioResult) {
       setScenarioResult({
@@ -81,13 +84,11 @@ function EditScenarioResultView({ campaignId, index, componentId, showTextEditDi
     }
   }, [scenarioResult, setScenarioResult]);
 
-  const showResolutionDialog = useCallback(() => {
-    showTextEditDialog(
-      'Resolution',
-      existingScenarioResult ? existingScenarioResult.resolution : '',
-      resolutionChanged
-    );
-  }, [showTextEditDialog, existingScenarioResult, resolutionChanged]);
+  const { dialog: resolutionDialog, showDialog: showResolutionDialog } = useSimpleTextDialog({
+    title: t`Resolution`,
+    value: existingScenarioResult?.resolution || '',
+    onValueChange: resolutionChanged,
+  });
 
   const xpChanged = useCallback((xp: number) => {
     if (scenarioResult) {
@@ -97,7 +98,15 @@ function EditScenarioResultView({ campaignId, index, componentId, showTextEditDi
       });
     }
   }, [scenarioResult, setScenarioResult]);
-
+  const [countDialog, showCountDialog] = useCountDialog();
+  const showExperienceDialog = useCallback(() => {
+    showCountDialog({
+      title: t`Experience`,
+      label: t`Earned experience:`,
+      value: scenarioResult?.xp || 0,
+      update: xpChanged,
+    });
+  }, [xpChanged, showCountDialog, scenarioResult]);
   if (!scenarioResult) {
     return null;
   }
@@ -109,29 +118,45 @@ function EditScenarioResultView({ campaignId, index, componentId, showTextEditDi
     resolution,
   } = scenarioResult;
   return (
-    <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
-      <View style={space.marginSideS}>
-        <Text style={typography.smallLabel}>
-          { (interlude ? t`Interlude` : t`Scenario`).toUpperCase() }
-        </Text>
-        <Text style={typography.text}>
-          { scenario }
-        </Text>
-        { (scenarioCode === CUSTOM || !interlude) && (
-          <LabeledTextBox
-            label={t`Resolution`}
-            onPress={showResolutionDialog}
-            value={resolution}
-            column
+    <View style={styles.wrapper}>
+      <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
+        <View style={space.paddingS}>
+          <DeckPickerStyleButton
+            title={interlude ? t`Interlude` : t`Scenario`}
+            valueLabel={scenario}
+            editable={scenarioCode === CUSTOM}
+            icon="name"
+            onPress={showNameDialog}
+            first
           />
-        ) }
-      </View>
-      <XpComponent xp={xp || 0} onChange={xpChanged} />
-      <View style={styles.footer} />
-    </ScrollView>
+          { (scenarioCode === CUSTOM || !interlude) && (
+            <DeckPickerStyleButton
+              title={t`Resolution`}
+              valueLabel={resolution}
+              onPress={showResolutionDialog}
+              icon="book"
+              editable
+            />
+          ) }
+          <DeckPickerStyleButton
+            title={t`Experience`}
+            icon="xp"
+            editable
+            onPress={showExperienceDialog}
+            valueLabel={`${xp || 0}`}
+            last
+          />
+        </View>
+        <View style={[space.paddingS, styles.row]}>
+          <DeckButton icon="check-thin" title={t`Save`} onPress={doSave} thin />
+        </View>
+      </ScrollView>
+      { nameDialog }
+      { resolutionDialog }
+      { countDialog }
+    </View>
   );
 }
-export default withDialogs(EditScenarioResultView);
 
 const styles = StyleSheet.create({
   container: {
@@ -141,7 +166,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
   },
-  footer: {
-    height: 100,
+  wrapper: {
+    flex: 1,
+  },
+  row: {
+    flexDirection: 'row',
   },
 });

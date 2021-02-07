@@ -3,7 +3,6 @@ import { ImageBackground, StyleSheet, View } from 'react-native';
 
 import { ChaosTokenType } from '@app_constants';
 import ChaosTokenIcon from '@components/core/ChaosTokenIcon';
-import { iconSizeScale } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
@@ -26,7 +25,7 @@ export default function ChaosToken({ iconKey, small }: Props) {
       return (
         <ChaosTokenIcon
           icon={iconKey}
-          size={size * scale * iconSizeScale}
+          size={size * scale}
           color="#FFF"
           fontFamily="Teutonic"
         />
@@ -45,8 +44,8 @@ export default function ChaosToken({ iconKey, small }: Props) {
   );
 }
 
-const circleLarge = 150 * iconSizeScale;
-const circleSmall = 75 * iconSizeScale;
+const circleLarge = 150;
+const circleSmall = 75;
 
 const styles = StyleSheet.create({
   circle: {

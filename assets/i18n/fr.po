@@ -60,40 +60,40 @@ msgid "Investigator"
 msgstr "Investigateur"
 
 msgid "Asset: Hand"
-msgstr "Soutien: Main"
+msgstr "Soutien : Main"
 
 msgid "Asset: Hand x2"
-msgstr "Soutien: Main x2"
+msgstr "Soutien : Main x2"
 
 msgid "Asset: Hand. Arcane"
-msgstr "Soutien: Main. Arcanes"
+msgstr "Soutien : Main. Arcane"
 
 msgid "Asset: Body. Hand x2"
-msgstr "Soutien: Corps. Main x2"
+msgstr "Soutien : Corps. Main x2"
 
 msgid "Asset: Accessory"
-msgstr "Soutien: Accessoire"
+msgstr "Soutien : Accessoire"
 
 msgid "Asset: Ally"
-msgstr "Soutien: Allié"
+msgstr "Soutien : Allié"
 
 msgid "Asset: Arcane"
-msgstr "Soutien: Arcane"
+msgstr "Soutien : Arcane"
 
 msgid "Asset: Arcane x2"
-msgstr "Soutien: Arcane x2"
+msgstr "Soutien : Arcane x2"
 
 msgid "Asset: Body"
-msgstr "Soutien: Corps"
+msgstr "Soutien : Corps"
 
 msgid "Asset: Permanent"
-msgstr "Soutien: Permanent"
+msgstr "Soutien : Permanent"
 
 msgid "Asset: Tarot"
-msgstr "Soutien: Tarot"
+msgstr "Soutien : Tarot"
 
 msgid "Asset: Other"
-msgstr "Soutien: Autre"
+msgstr "Soutien : Autre"
 
 msgid "Event"
 msgstr "Événement"
@@ -125,13 +125,13 @@ msgid "Agenda ${ linked_card.stage }"
 msgstr "Intrigue ${linked_card.stage}"
 
 msgid "Second Core Set"
-msgstr "Deuxième Boite de base"
+msgstr "Deuxième Boîte de Base"
 
 msgid "Edit Collection"
 msgstr "Modifier la Collection"
 
 msgid "Search decks"
-msgstr "Rechercher des decks"
+msgstr "Rechercher des Decks"
 
 #, javascript-format
 msgid "No matching decks for \"${ searchTerm }\"."
@@ -159,7 +159,7 @@ msgid "Too many copies of a card with the same name."
 msgstr "Trop de copies d’une carte avec le même nom."
 
 msgid "Contains forbidden cards (cards not permitted by Faction)"
-msgstr "Contient des cartes interdites (cartes non autorisées par faction)"
+msgstr "Contient des cartes interdites (cartes non-autorisées par classe)"
 
 msgid "Contains too many limited cards."
 msgstr "Contient trop de cartes limitées."
@@ -168,20 +168,20 @@ msgid "Back"
 msgstr "Retour"
 
 msgid "Edit Story Cards"
-msgstr "Modifier les cartes d'Histoire"
+msgstr "Modifier les Cartes d'Histoire"
 
 msgid "Draw Basic Weakness"
-msgstr "Tirer une faiblesse de base"
+msgstr "Piocher une Faiblesse de Base"
 
 msgid "Draw From Collection"
-msgstr "Tirer une carte à partir de la collection"
+msgstr "Piocher une carte depuis la Collection"
 
 #. This is a deck upgrade action.
 msgid "Cancel"
 msgstr "Annuler"
 
 msgid "Draw Weaknesses"
-msgstr "Tirer des faiblesses"
+msgstr "Piocher des Faiblesses"
 
 msgid "Save"
 msgstr "Sauvegarder"
@@ -190,13 +190,13 @@ msgid "Sort by"
 msgstr "Trier par"
 
 msgid "Title"
-msgstr "Titre"
+msgstr "Nom"
 
 msgid "Faction"
-msgstr "Faction"
+msgstr "Classe"
 
 msgid "Pack"
-msgstr "Pack"
+msgstr "Édition"
 
 msgid "Connect to ArkhamDB"
 msgstr "Se connecter à ArkhamDB"
@@ -226,58 +226,43 @@ msgid "Available weaknesses"
 msgstr "Faiblesses disponibles"
 
 msgid "Saving"
-msgstr "Sauvegarde"
+msgstr "Sauvegarde en cours"
 
 msgid "Draw a Different Weakness"
-msgstr "Tirer une faiblesse différente"
+msgstr "Piocher une Faiblesse différente"
 
 msgid "Draw Another"
-msgstr "Tirer une autre"
+msgstr "En piocher une autre"
 
 msgid "Traits"
 msgstr "Traits"
 
 msgid "All weaknesses have been drawn."
-msgstr "Toutes les faiblesses ont été tirées."
+msgstr "Toutes les faiblesses ont été piochées."
 
 msgid "Save to Deck"
 msgstr "Enregistrer dans le Deck"
 
 msgid "Nevermind"
-msgstr "Nevermind"
-
-msgid "Problem with import"
-msgstr "Problème avec l’importation"
+msgstr "Peu importe"
 
 msgid "Restore campaign data?"
-msgstr "Restaurer les données de la campagne ?"
-
-msgid "Paste Backup Here"
-msgstr "Coller la sauvegarde ici"
+msgstr "Restaurer les données de campagne ?"
 
 msgid "Backup campaign data?"
 msgstr "Sauvegarder les données de campagne ?"
 
-msgid ""
-"This feature is intended for advanced diagnostics or if you are trying to "
-"move your campaign data from one device to another. Just copy the data and "
-"paste it into the other app."
-msgstr ""
-"Cette fonctionnalité est destinée aux diagnostics avancés ou si vous tentez "
-"de déplacer vos données de campagne d’un appareil à un autre. Copiez "
-"simplement les données et collez-les dans l’autre application."
-
 msgid "Export Campaign Data"
-msgstr "Exporter les données de campagne"
+msgstr "Exporter les Données de Campagne"
 
 msgid "Backup"
 msgstr "Sauvegarde"
 
 msgid "Backup Campaign Data"
-msgstr "Sauvegarder les données de campagne"
+msgstr "Sauvegarder les Données de Campagne"
 
 msgid "Restore Campaign Data"
-msgstr "Restaurer les données de la campagne"
+msgstr "Restaurer les Données de Campagne"
 
 msgid "Caches"
 msgstr "Caches"
@@ -292,13 +277,13 @@ msgid "Sign Out"
 msgstr "Déconnexion"
 
 msgid "Reconnect Account"
-msgstr "Reconnecter le compte"
+msgstr "Reconnecter le Compte"
 
 msgid "Sign in to ArkhamDB"
 msgstr "Se connecter à ArkhamDB"
 
 msgid "Edit Spoilers"
-msgstr "Modifier les spoilers"
+msgstr "Modifier les Spoilers"
 
 msgid "Diagnostics"
 msgstr "Diagnostics"
@@ -310,19 +295,19 @@ msgid "Done"
 msgstr "Terminé"
 
 msgid "Updating cards"
-msgstr "Mise à jour des cartes"
+msgstr "Mise à jour des cartes en cours"
 
 msgid "Error: Check for Cards Again"
-msgstr "Erreur: Vérifier les cartes à nouveau"
+msgstr "Erreur : Vérifier les cartes à nouveau"
 
 msgid "Check ArkhamDB for updates"
-msgstr "Rechercher de nouvelles cartes sur ArkhamDB"
+msgstr "Mise à jour ArkhamDB"
 
 msgid "Card Collection"
-msgstr "Collection de cartes"
+msgstr "Collection de Cartes"
 
 msgid "Spoiler Settings"
-msgstr "Paramètres de spoiler"
+msgstr "Paramètres des Spoilers"
 
 msgid "Elite"
 msgstr "Élite"
@@ -346,7 +331,7 @@ msgid "Non-Elite"
 msgstr "Non-Élite"
 
 msgid "Non-Hunter"
-msgstr "Non-chasseur"
+msgstr "Non-Chasseur"
 
 msgid "Retaliate"
 msgstr "Riposte"
@@ -358,16 +343,16 @@ msgid "Prey"
 msgstr "Proie"
 
 msgid "Fight"
-msgstr "Combat"
+msgstr "Valeur de Combat"
 
 msgid "Health"
-msgstr "Santé"
+msgstr "Vie"
 
 msgid "Per Investigator"
-msgstr "Par investigateur"
+msgstr "Par Investigateur"
 
 msgid "Evade"
-msgstr "Échapper"
+msgstr "Valeur d'Évasion"
 
 msgid "Damage"
 msgstr "Dégât"
@@ -376,63 +361,63 @@ msgid "Horror"
 msgstr "Horreur"
 
 msgid "Enemy Filters"
-msgstr "Filtres d'ennemis"
+msgstr "Filtres d'Ennemis"
 
 msgid "Shroud"
-msgstr "Occulte"
+msgstr "Valeur Occulte"
 
 msgid "Clues"
-msgstr "Indices"
+msgstr "Valeur d'Indice"
 
 msgid "Haunted"
 msgstr "Hanté"
 
 msgid "Location Filters"
-msgstr "Filtres de localisation"
+msgstr "Filtres de Lieux"
 
 msgid "Core Set"
-msgstr "Boite de base"
+msgstr "Boîte de Base"
 
 msgid "Select Packs"
-msgstr "Sélection de packs"
+msgstr "Sélectionner Éditions"
 
 msgid "Clear"
 msgstr "Effacer"
 
 msgid "Skill Icons"
-msgstr "Icônes de compétence"
+msgstr "Icônes de Compétence"
 
 msgid "Skill Icons: All"
-msgstr "Icônes de compétence: Tous"
+msgstr "Icônes de Compétence: Tout"
 
 msgid "Filter"
 msgstr "Filtre"
 
 msgid "Packs: All"
-msgstr "Packs: Tous"
+msgstr "Éditions: Tout"
 
 #, javascript-format
 msgid "${ cycleNames[cycle_position] } Cycle"
 msgstr "${cycleNames[cycle_position]} Cycle"
 
 msgid "Packs: ${ allPacksString }"
-msgstr "Packs: ${allPacksString}"
+msgstr "Édition: ${allPacksString}"
 
 msgid "HPI"
 msgstr "SPI"
 
 msgid "Enemies: All"
-msgstr "Ennemis: Tous"
+msgstr "Ennemis: Tout"
 
 #, javascript-format
 msgid "Enemies: ${ searchParts }"
 msgstr "Ennemis: ${searchParts}"
 
 msgid "Fixed Clues"
-msgstr "Indices fixes"
+msgstr "Indices Fixes"
 
 msgid "Locations: All"
-msgstr "Emplacements: Tous"
+msgstr "Lieux: Tout"
 
 #, javascript-format
 msgid "Locations: ${ searchParts }"
@@ -445,7 +430,7 @@ msgid "Exceptional"
 msgstr "Exceptionnel"
 
 msgid "Non-Exceptional"
-msgstr "Non exceptionnel"
+msgstr "Non-Exceptionnel"
 
 msgid "Types"
 msgstr "Types"
@@ -454,7 +439,7 @@ msgid "SubTypes"
 msgstr "Sous-types"
 
 msgid "Cost"
-msgstr "Coût"
+msgstr "Coût en ressources"
 
 msgid "Slots"
 msgstr "Emplacement"
@@ -481,7 +466,7 @@ msgid "Vengeance"
 msgstr "Vengeance"
 
 msgid "Encounter Sets"
-msgstr "Sets de rencontre"
+msgstr "Sets de Rencontre"
 
 msgid "Illustrators"
 msgstr "Illustrateurs"
@@ -496,36 +481,32 @@ msgstr "Sélectionner ${title}"
 msgid "All"
 msgstr "Tout"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Note: This entry is crossed out"
-msgstr "Note: cette entrée est barrée"
+msgstr "Note : cette entrée est barrée"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Uncross Out"
-msgstr "Débarrer le text"
+msgstr "Débarrer le texte"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Cross Out"
 msgstr "Barrer le texte"
 
-#. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Add Another"
-msgstr "Ajouter un autre"
+msgstr "En Ajouter un autre"
 
 msgid "Check for updated cards?"
-msgstr "Vérifier les cartes mises à jour ?"
+msgstr "Vérifier les mises à jour des cartes ?"
 
 msgid "Ask me later"
-msgstr "Demandez-moi plus tard"
+msgstr "Me Demander plus tard"
 
 msgid "Check for updates"
 msgstr "Vérifier les mises à jour"
 
 msgid "Add Campaign Log Section"
-msgstr "Ajouter une section de journal de campagne"
+msgstr "Ajouter une Section de Journal de Campagne"
 
 msgid "Section Name"
-msgstr "Nom de la section"
+msgstr "Nom de la Section"
 
 msgid "Count"
 msgstr "Nombre"
@@ -534,14 +515,14 @@ msgid "Add"
 msgstr "Ajouter"
 
 msgid "Selected Difficulty"
-msgstr "Difficulté choisie"
+msgstr "Difficulté Choisie"
 
 #, javascript-format
 msgid "Investigator: ${ investigatorName }"
 msgstr "Investigateur : ${investigatorName}"
 
 msgid "Replace Random Weakness"
-msgstr "Remplacer la faiblesse aléatoire"
+msgstr "Remplacer la Faiblesse Aléatoire"
 
 #, javascript-format
 msgid "Save to ${ investigator.name }’s Deck"
@@ -570,13 +551,13 @@ msgid "Insane"
 msgstr "Dément"
 
 msgid "Hide Decks From Other Campaigns"
-msgstr "Masquer les Decks d’autres campagnes"
+msgstr "Masquer les Decks des Autres Campagnes"
 
 msgid "Hide Killed and Insane Investigators"
-msgstr "Masquer les investigateurs tués et déments"
+msgstr "Masquer les Investigateurs Tués et Déments"
 
 msgid "Only Show Previous Campaign Members"
-msgstr "Afficher uniquement les membres de la campagne précédente"
+msgstr "Afficher uniquement les Membres de la Campagne Précédente"
 
 msgid "Experience"
 msgstr "Expérience"
@@ -597,13 +578,13 @@ msgid "Night of the Zealot"
 msgstr "La Nuit de la Zélatrice"
 
 msgid "Return to the Night of the Zealot"
-msgstr "Renouveau: La Nuit de la Zélatrice"
+msgstr "Renouveau - La Nuit de la Zélatrice"
 
 msgid "The Dunwich Legacy"
 msgstr "L’Héritage de Dunwich"
 
 msgid "Return to The Dunwich Legacy"
-msgstr "Renouveau: L’Héritage Dunwich"
+msgstr "Renouveau - L’Héritage de Dunwich"
 
 msgid "The Path To Carcosa"
 msgstr "La Route de Carcosa"
@@ -624,13 +605,13 @@ msgid "The Devourer Below"
 msgstr "Le Dévoreur du Dessous"
 
 msgid "Extracurricular Activity"
-msgstr "Activité extrascolaire"
+msgstr "Activité Extrascolaire"
 
 msgid "The House Always Wins"
-msgstr "La Banque gagne toujours"
+msgstr "La Banque Gagne Toujours"
 
 msgid "Armitage’s Fate"
-msgstr "Le destin d’Armitage"
+msgstr "Le Destin d’Armitage"
 
 msgid "The Miskatonic Museum"
 msgstr "Le Musée Miskatonic"
@@ -657,28 +638,28 @@ msgid "Epilogue"
 msgstr "Épilogue"
 
 msgid "Return to Extracurricular Activity"
-msgstr "Renouveau: L’Activité Extrascolaire"
+msgstr "Renouveau - L’Activité Extrascolaire"
 
 msgid "Return to The House Always Wins"
-msgstr "Renouveau: La Banque gagne toujours"
+msgstr "Renouveau - La Banque Gagne Toujours"
 
 msgid "Return to The Miskatonic Museum"
-msgstr "Renouveau: Le Musée Miskatonic"
+msgstr "Renouveau - Le Musée Miskatonic"
 
 msgid "Return to Essex County Express"
-msgstr "Renouveau: L'Expresse du comté d'Essex"
+msgstr "Renouveau - L'Express du Comté d'Essex"
 
 msgid "Return to Blood on the Altar"
-msgstr "Renouveau: Du Sang sur l’autel"
+msgstr "Renouveau - Du Sang sur l’Autel"
 
 msgid "Return to Undimensioned and Unseen"
-msgstr "Renouveau: Aux Frontières du Visible"
+msgstr "Renouveau - Aux Frontières du Visible"
 
 msgid "Return to Where Doom Awaits"
-msgstr "Renouveau: La où le Destin attend"
+msgstr "Renouveau - Là où le Destin Attend"
 
 msgid "Return to Lost in Time and Space"
-msgstr "Renouveau: Perdu dans le temps et l’espace"
+msgstr "Renouveau - Perdu dans le Temps et l’Espace"
 
 msgid "Prologue"
 msgstr "Prologue"
@@ -687,7 +668,7 @@ msgid "Curtain Call"
 msgstr "Baisser de Rideau"
 
 msgid "The Last King"
-msgstr "Le Dernier roi"
+msgstr "Le Dernier Roi"
 
 msgid "Lunacy’s Reward"
 msgstr "Le Prix de la Folie"
@@ -699,7 +680,7 @@ msgid "The Unspeakable Oath"
 msgstr "Le Serment Indicible"
 
 msgid "Lost Soul"
-msgstr "Âme perdue"
+msgstr "Âme Perdue"
 
 msgid "A Phantom of Truth"
 msgstr "Le Spectre de la Vérité"
@@ -753,10 +734,10 @@ msgid "Shattered Aeons"
 msgstr "Paradoxes Temporels"
 
 msgid "Prologue: Disappearance at the Twilight Estate"
-msgstr "Prologue: Disparitions dans la demeure du Crépuscule"
+msgstr "Prologue : Disparitions dans la demeure du Crépuscule"
 
 msgid "The Witching Hour"
-msgstr "L’heure des Sorcières"
+msgstr "L’Heure des Sorcières"
 
 msgid "The Price of Progress"
 msgstr "Le Prix du Progrès"
@@ -786,13 +767,13 @@ msgid "Before the Black Throne"
 msgstr "Devant le Trône Noir"
 
 msgid "Return to The Gathering"
-msgstr "Renouveau: L'Assemblée"
+msgstr "Renouveau - L'Assemblée"
 
 msgid "Return to the Midnight Masks"
-msgstr "Renouveau: Les Masques de Minuit"
+msgstr "Renouveau - Les Masques de Minuit"
 
 msgid "Return to the Devourer Below"
-msgstr "Renouveau: Le Dévoreur du Dessous"
+msgstr "Renouveau - Le Dévoreur du Dessous"
 
 msgid "The Night of the Zealot"
 msgstr "La Nuit de la Zélatrice"
@@ -801,19 +782,19 @@ msgid "The Path to Carcosa"
 msgstr "La Route de Carcosa"
 
 msgid "Campaign Notes"
-msgstr "Notes de campagne"
+msgstr "Notes de Campagne"
 
 msgid "Cultists We Interrogated"
 msgstr "Cultistes Interrogés"
 
 msgid "Cultists Who Got Away"
-msgstr "Cultistes qui se sont enfuis"
+msgstr "Cultistes Enfuis"
 
 msgid "Sacrificed to Yog-Sothoth"
-msgstr "Sacrifiée à YOG-Sothoth"
+msgstr "Sacrifiés à Yog-Sothoth"
 
 msgid "VIPs Interviewed"
-msgstr "Personnalités interrogées"
+msgstr "Personnalités Interrogées"
 
 msgid "VIPs Slain"
 msgstr "Personnalités Tuées"
@@ -828,22 +809,22 @@ msgid "Chasing the Stranger"
 msgstr "Poursuite de l’Étranger"
 
 msgid "Supplies"
-msgstr "Fournitures"
+msgstr "Provisions"
 
 msgid "Mementos Discovered"
-msgstr "Souvenirs découverts"
+msgstr "Souvenirs Découverts"
 
 msgid "Missing Persons - Gavriella Mizrah"
-msgstr "Personnes disparues - Gavriella Mizrah"
+msgstr "Personnes Disparues - Gavriella Mizrah"
 
 msgid "Missing Persons - Jerome Davids"
-msgstr "Personnes disparues - Jerome Davids"
+msgstr "Personnes Disparues - Jerome Davids"
 
 msgid "Missing Persons - Penny White"
-msgstr "Personnes disparues - Penny White"
+msgstr "Personnes Disparues - Penny White"
 
 msgid "Missing Persons - Valentino Rivas"
-msgstr "Personnes disparues - Valentino Rivas"
+msgstr "Personnes Disparues - Valentino Rivas"
 
 #, javascript-format
 msgid "${ traumaData.physical } Physical"
@@ -860,10 +841,10 @@ msgid "Custom"
 msgstr "Personnalisé"
 
 msgid "My Campaigns"
-msgstr "Mes campagnes"
+msgstr "Mes Campagnes"
 
 msgid "Other Campaigns"
-msgstr "Autres campagnes"
+msgstr "Autres Campagnes"
 
 msgid "Select Campaign"
 msgstr "Sélectionner une Campagne"
@@ -875,35 +856,36 @@ msgid "New Campaign"
 msgstr "Nouvelle Campagne"
 
 msgid "Chaos Bag"
-msgstr "Réserve du chaos"
-
-msgid "Campaign Name"
-msgstr "Nom de la Campagne"
+msgstr "Réserve du Chaos"
 
 msgid "Adjust Weakness Set"
-msgstr "Ajuster la collection des Faiblesses"
+msgstr "Ajuster la Collection des Faiblesses"
 
 #. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
-msgstr "Ce deck contient plusieurs faiblesses de base"
+msgstr "Ce Deck contient plusieurs faiblesses de base"
 
 #. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
-msgstr "Ce deck contient une faiblesse de base"
+msgstr "Ce Deck contient une faiblesse de base"
 
 #. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
-msgstr "Voulez-vous les supprimer de l’ensemble de faiblesse de base de la campagne?"
+msgstr ""
+"Voulez-vous les supprimer de l’ensemble des faiblesses de base de la "
+"campagne ?"
 
 #. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
-msgstr "Voulez-vous la supprimer de l’ensemble de faiblesse de base de la campagne?"
+msgstr ""
+"Voulez-vous la supprimer de l’ensemble des faiblesses de base de la "
+"campagne ?"
 
 msgid "Not Now"
-msgstr "Pas maintenant"
+msgstr "Pas Maintenant"
 
 msgid "Okay"
-msgstr "Ok"
+msgstr "D'accord"
 
 msgid "(required)"
 msgstr "(requis)"
@@ -913,16 +895,16 @@ msgid "My ${ campaign } Campaign"
 msgstr "Ma campagne ${campaign}"
 
 msgid "Include all basic weaknesses from these expansions"
-msgstr "Inclure toutes les faiblesses de base de ces expansions"
+msgstr "Inclure toutes les faiblesses de base de ces extensions"
 
 msgid "Add Log Section"
-msgstr "Ajouter une section de journal"
+msgstr "Ajouter une Section de Journal"
 
 msgid "Difficulty"
 msgstr "Difficulté"
 
 msgid "Create Campaign"
-msgstr "Créer une campagne"
+msgstr "Créer une Campagne"
 
 msgid "Campaigns"
 msgstr "Campagnes"
@@ -932,19 +914,21 @@ msgid "No matching campaigns for \"${ search }\"."
 msgstr "Aucune campagne correspondante pour « ${search} »."
 
 msgid "Search campaigns"
-msgstr "Rechercher une campagne"
+msgstr "Rechercher des campagnes"
 
 msgid "Save changes?"
-msgstr "Enregistrer les modifications?"
+msgstr "Enregistrer les modifications ?"
 
 msgid "Looks like you have made some changes that have not been saved."
-msgstr "On dirait que vous avez fait quelques changements qui n’ont pas été sauvés."
+msgstr ""
+"On dirait que vous avez fait quelques modifications qui n’ont pas été "
+"sauvegardées."
 
 msgid "Save Changes"
-msgstr "Sauvegarder les modifications"
+msgstr "Sauvegarder les Modifications"
 
 msgid "Discard Changes"
-msgstr "Abandonner les modifications"
+msgstr "Abandonner les Modifications"
 
 msgid "Add note"
 msgstr "Ajouter une note"
@@ -952,9 +936,6 @@ msgstr "Ajouter une note"
 #, javascript-format
 msgid "${ totalXp } total"
 msgstr "${totalXp} total"
-
-msgid "EXPERIENCE"
-msgstr "EXPÉRIENCE"
 
 msgid "Upgrade Deck"
 msgstr "Améliorer le Deck"
@@ -973,24 +954,20 @@ msgid "Scenarios"
 msgstr "Scénarios"
 
 msgid "Scenario Result"
-msgstr "Résultat du scénario"
+msgstr "Résultat du Scénario"
 
 msgid "Record Scenario Results"
-msgstr "Enregister les Résultats des scénarios"
+msgstr "Enregister les Résultats du Scénario"
 
 msgid "Basic Weakness Set"
-msgstr "Collection des Faiblesses de base"
+msgstr "Collection des Faiblesses de Base"
 
 #, javascript-format
 msgid "${ counts.assigned } / ${ counts.total } have been drawn."
-msgstr "${counts.assigned}/${counts.total} ont été tirées."
+msgstr "${counts.assigned}/${counts.total} ont été piochées."
 
 msgid "Delete"
 msgstr "Supprimer"
-
-#, javascript-format
-msgid "Are you sure you want to delete the campaign: ${ campaign.name }"
-msgstr "Êtes-vous sûr de vouloir supprimer la campagne: ${campaign.name}"
 
 msgid "Show Interludes"
 msgstr "Afficher les Interludes"
@@ -1006,20 +983,20 @@ msgstr "Résolution"
 
 #. This is the lead pack in a cycle.
 msgid "Mark entire cycle?"
-msgstr "Marquer le cycle entier?"
+msgstr "Marquer le cycle entier ?"
 
 #. This is the lead pack in a cycle.
 msgid "Clear entire cycle?"
-msgstr "Effacer le cycle entier?"
+msgstr "Effacer le cycle entier ?"
 
 #. This is the lead pack in a cycle.
 #, javascript-format
 msgid "Mark all packs in the ${ pack.name } cycle?"
-msgstr "Marquer tous les packs dans le cycle ${pack.name}?"
+msgstr "Marquer tous les paquets dans le cycle ${pack.name} ?"
 
 #. This is the lead pack in a cycle.
 msgid "Clear all packs in the ${ pack.name } cycle?"
-msgstr "Effacer tous les packs dans le cycle ${pack.name}?"
+msgstr "Effacer tous les paquets dans le cycle ${pack.name} ?"
 
 #. This is the lead pack in a cycle.
 msgid "No"
@@ -1031,27 +1008,24 @@ msgstr "Oui"
 
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
-msgstr "Les aventures de ${investigator.name}"
+msgstr "Les Aventures de ${investigator.name}"
 
 msgid "${ investigator.name } Investigates"
-msgstr "${investigator.name} enquête"
+msgstr "${investigator.name} Enquête"
 
 #, javascript-format
 msgid "The ${ investigator.name } Mysteries"
-msgstr "Les mystères de ${investigator.name}"
+msgstr "Les Mystères de ${investigator.name}"
 
 msgid "The ${ investigator.name } Job"
-msgstr "Le job de ${investigator.name}"
+msgstr "Le Job de ${investigator.name}"
 
 #, javascript-format
 msgid "${ investigator.name } on the Road"
-msgstr "${investigator.name} sur la route"
+msgstr "${investigator.name} sur la Route"
 
 msgid "${ investigator.name } Does It All"
-msgstr "${investigator.name} fait tout"
-
-msgid "NAME"
-msgstr "NOM"
+msgstr "${investigator.name} fait Tout"
 
 msgid "Create on ArkhamDB"
 msgstr "Créer sur ArkhamDB"
@@ -1063,7 +1037,7 @@ msgid "Search"
 msgstr "Rechercher"
 
 msgid "No matching investigators for \"${ searchTerm }\"."
-msgstr "Aucun investigateur correspondant pour « ${searchTerm} »."
+msgstr "Aucun Investigateur correspondant pour « ${searchTerm} »."
 
 msgid "N/A"
 msgstr "N/A"
@@ -1072,20 +1046,16 @@ msgid "All Investigators"
 msgstr "Tous les Investigateurs"
 
 msgid "Draw: "
-msgstr "Tirer: "
+msgstr "Piocher : "
 
 msgid "Redraw"
-msgstr "Retirer"
+msgstr "Repiocher"
 
 msgid "Reshuffle"
 msgstr "Remélanger"
 
 msgid "Reset"
 msgstr "Réinitialiser"
-
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
-msgstr "XP: ${ spentXp } sur ${ adjustedExperience } (${ adjustment })"
 
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
@@ -1095,24 +1065,24 @@ msgstr[1] "${normalCardCount} cartes (${totalCardCount} total)"
 
 #, javascript-format
 msgid "Delete this upgrade (${ deck.version })"
-msgstr "Supprimer cette version (${deck.version})"
+msgstr "Supprimer cette amélioration (${deck.version})"
 
 msgid "Delete all versions"
 msgstr "Supprimer toutes les versions"
 
 msgid "Delete deck"
-msgstr "Supprimer le deck"
+msgstr "Supprimer le Deck"
 
 msgid "Are you sure you want to delete this deck?"
-msgstr "Êtes-vous sûr de vouloir supprimer ce deck?"
+msgstr "Êtes-vous sûr de vouloir supprimer ce Deck ?"
 
 msgid "Save Local Changes"
-msgstr "Enregistrer les modifications locales"
+msgstr "Enregistrer les Modifications Locales"
 
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
 msgstr ""
-"Veuillez enregistrer toutes les modifications locales de ce deck avant de "
-"partager avec ArkhamDB"
+"Veuillez enregistrer toutes les modifications locales de ce Deck avant de "
+"le partager sur ArkhamDB"
 
 msgid "Unsupported Operation"
 msgstr "Opération non supportée"
@@ -1121,25 +1091,22 @@ msgid "Upload to ArkhamDB"
 msgstr "Télécharger vers ArkhamDB"
 
 msgid "Special Cards"
-msgstr "Cartes spéciales"
+msgstr "Cartes Spéciales"
 
 msgid "View on ArkhamDB"
 msgstr "Voir sur ArkhamDB"
 
 msgid "Save deck changes?"
-msgstr "Enregistrer les changements de Deck?"
+msgstr "Enregistrer les changements du Deck ?"
 
 msgid "Edit Special Cards"
-msgstr "Modifier les cartes spéciales"
+msgstr "Modifier les Cartes Spéciales"
 
 msgid "Edit Deck"
-msgstr "Modifier le deck"
+msgstr "Modifier le Deck"
 
 msgid "Deck has been deleted"
-msgstr "Le deck a été supprimé"
-
-msgid "OK"
-msgstr "OK"
+msgstr "Le Deck a été supprimé"
 
 msgid "Error"
 msgstr "Erreur"
@@ -1151,41 +1118,41 @@ msgid "Required"
 msgstr "Requis"
 
 msgid "Copy Deck"
-msgstr "Copier le deck"
+msgstr "Copier le Deck"
 
 msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or "
 "choose different upgrades."
 msgstr ""
-"Faites une copie d’un deck afin que vous puissiez l’utiliser dans une autre "
-"campagne ou choisir différentes améliorations."
+"Faites la copie d’un Deck afin de pouvoir l’utiliser dans une autre "
+"campagne ou de choisir différentes améliorations."
 
 msgid "Type"
 msgstr "Type"
 
 msgid "Encounter Set"
-msgstr "Ensemble de rencontre"
+msgstr "Set de Rencontre"
 
 msgid "Investigating for clues"
-msgstr "Enquête sur les indices"
+msgstr "Enquête pour trouver des indices"
 
 msgid "Cursing at the tentacle token"
-msgstr "Maudit le jeton de tentacule"
+msgstr "Maudit le pion Chaos Tentacules"
 
 msgid "Drawing a mythos card with surge"
-msgstr "Tire une carte de Mythe avec Renfort"
+msgstr "Pioche une carte de Mythe avec Renfort"
 
 msgid "Placing doom on the agenda"
-msgstr "Place une Fatalité sur l'Intrigue"
+msgstr "Place une fatalité sur l'Intrigue"
 
 msgid "Reticulating spines"
 msgstr "Traduit le Necronomicon"
 
 msgid "Trying to make sense of the Time Warp FAQ"
-msgstr "Essaye de donner un sens à la FAQ Time Warp"
+msgstr "Tente de donner un sens à la FAQ Time Warp"
 
 msgid "Taking three damage and three horror"
-msgstr "Subbissez trois dégâts et trois horreurs"
+msgstr "Subit 3 dégâts et 3 horreurs"
 
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Pas de cartes correspondantes pour « ${searchTerm} »"
@@ -1194,10 +1161,10 @@ msgid "No matching cards"
 msgstr "Pas de cartes correspondantes"
 
 msgid "Cost: None"
-msgstr "Coût: aucun"
+msgstr "Coût : Aucun"
 
 msgid "All Cards"
-msgstr "Toutes les cartes"
+msgstr "Toutes les Cartes"
 
 msgid "Search for a card"
 msgstr "Rechercher une carte"
@@ -1213,7 +1180,7 @@ msgid "Filters"
 msgstr "Filtres"
 
 msgid "Player Cards"
-msgstr "Cartes de joueur"
+msgstr "Cartes Joueur"
 
 msgid "Required Cards"
 msgstr "Cartes requises"
@@ -1228,23 +1195,23 @@ msgid "Allowed Cards"
 msgstr "Cartes autorisées"
 
 msgid "Test Icons: "
-msgstr "Icônes de test: "
+msgstr "Icônes de test : "
 
 msgid "Show back"
-msgstr "Afficher le dos"
+msgstr "Afficher le verso de la carte"
 
 #, javascript-format
 msgid "Victory: ${ card.victory }."
-msgstr "Victoire: ${card.victory}."
+msgstr "Victoire : ${card.victory}."
 
 msgid "Vengeance: ${ card.vengeance }."
-msgstr "Vengeance: ${card.vengeance}."
+msgstr "Vengeance : ${card.vengeance}."
 
 msgid "Show front"
-msgstr "Montrer le dessus"
+msgstr "Afficher le recto de la carte"
 
 msgid "Deckbuilding Cards"
-msgstr "Cartes autorisées pour le deck"
+msgstr "Cartes autorisées pour le Deck"
 
 #, javascript-format
 msgid ""
@@ -1261,7 +1228,7 @@ msgid "Doesn't comply with the Investigator requirements."
 msgstr "Ne respecte pas les exigences de construction de l’Investigateur."
 
 msgid "Up by 5, hope I don't draw the tentacle"
-msgstr "5 de plus, j’espère ne pas tirer les tentacules"
+msgstr "5 de plus, j’espère ne pas révéler un pion Tentacules"
 
 msgid "Cards"
 msgstr "Cartes"
@@ -1271,7 +1238,7 @@ msgstr "Paramètres"
 
 #, javascript-format
 msgid "Additional XP: ${ taboo.extra_xp }."
-msgstr "XP supplémentaire: ${ taboo.extra_xp }."
+msgstr "XP supplémentaire : ${ taboo.extra_xp }."
 
 msgid ""
 "The List of Taboos is a list of Arkham Horror: The Card Game cards with "
@@ -1279,11 +1246,11 @@ msgid ""
 "to craft a healthy balance between investigator power and scenario "
 "difficulty, and to enforce shifts in deckbuilding environments over time."
 msgstr ""
-"La liste des tabous est une liste d’Horreur à Arkham : Le Jeu de Carte de "
-"cartes incluant des restrictions optionnelles de Deck ou des modifications "
+"La liste des tabous est une liste de cartes d’Horreur à Arkham : Le Jeu de "
+"Carte incluant des restrictions optionnelles de Deck ou des modifications "
 "de texte. Cette liste est conçue pour créer un équilibre entre la puissance "
 "des investigateurs et la difficulté des scénarios, et pour contrebalancer "
-"les déséquilibres dans la construction des Decks au fil du temps."
+"les déséquilibres dans la construction des decks au fil du temps."
 
 msgid ""
 "Adhering to The List of Taboos is completely optional. Investigators are "
@@ -1298,10 +1265,10 @@ msgstr ""
 "utiliser)."
 
 msgid "Note: not all cards have translations available."
-msgstr "Remarque: toutes les cartes ne disposent pas de traductions disponibles."
+msgstr "Remarque : toutes les cartes ne disposent pas de traductions disponibles."
 
 msgid "Taboo List"
-msgstr "Liste de tabou"
+msgstr "Liste des Tabous"
 
 msgid "Error loading cards, make sure your network is working."
 msgstr "Erreur de chargement des cartes, assurez-vous que votre réseau fonctionne."
@@ -1310,46 +1277,39 @@ msgid "Try Again"
 msgstr "Réessayer"
 
 msgid "Loading latest cards..."
-msgstr "Chargement des dernières cartes..."
+msgstr "Chargement des dernières cartes en cours..."
 
 msgid "Charts"
 msgstr "Graphiques"
 
-#, javascript-format
-msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
-msgstr "XP: ${spentXp} sur ${adjustedExperience} (+ 0)"
-
-msgid "Deck Details"
-msgstr "Détails du deck"
-
 msgid "Card Costs"
-msgstr "Coût des cartes"
+msgstr "Coût des Cartes"
 
 msgid "Card Factions"
-msgstr "Factions de cartes"
+msgstr "Classe des Cartes"
 
 msgid "Bonded"
 msgstr "Liée"
 
 msgid "Bound Cards"
-msgstr "Cartes liées"
+msgstr "Cartes Liées"
 
 msgid "Taboo"
-msgstr "Tabou"
+msgstr "Tabous"
 
 msgid "Taboo List Changes"
-msgstr "Changements de liste de tabou"
+msgstr "Changements de la Liste des Tabous"
 
 #, javascript-format
 msgid "Additional XP: ${ card.extra_xp }."
-msgstr "XP supplémentaire: ${card.extra_xp}."
+msgstr "XP supplémentaire : ${card.extra_xp}."
 
 msgid ""
 "No decks yet.\n"
 "\n"
 "Use the + button to create a new one."
 msgstr ""
-"Pas encore de decks.\n"
+"Pas encore de Decks.\n"
 "\n"
 "Utilisez le bouton + pour en créer un nouveau."
 
@@ -1361,13 +1321,13 @@ msgid ""
 "\n"
 "Otherwise, you can draw random weaknesses from your entire collection."
 msgstr ""
-"Ce deck ne semble pas encore faire partie d’une campagne.\n"
+"Ce Deck ne semble pas encore faire partie d’une campagne.\n"
 "\n"
 "Si vous ajoutez ce deck à une campagne, l’application peut suivre les "
 "faiblesses disponibles entre plusieurs Decks.\n"
 "\n"
-"Sinon, vous pouvez tirer des faiblesses aléatoires de votre collection "
-"entière."
+"Sinon, vous pouvez piocher des faiblesses aléatoires depuis votre "
+"collection entière."
 
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share "
@@ -1375,11 +1335,11 @@ msgid ""
 "\n"
 "Sign in to access your decks or share decks you have created with others."
 msgstr ""
-"ArkhamDB est un site de construction de deck populaire où vous pouvez gérer "
-"et partager des decks avec d’autres.\n"
+"ArkhamDB est un site de construction de Deck populaire où vous pouvez gérer "
+"et partager des decks avec d’autres personnes.\n"
 "\n"
-"Connectez-vous pour accéder à vos Decks ou partager des decks que vous avez "
-"créés avec d’autres."
+"Connectez-vous pour accéder à vos Decks ou partager des Decks que vous avez "
+"créés avec d’autres personnes."
 
 msgid ""
 "We are having trouble talking to ArkhamDB.\n"
@@ -1400,30 +1360,6 @@ msgstr ""
 "Veuillez régler le filtre de traits."
 
 msgid ""
-"We were not able to parse any campaigns from that pasted data.\n"
-"\n"
-"Make sure its an exact copy of the text provided by the Backup feature of "
-"an Arkham Cards app."
-msgstr ""
-"Nous n’avons pas été en mesure d’analyser toutes les campagnes à partir de "
-"ces données collées.\n"
-"\n"
-"Assurez-vous que c’est une copie exacte du texte fourni par la "
-"fonctionnalité de sauvegarde d’une application Arkham Cards."
-
-#, javascript-format
-msgid ""
-"This feature is intended for advanced diagnostics or to import data from "
-"another app.\n"
-"\n"
-"${ erasedCopy }"
-msgstr ""
-"Cette fonctionnalité est destinée aux diagnostics avancés ou à "
-"l’importation de données à partir d’une autre application.\n"
-"\n"
-"${erasedCopy}"
-
-msgid ""
 "Data on ArkhamDB will be preserved, but all Campaign data and any edits "
 "made without internet might be lost.\n"
 "\n"
@@ -1440,12 +1376,12 @@ msgid ""
 "It has been more than a week since you checked for new cards.\n"
 "Check for new cards from ArkhamDB?"
 msgstr ""
-"Cela fait plus d’une semaine depuis que vous avez vérifié les nouvelles "
-"cartes.\n"
-"Rechercher de nouvelles cartes de ArkhamDB?"
+"Cela fait plus d’une semaine que vous n'avez pas vérifié s'il y a des "
+"nouvelles cartes.\n"
+"Rechercher des nouvelles cartes sur ArkhamDB ?"
 
 msgid "Edit Assigned Weaknesses"
-msgstr "Modifier les faiblesses affectées"
+msgstr "Modifier les Faiblesses affectées"
 
 msgid ""
 "No campaigns yet.\n"
@@ -1462,8 +1398,8 @@ msgstr ""
 "\n"
 "Vous pouvez utiliser cette application pour garder une trace des campagnes, "
 "y compris le traumatisme de l’investigateur, la reserve du chaos, les "
-"faiblesses de base, les notes de campagne et les valeurs d’expérience pour "
-"tous les decks."
+"faiblesses de base, les Notes de Campagne et les valeurs d’expérience pour "
+"tous les Decks."
 
 msgid "Sort"
 msgstr "Trier"
@@ -1473,7 +1409,7 @@ msgid ""
 "\n"
 "After doing this you will need network access to make changes to the deck."
 msgstr ""
-"Vous pouvez télécharger votre deck vers ArkhamDB pour le partager avec "
+"Vous pouvez télécharger votre Deck vers ArkhamDB pour le partager avec "
 "d’autres personnes.\n"
 "\n"
 "Après avoir fait ceci, vous aurez besoin d’un accès réseau pour apporter "
@@ -1485,9 +1421,9 @@ msgid ""
 "If it was part of a campaign you can add the same investigator back to "
 "restore your campaign data."
 msgstr ""
-"Il semble que vous ayez supprimé ce deck depuis ArkhamDB.\n"
+"Il semble que vous ayez supprimé ce Deck depuis ArkhamDB.\n"
 "\n"
-"Si il faisait partie d’une campagne, vous pouvez ajouter le même "
+"Si il faisait partie d’une campagne, vous pouvez rajouter le même "
 "investigateur pour restaurer vos données de campagne."
 
 #, javascript-format
@@ -1517,40 +1453,40 @@ msgid "Share"
 msgstr "Partager"
 
 msgid "Exiled cards"
-msgstr "Cartes exilées"
+msgstr "Cartes bannies"
 
 #, javascript-format
 msgid "Story cards to add - ${ scenarioName }"
-msgstr "Cartes d’Histoire à ajouter - ${scenarioName}"
+msgstr "Cartes d’histoire à ajouter - ${scenarioName}"
 
 msgid "Story cards to add"
-msgstr "Cartes d’Histoire à ajouter"
+msgstr "Cartes d’histoire à ajouter"
 
 msgid "Story Cards - Existing"
-msgstr "Cartes d’Histoire - existantes"
+msgstr "Cartes d’histoire - existantes"
 
 msgid "Upgrade deck"
 msgstr "Améliorer le Deck"
 
 msgid "Saving..."
-msgstr "Sauvegarde…"
+msgstr "Sauvegarde en cours…"
 
 msgid "Flip Card"
 msgstr "Retourner la Carte"
 
 #, javascript-format
 msgid "Doom: ${ doom }"
-msgstr "Fatalité: ${doom}"
+msgstr "Fatalité : ${doom}"
 
 #, javascript-format
 msgid "Clues: ${ clues }${ perInvestigatorClues }"
-msgstr "Indices: ${clues} ${perInvestigatorClues}"
+msgstr "Indices : ${clues} ${perInvestigatorClues}"
 
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
-msgstr "Occulte: ${shroud}. Indices: ${clues} ${perInvestigatorClues}."
+msgstr "Occulte : ${shroud}. Indices: ${clues} ${perInvestigatorClues}."
 
 msgid "Update investigator decks"
-msgstr "Mise à jour des decks investigateurs"
+msgstr "Mettre à jour les Decks Investigateur"
 
 msgid ""
 "By upgrading a deck, you can track XP and story card upgrades as your "
@@ -1558,23 +1494,23 @@ msgid ""
 "\n"
 "Previous versions of your deck will still be accessible."
 msgstr ""
-"En améliorant un deck, vous pouvez suivre les mises à jour de XP et de "
-"carte d'histoire au fur et à mesure de votre campagne.\n"
+"En améliorant un Deck, vous pouvez suivre les mises à jour de XP et des "
+"cartes d'histoire au fur et à mesure de votre campagne.\n"
 "\n"
 "Les versions précédentes de votre deck seront toujours accessibles."
 
 msgid "Save and Upgrade Decks"
-msgstr "Enregistrer et mettre à niveau les decks"
+msgstr "Enregistrer et Améliorer les Decks"
 
 msgid "Only Save"
-msgstr "Enregistrer uniquement"
+msgstr "Enregistrer Uniquement"
 
 msgid ""
 "You can opt-in to always seeing taboos and buiding decks with them in "
 "Settings."
 msgstr ""
-"Vous pouvez choisir de toujours voir les tabous et les decks construits "
-"avec eux dans les paramètres."
+"Vous pouvez choisir de toujours voir les Tabous et les Decks construits "
+"avec eux dans les Paramètres."
 
 #, javascript-format
 msgid "Level ${ level }"
@@ -1584,10 +1520,10 @@ msgid "In Deck"
 msgstr "Dans le Deck"
 
 msgid "All Eligible Cards"
-msgstr "Toutes les cartes admissibles"
+msgstr "Toutes les Cartes Admissibles"
 
 msgid "Deckbuilding"
-msgstr "Cartes autorisées pour le deck"
+msgstr "Cartes autorisées pour le Deck"
 
 #, javascript-format
 msgid "Warning: this card contains possible spoilers for '${ card.pack_name }'."
@@ -1596,7 +1532,7 @@ msgstr ""
 "‘${card.pack_name}’."
 
 msgid "Pack Filters"
-msgstr "Filtres par Pack"
+msgstr "Filtres d'Édition"
 
 #, javascript-format
 msgid "${ count } Card"
@@ -1615,22 +1551,22 @@ msgid "Preferences"
 msgstr "Préférences"
 
 msgid "Swipe between card results"
-msgstr "Glisser entre les cartes trouvées"
+msgstr "Swiper entre les cartes trouvées"
 
 msgid "Select Faction"
-msgstr "Sélectionnez une Faction"
+msgstr "Sélectionner une classe"
 
 msgid "Deck Size"
-msgstr "Taille du deck"
+msgstr "Taille du Deck"
 
 msgid "Unable to update: you appear to be offline."
-msgstr "Impossible de mettre à jour : vous semblez être hors ligne."
+msgstr "Impossible de faire la mise à jour : vous semblez être hors ligne."
 
 msgid ""
 "We're having trouble updating your decks at this time. If the problem "
 "persists tap here to reauthorize."
 msgstr ""
-"Nous avons du mal à mettre à jour vos decks en ce moment. Si le problème "
+"Nous avons du mal à mettre à jour vos Decks en ce moment. Si le problème "
 "persiste, appuyez ici pour réautoriser."
 
 msgid "Multiplayer"
@@ -1651,14 +1587,11 @@ msgstr "Essaim"
 msgid "Seal"
 msgstr "Sceller"
 
-msgid "Investigate"
-msgstr "Enquéter"
-
 msgid "Myriad"
 msgstr "Myriade"
 
 msgid "Return to The Path to Carcosa"
-msgstr "Renouveau: Le Chemin de Carcosa"
+msgstr "Renouveau - Le Chemin de Carcosa"
 
 msgid "The Dream-Quest"
 msgstr "La Quête Onirique"
@@ -1667,28 +1600,28 @@ msgid "The Web of Dreams"
 msgstr "La Toile des Songes"
 
 msgid "Return to Curtain Call"
-msgstr "Renouveau: Baisser de Rideau"
+msgstr "Renouveau - Baisser de Rideau"
 
 msgid "Return to The Last King"
-msgstr "Renouveau: Le Dernier Roi"
+msgstr "Renouveau - Le Dernier Roi"
 
 msgid "Return to Echoes of the Past"
-msgstr "Renouveau: Les Échos du Passé"
+msgstr "Renouveau - Les Échos du Passé"
 
 msgid "Return to The Unspeakable Oath"
-msgstr "Renouveau: Le Serment Indicible"
+msgstr "Renouveau - Le Serment Indicible"
 
 msgid "Return to A Phantom of Truth"
-msgstr "Renouveau: Le Spectre de la Vérité"
+msgstr "Renouveau - Le Spectre de la Vérité"
 
 msgid "Return to The Pallid Mask"
-msgstr "Renouveau: Le Masque Blême"
+msgstr "Renouveau - Le Masque Blême"
 
 msgid "Return to Black Stars Rise"
-msgstr "Renouveau: Sous les Étoiles Noires"
+msgstr "Renouveau - Sous les Étoiles Noires"
 
 msgid "Return to Dim Carcosa"
-msgstr "Renouveau: La Pâle Carcosa"
+msgstr "Renouveau - La Pâle Carcosa"
 
 msgid "Beyond the Gates of Sleep"
 msgstr "Par-delà le Mur du Sommeil"
@@ -1703,7 +1636,7 @@ msgid "The Oneironauts"
 msgstr "Les Onironautes"
 
 msgid "Dark Side of the Moon"
-msgstr "La Face Cachée la Lune"
+msgstr "La Face Cachée de la Lune"
 
 msgid "The Great Ones"
 msgstr "Les Grands Anciens"
@@ -1715,7 +1648,7 @@ msgid "Waking Nightmare"
 msgstr "Cauchemar Eveillé"
 
 msgid "A Thousand Shapes of Horror"
-msgstr "Mille Nuances d'horreur"
+msgstr "Mille Nuances d'Horreur"
 
 msgid "Point of No Return"
 msgstr "Point de Non-Retour"
@@ -1727,7 +1660,7 @@ msgid "Evidence of Kadath"
 msgstr "Preuve de Kadath"
 
 msgid "Steps of the Bridge"
-msgstr "Marches du pont"
+msgstr "Marches du Pont"
 
 msgid "Deck Type"
 msgstr "Type de Deck"
@@ -1740,11 +1673,11 @@ msgid "Unknown card: ${ req.code }"
 msgstr "Carte inconnue : ${ req.code }"
 
 msgid "Select Deck Size"
-msgstr "Sélectionner La taille du deck"
+msgstr "Sélectionner la Taille du Deck"
 
 #, javascript-format
 msgid "Bonded Cards (${ count })"
-msgstr "Cartes liées (${ count })"
+msgstr "Cartes Liées (${ count })"
 
 msgid "New Name"
 msgstr "Nouveau Nom"
@@ -1756,40 +1689,40 @@ msgid "Flavor Text"
 msgstr "Texte d'Ambiance"
 
 msgid "Card Backs"
-msgstr "Dos de carte"
+msgstr "Verso de Carte"
 
 msgid "Encounter Cards"
-msgstr "Cartes de rencontre"
+msgstr "Cartes Rencontre"
 
 msgid "XP Discount: ${ taboo.extra_xp }."
-msgstr "Réduction d'XP: ${ taboo.extra_xp }."
+msgstr "Réduction d'XP : ${ taboo.extra_xp }."
 
 msgid "Choose Tokens to Seal"
-msgstr "Choisir des jetons à sceller"
+msgstr "Choisir des pions à Sceller"
 
 msgid "At Death's Doorstep"
-msgstr "Aux Portes de la Mort (acte 1)"
+msgstr "Aux Portes de la Mort"
 
 msgid "Tap token to draw"
-msgstr "Appuyez pour tirer un jeton"
+msgstr "Appuyez sur le pion pour le révéler"
 
 msgid "Set aside and draw another"
-msgstr "Réserver et tirer un autre"
+msgstr "Le garder et en révéler un autre"
 
 msgid "Drawn"
-msgstr "Tiré"
+msgstr "Révélé"
 
 msgid "Sealed Tokens"
-msgstr "Jetons scellés"
+msgstr "Pions Scellés"
 
 msgid "Seal Tokens"
-msgstr "Sceller des Jetons"
+msgstr "Sceller des pions"
 
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "Réduction d'XP : ${ card.extra_xp }."
 
 msgid "Add Investigator Deck"
-msgstr "Ajouter le deck de l'Investigateur"
+msgstr "Ajouter le Deck de l'Investigateur"
 
 msgid "Upgrade Deck with XP"
 msgstr "Mise à niveau du Deck avec XP"
@@ -1798,15 +1731,15 @@ msgid ""
 "Note: Deck size should only be selected at deck creation time, not between "
 "scenarios."
 msgstr ""
-"Remarque : La taille du deck ne doit être sélectionnée qu'au moment de la "
+"Remarque : La taille du Deck ne doit être sélectionnée qu'au moment de la "
 "création du deck, et non entre les scénarios."
 
 msgid ""
 "Note: Secondary faction should only be selected at deck creation time, not "
 "between scenarios."
 msgstr ""
-"Remarque : La faction secondaire ne doit être sélectionnée qu'au moment de "
-"la création du deck, et non entre les scénarios."
+"Remarque : La classe secondaire ne doit être sélectionnée qu'au moment de "
+"la création du Deck, et non entre les scénarios."
 
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
@@ -1815,7 +1748,7 @@ msgid ""
 "If you would like to upload it, you can use Clone to upload a clone of the "
 "current deck."
 msgstr ""
-"Ce deck contient des versions suivantes/précédentes avec des mises à "
+"Ce Deck contient des versions suivantes/précédentes avec des mises à "
 "niveau, donc nous ne pouvons pas le télécharger sur ArkhamDB pour le "
 "moment.\n"
 "\n"
@@ -1827,40 +1760,31 @@ msgid "${ xp } (${ adjustment }) XP"
 msgstr "${ xp } (${ adjustment }) XP"
 
 msgid "Draw Simulator"
-msgstr "Simulateur de tirage"
+msgstr "Simulateur de Pioche"
 
 msgid "Available XP"
 msgstr "XP disponible"
 
 msgid "Odds Calculator"
-msgstr "Calculateur de probabilités"
+msgstr "Calculateur de Probabilités"
 
 msgid "Fail By 2 or Less"
-msgstr "Echec par 2 ou moins"
+msgstr "Échec avec une différence de 2 ou moins"
 
 msgid "Fail By 1 or Less"
-msgstr "Echec par 1 ou moins"
+msgstr "Échec avec une différence de 1 ou moins"
 
 msgid "Succeed By 1 or More"
-msgstr "Succés par 1 ou plus"
+msgstr "Réussite avec une différence de 1 ou plus"
 
 msgid "Succeed By 2 or More"
-msgstr "Succés par 2 ou plus"
+msgstr "Réussite avec une différence de 2 ou plus"
 
 msgid "Succeed By 3 or More"
-msgstr "Succés par 3 ou plus"
+msgstr "Réussite avec une différence de 3 ou plus"
 
 msgid "Change Scenario"
-msgstr "Changer de scénario"
-
-msgid "Scenario History"
-msgstr "Historique du Scénario"
-
-msgid "Edit Tokens"
-msgstr "Mettre à jour les Jetons"
-
-msgid "Draw Tokens"
-msgstr "Tirer des jetons"
+msgstr "Changer de Scénario"
 
 msgid "Weakness Set"
 msgstr "Ensemble des Faiblesses"
@@ -1887,28 +1811,28 @@ msgid "Number of resources you have"
 msgstr "Nombre de ressources dont vous disposez"
 
 msgid "Damage on Mark Harrigan"
-msgstr "Dommages sur Mark Harrigan"
+msgstr "Dégâts sur Mark Harrigan"
 
 msgid "Number of exhausted enemies in play"
-msgstr "Nombre d'ennemis épuisés en jeu"
+msgstr "Nombre d'ennemis inclinés en jeu"
 
 msgid "Spend two resources to automatically succeed"
 msgstr "Dépenser deux ressources pour réussir automatiquement"
 
 msgid "Resource cost of the top card on your deck"
-msgstr "Coût de la carte supérieure de votre jeu"
+msgstr "Coût en ressource de la carte supérieure de votre Deck"
 
 msgid ""
 "Note: chaos tokens that cause additional tokens to be revealed does not "
 "show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
 "situations."
 msgstr ""
-"Remarque : les jetons de chaos qui provoquent la révélation de jetons "
+"Remarque : les pions Chaos qui provoquent la révélation de pions "
 "supplémentaires ne permettent pas d'obtenir des probabilités correctes pour "
 "les tirages multiples."
 
 msgid "Deleting"
-msgstr "Suppression"
+msgstr "Suppression en cours"
 
 msgid "Hand"
 msgstr "Main"
@@ -1929,7 +1853,7 @@ msgid "Body"
 msgstr "Corps"
 
 msgid "Body. Hand x2"
-msgstr "Corps. Hand x2"
+msgstr "Corps. Main x2"
 
 msgid "Ally"
 msgstr "Allié"
@@ -1950,36 +1874,38 @@ msgstr "Niveau ${ startXp } - ${ endXp }"
 
 #, javascript-format
 msgid "Cost: ${ actualCost }"
-msgstr "Coût: ${ actualCost }"
+msgstr "Coût : ${ actualCost }"
 
 msgid "No Changes"
 msgstr "Aucun Changement"
 
 msgid "Card changes"
-msgstr "Modification de cartes"
+msgstr "Modifications de cartes"
 
 #. Actually compute the diffs.
 msgid "Upgrade History"
-msgstr "Historique des améliorations"
+msgstr "Historique des Améliorations"
 
 msgid "Original Deck"
-msgstr "Deck original"
+msgstr "Deck d'origine"
 
 #, javascript-format
 msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
-msgstr "Dernier Deck: ${ deck.changes.spentXp } sur ${ deck.availableExperience } XP"
+msgstr ""
+"Dernier Deck : ${ deck.changes.spentXp } sur ${ deck.availableExperience } "
+"XP"
 
 msgid "Latest Deck: ${ deck.availableExperience } XP"
-msgstr "Dernier Deck: ${ deck.availableExperience } XP"
+msgstr "Dernier Deck : ${ deck.availableExperience } XP"
 
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr "Aucun soutien prenant un emplacement d'allié n'est autorisé."
 
 msgid "Too many off-class cards for Versatile"
-msgstr "Trop de card hors classe"
+msgstr "Trop de cartes hors classe"
 
 msgid "Asset: Ally. Arcane"
-msgstr "Soutien: Allié. Arcane"
+msgstr "Soutien : Allié. Arcane"
 
 msgid "Arcane x2"
 msgstr "Arcane x2"
@@ -1988,13 +1914,13 @@ msgid "Ally. Arcane"
 msgstr "Allié. Arcane"
 
 msgid "Success"
-msgstr "Succès"
+msgstr "Réussite"
 
 msgid "Draw Two, Pick One"
-msgstr "Révéler Deux, Choisir un"
+msgstr "En Révéler Deux, en Choisir Un"
 
 msgid "Re-Draw After Fail"
-msgstr "Repiocher après un échec"
+msgstr "Révéler de nouveau après un échec"
 
 msgid "Succeed Twice In A Row"
 msgstr "Réussir deux fois de suite"
@@ -2012,7 +1938,7 @@ msgid "${ this.name } <i>(${ this.subname })</i>"
 msgstr "${ this.name } <i>(${ this.subname })</i>"
 
 msgid "Campaign Setup"
-msgstr "Mise en place de la campagne"
+msgstr "Mise en Place de la Campagne"
 
 msgid "Choose lead investigator"
 msgstr "Choisissez l'Investigateur principal"
@@ -2027,7 +1953,7 @@ msgid "Resigned"
 msgstr "Abandon"
 
 msgid "Investigator status at end of scenario:"
-msgstr "Statut de l'investigateur à la fin du scénario :"
+msgstr "Statut de l'Investigateur à la fin du scénario :"
 
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
@@ -2037,25 +1963,25 @@ msgid ""
 "Mark the scenarios you've played through to make the results start showing "
 "up in search results."
 msgstr ""
-"Marquer les scenarios que vous avez joués pour permettre la visualisation  "
+"Marquer les scenarios que vous avez joués pour permettre la visualisation "
 "dans les résultats de recherche."
 
 msgid "Loading"
-msgstr "Chargement"
+msgstr "Chargement en cours"
 
 #, javascript-format
 msgid "${ label }: All"
-msgstr "${ label }: Tous"
+msgstr "${ label }: Tout"
 
 msgid "Experience points"
-msgstr "Points d'Expériences"
+msgstr "Points d'Expérience"
 
 msgid ""
 "Upgrading your deck allows changes and experience to be tracked over the "
 "course of a campaign."
 msgstr ""
-"Mettre à jour votre Deck permet de suivre son évolution au cours de la "
-"campagne."
+"Améliorer votre Deck permet de le modifier et de suivre l'évolution de "
+"votre expérience au cours de la campagne."
 
 msgid "Choose Investigator"
 msgstr "Choisissez un Investigateur"
@@ -2067,10 +1993,10 @@ msgid "Proceed"
 msgstr "Continuer"
 
 msgid "The investigators must decide (choose one):"
-msgstr "Les investigateur doivent décider (choisissez en un)"
+msgstr "Les investigateurs doivent décider (choisissez-en un)"
 
 msgid "Add new investigator"
-msgstr "Ajouter un investogateur"
+msgstr "Ajouter un Investigateur"
 
 #, javascript-format
 msgid "${ supplyName } to use (${ desiredCount })"
@@ -2098,7 +2024,7 @@ msgid "Not enough"
 msgstr "Pas assez"
 
 msgid "Reset Scenario?"
-msgstr "Réinitialiser le scénario ?"
+msgstr "Réinitialiser le Scénario ?"
 
 msgid ""
 "Are you sure you want to reset this scenario?\n"
@@ -2133,9 +2059,6 @@ msgstr[1] "${ startText } Ces sets sont reconnaissables aux icônes suivantes:"
 msgid "Choose Investigators"
 msgstr "Choisissez les Investigateurs"
 
-msgid "View deck upgrade"
-msgstr "Voir les Amélioration de Deck"
-
 msgid "Campaign cards"
 msgstr "Cartes de campagne"
 
@@ -2154,7 +2077,7 @@ msgid " (New Total: ${ totalMental })"
 msgstr " (Nouveau Total: ${ totalMental })"
 
 msgid "Save deck upgrade"
-msgstr "Enregistrer les améliorations de deck"
+msgstr "Enregistrer les améliorations de Deck"
 
 msgid "Save adjustments"
 msgstr "Enregistrer les modifications"
@@ -2166,39 +2089,39 @@ msgid "View deck"
 msgstr "Voir le Deck"
 
 msgid "Update decks with scenario results"
-msgstr "Mettre à jour le deck avec les résultats de scénario"
+msgstr "Mettre à jour le Deck avec les résultats de scénario"
 
 #, javascript-format
 msgid "Who will add ${ card.name } to their deck?"
-msgstr "Qui va ajouter ${ card.name } à son Deck?"
+msgstr "Qui va ajouter ${ card.name } à son Deck ?"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
 msgstr ""
-"Dans votre Carnet de campagne, sous la mention « ${ section } », indiquez "
+"Dans votre Carnet de Campagne, sous la mention « ${ section } », indiquez "
 "${ card.name }. "
 
 #, javascript-format
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
-msgstr "Dans votre Carnet de campagne, rayez <i>${ logEntry.text }</i>"
+msgstr "Dans votre Carnet de Campagne, rayez <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>"
 msgstr ""
-"Dans votre Carnet de campagne, sous la mention « ${ logEntry.section } », "
+"Dans votre Carnet de Campagne, sous la mention « ${ logEntry.section } », "
 "rayez <i>${ logEntry.text }</i>"
 
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
-msgstr "Dans votre Carnet de campagne, indiquez que <i>${ logEntry.text }</i>"
+msgstr "Dans votre Carnet de Campagne, indiquez que <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
-msgstr "Supprimer ${ card.name } (${ input.length })"
+msgstr "Retirer ${ card.name } (${ input.length })"
 
 msgid "Who will remove ${ card.name } from their deck?"
-msgstr "Qui va supprimer ${ card.name } de son deck?"
+msgstr "Qui va supprimer ${ card.name } de son Deck ?"
 
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr "Vous subissez 1 traumatisme physique ou mental <i>(votre choix)</i>."
@@ -2210,7 +2133,7 @@ msgid "Draw random weakness"
 msgstr "Piocher une faiblesse au hasard"
 
 msgid "Do you want to use the app to randomize weaknesses?"
-msgstr "Voulez-vous utiliser l'app pour choisir les faiblesses au hasard ?"
+msgstr "Voulez-vous utiliser l'application pour choisir les faiblesses au hasard ?"
 
 #, javascript-format
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
@@ -2231,7 +2154,7 @@ msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ "
 "logEntry.section }'"
 msgstr[0] ""
-"Vérifiez votre Carnet de campagne. Parce qu'il y a ${ count } marque sous "
+"Vérifiez votre Carnet de Campagne. Parce qu'il y a ${ count } marque sous "
 "la mention '${ logEntry.section }'"
 msgstr[1] ""
 "Vérifiez votre Carnet de campagne. Parce qu'il y a ${ count } marques sous "
@@ -2244,19 +2167,19 @@ msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ "
 "logEntry.section }'"
 msgstr[0] ""
-"Vérifiez votre Carnet de campagne. Parce qu'il y a ${ count }entrée sous la "
-"mention '${ logEntry.section }'"
+"Vérifiez votre Carnet de Campagne. Parce qu'il y a ${ count } entrée sous "
+"la mention '${ logEntry.section }'"
 msgstr[1] ""
 "Vérifiez votre Carnet de campagne. Parce qu'il y a ${ count }entrées sous "
 "la mention '${ logEntry.section }'"
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr "Vérifiez votre Carnet de campagne. Parce que  <i>${ entry }</i>"
+msgstr "Vérifiez votre Carnet de Campagne. Parce que  <i>${ entry }</i>"
 
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr ""
-"Vérifiez votre Carnet de campagne, <i>${ logEntry.section }</i> n'est-il "
+"Vérifiez votre Carnet de Campagne, <i>${ logEntry.section }</i> n'est-il "
 "pas rayé ?"
 
 #, javascript-format
@@ -2267,8 +2190,8 @@ msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"Tant que ${ list } ont un ${ supplyName }, ils doivent lire <b>${ "
-"sectionName }</b>."
+"Tant que ${ list } a un ${ supplyName }, il doit lire <b>${ sectionName "
+"}</b>."
 msgstr[1] ""
 "Tant que ${ list } ont tous un ${ supplyName },ils doivent lire <b>${ "
 "sectionName }</b>."
@@ -2281,10 +2204,10 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"Tant que ${ list } n'a pas un ${ supplyName }, ils doivent lire <b>${ "
+"Tant que ${ list } n'a pas de ${ supplyName }, il doit lire <b>${ "
 "sectionName }</b>."
 msgstr[1] ""
-"Tant que ${ list } n'ont pas un ${ supplyName }, ils doivent lire <b>${ "
+"Tant que ${ list } n'ont pas de ${ supplyName }, ils doivent lire <b>${ "
 "sectionName }</b>."
 
 #, javascript-format
@@ -2294,20 +2217,20 @@ msgstr[0] "${ investigators } doit lire <b>${ prompt }"
 msgstr[1] "${ investigators } doivent lire <b>${ prompt }"
 
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
-msgstr "Un investigateur a-t-il « ${ cardName } » dans son deck?"
+msgstr "Un investigateur a-t-il « ${ cardName } » dans son Deck ?"
 
 #, javascript-format
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
-msgstr "Un investigateur avec « ${ cardName } » a-t-il été vaincu?"
+msgstr "Un investigateur avec « ${ cardName } » dans son Deck a-t-il été vaincu ?"
 
 msgid "For each investigator with \"${ cardName }\" in their deck:"
-msgstr "Pour chaque investigateur avec « ${ cardName } » dans son deck:"
+msgstr "Pour chaque investigateur avec « ${ cardName } » dans son Deck :"
 
 #, javascript-format
 msgid "Because there is ${ playerCount } player in the game:"
 msgid_plural "Because there are ${ playerCount } players in the game:"
-msgstr[0] "Parce qu'il y a ${ playerCount } joueur en jeu:"
-msgstr[1] "Parce qu'il y a ${ playerCount } joueurs en jeu:"
+msgstr[0] "Parce qu'il y a ${ playerCount } joueur en jeu :"
+msgstr[1] "Parce qu'il y a ${ playerCount } joueurs en jeu :"
 
 msgid "If the lead investigator was <b>killed</b>."
 msgstr "Si l'investigateur principal a été <b>tué</b>."
@@ -2320,17 +2243,11 @@ msgstr "Vérifiez ${ logEntry.section }. <i>Si ${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
-msgstr "Êtes-vous sûr de vouloir supprimer la campagne: ${ campaignName }"
-
-msgid "Log"
-msgstr "Journal"
+msgstr "Êtes-vous sûr de vouloir supprimer la campagne : ${ campaignName }"
 
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
 msgstr "${ scenarioName } (Tentative ${ attempt })"
-
-msgid "View Deck"
-msgstr "Voir Deck"
 
 msgid "Select Deck"
 msgstr "Choisir un Deck"
@@ -2342,10 +2259,10 @@ msgid "Killed and Insane Investigators"
 msgstr "Investigateurs Tués et Déments"
 
 msgid "Delete campaign"
-msgstr "Supprimer la Campagne"
+msgstr "Supprimer la campagne"
 
 msgid "Guide not yet available"
-msgstr "Guide non encore disponible"
+msgstr "Guide pas encore disponible"
 
 msgid "Choose an Investigator"
 msgstr "Choisir un Investigateur"
@@ -2366,29 +2283,28 @@ msgid ""
 "You can view the deck and delete the most recent 'upgrade' to put things "
 "back the way they were."
 msgstr ""
-"Il semble que vous essayez d'annuler une amélioraton de deck\n"
+"Il semble que vous essayez d'annuler une amélioration de Deck\n"
 "\n"
-"Notez que l'application ne supprimera PAS votre dernière mise à "
-"jourd'ArkhamDB, ainsi, les changements antérieurs seront toujours "
-"appliqués.\n"
+"Notez que l'application ne supprimera PAS votre dernière mise à jour "
+"d'ArkhamDB, ainsi, les changements antérieurs seront toujours appliqués.\n"
 "\n"
-"Vous pouvez consulter le deck et supprimer la plus récente "
-"'modification'pour remettre les choses comme elles étaient."
+"Vous pouvez consulter le deck et supprimer la plus récente 'amélioration' "
+"pour remettre les choses comme elles étaient."
 
 msgid "Undo"
 msgstr "Annuler"
 
 msgid "In your Campaign Log, record that:"
-msgstr "Dans votre Carnet de Campagne, notez que:"
+msgstr "Dans votre Carnet de Campagne, notez que :"
 
 msgid "Enter a name for this deck."
 msgstr "Entrez un nom pour ce Deck."
 
 msgid "Use Starter Deck"
-msgstr "Utiliser un Deck de départ"
+msgstr "Utiliser un Deck de Départ"
 
 msgid "Create deck"
-msgstr "Créer un deck"
+msgstr "Créer un Deck"
 
 msgid "Sign In"
 msgstr "S'identifier"
@@ -2403,10 +2319,10 @@ msgid "The Innsmouth Conspiracy"
 msgstr "La Conspiration d'Innsmouth"
 
 msgid "Return to..."
-msgstr "Renouveau:"
+msgstr "Renouveau..."
 
 msgid "Investigator Starter Decks"
-msgstr "Deck de départ de l'Investigateur"
+msgstr "Decks de Départ d'Investigateur"
 
 msgid "Show story assets from other campaigns"
 msgstr "Montrer les soutiens d'histoires d'autres campagnes"
@@ -2415,7 +2331,7 @@ msgid "Story assets"
 msgstr "Soutien d'histoire"
 
 msgid "Select Cards"
-msgstr "Choisir les cartes"
+msgstr "Choisir les Cartes"
 
 msgid "Choose additional card"
 msgstr "Choisissez une carte supplémentaire"
@@ -2432,16 +2348,16 @@ msgstr ""
 "(a ${ input.id })"
 
 msgid "Choose entry to add to campaign log:"
-msgstr "Choisir une entrée à ajouter au carnet de campagne:"
+msgstr "Choisir une entrée à ajouter au Carnet de Campagne:"
 
 msgid "Edit campaign log"
-msgstr "Modifier le carnet de campagne"
+msgstr "Modifier le Carnet de Campagne"
 
 msgid "Draw chaos tokens"
-msgstr "Piocher un pion chaos"
+msgstr "Révéler un pion Chaos"
 
 msgid "Draw random basic weakness"
-msgstr "Piochez une faiblesse de base aléatoire"
+msgstr "Piocher une faiblesse de base aléatoire"
 
 msgid "Resolutions"
 msgstr "Résolutions"
@@ -2450,28 +2366,28 @@ msgid "Start playing the scenario now."
 msgstr "Commencer le scénario maintenant."
 
 msgid "In your Campaign Log, record that <i>${ text }</i>"
-msgstr "Dans votre Carnet de campagne, notez que <i>${ text }</i>"
+msgstr "Dans votre Carnet de Campagne, notez que <i>${ text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>."
 msgstr ""
-"Dans votre Carnet de campagne, sous « ${ logEntry.section } », notez <i>${ "
+"Dans votre Carnet de Campagne, sous « ${ logEntry.section } », notez <i>${ "
 "logEntry.text }</i>."
 
 msgid "Add ${ tokenString } to the chaos bag."
-msgstr "Ajoutez ${ tokenString } dans la réserve du chaos."
+msgstr "Ajoutez ${ tokenString } dans la réserve du Chaos."
 
 #, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
-msgstr "Enlevez ${ tokenString } de la réserve du chaos."
+msgstr "Retirez ${ tokenString } de la réserve du Chaos."
 
 msgid "Odds calculator"
 msgstr "Calculateur de probabilités"
 
 msgid "Clean up broken campaigns"
-msgstr "Nétoyer les campagnes corompues"
+msgstr "Nettoyer les campagnes corrompues"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -2504,14 +2420,11 @@ msgstr[1] ""
 "Chaque Investigateur paye ${ entry.xpCost } points d'expérience pour jouer "
 "ce scénario."
 
-msgid "All local decks and campaigns will be overridden"
-msgstr "Tous les decks et les campagnes seront supprimés"
-
 msgid "Import data"
 msgstr "Importation des données"
 
 msgid "Side stories"
-msgstr "Aventure annexe"
+msgstr "Aventures annexes"
 
 #, javascript-format
 msgid ""
@@ -2526,22 +2439,22 @@ msgid "Upgrade ${ humanVersionNumber }: ${ deck.availableExperience } XP"
 msgstr "Amélioration ${ humanVersionNumber }: ${ deck.availableExperience } XP"
 
 msgid "Delete broken deck"
-msgstr "Suppréssion des decks corompu"
+msgstr "Supprimer les Decks corrompus"
 
 msgid "Looks like we are having trouble loading this deck for some reason"
-msgstr "Il semble que nous ayons des problème a charger ce deck"
+msgstr "Il semble que nous ayons des problème à charger ce Deck"
 
 msgid "Delete Deck"
-msgstr "Supprimer le deck"
+msgstr "Supprimer le Deck"
 
 msgid "Parallel"
 msgstr "Parallèle"
 
 msgid "Faction, Name"
-msgstr "Faction, Nom"
+msgstr "Classe, Nom"
 
 msgid "Faction, Pack"
-msgstr "Faction, Pack"
+msgstr "Classe, Édition"
 
 msgid "Random location"
 msgstr "Lieu aléatoire"
@@ -2556,10 +2469,10 @@ msgid "Close"
 msgstr "Fermer"
 
 msgid "Proceed without saving"
-msgstr "Continer sans sauvegarder"
+msgstr "Continuer sans sauvegarder"
 
 msgid "Proceed anyway"
-msgstr "Continuer"
+msgstr "Continuer quand même"
 
 msgid ""
 "It looks like one or more deck upgrades are unsaved. If you would like the "
@@ -2572,15 +2485,15 @@ msgid ""
 "original versions of the deck can still be viewed from the deck's menu)."
 msgstr ""
 "Il semble qu'une ou plusieurs améliorations de deck ne soient pas "
-"sauvegardées. Si vous souhaitez que l'application suive l'expérience "
+"enregistrées. Si vous souhaitez que l'application suive l'expérience "
 "acquise au fur et à mesure que vous effectuez des modifications, veuillez "
 "revenir en arrière et appuyer sur 'Enregistrer les améliorations du deck' "
 "sur chaque investigateur avant de passer au scénario suivant.\n"
 "\n"
 "Une fois qu'une mise à jour a été enregistrée, vous pouvez modifier le deck "
-"comme d'habitude et l'app suivra correctement le coût de l'expérience pour "
-"toute modification apportée (la version originale du deck peut toujours "
-"être consultée à partir du menu du deck)."
+"comme d'habitude et l'application suivra correctement le coût en "
+"l'expérience pour toute modification apportée (la version originale du deck "
+"peut toujours être consultée à partir du menu du deck)."
 
 msgid ""
 "It looks like you edited the experience or trauma for an investigator, but "
@@ -2590,22 +2503,19 @@ msgstr ""
 "Il semble que vous ayez modifié l'expérience ou le traumatisme d'un "
 "investigateur, mais que vous ne l'ayez pas encore sauvegardé. Veuillez "
 "revenir en arrière et sélectionner 'Enregistrer les modifications' pour "
-"vous assurer que vos modifications soit sauvegardées."
+"vous assurer que vos modifications soient sauvegardées."
 
 msgid "Scenario completed"
 msgstr "Scénario terminé"
 
 msgid "Choose Side-Scenario"
-msgstr "Choisir un scénario annexe"
+msgstr "Choisir un Scénario Annexe"
 
 msgid "Add side scenario"
-msgstr "Ajouter un scénario annexe"
+msgstr "Ajouter un Scénario Annexe"
 
 msgid "Remove deck"
 msgstr "Supprimer le deck"
-
-msgid "Remove investigator"
-msgstr "Supprimer l'investigateur"
 
 msgid "Remove deck from campaign"
 msgstr "Supprimer le deck de la camapagne"
@@ -2617,9 +2527,9 @@ msgid ""
 "experience and story assets will only be saved as you complete new "
 "scenarios."
 msgstr ""
-"Êtes vous sur de vouloir supprimer le deck de la campagne.\n"
+"Êtes-vous sur de vouloir supprimer le deck de la campagne.\n"
 "\n"
-"Après avoir supprimé le deck vous pourrez choisir un autre deck, mais "
+"Après avoir supprimé le deck, vous pourrez choisir un autre deck mais "
 "l'expérience et les soutiens d'histoire ne seront enregistrés que lorsque "
 "vous terminerez de nouveaux scénarios."
 
@@ -2636,24 +2546,18 @@ msgstr ""
 "Étant donné que cet investigateur a participé à au moins un scénario de "
 "cette campagne, il ne peut être supprimé.\n"
 "\n"
-"Néanmoins, vous pouvez décider de ne pas le faire participer aux scénarios "
-"suivant de cette campagne."
-
-msgid "Remove investigators"
-msgstr "Supprimer les investigateurs"
-
-msgid "Finished removing investigators"
-msgstr "Suppression d'investigateurs terminé"
+"Néanmoins, vous pouvez décider de ne pas le faire participer aux prochains "
+"scénarios de cette campagne."
 
 #, javascript-format
 msgid "Experience cost: ${ xpCost }"
-msgstr "Coût d'Expérience: ${ xpCost }"
+msgstr "Coût en expérience : ${ xpCost }"
 
 msgid "Custom side scenario"
 msgstr "Scénario annexe personnalisé"
 
 msgid "Scenario Name"
-msgstr "Nom du scénario"
+msgstr "Nom du Scénario"
 
 msgid "Experience Cost"
 msgstr "Coût d'expérience"
@@ -2673,24 +2577,24 @@ msgid ""
 "Four-part campaign"
 msgstr ""
 "Campagne A\n"
-"Campagne en quatre partie"
+"Campagne en quatre parties"
 
 msgid ""
 "Campaign B\n"
 "Four-part campaign"
 msgstr ""
 "Campagne B\n"
-"Campagne en quatre partie"
+"Campagne en quatre parties"
 
 msgid ""
 "Parallel investigator options should only be selected at deck creation "
 "time, not between scenarios."
 msgstr ""
 "Les options d'investigateurs parallèles ne doivent être choisies qu'à la "
-"création du deck; pas entre les scénarios."
+"création du deck, pas entre les scénarios."
 
 msgid "Advanced Cards"
-msgstr "Cartes avancées"
+msgstr "Cartes Avancées"
 
 msgid "Physical"
 msgstr "Physique"
@@ -2702,13 +2606,13 @@ msgid "Record trauma"
 msgstr "Noter le traumatisme"
 
 msgid "Defeated: physical trauma"
-msgstr "Vaincus: traumatisme physique"
+msgstr "Vaincus : traumatisme physique"
 
 msgid "Defeated: mental trauma"
-msgstr "Vaincus: traumatisme mental"
+msgstr "Vaincus : traumatisme mental"
 
 msgid "Defeated: no trauma"
-msgstr "Vaincus: aucun traimatisme"
+msgstr "Vaincus : aucun traumatisme"
 
 #, javascript-format
 msgid ""
@@ -2731,8 +2635,8 @@ msgid ""
 "The app does not enforce Challenge Scenario prerequisites, so please "
 "confirm that they apply manually."
 msgstr ""
-"L'app ne vérifie pas les prérequis des scénarios défi, merci de confirmer "
-"qu'ils s'appliquent manuellement."
+"L'app ne vérifie pas les prérequis des scénarios défi, donc merci de "
+"confirmer qu'ils s'appliquent manuellement."
 
 msgid "Play this scenario"
 msgstr "Jouer ce scénario"
@@ -2764,7 +2668,7 @@ msgid ""
 "Experience cost: ${ challengeCost } for ${ investigator.name }, ${ xpCost } "
 "for each other investigator"
 msgstr ""
-"Coût en Expérience: ${ challengeCost } pour ${ investigator.name }, ${ "
+"Coût en expérience: ${ challengeCost } pour ${ investigator.name }, ${ "
 "xpCost } pour les autres investigateurs"
 
 msgid "Side"
@@ -2783,44 +2687,44 @@ msgid ""
 "section."
 msgstr ""
 "Les scénarios défi sont des print-and-play utilisant les produits officiels "
-"ainsi que certain cartes spécifiques. Ces scénarios sont créés avec certain "
-"prérequis, pour créer une expérience de type puzzle. Les cartes à imprimer "
-"peuvent être téléchargées deupis le site de Fantasy Flight Games dans la "
-"section « Investigateurs parallèles »."
+"ainsi que certain cartes spécifiques. Ces scénarios sont créés avec "
+"certains prérequis, pour créer une expérience de type puzzle. Les cartes à "
+"imprimer peuvent être téléchargées depuis le site de Fantasy Flight Games "
+"dans la section « Investigateurs parallèles »."
 
 msgid "Download printable cards"
 msgstr "Télécharger les cartes à imprimer"
 
 msgid "Return to Threads of Fate"
-msgstr "Renouveau: Les Fils du Destin"
+msgstr "Renouveau - Les Fils du Destin"
 
 msgid "Return to Heart of the Elders"
-msgstr "Renouveau: Le Cœur des Anciens"
+msgstr "Renouveau - Le Cœur des Anciens"
 
 msgid "Return to Shattered Aeons"
-msgstr "Renouveau: Paradoxes Temporels"
+msgstr "Renouveau - Paradoxes Temporels"
 
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
 msgstr "${ confirmText } <i>(inclus automatiquement)</i>"
 
 msgid "Return to The Forgotten Age"
-msgstr "Renouveau: La Civilisation Oubliée"
+msgstr "Renouveau - La Civilisation Oubliée"
 
 msgid "Return to The Untamed Wilds"
-msgstr "Renouveau: Une Contrée Sauvage"
+msgstr "Renouveau - Une Contrée Sauvage"
 
 msgid "Return to The Doom of Eztli"
-msgstr "Renouveau: Le Fléau des Eztli"
+msgstr "Renouveau - Le Fléau des Eztli"
 
 msgid "Return to The Boundary Beyond"
-msgstr "Renouveau: Par-delà les Limites"
+msgstr "Renouveau - Par-delà les Limites"
 
 msgid "Return to The City of Archives"
-msgstr "Renouveau: La Cité des Archives"
+msgstr "Renouveau - La Cité des Archives"
 
 msgid "Return to The Depths of Yoth"
-msgstr "Renouveau: Les Profondeurs de Yoth"
+msgstr "Renouveau - Les Profondeurs de Yoth"
 
 msgid "Save XP"
 msgstr "Enregistrer XP"
@@ -2833,10 +2737,10 @@ msgid " (Per Investigator)"
 msgstr " (Par Investigateur)"
 
 msgid "Use app for scenario setup & resolutions"
-msgstr "Utiliser l'app pour la mise en place et les conclusions"
+msgstr "Utiliser l'application pour la mise en place et les conclusions"
 
 msgid "Track campaign log and resolutions manually"
-msgstr "Suivre le carnet de campagne et les conclusions manuellement"
+msgstr "Suivre le Carnet de Campagne et les conclusions manuellement"
 
 msgid "Investigators"
 msgstr "Investigateurs"
@@ -2845,22 +2749,19 @@ msgid ""
 "If you encounter any problems with the campaign guide system, please let me "
 "know at arkhamcards@gmail.com."
 msgstr ""
-"Si vous rencontrez un problème avec le guide de campagne, faites le moi "
+"Si vous rencontrez un problème avec le Guide de Campagne, faites-le moi "
 "savoir ici : arkhamcards@gmail.com."
 
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
 msgstr "${ spentXp } sur ${ totalXp } dépensées"
 
-msgid "Edit Trauma"
-msgstr "Maudifier les traumatismes"
-
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
 "\n"
 "The deck will remain on ArkhamDB."
 msgstr ""
-"Êtes-vous sûr de supprimer ce deck de la campagne?\n"
+"Êtes-vous sûr de vouloir supprimer ce deck de la campagne ?\n"
 "\n"
 "Ce deck restera sur ArkhamDB."
 
@@ -2870,18 +2771,18 @@ msgid ""
 "\n"
 "Campaign log data associated with them may be lost."
 msgstr ""
-"Êtes-vous sûr de supprimer c ${ investigator.name } de la campagne?\n"
+"Êtes-vous sûr de vouloir supprimer ${ investigator.name } de la campagne ?\n"
 "\n"
-"Les entrées dans le carnet de campagne associées seront perdues."
+"Les données du Carnet de Campagne y étant associées seront perdues."
 
 msgid "Scenario or Interlude"
 msgstr "Scénario ou Interlude"
 
 msgid "Alphabetize guide encounter sets"
-msgstr "Ordre alphabétique des sets de rencontre"
+msgstr "Classer les sets de rencontre par ordre alphabétique"
 
 msgid "Draw Weakness"
-msgstr "Piocher une faiblesse"
+msgstr "Piocher une Faiblesse"
 
 msgid ""
 "<b>Note:</b> Trauma from investigator defeat is handled during scenario "
@@ -2891,7 +2792,7 @@ msgstr ""
 "traités lors de la résolution du scénario."
 
 msgid "Record Trauma"
-msgstr "Enregistrer un traumatisme"
+msgstr "Enregistrer un Traumatisme"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -2903,10 +2804,10 @@ msgid ""
 "The experience required to play these scenarios will be deducted "
 "automatically at the end of the scenario."
 msgstr ""
-"Un scénario secondaire peut être joué entre deux scénarios d'une campagnes "
-"d'<i>Horreur à Arkham: le jeu de cartes</i>. Jouer ces scénarios coûte à "
-"chaque investigateur des points d'expériences. Faiblesses, traumatismes, "
-"expérience et récompenses resteront aquis pour le reste de la campagne. "
+"Un scénario secondaire peut être joué entre deux scénarios d'une campagne "
+"d'<i>Horreur à Arkham : le jeu de cartes</i>. Jouer ces scénarios coûte à "
+"chaque investigateur des points d'expérience. Faiblesses, traumatismes, "
+"expérience et récompenses resteront acquis pour le reste de la campagne. "
 "Chaque scénario secondaire ne peut être joué qu'une fois par campagne.\n"
 "L'expérience requise pour jouer ces scénarios sera automatiquement déduite "
 "à la fin de ce scénario."
@@ -2915,7 +2816,7 @@ msgid "Select resolution"
 msgstr "Choisir une conclusion"
 
 msgid "Contact us"
-msgstr "Contactez nous"
+msgstr "Contactez-nous"
 
 #, javascript-format
 msgid "${ count } resupply"
@@ -2938,17 +2839,18 @@ msgid ""
 "Side scenarios cannot be added to a campaign until the previous scenario "
 "and following interludes are completed."
 msgstr ""
-"Les scénarios annexes ne peuvent pas être ajouté avant la fin du scénario "
-"précédent et interlude suivant."
+"Les scénarios annexes ne peuvent pas être ajoutés avant la fin du scénario "
+"précédent et des interludes suivants."
 
 #, javascript-format
 msgid ""
 "Missing card #${ code }. Please try updating cards from ArkhamDB in "
 "settings."
 msgstr ""
-"Carte manquante #${ code }. Essayer de mettre à jour les cartes depuis les "
-"paramètres."
+"Carte manquante #${ code }. Veuillez essayer de charger les cartes depuis "
+"ArkhamDB dans les paramètres."
 
+#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } point d'équipement disponible"
@@ -2958,10 +2860,10 @@ msgid "Unexpected file type"
 msgstr "Type de fichier inattendu"
 
 msgid "Backup Data"
-msgstr "Sauvegarde des données"
+msgstr "Sauvegarde des Données"
 
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
-msgstr "Cette App attend un ficher d'Arkham Cards (.acb/.json)"
+msgstr "Cette application attend un ficher de sauvegarde d'Arkham Cards (.acb/.json)"
 
 msgid ""
 "This feature will let you restore data from a lost device. If you were "
@@ -2969,16 +2871,20 @@ msgid ""
 "\n"
 "After a backup is selected, you will be able to choose which data to import."
 msgstr ""
-"Cette fonctionalité permet de restorer les données depuis un autre "
-"appareil. Si vous étiez connecté à ArkhamDB, reconectez-vous avant "
-"d'importer des données de campagne."
+"Cette fonctionnalité permet de restaurer les données d'un autre appareil. "
+"Si vous étiez connecté à ArkhamDB, reconnectez-vous avant d'importer des "
+"données de campagne.\n"
+"\n"
+"Après avoir sélectionné une sauvegarde, vous pourrez choisir les données à "
+"importer."
 
 msgid ""
 "This will let you backup your local decks and campaigns for safe-keeping. "
 "This can also be used to move them to another device."
 msgstr ""
-"Ceci vous permet de sauvegarder vos decks et campagnes locaux pour archive. "
-"Ceci permet aussi de les transférer vers un autre appareil."
+"Ceci vous permet de sauvegarder vos decks et campagnes locaux an tant "
+"qu'archives. Cela vous permet aussi de les transférer vers un autre "
+"appareil."
 
 msgid "Save backup"
 msgstr "Enregister la sauvegarde"
@@ -2992,19 +2898,20 @@ msgid ""
 "permission, and try again."
 msgstr ""
 "Il semble que vous ayez précédemment refusé à Arkham Cards de lire/écrire "
-"des fichiers externes. Vérifiez les paramètres système et réessayez."
+"des fichiers externes. Veuillez vérifier les paramètres Système et "
+"réessayer."
 
 #, javascript-format
 msgid "(${ investigator.name } - ${ scenarioCount } scenario"
 msgid_plural "${ investigator.name } - ${ scenarioCount } scenarios"
-msgstr[0] "(${ investigator.name } - ${ scenarioCount } scenario"
-msgstr[1] "${ investigator.name } - ${ scenarioCount } scenarios"
+msgstr[0] "(${ investigator.name } - ${ scenarioCount } scénario"
+msgstr[1] "${ investigator.name } - ${ scenarioCount } scénarios"
 
 msgid "Import"
 msgstr "Importer"
 
 msgid "Missing decks"
-msgstr "Deck manquant"
+msgstr "Decks manquants"
 
 msgid ""
 "It seems like you have chosen to import a campaign without importing one or "
@@ -3019,10 +2926,10 @@ msgid "Import anyway"
 msgstr "Importer quand même"
 
 msgid "New:"
-msgstr "Nouveau:"
+msgstr "Nouveau :"
 
 msgid "Updated:"
-msgstr "Modifié:"
+msgstr "Mis à jour :"
 
 msgid "No changes:"
 msgstr "Aucun changement :"
@@ -3044,25 +2951,26 @@ msgid ""
 "\n"
 "During scenario play it can be edited using the scenario guide."
 msgstr ""
-"Vous pouvez modifier les traumatisme qu'entre les scénarios.\n"
+"Vous ne pouvez modifier les traumatismes qu'entre chaque scénario.\n"
 "\n"
-"Durant un scénario ils peuvent l'être en utilisant le guide de scénario."
+"Durant un scénario, ils peuvent être modifiés en utilisant le guide de "
+"scénario."
 
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
 msgstr ""
-"Les traumatismes initiaux peuvent être modifier après la mise en place de "
-"campagne."
+"Les traumatismes initiaux peuvent être modifiés après la 'Mise en Place de "
+"la Campagne'."
 
 msgid "Confirm"
-msgstr "Confirmation"
+msgstr "Confirmer"
 
 msgid ""
 "Changing app language requires downloading the translated card information "
 "from ArkhamDB. This requires network and can take some time."
 msgstr ""
-"Changer la langue de l'app nécessite le téléchargement des traductions des "
-"cartes depuis ArkhamDB. Ceci nécessite une connexion réseau et peu prendre "
-"du temps."
+"Changer la langue de l'application requiert le téléchargement des "
+"traductions des cartes depuis ArkhamDB. Ceci nécessite une connexion réseau "
+"et peut prendre du temps."
 
 msgid "Download now"
 msgstr "Télécharger maintenant"
@@ -3074,7 +2982,7 @@ msgid "Checklist"
 msgstr "Liste à cocher"
 
 msgid "Limit 1 Covenant per deck."
-msgstr "Limite de 1 Traité par deck."
+msgstr "Limite de 1 par deck."
 
 msgid "Checking for FAQ"
 msgstr "Consulter la FAQ"
@@ -3091,7 +2999,7 @@ msgid "Default (${ systemLanguage })"
 msgstr "Par défaut (${ systemLanguage })"
 
 msgid "Download language cards"
-msgstr "Télécharger les traductions de cartes"
+msgstr "Télécharger les traductions des cartes"
 
 #, javascript-format
 msgid ""
@@ -3101,10 +3009,10 @@ msgid ""
 "You can override your language preference for this app in Settings."
 msgstr ""
 "Voulez-vous télécharger les modifications de cartes depuis ArkhamDB pour "
-"correspondre  à la langue de votre téléphone (${ lang })?\n"
+"correspondre à la langue de votre téléphone (${ lang })?\n"
 "\n"
-"Vous pouvez modifier les préférences de langue pour cette app dans "
-"Paramètre."
+"Vous pouvez modifier les préférences de langue pour cette application dans "
+"les Paramètres."
 
 msgid "Not now"
 msgstr "Pas maintenant"
@@ -3129,14 +3037,14 @@ msgid "Safe mode"
 msgstr "Mode sécurisé"
 
 msgid "The app drew an Auto-Fail"
-msgstr "L'app à piochée un échec automatique"
+msgstr "L'application a pioché un Échec Automatique"
 
 msgid ""
 "Sorry about that. If the app is crashing on launch, you can enter 'Safe "
 "mode' to backup your data."
 msgstr ""
-"Désolé. Si l'app se plante au lancement, vous pouvez passer en « mode "
-"sécurisé » pour sauvegarder vos données."
+"Désolé pour ça. Si l'application plante au lancement, vous pouvez passer en "
+"« mode Sécurisé » pour sauvegarder vos données."
 
 msgid "Start normally"
 msgstr "Démarer normalement"
@@ -3148,19 +3056,19 @@ msgid "Rules"
 msgstr "Règles"
 
 msgid "Encounter Card Errata"
-msgstr "Errata de carte rencontre"
+msgstr "Errata de Carte Rencontre"
 
 msgid "The following questions contain light spoilers for this scenario."
 msgstr "Les questions suivantes contiennent de légers spoilers pour ce scénario."
 
 msgid "Show Spoilers"
-msgstr "Afficher les spoilers"
+msgstr "Afficher les Spoilers"
 
 msgid "Scenario FAQ"
-msgstr "Scenario FAQ"
+msgstr "FAQ Scénario"
 
 msgid "Interlude FAQ"
-msgstr "Interlude FAQ"
+msgstr "FAQ Interlude"
 
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
@@ -3175,7 +3083,7 @@ msgstr[0] "Afficher ${section.nonCollectionCount} investigateur hors collection"
 msgstr[1] "Afficher ${section.nonCollectionCount} investigateurs hors collection"
 
 msgid "Edit spoiler settings"
-msgstr "Modifier les paramètres de spoiler"
+msgstr "Modifier les paramètres des spoilers"
 
 #, javascript-format
 msgid "Show ${ spoilerCardsCount } spoiler"
@@ -3184,10 +3092,10 @@ msgstr[0] "Afficher ${spoilerCardsCount} spoiler"
 msgstr[1] "Afficher ${spoilerCardsCount} spoilers"
 
 msgid "Search player cards"
-msgstr "Rechercher des cartes joueur"
+msgstr "Rechercher des cartes Joueur"
 
 msgid "Search encounter cards"
-msgstr "Rechercher des cartes rencontre"
+msgstr "Rechercher des cartes Rencontre"
 
 msgid "Clear search filters"
 msgstr "Effacer les filtres de recherche"
@@ -3196,7 +3104,7 @@ msgid "Search game text"
 msgstr "Rechercher le texte du jeu"
 
 msgid "Search card backs"
-msgstr "Recherche de Dos de carte"
+msgstr "Rechercher des versos de carte"
 
 msgid "Dark"
 msgstr "Sombre"
@@ -3218,124 +3126,124 @@ msgid "Basic weakness"
 msgstr "Faiblesse de base"
 
 msgid "Do not count towards deck size"
-msgstr "Ne compte pas dans le nombre de carte"
+msgstr "Ne comptent pas dans la limite de taille du deck"
 
 msgid "Menu"
 msgstr "Menu"
 
 #, javascript-format
 msgid "Faction: ${ card.faction_name }, Level: ${ level }"
-msgstr "Faction: ${ card.faction_name }, Niveau: ${ level }"
+msgstr "Classe : ${ card.faction_name }, Niveau: ${ level }"
 
 #, javascript-format
 msgid "Faction: ${ card.faction_name }, Cost: ${ cost }, Level: ${ level }"
-msgstr "Faction: ${ card.faction_name }, Coût: ${ cost }, Niveau: ${ level }"
+msgstr "Classe : ${ card.faction_name }, Coût: ${ cost }, Niveau: ${ level }"
 
 msgid "Faction: ${ card.faction_name }"
-msgstr "Faction: ${ card.faction_name }"
+msgstr "Classe : ${ card.faction_name }"
 
 #, javascript-format
 msgid "Encounter set: ${ card.encounter_name }"
-msgstr "Set de rencontre: ${ card.encounter_name }"
+msgstr "Set de rencontre : ${ card.encounter_name }"
 
 msgid "Health: none"
-msgstr "Santé: aucun"
+msgstr "Santé : aucune"
 
 msgid "Sanity: none"
-msgstr "Santé mentale: aucune"
+msgstr "Santé mentale : aucune"
 
 #, javascript-format
 msgid "Health: ${ count }"
-msgstr "Santé: ${ count }"
+msgstr "Santé : ${ count }"
 
 msgid "Sanity: ${ count }"
-msgstr "Santé mentale: ${ count }"
+msgstr "Santé mentale : ${ count }"
 
 #, javascript-format
 msgid "Willpower: ${ willpower }"
-msgstr "Volonté: ${ willpower }"
+msgstr "Volonté : ${ willpower }"
 
 msgid "Intellect: ${ intellect }"
-msgstr "Intelligence: ${ intellect }"
+msgstr "Intelligence : ${ intellect }"
 
 #, javascript-format
 msgid "Combat: ${ combat }"
-msgstr "Lutte: ${ combat }"
+msgstr "Lutte : ${ combat }"
 
 msgid "Agility: ${ agility }"
-msgstr "Agilité: ${ agility }"
+msgstr "Agilité : ${ agility }"
 
 msgid "Search options"
-msgstr "Option de recherche"
+msgstr "Options de recherche"
 
 msgid "Search in:"
-msgstr "Rechercher dans:"
+msgstr "Rechercher dans :"
 
 msgid "Encounter Card Toggle"
-msgstr "Afficher les cartes de rencontre"
+msgstr "Afficher les cartes Rencontre"
 
 msgid "Show all available cards"
 msgstr "Montrer toutes les cartes disponibles"
 
 #, javascript-format
 msgid "Fight: ${ fight }"
-msgstr "Combattre: ${ fight }"
+msgstr "Combattre : ${ fight }"
 
 msgid "Health: ${ health } per investigator"
-msgstr "Santé: ${ health } par investigateur"
+msgstr "Santé : ${ health } par investigateur"
 
 #, javascript-format
 msgid "Health: ${ health }"
-msgstr "Santé: ${ health }"
+msgstr "Santé : ${ health }"
 
 msgid "Evade: ${ evade }"
-msgstr "Évasion: ${ evade }"
+msgstr "Évasion : ${ evade }"
 
 #, javascript-format
 msgid "Willpower: ${ count }"
-msgstr "Volonté: ${ count }"
+msgstr "Volonté : ${ count }"
 
 msgid "Intellect: ${ count }"
-msgstr "Intelligence: ${ count }"
+msgstr "Intelligence : ${ count }"
 
 #, javascript-format
 msgid "Combat: ${ count }"
-msgstr "Lutte: ${ count }"
+msgstr "Lutte : ${ count }"
 
 msgid "Agility: ${ count }"
-msgstr "Agilité: ${ count }"
+msgstr "Agilité : ${ count }"
 
 #, javascript-format
 msgid "Wild: ${ count }"
-msgstr "Wild: ${ count }"
+msgstr "Sauvage : ${ count }"
 
 msgid "Edit Chaos Bag"
-msgstr "Modifier la réserve du chaos"
+msgstr "Modifier la réserve du Chaos"
 
 msgid "Chaos bag is empty"
-msgstr "La réserve du chaos est vide"
+msgstr "La réserve du Chaos est vide"
 
 msgid "Return Non Bless / Curse Tokens"
-msgstr "Remettre les jetons non Bénis / Malédictions"
+msgstr "Remettre les pions non Bénis / Malédictions"
 
 msgid "Return All Tokens"
-msgstr "Remettre tous les jetons"
+msgstr "Remettre tous les pions"
 
 msgid "Return Tokens"
-msgstr "Remettre les jetons"
+msgstr "Remettre les pions"
 
 #, javascript-format
 msgid "Total (${ chaosBagResults.totalDrawnTokens })"
 msgstr "Total (${ chaosBagResults.totalDrawnTokens })"
 
 msgid "Bless / Curse Tokens"
-msgstr "Jeton Bénis / Malédictions"
+msgstr "Pions Bénis / Malédictions"
 
 msgid "Bless"
 msgstr "Bénis"
 
 msgid "Curse"
-msgstr "Malédiction"
+msgstr "Malédictions"
 
 msgid "In Too Deep"
 msgstr "Mouillés Jusqu’au Cou"
@@ -3350,25 +3258,25 @@ msgid "A Light in the Fog"
 msgstr "Une Lueur dans le Brouillard"
 
 msgid "The Lair of Dagon"
-msgstr ""
+msgstr "La Tanière de Dagon"
 
 msgid "Hidden Truths"
-msgstr ""
+msgstr "Vérités Cachées"
 
 msgid "Into the Maelstrom"
-msgstr ""
+msgstr "Dans le Maelström"
 
 msgid "Possible Suspects"
-msgstr "Suspects possibles"
+msgstr "Suspects Possibles"
 
 msgid "Possible Hideouts"
-msgstr "Les cachettes possibles"
+msgstr "Cachettes Possibles"
 
 msgid "In Bag"
-msgstr "Dans la réserve"
+msgstr "Dans la Réserve"
 
 msgid "The Syzygy"
-msgstr ""
+msgstr "La Syzygie"
 
 msgid "Coming soon"
 msgstr "Prochainement"
@@ -3377,7 +3285,7 @@ msgid "Smaller"
 msgstr "Petit"
 
 msgid "Default"
-msgstr "Défaut"
+msgstr "Par défaut"
 
 msgid "Medium"
 msgstr "Moyen"
@@ -3386,35 +3294,35 @@ msgid "Large"
 msgstr "Grand"
 
 msgid "X-Large"
-msgstr "Plus grand"
+msgstr "Plus Grand"
 
 msgid "XX-Large"
-msgstr "Très grand"
+msgstr "Très Grand"
 
 msgid "Font Size"
-msgstr "Taille de police"
+msgstr "Taille de Police"
 
 msgid ""
 "This can be used to make the app font size larger, though it may impact "
 "layout on some screens."
 msgstr ""
-"Peut être utilisé pour rentre la policeplus large, mais peut impacter la "
-"mise en page."
+"Peut être utilisé pour rentre la police d'écriture plus large, mais peut "
+"impacter la mise en page."
 
 msgid ""
 "Keep level ${ level } after upgrade\n"
 "Won't count towards deck size"
 msgstr ""
 "Conserver le niveau ${ level } après la mise à jour\n"
-"Ne compte pas dans la taille du deck"
+"Ne compte pas dans la limite de taille du deck"
 
 msgid "Shrewd Analysis Rule"
-msgstr "Analyse Subtile :"
+msgstr "Analyse Subtile"
 
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
-msgstr[0] "Cette  mise à jour coute ${ xpCost } experience."
+msgstr[0] "Cette mise à jour coûte ${ xpCost } experience."
 msgstr[1] "Ces  mises à jours coutent ${ xpCost } experience."
 
 #, javascript-format
@@ -3427,18 +3335,18 @@ msgid_plural ""
 "\n"
 "${ upgradeCards }"
 msgstr[0] ""
-"Deux cartes vont être choisies aléatoirement parmis:\n"
+"Deux cartes vont être choisies aléatoirement parmi celles-ci :\n"
 "\n"
 "${ upgradeCards }"
 msgstr[1] ""
-"Deux cartes vont être choisies aléatoirement parmis:\n"
+"Deux cartes vont être choisies aléatoirement parmi celles-ci :\n"
 "\n"
 "${ upgradeCards }"
 
 msgid "You can edit your collection under Settings to adjust the eligible choices."
 msgstr ""
-"Vous pouvez modifier votre collection dans les paramètres pour ajouster les "
-"choix."
+"Vous pouvez modifier votre collection dans les Paramètres pour ajuster les "
+"cartes éligibles."
 
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] "
@@ -3446,6 +3354,11 @@ msgid ""
 "version and leave the lower level version in your deck (it does not count "
 "towards your deck size or the number of copies of that card in your deck)."
 msgstr ""
+"<b>Additional Options</b>: Lorsque vous améliorez une carte [[Chance]] ou "
+"[[Stratagème]], vous pouvez payer le coût intégral en expérience de la "
+"version améliorée de cette carte et laisser la version non améliorée dans "
+"votre deck (elle ne compte pas dans la limite de taille de votre deck ni "
+"dans le nombre limite de copies autorisées de cette carte dans le deck)."
 
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use "
@@ -3454,33 +3367,33 @@ msgid ""
 "<i>Note: the app handles this by adjusting experience to account for the "
 "'free' upgrade.</i>"
 msgstr ""
-"<b>Analyse Subtile<b> : Si vous remplissez les conditions de campagne, Vous "
-"pouvez utiliser Analyse Subtile et choisir les deux améliorations au hasard "
-"et de n'en payer qu'une.\n"
+"<b>Analyse Subtile<b> : Si vous remplissez les conditions de campagne, vous "
+"pouvez utiliser Analyse Subtile pour choisir deux améliorations au hasard "
+"et n'en payer qu'une.\n"
 "\n"
 "<i>Note : l'application gère cela en ajustant l'expérience pour tenir "
-"compte de l'améliorations  gratuite </i>"
+"compte de l'amélioration gratuite </i>"
 
 msgid "Upgrade results"
-msgstr "Résultat de l'amélioration"
+msgstr "Résultats de l'amélioration"
 
 msgid "Upgrade with Shrewd Analysis"
-msgstr "Amélioration avec Analyse Subtile"
+msgstr "Améliorer avec Analyse Subtile"
 
 msgid "The Pit of Despair"
-msgstr ""
+msgstr "Le Gouffre du Désespoir"
 
 msgid "Puzzle Pieces"
-msgstr ""
+msgstr "Les Pièces du Puzzle"
 
 msgid "The Vanishing of Elina Harper"
-msgstr ""
+msgstr "La Disparition d'Elina Harper"
 
 msgid "Beneath the Waves"
-msgstr ""
+msgstr "Sous les Vagues"
 
 msgid "Memories Recovered"
-msgstr ""
+msgstr "Souvenirs Retrouvés"
 
 msgid ""
 "Note: this campaign is still being released and so the guide is incomplete "
@@ -3488,23 +3401,24 @@ msgid ""
 "As new scenarios are released, I will try to update the app promptly but "
 "there may be some slight delays."
 msgstr ""
-"Cette campagne est encore en cour de sortie et le guide est incomplet (et "
-"peu contenir des erreurs).\n"
-"À chaque nouveau scénario, j'essaye de mettre à niveau l'app le plus "
-"rapidement possible."
+"Cette campagne est encore en cours de sortie donc le guide est incomplet "
+"(et peut contenir des erreurs).\n"
+"À chaque nouvelle sortie de scénario, j'essayerai de mettre à jour "
+"l'application le plus rapidement possible, mais il se peut qu'il y ait un "
+"peu d'attente."
 
 msgid "Slot: ${ card.slot }"
 msgstr "Emplacement ${ card.slot }"
 
 msgid "Search rules"
-msgstr "Règle de recherche"
+msgstr "Rechercher des règles"
 
 msgid "Signature Weakness"
-msgstr "Faiblesse signature"
+msgstr "Faiblesse Signature"
 
 #, javascript-format
 msgid "Cost: ${ json.cost }"
-msgstr "Coût: ${json.cost}"
+msgstr "Coût : ${json.cost}"
 
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
@@ -3516,7 +3430,7 @@ msgid "Hide versatile cards"
 msgstr "Cacher les cartes polyvalentes"
 
 msgid "Version to copy"
-msgstr "Version à copiée"
+msgstr "Version à copier"
 
 msgid "Updated Monday"
 msgstr "Mis à jour Lundi"
@@ -3540,7 +3454,7 @@ msgid "Updated Sunday"
 msgstr "Mis à jour Dimanche"
 
 msgid "Reset Chaos Bag"
-msgstr "Rétablir la réserve du chaos"
+msgstr "Réinitialiser la Réserve du Chaos"
 
 msgid "Books"
 msgstr "Livres"
@@ -3584,7 +3498,7 @@ msgid "Story assets and weaknesses"
 msgstr "Soutiens et faiblesses d'histoire"
 
 msgid "Clone deck"
-msgstr "Duppliquer le deck"
+msgstr "Dupliquer le deck"
 
 msgid "Open in browser"
 msgstr "Ouvrir dans le navigateur"
@@ -3616,7 +3530,7 @@ msgstr[1] "${ normalCardCount } · ${ totalCardCount } total"
 
 msgid "${ bondedCardCount } bound"
 msgid_plural "${ bondedCardCount } bound"
-msgstr[0] "${ bondedCardCount }  Carte liée"
+msgstr[0] "${ bondedCardCount } liée"
 msgstr[1] "${ bondedCardCount }  Cartes liées"
 
 msgid "${ unspentXpStr } unspent"
@@ -3628,10 +3542,10 @@ msgid "Deck is invalid"
 msgstr "Deck invalide"
 
 msgid "Show splash cards"
-msgstr "Afficher les cartes hors-classe"
+msgstr "Afficher les cartes hors classe"
 
 msgid "Hide splash cards"
-msgstr "Cacher les cartes hors-classe"
+msgstr "Cacher les cartes hors classe"
 
 msgid "Limited Slots"
 msgstr "Emplacements limités"
@@ -3654,24 +3568,26 @@ msgid "${ overspent } overspent"
 msgstr "${ overspent } dépensés en trop"
 
 msgid "For easy deck assembly"
-msgstr "Pour Assembler facilement son deck"
+msgstr "Pour assembler facilement son deck"
 
 msgid "Reads \"${ badThing.prompt }\""
 msgstr "Lire \"${ badThing.prompt }\""
 
 msgid "Sign in to Dissonant Voices?"
-msgstr ""
+msgstr "S'identifier sur Dissonant Voices ?"
 
 msgid ""
 "Dissonant Voices is an ongoing project by Mythos Busters to narrate the "
 "english scenario text for each Arkham Horror campaign."
 msgstr ""
+"Dissonant Voices est un projet en cours de Mythos Busters qui narre le "
+"texte des scénarios de chaque campagne d'Horreur à Arkham en anglais."
 
 msgid "Are you sure you want to delete this standalone?"
 msgstr "Êtes-vous sûr de vouloir supprimer ce scénario indépendant ?"
 
 msgid "Delete standalone"
-msgstr "Supprimer  un scénario indépendant"
+msgstr "Supprimer un scénario indépendant"
 
 msgid "Standalones"
 msgstr "Scénarios indépendants"
@@ -3680,18 +3596,19 @@ msgid ""
 "Don't see your favorite Standalone scenario here? Let me know at "
 "arkhamcards@gmail.com, and I'll see about including it in a future release."
 msgstr ""
-"Vous ne voyez pas votre scénario indépendant ici ? Faites le moi savoir à "
-"arkhamcards@gmail.com, je regarde comment l'inclure dans le futur."
+"Vous ne voyez pas votre scénario indépendant ici ? Faites-le moi savoir à "
+"arkhamcards@gmail.com, et je regarderai comment l'inclure dans une "
+"prochaine version."
 
 msgid "New Standalone"
-msgstr "Nouveau Scénario indépendant"
+msgstr "Nouveau Scénario Indépendant"
 
 msgid "Create Standalone"
-msgstr "Créer un scénario indépendant"
+msgstr "Créer un Scénario Indépendant"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "The Chameleon"
-msgstr ""
+msgstr "Le Caméléon"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid ""
@@ -3700,17 +3617,17 @@ msgid ""
 msgstr ""
 
 msgid "Asset Filters"
-msgstr "Filtres de soutien"
+msgstr "Filtres de Soutien"
 
 msgid "Sanity"
-msgstr ""
+msgstr "Santé mentale"
 
 msgid "Assets: All"
-msgstr "Soutiens : Tous"
+msgstr "Soutiens: Tout"
 
 #, javascript-format
 msgid "Assets: ${ searchParts }"
-msgstr "Soutiens : ${ searchParts }"
+msgstr "Soutiens  ${ searchParts }"
 
 msgid "Asset"
 msgstr "Soutien"
@@ -3733,21 +3650,6 @@ msgstr "Lieu"
 msgid "Actions"
 msgstr "Actions"
 
-msgid "Engage"
-msgstr "Engager"
-
-msgid "Play"
-msgstr "Jouer"
-
-msgid "Draw"
-msgstr "Piocher"
-
-msgid "Move"
-msgstr "Se déplacer"
-
-msgid "Resource"
-msgstr "Ressource"
-
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
 msgstr "Annuler les améliorations du Deck ?"
@@ -3758,6 +3660,11 @@ msgid ""
 "lower level version in your deck (it does not count towards your deck size "
 "or the number of copies of that card in your deck)."
 msgstr ""
+"<b>Additional Options</b>: Lorsque vous améliorez une carte [[Sort]], vous "
+"pouvez payer le coût intégral en expérience de la version améliorée de "
+"cette carte et laisser la version non améliorée dans votre deck (elle ne "
+"compte pas dans la limite de taille de votre deck ni dans le nombre limite "
+"de copies autorisées de cette carte dans le deck)."
 
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
 msgstr "${ spentXP } XP dépensé sur ${ _adjustedXp }"
@@ -3768,9 +3675,6 @@ msgstr "Amélioration"
 msgid "Editing"
 msgstr "Édition"
 
-msgid "Uplodaing deck"
-msgstr "Chargement du deck"
-
 msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will "
 "track changes."
@@ -3779,7 +3683,7 @@ msgstr ""
 "qui vous permettra de suivre les changements."
 
 msgid "XP earned"
-msgstr "XP gagné"
+msgstr "XP gagnée"
 
 msgid "Adjustment:"
 msgstr "Ajustement :"
@@ -3788,7 +3692,7 @@ msgid "Adjust XP"
 msgstr "Ajuster l'XP"
 
 msgid "Select Taboo List"
-msgstr "Sélectionner la liste de Taboo"
+msgstr "Sélectionner la Liste des Tabous"
 
 #, javascript-format
 msgid "${ size } Card"
@@ -3801,16 +3705,16 @@ msgid "class_${ faction }"
 msgstr "class_${ faction }"
 
 msgid "Select Parallel Investigator"
-msgstr "Sélectionner un investigateur parallèle"
+msgstr "Sélectionner un Investigateur Parallèle"
 
 msgid "Upgrade experience"
 msgstr "Mettre à jour l'expérience"
 
 msgid "Upgrading deck"
-msgstr "Amélioration du deck"
+msgstr "Amélioration du deck en cours"
 
 msgid "Editing deck"
-msgstr "Modifier le deck"
+msgstr "Modification du deck en cours"
 
 #, javascript-format
 msgid "${ normalCards } card"
@@ -3822,7 +3726,7 @@ msgid "Add scenario XP"
 msgstr "Ajouter de l'XP au scénario"
 
 msgid "Draw simulator"
-msgstr "Simulation de pioche"
+msgstr "Simulateur de pioche"
 
 msgid "Upgrade with XP"
 msgstr "Améliorer avec de l'XP"
@@ -3831,22 +3735,22 @@ msgid "Unknown campaign"
 msgstr "Campagne inconnue"
 
 msgid "Deck name"
-msgstr ""
+msgstr "Nom du deck"
 
 #, javascript-format
 msgid "Not enough cards (${ drawDeckSize } / ${ size })."
-msgstr ""
+msgstr "Pas assez de cartes (${ drawDeckSize } / ${ size })."
 
 #, javascript-format
 msgid "Too many cards (${ drawDeckSize } / ${ size })."
-msgstr ""
+msgstr "Trop de cartes (${ drawDeckSize } / ${ size })."
 
 msgid "Draw Random Basic Weakness"
-msgstr ""
+msgstr "Piocher une Faiblesse de Base au hasard"
 
 #. This is a deck upgrade action.
 msgid "Undo deck change?"
-msgstr ""
+msgstr "Annuler les modifications du deck ?"
 
 #. This is a deck upgrade action.
 msgid ""
@@ -3856,143 +3760,142 @@ msgid ""
 "changes might be applied twice. You should view the deck and manually undo "
 "the edits before reapplying the changes."
 msgstr ""
+"Il semble que vous essayez d'annuler la sauvegarde d'un deck\n"
+"\n"
+"Notez que l'application ne pourra PAS annuler ces changements, donc si vous "
+"les réitérez, ils pourraient bien s'appliquer deux fois. Vous devriez "
+"vérifier le deck et annuler ces modifications manuellement avant "
+"d'appliquer de nouvelles modifications."
 
 #. This is a deck upgrade action.
 msgid "Undo anyway"
-msgstr ""
+msgstr "Annuler quand même"
 
 msgid "Save deck changes"
-msgstr ""
+msgstr "Sauvegarder les modifications de deck"
 
 msgid "It looks like one or more deck changes are unsaved."
 msgstr ""
+"Il semble qu'une ou plusieurs modifications de decks ne sont pas "
+"sauvegardées."
 
 #, javascript-format
 msgid "${ handle }'s Friends"
-msgstr ""
+msgstr "Amis de ${ handle }"
 
 msgid "Friends"
-msgstr ""
+msgstr "Amis"
 
 #, javascript-format
 msgid "Search for ${ searchTerm }"
-msgstr ""
-
-msgid "Friend Requeusts"
-msgstr ""
-
-msgid "Pending Friend Requeusts"
-msgstr ""
+msgstr "Rechercher ${ searchTerm }"
 
 msgid "Search for friends to add"
-msgstr ""
+msgstr "Rechercher des amis à ajouter"
 
 msgid "Search Results"
-msgstr ""
+msgstr "Résultats des Recherches"
 
 #, javascript-format
 msgid "No results found for search '${ searchResults.term }'."
-msgstr ""
+msgstr "Aucun résultat trouvé pour la recherche '${ searchResults.term }'."
 
 msgid "Clear search"
-msgstr ""
+msgstr "Effacer la recherche"
 
 msgid "Search friends"
-msgstr ""
+msgstr "Rechercher des amis"
 
 #, javascript-format
 msgid "${ cycleCount } Cycle"
 msgid_plural "${ cycleCount } Cycles"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ cycleCount } Cycle"
+msgstr[1] "${ cycleCount } Cycles"
 
 msgid "${ standalonePackCount } Pack"
 msgid_plural "${ standalonePackCount } Packs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ standalonePackCount } Pack"
+msgstr[1] "${ standalonePackCount } Packs"
 
 msgid "Encounter Spoilers"
-msgstr ""
+msgstr "Spoilers de Rencontre"
 
 msgid "Support"
-msgstr ""
+msgstr "Assistance"
 
 msgid "Account Name"
-msgstr ""
+msgstr "Nom du Compte"
 
 msgid "Choose a handle for your account"
-msgstr ""
+msgstr "Choisissez un identifiant pour votre compte"
 
 msgid "Your Friends"
-msgstr ""
+msgstr "Vos Amis"
 
 msgid ""
 "This app works just fine without an account.\n"
 "But signing in will allow you to sync campaigns between devices, with more "
 "features planned for the future."
 msgstr ""
+"Cette application fonctionne bien sans avoir de compte.\n"
+"Mais en vous connectant, vous pourrez synchroniser vos campagnes avec tous "
+"vos dispositifs et accéder à plus de nouveaux contenus à l'avenir."
 
 #, javascript-format
 msgid "${ pendingFriendCount } pending request"
 msgid_plural "${ pendingFriendCount } pending requests"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ pendingFriendCount } demande d'amis en attente"
+msgstr[1] "${ pendingFriendCount } demandes d'amis en attente"
 
 msgid "${ friendCount } friend"
 msgid_plural "${ friendCount } friends"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ friendCount } ami"
+msgstr[1] "${ friendCount } amis"
 
 msgid "Account name"
-msgstr ""
+msgstr "Nom du Compte"
 
 msgid "Choose a handle"
-msgstr ""
-
-msgid "Other Accounts"
-msgstr ""
+msgstr "Choisissez un identifiant"
 
 msgid "ArkhamDB Account"
-msgstr ""
-
-msgid "Accounts"
-msgstr ""
+msgstr "Compte ArkhamDB"
 
 msgid "Arkham Cards Account"
-msgstr ""
+msgstr "Compte Arkham Cards"
 
 msgid "Looks like there is already an account registered with this email address."
-msgstr ""
+msgstr "Il semble qu'il y a déjà un compte enregistré avec cette adresse mail."
 
 msgid "That doesn't look like a valid email address"
-msgstr ""
+msgstr "Cette adresse mail semble être invalide"
 
 msgid "That password seems to be too weak."
-msgstr ""
+msgstr "Ce mot de passe semble trop faible."
 
 msgid "Your account has been disabled."
-msgstr ""
+msgstr "Votre compte a été désactivé."
 
 msgid "There doesn't appear to be an account with that email address."
-msgstr ""
+msgstr "Il ne semble pas exister de compte lié à cette adresse mail."
 
 msgid "Invalid password."
-msgstr ""
+msgstr "Mot de passe invalide."
 
 msgid "Unknown error"
-msgstr ""
+msgstr "Erreur inconnue"
 
 msgid "Email address"
-msgstr ""
+msgstr "Adresse mail"
 
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 msgid "Would you like to create a new account instead?"
-msgstr ""
+msgstr "Souhaitez-vous créer un nouveau compte à la place ?"
 
 msgid "Are you trying to sign in to an existing account?"
-msgstr ""
+msgstr "Essayez-vous de vous identifier avec un compte existant ?"
 
 #, javascript-format
 msgid ""
@@ -4000,42 +3903,49 @@ msgid ""
 "\n"
 "Please follow the instructions and then return to the app to continue."
 msgstr ""
+"Un mot de passe de réinitialisation a été envoyé à '${ emailAddress }'.\n"
+"\n"
+"Veuillez suivre les instructions et ensuite, retournez sur l'application "
+"pour continuer."
 
 msgid "Would you like to reset your password via email?"
-msgstr ""
+msgstr "Souhaitez-vous réinitialiser votre mot de passe via votre adresse mail ?"
 
 msgid "Sign up"
-msgstr ""
+msgstr "S'enregistrer"
 
 msgid "Sign in"
-msgstr ""
+msgstr "S'identifier"
 
 msgid ""
 "Using an Arkham Cards account will allow you to backup and sync your "
 "campaign data between devices.\n"
 "More features are in the works."
 msgstr ""
+"En utilisant un compte Arkham Cards, vous pourrez sauvegarder et "
+"synchroniser vos données de campagne entre tous vos équipements.\n"
+"D'autres contenus supplémentaires sont en cours."
 
 msgid "Sign in to your account"
-msgstr ""
+msgstr "Se connecter à votre compte"
 
 msgid "Create a new account"
-msgstr ""
+msgstr "Créer un nouveau compte"
 
 msgid "Sign up with email"
-msgstr ""
+msgstr "S'enregistrer avec l'adresse mail"
 
 msgid "Sign in with email"
-msgstr ""
+msgstr "S'identifier avec l'adresse mail"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Se déconnecter"
 
 msgid "Sign in to app"
-msgstr ""
+msgstr "Se connecter à l'application"
 
 msgid "Problem reading from ArkhamDB"
-msgstr ""
+msgstr "Problèmes de lecture d'ArkhamDB"
 
 msgid ""
 "If you are having trouble with your account you should try to reconnect.\n"
@@ -4043,64 +3953,224 @@ msgid ""
 "If the problem persists, you may sign out but campaigns will have ArkhamDB "
 "decks disconnected."
 msgstr ""
+"Si vous avez des soucis avec votre compte, vous devriez essayer de vous "
+"reconnecter.\n"
+"\n"
+"Si le problème persiste, vous pouvez vous déconnecter de votre compte, mais "
+"les campagnes déconnecteront les decks d'ArkhamDB."
 
 msgid "Authorization issues"
-msgstr ""
+msgstr "Problèmes d'autorisation"
 
 msgid "Reconnect"
-msgstr ""
+msgstr "Se reconnecter"
 
 msgid "Logged in"
-msgstr ""
+msgstr "Connecté"
 
 msgid "Synchronize decks"
-msgstr ""
+msgstr "Synchroniser les Decks"
 
 msgid "Log out"
-msgstr ""
+msgstr "Déconnexion"
 
 msgid "Log in"
-msgstr ""
+msgstr "Connexion"
 
 msgid "ArkhamDB"
-msgstr ""
+msgstr "ArkhamDB"
 
 msgid "Narration enabled"
-msgstr ""
+msgstr "Narration désactivée"
 
 msgid "Audio narration"
-msgstr ""
+msgstr "Narration audio"
 
 msgid "Dissonant Voices"
-msgstr ""
+msgstr "Dissonant Voices"
 
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 msgid "Free-form text records"
-msgstr ""
+msgstr "Archives au format texte libre"
 
 msgid "Achievements"
-msgstr ""
+msgstr "Succès"
 
 msgid "Upload campaign"
-msgstr ""
-
-msgid "Add investigators"
-msgstr ""
-
-msgid "Add investigator to which campaign?"
-msgstr ""
-
-msgid "Which campaign would you like to add an investigator to?"
-msgstr ""
+msgstr "Télécharger une Campagne"
 
 msgid "Can't add side scenario right now."
-msgstr ""
+msgstr "Ne peut pas ajouter de scénario indépendant maintenant."
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
+msgstr "Réserve du Chaos (${ tokenCount })"
+
+msgid "Sorry, you don't seem to be a Mythos Buster patron."
+msgstr "Désolé, vous ne semblez pas être un mécène de Mythos Buster."
+
+msgid "Friend Requests"
+msgstr "Demandes d'amis"
+
+msgid "Pending Friend Requests"
+msgstr "Demandes d'amis en cours"
+
+msgid "Save upgrade"
+msgstr "Enregistrer la modification"
+
+msgid "Uploading deck"
+msgstr "Transfert de deck"
+
+msgid "Earned experience:"
+msgstr "Expérience gagnée :"
+
+msgid "Sign out of Arkham Cards?"
+msgstr "Se déconnecter d'Arkham Cards ?"
+
+msgid ""
+"Are you sure you want to sign out of Arkham Cards?\n"
+"\n"
+"Any campaigns you uploaded or have had shared with you will be removed from "
+"this device. They can be resynced if you sign in again.\n"
+"\n"
+"Note: if you have made recent changes while offline, they may be lost."
 msgstr ""
+"Êtes-vous sûr de vouloir vous déconnecter d'Arkham Cards ?\n"
+"\n"
+"Toutes les campagnes que vous avez transférées ou que vous avez partagées "
+"avec vous seront supprimées de cet appareil. Elles peuvent être "
+"resynchronisées si vous vous connectez à nouveau.\n"
+"\n"
+"Note : si vous avez effectué des modifications récentes hors ligne, elles "
+"peuvent être perdues."
+
+msgid "Name required"
+msgstr "Nom Requis"
+
+msgid "You must specify a name for custom campaigns."
+msgstr "Vous devez spécifier un nom pour les campagnes personnalisées."
+
+msgid "Export diagnostic data"
+msgstr ""
+
+msgid ""
+"This feature is intended for advanced diagnostics. Just copy the data "
+"presented here and email it to arkhamcards@gmail.com"
+msgstr ""
+
+msgid "Database migration required"
+msgstr ""
+
+msgid "This should only take a few seconds and no network is required."
+msgstr ""
+
+msgid "Migrate now"
+msgstr ""
+
+msgid "Export Diagnostic Data"
+msgstr ""
+
+msgid "Agility"
+msgstr ""
+
+msgid "Combat"
+msgstr ""
+
+msgid "Intellect"
+msgstr ""
+
+msgid "Willpower"
+msgstr ""
+
+msgid "Boost"
+msgstr ""
+
+msgid "Skill Boosts"
+msgstr ""
+
+msgid "Skill Boosts: All"
+msgstr ""
+
+msgid ""
+"If you run into any problems with this migration, please contact "
+"arkhamcards@gmail.com."
+msgstr ""
+
+msgid "Asset: Body. Arcane"
+msgstr ""
+
+msgid "Color blind friendly icons"
+msgstr ""
+
+msgid "Uploading"
+msgstr ""
+
+msgid "Upload campaigns"
+msgstr ""
+
+msgid "Campaigns can be uploaded to your Arkham Cards account."
+msgstr ""
+
+msgid "Uploaded campaigns will be synced between devices."
+msgstr ""
+
+msgid "Review records"
+msgstr ""
+
+msgid "Note campaign achievements"
+msgstr ""
+
+msgid "Complete campaign setup"
+msgstr ""
+
+msgid "Review and draw tokens"
+msgstr ""
+
+msgid "Spent experience"
+msgstr ""
+
+msgid "View upgrade"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "View results"
+msgstr ""
+
+msgid "Skipped"
+msgstr ""
+
+msgid "Locked"
+msgstr ""
+
+msgid "Add scenario result"
+msgstr ""
+
+msgid "Record completed scenario"
+msgstr ""
+
+msgid "Add XP from scenario"
+msgstr ""
+
+msgid "Review scenario results"
+msgstr ""
+
+msgid "Edit chaos bag"
+msgstr ""
+
+msgid "Scenario name"
+msgstr ""
+
+msgid "${ unspentXp } XP unspent"
+msgid_plural "${ unspentXp } XP unspent"
+msgstr[0] ""
+msgstr[1] ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -4110,7 +4180,7 @@ msgstr "${ investigator.name } est devenu <b>dément</b>."
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } est <b>mort</b>."
+msgstr "${ investigator.name } a été<b>tué</b>."
 
 #, javascript-format
 msgctxt "masculine"
@@ -4130,7 +4200,7 @@ msgid_plural ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ "
 "effect.physical } physical trauma."
 msgstr[0] ""
-"${ investigator.name } souffre de ${ effect.mental } traumatisme mental et "
+"${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et "
 "${ effect.physical } physique."
 msgstr[1] ""
 "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux "
@@ -4146,7 +4216,7 @@ msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } souffre de ${ effect.mental } traumatisme mental."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
 msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
 
 #, javascript-format
@@ -4159,7 +4229,7 @@ msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre de ${ effect.physical } traumatisme physique."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
 msgstr[1] ""
 "${ investigator.name } souffre de ${ effect.physical } traumatismes "
 "physiques."
@@ -4174,15 +4244,15 @@ msgstr "Abandon"
 
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
-msgstr "Vaincus: traumatisme physique"
+msgstr "Vaincu : traumatisme physique"
 
 msgctxt "masculine"
 msgid "Defeated: mental trauma"
-msgstr "Vaincus: traumatisme mental"
+msgstr "Vaincu : traumatisme mental"
 
 msgctxt "masculine"
 msgid "Defeated: no trauma"
-msgstr "Vaincus : aucun traumatisme"
+msgstr "Vaincu : aucun traumatisme"
 
 #, javascript-format
 msgctxt "masculine"
@@ -4191,7 +4261,7 @@ msgid ""
 "your Campaign Log."
 msgstr ""
 "Si <i>${ card.name }</i> n'est pas noté sous la mention ‘${ entry.section "
-"}’ dans votre carnet de campagne."
+"}’ dans votre Carnet de Campagne."
 
 #, javascript-format
 msgctxt "masculine"
@@ -4200,7 +4270,12 @@ msgid ""
 "Campaign Log."
 msgstr ""
 "Si <i>${ card.name }</i> est noté sous la mention ‘${ entry.section }’ dans "
-"votre carnet de campagne."
+"votre Carnet de Campagne."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
 
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4208,7 +4283,7 @@ msgstr "${ investigator.name } est devenue <b>démente</b>."
 
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } est <b>morte</b>."
+msgstr "${ investigator.name } a été <b>tuée</b>."
 
 msgctxt "feminine"
 msgid ""
@@ -4227,7 +4302,7 @@ msgid_plural ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ "
 "effect.physical } physical trauma."
 msgstr[0] ""
-"${ investigator.name } souffre de ${ effect.mental } traumatisme mental et "
+"${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et "
 "${ effect.physical } physique."
 msgstr[1] ""
 "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux "
@@ -4243,7 +4318,7 @@ msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } souffre de ${ effect.mental } traumatisme mental."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
 msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
 
 #, javascript-format
@@ -4257,7 +4332,7 @@ msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre de ${ effect.physical } traumatisme physique."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
 msgstr[1] ""
 "${ investigator.name } souffre de ${ effect.physical } traumatismes "
 "physiques."
@@ -4272,15 +4347,15 @@ msgstr "Abandon"
 
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
-msgstr "Vaincus: traumatisme physique"
+msgstr "Vaincue : traumatisme physique"
 
 msgctxt "feminine"
 msgid "Defeated: mental trauma"
-msgstr "Vaincus: traumatisme mental"
+msgstr "Vaincue : traumatisme mental"
 
 msgctxt "feminine"
 msgid "Defeated: no trauma"
-msgstr "Vaincus: aucun traimatisme"
+msgstr "Vaincue : aucun traumatisme"
 
 msgctxt "feminine"
 msgid ""
@@ -4288,7 +4363,7 @@ msgid ""
 "your Campaign Log."
 msgstr ""
 "Si <i>${ card.name }</i> n'est pas noté sous la mention ‘${ entry.section "
-"}’ dans votre Carnet de campagne."
+"}’ dans votre Carnet de Campagne."
 
 #, javascript-format
 msgctxt "feminine"
@@ -4297,11 +4372,47 @@ msgid ""
 "Campaign Log."
 msgstr ""
 "Si <i>${ card.name }</i> est noté sous la mention ‘${ entry.section }’ dans "
-"votre Carnet de campagne."
+"votre Carnet de Campagne."
+
+msgctxt "feminine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
+
+msgctxt "action"
+msgid "Fight"
+msgstr "Combattre"
+
+msgctxt "action"
+msgid "Engage"
+msgstr "Engager"
+
+msgctxt "action"
+msgid "Investigate"
+msgstr "Enquêter"
+
+msgctxt "action"
+msgid "Play"
+msgstr "Jouer"
+
+msgctxt "action"
+msgid "Draw"
+msgstr "Piocher"
+
+msgctxt "action"
+msgid "Move"
+msgstr "Se déplacer"
+
+msgctxt "action"
+msgid "Evade"
+msgstr "Échapper à "
+
+msgctxt "action"
+msgid "Resource"
+msgstr "Ressource"
 
 msgctxt "Draw Cards"
 msgid "All"
-msgstr "Tout"
+msgstr "Toutes"
 
 msgctxt "Taboo List"
 msgid "None"
@@ -4375,4 +4486,8 @@ msgstr[1] "Scénarios"
 
 msgctxt "Weakness Card"
 msgid "All"
-msgstr "Tout"
+msgstr "Toutes"
+
+msgctxt "trauma"
+msgid "None"
+msgstr ""

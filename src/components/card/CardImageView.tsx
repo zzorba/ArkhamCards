@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import {
   StyleSheet,
-  useWindowDimensions,
   View,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -29,8 +28,7 @@ interface CardImageDetailProps {
 }
 
 function CardImageDetail({ card, flipped }: CardImageDetailProps) {
-  const { backgroundStyle } = useContext(StyleContext);
-  const { height, width } = useWindowDimensions();
+  const { backgroundStyle, width, height } = useContext(StyleContext);
   const cardRatio = 68 / 95;
   const cardHeight = (height - HEADER_HEIGHT) * cardRatio;
   const cardWidth = width - 16;

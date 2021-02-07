@@ -3,14 +3,24 @@ import { BackHandler, InteractionManager, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, ChaosBagResults, Deck, SingleCampaign, Slots } from '@actions/types';
+import { Campaign, CampaignId, ChaosBagResults, Deck, DeckId, SingleCampaign, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState, makeChaosBagResultsSelector, makeDeckSelector, getEffectiveDeckId, makeTabooSetSelector, makeCampaignSelector, makeLatestCampaignDeckIdsSelector, makeLatestCampaignInvestigatorsSelector } from '@reducers';
+import {
+  AppState,
+  makeChaosBagResultsSelector,
+  makeDeckSelector,
+  getEffectiveDeckId,
+  makeTabooSetSelector,
+  makeCampaignSelector,
+  makeLatestCampaignDeckIdsSelector,
+  makeLatestCampaignInvestigatorsSelector,
+} from '@reducers';
 import DatabaseContext from '@data/DatabaseContext';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
 import TabooSet from '@data/TabooSet';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -179,11 +189,15 @@ interface SetCountAction {
   key: string;
   value: number;
 }
+interface SyncCountAction {
+  type: 'sync';
+  values: Counters;
+}
 interface Counters {
   [code: string]: number | undefined;
 }
-export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string) => void, (code: string, value: number) => void] {
-  const [value, updateValue] = useReducer((state: Counters, action: IncCountAction | DecCountAction | SetCountAction) => {
+export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string) => void, (code: string, value: number) => void, (values: Counters) => void] {
+  const [value, updateValue] = useReducer((state: Counters, action: IncCountAction | DecCountAction | SetCountAction | SyncCountAction) => {
     switch (action.type) {
       case 'set':
         return {
@@ -203,6 +217,10 @@ export function useCounters(initialValue: Counters): [Counters, (code: string, m
           [action.key]: Math.max(0, (state[action.key] || 0) - 1),
         };
       }
+      case 'sync':
+        return {
+          ...action.values,
+        };
     }
   }, initialValue);
   const inc = useCallback((code: string, max?: number) => {
@@ -214,11 +232,19 @@ export function useCounters(initialValue: Counters): [Counters, (code: string, m
   const set = useCallback((code: string, value: number) => {
     updateValue({ type: 'set', key: code, value });
   }, [updateValue]);
-  return [value, inc, dec, set];
+  const sync = useCallback((values: Counters) => {
+    updateValue({ type: 'sync', values });
+  }, [updateValue]);
+  return [value, inc, dec, set, sync];
+}
+
+export interface Toggles {
+  [key: string]: boolean | undefined;
 }
 
 interface ClearAction {
   type: 'clear';
+  state?: Toggles;
 }
 
 interface SetToggleAction {
@@ -239,15 +265,18 @@ interface RemoveAction {
 
 type SectionToggleAction = SetToggleAction | ToggleAction | ClearAction | RemoveAction;
 
-export interface Toggles {
-  [key: string]: boolean | undefined;
-}
 
-export function useToggles(initialState: Toggles): [Toggles, (code: string) => void, (code: string | number, value: boolean) => void, () => void, (code: string) => void] {
+export function useToggles(initialState: Toggles): [
+  Toggles,
+  (code: string) => void,
+  (code: string | number, value: boolean) => void,
+  (state?: Toggles) => void,
+  (code: string) => void,
+] {
   const [toggles, updateToggles] = useReducer((state: Toggles, action: SectionToggleAction) => {
     switch (action.type) {
       case 'clear':
-        return initialState;
+        return action.state || initialState;
       case 'remove': {
         const newState = { ...state };
         delete newState[action.key];
@@ -267,7 +296,7 @@ export function useToggles(initialState: Toggles): [Toggles, (code: string) => v
   }, initialState);
   const toggle = useCallback((code: string) => updateToggles({ type: 'toggle', key: code }), [updateToggles]);
   const set = useCallback((code: string | number, value: boolean) => updateToggles({ type: 'set', key: code, value }), [updateToggles]);
-  const clear = useCallback(() => updateToggles({ type: 'clear' }), [updateToggles]);
+  const clear = useCallback((state?: Toggles) => updateToggles({ type: 'clear', state }), [updateToggles]);
   const remove = useCallback((code: string) => updateToggles({ type: 'remove', key: code }), [updateToggles]);
   return [toggles, toggle, set, clear, remove];
 }
@@ -501,9 +530,9 @@ export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined 
   return playerCards?.weaknessCards;
 }
 
-export function useCampaign(campaignId?: number): SingleCampaign | undefined {
+export function useCampaign(campaignId?: CampaignId): SingleCampaign | undefined {
   const getCampaign = useMemo(makeCampaignSelector, []);
-  return useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId) : undefined);
+  return useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId.campaignId) : undefined);
 }
 
 const EMPTY_INVESTIGATORS: Card[] = [];
@@ -512,13 +541,13 @@ export function useCampaignInvestigators(campaign?: Campaign, investigators?: Ca
   return useSelector((state: AppState) => investigators && campaign ? getLatestCampaignInvestigators(state, investigators, campaign) : EMPTY_INVESTIGATORS);
 }
 
-const EMPTY_DECK_IDS: number[] = [];
-export function useCampaignLatestDeckIds(campaign?: Campaign): number[] {
+const EMPTY_DECK_IDS: DeckId[] = [];
+export function useCampaignLatestDeckIds(campaign?: Campaign): DeckId[] {
   const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
   return useSelector((state: AppState) => campaign ? getLatestCampaignDeckIds(state, campaign) : EMPTY_DECK_IDS);
 }
 
-export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [number[], Card[]] {
+export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [DeckId[], Card[]] {
   const allInvestigators = useCampaignInvestigators(campaign, investigators);
   const latestDeckIds = useCampaignLatestDeckIds(campaign);
   return [latestDeckIds, allInvestigators];
@@ -540,28 +569,29 @@ export function useCampaignScenarios(campaign?: Campaign): [Scenario[], { [code:
   return [cycleScenarios, scenarioByCode];
 }
 
-export function useChaosBagResults(campaignId: number): ChaosBagResults {
+export function useChaosBagResults({ campaignId }: CampaignId): ChaosBagResults {
   const chaosBagResultsSelector = useMemo(makeChaosBagResultsSelector, []);
   return useSelector((state: AppState) => chaosBagResultsSelector(state, campaignId));
 }
 
-export function useDeck(id: number | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean } = {}): [Deck | undefined, Deck | undefined] {
+export function useDeck(id: DeckId | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean } = {}): [Deck | undefined, Deck | undefined] {
   const dispatch = useDispatch();
+  const { user } = useContext(ArkhamCardsAuthContext);
   const effectiveDeckIdSelector = useCallback((state: AppState) => id !== undefined ? getEffectiveDeckId(state, id) : undefined, [id]);
   const effectiveDeckId = useSelector(effectiveDeckIdSelector);
   const deckSelector = useMemo(makeDeckSelector, []);
   const previousDeckSelector = useMemo(makeDeckSelector, []);
   const theDeck = useSelector((state: AppState) => effectiveDeckId !== undefined ? deckSelector(state, effectiveDeckId) : undefined) || undefined;
-  const thePreviousDeck = useSelector((state: AppState) => theDeck && theDeck.previous_deck && previousDeckSelector(state, theDeck.previous_deck)) || undefined;
+  const thePreviousDeck = useSelector((state: AppState) => (theDeck && theDeck.previousDeckId) ? previousDeckSelector(state, theDeck.previousDeckId) : undefined);
   useEffect(() => {
-    if (!theDeck && fetchIfMissing && id !== undefined && id > 0) {
-      dispatch(fetchPrivateDeck(id));
+    if (!theDeck && fetchIfMissing && id !== undefined && !id.local) {
+      dispatch(fetchPrivateDeck(user, id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    if (!thePreviousDeck && theDeck?.previous_deck && fetchIfMissing && !theDeck.local) {
-      dispatch(fetchPrivateDeck(theDeck.previous_deck));
+    if (!thePreviousDeck && theDeck?.previousDeckId && fetchIfMissing && !theDeck.local && !theDeck.previousDeckId.local) {
+      dispatch(fetchPrivateDeck(user, theDeck.previousDeckId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theDeck]);
@@ -607,6 +637,7 @@ export function useInterval(callback: () => void, delay: number) {
   }, [delay]);
 }
 
+/*
 export function useWhyDidYouUpdate<T>(name: string, props: T) {
   // Get a mutable ref object where we can store props ...
   // ... for comparison next time this hook runs.
@@ -640,3 +671,4 @@ export function useWhyDidYouUpdate<T>(name: string, props: T) {
     previousProps.current = props;
   });
 }
+*/

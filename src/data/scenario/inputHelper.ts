@@ -50,7 +50,10 @@ export function investigatorChoiceInputChoices(
       choices: input.choices,
     };
   }
-  const codes = campaignLog.investigatorCodes(false);
+  const codes = filter(
+    campaignLog.investigatorCodes(false),
+    code => input.investigator !== 'resigned' || campaignLog.resigned(code)
+  );
   const result: NumberChoices = {};
   forEach(
     input.choices,

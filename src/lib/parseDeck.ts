@@ -26,6 +26,7 @@ import {
   DeckChanges,
   DeckMeta,
   FactionCounts,
+  getDeckId,
   ParsedDeck,
   SkillCounts,
   SlotCounts,
@@ -56,6 +57,7 @@ function filterBy(
 ): CardId[] {
   return cardIds.filter(c => {
     const card = cards[c.id];
+    // tslint:disable-next-line
     return card && card[field] === value;
   });
 }
@@ -273,7 +275,7 @@ function getDeckChanges(
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
-  if (!deck.previous_deck || !previousDeck) {
+  if (!deck.previousDeckId || !previousDeck) {
     return undefined;
   }
   const previous_investigator_code = (previousDeck.meta || {}).alternate_back ||
@@ -284,11 +286,11 @@ function getDeckChanges(
   }
   const oldDeckSize = new DeckValidation(
     previousInvestigator,
-    previousDeck.slots,
+    previousDeck.slots || {},
     previousDeck.meta
   ).getDeckSize();
   const previousDeckCards: Card[] = getCards(cards,
-    previousDeck.slots,
+    previousDeck.slots || {},
     previousDeck.ignoreDeckLimitSlots || {}
   );
   const invalidCards = validation.getInvalidCards(previousDeckCards);
@@ -303,7 +305,7 @@ function getDeckChanges(
       const ignoreDelta = (ignoreDeckLimitSlots[code] || 0) - (previousIgnoreDeckLimitSlots[code] || 0);
       const exiledCount = exiledCards[code] || 0;
       const newCount = slots[code] || 0;
-      const oldCount = previousDeck.slots[code] || 0;
+      const oldCount = previousDeck.slots?.[code] || 0;
       const delta = (newCount + exiledCount) - oldCount - (code === ACE_OF_RODS_CODE ? ignoreDelta : 0);
       if (delta !== 0) {
         changedCards[code] = delta;
@@ -531,7 +533,7 @@ export function parseBasicDeck(
   return parseDeck(
     deck,
     deck.meta || {},
-    deck.slots,
+    deck.slots || {},
     deck.ignoreDeckLimitSlots || {},
     cards,
     previousDeck,
@@ -617,6 +619,7 @@ export function parseDeck(
     slotCounts[slot] = slotCount(cardIds, cards, slot);
   });
   return {
+    id: getDeckId(deck),
     investigator,
     deck,
     slots,

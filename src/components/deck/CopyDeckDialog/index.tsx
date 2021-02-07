@@ -11,9 +11,9 @@ import SelectDeckSwitch from './SelectDeckSwitch';
 import { saveClonedDeck } from '../actions';
 import { showDeckModal } from '@components/nav/helper';
 import Dialog from '@components/core/Dialog';
-import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
+import useNetworkStatus from '@components/core/useNetworkStatus';
 import { login } from '@actions';
-import { Deck } from '@actions/types';
+import { Deck, DeckId, getDeckId } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
 import { makeBaseDeckSelector, makeLatestDeckSelector, AppState } from '@reducers';
 import COLORS from '@styles/colors';
@@ -22,20 +22,21 @@ import StyleContext from '@styles/StyleContext';
 import { useDeck, useEffectUpdate, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   toggleVisible: () => void;
-  deckId?: number;
+  deckId?: DeckId;
   signedIn?: boolean;
 }
 
-type Props = OwnProps & NetworkStatusProps;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-type DeckDispatch = ThunkDispatch<AppState, any, Action>;
-
-function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnected, networkType, refreshNetworkStatus }: Props) {
+export default function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const dispatch: DeckDispatch = useDispatch();
   const [deck] = useDeck(deckId, {});
   const baseDeckSelector = useMemo(makeBaseDeckSelector, []);
@@ -68,10 +69,10 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
   }, [dispatch, signedIn, setOfflineDeck]);
 
   const selectedDeck: Deck | undefined = useMemo(() => {
-    if (baseDeck && baseDeck.id === selectedDeckId) {
+    if (baseDeck && getDeckId(baseDeck).uuid === selectedDeckId?.uuid) {
       return baseDeck;
     }
-    if (latestDeck && latestDeck.id === selectedDeckId) {
+    if (latestDeck && getDeckId(latestDeck).uuid === selectedDeckId?.uuid) {
       return latestDeck;
     }
     return deck;
@@ -95,7 +96,7 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
     if (investigator && (!saving || isRetry)) {
       setSaving(true);
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
-      dispatch(saveClonedDeck(local, selectedDeck, deckName || t`New Deck`)).then(
+      dispatch(saveClonedDeck(user, local, selectedDeck, deckName || t`New Deck`)).then(
         showNewDeck,
         (err) => {
           setSaving(false);
@@ -103,7 +104,7 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
         }
       );
     }
-  }, [signedIn, isConnected, networkType,
+  }, [signedIn, isConnected, networkType, user,
     deckName, offlineDeck, selectedDeck, saving, investigator,
     dispatch, setSaving, setError, showNewDeck]);
   const onOkayPress = useMemo(() => throttle(() => saveCopy(false), 200), [saveCopy]);
@@ -112,7 +113,7 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
     setDeckName(value);
   }, [setDeckName]);
 
-  const selectedDeckIdChanged = useCallback((deckId: number, value: boolean) => {
+  const selectedDeckIdChanged = useCallback((deckId: DeckId, value: boolean) => {
     setSelectedDeckId(value ? deckId : undefined);
   }, [setSelectedDeckId]);
 
@@ -133,25 +134,25 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
         </DialogComponent.Description>
         { parsedBaseDeck ? (
           <SelectDeckSwitch
-            deckId={parsedBaseDeck.deck.id}
+            deckId={parsedBaseDeck.id}
             label={t`Base Version\n${parsedBaseDeck.experience} XP`}
-            value={selectedDeckId === parsedBaseDeck.deck.id}
+            value={selectedDeckId?.uuid === parsedBaseDeck.id.uuid}
             onValueChange={selectedDeckIdChanged}
           />
         ) : null }
         { parsedCurrentDeck ? (
           <SelectDeckSwitch
-            deckId={parsedCurrentDeck.deck.id}
+            deckId={parsedCurrentDeck.id}
             label={t`Current Version ${parsedCurrentDeck.deck.version}\n${parsedCurrentDeck.experience} XP`}
-            value={selectedDeckId === parsedCurrentDeck.deck.id}
+            value={selectedDeckId?.uuid === parsedCurrentDeck.id.uuid}
             onValueChange={selectedDeckIdChanged}
           />
         ) : null }
         { parsedLatestDeck ? (
           <SelectDeckSwitch
-            deckId={parsedLatestDeck.deck.id}
+            deckId={parsedLatestDeck.id}
             label={t`Latest Version ${parsedLatestDeck.deck.version}\n${parsedLatestDeck.experience} XP`}
-            value={selectedDeckId === parsedLatestDeck.deck.id}
+            value={selectedDeckId?.uuid === parsedLatestDeck.id.uuid}
             onValueChange={selectedDeckIdChanged}
           />
         ) : null }
@@ -244,8 +245,6 @@ function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, isConnec
     </Dialog>
   );
 }
-
-export default withNetworkStatus(CopyDeckDialog);
 
 const styles = StyleSheet.create({
   spinner: {

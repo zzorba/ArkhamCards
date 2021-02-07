@@ -4,7 +4,6 @@ import DeviceInfo from 'react-native-device-info';
 export const isTablet = (Platform.OS === 'ios' && DeviceInfo.isTablet());
 export const isBig = false;
 export const sizeScale = isTablet ? 1.5 : 1;
-export const iconSizeScale = 1;
 
 export const xs = 4 * sizeScale;
 export const s = 8 * sizeScale;
@@ -124,6 +123,9 @@ export default StyleSheet.create({
   },
   paddingTopXs: {
     paddingTop: xs,
+  },
+  paddingBottomXs: {
+    paddingBottom: xs,
   },
   paddingVerticalXs: {
     paddingTop: xs,

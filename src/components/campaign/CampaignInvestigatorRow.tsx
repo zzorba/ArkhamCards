@@ -17,11 +17,6 @@ interface Props {
   campaigns: Campaign[];
 }
 
-interface CampaignDecks {
-  campaign: Campaign;
-  decks: Deck[];
-}
-
 function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
   const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
   const getDecks = useMemo(makeGetDecksSelector, []);
@@ -36,8 +31,8 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
     const { investigatorData } = campaign;
     const card = investigators?.[code];
     const killedOrInsane = card && card.eliminated(investigatorData[code]);
-    const yithian = !!find(investigatorData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN) ||
-      (deck && (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0);
+    const yithian = !!find(investigatorData[code]?.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN) ||
+      (deck && deck.slots && (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0);
     return (
       <View key={code} style={styles.investigator}>
         <InvestigatorImage
@@ -45,7 +40,7 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
           killedOrInsane={killedOrInsane}
           yithian={yithian}
           border
-          small
+          size="small"
         />
       </View>
     );
@@ -61,7 +56,7 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
 
   const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
   return (
-    <View key={campaign.id} style={styles.row}>
+    <View key={campaign.uuid} style={styles.row}>
       { map(decks, deck => renderDeck(deck, campaign)) }
       { map(
         filter(
@@ -77,7 +72,7 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
 export default function CampaignInvestigatorRow({ campaigns }: Props) {
   return (
     <>
-      { map(campaigns, campaign => <SingleCampaignInvestigatorRow campaign={campaign} key={campaign.id} />) }
+      { map(campaigns, campaign => <SingleCampaignInvestigatorRow campaign={campaign} key={campaign.uuid} />) }
     </>
   );
 }

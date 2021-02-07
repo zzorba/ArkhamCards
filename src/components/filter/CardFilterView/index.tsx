@@ -3,11 +3,10 @@ import { keys, forEach, map, filter, partition } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
   View,
 } from 'react-native';
 import { useSelector } from 'react-redux';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
@@ -35,7 +34,7 @@ function listText(name: string, values: string[], translations?: { [key: string]
   if (translations) {
     return `${name}(${map(values, item => translations[item]).join(', ')})`;
   }
-  return `${name}(${values.join(', ')}`;
+  return `${name}(${values.join(', ')})`;
 }
 
 function splitTraits(value: string): string[] {
@@ -131,6 +130,8 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     assetHealthEnabled,
     assetHealth,
     assetSanity,
+    skillModifiers,
+    skillModifiersEnabled,
   } = filters;
 
   const selectedPacksText = useMemo(() => {
@@ -277,12 +278,28 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     if (slots.length) {
       parts.push(listText(t`Slots`, slots, slotsTranslations()));
     }
+    if (skillModifiersEnabled) {
+      const modifiers: string[] = [];
+      if (skillModifiers.agility) {
+        modifiers.push(t`Agility`);
+      }
+      if (skillModifiers.combat) {
+        modifiers.push(t`Combat`);
+      }
+      if (skillModifiers.intellect) {
+        modifiers.push(t`Intellect`);
+      }
+      if (skillModifiers.willpower) {
+        modifiers.push(t`Willpower`);
+      }
+      parts.push(listText(t`Boost`, modifiers));
+    }
     if (parts.length === 0) {
       return t`Assets: All`;
     }
     const searchParts = parts.join(', ');
     return t`Assets: ${searchParts}`;
-  }, [assetHealthEnabled, assetHealth, assetSanityEnabled, assetSanity, uses, slots]);
+  }, [assetHealthEnabled, assetHealth, assetSanityEnabled, assetSanity, uses, slots, skillModifiersEnabled, skillModifiers]);
   const locationFilterText = useMemo(() => {
     const parts = [];
     if (cluesEnabled) {
@@ -313,8 +330,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     hauntedEnabled,
   ]);
   const { allFactions, hasXp, hasWeakness, hasCost, hasSkill, hasEnemy, hasLocation } = cardFilterData;
-  const { backgroundStyle, borderStyle } = useContext(StyleContext);
-  const { width } = useWindowDimensions();
+  const { backgroundStyle, borderStyle, width } = useContext(StyleContext);
   const {
     componentId,
     baseQuery,
@@ -437,14 +453,14 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
           setting="actions"
           onFilterChange={onFilterChange}
           allValues={{
-            'fight': t`Fight`,
-            'engage': t`Engage`,
-            'investigate': t`Investigate`,
-            'play': t`Play`,
-            'draw': t`Draw`,
-            'move': t`Move`,
-            'evade': t`Evade`,
-            'resource': t`Resource`,
+            'fight': c('action').t`Fight`,
+            'engage': c('action').t`Engage`,
+            'investigate': c('action').t`Investigate`,
+            'play': c('action').t`Play`,
+            'draw': c('action').t`Draw`,
+            'move': c('action').t`Move`,
+            'evade': c('action').t`Evade`,
+            'resource': c('action').t`Resource`,
           }}
         />
         <FilterChooserButton

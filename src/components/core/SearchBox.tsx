@@ -32,7 +32,7 @@ export interface SearchBoxHandles {
 }
 
 function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedOpen }: Props, ref: any) {
-  const { borderStyle, colors } = useContext(StyleContext);
+  const { colors } = useContext(StyleContext);
   const textInputRef = useRef<Input>(null);
   const clear = useCallback(() => {
     onChangeText('', true);
@@ -51,12 +51,12 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
     },
   }), [textInputRef]);
 
-  const renderClearButton = useCallback((rightPadding?: boolean) => {
+  const clearButton = useMemo(() => {
     if (!value) {
       return null;
     }
     return (
-      <TouchableOpacity style={rightPadding ? space.marginRightS : undefined} onPress={clear}>
+      <TouchableOpacity style={space.marginRightS} onPress={clear}>
         <View style={styles.dismissIcon}>
           <AppIcon name="dismiss" size={18} color={colors.D20} />
         </View>
@@ -68,17 +68,17 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
     if (!toggleAdvanced) {
       return (
         <View style={styles.rightButtons}>
-          { renderClearButton() }
+          { clearButton }
         </View>
       );
     }
     return (
       <View style={styles.rightButtons}>
-        { renderClearButton(true) }
+        { clearButton }
         <ToggleButton accessibilityLabel={t`Search options`} value={!!advancedOpen} onPress={toggleAdvanced} icon="dots" />
       </View>
     );
-  }, [toggleAdvanced, advancedOpen, renderClearButton]);
+  }, [toggleAdvanced, advancedOpen, clearButton]);
 
   return (
     <Input
@@ -87,8 +87,7 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
       autoCorrect={false}
       autoCapitalize="none"
       multiline={false}
-      textInputRef={textInputRef}
-      containerStyle={[styles.container, borderStyle, { backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : undefined]}
+      containerStyle={[styles.container, { borderColor: colors.L10, backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : undefined]}
       inputContainerStyle={[
         styles.searchInput,
         {

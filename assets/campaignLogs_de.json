@@ -2380,6 +2380,11 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "possesses_a_diving_suite",
+            "masculine_text": "#name# besitzt einen Taucheranzug.",
+            "feminine_text": "#name# besitzt einen Taucheranzug."
+          },
+          {
             "id": "allen_out_for_blood",
             "text": "Zadok Allen will Blut sehen."
           },
@@ -2430,6 +2435,14 @@
           {
             "id": "mission_succeeded",
             "text": "Die Mission war erfolgreich."
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "Die Ermittler besitzen eine Karte von\u001fY’ha-nthlei."
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "Die Ermittler besitzen den Schlüssel nach\u001fY’ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
@@ -2517,6 +2530,14 @@
             "text": "dummy"
           },
           {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
             "id": "flashback_2",
             "text": "dummy"
           },
@@ -2578,6 +2599,10 @@
             "text": "ein Kampf mit einem schrecklichen Teufel"
           },
           {
+            "id": "conversation_with_mr_moore",
+            "text": "eine Unterhaltung mit Mr. Moore"
+          },
+          {
             "id": "decision_to_stick_together",
             "text": "der Beschluss zusammenzubleiben"
           },
@@ -2596,6 +2621,10 @@
           {
             "id": "encounter_with_a_secret_cult",
             "text": "eine Begegnung mit einem Geheimkult"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "der Lebenszyklus eines „Tiefen Wesens“"
           },
           {
             "id": "meeting_with_thomas_dawson",

@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   Placeholder,
@@ -96,7 +95,7 @@ export default function InvestigatorRow({
               card={investigator}
               killedOrInsane={eliminated}
               yithian={yithian}
-              small={!bigImage}
+              size={bigImage ? 'large' : 'small'}
               border
             />
           </View>

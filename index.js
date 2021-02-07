@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Navigation } from 'react-native-navigation';
 import Crashes from 'appcenter-crashes';
+import database from '@react-native-firebase/database';
 import 'reflect-metadata';
 
 import DatabaseProvider from './src/data/DatabaseProvider';
@@ -13,6 +14,7 @@ import StyleProvider from './src/styles/StyleProvider';
 import LanguageProvider from './src/lib/i18n/LanguageProvider';
 import ArkhamCardsAuthProvider from './src/lib/ArkhamCardsAuthProvider';
 import App from './src/app/App';
+import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
 
 function MyProvider({ store: { redux, persistor }, children}) {
   return (
@@ -32,6 +34,10 @@ function MyProvider({ store: { redux, persistor }, children}) {
       </AppearanceProvider>
     </ArkhamCardsAuthProvider>
   );
+}
+
+if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
+  database().setPersistenceEnabled(true);
 }
 
 const { store, persistor } = configureStore({});

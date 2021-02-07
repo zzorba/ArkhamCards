@@ -55,6 +55,7 @@ export interface FilterState {
   traits: string[];
   actions: string[];
   skillModifiers: SkillModifierFilters;
+  skillModifiersEnabled: boolean;
   packs: string[];
   cycleNames: string[];
   slots: string[];
@@ -143,6 +144,7 @@ export const defaultFilterState: FilterState = {
     combat: false,
     agility: false,
   },
+  skillModifiersEnabled: false,
   packs: [],
   cycleNames: [],
   slots: [],
@@ -282,11 +284,12 @@ export default class FilterBuilder {
     );
   }
 
-  traitFilter(traits: string[]): Brackets[] {
+  traitFilter(traits: string[], localizedTraits: boolean): Brackets[] {
+    const traits_field = localizedTraits ? 'traits_normalized' : 'real_traits_normalized';
     return this.complexVectorClause(
       'trait',
       map(traits, trait => `%#${trait}#%`),
-      (valueName: string) => `c.real_traits_normalized LIKE :${valueName} OR (linked_card.real_traits_normalized is not null AND linked_card.real_traits_normalized LIKE :${valueName})`
+      (valueName: string) => `c.${traits_field} LIKE :${valueName} OR (linked_card.${traits_field} is not null AND linked_card.${traits_field} LIKE :${valueName})`
     );
   }
 
@@ -344,16 +347,44 @@ export default class FilterBuilder {
     return result;
   }
 
+  skillModifierFilters(skillModifiers: SkillModifierFilters): Brackets[] {
+    const result: Brackets[] = [];
+
+    if (skillModifiers.agility) {
+      result.push(where(`c.real_text LIKE '%+_ [agility]%'`));
+    }
+    if (skillModifiers.combat) {
+      result.push(where(`c.real_text LIKE '%+_ [combat]%'`));
+    }
+    if (skillModifiers.willpower) {
+      result.push(where(`c.real_text LIKE '%+_ [willpower]%'`));
+    }
+    if (skillModifiers.intellect) {
+      result.push(where(`c.real_text LIKE '%+_ [intellect]%'`));
+    }
+    if (skillModifiers.agility || skillModifiers.combat || skillModifiers.willpower || skillModifiers.intellect) {
+      result.push(where(`c.real_text LIKE '%+_ skill value%'`));
+    }
+    const combinedResult = combineQueriesOpt(result, 'or');
+    if (combinedResult) {
+      return [combinedResult];
+    }
+    return [];
+  }
+
   assetFilters(filters: FilterState): Brackets[] {
     const {
       assetHealthEnabled,
       assetHealth,
       assetSanityEnabled,
       assetSanity,
+      skillModifiersEnabled,
+      skillModifiers,
     } = filters;
     const result: Brackets[] = [
       ...(assetHealthEnabled ? this.rangeFilter('health', assetHealth, true) : []),
       ...(assetSanityEnabled ? this.rangeFilter('sanity', assetSanity, true) : []),
+      ...(skillModifiersEnabled ? this.skillModifierFilters(skillModifiers) : []),
     ];
     if (!result.length) {
       return [];
@@ -597,7 +628,7 @@ export default class FilterBuilder {
     );
   }
 
-  filterToQuery(filters: FilterState): Brackets | undefined {
+  filterToQuery(filters: FilterState, localizedTraits: boolean): Brackets | undefined {
     return combineQueriesOpt(
       [
         ...this.factionFilter(filters.factions),
@@ -610,7 +641,7 @@ export default class FilterBuilder {
         ...this.miscFilter(filters),
         ...this.levelFilter(filters),
         ...this.costFilter(filters),
-        ...this.traitFilter(filters.traits),
+        ...this.traitFilter(filters.traits, localizedTraits),
         ...this.assetFilters(filters),
         ...this.enemyFilters(filters),
         ...this.locationFilters(filters),

@@ -1,19 +1,52 @@
 import React, { useContext, useMemo } from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
-import space, { xs } from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import COLORS from '@styles/colors';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import EncounterIcon from '@icons/EncounterIcon';
+
+export type DeckButtonIcon =
+  'log' |
+  'finish' |
+  'wrench' |
+  'plus-button' |
+  'minus-button' |
+  'right-arrow' |
+  'weakness' |
+  'card-outline' |
+  'deck' |
+  'draw' |
+  'tdea' |
+  'tdeb' |
+  'tools' |
+  'difficulty' |
+  'chaos_bag' |
+  'chart' |
+  'elder_sign' |
+  'delete' |
+  'per_investigator' |
+  'settings' |
+  'book' |
+  'arkhamdb' |
+  'plus-thin' |
+  'dismiss' |
+  'check-thin' |
+  'upgrade' |
+  'edit' |
+  'email' |
+  'login' |
+  'logo';
 
 interface Props {
   title: string;
   detail?: string;
-  icon?: 'chart' | 'elder_sign' | 'delete' | 'per_investigator' | 'settings' | 'book' | 'arkhamdb' | 'plus-thin' | 'dismiss' | 'check-thin' | 'upgrade' | 'edit' | 'email' | 'login' | 'logo';
-  color?: 'red' | 'red_outline' | 'gold' | 'gray';
+  icon?: DeckButtonIcon;
+  color?: 'red' | 'red_outline' | 'gold' | 'default' | 'dark_gray' | 'light_gray';
   onPress?: () => void;
   rightMargin?: boolean;
   thin?: boolean;
@@ -21,15 +54,19 @@ interface Props {
   loading?: boolean;
   bottomMargin?: number;
   topMargin?: number;
+  disabled?: boolean;
 }
 
-const ICON_SIZE = {
-  chart: 26,
-  elder_sign: 26,
-  delete: 26,
-  per_investigator: 26,
-  settings: 26,
+const ICON_SIZE: { [icon: string]: number | undefined } = {
+  'plus-button': 32,
+  'minus-button': 32,
+  'right-arrow': 32,
+  weakness: 24,
+  'card-outline': 24,
+  tdea: 28,
+  tdeb: 28,
   book: 22,
+  'draw': 24,
   'arkhamdb': 24,
   'logo': 28,
   'login': 24,
@@ -37,59 +74,90 @@ const ICON_SIZE = {
   'edit': 24,
   'upgrade': 34,
   'plus-thin': 24,
-  'dismiss': 18,
+  'dismiss': 22,
   'check-thin': 30,
 };
-const ICON_STYLE = {
-  chart: {},
-  elder_sign: {},
-  delete: {},
-  per_investigator: {},
-  settings: {},
-  book: {},
-  'arkhamdb': {},
-  'logo': {},
-  'login': {},
-  'email': {},
+const ICON_SIZE_THIN: { [icon: string]: number | undefined } = {
+  upgrade: 26,
+};
+
+const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
+  weakness: {
+    marginLeft: -3,
+  },
   'check-thin': {
     marginTop: -6,
   },
-  'edit': {},
   'upgrade': {
     marginTop: 0,
   },
-  'dismiss': {},
-  'plus-thin': {},
 };
 
 const MATERIAL_ICONS = new Set(['email', 'delete', 'login']);
-const ARKHAM_ICONS = new Set(['per_investigator', 'elder_sign']);
-
-export default function DeckButton({ title, detail, icon, color = 'gray', onPress, rightMargin, topMargin, thin, shrink, loading, bottomMargin }: Props) {
-  const { colors, typography } = useContext(StyleContext);
+const ARKHAM_ICONS = new Set(['per_investigator', 'elder_sign', 'weakness']);
+const ENCOUNTER_ICONS = new Set(['tdea', 'tdeb']);
+export default function DeckButton({
+  disabled,
+  title,
+  detail,
+  icon,
+  color = 'default',
+  onPress,
+  rightMargin,
+  topMargin,
+  thin,
+  shrink,
+  loading,
+  bottomMargin,
+}: Props) {
+  const { colors, fontScale, typography, shadow } = useContext(StyleContext);
   const backgroundColors = {
     red_outline: colors.D30,
     red: colors.warn,
     gold: colors.upgrade,
-    gray: colors.D10,
+    default: colors.D10,
+    light_gray: colors.L20,
+    dark_gray: colors.L10,
   };
   const rippleColor = {
     red_outline: colors.D10,
     red: colors.faction.survivor.lightBackground,
     gold: colors.faction.dual.lightBackground,
-    gray: colors.M,
+    default: colors.M,
+    light_gray: colors.L30,
+    dark_gray: colors.L20,
   };
   const iconColor = {
     red_outline: colors.warn,
     red: COLORS.white,
     gold: COLORS.D20,
-    gray: colors.L10,
+    default: colors.L10,
+    light_gray: colors.M,
+    dark_gray: colors.D10,
   };
   const textColor = {
     red_outline: colors.L30,
-    red: COLORS.white,
+    red: COLORS.L30,
     gold: COLORS.D30,
-    gray: colors.L30,
+    default: colors.L30,
+    light_gray: colors.D20,
+    dark_gray: colors.D20,
+  };
+  const detailTextColor = {
+    red_outline: colors.L30,
+    red: COLORS.L30,
+    gold: COLORS.D30,
+    default: colors.L30,
+    light_gray: colors.D10,
+    dark_gray: colors.D10,
+  };
+  const disabledTextColor = {
+    red_outline: colors.L10,
+    red: COLORS.L30,
+    gold: COLORS.D10,
+    default: colors.L10,
+    light_gray: colors.D10,
+    dark_gray: colors.D10,
   };
   const theIconColor = iconColor[color];
   const iconContent = useMemo(() => {
@@ -99,19 +167,29 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
     if (!icon) {
       return null;
     }
+    const size = (thin ? ICON_SIZE_THIN[icon] : undefined) || ICON_SIZE[icon] || 26;
     if (MATERIAL_ICONS.has(icon)) {
-      return <MaterialIcons name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
+      return <MaterialIcons name={icon} size={size} color={theIconColor} />;
     }
     if (ARKHAM_ICONS.has(icon)) {
-      return <ArkhamIcon name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
+      return <ArkhamIcon name={icon} size={size} color={theIconColor} />;
     }
-    return <AppIcon name={icon} size={ICON_SIZE[icon]} color={theIconColor} />;
-  }, [loading, icon, theIconColor]);
+    if (ENCOUNTER_ICONS.has(icon)) {
+      return <EncounterIcon encounter_code={icon} size={size} color={theIconColor} />;
+    }
+    return <AppIcon name={icon} size={size} color={theIconColor} />;
+  }, [loading, icon, thin, theIconColor]);
+  const height = (detail ? 32 : 20) * fontScale + s * 2 + xs * 2;
   return (
     <Ripple
+      disabled={disabled}
       style={[
-        styles.button,
-        { backgroundColor: backgroundColors[color], flex: shrink ? undefined : 1, maxHeight: thin ? 40 : 48 },
+        {
+          borderRadius: color === 'dark_gray' || color === 'light_gray' ? 8 : 4,
+          backgroundColor: backgroundColors[color],
+        },
+        color === 'dark_gray' ? shadow.large : undefined,
+        shrink ? undefined : styles.grow,
         rightMargin ? space.marginRightS : undefined,
         bottomMargin ? { marginBottom: bottomMargin } : undefined,
         topMargin ? { marginTop: topMargin } : undefined,
@@ -119,21 +197,33 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
       onPress={onPress}
       rippleColor={rippleColor[color]}
     >
-      <View style={[styles.row, space.paddingSideXs, space.paddingTopS, space.paddingBottomS]}>
+      <View style={[
+        styles.row,
+        icon ? { justifyContent: 'flex-start' } : { justifyContent: 'center' },
+        space.paddingSideXs,
+        space.paddingTopS,
+        space.paddingBottomS,
+      ]}>
         { !!icon && (
           <View style={[
             styles.icon,
             space.marginLeftXs,
             space.marginRightS,
-            thin ? { marginLeft: xs, width: 24, height: 24 } : { width: 32, height: 32 },
-            ICON_STYLE[icon],
+            thin ? { marginLeft: xs, width: 24, height: height - s * 2 - xs } : { width: 32, height: height - s * 2 - xs },
+            loading ? undefined : ICON_STYLE[icon],
           ]}>
             { iconContent }
           </View>
         ) }
-        <View style={[styles.column, space.paddingRightS, { height: thin ? 24 : 32 }, !icon ? space.paddingLeftS : undefined]}>
-          <Text numberOfLines={1} ellipsizeMode="clip" style={[typography.large, { color: textColor[color] }]}>{ title }</Text>
-          { !!detail && <Text style={[typography.smallLabel, typography.italic, { color: textColor[color] }]}>{ detail }</Text> }
+        <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, shrink ? undefined : styles.grow, space.paddingTopXs]}>
+          <Text numberOfLines={1} ellipsizeMode="clip" style={[detail ? typography.large : typography.cardName, { color: disabled ? disabledTextColor[color] : textColor[color] }]}>
+            { title }
+          </Text>
+          { !!detail && (
+            <Text style={[typography.smallButtonLabel, { marginTop: 1, color: detailTextColor[color] }]} numberOfLines={2}>
+              { detail }
+            </Text>
+          ) }
         </View>
       </View>
     </Ripple>
@@ -141,8 +231,8 @@ export default function DeckButton({ title, detail, icon, color = 'gray', onPres
 }
 
 const styles = StyleSheet.create({
-  button: {
-    borderRadius: 4,
+  grow: {
+    flex: 1,
   },
   row: {
     flexDirection: 'row',

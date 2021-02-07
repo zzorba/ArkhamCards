@@ -51,7 +51,11 @@ export function campaignToText(
       return;
     }
     lines.push(`${investigator.name}:`);
-    lines.push(`Deck: https://arkhamdb.com/deck/view/${deck.id}`);
+    if (deck.local) {
+      lines.push(`Deck: ${deck.name}`);
+    } else {
+      lines.push(`Deck: https://arkhamdb.com/deck/view/${deck.id}`);
+    }
     lines.push(`Trauma: ${investigator.traumaString(campaign.investigatorData[investigator.code])}`);
     forEach(campaignNotes.investigatorNotes.sections || [], section => {
       lines.push(`${section.title}:`);

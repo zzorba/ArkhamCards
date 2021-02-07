@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { scenarioRewards } from '@components/campaign/constants';
-import { Slots } from '@actions/types';
+import { DeckId, Slots } from '@actions/types';
 import Card from '@data/Card';
 import { PLAYER_CARDS_QUERY, combineQueries, MYTHOS_CARDS_QUERY } from '@data/query';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
@@ -18,7 +18,7 @@ import { ActivityIndicator } from 'react-native';
 interface Props {
   componentId: string;
   investigator: Card;
-  deckId: number;
+  deckId: DeckId;
   encounterCodes: string[];
   scenarioName?: string;
   updateStoryCounts: (exileCounts: Slots) => void;
@@ -67,7 +67,7 @@ export default function StoryCardSelectorComponent({
     const storyCards: Card[] = [];
     const deckStoryCards: Card[] = [];
     forEach(allStoryCards, card => {
-      if (deck && card.code && deck.slots[card.code] > 0) {
+      if (deck && card.code && deck.slots && (deck.slots?.[card.code] || 0) > 0) {
         deckStoryCards.push(card);
         deckStorySlots[card.code] = deck.slots[card.code];
       } else if (card.encounter_code && encounterCodesSet.has(card.encounter_code)) {

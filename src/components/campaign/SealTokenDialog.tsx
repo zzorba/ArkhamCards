@@ -11,9 +11,10 @@ import COLORS from '@styles/colors';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
 import SealTokenButton from './SealTokenButton';
 import { useChaosBagResults, useNavigationButtonPressed } from '@components/core/hooks';
+import { CampaignId } from '@actions/types';
 
 export interface SealTokenDialogProps {
-  campaignId: number;
+  campaignId: CampaignId;
   chaosBag: ChaosBag;
 }
 

@@ -1,15 +1,11 @@
-import React, { useCallback, useContext, useEffect, useReducer } from 'react';
+import React, { useCallback, useEffect, useReducer } from 'react';
 import { filter, map } from 'lodash';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 
 import NoteRow from './NoteRow';
-import { ShowTextEditDialog } from '@components/core/withDialogs';
-import { s, xs } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
+import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
+import space from '@styles/space';
 
 interface Props {
   notesChanged: (index: number, notes: string[]) => void;
@@ -55,10 +51,10 @@ function notesReducer(notes: string[], action: UpdateNoteAction | AppendNoteActi
 }
 
 export default function NotesSection(props: Props) {
-  const { notesChanged, index, title, notes, showDialog, isInvestigator } = props;
-  const { typography } = useContext(StyleContext);
+  const { notesChanged, index, title, notes, showDialog } = props;
   const [currentNotes, updateCurrentNotes] = useReducer(notesReducer, notes);
   useEffect(() => {
+    // tslint:disable-next-line
     if (notes !== currentNotes) {
       notesChanged(index, currentNotes);
     }
@@ -73,16 +69,9 @@ export default function NotesSection(props: Props) {
   }, [updateCurrentNotes]);
 
   return (
-    <View style={isInvestigator ? {} : styles.container}>
-      <Text style={[
-        typography.mediumGameFont,
-        typography.center,
-        typography.underline,
-        styles.margin,
-      ]}>
-        { title }
-      </Text>
-      <View>
+    <View>
+      <DeckSlotHeader title={title} />
+      <View style={space.paddingTopS}>
         { map(notes, (note, idx) => (
           <NoteRow
             key={idx}
@@ -106,15 +95,3 @@ export default function NotesSection(props: Props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: s,
-    paddingLeft: s,
-    paddingRight: s,
-  },
-  margin: {
-    marginTop: s,
-    marginBottom: xs,
-  },
-});

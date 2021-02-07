@@ -1,27 +1,22 @@
 import React, { useContext } from 'react';
-import { Platform, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, ScrollView, View } from 'react-native';
 import Modal from 'react-native-modal';
+import { map } from 'lodash';
 
 import NewDialogContentLine from './NewDialogContentLine';
 import StyleContext from '@styles/StyleContext';
 import ItemPickerLine from './ItemPickerLine';
+import TextInputLine from './TextInputLine';
 import space, { m, s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
-import DeckButton from '@components/deck/controls/DeckButton';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import { NOTCH_BOTTOM_PADDING, TINY_PHONE } from '@styles/sizes';
 
 interface Props {
   title: string;
   visible: boolean;
-  confirm?: {
-    onPress: () => void;
-    loading?: boolean;
-    title: string;
-  };
-  dismiss?: {
-    onPress: () => void;
-    title?: string;
-  };
+  dismissable?: boolean;
+  onDismiss?: () => void;
+  buttons?: React.ReactNode[];
   children: React.ReactNode | React.ReactNode[];
   alignment?: 'center' | 'bottom',
   avoidKeyboard?: boolean;
@@ -29,22 +24,23 @@ interface Props {
 function NewDialog({
   title,
   visible,
-  dismiss,
+  dismissable,
+  onDismiss,
+  buttons = [],
   children,
-  confirm,
   alignment = 'center',
   avoidKeyboard,
 }: Props) {
-  const { backgroundStyle, darkMode, colors, shadow, typography } = useContext(StyleContext);
-  const { width } = useWindowDimensions();
+  const { backgroundStyle, darkMode, colors, shadow, typography, width, height } = useContext(StyleContext);
+  const verticalButtons = buttons.length > 2 || TINY_PHONE;
   return (
     <Modal
       avoidKeyboard={avoidKeyboard}
       isVisible={visible}
       animationIn={alignment === 'bottom' ? 'slideInUp' : 'fadeIn'}
       animationOut={alignment === 'bottom' ? 'slideOutDown' : 'fadeOut'}
-      onBackdropPress={dismiss?.onPress}
-      onBackButtonPress={dismiss?.onPress}
+      onBackdropPress={onDismiss}
+      onBackButtonPress={onDismiss}
       hasBackdrop
       backdropOpacity={darkMode ? 0.75 : 0.5}
       backdropColor={darkMode ? '#444444' : '#000000'}
@@ -54,15 +50,15 @@ function NewDialog({
         paddingBottom: NOTCH_BOTTOM_PADDING + m,
       } : {
         justifyContent: 'center',
-        padding: m,
+        padding: s,
       }]}
     >
-      <View style={[shadow.large, styles.dialog, { width: width - m * 2 }]}>
+      <View style={[shadow.large, styles.dialog, { width: width - s * 2 }]}>
         <View style={[styles.header, { backgroundColor: colors.D20 }]}>
           <Text style={[typography.large, typography.inverted]}>{title}</Text>
-          { !!dismiss && (
+          { !!dismissable && (
             <View style={styles.closeButton}>
-              <TouchableOpacity onPress={dismiss.onPress}>
+              <TouchableOpacity onPress={onDismiss}>
                 <AppIcon
                   name="dismiss"
                   size={18}
@@ -73,31 +69,34 @@ function NewDialog({
           ) }
         </View>
         <View style={[styles.body, backgroundStyle]}>
-          { children }
-          { (!!dismiss?.title || !!confirm) && (
-            <View style={styles.actionButtons}>
-              { !!dismiss?.title && (
-                <View style={[styles.button, confirm ? space.marginRightXs : undefined]}>
-                  <DeckButton
-                    icon="dismiss"
-                    color={confirm ? 'red' : undefined}
-                    title={dismiss.title}
-                    thin
-                    onPress={dismiss.onPress}
-                  />
-                </View>
-              )}
-              { !!confirm && (
-                <View style={[styles.button, dismiss?.title ? space.marginLeftXs : undefined]}>
-                  <DeckButton
-                    icon="check-thin"
-                    title={confirm.title}
-                    thin
-                    onPress={confirm.onPress}
-                    loading={confirm?.loading}
-                  />
-                </View>
-              ) }
+          <ScrollView
+            overScrollMode="never"
+            bounces={false}
+            showsVerticalScrollIndicator
+            style={{ maxHeight: height * 0.5 }}
+            contentContainerStyle={[space.paddingTopS, space.paddingBottomS]}
+          >
+            { children }
+          </ScrollView>
+          { (buttons.length > 0) && (
+            <View style={[styles.actionButtons, space.paddingBottomS, {
+              flexDirection: verticalButtons ? 'column' : 'row',
+            }]}>
+              { map(buttons, (button, idx) => {
+                return (
+                  <View key={idx} style={[
+                    styles.button,
+                    {
+                      flex: verticalButtons ? undefined : 1,
+                    },
+                    (idx < buttons.length - 1) ? {
+                      marginRight: !verticalButtons ? s : undefined,
+                      marginBottom: verticalButtons ? s : undefined,
+                    } : undefined]}>
+                    { button }
+                  </View>
+                );
+              }) }
             </View>
           ) }
         </View>
@@ -108,6 +107,7 @@ function NewDialog({
 
 NewDialog.ContentLine = NewDialogContentLine;
 NewDialog.PickerItem = ItemPickerLine;
+NewDialog.TextInput = TextInputLine;
 export default NewDialog;
 
 const styles = StyleSheet.create({
@@ -142,18 +142,17 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   body: {
-    padding: s,
+    paddingLeft: s,
+    paddingRight: s,
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
+    flexDirection: 'column',
   },
   actionButtons: {
-    marginTop: s,
-    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   button: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

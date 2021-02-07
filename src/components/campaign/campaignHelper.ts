@@ -1,9 +1,9 @@
-import { Alert } from 'react-native';
 import { flatMap, forEach } from 'lodash';
 import { t } from 'ttag';
 
 import { Deck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
+import { ShowAlert } from '@components/deck/dialogs';
 
 function weaknessString(deck: Deck, cards: CardsMap) {
   let weaknessCount = 0;
@@ -17,7 +17,7 @@ function weaknessString(deck: Deck, cards: CardsMap) {
       }
       weaknessCount += count;
       weaknesses.push(card);
-      return `${deck.slots[code]}x - ${card.name}`;
+      return `${deck.slots?.[code] || 0}x - ${card.name}`;
     }
   ).join('\n');
   return {
@@ -31,12 +31,13 @@ export function maybeShowWeaknessPrompt(
   deck: Deck,
   cards: CardsMap,
   weaknessCards: Slots,
-  updateWeaknessCards: (weaknessCards: Slots) => void
+  updateWeaknessCards: (weaknessCards: Slots) => void,
+  showAlert: ShowAlert
 ) {
   const { count, message, weaknesses } = weaknessString(deck, cards);
   if (weaknesses.length) {
     setTimeout(() => {
-      Alert.alert(
+      showAlert(
         t`Adjust Weakness Set`,
         /* eslint-disable prefer-template */
         (count > 1 ?
@@ -57,7 +58,7 @@ export function maybeShowWeaknessPrompt(
               const assignedCards = { ...weaknessCards };
               forEach(weaknesses, card => {
                 const code = card.code;
-                const count = deck.slots[code];
+                const count = deck.slots?.[code] || 0;
                 if (!(code in assignedCards)) {
                   assignedCards[code] = 0;
                 }

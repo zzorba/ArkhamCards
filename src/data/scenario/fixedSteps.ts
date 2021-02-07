@@ -11,7 +11,6 @@ import {
   InputStep,
   Step,
   Scenario,
-  GenericStep,
 } from '@data/scenario/types';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';

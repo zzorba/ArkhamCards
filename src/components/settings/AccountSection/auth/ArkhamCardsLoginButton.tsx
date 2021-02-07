@@ -1,19 +1,54 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
-import { forEach, map, uniq } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo, useState, useRef, useReducer } from 'react';
+import { filter, forEach, map, uniq } from 'lodash';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Input } from 'react-native-elements';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
-import auth from '@react-native-firebase/auth';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import uuid from 'react-native-uuid';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
+// @ts-ignore TS7016
+import ProgressBar from 'react-native-progress/Bar';
 import { t } from 'ttag';
+
 import StyleContext from '@styles/StyleContext';
-import { useDialog } from '@components/deck/dialogs';
+import { ShowAlert, useDialog } from '@components/deck/dialogs';
 import space, { s, xs } from '@styles/space';
-import { useFlag } from '@components/core/hooks';
+import { useFlag, useToggles } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT, Campaign, getCampaignId, STANDALONE } from '@actions/types';
+import { AppState, getCampaigns } from '@reducers';
+import { removeLocalCampaign } from '@components/campaign/actions';
+import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
+import EncounterIcon from '@icons/EncounterIcon';
+import { uploadCampaign } from '@components/campaignguide/actions';
+import { useCreateCampaignRequest } from '@data/firebase/api';
+
+function login(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dispatch({
+      type: ARKHAM_CARDS_LOGIN,
+      user,
+    });
+  };
+}
+
+function logout(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch, getState) => {
+    const state = getState();
+    forEach(state.campaigns_2.all || {}, campaign => {
+      if (campaign && campaign.serverId) {
+        dispatch(removeLocalCampaign(campaign));
+      }
+    });
+    dispatch({
+      type: ARKHAM_CARDS_LOGOUT,
+    });
+  };
+}
 
 GoogleSignin.configure({
   scopes: ['email'],
@@ -26,7 +61,7 @@ async function onAppleButtonPress() {
     // Start the sign-in request
     const appleAuthRequestResponse = await appleAuth.performRequest({
       requestedOperation: appleAuth.Operation.LOGIN,
-      requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+      requestedScopes: [appleAuth.Scope.EMAIL],
     });
 
     // Ensure Apple returned a user identityToken
@@ -137,11 +172,11 @@ function errorMessage(code: string): {
   }
 }
 
-function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
+function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   mode: 'create' | 'login' | undefined;
   setMode: (mode: 'create' | 'login') => void;
-  closeDialog: () => void;
   backPressed: () => void;
+  loginSucceeded: (user: FirebaseAuthTypes.UserCredential) => void;
 }) {
   const { typography } = useContext(StyleContext);
   const [emailAddress, setEmailAddress] = useState('');
@@ -163,9 +198,9 @@ function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
       auth().createUserWithEmailAndPassword(emailAddress, password) :
       auth().signInWithEmailAndPassword(emailAddress, password);
     promise.then(
-      () => {
+      (user) => {
         setSubmitting(false);
-        closeDialog();
+        loginSucceeded(user);
       },
       (error) => {
         if (error.code) {
@@ -178,7 +213,7 @@ function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
         setSubmitting(false);
       }
     );
-  }, [emailAddress, password, setSubmitting, closeDialog, setEmailErrorCodes, mode]);
+  }, [emailAddress, password, setSubmitting, setEmailErrorCodes, loginSucceeded, mode]);
   const focusPasswordField = useCallback(() => {
     passwordInputRef.current && passwordInputRef.current.focus();
   }, [passwordInputRef]);
@@ -312,18 +347,181 @@ function EmailSubmitForm({ mode, setMode, closeDialog, backPressed }: {
   );
 }
 
-interface Props {
-  children: React.ReactNode | React.ReactNode[];
+function CampaignRow({ campaign, value, onChange, last }: { campaign: Campaign; value: boolean; last: boolean; onChange: (uuid: string, value: boolean) => void }) {
+  const { colors } = useContext(StyleContext);
+  const onValueChange = useCallback((value: boolean) => onChange(campaign.uuid, !value), [campaign.uuid, onChange]);
+  return (
+    <DeckCheckboxButton
+      icon={(
+        <EncounterIcon
+          encounter_code={campaign.cycleCode === STANDALONE && campaign.standaloneId ? campaign.standaloneId.scenarioId : campaign.cycleCode}
+          size={22}
+          color={colors.M}
+        />
+      )}
+      title={campaign.name}
+      value={!value}
+      onValueChange={onValueChange}
+      last={last}
+    />
+  );
 }
-export default function ArkhamCardsLoginButton() {
+
+interface UploadState {
+  total: number;
+  finished: number;
+  completed: boolean;
+}
+
+type UploadDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
+
+function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNode, () => void] {
+  const campaigns = useSelector(getCampaigns);
+  const dispatch: UploadDispatch = useDispatch();
+  const { colors, typography, width } = useContext(StyleContext);
+  const localCampaigns = useMemo(() => filter(campaigns, campaign => !campaign.serverId), [campaigns]);
+  const [uploadState, updateUploadState] = useReducer(
+    (state: UploadState | undefined, action: { type: 'start'; total: number } | { type: 'finish' } | { type: 'error' }) => {
+      switch (action.type) {
+        case 'start':
+          if (action.total > 0) {
+            return {
+              total: action.total,
+              finished: 0,
+              completed: false,
+            };
+          }
+          return {
+            completed: true,
+            total: 1,
+            finished: 1,
+          };
+        case 'error':
+        case 'finish':
+          if (state) {
+            return {
+              total: state.total,
+              finished: state.finished + 1,
+              completed: (state.finished + 1) >= state.total,
+            };
+          }
+          return undefined;
+      }
+    }, undefined);
+  const [noUpload,, setNoUpload] = useToggles({});
+  const content = useMemo(() => {
+    if (uploadState) {
+      return (
+        <View style={[styles.column, space.paddingBottomS, styles.center]}>
+          <View style={space.paddingS}>
+            <Text style={typography.large}>{t`Uploading`}</Text>
+          </View>
+          <View style={[styles.row, space.paddingBottomS]}>
+            <ProgressBar progress={uploadState.finished / uploadState.total} color={colors.D30} width={width * 0.6} />
+          </View>
+        </View>
+      );
+    }
+    return (
+      <View style={styles.column}>
+        <View style={space.paddingS}>
+          <Text style={typography.text}>
+            { t`Campaigns can be uploaded to your Arkham Cards account.` }
+            { '\n' }
+            { t`Uploaded campaigns will be synced between devices.` }
+          </Text>
+        </View>
+        { map(localCampaigns, (campaign, idx) => (
+          <CampaignRow
+            key={campaign.uuid}
+            campaign={campaign}
+            value={!!noUpload[campaign.uuid]}
+            onChange={setNoUpload}
+            last={idx === localCampaigns.length - 1}
+          />
+        )) }
+      </View>
+    );
+  }, [localCampaigns, setNoUpload, noUpload, typography, uploadState, width, colors]);
+  const createServerCampaign = useCreateCampaignRequest();
+  const uploadCampaigns = useCallback(async() => {
+    if (user) {
+      const uploadCampaigns = filter(localCampaigns, c => !noUpload[c.uuid]);
+      updateUploadState({ type: 'start', total: uploadCampaigns.length });
+      await Promise.all(
+        map(uploadCampaigns, c => {
+          return dispatch(uploadCampaign(user, createServerCampaign, getCampaignId(c))).then(
+            () => updateUploadState({ type: 'finish' }),
+            () => updateUploadState({ type: 'error' }),
+          );
+        }),
+      );
+    }
+    return true;
+  }, [user, localCampaigns, noUpload, dispatch, updateUploadState, createServerCampaign]);
+  const uploading = !!uploadState?.completed;
+  const { dialog, showDialog, setVisible } = useDialog({
+    title: t`Upload campaigns`,
+    alignment: 'center',
+    content,
+    allowDismiss: false,
+    confirm: {
+      title: uploading ? t`Uploading` : t`Upload`,
+      onPress: uploadCampaigns,
+      loading: uploading,
+    },
+  });
+
+  useEffect(() => {
+    if (uploadState && uploadState.completed) {
+      setVisible(false);
+    }
+  }, [setVisible, uploadState]);
+  const maybeShowDialog = useCallback(() => {
+    if (localCampaigns.length) {
+      setTimeout(() => {
+        showDialog();
+      }, 500);
+    }
+  }, [localCampaigns, showDialog]);
+
+  return [dialog, maybeShowDialog];
+}
+
+interface Props {
+  showAlert: ShowAlert;
+}
+
+export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const { darkMode, typography } = useContext(StyleContext);
+  const dispatch = useDispatch();
   const { user, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [mode, setMode] = useState<'login' | 'create' | undefined>();
-  const doLogout = useCallback(() => {
-    auth().signOut();
-  }, []);
+  const doLogout = useCallback(async() => {
+    await auth().signOut();
+    dispatch(logout());
+  }, [dispatch]);
+  const [uploadDialog, showUploadDialog] = useCampaignUploadDialog(user);
+
+  const logoutPressed = useCallback(() => {
+    showAlert(
+      t`Sign out of Arkham Cards?`,
+      t`Are you sure you want to sign out of Arkham Cards?\n\nAny campaigns you uploaded or have had shared with you will be removed from this device. They can be resynced if you sign in again.\n\nNote: if you have made recent changes while offline, they may be lost.`,
+      [
+        {
+          text: t`Cancel`,
+          style: 'cancel',
+        },
+        {
+          text: t`Sign out`,
+          style: 'destructive',
+          onPress: doLogout,
+        },
+      ]
+    );
+  }, [showAlert, doLogout]);
   const createAccountPressed = useCallback(() => setMode('create'), [setMode]);
   const loginPressed = useCallback(() => setMode('login'), [setMode]);
   const resetDialog = useCallback(() => {
@@ -334,8 +532,14 @@ export default function ArkhamCardsLoginButton() {
     }
   }, [setMode, setEmailLogin, setVisibleRef]);
 
-  const signInToApple = useCallback(() => onAppleButtonPress().then(() => resetDialog()), [resetDialog]);
-  const signInToGoogle = useCallback(() => onGoogleButtonPress().then(() => resetDialog()), [resetDialog]);
+  const loginSucceeded = useCallback((user: FirebaseAuthTypes.UserCredential) => {
+    dispatch(login(user.user.uid));
+    resetDialog();
+    showUploadDialog();
+  }, [resetDialog, dispatch, showUploadDialog]);
+
+  const signInToApple = useCallback(() => onAppleButtonPress().then(loginSucceeded), [loginSucceeded]);
+  const signInToGoogle = useCallback(() => onGoogleButtonPress().then(loginSucceeded), [loginSucceeded]);
 
   const welcomeContent = useMemo(() => {
     return (
@@ -355,11 +559,20 @@ export default function ArkhamCardsLoginButton() {
     );
   }, [typography, loginPressed, createAccountPressed]);
 
-  const emailContent = useMemo(() => <EmailSubmitForm setMode={setMode} closeDialog={resetDialog} backPressed={toggleEmailLogin} mode={mode} />, [resetDialog, toggleEmailLogin, mode]);
+  const emailContent = useMemo(() => {
+    return (
+      <EmailSubmitForm
+        setMode={setMode}
+        backPressed={toggleEmailLogin}
+        mode={mode}
+        loginSucceeded={loginSucceeded}
+      />
+    );
+  }, [toggleEmailLogin, loginSucceeded, mode]);
   const signInContent = useMemo(() => {
     return (
       <View style={styles.center}>
-        <View style={{ paddingBottom: s + xs }}>
+        <View style={{ flexDirection: 'row', paddingBottom: s + xs }}>
           <DeckButton
             thin
             color="red"
@@ -396,7 +609,7 @@ export default function ArkhamCardsLoginButton() {
     return emailLogin ? emailContent : signInContent;
   }, [mode, welcomeContent, emailLogin, emailContent, signInContent]);
 
-  const { dialog, showDialog, setVisible } = useDialog({
+  const { dialog: loginDialog, showDialog: showLoginDialog, setVisible } = useDialog({
     title: mode === 'create' ? t`Sign up` : t`Sign in`,
     alignment: 'bottom',
     content: dialogContent,
@@ -406,7 +619,6 @@ export default function ArkhamCardsLoginButton() {
       onPress: resetDialog,
     },
   });
-
   useEffect(() => {
     setVisibleRef.current = setVisible;
   }, [setVisible]);
@@ -416,10 +628,11 @@ export default function ArkhamCardsLoginButton() {
         title={user ? t`Sign out` : t`Sign in to app`}
         icon="logo"
         loading={loading}
-        color={user ? 'gray' : 'red'}
-        onPress={user ? doLogout : showDialog}
+        color={user ? 'default' : 'red'}
+        onPress={user ? logoutPressed : showLoginDialog}
       />
-      { dialog }
+      { loginDialog }
+      { uploadDialog }
     </View>
   );
 }
@@ -435,5 +648,8 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+  },
+  column: {
+    flexDirection: 'column',
   },
 });

@@ -1,27 +1,27 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View } from 'react-native';
 import { forEach } from 'lodash';
-import database from '@react-native-firebase/database';
 import { ngettext, msgid, t } from 'ttag';
 import { useObjectVal } from 'react-firebase-hooks/database';
 
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import space from '@styles/space';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
-import { useTextDialog } from '@components/deck/dialogs';
+import { useSimpleTextDialog } from '@components/deck/dialogs';
 import { ArkhamCardsProfile, FriendStatus } from '@data/firebase/types';
 import { NavigationProps } from '@components/nav/types';
 import { Navigation } from 'react-native-navigation';
 import { FriendsViewProps } from '../FriendsView';
 import { useUpdateHandle } from '@data/firebase/api';
 import StyleContext from '@styles/StyleContext';
+import fbdb from '@data/firebase/fbdb';
 
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
   const { typography } = useContext(StyleContext);
   const { user, loading } = useContext(ArkhamCardsAuthContext);
-  const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(user ? database().ref('/profiles').child(user.uid) : undefined);
+  const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(user ? fbdb.profile(user) : undefined);
   const updateHandle = useUpdateHandle();
-  const { dialog, showDialog } = useTextDialog({
+  const { dialog, showDialog } = useSimpleTextDialog({
     title: t`Account Name`,
     value: profile?.handle || '',
     onValidate: updateHandle,

@@ -14,9 +14,12 @@ export interface TypographyColors {
 export interface Typography {
   searchLabel: TextStyle;
   smallLabel: TextStyle;
+  smallButtonLabel: TextStyle;
   small: TextStyle;
   tiny: TextStyle;
   menuText: TextStyle;
+  cardName: TextStyle;
+  cardTraits: TextStyle;
   large: TextStyle;
   header: TextStyle;
   button: TextStyle;
@@ -47,64 +50,85 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
   return StyleSheet.create({
     searchLabel: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 16 * fontScale,
-      lineHeight: 20 * fontScale,
+      fontSize: Math.ceil(16 * fontScale),
+      lineHeight: Math.ceil(20 * fontScale),
       color: colors.L20,
     },
     smallLabel: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 14 * fontScale,
-      lineHeight: 18 * fontScale,
+      fontSize: Math.ceil(14 * fontScale),
+      lineHeight: Math.ceil(18 * fontScale),
+      letterSpacing: 0.3,
+      color: colors.lightText,
+    },
+    smallButtonLabel: {
+      fontFamily: 'Alegreya-Italic',
+      fontSize: Math.ceil(14 * fontScale),
+      lineHeight: Math.ceil(14 * fontScale),
       letterSpacing: 0.3,
       color: colors.lightText,
     },
     small: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 16 * fontScale,
-      lineHeight: 18 * fontScale,
+      fontSize: Math.ceil(16 * fontScale),
+      lineHeight: Math.ceil(18 * fontScale),
       color: colors.darkText,
+    },
+    cardTraits: {
+      fontFamily: 'Alegreya-Italic',
+      fontSize: Math.ceil(16 * fontScale),
+      lineHeight: Math.ceil(18 * fontScale),
+      color: colors.lightText,
+      includeFontPadding: false,
     },
     tiny: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 12 * fontScale,
-      lineHeight: 14 * fontScale,
+      fontSize: Math.ceil(12 * fontScale),
+      lineHeight: Math.ceil(14 * fontScale),
       color: colors.darkText,
+    },
+    cardName: {
+      fontFamily: 'Alegreya-Medium',
+      fontSize: Math.ceil(20 * fontScale),
+      lineHeight: Math.ceil(22 * fontScale),
+      color: colors.darkText,
+      textAlignVertical: 'center',
     },
     large: {
       fontFamily: 'Alegreya-Medium',
-      fontSize: 20 * fontScale,
-      lineHeight: 24 * fontScale,
+      fontSize: Math.ceil(18 * fontScale),
+      lineHeight: Math.ceil(20 * fontScale),
       color: colors.darkText,
     },
     header: {
-      fontFamily: 'Alegreya-Bold',
-      fontSize: 24 * fontScale,
-      lineHeight: 32 * fontScale,
+      fontFamily: 'Alegreya-Medium',
+      fontSize: Math.ceil(22 * fontScale),
+      lineHeight: Math.ceil(24 * fontScale),
       color: colors.darkText,
     },
     button: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 18 * fontScale,
-      lineHeight: 20 * fontScale,
+      fontSize: Math.ceil(18 * fontScale),
+      lineHeight: Math.ceil(20 * fontScale),
       color: colors.L30,
     },
     subHeaderText: {
       fontFamily: 'Alegreya-Medium',
       // fontVariant: ['small-caps'],
-      fontSize: 18 * fontScale,
-      lineHeight: 22 * fontScale,
+      fontSize: Math.ceil(18 * fontScale),
+      lineHeight: Math.ceil(22 * fontScale),
       color: colors.D10,
     },
     menuText: {
       fontFamily: 'Alegreya-Medium',
-      fontSize: 18 * fontScale,
-      lineHeight: 20 * fontScale,
+      fontSize: Math.ceil(18 * fontScale),
+      lineHeight: Math.ceil(20 * fontScale),
       color: colors.D30,
     },
     text: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 18 * fontScale,
-      lineHeight: 22 * fontScale,
+      fontSize: Math.ceil(18 * fontScale),
+      lineHeight: Math.ceil(22 * fontScale),
       color: colors.darkText,
     },
     regular: {
@@ -126,29 +150,29 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
     },
     gameFont: {
       fontFamily: gameFont,
-      fontSize: 18 * fontScale,
-      lineHeight: 26 * fontScale,
+      fontSize: Math.ceil(18 * fontScale),
+      lineHeight: Math.ceil(26 * fontScale),
       color: colors.darkText,
     },
     mediumGameFont: {
       fontFamily: gameFont,
-      fontSize: 24 * fontScale,
-      lineHeight: 30 * fontScale,
+      fontSize: Math.ceil(24 * fontScale),
+      lineHeight: Math.ceil(30 * fontScale),
       color: colors.darkText,
     },
     bigGameFont: {
       fontFamily: gameFont,
-      fontSize: 28 * fontScale,
-      lineHeight: 36 * fontScale,
+      fontSize: Math.ceil(28 * fontScale),
+      lineHeight: Math.ceil(36 * fontScale),
       color: colors.darkText,
     },
     dialogLabel: Platform.select({
       ios: {
-        fontSize: 13 * fontScale,
+        fontSize: Math.ceil(13 * fontScale),
         color: colors.darkText,
       },
       android: {
-        fontSize: 16 * fontScale,
+        fontSize: Math.ceil(16 * fontScale),
         color: colors.darkText,
       },
     }) as TextStyle,

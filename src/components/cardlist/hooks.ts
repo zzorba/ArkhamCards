@@ -16,7 +16,7 @@ export function useFilterButton(filterId: string, baseQuery?: Brackets, modal?: 
       return [false, cardData];
     }
     return [
-      !!new FilterBuilder('default').filterToQuery(filters),
+      !!new FilterBuilder('default').filterToQuery(filters, true),
       cardData,
     ];
   }, [filterId]);

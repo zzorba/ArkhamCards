@@ -1,8 +1,7 @@
-import { map } from 'lodash';
+import { forEach, map, omit } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
-  RESTORE_BACKUP,
   NEW_CAMPAIGN,
   NEW_LINKED_CAMPAIGN,
   DELETE_CAMPAIGN,
@@ -37,58 +36,52 @@ import {
   UpdateCampaignSpentXpAction,
   UpdateChaosBagResultsAction,
   DeleteCampaignAction,
-  RestoreBackupAction,
   AdjustBlessCurseAction,
   ADJUST_BLESS_CURSE,
   StandaloneId,
   NewStandaloneCampaignAction,
   NEW_STANDALONE,
+  CampaignId,
+  DeckId,
+  getDeckId,
+  RemoveUploadDeckAction,
+  REMOVE_UPLOAD_DECK,
+  CampaignSyncRequiredAction,
+  getCampaignId,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
-import { AppState, makeCampaignSelector } from '@reducers';
+import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
+import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { removeCampaignDeckHelper, uploadCampaignDeckHelper } from '@lib/firebaseApi';
 
 function getBaseDeckIds(
   state: AppState,
-  latestDeckIds: number[]
-): number[] {
+  deckIds: DeckId[]
+): DeckId[] {
   const decks = state.decks.all || {};
-  return map(latestDeckIds, deckId => {
-    let deck = decks[deckId];
-    while (deck && deck.previous_deck && deck.previous_deck in decks) {
-      deck = decks[deck.previous_deck];
+  return map(deckIds, deckId => {
+    let deck = getDeck(decks, deckId);
+    while (deck && deck.previousDeckId) {
+      const previousDeck = getDeck(decks, deck.previousDeckId);
+      if (!previousDeck) {
+        break;
+      }
+      deck = previousDeck;
     }
-    return deck ? deck.id : deckId;
+    return deck ? getDeckId(deck) : deckId;
   });
 }
 
-export function restoreBackup(
-  campaigns: Campaign[],
-  guides: { [id: string]: CampaignGuideState },
-  decks: Deck[]
-): RestoreBackupAction {
-  return {
-    type: RESTORE_BACKUP,
-    campaigns,
-    guides,
-    decks,
-  };
-}
-
-
 export function restoreComplexBackup(
   campaigns: Campaign[],
-  guides: { [id: string]: CampaignGuideState },
-  campaignRemapping: { [id: string]: number },
+  guides: CampaignGuideState[],
   decks: Deck[],
-  deckRemapping: { [id: string]: number }
 ): RestoreComplexBackupAction {
   return {
     type: RESTORE_COMPLEX_BACKUP,
     campaigns,
     guides,
     decks,
-    deckRemapping,
-    campaignRemapping,
   };
 }
 
@@ -99,47 +92,55 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 }
 
 export function addInvestigator(
-  campaignId: number,
+  user: FirebaseAuthTypes.User | undefined,
+  id: CampaignId,
   investigator: string,
-  deckId?: number
-): ThunkAction<void, AppState, null, CampaignAddInvestigatorAction> {
+  deckId?: DeckId
+): ThunkAction<void, AppState, unknown, CampaignAddInvestigatorAction> {
   return (dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
       getBaseDeckIds(getState(), [deckId])[0] :
       undefined;
     const action: CampaignAddInvestigatorAction = {
       type: CAMPAIGN_ADD_INVESTIGATOR,
-      id: campaignId,
+      id,
       investigator,
-      baseDeckId,
+      deckId: baseDeckId,
       now: new Date(),
     };
     dispatch(action);
+    if (deckId && id.serverId && user) {
+      dispatch(uploadCampaignDeckHelper(id, deckId, user));
+    }
   };
 }
 
 export function removeInvestigator(
-  campaignId: number,
+  user: FirebaseAuthTypes.User | undefined,
+  id: CampaignId,
   investigator: string,
-  deckId?: number
-): ThunkAction<void, AppState, null, CampaignRemoveInvestigatorAction> {
+  deckId?: DeckId
+): ThunkAction<void, AppState, unknown, CampaignRemoveInvestigatorAction> {
   return (dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
       getBaseDeckIds(getState(), [deckId])[0] :
       undefined;
     const action: CampaignRemoveInvestigatorAction = {
       type: CAMPAIGN_REMOVE_INVESTIGATOR,
-      id: campaignId,
+      id,
       investigator,
       removeDeckId: baseDeckId,
       now: new Date(),
     };
     dispatch(action);
+    if (deckId && user && id.serverId) {
+      dispatch(removeCampaignDeckHelper(id, deckId, true));
+    }
   };
 }
 
 export function newLinkedCampaign(
-  id: number,
+  user: FirebaseAuthTypes.User | undefined,
   name: string,
   cycleCode: CampaignCycleCode,
   cycleCodeA: CampaignCycleCode,
@@ -148,7 +149,6 @@ export function newLinkedCampaign(
 ): NewLinkedCampaignAction {
   return {
     type: NEW_LINKED_CAMPAIGN,
-    id,
     name,
     cycleCode,
     cycleCodeA,
@@ -160,21 +160,20 @@ export function newLinkedCampaign(
 }
 
 export function newStandalone(
-  id: number,
+  user: FirebaseAuthTypes.User | undefined,
   name: string,
   standaloneId: StandaloneId,
-  deckIds: number[],
+  deckIds: DeckId[],
   investigatorIds: string[],
   weaknessSet: WeaknessSet
-): ThunkAction<void, AppState, null, NewStandaloneCampaignAction> {
+): ThunkAction<void, AppState, unknown, NewStandaloneCampaignAction> {
   return (dispatch, getState: () => AppState) => {
     const action: NewStandaloneCampaignAction = {
       type: NEW_STANDALONE,
-      id,
       name: name,
       standaloneId,
       weaknessSet,
-      baseDeckIds: getBaseDeckIds(getState(), deckIds),
+      deckIds: getBaseDeckIds(getState(), deckIds),
       investigatorIds,
       now: new Date(),
     };
@@ -183,28 +182,27 @@ export function newStandalone(
 }
 
 export function newCampaign(
-  id: number,
+  user: FirebaseAuthTypes.User | undefined,
   name: string,
   pack_code: CampaignCycleCode,
   difficulty: CampaignDifficulty | undefined,
-  deckIds: number[],
+  deckIds: DeckId[],
   investigatorIds: string[],
   chaosBag: ChaosBag,
   campaignLog: CustomCampaignLog,
   weaknessSet: WeaknessSet,
   guided: boolean
-): ThunkAction<void, AppState, null, NewCampaignAction> {
+): ThunkAction<void, AppState, unknown, NewCampaignAction> {
   return (dispatch, getState: () => AppState) => {
     const action: NewCampaignAction = {
       type: NEW_CAMPAIGN,
-      id,
       name: name,
       cycleCode: pack_code,
       difficulty,
       chaosBag,
       campaignLog,
       weaknessSet,
-      baseDeckIds: getBaseDeckIds(getState(), deckIds),
+      deckIds: getBaseDeckIds(getState(), deckIds),
       investigatorIds,
       guided,
       now: new Date(),
@@ -214,15 +212,16 @@ export function newCampaign(
 }
 
 export function updateCampaignSpentXp(
-  id: number,
+  id: CampaignId,
   investigator: string,
-  operation: 'inc' | 'dec'
+  value: number
 ): UpdateCampaignSpentXpAction {
   return {
     type: UPDATE_CAMPAIGN_SPENT_XP,
     id,
     investigator,
-    operation,
+    operation: 'set',
+    value,
     now: new Date(),
   };
 }
@@ -238,15 +237,17 @@ export function updateCampaignSpentXp(
  * }
  */
 export function updateCampaign(
-  id: number,
-  sparseCampaign: Partial<Campaign>,
+  user: FirebaseAuthTypes.User | undefined,
+  id: CampaignId,
+  sparseCampaign: Partial<Campaign & {
+    latestDeckIds?: DeckId[];
+  }>,
   now?: Date
-): ThunkAction<void, AppState, null, UpdateCampaignAction> {
-  return (dispatch, getState: () => AppState) => {
-    const campaign: Partial<Campaign> = { ...sparseCampaign };
-    if (campaign.latestDeckIds) {
-      campaign.baseDeckIds = getBaseDeckIds(getState(), campaign.latestDeckIds);
-      delete campaign.latestDeckIds;
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction | CampaignSyncRequiredAction> {
+  return async(dispatch, getState: () => AppState) => {
+    const campaign: Partial<Campaign> = omit(sparseCampaign, 'latestDeckIds');
+    if (sparseCampaign.latestDeckIds) {
+      campaign.deckIds = getBaseDeckIds(getState(), sparseCampaign.latestDeckIds);
     }
     dispatch({
       type: UPDATE_CAMPAIGN,
@@ -254,13 +255,33 @@ export function updateCampaign(
       campaign,
       now: (now || new Date()),
     });
+    /*
+    if (user && id.serverId) {
+      try {
+        await Promise.all(
+          map(omit(sparseCampaign, ['serverId']), (value, key) => {
+            const ref = fbdb.campaignDetail(id).child(key);
+            if (!value) {
+              return ref.remove();
+            }
+            return ref.set(value);
+          })
+        );
+      } catch (e) {
+        dispatch({
+          type: CAMPAIGN_SYNC_REQUIRED,
+          campaignId: id,
+        });
+      }
+    }
+    */
   };
 }
 
 export function updateChaosBagResults(
-  id: number,
+  id: CampaignId,
   chaosBagResults: ChaosBagResults
-): ThunkAction<void, AppState, null, UpdateChaosBagResultsAction> {
+): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
   return (dispatch) => {
     dispatch({
       type: UPDATE_CHAOS_BAG_RESULTS,
@@ -272,10 +293,10 @@ export function updateChaosBagResults(
 }
 
 export function adjustBlessCurseChaosBagResults(
-  id: number,
+  id: CampaignId,
   type: 'bless' | 'curse',
   direction: 'inc' | 'dec'
-): ThunkAction<void, AppState, null, AdjustBlessCurseAction> {
+): ThunkAction<void, AppState, unknown, AdjustBlessCurseAction> {
   return (dispatch) => {
     dispatch({
       type: ADJUST_BLESS_CURSE,
@@ -287,50 +308,88 @@ export function adjustBlessCurseChaosBagResults(
   };
 }
 
-export function deleteCampaign(
-  id: number
-): ThunkAction<void, AppState, null, DeleteCampaignAction> {
-  return (dispatch, getState: () => AppState) => {
-    const campaign = makeCampaignSelector()(getState(), id);
-    if (campaign && campaign.link) {
-      dispatch({
-        type: DELETE_CAMPAIGN,
-        id: campaign.link.campaignIdA,
-      });
-      dispatch({
-        type: DELETE_CAMPAIGN,
-        id: campaign.link.campaignIdB,
+export function removeLocalCampaign(
+  campaign: Campaign
+): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
+  return (dispatch, getState) => {
+    if (campaign.serverId) {
+      // Delink all of the decks.
+      const state = getState();
+      const getDeck = makeDeckSelector();
+      forEach(campaign.deckIds || [], deckId => {
+        let deck = getDeck(state, deckId);
+        while (deck) {
+          dispatch({
+            type: REMOVE_UPLOAD_DECK,
+            deckId: getDeckId(deck),
+            campaignId: {
+              campaignId: campaign.uuid,
+              serverId: campaign.serverId,
+            },
+          });
+          if (!deck.nextDeckId) {
+            break;
+          }
+          deck = getDeck(state, deck.nextDeckId);
+        }
       });
     }
     dispatch({
       type: DELETE_CAMPAIGN,
-      id,
+      id: getCampaignId(campaign),
     });
   };
 }
 
+export function deleteCampaign(
+  user: FirebaseAuthTypes.User | undefined,
+  { campaignId }: CampaignId
+): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
+  return (dispatch, getState) => {
+    const state = getState();
+    const getCampaign = makeCampaignSelector();
+    const campaign = getCampaign(getState(), campaignId);
+    if (campaign) {
+      if (campaign.linkUuid) {
+        const campaignA = getCampaign(state, campaign.linkUuid.campaignIdA);
+        if (campaignA) {
+          dispatch(removeLocalCampaign(campaignA));
+        }
+        const campaignB = getCampaign(state, campaign.linkUuid.campaignIdB);
+        if (campaignB) {
+          dispatch(removeLocalCampaign(campaignB));
+        }
+      }
+      dispatch(removeLocalCampaign(campaign));
+    }
+  };
+}
+
 export function addScenarioResult(
-  id: number,
+  user: FirebaseAuthTypes.User | undefined,
+  campaignId: CampaignId,
   scenarioResult: ScenarioResult,
   campaignNotes?: CampaignNotes
-): AddCampaignScenarioResultAction {
-  return {
-    type: ADD_CAMPAIGN_SCENARIO_RESULT,
-    id,
-    scenarioResult,
-    campaignNotes,
-    now: new Date(),
+): ThunkAction<void, AppState, unknown, AddCampaignScenarioResultAction> {
+  return async(dispatch) => {
+    dispatch({
+      type: ADD_CAMPAIGN_SCENARIO_RESULT,
+      campaignId,
+      scenarioResult,
+      campaignNotes,
+      now: new Date(),
+    });
   };
 }
 
 export function editScenarioResult(
-  id: number,
+  campaignId: CampaignId,
   index: number,
   scenarioResult: ScenarioResult
 ): EditCampaignScenarioResultAction {
   return {
     type: EDIT_CAMPAIGN_SCENARIO_RESULT,
-    id,
+    campaignId,
     index,
     scenarioResult,
     now: new Date(),
@@ -338,7 +397,6 @@ export function editScenarioResult(
 }
 
 export default {
-  restoreBackup,
   newCampaign,
   updateCampaign,
   deleteCampaign,

@@ -150,13 +150,19 @@ export const syncRules = async function(
   lang?: string
 ): Promise<void> {
   const rules: JsonRule[] = rulesJson(lang);
-  await insertChunk(
-    flatMap(rules, (jsonRule, index) => {
-      const rule = Rule.parse(lang || 'en', jsonRule, index);
-      return [rule, ...(rule.rules || [])];
-    }),
-    async rules => await db.insertRules(rules)
-  );
+  const allRules = flatMap(rules, (jsonRule, index) => {
+    const rule = Rule.parse(lang || 'en', jsonRule, index);
+    return [rule];
+  });
+
+  const [simpleRules, complexRules] = partition(allRules, r => !r.rules);
+  await insertChunk(simpleRules, async rules => await db.insertRules(rules));
+  forEach(complexRules, r => {
+    db.insertRules([
+      r,
+      ...flatMap(r.rules || [], r2 => [r2, ...(r2.rules || [])]),
+    ]);
+  });
 };
 
 export const syncCards = async function(

@@ -2,122 +2,54 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { forEach } from 'lodash';
 import {
   Alert,
-  InteractionManager,
   Keyboard,
   SafeAreaView,
   ScrollView,
   Share,
   StyleSheet,
 } from 'react-native';
+import database from '@react-native-firebase/database';
 import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Campaign, CampaignGuideState, Deck, DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+import { DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
 import { clearDecks } from '@actions';
-import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
 import Card from '@data/Card';
-import { getBackupData, getAllPacks, getLangChoice } from '@reducers';
+import { getBackupData, getAllPacks, getLangChoice, AppState } from '@reducers';
 import { fetchCards } from '@components/card/actions';
-import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
 import { saveAuthResponse } from '@lib/dissonantVoices';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import useTextEditDialog from '@components/core/useTextEditDialog';
 
-interface ReduxProps {
-  backupData: {
-    campaigns: Campaign[];
-    decks: Deck[];
-    guides: {
-      [id: string]: CampaignGuideState;
-    };
-  };
-  packs: Pack[];
-  lang: string;
-  langChoice: string;
+
+function goOffline() {
+  database().goOffline();
 }
 
-interface ReduxActionProps {
-  fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
-  restoreBackup: (
-    campaigns: Campaign[],
-    guides: {
-      [id: string]: CampaignGuideState;
-    },
-    decks: Deck[]
-  ) => void;
-  clearDecks: () => void;
+function goOnline() {
+  database().goOnline();
 }
 
-type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
-
-function DiagnosticsView({ showTextEditDialog }: Props) {
+export default function DiagnosticsView() {
+  const [dialog, showTextEditDialog] = useTextEditDialog();
   const { db } = useContext(DatabaseContext);
   const { colors } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
   const backupData = useSelector(getBackupData);
+  const state = useSelector((state: AppState) => state);
   const packs = useSelector(getAllPacks);
   const langChoice = useSelector(getLangChoice);
 
-  const importBackupDataJson = useCallback((json: string) => {
-    try {
-      const backupData = JSON.parse(json) || {};
-      const campaigns: Campaign[] = backupData.campaigns || [];
-      const guides: { [id: string]: CampaignGuideState } = backupData.guides || {};
-      const decks: Deck[] = backupData.decks || [];
-      dispatch(restoreBackup(
-        campaigns,
-        guides,
-        decks
-      ));
-      return;
-    } catch (e) {
-      console.log(e);
-      Alert.alert(
-        t`Problem with import`,
-        t`We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.`,
-      );
-    }
-  }, [dispatch]);
-
-  const importCampaignData = useCallback(() => {
-    const erasedCopy = t`All local decks and campaigns will be overridden`;
-    Alert.alert(
-      t`Restore campaign data?`,
-      t`This feature is intended for advanced diagnostics or to import data from another app.\n\n${erasedCopy}`,
-      [{
-        text: t`Nevermind`,
-        style: 'cancel',
-      }, {
-        text: t`Import data`,
-        style: 'destructive',
-        onPress: () => {
-          showTextEditDialog(
-            t`Paste Backup Here`,
-            '',
-            (json: string) => {
-              Keyboard.dismiss();
-              InteractionManager.runAfterInteractions(
-                () => importBackupDataJson(json)
-              );
-            },
-            false,
-            4
-          );
-        },
-      }],
-    );
-  }, [showTextEditDialog, importBackupDataJson]);
-
   const exportCampaignData = useCallback(() => {
     Alert.alert(
-      t`Backup campaign data?`,
-      t`This feature is intended for advanced diagnostics or if you are trying to move your campaign data from one device to another. Just copy the data and paste it into the other app.`,
+      t`Export diagnostic data`,
+      t`This feature is intended for advanced diagnostics. Just copy the data presented here and email it to arkhamcards@gmail.com`,
       [{
         text: t`Cancel`,
         style: 'cancel',
@@ -128,9 +60,23 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
             message: JSON.stringify(backupData),
           });
         },
+      }, {
+        text: t`Export Diagnostic Data`,
+        onPress: () => {
+          Share.share({
+            message: JSON.stringify({
+              legacyDecks: state.legacyDecks,
+              legacyCampaigns: state.campaigns,
+              legacyGuides: state.legacyGuides,
+              decks: state.decks,
+              campaigns: state.campaigns_2,
+              guides: state.guides,
+            }),
+          });
+        },
       }],
     );
-  }, [backupData]);
+  }, [backupData, state]);
 
   const clearDatabase = useCallback(async() => {
     await (await db.cardsQuery()).delete().execute();
@@ -230,6 +176,15 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
           onPress={setDissonantVoicesToken}
           text={'Set Dissonant Voices Token'}
         />
+        <CardSectionHeader section={{ title: 'Firebase' }} />
+        <SettingsItem
+          onPress={goOffline}
+          text={'Go offline'}
+        />
+        <SettingsItem
+          onPress={goOnline}
+          text={'Go online'}
+        />
       </>
     );
   }, [crash, addDebugCard, setDissonantVoicesToken]);
@@ -240,11 +195,7 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
         <CardSectionHeader section={{ title: t`Backup` }} />
         <SettingsItem
           onPress={exportCampaignData}
-          text={t`Backup Campaign Data`}
-        />
-        <SettingsItem
-          onPress={importCampaignData}
-          text={t`Restore Campaign Data`}
+          text={t`Export diagnostic data`}
         />
         <CardSectionHeader section={{ title: t`Caches` }} />
         <SettingsItem
@@ -253,11 +204,10 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
         />
         { debugSection }
       </ScrollView>
+      { dialog }
     </SafeAreaView>
   );
 }
-
-export default withDialogs(DiagnosticsView);
 
 const styles = StyleSheet.create({
   container: {

@@ -16,11 +16,13 @@ interface Props {
   dualFaction?: boolean
   width: number;
   children: React.ReactNode | React.ReactNode[];
+  fullRound?: boolean;
+  eliminated?: boolean;
 }
 
 const HEIGHT = 48;
 
-function RoundedFactionHeader({ faction, width, dualFaction, children }: Props) {
+function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound, eliminated }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
   const fadeAnim = useCallback((props: any) => {
     return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
@@ -29,7 +31,14 @@ function RoundedFactionHeader({ faction, width, dualFaction, children }: Props) 
     return (
       <View style={styles.placeholder}>
         <Placeholder Animation={fadeAnim}>
-          <PlaceholderLine noMargin style={[styles.loadingHeader, { width: width - 2, height: 30 + 18 * fontScale }]} color={colors.D10} />
+          <PlaceholderLine noMargin style={[
+            styles.loadingHeader,
+            fullRound ? styles.fullRound : undefined,
+            {
+              width: width - 2,
+              height: 30 + 18 * fontScale,
+            },
+          ]} color={colors.D10} />
         </Placeholder>
         { children }
       </View>
@@ -38,10 +47,14 @@ function RoundedFactionHeader({ faction, width, dualFaction, children }: Props) 
   const color = colors.faction[dualFaction ? 'dual' : faction].background;
 
   return (
-    <View style={[styles.cardTitle, {
-      backgroundColor: color,
-      borderColor: color,
-    }]} removeClippedSubviews>
+    <View style={[
+      styles.cardTitle,
+      fullRound ? styles.fullRound : undefined,
+      {
+        backgroundColor: color,
+        borderColor: color,
+      },
+    ]} opacity={eliminated ? 0.6 : undefined}>
       <FactionPattern faction={faction} width={width} height={30 + 18 * fontScale} />
       { children }
     </View>
@@ -66,6 +79,10 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 8,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
+  },
+  fullRound: {
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
   },
   cardTitle: {
     paddingRight: s,

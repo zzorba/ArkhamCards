@@ -15,10 +15,11 @@ import { PlayScenarioInput } from '@data/scenario/types';
 import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
+import { CampaignId } from '@actions/types';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: CampaignId;
   id: string;
   input: PlayScenarioInput;
 }
@@ -60,7 +61,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
   const chaosBagSimulatorPressed = useCallback(() => {
     Navigation.push<GuideChaosBagProps>(componentId, {
       component: {
-        name: 'Guide.ChaosBag',
+        name: 'Guide.DrawChaosBag',
         passProps: {
           campaignId,
           chaosBag: campaignLog.chaosBag,

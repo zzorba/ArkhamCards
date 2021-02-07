@@ -30,6 +30,7 @@
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		655BAD76248739AD00854210 /* ArkhamCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BAD75248739AD00854210 /* ArkhamCardsUITests.swift */; };
 		6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6560EBDC25A012700076B227 /* GoogleService-Info.plist */; };
+		656D83DB25AA4AB90010E4CA /* cost.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 656D83DA25AA4AB80010E4CA /* cost.ttf */; };
 		6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */; };
 		65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */; };
 		65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */; };
@@ -104,6 +105,7 @@
 		655BAD75248739AD00854210 /* ArkhamCardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkhamCardsUITests.swift; sourceTree = "<group>"; };
 		655BAD77248739AD00854210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6560EBDC25A012700076B227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		656D83DA25AA4AB80010E4CA /* cost.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cost.ttf; path = ../assets/cost.ttf; sourceTree = "<group>"; };
 		6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Regular.ttf"; path = "../assets/Alegreya-Regular.ttf"; sourceTree = "<group>"; };
 		6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Italic.ttf"; path = "../assets/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
 		65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Medium.ttf"; path = "../assets/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				656D83DA25AA4AB80010E4CA /* cost.ttf */,
 				13B07FAE1A68108700A75B9A /* ArkhamCards */,
 				655BAD74248739AD00854210 /* ArkhamCardsUITests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -393,6 +396,7 @@
 				652EB742226BAFA800F6D790 /* it.po.json in Resources */,
 				65851174250F047800DCB842 /* Alegreya-Bold.ttf in Resources */,
 				655226B5205D68D70065A1F7 /* standalone.ttf in Resources */,
+				656D83DB25AA4AB90010E4CA /* cost.ttf in Resources */,
 				652421252054954F00FF6DB9 /* dunwich.ttf in Resources */,
 				659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */,
 				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
@@ -734,7 +738,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCardsDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
@@ -752,7 +756,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.9.8;
+				MARKETING_VERSION = 2.10.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -778,7 +782,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -795,7 +799,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.9.8;
+				MARKETING_VERSION = 2.10.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

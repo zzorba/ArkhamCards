@@ -5,14 +5,14 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import { ScenarioResult } from '@actions/types';
+import { CampaignId, ScenarioResult } from '@actions/types';
 import { Scenario } from '../constants';
 import { EditScenarioResultProps } from '../EditScenarioResultView';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
-  campaignId: number;
+  campaignId: CampaignId;
   index: number;
   scenarioResult: ScenarioResult;
   scenarioByCode?: { [code: string]: Scenario };

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -6,18 +6,20 @@ import {
   Text,
   ActivityIndicator,
 } from 'react-native';
-import { bindActionCreators, Action, Dispatch } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import Database from '@data/Database';
-import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
+import DatabaseContext from '@data/DatabaseContext';
 import { fetchCards, dismissUpdatePrompt } from './actions';
-import { getLangPreference, AppState } from '@reducers';
+import { AppState } from '@reducers';
 import { localizedName, getSystemLanguage } from '@lib/i18n';
-import { l, s } from '@styles/space';
+import space, { l, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { useEffectUpdate } from '@components/core/hooks';
+import useReduxMigrator from '@components/settings/useReduxMigrator';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -42,36 +44,42 @@ interface ReduxActionProps {
   dismissUpdatePrompt: () => void;
 }
 
-interface OwnProps {
+interface Props {
   promptForUpdate?: boolean;
-  children: ReactNode;
+  children: JSX.Element;
 }
-
-type Props = ReduxProps & ReduxActionProps & OwnProps;
 
 /**
  * Simple component to block children rendering until cards/packs are loaded.
  */
-class FetchCardsGate extends React.Component<Props> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
+export default function FetchCardsGate({ promptForUpdate, children }: Props): JSX.Element {
+  const { db } = useContext(DatabaseContext);
+  const [needsMigration, migrating, doMigrate] = useReduxMigrator();
 
-  async cardCount() {
-    const cards = await this.context.db.cards();
+  const dispatch = useDispatch();
+  const fetchNeeded = useSelector((state: AppState) => state.packs.all.length === 0);
+  const currentCardLang = useSelector((state: AppState) => state.cards.card_lang || 'en');
+  const { lang: choiceLang } = useContext(LanguageContext);
+  const useSystemLang = currentCardLang === 'system';
+  const loading = useSelector((state: AppState) => state.packs.loading || state.cards.loading);
+  const error = useSelector((state: AppState) => state.packs.error || state.cards.error || undefined);
+  const dateFetched = useSelector((state: AppState) => state.packs.dateFetched || undefined);
+  const dateUpdatePrompt = useSelector((state: AppState) => state.packs.dateUpdatePrompt || undefined);
+  const cardCount = useCallback(async() => {
+    const cards = await db.cards();
     return await cards.count();
-  }
+  }, [db]);
 
-  componentDidUpdate(prevProps: Props) {
-    if (this.props.fetchNeeded && !prevProps.fetchNeeded) {
-      this._doFetch();
-    }
-  }
+  const doFetch = useCallback(() => {
+    dispatch(fetchCards(db, choiceLang, useSystemLang ? 'system' : choiceLang));
+  }, [dispatch, db, choiceLang, useSystemLang]);
 
-  updateNeeded() {
-    const {
-      dateFetched,
-      dateUpdatePrompt,
-    } = this.props;
+  const ignoreUpdate = useCallback(() => {
+    dispatch(dismissUpdatePrompt());
+  }, [dispatch]);
+
+  const langUpdateNeeded = !!(currentCardLang && useSystemLang && choiceLang !== currentCardLang);
+  const updateNeeded = useMemo(() => {
     const nowSeconds = (new Date()).getTime() / 1000;
     return (
       !dateFetched ||
@@ -80,40 +88,21 @@ class FetchCardsGate extends React.Component<Props> {
       !dateUpdatePrompt ||
       (dateUpdatePrompt + REPROMPT_SECONDS) < nowSeconds
     );
-  }
+  }, [dateFetched, dateUpdatePrompt]);
 
-  _ignoreUpdate = () => {
-    this.props.dismissUpdatePrompt();
-  };
-
-  _doFetch = () => {
-    const {
-      choiceLang,
-      useSystemLang,
-    } = this.props;
-    this.props.fetchCards(this.context.db, choiceLang, useSystemLang ? 'system' : choiceLang);
-  };
-
-  langUpdateNeeded() {
-    const { useSystemLang, choiceLang, currentCardLang } = this.props;
-    return !!(currentCardLang && useSystemLang && choiceLang !== currentCardLang);
-  }
-
-  componentDidMount() {
-    const { fetchNeeded, promptForUpdate } = this.props;
+  useEffect(() => {
     if (fetchNeeded) {
-      if (promptForUpdate){
-        this._doFetch();
-      }
-      return;
-    }
-    this.cardCount().then(cardCount => {
       if (promptForUpdate) {
+        doFetch();
+      }
+    }
+    if (promptForUpdate) {
+      cardCount().then(cardCount => {
         if (cardCount === 0) {
-          this._doFetch();
+          doFetch();
           return;
         }
-        if (this.langUpdateNeeded() && !CHANGING_LANGUAGE) {
+        if (langUpdateNeeded && !CHANGING_LANGUAGE) {
           CHANGING_LANGUAGE = true;
           const lang = localizedName(getSystemLanguage());
           Alert.alert(
@@ -121,97 +110,89 @@ class FetchCardsGate extends React.Component<Props> {
             t`Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${lang})?\n\nYou can override your language preference for this app in Settings.`,
             [
               { text: t`Not now`, style: 'cancel' },
-              { text: t`Download now`, onPress: this._doFetch },
+              { text: t`Download now`, onPress: doFetch },
             ]
           );
-        } else if (this.updateNeeded()) {
+        } else if (updateNeeded) {
           Alert.alert(
             t`Check for updated cards?`,
             t`It has been more than a week since you checked for new cards.\nCheck for new cards from ArkhamDB?`,
             [
-              { text: t`Ask me later`, onPress: this._ignoreUpdate, style: 'cancel' },
-              { text: t`Check for updates`, onPress: this._doFetch },
+              { text: t`Ask me later`, onPress: ignoreUpdate, style: 'cancel' },
+              { text: t`Check for updates`, onPress: doFetch },
             ],
           );
         }
-      }
-    });
-  }
-
-  render() {
-    const {
-      loading,
-      error,
-      children,
-    } = this.props;
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffectUpdate(() => {
+    if (fetchNeeded && promptForUpdate) {
+      doFetch();
+      return;
+    }
+  }, [fetchNeeded]);
+  const { colors, backgroundStyle, typography } = useContext(StyleContext);
+  if (error) {
     return (
-      <StyleContext.Consumer>
-        { ({ colors, backgroundStyle, typography }) => {
-          if (error) {
-            return (
-              <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
-                <View style={styles.errorBlock}>
-                  <Text style={[typography.text, styles.error]}>
-                    { t`Error loading cards, make sure your network is working.` }
-                  </Text>
-                  <Text style={[typography.text, styles.error]}>
-                    { error }
-                  </Text>
-                </View>
-                <BasicButton onPress={this._doFetch} title={t`Try Again`} />
-              </View>
-            );
-          }
-          if (loading || this.props.fetchNeeded) {
-            return (
-              <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
-                <Text style={typography.text}>
-                  { t`Loading latest cards...` }
-                </Text>
-                <ActivityIndicator
-                  style={styles.spinner}
-                  size="small"
-                  animating
-                  color={colors.lightText}
-                />
-              </View>
-            );
-          }
-
-          return children;
-        } }
-      </StyleContext.Consumer>
+      <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+        <View style={styles.errorBlock}>
+          <Text style={[typography.text, styles.error]}>
+            { t`Error loading cards, make sure your network is working.` }
+          </Text>
+          <Text style={[typography.text, styles.error]}>
+            { error }
+          </Text>
+        </View>
+        <BasicButton onPress={doFetch} title={t`Try Again`} />
+      </View>
     );
   }
+  if (loading || fetchNeeded) {
+    return (
+      <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+        <Text style={typography.text}>
+          { t`Loading latest cards...` }
+        </Text>
+        <ActivityIndicator
+          style={styles.spinner}
+          size="small"
+          animating
+          color={colors.lightText}
+        />
+      </View>
+    );
+  }
+  if (needsMigration) {
+    return (
+      <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+        <Text style={[typography.header, space.paddingBottomS]}>
+          { t`Database migration required` }
+        </Text>
+        { migrating ? (
+          <ActivityIndicator
+            style={styles.spinner}
+            size="small"
+            animating
+            color={colors.lightText}
+          />
+        ) : (
+          <>
+            <Text style={[typography.text, space.paddingM]}>
+              { t`This should only take a few seconds and no network is required.` }
+            </Text>
+            <Text style={[typography.text, space.paddingM]}>
+              { t`If you run into any problems with this migration, please contact arkhamcards@gmail.com.` }
+            </Text>
+            <BasicButton onPress={doMigrate} title={t`Migrate now`} />
+          </>
+        ) }
+      </View>
+    );
+  }
+  return children;
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  const lang = getLangPreference(state);
-  return {
-    fetchNeeded: state.packs.all.length === 0,
-    currentCardLang: state.cards.card_lang || 'en',
-    choiceLang: lang,
-    useSystemLang: state.settings.lang === 'system',
-    loading: state.packs.loading || state.cards.loading,
-    error: state.packs.error || state.cards.error || undefined,
-    dateFetched: state.packs.dateFetched || undefined,
-    dateUpdatePrompt: state.packs.dateUpdatePrompt || undefined,
-  };
-}
-
-function mapDispatchToProps(
-  dispatch: Dispatch<Action>
-): ReduxActionProps {
-  return bindActionCreators({
-    fetchCards,
-    dismissUpdatePrompt,
-  }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(FetchCardsGate);
 
 const styles = StyleSheet.create({
   activityIndicatorContainer: {

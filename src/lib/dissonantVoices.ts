@@ -1,6 +1,23 @@
-import { parse } from 'query-string';
-import { AppState, AppStateStatus, Linking } from 'react-native';
 import * as Keychain from 'react-native-keychain';
+import { t } from 'ttag';
+
+import { authorize, AppAuthConfig } from './OAuthWrapper';
+
+// @ts-ignore
+const config: AppAuthConfig = {
+  issuer: 'https://north101.co.uk',
+  clientId: 'arkhamcards',
+  clientSecret: 'arkhamcards',
+  redirectUrl: 'arkhamcards://dissonantvoices/redirect',
+  additionalParameters: {
+    type: 'app',
+  },
+  serviceConfiguration: {
+    authorizationEndpoint: 'https://north101.co.uk/api/authorize?type=app',
+    tokenEndpoint: 'https://north101.co.uk/api/token',
+  },
+  skipCodeExchange: true,
+};
 
 export async function saveAuthResponse(accessToken: string) {
   return Keychain.setInternetCredentials('dissonantvoices', 'dissonantvoices', accessToken);
@@ -24,16 +41,26 @@ export function prefetch(): Promise<void> {
 }
 
 export function signInFlow(): Promise<SignInResult> {
-  return authorize()
-    .then(saveAuthResponse)
-    .then(() => {
-      return {
-        success: true,
-      };
-    }, (error: Error) => {
+  return authorizeDissonantVoices()
+    .then(async({
+      success,
+      token,
+      error,
+    }) => {
+      if (success && token) {
+        await saveAuthResponse(token);
+        return {
+          success: true,
+        };
+      }
       return {
         success: false,
-        error: error.message || error,
+        error,
+      };
+    }, () => {
+      return {
+        success: false,
+        error: '',
       };
     });
 }
@@ -42,74 +69,36 @@ export async function signOutFlow() {
   Keychain.resetInternetCredentials('dissonantvoices');
 }
 
-export async function authorize(): Promise<string> {
-  const originalState: string = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-
-  return new Promise((resolve, reject) => {
-    /* eslint-disable @typescript-eslint/no-empty-function */
-    let cleanup: () => void = () => {};
-    let abandoned = true;
-    let currentAppState: AppStateStatus = AppState.currentState;
-    const handleAppStateChange = (nextAppState: AppStateStatus) => {
-      if (
-        (currentAppState === 'inactive' || currentAppState === 'background') &&
-        nextAppState === 'active'
-      ) {
-        if (abandoned) {
-          abandoned = true;
-          reject(new Error('Abandoned by user'));
-          cleanup();
-        }
-      }
-      currentAppState = nextAppState;
-    };
-    AppState.addEventListener('change', handleAppStateChange);
-
-    const handleUrl = async(event: { url: string; }) => {
-      abandoned = false;
-      const {
-        state,
-        code,
-        error,
-      } = parse(event.url.substring(event.url.indexOf('?') + 1));
-      if (error === 'access_denied') {
-        reject(new Error('Access was denied by user.'));
-        cleanup();
-      } else if (state !== originalState) {
-        reject(new Error('Stale state detected.'));
-        cleanup();
-      } else {
-        try {
-          const response = await fetch(`https://north101.co.uk/token`, {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ code: code }),
-          });
-          console.log(response);
-          if (response.status !== 200) {
-            throw Error('Invalid token');
-          }
-          const text = await response.text();
-          resolve(text);
-          cleanup();
-        } catch(error) {
-          reject(error);
-          cleanup();
-        }
-      }
-    };
-    Linking.addEventListener('url', handleUrl);
-
-    cleanup = () => {
-      Linking.removeEventListener('url', handleUrl);
-      AppState.removeEventListener('change', handleAppStateChange);
-    };
-
-    Linking.openURL(`https://north101.co.uk/authorize?state=${originalState}`);
+interface DissonantVoicesAuthResponse {
+  success: boolean;
+  token?: string;
+  error?: string;
+}
+export async function authorizeDissonantVoices(): Promise<DissonantVoicesAuthResponse> {
+  const { accessToken } = await authorize(config);
+  const response = await fetch(`https://north101.co.uk/api/token`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ code: accessToken, type: 'app', client_id: 'arkhamcards' }),
   });
+  if (response.status !== 200) {
+    console.log(response.status, response);
+    throw Error('Invalid token');
+  }
+  const { token, is_patron } = await response.json();
+  if (!is_patron) {
+    return {
+      success: false,
+      error: t`Sorry, you don't seem to be a Mythos Buster patron.`,
+    };
+  }
+  return {
+    success: true,
+    token,
+  };
 }
 
 export default {

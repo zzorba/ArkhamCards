@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo, useState, useCallback, useContext, useRef } from 'react';
-import { forEach, map, throttle } from 'lodash';
-import { Platform, NativeSyntheticEvent, StyleSheet, Text, TextInput, TextInputSubmitEditingEventData, View } from 'react-native';
+import { find, forEach, map, throttle } from 'lodash';
+import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { t } from 'ttag';
 
 import NewDialog from '@components/core/NewDialog';
-import { Campaign, Deck, ParsedDeck, UPDATE_DECK_EDIT } from '@actions/types';
+import { Campaign, Deck, getCampaignId, getDeckId, ParsedDeck, UPDATE_DECK_EDIT } from '@actions/types';
 import { useDispatch } from 'react-redux';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCounter } from '@components/core/hooks';
@@ -15,14 +15,18 @@ import { SaveDeckChanges, saveDeckChanges, uploadLocalDeck } from '@components/d
 import { updateCampaign } from '@components/campaign/actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
-import space, { s, xs } from '@styles/space';
+import space from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
+import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
+import DeckBubbleHeader from './section/DeckBubbleHeader';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface DialogOptions {
   title: string;
   confirm?: {
     title: string;
+    disabled?: boolean;
     onPress: () => void | Promise<boolean>;
     loading?: boolean;
   };
@@ -69,27 +73,50 @@ export function useDialog({
     }
     setVisible(false);
   }, [setVisible, confirmOnPress]);
+  const buttons = useMemo(() => {
+    const result: React.ReactNode[] = [];
+    if (dismiss?.title) {
+      result.push(
+        <DeckButton
+          key="cancel"
+          icon="dismiss"
+          color={confirm ? 'red_outline' : undefined}
+          title={dismiss.title}
+          thin
+          onPress={onDismiss}
+        />
+      );
+    }
+    if (confirm) {
+      result.push(
+        <DeckButton
+          key="save"
+          icon="check-thin"
+          title={confirm.title}
+          disabled={confirm.disabled}
+          thin
+          loading={confirm.loading}
+          onPress={onConfirm}
+        />
+      );
+    }
+    return result;
+  }, [confirm, onConfirm, onDismiss, dismiss]);
   const dialog = useMemo(() => {
     return (
       <NewDialog
         title={title}
-        dismiss={dismiss || allowDismiss ? {
-          title: dismiss?.title,
-          onPress: onDismiss,
-        } : undefined}
-        confirm={confirm ? {
-          title: confirm.title,
-          loading: confirm.loading,
-          onPress: onConfirm,
-        } : undefined}
+        dismissable={!!dismiss || allowDismiss}
+        onDismiss={onDismiss}
         visible={visible}
+        buttons={buttons}
         alignment={alignment}
         avoidKeyboard={avoidKeyboard}
       >
         { content }
       </NewDialog>
     );
-  }, [title, confirm, dismiss, visible, alignment, onDismiss, onConfirm, content, allowDismiss, avoidKeyboard]);
+  }, [title, dismiss, visible, alignment, onDismiss, buttons, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,
@@ -99,24 +126,123 @@ export function useDialog({
   };
 }
 
-interface TextDialogOptions {
+export interface AlertButton {
+  text: string;
+  onPress?: () => void;
+  style?: 'default' | 'cancel' | 'destructive';
+  icon?: DeckButtonIcon;
+}
+interface AlertState {
+  title: string;
+  description: string;
+  buttons: AlertButton[];
+}
+
+function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClose: () => void }) {
+  const onPress = useCallback(() => {
+    if (button.onPress) {
+      button.onPress();
+    }
+    onClose();
+  }, [button, onClose]);
+  const icon = useMemo(() => {
+    if (button.icon) {
+      return button.icon;
+    }
+    if (button.style === 'destructive') {
+      return 'delete';
+    }
+    if (button.style === 'cancel') {
+      return 'dismiss';
+    }
+    return 'check-thin';
+  }, [button]);
+  const color = useMemo(() => {
+    if (button.style === 'cancel') {
+      return 'red_outline';
+    }
+    if (button.style === 'destructive') {
+      return 'red';
+    }
+    return 'default';
+  }, [button.style]);
+  return (
+    <DeckButton
+      title={button.text}
+      color={color}
+      onPress={onPress}
+      thin
+      icon={icon}
+    />
+  );
+}
+export type ShowAlert = (title: string, description: string, buttons?: AlertButton[]) => void;
+export function useAlertDialog(): [React.ReactNode, ShowAlert] {
+  const { typography } = useContext(StyleContext);
+  const [state, setState] = useState<AlertState | undefined>();
+  const onClose = useCallback(() => {
+    setState(undefined);
+  }, [setState]);
+  const onDismiss = useCallback(() => {
+    forEach(state?.buttons || [], button => {
+      if (button.style === 'cancel' && button.onPress) {
+        button.onPress();
+      }
+    });
+    onClose();
+  }, [onClose, state]);
+  const buttons = useMemo(() => {
+    if (!state) {
+      return [];
+    }
+    return map(state.buttons, (button, idx) => {
+      return <AlertButtonComponent key={idx} button={button} onClose={onClose} />;
+    });
+  }, [state, onClose]);
+  const dialog = useMemo(() => {
+    return (
+      <NewDialog
+        title={state?.title || ''}
+        dismissable={!!state && (state.buttons.length === 0 || !!find(state.buttons, button => button.style === 'cancel'))}
+        onDismiss={onDismiss}
+        visible={!!state}
+        buttons={buttons}
+        alignment="center"
+      >
+        <View style={space.paddingS}>
+          <Text style={typography.small}>{ state?.description || '' }</Text>
+        </View>
+      </NewDialog>
+    );
+  }, [state, buttons, onDismiss, typography]);
+
+  const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }]) => {
+    setState({
+      title,
+      description,
+      buttons: buttons.length > 0 ? buttons : [{ text: t`Okay` }],
+    });
+  }, [setState]);
+  return [dialog, showAlert];
+}
+
+interface SimpleTextDialogOptions {
   title: string;
   value: string;
   placeholder?: string;
   onValueChange?: (value: string) => void;
   onValidate?: (value: string) => Promise<string | undefined>;
 }
-export function useTextDialog({
+export function useSimpleTextDialog({
   title,
   value,
   onValueChange,
   onValidate,
   placeholder,
-}: TextDialogOptions): {
+}: SimpleTextDialogOptions): {
   dialog: React.ReactNode;
   showDialog: () => void;
 } {
-  const { colors, typography } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [liveValue, setLiveValue] = useState(value);
   const [error, setError] = useState<string | undefined>(undefined);
@@ -157,36 +283,20 @@ export function useTextDialog({
   const onSave = useCallback(() => {
     return doSubmit(liveValue);
   }, [doSubmit, liveValue]);
-  const onSubmit = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
-    return doSubmit(e.nativeEvent.text);
-  }, [doSubmit]);
   const content = useMemo(() => {
     return (
-      <View style={[space.marginS, { width: '100%' }]}>
-        <TextInput
-          ref={textInputRef}
-          autoCorrect={false}
-          style={[
-            { padding: s, paddingTop: xs + s, borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20 },
-            typography.text,
-            error ? { borderColor: colors.warn } : undefined,
-          ]}
-          autoFocus={Platform.OS === 'ios'}
+      <View style={space.marginS}>
+        <NewDialog.TextInput
+          textInputRef={textInputRef}
           value={liveValue}
+          error={error}
           placeholder={placeholder}
-          placeholderTextColor={colors.lightText}
           onChangeText={setLiveValue}
-          onSubmitEditing={onSubmit}
-          returnKeyType="done"
+          onSubmit={doSubmit}
         />
-        { !!error && (
-          <View style={space.paddingTopS}>
-            <Text style={[typography.text, typography.error]}>{ error } </Text>
-          </View>
-        ) }
       </View>
     );
-  }, [setLiveValue, onSubmit, placeholder, liveValue, typography, colors, error]);
+  }, [setLiveValue, doSubmit, placeholder, liveValue, error]);
   const { setVisible, visible, dialog } = useDialog({
     title,
     allowDismiss: true,
@@ -217,15 +327,24 @@ export function useTextDialog({
   };
 }
 
+interface PickerItemHeader {
+  type: 'header';
+  title: string;
+  value?: undefined;
+}
+
 interface PickerItem<T> {
-  icon?: string;
+  type?: undefined;
   title: string;
   value: T;
+  icon?: string;
+  iconNode?: React.ReactNode;
 }
+export type Item<T> = PickerItemHeader | PickerItem<T>;
 interface PickerDialogOptions<T> {
   title: string;
   description?: string;
-  items: PickerItem<T>[];
+  items: Item<T>[];
   selectedValue?: T;
   onValueChange: (value: T) => void;
 }
@@ -255,15 +374,19 @@ export function usePickerDialog<T>({
             <Text style={typography.text}>{ description } </Text>
           </View>
         )}
-        { map(items, (item, idx) => (
+        { map(items, (item, idx) => item.type === 'header' ? (
+          <DeckBubbleHeader title={item.title} key={idx} />
+        ) : (
           <NewDialog.PickerItem<T>
             key={idx}
-            icon={item.icon}
+            iconName={item.icon}
+            iconNode={item.iconNode}
             text={item.title}
             value={item.value}
             onValueChange={onValuePress}
+            // tslint:disable-next-line
             selected={selectedValue === item.value}
-            last={idx === items.length - 1}
+            last={idx === items.length - 1 || items[idx + 1].type === 'header'}
           />
         )) }
       </View>
@@ -329,7 +452,7 @@ export function useBasicDialog(title: string): BasicDialogResult {
 }
 
 
-type DeckDispatch = ThunkDispatch<AppState, any, Action>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 export function useUploadLocalDeckDialog(
   deck?: Deck,
   parsedDeck?: ParsedDeck,
@@ -337,7 +460,8 @@ export function useUploadLocalDeckDialog(
   uploadLocalDeckDialog: React.ReactNode;
   uploadLocalDeck: () => void;
 } {
-  const { saving, setSaving, savingDialog } = useBasicDialog(t`Uplodaing deck`);
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const { saving, setSaving, savingDialog } = useBasicDialog(t`Uploading deck`);
   const deckDispatch: DeckDispatch = useDispatch();
   const doUploadLocalDeck = useMemo(() => throttle((isRetry?: boolean) => {
     if (!parsedDeck || !deck) {
@@ -345,13 +469,13 @@ export function useUploadLocalDeckDialog(
     }
     if (!saving || isRetry) {
       setSaving(true);
-      deckDispatch(uploadLocalDeck(deck)).then(() => {
+      deckDispatch(uploadLocalDeck(user, deck)).then(() => {
         setSaving(false);
       }, () => {
         setSaving(false);
       });
     }
-  }, 200), [deckDispatch, parsedDeck, saving, deck, setSaving]);
+  }, 200), [deckDispatch, parsedDeck, saving, deck, user, setSaving]);
   return {
     uploadLocalDeckDialog: savingDialog,
     uploadLocalDeck: doUploadLocalDeck,
@@ -397,7 +521,7 @@ export function useAdjustXpDialog({
     if (deck) {
       dispatch({
         type: UPDATE_DECK_EDIT,
-        id: deck.id,
+        id: getDeckId(deck),
         updates: {
           xpAdjustment,
         },
@@ -447,6 +571,7 @@ export function useSaveDialog(
   } = parsedDeckResults;
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
+  const { user } = useContext(ArkhamCardsAuthContext);
   const {
     saving,
     setSaving,
@@ -467,7 +592,8 @@ export function useSaveDialog(
         assignedCards[code] = (assignedCards[code] || 0) + 1;
       });
       dispatch(updateCampaign(
-        campaign.id,
+        user,
+        getCampaignId(campaign),
         {
           weaknessSet: {
             ...(campaign.weaknessSet || {}),
@@ -476,7 +602,7 @@ export function useSaveDialog(
         },
       ));
     }
-  }, [campaign, dispatch]);
+  }, [campaign, dispatch, user]);
 
   const actuallySaveEdits = useCallback(async(dismissAfterSave: boolean, isRetry?: boolean) => {
     if (saving && !isRetry) {
@@ -502,6 +628,7 @@ export function useSaveDialog(
           meta: deckEditsRef.current.meta,
         };
         await deckDispatch(saveDeckChanges(
+          user,
           deck,
           deckChanges,
         ));
@@ -515,7 +642,7 @@ export function useSaveDialog(
       } else {
         dispatch({
           type: UPDATE_DECK_EDIT,
-          id: deck.id,
+          id: getDeckId(deck),
           updates: {
             mode: 'view',
           },
@@ -525,7 +652,8 @@ export function useSaveDialog(
     } catch(e) {
       handleSaveError(e);
     }
-  }, [deck, saving, addedBasicWeaknesses, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, dispatch, deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet]);
+  }, [deck, saving, addedBasicWeaknesses, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, user,
+    dispatch, deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
   const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);
@@ -539,6 +667,63 @@ export function useSaveDialog(
     addedBasicWeaknesses,
     mode,
   };
+}
+
+interface CountDialogOptions {
+  title: string;
+  label: string;
+  value: number;
+  update: (value: number) => void;
+  min?: number;
+  max?: number;
+}
+
+export type ShowCountDialog = (options: CountDialogOptions) => void;
+
+export function useCountDialog(): [React.ReactNode, ShowCountDialog] {
+  const [state, setState] = useState<CountDialogOptions | undefined>();
+  const [value, inc, dec, setValue] = useCounter(state?.value || 0, { min: state?.min, max: state?.max });
+  const saveChanges = useCallback(() => {
+    if (state) {
+      state.update(value);
+    }
+  }, [state, value]);
+  const label = state?.label;
+  const content = useMemo(() => {
+    return (
+      <NewDialog.ContentLine
+        text={label || ''}
+        control={(
+          <PlusMinusButtons
+            onIncrement={inc}
+            onDecrement={dec}
+            count={value}
+            dialogStyle
+            allowNegative={(state?.min || 0) < 0}
+            showZeroCount
+          />
+        )}
+      />
+    );
+  }, [inc, dec, value, label, state]);
+
+  const { setVisible, dialog } = useDialog({
+    title: state?.title || '',
+    content,
+    confirm: {
+      title: t`Done`,
+      onPress: saveChanges,
+    },
+    dismiss: {
+      title: t`Cancel`,
+    },
+  });
+  const show = useCallback((options: CountDialogOptions) => {
+    setState(options);
+    setValue(options.value);
+    setVisible(true);
+  }, [setState, setVisible, setValue]);
+  return [dialog, show];
 }
 
 

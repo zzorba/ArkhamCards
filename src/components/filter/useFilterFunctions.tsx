@@ -73,7 +73,7 @@ export default function useFilterFunctions({
   const [count, setCount] = useState(0);
   useEffect(() => {
     const filterParts: Brackets | undefined =
-      currentFilters && new FilterBuilder('filters').filterToQuery(currentFilters);
+      currentFilters && new FilterBuilder('filters').filterToQuery(currentFilters, true);
     db.getCardCount(
       combineQueriesOpt(
         [

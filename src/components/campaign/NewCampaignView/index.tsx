@@ -7,13 +7,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import PickerStyleButton from '@components/core/PickerStyleButton';
-import EditText from '@components/core/EditText';
 import {
   CORE,
   CUSTOM,
@@ -26,20 +23,19 @@ import {
   Slots,
   INCOMPLETE_GUIDED_CAMPAIGNS,
   DIFFICULTIES,
+  DeckId,
+  getDeckId,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import { getCampaignLog, getChaosBag, difficultyString } from '../constants';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
-import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
-import NavButton from '@components/core/NavButton';
+import useAddCampaignNoteSectionDialog from '../useAddCampaignNoteSectionDialog';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
-import { showCampaignDifficultyDialog } from '@components/campaign/CampaignDifficultyDialog';
-import { getNextCampaignId } from '@reducers';
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
@@ -49,12 +45,13 @@ import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
 import { CampaignSelection } from '../SelectCampaignDialog';
-import { usePickerDialog, useTextDialog } from '@components/deck/dialogs';
+import { useAlertDialog, usePickerDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
-import { diff } from 'react-native-reanimated';
+import DeckButton from '@components/deck/controls/DeckButton';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 interface CampaignChoice {
   selection: CampaignSelection;
@@ -79,10 +76,10 @@ function getKeyName(
 }
 
 function NewCampaignView({ componentId }: NavigationProps) {
-  const { backgroundStyle, borderStyle, colors, typography } = useContext(StyleContext);
-  const nextId = useSelector(getNextCampaignId);
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const cards = usePlayerCards();
   const dispatch = useDispatch();
+  const { user } = useContext(ArkhamCardsAuthContext);
 
   const [name, setName] = useState('');
   const [{ selection, campaign, hasGuide }, setCampaignChoice] = useState<CampaignChoice>({
@@ -95,16 +92,16 @@ function NewCampaignView({ componentId }: NavigationProps) {
   });
   const [guided, toggleGuided] = useFlag(true);
   const [difficulty, setDifficulty] = useState<CampaignDifficulty>(CampaignDifficulty.STANDARD);
-  const [deckIds, setDeckIds] = useState<number[]>([]);
+  const [deckIds, setDeckIds] = useState<DeckId[]>([]);
   const [investigatorIds, setInvestigatorIds] = useState<string[]>([]);
-  const [investigatorToDeck, setInvestigatorToDeck] = useState<{ [code: string]: number }>({});
+  const [investigatorToDeck, setInvestigatorToDeck] = useState<{ [code: string]: DeckId }>({});
   const [weaknessPacks, setWeaknessPacks] = useState<string[]>([]);
   const [weaknessAssignedCards, updateWeaknessAssignedCards] = useSlots({});
   const [customChaosBag, setCustomChaosBag] = useState<ChaosBag>(getChaosBag(CORE, CampaignDifficulty.STANDARD));
   const [customCampaignLog, setCustomCampaignLog] = useState<CustomCampaignLog>({ sections: [t`Campaign Notes`] });
-  const [campaignLogDialogVisible, setCampaignLogDialogVisible] = useState(false);
-  const isGuided = hasGuide && guided;
+  const isGuided = hasGuide && (guided || (selection.type === 'campaign' && selection.code === 'tde'));
 
+  const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
   const hasDefinedChaosBag = useMemo(() => {
     return selection.type === 'campaign' && selection.code !== CUSTOM && !!getChaosBag(selection.code, difficulty);
   }, [selection, difficulty]);
@@ -135,7 +132,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
         rightButtons: [{
           text: t`Done`,
           id: 'save',
-          enabled: selection.type !== 'campaign' || selection.code !== CUSTOM || !!name,
           color: COLORS.M,
           accessibilityLabel: t`Done`,
         }],
@@ -144,6 +140,9 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [componentId, name, selection]);
 
   const addCampaignNoteSection = useCallback((name: string, isCount?: boolean, perInvestigator?: boolean) => {
+    if (!name) {
+      return;
+    }
     const updatedCustomCampaignLog = { ...customCampaignLog };
     const keyName: keyof CustomCampaignLog = getKeyName(isCount, perInvestigator);
     updatedCustomCampaignLog[keyName] = [
@@ -163,12 +162,8 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [customCampaignLog, setCustomCampaignLog]);
 
   const showCampaignLogDialog = useCallback(() => {
-    setCampaignLogDialogVisible(true);
-  }, [setCampaignLogDialogVisible]);
-
-  const hideCampaignLogDialog = useCallback(() => {
-    setCampaignLogDialogVisible(false);
-  }, [setCampaignLogDialogVisible]);
+    showAddSectionDialog(addCampaignNoteSection);
+  }, [showAddSectionDialog, addCampaignNoteSection]);
 
   const onNameChange = useCallback((name?: string) => {
     setName(name || '');
@@ -177,12 +172,12 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const updateWeaknessAssigned = useCallback((weaknessAssignedCards: Slots) => {
     updateWeaknessAssignedCards({ type: 'sync', slots: weaknessAssignedCards });
   }, [updateWeaknessAssignedCards]);
-
+  const [alertDialog, showAlert] = useAlertDialog();
   const checkDeckForWeaknessPrompt = useCallback((deck: Deck) => {
     if (cards) {
-      maybeShowWeaknessPrompt(deck, cards, weaknessAssignedCards, updateWeaknessAssigned);
+      maybeShowWeaknessPrompt(deck, cards, weaknessAssignedCards, updateWeaknessAssigned, showAlert);
     }
-  }, [cards, weaknessAssignedCards, updateWeaknessAssigned]);
+  }, [cards, weaknessAssignedCards, updateWeaknessAssigned, showAlert]);
 
   const investigatorAdded = useCallback((card: Card) => {
     setInvestigatorIds([...investigatorIds, card.code]);
@@ -193,23 +188,23 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [investigatorIds, setInvestigatorIds]);
 
   const deckAdded = useCallback((deck: Deck) => {
-    setDeckIds([...deckIds, deck.id]);
+    setDeckIds([...deckIds, getDeckId(deck)]);
     setInvestigatorIds([...investigatorIds, deck.investigator_code]);
     setInvestigatorToDeck({
       ...investigatorToDeck,
-      [deck.investigator_code]: deck.id,
+      [deck.investigator_code]: getDeckId(deck),
     });
     checkDeckForWeaknessPrompt(deck);
   }, [setDeckIds, setInvestigatorIds, setInvestigatorToDeck, checkDeckForWeaknessPrompt, deckIds, investigatorIds, investigatorToDeck]);
 
-  const deckRemoved = useCallback((id: number, deck?: Deck) => {
-    const updatedInvestigatorToDeck: { [code: string]: number } = {};
+  const deckRemoved = useCallback((id: DeckId, deck?: Deck) => {
+    const updatedInvestigatorToDeck: { [code: string]: DeckId } = {};
     forEach(investigatorToDeck, (deckId, code) => {
-      if (deckId !== id) {
+      if (deckId.uuid !== id.uuid) {
         updatedInvestigatorToDeck[code] = deckId;
       }
     });
-    setDeckIds(filter(deckIds, deckId => deckId !== id));
+    setDeckIds(filter(deckIds, deckId => deckId.uuid !== id.uuid));
     setInvestigatorIds(!deck ? investigatorIds : filter([...investigatorIds], code => deck.investigator_code !== code));
     setInvestigatorToDeck(updatedInvestigatorToDeck);
   }, [investigatorToDeck, deckIds, investigatorIds, setDeckIds, setInvestigatorIds, setInvestigatorToDeck]);
@@ -225,10 +220,15 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [campaign, selection]);
 
   const onSave = useCallback(() => {
+    if (selection.type === 'campaign' && selection.code === CUSTOM && !name) {
+      showAlert(t`Name required`, t`You must specify a name for custom campaigns.`);
+      return;
+    }
+
     if (selection.type === 'campaign') {
       if (selection.code === TDE) {
         dispatch(newLinkedCampaign(
-          nextId,
+          user,
           name || placeholderName,
           TDE,
           TDEA,
@@ -241,7 +241,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       } else {
         // Save to redux.
         dispatch(newCampaign(
-          nextId,
+          user,
           name || placeholderName,
           selection.code,
           isGuided ? undefined : difficulty,
@@ -258,7 +258,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       }
     } else {
       dispatch(newStandalone(
-        nextId,
+        user,
         name || placeholderName,
         selection.id,
         deckIds,
@@ -270,7 +270,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       ));
     }
     Navigation.pop(componentId);
-  }, [dispatch, componentId, campaignLog, chaosBag, placeholderName, nextId, name, selection,
+  }, [dispatch, showAlert, componentId, campaignLog, chaosBag, placeholderName, name, selection, user,
     difficulty, deckIds, investigatorIds, weaknessPacks, weaknessAssignedCards, isGuided]);
 
   const savePressed = useMemo(() => throttle(onSave, 200), [onSave]);
@@ -349,16 +349,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
     );
   }, [componentId, typography, colors, setWeaknessPacks]);
 
-  const campaignSectionDialog = useMemo(() => {
-    return (
-      <AddCampaignNoteSectionDialog
-        visible={campaignLogDialogVisible}
-        addSection={addCampaignNoteSection}
-        hide={hideCampaignLogDialog}
-      />
-    );
-  }, [campaignLogDialogVisible, addCampaignNoteSection, hideCampaignLogDialog]);
-
   const campaignLogSection = useMemo(() => {
     if (isGuided || selection.type === 'standalone') {
       return null;
@@ -379,32 +369,32 @@ function NewCampaignView({ componentId }: NavigationProps) {
           )}
           footer={!hasDefinedChaosBag ? <RoundedFooterButton icon="expand" title={t`Add Log Section`} onPress={showCampaignLogDialog} /> : undefined}
         >
-          { map(campaignLog.sections || [], section => (
+          { map(campaignLog.sections || [], (section, idx) => (
             <CampaignNoteSectionRow
-              key={section}
+              key={idx}
               name={section}
               onPress={onPress}
             />
           )) }
-          { map(campaignLog.counts || [], section => (
+          { map(campaignLog.counts || [], (section, idx) => (
             <CampaignNoteSectionRow
-              key={section}
+              key={idx}
               name={section}
               isCount
               onPress={onPress}
             />
           )) }
-          { map(campaignLog.investigatorSections || [], section => (
+          { map(campaignLog.investigatorSections || [], (section, idx) => (
             <CampaignNoteSectionRow
-              key={section}
+              key={idx}
               name={section}
               perInvestigator
               onPress={onPress}
             />
           )) }
-          { map(campaignLog.investigatorCounts || [], section => (
+          { map(campaignLog.investigatorCounts || [], (section, idx) => (
             <CampaignNoteSectionRow
-              key={section}
+              key={idx}
               name={section}
               perInvestigator
               isCount
@@ -420,9 +410,9 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const showDeckSelector = useCallback(() => {
     if (deckAdded) {
       const passProps: MyDecksSelectorProps = {
-        campaignId: nextId,
+        campaignId: { campaignId: 'new-deck' },
         onDeckSelect: deckAdded,
-        onInvestigatorSelect: guided ? investigatorAdded : undefined,
+        onInvestigatorSelect: investigatorAdded,
         selectedDeckIds: deckIds,
         selectedInvestigatorIds: investigatorIds,
       };
@@ -442,8 +432,8 @@ function NewCampaignView({ componentId }: NavigationProps) {
         },
       });
     }
-  }, [deckIds, investigatorIds, deckAdded, investigatorAdded, nextId, guided]);
-  const { dialog, showDialog } = useTextDialog({
+  }, [deckIds, investigatorIds, deckAdded, investigatorAdded]);
+  const { dialog, showDialog } = useSimpleTextDialog({
     title: t`Name`,
     placeholder: placeholderName,
     value: name,
@@ -471,22 +461,24 @@ function NewCampaignView({ componentId }: NavigationProps) {
             title={t`Guided Campaign`}
             description={guided ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
             onValueChange={toggleGuided}
-            value={guided}
+            disabled={selection.code === 'tde'}
+            noDisableText
+            value={selection.code === 'tde' || guided}
             last
           />
         ) }
         { selection.type === 'campaign' && !isGuided && (
           <View style={space.paddingS}>
             <DeckPickerStyleButton
-              editable
+              icon="difficulty"
               title={t`Difficulty`}
               onPress={showDifficultyDialog}
               valueLabel={difficultyString(difficulty)}
-              icon="class_neutral"
+              editable
               first
             />
             <DeckPickerStyleButton
-              icon="card-outline"
+              icon="chaos_bag"
               editable={!hasDefinedChaosBag}
               title={t`Chaos Bag`}
               valueLabel={<ChaosBagLine chaosBag={chaosBag} />}
@@ -533,11 +525,14 @@ function NewCampaignView({ componentId }: NavigationProps) {
           </View>
         ) }
         { weaknessSetSection }
-        <BasicButton
-          disabled={selection.type === 'campaign' && selection.code === CUSTOM && !name}
-          title={selection.type === 'campaign' ? t`Create Campaign` : t`Create Standalone`}
-          onPress={savePressed}
-        />
+        <View style={space.paddingS}>
+          <DeckButton
+            icon="check-thin"
+            disabled={selection.type === 'campaign' && selection.code === CUSTOM && !name}
+            title={selection.type === 'campaign' ? t`Create Campaign` : t`Create Standalone`}
+            onPress={savePressed}
+          />
+        </View>
         <View style={styles.footer}>
           { isGuided && (
             <View style={styles.block}>
@@ -548,9 +543,10 @@ function NewCampaignView({ componentId }: NavigationProps) {
           ) }
         </View>
       </ScrollView>
-      { campaignSectionDialog }
+      { addSectionDialog }
       { difficultyDialog }
       { dialog }
+      { alertDialog }
     </View>
   );
 }

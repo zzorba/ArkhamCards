@@ -9,9 +9,10 @@ import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } fro
 import { NavigationProps } from '@components/nav/types';
 import { useDeck, useInvestigatorCards } from '@components/core/hooks';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
+import { DeckId } from '@actions/types';
 
 export interface EditDeckProps {
-  id: number;
+  id: DeckId;
   storyOnly?: boolean;
 }
 
@@ -56,7 +57,7 @@ export default function DeckEditView({
         factions: ['guardian', 'seeker', 'rogue', 'mystic', 'survivor'],
         level: [0, 0],
         levelEnabled: true,
-      });
+      }, true);
       if (versatileQuery) {
         const invertedClause = negativeQueryForInvestigator(investigator, deckEdits?.meta);
         if (invertedClause) {

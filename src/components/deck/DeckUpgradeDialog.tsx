@@ -13,7 +13,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DeckUpgradeComponent, { DeckUpgradeHandles } from './DeckUpgradeComponent';
-import { Deck, Slots } from '@actions/types';
+import { CampaignId, Deck, DeckId, getCampaignId, getDeckId, Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { showDeckModal } from '@components/nav/helper';
 import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
@@ -26,16 +26,18 @@ import { useCampaign, useDeck, useInvestigatorCards, useNavigationButtonPressed,
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import { saveDeckChanges, saveDeckUpgrade, SaveDeckChanges } from './actions';
 import { AppState } from '@reducers';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface UpgradeDeckProps {
-  id: number;
-  campaignId?: number;
+  id: DeckId;
+  campaignId?: CampaignId;
   showNewDeck: boolean;
 }
 
-type DeckDispatch = ThunkDispatch<AppState, any, Action>;
+type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const [deck] = useDeck(id, {});
   const campaign = useCampaign(campaignId);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>(null);
@@ -88,29 +90,30 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     if (campaign) {
       if (investigatorData) {
         dispatch(updateCampaign(
-          campaign.id,
+          user,
+          getCampaignId(campaign),
           { investigatorData }
         ));
       }
     }
     if (showNewDeck) {
-      showDeckModal(componentId, deck, colors, investigator, { upgrade: true });
+      showDeckModal(componentId, deck, colors, investigator, { initialMode: 'upgrade' });
     } else {
       Navigation.pop(componentId);
     }
-  }, [showNewDeck, componentId, dispatch, campaign, colors, investigator, investigatorData]);
+  }, [showNewDeck, componentId, dispatch, user, campaign, colors, investigator, investigatorData]);
 
   const onStoryCountsChange = useCallback((storyCounts: Slots) => {
     updateStoryCounts({ type: 'sync', slots: storyCounts });
   }, [updateStoryCounts]);
 
   const performSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
-    return deckDispatch(saveDeckChanges(deck, changes));
-  }, [deckDispatch]);
+    return deckDispatch(saveDeckChanges(user, deck, changes));
+  }, [deckDispatch, user]);
 
   const performSaveDeckUpgrade = useCallback((deck: Deck, xp: number, exileCounts: Slots): Promise<Deck> => {
-    return deckDispatch(saveDeckUpgrade(deck, xp, exileCounts));
-  }, [deckDispatch]);
+    return deckDispatch(saveDeckUpgrade(user, deck, xp, exileCounts));
+  }, [deckDispatch, user]);
 
   const campaignSection = useMemo(() => {
     if (!deck || !campaign || !investigator) {
@@ -129,7 +132,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
         <StoryCardSelectorComponent
           componentId={componentId}
           investigator={investigator}
-          deckId={deck.id}
+          deckId={getDeckId(deck)}
           updateStoryCounts={onStoryCountsChange}
           encounterCodes={storyEncounterCodes}
           scenarioName={scenarioName}

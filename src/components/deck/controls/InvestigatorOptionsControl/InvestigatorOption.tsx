@@ -5,11 +5,9 @@ import { t } from 'ttag';
 import DeckSizeSelectPicker from './DeckSizeSelectPicker';
 import FactionSelectPicker from './FactionSelectPicker';
 import { DeckMeta } from '@actions/types';
-import Card from '@data/Card';
 import DeckOption from '@data/DeckOption';
 
 interface Props {
-  investigator: Card;
   option: DeckOption;
   meta: DeckMeta;
   setMeta: (key: keyof DeckMeta, value?: string) => void;
@@ -19,7 +17,6 @@ interface Props {
 }
 
 export default function InvestigatorOption({
-  investigator,
   option,
   meta,
   setMeta,

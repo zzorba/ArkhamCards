@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { throttle } from 'lodash';
 import {
   Platform,
@@ -10,31 +10,37 @@ import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, ScenarioResult } from '@actions/types';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+import { CampaignId, CampaignNotes, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import ScenarioSection from './ScenarioSection';
 import CampaignLogSection from '../CampaignLogSection';
 import XpComponent from '../XpComponent';
-import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
+import useAddCampaignNoteSectionDialog from '../useAddCampaignNoteSectionDialog';
 import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
-import { m } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignInvestigators, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import useTextEditDialog from '@components/core/useTextEditDialog';
+import { useCountDialog } from '@components/deck/dialogs';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 export interface AddScenarioResultProps {
-  id: number;
+  id: CampaignId;
+  scenarioCode?: string;
 }
 
 type Props = NavigationProps &
-  AddScenarioResultProps &
-  InjectedDialogProps;
+  AddScenarioResultProps;
 
-function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
-  const { backgroundStyle, borderStyle } = useContext(StyleContext);
+function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
+  const [dialog, showTextEditDialog] = useTextEditDialog();
+  const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
+  const [countDialog, showCountDialog] = useCountDialog();
+  const { backgroundStyle } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
 
   const campaign = useCampaign(id);
@@ -43,13 +49,11 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
   const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();
   const allInvestigators = useCampaignInvestigators(campaign, investigators);
   const [xp, setXp] = useState(0);
-  const [addSectionVisible, setAddSectionVisible] = useState(false);
-  const addSectionFunction = useRef<AddSectionFunction>();
 
   const doSave = useCallback((showDeckUpgrade: boolean) => {
     if (scenario) {
       const scenarioResult: ScenarioResult = { ...scenario, xp };
-      dispatch(addScenarioResult(id, scenarioResult, campaignNotes));
+      dispatch(addScenarioResult(user, id, scenarioResult, campaignNotes));
       const passProps: UpgradeDecksProps = {
         id,
         scenarioResult,
@@ -77,7 +81,7 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
         Navigation.pop(componentId);
       }
     }
-  }, [componentId, id, dispatch, scenario, xp, campaignNotes]);
+  }, [componentId, id, dispatch, user, scenario, xp, campaignNotes]);
 
   const savePressed = useMemo(() => throttle((showDeckUpgrade: boolean) => doSave(showDeckUpgrade), 200), [doSave]);
   useNavigationButtonPressed(({ buttonId }) => {
@@ -114,16 +118,6 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
     savePressed(true);
   }, [savePressed]);
 
-  const showAddSectionDialog = useCallback((f: AddSectionFunction) => {
-    setAddSectionVisible(true);
-    addSectionFunction.current = f;
-  }, [addSectionFunction, setAddSectionVisible]);
-
-  const hideAddSectionDialog = useCallback(() => {
-    setAddSectionVisible(false);
-    addSectionFunction.current = undefined;
-  }, [addSectionFunction, setAddSectionVisible]);
-
   const scenariosSection = useMemo(() => {
     if (!campaign) {
       return null;
@@ -134,40 +128,47 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
         campaign={campaign}
         scenarioChanged={setScenario}
         showTextEditDialog={showTextEditDialog}
+        initialScenarioCode={scenarioCode}
       />
     );
-  }, [componentId, campaign, showTextEditDialog]);
+  }, [componentId, campaign, showTextEditDialog, scenarioCode]);
 
   const notes = useMemo(() => {
     return campaignNotes ||
       (campaign && campaign.campaignNotes);
   }, [campaignNotes, campaign]);
 
-  const hasDecks = !!campaign && !!campaign.baseDeckIds && campaign.baseDeckIds.length > 0;
+  const hasDecks = !!campaign && !!campaign.deckIds && campaign.deckIds.length > 0;
   return (
     <View style={[styles.flex, backgroundStyle]}>
-      <AddCampaignNoteSectionDialog
-        visible={addSectionVisible}
-        addSection={addSectionFunction.current}
-        hide={hideAddSectionDialog}
-      />
       <ScrollView style={styles.flex} contentContainerStyle={styles.container}>
         { scenariosSection }
-        <View style={[styles.bottomBorder, borderStyle]}>
-          <XpComponent xp={xp} onChange={setXp} />
-        </View>
-        { hasDecks && (
-          <BasicButton
-            title={t`Save and Upgrade Decks`}
-            onPress={saveAndUpgradeDecks}
-            disabled={!saveEnabled}
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
+          <XpComponent
+            xp={xp}
+            onChange={setXp}
+            showCountDialog={showCountDialog}
           />
-        ) }
-        <View style={[styles.bottomBorder, borderStyle]}>
-          <BasicButton
+        </View>
+        <View style={space.paddingSideS}>
+          { hasDecks && (
+            <DeckButton
+              icon="upgrade"
+              title={t`Save and Upgrade Decks`}
+              onPress={saveAndUpgradeDecks}
+              disabled={!saveEnabled}
+              bottomMargin={s}
+              color="gold"
+              thin
+            />
+          ) }
+          <DeckButton
+            icon="check-thin"
             title={hasDecks ? t`Only Save` : t`Save`}
             onPress={saveAndDismiss}
             disabled={!saveEnabled}
+            bottomMargin={s}
+            thin
           />
         </View>
         { !!notes && (
@@ -176,11 +177,15 @@ function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
             allInvestigators={allInvestigators}
             updateCampaignNotes={setCampaignNotes}
             showTextEditDialog={showTextEditDialog}
+            showCountDialog={showCountDialog}
             showAddSectionDialog={showAddSectionDialog}
           />
         ) }
         <View style={styles.footer} />
       </ScrollView>
+      { addSectionDialog }
+      { dialog }
+      { countDialog }
     </View>
   );
 }
@@ -203,7 +208,7 @@ AddScenarioResultView.options = () => {
     },
   };
 };
-export default withDialogs(AddScenarioResultView);
+export default AddScenarioResultView;
 
 const styles = StyleSheet.create({
   container: {
@@ -214,9 +219,6 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
-  },
-  bottomBorder: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   flex: {
     flex: 1,

@@ -8,7 +8,7 @@ import KeepAwake from 'react-native-keep-awake';
 
 import BasicButton from '@components/core/BasicButton';
 import { ChaosBag } from '@app_constants';
-import { ChaosBagResults } from '@actions/types';
+import { CampaignId, ChaosBagResults } from '@actions/types';
 import CounterRow from '@components/core/CounterRow';
 import ChaosToken from './ChaosToken';
 import { adjustBlessCurseChaosBagResults, updateChaosBagResults } from './actions';
@@ -21,7 +21,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import { useChaosBagResults } from '@components/core/hooks';
 
 interface Props {
-  campaignId: number;
+  campaignId: CampaignId;
   chaosBag: ChaosBag;
 }
 
@@ -110,7 +110,7 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag }: Props) {
 
   const handleSealTokensPressed = useCallback(() => {
     const passProps: SealTokenDialogProps = {
-      campaignId: campaignId,
+      campaignId,
       chaosBag,
     };
     Navigation.showModal({

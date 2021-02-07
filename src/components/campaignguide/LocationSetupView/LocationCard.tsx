@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { map, range } from 'lodash';
 import FastImage from 'react-native-fast-image';
 
-import { m, s } from '@styles/space';
+import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import useSingleCard from '@components/card/useSingleCard';
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    padding: m,
+    padding: s,
     width: '100%',
     height: '100%',
     borderRadius: 8,

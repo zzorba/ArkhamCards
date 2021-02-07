@@ -1,14 +1,10 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useColorScheme } from 'react-native-appearance';
-import { findIndex } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { setTheme } from './actions';
 import { getThemeOverride } from '@reducers';
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
-import StyleContext from '@styles/StyleContext';
-import COLORS from '@styles/colors';
 import { usePickerDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 

@@ -59,7 +59,7 @@ export default class Rule {
       return tableRow;
     }) : undefined;
     result.rules = rule.rules ? map(rule.rules, jsonSubRule => {
-      const subRule = Rule.parse(lang, jsonSubRule,);
+      const subRule = Rule.parse(lang, jsonSubRule);
       subRule.parentRule = result;
       return subRule;
     }) : undefined;

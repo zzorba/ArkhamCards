@@ -34,7 +34,7 @@ import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
-import { SortType, Slots, SORT_BY_TYPE } from '@actions/types';
+import { SortType, Slots, SORT_BY_TYPE, DeckId } from '@actions/types';
 import { combineQueries, where } from '@data/query';
 import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
 import Card, { cardInCollection, CardsMap, PartialCard } from '@data/Card';
@@ -51,7 +51,7 @@ import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 
 interface Props {
   componentId: string;
-  deckId?: number;
+  deckId?: DeckId;
   currentDeckOnly?: boolean;
   query?: Brackets;
   filterQuery?: Brackets;
@@ -870,6 +870,7 @@ export default function({
       keyboardShouldPersistTaps="always"
       keyboardDismissMode="on-drag"
       scrollEventThrottle={1}
+      removeClippedSubviews
     />
   );
 }

@@ -5,9 +5,10 @@ import { updateChaosBagResults } from './actions';
 import ChaosTokenButton from './ChaosTokenButton';
 import { ChaosTokenType } from '@app_constants';
 import { useChaosBagResults } from '@components/core/hooks';
+import { CampaignId } from '@actions/types';
 
 interface Props {
-  campaignId: number;
+  campaignId: CampaignId;
   id: string;
   iconKey: ChaosTokenType;
   sealed?: boolean;

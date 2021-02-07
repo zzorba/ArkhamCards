@@ -6,16 +6,18 @@ import { useCampaignGuideReduxData } from '@components/campaignguide/contextHelp
 import useCampaignGuideContext from './useCampaignGuideContext';
 import { useInvestigatorCards } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import { CampaignId } from '@actions/types';
+import { useCampaignId } from '@components/campaign/hooks';
 
 export interface CampaignGuideInputProps {
-  campaignId: number;
+  campaignId: CampaignId;
 }
 
 export default function withCampaignGuideContext<Props>(
-  WrappedComponent: React.ComponentType<Props>
+  WrappedComponent: React.ComponentType<Props & { setServerCampaignId: (serverId: string) => void }>
 ): React.ComponentType<Props & CampaignGuideInputProps> {
   function CampaignDataComponent(props: Props & CampaignGuideInputProps) {
-    const { campaignId } = props;
+    const [campaignId, setServerCampaignId] = useCampaignId(props.campaignId);
     const investigators = useInvestigatorCards();
     const campaignData = useCampaignGuideReduxData(campaignId, investigators);
     const context = useCampaignGuideContext(campaignId, campaignData);
@@ -26,7 +28,7 @@ export default function withCampaignGuideContext<Props>(
     }
     return (
       <CampaignGuideContext.Provider value={context}>
-        <WrappedComponent {...props as Props} />
+        <WrappedComponent {...props as Props} setServerCampaignId={setServerCampaignId} />
       </CampaignGuideContext.Provider>
     );
   }

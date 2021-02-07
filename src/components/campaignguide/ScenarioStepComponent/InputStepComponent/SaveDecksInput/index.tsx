@@ -11,7 +11,6 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import SaveDeckRow from './SaveDeckRow';
 import Card from '@data/Card';
-import InvestigatorRow from '@components/core/InvestigatorRow';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { m, s, xs } from '@styles/space';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
@@ -75,7 +74,8 @@ export default function SaveDecksInput({ componentId, id }: Props) {
 
   const actuallySave = useCallback(() => {
     scenarioState.setDecision(id, true);
-  }, [id, scenarioState]);
+    setUnsavedEdits(id, true);
+  }, [id, scenarioState, setUnsavedEdits]);
 
   const save = useCallback(() => {
     const warningMessage = proceedMessage();

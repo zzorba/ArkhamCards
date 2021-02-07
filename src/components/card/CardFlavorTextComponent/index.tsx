@@ -36,14 +36,14 @@ function BreakTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
 }
 
 
-function ArkhamIconRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
+function ArkhamIconRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
     order: 1,
     parse: (capture) => {
       return { name: capture[1] };
     },
-    render: ArkhamIconNode(style),
+    render: ArkhamIconNode(style, sizeScale),
   };
 }
 
@@ -172,10 +172,11 @@ interface Props {
   onLinkPress?: (url: string) => void;
   color?: string;
   width?: string | number;
+  sizeScale?: number;
 }
 
 export default function CardFlavorTextComponent(
-  { text, onLinkPress, color, width }: Props
+  { text, onLinkPress, color, width, sizeScale = 1 }: Props
 ) {
   const context = useContext(StyleContext);
   // Text that has hyperlinks uses a different style for the icons.
@@ -186,7 +187,7 @@ export default function CardFlavorTextComponent(
         width,
       }}
       rules={{
-        iconTag: ArkhamIconRule(context),
+        iconTag: ArkhamIconRule(context, sizeScale),
         bTag: BoldHtmlTagRule(context),
         uTag: UnderlineHtmlTagRule(context),
         brTag: BreakTagRule(context),
@@ -203,8 +204,8 @@ export default function CardFlavorTextComponent(
       styles={{
         paragraph: {
           fontFamily: 'Alegreya-Italic',
-          fontSize: 16 * context.fontScale,
-          lineHeight: 20 * context.fontScale,
+          fontSize: 16 * context.fontScale * sizeScale,
+          lineHeight: 20 * context.fontScale * sizeScale,
           marginTop: 4,
           marginBottom: 4,
           color: color || context.colors.darkText,

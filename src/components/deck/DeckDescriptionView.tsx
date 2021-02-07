@@ -23,9 +23,10 @@ import AppIcon from '@icons/AppIcon';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { setDeckDescription } from './actions';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
+import { DeckId } from '@actions/types';
 
 export interface DeckDescriptionProps {
-  id: number;
+  id: DeckId;
 }
 
 type Props = DeckDescriptionProps & NavigationProps;
@@ -48,7 +49,9 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const linkPressed = useCallback(async(url: string, context: StyleContextType) => {
     await openUrl(url, context, db, componentId, tabooSetId);
   }, [componentId, tabooSetId, db]);
-  const fabIcon = useCallback(() => <AppIcon name={edit ? 'check' : 'edit'} color={mode === 'view' && !edit ? '#FFFFFF' : colors.L30} size={24} />, [edit, colors]);
+  const fabIcon = useCallback(() => (
+    <AppIcon name={edit ? 'check' : 'edit'} color={mode === 'view' && !edit ? '#FFFFFF' : colors.L30} size={24} />
+  ), [edit, colors, mode]);
   const saveChanges = useCallback(() => {
     dispatch(setDeckDescription(id, description));
     toggleEdit();
@@ -76,7 +79,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
         renderIcon={fabIcon}
         onPress={edit ? saveChanges : onEdit}
         offsetX={s + xs}
-        offsetY={(keyboardHeight || NOTCH_BOTTOM_PADDING) + s + xs}
+        offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + s + xs}
         shadowStyle={shadow.large}
         fixNativeFeedbackRadius
       />
@@ -102,7 +105,13 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
         </ScrollView>
       ) }
       { (mode === 'edit' || hasDescriptionChange || edit) && (
-        <DeckNavFooter deckId={id} componentId={componentId} forceShow control="fab" onPress={backPressed} yOffset={keyboardHeight} />
+        <DeckNavFooter
+          deckId={id}
+          componentId={componentId}
+          forceShow
+          control="fab"
+          onPress={backPressed}
+          yOffset={Platform.OS === 'ios' ? keyboardHeight : undefined} />
       ) }
       { !!editable && fab }
     </View>

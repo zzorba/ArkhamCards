@@ -10,11 +10,12 @@ interface Props {
   text: string;
   control: React.ReactNode;
   height?: number;
+  paddingBottom?: number;
 }
-export default function NewDialogContentLine({ icon, text, control, height }: Props) {
+export default function NewDialogContentLine({ icon, text, control, height, paddingBottom }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
-    <View style={[styles.row, height ? { minHeight: height } : undefined]}>
+    <View style={[styles.row, height ? { minHeight: height } : undefined, { paddingBottom }]}>
       <View style={styles.leadRow}>
         <View style={[styles.icon, space.marginRightXs]}>
           { !!icon && <AppIcon name={icon} size={32} color={colors.M} /> }

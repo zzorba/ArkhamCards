@@ -13,7 +13,7 @@ interface Props {
 
 export default function RoundedFooterButton({ onPress, icon, title }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
-  const height = 18 * fontScale + 20;
+  const height = (18 * fontScale) + 22;
   return (
     <Ripple
       style={[
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    paddingTop: 2,
   },
   row: {
     flexDirection: 'row',

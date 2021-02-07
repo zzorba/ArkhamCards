@@ -10,7 +10,7 @@ import {
 import { flatten } from 'lodash';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { xs, iconSizeScale } from '@styles/space';
+import { xs } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -71,7 +71,7 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       dialogStyle,
     } = this.props;
     const { colors } = this.context;
-    const size = (this.props.size || 36) * iconSizeScale;
+    const size = (this.props.size || 36);
     const width = size * 0.8;
     if (this.incrementEnabled()) {
       return (
@@ -151,7 +151,7 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       dialogStyle,
     } = this.props;
     const { colors } = this.context;
-    const size = (this.props.size || 36) * iconSizeScale;
+    const size = (this.props.size || 36);
     const width = size * 0.8;
     if (this.decrementEnabled()) {
       return (

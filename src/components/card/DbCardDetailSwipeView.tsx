@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Platform,
   View,
-  useWindowDimensions,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -29,7 +28,7 @@ import Carousel from 'react-native-snap-carousel';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
-import { useParsedDeck } from '@components/deck/hooks';
+import { DeckId } from '@actions/types';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -38,7 +37,7 @@ export interface CardDetailSwipeProps {
   whiteNav: boolean;
   showAllSpoilers?: boolean;
   tabooSetId?: number;
-  deckId?: number;
+  deckId?: DeckId;
   faction?: FactionCodeType;
 }
 
@@ -58,9 +57,8 @@ const options = (passProps: CardDetailSwipeProps) => {
 
 function DbCardDetailSwipeView(props: Props) {
   const { componentId, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex } = props;
-  const { backgroundStyle, colors } = useContext(StyleContext);
+  const { backgroundStyle, colors, width, height } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
-  const { width, height } = useWindowDimensions();
   const tabooSetSelector: (state: AppState, tabooSetOverride?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
   const packInCollection = useSelector(getPacksInCollection);

@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import {
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
   View,
 } from 'react-native';
 import { t } from 'ttag';
@@ -62,8 +61,7 @@ const CardEnemeyFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyMassive,
     enemySwarm,
   } = filters;
-  const { width } = useWindowDimensions();
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, width } = useContext(StyleContext);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       <SliderChooser

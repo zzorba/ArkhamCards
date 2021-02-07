@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ActivityIndicator, FlatList, ListRenderItemInfo, Platform, StyleSheet, Text, View } from 'react-native';
 import { find, forEach, map } from 'lodash';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
@@ -20,7 +21,6 @@ import { SearchResults, useSearchUsers, useUpdateFriendRequest } from '@data/fir
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NavigationProps } from '@components/nav/types';
-import { Navigation } from 'react-native-navigation';
 
 export interface FriendsViewProps {
   userId: string;
@@ -209,7 +209,7 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
       default:
         return null;
     }
-  }, [user, selfFriendStatus, borderStyle, typography, acceptRequest, rejectRequest]);
+  }, [user, selfFriendStatus, borderStyle, typography, showUser, acceptRequest, rejectRequest]);
   const searchFriendsPressed = useCallback(() => {
     showHeader();
     focus();
@@ -233,7 +233,7 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
       return !normalizedSearch || !f.handle || f.handle.toLocaleLowerCase(lang).indexOf(normalizedSearch) !== -1;
     };
     if (find(receivedRequests, matchesSearch) && isSelf) {
-      feed.push({ type: 'header', header: t`Friend Requeusts` });
+      feed.push({ type: 'header', header: t`Friend Requests` });
       forEach(receivedRequests, f => {
         if (matchesSearch(f)) {
           feed.push({ type: 'user', user: f });
@@ -241,7 +241,7 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
       });
     }
     if (find(pendingRequests, matchesSearch) && isSelf) {
-      feed.push({ type: 'header', header: t`Pending Friend Requeusts` });
+      feed.push({ type: 'header', header: t`Pending Friend Requests` });
       forEach(pendingRequests, f => {
         if (matchesSearch(f)) {
           feed.push({ type: 'user', user: f });

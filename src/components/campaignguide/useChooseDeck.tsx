@@ -1,28 +1,30 @@
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { map } from 'lodash';
 
-import { Deck } from '@actions/types';
+import { CampaignId, Deck, DeckId, getDeckId } from '@actions/types';
 import { addInvestigator } from '@components/campaign/actions';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
 import Card from '@data/Card';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { Platform } from 'react-native';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export default function useChooseDeck() {
+  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
-  const doAddInvestigator = useCallback((campaignId: number, code: string, deckId?: number) => {
-    dispatch(addInvestigator(campaignId, code, deckId));
-  }, [dispatch]);
+  const doAddInvestigator = useCallback((campaignId: CampaignId, code: string, deckId?: DeckId) => {
+    dispatch(addInvestigator(user, campaignId, code, deckId));
+  }, [dispatch, user]);
 
   const showChooseDeck = useCallback((
-    campaignId: number,
+    campaignId: CampaignId,
     campaignInvestigators: Card[],
     singleInvestigator?: Card,
     callback?: (code: string) => void
   ) => {
     const onDeckSelect = (deck: Deck) => {
-      doAddInvestigator(campaignId, deck.investigator_code, deck.id);
+      doAddInvestigator(campaignId, deck.investigator_code, getDeckId(deck));
       callback && callback(deck.investigator_code);
     };
     const onInvestigatorSelect = (card: Card) => {

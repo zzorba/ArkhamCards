@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { find } from 'lodash';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import ChooseInvestigatorPrompt from '../../prompts/ChooseInvestigatorPrompt';
 import SetupStepWrapper from '../../SetupStepWrapper';
@@ -42,9 +42,13 @@ export default function InvestigatorChoiceWithSuppliesInputComponent({ step, inp
     }
     const decision = investigatorHasSupply(investigator.code);
     const option = decision ? input.positiveChoice : input.negativeChoice;
+    const sectionName = option.text;
+    const prompt = investigator.grammarGenderMasculine() ?
+      c('masculine').t`${investigator.name} reads <b>${sectionName}</b>` :
+      c('feminine').t`${investigator.name} reads <b>${sectionName}</b>`;
     return (
       <SetupStepWrapper bulletType="small">
-        <CampaignGuideTextComponent text={`${investigator.name} reads <b>${option.text}</b>`} />
+        <CampaignGuideTextComponent text={prompt} />
       </SetupStepWrapper>
     );
   }, [input, investigatorHasSupply]);

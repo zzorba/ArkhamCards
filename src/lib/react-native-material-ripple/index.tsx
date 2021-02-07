@@ -255,16 +255,25 @@ export default class RippleComponent extends PureComponent<Props, State> {
       accessibilityHint,
       accessibilityLabel,
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onPress,
       onLongPress,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onLayout,
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       rippleColor = DEFAULT_PROPS.rippleColor,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       rippleOpacity = DEFAULT_PROPS.rippleOpacity,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       rippleDuration = DEFAULT_PROPS.rippleDuration,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       rippleSize = DEFAULT_PROPS.rippleSize,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       rippleCentered = DEFAULT_PROPS.rippleCentered,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       rippleSequential = DEFAULT_PROPS.rippleSequential,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       rippleFades = DEFAULT_PROPS.rippleFades,
       style,
       ...props

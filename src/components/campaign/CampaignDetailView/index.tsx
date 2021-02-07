@@ -1,45 +1,55 @@
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
-import { keys } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { keys, map, flatMap } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
-import SideMenu from 'react-native-side-menu-updated';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, InvestigatorData, WeaknessSet } from '@actions/types';
-import CampaignLogSection from '../CampaignLogSection';
-import ChaosBagSection from './ChaosBagSection';
+import { CampaignId, CUSTOM, Deck, DeckId, getCampaignId, getDeckId, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
 import DecksSection from './DecksSection';
-import ScenarioSection from './ScenarioSection';
-import WeaknessSetSection from './WeaknessSetSection';
-import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
-import { iconsMap } from '@app/NavIcons';
-import { ChaosBag } from '@app_constants';
-import { updateCampaign, updateCampaignSpentXp, cleanBrokenCampaigns } from '../actions';
+import { updateCampaign, updateCampaignSpentXp, cleanBrokenCampaigns, addInvestigator, removeInvestigator } from '../actions';
 import { NavigationProps } from '@components/nav/types';
-import { getAllDecks } from '@reducers';
+import { getAllDecks, getDeck } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign, useCampaignDetails, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useCampaign, useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 import useTraumaDialog from '../useTraumaDialog';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
-import { showCampaignScenarios, showAddScenarioResult, showChaosBagOddsCalculator, showDrawWeakness, showDrawChaosBag } from '@components/campaign/nav';
-import CampaignSideMenu from './CampaignSideMenu';
+import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
+import { campaignNames } from '../constants';
+import space, { s } from '@styles/space';
+import CampaignSummaryHeader from '../CampaignSummaryHeader';
+import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import { maybeShowWeaknessPrompt } from '../campaignHelper';
+import Card from '@data/Card';
+import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useCampaignId, useXpDialog } from '../hooks';
+import DeckButton from '@components/deck/controls/DeckButton';
+import DeleteCampaignButton from '../DeleteCampaignButton';
+import { CampaignLogViewProps } from '../CampaignLogView';
+import { CampaignScenariosViewProps } from '../CampaignScenariosView';
+import UploadCampaignButton from '../UploadCampaignButton';
+import useChaosBagDialog from './useChaosBagDialog';
+import useTextEditDialog from '@components/core/useTextEditDialog';
 
 export interface CampaignDetailProps {
-  id: number;
+  campaignId: CampaignId;
 }
 
-type Props = NavigationProps & CampaignDetailProps & InjectedDialogProps
+type Props = NavigationProps & CampaignDetailProps
 
-function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
-  const { backgroundStyle } = useContext(StyleContext);
+function CampaignDetailView(props: Props) {
+  const { componentId } = props;
+  const [textEditDialog, showTextEditDialog] = useTextEditDialog();
+  const [countDialog, showCountDialog] = useCountDialog();
+  const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
+  const { backgroundStyle, typography } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
-  const campaign = useCampaign(id);
+  const campaign = useCampaign(campaignId);
   const decks = useSelector(getAllDecks);
-
   const {
     showTraumaDialog,
     investigatorDataUpdates,
@@ -48,51 +58,16 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   const [latestDeckIds, allInvestigators] = useCampaignDetails(campaign, investigators);
 
   const dispatch = useDispatch();
-  const updateNonDeckInvestigators = useCallback((nonDeckInvestigators: string[]) => {
-    dispatch(updateCampaign(id, { nonDeckInvestigators }));
-  }, [dispatch, id]);
-  const updateLatestDeckIds = useCallback((latestDeckIds: number[]) => {
-    dispatch(updateCampaign(id, { latestDeckIds }));
-  }, [dispatch, id]);
-  const updateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
-    dispatch(updateCampaign(id, { campaignNotes }));
-  }, [dispatch, id]);
   const updateInvestigatorData = useCallback((investigatorData: InvestigatorData) => {
-    dispatch(updateCampaign(id, { investigatorData }));
-  }, [dispatch, id]);
-  const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
-    dispatch(updateCampaign(id, { chaosBag }));
-  }, [dispatch, id]);
+    dispatch(updateCampaign(user, campaignId, { investigatorData }));
+  }, [dispatch, campaignId, user]);
   const updateWeaknessSet = useCallback((weaknessSet: WeaknessSet) => {
-    dispatch(updateCampaign(id, { weaknessSet }));
-  }, [dispatch, id]);
-  const addSectionCallback = useRef<AddSectionFunction>();
-  const [addSectionVisible, setAddSectionVisible] = useState(false);
-  const [menuOpen, toggleMenuOpen, setMenuOpen] = useFlag(false);
-  const closeMenu = useCallback(() => {
-    setMenuOpen(false);
-  }, [setMenuOpen]);
-  const incSpentXp = useCallback((code: string) => {
-    dispatch(updateCampaignSpentXp(id, code, 'inc'));
-  }, [id, dispatch]);
-  const decSpentXp = useCallback((code: string) => {
-    dispatch(updateCampaignSpentXp(id, code, 'dec'));
-  }, [id, dispatch]);
+    dispatch(updateCampaign(user, campaignId, { weaknessSet }));
+  }, [dispatch, campaignId, user]);
 
-  const showAddSectionDialog = useCallback((addSectionFunction: AddSectionFunction) => {
-    addSectionCallback.current = addSectionFunction;
-    setAddSectionVisible(true);
-  }, [addSectionCallback, setAddSectionVisible]);
-  const hideAddSectionDialog = useCallback(() => {
-    setAddSectionVisible(false);
-    addSectionCallback.current = undefined;
-  }, [addSectionCallback, setAddSectionVisible]);
-
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'menu') {
-      toggleMenuOpen();
-    }
-  }, componentId, [toggleMenuOpen]);
+  const updateSpentXp = useCallback((code: string, value: number) => {
+    dispatch(updateCampaignSpentXp(campaignId, code, value));
+  }, [campaignId, dispatch]);
 
   useEffect(() => {
     if (campaign?.name) {
@@ -116,105 +91,187 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [investigatorDataUpdates, updateInvestigatorData]);
 
-  const oddsCalculatorPressed = useCallback(() => {
-    setMenuOpen(false);
-    showChaosBagOddsCalculator(componentId, id, allInvestigators);
-  }, [componentId, id, allInvestigators, setMenuOpen]);
-
   const cleanBrokenCampaignsPressed = useCallback(() => {
     dispatch(cleanBrokenCampaigns());
     Navigation.pop(componentId);
   }, [componentId, dispatch]);
 
-  const viewScenariosPressed = useCallback(() => {
-    setMenuOpen(false);
-    showCampaignScenarios(componentId, id);
-  }, [id, componentId, setMenuOpen]);
-
-  const addScenarioResultPressed = useCallback(() => {
-    setMenuOpen(false);
-    showAddScenarioResult(componentId, id);
-  }, [id, componentId, setMenuOpen]);
-
-  const drawChaosBagPressed = useCallback(() => {
-    setMenuOpen(false);
-    showDrawChaosBag(componentId, id, updateChaosBag);
-  }, [id, setMenuOpen, componentId, updateChaosBag]);
 
   const drawWeaknessPressed = useCallback(() => {
-    setMenuOpen(false);
-    showDrawWeakness(componentId, id);
-  }, [componentId, id, setMenuOpen]);
+    showDrawWeakness(componentId, campaignId);
+  }, [componentId, campaignId]);
 
-  const campaignDetails = useMemo(() => {
-    if (!campaign) {
-      return null;
+  const updateCampaignName = useCallback((name: string) => {
+    dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        title: {
+          text: name,
+        },
+      },
+    });
+  }, [campaignId, dispatch, user, componentId]);
+  const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
+    title: t`Name`,
+    value: campaign?.name || '',
+    onValueChange: updateCampaignName,
+  });
+
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'edit') {
+      showEditNameDialog();
     }
+  }, componentId, [showEditNameDialog]);
+
+
+  const updateWeaknessAssignedCards = useCallback((weaknessCards: Slots) => {
+    if (campaign) {
+      updateWeaknessSet({
+        ...campaign.weaknessSet,
+        assignedCards: weaknessCards,
+      });
+    }
+  }, [updateWeaknessSet, campaign]);
+  const [alertDialog, showAlert] = useAlertDialog();
+
+  const checkForWeaknessPrompt = useCallback((deck: Deck) => {
+    if (cards && campaign) {
+      maybeShowWeaknessPrompt(
+        deck,
+        cards,
+        campaign.weaknessSet.assignedCards,
+        updateWeaknessAssignedCards,
+        showAlert
+      );
+    }
+  }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
+
+  const onAddDeck = useCallback((deck: Deck) => {
+    dispatch(addInvestigator(user, campaignId, deck.investigator_code, getDeckId(deck)));
+    checkForWeaknessPrompt(deck);
+  }, [user, campaignId, dispatch, checkForWeaknessPrompt]);
+
+  const onAddInvestigator = useCallback((card: Card) => {
+    dispatch(addInvestigator(user, campaignId, card.code));
+  }, [user, campaignId, dispatch]);
+
+  const onRemoveInvestigator = useCallback((investigator: Card, removedDeckId?: DeckId) => {
+    dispatch(removeInvestigator(user, campaignId, investigator.code, removedDeckId));
+  }, [user, campaignId, dispatch]);
+
+  const showChooseDeck = useCallback((
+    singleInvestigator?: Card,
+  ) => {
+    if (!cards || !campaign) {
+      return;
+    }
+    const campaignInvestigators = flatMap(latestDeckIds, deckId => {
+      const deck = getDeck(decks, deckId);
+      return (deck && cards[deck.investigator_code]) || [];
+    });
+
+    const passProps: MyDecksSelectorProps = singleInvestigator ? {
+      campaignId: getCampaignId(campaign),
+      singleInvestigator: singleInvestigator.code,
+      onDeckSelect: onAddDeck,
+    } : {
+      campaignId: getCampaignId(campaign),
+      selectedInvestigatorIds: map(
+        campaignInvestigators,
+        investigator => investigator.code
+      ),
+      onDeckSelect: onAddDeck,
+      onInvestigatorSelect: onAddInvestigator,
+      simpleOptions: true,
+    };
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Dialog.DeckSelector',
+            passProps,
+            options: {
+              modalPresentationStyle: Platform.OS === 'ios' ?
+                OptionsModalPresentationStyle.fullScreen :
+                OptionsModalPresentationStyle.overCurrentContext,
+            },
+          },
+        }],
+      },
+    });
+  }, [campaign, latestDeckIds, decks, cards, onAddDeck, onAddInvestigator]);
+
+  const showAddInvestigator = useCallback(() => {
+    showChooseDeck();
+  }, [showChooseDeck]);
+  const [xpDialog, actuallyShowXpDialog] = useXpDialog(updateSpentXp);
+  const headerButtons = useMemo(() => {
     return (
-      <ScrollView style={[styles.flex, backgroundStyle]}>
-        <ScenarioSection
-          campaign={campaign}
-          addScenarioResult={addScenarioResultPressed}
-          viewScenarios={viewScenariosPressed}
+      <>
+        <UploadCampaignButton
+          campaignId={campaignId}
+          setCampaignServerId={setCampaignServerId}
         />
-        <ChaosBagSection
-          chaosBag={campaign.chaosBag}
-          showChaosBag={drawChaosBagPressed}
-          showOddsCalculator={oddsCalculatorPressed}
+        <DeleteCampaignButton
+          componentId={componentId}
+          campaignId={campaignId}
+          campaignName={campaign?.name || ''}
+          showAlert={showAlert}
         />
-        { !!cards && (
-          <DecksSection
-            componentId={componentId}
-            campaign={campaign}
-            weaknessSet={campaign.weaknessSet}
-            latestDeckIds={latestDeckIds || []}
-            decks={decks}
-            allInvestigators={allInvestigators}
-            cards={cards}
-            investigatorData={campaign.investigatorData || {}}
-            showTraumaDialog={showTraumaDialog}
-            updateLatestDeckIds={updateLatestDeckIds}
-            updateNonDeckInvestigators={updateNonDeckInvestigators}
-            updateWeaknessSet={updateWeaknessSet}
-            incSpentXp={incSpentXp}
-            decSpentXp={decSpentXp}
-          />
-        ) }
-        <WeaknessSetSection
-          weaknessSet={campaign.weaknessSet}
-          showDrawDialog={drawWeaknessPressed}
-        />
-        <CampaignLogSection
-          campaignNotes={campaign.campaignNotes}
-          allInvestigators={allInvestigators}
-          updateCampaignNotes={updateCampaignNotes}
-          showTextEditDialog={showTextEditDialog}
-          showAddSectionDialog={showAddSectionDialog}
-        />
-      </ScrollView>
+      </>
     );
-  }, [
-    campaign,
-    showAddSectionDialog,
-    componentId,
-    latestDeckIds,
-    showTraumaDialog,
-    showTextEditDialog,
-    allInvestigators,
-    decks,
-    cards,
-    backgroundStyle,
-    addScenarioResultPressed, viewScenariosPressed,
-    drawChaosBagPressed, oddsCalculatorPressed,
-    updateLatestDeckIds,
-    updateNonDeckInvestigators,
-    updateWeaknessSet,
-    incSpentXp,
-    decSpentXp,
-    drawWeaknessPressed,
-    updateCampaignNotes,
-  ]);
-  const { width } = useWindowDimensions();
+  }, [showAlert, componentId, campaignId, campaign, setCampaignServerId]);
+  const investigatorData = useMemo(() => campaign?.investigatorData || {}, [campaign?.investigatorData]);
+  const showXpDialog = useCallback((investigator: Card) => {
+    const data = investigatorData[investigator.code] || {};
+    actuallyShowXpDialog(investigator, data?.spentXp || 0, data?.availableXp || 0);
+  }, [actuallyShowXpDialog, investigatorData]);
+  const showCampaignLog = useCallback(() => {
+    Navigation.push<CampaignLogViewProps>(componentId, {
+      component: {
+        name: 'Campaign.Log',
+        passProps: {
+          campaignId,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Campaign Log`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, campaignId]);
+  const showScenarios = useCallback(() => {
+    Navigation.push<CampaignScenariosViewProps>(componentId, {
+      component: {
+        name: 'Campaign.Scenarios',
+        passProps: {
+          campaignId,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Scenarios`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, campaignId]);
+  const investigatorCount = allInvestigators.length;
+
+  const addScenarioResultPressed = useCallback(() => {
+    showAddScenarioResult(componentId, campaignId);
+  }, [campaignId, componentId]);
+  const [chaosBagDialog, showChaosBag] = useChaosBagDialog({ componentId, allInvestigators, campaignId, chaosBag: campaign?.chaosBag || {} });
   if (!campaign) {
     return (
       <View>
@@ -226,25 +283,98 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       </View>
     );
   }
-  const menuWidth = Math.min(width * 0.60, 240);
   return (
     <View style={[styles.flex, backgroundStyle]}>
-      <SideMenu
-        isOpen={menuOpen}
-        onChange={setMenuOpen}
-        menu={<CampaignSideMenu id={id} componentId={componentId} closeMenu={closeMenu} showTextEditDialog={showTextEditDialog} />}
-        openMenuOffset={menuWidth}
-        autoClosing
-        menuPosition="right"
-      >
-        { campaignDetails }
-      </SideMenu>
-      <AddCampaignNoteSectionDialog
-        visible={addSectionVisible}
-        addSection={addSectionCallback.current}
-        hide={hideAddSectionDialog}
-      />
+      <View style={[styles.flex, backgroundStyle]}>
+        <ScrollView contentContainerStyle={backgroundStyle}>
+          <View style={space.paddingSideS}>
+            <CampaignSummaryHeader
+              name={campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode]}
+              cycle={campaign.cycleCode}
+              difficulty={campaign.difficulty}
+              buttons={headerButtons}
+            />
+            <DeckButton
+              icon="log"
+              title={t`Campaign Log`}
+              detail={t`Review records`}
+              color="light_gray"
+              onPress={showCampaignLog}
+              bottomMargin={s}
+            />
+            <DeckButton
+              icon="chaos_bag"
+              title={t`Chaos Bag`}
+              detail={t`Review and draw tokens`}
+              color="light_gray"
+              onPress={showChaosBag}
+              bottomMargin={s}
+            />
+            <DeckButton
+              icon="book"
+              title={t`Scenarios`}
+              detail={t`Review scenario results`}
+              color="light_gray"
+              onPress={showScenarios}
+              bottomMargin={s}
+            />
+            <DeckButton
+              icon="finish"
+              title={t`Add scenario result`}
+              detail={t`Record completed scenario`}
+              onPress={addScenarioResultPressed}
+              color="dark_gray"
+              bottomMargin={s}
+            />
+            <View style={[space.paddingBottomS, space.paddingTopS]}>
+              <Text style={[typography.large, typography.center, typography.light]}>
+                { `— ${t`Investigators`} · ${investigatorCount} —` }
+              </Text>
+            </View>
+            { !!cards && (
+              <DecksSection
+                showAlert={showAlert}
+                showTextEditDialog={showTextEditDialog}
+                showCountDialog={showCountDialog}
+                componentId={componentId}
+                campaign={campaign}
+                campaignId={campaignId}
+                latestDeckIds={latestDeckIds || []}
+                decks={decks}
+                allInvestigators={allInvestigators}
+                cards={cards}
+                investigatorData={investigatorData}
+                showTraumaDialog={showTraumaDialog}
+                removeInvestigator={onRemoveInvestigator}
+                showXpDialog={showXpDialog}
+                showChooseDeck={showChooseDeck}
+              />
+            ) }
+            <DeckButton
+              icon="plus-thin"
+              title={t`Add Investigator`}
+              onPress={showAddInvestigator}
+              color="light_gray"
+              thin
+              bottomMargin={s}
+            />
+            <DeckButton
+              icon="weakness"
+              color="light_gray"
+              title={t`Draw random basic weakness`}
+              onPress={drawWeaknessPressed}
+              bottomMargin={s}
+            />
+          </View>
+        </ScrollView>
+      </View>
+      { alertDialog }
       { traumaDialog }
+      { xpDialog }
+      { dialog }
+      { textEditDialog }
+      { chaosBagDialog }
+      { countDialog }
     </View>
   );
 }
@@ -255,16 +385,10 @@ CampaignDetailView.options = () => {
       title: {
         text: t`Campaign`,
       },
-      rightButtons: [{
-        icon: iconsMap.menu,
-        id: 'menu',
-        color: COLORS.M,
-        accessibilityLabel: t`Menu`,
-      }],
     },
   };
 };
-export default withDialogs(CampaignDetailView);
+export default CampaignDetailView;
 
 const styles = StyleSheet.create({
   flex: {

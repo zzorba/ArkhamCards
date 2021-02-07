@@ -14,6 +14,7 @@ import {
   SupplyCounts,
   InvestigatorTraumaData,
   Trauma,
+  DeckId,
 } from '@actions/types';
 import { ScenarioId } from '@data/scenario';
 import Card, { CardsMap } from '@data/Card';
@@ -25,7 +26,7 @@ export interface CampaignGuideActions {
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
   setSupplies: (id: string, supplyCounts: SupplyCounts, scenarioId?: string) => void;
-  setNumberChoices: (id: string, choices: NumberChoices, scenarioId?: string) => void;
+  setNumberChoices: (id: string, choices: NumberChoices, deckId?: DeckId, scenarioId?: string) => void;
   setStringChoices: (id: string, choices: StringChoices, scenarioId?: string) => void;
   setChoice: (id: string, choice: number, scenarioId?: string) => void;
   setText: (id: string, text: string, scenarioId?: string) => void;
@@ -145,8 +146,8 @@ export default class CampaignStateHelper {
     this.actions.setText(id, value, scenarioId);
   }
 
-  setNumberChoices(id: string, value: NumberChoices, scenarioId?: string) {
-    this.actions.setNumberChoices(id, value, scenarioId);
+  setNumberChoices(id: string, value: NumberChoices, deckId?: DeckId, scenarioId?: string) {
+    this.actions.setNumberChoices(id, value, deckId, scenarioId);
   }
 
   setStringChoices(id: string, value: StringChoices, scenarioId?: string) {
@@ -174,10 +175,10 @@ export default class CampaignStateHelper {
   }
 
   binaryAchievement(achievementId: string): boolean {
-    return !!find(this.state.achievements, a => a.id === achievementId && a.type === 'binary' && a.value);
+    return !!find(this.state.achievements || [], a => a.id === achievementId && a.type === 'binary' && a.value);
   }
   countAchievement(achievementId: string): number {
-    const entry = find(this.state.achievements, a => a.id === achievementId && a.type === 'count');
+    const entry = find(this.state.achievements || [], a => a.id === achievementId && a.type === 'count');
     if (entry?.type === 'count') {
       return entry.value;
     }
@@ -235,9 +236,11 @@ export default class CampaignStateHelper {
       this.state.inputs,
       input => (
         input.type === type &&
+        // tslint:disable-next-line
         input.scenario === scenario && (
           input.type === 'start_scenario' ||
           input.type === 'start_side_scenario' ||
+          // tslint:disable-next-line
           input.step === step
         )
       )
@@ -254,6 +257,7 @@ export default class CampaignStateHelper {
         input.type === type && (
           input.type === 'start_scenario' ||
           input.type === 'start_side_scenario' ||
+          // tslint:disable-next-line
           input.step === step
         )
       )
@@ -296,12 +300,12 @@ export default class CampaignStateHelper {
     return undefined;
   }
 
-  numberChoices(id: string, scenario?: string): NumberChoices | undefined {
+  numberChoices(id: string, scenario?: string): [NumberChoices | undefined, DeckId | undefined] {
     const entry = this.entry('choice_list', id, scenario);
     if (entry && entry.type === 'choice_list') {
-      return entry.choices;
+      return [entry.choices, entry.deckId];
     }
-    return undefined;
+    return [undefined, undefined];
   }
 
   stringChoices(id: string, scenario?: string): StringChoices | undefined {

@@ -66,7 +66,13 @@ export function toDateStringMonthName(timestamp: number) {
   return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 }
 
-export function toRelativeDateString(date: Date, locale: string) {
+export function toRelativeDateString(date: Date | string, locale: string) {
+  if (date === undefined) {
+    return '???';
+  }
+  if (typeof date === 'string') {
+    date = new Date(Date.parse(date));
+  }
   const nowDate = new Date();
   const startOfNowDate = startOfDay(nowDate);
   if (isAfter(date, startOfNowDate)) {
@@ -75,7 +81,7 @@ export function toRelativeDateString(date: Date, locale: string) {
   if (isAfter(date, addDays(startOfNowDate, -1))) {
     return t`Updated yesterday`;
   }
-  if (isAfter(date, addDays(startOfNowDate, -7))) {
+  if (isAfter(date, addDays(startOfNowDate, -6))) {
     const dayOfWeek = format(date, 'EEEE');
     switch (dayOfWeek) {
       case 'Monday': return t`Updated Monday`;

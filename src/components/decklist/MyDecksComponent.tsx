@@ -1,37 +1,38 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
 import {
-  Button,
   Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
-  useWindowDimensions,
   View,
 } from 'react-native';
-import { filter } from 'lodash';
+import { filter, map } from 'lodash';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { refreshMyDecks } from '@actions';
-import { NetworkStatusProps, useNetworkStatus } from '@components/core/withNetworkStatus';
-import { Deck } from '@actions/types';
+import useNetworkStatus from '@components/core/useNetworkStatus';
+import { Deck, DeckId } from '@actions/types';
 import Card from '@data/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import COLORS from '@styles/colors';
-import space, { m, s, xs } from '@styles/space';
-import { getAllDecks, getMyDecksState, getDeckToCampaignMap } from '@reducers';
+import space, { s, xs } from '@styles/space';
+import { getAllDecks, getMyDecksState, getDeckToCampaignMap, getDeck } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
 
 interface OwnProps {
   componentId: string;
   deckClicked: (deck: Deck, investigator?: Card) => void;
-  onlyDeckIds?: number[];
+  onlyDeckIds?: DeckId[];
   onlyInvestigators?: string[];
-  filterDeckIds?: number[];
+  filterDeckIds?: DeckId[];
   filterInvestigators?: string[];
   searchOptions?: SearchOptions;
   customFooter?: ReactNode;
@@ -51,7 +52,7 @@ function MyDecksComponent({
   signedIn,
 }: Props) {
   const [{ networkType, isConnected }] = useNetworkStatus();
-  const { colors, typography } = useContext(StyleContext);
+  const { typography, width } = useContext(StyleContext);
   const dispatch = useDispatch();
   const reLogin = useCallback(() => {
     login();
@@ -81,7 +82,6 @@ function MyDecksComponent({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const { width } = useWindowDimensions();
   const errorLine = useMemo(() => {
     if (!error && networkType !== NetInfoStateType.none) {
       return null;
@@ -118,14 +118,25 @@ function MyDecksComponent({
       return null;
     }
     return (
-      <View style={[styles.signInFooter, { backgroundColor: colors.L20, width }]}>
-        <Text style={[typography.text, space.marginBottomM]}>
-          { t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.` }
-        </Text>
-        <Button onPress={login} title={t`Connect to ArkhamDB`} />
+      <View style={styles.signInFooter}>
+        <RoundedFactionBlock
+          header={<DeckSectionHeader title={t`ArkhamDB Account`} faction="neutral" />}
+          footer={<RoundedFooterButton
+            icon="world"
+            title={t`Connect to ArkhamDB`}
+            onPress={login}
+          />}
+          faction="neutral"
+        >
+          <View style={space.paddingS}>
+            <Text style={typography.text}>
+              { t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.` }
+            </Text>
+          </View>
+        </RoundedFactionBlock>
       </View>
     );
-  }, [login, signedIn, width, colors, typography]);
+  }, [login, signedIn, typography]);
 
   const footer = useMemo(() => {
     return (
@@ -155,11 +166,11 @@ function MyDecksComponent({
 
   const deckIds = useMemo(() => {
     const onlyInvestigatorSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
-    const filterDeckIdsSet = new Set(filterDeckIds);
+    const filterDeckIdsSet = new Set(map(filterDeckIds, id => id.uuid));
     const filterInvestigatorsSet = new Set(filterInvestigators);
     return filter(onlyDeckIds || myDecks, deckId => {
-      const deck = decks[deckId];
-      return !filterDeckIdsSet.has(deckId) && (
+      const deck = getDeck(decks, deckId);
+      return !filterDeckIdsSet.has(deckId.uuid) && (
         !deck || !filterInvestigatorsSet.has(deck.investigator_code)
       ) && (!deck || !onlyInvestigatorSet || onlyInvestigatorSet.has(deck.investigator_code));
     });
@@ -201,8 +212,8 @@ const styles = StyleSheet.create({
     color: COLORS.white,
   },
   signInFooter: {
-    padding: m,
-    marginTop: s,
+    padding: s,
+    paddingTop: 0,
   },
   footer: {
     width: '100%',

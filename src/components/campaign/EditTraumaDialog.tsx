@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import DialogComponent from '@lib/react-native-dialog';
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 
 import EditTraumaDialogContent from './EditTraumaDialogContent';
-import Dialog from '@components/core/NewDialog';
+import NewDialog from '@components/core/NewDialog';
 import { t } from 'ttag';
 import { Trauma } from '@actions/types';
 import Card from '@data/Card';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   visible: boolean;
@@ -40,21 +40,35 @@ export default function EditTraumaDialog({ visible, investigator, trauma, update
     setTraumaState(mutate(traumaState));
   }, [setTraumaState, traumaState]);
 
-
+  const buttons = useMemo(() => {
+    return [(
+      <DeckButton
+        key="cancel"
+        icon="dismiss"
+        color="red"
+        title={t`Cancel`}
+        thin
+        onPress={onCancel}
+      />
+    ), (
+      <DeckButton
+        key="save"
+        icon="check-thin"
+        title={t`Save`}
+        thin
+        onPress={onSubmit}
+      />
+    )];
+  }, [onCancel, onSubmit]);
   return (
-    <Dialog
+    <NewDialog
       title={investigator ?
         t`${investigator.firstName}’s Trauma` :
         t`Trauma`}
       visible={visible}
-      dismiss={{
-        title: t`Cancel`,
-        onPress: onCancel,
-      }}
-      confirm={{
-        title: t`Save`,
-        onPress: onSubmit,
-      }}
+      dismissable
+      onDismiss={onCancel}
+      buttons={buttons}
     >
       <EditTraumaDialogContent
         investigator={investigator}
@@ -62,6 +76,6 @@ export default function EditTraumaDialog({ visible, investigator, trauma, update
         mutateTrauma={mutateTrauma}
         hideKilledInsane={hideKilledInsane}
       />
-    </Dialog>
+    </NewDialog>
   );
 }

@@ -23,13 +23,13 @@ export default function ExperienceLine({ parsedDeck }: Props) {
   );
   const icon = <AppIcon name="xp" size={36} color={colors.M} />;
   const description = (
-    <View style={styles.row}>
-      <Text style={[typography.large, space.marginRightS]}>
+    <View style={[styles.row, space.paddingTopXs]}>
+      <Text style={typography.large}>
         { xpString }
       </Text>
       { !!xpDetailString && (
-        <Text style={[typography.small, { color: colors.M, lineHeight: 24 * fontScale }]}>
-          { xpDetailString }
+        <Text style={[typography.small, { color: colors.M, lineHeight: Math.ceil(16 * fontScale) }]}>
+          { ` · ${xpDetailString}` }
         </Text>
       ) }
     </View>

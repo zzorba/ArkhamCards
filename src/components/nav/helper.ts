@@ -10,7 +10,7 @@ import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
 import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
-import { Deck, ParsedDeck } from '@actions/types';
+import { Deck, DeckId, getDeckId, ParsedDeck } from '@actions/types';
 import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';
 import { CardImageProps } from '@components/card/CardImageView';
@@ -27,24 +27,24 @@ export function getDeckOptions(
     modal,
     title,
     noTitle,
-    upgrade,
+    initialMode,
   }: {
     inputOptions?: Options;
     modal?: boolean;
     title?: string;
     noTitle?: boolean;
-    upgrade?: boolean;
+    initialMode?: 'upgrade' | 'edit';
   } = {},
   investigator?: Card,
 ): Options {
   const topBarOptions: OptionsTopBar = inputOptions.topBar || {};
-  const textColor = upgrade ? COLORS.D30 : '#FFFFFF';
-  const backgroundColor = upgrade ? colors.upgrade : colors.faction[
+  const textColor = initialMode === 'upgrade' ? COLORS.D30 : '#FFFFFF';
+  const backgroundColor = initialMode === 'upgrade' ? colors.upgrade : colors.faction[
     (investigator ? investigator.faction_code : null) || 'neutral'
   ].background;
   const options: Options = {
     statusBar: {
-      style: upgrade ? 'dark' : 'light',
+      style: initialMode === 'upgrade' ? 'dark' : 'light',
       backgroundColor,
     },
     modalPresentationStyle: Platform.OS === 'ios' ?
@@ -99,9 +99,9 @@ export function getDeckOptions(
 }
 
 interface DeckModalOptions {
-  campaignId?: number;
+  campaignId?: string;
   hideCampaign?: boolean;
-  upgrade?: boolean;
+  initialMode?: 'upgrade' | 'edit';
 }
 
 export function showDeckModal(
@@ -111,16 +111,16 @@ export function showDeckModal(
   investigator?: Card,
   options: DeckModalOptions = {}
 ) {
-  const { campaignId, hideCampaign, upgrade } = options;
+  const { campaignId, hideCampaign, initialMode } = options;
   const passProps: DeckDetailProps = {
-    id: deck.id,
+    id: getDeckId(deck),
     isPrivate: true,
     modal: true,
     campaignId,
     title: investigator ? investigator.name : t`Deck`,
     subtitle: deck.name,
     hideCampaign,
-    upgrade,
+    initialMode,
   };
 
   Navigation.showModal({
@@ -132,7 +132,7 @@ export function showDeckModal(
           options: getDeckOptions(colors, {
             modal: true,
             title: deck.name,
-            upgrade,
+            initialMode,
           }, investigator),
         },
       }],
@@ -220,7 +220,7 @@ export function showCardSwipe(
   initialCards?: Card[],
   showSpoilers?: boolean,
   tabooSetId?: number,
-  deckId?: number,
+  deckId?: DeckId,
   investigator?: Card
 ) {
   const options = investigator ?
@@ -340,8 +340,10 @@ export async function openUrl(
   const rule_match = url.match(rule_regex);
   if (rule_match) {
     const rule_id = rule_match[3];
+    console.log(`Looking for rule ${rule_id}`);
     const rules = await db.getRulesPaged(0, 1, where('r.id = :rule_id', { rule_id }));
     if (rules.length) {
+      console.log(`Found it`);
       Navigation.push(componentId, {
         component: {
           name: 'Rule',
@@ -362,6 +364,7 @@ export async function openUrl(
       });
       return;
     }
+    console.log(`No match`);
   }
 
   if (startsWith(url, '/')) {

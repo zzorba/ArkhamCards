@@ -1,19 +1,15 @@
-import React, { useCallback, useContext } from 'react';
-import { findIndex, find } from 'lodash';
+import React, { useCallback } from 'react';
+import { find } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { setFontSize } from './actions';
 import { getAppFontScale } from '@reducers';
-import SinglePickerComponent from '@components/core/SinglePickerComponent';
-import StyleContext from '@styles/StyleContext';
-import COLORS from '@styles/colors';
 import { usePickerDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 
 export default function ThemePicker() {
   const dispatch = useDispatch();
-  const { colors } = useContext(StyleContext);
   const fontScale = useSelector(getAppFontScale);
   const items: {
     title: string;

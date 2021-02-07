@@ -4,7 +4,6 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
 } from 'react-native';
 import { last } from 'lodash';
 import { Navigation } from 'react-native-navigation';
@@ -129,11 +128,10 @@ function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: 
   return queue;
 }
 
-function ScenarioView({ componentId, campaignId, showLinkedScenario, scenarioId, standalone, footer }: Props) {
-  const { campaignState } = useContext(CampaignGuideContext);
+function ScenarioView({ componentId, showLinkedScenario, scenarioId, standalone, footer }: Props) {
+  const { campaignState, campaignId } = useContext(CampaignGuideContext);
   const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
-  const { backgroundStyle } = useContext(StyleContext);
-  const { width } = useWindowDimensions();
+  const { backgroundStyle, width } = useContext(StyleContext);
   useEffect(() => {
     if (standalone && processedScenario.type !== 'started' && processedScenario.type !== 'completed') {
       campaignState.startScenario(scenarioId);

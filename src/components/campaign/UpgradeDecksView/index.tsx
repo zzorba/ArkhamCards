@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useRef } from 'react';
-import { flatMap } from 'lodash';
+import React, { useCallback, useContext, useMemo, useRef } from 'react';
+import { flatMap, map } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -11,10 +11,10 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Deck, ScenarioResult } from '@actions/types';
+import { CampaignId, Deck, getCampaignId, getDeckId, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
-import { getAllDecks, getLangPreference } from '@reducers';
+import { getAllDecks, getDeck, getLangPreference } from '@reducers';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { updateCampaign } from '@components/campaign/actions';
@@ -23,21 +23,23 @@ import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface UpgradeDecksProps {
-  id: number;
+  id: CampaignId;
   scenarioResult: ScenarioResult;
 }
 
 function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const investigators = useInvestigatorCards();
   const campaign = useCampaign(id);
   const [latestDeckIds, allInvestigators] = useCampaignDetails(campaign, investigators);
   const lang = useSelector(getLangPreference);
   const decks = useSelector(getAllDecks);
-  const originalDeckIds = useRef(new Set(latestDeckIds));
+  const originalDeckUuids = useRef(new Set(map(latestDeckIds, id => id.uuid)));
   const close = useCallback(() => {
     Navigation.dismissModal(componentId);
   }, [componentId]);
@@ -51,7 +53,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
     if (campaign) {
       const investigatorData = campaign.investigatorData[investigator.code] || {};
       const oldXp = investigatorData.availableXp || 0;
-      dispatch(updateCampaign(campaign.id, {
+      dispatch(updateCampaign(user, getCampaignId(campaign), {
         investigatorData: {
           ...campaign.investigatorData || {},
           [investigator.code]: {
@@ -61,7 +63,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
         },
       }));
     }
-  }, [campaign, dispatch]);
+  }, [campaign, user, dispatch]);
 
   const showDeckUpgradeDialog = useCallback((deck: Deck, investigator?: Card) => {
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
@@ -69,7 +71,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
       component: {
         name: 'Deck.Upgrade',
         passProps: {
-          id: deck.id,
+          id: getDeckId(deck),
           campaignId: id,
           showNewDeck: false,
         },
@@ -95,7 +97,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
       },
     });
   }, [componentId, id, colors]);
-
+  const latestDecks = useMemo(() => flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || []), [decks, latestDeckIds]);
 
   if (!campaign) {
     return null;
@@ -112,8 +114,8 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
         lang={lang}
         investigatorData={campaign.investigatorData}
         allInvestigators={allInvestigators}
-        decks={flatMap(latestDeckIds, deckId => decks[deckId] || [])}
-        originalDeckIds={originalDeckIds.current}
+        decks={latestDecks}
+        originalDeckUuids={originalDeckUuids.current}
         showDeckUpgradeDialog={showDeckUpgradeDialog}
         updateInvestigatorXp={updateInvestigatorXp}
       />

@@ -17,7 +17,7 @@ import {
   UpdateCardSortAction,
   SortType,
 } from '@actions/types';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 import { FilterState } from '@lib/filters';
 import { calculateDefaultDbFilterState } from '@components/filter/DefaultFilterState';
 import Database from '@data/Database';
@@ -92,7 +92,7 @@ export function addDbFilterSet(
   tabooSetId?: number,
   mythosToggle?: boolean
 ): ThunkAction<void, AppState, unknown, AddFilterSetAction> {
-  return async(dispatch: ThunkDispatch<AppState, unknown, AddFilterSetAction>): Promise<void> => {
+  return async(dispatch) => {
     const [filters, cardData] = await calculateDefaultDbFilterState(db, query, tabooSetId);
     dispatch({
       type: ADD_FILTER_SET,
