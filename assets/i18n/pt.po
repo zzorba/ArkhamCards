@@ -1,0 +1,4138 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-02-07 17:58-0500\n"
+"PO-Revision-Date: 2021-02-07 17:58-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"mime-version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"x-generator: Poedit 2.4.2\n"
+"x-poedit-basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: pt\n"
+
+#, javascript-format
+msgid "${ action.name } (Campaign A)"
+msgstr ""
+
+msgid "${ action.name } (Campaign B)"
+msgstr ""
+
+#, javascript-format
+msgid "Not enough cards (${ drawDeckSize } / ${ size })."
+msgstr ""
+
+#, javascript-format
+msgid "Too many cards (${ drawDeckSize } / ${ size })."
+msgstr ""
+
+msgid "No assets that take up the ally slot are allowed by On Your Own."
+msgstr ""
+
+msgid "Limit 1 Covenant per deck."
+msgstr ""
+
+msgid "Too many off-class cards for Versatile"
+msgstr ""
+
+msgid "Updated today"
+msgstr ""
+
+msgid "Updated yesterday"
+msgstr ""
+
+msgid "Updated Monday"
+msgstr ""
+
+msgid "Updated Tuesday"
+msgstr ""
+
+msgid "Updated Wednesday"
+msgstr ""
+
+msgid "Updated Thursday"
+msgstr ""
+
+msgid "Updated Friday"
+msgstr ""
+
+msgid "Updated Saturday"
+msgstr ""
+
+msgid "Updated Sunday"
+msgstr ""
+
+#, javascript-format
+msgid "Updated ${ dayOfWeek }"
+msgstr ""
+
+msgid "Updated ${ dateString }"
+msgstr ""
+
+msgid "Sorry, you don't seem to be a Mythos Buster patron."
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "Hand"
+msgstr ""
+
+msgid "Hand. Arcane"
+msgstr ""
+
+msgid "Hand x2"
+msgstr ""
+
+msgid "Arcane"
+msgstr ""
+
+msgid "Arcane x2"
+msgstr ""
+
+msgid "Accessory"
+msgstr ""
+
+msgid "Body"
+msgstr ""
+
+msgid "Body. Hand x2"
+msgstr ""
+
+msgid "Ally. Arcane"
+msgstr ""
+
+msgid "Ally"
+msgstr ""
+
+msgid "Tarot"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgid "Custom"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgid "Investigator"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgid "Neutral"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgid "The Chameleon"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgid ""
+"This is a custom investigator to allow for building of arbitrary decks.\n"
+"[elder_sign]: +X where X is whatever you want it to be."
+msgstr ""
+
+#, javascript-format
+msgid "${ things[0] } and ${ things[1] }"
+msgstr ""
+
+#, javascript-format
+msgid "${ listOfThings }, and ${ lastThing }"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "All Cards"
+msgstr ""
+
+#, javascript-format
+msgid "${ this.name } <i>(${ this.subname })</i>"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Killed"
+msgstr ""
+
+msgid "Insane"
+msgstr ""
+
+#, javascript-format
+msgid "${ traumaData.physical } Physical"
+msgstr ""
+
+msgid "${ traumaData.mental } Mental"
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ actualCost }"
+msgstr ""
+
+msgid "Guardian"
+msgstr ""
+
+msgid "Seeker"
+msgstr ""
+
+msgid "Mystic"
+msgstr ""
+
+msgid "Rogue"
+msgstr ""
+
+msgid "Survivor"
+msgstr ""
+
+msgid "Guardian / Rogue"
+msgstr ""
+
+msgid "Rogue / Survivor"
+msgstr ""
+
+msgid "Survivor / Seeker"
+msgstr ""
+
+msgid "Seeker / Mystic"
+msgstr ""
+
+msgid "Mystic / Guardian"
+msgstr ""
+
+msgid "Basic Weakness"
+msgstr ""
+
+msgid "Signature Weakness"
+msgstr ""
+
+msgid "Weakness"
+msgstr ""
+
+msgid "Mythos"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Asset: Hand"
+msgstr ""
+
+msgid "Asset: Hand x2"
+msgstr ""
+
+msgid "Asset: Accessory"
+msgstr ""
+
+msgid "Asset: Ally"
+msgstr ""
+
+msgid "Asset: Arcane"
+msgstr ""
+
+msgid "Asset: Arcane x2"
+msgstr ""
+
+msgid "Asset: Body"
+msgstr ""
+
+msgid "Asset: Permanent"
+msgstr ""
+
+msgid "Asset: Tarot"
+msgstr ""
+
+msgid "Asset: Ally. Arcane"
+msgstr ""
+
+msgid "Asset: Body. Arcane"
+msgstr ""
+
+msgid "Asset: Hand. Arcane"
+msgstr ""
+
+msgid "Asset: Body. Hand x2"
+msgstr ""
+
+msgid "Asset: Other"
+msgstr ""
+
+msgid "Event"
+msgstr ""
+
+msgid "Skill"
+msgstr ""
+
+msgid "Scenario"
+msgstr ""
+
+msgid "Story"
+msgstr ""
+
+#, javascript-format
+msgid "Act ${ json.stage }"
+msgstr ""
+
+msgid "Agenda ${ json.stage }"
+msgstr ""
+
+#, javascript-format
+msgid "Act ${ linked_card.stage }"
+msgstr ""
+
+msgid "Agenda ${ linked_card.stage }"
+msgstr ""
+
+msgid "Cost: None"
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ json.cost }"
+msgstr ""
+
+msgid "N/A"
+msgstr ""
+
+msgid "Campaign Setup"
+msgstr ""
+
+msgid ""
+"Each investigator earns experience equal to the Victory X value of each "
+"card in the victory display."
+msgstr ""
+
+msgid "Victory display:"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Each investigator pays ${ entry.xpCost } experience point to play this "
+"scenario."
+msgid_plural ""
+"Each investigator pays ${ entry.xpCost } experience points to play this "
+"scenario."
+msgstr[0] ""
+msgstr[1] ""
+
+#. This is a deck upgrade action.
+msgid "Undo deck upgrade?"
+msgstr ""
+
+#. This is a deck upgrade action.
+msgid "Undo deck change?"
+msgstr ""
+
+#. This is a deck upgrade action.
+msgid ""
+"Looks like you are trying to undo a deck upgrade.\n"
+"\n"
+"Note that the app will NOT delete your latest deck upgrade from ArkhamDB, "
+"so your deck will still have the earlier changes applied.\n"
+"\n"
+"You can view the deck and delete the most recent 'upgrade' to put things "
+"back the way they were."
+msgstr ""
+
+#. This is a deck upgrade action.
+msgid ""
+"Looks like you are trying to undo a deck save.\n"
+"\n"
+"The app will NOT be able to undo these changes, so if you proceed again the "
+"changes might be applied twice. You should view the deck and manually undo "
+"the edits before reapplying the changes."
+msgstr ""
+
+#. This is a deck upgrade action.
+msgid "Undo anyway"
+msgstr ""
+
+#. This is a deck upgrade action.
+msgid "Cancel"
+msgstr ""
+
+msgid "Resolutions"
+msgstr ""
+
+msgid "Select resolution"
+msgstr ""
+
+msgid "Draw Random Basic Weakness"
+msgstr ""
+
+msgid "Draw Weakness"
+msgstr ""
+
+msgid ""
+"<b>Note:</b> Trauma from investigator defeat is handled during scenario "
+"resolution."
+msgstr ""
+
+msgid "Record Trauma"
+msgstr ""
+
+msgid "In your Campaign Log, record that:"
+msgstr ""
+
+msgid "Choose lead investigator"
+msgstr ""
+
+msgid "Lead Investigator"
+msgstr ""
+
+msgid "Alive"
+msgstr ""
+
+msgid "Resigned"
+msgstr ""
+
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgid "Investigator status at end of scenario:"
+msgstr ""
+
+#, javascript-format
+msgid "Proceed to <b>${ nextScenarioName }</b>."
+msgstr ""
+
+msgid "Secondary Class"
+msgstr ""
+
+msgid "Deck Size"
+msgstr ""
+
+msgid "Available weaknesses"
+msgstr ""
+
+msgid "Saving"
+msgstr ""
+
+msgid "Draw a Different Weakness"
+msgstr ""
+
+msgid "Draw Another"
+msgstr ""
+
+msgid "Traits"
+msgstr ""
+
+msgid "Multiplayer"
+msgstr ""
+
+msgid "Standalone"
+msgstr ""
+
+msgid ""
+"There are no weaknesses that match these trait filters left in the set.\n"
+"\n"
+"Please adjust the trait filter."
+msgstr ""
+
+msgid "All weaknesses have been drawn."
+msgstr ""
+
+msgid "Replace Random Weakness"
+msgstr ""
+
+msgid "Save to Deck"
+msgstr ""
+
+msgid "Unexpected file type"
+msgstr ""
+
+msgid "This app expects an Arkham Cards backup file (.acb/.json)"
+msgstr ""
+
+msgid "Try again"
+msgstr ""
+
+msgid "Restore campaign data?"
+msgstr ""
+
+msgid ""
+"This feature will let you restore data from a lost device. If you were "
+"signed into ArkhamDB, please reauthorize before importing campaign data.\n"
+"\n"
+"After a backup is selected, you will be able to choose which data to import."
+msgstr ""
+
+msgid "Import data"
+msgstr ""
+
+msgid "Backup campaign data?"
+msgstr ""
+
+msgid ""
+"This will let you backup your local decks and campaigns for safe-keeping. "
+"This can also be used to move them to another device."
+msgstr ""
+
+msgid "Export Campaign Data"
+msgstr ""
+
+msgid "Save backup"
+msgstr ""
+
+msgid "Backup"
+msgstr ""
+
+msgid "Backup Campaign Data"
+msgstr ""
+
+msgid "Restore Campaign Data"
+msgstr ""
+
+msgid "Missing system permission"
+msgstr ""
+
+msgid ""
+"It looks like you previously denied allowing Arkham Cards to read/write "
+"external files. Please visit your System settings to adjust this "
+"permission, and try again."
+msgstr ""
+
+msgid "Cannot request access"
+msgstr ""
+
+msgid "Loading"
+msgstr ""
+
+msgid "Second Core Set"
+msgstr ""
+
+msgid "Edit Collection"
+msgstr ""
+
+msgid "Export diagnostic data"
+msgstr ""
+
+msgid ""
+"This feature is intended for advanced diagnostics. Just copy the data "
+"presented here and email it to arkhamcards@gmail.com"
+msgstr ""
+
+msgid "Export Diagnostic Data"
+msgstr ""
+
+msgid "Return to..."
+msgstr ""
+
+msgid "Investigator Starter Decks"
+msgstr ""
+
+msgid "Side stories"
+msgstr ""
+
+msgid "Debug Card Json"
+msgstr ""
+
+msgid "Debug"
+msgstr ""
+
+msgid "Caches"
+msgstr ""
+
+msgid "Clear cache"
+msgstr ""
+
+msgid "Smaller"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Large"
+msgstr ""
+
+msgid "X-Large"
+msgstr ""
+
+msgid "XX-Large"
+msgstr ""
+
+msgid "Font Size"
+msgstr ""
+
+msgid ""
+"This can be used to make the app font size larger, though it may impact "
+"layout on some screens."
+msgstr ""
+
+#, javascript-format
+msgid "${ handle }'s Friends"
+msgstr ""
+
+msgid "Friends"
+msgstr ""
+
+#, javascript-format
+msgid "Search for ${ searchTerm }"
+msgstr ""
+
+msgid "Friend Requests"
+msgstr ""
+
+msgid "Pending Friend Requests"
+msgstr ""
+
+msgid "Search for friends to add"
+msgstr ""
+
+msgid "Search Results"
+msgstr ""
+
+#, javascript-format
+msgid "No results found for search '${ searchResults.term }'."
+msgstr ""
+
+msgid "Clear search"
+msgstr ""
+
+msgid "Search friends"
+msgstr ""
+
+#, javascript-format
+msgid "Default (${ systemLanguage })"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid ""
+"Changing app language requires downloading the translated card information "
+"from ArkhamDB. This requires network and can take some time."
+msgstr ""
+
+msgid "Download now"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Note: not all cards have translations available."
+msgstr ""
+
+msgid "Search rules"
+msgstr ""
+
+msgid "Safe mode"
+msgstr ""
+
+msgid "The app drew an Auto-Fail"
+msgstr ""
+
+msgid ""
+"Sorry about that. If the app is crashing on launch, you can enter 'Safe "
+"mode' to backup your data."
+msgstr ""
+
+msgid "Start normally"
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "Backup Data"
+msgstr ""
+
+msgid "Cache cleared"
+msgstr ""
+
+#, javascript-format
+msgid "${ cycleCount } Cycle"
+msgid_plural "${ cycleCount } Cycles"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "${ standalonePackCount } Pack"
+msgid_plural "${ standalonePackCount } Packs"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Edit Spoilers"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+msgid "About Arkham Cards"
+msgstr ""
+
+msgid "Updating cards"
+msgstr ""
+
+msgid "Error: Check for Cards Again"
+msgstr ""
+
+msgid "Check ArkhamDB for updates"
+msgstr ""
+
+msgid "Rules"
+msgstr ""
+
+msgid "Cards"
+msgstr ""
+
+msgid "Card Collection"
+msgstr ""
+
+msgid "Encounter Spoilers"
+msgstr ""
+
+msgid "Preferences"
+msgstr ""
+
+msgid "Swipe between card results"
+msgstr ""
+
+msgid "Color blind friendly icons"
+msgstr ""
+
+msgid "Alphabetize guide encounter sets"
+msgstr ""
+
+msgid "Support"
+msgstr ""
+
+msgid "Contact us"
+msgstr ""
+
+msgid ""
+"Mark the scenarios you've played through to make the results start showing "
+"up in search results."
+msgstr ""
+
+msgid "Dark"
+msgstr ""
+
+msgid "Light"
+msgstr ""
+
+#, javascript-format
+msgid "Default (${ systemSchemeName })"
+msgstr ""
+
+msgid "Theme"
+msgstr ""
+
+#, javascript-format
+msgid "(${ investigator.name } - ${ scenarioCount } scenario"
+msgid_plural "${ investigator.name } - ${ scenarioCount } scenarios"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Import"
+msgstr ""
+
+msgid "Missing decks"
+msgstr ""
+
+msgid ""
+"It seems like you have chosen to import a campaign without importing one or "
+"more non-ArkhamDB decks. The campaign can still be imported, however the "
+"deck information will be removed."
+msgstr ""
+
+msgid "Import anyway"
+msgstr ""
+
+msgid "Campaigns"
+msgstr ""
+
+msgid "New:"
+msgstr ""
+
+msgid "Updated:"
+msgstr ""
+
+msgid "No changes:"
+msgstr ""
+
+msgid "Local version appears to be newer:"
+msgstr ""
+
+msgid "Decks"
+msgstr ""
+
+msgid "Import selected data"
+msgstr ""
+
+msgid "Select items to import"
+msgstr ""
+
+msgid "Account Name"
+msgstr ""
+
+msgid "Choose a handle for your account"
+msgstr ""
+
+msgid "Your Friends"
+msgstr ""
+
+msgid ""
+"This app works just fine without an account.\n"
+"But signing in will allow you to sync campaigns between devices, with more "
+"features planned for the future."
+msgstr ""
+
+#, javascript-format
+msgid "${ pendingFriendCount } pending request"
+msgid_plural "${ pendingFriendCount } pending requests"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "${ friendCount } friend"
+msgid_plural "${ friendCount } friends"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Account name"
+msgstr ""
+
+msgid "Choose a handle"
+msgstr ""
+
+msgid "Arkham Cards Account"
+msgstr ""
+
+msgid "ArkhamDB Account"
+msgstr ""
+
+msgid "Looks like there is already an account registered with this email address."
+msgstr ""
+
+msgid "That doesn't look like a valid email address"
+msgstr ""
+
+msgid "That password seems to be too weak."
+msgstr ""
+
+msgid "Your account has been disabled."
+msgstr ""
+
+msgid "There doesn't appear to be an account with that email address."
+msgstr ""
+
+msgid "Invalid password."
+msgstr ""
+
+msgid "Unknown error"
+msgstr ""
+
+msgid "Email address"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Would you like to create a new account instead?"
+msgstr ""
+
+msgid "Are you trying to sign in to an existing account?"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"A password reset email has been sent to '${ emailAddress }'.\n"
+"\n"
+"Please follow the instructions and then return to the app to continue."
+msgstr ""
+
+msgid "Would you like to reset your password via email?"
+msgstr ""
+
+msgid "Sign up"
+msgstr ""
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Uploading"
+msgstr ""
+
+msgid "Campaigns can be uploaded to your Arkham Cards account."
+msgstr ""
+
+msgid "Uploaded campaigns will be synced between devices."
+msgstr ""
+
+msgid "Upload campaigns"
+msgstr ""
+
+msgid "Upload"
+msgstr ""
+
+msgid "Sign out of Arkham Cards?"
+msgstr ""
+
+msgid ""
+"Are you sure you want to sign out of Arkham Cards?\n"
+"\n"
+"Any campaigns you uploaded or have had shared with you will be removed from "
+"this device. They can be resynced if you sign in again.\n"
+"\n"
+"Note: if you have made recent changes while offline, they may be lost."
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
+
+msgid ""
+"Using an Arkham Cards account will allow you to backup and sync your "
+"campaign data between devices.\n"
+"More features are in the works."
+msgstr ""
+
+msgid "Sign in to your account"
+msgstr ""
+
+msgid "Create a new account"
+msgstr ""
+
+msgid "Sign up with email"
+msgstr ""
+
+msgid "Sign in with email"
+msgstr ""
+
+msgid "Sign in to app"
+msgstr ""
+
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+msgid ""
+"Data on ArkhamDB will be preserved, but all Campaign data and any edits "
+"made without internet might be lost.\n"
+"\n"
+"If you are having trouble with your account you can also reconnect."
+msgstr ""
+
+msgid "Sign Out"
+msgstr ""
+
+msgid "Reconnect Account"
+msgstr ""
+
+msgid "Problem reading from ArkhamDB"
+msgstr ""
+
+msgid ""
+"If you are having trouble with your account you should try to reconnect.\n"
+"\n"
+"If the problem persists, you may sign out but campaigns will have ArkhamDB "
+"decks disconnected."
+msgstr ""
+
+msgid "Authorization issues"
+msgstr ""
+
+msgid "Reconnect"
+msgstr ""
+
+msgid "Logged in"
+msgstr ""
+
+msgid "Synchronize decks"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "ArkhamDB"
+msgstr ""
+
+msgid "Sign in to Dissonant Voices?"
+msgstr ""
+
+msgid ""
+"Dissonant Voices is an ongoing project by Mythos Busters to narrate the "
+"english scenario text for each Arkham Horror campaign."
+msgstr ""
+
+msgid "Sign In"
+msgstr ""
+
+msgid "Narration enabled"
+msgstr ""
+
+msgid "Audio narration"
+msgstr ""
+
+msgid "Dissonant Voices"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Deck"
+msgstr ""
+
+msgid "Charts"
+msgstr ""
+
+msgid "Draw Simulator"
+msgstr ""
+
+msgid "Enable"
+msgstr ""
+
+msgid "Enemy Filters"
+msgstr ""
+
+msgid "Fight"
+msgstr ""
+
+msgid "Health"
+msgstr ""
+
+msgid "Per Investigator"
+msgstr ""
+
+msgid "Evade"
+msgstr ""
+
+msgid "Damage"
+msgstr ""
+
+msgid "Horror"
+msgstr ""
+
+msgid "Elite"
+msgstr ""
+
+msgid "Hunter"
+msgstr ""
+
+msgid "Alert"
+msgstr ""
+
+msgid "Spawn"
+msgstr ""
+
+msgid "Aloof"
+msgstr ""
+
+msgid "Massive"
+msgstr ""
+
+msgid "Non-Elite"
+msgstr ""
+
+msgid "Non-Hunter"
+msgstr ""
+
+msgid "Retaliate"
+msgstr ""
+
+msgid "Parley"
+msgstr ""
+
+msgid "Prey"
+msgstr ""
+
+msgid "Swarm"
+msgstr ""
+
+msgid "Location Filters"
+msgstr ""
+
+msgid "Shroud"
+msgstr ""
+
+msgid "Clues"
+msgstr ""
+
+msgid "Haunted"
+msgstr ""
+
+#, javascript-format
+msgid "Search ${ title }"
+msgstr ""
+
+msgid "Select ${ title }"
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Pack Filters"
+msgstr ""
+
+msgid "Core Set"
+msgstr ""
+
+msgid "Select Packs"
+msgstr ""
+
+#, javascript-format
+msgid "${ label }: All"
+msgstr ""
+
+#, javascript-format
+msgid "${ count } Card"
+msgid_plural "${ count } Cards"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Skill Icons"
+msgstr ""
+
+msgid "Skill Icons: All"
+msgstr ""
+
+#, javascript-format
+msgid "Level ${ startXp }"
+msgstr ""
+
+#, javascript-format
+msgid "Level ${ startXp } - ${ endXp }"
+msgstr ""
+
+msgid "Filters"
+msgstr ""
+
+msgid "Packs: All"
+msgstr ""
+
+#, javascript-format
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr ""
+
+msgid "Packs: ${ allPacksString }"
+msgstr ""
+
+msgid "HPI"
+msgstr ""
+
+msgid "Enemies: All"
+msgstr ""
+
+#, javascript-format
+msgid "Enemies: ${ searchParts }"
+msgstr ""
+
+msgid "Sanity"
+msgstr ""
+
+msgid "Uses"
+msgstr ""
+
+msgid "Slots"
+msgstr ""
+
+msgid "Agility"
+msgstr ""
+
+msgid "Combat"
+msgstr ""
+
+msgid "Intellect"
+msgstr ""
+
+msgid "Willpower"
+msgstr ""
+
+msgid "Boost"
+msgstr ""
+
+msgid "Assets: All"
+msgstr ""
+
+#, javascript-format
+msgid "Assets: ${ searchParts }"
+msgstr ""
+
+msgid "Fixed Clues"
+msgstr ""
+
+msgid "Locations: All"
+msgstr ""
+
+#, javascript-format
+msgid "Locations: ${ searchParts }"
+msgstr ""
+
+msgid "Level"
+msgstr ""
+
+msgid "Exceptional"
+msgstr ""
+
+msgid "Non-Exceptional"
+msgstr ""
+
+msgid "Types"
+msgstr ""
+
+msgid "Asset"
+msgstr ""
+
+msgid "Act"
+msgstr ""
+
+msgid "Agenda"
+msgstr ""
+
+msgid "Enemy"
+msgstr ""
+
+msgid "Treachery"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "SubTypes"
+msgstr ""
+
+msgid "Cost"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Fast"
+msgstr ""
+
+msgid "Unique"
+msgstr ""
+
+msgid "Seal"
+msgstr ""
+
+msgid "Victory"
+msgstr ""
+
+msgid "Vengeance"
+msgstr ""
+
+msgid "Exile"
+msgstr ""
+
+msgid "Permanent"
+msgstr ""
+
+msgid "Myriad"
+msgstr ""
+
+msgid "Bonded"
+msgstr ""
+
+msgid "Encounter Sets"
+msgstr ""
+
+msgid "Illustrators"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Skill Boosts"
+msgstr ""
+
+msgid "Skill Boosts: All"
+msgstr ""
+
+msgid "Asset Filters"
+msgstr ""
+
+#, javascript-format
+msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
+msgstr ""
+
+msgid "${ xp } available experience"
+msgstr ""
+
+#, javascript-format
+msgid "${ parsedDeck.experience } experience required"
+msgstr ""
+
+msgid "${ scenarioCount } scenario completed"
+msgid_plural "${ scenarioCount } scenarios completed"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Unable to update: you appear to be offline."
+msgstr ""
+
+msgid ""
+"We're having trouble updating your decks at this time. If the problem "
+"persists tap here to reauthorize."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"An unexpected error occurred (${ error }). If restarting the app doesn't "
+"fix the problem, tap here to reauthorize."
+msgstr ""
+
+msgid "Connect to ArkhamDB"
+msgstr ""
+
+msgid ""
+"ArkhamDB is a popular deck building site where you can manage and share "
+"decks with others.\n"
+"\n"
+"Sign in to access your decks or share decks you have created with others."
+msgstr ""
+
+msgid "Hide ArkhamDB Decks"
+msgstr ""
+
+msgid "New Deck"
+msgstr ""
+
+msgid ""
+"No decks yet.\n"
+"\n"
+"Use the + button to create a new one."
+msgstr ""
+
+#, javascript-format
+msgid "No matching decks for \"${ searchTerm }\"."
+msgstr ""
+
+msgid "Search decks"
+msgstr ""
+
+msgid "Original Deck"
+msgstr ""
+
+#, javascript-format
+msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
+msgstr ""
+
+msgid "Latest Deck: ${ deck.availableExperience } XP"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Upgrade ${ humanVersionNumber }: ${ deck.changes.spentXp } of ${ "
+"deck.availableExperience } XP"
+msgstr ""
+
+#, javascript-format
+msgid "Upgrade ${ humanVersionNumber }: ${ deck.availableExperience } XP"
+msgstr ""
+
+msgid "${ spentXP } of ${ _adjustedXp } XP spent"
+msgstr ""
+
+#, javascript-format
+msgid "${ adjustedXp } XP"
+msgstr ""
+
+msgid "Upgrading"
+msgstr ""
+
+msgid "Editing"
+msgstr ""
+
+msgid "Saving..."
+msgstr ""
+
+msgid "Experience points"
+msgstr ""
+
+msgid "Exiled cards"
+msgstr ""
+
+msgid ""
+"Upgrading your deck allows changes and experience to be tracked over the "
+"course of a campaign."
+msgstr ""
+
+msgid "Save upgrade"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Draw: "
+msgstr ""
+
+msgid "Redraw"
+msgstr ""
+
+msgid "Reshuffle"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "Edit Story Cards"
+msgstr ""
+
+msgid "Draw Weaknesses"
+msgstr ""
+
+msgid "Draw Basic Weakness"
+msgstr ""
+
+msgid ""
+"This deck does not seem to be part of a campaign yet.\n"
+"\n"
+"If you add this deck to a campaign, the app can keep track of the available "
+"weaknesses between multiple decks.\n"
+"\n"
+"Otherwise, you can draw random weaknesses from your entire collection."
+msgstr ""
+
+msgid "Draw From Collection"
+msgstr ""
+
+msgid "Basic weakness"
+msgstr ""
+
+msgid "Do not count towards deck size"
+msgstr ""
+
+msgid "Sort"
+msgstr ""
+
+msgid "Authorization error"
+msgstr ""
+
+msgid ""
+"We are having trouble talking to ArkhamDB.\n"
+"\n"
+"If the problem persists, please try to reauthorize."
+msgstr ""
+
+msgid "Reauthorize"
+msgstr ""
+
+msgid "Okay"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Uploading deck"
+msgstr ""
+
+msgid ""
+"If you have just completed a scenario, use the 'Upgrade' button which will "
+"track changes."
+msgstr ""
+
+msgid "XP earned"
+msgstr ""
+
+msgid "Adjustment:"
+msgstr ""
+
+msgid "Adjust XP"
+msgstr ""
+
+#, javascript-format
+msgid "${ _adjustedXp } XP"
+msgstr ""
+
+msgid "0 unspent"
+msgstr ""
+
+msgid "${ overspent } overspent"
+msgstr ""
+
+msgid "${ unspentXpStr } unspent"
+msgid_plural "${ unspentXpStr } unspent"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Show splash cards"
+msgstr ""
+
+msgid "Hide splash cards"
+msgstr ""
+
+msgid "Select Taboo List"
+msgstr ""
+
+msgid "Taboo List"
+msgstr ""
+
+#, javascript-format
+msgid "${ cardCount } Cards"
+msgstr ""
+
+msgid "Select Deck Size"
+msgstr ""
+
+msgid ""
+"Note: Deck size should only be selected at deck creation time, not between "
+"scenarios."
+msgstr ""
+
+#, javascript-format
+msgid "${ size } Card"
+msgid_plural "${ size } Cards"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Select Faction"
+msgstr ""
+
+msgid ""
+"Note: Secondary faction should only be selected at deck creation time, not "
+"between scenarios."
+msgstr ""
+
+#, javascript-format
+msgid "class_${ faction }"
+msgstr ""
+
+msgid "Original front · Original back"
+msgstr ""
+
+msgid "Parallel front · Original back"
+msgstr ""
+
+msgid "Original front · Parallel back"
+msgstr ""
+
+msgid "Parallel front · Parallel back"
+msgstr ""
+
+msgid "Select Parallel Investigator"
+msgstr ""
+
+msgid ""
+"Parallel investigator options should only be selected at deck creation "
+"time, not between scenarios."
+msgstr ""
+
+#, javascript-format
+msgid "The Adventures of ${ investigator.name }"
+msgstr ""
+
+msgid "${ investigator.name } Investigates"
+msgstr ""
+
+#, javascript-format
+msgid "The ${ investigator.name } Mysteries"
+msgstr ""
+
+msgid "The ${ investigator.name } Job"
+msgstr ""
+
+#, javascript-format
+msgid "${ investigator.name } on the Road"
+msgstr ""
+
+msgid "${ investigator.name } Does It All"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Enter a name for this deck."
+msgstr ""
+
+msgid "Required Cards"
+msgstr ""
+
+msgid "Use Starter Deck"
+msgstr ""
+
+msgid "Create on ArkhamDB"
+msgstr ""
+
+msgid "Sign in to ArkhamDB"
+msgstr ""
+
+msgid "You seem to be offline. Refresh Network?"
+msgstr ""
+
+msgid "Create deck"
+msgstr ""
+
+msgid "Upgraded"
+msgstr ""
+
+msgid "Added"
+msgstr ""
+
+msgid "Removed"
+msgstr ""
+
+msgid "Exiled"
+msgstr ""
+
+msgid "No Changes"
+msgstr ""
+
+msgid "Latest upgrade"
+msgstr ""
+
+msgid "Card changes"
+msgstr ""
+
+msgid "View deck"
+msgstr ""
+
+msgid "Upgrade Deck with XP"
+msgstr ""
+
+msgid "Campaign"
+msgstr ""
+
+#. Actually compute the diffs.
+msgid "Upgrade History"
+msgstr ""
+
+#, javascript-format
+msgid "Bonded Cards (${ count })"
+msgstr ""
+
+msgid "Deck Cards"
+msgstr ""
+
+msgid "Special Cards"
+msgstr ""
+
+msgid "Limited Slots"
+msgstr ""
+
+#, javascript-format
+msgid "${ count } of ${ limitSlotCount }"
+msgstr ""
+
+msgid "Upgrade experience"
+msgstr ""
+
+msgid "Add cards"
+msgstr ""
+
+msgid "Deleting"
+msgstr ""
+
+msgid "Save deck changes?"
+msgstr ""
+
+msgid "Looks like you have made some changes that have not been saved."
+msgstr ""
+
+msgid "Discard Changes"
+msgstr ""
+
+msgid "Save Changes"
+msgstr ""
+
+msgid "Upgrading deck"
+msgstr ""
+
+msgid "Editing deck"
+msgstr ""
+
+msgid "Menu"
+msgstr ""
+
+msgid "Deck has been deleted"
+msgstr ""
+
+msgid ""
+"It looks like you deleted this deck from ArkhamDB.\n"
+"\n"
+"If it was part of a campaign you can add the same investigator back to "
+"restore your campaign data."
+msgstr ""
+
+msgid "Delete broken deck"
+msgstr ""
+
+msgid "Looks like we are having trouble loading this deck for some reason"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Checklist"
+msgstr ""
+
+msgid "Edit Special Cards"
+msgstr ""
+
+msgid "Edit Deck"
+msgstr ""
+
+msgid "Upgrade Deck"
+msgstr ""
+
+msgid "Notes"
+msgstr ""
+
+msgid "Deck name"
+msgstr ""
+
+#, javascript-format
+msgid "${ normalCards } card"
+msgid_plural "${ normalCards } cards"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "${ unspentXp } XP unspent"
+msgid_plural "${ unspentXp } XP unspent"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "${ normalCardCount } · ${ totalCardCount } total"
+msgid_plural "${ normalCardCount } · ${ totalCardCount } total"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Upgrade"
+msgstr ""
+
+msgid "Add scenario XP"
+msgstr ""
+
+msgid "Save Local Changes"
+msgstr ""
+
+msgid "Please save any local edits to this deck before sharing to ArkhamDB"
+msgstr ""
+
+msgid "Unsupported Operation"
+msgstr ""
+
+msgid ""
+"This deck contains next/previous versions with upgrades, so we cannot "
+"upload it to ArkhamDB at this time.\n"
+"\n"
+"If you would like to upload it, you can use Clone to upload a clone of the "
+"current deck."
+msgstr ""
+
+msgid "Upload to ArkhamDB"
+msgstr ""
+
+msgid ""
+"You can upload your deck to ArkhamDB to share with others.\n"
+"\n"
+"After doing this you will need network access to make changes to the deck."
+msgstr ""
+
+#, javascript-format
+msgid "Delete this upgrade (${ deck.version })"
+msgstr ""
+
+msgid "Delete all versions"
+msgstr ""
+
+msgid "Delete deck"
+msgstr ""
+
+msgid "Are you sure you want to delete this deck?"
+msgstr ""
+
+#, javascript-format
+msgid "${ xp } (${ adjustment }) XP"
+msgstr ""
+
+#, javascript-format
+msgid "Deck #${ deck.id }"
+msgstr ""
+
+msgid "Taboo"
+msgstr ""
+
+msgid "Free-form text records"
+msgstr ""
+
+msgid "Tools"
+msgstr ""
+
+msgid "For balancing and evaluating"
+msgstr ""
+
+msgid "Check your deck stability"
+msgstr ""
+
+msgid "For easy deck assembly"
+msgstr ""
+
+#, javascript-format
+msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
+msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Story assets and weaknesses"
+msgstr ""
+
+msgid "Available XP"
+msgstr ""
+
+msgid "Save changes before upgrading"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Clone deck"
+msgstr ""
+
+msgid "View on ArkhamDB"
+msgstr ""
+
+msgid "Open in browser"
+msgstr ""
+
+msgid "Draw simulator"
+msgstr ""
+
+msgid "Upgrade with XP"
+msgstr ""
+
+msgid "Delete Deck"
+msgstr ""
+
+msgid "Card count"
+msgstr ""
+
+msgid "${ bondedCardCount } bound"
+msgid_plural "${ bondedCardCount } bound"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Experience"
+msgstr ""
+
+msgid "Not enough cards."
+msgstr ""
+
+msgid "Too many cards."
+msgstr ""
+
+msgid "Too many copies of a card with the same name."
+msgstr ""
+
+msgid "Contains forbidden cards (cards not permitted by Faction)"
+msgstr ""
+
+msgid "Contains too many limited cards."
+msgstr ""
+
+msgid "Doesn't comply with the Investigator requirements."
+msgstr ""
+
+msgid "Deck is invalid"
+msgstr ""
+
+msgid "Card Costs"
+msgstr ""
+
+msgid "Card Factions"
+msgstr ""
+
+msgid "Version to copy"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Base Version\n"
+"${ parsedBaseDeck.experience } XP"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Current Version ${ parsedCurrentDeck.deck.version }\n"
+"${ parsedCurrentDeck.experience } XP"
+msgstr ""
+
+msgid ""
+"Latest Version ${ parsedLatestDeck.deck.version }\n"
+"${ parsedLatestDeck.experience } XP"
+msgstr ""
+
+msgid "New Name"
+msgstr ""
+
+msgid "Required"
+msgstr ""
+
+msgid "Deck Type"
+msgstr ""
+
+msgid "Copy Deck"
+msgstr ""
+
+msgid ""
+"Make a copy of a deck so that you can use it in a different campaign or "
+"choose different upgrades."
+msgstr ""
+
+#, javascript-format
+msgid "Level ${ level }"
+msgstr ""
+
+msgid ""
+"Keep level ${ level } after upgrade\n"
+"Won't count towards deck size"
+msgstr ""
+
+msgid ""
+"<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] "
+"card, you may instead pay the full experience cost on the higher level "
+"version and leave the lower level version in your deck (it does not count "
+"towards your deck size or the number of copies of that card in your deck)."
+msgstr ""
+
+msgid ""
+"<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead "
+"pay the full experience cost on the higher level version and leave the "
+"lower level version in your deck (it does not count towards your deck size "
+"or the number of copies of that card in your deck)."
+msgstr ""
+
+#, javascript-format
+msgid "This upgrade will cost ${ xpCost } experience."
+msgid_plural "This upgrade will cost ${ xpCost } experience."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid ""
+"Two random cards will be chosen among the following choice:\n"
+"\n"
+"${ upgradeCards }"
+msgid_plural ""
+"Two random cards will be chosen among the following choices:\n"
+"\n"
+"${ upgradeCards }"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "You can edit your collection under Settings to adjust the eligible choices."
+msgstr ""
+
+msgid "Shrewd Analysis Rule"
+msgstr ""
+
+msgid ""
+"<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use "
+"Shrewd Analysis to choose both upgrades randomly and only pay for one.\n"
+"\n"
+"<i>Note: the app handles this by adjusting experience to account for the "
+"'free' upgrade.</i>"
+msgstr ""
+
+msgid "Upgrade results"
+msgstr ""
+
+msgid "Upgrade with Shrewd Analysis"
+msgstr ""
+
+#, javascript-format
+msgid "Show ${ nonCollection.length } non-collection card"
+msgid_plural "Show ${ nonCollection.length } non-collection cards"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Faction: ${ card.faction_name }, Level: ${ level }"
+msgstr ""
+
+#, javascript-format
+msgid "Faction: ${ card.faction_name }, Cost: ${ cost }, Level: ${ level }"
+msgstr ""
+
+msgid "Faction: ${ card.faction_name }"
+msgstr ""
+
+#, javascript-format
+msgid "Encounter set: ${ card.encounter_name }"
+msgstr ""
+
+msgid "Health: none"
+msgstr ""
+
+msgid "Sanity: none"
+msgstr ""
+
+#, javascript-format
+msgid "Health: ${ count }"
+msgstr ""
+
+msgid "Sanity: ${ count }"
+msgstr ""
+
+#, javascript-format
+msgid "Willpower: ${ willpower }"
+msgstr ""
+
+msgid "Intellect: ${ intellect }"
+msgstr ""
+
+#, javascript-format
+msgid "Combat: ${ combat }"
+msgstr ""
+
+msgid "Agility: ${ agility }"
+msgstr ""
+
+msgid "Search options"
+msgstr ""
+
+msgid "Uncross Out"
+msgstr ""
+
+msgid "Cross Out"
+msgstr ""
+
+msgid "Add Another"
+msgstr ""
+
+msgid "Note: This entry is crossed out"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+msgid "Mark entire cycle?"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+msgid "Clear entire cycle?"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+#, javascript-format
+msgid "Mark all packs in the ${ pack.name } cycle?"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+msgid "Clear all packs in the ${ pack.name } cycle?"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+msgid "No"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+msgid "Yes"
+msgstr ""
+
+msgid "The Dunwich Legacy"
+msgstr ""
+
+msgid "The Path to Carcosa"
+msgstr ""
+
+msgid "The Forgotten Age"
+msgstr ""
+
+msgid "The Circle Undone"
+msgstr ""
+
+msgid "The Dream-Eaters"
+msgstr ""
+
+msgid "The Innsmouth Conspiracy"
+msgstr ""
+
+msgid "Books"
+msgstr ""
+
+msgid "Parallel"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Faction, Name"
+msgstr ""
+
+msgid "Faction, Pack"
+msgstr ""
+
+msgid "Pack"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Encounter Set"
+msgstr ""
+
+msgid "Sort by"
+msgstr ""
+
+msgid "Faction"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "All Investigators"
+msgstr ""
+
+#, javascript-format
+msgid "${ investigator.deck_requirements.size } Cards"
+msgstr ""
+
+msgid "Unknown card: ${ req.code }"
+msgstr ""
+
+#, javascript-format
+msgid "Show ${ section.nonCollectionCount } non-collection investigator"
+msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "No matching investigators for \"${ searchTerm }\"."
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Investigating for clues"
+msgstr ""
+
+msgid "Cursing at the tentacle token"
+msgstr ""
+
+msgid "Drawing a mythos card with surge"
+msgstr ""
+
+msgid "Placing doom on the agenda"
+msgstr ""
+
+msgid "Reticulating spines"
+msgstr ""
+
+msgid "Trying to make sense of the Time Warp FAQ"
+msgstr ""
+
+msgid "Taking three damage and three horror"
+msgstr ""
+
+msgid "Up by 5, hope I don't draw the tentacle"
+msgstr ""
+
+msgid "In Deck"
+msgstr ""
+
+msgid "All Eligible Cards"
+msgstr ""
+
+#, javascript-format
+msgid "Show ${ nonCollectionCount } non-collection card"
+msgid_plural "Show ${ nonCollectionCount } non-collection cards"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Spoiler Settings"
+msgstr ""
+
+msgid "Edit spoiler settings"
+msgstr ""
+
+#, javascript-format
+msgid "Show ${ spoilerCardsCount } spoiler"
+msgid_plural "Show ${ spoilerCardsCount } spoilers"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "No matching cards for \"${ searchTerm }\""
+msgstr ""
+
+msgid "No matching cards"
+msgstr ""
+
+msgid "Search in:"
+msgstr ""
+
+msgid "Game Text"
+msgstr ""
+
+msgid "Flavor Text"
+msgstr ""
+
+msgid "Card Backs"
+msgstr ""
+
+msgid "Search player cards"
+msgstr ""
+
+msgid "Search encounter cards"
+msgstr ""
+
+msgid "Clear search filters"
+msgstr ""
+
+#, javascript-format
+msgid "Clear \"${ searchTerm }\" search"
+msgstr ""
+
+msgid "Search game text"
+msgstr ""
+
+msgid "Search card backs"
+msgstr ""
+
+msgid "Search for a card"
+msgstr ""
+
+msgid "Encounter Card Toggle"
+msgstr ""
+
+msgid "Encounter Cards"
+msgstr ""
+
+msgid "Player Cards"
+msgstr ""
+
+msgid "Hide versatile cards"
+msgstr ""
+
+msgid "Checking for FAQ"
+msgstr ""
+
+msgid "No entries at this time."
+msgstr ""
+
+#, javascript-format
+msgid "Last Updated: ${ lastUpdated }"
+msgstr ""
+
+msgid "Flip Card"
+msgstr ""
+
+msgid "Taboo List Changes"
+msgstr ""
+
+#, javascript-format
+msgid "Additional XP: ${ card.extra_xp }."
+msgstr ""
+
+msgid "XP Discount: ${ card.extra_xp }."
+msgstr ""
+
+#, javascript-format
+msgid "Additional XP: ${ taboo.extra_xp }."
+msgstr ""
+
+msgid "XP Discount: ${ taboo.extra_xp }."
+msgstr ""
+
+msgid ""
+"The List of Taboos is a list of Arkham Horror: The Card Game cards with "
+"optional deckbuilding restrictions or text changes. This list is designed "
+"to craft a healthy balance between investigator power and scenario "
+"difficulty, and to enforce shifts in deckbuilding environments over time."
+msgstr ""
+
+msgid ""
+"Adhering to The List of Taboos is completely optional. Investigators are "
+"not forced to adhere to the restrictions on this list, but if an "
+"investigator chooses to do so, they must do so in full (an investigator "
+"cannot pick and choose which restrictions to use)."
+msgstr ""
+
+msgid ""
+"You can opt-in to always seeing taboos and buiding decks with them in "
+"Settings."
+msgstr ""
+
+msgid "Allowed Cards"
+msgstr ""
+
+msgid "FAQ"
+msgstr ""
+
+msgid "Download language cards"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Would you like to download updated cards from ArkhamDB to match your "
+"phone's preferred language (${ lang })?\n"
+"\n"
+"You can override your language preference for this app in Settings."
+msgstr ""
+
+msgid "Not now"
+msgstr ""
+
+msgid "Check for updated cards?"
+msgstr ""
+
+msgid ""
+"It has been more than a week since you checked for new cards.\n"
+"Check for new cards from ArkhamDB?"
+msgstr ""
+
+msgid "Ask me later"
+msgstr ""
+
+msgid "Check for updates"
+msgstr ""
+
+msgid "Error loading cards, make sure your network is working."
+msgstr ""
+
+msgid "Try Again"
+msgstr ""
+
+msgid "Loading latest cards..."
+msgstr ""
+
+msgid "Database migration required"
+msgstr ""
+
+msgid "This should only take a few seconds and no network is required."
+msgstr ""
+
+msgid ""
+"If you run into any problems with this migration, please contact "
+"arkhamcards@gmail.com."
+msgstr ""
+
+msgid "Migrate now"
+msgstr ""
+
+msgid "Bound Cards"
+msgstr ""
+
+msgid "Deckbuilding"
+msgstr ""
+
+msgid "Show all available cards"
+msgstr ""
+
+#, javascript-format
+msgid "Warning: this card contains possible spoilers for '${ card.pack_name }'."
+msgstr ""
+
+msgid "Alternate Cards"
+msgstr ""
+
+msgid "Advanced Cards"
+msgstr ""
+
+msgid "Share"
+msgstr ""
+
+msgid "Deckbuilding Cards"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Missing card #${ code }. Please try updating cards from ArkhamDB in "
+"settings."
+msgstr ""
+
+#, javascript-format
+msgid "Fight: ${ fight }"
+msgstr ""
+
+msgid "Health: ${ health } per investigator"
+msgstr ""
+
+#, javascript-format
+msgid "Health: ${ health }"
+msgstr ""
+
+msgid "Evade: ${ evade }"
+msgstr ""
+
+msgid "Test Icons: "
+msgstr ""
+
+#, javascript-format
+msgid "Willpower: ${ count }"
+msgstr ""
+
+msgid "Intellect: ${ count }"
+msgstr ""
+
+#, javascript-format
+msgid "Combat: ${ count }"
+msgstr ""
+
+msgid "Agility: ${ count }"
+msgstr ""
+
+#, javascript-format
+msgid "Wild: ${ count }"
+msgstr ""
+
+msgid "Slot: ${ card.slot }"
+msgstr ""
+
+#, javascript-format
+msgid "Doom: ${ doom }"
+msgstr ""
+
+#, javascript-format
+msgid "Clues: ${ clues }${ perInvestigatorClues }"
+msgstr ""
+
+msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
+msgstr ""
+
+msgid "Show back"
+msgstr ""
+
+#, javascript-format
+msgid "Victory: ${ card.victory }."
+msgstr ""
+
+msgid "Vengeance: ${ card.vengeance }."
+msgstr ""
+
+msgid "Show front"
+msgstr ""
+
+msgid "Campaign Log"
+msgstr ""
+
+msgid "Achievements"
+msgstr ""
+
+msgid "Review records"
+msgstr ""
+
+msgid "Note campaign achievements"
+msgstr ""
+
+msgid "Chaos Bag"
+msgstr ""
+
+msgid "Complete campaign setup"
+msgstr ""
+
+msgid "Review and draw tokens"
+msgstr ""
+
+msgid "Remove deck from campaign"
+msgstr ""
+
+msgid ""
+"Are you sure you want to remove this deck from the campaign?\n"
+"\n"
+"After removing the deck you will be able to select a different deck, but "
+"experience and story assets will only be saved as you complete new "
+"scenarios."
+msgstr ""
+
+msgid "Remove deck"
+msgstr ""
+
+msgid "Cannot remove"
+msgstr ""
+
+msgid ""
+"Since this investigator has participated in one or more scenarios during "
+"this campaign, they cannot be removed.\n"
+"\n"
+"However, you can choose to have them not participate in future scenarios of "
+"this campaign."
+msgstr ""
+
+msgid "Spent experience"
+msgstr ""
+
+msgid "Investigator trauma"
+msgstr ""
+
+msgid ""
+"You can only edit trauma here between scenarios.\n"
+"\n"
+"During scenario play it can be edited using the scenario guide."
+msgstr ""
+
+msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
+msgstr ""
+
+msgid "Investigators"
+msgstr ""
+
+msgid "Killed and Insane Investigators"
+msgstr ""
+
+msgid "Add Investigator"
+msgstr ""
+
+msgid "Show story assets from other campaigns"
+msgstr ""
+
+msgid "Story assets"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"The <i>${ scenario.scenario_name }</i> challenge scenario centers around "
+"the investigator ${ investigator.name }, and therefore has the following "
+"prerequisites:"
+msgstr ""
+
+msgid ""
+"${ investigator.name } must be chosen as one of the investigators when "
+"playing this scenario."
+msgstr ""
+
+msgid ""
+"The app does not enforce Challenge Scenario prerequisites, so please "
+"confirm that they apply manually."
+msgstr ""
+
+msgid "Play this scenario"
+msgstr ""
+
+msgid "Encounter Card Errata"
+msgstr ""
+
+msgid "Choose Investigator"
+msgstr ""
+
+msgid "No one"
+msgstr ""
+
+msgid "The following questions contain light spoilers for this scenario."
+msgstr ""
+
+msgid "Show Spoilers"
+msgstr ""
+
+msgid "Scenario FAQ"
+msgstr ""
+
+msgid "Undo"
+msgstr ""
+
+msgid "Reset Scenario?"
+msgstr ""
+
+msgid ""
+"Are you sure you want to reset this scenario?\n"
+"\n"
+"All data you have entered will be lost."
+msgstr ""
+
+msgid "Nevermind"
+msgstr ""
+
+msgid "Interlude FAQ"
+msgstr ""
+
+msgid "Are you sure you want to delete this standalone?"
+msgstr ""
+
+msgid "Delete standalone"
+msgstr ""
+
+msgid "Select Cards"
+msgstr ""
+
+msgid "Choose additional card"
+msgstr ""
+
+msgid "Proceed"
+msgstr ""
+
+msgid "The investigators must decide (choose one):"
+msgstr ""
+
+msgid "Add new investigator"
+msgstr ""
+
+#, javascript-format
+msgid "${ confirmText } <i>(included automatically)</i>"
+msgstr ""
+
+#, javascript-format
+msgid "${ supplyName } to use (${ desiredCount })"
+msgstr ""
+
+msgid "Reads \"${ badThing.prompt }\""
+msgstr ""
+
+msgid "Doesn't get any"
+msgstr ""
+
+#, javascript-format
+msgid "(${ supply.cost } supply point each)"
+msgid_plural "(${ supply.cost } supply points each)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "(${ supply.cost } supply point)"
+msgid_plural "(${ supply.cost } supply points)"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "${ spent } of ${ total }"
+msgstr ""
+
+msgid "Too many"
+msgstr ""
+
+msgid "Not enough"
+msgstr ""
+
+#, javascript-format
+msgid "Set the ${ encounterSetString } encounter set aside, out of play."
+msgid_plural "Set the ${ encounterSetString } encounter sets aside, out of play."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Gather all cards from the ${ encounterSetString } encounter set."
+msgid_plural "Gather all cards from the following encounter sets: ${ encounterSetString }."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "${ startText } This set is indicated by the following icon:"
+msgid_plural "${ startText } These sets are indicated by the following icons:"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "${ count } resupply"
+msgid_plural "${ count } resupply"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "${ count } supply point"
+msgid_plural "${ count } supply points"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "${ xp } general / ${ resupplyPointsString } XP"
+msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid ""
+"${ card.name }\n"
+"(has ${ input.id })"
+msgstr ""
+
+#, javascript-format
+msgid "${ specialXp } resupply experience available"
+msgid_plural "${ specialXp } resupply experience available"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Random location"
+msgstr ""
+
+msgid "Draw location"
+msgstr ""
+
+msgid "Switch campaign"
+msgstr ""
+
+msgid "Choose Investigators"
+msgstr ""
+
+msgid "View upgrade"
+msgstr ""
+
+msgid "Campaign cards"
+msgstr ""
+
+msgid "Trauma"
+msgstr ""
+
+msgid "Physical"
+msgstr ""
+
+#, javascript-format
+msgid " (New Total: ${ totalPhysical })"
+msgstr ""
+
+msgid "Mental"
+msgstr ""
+
+#, javascript-format
+msgid " (New Total: ${ totalMental })"
+msgstr ""
+
+msgid "Save deck upgrade"
+msgstr ""
+
+msgid "Save adjustments"
+msgstr ""
+
+msgid "Select deck"
+msgstr ""
+
+msgid ""
+"It looks like one or more deck upgrades are unsaved. If you would like the "
+"app to track spent experience as you make deck changes, please go back and "
+"press 'Save deck upgrade' on each investigator before proceeding to the "
+"next scenario.\n"
+"\n"
+"Once an upgrade has been saved, you can edit the deck as normal and the app "
+"will properly track the experience cost for any changes you make (the "
+"original versions of the deck can still be viewed from the deck's menu)."
+msgstr ""
+
+msgid ""
+"It looks like you edited the experience or trauma for an investigator, but "
+"have not saved it yet. Please go back and select ‘Save adjustments’ to "
+"ensure your changes are saved."
+msgstr ""
+
+msgid "Proceed without saving"
+msgstr ""
+
+msgid "Proceed anyway"
+msgstr ""
+
+msgid "Update decks with scenario results"
+msgstr ""
+
+msgid "Save deck changes"
+msgstr ""
+
+msgid "It looks like one or more deck changes are unsaved."
+msgstr ""
+
+msgid "Choose entry to add to campaign log:"
+msgstr ""
+
+msgid "Edit campaign log"
+msgstr ""
+
+msgid "Draw chaos tokens"
+msgstr ""
+
+msgid "Draw random basic weakness"
+msgstr ""
+
+msgid "Record trauma"
+msgstr ""
+
+msgid "Scenario completed"
+msgstr ""
+
+msgid "Start playing the scenario now."
+msgstr ""
+
+#, javascript-format
+msgid "${ investigator.name } earns ${ card.name } (Advanced)."
+msgstr ""
+
+#, javascript-format
+msgid "${ investigator.name } earns ${ card.name }."
+msgstr ""
+
+#, javascript-format
+msgid "Who will add ${ card.name } to their deck?"
+msgstr ""
+
+#, javascript-format
+msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
+msgstr ""
+
+msgid "In your Campaign Log, record that <i>${ text }</i>"
+msgstr ""
+
+#, javascript-format
+msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
+"logEntry.text }</i>"
+msgstr ""
+
+msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
+"logEntry.text }</i>."
+msgstr ""
+
+msgid "Add ${ tokenString } to the chaos bag."
+msgstr ""
+
+#, javascript-format
+msgid "Remove ${ tokenString } from the chaos bag."
+msgstr ""
+
+#, javascript-format
+msgid "${ investigator.name } removes ${ card.name } (Advanced)"
+msgstr ""
+
+msgid "${ investigator.name } removes ${ card.name }"
+msgstr ""
+
+#, javascript-format
+msgid "Remove ${ card.name } (${ input.length })"
+msgstr ""
+
+msgid "Who will remove ${ card.name } from their deck?"
+msgstr ""
+
+msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
+msgstr ""
+
+msgid "Physical trauma"
+msgstr ""
+
+msgid "Mental trauma"
+msgstr ""
+
+msgid "Draw random weakness"
+msgstr ""
+
+msgid "All weaknesses have been assigned."
+msgstr ""
+
+msgid "Do you want to use the app to randomize weaknesses?"
+msgstr ""
+
+msgid "Easy"
+msgstr ""
+
+msgid "Standard"
+msgstr ""
+
+msgid "Hard"
+msgstr ""
+
+msgid "Expert"
+msgstr ""
+
+#, javascript-format
+msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
+msgstr ""
+
+msgid "Because you have already completed <b>${ scenarioName }</b>:"
+msgstr ""
+
+#, javascript-format
+msgid "Because you have not yet completed <b>${ scenarioName }</b>:"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Check Campaign Log. Because there is ${ count } mark under '${ "
+"logEntry.section }'"
+msgid_plural ""
+"Check Campaign Log. Because there are ${ count } marks under '${ "
+"logEntry.section }'"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid ""
+"Check Campaign Log. Because there is ${ count } entry under '${ "
+"logEntry.section }'"
+msgid_plural ""
+"Check Campaign Log. Because there are ${ count } entries under '${ "
+"logEntry.section }'"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Check Campaign Log. Because <i>${ entry }</i>"
+msgstr ""
+
+msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName "
+"}</b>."
+msgid_plural ""
+"Since ${ list } all have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid ""
+"Since ${ list } does not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgid_plural ""
+"Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
+"sectionName }</b>."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Does any investigator have \"${ cardName }\" in their deck?"
+msgstr ""
+
+#, javascript-format
+msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
+msgstr ""
+
+msgid "For each investigator with \"${ cardName }\" in their deck:"
+msgstr ""
+
+#, javascript-format
+msgid "${ investigators } must read <b>${ prompt }</b>."
+msgid_plural "${ investigators } must read <b>${ prompt }</b>."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Because there is ${ playerCount } player in the game:"
+msgid_plural "Because there are ${ playerCount } players in the game:"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "If the lead investigator was <b>killed</b>."
+msgstr ""
+
+msgid "If all investigators were <b>killed</b>."
+msgstr ""
+
+msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
+msgstr ""
+
+msgid "Can't add side scenario right now."
+msgstr ""
+
+msgid ""
+"Side scenarios cannot be added to a campaign until the previous scenario "
+"and following interludes are completed."
+msgstr ""
+
+msgid "Choose Side-Scenario"
+msgstr ""
+
+msgid "Add side scenario"
+msgstr ""
+
+#, javascript-format
+msgid "${ scenarioName } (Attempt ${ attempt })"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "View results"
+msgstr ""
+
+msgid "Skipped"
+msgstr ""
+
+msgid "Coming soon"
+msgstr ""
+
+msgid "Locked"
+msgstr ""
+
+msgid "Odds Calculator"
+msgstr ""
+
+#, javascript-format
+msgid "Chaos Bag (${ tokenCount })"
+msgstr ""
+
+msgid "Odds calculator"
+msgstr ""
+
+msgid "Download printable cards"
+msgstr ""
+
+#, javascript-format
+msgid "${ investigator.name } Challenge Scenario"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Experience cost: ${ challengeCost } for ${ investigator.name }, ${ xpCost } "
+"for each other investigator"
+msgstr ""
+
+msgid "Challenge Scenario"
+msgstr ""
+
+#, javascript-format
+msgid "Experience cost: ${ xpCost }"
+msgstr ""
+
+msgid "Custom side scenario"
+msgstr ""
+
+msgid "Scenario Name"
+msgstr ""
+
+msgid "Experience Cost"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid ""
+"A side-story is a scenario that may be played between any two scenarios of "
+"an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
+"each investigator in the campaign a certain amount of experience. "
+"Weaknesses, trauma, experience, and rewards granted by playing a side-story "
+"stay with the investigators for the remainder of the campaign. Each "
+"sidestory may only be played once per campaign.\n"
+"The experience required to play these scenarios will be deducted "
+"automatically at the end of the scenario."
+msgstr ""
+
+msgid "Custom scenario"
+msgstr ""
+
+msgid ""
+"Challenge scenarios are special print-and-play scenarios that utilize "
+"existing products in the <i>Arkham Horror: The Card Game</i> collection, "
+"along with additional print-and-play cards, to create new content. These "
+"scenarios are designed with certain prerequisites in mind, in order to "
+"craft a challenging puzzle-like experience. Printable cards can be "
+"downloaded from Fantasy Flight Games under the \"Parallel Investigators\" "
+"section."
+msgstr ""
+
+msgid "Side"
+msgstr ""
+
+msgid "Challenge"
+msgstr ""
+
+msgid "Selected Difficulty"
+msgstr ""
+
+msgid "Edit Chaos Bag"
+msgstr ""
+
+msgid "Edit Assigned Weaknesses"
+msgstr ""
+
+#, javascript-format
+msgid "Investigator: ${ investigatorName }"
+msgstr ""
+
+#, javascript-format
+msgid "Save to ${ investigator.name }’s Deck"
+msgstr ""
+
+msgid "Add scenario result"
+msgstr ""
+
+msgid "Record completed scenario"
+msgstr ""
+
+msgid "Not yet started"
+msgstr ""
+
+msgid "Tap to draw"
+msgstr ""
+
+#, javascript-format
+msgid "Are you sure you want to delete the campaign: ${ campaignName }"
+msgstr ""
+
+msgid "Delete campaign"
+msgstr ""
+
+msgid "Chaos bag is empty"
+msgstr ""
+
+msgid "Draw another"
+msgstr ""
+
+msgid "Return tokens"
+msgstr ""
+
+msgid ""
+"Return all tokens\n"
+"(including Bless/Curse)"
+msgstr ""
+
+msgid "Sealed Tokens"
+msgstr ""
+
+msgid "Seal tokens"
+msgstr ""
+
+msgid "Release all"
+msgstr ""
+
+msgid "Remove all bless & curse tokens"
+msgstr ""
+
+msgid "Resolution"
+msgstr ""
+
+msgid "Earned experience:"
+msgstr ""
+
+msgid "Interlude"
+msgstr ""
+
+#, javascript-format
+msgid "${ investigator.firstName }’s Trauma"
+msgstr ""
+
+msgid "Physical Trauma"
+msgstr ""
+
+msgid "Mental Trauma"
+msgstr ""
+
+#, javascript-format
+msgid "Story cards to add - ${ scenarioName }"
+msgstr ""
+
+msgid "Story cards to add"
+msgstr ""
+
+msgid "Story Cards - Existing"
+msgstr ""
+
+msgid "Upload campaign"
+msgstr ""
+
+msgid "Adjust Weakness Set"
+msgstr ""
+
+#. eslint-disable prefer-template 
+msgid "This deck contains several basic weaknesses"
+msgstr ""
+
+#. eslint-disable prefer-template 
+msgid "This deck contains a basic weakness"
+msgstr ""
+
+#. eslint-disable prefer-template 
+msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
+msgstr ""
+
+#. eslint-disable prefer-template 
+msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
+msgstr ""
+
+msgid "Not Now"
+msgstr ""
+
+msgid "Night of the Zealot"
+msgstr ""
+
+msgid "Return to the Night of the Zealot"
+msgstr ""
+
+msgid "Return to The Dunwich Legacy"
+msgstr ""
+
+msgid "The Path To Carcosa"
+msgstr ""
+
+msgid "Return to The Path to Carcosa"
+msgstr ""
+
+msgid "Return to The Forgotten Age"
+msgstr ""
+
+msgid "The Dream-Quest"
+msgstr ""
+
+msgid "The Web of Dreams"
+msgstr ""
+
+msgid "The Gathering"
+msgstr ""
+
+msgid "The Midnight Masks"
+msgstr ""
+
+msgid "The Devourer Below"
+msgstr ""
+
+msgid "Prologue"
+msgstr ""
+
+msgid "Extracurricular Activity"
+msgstr ""
+
+msgid "The House Always Wins"
+msgstr ""
+
+msgid "Armitage’s Fate"
+msgstr ""
+
+msgid "The Miskatonic Museum"
+msgstr ""
+
+msgid "Essex County Express"
+msgstr ""
+
+msgid "Blood on the Altar"
+msgstr ""
+
+msgid "The Survivors"
+msgstr ""
+
+msgid "Undimensioned and Unseen"
+msgstr ""
+
+msgid "Where Doom Awaits"
+msgstr ""
+
+msgid "Lost in Time and Space"
+msgstr ""
+
+msgid "Epilogue"
+msgstr ""
+
+msgid "Return to Extracurricular Activity"
+msgstr ""
+
+msgid "Return to The House Always Wins"
+msgstr ""
+
+msgid "Return to The Miskatonic Museum"
+msgstr ""
+
+msgid "Return to Essex County Express"
+msgstr ""
+
+msgid "Return to Blood on the Altar"
+msgstr ""
+
+msgid "Return to Undimensioned and Unseen"
+msgstr ""
+
+msgid "Return to Where Doom Awaits"
+msgstr ""
+
+msgid "Return to Lost in Time and Space"
+msgstr ""
+
+msgid "Curtain Call"
+msgstr ""
+
+msgid "The Last King"
+msgstr ""
+
+msgid "Lunacy’s Reward"
+msgstr ""
+
+msgid "Echoes of the Past"
+msgstr ""
+
+msgid "The Unspeakable Oath"
+msgstr ""
+
+msgid "Lost Soul"
+msgstr ""
+
+msgid "A Phantom of Truth"
+msgstr ""
+
+msgid "The Pallid Mask"
+msgstr ""
+
+msgid "Black Stars Rise"
+msgstr ""
+
+msgid "Dim Carcosa"
+msgstr ""
+
+msgid "Return to Curtain Call"
+msgstr ""
+
+msgid "Return to The Last King"
+msgstr ""
+
+msgid "Return to Echoes of the Past"
+msgstr ""
+
+msgid "Return to The Unspeakable Oath"
+msgstr ""
+
+msgid "Return to A Phantom of Truth"
+msgstr ""
+
+msgid "Return to The Pallid Mask"
+msgstr ""
+
+msgid "Return to Black Stars Rise"
+msgstr ""
+
+msgid "Return to Dim Carcosa"
+msgstr ""
+
+msgid "The Untamed Wilds"
+msgstr ""
+
+msgid "Restless Nights"
+msgstr ""
+
+msgid "The Doom of Eztli"
+msgstr ""
+
+msgid "Expedition’s End"
+msgstr ""
+
+msgid "Threads of Fate"
+msgstr ""
+
+msgid "The Boundary Beyond"
+msgstr ""
+
+msgid "The Jungle Beckons"
+msgstr ""
+
+msgid "Heart of the Elders"
+msgstr ""
+
+msgid "The City of Archives"
+msgstr ""
+
+msgid "Those Held Captive"
+msgstr ""
+
+msgid "The Depths of Yoth"
+msgstr ""
+
+msgid "The Darkness"
+msgstr ""
+
+msgid "Shattered Aeons"
+msgstr ""
+
+msgid "Return to The Untamed Wilds"
+msgstr ""
+
+msgid "Return to The Doom of Eztli"
+msgstr ""
+
+msgid "Return to Threads of Fate"
+msgstr ""
+
+msgid "Return to The Boundary Beyond"
+msgstr ""
+
+msgid "Return to Heart of the Elders"
+msgstr ""
+
+msgid "Return to The City of Archives"
+msgstr ""
+
+msgid "Return to The Depths of Yoth"
+msgstr ""
+
+msgid "Return to Shattered Aeons"
+msgstr ""
+
+msgid "Prologue: Disappearance at the Twilight Estate"
+msgstr ""
+
+msgid "The Witching Hour"
+msgstr ""
+
+msgid "At Death's Doorstep"
+msgstr ""
+
+msgid "The Price of Progress"
+msgstr ""
+
+msgid "The Secret Name"
+msgstr ""
+
+msgid "The Wages of Sin"
+msgstr ""
+
+msgid "For the Greater Good"
+msgstr ""
+
+msgid "The Inner Circle"
+msgstr ""
+
+msgid "Union and Disillusion"
+msgstr ""
+
+msgid "In the Clutches of Chaos"
+msgstr ""
+
+msgid "Twist of Fate"
+msgstr ""
+
+msgid "Before the Black Throne"
+msgstr ""
+
+msgid "Return to The Gathering"
+msgstr ""
+
+msgid "Return to the Midnight Masks"
+msgstr ""
+
+msgid "Return to the Devourer Below"
+msgstr ""
+
+msgid "Beyond the Gates of Sleep"
+msgstr ""
+
+msgid "The Black Cat"
+msgstr ""
+
+msgid "The Search for Kadath"
+msgstr ""
+
+msgid "The Oneironauts"
+msgstr ""
+
+msgid "Dark Side of the Moon"
+msgstr ""
+
+msgid "The Great Ones"
+msgstr ""
+
+msgid "Where Gods Dwell"
+msgstr ""
+
+msgid "Waking Nightmare"
+msgstr ""
+
+msgid "A Thousand Shapes of Horror"
+msgstr ""
+
+msgid "Point of No Return"
+msgstr ""
+
+msgid "Weaver of the Cosmos"
+msgstr ""
+
+msgid "The Pit of Despair"
+msgstr ""
+
+msgid "Puzzle Pieces"
+msgstr ""
+
+msgid "The Vanishing of Elina Harper"
+msgstr ""
+
+msgid "The Syzygy"
+msgstr ""
+
+msgid "In Too Deep"
+msgstr ""
+
+msgid "Devil Reef"
+msgstr ""
+
+msgid "Beneath the Waves"
+msgstr ""
+
+msgid "Horror in High Gear"
+msgstr ""
+
+msgid "A Light in the Fog"
+msgstr ""
+
+msgid "The Lair of Dagon"
+msgstr ""
+
+msgid "Hidden Truths"
+msgstr ""
+
+msgid "Into the Maelstrom"
+msgstr ""
+
+msgid "The Night of the Zealot"
+msgstr ""
+
+msgid "Campaign Notes"
+msgstr ""
+
+msgid "Cultists We Interrogated"
+msgstr ""
+
+msgid "Cultists Who Got Away"
+msgstr ""
+
+msgid "Sacrificed to Yog-Sothoth"
+msgstr ""
+
+msgid "VIPs Interviewed"
+msgstr ""
+
+msgid "VIPs Slain"
+msgstr ""
+
+msgid "Doubt"
+msgstr ""
+
+msgid "Conviction"
+msgstr ""
+
+msgid "Chasing the Stranger"
+msgstr ""
+
+msgid "Yig's Fury"
+msgstr ""
+
+msgid "Supplies"
+msgstr ""
+
+msgid "Mementos Discovered"
+msgstr ""
+
+msgid "Missing Persons - Gavriella Mizrah"
+msgstr ""
+
+msgid "Missing Persons - Jerome Davids"
+msgstr ""
+
+msgid "Missing Persons - Penny White"
+msgstr ""
+
+msgid "Missing Persons - Valentino Rivas"
+msgstr ""
+
+msgid "Evidence of Kadath"
+msgstr ""
+
+msgid "Steps of the Bridge"
+msgstr ""
+
+msgid "Memories Recovered"
+msgstr ""
+
+msgid "Possible Suspects"
+msgstr ""
+
+msgid "Possible Hideouts"
+msgstr ""
+
+msgid "Section Name"
+msgstr ""
+
+msgid "Count"
+msgstr ""
+
+msgid "Add Campaign Log Section"
+msgstr ""
+
+msgid "Save XP"
+msgstr ""
+
+msgid "Upgrade deck"
+msgstr ""
+
+#, javascript-format
+msgid "${ xp } available experience, (${ parsedDeck.changes.spentXp } spent)"
+msgstr ""
+
+#, javascript-format
+msgid "${ totalXp } total"
+msgstr ""
+
+msgid ""
+"By upgrading a deck, you can track XP and story card upgrades as your "
+"campaign develops.\n"
+"\n"
+"Previous versions of your deck will still be accessible."
+msgstr ""
+
+msgid "Update investigator decks"
+msgstr ""
+
+msgid ""
+"Campaign A and Campaign B\n"
+"Eight-part campaign"
+msgstr ""
+
+msgid ""
+"Campaign A\n"
+"Four-part campaign"
+msgstr ""
+
+msgid ""
+"Campaign B\n"
+"Four-part campaign"
+msgstr ""
+
+msgid "Guide not yet available"
+msgstr ""
+
+msgid "My Campaigns"
+msgstr ""
+
+msgid "Other Campaigns"
+msgstr ""
+
+msgid "Unknown campaign"
+msgstr ""
+
+msgid "Standalones"
+msgstr ""
+
+msgid ""
+"Don't see your favorite Standalone scenario here? Let me know at "
+"arkhamcards@gmail.com, and I'll see about including it in a future release."
+msgstr ""
+
+msgid "Select Campaign"
+msgstr ""
+
+msgid "Success"
+msgstr ""
+
+msgid "Draw Two, Pick One"
+msgstr ""
+
+msgid "Fail By 2 or Less"
+msgstr ""
+
+msgid "Fail By 1 or Less"
+msgstr ""
+
+msgid "Succeed By 1 or More"
+msgstr ""
+
+msgid "Succeed By 2 or More"
+msgstr ""
+
+msgid "Succeed By 3 or More"
+msgstr ""
+
+msgid "Re-Draw After Fail"
+msgstr ""
+
+msgid "Succeed Twice In A Row"
+msgstr ""
+
+msgid "Number of clues on your location"
+msgstr ""
+
+msgid "Horror on Agnes Baker"
+msgstr ""
+
+msgid "Wendy's Amulet in play"
+msgstr ""
+
+msgid "Number of resources you have"
+msgstr ""
+
+msgid "Damage on Mark Harrigan"
+msgstr ""
+
+msgid "Number of exhausted enemies in play"
+msgstr ""
+
+msgid "Spend two resources to automatically succeed"
+msgstr ""
+
+msgid "Resource cost of the top card on your deck"
+msgstr ""
+
+msgid "Change Scenario"
+msgstr ""
+
+msgid ""
+"Note: chaos tokens that cause additional tokens to be revealed does not "
+"show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
+"situations."
+msgstr ""
+
+msgid "Difficulty"
+msgstr ""
+
+msgid " (Per Investigator)"
+msgstr ""
+
+msgid "New Campaign"
+msgstr ""
+
+msgid "New Standalone"
+msgstr ""
+
+msgid "(required)"
+msgstr ""
+
+#, javascript-format
+msgid "My ${ campaign } Campaign"
+msgstr ""
+
+msgid "Name required"
+msgstr ""
+
+msgid "You must specify a name for custom campaigns."
+msgstr ""
+
+msgid "Weakness Set"
+msgstr ""
+
+msgid "Include all basic weaknesses from these expansions"
+msgstr ""
+
+msgid "Add Log Section"
+msgstr ""
+
+msgid "Guided Campaign"
+msgstr ""
+
+msgid "Use app for scenario setup & resolutions"
+msgstr ""
+
+msgid "Track campaign log and resolutions manually"
+msgstr ""
+
+msgid ""
+"Note: this campaign is still being released and so the guide is incomplete "
+"(and may contain some mistakes).\n"
+"As new scenarios are released, I will try to update the app promptly but "
+"there may be some slight delays."
+msgstr ""
+
+msgid "Add Investigator Deck"
+msgstr ""
+
+msgid "Create Campaign"
+msgstr ""
+
+msgid "Create Standalone"
+msgstr ""
+
+msgid ""
+"If you encounter any problems with the campaign guide system, please let me "
+"know at arkhamcards@gmail.com."
+msgstr ""
+
+msgid "Select Deck"
+msgstr ""
+
+msgid "Choose an Investigator"
+msgstr ""
+
+msgid "Hide Decks From Other Campaigns"
+msgstr ""
+
+msgid "Hide Killed and Insane Investigators"
+msgstr ""
+
+msgid "Only Show Previous Campaign Members"
+msgstr ""
+
+msgid "Edit name"
+msgstr ""
+
+#, javascript-format
+msgid "No matching campaigns for \"${ search }\"."
+msgstr ""
+
+msgid ""
+"No campaigns yet.\n"
+"\n"
+"Use the + button to create a new one.\n"
+"\n"
+"You can use this app to keep track of campaigns, including investigator "
+"trauma, the chaos bag, basic weaknesses, campaign notes and the experience "
+"values for all decks."
+msgstr ""
+
+msgid "Search campaigns"
+msgstr ""
+
+#, javascript-format
+msgid "${ spentXp } of ${ totalXp } spent"
+msgstr ""
+
+msgid "Add XP from scenario"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Save changes?"
+msgstr ""
+
+msgid "In Bag"
+msgstr ""
+
+msgid "Add note"
+msgstr ""
+
+#, javascript-format
+msgid "Remove ${ investigator.name }?"
+msgstr ""
+
+msgid ""
+"Are you sure you want to remove this deck from the campaign?\n"
+"\n"
+"The deck will remain on ArkhamDB."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Are you sure you want to remove ${ investigator.name } from this campaign?\n"
+"\n"
+"Campaign log data associated with them may be lost."
+msgstr ""
+
+msgid "Record Scenario Results"
+msgstr ""
+
+msgid "Basic Weakness Set"
+msgstr ""
+
+#, javascript-format
+msgid "${ counts.assigned } / ${ counts.total } have been drawn."
+msgstr ""
+
+msgid "Scenarios"
+msgstr ""
+
+msgid "Clean up broken campaigns"
+msgstr ""
+
+msgid "Review scenario results"
+msgstr ""
+
+msgid "Edit chaos bag"
+msgstr ""
+
+msgid "Scenario or Interlude"
+msgstr ""
+
+msgid "Scenario name"
+msgstr ""
+
+msgid "Show Interludes"
+msgstr ""
+
+msgid "Save and Upgrade Decks"
+msgstr ""
+
+msgid "Only Save"
+msgstr ""
+
+msgid "Scenario Result"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Bless"
+msgstr ""
+
+msgid "Curse"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Alive"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Defeated: no trauma"
+msgstr ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"${ investigator.name } suffers 1 physical or mental trauma <i>(their "
+"choice)</i>."
+msgstr ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgid_plural ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "masculine"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "masculine"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in "
+"your Campaign Log."
+msgstr ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
+
+msgctxt "feminine"
+msgid "Alive"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgctxt "feminine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr ""
+
+msgctxt "feminine"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr ""
+
+msgctxt "feminine"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr ""
+
+msgctxt "feminine"
+msgid ""
+"${ investigator.name } suffers 1 physical or mental trauma <i>(their "
+"choice)</i>."
+msgstr ""
+
+#, javascript-format
+msgctxt "feminine"
+msgid ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgid_plural ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "feminine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "feminine"
+msgid ""
+"If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in "
+"your Campaign Log."
+msgstr ""
+
+#, javascript-format
+msgctxt "feminine"
+msgid ""
+"If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
+
+msgctxt "action"
+msgid "Fight"
+msgstr ""
+
+msgctxt "action"
+msgid "Engage"
+msgstr ""
+
+msgctxt "action"
+msgid "Investigate"
+msgstr ""
+
+msgctxt "action"
+msgid "Play"
+msgstr ""
+
+msgctxt "action"
+msgid "Draw"
+msgstr ""
+
+msgctxt "action"
+msgid "Move"
+msgstr ""
+
+msgctxt "action"
+msgid "Evade"
+msgstr ""
+
+msgctxt "action"
+msgid "Resource"
+msgstr ""
+
+msgctxt "Draw Cards"
+msgid "All"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "None"
+msgstr ""
+
+msgctxt "header"
+msgid "Asset"
+msgid_plural "Assets"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "header"
+msgid "Event"
+msgid_plural "Events"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "header"
+msgid "Skill"
+msgid_plural "Skills"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "header"
+msgid "Treachery"
+msgid_plural "Treacheries"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "header"
+msgid "Enemy"
+msgid_plural "Enemies"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "header"
+msgid "Location"
+msgid_plural "Locations"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "header"
+msgid "Story"
+msgid_plural "Stories"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "header"
+msgid "Act"
+msgid_plural "Acts"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "header"
+msgid "Agenda"
+msgid_plural "Agendas"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "header"
+msgid "Investigator"
+msgid_plural "Investigators"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "header"
+msgid "Scenario"
+msgid_plural "Scenarios"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "Weakness Card"
+msgid "All"
+msgstr ""
+
+msgctxt "trauma"
+msgid "None"
+msgstr ""

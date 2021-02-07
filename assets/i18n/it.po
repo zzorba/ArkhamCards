@@ -1691,26 +1691,11 @@ msgstr "Carte Incontro"
 msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr "PE Scontati: ${ taboo.extra_xp }."
 
-msgid "Choose Tokens to Seal"
-msgstr "Scegli Segnalini da Sigillare"
-
 msgid "At Death's Doorstep"
 msgstr "Sulla Soglia della Morte"
 
-msgid "Tap token to draw"
-msgstr "Clicca per Pescare"
-
-msgid "Set aside and draw another"
-msgstr "Metti da parte e Pesca ancora"
-
-msgid "Drawn"
-msgstr "Pescati"
-
 msgid "Sealed Tokens"
 msgstr "Segnalini Sigillati"
-
-msgid "Seal Tokens"
-msgstr "Sigilla Segnalini"
 
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "PE Scontati: ${ card.extra_xp }."
@@ -3064,22 +3049,6 @@ msgstr ""
 msgid "Chaos bag is empty"
 msgstr ""
 
-msgid "Return Non Bless / Curse Tokens"
-msgstr ""
-
-msgid "Return All Tokens"
-msgstr ""
-
-msgid "Return Tokens"
-msgstr ""
-
-#, javascript-format
-msgid "Total (${ chaosBagResults.totalDrawnTokens })"
-msgstr ""
-
-msgid "Bless / Curse Tokens"
-msgstr ""
-
 msgid "Bless"
 msgstr ""
 
@@ -3265,9 +3234,6 @@ msgstr "Aggiornato sabato"
 
 msgid "Updated Sunday"
 msgstr "Domenica aggiornata"
-
-msgid "Reset Chaos Bag"
-msgstr ""
 
 msgid "Books"
 msgstr ""
@@ -3941,6 +3907,29 @@ msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "Tap to draw"
+msgstr ""
+
+msgid "Draw another"
+msgstr ""
+
+msgid "Return tokens"
+msgstr ""
+
+msgid ""
+"Return all tokens\n"
+"(including Bless/Curse)"
+msgstr ""
+
+msgid "Seal tokens"
+msgstr ""
+
+msgid "Release all"
+msgstr ""
+
+msgid "Remove all bless & curse tokens"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"

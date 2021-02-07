@@ -5,7 +5,7 @@ import { t } from 'ttag';
 
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
 import SealTokenButton from './SealTokenButton';
-import { Toggles, useChaosBagResults, useEffectUpdate, useToggles } from '@components/core/hooks';
+import { Toggles, useEffectUpdate, useToggles } from '@components/core/hooks';
 import { CampaignId, ChaosBagResults, SealedToken } from '@actions/types';
 import { useDialog } from '@components/deck/dialogs';
 import { useDispatch } from 'react-redux';
@@ -82,7 +82,7 @@ export default function useSealTokenDialog(campaignId: CampaignId, chaosBag: Cha
 
   const content = useMemo(() => {
     return (
-      <View style={styles.drawnTokenRow}>
+      <View style={[styles.drawnTokenRow, space.paddingBottomS]}>
         { map(allTokens, ({ id, icon }) => {
           return (
             <View style={space.paddingXs} key={id}>

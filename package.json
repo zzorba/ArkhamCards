@@ -15,6 +15,7 @@
     "i18n-extract-ko": "ttag update assets/i18n/ko.po src/",
     "i18n-extract-uk": "ttag update assets/i18n/uk.po src/",
     "i18n-extract-pl": "ttag update assets/i18n/pl.po src/",
+    "i18n-extract-pt": "ttag update assets/i18n/pt.po src/",
     "i18n-extract-ru": "ttag update assets/i18n/ru.po src/",
     "build": "tsc --skipLibCheck --resolveJsonModule --noEmit",
     "test": "jest",

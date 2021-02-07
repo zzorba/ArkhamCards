@@ -1697,26 +1697,11 @@ msgstr "Cartes Rencontre"
 msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr "Réduction d'XP : ${ taboo.extra_xp }."
 
-msgid "Choose Tokens to Seal"
-msgstr "Choisir des pions à Sceller"
-
 msgid "At Death's Doorstep"
 msgstr "Aux Portes de la Mort"
 
-msgid "Tap token to draw"
-msgstr "Appuyez sur le pion pour le révéler"
-
-msgid "Set aside and draw another"
-msgstr "Le garder et en révéler un autre"
-
-msgid "Drawn"
-msgstr "Révélé"
-
 msgid "Sealed Tokens"
 msgstr "Pions Scellés"
-
-msgid "Seal Tokens"
-msgstr "Sceller des pions"
 
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "Réduction d'XP : ${ card.extra_xp }."
@@ -3223,22 +3208,6 @@ msgstr "Modifier la réserve du Chaos"
 msgid "Chaos bag is empty"
 msgstr "La réserve du Chaos est vide"
 
-msgid "Return Non Bless / Curse Tokens"
-msgstr "Remettre les pions non Bénis / Malédictions"
-
-msgid "Return All Tokens"
-msgstr "Remettre tous les pions"
-
-msgid "Return Tokens"
-msgstr "Remettre les pions"
-
-#, javascript-format
-msgid "Total (${ chaosBagResults.totalDrawnTokens })"
-msgstr "Total (${ chaosBagResults.totalDrawnTokens })"
-
-msgid "Bless / Curse Tokens"
-msgstr "Pions Bénis / Malédictions"
-
 msgid "Bless"
 msgstr "Bénis"
 
@@ -3453,9 +3422,6 @@ msgstr "Mis à jour Samedi"
 msgid "Updated Sunday"
 msgstr "Mis à jour Dimanche"
 
-msgid "Reset Chaos Bag"
-msgstr "Réinitialiser la Réserve du Chaos"
-
 msgid "Books"
 msgstr "Livres"
 
@@ -3615,7 +3581,8 @@ msgid ""
 "This is a custom investigator to allow for building of arbitrary decks.\n"
 "[elder_sign]: +X where X is whatever you want it to be."
 msgstr ""
-"Il s'agit d'un investigateur personnalisé pour permettre la construction de decks quelconques.\n"
+"Il s'agit d'un investigateur personnalisé pour permettre la construction de "
+"decks quelconques.\n"
 "[elder_sign]: +X où X est ce que vous voulez qu'il soit."
 
 msgid "Asset Filters"
@@ -4068,7 +4035,9 @@ msgid "Database migration required"
 msgstr "Migration de la base de données requise"
 
 msgid "This should only take a few seconds and no network is required."
-msgstr "Cela ne devrait prendre que quelques secondes et aucun réseau n'est nécessaire."
+msgstr ""
+"Cela ne devrait prendre que quelques secondes et aucun réseau n'est "
+"nécessaire."
 
 msgid "Migrate now"
 msgstr "Migrer maintenant"
@@ -4101,8 +4070,8 @@ msgid ""
 "If you run into any problems with this migration, please contact "
 "arkhamcards@gmail.com."
 msgstr ""
-"Si vous rencontrez des problèmes avec cette migration, veuillez "
-"contacter arkhamcards@gmail.com."
+"Si vous rencontrez des problèmes avec cette migration, veuillez contacter "
+"arkhamcards@gmail.com."
 
 msgid "Asset: Body. Arcane"
 msgstr "Soutien : Corps. Arcane"
@@ -4177,6 +4146,29 @@ msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] "${ unspentXp } XP non dépensé"
 msgstr[1] "${ unspentXp } XP non dépensées"
+
+msgid "Tap to draw"
+msgstr ""
+
+msgid "Draw another"
+msgstr ""
+
+msgid "Return tokens"
+msgstr ""
+
+msgid ""
+"Return all tokens\n"
+"(including Bless/Curse)"
+msgstr ""
+
+msgid "Seal tokens"
+msgstr ""
+
+msgid "Release all"
+msgstr ""
+
+msgid "Remove all bless & curse tokens"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"

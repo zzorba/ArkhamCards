@@ -1691,26 +1691,11 @@ msgstr "Begegnungskarten"
 msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr "XP-Rabatt: ${ taboo.extra_xp }."
 
-msgid "Choose Tokens to Seal"
-msgstr "Wähle Chaosmarker zum versiegeln"
-
 msgid "At Death's Doorstep"
 msgstr "Bei Death es Doorstep (Act 1)"
 
-msgid "Tap token to draw"
-msgstr "Tippen, um einen Chaosmarker zu ziehen"
-
-msgid "Set aside and draw another"
-msgstr "Beiseite legen und einen weiteren ziehen"
-
-msgid "Drawn"
-msgstr "Gezogen"
-
 msgid "Sealed Tokens"
 msgstr "Versiegelte Chaosmarker"
-
-msgid "Seal Tokens"
-msgstr "Chaosmarker versiegeln"
 
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "XP-Rabatt: ${ card.extra_xp }."
@@ -3219,22 +3204,6 @@ msgstr "Chaosbeutel bearbeiten"
 msgid "Chaos bag is empty"
 msgstr "Chaosbeutel ist leer"
 
-msgid "Return Non Bless / Curse Tokens"
-msgstr "Nicht-Segens- und Fluchmarker zurücklegen"
-
-msgid "Return All Tokens"
-msgstr "Alle Marker zurücklegen"
-
-msgid "Return Tokens"
-msgstr "Marker zurücklegen"
-
-#, javascript-format
-msgid "Total (${ chaosBagResults.totalDrawnTokens })"
-msgstr "Gesamt (${ chaosBagResults.totalDrawnTokens })"
-
-msgid "Bless / Curse Tokens"
-msgstr "Segens-/Fluchmarker"
-
 msgid "Bless"
 msgstr "Segen"
 
@@ -3447,9 +3416,6 @@ msgstr "Samstag aktualisiert"
 
 msgid "Updated Sunday"
 msgstr "Sonntag aktualisiert"
-
-msgid "Reset Chaos Bag"
-msgstr "Chaos Beutel zurücksetzen"
 
 msgid "Books"
 msgstr "Bücher"
@@ -4172,6 +4138,29 @@ msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "Tap to draw"
+msgstr ""
+
+msgid "Draw another"
+msgstr ""
+
+msgid "Return tokens"
+msgstr ""
+
+msgid ""
+"Return all tokens\n"
+"(including Bless/Curse)"
+msgstr ""
+
+msgid "Seal tokens"
+msgstr ""
+
+msgid "Release all"
+msgstr ""
+
+msgid "Remove all bless & curse tokens"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"

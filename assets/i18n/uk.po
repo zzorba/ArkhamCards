@@ -1797,19 +1797,7 @@ msgstr ""
 msgid "Add Investigator Deck"
 msgstr ""
 
-msgid "Tap token to draw"
-msgstr ""
-
-msgid "Set aside and draw another"
-msgstr ""
-
-msgid "Drawn"
-msgstr ""
-
 msgid "Sealed Tokens"
-msgstr ""
-
-msgid "Seal Tokens"
 msgstr ""
 
 msgid "Interlude"
@@ -1826,9 +1814,6 @@ msgid "Physical Trauma"
 msgstr ""
 
 msgid "Mental Trauma"
-msgstr ""
-
-msgid "Choose Tokens to Seal"
 msgstr ""
 
 #, javascript-format
@@ -2974,22 +2959,6 @@ msgstr ""
 msgid "Chaos bag is empty"
 msgstr ""
 
-msgid "Return Non Bless / Curse Tokens"
-msgstr ""
-
-msgid "Return All Tokens"
-msgstr ""
-
-msgid "Return Tokens"
-msgstr ""
-
-#, javascript-format
-msgid "Total (${ chaosBagResults.totalDrawnTokens })"
-msgstr ""
-
-msgid "Bless / Curse Tokens"
-msgstr ""
-
 msgid "Bless"
 msgstr ""
 
@@ -3174,9 +3143,6 @@ msgid "Updated Saturday"
 msgstr ""
 
 msgid "Updated Sunday"
-msgstr ""
-
-msgid "Reset Chaos Bag"
 msgstr ""
 
 msgid "Books"
@@ -3851,7 +3817,29 @@ msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
+
+msgid "Tap to draw"
+msgstr ""
+
+msgid "Draw another"
+msgstr ""
+
+msgid "Return tokens"
+msgstr ""
+
+msgid ""
+"Return all tokens\n"
+"(including Bless/Curse)"
+msgstr ""
+
+msgid "Seal tokens"
+msgstr ""
+
+msgid "Release all"
+msgstr ""
+
+msgid "Remove all bless & curse tokens"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"

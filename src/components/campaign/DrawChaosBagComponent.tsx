@@ -11,7 +11,7 @@ import ChaosToken, { SMALL_TOKEN_SIZE } from './ChaosToken';
 import { adjustBlessCurseChaosBagResults, updateChaosBagResults } from './actions';
 import SealTokenButton from './SealTokenButton';
 import { flattenChaosBag } from './campaignUtil';
-import space, { m, s } from '@styles/space';
+import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useChaosBagResults } from '@components/core/hooks';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -38,7 +38,7 @@ function BlessCurseCounter({ type, value, min, inc, dec }: { type: 'bless' | 'cu
         <Text style={[typography.cardName, { color: textColor, minWidth: 32 }, typography.center, space.paddingRightXs]}>
           { value === 0 ? '0' : `×${value}`}
         </Text>
-        <View style={space.paddingBottomS}>
+        <View style={space.paddingBottomS} accessibilityLabel={type === 'bless' ? t`Bless` : t`Curse`}>
           <ArkhamIcon name={type} size={28} color={textColor} />
         </View>
       </View>
@@ -358,7 +358,7 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag }: Props) {
                   onPressB={releaseAllTokens}
                 />}
             >
-              <View style={styles.drawnTokenRow}>
+              <View style={[space.paddingTopS, space.paddingBottomS, styles.sealedTokenRow]}>
                 { sealedTokens }
               </View>
             </RoundedFactionBlock>
@@ -435,5 +435,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+  },
+  sealedTokenRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
   },
 });

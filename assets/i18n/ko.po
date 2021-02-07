@@ -1856,20 +1856,8 @@ msgstr "시작하지 않음"
 msgid "Add Investigator Deck"
 msgstr "조사자 덱 추가"
 
-msgid "Tap token to draw"
-msgstr "토큰을 눌러서 뽑으십시오"
-
-msgid "Set aside and draw another"
-msgstr "옆에 두고 하나 더 뽑기"
-
-msgid "Drawn"
-msgstr "뽑힌 토큰"
-
 msgid "Sealed Tokens"
 msgstr "봉인된 토큰"
-
-msgid "Seal Tokens"
-msgstr "토큰 봉인"
 
 msgid "Interlude"
 msgstr "막간"
@@ -1886,9 +1874,6 @@ msgstr "육체적 트라우마"
 
 msgid "Mental Trauma"
 msgstr "정신적 트라우마"
-
-msgid "Choose Tokens to Seal"
-msgstr "봉인할 토큰을 선택하십시오"
 
 #, javascript-format
 msgid "Story cards to add - ${ scenarioName }"
@@ -3070,22 +3055,6 @@ msgstr "혼돈 주머니 수정"
 msgid "Chaos bag is empty"
 msgstr "혼돈 주머니가 비어있습니다."
 
-msgid "Return Non Bless / Curse Tokens"
-msgstr "축복/저주가 아닌 토큰 되돌리기"
-
-msgid "Return All Tokens"
-msgstr "모든 토큰 되돌리기"
-
-msgid "Return Tokens"
-msgstr "토큰 되돌리기"
-
-#, javascript-format
-msgid "Total (${ chaosBagResults.totalDrawnTokens })"
-msgstr "뽑은 토큰 (${ chaosBagResults.totalDrawnTokens })"
-
-msgid "Bless / Curse Tokens"
-msgstr "축복 / 저주 토큰"
-
 msgid "Bless"
 msgstr "축복"
 
@@ -3282,9 +3251,6 @@ msgstr "토요일에 갱신됨"
 
 msgid "Updated Sunday"
 msgstr "일요일에 갱신됨"
-
-msgid "Reset Chaos Bag"
-msgstr "혼돈 주머니 초기화"
 
 msgid "Books"
 msgstr "서적"
@@ -3976,6 +3942,30 @@ msgstr ""
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] ""
+msgstr[1] ""
+
+msgid "Tap to draw"
+msgstr ""
+
+msgid "Draw another"
+msgstr ""
+
+msgid "Return tokens"
+msgstr ""
+
+msgid ""
+"Return all tokens\n"
+"(including Bless/Curse)"
+msgstr ""
+
+msgid "Seal tokens"
+msgstr ""
+
+msgid "Release all"
+msgstr ""
+
+msgid "Remove all bless & curse tokens"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"
