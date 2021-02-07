@@ -77,6 +77,10 @@ const ICON_SIZE: { [icon: string]: number | undefined } = {
   'dismiss': 22,
   'check-thin': 30,
 };
+const ICON_SIZE_THIN: { [icon: string]: number | undefined } = {
+  upgrade: 26,
+};
+
 const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
   weakness: {
     marginLeft: -3,
@@ -163,17 +167,18 @@ export default function DeckButton({
     if (!icon) {
       return null;
     }
+    const size = (thin ? ICON_SIZE_THIN[icon] : undefined) || ICON_SIZE[icon] || 26;
     if (MATERIAL_ICONS.has(icon)) {
-      return <MaterialIcons name={icon} size={ICON_SIZE[icon] || 26} color={theIconColor} />;
+      return <MaterialIcons name={icon} size={size} color={theIconColor} />;
     }
     if (ARKHAM_ICONS.has(icon)) {
-      return <ArkhamIcon name={icon} size={ICON_SIZE[icon] || 26} color={theIconColor} />;
+      return <ArkhamIcon name={icon} size={size} color={theIconColor} />;
     }
     if (ENCOUNTER_ICONS.has(icon)) {
-      return <EncounterIcon encounter_code={icon} size={ICON_SIZE[icon] || 26} color={theIconColor} />;
+      return <EncounterIcon encounter_code={icon} size={size} color={theIconColor} />;
     }
-    return <AppIcon name={icon} size={ICON_SIZE[icon] || 26} color={theIconColor} />;
-  }, [loading, icon, theIconColor]);
+    return <AppIcon name={icon} size={size} color={theIconColor} />;
+  }, [loading, icon, thin, theIconColor]);
   const height = (detail ? 32 : 20) * fontScale + s * 2 + xs * 2;
   return (
     <Ripple

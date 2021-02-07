@@ -159,6 +159,7 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
               disabled={!saveEnabled}
               bottomMargin={s}
               color="gold"
+              thin
             />
           ) }
           <DeckButton
@@ -167,6 +168,7 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
             onPress={saveAndDismiss}
             disabled={!saveEnabled}
             bottomMargin={s}
+            thin
           />
         </View>
         { !!notes && (

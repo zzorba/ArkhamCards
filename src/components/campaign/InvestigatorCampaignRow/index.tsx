@@ -190,6 +190,7 @@ export default function InvestigatorCampaignRow({
                 { investigator.subname }
               </Text>
             </View>
+            { !open && <View style={styles.trauma}><TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText /></View> }
             <Animated.View style={{ width: 36, height: 36, transform: [{ rotate: iconRotate }] }}>
               <AppIcon name="expand_less" size={36} color="#FFF" />
             </Animated.View>
@@ -255,5 +256,9 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+  },
+  trauma: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
