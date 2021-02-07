@@ -16,9 +16,10 @@ interface Props {
   cards: CardsMap;
   investigator: Card;
   showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
+  last?: boolean;
 }
 
-export default function DeckXpSection({ componentId, deck, cards, investigator, showDeckUpgrade }: Props) {
+export default function DeckXpSection({ componentId, deck, cards, investigator, last, showDeckUpgrade }: Props) {
   const { colors } = useContext(StyleContext);
   const previousDeckSelector = useMemo(makeDeckSelector, []);
   const previousDeck = useSelector((state: AppState) => {
@@ -62,7 +63,7 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
       <MiniPickerStyleButton
         title={t`Experience`}
         valueLabel={t`${spentXp} of ${totalXp} spent`}
-        first
+        last={last && !showDeckUpgrade}
         editable
         onPress={onPress}
       />
@@ -72,6 +73,7 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
           valueLabel={t`Add XP from scenario`}
           icon="upgrade"
           onPress={showDeckUpgradePress}
+          last={last}
           editable
         />
       ) }

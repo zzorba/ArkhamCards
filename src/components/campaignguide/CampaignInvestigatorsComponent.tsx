@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import { InteractionManager, Text, StyleSheet, View } from 'react-native';
 import { filter, find, findLast, flatMap, forEach, map, mapValues, partition } from 'lodash';
 import { isAfter } from 'date-fns';
@@ -11,7 +11,7 @@ import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import Card from '@data/Card';
 import space, { s, l } from '@styles/space';
-import { useCounters, useEffectUpdate } from '@components/core/hooks';
+import { useComponentDidDisappear, useCounters, useEffectUpdate } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -80,6 +80,11 @@ export default function CampaignInvestigatorsComponent(props: Props) {
       newLastUpdated
     );
   }, [lastUpdated, campaignGuide, campaignGuideVersion, campaignId, campaignState, processedCampaign, updateCampaign]);
+  const syncCampaignDataRef = useRef<() => void>(syncCampaignData);
+
+  useEffect(() => {
+    syncCampaignDataRef.current = syncCampaignData;
+  }, [syncCampaignData]);
 
   useEffect(() => {
     if (appState === 'inactive' || appState === 'background') {
@@ -87,6 +92,13 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appState]);
+
+  useEffect(() => {
+    // Update the campaign on unmount.
+    return () => {
+      syncCampaignDataRef.current();
+    };
+  }, []);
 
   const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
     campaignState.showChooseDeck(investigator);

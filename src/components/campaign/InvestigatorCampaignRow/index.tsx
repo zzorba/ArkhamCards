@@ -97,6 +97,7 @@ export default function InvestigatorCampaignRow({
           cards={playerCards}
           investigator={investigator}
           showDeckUpgrade={showDeckUpgrade}
+          last={!miniButtons}
         />
       );
     }
@@ -107,12 +108,12 @@ export default function InvestigatorCampaignRow({
       <MiniPickerStyleButton
         title={t`Experience`}
         valueLabel={ t`${spentXp} of ${totalXp} spent` }
-        first
+        last={!miniButtons}
         editable
         onPress={editXpPressed}
       />
     );
-  }, [investigator, componentId, deck, playerCards, spentXp, totalXp, eliminated, editXpPressed, showDeckUpgrade]);
+  }, [investigator, componentId, deck, playerCards, spentXp, totalXp, miniButtons, eliminated, editXpPressed, showDeckUpgrade]);
 
   const onTraumaPress = useCallback(() => {
     if (showTraumaDialog) {
@@ -208,15 +209,15 @@ export default function InvestigatorCampaignRow({
         ]}>
           <View style={[space.paddingSideS]}>
             <View style={space.paddingBottomS}>
-              { xpButton }
               <MiniPickerStyleButton
                 title={t`Trauma`}
                 valueLabel={<TraumaSummary trauma={traumaAndCardData} investigator={investigator} />}
-                first={!xpButton}
-                last={!miniButtons}
+                first
+                last={!xpButton && !miniButtons}
                 editable={!!showTraumaDialog}
                 onPress={onTraumaPress}
               />
+              { xpButton }
               { !!miniButtons && miniButtons }
             </View>
             { eliminated ? undefined : (
