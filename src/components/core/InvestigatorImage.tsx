@@ -125,7 +125,7 @@ export default function InvestigatorImage({
           {
             width: size,
             height: size,
-            borderColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].border,
+            borderColor: colors.faction[card.factionCode()].border,
             overflow: 'hidden',
           },
         ]}>

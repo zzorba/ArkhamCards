@@ -196,8 +196,8 @@ export default function DecksSection({
       { killedInvestigators.length > 0 && (
         <View style={[styles.underline, borderStyle]}>
           <View style={space.paddingS}>
-            <Text style={typography.text}>
-              { t`Killed and Insane Investigators` }
+            <Text style={[typography.large, typography.center, typography.light]}>
+              { `— ${t`Killed and Insane Investigators`} · ${killedInvestigators.length} —` }
             </Text>
           </View>
           { flatMap(killedInvestigators, investigator => {

@@ -80,11 +80,15 @@ export default function InvestigatorCampaignRow({
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
   }, [componentId, colors]);
+  const eliminated = useMemo(() => investigator.eliminated(traumaAndCardData), [investigator, traumaAndCardData]);
 
   const editXpPressed = useCallback(() => {
     showXpDialog(investigator);
   }, [showXpDialog, investigator]);
   const xpButton = useMemo(() => {
+    if (eliminated) {
+      return null;
+    }
     if (deck) {
       return (
         <DeckXpSection
@@ -108,7 +112,7 @@ export default function InvestigatorCampaignRow({
         onPress={editXpPressed}
       />
     );
-  }, [investigator, componentId, deck, playerCards, spentXp, totalXp, editXpPressed, showDeckUpgrade]);
+  }, [investigator, componentId, deck, playerCards, spentXp, totalXp, eliminated, editXpPressed, showDeckUpgrade]);
 
   const onTraumaPress = useCallback(() => {
     if (showTraumaDialog) {
@@ -152,7 +156,6 @@ export default function InvestigatorCampaignRow({
   const selectDeck = useCallback(() => {
     chooseDeckForInvestigator && chooseDeckForInvestigator(investigator);
   }, [investigator, chooseDeckForInvestigator]);
-  const eliminated = useMemo(() => investigator.eliminated(traumaAndCardData), [investigator, traumaAndCardData]);
 
   const yithian = useMemo(() => !!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN), [traumaAndCardData.storyAssets]);
   const [open, toggleOpen] = useFlag(false);
@@ -176,14 +179,14 @@ export default function InvestigatorCampaignRow({
   return (
     <View style={space.marginBottomS}>
       <TouchableWithoutFeedback onPress={toggleOpen}>
-        <RoundedFactionHeader faction={investigator.factionCode()} width={width - s * 2} fullRound={!open}>
+        <RoundedFactionHeader eliminated={eliminated} faction={investigator.factionCode()} width={width - s * 2} fullRound={!open}>
           <View style={[styles.row, space.paddingLeftXs]}>
-            <InvestigatorImage card={investigator} size="tiny" border yithian={yithian} />
+            <InvestigatorImage card={investigator} size="tiny" border yithian={yithian} killedOrInsane={eliminated} />
             <View style={[space.paddingLeftXs, styles.textColumn]}>
-              <Text style={[typography.cardName, typography.white]}>
+              <Text style={[typography.cardName, typography.white, eliminated ? typography.strike : undefined]}>
                 { investigator.name }
               </Text>
-              <Text style={[typography.cardTraits, typography.white]}>
+              <Text style={[typography.cardTraits, typography.white, eliminated ? typography.strike : undefined]}>
                 { investigator.subname }
               </Text>
             </View>

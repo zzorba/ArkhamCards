@@ -232,8 +232,8 @@ export default function CampaignInvestigatorsComponent(props: Props) {
       )) }
       { killedInvestigators.length > 0 && (
         <View style={styles.header}>
-          <Text style={[typography.bigGameFont, typography.center, typography.underline]}>
-            { t`Killed and Insane Investigators` }
+          <Text style={[typography.large, typography.center, typography.light]}>
+            { `— ${t`Killed and Insane Investigators`} · ${killedInvestigators.length} —` }
           </Text>
         </View>
       ) }
