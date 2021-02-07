@@ -70,7 +70,6 @@ function getStandardComponent(componentName: string | number) {
     case 'Dialog.EditChaosBag': return require('@components/campaign/EditChaosBagDialog').default;
     case 'Dialog.CampaignDrawWeakness': return require('@components/campaign/CampaignDrawWeaknessDialog').default;
     case 'Dialog.CampaignEditWeakness': return require('@components/campaign/CampaignEditWeaknessDialog').default;
-    case 'Dialog.SealToken': return require('@components/campaign/SealTokenDialog').default;
     case 'Weakness.Draw': return require('@components/weakness/WeaknessDrawDialog').default;
     case 'Rules': return require('@components/settings/RulesView').default;
     case 'Rule': return require('@components/settings/RuleView').default;

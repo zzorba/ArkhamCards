@@ -285,12 +285,14 @@ export const NEW_CHAOS_BAG_RESULTS = {
   totalDrawnTokens: 0,
 };
 
+export interface SealedToken {
+  id: string;
+  icon: ChaosTokenType;
+}
+
 export interface ChaosBagResults {
   drawnTokens: ChaosTokenType[];
-  sealedTokens: {
-    id: string;
-    icon: ChaosTokenType;
-  }[];
+  sealedTokens: SealedToken[];
   blessTokens?: number;
   curseTokens?: number;
   totalDrawnTokens: number;

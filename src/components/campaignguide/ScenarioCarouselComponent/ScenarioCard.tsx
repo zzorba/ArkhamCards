@@ -118,7 +118,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
       <Text style={[typography.small, typography.italic, { color: light }]}>
         { scenarioNumber }
       </Text>
-      <Text style={[typography.mediumGameFont, { color: color }, space.marginBottomS]} numberOfLines={2}>
+      <Text style={[typography.mediumGameFont, { color: color, marginRight: 80 }, space.marginBottomS]} numberOfLines={2}>
         { scenarioName }
       </Text>
       { action }

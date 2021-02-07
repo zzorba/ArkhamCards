@@ -567,7 +567,10 @@ function DeckDetailView({
       }
       const { normalCardCount: normalCards, totalCardCount } = parsedDeck;
       const normalCardCount = ngettext(msgid`${normalCards} card`, `${normalCards} cards`, normalCards);
-      const details = ngettext(msgid`${normalCardCount} · ${totalCardCount} total`, `${normalCardCount} · ${totalCardCount} total`, totalCardCount);
+      const unspentXp = parsedDeck.availableExperience > 0 && parsedDeck.changes ? (parsedDeck.availableExperience - parsedDeck.changes.spentXp) : 0;
+      const details = unspentXp > 0 ?
+        ngettext(msgid`${unspentXp} XP unspent`, `${unspentXp} XP unspent`, unspentXp) :
+        ngettext(msgid`${normalCardCount} · ${totalCardCount} total`, `${normalCardCount} · ${totalCardCount} total`, totalCardCount);
       const showUpgradeButton = !campaign || !campaign.guided;
       return (
         <View style={[styles.row, space.marginS]}>

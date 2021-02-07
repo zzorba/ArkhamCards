@@ -17968,7 +17968,7 @@
     {
       "id": "path_is_false",
       "title": "The Path is False",
-      "text": "Win <i>The Path to Carcosa<i/> campaign with <b>8 Doubt</b>.",
+      "text": "Win <i>The Path to Carcosa</i> campaign with <b>8 Doubt</b>.",
       "type": "binary"
     },
     {
@@ -17991,7 +17991,7 @@
     },
     {
       "id": "carcosa_expertise",
-      "title": "Carcosa Expertise=",
+      "title": "Carcosa Expertise",
       "text": "Win <i>The Path to Carcosa</i> campaign on Expert difficulty.",
       "type": "binary"
     }

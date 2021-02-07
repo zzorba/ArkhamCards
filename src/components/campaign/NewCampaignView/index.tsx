@@ -459,7 +459,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         { hasGuide && selection.type === 'campaign' && (
           <SettingsSwitch
             title={t`Guided Campaign`}
-            description={guided ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
+            description={(selection.code === 'tde' || guided) ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
             onValueChange={toggleGuided}
             disabled={selection.code === 'tde'}
             noDisableText
@@ -490,7 +490,8 @@ function NewCampaignView({ componentId }: NavigationProps) {
         { hasGuide && guided && selection.type === 'campaign' && INCOMPLETE_GUIDED_CAMPAIGNS.has(selection.code) && (
           <View style={styles.block}>
             <Text style={typography.text}>
-              { t`Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\nAs new scenarios are released, I will try to update the app promptly but there may be some slight delays.` }</Text>
+              { t`Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\nAs new scenarios are released, I will try to update the app promptly but there may be some slight delays.` }
+            </Text>
           </View>
         ) }
         { campaignLogSection }

@@ -4117,7 +4117,7 @@ msgid "Upload campaigns"
 msgstr "Envoyerr les campagnes"
 
 msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr Les campagnes peuvent être envoyées sur votre compte Arkham Cards.""
+msgstr "Les campagnes peuvent être envoyées sur votre compte Arkham Cards."
 
 msgid "Uploaded campaigns will be synced between devices."
 msgstr "Les campagnes envoyées seront synchronisées entre les appareils."

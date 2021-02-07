@@ -10140,6 +10140,11 @@ react-native-progress@4.1.2:
     "@react-native-community/art" "^1.1.2"
     prop-types "^15.7.2"
 
+react-native-radial-gradient@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-native-radial-gradient/-/react-native-radial-gradient-1.0.8.tgz#7f66ded9432e998aedd0cc0d7bdd8c9f66f1fdeb"
+  integrity sha512-GXhmkgCq7gTzvNVq/+6xsXJhmOsHYITuC8EkKqxN6qahugWLj4ZQ6Jx6mZB+QERG0fdGTii4zE7iXUyNwnhynQ==
+
 react-native-ratings@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-7.2.0.tgz#8523e98868470855ec1d2feb112e466e17a1fd9f"

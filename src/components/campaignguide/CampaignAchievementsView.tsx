@@ -19,7 +19,7 @@ function CampaignAchievementsView() {
   const achievements = campaignGuide.achievements();
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
-      <ScrollView contentContainerStyle={[backgroundStyle, space.paddingSideS]}>
+      <ScrollView contentContainerStyle={[backgroundStyle, space.paddingLeftM, space.paddingRightS]}>
         { map(achievements, (a, idx) => <AchievementComponent key={idx} achievement={a} />) }
       </ScrollView>
     </SafeAreaView>

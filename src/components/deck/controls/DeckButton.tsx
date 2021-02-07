@@ -11,6 +11,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'seal' |
   'log' |
   'finish' |
   'wrench' |

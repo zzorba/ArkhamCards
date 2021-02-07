@@ -89,7 +89,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
                 <EncounterIcon
                   encounter_code={set.code}
                   size={48}
-                  color={CORE_SET_ICONS.has(set.code) ? colors.skill.willpower.icon : colors.darkText}
+                  color={CORE_SET_ICONS.has(set.code) ? colors.skill.combat.icon : colors.darkText}
                 />
               </View>
             )) }

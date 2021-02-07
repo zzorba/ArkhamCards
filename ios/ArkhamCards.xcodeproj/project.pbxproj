@@ -13,6 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		6505E52224DA64AC001DF983 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6505E52124DA64AC001DF983 /* libswiftCore.tbd */; };
+		6506962425D05D5300B134B0 /* tokens.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6506962325D05D5300B134B0 /* tokens.ttf */; };
 		651B383B251ACF8900D9D054 /* AboutDead.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651B383A251ACF8900D9D054 /* AboutDead.ttf */; };
 		652421212054950E00FF6DB9 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652420F42054950D00FF6DB9 /* carcosa.ttf */; };
 		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
@@ -83,6 +84,7 @@
 		6505E51F24DA59A4001DF983 /* libReact-jsi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-jsi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6505E52124DA64AC001DF983 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
 		6505E52324DDD6F0001DF983 /* ArkhamCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCards.entitlements; path = ArkhamCards/ArkhamCards.entitlements; sourceTree = "<group>"; };
+		6506962325D05D5300B134B0 /* tokens.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tokens.ttf; path = ../assets/tokens.ttf; sourceTree = "<group>"; };
 		651B383A251ACF8900D9D054 /* AboutDead.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AboutDead.ttf; path = ../assets/AboutDead.ttf; sourceTree = "<group>"; };
 		652420F42054950D00FF6DB9 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
@@ -165,6 +167,8 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				6506962325D05D5300B134B0 /* tokens.ttf */,
+				656D83DA25AA4AB80010E4CA /* cost.ttf */,
 				6560EBDC25A012700076B227 /* GoogleService-Info.plist */,
 				6530148B259FD4EA009A53AB /* ArkhamCardsDebug.entitlements */,
 				651B383A251ACF8900D9D054 /* AboutDead.ttf */,
@@ -240,7 +244,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				656D83DA25AA4AB80010E4CA /* cost.ttf */,
 				13B07FAE1A68108700A75B9A /* ArkhamCards */,
 				655BAD74248739AD00854210 /* ArkhamCardsUITests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -398,6 +401,7 @@
 				655226B5205D68D70065A1F7 /* standalone.ttf in Resources */,
 				656D83DB25AA4AB90010E4CA /* cost.ttf in Resources */,
 				652421252054954F00FF6DB9 /* dunwich.ttf in Resources */,
+				6506962425D05D5300B134B0 /* tokens.ttf in Resources */,
 				659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */,
 				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
 				6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */,
@@ -738,7 +742,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCardsDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
@@ -782,7 +786,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
