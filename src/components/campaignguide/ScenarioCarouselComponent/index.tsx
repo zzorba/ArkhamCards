@@ -51,7 +51,9 @@ export default function ScenarioCarouselComponent({
     showLinkedScenario && showLinkedScenario(scenarioId);
   }, [showLinkedScenario]);
   const onShowScenario = useCallback((scenario: ProcessedScenario) => {
-    scenarioPressed.current = true;
+    if (scenario.type !== 'completed') {
+      scenarioPressed.current = true;
+    }
     showScenario(
       componentId,
       scenario,
