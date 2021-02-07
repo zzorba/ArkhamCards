@@ -3615,6 +3615,8 @@ msgid ""
 "This is a custom investigator to allow for building of arbitrary decks.\n"
 "[elder_sign]: +X where X is whatever you want it to be."
 msgstr ""
+"Il s'agit d'un investigateur personnalisé pour permettre la construction de decks quelconques.\n"
+"[elder_sign]: +X où X est ce que vous voulez qu'il soit."
 
 msgid "Asset Filters"
 msgstr "Filtres de Soutien"
@@ -4053,124 +4055,128 @@ msgid "You must specify a name for custom campaigns."
 msgstr "Vous devez spécifier un nom pour les campagnes personnalisées."
 
 msgid "Export diagnostic data"
-msgstr ""
+msgstr "Exporter des données de diagnostic"
 
 msgid ""
 "This feature is intended for advanced diagnostics. Just copy the data "
 "presented here and email it to arkhamcards@gmail.com"
 msgstr ""
+"Cette fonction est destinée aux diagnostics avancés. Il suffit de copier "
+"les données présenté ici et de les envoyer à arkhamcards@gmail.com"
 
 msgid "Database migration required"
-msgstr ""
+msgstr "Migration de la base de données requise"
 
 msgid "This should only take a few seconds and no network is required."
-msgstr ""
+msgstr "Cela ne devrait prendre que quelques secondes et aucun réseau n'est nécessaire."
 
 msgid "Migrate now"
-msgstr ""
+msgstr "Migrer maintenant"
 
 msgid "Export Diagnostic Data"
-msgstr ""
+msgstr "Exporter des données de diagnostic"
 
 msgid "Agility"
-msgstr ""
+msgstr "Agilité"
 
 msgid "Combat"
-msgstr ""
+msgstr "Lutte"
 
 msgid "Intellect"
-msgstr ""
+msgstr "Intelligence"
 
 msgid "Willpower"
-msgstr ""
+msgstr "Volonté"
 
 msgid "Boost"
-msgstr ""
+msgstr "Bonus"
 
 msgid "Skill Boosts"
-msgstr ""
+msgstr "Bonus de compétence"
 
 msgid "Skill Boosts: All"
-msgstr ""
+msgstr "Bonus de compétence : Tous"
 
 msgid ""
 "If you run into any problems with this migration, please contact "
 "arkhamcards@gmail.com."
 msgstr ""
+"Si vous rencontrez des problèmes avec cette migration, veuillez "
+"contacter arkhamcards@gmail.com."
 
 msgid "Asset: Body. Arcane"
-msgstr ""
+msgstr "Soutien : Corps. Arcane"
 
 msgid "Color blind friendly icons"
-msgstr ""
+msgstr "Icônes adaptées aux daltoniens"
 
 msgid "Uploading"
-msgstr ""
+msgstr "Transfert"
 
 msgid "Upload campaigns"
-msgstr ""
+msgstr "Envoyerr les campagnes"
 
 msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr ""
+msgstr Les campagnes peuvent être envoyées sur votre compte Arkham Cards.""
 
 msgid "Uploaded campaigns will be synced between devices."
-msgstr ""
+msgstr "Les campagnes envoyées seront synchronisées entre les appareils."
 
 msgid "Review records"
-msgstr ""
+msgstr "Revoir les enregistrements"
 
 msgid "Note campaign achievements"
-msgstr ""
+msgstr "Noter les résultats de campagne"
 
 msgid "Complete campaign setup"
-msgstr ""
+msgstr "Terminer la mise en place de la campagne"
 
 msgid "Review and draw tokens"
-msgstr ""
+msgstr "Rechercher et piocher des jetons"
 
 msgid "Spent experience"
-msgstr ""
+msgstr "Expérience dépensée"
 
 msgid "View upgrade"
-msgstr ""
+msgstr "Voir les améliorations"
 
 msgid "Continue"
-msgstr ""
+msgstr "Continuer"
 
 msgid "Start"
-msgstr ""
+msgstr "Démarrer"
 
 msgid "View results"
-msgstr ""
+msgstr "Voir les résultats"
 
 msgid "Skipped"
-msgstr ""
+msgstr "Passé"
 
 msgid "Locked"
-msgstr ""
+msgstr "Verrouillé"
 
 msgid "Add scenario result"
-msgstr ""
+msgstr "Ajouter le résultat du scénario"
 
 msgid "Record completed scenario"
-msgstr ""
+msgstr "Enregistrer le scénario terminé"
 
 msgid "Add XP from scenario"
-msgstr ""
+msgstr "Ajout de l'XP du scénario"
 
 msgid "Review scenario results"
-msgstr ""
+msgstr "Revoir les résultats des scénarios"
 
 msgid "Edit chaos bag"
-msgstr ""
+msgstr "Modifier la réserve du chaos"
 
 msgid "Scenario name"
-msgstr ""
+msgstr "Nom du scénario"
 
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ unspentXp } XP non dépensé"
+msgstr[1] "${ unspentXp } XP non dépensées"
 
 #, javascript-format
 msgctxt "masculine"
@@ -4404,7 +4410,7 @@ msgstr "Se déplacer"
 
 msgctxt "action"
 msgid "Evade"
-msgstr "Échapper à "
+msgstr "Échapper à"
 
 msgctxt "action"
 msgid "Resource"
@@ -4490,4 +4496,4 @@ msgstr "Toutes"
 
 msgctxt "trauma"
 msgid "None"
-msgstr ""
+msgstr "Aucun"
