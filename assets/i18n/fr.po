@@ -4101,7 +4101,7 @@ msgid "Complete campaign setup"
 msgstr "Terminer la mise en place de la campagne"
 
 msgid "Review and draw tokens"
-msgstr "Rechercher et piocher des jetons"
+msgstr "Rechercher et piocher des pions"
 
 msgid "Spent experience"
 msgstr "Expérience dépensée"
@@ -4148,27 +4148,29 @@ msgstr[0] "${ unspentXp } XP non dépensé"
 msgstr[1] "${ unspentXp } XP non dépensées"
 
 msgid "Tap to draw"
-msgstr ""
+msgstr "Incliner pour piocher"
 
 msgid "Draw another"
-msgstr ""
+msgstr "Piocher à nouveau"
 
 msgid "Return tokens"
-msgstr ""
+msgstr "Remettre des pions"
 
 msgid "Seal tokens"
-msgstr ""
+msgstr "Sceller des pions"
 
 msgid "Release all"
-msgstr ""
+msgstr "Libérer tout"
 
 msgid "Remove all bless & curse tokens"
-msgstr ""
+msgstr "Supprimer tous les pions Béni et Maudit"
 
 msgid ""
 "Return all tokens to bag\n"
 "(do not remove Bless/Curse)"
 msgstr ""
+"Remettre tous les pions dans la reserve du Chaos\n"
+"(ne pas supprimer les Béni/Maudi)"
 
 #, javascript-format
 msgctxt "masculine"
