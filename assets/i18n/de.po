@@ -241,7 +241,7 @@ msgid "All weaknesses have been drawn."
 msgstr "Alle Schwächen wurden gezogen."
 
 msgid "Save to Deck"
-msgstr "Deck Speichern"
+msgstr "Deck speichern"
 
 msgid "Nevermind"
 msgstr "Egal"
@@ -250,16 +250,16 @@ msgid "Restore campaign data?"
 msgstr "Kampagnendaten wiederherstellen?"
 
 msgid "Backup campaign data?"
-msgstr "Backup-Kampagnendaten?"
+msgstr "Kampagnendaten sichern?"
 
 msgid "Export Campaign Data"
-msgstr "Exportiere die Kampagendaten"
+msgstr "Kampagendaten exportieren"
 
 msgid "Backup"
 msgstr "Backup"
 
 msgid "Backup Campaign Data"
-msgstr "Backup die Kampagnendaten"
+msgstr "Kampagnendaten sichern"
 
 msgid "Restore Campaign Data"
 msgstr "Kampagnendaten wiederherstellen"
@@ -268,7 +268,7 @@ msgid "Caches"
 msgstr "Zwischenspeicher"
 
 msgid "Clear cache"
-msgstr "Cache leeren"
+msgstr "Zwischenspeicher leeren"
 
 msgid "Are you sure you want to sign out?"
 msgstr "Möchtest du dich wirklich abmelden?"
@@ -298,7 +298,7 @@ msgid "Updating cards"
 msgstr "Aktualisiere Karten"
 
 msgid "Error: Check for Cards Again"
-msgstr "Fehler: Überprüfe für Karten erneut"
+msgstr "Fehler: Karten erneut überprüfen"
 
 msgid "Check ArkhamDB for updates"
 msgstr "Suche auf ArkhamDB nach neuen Karten"
@@ -373,7 +373,7 @@ msgid "Haunted"
 msgstr "Heimgesucht"
 
 msgid "Location Filters"
-msgstr "Ortfilter"
+msgstr "Ortsfilter"
 
 msgid "Core Set"
 msgstr "Grundspiel"
@@ -407,7 +407,7 @@ msgid "HPI"
 msgstr "Hpi"
 
 msgid "Enemies: All"
-msgstr "Gegner: Alles"
+msgstr "Gegner: Alle"
 
 #, javascript-format
 msgid "Enemies: ${ searchParts }"
@@ -482,13 +482,13 @@ msgid "All"
 msgstr "Alle"
 
 msgid "Note: This entry is crossed out"
-msgstr "Hinweis: Dieser Eintrag wurde durchgestrichen"
+msgstr "Hinweis: Dieser Eintrag wurde gestrichen"
 
 msgid "Uncross Out"
-msgstr "Nicht durchkreuzen"
+msgstr "Nicht wegstreichen"
 
 msgid "Cross Out"
-msgstr "Durchstreichen"
+msgstr "Wegstreichen"
 
 msgid "Add Another"
 msgstr "Weiteres hinzufügen"
@@ -557,7 +557,7 @@ msgid "Hide Killed and Insane Investigators"
 msgstr "Getötete und wahnsinnige Ermittler nicht anzeigen"
 
 msgid "Only Show Previous Campaign Members"
-msgstr "Nur vorige Kampagnenmitglieder zeigen"
+msgstr "Nur vorherige Kampagnenmitglieder zeigen"
 
 msgid "Experience"
 msgstr "Erfahrung"
@@ -575,10 +575,10 @@ msgid "Expert"
 msgstr "Experte"
 
 msgid "Night of the Zealot"
-msgstr "Die Nacht der Zeloten"
+msgstr "Die Nacht des Zeloten"
 
 msgid "Return to the Night of the Zealot"
-msgstr "Rückkehr zu: Die Nacht der Zeloten"
+msgstr "Rückkehr zu: Die Nacht des Zeloten"
 
 msgid "The Dunwich Legacy"
 msgstr "Das Vermächtnis von Dunwich"
@@ -671,7 +671,7 @@ msgid "The Last King"
 msgstr "Der letzte König"
 
 msgid "Lunacy’s Reward"
-msgstr "Verinnerung"
+msgstr "Belohnung des Wahnsinns"
 
 msgid "Echoes of the Past"
 msgstr "Widerhall aus der Vergangenheit"
@@ -689,22 +689,22 @@ msgid "The Pallid Mask"
 msgstr "Die Bleiche Maske"
 
 msgid "Black Stars Rise"
-msgstr "Die Schwarzen Sterne gehen auf"
+msgstr "Die schwarzen Sterne gehen auf"
 
 msgid "Dim Carcosa"
 msgstr "Finsteres Carcosa"
 
 msgid "The Untamed Wilds"
-msgstr "Ungezähmte Wilden"
+msgstr "Die ungezähmte Wildnis"
 
 msgid "Restless Nights"
-msgstr "Unruhige Nächte"
+msgstr " Ruhelose Nächte"
 
 msgid "The Doom of Eztli"
-msgstr "Eztli"
+msgstr "Das Verderben von Eztli"
 
 msgid "Expedition’s End"
-msgstr "Expedition endet"
+msgstr "Das Ende der Expedition"
 
 msgid "Threads of Fate"
 msgstr "Fäden des Schicksals"
@@ -713,7 +713,7 @@ msgid "The Boundary Beyond"
 msgstr "Die jenseitige Grenze"
 
 msgid "The Jungle Beckons"
-msgstr "Die Dschungelwinkeln"
+msgstr "Der Dschungel lockt"
 
 msgid "Heart of the Elders"
 msgstr "Das Herz der Älteren"
@@ -722,7 +722,7 @@ msgid "The City of Archives"
 msgstr "Die Archivstadt"
 
 msgid "Those Held Captive"
-msgstr "Jene Held gefangen"
+msgstr "Die Gefangenen"
 
 msgid "The Depths of Yoth"
 msgstr "Die Tiefen von Yoth"
@@ -776,7 +776,7 @@ msgid "Return to the Devourer Below"
 msgstr "Rückkehr zu: Der Verschlinger aus der Tiefe"
 
 msgid "The Night of the Zealot"
-msgstr "Die Nacht der Zeloten"
+msgstr "Die Nacht des Zeloten"
 
 msgid "The Path to Carcosa"
 msgstr "Der Pfad nach Carcosa"
