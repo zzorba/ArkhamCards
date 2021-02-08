@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import { ChaosBag } from '@app_constants';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckButton from '@components/deck/controls/DeckButton';
-import space, { s } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import Card from '@data/Card';
@@ -16,6 +16,7 @@ import { updateCampaign } from '../actions';
 import { CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
 import { useDialog } from '@components/deck/dialogs';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -33,6 +34,7 @@ export default function useChaosBagDialog({
   guided,
 }: Props): [React.ReactNode, () => void] {
   const { user } = useContext(ArkhamCardsAuthContext);
+  const { width } = useContext(StyleContext);
   const dispatch = useDispatch();
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
@@ -84,6 +86,7 @@ export default function useChaosBagDialog({
         <View style={space.marginS}>
           <ChaosBagLine
             chaosBag={chaosBag}
+            width={width - m * 2}
           />
         </View>
         { !guided && (

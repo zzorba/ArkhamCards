@@ -27,7 +27,7 @@ interface Props {
 }
 
 export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, hideChaosBag }: Props) {
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, width } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
       case 'count': {
@@ -133,6 +133,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         <View style={space.paddingSideS}>
           <ChaosBagLine
             chaosBag={campaignLog.chaosBag}
+            width={width - m * 2}
           />
           <DeckButton
             thin
