@@ -25,23 +25,23 @@ export const TINY_TOKEN_SIZE = 48;
 
 const GRADIENTS: { [token: string]: {
   colors: string[];
-  stops: string[];
+  stops: number[];
 } | undefined } = {
   auto_fail: {
     colors: ['#8D181E', '#6A0B10'],
-    stops: ['0.75', '1.0'],
+    stops: [0.75, 1.0],
   },
   elder_sign: {
     colors: ['#33A1FB', '#3C8AC9', '#457398'],
-    stops: ['0.0', '0.5', '1.0'],
+    stops: [0.0, 0.5, 1.0],
   },
   bless: {
     colors: ['#9C702A', '#695823'],
-    stops: ['0.25', '1.0'],
+    stops: [0.25, 1.0],
   },
   curse: {
     colors: ['#362330', '#3B224A'],
-    stops: ['0.25', '1.0'],
+    stops: [0.25, 1.0],
   },
 };
 
@@ -54,6 +54,7 @@ function ChaosTokenPart({ name, size, color }: { name: string; size: number; col
 }
 
 function NormalChaosToken({ iconKey, size, shadowStyle }: { iconKey: ChaosTokenType | 'another' | 'return'; size: number; shadowStyle?: ViewStyle }) {
+  const { colors } = useContext(StyleContext);
   const icon = useMemo(() => {
     if (iconKey) {
       switch (iconKey) {
@@ -67,7 +68,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle }: { iconKey: ChaosTokenT
         case 'return':
           return (
             <>
-              <ChaosTokenPart name="token_symbol_fill" color="#394852" size={size} />
+              <ChaosTokenPart name="tap_circle" color={colors.M} size={size} />
               <ChaosTokenPart name="token_dismiss_highlight" color="#FC2323" size={size} />
             </>
           );
@@ -139,9 +140,18 @@ function NormalChaosToken({ iconKey, size, shadowStyle }: { iconKey: ChaosTokenT
       }
     }
     return null;
-  }, [iconKey, size]);
+  }, [iconKey, size, colors]);
 
   const gradientParams = iconKey && GRADIENTS[iconKey];
+  if (iconKey === 'return') {
+    return (
+      <View style={[
+        { width: size, height: size, borderRadius: size / 2, overflow: 'hidden' },
+      ]}>
+        { icon }
+      </View>
+    );
+  }
 
   return (
     <View style={[{ width: size, height: size, borderRadius: size / 2 }, shadowStyle]}>
@@ -149,6 +159,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle }: { iconKey: ChaosTokenT
         { width: size, height: size, borderRadius: size / 2, overflow: 'hidden' },
       ]}>
         <RadialGradient style={{ width: size, height: size, borderRadius: size / 2, position: 'relative' }}
+          key={iconKey}
           colors={gradientParams?.colors || ['#FFFBF2', '#D6CFB9']}
           stops={gradientParams?.stops || [0.6, 1.0]}
           center={[size / 2, size / 2]}
