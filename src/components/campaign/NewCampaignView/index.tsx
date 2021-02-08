@@ -31,9 +31,7 @@ import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import { getCampaignLog, getChaosBag, difficultyString } from '../constants';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
-import useAddCampaignNoteSectionDialog from '../useAddCampaignNoteSectionDialog';
 import SettingsSwitch from '@components/core/SettingsSwitch';
-import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
@@ -52,6 +50,8 @@ import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import ChaosBagTextLine from './ChaosBagTextLine';
+import useAddCampaignNoteSectionDialog from '@components/campaign/useAddCampaignNoteSectionDialog';
 
 interface CampaignChoice {
   selection: CampaignSelection;
@@ -481,7 +481,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
               icon="chaos_bag"
               editable={!hasDefinedChaosBag}
               title={t`Chaos Bag`}
-              valueLabel={<ChaosBagLine chaosBag={chaosBag} />}
+              valueLabel={<ChaosBagTextLine chaosBag={chaosBag} />}
               onPress={showChaosBagDialog}
               last
             />

@@ -18,7 +18,7 @@ import BackgroundIcon from '@components/campaign/BackgroundIcon';
 import { Campaign, CampaignDifficulty, CUSTOM } from '@actions/types';
 import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '@app_constants';
 import Card from '@data/Card';
-import space, { s } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useCounters } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
@@ -122,7 +122,7 @@ export default function OddsCalculatorComponent({
   allInvestigators,
 }: Props) {
   const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
-  const { backgroundStyle, borderStyle, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, borderStyle, colors, typography, width } = useContext(StyleContext);
   const [testDifficulty, incTestDifficulty, decTestDifficulty] = useCounter(3, { min: 0 });
   const standalonePacks = useSelector(getAllStandalonePacks);
   const [currentScenario, setCurrentScenario] = useState<Scenario | undefined>(() => {
@@ -304,6 +304,7 @@ export default function OddsCalculatorComponent({
           <Text style={typography.small}>{ t`Chaos Bag` }</Text>
           <ChaosBagLine
             chaosBag={chaosBag}
+            width={width - m * 2}
           />
         </View>
         { investigatorRows }
