@@ -3836,9 +3836,17 @@ msgstr ""
 msgid "Remove all bless & curse tokens"
 msgstr ""
 
-msgid ""
-"Return all tokens to bag\n"
-"(do not remove Bless/Curse)"
+msgid "do not remove"
+msgstr ""
+
+#, javascript-format
+msgid "Return, but ${ doNotRemove } Bless/Curse"
+msgstr ""
+
+msgid "View chaos bag"
+msgstr ""
+
+msgid "Sealed tokens"
 msgstr ""
 
 #, javascript-format

@@ -4137,12 +4137,18 @@ msgstr "Liberar todas"
 msgid "Remove all bless & curse tokens"
 msgstr "Retirar fichas Bendición y Maldición"
 
-msgid ""
-"Return all tokens to bag\n"
-"(do not remove Bless/Curse)"
+msgid "do not remove"
 msgstr ""
-"Devolver todas las fichas\n"
-"(no retirar Bendición/Maldición)"
+
+#, javascript-format
+msgid "Return, but ${ doNotRemove } Bless/Curse"
+msgstr ""
+
+msgid "View chaos bag"
+msgstr ""
+
+msgid "Sealed tokens"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"

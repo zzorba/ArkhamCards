@@ -180,6 +180,7 @@ export interface SpecialTokenValue {
   token: ChaosTokenType;
   value: ChaosTokenValue;
   xText?: string;
+  revealAnother?: boolean;
 }
 
 export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {

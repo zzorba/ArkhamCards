@@ -542,6 +542,13 @@ export default class GuidedCampaignLog {
     );
   }
 
+  investigatorsSafe(): Card[] {
+    return flatMap(
+      this.investigatorCodesSafe(),
+      code => this.investigatorCards[code] || []
+    );
+  }
+
   count(sectionId: string, id: string): number {
     if (id === '$count') {
       const section = this.countSections[sectionId];

@@ -4,7 +4,7 @@ import { map } from 'lodash';
 import { t } from 'ttag';
 
 import BranchButton from './BranchButton';
-import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
+import { GuideDrawChaosBagProps } from '@components/campaignguide/GuideDrawChaosBagView';
 import ChooseOnePrompt from '@components/campaignguide/prompts/ChooseOnePrompt';
 import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
@@ -59,12 +59,13 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
   }, [componentId, campaignId, processedScenario]);
 
   const chaosBagSimulatorPressed = useCallback(() => {
-    Navigation.push<GuideChaosBagProps>(componentId, {
+    Navigation.push<GuideDrawChaosBagProps>(componentId, {
       component: {
         name: 'Guide.DrawChaosBag',
         passProps: {
           campaignId,
           chaosBag: campaignLog.chaosBag,
+          allInvestigators: processedScenario.latestCampaignLog.investigatorsSafe(),
         },
         options: {
           topBar: {
@@ -78,7 +79,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
         },
       },
     });
-  }, [componentId, campaignId, campaignLog]);
+  }, [componentId, campaignId, campaignLog, processedScenario.latestCampaignLog]);
 
   const mainContent = useMemo(() => {
     const firstDecision = scenarioState.choice(id);

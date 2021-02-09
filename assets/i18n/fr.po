@@ -4165,12 +4165,18 @@ msgstr "Libérer tout"
 msgid "Remove all bless & curse tokens"
 msgstr "Supprimer tous les pions Béni et Maudit"
 
-msgid ""
-"Return all tokens to bag\n"
-"(do not remove Bless/Curse)"
+msgid "do not remove"
 msgstr ""
-"Remettre tous les pions dans la reserve du Chaos\n"
-"(ne pas supprimer les Béni/Maudi)"
+
+#, javascript-format
+msgid "Return, but ${ doNotRemove } Bless/Curse"
+msgstr ""
+
+msgid "View chaos bag"
+msgstr ""
+
+msgid "Sealed tokens"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"

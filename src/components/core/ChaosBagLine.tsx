@@ -9,10 +9,11 @@ import StyleContext from '@styles/StyleContext';
 
 interface Props {
   chaosBag: ChaosBag;
-  width: number
+  width: number;
+  sealed?: boolean;
 }
 
-export default function ChaosBagLine({ chaosBag, width }: Props) {
+export default function ChaosBagLine({ chaosBag, width, sealed }: Props) {
   const tokens: ChaosTokenType[] = useMemo(() => {
     const bagKeys: ChaosTokenType[] = sortBy(
       keys(chaosBag) as ChaosTokenType[],
@@ -27,7 +28,11 @@ export default function ChaosBagLine({ chaosBag, width }: Props) {
   return (
     <View style={styles.tokenWrapper}>
       <View style={[styles.tokenRow, { flexBasis: wrapWidth }]}>
-        { map(tokens, (token, idx) => <View style={space.paddingXs} key={idx}><ChaosToken iconKey={token} tiny /></View>)}
+        { map(tokens, (token, idx) => (
+          <View style={space.paddingXs} key={idx}>
+            <ChaosToken iconKey={token} tiny sealed={sealed} />
+          </View>
+        )) }
       </View>
     </View>
   );
