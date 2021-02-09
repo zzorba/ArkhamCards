@@ -4166,27 +4166,27 @@ msgid "Remove all bless & curse tokens"
 msgstr "Supprimer tous les pions Béni et Maudit"
 
 msgid "do not remove"
-msgstr ""
+msgstr "ne pas supprimer"
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } Bless/Curse"
-msgstr ""
+msgstr "Remettre, sauf { doNotRemove } Béni/Maudit"
 
 msgid "View chaos bag"
-msgstr ""
+msgstr "Regarder la réserve du chaos"
 
 msgid "Sealed tokens"
-msgstr ""
+msgstr "Pions scellés"
 
 msgid "Save XP to deck after making adjustments"
-msgstr ""
+msgstr "Sauvegarder l'XP du deck après avoir fait des ajustements"
 
 #, javascript-format
 msgid "${ _spentXp } of ${ _totalXp } spent"
-msgstr ""
+msgstr "${ _spentXp } sur ${ _totalXp } dépensé"
 
 msgid "Save your changes to the campaign log"
-msgstr ""
+msgstr "Enregistrez vos modifications dans le carnet de campagne."
 
 #, javascript-format
 msgctxt "masculine"
