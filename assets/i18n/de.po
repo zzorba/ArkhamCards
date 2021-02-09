@@ -4155,6 +4155,9 @@ msgstr "Alle freigeben"
 msgid "Remove all bless & curse tokens"
 msgstr "Alle Segen und Fluch Token entfernen"
 
+msgid "Save XP to deck after making adjustments"
+msgstr ""
+
 msgid "do not remove"
 msgstr ""
 
@@ -4168,11 +4171,11 @@ msgstr ""
 msgid "Sealed tokens"
 msgstr ""
 
-msgid "Save XP to deck after making adjustments"
-msgstr ""
-
 #, javascript-format
 msgid "${ _spentXp } of ${ _totalXp } spent"
+msgstr ""
+
+msgid "Save your changes to the campaign log"
 msgstr ""
 
 #, javascript-format

@@ -3856,6 +3856,9 @@ msgstr ""
 msgid "${ _spentXp } of ${ _totalXp } spent"
 msgstr ""
 
+msgid "Save your changes to the campaign log"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr ""
