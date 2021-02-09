@@ -105,11 +105,11 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
     dispatch(updateChaosBagResults(campaignId, newChaosBagResults));
   }, [campaignId, chaosBagResults, dispatch]);
 
-  const handleClearTokensPressed = useCallback(() => {
+  const handleClearTokensKeepBlessAndCursedPressed = useCallback(() => {
     clearTokens();
   }, [clearTokens]);
 
-  const handleClearTokensRemoveBlessCursePressed = useCallback(() => {
+  const handleClearTokensPressed = useCallback(() => {
     clearTokens(true);
   }, [clearTokens]);
 
@@ -157,7 +157,7 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
 
   const handleDrawTokenPressed = useCallback(() => {
     if (chaosBagResults.drawnTokens.length >= 1) {
-      clearTokens();
+      clearTokens(true);
     } else {
       drawToken();
     }
@@ -302,7 +302,7 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
     return (
       <View style={[styles.advancedButton, styles.advancedButtonRight]}>
         { (drawnTokens.length >= 1) ? (
-          <TouchableWithoutFeedback onPress={handleClearTokensRemoveBlessCursePressed}>
+          <TouchableWithoutFeedback onPress={handleClearTokensPressed}>
             <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonRight]}>
               <ChaosToken iconKey="return" tiny />
               <Text style={[typography.cardTraits, space.paddingLeftS]} numberOfLines={2}>
@@ -322,7 +322,7 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
         ) }
       </View>
     );
-  }, [chaosBagResults.drawnTokens, typography, handleClearTokensRemoveBlessCursePressed, viewChaosBagOdds]);
+  }, [chaosBagResults.drawnTokens, typography, handleClearTokensPressed, viewChaosBagOdds]);
 
   const returnBlessCurse = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
@@ -331,9 +331,9 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosB
       return null;
     }
     return (
-      <ReturnBlessCurseButton onPress={handleClearTokensPressed} />
+      <ReturnBlessCurseButton onPress={handleClearTokensKeepBlessAndCursedPressed} />
     );
-  }, [chaosBagResults.drawnTokens, handleClearTokensPressed]);
+  }, [chaosBagResults.drawnTokens, handleClearTokensKeepBlessAndCursedPressed]);
   return (
     <SafeAreaView style={styles.container}>
       <KeepAwake />
