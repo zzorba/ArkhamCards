@@ -2695,7 +2695,7 @@ msgid "Scenario or Interlude"
 msgstr "Escenario o Interludio"
 
 msgid "Alphabetize guide encounter sets"
-msgstr "Alfabetizar conjuntos encuentros (campaña)"
+msgstr "Alfabetizar conjuntos encuentros"
 
 msgid "Draw Weakness"
 msgstr "Robar Debilidad"
