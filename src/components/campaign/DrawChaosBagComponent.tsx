@@ -85,7 +85,7 @@ function ReturnBlessCurseButton({ onPress }: { onPress: () => void }) {
 }
 
 export default function DrawChaosBagComponent({ campaignId, chaosBag, viewChaosBagOdds, editViewPressed, editable }: Props) {
-  const { backgroundStyle, fontScale, colors, typography, height } = useContext(StyleContext);
+  const { backgroundStyle, fontScale, colors, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const chaosBagResults = useChaosBagResults(campaignId);
   const [isChaosBagEmpty, setIsChaosBagEmpty] = useState(false);

@@ -134,7 +134,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         </View>
       </View>
     );
-  }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, hideChaosBag, standalone]);
+  }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, width, hideChaosBag, standalone]);
   return (
     <View style={[backgroundStyle, space.paddingBottomM]}>
       { chaosBagSection }

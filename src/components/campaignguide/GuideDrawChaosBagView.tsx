@@ -1,4 +1,4 @@
-import React, { Component, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import DrawChaosBagComponent from '@components/campaign/DrawChaosBagComponent';

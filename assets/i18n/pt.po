@@ -3849,6 +3849,13 @@ msgstr ""
 msgid "Sealed tokens"
 msgstr ""
 
+msgid "Save XP to deck after making adjustments"
+msgstr ""
+
+#, javascript-format
+msgid "${ _spentXp } of ${ _totalXp } spent"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr ""

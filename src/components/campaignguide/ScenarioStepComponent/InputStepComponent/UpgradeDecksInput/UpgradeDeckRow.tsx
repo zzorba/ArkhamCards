@@ -16,7 +16,6 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showDeckModal, showCard } from '@components/nav/helper';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import DeckUpgradeComponent, { DeckUpgradeHandles } from '@components/deck/DeckUpgradeComponent';
-import { saveDeckUpgrade, saveDeckChanges, SaveDeckChanges } from '@components/deck/actions';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card from '@data/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
@@ -28,8 +27,8 @@ import useCardList from '@components/card/useCardList';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { TINY_PHONE } from '@styles/sizes';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import useDeckUpgrade from '@components/deck/useDeckUpgrade';
 
 interface ShowDeckButtonProps {
   componentId: string;
@@ -354,19 +353,21 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
   }, [incMental, decMental, incPhysical, decPhysical, toggleInsane, toggleKilled, investigator,
     colors, typography, baseTrauma, choices, editable, insane, killed, physicalTrauma, mentalTrauma,
     insaneAdjust, killedAdjust, traumaDelta]);
-
+  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, onUpgrade);
   const saveButton = useMemo(() => {
     if (choices !== undefined || !editable) {
       return null;
     }
     if (deck) {
       return (
-        <View style={space.paddingM}>
+        <View style={[styles.row, space.paddingBottomS]}>
           <DeckButton
             icon="upgrade"
             color="gold"
             title={t`Save deck upgrade`}
+            detail={t`Save XP to deck after making adjustments`}
             onPress={save}
+            loading={saving}
           />
         </View>
       );
@@ -375,16 +376,17 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
       return null;
     }
     return (
-      <View style={space.paddingM}>
+      <View style={styles.row}>
         <DeckButton
           icon="upgrade"
           color="gold"
           title={t`Save adjustments`}
           onPress={save}
+          loading={saving}
         />
       </View>
     );
-  }, [choices, editable, deck, save, unsavedEdits]);
+  }, [choices, editable, deck, save, saving, unsavedEdits]);
 
   const campaignSection = useMemo(() => {
     return (
@@ -392,10 +394,9 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
         { (choices !== undefined || !deck) && xpSection }
         { traumaSection }
         { storyAssetSection }
-        { saveButton }
       </>
     );
-  }, [choices, deck, xpSection, traumaSection, storyAssetSection, saveButton]);
+  }, [choices, deck, xpSection, traumaSection, storyAssetSection]);
 
   const selectDeck = useCallback(() => {
     campaignState.showChooseDeck(investigator);
@@ -463,14 +464,6 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
   }, [deck, storyAssets, storyAssetDeltas]);
 
 
-  const performSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
-    return deckDispatch(saveDeckChanges(user, deck, changes) as any);
-  }, [deckDispatch, user]);
-
-  const performSaveDeckUpgrade = useCallback((deck: Deck, xp: number, exileCounts: Slots): Promise<Deck> => {
-    return deckDispatch(saveDeckUpgrade(user, deck, xp, exileCounts) as any);
-  }, [deckDispatch, user]);
-
   const detailsSection = useMemo(() => {
     if (!deck) {
       return campaignSection;
@@ -488,13 +481,13 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
         startingXp={campaignLog.earnedXp(investigator.code)}
         storyCounts={storyCountsForDeck}
         ignoreStoryCounts={campaignLog.ignoreStoryAssets(investigator.code)}
-        upgradeCompleted={onUpgrade}
-        saveDeckChanges={performSaveDeckChanges}
-        saveDeckUpgrade={performSaveDeckUpgrade}
+        saveDeckUpgrade={saveDeckUpgrade}
+        saving={saving}
+        error={error}
       />
     );
   }, [componentId, deck, investigator, campaignLog, editable, choices, storyCountsForDeck,
-    performSaveDeckChanges, performSaveDeckUpgrade, onUpgrade,
+    saveDeckUpgrade, saving, error,
     deckUpgradeComponent, campaignSection]);
 
   const isYithian = storyAssets && (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;
@@ -502,10 +495,10 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     <InvestigatorRow
       investigator={investigator}
       yithian={isYithian}
-      button={deckButton}
-      noFactionIcon={TINY_PHONE}
+      button={saveButton || deckButton}
+      noFactionIcon
     >
-      { detailsSection }
+      { !saving && detailsSection }
     </InvestigatorRow>
   );
 }
