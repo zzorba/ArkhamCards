@@ -533,19 +533,19 @@ msgstr "Ankündigungen"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:96
 msgid "Rescue the Chemist"
-msgstr "Den Apotheker retten"
+msgstr "Rette die Chemikerin"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:97
 msgid "Recover the Sample"
-msgstr "Die Probe wiederherstellen"
+msgstr "Beschaffe eine Probe"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:98
 msgid "Drive Off the Mi-Go"
-msgstr "Den Mi-Go entkommen"
+msgstr "Verjage die Mi-Go"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:99
 msgid "Diffuse the Explosives"
-msgstr "Die Sprengladungen entschärfen"
+msgstr "Entschärfe den Sprengstoff"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:103
 msgid "Inside the Blob"
@@ -557,11 +557,11 @@ msgstr ""
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:105
 msgid "The Great Ooze Flood"
-msgstr "Die große Schlammflut"
+msgstr "Die große Schleimwelle"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:106
 msgid "Devourer of Ages"
-msgstr "Verschlinger der zeitalter"
+msgstr "Verschlinger der Zeitalter"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:130
 msgid "Reveal Act 3b story"
