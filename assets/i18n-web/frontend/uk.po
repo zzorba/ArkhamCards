@@ -14,131 +14,100 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Language: uk\n"
 
-#: src/components/About.tsx:12
 msgid ""
 "This website is dedicated to providing a way for players of the Arkham "
 "Horror LCG to connect when far apart."
 msgstr ""
 
-#: src/components/About.tsx:15
 #, javascript-format
 msgid ""
 "Costs to maintain the site are provided by the generous support of fans on "
 "${ patreon }. If you like what we are doing, consider supporting us."
 msgstr ""
 
-#: src/components/CreateEvent.tsx:104
 msgid "Host your own Epic Multiplayer event"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:107
 msgid ""
 "This site allows you to host an Epic Multiplayer events for Arkham Horror: "
 "The Card Game."
 msgstr ""
 
-#: src/components/CreateEvent.tsx:110
 msgid ""
 "As the organizer, you will be need to setup communication channels with "
 "your players (we suggest Discord)."
 msgstr ""
 
-#: src/components/CreateEvent.tsx:113
 msgid "This site will allow players to:"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:116
 msgid "Pre-register for the event with tentative table size."
 msgstr ""
 
-#: src/components/CreateEvent.tsx:117
 msgid "Confirm registration up to an hour before the event."
 msgstr ""
 
-#: src/components/CreateEvent.tsx:118
 msgid ""
 "Start the game and keep track of time, while also reporting shared game "
 "state."
 msgstr ""
 
-#: src/components/CreateEvent.tsx:123
 msgid "Event scenario"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:131
 msgid "The Blob That Ate Everything"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:134
 msgid "War of the Outer Gods"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:144
 msgid "Event name"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:156
 msgid "Public event"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:165
 msgid "Registration password"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:179
-#: src/components/Event/index.tsx:125
 msgid "Description (supports markdown)"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:192
 msgid "Discord webhook (for announcements)"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:206
-#: src/components/Event/index.tsx:190
 msgid "Scheduled start time"
 msgstr ""
 
-#: src/components/CreateEvent.tsx:224
 msgid "Create event"
 msgstr ""
 
-#: src/components/Home.tsx:82
 msgid "Events you are hosting"
 msgstr ""
 
-#: src/components/Home.tsx:99
 msgid "Schedule an event"
 msgstr ""
 
-#: src/components/Home.tsx:116
 msgid "Upcoming event you are registered for"
 msgstr ""
 
-#: src/components/Home.tsx:124
 msgid "Upcoming events"
 msgstr ""
 
-#: src/components/Home.tsx:198
 msgid "Scheduled events"
 msgstr ""
 
-#: src/components/Home.tsx:211
 msgid ""
 "Site under construction while we prepare for War of the Outer Gods. Check "
 "back soon!"
 msgstr ""
 
-#: src/components/Home.tsx:215
-#: src/components/Home.tsx:216
 msgid "(video walkthrough of the interface)"
 msgstr ""
 
-#: src/components/Home.tsx:226
 msgid "Arkham Horror: Epic Multiplayer Events"
 msgstr ""
 
-#: src/components/Home.tsx:229
 msgid ""
 "This website allows you to participate in Arkham Horror scenarios that "
 "utilize the epic multiplayer format with players around the world. These "
@@ -147,643 +116,486 @@ msgid ""
 "organizers. The website currently supports two scenarios:"
 msgstr ""
 
-#: src/components/Home.tsx:232
 #, javascript-format
 msgid "• The Blob That Ate Everything ${ blobVideoLink }"
 msgstr ""
 
-#: src/components/Home.tsx:235
 msgid "• War of the Outer Gods ${ warVideoLink }."
 msgstr ""
 
-#: src/components/Home.tsx:238
 msgid "You are more than welcome to use this site to host your own events."
 msgstr ""
 
-#: src/components/Home.tsx:357
 msgid "Become a Patron!"
 msgstr ""
 
-#: src/components/Home.tsx:361
 msgid ""
 "Hosting costs for this site and the Arkham Cards app comes from the "
 "generous support of fans on Patreon."
 msgstr ""
 
-#: src/components/NavBar.tsx:97
 #, javascript-format
 msgid "Language (${ language })"
 msgstr ""
 
-#: src/components/NavBar.tsx:121
-#: src/components/NavBar.tsx:148
 msgid "Login"
 msgstr ""
 
-#: src/components/NavBar.tsx:134
 msgid "Home"
 msgstr ""
 
-#: src/components/NavBar.tsx:143
 msgid "Profile"
 msgstr ""
 
-#: src/components/NavBar.tsx:145
 msgid "Logout"
 msgstr ""
 
-#: src/components/NavBar.tsx:152
 msgid "About"
 msgstr ""
 
-#: src/components/Profile/FriendRequestsComponent.tsx:97
 msgid "Friend Requests"
 msgstr ""
 
-#: src/components/Profile/FriendRequestsComponent.tsx:101
 msgid "Accept"
 msgstr ""
 
-#: src/components/Profile/FriendRequestsComponent.tsx:105
 msgid "Reject"
 msgstr ""
 
-#: src/components/Profile/FriendRequestsComponent.tsx:111
 msgid "Pending Requests"
 msgstr ""
 
-#: src/components/Profile/FriendRequestsComponent.tsx:115
-#: src/components/Profile/FriendRequestsComponent.tsx:125
 msgid "Revoke"
 msgstr ""
 
-#: src/components/Profile/FriendRequestsComponent.tsx:121
-#: src/components/Profile/index.tsx:112
 msgid "Friends"
 msgstr ""
 
-#: src/components/Profile/FriendStatusComponent.tsx:39
 msgid "Send Friend Request"
 msgstr ""
 
-#: src/components/Profile/FriendStatusComponent.tsx:45
 msgid "Confirm Friend"
 msgstr ""
 
-#: src/components/Profile/FriendStatusComponent.tsx:51
 msgid "Cancel Friend Request"
 msgstr ""
 
-#: src/components/Profile/FriendStatusComponent.tsx:57
 msgid "Cancel Friendship"
 msgstr ""
 
-#: src/components/Profile/index.tsx:62
 msgid "Blank handles are not allowed"
 msgstr ""
 
-#: src/components/Profile/index.tsx:78
 msgid "Account name"
 msgstr ""
 
-#: src/components/Profile/index.tsx:84
 msgid "Choose a handle"
 msgstr ""
 
-#: src/components/Profile/index.tsx:100
 msgid "Update"
 msgstr ""
 
-#: src/components/Profile/index.tsx:108
 msgid "Handle"
 msgstr ""
 
-#: src/components/Profile/index.tsx:109
 msgid "No handle chosen yet."
 msgstr ""
 
-#: src/components/Event/index.tsx:139
 msgid "Update Description"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:468
-#: src/components/Event/index.tsx:411
 #, javascript-format
 msgid "${ participant.groupSize } player"
 msgid_plural "${ participant.groupSize } players"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/Event/index.tsx:425
 msgid "Confirmed groups"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:582
-#: src/components/Event/index.tsx:433
 msgid "Unconfirmed groups"
 msgstr ""
 
-#: src/components/Event/index.tsx:439
 msgid "All groups are confirmed."
 msgstr ""
 
-#: src/components/Event/index.tsx:451
 msgid "Done"
 msgstr ""
 
-#: src/components/Event/index.tsx:469
 msgid "View participants"
 msgstr ""
 
-#: src/components/Event/index.tsx:503
 msgid "Time remaining"
 msgstr ""
 
-#: src/components/Event/index.tsx:519
 #, javascript-format
 msgid "${ groupCount } group"
 msgid_plural "${ groupCount } groups"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:27
-#: src/components/Event/index.tsx:529
 #, javascript-format
 msgid "${ playerCount } player"
 msgid_plural "${ playerCount } players"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/Event/index.tsx:558
 msgid "Permanently Delete Event"
 msgstr ""
 
-#: src/components/Event/index.tsx:561
 msgid "Are you sure you want to delete this event?"
 msgstr ""
 
-#: src/components/Event/index.tsx:564
 msgid "This action cannot be undone and all data will be removed."
 msgstr ""
 
-#: src/components/Event/index.tsx:574
-#: src/components/Event/index.tsx:588
 msgid "Delete Event"
 msgstr ""
 
-#: src/components/Event/index.tsx:616
-#: src/components/Event/index.tsx:632
-#: src/components/Event/index.tsx:646
 msgid "Archive Event"
 msgstr ""
 
-#: src/components/Event/index.tsx:619
 msgid "Are you sure you want to archive this event?"
 msgstr ""
 
-#: src/components/Event/index.tsx:622
 msgid ""
 "The event will no longer be visible on the homepage, but it can still be "
 "visited by URL or have its stats accessed by the admins."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:47
 msgid "Ding dong the Blob is dead!"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:49
 msgid ""
 "Red agenda 1a has advanced. Please advance to red agenda 1b during your "
 "next Mythos Phase"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:51
 msgid ""
 "Red agenda 2a has advanced. Please advance to red agenda 2b during your "
 "next Mythos Phase"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:53
 msgid ""
 "Red agenda 3a has advanced. Please advance to red agenda 3b during your "
 "next Mythos Phase and prepare for the arrival of Ezel-zen-rezl!"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:55
 msgid ""
 "Green agenda 1a has advanced. Please advance to green agenda 1b during your "
 "next Mythos Phase"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:57
 msgid ""
 "Green agenda 2a has advanced. Please advance to green agenda 2b during your "
 "next Mythos Phase"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:59
 msgid ""
 "Green agenda 3a has advanced. Please advance to green agenda 3b during your "
 "next Mythos Phase and prepare for the arrival of Magh’an Ark’at!"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:61
 msgid ""
 "Blue agenda 1a has advanced. Please advance to blue agenda 1b during your "
 "next Mythos Phase"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:63
 msgid ""
 "Blue agenda 2a has advanced. Please advance to blue agenda 2b during your "
 "next Mythos Phase"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:65
 msgid ""
 "Blue agenda 3a has advanced. Please advance to blue agenda 3b during your "
 "next Mythos Phase and prepare for the arrival of Silenus!"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:70
 msgid "Ezel-zen-rezl has been defeated! The investigators win the game!"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:72
 msgid "Magh’an Ark’at has been defeated! The investigators win the game!"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:123
 msgid "Announcement sent to players."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:132
-#: src/components/Event/GameControls/Announcements.tsx:151
 msgid "Send Announcement"
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:178
 #, javascript-format
 msgid ""
 "Received a clue from ${ groupName }. Please add to your copy of Hub "
 "Dimension."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:179
 msgid "Received a clue to add to your copy of Hub Dimension."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:182
 #, javascript-format
 msgid ""
 "Received help in New York from ${ groupName }. Deal 3 damage to a "
 "non-Ancient One enemy at a \"New York\" location."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:183
 msgid ""
 "Received help in New York. Deal 3 damage to a non-Ancient One enemy at a "
 "\"New York\" location."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:186
 #, javascript-format
 msgid ""
 "Received help in Montréal from ${ groupName }. Deal 3 damage to a "
 "non-Ancient One enemy at a \"Montréal\" location."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:187
 msgid ""
 "Received help in Montréal. Deal 3 damage to a non-Ancient One enemy at a "
 "\"Montréal\" location."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:190
 #, javascript-format
 msgid ""
 "Received help in Providence from ${ groupName }. Deal 3 damage to a "
 "non-Ancient One enemy at a \"Providence\" location."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:191
 msgid ""
 "Received help in Providence. Deal 3 damage to a non-Ancient One enemy at a "
 "\"Providence\" location."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:279
 msgid "A worried man and women look towards the sky."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:280
 msgid "A man and women runs from a looming blob."
 msgstr ""
 
-#: src/components/Event/GameControls/Announcements.tsx:283
 msgid "Announcements"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:96
 msgid "Rescue the Chemist"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:97
 msgid "Recover the Sample"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:98
 msgid "Drive Off the Mi-Go"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:99
 msgid "Diffuse the Explosives"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:103
 msgid "Inside the Blob"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:104
 msgid "Dance of the Bricks"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:105
 msgid "The Great Ooze Flood"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:106
 msgid "Devourer of Ages"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:130
 msgid "Reveal Act 3b story"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:167
 msgid "Act 3b Story Cards"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:180
 msgid "Choose Act 3b Story"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:206
 msgid "Send Selection"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:226
 msgid ""
 "Act 1 global clue threshold has been reached! Make sure to advance act 1 "
 "when you start your next round."
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:243
 msgid "Blob being examined with scientified instruments."
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:243
 msgid "Act 1 Clues"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:257
 msgid "Send announcement to advance act 1"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:264
 msgid "Add act 1 clues"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:273
 msgid "No current shared clue goal"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:287
 msgid "Reset shared act 1 clue goal"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:305
 msgid "A blob consuming a car and a house."
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:305
 msgid "8L-08 Damage"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:312
-#: src/components/Event/GameControls/WarGameControls.tsx:366
 msgid "Deal damage"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:327
 msgid "A man tries to escape the grasp of a blob."
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:327
 msgid "Available Countermeasures"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:334
 msgid "Add countermeasures"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:343
 msgid "No countermeasures available"
 msgstr ""
 
-#: src/components/Event/GameControls/BlobGameControls.tsx:343
 msgid "Use a countermeasure"
 msgstr ""
 
-#: src/components/Event/GameControls/CollapseList.tsx:21
 msgid "Show all"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:101
 msgid "Registration saved."
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:114
 msgid "Login to register"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:128
-#: src/components/Event/GameControls/PendingGameControls.tsx:196
 msgid "Register group"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:132
 msgid ""
 "Please confirm your registration an hour before the event starts, so the "
 "event organizer has an accurate player count."
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:137
 msgid "Player Count"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:154
-#: src/components/Event/GameControls/PendingGameControls.tsx:384
 msgid "Group name"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:165
 msgid "Discord handle (or other identifier for organizer)"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:183
 msgid "Sign-up has been disabled"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:183
 msgid "Register"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:291
 msgid "Confirm cancellation"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:295
 msgid "Are you sure you want to cancel your registration for this event?"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:306
-#: src/components/Event/GameControls/PendingGameControls.tsx:449
 msgid "Cancel registration"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:325
-#: src/components/Event/GameControls/PendingGameControls.tsx:340
-#: src/components/Event/GameControls/PendingGameControls.tsx:438
 msgid "Confirm registration"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:329
 #, javascript-format
 msgid ""
 "Your current investigator count is ${ groupSizeString }. You may update "
 "this before confirming if that is incorrect."
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:347
 msgid "Try again later."
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:351
 msgid "Registration can only be confirmed an hour before the event starts."
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:354
 msgid "Please try again closer to the scheduled start time."
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:365
 msgid "Okay"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:396
 msgid "Your group's player count"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:419
 msgid "Update registration"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:428
 msgid ""
 "Group confirmation is now open, you can confirm your group's player count "
 "now."
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:429
 msgid ""
 "You will need to confirm your group one hour before the scheduled start "
 "time."
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:430
 msgid ""
 "If the event starts before you confirm, it will not be possible to join "
 "late."
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:576
-#: src/components/Event/GameControls/PendingGameControls.tsx:651
-#: src/components/Event/GameControls/PendingGameControls.tsx:665
 msgid "Start event"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:587
 msgid ""
 "Warning: unconfirmed players will not be able to join the game once it has "
 "begun."
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:593
 msgid "All registered groups are confirmed"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:601
 msgid "Player count"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:614
 msgid "Group count"
 msgstr ""
 
-#: src/components/Event/GameControls/PendingGameControls.tsx:627
 msgid "Duration (minutes)"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:84
 msgid "Cancel"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:92
 msgid "Yes"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:185
 msgid "Send"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:200
 msgid "Cult of Magh’an Ark’at"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:201
 msgid "Magh’an Ark’at"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:209
 msgid "Cult of Silenus"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:210
 msgid "Silenus"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:218
 msgid "Cult of Ezel-zen-rezl"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:219
 msgid "Ezel-zen-rezl"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:227
 msgid "Cult of Magh’an Ark’at (Green)"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:228
 msgid "Cult of Silenus (Blue)"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:229
 msgid "Cult of Ezel-zen-rezl (Red)"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:254
 #, javascript-format
 msgid ""
 "${ leadingFactions[0] } and ${ leadingFactions[1] } are tied. If needed, "
@@ -791,349 +603,266 @@ msgid ""
 "lead\"."
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:256
 msgid ""
 "All factions are tied. If needed, use whichever one has more enemies on "
 "your board as the \"Faction in the lead\"."
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:271
 msgid "Add Green Doom"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:272
 msgid "Add Blue Doom"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:273
 msgid "Add Red Doom"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:286
 #, javascript-format
 msgid "Agenda ${ agendaNumber }"
 msgid_plural "Agenda ${ agendaNumber }"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:289
 msgid "Doom ${ doom } / ${ doomLimit }"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:311
 msgid "Factions"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:314
 msgid "Faction in the Lead:"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:321
 msgid "Place Mythos Doom (1 per faction)"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:361
 #, javascript-format
 msgid "Damage: ${ gameState.damage } / ${ gameState.healthLimit }"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:396
-#: src/components/Event/GameControls/WarGameControls.tsx:506
 msgid "Share a clue with this group"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:397
-#: src/components/Event/GameControls/WarGameControls.tsx:507
 msgid ""
 "Are you sure you want to share a clue with this group using the abiliity on "
 "Act 3?"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:405
 msgid "Advance group"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:406
 #, javascript-format
 msgid "Advance this group to Act ${ nextAct }"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:406
-#: src/components/Event/GameControls/WarGameControls.tsx:716
 #, javascript-format
 msgid "Is your group ready to advance to Act ${ nextAct }?"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:413
 msgid "Mark this group as eliminated?"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:413
 msgid "Has your entire group been eliminated?"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:414
 #, javascript-format
 msgid ""
 "Because you are still in Act 1 / Act 2, this will add ${ "
 "participant.groupSize } doom to the faction in the lead equal."
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:416
 msgid "Elminate group"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:426
 msgid "share clue"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:431
 msgid "advance"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:436
 msgid "eliminate group"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:484
 msgid "Requested help in Montéal"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:485
 msgid "Give help in Montéal"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:486
 msgid ""
 "Are you ready to help this group using the action ability on the \"Streets "
 "of Montéal\" location (group limit once per game)?"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:491
 msgid "Requested help in New York"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:492
 msgid "Give help in New York"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:493
 msgid ""
 "Are you ready to help this group using the action ability on the \"Streets "
 "of New York\" location (group limit once per game)?"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:498
 msgid "Requested help in Providence"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:499
 msgid "Give help in Providence"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:500
 msgid ""
 "Are you ready to help this group using the action ability on the \"Streets "
 "of Providence\" location (group limit once per game)?"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:505
 msgid "Requested help closing Hub Dimension"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:561
-#: src/components/Event/GameControls/WarGameControls.tsx:628
 msgid "Give clue"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:561
 msgid "Give help"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:632
-#: src/components/Event/index.tsx:516
 msgid "Groups"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:668
 msgid "Still fighting"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:673
 msgid "Act 1"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:678
 msgid "Act 2"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:684
 msgid "Act 3"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:689
 msgid "Eliminated"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:715
-#: src/components/Event/GameControls/WarGameControls.tsx:789
 #, javascript-format
 msgid "Advance to Act ${ nextAct }"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:724
 msgid "Group eliminated?"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:725
 msgid ""
 "Has your entire party been eliminated? If you are in Act 1 or Act 2, this "
 "will automatically add doom to handle your elimination."
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:737
 msgid "Your group"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:744
 msgid "Place Mythos Phase Doom (1 per faction)"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:755
 msgid "Your group has been eliminated."
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:762
 #, javascript-format
 msgid "Group act progress: Act ${ act }a"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:767
 #, javascript-format
 msgid "Hub Dimension clues received from other groups: ${ receivedClues }"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:777
 msgid "Cancel request for help closing Hub Dimension"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:777
 msgid "Request help closing Hub Dimension"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:799
 msgid "Group eliminated"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:810
 msgid "Ask for help from other groups to damage enemies at these locations."
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:815
 msgid "Cancel request for help in Montréal"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:815
 msgid "Request help in Montréal"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:823
 msgid "Cancel request for help in New York"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:823
 msgid "Request help in New York"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:831
 msgid "Cancel request for help in Providence"
 msgstr ""
 
-#: src/components/Event/GameControls/WarGameControls.tsx:831
 msgid "Request help in Providence"
 msgstr ""
 
-#: src/components/Event/GroupAndPlayerCounts.tsx:20
 msgid "Groups:"
 msgstr ""
 
-#: src/components/Event/GroupAndPlayerCounts.tsx:23
 msgid "Players:"
 msgstr ""
 
-#: src/components/Event/index.tsx:163
 msgid "Start time"
 msgstr ""
 
-#: src/components/Event/index.tsx:176
 msgid "Event start"
 msgstr ""
 
-#: src/components/Event/index.tsx:207
 msgid "Update scheduled start"
 msgstr ""
 
-#: src/components/Event/index.tsx:516
 msgid "Registered groups"
 msgstr ""
 
-#: src/components/Event/index.tsx:526
 msgid "Players"
 msgstr ""
 
-#: src/components/Event/index.tsx:379
 msgid "Update Webhook"
 msgstr ""
 
-#: src/components/Event/index.tsx:418
 msgid "Participants"
 msgstr ""
 
-#: src/components/Home.tsx:257
 msgid "Use the Arkham Cards app to manage your decks and campaigns."
 msgstr ""
 
-#: src/components/Home.tsx:260
 #, javascript-format
 msgid ""
 "• Keep decks locally on your phone, or integrate directly with decks on ${ "
 "arkhamDbLink }."
 msgstr ""
 
-#: src/components/Home.tsx:263
 msgid ""
 "• Handles all scenario setup and resolution, while maintaining the campaign "
 "log and chaos bag automatically."
 msgstr ""
 
-#: src/components/Home.tsx:266
 msgid "• Edit and upgrade your investigator's decks."
 msgstr ""
 
-#: src/components/Home.tsx:269
 msgid ""
 "• Draw tokens from the digital chaos bag, and calculate the odds of success "
 "before you do."
 msgstr ""
 
-#: src/components/Home.tsx:272
 msgid "• Use the advanced card search to search by trait, health, shroud etc."
 msgstr ""
 
-#: src/components/Home.tsx:275
 msgid "• Completely free to download and use, with zero ads."
 msgstr ""
 
-#: src/components/Home.tsx:301
 msgid ""
 "The app does not yet support Epic Multiplayer events, so you will still "
 "need to use the website. App support is coming soon though."
 msgstr ""
 
-#: src/components/Home.tsx:283
 msgid "Download on the App Store"
 msgstr ""
 
-#: src/components/Home.tsx:293
 msgid "Get it on Google Play"
 msgstr ""

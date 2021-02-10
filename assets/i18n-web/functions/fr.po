@@ -13,72 +13,58 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: fr\n"
 
-#: src/event.ts:546
 msgid "There is not a current clue goal, please talk to the organizer."
 msgstr ""
 "Il n'y a pas d'indice d'objectif actuel, veuillez en parler à "
 "l'organisateur."
 
-#: src/event.ts:552
 #, javascript-format
 msgid "Clue goal reached. Please take back ${ returnedClues } clue."
 msgid_plural "Clue goal reached. Please take back ${ returnedClues } clues."
 msgstr[0] "Objectif d'indice atteint. Veuillez retirer ${ returnedClues } indice."
 msgstr[1] "Objectif d'indice atteint. Veuillez retirer ${ returnedClues } indices."
 
-#: src/event.ts:561
 msgid "Clue removed."
 msgid_plural "Clues removed."
 msgstr[0] "Indice retiré."
 msgstr[1] "Indices retirés."
 
-#: src/event.ts:565
 msgid "Clue added."
 msgid_plural "Clues added."
 msgstr[0] "Indice ajouté."
 msgstr[1] "Indice ajoutés."
 
-#: src/event.ts:576
 msgid "Damage added."
 msgstr "Dégât ajouté."
 
-#: src/event.ts:576
 msgid "Damage removed."
 msgstr "Dégât retiré."
 
-#: src/event.ts:585
 msgid "One countermeasure used."
 msgstr "Une contre-mesure utilisée."
 
-#: src/event.ts:587
 msgid "Countermeasure removed."
 msgid_plural "Countermeasures removed."
 msgstr[0] "Contre-mesure utilisée."
 msgstr[1] "Contre-mesures utilisées."
 
-#: src/event.ts:600
 msgid "Countermeasure added."
 msgid_plural "Countermeasures added."
 msgstr[0] "Contre-mesure ajoutée."
 msgstr[1] "Contre-mesures ajoutées."
 
-#: src/event.ts:618
 msgid "Ding dong the Blob is dead!"
 msgstr "Ding dong le Dévoreur est mort !"
 
-#: src/event.ts:662
 msgid "Magh’an Ark’at"
 msgstr "Magh’an Ark’at"
 
-#: src/event.ts:663
 msgid "Silenus"
 msgstr "Silenus"
 
-#: src/event.ts:664
 msgid "Ezel-zen-rezl"
 msgstr "Ezel-zen-rezl"
 
-#: src/event.ts:704
 #, javascript-format
 msgid ""
 "The time for tracking shared doom has passed. Please place ${ doom } doom "
@@ -93,7 +79,6 @@ msgstr[1] ""
 "Le temps de la traque de la fatalité partagée est révolu. Veuillez placer "
 "${ doom } pions Fatalité sur l'intrigue ${ color}."
 
-#: src/event.ts:721
 #, javascript-format
 msgid ""
 "The ${ color } agenda's doom threshhold was reached. Please place ${ "
@@ -110,16 +95,13 @@ msgstr[1] ""
 "${ returnedDoom } pions Fatalité sur l'intrigue ${ color } après qu'il ait "
 "avancé."
 
-#: src/event.ts:730
 msgid "Doom removed from ${ color } agenda."
 msgstr "Pion Fatalité retiré de l'intrigue ${ color }."
 
-#: src/event.ts:730
 #, javascript-format
 msgid "Doom added to ${ color } agenda."
 msgstr "Pion Fatalité ajouté à l'intrigue ${ color }."
 
-#: src/event.ts:749
 #, javascript-format
 msgid ""
 "The ${ color } agenda ${ agendaNumber }a has advanced. Please advance to ${ "
@@ -129,7 +111,6 @@ msgstr ""
 "l'intrigue ${ color } ${ agendaNumber }b lors de la prochaine Phase du "
 "Mythe."
 
-#: src/event.ts:787
 msgid ""
 "Looks like someone else already helped this group, or they cancelled their "
 "request."
@@ -137,41 +118,32 @@ msgstr ""
 "Il semble que quelqu'un d'autre ait déjà aidé ce groupe, ou qu'il ait "
 "annulé sa demande."
 
-#: src/event.ts:801
 msgid "Aid given in Montreal!"
 msgstr "Aide donnée à Montréal !"
 
-#: src/event.ts:802
 msgid "Aid given in Providence!"
 msgstr "Aide donnée à Providence !"
 
-#: src/event.ts:803
 msgid "Aid given in New York!"
 msgstr "Aide donnée à New York !"
 
-#: src/event.ts:847
 msgid "Doom added to all agendas"
 msgstr "Pion Fatalité ajouté à toutes les intrigues"
 
-#: src/event.ts:858
 msgid "There is still time, the great old one is not yet here."
 msgstr "Il y a encore du temps, le grand ancien n'est pas encore là."
 
-#: src/event.ts:864
 #, javascript-format
 msgid "Damage added to ${ gooName }."
 msgstr "Dégât ajouté à ${ gooName }."
 
-#: src/event.ts:864
 msgid "Damage removed from ${ gooName }."
 msgstr "Dégât retiré de ${ gooName }."
 
-#: src/event.ts:868
 #, javascript-format
 msgid "${ gooName } has been defeated! The investigators win the game!"
 msgstr "${ gooName} a été battu ! Les investigateurs gagnent la campagne !"
 
-#: src/event.ts:905
 msgid ""
 "Congratulations on reaching Act 3! Now do what you can to help the other "
 "groups."
@@ -179,84 +151,63 @@ msgstr ""
 "Félicitations pour avoir atteint l'Acte 3 ! Maintenant, faites ce que vous "
 "pouvez pour aider les autres groupes."
 
-#: src/event.ts:907
 msgid "Act progress recorded."
 msgstr "Progression de l'acte enregistrée."
 
-#: src/event.ts:921
 msgid "Clue given away."
 msgstr "Indice donné."
 
-#: src/event.ts:934
 msgid "Help requested to close Hub Dimension!"
 msgstr "Demande d'aide pour fermer le Nexus Dimensionnel !"
 
-#: src/event.ts:934
 msgid "Request for help closing Hub Dimension cancalled."
 msgstr "Demande d'aide pour fermer le Nexus Dimensionnel annulée."
 
-#: src/event.ts:947
 msgid "Help requested in New York!"
 msgstr "Demande d'aide à New York !"
 
-#: src/event.ts:947
 msgid "Request for help in New York cancelled."
 msgstr "Demande d'aide à New York annulée."
 
-#: src/event.ts:960
 msgid "Help requested in Providence!"
 msgstr "Demande d'aide à Providence !"
 
-#: src/event.ts:960
 msgid "Request for help in Providence cancelled."
 msgstr "Demande d'aide à Providence annulée."
 
-#: src/event.ts:973
 msgid "Help requested in Montreal!"
 msgstr "Demande d'aide à Montreal !"
 
-#: src/event.ts:973
 msgid "Request for help in Montreal cancelled."
 msgstr "Demande d'aide à Montreal annulée."
 
-#: src/core/index.ts:42
 msgid "Request not authorized. User must be signed in."
 msgstr "Demande non autorisée. L'utilisateur doit être connecté."
 
-#: src/campaign/index.ts:36
 msgid "Unable to create new campaign. Please try again later."
 msgstr "Impossible de créer une nouvelle campagne. Veuillez réessayer plus tard."
 
-#: src/event.ts:670
 msgid "green"
 msgstr "vert"
 
-#: src/event.ts:671
 msgid "blue"
 msgstr "bleu"
 
-#: src/event.ts:672
 msgid "red"
 msgstr "rouge"
 
-#: src/event.ts:63
-#: src/event.ts:140
 msgid "You are not authorized to edit this event."
 msgstr "Vous n'êtes pas autorisé à modifier cet événement."
 
-#: src/event.ts:92
 msgid "Password required for private events."
 msgstr "Mot de passe requis pour les événements privés."
 
-#: src/event.ts:188
 msgid "You are not authorized to archive this event."
 msgstr "Vous n'êtes pas autorisé à archiver cet événement."
 
-#: src/event.ts:68
 msgid "You can only send announcements after the game has started."
 msgstr "Vous ne pouvez envoyer des annonces qu'après le début du jeu."
 
-#: src/event.ts:743
 #, javascript-format
 msgid ""
 "The ${ color } agenda ${ agendaNumber }a has advanced. Please advance to ${ "
@@ -267,32 +218,25 @@ msgstr ""
 "l'intrigue ${ color } ${ agendaNumber }b lors de la prochaine Phase du "
 "Mythe et préparez-vous à l'arrivée de ${ gooName } !"
 
-#: src/social.ts:159
 msgid "Minimum search size is 3 characters."
 msgstr "La recherche doit comporter au moins 3 caractères."
 
-#: src/social.ts:165
 msgid "Something weird happened with continuation token"
 msgstr "Quelque chose de bizarre est arrivé avec le jeton de continuation"
 
-#: src/campaign/index.ts:123
 msgid "You must set a handle before you can invite friends."
 msgstr "Vous devez définir un nom avant de pouvoir inviter des amis."
 
-#: src/campaign/index.ts:138
 msgid "Something went wrong."
 msgstr "Quelque chose a mal tourné."
 
-#: src/campaign/index.ts:146
 #. The only request that is allowed for a participant is to 'leave' a campaign.
 msgid "You are not allowed to edit this campaign."
 msgstr "Vous n'êtes pas autorisé à modifier cette campagne."
 
-#: src/campaign/index.ts:153
 msgid "Owner cannot have their campaign access edited."
 msgstr "Les propriétaires ne peuvent pas voir leur accès à la campagne modifié."
 
-#: src/campaign/index.ts:166
 #, javascript-format
 msgid "You do not appear to be friends with '${ handlesString }'."
 msgid_plural "You do not appear to be friends with the following users: ${ handlesString }"

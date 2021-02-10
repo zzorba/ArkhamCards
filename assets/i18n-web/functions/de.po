@@ -13,70 +13,56 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: de\n"
 
-#: src/event.ts:546
 msgid "There is not a current clue goal, please talk to the organizer."
 msgstr "Es gibt derzeit kein Hinweis-Ziel, bitte kontaktiere den Spielleiter."
 
-#: src/event.ts:552
 #, javascript-format
 msgid "Clue goal reached. Please take back ${ returnedClues } clue."
 msgid_plural "Clue goal reached. Please take back ${ returnedClues } clues."
 msgstr[0] "Hinweis-Ziel erreicht. Bitte nehme ${ returnedClues } Hinweis zurück."
 msgstr[1] "Hinweis-Ziel erreicht. Bitte nehme ${ returnedClues } Hinweise zurück."
 
-#: src/event.ts:561
 msgid "Clue removed."
 msgid_plural "Clues removed."
 msgstr[0] "Hinweis entfernt."
 msgstr[1] "Hinweise entfernt."
 
-#: src/event.ts:565
 msgid "Clue added."
 msgid_plural "Clues added."
 msgstr[0] "Hinweis hinzugefügt."
 msgstr[1] "Hinweise hinzugefügt."
 
-#: src/event.ts:576
 msgid "Damage added."
 msgstr "Schaden hinzugefügt."
 
-#: src/event.ts:576
 msgid "Damage removed."
 msgstr "Schaden entfernt."
 
-#: src/event.ts:585
 msgid "One countermeasure used."
 msgstr "Eine Gegenmaßnahme genutzt."
 
-#: src/event.ts:587
 msgid "Countermeasure removed."
 msgid_plural "Countermeasures removed."
 msgstr[0] "Gegenmaßnahme entfernt."
 msgstr[1] "Gegenmaßnahmen entfernt."
 
-#: src/event.ts:600
 msgid "Countermeasure added."
 msgid_plural "Countermeasures added."
 msgstr[0] "Gegenmaßnahme hinzugefügt."
 msgstr[1] "Gegenmaßnahmen hinzugefügt."
 
-#: src/event.ts:618
 msgid "Ding dong the Blob is dead!"
 msgstr "Ding Dong der Blob ist tot!"
 
-#: src/event.ts:662
 msgid "Magh’an Ark’at"
 msgstr "Magh’an Ark’at"
 
-#: src/event.ts:663
 msgid "Silenus"
 msgstr "Silenus"
 
-#: src/event.ts:664
 msgid "Ezel-zen-rezl"
 msgstr "Ezel-zen-rezl"
 
-#: src/event.ts:704
 #, javascript-format
 msgid ""
 "The time for tracking shared doom has passed. Please place ${ doom } doom "
@@ -91,206 +77,163 @@ msgstr[1] ""
 "Die Zeit für die Verfolgung des gemeinsamen Verderbens ist abgelaufen. "
 "Bitte bewege ${ doom } Verderben zurück auf die Agenda (${ color })."
 
-#: src/event.ts:721
-#, javascript-format
-msgid ""
-"The ${ color } agenda's doom threshold was reached. Please place "
-"${ returnedDoom } doom back on the ${ color } agenda after it advances."
-msgid_plural ""
-"The ${ color } agenda's doom threshold reached. Please place "
-"${ returnedDoom } doom back on the ${ color } agenda after it advances."
-msgstr[0] ""
-"Der Verderbensschwellwert der Agenda (${ color }) wurde erreicht. "
-"Bitte bewege ${ returnedDoom } Verderben zurück auf die Agenda (${ color }), nachdem vorgerückt wurde."
-msgstr[1] ""
-"Der Verderbensschwellwert der Agenda (${ color }) wurde erreicht. "
-"Bitte bewege ${ returnedDoom } Verderben zurück auf die Agenda (${ color }), nachdem vorgerückt wurde."
-
-#: src/event.ts:730
 msgid "Doom removed from ${ color } agenda."
 msgstr "Verderben von der Agenda (${ color }) entfernt."
 
-#: src/event.ts:730
 #, javascript-format
 msgid "Doom added to ${ color } agenda."
 msgstr "Verderben zu der Agenda (${ color }) hinzugefügt."
 
-#: src/event.ts:749
 #, javascript-format
 msgid ""
-"The ${ color } agenda ${ agendaNumber }a has advanced. Please advance to "
-"${ color } agenda ${ agendaNumber }b during the next Mythos Phase."
+"The ${ color } agenda ${ agendaNumber }a has advanced. Please advance to ${ "
+"color } agenda ${ agendaNumber }b during the next Mythos Phase."
 msgstr ""
-"Fortschritt bei Agenda ${ agendaNumber }a (${ color }). Bitte rücke"
-"während der nächsten Mythos-Phase zu Agenda ${ agendaNumber }b (${ color }) vor."
+"Fortschritt bei Agenda ${ agendaNumber }a (${ color }). Bitte rückewährend "
+"der nächsten Mythos-Phase zu Agenda ${ agendaNumber }b (${ color }) vor."
 
-#: src/event.ts:787
 msgid ""
 "Looks like someone else already helped this group, or they cancelled their "
 "request."
 msgstr ""
-"Es scheint als hätte bereits jemand anderes der Gruppe geholfen, oder "
-"die Gruppe hat die Anfrage zurückgezogen."
+"Es scheint als hätte bereits jemand anderes der Gruppe geholfen, oder die "
+"Gruppe hat die Anfrage zurückgezogen."
 
-#: src/event.ts:801
-msgid "Aid given in Montréal!"
-msgstr "Es wurde in Montréal geholfen!"
-
-#: src/event.ts:802
 msgid "Aid given in Providence!"
 msgstr "Es wurde in Providence geholfen!"
 
-#: src/event.ts:803
 msgid "Aid given in New York!"
 msgstr "Es wurde in New York geholfen!"
 
-#: src/event.ts:847
 msgid "Doom added to all agendas"
 msgstr "Verderben zu allen Agenden hinzugefügt"
 
-#: src/event.ts:858
 msgid "There is still time, the great old one is not yet here."
 msgstr "Es ist noch Zeit! Die Großen Alten sind noch nicht da."
 
-#: src/event.ts:864
 #, javascript-format
 msgid "Damage added to ${ gooName }."
 msgstr "Schaden an ${ gooName } gemacht."
 
-#: src/event.ts:864
 msgid "Damage removed from ${ gooName }."
 msgstr "Schaden von ${ gooName } geheilt."
 
-#: src/event.ts:868
 #, javascript-format
 msgid "${ gooName } has been defeated! The investigators win the game!"
 msgstr "${ gooName } wurde besigt! Die Ermittler gewinnen!"
 
-#: src/event.ts:905
 msgid ""
 "Congratulations on reaching Act 3! Now do what you can to help the other "
 "groups."
 msgstr ""
 "Congratulations on reaching Act 3! Now do what you can to help the other "
 "groups."
-#: src/event.ts:907
+
 msgid "Act progress recorded."
 msgstr ""
-"Herzlichen Glückwunsch zum Erreichen von Szene 3! Jetzt tut was ihr könnt um den "
-"anderen Gruppen zu helfen."
+"Herzlichen Glückwunsch zum Erreichen von Szene 3! Jetzt tut was ihr könnt "
+"um den anderen Gruppen zu helfen."
 
-#: src/event.ts:921
 msgid "Clue given away."
 msgstr "Hinweis wurde abgegeben."
 
-#: src/event.ts:934
 msgid "Help requested to close Hub Dimension!"
 msgstr "Hilfe zum Schließen der Knoten-Dimension erbeten!"
 
-#: src/event.ts:934
-msgid "Request for help closing Hub Dimension cancelled."
-msgstr "Anfrage nach Hilfe zum Schließen der Knoten-Dimension zurückgezogen."
-
-#: src/event.ts:947
 msgid "Help requested in New York!"
 msgstr "New York braucht Hilfe!"
 
-#: src/event.ts:947
 msgid "Request for help in New York cancelled."
 msgstr "Anfrage nach Hilfe in New York zurückgezogen."
 
-#: src/event.ts:960
 msgid "Help requested in Providence!"
 msgstr "Providence braucht Hilfe!"
 
-#: src/event.ts:960
 msgid "Request for help in Providence cancelled."
 msgstr "Anfrage nach Hilfe in Providence zurückgezogen."
 
-#: src/event.ts:973
-msgid "Help requested in Montréal!"
-msgstr "Montréal braucht Hilfe!"
-
-#: src/event.ts:973
-msgid "Request for help in Montréal cancelled."
-msgstr "Anfrage nach Hilfe in Montréal zurückgezogen."
-
-#: src/core/index.ts:42
 msgid "Request not authorized. User must be signed in."
 msgstr "Anfrage nicht erlaubt. Nutzer muss eingeloggt sein."
 
-#: src/campaign/index.ts:36
 msgid "Unable to create new campaign. Please try again later."
 msgstr "Fehler beim erstellen der Kampagne. Versuche es später erneut."
 
-#: src/event.ts:670
 msgid "green"
 msgstr "Grün"
 
-#: src/event.ts:671
 msgid "blue"
 msgstr "Blau"
 
-#: src/event.ts:672
 msgid "red"
 msgstr "Rot"
 
-#: src/event.ts:63
-#: src/event.ts:140
 msgid "You are not authorized to edit this event."
 msgstr "Du darfst dieses Event nicht bearbeiten."
 
-#: src/event.ts:92
 msgid "Password required for private events."
 msgstr "Für dieses Event wird ein Passwort benötigt."
 
-#: src/event.ts:68
 msgid "You can only send announcements after the game has started."
 msgstr "Du kannst nur Ankündigungen machen, wenn das Spiel bereits läuft."
 
-#: src/event.ts:188
 msgid "You are not authorized to archive this event."
 msgstr "Du darfst dieses Event nicht archivieren."
 
-#: src/event.ts:743
 #, javascript-format
 msgid ""
 "The ${ color } agenda ${ agendaNumber }a has advanced. Please advance to ${ "
 "color } agenda ${ agendaNumber }b during the next Mythos Phase and prepare "
 "for ${ gooName }'s arrival!"
 msgstr ""
-"Fortschritt bei Agenda ${ agendaNumber }a (${ color }). Bitte rücke "
-"während der nächsten Mythos-Phase zu Agenda ${ agendaNumber }b (${ color }) vor. "
+"Fortschritt bei Agenda ${ agendaNumber }a (${ color }). Bitte rücke während "
+"der nächsten Mythos-Phase zu Agenda ${ agendaNumber }b (${ color }) vor. "
 "Mach dich bereit für die Ankuft von ${ gooName }!"
 
-#: src/social.ts:159
 msgid "Minimum search size is 3 characters."
 msgstr "Die minimale Länge beträgt 3 Zeichen."
 
-#: src/social.ts:165
 msgid "Something weird happened with continuation token"
 msgstr "Etwas Seltsames ist mit dem Fortsetzungs-Token passiert"
 
-#: src/campaign/index.ts:123
 msgid "You must set a handle before you can invite friends."
 msgstr "Du musst einen Spitznamen hinterlegen bevor du Freunde einladen kannst."
 
-#: src/campaign/index.ts:138
 msgid "Something went wrong."
 msgstr "Etwas ist schief gelaufen."
 
-#: src/campaign/index.ts:146
 #. The only request that is allowed for a participant is to 'leave' a campaign.
 msgid "You are not allowed to edit this campaign."
 msgstr "Du darfst diese Kampagne nicht bearbeiten"
 
-#: src/campaign/index.ts:153
 msgid "Owner cannot have their campaign access edited."
 msgstr "Du kannst die Zugriffsrechte des Kampagnen-Erstellers nicht anpassen."
 
-#: src/campaign/index.ts:166
 #, javascript-format
 msgid "You do not appear to be friends with '${ handlesString }'."
 msgid_plural "You do not appear to be friends with the following users: ${ handlesString }"
 msgstr[0] "Du bist anscheinend nicht mit '${ handlesString }' befreundet."
-msgstr[1] "Du scheinst nicht mit den folgenden Nutzern befreundet zu sein: ${ handlesString }"
+msgstr[1] ""
+"Du scheinst nicht mit den folgenden Nutzern befreundet zu sein: ${ "
+"handlesString }"
+
+#, javascript-format
+msgid ""
+"The ${ color } agenda's doom threshhold was reached. Please place ${ "
+"returnedDoom } doom back on the ${ color } agenda after it advances."
+msgid_plural ""
+"The ${ color } agenda's doom threshhold reached. Please place ${ "
+"returnedDoom } doom back on the ${ color } agenda after it advances."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Aid given in Montreal!"
+msgstr ""
+
+msgid "Request for help closing Hub Dimension cancalled."
+msgstr ""
+
+msgid "Help requested in Montreal!"
+msgstr ""
+
+msgid "Request for help in Montreal cancelled."
+msgstr ""
