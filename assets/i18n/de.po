@@ -917,8 +917,8 @@ msgstr "Änderungen speichern?"
 
 msgid "Looks like you have made some changes that have not been saved."
 msgstr ""
-"Es sieht so aus, als hättest du einige Änderungen vorgenommen, die nicht gespeichert "
-"wurden."
+"Es sieht so aus, als hättest du einige Änderungen vorgenommen, die nicht "
+"gespeichert wurden."
 
 msgid "Save Changes"
 msgstr "Änderungen speichern"
