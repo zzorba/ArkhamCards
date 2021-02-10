@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import { View } from 'react-native';
-import { sum, values } from 'lodash';
+import { map, sum, values } from 'lodash';
 import { t } from 'ttag';
 
 import { ChaosBag } from '@app_constants';
@@ -12,11 +12,11 @@ import { EditChaosBagProps } from '../EditChaosBagDialog';
 import Card from '@data/Card';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
-import { updateCampaign } from '../actions';
 import { CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
 import { useDialog } from '@components/deck/dialogs';
 import StyleContext from '@styles/StyleContext';
+import { updateCampaign } from '../actions';
 
 interface Props {
   componentId: string;
@@ -26,6 +26,28 @@ interface Props {
   guided?: boolean;
 }
 
+export function useSimpleChaosBagDialog(chaosBag: ChaosBag): [React.ReactNode, () => void] {
+  const { width } = useContext(StyleContext);
+  const content = useMemo(() => {
+    return (
+      <View style={space.marginS}>
+        <ChaosBagLine
+          chaosBag={chaosBag}
+          width={width - m * 2}
+        />
+      </View>
+    );
+  }, [chaosBag, width]);
+  const tokenCount = useMemo(() => sum(values(chaosBag)), [chaosBag]);
+  const { dialog, showDialog } = useDialog({
+    title: t`Chaos Bag (${tokenCount})`,
+    content,
+    allowDismiss: true,
+    alignment: 'bottom',
+  });
+  return [dialog, showDialog];
+}
+
 export default function useChaosBagDialog({
   componentId,
   allInvestigators,
@@ -33,17 +55,12 @@ export default function useChaosBagDialog({
   chaosBag,
   guided,
 }: Props): [React.ReactNode, () => void] {
-  const { user } = useContext(ArkhamCardsAuthContext);
   const { width } = useContext(StyleContext);
-  const dispatch = useDispatch();
   const setVisibleRef = useRef<(visible: boolean) => void>();
-  const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
-    dispatch(updateCampaign(user, campaignId, { chaosBag }));
-  }, [dispatch, campaignId, user]);
   const oddsCalculatorPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideChaosBagOddsCalculator(componentId, campaignId, chaosBag, allInvestigators);
+      showGuideChaosBagOddsCalculator(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code));
     } else {
       showChaosBagOddsCalculator(componentId, campaignId, allInvestigators);
     }
@@ -51,11 +68,16 @@ export default function useChaosBagDialog({
   const drawChaosBagPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideDrawChaosBag(componentId, campaignId, chaosBag);
+      showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code));
     } else {
-      showDrawChaosBag(componentId, campaignId, updateChaosBag);
+      showDrawChaosBag(componentId, campaignId, allInvestigators);
     }
-  }, [campaignId, componentId, guided, chaosBag, updateChaosBag]);
+  }, [campaignId, componentId, guided, chaosBag, allInvestigators]);
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const dispatch = useDispatch();
+  const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
+    dispatch(updateCampaign(user, campaignId, { chaosBag }));
+  }, [dispatch, campaignId, user]);
 
   const editChaosBagDialog = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
@@ -114,7 +136,7 @@ export default function useChaosBagDialog({
         />
       </>
     );
-  }, [chaosBag, guided, editChaosBagDialog, drawChaosBagPressed, oddsCalculatorPressed]);
+  }, [chaosBag, guided, width, editChaosBagDialog, drawChaosBagPressed, oddsCalculatorPressed]);
 
   const tokenCount = useMemo(() => sum(values(chaosBag)), [chaosBag]);
   const { dialog, showDialog, setVisible } = useDialog({

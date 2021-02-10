@@ -73,7 +73,7 @@ const ICON_SIZE: { [icon: string]: number | undefined } = {
   'login': 24,
   'email': 24,
   'edit': 24,
-  'upgrade': 34,
+  upgrade: 34,
   'plus-thin': 24,
   'dismiss': 22,
   'check-thin': 30,

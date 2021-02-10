@@ -1174,7 +1174,7 @@ msgid ""
 "• Keep decks locally on your phone, or integrate directly with decks on "
 "${ arkhamDbLink }."
 msgstr ""
-"- Conservez vos jeux en local sur votre téléphone, ou intégrez-les directement "
+"• Conservez vos jeux en local sur votre téléphone, ou intégrez-les directement "
 "aux jeux sur ${ arkhamDbLink }."
 
 #: src/components/Home.tsx:263
@@ -1182,30 +1182,30 @@ msgid ""
 "• Handles all scenario setup and resolution, while maintaining the campaign log "
 "and chaos bag automatically."
 msgstr ""
-"- Gère la mise en place et la résolution de tous les scénarios, tout en "
+"• Gèrez la mise en place et la résolution de tous les scénarios, tout en "
 "conservant automatiquement le carnet de campagne et la réserve du chaos."
 
 #: src/components/Home.tsx:266
 msgid "• Edit and upgrade your investigator's decks."
-msgstr "- Modifiez et mettez à jour les decks de vos investigateurs."
+msgstr "• Modifiez et mettez à jour les decks de vos investigateurs."
 
 #: src/components/Home.tsx:269
 msgid ""
 "• Draw tokens from the digital chaos bag, and calculate the odds of success "
 "before you do."
 msgstr ""
-"- Tirez des jetons de la réserve du chaos numérique, et calculez les chances de "
+"• Tirez des pions de la réserve du chaos numérique, et calculez les chances de "
 "succès avant de le faire."
 
 #: src/components/Home.tsx:272
 msgid "• Use the advanced card search to search by trait, health, shroud etc."
 msgstr ""
-"- Utilisez la recherche avancée de cartes pour effectuer des recherches par "
+"• Utilisez la recherche avancée de cartes pour effectuer des recherches par "
 "trait, santé, valeur occulte, etc."
 
 #: src/components/Home.tsx:275
 msgid "• Completely free to download and use, with zero ads."
-msgstr "- Entièrement gratuit à télécharger et à utiliser, avec zéro publicité."
+msgstr "• Entièrement gratuit à télécharger et à utiliser, avec zéro publicité."
 
 #: src/components/Home.tsx:301
 msgid ""

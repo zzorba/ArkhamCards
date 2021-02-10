@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { filter, find, flatMap, forEach, head, map } from 'lodash';
+import { filter, find, flatMap, forEach, head, keys, map } from 'lodash';
 import { ScrollView, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
@@ -15,12 +15,12 @@ import { campaignColor, Scenario, completedScenario, scenarioFromCard } from '@c
 import Difficulty from '@components/campaign/Difficulty';
 import GameHeader from '@components/campaign/GameHeader';
 import BackgroundIcon from '@components/campaign/BackgroundIcon';
-import { Campaign, CampaignDifficulty, CUSTOM } from '@actions/types';
-import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '@app_constants';
+import { Campaign, CampaignDifficulty, CUSTOM, getCampaignId } from '@actions/types';
+import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue, ChaosTokenType } from '@app_constants';
 import Card from '@data/Card';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCounter, useCounters } from '@components/core/hooks';
+import { useChaosBagResults, useCounter, useCounters } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { SCENARIO_CARDS_QUERY } from '@data/query';
 import LoadingSpinner from '@components/core/LoadingSpinner';
@@ -94,6 +94,7 @@ function parseSpecialTokenValues(currentScenarioCard?: Card, difficulty?: string
                     scenarioTokens.push({
                       token,
                       value: parseFloat(match[2]) || 0,
+                      // revealAnother: match[4].toLowerCase().indexOf('reveal another') !== -1,
                     });
                   }
                 }
@@ -103,6 +104,7 @@ function parseSpecialTokenValues(currentScenarioCard?: Card, difficulty?: string
                   scenarioTokens.push({
                     token,
                     value: 'reveal_another',
+                    // revealAnother: true,
                   });
                 }
               }
@@ -117,11 +119,32 @@ function parseSpecialTokenValues(currentScenarioCard?: Card, difficulty?: string
 
 export default function OddsCalculatorComponent({
   campaign,
-  chaosBag,
+  chaosBag: originalChaosBag,
   cycleScenarios,
   allInvestigators,
 }: Props) {
   const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
+  const chaosBagResults = useChaosBagResults(getCampaignId(campaign));
+  const [chaosBag, sealedChaosBag] = useMemo(() => {
+    const sealed: ChaosBag = {};
+    forEach(chaosBagResults.sealedTokens, token => {
+      if (token.icon !== 'bless' && token.icon !== 'curse') {
+        sealed[token.icon] = (sealed[token.icon] || 0) + 1;
+      }
+    });
+    const newChaosBag: ChaosBag = {};
+    forEach(originalChaosBag, (count, tokenStr) => {
+      const token = tokenStr as ChaosTokenType;
+      if (count) {
+        if (count > (sealed[token] || 0)) {
+          newChaosBag[token] = count - (sealed[token] || 0);
+        }
+      }
+    });
+    // newChaosBag.bless = (chaosBagResults.blessTokens || 0) - (sealed.bless || 0);
+    // newChaosBag.curse = (chaosBagResults.curseTokens || 0) - (sealed.curse || 0);
+    return [newChaosBag, sealed];
+  }, [originalChaosBag, chaosBagResults]);
   const { backgroundStyle, borderStyle, colors, typography, width } = useContext(StyleContext);
   const [testDifficulty, incTestDifficulty, decTestDifficulty] = useCounter(3, { min: 0 });
   const standalonePacks = useSelector(getAllStandalonePacks);
@@ -307,6 +330,16 @@ export default function OddsCalculatorComponent({
             width={width - m * 2}
           />
         </View>
+        { keys(sealedChaosBag).length > 0 && (
+          <View style={[styles.sectionRow, borderStyle]}>
+            <Text style={typography.small}>{ t`Sealed tokens` }</Text>
+            <ChaosBagLine
+              chaosBag={sealedChaosBag}
+              width={width - m * 2}
+              sealed
+            />
+          </View>
+        ) }
         { investigatorRows }
         <View style={styles.finePrint}>
           <Text style={typography.small}>

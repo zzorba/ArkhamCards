@@ -1,9 +1,10 @@
-import React, { useCallback, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DrawChaosBagComponent from './DrawChaosBagComponent';
+import { updateCampaign } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
 import { ChaosBag } from '@app_constants';
 import COLORS from '@styles/colors';
@@ -11,22 +12,28 @@ import { EditChaosBagProps } from './EditChaosBagDialog';
 import { AppState, makeCampaignChaosBagSelector } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { CampaignId } from '@actions/types';
+import { showChaosBagOddsCalculator } from './nav';
+import Card from '@data/Card';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface CampaignDrawChaosBagProps {
   campaignId: CampaignId;
-  updateChaosBag: (chaosBag: ChaosBag) => void;
+  allInvestigators: Card[];
 }
 
 type Props = NavigationProps & CampaignDrawChaosBagProps;
 
-function CampaignDrawChaosBagView({ componentId, campaignId, updateChaosBag }: Props) {
+function CampaignDrawChaosBagView({ componentId, campaignId, allInvestigators }: Props) {
   const chaosBagSelector = useMemo(makeCampaignChaosBagSelector, []);
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const dispatch = useDispatch();
   const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId.campaignId));
 
-  const showChaosBagDialog = useCallback(() => {
-    if (!updateChaosBag) {
-      return;
-    }
+  const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
+    dispatch(updateCampaign(user, campaignId, { chaosBag }));
+  }, [dispatch, campaignId, user]);
+
+  const showEditChaosBagDialog = useCallback(() => {
     Navigation.push<EditChaosBagProps>(componentId, {
       component: {
         name: 'Dialog.EditChaosBag',
@@ -49,18 +56,26 @@ function CampaignDrawChaosBagView({ componentId, campaignId, updateChaosBag }: P
     });
   }, [componentId, chaosBag, updateChaosBag]);
 
+
+  const showChaosBagOdds = useCallback(() => {
+    showChaosBagOddsCalculator(componentId, campaignId, allInvestigators);
+  }, [componentId, campaignId, allInvestigators]);
+
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'back' || buttonId === 'androidBack') {
       Navigation.pop(componentId);
     } else if (buttonId === 'edit') {
-      showChaosBagDialog();
+      showEditChaosBagDialog();
     }
-  }, componentId, [componentId, showChaosBagDialog]);
+  }, componentId, [componentId, showEditChaosBagDialog]);
 
   return (
     <DrawChaosBagComponent
       campaignId={campaignId}
       chaosBag={chaosBag}
+      editViewPressed={showEditChaosBagDialog}
+      viewChaosBagOdds={showChaosBagOdds}
+      editable
     />
   );
 }

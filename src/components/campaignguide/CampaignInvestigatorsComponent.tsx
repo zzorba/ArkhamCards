@@ -11,7 +11,7 @@ import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import Card from '@data/Card';
 import space, { s, l } from '@styles/space';
-import { useComponentDidDisappear, useCounters, useEffectUpdate } from '@components/core/hooks';
+import { useCounters, useEffectUpdate } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
