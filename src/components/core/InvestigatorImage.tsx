@@ -13,6 +13,8 @@ import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constant
 import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
 import StyleContext from '@styles/StyleContext';
+import AppIcon from '@icons/AppIcon';
+import COLORS from '@styles/colors';
 
 interface Props {
   card?: Card;
@@ -22,6 +24,7 @@ interface Props {
   killedOrInsane?: boolean;
   yithian?: boolean;
   imageLink?: boolean;
+  badge?: 'upgrade';
 }
 
 const IMAGE_SIZE = {
@@ -44,6 +47,7 @@ export default function InvestigatorImage({
   killedOrInsane,
   yithian,
   imageLink,
+  badge,
 }: Props) {
   const { colors, fontScale, shadow } = useContext(StyleContext);
 
@@ -118,7 +122,7 @@ export default function InvestigatorImage({
       );
     }
     return (
-      <View style={border && impliedSize === 'tiny' ? shadow.large : undefined}>
+      <View style={[{ width: size, height: size, position: 'relative' }, border && impliedSize === 'tiny' ? shadow.large : undefined]}>
         <View style={[
           styles.container,
           border ? styles.border : undefined,
@@ -150,17 +154,15 @@ export default function InvestigatorImage({
               { styledImage }
             </View>
           ) }
-          <View style={styles.relative}>
-            { !!border && (
-              <View style={[
-
-              ]} />
-            ) }
-          </View>
         </View>
+        { !!badge && (
+          <View style={{ position: 'absolute', bottom: - size / 8 + 2, right: -size / 8, width: size / 2, height: size / 2, borderRadius: size / 4, backgroundColor: colors.upgrade, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            <AppIcon size={size / 2.3} color={COLORS.D20} name="upgrade" />
+          </View>
+        ) }
       </View>
     );
-  }, [card, killedOrInsane, border, colors, impliedSize, styledImage, loadingAnimation, shadow]);
+  }, [card, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow]);
 
   if (componentId && card) {
     return (

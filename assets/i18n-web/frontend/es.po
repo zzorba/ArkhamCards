@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-01-03 14:49-0500\n"
-"PO-Revision-Date: 2021-01-24 20:35-0500\n"
+"PO-Revision-Date: 2021-02-09 20:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
@@ -12,6 +12,8 @@ msgstr ""
 "x-poedit-basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: src/components/CreateEvent.tsx:104
 msgid "Host your own Epic Multiplayer event"
@@ -19,16 +21,16 @@ msgstr "Organiza tu propio evento multijugador épico"
 
 #: src/components/CreateEvent.tsx:107
 msgid ""
-"This site allows you to host an Epic Multiplayer events for Arkham Horror: "
-"The Card Game."
+"This site allows you to host an Epic Multiplayer events for Arkham Horror: The "
+"Card Game."
 msgstr ""
 "Este sitio te permite organizar eventos multijugador épicos para Arkham "
 "Horror: El juego de cartas."
 
 #: src/components/CreateEvent.tsx:110
 msgid ""
-"As the organizer, you will be need to setup communication channels with "
-"your players (we suggest Discord)."
+"As the organizer, you will be need to setup communication channels with your "
+"players (we suggest Discord)."
 msgstr ""
 "Como organizador, necesitarás establecer un medio de comunicación con tus "
 "jugadores (te sugerimos usar Discord)."
@@ -47,11 +49,10 @@ msgstr "Confirmar el registro, hasta una hora antes del evento."
 
 #: src/components/CreateEvent.tsx:118
 msgid ""
-"Start the game and keep track of time, while also reporting shared game "
-"state."
+"Start the game and keep track of time, while also reporting shared game state."
 msgstr ""
-"Iniciar la partida y realizar un seguimiento del tiempo restante, a la vez "
-"que envían datos sobre el estado del juego."
+"Iniciar la partida y realizar un seguimiento del tiempo restante, a la vez que "
+"envían datos sobre el estado del juego."
 
 #: src/components/CreateEvent.tsx:123
 msgid "Event scenario"
@@ -77,8 +78,7 @@ msgstr "Evento público"
 msgid "Registration password"
 msgstr "Contraseña de registro"
 
-#: src/components/CreateEvent.tsx:179
-#: src/components/Event/index.tsx:125
+#: src/components/CreateEvent.tsx:179 src/components/Event/index.tsx:125
 msgid "Description (supports markdown)"
 msgstr "Descripción (soporta Markdown)"
 
@@ -86,8 +86,7 @@ msgstr "Descripción (soporta Markdown)"
 msgid "Discord webhook (for announcements)"
 msgstr "Webhook de Discord (para los anuncios)"
 
-#: src/components/CreateEvent.tsx:206
-#: src/components/Event/index.tsx:190
+#: src/components/CreateEvent.tsx:206 src/components/Event/index.tsx:190
 msgid "Scheduled start time"
 msgstr "Hora de inicio programada"
 
@@ -117,14 +116,13 @@ msgstr "Eventos programados"
 
 #: src/components/Home.tsx:211
 msgid ""
-"Site under construction while we prepare for War of the Outer Gods. Check "
-"back soon!"
+"Site under construction while we prepare for War of the Outer Gods. Check back "
+"soon!"
 msgstr ""
 "Sitio en construcción mientras nos preparamos para La guerra de los Dioses "
 "Exteriores. ¡Vuelve pronto!"
 
-#: src/components/Home.tsx:215
-#: src/components/Home.tsx:216
+#: src/components/Home.tsx:215 src/components/Home.tsx:216
 msgid "(video walkthrough of the interface)"
 msgstr "(videotutorial de la interfaz)"
 
@@ -134,18 +132,18 @@ msgstr "Arkham Horror: Eventos en modo multijugador épico"
 
 #: src/components/Home.tsx:229
 msgid ""
-"This website allows you to participate in Arkham Horror scenarios that "
-"utilize the epic multiplayer format with players around the world. These "
-"are timed events where you can play an Arkham game as you normally do, "
-"while using the website to share progress and receive updates from the "
-"organizers. The website currently supports two scenarios:"
+"This website allows you to participate in Arkham Horror scenarios that utilize "
+"the epic multiplayer format with players around the world. These are timed "
+"events where you can play an Arkham game as you normally do, while using the "
+"website to share progress and receive updates from the organizers. The website "
+"currently supports two scenarios:"
 msgstr ""
 "Este sitio web te permite participar en escenarios de Arkham Horror que "
-"utilizan el formato multijugador épico con jugadores de todo el mundo. "
-"Estos son eventos cronometrados donde puedes jugar una partida de Arkham "
-"Horror como lo haces normalmente, a la vez que usas el sitio web para "
-"compartir el progreso y recibir actualizaciones de los organizadores. El "
-"sitio web admite actualmente dos escenarios:"
+"utilizan el formato multijugador épico con jugadores de todo el mundo. Estos "
+"son eventos cronometrados donde puedes jugar una partida de Arkham Horror como "
+"lo haces normalmente, a la vez que usas el sitio web para compartir el "
+"progreso y recibir actualizaciones de los organizadores. El sitio web admite "
+"actualmente dos escenarios:"
 
 #: src/components/Home.tsx:232
 #, javascript-format
@@ -159,11 +157,9 @@ msgstr "• La guerra de los Dioses Exteriores ${ warVideoLink}."
 #: src/components/Home.tsx:238
 msgid "You are more than welcome to use this site to host your own events."
 msgstr ""
-"Eres más que bienvenido a utilizar esta web para organizar tus propios "
-"eventos."
+"Eres más que bienvenido a utilizar esta web para organizar tus propios eventos."
 
-#: src/components/NavBar.tsx:121
-#: src/components/NavBar.tsx:148
+#: src/components/NavBar.tsx:121 src/components/NavBar.tsx:148
 msgid "Login"
 msgstr "Iniciar sesión"
 
@@ -309,13 +305,11 @@ msgstr "¿Estás seguro de querer borrar este evento?"
 msgid "This action cannot be undone and all data will be removed."
 msgstr "Esta acción no se puede deshacer y todos los datos serán eliminados."
 
-#: src/components/Event/index.tsx:574
-#: src/components/Event/index.tsx:588
+#: src/components/Event/index.tsx:574 src/components/Event/index.tsx:588
 msgid "Delete Event"
 msgstr "Eliminar evento"
 
-#: src/components/Event/index.tsx:616
-#: src/components/Event/index.tsx:632
+#: src/components/Event/index.tsx:616 src/components/Event/index.tsx:632
 #: src/components/Event/index.tsx:646
 msgid "Archive Event"
 msgstr "Archivar evento"
@@ -345,11 +339,10 @@ msgstr "Enviar anuncio"
 #: src/components/Event/GameControls/Announcements.tsx:178
 #, javascript-format
 msgid ""
-"Received a clue from ${ groupName }. Please add to your copy of Hub "
-"Dimension."
+"Received a clue from ${ groupName }. Please add to your copy of Hub Dimension."
 msgstr ""
-"Se ha recibido una pista de ${ groupName }. Por favor, añádela a tu copia "
-"de Dimensión nexo."
+"Se ha recibido una pista de ${ groupName }. Por favor, añádela a tu copia de "
+"Dimensión nexo."
 
 #: src/components/Event/GameControls/Announcements.tsx:179
 msgid "Received a clue to add to your copy of Hub Dimension."
@@ -358,25 +351,25 @@ msgstr "Se ha recibido una pista para añadir a tu copia de Dimensión nexo."
 #: src/components/Event/GameControls/Announcements.tsx:182
 #, javascript-format
 msgid ""
-"Received help in New York from ${ groupName }. Deal 3 damage to a "
-"non-Ancient One enemy at a \"New York\" location."
+"Received help in New York from ${ groupName }. Deal 3 damage to a non-Ancient "
+"One enemy at a \"New York\" location."
 msgstr ""
-"Se ha recibido ayuda en Nueva York de ${ groupName }. Inflige 3 de daño a "
-"un enemigo no Primigenio en un Lugar \"Nueva York\"."
+"Se ha recibido ayuda en Nueva York de ${ groupName }. Inflige 3 de daño a un "
+"enemigo no Primigenio en un Lugar \"Nueva York\"."
 
 #: src/components/Event/GameControls/Announcements.tsx:183
 msgid ""
-"Received help in New York. Deal 3 damage to a non-Ancient One enemy at a "
-"\"New York\" location."
+"Received help in New York. Deal 3 damage to a non-Ancient One enemy at a \"New "
+"York\" location."
 msgstr ""
-"Se ha recibido ayuda en Nueva York. Inflige 3 de daño a un enemigo que no "
-"sea Primigenio en un Lugar \"Nueva York\"."
+"Se ha recibido ayuda en Nueva York. Inflige 3 de daño a un enemigo que no sea "
+"Primigenio en un Lugar \"Nueva York\"."
 
 #: src/components/Event/GameControls/Announcements.tsx:186
 #, javascript-format
 msgid ""
-"Received help in Montréal from ${ groupName }. Deal 3 damage to a "
-"non-Ancient One enemy at a \"Montréal\" location."
+"Received help in Montréal from ${ groupName }. Deal 3 damage to a non-Ancient "
+"One enemy at a \"Montréal\" location."
 msgstr ""
 "Se ha recibido ayuda en Montreal de ${ groupName }. Inflige 3 de daño a un "
 "enemigo no Primigenio en un Lugar \"Montreal \"."
@@ -392,11 +385,11 @@ msgstr ""
 #: src/components/Event/GameControls/Announcements.tsx:190
 #, javascript-format
 msgid ""
-"Received help in Providence from ${ groupName }. Deal 3 damage to a "
-"non-Ancient One enemy at a \"Providence\" location."
+"Received help in Providence from ${ groupName }. Deal 3 damage to a non-"
+"Ancient One enemy at a \"Providence\" location."
 msgstr ""
-"Se ha recibido ayuda en Providence de ${ groupName }. Inflige 3 de daño a "
-"un enemigo no Primigenio en un Lugar \"Providence \"."
+"Se ha recibido ayuda en Providence de ${ groupName }. Inflige 3 de daño a un "
+"enemigo no Primigenio en un Lugar \"Providence \"."
 
 #: src/components/Event/GameControls/Announcements.tsx:191
 msgid ""
@@ -468,11 +461,11 @@ msgstr "Enviar selección"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:226
 msgid ""
-"Act 1 global clue threshold has been reached! Make sure to advance act 1 "
-"when you start your next round."
+"Act 1 global clue threshold has been reached! Make sure to advance act 1 when "
+"you start your next round."
 msgstr ""
-"¡Se ha alcanzado el umbral de pistas global del Acto 1! Asegúrate de "
-"avanzar el acto 1 cuando comience la siguiente ronda."
+"¡Se ha alcanzado el umbral de pistas global del Acto 1! Asegúrate de avanzar "
+"el acto 1 cuando comience la siguiente ronda."
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:243
 msgid "Blob being examined with scientified instruments."
@@ -550,11 +543,11 @@ msgstr "Registrar grupo"
 
 #: src/components/Event/GameControls/PendingGameControls.tsx:132
 msgid ""
-"Please confirm your registration an hour before the event starts, so the "
-"event organizer has an accurate player count."
+"Please confirm your registration an hour before the event starts, so the event "
+"organizer has an accurate player count."
 msgstr ""
-"Por favor, confirma tu registro una hora antes de que comience el evento, "
-"para que el organizador disponga del número exacto de jugadores."
+"Por favor, confirma tu registro una hora antes de que comience el evento, para "
+"que el organizador disponga del número exacto de jugadores."
 
 #: src/components/Event/GameControls/PendingGameControls.tsx:137
 msgid "Player Count"
@@ -599,8 +592,8 @@ msgstr "Confirmar registro"
 #: src/components/Event/GameControls/PendingGameControls.tsx:329
 #, javascript-format
 msgid ""
-"Your current investigator count is ${ groupSizeString }. You may update "
-"this before confirming if that is incorrect."
+"Your current investigator count is ${ groupSizeString }. You may update this "
+"before confirming if that is incorrect."
 msgstr ""
 "El número actual de investigadores es de ${ groupSizeString }. Puedes "
 "actualizar este dato antes de confirmar si es incorrecto"
@@ -612,8 +605,7 @@ msgstr "Vuelve a intentarlo más tarde."
 #: src/components/Event/GameControls/PendingGameControls.tsx:351
 msgid "Registration can only be confirmed an hour before the event starts."
 msgstr ""
-"El registro solo se puede confirmar una hora antes de que comience el "
-"evento."
+"El registro solo se puede confirmar una hora antes de que comience el evento."
 
 #: src/components/Event/GameControls/PendingGameControls.tsx:354
 msgid "Please try again closer to the scheduled start time."
@@ -633,27 +625,23 @@ msgstr "Actualizar registro"
 
 #: src/components/Event/GameControls/PendingGameControls.tsx:428
 msgid ""
-"Group confirmation is now open, you can confirm your group's player count "
-"now."
+"Group confirmation is now open, you can confirm your group's player count now."
 msgstr ""
 "El plazo de confirmación de grupos está abierto, ahora puedes confirmar el "
 "número de jugadores de tu grupo."
 
 #: src/components/Event/GameControls/PendingGameControls.tsx:429
 msgid ""
-"You will need to confirm your group one hour before the scheduled start "
-"time."
+"You will need to confirm your group one hour before the scheduled start time."
 msgstr ""
-"Tendrás que confirmar tu grupo una hora antes de la hora de inicio "
-"programada."
+"Tendrás que confirmar tu grupo una hora antes de la hora de inicio programada."
 
 #: src/components/Event/GameControls/PendingGameControls.tsx:430
 msgid ""
-"If the event starts before you confirm, it will not be possible to join "
-"late."
+"If the event starts before you confirm, it will not be possible to join late."
 msgstr ""
-"Si el evento empieza antes de que confirmes tu grupo, no podréis uniros a "
-"la partida."
+"Si el evento empieza antes de que confirmes tu grupo, no podréis uniros a la "
+"partida."
 
 #: src/components/Event/GameControls/PendingGameControls.tsx:576
 #: src/components/Event/GameControls/PendingGameControls.tsx:651
@@ -732,21 +720,20 @@ msgstr "Secta de Ezel-zen-rezl (Rojo)"
 #: src/components/Event/GameControls/WarGameControls.tsx:254
 #, javascript-format
 msgid ""
-"${ leadingFactions[0] } and ${ leadingFactions[1] } are tied. If needed, "
-"use whichever one has more enemies on your board as the \"Faction in the "
-"lead\"."
+"${ leadingFactions[0] } and ${ leadingFactions[1] } are tied. If needed, use "
+"whichever one has more enemies on your board as the \"Faction in the lead\"."
 msgstr ""
 "${ leadingFactions[0] } y ${ leadingFactions[1] } están empatadas. Si es "
-"necesario, considera como facción \"en cabeza\" la que tenga más Enemigos "
-"en juego en tu partida."
+"necesario, considera como facción \"en cabeza\" la que tenga más Enemigos en "
+"juego en tu partida."
 
 #: src/components/Event/GameControls/WarGameControls.tsx:256
 msgid ""
-"All factions are tied. If needed, use whichever one has more enemies on "
-"your board as the \"Faction in the lead\"."
+"All factions are tied. If needed, use whichever one has more enemies on your "
+"board as the \"Faction in the lead\"."
 msgstr ""
-"Todas las facciones están empatadas. Si es necesario, considera como "
-"facción \"en cabeza\" la que tenga más Enemigos en juego en tu partida."
+"Todas las facciones están empatadas. Si es necesario, considera como facción "
+"\"en cabeza\" la que tenga más Enemigos en juego en tu partida."
 
 #: src/components/Event/GameControls/WarGameControls.tsx:311
 msgid "Factions"
@@ -812,11 +799,11 @@ msgstr "¿Ha sido todo tu grupo eliminado?"
 #: src/components/Event/GameControls/WarGameControls.tsx:414
 #, javascript-format
 msgid ""
-"Because you are still in Act 1 / Act 2, this will add ${ "
-"participant.groupSize } doom to the faction in the lead equal."
+"Because you are still in Act 1 / Act 2, this will add ${ participant."
+"groupSize } doom to the faction in the lead equal."
 msgstr ""
-"Como todavía estás en el Acto 1 / Acto 2, esto añadirá ${ "
-"participant.groupSize } fichas de perdición a la facción en cabeza."
+"Como todavía estás en el Acto 1 / Acto 2, esto añadirá ${ participant."
+"groupSize } fichas de perdición a la facción en cabeza."
 
 #: src/components/Event/GameControls/WarGameControls.tsx:416
 msgid "Elminate group"
@@ -832,11 +819,11 @@ msgstr "Prestar ayuda en Montreal"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:486
 msgid ""
-"Are you ready to help this group using the action ability on the \"Streets "
-"of Montéal\" location (group limit once per game)?"
+"Are you ready to help this group using the action ability on the \"Streets of "
+"Montéal\" location (group limit once per game)?"
 msgstr ""
-"¿Estás listo para ayudar a este grupo utilizando la capacidad acción del "
-"Lugar \"Calles de Montreal\" (Límite de grupo de una vez por partida)?"
+"¿Estás listo para ayudar a este grupo utilizando la capacidad acción del Lugar "
+"\"Calles de Montreal\" (Límite de grupo de una vez por partida)?"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:491
 msgid "Requested help in New York"
@@ -848,11 +835,11 @@ msgstr "Prestar ayuda en Nueva York"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:493
 msgid ""
-"Are you ready to help this group using the action ability on the \"Streets "
-"of New York\" location (group limit once per game)?"
+"Are you ready to help this group using the action ability on the \"Streets of "
+"New York\" location (group limit once per game)?"
 msgstr ""
-"¿Estás listo para ayudar a este grupo utilizando la capacidad acción del "
-"Lugar \"Calles de Nueva York\" (Límite de grupo de una vez por partida)?"
+"¿Estás listo para ayudar a este grupo utilizando la capacidad acción del Lugar "
+"\"Calles de Nueva York\" (Límite de grupo de una vez por partida)?"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:498
 msgid "Requested help in Providence"
@@ -864,11 +851,11 @@ msgstr "Prestar ayuda en Providence"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:500
 msgid ""
-"Are you ready to help this group using the action ability on the \"Streets "
-"of Providence\" location (group limit once per game)?"
+"Are you ready to help this group using the action ability on the \"Streets of "
+"Providence\" location (group limit once per game)?"
 msgstr ""
-"¿Estás listo para ayudar a este grupo utilizando la capacidad acción del "
-"Lugar \"Calles de Providence\" (Límite de grupo de una vez por partida)?"
+"¿Estás listo para ayudar a este grupo utilizando la capacidad acción del Lugar "
+"\"Calles de Providence\" (Límite de grupo de una vez por partida)?"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:505
 msgid "Requested help closing Hub Dimension"
@@ -920,12 +907,11 @@ msgstr "¿Grupo eliminado?"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:725
 msgid ""
-"Has your entire party been eliminated? If you are in Act 1 or Act 2, this "
-"will automatically add doom to handle your elimination."
+"Has your entire party been eliminated? If you are in Act 1 or Act 2, this will "
+"automatically add doom to handle your elimination."
 msgstr ""
 "¿Ha sido eliminado todo tu grupo? Si estás en el Acto 1 o el Acto 2, se "
-"añadirá automáticamente la perdición necesaria derivada de vuestra "
-"eliminación."
+"añadirá automáticamente la perdición necesaria derivada de vuestra eliminación."
 
 #: src/components/Event/GameControls/WarGameControls.tsx:737
 msgid "Your group"
@@ -991,11 +977,11 @@ msgstr "Solicitar ayuda en Providence"
 
 #: src/components/About.tsx:12
 msgid ""
-"This website is dedicated to providing a way for players of the Arkham "
-"Horror LCG to connect when far apart."
+"This website is dedicated to providing a way for players of the Arkham Horror "
+"LCG to connect when far apart."
 msgstr ""
-"Esta página web provee una forma de conectar a los jugadores de Arkham "
-"Horror LCG cuando están lejos."
+"Esta página web provee una forma de conectar a los jugadores de Arkham Horror "
+"LCG cuando están lejos."
 
 #: src/components/About.tsx:15
 #, javascript-format
@@ -1003,8 +989,8 @@ msgid ""
 "Costs to maintain the site are provided by the generous support of fans on "
 "${ patreon }. If you like what we are doing, consider supporting us."
 msgstr ""
-"Los costes de mantener esta web son sufragados gracias a la generosa ayuda "
-"de los fans a través de ${ patreon }. Si te gusta lo que hacemos, considera "
+"Los costes de mantener esta web son sufragados gracias a la generosa ayuda de "
+"los fans a través de ${ patreon }. Si te gusta lo que hacemos, considera "
 "apoyarnos."
 
 #: src/components/Home.tsx:357
@@ -1013,11 +999,11 @@ msgstr "¡Hazte patrón!"
 
 #: src/components/Home.tsx:361
 msgid ""
-"Hosting costs for this site and the Arkham Cards app comes from the "
-"generous support of fans on Patreon."
+"Hosting costs for this site and the Arkham Cards app comes from the generous "
+"support of fans on Patreon."
 msgstr ""
-"Los costes de esta web y de la aplicación Arkham Cards son sufragados "
-"gracias a la generosa ayuda de los fans en Patreon."
+"Los costes de esta web y de la aplicación Arkham Cards son sufragados gracias "
+"a la generosa ayuda de los fans en Patreon."
 
 #: src/components/NavBar.tsx:97
 #, javascript-format
@@ -1034,24 +1020,24 @@ msgstr "¡Colorín colorado, el Blob está acabado!"
 
 #: src/components/Event/GameControls/Announcements.tsx:49
 msgid ""
-"Red agenda 1a has advanced. Please advance to red agenda 1b during your "
-"next Mythos Phase"
+"Red agenda 1a has advanced. Please advance to red agenda 1b during your next "
+"Mythos Phase"
 msgstr ""
 "El Plan 1a rojo ha avanzado. Por favor, avanza al Plan 1b rojo durante la "
 "próxima fase de Mitos."
 
 #: src/components/Event/GameControls/Announcements.tsx:51
 msgid ""
-"Red agenda 2a has advanced. Please advance to red agenda 2b during your "
-"next Mythos Phase"
+"Red agenda 2a has advanced. Please advance to red agenda 2b during your next "
+"Mythos Phase"
 msgstr ""
 "El Plan 2a rojo ha avanzado. Por favor, avanza al Plan 2b rojo durante la "
 "próxima fase de Mitos."
 
 #: src/components/Event/GameControls/Announcements.tsx:53
 msgid ""
-"Red agenda 3a has advanced. Please advance to red agenda 3b during your "
-"next Mythos Phase and prepare for the arrival of Ezel-zen-rezl!"
+"Red agenda 3a has advanced. Please advance to red agenda 3b during your next "
+"Mythos Phase and prepare for the arrival of Ezel-zen-rezl!"
 msgstr ""
 "El Plan 3a rojo ha avanzado. Por favor, avanza al Plan 3b rojo durante la "
 "próxima fase de Mitos y ¡prepárate para la llegada de Ezel-zen-rezl!"
@@ -1082,24 +1068,24 @@ msgstr ""
 
 #: src/components/Event/GameControls/Announcements.tsx:61
 msgid ""
-"Blue agenda 1a has advanced. Please advance to blue agenda 1b during your "
-"next Mythos Phase"
+"Blue agenda 1a has advanced. Please advance to blue agenda 1b during your next "
+"Mythos Phase"
 msgstr ""
 "El Plan 1a azul ha avanzado. Por favor, avanza al Plan 1b azul durante la "
 "próxima fase de Mitos."
 
 #: src/components/Event/GameControls/Announcements.tsx:63
 msgid ""
-"Blue agenda 2a has advanced. Please advance to blue agenda 2b during your "
-"next Mythos Phase"
+"Blue agenda 2a has advanced. Please advance to blue agenda 2b during your next "
+"Mythos Phase"
 msgstr ""
 "El Plan 2a azul ha avanzado. Por favor, avanza al Plan 2b azul durante la "
 "próxima fase de Mitos."
 
 #: src/components/Event/GameControls/Announcements.tsx:65
 msgid ""
-"Blue agenda 3a has advanced. Please advance to blue agenda 3b during your "
-"next Mythos Phase and prepare for the arrival of Silenus!"
+"Blue agenda 3a has advanced. Please advance to blue agenda 3b during your next "
+"Mythos Phase and prepare for the arrival of Silenus!"
 msgstr ""
 "El Plan 3a azul ha avanzado. Por favor, avanza al Plan 3b azul durante la "
 "próxima fase de Mitos y ¡prepárate para la llegada de Silenus!"
@@ -1182,49 +1168,59 @@ msgstr "Participantes"
 
 #: src/components/Home.tsx:257
 msgid "Use the Arkham Cards app to manage your decks and campaigns."
-msgstr ""
+msgstr "Utiliza la aplicación Arkham Cards para gestionar tus mazos y campañas."
 
 #: src/components/Home.tsx:260
 #, javascript-format
 msgid ""
-"• Keep decks locally on your phone, or integrate directly with decks on ${ "
-"arkhamDbLink }."
+"• Keep decks locally on your phone, or integrate directly with decks on "
+"${ arkhamDbLink }."
 msgstr ""
+"• Mantén tus mazos localmente en tu dispositivo, o sincroniza directamente tus "
+"mazos de ${ arkhamDbLink }."
 
 #: src/components/Home.tsx:263
 msgid ""
 "• Handles all scenario setup and resolution, while maintaining the campaign "
 "log and chaos bag automatically."
 msgstr ""
+"• Gestiona la preparación del escenario y las resoluciones, a la vez que "
+"mantiene automáticamente el Registro de campaña y la bolsa de Caos."
 
 #: src/components/Home.tsx:266
 msgid "• Edit and upgrade your investigator's decks."
-msgstr ""
+msgstr "• Edita y mejora tus mazos de investigador."
 
 #: src/components/Home.tsx:269
 msgid ""
 "• Draw tokens from the digital chaos bag, and calculate the odds of success "
 "before you do."
 msgstr ""
+"• Roba fichas de la bolsa de Caos digital, y calcula tus probabilidades de "
+"éxito antes de robar."
 
 #: src/components/Home.tsx:272
 msgid "• Use the advanced card search to search by trait, health, shroud etc."
-msgstr ""
+msgstr "• Utiliza la búsqueda avanzada para buscar por rasgo, vida, velo, etc."
 
 #: src/components/Home.tsx:275
 msgid "• Completely free to download and use, with zero ads."
 msgstr ""
+"• La descarga y uso de la aplicación es totalmente gratuita, y sin anuncios."
 
 #: src/components/Home.tsx:301
 msgid ""
-"The app does not yet support Epic Multiplayer events, so you will still "
-"need to use the website. App support is coming soon though."
+"The app does not yet support Epic Multiplayer events, so you will still need "
+"to use the website. App support is coming soon though."
 msgstr ""
+"La aplicación todavía no soporta la realización de eventos en modo "
+"multijugador épico, debes usar el sitio web para ello. En breve, también será "
+"posible a través de la aplicación."
 
 #: src/components/Home.tsx:283
 msgid "Download on the App Store"
-msgstr ""
+msgstr "Descargar en la App Store"
 
 #: src/components/Home.tsx:293
 msgid "Get it on Google Play"
-msgstr ""
+msgstr "Descargar en Google Play"

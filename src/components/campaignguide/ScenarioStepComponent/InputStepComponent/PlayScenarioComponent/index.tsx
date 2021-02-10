@@ -4,7 +4,6 @@ import { map } from 'lodash';
 import { t } from 'ttag';
 
 import BranchButton from './BranchButton';
-import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
 import ChooseOnePrompt from '@components/campaignguide/prompts/ChooseOnePrompt';
 import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
@@ -16,6 +15,7 @@ import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { CampaignId } from '@actions/types';
+import { showGuideDrawChaosBag } from '@components/campaign/nav';
 
 interface Props {
   componentId: string;
@@ -59,26 +59,8 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
   }, [componentId, campaignId, processedScenario]);
 
   const chaosBagSimulatorPressed = useCallback(() => {
-    Navigation.push<GuideChaosBagProps>(componentId, {
-      component: {
-        name: 'Guide.DrawChaosBag',
-        passProps: {
-          campaignId,
-          chaosBag: campaignLog.chaosBag,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos Bag`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, campaignId, campaignLog]);
+    showGuideDrawChaosBag(componentId, campaignId, campaignLog.chaosBag, processedScenario.latestCampaignLog.investigatorCodes(false));
+  }, [componentId, campaignId, campaignLog, processedScenario.latestCampaignLog]);
 
   const mainContent = useMemo(() => {
     const firstDecision = scenarioState.choice(id);

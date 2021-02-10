@@ -10,11 +10,12 @@ import AppIcon from '@icons/AppIcon';
 import { TINY_PHONE } from '@styles/sizes';
 
 interface OwnProps {
-  iconKey?: ChaosTokenType | 'tap' | 'another' | 'return';
+  iconKey?: ChaosTokenType | 'tap' | 'another' | 'return' | 'odds' | 'bag';
   small?: boolean;
   tiny?: boolean;
   sealed?: boolean;
   shadow?: boolean;
+  status?: 'added' | 'removed';
 }
 
 type Props = OwnProps;
@@ -53,7 +54,12 @@ function ChaosTokenPart({ name, size, color }: { name: string; size: number; col
   );
 }
 
-function NormalChaosToken({ iconKey, size, shadowStyle }: { iconKey: ChaosTokenType | 'another' | 'return'; size: number; shadowStyle?: ViewStyle }) {
+function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
+  iconKey: ChaosTokenType | 'another' | 'return' | 'odds' | 'bag';
+  size: number;
+  shadowStyle?: ViewStyle;
+  status?: 'added' | 'removed',
+}) {
   const { colors } = useContext(StyleContext);
   const icon = useMemo(() => {
     if (iconKey) {
@@ -66,6 +72,13 @@ function NormalChaosToken({ iconKey, size, shadowStyle }: { iconKey: ChaosTokenT
             </>
           );
         case 'return':
+          return (
+            <>
+              <ChaosTokenPart name="tap_circle" color={colors.M} size={size} />
+              <ChaosTokenPart name="token_dismiss_highlight" color="#FC2323" size={size} />
+            </>
+          );
+        case 'odds':
           return (
             <>
               <ChaosTokenPart name="tap_circle" color={colors.M} size={size} />
@@ -155,9 +168,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle }: { iconKey: ChaosTokenT
 
   return (
     <View style={[{ width: size, height: size, borderRadius: size / 2 }, shadowStyle]}>
-      <View style={[
-        { width: size, height: size, borderRadius: size / 2, overflow: 'hidden' },
-      ]}>
+      <View style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden' }}>
         <RadialGradient style={{ width: size, height: size, borderRadius: size / 2, position: 'relative' }}
           key={iconKey}
           colors={gradientParams?.colors || ['#FFFBF2', '#D6CFB9']}
@@ -167,6 +178,10 @@ function NormalChaosToken({ iconKey, size, shadowStyle }: { iconKey: ChaosTokenT
         >
           { icon }
         </RadialGradient>
+        { status !== undefined && (
+          <View style={{ position: 'absolute', top: 0, left: 0, borderRadius: size / 2, width: size, height: size,
+            borderWidth: 2, borderColor: status === 'added' ? colors.faction.rogue.text : colors.faction.survivor.text }} />
+        ) }
       </View>
     </View>
   );
@@ -202,32 +217,43 @@ function getSize(small?: boolean, tiny?: boolean) {
   return small ? SMALL_TOKEN_SIZE : CIRCLE_LARGE;
 }
 
-export default function ChaosToken({ iconKey, small, tiny, sealed, shadow: useShadow }: Props) {
+export default function ChaosToken({ iconKey, small, tiny, sealed, status, shadow: useShadow }: Props) {
   const { colors, typography, shadow } = useContext(StyleContext);
   const size = getSize(small, tiny);
   if (!iconKey) {
     return <View style={[{ width: size, height: size }, styles.tapCircle]} />;
   }
-  if (iconKey === 'tap') {
-    return (
-      <View style={[{ width: size, height: size }, styles.tapCircle]}>
-        <ChaosTokenPart name="tap_circle" color={colors.M} size={size} />
-        <Text style={[typography.small, typography.italic, typography.center, typography.light]}>{t`Tap to draw`}</Text>
-      </View>
-    );
+  switch (iconKey) {
+    case 'tap': {
+      return (
+        <View style={[{ width: size, height: size }, styles.tapCircle]}>
+          <ChaosTokenPart name="tap_circle" color={colors.M} size={size} />
+          <Text style={[typography.small, typography.italic, typography.center, typography.light]}>{t`Tap to draw`}</Text>
+        </View>
+      );
+    }
+    case 'odds':
+    case 'bag':
+      return (
+        <View style={{ width: size, height: size, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <View style={[{ width: size - 2, height: size - 2, borderRadius: (size - 2) / 2, backgroundColor: colors.L10 }, styles.tapCircle, shadow.small]}>
+            <AppIcon name={iconKey === 'odds' ? 'difficulty' : 'chaos_bag'} color={colors.M} size={size / 1.8} />
+          </View>
+        </View>
+      );
+    case 'another':
+    case 'return':
+      return <NormalChaosToken iconKey={iconKey} size={size} shadowStyle={shadow.small} />;
+    default:
+      if (sealed) {
+        return (
+          <SealedChaosToken iconKey={iconKey} size={size} />
+        );
+      }
+      return (
+        <NormalChaosToken iconKey={iconKey} size={size} shadowStyle={useShadow ? shadow.drop : undefined} status={status} />
+      );
   }
-  if (iconKey === 'another' || iconKey === 'return') {
-    return <NormalChaosToken iconKey={iconKey} size={size} shadowStyle={shadow.small} />;
-  }
-
-  if (sealed) {
-    return (
-      <SealedChaosToken iconKey={iconKey} size={size} />
-    );
-  }
-  return (
-    <NormalChaosToken iconKey={iconKey} size={size} shadowStyle={useShadow ? shadow.drop : undefined} />
-  );
 }
 
 const styles = StyleSheet.create({

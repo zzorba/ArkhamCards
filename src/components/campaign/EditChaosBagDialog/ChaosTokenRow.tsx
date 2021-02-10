@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { map, range } from 'lodash';
 import {
   StyleSheet,
@@ -6,10 +6,10 @@ import {
 } from 'react-native';
 
 import { ChaosTokenType } from '@app_constants';
-import ChaosToken from '@components/core/ChaosToken';
+import ChaosToken from '@components/campaign/ChaosToken';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   id: ChaosTokenType;
@@ -19,90 +19,66 @@ interface Props {
   limit: number;
 }
 
-export default class ChaosTokenRow extends React.PureComponent<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function renderTokens(id: ChaosTokenType, count: number, status?: 'added' | 'removed') {
+  return (
+    <View style={styles.row}>
+      { map(range(0, count), (idx) => (
+        <ChaosToken
+          tiny
+          key={`${status}-${idx}`}
+          iconKey={id}
+          status={status}
+        />
+      )) }
+    </View>
+  );
+}
 
-  _increment = () => {
-    const {
-      id,
-      mutateCount,
-      limit,
-    } = this.props;
+export default function ChaosTokenRow({ id, mutateCount, originalCount, count, limit }: Props) {
+  const { borderStyle } = useContext(StyleContext);
+  const increment = useCallback(() => {
     mutateCount(id, count => Math.min(count + 1, limit));
-  };
+  }, [id, mutateCount, limit]);
 
-  _decrement = () => {
-    const {
-      id,
-      mutateCount,
-    } = this.props;
+  const decrement = useCallback(() => {
     mutateCount(id, count => Math.max(count - 1, 0));
-  };
+  }, [id, mutateCount]);
 
-  static renderTokens(id: ChaosTokenType, count: number, status?: 'added' | 'removed') {
-    return (
-      <View style={styles.row}>
-        { map(range(0, count), (idx) => (
-          <ChaosToken
-            key={`${status}-${idx}`}
-            id={id}
-            status={status}
-          />
-        )) }
-      </View>
-    );
-  }
-
-  renderTokens() {
-    const {
-      id,
-      count,
-      originalCount,
-    } = this.props;
+  const tokens = useMemo(()=> {
     if (count > originalCount) {
       return (
         <View style={styles.row}>
-          { (originalCount > 0) && ChaosTokenRow.renderTokens(id, originalCount) }
-          { ChaosTokenRow.renderTokens(id, (count - originalCount), 'added') }
+          { (originalCount > 0) && renderTokens(id, originalCount) }
+          { renderTokens(id, (count - originalCount), 'added') }
         </View>
       );
     }
     if (count < originalCount) {
       return (
         <View style={styles.row}>
-          { count > 0 && ChaosTokenRow.renderTokens(id, count) }
-          { ChaosTokenRow.renderTokens(id, (originalCount - count), 'removed') }
+          { count > 0 && renderTokens(id, count) }
+          { renderTokens(id, (originalCount - count), 'removed') }
         </View>
       );
     }
-    return ChaosTokenRow.renderTokens(id, count);
+    return renderTokens(id, count);
+  }, [id, count, originalCount]);
 
-  }
-
-  render() {
-    const {
-      id,
-      count,
-      limit,
-    } = this.props;
-    const { borderStyle } = this.context;
-    return (
-      <View style={[styles.mainRow, borderStyle]}>
-        <View style={styles.row}>
-          <ChaosToken id={id} />
-          <PlusMinusButtons
-            count={count}
-            onIncrement={this._increment}
-            onDecrement={this._decrement}
-            size={36}
-            max={limit}
-          />
-        </View>
-        { this.renderTokens() }
+  return (
+    <View style={[styles.mainRow, borderStyle]}>
+      <View style={styles.row}>
+        <ChaosToken iconKey={id} tiny />
+        <PlusMinusButtons
+          count={count}
+          onIncrement={increment}
+          onDecrement={decrement}
+          size={36}
+          max={limit}
+        />
       </View>
-    );
-  }
+      { tokens }
+    </View>
+  );
 }
 
 
