@@ -17,8 +17,8 @@ msgstr ""
 msgid ""
 "This website is dedicated to providing a way for players of the Arkham "
 "Horror LCG to connect when far apart."
-msgstr "Diese Website soll Spielern des Arkham Horror LCG eine Möglichkeit bieten, "
-"sich miteinander zu verbinden, wenn sie weit voneinander entfernt sind."
+msgstr "Diese Website soll Spielern von \"Arkham Horror: Das Kartenspiel\" eine Möglichkeit bieten, "
+"sich miteinander zu verbinden, auch wenn sie weit voneinander entfernt sind."
 
 #: src/components/About.tsx:15
 #, javascript-format
@@ -37,15 +37,15 @@ msgid ""
 "This site allows you to host Epic Multiplayer events for Arkham Horror: "
 "The Card Game."
 msgstr ""
-"Diese Seite erlaubt es dir epische Multiplayer Events für "
-"Arkham Horror: Das Kartenspiel zu veranstalten"
+"Diese Seite erlaubt es dir epische Multiplayer-Events für "
+"\"Arkham Horror: Das Kartenspiel\" zu veranstalten."
 
 #: src/components/CreateEvent.tsx:110
 msgid ""
 "As the organizer, you will be need to setup communication channels with "
 "your players (we suggest Discord)."
-msgstr "Als Organisator musst du die Kommunikation mit deinen Mitspielern einrichten. "
-"(Wir empfehlen Discord)"
+msgstr "Als Organisator musst du für Kommunikationskanäle für deine "
+"Mitspielern sorgen. (Wir empfehlen Discord)"
 
 #: src/components/CreateEvent.tsx:113
 msgid "This site will allow players to:"
@@ -53,18 +53,18 @@ msgstr "Diese Seite erlaubt Spielern:"
 
 #: src/components/CreateEvent.tsx:116
 msgid "Pre-register for the event with tentative table size."
-msgstr "Voranmeldung für ein Event mit vordefinierter Tischgröße."
+msgstr "Voranmeldung für ein Event mit etwaiger Tischgröße."
 
 #: src/components/CreateEvent.tsx:117
 msgid "Confirm registration up to an hour before the event."
-msgstr "Anmeldungsbestätigung bis zu einer Stunde vor Event-Beginn."
+msgstr "Anmeldung und Bestätigung bis zu einer Stunde vor Event-Beginn."
 
 #: src/components/CreateEvent.tsx:118
 msgid ""
 "Start the game and keep track of time, while also reporting shared game "
 "state."
 msgstr ""
-"Starte das Spiel, erfasse die benötigte Zeit und aktualisiere den Spielstatus."
+"Das Spiel starten, die benötigte Zeit erfassen und den gemeinsamen Fortschritt protokollieren."
 
 #: src/components/CreateEvent.tsx:123
 msgid "Event scenario"
@@ -93,7 +93,7 @@ msgstr "Anmeldepasswort"
 #: src/components/CreateEvent.tsx:179
 #: src/components/Event/index.tsx:125
 msgid "Description (supports markdown)"
-msgstr "Beschreibung (unterstützt das Markdown-Format)"
+msgstr "Beschreibung (unterstützt Markdown-Format)"
 
 #: src/components/CreateEvent.tsx:192
 msgid "Discord webhook (for announcements)"
@@ -143,7 +143,7 @@ msgstr "(Videoführung durch die Benutzeroberfläche)"
 
 #: src/components/Home.tsx:226
 msgid "Arkham Horror: Epic Multiplayer Events"
-msgstr "Arkham Horror: Epische Multiplayer Events"
+msgstr "Arkham Horror: Epische Mehrspieler-Events"
 
 #: src/components/Home.tsx:229
 msgid ""
@@ -153,9 +153,9 @@ msgid ""
 "while using the website to share progress and receive updates from the "
 "organizers. The website currently supports two scenarios:"
 msgstr ""
-"Diese Website ermöglicht es dir, an Arkham Horror-Szenarien teilzunehmen, "
-"die das epische Multiplayer-Format, mit Spielern auf der ganzen Welt, nutzen. "
-"Dabei handelt es sich um zeitlich begrenzte Events, bei denen du ein Arkham-Spiel "
+"Diese Website ermöglicht es dir, mit Spielern auf der ganzen Welt am epischen "
+"Mehrspielermodus von \"Arkham Horror: Das Kartenspiel\"-Szenarien teilzunehmen."
+"Dabei handelt es sich um zeitlich begrenzte Events, bei denen du ein Arkham Horror-Spiel "
 "wie gewohnt spielen kannst, während du die Website nutzt, um eigene Fortschritte zu teilen "
 "und Updates von den Spielleitern zu erhalten."
 
@@ -261,7 +261,7 @@ msgstr "Accountname"
 
 #: src/components/Profile/index.tsx:84
 msgid "Choose a handle"
-msgstr "Wähle einen Spitznamen"
+msgstr "Wähle einen Anzeigenamen"
 
 #: src/components/Profile/index.tsx:100
 msgid "Update"
@@ -269,11 +269,11 @@ msgstr "Aktualisieren"
 
 #: src/components/Profile/index.tsx:108
 msgid "Handle"
-msgstr "Spitzname"
+msgstr "Anzeigename"
 
 #: src/components/Profile/index.tsx:109
 msgid "No handle chosen yet."
-msgstr "Bisher kein Spitzname gewählt."
+msgstr "Bisher kein Anzeigename gewählt."
 
 #: src/components/Event/index.tsx:139
 msgid "Update Description"
@@ -360,7 +360,7 @@ msgid ""
 "visited by URL or have its stats accessed by the admins."
 msgstr ""
 "Das Event wird nicht mehr angezeigt, kann aber weiterhin per URL besucht werden."
-"Auch die Admins haben weiterhin Zugriff auf die Statistiken."
+"Auch die Administratoren haben weiterhin Zugriff auf die Statistiken."
 
 #: src/components/Event/GameControls/Announcements.tsx:47
 msgid "Ding dong the Blob is dead!"
@@ -462,11 +462,11 @@ msgid ""
 "Dimension."
 msgstr ""
 "Erhalte einen Hinweis von ${ groupName }. Füge diesen zu deiner Kopie von"
-"Dimensionsnarbe hinzu."
+"Knoten-Dimension hinzu."
 
 #: src/components/Event/GameControls/Announcements.tsx:179
 msgid "Received a clue to add to your copy of Hub Dimension."
-msgstr "Hinweis, zum hinzufügen zu deiner Kopie von Dimensionsnarbe, erhalten"
+msgstr "Hinweis, zum Hinzufügen zu deiner Kopie von Knoten-Dimension, erhalten"
 
 #: src/components/Event/GameControls/Announcements.tsx:182
 #, javascript-format
@@ -520,12 +520,12 @@ msgstr ""
 "an einem \"Providence\"-Ort, 3 Schaden zu."
 
 #: src/components/Event/GameControls/Announcements.tsx:279
-msgid "A worried man and women look towards the sky."
-msgstr "Ein Mann und eine Frau schauen besorgt zum Himmel."
+msgid "A worried man and woman look towards the sky."
+msgstr "Ein Pärchen schaut besorgt zum Himmel."
 
 #: src/components/Event/GameControls/Announcements.tsx:280
-msgid "A man and women runs from a looming blob."
-msgstr "Ein Mann und eine Frau laufen vor einem drohenden Blob davon."
+msgid "A man and woman runs from a looming blob."
+msgstr "Das Pärchen rennt vor dem bedrohlichen Blob davon."
 
 #: src/components/Event/GameControls/Announcements.tsx:283
 msgid "Announcements"
@@ -549,7 +549,7 @@ msgstr "Entschärfe den Sprengstoff"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:103
 msgid "Inside the Blob"
-msgstr "Im Blob"
+msgstr "Im Inneren des Blob"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:104
 msgid "Dance of the Bricks"
@@ -613,7 +613,7 @@ msgstr "Hinweis-Ziel für Szene 1 zurücksetzen"
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:305
 msgid "A blob consuming a car and a house."
-msgstr "Ein Blob frisst ein Auto und ein Haus."
+msgstr "Der Blob frisst ein Auto und ein Haus."
 
 #: src/components/Event/GameControls/BlobGameControls.tsx:305
 msgid "8L-08 Damage"
@@ -928,7 +928,7 @@ msgstr "Gruppe zu Szene ${ nextAct } vorrücken lassen"
 #: src/components/Event/GameControls/WarGameControls.tsx:716
 #, javascript-format
 msgid "Is your group ready to advance to Act ${ nextAct }?"
-msgstr "Ist diese Gruppe bereit zu Szene ${ nextAct } vorzurücken?"
+msgstr "Ist deine Gruppe bereit zu Szene ${ nextAct } vorzurücken?"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:413
 msgid "Mark this group as eliminated?"
@@ -977,8 +977,8 @@ msgid ""
 "Are you ready to help this group using the action ability on the \"Streets "
 "of Montréal\" location (group limit once per game)?"
 msgstr ""
-"Bist du bereit, dieser Gruppe zu helfen, indem du die Aktionsfähigkeit am Ort "
-"\"Straßen von Montréal\" einsetzt (Pro Gruppe einmal pro Spiel)?"
+"Bist du bereit der Gruppe zu helfen, indem du die Aktionsfähigkeit am Ort "
+"\"Straßen von Montréal\" einsetzt (1x pro Gruppe und Spiel)?"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:491
 msgid "Requested help in New York"
@@ -993,8 +993,8 @@ msgid ""
 "Are you ready to help this group using the action ability on the \"Streets "
 "of New York\" location (group limit once per game)?"
 msgstr ""
-"Bist du bereit, dieser Gruppe zu helfen, indem du die Aktionsfähigkeit am Ort "
-"\"Straßen von New York\" einsetzt (Pro Gruppe einmal pro Spiel)?"
+"Bist du bereit der Gruppe zu helfen, indem du die Aktionsfähigkeit am Ort "
+"\"Straßen von New York\" einsetzt (1x pro Gruppe und Spiel)?"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:498
 msgid "Requested help in Providence"
@@ -1009,12 +1009,12 @@ msgid ""
 "Are you ready to help this group using the action ability on the \"Streets "
 "of Providence\" location (group limit once per game)?"
 msgstr ""
-"Bist du bereit, dieser Gruppe zu helfen, indem du die Aktionsfähigkeit am Ort "
-"\"Straßen von Providence\" einsetzt (Pro Gruppe einmal pro Spiel)?"
+"Bist du bereit der Gruppe zu helfen, indem du die Aktionsfähigkeit am Ort "
+"\"Straßen von Providence\" einsetzt (1x pro Gruppe und Spiel)?"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:505
 msgid "Requested help closing Hub Dimension"
-msgstr "Nach Hilfe beim Schließen der Dimensionsnarbe fragen"
+msgstr "Nach Hilfe beim Schließen der Knoten-Dimension fragen"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:561
 #: src/components/Event/GameControls/WarGameControls.tsx:628
@@ -1066,7 +1066,7 @@ msgid ""
 "will automatically add doom to handle your elimination."
 msgstr ""
 "Wurde die gesamte Gruppe besiegt? Wenn du in Szene 1 oder Szene 2 bist, "
-"wird wegen der Niederlage Verderben auf der Agenda platziert."
+"wird Verderben auf der Agenda platziert."
 
 #: src/components/Event/GameControls/WarGameControls.tsx:737
 msgid "Your group"
@@ -1088,15 +1088,15 @@ msgstr "Szenen-Gruppenfortschritt: Szene ${ act }a"
 #: src/components/Event/GameControls/WarGameControls.tsx:767
 #, javascript-format
 msgid "Hub Dimension clues received from other groups: ${ receivedClues }"
-msgstr "Von anderen Gruppen erhaltene Hinweise auf der Dimensionsnarbe: ${ receivedClues }"
+msgstr "Von anderen Gruppen erhaltene Hinweise auf der Knoten-Dimension: ${ receivedClues }"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:777
 msgid "Cancel request for help closing Hub Dimension"
-msgstr "Anfrage zum Helfen bei der Dimensionsnarbe löschen"
+msgstr "Anfrage zum Helfen bei der Knoten-Dimension löschen"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:777
 msgid "Request help closing Hub Dimension"
-msgstr "Um Hilfe beim Schließen der Dimensionsnarbe bitten"
+msgstr "Um Hilfe beim Schließen der Knoten-Dimension bitten"
 
 #: src/components/Event/GameControls/WarGameControls.tsx:799
 msgid "Group eliminated"
