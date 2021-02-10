@@ -32,9 +32,10 @@ interface Props {
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
   headerButtons: React.ReactNode;
   displayLinkScenarioCount?: number;
+  footerButtons: React.ReactNode;
 }
 export default function CampaignDetailTab({
-  componentId, processedCampaign, headerButtons, displayLinkScenarioCount,
+  componentId, processedCampaign, headerButtons, displayLinkScenarioCount, footerButtons,
   showLinkedScenario, showAlert, showTraumaDialog, showCountDialog,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
@@ -153,6 +154,7 @@ export default function CampaignDetailTab({
             showCountDialog={showCountDialog}
           />
         </View>
+        { footerButtons }
       </ScrollView>
       { chaosBagDialog }
     </SafeAreaView>

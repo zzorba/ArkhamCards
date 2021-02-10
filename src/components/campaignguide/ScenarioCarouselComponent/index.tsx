@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useRef, useState } from 'react';
 import Carousel from 'react-native-snap-carousel';
+import { Platform } from 'react-native';
 import { findIndex } from 'lodash';
 
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
@@ -97,7 +98,7 @@ export default function ScenarioCarouselComponent({
       sliderWidth={width}
       contentContainerCustomStyle={space.paddingSideS}
       firstItem={selectedIndex}
-      useExperimentalSnap
+      useExperimentalSnap={Platform.OS === 'android'}
       useScrollView
       disableIntervalMomentum
       data={processedCampaign.scenarios}

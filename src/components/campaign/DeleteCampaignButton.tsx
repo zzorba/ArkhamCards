@@ -1,6 +1,5 @@
 import React, { useCallback, useContext } from 'react';
 import { Navigation } from 'react-native-navigation';
-import { TouchableOpacity, View } from 'react-native';
 import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
@@ -9,9 +8,8 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
 import { useDeleteCampaignRequest } from '@data/firebase/api';
 import { deleteCampaign } from './actions';
-import space from '@styles/space';
-import AppIcon from '@icons/AppIcon';
-import StyleContext from '@styles/StyleContext';
+import { s } from '@styles/space';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 interface Props {
   componentId: string;
@@ -22,7 +20,6 @@ interface Props {
 
 export default function DeleteCampaignButton({ componentId, campaignId, campaignName, showAlert }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
-  const { colors } = useContext(StyleContext);
   const dispatch = useDispatch();
   const deleteServerCampaign = useDeleteCampaignRequest();
   const actuallyDeleteCampaign = useCallback(() => {
@@ -43,10 +40,13 @@ export default function DeleteCampaignButton({ componentId, campaignId, campaign
     );
   }, [campaignName, actuallyDeleteCampaign, showAlert]);
   return (
-    <TouchableOpacity onPress={confirmDeleteCampaign} accessibilityLabel={t`Delete campaign`}>
-      <View style={space.paddingXs}>
-        <AppIcon name="dismiss" color={colors.warn} size={18} />
-      </View>
-    </TouchableOpacity>
+    <DeckButton
+      icon="delete"
+      title={t`Delete campaign`}
+      thin
+      color="red_outline"
+      onPress={confirmDeleteCampaign}
+      bottomMargin={s}
+    />
   );
 }

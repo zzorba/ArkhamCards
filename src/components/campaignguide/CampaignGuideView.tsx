@@ -16,6 +16,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import CampaignDetailTab from './CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
+import space from '@styles/space';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -63,16 +64,22 @@ function CampaignGuideView(props: Props) {
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
         />
+      </>
+    );
+  }, [campaignId, setCampaignServerId]);
+
+  const footerButtons = useMemo(() => {
+    return (
+      <View style={space.paddingSideS}>
         <DeleteCampaignButton
           componentId={componentId}
           campaignId={campaignId}
           campaignName={campaignName || ''}
           showAlert={showAlert}
         />
-      </>
+      </View>
     );
-  }, [showAlert, componentId, campaignId, campaignName, setCampaignServerId]);
-
+  }, [componentId, campaignName, campaignId, showAlert]);
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab
@@ -82,6 +89,7 @@ function CampaignGuideView(props: Props) {
         showCountDialog={showCountDialog}
         showTraumaDialog={showTraumaDialog}
         headerButtons={headerButtons}
+        footerButtons={footerButtons}
       />
       { alertDialog }
       { dialog }

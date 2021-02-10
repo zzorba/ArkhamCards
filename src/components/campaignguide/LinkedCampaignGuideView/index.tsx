@@ -21,6 +21,7 @@ import { useCampaignLinkHelper } from './useCampaignLinkHelper';
 import CampaignDetailTab from '../CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
+import space from '@styles/space';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -96,15 +97,21 @@ export default function LinkedCampaignGuideView(props: Props) {
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
         />
+      </>
+    );
+  }, [campaignId, setCampaignServerId]);
+  const footerButtons = useMemo(() => {
+    return (
+      <View style={space.paddingSideS}>
         <DeleteCampaignButton
           componentId={componentId}
           campaignId={campaignId}
           campaignName={campaignName || ''}
           showAlert={showAlert}
         />
-      </>
+      </View>
     );
-  }, [showAlert, componentId, campaignId, campaignName, setCampaignServerId]);
+  }, [showAlert, componentId, campaignId, campaignName]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA || !processedCampaignA || !contextA) {
@@ -125,12 +132,13 @@ export default function LinkedCampaignGuideView(props: Props) {
               showCountDialog={showCountDialog}
               showTraumaDialog={showTraumaDialog}
               displayLinkScenarioCount={displayLinkScenarioCount}
+              footerButtons={footerButtons}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
-  }, [campaignDataA, processedCampaignA, contextA, componentId, headerButtons, displayLinkScenarioCount,
+  }, [campaignDataA, processedCampaignA, contextA, componentId, headerButtons, displayLinkScenarioCount, footerButtons,
     showCampaignScenarioB, showCountDialog, showAlert, showTraumaDialog]);
   const campaignBTab = useMemo(() => {
     if (!campaignDataB || !processedCampaignB || !contextB) {
@@ -151,12 +159,13 @@ export default function LinkedCampaignGuideView(props: Props) {
               showTraumaDialog={showTraumaDialog}
               headerButtons={headerButtons}
               displayLinkScenarioCount={displayLinkScenarioCount}
+              footerButtons={footerButtons}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
-  }, [campaignDataB, processedCampaignB, contextB, componentId, headerButtons, displayLinkScenarioCount,
+  }, [campaignDataB, processedCampaignB, contextB, componentId, headerButtons, displayLinkScenarioCount, footerButtons,
     showCampaignScenarioA, showCountDialog, showAlert, showTraumaDialog]);
   const tabs = useMemo(() => {
     if (!campaignATab || !campaignBTab) {

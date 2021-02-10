@@ -212,15 +212,9 @@ function CampaignDetailView(props: Props) {
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
         />
-        <DeleteCampaignButton
-          componentId={componentId}
-          campaignId={campaignId}
-          campaignName={campaign?.name || ''}
-          showAlert={showAlert}
-        />
       </>
     );
-  }, [showAlert, componentId, campaignId, campaign, setCampaignServerId]);
+  }, [campaignId, setCampaignServerId]);
   const investigatorData = useMemo(() => campaign?.investigatorData || {}, [campaign?.investigatorData]);
   const showXpDialog = useCallback((investigator: Card) => {
     const data = investigatorData[investigator.code] || {};
@@ -364,6 +358,12 @@ function CampaignDetailView(props: Props) {
               title={t`Draw random basic weakness`}
               onPress={drawWeaknessPressed}
               bottomMargin={s}
+            />
+            <DeleteCampaignButton
+              componentId={componentId}
+              campaignId={campaignId}
+              campaignName={campaign?.name || ''}
+              showAlert={showAlert}
             />
           </View>
         </ScrollView>
