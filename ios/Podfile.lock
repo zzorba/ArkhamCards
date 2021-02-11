@@ -301,7 +301,7 @@ PODS:
     - React-Core
   - react-native-sqlite-storage (5.0.0):
     - React
-  - react-native-track-player (1.2.3):
+  - react-native-track-player (2.0.0-rc13):
     - React
   - react-native-webview (11.2.2):
     - React-Core
@@ -693,7 +693,7 @@ SPEC CHECKSUMS:
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
-  react-native-track-player: 28b96dd6404dea3eee80e67b74507679235a8dfb
+  react-native-track-player: bb3a3f8251cfe7f4cbc5746e5a67d0951a4a5e39
   react-native-webview: 74db71e90242a241259232952ccf9baed7acc6e8
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
@@ -730,6 +730,6 @@ SPEC CHECKSUMS:
   SRSRadialGradient: 71378a83e52b616c40367c37ee7cb6865f9f7c6e
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: 9df00d9c065d1bbb6da92bba8d37a6ff86c08d18
+PODFILE CHECKSUM: 475ec334dddf6ae391378000fa3b50f11cbd288f
 
 COCOAPODS: 1.9.3

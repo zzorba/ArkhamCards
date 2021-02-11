@@ -8,10 +8,11 @@ import {
   TouchableHighlight,
   View,
   ViewStyle,
+  EmitterSubscription,
 } from 'react-native';
 import { Divider, Icon } from 'react-native-elements';
 import { useSelector } from 'react-redux';
-import TrackPlayer, { EmitterSubscription, usePlaybackState, useTrackPlayerEvents, useTrackPlayerProgress } from 'react-native-track-player';
+import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress } from 'react-native-track-player';
 
 import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
@@ -38,7 +39,6 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
     return;
   }
 
-  const oldTrackIds = oldTracks.map((track) => track.id);
   const newTracks = queue.map((track) => {
     return {
       id: track.id,
@@ -62,7 +62,8 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
     currentTrackNewIndex !== -1 &&
     isEqual(currentTrackOld, newTracks[currentTrackNewIndex])
   ) {
-    const diffTrackIds = oldTrackIds.filter(trackId => !newTrackIds.includes(trackId));
+    const diffTracks = oldTracks.filter(track => !newTrackIds.includes(track.id));
+    const diffTrackIds = diffTracks.map(track => track.id);
     const commonTracks = oldTracks.filter(track => !diffTrackIds.includes(track.id));
     const commonTrackIds = commonTracks.map(track => track.id);
     const currentTrackCommonIndex = commonTrackIds.indexOf(currentTrackId);
@@ -79,8 +80,8 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
 
     // Remove tracks that don't match our new queue
     const removeTrackIds = [
-      ...diffTrackIds,
-      ...commonTrackIds.filter(
+      ...diffTracks,
+      ...commonTracks.filter(
         (_, index) =>
           index <= currentTrackCommonIndex - tracksBefore ||
           index >= currentTrackCommonIndex + tracksAfter
@@ -121,14 +122,14 @@ interface PlayerProps {
 }
 
 interface PlayerState {
-  track: TrackPlayer.Track | null;
-  state: TrackPlayer.State | null;
+  track: Track | null;
+  state: State | null;
 }
 
 
 function ProgressView() {
   const { colors } = useContext(StyleContext);
-  const { position, duration } = useTrackPlayerProgress(1000);
+  const { position, duration } = useProgress(1000);
   return (
     <View
       style={{
@@ -188,7 +189,7 @@ function PlayerView({ style }: PlayerProps) {
       return;
     }
     const trackPlayer = await narrationPlayer();
-    if (state === TrackPlayer.STATE_PLAYING) {
+    if (state === State.Playing) {
       await trackPlayer.pause();
     } else {
       await trackPlayer.play();
@@ -197,7 +198,7 @@ function PlayerView({ style }: PlayerProps) {
   const onPlayPress = usePressCallback(onPlay, 250);
   const onPreviousPress = usePressCallback(previousTrack, 250);
   const onNextPress = usePressCallback(nextTrack, 250);
-  useTrackPlayerEvents(['playback-error'], (event: any) => {
+  useTrackPlayerEvents([Event.PlaybackError], (event: any) => {
     if (event.code === 'playback-source') {
       if (event.message === 'Response code: 403') {
         // login error
@@ -232,13 +233,13 @@ function PlayerView({ style }: PlayerProps) {
             <ActivityIndicator
               size={40}
               color={colors.D30}
-              animating={state === TrackPlayer.STATE_BUFFERING}
+              animating={state === State.Buffering}
             />
           </View>
         </View>
         <PreviousButton onPress={onPreviousPress} />
         <ReplayButton onPress={onReplayPress} />
-        { state === TrackPlayer.STATE_PLAYING ? (
+        { state === State.Playing ? (
           <PauseButton onPress={onPlayPress} />
         ) : (
           <PlayButton onPress={onPlayPress} />
@@ -252,8 +253,8 @@ function PlayerView({ style }: PlayerProps) {
 
 interface ArtworkProps {
   style?: ViewStyle;
-  track: TrackPlayer.Track | null;
-  state: TrackPlayer.State | null;
+  track: Track | null;
+  state: State | null;
 }
 
 function ArtworkView({ track }: ArtworkProps) {
@@ -272,7 +273,7 @@ function ArtworkView({ track }: ArtworkProps) {
           }}
         >
           <EncounterIcon
-            encounter_code={track?.artwork ?? ''}
+            encounter_code={`${track?.artwork || ''}`}
             size={48}
             color={colors.D30}
           />
@@ -284,7 +285,7 @@ function ArtworkView({ track }: ArtworkProps) {
 
 interface TitleProps {
   style?: ViewStyle;
-  track: TrackPlayer.Track | null;
+  track: Track | null;
 }
 
 function TitleView({ style, track }: TitleProps) {
@@ -337,7 +338,7 @@ function ReplayButton({ onPress }: ButtonProps) {
 }
 
 interface TrackProps {
-  track: TrackPlayer.Track;
+  track: Track;
   isCurrentTrack: boolean;
 }
 
@@ -370,7 +371,7 @@ function TrackView({ track, isCurrentTrack }: TrackProps) {
 
 interface PlaylistProps {
   style?: ViewStyle;
-  queue: TrackPlayer.Track[];
+  queue: Track[];
 }
 
 function PlaylistView({ style, queue }: PlaylistProps) {
@@ -380,7 +381,7 @@ function PlaylistView({ style, queue }: PlaylistProps) {
     let listener: EmitterSubscription | undefined = undefined;
     narrationPlayer().then(trackPlayer => {
       listener = trackPlayer.addEventListener(
-        'playback-track-changed',
+        Event.PlaybackTrackChanged,
         (data) => {
           if (!canceled) {
             setCurrenTrackId(data.nextTrack);

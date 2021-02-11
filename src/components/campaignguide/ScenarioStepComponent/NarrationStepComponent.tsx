@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 import { StyleContext } from '@styles/StyleContext';
-import { STATE_PLAYING, usePlaybackState } from 'react-native-track-player';
+import { State, usePlaybackState } from 'react-native-track-player';
 
 import space from '@styles/space';
 import { playNarrationTrack } from '@components/campaignguide/NarrationWrapper';
@@ -29,7 +29,7 @@ export function NarrationButton({ narration }: IconProps) {
   const { colors } = useContext(StyleContext);
   const playerState = usePlaybackState();
   const currentTrackId = useCurrentTrackId();
-  const isPlaying = playerState === STATE_PLAYING && currentTrackId === narration.id;
+  const isPlaying = playerState === State.Playing && currentTrackId === narration.id;
   const onPressNarration = useCallback(() => {
     if (isPlaying) {
       narrationPlayer().then(trackPlayer => trackPlayer.pause());

@@ -10263,10 +10263,10 @@ react-native-table-component@1.2.1, react-native-table-component@^1.2.1:
   dependencies:
     prop-types "^15.6.1"
 
-react-native-track-player@1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/react-native-track-player/-/react-native-track-player-1.2.3.tgz#cd147b1fc93a229c49392abd7b37f087285e673a"
-  integrity sha512-h8HWOC9Zo54hen0ttlGzdofEMH38CPfT6+UWAcbEoHFgGcvxsRlJAgubdtM3QWwWZh20Q2zvQA8+8/l4Bu0yfA==
+react-native-track-player@2.0.0-rc13:
+  version "2.0.0-rc13"
+  resolved "https://registry.yarnpkg.com/react-native-track-player/-/react-native-track-player-2.0.0-rc13.tgz#8519b58ac3cdbc18685bab6d04bd6746a5c78562"
+  integrity sha512-U069Ew4vzhWpr3vkxt3A42g19b4cCO/NtTY+X7BLzJD/xCoCXu4PZ3f8/XcOtUJFDICR24hrnlF7OB5eOywIGA==
 
 react-native-typescript-transformer@1.2.13:
   version "1.2.13"

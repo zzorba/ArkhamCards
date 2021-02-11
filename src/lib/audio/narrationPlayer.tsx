@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { EmitterSubscription } from 'react-native';
 import { isEqual } from 'lodash';
-import TrackPlayer, { EmitterSubscription, EventType, Track, State, useTrackPlayerEvents } from 'react-native-track-player';
+import TrackPlayer, { Capability, Event, Track, State, useTrackPlayerEvents } from 'react-native-track-player';
 
 import { useInterval } from '@components/core/hooks';
 import { hasDissonantVoices } from '@reducers';
@@ -12,7 +13,7 @@ interface TrackPlayerFunctions {
   getQueue: () => Promise<Track[]>;
   getTrack: (id: string) => Promise<Track>;
   getState: () => Promise<State>;
-  addEventListener: (type: EventType, listener: (data: any) => void) => EmitterSubscription;
+  addEventListener: (type: Event, listener: (data: any) => void) => EmitterSubscription;
   getCurrentTrack: () => Promise<string>;
   play: () => Promise<void>;
   pause: () => Promise<void>;
@@ -20,7 +21,7 @@ interface TrackPlayerFunctions {
   skipToNext: () => Promise<void>;
   skip: (trackId: string) => Promise<void>;
   add: (tracks: Track | Track[], insertBeforeId?: string) => Promise<void>;
-  remove: (trackIds: string | string[]) => Promise<void>;
+  remove: (trackIds: Track | Track[]) => Promise<void>;
   reset: () => Promise<void>;
   seekTo: (seconds: number) => Promise<void>;
   skipToPrevious: () => Promise<void>;
@@ -35,24 +36,24 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
       try {
         TrackPlayer.registerPlaybackService(() => async() => {
           try {
-            TrackPlayer.addEventListener('remote-play', TrackPlayer.play);
-            TrackPlayer.addEventListener('remote-pause', TrackPlayer.pause);
-            TrackPlayer.addEventListener('remote-next', TrackPlayer.skipToNext);
-            TrackPlayer.addEventListener('remote-previous', TrackPlayer.skipToPrevious);
+            TrackPlayer.addEventListener(Event.RemotePlay, TrackPlayer.play);
+            TrackPlayer.addEventListener(Event.RemotePause, TrackPlayer.pause);
+            TrackPlayer.addEventListener(Event.RemoteNext, TrackPlayer.skipToNext);
+            TrackPlayer.addEventListener(Event.RemotePrevious, TrackPlayer.skipToPrevious);
 
             await TrackPlayer.setupPlayer({});
             TrackPlayer.updateOptions({
               stopWithApp: true,
               capabilities: [
-                TrackPlayer.CAPABILITY_PLAY,
-                TrackPlayer.CAPABILITY_PAUSE,
-                TrackPlayer.CAPABILITY_SKIP_TO_NEXT,
-                TrackPlayer.CAPABILITY_SKIP_TO_PREVIOUS,
-                TrackPlayer.CAPABILITY_JUMP_BACKWARD,
+                Capability.Play,
+                Capability.Pause,
+                Capability.SkipToNext,
+                Capability.SkipToPrevious,
+                Capability.JumpBackward,
               ],
               compactCapabilities: [
-                TrackPlayer.CAPABILITY_PLAY,
-                TrackPlayer.CAPABILITY_PAUSE,
+                Capability.Play,
+                Capability.Pause,
               ],
             });
             resolve({
@@ -87,7 +88,7 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
 }
 
 export function useTrackPlayerQueue(interval: number = 100) {
-  const [state, setState] = useState<TrackPlayer.Track[]>([]);
+  const [state, setState] = useState<Track[]>([]);
   const getProgress = async() => {
     const trackPlayer = await narrationPlayer();
     const newQueue = await trackPlayer.getQueue();
@@ -107,7 +108,7 @@ export function useCurrentTrackId(): string | null {
       trackPlayer.getCurrentTrack().then(currentTrack => setState(currentTrack));
     });
   }, []);
-  useTrackPlayerEvents(['playback-track-changed'],
+  useTrackPlayerEvents([Event.PlaybackTrackChanged],
     (event: any) => {
       if (event.type === 'playback-track-changed') {
         setState(event.nextTrack);
@@ -118,7 +119,7 @@ export function useCurrentTrackId(): string | null {
 }
 
 export function useTrackDetails(id: string | null) {
-  const [track, setTrack] = useState<TrackPlayer.Track | null>(null);
+  const [track, setTrack] = useState<Track | null>(null);
   useEffect(() => {
     let canceled = false;
     narrationPlayer().then(trackPlayer => {

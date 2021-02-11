@@ -89,7 +89,7 @@
     "react-native-svg-charts": "5.4.0",
     "react-native-tab-view": "2.15.2",
     "react-native-table-component": "1.2.1",
-    "react-native-track-player": "1.2.3",
+    "react-native-track-player": "2.0.0-rc13",
     "react-native-uuid": "1.4.9",
     "react-native-vector-icons": "7.1.0",
     "react-native-webview": "11.2.2",
