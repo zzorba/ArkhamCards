@@ -78,6 +78,9 @@ const FEMININE_INVESTIGATORS = new Set([
   '07003', // Trish
   '05046', // Gavriella Mizrah
   '05049', // Penny White
+  '98001', // Alt-Jenny
+  '98019', // Gloria
+  '98010', // Alt-Carolyn
 ]);
 
 const HEADER_SELECT = {
