@@ -35222,8 +35222,8 @@
 },
 {
   "id": "bad_blood",
-  "scenario_name": "Bad Blood",
-  "full_name": "Bad Blood",
+  "scenario_name": "Böses Blut",
+  "full_name": "Böses Blut",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -35433,7 +35433,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You’ve always known there was something…different…about you. From a young age, in your dreams, you saw another realm. Another life. One of magick and majesty, of conquest and persecution. The moment you found that strange, old key—the moment you recognized the filigree along its handle, the pattern of its teeth—you knew those dreams weren’t dreams at all, but memories. Memories of another life. Of a place called “Hyperborea.” And as the memories returned, the magic did, too.\nFor months you practiced in secret, delving into your memories and honing your powers. But lately, your dreams have turned dark and grisly. Your former self was not as caring or forviging as you. She was ruthless. Power-hungry. Terrible to behold. You’ve taken it upon yourself to wield these strange powers only to help others, and not to hurt them.\nBut you’re not the only one whose memories have started to return. Elspeth Baudin first visited the diner a few weeks ago. In the beginning, she was just a patron like any other. She ordered eggs, bacon and a black coffee, not unlike many of the other customers at Velma’s. But there was something in her eyes— some spark of recognition or curiosity—that made you wary of her.\nThen came the questions.\nFirst, she asked about the key you wore on a chain around your neck. You gave her your best smile and told her your usual lie—that it was a family heirloom, a harmless trinket with no worth but its sentimental value. But that didn’t deter her. She started prying about your life, about your family…about your dreams.\nElspeth was no normal patron. She wasn’t making small talk. She was looking for answers, just the same as you. So you did some digging of your own. But there were no records of Elspeth being a resident of Arkham, and the few people you found who knew of her spoke only in hushed, frightened voices, and gave you very little to work with.\nThen came a call from the Curiositie Shoppe in Northside. Elspeth had been searching for more artifacts like your own “hierloom,” even going so far as to utter the name Hyperborea. She is searching for something that can unlock more of her memories, just like you…but she is <i>not</i> like you. That sinister smirk of hers, the way her contacts trembled with fear at the mention of her name—you shudder to think what somebody with foul intentions could do with the sort of powers your memories hold…"
+      "text": "Du hast schon immer gewusst, dass du etwas … anders … bist. Von klein auf hast du in deinen Träumen in ein anderes Reich geblickt. In ein anderes Leben. In eines voller Magie und Herrlichkeit, aber auch voller Eroberungen und Verfolgungen. In dem Moment, in dem du den seltsamen alten Schlüssel mit seinen filigranen Gravuren auf dem Griff gefunden und das Muster seines Barts wiedererkannt hast, wurde dir bewusst, dass deine Träume nicht nur Träume waren – sondern Erinnerungen. Erinnerungen an ein anderes Leben. An einen Ort namens „Hyperborea“. Und mit den Erinnerungen ist auch die Magie zu dir zurückgekehrt. \nMonatelang hast du im Geheimen mit deiner neugewonnenen Macht experimentiert, hast tief in deinen Erinnerungen gewühlt und deine Kräfte perfektioniert. Aber in letzter Zeit sind deine Träume dunkler und grausig geworden. Dein früheres Ich war nicht so fürsorglich und nachsichtig wie du. Es war skrupellos. Machthungrig. Schrecklich anzusehen. So hast du dir geschworen, diese seltsamen Kräfte nur einzusetzen, wenn du damit anderen helfen kannst, nicht um anderen zu schaden. \nAber du bist nicht die Einzige, deren Erinnerungen zurückgekehrt sind. Elspeth Baudin hatte den Diner vor ein paar Wochen zum ersten Mal besucht. Zuerst war sie nur ein Gast wie jeder andere auch. Sie bestellte Eier mit Speck und schwarzen Kaffee – für Gäste in Velma’s Diner also nichts Ungewöhnliches. Ein neugieriges Funkeln in ihrem Blick, als ob sie etwas wiedererkannt hätte, ließ dich misstrauisch werden. \nUnd dann kamen die Fragen. \nZuerst wollte sie etwas über den Schlüssel wissen, den du an einer Kette um den Hals trägst. Mit dem höflichsten Lächeln auf den Lippen hast du ihr die übliche Lüge aufgetischt – dass es sich um ein Familienerbstück handelt, ein harmloses Schmuckstück, das nur sentimentalen Wert hat. Das hielt sie aber nicht davon ab weiterzufragen. Jetzt wollte sie Details über dein Leben, über deine Familie … und über deine Träume erfahren. \nElspeth war kein normaler Gast. Sie hielt nichts von unverfänglichem Geplauder und kam gleich zur Sache. Sie suchte nach Antworten – genau wie du. Also hast du deine eigenen Nachforschungen angestellt. Es gab keine Aufzeichnungen darüber, dass Elspeth eine Einwohnerin Arkhams war. Du konntest nur wenige Leute ausfindig machen, die sie kannten. Aber diese schienen Angst vor ihr zu haben und redeten nur im Flüsterton mit dir, ohne aber handfeste Informationen zu haben.\nDann erhieltst du einen Anruf aus dem Raritätenladen aus der Nordstadt. Elspeth war auf der Suche nach weiteren Artefakten wie dein „Erbstück“. Sie ging dabei sogar so weit, den Namen „Hyperborea“ in den Mund zu nehmen. Sie war also auf der Suche nach etwas, das ihrer Erinnerung auf die Sprünge helfen konnte, genau wie du …aber sie ist nicht wie du. Ihr teuflisches Grinsen, die Art und Weise, wie ihre Bekannten vor Angst zu schlottern anfingen, als du ihren Namen aussprachst … Du erschauderst bei dem bloßen Gedanken daran, was jemand mit so finsteren Absichten mit der Macht anfangen könnte, die in deinen Erinnerungen verborgen liegt …"
     },
     {
       "id": "gather_encounter_sets",
@@ -35452,20 +35452,20 @@
     },
     {
       "id": "new_scenario_card",
-      "text": "Remove the original scenario reference card from the <i>Threads of Fate</i> encounter set from the game. Use the new scenario reference card provided in the downloadable <i>Bad Blood</i> encounter set."
+      "text": "Die ursprüngliche Szenarioübersichtskarte aus dem Begegnungsset <i>Fäden des Schicksals</i> wird aus dem Spiel entfernt. Für dieses Szenario wird die Szenarioübersichtskarte des herunterladbaren Sets <i>Böses Blut</i> verwendet."
     },
     {
       "id": "setup_locations",
-      "text": "Put Northside, Downtown, Easttown, Miskatonic University, Rivertown, Town Hall, Velma's Diner, and Curiositie Shoppe into play.",
+      "text": "Die Orte Nordstadt, Innenstadt, Oststadt, Miskatonic Universität, Hafenviertel, Rathaus, Velma’s Diner und Raritätenladen werden ins Spiel gebracht.",
       "bullets": [
         {
-          "text": "Each investigator begins play in Velma's Diner."
+          "text": "Jeder Ermittler beginnt das Spiel in Velma’s Diner."
         }
       ]
     },
     {
       "id": "setup_threads_locations",
-      "text": "Search the reverse sides of the original act deck from the <i>Threads of Fate</i> encounter set for the following locations: Eztli Exhibit, Black Cave, Train Tracks, and Arkham Police Station. Choose one at random and put it into play, ignoring its <b>revelation</b> ability. Remove the remainder of the original act and agenda cards from the <i>Threads of Fate</i> encounter set from the game."
+      "text": "Die Rückseiten der ursprünglichen Szenenkarten aus dem Begegnungsset <i>Fäden des Schicksals</i> werden nach folgenden Orten durchsucht: Eztli-Ausstellung, Schwarze Höhle, Bahngleise und Polizeirevier von Arkham. 1 Ort davon wird zufällig bestimmt und ins Spiel gebracht, wobei seine <b>Enthüllung</b>-Fähigkeit ignoriert wird. Die übrigen Szenen- und Agendakarten aus dem Begegnungsdeck <i>Fäden des Schicksals</i> werden aus dem Spiel entfernt."
     },
     {
       "id": "location_layout",
@@ -35497,23 +35497,23 @@
           "blank"
         ]
       ],
-      "note": "<i><b>Note</b>: Based on the random location, one of the following will also be in play: Eztli Exhibit, Black Cave, Train Tracks, or Arkham Police Station."
+      "note": "<i><b>Hinweis</b>: Einer der folgenden Ort wurde zufällig gewählt und ist zusätzlich im Spiel: Eztli-Ausstellung, Schwarze Höhle, Bahngleise und Polizeirevier von Arkham."
     },
     {
       "id": "setup_act_deck",
-      "text": "Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>Bad Blood</i> encounter set."
+      "text": "Die Szenen- und Agendadecks werden nur aus den neuen Szenen- und Agenda- Karten des herunterladbaren Begegnungssets <i>Böses Blut</i> erstellt."
     },
     {
       "id": "remove_misc_cards",
-      "text": "Remove the Ichtaca <i>(The Forgotten Guardian)</i> story asset and the Expedition Journal story asset from the game."
+      "text": "Die Storyvorteilskarten Ichtaca <i>(Die vergessene Wächterin)</i> und Tagebuch der Expedition werden aus dem Spiel entfernt."
     },
     {
       "id": "setup_elspeth",
-      "text": "Place the Elspeth Baudin enemy (provided in the downloadable <i>Bad Blood</i> encounter set) into play at the Curiositie Shoppe."
+      "text": "Der Gegner Elspeth Baudin (aus dem herunterladbaren Begegnungsset <i>Böses Blut</i>) wird im Raritätenladen ins Spiel gebracht."
     },
     {
       "id": "setup_memories",
-      "text": "Place 1 resource on each location in play, as a “memory.”"
+      "text": "Auf jedem Ort wird 1 Ressource als „Erinnerung“ platziert."
     },
     {
       "id": "encounter_deck",
@@ -35535,21 +35535,21 @@
     },
     {
       "id": "memories_rule",
-      "title": "Collecting Memories",
+      "title": "Sammeln von „Erinnerungen“",
       "type": "rule_reminder",
-      "text": "In this scenario, Agnes and Elspeth are racing to collect memories.",
+      "text": "In diesem Szenario wetteifern Agnes und Elspeth darum, Erinnerungen zu sammeln.",
       "bullets": [
         {
-          "text": "Agnes can collect memories using the [fast] ability on act 1a."
+          "text": "Agnes kann Erinnerungen sammeln, indem sie die [fast]-Fähigkeit auf Szene 1a verwendet."
         }
       ]
     },
     {
       "id": "elspeth_memories_rule",
-      "text": "Elspeth collects memories automatically via the <b>Forced</b> abilities on agenda 1a; when the combined modifier of chaos tokens on her location is 6 or more (ignoring +/–).",
+      "text": "Elspeth sammelt Erinnerungen automatisch mit der <b>Erzwungen</b>-Fähigkeit auf Agenda 1a; sobald die Chaosmarker-Modifikatoren auf ihrem Ort zusammengezählt insgesamt mindestens „6“betragen („+/–“ werden ignoriert).",
       "bullets": [
         {
-          "text": "For the purposes of counting their modifiers only, treat these chaos tokens as having been revealed during a skill test."
+          "text": "Nur für den Zweck des Zählens der Chaosmarker-Modifikatoren werden diese Chaosmarker so behandelt, als wären sie während einer Fertigkeitsprobe enthüllt worden."
         }
       ]
     },
@@ -35560,14 +35560,14 @@
     },
     {
       "id": "agnes_bad_swap",
-      "text": "Agnes Baker must either upgrade Dark Memory to its advanced version, or downgrade the advanced version of Heirloom of Hyberborea to its original version",
+      "text": "Agnes Baker muss entweder Dunkle Erinnerungen zur weiterentwickelten Version verbessern oder die weiterentwickelte Version von Erbstück aus Hyperborea auf die ursprüngliche Version zurückstufen.",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "dark_memory",
-            "text": "Upgrade to advanced Dark Memory",
+            "text": "Zur weiterentwickelten Version von Dunkle Erinnerungen verbessern",
             "effects": [
               {
                 "type": "remove_card",
@@ -35587,7 +35587,7 @@
           },
           {
             "id": "heirloom",
-            "text": "Downgrade from advanced Heirloom of Hyberborea",
+            "text": "Auf die ursprüngliche Version von Erbstück aus Hyperborea zurückstufen",
             "effects": [
               {
                 "type": "remove_card",
@@ -35610,14 +35610,14 @@
     },
     {
       "id": "agnes_good_swap",
-      "text": "Agnes Baker may either upgrade Heirloom of Hyberborea to its advanced version, or downgrade the advanced version of Dark Memory to its original version.",
+      "text": "Agnes Baker darf entweder Erbstück aus Hyperborea zur weiterentwickelten Version verbessern oder die weiterentwickelte Version von Dunkle Erinnerungen auf die ursprüngliche Version zurückstufen.",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "heirloom",
-            "text": "Upgrade to advanced Heirloom of Hyberborea",
+            "text": "Zur weiterentwickelten Version von Erbstück aus Hyperborea verbessern",
             "effects": [
               {
                 "type": "remove_card",
@@ -35637,7 +35637,7 @@
           },
           {
             "id": "dark_memory",
-            "text": "Downgrade advanced Dark Memory",
+            "text": "Auf die ursprüngliche Version von Dunkle Erinnerungen zurückstufen",
             "effects": [
               {
                 "type": "remove_card",
@@ -35664,11 +35664,11 @@
     },
     {
       "id": "ask_agnes_memories",
-      "text": "How many memories did Agnes Baker collect by the end of the scenario?",
+      "text": "Wie viele Erinnerungen hat Agnes Baker am Ende des Szenarios gesammelt?",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Memories:",
+        "text": "Gesammelte Erinnerungen:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -35681,7 +35681,7 @@
     },
     {
       "id": "others_experience",
-      "text": "Each investigator besides Agnes Baker earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Jeder Ermittler außer Agnes Baker verdient Erfahrungspunkte in Höhe des Sieg- X-Wertes aller Karten im Siegpunktestapel.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -35702,7 +35702,7 @@
     },
     {
       "id": "agnes_experience_explanation",
-      "text": "Agnes Baker earns experience equal to either the combined Victory X value of each card in the victory display, or equal to the number of memories she had collected at the end of the game, whichever is higher."
+      "text": "Agnes Baker verdient Erfahrungspunkte entweder in Höhe des Sieg- X-Wertes aller Karten im Siegpunktestapel oder in Höhe der Anzahl an Erinnerungen, die sie am Ende des Spiels im Spiel hatte, je nachdem, was höher ausfällt."
     },
     {
       "id": "agnes_experience",
@@ -35757,7 +35757,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "It would be so simple. You could end her right now. Prevent her from menacing others with her powers...But then, would you be any different? You lower your hand, and the magic disperses into the cold air. “Why?” she asks, her voice cracked with pain. You shake your head and tell her that she is wrong. True power is the ability to make peace, not the ability to wage war. “Fool,” she barks, clambering to her feet. “You are a weakling, after all. And you will regret letting me live.” You watch her amble off with only fragments of her former life in her head. Her powers are considerably drained, but she still poses a problem. Perhaps you should have dealt with her, as she said. Still, you breathe a sigh of relief. You don’t want this power to change who you are. You won’t let yourself become like her. No matter what. ",
+      "text": "Es wäre so einfach. Du könntest sie hier und jetzt für immer besiegen. Könntest sie daran hindern, Andere mit ihren Kräften zu bedrohen. Aber würdest du dich dann von ihr noch unterscheiden? Du senkst deine Hand und die Magie löst sich in der kalten Luft einfach auf. „Warum?“, fragt sie dich mit schmerzerfüllter Stimme. Du schüttelst den Kopf und sagst ihr, dass sie auf dem falschen Pfad ist. Wahre Macht ist es, Frieden zu stiften, nicht Kriege zu führen. „Du Närrin“, fährt sie dich an, während sie wieder aufsteht. „Du bist nichts weiter als ein Schwächling. Und du wirst es noch bereuen, mich am Leben gelassen zu haben.“ Du beobachtest sie dabei, wie sie sich – nur noch mit Erinnerungsbruchstücken an ihr früheres Leben – langsam von dir entfernt. Ein Großteil ihrer Kräfte ist erschöpft, aber sie stellt noch immer ein Problem dar. Vielleicht hättest du sie erledigen sollen, wie sie dir gesagt hat. Dennoch fühlst du dich erleichtert. Du willst nicht, dass die Macht in dir dich verändert. Du wirst nicht zulassen, dass du so wirst wie sie. Egal, was es kostet.",
       "steps": [
         "ask_agnes_memories",
         "others_experience",
@@ -35770,7 +35770,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "Elspeth has you at her mercy. She raises her hand, her magic threatening to tear you apart. She smirks. You close your eyes and brace yourself...but no killing blow comes. Instead, she yanks you to your feet and wipes dust off your apron. “Come now,” she purrs with a devilish grin. “You are no whimpering animal. Don’t you remember what you truly are? What we truly are?” Then, without any further punishment, she departs, leaving you with only fragments of your former life.",
+      "text": "Elspeth hat dich vollkommen in ihrer Gewalt. Langsam hebt sie ihre Hand, während ihre Magie dich zu zerreißen droht. Sie funkelt dich finster an. Du schließt deine Augen und bereitest dich auf dein Ende vor … aber der tödliche Schlag bleibt aus. Stattdessen zerrt sie dich auf die Füße und klopft den Staub von deinem Mantel. „Auf jetzt“, säuselt sie mit einem teuflischem Grinsen im Gesicht. „ Du bist doch kein winselndes Tier. Hat du vergessen, was du wirklich bist? Was wir wirklich sind?“ Dann verlässt sie dich, ohne dich weiter zu bestrafen. Du bleibst nur noch mit Erinnerungsbruchstücken an dein früheres Leben verdutzt zurück.",
       "steps": [
         "ask_agnes_memories",
         "others_experience",
@@ -72951,6 +72951,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_3.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Du springst zwischen deinen Erinnerungen und kämpfst dich wieder in die Gegenwart zurück. Du erinnerst dich an eine dunkle Zelle. An ein Messer an deiner Kehle. An einen Mann mit großen Augen, die niemals zu blinzeln scheinen, in einer langen Robe mit Kapuze. „Oceiros“, ruft ihn eine andere Stimme, „wir haben einen weiteren Eindringling in Dagons Reich gefunden. Wir glauben, dass er derselbe ist, der auch am Teufelsriff herumgeschnüffelt hat.“ \nOceiros nickt. Das Messer an deiner Kehle schneidet tiefer. „Bringt alles, was er gestohlen hat, sofort zum Leuchtturm“, befiehlt er. „ Es wird Zeit, unser großes Werk zu beginnen. Niemand wird je wieder die Geschäfte des Ordens stören.“ \nDein Verstand ist wieder in der Gegenwart angekommen. Das Dröhnen eines Automobilmotors wird lauter, als deine Sinne zurückkehren. Agent Harper fasst dir an die Schulter und schaut dir in die Augen. „Noch eine Vision?“, fragt sie ein wenig überrascht. „Erinnern Sie sich an etwas? Was ist es?“ \nDu versuchst den Schmerz aus deinem Kopf zu schütteln und fragst Harper, ob ihr der Name Oceiros etwas sagt. „Oceiros Marsh? Er ist der Wärter des alten Leuchtturms bei Falcon Point“, antwortet sie dir. „Warum? Was haben Sie gesehen?“"
     },
@@ -72980,6 +72984,10 @@
     },
     {
       "id": "purple_key_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_3.purple_key",
+        "name": "Purple Key"
+      },
       "type": "story",
       "text": "Du beschreibst ihr den Götzen, den du in der Unterwassergrotte gefunden hast. Agent Harper nickt dir zu. „Ich kann mich an etwas erinnern, das ich in einigen Aufzeichnungen gelesen habe, auf die ich gestoßen bin, als Sie das Riff erkundet haben. Es soll eine altertümliche Gottheit darstellen – etwas, was diese scheußlichen Kreaturen anbeten.“ Ihre Stimme wird zu einem kaum wahrnehmbaren Flüstern. „Etwas, von dem ich annehme, dass es kein Mythos ist.“ Du fragst sie, wo der Götze jetzt ist, aber sie schüttelt den Kopf. „Ich nehme an, dass er Ihnen gestohlen wurde, als sie in der Grotte gefangen waren“, antwortet sie."
     },
@@ -73040,6 +73048,10 @@
     },
     {
       "id": "white_key_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_3.white_key",
+        "name": "White Key"
+      },
       "type": "story",
       "text": "Du erinnerst dich an den seltsamen Mantel, den du in den überfluteten Tiefen unter dem Teufelsriff gefunden hast. „Ja, den habe ich schon einmal gesehen“, antwortet Harper und schnippt mit ihren Fingern. „Einer der ‚Priester‘ des verfluchten Esoterischen Ordens von Dagon hat ihn getragen, als ich das erste Mal in Innsmouth eingetroffen bin. Er muss mit dem Rest Ihrer Habseligkeiten zum Leuchtturm gebracht worden sein, als Sie im Hauptquartier des Ordens gefangen waren. Wenn wir Glück haben, ist er noch da …“"
     },
@@ -73100,6 +73112,10 @@
     },
     {
       "id": "black_key_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_3.black_key",
+        "name": "Black Key"
+      },
       "type": "story",
       "text": "Du erzählst Agent Harper vom Tempel mit den zwei Statuen, die du unter dem Teufelsriff gefunden hast, und von der Krone, die du von dort gestohlen hast. „Das hört sich wie der ‚Kopfschmuck aus Y’ha-nthlei‘ an. Darüber habe ich gelesen, als ich Nachforschungen zum Orden angestellt habe. Ich bin beeindruckt, dass Sie es mit ihm herausgeschafft haben. Was er auch ist, er scheint sehr wichtig für den Orden zu sein. Ich weiß aber immer noch nicht, was es mit ‚Y’ha-nthlei‘ auf sich hat.“ Du merkst an, dass du die Krone nicht mehr hast. Sie nickt. „Sie muss mit dem Rest Ihrer Habseligkeiten zum Leuchtturm gebracht worden sein, bevor Sie Ihre Erinnerungen verloren haben“, vermutet sie."
     },
@@ -73190,11 +73206,19 @@
     },
     {
       "id": "no_keys_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_3.no_keys",
+        "name": "No Keys"
+      },
       "type": "story",
       "text": "Du hast Mühe, dich an überhaupt etwas von Wert zu erinnern, was über deine oberflächliche Erkundung des Riffs hinausgeht. Du erinnerst dich an unheimliche Kreaturen, die du bekämpft hast, an verschiedene Inseln, die du erkundet hast, und an den ständigen Anstieg des Wasserspiegels, aber an sonst nichts. Die Geheimnisse müssen im Riff verborgen sein, aber du hast sie entweder nicht gefunden oder du kannst dich einfach nicht daran erinnern. Dein Schädel pocht schmerzhaft, als du versuchst, deine Vergangenheit aus der Leere deines Verstands zu rekonstruieren. „Ist schon okay“, sagt Harper und legt dir ihre Hand auf die Schulter. „Wir finden es gemeinsam heraus.“"
     },
     {
       "id": "outro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_3.outro",
+        "name": "Outro"
+      },
       "type": "story",
       "text": "„Es scheint, als würden Ihre Erinnerungen langsam zurückkehren“, sagt Agent Harper mit einem zaghaften Lächeln auf den Lippen. „Wie fühlen Sie sich?“ \nDu hast Schwierigkeiten, ihr eine passende Antwort zu geben. Ein Teil von dir ist erleichtert, dass deine Erinnerungen zurückkehren, aber dem Rest von dir wäre es lieber, sie wären nicht so lebhaft. Du fragst dich erneut, ob du nicht die Chance ergreifen solltest, einfach nach Arkham zurückzufahren und Innsmouth nie mehr zu betreten. Dann trifft dein Blick auf den von Harper und du erkennst die wilde Entschlossenheit in ihren Augen. Die gleiche Entschlossenheit, die auch in dir brennt. \nDu sagst nichts, aber sie scheint dich zu verstehen. „Da stürmt eine ganze Menge auf Sie ein. Lassen Sie uns zuerst nach Falcon Point fahren. Wenn das, was Sie sagen, wahr ist, und Oceiros Mitglied des Esoterischen Ordens von Dagon ist, dann sollten wir dort Antworten finden.“ Sie blickt über ihre Schulter und starrt zum westlichen Horizont. Die Sonne versinkt gerade hinter den Bäumen und färbt den Himmel in ein tiefes Scharlachrot. „Ich habe das Gefühl, dass die Sache noch nicht vorbei ist.“"
     },
@@ -73246,6 +73270,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.devil_reef.intro_1",
+        "name": "Intro 1"
+      },
       "type": "story",
       "text": "<center><game>FREITAG, 2. SEPTEMBER 1927</game></center>\n<center><game>DREI WOCHEN ZUVOR</game></center>\nDas Dröhnen des Schiffsmotors lässt dich von deinen Gedanken aufschrecken. „Alles in Ordnung da drüben?“, ruft dir der Kapitän des Kutters knurrend entgegen. „Sie sehen aus, als hätten Sie einen Geist gesehen. Kreidebleich sind Sie.“ \nDu wendest dich dem grauhaarigen, alten Mann zu. Mr. Moore ist der einzige Schiffskapitän in Innsmouth, der von dem Fluch und den Missbildungen, unter denen die meisten Einwohner in Innsmouth leiden, nicht betroffen ist. Seine offensichtliche Menschlichkeit hat ihn aber nicht von abgebrochenen Zähnen, einem schiefen Kiefer und einer riesigen Narbe auf seiner rechten Wange verschonen können. Er ist ein willkommener Anblick, wenn du bedenkst, wie deine bisherige Ermittlung gelaufen ist. \n„Ich kann es nicht glauben, dass Sie zum verfluchten Teufelsriff wollen“, ruft er und schüttelt seinen Kopf. „Das ist vergebliche Mühe.“ \nDu weist den Seemann darauf hin, dass er für die Überfahrt bereit war, nachdem du ihm seine Bezahlung gezeigt hattest. Der alte Mann antwortet mit einem rauen Lachen. \n„Da haben Sie mich erwischt“, gibt er zu. „Halten Sie sich bereit. In zehn Minuten geht’s los.“ Er stolpert vom Hauptdeck auf die Brücke, um einen Kurs zu bestimmen. Währenddessen nimmst du dir die Zeit, dich auf die kommende Reise vorzubereiten."
     },
@@ -73274,11 +73302,19 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.devil_reef.intro_2",
+        "name": "Intro 2"
+      },
       "type": "story",
       "text": "Agent Dawson geht als Letzter an Bord. Er trägt einen schweren Übermantel und hat eine Schrotflinte über die Schulter gehängt. „Agent Harper hat noch einen Geheimvorrat an zusätzlicher Feuerkraft angelegt“, erklärt er. „Glaubt man den Gerüchten, kann das sicher nicht schaden.“ \nDu weißt genau, auf welche Gerüchte Dawson anspielt: Am Teufelsriff soll es spuken und nur so von teuflischen Meereskreaturen wimmeln. Die Seeleute von Innsmouth sprechen von Schemen, die aus den Höhlen entlang des Riffs und der vielen Inseln herauskommen. Auch sollen seltsame missgestaltete Flossen an der Wasseroberfläche gesichtet worden sein. Ganze Boote sollen unter den Wellen verschwinden, nachdem sie mit den gezackten Felsen dort zusammengestoßen sind. \n„Unsere gesamte Ermittlung hat uns hier hingeführt. Was auch immer in dieser Stadt vor sich geht, der Esoterische Orden von Dagon und dieses ‚Teufelsriff ‘ sind der Ursprung von allem. Agent Harper nimmt an, dass diese Gerüchte vom Orden gestreut wurden, um Seeleute vom Riff fernzuhalten. Wenn das stimmt, muss der Orden dort etwas verstecken.“ \nDu fragst Dawson, wo Harper ist, aber er blickt dich nur streng an. „Sie hat ihre eigene Mission. Wir haben unsere.“ Du erinnerst Dawson daran, dass du deine Mission bereits abgeschlossen hast, für die er dich angeheuert hatte. Deine Bemerkung entlockt dem gestählten Veteranen ein leichtes Grinsen. „Das stimmt. Und dennoch sind Sie hier.“ \nEr hat recht. Du hättest gleich nach Harpers Rettung gehen können, aber du bist geblieben, um ihnen bei ihren Ermittlungen zu helfen. Vielleicht aus Pflichtbewusstsein oder aus Neugierde. Weshalb auch immer, jetzt bist du hier und es gibt kein Zurück."
     },
     {
       "id": "intro_3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.devil_reef.intro_3",
+        "name": "Intro 3"
+      },
       "type": "story",
       "text": "Agent Dawson geht als Letzter an Bord. Er hat tiefe Ringe unter seinen müden Augen. „Alle Spuren sind im Sand verlaufen“, sagt er resigniert. „Wo Agent Harper jetzt auch sein mag, wir haben keine Möglichkeit, sie zu finden.“ \nDu versuchst, Dawson ein wenig zu trösten, indem du ihn daran erinnerst, warum du dich dazu entschieden hast, das Teufelsriff zu untersuchen. Am Teufelsriff soll es spuken und nur so von teuflischen Meereskreaturen wimmeln. Die Seeleute von Innsmouth sprechen von Schemen, die aus den Höhlen entlang des Riffs und der vielen Inseln herauskommen. Auch sollen seltsame missgestaltete Flossen an der Wasseroberfläche gesichtet worden sein. Ganze Boote sollen unter den Wellen verschwinden, nachdem sie mit den gezackten Felsen dort zusammengestoßen sind. \n„Sie haben ja recht“, gibt Dawson seufzend zu. „Was auch immer mit Agent Harper passiert ist, es hat mit dem Esoterischen Orden von Dagon zu tun. Das Buch, das Ihnen unter der Tür hindurchgeschoben wurde, ist Beweis genug. Und wenn ich mit meiner Theorie recht habe, dann sind die, welche die Gerüchte über das Teufelsriff verbreiten, keine anderen als die Mitglieder des Ordens selbst. Wenn das stimmt, muss der Orden dort etwas verstecken.“ \nDu nickst und beginnst, dich auf die Mission vorzubereiten. Agent Dawson betrachtet dich dabei die ganze Zeit eindringlich. „Warum sind Sie geblieben?“, fragt er schließlich. „Sie hätten Innsmouth verlassen können, nachdem die Rettung von Agent Harper gescheitert ist. Sie sind aber geblieben. Wieso?“ \nUm ehrlich zu sein, weißt du das selbst nicht so ganz. Vielleicht aus Pflichtbewusstsein oder aus Neugierde? Du zuckst mit den Schultern und erzählst ihm, dass es keine Rolle spielt. Du bist jetzt hier und es gibt kein Zurück. Dein Zugeständnis entlockt dem gestählten Veteranen ein leichtes Lächeln. \n„In Ordnung. Dann lassen Sie uns finden, was sie vor uns verstecken“, antwortet er."
     },
@@ -73764,6 +73800,10 @@
     },
     {
       "id": "flashback_9_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.devil_reef.flashback_9",
+        "name": "Flashback 9"
+      },
       "title": "Rückblende IX",
       "type": "story",
       "text": "Als du durch die überfluteten Höhlen watest, stößt du mit deinem Fuß an etwas Hartes und Metallisches. Das Wasser ist zu dunkel und zu trüb, um zu erkennen, was sich unter der Wasseroberfläche verbirgt. Du holst tief Luft, tauchst ins Wasser ein und tastest nach dem Objekt. Schließlich legst du deine Hände um etwas Glattes und Schweres. Du bugsierst es an die Oberfläche und ziehst es auf einen Felsvorsprung. \nEs handelt sich um eine Statue, die ein Wesen – oder vielleicht eine Gottheit – abbildet, obgleich sie keiner dir bekannten religiösen Figur ähnelt. Der Anblick ihrer unheimlichen, mit Zacken versehenen Tentakel und ihr einziges starrendes Auge aus lichtdurchlässigem Kristall lässt dir deine Haare zu Berge stehen. Und dann ruft sie nach dir, wie Wellen, die an einem nebligen, bewölkten Tag ans Meerufer anbranden …"
@@ -73785,6 +73825,10 @@
     },
     {
       "id": "flashback_10_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.devil_reef.flashback_10",
+        "name": "Flashback 10"
+      },
       "title": "Rückblende X",
       "type": "story",
       "text": "Du schwimmst durch eine Unzahl an weiträumigen Hallen unter dem Meer, bis du schließlich an einen Säulenkreis kommst. In der Mitte des ins Wasser eingetauchten Steinkreises steht ein Altar, der mit einem verzierten Tuch bedeckt ist. Es ist mit teuren Fäden aus Gold bestückt und mit himmelblauen Opalen besetzt. Und obwohl es unter Wasser liegt, ist der Stoff perfekt erhalten geblieben. Du fragst dich, was ein solches Objekt hier tief unten in den überfluteten Höhlen zu bedeuten hat, und so beschließt du, es mitzunehmen. \nIn dem Augenblick, als du aus den Tiefen auftauchst und du dich auf trockenem Fels befindest, stellst du mit Verwunderung fest, dass der Stoff völlig trocken ist. Als du ihn in deinen Händen wendest, fällt dir eine Goldspange auf. Erst jetzt erkennst du, dass es sich nicht bloß um ein formloses Tuch, sondern um einen Mantel handelt – vielleicht sogar um einen Teil einer ganzen Montur. Als du den seltsamen Umhang überziehst, pulsieren seine eingewebten Edelsteine mit arkaner Macht."
@@ -73806,6 +73850,10 @@
     },
     {
       "id": "flashback_11_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.devil_reef.flashback_11",
+        "name": "Flashback 11"
+      },
       "title": "Rückblende XI",
       "type": "story",
       "text": "Du erreichst einen Felsvorsprung, von dem aus du eine Art Zeremonie beobachtest. Schreckliche fischähnliche Kreaturen werfen sich vor zwei gewaltigen Statuen nieder: Eine ist aus Onyx, die andere aus weißem Marmor. Auf der Spitze des Vorsprungs ruht eine goldene Krone mit muschelartigen Verzierungen und drei gut erkennbaren Hörnern. Was dies auch für ein Artefakt sein mag, es ist offensichtlich wichtig für diese Kreaturen. Du nimmst all deinen Mut zusammen, schnappst dir das Artefakt und versuchst zu entkommen, solange du noch kannst. Auf deiner Flucht summt das Relikt machtvoll in deinen Händen."
@@ -73974,6 +74022,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.devil_reef.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
       "investigator_status": [
         "resigned",
@@ -73987,6 +74039,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.devil_reef.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Mit dem schwindenden Tageslicht und dem steigenden Wasser, das die verschiedenen Inseln vor Innsmouth nach und nach verschluckt, entscheidest du dich, mit deinen Entdeckungen zum Hafen zurückzukehren. „Haben Sie gefunden, wonach Sie gesucht haben?“, möchte Mr. Moore von dir wissen, als du sicher die Küste erreicht hast. \nUm ehrlich zu sein, bist du dir da nicht ganz sicher. Was du gefunden hast, war alarmierend. In den Gezeitenhöhlen des Teufelsriffs waren nicht nur die Relikte des Esoterischen Ordens von Dagon untergebracht, sondern sie waren auch die Heimat einer Horde seltsamer Kreaturen: Hybride zwischen Fisch, Mensch und Monster. Du bist zwar mit dem Leben davongekommen, aber an die Schrecken, die du in diesen Höhlen gesehen hast, wirst du dich dein Leben lang erinnern. Scharfe, spitze Zähne – blutbefleckte Altäre – unheilige Gebete – Anzeichen einer kommenden Katastrophe – all das wird dich auch noch nach deiner Flucht weiter heimsuchen. \nAber ist Innsmouth wirklich sicher? Kann es an Land überhaupt noch sicher sein?",
       "steps": [
@@ -74342,6 +74398,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.in_too_deep.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Als du an der Küste entlang nach Innsmouth wanderst, steigt der Meeresspiegel immer weiter an. Am fernen Horizont schiebt sich der Mond langsam vor die Sonne und verkündet eine düstere, unsichere Zukunft. \nDu kannst dich an die Gebäude und Straßen der Stadt erinnern und auch an ein paar seltsame Gestalten, denen du in den ersten Tagen deines Aufenthalts begegnet bist, aber an nichts anderes, was zwischen damals und deinem Aufwachen in der feuchten Grotte geschehen ist. Agent Harper hat versucht, dich über einige Dinge ins Bild zu setzen, aber wegen der vielen Löcher in deinen Erinnerungen waren ihre Erklärungen mehr verwirrend als hilfreich. \n„Seit Sie nach Innsmouth gekommen sind, haben sich die Dinge noch weiter verschlechtert. Alles hat mit den Einheimischen begonnen. Mit jedem Tag sind sie streitlustiger und feindseliger geworden, besonders Fremden wie Ihnen und mir gegenüber. Können Sie sich noch daran erinnern, wie widerlich manche von ihnen ausgesehen haben? An ihre glitschige, gräuliche Haut? An ihre breiten Lippen, ihre hervorquellenden Augen?“ \nDu nickst. Als die Erinnerung plötzlich zu dir zurückkehrt, wäre es dir lieber, sie wäre nicht zurückgekommen. Aber es war nicht nur ihr Aussehen. Auch ihre heiseren Stimmen, mit denen sie auf fast unmenschliche Weise Worte hervorkrächzten. Und dann war da noch ihr Gestank nach verwesendem Fisch. \n„Die Einheimischen sind für den neusten Ärger verantwortlich. Und das ist noch nicht alles. Seit Kurzem schleichen auch noch andere Kreaturen in Innsmouth herum. Ich bin mir sicher, dass Sie ihnen auch schon begegnet sind.“ Sie erschaudert. „Es gibt da eine Verbindung zwischen dem Esoterischen Orden von Dagon und diesen … Dingern. Ich weiß noch nicht, wo sie liegt, aber wir werden der Sache auf den Grund gehen, wenn …“ \nAgent Harper verstummt plötzlich, als sie über die Kuppe der Landzunge klettert, und starrt wortlos in die Ferne. Kein gutes Zeichen. Als auch du die Anhöhe erreichst, bietet sich dir das gleiche Bild der Zerstörung, das Harper verstummen ließ. \nInnsmouth wurde überrannt. Die gleichen Kreaturen, denen du in der Opfergrotte begegnet bist, bevölkern jetzt die Straßen – widerwärtige Wesen aus dem Meer und womöglich noch dunkleren Untiefen. Sie patrouillieren in allen Gassen und auf allen Kreuzungen. Anscheinend suchen – oder jagen – sie etwas. Behelfsmäßige Barrikaden versperren viele Wege und der Manuxet ist über die Ufer getreten und überschwemmt die Straßen. \n„Nein, das kann doch nicht sein …“, ruft Agent Harper aus. Für einen Moment steht ihr einfach nur stumm da. Die drohende Endgültigkeit der Lage ist fast greifbar. Es ist klar, dass Innsmouth nicht länger sicher ist. Du teilst Agent Harper mit, dass Agent Dawson seinen Wagen in der Nähe ihres Autos beim aufgegebenen Bahnhof auf der Westseite von Innsmouth abgestellt hat. Sie nickt verstehend. „In Ordnung. Wir müssen also zum anderen Ende der Stadt gelangen, und zwar schnell.“ \nDer Himmel über euch hat sich zu einem bedrohlichen Blutrot verfärbt. Mit etwas Glück muss am heutigen Tag nicht noch mehr von dieser Farbe vergossen werden."
     },
@@ -74677,6 +74737,10 @@
     },
     {
       "id": "flashback_5_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.in_too_deep.flashback_5",
+        "name": "Flashback 5"
+      },
       "title": "Rückblende V",
       "type": "story",
       "text": "Du befindest dich inmitten einer Unterhaltung mit dem Busfahrer Joe Sargent. Diese muss vor ein paar Wochen stattgefunden haben. Die Straßen sind noch nicht überflutet und alle der baufälligen, maroden Gebäude stehen noch. „Ich habs Ihnen schon gesagt, Fremder“, sagt Mr. Sargent, „heute fährt kein Bus mehr von Innsmouth ab.“ Aber du bist nicht auf der Suche nach einer Busfahrt aus Innsmouth hinaus. Du erklärst Mr. Sargent, dass du ein Angebot für ihn hast. Bevor er dir antwortet, blickt er sich nach möglichen Mithörern um: „Was soll’n das für ein Angebot sein?“ \nDir ist klar, dass du Mr. Sargent nicht über die moralische Schiene erreichen kannst, sodass du seine materiellen Sehnsüchte ansprichst, indem du ihm im Austausch für seine Hilfe eine stattliche Summe anbietest. Nach deiner Rückkehr vom Teufelsriff erscheint dir Innsmouth noch ungastlicher als zuvor. Du wirst auf Schritt und Tritt beobachtet. Du setzt dich bereits einer Gefahr aus, wenn du weiter zu Fuß gehst. \n„Ich soll Sie also wie so’n Chauffeur herumfahr’n, das ist alles?“ Mr. Sargent wägt einen Augenblick seine Möglichkeiten ab, dann schüttelt er dir die Hand. „Das kann ich mach’n.“"
@@ -74695,6 +74759,10 @@
     },
     {
       "id": "flashback_6_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.in_too_deep.flashback_6",
+        "name": "Flashback 6"
+      },
       "title": "Rückblende VI",
       "type": "story",
       "text": "Das Glöckchen über dem Eingang zu Der Kleine Buchladen klingelt, als du die Tür aufstößt. Wie du erwartet hast, ist es im Inneren dunkel. Seit deiner ersten Woche in der Stadt ist das Geschäft geschlossen. Wie es scheint, war Joyce Little nicht nur die Besitzerin, sondern auch die einzige Mitarbeiterin. Zum Glück war das Knacken des Schlosses nicht so schwer. Du schleichst dich zwischen den dunklen, staubigen Regalen hindurch und suchst nach irgendetwas über den Esoterischen Orden von Dagon. \nIm Laden ist es still. Deine Beschatter haben dich nicht bis hier hinein verfolgt. Du lässt dir deshalb etwas Zeit, die finsteren, engen Regalreihen zu durchsuchen. Schließlich kommst du an eine Kellertür, die mit einer Kette verschlossen ist. Du siehst keine Chance, die Tür zu öffnen. Aber die Antworten müssen dahinter zu finden sein. Irgendwie musst du dort hineinkommen. Plötzlich huscht der Schein einer Taschenlampe durch das Schaufenster des Ladens. Deine Beschatter sind dir auf der Spur. Du fliehst durch die Hintertür, in der Hoffnung, ein anderes Mal zurückkommen zu können … \nHier endet die Vision. Du bist wieder in der Gegenwart und befindest dich in den Überresten des ehemaligen Buchladens. Die Flut hat die Regale überschwemmt und die meisten Bücher unleserlich gemacht. Im Augenwinkel fällt dir die zuvor verschlossene Kellertür auf, die jetzt offen steht. Du eilst die Stufen hinab und watest durch knietiefes Wasser, bis du eine Sammlung verschiedener Schriftrollen und Bücher findest, die in einer fremdartigen, aber dennoch irgendwie vertraut wirkenden Runensprache verfasst sind. Was dieser Quell des Wissens auch sein mag, er muss dem Esoterischen Orden von Dagon gehören. Du sammelst so viel zusammen, wie du finden kannst, und kehrst dann wieder auf die überfluteten Straßen zurück."
@@ -74718,6 +74786,10 @@
     },
     {
       "id": "flashback_7_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.in_too_deep.flashback_7",
+        "name": "Flashback 7"
+      },
       "title": "Rückblende VII",
       "type": "story",
       "text": "Du bist das erste Mal in den Straßen der Stadt unterwegs, als du einer verrunzelten, alten Frau begegnest, die vollkommenen Unsinn von sich gibt: „Iä-Y’ha-nthlei … ph’nglui mglw’nafh Pth’thya-l’yi …Hydra fhtagn … mglw’nafh Pth’thya-l’yi …“ Gerade als du an ihr vorbeigehen willst, streckt sie ihre Hand nach dir aus und hält dich mit einer Stärke fest, die du ihr nicht zugetraut hättest. „Pth’thya-l’yi!“, wiederholt sie. „Sie ist in den Tiefen verborgen! In der Stadt der Tiefen Wesen!“ Ihr Blick scheint sich bis in die Rückseite deines Schädels zu bohren. \nDu nimmst ihre Hand und löst sie höflich von deinem Arm. Wie es scheint, kannst du dich nicht einmal durch die Straßen bewegen, ohne von einer Verrückten belästigt zu werden – und dennoch: Irgendetwas in dem schmerzlichen Blick ihrer glasigen Augen lässt dich stutzen. Von was auch immer diese Frau spricht, sie scheint davon überzeugt zu sein. Seufzend fragst du sie, über was sie da redet. \n„S-s-sie sind auf dem Weg“, stottert sie. „Zuerst die Konstellation. Dann die Flut. Dann die Nachkommen von Mutter Hydra.“ Ihre weißen, blinden Augen blicken in deine. Ihr absurdes Gebrabbel ergibt immer noch keinen Sinn für dich. Du willst sie gerade zurücklassen, als sie dich erneut packt und etwas in deine Handfläche drückt. „Nimm es!“, fordert sie dich auf. Du gibst ihr das Ding zurück und weist sie von dir. Du willst mit diesem Unsinn nichts zu tun haben, schließlich musst du Agent Harper finden, nicht irgendwelchen bizarren Schnickschnack sammeln. Ihr Gesichtsausdruck verfinstert sich, als du dich von ihr abwendest. \nAls du in die Gegenwart zurückkehrst, stehst du über dem zerfetzten Leichnam der alten Frau. Von welchem „Unsinn“ sie auch gebrabbelt haben mag, es war offenbar eine sehr ernste Warnung an dich. Ihre steif gewordene Hand hält noch immer die seltsame Goldmünze umklammert, die sie dir vor Wochen angeboten hatte. Dieses Mal nimmst du sie an dich."
@@ -74742,6 +74814,10 @@
     },
     {
       "id": "flashback_8_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.in_too_deep.flashback_8",
+        "name": "Flashback 8"
+      },
       "title": "Rückblende VIII",
       "type": "story",
       "text": "Du stehst vor dem Leiter des Gefängnisses von Innsmouth, einem stämmigen Mann im mittleren Alter, dessen faltige Haut ölig glänzt. Der Gestank, der von ihm ausgeht, ist fast noch schlimmer als der ranzige Geruch des Gefängnisses. „Sehen Sie selbst“, sagt der Gefängnisleiter und zeigt in einen feuchten Flur. Du bist hier, um mit dem Täter zu sprechen, der Agent Harper entführt hatte. Leider musstest du vom Gefängnisleiter erfahren, dass der Verdächtige erst gestern Nacht ausgebrochen ist. \nMit geballten Fäusten eilst du den Gang hinab. Unmöglich, dass er ohne Hilfe entkommen konnte. Es muss ihm jemand dabei geholfen haben. Jeder kann dafür infrage kommen. Selbst der Gefängnisleiter könnte es gewesen sein. Wenn du bedenkst, wie die Stadtbewohner deine Ermittlung bei jeder sich bietenden Gelegenheit behindert haben, so scheint es, dass die gesamte Stadt gegen dich ist. \nAls du um die nächste Ecke biegst, stößt du auf die ehemalige Zelle des Entführers. Sie ist nicht nur leer, ihre Gitterstäbe sind in der Mitte nach außen verbogen – weit genug, dass ein Mensch oder sogar etwas noch Größeres hindurchschlüpfen kann. Du untersuchst die Gitterstäbe und musst feststellen, dass sie aus solidem Stahl gearbeitet sind, so dick, dass sie kein Mensch hätte verbiegen können. \nWie ist er dann ausgebrochen …?"
@@ -74908,6 +74984,10 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.in_too_deep.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
       "investigator_status": [
         "eliminated",
@@ -74922,6 +75002,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.in_too_deep.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Ermutigt, dieser höllischen Tortur entkommen zu sein, eilst du der Sicherheit der Fahrzeuge entgegen. Als du sie aber erreichst, kommen dir Zweifel. Als du dich Agent Harper zuwendest, kann sie deine Unsicherheit sofort in deinem Gesichtsausdruck erkennen. \nDir ist klar, dass du angeheuert wurdest, um sie zu retten, dabei aber etwas schiefgelaufen ist. Sowohl Agent Dawson als auch du wurdet gefangen genommen und er wurde diesem … Ding in den Gezeitenhöhlen geopfert. Jetzt bist du und Agent Harper in Sicherheit. Du kannst nun endlich nach Boston zurückzukehren, und dennoch … \n„Wir können nicht einfach gehen“, spricht Harper das laut aus, was du gedacht hast, und runzelt missmutig die Stirn. „Was ich damit sagen will: Sehen Sie sich das alles an. Diese Zerstörung! Diese … diese Kreaturen.“ Sie zeigt auf die Überreste der überfluteten Stadt Innsmouth. „Wir müssen herausfinden, was hier wirklich vor sich geht, oder …“, beginnt sie, hält dann aber inne. \nDu weißt, was sie meint. Wenn die Flut hier das Wasser so stark ansteigen lässt, könnte das entlang der ganzen Ostküste passieren. Arkham, Boston, keine Stadt wäre mehr sicher. Und was noch schlimmer ist: Keiner würde dieser „Lügengeschichte“ Glauben schenken, bis es zu spät ist. \nWas auch immer diese Kreaturen sind, sie planen etwas, das die gesamte Welt in Gefahr bringt. Das kannst du einfach nicht zulassen. \n„Ich nehme nicht an, dass Sie Dawsons Wagenschlüssel haben, oder?“, fragt dich Harper. Du gehst nicht davon aus, aber als du deine Sachen durchsuchst, findest du einen eleganten Silberschlüssel. Dawson muss ihn dir vor seinem verfrühten Ableben gegeben haben. Du probierst ihn an der Tür der Fahrerseite aus. Mit einem hörbaren Klicken gelingt es dir, den Schlüssel im Schloss umzudrehen. „Kaum zu glauben.“ \nErpicht darauf, endlich von hier zu verschwinden, startet Harper ihren Wagen. Als der Motor stotternd anspringt, durchzuckt ein plötzlicher Schmerz deinen Kopf. Ein heller Punkt, weißglühend wie die Sonne selbst, flammt vor deinen Augen auf. „Okay … wohin jetzt?“, fragt sie, aber du kannst ihre Worte kaum verstehen. Das blendende Leuchtfeuer wird größer und heller. Das Rumpeln des Motors verschluckt alle anderen Geräusche. Die Welt fängt an, sich zu drehen. Du gehst zu Boden und presst deine Hände an die Schläfen. Dein gesamter Schädel steht in Flammen. Entfernt kannst du hören, wie Harper nach dir ruft, aber ihre Stimme ist gedämpft, als wäre sie tief unter Wasser. Oder vielleicht bist du ja unter Wasser? \nDeine Sicht schwindet. Alles, was übrig bleibt, ist das Dröhnen des Motors und das Anbranden aufgewühlter Wellen – und dann …",
       "steps": [
@@ -74959,6 +75043,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_1.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Du hast keine Ahnung, wer diese Frau ist und woher sie dich kennt, aber sie scheint näher bekannt mit dir zu sein. Du wühlst in deinen Erinnerungen und versuchst zu ergründen, wo und wann das erste Treffen mit ihr stattgefunden haben mag, aber du hast keinen Erfolg. Du bist davon überzeugt, einer vollkommen Fremden gegenüberzustehen. Nach dem Erwachen ohne Erinnerungen in dem kalten, nassen Gefängnis fühlst du dich auch nicht in der Stimmung, Kontakte zu knüpfen. Deine Angst und dein Misstrauen müssen dir auf die Stirn geschrieben stehen, denn die Frau macht einen Schritt zurück und runzelt die Stirn. „Was ist los? Was stimmt nicht?“ \nDu antwortest mit der Gegenfrage, ob du sie kennen müsstest. „Sie können sich wirklich nicht erinnern? Nun ja, das macht die Sache nicht einfacher. An was können Sie sich erinnern? Können Sie sich überhaupt an irgendetwas erinnern?“ \nDu berichtest der Frau von den Gedankenblitzen, die du zuvor erlebt hast …"
     },
@@ -74987,6 +75075,10 @@
     },
     {
       "id": "thomas_dawson_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_1.meeting_with_thomas_dawson",
+        "name": "Meeting with Thomas Dawson"
+      },
       "type": "story",
       "text": "Du zählst eins und eins zusammen und fragst die Frau, ob sie Miss Harper ist. „Ah, Sie können sich also doch an mich erinnern?“, fragt sie mit einem neckischen Grinsen. Aber du schüttelst den Kopf und erklärst ihr, dass du dich nur daran erinnern kannst, von einem Mann namens Thomas Dawson angeheuert worden zu sein, sie zu finden. „Aber das war … Oh. Sie müssen eine Menge vergessen haben. Und was Dawson angeht: Wo ist er? Haben Sie ihn da unten gesehen?“ \nDeine Gedanken wandern zu dem verzerrten, verstümmelten Gesicht zurück, das die Erinnerungen daran ausgelöst hat. Agent Harpers Gesichtsausdruck verfinstert sich, als sie dir in die Augen schaut. „Ich verstehe … Ich wünschte, ich wäre nie in diese verlorene Stadt gekommen. Diese Rohlinge werden dafür büßen müssen.“ Du fragst sie, wen sie für den Tod von Dawson verantwortlich macht. Sie hebt die Augenbrauen und antwortet: „Stimmt, Sie können sich ja nicht daran erinnern. So weit wie ich weiß, hat man sowohl Sie als auch ihn das letzte Mal den Esoterischen Orden von Dagon betreten sehen. Ziehen Sie Ihre eigenen Schlüsse daraus.“"
     },
@@ -75034,6 +75126,10 @@
     },
     {
       "id": "no_memories_recovered_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_1.nothing_is_listed",
+        "name": "Nothing is listed"
+      },
       "type": "story",
       "text": "Du schüttelst deinen Kopf. Du kannst dich an nichts erinnern. „Das verkompliziert die Dinge“, sagt die Frau seufzend. „Nun gut. Ich erzähle Ihnen, was ich weiß. Ich bin Agentin Elina Harper. Wenn ich das richtig verstanden habe, hat mein Boss Agent Thomas Dawson Sie aufgrund Ihres tieferen Verständnisses von – sagen wir einmal – Dingen, die für den Rest von uns keinen richtigen Sinn ergeben, angeheuert.” Du willst von ihr wissen, was deine Aufgabe war. Die Frau grinst dich an. „Um ehrlich zu sein, mich zu finden. Der Orden war darüber nicht gerade glücklich. Das ist eine längere Geschichte. Lassen Sie uns erst von hier verschwinden. Dann informiere ich Sie über alles.”"
     },
@@ -75058,6 +75154,10 @@
     },
     {
       "id": "devil_fight_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_1.battle_with_a_horrifying_devil",
+        "name": "Battle with a horrifying devil"
+      },
       "type": "story",
       "text": "Du erzählst Agent Harper von deinem Kampf mit einer Art Wasserkreatur. „Das Teufelsriff “, sagt sie schaudernd. „Was auch immer in dieser Stadt vor sich geht, vom Teufelsriff scheint alles auszugehen. Hoffentlich müssen wir dorthin nicht mehr so bald zurück … und hoffentlich bleibt das <i>Ding</i> auch tot.“"
     },
@@ -75094,6 +75194,10 @@
     },
     {
       "id": "stayed_together_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_1.decision_to_stick_together",
+        "name": "Decision to stick together"
+      },
       "type": "story",
       "text": "„Dann haben Sie und Agent Dawson nach mir gesucht? Interessant.“ Sie denkt einen Moment nach. Dann sagt sie: „Also kann selbst der außerordentliche Captain Dawson von Zeit zu Zeit verunsichert werden. Irgendwie tut es auch gut zu wissen, dass es ihm derart wichtig war, mich zu finden. Dennoch …“ Ihr Blick wandert zum Horizont. „Nun gut, Dawson, ich werde dafür sorgen, dass Sie nicht umsonst gestorben sind. Ich werde die ganze Stadt niederbrennen, wenn es sein muss.“"
     },
@@ -75130,6 +75234,10 @@
     },
     {
       "id": "encounter_with_a_secret_cult_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_1.encounter_with_a_secret_cult",
+        "name": "Encounter with a secret cult"
+      },
       "type": "story",
       "text": "Du beschreibst ihr deine Erinnerung, in der du im Hauptquartier irgendeines Kultes warst. „Das hört sich so an, als hätte das im Gebäude des Esoterischen Ordens von Dagon im Norden der Stadt stattgefunden“, schlussfolgert Agent Harper. „Diese Organisation ist niederträchtig: Ich weiß es einfach, aber ich kann es nicht beweisen. Leider haben Sie ja alles vergessen, was Sie dort erlebt haben.“ Sie flucht leise in sich hinein."
     },
@@ -75147,6 +75255,10 @@
     },
     {
       "id": "outro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_1.outro",
+        "name": "Outro"
+      },
       "type": "story",
       "text": "Du zeigst in Richtung des seltsamen blutroten Himmels hinter Agent Harper und stellst die seltsame Konstellation fest, die Sonne und Mond einnehmen. „Das hat begonnen, kurz nachdem Sie und Agent Dawson in das Hauptquartier des Ordens gegangen sind“, erklärt sie dir. „Das war vor fast drei Tagen. Ich habe keine Ahnung, was das bedeutet. Ich kann mir aber nicht vorstellen, dass es etwas Gutes ist. Seit Neuestem sind in Innsmouth alle Türen verriegelt. Keine Seele ist draußen zu sehen. Sie haben Glück, dass ich herausfinden konnte, wo ich nach Ihnen suchen musste.“ \nDeine Gedanken rasen. Das Letzte, an das du dich erinnern kannst, bevor du in der feuchten Höhle erwacht bist, ist, dass du eine angenehme Sommernacht in Arkham verbracht hast. Jetzt befindest du dich in einer anderen Stadt und deine Erinnerungen sind mehr als lückenhaft. Du fragst dich laut, welcher Tag es ist. Agent Harper antwortet: „Der 24. September. Ich weiß nicht genau, wann Sie in Innsmouth eingetroffen sind oder wie viele Ihrer Erinnerungen Sie verloren haben. Können Sie sich noch an etwas anderes erinnern? An irgendetwas?“ \nWährend du überlegst, umspült das Wasser deine Füße. Innerhalb von Minuten hat die Flut das Wasser mehrere Zentimeter ansteigen lassen. Es sieht auch nicht so aus, als würde der Anstieg demnächst nachlassen. Dein Blick bleibt auf der Frau ruhen, wie sie mit müden Augen, in Mitleidenschaft geratener Kleidung und den roten Striemen an ihren Handgelenken vor dir steht – und plötzlich kannst du dich an etwas erinnern. \n„Aufwachen. Wir sind fast da.“ Die Erinnerung lauert am Abgrund deines Bewusstseins und droht, dich in die Dunkelheit zu ziehen. „Hey. Aufwachen, habe ich gesagt.“ Du greifst dir an die Stirn, als ein plötzlicher Schmerz deinen Schädel zu zertrümmern droht. „Aufwachen, verdammt noch mal!“ \nDie Dunkelheit zerrt an den Rändern deiner Vision. Und plötzlich wirst du von noch mehr zurückkehrenden Erinnerungen überflutet …"
     }
@@ -75186,6 +75298,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_pit_of_despair.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Du öffnest deine Augen mit einer Trägheit, als hättest du tagelang durchgeschlafen. Deine Sinne haben keine Eile zu dir zurückkehren zu wollen. Du blinzelst und versuchst, etwas in der pechschwarzen Dunkelheit, die dich umgibt, zu erkennen. Dumpfer, pochender Schmerz durchdringt jede Faser deines Körpers. Deine Haut ist kalt und taub, deine Kleidung durchnässt. Kaum geordnete Gedanken und wirre Erinnerungen schwirren dir durch den Kopf. Du hast nicht die leiseste Idee, wo du bist oder wie du hierher gekommen bist. \nDu versuchst dich zu konzentrieren, dein Herz rast in deiner Brust. Du liegst auf einem rauen Steinboden in einer flachen Pfütze aus eiskaltem Wasser. Mit dem Wissen, dass Panik die Situation nur verschlimmern würde, atmest du mehrere Male bewusst tief durch. Du versuchst, dich an etwas zu erinnern – an irgendetwas –, das dir dabei hilft, deine Schritte zurückzuverfolgen. Aber ohne Erfolg. Du kannst dich zwar daran erinnern, wer du bist, aber nicht an die Ereignisse der jüngsten Vergangenheit. Also setzt du dich auf und untersuchst deine Umgebung genauer. \nDer Raum scheint eine auf natürliche Weise entstandene Höhle zu sein. Seetang hängt von der Decke herab, die Steinwände und der Boden sind feucht und mit Schlick bedeckt. Ein rhythmisches Tropfen hallt durch die ansonsten stille Höhle. Diese Grotte muss vor Kurzem noch unter Wasser gelegen haben. Wegen der Gezeiten vielleicht? Du schluckst deine Angst hinunter und versuchst, nicht weiter darüber nachzudenken. Wenn jetzt Ebbe herrscht …? Dir läuft es eiskalt den Rücken herunter. Als du die Decke über dir betrachtest, erkennst du dort zu deiner Überraschung eine Metallplatte im rauen Stein. Ihre polierte Oberfläche scheint nicht so recht zum Rest der natürlichen Höhle passen zu wollen. In der Hoffnung, dass dich jemand hören kann, rufst du um Hilfe. \nDie Antwort darauf erschreckt dich bis ins Mark: ein entsetzliches Krächzen und Gurgeln, das die Tunnel durchdringt – ein Geräusch, das nicht menschlichen Ursprungs sein kann."
     },
@@ -75516,6 +75632,10 @@
     },
     {
       "id": "flashback_1_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_pit_of_despair.flashback_1",
+        "name": "Flashback 1"
+      },
       "title": "Rückblende I",
       "type": "story",
       "text": "Du stehst in einem kleinen Büro und betrachtest eine abgegriffene Fotografie, die du in einem glänzenden hölzernen Bilderrahmen auf dem Schreibtisch stehend gefunden hast. Auf dem Foto ist ein Trupp Männer in Militäruniformen zu sehen, die vor einem Bristol F.2 Jagdflugzeug posieren. Einige der Männer tragen die typische britische Uniform, aber die Jacke und die gemusterte Hose eines der Männer weist ihn als einen amerikanischen Soldaten aus. Auf seinem Ärmel prangen ein rechteckiges Emblem mit vertikalen Streifen und die zwei Silberstreifen, wie es für einen Captain üblich ist. Unter dem Foto ist in schwarzer Tinte handschriftlich vermerkt: „Britische 4. Armee, vor St. Quentin, 1918“ \nDu erschrickst, als sich die Bürotür plötzlich öffnet. Du stellst das Foto wieder auf den Tisch und wendest dich dem eintretenden Mann zu. Sofort kannst du ihn an seiner dunkelbraunen Hautfarbe, seinen ausdrucksstarken Wangenknochen und seinen breiten Schultern wiedererkennen: Thomas Dawson – der Amerikaner auf dem Bild – ist seit seinen Kriegstagen ein wenig älter geworden, was die Tränensäcke unter seinen Augen bezeugen können. „Ein Krieg endet, ein anderer beginnt“, sagt er mit ruhiger Stimme. „Nur dass der Feind diesmal etwas schwerer auszumachen ist.“ \nDu fragst den Mann, wie ein Kriegsheld in der Ermittlungsbranche gelandet ist. „Kriegsheld? Ich weiß nicht, wo Sie das aufgeschnappt haben. Ich habe nur meine Pflicht getan“, antwortet er dir mit einem leichten Schmunzeln auf den Lippen. Du schüttelst den Kopf und willst nicht weiter auf das Thema eingehen. Du bist dir aber sicher, dass die von Captain Dawson gerettete Staffel ihn auch eher als Kriegsheld ansehen würde. \n„Wie dem auch sei, Sie werden sich bestimmt fragen, warum ich Sie hier nach Boston gebeten habe“, fährt er fort und gibt dir ein Zeichen, ihm gegenüber Platz zu nehmen. Als du dich hinsetzt, gibst du zu, dich gefragt zu haben, warum es ein einfaches Telefonat nicht auch getan hätte. „Die Angelegenheit ist … heikel“, antwortet er. „Vor ein paar Tagen habe ich den Kontakt zu einer meiner Agentinnen verloren, Miss Elina Harper. Sie sollte für mich seltsamen Berichten nachgehen, die ich in den letzten Monaten aus einer kleinen Stadt namens Innsmouth erhalten hatte. Ist Ihnen der Ort ein Begriff? Er liegt an der Küste nördlich von Arkham, in der Nähe von Ipswich.“ \nTatsächlich kennst du den Ort. Die meisten Menschen haben noch nie von dieser schattenhaften, heruntergekommenen Hafenstadt gehört, und die wenigen, die es haben, haben nur üble Gerüchte gehört. Nach deinem Wissen war der Ort vor dem Krieg von 1812 ein belebter Hafen. Jetzt ist er nur noch schäbig und heruntergekommen. Die einzige Eisenbahnlinie durch Innsmouth wurde aufgegeben. Der Ort taucht auf keiner Landkarte auf und wird auch in keinem dir bekannten Reiseführer erwähnt. \n„Vielleicht hat sie etwas Merkwürdiges gefunden oder ist untergetaucht. Ich vermute aber, dass ein Verbrechen im Spiel ist. Die Mafia könnte dahinterstecken, aber eigentlich glaube ich nicht daran. Ich werde keine weiteren Agenten schicken, bis ich mir nicht sicher bin, was passiert ist. Allerdings habe ich noch ein paar Mittel in meinem Spezial-Budget für Hilfe von außen frei. Hier kommen Sie ins Spiel.“ Dir ist bewusst, dass Agent Dawson damit höflich zu umschreiben versucht, dass du „entbehrlich“ bist. „Mir ist klar, es ist nicht viel, auf dem Sie aufbauen können. Ich muss aber Agent Harpers Status kennen. Selbst schlechte Nachrichten wären zu diesem Zeitpunkt besser als keine. Wenn Sie mir den Gefallen tun würden, würde die Behörde in Ihrer Schuld stehen.“ Du willst von Dawson wissen, welche Behörde er meint. Zur Antwort erhältst du nur ein kaltes Lächeln. \nAls du wieder in die Gegenwart zurückkehrst, blickst du noch immer in das Gesicht von Agent Dawson. Diesmal allerdings wirkt sein Grinsen merkwürdig verzerrt, als er sein Gesicht durch quälende Schmerzen verzieht. Ein Gesicht von vielen, das dir aus dem schuppigen, pulsierenden Fleisch gepeinigt entgegenblickt."
@@ -75533,6 +75653,10 @@
     },
     {
       "id": "flashback_2_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_pit_of_despair.flashback_2",
+        "name": "Flashback 2"
+      },
       "title": "Rückblende II",
       "type": "story",
       "text": "Ein altes Fischerboot schwankt unter deinen Füßen von einer Seite zur anderen, als die See von den Tentakeln einer gigantischen Kreatur aufgepeitscht wird, die knapp unter der Wasseroberfläche lauert. „Jemand muss das verdammte Ding töten!“, ruft der grauhaarige Kapitän des Schiffes. Ein lautes Krachen durchdringt das ganze Schiff. Als sich ein riesiger Tentakel um das ganze Schiff schlingt und sich zusammenzuziehen beginnt, fängt der Rumpf lautstark an zu knirschen und gibt ein protestierendes Stöhnen von sich. „Es hat uns in seinen Fängen! Jetzt ist es beschäftigt! Das ist die Gelegenheit!“, schreit dir der alte Kapitän entgegen. Mit feurigem Blick hebst du deine Waffe und schlägst zu … \nAls du in die Gegenwart zurückkehrst, breitet sich eine Übelkeit in deinem Magen aus. Die Skelettüberreste der Kreatur starren dir entgegen. Was zur Hölle war dieses Ding?"
@@ -75557,6 +75681,10 @@
     },
     {
       "id": "flashback_3_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_pit_of_despair.flashback_3",
+        "name": "Flashback 3"
+      },
       "title": "Rückblende III",
       "type": "story",
       "text": "„Hey, schauen Sie sich das mal an.“ Dein Auftraggeber drückt dir eine seltsame Statuette in die Hand. Sie ist aus smaragdfarbenem Stein gefertigt und stellt eine Art Meereskreatur dar, die dich aus leeren Augen anstarrt und eine Reihe scharfer Zähne aufweist. In ihrem Inneren ruht ein herzförmiger Bernstein. „Was halten Sie davon?“ \nDu antwortest, dass du so etwas noch nie gesehen hast, aber es zu den Beschreibungen der sogenannten „Teufel“ passt, die sich ein paar Meilen entfernt vom Hafen in den Riffen verstecken sollen. „Entschuldigen Sie, aber die Sache stinkt doch zum Himmel“, brummt der Mann und verschränkt die Arme vor der Brust. „Ich bin froh, mich in dem Fall an Sie gewandt zu haben. Mit jeder Stunde sieht es weniger so aus, als ob die Mafia überhaupt ihre Finger im Spiel hat.“ Du nickst zustimmend und gibst die seltsame Statuette an den Agenten zurück. Er hat recht. Irgendetwas in der Stadt ist faul. „Wir sollten von nun an zusammenbleiben“, schlägt dein Gefährte mit ernst werdender Stimme vor."
@@ -75581,6 +75709,10 @@
     },
     {
       "id": "flashback_4_story",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_pit_of_despair.flashback_4",
+        "name": "Flashback 4"
+      },
       "title": "Rückblende IV",
       "type": "story",
       "text": "Du stehst in einem dunklen, schmutzigen Keller vor einer schrecklichen Onyx-Statue. Die Luft riecht abgestanden und nach verwesendem Fisch. Die Statue ist mit widerwärtigen, missgestalteten Schuppen bedeckt und scheint ein Abbild eines Hybriden aus Fisch und Mensch zu sein. Groteske Kiemen und Flossen vermischen sich mit menschlichen Merkmalen. Ihre großen, runden Augen starren dich an. In einiger Entfernung kannst du den Gesang einer Beschwörungszeremonie hören. „Y’ha-nthlei! Y’ha-nthlei!“, rufen die Stimmen. Als du beginnst, die seltsamen Laute unterscheiden zu können, zieht ein Platschen hinter dir deine Aufmerksamkeit auf sich. Du versteckst dich schnell hinter der Onyx-Statue und wartest geduldig ab. Einige Gestalten nähren sich der Stelle, wo du vor Augenblicken noch gestanden hast. Du hältst den Atem an. Nach einer Weile verhallt das Spritzen und Platschen ihrer Schritte langsam wieder in der Ferne. Erleichtert atmest du aus und beginnst ihnen sogleich zu folgen …"
@@ -75607,6 +75739,10 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_pit_of_despair.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
       "investigator_status": [
         "eliminated",
@@ -75620,6 +75756,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_pit_of_despair.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "In einiger Entfernung färbt sich der Himmel blutrot, und der Vollmond hängt direkt unterhalb der abgedunkelten Sonne. Du bist kurz davor, die Augen zu schließen und dich der Bewusstlosigkeit hinzugeben, als dich eine fremde Stimme aufschrecken lässt. „Oh, Sie leben ja noch!“. In der angespannten Stimme kannst du deutlich den rhythmischen indianischen Akzent heraushören, ebenso wie das unerschütterliche Selbstbewusstsein eines ausgebildeten Profis. Vor dir steht eine Frau mit langem schwarzem Haar. Ihr zerfledderter Trenchcoat hat schon bessere Tage gesehen. In ihrem schmutzverschmierten Gesicht kannst du ein paar Schrammen erkennen. „Sie wirken verwirrt. Warum sehen Sie mich so an?“, fragt dich die Fremde.",
       "steps": [
@@ -75644,6 +75784,10 @@
   "steps": [
     {
       "id": "syzygy_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_2.the_syzygy_1",
+        "name": "The Syzygy 1"
+      },
       "type": "story",
       "text": "Lichter blitzen in deinem Geist auf. Schatten verschlucken deine Gedanken, als deine Erinnerungen verschwinden. Du liegst wieder auf dem felsigen Strand an der Meeresküste. Dein Schädel pocht schmerzhaft. Agent Harper beugt sich mit sichtbarer Sorge in ihrem Blick über dich. „Hey! Hey, sind Sie endlich wach?“ \nDeine Muskeln schmerzen, als du dich aufsetzt. Die Flut scheint weiter angestiegen zu sein, während du bewusstlos warst. Kaltes Wasser umspült deine Fußknöchel und durchnässt deine Schuhe. „Was ist passiert?“, fragt sie dich. „Was haben Sie gesehen?“"
     },
@@ -75690,11 +75834,19 @@
     },
     {
       "id": "syzygy_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_2.the_syzygy_2",
+        "name": "The Syzygy 2"
+      },
       "type": "story",
       "text": "Du erzählst Harper, dass du dich wieder an deine Mission, sie zu finden, erinnern kannst, aber dass du sie auch nach einer Woche der Suche nicht hast finden können. Das Letzte, an das du dich erinnern kannst, ist, dass dir jemand ein Notizbuch unter der Tür deines Hotelzimmers hindurchgeschoben hat, in dem Informationen über eine Organisation namens „Esoterischer Orden von Dagon“ vermerkt waren. \n„Oh, das war ich. Es tut mir leid, dass ich nicht habe bleiben können, um mich mit Ihnen zu unterhalten. Ich musste mich noch um andere Angelegenheiten kümmern“, erklärt sie dir. Weiter erzählt sie, dass sie nach mehreren Tagen in Gefangenschaft endlich die Oberhand über ihren Entführer bekommen und sich befreien konnte. Dabei hatte sie sich aber verletzt. Um ihre Geschichte zu beweisen, öffnet sie ihren Trenchcoat. Darunter kommt eine Bluse zum Vorschein, die an mehreren Stellen mit Blut durchtränkt ist. Unter dem Stoff kannst du ein paar Bandagen hervorschauen sehen. „Hat knapp meine Niere verfehlt. Ich Glückspilz, nicht wahr?“ \nDu beschwerst dich, dass du deine Zeit verschwendet hast, überall nach ihr zu suchen. Aber sie antwortet mit leichtem Spott in der Stimme. „Nicht wirklich! Sie haben in dieser einen Woche mehr herausfinden können als ich in zwei. Ich wusste, dass Sie da an einer Sache dran waren. Ich wollte Ihnen ja auch helfen, aber ich wurde immer noch verfolgt. Also habe ich meine einzige heiße Spur bei Ihnen abgegeben und bin für eine Weile untergetaucht. Und tatsächlich waren Sie es, der den Rest erledigt hat.“ Leider kannst du dich an diesen „Rest“ gar nicht erinnern."
     },
     {
       "id": "syzygy_3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_2.the_syzygy_3",
+        "name": "The Syzygy 3"
+      },
       "type": "story",
       "text": "Du erzählst Harper, dass du dich wieder an deine Mission, sie zu finden, erinnern kannst, und auch daran, wie ihr ihren Entführer verhört habt. Sie grinst dich an. „Ach ja, nochmals vielen Dank! Ich habe die Situation wirklich unter Kontrolle gehabt“, scherzt sie. „Erinnern Sie sich an etwas, was danach passiert ist?“ \nDu schüttelst den Kopf. Das Letzte, an das du dich erinnern kannst, ist die Erwähnung einer Organisation namens „Esoterischer Orden von Dagon“. \nHarper flucht leise in sich hinein. „Das ist bedauerlich. Aber Amnesie hin oder her, wenigstens weiß ich jetzt, dass ich Ihnen trauen kann. Auch wenn Sie sich nicht daran erinnern können, Sie haben sich in Ihrer Vergangenheit bereits für mich eingesetzt.“"
     },
@@ -75711,6 +75863,10 @@
     },
     {
       "id": "syzygy_4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.interlude_2.the_syzygy_4",
+        "name": "The Syzygy 4"
+      },
       "type": "story",
       "text": "„Keine Sorge“, sagt sie, „ich werde Sie auf den neusten Stand bringen. Es gibt noch so viel, an das Sie sich nicht erinnern können.“ Plötzlich hallt ein gewaltiger Donnerschlag vom östlichen Horizont herüber, gefolgt von einer hohen Welle, die sich am Ufer überschlägt. Der Himmel hat sich blutrot verfärbt und schwarze Sturmwolken wirbeln vor Sonne und Mond umher. Jetzt stehen die Himmelskörper in perfekter Linie zueinander. „Das verheißt nichts Gutes“, meint Harper besorgt. „Also gut, Planänderung. Wir sollten nach Innsmouth zurückkehren. Ich erkläre Ihnen alles auf dem Weg.“"
     },
@@ -75750,6 +75906,10 @@
   "steps": [
     {
       "id": "intro_1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "<center><game>MITTWOCH, 17. AUGUST 1927</game></center>\n<center><game>FÜNF WOCHEN ZUVOR</game></center>\n„Aufwachen, verdammt noch mal!“ Agent Dawson rüttelt dich mit seiner rechten Hand wach. Du befindest dich auf einem Sitz eines tadellos gepflegten hochmodernen Automobils, von dessen glänzender Motorhaube dir das Mondlicht in die Augen reflektiert. An dir zieht die in leichten Nebel gehüllte, ländliche Gegend von Massachusetts vorbei. „Wir sind fast da“, informiert dich Dawson. Du hättest zwar den Zug bevorzugt, aber es ist leider keine Eisenbahnlinie nach Innsmouth mehr in Betrieb. Dafür gibt es einen Bus, der von Boston nach Newburyport fährt, von wo ein anderer nach Innsmouth pendelt … aber Dawson hatte darauf bestanden, dich persönlich zu fahren. Vielleicht, um dir einen Ausweg zu bieten, falls die Sache schief gehen sollte, oder einfach nur, um mit seinem teuren Auto anzugeben. Wahrscheinlich trifft beides zu. \nAls ihr in Innsmouth ankommt, begrüßt euch der abgestandene Gestank tagealten Fischs und baufälliger, modriger Gebäude. Viele der Häuser auf der westlichen Seite der Stadt scheinen leer zu stehen, obwohl du gelegentlich Gestalten in ihren Fenstern ausmachen kannst. Du überlegst dir, dass Agent Dawsons protziges Auto an einem solchen schmutzigen und schäbigen Ort für Aufsehen sorgen müsste. Du witzelst, dass es wohl besser gewesen wäre, mit einer Klapperkiste herzukommen, worauf er nur grinsend antwortet: „Das ist nicht mein Stil.“ \nSchließlich kommt ihr an einem Bahnhof vorbei, der schon vor Jahren stillgelegt worden sein muss. Auf den Gleisen stehen noch einige verlassene Waggons und das abbruchreife Bahnhofsgebäude ist zugenagelt und verrammelt. Dawson setzt plötzlich eine ernste Miene auf, als er auf ein anderes Fahrzeug zeigt, das auf dem Parkplatz steht. „Das ist Agent Harpers Wagen. Wir sollten hier parken und zu Fuß weitergehen. So können wir uns leichter durch die Stadt bewegen“, begründet er dir. \nBevor ihr weitergeht, siehst du dir Agent Harpers Fahrzeug ein wenig näher an. Leider kannst du aber keine Hinweise darauf finden, wo sie sich aufhalten könnte. Von hier begebt ihr euch nach Osten am Manuxet entlang. Ihr kommt an zahlreichen verlassenen Lagerhäusern, matschigen Gassen und distanzierten Dorfbewohnern vorbei. „Irgendwo an diesem verlassenen Ort muss Harper doch sein. Die Einwohner sehen nicht allzu freundlich aus. Ich wäre nicht überrascht, wenn sie zu viel Aufmerksamkeit bei den falschen Leuten auf sich gezogen hat …“, beginnt Dawson laut nachzudenken. Du fragst ihn, warum er sich sicher ist, dass sich seine Agentin nicht einfach nur bedeckt hält. „Nun, dafür haben wir einen Codesatz. Wenn sie mir einen Brief mit den Worten ‚Ich muss ein paar Erledigungen machen‘ geschickt hätte, dann wüsste ich, dass sie für einige Zeit nicht zu erreichen wäre. Ohne dieses Signal muss ich das Schlimmste annehmen.“ Im Nordosten ragen ein paar Fabrikgebäude über die absackenden Mansardendächer, Kuppeln und Witwenstege der restlichen Stadt. Keiner der Einheimischen macht Halt, um euch auf eurem Weg zu grüßen. Wenn man das abstoßende Äußere bedenkt, das viele von ihnen zur Schau stellen, kann man froh sein, dass sie der sonst von Kleinstädtern gewohnten Höflichkeit so abgeneigt sind. \nEndlich erreicht ihr den Marktplatz, der etwas südlich des Manuxets liegt. Die baufälligen Ziegelhäuser, die das sogenannte Herz der Stadt umgeben, erwecken in dir keine sonderliche Zuversicht, was Agent Harpers Sicherheit betrifft. Ein alter Bus steht wartend in der Nähe. Der schmierig wirkende Fahrer lehnt sich gegen die Tür und beäugt euch misstrauisch. Da ihr keine direkte Spur habt, beschließt ihr, euch aufzuteilen, um für die Suche mehr Fläche abzudecken. „Befragen Sie die Einheimischen und finden Sie mehr über diesen Ort heraus.“, befiehlt Dawson dir. „Bringen Sie in Erfahrung, wer in diesem Drecksloch das Sagen hat. Einer von ihnen muss wissen, wo oder mit wem Harper das letzte Mal gesehen wurde. Treffen Sie mich hier wieder um 19:00 Uhr. Verstanden?“ Du nickst übereinstimmend. Dann trennen sich eure Wege. \nDie erste Person, die du befragst, ist der Busfahrer, der sich in der Stadt eigentlich gut auskennen müsste. Zuerst springt dir seine unebene gräuliche Haut ins Auge, dann die ungewöhnlich tiefen dunklen Falten am Hals, die ihn vorzeitig gealtert erscheinen lassen. Auch seine hervorquellenden Augen wirken beunruhigend. Du bist dir fast sicher, dass du ihn nicht ein Mal hast blinzeln sehen, seitdem du dich ihm genähert hast. Du willst ihm gerade zur Begrüßung deine Hand geben, als du dich eines Besseren besinnst. Er könnte ja eine Krankheit haben, von der du noch nichts gehört hast. Er stellt sich dir als Joe Sargent vor und gibt dir einen nützlichen – wenn auch nur kurzen – Überblick über die Gebäude in näherer Umgebung."
     },
@@ -75783,6 +75943,10 @@
     },
     {
       "id": "intro_2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.the_accusation",
+        "name": "The Accusation"
+      },
       "type": "story",
       "text": "Zum Schluss des Gesprächs möchte Mr. Sargent von dir noch erfahren, was du in Innsmouth zu tun hast. Du weichst der Frage mit einer Gegenfrage aus, und willst von ihm wissen, ob er jemanden in der Stadt gesehen hat, der auf die Beschreibung von Agent Harper passt. Er hält kurz inne, schüttelt dann aber den Kopf. „Hab’ ich nie geseh’n“, murmelt er und weicht deinem Blick aus. \nDen Rest des Tages beschäftigst du dich damit, die Umgebung der Stadt kennenzulernen. Du scheiterst aber daran, die Einheimischen in ein Gespräch zu verwickeln. Je länger du in dieser seltsamen und schmutzigen Stadt verweilst, desto mehr wünschst du dir, Agent Dawsons Angebot niemals angenommen zu haben. Etwas liegt hier in der Luft, etwas Fauliges, Übelriechendes, Stinkendes, das dich bis ins Innerste verstört. \nSpäter am Abend triffst du dich wie abgesprochen mit Agent Dawson auf dem jetzt menschenleeren Marktplatz und teilst ihm deine Erkenntnisse mit. „Sehen Sie sich das mal an“, sagt er und reicht dir einen zerknitterten, mit Tinte verschmierten Brief, der an ihn adressiert ist. „Wie sich herausstellt, hatte Harper ein Zimmer in diesem abscheulichen, alten Hotel. Besser gesagt, hat sie es immer noch, aber sie ist dort schon seit ein paar Tagen nicht mehr aufgetaucht. Ich bin dort eingebrochen und habe das unter ihren Sachen gefunden.“ \nDem Inhalt des Briefes zufolge glaubte Agent Harper zu wissen, dass ihr jemand hier aus der Stadt nachstellte. „Ich werde verfolgt“, steht in der Botschaft geschrieben. „Ich weiß nicht, wie sie es wissen können, aber sie wissen es. Es scheint, dass die ganze Stadt in die Sache verwickelt ist. Ich habe hier keine Kontakte, denen ich vertrauen kann. Es braucht mehr als einen Agenten, um der Sache auf den Grund gehen zu können, fürchte ich.“ \nHier hört der Brief auf. „Nun, jetzt hat sie mehr als einen Agenten“, bemerkt Dawson schmerzlich, als du mit dem Lesen aufgehört hast. „Es gibt nur einen Grund, warum sie den Brief nicht abgeschickt hat. Harper ist in Gefahr. Und jemand in dieser verdammten Stadt muss wissen, wo sie sich aufhält.“ Ihr versucht zusammen einen Plan auszuarbeiten, wie ihr Agent Harper finden könnt: Zuerst müsst ihr ihren letzten Aufenthaltsort ermitteln. Dann müsst ihr herausfinden, wer gewusst hat, dass sie in der Stadt war. Und zuletzt müsst ihr der Person „einen Besuch abstatten“."
     },
@@ -77554,6 +77718,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler haben aufgegeben oder wurden besiegt):",
       "investigator_status": [
         "resigned",
@@ -77568,6 +77736,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.resolution_1",
+        "name": "Resolution 1"
+      },
       "title": "Auflösung 1",
       "text": "Du räumst die Unordnung auf, welche die Einbrecher in deinem Hotelzimmer hinterlassen haben. Plötzlich hörst du ein Rascheln vor deiner Tür. Das Schlimmste befürchtend drückst du dich eng an die Wand und versuchst möglichst keinen Laut von dir zu geben. Das Zimmer hat als weiteren Ausgang nur noch ein schmales Fenster mit schmutzigen Scheiben, das aber wohl zu eng ist, um sich durchzuzwängen. Dein Herz schlägt dir bis zum Hals und du wartest auf das, was als Nächstes kommt – auf ein Klopfen an der Tür, auf einen weiteren Einbruch, auf irgendetwas. Was du nicht erwartest hast, ist ein kleines in Leder gebundenes Notizbuch, das unter der Türspalte hindurchgeschoben wird. Aber genau das geschieht. \nEinen Moment später atmest du erleichtert auf und gehst auf das Notizbuch zu, um es dir anzusehen. Es handelt sich um einen alten handgeschriebenen Bericht über die Geschichte dieser seltsamen Stadt Innsmouth, der bis weit ins frühe 18. Jahrhundert zurückreicht. Ein Autor ist nicht auszumachen. Die Aufzeichnung scheint sich besonders auf die Gründung einer seltsamen Organisation namens Esoterischer Orden von Dagon durch einen gewissen Obed Marsh zu konzentrieren. Du kannst dich nicht daran erinnern, eine ähnliche Abhandlung im örtlichen Buchladen gesehen zu haben. Auch glaubst du nicht, dass es in dieser Stadt so etwas wie eine Bibliothek gibt. Wo wurde das Notizbuch gefunden? Und wer hat es dir wohl gebracht?\nPlötzlich hat dich die Neugier gepackt. Du öffnest die Tür deines Hotelzimmers, aber im staubigen, düsteren Flur ist niemand zu sehen. Die Identität deines Wohltäters bleibt im Verborgenen. Du kannst eine solche Gelegenheit aber nicht ungenutzt an dir vorbeiziehen lassen. Die ganze Nacht studierst du den Bericht, machst dir am Rand Notizen und versuchst, Verbindungen zwischen der Vergangenheit von Innsmouth und den Ereignissen der letzten Woche zu ziehen. Dabei wird eine Sache immer klarer: Was dieser Esoterische Orden von Dagon auch ist, seine Mitglieder müssen hinter der Entführung von Agent Harper stecken. Und wie Agent Dawson schon vermutet hat, scheinen ihre Motive nichts mit der Umgehung der Prohibition zu tun zu haben …",
       "steps": [
@@ -77577,6 +77749,10 @@
     },
     {
       "id": "R2",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.resolution_2",
+        "name": "Resolution 2"
+      },
       "title": "Auflösung 2",
       "text": "„B-b-bitte, Miss, Sie müssen mir g-g-glauben!“, stammelt Brian. Agent Harper steht über dem siebzehnjährigen Jungen und tippt bedrohlich auf das Holster, in dem ihre Schusswaffe steckt. „Ich hatte keine Wahl, das hab’ ich Ihnen doch schon gesagt! Es war der Orden! Sie haben mich dazu g-g-gezwungen!“ \nHarper rollt mit den Augen und wendet sich an dich. „Ich kann nicht glauben, dass ich von diesem Trottel entführt worden bin. Sicherlich ein Tiefpunkt meiner Karriere.“ Du versuchst, ihr zu verstehen zu geben, dass es genau seine unbeholfene Art war, wodurch der Junge sie auf dem falschen Fuß erwischen konnte. „Ich glaube, Sie haben recht. Egal, was geschehen ist, ist geschehen. Was halten Sie von dem Ganzen?“, will sie von dir wissen und verschränkt die Arme vor der Brust. „Der Junge hat geglaubt, dass es besser wäre, eine Bundesagentin zu überfallen, als mit diesem ‚Orden‘ aneinanderzugeraten. Glauben Sie, dass er die Wahrheit sagt?“ \nDu hast Mr. Burnhams Fähigkeiten vielleicht unterschätzt, aber er scheint mehr Angst vor dem Orden als vor euch zu haben. Seufzend nickst du. \n„Also gut, Jüngelchen“, wendet sich Agent Harper wieder an den Jungen und zieht ihn auf die Füße, „Zeit zu reden. Erzähl uns alles.“",
       "steps": [
@@ -77586,6 +77762,10 @@
     },
     {
       "id": "R3",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.resolution_3",
+        "name": "Resolution 3"
+      },
       "title": "Auflösung 3",
       "text": "Othera versucht wie wahnsinnig, sich von ihren Fesseln zu befreien. „Lassen Sie mich los! Sie müssen mich gehen lassen!“, schreit sie. Agent Harper grinst und genießt die Wende der Ereignisse sichtlich. \n„Das fühlt sich nicht so gut an, nicht wahr?“, stichelt sie. \n„Sie verstehen nicht“, entgegnet ihr Othera. „Kommen Sie her, sehen Sie, hier!“ Sie blickt in Richtung der nahen Tür, die du noch nicht untersucht hast. Dahinter befindet sich ein Lager mit Unmengen an Ölgemälden, alle mit dem gleichen Motiv: ein sturmumtoster Mahlstrom in der Mitte eines Ozeans, über dem die Sonne und der Mond in perfekter Linie an einem rot gefärbten Himmel hängen. „Was zur Hölle …?“, entfährt es Agent Harper, als sie sich die vielen Reproduktionen ansieht. \nOthera beißt sich auf die Lippe. Eine einzelne Träne rinnt ihr die Wange hinab. „Es ist der Orden“, flüstert sie. „Der Orden hat uns alle in der Hand.“",
       "steps": [
@@ -77595,6 +77775,10 @@
     },
     {
       "id": "R4",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.resolution_4",
+        "name": "Resolution 4"
+      },
       "title": "Auflösung 4",
       "text": "Trotz ihrer Lage wehrt sich Joyce kaum noch, nachdem du sie gefesselt hast. Sie scheint aufgegeben zu haben und sich ihrem Schicksal zu fügen. Ihr Blick weicht dir aus, als du sie befragst. „Glauben Sie mir, wenn ich eine andere Möglichkeit gehabt hätte, Sie von der Fährte abzubringen, ich hätte sie genutzt“, sagt sie zu Agent Harper. „Aber Sie sind zu nahe gekommen. So tat ich, was ich tun musste.“ \n„Ich verstehe nicht. Zu nahe an was genau, Ms. Little?“, hakt Harper nach. \n„Im Herzen dieser Stadt gibt es ein Geheimnis. Ein Geheimnis, das uns Wohlstand bringt. Ein Geheimnis, das uns Macht bringt. Ein Geheimnis, das uns …“, erklärt sie, macht dann aber eine Pause, um die richtigen Worte zu finden, „… näher an unser Schicksal bringt.“ \n„Und was für ein Geheimnis ist das genau?“, bohrt Harper nach. \nJoyce grinst und schüttelt den Kopf. „Wie kommen Sie darauf, dass ich das jemals Außenstehenden anvertrauen werde?“ \n„Weil Sie eine Bundesagentin angegriffen haben. Wenn Sie mir jetzt nicht erzählen, was ich wissen will, wird Ihr ‚Schicksal‘ das Innere einer einsamen Gefängniszelle sein.“ \nDu siehst, wie Ms. Littles Selbstvertrauen bröckelt. Dann schluckt sie ihren Stolz hinunter. Eine Schweißperle rinnt ihr die Stirn hinab. „Es hat alles mit dem Orden angefangen“, beginnt sie leise zu berichten.",
       "steps": [
@@ -77604,6 +77788,10 @@
     },
     {
       "id": "R5",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.resolution_5",
+        "name": "Resolution 5"
+      },
       "title": "Auflösung 5",
       "text": "Barnabas spuckt dir ins Gesicht, als du ihn zu befragen versuchst. „Von mir hören Sie kein Wort, Eindringling“, bellt er und sieht dich hasserfüllt mit seinen hervorquellenden, nicht blinzelnden Augen an. „Sie gehören nicht hier her. Ihre Art wird noch vor dem Ende der Woche tot sein.“ \nAgent Harper runzelt die Stirn, als sie die seltsamen Worte des Mannes hört. „Was meinen Sie damit, Marsh? Mit Ihre Art? Meinen Sie damit Auswärtige?“ \nBarnabas setzt einen finsteren Blick auf, verzieht seine fleischigen Lippen und offenbart dahinter eine Reihe spitzer unmenschlicher Zähne. „Eindringlinge. Störenfriede. Sie sind ein Schandfleck in unserer schönen Stadt. Aber schon bald wird die Stadt von Ihnen reingewaschen sein.“ \nDie Heftigkeit der Bedrohung des alten Mannes und sein siedender Hass machen dich sprachlos. Harper dagegen kichert leise. „Sie nennen diesen Ort ‚schön‘?“ Du ignorierst Harpers spöttischen Tonfall und warnst Barnabas, dass er eine lange Zeit hinter Gittern verbringen wird, sollte er nicht endlich zu reden anfangen. \n„Nicht ich“, bemerkt er. „Sie sind es, die eingesperrt werden oder denen noch Schlimmeres zustoßen wird. Wenn der Orden mit Ihnen fertig ist, werden Sie nichts weiter als Fischfutter sein.“ \nHarper wirft dir einen wissenden Blick zu und fragt weiter nach: „Welchen Orden meinen Sie genau?“",
       "steps": [
@@ -77613,6 +77801,10 @@
     },
     {
       "id": "R6",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.resolution_6",
+        "name": "Resolution 6"
+      },
       "title": "Auflösung 6",
       "text": "„He, he, he … jetz’ seh’n Se, wie verdorb’n die Stadt is’, nich?“, brüllt Zadok mit einem wilden Blick in seinen weit aufgerissenen Augen. Er hält sich krampfhaft an deinem Arm fest und scheint sich nicht um deine Versuche, ihn fesseln zu wollen, zu scheren. „Wir sind jetz’ alle in ihr’n Fäng’n, jawohl! He, he, he!“ \n„Über was lacht dieser Trunkenbold eigentlich?“, spöttelt Agent Harper. „Hey, Zadok. Schluss jetzt mit dem Unsinn. Sagen Sie uns, was Sie mit der Sache zu tun haben.“ \nZadok wiegt sich vor und zurück, während er lauter und mit mehr Nachdruck in der Stimme antwortet: „Was ich? Was ich?“, sprudelt es aus ihm heraus, gelegentlich von wahnsinnigem Lachen unterbrochen. „Se glaube’n, ich wär’ schuld. Aber die Fischteufel sin’s, überall um uns rum. Hab’n Se se nich’ geseh’n?“ Er grinst. „Hab’n Se die Monster nich’ geseh’n, überall kriech’n, plärr’n, bell’n un hops’n se in den Straß’n rum. Hab’n Se se nich’ in der Nacht aus’ m Ord’ n von Dagon heul’n hör’n? Nich’?“ Seine Stimme wird zu einem Kreischen, dann wird er von einem erneuten Lachanfall geschüttelt. \n„Nein, habe ich nicht“, antwortet Harper mit ernstem Blick. „Warum erzählen Sie uns nicht einfach alles darüber?“",
       "steps": [
@@ -77622,6 +77814,10 @@
     },
     {
       "id": "R7",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.the_vanishing_of_elina_harper.resolution_7",
+        "name": "Resolution 7"
+      },
       "title": "Auflösung 7",
       "text": "Robert weigert sich, auch nur ein Wort zu sagen, bis er nicht eine Zigarre bekommt. Widerwillig kommst du seiner Forderung nach und hoffst, dass deine Großzügigkeit auf ihn abfärbt. „Ich habe gerade Untersuchungen im Hafen angestellt, als er und seine Kumpanen mich erwischt haben“, berichtet dir Agent Harper bitter. Du fragst sie, wer diese „Kumpanen“ sind, aber sie zuckt nur mit den Schultern. „Ich bin mir nicht sicher. Hafenarbeiter und Seeleute, könnte ich mir vorstellen. Wer auch immer unseren Mr. Friendly angeheuert hat, muss viel Einfluss auf die Einheimischen haben.“ \nNachdem du Robert die geforderte Zigarre überreicht hast, bist du überrascht, dass er ein wenig entgegenkommender wird, auch wenn sein Auftreten noch weit von „freundlich“ entfernt ist. „Spielt alles keine Rolle mehr“, murmelt er und bläst eine Wolke widerlichen Zigarrenrauchs in die Luft. „Nehmen Sie es mir nicht übel, Miss, aber Sie alle sind schon so gut wie tot.“ \n„Ich nehme es Ihnen aber übel“, antwortet sie ihm bissig. „Wären Sie so freundlich, uns zu erklären, was Sie damit meinen?“ \n„Der Orden“, gibt er ruhig und mit unbeirrter Entschlossenheit zurück. „Der Orden weiß alles, was in der Stadt passiert. Wahrscheinlich sucht er schon nach mir. Sind Sie sicher, dass Sie noch da sein wollen, wenn er mich hier findet?“ Er grinst sie boshaft an. \nHarper bleibt standhaft. „Wenn ich so darüber nachdenke, würde ich sagen, ja“, entgegnet sie ihm und lässt ihre Fingerknöchel knacken. „Jetzt fangen Sie endlich zu reden an!“",
       "steps": [
