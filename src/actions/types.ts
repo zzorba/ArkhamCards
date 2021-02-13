@@ -414,14 +414,14 @@ export interface CustomCampaignLog {
 }
 
 export interface InvestigatorNotes {
-  sections: InvestigatorCampaignNoteSection[];
-  counts: InvestigatorCampaignNoteCount[];
+  sections?: InvestigatorCampaignNoteSection[];
+  counts?: InvestigatorCampaignNoteCount[];
 }
 
 export interface CampaignNotes {
-  sections: CampaignNoteSection[];
-  counts: CampaignNoteCount[];
-  investigatorNotes: InvestigatorNotes;
+  sections?: CampaignNoteSection[];
+  counts?: CampaignNoteCount[];
+  investigatorNotes?: InvestigatorNotes;
 }
 
 export interface LocalCampaignId {
@@ -448,12 +448,14 @@ interface BaseCampaign {
   nonDeckInvestigators?: string[];
   guided?: boolean;
   guideVersion?: number;
-  investigatorData: InvestigatorData;
   adjustedInvestigatorData?: InvestigatorData;
-  chaosBag: ChaosBag;
-  weaknessSet: WeaknessSet;
-  campaignNotes: CampaignNotes;
-  scenarioResults: ScenarioResult[];
+
+  // All 'objects' might be optional
+  investigatorData?: InvestigatorData;
+  chaosBag?: ChaosBag;
+  weaknessSet?: WeaknessSet;
+  campaignNotes?: CampaignNotes;
+  scenarioResults?: ScenarioResult[];
   // Used for Dream-Eaters and other nonsense.
   linkUuid?: {
     campaignIdA: string;
@@ -461,6 +463,7 @@ interface BaseCampaign {
   };
   linkedCampaignUuid?: string;
 }
+
 export interface Campaign extends BaseCampaign {
   uuid: string;
 }
@@ -470,6 +473,26 @@ export function getCampaignId(campaign: Campaign): CampaignId {
     campaignId: campaign.uuid,
     serverId: campaign.serverId,
   };
+}
+
+export function getLastUpdated(campaign: { lastUpdated?: Date | string | number }): number {
+  if (!campaign.lastUpdated) {
+    return 0;
+  }
+  if (typeof campaign.lastUpdated === 'string') {
+    return -(new Date(Date.parse(campaign.lastUpdated)).getTime());
+  }
+  if (typeof campaign.lastUpdated === 'number') {
+    return -(new Date(campaign.lastUpdated).getTime());
+  }
+  return -(campaign.lastUpdated.getTime());
+}
+
+export function getCampaignLastUpdated(campaign: Campaign, guide?: { lastUpdated?: Date | string | number }) {
+  if (campaign.guided && guide) {
+    return Math.min(getLastUpdated(campaign), getLastUpdated(guide));
+  }
+  return getLastUpdated(campaign);
 }
 
 export interface LegacyCampaign extends BaseCampaign {
@@ -1051,6 +1074,11 @@ export function guideInputToId(input: GuideInput) {
   return `${input.scenario || ''}***${input.step || ''}***${input.type}`.replace(/[.$[\]#\\/]/g, '_');
 }
 
+
+export function guideAchievementToId(input: GuideAchievement) {
+  return `${input.id}***${input.type}`.replace(/[.$[\]#\\/]/g, '_');
+}
+
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
 export interface GuideResetScenarioAction {
   type: typeof GUIDE_RESET_SCENARIO;
@@ -1110,7 +1138,7 @@ export interface GuideCountAchievement {
   type: 'count';
   value: number;
 }
-type GuideAchievement = GuideBinaryAchievement | GuideCountAchievement;
+export type GuideAchievement = GuideBinaryAchievement | GuideCountAchievement;
 
 interface BaseCampaignGuideState {
   inputs: GuideInput[];

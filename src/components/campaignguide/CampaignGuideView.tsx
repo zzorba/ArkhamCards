@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import { updateCampaign } from '@components/campaign/actions';
-import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
+import withCampaignGuideContext, { CampaignGuideInputProps, InjectedCampaignGuideContextProps } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import CampaignGuideContext from './CampaignGuideContext';
@@ -20,7 +20,7 @@ import space from '@styles/space';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
-type Props = CampaignGuideProps & NavigationProps & { setCampaignServerId: (serverId: string) => void };
+type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps;
 
 function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
@@ -57,20 +57,14 @@ function CampaignGuideView(props: Props) {
   const { campaignGuide, campaignState, campaignName } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
-  const headerButtons = useMemo(() => {
-    return (
-      <>
-        <UploadCampaignButton
-          campaignId={campaignId}
-          setCampaignServerId={setCampaignServerId}
-        />
-      </>
-    );
-  }, [campaignId, setCampaignServerId]);
-
   const footerButtons = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
+        <UploadCampaignButton
+          campaignId={campaignId}
+          setCampaignServerId={setCampaignServerId}
+          showAlert={showAlert}
+        />
         <DeleteCampaignButton
           componentId={componentId}
           campaignId={campaignId}
@@ -79,7 +73,7 @@ function CampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [componentId, campaignName, campaignId, showAlert]);
+  }, [componentId, campaignName, campaignId, setCampaignServerId, showAlert]);
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab
@@ -88,7 +82,6 @@ function CampaignGuideView(props: Props) {
         showAlert={showAlert}
         showCountDialog={showCountDialog}
         showTraumaDialog={showTraumaDialog}
-        headerButtons={headerButtons}
         footerButtons={footerButtons}
       />
       { alertDialog }

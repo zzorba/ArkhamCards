@@ -372,7 +372,7 @@ export default function(
       // Can't update a campaign that doesn't exist.
       return state;
     }
-    const investigatorData = existingCampaign.investigatorData[action.investigator] || {};
+    const investigatorData = existingCampaign.investigatorData?.[action.investigator] || {};
     const campaign: Campaign = {
       ...existingCampaign,
       investigatorData: {

@@ -25,7 +25,8 @@ import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
-import { useCampaign, useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;
@@ -111,7 +112,7 @@ function MyDecksSelectorDialog(props: Props) {
         keys(campaign.investigatorData || {}),
         code => {
           const card = investigators && investigators[code];
-          return !!card && card.eliminated(campaign.investigatorData[code]);
+          return !!card && card.eliminated(campaign.investigatorData?.[code]);
         });
     return uniq([
       ...(hideEliminatedInvestigators ? eliminatedInvestigators : []),

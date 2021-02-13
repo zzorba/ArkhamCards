@@ -29,7 +29,7 @@ export default function InvestigatorCountsSection({
     updateInvestigatorNotes(Object.assign({}, investigatorNotes, { counts }));
   }, [investigator, updateInvestigatorNotes, investigatorNotes]);
 
-  if (investigatorNotes.counts.length === 0) {
+  if (investigatorNotes?.counts?.length === 0) {
     return null;
   }
   return (
@@ -44,7 +44,7 @@ export default function InvestigatorCountsSection({
             countChanged={countChanged}
             showCountDialog={showCountDialog}
             first={first && idx === 0}
-            last={idx === investigatorNotes.counts.length - 1}
+            last={idx === (investigatorNotes?.counts?.length || 0) - 1}
           />
         );
       }) }

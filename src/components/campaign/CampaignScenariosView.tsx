@@ -6,7 +6,8 @@ import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import { useCampaign, useCampaignScenarios } from '@components/core/hooks';
+import { useCampaignScenarios } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
 import { completedScenario } from './constants';
 import StyleContext from '@styles/StyleContext';
 import { showAddScenarioResult } from './nav';
@@ -70,7 +71,7 @@ export default function CampaignScenariosView({ campaignId, componentId }: Campa
   return (
     <View style={[styles.flex, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle}>
-        { !(campaign.scenarioResults.length === 0 && cycleScenarios.length === 0) && (
+        { !(campaign.scenarioResults?.length === 0 && cycleScenarios.length === 0) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             { map(campaign.scenarioResults, (scenario, idx) => {
               return (

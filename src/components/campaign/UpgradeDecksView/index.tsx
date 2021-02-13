@@ -22,7 +22,8 @@ import UpgradeDecksList from './UpgradeDecksList';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign, useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface UpgradeDecksProps {
@@ -51,7 +52,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
 
   const updateInvestigatorXp = useCallback((investigator: Card, xp: number) => {
     if (campaign) {
-      const investigatorData = campaign.investigatorData[investigator.code] || {};
+      const investigatorData = campaign.investigatorData?.[investigator.code] || {};
       const oldXp = investigatorData.availableXp || 0;
       dispatch(updateCampaign(user, getCampaignId(campaign), {
         investigatorData: {

@@ -141,7 +141,7 @@ export default function DecksSection({
   }, [delayedUpdateCampaignNotes, campaign.campaignNotes]);
 
   const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: Deck) => {
-    const traumaAndCardData = campaign.investigatorData[investigator.code] || EMPTY_TRAUMA_DATA;
+    const traumaAndCardData = campaign.investigatorData?.[investigator.code] || EMPTY_TRAUMA_DATA;
     return (
       <InvestigatorCampaignRow
         key={investigator.code}
@@ -158,7 +158,7 @@ export default function DecksSection({
         chooseDeckForInvestigator={showChooseDeckForInvestigator}
         deck={deck}
         removeInvestigator={removeDeckPrompt}
-        miniButtons={campaign.campaignNotes.investigatorNotes.counts.length ?
+        miniButtons={campaign.campaignNotes?.investigatorNotes?.counts?.length ?
           <InvestigatorCountsSection
             investigator={investigator}
             updateInvestigatorNotes={updateInvestigatorNotes}
@@ -168,7 +168,7 @@ export default function DecksSection({
       >
         <InvestigatorSectionRow
           investigator={investigator}
-          investigatorNotes={campaign.campaignNotes.investigatorNotes}
+          investigatorNotes={campaign.campaignNotes?.investigatorNotes}
           updateInvestigatorNotes={updateInvestigatorNotes}
           showDialog={showTextEditDialog}
           showCountDialog={showCountDialog}
@@ -177,14 +177,14 @@ export default function DecksSection({
         />
       </InvestigatorCampaignRow>
     );
-  }, [componentId, campaign.campaignNotes.investigatorNotes, campaignId, campaign.investigatorData, cards,
+  }, [componentId, campaign.campaignNotes?.investigatorNotes, campaignId, campaign.investigatorData, cards,
     showTextEditDialog, updateInvestigatorNotes, showCountDialog,
     showTraumaDialog, showXpDialog, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator]);
 
   const latestDecks: Deck[] = useMemo(() => flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || []), [latestDeckIds, decks]);
   const [killedInvestigators, aliveInvestigators] = useMemo(() => {
     return partition(allInvestigators, investigator => {
-      return investigator.eliminated(investigatorData[investigator.code]);
+      return investigator.eliminated(investigatorData?.[investigator.code]);
     });
   }, [allInvestigators, investigatorData]);
   return (

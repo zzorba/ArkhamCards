@@ -1,5 +1,4 @@
-import { forEach, values, map } from 'lodash';
-import { Action } from 'redux';
+import { forEach, map, keyBy, mapValues } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -24,25 +23,15 @@ import {
   DeckId,
   Campaign,
   UploadedCampaignId,
+  GuideAchievement,
+  guideAchievementToId,
 } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
 import fbdb from '@data/firebase/fbdb';
-
-export function refreshCampaigns(
-  user: FirebaseAuthTypes.User
-): ThunkAction<Promise<boolean>, AppState, unknown, Action<string>> {
-  return async(dispatch) => {
-    const campaignIds: UploadedCampaignId[] = values((await fbdb.myCampaigns(user).once('value')).toJSON() || {});
-    const removedCampaignIds: UploadedCampaignId[] = values((await fbdb.myRemovedCampaigns(user).once('value')).toJSON() || {});
-    const campaigns = await Promise.all(map(campaignIds, campaignId => {
-      return fbdb.campaign(campaignId).once('value');
-    }));
-    return true;
-  };
-}
+import { UploadedCampaignGuideState } from '@data/firebase/types';
 
 function uploadCampaignHelper(
   campaign: Campaign,
@@ -57,14 +46,13 @@ function uploadCampaignHelper(
       const state = getState();
       const guide = makeCampaignGuideStateSelector()(state, campaign.uuid);
       const guideRef = fbdb.campaignGuide(campaignId);
-      await Promise.all([
-        ...map(guide.inputs, input => {
-          return guideRef.child('inputs').child(guideInputToId(input)).set(input);
-        }),
-        ...map(guide.undo, undo => {
-          guideRef.child('undo').child(undo).set(true);
-        }),
-      ]);
+      const uploadGuide: UploadedCampaignGuideState = {
+        undo: mapValues(keyBy(guide.undo), () => true),
+        inputs: keyBy(guide.inputs, guideInputToId),
+        achievements: keyBy(guide.achievements || [], guideAchievementToId),
+        lastUpdated: guide.lastUpdated,
+      };
+      await guideRef.set(uploadGuide);
     }
     dispatch(updateCampaign(user, campaignId, { serverId: campaignId.serverId }));
     forEach(campaign.deckIds || [], deckId => {

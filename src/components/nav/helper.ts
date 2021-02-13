@@ -10,7 +10,7 @@ import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
 import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
-import { Deck, DeckId, getDeckId, ParsedDeck } from '@actions/types';
+import { CampaignId, Deck, DeckId, getDeckId, ParsedDeck } from '@actions/types';
 import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';
 import { CardImageProps } from '@components/card/CardImageView';
@@ -99,7 +99,7 @@ export function getDeckOptions(
 }
 
 interface DeckModalOptions {
-  campaignId?: string;
+  campaignId?: CampaignId;
   hideCampaign?: boolean;
   initialMode?: 'upgrade' | 'edit';
 }
@@ -123,7 +123,7 @@ export function showDeckModal(
     initialMode,
   };
 
-  Navigation.showModal({
+  Navigation.showModal<DeckDetailProps>({
     stack: {
       children: [{
         component: {

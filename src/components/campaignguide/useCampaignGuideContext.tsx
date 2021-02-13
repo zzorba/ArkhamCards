@@ -15,6 +15,7 @@ import {
   getDeckId,
   DeckId,
   CampaignId,
+  WeaknessSet,
 } from '@actions/types';
 import Card from '@data/Card';
 import { useCallback, useContext, useMemo } from 'react';
@@ -27,7 +28,7 @@ import { CampaignGuideContextType } from './CampaignGuideContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
-
+const EMPTY_WEAKNESS_SET: WeaknessSet = { packCodes: [], assignedCards: {} };
 export default function useCampaignGuideContext(campaignId: CampaignId, campaignData?: CampaignGuideReduxData): CampaignGuideContextType | undefined {
   const { user } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
@@ -231,7 +232,7 @@ export default function useCampaignGuideContext(campaignId: CampaignId, campaign
       campaignState: campaignStateHelper,
       campaignInvestigators,
       latestDecks: decksByInvestigator,
-      weaknessSet: campaignData.campaign.weaknessSet,
+      weaknessSet: campaignData.campaign.weaknessSet || EMPTY_WEAKNESS_SET,
       adjustedInvestigatorData: campaignData.campaign.adjustedInvestigatorData || EMPTY_INVESTIGATOR_DATA,
       playerCards: cards,
       lastUpdated,

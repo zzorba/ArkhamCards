@@ -3,7 +3,7 @@ import { BackHandler, InteractionManager, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, CampaignId, ChaosBagResults, Deck, DeckId, SingleCampaign, Slots } from '@actions/types';
+import { Campaign, CampaignId, ChaosBagResults, Deck, DeckId, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -12,7 +12,6 @@ import {
   makeDeckSelector,
   getEffectiveDeckId,
   makeTabooSetSelector,
-  makeCampaignSelector,
   makeLatestCampaignDeckIdsSelector,
   makeLatestCampaignInvestigatorsSelector,
 } from '@reducers';
@@ -528,11 +527,6 @@ export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined 
   const { playerCardsByTaboo } = useContext(DatabaseContext);
   const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
   return playerCards?.weaknessCards;
-}
-
-export function useCampaign(campaignId?: CampaignId): SingleCampaign | undefined {
-  const getCampaign = useMemo(makeCampaignSelector, []);
-  return useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId.campaignId) : undefined);
 }
 
 const EMPTY_INVESTIGATORS: Card[] = [];

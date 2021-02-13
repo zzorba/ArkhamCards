@@ -11,7 +11,7 @@ import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { PlayScenarioInput } from '@data/scenario/types';
-import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, PLAY_SCENARIO_STEP_ID } from '@data/scenario/fixedSteps';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { CampaignId } from '@actions/types';
@@ -134,7 +134,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
 
   return (
     <>
-      { (id === '$play_scenario') && (
+      { (id === PLAY_SCENARIO_STEP_ID) && (
         <SetupStepWrapper>
           <CampaignGuideTextComponent
             text={t`Start playing the scenario now.`}

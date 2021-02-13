@@ -107,7 +107,7 @@ function DeckListRowDetails({
   }
   const xpString = xpDetailString ? `${mainXpString} · ${xpDetailString}` : mainXpString;
   const scenarioCount = deck.scenarioCount || 0;
-  const traumaData = campaign && campaign.investigatorData[investigator.code];
+  const traumaData = campaign && campaign.investigatorData?.[investigator.code];
   const campaignLines: string[] = [];
   if (campaign) {
     campaignLines.push(campaign.name);
@@ -180,7 +180,7 @@ export default function NewDeckListRow({
     if (!investigator) {
       return false;
     }
-    const traumaData = campaign && campaign.investigatorData[investigator.code];
+    const traumaData = campaign && campaign.investigatorData?.[investigator.code];
     return investigator.eliminated(traumaData);
   }, [killedOrInsane, investigator, campaign]);
 

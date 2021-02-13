@@ -19,7 +19,7 @@ import { ShowCountDialog } from '@components/deck/dialogs';
 interface Props {
   investigator: Card;
   updateInvestigatorNotes: (investigatorNotes: InvestigatorNotes) => void;
-  investigatorNotes: InvestigatorNotes;
+  investigatorNotes: InvestigatorNotes | undefined;
   showDialog: ShowTextEditDialog;
   showCountDialog: ShowCountDialog;
   inline?: boolean;
@@ -37,24 +37,24 @@ export default function InvestigatorSectionRow({
 }: Props) {
   const { borderStyle } = useContext(StyleContext);
   const notesChanged = useCallback((index: number, notes: string[]) => {
-    const sections = (investigatorNotes.sections || []).slice();
+    const sections = (investigatorNotes?.sections || []).slice();
     const newNotes = Object.assign({}, sections[index].notes, { [investigator.code]: notes });
     sections[index] = Object.assign({}, sections[index], { notes: newNotes });
     updateInvestigatorNotes(Object.assign({}, investigatorNotes, { sections }));
   }, [investigator, updateInvestigatorNotes, investigatorNotes]);
 
   const countChanged = useCallback((index: number, count: number) => {
-    const counts = (investigatorNotes.counts || []).slice();
+    const counts = (investigatorNotes?.counts || []).slice();
     const newCounts = Object.assign({}, counts[index].counts, { [investigator.code]: count });
     counts[index] = Object.assign({}, counts[index], { counts: newCounts });
     updateInvestigatorNotes(Object.assign({}, investigatorNotes, { counts }));
   }, [investigator, updateInvestigatorNotes, investigatorNotes]);
-  const hasCounts = investigatorNotes.counts.length > 0;
+  const hasCounts = (investigatorNotes?.counts?.length || 0) > 0;
 
   const notesSection = useMemo(() => {
     return (
       <View style={[borderStyle, hasCounts ? styles.border : undefined]}>
-        { map(investigatorNotes.sections, (section, idx) => {
+        { map(investigatorNotes?.sections, (section, idx) => {
           return (
             <NotesSection
               key={idx}
@@ -69,15 +69,15 @@ export default function InvestigatorSectionRow({
         }) }
       </View>
     );
-  }, [investigator, investigatorNotes.sections, notesChanged, showDialog, borderStyle, hasCounts]);
+  }, [investigator, investigatorNotes?.sections, notesChanged, showDialog, borderStyle, hasCounts]);
 
   const countsSection = useMemo(() => {
-    if (investigatorNotes.counts.length === 0) {
+    if (investigatorNotes?.counts?.length === 0) {
       return null;
     }
     return (
       <View style={[space.paddingTopS, space.paddingBottomS]}>
-        { map(investigatorNotes.counts, (section, idx) => {
+        { map(investigatorNotes?.counts, (section, idx) => {
           return (
             <EditCountComponent
               key={idx}
@@ -87,15 +87,15 @@ export default function InvestigatorSectionRow({
               countChanged={countChanged}
               showCountDialog={showCountDialog}
               first={idx === 0}
-              last={idx === investigatorNotes.counts.length - 1}
+              last={idx === (investigatorNotes?.counts?.length || 0) - 1}
             />
           );
         }) }
       </View>
     );
-  }, [investigator, investigatorNotes.counts, showCountDialog, countChanged]);
+  }, [investigator, investigatorNotes?.counts, showCountDialog, countChanged]);
   const faction = investigator.factionCode();
-  if (investigatorNotes.sections.length === 0 && investigatorNotes.counts.length === 0) {
+  if (investigatorNotes?.sections?.length === 0 && investigatorNotes?.counts?.length === 0) {
     return null;
   }
   if (inline) {

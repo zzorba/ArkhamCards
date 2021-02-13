@@ -30,7 +30,7 @@ export function showEditChaosBag(componentId: string, campaign: Campaign, update
     component: {
       name: 'Dialog.EditChaosBag',
       passProps: {
-        chaosBag: campaign.chaosBag,
+        chaosBag: campaign.chaosBag || {},
         updateChaosBag,
         trackDeltas: true,
       },

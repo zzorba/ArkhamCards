@@ -12,14 +12,13 @@ import Card, { CardsMap } from '@data/Card';
 import { getCampaignGuide } from '@data/scenario';
 import {
   AppState,
-  makeCampaignGuideStateSelector,
   makeLatestCampaignInvestigatorsSelector,
   getLangPreference,
-  makeCampaignSelector,
   makeLatestDecksSelector,
 } from '@reducers';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
+import { useCampaign, useCampaignGuideState } from '@data/hooks';
 
 export interface CampaignGuideReduxData {
   campaign: SingleCampaign;
@@ -47,24 +46,23 @@ const makeCampaignGuideSelector = (): (state: AppState, campaign?: SingleCampaig
   );
 
 export function useCampaignGuideReduxData(campaignId: CampaignId, investigators?: CardsMap): CampaignGuideReduxData | undefined {
-  const campaignSelector = useMemo(makeCampaignSelector, []);
+  const campaign = useCampaign(campaignId);
+
   const campaignGuideSelector = useMemo(makeCampaignGuideSelector, []);
   const latestCampaignInvestigatorsSelector = useMemo(makeLatestCampaignInvestigatorsSelector, []);
-  const campaignGuideStateSelector = useMemo(makeCampaignGuideStateSelector, []);
   const latestDecksSelector = useMemo(makeLatestDecksSelector, []);
-  const linkedCampaignStateSelector = useMemo(makeCampaignGuideStateSelector, []);
 
-  const campaign = useSelector((state: AppState) => campaignSelector(state, campaignId.campaignId));
   const campaignGuide = useSelector((state: AppState) => campaignGuideSelector(state, campaign));
   const campaignInvestigators = useSelector((state: AppState) => latestCampaignInvestigatorsSelector(state, investigators, campaign));
-  const campaignState = useSelector((state: AppState) => campaignGuideStateSelector(state, campaignId.campaignId));
+  const campaignState = useCampaignGuideState(campaignId);
   const latestDecks = useSelector((state: AppState) => latestDecksSelector(state, campaign));
-  const linkedCampaignState = useSelector((state: AppState) => campaign?.linkedCampaignUuid ? linkedCampaignStateSelector(state, campaign.linkedCampaignUuid) : undefined);
+
+  const linkedCampaignState = useCampaignGuideState(campaign?.linkedCampaignUuid ? { ...campaignId, campaignId: campaign.linkedCampaignUuid } : undefined);
   return useMemo(() => {
     if (!campaign) {
       return undefined;
     }
-    if (!campaignGuide) {
+    if (!campaignGuide || !campaignState) {
       return undefined;
     }
     return {

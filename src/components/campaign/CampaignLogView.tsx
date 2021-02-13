@@ -4,7 +4,8 @@ import { ScrollView, View, StyleSheet } from 'react-native';
 
 import { CampaignId, CampaignNotes } from '@actions/types';
 import CampaignLogSection from './CampaignLogSection';
-import { useCampaign, useCampaignDetails, useInvestigatorCards } from '@components/core/hooks';
+import { useCampaignDetails, useInvestigatorCards } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import StyleContext from '@styles/StyleContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';

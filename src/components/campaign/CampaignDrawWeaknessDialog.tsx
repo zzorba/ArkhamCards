@@ -24,7 +24,8 @@ import { xs } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { ThunkDispatch } from 'redux-thunk';
-import { useCampaign, useCampaignLatestDeckIds, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
+import { useCampaignLatestDeckIds, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface CampaignDrawWeaknessProps {
@@ -76,7 +77,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
         if (!investigator) {
           return 0;
         }
-        if (!investigator.eliminated(campaign.investigatorData[deck.investigator_code])) {
+        if (!investigator.eliminated(campaign.investigatorData?.[deck.investigator_code])) {
           return 1;
         }
       }
@@ -201,7 +202,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
         spentXp: parsedDeck && parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
       })).then(() => {
         const newWeaknessSet = {
-          ...weaknessSet,
+          packCodes: weaknessSet?.packCodes || [],
           assignedCards: pendingAssignedCards,
         };
         dispatch(updateCampaign(user, campaignId, { weaknessSet: newWeaknessSet }));
@@ -274,7 +275,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
 
   const dynamicWeaknessSet = useMemo(() => {
     return {
-      ...weaknessSet,
+      packCodes: weaknessSet?.packCodes || [],
       assignedCards,
     };
   }, [weaknessSet, assignedCards]);

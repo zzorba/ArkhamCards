@@ -8,8 +8,7 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
-import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement, Step, PlayScenarioInput } from './types';
-import ScenarioStep from './ScenarioStep';
+import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement } from './types';
 
 type CampaignLogEntry = {
   id: string;

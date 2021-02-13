@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useRef, useReducer } from 'react';
-import { filter, forEach, map, uniq } from 'lodash';
+import { filter, flatMap, forEach, map, uniq } from 'lodash';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Input } from 'react-native-elements';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
@@ -379,7 +379,7 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
   const campaigns = useSelector(getCampaigns);
   const dispatch: UploadDispatch = useDispatch();
   const { colors, typography, width } = useContext(StyleContext);
-  const localCampaigns = useMemo(() => filter(campaigns, campaign => !campaign.serverId), [campaigns]);
+  const localCampaigns = useMemo(() => flatMap(campaigns, ({ campaign }) => !campaign.serverId ? [campaign] : []), [campaigns]);
   const [uploadState, updateUploadState] = useReducer(
     (state: UploadState | undefined, action: { type: 'start'; total: number } | { type: 'finish' } | { type: 'error' }) => {
       switch (action.type) {
