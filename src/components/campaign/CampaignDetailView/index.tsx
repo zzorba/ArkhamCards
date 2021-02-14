@@ -8,7 +8,7 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import { CampaignId, CUSTOM, Deck, DeckId, getCampaignId, getDeckId, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
 import DecksSection from './DecksSection';
-import { updateCampaign, updateCampaignSpentXp, cleanBrokenCampaigns, addInvestigator, removeInvestigator } from '../actions';
+import { updateCampaign, updateCampaignXp, cleanBrokenCampaigns, addInvestigator, removeInvestigator } from '../actions';
 import { NavigationProps } from '@components/nav/types';
 import { getAllDecks, getDeck } from '@reducers';
 import COLORS from '@styles/colors';
@@ -67,8 +67,8 @@ function CampaignDetailView(props: Props) {
   }, [dispatch, campaignId, user]);
 
   const updateSpentXp = useCallback((code: string, value: number) => {
-    dispatch(updateCampaignSpentXp(campaignId, code, value));
-  }, [campaignId, dispatch]);
+    dispatch(updateCampaignXp(user, campaignId, code, value, 'spentXp'));
+  }, [dispatch, campaignId, user]);
 
   useEffect(() => {
     if (campaign?.name) {
@@ -103,7 +103,7 @@ function CampaignDetailView(props: Props) {
   }, [componentId, campaignId]);
 
   const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
+    dispatch(updateCampaign(user, campaignId, { name }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {

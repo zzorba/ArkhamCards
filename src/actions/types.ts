@@ -480,19 +480,19 @@ export function getLastUpdated(campaign: { lastUpdated?: Date | string | number 
     return 0;
   }
   if (typeof campaign.lastUpdated === 'string') {
-    return -(new Date(Date.parse(campaign.lastUpdated)).getTime());
+    return (new Date(Date.parse(campaign.lastUpdated)).getTime());
   }
   if (typeof campaign.lastUpdated === 'number') {
-    return -(new Date(campaign.lastUpdated).getTime());
+    return (new Date(campaign.lastUpdated).getTime());
   }
-  return -(campaign.lastUpdated.getTime());
+  return (campaign.lastUpdated.getTime());
 }
 
 export function getCampaignLastUpdated(campaign: Campaign, guide?: { lastUpdated?: Date | string | number }) {
   if (campaign.guided && guide) {
-    return Math.min(getLastUpdated(campaign), getLastUpdated(guide));
+    return Math.min(-getLastUpdated(campaign), -getLastUpdated(guide));
   }
-  return getLastUpdated(campaign);
+  return -getLastUpdated(campaign);
 }
 
 export interface LegacyCampaign extends BaseCampaign {
@@ -807,12 +807,13 @@ export interface UpdateCampaignAction {
   now: Date;
 }
 
-export const UPDATE_CAMPAIGN_SPENT_XP = 'UPDATE_CAMPAIGN_SPENT_XP';
-export interface UpdateCampaignSpentXpAction {
-  type: typeof UPDATE_CAMPAIGN_SPENT_XP;
+export const UPDATE_CAMPAIGN_XP = 'UPDATE_CAMPAIGN_XP';
+export interface UpdateCampaignXpAction {
+  type: typeof UPDATE_CAMPAIGN_XP;
   id: CampaignId;
   investigator: string;
   operation: 'set';
+  xpType: 'spentXp' | 'availableXp';
   value: number;
   now: Date;
 }
@@ -1250,7 +1251,7 @@ export type CampaignActions =
   NewStandaloneCampaignAction |
   NewLinkedCampaignAction |
   UpdateCampaignAction |
-  UpdateCampaignSpentXpAction |
+  UpdateCampaignXpAction |
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |
   EditCampaignScenarioResultAction |

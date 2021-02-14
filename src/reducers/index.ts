@@ -36,6 +36,7 @@ import {
   UploadedCampaignId,
   CampaignId,
   getCampaignLastUpdated,
+  getLastUpdated,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { ChaosBag } from '@app_constants';
@@ -509,10 +510,12 @@ export const makeGetDecksSelector = () =>
 export function processCampaign(campaign: Campaign): SingleCampaign {
   const latestScenario = last(campaign.scenarioResults);
   const finishedScenarios = flatMap(campaign.scenarioResults || [], r => r.scenario);
+  const lastUpdated = getLastUpdated(campaign);
   return {
     ...campaign,
     latestScenario,
     finishedScenarios,
+    lastUpdated: lastUpdated > 0 ? new Date(lastUpdated) : new Date(),
   };
 }
 

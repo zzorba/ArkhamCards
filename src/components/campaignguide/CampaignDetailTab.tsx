@@ -38,12 +38,7 @@ export default function CampaignDetailTab({
   showLinkedScenario, showAlert, showTraumaDialog, showCountDialog,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
   const { campaignId, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
-  const dispatch = useDispatch();
-  const saveCampaignUpdate = useCallback((campaignId: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
-    dispatch(updateCampaign(user, campaignId, sparseCampaign, now));
-  }, [dispatch, user]);
 
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
@@ -145,7 +140,6 @@ export default function CampaignDetailTab({
             componentId={componentId}
             showAlert={showAlert}
             showAddInvestigator={showAddInvestigator}
-            updateCampaign={saveCampaignUpdate}
             processedCampaign={processedCampaign}
             showTraumaDialog={showTraumaDialog}
             showCountDialog={showCountDialog}

@@ -17,7 +17,7 @@ import Card from '@data/Card';
 import { getAllDecks, getDeck, getLangPreference } from '@reducers';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
-import { updateCampaign } from '@components/campaign/actions';
+import { updateCampaignXp } from '@components/campaign/actions';
 import UpgradeDecksList from './UpgradeDecksList';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space, { s } from '@styles/space';
@@ -54,17 +54,15 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
     if (campaign) {
       const investigatorData = campaign.investigatorData?.[investigator.code] || {};
       const oldXp = investigatorData.availableXp || 0;
-      dispatch(updateCampaign(user, getCampaignId(campaign), {
-        investigatorData: {
-          ...campaign.investigatorData || {},
-          [investigator.code]: {
-            ...investigatorData,
-            availableXp: oldXp + xp,
-          },
-        },
-      }));
+      dispatch(updateCampaignXp(
+        user,
+        id,
+        investigator.code,
+        oldXp + xp,
+        'availableXp'
+      ));
     }
-  }, [campaign, user, dispatch]);
+  }, [campaign, id, user, dispatch]);
 
   const showDeckUpgradeDialog = useCallback((deck: Deck, investigator?: Card) => {
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;

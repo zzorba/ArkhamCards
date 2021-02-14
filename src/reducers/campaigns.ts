@@ -8,7 +8,7 @@ import {
   NEW_LINKED_CAMPAIGN,
   UPDATE_CAMPAIGN,
   CAMPAIGN_ADD_INVESTIGATOR,
-  UPDATE_CAMPAIGN_SPENT_XP,
+  UPDATE_CAMPAIGN_XP,
   RESTORE_COMPLEX_BACKUP,
   CAMPAIGN_REMOVE_INVESTIGATOR,
   CLEAN_BROKEN_CAMPAIGNS,
@@ -366,7 +366,7 @@ export default function(
       },
     };
   }
-  if (action.type === UPDATE_CAMPAIGN_SPENT_XP) {
+  if (action.type === UPDATE_CAMPAIGN_XP) {
     const existingCampaign = state.all[action.id.campaignId];
     if (!existingCampaign) {
       // Can't update a campaign that doesn't exist.
@@ -379,7 +379,7 @@ export default function(
         ...existingCampaign.investigatorData,
         [action.investigator]: {
           ...investigatorData,
-          spentXp: action.value,
+          [action.xpType]: action.value,
         },
       },
       lastUpdated: action.now,

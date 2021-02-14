@@ -54,7 +54,7 @@ export default function LinkedCampaignGuideView(props: Props) {
   const campaignDataB = useCampaignGuideReduxData(campaignIdB, investigators);
 
   const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
+    dispatch(updateCampaign(user, campaignId, { name }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {

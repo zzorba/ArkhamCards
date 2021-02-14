@@ -27,7 +27,7 @@ function CampaignEditWeaknessDialog({ componentId, campaignId }: CampaignEditWea
       dispatch(updateCampaign(
         user,
         campaignId,
-        { weaknessSet: updatedWeaknessSet } as Campaign
+        { weaknessSet: updatedWeaknessSet }
       ));
     }
   }, [dispatch, campaignId, user, weaknessSet]);

@@ -30,7 +30,7 @@ function CampaignGuideView(props: Props) {
   const { campaignId } = campaignData;
   const dispatch = useDispatch();
   const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
+    dispatch(updateCampaign(user, campaignId, { name }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
