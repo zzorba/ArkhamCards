@@ -1,11 +1,16 @@
 import React from 'react';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import Parse from 'parse/react-native';
 
+export type ArkhamCardsUser = Parse.User<Parse.Attributes>;
 interface ArkhamCardsAuthContextType {
-  user?: FirebaseAuthTypes.User;
+  user?: ArkhamCardsUser;
   loading: boolean;
+  setUser: (user: ArkhamCardsUser | null) => void;
 }
 
-export const ArkhamCardsAuthContext = React.createContext<ArkhamCardsAuthContextType>({ loading: true });
+function dummySetUser() {
+  console.log('dummySetUser used');
+}
+export const ArkhamCardsAuthContext = React.createContext<ArkhamCardsAuthContextType>({ loading: true, setUser: dummySetUser });
 
 export default ArkhamCardsAuthContext;

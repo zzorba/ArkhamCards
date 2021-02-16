@@ -1,10 +1,11 @@
 import React from 'react';
 import { AppearanceProvider } from 'react-native-appearance';
+import Parse from 'parse/react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Navigation } from 'react-native-navigation';
 import Crashes from 'appcenter-crashes';
-import database from '@react-native-firebase/database';
 import 'reflect-metadata';
 
 import DatabaseProvider from './src/data/DatabaseProvider';
@@ -15,6 +16,7 @@ import LanguageProvider from './src/lib/i18n/LanguageProvider';
 import ArkhamCardsAuthProvider from './src/lib/ArkhamCardsAuthProvider';
 import App from './src/app/App';
 import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
+import { initParseObjects } from '@data/parse/types';
 
 function MyProvider({ store: { redux, persistor }, children}) {
   return (
@@ -37,7 +39,12 @@ function MyProvider({ store: { redux, persistor }, children}) {
 }
 
 if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
-  database().setPersistenceEnabled(true);
+  Parse.setAsyncStorage(AsyncStorage);
+  Parse.initialize('d3LMO8279uM3e6mTjwXLLWrUxYums3aqrxsNgS39', 'Gw0kvpxOqh2CBBk1vnIWmfmzDPcDmF99BdJc6mvf');
+  // Parse.serverURL = 'https://parseapi.back4app.com/';
+  Parse.serverURL = 'http://localhost:1337/parse';
+  Parse.User.enableUnsafeCurrentUser();
+  initParseObjects();
 }
 
 const { store, persistor } = configureStore({});

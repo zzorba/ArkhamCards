@@ -29,15 +29,16 @@ import {
 import { updateCampaign } from '@components/campaign/actions';
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
-import fbdb from '@data/firebase/fbdb';
-import { UploadedCampaignGuideState } from '@data/firebase/types';
+import { uploadCampaignDeckHelper } from '@lib/parseApi';
+import fbdb from '@data/parse/db';
+import { UploadedCampaignGuideState } from '@data/parse/types';
+import { ArkhamCardsUser } from '@lib/ArkhamCardsAuthContext';
 
 function uploadCampaignHelper(
   campaign: Campaign,
   campaignId: UploadedCampaignId,
   guided: boolean,
-  user: FirebaseAuthTypes.User,
+  user: ArkhamCardsUser,
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch, getState) => {
     await fbdb.campaignDetail(campaignId).set(campaign);
@@ -67,7 +68,7 @@ function uploadCampaignHelper(
 }
 
 export function uploadCampaign(
-  user: FirebaseAuthTypes.User,
+  user: ArkhamCardsUser,
   createServerCampaign: (campaignId: string) => Promise<UploadedCampaignId>,
   campaignId: CampaignId
 ): ThunkAction<Promise<UploadedCampaignId>, AppState, unknown, UpdateCampaignAction> {
@@ -98,7 +99,7 @@ export function uploadCampaign(
 }
 
 export function undo(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   scenarioId: string
 ): ThunkAction<void, AppState, unknown, GuideUndoInputAction> {
@@ -113,7 +114,7 @@ export function undo(
 }
 
 function updateAchievement(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   action: GuideUpdateAchievementAction
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
   return (dispatch) => {
@@ -122,7 +123,7 @@ function updateAchievement(
 }
 
 export function setBinaryAchievement(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   achievementId: string,
   value: boolean,
@@ -137,7 +138,7 @@ export function setBinaryAchievement(
 }
 
 export function incCountAchievement(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   achievementId: string,
   max?: number
@@ -153,7 +154,7 @@ export function incCountAchievement(
 }
 
 export function decCountAchievement(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   achievementId: string,
   max?: number
@@ -169,7 +170,7 @@ export function decCountAchievement(
 }
 
 export function resetScenario(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   scenarioId: string
 ): ThunkAction<void, AppState, unknown, GuideResetScenarioAction> {
@@ -184,7 +185,7 @@ export function resetScenario(
 }
 
 function setGuideInputAction(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   input: GuideInput
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
@@ -208,7 +209,7 @@ function setGuideInputAction(
   };
 }
 export function startScenario(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   scenario: string
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
@@ -221,7 +222,7 @@ export function startScenario(
 
 
 export function startSideScenario(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
@@ -229,7 +230,7 @@ export function startSideScenario(
 }
 
 export function setScenarioDecision(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   step: string,
   value: boolean,
@@ -244,7 +245,7 @@ export function setScenarioDecision(
 }
 
 export function setInterScenarioData(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   value: InvestigatorTraumaData,
   scenario?: string
@@ -258,7 +259,7 @@ export function setInterScenarioData(
 }
 
 export function setScenarioCount(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   step: string,
   value: number,
@@ -273,7 +274,7 @@ export function setScenarioCount(
 }
 
 export function setScenarioSupplies(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   step: string,
   supplies: SupplyCounts,
@@ -288,7 +289,7 @@ export function setScenarioSupplies(
 }
 
 export function setScenarioNumberChoices(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   step: string,
   choices: NumberChoices,
@@ -305,7 +306,7 @@ export function setScenarioNumberChoices(
 }
 
 export function setScenarioStringChoices(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   step: string,
   choices: StringChoices,
@@ -320,7 +321,7 @@ export function setScenarioStringChoices(
 }
 
 export function setScenarioChoice(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   step: string,
   choice: number,
@@ -335,7 +336,7 @@ export function setScenarioChoice(
 }
 
 export function setScenarioText(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   step: string,
   text: string,
@@ -350,7 +351,7 @@ export function setScenarioText(
 }
 
 export function setCampaignLink(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   step: string,
   decision: string,

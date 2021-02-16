@@ -1,13 +1,12 @@
 import { useCallback, useContext, useEffect, useMemo, useReducer, useState } from 'react';
-import functions from '@react-native-firebase/functions';
-import { useObjectVal } from 'react-firebase-hooks/database';
+import Parse from 'parse/react-native';
 import { FirebaseDatabaseTypes } from '@react-native-firebase/database';
 import { filter, find, flatMap, forEach, map, keys, values, sortBy } from 'lodash';
 
 import { ArkhamCardsProfile, ArkhamCardsUserCampaigns, FriendStatus, UploadedCampaign, UploadedCampaignGuideState } from './types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import fbdb from './fbdb';
+import fbdb from './db';
 import { Campaign, CampaignGuideState, CampaignId, getCampaignLastUpdated, getLastUpdated, SingleCampaign } from '@actions/types';
 import { useCounter } from '@components/core/hooks';
 import { processCampaign } from '@reducers';
@@ -18,12 +17,38 @@ export interface ErrorResponse {
 
 export interface EmptyRequest {}
 
+
 export function useFunction<RequestT=EmptyRequest, ResponseT=ErrorResponse>(functionName: string) {
   const { lang } = useContext(LanguageContext);
   return useCallback(async(request: RequestT): Promise<ResponseT> => {
-    const response = await functions().httpsCallable(functionName)({ ...request, locale: lang });
-    return response.data as ResponseT;
+    const response = await Parse.Cloud.run(functionName, { ...request, locale: lang });
+    return response as ResponseT;
   }, [lang, functionName]);
+}
+
+export function useObjectVal<T extends Parse.Object<Parse.Attributes>>(query: Parse.Query<T>): T | undefined {
+  const [state, setState] = useState<T | undefined>();
+  useEffect(() => {
+    let sub: Parse.LiveQuerySubscription | undefined = undefined;
+    function updated(obj: Parse.Object) {
+      setState(obj as T);
+    }
+    function remove() {
+      setState(undefined);
+    }
+    query.subscribe().then(subscription => {
+      sub = subscription;
+      subscription.on('create', updated);
+      subscription.on('update', updated);
+      subscription.on('enter', updated);
+      subscription.on('delete', remove);
+      subscription.on('leave', remove);
+    });
+    return () => {
+      sub?.unsubscribe();
+    };
+  }, [query]);
+  return state;
 }
 
 export interface Handles {
@@ -35,9 +60,9 @@ export function useProfileHandles(userIds: string[]): Handles {
     let canceled = false;
     const userIdsToFetch = filter(userIds, uid => !handles[uid]);
     if (userIdsToFetch.length) {
-      const promises = userIdsToFetch.map(async(uid: string) => {
-        const handle = await fbdb.profile({ uid }).child('handle').once('value');
-        return { userId: uid, handle: handle.val() as string };
+      const promises = userIdsToFetch.map(async(id: string) => {
+        const handle = await fbdb.profile({ id }).child('handle').once('value');
+        return { userId: id, handle: handle.val() as string };
       });
 
       Promise.all(promises).then((fetchedHandles) => {
@@ -70,9 +95,9 @@ export function useFriends(userId: string): {
   selfFriendStatus?: { [uid: string]: FriendStatus | undefined };
 } {
   const { user, loading } = useContext(ArkhamCardsAuthContext);
-  const isSelf = !!user && user.uid === userId;
+  const isSelf = !!user && user.id === userId;
   const [selfProfileDifferent, loadingSelfProfile] = useObjectVal<ArkhamCardsProfile>(!isSelf && user ? fbdb.profile(user) : undefined);
-  const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(fbdb.profile({ uid: userId }));
+  const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(fbdb.profile({ id: userId }));
   const selfProfile = isSelf ? profile : selfProfileDifferent;
   const selfFriendStatus = useMemo(() => selfProfile?.friends || {}, [selfProfile]);
   const handleUserIds = useMemo(() => {

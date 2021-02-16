@@ -4,7 +4,7 @@ import { concat, filter, map, sortBy } from 'lodash';
 
 import { AppState, getCampaigns, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { Campaign, CampaignGuideState, CampaignId, SingleCampaign } from '@actions/types';
-import { useMyCampaigns, useServerCampaign, useServerCampaignGuideState } from './firebase/hooks';
+import { useMyCampaigns, useServerCampaign, useServerCampaignGuideState } from './parse/hooks';
 
 export function useCampaigns(): [Campaign[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);

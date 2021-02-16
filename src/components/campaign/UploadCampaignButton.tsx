@@ -4,7 +4,7 @@ import { t } from 'ttag';
 import { CampaignId } from '@actions/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
-import { useCreateCampaignRequest } from '@data/firebase/api';
+import { useCreateCampaignRequest } from '@data/parse/api';
 import { s } from '@styles/space';
 import { uploadCampaign } from '@components/campaignguide/actions';
 import useNetworkStatus from '@components/core/useNetworkStatus';

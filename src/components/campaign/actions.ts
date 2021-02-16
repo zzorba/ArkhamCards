@@ -52,8 +52,9 @@ import {
 import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { removeCampaignDeckHelper, uploadCampaignDeckHelper } from '@lib/firebaseApi';
-import fbdb from '@data/firebase/fbdb';
+import { removeCampaignDeckHelper, uploadCampaignDeckHelper } from '@lib/parseApi';
+import fbdb from '@data/parse/db';
+import { ArkhamCardsUser } from '@lib/ArkhamCardsAuthContext';
 
 function getBaseDeckIds(
   state: AppState,
@@ -93,7 +94,7 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 }
 
 export function addInvestigator(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   id: CampaignId,
   investigator: string,
   deckId?: DeckId
@@ -117,7 +118,7 @@ export function addInvestigator(
 }
 
 export function removeInvestigator(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   id: CampaignId,
   investigator: string,
   deckId?: DeckId
@@ -141,7 +142,7 @@ export function removeInvestigator(
 }
 
 export function newLinkedCampaign(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   name: string,
   cycleCode: CampaignCycleCode,
   cycleCodeA: CampaignCycleCode,
@@ -161,7 +162,7 @@ export function newLinkedCampaign(
 }
 
 export function newStandalone(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   name: string,
   standaloneId: StandaloneId,
   deckIds: DeckId[],
@@ -183,7 +184,7 @@ export function newStandalone(
 }
 
 export function newCampaign(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   name: string,
   pack_code: CampaignCycleCode,
   difficulty: CampaignDifficulty | undefined,
@@ -213,7 +214,7 @@ export function newCampaign(
 }
 
 export function updateCampaignXp(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   id: CampaignId,
   investigator: string,
   value: number,
@@ -247,7 +248,7 @@ export function updateCampaignXp(
  * }
  */
 export function updateCampaign(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   id: CampaignId,
   sparseCampaign: Partial<Campaign>,
   now?: Date
@@ -335,7 +336,7 @@ export function removeLocalCampaign(
 }
 
 export function deleteCampaign(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   { campaignId }: CampaignId
 ): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
   return (dispatch, getState) => {
@@ -359,7 +360,7 @@ export function deleteCampaign(
 }
 
 export function addScenarioResult(
-  user: FirebaseAuthTypes.User | undefined,
+  user: ArkhamCardsUser | undefined,
   campaignId: CampaignId,
   scenarioResult: ScenarioResult,
   campaignNotes?: CampaignNotes

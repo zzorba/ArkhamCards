@@ -1,7 +1,8 @@
-import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import Parse from 'parse/react-native';
 
+import { ArkhamCardsUser } from '@lib/ArkhamCardsAuthContext';
 import { UploadedCampaignId } from '@actions/types';
+import UserFriendStatus, { FriendStatus, UserHandle } from './types';
 
 
 export function campaign(campaignId: UploadedCampaignId): FirebaseDatabaseTypes.Reference {
@@ -18,12 +19,19 @@ export function campaignGuide(campaignId: UploadedCampaignId): FirebaseDatabaseT
   return campaign(campaignId).child('guides').child(campaignId.campaignId);
 }
 
-export function myCampaigns(user: FirebaseAuthTypes.User): FirebaseDatabaseTypes.Reference {
-  return database().ref('/user_campaigns').child(user.uid);
+export function myCampaigns(user: ArkhamCardsUser): FirebaseDatabaseTypes.Reference {
+  return database().ref('/user_campaigns').child(user.id);
 }
 
-export function profile(user: { uid: string }): FirebaseDatabaseTypes.Reference {
-  return database().ref('/profiles').child(user.uid);
+export function userHandle(user: { id: string }): Parse.Query<UserHandle> {
+  return new Parse.Query(UserHandle).equalTo('user', user.id).limit(1);
+}
+
+export function userFriends(user: { id: string }): Parse.Query<UserFriendStatus> {
+  return Parse.Query.or(
+    new Parse.Query(UserFriendStatus).equalTo('userA', user).notEqualTo('status', FriendStatus.NONE),
+    new Parse.Query(UserFriendStatus).equalTo('userB', user).notEqualTo('status', FriendStatus.NONE)
+  );
 }
 
 export default {
@@ -32,5 +40,5 @@ export default {
   campaignDetail,
   campaignGuide,
   myCampaigns,
-  profile,
+  handle,
 };

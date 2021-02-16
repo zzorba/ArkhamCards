@@ -4,7 +4,8 @@ import { ThunkAction } from 'redux-thunk';
 import { CAMPAIGN_SYNC_REQUIRED, Deck, DeckId, getDeckId, UploadedCampaignId, UPLOAD_DECK } from '@actions/types';
 import { AppState, getAllDecks, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import fbdb from '@data/firebase/fbdb';
+import fbdb from '@data/parse/db';
+import { ArkhamCardsUser } from './ArkhamCardsAuthContext';
 
 
 export function removeCampaignDeckHelper(
@@ -39,7 +40,7 @@ export function removeCampaignDeckHelper(
 export function uploadCampaignDeckHelper(
   campaignId: UploadedCampaignId,
   deckId: DeckId,
-  user: FirebaseAuthTypes.User,
+  user: ArkhamCardsUser,
   singleDeck?: Deck
 ): ThunkAction<void, AppState, unknown, Action<string>> {
   return async(dispatch, getState) => {

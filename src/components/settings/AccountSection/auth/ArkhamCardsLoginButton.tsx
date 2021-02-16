@@ -1,10 +1,13 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useRef, useReducer } from 'react';
-import { filter, flatMap, forEach, map, uniq } from 'lodash';
+import { filter, flatMap, forEach, keys, map, uniq } from 'lodash';
 import { Platform, StyleSheet, Text, View } from 'react-native';
+import EmailValidator from 'email-validator';
 import { Input } from 'react-native-elements';
+import jwt_decode from 'jwt-decode';
+import Parse from 'parse/react-native';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 import uuid from 'react-native-uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
@@ -18,23 +21,14 @@ import { ShowAlert, useDialog } from '@components/deck/dialogs';
 import space, { s, xs } from '@styles/space';
 import { useFlag, useToggles } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT, Campaign, getCampaignId, STANDALONE } from '@actions/types';
+import ArkhamCardsAuthContext, { ArkhamCardsUser } from '@lib/ArkhamCardsAuthContext';
+import { Campaign, getCampaignId, STANDALONE } from '@actions/types';
 import { AppState, getCampaigns } from '@reducers';
 import { removeLocalCampaign } from '@components/campaign/actions';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import EncounterIcon from '@icons/EncounterIcon';
 import { uploadCampaign } from '@components/campaignguide/actions';
-import { useCreateCampaignRequest } from '@data/firebase/api';
-
-function login(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
-  return (dispatch) => {
-    dispatch({
-      type: ARKHAM_CARDS_LOGIN,
-      user,
-    });
-  };
-}
+import { useCreateCampaignRequest } from '@data/parse/api';
 
 function logout(): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch, getState) => {
@@ -43,9 +37,6 @@ function logout(): ThunkAction<void, AppState, unknown, Action<string>> {
       if (campaign && campaign.serverId) {
         dispatch(removeLocalCampaign(campaign));
       }
-    });
-    dispatch({
-      type: ARKHAM_CARDS_LOGOUT,
     });
   };
 }
@@ -56,7 +47,7 @@ GoogleSignin.configure({
   webClientId: '375702423113-g70bmcovqfqduf2tleg7otk7fkpo1sku.apps.googleusercontent.com',
 });
 
-async function onAppleButtonPress() {
+async function platormSpecificAppleLogin(): Promise<{ email: string; id: string; token: string }> {
   if (Platform.OS === 'ios') {
     // Start the sign-in request
     const appleAuthRequestResponse = await appleAuth.performRequest({
@@ -65,18 +56,20 @@ async function onAppleButtonPress() {
     });
 
     // Ensure Apple returned a user identityToken
-    if (!appleAuthRequestResponse.identityToken) {
+    if (!appleAuthRequestResponse.identityToken || !appleAuthRequestResponse.email) {
       throw new Error('Apple Sign-In failed - no identify token returned');
     }
 
     // Create a Firebase credential from the response
-    const { identityToken, nonce } = appleAuthRequestResponse;
-    const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
-
+    const { identityToken, email } = appleAuthRequestResponse;
+    const { sub } = jwt_decode<{ sub: string }>(identityToken);
     // Sign the user in with the credential
-    return auth().signInWithCredential(appleCredential);
+    return {
+      id: sub,
+      token: identityToken,
+      email,
+    };
   }
-
   const rawNonce = uuid.v4();
   const state = uuid.v4();
   appleAuthAndroid.configure({
@@ -91,7 +84,7 @@ async function onAppleButtonPress() {
     responseType: appleAuthAndroid.ResponseType.ALL,
 
     // The amount of user information requested from Apple.
-    scope: appleAuthAndroid.Scope.ALL,
+    scope: appleAuthAndroid.Scope.EMAIL,
 
     // Random nonce value that will be SHA256 hashed before sending to Apple.
     nonce: rawNonce,
@@ -100,49 +93,83 @@ async function onAppleButtonPress() {
     state,
   });
   const androidResponse = await appleAuthAndroid.signIn();
+  if (androidResponse.nonce !== rawNonce) {
+    // Nonce changed, give up
+    throw new Error('Apple Sign-In failed - nonce is invalid');
+  }
   // Ensure Apple returned a user identityToken
-  if (!androidResponse.id_token) {
+  if (!androidResponse.id_token || !androidResponse.user?.email) {
     throw new Error('Apple Sign-In failed - no identify token returned');
   }
 
   // Create a Firebase credential from the response
-  const { id_token, nonce } = androidResponse;
-  const androidCredential = auth.AppleAuthProvider.credential(id_token, nonce);
+  const { id_token, user: { email } } = androidResponse;
+  const { sub } = jwt_decode<{ sub: string }>(id_token);
+  return {
+    id: sub,
+    token: id_token,
+    email,
+  };
+}
+
+async function onAppleButtonPress() {
+  const { email, id, token } = await platormSpecificAppleLogin();
 
   // Sign the user in with the credential
-  return auth().signInWithCredential(androidCredential);
+  return Parse.User.logInWith('apple', { authData: { id, token } }).then(user => {
+    user.setACL(new Parse.ACL(user));
+    if (user.getEmail() !== email) {
+      user.setEmail(email);
+      user.save();
+    }
+    return user;
+  });
 }
 
 
 async function onGoogleButtonPress() {
   await GoogleSignin.hasPlayServices();
   // Get the users ID token
-  const { idToken } = await GoogleSignin.signIn();
-  // Create a Google credential with the token
-  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
+  const { idToken, user: { id, email } } = await GoogleSignin.signIn();
   // Sign-in the user with the credential
-  return await auth().signInWithCredential(googleCredential);
+  return await Parse.User.logInWith('google', {
+    authData: {
+      id,
+      id_token: idToken,
+    },
+  }).then(user => {
+    user.setACL(new Parse.ACL(user));
+    if (user.getEmail() !== email) {
+      user.setEmail(email);
+      user.save();
+    }
+    return user;
+  });
 }
 
+const INVALID_USERNAME_PASSWORD = 101;
+const ACCOUNT_ALREADY_EXISTS = 202;
+const INVALID_EMAIL_ADDRESS = 20004;
+
 type LoginRemedy = 'try-login' | 'try-create' | 'reset-password';
-function errorMessage(code: string): {
+function errorMessage(code: number): {
   message?: string;
   field?: 'email' | 'password';
   remedy?: LoginRemedy;
 } {
   switch (code) {
-    case 'auth/email-already-in-use':
+    case ACCOUNT_ALREADY_EXISTS:
       return {
         message: t`Looks like there is already an account registered with this email address.`,
         remedy: 'try-login',
         field: 'email',
       };
-    case 'auth/invalid-email':
+    case INVALID_EMAIL_ADDRESS:
       return {
         message: t`That doesn't look like a valid email address`,
         field: 'email',
       };
+    /*
     case 'auth/weak-password':
       return {
         message: t`That password seems to be too weak.`,
@@ -158,13 +185,13 @@ function errorMessage(code: string): {
         remedy: 'try-create',
         field: 'email',
       };
-    case 'auth/wrong-password':
+    */
+    case INVALID_USERNAME_PASSWORD:
       return {
         message: t`Invalid password.`,
         field: 'password',
         remedy: 'reset-password',
       };
-    case 'auth/operation-not-allowed':
     default:
       return {
         message: t`Unknown error`,
@@ -172,17 +199,33 @@ function errorMessage(code: string): {
   }
 }
 
+async function emailAuth(mode: 'create' | 'login', email: string, password: string): Promise<ArkhamCardsUser> {
+  if (!EmailValidator.validate(email)) {
+    const error = new Error('Invalid email address') as any;
+    error.code = INVALID_EMAIL_ADDRESS;
+    throw error;
+  }
+  if (mode === 'create') {
+    const user = new Parse.User();
+    user.set('username', email.toLowerCase());
+    user.set('email', email);
+    user.set('password', password);
+    return await user.signUp();
+  }
+  return await Parse.User.logIn(email.toLowerCase(), password);
+}
+
 function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   mode: 'create' | 'login' | undefined;
   setMode: (mode: 'create' | 'login') => void;
   backPressed: () => void;
-  loginSucceeded: (user: FirebaseAuthTypes.UserCredential) => void;
+  loginSucceeded: (user: ArkhamCardsUser) => void;
 }) {
   const { typography } = useContext(StyleContext);
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [emailErrorCodes, setEmailErrorCodes] = useState<string[]>([]);
+  const [emailErrorCodes, setEmailErrorCodes] = useState<number[]>([]);
   const passwordInputRef = useRef<Input>(null);
 
   useEffect(() => {
@@ -194,9 +237,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
 
   const submitEmail = useCallback(() => {
     setSubmitting(true);
-    const promise = mode === 'create' ?
-      auth().createUserWithEmailAndPassword(emailAddress, password) :
-      auth().signInWithEmailAndPassword(emailAddress, password);
+    const promise = emailAuth(mode || 'login', emailAddress, password);
     promise.then(
       (user) => {
         setSubmitting(false);
@@ -272,6 +313,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
         returnKeyType="next"
         blurOnSubmit={false}
         autoFocus
+        autoCapitalize="none"
       />
       <Input
         ref={passwordInputRef}
@@ -375,7 +417,7 @@ interface UploadState {
 
 type UploadDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNode, () => void] {
+function useCampaignUploadDialog(user?: ArkhamCardsUser): [React.ReactNode, () => void] {
   const campaigns = useSelector(getCampaigns);
   const dispatch: UploadDispatch = useDispatch();
   const { colors, typography, width } = useContext(StyleContext);
@@ -494,15 +536,16 @@ interface Props {
 
 export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const { darkMode, typography } = useContext(StyleContext);
-  const dispatch = useDispatch();
-  const { user, loading } = useContext(ArkhamCardsAuthContext);
+  const { user, loading, setUser } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [mode, setMode] = useState<'login' | 'create' | undefined>();
+  const dispatch = useDispatch();
   const doLogout = useCallback(async() => {
-    await auth().signOut();
     dispatch(logout());
-  }, [dispatch]);
+    await Parse.User.logOut();
+    setUser(null);
+  }, [setUser, dispatch]);
   const [uploadDialog, showUploadDialog] = useCampaignUploadDialog(user);
 
   const logoutPressed = useCallback(() => {
@@ -532,11 +575,11 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
     }
   }, [setMode, setEmailLogin, setVisibleRef]);
 
-  const loginSucceeded = useCallback((user: FirebaseAuthTypes.UserCredential) => {
-    dispatch(login(user.user.uid));
+  const loginSucceeded = useCallback((user: ArkhamCardsUser) => {
+    setUser(user);
     resetDialog();
     showUploadDialog();
-  }, [resetDialog, dispatch, showUploadDialog]);
+  }, [resetDialog, setUser, showUploadDialog]);
 
   const signInToApple = useCallback(() => onAppleButtonPress().then(loginSucceeded), [loginSucceeded]);
   const signInToGoogle = useCallback(() => onGoogleButtonPress().then(loginSucceeded), [loginSucceeded]);

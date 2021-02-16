@@ -8,13 +8,13 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import space from '@styles/space';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import { useSimpleTextDialog } from '@components/deck/dialogs';
-import { ArkhamCardsProfile, FriendStatus } from '@data/firebase/types';
+import { ArkhamCardsProfile, FriendStatus } from '@data/parse/types';
 import { NavigationProps } from '@components/nav/types';
 import { Navigation } from 'react-native-navigation';
 import { FriendsViewProps } from '../FriendsView';
-import { useUpdateHandle } from '@data/firebase/api';
+import { useUpdateHandle } from '@data/parse/api';
 import StyleContext from '@styles/StyleContext';
-import fbdb from '@data/firebase/fbdb';
+import fbdb from '@data/parse/db';
 
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
   const { typography } = useContext(StyleContext);
