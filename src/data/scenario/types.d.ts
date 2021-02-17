@@ -185,8 +185,7 @@ export interface MultiCondition {
     | CampaignLogCountCondition
     | CampaignDataVersionCondition
     | ScenarioDataResolutionCondition
-    | MultiCondition
-    | InvestigatorCardCondition
+    | BinaryCardCondition
   )[];
   count: number;
   options: BoolOption[];
@@ -391,9 +390,9 @@ export interface StringOption {
   effects?: Effect[];
   steps?: string[];
 }
-export interface InvestigatorCardCondition {
+export interface BinaryCardCondition {
   type: "has_card";
-  investigator: "each";
+  investigator: "defeated" | "any";
   card: string;
   options: BoolOption[];
 }
@@ -432,9 +431,9 @@ export interface MathEqualsCondition {
   operation: "equals";
   options: BoolOption[];
 }
-export interface BinaryCardCondition {
+export interface InvestigatorCardCondition {
   type: "has_card";
-  investigator: "defeated" | "any";
+  investigator: "each";
   card: string;
   options: BoolOption[];
 }

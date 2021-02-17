@@ -541,15 +541,8 @@ export function multiConditionResult(
     condition.conditions,
     subCondition => {
       switch (subCondition.type) {
-        case 'has_card': {
-          const result = hasCardConditionResult(subCondition, campaignLog);
-          if (result.type === 'binary') {
-            return result.option ? 1 : 0;
-          }
-          return result.options.length ? 1 : 0;
-        }
-        case 'multi':
-          return multiConditionResult(subCondition, campaignLog).option ? 1 : 0;
+        case 'has_card':
+          return binaryCardConditionResult(subCondition, campaignLog).option ? 1 : 0;
         case 'campaign_log':
           return campaignLogConditionResult(subCondition, campaignLog).option ? 1 : 0;
         case 'campaign_log_count':
