@@ -52,6 +52,8 @@ export default class DeckOption {
   @Column('simple-array', { nullable: true })
   public deck_size_select?: string[];
 
+  public dynamic?: boolean;
+
   static optionName(option: DeckOption) {
     switch (option.real_name) {
       case 'Secondary Class':

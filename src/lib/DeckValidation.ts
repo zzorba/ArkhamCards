@@ -241,7 +241,7 @@ export default class DeckValidation {
 
   isCardLimited(card: Card): boolean {
     const option = this.matchingDeckOption(card, false);
-    return !!(option && option.limit);
+    return !!(option && option.limit && !option.dynamic);
   }
 
   deckOptions(): DeckOption[] {
@@ -252,12 +252,14 @@ export default class DeckValidation {
         not: true,
         slot: ['Ally'],
         error: t`No assets that take up the ally slot are allowed by On Your Own.`,
+        dynamic: true,
       }));
     }
     deck_options.push({
       limit: 1,
       trait: ['Covenant'],
       error: t`Limit 1 Covenant per deck.`,
+      dynamic: true,
     });
     if (this.investigator &&
         this.investigator.deck_options &&
