@@ -74091,6 +74091,10 @@
   "steps": [
     {
       "id": "intro",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.horror_in_high_gear.intro",
+        "name": "Intro"
+      },
       "type": "story",
       "text": "Du fährst über die alte, unbefestigte Straße aus Innsmouth hinaus. Die Sonne ist bereits am westlichen Horizont untergegangen. Die staubige Straße und die vorbeiziehenden Baumreihen werden nur noch vom hellen, unheimlichen Schein des Vollmondes beleuchtet. \n„Hier“, ruft dir Agent Harper vom Beifahrersitz aus entgegen, wobei sie den Motorenlärm des Automobils zu übertönen versucht. Sie tippt immer wieder auf einen Punkt auf der Landkarte, die sie auf ihrem Schoß ausgebreitet hat. „Der Leuchtturm von Falcon Point. Hier sollte Oceiros sein.“ \nDir läuft ein Schauder den Rücken hinab. Wenn du deinen Erinnerungen trauen kannst, ist Oceiros der Mann, der dich in den Gezeitentunneln zum Sterben zurückgelassen hat. Du fragst Agent Harper, wie weit Falcon Point von Innsmouth entfernt ist, in der Hoffnung, dort anzukommen, bevor der Orden herausgefunden hat, dass du entkommen bist. \nSie seufzt. „So weit ist es nicht, aber die Straße ist sehr kurvenreich und schwer zu befahren. Einmal falsch abgebogen und …“ Du bemerkst zeitgleich mit Agent Harper die Lichter im Rückspiegel. Scheinwerfer, die mit jeder Sekunde heller und größer werden. Harper flucht leise vor sich hin. „Ich nehme nicht an, dass das Ihre Freunde sind?“ \nKopfschüttelnd verstärkst du deinen Griff um das Lenkrad. Wie es aussieht, hat der Orden bereits Wind von deiner Flucht aus Innsmouth bekommen. Du warnst Agent Harper, sie solle sich festzuhalten, und trittst das Gaspedal durch."
     },
@@ -74344,6 +74348,10 @@
   "resolutions": [
     {
       "id": "no_resolution",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.horror_in_high_gear.no_resolution",
+        "name": "No Resolution"
+      },
       "title": "Es wurde keine Auflösung erreicht\n(alle Ermittler wurden besiegt):",
       "investigator_status": [
         "eliminated",
@@ -74359,6 +74367,10 @@
     },
     {
       "id": "R1",
+      "narration": {
+        "id": "the_innsmouth_conspiracy.horror_in_high_gear.resolution_1",
+        "name": "Resolution 1"
+      },
       "investigator_status": [
         "alive",
         "eliminated",
