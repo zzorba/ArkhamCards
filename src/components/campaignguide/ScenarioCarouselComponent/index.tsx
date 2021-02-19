@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
 import Carousel from 'react-native-snap-carousel';
 import { Platform } from 'react-native';
 import { findIndex } from 'lodash';
@@ -64,6 +64,7 @@ export default function ScenarioCarouselComponent({
       showLinkedScenario ? onShowLinkedScenario : undefined
     );
   }, [componentId, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState]);
+  const activeIndex = useMemo(() => getActiveIndex(processedCampaign.scenarios), [processedCampaign.scenarios]);
   useEffectUpdate(() => {
     if (visible) {
       if (scenarioPressed.current) {
@@ -75,7 +76,7 @@ export default function ScenarioCarouselComponent({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
-  const [selectedIndex, setIndex] = useState(getActiveIndex(processedCampaign.scenarios));
+  const [selectedIndex, setIndex] = useState(activeIndex);
   const numScenarios = processedCampaign.scenarios.length;
   const renderScenario = useCallback(({ item, index }: { item: ProcessedScenario; index: number; dataIndex: number }) => {
     return (
@@ -86,10 +87,11 @@ export default function ScenarioCarouselComponent({
         showAlert={showAlert}
         processedCampaign={processedCampaign}
         componentId={componentId}
+        isActive={index === activeIndex}
         last={index === numScenarios - 1}
       />
     );
-  }, [onShowScenario, showAlert, processedCampaign, componentId, numScenarios]);
+  }, [onShowScenario, showAlert, processedCampaign, componentId, numScenarios, activeIndex]);
   return (
     <Carousel
       ref={carousel}

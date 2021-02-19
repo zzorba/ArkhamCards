@@ -17,10 +17,11 @@ interface Props {
   showScenario: (scenario: ProcessedScenario) => void;
   processedCampaign: ProcessedCampaign;
   showAlert: ShowAlert;
+  isActive: boolean;
   last?: boolean;
 }
 
-export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, last }: Props) {
+export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, last, isActive }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const [scenarioNumber, scenarioName] = useMemo(() => {
     const fullScenarioName = scenario.scenarioGuide.fullScenarioName();
@@ -68,6 +69,32 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
             />
           </View>
         );
+      case 'placeholder':
+        if (isActive) {
+          return (
+            <View style={styles.button}>
+              <View style={styles.row}>
+                <AppIcon size={32} name="lock" color={light} />
+                <Text style={[typography.large, typography.italic, { color: light }]}>
+                  { t`Coming soon` }
+                </Text>
+              </View>
+              <AddSideScenarioButton
+                componentId={componentId}
+                processedCampaign={processedCampaign}
+                showAlert={showAlert}
+              />
+            </View>
+          );
+        }
+        return (
+          <View style={[styles.row, space.paddingBottomM]}>
+            <AppIcon size={32} name="lock" color={light} />
+            <Text style={[typography.large, typography.italic, { color: light }]}>
+              { t`Coming soon` }
+            </Text>
+          </View>
+        );
       case 'completed':
         return (
           <View style={space.paddingBottomM}>
@@ -90,17 +117,16 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
           </View>
         );
       case 'locked':
-      case 'placeholder':
         return (
           <View style={[styles.row, space.paddingBottomM]}>
             <AppIcon size={32} name="lock" color={light} />
             <Text style={[typography.large, typography.italic, { color: light }]}>
-              { scenario.type === 'placeholder' ? t`Coming soon` : t`Locked` }
+              { t`Locked` }
             </Text>
           </View>
         );
     }
-  }, [onPress, scenario.type, typography, light, componentId, processedCampaign, showAlert]);
+  }, [onPress, scenario.type, typography, light, componentId, processedCampaign, isActive, showAlert]);
   return (
     <View style={[
       space.paddingTopM,
