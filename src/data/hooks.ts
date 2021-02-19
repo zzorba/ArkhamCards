@@ -29,7 +29,7 @@ export function useCampaign(campaignId?: CampaignId): SingleCampaign | undefined
 
 export function useCampaignGuideState(campaignId?: CampaignId): CampaignGuideState | undefined {
   const campaignGuideStateSelector = useMemo(makeCampaignGuideStateSelector, []);
-  const reduxCampaignGuideState = useSelector((state: AppState) => campaignId?.serverId ? campaignGuideStateSelector(state, campaignId.campaignId) : undefined);
+  const reduxCampaignGuideState = useSelector((state: AppState) => campaignId ? campaignGuideStateSelector(state, campaignId.campaignId) : undefined);
   const [serverCampaignGuideState] = useServerCampaignGuideState(campaignId);
   return campaignId?.serverId ? serverCampaignGuideState : reduxCampaignGuideState;
 }
