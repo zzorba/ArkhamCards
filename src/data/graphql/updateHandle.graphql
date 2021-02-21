@@ -1,0 +1,6 @@
+mutation updateHandle($handle:String!) {
+  updateHandle(handle: $handle) {
+    id
+    handle
+  }
+}

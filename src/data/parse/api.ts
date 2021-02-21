@@ -1,4 +1,5 @@
 import { UploadedCampaignId } from '@actions/types';
+import { useUpdateHandleMutation } from '@data/graphql/schema';
 import { useCallback, useReducer } from 'react';
 import { FriendUser, useFunction, ErrorResponse } from './hooks';
 
@@ -6,10 +7,32 @@ interface UpdateHandleRequest {
   handle: string;
 }
 export function useUpdateHandle() {
-  const apiCall = useFunction<UpdateHandleRequest>('social-updateHandle');
+  const [apiCall, { data, error }] = useUpdateHandleMutation({
+    update: (cache, mutationResult) => {
+      if (mutationResult.data?.updateHandle) {
+        const {
+          id,
+          handle,
+        } = mutationResult.data.updateHandle;
+        cache.modify({
+          id,
+          fields: {
+            handle() {
+              return handle;
+            },
+          },
+        });
+      }
+    },
+  });
   return useCallback(async(handle: string) => {
-    const data = await apiCall({ handle });
-    return data.error || undefined;
+    try {
+      const data = await apiCall({ variables: { handle } });
+      console.log(data);
+    } catch (e) {
+      return e.message || undefined;
+    }
+    return undefined;
   }, [apiCall]);
 }
 

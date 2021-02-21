@@ -30,6 +30,7 @@ const authLink = setContext((_, { headers }) => {
     'X-Parse-Javascript-Key': PARSE_JAVASCRIPT_KEY,
   };
   if (currentUser) {
+    console.log(currentUser.getSessionToken());
     newHeaders['X-Parse-Session-Token'] = currentUser.getSessionToken();
   }
   console.log(newHeaders);

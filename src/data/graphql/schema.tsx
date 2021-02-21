@@ -56,12 +56,12 @@ export type Query = {
   guide: Guide;
   /** The guides query can be used to find objects of the Guide class. */
   guides: GuideConnection;
+  /** The publicUser query can be used to get an object of the PublicUser class by its id. */
+  publicUser: PublicUser;
+  /** The publicUsers query can be used to find objects of the PublicUser class. */
+  publicUsers: PublicUserConnection;
   /** The userFriends query can be used to get an object of the UserFriends class by its id. */
   userFriends: UserFriends;
-  /** The userHandle query can be used to get an object of the UserHandle class by its id. */
-  userHandle: UserHandle;
-  /** The userHandles query can be used to find objects of the UserHandle class. */
-  userHandles: UserHandleConnection;
   /** The userProfile query can be used to get an object of the UserProfile class by its id. */
   userProfile: UserProfile;
   /** The userProfiles query can be used to find objects of the UserProfile class. */
@@ -78,7 +78,7 @@ export type Query = {
   class: Class;
   /** The classes query can be used to retrieve the existing object classes. */
   classes: Array<Class>;
-  currentUserHandle: UserHandle;
+  currentUserHandle: PublicUser;
 };
 
 
@@ -209,28 +209,28 @@ export type QueryGuidesArgs = {
 
 
 /** Query is the top level type for queries. */
-export type QueryUserFriendsArgs = {
+export type QueryPublicUserArgs = {
   id: Scalars['ID'];
   options?: Maybe<ReadOptionsInput>;
 };
 
 
 /** Query is the top level type for queries. */
-export type QueryUserHandleArgs = {
-  id: Scalars['ID'];
-  options?: Maybe<ReadOptionsInput>;
-};
-
-
-/** Query is the top level type for queries. */
-export type QueryUserHandlesArgs = {
-  where?: Maybe<UserHandleWhereInput>;
-  order?: Maybe<Array<UserHandleOrder>>;
+export type QueryPublicUsersArgs = {
+  where?: Maybe<PublicUserWhereInput>;
+  order?: Maybe<Array<PublicUserOrder>>;
   skip?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
   before?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
+  options?: Maybe<ReadOptionsInput>;
+};
+
+
+/** Query is the top level type for queries. */
+export type QueryUserFriendsArgs = {
+  id: Scalars['ID'];
   options?: Maybe<ReadOptionsInput>;
 };
 
@@ -319,18 +319,18 @@ export type Mutation = {
   updateGuide?: Maybe<UpdateGuidePayload>;
   /** The deleteGuide mutation can be used to delete an object of the Guide class. */
   deleteGuide?: Maybe<DeleteGuidePayload>;
+  /** The createPublicUser mutation can be used to create a new object of the PublicUser class. */
+  createPublicUser?: Maybe<CreatePublicUserPayload>;
+  /** The updatePublicUser mutation can be used to update an object of the PublicUser class. */
+  updatePublicUser?: Maybe<UpdatePublicUserPayload>;
+  /** The deletePublicUser mutation can be used to delete an object of the PublicUser class. */
+  deletePublicUser?: Maybe<DeletePublicUserPayload>;
   /** The createUserFriends mutation can be used to create a new object of the UserFriends class. */
   createUserFriends?: Maybe<CreateUserFriendsPayload>;
   /** The updateUserFriends mutation can be used to update an object of the UserFriends class. */
   updateUserFriends?: Maybe<UpdateUserFriendsPayload>;
   /** The deleteUserFriends mutation can be used to delete an object of the UserFriends class. */
   deleteUserFriends?: Maybe<DeleteUserFriendsPayload>;
-  /** The createUserHandle mutation can be used to create a new object of the UserHandle class. */
-  createUserHandle?: Maybe<CreateUserHandlePayload>;
-  /** The updateUserHandle mutation can be used to update an object of the UserHandle class. */
-  updateUserHandle?: Maybe<UpdateUserHandlePayload>;
-  /** The deleteUserHandle mutation can be used to delete an object of the UserHandle class. */
-  deleteUserHandle?: Maybe<DeleteUserHandlePayload>;
   /** The createUserProfile mutation can be used to create a new object of the UserProfile class. */
   createUserProfile?: Maybe<CreateUserProfilePayload>;
   /** The updateUserProfile mutation can be used to update an object of the UserProfile class. */
@@ -367,6 +367,7 @@ export type Mutation = {
   updateClass?: Maybe<UpdateClassPayload>;
   /** The deleteClass mutation can be used to delete an existing object class. */
   deleteClass?: Maybe<DeleteClassPayload>;
+  updateHandle?: Maybe<PublicUser>;
 };
 
 
@@ -479,6 +480,24 @@ export type MutationDeleteGuideArgs = {
 
 
 /** Mutation is the top level type for mutations. */
+export type MutationCreatePublicUserArgs = {
+  input: CreatePublicUserInput;
+};
+
+
+/** Mutation is the top level type for mutations. */
+export type MutationUpdatePublicUserArgs = {
+  input: UpdatePublicUserInput;
+};
+
+
+/** Mutation is the top level type for mutations. */
+export type MutationDeletePublicUserArgs = {
+  input: DeletePublicUserInput;
+};
+
+
+/** Mutation is the top level type for mutations. */
 export type MutationCreateUserFriendsArgs = {
   input: CreateUserFriendsInput;
 };
@@ -493,24 +512,6 @@ export type MutationUpdateUserFriendsArgs = {
 /** Mutation is the top level type for mutations. */
 export type MutationDeleteUserFriendsArgs = {
   input: DeleteUserFriendsInput;
-};
-
-
-/** Mutation is the top level type for mutations. */
-export type MutationCreateUserHandleArgs = {
-  input: CreateUserHandleInput;
-};
-
-
-/** Mutation is the top level type for mutations. */
-export type MutationUpdateUserHandleArgs = {
-  input: UpdateUserHandleInput;
-};
-
-
-/** Mutation is the top level type for mutations. */
-export type MutationDeleteUserHandleArgs = {
-  input: DeleteUserHandleInput;
 };
 
 
@@ -619,6 +620,12 @@ export type MutationUpdateClassArgs = {
 /** Mutation is the top level type for mutations. */
 export type MutationDeleteClassArgs = {
   input: DeleteClassInput;
+};
+
+
+/** Mutation is the top level type for mutations. */
+export type MutationUpdateHandleArgs = {
+  handle: Scalars['String'];
 };
 
 
@@ -2519,17 +2526,207 @@ export type DeleteGuidePayload = {
   clientMutationId?: Maybe<Scalars['String']>;
 };
 
+/** The CreatePublicUserFieldsInput input type is used in operations that involve creation of objects in the PublicUser class. */
+export type CreatePublicUserFieldsInput = {
+  ACL?: Maybe<AclInput>;
+  /** This is the object handle. */
+  handle?: Maybe<Scalars['String']>;
+  /** This is the object handleNormalized. */
+  handleNormalized?: Maybe<Scalars['String']>;
+  /** This is the object friends. */
+  friends?: Maybe<PublicUserRelationInput>;
+};
+
+/** The UpdatePublicUserFieldsInput input type is used in operations that involve creation of objects in the PublicUser class. */
+export type UpdatePublicUserFieldsInput = {
+  ACL?: Maybe<AclInput>;
+  /** This is the object handle. */
+  handle?: Maybe<Scalars['String']>;
+  /** This is the object handleNormalized. */
+  handleNormalized?: Maybe<Scalars['String']>;
+  /** This is the object friends. */
+  friends?: Maybe<PublicUserRelationInput>;
+};
+
+/** Allow to link OR add and link an object of the PublicUser class. */
+export type PublicUserPointerInput = {
+  /** Link an existing object from PublicUser class. You can use either the global or the object id. */
+  link?: Maybe<Scalars['ID']>;
+  /** Create and link an object from PublicUser class. */
+  createAndLink?: Maybe<CreatePublicUserFieldsInput>;
+};
+
+/** Allow to add, remove, createAndAdd objects of the PublicUser class into a relation field. */
+export type PublicUserRelationInput = {
+  /** Add existing objects from the PublicUser class into the relation. You can use either the global or the object ids. */
+  add?: Maybe<Array<Scalars['ID']>>;
+  /** Remove existing objects from the PublicUser class out of the relation. You can use either the global or the object ids. */
+  remove?: Maybe<Array<Scalars['ID']>>;
+  /** Create and add objects of the PublicUser class into the relation. */
+  createAndAdd?: Maybe<Array<CreatePublicUserFieldsInput>>;
+};
+
+/** The PublicUserWhereInput input type is used in operations that involve filtering objects of PublicUser class. */
+export type PublicUserWhereInput = {
+  /** This is the object objectId. */
+  objectId?: Maybe<IdWhereInput>;
+  /** This is the object createdAt. */
+  createdAt?: Maybe<DateWhereInput>;
+  /** This is the object updatedAt. */
+  updatedAt?: Maybe<DateWhereInput>;
+  /** This is the object ACL. */
+  ACL?: Maybe<ObjectWhereInput>;
+  /** This is the object handle. */
+  handle?: Maybe<StringWhereInput>;
+  /** This is the object handleNormalized. */
+  handleNormalized?: Maybe<StringWhereInput>;
+  /** This is the object friends. */
+  friends?: Maybe<PublicUserRelationWhereInput>;
+  /** This is the object id. */
+  id?: Maybe<IdWhereInput>;
+  /** This is the OR operator to compound constraints. */
+  OR?: Maybe<Array<PublicUserWhereInput>>;
+  /** This is the AND operator to compound constraints. */
+  AND?: Maybe<Array<PublicUserWhereInput>>;
+  /** This is the NOR operator to compound constraints. */
+  NOR?: Maybe<Array<PublicUserWhereInput>>;
+};
+
+/** The PublicUserRelationWhereInput input type is used in operations that involve filtering objects of PublicUser class. */
+export type PublicUserRelationWhereInput = {
+  /** Run a relational/pointer query where at least one child object can match. */
+  have?: Maybe<PublicUserWhereInput>;
+  /** Run an inverted relational/pointer query where at least one child object can match. */
+  haveNot?: Maybe<PublicUserWhereInput>;
+  /** Check if the relation/pointer contains objects. */
+  exists?: Maybe<Scalars['Boolean']>;
+};
+
+/** The PublicUserOrder input type is used when sorting objects of the PublicUser class. */
+export enum PublicUserOrder {
+  ObjectIdAsc = 'objectId_ASC',
+  ObjectIdDesc = 'objectId_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  AclAsc = 'ACL_ASC',
+  AclDesc = 'ACL_DESC',
+  HandleAsc = 'handle_ASC',
+  HandleDesc = 'handle_DESC',
+  HandleNormalizedAsc = 'handleNormalized_ASC',
+  HandleNormalizedDesc = 'handleNormalized_DESC',
+  FriendsAsc = 'friends_ASC',
+  FriendsDesc = 'friends_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC'
+}
+
+/** The PublicUser object type is used in operations that involve outputting objects of PublicUser class. */
+export type PublicUser = ParseObject & Node & {
+  __typename?: 'PublicUser';
+  /** The ID of an object */
+  id: Scalars['ID'];
+  /** This is the object id. */
+  objectId: Scalars['ID'];
+  /** This is the date in which the object was created. */
+  createdAt: Scalars['Date'];
+  /** This is the date in which the object was las updated. */
+  updatedAt: Scalars['Date'];
+  ACL: Acl;
+  /** This is the object handle. */
+  handle?: Maybe<Scalars['String']>;
+  /** This is the object handleNormalized. */
+  handleNormalized?: Maybe<Scalars['String']>;
+  /** This is the object friends. */
+  friends: PublicUserConnection;
+};
+
+
+/** The PublicUser object type is used in operations that involve outputting objects of PublicUser class. */
+export type PublicUserFriendsArgs = {
+  where?: Maybe<PublicUserWhereInput>;
+  order?: Maybe<Array<PublicUserOrder>>;
+  skip?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  options?: Maybe<ReadOptionsInput>;
+};
+
+/** An edge in a connection. */
+export type PublicUserEdge = {
+  __typename?: 'PublicUserEdge';
+  /** The item at the end of the edge */
+  node?: Maybe<PublicUser>;
+  /** A cursor for use in pagination */
+  cursor: Scalars['String'];
+};
+
+/** A connection to a list of items. */
+export type PublicUserConnection = {
+  __typename?: 'PublicUserConnection';
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<PublicUserEdge>>>;
+  /** This is the total matched objecs count that is returned when the count flag is set. */
+  count: Scalars['Int'];
+};
+
+export type CreatePublicUserInput = {
+  /** These are the fields that will be used to create the new object. */
+  fields?: Maybe<CreatePublicUserFieldsInput>;
+  clientMutationId?: Maybe<Scalars['String']>;
+};
+
+export type CreatePublicUserPayload = {
+  __typename?: 'CreatePublicUserPayload';
+  /** This is the created object. */
+  publicUser: PublicUser;
+  clientMutationId?: Maybe<Scalars['String']>;
+};
+
+export type UpdatePublicUserInput = {
+  /** This is the object id. You can use either the global or the object id. */
+  id: Scalars['ID'];
+  /** These are the fields that will be used to update the object. */
+  fields?: Maybe<UpdatePublicUserFieldsInput>;
+  clientMutationId?: Maybe<Scalars['String']>;
+};
+
+export type UpdatePublicUserPayload = {
+  __typename?: 'UpdatePublicUserPayload';
+  /** This is the updated object. */
+  publicUser: PublicUser;
+  clientMutationId?: Maybe<Scalars['String']>;
+};
+
+export type DeletePublicUserInput = {
+  /** This is the object id. You can use either the global or the object id. */
+  id: Scalars['ID'];
+  clientMutationId?: Maybe<Scalars['String']>;
+};
+
+export type DeletePublicUserPayload = {
+  __typename?: 'DeletePublicUserPayload';
+  /** This is the deleted object. */
+  publicUser: PublicUser;
+  clientMutationId?: Maybe<Scalars['String']>;
+};
+
 /** The CreateUserFriendsFieldsInput input type is used in operations that involve creation of objects in the UserFriends class. */
 export type CreateUserFriendsFieldsInput = {
   ACL?: Maybe<AclInput>;
   /** This is the object user. */
   user: UserPointerInput;
   /** This is the object friends. */
-  friends?: Maybe<UserHandleRelationInput>;
+  friends?: Maybe<Scalars['Object']>;
   /** This is the object sent_requests. */
-  sent_requests?: Maybe<UserHandleRelationInput>;
+  sent_requests?: Maybe<Scalars['Object']>;
   /** This is the object received_requests. */
-  received_requests?: Maybe<UserHandleRelationInput>;
+  received_requests?: Maybe<Scalars['Object']>;
 };
 
 /** The UpdateUserFriendsFieldsInput input type is used in operations that involve creation of objects in the UserFriends class. */
@@ -2538,11 +2735,11 @@ export type UpdateUserFriendsFieldsInput = {
   /** This is the object user. */
   user?: Maybe<UserPointerInput>;
   /** This is the object friends. */
-  friends?: Maybe<UserHandleRelationInput>;
+  friends?: Maybe<Scalars['Object']>;
   /** This is the object sent_requests. */
-  sent_requests?: Maybe<UserHandleRelationInput>;
+  sent_requests?: Maybe<Scalars['Object']>;
   /** This is the object received_requests. */
-  received_requests?: Maybe<UserHandleRelationInput>;
+  received_requests?: Maybe<Scalars['Object']>;
 };
 
 /** Allow to link OR add and link an object of the UserFriends class. */
@@ -2576,11 +2773,11 @@ export type UserFriendsWhereInput = {
   /** This is the object user. */
   user?: Maybe<UserRelationWhereInput>;
   /** This is the object friends. */
-  friends?: Maybe<UserHandleRelationWhereInput>;
+  friends?: Maybe<Scalars['Object']>;
   /** This is the object sent_requests. */
-  sent_requests?: Maybe<UserHandleRelationWhereInput>;
+  sent_requests?: Maybe<Scalars['Object']>;
   /** This is the object received_requests. */
-  received_requests?: Maybe<UserHandleRelationWhereInput>;
+  received_requests?: Maybe<Scalars['Object']>;
   /** This is the object id. */
   id?: Maybe<IdWhereInput>;
   /** This is the OR operator to compound constraints. */
@@ -2638,50 +2835,11 @@ export type UserFriends = ParseObject & Node & {
   /** This is the object user. */
   user: User;
   /** This is the object friends. */
-  friends: UserHandleConnection;
+  friends: Scalars['Object'];
   /** This is the object sent_requests. */
-  sent_requests: UserHandleConnection;
+  sent_requests: Scalars['Object'];
   /** This is the object received_requests. */
-  received_requests: UserHandleConnection;
-};
-
-
-/** The UserFriends object type is used in operations that involve outputting objects of UserFriends class. */
-export type UserFriendsFriendsArgs = {
-  where?: Maybe<UserHandleWhereInput>;
-  order?: Maybe<Array<UserHandleOrder>>;
-  skip?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  options?: Maybe<ReadOptionsInput>;
-};
-
-
-/** The UserFriends object type is used in operations that involve outputting objects of UserFriends class. */
-export type UserFriendsSent_RequestsArgs = {
-  where?: Maybe<UserHandleWhereInput>;
-  order?: Maybe<Array<UserHandleOrder>>;
-  skip?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  options?: Maybe<ReadOptionsInput>;
-};
-
-
-/** The UserFriends object type is used in operations that involve outputting objects of UserFriends class. */
-export type UserFriendsReceived_RequestsArgs = {
-  where?: Maybe<UserHandleWhereInput>;
-  order?: Maybe<Array<UserHandleOrder>>;
-  skip?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  options?: Maybe<ReadOptionsInput>;
+  received_requests: Scalars['Object'];
 };
 
 /** An edge in a connection. */
@@ -2742,193 +2900,6 @@ export type DeleteUserFriendsPayload = {
   __typename?: 'DeleteUserFriendsPayload';
   /** This is the deleted object. */
   userFriends: UserFriends;
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** The CreateUserHandleFieldsInput input type is used in operations that involve creation of objects in the UserHandle class. */
-export type CreateUserHandleFieldsInput = {
-  ACL?: Maybe<AclInput>;
-  /** This is the object handle. */
-  handle: Scalars['String'];
-  /** This is the object handle_normalized. */
-  handle_normalized: Scalars['String'];
-  /** This is the object user. */
-  user: UserPointerInput;
-  /** This is the object useMasterKey. */
-  useMasterKey?: Maybe<Scalars['Boolean']>;
-};
-
-/** The UpdateUserHandleFieldsInput input type is used in operations that involve creation of objects in the UserHandle class. */
-export type UpdateUserHandleFieldsInput = {
-  ACL?: Maybe<AclInput>;
-  /** This is the object handle. */
-  handle?: Maybe<Scalars['String']>;
-  /** This is the object handle_normalized. */
-  handle_normalized?: Maybe<Scalars['String']>;
-  /** This is the object user. */
-  user?: Maybe<UserPointerInput>;
-  /** This is the object useMasterKey. */
-  useMasterKey?: Maybe<Scalars['Boolean']>;
-};
-
-/** Allow to link OR add and link an object of the UserHandle class. */
-export type UserHandlePointerInput = {
-  /** Link an existing object from UserHandle class. You can use either the global or the object id. */
-  link?: Maybe<Scalars['ID']>;
-  /** Create and link an object from UserHandle class. */
-  createAndLink?: Maybe<CreateUserHandleFieldsInput>;
-};
-
-/** Allow to add, remove, createAndAdd objects of the UserHandle class into a relation field. */
-export type UserHandleRelationInput = {
-  /** Add existing objects from the UserHandle class into the relation. You can use either the global or the object ids. */
-  add?: Maybe<Array<Scalars['ID']>>;
-  /** Remove existing objects from the UserHandle class out of the relation. You can use either the global or the object ids. */
-  remove?: Maybe<Array<Scalars['ID']>>;
-  /** Create and add objects of the UserHandle class into the relation. */
-  createAndAdd?: Maybe<Array<CreateUserHandleFieldsInput>>;
-};
-
-/** The UserHandleWhereInput input type is used in operations that involve filtering objects of UserHandle class. */
-export type UserHandleWhereInput = {
-  /** This is the object objectId. */
-  objectId?: Maybe<IdWhereInput>;
-  /** This is the object createdAt. */
-  createdAt?: Maybe<DateWhereInput>;
-  /** This is the object updatedAt. */
-  updatedAt?: Maybe<DateWhereInput>;
-  /** This is the object ACL. */
-  ACL?: Maybe<ObjectWhereInput>;
-  /** This is the object handle. */
-  handle?: Maybe<StringWhereInput>;
-  /** This is the object handle_normalized. */
-  handle_normalized?: Maybe<StringWhereInput>;
-  /** This is the object user. */
-  user?: Maybe<UserRelationWhereInput>;
-  /** This is the object useMasterKey. */
-  useMasterKey?: Maybe<BooleanWhereInput>;
-  /** This is the object id. */
-  id?: Maybe<IdWhereInput>;
-  /** This is the OR operator to compound constraints. */
-  OR?: Maybe<Array<UserHandleWhereInput>>;
-  /** This is the AND operator to compound constraints. */
-  AND?: Maybe<Array<UserHandleWhereInput>>;
-  /** This is the NOR operator to compound constraints. */
-  NOR?: Maybe<Array<UserHandleWhereInput>>;
-};
-
-/** The UserHandleRelationWhereInput input type is used in operations that involve filtering objects of UserHandle class. */
-export type UserHandleRelationWhereInput = {
-  /** Run a relational/pointer query where at least one child object can match. */
-  have?: Maybe<UserHandleWhereInput>;
-  /** Run an inverted relational/pointer query where at least one child object can match. */
-  haveNot?: Maybe<UserHandleWhereInput>;
-  /** Check if the relation/pointer contains objects. */
-  exists?: Maybe<Scalars['Boolean']>;
-};
-
-/** The UserHandleOrder input type is used when sorting objects of the UserHandle class. */
-export enum UserHandleOrder {
-  ObjectIdAsc = 'objectId_ASC',
-  ObjectIdDesc = 'objectId_DESC',
-  CreatedAtAsc = 'createdAt_ASC',
-  CreatedAtDesc = 'createdAt_DESC',
-  UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC',
-  AclAsc = 'ACL_ASC',
-  AclDesc = 'ACL_DESC',
-  HandleAsc = 'handle_ASC',
-  HandleDesc = 'handle_DESC',
-  HandleNormalizedAsc = 'handle_normalized_ASC',
-  HandleNormalizedDesc = 'handle_normalized_DESC',
-  UserAsc = 'user_ASC',
-  UserDesc = 'user_DESC',
-  UseMasterKeyAsc = 'useMasterKey_ASC',
-  UseMasterKeyDesc = 'useMasterKey_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC'
-}
-
-/** The UserHandle object type is used in operations that involve outputting objects of UserHandle class. */
-export type UserHandle = ParseObject & Node & {
-  __typename?: 'UserHandle';
-  /** The ID of an object */
-  id: Scalars['ID'];
-  /** This is the object id. */
-  objectId: Scalars['ID'];
-  /** This is the date in which the object was created. */
-  createdAt: Scalars['Date'];
-  /** This is the date in which the object was las updated. */
-  updatedAt: Scalars['Date'];
-  ACL: Acl;
-  /** This is the object handle. */
-  handle: Scalars['String'];
-  /** This is the object handle_normalized. */
-  handle_normalized: Scalars['String'];
-  /** This is the object user. */
-  user: User;
-  /** This is the object useMasterKey. */
-  useMasterKey?: Maybe<Scalars['Boolean']>;
-};
-
-/** An edge in a connection. */
-export type UserHandleEdge = {
-  __typename?: 'UserHandleEdge';
-  /** The item at the end of the edge */
-  node?: Maybe<UserHandle>;
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
-};
-
-/** A connection to a list of items. */
-export type UserHandleConnection = {
-  __typename?: 'UserHandleConnection';
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<UserHandleEdge>>>;
-  /** This is the total matched objecs count that is returned when the count flag is set. */
-  count: Scalars['Int'];
-};
-
-export type CreateUserHandleInput = {
-  /** These are the fields that will be used to create the new object. */
-  fields?: Maybe<CreateUserHandleFieldsInput>;
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-export type CreateUserHandlePayload = {
-  __typename?: 'CreateUserHandlePayload';
-  /** This is the created object. */
-  userHandle: UserHandle;
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-export type UpdateUserHandleInput = {
-  /** This is the object id. You can use either the global or the object id. */
-  id: Scalars['ID'];
-  /** These are the fields that will be used to update the object. */
-  fields?: Maybe<UpdateUserHandleFieldsInput>;
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-export type UpdateUserHandlePayload = {
-  __typename?: 'UpdateUserHandlePayload';
-  /** This is the updated object. */
-  userHandle: UserHandle;
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-export type DeleteUserHandleInput = {
-  /** This is the object id. You can use either the global or the object id. */
-  id: Scalars['ID'];
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-export type DeleteUserHandlePayload = {
-  __typename?: 'DeleteUserHandlePayload';
-  /** This is the deleted object. */
-  userHandle: UserHandle;
   clientMutationId?: Maybe<Scalars['String']>;
 };
 
@@ -3247,7 +3218,7 @@ export type DeleteWeaknessSetPayload = {
 };
 
 /** Use Inline Fragment on Array to get results: https://graphql.org/learn/queries/#inline-fragments */
-export type ArrayResult = Element | Role | Session | User | Campaign | Deck | Guide | UserFriends | UserHandle | UserProfile | WeaknessSet;
+export type ArrayResult = Element | Role | Session | User | Campaign | Deck | Guide | PublicUser | UserFriends | UserProfile | WeaknessSet;
 
 export type CreateFileInput = {
   /** This is the new file to be created and uploaded. */
@@ -3432,20 +3403,46 @@ export type DeleteClassPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
 };
 
-export type GetCurrentUserHandleQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetMyCampaignsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCurrentUserHandleQuery = (
+export type GetMyCampaignsQuery = (
   { __typename?: 'Query' }
   & { currentUserHandle: (
-    { __typename?: 'UserHandle' }
-    & Pick<UserHandle, 'id' | 'handle'>
+    { __typename?: 'PublicUser' }
+    & Pick<PublicUser, 'id' | 'handle'>
   ) }
 );
 
+export type GetUserHandleQueryVariables = Exact<{
+  uid: Scalars['ID'];
+}>;
 
-export const GetCurrentUserHandleDocument = gql`
-    query getCurrentUserHandle {
+
+export type GetUserHandleQuery = (
+  { __typename?: 'Query' }
+  & { publicUser: (
+    { __typename?: 'PublicUser' }
+    & Pick<PublicUser, 'id' | 'handle'>
+  ) }
+);
+
+export type UpdateHandleMutationVariables = Exact<{
+  handle: Scalars['String'];
+}>;
+
+
+export type UpdateHandleMutation = (
+  { __typename?: 'Mutation' }
+  & { updateHandle?: Maybe<(
+    { __typename?: 'PublicUser' }
+    & Pick<PublicUser, 'id' | 'handle'>
+  )> }
+);
+
+
+export const GetMyCampaignsDocument = gql`
+    query getMyCampaigns {
   currentUserHandle {
     id
     handle
@@ -3454,29 +3451,96 @@ export const GetCurrentUserHandleDocument = gql`
     `;
 
 /**
- * __useGetCurrentUserHandleQuery__
+ * __useGetMyCampaignsQuery__
  *
- * To run a query within a React component, call `useGetCurrentUserHandleQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCurrentUserHandleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetMyCampaignsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMyCampaignsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetCurrentUserHandleQuery({
+ * const { data, loading, error } = useGetMyCampaignsQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetCurrentUserHandleQuery(baseOptions?: Apollo.QueryHookOptions<GetCurrentUserHandleQuery, GetCurrentUserHandleQueryVariables>) {
-        return Apollo.useQuery<GetCurrentUserHandleQuery, GetCurrentUserHandleQueryVariables>(GetCurrentUserHandleDocument, baseOptions);
+export function useGetMyCampaignsQuery(baseOptions?: Apollo.QueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
+        return Apollo.useQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
       }
-export function useGetCurrentUserHandleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCurrentUserHandleQuery, GetCurrentUserHandleQueryVariables>) {
-          return Apollo.useLazyQuery<GetCurrentUserHandleQuery, GetCurrentUserHandleQueryVariables>(GetCurrentUserHandleDocument, baseOptions);
+export function useGetMyCampaignsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
+          return Apollo.useLazyQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
         }
-export type GetCurrentUserHandleQueryHookResult = ReturnType<typeof useGetCurrentUserHandleQuery>;
-export type GetCurrentUserHandleLazyQueryHookResult = ReturnType<typeof useGetCurrentUserHandleLazyQuery>;
-export type GetCurrentUserHandleQueryResult = Apollo.QueryResult<GetCurrentUserHandleQuery, GetCurrentUserHandleQueryVariables>;
+export type GetMyCampaignsQueryHookResult = ReturnType<typeof useGetMyCampaignsQuery>;
+export type GetMyCampaignsLazyQueryHookResult = ReturnType<typeof useGetMyCampaignsLazyQuery>;
+export type GetMyCampaignsQueryResult = Apollo.QueryResult<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>;
+export const GetUserHandleDocument = gql`
+    query getUserHandle($uid: ID!) {
+  publicUser(id: $uid) {
+    id
+    handle
+  }
+}
+    `;
+
+/**
+ * __useGetUserHandleQuery__
+ *
+ * To run a query within a React component, call `useGetUserHandleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserHandleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserHandleQuery({
+ *   variables: {
+ *      uid: // value for 'uid'
+ *   },
+ * });
+ */
+export function useGetUserHandleQuery(baseOptions: Apollo.QueryHookOptions<GetUserHandleQuery, GetUserHandleQueryVariables>) {
+        return Apollo.useQuery<GetUserHandleQuery, GetUserHandleQueryVariables>(GetUserHandleDocument, baseOptions);
+      }
+export function useGetUserHandleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserHandleQuery, GetUserHandleQueryVariables>) {
+          return Apollo.useLazyQuery<GetUserHandleQuery, GetUserHandleQueryVariables>(GetUserHandleDocument, baseOptions);
+        }
+export type GetUserHandleQueryHookResult = ReturnType<typeof useGetUserHandleQuery>;
+export type GetUserHandleLazyQueryHookResult = ReturnType<typeof useGetUserHandleLazyQuery>;
+export type GetUserHandleQueryResult = Apollo.QueryResult<GetUserHandleQuery, GetUserHandleQueryVariables>;
+export const UpdateHandleDocument = gql`
+    mutation updateHandle($handle: String!) {
+  updateHandle(handle: $handle) {
+    id
+    handle
+  }
+}
+    `;
+export type UpdateHandleMutationFn = Apollo.MutationFunction<UpdateHandleMutation, UpdateHandleMutationVariables>;
+
+/**
+ * __useUpdateHandleMutation__
+ *
+ * To run a mutation, you first call `useUpdateHandleMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateHandleMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateHandleMutation, { data, loading, error }] = useUpdateHandleMutation({
+ *   variables: {
+ *      handle: // value for 'handle'
+ *   },
+ * });
+ */
+export function useUpdateHandleMutation(baseOptions?: Apollo.MutationHookOptions<UpdateHandleMutation, UpdateHandleMutationVariables>) {
+        return Apollo.useMutation<UpdateHandleMutation, UpdateHandleMutationVariables>(UpdateHandleDocument, baseOptions);
+      }
+export type UpdateHandleMutationHookResult = ReturnType<typeof useUpdateHandleMutation>;
+export type UpdateHandleMutationResult = Apollo.MutationResult<UpdateHandleMutation>;
+export type UpdateHandleMutationOptions = Apollo.BaseMutationOptions<UpdateHandleMutation, UpdateHandleMutationVariables>;
 
       export interface PossibleTypesResultData {
         possibleTypes: {
@@ -3492,8 +3556,8 @@ export type GetCurrentUserHandleQueryResult = Apollo.QueryResult<GetCurrentUserH
       "Campaign",
       "Deck",
       "Guide",
+      "PublicUser",
       "UserFriends",
-      "UserHandle",
       "UserProfile",
       "WeaknessSet"
     ],
@@ -3504,8 +3568,8 @@ export type GetCurrentUserHandleQueryResult = Apollo.QueryResult<GetCurrentUserH
       "Campaign",
       "Deck",
       "Guide",
+      "PublicUser",
       "UserFriends",
-      "UserHandle",
       "UserProfile",
       "WeaknessSet"
     ],
@@ -3532,8 +3596,8 @@ export type GetCurrentUserHandleQueryResult = Apollo.QueryResult<GetCurrentUserH
       "Campaign",
       "Deck",
       "Guide",
+      "PublicUser",
       "UserFriends",
-      "UserHandle",
       "UserProfile",
       "WeaknessSet"
     ]

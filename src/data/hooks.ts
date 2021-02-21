@@ -4,9 +4,9 @@ import { concat, filter, map, sortBy } from 'lodash';
 
 import { AppState, getCampaigns, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { Campaign, CampaignGuideState, CampaignId, SingleCampaign } from '@actions/types';
-import { useMyCampaigns, useServerCampaign, useServerCampaignGuideState } from './parse/hooks';
+import { useServerCampaign, useServerCampaignGuideState } from './parse/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useGetCurrentUserHandleQuery } from './graphql/schema';
+import { useGetUserHandleQuery } from './graphql/schema';
 
 export function useCampaigns(): [Campaign[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);
@@ -36,16 +36,12 @@ export function useCampaignGuideState(campaignId?: CampaignId): CampaignGuideSta
   return campaignId?.serverId ? serverCampaignGuideState : reduxCampaignGuideState;
 }
 
-
-interface GetProfileVars {
-  uid?: string;
-}
-
 export function useCurrentUserHandle(): [string | undefined, boolean] {
   const { user, loading } = useContext(ArkhamCardsAuthContext);
 
-  const { data, loading: loadingProfile } = useGetCurrentUserHandleQuery({
+  const { data, loading: loadingProfile } = useGetUserHandleQuery({
+    variables: { uid: user?.id || '' },
     skip: !user,
   });
-  return [data?.currentUserHandle?.handle, loadingProfile || loading];
+  return [data?.publicUser?.handle || undefined, loadingProfile || loading];
 }

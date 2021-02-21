@@ -1,0 +1,6 @@
+query getUserHandle($uid:ID!) {
+  publicUser(id:$uid) {
+    id
+    handle
+  }
+}
