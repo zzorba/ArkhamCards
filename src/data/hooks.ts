@@ -1,13 +1,12 @@
 import { useContext, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { concat, filter, map, sortBy } from 'lodash';
-import { useQuery, gql } from '@apollo/client';
 
 import { AppState, getCampaigns, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { Campaign, CampaignGuideState, CampaignId, SingleCampaign } from '@actions/types';
 import { useMyCampaigns, useServerCampaign, useServerCampaignGuideState } from './parse/hooks';
-import { ArkhamCardsProfile } from './parse/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useGetCurrentUserHandleQuery } from './graphql/schema';
 
 export function useCampaigns(): [Campaign[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);
@@ -41,29 +40,12 @@ export function useCampaignGuideState(campaignId?: CampaignId): CampaignGuideSta
 interface GetProfileVars {
   uid?: string;
 }
-const GET_PROFILE_QUERY = gql`
-query foo($uid:ID) {
-  userHandles(where: { user: { have: { id: { equalTo: $uid } }} }) {
-    edges {
-      node {
-        id
-        handle
-      }
-    }
-  }
-}
-`;
-
 
 export function useCurrentUserHandle(): [string | undefined, boolean] {
   const { user, loading } = useContext(ArkhamCardsAuthContext);
-  const { data, loading: loadingProfile, error } = useQuery<{}, GetProfileVars>(
-    GET_PROFILE_QUERY,
-    {
-      variables: { uid: user?.id },
-      skip: !user,
-    }
-  );
-  console.log(JSON.stringify(data));
-  return ['handle', loadingProfile || loading];
+
+  const { data, loading: loadingProfile } = useGetCurrentUserHandleQuery({
+    skip: !user,
+  });
+  return [data?.currentUserHandle?.handle, loadingProfile || loading];
 }

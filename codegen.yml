@@ -1,0 +1,18 @@
+overwrite: true
+schema: 
+  - http://localhost:1337/graphql:
+      headers:
+        X-Parse-Application-Id: d3LMO8279uM3e6mTjwXLLWrUxYums3aqrxsNgS39
+        X-Parse-Master-Key: ${MASTER_KEY}
+documents: "src/data/graphql/*.graphql"
+generates:
+  src/data/graphql/schema.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+      - "fragment-matcher"
+  src/data/graphql/index.d.ts:
+    documents: "src/data/graphql/*.graphql"
+    plugins:
+      - typescript-graphql-files-modules

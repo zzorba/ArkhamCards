@@ -1,14 +1,11 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { Text, View } from 'react-native';
-import { forEach } from 'lodash';
-import { ngettext, msgid, t } from 'ttag';
-import { useQuery, gql } from '@apollo/client';
+import { t } from 'ttag';
 
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import space from '@styles/space';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import { useSimpleTextDialog } from '@components/deck/dialogs';
-import { ArkhamCardsProfile, FriendStatus } from '@data/parse/types';
 import { NavigationProps } from '@components/nav/types';
 import { Navigation } from 'react-native-navigation';
 import { FriendsViewProps } from '../FriendsView';

@@ -1,0 +1,6 @@
+query getCurrentUserHandle {
+  currentUserHandle {
+    id
+    handle
+  }
+}
