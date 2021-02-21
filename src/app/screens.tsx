@@ -32,7 +32,6 @@ function getStandardComponent(componentName: string | number) {
     case 'Card.Faq': return require('@components/card/CardFaqView').default;
     case 'Card.Taboo': return require('@components/card/CardTabooView').default;
     case 'Card.Image': return require('@components/card/CardImageView').default;
-    case 'Campaign': return require('@components/campaign/CampaignDetailView').default;
     case 'Campaign.Log': return require('@components/campaign/CampaignLogView').default;
     case 'Campaign.Scenarios': return require('@components/campaign/CampaignScenariosView').default;
     case 'Campaign.New': return require('@components/campaign/NewCampaignView').default;
@@ -83,6 +82,7 @@ function getRootComponent(name: string | number): any {
     case 'Deck': return require('@components/deck/DeckDetailView').default;
     case 'Deck.Upgrade': return require('@components/deck/DeckUpgradeDialog').default;
     case 'Deck.New': return require('@components/deck/NewDeckView').default;
+    case 'Campaign': return require('@components/campaign/CampaignDetailView').default;
     case 'Guide.Campaign': return require('@components/campaignguide/CampaignGuideView').default;
     case 'Guide.LinkedCampaign': return require('@components/campaignguide/LinkedCampaignGuideView').default;
     case 'Guide.Standalone': return require('@components/campaignguide/StandaloneGuideView').default;
