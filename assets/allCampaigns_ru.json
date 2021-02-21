@@ -540,7 +540,7 @@
                 "type": "campaign_log_cards",
                 "section": "sacrificed",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               },
               {
                 "type": "remove_card",
@@ -4459,7 +4459,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_interrogated",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -4498,7 +4498,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -4537,7 +4537,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -9561,7 +9561,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03065b",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -9584,7 +9584,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03066b",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -9607,7 +9607,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03067b",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -9630,7 +9630,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03068b",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -9653,7 +9653,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03069b",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -10072,7 +10072,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_interviewed",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -10101,7 +10101,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -12528,7 +12528,7 @@
                 "type": "campaign_log_cards",
                 "section": "sacrificed",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               },
               {
                 "type": "remove_card",
@@ -17351,7 +17351,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_interrogated",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -17390,7 +17390,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -17429,7 +17429,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -18433,7 +18433,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03065b",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -18456,7 +18456,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03066b",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -18479,7 +18479,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03067b",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -18502,7 +18502,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03068b",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -18525,7 +18525,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "03069b",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -22493,7 +22493,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_interviewed",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -22522,7 +22522,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -37029,7 +37029,7 @@
                 "type": "campaign_log_cards",
                 "section": "hidden",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -40122,7 +40122,7 @@
                 "type": "campaign_log_cards",
                 "section": "hidden",
                 "id": "$input_value",
-                "text": "#имя#"
+                "text": "#name#"
               }
             ]
           }
@@ -54258,7 +54258,7 @@
                 "type": "campaign_log_cards",
                 "section": "hidden",
                 "id": "drifter_dream",
-                "text": "#имя#",
+                "text": "#name#",
                 "cards": "$input_value"
               }
             ]
@@ -72858,7 +72858,7 @@
         "mental"
       ],
       "title": "Исход 1",
-      "text": "Exhausted, you throw yourself onto the rocky shore. Waves lap at your ankles as you stare up into the sky. Behind the clouds, deep crimson hues spell on ominous end for all of humankind. Your skull pounds with agony as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe over the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes your senses once more.",
+      "text": "Exhausted, you throw yourself onto the rocky shore. Waves lap at your ankles as you stare up into the sky. Behind the clouds, deep crimson hues spell an ominous end for all of humankind. Your skull pounds with agony as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe over the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes your senses once more.",
       "steps": [
         "ask_moon_room_resigned",
         "ask_black_key_on_act",
