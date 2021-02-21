@@ -12,6 +12,7 @@ import cards from './cards';
 import decks from './decks';
 import { legacyDecks, legacyCampaigns, legacyGuides } from './legacy';
 import deckEdits from './deckEdits';
+import trackedQueries from './trackedQueries';
 import packs from './packs';
 import settings from './settings';
 import dissonantVoices from './dissonantVoices';
@@ -107,6 +108,13 @@ const dissonantVoicesPersistConfig = {
   blacklist: ['loading', 'error'],
 };
 
+
+const trackedQueriesPersistConfig = {
+  key: 'trackedQueries',
+  storage: AsyncStorage,
+  blacklist: ['loading', 'error'],
+};
+
 // Combine all the reducers
 const rootReducer = combineReducers({
   packs: persistReducer(packsPersistConfig, packs),
@@ -119,7 +127,7 @@ const rootReducer = combineReducers({
   filters,
   deckEdits,
   dissonantVoices: persistReducer(dissonantVoicesPersistConfig, dissonantVoices),
-
+  trackedQueries: persistReducer(trackedQueriesPersistConfig, trackedQueries),
   decks: persistReducer(decksPersistConfig, decks),
   legacyGuides: persistReducer(legacyGuidesPersistConfig, legacyGuides),
   campaigns: legacyCampaigns,
@@ -713,3 +721,14 @@ export function getDeckUploadedCampaigns(state: AppState, id: DeckId): UploadedC
   const uploaded = state.decks.uploaded || {};
   return uploaded[id.uuid] || EMPTY_CAMPAIGN_IDS;
 }
+
+
+const getTrackedQueriesIds = (state: AppState) => state.trackedQueries.ids;
+
+const getTrackedQueriesById = (state: AppState) => state.trackedQueries.byId;
+
+export const getTrackedQueries = createSelector(
+  getTrackedQueriesIds,
+  getTrackedQueriesById,
+  (pIds, pById) => pIds.map(o => pById[o])
+);

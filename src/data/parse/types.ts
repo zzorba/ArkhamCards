@@ -60,7 +60,7 @@ export function initParseObjects() {
 
 export interface ArkhamCardsProfile {
   handle?: string;
-  friends?: { [uid: string]: FriendStatus | undefined };
+  handle_normalized?: string;
 }
 
 export interface ArkhamCardsUserCampaigns {

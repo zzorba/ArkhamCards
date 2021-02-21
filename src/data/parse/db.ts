@@ -40,5 +40,5 @@ export default {
   campaignDetail,
   campaignGuide,
   myCampaigns,
-  handle,
+  userHandle,
 };

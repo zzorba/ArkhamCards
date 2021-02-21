@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View } from 'react-native';
 import { forEach } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
-import { useObjectVal } from 'react-firebase-hooks/database';
+import { useQuery, gql } from '@apollo/client';
 
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import space from '@styles/space';
@@ -14,16 +14,16 @@ import { Navigation } from 'react-native-navigation';
 import { FriendsViewProps } from '../FriendsView';
 import { useUpdateHandle } from '@data/parse/api';
 import StyleContext from '@styles/StyleContext';
-import fbdb from '@data/parse/db';
+import { useCurrentUserHandle } from '@data/hooks';
 
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
   const { typography } = useContext(StyleContext);
   const { user, loading } = useContext(ArkhamCardsAuthContext);
-  const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(user ? fbdb.profile(user) : undefined);
+  const [handle, loadingProfile] = useCurrentUserHandle();
   const updateHandle = useUpdateHandle();
   const { dialog, showDialog } = useSimpleTextDialog({
     title: t`Account Name`,
-    value: profile?.handle || '',
+    value: handle || '',
     onValidate: updateHandle,
     placeholder: t`Choose a handle for your account`,
   });
@@ -33,7 +33,7 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
         component: {
           name: 'Friends',
           passProps: {
-            userId: user.uid,
+            userId: user.id,
           },
           options: {
             topBar: {
@@ -46,6 +46,7 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
       });
     }
   }, [componentId, user]);
+  /*
   const friends = profile?.friends;
   const [friendCount, pendingFriendCount] = useMemo(() => {
     let friendCount = 0;
@@ -59,6 +60,7 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
     });
     return [friendCount, pendingFriendCount];
   }, [friends]);
+  */
   if (!user) {
     return (
       <View style={[space.paddingBottomS, space.paddingTopS, space.paddingSideS]}>
@@ -66,15 +68,15 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
       </View>
     );
   }
-  const requestLabel = pendingFriendCount > 0 ? ngettext(msgid`${pendingFriendCount} pending request`, `${pendingFriendCount} pending requests`, pendingFriendCount) : undefined;
-  const label = ngettext(msgid`${friendCount} friend`, `${friendCount} friends`, friendCount);
+  // const requestLabel = pendingFriendCount > 0 ? ngettext(msgid`${pendingFriendCount} pending request`, `${pendingFriendCount} pending requests`, pendingFriendCount) : undefined;
+  // const label = ngettext(msgid`${friendCount} friend`, `${friendCount} friends`, friendCount);
   return (
     <View style={[space.paddingTopS]}>
       <DeckPickerStyleButton
         icon="name"
         editable
         title={t`Account name`}
-        valueLabel={loading || loadingProfile ? t`Loading` : (profile?.handle || t`Choose a handle`)}
+        valueLabel={loading || loadingProfile ? t`Loading` : (handle || t`Choose a handle`)}
         onPress={showDialog}
         first
       />
@@ -82,8 +84,8 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
         icon="per_investigator"
         editable
         title={t`Friends`}
-        valueLabel={requestLabel || label}
-        valueLabelDescription={requestLabel ? label : undefined}
+        // valueLabel={requestLabel || label}
+        // valueLabelDescription={requestLabel ? label : undefined}
         onPress={editFriendsPressed}
         editIcon="plus-thin"
         last

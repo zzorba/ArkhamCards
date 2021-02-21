@@ -10,7 +10,7 @@ interface Props {
 }
 
 let eventListener: EventEmitter | null = null;
-let currentUser: ArkhamCardsUser | undefined = undefined;
+export let currentUser: ArkhamCardsUser | undefined = undefined;
 let currentUserLoading: boolean = true;
 
 interface State {

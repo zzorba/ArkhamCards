@@ -61,7 +61,7 @@ export function useProfileHandles(userIds: string[]): Handles {
     const userIdsToFetch = filter(userIds, uid => !handles[uid]);
     if (userIdsToFetch.length) {
       const promises = userIdsToFetch.map(async(id: string) => {
-        const handle = await fbdb.profile({ id }).child('handle').once('value');
+        const handle = await fbdb.userHandle({ id }).child('handle').once('value');
         return { userId: id, handle: handle.val() as string };
       });
 

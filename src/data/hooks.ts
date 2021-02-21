@@ -1,14 +1,17 @@
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { concat, filter, map, sortBy } from 'lodash';
+import { useQuery, gql } from '@apollo/client';
 
 import { AppState, getCampaigns, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { Campaign, CampaignGuideState, CampaignId, SingleCampaign } from '@actions/types';
 import { useMyCampaigns, useServerCampaign, useServerCampaignGuideState } from './parse/hooks';
+import { ArkhamCardsProfile } from './parse/types';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export function useCampaigns(): [Campaign[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);
-  const [serverCampaigns, loading, refresh] = useMyCampaigns();
+  const [serverCampaigns, loading, refresh] = [[], false, undefined]; // useMyCampaigns();
 
   const allCampaigns = useMemo(() => {
     return map(sortBy(
@@ -32,4 +35,35 @@ export function useCampaignGuideState(campaignId?: CampaignId): CampaignGuideSta
   const reduxCampaignGuideState = useSelector((state: AppState) => campaignId ? campaignGuideStateSelector(state, campaignId.campaignId) : undefined);
   const [serverCampaignGuideState] = useServerCampaignGuideState(campaignId);
   return campaignId?.serverId ? serverCampaignGuideState : reduxCampaignGuideState;
+}
+
+
+interface GetProfileVars {
+  uid?: string;
+}
+const GET_PROFILE_QUERY = gql`
+query foo($uid:ID) {
+  userHandles(where: { user: { have: { id: { equalTo: $uid } }} }) {
+    edges {
+      node {
+        id
+        handle
+      }
+    }
+  }
+}
+`;
+
+
+export function useCurrentUserHandle(): [string | undefined, boolean] {
+  const { user, loading } = useContext(ArkhamCardsAuthContext);
+  const { data, loading: loadingProfile, error } = useQuery<{}, GetProfileVars>(
+    GET_PROFILE_QUERY,
+    {
+      variables: { uid: user?.id },
+      skip: !user,
+    }
+  );
+  console.log(JSON.stringify(data));
+  return ['handle', loadingProfile || loading];
 }

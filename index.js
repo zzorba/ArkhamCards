@@ -18,7 +18,7 @@ import ArkhamCardsAuthProvider from './src/lib/ArkhamCardsAuthProvider';
 import App from './src/app/App';
 import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
 import { initParseObjects } from '@data/parse/types';
-import createApolloClient from '@data/createApolloClient';
+import createApolloClient, { PARSE_BASE_SERVER, PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_KEY } from '@data/createApolloClient';
 
 function MyProvider({ store: { redux, persistor, apollo }, children}) {
   return (
@@ -44,9 +44,9 @@ function MyProvider({ store: { redux, persistor, apollo }, children}) {
 
 if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
   Parse.setAsyncStorage(AsyncStorage);
-  Parse.initialize('d3LMO8279uM3e6mTjwXLLWrUxYums3aqrxsNgS39', 'Gw0kvpxOqh2CBBk1vnIWmfmzDPcDmF99BdJc6mvf');
+  Parse.initialize(PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_KEY);
   // Parse.serverURL = 'https://parseapi.back4app.com/';
-  Parse.serverURL = 'http://localhost:1337/parse';
+  Parse.serverURL = `${PARSE_BASE_SERVER}/parse`;
   Parse.User.enableUnsafeCurrentUser();
   initParseObjects();
 }

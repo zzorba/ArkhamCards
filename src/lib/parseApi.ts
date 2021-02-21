@@ -3,7 +3,6 @@ import { ThunkAction } from 'redux-thunk';
 
 import { CAMPAIGN_SYNC_REQUIRED, Deck, DeckId, getDeckId, UploadedCampaignId, UPLOAD_DECK } from '@actions/types';
 import { AppState, getAllDecks, getDeck, makeDeckSelector } from '@reducers';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import fbdb from '@data/parse/db';
 import { ArkhamCardsUser } from './ArkhamCardsAuthContext';
 
@@ -51,7 +50,7 @@ export function uploadCampaignDeckHelper(
     if (singleDeck) {
       uploads.push(ref.child(deckId.uuid).set({
         ...singleDeck,
-        owner: user.uid,
+        owner: user.id,
       }));
     } else {
       let deck = deckSelector(state, deckId);
@@ -59,7 +58,7 @@ export function uploadCampaignDeckHelper(
         const deckId = getDeckId(deck);
         uploads.push(ref.child(deckId.uuid).set({
           ...deck,
-          owner: user.uid,
+          owner: user.id,
         }));
         dispatch({
           type: UPLOAD_DECK,
