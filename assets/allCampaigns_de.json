@@ -49534,7 +49534,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "sided_with_the_lodge",
-          "text": "Die Ermittler haben sich auf die Seite des Hexenzirkels geschlagen."
+          "text": "Die Ermittler haben sich auf die Seite der Loge geschlagen."
         }
       ]
     },
@@ -49545,7 +49545,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "sided_with_the_coven",
-          "text": "Die Ermittler haben sich auf die Seite der Loge geschlagen."
+          "text": "Die Ermittler haben sich auf die Seite des Hexenzirkels geschlagen."
         }
       ]
     },
@@ -72851,7 +72851,6 @@
     {
       "id": "R1",
       "investigator_status": [
-        "alive",
         "resigned",
         "eliminated",
         "physical",

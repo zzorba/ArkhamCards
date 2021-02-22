@@ -72851,7 +72851,6 @@
     {
       "id": "R1",
       "investigator_status": [
-        "alive",
         "resigned",
         "eliminated",
         "physical",
@@ -77766,7 +77765,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "\"P-please miss, y-you have to believe me!\" Brian stammers. Agent Harper stands over the seventeen-year-old and taps threatingly oon the holster of her firearm. \"I didn't have a choice, I'm telling you! It was the Order! Th-they made me do it!\"\nHarper rolls her eyes and turns too you. \"I can't believe I was abducted by this goof. Certainly a low point in my career.\" You offer that it was precisely his bumbling nature that allowed the boy to catch her off guard. \"I suppose you're right. Anyhow, what's done is done. What do you make of all this?\" she asks, crossing her arms. \"The boy seems to think it was wiser to ambush a federal agent than run afoull of this 'Order.' Think he's telling the truth?\"\nYou might have miscalculated Mr. Burnham's capabilities, but he certainly seems to be more afraid of this Order than he is of you. With a sigh, you nod.\n\"All right, kid,\" Agent Harper says, hauling the boy to his feet. \"Time for you to talk. Tell us everything.\"",
+      "text": "\"P-please miss, y-you have to believe me!\" Brian stammers. Agent Harper stands over the seventeen-year-old and taps threatingly on the holster of her firearm. \"I didn't have a choice, I'm telling you! It was the Order! Th-they made me do it!\"\nHarper rolls her eyes and turns too you. \"I can't believe I was abducted by this goof. Certainly a low point in my career.\" You offer that it was precisely his bumbling nature that allowed the boy to catch her off guard. \"I suppose you're right. Anyhow, what's done is done. What do you make of all this?\" she asks, crossing her arms. \"The boy seems to think it was wiser to ambush a federal agent than runa foul of this 'Order.' Think he's telling the truth?\"\nYou might have miscalculated Mr. Burnham's capabilities, but he certainly seems to be more afraid of this Order than he is of you. With a sigh, you nod.\n\"All right, kid,\" Agent Harper says, hauling the boy to his feet. \"Time for you to talk. Tell us everything.\"",
       "steps": [
         "earn_xp",
         "mission_succeeded"
