@@ -367,7 +367,7 @@ export type Mutation = {
   updateClass?: Maybe<UpdateClassPayload>;
   /** The deleteClass mutation can be used to delete an existing object class. */
   deleteClass?: Maybe<DeleteClassPayload>;
-  updateHandle?: Maybe<PublicUser>;
+  updateHandle: PublicUser;
 };
 
 
@@ -3434,10 +3434,10 @@ export type UpdateHandleMutationVariables = Exact<{
 
 export type UpdateHandleMutation = (
   { __typename?: 'Mutation' }
-  & { updateHandle?: Maybe<(
+  & { updateHandle: (
     { __typename?: 'PublicUser' }
     & Pick<PublicUser, 'id' | 'handle'>
-  )> }
+  ) }
 );
 
 

@@ -1,30 +1,16 @@
+import { useCallback, useReducer } from 'react';
+import { gql } from '@apollo/client';
+import { stringify } from 'flatted';
+
 import { UploadedCampaignId } from '@actions/types';
 import { useUpdateHandleMutation } from '@data/graphql/schema';
-import { useCallback, useReducer } from 'react';
 import { FriendUser, useFunction, ErrorResponse } from './hooks';
 
 interface UpdateHandleRequest {
   handle: string;
 }
 export function useUpdateHandle() {
-  const [apiCall, { data, error }] = useUpdateHandleMutation({
-    update: (cache, mutationResult) => {
-      if (mutationResult.data?.updateHandle) {
-        const {
-          id,
-          handle,
-        } = mutationResult.data.updateHandle;
-        cache.modify({
-          id,
-          fields: {
-            handle() {
-              return handle;
-            },
-          },
-        });
-      }
-    },
-  });
+  const [apiCall] = useUpdateHandleMutation();
   return useCallback(async(handle: string) => {
     try {
       const data = await apiCall({ variables: { handle } });

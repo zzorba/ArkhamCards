@@ -16,7 +16,9 @@ export const PARSE_BASE_SERVER = 'http://localhost:1337';
 export const PARSE_APPLICATION_ID = 'd3LMO8279uM3e6mTjwXLLWrUxYums3aqrxsNgS39';
 export const PARSE_JAVASCRIPT_KEY = 'Gw0kvpxOqh2CBBk1vnIWmfmzDPcDmF99BdJc6mvf';
 
-const cache = new InMemoryCache();
+const cache = new InMemoryCache({
+  freezeResults: true,
+});
 const errorLink = onError((e) => {
   // tslint:disable-next-line
   console.log('Caught Apollo Client Error');
@@ -57,5 +59,6 @@ export default function constructApolloClient(store: Store) {
       retryLink,
       httpLink,
     ]),
+    assumeImmutableResults: true,
   });
 }

@@ -43,5 +43,6 @@ export function useCurrentUserHandle(): [string | undefined, boolean] {
     variables: { uid: user?.id || '' },
     skip: !user,
   });
+  console.log(data);
   return [data?.publicUser?.handle || undefined, loadingProfile || loading];
 }
