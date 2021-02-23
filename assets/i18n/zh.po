@@ -1,1238 +1,1232 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: it\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
 "Language-Team: \n"
-"x-generator: Poedit 2.4.1\n"
+"x-generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Language: zh\n"
 
 msgid "Guardian / Rogue"
-msgstr "Guardiano / Canaglia"
+msgstr ""
 
 msgid "Rogue / Survivor"
-msgstr "Canaglia / Sopravvissuto"
+msgstr ""
 
 msgid "Survivor / Seeker"
-msgstr "Sopravvissuto / Studioso"
+msgstr ""
 
 msgid "Seeker / Mystic"
-msgstr "Studioso / Mistico"
+msgstr ""
 
 msgid "Mystic / Guardian"
-msgstr "Mistico / Guardiano"
+msgstr ""
 
 msgid "Guardian"
-msgstr "Guardiano"
+msgstr ""
 
 msgid "Seeker"
-msgstr "Studioso"
+msgstr ""
 
 msgid "Mystic"
-msgstr "Mistico"
+msgstr ""
 
 msgid "Rogue"
-msgstr "Canaglia"
+msgstr ""
 
 msgid "Survivor"
-msgstr "Sopravvissuto"
+msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
-msgstr "Neutrale"
+msgstr ""
 
 msgid "Weakness"
-msgstr "Debolezza"
+msgstr ""
 
 msgid "Mythos"
-msgstr "Miti"
+msgstr ""
 
 msgid "Unknown"
-msgstr "Sconosciuto"
+msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
-msgstr "Investigatore"
+msgstr ""
 
 msgid "Asset: Hand"
-msgstr "Supporto: Mano"
+msgstr ""
 
 msgid "Asset: Hand x2"
-msgstr "Supporto: Mano x2"
+msgstr ""
 
 msgid "Asset: Hand. Arcane"
-msgstr "Supporto: Mano. Arcano"
+msgstr ""
 
 msgid "Asset: Body. Hand x2"
-msgstr "Supporto: Corpo. Mano x2"
+msgstr ""
 
 msgid "Asset: Accessory"
-msgstr "Supporto: Accessorio"
+msgstr ""
 
 msgid "Asset: Ally"
-msgstr "Supporto: Alleato"
+msgstr ""
 
 msgid "Asset: Arcane"
-msgstr "Supporto: Arcano"
+msgstr ""
 
 msgid "Asset: Arcane x2"
-msgstr "Supporto: Arcano x2"
+msgstr ""
 
 msgid "Asset: Body"
-msgstr "Supporto: Corpo"
+msgstr ""
 
 msgid "Asset: Permanent"
-msgstr "Supporto: Permanente"
+msgstr ""
 
 msgid "Asset: Tarot"
-msgstr "Supporto: Tarocco"
+msgstr ""
 
 msgid "Asset: Other"
-msgstr "Supporto: Altro"
+msgstr ""
 
 msgid "Event"
-msgstr "Evento"
+msgstr ""
 
 msgid "Skill"
-msgstr "Abilità"
+msgstr ""
 
 msgid "Basic Weakness"
-msgstr "Debolezza Base"
+msgstr ""
 
 msgid "Scenario"
-msgstr "Scenario"
+msgstr ""
 
 msgid "Story"
-msgstr "Storia"
+msgstr ""
 
 #, javascript-format
 msgid "Act ${ json.stage }"
-msgstr "Capitolo ${ json.stage }"
+msgstr ""
 
 msgid "Agenda ${ json.stage }"
-msgstr "Trama ${ json.stage }"
+msgstr ""
 
 #, javascript-format
 msgid "Act ${ linked_card.stage }"
-msgstr "Capitolo ${ linked_card.stage }"
+msgstr ""
 
 msgid "Agenda ${ linked_card.stage }"
-msgstr "Trama ${ linked_card.stage }"
+msgstr ""
 
 msgid "Second Core Set"
-msgstr "Secondo Set Base"
+msgstr ""
 
 msgid "Edit Collection"
-msgstr "Modifica Collezione"
+msgstr ""
 
 msgid "Search decks"
-msgstr "Cerca Mazzi"
+msgstr ""
 
 #, javascript-format
 msgid "No matching decks for \"${ searchTerm }\"."
-msgstr "Nessun Mazzo corrispondente per \"${ searchTerm }\"."
+msgstr ""
 
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
-msgstr[0] "${ scenarioCount } Scenario completato"
-msgstr[1] "${ scenarioCount } Scenari Completati"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "${ xp } available experience"
-msgstr "${ xp } Punti Esperienza disponibili"
+msgstr ""
 
 #, javascript-format
 msgid "${ parsedDeck.experience } experience required"
-msgstr "${ parsedDeck.experience } Punti Esperienza richiesti"
+msgstr ""
 
 msgid "Not enough cards."
-msgstr "Non abbastanza Carte."
+msgstr ""
 
 msgid "Too many cards."
-msgstr "Troppe Carte."
+msgstr ""
 
 msgid "Too many copies of a card with the same name."
-msgstr "Troppe copie di una Carta con lo stesso nome."
+msgstr ""
 
 msgid "Contains forbidden cards (cards not permitted by Faction)"
-msgstr "Contiene carte vietate (carte non permesse per la Classe)"
+msgstr ""
 
 msgid "Contains too many limited cards."
-msgstr "Contiene troppe carte Limitate."
+msgstr ""
 
 msgid "Back"
-msgstr "Indietro"
+msgstr ""
 
 msgid "Edit Story Cards"
-msgstr "Modifica Carte Storia"
+msgstr ""
 
 msgid "Draw Basic Weakness"
-msgstr "Pesca Debolezza Base"
+msgstr ""
 
 msgid "Draw From Collection"
-msgstr "Pesca dalla Collezione"
+msgstr ""
 
 #. This is a deck upgrade action.
 msgid "Cancel"
-msgstr "Annulla"
+msgstr ""
 
 msgid "Draw Weaknesses"
-msgstr "Pesca Debolezza"
+msgstr ""
 
 msgid "Save"
-msgstr "Salva"
+msgstr ""
 
 msgid "Sort by"
-msgstr "Filtra per"
+msgstr ""
 
 msgid "Title"
-msgstr "Titolo"
+msgstr ""
 
 msgid "Faction"
-msgstr "Classe"
+msgstr ""
 
 msgid "Pack"
-msgstr "Pack"
+msgstr ""
+
+msgid "Connect to ArkhamDB"
+msgstr ""
+
+msgid "Decks"
+msgstr ""
+
+msgid "Hide ArkhamDB Decks"
+msgstr ""
+
+msgid "New Deck"
+msgstr ""
+
+msgid "Authorization error"
+msgstr ""
+
+msgid "Try again"
+msgstr ""
+
+msgid "Reauthorize"
+msgstr ""
+
+msgid "Deck"
+msgstr ""
+
+msgid "Available weaknesses"
+msgstr ""
+
+msgid "Saving"
+msgstr ""
+
+msgid "Draw a Different Weakness"
+msgstr ""
+
+msgid "Draw Another"
+msgstr ""
+
+msgid "Traits"
+msgstr ""
+
+msgid "All weaknesses have been drawn."
+msgstr ""
+
+msgid "Save to Deck"
+msgstr ""
+
+msgid "Nevermind"
+msgstr ""
+
+msgid "Restore campaign data?"
+msgstr ""
+
+msgid "Backup campaign data?"
+msgstr ""
+
+msgid "Export Campaign Data"
+msgstr ""
+
+msgid "Backup"
+msgstr ""
+
+msgid "Backup Campaign Data"
+msgstr ""
+
+msgid "Restore Campaign Data"
+msgstr ""
+
+msgid "Caches"
+msgstr ""
+
+msgid "Clear cache"
+msgstr ""
+
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+msgid "Sign Out"
+msgstr ""
+
+msgid "Reconnect Account"
+msgstr ""
+
+msgid "Sign in to ArkhamDB"
+msgstr ""
+
+msgid "Edit Spoilers"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+msgid "About Arkham Cards"
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "Updating cards"
+msgstr ""
+
+msgid "Error: Check for Cards Again"
+msgstr ""
+
+msgid "Check ArkhamDB for updates"
+msgstr ""
+
+msgid "Card Collection"
+msgstr ""
+
+msgid "Spoiler Settings"
+msgstr ""
+
+msgid "Elite"
+msgstr ""
+
+msgid "Hunter"
+msgstr ""
+
+msgid "Alert"
+msgstr ""
+
+msgid "Spawn"
+msgstr ""
+
+msgid "Aloof"
+msgstr ""
+
+msgid "Massive"
+msgstr ""
+
+msgid "Non-Elite"
+msgstr ""
+
+msgid "Non-Hunter"
+msgstr ""
+
+msgid "Retaliate"
+msgstr ""
+
+msgid "Parley"
+msgstr ""
+
+msgid "Prey"
+msgstr ""
+
+msgid "Fight"
+msgstr ""
+
+msgid "Health"
+msgstr ""
+
+msgid "Per Investigator"
+msgstr ""
+
+msgid "Evade"
+msgstr ""
+
+msgid "Damage"
+msgstr ""
+
+msgid "Horror"
+msgstr ""
+
+msgid "Enemy Filters"
+msgstr ""
+
+msgid "Shroud"
+msgstr ""
+
+msgid "Clues"
+msgstr ""
+
+msgid "Haunted"
+msgstr ""
+
+msgid "Location Filters"
+msgstr ""
+
+msgid "Core Set"
+msgstr ""
+
+msgid "Select Packs"
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "Skill Icons"
+msgstr ""
+
+msgid "Skill Icons: All"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Packs: All"
+msgstr ""
+
+#, javascript-format
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr ""
+
+msgid "Packs: ${ allPacksString }"
+msgstr ""
+
+msgid "HPI"
+msgstr ""
+
+msgid "Enemies: All"
+msgstr ""
+
+#, javascript-format
+msgid "Enemies: ${ searchParts }"
+msgstr ""
+
+msgid "Fixed Clues"
+msgstr ""
+
+msgid "Locations: All"
+msgstr ""
+
+#, javascript-format
+msgid "Locations: ${ searchParts }"
+msgstr ""
+
+msgid "Level"
+msgstr ""
+
+msgid "Exceptional"
+msgstr ""
+
+msgid "Non-Exceptional"
+msgstr ""
+
+msgid "Types"
+msgstr ""
+
+msgid "SubTypes"
+msgstr ""
+
+msgid "Cost"
+msgstr ""
+
+msgid "Slots"
+msgstr ""
+
+msgid "Uses"
+msgstr ""
+
+msgid "Fast"
+msgstr ""
+
+msgid "Permanent"
+msgstr ""
+
+msgid "Victory"
+msgstr ""
+
+msgid "Exile"
+msgstr ""
+
+msgid "Unique"
+msgstr ""
+
+msgid "Vengeance"
+msgstr ""
+
+msgid "Encounter Sets"
+msgstr ""
+
+msgid "Illustrators"
+msgstr ""
+
+#, javascript-format
+msgid "Search ${ title }"
+msgstr ""
+
+msgid "Select ${ title }"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Note: This entry is crossed out"
+msgstr ""
+
+msgid "Uncross Out"
+msgstr ""
+
+msgid "Cross Out"
+msgstr ""
+
+msgid "Add Another"
+msgstr ""
+
+msgid "Check for updated cards?"
+msgstr ""
+
+msgid "Ask me later"
+msgstr ""
+
+msgid "Check for updates"
+msgstr ""
+
+msgid "Add Campaign Log Section"
+msgstr ""
+
+msgid "Section Name"
+msgstr ""
+
+msgid "Count"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Selected Difficulty"
+msgstr ""
+
+#, javascript-format
+msgid "Investigator: ${ investigatorName }"
+msgstr ""
+
+msgid "Replace Random Weakness"
+msgstr ""
+
+#, javascript-format
+msgid "Save to ${ investigator.name }’s Deck"
+msgstr ""
+
+msgid "Not yet started"
+msgstr ""
+
+msgid "Trauma"
+msgstr ""
+
+#, javascript-format
+msgid "${ investigator.firstName }’s Trauma"
+msgstr ""
+
+msgid "Physical Trauma"
+msgstr ""
+
+msgid "Mental Trauma"
+msgstr ""
+
+msgid "Killed"
+msgstr ""
+
+msgid "Insane"
+msgstr ""
+
+msgid "Hide Decks From Other Campaigns"
+msgstr ""
+
+msgid "Hide Killed and Insane Investigators"
+msgstr ""
+
+msgid "Only Show Previous Campaign Members"
+msgstr ""
+
+msgid "Experience"
+msgstr ""
+
+msgid "Easy"
+msgstr ""
+
+msgid "Standard"
+msgstr ""
+
+msgid "Hard"
+msgstr ""
+
+msgid "Expert"
+msgstr ""
+
+msgid "Night of the Zealot"
+msgstr ""
+
+msgid "Return to the Night of the Zealot"
+msgstr ""
+
+msgid "The Dunwich Legacy"
+msgstr ""
+
+msgid "Return to The Dunwich Legacy"
+msgstr ""
+
+msgid "The Path To Carcosa"
+msgstr ""
+
+msgid "The Forgotten Age"
+msgstr ""
+
+msgid "The Circle Undone"
+msgstr ""
+
+msgid "The Gathering"
+msgstr ""
+
+msgid "The Midnight Masks"
+msgstr ""
+
+msgid "The Devourer Below"
+msgstr ""
+
+msgid "Extracurricular Activity"
+msgstr ""
+
+msgid "The House Always Wins"
+msgstr ""
+
+msgid "Armitage’s Fate"
+msgstr ""
+
+msgid "The Miskatonic Museum"
+msgstr ""
+
+msgid "Essex County Express"
+msgstr ""
+
+msgid "Blood on the Altar"
+msgstr ""
+
+msgid "The Survivors"
+msgstr ""
+
+msgid "Undimensioned and Unseen"
+msgstr ""
+
+msgid "Where Doom Awaits"
+msgstr ""
+
+msgid "Lost in Time and Space"
+msgstr ""
+
+msgid "Epilogue"
+msgstr ""
+
+msgid "Return to Extracurricular Activity"
+msgstr ""
+
+msgid "Return to The House Always Wins"
+msgstr ""
+
+msgid "Return to The Miskatonic Museum"
+msgstr ""
+
+msgid "Return to Essex County Express"
+msgstr ""
+
+msgid "Return to Blood on the Altar"
+msgstr ""
+
+msgid "Return to Undimensioned and Unseen"
+msgstr ""
+
+msgid "Return to Where Doom Awaits"
+msgstr ""
+
+msgid "Return to Lost in Time and Space"
+msgstr ""
+
+msgid "Prologue"
+msgstr ""
+
+msgid "Curtain Call"
+msgstr ""
+
+msgid "The Last King"
+msgstr ""
+
+msgid "Lunacy’s Reward"
+msgstr ""
+
+msgid "Echoes of the Past"
+msgstr ""
+
+msgid "The Unspeakable Oath"
+msgstr ""
+
+msgid "Lost Soul"
+msgstr ""
+
+msgid "A Phantom of Truth"
+msgstr ""
+
+msgid "The Pallid Mask"
+msgstr ""
+
+msgid "Black Stars Rise"
+msgstr ""
+
+msgid "Dim Carcosa"
+msgstr ""
+
+msgid "The Untamed Wilds"
+msgstr ""
+
+msgid "Restless Nights"
+msgstr ""
+
+msgid "The Doom of Eztli"
+msgstr ""
+
+msgid "Expedition’s End"
+msgstr ""
+
+msgid "Threads of Fate"
+msgstr ""
+
+msgid "The Boundary Beyond"
+msgstr ""
+
+msgid "The Jungle Beckons"
+msgstr ""
+
+msgid "Heart of the Elders"
+msgstr ""
+
+msgid "The City of Archives"
+msgstr ""
+
+msgid "Those Held Captive"
+msgstr ""
+
+msgid "The Depths of Yoth"
+msgstr ""
+
+msgid "The Darkness"
+msgstr ""
+
+msgid "Shattered Aeons"
+msgstr ""
+
+msgid "Prologue: Disappearance at the Twilight Estate"
+msgstr ""
+
+msgid "The Witching Hour"
+msgstr ""
+
+msgid "The Price of Progress"
+msgstr ""
+
+msgid "The Secret Name"
+msgstr ""
+
+msgid "The Wages of Sin"
+msgstr ""
+
+msgid "For the Greater Good"
+msgstr ""
+
+msgid "The Inner Circle"
+msgstr ""
+
+msgid "Union and Disillusion"
+msgstr ""
+
+msgid "In the Clutches of Chaos"
+msgstr ""
+
+msgid "Twist of Fate"
+msgstr ""
+
+msgid "Before the Black Throne"
+msgstr ""
+
+msgid "Return to The Gathering"
+msgstr ""
+
+msgid "Return to the Midnight Masks"
+msgstr ""
+
+msgid "Return to the Devourer Below"
+msgstr ""
+
+msgid "The Night of the Zealot"
+msgstr ""
+
+msgid "The Path to Carcosa"
+msgstr ""
+
+msgid "Campaign Notes"
+msgstr ""
+
+msgid "Cultists We Interrogated"
+msgstr ""
+
+msgid "Cultists Who Got Away"
+msgstr ""
+
+msgid "Sacrificed to Yog-Sothoth"
+msgstr ""
+
+msgid "VIPs Interviewed"
+msgstr ""
+
+msgid "VIPs Slain"
+msgstr ""
+
+msgid "Doubt"
+msgstr ""
+
+msgid "Conviction"
+msgstr ""
+
+msgid "Chasing the Stranger"
+msgstr ""
+
+msgid "Supplies"
+msgstr ""
+
+msgid "Mementos Discovered"
+msgstr ""
+
+msgid "Missing Persons - Gavriella Mizrah"
+msgstr ""
+
+msgid "Missing Persons - Jerome Davids"
+msgstr ""
+
+msgid "Missing Persons - Penny White"
+msgstr ""
+
+msgid "Missing Persons - Valentino Rivas"
+msgstr ""
+
+#, javascript-format
+msgid "${ traumaData.physical } Physical"
+msgstr ""
+
+msgid "${ traumaData.mental } Mental"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgid "Custom"
+msgstr ""
+
+msgid "My Campaigns"
+msgstr ""
+
+msgid "Other Campaigns"
+msgstr ""
+
+msgid "Select Campaign"
+msgstr ""
+
+msgid "Campaign"
+msgstr ""
+
+msgid "New Campaign"
+msgstr ""
+
+msgid "Chaos Bag"
+msgstr ""
+
+msgid "Adjust Weakness Set"
+msgstr ""
+
+#. eslint-disable prefer-template 
+msgid "This deck contains several basic weaknesses"
+msgstr ""
+
+#. eslint-disable prefer-template 
+msgid "This deck contains a basic weakness"
+msgstr ""
+
+#. eslint-disable prefer-template 
+msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
+msgstr ""
+
+#. eslint-disable prefer-template 
+msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
+msgstr ""
+
+msgid "Not Now"
+msgstr ""
+
+msgid "Okay"
+msgstr ""
+
+msgid "(required)"
+msgstr ""
+
+#, javascript-format
+msgid "My ${ campaign } Campaign"
+msgstr ""
+
+msgid "Include all basic weaknesses from these expansions"
+msgstr ""
+
+msgid "Add Log Section"
+msgstr ""
+
+msgid "Difficulty"
+msgstr ""
+
+msgid "Create Campaign"
+msgstr ""
+
+msgid "Campaigns"
+msgstr ""
+
+#, javascript-format
+msgid "No matching campaigns for \"${ search }\"."
+msgstr ""
+
+msgid "Search campaigns"
+msgstr ""
+
+msgid "Save changes?"
+msgstr ""
+
+msgid "Looks like you have made some changes that have not been saved."
+msgstr ""
+
+msgid "Save Changes"
+msgstr ""
+
+msgid "Discard Changes"
+msgstr ""
+
+msgid "Add note"
+msgstr ""
+
+#, javascript-format
+msgid "${ totalXp } total"
+msgstr ""
+
+msgid "Upgrade Deck"
+msgstr ""
+
+#, javascript-format
+msgid "Remove ${ investigator.name }?"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Upgrade"
+msgstr ""
+
+msgid "Scenarios"
+msgstr ""
+
+msgid "Scenario Result"
+msgstr ""
+
+msgid "Record Scenario Results"
+msgstr ""
+
+msgid "Basic Weakness Set"
+msgstr ""
+
+#, javascript-format
+msgid "${ counts.assigned } / ${ counts.total } have been drawn."
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Show Interludes"
+msgstr ""
+
+msgid "Interlude"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Resolution"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+msgid "Mark entire cycle?"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+msgid "Clear entire cycle?"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+#, javascript-format
+msgid "Mark all packs in the ${ pack.name } cycle?"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+msgid "Clear all packs in the ${ pack.name } cycle?"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+msgid "No"
+msgstr ""
+
+#. This is the lead pack in a cycle.
+msgid "Yes"
+msgstr ""
+
+#, javascript-format
+msgid "The Adventures of ${ investigator.name }"
+msgstr ""
+
+msgid "${ investigator.name } Investigates"
+msgstr ""
+
+#, javascript-format
+msgid "The ${ investigator.name } Mysteries"
+msgstr ""
+
+msgid "The ${ investigator.name } Job"
+msgstr ""
+
+#, javascript-format
+msgid "${ investigator.name } on the Road"
+msgstr ""
+
+msgid "${ investigator.name } Does It All"
+msgstr ""
+
+msgid "Create on ArkhamDB"
+msgstr ""
+
+msgid "You seem to be offline. Refresh Network?"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "No matching investigators for \"${ searchTerm }\"."
+msgstr ""
+
+msgid "N/A"
+msgstr ""
+
+msgid "All Investigators"
+msgstr ""
+
+msgid "Draw: "
+msgstr ""
+
+msgid "Redraw"
+msgstr ""
+
+msgid "Reshuffle"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+#, javascript-format
+msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
+msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Delete this upgrade (${ deck.version })"
+msgstr ""
+
+msgid "Delete all versions"
+msgstr ""
+
+msgid "Delete deck"
+msgstr ""
+
+msgid "Are you sure you want to delete this deck?"
+msgstr ""
+
+msgid "Save Local Changes"
+msgstr ""
+
+msgid "Please save any local edits to this deck before sharing to ArkhamDB"
+msgstr ""
+
+msgid "Unsupported Operation"
+msgstr ""
+
+msgid "Upload to ArkhamDB"
+msgstr ""
+
+msgid "Special Cards"
+msgstr ""
+
+msgid "View on ArkhamDB"
+msgstr ""
+
+msgid "Save deck changes?"
+msgstr ""
+
+msgid "Edit Special Cards"
+msgstr ""
+
+msgid "Edit Deck"
+msgstr ""
+
+msgid "Deck has been deleted"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Required"
+msgstr ""
+
+msgid "Copy Deck"
+msgstr ""
+
+msgid ""
+"Make a copy of a deck so that you can use it in a different campaign or "
+"choose different upgrades."
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Encounter Set"
+msgstr ""
+
+msgid "Investigating for clues"
+msgstr ""
+
+msgid "Cursing at the tentacle token"
+msgstr ""
+
+msgid "Drawing a mythos card with surge"
+msgstr ""
+
+msgid "Placing doom on the agenda"
+msgstr ""
+
+msgid "Reticulating spines"
+msgstr ""
+
+msgid "Trying to make sense of the Time Warp FAQ"
+msgstr ""
+
+msgid "Taking three damage and three horror"
+msgstr ""
+
+msgid "No matching cards for \"${ searchTerm }\""
+msgstr ""
+
+msgid "No matching cards"
+msgstr ""
+
+msgid "Cost: None"
+msgstr ""
+
+msgid "All Cards"
+msgstr ""
+
+msgid "Search for a card"
+msgstr ""
+
+#, javascript-format
+msgid "Clear \"${ searchTerm }\" search"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Filters"
+msgstr ""
+
+msgid "Player Cards"
+msgstr ""
+
+msgid "Required Cards"
+msgstr ""
+
+msgid "Alternate Cards"
+msgstr ""
+
+msgid "FAQ"
+msgstr ""
+
+msgid "Allowed Cards"
+msgstr ""
+
+msgid "Test Icons: "
+msgstr ""
+
+msgid "Show back"
+msgstr ""
+
+#, javascript-format
+msgid "Victory: ${ card.victory }."
+msgstr ""
+
+msgid "Vengeance: ${ card.vengeance }."
+msgstr ""
+
+msgid "Show front"
+msgstr ""
+
+msgid "Deckbuilding Cards"
+msgstr ""
 
 #, javascript-format
 msgid ""
 "An unexpected error occurred (${ error }). If restarting the app doesn't "
 "fix the problem, tap here to reauthorize."
 msgstr ""
-"Si è verificato un errore inaspettato (${ error }). Se riavviando l'app il "
-"problema non viene risolto, cliccate qui per autorizzare nuovamente."
-
-msgid "Connect to ArkhamDB"
-msgstr "Connesso ad ArkhamDB"
-
-msgid "Decks"
-msgstr "Mazzi"
-
-msgid "Hide ArkhamDB Decks"
-msgstr "Nascondi i Mazzi di ArkhamDB"
-
-msgid "New Deck"
-msgstr "Nuovo Mazzo"
-
-msgid "Authorization error"
-msgstr "Errore di Autorizzazione"
-
-msgid "Try again"
-msgstr "Prova ancora"
-
-msgid "Reauthorize"
-msgstr "Riautorizza"
-
-msgid "Deck"
-msgstr "Mazzo"
-
-msgid "Available weaknesses"
-msgstr "Debolezze Disponibili"
-
-msgid "Saving"
-msgstr "Salvataggio"
-
-msgid "Draw a Different Weakness"
-msgstr "Pesca una Debolezza differente"
-
-msgid "Draw Another"
-msgstr "Pesca ancora"
-
-msgid "Traits"
-msgstr "Tratti"
-
-msgid "All weaknesses have been drawn."
-msgstr "Tutte le Debolezze sono state pescate."
-
-msgid "Save to Deck"
-msgstr "Salva nel Mazzo"
-
-msgid "Nevermind"
-msgstr "Non importa"
-
-msgid "Restore campaign data?"
-msgstr "Recupera il salvataggio della Campagna?"
-
-msgid "Backup campaign data?"
-msgstr "Fare il Backup della Campagna?"
-
-msgid "Export Campaign Data"
-msgstr "Esporta Salvataggio della Campagna"
-
-msgid "Backup"
-msgstr "Backup"
-
-msgid "Backup Campaign Data"
-msgstr "Backup del Salvataggio della Campagna"
-
-msgid "Restore Campaign Data"
-msgstr "Recupero del Salvataggio della Campagna"
-
-msgid "Caches"
-msgstr "Cache"
-
-msgid "Clear cache"
-msgstr "Pulisci la cache"
-
-msgid "Are you sure you want to sign out?"
-msgstr "Sei sicuro di voler effettuare il logout?"
-
-msgid "Sign Out"
-msgstr "Logout"
-
-msgid "Reconnect Account"
-msgstr "Riconnetti Account"
-
-msgid "Sign in to ArkhamDB"
-msgstr "Login su ArkhamDB"
-
-msgid "Edit Spoilers"
-msgstr "Modifica gli Spoiler"
-
-msgid "Diagnostics"
-msgstr "Diagnostica"
-
-msgid "About Arkham Cards"
-msgstr "Riguardo Arkham Cards"
-
-msgid "Done"
-msgstr "Fatto"
-
-msgid "Updating cards"
-msgstr "Aggiornamento Carte"
-
-msgid "Error: Check for Cards Again"
-msgstr "Errore: Controlla nuovamente le Carte"
-
-msgid "Check ArkhamDB for updates"
-msgstr "Controllo per nuove Carte su ArkhamDB"
-
-msgid "Card Collection"
-msgstr "Collezione"
-
-msgid "Spoiler Settings"
-msgstr "Impostazioni Spoiler"
-
-msgid "Elite"
-msgstr "Elite"
-
-msgid "Hunter"
-msgstr "Cacciatore"
-
-msgid "Alert"
-msgstr "Allerta"
-
-msgid "Spawn"
-msgstr "Generazione"
-
-msgid "Aloof"
-msgstr "Sfuggente"
-
-msgid "Massive"
-msgstr "Enorme"
-
-msgid "Non-Elite"
-msgstr "Non-Elite"
-
-msgid "Non-Hunter"
-msgstr "Non-Cacciatore"
-
-msgid "Retaliate"
-msgstr "Ritorsione"
-
-msgid "Parley"
-msgstr "Negoziare"
-
-msgid "Prey"
-msgstr "Preda"
-
-msgid "Fight"
-msgstr "Combattimento"
-
-msgid "Health"
-msgstr "Salute"
-
-msgid "Per Investigator"
-msgstr "Per Investigatore"
-
-msgid "Evade"
-msgstr "Eludere"
-
-msgid "Damage"
-msgstr "Danno"
-
-msgid "Horror"
-msgstr "Orrore"
-
-msgid "Enemy Filters"
-msgstr "Filtro Nemici"
-
-msgid "Shroud"
-msgstr "Oscurità"
-
-msgid "Clues"
-msgstr "Indizi"
-
-msgid "Haunted"
-msgstr "Infestato"
-
-msgid "Location Filters"
-msgstr "Filtro Luoghi"
-
-msgid "Core Set"
-msgstr "Set Base"
-
-msgid "Select Packs"
-msgstr "Seleziona Pack"
-
-msgid "Clear"
-msgstr "Cancella"
-
-msgid "Skill Icons"
-msgstr "Icone Abilità"
-
-msgid "Skill Icons: All"
-msgstr "Icona Abilità: Tutte"
-
-msgid "Filter"
-msgstr "Filtro"
-
-msgid "Packs: All"
-msgstr "Pack: Tutti"
-
-#, javascript-format
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "${ cycleNames[cycle_position] } Ciclo"
-
-msgid "Packs: ${ allPacksString }"
-msgstr "Pack: ${ allPacksString }"
-
-msgid "HPI"
-msgstr "HPI"
-
-msgid "Enemies: All"
-msgstr "Nemici: Tutti"
-
-#, javascript-format
-msgid "Enemies: ${ searchParts }"
-msgstr "Nemici: ${ searchParts }"
-
-msgid "Fixed Clues"
-msgstr "Numero d'Indizi"
-
-msgid "Locations: All"
-msgstr "Luoghi: Tutti"
-
-#, javascript-format
-msgid "Locations: ${ searchParts }"
-msgstr "Luoghi: ${ searchParts }"
-
-msgid "Level"
-msgstr "Livello"
-
-msgid "Exceptional"
-msgstr "Straordinario"
-
-msgid "Non-Exceptional"
-msgstr "Non-Straordinario"
-
-msgid "Types"
-msgstr "Tipi"
-
-msgid "SubTypes"
-msgstr "Sotto-Tipi"
-
-msgid "Cost"
-msgstr "Costo"
-
-msgid "Slots"
-msgstr "Slot"
-
-msgid "Uses"
-msgstr "Usi"
-
-msgid "Fast"
-msgstr "Veloce"
-
-msgid "Permanent"
-msgstr "Permanente"
-
-msgid "Victory"
-msgstr "Vittoria"
-
-msgid "Exile"
-msgstr "Esiliare"
-
-msgid "Unique"
-msgstr "Unico"
-
-msgid "Vengeance"
-msgstr "Vendetta"
-
-msgid "Encounter Sets"
-msgstr "Set Incontri"
-
-msgid "Illustrators"
-msgstr "Illustratori"
-
-#, javascript-format
-msgid "Search ${ title }"
-msgstr "Cerca ${ title }"
-
-msgid "Select ${ title }"
-msgstr "Seleziona ${ title }"
-
-msgid "All"
-msgstr "Tutti"
-
-msgid "Note: This entry is crossed out"
-msgstr "Nota: Questa voce è sbarrata"
-
-msgid "Uncross Out"
-msgstr "Rimuovi Segnalazione"
-
-msgid "Cross Out"
-msgstr "Sbarrata"
-
-msgid "Add Another"
-msgstr "Aggiungi Altro"
-
-msgid "Check for updated cards?"
-msgstr "Controlla Aggiornamenti Carte?"
-
-msgid "Ask me later"
-msgstr "Chiedimelo Dopo"
-
-msgid "Check for updates"
-msgstr "Controllo per Aggiornamenti"
-
-msgid "Add Campaign Log Section"
-msgstr "Aggiungi Note della Campagna"
-
-msgid "Section Name"
-msgstr "Nome della Sezione"
-
-msgid "Count"
-msgstr "Contatore"
-
-msgid "Add"
-msgstr "Aggiungi"
-
-msgid "Selected Difficulty"
-msgstr "Difficoltà Selezionata"
-
-#, javascript-format
-msgid "Investigator: ${ investigatorName }"
-msgstr "Investigatore: ${ investigatorName }"
-
-msgid "Replace Random Weakness"
-msgstr "Rimpiazza Debolezza Base Casuale"
-
-#, javascript-format
-msgid "Save to ${ investigator.name }’s Deck"
-msgstr "Salva nel Mazzo di ${ investigator.name }"
-
-msgid "Not yet started"
-msgstr "Non ancora iniziato"
-
-msgid "Trauma"
-msgstr "Trauma"
-
-#, javascript-format
-msgid "${ investigator.firstName }’s Trauma"
-msgstr "Trauma di ${ investigator.firstName }"
-
-msgid "Physical Trauma"
-msgstr "Trauma Fisico"
-
-msgid "Mental Trauma"
-msgstr "Trauma Mentale"
-
-msgid "Killed"
-msgstr "Ucciso"
-
-msgid "Insane"
-msgstr "Impazzito"
-
-msgid "Hide Decks From Other Campaigns"
-msgstr "Nascondi Mazzi delle altre Campagne"
-
-msgid "Hide Killed and Insane Investigators"
-msgstr "Nascondi Investigatori Uccisi o Impazziti"
-
-msgid "Only Show Previous Campaign Members"
-msgstr "Mostra solo Membri della precedente Campagna"
-
-msgid "Experience"
-msgstr "Esperienza"
-
-msgid "Easy"
-msgstr "Facile"
-
-msgid "Standard"
-msgstr "Standard"
-
-msgid "Hard"
-msgstr "Difficile"
-
-msgid "Expert"
-msgstr "Esperto"
-
-msgid "Night of the Zealot"
-msgstr "Notte della Zelota"
-
-msgid "Return to the Night of the Zealot"
-msgstr "Ritorno alla Notte della Zelota"
-
-msgid "The Dunwich Legacy"
-msgstr "L'Eredità di Dunwich"
-
-msgid "Return to The Dunwich Legacy"
-msgstr "Ritorno all'Eredità di Dunwich"
-
-msgid "The Path To Carcosa"
-msgstr "La Strada per Carcosa"
-
-msgid "The Forgotten Age"
-msgstr "L'Era Dimenticata"
-
-msgid "The Circle Undone"
-msgstr "Il Circolo Spezzato"
-
-msgid "The Gathering"
-msgstr "L'Adunanza"
-
-msgid "The Midnight Masks"
-msgstr "Le Maschere di Mezzanotte"
-
-msgid "The Devourer Below"
-msgstr "Il Divoratore Sotterraneo"
-
-msgid "Extracurricular Activity"
-msgstr "Attività Extracurricolare"
-
-msgid "The House Always Wins"
-msgstr "Il Banco Vince Sempre"
-
-msgid "Armitage’s Fate"
-msgstr "Il Destino di Armitage"
-
-msgid "The Miskatonic Museum"
-msgstr "Il Museo della Miskatonic"
-
-msgid "Essex County Express"
-msgstr "L'Espresso di Essex County"
-
-msgid "Blood on the Altar"
-msgstr "Sangue sull'Altare"
-
-msgid "The Survivors"
-msgstr "I Sopravvissuti"
-
-msgid "Undimensioned and Unseen"
-msgstr "Le Dimensioni dell'Invisibile"
-
-msgid "Where Doom Awaits"
-msgstr "Verso un Destino Oscuro"
-
-msgid "Lost in Time and Space"
-msgstr "Oltre il Tempo e lo Spazio"
-
-msgid "Epilogue"
-msgstr "Epilogo"
-
-msgid "Return to Extracurricular Activity"
-msgstr "Ritorno ad Attività Extracurricolare"
-
-msgid "Return to The House Always Wins"
-msgstr "Ritorno a Il Banco Vince Sempre"
-
-msgid "Return to The Miskatonic Museum"
-msgstr "Ritorno a Il Museo della Miskatonic"
-
-msgid "Return to Essex County Express"
-msgstr "Ritorno all'Espresso di Essex County"
-
-msgid "Return to Blood on the Altar"
-msgstr "Ritorno a Sangue sull'Altare"
-
-msgid "Return to Undimensioned and Unseen"
-msgstr "Ritorno a Le Dimensioni dell'Invisibile"
-
-msgid "Return to Where Doom Awaits"
-msgstr "Ritorno a Verso un Destino Oscuro"
-
-msgid "Return to Lost in Time and Space"
-msgstr "Ritorno a Oltre il Tempo e lo Spazio"
-
-msgid "Prologue"
-msgstr "Prologo"
-
-msgid "Curtain Call"
-msgstr "Cala il Sipario"
-
-msgid "The Last King"
-msgstr "L'Ultimo Re"
-
-msgid "Lunacy’s Reward"
-msgstr "La Ricompensa della Pazzia"
-
-msgid "Echoes of the Past"
-msgstr "Echi dal Passato"
-
-msgid "The Unspeakable Oath"
-msgstr "Il Giuramento Impronunciabile"
-
-msgid "Lost Soul"
-msgstr "L'Anima Perduta"
-
-msgid "A Phantom of Truth"
-msgstr "Lo Spettro della Verità"
-
-msgid "The Pallid Mask"
-msgstr "La Maschera Pallida"
-
-msgid "Black Stars Rise"
-msgstr "L'Ascesa delle Stelle Nere"
-
-msgid "Dim Carcosa"
-msgstr "La Cupa Carcosa"
-
-msgid "The Untamed Wilds"
-msgstr "La Foresta Inviolata"
-
-msgid "Restless Nights"
-msgstr "Notti Irrequiete"
-
-msgid "The Doom of Eztli"
-msgstr "La Maledizione di Eztli"
-
-msgid "Expedition’s End"
-msgstr "Fine della Spedizione"
-
-msgid "Threads of Fate"
-msgstr "Trame del Fato"
-
-msgid "The Boundary Beyond"
-msgstr "Oltre i Confini"
-
-msgid "The Jungle Beckons"
-msgstr "Il Richiamo della Giungla"
-
-msgid "Heart of the Elders"
-msgstr "Cuore degli Antichi"
-
-msgid "The City of Archives"
-msgstr "Città degli Archivi"
-
-msgid "Those Held Captive"
-msgstr "Imprigionati"
-
-msgid "The Depths of Yoth"
-msgstr "Abissi di Yoth"
-
-msgid "The Darkness"
-msgstr "L'Oscurità"
-
-msgid "Shattered Aeons"
-msgstr "Eoni Infranti"
-
-msgid "Prologue: Disappearance at the Twilight Estate"
-msgstr "Prologo: Sparizione alla Villa del Crepuscolo"
-
-msgid "The Witching Hour"
-msgstr "L'Ora delle Streghe"
-
-msgid "The Price of Progress"
-msgstr "Il Prezzo del Progresso"
-
-msgid "The Secret Name"
-msgstr "Il Nome Segreto"
-
-msgid "The Wages of Sin"
-msgstr "Il Prezzo del Peccato"
-
-msgid "For the Greater Good"
-msgstr "Per il Bene Superiore"
-
-msgid "The Inner Circle"
-msgstr "La Cerchia Interna"
-
-msgid "Union and Disillusion"
-msgstr "Unione e Disillusione"
-
-msgid "In the Clutches of Chaos"
-msgstr "Nelle Grinfie del Caos"
-
-msgid "Twist of Fate"
-msgstr "Un Fato Inaspettato"
-
-msgid "Before the Black Throne"
-msgstr "Al Cospetto del Trono Nero"
-
-msgid "Return to The Gathering"
-msgstr "Ritorno a L'Adunanza"
-
-msgid "Return to the Midnight Masks"
-msgstr "Ritorno a Le Maschere di Mezzanotte"
-
-msgid "Return to the Devourer Below"
-msgstr "Ritorno a Il Divoratore Sotterraneo"
-
-msgid "The Night of the Zealot"
-msgstr "La Notte della Zelota"
-
-msgid "The Path to Carcosa"
-msgstr "La Strada per Carcosa"
-
-msgid "Campaign Notes"
-msgstr "Note della Campagna"
-
-msgid "Cultists We Interrogated"
-msgstr "Cultisti Interrogati"
-
-msgid "Cultists Who Got Away"
-msgstr "Cultisti Fuggiti"
-
-msgid "Sacrificed to Yog-Sothoth"
-msgstr "Sacrifici a Yog-Sothoth"
-
-msgid "VIPs Interviewed"
-msgstr "VIP Interrogati"
-
-msgid "VIPs Slain"
-msgstr "VIP Uccisi"
-
-msgid "Doubt"
-msgstr "Dubbi"
-
-msgid "Conviction"
-msgstr "Certezze"
-
-msgid "Chasing the Stranger"
-msgstr "Caccia allo Straniero"
 
 msgid "Yig's Fury"
-msgstr "Furia di Yig"
-
-msgid "Supplies"
-msgstr "Scorte"
-
-msgid "Mementos Discovered"
-msgstr "Reperti Rinvenuti"
-
-msgid "Missing Persons - Gavriella Mizrah"
-msgstr "Persone Scomparse - Gavriella Mizrah"
-
-msgid "Missing Persons - Jerome Davids"
-msgstr "Persone Scomparse - Jerome Davids"
-
-msgid "Missing Persons - Penny White"
-msgstr "Persone Scomparse - Penny White"
-
-msgid "Missing Persons - Valentino Rivas"
-msgstr "Persone Scomparse - Valentino Rivas"
-
-#, javascript-format
-msgid "${ traumaData.physical } Physical"
-msgstr "${ traumaData.physical } Fisico"
-
-msgid "${ traumaData.mental } Mental"
-msgstr "${ traumaData.mental } Mentale"
-
-msgid "None"
-msgstr "Nessuno"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "Custom"
-msgstr "Personalizzata"
-
-msgid "My Campaigns"
-msgstr "Le Mie Campagne"
-
-msgid "Other Campaigns"
-msgstr "Altre Campagne"
-
-msgid "Select Campaign"
-msgstr "Seleziona Campagna"
-
-msgid "Campaign"
-msgstr "Campagna"
-
-msgid "New Campaign"
-msgstr "Nuova Campagna"
-
-msgid "Chaos Bag"
-msgstr "Sacchetto del Caos"
-
-msgid "Adjust Weakness Set"
-msgstr "Modifica Debolezze Base"
-
-#. eslint-disable prefer-template 
-msgid "This deck contains several basic weaknesses"
-msgstr "Questo Mazzo contiene diverse Debolezze Base"
-
-#. eslint-disable prefer-template 
-msgid "This deck contains a basic weakness"
-msgstr "Questo Mazzo contiene una Debolezza Base"
-
-#. eslint-disable prefer-template 
-msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
-msgstr "Vuoi rimuovere dalla Campagna queste Debolezze Base?"
-
-#. eslint-disable prefer-template 
-msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
-msgstr "Vuoi rimuovere dalla Campagna questa Debolezza Base?"
-
-msgid "Not Now"
-msgstr "Non Ora"
-
-msgid "Okay"
-msgstr "Ok"
-
-msgid "(required)"
-msgstr "(richiesto)"
-
-#, javascript-format
-msgid "My ${ campaign } Campaign"
-msgstr "La mia ${ campaign } Campagna"
-
-msgid "Include all basic weaknesses from these expansions"
-msgstr "Includi tutte le Debolezze Base da queste espansioni"
-
-msgid "Add Log Section"
-msgstr "Aggiunti Nota"
-
-msgid "Difficulty"
-msgstr "Difficoltà"
-
-msgid "Create Campaign"
-msgstr "Crea Campagna"
-
-msgid "Campaigns"
-msgstr "Campagne"
-
-#, javascript-format
-msgid "No matching campaigns for \"${ search }\"."
-msgstr "Nessuna Campagna per \"${ search }\"."
-
-msgid "Search campaigns"
-msgstr "Cerca Campagne"
-
-msgid "Save changes?"
-msgstr "Salva le modifiche?"
-
-msgid "Looks like you have made some changes that have not been saved."
-msgstr "Sembra che tu abbia fatto alcune modifiche che non sono state salvate."
-
-msgid "Save Changes"
-msgstr "Salva Modifiche"
-
-msgid "Discard Changes"
-msgstr "Annulla Modifiche"
-
-msgid "Add note"
-msgstr "Aggiungi Nota"
-
-#, javascript-format
-msgid "${ totalXp } total"
-msgstr "${ totalXp } Totali"
-
-msgid "Upgrade Deck"
-msgstr "Aggiorna Mazzo"
-
-#, javascript-format
-msgid "Remove ${ investigator.name }?"
-msgstr "Rimuovere ${ investigator.name }?"
-
-msgid "Remove"
-msgstr "Rimuovi"
-
-msgid "Upgrade"
-msgstr "Aggiorna"
-
-msgid "Scenarios"
-msgstr "Scenari"
-
-msgid "Scenario Result"
-msgstr "Risultati Scenario"
-
-msgid "Record Scenario Results"
-msgstr "Risultati dello Scenario"
-
-msgid "Basic Weakness Set"
-msgstr "Debolezze Base"
-
-#, javascript-format
-msgid "${ counts.assigned } / ${ counts.total } have been drawn."
-msgstr "${ counts.assigned } / ${ counts.total } sono state pescate."
-
-msgid "Delete"
-msgstr "Cancella"
-
-msgid "Show Interludes"
-msgstr "Mostra Interludi"
-
-msgid "Interlude"
-msgstr "Interludio"
-
-msgid "Name"
-msgstr "Nome"
-
-msgid "Resolution"
-msgstr "Risoluzione"
-
-#. This is the lead pack in a cycle.
-msgid "Mark entire cycle?"
-msgstr "Segna l'intero Ciclo?"
-
-#. This is the lead pack in a cycle.
-msgid "Clear entire cycle?"
-msgstr "Rimuovi l'intero Ciclo?"
-
-#. This is the lead pack in a cycle.
-#, javascript-format
-msgid "Mark all packs in the ${ pack.name } cycle?"
-msgstr "Segna tutti i pack nel Ciclo di ${ pack.name }?"
-
-#. This is the lead pack in a cycle.
-msgid "Clear all packs in the ${ pack.name } cycle?"
-msgstr "Rimuovi tutti i pack nel Ciclo di ${ pack.name }?"
-
-#. This is the lead pack in a cycle.
-msgid "No"
-msgstr "No"
-
-#. This is the lead pack in a cycle.
-msgid "Yes"
-msgstr "Sì"
-
-#, javascript-format
-msgid "The Adventures of ${ investigator.name }"
-msgstr "Le Avventure di ${ investigator.name }"
-
-msgid "${ investigator.name } Investigates"
-msgstr "${ investigator.name } Investiga"
-
-#, javascript-format
-msgid "The ${ investigator.name } Mysteries"
-msgstr "I Misteri di ${ investigator.name }"
-
-msgid "The ${ investigator.name } Job"
-msgstr "Il Lavoro di ${ investigator.name }"
-
-#, javascript-format
-msgid "${ investigator.name } on the Road"
-msgstr "${ investigator.name } in Azione"
-
-msgid "${ investigator.name } Does It All"
-msgstr "${ investigator.name } Fa Tutto"
-
-msgid "Create on ArkhamDB"
-msgstr "Crea su ArkhamDB"
-
-msgid "You seem to be offline. Refresh Network?"
-msgstr "Sembra che tu sia offline. Hai provato a controllare la Connessione?"
-
-msgid "Search"
-msgstr "Cerca"
-
-msgid "No matching investigators for \"${ searchTerm }\"."
-msgstr "Nessun Investigatore corrispondente per \"${ searchTerm }\"."
-
-msgid "N/A"
-msgstr "N/D"
-
-msgid "All Investigators"
-msgstr "Tutti gli Investigatori"
-
-msgid "Draw: "
-msgstr "Pesca: "
-
-msgid "Redraw"
-msgstr "Ripesca"
-
-msgid "Reshuffle"
-msgstr "Rimescola"
-
-msgid "Reset"
-msgstr "Annulla"
-
-#, javascript-format
-msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
-msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
-msgstr[0] "${ normalCardCount } Carta (${ totalCardCount } Totale)"
-msgstr[1] "${ normalCardCount } Carte (${ totalCardCount } Totale)"
+msgstr ""
 
 msgid "Doesn't comply with the Investigator requirements."
-msgstr "Non soddisfa i requisiti dell'Investigatore."
-
-#, javascript-format
-msgid "Delete this upgrade (${ deck.version })"
-msgstr "Cancella questo Aggiornamento (${ deck.version })"
-
-msgid "Delete all versions"
-msgstr "Cancella tutte le versioni"
-
-msgid "Delete deck"
-msgstr "Cancella Mazzo"
-
-msgid "Are you sure you want to delete this deck?"
-msgstr "Sei certo di voler cancellare questo Mazzo?"
-
-msgid "Save Local Changes"
-msgstr "Salva le Modifiche"
-
-msgid "Please save any local edits to this deck before sharing to ArkhamDB"
 msgstr ""
-"Ricordati di salvare ogni modifica fatta a questo Mazzo prima di "
-"condividerlo su ArkhamDB"
-
-msgid "Unsupported Operation"
-msgstr "Operazione non supportata"
-
-msgid "Upload to ArkhamDB"
-msgstr "Salvataggio su ArkhamDB"
-
-msgid "Special Cards"
-msgstr "Carte Speciali"
-
-msgid "View on ArkhamDB"
-msgstr "Vedi su ArkhamDB"
-
-msgid "Save deck changes?"
-msgstr "Salvare le modifiche al Mazzo?"
-
-msgid "Edit Special Cards"
-msgstr "Modifica le Carte Speciali"
-
-msgid "Edit Deck"
-msgstr "Modifica Mazzo"
-
-msgid "Deck has been deleted"
-msgstr "Il Mazzo è stato cancellato"
-
-msgid "Error"
-msgstr "Errore"
-
-msgid "Edit"
-msgstr "Modifica"
-
-msgid "Required"
-msgstr "Obbligatorio"
-
-msgid "Copy Deck"
-msgstr "Copia Mazzo"
-
-msgid ""
-"Make a copy of a deck so that you can use it in a different campaign or "
-"choose different upgrades."
-msgstr ""
-"Fai una copia del Mazzo in modo tale che possa essere usato in una Campagna "
-"differente o scegliere Aggiornamenti differenti."
-
-msgid "Type"
-msgstr "Tipo"
-
-msgid "Encounter Set"
-msgstr "Set Incontri"
-
-msgid "Investigating for clues"
-msgstr "Cerco Indizi"
-
-msgid "Cursing at the tentacle token"
-msgstr "Bestemmio contro il tentacolo"
-
-msgid "Drawing a mythos card with surge"
-msgstr "Pesco una Carta Incontro con Impulso"
-
-msgid "Placing doom on the agenda"
-msgstr "Piazzo un Destino sulla Trama"
-
-msgid "Reticulating spines"
-msgstr "Scarto una Carta casuale dalla Mano"
-
-msgid "Trying to make sense of the Time Warp FAQ"
-msgstr "Cerco di dare un senso alle FAQ sulla Distorsione Temporale"
-
-msgid "Taking three damage and three horror"
-msgstr "Prendo 3 Danni e 3 Orrori"
 
 msgid "Up by 5, hope I don't draw the tentacle"
-msgstr "Sto sopra di 5, spero di non pescare il tentacolo"
-
-msgid "No matching cards for \"${ searchTerm }\""
-msgstr "Nessuna Carta corrispondente per \"${ searchTerm }\""
-
-msgid "No matching cards"
-msgstr "Nessuna Carta corrispondente"
-
-msgid "Cost: None"
-msgstr "Costo: Nessuno"
-
-msgid "All Cards"
-msgstr "Tutte le Carte"
-
-msgid "Search for a card"
-msgstr "Cerca una Carta"
-
-#, javascript-format
-msgid "Clear \"${ searchTerm }\" search"
-msgstr "Cancella la ricerca di  \"${ searchTerm }\""
-
-msgid "Apply"
-msgstr "Applica"
-
-msgid "Filters"
-msgstr "Filtri"
-
-msgid "Player Cards"
-msgstr "Carte Investigatore"
-
-msgid "Required Cards"
-msgstr "Carte Richieste"
-
-msgid "Alternate Cards"
-msgstr "Carte Alternative"
-
-msgid "FAQ"
-msgstr "FAQ"
-
-msgid "Allowed Cards"
-msgstr "Carte Permesse"
-
-msgid "Test Icons: "
-msgstr "Icone Abilità: "
-
-msgid "Show back"
-msgstr "Mostra retro"
-
-#, javascript-format
-msgid "Victory: ${ card.victory }."
-msgstr "Vittoria: ${ card.victory }."
-
-msgid "Vengeance: ${ card.vengeance }."
-msgstr "Vendetta: ${ card.vengeance }."
-
-msgid "Show front"
-msgstr "Mostra fronte"
-
-msgid "Deckbuilding Cards"
-msgstr "Carte del Deckbuilding"
+msgstr ""
 
 msgid "Cards"
-msgstr "Carte"
+msgstr ""
 
 msgid "Settings"
-msgstr "Impostazioni"
+msgstr ""
 
 #, javascript-format
 msgid "Additional XP: ${ taboo.extra_xp }."
-msgstr "PE Addizionali: ${ taboo.extra_xp }."
+msgstr ""
 
 msgid ""
 "The List of Taboos is a list of Arkham Horror: The Card Game cards with "
@@ -1240,11 +1234,6 @@ msgid ""
 "to craft a healthy balance between investigator power and scenario "
 "difficulty, and to enforce shifts in deckbuilding environments over time."
 msgstr ""
-"La Lista dei Taboo è una lista per \"Arkham Horro: Il Gioco di Carte\" con "
-"restrizioni opzionali per il deckbuilding o cambi di testo. Questa lista è "
-"stata disegnata per creare un ottimo bilanciamento tra la forza degli "
-"investigatori e la difficoltà dello scenario, e per promuovere cambiamenti "
-"nel deckbuilding nel corso del tempo."
 
 msgid ""
 "Adhering to The List of Taboos is completely optional. Investigators are "
@@ -1252,61 +1241,52 @@ msgid ""
 "investigator chooses to do so, they must do so in full (an investigator "
 "cannot pick and choose which restrictions to use)."
 msgstr ""
-"Aderire alla Lista dei Taboo è completamente opzionale. Gli Investigatori "
-"non sono obbligati ad aderire alle restrizioni di questa lista, ma se un "
-"Investigatore sceglie di farlo, lo deve fare interamente (un Investigatore "
-"non può selezionare singolarmente quale restrizioni applicare)."
 
 msgid "Note: not all cards have translations available."
-msgstr "Nota: non tutte le Carte hanno una traduzione disponibile."
+msgstr ""
 
 msgid "Taboo List"
-msgstr "Lista dei Taboo"
+msgstr ""
 
 msgid "Error loading cards, make sure your network is working."
 msgstr ""
-"Errore nel caricamento delle Carte, controllate lo stato della vostra "
-"connessione."
 
 msgid "Try Again"
-msgstr "Provate Ancora"
+msgstr ""
 
 msgid "Loading latest cards..."
-msgstr "Caricando le ultime carte."
+msgstr ""
 
 msgid "Charts"
-msgstr "Tabelle"
+msgstr ""
 
 msgid "Card Costs"
-msgstr "Costo delle Carte"
+msgstr ""
 
 msgid "Card Factions"
-msgstr "Classe delle Carte"
+msgstr ""
 
 msgid "Bonded"
-msgstr "Vincolo"
+msgstr ""
 
 msgid "Bound Cards"
-msgstr "Carte Vincolate"
+msgstr ""
 
 msgid "Taboo"
-msgstr "Taboo"
+msgstr ""
 
 msgid "Taboo List Changes"
-msgstr "Cambiamenti alla Lista dei Taboo"
+msgstr ""
 
 #, javascript-format
 msgid "Additional XP: ${ card.extra_xp }."
-msgstr "PE Addizionali: ${ card.extra_xp }."
+msgstr ""
 
 msgid ""
 "No decks yet.\n"
 "\n"
 "Use the + button to create a new one."
 msgstr ""
-"Nessun Mazzo.\n"
-"\n"
-"Usa il tasto + per crearne uno nuovo."
 
 msgid ""
 "This deck does not seem to be part of a campaign yet.\n"
@@ -1316,13 +1296,6 @@ msgid ""
 "\n"
 "Otherwise, you can draw random weaknesses from your entire collection."
 msgstr ""
-"Questo Mazzo sembra che non faccia ancora parte di una Campagna.\n"
-"\n"
-"Se aggiungi questo Mazzo a una Campagna, l'App potrà tenere traccia delle "
-"Debolezze Base disponibili tra Deck differenti.\n"
-"\n"
-"In alternativa, puoi pescare una Debolezza Base casuale dalla tua intera "
-"Collezione."
 
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share "
@@ -1330,30 +1303,18 @@ msgid ""
 "\n"
 "Sign in to access your decks or share decks you have created with others."
 msgstr ""
-"ArkhamDB è un sito molto popolare per il deckbuilding dove puoi gestire e "
-"condividere Mazzi con altri utenti.\n"
-"\n"
-"Effettua il login per accedere ai tuoi Mazzi o condividere quelli che hai "
-"creato con altre persone."
 
 msgid ""
 "We are having trouble talking to ArkhamDB.\n"
 "\n"
 "If the problem persists, please try to reauthorize."
 msgstr ""
-"Abbiamo problemi ad instaurare un dialogo con ArkhamDB.\n"
-"\n"
-"Se il problema dovesse persistere, prova ad autorizzare nuovamente l'App."
 
 msgid ""
 "There are no weaknesses that match these trait filters left in the set.\n"
 "\n"
 "Please adjust the trait filter."
 msgstr ""
-"Non ci sono più Debolezze che combaciono con i Tratti del filtro "
-"all'interno della Collezione.\n"
-"\n"
-"Si prega di modificare quel Filtro."
 
 msgid ""
 "Data on ArkhamDB will be preserved, but all Campaign data and any edits "
@@ -1361,23 +1322,14 @@ msgid ""
 "\n"
 "If you are having trouble with your account you can also reconnect."
 msgstr ""
-"I dati su ArkhamDB verranno conservati, ma tutti i dati della Campagna e "
-"tutte le modifiche apportate senza una connessione Internet potrebbero "
-"andare persi.\n"
-"\n"
-"Se hai problemi con il tuo account, puoi anche provare a effettuare "
-"nuovamente il Login."
 
 msgid ""
 "It has been more than a week since you checked for new cards.\n"
 "Check for new cards from ArkhamDB?"
 msgstr ""
-"E' passata più di una settimana da quando hai controllato la presenza di "
-"nuove Carte.\n"
-"Vuoi controllare ora se ci sono nuove Carte su ArkhamDB?"
 
 msgid "Edit Assigned Weaknesses"
-msgstr "Modifica Debolezze Assegnate"
+msgstr ""
 
 msgid ""
 "No campaigns yet.\n"
@@ -1388,26 +1340,15 @@ msgid ""
 "trauma, the chaos bag, basic weaknesses, campaign notes and the experience "
 "values for all decks."
 msgstr ""
-"Ancora nessuna Campagna.\n"
-"\n"
-"Usa il pulsante + per crearne una nuova.\n"
-"\n"
-"Puoi utilizzare quest'App per tenere traccia delle Campagne, inclusi i "
-"traumi degli Investigatori, il Sacchetto del Caos, le Debolezze Base, le "
-"Note della Campagna e i Punti Esperienza di tutti i Mazzi."
 
 msgid "Sort"
-msgstr "Ordina"
+msgstr ""
 
 msgid ""
 "You can upload your deck to ArkhamDB to share with others.\n"
 "\n"
 "After doing this you will need network access to make changes to the deck."
 msgstr ""
-"Puoi aggiornare il tuo Mazzo su ArkhamDB e condividerlo con altri.\n"
-"\n"
-"Dopo aver fatto questo avrai bisogno di una connessione Internet per fare "
-"modifiche al Mazzo."
 
 msgid ""
 "It looks like you deleted this deck from ArkhamDB.\n"
@@ -1415,72 +1356,62 @@ msgid ""
 "If it was part of a campaign you can add the same investigator back to "
 "restore your campaign data."
 msgstr ""
-"Sembra che tu abbia cancellato questo Mazzo da ArkhamDB.\n"
-"\n"
-"Se era parte di una Campagna puoi aggiungere lo stesso Investigatore per "
-"recuperare il salvataggio."
 
 #, javascript-format
 msgid ""
 "Base Version\n"
 "${ parsedBaseDeck.experience } XP"
 msgstr ""
-"Versione Base\n"
-"${ parsedBaseDeck.experience } PE"
 
 #, javascript-format
 msgid ""
 "Current Version ${ parsedCurrentDeck.deck.version }\n"
 "${ parsedCurrentDeck.experience } XP"
 msgstr ""
-"Versione Corrente ${ parsedCurrentDeck.deck.version }\n"
-"${ parsedCurrentDeck.experience } PE"
 
 msgid ""
 "Latest Version ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } XP"
 msgstr ""
-"Ultima Versione ${ parsedLatestDeck.deck.version }\n"
-"${ parsedLatestDeck.experience } PE"
 
 msgid "Share"
-msgstr "Condividi"
+msgstr ""
 
 msgid "Exiled cards"
-msgstr "Carte Esiliate"
+msgstr ""
 
 #, javascript-format
 msgid "Story cards to add - ${ scenarioName }"
-msgstr "Carte Storia da aggiungere - ${ scenarioName }"
+msgstr ""
 
 msgid "Story cards to add"
-msgstr "Carte Storia da aggiungere"
+msgstr ""
 
 msgid "Story Cards - Existing"
-msgstr "Carte Storia - Esistenti"
+msgstr ""
 
 msgid "Upgrade deck"
-msgstr "Aggiorna Mazzo"
+msgstr ""
 
 msgid "Saving..."
-msgstr "Salvataggio..."
+msgstr ""
 
 msgid "Flip Card"
-msgstr "Gira Carta"
+msgstr ""
 
 #, javascript-format
 msgid "Doom: ${ doom }"
-msgstr "Destino: ${ doom }"
+msgstr ""
 
 #, javascript-format
 msgid "Clues: ${ clues }${ perInvestigatorClues }"
-msgstr "Indizi: ${ clues }${ perInvestigatorClues }"
+msgstr ""
 
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
-msgstr "Oscurità: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
+msgstr ""
 
 msgid "Update investigator decks"
-msgstr "Aggiorna Mazzi Investigatore"
+msgstr ""
 
 msgid ""
 "By upgrading a deck, you can track XP and story card upgrades as your "
@@ -1488,237 +1419,223 @@ msgid ""
 "\n"
 "Previous versions of your deck will still be accessible."
 msgstr ""
-"Aggiornando un Mazzo, puoi tenere traccia dei PE e delle Carte Storia "
-"inserite mentre la tua Campagna si sviluppa.\n"
-"\n"
-"Le precedenti Versioni del tuo Mazzo saranno comunque accessibili."
 
 msgid "Save and Upgrade Decks"
-msgstr "Salva e Aggiorna Mazzi"
+msgstr ""
 
 msgid "Only Save"
-msgstr "Solo Salvataggio"
+msgstr ""
 
 msgid ""
 "You can opt-in to always seeing taboos and buiding decks with them in "
 "Settings."
 msgstr ""
-"Puoi sempre vedere la Lista dei Taboo e i Mazzi che la usano nelle "
-"Impostazioni."
 
 #, javascript-format
 msgid "Level ${ level }"
-msgstr "Livello ${ level }"
+msgstr ""
 
 msgid "In Deck"
-msgstr "Nel Mazzo"
+msgstr ""
 
 msgid "All Eligible Cards"
-msgstr "Tutte le Carte Utilizzabili"
+msgstr ""
 
 msgid "Deckbuilding"
-msgstr "Deckbuilding"
+msgstr ""
 
 #, javascript-format
 msgid "Warning: this card contains possible spoilers for '${ card.pack_name }'."
 msgstr ""
-"Attenzione: questa carta potrebbe contenere spoiler da '${ card.pack_name "
-"}'."
 
 msgid "Pack Filters"
-msgstr "Filtra Pack"
+msgstr ""
 
 #, javascript-format
 msgid "${ count } Card"
 msgid_plural "${ count } Cards"
-msgstr[0] "${ count } Carta"
-msgstr[1] "${ count } Carte"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Secondary Class"
-msgstr "Classe Secondaria"
+msgstr ""
 
 #, javascript-format
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
-msgstr "${ xp } Punti Esperienza Disponibili, ${ parsedDeck.changes.spentXp } Spesi"
+msgstr ""
 
 msgid "Preferences"
-msgstr "Preferenze"
+msgstr ""
 
 msgid "Swipe between card results"
-msgstr "Naviga tra i risultati"
+msgstr ""
 
 msgid "Select Faction"
-msgstr "Classe Selezionata"
+msgstr ""
 
 msgid "Deck Size"
-msgstr "Dimensioni del Mazzo"
+msgstr ""
 
 msgid "Unable to update: you appear to be offline."
-msgstr "Impossibile aggiornare: connessione non presente."
+msgstr ""
 
 msgid ""
 "We're having trouble updating your decks at this time. If the problem "
 "persists tap here to reauthorize."
 msgstr ""
-"C'è un problema nell'aggiornamento dei tuoi Mazzi. Se il problema persiste "
-"clicca qui per autorizzare nuovamente."
 
 msgid "Multiplayer"
-msgstr "Multiplayer"
+msgstr ""
 
 msgid "Standalone"
-msgstr "Standalone"
+msgstr ""
 
 msgid "Debug Card Json"
-msgstr "Debug Card Json"
+msgstr ""
 
 msgid "Debug"
-msgstr "Debug"
+msgstr ""
 
 msgid "Swarm"
-msgstr "Sciame"
+msgstr ""
 
 msgid "Seal"
-msgstr "Sigillo"
+msgstr ""
 
 msgid "Myriad"
-msgstr "Miriade"
+msgstr ""
 
 msgid "Return to The Path to Carcosa"
-msgstr "Ritorno a La Strada per Carcosa"
+msgstr ""
 
 msgid "The Dream-Quest"
-msgstr "La Ricerca Onirica"
+msgstr ""
 
 msgid "The Web of Dreams"
-msgstr "La Ragnatela dei Sogni"
+msgstr ""
 
 msgid "Return to Curtain Call"
-msgstr "Ritorno a Cala il Sipario"
+msgstr ""
 
 msgid "Return to The Last King"
-msgstr "Ritorno a L'Ultimo Re"
+msgstr ""
 
 msgid "Return to Echoes of the Past"
-msgstr "Ritorno a Echi dal Passato"
+msgstr ""
 
 msgid "Return to The Unspeakable Oath"
-msgstr "Ritorno a Il Giuramento Impronunciabile"
+msgstr ""
 
 msgid "Return to A Phantom of Truth"
-msgstr "Ritorno a Lo Spettro della Verità"
+msgstr ""
 
 msgid "Return to The Pallid Mask"
-msgstr "Ritorno a La Maschera Pallida"
+msgstr ""
 
 msgid "Return to Black Stars Rise"
-msgstr "Ritorno a L'Ascesa delle Stelle Nere"
+msgstr ""
 
 msgid "Return to Dim Carcosa"
-msgstr "Ritorno a La Cupa Carcosa"
+msgstr ""
 
 msgid "Beyond the Gates of Sleep"
-msgstr "Oltre La Soglia del Sonno"
+msgstr ""
 
 msgid "The Black Cat"
-msgstr "Il Gatto Nero"
+msgstr ""
 
 msgid "The Search for Kadath"
-msgstr "Alla Ricerca di Kadath"
+msgstr ""
 
 msgid "The Oneironauts"
-msgstr "Gli Onironauti"
+msgstr ""
 
 msgid "Dark Side of the Moon"
-msgstr "Il Lato Oscuro della Luna"
+msgstr ""
 
 msgid "The Great Ones"
-msgstr "I Grandi"
+msgstr ""
 
 msgid "Where Gods Dwell"
-msgstr "La Dimora degli Dei"
+msgstr ""
 
 msgid "Waking Nightmare"
-msgstr "Incubo a Occhi Aperti"
+msgstr ""
 
 msgid "A Thousand Shapes of Horror"
-msgstr "Le Mille Forme dell'Orrore"
+msgstr ""
 
 msgid "Point of No Return"
-msgstr "Punto di Non Ritorno"
+msgstr ""
 
 msgid "Weaver of the Cosmos"
-msgstr "Il Tessitore del Cosmo"
+msgstr ""
 
 msgid "Evidence of Kadath"
-msgstr "Tracce del Kadath"
+msgstr ""
 
 msgid "Steps of the Bridge"
-msgstr "Scalini del Ponte"
+msgstr ""
 
 msgid "Deck Type"
-msgstr "Tipo di Mazzo"
+msgstr ""
 
 #, javascript-format
 msgid "${ investigator.deck_requirements.size } Cards"
-msgstr "${ investigator.deck_requirements.size } Carte"
+msgstr ""
 
 msgid "Unknown card: ${ req.code }"
-msgstr "Carta Sconosciuta: ${ req.code }"
+msgstr ""
 
 msgid "Select Deck Size"
-msgstr "Seleziona Dimensioni del Mazzo"
+msgstr ""
 
 #, javascript-format
 msgid "Bonded Cards (${ count })"
-msgstr "Carte Vincolate (${ count })"
+msgstr ""
 
 msgid "New Name"
-msgstr "Nuovo Nome"
+msgstr ""
 
 msgid "Game Text"
-msgstr "Testo di Gioco"
+msgstr ""
 
 msgid "Flavor Text"
-msgstr "Testo Flavor"
+msgstr ""
 
 msgid "Card Backs"
-msgstr "Retro della Carta"
+msgstr ""
 
 msgid "Encounter Cards"
-msgstr "Carte Incontro"
+msgstr ""
 
 msgid "XP Discount: ${ taboo.extra_xp }."
-msgstr "PE Scontati: ${ taboo.extra_xp }."
+msgstr ""
 
 msgid "At Death's Doorstep"
-msgstr "Sulla Soglia della Morte"
+msgstr ""
 
 msgid "Sealed Tokens"
-msgstr "Segnalini Sigillati"
+msgstr ""
 
 msgid "XP Discount: ${ card.extra_xp }."
-msgstr "PE Scontati: ${ card.extra_xp }."
+msgstr ""
 
 msgid "Add Investigator Deck"
-msgstr "Aggiungi Mazzo Investigatore"
+msgstr ""
 
 msgid "Upgrade Deck with XP"
-msgstr "Aggiorna Mazzo con PE"
+msgstr ""
 
 msgid ""
 "Note: Deck size should only be selected at deck creation time, not between "
 "scenarios."
 msgstr ""
-"Nota: le dimensioni del Mazzo dovrebbe essere scelte solo nel momento della "
-"sua creazione, non tra uno scenario e l'altro."
 
 msgid ""
 "Note: Secondary faction should only be selected at deck creation time, not "
 "between scenarios."
 msgstr ""
-"Nota: la Classe secondaria dovrebbe essere scelta solo nel momento della "
-"creazione del Mazzo, non tra uno scenario e l'altro."
 
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
@@ -1727,128 +1644,120 @@ msgid ""
 "If you would like to upload it, you can use Clone to upload a clone of the "
 "current deck."
 msgstr ""
-"Questo Deck contiene precedenti/successive versioni con modifiche, non "
-"possiamo aggiornarlo su ArkhamDB.\n"
-"\n"
-"Se desideri aggiornarlo, puoi usare Clona per creare una copia di questo "
-"Deck."
 
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
-msgstr "${ xp } (${ adjustment }) PE"
+msgstr ""
 
 msgid "Draw Simulator"
-msgstr "Simulatore Di Pescata"
+msgstr ""
 
 msgid "Available XP"
-msgstr "PE Disponibili"
+msgstr ""
 
 msgid "Odds Calculator"
-msgstr "Calcolo delle Probabilità"
+msgstr ""
 
 msgid "Fail By 2 or Less"
-msgstr "Fallimento di 2 o meno"
+msgstr ""
 
 msgid "Fail By 1 or Less"
-msgstr "Fallimento di 1 o meno"
+msgstr ""
 
 msgid "Succeed By 1 or More"
-msgstr "Successo di 1 o più"
+msgstr ""
 
 msgid "Succeed By 2 or More"
-msgstr "Successo di 2 o più"
+msgstr ""
 
 msgid "Succeed By 3 or More"
-msgstr "Successo di 3 o più"
+msgstr ""
 
 msgid "Change Scenario"
-msgstr "Cambia Scenario"
+msgstr ""
 
 msgid "Weakness Set"
-msgstr "Set Debolezze"
+msgstr ""
 
 msgid "Options"
-msgstr "Opzioni"
+msgstr ""
 
 msgid "Deck Cards"
-msgstr "Mazzo di Carte"
+msgstr ""
 
 msgid "Save changes before upgrading"
-msgstr "Salva le modifiche prima di Aggiornare"
+msgstr ""
 
 msgid "Number of clues on your location"
-msgstr "Numero d'Indizi nel tuo Luogo"
+msgstr ""
 
 msgid "Horror on Agnes Baker"
-msgstr "Orrori su Agnes Baker"
+msgstr ""
 
 msgid "Wendy's Amulet in play"
-msgstr "Amuleto di Wendy in gioco"
+msgstr ""
 
 msgid "Number of resources you have"
-msgstr "Numero di Risorse che possiedi"
+msgstr ""
 
 msgid "Damage on Mark Harrigan"
-msgstr "Danni su Mark Harrigan"
+msgstr ""
 
 msgid "Number of exhausted enemies in play"
-msgstr "Numero di nemici Elusi in gioco"
+msgstr ""
 
 msgid "Spend two resources to automatically succeed"
-msgstr "Spendi due risorse per avere Successo automaticamente"
+msgstr ""
 
 msgid "Resource cost of the top card on your deck"
-msgstr "Costo in Risorse della carta in cima al tuo Mazzo"
+msgstr ""
 
 msgid ""
 "Note: chaos tokens that cause additional tokens to be revealed does not "
 "show correct odds for the \"Draw Two Pick One\" and similar multi-draw "
 "situations."
 msgstr ""
-"Nota: i Segnalini del Caos che causano la rivelazione di più di un "
-"Segnalino non mostrano le corrette probabilità per il \"Pesca due scegli "
-"uno\" o altre situazioni di pesca multipla."
 
 msgid "Deleting"
-msgstr "Cancellazione"
+msgstr ""
 
 msgid "Hand"
-msgstr "Mano"
+msgstr ""
 
 msgid "Hand. Arcane"
-msgstr "Mano. Arcano"
+msgstr ""
 
 msgid "Hand x2"
-msgstr "Mano x2"
+msgstr ""
 
 msgid "Arcane"
 msgstr ""
 
 msgid "Accessory"
-msgstr "Accessorio"
+msgstr ""
 
 msgid "Body"
-msgstr "Corpo"
+msgstr ""
 
 msgid "Body. Hand x2"
-msgstr "Corpo. Mano x2"
+msgstr ""
 
 msgid "Ally"
-msgstr "Alleato"
+msgstr ""
 
 msgid "Tarot"
-msgstr "Tarocco"
+msgstr ""
 
 msgid "Other"
-msgstr "Altro"
+msgstr ""
 
 #, javascript-format
 msgid "Level ${ startXp }"
-msgstr "Livello ${ startXp }"
+msgstr ""
 
 #, javascript-format
 msgid "Level ${ startXp } - ${ endXp }"
-msgstr "Livello ${ startXp } - ${ endXp }"
+msgstr ""
 
 #, javascript-format
 msgid "Cost: ${ actualCost }"
@@ -1945,7 +1854,7 @@ msgstr ""
 
 #, javascript-format
 msgid "${ label }: All"
-msgstr "${ label}: Tutte"
+msgstr ""
 
 msgid "Experience points"
 msgstr ""
@@ -2316,7 +2225,7 @@ msgid "Remove ${ tokenString } from the chaos bag."
 msgstr ""
 
 msgid "Odds calculator"
-msgstr "Calcolo delle probabilità"
+msgstr ""
 
 msgid "Clean up broken campaigns"
 msgstr ""
@@ -2651,17 +2560,6 @@ msgstr ""
 msgid "Alphabetize guide encounter sets"
 msgstr ""
 
-msgid "Draw Weakness"
-msgstr ""
-
-msgid ""
-"<b>Note:</b> Trauma from investigator defeat is handled during scenario "
-"resolution."
-msgstr ""
-
-msgid "Record Trauma"
-msgstr ""
-
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
 "an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
@@ -2671,6 +2569,17 @@ msgid ""
 "sidestory may only be played once per campaign.\n"
 "The experience required to play these scenarios will be deducted "
 "automatically at the end of the scenario."
+msgstr ""
+
+msgid "Draw Weakness"
+msgstr ""
+
+msgid ""
+"<b>Note:</b> Trauma from investigator defeat is handled during scenario "
+"resolution."
+msgstr ""
+
+msgid "Record Trauma"
 msgstr ""
 
 msgid "Select resolution"
@@ -2899,38 +2808,38 @@ msgstr ""
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
-msgstr[0] "Mostra ${ nonCollection.length } carta non in collezione"
-msgstr[1] "Mostra ${ nonCollection.length } carte non in collezione"
+msgstr[0] ""
+msgstr[1] ""
 
 #, javascript-format
 msgid "Show ${ section.nonCollectionCount } non-collection investigator"
 msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
-msgstr[0] "Mostra ${ section.nonCollectionCount } investigatore non in collezione"
-msgstr[1] "Mostra ${ section.nonCollectionCount } investigatori non in collezione"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Edit spoiler settings"
-msgstr "Modifica impostazioni spoiler"
+msgstr ""
 
 #, javascript-format
 msgid "Show ${ spoilerCardsCount } spoiler"
 msgid_plural "Show ${ spoilerCardsCount } spoilers"
-msgstr[0] "Mostra ${ spoilerCardsCount } spoiler"
-msgstr[1] "Mostra ${ spoilerCardsCount } spoiler"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Search player cards"
-msgstr "Cerca carte investigatore"
+msgstr ""
 
 msgid "Search encounter cards"
-msgstr "Cerca carte incontro"
+msgstr ""
 
 msgid "Clear search filters"
-msgstr "Rimuovi filtri"
+msgstr ""
 
 msgid "Search game text"
-msgstr "Cerca testo di gioco"
+msgstr ""
 
 msgid "Search card backs"
-msgstr "Cerca retro delle carte"
+msgstr ""
 
 msgid "Dark"
 msgstr ""
@@ -3205,8 +3114,8 @@ msgstr ""
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
-msgstr[0] "Mostra ${ nonCollectionCount } carta non in collezione"
-msgstr[1] "Mostra ${ nonCollectionCount } carte non in collezione"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Hide versatile cards"
 msgstr ""
@@ -3215,25 +3124,25 @@ msgid "Version to copy"
 msgstr ""
 
 msgid "Updated Monday"
-msgstr "Aggiornato lunedì"
+msgstr ""
 
 msgid "Updated Tuesday"
-msgstr "Aggiornato martedì"
+msgstr ""
 
 msgid "Updated Wednesday"
-msgstr "Aggiornato mercoledì"
+msgstr ""
 
 msgid "Updated Thursday"
-msgstr "Aggiornato giovedì"
+msgstr ""
 
 msgid "Updated Friday"
-msgstr "Aggiornato venerdì"
+msgstr ""
 
 msgid "Updated Saturday"
-msgstr "Aggiornato sabato"
+msgstr ""
 
 msgid "Updated Sunday"
-msgstr "Domenica aggiornata"
+msgstr ""
 
 msgid "Books"
 msgstr ""
@@ -4168,11 +4077,11 @@ msgstr ""
 
 msgctxt "Draw Cards"
 msgid "All"
-msgstr "Tutti"
+msgstr ""
 
 msgctxt "Taboo List"
 msgid "None"
-msgstr "Nessuno"
+msgstr ""
 
 msgctxt "header"
 msgid "Asset"
@@ -4242,7 +4151,7 @@ msgstr[1] ""
 
 msgctxt "Weakness Card"
 msgid "All"
-msgstr "Tutti"
+msgstr ""
 
 msgctxt "trauma"
 msgid "None"

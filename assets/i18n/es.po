@@ -4160,6 +4160,9 @@ msgstr "${ _spentXp } de ${ _totalXp } gastada"
 msgid "Save your changes to the campaign log"
 msgstr "Guardar tus cambios en el registro de campaña"
 
+msgid "You must be online to upload campaigns"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
