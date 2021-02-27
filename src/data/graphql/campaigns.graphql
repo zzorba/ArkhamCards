@@ -1,0 +1,9 @@
+mutation updateCampaignName($campaignId: Int!, $name: String!) {
+	update_campaign_by_pk(
+    pk_columns: {id: $campaignId}
+    _set: { name: $name }
+  ) {
+    id
+    name
+  }
+}

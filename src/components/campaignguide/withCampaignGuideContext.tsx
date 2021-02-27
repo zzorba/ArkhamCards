@@ -14,7 +14,7 @@ export interface CampaignGuideInputProps {
 }
 
 export interface InjectedCampaignGuideContextProps {
-  setCampaignServerId: (serverId: string) => void;
+  setCampaignServerId: (serverId: number) => void;
 }
 
 export default function withCampaignGuideContext<Props>(

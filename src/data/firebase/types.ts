@@ -4,7 +4,7 @@ export enum FriendStatus {
   NONE = 'none',
   RECEIVED = 'received',
   SENT = 'sent',
-  FRIENDS = 'friends',
+  FRIEND = 'friend',
 }
 
 export interface ArkhamCardsProfile {

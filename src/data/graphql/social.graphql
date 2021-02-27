@@ -1,0 +1,24 @@
+query getProfile($userId:String!) {
+  users_by_pk(id: $userId) {
+    id
+    handle
+    friends {
+      user {
+        id
+        handle
+      }
+    }
+    sent_requests {
+      user {
+        id
+        handle
+      }
+    }
+    received_requests {
+      user {
+        id
+        handle
+      }
+    }
+  }
+}

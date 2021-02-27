@@ -30,7 +30,6 @@ import { updateCampaign } from '@components/campaign/actions';
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
-import fbdb from '@data/firebase/fbdb';
 import { UploadedCampaignGuideState } from '@data/firebase/types';
 
 function uploadCampaignHelper(
@@ -40,6 +39,7 @@ function uploadCampaignHelper(
   user: FirebaseAuthTypes.User,
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch, getState) => {
+    /*
     await fbdb.campaignDetail(campaignId).set(campaign);
     // Do something with deck uploads?
     if (guided) {
@@ -62,7 +62,7 @@ function uploadCampaignHelper(
     });
     forEach(campaign.deckIds || [], deckId => {
       dispatch(uploadCampaignDeckHelper(campaignId, deckId, user));
-    });
+    });*/
   };
 }
 
@@ -190,13 +190,14 @@ function setGuideInputAction(
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return async(dispatch) => {
     if (user && campaignId.serverId) {
+      /*
       const guideRef = fbdb.campaignGuide(campaignId);
       const id = guideInputToId(input);
       await Promise.all([
         guideRef.child('inputs').child(id).set(input),
         guideRef.child('undo').child(id).remove(),
         guideRef.child('lastUpdated').set(new Date()),
-      ]);
+      ]);*/
     } else {
       dispatch({
         type: GUIDE_SET_INPUT,

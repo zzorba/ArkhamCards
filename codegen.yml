@@ -1,0 +1,19 @@
+overwrite: true
+schema: 
+  - https://api.arkhamcards.com/v1/graphql:
+      headers:
+        content-type: "application/json"
+        x-hasura-admin-secret: "${MASTER_KEY}"
+documents: "src/data/graphql/*.graphql"
+generates:
+  src/data/graphql/schema.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+      - "fragment-matcher"
+  src/data/graphql/index.d.ts:
+    documents: "src/data/graphql/*.graphql"
+    plugins:
+      - typescript-graphql-files-modules
+

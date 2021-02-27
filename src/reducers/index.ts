@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import signedIn from './signedIn';
 import campaigns from './campaigns';
 import guides from './guides';
+import trackedQueries from './trackedQueries';
 import filters from './filters';
 import cards from './cards';
 import decks from './decks';
@@ -68,6 +69,12 @@ const guidesPersistConfig = {
   storage: AsyncStorage,
 };
 
+const trackedQueriesPersistConfig = {
+  key: 'trackedQueries',
+  storage: AsyncStorage,
+  blacklist: [],
+};
+
 const legacyDecksPersistConfig = {
   key: 'decks',
   timeout: 0,
@@ -119,7 +126,7 @@ const rootReducer = combineReducers({
   filters,
   deckEdits,
   dissonantVoices: persistReducer(dissonantVoicesPersistConfig, dissonantVoices),
-
+  trackedQueries: persistReducer(trackedQueriesPersistConfig, trackedQueries),
   decks: persistReducer(decksPersistConfig, decks),
   legacyGuides: persistReducer(legacyGuidesPersistConfig, legacyGuides),
   campaigns: legacyCampaigns,
@@ -713,3 +720,13 @@ export function getDeckUploadedCampaigns(state: AppState, id: DeckId): UploadedC
   const uploaded = state.decks.uploaded || {};
   return uploaded[id.uuid] || EMPTY_CAMPAIGN_IDS;
 }
+
+const getTrackedQueriesIds = (state: AppState) => state.trackedQueries.ids;
+
+const getTrackedQueriesById = (state: AppState) => state.trackedQueries.byId;
+
+export const getTrackedQueries = createSelector(
+  getTrackedQueriesIds,
+  getTrackedQueriesById,
+  (pIds, pById) => pIds.map(o => pById[o])
+);
