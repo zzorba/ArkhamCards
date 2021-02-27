@@ -5,7 +5,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import { FriendUser, useFriends } from '@data/firebase/hooks';
+import { useMyProfile, useProfile, SimpleUser } from '@data/hooks';
 import { Fade, Placeholder, PlaceholderLine } from 'rn-placeholder';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -21,6 +21,7 @@ import { SearchResults, useSearchUsers, useUpdateFriendRequest } from '@data/fir
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NavigationProps } from '@components/nav/types';
+import { refreshMyDecks } from '@actions';
 
 export interface FriendsViewProps {
   userId: string;
@@ -28,7 +29,7 @@ export interface FriendsViewProps {
 
 interface UserItem {
   type: 'user';
-  user: FriendUser;
+  user: SimpleUser;
 }
 interface HeaderItem {
   type: 'header';
@@ -48,7 +49,7 @@ interface PlaceholderItem {
 type Item = UserItem | HeaderItem | ButtonItem | PlaceholderItem;
 
 function UserRow({ user, status, showUser, acceptRequest, rejectRequest }: {
-  user: FriendUser;
+  user: SimpleUser;
   status?: FriendStatus;
   showUser?: (userId: string, handle?: string) => void;
   acceptRequest: (userId: string) => Promise<void>;
@@ -59,19 +60,19 @@ function UserRow({ user, status, showUser, acceptRequest, rejectRequest }: {
     return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
   }, [colors]);
   const onPress = useCallback(() => {
-    showUser?.(user.userId, user.handle);
+    showUser?.(user.id, user.handle);
   }, [showUser, user]);
   const [submitting, setSubmitting] = useState<'accept' | 'reject'>();
   const onAcceptPress = useCallback(async() => {
     setSubmitting('accept');
-    await acceptRequest(user.userId);
+    await acceptRequest(user.id);
     setSubmitting(undefined);
-  }, [acceptRequest, user.userId]);
+  }, [acceptRequest, user.id]);
   const onRejectPress = useCallback(() => {
     setSubmitting('reject');
-    rejectRequest(user.userId);
+    rejectRequest(user.id);
     setSubmitting(undefined);
-  }, [rejectRequest, user.userId]);
+  }, [rejectRequest, user.id]);
 
   const controls = useMemo(() => {
     const buttons: React.ReactNode[] = [];
@@ -144,21 +145,34 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
   const { lang } = useContext(LanguageContext);
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
-  const {
-    isSelf,
-    loading,
-    friends,
-    pendingRequests,
-    receivedRequests,
-    selfFriendStatus,
-  } = useFriends(userId);
+  const [myProfile, loadingMyProfile, refetchMyProfile] = useMyProfile(true);
+  const isSelf = user?.uid === userId;
+  const [profile, loading, refetchProfile] = useProfile(userId, isSelf);
+  const myFriendStatus = useMemo(() => {
+    const status: { [uid: string]: FriendStatus } = {};
+    if (myProfile) {
+      forEach(myProfile.friends, u => {
+        status[u.id] = FriendStatus.FRIEND;
+      });
+      forEach(myProfile.sentRequests, u => {
+        status[u.id] = FriendStatus.SENT;
+      });
+      forEach(myProfile.receivedRequests, u => {
+        status[u.id] = FriendStatus.RECEIVED;
+      });
+    }
+    return status;
+  }, [myProfile]);
   const [error, setError] = useState<string>();
   const updateFriendRequest = useUpdateFriendRequest(setError);
-  const acceptRequest = useCallback((userId: string) => {
-    return updateFriendRequest(userId, 'request');
-  }, [updateFriendRequest]);
+  const acceptRequest = useCallback(async(userId: string) => {
+    const result = await updateFriendRequest(userId, 'request');
+    refetchMyProfile();
+    return result;
+  }, [updateFriendRequest, refetchMyProfile]);
   const rejectRequest = useCallback((userId: string) => {
-    return updateFriendRequest(userId, 'revoke');
+    const result = updateFriendRequest(userId, 'revoke');
+    return result;
   }, [updateFriendRequest]);
   const showUser = useCallback((userId: string, handle?: string) => {
     Navigation.push(componentId, {
@@ -184,8 +198,8 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
           <UserRow
             key={index}
             user={item.user}
-            status={item.user.userId !== user?.uid ? selfFriendStatus?.[item.user.userId] || FriendStatus.NONE : undefined}
-            showUser={item.user.userId !== user?.uid ? showUser : undefined}
+            status={item.user.id !== user?.uid ? myFriendStatus[item.user.id] || FriendStatus.NONE : undefined}
+            showUser={item.user.id !== user?.uid ? showUser : undefined}
             acceptRequest={acceptRequest}
             rejectRequest={rejectRequest}
           />
@@ -209,7 +223,7 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
       default:
         return null;
     }
-  }, [user, selfFriendStatus, borderStyle, typography, showUser, acceptRequest, rejectRequest]);
+  }, [user, myFriendStatus, borderStyle, typography, showUser, acceptRequest, rejectRequest]);
   const searchFriendsPressed = useCallback(() => {
     showHeader();
     focus();
@@ -229,28 +243,28 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
       });
     }
     const normalizedSearch = searchTerm && searchTerm.toLocaleLowerCase(lang);
-    const matchesSearch = (f: FriendUser) => {
+    const matchesSearch = (f: SimpleUser) => {
       return !normalizedSearch || !f.handle || f.handle.toLocaleLowerCase(lang).indexOf(normalizedSearch) !== -1;
     };
-    if (find(receivedRequests, matchesSearch) && isSelf) {
+    if (find(profile?.receivedRequests, matchesSearch) && isSelf) {
       feed.push({ type: 'header', header: t`Friend Requests` });
-      forEach(receivedRequests, f => {
+      forEach(profile?.receivedRequests, f => {
         if (matchesSearch(f)) {
           feed.push({ type: 'user', user: f });
         }
       });
     }
-    if (find(pendingRequests, matchesSearch) && isSelf) {
+    if (find(profile?.sentRequests, matchesSearch) && isSelf) {
       feed.push({ type: 'header', header: t`Pending Friend Requests` });
-      forEach(pendingRequests, f => {
+      forEach(profile?.sentRequests, f => {
         if (matchesSearch(f)) {
           feed.push({ type: 'user', user: f });
         }
       });
     }
-    if (!searchTerm || find(friends, matchesSearch)) {
+    if (!searchTerm || find(profile?.friends, matchesSearch)) {
       feed.push({ type: 'header', header: t`Friends` });
-      forEach(friends, f => {
+      forEach(profile?.friends, f => {
         if (matchesSearch(f)) {
           feed.push({ type: 'user', user: f });
         }
@@ -285,7 +299,7 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
       }
     }
     return feed;
-  }, [isSelf, friends, pendingRequests, receivedRequests, lang, searchFriendsPressed, performSearch, clearSearchPressed, searchResults, searchTerm]);
+  }, [isSelf, profile, lang, searchFriendsPressed, performSearch, clearSearchPressed, searchResults, searchTerm]);
   const header = useMemo(() => {
     const spacer = Platform.OS === 'android' && <View style={styles.searchBarPadding} />;
     return (
@@ -304,12 +318,17 @@ function FriendFeed({ componentId, userId, handleScroll, showHeader, focus, sear
       </>
     );
   }, [colors, error, typography, searchResults.error]);
+  const doRefresh = useCallback(() => {
+    refetchMyProfile();
+    refetchProfile();
+  }, [refetchMyProfile, refetchProfile]);
   return (
     <FlatList
       contentInset={Platform.OS === 'android' ? undefined : { top: SEARCH_BAR_HEIGHT }}
       contentOffset={Platform.OS === 'android' ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
       ListHeaderComponent={header}
-      refreshing={loading || searchResults.loading}
+      onRefresh={doRefresh}
+      refreshing={loading || loadingMyProfile || searchResults.loading}
       onScroll={handleScroll}
       data={data}
       renderItem={renderItem}

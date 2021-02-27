@@ -432,13 +432,13 @@ export interface LocalCampaignId {
 
 export interface UploadedCampaignId {
   campaignId: string;
-  serverId: string;
+  serverId: number;
 }
 
 export type CampaignId = LocalCampaignId | UploadedCampaignId;
 
 interface BaseCampaign {
-  serverId?: string;
+  serverId?: number;
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
@@ -1299,3 +1299,26 @@ export type DissonantVoicesActions =
   DissonantVoicesLoginStartedAction |
   DissonantVoicesLoginErrorAction |
   DissonantVoicesLogoutAction;
+
+export const TRACKED_QUERIES_ADD = 'TRACKED_QUERIES_ADD';
+export const TRACKED_QUERIES_REMOVE = 'TRACKED_QUERIES_REMOVE';
+
+export interface TrackedQuery {
+  contextJSON: string;
+  id: string;
+  name: string;
+  queryJSON: string;
+  variablesJSON: string;
+}
+
+export interface TrackedQueriesAddAction {
+  type: typeof TRACKED_QUERIES_ADD;
+  payload: TrackedQuery;
+}
+
+export interface TrackedQueriesRemoveAction {
+  type: typeof TRACKED_QUERIES_REMOVE;
+  payload: string;
+}
+
+export type TrackedQueriesAction = TrackedQueriesAddAction | TrackedQueriesRemoveAction;

@@ -1,16 +1,37 @@
+import { useCallback, useContext, useReducer } from 'react';
+import { filter } from 'lodash';
+
 import { UploadedCampaignId } from '@actions/types';
-import { useCallback, useReducer } from 'react';
-import { FriendUser, useFunction, ErrorResponse } from './hooks';
+import { useFunction, ErrorResponse } from './hooks';
+import { SimpleUser } from '@data/hooks';
+import { useApolloClient } from '@apollo/client';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { FriendStatus } from './types';
 
 interface UpdateHandleRequest {
   handle: string;
 }
 export function useUpdateHandle() {
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const client = useApolloClient();
   const apiCall = useFunction<UpdateHandleRequest>('social-updateHandle');
   return useCallback(async(handle: string) => {
     const data = await apiCall({ handle });
-    return data.error || undefined;
-  }, [apiCall]);
+    if (data.error) {
+      return data.error;
+    }
+    if (user?.uid) {
+      const targetId = client.cache.identify({ __typename: 'users', id: user.uid });
+      client.cache.modify({
+        id: targetId,
+        fields: {
+          handle() {
+            return handle;
+          },
+        },
+      });
+    }
+  }, [apiCall, client, user]);
 }
 
 interface UpdateFriendRequest {
@@ -19,13 +40,45 @@ interface UpdateFriendRequest {
 }
 
 export function useUpdateFriendRequest(setError: (error: string) => void) {
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const client = useApolloClient();
   const apiCall = useFunction<UpdateFriendRequest>('social-updateFriendRequest');
-  return useCallback(async(userId: string, action: 'request' | 'revoke') => {
+  return useCallback(async(
+    userId: string,
+    action: 'request' | 'revoke'
+  ) => {
     const data = await apiCall({ userId, action });
     if (data.error) {
       setError(data.error);
+    } else {
+      const targetId = client.cache.identify({ __typename: 'users', id: userId });
+      if (user && targetId) {
+        client.cache.modify({
+          id: client.cache.identify({ __typename: 'users', id: user.uid }),
+          fields: {
+            friends(current) {
+              if (action === 'revoke') {
+                return filter(current, f => f.user?.__ref !== targetId);
+              }
+              return current;
+            },
+            sent_requests(current) {
+              if (action === 'revoke') {
+                return filter(current, f => f.user?.__ref !== targetId);
+              }
+              return current;
+            },
+            received_requests(current) {
+              if (action === 'revoke') {
+                return filter(current, f => f.user?.__ref !== targetId);
+              }
+
+            },
+          },
+        });
+      }
     }
-  }, [apiCall, setError]);
+  }, [apiCall, setError, client.cache, user]);
 }
 
 interface CampaignRequest {
@@ -33,7 +86,7 @@ interface CampaignRequest {
 }
 
 interface CampaignResponse extends ErrorResponse {
-  campaignId: string;
+  campaignId: number;
 }
 export function useCreateCampaignRequest(): (campaignId: string) => Promise<UploadedCampaignId> {
   const apiCall = useFunction<CampaignRequest, CampaignResponse>('campaign-create');
@@ -52,7 +105,7 @@ export function useCreateCampaignRequest(): (campaignId: string) => Promise<Uplo
 
 interface DeleteCampaignRequest extends ErrorResponse {
   campaignId: string;
-  serverId: string;
+  serverId: number;
 }
 export function useDeleteCampaignRequest() {
   const apiCall = useFunction<DeleteCampaignRequest, ErrorResponse>('campaign-delete');
@@ -78,7 +131,7 @@ interface ErrorSearchAction {
 interface FinishSearchAction {
   type: 'finish';
   term: string;
-  results: FriendUser[];
+  results: SimpleUser[];
 }
 
 type SearchAction = StartSearchAction | ErrorSearchAction | FinishSearchAction;
@@ -86,7 +139,7 @@ type SearchAction = StartSearchAction | ErrorSearchAction | FinishSearchAction;
 export interface SearchResults {
   term?: string;
   loading: boolean;
-  results?: FriendUser[];
+  results?: SimpleUser[];
   error?: string;
 }
 
@@ -126,7 +179,7 @@ interface SearchUsersRequest {
 
 interface SearchUsersResponse {
   error?: string;
-  users?: FriendUser[];
+  users?: SimpleUser[];
 }
 
 interface SearchUsers {

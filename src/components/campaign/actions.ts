@@ -1,4 +1,4 @@
-import { forEach, map, keys } from 'lodash';
+import { forEach, map } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -53,7 +53,6 @@ import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { removeCampaignDeckHelper, uploadCampaignDeckHelper } from '@lib/firebaseApi';
-import fbdb from '@data/firebase/fbdb';
 
 function getBaseDeckIds(
   state: AppState,
@@ -221,7 +220,7 @@ export function updateCampaignXp(
 ): ThunkAction<void, AppState, unknown, UpdateCampaignXpAction> {
   return async(dispatch) => {
     if (user && id.serverId) {
-      await fbdb.campaignDetail(id).child('investigatorData').child(investigator).child(xpType).set(value);
+      // await fbdb.campaignDetail(id).child('investigatorData').child(investigator).child(xpType).set(value);
     } else {
       dispatch({
         type: UPDATE_CAMPAIGN_XP,
@@ -254,12 +253,14 @@ export function updateCampaign(
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction | CampaignSyncRequiredAction> {
   return async(dispatch) => {
     if (user && id.serverId) {
+      /*
       const campaignRef = fbdb.campaignDetail(id);
       await Promise.all(
         map(sparseCampaign, (value, key) => {
           return campaignRef.child(key).set(value);
         })
       );
+      */
     } else {
       dispatch({
         type: UPDATE_CAMPAIGN,

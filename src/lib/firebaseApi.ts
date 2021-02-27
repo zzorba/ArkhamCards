@@ -4,7 +4,6 @@ import { ThunkAction } from 'redux-thunk';
 import { CAMPAIGN_SYNC_REQUIRED, Deck, DeckId, getDeckId, UploadedCampaignId, UPLOAD_DECK } from '@actions/types';
 import { AppState, getAllDecks, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import fbdb from '@data/firebase/fbdb';
 
 
 export function removeCampaignDeckHelper(
@@ -13,6 +12,7 @@ export function removeCampaignDeckHelper(
   removeAll: boolean
 ): ThunkAction<void, AppState, unknown, Action<string>> {
   return async(dispatch, getState) => {
+    /*
     const ref = fbdb.campaignDecks(campaignId);
     const removals: Promise<void>[] = [ref.child(deckId.uuid).remove()];
     if (removeAll) {
@@ -32,7 +32,7 @@ export function removeCampaignDeckHelper(
         type: CAMPAIGN_SYNC_REQUIRED,
         campaignId,
       });
-    }
+    }*/
   };
 }
 
@@ -46,6 +46,7 @@ export function uploadCampaignDeckHelper(
     const state = getState();
     const deckSelector = makeDeckSelector();
     const uploads: Promise<void>[] = [];
+    /*
     const ref = fbdb.campaignDecks(campaignId);
     if (singleDeck) {
       uploads.push(ref.child(deckId.uuid).set({
@@ -78,6 +79,6 @@ export function uploadCampaignDeckHelper(
         type: CAMPAIGN_SYNC_REQUIRED,
         campaignId,
       });
-    }
+    }*/
   };
 }

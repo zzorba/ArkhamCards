@@ -1,3 +1,4 @@
 __tests__/App.js
 rn-cli.config.js
-
+src/data/graphql/index.d.ts
+src/data/graphql/schema.tsx

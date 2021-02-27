@@ -16,7 +16,7 @@ import { ShowAlert } from '@components/deck/dialogs';
 
 interface Props {
   campaignId: CampaignId;
-  setCampaignServerId: (serverId: string) => void;
+  setCampaignServerId: (serverId: number) => void;
   showAlert: ShowAlert;
 }
 

@@ -1,25 +1,23 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { Text, View } from 'react-native';
-import { forEach } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
-import { useObjectVal } from 'react-firebase-hooks/database';
 
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import space from '@styles/space';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import { useSimpleTextDialog } from '@components/deck/dialogs';
-import { ArkhamCardsProfile, FriendStatus } from '@data/firebase/types';
 import { NavigationProps } from '@components/nav/types';
 import { Navigation } from 'react-native-navigation';
 import { FriendsViewProps } from '../FriendsView';
 import { useUpdateHandle } from '@data/firebase/api';
 import StyleContext from '@styles/StyleContext';
-import fbdb from '@data/firebase/fbdb';
+import { useMyProfile } from '@data/hooks';
 
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
   const { typography } = useContext(StyleContext);
   const { user, loading } = useContext(ArkhamCardsAuthContext);
-  const [profile, loadingProfile] = useObjectVal<ArkhamCardsProfile>(user ? fbdb.profile(user) : undefined);
+  const [profile, loadingProfile] = useMyProfile();
+
   const updateHandle = useUpdateHandle();
   const { dialog, showDialog } = useSimpleTextDialog({
     title: t`Account Name`,
@@ -46,19 +44,8 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
       });
     }
   }, [componentId, user]);
-  const friends = profile?.friends;
-  const [friendCount, pendingFriendCount] = useMemo(() => {
-    let friendCount = 0;
-    let pendingFriendCount = 0;
-    forEach(friends || {}, status => {
-      if (status === FriendStatus.FRIENDS) {
-        friendCount++;
-      } else if (status === FriendStatus.RECEIVED) {
-        pendingFriendCount++;
-      }
-    });
-    return [friendCount, pendingFriendCount];
-  }, [friends]);
+  const friendCount = profile?.friends?.length || 0;
+  const pendingFriendCount = profile?.receivedRequests?.length || 0;
   if (!user) {
     return (
       <View style={[space.paddingBottomS, space.paddingTopS, space.paddingSideS]}>
@@ -82,8 +69,8 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
         icon="per_investigator"
         editable
         title={t`Friends`}
-        valueLabel={requestLabel || label}
-        valueLabelDescription={requestLabel ? label : undefined}
+        valueLabel={!loading ? (requestLabel || label) : undefined}
+        valueLabelDescription={!loading && requestLabel ? label : undefined}
         onPress={editFriendsPressed}
         editIcon="plus-thin"
         last

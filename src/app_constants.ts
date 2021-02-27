@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 
-export const ENABLE_ARKHAM_CARDS_ACCOUNT = false && Platform.OS === 'ios';
+export const ENABLE_ARKHAM_CARDS_ACCOUNT = Platform.OS === 'ios';
 export type TypeCodeType =
   'asset' |
   'event' |
