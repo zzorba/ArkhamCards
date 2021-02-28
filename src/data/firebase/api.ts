@@ -1,37 +1,33 @@
-import { useCallback, useContext, useReducer } from 'react';
+import { useCallback, useMemo, useReducer } from 'react';
 import { filter } from 'lodash';
 
 import { UploadedCampaignId } from '@actions/types';
 import { useFunction, ErrorResponse } from './hooks';
 import { SimpleUser } from '@data/hooks';
-import { useApolloClient } from '@apollo/client';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { FriendStatus } from './types';
+import { FetchResult, MutationFunctionOptions, MutationResult } from '@apollo/client';
+
+import { useModifyUserCache } from '@data/cache';
+import { UploadNewCampaignMutation, UploadNewCampaignMutationVariables, useUploadNewCampaignMutation } from '@data/graphql/schema';
 
 interface UpdateHandleRequest {
   handle: string;
 }
 export function useUpdateHandle() {
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const client = useApolloClient();
+  const [updateCache] = useModifyUserCache();
   const apiCall = useFunction<UpdateHandleRequest>('social-updateHandle');
   return useCallback(async(handle: string) => {
     const data = await apiCall({ handle });
     if (data.error) {
       return data.error;
     }
-    if (user?.uid) {
-      const targetId = client.cache.identify({ __typename: 'users', id: user.uid });
-      client.cache.modify({
-        id: targetId,
-        fields: {
-          handle() {
-            return handle;
-          },
+    updateCache({
+      fields: {
+        handle() {
+          return handle;
         },
-      });
-    }
-  }, [apiCall, client, user]);
+      },
+    });
+  }, [apiCall, updateCache]);
 }
 
 interface UpdateFriendRequest {
@@ -40,8 +36,7 @@ interface UpdateFriendRequest {
 }
 
 export function useUpdateFriendRequest(setError: (error: string) => void) {
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const client = useApolloClient();
+  const [updateCache, client] = useModifyUserCache();
   const apiCall = useFunction<UpdateFriendRequest>('social-updateFriendRequest');
   return useCallback(async(
     userId: string,
@@ -52,9 +47,8 @@ export function useUpdateFriendRequest(setError: (error: string) => void) {
       setError(data.error);
     } else {
       const targetId = client.cache.identify({ __typename: 'users', id: userId });
-      if (user && targetId) {
-        client.cache.modify({
-          id: client.cache.identify({ __typename: 'users', id: user.uid }),
+      if (targetId) {
+        updateCache({
           fields: {
             friends(current) {
               if (action === 'revoke') {
@@ -78,20 +72,29 @@ export function useUpdateFriendRequest(setError: (error: string) => void) {
         });
       }
     }
-  }, [apiCall, setError, client.cache, user]);
+  }, [apiCall, setError, client.cache, updateCache]);
 }
 
-interface CampaignRequest {
+interface CampaignLink {
+  campaignIdA: string;
+  campaignIdB: string;
+}
+interface CreateCampaignRequestData {
   campaignId: string;
+  linked?: CampaignLink;
+  guided?: boolean;
 }
 
 interface CampaignResponse extends ErrorResponse {
   campaignId: number;
 }
-export function useCreateCampaignRequest(): (campaignId: string) => Promise<UploadedCampaignId> {
-  const apiCall = useFunction<CampaignRequest, CampaignResponse>('campaign-create');
-  return useCallback(async(campaignId: string): Promise<UploadedCampaignId> => {
-    const data = await apiCall({ campaignId });
+function useCreateCampaignRequest(): (campaignId: string, guided: boolean) => Promise<UploadedCampaignId> {
+  const apiCall = useFunction<CreateCampaignRequestData, CampaignResponse>('campaign-create');
+  return useCallback(async(
+    campaignId: string,
+    guided: boolean
+  ): Promise<UploadedCampaignId> => {
+    const data = await apiCall({ campaignId, guided });
     if (data.error) {
       throw new Error(data.error);
     }
@@ -102,19 +105,110 @@ export function useCreateCampaignRequest(): (campaignId: string) => Promise<Uplo
   }, [apiCall]);
 }
 
+interface LinkCampaignResponse extends ErrorResponse {
+  campaignId: number;
+  campaignIdA: number;
+  campaignIdB: number;
+}
+function useCreateLinkedCampaignRequest(): (
+  campaignId: string,
+  linked: CampaignLink,
+  guided: boolean
+) => Promise<{
+  campaignId: UploadedCampaignId;
+  campaignIdA: UploadedCampaignId;
+  campaignIdB: UploadedCampaignId;
+}> {
+  const apiCall = useFunction<CreateCampaignRequestData, LinkCampaignResponse>('campaign-create');
+  return useCallback(async(
+    campaignId: string,
+    linked: CampaignLink,
+    guided: boolean
+  ): Promise<{
+    campaignId: UploadedCampaignId;
+    campaignIdA: UploadedCampaignId;
+    campaignIdB: UploadedCampaignId;
+  }> => {
+    const data = await apiCall({ campaignId, guided, linked });
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    return {
+      campaignId: {
+        campaignId,
+        serverId: data.campaignId,
+      },
+      campaignIdA: {
+        campaignId: linked.campaignIdA,
+        serverId: data.campaignIdA,
+      },
+      campaignIdB: {
+        campaignId: linked.campaignIdB,
+        serverId: data.campaignIdB,
+      },
+    };
+  }, [apiCall]);
+}
+
+export type UploadNewCampaignFn = (
+  options?: MutationFunctionOptions<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>
+) => Promise<FetchResult<UploadNewCampaignMutation>>;
+
+export function useUploadNewCampaign(): UploadNewCampaignFn {
+  const [uploadNewCampaign] = useUploadNewCampaignMutation();
+  return uploadNewCampaign;
+}
+
+export interface CreateCampaignActions {
+  createCampaign: (campaignId: string, guided: boolean) => Promise<UploadedCampaignId>;
+  createLinkedCampaign: (
+    campaignId: string,
+    link: { campaignIdA: string; campaignIdB: string },
+    guided: boolean
+  ) => Promise<{
+    campaignId: UploadedCampaignId;
+    campaignIdA: UploadedCampaignId;
+    campaignIdB: UploadedCampaignId;
+  }>;
+  uploadNewCampaign: UploadNewCampaignFn;
+}
+
+export function useCreateCampaignActions(): CreateCampaignActions {
+  const createCampaign = useCreateCampaignRequest();
+  const createLinkedCampaign = useCreateLinkedCampaignRequest();
+  const uploadNewCampaign = useUploadNewCampaign();
+  return useMemo(() => {
+    return {
+      createCampaign,
+      createLinkedCampaign,
+      uploadNewCampaign,
+    };
+  }, [createCampaign, createLinkedCampaign, uploadNewCampaign]);
+}
 
 interface DeleteCampaignRequest extends ErrorResponse {
   campaignId: string;
   serverId: number;
 }
 export function useDeleteCampaignRequest() {
+  const [updateCache, client] = useModifyUserCache();
   const apiCall = useFunction<DeleteCampaignRequest, ErrorResponse>('campaign-delete');
   return useCallback(async({ campaignId, serverId }: UploadedCampaignId): Promise<void> => {
     const data = await apiCall({ campaignId, serverId });
     if (data.error) {
       throw new Error(data.error);
     }
-  }, [apiCall]);
+    const targetCampaignId = client.cache.identify({ __typename: 'campaign', id: serverId });
+    if (targetCampaignId) {
+      updateCache({
+        fields: {
+          campaigns(current) {
+            return filter(current, c => c.campaign?.__ref !== targetCampaignId);
+          },
+        },
+      });
+    }
+  }, [apiCall, updateCache, client]);
 }
 
 interface StartSearchAction {

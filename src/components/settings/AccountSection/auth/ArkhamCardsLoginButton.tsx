@@ -25,7 +25,7 @@ import { removeLocalCampaign } from '@components/campaign/actions';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import EncounterIcon from '@icons/EncounterIcon';
 import { uploadCampaign } from '@components/campaignguide/actions';
-import { useCreateCampaignRequest } from '@data/firebase/api';
+import { useCreateCampaignActions } from '@data/firebase/api';
 
 function login(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
@@ -443,14 +443,14 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
       </View>
     );
   }, [localCampaigns, setNoUpload, noUpload, typography, uploadState, width, colors]);
-  const createServerCampaign = useCreateCampaignRequest();
+  const createCampaignActions = useCreateCampaignActions();
   const uploadCampaigns = useCallback(async() => {
     if (user) {
       const uploadCampaigns = filter(localCampaigns, c => !noUpload[c.uuid]);
       updateUploadState({ type: 'start', total: uploadCampaigns.length });
       await Promise.all(
         map(uploadCampaigns, c => {
-          return dispatch(uploadCampaign(user, createServerCampaign, getCampaignId(c))).then(
+          return dispatch(uploadCampaign(user, createCampaignActions, getCampaignId(c))).then(
             () => updateUploadState({ type: 'finish' }),
             () => updateUploadState({ type: 'error' }),
           );
@@ -458,7 +458,7 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
       );
     }
     return true;
-  }, [user, localCampaigns, noUpload, dispatch, updateUploadState, createServerCampaign]);
+  }, [user, localCampaigns, noUpload, dispatch, updateUploadState, createCampaignActions]);
   const uploading = !!uploadState?.completed;
   const { dialog, showDialog, setVisible } = useDialog({
     title: t`Upload campaigns`,
