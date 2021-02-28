@@ -105,7 +105,7 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
         }
       );
     }
-  }, [signedIn, isConnected, networkType, user,
+  }, [signedIn, actions, isConnected, networkType, user,
     deckName, offlineDeck, selectedDeck, saving, investigator,
     dispatch, setSaving, setError, showNewDeck]);
   const onOkayPress = useMemo(() => throttle(() => saveCopy(false), 200), [saveCopy]);

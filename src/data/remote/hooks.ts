@@ -3,22 +3,24 @@ import { useSelector } from 'react-redux';
 import { flatMap, filter, map, sortBy } from 'lodash';
 
 import { AppState, getCampaigns, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
-import { Campaign, CampaignGuideState, CampaignId, SingleCampaign } from '@actions/types';
+import { CampaignGuideState, CampaignId, SingleCampaign } from '@actions/types';
 import { useGetProfileLazyQuery } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
+import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
 
-export function useCampaigns(): [Campaign[], boolean, undefined | (() => void)] {
+
+export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);
   // const [serverCampaigns, loading, refresh] = useMyCampaigns();
 
   const allCampaigns = useMemo(() => {
-    return map(sortBy(
+    return sortBy(
       // concat(
-      filter(campaigns, c => !c.campaign.serverId),
+      campaigns,
       //  serverCampaigns
       // ),
-      c => c.sort), c => c.campaign);
+      c => -c.updatedAt().getTime());
   }, [campaigns]);
   return [allCampaigns, false, undefined];
 }

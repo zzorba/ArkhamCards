@@ -21,7 +21,7 @@ import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
 import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
 import DeckBubbleHeader from './section/DeckBubbleHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { CreateDeckActions, useCreateDeckActions, useUpdateDeckActions } from '@data/remote/decks';
+import { CreateDeckActions, useUpdateDeckActions } from '@data/remote/decks';
 
 interface DialogOptions {
   title: string;

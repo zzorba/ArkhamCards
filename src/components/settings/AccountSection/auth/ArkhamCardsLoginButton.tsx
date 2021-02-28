@@ -19,13 +19,14 @@ import space, { s, xs } from '@styles/space';
 import { useFlag, useToggles } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT, Campaign, getCampaignId, STANDALONE } from '@actions/types';
+import { ARKHAM_CARDS_LOGIN, ARKHAM_CARDS_LOGOUT, STANDALONE } from '@actions/types';
 import { AppState, getCampaigns } from '@reducers';
 import { removeLocalCampaign } from '@components/campaign/actions';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import EncounterIcon from '@icons/EncounterIcon';
 import { uploadCampaign } from '@components/campaignguide/actions';
 import { useCreateCampaignActions } from '@data/remote/campaigns';
+import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
 
 function login(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
@@ -347,19 +348,22 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
   );
 }
 
-function CampaignRow({ campaign, value, onChange, last }: { campaign: Campaign; value: boolean; last: boolean; onChange: (uuid: string, value: boolean) => void }) {
+function CampaignRow({ campaign, value, onChange, last }: { campaign: MiniCampaignT; value: boolean; last: boolean; onChange: (uuid: string, value: boolean) => void }) {
   const { colors } = useContext(StyleContext);
-  const onValueChange = useCallback((value: boolean) => onChange(campaign.uuid, !value), [campaign.uuid, onChange]);
+  const uuid = campaign.uuid();
+  const onValueChange = useCallback((value: boolean) => onChange(uuid, !value), [uuid, onChange]);
+  const cycleCode = campaign.cycleCode();
+  const standaloneId = cycleCode === STANDALONE ? campaign.standaloneId() : undefined;
   return (
     <DeckCheckboxButton
       icon={(
         <EncounterIcon
-          encounter_code={campaign.cycleCode === STANDALONE && campaign.standaloneId ? campaign.standaloneId.scenarioId : campaign.cycleCode}
+          encounter_code={standaloneId ? standaloneId.scenarioId : cycleCode}
           size={22}
           color={colors.M}
         />
       )}
-      title={campaign.name}
+      title={campaign.name()}
       value={!value}
       onValueChange={onValueChange}
       last={last}
@@ -376,10 +380,9 @@ interface UploadState {
 type UploadDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNode, () => void] {
-  const campaigns = useSelector(getCampaigns);
+  const localCampaigns = useSelector(getCampaigns);
   const dispatch: UploadDispatch = useDispatch();
   const { colors, typography, width } = useContext(StyleContext);
-  const localCampaigns = useMemo(() => flatMap(campaigns, ({ campaign }) => !campaign.serverId ? [campaign] : []), [campaigns]);
   const [uploadState, updateUploadState] = useReducer(
     (state: UploadState | undefined, action: { type: 'start'; total: number } | { type: 'finish' } | { type: 'error' }) => {
       switch (action.type) {
@@ -433,9 +436,9 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
         </View>
         { map(localCampaigns, (campaign, idx) => (
           <CampaignRow
-            key={campaign.uuid}
+            key={campaign.uuid()}
             campaign={campaign}
-            value={!!noUpload[campaign.uuid]}
+            value={!!noUpload[campaign.uuid()]}
             onChange={setNoUpload}
             last={idx === localCampaigns.length - 1}
           />
@@ -446,11 +449,11 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
   const createCampaignActions = useCreateCampaignActions();
   const uploadCampaigns = useCallback(async() => {
     if (user) {
-      const uploadCampaigns = filter(localCampaigns, c => !noUpload[c.uuid]);
+      const uploadCampaigns = filter(localCampaigns, c => !noUpload[c.uuid()]);
       updateUploadState({ type: 'start', total: uploadCampaigns.length });
       await Promise.all(
         map(uploadCampaigns, c => {
-          return dispatch(uploadCampaign(user, createCampaignActions, getCampaignId(c))).then(
+          return dispatch(uploadCampaign(user, createCampaignActions, c.id())).then(
             () => updateUploadState({ type: 'finish' }),
             () => updateUploadState({ type: 'error' }),
           );

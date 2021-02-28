@@ -8,21 +8,6 @@ mutation updateCampaignName($campaignId: Int!, $name: String!) {
   }
 }
 
-query getMyCampaigns($userId:String!) {
-  users_by_pk(id: $userId) {
-    id
-    campaigns {
-      campaign {
-        id
-        name
-        updated_at
-        cycleCode
-        difficulty
-      }
-    }
-  }
-}
-
 mutation uploadNewCampaign(
   $campaignId: Int!,
   $cycleCode: String!,
@@ -141,14 +126,14 @@ mutation deleteInvestigatorDecks(
   }
 }
 
-mutation updateBinaryAchievement(
+mutation setBinaryAchievement(
   $campaign_id: Int!,
   $achievement_id: String!,
   $value: Boolean!
 ) {
   insert_guide_achievement_one(
     object: {
-      campaign_id:$campaign_id
+      campaign_id: $campaign_id
       achievement_id: $achievement_id
       type: "binary"
       bool_value: $value
@@ -309,5 +294,51 @@ mutation addGuideInput(
     scenario
     step
     payload
+  }
+}
+fragment MiniCampaign on campaign {
+  id
+  name
+  cycleCode
+  standaloneId
+  difficulty
+  scenarioResults
+  guided
+  uuid
+  latest_decks {
+    deck {
+      id
+      investigator
+    }
+  }
+  nonDeckInvestigators
+  investigator_data {
+    id
+    investigator
+    mental
+    physical
+    insane
+    killed
+    storyAssets
+  }
+  updated_at
+}
+
+query getMyCampaigns(
+  $userId: String!
+) {
+  users_by_pk(id: $userId) {
+    id
+    campaigns {
+      campaign {
+        link_a_campaign {
+          ...MiniCampaign
+        }
+        link_b_campaign {
+          ...MiniCampaign
+        }
+        ...MiniCampaign
+      }
+    }
   }
 }

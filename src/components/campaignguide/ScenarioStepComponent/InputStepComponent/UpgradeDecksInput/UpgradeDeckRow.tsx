@@ -31,10 +31,9 @@ interface ShowDeckButtonProps {
   componentId: string;
   deckId: DeckId;
   investigator: Card;
-  actions: CreateDeckActions;
 }
 
-function ShowDeckButton({ componentId, deckId, investigator, actions }: ShowDeckButtonProps) {
+function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonProps) {
   const { colors } = useContext(StyleContext);
   const [deck] = useDeck(deckId);
   const onPress = useCallback(() => {
@@ -400,7 +399,6 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
             componentId={componentId}
             deckId={deckChoice}
             investigator={investigator}
-            actions={actions}
           />
         </View>
       );
@@ -434,7 +432,7 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
         <ArkhamButton variant="outline" grow icon="deck" title={t`View deck`} onPress={viewDeck} />
       </View>
     );
-  }, [componentId, deck, editable, investigator, actions, deckChoice, choices, saving, save, selectDeck, viewDeck]);
+  }, [componentId, deck, editable, investigator, deckChoice, choices, saving, save, selectDeck, viewDeck]);
 
   const storyCountsForDeck = useMemo(() => {
     if (!deck) {

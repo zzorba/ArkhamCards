@@ -1,38 +1,26 @@
-import React, { useCallback, useMemo } from 'react';
-import { filter, find, map } from 'lodash';
+import React, { useCallback } from 'react';
+import { find, map } from 'lodash';
 import {
   StyleSheet,
   View,
 } from 'react-native';
-import { useSelector } from 'react-redux';
 
-import { Campaign, Deck } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import { makeLatestCampaignDeckIdsSelector, AppState, makeGetDecksSelector } from '@reducers';
 import { s } from '@styles/space';
 import { useInvestigatorCards } from '@components/core/hooks';
+import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
 
 interface Props {
-  campaigns: Campaign[];
+  campaign: MiniCampaignT;
 }
-
-function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
-  const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
-  const getDecks = useMemo(makeGetDecksSelector, []);
-  const deckIds = useSelector((state: AppState) => getLatestCampaignDeckIds(state, campaign));
-  const decks = useSelector((state: AppState) => getDecks(state, deckIds));
+export default function CampaignInvestigatorRow({ campaign }: Props) {
   const investigators = useInvestigatorCards();
-  const renderInvestigator = useCallback((
-    code: string,
-    campaign: Campaign,
-    deck?: Deck
-  ) => {
-    const { investigatorData } = campaign;
+  const renderInvestigator = useCallback((code: string) => {
+    const traumaAndCardData = campaign.investigatorTrauma(code);
     const card = investigators?.[code];
-    const killedOrInsane = card && card.eliminated(investigatorData?.[code]);
-    const yithian = !!find(investigatorData?.[code]?.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN) ||
-      (deck && deck.slots && (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0);
+    const killedOrInsane = card && card.eliminated(traumaAndCardData);
+    const yithian = !!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN);
     return (
       <View key={code} style={styles.investigator}>
         <InvestigatorImage
@@ -44,36 +32,12 @@ function SingleCampaignInvestigatorRow({ campaign }: { campaign: Campaign }) {
         />
       </View>
     );
-  }, [investigators]);
+  }, [investigators, campaign]);
 
-  const renderDeck = useCallback((deck: Deck, campaign: Campaign) => {
-    if (deck && deck.investigator_code) {
-      return renderInvestigator(deck.investigator_code, campaign, deck);
-    }
-    return null;
-  }, [renderInvestigator]);
-
-
-  const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
   return (
-    <View key={campaign.uuid} style={styles.row}>
-      { map(decks, deck => renderDeck(deck, campaign)) }
-      { map(
-        filter(
-          campaign.nonDeckInvestigators || [],
-          code => !deckInvestigators.has(code)
-        ),
-        code => renderInvestigator(code, campaign)
-      ) }
+    <View style={styles.row}>
+      { map(campaign.investigators(), code => renderInvestigator(code)) }
     </View>
-  );
-}
-
-export default function CampaignInvestigatorRow({ campaigns }: Props) {
-  return (
-    <>
-      { map(campaigns, campaign => <SingleCampaignInvestigatorRow campaign={campaign} key={campaign.uuid} />) }
-    </>
   );
 }
 

@@ -489,11 +489,11 @@ export function getLastUpdated(campaign: { lastUpdated?: Date | string | number 
   return (campaign.lastUpdated.getTime());
 }
 
-export function getCampaignLastUpdated(campaign: Campaign, guide?: { lastUpdated?: Date | string | number }) {
+export function getCampaignLastUpdated(campaign: Campaign, guide?: { lastUpdated?: Date | string | number }): Date {
   if (campaign.guided && guide) {
-    return Math.min(-getLastUpdated(campaign), -getLastUpdated(guide));
+    return new Date(Math.min(getLastUpdated(campaign), getLastUpdated(guide)));
   }
-  return -getLastUpdated(campaign);
+  return new Date(getLastUpdated(campaign));
 }
 
 export interface LegacyCampaign extends BaseCampaign {

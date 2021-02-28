@@ -26,7 +26,7 @@ import { useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useRemoveInvestigatorDecks } from '@data/remote/campaigns';
+import { useGuideActions, useRemoveInvestigatorDecks } from '@data/remote/campaigns';
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 const EMPTY_WEAKNESS_SET: WeaknessSet = { packCodes: [], assignedCards: {} };
@@ -42,18 +42,18 @@ export default function useCampaignGuideContext(campaignId: CampaignId, campaign
       campaignChooseDeck(campaignId, campaignInvestigators, singleInvestigator, callback);
     }
   }, [campaignId, campaignChooseDeck, campaignInvestigators]);
-
+  const remoteGuideActions = useGuideActions();
   const setBinaryAchievement = useCallback((achievementId: string, value: boolean) => {
-    dispatch(guideActions.setBinaryAchievement(user, campaignId, achievementId, value));
-  }, [dispatch, user, campaignId]);
+    dispatch(guideActions.setBinaryAchievement(user, remoteGuideActions, campaignId, achievementId, value));
+  }, [dispatch, user, remoteGuideActions, campaignId]);
 
   const incCountAchievement = useCallback((achievementId: string, max?: number) => {
-    dispatch(guideActions.incCountAchievement(user, campaignId, achievementId, max));
-  }, [dispatch, user, campaignId]);
+    dispatch(guideActions.incCountAchievement(user, remoteGuideActions, campaignId, achievementId, max));
+  }, [dispatch, user, remoteGuideActions, campaignId]);
 
   const decCountAchievement = useCallback((achievementId: string) => {
-    dispatch(guideActions.decCountAchievement(user, campaignId, achievementId));
-  }, [dispatch, user, campaignId]);
+    dispatch(guideActions.decCountAchievement(user, remoteGuideActions, campaignId, achievementId));
+  }, [dispatch, user, remoteGuideActions, campaignId]);
 
   const removeInvestigatorDecks = useRemoveInvestigatorDecks();
   const removeDeck = useCallback((
@@ -67,102 +67,111 @@ export default function useCampaignGuideContext(campaignId: CampaignId, campaign
   }, [dispatch, campaignId, user, removeInvestigatorDecks]);
 
   const startScenario = useCallback((scenarioId: string) => {
-    dispatch(guideActions.startScenario(user, campaignId, scenarioId));
-  }, [dispatch, campaignId, user]);
+    dispatch(guideActions.startScenario(user, remoteGuideActions, campaignId, scenarioId));
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const startSideScenario = useCallback((scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput) => {
-    dispatch(guideActions.startSideScenario(user, campaignId, scenario));
-  }, [dispatch, campaignId, user]);
+    dispatch(guideActions.startSideScenario(user, remoteGuideActions, campaignId, scenario));
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const setDecision = useCallback((stepId: string, value: boolean, scenarioId?: string) => {
     dispatch(guideActions.setScenarioDecision(
       user,
+      remoteGuideActions,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId, user]);
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const setCount = useCallback((stepId: string, value: number, scenarioId?: string) => {
     dispatch(guideActions.setScenarioCount(
       user,
+      remoteGuideActions,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId, user]);
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const setText = useCallback((stepId: string, value: string, scenarioId?: string) => {
     dispatch(guideActions.setScenarioText(
       user,
+      remoteGuideActions,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId, user]);
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const setSupplies = useCallback((stepId: string, supplyCounts: SupplyCounts, scenarioId?: string) => {
     dispatch(guideActions.setScenarioSupplies(
       user,
+      remoteGuideActions,
       campaignId,
       stepId,
       supplyCounts,
       scenarioId
     ));
-  }, [dispatch, campaignId, user]);
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const setStringChoices = useCallback((stepId: string, choices: StringChoices, scenarioId?: string) => {
     dispatch(guideActions.setScenarioStringChoices(
       user,
+      remoteGuideActions,
       campaignId,
       stepId,
       choices,
       scenarioId
     ));
-  }, [dispatch, campaignId, user]);
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const setCampaignLink = useCallback((stepId: string, value: string, scenarioId?: string) => {
     dispatch(guideActions.setCampaignLink(
       user,
+      remoteGuideActions,
       campaignId,
       stepId,
       value,
       scenarioId
     ));
-  }, [dispatch, campaignId, user]);
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const setNumberChoices = useCallback((stepId: string, choices: NumberChoices, deckId?: DeckId, scenarioId?: string) => {
     dispatch(guideActions.setScenarioNumberChoices(
       user,
+      remoteGuideActions,
       campaignId,
       stepId,
       choices,
       deckId,
       scenarioId
     ));
-  }, [dispatch, campaignId, user]);
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const setChoice = useCallback((stepId: string, choice: number, scenarioId?: string) => {
     dispatch(guideActions.setScenarioChoice(
       user,
+      remoteGuideActions,
       campaignId,
       stepId,
       choice,
       scenarioId
     ));
-  }, [dispatch, campaignId, user]);
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const setInterScenarioData = useCallback((investigatorData: InvestigatorTraumaData, scenarioId?: string) => {
     dispatch(guideActions.setInterScenarioData(
       user,
+      remoteGuideActions,
       campaignId,
       investigatorData,
       scenarioId
     ));
-  }, [dispatch, campaignId, user]);
+  }, [dispatch, campaignId, remoteGuideActions, user]);
 
   const undo = useCallback((scenarioId: string) => {
     dispatch(guideActions.undo(user, campaignId, scenarioId));

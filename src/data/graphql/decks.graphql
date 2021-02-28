@@ -184,3 +184,27 @@ mutation deleteArkhamDbDeck(
     }
   }
 }
+
+query getMyDecks(
+  $userId: String!
+) {
+  users_by_pk(id: $userId) {
+    id
+    decks {
+      deck {
+        id
+        arkhamdb_id
+        local_uuid
+        investigator
+        content
+        previous_deck {
+          id
+          arkhamdb_id
+          local_uuid
+          investigator
+          content
+        }
+      }
+    }
+  }
+}

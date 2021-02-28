@@ -5,7 +5,7 @@ import DeckListRow from '../decklist/DeckListRow';
 import { Deck, DeckId } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import { useDeck, useDeckWithFetch, useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
+import { useDeckWithFetch, useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
 import { CreateDeckActions } from '@data/remote/decks';
 
 type RenderDeckDetails = (

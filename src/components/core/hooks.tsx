@@ -20,7 +20,7 @@ import { fetchPrivateDeck } from '@components/deck/actions';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
 import TabooSet from '@data/types/TabooSet';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { CreateDeckActions, useCreateDeckActions } from '@data/remote/decks';
+import { CreateDeckActions } from '@data/remote/decks';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {

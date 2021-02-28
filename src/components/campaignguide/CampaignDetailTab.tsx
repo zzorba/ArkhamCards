@@ -39,7 +39,6 @@ export default function CampaignDetailTab({
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { campaignId, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
-
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
   }, [campaignState]);
