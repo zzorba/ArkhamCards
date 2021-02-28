@@ -9,9 +9,9 @@ import { useSimpleTextDialog } from '@components/deck/dialogs';
 import { NavigationProps } from '@components/nav/types';
 import { Navigation } from 'react-native-navigation';
 import { FriendsViewProps } from '../FriendsView';
-import { useUpdateHandle } from '@data/firebase/api';
+import { useUpdateHandle } from '@data/remote/api';
 import StyleContext from '@styles/StyleContext';
-import { useMyProfile } from '@data/hooks';
+import { useMyProfile } from '@data/remote/hooks';
 
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
   const { typography } = useContext(StyleContext);

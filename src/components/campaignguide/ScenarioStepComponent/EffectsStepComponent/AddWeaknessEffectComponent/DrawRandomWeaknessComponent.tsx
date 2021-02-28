@@ -5,7 +5,7 @@ import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import { StringChoices, WeaknessSet } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { drawWeakness } from '@lib/weaknessHelper';
 import InvestigatorButton from '@components/core/InvestigatorButton';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';

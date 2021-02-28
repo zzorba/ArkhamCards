@@ -8,7 +8,7 @@ import {
 } from '@actions/types';
 import { createSelector } from 'reselect';
 import CampaignGuide from '@data/scenario/CampaignGuide';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { getCampaignGuide } from '@data/scenario';
 import {
   AppState,
@@ -18,7 +18,7 @@ import {
 } from '@reducers';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
-import { useCampaign, useCampaignGuideState } from '@data/hooks';
+import { useCampaign, useCampaignGuideState } from '@data/remote/hooks';
 
 export interface CampaignGuideReduxData {
   campaign: SingleCampaign;

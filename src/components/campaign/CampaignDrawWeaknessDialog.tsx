@@ -25,8 +25,9 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { ThunkDispatch } from 'redux-thunk';
 import { useCampaignLatestDeckIds, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useUpdateDeckActions } from '@data/remote/decks';
 
 export interface CampaignDrawWeaknessProps {
   campaignId: CampaignId;
@@ -59,6 +60,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
   const { saveWeakness, componentId, campaignId } = props;
   const { borderStyle } = useContext(StyleContext);
   const dispatch: DeckDispatch = useDispatch();
+  const deckActions = useUpdateDeckActions();
   const { user } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(campaignId);
   const latestDeckIds = useCampaignLatestDeckIds(campaign);
@@ -196,7 +198,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       const problem = parsedDeck && parsedDeck.problem ? parsedDeck.problem.reason : '';
 
       setSaving(true);
-      dispatch(saveDeckChanges(user, deck, {
+      dispatch(saveDeckChanges(user, deckActions, deck, {
         slots: newSlots,
         problem,
         spentXp: parsedDeck && parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
@@ -215,7 +217,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       });
     }
   }, [pendingNextCard, pendingAssignedCards, campaignId, weaknessSet, decks, cards, selectedDeckId, replaceRandomBasicWeakness, deckSlots,
-    unsavedAssignedCards, user, updateDeckSlots, saveWeakness, dispatch, setSaving, updatePendingAssignedCards, setPendingNextCard]);
+    unsavedAssignedCards, user, deckActions, updateDeckSlots, saveWeakness, dispatch, setSaving, updatePendingAssignedCards, setPendingNextCard]);
 
   const investigatorChooser = useMemo(() => {
     const deck = selectedDeckId && getDeck(decks, selectedDeckId);

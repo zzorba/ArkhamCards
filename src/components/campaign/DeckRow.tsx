@@ -3,9 +3,10 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { showDeckModal } from '@components/nav/helper';
 import DeckListRow from '../decklist/DeckListRow';
 import { Deck, DeckId } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import { useDeck, useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
+import { useDeck, useDeckWithFetch, useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
+import { CreateDeckActions } from '@data/remote/decks';
 
 type RenderDeckDetails = (
   deck: Deck,
@@ -22,6 +23,7 @@ export interface DeckRowProps {
   renderDetails?: RenderDeckDetails;
   killedOrInsane?: boolean;
   skipRender?: (deck: Deck, investigator: Card) => boolean;
+  actions: CreateDeckActions;
 }
 
 interface Props extends DeckRowProps {
@@ -39,9 +41,10 @@ export default function DeckRow({
   skipRender,
   compact,
   viewDeckButton,
+  actions,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const [theDeck, thePreviousDeck] = useDeck(id, { fetchIfMissing: true });
+  const [theDeck, thePreviousDeck] = useDeckWithFetch(id, actions);
   const cards = usePlayerCards(theDeck?.taboo_id);
   const investigators = useInvestigatorCards(theDeck?.taboo_id);
   const investigator = theDeck && investigators && investigators[theDeck.investigator_code] || undefined;

@@ -17,7 +17,7 @@ import {
   CampaignId,
   WeaknessSet,
 } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { useCallback, useContext, useMemo } from 'react';
 import { forEach } from 'lodash';
 
@@ -26,6 +26,7 @@ import { useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useRemoveInvestigatorDecks } from '@data/remote/campaigns';
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 const EMPTY_WEAKNESS_SET: WeaknessSet = { packCodes: [], assignedCards: {} };
@@ -54,15 +55,16 @@ export default function useCampaignGuideContext(campaignId: CampaignId, campaign
     dispatch(guideActions.decCountAchievement(user, campaignId, achievementId));
   }, [dispatch, user, campaignId]);
 
+  const removeInvestigatorDecks = useRemoveInvestigatorDecks();
   const removeDeck = useCallback((
     deck: Deck
   ) => {
-    dispatch(campaignActions.removeInvestigator(user, campaignId, deck.investigator_code, getDeckId(deck)));
-  }, [dispatch, campaignId, user]);
+    dispatch(campaignActions.removeInvestigator(user, removeInvestigatorDecks, campaignId, deck.investigator_code, getDeckId(deck)));
+  }, [dispatch, campaignId, user, removeInvestigatorDecks]);
 
   const removeInvestigator = useCallback((investigator: Card) => {
-    dispatch(campaignActions.removeInvestigator(user, campaignId, investigator.code));
-  }, [dispatch, campaignId, user]);
+    dispatch(campaignActions.removeInvestigator(user, removeInvestigatorDecks, campaignId, investigator.code));
+  }, [dispatch, campaignId, user, removeInvestigatorDecks]);
 
   const startScenario = useCallback((scenarioId: string) => {
     dispatch(guideActions.startScenario(user, campaignId, scenarioId));

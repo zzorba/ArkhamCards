@@ -5,12 +5,12 @@ import { t } from 'ttag';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { scenarioRewards } from '@components/campaign/constants';
 import { DeckId, Slots } from '@actions/types';
-import Card from '@data/Card';
-import { PLAYER_CARDS_QUERY, combineQueries, MYTHOS_CARDS_QUERY } from '@data/query';
+import Card from '@data/types/Card';
+import { PLAYER_CARDS_QUERY, combineQueries, MYTHOS_CARDS_QUERY } from '@data/sqlite/query';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import { useDeck, useSlots } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
-import { QuerySort } from '@data/types';
+import { QuerySort } from '@data/sqlite/types';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import { ActivityIndicator } from 'react-native';
@@ -40,7 +40,7 @@ export default function StoryCardSelectorComponent({
 }: Props) {
   const { colors } = useContext(StyleContext);
   const [initialized, setInitialized] = useState(false);
-  const [deck] = useDeck(deckId, {});
+  const [deck] = useDeck(deckId);
   const [storyCounts, setStoryCounts] = useSlots({}, updateStoryCounts, true);
   const tabooSetId = deck?.taboo_id || 0;
   const updateCount = useCallback((card: Card, count: number) => {

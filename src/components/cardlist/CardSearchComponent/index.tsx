@@ -6,7 +6,7 @@ import { Navigation, OptionsTopBarButton, OptionsTopBar } from 'react-native-nav
 import { t } from 'ttag';
 
 import { DeckId, SortType } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
 import { FilterState } from '@lib/filters';

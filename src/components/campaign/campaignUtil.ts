@@ -3,7 +3,7 @@ import { capitalize, flatMap, forEach, keys, map, range, sortBy, values } from '
 import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import { campaignNames } from './constants';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
-import { CardsMap } from '@data/Card';
+import { CardsMap } from '@data/types/Card';
 
 export function campaignToText(
   campaign: Campaign,

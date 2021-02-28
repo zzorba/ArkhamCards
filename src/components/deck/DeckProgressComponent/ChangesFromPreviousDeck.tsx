@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { DeckChanges, ParsedDeck, Slots } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';

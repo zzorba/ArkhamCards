@@ -1,6 +1,6 @@
 import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from '@app_constants';
 import { CardFilterData, FilterState } from '@lib/filters';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 export const SORT_BY_TYPE = 'type';
 export const SORT_BY_FACTION = 'faction';

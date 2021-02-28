@@ -14,7 +14,7 @@ import { t } from 'ttag';
 import { refreshMyDecks } from '@actions';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { Deck, DeckId } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import COLORS from '@styles/colors';

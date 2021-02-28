@@ -23,22 +23,24 @@ import { useDeck, useEffectUpdate, useInvestigatorCards, usePlayerCards } from '
 import { ThunkDispatch } from 'redux-thunk';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { CreateDeckActions } from '@data/remote/decks';
 
 interface Props {
   componentId: string;
   toggleVisible: () => void;
   deckId?: DeckId;
   signedIn?: boolean;
+  actions: CreateDeckActions;
 }
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn }: Props) {
+export default function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, actions }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const dispatch: DeckDispatch = useDispatch();
-  const [deck] = useDeck(deckId, {});
+  const [deck] = useDeck(deckId);
   const baseDeckSelector = useMemo(makeBaseDeckSelector, []);
   const baseDeck = useSelector((state: AppState) => baseDeckSelector(state, deckId));
   const latestDeckSelector = useMemo(makeLatestDeckSelector, []);
@@ -88,7 +90,6 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
     // Change the deck options for required cards, if present.
     showDeckModal(componentId, deck, colors, investigator);
   }, [componentId, toggleVisible, investigator, setSaving, colors]);
-
   const saveCopy = useCallback((isRetry: boolean) => {
     if (!selectedDeck) {
       return;
@@ -96,7 +97,7 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
     if (investigator && (!saving || isRetry)) {
       setSaving(true);
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
-      dispatch(saveClonedDeck(user, local, selectedDeck, deckName || t`New Deck`)).then(
+      dispatch(saveClonedDeck(user, actions, local, selectedDeck, deckName || t`New Deck`)).then(
         showNewDeck,
         (err) => {
           setSaving(false);

@@ -5,7 +5,7 @@ import { find, map } from 'lodash';
 import ParallelInvestigatorPicker from './ParallelInvestigatorPicker';
 import InvestigatorOption from './InvestigatorOption';
 import { DeckMeta } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 interface Props {
   investigator: Card;

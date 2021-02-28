@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import Switch from '@components/core/Switch';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { ChaosBag, ChaosTokenValue, SpecialTokenValue } from '@app_constants';
 import COLORS from '@styles/colors';
 import SkillOddsRow from './SkillOddsRow';

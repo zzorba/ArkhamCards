@@ -1,7 +1,7 @@
 import { filter, find, flatMap, head, map, range, shuffle } from 'lodash';
 
 import { WeaknessSet } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 export interface WeaknessCriteria {
   traits: string[];

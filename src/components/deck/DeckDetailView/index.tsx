@@ -23,7 +23,7 @@ import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
 import { CampaignId, DeckId, getCampaignId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { EditDeckProps } from '../DeckEditView';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
 import { DeckHistoryProps } from '../DeckHistoryView';
@@ -39,7 +39,7 @@ import space, { xs, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useParsedDeck } from '@components/deck/hooks';
+import { useParsedDeckWithFetch } from '@components/deck/hooks';
 import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
 import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
@@ -52,7 +52,8 @@ import DeckButton from '../controls/DeckButton';
 import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import DeckProblemBanner from '../DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
+import { useCreateDeckActions, useUpdateDeckActions } from '@data/remote/decks';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -88,10 +89,8 @@ function DeckDetailView({
   const deckDispatch: DeckDispatch = useDispatch();
   const { user } = useContext(ArkhamCardsAuthContext);
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
-  const parsedDeckObj = useParsedDeck(id, 'DeckDetail', componentId, {
-    fetchIfMissing: true,
-    initialMode,
-  });
+  const actions = useCreateDeckActions();
+  const parsedDeckObj = useParsedDeckWithFetch(id, componentId, actions, initialMode);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
   const {
     deck,
@@ -298,7 +297,7 @@ function DeckDetailView({
       },
     });
   }, [modal, darkMode, componentId, mode, colors, factionColor, name, subtitle, title]);
-  const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(deck, parsedDeck);
+  const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(actions, deck, parsedDeck);
 
   useEffect(() => {
     if (!deck) {
@@ -317,17 +316,18 @@ function DeckDetailView({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deck]);
+  const updateDeckActions = useUpdateDeckActions();
 
   const deleteDeck = useCallback((deleteAllVersions: boolean) => {
     if (!deleting) {
       setDeleting(true);
 
-      deckDispatch(deleteDeckAction(user, id, deleteAllVersions)).then(() => {
+      deckDispatch(deleteDeckAction(user, updateDeckActions, id, deleteAllVersions)).then(() => {
         Navigation.dismissAllModals();
         setDeleting(false);
       });
     }
-  }, [id, deleting, user, setDeleting, deckDispatch]);
+  }, [id, deleting, user, updateDeckActions, setDeleting, deckDispatch]);
 
   const deleteAllDecks = useCallback(() => {
     deleteDeck(true);
@@ -341,12 +341,12 @@ function DeckDetailView({
     if (!deleting) {
       setDeleting(true);
 
-      deckDispatch(deleteDeckAction(user, id, false)).then(() => {
+      deckDispatch(deleteDeckAction(user, updateDeckActions, id, false)).then(() => {
         Navigation.dismissAllModals();
         setDeleting(false);
       });
     }
-  }, [id, deckDispatch, deleting, user, setDeleting]);
+  }, [id, deckDispatch, updateDeckActions, deleting, user, setDeleting]);
   const deleteBrokenDeck = useCallback(() => {
     showAlert(
       t`Delete broken deck`,
@@ -512,10 +512,10 @@ function DeckDetailView({
         deckId={copying ? id : undefined}
         toggleVisible={toggleCopyDialog}
         signedIn={signedIn}
-
+        actions={actions}
       />
     );
-  }, [componentId, id, signedIn, copying, toggleCopyDialog]);
+  }, [componentId, id, signedIn, copying, actions, toggleCopyDialog]);
 
   const showTabooPicker = useCallback(() => {
     setTabooOpen(true);

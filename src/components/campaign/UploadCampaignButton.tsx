@@ -7,7 +7,7 @@ import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useCreateCampaignActions } from '@data/firebase/api';
+import { useCreateCampaignActions } from '@data/remote/campaigns';
 import { uploadCampaign } from '@components/campaignguide/actions';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import DeckButton from '@components/deck/controls/DeckButton';

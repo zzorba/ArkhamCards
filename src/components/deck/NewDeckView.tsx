@@ -10,7 +10,7 @@ import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
 import { getDeckOptions } from '@components/nav/helper';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
 import { NavigationProps } from '@components/nav/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';

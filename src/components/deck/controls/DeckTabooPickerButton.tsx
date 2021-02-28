@@ -3,7 +3,7 @@ import { find, map } from 'lodash';
 import { useSelector } from 'react-redux';
 import { c, t } from 'ttag';
 
-import Database from '@data/Database';
+import Database from '@data/sqlite/Database';
 import useDbData from '@components/core/useDbData';
 import { AppState } from '@reducers';
 import { usePickerDialog } from '../dialogs';

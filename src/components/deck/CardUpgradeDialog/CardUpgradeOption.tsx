@@ -7,7 +7,7 @@ import {
 import { t } from 'ttag';
 
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import StackedCardCount from '@components/cardlist/CardSearchResult/ControlComponent/StackedCardCount';

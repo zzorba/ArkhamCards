@@ -6,7 +6,7 @@ import BasicButton from '@components/core/BasicButton';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import { useCounter } from '@components/core/hooks';
 

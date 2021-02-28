@@ -33,7 +33,7 @@ import {
   Slots,
   SplitCards,
 } from '@actions/types';
-import Card, { CardKey, CardsMap } from '@data/Card';
+import Card, { CardKey, CardsMap } from '@data/types/Card';
 import {
   ARCANE_RESEARCH_CODE,
   ADAPTABLE_CODE,

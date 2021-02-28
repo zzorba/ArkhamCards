@@ -10,8 +10,8 @@ import {
 import { t } from 'ttag';
 
 import CardTextComponent from './CardTextComponent';
-import Database from '@data/Database';
-import DatabaseContext from '@data/DatabaseContext';
+import Database from '@data/sqlite/Database';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { openUrl } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
 import { getFaqEntry } from '@lib/publicApi';

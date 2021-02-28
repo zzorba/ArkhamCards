@@ -6,7 +6,7 @@ import { CampaignId } from '@actions/types';
 import { ShowAlert } from '@components/deck/dialogs';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
-import { useDeleteCampaignRequest } from '@data/firebase/api';
+import { useDeleteCampaignRequest } from '@data/remote/campaigns';
 import { deleteCampaign } from './actions';
 import { s } from '@styles/space';
 import DeckButton from '@components/deck/controls/DeckButton';

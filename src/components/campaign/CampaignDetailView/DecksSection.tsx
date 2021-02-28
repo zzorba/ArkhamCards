@@ -12,7 +12,7 @@ import { t } from 'ttag';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { Campaign, CampaignId, CampaignNotes, InvestigatorNotes, Deck, DeckId, DecksMap, getCampaignId, getDeckId, InvestigatorData, Trauma, TraumaAndCardData } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';

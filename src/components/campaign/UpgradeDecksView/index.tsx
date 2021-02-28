@@ -13,7 +13,7 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import { CampaignId, Deck, getCampaignId, getDeckId, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { getAllDecks, getDeck, getLangPreference } from '@reducers';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
@@ -23,7 +23,7 @@ import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface UpgradeDecksProps {

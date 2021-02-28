@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { pick } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
 
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { getFilterState, getDefaultFilterState, AppState, getCardFilterData } from '@reducers';
 import FilterBuilder, { CardFilterData, DefaultCardFilterData, FilterState, defaultFilterState as DefaultFilterState } from '@lib/filters';
-import { combineQueriesOpt } from '@data/query';
+import { combineQueriesOpt } from '@data/sqlite/query';
 import deepDiff from 'deep-diff';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';

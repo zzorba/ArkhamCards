@@ -17,7 +17,7 @@ import { msgid, ngettext, t } from 'ttag';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
-import Card, { cardInCollection } from '@data/Card';
+import Card, { cardInCollection } from '@data/types/Card';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getPacksInCollection } from '@reducers';

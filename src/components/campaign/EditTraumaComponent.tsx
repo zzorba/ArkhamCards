@@ -7,7 +7,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import NavButton from '@components/core/NavButton';
 import LabeledTextBox from '@components/core/LabeledTextBox';
 import { InvestigatorData, Trauma } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import space from '@styles/space';
 
 interface Props {

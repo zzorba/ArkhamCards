@@ -1,7 +1,7 @@
 import React from 'react';
 
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 export interface ScenarioStepContextType {
   campaignLog: GuidedCampaignLog;

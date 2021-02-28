@@ -14,7 +14,7 @@ import {
 } from 'rn-placeholder';
 
 import { Campaign, Deck, getDeckId, ParsedDeck } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import DeckProblemRow from '@components/core/DeckProblemRow';

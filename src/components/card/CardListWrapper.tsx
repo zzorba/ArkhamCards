@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { flatMap } from 'lodash';
 
-import Card from '@data/Card';
-import { combineQueriesOpt } from '@data/query';
+import Card from '@data/types/Card';
+import { combineQueriesOpt } from '@data/sqlite/query';
 import FilterBuilder from '@lib/filters';
 import { useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import useCardsFromQuery from './useCardsFromQuery';

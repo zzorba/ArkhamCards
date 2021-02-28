@@ -11,7 +11,7 @@ import {
 import { showCard, showCardImage } from '@components/nav/helper';
 import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constants';
 import FactionIcon from '@icons/FactionIcon';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';

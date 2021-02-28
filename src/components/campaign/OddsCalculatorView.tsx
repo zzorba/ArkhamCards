@@ -3,7 +3,7 @@ import { flatMap } from 'lodash';
 
 import OddsCalculatorComponent from './OddsCalculatorComponent';
 import { useCycleScenarios, useInvestigatorCards } from '@components/core/hooks';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
 
 import { CampaignId } from '@actions/types';
 

@@ -7,7 +7,7 @@ import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import { FactionCodeType, TypeCodeType } from '@app_constants';
 import FilterBuilder from '@lib/filters';
-import { combineQueriesOpt, where } from '@data/query';
+import { combineQueriesOpt, where } from '@data/sqlite/query';
 
 export default class DeckOption {
   @Column('simple-array', { nullable: true })

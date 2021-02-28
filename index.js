@@ -9,7 +9,7 @@ import Crashes from 'appcenter-crashes';
 import database from '@react-native-firebase/database';
 import 'reflect-metadata';
 
-import DatabaseProvider from './src/data/DatabaseProvider';
+import DatabaseProvider from './src/data/sqlite/DatabaseProvider';
 import { registerScreens } from './src/app/screens';
 import configureStore from './src/app/store';
 import StyleProvider from './src/styles/StyleProvider';
@@ -17,7 +17,7 @@ import LanguageProvider from './src/lib/i18n/LanguageProvider';
 import ArkhamCardsAuthProvider from './src/lib/ArkhamCardsAuthProvider';
 import App from './src/app/App';
 import { ENABLE_ARKHAM_CARDS_ACCOUNT } from './src/app_constants';
-import createApolloClient from './src/data/createApolloClient';
+import createApolloClient from './src/data/apollo/createApolloClient';
 
 function MyProvider({ store: { redux, persistor, apollo }, children }) {
   return (

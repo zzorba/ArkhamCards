@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native';
 
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { xs } from '@styles/space';
 import HealthSanityNumberIcon from './HealthSanityNumberIcon';
 

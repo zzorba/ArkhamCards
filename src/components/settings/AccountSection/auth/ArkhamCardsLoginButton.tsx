@@ -25,7 +25,7 @@ import { removeLocalCampaign } from '@components/campaign/actions';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import EncounterIcon from '@icons/EncounterIcon';
 import { uploadCampaign } from '@components/campaignguide/actions';
-import { useCreateCampaignActions } from '@data/firebase/api';
+import { useCreateCampaignActions } from '@data/remote/campaigns';
 
 function login(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {

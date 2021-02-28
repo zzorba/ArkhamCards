@@ -3,14 +3,14 @@ import { map } from 'lodash';
 import { ScrollView, View } from 'react-native';
 import { Table, Row, Cell } from 'react-native-table-component';
 
-import Rule, { RuleTableRow } from '@data/Rule';
+import Rule, { RuleTableRow } from '@data/types/Rule';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { openUrl } from '@components/nav/helper';
 import { s, m } from '@styles/space';
 import { NavigationProps } from '@components/nav/types';
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { useSelector } from 'react-redux';
 import { AppState, makeTabooSetSelector } from '@reducers';
 

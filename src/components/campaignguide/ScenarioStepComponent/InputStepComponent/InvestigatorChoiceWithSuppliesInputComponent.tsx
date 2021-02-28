@@ -6,7 +6,7 @@ import { c, t } from 'ttag';
 import ChooseInvestigatorPrompt from '../../prompts/ChooseInvestigatorPrompt';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import {
   InputStep,
   InvestigatorChoiceWithSuppliesInput,

@@ -50,7 +50,7 @@ export default function DeckNavFooter({
   yOffset,
 }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
-  const parsedDeckObj = useParsedDeck(deckId, 'NavFooter', componentId);
+  const parsedDeckObj = useParsedDeck(deckId, componentId);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
   const { deck, parsedDeck, editable } = parsedDeckObj;
   const { mode } = useDeckEditState(parsedDeckObj);

@@ -20,7 +20,7 @@ import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { CardFaqProps } from '@components/card/CardFaqView';
 import { CardTabooProps } from '@components/card/CardTabooView';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import SkillIcon from '@components/core/SkillIcon';
 
 import PlayerCardImage from '../PlayerCardImage';

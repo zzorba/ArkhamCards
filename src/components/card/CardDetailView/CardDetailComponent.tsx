@@ -10,7 +10,7 @@ import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import ArkhamButton from '@components/core/ArkhamButton';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import BondedCardsComponent from './BondedCardsComponent';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';

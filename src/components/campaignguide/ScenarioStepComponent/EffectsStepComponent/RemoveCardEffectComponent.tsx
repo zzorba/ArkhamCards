@@ -8,7 +8,7 @@ import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorCheckListComponent from '../../prompts/InvestigatorCheckListComponent';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { RemoveCardEffect } from '@data/scenario/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { hasCardConditionResult } from '@data/scenario/conditionHelper';
 import useSingleCard from '@components/card/useSingleCard';

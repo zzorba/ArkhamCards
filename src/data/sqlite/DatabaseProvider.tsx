@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import Database from './Database';
 import DatabaseContext, { PlayerCards } from './DatabaseContext';
 import { AppState } from '@reducers';
-import { CardsMap } from './Card';
-import TabooSet from './TabooSet';
+import { CardsMap } from '../types/Card';
+import TabooSet from '../types/TabooSet';
 
 interface OwnProps {
   children: React.ReactNode;

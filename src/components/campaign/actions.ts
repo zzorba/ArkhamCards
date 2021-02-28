@@ -48,11 +48,13 @@ import {
   CampaignSyncRequiredAction,
   getCampaignId,
   UPDATE_CAMPAIGN_XP,
+  UploadedCampaignId,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { removeCampaignDeckHelper, uploadCampaignDeckHelper } from '@lib/firebaseApi';
+import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
+import { CreateDeckActions } from '@data/remote/decks';
 
 function getBaseDeckIds(
   state: AppState,
@@ -93,9 +95,10 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 
 export function addInvestigator(
   user: FirebaseAuthTypes.User | undefined,
+  createDeckActions: CreateDeckActions,
   id: CampaignId,
   investigator: string,
-  deckId?: DeckId
+  deckId?: DeckId,
 ): ThunkAction<void, AppState, unknown, CampaignAddInvestigatorAction> {
   return (dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
@@ -110,13 +113,14 @@ export function addInvestigator(
     };
     dispatch(action);
     if (deckId && id.serverId && user) {
-      dispatch(uploadCampaignDeckHelper(id, deckId, user));
+      dispatch(uploadCampaignDeckHelper(id, deckId, createDeckActions));
     }
   };
 }
 
 export function removeInvestigator(
   user: FirebaseAuthTypes.User | undefined,
+  removeInvestigatorDecks: (campaignId: UploadedCampaignId, investigator: string) => Promise<void>,
   id: CampaignId,
   investigator: string,
   deckId?: DeckId
@@ -134,7 +138,7 @@ export function removeInvestigator(
     };
     dispatch(action);
     if (deckId && user && id.serverId) {
-      dispatch(removeCampaignDeckHelper(id, deckId, true));
+      removeInvestigatorDecks(id, investigator);
     }
   };
 }

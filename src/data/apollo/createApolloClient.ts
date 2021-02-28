@@ -10,15 +10,27 @@ import loggerLink from 'apollo-link-logger';
 import QueueLink from 'apollo-link-queue';
 import SerializingLink from 'apollo-link-serialize';
 
+import { TypedTypePolicies } from '@generated/graphql/apollo-helpers';
+
 import { hasuraToken } from '@lib/ArkhamCardsAuthProvider';
 
 import trackerLink from './trackerLink';
 
 export const GRAPHQL_SERVER = 'api.arkhamcards.com/v1';
 
+const typePolicies: TypedTypePolicies = {
+  deck: {
+    keyFields: ['id', 'arkhamdb_id', 'local_uuid'],
+  },
+  campaign: {
+    keyFields: ['id'],
+  },
+};
+
 const cache = new InMemoryCache({
-  freezeResults: true,
+  typePolicies,
 });
+
 const errorLink = onError((e) => {
   // tslint:disable-next-line
   console.log('Caught Apollo Client Error');

@@ -4,10 +4,9 @@ import { flatMap, filter, map, sortBy } from 'lodash';
 
 import { AppState, getCampaigns, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { Campaign, CampaignGuideState, CampaignId, SingleCampaign } from '@actions/types';
-import { UploadNewCampaignMutation, UploadNewCampaignMutationResult, UploadNewCampaignMutationVariables, useGetProfileLazyQuery, useUploadNewCampaignMutation } from './graphql/schema';
+import { useGetProfileLazyQuery } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { FriendStatus } from './firebase/types';
-import { FetchResult, MutationFunctionOptions, MutationResult } from '@apollo/client';
+import { FriendStatus } from './api';
 
 export function useCampaigns(): [Campaign[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);

@@ -9,7 +9,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { HEADER_HEIGHT } from '@styles/sizes';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';

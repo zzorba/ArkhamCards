@@ -6,7 +6,7 @@ import ScenarioStepContext from './ScenarioStepContext';
 import ChooseInvestigatorPrompt from './prompts/ChooseInvestigatorPrompt';
 import { InvestigatorSelector } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import ScenarioGuideContext from './ScenarioGuideContext';
 
 function getInvestigatorChoices(

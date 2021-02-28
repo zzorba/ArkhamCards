@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { msgid, ngettext } from 'ttag';
 
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { Supply } from '@data/scenario/types';
 import space from '@styles/space';

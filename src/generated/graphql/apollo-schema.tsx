@@ -1473,11 +1473,11 @@ export type Deck_Bool_Exp = {
 /** unique or primary key constraints on table "deck" */
 export enum Deck_Constraint {
   /** unique or primary key constraint */
-  DeckArkhamdbIdKey = 'deck_arkhamdb_id_key',
+  DeckArkhamdbIdCampaignIdKey = 'deck_arkhamdb_id_campaign_id_key',
   /** unique or primary key constraint */
-  DeckPkey = 'deck_pkey',
+  DeckLocalUuidCampaignIdKey = 'deck_local_uuid_campaign_id_key',
   /** unique or primary key constraint */
-  DeckUuidKey = 'deck_uuid_key'
+  DeckPkey = 'deck_pkey'
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
@@ -2327,7 +2327,7 @@ export type Guide_Input = {
   id: Scalars['Int'];
   payload?: Maybe<Scalars['jsonb']>;
   scenario?: Maybe<Scalars['String']>;
-  step: Scalars['String'];
+  step?: Maybe<Scalars['String']>;
 };
 
 
@@ -6067,6 +6067,116 @@ export type UploadNewCampaignMutation = (
   )> }
 );
 
+export type DeleteInvestigatorDecksMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
+  user_id: Scalars['String'];
+}>;
+
+
+export type DeleteInvestigatorDecksMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_deck?: Maybe<(
+    { __typename?: 'deck_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'deck' }
+      & Pick<Deck, 'id'>
+    )> }
+  )> }
+);
+
+export type UpdateBinaryAchievementMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  achievement_id: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateBinaryAchievementMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_guide_achievement_one?: Maybe<(
+    { __typename?: 'guide_achievement' }
+    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'bool_value'>
+  )> }
+);
+
+export type IncCountAchievementMaxMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  achievement_id: Scalars['String'];
+  max: Scalars['Int'];
+}>;
+
+
+export type IncCountAchievementMaxMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_guide_achievement_one?: Maybe<(
+    { __typename?: 'guide_achievement' }
+    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+  )>, update_guide_achievement?: Maybe<(
+    { __typename?: 'guide_achievement_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'guide_achievement' }
+      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+    )> }
+  )> }
+);
+
+export type IncCountAchievementMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  achievement_id: Scalars['String'];
+}>;
+
+
+export type IncCountAchievementMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_guide_achievement_one?: Maybe<(
+    { __typename?: 'guide_achievement' }
+    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+  )>, update_guide_achievement?: Maybe<(
+    { __typename?: 'guide_achievement_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'guide_achievement' }
+      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+    )> }
+  )> }
+);
+
+export type DecCountAchievementMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  achievement_id: Scalars['String'];
+}>;
+
+
+export type DecCountAchievementMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_guide_achievement_one?: Maybe<(
+    { __typename?: 'guide_achievement' }
+    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+  )>, update_guide_achievement?: Maybe<(
+    { __typename?: 'guide_achievement_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'guide_achievement' }
+      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+    )> }
+  )> }
+);
+
+export type AddGuideInputMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  scenario?: Maybe<Scalars['String']>;
+  step?: Maybe<Scalars['String']>;
+  payload?: Maybe<Scalars['jsonb']>;
+}>;
+
+
+export type AddGuideInputMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_guide_input_one?: Maybe<(
+    { __typename?: 'guide_input' }
+    & Pick<Guide_Input, 'id' | 'campaign_id' | 'scenario' | 'step' | 'payload'>
+  )> }
+);
+
 export type InsertNewDeckMutationVariables = Exact<{
   arkhamdb_id?: Maybe<Scalars['Int']>;
   local_uuid?: Maybe<Scalars['String']>;
@@ -6125,6 +6235,80 @@ export type InsertNextArkhamDbDeckMutation = (
     & { next_deck?: Maybe<(
       { __typename?: 'deck' }
       & Pick<Deck, 'id' | 'arkhamdb_id' | 'campaign_id' | 'investigator' | 'owner_id'>
+    )> }
+  )> }
+);
+
+export type UpdateArkhamDbDeckMutationVariables = Exact<{
+  arkhamdb_id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  content: Scalars['jsonb'];
+}>;
+
+
+export type UpdateArkhamDbDeckMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_deck?: Maybe<(
+    { __typename?: 'deck_mutation_response' }
+    & Pick<Deck_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename?: 'deck' }
+      & Pick<Deck, 'id' | 'content'>
+    )> }
+  )> }
+);
+
+export type UpdateLocalDeckMutationVariables = Exact<{
+  local_uuid: Scalars['String'];
+  campaign_id: Scalars['Int'];
+  content: Scalars['jsonb'];
+}>;
+
+
+export type UpdateLocalDeckMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_deck?: Maybe<(
+    { __typename?: 'deck_mutation_response' }
+    & Pick<Deck_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename?: 'deck' }
+      & Pick<Deck, 'id' | 'content'>
+    )> }
+  )> }
+);
+
+export type DeleteLocalDeckMutationVariables = Exact<{
+  local_uuid: Scalars['String'];
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type DeleteLocalDeckMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_deck?: Maybe<(
+    { __typename?: 'deck_mutation_response' }
+    & Pick<Deck_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename?: 'deck' }
+      & Pick<Deck, 'id'>
+    )> }
+  )> }
+);
+
+export type DeleteArkhamDbDeckMutationVariables = Exact<{
+  arkhamdb_id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type DeleteArkhamDbDeckMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_deck?: Maybe<(
+    { __typename?: 'deck_mutation_response' }
+    & Pick<Deck_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename?: 'deck' }
+      & Pick<Deck, 'id'>
     )> }
   )> }
 );
@@ -6344,6 +6528,284 @@ export function useUploadNewCampaignMutation(baseOptions?: Apollo.MutationHookOp
 export type UploadNewCampaignMutationHookResult = ReturnType<typeof useUploadNewCampaignMutation>;
 export type UploadNewCampaignMutationResult = Apollo.MutationResult<UploadNewCampaignMutation>;
 export type UploadNewCampaignMutationOptions = Apollo.BaseMutationOptions<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>;
+export const DeleteInvestigatorDecksDocument = gql`
+    mutation deleteInvestigatorDecks($campaign_id: Int!, $investigator: String!, $user_id: String!) {
+  delete_deck(
+    where: {campaign_id: {_eq: $campaign_id}, investigator: {_eq: $investigator}, owner_id: {_eq: $user_id}}
+  ) {
+    returning {
+      id
+    }
+  }
+}
+    `;
+export type DeleteInvestigatorDecksMutationFn = Apollo.MutationFunction<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
+
+/**
+ * __useDeleteInvestigatorDecksMutation__
+ *
+ * To run a mutation, you first call `useDeleteInvestigatorDecksMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteInvestigatorDecksMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteInvestigatorDecksMutation, { data, loading, error }] = useDeleteInvestigatorDecksMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *      user_id: // value for 'user_id'
+ *   },
+ * });
+ */
+export function useDeleteInvestigatorDecksMutation(baseOptions?: Apollo.MutationHookOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>) {
+        return Apollo.useMutation<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>(DeleteInvestigatorDecksDocument, baseOptions);
+      }
+export type DeleteInvestigatorDecksMutationHookResult = ReturnType<typeof useDeleteInvestigatorDecksMutation>;
+export type DeleteInvestigatorDecksMutationResult = Apollo.MutationResult<DeleteInvestigatorDecksMutation>;
+export type DeleteInvestigatorDecksMutationOptions = Apollo.BaseMutationOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
+export const UpdateBinaryAchievementDocument = gql`
+    mutation updateBinaryAchievement($campaign_id: Int!, $achievement_id: String!, $value: Boolean!) {
+  insert_guide_achievement_one(
+    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "binary", bool_value: $value}
+    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: [bool_value]}
+  ) {
+    id
+    campaign_id
+    achievement_id
+    type
+    bool_value
+  }
+}
+    `;
+export type UpdateBinaryAchievementMutationFn = Apollo.MutationFunction<UpdateBinaryAchievementMutation, UpdateBinaryAchievementMutationVariables>;
+
+/**
+ * __useUpdateBinaryAchievementMutation__
+ *
+ * To run a mutation, you first call `useUpdateBinaryAchievementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateBinaryAchievementMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateBinaryAchievementMutation, { data, loading, error }] = useUpdateBinaryAchievementMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      achievement_id: // value for 'achievement_id'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateBinaryAchievementMutation(baseOptions?: Apollo.MutationHookOptions<UpdateBinaryAchievementMutation, UpdateBinaryAchievementMutationVariables>) {
+        return Apollo.useMutation<UpdateBinaryAchievementMutation, UpdateBinaryAchievementMutationVariables>(UpdateBinaryAchievementDocument, baseOptions);
+      }
+export type UpdateBinaryAchievementMutationHookResult = ReturnType<typeof useUpdateBinaryAchievementMutation>;
+export type UpdateBinaryAchievementMutationResult = Apollo.MutationResult<UpdateBinaryAchievementMutation>;
+export type UpdateBinaryAchievementMutationOptions = Apollo.BaseMutationOptions<UpdateBinaryAchievementMutation, UpdateBinaryAchievementMutationVariables>;
+export const IncCountAchievementMaxDocument = gql`
+    mutation incCountAchievementMax($campaign_id: Int!, $achievement_id: String!, $max: Int!) {
+  insert_guide_achievement_one(
+    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 1}
+    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
+  ) {
+    id
+    campaign_id
+    achievement_id
+    type
+    value
+  }
+  update_guide_achievement(
+    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}, value: {_lt: $max}}
+    _inc: {value: 1}
+  ) {
+    returning {
+      id
+      campaign_id
+      achievement_id
+      type
+      value
+    }
+  }
+}
+    `;
+export type IncCountAchievementMaxMutationFn = Apollo.MutationFunction<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>;
+
+/**
+ * __useIncCountAchievementMaxMutation__
+ *
+ * To run a mutation, you first call `useIncCountAchievementMaxMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useIncCountAchievementMaxMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [incCountAchievementMaxMutation, { data, loading, error }] = useIncCountAchievementMaxMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      achievement_id: // value for 'achievement_id'
+ *      max: // value for 'max'
+ *   },
+ * });
+ */
+export function useIncCountAchievementMaxMutation(baseOptions?: Apollo.MutationHookOptions<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>) {
+        return Apollo.useMutation<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>(IncCountAchievementMaxDocument, baseOptions);
+      }
+export type IncCountAchievementMaxMutationHookResult = ReturnType<typeof useIncCountAchievementMaxMutation>;
+export type IncCountAchievementMaxMutationResult = Apollo.MutationResult<IncCountAchievementMaxMutation>;
+export type IncCountAchievementMaxMutationOptions = Apollo.BaseMutationOptions<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>;
+export const IncCountAchievementDocument = gql`
+    mutation incCountAchievement($campaign_id: Int!, $achievement_id: String!) {
+  insert_guide_achievement_one(
+    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 1}
+    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
+  ) {
+    id
+    campaign_id
+    achievement_id
+    type
+    value
+  }
+  update_guide_achievement(
+    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}}
+    _inc: {value: 1}
+  ) {
+    returning {
+      id
+      campaign_id
+      achievement_id
+      type
+      value
+    }
+  }
+}
+    `;
+export type IncCountAchievementMutationFn = Apollo.MutationFunction<IncCountAchievementMutation, IncCountAchievementMutationVariables>;
+
+/**
+ * __useIncCountAchievementMutation__
+ *
+ * To run a mutation, you first call `useIncCountAchievementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useIncCountAchievementMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [incCountAchievementMutation, { data, loading, error }] = useIncCountAchievementMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      achievement_id: // value for 'achievement_id'
+ *   },
+ * });
+ */
+export function useIncCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<IncCountAchievementMutation, IncCountAchievementMutationVariables>) {
+        return Apollo.useMutation<IncCountAchievementMutation, IncCountAchievementMutationVariables>(IncCountAchievementDocument, baseOptions);
+      }
+export type IncCountAchievementMutationHookResult = ReturnType<typeof useIncCountAchievementMutation>;
+export type IncCountAchievementMutationResult = Apollo.MutationResult<IncCountAchievementMutation>;
+export type IncCountAchievementMutationOptions = Apollo.BaseMutationOptions<IncCountAchievementMutation, IncCountAchievementMutationVariables>;
+export const DecCountAchievementDocument = gql`
+    mutation decCountAchievement($campaign_id: Int!, $achievement_id: String!) {
+  insert_guide_achievement_one(
+    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 0}
+    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
+  ) {
+    id
+    campaign_id
+    achievement_id
+    type
+    value
+  }
+  update_guide_achievement(
+    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}, value: {_gt: 0}}
+    _inc: {value: -1}
+  ) {
+    returning {
+      id
+      campaign_id
+      achievement_id
+      type
+      value
+    }
+  }
+}
+    `;
+export type DecCountAchievementMutationFn = Apollo.MutationFunction<DecCountAchievementMutation, DecCountAchievementMutationVariables>;
+
+/**
+ * __useDecCountAchievementMutation__
+ *
+ * To run a mutation, you first call `useDecCountAchievementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDecCountAchievementMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [decCountAchievementMutation, { data, loading, error }] = useDecCountAchievementMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      achievement_id: // value for 'achievement_id'
+ *   },
+ * });
+ */
+export function useDecCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<DecCountAchievementMutation, DecCountAchievementMutationVariables>) {
+        return Apollo.useMutation<DecCountAchievementMutation, DecCountAchievementMutationVariables>(DecCountAchievementDocument, baseOptions);
+      }
+export type DecCountAchievementMutationHookResult = ReturnType<typeof useDecCountAchievementMutation>;
+export type DecCountAchievementMutationResult = Apollo.MutationResult<DecCountAchievementMutation>;
+export type DecCountAchievementMutationOptions = Apollo.BaseMutationOptions<DecCountAchievementMutation, DecCountAchievementMutationVariables>;
+export const AddGuideInputDocument = gql`
+    mutation addGuideInput($campaign_id: Int!, $scenario: String, $step: String, $payload: jsonb) {
+  insert_guide_input_one(
+    object: {campaign_id: $campaign_id, scenario: $scenario, step: $step, payload: $payload}
+    on_conflict: {constraint: campaign_guide_input_campaign_guide_id_scenario_step_key, update_columns: [payload]}
+  ) {
+    id
+    campaign_id
+    scenario
+    step
+    payload
+  }
+}
+    `;
+export type AddGuideInputMutationFn = Apollo.MutationFunction<AddGuideInputMutation, AddGuideInputMutationVariables>;
+
+/**
+ * __useAddGuideInputMutation__
+ *
+ * To run a mutation, you first call `useAddGuideInputMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddGuideInputMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addGuideInputMutation, { data, loading, error }] = useAddGuideInputMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      scenario: // value for 'scenario'
+ *      step: // value for 'step'
+ *      payload: // value for 'payload'
+ *   },
+ * });
+ */
+export function useAddGuideInputMutation(baseOptions?: Apollo.MutationHookOptions<AddGuideInputMutation, AddGuideInputMutationVariables>) {
+        return Apollo.useMutation<AddGuideInputMutation, AddGuideInputMutationVariables>(AddGuideInputDocument, baseOptions);
+      }
+export type AddGuideInputMutationHookResult = ReturnType<typeof useAddGuideInputMutation>;
+export type AddGuideInputMutationResult = Apollo.MutationResult<AddGuideInputMutation>;
+export type AddGuideInputMutationOptions = Apollo.BaseMutationOptions<AddGuideInputMutation, AddGuideInputMutationVariables>;
 export const InsertNewDeckDocument = gql`
     mutation insertNewDeck($arkhamdb_id: Int, $local_uuid: String, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $userId: String!) {
   insert_deck_one(
@@ -6392,7 +6854,7 @@ export const InsertNextLocalDeckDocument = gql`
     mutation insertNextLocalDeck($previous_local_uuid: String, $local_uuid: String, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $userId: String!) {
   insert_deck_one(
     object: {local_uuid: $previous_local_uuid, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, next_deck: {data: {local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, owner_id: $userId}}}
-    on_conflict: {constraint: deck_uuid_key, update_columns: [next_deck_id]}
+    on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [next_deck_id]}
   ) {
     id
     next_deck {
@@ -6439,7 +6901,7 @@ export const InsertNextArkhamDbDeckDocument = gql`
     mutation insertNextArkhamDbDeck($previous_arkhamdb_id: Int!, $arkhamdb_id: Int!, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $userId: String!) {
   insert_deck_one(
     object: {arkhamdb_id: $previous_arkhamdb_id, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, next_deck: {data: {arkhamdb_id: $arkhamdb_id, campaign_id: $campaign_id, investigator: $investigator, content: $content, owner_id: $userId}}}
-    on_conflict: {constraint: deck_arkhamdb_id_key, update_columns: [next_deck_id]}
+    on_conflict: {constraint: deck_arkhamdb_id_campaign_id_key, update_columns: [next_deck_id]}
   ) {
     id
     next_deck {
@@ -6482,6 +6944,164 @@ export function useInsertNextArkhamDbDeckMutation(baseOptions?: Apollo.MutationH
 export type InsertNextArkhamDbDeckMutationHookResult = ReturnType<typeof useInsertNextArkhamDbDeckMutation>;
 export type InsertNextArkhamDbDeckMutationResult = Apollo.MutationResult<InsertNextArkhamDbDeckMutation>;
 export type InsertNextArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>;
+export const UpdateArkhamDbDeckDocument = gql`
+    mutation updateArkhamDbDeck($arkhamdb_id: Int!, $campaign_id: Int!, $content: jsonb!) {
+  update_deck(
+    where: {arkhamdb_id: {_eq: $arkhamdb_id}, campaign_id: {_eq: $campaign_id}}
+    _set: {content: $content}
+  ) {
+    affected_rows
+    returning {
+      id
+      content
+    }
+  }
+}
+    `;
+export type UpdateArkhamDbDeckMutationFn = Apollo.MutationFunction<UpdateArkhamDbDeckMutation, UpdateArkhamDbDeckMutationVariables>;
+
+/**
+ * __useUpdateArkhamDbDeckMutation__
+ *
+ * To run a mutation, you first call `useUpdateArkhamDbDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateArkhamDbDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateArkhamDbDeckMutation, { data, loading, error }] = useUpdateArkhamDbDeckMutation({
+ *   variables: {
+ *      arkhamdb_id: // value for 'arkhamdb_id'
+ *      campaign_id: // value for 'campaign_id'
+ *      content: // value for 'content'
+ *   },
+ * });
+ */
+export function useUpdateArkhamDbDeckMutation(baseOptions?: Apollo.MutationHookOptions<UpdateArkhamDbDeckMutation, UpdateArkhamDbDeckMutationVariables>) {
+        return Apollo.useMutation<UpdateArkhamDbDeckMutation, UpdateArkhamDbDeckMutationVariables>(UpdateArkhamDbDeckDocument, baseOptions);
+      }
+export type UpdateArkhamDbDeckMutationHookResult = ReturnType<typeof useUpdateArkhamDbDeckMutation>;
+export type UpdateArkhamDbDeckMutationResult = Apollo.MutationResult<UpdateArkhamDbDeckMutation>;
+export type UpdateArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<UpdateArkhamDbDeckMutation, UpdateArkhamDbDeckMutationVariables>;
+export const UpdateLocalDeckDocument = gql`
+    mutation updateLocalDeck($local_uuid: String!, $campaign_id: Int!, $content: jsonb!) {
+  update_deck(
+    where: {local_uuid: {_eq: $local_uuid}, campaign_id: {_eq: $campaign_id}}
+    _set: {content: $content}
+  ) {
+    affected_rows
+    returning {
+      id
+      content
+    }
+  }
+}
+    `;
+export type UpdateLocalDeckMutationFn = Apollo.MutationFunction<UpdateLocalDeckMutation, UpdateLocalDeckMutationVariables>;
+
+/**
+ * __useUpdateLocalDeckMutation__
+ *
+ * To run a mutation, you first call `useUpdateLocalDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateLocalDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateLocalDeckMutation, { data, loading, error }] = useUpdateLocalDeckMutation({
+ *   variables: {
+ *      local_uuid: // value for 'local_uuid'
+ *      campaign_id: // value for 'campaign_id'
+ *      content: // value for 'content'
+ *   },
+ * });
+ */
+export function useUpdateLocalDeckMutation(baseOptions?: Apollo.MutationHookOptions<UpdateLocalDeckMutation, UpdateLocalDeckMutationVariables>) {
+        return Apollo.useMutation<UpdateLocalDeckMutation, UpdateLocalDeckMutationVariables>(UpdateLocalDeckDocument, baseOptions);
+      }
+export type UpdateLocalDeckMutationHookResult = ReturnType<typeof useUpdateLocalDeckMutation>;
+export type UpdateLocalDeckMutationResult = Apollo.MutationResult<UpdateLocalDeckMutation>;
+export type UpdateLocalDeckMutationOptions = Apollo.BaseMutationOptions<UpdateLocalDeckMutation, UpdateLocalDeckMutationVariables>;
+export const DeleteLocalDeckDocument = gql`
+    mutation deleteLocalDeck($local_uuid: String!, $campaign_id: Int!) {
+  delete_deck(
+    where: {local_uuid: {_eq: $local_uuid}, campaign_id: {_eq: $campaign_id}}
+  ) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}
+    `;
+export type DeleteLocalDeckMutationFn = Apollo.MutationFunction<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>;
+
+/**
+ * __useDeleteLocalDeckMutation__
+ *
+ * To run a mutation, you first call `useDeleteLocalDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteLocalDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteLocalDeckMutation, { data, loading, error }] = useDeleteLocalDeckMutation({
+ *   variables: {
+ *      local_uuid: // value for 'local_uuid'
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useDeleteLocalDeckMutation(baseOptions?: Apollo.MutationHookOptions<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>) {
+        return Apollo.useMutation<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>(DeleteLocalDeckDocument, baseOptions);
+      }
+export type DeleteLocalDeckMutationHookResult = ReturnType<typeof useDeleteLocalDeckMutation>;
+export type DeleteLocalDeckMutationResult = Apollo.MutationResult<DeleteLocalDeckMutation>;
+export type DeleteLocalDeckMutationOptions = Apollo.BaseMutationOptions<DeleteLocalDeckMutation, DeleteLocalDeckMutationVariables>;
+export const DeleteArkhamDbDeckDocument = gql`
+    mutation deleteArkhamDbDeck($arkhamdb_id: Int!, $campaign_id: Int!) {
+  delete_deck(
+    where: {arkhamdb_id: {_eq: $arkhamdb_id}, campaign_id: {_eq: $campaign_id}}
+  ) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}
+    `;
+export type DeleteArkhamDbDeckMutationFn = Apollo.MutationFunction<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>;
+
+/**
+ * __useDeleteArkhamDbDeckMutation__
+ *
+ * To run a mutation, you first call `useDeleteArkhamDbDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteArkhamDbDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteArkhamDbDeckMutation, { data, loading, error }] = useDeleteArkhamDbDeckMutation({
+ *   variables: {
+ *      arkhamdb_id: // value for 'arkhamdb_id'
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useDeleteArkhamDbDeckMutation(baseOptions?: Apollo.MutationHookOptions<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>) {
+        return Apollo.useMutation<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>(DeleteArkhamDbDeckDocument, baseOptions);
+      }
+export type DeleteArkhamDbDeckMutationHookResult = ReturnType<typeof useDeleteArkhamDbDeckMutation>;
+export type DeleteArkhamDbDeckMutationResult = Apollo.MutationResult<DeleteArkhamDbDeckMutation>;
+export type DeleteArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>;
 export const GetProfileDocument = gql`
     query getProfile($userId: String!) {
   users_by_pk(id: $userId) {

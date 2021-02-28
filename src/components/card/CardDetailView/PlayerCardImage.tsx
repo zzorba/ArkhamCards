@@ -9,7 +9,7 @@ import FastImage from 'react-native-fast-image';
 
 import EncounterIcon from '@icons/EncounterIcon';
 import FactionIcon from '@icons/FactionIcon';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { isBig } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { showCardImage } from '@components/nav/helper';

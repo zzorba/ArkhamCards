@@ -8,7 +8,7 @@ import InvestigatorCounterComponent from './InvestigatorCounterComponent';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import { UseSuppliesInput, UseSuppliesAllInput } from '@data/scenario/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {

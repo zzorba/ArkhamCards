@@ -4,7 +4,7 @@ import { WeaknessSet, InvestigatorData, CampaignId } from '@actions/types';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { LatestDecks } from '@data/scenario';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 
 export interface CampaignGuideContextType {
   campaignId: CampaignId;

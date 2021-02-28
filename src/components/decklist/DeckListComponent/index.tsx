@@ -11,7 +11,7 @@ import { t } from 'ttag';
 
 import DeckList from './DeckList';
 import { Campaign, Deck, DeckId } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { fetchPublicDeck } from '@components/deck/actions';
 import { getAllDecks, getDeck } from '@reducers';
@@ -19,6 +19,7 @@ import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useCreateDeckActions } from '@data/remote/decks';
 
 interface Props {
   deckIds: DeckId[];
@@ -53,11 +54,12 @@ export default function DeckListComponent({
     deckClicked(deck, investigator);
   }, [deckClicked]);
   const dispatch = useDispatch();
+  const createDeckActions = useCreateDeckActions();
   useEffect(() => {
     // Only do this once, even though it might want to be done a second time.
     forEach(deckIds, deckId => {
       if (!getDeck(decks, deckId) && !deckId.local) {
-        dispatch(fetchPublicDeck(user, deckId, false));
+        dispatch(fetchPublicDeck(user, createDeckActions, deckId, false));
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

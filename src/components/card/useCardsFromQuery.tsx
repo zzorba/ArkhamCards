@@ -2,9 +2,9 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import { Brackets } from 'typeorm/browser';
 import { filter } from 'lodash';
 
-import Card from '@data/Card';
-import { QuerySort } from '@data/types';
-import DatabaseContext from '@data/DatabaseContext';
+import Card from '@data/types/Card';
+import { QuerySort } from '@data/sqlite/types';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { useTabooSetId } from '@components/core/hooks';
 
 interface Props {

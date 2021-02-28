@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import { isBig, xs, s } from '@styles/space';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardTextComponent from '@components/card/CardTextComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 
 const SMALL_ICON_SIZE = isBig ? 26 : 16;

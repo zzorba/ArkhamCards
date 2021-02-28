@@ -23,7 +23,7 @@ import {
   STANDALONE,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { ThemeColors } from '@styles/theme';
 
 export function difficultyString(difficulty: CampaignDifficulty): string {

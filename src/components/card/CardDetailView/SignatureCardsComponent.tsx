@@ -8,7 +8,7 @@ import { t } from 'ttag';
 import SignatureCardItem from './SignatureCardItem';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
 import BondedCardsComponent from './BondedCardsComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import space from '@styles/space';
 import useCardList from '../useCardList';
 

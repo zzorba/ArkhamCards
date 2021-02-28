@@ -9,7 +9,7 @@ import {
 
 import { Campaign, Deck, DeckId, DecksMap } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { useInvestigatorCards } from '@components/core/hooks';

@@ -28,7 +28,7 @@ import {
 } from '@actions/types';
 import { getCardLang, AppState } from '@reducers/index';
 import { NON_LOCALIZED_CARDS, syncCards, syncTaboos } from '@lib/publicApi';
-import Database from '@data/Database';
+import Database from '@data/sqlite/Database';
 
 const VERBOSE = false;
 function shouldFetchCards(state: AppState) {

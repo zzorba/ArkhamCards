@@ -8,7 +8,7 @@ import { ProcessedCampaign } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import space, { s } from '@styles/space';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { Campaign, CampaignCycleCode, CampaignId, Trauma } from '@actions/types';
 import { useDispatch } from 'react-redux';
 import { updateCampaign } from '@components/campaign/actions';

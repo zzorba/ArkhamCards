@@ -6,11 +6,11 @@ import {
   Text,
   View,
 } from 'react-native';
-import Database from '@data/Database';
+import Database from '@data/sqlite/Database';
 import { t } from 'ttag';
 
-import Card from '@data/Card';
-import TabooSet from '@data/TabooSet';
+import Card from '@data/types/Card';
+import TabooSet from '@data/types/TabooSet';
 import CardTextComponent from './CardTextComponent';
 import { NavigationProps } from '@components/nav/types';
 import { l, m, xs, s } from '@styles/space';

@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { t } from 'ttag';
 
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { usePickerDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '../DeckPickerStyleButton';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TwoSidedCardComponent from './TwoSidedCardComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 interface Props {
   componentId?: string;

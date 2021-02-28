@@ -8,7 +8,7 @@ import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 

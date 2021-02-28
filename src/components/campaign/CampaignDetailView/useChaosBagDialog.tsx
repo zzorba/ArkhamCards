@@ -9,7 +9,7 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import space, { m, s } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
 import { CampaignId } from '@actions/types';

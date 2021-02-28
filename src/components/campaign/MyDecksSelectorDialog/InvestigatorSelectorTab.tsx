@@ -3,7 +3,7 @@ import { Navigation } from 'react-native-navigation';
 
 import { DeckId, SortType } from '@actions/types';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 
 interface Props {

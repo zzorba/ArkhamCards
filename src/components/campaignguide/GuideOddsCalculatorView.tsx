@@ -3,9 +3,9 @@ import { flatMap } from 'lodash';
 
 import OddsCalculatorComponent from '@components/campaign/OddsCalculatorComponent';
 import { ChaosBag } from '@app_constants';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { useCycleScenarios, useInvestigatorCards } from '@components/core/hooks';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
 import { CampaignId } from '@actions/types';
 
 export interface GuideOddsCalculatorProps {

@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import { Deck } from '@actions/types';
 import { showDeckModal } from '@components/nav/helper';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { AppState, makeDeckSelector } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';

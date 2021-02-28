@@ -3,7 +3,7 @@ import { map } from 'lodash';
 
 import ChoiceListComponent, { ChoiceListComponentProps } from './ChoiceListComponent';
 import ScenarioStepContext from '../ScenarioStepContext';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 
 interface Props extends ChoiceListComponentProps {

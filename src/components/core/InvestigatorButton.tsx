@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import PickerStyleButton from './PickerStyleButton';
 import StyleContext from '@styles/StyleContext';
 
