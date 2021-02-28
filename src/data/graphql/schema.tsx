@@ -6347,7 +6347,7 @@ export type UploadNewCampaignMutationOptions = Apollo.BaseMutationOptions<Upload
 export const InsertNewDeckDocument = gql`
     mutation insertNewDeck($arkhamdb_id: Int, $local_uuid: String, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $userId: String!) {
   insert_deck_one(
-    object: {arkhamdb_id: $arkhamdb_id, local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, owner_id: $userId}
+    object: {arkhamdb_id: $arkhamdb_id, local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, owner_id: $userId, base: true}
   ) {
     id
     arkhamdb_id

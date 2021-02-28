@@ -139,6 +139,7 @@ mutation insertNewDeck(
       investigator: $investigator
       content: $content
       owner_id: $userId
+      base: true
     }
   ) {
     id
