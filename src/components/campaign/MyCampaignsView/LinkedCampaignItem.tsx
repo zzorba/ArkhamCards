@@ -4,7 +4,7 @@ import { max } from 'lodash';
 import { Campaign, CUSTOM, getCampaignId } from '@actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
 import GenericCampaignItem from './GenericCampaignItem';
 
 interface Props {

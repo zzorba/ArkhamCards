@@ -17,14 +17,15 @@ import { showDeckModal } from '@components/nav/helper';
 import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
 import { updateCampaign } from '@components/campaign/actions';
 import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
 import { useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useDeckUpgrade from './useDeckUpgrade';
+import { useCreateDeckActions } from '@data/remote/decks';
 
 export interface UpgradeDeckProps {
   id: DeckId;
@@ -34,8 +35,9 @@ export interface UpgradeDeckProps {
 
 function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const actions = useCreateDeckActions();
   const { user } = useContext(ArkhamCardsAuthContext);
-  const [deck] = useDeck(id, {});
+  const [deck] = useDeck(id);
   const campaign = useCampaign(campaignId);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>(null);
 
@@ -128,7 +130,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
       </>
     );
   }, [deck, componentId, campaign, showTraumaDialog, storyEncounterCodes, scenarioName, investigator, investigatorData, onStoryCountsChange]);
-  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, deckUpgradeComplete);
+  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, deckUpgradeComplete);
 
   if (!deck || !investigator) {
     return null;

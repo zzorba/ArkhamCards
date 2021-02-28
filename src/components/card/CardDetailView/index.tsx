@@ -17,7 +17,7 @@ import { NavigationProps } from '@components/nav/types';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { getShowSpoilers, AppState } from '@reducers';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import { useComponentDidAppear, useFlag, useNavigationButtonPressed } from '@components/core/hooks';
 import space from '@styles/space';

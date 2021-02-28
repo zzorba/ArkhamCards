@@ -17,7 +17,7 @@ import { useDeckEditState, useParsedDeck } from './hooks';
 import CardTextComponent from '@components/card/CardTextComponent';
 import space, { s, xs } from '@styles/space';
 import { openUrl } from '@components/nav/helper';
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { NavigationProps } from '@components/nav/types';
 import AppIcon from '@icons/AppIcon';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -37,7 +37,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const textInputRef = useRef<TextInput>(null);
   const dispatch = useDispatch();
   const tabooSetId = useTabooSetId();
-  const parsedDeckObj = useParsedDeck(id, 'DeckDescription', componentId);
+  const parsedDeckObj = useParsedDeck(id, componentId);
   const { mode } = useDeckEditState(parsedDeckObj);
   const { deck, deckEdits, parsedDeck, editable } = parsedDeckObj;
   const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);

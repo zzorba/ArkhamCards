@@ -16,7 +16,7 @@ import InvestigatorRow from '@components/core/InvestigatorRow';
 import { useDeck } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import { saveDeckChanges, SaveDeckChanges } from '@components/deck/actions';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -24,6 +24,7 @@ import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { TINY_PHONE } from '@styles/sizes';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { UpdateDeckActions } from '@data/remote/decks';
 
 interface ShowDeckButtonProps {
   componentId: string;
@@ -33,7 +34,7 @@ interface ShowDeckButtonProps {
 
 function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonProps) {
   const { colors } = useContext(StyleContext);
-  const [deck] = useDeck(deckId, {});
+  const [deck] = useDeck(deckId);
   const onPress = useCallback(() => {
     if (deck) {
       showDeckModal(
@@ -69,6 +70,7 @@ interface Props {
   deck?: Deck;
   campaignLog: GuidedCampaignLog;
   editable: boolean;
+  actions: UpdateDeckActions;
 }
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
@@ -76,7 +78,17 @@ function computeChoiceId(stepId: string, investigator: Card) {
   return `${stepId}#${investigator.code}`;
 }
 
-function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigator, deck, campaignLog, editable }: Props) {
+function SaveDeckRow({
+  componentId,
+  id,
+  campaignState,
+  scenarioState,
+  investigator,
+  deck,
+  campaignLog,
+  editable,
+  actions,
+}: Props) {
   const { colors } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
@@ -101,9 +113,9 @@ function SaveDeckRow({ componentId, id, campaignState, scenarioState, investigat
         }
       });
       const changes: SaveDeckChanges = { slots };
-      deckDispatch(saveDeckChanges(user, deck, changes) as any).then(saveCampaignLog);
+      deckDispatch(saveDeckChanges(user, actions, deck, changes) as any).then(saveCampaignLog);
     }
-  }, [deck, user, deckDispatch, storyAssetDeltas, saveCampaignLog]);
+  }, [deck, user, actions, deckDispatch, storyAssetDeltas, saveCampaignLog]);
 
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);

@@ -9,7 +9,7 @@ import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { InvestigatorNotes } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import StyleContext from '@styles/StyleContext';

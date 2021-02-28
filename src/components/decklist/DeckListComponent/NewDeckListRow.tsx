@@ -14,7 +14,7 @@ import {
 } from 'rn-placeholder';
 
 import { Campaign, Deck, getDeckId } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { getProblemMessage } from '@components/core/DeckProblemRow';
 import { toRelativeDateString } from '@lib/datetime';

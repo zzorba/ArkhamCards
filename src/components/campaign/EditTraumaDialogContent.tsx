@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import NewDialog from '@components/core/NewDialog';
 import { Trauma } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { s } from '@styles/space';

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Deck, DeckId, Slots } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import { useDeck } from '@components/core/hooks';
 
@@ -24,7 +24,7 @@ function isExile(card: Card) {
 }
 
 export default function ExileCardSelectorComponent({ componentId, id, exileCounts, updateExileCount, label }: Props) {
-  const [deck] = useDeck(id, {});
+  const [deck] = useDeck(id);
   if (!deck) {
     return null;
   }

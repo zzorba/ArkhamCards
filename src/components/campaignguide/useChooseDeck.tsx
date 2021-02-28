@@ -5,17 +5,19 @@ import { map } from 'lodash';
 import { CampaignId, Deck, DeckId, getDeckId } from '@actions/types';
 import { addInvestigator } from '@components/campaign/actions';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { Platform } from 'react-native';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useCreateDeckActions } from '@data/remote/decks';
 
 export default function useChooseDeck() {
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
+  const createDeckActions = useCreateDeckActions();
   const doAddInvestigator = useCallback((campaignId: CampaignId, code: string, deckId?: DeckId) => {
-    dispatch(addInvestigator(user, campaignId, code, deckId));
-  }, [dispatch, user]);
+    dispatch(addInvestigator(user, createDeckActions, campaignId, code, deckId));
+  }, [dispatch, user, createDeckActions]);
 
   const showChooseDeck = useCallback((
     campaignId: CampaignId,

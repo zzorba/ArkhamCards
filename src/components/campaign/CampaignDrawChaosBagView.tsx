@@ -13,7 +13,7 @@ import { AppState, makeCampaignChaosBagSelector } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator } from './nav';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export interface CampaignDrawChaosBagProps {

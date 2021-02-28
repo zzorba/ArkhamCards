@@ -10,8 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import Database from '@data/Database';
-import DatabaseContext from '@data/DatabaseContext';
+import Database from '@data/sqlite/Database';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { fetchCards, dismissUpdatePrompt } from './actions';
 import { AppState } from '@reducers';
 import { localizedName, getSystemLanguage } from '@lib/i18n';

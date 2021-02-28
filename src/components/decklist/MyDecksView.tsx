@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { Deck } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
 import { showDeckModal } from '@components/nav/helper';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';

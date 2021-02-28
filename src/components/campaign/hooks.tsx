@@ -3,7 +3,7 @@ import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
 import { useCountDialog } from '@components/deck/dialogs';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 export function useCampaignId(campaignId: CampaignId): [CampaignId, (serverId: number) => void] {
   const [liveCampaignId, setLiveCampaignId] = useState(campaignId);

@@ -29,15 +29,15 @@ import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
 import { SortType, Slots, SORT_BY_TYPE, DeckId } from '@actions/types';
-import { combineQueries, where } from '@data/query';
+import { combineQueries, where } from '@data/sqlite/query';
 import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
-import Card, { cardInCollection, CardsMap, PartialCard } from '@data/Card';
+import Card, { cardInCollection, CardsMap, PartialCard } from '@data/types/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import { s, m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -607,7 +607,7 @@ export default function({
   showNonCollection,
 }: Props) {
   const { db } = useContext(DatabaseContext);
-  const [deck] = useDeck(deckId, {});
+  const [deck] = useDeck(deckId);
   const deckEdits = useSimpleDeckEdits(deckId);
   const { colors, borderStyle, fontScale, typography } = useContext(StyleContext);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());

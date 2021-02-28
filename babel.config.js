@@ -20,6 +20,7 @@ module.exports = {
           '@components': './src/components',
           '@app_constants': './src/app_constants.ts',
           '@data': './src/data',
+          '@generated': './src/generated',
           '@icons': './src/icons',
           '@lib': './src/lib',
           '@reducers': './src/reducers',

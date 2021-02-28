@@ -7,7 +7,7 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
 import InvestigatorResultConditionWrapper from '../../InvestigatorResultConditionWrapper';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import {
   BranchStep,
   CheckSuppliesCondition,

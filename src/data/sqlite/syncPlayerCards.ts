@@ -1,7 +1,7 @@
 import { forEach, groupBy, mapValues, sortBy, uniqBy } from 'lodash';
 
-import Card, { CardsMap } from './Card';
-import TabooSet from './TabooSet';
+import Card, { CardsMap } from '../types/Card';
+import TabooSet from '../types/TabooSet';
 import Database from './Database';
 import { PlayerCards } from './DatabaseContext';
 import { INVESTIGATOR_CARDS_QUERY, PLAYER_CARDS_QUERY, SYNC_CARDS_QUERY } from './query';

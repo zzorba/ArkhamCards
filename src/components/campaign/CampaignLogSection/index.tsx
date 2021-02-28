@@ -5,7 +5,7 @@ import { map } from 'lodash';
 
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { CampaignNotes, InvestigatorNotes } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import InvestigatorSectionList from './InvestigatorSectionList';
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';

@@ -15,7 +15,7 @@ import { t } from 'ttag';
 
 import { drawWeakness, availableWeaknesses } from '@lib/weaknessHelper';
 import { Slots, WeaknessSet } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import BasicButton from '@components/core/BasicButton';
 import ChooserButton from '@components/core/ChooserButton';
 import ToggleFilter from '@components/core/ToggleFilter';

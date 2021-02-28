@@ -12,7 +12,7 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
 import { NavigationProps } from '@components/nav/types';
 import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from '@app_constants';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -34,7 +34,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { componentId, campaignId, assignedWeaknesses, id } = props;
   const [unsavedAssignedWeaknesses, setUnsavedAssignedWeaknesses] = useState<string[]>(assignedWeaknesses || []);
-  const [deck] = useDeck(id, {});
+  const [deck] = useDeck(id);
   const dispatch = useDispatch();
   const [deckEdits, deckEditsRef] = useDeckEdits(id);
 

@@ -7,7 +7,7 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Ripple from '@lib/react-native-material-ripple';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 

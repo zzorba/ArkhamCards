@@ -7,7 +7,7 @@ import { t } from 'ttag';
 import NavButton from './NavButton';
 import { SearchSelectProps } from '../cardlist/SearchMultiSelectView';
 import COLORS from '@styles/colors';
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 
 interface Props {
   componentId: string;

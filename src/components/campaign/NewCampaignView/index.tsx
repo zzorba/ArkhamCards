@@ -36,7 +36,7 @@ import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';

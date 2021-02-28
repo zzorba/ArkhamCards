@@ -7,7 +7,7 @@ import { t } from 'ttag';
 import { CampaignId } from '@actions/types';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCampaignScenarios } from '@components/core/hooks';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
 import { completedScenario } from './constants';
 import StyleContext from '@styles/StyleContext';
 import { showAddScenarioResult } from './nav';

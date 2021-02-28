@@ -7,7 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import DeckMergeItem from './DeckMergeItem';
 import { Deck, getDeckId } from '@actions/types';
 import space from '@styles/space';
-import { CardsMap } from '@data/Card';
+import { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import { useFlag } from '@components/core/hooks';
 

@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import CampaignSummaryComponent from '@components/campaign/CampaignSummaryComponent';
 import { Campaign, CUSTOM, Deck, ParsedDeck } from '@actions/types';
-import { CardsMap } from '@data/Card';
+import { CardsMap } from '@data/types/Card';
 import space, { l, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';

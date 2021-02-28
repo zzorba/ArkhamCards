@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { forEach } from 'lodash';
 
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import DeckTabooPickerButton from './DeckTabooPickerButton';
 import InvestigatorOptionsControl, { hasInvestigatorOptions } from './InvestigatorOptionsControl';
 import { useInvestigatorCards } from '@components/core/hooks';

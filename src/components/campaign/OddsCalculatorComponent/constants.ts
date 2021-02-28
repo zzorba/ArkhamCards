@@ -2,7 +2,7 @@ import { t } from 'ttag';
 
 import { InvestigatorElderSign } from './types';
 import { ChaosTokenType } from '@app_constants';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 const ELDER_SIGN_REGEX = new RegExp('.*\\[elder_sign\\] effect: (.\\d+)\\..*');
 

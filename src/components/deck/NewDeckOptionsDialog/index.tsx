@@ -21,7 +21,7 @@ import { saveNewDeck } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
 import { Deck, DeckMeta, Slots } from '@actions/types';
 import { CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { AppState } from '@reducers';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
@@ -38,6 +38,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useSimpleTextDialog } from '../dialogs';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
+import { useCreateDeckActions } from '@data/remote/decks';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -207,12 +208,13 @@ function NewDeckOptionsDialog({
     onCreateDeck && onCreateDeck(deck);
     showDeckModal(componentId, deck, colors, investigator);
   }, [componentId, onCreateDeck, colors, investigator, setSaving]);
+  const createDeckActions = useCreateDeckActions();
   const createDeck = useCallback((isRetry?: boolean) => {
     const deckName = deckNameChange || defaultDeckName;
     if (investigator && (!saving || isRetry)) {
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
       setSaving(true);
-      dispatch(saveNewDeck(user, {
+      dispatch(saveNewDeck(user, createDeckActions, {
         local,
         meta,
         deckName: deckName || t`New Deck`,
@@ -227,7 +229,7 @@ function NewDeckOptionsDialog({
         }
       );
     }
-  }, [signedIn, dispatch, showNewDeck, user,
+  }, [signedIn, dispatch, showNewDeck, createDeckActions, user,
     slots, meta, networkType, isConnected, offlineDeck, saving, starterDeck, tabooSetId, deckNameChange, investigator, defaultDeckName]);
 
   const onOkayPress = useMemo(() => throttle(() => createDeck(), 200), [createDeck]);

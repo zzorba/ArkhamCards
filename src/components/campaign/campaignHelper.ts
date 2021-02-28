@@ -2,7 +2,7 @@ import { flatMap, forEach } from 'lodash';
 import { t } from 'ttag';
 
 import { Deck, Slots } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { ShowAlert } from '@components/deck/dialogs';
 
 function weaknessString(deck: Deck, cards: CardsMap) {

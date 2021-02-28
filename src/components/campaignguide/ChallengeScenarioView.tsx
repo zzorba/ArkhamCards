@@ -8,7 +8,7 @@ import BasicButton from '@components/core/BasicButton';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { NavigationProps } from '@components/nav/types';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { Scenario, ChallengeData } from '@data/scenario/types';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';

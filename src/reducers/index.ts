@@ -39,7 +39,7 @@ import {
   getCampaignLastUpdated,
   getLastUpdated,
 } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag } from '@app_constants';
 
 const packsPersistConfig = {

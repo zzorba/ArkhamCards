@@ -5,7 +5,7 @@ import { t } from 'ttag';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
-import { CardsMap } from '@data/Card';
+import { CardsMap } from '@data/types/Card';
 import space from '@styles/space';
 import { CardErrata } from '@data/scenario/types';
 import EncounterIcon from '@icons/EncounterIcon';

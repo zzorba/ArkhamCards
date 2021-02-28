@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import AppIcon from '@icons/AppIcon';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import EncounterIcon from '@icons/EncounterIcon';
 import { TINY_PHONE } from '@styles/sizes';

@@ -4,7 +4,7 @@ import { map } from 'lodash';
 
 import EditCountComponent from '../EditCountComponent';
 import { InvestigatorNotes } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { ShowCountDialog } from '@components/deck/dialogs';
 
 interface Props {

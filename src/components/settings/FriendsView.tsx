@@ -5,7 +5,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import { useMyProfile, useProfile, SimpleUser } from '@data/hooks';
+import { useMyProfile, useProfile, SimpleUser } from '@data/remote/hooks';
 import { Fade, Placeholder, PlaceholderLine } from 'rn-placeholder';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -13,15 +13,13 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import space from '@styles/space';
 import RoundButton from '@components/core/RoundButton';
-import { FriendStatus } from '@data/firebase/types';
 import AppIcon from '@icons/AppIcon';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
-import { SearchResults, useSearchUsers, useUpdateFriendRequest } from '@data/firebase/api';
+import { FriendStatus, SearchResults, useSearchUsers, useUpdateFriendRequest } from '@data/remote/api';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NavigationProps } from '@components/nav/types';
-import { refreshMyDecks } from '@actions';
 
 export interface FriendsViewProps {
   userId: string;

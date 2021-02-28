@@ -6,7 +6,7 @@ import BasicButton from '@components/core/BasicButton';
 import CheckListComponent from './CheckListComponent';
 import CampaignGuideContext from '../CampaignGuideContext';
 import ScenarioStepContext from '../ScenarioStepContext';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {

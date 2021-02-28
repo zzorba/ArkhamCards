@@ -17,7 +17,7 @@ import {
   DeckId,
 } from '@actions/types';
 import { ScenarioId } from '@data/scenario';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 
 export interface CampaignGuideActions {
   showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => void) => void;

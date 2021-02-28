@@ -9,7 +9,7 @@ import { InvestigatorData, Trauma } from '@actions/types';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import space, { s, l } from '@styles/space';
 import { useCounters, useEffectUpdate } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';

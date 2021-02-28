@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { t } from 'ttag';
 
 import { Deck } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
 

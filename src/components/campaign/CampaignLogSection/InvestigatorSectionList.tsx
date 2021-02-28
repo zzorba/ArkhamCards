@@ -7,7 +7,7 @@ import {
 
 import InvestigatorSectionRow from './InvestigatorSectionRow';
 import { InvestigatorNotes } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { s } from '@styles/space';
 import { ShowCountDialog } from '@components/deck/dialogs';

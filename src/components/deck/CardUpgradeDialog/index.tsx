@@ -11,7 +11,7 @@ import CardUpgradeOption from './CardUpgradeOption';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/actions';
 import DeckValidation from '@lib/DeckValidation';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { NavigationProps } from '@components/nav/types';
 import space, { m } from '@styles/space';
 import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';

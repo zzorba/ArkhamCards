@@ -7,11 +7,12 @@ import { ngettext, msgid, t } from 'ttag';
 
 import { Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDispatch, useSelector } from 'react-redux';
-import { useComponentVisible, useDeck, usePlayerCards } from '@components/core/hooks';
+import { useComponentVisible, useDeck, useDeckWithFetch, usePlayerCards } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';
-import { CardsMap } from '@data/Card';
+import { CardsMap } from '@data/types/Card';
 import { parseDeck } from '@lib/parseDeck';
 import { AppState, makeDeckEditsSelector } from '@reducers';
+import { CreateDeckActions } from '@data/remote/decks';
 
 export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [string | undefined, string | undefined] {
   return useMemo(() => {
@@ -88,19 +89,19 @@ export interface ParsedDeckResults {
   mode: 'upgrade' | 'edit' | 'view';
 }
 
-export function useParsedDeck(
+function useParsedDeckHelper(
   id: DeckId,
-  componentName: string,
   componentId: string,
+  deck: Deck | undefined,
+  previousDeck: Deck | undefined,
   {
-    fetchIfMissing,
     initialMode,
+    fetchIfMissing,
   }: {
     fetchIfMissing?: boolean;
     initialMode?: 'upgrade' | 'edit';
   } = {}
 ): ParsedDeckResults {
-  const [deck, previousDeck] = useDeck(id, { fetchIfMissing });
   const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing, initialMode);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const cards = usePlayerCards(tabooSetId);
@@ -135,6 +136,25 @@ export function useParsedDeck(
     editable: !deck?.nextDeckId,
     mode: (deckEdits?.mode) || (initialMode || 'view'),
   };
+}
+
+export function useParsedDeckWithFetch(
+  id: DeckId,
+  componentId: string,
+  actions: CreateDeckActions,
+  initialMode?: 'upgrade' | 'edit',
+) {
+  const [deck, previousDeck] = useDeckWithFetch(id, actions);
+  return useParsedDeckHelper(id, componentId, deck, previousDeck, { initialMode, fetchIfMissing: true });
+}
+
+export function useParsedDeck(
+  id: DeckId,
+  componentId: string,
+  initialMode?: 'upgrade' | 'edit'
+): ParsedDeckResults {
+  const [deck, previousDeck] = useDeck(id);
+  return useParsedDeckHelper(id, componentId, deck, previousDeck, { initialMode });
 }
 
 export interface DeckEditState {

@@ -12,7 +12,7 @@ import BasicListRow from '@components/core/BasicListRow';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { NavigationProps } from '@components/nav/types';
 import ExileCardSelectorComponent from '@components/campaign/ExileCardSelectorComponent';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';

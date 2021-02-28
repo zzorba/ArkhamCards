@@ -19,14 +19,14 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { NavigationProps } from '@components/nav/types';
 import { CampaignId, Deck, DeckId, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { getAllDecks, makeLatestCampaignDeckIdsSelector, AppState, getDeck, makeOtherCampiagnDeckIdsSelector } from '@reducers';
 import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;

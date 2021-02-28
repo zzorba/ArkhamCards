@@ -1,7 +1,7 @@
 import { findIndex, forEach, map } from 'lodash';
 
-import { QueryParams } from '@data/types';
-import { BASIC_QUERY, combineQueries, combineQueriesOpt, where } from '@data/query';
+import { QueryParams } from '@data/sqlite/types';
+import { BASIC_QUERY, combineQueries, combineQueriesOpt, where } from '@data/sqlite/query';
 import { SKILLS, FactionCodeType, CARD_FACTION_CODES } from '@app_constants';
 import { Brackets } from 'typeorm/browser';
 

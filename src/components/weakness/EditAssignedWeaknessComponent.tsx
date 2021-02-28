@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native';
 import { showCard } from '@components/nav/helper';
 import { t } from 'ttag';
 import { Slots, WeaknessSet } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import StyleContext from '@styles/StyleContext';
 import { useSlotActions, useWeaknessCards } from '@components/core/hooks';

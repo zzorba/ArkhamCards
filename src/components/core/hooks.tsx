@@ -4,7 +4,7 @@ import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, Comp
 import { forEach, debounce, find } from 'lodash';
 
 import { Campaign, CampaignId, ChaosBagResults, Deck, DeckId, Slots } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   AppState,
@@ -15,11 +15,12 @@ import {
   makeLatestCampaignDeckIdsSelector,
   makeLatestCampaignInvestigatorsSelector,
 } from '@reducers';
-import DatabaseContext from '@data/DatabaseContext';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
-import TabooSet from '@data/TabooSet';
+import TabooSet from '@data/types/TabooSet';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { CreateDeckActions, useCreateDeckActions } from '@data/remote/decks';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -568,29 +569,36 @@ export function useChaosBagResults({ campaignId }: CampaignId): ChaosBagResults 
   return useSelector((state: AppState) => chaosBagResultsSelector(state, campaignId));
 }
 
-export function useDeck(id: DeckId | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean } = {}): [Deck | undefined, Deck | undefined] {
-  const dispatch = useDispatch();
-  const { user } = useContext(ArkhamCardsAuthContext);
+export function useDeck(id: DeckId | undefined): [Deck | undefined, Deck | undefined] {
   const effectiveDeckIdSelector = useCallback((state: AppState) => id !== undefined ? getEffectiveDeckId(state, id) : undefined, [id]);
   const effectiveDeckId = useSelector(effectiveDeckIdSelector);
   const deckSelector = useMemo(makeDeckSelector, []);
   const previousDeckSelector = useMemo(makeDeckSelector, []);
   const theDeck = useSelector((state: AppState) => effectiveDeckId !== undefined ? deckSelector(state, effectiveDeckId) : undefined) || undefined;
   const thePreviousDeck = useSelector((state: AppState) => (theDeck && theDeck.previousDeckId) ? previousDeckSelector(state, theDeck.previousDeckId) : undefined);
+  return [theDeck, thePreviousDeck];
+}
+
+
+export function useDeckWithFetch(id: DeckId | undefined, actions: CreateDeckActions): [Deck | undefined, Deck | undefined] {
+  const [theDeck, thePreviousDeck] = useDeck(id);
+  const dispatch = useDispatch();
+  const { user } = useContext(ArkhamCardsAuthContext);
   useEffect(() => {
-    if (!theDeck && fetchIfMissing && id !== undefined && !id.local) {
-      dispatch(fetchPrivateDeck(user, id));
+    if (!theDeck && id !== undefined && !id.local) {
+      dispatch(fetchPrivateDeck(user, actions, id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    if (!thePreviousDeck && theDeck?.previousDeckId && fetchIfMissing && !theDeck.local && !theDeck.previousDeckId.local) {
-      dispatch(fetchPrivateDeck(user, theDeck.previousDeckId));
+    if (!thePreviousDeck && theDeck?.previousDeckId && !theDeck.local && !theDeck.previousDeckId.local) {
+      dispatch(fetchPrivateDeck(user, actions, theDeck.previousDeckId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theDeck]);
   return [theDeck, thePreviousDeck];
 }
+
 
 export function useEffectUpdate(update: () => void, deps: any[]) {
   const firstUpdate = useRef(true);

@@ -11,13 +11,13 @@ import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
 import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
 import { CampaignId, Deck, DeckId, getDeckId, ParsedDeck } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
 import { CardImageProps } from '@components/card/CardImageView';
 import { ThemeColors } from '@styles/theme';
 import { StyleContextType } from '@styles/StyleContext';
-import Database from '@data/Database';
-import { where } from '@data/query';
+import Database from '@data/sqlite/Database';
+import { where } from '@data/sqlite/query';
 import COLORS from '@styles/colors';
 
 export function getDeckOptions(

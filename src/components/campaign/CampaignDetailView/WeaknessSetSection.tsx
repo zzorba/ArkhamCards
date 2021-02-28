@@ -8,7 +8,7 @@ import {
 
 import { t } from 'ttag';
 import { WeaknessSet } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import NavButton from '@components/core/NavButton';
 import StyleContext from '@styles/StyleContext';
 import { useWeaknessCards } from '@components/core/hooks';

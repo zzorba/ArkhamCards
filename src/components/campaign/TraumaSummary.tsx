@@ -7,7 +7,7 @@ import { TraumaAndCardData } from '@actions/types';
 import HealthSanityIcon from '@components/core/HealthSanityIcon';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 
 interface Props {

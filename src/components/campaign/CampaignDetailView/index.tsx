@@ -14,7 +14,7 @@ import { getAllDecks, getDeck } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
 import { campaignNames } from '../constants';
@@ -22,7 +22,7 @@ import space, { s } from '@styles/space';
 import CampaignSummaryHeader from '../CampaignSummaryHeader';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaignId, useXpDialog } from '../hooks';
@@ -33,6 +33,8 @@ import { CampaignScenariosViewProps } from '../CampaignScenariosView';
 import UploadCampaignButton from '../UploadCampaignButton';
 import useChaosBagDialog from './useChaosBagDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
+import { useCreateDeckActions } from '@data/remote/decks';
+import { useRemoveInvestigatorDecks } from '@data/remote/campaigns';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
@@ -146,19 +148,21 @@ function CampaignDetailView(props: Props) {
       );
     }
   }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
-
+  const createDeckActions = useCreateDeckActions();
   const onAddDeck = useCallback((deck: Deck) => {
-    dispatch(addInvestigator(user, campaignId, deck.investigator_code, getDeckId(deck)));
+    dispatch(addInvestigator(user, createDeckActions, campaignId, deck.investigator_code, getDeckId(deck)));
     checkForWeaknessPrompt(deck);
-  }, [user, campaignId, dispatch, checkForWeaknessPrompt]);
+  }, [user, campaignId, createDeckActions, dispatch, checkForWeaknessPrompt]);
 
   const onAddInvestigator = useCallback((card: Card) => {
-    dispatch(addInvestigator(user, campaignId, card.code));
-  }, [user, campaignId, dispatch]);
+    dispatch(addInvestigator(user, createDeckActions, campaignId, card.code));
+  }, [user, campaignId, createDeckActions, dispatch]);
+
+  const removeInvestigatorDecks = useRemoveInvestigatorDecks();
 
   const onRemoveInvestigator = useCallback((investigator: Card, removedDeckId?: DeckId) => {
-    dispatch(removeInvestigator(user, campaignId, investigator.code, removedDeckId));
-  }, [user, campaignId, dispatch]);
+    dispatch(removeInvestigator(user, removeInvestigatorDecks, campaignId, investigator.code, removedDeckId));
+  }, [user, removeInvestigatorDecks, campaignId, dispatch]);
 
   const showChooseDeck = useCallback((
     singleInvestigator?: Card,

@@ -6,10 +6,10 @@ schema:
         x-hasura-admin-secret: "${MASTER_KEY}"
 documents: "src/data/graphql/*.graphql"
 generates:
-  src/data/graphql/apollo-helpers.ts:
+  src/generated/graphql/apollo-helpers.ts:
     plugins:
       - typescript-apollo-client-helpers
-  src/data/graphql/schema.tsx:
+  src/generated/graphql/apollo-schema.tsx:
     plugins:
       - "typescript"
       - "typescript-operations"

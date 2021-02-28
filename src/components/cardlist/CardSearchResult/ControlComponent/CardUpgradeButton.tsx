@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import RoundButton from '@components/core/RoundButton';
 import DeckQuantityComponent from './DeckQuantityComponent';
 import { DeckId } from '@actions/types';

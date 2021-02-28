@@ -7,7 +7,7 @@ import { NavigationProps } from '@components/nav/types';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
 import { updateCampaign } from './actions';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useCampaign } from '@data/hooks';
+import { useCampaign } from '@data/remote/hooks';
 
 export interface CampaignEditWeaknessProps {
   campaignId: CampaignId;

@@ -123,110 +123,191 @@ mutation uploadNewCampaign(
   }
 }
 
-mutation insertNewDeck(
-  $arkhamdb_id: Int,
-  $local_uuid: String,
+mutation deleteInvestigatorDecks(
   $campaign_id: Int!,
   $investigator: String!,
-  $content: jsonb!,
-  $userId: String!
+  $user_id: String!,
 ) {
-  insert_deck_one(
+  delete_deck(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      investigator: { _eq: $investigator }
+      owner_id: { _eq: $user_id }
+    }
+  ) {
+    returning {
+      id
+    }
+  }
+}
+
+mutation updateBinaryAchievement(
+  $campaign_id: Int!,
+  $achievement_id: String!,
+  $value: Boolean!
+) {
+  insert_guide_achievement_one(
     object: {
-      arkhamdb_id: $arkhamdb_id
-      local_uuid: $local_uuid
-      campaign_id: $campaign_id
-      investigator: $investigator
-      content: $content
-      owner_id: $userId
-      base: true
+      campaign_id:$campaign_id
+      achievement_id: $achievement_id
+      type: "binary"
+      bool_value: $value
+    }
+    on_conflict: {
+      constraint: guide_achivement_campaign_id_achievement_id_key
+      update_columns: [bool_value]
     }
   ) {
     id
-    arkhamdb_id
-    local_uuid
     campaign_id
-    owner_id
-    investigator
+    achievement_id
+    type
+    bool_value
   }
 }
 
-mutation insertNextLocalDeck(
-  $previous_local_uuid: String,
-  $local_uuid: String,
+mutation incCountAchievementMax(
   $campaign_id: Int!,
-  $investigator: String!,
-  $content: jsonb!,
-  $userId: String!
+  $achievement_id: String!,
+  $max: Int!
 ) {
-  insert_deck_one(
+  insert_guide_achievement_one(
     object: {
-      local_uuid: $previous_local_uuid
-      investigator: $investigator
-      campaign_id: $campaign_id
-      owner_id: $userId
-      next_deck: {
-        data: {
-          local_uuid: $local_uuid
-          campaign_id: $campaign_id
-          investigator: $investigator
-          content: $content
-          owner_id: $userId
-        }
-      }
+      campaign_id:$campaign_id
+      achievement_id: $achievement_id
+      type: "count"
+      value: 1
     }
     on_conflict: {
-      constraint: deck_uuid_key
-      update_columns: [next_deck_id]
+      constraint: guide_achivement_campaign_id_achievement_id_key
+      update_columns: []
     }
   ) {
     id
-    next_deck {
-  		id
-    	local_uuid
-	    campaign_id
-	    investigator
-    	owner_id
-	  }
+    campaign_id
+    achievement_id
+    type
+    value
+  }
+  update_guide_achievement(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      achievement_id: { _eq: $achievement_id }
+      value: { _lt: $max }
+    }
+    _inc: { value: 1 }
+  ) {
+    returning {
+      id
+      campaign_id
+      achievement_id
+      type
+      value
+    }
   }
 }
 
-mutation insertNextArkhamDbDeck(
-  $previous_arkhamdb_id: Int!,
-  $arkhamdb_id: Int!,
+mutation incCountAchievement(
   $campaign_id: Int!,
-  $investigator: String!,
-  $content: jsonb!,
-  $userId: String!
+  $achievement_id: String!
 ) {
-  insert_deck_one(
+  insert_guide_achievement_one(
     object: {
-      arkhamdb_id: $previous_arkhamdb_id
-      investigator: $investigator
-      campaign_id: $campaign_id
-      owner_id: $userId
-      next_deck: {
-        data: {
-          arkhamdb_id: $arkhamdb_id
-          campaign_id: $campaign_id
-          investigator: $investigator
-          content: $content
-          owner_id: $userId
-        }
-      }
+      campaign_id:$campaign_id
+      achievement_id: $achievement_id
+      type: "count"
+      value: 1
     }
     on_conflict: {
-      constraint: deck_arkhamdb_id_key
-      update_columns: [next_deck_id]
+      constraint: guide_achivement_campaign_id_achievement_id_key
+      update_columns: []
     }
   ) {
     id
-    next_deck {
-  		id
-    	arkhamdb_id
-	    campaign_id
-	    investigator
-    	owner_id
-	  }
+    campaign_id
+    achievement_id
+    type
+    value
+  }
+  update_guide_achievement(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      achievement_id: { _eq: $achievement_id }
+    }
+    _inc: { value: 1 }
+  ) {
+    returning {
+      id
+      campaign_id
+      achievement_id
+      type
+      value
+    }
+  }
+}
+
+mutation decCountAchievement(
+  $campaign_id: Int!,
+  $achievement_id: String!
+) {
+  insert_guide_achievement_one(
+    object: {
+      campaign_id:$campaign_id
+      achievement_id: $achievement_id
+      type: "count"
+      value: 0
+    }
+    on_conflict: {
+      constraint: guide_achivement_campaign_id_achievement_id_key
+      update_columns: []
+    }
+  ) {
+    id
+    campaign_id
+    achievement_id
+    type
+    value
+  }
+  update_guide_achievement(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      achievement_id: { _eq: $achievement_id }
+      value: { _gt: 0 }
+    }
+    _inc: { value: -1 }
+  ) {
+    returning {
+      id
+      campaign_id
+      achievement_id
+      type
+      value
+    }
+  }
+}
+
+mutation addGuideInput(
+  $campaign_id: Int!,
+  $scenario: String,
+  $step: String,
+  $payload: jsonb
+) {
+  insert_guide_input_one(
+    object: {
+      campaign_id: $campaign_id
+      scenario: $scenario
+      step: $step
+      payload: $payload
+    }
+    on_conflict: {
+      constraint: campaign_guide_input_campaign_guide_id_scenario_step_key
+      update_columns: [payload]
+    }
+  ) {
+    id
+    campaign_id
+    scenario
+    step
+    payload
   }
 }

@@ -4,8 +4,9 @@ import InvestigatorRow from '@components/core/InvestigatorRow';
 import InvestigatorDeckRow from '../InvestigatorDeckRow';
 import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
 import { Deck, DeckId } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import { useInvestigatorCards } from '@components/core/hooks';
+import { useCreateDeckActions } from '@data/remote/decks';
 
 interface Props extends CampaignDeckListProps {
   deckRemoved?: (
@@ -27,15 +28,17 @@ export default function DeckSelector({
   investigatorIds,
 }: Props) {
   const investigators = useInvestigatorCards();
+  const actions = useCreateDeckActions();
   const renderDeck = useCallback((deckId: DeckId) => {
     return (
       <InvestigatorDeckRow
         key={deckId.uuid}
         id={deckId}
         deckRemoved={deckRemoved}
+        actions={actions}
       />
     );
-  }, [deckRemoved]);
+  }, [deckRemoved, actions]);
 
   const renderInvestigator = useCallback((code: string) => {
     const investigator = investigators && investigators[code];

@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 
 import EditTraumaDialog from './EditTraumaDialog';
 import { InvestigatorData, Trauma } from '@actions/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 
 export interface TraumaProps {
   showTraumaDialog: (

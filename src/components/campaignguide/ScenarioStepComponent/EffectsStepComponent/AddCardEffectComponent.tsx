@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import InvestigatorSelectorWrapper from '@components/campaignguide/InvestigatorSelectorWrapper';
 import { AddCardEffect } from '@data/scenario/types';
-import Card from '@data/Card';
+import Card from '@data/types/Card';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import useSingleCard from '@components/card/useSingleCard';
 import StyleContext from '@styles/StyleContext';
