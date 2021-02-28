@@ -7,3 +7,225 @@ mutation updateCampaignName($campaignId: Int!, $name: String!) {
     name
   }
 }
+
+query getMyCampaigns($userId:String!) {
+  users_by_pk(id: $userId) {
+    id
+    campaigns {
+      campaign {
+        id
+        name
+        updated_at
+        cycleCode
+        difficulty
+      }
+    }
+  }
+}
+
+mutation uploadNewCampaign(
+  $campaignId: Int!,
+  $cycleCode: String!,
+  $standaloneId: jsonb,
+  $showInterludes: Boolean,
+  $name: String!,
+  $difficulty: String,
+  $campaignNotes: jsonb,
+  $nonDeckInvestigators: jsonb,
+  $scenarioResults: jsonb,
+  $chaosBag: jsonb,
+  $weaknessSet: jsonb,
+  $inputs: [guide_input_insert_input!]!,
+  $achievements: [guide_achievement_insert_input!]!,
+  $investigator_data: [investigator_data_insert_input!]!
+) {
+  insert_guide_input(
+    objects: $inputs
+  ) {
+    affected_rows
+    returning {
+      id
+      campaign_id
+      scenario
+      step
+      payload
+      created_at
+    }
+  }
+  insert_guide_achievement(
+    objects: $achievements
+  ) {
+    affected_rows
+  }
+  insert_investigator_data(objects: $investigator_data){
+    affected_rows
+  }
+   update_campaign_by_pk(
+  pk_columns: { id: $campaignId}
+	_set: {
+    name: $name
+    cycleCode: $cycleCode
+    standaloneId: $standaloneId
+    difficulty: $difficulty
+    campaignNotes: $campaignNotes
+    chaosBag: $chaosBag
+    showInterludes: $showInterludes
+    nonDeckInvestigators: $nonDeckInvestigators
+    scenarioResults: $scenarioResults
+    weaknessSet: $weaknessSet
+  }) {
+    id
+    name
+    cycleCode
+    standaloneId
+    difficulty
+    campaignNotes
+    chaosBag
+    showInterludes
+    nonDeckInvestigators
+    scenarioResults
+    weaknessSet
+    guided
+    guide_inputs {
+      id
+      step
+      scenario
+      payload
+      created_at
+    }
+    guide_achivements {
+      id
+      achievement_id
+      type
+      bool_value
+      value
+      updated_at
+    }
+    investigator_data {
+      investigator
+
+      addedCards
+      ignoreStoryAssets
+      storyAssets
+      removedCards
+
+      insane
+      killed
+      mental
+      physical
+
+      availableXp
+      spentXp
+      specialXp
+
+      updated_at
+    }
+  }
+}
+
+mutation insertNewDeck(
+  $arkhamdb_id: Int,
+  $local_uuid: String,
+  $campaign_id: Int!,
+  $investigator: String!,
+  $content: jsonb!,
+  $userId: String!
+) {
+  insert_deck_one(
+    object: {
+      arkhamdb_id: $arkhamdb_id
+      local_uuid: $local_uuid
+      campaign_id: $campaign_id
+      investigator: $investigator
+      content: $content
+      owner_id: $userId
+    }
+  ) {
+    id
+    arkhamdb_id
+    local_uuid
+    campaign_id
+    owner_id
+    investigator
+  }
+}
+
+mutation insertNextLocalDeck(
+  $previous_local_uuid: String,
+  $local_uuid: String,
+  $campaign_id: Int!,
+  $investigator: String!,
+  $content: jsonb!,
+  $userId: String!
+) {
+  insert_deck_one(
+    object: {
+      local_uuid: $previous_local_uuid
+      investigator: $investigator
+      campaign_id: $campaign_id
+      owner_id: $userId
+      next_deck: {
+        data: {
+          local_uuid: $local_uuid
+          campaign_id: $campaign_id
+          investigator: $investigator
+          content: $content
+          owner_id: $userId
+        }
+      }
+    }
+    on_conflict: {
+      constraint: deck_uuid_key
+      update_columns: [next_deck_id]
+    }
+  ) {
+    id
+    next_deck {
+  		id
+    	local_uuid
+	    campaign_id
+	    investigator
+    	owner_id
+	  }
+  }
+}
+
+mutation insertNextArkhamDbDeck(
+  $previous_arkhamdb_id: Int!,
+  $arkhamdb_id: Int!,
+  $campaign_id: Int!,
+  $investigator: String!,
+  $content: jsonb!,
+  $userId: String!
+) {
+  insert_deck_one(
+    object: {
+      arkhamdb_id: $previous_arkhamdb_id
+      investigator: $investigator
+      campaign_id: $campaign_id
+      owner_id: $userId
+      next_deck: {
+        data: {
+          arkhamdb_id: $arkhamdb_id
+          campaign_id: $campaign_id
+          investigator: $investigator
+          content: $content
+          owner_id: $userId
+        }
+      }
+    }
+    on_conflict: {
+      constraint: deck_arkhamdb_id_key
+      update_columns: [next_deck_id]
+    }
+  ) {
+    id
+    next_deck {
+  		id
+    	arkhamdb_id
+	    campaign_id
+	    investigator
+    	owner_id
+	  }
+  }
+}

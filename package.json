@@ -125,7 +125,7 @@
     "utf8": "^3.0.0",
     "utility-types": "3.10.0",
     "victory-native": "35.3.1",
-    "yarn": "1.22.0"
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -138,6 +138,7 @@
     "@graphql-codegen/fragment-matcher": "^2.0.1",
     "@graphql-codegen/introspection": "^1.18.1",
     "@graphql-codegen/typescript": "^1.21.0",
+    "@graphql-codegen/typescript-apollo-client-helpers": "^1.1.2",
     "@graphql-codegen/typescript-document-nodes": "^1.17.9",
     "@graphql-codegen/typescript-graphql-files-modules": "^1.18.1",
     "@graphql-codegen/typescript-operations": "^1.17.14",
@@ -164,6 +165,7 @@
     "@types/victory": "33.1.4",
     "@typescript-eslint/eslint-plugin": "3.6.1",
     "@typescript-eslint/parser": "3.6.1",
+    "add": "^2.0.6",
     "babel-eslint": "10.1.0",
     "babel-jest": "^25.1.0",
     "babel-plugin-module-resolver": "^4.0.0",

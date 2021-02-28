@@ -64,6 +64,7 @@ function CampaignGuideView(props: Props) {
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
           showAlert={showAlert}
+          guided
         />
         <DeleteCampaignButton
           componentId={componentId}
