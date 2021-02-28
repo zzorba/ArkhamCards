@@ -26,8 +26,8 @@ import space from '@styles/space';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
-  campaignIdA: string;
-  campaignIdB: string;
+  campaignIdA: CampaignId;
+  campaignIdB: CampaignId;
 }
 
 type Props = LinkedCampaignGuideProps & NavigationProps;
@@ -38,8 +38,8 @@ export default function LinkedCampaignGuideView(props: Props) {
   const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
   const [campaignIdA, campaignIdB] = useMemo(() => {
     return [
-      { campaignId: props.campaignIdA, serverId: campaignId.serverId },
-      { campaignId: props.campaignIdB, serverId: campaignId.serverId },
+      { campaignId: props.campaignIdA.campaignId, serverId: campaignId.serverId },
+      { campaignId: props.campaignIdB.campaignId, serverId: campaignId.serverId },
     ];
   }, [props.campaignIdA, props.campaignIdB, campaignId.serverId]);
   const investigators = useInvestigatorCards();

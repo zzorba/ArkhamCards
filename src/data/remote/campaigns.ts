@@ -1,12 +1,17 @@
 import { useCallback, useContext, useMemo } from 'react';
-import { filter } from 'lodash';
+import { filter, omit } from 'lodash';
 import { FetchResult, MutationFunctionOptions } from '@apollo/client';
 
-import { UploadedCampaignId } from '@actions/types';
+import { GuideInput, UploadedCampaignId } from '@actions/types';
 import { useModifyUserCache } from '@data/apollo/cache';
 import {
   UploadNewCampaignMutation, UploadNewCampaignMutationVariables, useUploadNewCampaignMutation,
   useDeleteInvestigatorDecksMutation,
+  useIncCountAchievementMaxMutation,
+  useIncCountAchievementMutation,
+  useDecCountAchievementMutation,
+  useSetBinaryAchievementMutation,
+  useAddGuideInputMutation,
 } from '@generated/graphql/apollo-schema';
 import { CreateDeckActions, useCreateDeckActions } from './decks';
 import { useFunction, ErrorResponse } from './api';
@@ -169,4 +174,74 @@ export function useRemoveInvestigatorDecks() {
       },
     });
   }, [deleteInvestigatorDecks, user]);
+}
+
+export interface GuideActions {
+  setInput: (campaignId: UploadedCampaignId, input: GuideInput) => Promise<void>;
+  setBinaryAchievement: (campaignId: UploadedCampaignId, achievementId: string, value: boolean) => Promise<void>;
+  decAchievement: (campaignId: UploadedCampaignId, achievementId: string) => Promise<void>;
+  incAchievement: (campaignId: UploadedCampaignId, achievementId: string, max?: number) => Promise<void>;
+}
+export function useGuideActions(): GuideActions {
+  const [incCountMax] = useIncCountAchievementMaxMutation();
+  const [incCount] = useIncCountAchievementMutation();
+  const [decCount] = useDecCountAchievementMutation();
+  const [setBinary] = useSetBinaryAchievementMutation();
+
+  const [setGuideInput] = useAddGuideInputMutation();
+  const setInput = useCallback(async(campaignId: UploadedCampaignId, input: GuideInput) => {
+    await setGuideInput({
+      variables: {
+        campaign_id: campaignId.serverId,
+        scenario: input.scenario,
+        step: input.step,
+        payload: omit(input, ['scenario', 'step']),
+      },
+    });
+  }, [setGuideInput]);
+
+
+  const setBinaryAchievement = useCallback(async(campaignId: UploadedCampaignId, achievementId: string, value: boolean) => {
+    await setBinary({
+      variables: {
+        campaign_id: campaignId.serverId,
+        achievement_id: achievementId,
+        value,
+      },
+    });
+  }, [setBinary]);
+  const incAchievement = useCallback(async(campaignId: UploadedCampaignId, achievementId: string, max?: number) => {
+    if (max) {
+      await incCountMax({
+        variables: {
+          campaign_id: campaignId.serverId,
+          achievement_id: achievementId,
+          max,
+        },
+      });
+    } else {
+      await incCount({
+        variables: {
+          campaign_id: campaignId.serverId,
+          achievement_id: achievementId,
+        },
+      });
+    }
+  }, [incCount, incCountMax]);
+  const decAchievement = useCallback(async(campaignId: UploadedCampaignId, achievementId: string) => {
+    await decCount({
+      variables: {
+        campaign_id: campaignId.serverId,
+        achievement_id: achievementId,
+      },
+    });
+  }, [decCount]);
+  return useMemo(() => {
+    return {
+      setBinaryAchievement,
+      incAchievement,
+      decAchievement,
+      setInput,
+    };
+  }, [setBinaryAchievement, incAchievement, decAchievement, setInput]);
 }

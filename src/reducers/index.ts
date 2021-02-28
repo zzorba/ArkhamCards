@@ -41,6 +41,8 @@ import {
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag } from '@app_constants';
+import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
+import { MiniCampaignRedux, MiniLinkedCampaignRedux } from '@data/local/types';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -151,34 +153,38 @@ function getCampaign(all: { [uuid: string]: Campaign }, campaignId: CampaignId):
 export const getCampaigns = createSelector(
   allCampaignsSelector,
   allGuidesSelector,
-  (allCampaigns, allGuides): {
-    campaign: Campaign;
-    sort: number;
-  }[] => sortBy(map(
+  allDecksSelector,
+  (allCampaigns, allGuides, allDecks): MiniCampaignT[] => map(
     filter(
       values(allCampaigns),
-      campaign => !campaign.linkedCampaignUuid
+      campaign => (!campaign.linkedCampaignUuid && !campaign.serverId)
     ),
     (campaign: Campaign) => {
       if (campaign.linkUuid) {
         const campaignA = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdA, serverId: campaign.serverId });
-        const campaignB = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdA, serverId: campaign.serverId });
+        const campaignB = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdB, serverId: campaign.serverId });
         if (campaignA && campaignB) {
-          return {
+          const decksA = flatMap(campaignA.deckIds, id => getDeck(allDecks, id) || []);
+          const decksB = flatMap(campaignB.deckIds, id => getDeck(allDecks, id) || []);
+          return new MiniLinkedCampaignRedux(
             campaign,
-            sort: Math.min(
-              getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
-              getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
-            ),
-          };
+            getCampaignLastUpdated(campaign),
+            campaignA,
+            decksA,
+            getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
+            campaignB,
+            decksB,
+            getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
+          );
         }
       }
-      return {
+      return new MiniCampaignRedux(
         campaign,
-        sort: getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
-      };
+        flatMap(campaign.deckIds, id => getDeck(allDecks, id) || []),
+        getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
+      );
     }
-  ), c => c.sort)
+  )
 );
 
 export const getBackupData = createSelector(

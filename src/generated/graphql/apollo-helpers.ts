@@ -787,12 +787,13 @@ export type investigator_data_variance_fieldsFieldPolicy = {
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type latest_decksKeySpecifier = ('campaign' | 'campaign_id' | 'deck' | 'id' | latest_decksKeySpecifier)[];
+export type latest_decksKeySpecifier = ('campaign' | 'campaign_id' | 'deck' | 'id' | 'owner_id' | latest_decksKeySpecifier)[];
 export type latest_decksFieldPolicy = {
 	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type latest_decks_aggregateKeySpecifier = ('aggregate' | 'nodes' | latest_decks_aggregateKeySpecifier)[];
 export type latest_decks_aggregateFieldPolicy = {
@@ -818,15 +819,17 @@ export type latest_decks_avg_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type latest_decks_max_fieldsKeySpecifier = ('campaign_id' | 'id' | latest_decks_max_fieldsKeySpecifier)[];
+export type latest_decks_max_fieldsKeySpecifier = ('campaign_id' | 'id' | 'owner_id' | latest_decks_max_fieldsKeySpecifier)[];
 export type latest_decks_max_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type latest_decks_min_fieldsKeySpecifier = ('campaign_id' | 'id' | latest_decks_min_fieldsKeySpecifier)[];
+export type latest_decks_min_fieldsKeySpecifier = ('campaign_id' | 'id' | 'owner_id' | latest_decks_min_fieldsKeySpecifier)[];
 export type latest_decks_min_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type latest_decks_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | latest_decks_mutation_responseKeySpecifier)[];
 export type latest_decks_mutation_responseFieldPolicy = {
@@ -1209,11 +1212,13 @@ export type user_sent_friend_requests_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type usersKeySpecifier = ('campaigns' | 'campaigns_aggregate' | 'created_at' | 'friends' | 'friends_aggregate' | 'handle' | 'id' | 'received_requests' | 'received_requests_aggregate' | 'sent_requests' | 'sent_requests_aggregate' | 'updated_at' | usersKeySpecifier)[];
+export type usersKeySpecifier = ('campaigns' | 'campaigns_aggregate' | 'created_at' | 'decks' | 'decks_aggregate' | 'friends' | 'friends_aggregate' | 'handle' | 'id' | 'received_requests' | 'received_requests_aggregate' | 'sent_requests' | 'sent_requests_aggregate' | 'updated_at' | usersKeySpecifier)[];
 export type usersFieldPolicy = {
 	campaigns?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaigns_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	friends?: FieldPolicy<any> | FieldReadFunction<any>,
 	friends_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	handle?: FieldPolicy<any> | FieldReadFunction<any>,

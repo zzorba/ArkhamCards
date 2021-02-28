@@ -373,7 +373,7 @@ export type Campaign = {
   showInterludes?: Maybe<Scalars['Boolean']>;
   standaloneId?: Maybe<Scalars['jsonb']>;
   updated_at: Scalars['timestamptz'];
-  uuid?: Maybe<Scalars['String']>;
+  uuid: Scalars['String'];
   weaknessSet?: Maybe<Scalars['jsonb']>;
 };
 
@@ -3278,6 +3278,7 @@ export type Latest_Decks = {
   /** An object relationship */
   deck?: Maybe<Deck>;
   id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
 };
 
 /** aggregated selection of "latest_decks" */
@@ -3352,6 +3353,7 @@ export type Latest_Decks_Bool_Exp = {
   campaign_id?: Maybe<Int_Comparison_Exp>;
   deck?: Maybe<Deck_Bool_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
+  owner_id?: Maybe<String_Comparison_Exp>;
 };
 
 /** input type for incrementing integer column in table "latest_decks" */
@@ -3366,6 +3368,7 @@ export type Latest_Decks_Insert_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   deck?: Maybe<Deck_Obj_Rel_Insert_Input>;
   id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -3373,12 +3376,14 @@ export type Latest_Decks_Max_Fields = {
   __typename?: 'latest_decks_max_fields';
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
 };
 
 /** order by max() on columns of table "latest_decks" */
 export type Latest_Decks_Max_Order_By = {
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -3386,12 +3391,14 @@ export type Latest_Decks_Min_Fields = {
   __typename?: 'latest_decks_min_fields';
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
 };
 
 /** order by min() on columns of table "latest_decks" */
 export type Latest_Decks_Min_Order_By = {
   campaign_id?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "latest_decks" */
@@ -3414,6 +3421,7 @@ export type Latest_Decks_Order_By = {
   campaign_id?: Maybe<Order_By>;
   deck?: Maybe<Deck_Order_By>;
   id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
 };
 
 /** select columns of table "latest_decks" */
@@ -3421,13 +3429,16 @@ export enum Latest_Decks_Select_Column {
   /** column name */
   CampaignId = 'campaign_id',
   /** column name */
-  Id = 'id'
+  Id = 'id',
+  /** column name */
+  OwnerId = 'owner_id'
 }
 
 /** input type for updating data in table "latest_decks" */
 export type Latest_Decks_Set_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
 };
 
 /** aggregate stddev on columns */
@@ -5715,6 +5726,10 @@ export type Users = {
   campaigns_aggregate: User_Campaigns_Aggregate;
   created_at: Scalars['timestamptz'];
   /** An array relationship */
+  decks: Array<Latest_Decks>;
+  /** An aggregated array relationship */
+  decks_aggregate: Latest_Decks_Aggregate;
+  /** An array relationship */
   friends: Array<User_Friends>;
   /** An aggregated array relationship */
   friends_aggregate: User_Friends_Aggregate;
@@ -5749,6 +5764,26 @@ export type UsersCampaigns_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<User_Campaigns_Order_By>>;
   where?: Maybe<User_Campaigns_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users" */
+export type UsersDecksArgs = {
+  distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Latest_Decks_Order_By>>;
+  where?: Maybe<Latest_Decks_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users" */
+export type UsersDecks_AggregateArgs = {
+  distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Latest_Decks_Order_By>>;
+  where?: Maybe<Latest_Decks_Bool_Exp>;
 };
 
 
@@ -5853,6 +5888,7 @@ export type Users_Bool_Exp = {
   _or?: Maybe<Array<Maybe<Users_Bool_Exp>>>;
   campaigns?: Maybe<User_Campaigns_Bool_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  decks?: Maybe<Latest_Decks_Bool_Exp>;
   friends?: Maybe<User_Friends_Bool_Exp>;
   handle?: Maybe<String_Comparison_Exp>;
   id?: Maybe<String_Comparison_Exp>;
@@ -5871,6 +5907,7 @@ export enum Users_Constraint {
 export type Users_Insert_Input = {
   campaigns?: Maybe<User_Campaigns_Arr_Rel_Insert_Input>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  decks?: Maybe<Latest_Decks_Arr_Rel_Insert_Input>;
   friends?: Maybe<User_Friends_Arr_Rel_Insert_Input>;
   handle?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
@@ -5939,6 +5976,7 @@ export type Users_On_Conflict = {
 export type Users_Order_By = {
   campaigns_aggregate?: Maybe<User_Campaigns_Aggregate_Order_By>;
   created_at?: Maybe<Order_By>;
+  decks_aggregate?: Maybe<Latest_Decks_Aggregate_Order_By>;
   friends_aggregate?: Maybe<User_Friends_Aggregate_Order_By>;
   handle?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -5995,26 +6033,6 @@ export type UpdateCampaignNameMutation = (
   & { update_campaign_by_pk?: Maybe<(
     { __typename?: 'campaign' }
     & Pick<Campaign, 'id' | 'name'>
-  )> }
-);
-
-export type GetMyCampaignsQueryVariables = Exact<{
-  userId: Scalars['String'];
-}>;
-
-
-export type GetMyCampaignsQuery = (
-  { __typename?: 'query_root' }
-  & { users_by_pk?: Maybe<(
-    { __typename?: 'users' }
-    & Pick<Users, 'id'>
-    & { campaigns: Array<(
-      { __typename?: 'user_campaigns' }
-      & { campaign?: Maybe<(
-        { __typename?: 'campaign' }
-        & Pick<Campaign, 'id' | 'name' | 'updated_at' | 'cycleCode' | 'difficulty'>
-      )> }
-    )> }
   )> }
 );
 
@@ -6085,14 +6103,14 @@ export type DeleteInvestigatorDecksMutation = (
   )> }
 );
 
-export type UpdateBinaryAchievementMutationVariables = Exact<{
+export type SetBinaryAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
   achievement_id: Scalars['String'];
   value: Scalars['Boolean'];
 }>;
 
 
-export type UpdateBinaryAchievementMutation = (
+export type SetBinaryAchievementMutation = (
   { __typename?: 'mutation_root' }
   & { insert_guide_achievement_one?: Maybe<(
     { __typename?: 'guide_achievement' }
@@ -6174,6 +6192,48 @@ export type AddGuideInputMutation = (
   & { insert_guide_input_one?: Maybe<(
     { __typename?: 'guide_input' }
     & Pick<Guide_Input, 'id' | 'campaign_id' | 'scenario' | 'step' | 'payload'>
+  )> }
+);
+
+export type MiniCampaignFragment = (
+  { __typename?: 'campaign' }
+  & Pick<Campaign, 'id' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'uuid' | 'nonDeckInvestigators' | 'updated_at'>
+  & { latest_decks: Array<(
+    { __typename?: 'latest_decks' }
+    & { deck?: Maybe<(
+      { __typename?: 'deck' }
+      & Pick<Deck, 'id' | 'investigator'>
+    )> }
+  )>, investigator_data: Array<(
+    { __typename?: 'investigator_data' }
+    & Pick<Investigator_Data, 'id' | 'investigator' | 'mental' | 'physical' | 'insane' | 'killed' | 'storyAssets'>
+  )> }
+);
+
+export type GetMyCampaignsQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetMyCampaignsQuery = (
+  { __typename?: 'query_root' }
+  & { users_by_pk?: Maybe<(
+    { __typename?: 'users' }
+    & Pick<Users, 'id'>
+    & { campaigns: Array<(
+      { __typename?: 'user_campaigns' }
+      & { campaign?: Maybe<(
+        { __typename?: 'campaign' }
+        & { link_a_campaign?: Maybe<(
+          { __typename?: 'campaign' }
+          & MiniCampaignFragment
+        )>, link_b_campaign?: Maybe<(
+          { __typename?: 'campaign' }
+          & MiniCampaignFragment
+        )> }
+        & MiniCampaignFragment
+      )> }
+    )> }
   )> }
 );
 
@@ -6313,6 +6373,30 @@ export type DeleteArkhamDbDeckMutation = (
   )> }
 );
 
+export type GetMyDecksQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetMyDecksQuery = (
+  { __typename?: 'query_root' }
+  & { users_by_pk?: Maybe<(
+    { __typename?: 'users' }
+    & Pick<Users, 'id'>
+    & { decks: Array<(
+      { __typename?: 'latest_decks' }
+      & { deck?: Maybe<(
+        { __typename?: 'deck' }
+        & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
+        & { previous_deck?: Maybe<(
+          { __typename?: 'deck' }
+          & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
+        )> }
+      )> }
+    )> }
+  )> }
+);
+
 export type GetProfileQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
@@ -6345,7 +6429,35 @@ export type GetProfileQuery = (
   )> }
 );
 
-
+export const MiniCampaignFragmentDoc = gql`
+    fragment MiniCampaign on campaign {
+  id
+  name
+  cycleCode
+  standaloneId
+  difficulty
+  scenarioResults
+  guided
+  uuid
+  latest_decks {
+    deck {
+      id
+      investigator
+    }
+  }
+  nonDeckInvestigators
+  investigator_data {
+    id
+    investigator
+    mental
+    physical
+    insane
+    killed
+    storyAssets
+  }
+  updated_at
+}
+    `;
 export const UpdateCampaignNameDocument = gql`
     mutation updateCampaignName($campaignId: Int!, $name: String!) {
   update_campaign_by_pk(pk_columns: {id: $campaignId}, _set: {name: $name}) {
@@ -6380,48 +6492,6 @@ export function useUpdateCampaignNameMutation(baseOptions?: Apollo.MutationHookO
 export type UpdateCampaignNameMutationHookResult = ReturnType<typeof useUpdateCampaignNameMutation>;
 export type UpdateCampaignNameMutationResult = Apollo.MutationResult<UpdateCampaignNameMutation>;
 export type UpdateCampaignNameMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>;
-export const GetMyCampaignsDocument = gql`
-    query getMyCampaigns($userId: String!) {
-  users_by_pk(id: $userId) {
-    id
-    campaigns {
-      campaign {
-        id
-        name
-        updated_at
-        cycleCode
-        difficulty
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useGetMyCampaignsQuery__
- *
- * To run a query within a React component, call `useGetMyCampaignsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetMyCampaignsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetMyCampaignsQuery({
- *   variables: {
- *      userId: // value for 'userId'
- *   },
- * });
- */
-export function useGetMyCampaignsQuery(baseOptions: Apollo.QueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
-        return Apollo.useQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
-      }
-export function useGetMyCampaignsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
-          return Apollo.useLazyQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
-        }
-export type GetMyCampaignsQueryHookResult = ReturnType<typeof useGetMyCampaignsQuery>;
-export type GetMyCampaignsLazyQueryHookResult = ReturnType<typeof useGetMyCampaignsLazyQuery>;
-export type GetMyCampaignsQueryResult = Apollo.QueryResult<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>;
 export const UploadNewCampaignDocument = gql`
     mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $nonDeckInvestigators: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!) {
   insert_guide_input(objects: $inputs) {
@@ -6566,8 +6636,8 @@ export function useDeleteInvestigatorDecksMutation(baseOptions?: Apollo.Mutation
 export type DeleteInvestigatorDecksMutationHookResult = ReturnType<typeof useDeleteInvestigatorDecksMutation>;
 export type DeleteInvestigatorDecksMutationResult = Apollo.MutationResult<DeleteInvestigatorDecksMutation>;
 export type DeleteInvestigatorDecksMutationOptions = Apollo.BaseMutationOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
-export const UpdateBinaryAchievementDocument = gql`
-    mutation updateBinaryAchievement($campaign_id: Int!, $achievement_id: String!, $value: Boolean!) {
+export const SetBinaryAchievementDocument = gql`
+    mutation setBinaryAchievement($campaign_id: Int!, $achievement_id: String!, $value: Boolean!) {
   insert_guide_achievement_one(
     object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "binary", bool_value: $value}
     on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: [bool_value]}
@@ -6580,20 +6650,20 @@ export const UpdateBinaryAchievementDocument = gql`
   }
 }
     `;
-export type UpdateBinaryAchievementMutationFn = Apollo.MutationFunction<UpdateBinaryAchievementMutation, UpdateBinaryAchievementMutationVariables>;
+export type SetBinaryAchievementMutationFn = Apollo.MutationFunction<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>;
 
 /**
- * __useUpdateBinaryAchievementMutation__
+ * __useSetBinaryAchievementMutation__
  *
- * To run a mutation, you first call `useUpdateBinaryAchievementMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateBinaryAchievementMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useSetBinaryAchievementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSetBinaryAchievementMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [updateBinaryAchievementMutation, { data, loading, error }] = useUpdateBinaryAchievementMutation({
+ * const [setBinaryAchievementMutation, { data, loading, error }] = useSetBinaryAchievementMutation({
  *   variables: {
  *      campaign_id: // value for 'campaign_id'
  *      achievement_id: // value for 'achievement_id'
@@ -6601,12 +6671,12 @@ export type UpdateBinaryAchievementMutationFn = Apollo.MutationFunction<UpdateBi
  *   },
  * });
  */
-export function useUpdateBinaryAchievementMutation(baseOptions?: Apollo.MutationHookOptions<UpdateBinaryAchievementMutation, UpdateBinaryAchievementMutationVariables>) {
-        return Apollo.useMutation<UpdateBinaryAchievementMutation, UpdateBinaryAchievementMutationVariables>(UpdateBinaryAchievementDocument, baseOptions);
+export function useSetBinaryAchievementMutation(baseOptions?: Apollo.MutationHookOptions<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>) {
+        return Apollo.useMutation<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>(SetBinaryAchievementDocument, baseOptions);
       }
-export type UpdateBinaryAchievementMutationHookResult = ReturnType<typeof useUpdateBinaryAchievementMutation>;
-export type UpdateBinaryAchievementMutationResult = Apollo.MutationResult<UpdateBinaryAchievementMutation>;
-export type UpdateBinaryAchievementMutationOptions = Apollo.BaseMutationOptions<UpdateBinaryAchievementMutation, UpdateBinaryAchievementMutationVariables>;
+export type SetBinaryAchievementMutationHookResult = ReturnType<typeof useSetBinaryAchievementMutation>;
+export type SetBinaryAchievementMutationResult = Apollo.MutationResult<SetBinaryAchievementMutation>;
+export type SetBinaryAchievementMutationOptions = Apollo.BaseMutationOptions<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>;
 export const IncCountAchievementMaxDocument = gql`
     mutation incCountAchievementMax($campaign_id: Int!, $achievement_id: String!, $max: Int!) {
   insert_guide_achievement_one(
@@ -6806,6 +6876,50 @@ export function useAddGuideInputMutation(baseOptions?: Apollo.MutationHookOption
 export type AddGuideInputMutationHookResult = ReturnType<typeof useAddGuideInputMutation>;
 export type AddGuideInputMutationResult = Apollo.MutationResult<AddGuideInputMutation>;
 export type AddGuideInputMutationOptions = Apollo.BaseMutationOptions<AddGuideInputMutation, AddGuideInputMutationVariables>;
+export const GetMyCampaignsDocument = gql`
+    query getMyCampaigns($userId: String!) {
+  users_by_pk(id: $userId) {
+    id
+    campaigns {
+      campaign {
+        link_a_campaign {
+          ...MiniCampaign
+        }
+        link_b_campaign {
+          ...MiniCampaign
+        }
+        ...MiniCampaign
+      }
+    }
+  }
+}
+    ${MiniCampaignFragmentDoc}`;
+
+/**
+ * __useGetMyCampaignsQuery__
+ *
+ * To run a query within a React component, call `useGetMyCampaignsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMyCampaignsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMyCampaignsQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetMyCampaignsQuery(baseOptions: Apollo.QueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
+        return Apollo.useQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
+      }
+export function useGetMyCampaignsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
+          return Apollo.useLazyQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
+        }
+export type GetMyCampaignsQueryHookResult = ReturnType<typeof useGetMyCampaignsQuery>;
+export type GetMyCampaignsLazyQueryHookResult = ReturnType<typeof useGetMyCampaignsLazyQuery>;
+export type GetMyCampaignsQueryResult = Apollo.QueryResult<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>;
 export const InsertNewDeckDocument = gql`
     mutation insertNewDeck($arkhamdb_id: Int, $local_uuid: String, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $userId: String!) {
   insert_deck_one(
@@ -7102,6 +7216,55 @@ export function useDeleteArkhamDbDeckMutation(baseOptions?: Apollo.MutationHookO
 export type DeleteArkhamDbDeckMutationHookResult = ReturnType<typeof useDeleteArkhamDbDeckMutation>;
 export type DeleteArkhamDbDeckMutationResult = Apollo.MutationResult<DeleteArkhamDbDeckMutation>;
 export type DeleteArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<DeleteArkhamDbDeckMutation, DeleteArkhamDbDeckMutationVariables>;
+export const GetMyDecksDocument = gql`
+    query getMyDecks($userId: String!) {
+  users_by_pk(id: $userId) {
+    id
+    decks {
+      deck {
+        id
+        arkhamdb_id
+        local_uuid
+        investigator
+        content
+        previous_deck {
+          id
+          arkhamdb_id
+          local_uuid
+          investigator
+          content
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetMyDecksQuery__
+ *
+ * To run a query within a React component, call `useGetMyDecksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMyDecksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMyDecksQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetMyDecksQuery(baseOptions: Apollo.QueryHookOptions<GetMyDecksQuery, GetMyDecksQueryVariables>) {
+        return Apollo.useQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, baseOptions);
+      }
+export function useGetMyDecksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyDecksQuery, GetMyDecksQueryVariables>) {
+          return Apollo.useLazyQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, baseOptions);
+        }
+export type GetMyDecksQueryHookResult = ReturnType<typeof useGetMyDecksQuery>;
+export type GetMyDecksLazyQueryHookResult = ReturnType<typeof useGetMyDecksLazyQuery>;
+export type GetMyDecksQueryResult = Apollo.QueryResult<GetMyDecksQuery, GetMyDecksQueryVariables>;
 export const GetProfileDocument = gql`
     query getProfile($userId: String!) {
   users_by_pk(id: $userId) {

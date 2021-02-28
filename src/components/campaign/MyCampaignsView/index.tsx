@@ -9,7 +9,7 @@ import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import { CUSTOM, Campaign, STANDALONE } from '@actions/types';
+import { CUSTOM, STANDALONE } from '@actions/types';
 import CampaignList from './CampaignList';
 import { campaignNames } from '@components/campaign/constants';
 import { searchMatchesText } from '@components/core/searchHelpers';
@@ -24,6 +24,7 @@ import { NavigationProps } from '@components/nav/types';
 import { getStandaloneScenarios } from '@data/scenario';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useCampaigns } from '@data/remote/hooks';
+import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
 
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
@@ -70,15 +71,17 @@ function MyCampaignsView({ componentId }: NavigationProps) {
     }
   }, componentId, [showNewCampaignDialog]);
 
-  const filteredCampaigns: Campaign[] = useMemo(() => {
+  const filteredCampaigns: MiniCampaignT[] = useMemo(() => {
     return flatMap(campaigns, (campaign) => {
-      const parts = [campaign.name];
-      if (campaign.cycleCode === STANDALONE) {
-        if (campaign.standaloneId) {
-          parts.push(standalonesById[campaign.standaloneId.campaignId][campaign.standaloneId.scenarioId]);
+      const parts = [campaign.name()];
+      const cycleCode = campaign.cycleCode();
+      if (cycleCode === STANDALONE) {
+        const standaloneId = campaign.standaloneId();
+        if (standaloneId) {
+          parts.push(standalonesById[standaloneId.campaignId][standaloneId.scenarioId]);
         }
-      } else if (campaign.cycleCode !== CUSTOM) {
-        parts.push(campaignNames()[campaign.cycleCode]);
+      } else if (cycleCode !== CUSTOM) {
+        parts.push(campaignNames()[cycleCode]);
       }
       if (!searchMatchesText(search, parts)) {
         return [];
