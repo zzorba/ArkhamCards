@@ -39284,7 +39284,7 @@
     "spawn_cultists",
     "set_aside_assets",
     "encounter_deck",
-    "$play_scenario"
+    "$play_scenario_standalone"
   ],
   "setup": [
     "xp_cost",
@@ -39771,6 +39771,61 @@
           "card": "86054"
         }
       ]
+    },
+    {
+      "id": "$play_scenario_standalone",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "add_chaos_token",
+            "text": "Adjust chaos bag",
+            "steps": ["add_chaos_token"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_chaos_token",
+      "type": "input",
+      "text": "Which chaos token should be added to the bag?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["cultist"]
+              }
+            ]
+          },
+
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["tablet"]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["elder_thing"]
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [

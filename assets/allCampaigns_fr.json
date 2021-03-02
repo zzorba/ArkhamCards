@@ -30920,7 +30920,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "cleared_path_to_temple",
-          "text": "\"les investigateurs se sont frayé un chemin jusqu'aux ruines de la cité Eztli."
+          "text": "les investigateurs se sont frayé un chemin jusqu'aux ruines de la cité Eztli."
         }
       ]
     },
@@ -42607,7 +42607,7 @@
     "spawn_cultists",
     "set_aside_assets",
     "encounter_deck",
-    "$play_scenario"
+    "$play_scenario_standalone"
   ],
   "setup": [
     "xp_cost",
@@ -43255,6 +43255,68 @@
           "card": "86054"
         }
       ]
+    },
+    {
+      "id": "$play_scenario_standalone",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "add_chaos_token",
+            "text": "Ajuster la réserve du Chaos",
+            "steps": [
+              "add_chaos_token"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_chaos_token",
+      "type": "input",
+      "text": "Which chaos token should be added to the bag?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "[cultist]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "[tablet]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "elder_thing",
+            "text": "[elder_thing]",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "elder_thing"
+                ]
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -71170,7 +71232,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "cleared_path_to_temple",
-          "text": "\"les investigateurs se sont frayé un chemin jusqu'aux ruines de la cité Eztli."
+          "text": "les investigateurs se sont frayé un chemin jusqu'aux ruines de la cité Eztli."
         }
       ]
     },
@@ -71841,7 +71903,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Crimson-tinted fog bathes the sky as you reach the gatehouse of Falcon Point. Atop the cliffs above you, the lighthouse beacon pierces through the mist. Considering the state of Innsmouth, you wonder what purpose the signal serves now. You doubt there are any ships out at sea given the inclement weather.\nSomewhere inside is the evidence you found weeks ago. You suspect that Oceiros—the man who captured you and left you in that pit to die—also resides within. \"Are you ready?\" Agent Harper asks. \"We have no real escape route here, should things go south. Be prepared for anything.\"\nYou nod. It's too late to turn back now. Steadily, you make your way toward the cliffs. One way or another, this ends today."
+      "text": "Un brouillard cramoisi baigne le ciel lorsque vous atteignez le portail de la Pointe du Faucon. Surplombant les falaises devant vous, la lumière du phare perce la brume. Vu l'état d'Innsmouth, vous vous demandez à quoi sert encore ce signal. Vous doutez que le moindre bateau ait pris la mer par ce temps.\nLes preuves que vous aviez rassemblées quelques semaines plus tôt se trouvent ici. Vous suspectez qu'Oceiros — l'homme qui vous a capturé et jeté dans ce gouffre pour en finir avec vous — s'y trouve également. « Tout va bien ? » demande I 'agent Harper. « Nous n'avons pas vraiment de plan de repli. Si les choses tournent mal, soyez prêt à toute éventualité. »\nVous hochez la tête. Il est trop tard pour reculer de toute façon. Vous prenez la direction des falaises. D'une manière ou d'une autre, c'est aujourd'hui que tout s'achève."
     },
     {
       "id": "gather_encounter_sets",
@@ -71858,13 +71920,13 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Falcon Point Gatehouse, Falcon Point Cliffside, Lighthouse Stairwell, and Lighthouse Keeper's Cottage into play on the same row. Put Lantern Room into play directly above Lighthouse Stairwell. <i>(See Location Placement (Act 1))</i>.",
+      "text": "Mettez enjeu les lieux suivants les uns côté des autres Sur une même ligne : Portail de la Pointe du Faucon, Falaise de la Pointe du Faucon, Escalier du Phare et Dépendance du Gardien du Phare. Mettez en jeu la Salle de la Lampe juste au-dessus de l'Escalier du Phare (<i>voir la suggestion de placement des lieux pour l'Acte 1</i>).",
       "bullets": [
         {
-          "text": "Each investigator begins play at Falcon Point Gatehouse."
+          "text": "Chaque investigateur commence la partie sur le Portail de la Pointe du Faucon."
         },
         {
-          "text": "From among the Tidal Tunnel locations, remove the 2 Underground River locations from the game."
+          "text": "Parmi les lieux Tunnel Aquatique, retirez les deux lieux Rivière Souterraine de la partie."
         },
         {
           "text": "Mettez chaque autre lieu de côté, hors jeu."
@@ -71874,10 +71936,10 @@
     {
       "id": "location_layout",
       "type": "location_setup",
-      "text": "Location Placement (Act 1)",
+      "text": "Placement des Lieux pour l'acte 1",
       "horizontal": "normal",
       "vertical": "normal",
-      "note": "Note: The order of the locations in this row does not matter, so long as Lantern Room is directly above Lighthouse Stairwell.",
+      "note": "Note : l'ordre des lieux dans cette ligne n'a aucune importance tant que la Salle de la Lampe est située directement au-dessus de l'Escalier du Phare.",
       "locations": [
         [
           "blank",
@@ -71895,33 +71957,33 @@
       "location_names": [
         {
           "code": "lantern_room",
-          "name": "Lantern Room"
+          "name": "Salle de la Lampe"
         },
         {
           "code": "gatehouse",
-          "name": "Falcon Point Gatehouse"
+          "name": "Portail de la Pointe du Faucon"
         },
         {
           "code": "cliff",
-          "name": "Falcon Point Cliffside"
+          "name": "Falaise de la Pointe du Faucon"
         },
         {
           "code": "lighthouse_stairwell",
-          "name": "Lighthouse Stairwell"
+          "name": "Escalier du Phare"
         },
         {
           "code": "keepers_cottage",
-          "name": "Lighthouse Keeper's Cottage"
+          "name": "Dépendance du Gardien du Phare"
         }
       ]
     },
     {
       "id": "location_layout_act_3",
       "type": "location_setup",
-      "text": "Location Placement (Act 3 / Agenda 3)",
+      "text": "Placement des Lieux pour l'Acte 3 / l'Intrigue 3",
       "horizontal": "normal",
       "vertical": "normal",
-      "note": "Note: The order of the locations on each row does not matter, so long as Lantern Room, Lighthouse Stairwell, and each Sunken Grotto are on the same column, as depicted.",
+      "note": "Note : l'ordre des lieux dans chaque ligne n'a aucune importance tant que la Salle de la Lampe, l'Escalier du Phare et chaque lieu Grotte Engloutie sont sur la même colonne comme indiqué.",
       "locations": [
         [
           "blank",
@@ -71957,35 +72019,35 @@
       "location_names": [
         {
           "code": "lantern_room",
-          "name": "Lantern Room"
+          "name": "Salle de la Lampe"
         },
         {
           "code": "gatehouse",
-          "name": "Falcon Point Gatehouse"
+          "name": "Portail de la Pointe du Faucon"
         },
         {
           "code": "cliff",
-          "name": "Falcon Point Cliffside"
+          "name": "Falaise de la Pointe du Faucon"
         },
         {
           "code": "lighthouse_stairwell",
-          "name": "Lighthouse Stairwell"
+          "name": "Escalier du Phare"
         },
         {
           "code": "keepers_cottage",
-          "name": "Lighthouse Keeper's Cottage"
+          "name": "Dépendance du Gardien du Phare"
         },
         {
           "code": "sunken_grotto_upper_depths",
-          "name": "Sunken Grotto (Upper Depths)"
+          "name": "Grotte Engloutie (Étages Supérieurs)"
         },
         {
           "code": "sunken_grotto_lower_depths",
-          "name": "Sunken Grotto (Lower Depths)"
+          "name": "Grotte Engloutie (Étages Intermédiaires)"
         },
         {
           "code": "sunken_grotto_final_depths",
-          "name": "Sunken Grotto (Final Depths)"
+          "name": "Grotte Engloutie (Étages Inférieurs)"
         }
       ]
     },
@@ -71994,20 +72056,20 @@
       "text": "Préparez les clés de la manière suivante :",
       "bullets": [
         {
-          "text": "Set the white, black, blue, yellow and red keys aside, faceup."
+          "text": "Mettez de côté face visible la clé blanche, la clé noire, la clé bleue, la clé jaune et la clé rouge."
         },
         {
-          "text": "Set the purple and green keys aside, facedown. Shuffle them so you do not know which is which."
+          "text": "Mettez de côté face cachée la clé verte et la clé violette. Mélangez-les de manière à ne pas pouvoir les distinguer."
         }
       ]
     },
     {
       "id": "setup_captured",
-      "text": "Put the double-sided “Captured!” story card into play next to the scenario reference card, with its story side faceup. (This card is on the reverse side of the Holding Cell location.) Its text is active."
+      "text": "Mettez en jeu la carte Histoire « Capturé ! » à côté de la carte de référence du scénario, face Histoire visible. (Cette carte se trouve au verso du lieu Cellules de Rétention.) Son texte est actif."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: the Oceiros Marsh enemy, both copies of the Worth His Salt treachery, and both copies of the Taken Captive treachery."
+      "text": "Mettez de côté les cartes suivantes, hors jeu : l'ennemi Oceiros Marsh, les deux exemplaires de la traîtrise Marin Endurci et les deux exemplaires de la traîtrise Fait Prisonnier."
     },
     {
       "id": "keys_rule",
@@ -72016,12 +72078,12 @@
     },
     {
       "id": "check_for_story_assets",
-      "text": "Check Campaign Log:"
+      "text": "Vérifiez le Carnet de Campagne :"
     },
     {
       "id": "check_idol",
       "bullet_type": "small",
-      "text": "If <i>the idol was brought to the lighthouse</i>:",
+      "text": "Si <i>l'idole a été emportée au phare</i> :",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -72040,12 +72102,12 @@
     {
       "id": "set_aside_idol",
       "bullet_type": "small",
-      "text": "Search the collection for the Waveworn Idol and set it aside, out of play."
+      "text": "Cherchez l'Idole Érodée dans la collection et mettez-la de côté, hors jeu."
     },
     {
       "id": "check_mantle",
       "bullet_type": "small",
-      "text": "If <i>the mantle was brought to the lighthouse</i>:",
+      "text": "Si <i>la cape a été emportée au phare</i> :",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -72064,12 +72126,12 @@
     {
       "id": "set_aside_mantle",
       "bullet_type": "small",
-      "text": "Search the collection for the Awakened Mantle and set it aside, out of play."
+      "text": "Cherchez la Cape de l'Éveillé dans la collection et mettez-la de côté, hors jeu."
     },
     {
       "id": "check_headdress",
       "bullet_type": "small",
-      "text": "If <i>the headdress was brought to the lighthouse</i>:",
+      "text": "Si <i>la tiare a été emportée au phare</i> :",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -72088,16 +72150,16 @@
     {
       "id": "set_aside_headdress",
       "bullet_type": "small",
-      "text": "Search the collection for the Headdress of Y'ha-nthlei and set it aside, out of play."
+      "text": "Cherchez la Tiare de Y'ha-nthlei dans la collection et mettez-la de côté, hors jeu."
     },
     {
       "id": "check_for_doom",
-      "text": "Check Campaign Log:"
+      "text": "Vérifiez le Carnet de Campagne :"
     },
     {
       "id": "check_reached_falcon_point_after_sunrise",
       "bullet_type": "small",
-      "text": "If <i>the investigators reached Falcon Point after sunrise</i>:",
+      "text": "Si <i>les investigateurs ont atteint la Pointe du Faucon après le lever du soleil<i> :",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -72116,12 +72178,12 @@
     {
       "id": "add_falcon_point_doom",
       "bullet_type": "small",
-      "text": "Place 1 doom on Agenda 1."
+      "text": "Placez 1 fatalité sur I 'Intrigue 1."
     },
     {
       "id": "check_tide_has_grown_stronger",
       "bullet_type": "small",
-      "text": "If <i>the tide has grown stronger</i>:",
+      "text": "Si <i>la marée s'est renforcée</i> :",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -72140,7 +72202,7 @@
     {
       "id": "add_tide_doom",
       "bullet_type": "small",
-      "text": "Place 1 doom on Agenda 1."
+      "text": "Placez 1 fatalité sur I 'Intrigue 1."
     },
     {
       "id": "add_flood_tokens",
@@ -72283,37 +72345,37 @@
     },
     {
       "id": "red_key",
-      "text": "Red: A gilded key made of coral and covered in strange, glowing runes. The word \"Y'ha-nthlei\" is inscribed upon the handle."
+      "text": "Rouge : une clé dorée faite de corail et recouverte d'étranges runes brillantes. Le mot « Y'ha-nthlei » est inscrit sur son anneau."
     },
     {
       "id": "blue_key",
-      "text": "Blue: A key carved with a symbol of an engorged fish eye."
+      "text": "Bleu : une clé gravée d'un symbole représentant un œil de poisson exorbité."
     },
     {
       "id": "green_key",
-      "text": "Green: A fist-sized cluster of raw peridot that pulses and glows with unnatural light."
+      "text": "Vert : une poignée de péridot brut de la taille d'un poing qui vibre et brille mystérieusement."
     },
     {
       "id": "yellow_key",
-      "text": "Yellow: A heavy iron ring crowded with prison cell keys."
+      "text": "Jaune : un lourd anneau de métal portant les clés des cellules de la prison."
     },
     {
       "id": "purple_key",
-      "text": "Purple: The deceased larva of a malformed fish."
+      "text": "Violet : le cadavre de la larve d'un poisson difforme."
     },
     {
       "id": "black_key",
-      "text": "Black: A map of the depths beneath Devil Reef."
+      "text": "Noir : une carte des profondeurs situées sous le Récif du Diable."
     },
     {
       "id": "white_key",
-      "text": "White: A pocket telescope."
+      "text": "Blanc : une longue-vue."
     },
     {
       "id": "flashback_12_story",
       "title": "Flashback XII",
       "type": "story",
-      "text": "You peer up at Falcon Point lighthouse, but from much further below. You are aboard Mr. Moore's fishing vessel, during your voyage to Devil Reef several weeks earlier. The ship sways back and forth as angry waves thrash against its hull. \"'Fraid it's gon' be a bit rocky,\" the ship captain shouts over the crashing of the tumultuous sea. \"Weather's been awful wild of late. Strange tides an' stranger winds.\"\nBut still you stare up at the ominous lighthouse, its beacon a guiding light, a warning sign, or both. Curious what knowledge he might have, you ask Mr. Moore about the lighthouse. \"That ol' thing? Been there longer'n Innsmouth itself. Marsh family's kept it runnin' as long as I remember. Oceiros is keeper now. Strange fella, that Oceiros. They say the only place in town he visits is the Order o' Dagon hall by New Church Green.\" He shakes his head.\nYou wonder if there are more secrets inside the lighthouse than meets the eye. Mr. Moore seems to note your curiosity. \"I've heard them Marshes've carved out caverns beneath the lighthouse goin' all the way down to sea level an' beyond,\" he claims. \"Dunno if that's true, but sometimes when I'm out at sea I've seen groups of 'em up by the cliffside, all wavin' an kneelin' like they're prayin' or something. Never really paid it much mind, but...\" his voice grows quieter. \"Jus' thought you oughta know.\"\nYou nod and thank him. If what he's saying is true, perhaps you should give this lighthouse a visit. You make a mental note to research more about Falcon Point once you return to town.\nWhen your mind snaps back to the present, you recall the legwork you'd done after your expedition to Devil Reef, and the information you found on the vast network of tunnels beneath the lighthouse..."
+      "text": "Vous apercevez le phare de la Pointe du Faucon, mais de bien plus loin. Vous êtes à bord du bateau de pêche de M. Moore lors de votre trajet vers le Récif du Diable, il y a de cela quelques semaines. Le bateau tangue face à la violence des vagues. J’ai peur qu'ça d'vienne un peu houleux lance le capitaine à travers le tumulte de la mer. « Le temps s'comporte bizarrement ces temps-ci. Drôles de marées et drôles de vents.\nVous restez malgré tout perdu dans la contemplation du sinistre phare dont la lumière évoque aussi bien un guide qu'un avertissement. Par' curiosité, vous demandez à M. Moore ce qu'il sait à propos du phare. « C'vieux machin ? L'est là d'puis plus longtemps qu'Innsmouth elle-même. La famille Marsh S'en occupe d 'puis aussi longtemps que j 'm’en souviens. C'est Oceiros le gardien maintenant. Drôle de type. Les seules fois qu'il descend en Ville, c'est pour aller à l'Ordre de Dagon, dans le square de New Church. » explique-t-il en secouant la tête.\nVous vous demandez si ce phare ne cache pas plus de secrets que cela et M. Moore semble remarquer votre curiosité, « J'ai entendu dire qu'les Marsh avaient creusé tout un tus de galeries sous le phare, qui descendent bien en d'sous du niveau d'Ia mer prétend-il. « J 'sais pas si c'est vrai, mais des fois quand j 'suis en mer, j'les vois groupés sur la falaise en train d's'agenouiller ou d'prier ou je-sais-pas-quoi. J'y ai jamais trop prêté attention, mais... » sa voix se fait plus basse. « Je me suis dit qu'vous voudriez le savoir. »\nVous hochez la tête et le remerciez. Si ce qu'il vu est vrai, peut-être devrez-vous rendre une petite visite à ce phare. Vous notez dans un coin de votre tête de faire quelques recherches à propos de la Pointe du Faucon quand vous serez rentré en ville.\nDe retour dans le présent, vous vous souvenez des recherches que vous avez faites après être revenu du Récif du Diable et des informations que vous avez récoltées sur le vaste réseau de tunnels sous le phare."
     },
     {
       "id": "flashback_12_effects",
@@ -72322,13 +72384,13 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "conversation_with_mr_moore",
-          "text": "a conversation with Mr. Moore"
+          "text": "une conversation avec M. Moore"
         }
       ]
     },
     {
       "id": "flashback_12_tokens",
-      "text": "Choose and remove one of the following chaos tokens from the chaos bag for the remainder of the campaign ([cultist], [tablet], or [elder_thing])",
+      "text": "Choisissez et retirez l'un des pions Chaos suivants de la réserve du Chaos pour le reste de la campagne : [cultist], [tablet], ou [elder_thing]",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -72431,13 +72493,13 @@
     },
     {
       "id": "flashback_12_clues",
-      "text": "The lead investigator gains 1 [per_investigator] clues from the token pool."
+      "text": "L'investigateur principal gagne 1 [per_investigator] indice pris dans la réserve de pions."
     },
     {
       "id": "flashback_13_story",
       "title": "Flashback XIII",
       "type": "story",
-      "text": "You speak with one of the many sailors who frequent a ramshackle tavern by the docks of Innsmouth, somewhere in the southeastern slums of the decrepit seaport. He's found his own little corner of the pub in which to hide and drown himself in alcohol. So much the better—you'd prefer to keep your investigation quiet.\nYou jot down notes as the drunken man rambles on about the creatures he's seen swimming off the coast and prowling around the reefs. \"Deep Ones,\" he names them. \"Caught one in my net once,\" he blabbers through slurred speach. \"She an' her eggs—tha's right!—'er eggs, bigger'n your fist, an' squirmin' an' wrigglin', too!\"\nAbsorbed in the ritual of telling a tale for his fellow sailors, he elaborates: \"She had one of 'em in her arms. Tiny little devil, with bulgin', hateful eyes. Couldn't stand the sight of it. I threw the net o'er as soon as I realized what I'd caught, an' came right back 'ere. If I had my way I'd never sail 'gain.\"\nYou mull this new information over in your head. If this man speaks the truth, these creatures seem to have a lifecycle similar to that of a fish. But then, what is the purpose of the uncanny hybrid creatures you have seen skulking about the town? Are they but figments of your frightened imagination? Or is there a much more sinister part of this lifecycle that you are missing?"
+      "text": "Vous êtes en pleine discussion avec un des nombreux marins qui fréquentent cette taverne délabrée près des quais d'Innsmouth, quelque part dans les taudis au sud-est du vieux port. II se trouve dans un coin sombre et isolé du bar où il se noie copieusement dans l'alcool, C 'est tant mieux pour vous, vous préférez garder vos investigations secrètes.\nVous prenez des notes tandis que l’homme ivre déblatère à propos des créatures qu'il a vues nager le long de la côte et fureter près des récifs. Il les appelle « Profonds » « J'en ai pris une dans mes filets une fois » bafouille-t-il. « Elle et ses œufs, j 'vous jure ! Des œufs plus gros qu'vot' poing et qui n'arrêtaient pas d'se tortiller ! »\nAbsorbé par ce récit qu'il a l'habitude de raconter à ses compères marins, il développe : « Elle en avait un dans les bras. Un démon miniature avec des petits yeux méchants et exorbités. J'ai pas pu supporter la vue, j'ai rejeté le filet dès qu'j'ai vu ce que j'avais attrapé et j'suis rentré ici sans d'mander mon reste. Si ça tenait qu'à moi j'remonterai plus jamais sur un bateau. »\nVous digérez ces nouvelles informations. Si l'homme dit vrai, ces créatures semblent avoir un cycle de vie semblable à celui des poissons. Mais alors quelle est la signification de ces étranges créatures hybrides que vous avez vues en ville Ne sont-elles que le fruit de votre imagination ? Ou existe-t-il un aspect plus terrible concernant le cycle de vie de ces créatures ?"
     },
     {
       "id": "flashback_13_effects",
@@ -72446,13 +72508,13 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "lifecycle_of_a_deep_one",
-          "text": "the lifecycle of a \"Deep One\""
+          "text": "le cycle de vie d'un « Profond »"
         }
       ]
     },
     {
       "id": "flashback_13_tokens",
-      "text": "Choose and remove one of the following chaos tokens from the chaos bag for the remainder of the campaign ([cultist], [tablet], or [elder_thing])",
+      "text": "Choisissez et retirez l'un des pions Chaos suivants de la réserve du Chaos pour le reste de la campagne : [cultist], [tablet], ou [elder_thing]",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -72556,34 +72618,34 @@
     {
       "id": "ask_final_agenda",
       "type": "input",
-      "text": "What agenda was active when the scenario ended?",
+      "text": "Quelle Intrigue était active à la fin duscénario ?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "agenda_1",
-            "text": "Agenda 1",
+            "text": "Intrigue 1",
             "steps": [
               "resolution_4"
             ]
           },
           {
             "id": "agenda_2",
-            "text": "Agenda 2",
+            "text": "Intrigue 2",
             "steps": [
               "resolution_4"
             ]
           },
           {
             "id": "agenda_3",
-            "text": "Agenda 3",
+            "text": "Intrigue 3",
             "steps": [
               "resolution_4"
             ]
           },
           {
             "id": "agenda_4",
-            "text": "Agenda 4",
+            "text": "Intrigue 4",
             "steps": [
               "resolution_3"
             ]
@@ -72646,7 +72708,7 @@
     },
     {
       "id": "ask_moon_room_resigned",
-      "text": "Which location did each investigator resign at?",
+      "text": "Dans quel lieu chaque Investigateur a-t-il abandonné ?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -72655,21 +72717,21 @@
         "choices": [
           {
             "id": "moon_room",
-            "text": "Moon Room",
+            "text": "La Chambre de la Lune",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "possesses_a_diving_suite",
                 "cards": "$input_value",
-                "masculine_text": "#name# possesses a diving suit.",
-                "feminine_text": "#name# possesses a diving suit."
+                "masculine_text": "#name# possède un scaphandre.",
+                "feminine_text": "#name# possède un scaphandre."
               }
             ]
           },
           {
             "id": "falcon_point",
-            "text": "Falcon Point"
+            "text": "Pointe du Faucon"
           }
         ]
       }
@@ -72682,13 +72744,13 @@
         "choices": [
           {
             "id": "red",
-            "text": "Was the black key on the current act when the game ended?",
+            "text": "La clé noire était-elle sur l'acte en cours quand la partie s'est terminée ?",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "possess_a_map_of_yhanthlei",
-                "text": "the investigators possess a map of Y'ha-nthlei."
+                "text": "les investigateurs possèdent une carte de Y' ha-nthlei."
               }
             ]
           }
@@ -72703,13 +72765,13 @@
         "choices": [
           {
             "id": "red",
-            "text": "Was the red key on the current act when the game ended?",
+            "text": "La clé rouge était-elle sur l'acte en cours quand la partie s'est terminée ?",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "possess_the_key_to_yhanthlei",
-                "text": "the investigators possess the key to Y'ha-nthlei."
+                "text": "que les investigateurs possèdent la clé de Y'hâ-hthlei."
               }
             ]
           }
@@ -72718,7 +72780,7 @@
     },
     {
       "id": "ask_story_relics",
-      "text": "For each set-aside [[Relic]] story asset that was added to an investigator's hand during this scenario, any investigator may choose to add that story asset to their deck. It does not count toward that investigator's deck size."
+      "text": "Pour chaque soutien d'histoire [[Relique]] ajouté à la main d'un investigateur lors de ce scénario, n'importe quel investigateur peut choisir d'ajouter ce soutien d 'histoire à son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur."
     },
     {
       "id": "maybe_ask_idol",
@@ -72746,7 +72808,7 @@
         "choices": [
           {
             "id": "earn_idol",
-            "text": "Was Waveworn Idol added to an investigator's hand during this scenario?",
+            "text": "L'Idole Érodée a-t-elle été ajoutée à la main d'un investigateur lord de ce scénario ?",
             "effects": [
               {
                 "type": "add_card",
@@ -72784,7 +72846,7 @@
         "choices": [
           {
             "id": "earn_idol",
-            "text": "Was Awakened Mantle added to an investigator's hand during this scenario?",
+            "text": "La Cape de l'Éveillé a-t-elle été ajoutée à la main d'un investigateur lord de ce scénario ?",
             "effects": [
               {
                 "type": "add_card",
@@ -72822,7 +72884,7 @@
         "choices": [
           {
             "id": "earn_idol",
-            "text": "Was Headdress of Y'ha-nthlei added to an investigator's hand during this scenario?",
+            "text": "La Tiare de Y'ha-nthlei a-t-elle été ajoutée à la main d'un investigateur lord de ce scénario ?",
             "effects": [
               {
                 "type": "add_card",
@@ -72857,7 +72919,7 @@
         "mental"
       ],
       "title": "Conclusion 1",
-      "text": "Exhausted, you throw yourself onto the rocky shore. Waves lap at your ankles as you stare up into the sky. Behind the clouds, deep crimson hues spell an ominous end for all of humankind. Your skull pounds with agony as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe over the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes your senses once more.",
+      "text": "À bout de force, Vous vous laissez tomber sur la berge rocailleuse. Les vagues lèchent vos chevilles tandis que vous fixez le ciel. Derrière les nuages, les nuées cramoisies présagent d 'une fin atroce pour toute l’humanité. Vous essayez de vous souvenir pourquoi, mais un mal de crâne atroce vous assaille, La lune et le soleil sont sur le point d'être alignés, Le tonnerre résonne au loin. De sombres nuages virevoltent au-dessus de cet horrible océan. Que signifie tout cela ? Quelle vérité se cache derrière I 'Ordre Ésotérique de Dagon ? Quels secrets sont dissimulés dans [e Récif du Diable ? Vous perdez de nouveau conscience.",
       "steps": [
         "ask_moon_room_resigned",
         "ask_black_key_on_act",
@@ -72879,7 +72941,7 @@
         "mental"
       ],
       "title": "Conclusion 2",
-      "text": "Exhaustion and despair eat at your muscles as you escape into the dark woods surrounding Falcon Point. You know it is too dangerous to stop moving, but you can hardly stand. You brace yourself against a nearby tree and stare up into the sky. Behind the clouds, deep crimson hues spell an ominous end for all of humankind. Your skull pounds as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe above the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes your senses once more.",
+      "text": "Vous êtes à bout de force et vos muscles sont fourbus quand vous parvenez enfin à fuir dans les bois qui entourent la Pointe du Faucon. Vous savez qu’il est dangereux de s’arrêter, mais vous êtes incapable de poursuivre. Vous vous appuyez contre le premier arbre venu et levez les yeux. Derrière les nuages, les nuées cramoisies présagent d'une fin atroce pour toute l'humanité. Vous essayez de vous souvenir pourquoi, mais un mal de crâne atroce vous assaille. La lune et le soleil sont sur le point d ' être alignés. Le tonnerre résonne au loin. De Sombres nuages virevoltent au-dessus de cet horrible océan. Que signifie tout cela ? Quelle vérité se cache derrière l'Ordre Ésotérique de Dagon ? Quels secrets sont dissimulés dans le Récif du Diable ? Vous perdez de nouveau conscience.",
       "steps": [
         "ask_black_key_on_act",
         "ask_red_key_on_act",
@@ -72900,7 +72962,7 @@
         "mental"
       ],
       "title": "Conclusion 3",
-      "text": "You panic as the water level rises all the way to the ceiling of the cavern. There is no air left to breathe. You feel the currents pulling you deeper and deeper below the surface, where the bulging, glowing eyes of Deep Ones lie in wait. Desperately, you swim up to the cellar door of the lighthouse. Your only hope is to force it open and crawl up into the buildings above, where sweet oxygen awaits. You shove and push with all of your might, hoping, imagining, praying that any moment now your strength will spring the hatch open. Your lungs are about to burst. No! This cannot be the end! You struggle and fight for survival, but the lock does not budge. Hungry for air, your lungs give. Your throat fills with cold saltwater. The sensation of your ankles being gripped by webbed hands is the last thing you feel.",
+      "text": "Le niveau de l’eau monte jusqu’ au plafond de la Caverne et la panique vous envahit. Impossible de respirer. Les courants vous entraînent loin sous la surface où les yeux globuleux et brillants des profonds vous guettent. Vous nagez désespérément vers la porte de la cave du phare. Votre seul espoir est de parvenir à la forcer et de nager jusqu'au bâtiment au-dessus où vous pourrez enfin respirer. Vous tirez et poussez de toutes vos forces, espérant l'inimaginable, priant que votre force suffise à ouvrir la porte, Vos poumons sont sur le point d'éclater. Non ! Ce ne peut pas être la fin ! Vous luttez pour survivre, mais la porte ne bouge pas d’un pouce. La dernière chose que vous sentez avant de trépasser est une main palmée attrapant votre cheville.",
       "steps": [
         "all_killed",
         "lose_campaign"
@@ -72916,7 +72978,7 @@
         "mental"
       ],
       "title": "Conclusion 4",
-      "text": "Coming here was a terrible mistake. Falcon Point is no simple lighthouse, but a headquarter for the Order of Dagon, even more hostile and deadly than the town of Innsmouth you left behind. With danger at every turn and the hateful lighthouse keeper hot on your tail, you leave the secrets of the lighthouse behind and flee into the dark woods.\nBy the time you are too deep into the treeline to see the lighthouse beacon, you are utterly exhausted. You know it is too dangerous to stop moving, but you can hardly stand. You brace yourself against a nearby treeand stare up into the sky. Behind the clouds, deep crimson hues spell an ominous end for all of humankind. Your skull pounds as you struggle to remember why. The moon and sun slide into alignment. A thunderous crash resounds in the distance. Dark, churning clouds swirl and seethe above the hateful ocean. What does it all mean? What is the truth behind the Esoteric Order of Dagon? The truth hidden in Devil Reef? Darkness overtakes you once more.",
+      "text": "Venir Ici était une très mauvaise idée. La Pointe du Faucon n'est pas un simple phare, c'est le quartier général de l'Ordre Ésotérique de Dagon, un endroit plus dangereux et mortel que la ville d'Innsmouth que vous avez laissée derrière vous. Le danger rôde à chaque coin et cet immonde gardien de vous traque. Vous décidez de laisser les secrets du phare là où ils sont et vous fuyez à travers les bois.\nVous vous aventurez assez loin pour ne plus voir la lumière du phare malgré votre intense fatigue. Vous savez qu'il est dangereux de s'arrêter, mais vous êtes incapable de poursuivre. Vous vous appuyez contre le premier arbre venu et levez les yeux. Derrière les nuages, les nuées cramoisies présagent d'une fin atroce pour toute l'humanité. Vous essayez de vous Souvenir pourquoi, mais un mal de crâne atroce vous assaille. La lune et -le soleil sont sur le point d'être alignés. Le tonnerre résonne au loin. De sombres nuages virevoltent au-dessus de cet horrible océan. Que signifie tout cela ? Quelle vérité se cache derrière l'Ordre Ésotérique de Dagon ? Quels secrets sont dissimulés dans le Récif du Diable ? Vous perdez de nouveau conscience.",
       "steps": [
         "ask_black_key_on_act",
         "ask_red_key_on_act",
