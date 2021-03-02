@@ -1,29 +1,80 @@
 import { useContext, useMemo, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { flatMap, filter, map, sortBy } from 'lodash';
+import { flatMap, concat, omit, sortBy } from 'lodash';
 
 import { AppState, getCampaigns, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { CampaignGuideState, CampaignId, SingleCampaign } from '@actions/types';
-import { useGetProfileLazyQuery } from '@generated/graphql/apollo-schema';
+import { useGetMyCampaignsLazyQuery, MiniCampaignFragment, useCampaignSubscription, useGetProfileQuery } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
-import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import { MiniLinkedCampaignRemote, MiniCampaignRemote } from './types';
 
+function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
+  const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
+  const [loadMyCampaigns, { data, loading: dataLoading, refetch }] = useGetMyCampaignsLazyQuery({
+    variables: { userId: user?.uid || '' },
+    fetchPolicy: 'cache-and-network',
+  });
+  useEffect(() => {
+    if (user) {
+      loadMyCampaigns();
+    }
+  }, [user, loadMyCampaigns]);
+
+  const refresh = useCallback(() => {
+    refetch?.({ userId: user?.uid || '' });
+  }, [refetch, user]);
+  const rawCampaigns = data?.users_by_pk?.campaigns;
+  console.log(JSON.stringify(rawCampaigns));
+  const campaigns = useMemo(() => {
+    if (!rawCampaigns) {
+      return [];
+    }
+    return flatMap(rawCampaigns, ({ campaign }) => {
+      if (!campaign) {
+        return [];
+      }
+      if (campaign.link_a_campaign && campaign.link_b_campaign) {
+        return new MiniLinkedCampaignRemote(
+          omit(campaign, ['link_a_campaign', 'link_b_campaign']) as MiniCampaignFragment,
+          campaign.link_a_campaign,
+          campaign.link_b_campaign
+        );
+      }
+      return new MiniCampaignRemote(campaign);
+    });
+  }, [rawCampaigns]);
+  return [campaigns, userLoading || dataLoading, refresh];
+}
 
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);
-  // const [serverCampaigns, loading, refresh] = useMyCampaigns();
+  const [serverCampaigns, loading, refresh] = useRemoteCampaigns();
 
   const allCampaigns = useMemo(() => {
     return sortBy(
-      // concat(
-      campaigns,
-      //  serverCampaigns
-      // ),
+      concat(
+        campaigns,
+        serverCampaigns
+      ),
       c => -c.updatedAt().getTime());
-  }, [campaigns]);
-  return [allCampaigns, false, undefined];
+  }, [campaigns, serverCampaigns]);
+  return [allCampaigns, loading, refresh];
 }
+
+export function useLiveCampaign(campaignId?: CampaignId): SingleCampaign | undefined {
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const getCampaign = useMemo(makeCampaignSelector, []);
+  const reduxCampaign = useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId.campaignId) : undefined);
+  const { loading, data, error } = useCampaignSubscription({
+    variables: { campaign_id: campaignId?.serverId || 0 },
+    skip: (!user || !campaignId?.serverId),
+  });
+  console.log(JSON.stringify(data));
+  return reduxCampaign;
+}
+
 
 export function useCampaign(campaignId?: CampaignId): SingleCampaign | undefined {
   const getCampaign = useMemo(makeCampaignSelector, []);
@@ -53,15 +104,11 @@ export interface UserProfile {
 
 export function useProfile(userId: string | undefined, useCached?: boolean): [UserProfile | undefined, boolean, () => void] {
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
-  const [loadProfile, { data, loading: dataLoading, refetch }] = useGetProfileLazyQuery({
+  const { data, loading: dataLoading, refetch } = useGetProfileQuery({
     variables: { userId: userId || '' },
+    skip: !user || !userId,
     fetchPolicy: useCached ? 'cache-only' : 'cache-and-network',
   });
-  useEffect(() => {
-    if (user && userId) {
-      loadProfile();
-    }
-  }, [user, userId, loadProfile]);
 
   const profile = useMemo(() => {
     if (!data?.users_by_pk) {

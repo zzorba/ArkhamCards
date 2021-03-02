@@ -41,7 +41,7 @@ import {
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag } from '@app_constants';
-import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { MiniCampaignRedux, MiniLinkedCampaignRedux } from '@data/local/types';
 
 const packsPersistConfig = {
@@ -157,7 +157,10 @@ export const getCampaigns = createSelector(
   (allCampaigns, allGuides, allDecks): MiniCampaignT[] => map(
     filter(
       values(allCampaigns),
-      campaign => (!campaign.linkedCampaignUuid && !campaign.serverId)
+      campaign => {
+        console.log(campaign.serverId);
+        return (!campaign.linkedCampaignUuid && !campaign.serverId);
+      }
     ),
     (campaign: Campaign) => {
       if (campaign.linkUuid) {

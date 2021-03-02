@@ -25,6 +25,7 @@ export default function DeleteCampaignButton({ componentId, campaignId, campaign
   const actuallyDeleteCampaign = useCallback(() => {
     dispatch(deleteCampaign(user, campaignId));
     if (campaignId.serverId && user) {
+      console.log('Deleting server campaign');
       deleteServerCampaign(campaignId);
     }
     Navigation.pop(componentId);

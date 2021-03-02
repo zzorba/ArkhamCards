@@ -350,6 +350,7 @@ export type Campaign = {
   guide_inputs: Array<Guide_Input>;
   /** An aggregated array relationship */
   guide_inputs_aggregate: Guide_Input_Aggregate;
+  guide_version?: Maybe<Scalars['Int']>;
   guided?: Maybe<Scalars['Boolean']>;
   id: Scalars['Int'];
   /** An array relationship */
@@ -891,6 +892,7 @@ export type Campaign_Arr_Rel_Insert_Input = {
 /** aggregate avg on columns */
 export type Campaign_Avg_Fields = {
   __typename?: 'campaign_avg_fields';
+  guide_version?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
@@ -898,6 +900,7 @@ export type Campaign_Avg_Fields = {
 
 /** order by avg() on columns of table "campaign" */
 export type Campaign_Avg_Order_By = {
+  guide_version?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
@@ -918,6 +921,7 @@ export type Campaign_Bool_Exp = {
   difficulty?: Maybe<String_Comparison_Exp>;
   guide_achivements?: Maybe<Guide_Achievement_Bool_Exp>;
   guide_inputs?: Maybe<Guide_Input_Bool_Exp>;
+  guide_version?: Maybe<Int_Comparison_Exp>;
   guided?: Maybe<Boolean_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   investigator_data?: Maybe<Investigator_Data_Bool_Exp>;
@@ -975,6 +979,7 @@ export type Campaign_Delete_Key_Input = {
 
 /** input type for incrementing integer column in table "campaign" */
 export type Campaign_Inc_Input = {
+  guide_version?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
@@ -992,6 +997,7 @@ export type Campaign_Insert_Input = {
   difficulty?: Maybe<Scalars['String']>;
   guide_achivements?: Maybe<Guide_Achievement_Arr_Rel_Insert_Input>;
   guide_inputs?: Maybe<Guide_Input_Arr_Rel_Insert_Input>;
+  guide_version?: Maybe<Scalars['Int']>;
   guided?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['Int']>;
   investigator_data?: Maybe<Investigator_Data_Arr_Rel_Insert_Input>;
@@ -1017,6 +1023,7 @@ export type Campaign_Max_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   cycleCode?: Maybe<Scalars['String']>;
   difficulty?: Maybe<Scalars['String']>;
+  guide_version?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
@@ -1031,6 +1038,7 @@ export type Campaign_Max_Order_By = {
   created_at?: Maybe<Order_By>;
   cycleCode?: Maybe<Order_By>;
   difficulty?: Maybe<Order_By>;
+  guide_version?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
@@ -1046,6 +1054,7 @@ export type Campaign_Min_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   cycleCode?: Maybe<Scalars['String']>;
   difficulty?: Maybe<Scalars['String']>;
+  guide_version?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
@@ -1060,6 +1069,7 @@ export type Campaign_Min_Order_By = {
   created_at?: Maybe<Order_By>;
   cycleCode?: Maybe<Order_By>;
   difficulty?: Maybe<Order_By>;
+  guide_version?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
@@ -1103,6 +1113,7 @@ export type Campaign_Order_By = {
   difficulty?: Maybe<Order_By>;
   guide_achivements_aggregate?: Maybe<Guide_Achievement_Aggregate_Order_By>;
   guide_inputs_aggregate?: Maybe<Guide_Input_Aggregate_Order_By>;
+  guide_version?: Maybe<Order_By>;
   guided?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   investigator_data_aggregate?: Maybe<Investigator_Data_Aggregate_Order_By>;
@@ -1152,6 +1163,8 @@ export enum Campaign_Select_Column {
   /** column name */
   Difficulty = 'difficulty',
   /** column name */
+  GuideVersion = 'guide_version',
+  /** column name */
   Guided = 'guided',
   /** column name */
   Id = 'id',
@@ -1187,6 +1200,7 @@ export type Campaign_Set_Input = {
   cycleCode?: Maybe<Scalars['String']>;
   deleted?: Maybe<Scalars['Boolean']>;
   difficulty?: Maybe<Scalars['String']>;
+  guide_version?: Maybe<Scalars['Int']>;
   guided?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['Int']>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
@@ -1205,6 +1219,7 @@ export type Campaign_Set_Input = {
 /** aggregate stddev on columns */
 export type Campaign_Stddev_Fields = {
   __typename?: 'campaign_stddev_fields';
+  guide_version?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
@@ -1212,6 +1227,7 @@ export type Campaign_Stddev_Fields = {
 
 /** order by stddev() on columns of table "campaign" */
 export type Campaign_Stddev_Order_By = {
+  guide_version?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
@@ -1220,6 +1236,7 @@ export type Campaign_Stddev_Order_By = {
 /** aggregate stddev_pop on columns */
 export type Campaign_Stddev_Pop_Fields = {
   __typename?: 'campaign_stddev_pop_fields';
+  guide_version?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
@@ -1227,6 +1244,7 @@ export type Campaign_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "campaign" */
 export type Campaign_Stddev_Pop_Order_By = {
+  guide_version?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
@@ -1235,6 +1253,7 @@ export type Campaign_Stddev_Pop_Order_By = {
 /** aggregate stddev_samp on columns */
 export type Campaign_Stddev_Samp_Fields = {
   __typename?: 'campaign_stddev_samp_fields';
+  guide_version?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
@@ -1242,6 +1261,7 @@ export type Campaign_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "campaign" */
 export type Campaign_Stddev_Samp_Order_By = {
+  guide_version?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
@@ -1250,6 +1270,7 @@ export type Campaign_Stddev_Samp_Order_By = {
 /** aggregate sum on columns */
 export type Campaign_Sum_Fields = {
   __typename?: 'campaign_sum_fields';
+  guide_version?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
@@ -1257,6 +1278,7 @@ export type Campaign_Sum_Fields = {
 
 /** order by sum() on columns of table "campaign" */
 export type Campaign_Sum_Order_By = {
+  guide_version?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
@@ -1276,6 +1298,8 @@ export enum Campaign_Update_Column {
   Deleted = 'deleted',
   /** column name */
   Difficulty = 'difficulty',
+  /** column name */
+  GuideVersion = 'guide_version',
   /** column name */
   Guided = 'guided',
   /** column name */
@@ -1307,6 +1331,7 @@ export enum Campaign_Update_Column {
 /** aggregate var_pop on columns */
 export type Campaign_Var_Pop_Fields = {
   __typename?: 'campaign_var_pop_fields';
+  guide_version?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
@@ -1314,6 +1339,7 @@ export type Campaign_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "campaign" */
 export type Campaign_Var_Pop_Order_By = {
+  guide_version?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
@@ -1322,6 +1348,7 @@ export type Campaign_Var_Pop_Order_By = {
 /** aggregate var_samp on columns */
 export type Campaign_Var_Samp_Fields = {
   __typename?: 'campaign_var_samp_fields';
+  guide_version?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
@@ -1329,6 +1356,7 @@ export type Campaign_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "campaign" */
 export type Campaign_Var_Samp_Order_By = {
+  guide_version?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
@@ -1337,6 +1365,7 @@ export type Campaign_Var_Samp_Order_By = {
 /** aggregate variance on columns */
 export type Campaign_Variance_Fields = {
   __typename?: 'campaign_variance_fields';
+  guide_version?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
@@ -1344,6 +1373,7 @@ export type Campaign_Variance_Fields = {
 
 /** order by variance() on columns of table "campaign" */
 export type Campaign_Variance_Order_By = {
+  guide_version?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
@@ -6032,7 +6062,7 @@ export type UpdateCampaignNameMutation = (
   { __typename?: 'mutation_root' }
   & { update_campaign_by_pk?: Maybe<(
     { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'name'>
+    & Pick<Campaign, 'id' | 'uuid' | 'name'>
   )> }
 );
 
@@ -6048,6 +6078,8 @@ export type UploadNewCampaignMutationVariables = Exact<{
   scenarioResults?: Maybe<Scalars['jsonb']>;
   chaosBag?: Maybe<Scalars['jsonb']>;
   weaknessSet?: Maybe<Scalars['jsonb']>;
+  guided?: Maybe<Scalars['Boolean']>;
+  guideVersion?: Maybe<Scalars['Int']>;
   inputs: Array<Guide_Input_Insert_Input> | Guide_Input_Insert_Input;
   achievements: Array<Guide_Achievement_Insert_Input> | Guide_Achievement_Insert_Input;
   investigator_data: Array<Investigator_Data_Insert_Input> | Investigator_Data_Insert_Input;
@@ -6071,169 +6103,7 @@ export type UploadNewCampaignMutation = (
     & Pick<Investigator_Data_Mutation_Response, 'affected_rows'>
   )>, update_campaign_by_pk?: Maybe<(
     { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'nonDeckInvestigators' | 'scenarioResults' | 'weaknessSet' | 'guided'>
-    & { guide_inputs: Array<(
-      { __typename?: 'guide_input' }
-      & Pick<Guide_Input, 'id' | 'step' | 'scenario' | 'payload' | 'created_at'>
-    )>, guide_achivements: Array<(
-      { __typename?: 'guide_achievement' }
-      & Pick<Guide_Achievement, 'id' | 'achievement_id' | 'type' | 'bool_value' | 'value' | 'updated_at'>
-    )>, investigator_data: Array<(
-      { __typename?: 'investigator_data' }
-      & Pick<Investigator_Data, 'investigator' | 'addedCards' | 'ignoreStoryAssets' | 'storyAssets' | 'removedCards' | 'insane' | 'killed' | 'mental' | 'physical' | 'availableXp' | 'spentXp' | 'specialXp' | 'updated_at'>
-    )> }
-  )> }
-);
-
-export type DeleteInvestigatorDecksMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  investigator: Scalars['String'];
-  user_id: Scalars['String'];
-}>;
-
-
-export type DeleteInvestigatorDecksMutation = (
-  { __typename?: 'mutation_root' }
-  & { delete_deck?: Maybe<(
-    { __typename?: 'deck_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'deck' }
-      & Pick<Deck, 'id'>
-    )> }
-  )> }
-);
-
-export type SetBinaryAchievementMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  achievement_id: Scalars['String'];
-  value: Scalars['Boolean'];
-}>;
-
-
-export type SetBinaryAchievementMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_achievement_one?: Maybe<(
-    { __typename?: 'guide_achievement' }
-    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'bool_value'>
-  )> }
-);
-
-export type IncCountAchievementMaxMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  achievement_id: Scalars['String'];
-  max: Scalars['Int'];
-}>;
-
-
-export type IncCountAchievementMaxMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_achievement_one?: Maybe<(
-    { __typename?: 'guide_achievement' }
-    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
-  )>, update_guide_achievement?: Maybe<(
-    { __typename?: 'guide_achievement_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'guide_achievement' }
-      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
-    )> }
-  )> }
-);
-
-export type IncCountAchievementMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  achievement_id: Scalars['String'];
-}>;
-
-
-export type IncCountAchievementMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_achievement_one?: Maybe<(
-    { __typename?: 'guide_achievement' }
-    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
-  )>, update_guide_achievement?: Maybe<(
-    { __typename?: 'guide_achievement_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'guide_achievement' }
-      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
-    )> }
-  )> }
-);
-
-export type DecCountAchievementMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  achievement_id: Scalars['String'];
-}>;
-
-
-export type DecCountAchievementMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_achievement_one?: Maybe<(
-    { __typename?: 'guide_achievement' }
-    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
-  )>, update_guide_achievement?: Maybe<(
-    { __typename?: 'guide_achievement_mutation_response' }
-    & { returning: Array<(
-      { __typename?: 'guide_achievement' }
-      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
-    )> }
-  )> }
-);
-
-export type AddGuideInputMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  scenario?: Maybe<Scalars['String']>;
-  step?: Maybe<Scalars['String']>;
-  payload?: Maybe<Scalars['jsonb']>;
-}>;
-
-
-export type AddGuideInputMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_guide_input_one?: Maybe<(
-    { __typename?: 'guide_input' }
-    & Pick<Guide_Input, 'id' | 'campaign_id' | 'scenario' | 'step' | 'payload'>
-  )> }
-);
-
-export type MiniCampaignFragment = (
-  { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'uuid' | 'nonDeckInvestigators' | 'updated_at'>
-  & { latest_decks: Array<(
-    { __typename?: 'latest_decks' }
-    & { deck?: Maybe<(
-      { __typename?: 'deck' }
-      & Pick<Deck, 'id' | 'investigator'>
-    )> }
-  )>, investigator_data: Array<(
-    { __typename?: 'investigator_data' }
-    & Pick<Investigator_Data, 'id' | 'investigator' | 'mental' | 'physical' | 'insane' | 'killed' | 'storyAssets'>
-  )> }
-);
-
-export type GetMyCampaignsQueryVariables = Exact<{
-  userId: Scalars['String'];
-}>;
-
-
-export type GetMyCampaignsQuery = (
-  { __typename?: 'query_root' }
-  & { users_by_pk?: Maybe<(
-    { __typename?: 'users' }
-    & Pick<Users, 'id'>
-    & { campaigns: Array<(
-      { __typename?: 'user_campaigns' }
-      & { campaign?: Maybe<(
-        { __typename?: 'campaign' }
-        & { link_a_campaign?: Maybe<(
-          { __typename?: 'campaign' }
-          & MiniCampaignFragment
-        )>, link_b_campaign?: Maybe<(
-          { __typename?: 'campaign' }
-          & MiniCampaignFragment
-        )> }
-        & MiniCampaignFragment
-      )> }
-    )> }
+    & FullCampaignFragment
   )> }
 );
 
@@ -6397,6 +6267,89 @@ export type GetMyDecksQuery = (
   )> }
 );
 
+export type MiniCampaignFragment = (
+  { __typename?: 'campaign' }
+  & Pick<Campaign, 'id' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'uuid' | 'nonDeckInvestigators' | 'updated_at'>
+  & { latest_decks: Array<(
+    { __typename?: 'latest_decks' }
+    & { deck?: Maybe<(
+      { __typename?: 'deck' }
+      & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator'>
+    )> }
+  )>, investigator_data: Array<(
+    { __typename?: 'investigator_data' }
+    & Pick<Investigator_Data, 'id' | 'investigator' | 'mental' | 'physical' | 'insane' | 'killed' | 'storyAssets'>
+  )> }
+);
+
+export type FullCampaignFragment = (
+  { __typename?: 'campaign' }
+  & Pick<Campaign, 'id' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'nonDeckInvestigators' | 'scenarioResults' | 'weaknessSet' | 'guided' | 'guide_version'>
+  & { guide_inputs: Array<(
+    { __typename?: 'guide_input' }
+    & Pick<Guide_Input, 'id' | 'step' | 'scenario' | 'payload' | 'created_at'>
+  )>, guide_achivements: Array<(
+    { __typename?: 'guide_achievement' }
+    & Pick<Guide_Achievement, 'id' | 'achievement_id' | 'type' | 'bool_value' | 'value' | 'updated_at'>
+  )>, investigator_data: Array<(
+    { __typename?: 'investigator_data' }
+    & Pick<Investigator_Data, 'investigator' | 'addedCards' | 'ignoreStoryAssets' | 'storyAssets' | 'removedCards' | 'insane' | 'killed' | 'mental' | 'physical' | 'availableXp' | 'spentXp' | 'specialXp' | 'updated_at'>
+  )> }
+);
+
+export type GetMyCampaignsQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetMyCampaignsQuery = (
+  { __typename?: 'query_root' }
+  & { users_by_pk?: Maybe<(
+    { __typename?: 'users' }
+    & Pick<Users, 'id'>
+    & { campaigns: Array<(
+      { __typename?: 'user_campaigns' }
+      & { campaign?: Maybe<(
+        { __typename?: 'campaign' }
+        & { link_a_campaign?: Maybe<(
+          { __typename?: 'campaign' }
+          & MiniCampaignFragment
+        )>, link_b_campaign?: Maybe<(
+          { __typename?: 'campaign' }
+          & MiniCampaignFragment
+        )> }
+        & MiniCampaignFragment
+      )> }
+    )> }
+  )> }
+);
+
+export type GetCampaignQueryVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type GetCampaignQuery = (
+  { __typename?: 'query_root' }
+  & { campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & FullCampaignFragment
+  )> }
+);
+
+export type CampaignSubscriptionVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type CampaignSubscription = (
+  { __typename?: 'subscription_root' }
+  & { campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & FullCampaignFragment
+  )> }
+);
+
 export type GetProfileQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
@@ -6429,6 +6382,116 @@ export type GetProfileQuery = (
   )> }
 );
 
+export type DeleteInvestigatorDecksMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
+  user_id: Scalars['String'];
+}>;
+
+
+export type DeleteInvestigatorDecksMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_deck?: Maybe<(
+    { __typename?: 'deck_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'deck' }
+      & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid'>
+    )> }
+  )> }
+);
+
+export type SetBinaryAchievementMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  achievement_id: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type SetBinaryAchievementMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_guide_achievement_one?: Maybe<(
+    { __typename?: 'guide_achievement' }
+    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'bool_value'>
+  )> }
+);
+
+export type IncCountAchievementMaxMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  achievement_id: Scalars['String'];
+  max: Scalars['Int'];
+}>;
+
+
+export type IncCountAchievementMaxMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_guide_achievement_one?: Maybe<(
+    { __typename?: 'guide_achievement' }
+    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+  )>, update_guide_achievement?: Maybe<(
+    { __typename?: 'guide_achievement_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'guide_achievement' }
+      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+    )> }
+  )> }
+);
+
+export type IncCountAchievementMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  achievement_id: Scalars['String'];
+}>;
+
+
+export type IncCountAchievementMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_guide_achievement_one?: Maybe<(
+    { __typename?: 'guide_achievement' }
+    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+  )>, update_guide_achievement?: Maybe<(
+    { __typename?: 'guide_achievement_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'guide_achievement' }
+      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+    )> }
+  )> }
+);
+
+export type DecCountAchievementMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  achievement_id: Scalars['String'];
+}>;
+
+
+export type DecCountAchievementMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_guide_achievement_one?: Maybe<(
+    { __typename?: 'guide_achievement' }
+    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+  )>, update_guide_achievement?: Maybe<(
+    { __typename?: 'guide_achievement_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'guide_achievement' }
+      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+    )> }
+  )> }
+);
+
+export type AddGuideInputMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  scenario?: Maybe<Scalars['String']>;
+  step?: Maybe<Scalars['String']>;
+  payload?: Maybe<Scalars['jsonb']>;
+}>;
+
+
+export type AddGuideInputMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_guide_input_one?: Maybe<(
+    { __typename?: 'guide_input' }
+    & Pick<Guide_Input, 'id' | 'campaign_id' | 'scenario' | 'step' | 'payload'>
+  )> }
+);
+
 export const MiniCampaignFragmentDoc = gql`
     fragment MiniCampaign on campaign {
   id
@@ -6442,6 +6505,8 @@ export const MiniCampaignFragmentDoc = gql`
   latest_decks {
     deck {
       id
+      arkhamdb_id
+      local_uuid
       investigator
     }
   }
@@ -6458,10 +6523,59 @@ export const MiniCampaignFragmentDoc = gql`
   updated_at
 }
     `;
+export const FullCampaignFragmentDoc = gql`
+    fragment FullCampaign on campaign {
+  id
+  uuid
+  name
+  cycleCode
+  standaloneId
+  difficulty
+  campaignNotes
+  chaosBag
+  showInterludes
+  nonDeckInvestigators
+  scenarioResults
+  weaknessSet
+  guided
+  guide_version
+  guide_inputs {
+    id
+    step
+    scenario
+    payload
+    created_at
+  }
+  guide_achivements {
+    id
+    achievement_id
+    type
+    bool_value
+    value
+    updated_at
+  }
+  investigator_data {
+    investigator
+    addedCards
+    ignoreStoryAssets
+    storyAssets
+    removedCards
+    insane
+    killed
+    mental
+    physical
+    availableXp
+    spentXp
+    specialXp
+    updated_at
+  }
+}
+    `;
 export const UpdateCampaignNameDocument = gql`
     mutation updateCampaignName($campaignId: Int!, $name: String!) {
   update_campaign_by_pk(pk_columns: {id: $campaignId}, _set: {name: $name}) {
     id
+    uuid
     name
   }
 }
@@ -6493,7 +6607,7 @@ export type UpdateCampaignNameMutationHookResult = ReturnType<typeof useUpdateCa
 export type UpdateCampaignNameMutationResult = Apollo.MutationResult<UpdateCampaignNameMutation>;
 export type UpdateCampaignNameMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>;
 export const UploadNewCampaignDocument = gql`
-    mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $nonDeckInvestigators: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!) {
+    mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $nonDeckInvestigators: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $guided: Boolean, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!) {
   insert_guide_input(objects: $inputs) {
     affected_rows
     returning {
@@ -6513,53 +6627,12 @@ export const UploadNewCampaignDocument = gql`
   }
   update_campaign_by_pk(
     pk_columns: {id: $campaignId}
-    _set: {name: $name, cycleCode: $cycleCode, standaloneId: $standaloneId, difficulty: $difficulty, campaignNotes: $campaignNotes, chaosBag: $chaosBag, showInterludes: $showInterludes, nonDeckInvestigators: $nonDeckInvestigators, scenarioResults: $scenarioResults, weaknessSet: $weaknessSet}
+    _set: {name: $name, cycleCode: $cycleCode, standaloneId: $standaloneId, difficulty: $difficulty, campaignNotes: $campaignNotes, chaosBag: $chaosBag, showInterludes: $showInterludes, nonDeckInvestigators: $nonDeckInvestigators, scenarioResults: $scenarioResults, weaknessSet: $weaknessSet, guided: $guided, guide_version: $guideVersion}
   ) {
-    id
-    name
-    cycleCode
-    standaloneId
-    difficulty
-    campaignNotes
-    chaosBag
-    showInterludes
-    nonDeckInvestigators
-    scenarioResults
-    weaknessSet
-    guided
-    guide_inputs {
-      id
-      step
-      scenario
-      payload
-      created_at
-    }
-    guide_achivements {
-      id
-      achievement_id
-      type
-      bool_value
-      value
-      updated_at
-    }
-    investigator_data {
-      investigator
-      addedCards
-      ignoreStoryAssets
-      storyAssets
-      removedCards
-      insane
-      killed
-      mental
-      physical
-      availableXp
-      spentXp
-      specialXp
-      updated_at
-    }
+    ...FullCampaign
   }
 }
-    `;
+    ${FullCampaignFragmentDoc}`;
 export type UploadNewCampaignMutationFn = Apollo.MutationFunction<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>;
 
 /**
@@ -6586,6 +6659,8 @@ export type UploadNewCampaignMutationFn = Apollo.MutationFunction<UploadNewCampa
  *      scenarioResults: // value for 'scenarioResults'
  *      chaosBag: // value for 'chaosBag'
  *      weaknessSet: // value for 'weaknessSet'
+ *      guided: // value for 'guided'
+ *      guideVersion: // value for 'guideVersion'
  *      inputs: // value for 'inputs'
  *      achievements: // value for 'achievements'
  *      investigator_data: // value for 'investigator_data'
@@ -6598,328 +6673,6 @@ export function useUploadNewCampaignMutation(baseOptions?: Apollo.MutationHookOp
 export type UploadNewCampaignMutationHookResult = ReturnType<typeof useUploadNewCampaignMutation>;
 export type UploadNewCampaignMutationResult = Apollo.MutationResult<UploadNewCampaignMutation>;
 export type UploadNewCampaignMutationOptions = Apollo.BaseMutationOptions<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>;
-export const DeleteInvestigatorDecksDocument = gql`
-    mutation deleteInvestigatorDecks($campaign_id: Int!, $investigator: String!, $user_id: String!) {
-  delete_deck(
-    where: {campaign_id: {_eq: $campaign_id}, investigator: {_eq: $investigator}, owner_id: {_eq: $user_id}}
-  ) {
-    returning {
-      id
-    }
-  }
-}
-    `;
-export type DeleteInvestigatorDecksMutationFn = Apollo.MutationFunction<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
-
-/**
- * __useDeleteInvestigatorDecksMutation__
- *
- * To run a mutation, you first call `useDeleteInvestigatorDecksMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteInvestigatorDecksMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [deleteInvestigatorDecksMutation, { data, loading, error }] = useDeleteInvestigatorDecksMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      investigator: // value for 'investigator'
- *      user_id: // value for 'user_id'
- *   },
- * });
- */
-export function useDeleteInvestigatorDecksMutation(baseOptions?: Apollo.MutationHookOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>) {
-        return Apollo.useMutation<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>(DeleteInvestigatorDecksDocument, baseOptions);
-      }
-export type DeleteInvestigatorDecksMutationHookResult = ReturnType<typeof useDeleteInvestigatorDecksMutation>;
-export type DeleteInvestigatorDecksMutationResult = Apollo.MutationResult<DeleteInvestigatorDecksMutation>;
-export type DeleteInvestigatorDecksMutationOptions = Apollo.BaseMutationOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
-export const SetBinaryAchievementDocument = gql`
-    mutation setBinaryAchievement($campaign_id: Int!, $achievement_id: String!, $value: Boolean!) {
-  insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "binary", bool_value: $value}
-    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: [bool_value]}
-  ) {
-    id
-    campaign_id
-    achievement_id
-    type
-    bool_value
-  }
-}
-    `;
-export type SetBinaryAchievementMutationFn = Apollo.MutationFunction<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>;
-
-/**
- * __useSetBinaryAchievementMutation__
- *
- * To run a mutation, you first call `useSetBinaryAchievementMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useSetBinaryAchievementMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [setBinaryAchievementMutation, { data, loading, error }] = useSetBinaryAchievementMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      achievement_id: // value for 'achievement_id'
- *      value: // value for 'value'
- *   },
- * });
- */
-export function useSetBinaryAchievementMutation(baseOptions?: Apollo.MutationHookOptions<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>) {
-        return Apollo.useMutation<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>(SetBinaryAchievementDocument, baseOptions);
-      }
-export type SetBinaryAchievementMutationHookResult = ReturnType<typeof useSetBinaryAchievementMutation>;
-export type SetBinaryAchievementMutationResult = Apollo.MutationResult<SetBinaryAchievementMutation>;
-export type SetBinaryAchievementMutationOptions = Apollo.BaseMutationOptions<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>;
-export const IncCountAchievementMaxDocument = gql`
-    mutation incCountAchievementMax($campaign_id: Int!, $achievement_id: String!, $max: Int!) {
-  insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 1}
-    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
-  ) {
-    id
-    campaign_id
-    achievement_id
-    type
-    value
-  }
-  update_guide_achievement(
-    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}, value: {_lt: $max}}
-    _inc: {value: 1}
-  ) {
-    returning {
-      id
-      campaign_id
-      achievement_id
-      type
-      value
-    }
-  }
-}
-    `;
-export type IncCountAchievementMaxMutationFn = Apollo.MutationFunction<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>;
-
-/**
- * __useIncCountAchievementMaxMutation__
- *
- * To run a mutation, you first call `useIncCountAchievementMaxMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useIncCountAchievementMaxMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [incCountAchievementMaxMutation, { data, loading, error }] = useIncCountAchievementMaxMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      achievement_id: // value for 'achievement_id'
- *      max: // value for 'max'
- *   },
- * });
- */
-export function useIncCountAchievementMaxMutation(baseOptions?: Apollo.MutationHookOptions<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>) {
-        return Apollo.useMutation<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>(IncCountAchievementMaxDocument, baseOptions);
-      }
-export type IncCountAchievementMaxMutationHookResult = ReturnType<typeof useIncCountAchievementMaxMutation>;
-export type IncCountAchievementMaxMutationResult = Apollo.MutationResult<IncCountAchievementMaxMutation>;
-export type IncCountAchievementMaxMutationOptions = Apollo.BaseMutationOptions<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>;
-export const IncCountAchievementDocument = gql`
-    mutation incCountAchievement($campaign_id: Int!, $achievement_id: String!) {
-  insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 1}
-    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
-  ) {
-    id
-    campaign_id
-    achievement_id
-    type
-    value
-  }
-  update_guide_achievement(
-    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}}
-    _inc: {value: 1}
-  ) {
-    returning {
-      id
-      campaign_id
-      achievement_id
-      type
-      value
-    }
-  }
-}
-    `;
-export type IncCountAchievementMutationFn = Apollo.MutationFunction<IncCountAchievementMutation, IncCountAchievementMutationVariables>;
-
-/**
- * __useIncCountAchievementMutation__
- *
- * To run a mutation, you first call `useIncCountAchievementMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useIncCountAchievementMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [incCountAchievementMutation, { data, loading, error }] = useIncCountAchievementMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      achievement_id: // value for 'achievement_id'
- *   },
- * });
- */
-export function useIncCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<IncCountAchievementMutation, IncCountAchievementMutationVariables>) {
-        return Apollo.useMutation<IncCountAchievementMutation, IncCountAchievementMutationVariables>(IncCountAchievementDocument, baseOptions);
-      }
-export type IncCountAchievementMutationHookResult = ReturnType<typeof useIncCountAchievementMutation>;
-export type IncCountAchievementMutationResult = Apollo.MutationResult<IncCountAchievementMutation>;
-export type IncCountAchievementMutationOptions = Apollo.BaseMutationOptions<IncCountAchievementMutation, IncCountAchievementMutationVariables>;
-export const DecCountAchievementDocument = gql`
-    mutation decCountAchievement($campaign_id: Int!, $achievement_id: String!) {
-  insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 0}
-    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
-  ) {
-    id
-    campaign_id
-    achievement_id
-    type
-    value
-  }
-  update_guide_achievement(
-    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}, value: {_gt: 0}}
-    _inc: {value: -1}
-  ) {
-    returning {
-      id
-      campaign_id
-      achievement_id
-      type
-      value
-    }
-  }
-}
-    `;
-export type DecCountAchievementMutationFn = Apollo.MutationFunction<DecCountAchievementMutation, DecCountAchievementMutationVariables>;
-
-/**
- * __useDecCountAchievementMutation__
- *
- * To run a mutation, you first call `useDecCountAchievementMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDecCountAchievementMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [decCountAchievementMutation, { data, loading, error }] = useDecCountAchievementMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      achievement_id: // value for 'achievement_id'
- *   },
- * });
- */
-export function useDecCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<DecCountAchievementMutation, DecCountAchievementMutationVariables>) {
-        return Apollo.useMutation<DecCountAchievementMutation, DecCountAchievementMutationVariables>(DecCountAchievementDocument, baseOptions);
-      }
-export type DecCountAchievementMutationHookResult = ReturnType<typeof useDecCountAchievementMutation>;
-export type DecCountAchievementMutationResult = Apollo.MutationResult<DecCountAchievementMutation>;
-export type DecCountAchievementMutationOptions = Apollo.BaseMutationOptions<DecCountAchievementMutation, DecCountAchievementMutationVariables>;
-export const AddGuideInputDocument = gql`
-    mutation addGuideInput($campaign_id: Int!, $scenario: String, $step: String, $payload: jsonb) {
-  insert_guide_input_one(
-    object: {campaign_id: $campaign_id, scenario: $scenario, step: $step, payload: $payload}
-    on_conflict: {constraint: campaign_guide_input_campaign_guide_id_scenario_step_key, update_columns: [payload]}
-  ) {
-    id
-    campaign_id
-    scenario
-    step
-    payload
-  }
-}
-    `;
-export type AddGuideInputMutationFn = Apollo.MutationFunction<AddGuideInputMutation, AddGuideInputMutationVariables>;
-
-/**
- * __useAddGuideInputMutation__
- *
- * To run a mutation, you first call `useAddGuideInputMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useAddGuideInputMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [addGuideInputMutation, { data, loading, error }] = useAddGuideInputMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      scenario: // value for 'scenario'
- *      step: // value for 'step'
- *      payload: // value for 'payload'
- *   },
- * });
- */
-export function useAddGuideInputMutation(baseOptions?: Apollo.MutationHookOptions<AddGuideInputMutation, AddGuideInputMutationVariables>) {
-        return Apollo.useMutation<AddGuideInputMutation, AddGuideInputMutationVariables>(AddGuideInputDocument, baseOptions);
-      }
-export type AddGuideInputMutationHookResult = ReturnType<typeof useAddGuideInputMutation>;
-export type AddGuideInputMutationResult = Apollo.MutationResult<AddGuideInputMutation>;
-export type AddGuideInputMutationOptions = Apollo.BaseMutationOptions<AddGuideInputMutation, AddGuideInputMutationVariables>;
-export const GetMyCampaignsDocument = gql`
-    query getMyCampaigns($userId: String!) {
-  users_by_pk(id: $userId) {
-    id
-    campaigns {
-      campaign {
-        link_a_campaign {
-          ...MiniCampaign
-        }
-        link_b_campaign {
-          ...MiniCampaign
-        }
-        ...MiniCampaign
-      }
-    }
-  }
-}
-    ${MiniCampaignFragmentDoc}`;
-
-/**
- * __useGetMyCampaignsQuery__
- *
- * To run a query within a React component, call `useGetMyCampaignsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetMyCampaignsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetMyCampaignsQuery({
- *   variables: {
- *      userId: // value for 'userId'
- *   },
- * });
- */
-export function useGetMyCampaignsQuery(baseOptions: Apollo.QueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
-        return Apollo.useQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
-      }
-export function useGetMyCampaignsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
-          return Apollo.useLazyQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
-        }
-export type GetMyCampaignsQueryHookResult = ReturnType<typeof useGetMyCampaignsQuery>;
-export type GetMyCampaignsLazyQueryHookResult = ReturnType<typeof useGetMyCampaignsLazyQuery>;
-export type GetMyCampaignsQueryResult = Apollo.QueryResult<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>;
 export const InsertNewDeckDocument = gql`
     mutation insertNewDeck($arkhamdb_id: Int, $local_uuid: String, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $userId: String!) {
   insert_deck_one(
@@ -7265,6 +7018,112 @@ export function useGetMyDecksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetMyDecksQueryHookResult = ReturnType<typeof useGetMyDecksQuery>;
 export type GetMyDecksLazyQueryHookResult = ReturnType<typeof useGetMyDecksLazyQuery>;
 export type GetMyDecksQueryResult = Apollo.QueryResult<GetMyDecksQuery, GetMyDecksQueryVariables>;
+export const GetMyCampaignsDocument = gql`
+    query getMyCampaigns($userId: String!) {
+  users_by_pk(id: $userId) {
+    id
+    campaigns {
+      campaign {
+        link_a_campaign {
+          ...MiniCampaign
+        }
+        link_b_campaign {
+          ...MiniCampaign
+        }
+        ...MiniCampaign
+      }
+    }
+  }
+}
+    ${MiniCampaignFragmentDoc}`;
+
+/**
+ * __useGetMyCampaignsQuery__
+ *
+ * To run a query within a React component, call `useGetMyCampaignsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMyCampaignsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMyCampaignsQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetMyCampaignsQuery(baseOptions: Apollo.QueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
+        return Apollo.useQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
+      }
+export function useGetMyCampaignsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
+          return Apollo.useLazyQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, baseOptions);
+        }
+export type GetMyCampaignsQueryHookResult = ReturnType<typeof useGetMyCampaignsQuery>;
+export type GetMyCampaignsLazyQueryHookResult = ReturnType<typeof useGetMyCampaignsLazyQuery>;
+export type GetMyCampaignsQueryResult = Apollo.QueryResult<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>;
+export const GetCampaignDocument = gql`
+    query getCampaign($campaign_id: Int!) {
+  campaign_by_pk(id: $campaign_id) {
+    ...FullCampaign
+  }
+}
+    ${FullCampaignFragmentDoc}`;
+
+/**
+ * __useGetCampaignQuery__
+ *
+ * To run a query within a React component, call `useGetCampaignQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCampaignQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCampaignQuery({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useGetCampaignQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignQuery, GetCampaignQueryVariables>) {
+        return Apollo.useQuery<GetCampaignQuery, GetCampaignQueryVariables>(GetCampaignDocument, baseOptions);
+      }
+export function useGetCampaignLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCampaignQuery, GetCampaignQueryVariables>) {
+          return Apollo.useLazyQuery<GetCampaignQuery, GetCampaignQueryVariables>(GetCampaignDocument, baseOptions);
+        }
+export type GetCampaignQueryHookResult = ReturnType<typeof useGetCampaignQuery>;
+export type GetCampaignLazyQueryHookResult = ReturnType<typeof useGetCampaignLazyQuery>;
+export type GetCampaignQueryResult = Apollo.QueryResult<GetCampaignQuery, GetCampaignQueryVariables>;
+export const CampaignDocument = gql`
+    subscription campaign($campaign_id: Int!) {
+  campaign_by_pk(id: $campaign_id) {
+    ...FullCampaign
+  }
+}
+    ${FullCampaignFragmentDoc}`;
+
+/**
+ * __useCampaignSubscription__
+ *
+ * To run a query within a React component, call `useCampaignSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useCampaignSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCampaignSubscription({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useCampaignSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignSubscription, CampaignSubscriptionVariables>) {
+        return Apollo.useSubscription<CampaignSubscription, CampaignSubscriptionVariables>(CampaignDocument, baseOptions);
+      }
+export type CampaignSubscriptionHookResult = ReturnType<typeof useCampaignSubscription>;
+export type CampaignSubscriptionResult = Apollo.SubscriptionResult<CampaignSubscription>;
 export const GetProfileDocument = gql`
     query getProfile($userId: String!) {
   users_by_pk(id: $userId) {
@@ -7317,6 +7176,286 @@ export function useGetProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
 export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
 export type GetProfileQueryResult = Apollo.QueryResult<GetProfileQuery, GetProfileQueryVariables>;
+export const DeleteInvestigatorDecksDocument = gql`
+    mutation deleteInvestigatorDecks($campaign_id: Int!, $investigator: String!, $user_id: String!) {
+  delete_deck(
+    where: {campaign_id: {_eq: $campaign_id}, investigator: {_eq: $investigator}, owner_id: {_eq: $user_id}}
+  ) {
+    returning {
+      id
+      arkhamdb_id
+      local_uuid
+    }
+  }
+}
+    `;
+export type DeleteInvestigatorDecksMutationFn = Apollo.MutationFunction<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
+
+/**
+ * __useDeleteInvestigatorDecksMutation__
+ *
+ * To run a mutation, you first call `useDeleteInvestigatorDecksMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteInvestigatorDecksMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteInvestigatorDecksMutation, { data, loading, error }] = useDeleteInvestigatorDecksMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *      user_id: // value for 'user_id'
+ *   },
+ * });
+ */
+export function useDeleteInvestigatorDecksMutation(baseOptions?: Apollo.MutationHookOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>) {
+        return Apollo.useMutation<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>(DeleteInvestigatorDecksDocument, baseOptions);
+      }
+export type DeleteInvestigatorDecksMutationHookResult = ReturnType<typeof useDeleteInvestigatorDecksMutation>;
+export type DeleteInvestigatorDecksMutationResult = Apollo.MutationResult<DeleteInvestigatorDecksMutation>;
+export type DeleteInvestigatorDecksMutationOptions = Apollo.BaseMutationOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
+export const SetBinaryAchievementDocument = gql`
+    mutation setBinaryAchievement($campaign_id: Int!, $achievement_id: String!, $value: Boolean!) {
+  insert_guide_achievement_one(
+    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "binary", bool_value: $value}
+    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: [bool_value]}
+  ) {
+    id
+    campaign_id
+    achievement_id
+    type
+    bool_value
+  }
+}
+    `;
+export type SetBinaryAchievementMutationFn = Apollo.MutationFunction<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>;
+
+/**
+ * __useSetBinaryAchievementMutation__
+ *
+ * To run a mutation, you first call `useSetBinaryAchievementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSetBinaryAchievementMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [setBinaryAchievementMutation, { data, loading, error }] = useSetBinaryAchievementMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      achievement_id: // value for 'achievement_id'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useSetBinaryAchievementMutation(baseOptions?: Apollo.MutationHookOptions<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>) {
+        return Apollo.useMutation<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>(SetBinaryAchievementDocument, baseOptions);
+      }
+export type SetBinaryAchievementMutationHookResult = ReturnType<typeof useSetBinaryAchievementMutation>;
+export type SetBinaryAchievementMutationResult = Apollo.MutationResult<SetBinaryAchievementMutation>;
+export type SetBinaryAchievementMutationOptions = Apollo.BaseMutationOptions<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>;
+export const IncCountAchievementMaxDocument = gql`
+    mutation incCountAchievementMax($campaign_id: Int!, $achievement_id: String!, $max: Int!) {
+  insert_guide_achievement_one(
+    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 1}
+    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
+  ) {
+    id
+    campaign_id
+    achievement_id
+    type
+    value
+  }
+  update_guide_achievement(
+    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}, value: {_lt: $max}}
+    _inc: {value: 1}
+  ) {
+    returning {
+      id
+      campaign_id
+      achievement_id
+      type
+      value
+    }
+  }
+}
+    `;
+export type IncCountAchievementMaxMutationFn = Apollo.MutationFunction<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>;
+
+/**
+ * __useIncCountAchievementMaxMutation__
+ *
+ * To run a mutation, you first call `useIncCountAchievementMaxMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useIncCountAchievementMaxMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [incCountAchievementMaxMutation, { data, loading, error }] = useIncCountAchievementMaxMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      achievement_id: // value for 'achievement_id'
+ *      max: // value for 'max'
+ *   },
+ * });
+ */
+export function useIncCountAchievementMaxMutation(baseOptions?: Apollo.MutationHookOptions<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>) {
+        return Apollo.useMutation<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>(IncCountAchievementMaxDocument, baseOptions);
+      }
+export type IncCountAchievementMaxMutationHookResult = ReturnType<typeof useIncCountAchievementMaxMutation>;
+export type IncCountAchievementMaxMutationResult = Apollo.MutationResult<IncCountAchievementMaxMutation>;
+export type IncCountAchievementMaxMutationOptions = Apollo.BaseMutationOptions<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>;
+export const IncCountAchievementDocument = gql`
+    mutation incCountAchievement($campaign_id: Int!, $achievement_id: String!) {
+  insert_guide_achievement_one(
+    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 1}
+    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
+  ) {
+    id
+    campaign_id
+    achievement_id
+    type
+    value
+  }
+  update_guide_achievement(
+    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}}
+    _inc: {value: 1}
+  ) {
+    returning {
+      id
+      campaign_id
+      achievement_id
+      type
+      value
+    }
+  }
+}
+    `;
+export type IncCountAchievementMutationFn = Apollo.MutationFunction<IncCountAchievementMutation, IncCountAchievementMutationVariables>;
+
+/**
+ * __useIncCountAchievementMutation__
+ *
+ * To run a mutation, you first call `useIncCountAchievementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useIncCountAchievementMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [incCountAchievementMutation, { data, loading, error }] = useIncCountAchievementMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      achievement_id: // value for 'achievement_id'
+ *   },
+ * });
+ */
+export function useIncCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<IncCountAchievementMutation, IncCountAchievementMutationVariables>) {
+        return Apollo.useMutation<IncCountAchievementMutation, IncCountAchievementMutationVariables>(IncCountAchievementDocument, baseOptions);
+      }
+export type IncCountAchievementMutationHookResult = ReturnType<typeof useIncCountAchievementMutation>;
+export type IncCountAchievementMutationResult = Apollo.MutationResult<IncCountAchievementMutation>;
+export type IncCountAchievementMutationOptions = Apollo.BaseMutationOptions<IncCountAchievementMutation, IncCountAchievementMutationVariables>;
+export const DecCountAchievementDocument = gql`
+    mutation decCountAchievement($campaign_id: Int!, $achievement_id: String!) {
+  insert_guide_achievement_one(
+    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 0}
+    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
+  ) {
+    id
+    campaign_id
+    achievement_id
+    type
+    value
+  }
+  update_guide_achievement(
+    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}, value: {_gt: 0}}
+    _inc: {value: -1}
+  ) {
+    returning {
+      id
+      campaign_id
+      achievement_id
+      type
+      value
+    }
+  }
+}
+    `;
+export type DecCountAchievementMutationFn = Apollo.MutationFunction<DecCountAchievementMutation, DecCountAchievementMutationVariables>;
+
+/**
+ * __useDecCountAchievementMutation__
+ *
+ * To run a mutation, you first call `useDecCountAchievementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDecCountAchievementMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [decCountAchievementMutation, { data, loading, error }] = useDecCountAchievementMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      achievement_id: // value for 'achievement_id'
+ *   },
+ * });
+ */
+export function useDecCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<DecCountAchievementMutation, DecCountAchievementMutationVariables>) {
+        return Apollo.useMutation<DecCountAchievementMutation, DecCountAchievementMutationVariables>(DecCountAchievementDocument, baseOptions);
+      }
+export type DecCountAchievementMutationHookResult = ReturnType<typeof useDecCountAchievementMutation>;
+export type DecCountAchievementMutationResult = Apollo.MutationResult<DecCountAchievementMutation>;
+export type DecCountAchievementMutationOptions = Apollo.BaseMutationOptions<DecCountAchievementMutation, DecCountAchievementMutationVariables>;
+export const AddGuideInputDocument = gql`
+    mutation addGuideInput($campaign_id: Int!, $scenario: String, $step: String, $payload: jsonb) {
+  insert_guide_input_one(
+    object: {campaign_id: $campaign_id, scenario: $scenario, step: $step, payload: $payload}
+    on_conflict: {constraint: campaign_guide_input_campaign_guide_id_scenario_step_key, update_columns: [payload]}
+  ) {
+    id
+    campaign_id
+    scenario
+    step
+    payload
+  }
+}
+    `;
+export type AddGuideInputMutationFn = Apollo.MutationFunction<AddGuideInputMutation, AddGuideInputMutationVariables>;
+
+/**
+ * __useAddGuideInputMutation__
+ *
+ * To run a mutation, you first call `useAddGuideInputMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddGuideInputMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addGuideInputMutation, { data, loading, error }] = useAddGuideInputMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      scenario: // value for 'scenario'
+ *      step: // value for 'step'
+ *      payload: // value for 'payload'
+ *   },
+ * });
+ */
+export function useAddGuideInputMutation(baseOptions?: Apollo.MutationHookOptions<AddGuideInputMutation, AddGuideInputMutationVariables>) {
+        return Apollo.useMutation<AddGuideInputMutation, AddGuideInputMutationVariables>(AddGuideInputDocument, baseOptions);
+      }
+export type AddGuideInputMutationHookResult = ReturnType<typeof useAddGuideInputMutation>;
+export type AddGuideInputMutationResult = Apollo.MutationResult<AddGuideInputMutation>;
+export type AddGuideInputMutationOptions = Apollo.BaseMutationOptions<AddGuideInputMutation, AddGuideInputMutationVariables>;
 
       export interface PossibleTypesResultData {
         possibleTypes: {

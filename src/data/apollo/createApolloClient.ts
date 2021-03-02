@@ -1,6 +1,7 @@
 import { Store } from 'redux';
 import { stringify } from 'flatted';
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, split } from '@apollo/client';
+import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { setContext } from '@apollo/client/link/context';
 import { getMainDefinition } from '@apollo/client/utilities';
@@ -23,7 +24,7 @@ const typePolicies: TypedTypePolicies = {
     keyFields: ['id', 'arkhamdb_id', 'local_uuid'],
   },
   campaign: {
-    keyFields: ['id'],
+    keyFields: ['id', 'uuid'],
   },
 };
 
@@ -51,20 +52,27 @@ const authLink = setContext((req, { headers }) => {
     headers: newHeaders,
   };
 });
-const httpsLink = new HttpLink({
+const httpsLink = authLink.concat(new HttpLink({
   uri: `https://${GRAPHQL_SERVER}/graphql`,
-});
+}));
 
-const wsLink = new WebSocketLink({
-  uri: `wss://${GRAPHQL_SERVER}/graphql`,
-  options: {
-    reconnect: true,
-    connectionParams: {
-      headers: {},
-    },
-  },
-});
-const queueLink = new QueueLink();
+const wsLink = new WebSocketLink(
+  new SubscriptionClient(
+    `wss://${GRAPHQL_SERVER}/graphql`, {
+      reconnect: true,
+      lazy: true,
+      connectionParams: () => {
+        console.log(`Calling connectionParams for WSLINk: hasuraToken: ${!!hasuraToken}`);
+        return {
+          headers: hasuraToken ? {
+            Authorization: `Bearer ${hasuraToken}`,
+          } : {},
+        };
+      },
+    }
+  ),
+);
+export const apolloQueueLink = new QueueLink();
 const retryLink = new RetryLink();
 const serializingLink = new SerializingLink();
 
@@ -83,10 +91,9 @@ export default function constructApolloClient(store: Store) {
       loggerLink,
       errorLink,
       trackerLink(store.dispatch),
-      queueLink,
+      apolloQueueLink,
       serializingLink,
       retryLink,
-      authLink,
       link,
     ]),
     assumeImmutableResults: true,

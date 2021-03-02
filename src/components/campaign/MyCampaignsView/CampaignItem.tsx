@@ -4,7 +4,7 @@ import { CUSTOM } from '@actions/types';
 import MiniCampaignSummaryComponent from '../MiniCampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import GenericCampaignItem from './GenericCampaignItem';
-import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 interface Props {
   campaign: MiniCampaignT;

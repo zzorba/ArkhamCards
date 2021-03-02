@@ -1,0 +1,33 @@
+# import MiniCampaign from 'fragments.graphql'
+query getMyCampaigns(
+  $userId: String!
+) {
+  users_by_pk(id: $userId) {
+    id
+    campaigns {
+      campaign {
+        link_a_campaign {
+          ...MiniCampaign
+        }
+        link_b_campaign {
+          ...MiniCampaign
+        }
+        ...MiniCampaign
+      }
+    }
+  }
+}
+
+
+query getCampaign($campaign_id: Int!) {
+  campaign_by_pk(id: $campaign_id) {
+    ...FullCampaign
+  }
+}
+
+
+subscription campaign($campaign_id: Int!) {
+  campaign_by_pk(id: $campaign_id) {
+    ...FullCampaign
+  }
+}

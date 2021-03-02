@@ -9,7 +9,7 @@ import GameHeader from './GameHeader';
 import BackgroundIcon from './BackgroundIcon';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 interface Props {
   campaign: MiniCampaignT;

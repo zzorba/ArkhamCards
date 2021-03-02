@@ -1,10 +1,12 @@
-import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId } from '@actions/types';
-import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
+import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet } from '@actions/types';
 import { uniq, map, concat, last, maxBy } from 'lodash';
+
+import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 const EMPTY_TRAUMA: Trauma = {};
 
-export class MiniCampaignRedux extends MiniCampaignT {
+export class MiniCampaignRedux implements MiniCampaignT {
   protected campaign: Campaign;
   protected campaignDecks: Deck[];
   protected campaignUpdatedAt: Date;
@@ -14,7 +16,6 @@ export class MiniCampaignRedux extends MiniCampaignT {
     campaignDecks: Deck[],
     updatedAt: Date
   ) {
-    super();
     this.campaign = campaign;
     this.campaignDecks = campaignDecks;
     this.campaignUpdatedAt = updatedAt;
@@ -69,7 +70,7 @@ export class MiniCampaignRedux extends MiniCampaignT {
     return this.campaignUpdatedAt;
   }
 
-  linked(): undefined | { campaignIdA: CampaignId; campaignIdB: CampaignId } {
+  linked(): undefined | CampaignLink {
     return undefined;
   }
 }
@@ -145,5 +146,58 @@ export class MiniLinkedCampaignRedux extends MiniCampaignRedux {
       campaignIdA: getCampaignId(this.campaignA),
       campaignIdB: getCampaignId(this.campaignB),
     };
+  }
+}
+
+
+const EMPTY_CHAOS_BAG = {};
+const EMPTY_WEAKNESS_SET: WeaknessSet = {
+  packCodes: [],
+  assignedCards: {},
+};
+const EMPTY_CAMPAIGN_NOTES = {};
+const EMPTY_SCENARIO_RESULTS: ScenarioResult[] = [];
+
+export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCampaignT {
+  constructor(
+    campaign: Campaign,
+    latestCampaignDecks: Deck[],
+    updatedAt: Date
+  ) {
+    super(campaign, latestCampaignDecks, updatedAt);
+  }
+
+  showInterludes() {
+    return !!this.campaign.showInterludes;
+  }
+  latestDecks(): Deck[] {
+    return this.campaignDecks;
+  }
+  guideVersion() {
+    return this.campaign.guided ? this.campaign.guideVersion : undefined;
+  }
+
+  investigatorSpentXp(code: string) {
+    return this.campaign.adjustedInvestigatorData?.[code]?.spentXp || 0;
+  }
+
+  chaosBag() {
+    return this.campaign.chaosBag || EMPTY_CHAOS_BAG;
+  }
+  weaknessSet() {
+    return this.campaign.weaknessSet || EMPTY_WEAKNESS_SET;
+  }
+  campaignNotes() {
+    return this.campaign.campaignNotes || EMPTY_CAMPAIGN_NOTES;
+  }
+  scenarioResults() {
+    return this.campaign.scenarioResults || EMPTY_SCENARIO_RESULTS;
+  }
+
+  linkedCampaignId() {
+    return this.campaign.linkedCampaignUuid ? {
+      campaignId: this.campaign.linkedCampaignUuid,
+      serverId: this.campaign.serverId,
+    } : undefined;
   }
 }
