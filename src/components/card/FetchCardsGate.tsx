@@ -20,6 +20,9 @@ import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useEffectUpdate } from '@components/core/hooks';
 import useReduxMigrator from '@components/settings/useReduxMigrator';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import useNetworkStatus from '@components/core/useNetworkStatus';
+import { apolloQueueLink } from '@data/apollo/createApolloClient';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -55,6 +58,8 @@ interface Props {
 export default function FetchCardsGate({ promptForUpdate, children }: Props): JSX.Element {
   const { db } = useContext(DatabaseContext);
   const [needsMigration, migrating, doMigrate] = useReduxMigrator();
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const [{ isConnected }] = useNetworkStatus();
 
   const dispatch = useDispatch();
   const fetchNeeded = useSelector((state: AppState) => state.packs.all.length === 0);
@@ -89,6 +94,16 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
       (dateUpdatePrompt + REPROMPT_SECONDS) < nowSeconds
     );
   }, [dateFetched, dateUpdatePrompt]);
+
+  useEffect(() => {
+    if (promptForUpdate) {
+      if (user && isConnected) {
+        apolloQueueLink.open();
+      } else {
+        apolloQueueLink.close();
+      }
+    }
+  }, [promptForUpdate, user, isConnected]);
 
   useEffect(() => {
     if (fetchNeeded) {

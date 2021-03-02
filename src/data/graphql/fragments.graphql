@@ -1,0 +1,82 @@
+
+
+fragment MiniCampaign on campaign {
+  id
+  name
+  cycleCode
+  standaloneId
+  difficulty
+  scenarioResults
+  guided
+  uuid
+  latest_decks {
+    deck {
+      id
+      arkhamdb_id
+      local_uuid
+      investigator
+    }
+  }
+  nonDeckInvestigators
+  investigator_data {
+    id
+    investigator
+    mental
+    physical
+    insane
+    killed
+    storyAssets
+  }
+  updated_at
+}
+
+fragment FullCampaign on campaign {
+  id
+  uuid
+  name
+  cycleCode
+  standaloneId
+  difficulty
+  campaignNotes
+  chaosBag
+  showInterludes
+  nonDeckInvestigators
+  scenarioResults
+  weaknessSet
+  guided
+  guide_version
+  guide_inputs {
+    id
+    step
+    scenario
+    payload
+    created_at
+  }
+  guide_achivements {
+    id
+    achievement_id
+    type
+    bool_value
+    value
+    updated_at
+  }
+  investigator_data {
+    investigator
+
+    addedCards
+    ignoreStoryAssets
+    storyAssets
+    removedCards
+
+    insane
+    killed
+    mental
+    physical
+
+    availableXp
+    spentXp
+    specialXp
+
+    updated_at
+  }
+}

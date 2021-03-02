@@ -104,6 +104,8 @@ function uploadCampaignHelper(
         scenarioResults: campaign.scenarioResults,
         showInterludes: campaign.showInterludes,
         weaknessSet: campaign.weaknessSet,
+        guided: campaign.guided,
+        guideVersion: campaign.guideVersion,
       },
     });
     dispatch({

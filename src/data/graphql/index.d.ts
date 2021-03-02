@@ -1,17 +1,9 @@
 
-declare module '*/campaigns.graphql' {
+declare module '*/createCampaigns.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const updateCampaignName: DocumentNode;
 export const uploadNewCampaign: DocumentNode;
-export const deleteInvestigatorDecks: DocumentNode;
-export const setBinaryAchievement: DocumentNode;
-export const incCountAchievementMax: DocumentNode;
-export const incCountAchievement: DocumentNode;
-export const decCountAchievement: DocumentNode;
-export const addGuideInput: DocumentNode;
-export const MiniCampaign: DocumentNode;
-export const getMyCampaigns: DocumentNode;
 
   export default defaultDocument;
 }
@@ -33,10 +25,45 @@ export const getMyDecks: DocumentNode;
 }
     
 
+declare module '*/fragments.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const MiniCampaign: DocumentNode;
+export const FullCampaign: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/readCampaigns.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const getMyCampaigns: DocumentNode;
+export const getCampaign: DocumentNode;
+export const campaign: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/social.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const getProfile: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/updateCampaigns.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const deleteInvestigatorDecks: DocumentNode;
+export const setBinaryAchievement: DocumentNode;
+export const incCountAchievementMax: DocumentNode;
+export const incCountAchievement: DocumentNode;
+export const decCountAchievement: DocumentNode;
+export const addGuideInput: DocumentNode;
 
   export default defaultDocument;
 }

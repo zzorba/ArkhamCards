@@ -15,7 +15,7 @@ import COLORS from '@styles/colors';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StandaloneItem from './StandaloneItem';
 import StyleContext from '@styles/StyleContext';
-import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 interface Props {
   onScroll: (...args: any[]) => void;

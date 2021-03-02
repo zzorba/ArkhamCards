@@ -26,7 +26,7 @@ import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import EncounterIcon from '@icons/EncounterIcon';
 import { uploadCampaign } from '@components/campaignguide/actions';
 import { useCreateCampaignActions } from '@data/remote/campaigns';
-import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 function login(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {

@@ -9,7 +9,7 @@ import { BODY_OF_A_YITHIAN } from '@app_constants';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import { s } from '@styles/space';
 import { useInvestigatorCards } from '@components/core/hooks';
-import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 interface Props {
   campaign: MiniCampaignT;

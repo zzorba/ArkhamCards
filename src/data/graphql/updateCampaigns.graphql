@@ -1,113 +1,3 @@
-mutation updateCampaignName($campaignId: Int!, $name: String!) {
-	update_campaign_by_pk(
-    pk_columns: {id: $campaignId}
-    _set: { name: $name }
-  ) {
-    id
-    name
-  }
-}
-
-mutation uploadNewCampaign(
-  $campaignId: Int!,
-  $cycleCode: String!,
-  $standaloneId: jsonb,
-  $showInterludes: Boolean,
-  $name: String!,
-  $difficulty: String,
-  $campaignNotes: jsonb,
-  $nonDeckInvestigators: jsonb,
-  $scenarioResults: jsonb,
-  $chaosBag: jsonb,
-  $weaknessSet: jsonb,
-  $inputs: [guide_input_insert_input!]!,
-  $achievements: [guide_achievement_insert_input!]!,
-  $investigator_data: [investigator_data_insert_input!]!
-) {
-  insert_guide_input(
-    objects: $inputs
-  ) {
-    affected_rows
-    returning {
-      id
-      campaign_id
-      scenario
-      step
-      payload
-      created_at
-    }
-  }
-  insert_guide_achievement(
-    objects: $achievements
-  ) {
-    affected_rows
-  }
-  insert_investigator_data(objects: $investigator_data){
-    affected_rows
-  }
-   update_campaign_by_pk(
-  pk_columns: { id: $campaignId}
-	_set: {
-    name: $name
-    cycleCode: $cycleCode
-    standaloneId: $standaloneId
-    difficulty: $difficulty
-    campaignNotes: $campaignNotes
-    chaosBag: $chaosBag
-    showInterludes: $showInterludes
-    nonDeckInvestigators: $nonDeckInvestigators
-    scenarioResults: $scenarioResults
-    weaknessSet: $weaknessSet
-  }) {
-    id
-    name
-    cycleCode
-    standaloneId
-    difficulty
-    campaignNotes
-    chaosBag
-    showInterludes
-    nonDeckInvestigators
-    scenarioResults
-    weaknessSet
-    guided
-    guide_inputs {
-      id
-      step
-      scenario
-      payload
-      created_at
-    }
-    guide_achivements {
-      id
-      achievement_id
-      type
-      bool_value
-      value
-      updated_at
-    }
-    investigator_data {
-      investigator
-
-      addedCards
-      ignoreStoryAssets
-      storyAssets
-      removedCards
-
-      insane
-      killed
-      mental
-      physical
-
-      availableXp
-      spentXp
-      specialXp
-
-      updated_at
-    }
-  }
-}
-
 mutation deleteInvestigatorDecks(
   $campaign_id: Int!,
   $investigator: String!,
@@ -122,6 +12,8 @@ mutation deleteInvestigatorDecks(
   ) {
     returning {
       id
+      arkhamdb_id
+      local_uuid
     }
   }
 }
@@ -294,51 +186,5 @@ mutation addGuideInput(
     scenario
     step
     payload
-  }
-}
-fragment MiniCampaign on campaign {
-  id
-  name
-  cycleCode
-  standaloneId
-  difficulty
-  scenarioResults
-  guided
-  uuid
-  latest_decks {
-    deck {
-      id
-      investigator
-    }
-  }
-  nonDeckInvestigators
-  investigator_data {
-    id
-    investigator
-    mental
-    physical
-    insane
-    killed
-    storyAssets
-  }
-  updated_at
-}
-
-query getMyCampaigns(
-  $userId: String!
-) {
-  users_by_pk(id: $userId) {
-    id
-    campaigns {
-      campaign {
-        link_a_campaign {
-          ...MiniCampaign
-        }
-        link_b_campaign {
-          ...MiniCampaign
-        }
-        ...MiniCampaign
-      }
-    }
   }
 }

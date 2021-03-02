@@ -163,5 +163,6 @@ module.exports = {
     'react/jsx-curly-spacing': 'off',
     'react/display-name': 'off',
     'destructuring/no-rename': 'off',
+    'semi': 'off',
   }
 }

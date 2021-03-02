@@ -1,0 +1,71 @@
+# import FullCampaign from 'fragments.graphql'
+
+mutation updateCampaignName($campaignId: Int!, $name: String!) {
+	update_campaign_by_pk(
+    pk_columns: {id: $campaignId}
+    _set: { name: $name }
+  ) {
+    id
+    uuid
+    name
+  }
+}
+
+mutation uploadNewCampaign(
+  $campaignId: Int!,
+  $cycleCode: String!,
+  $standaloneId: jsonb,
+  $showInterludes: Boolean,
+  $name: String!,
+  $difficulty: String,
+  $campaignNotes: jsonb,
+  $nonDeckInvestigators: jsonb,
+  $scenarioResults: jsonb,
+  $chaosBag: jsonb,
+  $weaknessSet: jsonb,
+  $guided: Boolean,
+  $guideVersion: Int,
+  $inputs: [guide_input_insert_input!]!,
+  $achievements: [guide_achievement_insert_input!]!,
+  $investigator_data: [investigator_data_insert_input!]!
+) {
+  insert_guide_input(
+    objects: $inputs
+  ) {
+    affected_rows
+    returning {
+      id
+      campaign_id
+      scenario
+      step
+      payload
+      created_at
+    }
+  }
+  insert_guide_achievement(
+    objects: $achievements
+  ) {
+    affected_rows
+  }
+  insert_investigator_data(objects: $investigator_data){
+    affected_rows
+  }
+   update_campaign_by_pk(
+  pk_columns: { id: $campaignId}
+	_set: {
+    name: $name
+    cycleCode: $cycleCode
+    standaloneId: $standaloneId
+    difficulty: $difficulty
+    campaignNotes: $campaignNotes
+    chaosBag: $chaosBag
+    showInterludes: $showInterludes
+    nonDeckInvestigators: $nonDeckInvestigators
+    scenarioResults: $scenarioResults
+    weaknessSet: $weaknessSet
+    guided: $guided
+    guide_version: $guideVersion
+  }) {
+    ...FullCampaign
+  }
+}

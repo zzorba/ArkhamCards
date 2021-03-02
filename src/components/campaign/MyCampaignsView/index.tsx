@@ -24,7 +24,7 @@ import { NavigationProps } from '@components/nav/types';
 import { getStandaloneScenarios } from '@data/scenario';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useCampaigns } from '@data/remote/hooks';
-import { MiniCampaignT } from '@data/interfaces/MiniCampaignT';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
