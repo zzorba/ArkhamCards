@@ -5386,7 +5386,7 @@
 {
   "id": "ptc",
   "position": 2,
-  "version": 1,
+  "version": 2,
   "name": "La Route de Carcosa",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -10959,6 +10959,143 @@
           ]
         }
       ]
+    },
+    {
+      "id": "maybe_add_conviction",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "tpm_conviction_or_doubt",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_two_conviction"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_two_conviction",
+      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "conviction",
+          "operation": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "maybe_add_doubt",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "tpm_conviction_or_doubt",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_two_doubt"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_two_doubt",
+      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "doubt",
+          "operation": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "maybe_ask_conviction_or_doubt",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "tpm_conviction_or_doubt",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          },
+          {
+            "type": "campaign_data",
+            "campaign_data": "version",
+            "min_version": 1,
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_conviction_or_doubt_resolution"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_conviction_or_doubt_resolution",
+      "type": "input",
+      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "doubt",
+            "text": "Mark 2 <b>Doubt</b>.",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "doubt",
+                "operation": "add",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "id": "conviction",
+            "text": "Mark 2 <b>Conviction</b>.",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "conviction",
+                "operation": "add",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "id": "neither",
+            "text": "Scenario ended before Act 2b was resolved."
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -10976,6 +11113,7 @@
       ],
       "text": "Un agent de police vous réveille en vous secouant et vous aide à vous remettre sur pied. Vous avez l'impression d'être passé sous un train. La douleur est intolérable. L'homme vous braque sa torche sur le visage et vous pose des questions en français. Hébété, vous avez du mal à répondre. Il pointe l'escalier du doigt et vous traîne hors des catacombes. Vous titubez dans la rue de la Tombe-Issoire et parcourez lentement le chemin jusqu'à un hôtel où vous pourrez passer la nuit.\nAprès quelques jours de recherches, la signification de l'étrange motif aperçu dans les catacombes vous échappe toujours. Vous avez l'impression d'avoir été envoyé à la chasse au dahu. Vous êtes sur le point d'abandonner quand vous apercevez un vieux livre jaune sur la table. Vous découvrez avec surprise qu'il s'agit d'un script intégral du Roi en Jaune. Sur la couverture, le motif dont vous essayez de percer la signification depuis plusieurs nuits est dessiné à l'encre noire. Qui l'a placé là ? Et comment est-il entré dans votre chambre d'hôtel ? Quoi qu'il en soit, vous savez ce qu'il vous reste à faire. La pièce recèle des secrets – elle en contient tout du long – mais, pour l'instant, vous avez soigneusement évité de lire l'Acte II. Quelle folle superstition. Ses mots ne peuvent pas vous faire plus de mal que les créatures et les fanatiques que vous avez croisés jusqu'ici. Tremblant de tous vos membres, vous ouvrez le livre à la deuxième partie et commencez à lire.",
       "steps": [
+        "maybe_ask_conviction_or_doubt",
         "know_site_of_gate",
         "read_act_2_choice",
         "add_elder_things",
@@ -10993,6 +11131,7 @@
       "title": "Conclusion 1",
       "text": "Le crâne calciné est la clé de tout. Vous en êtes sûr. Vous avez employé tous les moyens possibles pour étudier le motif qu'il arbore, mais la réponse vous échappe toujours. Vous avez montré le crâne à des experts, à des occultistes, à des professeurs. Vous vous êtes même surpris à lui parler une fois ou deux. Exaspéré, vous placez le crâne sur votre table de chevet et tentez de trouver le sommeil pour la première fois depuis votre sortie des catacombes. En vous endormant, vous ne parvenez pas à chasser la vision du motif gravé sur le front du crâne.\nVous vous réveillez avec une inspiration subite et foncez au Louvre, le célèbre musée parisien contenant des milliers de peintures, de dessins et de trouvailles archéologiques. Vous passez des jours à explorer le musée – chaque oeuvre, chaque collection, chaque petit objet d'art qui pourrait vous révéler la signification de ce motif. Finalement, vous tombez sur un tableau représentant une magnifique ville insulaire assaillie par une tempête. Des vagues s'écrasent contre les murailles de pierre de la ville, menaçant d'engloutir l'île tout entière. Des AQU éclairs zèbrent le ciel autour du clocher de l'abbaye qui surplombe le village. Une nuée de nuages noirs recouvre le ciel. Et sur le vitrail de l'abbaye, vous apercevez la copie conforme du motif du crâne calciné que vous tenez entre vos mains. Le titre de cette oeuvre : « La Route est Ouverte ».",
       "steps": [
+        "maybe_add_conviction",
         "know_site_of_gate",
         "add_cultists",
         "ask_ishimaru_haruko",
@@ -11009,6 +11148,7 @@
       "title": "Conclusion 2",
       "text": "Vous tombez sans discontinuer à travers l'abîme infini. Aucun air ne ralentit votre descente ni ne s'engouffre dans vos cheveux. Cet endroit n'est pas réel. Finalement, vous traversez une porte invisible et entrez dans un autre monde. Au-dessus et au-dessous de vous surgissent deux lignes d'horizon, l'une reflétant l'autre. Un tourbillon de nuages noirs et de vagues s'amoncelle entre les deux. Vous observez les deux côtés – la ville familière et son étrange reflet. Cela pourrait-il être la route de Carcosa ? Un passage entre les réalités ? Le lieu où deux mondes convergent ? Si tel est le cas, tout ce qu'il vous reste à faire est de trouver l'endroit où la porte apparaît sur Terre. Vous tombez dans le vortex en dessous.\nUn agent de police vous réveille en vous secouant et vous aide à vous remettre sur pied. Vous avez l'impression d'être passé sous un train. La douleur est intolérable. L'homme vous braque sa torche sur le visage et vous pose des questions en français. Vos yeux s'écarquillent à mesure que vous reprenez conscience. Vous libérez votre bras de la poigne du policier déboussolé. « Il faut que j'y aille, maintenant ! »",
       "steps": [
+        "maybe_add_doubt",
         "know_site_of_gate_chasing_stranger",
         "add_tablets",
         "ask_ishimaru_haruko",
@@ -17613,7 +17753,7 @@
 {
   "id": "rtptc",
   "position": 2,
-  "version": 1,
+  "version": 2,
   "name": "Renouveau - La route de Carcosa",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -23390,6 +23530,143 @@
       ]
     },
     {
+      "id": "maybe_add_conviction",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "tpm_conviction_or_doubt",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_two_conviction"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_two_conviction",
+      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "conviction",
+          "operation": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "maybe_add_doubt",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "tpm_conviction_or_doubt",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_two_doubt"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_two_doubt",
+      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "doubt",
+          "operation": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "maybe_ask_conviction_or_doubt",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "tpm_conviction_or_doubt",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          },
+          {
+            "type": "campaign_data",
+            "campaign_data": "version",
+            "min_version": 1,
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_conviction_or_doubt_resolution"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_conviction_or_doubt_resolution",
+      "type": "input",
+      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "doubt",
+            "text": "Mark 2 <b>Doubt</b>.",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "doubt",
+                "operation": "add",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "id": "conviction",
+            "text": "Mark 2 <b>Conviction</b>.",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "conviction",
+                "operation": "add",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "id": "neither",
+            "text": "Scenario ended before Act 2b was resolved."
+          }
+        ]
+      }
+    },
+    {
       "id": "gather_encounter_sets",
       "title": "Mise en Place",
       "type": "encounter_sets",
@@ -23436,6 +23713,7 @@
       ],
       "text": "Un agent de police vous réveille en vous secouant et vous aide à vous remettre sur pied. Vous avez l'impression d'être passé sous un train. La douleur est intolérable. L'homme vous braque sa torche sur le visage et vous pose des questions en français. Hébété, vous avez du mal à répondre. Il pointe l'escalier du doigt et vous traîne hors des catacombes. Vous titubez dans la rue de la Tombe-Issoire et parcourez lentement le chemin jusqu'à un hôtel où vous pourrez passer la nuit.\nAprès quelques jours de recherches, la signification de l'étrange motif aperçu dans les catacombes vous échappe toujours. Vous avez l'impression d'avoir été envoyé à la chasse au dahu. Vous êtes sur le point d'abandonner quand vous apercevez un vieux livre jaune sur la table. Vous découvrez avec surprise qu'il s'agit d'un script intégral du Roi en Jaune. Sur la couverture, le motif dont vous essayez de percer la signification depuis plusieurs nuits est dessiné à l'encre noire. Qui l'a placé là ? Et comment est-il entré dans votre chambre d'hôtel ? Quoi qu'il en soit, vous savez ce qu'il vous reste à faire. La pièce recèle des secrets – elle en contient tout du long – mais, pour l'instant, vous avez soigneusement évité de lire l'Acte II. Quelle folle superstition. Ses mots ne peuvent pas vous faire plus de mal que les créatures et les fanatiques que vous avez croisés jusqu'ici. Tremblant de tous vos membres, vous ouvrez le livre à la deuxième partie et commencez à lire.",
       "steps": [
+        "maybe_ask_conviction_or_doubt",
         "know_site_of_gate",
         "read_act_2_choice",
         "add_elder_things",
@@ -23453,6 +23731,7 @@
       "title": "Conclusion 1",
       "text": "Le crâne calciné est la clé de tout. Vous en êtes sûr. Vous avez employé tous les moyens possibles pour étudier le motif qu'il arbore, mais la réponse vous échappe toujours. Vous avez montré le crâne à des experts, à des occultistes, à des professeurs. Vous vous êtes même surpris à lui parler une fois ou deux. Exaspéré, vous placez le crâne sur votre table de chevet et tentez de trouver le sommeil pour la première fois depuis votre sortie des catacombes. En vous endormant, vous ne parvenez pas à chasser la vision du motif gravé sur le front du crâne.\nVous vous réveillez avec une inspiration subite et foncez au Louvre, le célèbre musée parisien contenant des milliers de peintures, de dessins et de trouvailles archéologiques. Vous passez des jours à explorer le musée – chaque oeuvre, chaque collection, chaque petit objet d'art qui pourrait vous révéler la signification de ce motif. Finalement, vous tombez sur un tableau représentant une magnifique ville insulaire assaillie par une tempête. Des vagues s'écrasent contre les murailles de pierre de la ville, menaçant d'engloutir l'île tout entière. Des AQU éclairs zèbrent le ciel autour du clocher de l'abbaye qui surplombe le village. Une nuée de nuages noirs recouvre le ciel. Et sur le vitrail de l'abbaye, vous apercevez la copie conforme du motif du crâne calciné que vous tenez entre vos mains. Le titre de cette oeuvre : « La Route est Ouverte ».",
       "steps": [
+        "maybe_add_conviction",
         "know_site_of_gate",
         "add_cultists",
         "ask_ishimaru_haruko",
@@ -23469,6 +23748,7 @@
       "title": "Conclusion 2",
       "text": "Vous tombez sans discontinuer à travers l'abîme infini. Aucun air ne ralentit votre descente ni ne s'engouffre dans vos cheveux. Cet endroit n'est pas réel. Finalement, vous traversez une porte invisible et entrez dans un autre monde. Au-dessus et au-dessous de vous surgissent deux lignes d'horizon, l'une reflétant l'autre. Un tourbillon de nuages noirs et de vagues s'amoncelle entre les deux. Vous observez les deux côtés – la ville familière et son étrange reflet. Cela pourrait-il être la route de Carcosa ? Un passage entre les réalités ? Le lieu où deux mondes convergent ? Si tel est le cas, tout ce qu'il vous reste à faire est de trouver l'endroit où la porte apparaît sur Terre. Vous tombez dans le vortex en dessous.\nUn agent de police vous réveille en vous secouant et vous aide à vous remettre sur pied. Vous avez l'impression d'être passé sous un train. La douleur est intolérable. L'homme vous braque sa torche sur le visage et vous pose des questions en français. Vos yeux s'écarquillent à mesure que vous reprenez conscience. Vous libérez votre bras de la poigne du policier déboussolé. « Il faut que j'y aille, maintenant ! »",
       "steps": [
+        "maybe_add_doubt",
         "know_site_of_gate_chasing_stranger",
         "add_tablets",
         "ask_ishimaru_haruko",

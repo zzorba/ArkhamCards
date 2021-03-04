@@ -5386,7 +5386,7 @@
 {
   "id": "ptc",
   "position": 2,
-  "version": 1,
+  "version": 2,
   "name": "El camino a Carcosa",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -10959,6 +10959,143 @@
           ]
         }
       ]
+    },
+    {
+      "id": "maybe_add_conviction",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "tpm_conviction_or_doubt",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_two_conviction"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_two_conviction",
+      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "conviction",
+          "operation": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "maybe_add_doubt",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "tpm_conviction_or_doubt",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_two_doubt"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_two_doubt",
+      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "doubt",
+          "operation": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "maybe_ask_conviction_or_doubt",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "tpm_conviction_or_doubt",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          },
+          {
+            "type": "campaign_data",
+            "campaign_data": "version",
+            "min_version": 1,
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_conviction_or_doubt_resolution"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_conviction_or_doubt_resolution",
+      "type": "input",
+      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "doubt",
+            "text": "Mark 2 <b>Doubt</b>.",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "doubt",
+                "operation": "add",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "id": "conviction",
+            "text": "Mark 2 <b>Conviction</b>.",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "conviction",
+                "operation": "add",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "id": "neither",
+            "text": "Scenario ended before Act 2b was resolved."
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -10976,6 +11113,7 @@
       ],
       "text": "Te despierta el zarandeo de un agente de policía que te pone en pie. Te sientes como si un tren se hubiera estrellado contra tu cabeza. El dolor es insoportable. El hombre te apunta con una linterna a los ojos y te hace varias preguntas en francés. Conmocionado como estás, te resulta difícil responder. Señala la escalera cercana y te saca a empujones de las catacumbas. Sales a trompicones a la Rue de la Tombe-Issoire y te diriges lentamente hacia un hotel en el que puedas pasar la noche.\nTras varios días de investigación, sigues sin entender el significado de los extraños diagramas que viste en las catacumbas. Notas como si te hubieran puesto a buscar una aguja en un pajar. Cuando estás a punto de darte por vencido, ves un desvaído libro amarillo en la mesa que tienes más cerca. Te asombra descubrir que es el guion completo de El Rey de Amarillo. Dibujado con tinta negra en la portada ves el mismo diagrama cuyo significado llevas tratando de interpretar varias noches insomnes. ¿Quién lo ha puesto aquí? ¿Cómo ha llegado a tu habitación? Independientemente de eso, sabes lo que debes hacer. La obra contiene los secretos, lo ha hecho todo el tiempo, y aun así, como un idiota, has evitado leer el segundo acto por pura superstición. Sus palabras no pueden dañarte más que las criaturas y fanáticos que has encontrado. Tembloroso, abres la segunda parte y comienzas a leer.",
       "steps": [
+        "maybe_ask_conviction_or_doubt",
         "know_site_of_gate",
         "read_act_2_choice",
         "add_elder_things",
@@ -10993,6 +11131,7 @@
       "title": "Resolución 1",
       "text": "El cráneo calcinado es la clave de todo. Estás seguro. Has intentado todos los métodos que tienes a tu disposición para estudiar el diagrama que lleva, pero se te sigue escapando la respuesta. Has llevado el cráneo a expertos, ocultistas y profesores. Incluso has tratado de hablar con el cráneo en más de una ocasión. Exasperado, colocas el cráneo en tu mesilla de noche y tratas de dormir por primera vez desde que escapaste de las catacumbas. Cuando te quedas dormido, no logras borrar la imagen del diagrama grabado en la frente del cráneo.\nTe despiertas con una chispa de inspiración y te diriges corriendo al Musée du Louvre, un famoso museo parisino que alberga decenas de miles de cuadros, dibujos y hallazgos arqueológicos. Pasas días explorando el museo; cada exposición, colección y objeto de arte que podría contener alguna pista sobre el significado del diagrama. Por fin lo ves: un cuadro que muestra una preciosa ciudad isleña que soporta una tormenta torrencial. Las olas chocan contra la piedra de la muralla exterior, y la marea amenaza con engullir la isla entera. Hay destellos de relámpagos alrededor de la torre de la abadía que hay sobre la aldea. Un remolino de nubes negras gira en el cielo. El diagrama del cráneo quemado que tienes en las manos aparece perfectamente recreado en una vidriera de la abadía. El título del cuadro es “El camino está abierto”.",
       "steps": [
+        "maybe_add_conviction",
         "know_site_of_gate",
         "add_cultists",
         "ask_ishimaru_haruko",
@@ -11009,6 +11148,7 @@
       "title": "Resolución 2",
       "text": "Caes sin cesar por un abismo vacío. No hay aire que ralentice tu descenso ni recorra tu pelo. Es un pasaje desprovisto de realidad. Por fin, atraviesas un portal invisible y entras en otro reino. Por encima y por debajo de ti hay dos firmamentos, y uno es el distorsionado reflejo del otro. Entre ellos se encuentra un remolino de nubes negras y olas rompientes. Estudias ambos lados: la familiar ciudad y su extraño reflejo. ¿Podría ser éste el camino a Carcosa? ¿Un pasaje entre realidades, donde convergen los reinos? Si es así, todo lo que debes hacer es encontrar dónde aparece este portal en la Tierra. Te precipitas al vórtice que tienes debajo.\nTe despierta el zarandeo de un agente de policía que te pone en pie. Te sientes como si un tren se hubiera estrellado contra tu cabeza. El dolor es insoportable. El hombre te apunta con una linterna a los ojos y te hace varias preguntas en francés. Abres los ojos como platos al comprenderlo todo, y te sueltas del agarre del confundido hombre. –¡Debo irme de inmediato!",
       "steps": [
+        "maybe_add_doubt",
         "know_site_of_gate_chasing_stranger",
         "add_tablets",
         "ask_ishimaru_haruko",
@@ -17613,7 +17753,7 @@
 {
   "id": "rtptc",
   "position": 2,
-  "version": 1,
+  "version": 2,
   "name": "Regreso a El camino a Carcosa",
   "campaign_type": "campaign",
   "campaign_log": [
@@ -23390,6 +23530,143 @@
       ]
     },
     {
+      "id": "maybe_add_conviction",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "tpm_conviction_or_doubt",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_two_conviction"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_two_conviction",
+      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "conviction",
+          "operation": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "maybe_add_doubt",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "tpm_conviction_or_doubt",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "add_two_doubt"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_two_doubt",
+      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "doubt",
+          "operation": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "maybe_ask_conviction_or_doubt",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "tpm_conviction_or_doubt",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          },
+          {
+            "type": "campaign_data",
+            "campaign_data": "version",
+            "min_version": 1,
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_conviction_or_doubt_resolution"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_conviction_or_doubt_resolution",
+      "type": "input",
+      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "doubt",
+            "text": "Mark 2 <b>Doubt</b>.",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "doubt",
+                "operation": "add",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "id": "conviction",
+            "text": "Mark 2 <b>Conviction</b>.",
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "conviction",
+                "operation": "add",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "id": "neither",
+            "text": "Scenario ended before Act 2b was resolved."
+          }
+        ]
+      }
+    },
+    {
       "id": "gather_encounter_sets",
       "title": "Preparación",
       "type": "encounter_sets",
@@ -23436,6 +23713,7 @@
       ],
       "text": "Te despierta el zarandeo de un agente de policía que te pone en pie. Te sientes como si un tren se hubiera estrellado contra tu cabeza. El dolor es insoportable. El hombre te apunta con una linterna a los ojos y te hace varias preguntas en francés. Conmocionado como estás, te resulta difícil responder. Señala la escalera cercana y te saca a empujones de las catacumbas. Sales a trompicones a la Rue de la Tombe-Issoire y te diriges lentamente hacia un hotel en el que puedas pasar la noche.\nTras varios días de investigación, sigues sin entender el significado de los extraños diagramas que viste en las catacumbas. Notas como si te hubieran puesto a buscar una aguja en un pajar. Cuando estás a punto de darte por vencido, ves un desvaído libro amarillo en la mesa que tienes más cerca. Te asombra descubrir que es el guion completo de El Rey de Amarillo. Dibujado con tinta negra en la portada ves el mismo diagrama cuyo significado llevas tratando de interpretar varias noches insomnes. ¿Quién lo ha puesto aquí? ¿Cómo ha llegado a tu habitación? Independientemente de eso, sabes lo que debes hacer. La obra contiene los secretos, lo ha hecho todo el tiempo, y aun así, como un idiota, has evitado leer el segundo acto por pura superstición. Sus palabras no pueden dañarte más que las criaturas y fanáticos que has encontrado. Tembloroso, abres la segunda parte y comienzas a leer.",
       "steps": [
+        "maybe_ask_conviction_or_doubt",
         "know_site_of_gate",
         "read_act_2_choice",
         "add_elder_things",
@@ -23453,6 +23731,7 @@
       "title": "Resolución 1",
       "text": "El cráneo calcinado es la clave de todo. Estás seguro. Has intentado todos los métodos que tienes a tu disposición para estudiar el diagrama que lleva, pero se te sigue escapando la respuesta. Has llevado el cráneo a expertos, ocultistas y profesores. Incluso has tratado de hablar con el cráneo en más de una ocasión. Exasperado, colocas el cráneo en tu mesilla de noche y tratas de dormir por primera vez desde que escapaste de las catacumbas. Cuando te quedas dormido, no logras borrar la imagen del diagrama grabado en la frente del cráneo.\nTe despiertas con una chispa de inspiración y te diriges corriendo al Musée du Louvre, un famoso museo parisino que alberga decenas de miles de cuadros, dibujos y hallazgos arqueológicos. Pasas días explorando el museo; cada exposición, colección y objeto de arte que podría contener alguna pista sobre el significado del diagrama. Por fin lo ves: un cuadro que muestra una preciosa ciudad isleña que soporta una tormenta torrencial. Las olas chocan contra la piedra de la muralla exterior, y la marea amenaza con engullir la isla entera. Hay destellos de relámpagos alrededor de la torre de la abadía que hay sobre la aldea. Un remolino de nubes negras gira en el cielo. El diagrama del cráneo quemado que tienes en las manos aparece perfectamente recreado en una vidriera de la abadía. El título del cuadro es “El camino está abierto”.",
       "steps": [
+        "maybe_add_conviction",
         "know_site_of_gate",
         "add_cultists",
         "ask_ishimaru_haruko",
@@ -23469,6 +23748,7 @@
       "title": "Resolución 2",
       "text": "Caes sin cesar por un abismo vacío. No hay aire que ralentice tu descenso ni recorra tu pelo. Es un pasaje desprovisto de realidad. Por fin, atraviesas un portal invisible y entras en otro reino. Por encima y por debajo de ti hay dos firmamentos, y uno es el distorsionado reflejo del otro. Entre ellos se encuentra un remolino de nubes negras y olas rompientes. Estudias ambos lados: la familiar ciudad y su extraño reflejo. ¿Podría ser éste el camino a Carcosa? ¿Un pasaje entre realidades, donde convergen los reinos? Si es así, todo lo que debes hacer es encontrar dónde aparece este portal en la Tierra. Te precipitas al vórtice que tienes debajo.\nTe despierta el zarandeo de un agente de policía que te pone en pie. Te sientes como si un tren se hubiera estrellado contra tu cabeza. El dolor es insoportable. El hombre te apunta con una linterna a los ojos y te hace varias preguntas en francés. Abres los ojos como platos al comprenderlo todo, y te sueltas del agarre del confundido hombre. –¡Debo irme de inmediato!",
       "steps": [
+        "maybe_add_doubt",
         "know_site_of_gate_chasing_stranger",
         "add_tablets",
         "ask_ishimaru_haruko",
