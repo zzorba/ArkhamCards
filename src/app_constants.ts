@@ -213,6 +213,7 @@ export const CUSTOM_INVESTIGATOR = 'custom_001';
 export const VERSATILE_CODE = '06167';
 export const ON_YOUR_OWN_CODE = '53010';
 export const DEJA_VU_CODE = '60531';
+export const ANCESTRAL_KNOWLEDGE_CODE = '07303';
 export const ACE_OF_RODS_CODE = '05040';
 
 export const UNIDENTIFIED_UNTRANSLATED = new Set([

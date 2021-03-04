@@ -19,7 +19,7 @@ export interface SectionCount {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 31;
+  static SCHEMA_VERSION: number = 33;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
