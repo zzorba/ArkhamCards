@@ -45,12 +45,6 @@ const REPRINT_CARDS: {
   '02190': ['jac'],
   '02153': ['jac'],
   '04032': ['jac'],
-  '01079': ['ste'],
-  '01075': ['ste'],
-  '04201': ['ste'],
-  '04034': ['ste'],
-  '02113': ['ste'],
-  '04200': ['ste'],
 };
 
 const FEMININE_INVESTIGATORS = new Set([
@@ -103,6 +97,7 @@ export class PartialCard {
   public headerId: string;
   public headerTitle: string;
   public pack_code: string;
+  public reprint_pack_codes?: string[];
   public spoiler?: boolean;
 
   constructor(
@@ -112,6 +107,7 @@ export class PartialCard {
     headerId: string,
     headerTitle: string,
     pack_code: string,
+    reprint_pack_codes?: string[],
     renderSubName?: string,
     spoiler?: boolean,
   ) {
@@ -121,6 +117,7 @@ export class PartialCard {
     this.headerId = headerId;
     this.headerTitle = headerTitle;
     this.pack_code = pack_code;
+    this.reprint_pack_codes = reprint_pack_codes;
     this.renderSubName = renderSubName;
     this.spoiler = spoiler;
   }
@@ -132,6 +129,7 @@ export class PartialCard {
       `c.renderName as renderName`,
       `c.renderSubname as renderSubname`,
       `c.pack_code as pack_code`,
+      `c.reprint_pack_codes as reprint_pack_codes`,
       `c.spoiler as spoiler`,
       HEADER_SELECT[sort || SORT_BY_TYPE],
     ];
@@ -147,6 +145,7 @@ export class PartialCard {
         (raw.headerId === null || raw.headerId === undefined) ? 'null' : `${raw.headerId}`,
         sort === SORT_BY_TITLE ? t`All Cards` : raw.headerTitle,
         raw.pack_code,
+        raw.reprint_pack_codes ? raw.reprint_pack_codes.split(',') : undefined,
         raw.renderSubname,
         !!raw.spoiler
       );
@@ -185,6 +184,12 @@ export default class Card {
   @Index()
   @Column('text')
   public renderName!: string;
+
+  @Column('text', { nullable: true })
+  public duplicate_of_code?: string;
+
+  @Column('simple-array', { nullable: true })
+  public reprint_pack_codes?: string[];
 
   @Column('text')
   public type_code!: TypeCodeType;
@@ -645,7 +650,7 @@ export default class Card {
     if (this.pack_code !== 'core' || packInCollection.core) {
       return this.deck_limit || 0;
     }
-    const reprintPacks = REPRINT_CARDS[this.code];
+    const reprintPacks = this.reprint_pack_codes || REPRINT_CARDS[this.code];
     if (reprintPacks && find(reprintPacks, pack => !!packInCollection[pack])) {
       return this.deck_limit || 0;
     }
@@ -1094,6 +1099,9 @@ export default class Card {
     } else if (result.altArtInvestigator) {
       result.browse_visible += 4;
     }
+    if (result.duplicate_of_code) {
+      result.browse_visible += 8;
+    }
     result.mythos_card = !!result.encounter_code || !!result.linked_card?.encounter_code;
     result.spoiler = result.spoiler || (result.linked_card && result.linked_card.spoiler);
     return result;
@@ -1193,7 +1201,7 @@ export function cardInCollection(card: Card | PartialCard, packInCollection: { [
   if (packInCollection[card.pack_code]) {
     return true;
   }
-  const reprintPacks = REPRINT_CARDS[card.code];
+  const reprintPacks = card.reprint_pack_codes || REPRINT_CARDS[card.code];
   if (!reprintPacks) {
     return false;
   }

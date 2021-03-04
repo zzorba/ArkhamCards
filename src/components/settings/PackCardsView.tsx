@@ -29,6 +29,7 @@ export default function PackCardsView({
       componentId={componentId}
       baseQuery={query}
       showNonCollection
+      includeDuplicates
     />
   );
 }

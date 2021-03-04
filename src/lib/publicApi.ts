@@ -273,10 +273,19 @@ export const syncCards = async function(
       }, packsByCode, cycleNames, lang || 'en');
       genericInvestigator.browse_visible = 4;
       const cardsToInsert: Card[] = [genericInvestigator];
+      const dupes: {
+        [code: string]: string[] | undefined;
+      } = {};
       forEach(json, cardJson => {
         try {
           const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
           if (card) {
+            if (card.duplicate_of_code) {
+              if (!dupes[card.duplicate_of_code]) {
+                dupes[card.duplicate_of_code] = [];
+              }
+              dupes[card.duplicate_of_code]?.push(card.pack_code);
+            }
             cardsToInsert.push(card);
           }
         } catch (e) {
@@ -298,6 +307,9 @@ export const syncCards = async function(
       const bondedNames: string[] = [];
       const playerCards: Card[] = [];
       forEach(flatCards, card => {
+        if (dupes[card.code]) {
+          card.reprint_pack_codes = dupes[card.code];
+        }
         if (!card.hidden && card.encounter_code) {
           encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);
         }

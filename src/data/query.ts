@@ -14,7 +14,8 @@ export const ON_YOUR_OWN_RESTRICTION = new Brackets(
   { negate: true }
 );
 
-export const BASIC_QUERY = where('c.browse_visible != 0');
+export const BASIC_QUERY = where('c.browse_visible != 0 and c.browse_visible < 8');
+export const BASIC_WITH_DUPLICATES_QUERY = where('c.browse_visible != 0 and c.browse_visible != 8');
 export const SCENARIO_CARDS_QUERY = where('c.type_code = "scenario"');
 export const BASIC_WEAKNESS_QUERY = where(
   `c.type_code != "scenario" AND c.subtype_code = "basicweakness" AND c.code != "${RANDOM_BASIC_WEAKNESS}"`
@@ -25,6 +26,7 @@ export const STORY_CARDS_QUERY = where(
 export const MYTHOS_CARDS_QUERY = where('c.browse_visible = 2 or c.browse_visible = 3');
 export const BROWSE_CARDS_QUERY = where('c.browse_visible = 1 or c.browse_visible = 3');
 export const PLAYER_CARDS_QUERY = where(`c.browse_visible = 1 or c.browse_visible = 3 or c.browse_visible = 4`);
+export const BROWSE_CARDS_WITH_DUPLICATES_QUERY = where('c.browse_visible in [1, 3, 4, 5, 7, 9, 11, 12]');
 export const INVESTIGATOR_CARDS_QUERY = where('c.type_code = "investigator"');
 export function tabooSetQuery(tabooSetId?: number) {
   return `(c.taboo_set_id is null OR c.taboo_set_id = ${tabooSetId || 0})`;
