@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-03-04 23:18+0300\n"
+"PO-Revision-Date: 2021-03-04 23:22+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -3145,7 +3145,7 @@ msgid "Coming soon"
 msgstr "Скоро"
 
 msgid "Edit Chaos Bag"
-msgstr "Править мешок хаоса"
+msgstr "Изменить состав мешка"
 
 msgid "Chaos bag is empty"
 msgstr "Мешок хаоса пуст"
@@ -4023,7 +4023,7 @@ msgid "Complete campaign setup"
 msgstr "Завершить подготовку к кампании"
 
 msgid "Review and draw tokens"
-msgstr "Список жетонов и симулятор взятия"
+msgstr "Тянуть жетоны"
 
 msgid "Spent experience"
 msgstr "Потраченный опыт"
@@ -4068,7 +4068,7 @@ msgid "Review scenario results"
 msgstr "Посмотреть результаты сценария"
 
 msgid "Edit chaos bag"
-msgstr "Править мешок хаоса"
+msgstr "Изменить состав мешка"
 
 msgid "Scenario name"
 msgstr "Название сценария"
