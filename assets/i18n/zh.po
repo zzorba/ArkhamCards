@@ -3861,6 +3861,12 @@ msgstr ""
 msgid "You must be online to upload campaigns"
 msgstr ""
 
+msgid "Decks with Ancestral Knowledge must include at least 10 skills."
+msgstr ""
+
+msgid "Faction, Level, Type"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
