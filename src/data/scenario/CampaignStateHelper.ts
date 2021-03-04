@@ -203,7 +203,7 @@ export default class CampaignStateHelper {
     if (latestInput &&
       latestInput.type === 'choice_list' &&
       (latestInput.step.startsWith('$upgrade_decks#') || latestInput.step.startsWith('$save_standalone_decks')) &&
-      !!latestInput.choices.deckId
+      !!latestInput.deckId
     ) {
       const isUpgrade = latestInput.step.startsWith('$upgrade_decks#');
       // This is a deck upgrade action.

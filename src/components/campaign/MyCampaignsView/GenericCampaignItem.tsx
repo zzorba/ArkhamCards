@@ -9,7 +9,7 @@ import { toRelativeDateString } from '@lib/datetime';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
-  lastUpdated: Date | string;
+  lastUpdated: Date | string | undefined;
   children: React.ReactNode;
   onPress: () => void;
 }
@@ -24,7 +24,7 @@ export default function GenericCampaignItem({ lastUpdated, children, onPress }: 
           header={undefined}
           faction="neutral"
           noSpace
-          footer={<RoundedFooterButton icon="campaign" title={toRelativeDateString(lastUpdated, lang)} onPress={debouncedOnPress} />}
+          footer={<RoundedFooterButton icon="campaign" title={lastUpdated ? toRelativeDateString(lastUpdated, lang) : `???`} onPress={debouncedOnPress} />}
         >
           { children }
         </RoundedFactionBlock>

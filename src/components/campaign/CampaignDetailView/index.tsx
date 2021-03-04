@@ -8,12 +8,13 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import { CampaignId, CUSTOM, Deck, DeckId, getCampaignId, getDeckId, InvestigatorData, Slots, WeaknessSet } from '@actions/types';
 import DecksSection from './DecksSection';
-import { updateCampaign, updateCampaignSpentXp, cleanBrokenCampaigns, addInvestigator, removeInvestigator } from '../actions';
+import { updateCampaign, updateCampaignXp, cleanBrokenCampaigns, addInvestigator, removeInvestigator } from '../actions';
 import { NavigationProps } from '@components/nav/types';
 import { getAllDecks, getDeck } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign, useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
 import { campaignNames } from '../constants';
@@ -66,8 +67,8 @@ function CampaignDetailView(props: Props) {
   }, [dispatch, campaignId, user]);
 
   const updateSpentXp = useCallback((code: string, value: number) => {
-    dispatch(updateCampaignSpentXp(campaignId, code, value));
-  }, [campaignId, dispatch]);
+    dispatch(updateCampaignXp(user, campaignId, code, value, 'spentXp'));
+  }, [dispatch, campaignId, user]);
 
   useEffect(() => {
     if (campaign?.name) {
@@ -102,7 +103,7 @@ function CampaignDetailView(props: Props) {
   }, [componentId, campaignId]);
 
   const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
+    dispatch(updateCampaign(user, campaignId, { name }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -127,7 +128,7 @@ function CampaignDetailView(props: Props) {
   const updateWeaknessAssignedCards = useCallback((weaknessCards: Slots) => {
     if (campaign) {
       updateWeaknessSet({
-        ...campaign.weaknessSet,
+        packCodes: campaign.weaknessSet?.packCodes || [],
         assignedCards: weaknessCards,
       });
     }
@@ -139,7 +140,7 @@ function CampaignDetailView(props: Props) {
       maybeShowWeaknessPrompt(
         deck,
         cards,
-        campaign.weaknessSet.assignedCards,
+        campaign.weaknessSet?.assignedCards || {},
         updateWeaknessAssignedCards,
         showAlert
       );
@@ -205,22 +206,6 @@ function CampaignDetailView(props: Props) {
     showChooseDeck();
   }, [showChooseDeck]);
   const [xpDialog, actuallyShowXpDialog] = useXpDialog(updateSpentXp);
-  const headerButtons = useMemo(() => {
-    return (
-      <>
-        <UploadCampaignButton
-          campaignId={campaignId}
-          setCampaignServerId={setCampaignServerId}
-        />
-        <DeleteCampaignButton
-          componentId={componentId}
-          campaignId={campaignId}
-          campaignName={campaign?.name || ''}
-          showAlert={showAlert}
-        />
-      </>
-    );
-  }, [showAlert, componentId, campaignId, campaign, setCampaignServerId]);
   const investigatorData = useMemo(() => campaign?.investigatorData || {}, [campaign?.investigatorData]);
   const showXpDialog = useCallback((investigator: Card) => {
     const data = investigatorData[investigator.code] || {};
@@ -292,7 +277,6 @@ function CampaignDetailView(props: Props) {
               name={campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode]}
               cycle={campaign.cycleCode}
               difficulty={campaign.difficulty}
-              buttons={headerButtons}
             />
             <DeckButton
               icon="log"
@@ -364,6 +348,17 @@ function CampaignDetailView(props: Props) {
               title={t`Draw random basic weakness`}
               onPress={drawWeaknessPressed}
               bottomMargin={s}
+            />
+            <UploadCampaignButton
+              campaignId={campaignId}
+              setCampaignServerId={setCampaignServerId}
+              showAlert={showAlert}
+            />
+            <DeleteCampaignButton
+              componentId={componentId}
+              campaignId={campaignId}
+              campaignName={campaign?.name || ''}
+              showAlert={showAlert}
             />
           </View>
         </ScrollView>

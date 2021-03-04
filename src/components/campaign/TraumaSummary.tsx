@@ -23,24 +23,24 @@ export default function TraumaSummary({ trauma, investigator, whiteText }: Props
   const textColorStyle = whiteText ? { color: '#FFF' } : undefined;
   if (investigator.eliminated(trauma)) {
     if (trauma.killed || physical >= (investigator.health || 0)) {
-      return <Text style={[typography.gameFont, textColorStyle]}>{t`Killed`}</Text>;
+      return <Text style={[typography.subHeaderText, textColorStyle]}>{t`Killed`}</Text>;
     }
-    return <Text style={[typography.gameFont, textColorStyle]}>{t`Insane`}</Text>;
+    return <Text style={[typography.subHeaderText, textColorStyle]}>{t`Insane`}</Text>;
   }
   if (physical + mental === 0) {
     if (whiteText) {
       return null;
     }
-    return <Text style={typography.gameFont}>{c('trauma').t`None`}</Text>;
+    return <Text style={typography.subHeaderText}>{c('trauma').t`None`}</Text>;
   }
   if (physical + mental > 3) {
     // compact mode;
     return (
       <View style={styles.row}>
         { (physical > 0) && <HealthSanityIcon type="health" size={24} /> }
-        { (physical > 1) && <Text style={[typography.gameFont, space.marginRightS, textColorStyle]}>×{physical}</Text> }
+        { (physical > 1) && <Text style={[typography.subHeaderText, space.marginRightS, textColorStyle]}>×{physical}</Text> }
         { (mental > 0) && <HealthSanityIcon type="sanity" size={24} /> }
-        { (mental > 1) && <Text style={[space.marginLeftXs, typography.gameFont, textColorStyle]}>×{mental}</Text> }
+        { (mental > 1) && <Text style={[space.marginLeftXs, typography.subHeaderText, textColorStyle]}>×{mental}</Text> }
       </View>
     );
   }

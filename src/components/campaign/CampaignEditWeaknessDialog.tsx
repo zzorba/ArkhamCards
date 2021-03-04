@@ -1,13 +1,13 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useCallback, useContext } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { t } from 'ttag';
 import { Campaign, CampaignId, Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
 import { updateCampaign } from './actions';
-import { AppState, makeCampaignSelector } from '@reducers';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useCampaign } from '@data/hooks';
 
 export interface CampaignEditWeaknessProps {
   campaignId: CampaignId;
@@ -16,8 +16,7 @@ export interface CampaignEditWeaknessProps {
 function CampaignEditWeaknessDialog({ componentId, campaignId }: CampaignEditWeaknessProps & NavigationProps) {
   const dispatch = useDispatch();
   const { user } = useContext(ArkhamCardsAuthContext);
-  const campaignSelector = useMemo(makeCampaignSelector, []);
-  const campaign = useSelector((state: AppState) => campaignSelector(state, campaignId.campaignId));
+  const campaign = useCampaign(campaignId);
   const weaknessSet = campaign && campaign.weaknessSet;
   const updateAssignedCards = useCallback((assignedCards: Slots) => {
     if (weaknessSet) {
@@ -28,7 +27,7 @@ function CampaignEditWeaknessDialog({ componentId, campaignId }: CampaignEditWea
       dispatch(updateCampaign(
         user,
         campaignId,
-        { weaknessSet: updatedWeaknessSet } as Campaign
+        { weaknessSet: updatedWeaknessSet }
       ));
     }
   }, [dispatch, campaignId, user, weaknessSet]);

@@ -1002,24 +1002,24 @@ msgstr "Sí"
 
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
-msgstr "Las Aventuras de ${investigator.name}"
+msgstr "Las aventuras de ${investigator.name}"
 
 msgid "${ investigator.name } Investigates"
-msgstr "${investigator.name} Investiga"
+msgstr "${investigator.name} investiga"
 
 #, javascript-format
 msgid "The ${ investigator.name } Mysteries"
-msgstr "Los Misterios de ${investigator.name}"
+msgstr "Los misterios de ${investigator.name}"
 
 msgid "The ${ investigator.name } Job"
-msgstr "El trabajo de ${investigator.name}"
+msgstr "El plan de ${investigator.name}"
 
 #, javascript-format
 msgid "${ investigator.name } on the Road"
-msgstr "${investigator.name} de Viaje"
+msgstr "${investigator.name} de viaje"
 
 msgid "${ investigator.name } Does It All"
-msgstr "${investigator.name} Lo Hace Todo"
+msgstr "${investigator.name} lo hace todo"
 
 msgid "Create on ArkhamDB"
 msgstr "Crear en ArkhamDB"
@@ -1037,7 +1037,7 @@ msgid "N/A"
 msgstr "N/A"
 
 msgid "All Investigators"
-msgstr "Todos los Investigadores"
+msgstr "Todos los investigadores"
 
 msgid "Draw: "
 msgstr "Robar: "
@@ -1134,13 +1134,13 @@ msgid "Cursing at the tentacle token"
 msgstr "Maldiciendo la ficha del tentáculo"
 
 msgid "Drawing a mythos card with surge"
-msgstr "Robando una carta de Encuentros con oleada"
+msgstr "Robando una carta de Encuentros con Oleada"
 
 msgid "Placing doom on the agenda"
 msgstr "Poniendo perdición en el Plan en curso"
 
 msgid "Reticulating spines"
-msgstr "Descubriendo nuevas erratas"
+msgstr "Teniendo un plan"
 
 msgid "Trying to make sense of the Time Warp FAQ"
 msgstr "Tratando de entender las secuencias anidadas"
@@ -1684,26 +1684,11 @@ msgstr "Cartas de Encuentro"
 msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr "Descuento de XP: ${ taboo.extra_xp }."
 
-msgid "Choose Tokens to Seal"
-msgstr "Elige las fichas a sellar"
-
 msgid "At Death's Doorstep"
 msgstr "En la puerta de la muerte (Acto 1)"
 
-msgid "Tap token to draw"
-msgstr "Toca la ficha de Caos para robar"
-
-msgid "Set aside and draw another"
-msgstr "Dejar a un lado y robar otra"
-
-msgid "Drawn"
-msgstr "Robadas"
-
 msgid "Sealed Tokens"
 msgstr "Fichas de Caos selladas"
-
-msgid "Seal Tokens"
-msgstr "Sellar fichas de Caos"
 
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "Descuento de XP: ${ card.extra_xp }."
@@ -2498,7 +2483,7 @@ msgid "Choose Side-Scenario"
 msgstr "Elige una Historia secundaria"
 
 msgid "Add side scenario"
-msgstr "Añade una Historia secundaria"
+msgstr "Añade Historia secundaria"
 
 msgid "Remove deck"
 msgstr "Eliminar mazo"
@@ -2766,7 +2751,7 @@ msgid "Scenario or Interlude"
 msgstr "Escenario o Interludio"
 
 msgid "Alphabetize guide encounter sets"
-msgstr "Alfabetizar conjuntos encuentros (campaña)"
+msgstr "Alfabetizar conjuntos encuentros"
 
 msgid "Draw Weakness"
 msgstr "Robar Debilidad"
@@ -3210,22 +3195,6 @@ msgstr "Editar Bolsa de Caos"
 msgid "Chaos bag is empty"
 msgstr "Chaos bag is empty"
 
-msgid "Return Non Bless / Curse Tokens"
-msgstr "Devolver fichas no Bendición / Maldición"
-
-msgid "Return All Tokens"
-msgstr "Devolver todas las fichas"
-
-msgid "Return Tokens"
-msgstr "Devolver fichas"
-
-#, javascript-format
-msgid "Total (${ chaosBagResults.totalDrawnTokens })"
-msgstr "Total (${ chaosBagResults.totalDrawnTokens })"
-
-msgid "Bless / Curse Tokens"
-msgstr "Fichas de Bendición / Maldición"
-
 msgid "Bless"
 msgstr "Bendición"
 
@@ -3436,9 +3405,6 @@ msgstr "Actualizado el sábado"
 
 msgid "Updated Sunday"
 msgstr "Actualizado el domingo"
-
-msgid "Reset Chaos Bag"
-msgstr "Resetear Bolsa de Caos"
 
 msgid "Books"
 msgstr "Libros"
@@ -4004,7 +3970,7 @@ msgid "Earned experience:"
 msgstr "Experiencia ganada:"
 
 msgid "Sign out of Arkham Cards?"
-msgstr ""
+msgstr "¿Quieres desconectarte de Arkham Cards?"
 
 msgid ""
 "Are you sure you want to sign out of Arkham Cards?\n"
@@ -4014,132 +3980,188 @@ msgid ""
 "\n"
 "Note: if you have made recent changes while offline, they may be lost."
 msgstr ""
+"¿Seguro que quieres desconectarte de Arkham Cards?\n"
+"\n"
+"Todas las campañas que hayas subido o te hayan compartido serán eliminadas "
+"de este dispositivo. Se podrán volver a sincronizar si inicias sesión de "
+"nuevo.\n"
+"\n"
+"Nota: si has realizado cambios estando offline, se perderán."
 
 msgid "Name required"
-msgstr ""
+msgstr "Nombre requerido"
 
 msgid "You must specify a name for custom campaigns."
-msgstr ""
+msgstr "Debes especificar un nombre para las campañas personalizadas."
 
 msgid "Export diagnostic data"
-msgstr ""
+msgstr "Exportar información de diagnósticos"
 
 msgid ""
 "This feature is intended for advanced diagnostics. Just copy the data "
 "presented here and email it to arkhamcards@gmail.com"
 msgstr ""
+"Esta característica sirve para realizar diagnósticos avanzados. Simplemente "
+"copia los datos que aquí aparecen y envíanoslos por mail a "
+"arkhamcards@gmail.com"
 
 msgid "Database migration required"
-msgstr ""
+msgstr "Se requiere migración de la base de datos"
 
 msgid "This should only take a few seconds and no network is required."
-msgstr ""
+msgstr "Esto solo nos llevará unos segundos y no necesita de conexión a internet."
 
 msgid "Migrate now"
-msgstr ""
+msgstr "Migrar ahora"
 
 msgid "Export Diagnostic Data"
-msgstr ""
+msgstr "Exportar información de diagnósticos"
 
 msgid "Agility"
-msgstr ""
+msgstr "Agilidad"
 
 msgid "Combat"
-msgstr ""
+msgstr "Combate"
 
 msgid "Intellect"
-msgstr ""
+msgstr "Intelecto"
 
 msgid "Willpower"
-msgstr ""
+msgstr "Voluntad"
 
 msgid "Boost"
-msgstr ""
+msgstr "Bonus"
 
 msgid "Skill Boosts"
-msgstr ""
+msgstr "Bonus de habilidad"
 
 msgid "Skill Boosts: All"
-msgstr ""
+msgstr "Bonus de habilidad: Todos"
 
 msgid ""
 "If you run into any problems with this migration, please contact "
 "arkhamcards@gmail.com."
 msgstr ""
+"Si tienes problemas con la migración, por favor contacta con nosotros en "
+"arkhamcards@gmail.com."
 
 msgid "Asset: Body. Arcane"
-msgstr ""
+msgstr "Apoyo: Cuerpo. Arcano"
 
 msgid "Color blind friendly icons"
-msgstr ""
+msgstr "Iconos amigables para daltónicos"
 
 msgid "Uploading"
-msgstr ""
+msgstr "Subiendo"
 
 msgid "Upload campaigns"
-msgstr ""
+msgstr "Subiendo campañas"
 
 msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr ""
+msgstr "Las campañas pueden subirse a tu cuenta de Arkham Cards."
 
 msgid "Uploaded campaigns will be synced between devices."
-msgstr ""
+msgstr "Las campañas que hayas subido estarán sincronizadas entre dispositivos."
 
 msgid "Review records"
-msgstr ""
+msgstr "Revisa tu registro de campaña"
 
 msgid "Note campaign achievements"
-msgstr ""
+msgstr "Anota los logros de campaña"
 
 msgid "Complete campaign setup"
-msgstr ""
+msgstr "Completa la preparación de la campaña"
 
 msgid "Review and draw tokens"
-msgstr ""
+msgstr "Revisa y roba fichas de Caos"
 
 msgid "Spent experience"
-msgstr ""
+msgstr "Experiencia gastada"
 
 msgid "View upgrade"
-msgstr ""
+msgstr "Ver mejora"
 
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 msgid "Start"
-msgstr ""
+msgstr "Empezar"
 
 msgid "View results"
-msgstr ""
+msgstr "Ver resultados"
 
 msgid "Skipped"
-msgstr ""
+msgstr "Omitido"
 
 msgid "Locked"
-msgstr ""
+msgstr "Bloqueado"
 
 msgid "Add scenario result"
-msgstr ""
+msgstr "Añadir resultado del escenario"
 
 msgid "Record completed scenario"
-msgstr ""
+msgstr "Guardar escenario completado"
 
 msgid "Add XP from scenario"
-msgstr ""
+msgstr "Añadir XP del escenario"
 
 msgid "Review scenario results"
-msgstr ""
+msgstr "Revisar resultados del escenario"
 
 msgid "Edit chaos bag"
-msgstr ""
+msgstr "Editar bolsa de Caos"
 
 msgid "Scenario name"
-msgstr ""
+msgstr "Nombre del escenario"
 
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ unspentXp } XP disponible"
+msgstr[1] "${ unspentXp } XP disponibles"
+
+msgid "Tap to draw"
+msgstr "Toca para robar"
+
+msgid "Draw another"
+msgstr "Robar otra"
+
+msgid "Return tokens"
+msgstr "Devolver fichas"
+
+msgid "Seal tokens"
+msgstr "Sellar fichas"
+
+msgid "Release all"
+msgstr "Liberar todas"
+
+msgid "Remove all bless & curse tokens"
+msgstr "Eliminar fichas Bendición/Maldición"
+
+msgid "do not remove"
+msgstr "no eliminar"
+
+#, javascript-format
+msgid "Return, but ${ doNotRemove } Bless/Curse"
+msgstr "Devolver, pero ${ doNotRemove } Bendición/Maldición"
+
+msgid "View chaos bag"
+msgstr "Ver bolsa de Caos"
+
+msgid "Sealed tokens"
+msgstr "Fichas de Caos selladas"
+
+msgid "Save XP to deck after making adjustments"
+msgstr "Guarda la XP después de hacer los ajustes"
+
+#, javascript-format
+msgid "${ _spentXp } of ${ _totalXp } spent"
+msgstr "${ _spentXp } de ${ _totalXp } gastada"
+
+msgid "Save your changes to the campaign log"
+msgstr "Guardar tus cambios en el registro de campaña"
+
+msgid "You must be online to upload campaigns"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -4242,7 +4264,7 @@ msgstr ""
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } lee <b>${ sectionName }</b>"
 
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4341,15 +4363,15 @@ msgstr ""
 
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } lee <b>${ sectionName }</b>"
 
 msgctxt "action"
 msgid "Fight"
-msgstr ""
+msgstr "Combatir"
 
 msgctxt "action"
 msgid "Engage"
-msgstr "Enfrentar"
+msgstr "Enfrentarse"
 
 msgctxt "action"
 msgid "Investigate"
@@ -4369,7 +4391,7 @@ msgstr "Mover"
 
 msgctxt "action"
 msgid "Evade"
-msgstr ""
+msgstr "Evitar"
 
 msgctxt "action"
 msgid "Resource"
@@ -4455,4 +4477,4 @@ msgstr "Todos"
 
 msgctxt "trauma"
 msgid "None"
-msgstr ""
+msgstr "Ninguno"

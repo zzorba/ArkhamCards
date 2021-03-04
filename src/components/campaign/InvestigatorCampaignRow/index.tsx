@@ -4,7 +4,6 @@ import { find , map } from 'lodash';
 import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
 
-import DeckXpSection from './DeckXpSection';
 import { showCard, showDeckModal } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { CampaignId, Deck, TraumaAndCardData } from '@actions/types';
@@ -23,6 +22,7 @@ import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButt
 import TraumaSummary from '../TraumaSummary';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
+import useXpSection from './useXpSection';
 
 interface Props {
   componentId: string;
@@ -85,34 +85,18 @@ export default function InvestigatorCampaignRow({
   const editXpPressed = useCallback(() => {
     showXpDialog(investigator);
   }, [showXpDialog, investigator]);
-  const xpButton = useMemo(() => {
-    if (eliminated) {
-      return null;
-    }
-    if (deck) {
-      return (
-        <DeckXpSection
-          componentId={componentId}
-          deck={deck}
-          cards={playerCards}
-          investigator={investigator}
-          showDeckUpgrade={showDeckUpgrade}
-        />
-      );
-    }
-    if (totalXp === 0) {
-      return null;
-    }
-    return (
-      <MiniPickerStyleButton
-        title={t`Experience`}
-        valueLabel={ t`${spentXp} of ${totalXp} spent` }
-        first
-        editable
-        onPress={editXpPressed}
-      />
-    );
-  }, [investigator, componentId, deck, playerCards, spentXp, totalXp, eliminated, editXpPressed, showDeckUpgrade]);
+
+  const [xpButton, upgradeBadge] = useXpSection({
+    componentId,
+    deck,
+    cards: playerCards,
+    investigator,
+    showDeckUpgrade,
+    last: !miniButtons,
+    totalXp,
+    spentXp,
+    editXpPressed,
+  });
 
   const onTraumaPress = useCallback(() => {
     if (showTraumaDialog) {
@@ -148,7 +132,7 @@ export default function InvestigatorCampaignRow({
         deck,
         colors,
         investigator,
-        { campaignId: campaignId.campaignId, hideCampaign: true }
+        { campaignId, hideCampaign: true }
       );
     }
   }, [campaignId, componentId, investigator, deck, colors]);
@@ -181,7 +165,14 @@ export default function InvestigatorCampaignRow({
       <TouchableWithoutFeedback onPress={toggleOpen}>
         <RoundedFactionHeader eliminated={eliminated} faction={investigator.factionCode()} width={width - s * 2} fullRound={!open}>
           <View style={[styles.row, space.paddingLeftXs]}>
-            <InvestigatorImage card={investigator} size="tiny" border yithian={yithian} killedOrInsane={eliminated} />
+            <InvestigatorImage
+              card={investigator}
+              size="tiny"
+              border
+              yithian={yithian}
+              killedOrInsane={eliminated}
+              badge={upgradeBadge ? 'upgrade' : undefined}
+            />
             <View style={[space.paddingLeftXs, styles.textColumn]}>
               <Text style={[typography.cardName, typography.white, eliminated ? typography.strike : undefined]}>
                 { investigator.name }
@@ -208,15 +199,15 @@ export default function InvestigatorCampaignRow({
         ]}>
           <View style={[space.paddingSideS]}>
             <View style={space.paddingBottomS}>
-              { xpButton }
               <MiniPickerStyleButton
                 title={t`Trauma`}
                 valueLabel={<TraumaSummary trauma={traumaAndCardData} investigator={investigator} />}
-                first={!xpButton}
-                last={!miniButtons}
+                first
+                last={!xpButton && !miniButtons}
                 editable={!!showTraumaDialog}
                 onPress={onTraumaPress}
               />
+              { xpButton }
               { !!miniButtons && miniButtons }
             </View>
             { eliminated ? undefined : (

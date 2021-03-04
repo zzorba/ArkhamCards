@@ -98,7 +98,7 @@ function DeckListRowDetails({
   const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
   const scenarioCount = deck.scenarioCount || 0;
   const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate), lang) : undefined;
-  const traumaData = campaign && campaign.investigatorData[investigator.code];
+  const traumaData = campaign && campaign.investigatorData?.[investigator.code];
   return (
     <View style={styles.column}>
       <Text style={typography.small}>
@@ -161,7 +161,7 @@ export default function DeckListRow({
     if (!investigator) {
       return false;
     }
-    const traumaData = campaign && campaign.investigatorData[investigator.code];
+    const traumaData = campaign && campaign.investigatorData?.[investigator.code];
     return investigator.eliminated(traumaData);
   }, [killedOrInsane, investigator, campaign]);
 

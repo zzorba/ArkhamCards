@@ -48,7 +48,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           }
         ]
       },
@@ -57,7 +57,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           }
         ]
       }
@@ -226,7 +226,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           }
         ]
       }
@@ -389,7 +389,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           }
         ]
       },
@@ -398,27 +398,27 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "03065b",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "03066b",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "03067b",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "03068b",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "03069b",
-            "text": "#имя#"
+            "text": "#name#"
           }
         ]
       }
@@ -587,7 +587,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           }
         ]
       }
@@ -643,7 +643,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           }
         ]
       },
@@ -652,7 +652,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           }
         ]
       }
@@ -815,7 +815,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           }
         ]
       },
@@ -824,27 +824,27 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "03065b",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "03066b",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "03067b",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "03068b",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "03069b",
-            "text": "#имя#"
+            "text": "#name#"
           }
         ]
       }
@@ -1307,7 +1307,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "act_2_setup",
@@ -1795,7 +1795,7 @@
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "the dreamers traveled beneath the monasteryr."
+            "text": "the dreamers traveled beneath the monastery."
           },
           {
             "id": "forced_way_into_temple",
@@ -1860,7 +1860,7 @@
         "entries": [
           {
             "id": "drifter_dream",
-            "text": "#имя#"
+            "text": "#name#"
           },
           {
             "id": "everyone_captured",

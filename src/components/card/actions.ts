@@ -112,6 +112,8 @@ export function fetchCards(
   };
 }
 
+const NON_LOCALIZED_CARDS = new Set(['en', 'zh', 'pt']);
+
 type PackActions = PacksFetchStartAction | PacksFetchErrorAction | PacksCacheHitAction | PacksAvailableAction;
 export function fetchPacks(
   lang: string
@@ -130,7 +132,7 @@ export function fetchPacks(
       if (lastModified && packs && packs.length && state.lang == lang) {
         headers.append('If-Modified-Since', lastModified);
       }
-      const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
+      const langPrefix = lang && !NON_LOCALIZED_CARDS.has(lang) ? `${lang}.` : '';
       VERBOSE && console.log(`Fetch called: https://${langPrefix}arkhamdb.com/api/public/packs/`);
       const response = await fetch(`https://${langPrefix}arkhamdb.com/api/public/packs/`, {
         method: 'GET',

@@ -19,9 +19,7 @@ interface Props {
 
 export default function EditTraumaComponent({ investigator, investigatorData, showTraumaDialog, sectionHeader }: Props) {
   const traumaData = useMemo(() => {
-    return (
-      investigatorData && investigatorData[investigator.code]
-    ) || DEFAULT_TRAUMA_DATA;
+    return investigatorData?.[investigator.code] || DEFAULT_TRAUMA_DATA;
   }, [investigatorData, investigator]);
 
   const editTraumaPressed = useCallback(() => {

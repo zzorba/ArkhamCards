@@ -541,6 +541,8 @@ export function multiConditionResult(
     condition.conditions,
     subCondition => {
       switch (subCondition.type) {
+        case 'has_card':
+          return binaryCardConditionResult(subCondition, campaignLog).option ? 1 : 0;
         case 'campaign_log':
           return campaignLogConditionResult(subCondition, campaignLog).option ? 1 : 0;
         case 'campaign_log_count':

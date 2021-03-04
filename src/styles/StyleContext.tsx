@@ -17,6 +17,7 @@ export interface StyleContextType {
     small: ViewStyle;
     medium: ViewStyle;
     large: ViewStyle;
+    drop: ViewStyle,
   };
   width: number;
   height: number;
@@ -71,6 +72,17 @@ export const DEFAULLT_STYLE_CONTEXT = {
         shadowRadius: 2,
         shadowColor: 'black',
         shadowOpacity: 0.25,
+      },
+    }),
+    drop: Platform.select({
+      android: {
+        elevation: 8,
+      },
+      default: {
+        shadowOffset: { width: 0, height: 12 },
+        shadowRadius: 12,
+        shadowColor: 'black',
+        shadowOpacity: 0.6,
       },
     }),
   },

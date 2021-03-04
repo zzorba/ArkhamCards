@@ -3,7 +3,7 @@ import { ngettext, msgid, t } from 'ttag';
 
 import { GuideStartCustomSideScenarioInput } from '@actions/types';
 import { ProcessedCampaign, ProcessedScenario, ScenarioId } from '@data/scenario';
-import { createInvestigatorStatusStep } from './fixedSteps';
+import { createInvestigatorStatusStep, PLAY_SCENARIO_STEP_ID } from './fixedSteps';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
@@ -413,7 +413,7 @@ export default class CampaignGuide {
       full_name: entry.name,
       setup: [
         'spend_xp_cost',
-        '$play_scenario',
+        PLAY_SCENARIO_STEP_ID,
         '$end_of_scenario_status',
         '$earn_xp',
         '$upgrade_decks',
@@ -437,7 +437,7 @@ export default class CampaignGuide {
           },
         },
         {
-          id: '$play_scenario',
+          id: PLAY_SCENARIO_STEP_ID,
           type: 'input',
           input: {
             type: 'play_scenario',
@@ -468,7 +468,7 @@ export default class CampaignGuide {
   ): Scenario {
     const campaignPlayScenarioStep = find(
       this.campaign.campaign.side_scenario_steps,
-      step => step.id === '$play_scenario'
+      step => step.id === PLAY_SCENARIO_STEP_ID
     );
     if (!campaignPlayScenarioStep ||
       campaignPlayScenarioStep.type !== 'input' ||
@@ -478,7 +478,7 @@ export default class CampaignGuide {
     }
     const scenarioPlayScenarioStep = find(
       scenario.steps,
-      step => step.id === '$play_scenario'
+      step => step.id === PLAY_SCENARIO_STEP_ID
     );
     if (!scenarioPlayScenarioStep ||
       scenarioPlayScenarioStep.type !== 'input' ||
@@ -496,13 +496,14 @@ export default class CampaignGuide {
     return {
       ...scenario,
       steps: [
-        ...filter(scenario.steps, step => step.id !== '$play_scenario'),
-        ...filter(this.campaign.campaign.side_scenario_steps, step => step.id !== '$play_scenario'),
+        ...filter(scenario.steps, step => step.id !== PLAY_SCENARIO_STEP_ID),
+        ...filter(this.campaign.campaign.side_scenario_steps, step => step.id !== PLAY_SCENARIO_STEP_ID),
         {
-          id: '$play_scenario',
+          id: PLAY_SCENARIO_STEP_ID,
           type: 'input',
           input: {
             type: 'play_scenario',
+            no_resolutions: scenarioPlayScenarioStep.input.no_resolutions,
             branches: [
               ...(campaignPlayScenarioStep.input.branches || []),
               ...(scenarioPlayScenarioStep.input.branches || []),

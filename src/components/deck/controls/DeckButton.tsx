@@ -11,6 +11,8 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'backup' |
+  'seal' |
   'log' |
   'finish' |
   'wrench' |
@@ -58,6 +60,7 @@ interface Props {
 }
 
 const ICON_SIZE: { [icon: string]: number | undefined } = {
+  backup: 24,
   'plus-button': 32,
   'minus-button': 32,
   'right-arrow': 32,
@@ -72,7 +75,7 @@ const ICON_SIZE: { [icon: string]: number | undefined } = {
   'login': 24,
   'email': 24,
   'edit': 24,
-  'upgrade': 34,
+  upgrade: 34,
   'plus-thin': 24,
   'dismiss': 22,
   'check-thin': 30,
@@ -93,7 +96,7 @@ const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
   },
 };
 
-const MATERIAL_ICONS = new Set(['email', 'delete', 'login']);
+const MATERIAL_ICONS = new Set(['email', 'delete', 'login', 'backup']);
 const ARKHAM_ICONS = new Set(['per_investigator', 'elder_sign', 'weakness']);
 const ENCOUNTER_ICONS = new Set(['tdea', 'tdeb']);
 export default function DeckButton({

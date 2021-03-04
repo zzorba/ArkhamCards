@@ -4,8 +4,7 @@ import { flatMap, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
-import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
+import { GuideDrawChaosBagProps } from '@components/campaignguide/GuideDrawChaosBagView';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
@@ -16,6 +15,7 @@ import StyleContext from '@styles/StyleContext';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { CampaignId } from '@actions/types';
+import { showGuideChaosBagOddsCalculator } from '@components/campaign/nav';
 
 interface Props {
   componentId: string;
@@ -27,7 +27,7 @@ interface Props {
 }
 
 export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog, standalone, hideChaosBag }: Props) {
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, width } = useContext(StyleContext);
   const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
       case 'count': {
@@ -74,35 +74,17 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
   }, [campaignLog, campaignGuide]);
 
   const oddsCalculatorPressed = useCallback(() => {
-    Navigation.push<GuideOddsCalculatorProps>(componentId, {
-      component: {
-        name: 'Guide.OddsCalculator',
-        passProps: {
-          campaignId,
-          investigatorIds: campaignLog.investigatorCodesSafe(),
-          chaosBag: campaignLog.chaosBag,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Odds Calculator`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
+    showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe());
   }, [componentId, campaignId, campaignLog]);
 
   const chaosBagSimulatorPressed = useCallback(() => {
-    Navigation.push<GuideChaosBagProps>(componentId, {
+    Navigation.push<GuideDrawChaosBagProps>(componentId, {
       component: {
         name: 'Guide.DrawChaosBag',
         passProps: {
           campaignId,
           chaosBag: campaignLog.chaosBag,
+          investigatorIds: campaignLog.investigatorCodesSafe(),
         },
         options: {
           topBar: {
@@ -133,6 +115,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         <View style={space.paddingSideS}>
           <ChaosBagLine
             chaosBag={campaignLog.chaosBag}
+            width={width - m * 2}
           />
           <DeckButton
             thin
@@ -151,7 +134,7 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
         </View>
       </View>
     );
-  }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, hideChaosBag, standalone]);
+  }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, width, hideChaosBag, standalone]);
   return (
     <View style={[backgroundStyle, space.paddingBottomM]}>
       { chaosBagSection }

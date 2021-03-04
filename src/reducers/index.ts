@@ -35,6 +35,8 @@ import {
   LocalDeck,
   UploadedCampaignId,
   CampaignId,
+  getCampaignLastUpdated,
+  getLastUpdated,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { ChaosBag } from '@app_constants';
@@ -139,30 +141,13 @@ function getCampaign(all: { [uuid: string]: Campaign }, campaignId: CampaignId):
   return all[campaignId.campaignId];
 }
 
-function getLastUpdated(campaign: Campaign | CampaignGuideState): number {
-  if (!campaign.lastUpdated) {
-    return 0;
-  }
-  if (typeof campaign.lastUpdated === 'string') {
-    return -(new Date(Date.parse(campaign.lastUpdated)).getTime());
-  }
-  if (typeof campaign.lastUpdated === 'number') {
-    return -(new Date(campaign.lastUpdated).getTime());
-  }
-  return -(campaign.lastUpdated.getTime());
-}
-
-function getCampaignLastUpdated(campaign: Campaign, guide?: CampaignGuideState) {
-  if (campaign.guided && guide) {
-    return Math.min(getLastUpdated(campaign), getLastUpdated(guide));
-  }
-  return getLastUpdated(campaign);
-}
-
 export const getCampaigns = createSelector(
   allCampaignsSelector,
   allGuidesSelector,
-  (allCampaigns, allGuides): Campaign[] => map(sortBy(map(
+  (allCampaigns, allGuides): {
+    campaign: Campaign;
+    sort: number;
+  }[] => sortBy(map(
     filter(
       values(allCampaigns),
       campaign => !campaign.linkedCampaignUuid
@@ -174,7 +159,10 @@ export const getCampaigns = createSelector(
         if (campaignA && campaignB) {
           return {
             campaign,
-            sort: Math.min(getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]), getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])),
+            sort: Math.min(
+              getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
+              getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
+            ),
           };
         }
       }
@@ -183,7 +171,7 @@ export const getCampaigns = createSelector(
         sort: getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
       };
     }
-  ), c => c.sort), c => c.campaign)
+  ), c => c.sort)
 );
 
 export const getBackupData = createSelector(
@@ -519,13 +507,15 @@ export const makeGetDecksSelector = () =>
     }
   );
 
-function processCampaign(campaign: Campaign): SingleCampaign {
+export function processCampaign(campaign: Campaign): SingleCampaign {
   const latestScenario = last(campaign.scenarioResults);
   const finishedScenarios = flatMap(campaign.scenarioResults || [], r => r.scenario);
+  const lastUpdated = getLastUpdated(campaign);
   return {
     ...campaign,
     latestScenario,
     finishedScenarios,
+    lastUpdated: lastUpdated > 0 ? new Date(lastUpdated) : new Date(),
   };
 }
 
@@ -541,19 +531,6 @@ export const makeCampaignSelector = () =>
       return undefined;
     }
   );
-
-
-export const makeNetworkCampaignSelector = () => {
-  const campaignSelector = makeCampaignSelector();
-  return createSelector(
-    campaignSelector,
-    (state: AppState, campaignId: string) => state.guides.all[campaignId],
-    (state: AppState) => state.decks.all,
-    (campaign: SingleCampaign | undefined, guideOpt, decks) => {
-      return null;
-    }
-  );
-};
 
 export const makeChaosBagResultsSelector = () =>
   createSelector(

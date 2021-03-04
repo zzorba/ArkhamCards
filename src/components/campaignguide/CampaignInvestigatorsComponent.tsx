@@ -1,11 +1,11 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import { InteractionManager, Text, StyleSheet, View } from 'react-native';
 import { filter, find, findLast, flatMap, forEach, map, mapValues, partition } from 'lodash';
 import { isAfter } from 'date-fns';
 import { useAppState } from '@react-native-community/hooks';
 import { t } from 'ttag';
 
-import { Campaign, CampaignId, InvestigatorData, Trauma } from '@actions/types';
+import { InvestigatorData, Trauma } from '@actions/types';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
@@ -17,15 +17,13 @@ import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 import CampaignLogSectionComponent from './CampaignLogComponent/CampaignLogSectionComponent';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useDispatch } from 'react-redux';
+import { updateCampaign } from '@components/campaign/actions';
 
 interface Props {
   componentId: string;
   processedCampaign: ProcessedCampaign;
-  updateCampaign: (
-    id: CampaignId,
-    sparseCampaign: Partial<Campaign>,
-    now?: Date
-  ) => void;
   showAddInvestigator: () => void;
   showCountDialog: ShowCountDialog;
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
@@ -40,10 +38,13 @@ function getDate(date: string | Date) {
 }
 
 export default function CampaignInvestigatorsComponent(props: Props) {
-  const { componentId, processedCampaign, updateCampaign, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog } = props;
+  const { componentId, processedCampaign, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog } = props;
   const { campaignGuideVersion, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, adjustedInvestigatorData, playerCards, lastUpdated } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
   const investigatorSpentXp = useMemo(() => mapValues(adjustedInvestigatorData, data => (data && data.spentXp) || 0), [adjustedInvestigatorData]);
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const dispatch = useDispatch();
+
   const [spentXp,,,,syncSpentXp] = useCounters(investigatorSpentXp);
   useEffectUpdate(() => {
     syncSpentXp(investigatorSpentXp);
@@ -57,7 +58,8 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     } = processedCampaign;
     const guideLastUpdated = getDate(campaignState.lastUpdated());
     const newLastUpdated = isAfter(getDate(lastUpdated), guideLastUpdated) ? lastUpdated : guideLastUpdated;
-    updateCampaign(
+    dispatch(updateCampaign(
+      user,
       campaignId,
       {
         guideVersion: campaignGuideVersion === -1 ? campaignGuide.campaignVersion() : campaignGuideVersion,
@@ -78,8 +80,13 @@ export default function CampaignInvestigatorsComponent(props: Props) {
         }),
       },
       newLastUpdated
-    );
-  }, [lastUpdated, campaignGuide, campaignGuideVersion, campaignId, campaignState, processedCampaign, updateCampaign]);
+    ));
+  }, [lastUpdated, campaignGuide, campaignGuideVersion, campaignId, campaignState, processedCampaign, user, dispatch]);
+  const syncCampaignDataRef = useRef<() => void>(syncCampaignData);
+
+  useEffect(() => {
+    syncCampaignDataRef.current = syncCampaignData;
+  }, [syncCampaignData]);
 
   useEffect(() => {
     if (appState === 'inactive' || appState === 'background') {
@@ -87,6 +94,13 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appState]);
+
+  useEffect(() => {
+    // Update the campaign on unmount.
+    return () => {
+      syncCampaignDataRef.current();
+    };
+  }, []);
 
   const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
     campaignState.showChooseDeck(investigator);
@@ -161,14 +175,15 @@ export default function CampaignInvestigatorsComponent(props: Props) {
         adjustedInvestigatorData[investigator.code] = {
           spentXp: count,
         };
-        updateCampaign(
+        dispatch(updateCampaign(
+          user,
           campaignId,
           { adjustedInvestigatorData },
           new Date()
-        );
+        ));
       },
     });
-  }, [updateCampaign, showCountDialog, campaignId, spentXp, processedCampaign.campaignLog]);
+  }, [showCountDialog, dispatch, user, campaignId, spentXp, processedCampaign.campaignLog]);
 
   const disabledShowTraumaPressed = useCallback(() => {
     const campaignSetupCompleted = !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed');

@@ -1,14 +1,11 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { filter, forEach, throttle } from 'lodash';
+import React, { useContext, useMemo, useState } from 'react';
+import { flatMap, forEach, throttle } from 'lodash';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, Options } from 'react-native-navigation';
-import { ThunkDispatch } from 'redux-thunk';
-import { Action } from 'redux';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
@@ -18,7 +15,6 @@ import { campaignNames } from '@components/campaign/constants';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
-import { AppState, getCampaigns } from '@reducers';
 import COLORS from '@styles/colors';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -27,14 +23,9 @@ import { useNavigationButtonPressed } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import { getStandaloneScenarios } from '@data/scenario';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { refreshCampaigns } from '@components/campaignguide/actions';
-
-type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
+import { useCampaigns } from '@data/hooks';
 
 function MyCampaignsView({ componentId }: NavigationProps) {
-  const dispatch: Dispatch = useDispatch();
-  const { user } = useContext(ArkhamCardsAuthContext);
   const [search, setSearch] = useState('');
   const { lang } = useContext(LanguageContext);
   const standalonesById = useMemo(() => {
@@ -53,7 +44,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
     return result;
   }, [lang]);
   const { typography } = useContext(StyleContext);
-  const campaigns = useSelector(getCampaigns);
+  const [campaigns, refreshing, refreshCampaigns] = useCampaigns();
   const showNewCampaignDialog = useMemo(() => {
     return throttle(() => {
       Navigation.push(componentId, {
@@ -80,7 +71,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
   }, componentId, [showNewCampaignDialog]);
 
   const filteredCampaigns: Campaign[] = useMemo(() => {
-    return filter<Campaign>(campaigns, campaign => {
+    return flatMap(campaigns, (campaign) => {
       const parts = [campaign.name];
       if (campaign.cycleCode === STANDALONE) {
         if (campaign.standaloneId) {
@@ -89,7 +80,10 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       } else if (campaign.cycleCode !== CUSTOM) {
         parts.push(campaignNames()[campaign.cycleCode]);
       }
-      return searchMatchesText(search, parts);
+      if (!searchMatchesText(search, parts)) {
+        return [];
+      }
+      return campaign;
     });
   }, [campaigns, search, standalonesById]);
 
@@ -116,20 +110,6 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       <View style={styles.footer} />
     );
   }, [filteredCampaigns, search, typography]);
-  const [refreshing, setRefreshing] = useState<boolean>(false);
-  const doRefreshCampaigns = useCallback(async() => {
-    if (!refreshing && user) {
-      setRefreshing(true);
-      await dispatch(refreshCampaigns(user));
-      setRefreshing(false);
-    }
-  }, [setRefreshing, refreshing, user, dispatch]);
-  useEffect(() => {
-    if (user) {
-      doRefreshCampaigns();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
   const footer = useMemo(() => {
     return (
       <View>
@@ -156,7 +136,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
           componentId={componentId}
           campaigns={filteredCampaigns}
           standalonesById={standalonesById}
-          onRefresh={user ? doRefreshCampaigns : undefined}
+          onRefresh={refreshCampaigns}
           refreshing={refreshing}
           footer={footer}
         />

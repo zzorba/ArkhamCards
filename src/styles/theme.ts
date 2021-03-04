@@ -52,6 +52,17 @@ export interface ThemeColors {
     agility: SkillColor;
     wild: SkillColor;
   };
+  token: {
+    skull: string;
+    cultist: string;
+    tablet: string;
+    elder_thing: string;
+    elder_sign: string;
+    auto_fail: string;
+    bless: string;
+    curse: string;
+    [token: string]: string | undefined;
+  };
   health: string;
   sanity: string;
   disableOverlay: string;
@@ -232,6 +243,16 @@ export const LIGHT_THEME: ThemeColors = {
     light: '#e3fce4',
     dark: '#c7ebc9',
   },
+  token: {
+    skull: '#552D2D',
+    cultist: '#314629',
+    tablet: '#294146',
+    elder_thing: '#442946',
+    auto_fail: '#7D1318',
+    elder_sign: '#4477A1',
+    bless: '#9D702A',
+    curse: '#3A2342',
+  },
 };
 
 export const DARK_THEME: ThemeColors = {
@@ -361,5 +382,15 @@ export const DARK_THEME: ThemeColors = {
     header: '#293d2a',
     light: '#455245',
     dark: '#203021',
+  },
+  token: {
+    skull: '#915c5c',
+    cultist: '#669154',
+    tablet: '#548994',
+    elder_thing: '#a661ab',
+    auto_fail: '#bf2128',
+    elder_sign: '#5496cc',
+    bless: '#ebaa42',
+    curse: '#b069c9',
   },
 };

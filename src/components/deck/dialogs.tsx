@@ -596,7 +596,7 @@ export function useSaveDialog(
         getCampaignId(campaign),
         {
           weaknessSet: {
-            ...(campaign.weaknessSet || {}),
+            packCodes: campaign.weaknessSet?.packCodes || [],
             assignedCards,
           },
         },

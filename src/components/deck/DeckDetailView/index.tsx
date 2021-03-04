@@ -21,7 +21,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { DeckId, getCampaignId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, DeckId, getCampaignId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/Card';
 import { EditDeckProps } from '../DeckEditView';
@@ -31,7 +31,6 @@ import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
 import {
-  makeCampaignSelector,
   makeCampaignForDeckSelector,
   getPacksInCollection,
   AppState,
@@ -53,13 +52,14 @@ import DeckButton from '../controls/DeckButton';
 import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import DeckProblemBanner from '../DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useCampaign } from '@data/hooks';
 
 export interface DeckDetailProps {
   id: DeckId;
   initialMode?: 'upgrade' | 'edit';
   title?: string;
   subtitle?: string;
-  campaignId?: string;
+  campaignId?: CampaignId;
   hideCampaign?: boolean;
   isPrivate?: boolean;
   modal?: boolean;
@@ -103,11 +103,11 @@ function DeckDetailView({
     tabooSetId,
   } = parsedDeckObj;
 
-  const campaignSelector = useMemo(makeCampaignSelector, []);
   const campaignForDeckSelector = useMemo(makeCampaignForDeckSelector, []);
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
+  const mainCampaign = useCampaign(campaignId);
   const campaign = useSelector((state: AppState) => {
-    return campaignId ? campaignSelector(state, campaignId) : campaignForDeckSelector(state, deckId);
+    return campaignId ? mainCampaign : campaignForDeckSelector(state, deckId);
   });
   const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj, campaign);
 
@@ -567,7 +567,10 @@ function DeckDetailView({
       }
       const { normalCardCount: normalCards, totalCardCount } = parsedDeck;
       const normalCardCount = ngettext(msgid`${normalCards} card`, `${normalCards} cards`, normalCards);
-      const details = ngettext(msgid`${normalCardCount} · ${totalCardCount} total`, `${normalCardCount} · ${totalCardCount} total`, totalCardCount);
+      const unspentXp = parsedDeck.availableExperience > 0 && parsedDeck.changes ? (parsedDeck.availableExperience - parsedDeck.changes.spentXp) : 0;
+      const details = unspentXp > 0 ?
+        ngettext(msgid`${unspentXp} XP unspent`, `${unspentXp} XP unspent`, unspentXp) :
+        ngettext(msgid`${normalCardCount} · ${totalCardCount} total`, `${normalCardCount} · ${totalCardCount} total`, totalCardCount);
       const showUpgradeButton = !campaign || !campaign.guided;
       return (
         <View style={[styles.row, space.marginS]}>

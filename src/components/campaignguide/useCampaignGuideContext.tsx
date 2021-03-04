@@ -15,6 +15,7 @@ import {
   getDeckId,
   DeckId,
   CampaignId,
+  WeaknessSet,
 } from '@actions/types';
 import Card from '@data/Card';
 import { useCallback, useContext, useMemo } from 'react';
@@ -27,7 +28,7 @@ import { CampaignGuideContextType } from './CampaignGuideContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
-
+const EMPTY_WEAKNESS_SET: WeaknessSet = { packCodes: [], assignedCards: {} };
 export default function useCampaignGuideContext(campaignId: CampaignId, campaignData?: CampaignGuideReduxData): CampaignGuideContextType | undefined {
   const { user } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
@@ -42,16 +43,16 @@ export default function useCampaignGuideContext(campaignId: CampaignId, campaign
   }, [campaignId, campaignChooseDeck, campaignInvestigators]);
 
   const setBinaryAchievement = useCallback((achievementId: string, value: boolean) => {
-    dispatch(guideActions.setBinaryAchievement(campaignId, achievementId, value));
-  }, [dispatch, campaignId]);
+    dispatch(guideActions.setBinaryAchievement(user, campaignId, achievementId, value));
+  }, [dispatch, user, campaignId]);
 
   const incCountAchievement = useCallback((achievementId: string, max?: number) => {
-    dispatch(guideActions.incCountAchievement(campaignId, achievementId, max));
-  }, [dispatch, campaignId]);
+    dispatch(guideActions.incCountAchievement(user, campaignId, achievementId, max));
+  }, [dispatch, user, campaignId]);
 
   const decCountAchievement = useCallback((achievementId: string) => {
-    dispatch(guideActions.decCountAchievement(campaignId, achievementId));
-  }, [dispatch, campaignId]);
+    dispatch(guideActions.decCountAchievement(user, campaignId, achievementId));
+  }, [dispatch, user, campaignId]);
 
   const removeDeck = useCallback((
     deck: Deck
@@ -166,8 +167,8 @@ export default function useCampaignGuideContext(campaignId: CampaignId, campaign
   }, [dispatch, campaignId, user]);
 
   const resetScenario = useCallback((scenarioId: string) => {
-    dispatch(guideActions.resetScenario(campaignId, scenarioId));
-  }, [dispatch, campaignId]);
+    dispatch(guideActions.resetScenario(user, campaignId, scenarioId));
+  }, [dispatch, user, campaignId]);
 
   const decksByInvestigator = useMemo(() => {
     const decksByInvestigator: {
@@ -231,7 +232,7 @@ export default function useCampaignGuideContext(campaignId: CampaignId, campaign
       campaignState: campaignStateHelper,
       campaignInvestigators,
       latestDecks: decksByInvestigator,
-      weaknessSet: campaignData.campaign.weaknessSet,
+      weaknessSet: campaignData.campaign.weaknessSet || EMPTY_WEAKNESS_SET,
       adjustedInvestigatorData: campaignData.campaign.adjustedInvestigatorData || EMPTY_INVESTIGATOR_DATA,
       playerCards: cards,
       lastUpdated,

@@ -32,7 +32,6 @@ function getStandardComponent(componentName: string | number) {
     case 'Card.Faq': return require('@components/card/CardFaqView').default;
     case 'Card.Taboo': return require('@components/card/CardTabooView').default;
     case 'Card.Image': return require('@components/card/CardImageView').default;
-    case 'Campaign': return require('@components/campaign/CampaignDetailView').default;
     case 'Campaign.Log': return require('@components/campaign/CampaignLogView').default;
     case 'Campaign.Scenarios': return require('@components/campaign/CampaignScenariosView').default;
     case 'Campaign.New': return require('@components/campaign/NewCampaignView').default;
@@ -41,7 +40,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Guide.CardErrata': return require('@components/campaignguide/EncounterCardErrataView').default;
     case 'Guide.ScenarioFaq': return require('@components/campaignguide/ScenarioFaqView').default;
     case 'Guide.ChallengeScenario': return require('@components/campaignguide/ChallengeScenarioView').default;
-    case 'Guide.DrawChaosBag': return require('@components/campaignguide/GuideChaosBagView').default;
+    case 'Guide.DrawChaosBag': return require('@components/campaignguide/GuideDrawChaosBagView').default;
     case 'Guide.OddsCalculator': return require('@components/campaignguide/GuideOddsCalculatorView').default;
     case 'Guide.Scenario': return require('@components/campaignguide/ScenarioView').default;
     case 'Guide.Achievements': return require('@components/campaignguide/CampaignAchievementsView').default;
@@ -70,7 +69,6 @@ function getStandardComponent(componentName: string | number) {
     case 'Dialog.EditChaosBag': return require('@components/campaign/EditChaosBagDialog').default;
     case 'Dialog.CampaignDrawWeakness': return require('@components/campaign/CampaignDrawWeaknessDialog').default;
     case 'Dialog.CampaignEditWeakness': return require('@components/campaign/CampaignEditWeaknessDialog').default;
-    case 'Dialog.SealToken': return require('@components/campaign/SealTokenDialog').default;
     case 'Weakness.Draw': return require('@components/weakness/WeaknessDrawDialog').default;
     case 'Rules': return require('@components/settings/RulesView').default;
     case 'Rule': return require('@components/settings/RuleView').default;
@@ -84,6 +82,7 @@ function getRootComponent(name: string | number): any {
     case 'Deck': return require('@components/deck/DeckDetailView').default;
     case 'Deck.Upgrade': return require('@components/deck/DeckUpgradeDialog').default;
     case 'Deck.New': return require('@components/deck/NewDeckView').default;
+    case 'Campaign': return require('@components/campaign/CampaignDetailView').default;
     case 'Guide.Campaign': return require('@components/campaignguide/CampaignGuideView').default;
     case 'Guide.LinkedCampaign': return require('@components/campaignguide/LinkedCampaignGuideView').default;
     case 'Guide.Standalone': return require('@components/campaignguide/StandaloneGuideView').default;

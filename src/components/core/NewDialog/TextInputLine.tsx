@@ -13,8 +13,9 @@ interface Props {
   error?: string;
 
   onSubmit?: (text: string) => void;
+  paddingBottom?: number;
 }
-export default function TextInputLine({ value, onChangeText, textInputRef, error, placeholder, onSubmit }: Props) {
+export default function TextInputLine({ value, onChangeText, textInputRef, error, placeholder, paddingBottom, onSubmit }: Props) {
   const { colors, typography } = useContext(StyleContext);
 
   const onSubmitEditting = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
@@ -27,7 +28,7 @@ export default function TextInputLine({ value, onChangeText, textInputRef, error
         ref={textInputRef}
         autoCorrect={false}
         style={[
-          { padding: s, paddingTop: xs + s, width: '100%', borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20 },
+          { padding: s, paddingTop: xs + s, width: '100%', borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20, marginBottom: paddingBottom },
           typography.text,
           error ? { borderColor: colors.warn } : undefined,
         ]}

@@ -10,6 +10,7 @@ export const ALL_LANGUAGES = [
   'ko',
   'uk',
   'pl',
+  'zh',
 ];
 
 export function getSystemLanguage() {
@@ -31,6 +32,7 @@ export function localizedName(lang: string) {
     case 'uk': return 'Українська';
     case 'pl': return 'Polski';
     case 'ru': return 'Pусский';
+    case 'zh': return '汉语';
     default: return 'Unknown';
   }
 }

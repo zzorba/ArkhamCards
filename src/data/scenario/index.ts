@@ -109,6 +109,13 @@ function load(lang: string): {
         encounterSets: require('../../../assets/encounterSets_de.json'),
         errata: require('../../../assets/campaignErrata_de.json'),
       };
+    case 'zh':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_zh.json'),
+        allCampaigns: require('../../../assets/allCampaigns_zh.json'),
+        encounterSets: require('../../../assets/encounterSets_zh.json'),
+        errata: require('../../../assets/campaignErrata_zh.json'),
+      };
     default:
     case 'en':
       return {

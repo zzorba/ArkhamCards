@@ -212,7 +212,7 @@ function recordTraumaStep(): InputStep {
   };
 }
 
-const PLAY_SCENARIO_STEP_ID = '$play_scenario';
+export const PLAY_SCENARIO_STEP_ID = '$play_scenario';
 function playScenarioStep(): InputStep {
   return {
     id: PLAY_SCENARIO_STEP_ID,

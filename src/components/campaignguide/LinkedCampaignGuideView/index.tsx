@@ -10,7 +10,8 @@ import useTabView from '@components/core/useTabView';
 import { updateCampaign } from '@components/campaign/actions';
 import { useCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
 import { NavigationProps } from '@components/nav/types';
-import { useCampaign, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
+import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import useCampaignGuideContext from '@components/campaignguide/useCampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
@@ -21,6 +22,7 @@ import { useCampaignLinkHelper } from './useCampaignLinkHelper';
 import CampaignDetailTab from '../CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
+import space from '@styles/space';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -52,7 +54,7 @@ export default function LinkedCampaignGuideView(props: Props) {
   const campaignDataB = useCampaignGuideReduxData(campaignIdB, investigators);
 
   const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
+    dispatch(updateCampaign(user, campaignId, { name }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -89,12 +91,13 @@ export default function LinkedCampaignGuideView(props: Props) {
     setSelectedTab: setSelectedTabRef.current,
   });
   const [alertDialog, showAlert] = useAlertDialog();
-  const headerButtons = useMemo(() => {
+  const footerButtons = useMemo(() => {
     return (
-      <>
+      <View style={space.paddingSideS}>
         <UploadCampaignButton
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
+          showAlert={showAlert}
         />
         <DeleteCampaignButton
           componentId={componentId}
@@ -102,9 +105,9 @@ export default function LinkedCampaignGuideView(props: Props) {
           campaignName={campaignName || ''}
           showAlert={showAlert}
         />
-      </>
+      </View>
     );
-  }, [showAlert, componentId, campaignId, campaignName, setCampaignServerId]);
+  }, [showAlert, setCampaignServerId, componentId, campaignId, campaignName]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA || !processedCampaignA || !contextA) {
@@ -119,18 +122,18 @@ export default function LinkedCampaignGuideView(props: Props) {
             <CampaignDetailTab
               componentId={componentId}
               processedCampaign={processedCampaignA}
-              headerButtons={headerButtons}
               showLinkedScenario={showCampaignScenarioB}
               showAlert={showAlert}
               showCountDialog={showCountDialog}
               showTraumaDialog={showTraumaDialog}
               displayLinkScenarioCount={displayLinkScenarioCount}
+              footerButtons={footerButtons}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
-  }, [campaignDataA, processedCampaignA, contextA, componentId, headerButtons, displayLinkScenarioCount,
+  }, [campaignDataA, processedCampaignA, contextA, componentId, displayLinkScenarioCount, footerButtons,
     showCampaignScenarioB, showCountDialog, showAlert, showTraumaDialog]);
   const campaignBTab = useMemo(() => {
     if (!campaignDataB || !processedCampaignB || !contextB) {
@@ -149,14 +152,14 @@ export default function LinkedCampaignGuideView(props: Props) {
               showAlert={showAlert}
               showCountDialog={showCountDialog}
               showTraumaDialog={showTraumaDialog}
-              headerButtons={headerButtons}
               displayLinkScenarioCount={displayLinkScenarioCount}
+              footerButtons={footerButtons}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
-  }, [campaignDataB, processedCampaignB, contextB, componentId, headerButtons, displayLinkScenarioCount,
+  }, [campaignDataB, processedCampaignB, contextB, componentId, displayLinkScenarioCount, footerButtons,
     showCampaignScenarioA, showCountDialog, showAlert, showTraumaDialog]);
   const tabs = useMemo(() => {
     if (!campaignATab || !campaignBTab) {

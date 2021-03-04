@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { FlatList, ListRenderItemInfo, Keyboard, Platform, View, StyleSheet, RefreshControl } from 'react-native';
 import { map } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
@@ -140,15 +140,20 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     }
     return null;
   }, []);
-
+  const [isRefreshing, setRefreshing] = useState(false);
+  const doRefresh = useCallback(() => {
+    setRefreshing(true);
+    onRefresh && onRefresh();
+    setTimeout(() => setRefreshing(false), 1000);
+  }, [setRefreshing, onRefresh]);
   return (
     <FlatList
       contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
       contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
       refreshControl={onRefresh ? (
         <RefreshControl
-          refreshing={!!refreshing}
-          onRefresh={onRefresh}
+          refreshing={isRefreshing || !!refreshing}
+          onRefresh={doRefresh}
           tintColor={colors.lightText}
           progressViewOffset={SEARCH_BAR_HEIGHT}
         />

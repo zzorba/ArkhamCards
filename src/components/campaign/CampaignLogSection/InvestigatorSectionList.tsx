@@ -15,7 +15,7 @@ import { ShowCountDialog } from '@components/deck/dialogs';
 interface Props {
   allInvestigators: Card[];
   updateInvestigatorNotes: (notes: InvestigatorNotes) => void;
-  investigatorNotes: InvestigatorNotes;
+  investigatorNotes: InvestigatorNotes | undefined;
   showDialog: ShowTextEditDialog;
   showCountDialog: ShowCountDialog;
 }

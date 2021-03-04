@@ -4,7 +4,7 @@ import { max } from 'lodash';
 import { Campaign, CUSTOM, getCampaignId } from '@actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
-import { useCampaign } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
 import GenericCampaignItem from './GenericCampaignItem';
 
 interface Props {
@@ -35,13 +35,14 @@ export default function LinkedCampaignItem({ campaign, onPress }: Props) {
   }, [campaign, onPress]);
 
   const lastUpdated = useMemo(() => {
-    const dates = [
-      getTime(campaign.lastUpdated),
-    ];
-    if (campaignA) {
+    const dates = [];
+    if (campaign && campaign.lastUpdated) {
+      getTime(campaign.lastUpdated);
+    }
+    if (campaignA && campaignA.lastUpdated) {
       dates.push(getTime(campaignA.lastUpdated));
     }
-    if (campaignB) {
+    if (campaignB && campaignB.lastUpdated) {
       dates.push(getTime(campaignB.lastUpdated));
     }
     const latest = max(dates);
@@ -49,7 +50,7 @@ export default function LinkedCampaignItem({ campaign, onPress }: Props) {
       return new Date(latest);
     }
     return campaign.lastUpdated;
-  }, [campaign.lastUpdated, campaignA, campaignB]);
+  }, [campaign, campaignA, campaignB]);
 
   return (
     <GenericCampaignItem

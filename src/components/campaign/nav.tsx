@@ -1,6 +1,6 @@
 import { Campaign, CampaignId } from '@actions/types';
 import { ChaosBag } from '@app_constants';
-import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
+import { GuideDrawChaosBagProps } from '@components/campaignguide/GuideDrawChaosBagView';
 import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
 import Card from '@data/Card';
 import { map } from 'lodash';
@@ -30,7 +30,7 @@ export function showEditChaosBag(componentId: string, campaign: Campaign, update
     component: {
       name: 'Dialog.EditChaosBag',
       passProps: {
-        chaosBag: campaign.chaosBag,
+        chaosBag: campaign.chaosBag || {},
         updateChaosBag,
         trackDeltas: true,
       },
@@ -48,14 +48,16 @@ export function showEditChaosBag(componentId: string, campaign: Campaign, update
 export function showGuideDrawChaosBag(
   componentId: string,
   campaignId: CampaignId,
-  chaosBag: ChaosBag
+  chaosBag: ChaosBag,
+  investigatorIds: string[]
 ) {
-  Navigation.push<GuideChaosBagProps>(componentId, {
+  Navigation.push<GuideDrawChaosBagProps>(componentId, {
     component: {
       name: 'Guide.DrawChaosBag',
       passProps: {
         campaignId,
         chaosBag,
+        investigatorIds,
       },
       options: {
         topBar: {
@@ -74,14 +76,14 @@ export function showGuideDrawChaosBag(
 export function showDrawChaosBag(
   componentId: string,
   campaignId: CampaignId,
-  updateChaosBag: (chaosBag: ChaosBag) => void,
+  allInvestigators: Card[]
 ) {
   Navigation.push<CampaignDrawChaosBagProps>(componentId, {
     component: {
       name: 'Campaign.DrawChaosBag',
       passProps: {
         campaignId,
-        updateChaosBag,
+        allInvestigators,
       },
       options: {
         topBar: {
@@ -120,13 +122,13 @@ export function showChaosBagOddsCalculator(componentId: string, campaignId: Camp
 }
 
 
-export function showGuideChaosBagOddsCalculator(componentId: string, campaignId: CampaignId, chaosBag: ChaosBag, allInvestigators: Card[]) {
+export function showGuideChaosBagOddsCalculator(componentId: string, campaignId: CampaignId, chaosBag: ChaosBag, investigatorIds: string[]) {
   Navigation.push<GuideOddsCalculatorProps>(componentId, {
     component: {
       name: 'Guide.OddsCalculator',
       passProps: {
         campaignId,
-        investigatorIds: map(allInvestigators, i => i.code),
+        investigatorIds,
         chaosBag,
       },
       options: {

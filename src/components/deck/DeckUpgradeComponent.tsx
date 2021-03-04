@@ -1,5 +1,4 @@
-import React, { forwardRef, useCallback, useContext, useImperativeHandle, useMemo, useState } from 'react';
-import { forEach, find, keys, throttle } from 'lodash';
+import React, { forwardRef, useCallback, useContext, useImperativeHandle, useMemo } from 'react';
 import {
   ActivityIndicator,
   View,
@@ -14,12 +13,12 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import { NavigationProps } from '@components/nav/types';
 import ExileCardSelectorComponent from '@components/campaign/ExileCardSelectorComponent';
 import Card from '@data/Card';
-import { SaveDeckChanges } from '@components/deck/actions';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useSlots } from '@components/core/hooks';
 import DeckButton from './controls/DeckButton';
+import { SaveDeckUpgrade } from './useDeckUpgrade';
 
 interface DeckUpgradeProps extends NavigationProps{
   investigator: Card;
@@ -28,9 +27,9 @@ interface DeckUpgradeProps extends NavigationProps{
   campaignSection?: React.ReactNode;
   storyCounts: Slots;
   ignoreStoryCounts: Slots;
-  upgradeCompleted: (deck: Deck, xp: number) => void;
-  saveDeckChanges: (deck: Deck, changes: SaveDeckChanges) => Promise<Deck>;
-  saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
+  saveDeckUpgrade: SaveDeckUpgrade;
+  saving: boolean;
+  error?: string | undefined;
   saveButtonText?: string;
 }
 
@@ -46,89 +45,24 @@ function DeckUpgradeComponent({
   campaignSection,
   storyCounts,
   ignoreStoryCounts,
-  upgradeCompleted,
-  saveDeckChanges,
   saveDeckUpgrade,
   saveButtonText,
+  saving,
+  error,
 }: DeckUpgradeProps, ref: any) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [xp, incXp, decXp] = useCounter(startingXp || 0, { min: 0 });
   const [exileCounts, updateExileCounts] = useSlots({});
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | undefined>();
-  const deckUpgradeComplete = useCallback((deck: Deck, xp: number) => {
-    setSaving(false);
-    upgradeCompleted(deck, xp);
-  }, [setSaving, upgradeCompleted]);
 
-  const handleStoryCardChanges = useCallback((upgradedDeck: Deck) => {
-    const hasStoryChange = !!find(keys(storyCounts), (code) => {
-      return (upgradedDeck.slots?.[code] || 0) !== storyCounts[code];
-    }) || !!find(keys(ignoreStoryCounts), (code) => {
-      return (upgradedDeck.ignoreDeckLimitSlots[code] || 0) !== ignoreStoryCounts[code];
-    });
-    if (hasStoryChange) {
-      const newSlots: Slots = { ...upgradedDeck.slots };
-      forEach(storyCounts, (count, code) => {
-        if (count > 0) {
-          newSlots[code] = count;
-        } else {
-          delete newSlots[code];
-        }
-      });
-      const newIgnoreSlots: Slots = { ...upgradedDeck.ignoreDeckLimitSlots };
-      forEach(ignoreStoryCounts, (count, code) => {
-        if (count > 0){
-          newIgnoreSlots[code] = count;
-        } else {
-          delete newIgnoreSlots[code];
-        }
-      });
-      saveDeckChanges(upgradedDeck, {
-        slots: newSlots,
-        ignoreDeckLimitSlots: newIgnoreSlots,
-      }).then(
-        (deck: Deck) => deckUpgradeComplete(deck, xp),
-        (e: Error) => {
-          console.log(e);
-          setError(e.message);
-          setSaving(false);
-        }
-      );
-    } else {
-      deckUpgradeComplete(upgradedDeck, xp);
-    }
-  }, [
-    saveDeckChanges,
-    storyCounts,
-    ignoreStoryCounts,
-    xp,
-    deckUpgradeComplete,
-  ]);
-  const saveUpgrade = useCallback((isRetry?: boolean) => {
-    if (!deck) {
-      return;
-    }
-    if (!saving || isRetry) {
-      setSaving(true);
-      saveDeckUpgrade(deck, xp, exileCounts).then(
-        handleStoryCardChanges,
-        (e: Error) => {
-          setError(e.message);
-          setSaving(false);
-        }
-      );
-    }
-  }, [deck, saveDeckUpgrade, saving, xp, exileCounts, handleStoryCardChanges, setError, setSaving]);
+  const doSave = useCallback(() => {
+    saveDeckUpgrade(xp, storyCounts, ignoreStoryCounts, exileCounts);
+  }, [saveDeckUpgrade, xp, storyCounts, ignoreStoryCounts, exileCounts]);
 
-  const throttledSaveUpgrade = useMemo(() => {
-    return throttle(() => saveUpgrade(), 200);
-  }, [saveUpgrade]);
   useImperativeHandle(ref, () => ({
-    save: () => {
-      throttledSaveUpgrade();
+    save: async() => {
+      doSave();
     },
-  }), [throttledSaveUpgrade]);
+  }), [doSave]);
   const onExileCountChange = useCallback((card: Card, count: number) => {
     updateExileCounts({ type: 'set-slot', code: card.code, value: count });
   }, [updateExileCounts]);
@@ -184,7 +118,7 @@ function DeckUpgradeComponent({
       { !!campaignSection && campaignSection }
       { !!saveButtonText && (
         <View style={space.paddingM}>
-          <DeckButton icon="upgrade" color="gold" onPress={throttledSaveUpgrade} title={saveButtonText} />
+          <DeckButton icon="upgrade" color="gold" onPress={doSave} title={saveButtonText} />
         </View>
       ) }
     </View>

@@ -1,4 +1,4 @@
-import { forEach, map, omit } from 'lodash';
+import { forEach, map, keys } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -11,7 +11,6 @@ import {
   EDIT_CAMPAIGN_SCENARIO_RESULT,
   CAMPAIGN_ADD_INVESTIGATOR,
   CAMPAIGN_REMOVE_INVESTIGATOR,
-  UPDATE_CAMPAIGN_SPENT_XP,
   CLEAN_BROKEN_CAMPAIGNS,
   RESTORE_COMPLEX_BACKUP,
   CleanBrokenCampaignsAction,
@@ -33,7 +32,7 @@ import {
   NewCampaignAction,
   NewLinkedCampaignAction,
   UpdateCampaignAction,
-  UpdateCampaignSpentXpAction,
+  UpdateCampaignXpAction,
   UpdateChaosBagResultsAction,
   DeleteCampaignAction,
   AdjustBlessCurseAction,
@@ -48,11 +47,13 @@ import {
   REMOVE_UPLOAD_DECK,
   CampaignSyncRequiredAction,
   getCampaignId,
+  UPDATE_CAMPAIGN_XP,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { removeCampaignDeckHelper, uploadCampaignDeckHelper } from '@lib/firebaseApi';
+import fbdb from '@data/firebase/fbdb';
 
 function getBaseDeckIds(
   state: AppState,
@@ -211,18 +212,27 @@ export function newCampaign(
   };
 }
 
-export function updateCampaignSpentXp(
+export function updateCampaignXp(
+  user: FirebaseAuthTypes.User | undefined,
   id: CampaignId,
   investigator: string,
-  value: number
-): UpdateCampaignSpentXpAction {
-  return {
-    type: UPDATE_CAMPAIGN_SPENT_XP,
-    id,
-    investigator,
-    operation: 'set',
-    value,
-    now: new Date(),
+  value: number,
+  xpType: 'spentXp' | 'availableXp'
+): ThunkAction<void, AppState, unknown, UpdateCampaignXpAction> {
+  return async(dispatch) => {
+    if (user && id.serverId) {
+      await fbdb.campaignDetail(id).child('investigatorData').child(investigator).child(xpType).set(value);
+    } else {
+      dispatch({
+        type: UPDATE_CAMPAIGN_XP,
+        id,
+        investigator,
+        operation: 'set',
+        value,
+        xpType,
+        now: new Date(),
+      });
+    }
   };
 }
 
@@ -239,42 +249,25 @@ export function updateCampaignSpentXp(
 export function updateCampaign(
   user: FirebaseAuthTypes.User | undefined,
   id: CampaignId,
-  sparseCampaign: Partial<Campaign & {
-    latestDeckIds?: DeckId[];
-  }>,
+  sparseCampaign: Partial<Campaign>,
   now?: Date
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction | CampaignSyncRequiredAction> {
-  return async(dispatch, getState: () => AppState) => {
-    const campaign: Partial<Campaign> = omit(sparseCampaign, 'latestDeckIds');
-    if (sparseCampaign.latestDeckIds) {
-      campaign.deckIds = getBaseDeckIds(getState(), sparseCampaign.latestDeckIds);
-    }
-    dispatch({
-      type: UPDATE_CAMPAIGN,
-      id,
-      campaign,
-      now: (now || new Date()),
-    });
-    /*
+  return async(dispatch) => {
     if (user && id.serverId) {
-      try {
-        await Promise.all(
-          map(omit(sparseCampaign, ['serverId']), (value, key) => {
-            const ref = fbdb.campaignDetail(id).child(key);
-            if (!value) {
-              return ref.remove();
-            }
-            return ref.set(value);
-          })
-        );
-      } catch (e) {
-        dispatch({
-          type: CAMPAIGN_SYNC_REQUIRED,
-          campaignId: id,
-        });
-      }
+      const campaignRef = fbdb.campaignDetail(id);
+      await Promise.all(
+        map(sparseCampaign, (value, key) => {
+          return campaignRef.child(key).set(value);
+        })
+      );
+    } else {
+      dispatch({
+        type: UPDATE_CAMPAIGN,
+        id,
+        campaign: sparseCampaign,
+        now: (now || new Date()),
+      });
     }
-    */
   };
 }
 

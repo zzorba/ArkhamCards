@@ -27,7 +27,7 @@ const DEFAULT_GUIDES_STATE: GuidesState = {
 };
 
 
-function updateCampaign(
+function updateCampaignHelper(
   state: GuidesState,
   campaignId: CampaignId,
   now: Date,
@@ -75,7 +75,7 @@ export default function(
     };
   }
   if (action.type === GUIDE_UPDATE_ACHIEVEMENT) {
-    return updateCampaign(
+    return updateCampaignHelper(
       state,
       action.campaignId,
       action.now,
@@ -153,7 +153,7 @@ export default function(
     );
   }
   if (action.type === GUIDE_SET_INPUT) {
-    return updateCampaign(
+    return updateCampaignHelper(
       state,
       action.campaignId,
       action.now,
@@ -177,7 +177,7 @@ export default function(
       });
   }
   if (action.type === GUIDE_UNDO_INPUT) {
-    return updateCampaign(
+    return updateCampaignHelper(
       state,
       action.campaignId,
       action.now,
@@ -221,7 +221,7 @@ export default function(
       });
   }
   if (action.type === GUIDE_RESET_SCENARIO) {
-    return updateCampaign(
+    return updateCampaignHelper(
       state,
       action.campaignId,
       action.now,

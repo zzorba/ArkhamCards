@@ -1,0 +1,223 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-01-02 13:44-0500\n"
+"PO-Revision-Date: 2021-01-02 13:44-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"mime-version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"x-generator: Poedit 2.4.2\n"
+"x-poedit-basepath: .\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Language: uk\n"
+
+msgid "There is not a current clue goal, please talk to the organizer."
+msgstr ""
+
+#, javascript-format
+msgid "Clue goal reached. Please take back ${ returnedClues } clue."
+msgid_plural "Clue goal reached. Please take back ${ returnedClues } clues."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Clue removed."
+msgid_plural "Clues removed."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Clue added."
+msgid_plural "Clues added."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Damage added."
+msgstr ""
+
+msgid "Damage removed."
+msgstr ""
+
+msgid "One countermeasure used."
+msgstr ""
+
+msgid "Countermeasure removed."
+msgid_plural "Countermeasures removed."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Countermeasure added."
+msgid_plural "Countermeasures added."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Ding dong the Blob is dead!"
+msgstr ""
+
+msgid "Magh’an Ark’at"
+msgstr ""
+
+msgid "Silenus"
+msgstr ""
+
+msgid "Ezel-zen-rezl"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"The time for tracking shared doom has passed. Please place ${ doom } doom "
+"back on the ${ color } agenda."
+msgid_plural ""
+"The time for tracking shared doom has passed. Please place ${ doom } doom "
+"back on the ${ color } agenda."
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid ""
+"The ${ color } agenda's doom threshhold was reached. Please place ${ "
+"returnedDoom } doom back on the ${ color } agenda after it advances."
+msgid_plural ""
+"The ${ color } agenda's doom threshhold reached. Please place ${ "
+"returnedDoom } doom back on the ${ color } agenda after it advances."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Doom removed from ${ color } agenda."
+msgstr ""
+
+#, javascript-format
+msgid "Doom added to ${ color } agenda."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"The ${ color } agenda ${ agendaNumber }a has advanced. Please advance to ${ "
+"color } agenda ${ agendaNumber }b during the next Mythos Phase."
+msgstr ""
+
+msgid ""
+"Looks like someone else already helped this group, or they cancelled their "
+"request."
+msgstr ""
+
+msgid "Aid given in Montreal!"
+msgstr ""
+
+msgid "Aid given in Providence!"
+msgstr ""
+
+msgid "Aid given in New York!"
+msgstr ""
+
+msgid "Doom added to all agendas"
+msgstr ""
+
+msgid "There is still time, the great old one is not yet here."
+msgstr ""
+
+#, javascript-format
+msgid "Damage added to ${ gooName }."
+msgstr ""
+
+msgid "Damage removed from ${ gooName }."
+msgstr ""
+
+#, javascript-format
+msgid "${ gooName } has been defeated! The investigators win the game!"
+msgstr ""
+
+msgid ""
+"Congratulations on reaching Act 3! Now do what you can to help the other "
+"groups."
+msgstr ""
+
+msgid "Act progress recorded."
+msgstr ""
+
+msgid "Clue given away."
+msgstr ""
+
+msgid "Help requested to close Hub Dimension!"
+msgstr ""
+
+msgid "Request for help closing Hub Dimension cancalled."
+msgstr ""
+
+msgid "Help requested in New York!"
+msgstr ""
+
+msgid "Request for help in New York cancelled."
+msgstr ""
+
+msgid "Help requested in Providence!"
+msgstr ""
+
+msgid "Request for help in Providence cancelled."
+msgstr ""
+
+msgid "Help requested in Montreal!"
+msgstr ""
+
+msgid "Request for help in Montreal cancelled."
+msgstr ""
+
+msgid "Request not authorized. User must be signed in."
+msgstr ""
+
+msgid "Unable to create new campaign. Please try again later."
+msgstr ""
+
+msgid "green"
+msgstr ""
+
+msgid "blue"
+msgstr ""
+
+msgid "red"
+msgstr ""
+
+msgid "You are not authorized to edit this event."
+msgstr ""
+
+msgid "Password required for private events."
+msgstr ""
+
+msgid "You can only send announcements after the game has started."
+msgstr ""
+
+msgid "You are not authorized to archive this event."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"The ${ color } agenda ${ agendaNumber }a has advanced. Please advance to ${ "
+"color } agenda ${ agendaNumber }b during the next Mythos Phase and prepare "
+"for ${ gooName }'s arrival!"
+msgstr ""
+
+msgid "Minimum search size is 3 characters."
+msgstr ""
+
+msgid "Something weird happened with continuation token"
+msgstr ""
+
+msgid "You must set a handle before you can invite friends."
+msgstr ""
+
+msgid "Something went wrong."
+msgstr ""
+
+#. The only request that is allowed for a participant is to 'leave' a campaign.
+msgid "You are not allowed to edit this campaign."
+msgstr ""
+
+msgid "Owner cannot have their campaign access edited."
+msgstr ""
+
+#, javascript-format
+msgid "You do not appear to be friends with '${ handlesString }'."
+msgid_plural "You do not appear to be friends with the following users: ${ handlesString }"
+msgstr[0] ""
+msgstr[1] ""

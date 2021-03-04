@@ -1,53 +1,59 @@
-import React, { useCallback, useContext } from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import React, { useCallback, useContext, useState } from 'react';
 import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
 import { useCreateCampaignRequest } from '@data/firebase/api';
-import space from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import { s } from '@styles/space';
 import { uploadCampaign } from '@components/campaignguide/actions';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 import { Action } from 'redux';
+import DeckButton from '@components/deck/controls/DeckButton';
+import { ShowAlert } from '@components/deck/dialogs';
 
 interface Props {
   campaignId: CampaignId;
   setCampaignServerId: (serverId: string) => void;
+  showAlert: ShowAlert;
 }
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function UploadCampaignButton({ campaignId, setCampaignServerId }: Props) {
+export default function UploadCampaignButton({ campaignId, setCampaignServerId, showAlert }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
-  const { colors } = useContext(StyleContext);
   const [{ isConnected }] = useNetworkStatus();
+  const [uploading, setUploading] = useState(false);
   const dispatch: Dispatch = useDispatch();
   const createServerCampaign = useCreateCampaignRequest();
   const confirmUploadCampaign = useCallback(async() => {
-    if (user && !campaignId.serverId) {
+    if (!uploading && user && !campaignId.serverId) {
+      setUploading(true);
       try {
         const newCampaignId = await dispatch(uploadCampaign(user, createServerCampaign, campaignId));
         setCampaignServerId(newCampaignId.serverId);
       } catch (e) {
-        // TODO(error handling)
+        showAlert('Error', e.message);
       }
+      setUploading(false);
     }
-  }, [dispatch, createServerCampaign, setCampaignServerId, user, campaignId]);
+  }, [dispatch, createServerCampaign, setCampaignServerId, setUploading, showAlert, user, uploading, campaignId]);
   if (!user || campaignId.serverId) {
     return null;
   }
   return (
-    <View style={space.marginRightS}>
-      <TouchableOpacity onPress={confirmUploadCampaign} accessibilityLabel={t`Upload campaign`}>
-        <View style={space.paddingXs}>
-          <MaterialIcons name="backup" color={isConnected ? colors.L20 : colors.M} size={18} />
-        </View>
-      </TouchableOpacity>
-    </View>
+    <DeckButton
+      icon="backup"
+      title={t`Upload campaign`}
+      detail={!isConnected ? t`You must be online to upload campaigns` : undefined}
+      disabled={!isConnected}
+      thin
+      color="light_gray"
+      onPress={confirmUploadCampaign}
+      loading={uploading}
+      bottomMargin={s}
+    />
   );
 }

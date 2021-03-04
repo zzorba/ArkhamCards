@@ -1,12 +1,10 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { Platform, ScrollView, StyleSheet, View } from 'react-native';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { Platform, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import DialogComponent from '@lib/react-native-dialog';
 import { filter, find, map, partition } from 'lodash';
 import { t } from 'ttag';
 
-import Dialog from '@components/core/Dialog';
-import DialogPlusMinusButtons from '@components/core/DialogPlusMinusButtons';
+import NewDialog from '@components/core/NewDialog';
 import SideScenarioButton from './SideScenarioButton';
 import { NavigationProps } from '@components/nav/types';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
@@ -14,13 +12,15 @@ import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/c
 import useTabView from '@components/core/useTabView';
 import { ScenarioId } from '@data/scenario';
 import { Scenario } from '@data/scenario/types';
-import space from '@styles/space';
+import { s, m, xs } from '@styles/space';
 import SetupStepWrapper from '../SetupStepWrapper';
 import DownloadParallelCardsButton from './DownloadParallelCardsButton';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import StyleContext from '@styles/StyleContext';
 import { useCounter } from '@components/core/hooks';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { useDialog } from '@components/deck/dialogs';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
@@ -30,10 +30,9 @@ type Props = NavigationProps & AddSideScenarioProps;
 
 function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
   const { campaignState, campaignGuide } = useContext(CampaignGuideContext);
-  const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
-  const [customDialogVisible, setCustomDialogVisible] = useState(false);
+  const { backgroundStyle, borderStyle } = useContext(StyleContext);
   const [customScenarioName, setCustomScenarioName] = useState('');
-  const [customXpCost, incCustomXpCost, decCustomXpCost] = useCounter(1, { min: 0 });
+  const [customXpCost, incCustomXpCost, decCustomXpCost, setCustomXpCost] = useCounter(1, { min: 0 });
   const onPress = useCallback((scenario: Scenario) => {
     campaignState.startOfficialSideScenario(
       scenario.id,
@@ -51,52 +50,66 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
     Navigation.pop(componentId);
   }, [componentId, latestScenarioId, campaignState, customScenarioName, customXpCost]);
 
-  const customScenarioPressed = useCallback(() => {
-    setCustomDialogVisible(true);
-  }, [setCustomDialogVisible]);
-
-  const cancelCustomScenarioPressed = useCallback(() => {
-    setCustomDialogVisible(false);
-  }, [setCustomDialogVisible]);
-
-  const customDialog = useMemo(() => {
-    const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
+  const cancelCustomScenario = useCallback(() => {
+    setCustomScenarioName('');
+    setCustomXpCost(0);
+  }, [setCustomScenarioName, setCustomXpCost]);
+  const textInputRef = useRef<TextInput>(null);
+  const customScenarioContent = useMemo(() => {
     return (
-      <Dialog
-        title={t`Custom side scenario`}
-        visible={customDialogVisible}
-      >
-        <DialogComponent.Description style={[
-          space.paddingTopS,
-          typography.dialogLabel,
-          typography.left,
-        ]}>
-          { t`Scenario Name` }
-        </DialogComponent.Description>
-        <DialogComponent.Input
+      <View>
+        <NewDialog.ContentLine
+          icon="name"
+          text={t`Scenario Name`}
+          control={null}
+          paddingBottom={xs}
+        />
+        <NewDialog.TextInput
           value={customScenarioName}
           placeholder={t`Required`}
           onChangeText={setCustomScenarioName}
+          textInputRef={textInputRef}
+          paddingBottom={m}
         />
-        <DialogPlusMinusButtons
-          label={t`Experience Cost`}
-          value={customXpCost}
-          inc={incCustomXpCost}
-          dec={decCustomXpCost}
+        <NewDialog.ContentLine
+          icon="xp"
+          text={t`Experience Cost`}
+          paddingBottom={s}
+          control={(
+            <PlusMinusButtons
+              count={customXpCost}
+              onIncrement={incCustomXpCost}
+              onDecrement={decCustomXpCost}
+              showZeroCount
+              dialogStyle
+            />
+          )}
         />
-        <DialogComponent.Button
-          label={t`Cancel`}
-          onPress={cancelCustomScenarioPressed}
-        />
-        <DialogComponent.Button
-          label={t`Add`}
-          color={customScenarioName ? buttonColor : '#666666'}
-          disabled={!customScenarioName}
-          onPress={saveCustomScenario}
-        />
-      </Dialog>
+      </View>
     );
-  }, [customDialogVisible, decCustomXpCost, incCustomXpCost, customScenarioName, customXpCost, typography, cancelCustomScenarioPressed, saveCustomScenario]);
+  }, [customScenarioName, customXpCost, incCustomXpCost, decCustomXpCost, setCustomScenarioName]);
+  const { dialog: customDialog, showDialog: customScenarioPressed, visible: customScenarioVisible } = useDialog({
+    title: t`Custom side scenario`,
+    confirm: {
+      title: t`Add`,
+      disabled: !customScenarioName,
+      onPress: saveCustomScenario,
+    },
+    dismiss: {
+      title: t`Cancel`,
+      onPress: cancelCustomScenario,
+    },
+    content: customScenarioContent,
+  });
+  useEffect(() => {
+    if (customScenarioVisible) {
+      if (Platform.OS === 'android' && textInputRef.current) {
+        setTimeout(() => {
+          textInputRef.current && textInputRef.current.focus();
+        }, 100);
+      }
+    }
+  }, [customScenarioVisible]);
 
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const playableScenarios = useMemo(() => {

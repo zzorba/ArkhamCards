@@ -31,9 +31,7 @@ import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import { getCampaignLog, getChaosBag, difficultyString } from '../constants';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
-import useAddCampaignNoteSectionDialog from '../useAddCampaignNoteSectionDialog';
 import SettingsSwitch from '@components/core/SettingsSwitch';
-import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
@@ -52,6 +50,8 @@ import { MyDecksSelectorProps } from '../MyDecksSelectorDialog';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import ChaosBagTextLine from './ChaosBagTextLine';
+import useAddCampaignNoteSectionDialog from '@components/campaign/useAddCampaignNoteSectionDialog';
 
 interface CampaignChoice {
   selection: CampaignSelection;
@@ -459,7 +459,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         { hasGuide && selection.type === 'campaign' && (
           <SettingsSwitch
             title={t`Guided Campaign`}
-            description={guided ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
+            description={(selection.code === 'tde' || guided) ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
             onValueChange={toggleGuided}
             disabled={selection.code === 'tde'}
             noDisableText
@@ -481,7 +481,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
               icon="chaos_bag"
               editable={!hasDefinedChaosBag}
               title={t`Chaos Bag`}
-              valueLabel={<ChaosBagLine chaosBag={chaosBag} />}
+              valueLabel={<ChaosBagTextLine chaosBag={chaosBag} />}
               onPress={showChaosBagDialog}
               last
             />
@@ -490,7 +490,8 @@ function NewCampaignView({ componentId }: NavigationProps) {
         { hasGuide && guided && selection.type === 'campaign' && INCOMPLETE_GUIDED_CAMPAIGNS.has(selection.code) && (
           <View style={styles.block}>
             <Text style={typography.text}>
-              { t`Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\nAs new scenarios are released, I will try to update the app promptly but there may be some slight delays.` }</Text>
+              { t`Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\nAs new scenarios are released, I will try to update the app promptly but there may be some slight delays.` }
+            </Text>
           </View>
         ) }
         { campaignLogSection }

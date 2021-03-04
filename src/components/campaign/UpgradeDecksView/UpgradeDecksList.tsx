@@ -22,7 +22,7 @@ interface Props {
   lang: string;
   showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
   updateInvestigatorXp: (investigator: Card, xp: number) => void;
-  investigatorData: InvestigatorData;
+  investigatorData?: InvestigatorData;
   originalDeckUuids: Set<string>;
   componentId: string;
   decks: Deck[];
@@ -63,7 +63,7 @@ export default function UpgradeDecksList({
     if (!deck) {
       return null;
     }
-    const eliminated = investigator.eliminated(investigatorData[investigator.code]);
+    const eliminated = investigator.eliminated(investigatorData?.[investigator.code]);
     if (eliminated) {
       return null;
     }
@@ -99,7 +99,7 @@ export default function UpgradeDecksList({
 
   const investigators = filter(
     allInvestigators,
-    investigator => !investigator.eliminated(investigatorData[investigator.code] || {})
+    investigator => !investigator.eliminated(investigatorData?.[investigator.code] || {})
   );
 
   return (

@@ -13,11 +13,15 @@ export interface CampaignGuideInputProps {
   campaignId: CampaignId;
 }
 
+export interface InjectedCampaignGuideContextProps {
+  setCampaignServerId: (serverId: string) => void;
+}
+
 export default function withCampaignGuideContext<Props>(
-  WrappedComponent: React.ComponentType<Props & { setServerCampaignId: (serverId: string) => void }>
+  WrappedComponent: React.ComponentType<Props & InjectedCampaignGuideContextProps>
 ): React.ComponentType<Props & CampaignGuideInputProps> {
   function CampaignDataComponent(props: Props & CampaignGuideInputProps) {
-    const [campaignId, setServerCampaignId] = useCampaignId(props.campaignId);
+    const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
     const investigators = useInvestigatorCards();
     const campaignData = useCampaignGuideReduxData(campaignId, investigators);
     const context = useCampaignGuideContext(campaignId, campaignData);
@@ -28,7 +32,7 @@ export default function withCampaignGuideContext<Props>(
     }
     return (
       <CampaignGuideContext.Provider value={context}>
-        <WrappedComponent {...props as Props} setServerCampaignId={setServerCampaignId} />
+        <WrappedComponent {...props as Props} setCampaignServerId={setCampaignServerId} />
       </CampaignGuideContext.Provider>
     );
   }

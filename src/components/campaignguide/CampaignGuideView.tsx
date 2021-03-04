@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import { updateCampaign } from '@components/campaign/actions';
-import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
+import withCampaignGuideContext, { CampaignGuideInputProps, InjectedCampaignGuideContextProps } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import CampaignGuideContext from './CampaignGuideContext';
@@ -16,10 +16,11 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import CampaignDetailTab from './CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
+import space from '@styles/space';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
-type Props = CampaignGuideProps & NavigationProps & { setCampaignServerId: (serverId: string) => void };
+type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps;
 
 function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
@@ -29,7 +30,7 @@ function CampaignGuideView(props: Props) {
   const { campaignId } = campaignData;
   const dispatch = useDispatch();
   const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(user, campaignId, { name, lastUpdated: new Date() }));
+    dispatch(updateCampaign(user, campaignId, { name }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -56,12 +57,13 @@ function CampaignGuideView(props: Props) {
   const { campaignGuide, campaignState, campaignName } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
-  const headerButtons = useMemo(() => {
+  const footerButtons = useMemo(() => {
     return (
-      <>
+      <View style={space.paddingSideS}>
         <UploadCampaignButton
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
+          showAlert={showAlert}
         />
         <DeleteCampaignButton
           componentId={componentId}
@@ -69,10 +71,9 @@ function CampaignGuideView(props: Props) {
           campaignName={campaignName || ''}
           showAlert={showAlert}
         />
-      </>
+      </View>
     );
-  }, [showAlert, componentId, campaignId, campaignName, setCampaignServerId]);
-
+  }, [componentId, campaignName, campaignId, setCampaignServerId, showAlert]);
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab
@@ -81,7 +82,7 @@ function CampaignGuideView(props: Props) {
         showAlert={showAlert}
         showCountDialog={showCountDialog}
         showTraumaDialog={showTraumaDialog}
-        headerButtons={headerButtons}
+        footerButtons={footerButtons}
       />
       { alertDialog }
       { dialog }

@@ -6,8 +6,6 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
-import { Action } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
 import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -22,11 +20,11 @@ import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import Card from '@data/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign, useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
+import { useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
-import { saveDeckChanges, saveDeckUpgrade, SaveDeckChanges } from './actions';
-import { AppState } from '@reducers';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import useDeckUpgrade from './useDeckUpgrade';
 
 export interface UpgradeDeckProps {
   id: DeckId;
@@ -34,7 +32,6 @@ export interface UpgradeDeckProps {
   showNewDeck: boolean;
 }
 
-type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -49,7 +46,6 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   const [storyCounts, updateStoryCounts] = useSlots({});
   const investigators = useInvestigatorCards(deck?.taboo_id);
   const dispatch = useDispatch();
-  const deckDispatch: DeckDispatch = useDispatch();
 
   const {
     showTraumaDialog,
@@ -107,14 +103,6 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     updateStoryCounts({ type: 'sync', slots: storyCounts });
   }, [updateStoryCounts]);
 
-  const performSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
-    return deckDispatch(saveDeckChanges(user, deck, changes));
-  }, [deckDispatch, user]);
-
-  const performSaveDeckUpgrade = useCallback((deck: Deck, xp: number, exileCounts: Slots): Promise<Deck> => {
-    return deckDispatch(saveDeckUpgrade(user, deck, xp, exileCounts));
-  }, [deckDispatch, user]);
-
   const campaignSection = useMemo(() => {
     if (!deck || !campaign || !investigator) {
       return null;
@@ -140,6 +128,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
       </>
     );
   }, [deck, componentId, campaign, showTraumaDialog, storyEncounterCodes, scenarioName, investigator, investigatorData, onStoryCountsChange]);
+  const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, deckUpgradeComplete);
 
   if (!deck || !investigator) {
     return null;
@@ -161,12 +150,12 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
           startingXp={xp}
           storyCounts={storyCounts}
           ignoreStoryCounts={{}}
-          saveDeckUpgrade={performSaveDeckUpgrade}
-          saveDeckChanges={performSaveDeckChanges}
-          upgradeCompleted={deckUpgradeComplete}
           campaignSection={campaignSection}
           saveButtonText={t`Save upgrade`}
           ref={deckUpgradeComponent}
+          saving={saving}
+          error={error}
+          saveDeckUpgrade={saveDeckUpgrade}
         />
       </ScrollView>
     </View>

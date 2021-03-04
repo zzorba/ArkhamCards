@@ -30,21 +30,15 @@ interface Props {
   showCountDialog: ShowCountDialog;
   showLinkedScenario?: ShowScenario;
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
-  headerButtons: React.ReactNode;
   displayLinkScenarioCount?: number;
+  footerButtons: React.ReactNode;
 }
 export default function CampaignDetailTab({
-  componentId, processedCampaign, headerButtons, displayLinkScenarioCount,
+  componentId, processedCampaign, displayLinkScenarioCount, footerButtons,
   showLinkedScenario, showAlert, showTraumaDialog, showCountDialog,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
   const { campaignId, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
-  const dispatch = useDispatch();
-  const saveCampaignUpdate = useCallback((campaignId: CampaignId, sparseCampaign: Partial<Campaign>, now?: Date) => {
-    console.log('Updating campaign data');
-    dispatch(updateCampaign(user, campaignId, sparseCampaign, now));
-  }, [dispatch, user]);
 
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
@@ -105,7 +99,6 @@ export default function CampaignDetailTab({
             difficulty={processedCampaign.campaignLog.campaignData.difficulty}
             name={campaignGuide.campaignName()}
             cycle={campaignGuide.campaignCycleCode() as CampaignCycleCode}
-            buttons={headerButtons}
           />
           <DeckButton
             icon="log"
@@ -147,12 +140,12 @@ export default function CampaignDetailTab({
             componentId={componentId}
             showAlert={showAlert}
             showAddInvestigator={showAddInvestigator}
-            updateCampaign={saveCampaignUpdate}
             processedCampaign={processedCampaign}
             showTraumaDialog={showTraumaDialog}
             showCountDialog={showCountDialog}
           />
         </View>
+        { footerButtons }
       </ScrollView>
       { chaosBagDialog }
     </SafeAreaView>

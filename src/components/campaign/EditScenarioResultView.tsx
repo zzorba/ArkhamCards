@@ -15,7 +15,8 @@ import { editScenarioResult } from './actions';
 import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign, useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigationButtonPressed } from '@components/core/hooks';
+import { useCampaign } from '@data/hooks';
 import { useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -31,7 +32,7 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
   const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
-  const existingScenarioResult = campaign && campaign.scenarioResults[index];
+  const existingScenarioResult = campaign && campaign.scenarioResults?.[index];
   const [scenarioResult, setScenarioResult] = useState<ScenarioResult | undefined>(existingScenarioResult);
   const doSave = useMemo(() => throttle(() => {
     if (scenarioResult) {
