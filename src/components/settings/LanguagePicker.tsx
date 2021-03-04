@@ -78,6 +78,7 @@ function dialogStrings(lang: string): DialogStrings {
         confirmButton: 'Download now',
         cancelButton: 'Cancel',
       };
+    case 'zh':
     case 'it':
     case 'pl':
     case 'uk':
