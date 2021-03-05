@@ -9679,7 +9679,7 @@
           {
             "type": "campaign_data",
             "campaign_data": "version",
-            "min_version": 1,
+            "min_version": 2,
             "options": [
               {
                 "boolCondition": true
@@ -22101,7 +22101,7 @@
           {
             "type": "campaign_data",
             "campaign_data": "version",
-            "min_version": 1,
+            "min_version": 2,
             "options": [
               {
                 "boolCondition": true
