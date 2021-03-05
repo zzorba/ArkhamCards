@@ -26,7 +26,7 @@ interface Props {
   processedCampaign: ProcessedCampaign;
   showAddInvestigator: () => void;
   showCountDialog: ShowCountDialog;
-  showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
+  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   showAlert: ShowAlert;
 }
 
@@ -144,20 +144,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     investigator => processedCampaign.campaignLog.isEliminated(investigator)
   ), [processedCampaign.campaignLog, campaignInvestigators]);
 
-  const updateTraumaData = useCallback((code: string, trauma: Trauma) => {
-    const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed');
-    InteractionManager.runAfterInteractions(() => {
-      campaignState.setInterScenarioInvestigatorData(
-        code,
-        trauma,
-        latestScenario ? latestScenario?.id.encodedScenarioId : undefined
-      );
-    });
-  }, [processedCampaign, campaignState]);
-
-  const showTraumaPressed = useCallback((investigator: Card, traumaData: Trauma) => {
-    showTraumaDialog(investigator, traumaData, updateTraumaData);
-  }, [showTraumaDialog, updateTraumaData]);
   const showXpDialogPressed = useCallback((investigator: Card) => {
     const adjustedInvestigatorData: InvestigatorData = {};
     forEach(spentXp, (xp, code) => {
@@ -217,7 +203,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           traumaAndCardData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
           chooseDeckForInvestigator={showChooseDeckForInvestigator}
           removeInvestigator={removeInvestigatorPressed}
-          showTraumaDialog={canEditTrauma ? showTraumaPressed : disabledShowTraumaPressed}
+          showTraumaDialog={canEditTrauma ? showTraumaDialog : disabledShowTraumaPressed}
         >
           <>
             { flatMap(suppliesSections, supplies => {

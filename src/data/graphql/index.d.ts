@@ -2,8 +2,7 @@
 declare module '*/createCampaigns.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const updateCampaignName: DocumentNode;
-export const uploadNewCampaign: DocumentNode;
+  export const uploadNewCampaign: DocumentNode;
 
   export default defaultDocument;
 }
@@ -28,7 +27,9 @@ export const getMyDecks: DocumentNode;
 declare module '*/fragments.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const MiniCampaign: DocumentNode;
+  export const MiniInvestigatorData: DocumentNode;
+export const FullInvestigatorData: DocumentNode;
+export const MiniCampaign: DocumentNode;
 export const FullCampaign: DocumentNode;
 
   export default defaultDocument;
@@ -64,6 +65,13 @@ export const incCountAchievementMax: DocumentNode;
 export const incCountAchievement: DocumentNode;
 export const decCountAchievement: DocumentNode;
 export const addGuideInput: DocumentNode;
+export const updateInvestigatorTrauma: DocumentNode;
+export const updateSpentXp: DocumentNode;
+export const updateAvailableXp: DocumentNode;
+export const updateWeaknessSet: DocumentNode;
+export const updateCampaignName: DocumentNode;
+export const addCampaignInvestigator: DocumentNode;
+export const removeCampaignInvestigator: DocumentNode;
 
   export default defaultDocument;
 }

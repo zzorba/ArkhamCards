@@ -1,8 +1,9 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId } from '@actions/types';
-import { uniq, concat, flatMap, maxBy, last, forEach } from 'lodash';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet } from '@actions/types';
+import { uniq, concat, flatMap, keys, maxBy, last, forEach } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
-import { MiniCampaignFragment } from '@generated/graphql/apollo-schema';
+import { FullCampaignFragment, MiniCampaignFragment } from '@generated/graphql/apollo-schema';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 const EMPTY_TRAUMA = {};
 
@@ -10,7 +11,7 @@ function fragmentToInvestigatorData(campaign: MiniCampaignFragment): Investigato
   const investigatorData: InvestigatorData = {};
   forEach(campaign.investigator_data, r => {
     investigatorData[r.investigator] = {
-      storyAssets: r.storyAssets,
+      storyAssets: r.storyAssets || undefined,
       physical: r.physical || undefined,
       mental: r.mental || undefined,
       killed: r.killed || undefined,
@@ -20,24 +21,44 @@ function fragmentToInvestigatorData(campaign: MiniCampaignFragment): Investigato
   return investigatorData;
 }
 
+function fragmentToFullInvestigatorData(campaign: FullCampaignFragment): InvestigatorData {
+  const investigatorData: InvestigatorData = {};
+  forEach(campaign.investigator_data, r => {
+    investigatorData[r.investigator] = {
+      storyAssets: r.storyAssets,
+      physical: r.physical || undefined,
+      mental: r.mental || undefined,
+      killed: r.killed || undefined,
+      insane: r.insane || undefined,
+      specialXp: r.specialXp || undefined,
+      availableXp: r.availableXp || undefined,
+      spentXp: r.spentXp || undefined,
+      ignoreStoryAssets: r.ignoreStoryAssets || undefined,
+      addedCards: r.addedCards || undefined,
+      removedCards: r.removedCards || undefined,
+    };
+  });
+  return investigatorData;
+}
+
 function fragmentToInvestigators(campaign: MiniCampaignFragment): string[] {
   return uniq(
     concat(
       flatMap(campaign.latest_decks, d => d.deck?.investigator || []),
-      campaign.nonDeckInvestigators || [],
+      flatMap(campaign.investigators, i => i.investigator),
     )
   );
 }
 
 export class MiniCampaignRemote implements MiniCampaignT {
-  private campaign: MiniCampaignFragment;
-  private investigatorData: InvestigatorData;
-  private campaignUpdatedAt: Date;
+  protected campaign: MiniCampaignFragment;
+  protected campaignInvestigatorData: InvestigatorData;
+  protected campaignUpdatedAt: Date;
   constructor(
     campaign: MiniCampaignFragment
   ) {
     this.campaign = campaign;
-    this.investigatorData = fragmentToInvestigatorData(campaign);
+    this.campaignInvestigatorData = fragmentToInvestigatorData(campaign);
     this.campaignUpdatedAt = new Date(Date.parse(campaign.updated_at));
   }
 
@@ -81,7 +102,7 @@ export class MiniCampaignRemote implements MiniCampaignT {
   }
 
   investigatorTrauma(code: string): TraumaAndCardData {
-    return this.investigatorData[code] || EMPTY_TRAUMA;
+    return this.campaignInvestigatorData[code] || EMPTY_TRAUMA;
   }
 
   updatedAt(): Date {
@@ -165,5 +186,69 @@ export class MiniLinkedCampaignRemote extends MiniCampaignRemote {
         serverId: this.campaignB.id,
       },
     };
+  }
+}
+
+
+const EMPTY_CHAOS_BAG = {};
+const EMPTY_WEAKNESS_SET: WeaknessSet = {
+  packCodes: [],
+  assignedCards: {},
+};
+const EMPTY_CAMPAIGN_NOTES = {};
+const EMPTY_SCENARIO_RESULTS: ScenarioResult[] = [];
+
+export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCampaignT {
+  fullCampaign: FullCampaignFragment;
+  fullInvestigatorData: InvestigatorData;
+  linkCampaignId?: CampaignId;
+  constructor(campaign: FullCampaignFragment) {
+    super(campaign);
+
+    this.fullCampaign = campaign;
+    this.fullInvestigatorData = fragmentToFullInvestigatorData(campaign);
+  }
+
+  showInterludes() {
+    return !!this.fullCampaign.showInterludes;
+  }
+  latestDecks(): Deck[] {
+    // TODO: do something with their IDs here.
+    return flatMap(this.fullCampaign.latest_decks, d => d.deck?.content);
+  }
+  guideVersion() {
+    return (this.fullCampaign.guided && this.fullCampaign.guide_version) || 0;
+  }
+
+  investigatorSpentXp(code: string) {
+    return this.fullInvestigatorData[code]?.spentXp || 0;
+  }
+
+  investigatorData() {
+    return this.fullInvestigatorData;
+  }
+
+  getInvestigatorData(investigator: string) {
+    return this.fullInvestigatorData[investigator] || EMPTY_TRAUMA;
+  }
+
+  chaosBag() {
+    return this.fullCampaign.chaosBag || EMPTY_CHAOS_BAG;
+  }
+  weaknessSet() {
+    return this.fullCampaign.weaknessSet || EMPTY_WEAKNESS_SET;
+  }
+  campaignNotes() {
+    return this.fullCampaign.campaignNotes || EMPTY_CAMPAIGN_NOTES;
+  }
+  scenarioResults() {
+    return this.fullCampaign.scenarioResults || EMPTY_SCENARIO_RESULTS;
+  }
+
+  linkedCampaignId() {
+    return this.fullCampaign.linked_campaign ? {
+      campaignId: this.fullCampaign.link_b_campaign.uuid,
+      serverId: this.fullCampaign.link_b_campaign.id,
+    } : undefined;
   }
 }

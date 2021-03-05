@@ -1,4 +1,4 @@
-import { forEach, map } from 'lodash';
+import { forEach, map, update } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -49,12 +49,16 @@ import {
   getCampaignId,
   UPDATE_CAMPAIGN_XP,
   UploadedCampaignId,
+  Trauma,
+  UpdateCampaignTraumaAction,
+  UPDATE_CAMPAIGN_TRAUMA,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
 import { CreateDeckActions } from '@data/remote/decks';
+import { UpdateCampaignActions } from '@data/remote/campaigns';
 
 function getBaseDeckIds(
   state: AppState,
@@ -96,49 +100,60 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 export function addInvestigator(
   user: FirebaseAuthTypes.User | undefined,
   createDeckActions: CreateDeckActions,
+  updateCampaignActions: UpdateCampaignActions,
   id: CampaignId,
   investigator: string,
   deckId?: DeckId,
 ): ThunkAction<void, AppState, unknown, CampaignAddInvestigatorAction> {
-  return (dispatch, getState: () => AppState) => {
+  return async(dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
       getBaseDeckIds(getState(), [deckId])[0] :
       undefined;
-    const action: CampaignAddInvestigatorAction = {
-      type: CAMPAIGN_ADD_INVESTIGATOR,
-      id,
-      investigator,
-      deckId: baseDeckId,
-      now: new Date(),
-    };
-    dispatch(action);
-    if (deckId && id.serverId && user) {
-      dispatch(uploadCampaignDeckHelper(id, deckId, createDeckActions));
+    if (user && id.serverId) {
+      await updateCampaignActions.addInvestigator(id, investigator);
+    } else {
+      const action: CampaignAddInvestigatorAction = {
+        type: CAMPAIGN_ADD_INVESTIGATOR,
+        id,
+        investigator,
+        deckId: baseDeckId,
+        now: new Date(),
+      };
+      dispatch(action);
+    }
+    if (baseDeckId && id.serverId && user) {
+      dispatch(uploadCampaignDeckHelper(id, baseDeckId, createDeckActions));
     }
   };
 }
 
 export function removeInvestigator(
   user: FirebaseAuthTypes.User | undefined,
-  removeInvestigatorDecks: (campaignId: UploadedCampaignId, investigator: string) => Promise<void>,
+  actions: UpdateCampaignActions,
   id: CampaignId,
   investigator: string,
   deckId?: DeckId
 ): ThunkAction<void, AppState, unknown, CampaignRemoveInvestigatorAction> {
-  return (dispatch, getState: () => AppState) => {
+  return async(dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
       getBaseDeckIds(getState(), [deckId])[0] :
       undefined;
-    const action: CampaignRemoveInvestigatorAction = {
-      type: CAMPAIGN_REMOVE_INVESTIGATOR,
-      id,
-      investigator,
-      removeDeckId: baseDeckId,
-      now: new Date(),
-    };
-    dispatch(action);
-    if (deckId && user && id.serverId) {
-      removeInvestigatorDecks(id, investigator);
+    if (user && id.serverId) {
+      if (deckId) {
+        // First removal is only for the deck
+        await actions.removeInvestigatorDeck(id, investigator);
+      } else {
+        await actions.removeInvestigator(id, investigator);
+      }
+    } else {
+      const action: CampaignRemoveInvestigatorAction = {
+        type: CAMPAIGN_REMOVE_INVESTIGATOR,
+        id,
+        investigator,
+        removeDeckId: baseDeckId,
+        now: new Date(),
+      };
+      dispatch(action);
     }
   };
 }
@@ -217,6 +232,7 @@ export function newCampaign(
 
 export function updateCampaignXp(
   user: FirebaseAuthTypes.User | undefined,
+  actions: UpdateCampaignActions,
   id: CampaignId,
   investigator: string,
   value: number,
@@ -224,7 +240,7 @@ export function updateCampaignXp(
 ): ThunkAction<void, AppState, unknown, UpdateCampaignXpAction> {
   return async(dispatch) => {
     if (user && id.serverId) {
-      // await fbdb.campaignDetail(id).child('investigatorData').child(investigator).child(xpType).set(value);
+      await actions.setXp(id, investigator, xpType, value);
     } else {
       dispatch({
         type: UPDATE_CAMPAIGN_XP,
@@ -238,6 +254,63 @@ export function updateCampaignXp(
     }
   };
 }
+
+export function updateCampaignInvestigatorTrauma(
+  user: FirebaseAuthTypes.User | undefined,
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  investigator: string,
+  trauma: Trauma,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignTraumaAction> {
+  return async(dispatch) => {
+    if (id.serverId && user) {
+      await actions.setInvestigatorTrauma(id, investigator, trauma);
+    } else {
+      dispatch({
+        type: UPDATE_CAMPAIGN_TRAUMA,
+        id,
+        investigator,
+        trauma,
+        now: now || new Date(),
+      });
+    }
+  };
+}
+
+export function updateCampaignWeaknessSet(
+  user: FirebaseAuthTypes.User | undefined,
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  weaknessSet: WeaknessSet,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId && user) {
+      await actions.setWeaknessSet(id, weaknessSet);
+    } else {
+      dispatch(updateCampaign(user, id, { weaknessSet }, now));
+    }
+  };
+}
+
+
+export function updateCampaignName(
+  user: FirebaseAuthTypes.User | undefined,
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  name: string,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId && user) {
+      await actions.setCampaigName(id, name);
+    } else {
+      dispatch(updateCampaign(user, id, { name }, now));
+    }
+  };
+}
+
 
 /**
  * Pass only the fields that you want to update.

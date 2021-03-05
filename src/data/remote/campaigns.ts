@@ -1,8 +1,8 @@
 import { useCallback, useContext, useMemo } from 'react';
-import { filter, omit } from 'lodash';
+import { filter, omit, update } from 'lodash';
 import { FetchResult, MutationFunctionOptions } from '@apollo/client';
 
-import { GuideInput, UploadedCampaignId } from '@actions/types';
+import { GuideInput, Trauma, UploadedCampaignId, WeaknessSet } from '@actions/types';
 import { useModifyUserCache } from '@data/apollo/cache';
 import {
   UploadNewCampaignMutation, UploadNewCampaignMutationVariables, useUploadNewCampaignMutation,
@@ -12,6 +12,13 @@ import {
   useDecCountAchievementMutation,
   useSetBinaryAchievementMutation,
   useAddGuideInputMutation,
+  useUpdateInvestigatorTraumaMutation,
+  useUpdateWeaknessSetMutation,
+  useUpdateCampaignNameMutation,
+  useUpdateSpentXpMutation,
+  useUpdateAvailableXpMutation,
+  useAddCampaignInvestigatorMutation,
+  useRemoveCampaignInvestigatorMutation,
 } from '@generated/graphql/apollo-schema';
 import { CreateDeckActions, useCreateDeckActions } from './decks';
 import { useFunction, ErrorResponse } from './api';
@@ -158,11 +165,43 @@ export function useDeleteCampaignRequest() {
   }, [apiCall, updateCache, client]);
 }
 
-export function useRemoveInvestigatorDecks() {
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const [deleteInvestigatorDecks] = useDeleteInvestigatorDecksMutation();
+export interface UpdateCampaignActions {
+  setInvestigatorTrauma: (campaignId: UploadedCampaignId, investigator: string, trauma: Trauma) => Promise<void>;
+  setXp: (campaignId: UploadedCampaignId, investigator: string, type: 'spentXp' | 'availableXp', xp: number) => Promise<void>;
+  setWeaknessSet: (campaignId: UploadedCampaignId, weaknessSet: WeaknessSet) => Promise<void>;
+  setCampaigName: (campaignId: UploadedCampaignId, name: string) => Promise<void>;
+  addInvestigator: (campaignId: UploadedCampaignId, investigator: string) => Promise<void>;
+  removeInvestigator: (campaignId: UploadedCampaignId, investigator: string) => Promise<void>;
+  removeInvestigatorDeck: (campaignId: UploadedCampaignId, investigator: string) => Promise<void>;
+}
 
-  return useCallback(async(campaignId: UploadedCampaignId, investigator: string) => {
+export function useUpdateCampaignActions(): UpdateCampaignActions {
+  const [updateInvestigatorTrauma] = useUpdateInvestigatorTraumaMutation();
+  const [updateWeaknessSet] = useUpdateWeaknessSetMutation();
+  const [updateCampaignName] = useUpdateCampaignNameMutation();
+  const [updateSpentXp] = useUpdateSpentXpMutation();
+  const [updateAvailableXp] = useUpdateAvailableXpMutation();
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const [insertInvestigator] = useAddCampaignInvestigatorMutation();
+  const [deleteInvestigator] = useRemoveCampaignInvestigatorMutation();
+  const [deleteInvestigatorDecks] = useDeleteInvestigatorDecksMutation();
+  const addInvestigator = useCallback(async(campaignId: UploadedCampaignId, investigator: string) => {
+    await insertInvestigator({
+      variables: {
+        campaign_id: campaignId.serverId,
+        investigator,
+      },
+    });
+  }, [insertInvestigator]);
+  const removeInvestigator = useCallback(async(campaignId: UploadedCampaignId, investigator: string) => {
+    await deleteInvestigator({
+      variables: {
+        campaign_id: campaignId.serverId,
+        investigator,
+      },
+    });
+  }, [deleteInvestigator]);
+  const removeInvestigatorDeck = useCallback(async(campaignId: UploadedCampaignId, investigator: string) => {
     if (!user) {
       return;
     }
@@ -174,6 +213,65 @@ export function useRemoveInvestigatorDecks() {
       },
     });
   }, [deleteInvestigatorDecks, user]);
+
+  const setInvestigatorTrauma = useCallback(async(campaignId: UploadedCampaignId, investigator: string, trauma: Trauma) => {
+    await updateInvestigatorTrauma({
+      variables: {
+        campaign_id: campaignId.serverId,
+        investigator,
+        killed: trauma.killed,
+        insane: trauma.insane,
+        physical: trauma.physical,
+        mental: trauma.mental,
+      },
+    });
+  }, [updateInvestigatorTrauma]);
+  const setWeaknessSet = useCallback(async(campaignId: UploadedCampaignId, weaknessSet: WeaknessSet) => {
+    await updateWeaknessSet({
+      variables: {
+        campaign_id: campaignId.serverId,
+        weakness_set: weaknessSet,
+      },
+    });
+  }, [updateWeaknessSet]);
+  const setCampaigName = useCallback(async(campaignId: UploadedCampaignId, name: string) => {
+    await updateCampaignName({
+      variables: {
+        campaign_id: campaignId.serverId,
+        name,
+      },
+    });
+  }, [updateCampaignName]);
+  const setXp = useCallback(async(campaignId: UploadedCampaignId, investigator: string, type: 'spentXp' | 'availableXp', xp: number) => {
+    if (type === 'spentXp') {
+      await updateSpentXp({
+        variables: {
+          campaign_id: campaignId.serverId,
+          investigator,
+          spent_xp: xp,
+        },
+      });
+    } else {
+      updateAvailableXp({
+        variables: {
+          campaign_id: campaignId.serverId,
+          investigator,
+          available_xp: xp,
+        },
+      });
+    }
+  }, [updateSpentXp, updateAvailableXp]);
+  return useMemo(() => {
+    return {
+      setInvestigatorTrauma,
+      setWeaknessSet,
+      setCampaigName,
+      setXp,
+      addInvestigator,
+      removeInvestigatorDeck,
+      removeInvestigator,
+    };
+  }, [setInvestigatorTrauma, setWeaknessSet, setCampaigName, setXp, addInvestigator, removeInvestigatorDeck, removeInvestigator]);
 }
 
 export interface GuideActions {

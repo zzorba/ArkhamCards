@@ -28,6 +28,7 @@ import {
   NEW_STANDALONE,
   STANDALONE,
   REDUX_MIGRATION,
+  UPDATE_CAMPAIGN_TRAUMA,
 } from '@actions/types';
 
 export interface CampaignsState {
@@ -364,6 +365,29 @@ export default function(
         ...state.chaosBagResults || {},
         [action.id.campaignId]: chaosBagResults,
       },
+    };
+  }
+  if (action.type === UPDATE_CAMPAIGN_TRAUMA) {
+    const existingCampaign = state.all[action.id.campaignId];
+    if (!existingCampaign) {
+      // Can't update a campaign that doesn't exist.
+      return state;
+    }
+    const investigatorData = existingCampaign.investigatorData?.[action.investigator] || {};
+    const campaign: Campaign = {
+      ...existingCampaign,
+      investigatorData: {
+        ...existingCampaign.investigatorData,
+        [action.investigator]: {
+          ...investigatorData,
+          ...action.trauma,
+        },
+      },
+      lastUpdated: action.now,
+    };
+    return {
+      ...state,
+      all: { ...state.all, [action.id.campaignId]: campaign },
     };
   }
   if (action.type === UPDATE_CAMPAIGN_XP) {
