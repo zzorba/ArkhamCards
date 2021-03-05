@@ -39,8 +39,6 @@ function CampaignGuideView(props: Props) {
       },
     });
   }, [campaignId, user, dispatch, componentId]);
-  const { showTraumaDialog, traumaDialog } = useTraumaDialog({ hideKilledInsane: true });
-
   const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Name`,
     value: campaignData.campaignName,
@@ -82,12 +80,10 @@ function CampaignGuideView(props: Props) {
         processedCampaign={processedCampaign}
         showAlert={showAlert}
         showCountDialog={showCountDialog}
-        showTraumaDialog={showTraumaDialog}
         footerButtons={footerButtons}
       />
       { alertDialog }
       { dialog }
-      { traumaDialog }
       { countDialog }
     </View>
   );

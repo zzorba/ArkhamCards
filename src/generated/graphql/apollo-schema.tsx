@@ -16,7 +16,7 @@ export type Scalars = {
   timestamptz: any;
 };
 
-/** expression to compare columns of type Boolean. All fields are combined with logical 'AND'. */
+/** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
 export type Boolean_Comparison_Exp = {
   _eq?: Maybe<Scalars['Boolean']>;
   _gt?: Maybe<Scalars['Boolean']>;
@@ -29,19 +29,7 @@ export type Boolean_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['Boolean']>>;
 };
 
-export type FriendRequestInput = {
-  action: Scalars['String'];
-  userId: Scalars['String'];
-};
-
-export type FriendRequestOutput = {
-  __typename?: 'FriendRequestOutput';
-  error?: Maybe<Scalars['String']>;
-  updatedUser?: Maybe<Users>;
-  userId?: Maybe<Scalars['String']>;
-};
-
-/** expression to compare columns of type Int. All fields are combined with logical 'AND'. */
+/** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
   _eq?: Maybe<Scalars['Int']>;
   _gt?: Maybe<Scalars['Int']>;
@@ -54,22 +42,36 @@ export type Int_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['Int']>>;
 };
 
-/** expression to compare columns of type String. All fields are combined with logical 'AND'. */
+/** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export type String_Comparison_Exp = {
   _eq?: Maybe<Scalars['String']>;
   _gt?: Maybe<Scalars['String']>;
   _gte?: Maybe<Scalars['String']>;
+  /** does the column match the given case-insensitive pattern */
   _ilike?: Maybe<Scalars['String']>;
   _in?: Maybe<Array<Scalars['String']>>;
+  /** does the column match the given POSIX regular expression, case insensitive */
+  _iregex?: Maybe<Scalars['String']>;
   _is_null?: Maybe<Scalars['Boolean']>;
+  /** does the column match the given pattern */
   _like?: Maybe<Scalars['String']>;
   _lt?: Maybe<Scalars['String']>;
   _lte?: Maybe<Scalars['String']>;
   _neq?: Maybe<Scalars['String']>;
+  /** does the column NOT match the given case-insensitive pattern */
   _nilike?: Maybe<Scalars['String']>;
   _nin?: Maybe<Array<Scalars['String']>>;
+  /** does the column NOT match the given POSIX regular expression, case insensitive */
+  _niregex?: Maybe<Scalars['String']>;
+  /** does the column NOT match the given pattern */
   _nlike?: Maybe<Scalars['String']>;
+  /** does the column NOT match the given POSIX regular expression, case sensitive */
+  _nregex?: Maybe<Scalars['String']>;
+  /** does the column NOT match the given SQL regular expression */
   _nsimilar?: Maybe<Scalars['String']>;
+  /** does the column match the given POSIX regular expression, case sensitive */
+  _regex?: Maybe<Scalars['String']>;
+  /** does the column match the given SQL regular expression */
   _similar?: Maybe<Scalars['String']>;
 };
 
@@ -95,7 +97,7 @@ export type Base_Decks_Aggregate = {
 export type Base_Decks_Aggregate_Fields = {
   __typename?: 'base_decks_aggregate_fields';
   avg?: Maybe<Base_Decks_Avg_Fields>;
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<Base_Decks_Max_Fields>;
   min?: Maybe<Base_Decks_Min_Fields>;
   stddev?: Maybe<Base_Decks_Stddev_Fields>;
@@ -149,16 +151,16 @@ export type Base_Decks_Avg_Order_By = {
 
 /** Boolean expression to filter rows from the table "base_decks". All fields are combined with a logical 'AND'. */
 export type Base_Decks_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Base_Decks_Bool_Exp>>>;
+  _and?: Maybe<Array<Base_Decks_Bool_Exp>>;
   _not?: Maybe<Base_Decks_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Base_Decks_Bool_Exp>>>;
+  _or?: Maybe<Array<Base_Decks_Bool_Exp>>;
   campaign?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
   deck?: Maybe<Deck_Bool_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
 };
 
-/** input type for incrementing integer column in table "base_decks" */
+/** input type for incrementing numeric columns in table "base_decks" */
 export type Base_Decks_Inc_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
@@ -201,18 +203,13 @@ export type Base_Decks_Min_Order_By = {
 /** response of any mutation on the table "base_decks" */
 export type Base_Decks_Mutation_Response = {
   __typename?: 'base_decks_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<Base_Decks>;
 };
 
-/** input type for inserting object relation for remote table "base_decks" */
-export type Base_Decks_Obj_Rel_Insert_Input = {
-  data: Base_Decks_Insert_Input;
-};
-
-/** ordering options when selecting data from "base_decks" */
+/** Ordering options when selecting data from "base_decks". */
 export type Base_Decks_Order_By = {
   campaign?: Maybe<Campaign_Order_By>;
   campaign_id?: Maybe<Order_By>;
@@ -330,11 +327,11 @@ export type Campaign = {
   __typename?: 'campaign';
   /** An array relationship */
   access: Array<Campaign_Access>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   access_aggregate: Campaign_Access_Aggregate;
   /** An array relationship */
   base_decks: Array<Base_Decks>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   base_decks_aggregate: Base_Decks_Aggregate;
   campaignNotes?: Maybe<Scalars['jsonb']>;
   chaosBag?: Maybe<Scalars['jsonb']>;
@@ -344,31 +341,37 @@ export type Campaign = {
   difficulty?: Maybe<Scalars['String']>;
   /** An array relationship */
   guide_achivements: Array<Guide_Achievement>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   guide_achivements_aggregate: Guide_Achievement_Aggregate;
   /** An array relationship */
   guide_inputs: Array<Guide_Input>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   guide_inputs_aggregate: Guide_Input_Aggregate;
   guide_version?: Maybe<Scalars['Int']>;
   guided?: Maybe<Scalars['Boolean']>;
   id: Scalars['Int'];
   /** An array relationship */
   investigator_data: Array<Investigator_Data>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   investigator_data_aggregate: Investigator_Data_Aggregate;
   /** An array relationship */
+  investigators: Array<Campaign_Investigator>;
+  /** An aggregate relationship */
+  investigators_aggregate: Campaign_Investigator_Aggregate;
+  /** An array relationship */
   latest_decks: Array<Latest_Decks>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   latest_decks_aggregate: Latest_Decks_Aggregate;
   /** An object relationship */
-  link_a_campaign?: Maybe<Campaign>;
+  link_a_campaign: Campaign;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   /** An object relationship */
-  link_b_campaign?: Maybe<Campaign>;
+  link_b_campaign: Campaign;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
+  link_campaign_id?: Maybe<Scalars['Int']>;
+  /** An object relationship */
+  linked_campaign: Campaign;
   name?: Maybe<Scalars['String']>;
-  nonDeckInvestigators?: Maybe<Scalars['jsonb']>;
   owner: Scalars['String'];
   scenarioResults?: Maybe<Scalars['jsonb']>;
   showInterludes?: Maybe<Scalars['Boolean']>;
@@ -492,6 +495,26 @@ export type CampaignInvestigator_Data_AggregateArgs = {
 
 
 /** columns and relationships of "campaign" */
+export type CampaignInvestigatorsArgs = {
+  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
+  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign" */
+export type CampaignInvestigators_AggregateArgs = {
+  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
+  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign" */
 export type CampaignLatest_DecksArgs = {
   distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -508,12 +531,6 @@ export type CampaignLatest_Decks_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Latest_Decks_Order_By>>;
   where?: Maybe<Latest_Decks_Bool_Exp>;
-};
-
-
-/** columns and relationships of "campaign" */
-export type CampaignNonDeckInvestigatorsArgs = {
-  path?: Maybe<Scalars['String']>;
 };
 
 
@@ -554,7 +571,7 @@ export type Campaign_Access_Aggregate = {
 export type Campaign_Access_Aggregate_Fields = {
   __typename?: 'campaign_access_aggregate_fields';
   avg?: Maybe<Campaign_Access_Avg_Fields>;
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<Campaign_Access_Max_Fields>;
   min?: Maybe<Campaign_Access_Min_Fields>;
   stddev?: Maybe<Campaign_Access_Stddev_Fields>;
@@ -591,6 +608,7 @@ export type Campaign_Access_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "campaign_access" */
 export type Campaign_Access_Arr_Rel_Insert_Input = {
   data: Array<Campaign_Access_Insert_Input>;
+  /** on conflict condition */
   on_conflict?: Maybe<Campaign_Access_On_Conflict>;
 };
 
@@ -609,9 +627,9 @@ export type Campaign_Access_Avg_Order_By = {
 
 /** Boolean expression to filter rows from the table "campaign_access". All fields are combined with a logical 'AND'. */
 export type Campaign_Access_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Campaign_Access_Bool_Exp>>>;
+  _and?: Maybe<Array<Campaign_Access_Bool_Exp>>;
   _not?: Maybe<Campaign_Access_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Campaign_Access_Bool_Exp>>>;
+  _or?: Maybe<Array<Campaign_Access_Bool_Exp>>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
   hidden?: Maybe<Boolean_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
@@ -626,7 +644,7 @@ export enum Campaign_Access_Constraint {
   CampaignAccessUserIdCampaignIdKey = 'campaign_access_user_id_campaign_id_key'
 }
 
-/** input type for incrementing integer column in table "campaign_access" */
+/** input type for incrementing numeric columns in table "campaign_access" */
 export type Campaign_Access_Inc_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
@@ -673,16 +691,10 @@ export type Campaign_Access_Min_Order_By = {
 /** response of any mutation on the table "campaign_access" */
 export type Campaign_Access_Mutation_Response = {
   __typename?: 'campaign_access_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<Campaign_Access>;
-};
-
-/** input type for inserting object relation for remote table "campaign_access" */
-export type Campaign_Access_Obj_Rel_Insert_Input = {
-  data: Campaign_Access_Insert_Input;
-  on_conflict?: Maybe<Campaign_Access_On_Conflict>;
 };
 
 /** on conflict condition type for table "campaign_access" */
@@ -692,7 +704,7 @@ export type Campaign_Access_On_Conflict = {
   where?: Maybe<Campaign_Access_Bool_Exp>;
 };
 
-/** ordering options when selecting data from "campaign_access" */
+/** Ordering options when selecting data from "campaign_access". */
 export type Campaign_Access_Order_By = {
   campaign_id?: Maybe<Order_By>;
   hidden?: Maybe<Order_By>;
@@ -700,7 +712,7 @@ export type Campaign_Access_Order_By = {
   user_id?: Maybe<Order_By>;
 };
 
-/** primary key columns input for table: "campaign_access" */
+/** primary key columns input for table: campaign_access */
 export type Campaign_Access_Pk_Columns_Input = {
   id: Scalars['Int'];
 };
@@ -839,7 +851,7 @@ export type Campaign_Aggregate = {
 export type Campaign_Aggregate_Fields = {
   __typename?: 'campaign_aggregate_fields';
   avg?: Maybe<Campaign_Avg_Fields>;
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<Campaign_Max_Fields>;
   min?: Maybe<Campaign_Min_Fields>;
   stddev?: Maybe<Campaign_Stddev_Fields>;
@@ -858,35 +870,13 @@ export type Campaign_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "campaign" */
-export type Campaign_Aggregate_Order_By = {
-  avg?: Maybe<Campaign_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Campaign_Max_Order_By>;
-  min?: Maybe<Campaign_Min_Order_By>;
-  stddev?: Maybe<Campaign_Stddev_Order_By>;
-  stddev_pop?: Maybe<Campaign_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Campaign_Stddev_Samp_Order_By>;
-  sum?: Maybe<Campaign_Sum_Order_By>;
-  var_pop?: Maybe<Campaign_Var_Pop_Order_By>;
-  var_samp?: Maybe<Campaign_Var_Samp_Order_By>;
-  variance?: Maybe<Campaign_Variance_Order_By>;
-};
-
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Campaign_Append_Input = {
   campaignNotes?: Maybe<Scalars['jsonb']>;
   chaosBag?: Maybe<Scalars['jsonb']>;
-  nonDeckInvestigators?: Maybe<Scalars['jsonb']>;
   scenarioResults?: Maybe<Scalars['jsonb']>;
   standaloneId?: Maybe<Scalars['jsonb']>;
   weaknessSet?: Maybe<Scalars['jsonb']>;
-};
-
-/** input type for inserting array relation for remote table "campaign" */
-export type Campaign_Arr_Rel_Insert_Input = {
-  data: Array<Campaign_Insert_Input>;
-  on_conflict?: Maybe<Campaign_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -896,21 +886,14 @@ export type Campaign_Avg_Fields = {
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
-};
-
-/** order by avg() on columns of table "campaign" */
-export type Campaign_Avg_Order_By = {
-  guide_version?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
+  link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "campaign". All fields are combined with a logical 'AND'. */
 export type Campaign_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Campaign_Bool_Exp>>>;
+  _and?: Maybe<Array<Campaign_Bool_Exp>>;
   _not?: Maybe<Campaign_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Campaign_Bool_Exp>>>;
+  _or?: Maybe<Array<Campaign_Bool_Exp>>;
   access?: Maybe<Campaign_Access_Bool_Exp>;
   base_decks?: Maybe<Base_Decks_Bool_Exp>;
   campaignNotes?: Maybe<Jsonb_Comparison_Exp>;
@@ -925,13 +908,15 @@ export type Campaign_Bool_Exp = {
   guided?: Maybe<Boolean_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   investigator_data?: Maybe<Investigator_Data_Bool_Exp>;
+  investigators?: Maybe<Campaign_Investigator_Bool_Exp>;
   latest_decks?: Maybe<Latest_Decks_Bool_Exp>;
   link_a_campaign?: Maybe<Campaign_Bool_Exp>;
   link_a_campaign_id?: Maybe<Int_Comparison_Exp>;
   link_b_campaign?: Maybe<Campaign_Bool_Exp>;
   link_b_campaign_id?: Maybe<Int_Comparison_Exp>;
+  link_campaign_id?: Maybe<Int_Comparison_Exp>;
+  linked_campaign?: Maybe<Campaign_Bool_Exp>;
   name?: Maybe<String_Comparison_Exp>;
-  nonDeckInvestigators?: Maybe<Jsonb_Comparison_Exp>;
   owner?: Maybe<String_Comparison_Exp>;
   scenarioResults?: Maybe<Jsonb_Comparison_Exp>;
   showInterludes?: Maybe<Boolean_Comparison_Exp>;
@@ -949,19 +934,17 @@ export enum Campaign_Constraint {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Campaign_Delete_At_Path_Input = {
-  campaignNotes?: Maybe<Array<Maybe<Scalars['String']>>>;
-  chaosBag?: Maybe<Array<Maybe<Scalars['String']>>>;
-  nonDeckInvestigators?: Maybe<Array<Maybe<Scalars['String']>>>;
-  scenarioResults?: Maybe<Array<Maybe<Scalars['String']>>>;
-  standaloneId?: Maybe<Array<Maybe<Scalars['String']>>>;
-  weaknessSet?: Maybe<Array<Maybe<Scalars['String']>>>;
+  campaignNotes?: Maybe<Array<Scalars['String']>>;
+  chaosBag?: Maybe<Array<Scalars['String']>>;
+  scenarioResults?: Maybe<Array<Scalars['String']>>;
+  standaloneId?: Maybe<Array<Scalars['String']>>;
+  weaknessSet?: Maybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Campaign_Delete_Elem_Input = {
   campaignNotes?: Maybe<Scalars['Int']>;
   chaosBag?: Maybe<Scalars['Int']>;
-  nonDeckInvestigators?: Maybe<Scalars['Int']>;
   scenarioResults?: Maybe<Scalars['Int']>;
   standaloneId?: Maybe<Scalars['Int']>;
   weaknessSet?: Maybe<Scalars['Int']>;
@@ -971,18 +954,18 @@ export type Campaign_Delete_Elem_Input = {
 export type Campaign_Delete_Key_Input = {
   campaignNotes?: Maybe<Scalars['String']>;
   chaosBag?: Maybe<Scalars['String']>;
-  nonDeckInvestigators?: Maybe<Scalars['String']>;
   scenarioResults?: Maybe<Scalars['String']>;
   standaloneId?: Maybe<Scalars['String']>;
   weaknessSet?: Maybe<Scalars['String']>;
 };
 
-/** input type for incrementing integer column in table "campaign" */
+/** input type for incrementing numeric columns in table "campaign" */
 export type Campaign_Inc_Input = {
   guide_version?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
+  link_campaign_id?: Maybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "campaign" */
@@ -1001,13 +984,15 @@ export type Campaign_Insert_Input = {
   guided?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['Int']>;
   investigator_data?: Maybe<Investigator_Data_Arr_Rel_Insert_Input>;
+  investigators?: Maybe<Campaign_Investigator_Arr_Rel_Insert_Input>;
   latest_decks?: Maybe<Latest_Decks_Arr_Rel_Insert_Input>;
   link_a_campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   link_b_campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
+  link_campaign_id?: Maybe<Scalars['Int']>;
+  linked_campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   name?: Maybe<Scalars['String']>;
-  nonDeckInvestigators?: Maybe<Scalars['jsonb']>;
   owner?: Maybe<Scalars['String']>;
   scenarioResults?: Maybe<Scalars['jsonb']>;
   showInterludes?: Maybe<Scalars['Boolean']>;
@@ -1015,6 +1000,317 @@ export type Campaign_Insert_Input = {
   updated_at?: Maybe<Scalars['timestamptz']>;
   uuid?: Maybe<Scalars['String']>;
   weaknessSet?: Maybe<Scalars['jsonb']>;
+};
+
+/** columns and relationships of "campaign_investigator" */
+export type Campaign_Investigator = {
+  __typename?: 'campaign_investigator';
+  /** An object relationship */
+  campaign: Campaign;
+  campaign_id: Scalars['Int'];
+  created_at: Scalars['timestamptz'];
+  id: Scalars['Int'];
+  investigator: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "campaign_investigator" */
+export type Campaign_Investigator_Aggregate = {
+  __typename?: 'campaign_investigator_aggregate';
+  aggregate?: Maybe<Campaign_Investigator_Aggregate_Fields>;
+  nodes: Array<Campaign_Investigator>;
+};
+
+/** aggregate fields of "campaign_investigator" */
+export type Campaign_Investigator_Aggregate_Fields = {
+  __typename?: 'campaign_investigator_aggregate_fields';
+  avg?: Maybe<Campaign_Investigator_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Campaign_Investigator_Max_Fields>;
+  min?: Maybe<Campaign_Investigator_Min_Fields>;
+  stddev?: Maybe<Campaign_Investigator_Stddev_Fields>;
+  stddev_pop?: Maybe<Campaign_Investigator_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Campaign_Investigator_Stddev_Samp_Fields>;
+  sum?: Maybe<Campaign_Investigator_Sum_Fields>;
+  var_pop?: Maybe<Campaign_Investigator_Var_Pop_Fields>;
+  var_samp?: Maybe<Campaign_Investigator_Var_Samp_Fields>;
+  variance?: Maybe<Campaign_Investigator_Variance_Fields>;
+};
+
+
+/** aggregate fields of "campaign_investigator" */
+export type Campaign_Investigator_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Campaign_Investigator_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "campaign_investigator" */
+export type Campaign_Investigator_Aggregate_Order_By = {
+  avg?: Maybe<Campaign_Investigator_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Campaign_Investigator_Max_Order_By>;
+  min?: Maybe<Campaign_Investigator_Min_Order_By>;
+  stddev?: Maybe<Campaign_Investigator_Stddev_Order_By>;
+  stddev_pop?: Maybe<Campaign_Investigator_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Campaign_Investigator_Stddev_Samp_Order_By>;
+  sum?: Maybe<Campaign_Investigator_Sum_Order_By>;
+  var_pop?: Maybe<Campaign_Investigator_Var_Pop_Order_By>;
+  var_samp?: Maybe<Campaign_Investigator_Var_Samp_Order_By>;
+  variance?: Maybe<Campaign_Investigator_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "campaign_investigator" */
+export type Campaign_Investigator_Arr_Rel_Insert_Input = {
+  data: Array<Campaign_Investigator_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Campaign_Investigator_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Campaign_Investigator_Avg_Fields = {
+  __typename?: 'campaign_investigator_avg_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "campaign_investigator" */
+export type Campaign_Investigator_Avg_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "campaign_investigator". All fields are combined with a logical 'AND'. */
+export type Campaign_Investigator_Bool_Exp = {
+  _and?: Maybe<Array<Campaign_Investigator_Bool_Exp>>;
+  _not?: Maybe<Campaign_Investigator_Bool_Exp>;
+  _or?: Maybe<Array<Campaign_Investigator_Bool_Exp>>;
+  campaign?: Maybe<Campaign_Bool_Exp>;
+  campaign_id?: Maybe<Int_Comparison_Exp>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+  investigator?: Maybe<String_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "campaign_investigator" */
+export enum Campaign_Investigator_Constraint {
+  /** unique or primary key constraint */
+  CampaignInvestigatorCampaignIdInvestigatorKey = 'campaign_investigator_campaign_id_investigator_key',
+  /** unique or primary key constraint */
+  CampaignInvestigatorPkey = 'campaign_investigator_pkey'
+}
+
+/** input type for incrementing numeric columns in table "campaign_investigator" */
+export type Campaign_Investigator_Inc_Input = {
+  campaign_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "campaign_investigator" */
+export type Campaign_Investigator_Insert_Input = {
+  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  investigator?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Campaign_Investigator_Max_Fields = {
+  __typename?: 'campaign_investigator_max_fields';
+  campaign_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  investigator?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by max() on columns of table "campaign_investigator" */
+export type Campaign_Investigator_Max_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  investigator?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Campaign_Investigator_Min_Fields = {
+  __typename?: 'campaign_investigator_min_fields';
+  campaign_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  investigator?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "campaign_investigator" */
+export type Campaign_Investigator_Min_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  investigator?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "campaign_investigator" */
+export type Campaign_Investigator_Mutation_Response = {
+  __typename?: 'campaign_investigator_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Campaign_Investigator>;
+};
+
+/** on conflict condition type for table "campaign_investigator" */
+export type Campaign_Investigator_On_Conflict = {
+  constraint: Campaign_Investigator_Constraint;
+  update_columns: Array<Campaign_Investigator_Update_Column>;
+  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "campaign_investigator". */
+export type Campaign_Investigator_Order_By = {
+  campaign?: Maybe<Campaign_Order_By>;
+  campaign_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  investigator?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: campaign_investigator */
+export type Campaign_Investigator_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** select columns of table "campaign_investigator" */
+export enum Campaign_Investigator_Select_Column {
+  /** column name */
+  CampaignId = 'campaign_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Investigator = 'investigator',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "campaign_investigator" */
+export type Campaign_Investigator_Set_Input = {
+  campaign_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  investigator?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Campaign_Investigator_Stddev_Fields = {
+  __typename?: 'campaign_investigator_stddev_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "campaign_investigator" */
+export type Campaign_Investigator_Stddev_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Campaign_Investigator_Stddev_Pop_Fields = {
+  __typename?: 'campaign_investigator_stddev_pop_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "campaign_investigator" */
+export type Campaign_Investigator_Stddev_Pop_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Campaign_Investigator_Stddev_Samp_Fields = {
+  __typename?: 'campaign_investigator_stddev_samp_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "campaign_investigator" */
+export type Campaign_Investigator_Stddev_Samp_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Campaign_Investigator_Sum_Fields = {
+  __typename?: 'campaign_investigator_sum_fields';
+  campaign_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "campaign_investigator" */
+export type Campaign_Investigator_Sum_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** update columns of table "campaign_investigator" */
+export enum Campaign_Investigator_Update_Column {
+  /** column name */
+  CampaignId = 'campaign_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Investigator = 'investigator',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** aggregate var_pop on columns */
+export type Campaign_Investigator_Var_Pop_Fields = {
+  __typename?: 'campaign_investigator_var_pop_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "campaign_investigator" */
+export type Campaign_Investigator_Var_Pop_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Campaign_Investigator_Var_Samp_Fields = {
+  __typename?: 'campaign_investigator_var_samp_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "campaign_investigator" */
+export type Campaign_Investigator_Var_Samp_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Campaign_Investigator_Variance_Fields = {
+  __typename?: 'campaign_investigator_variance_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "campaign_investigator" */
+export type Campaign_Investigator_Variance_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
 };
 
 /** aggregate max on columns */
@@ -1027,25 +1323,11 @@ export type Campaign_Max_Fields = {
   id?: Maybe<Scalars['Int']>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
+  link_campaign_id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   owner?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   uuid?: Maybe<Scalars['String']>;
-};
-
-/** order by max() on columns of table "campaign" */
-export type Campaign_Max_Order_By = {
-  created_at?: Maybe<Order_By>;
-  cycleCode?: Maybe<Order_By>;
-  difficulty?: Maybe<Order_By>;
-  guide_version?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  owner?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  uuid?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -1058,39 +1340,26 @@ export type Campaign_Min_Fields = {
   id?: Maybe<Scalars['Int']>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
+  link_campaign_id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   owner?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   uuid?: Maybe<Scalars['String']>;
 };
 
-/** order by min() on columns of table "campaign" */
-export type Campaign_Min_Order_By = {
-  created_at?: Maybe<Order_By>;
-  cycleCode?: Maybe<Order_By>;
-  difficulty?: Maybe<Order_By>;
-  guide_version?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  owner?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  uuid?: Maybe<Order_By>;
-};
-
 /** response of any mutation on the table "campaign" */
 export type Campaign_Mutation_Response = {
   __typename?: 'campaign_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<Campaign>;
 };
 
 /** input type for inserting object relation for remote table "campaign" */
 export type Campaign_Obj_Rel_Insert_Input = {
   data: Campaign_Insert_Input;
+  /** on conflict condition */
   on_conflict?: Maybe<Campaign_On_Conflict>;
 };
 
@@ -1101,7 +1370,7 @@ export type Campaign_On_Conflict = {
   where?: Maybe<Campaign_Bool_Exp>;
 };
 
-/** ordering options when selecting data from "campaign" */
+/** Ordering options when selecting data from "campaign". */
 export type Campaign_Order_By = {
   access_aggregate?: Maybe<Campaign_Access_Aggregate_Order_By>;
   base_decks_aggregate?: Maybe<Base_Decks_Aggregate_Order_By>;
@@ -1117,13 +1386,15 @@ export type Campaign_Order_By = {
   guided?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   investigator_data_aggregate?: Maybe<Investigator_Data_Aggregate_Order_By>;
+  investigators_aggregate?: Maybe<Campaign_Investigator_Aggregate_Order_By>;
   latest_decks_aggregate?: Maybe<Latest_Decks_Aggregate_Order_By>;
   link_a_campaign?: Maybe<Campaign_Order_By>;
   link_a_campaign_id?: Maybe<Order_By>;
   link_b_campaign?: Maybe<Campaign_Order_By>;
   link_b_campaign_id?: Maybe<Order_By>;
+  link_campaign_id?: Maybe<Order_By>;
+  linked_campaign?: Maybe<Campaign_Order_By>;
   name?: Maybe<Order_By>;
-  nonDeckInvestigators?: Maybe<Order_By>;
   owner?: Maybe<Order_By>;
   scenarioResults?: Maybe<Order_By>;
   showInterludes?: Maybe<Order_By>;
@@ -1133,7 +1404,7 @@ export type Campaign_Order_By = {
   weaknessSet?: Maybe<Order_By>;
 };
 
-/** primary key columns input for table: "campaign" */
+/** primary key columns input for table: campaign */
 export type Campaign_Pk_Columns_Input = {
   id: Scalars['Int'];
 };
@@ -1142,7 +1413,6 @@ export type Campaign_Pk_Columns_Input = {
 export type Campaign_Prepend_Input = {
   campaignNotes?: Maybe<Scalars['jsonb']>;
   chaosBag?: Maybe<Scalars['jsonb']>;
-  nonDeckInvestigators?: Maybe<Scalars['jsonb']>;
   scenarioResults?: Maybe<Scalars['jsonb']>;
   standaloneId?: Maybe<Scalars['jsonb']>;
   weaknessSet?: Maybe<Scalars['jsonb']>;
@@ -1173,9 +1443,9 @@ export enum Campaign_Select_Column {
   /** column name */
   LinkBCampaignId = 'link_b_campaign_id',
   /** column name */
-  Name = 'name',
+  LinkCampaignId = 'link_campaign_id',
   /** column name */
-  NonDeckInvestigators = 'nonDeckInvestigators',
+  Name = 'name',
   /** column name */
   Owner = 'owner',
   /** column name */
@@ -1205,8 +1475,8 @@ export type Campaign_Set_Input = {
   id?: Maybe<Scalars['Int']>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
+  link_campaign_id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
-  nonDeckInvestigators?: Maybe<Scalars['jsonb']>;
   owner?: Maybe<Scalars['String']>;
   scenarioResults?: Maybe<Scalars['jsonb']>;
   showInterludes?: Maybe<Scalars['Boolean']>;
@@ -1223,14 +1493,7 @@ export type Campaign_Stddev_Fields = {
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev() on columns of table "campaign" */
-export type Campaign_Stddev_Order_By = {
-  guide_version?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
+  link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -1240,14 +1503,7 @@ export type Campaign_Stddev_Pop_Fields = {
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev_pop() on columns of table "campaign" */
-export type Campaign_Stddev_Pop_Order_By = {
-  guide_version?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
+  link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -1257,14 +1513,7 @@ export type Campaign_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev_samp() on columns of table "campaign" */
-export type Campaign_Stddev_Samp_Order_By = {
-  guide_version?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
+  link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
@@ -1274,14 +1523,7 @@ export type Campaign_Sum_Fields = {
   id?: Maybe<Scalars['Int']>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
-};
-
-/** order by sum() on columns of table "campaign" */
-export type Campaign_Sum_Order_By = {
-  guide_version?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
+  link_campaign_id?: Maybe<Scalars['Int']>;
 };
 
 /** update columns of table "campaign" */
@@ -1309,9 +1551,9 @@ export enum Campaign_Update_Column {
   /** column name */
   LinkBCampaignId = 'link_b_campaign_id',
   /** column name */
-  Name = 'name',
+  LinkCampaignId = 'link_campaign_id',
   /** column name */
-  NonDeckInvestigators = 'nonDeckInvestigators',
+  Name = 'name',
   /** column name */
   Owner = 'owner',
   /** column name */
@@ -1335,14 +1577,7 @@ export type Campaign_Var_Pop_Fields = {
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
-};
-
-/** order by var_pop() on columns of table "campaign" */
-export type Campaign_Var_Pop_Order_By = {
-  guide_version?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
+  link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
@@ -1352,14 +1587,7 @@ export type Campaign_Var_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
-};
-
-/** order by var_samp() on columns of table "campaign" */
-export type Campaign_Var_Samp_Order_By = {
-  guide_version?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
+  link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
@@ -1369,14 +1597,7 @@ export type Campaign_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
-};
-
-/** order by variance() on columns of table "campaign" */
-export type Campaign_Variance_Order_By = {
-  guide_version?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  link_a_campaign_id?: Maybe<Order_By>;
-  link_b_campaign_id?: Maybe<Order_By>;
+  link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "deck" */
@@ -1392,7 +1613,7 @@ export type Deck = {
   investigator: Scalars['String'];
   local_uuid?: Maybe<Scalars['String']>;
   /** An object relationship */
-  next_deck?: Maybe<Deck>;
+  next_deck: Deck;
   next_deck_id?: Maybe<Scalars['Int']>;
   /** An object relationship */
   owner: Users;
@@ -1418,7 +1639,7 @@ export type Deck_Aggregate = {
 export type Deck_Aggregate_Fields = {
   __typename?: 'deck_aggregate_fields';
   avg?: Maybe<Deck_Avg_Fields>;
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<Deck_Max_Fields>;
   min?: Maybe<Deck_Min_Fields>;
   stddev?: Maybe<Deck_Stddev_Fields>;
@@ -1437,30 +1658,9 @@ export type Deck_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "deck" */
-export type Deck_Aggregate_Order_By = {
-  avg?: Maybe<Deck_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Deck_Max_Order_By>;
-  min?: Maybe<Deck_Min_Order_By>;
-  stddev?: Maybe<Deck_Stddev_Order_By>;
-  stddev_pop?: Maybe<Deck_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Deck_Stddev_Samp_Order_By>;
-  sum?: Maybe<Deck_Sum_Order_By>;
-  var_pop?: Maybe<Deck_Var_Pop_Order_By>;
-  var_samp?: Maybe<Deck_Var_Samp_Order_By>;
-  variance?: Maybe<Deck_Variance_Order_By>;
-};
-
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Deck_Append_Input = {
   content?: Maybe<Scalars['jsonb']>;
-};
-
-/** input type for inserting array relation for remote table "deck" */
-export type Deck_Arr_Rel_Insert_Input = {
-  data: Array<Deck_Insert_Input>;
-  on_conflict?: Maybe<Deck_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -1472,19 +1672,11 @@ export type Deck_Avg_Fields = {
   next_deck_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by avg() on columns of table "deck" */
-export type Deck_Avg_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
-};
-
 /** Boolean expression to filter rows from the table "deck". All fields are combined with a logical 'AND'. */
 export type Deck_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Deck_Bool_Exp>>>;
+  _and?: Maybe<Array<Deck_Bool_Exp>>;
   _not?: Maybe<Deck_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Deck_Bool_Exp>>>;
+  _or?: Maybe<Array<Deck_Bool_Exp>>;
   arkhamdb_id?: Maybe<Int_Comparison_Exp>;
   base?: Maybe<Boolean_Comparison_Exp>;
   campaign?: Maybe<Campaign_Bool_Exp>;
@@ -1512,7 +1704,7 @@ export enum Deck_Constraint {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Deck_Delete_At_Path_Input = {
-  content?: Maybe<Array<Maybe<Scalars['String']>>>;
+  content?: Maybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
@@ -1525,7 +1717,7 @@ export type Deck_Delete_Key_Input = {
   content?: Maybe<Scalars['String']>;
 };
 
-/** input type for incrementing integer column in table "deck" */
+/** input type for incrementing numeric columns in table "deck" */
 export type Deck_Inc_Input = {
   arkhamdb_id?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
@@ -1562,17 +1754,6 @@ export type Deck_Max_Fields = {
   owner_id?: Maybe<Scalars['String']>;
 };
 
-/** order by max() on columns of table "deck" */
-export type Deck_Max_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  local_uuid?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
-  owner_id?: Maybe<Order_By>;
-};
-
 /** aggregate min on columns */
 export type Deck_Min_Fields = {
   __typename?: 'deck_min_fields';
@@ -1585,29 +1766,19 @@ export type Deck_Min_Fields = {
   owner_id?: Maybe<Scalars['String']>;
 };
 
-/** order by min() on columns of table "deck" */
-export type Deck_Min_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  investigator?: Maybe<Order_By>;
-  local_uuid?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
-  owner_id?: Maybe<Order_By>;
-};
-
 /** response of any mutation on the table "deck" */
 export type Deck_Mutation_Response = {
   __typename?: 'deck_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<Deck>;
 };
 
 /** input type for inserting object relation for remote table "deck" */
 export type Deck_Obj_Rel_Insert_Input = {
   data: Deck_Insert_Input;
+  /** on conflict condition */
   on_conflict?: Maybe<Deck_On_Conflict>;
 };
 
@@ -1618,7 +1789,7 @@ export type Deck_On_Conflict = {
   where?: Maybe<Deck_Bool_Exp>;
 };
 
-/** ordering options when selecting data from "deck" */
+/** Ordering options when selecting data from "deck". */
 export type Deck_Order_By = {
   arkhamdb_id?: Maybe<Order_By>;
   base?: Maybe<Order_By>;
@@ -1635,7 +1806,7 @@ export type Deck_Order_By = {
   previous_deck?: Maybe<Deck_Order_By>;
 };
 
-/** primary key columns input for table: "deck" */
+/** primary key columns input for table: deck */
 export type Deck_Pk_Columns_Input = {
   id: Scalars['Int'];
 };
@@ -1689,14 +1860,6 @@ export type Deck_Stddev_Fields = {
   next_deck_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by stddev() on columns of table "deck" */
-export type Deck_Stddev_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
-};
-
 /** aggregate stddev_pop on columns */
 export type Deck_Stddev_Pop_Fields = {
   __typename?: 'deck_stddev_pop_fields';
@@ -1704,14 +1867,6 @@ export type Deck_Stddev_Pop_Fields = {
   campaign_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev_pop() on columns of table "deck" */
-export type Deck_Stddev_Pop_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -1723,14 +1878,6 @@ export type Deck_Stddev_Samp_Fields = {
   next_deck_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by stddev_samp() on columns of table "deck" */
-export type Deck_Stddev_Samp_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
-};
-
 /** aggregate sum on columns */
 export type Deck_Sum_Fields = {
   __typename?: 'deck_sum_fields';
@@ -1738,14 +1885,6 @@ export type Deck_Sum_Fields = {
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   next_deck_id?: Maybe<Scalars['Int']>;
-};
-
-/** order by sum() on columns of table "deck" */
-export type Deck_Sum_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
 };
 
 /** update columns of table "deck" */
@@ -1779,14 +1918,6 @@ export type Deck_Var_Pop_Fields = {
   next_deck_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by var_pop() on columns of table "deck" */
-export type Deck_Var_Pop_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
-};
-
 /** aggregate var_samp on columns */
 export type Deck_Var_Samp_Fields = {
   __typename?: 'deck_var_samp_fields';
@@ -1796,14 +1927,6 @@ export type Deck_Var_Samp_Fields = {
   next_deck_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by var_samp() on columns of table "deck" */
-export type Deck_Var_Samp_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
-};
-
 /** aggregate variance on columns */
 export type Deck_Variance_Fields = {
   __typename?: 'deck_variance_fields';
@@ -1811,14 +1934,6 @@ export type Deck_Variance_Fields = {
   campaign_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   next_deck_id?: Maybe<Scalars['Float']>;
-};
-
-/** order by variance() on columns of table "deck" */
-export type Deck_Variance_Order_By = {
-  arkhamdb_id?: Maybe<Order_By>;
-  campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  next_deck_id?: Maybe<Order_By>;
 };
 
 /** columns and relationships of "friend_status" */
@@ -1839,7 +1954,7 @@ export type Friend_Status_Aggregate = {
 /** aggregate fields of "friend_status" */
 export type Friend_Status_Aggregate_Fields = {
   __typename?: 'friend_status_aggregate_fields';
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<Friend_Status_Max_Fields>;
   min?: Maybe<Friend_Status_Min_Fields>;
 };
@@ -1851,24 +1966,11 @@ export type Friend_Status_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "friend_status" */
-export type Friend_Status_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<Friend_Status_Max_Order_By>;
-  min?: Maybe<Friend_Status_Min_Order_By>;
-};
-
-/** input type for inserting array relation for remote table "friend_status" */
-export type Friend_Status_Arr_Rel_Insert_Input = {
-  data: Array<Friend_Status_Insert_Input>;
-  on_conflict?: Maybe<Friend_Status_On_Conflict>;
-};
-
 /** Boolean expression to filter rows from the table "friend_status". All fields are combined with a logical 'AND'. */
 export type Friend_Status_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Friend_Status_Bool_Exp>>>;
+  _and?: Maybe<Array<Friend_Status_Bool_Exp>>;
   _not?: Maybe<Friend_Status_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Friend_Status_Bool_Exp>>>;
+  _or?: Maybe<Array<Friend_Status_Bool_Exp>>;
   status?: Maybe<String_Comparison_Exp>;
   user_id_a?: Maybe<String_Comparison_Exp>;
   user_id_b?: Maybe<String_Comparison_Exp>;
@@ -1895,13 +1997,6 @@ export type Friend_Status_Max_Fields = {
   user_id_b?: Maybe<Scalars['String']>;
 };
 
-/** order by max() on columns of table "friend_status" */
-export type Friend_Status_Max_Order_By = {
-  status?: Maybe<Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
-};
-
 /** aggregate min on columns */
 export type Friend_Status_Min_Fields = {
   __typename?: 'friend_status_min_fields';
@@ -1910,26 +2005,13 @@ export type Friend_Status_Min_Fields = {
   user_id_b?: Maybe<Scalars['String']>;
 };
 
-/** order by min() on columns of table "friend_status" */
-export type Friend_Status_Min_Order_By = {
-  status?: Maybe<Order_By>;
-  user_id_a?: Maybe<Order_By>;
-  user_id_b?: Maybe<Order_By>;
-};
-
 /** response of any mutation on the table "friend_status" */
 export type Friend_Status_Mutation_Response = {
   __typename?: 'friend_status_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<Friend_Status>;
-};
-
-/** input type for inserting object relation for remote table "friend_status" */
-export type Friend_Status_Obj_Rel_Insert_Input = {
-  data: Friend_Status_Insert_Input;
-  on_conflict?: Maybe<Friend_Status_On_Conflict>;
 };
 
 /** on conflict condition type for table "friend_status" */
@@ -1939,14 +2021,14 @@ export type Friend_Status_On_Conflict = {
   where?: Maybe<Friend_Status_Bool_Exp>;
 };
 
-/** ordering options when selecting data from "friend_status" */
+/** Ordering options when selecting data from "friend_status". */
 export type Friend_Status_Order_By = {
   status?: Maybe<Order_By>;
   user_id_a?: Maybe<Order_By>;
   user_id_b?: Maybe<Order_By>;
 };
 
-/** primary key columns input for table: "friend_status" */
+/** primary key columns input for table: friend_status */
 export type Friend_Status_Pk_Columns_Input = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
@@ -2005,7 +2087,7 @@ export type Guide_Achievement_Aggregate = {
 export type Guide_Achievement_Aggregate_Fields = {
   __typename?: 'guide_achievement_aggregate_fields';
   avg?: Maybe<Guide_Achievement_Avg_Fields>;
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<Guide_Achievement_Max_Fields>;
   min?: Maybe<Guide_Achievement_Min_Fields>;
   stddev?: Maybe<Guide_Achievement_Stddev_Fields>;
@@ -2042,6 +2124,7 @@ export type Guide_Achievement_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "guide_achievement" */
 export type Guide_Achievement_Arr_Rel_Insert_Input = {
   data: Array<Guide_Achievement_Insert_Input>;
+  /** on conflict condition */
   on_conflict?: Maybe<Guide_Achievement_On_Conflict>;
 };
 
@@ -2062,9 +2145,9 @@ export type Guide_Achievement_Avg_Order_By = {
 
 /** Boolean expression to filter rows from the table "guide_achievement". All fields are combined with a logical 'AND'. */
 export type Guide_Achievement_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Guide_Achievement_Bool_Exp>>>;
+  _and?: Maybe<Array<Guide_Achievement_Bool_Exp>>;
   _not?: Maybe<Guide_Achievement_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Guide_Achievement_Bool_Exp>>>;
+  _or?: Maybe<Array<Guide_Achievement_Bool_Exp>>;
   achievement_id?: Maybe<String_Comparison_Exp>;
   bool_value?: Maybe<Boolean_Comparison_Exp>;
   campaign?: Maybe<Campaign_Bool_Exp>;
@@ -2084,7 +2167,7 @@ export enum Guide_Achievement_Constraint {
   GuideAchivementCampaignIdAchievementIdKey = 'guide_achivement_campaign_id_achievement_id_key'
 }
 
-/** input type for incrementing integer column in table "guide_achievement" */
+/** input type for incrementing numeric columns in table "guide_achievement" */
 export type Guide_Achievement_Inc_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
@@ -2153,16 +2236,10 @@ export type Guide_Achievement_Min_Order_By = {
 /** response of any mutation on the table "guide_achievement" */
 export type Guide_Achievement_Mutation_Response = {
   __typename?: 'guide_achievement_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<Guide_Achievement>;
-};
-
-/** input type for inserting object relation for remote table "guide_achievement" */
-export type Guide_Achievement_Obj_Rel_Insert_Input = {
-  data: Guide_Achievement_Insert_Input;
-  on_conflict?: Maybe<Guide_Achievement_On_Conflict>;
 };
 
 /** on conflict condition type for table "guide_achievement" */
@@ -2172,7 +2249,7 @@ export type Guide_Achievement_On_Conflict = {
   where?: Maybe<Guide_Achievement_Bool_Exp>;
 };
 
-/** ordering options when selecting data from "guide_achievement" */
+/** Ordering options when selecting data from "guide_achievement". */
 export type Guide_Achievement_Order_By = {
   achievement_id?: Maybe<Order_By>;
   bool_value?: Maybe<Order_By>;
@@ -2185,7 +2262,7 @@ export type Guide_Achievement_Order_By = {
   value?: Maybe<Order_By>;
 };
 
-/** primary key columns input for table: "guide_achievement" */
+/** primary key columns input for table: guide_achievement */
 export type Guide_Achievement_Pk_Columns_Input = {
   id: Scalars['Int'];
 };
@@ -2377,7 +2454,7 @@ export type Guide_Input_Aggregate = {
 export type Guide_Input_Aggregate_Fields = {
   __typename?: 'guide_input_aggregate_fields';
   avg?: Maybe<Guide_Input_Avg_Fields>;
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<Guide_Input_Max_Fields>;
   min?: Maybe<Guide_Input_Min_Fields>;
   stddev?: Maybe<Guide_Input_Stddev_Fields>;
@@ -2419,6 +2496,7 @@ export type Guide_Input_Append_Input = {
 /** input type for inserting array relation for remote table "guide_input" */
 export type Guide_Input_Arr_Rel_Insert_Input = {
   data: Array<Guide_Input_Insert_Input>;
+  /** on conflict condition */
   on_conflict?: Maybe<Guide_Input_On_Conflict>;
 };
 
@@ -2437,9 +2515,9 @@ export type Guide_Input_Avg_Order_By = {
 
 /** Boolean expression to filter rows from the table "guide_input". All fields are combined with a logical 'AND'. */
 export type Guide_Input_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Guide_Input_Bool_Exp>>>;
+  _and?: Maybe<Array<Guide_Input_Bool_Exp>>;
   _not?: Maybe<Guide_Input_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Guide_Input_Bool_Exp>>>;
+  _or?: Maybe<Array<Guide_Input_Bool_Exp>>;
   campaign?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
@@ -2459,7 +2537,7 @@ export enum Guide_Input_Constraint {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Guide_Input_Delete_At_Path_Input = {
-  payload?: Maybe<Array<Maybe<Scalars['String']>>>;
+  payload?: Maybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
@@ -2472,7 +2550,7 @@ export type Guide_Input_Delete_Key_Input = {
   payload?: Maybe<Scalars['String']>;
 };
 
-/** input type for incrementing integer column in table "guide_input" */
+/** input type for incrementing numeric columns in table "guide_input" */
 export type Guide_Input_Inc_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
@@ -2530,16 +2608,10 @@ export type Guide_Input_Min_Order_By = {
 /** response of any mutation on the table "guide_input" */
 export type Guide_Input_Mutation_Response = {
   __typename?: 'guide_input_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<Guide_Input>;
-};
-
-/** input type for inserting object relation for remote table "guide_input" */
-export type Guide_Input_Obj_Rel_Insert_Input = {
-  data: Guide_Input_Insert_Input;
-  on_conflict?: Maybe<Guide_Input_On_Conflict>;
 };
 
 /** on conflict condition type for table "guide_input" */
@@ -2549,7 +2621,7 @@ export type Guide_Input_On_Conflict = {
   where?: Maybe<Guide_Input_Bool_Exp>;
 };
 
-/** ordering options when selecting data from "guide_input" */
+/** Ordering options when selecting data from "guide_input". */
 export type Guide_Input_Order_By = {
   campaign?: Maybe<Campaign_Order_By>;
   campaign_id?: Maybe<Order_By>;
@@ -2560,7 +2632,7 @@ export type Guide_Input_Order_By = {
   step?: Maybe<Order_By>;
 };
 
-/** primary key columns input for table: "guide_input" */
+/** primary key columns input for table: guide_input */
 export type Guide_Input_Pk_Columns_Input = {
   id: Scalars['Int'];
 };
@@ -2767,7 +2839,7 @@ export type Investigator_Data_Aggregate = {
 export type Investigator_Data_Aggregate_Fields = {
   __typename?: 'investigator_data_aggregate_fields';
   avg?: Maybe<Investigator_Data_Avg_Fields>;
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<Investigator_Data_Max_Fields>;
   min?: Maybe<Investigator_Data_Min_Fields>;
   stddev?: Maybe<Investigator_Data_Stddev_Fields>;
@@ -2813,6 +2885,7 @@ export type Investigator_Data_Append_Input = {
 /** input type for inserting array relation for remote table "investigator_data" */
 export type Investigator_Data_Arr_Rel_Insert_Input = {
   data: Array<Investigator_Data_Insert_Input>;
+  /** on conflict condition */
   on_conflict?: Maybe<Investigator_Data_On_Conflict>;
 };
 
@@ -2839,9 +2912,9 @@ export type Investigator_Data_Avg_Order_By = {
 
 /** Boolean expression to filter rows from the table "investigator_data". All fields are combined with a logical 'AND'. */
 export type Investigator_Data_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Investigator_Data_Bool_Exp>>>;
+  _and?: Maybe<Array<Investigator_Data_Bool_Exp>>;
   _not?: Maybe<Investigator_Data_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Investigator_Data_Bool_Exp>>>;
+  _or?: Maybe<Array<Investigator_Data_Bool_Exp>>;
   addedCards?: Maybe<Jsonb_Comparison_Exp>;
   availableXp?: Maybe<Int_Comparison_Exp>;
   campaign_data?: Maybe<Campaign_Bool_Exp>;
@@ -2864,16 +2937,18 @@ export type Investigator_Data_Bool_Exp = {
 /** unique or primary key constraints on table "investigator_data" */
 export enum Investigator_Data_Constraint {
   /** unique or primary key constraint */
+  InvestigatorDataCampaignIdInvestigatorKey = 'investigator_data_campaign_id_investigator_key',
+  /** unique or primary key constraint */
   InvestigatorDataPkey = 'investigator_data_pkey'
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Investigator_Data_Delete_At_Path_Input = {
-  addedCards?: Maybe<Array<Maybe<Scalars['String']>>>;
-  ignoreStoryAssets?: Maybe<Array<Maybe<Scalars['String']>>>;
-  removedCards?: Maybe<Array<Maybe<Scalars['String']>>>;
-  specialXp?: Maybe<Array<Maybe<Scalars['String']>>>;
-  storyAssets?: Maybe<Array<Maybe<Scalars['String']>>>;
+  addedCards?: Maybe<Array<Scalars['String']>>;
+  ignoreStoryAssets?: Maybe<Array<Scalars['String']>>;
+  removedCards?: Maybe<Array<Scalars['String']>>;
+  specialXp?: Maybe<Array<Scalars['String']>>;
+  storyAssets?: Maybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
@@ -2894,7 +2969,7 @@ export type Investigator_Data_Delete_Key_Input = {
   storyAssets?: Maybe<Scalars['String']>;
 };
 
-/** input type for incrementing integer column in table "investigator_data" */
+/** input type for incrementing numeric columns in table "investigator_data" */
 export type Investigator_Data_Inc_Input = {
   availableXp?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
@@ -2982,16 +3057,10 @@ export type Investigator_Data_Min_Order_By = {
 /** response of any mutation on the table "investigator_data" */
 export type Investigator_Data_Mutation_Response = {
   __typename?: 'investigator_data_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<Investigator_Data>;
-};
-
-/** input type for inserting object relation for remote table "investigator_data" */
-export type Investigator_Data_Obj_Rel_Insert_Input = {
-  data: Investigator_Data_Insert_Input;
-  on_conflict?: Maybe<Investigator_Data_On_Conflict>;
 };
 
 /** on conflict condition type for table "investigator_data" */
@@ -3001,7 +3070,7 @@ export type Investigator_Data_On_Conflict = {
   where?: Maybe<Investigator_Data_Bool_Exp>;
 };
 
-/** ordering options when selecting data from "investigator_data" */
+/** Ordering options when selecting data from "investigator_data". */
 export type Investigator_Data_Order_By = {
   addedCards?: Maybe<Order_By>;
   availableXp?: Maybe<Order_By>;
@@ -3022,7 +3091,7 @@ export type Investigator_Data_Order_By = {
   updated_at?: Maybe<Order_By>;
 };
 
-/** primary key columns input for table: "investigator_data" */
+/** primary key columns input for table: investigator_data */
 export type Investigator_Data_Pk_Columns_Input = {
   id: Scalars['Int'];
 };
@@ -3276,7 +3345,7 @@ export type Investigator_Data_Variance_Order_By = {
 };
 
 
-/** expression to compare columns of type jsonb. All fields are combined with logical 'AND'. */
+/** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
 export type Jsonb_Comparison_Exp = {
   /** is the column contained in the given json value */
   _contained_in?: Maybe<Scalars['jsonb']>;
@@ -3322,7 +3391,7 @@ export type Latest_Decks_Aggregate = {
 export type Latest_Decks_Aggregate_Fields = {
   __typename?: 'latest_decks_aggregate_fields';
   avg?: Maybe<Latest_Decks_Avg_Fields>;
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<Latest_Decks_Max_Fields>;
   min?: Maybe<Latest_Decks_Min_Fields>;
   stddev?: Maybe<Latest_Decks_Stddev_Fields>;
@@ -3376,9 +3445,9 @@ export type Latest_Decks_Avg_Order_By = {
 
 /** Boolean expression to filter rows from the table "latest_decks". All fields are combined with a logical 'AND'. */
 export type Latest_Decks_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Latest_Decks_Bool_Exp>>>;
+  _and?: Maybe<Array<Latest_Decks_Bool_Exp>>;
   _not?: Maybe<Latest_Decks_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Latest_Decks_Bool_Exp>>>;
+  _or?: Maybe<Array<Latest_Decks_Bool_Exp>>;
   campaign?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
   deck?: Maybe<Deck_Bool_Exp>;
@@ -3386,7 +3455,7 @@ export type Latest_Decks_Bool_Exp = {
   owner_id?: Maybe<String_Comparison_Exp>;
 };
 
-/** input type for incrementing integer column in table "latest_decks" */
+/** input type for incrementing numeric columns in table "latest_decks" */
 export type Latest_Decks_Inc_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
@@ -3434,18 +3503,13 @@ export type Latest_Decks_Min_Order_By = {
 /** response of any mutation on the table "latest_decks" */
 export type Latest_Decks_Mutation_Response = {
   __typename?: 'latest_decks_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<Latest_Decks>;
 };
 
-/** input type for inserting object relation for remote table "latest_decks" */
-export type Latest_Decks_Obj_Rel_Insert_Input = {
-  data: Latest_Decks_Insert_Input;
-};
-
-/** ordering options when selecting data from "latest_decks" */
+/** Ordering options when selecting data from "latest_decks". */
 export type Latest_Decks_Order_By = {
   campaign?: Maybe<Campaign_Order_By>;
   campaign_id?: Maybe<Order_By>;
@@ -3575,6 +3639,10 @@ export type Mutation_Root = {
   delete_campaign_access_by_pk?: Maybe<Campaign_Access>;
   /** delete single row from the table: "campaign" */
   delete_campaign_by_pk?: Maybe<Campaign>;
+  /** delete data from the table: "campaign_investigator" */
+  delete_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
+  /** delete single row from the table: "campaign_investigator" */
+  delete_campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
   /** delete data from the table: "deck" */
   delete_deck?: Maybe<Deck_Mutation_Response>;
   /** delete single row from the table: "deck" */
@@ -3619,6 +3687,10 @@ export type Mutation_Root = {
   insert_campaign_access?: Maybe<Campaign_Access_Mutation_Response>;
   /** insert a single row into the table: "campaign_access" */
   insert_campaign_access_one?: Maybe<Campaign_Access>;
+  /** insert data into the table: "campaign_investigator" */
+  insert_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
+  /** insert a single row into the table: "campaign_investigator" */
+  insert_campaign_investigator_one?: Maybe<Campaign_Investigator>;
   /** insert a single row into the table: "campaign" */
   insert_campaign_one?: Maybe<Campaign>;
   /** insert data into the table: "deck" */
@@ -3675,6 +3747,10 @@ export type Mutation_Root = {
   update_campaign_access_by_pk?: Maybe<Campaign_Access>;
   /** update single row of the table: "campaign" */
   update_campaign_by_pk?: Maybe<Campaign>;
+  /** update data of the table: "campaign_investigator" */
+  update_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
+  /** update single row of the table: "campaign_investigator" */
+  update_campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
   /** update data of the table: "deck" */
   update_deck?: Maybe<Deck_Mutation_Response>;
   /** update single row of the table: "deck" */
@@ -3738,6 +3814,18 @@ export type Mutation_RootDelete_Campaign_Access_By_PkArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Campaign_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Campaign_InvestigatorArgs = {
+  where: Campaign_Investigator_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Campaign_Investigator_By_PkArgs = {
   id: Scalars['Int'];
 };
 
@@ -3875,6 +3963,20 @@ export type Mutation_RootInsert_Campaign_AccessArgs = {
 export type Mutation_RootInsert_Campaign_Access_OneArgs = {
   object: Campaign_Access_Insert_Input;
   on_conflict?: Maybe<Campaign_Access_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Campaign_InvestigatorArgs = {
+  objects: Array<Campaign_Investigator_Insert_Input>;
+  on_conflict?: Maybe<Campaign_Investigator_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Campaign_Investigator_OneArgs = {
+  object: Campaign_Investigator_Insert_Input;
+  on_conflict?: Maybe<Campaign_Investigator_On_Conflict>;
 };
 
 
@@ -4080,6 +4182,22 @@ export type Mutation_RootUpdate_Campaign_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Campaign_InvestigatorArgs = {
+  _inc?: Maybe<Campaign_Investigator_Inc_Input>;
+  _set?: Maybe<Campaign_Investigator_Set_Input>;
+  where: Campaign_Investigator_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Investigator_By_PkArgs = {
+  _inc?: Maybe<Campaign_Investigator_Inc_Input>;
+  _set?: Maybe<Campaign_Investigator_Set_Input>;
+  pk_columns: Campaign_Investigator_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_DeckArgs = {
   _append?: Maybe<Deck_Append_Input>;
   _delete_at_path?: Maybe<Deck_Delete_At_Path_Input>;
@@ -4239,26 +4357,25 @@ export type Mutation_RootUpdate_Users_By_PkArgs = {
 
 /** column ordering options */
 export enum Order_By {
-  /** in the ascending order, nulls last */
+  /** in ascending order, nulls last */
   Asc = 'asc',
-  /** in the ascending order, nulls first */
+  /** in ascending order, nulls first */
   AscNullsFirst = 'asc_nulls_first',
-  /** in the ascending order, nulls last */
+  /** in ascending order, nulls last */
   AscNullsLast = 'asc_nulls_last',
-  /** in the descending order, nulls first */
+  /** in descending order, nulls first */
   Desc = 'desc',
-  /** in the descending order, nulls first */
+  /** in descending order, nulls first */
   DescNullsFirst = 'desc_nulls_first',
-  /** in the descending order, nulls last */
+  /** in descending order, nulls last */
   DescNullsLast = 'desc_nulls_last'
 }
 
-/** query root */
 export type Query_Root = {
   __typename?: 'query_root';
-  /** fetch data from the table: "base_decks" */
+  /** An array relationship */
   base_decks: Array<Base_Decks>;
-  /** fetch aggregated fields from the table: "base_decks" */
+  /** An aggregate relationship */
   base_decks_aggregate: Base_Decks_Aggregate;
   /** fetch data from the table: "campaign" */
   campaign: Array<Campaign>;
@@ -4272,6 +4389,12 @@ export type Query_Root = {
   campaign_aggregate: Campaign_Aggregate;
   /** fetch data from the table: "campaign" using primary key columns */
   campaign_by_pk?: Maybe<Campaign>;
+  /** fetch data from the table: "campaign_investigator" */
+  campaign_investigator: Array<Campaign_Investigator>;
+  /** fetch aggregated fields from the table: "campaign_investigator" */
+  campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
+  /** fetch data from the table: "campaign_investigator" using primary key columns */
+  campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
   /** fetch data from the table: "deck" */
   deck: Array<Deck>;
   /** fetch aggregated fields from the table: "deck" */
@@ -4296,15 +4419,15 @@ export type Query_Root = {
   guide_input_aggregate: Guide_Input_Aggregate;
   /** fetch data from the table: "guide_input" using primary key columns */
   guide_input_by_pk?: Maybe<Guide_Input>;
-  /** fetch data from the table: "investigator_data" */
+  /** An array relationship */
   investigator_data: Array<Investigator_Data>;
-  /** fetch aggregated fields from the table: "investigator_data" */
+  /** An aggregate relationship */
   investigator_data_aggregate: Investigator_Data_Aggregate;
   /** fetch data from the table: "investigator_data" using primary key columns */
   investigator_data_by_pk?: Maybe<Investigator_Data>;
-  /** fetch data from the table: "latest_decks" */
+  /** An array relationship */
   latest_decks: Array<Latest_Decks>;
-  /** fetch aggregated fields from the table: "latest_decks" */
+  /** An aggregate relationship */
   latest_decks_aggregate: Latest_Decks_Aggregate;
   /** fetch data from the table: "user_campaigns" */
   user_campaigns: Array<User_Campaigns>;
@@ -4331,7 +4454,6 @@ export type Query_Root = {
 };
 
 
-/** query root */
 export type Query_RootBase_DecksArgs = {
   distinct_on?: Maybe<Array<Base_Decks_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4341,7 +4463,6 @@ export type Query_RootBase_DecksArgs = {
 };
 
 
-/** query root */
 export type Query_RootBase_Decks_AggregateArgs = {
   distinct_on?: Maybe<Array<Base_Decks_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4351,7 +4472,6 @@ export type Query_RootBase_Decks_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootCampaignArgs = {
   distinct_on?: Maybe<Array<Campaign_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4361,7 +4481,6 @@ export type Query_RootCampaignArgs = {
 };
 
 
-/** query root */
 export type Query_RootCampaign_AccessArgs = {
   distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4371,7 +4490,6 @@ export type Query_RootCampaign_AccessArgs = {
 };
 
 
-/** query root */
 export type Query_RootCampaign_Access_AggregateArgs = {
   distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4381,13 +4499,11 @@ export type Query_RootCampaign_Access_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootCampaign_Access_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** query root */
 export type Query_RootCampaign_AggregateArgs = {
   distinct_on?: Maybe<Array<Campaign_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4397,13 +4513,34 @@ export type Query_RootCampaign_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootCampaign_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** query root */
+export type Query_RootCampaign_InvestigatorArgs = {
+  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
+  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+};
+
+
+export type Query_RootCampaign_Investigator_AggregateArgs = {
+  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
+  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+};
+
+
+export type Query_RootCampaign_Investigator_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
 export type Query_RootDeckArgs = {
   distinct_on?: Maybe<Array<Deck_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4413,7 +4550,6 @@ export type Query_RootDeckArgs = {
 };
 
 
-/** query root */
 export type Query_RootDeck_AggregateArgs = {
   distinct_on?: Maybe<Array<Deck_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4423,13 +4559,11 @@ export type Query_RootDeck_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootDeck_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** query root */
 export type Query_RootFriend_StatusArgs = {
   distinct_on?: Maybe<Array<Friend_Status_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4439,7 +4573,6 @@ export type Query_RootFriend_StatusArgs = {
 };
 
 
-/** query root */
 export type Query_RootFriend_Status_AggregateArgs = {
   distinct_on?: Maybe<Array<Friend_Status_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4449,14 +4582,12 @@ export type Query_RootFriend_Status_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootFriend_Status_By_PkArgs = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
 };
 
 
-/** query root */
 export type Query_RootGuide_AchievementArgs = {
   distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4466,7 +4597,6 @@ export type Query_RootGuide_AchievementArgs = {
 };
 
 
-/** query root */
 export type Query_RootGuide_Achievement_AggregateArgs = {
   distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4476,13 +4606,11 @@ export type Query_RootGuide_Achievement_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootGuide_Achievement_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** query root */
 export type Query_RootGuide_InputArgs = {
   distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4492,7 +4620,6 @@ export type Query_RootGuide_InputArgs = {
 };
 
 
-/** query root */
 export type Query_RootGuide_Input_AggregateArgs = {
   distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4502,13 +4629,11 @@ export type Query_RootGuide_Input_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootGuide_Input_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** query root */
 export type Query_RootInvestigator_DataArgs = {
   distinct_on?: Maybe<Array<Investigator_Data_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4518,7 +4643,6 @@ export type Query_RootInvestigator_DataArgs = {
 };
 
 
-/** query root */
 export type Query_RootInvestigator_Data_AggregateArgs = {
   distinct_on?: Maybe<Array<Investigator_Data_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4528,13 +4652,11 @@ export type Query_RootInvestigator_Data_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootInvestigator_Data_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** query root */
 export type Query_RootLatest_DecksArgs = {
   distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4544,7 +4666,6 @@ export type Query_RootLatest_DecksArgs = {
 };
 
 
-/** query root */
 export type Query_RootLatest_Decks_AggregateArgs = {
   distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4554,7 +4675,6 @@ export type Query_RootLatest_Decks_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootUser_CampaignsArgs = {
   distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4564,7 +4684,6 @@ export type Query_RootUser_CampaignsArgs = {
 };
 
 
-/** query root */
 export type Query_RootUser_Campaigns_AggregateArgs = {
   distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4574,7 +4693,6 @@ export type Query_RootUser_Campaigns_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootUser_FriendsArgs = {
   distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4584,7 +4702,6 @@ export type Query_RootUser_FriendsArgs = {
 };
 
 
-/** query root */
 export type Query_RootUser_Friends_AggregateArgs = {
   distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4594,7 +4711,6 @@ export type Query_RootUser_Friends_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootUser_Received_Friend_RequestsArgs = {
   distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4604,7 +4720,6 @@ export type Query_RootUser_Received_Friend_RequestsArgs = {
 };
 
 
-/** query root */
 export type Query_RootUser_Received_Friend_Requests_AggregateArgs = {
   distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4614,7 +4729,6 @@ export type Query_RootUser_Received_Friend_Requests_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootUser_Sent_Friend_RequestsArgs = {
   distinct_on?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4624,7 +4738,6 @@ export type Query_RootUser_Sent_Friend_RequestsArgs = {
 };
 
 
-/** query root */
 export type Query_RootUser_Sent_Friend_Requests_AggregateArgs = {
   distinct_on?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4634,7 +4747,6 @@ export type Query_RootUser_Sent_Friend_Requests_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootUsersArgs = {
   distinct_on?: Maybe<Array<Users_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4644,7 +4756,6 @@ export type Query_RootUsersArgs = {
 };
 
 
-/** query root */
 export type Query_RootUsers_AggregateArgs = {
   distinct_on?: Maybe<Array<Users_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4654,17 +4765,15 @@ export type Query_RootUsers_AggregateArgs = {
 };
 
 
-/** query root */
 export type Query_RootUsers_By_PkArgs = {
   id: Scalars['String'];
 };
 
-/** subscription root */
 export type Subscription_Root = {
   __typename?: 'subscription_root';
-  /** fetch data from the table: "base_decks" */
+  /** An array relationship */
   base_decks: Array<Base_Decks>;
-  /** fetch aggregated fields from the table: "base_decks" */
+  /** An aggregate relationship */
   base_decks_aggregate: Base_Decks_Aggregate;
   /** fetch data from the table: "campaign" */
   campaign: Array<Campaign>;
@@ -4678,6 +4787,12 @@ export type Subscription_Root = {
   campaign_aggregate: Campaign_Aggregate;
   /** fetch data from the table: "campaign" using primary key columns */
   campaign_by_pk?: Maybe<Campaign>;
+  /** fetch data from the table: "campaign_investigator" */
+  campaign_investigator: Array<Campaign_Investigator>;
+  /** fetch aggregated fields from the table: "campaign_investigator" */
+  campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
+  /** fetch data from the table: "campaign_investigator" using primary key columns */
+  campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
   /** fetch data from the table: "deck" */
   deck: Array<Deck>;
   /** fetch aggregated fields from the table: "deck" */
@@ -4702,15 +4817,15 @@ export type Subscription_Root = {
   guide_input_aggregate: Guide_Input_Aggregate;
   /** fetch data from the table: "guide_input" using primary key columns */
   guide_input_by_pk?: Maybe<Guide_Input>;
-  /** fetch data from the table: "investigator_data" */
+  /** An array relationship */
   investigator_data: Array<Investigator_Data>;
-  /** fetch aggregated fields from the table: "investigator_data" */
+  /** An aggregate relationship */
   investigator_data_aggregate: Investigator_Data_Aggregate;
   /** fetch data from the table: "investigator_data" using primary key columns */
   investigator_data_by_pk?: Maybe<Investigator_Data>;
-  /** fetch data from the table: "latest_decks" */
+  /** An array relationship */
   latest_decks: Array<Latest_Decks>;
-  /** fetch aggregated fields from the table: "latest_decks" */
+  /** An aggregate relationship */
   latest_decks_aggregate: Latest_Decks_Aggregate;
   /** fetch data from the table: "user_campaigns" */
   user_campaigns: Array<User_Campaigns>;
@@ -4737,7 +4852,6 @@ export type Subscription_Root = {
 };
 
 
-/** subscription root */
 export type Subscription_RootBase_DecksArgs = {
   distinct_on?: Maybe<Array<Base_Decks_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4747,7 +4861,6 @@ export type Subscription_RootBase_DecksArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootBase_Decks_AggregateArgs = {
   distinct_on?: Maybe<Array<Base_Decks_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4757,7 +4870,6 @@ export type Subscription_RootBase_Decks_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootCampaignArgs = {
   distinct_on?: Maybe<Array<Campaign_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4767,7 +4879,6 @@ export type Subscription_RootCampaignArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootCampaign_AccessArgs = {
   distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4777,7 +4888,6 @@ export type Subscription_RootCampaign_AccessArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootCampaign_Access_AggregateArgs = {
   distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4787,13 +4897,11 @@ export type Subscription_RootCampaign_Access_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootCampaign_Access_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** subscription root */
 export type Subscription_RootCampaign_AggregateArgs = {
   distinct_on?: Maybe<Array<Campaign_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4803,13 +4911,34 @@ export type Subscription_RootCampaign_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootCampaign_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** subscription root */
+export type Subscription_RootCampaign_InvestigatorArgs = {
+  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
+  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Investigator_AggregateArgs = {
+  distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Investigator_Order_By>>;
+  where?: Maybe<Campaign_Investigator_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Investigator_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
 export type Subscription_RootDeckArgs = {
   distinct_on?: Maybe<Array<Deck_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4819,7 +4948,6 @@ export type Subscription_RootDeckArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootDeck_AggregateArgs = {
   distinct_on?: Maybe<Array<Deck_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4829,13 +4957,11 @@ export type Subscription_RootDeck_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootDeck_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** subscription root */
 export type Subscription_RootFriend_StatusArgs = {
   distinct_on?: Maybe<Array<Friend_Status_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4845,7 +4971,6 @@ export type Subscription_RootFriend_StatusArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootFriend_Status_AggregateArgs = {
   distinct_on?: Maybe<Array<Friend_Status_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4855,14 +4980,12 @@ export type Subscription_RootFriend_Status_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootFriend_Status_By_PkArgs = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
 };
 
 
-/** subscription root */
 export type Subscription_RootGuide_AchievementArgs = {
   distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4872,7 +4995,6 @@ export type Subscription_RootGuide_AchievementArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootGuide_Achievement_AggregateArgs = {
   distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4882,13 +5004,11 @@ export type Subscription_RootGuide_Achievement_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootGuide_Achievement_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** subscription root */
 export type Subscription_RootGuide_InputArgs = {
   distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4898,7 +5018,6 @@ export type Subscription_RootGuide_InputArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootGuide_Input_AggregateArgs = {
   distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4908,13 +5027,11 @@ export type Subscription_RootGuide_Input_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootGuide_Input_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** subscription root */
 export type Subscription_RootInvestigator_DataArgs = {
   distinct_on?: Maybe<Array<Investigator_Data_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4924,7 +5041,6 @@ export type Subscription_RootInvestigator_DataArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootInvestigator_Data_AggregateArgs = {
   distinct_on?: Maybe<Array<Investigator_Data_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4934,13 +5050,11 @@ export type Subscription_RootInvestigator_Data_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootInvestigator_Data_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-/** subscription root */
 export type Subscription_RootLatest_DecksArgs = {
   distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4950,7 +5064,6 @@ export type Subscription_RootLatest_DecksArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootLatest_Decks_AggregateArgs = {
   distinct_on?: Maybe<Array<Latest_Decks_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4960,7 +5073,6 @@ export type Subscription_RootLatest_Decks_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUser_CampaignsArgs = {
   distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4970,7 +5082,6 @@ export type Subscription_RootUser_CampaignsArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUser_Campaigns_AggregateArgs = {
   distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4980,7 +5091,6 @@ export type Subscription_RootUser_Campaigns_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUser_FriendsArgs = {
   distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4990,7 +5100,6 @@ export type Subscription_RootUser_FriendsArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUser_Friends_AggregateArgs = {
   distinct_on?: Maybe<Array<User_Friends_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5000,7 +5109,6 @@ export type Subscription_RootUser_Friends_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUser_Received_Friend_RequestsArgs = {
   distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5010,7 +5118,6 @@ export type Subscription_RootUser_Received_Friend_RequestsArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUser_Received_Friend_Requests_AggregateArgs = {
   distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5020,7 +5127,6 @@ export type Subscription_RootUser_Received_Friend_Requests_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUser_Sent_Friend_RequestsArgs = {
   distinct_on?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5030,7 +5136,6 @@ export type Subscription_RootUser_Sent_Friend_RequestsArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUser_Sent_Friend_Requests_AggregateArgs = {
   distinct_on?: Maybe<Array<User_Sent_Friend_Requests_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5040,7 +5145,6 @@ export type Subscription_RootUser_Sent_Friend_Requests_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUsersArgs = {
   distinct_on?: Maybe<Array<Users_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5050,7 +5154,6 @@ export type Subscription_RootUsersArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUsers_AggregateArgs = {
   distinct_on?: Maybe<Array<Users_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5060,13 +5163,12 @@ export type Subscription_RootUsers_AggregateArgs = {
 };
 
 
-/** subscription root */
 export type Subscription_RootUsers_By_PkArgs = {
   id: Scalars['String'];
 };
 
 
-/** expression to compare columns of type timestamp. All fields are combined with logical 'AND'. */
+/** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */
 export type Timestamp_Comparison_Exp = {
   _eq?: Maybe<Scalars['timestamp']>;
   _gt?: Maybe<Scalars['timestamp']>;
@@ -5080,7 +5182,7 @@ export type Timestamp_Comparison_Exp = {
 };
 
 
-/** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
+/** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
   _eq?: Maybe<Scalars['timestamptz']>;
   _gt?: Maybe<Scalars['timestamptz']>;
@@ -5114,7 +5216,7 @@ export type User_Campaigns_Aggregate = {
 export type User_Campaigns_Aggregate_Fields = {
   __typename?: 'user_campaigns_aggregate_fields';
   avg?: Maybe<User_Campaigns_Avg_Fields>;
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<User_Campaigns_Max_Fields>;
   min?: Maybe<User_Campaigns_Min_Fields>;
   stddev?: Maybe<User_Campaigns_Stddev_Fields>;
@@ -5168,16 +5270,16 @@ export type User_Campaigns_Avg_Order_By = {
 
 /** Boolean expression to filter rows from the table "user_campaigns". All fields are combined with a logical 'AND'. */
 export type User_Campaigns_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<User_Campaigns_Bool_Exp>>>;
+  _and?: Maybe<Array<User_Campaigns_Bool_Exp>>;
   _not?: Maybe<User_Campaigns_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<User_Campaigns_Bool_Exp>>>;
+  _or?: Maybe<Array<User_Campaigns_Bool_Exp>>;
   campaign?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   user_id?: Maybe<String_Comparison_Exp>;
 };
 
-/** input type for incrementing integer column in table "user_campaigns" */
+/** input type for incrementing numeric columns in table "user_campaigns" */
 export type User_Campaigns_Inc_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
@@ -5224,18 +5326,13 @@ export type User_Campaigns_Min_Order_By = {
 /** response of any mutation on the table "user_campaigns" */
 export type User_Campaigns_Mutation_Response = {
   __typename?: 'user_campaigns_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<User_Campaigns>;
 };
 
-/** input type for inserting object relation for remote table "user_campaigns" */
-export type User_Campaigns_Obj_Rel_Insert_Input = {
-  data: User_Campaigns_Insert_Input;
-};
-
-/** ordering options when selecting data from "user_campaigns" */
+/** Ordering options when selecting data from "user_campaigns". */
 export type User_Campaigns_Order_By = {
   campaign?: Maybe<Campaign_Order_By>;
   campaign_id?: Maybe<Order_By>;
@@ -5371,7 +5468,7 @@ export type User_Friends_Aggregate = {
 /** aggregate fields of "user_friends" */
 export type User_Friends_Aggregate_Fields = {
   __typename?: 'user_friends_aggregate_fields';
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<User_Friends_Max_Fields>;
   min?: Maybe<User_Friends_Min_Fields>;
 };
@@ -5397,9 +5494,9 @@ export type User_Friends_Arr_Rel_Insert_Input = {
 
 /** Boolean expression to filter rows from the table "user_friends". All fields are combined with a logical 'AND'. */
 export type User_Friends_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<User_Friends_Bool_Exp>>>;
+  _and?: Maybe<Array<User_Friends_Bool_Exp>>;
   _not?: Maybe<User_Friends_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<User_Friends_Bool_Exp>>>;
+  _or?: Maybe<Array<User_Friends_Bool_Exp>>;
   status?: Maybe<String_Comparison_Exp>;
   user?: Maybe<Users_Bool_Exp>;
   user_id_a?: Maybe<String_Comparison_Exp>;
@@ -5447,18 +5544,13 @@ export type User_Friends_Min_Order_By = {
 /** response of any mutation on the table "user_friends" */
 export type User_Friends_Mutation_Response = {
   __typename?: 'user_friends_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<User_Friends>;
 };
 
-/** input type for inserting object relation for remote table "user_friends" */
-export type User_Friends_Obj_Rel_Insert_Input = {
-  data: User_Friends_Insert_Input;
-};
-
-/** ordering options when selecting data from "user_friends" */
+/** Ordering options when selecting data from "user_friends". */
 export type User_Friends_Order_By = {
   status?: Maybe<Order_By>;
   user?: Maybe<Users_Order_By>;
@@ -5503,7 +5595,7 @@ export type User_Received_Friend_Requests_Aggregate = {
 /** aggregate fields of "user_received_friend_requests" */
 export type User_Received_Friend_Requests_Aggregate_Fields = {
   __typename?: 'user_received_friend_requests_aggregate_fields';
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<User_Received_Friend_Requests_Max_Fields>;
   min?: Maybe<User_Received_Friend_Requests_Min_Fields>;
 };
@@ -5529,9 +5621,9 @@ export type User_Received_Friend_Requests_Arr_Rel_Insert_Input = {
 
 /** Boolean expression to filter rows from the table "user_received_friend_requests". All fields are combined with a logical 'AND'. */
 export type User_Received_Friend_Requests_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<User_Received_Friend_Requests_Bool_Exp>>>;
+  _and?: Maybe<Array<User_Received_Friend_Requests_Bool_Exp>>;
   _not?: Maybe<User_Received_Friend_Requests_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<User_Received_Friend_Requests_Bool_Exp>>>;
+  _or?: Maybe<Array<User_Received_Friend_Requests_Bool_Exp>>;
   status?: Maybe<String_Comparison_Exp>;
   user?: Maybe<Users_Bool_Exp>;
   user_id_a?: Maybe<String_Comparison_Exp>;
@@ -5579,18 +5671,13 @@ export type User_Received_Friend_Requests_Min_Order_By = {
 /** response of any mutation on the table "user_received_friend_requests" */
 export type User_Received_Friend_Requests_Mutation_Response = {
   __typename?: 'user_received_friend_requests_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<User_Received_Friend_Requests>;
 };
 
-/** input type for inserting object relation for remote table "user_received_friend_requests" */
-export type User_Received_Friend_Requests_Obj_Rel_Insert_Input = {
-  data: User_Received_Friend_Requests_Insert_Input;
-};
-
-/** ordering options when selecting data from "user_received_friend_requests" */
+/** Ordering options when selecting data from "user_received_friend_requests". */
 export type User_Received_Friend_Requests_Order_By = {
   status?: Maybe<Order_By>;
   user?: Maybe<Users_Order_By>;
@@ -5635,7 +5722,7 @@ export type User_Sent_Friend_Requests_Aggregate = {
 /** aggregate fields of "user_sent_friend_requests" */
 export type User_Sent_Friend_Requests_Aggregate_Fields = {
   __typename?: 'user_sent_friend_requests_aggregate_fields';
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<User_Sent_Friend_Requests_Max_Fields>;
   min?: Maybe<User_Sent_Friend_Requests_Min_Fields>;
 };
@@ -5661,9 +5748,9 @@ export type User_Sent_Friend_Requests_Arr_Rel_Insert_Input = {
 
 /** Boolean expression to filter rows from the table "user_sent_friend_requests". All fields are combined with a logical 'AND'. */
 export type User_Sent_Friend_Requests_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<User_Sent_Friend_Requests_Bool_Exp>>>;
+  _and?: Maybe<Array<User_Sent_Friend_Requests_Bool_Exp>>;
   _not?: Maybe<User_Sent_Friend_Requests_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<User_Sent_Friend_Requests_Bool_Exp>>>;
+  _or?: Maybe<Array<User_Sent_Friend_Requests_Bool_Exp>>;
   status?: Maybe<String_Comparison_Exp>;
   user?: Maybe<Users_Bool_Exp>;
   user_id_a?: Maybe<String_Comparison_Exp>;
@@ -5711,18 +5798,13 @@ export type User_Sent_Friend_Requests_Min_Order_By = {
 /** response of any mutation on the table "user_sent_friend_requests" */
 export type User_Sent_Friend_Requests_Mutation_Response = {
   __typename?: 'user_sent_friend_requests_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<User_Sent_Friend_Requests>;
 };
 
-/** input type for inserting object relation for remote table "user_sent_friend_requests" */
-export type User_Sent_Friend_Requests_Obj_Rel_Insert_Input = {
-  data: User_Sent_Friend_Requests_Insert_Input;
-};
-
-/** ordering options when selecting data from "user_sent_friend_requests" */
+/** Ordering options when selecting data from "user_sent_friend_requests". */
 export type User_Sent_Friend_Requests_Order_By = {
   status?: Maybe<Order_By>;
   user?: Maybe<Users_Order_By>;
@@ -5752,26 +5834,26 @@ export type Users = {
   __typename?: 'users';
   /** An array relationship */
   campaigns: Array<User_Campaigns>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   campaigns_aggregate: User_Campaigns_Aggregate;
   created_at: Scalars['timestamptz'];
   /** An array relationship */
   decks: Array<Latest_Decks>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   decks_aggregate: Latest_Decks_Aggregate;
   /** An array relationship */
   friends: Array<User_Friends>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   friends_aggregate: User_Friends_Aggregate;
   handle?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   /** An array relationship */
   received_requests: Array<User_Received_Friend_Requests>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   received_requests_aggregate: User_Received_Friend_Requests_Aggregate;
   /** An array relationship */
   sent_requests: Array<User_Sent_Friend_Requests>;
-  /** An aggregated array relationship */
+  /** An aggregate relationship */
   sent_requests_aggregate: User_Sent_Friend_Requests_Aggregate;
   updated_at: Scalars['timestamp'];
 };
@@ -5886,7 +5968,7 @@ export type Users_Aggregate = {
 /** aggregate fields of "users" */
 export type Users_Aggregate_Fields = {
   __typename?: 'users_aggregate_fields';
-  count?: Maybe<Scalars['Int']>;
+  count: Scalars['Int'];
   max?: Maybe<Users_Max_Fields>;
   min?: Maybe<Users_Min_Fields>;
 };
@@ -5898,24 +5980,11 @@ export type Users_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "users" */
-export type Users_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<Users_Max_Order_By>;
-  min?: Maybe<Users_Min_Order_By>;
-};
-
-/** input type for inserting array relation for remote table "users" */
-export type Users_Arr_Rel_Insert_Input = {
-  data: Array<Users_Insert_Input>;
-  on_conflict?: Maybe<Users_On_Conflict>;
-};
-
 /** Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'. */
 export type Users_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Users_Bool_Exp>>>;
+  _and?: Maybe<Array<Users_Bool_Exp>>;
   _not?: Maybe<Users_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Users_Bool_Exp>>>;
+  _or?: Maybe<Array<Users_Bool_Exp>>;
   campaigns?: Maybe<User_Campaigns_Bool_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   decks?: Maybe<Latest_Decks_Bool_Exp>;
@@ -5955,14 +6024,6 @@ export type Users_Max_Fields = {
   updated_at?: Maybe<Scalars['timestamp']>;
 };
 
-/** order by max() on columns of table "users" */
-export type Users_Max_Order_By = {
-  created_at?: Maybe<Order_By>;
-  handle?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-};
-
 /** aggregate min on columns */
 export type Users_Min_Fields = {
   __typename?: 'users_min_fields';
@@ -5972,26 +6033,19 @@ export type Users_Min_Fields = {
   updated_at?: Maybe<Scalars['timestamp']>;
 };
 
-/** order by min() on columns of table "users" */
-export type Users_Min_Order_By = {
-  created_at?: Maybe<Order_By>;
-  handle?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-};
-
 /** response of any mutation on the table "users" */
 export type Users_Mutation_Response = {
   __typename?: 'users_mutation_response';
-  /** number of affected rows by the mutation */
+  /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
+  /** data from the rows affected by the mutation */
   returning: Array<Users>;
 };
 
 /** input type for inserting object relation for remote table "users" */
 export type Users_Obj_Rel_Insert_Input = {
   data: Users_Insert_Input;
+  /** on conflict condition */
   on_conflict?: Maybe<Users_On_Conflict>;
 };
 
@@ -6002,7 +6056,7 @@ export type Users_On_Conflict = {
   where?: Maybe<Users_Bool_Exp>;
 };
 
-/** ordering options when selecting data from "users" */
+/** Ordering options when selecting data from "users". */
 export type Users_Order_By = {
   campaigns_aggregate?: Maybe<User_Campaigns_Aggregate_Order_By>;
   created_at?: Maybe<Order_By>;
@@ -6015,7 +6069,7 @@ export type Users_Order_By = {
   updated_at?: Maybe<Order_By>;
 };
 
-/** primary key columns input for table: "users" */
+/** primary key columns input for table: users */
 export type Users_Pk_Columns_Input = {
   id: Scalars['String'];
 };
@@ -6052,20 +6106,6 @@ export enum Users_Update_Column {
   UpdatedAt = 'updated_at'
 }
 
-export type UpdateCampaignNameMutationVariables = Exact<{
-  campaignId: Scalars['Int'];
-  name: Scalars['String'];
-}>;
-
-
-export type UpdateCampaignNameMutation = (
-  { __typename?: 'mutation_root' }
-  & { update_campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid' | 'name'>
-  )> }
-);
-
 export type UploadNewCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
   cycleCode: Scalars['String'];
@@ -6074,7 +6114,6 @@ export type UploadNewCampaignMutationVariables = Exact<{
   name: Scalars['String'];
   difficulty?: Maybe<Scalars['String']>;
   campaignNotes?: Maybe<Scalars['jsonb']>;
-  nonDeckInvestigators?: Maybe<Scalars['jsonb']>;
   scenarioResults?: Maybe<Scalars['jsonb']>;
   chaosBag?: Maybe<Scalars['jsonb']>;
   weaknessSet?: Maybe<Scalars['jsonb']>;
@@ -6083,6 +6122,7 @@ export type UploadNewCampaignMutationVariables = Exact<{
   inputs: Array<Guide_Input_Insert_Input> | Guide_Input_Insert_Input;
   achievements: Array<Guide_Achievement_Insert_Input> | Guide_Achievement_Insert_Input;
   investigator_data: Array<Investigator_Data_Insert_Input> | Investigator_Data_Insert_Input;
+  investigators: Array<Campaign_Investigator_Insert_Input> | Campaign_Investigator_Insert_Input;
 }>;
 
 
@@ -6101,6 +6141,9 @@ export type UploadNewCampaignMutation = (
   )>, insert_investigator_data?: Maybe<(
     { __typename?: 'investigator_data_mutation_response' }
     & Pick<Investigator_Data_Mutation_Response, 'affected_rows'>
+  )>, insert_campaign_investigator?: Maybe<(
+    { __typename?: 'campaign_investigator_mutation_response' }
+    & Pick<Campaign_Investigator_Mutation_Response, 'affected_rows'>
   )>, update_campaign_by_pk?: Maybe<(
     { __typename?: 'campaign' }
     & FullCampaignFragment
@@ -6140,10 +6183,10 @@ export type InsertNextLocalDeckMutation = (
   & { insert_deck_one?: Maybe<(
     { __typename?: 'deck' }
     & Pick<Deck, 'id'>
-    & { next_deck?: Maybe<(
+    & { next_deck: (
       { __typename?: 'deck' }
       & Pick<Deck, 'id' | 'local_uuid' | 'campaign_id' | 'investigator' | 'owner_id'>
-    )> }
+    ) }
   )> }
 );
 
@@ -6162,10 +6205,10 @@ export type InsertNextArkhamDbDeckMutation = (
   & { insert_deck_one?: Maybe<(
     { __typename?: 'deck' }
     & Pick<Deck, 'id'>
-    & { next_deck?: Maybe<(
+    & { next_deck: (
       { __typename?: 'deck' }
       & Pick<Deck, 'id' | 'arkhamdb_id' | 'campaign_id' | 'investigator' | 'owner_id'>
-    )> }
+    ) }
   )> }
 );
 
@@ -6267,34 +6310,66 @@ export type GetMyDecksQuery = (
   )> }
 );
 
+export type MiniInvestigatorDataFragment = (
+  { __typename?: 'investigator_data' }
+  & Pick<Investigator_Data, 'id' | 'investigator' | 'mental' | 'physical' | 'insane' | 'killed' | 'storyAssets'>
+);
+
+export type FullInvestigatorDataFragment = (
+  { __typename?: 'investigator_data' }
+  & Pick<Investigator_Data, 'addedCards' | 'ignoreStoryAssets' | 'removedCards' | 'availableXp' | 'spentXp' | 'specialXp' | 'updated_at'>
+  & MiniInvestigatorDataFragment
+);
+
 export type MiniCampaignFragment = (
   { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'uuid' | 'nonDeckInvestigators' | 'updated_at'>
+  & Pick<Campaign, 'id' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'uuid' | 'updated_at'>
   & { latest_decks: Array<(
     { __typename?: 'latest_decks' }
     & { deck?: Maybe<(
       { __typename?: 'deck' }
       & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator'>
     )> }
+  )>, investigators: Array<(
+    { __typename?: 'campaign_investigator' }
+    & Pick<Campaign_Investigator, 'id' | 'investigator'>
   )>, investigator_data: Array<(
     { __typename?: 'investigator_data' }
-    & Pick<Investigator_Data, 'id' | 'investigator' | 'mental' | 'physical' | 'insane' | 'killed' | 'storyAssets'>
+    & MiniInvestigatorDataFragment
   )> }
 );
 
 export type FullCampaignFragment = (
   { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'nonDeckInvestigators' | 'scenarioResults' | 'weaknessSet' | 'guided' | 'guide_version'>
+  & Pick<Campaign, 'id' | 'updated_at' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'scenarioResults' | 'weaknessSet' | 'guided' | 'guide_version'>
   & { guide_inputs: Array<(
     { __typename?: 'guide_input' }
     & Pick<Guide_Input, 'id' | 'step' | 'scenario' | 'payload' | 'created_at'>
   )>, guide_achivements: Array<(
     { __typename?: 'guide_achievement' }
     & Pick<Guide_Achievement, 'id' | 'achievement_id' | 'type' | 'bool_value' | 'value' | 'updated_at'>
+  )>, investigators: Array<(
+    { __typename?: 'campaign_investigator' }
+    & Pick<Campaign_Investigator, 'id' | 'investigator'>
   )>, investigator_data: Array<(
     { __typename?: 'investigator_data' }
-    & Pick<Investigator_Data, 'investigator' | 'addedCards' | 'ignoreStoryAssets' | 'storyAssets' | 'removedCards' | 'insane' | 'killed' | 'mental' | 'physical' | 'availableXp' | 'spentXp' | 'specialXp' | 'updated_at'>
-  )> }
+    & FullInvestigatorDataFragment
+  )>, latest_decks: Array<(
+    { __typename?: 'latest_decks' }
+    & { deck?: Maybe<(
+      { __typename?: 'deck' }
+      & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
+    )> }
+  )>, link_a_campaign: (
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid'>
+  ), link_b_campaign: (
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid'>
+  ), linked_campaign: (
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid'>
+  ) }
 );
 
 export type GetMyCampaignsQueryVariables = Exact<{
@@ -6311,13 +6386,13 @@ export type GetMyCampaignsQuery = (
       { __typename?: 'user_campaigns' }
       & { campaign?: Maybe<(
         { __typename?: 'campaign' }
-        & { link_a_campaign?: Maybe<(
+        & { link_a_campaign: (
           { __typename?: 'campaign' }
           & MiniCampaignFragment
-        )>, link_b_campaign?: Maybe<(
+        ), link_b_campaign: (
           { __typename?: 'campaign' }
           & MiniCampaignFragment
-        )> }
+        ) }
         & MiniCampaignFragment
       )> }
     )> }
@@ -6492,6 +6567,125 @@ export type AddGuideInputMutation = (
   )> }
 );
 
+export type UpdateInvestigatorTraumaMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
+  physical?: Maybe<Scalars['Int']>;
+  mental?: Maybe<Scalars['Int']>;
+  killed?: Maybe<Scalars['Boolean']>;
+  insane?: Maybe<Scalars['Boolean']>;
+}>;
+
+
+export type UpdateInvestigatorTraumaMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_investigator_data_one?: Maybe<(
+    { __typename?: 'investigator_data' }
+    & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'physical' | 'mental' | 'killed' | 'insane'>
+  )> }
+);
+
+export type UpdateSpentXpMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
+  spent_xp: Scalars['Int'];
+}>;
+
+
+export type UpdateSpentXpMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_investigator_data_one?: Maybe<(
+    { __typename?: 'investigator_data' }
+    & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'spentXp'>
+  )> }
+);
+
+export type UpdateAvailableXpMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
+  available_xp: Scalars['Int'];
+}>;
+
+
+export type UpdateAvailableXpMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_investigator_data_one?: Maybe<(
+    { __typename?: 'investigator_data' }
+    & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'spentXp'>
+  )> }
+);
+
+export type UpdateWeaknessSetMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  weakness_set: Scalars['jsonb'];
+}>;
+
+
+export type UpdateWeaknessSetMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid' | 'weaknessSet'>
+  )> }
+);
+
+export type UpdateCampaignNameMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  name: Scalars['String'];
+}>;
+
+
+export type UpdateCampaignNameMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid' | 'name'>
+  )> }
+);
+
+export type AddCampaignInvestigatorMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
+}>;
+
+
+export type AddCampaignInvestigatorMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_campaign_investigator_one?: Maybe<(
+    { __typename?: 'campaign_investigator' }
+    & Pick<Campaign_Investigator, 'id' | 'investigator' | 'campaign_id'>
+  )> }
+);
+
+export type RemoveCampaignInvestigatorMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
+}>;
+
+
+export type RemoveCampaignInvestigatorMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_campaign_investigator?: Maybe<(
+    { __typename?: 'campaign_investigator_mutation_response' }
+    & Pick<Campaign_Investigator_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename?: 'campaign_investigator' }
+      & Pick<Campaign_Investigator, 'id'>
+    )> }
+  )> }
+);
+
+export const MiniInvestigatorDataFragmentDoc = gql`
+    fragment MiniInvestigatorData on investigator_data {
+  id
+  investigator
+  mental
+  physical
+  insane
+  killed
+  storyAssets
+}
+    `;
 export const MiniCampaignFragmentDoc = gql`
     fragment MiniCampaign on campaign {
   id
@@ -6510,22 +6704,32 @@ export const MiniCampaignFragmentDoc = gql`
       investigator
     }
   }
-  nonDeckInvestigators
-  investigator_data {
+  investigators {
     id
     investigator
-    mental
-    physical
-    insane
-    killed
-    storyAssets
+  }
+  investigator_data {
+    ...MiniInvestigatorData
   }
   updated_at
 }
-    `;
+    ${MiniInvestigatorDataFragmentDoc}`;
+export const FullInvestigatorDataFragmentDoc = gql`
+    fragment FullInvestigatorData on investigator_data {
+  ...MiniInvestigatorData
+  addedCards
+  ignoreStoryAssets
+  removedCards
+  availableXp
+  spentXp
+  specialXp
+  updated_at
+}
+    ${MiniInvestigatorDataFragmentDoc}`;
 export const FullCampaignFragmentDoc = gql`
     fragment FullCampaign on campaign {
   id
+  updated_at
   uuid
   name
   cycleCode
@@ -6534,7 +6738,6 @@ export const FullCampaignFragmentDoc = gql`
   campaignNotes
   chaosBag
   showInterludes
-  nonDeckInvestigators
   scenarioResults
   weaknessSet
   guided
@@ -6554,60 +6757,38 @@ export const FullCampaignFragmentDoc = gql`
     value
     updated_at
   }
-  investigator_data {
+  investigators {
+    id
     investigator
-    addedCards
-    ignoreStoryAssets
-    storyAssets
-    removedCards
-    insane
-    killed
-    mental
-    physical
-    availableXp
-    spentXp
-    specialXp
-    updated_at
   }
-}
-    `;
-export const UpdateCampaignNameDocument = gql`
-    mutation updateCampaignName($campaignId: Int!, $name: String!) {
-  update_campaign_by_pk(pk_columns: {id: $campaignId}, _set: {name: $name}) {
+  investigator_data {
+    ...FullInvestigatorData
+  }
+  latest_decks {
+    deck {
+      id
+      arkhamdb_id
+      local_uuid
+      investigator
+      content
+    }
+  }
+  link_a_campaign {
     id
     uuid
-    name
+  }
+  link_b_campaign {
+    id
+    uuid
+  }
+  linked_campaign {
+    id
+    uuid
   }
 }
-    `;
-export type UpdateCampaignNameMutationFn = Apollo.MutationFunction<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>;
-
-/**
- * __useUpdateCampaignNameMutation__
- *
- * To run a mutation, you first call `useUpdateCampaignNameMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateCampaignNameMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateCampaignNameMutation, { data, loading, error }] = useUpdateCampaignNameMutation({
- *   variables: {
- *      campaignId: // value for 'campaignId'
- *      name: // value for 'name'
- *   },
- * });
- */
-export function useUpdateCampaignNameMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>) {
-        return Apollo.useMutation<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>(UpdateCampaignNameDocument, baseOptions);
-      }
-export type UpdateCampaignNameMutationHookResult = ReturnType<typeof useUpdateCampaignNameMutation>;
-export type UpdateCampaignNameMutationResult = Apollo.MutationResult<UpdateCampaignNameMutation>;
-export type UpdateCampaignNameMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>;
+    ${FullInvestigatorDataFragmentDoc}`;
 export const UploadNewCampaignDocument = gql`
-    mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $nonDeckInvestigators: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $guided: Boolean, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!) {
+    mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $guided: Boolean, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
   insert_guide_input(objects: $inputs) {
     affected_rows
     returning {
@@ -6625,9 +6806,12 @@ export const UploadNewCampaignDocument = gql`
   insert_investigator_data(objects: $investigator_data) {
     affected_rows
   }
+  insert_campaign_investigator(objects: $investigators) {
+    affected_rows
+  }
   update_campaign_by_pk(
     pk_columns: {id: $campaignId}
-    _set: {name: $name, cycleCode: $cycleCode, standaloneId: $standaloneId, difficulty: $difficulty, campaignNotes: $campaignNotes, chaosBag: $chaosBag, showInterludes: $showInterludes, nonDeckInvestigators: $nonDeckInvestigators, scenarioResults: $scenarioResults, weaknessSet: $weaknessSet, guided: $guided, guide_version: $guideVersion}
+    _set: {name: $name, cycleCode: $cycleCode, standaloneId: $standaloneId, difficulty: $difficulty, campaignNotes: $campaignNotes, chaosBag: $chaosBag, showInterludes: $showInterludes, scenarioResults: $scenarioResults, weaknessSet: $weaknessSet, guided: $guided, guide_version: $guideVersion}
   ) {
     ...FullCampaign
   }
@@ -6655,7 +6839,6 @@ export type UploadNewCampaignMutationFn = Apollo.MutationFunction<UploadNewCampa
  *      name: // value for 'name'
  *      difficulty: // value for 'difficulty'
  *      campaignNotes: // value for 'campaignNotes'
- *      nonDeckInvestigators: // value for 'nonDeckInvestigators'
  *      scenarioResults: // value for 'scenarioResults'
  *      chaosBag: // value for 'chaosBag'
  *      weaknessSet: // value for 'weaknessSet'
@@ -6664,6 +6847,7 @@ export type UploadNewCampaignMutationFn = Apollo.MutationFunction<UploadNewCampa
  *      inputs: // value for 'inputs'
  *      achievements: // value for 'achievements'
  *      investigator_data: // value for 'investigator_data'
+ *      investigators: // value for 'investigators'
  *   },
  * });
  */
@@ -7456,6 +7640,281 @@ export function useAddGuideInputMutation(baseOptions?: Apollo.MutationHookOption
 export type AddGuideInputMutationHookResult = ReturnType<typeof useAddGuideInputMutation>;
 export type AddGuideInputMutationResult = Apollo.MutationResult<AddGuideInputMutation>;
 export type AddGuideInputMutationOptions = Apollo.BaseMutationOptions<AddGuideInputMutation, AddGuideInputMutationVariables>;
+export const UpdateInvestigatorTraumaDocument = gql`
+    mutation updateInvestigatorTrauma($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean) {
+  insert_investigator_data_one(
+    object: {campaign_id: $campaign_id, investigator: $investigator, physical: $physical, mental: $mental, killed: $killed, insane: $insane}
+    on_conflict: {constraint: investigator_data_campaign_id_investigator_key, update_columns: [physical, mental, killed, insane]}
+  ) {
+    id
+    campaign_id
+    investigator
+    physical
+    mental
+    killed
+    insane
+  }
+}
+    `;
+export type UpdateInvestigatorTraumaMutationFn = Apollo.MutationFunction<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>;
+
+/**
+ * __useUpdateInvestigatorTraumaMutation__
+ *
+ * To run a mutation, you first call `useUpdateInvestigatorTraumaMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateInvestigatorTraumaMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateInvestigatorTraumaMutation, { data, loading, error }] = useUpdateInvestigatorTraumaMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *      physical: // value for 'physical'
+ *      mental: // value for 'mental'
+ *      killed: // value for 'killed'
+ *      insane: // value for 'insane'
+ *   },
+ * });
+ */
+export function useUpdateInvestigatorTraumaMutation(baseOptions?: Apollo.MutationHookOptions<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>) {
+        return Apollo.useMutation<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>(UpdateInvestigatorTraumaDocument, baseOptions);
+      }
+export type UpdateInvestigatorTraumaMutationHookResult = ReturnType<typeof useUpdateInvestigatorTraumaMutation>;
+export type UpdateInvestigatorTraumaMutationResult = Apollo.MutationResult<UpdateInvestigatorTraumaMutation>;
+export type UpdateInvestigatorTraumaMutationOptions = Apollo.BaseMutationOptions<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>;
+export const UpdateSpentXpDocument = gql`
+    mutation updateSpentXp($campaign_id: Int!, $investigator: String!, $spent_xp: Int!) {
+  insert_investigator_data_one(
+    object: {campaign_id: $campaign_id, investigator: $investigator, spentXp: $spent_xp}
+    on_conflict: {constraint: investigator_data_campaign_id_investigator_key, update_columns: [spentXp]}
+  ) {
+    id
+    campaign_id
+    investigator
+    spentXp
+  }
+}
+    `;
+export type UpdateSpentXpMutationFn = Apollo.MutationFunction<UpdateSpentXpMutation, UpdateSpentXpMutationVariables>;
+
+/**
+ * __useUpdateSpentXpMutation__
+ *
+ * To run a mutation, you first call `useUpdateSpentXpMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSpentXpMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSpentXpMutation, { data, loading, error }] = useUpdateSpentXpMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *      spent_xp: // value for 'spent_xp'
+ *   },
+ * });
+ */
+export function useUpdateSpentXpMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSpentXpMutation, UpdateSpentXpMutationVariables>) {
+        return Apollo.useMutation<UpdateSpentXpMutation, UpdateSpentXpMutationVariables>(UpdateSpentXpDocument, baseOptions);
+      }
+export type UpdateSpentXpMutationHookResult = ReturnType<typeof useUpdateSpentXpMutation>;
+export type UpdateSpentXpMutationResult = Apollo.MutationResult<UpdateSpentXpMutation>;
+export type UpdateSpentXpMutationOptions = Apollo.BaseMutationOptions<UpdateSpentXpMutation, UpdateSpentXpMutationVariables>;
+export const UpdateAvailableXpDocument = gql`
+    mutation updateAvailableXp($campaign_id: Int!, $investigator: String!, $available_xp: Int!) {
+  insert_investigator_data_one(
+    object: {campaign_id: $campaign_id, investigator: $investigator, availableXp: $available_xp}
+    on_conflict: {constraint: investigator_data_campaign_id_investigator_key, update_columns: [availableXp]}
+  ) {
+    id
+    campaign_id
+    investigator
+    spentXp
+  }
+}
+    `;
+export type UpdateAvailableXpMutationFn = Apollo.MutationFunction<UpdateAvailableXpMutation, UpdateAvailableXpMutationVariables>;
+
+/**
+ * __useUpdateAvailableXpMutation__
+ *
+ * To run a mutation, you first call `useUpdateAvailableXpMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateAvailableXpMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateAvailableXpMutation, { data, loading, error }] = useUpdateAvailableXpMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *      available_xp: // value for 'available_xp'
+ *   },
+ * });
+ */
+export function useUpdateAvailableXpMutation(baseOptions?: Apollo.MutationHookOptions<UpdateAvailableXpMutation, UpdateAvailableXpMutationVariables>) {
+        return Apollo.useMutation<UpdateAvailableXpMutation, UpdateAvailableXpMutationVariables>(UpdateAvailableXpDocument, baseOptions);
+      }
+export type UpdateAvailableXpMutationHookResult = ReturnType<typeof useUpdateAvailableXpMutation>;
+export type UpdateAvailableXpMutationResult = Apollo.MutationResult<UpdateAvailableXpMutation>;
+export type UpdateAvailableXpMutationOptions = Apollo.BaseMutationOptions<UpdateAvailableXpMutation, UpdateAvailableXpMutationVariables>;
+export const UpdateWeaknessSetDocument = gql`
+    mutation updateWeaknessSet($campaign_id: Int!, $weakness_set: jsonb!) {
+  update_campaign_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {weaknessSet: $weakness_set}
+  ) {
+    id
+    uuid
+    weaknessSet
+  }
+}
+    `;
+export type UpdateWeaknessSetMutationFn = Apollo.MutationFunction<UpdateWeaknessSetMutation, UpdateWeaknessSetMutationVariables>;
+
+/**
+ * __useUpdateWeaknessSetMutation__
+ *
+ * To run a mutation, you first call `useUpdateWeaknessSetMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateWeaknessSetMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateWeaknessSetMutation, { data, loading, error }] = useUpdateWeaknessSetMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      weakness_set: // value for 'weakness_set'
+ *   },
+ * });
+ */
+export function useUpdateWeaknessSetMutation(baseOptions?: Apollo.MutationHookOptions<UpdateWeaknessSetMutation, UpdateWeaknessSetMutationVariables>) {
+        return Apollo.useMutation<UpdateWeaknessSetMutation, UpdateWeaknessSetMutationVariables>(UpdateWeaknessSetDocument, baseOptions);
+      }
+export type UpdateWeaknessSetMutationHookResult = ReturnType<typeof useUpdateWeaknessSetMutation>;
+export type UpdateWeaknessSetMutationResult = Apollo.MutationResult<UpdateWeaknessSetMutation>;
+export type UpdateWeaknessSetMutationOptions = Apollo.BaseMutationOptions<UpdateWeaknessSetMutation, UpdateWeaknessSetMutationVariables>;
+export const UpdateCampaignNameDocument = gql`
+    mutation updateCampaignName($campaign_id: Int!, $name: String!) {
+  update_campaign_by_pk(pk_columns: {id: $campaign_id}, _set: {name: $name}) {
+    id
+    uuid
+    name
+  }
+}
+    `;
+export type UpdateCampaignNameMutationFn = Apollo.MutationFunction<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>;
+
+/**
+ * __useUpdateCampaignNameMutation__
+ *
+ * To run a mutation, you first call `useUpdateCampaignNameMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCampaignNameMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCampaignNameMutation, { data, loading, error }] = useUpdateCampaignNameMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useUpdateCampaignNameMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>) {
+        return Apollo.useMutation<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>(UpdateCampaignNameDocument, baseOptions);
+      }
+export type UpdateCampaignNameMutationHookResult = ReturnType<typeof useUpdateCampaignNameMutation>;
+export type UpdateCampaignNameMutationResult = Apollo.MutationResult<UpdateCampaignNameMutation>;
+export type UpdateCampaignNameMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignNameMutation, UpdateCampaignNameMutationVariables>;
+export const AddCampaignInvestigatorDocument = gql`
+    mutation addCampaignInvestigator($campaign_id: Int!, $investigator: String!) {
+  insert_campaign_investigator_one(
+    object: {campaign_id: $campaign_id, investigator: $investigator}
+    on_conflict: {constraint: campaign_investigator_campaign_id_investigator_key, update_columns: []}
+  ) {
+    id
+    investigator
+    campaign_id
+  }
+}
+    `;
+export type AddCampaignInvestigatorMutationFn = Apollo.MutationFunction<AddCampaignInvestigatorMutation, AddCampaignInvestigatorMutationVariables>;
+
+/**
+ * __useAddCampaignInvestigatorMutation__
+ *
+ * To run a mutation, you first call `useAddCampaignInvestigatorMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddCampaignInvestigatorMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addCampaignInvestigatorMutation, { data, loading, error }] = useAddCampaignInvestigatorMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *   },
+ * });
+ */
+export function useAddCampaignInvestigatorMutation(baseOptions?: Apollo.MutationHookOptions<AddCampaignInvestigatorMutation, AddCampaignInvestigatorMutationVariables>) {
+        return Apollo.useMutation<AddCampaignInvestigatorMutation, AddCampaignInvestigatorMutationVariables>(AddCampaignInvestigatorDocument, baseOptions);
+      }
+export type AddCampaignInvestigatorMutationHookResult = ReturnType<typeof useAddCampaignInvestigatorMutation>;
+export type AddCampaignInvestigatorMutationResult = Apollo.MutationResult<AddCampaignInvestigatorMutation>;
+export type AddCampaignInvestigatorMutationOptions = Apollo.BaseMutationOptions<AddCampaignInvestigatorMutation, AddCampaignInvestigatorMutationVariables>;
+export const RemoveCampaignInvestigatorDocument = gql`
+    mutation removeCampaignInvestigator($campaign_id: Int!, $investigator: String!) {
+  delete_campaign_investigator(
+    where: {campaign_id: {_eq: $campaign_id}, investigator: {_eq: $investigator}}
+  ) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}
+    `;
+export type RemoveCampaignInvestigatorMutationFn = Apollo.MutationFunction<RemoveCampaignInvestigatorMutation, RemoveCampaignInvestigatorMutationVariables>;
+
+/**
+ * __useRemoveCampaignInvestigatorMutation__
+ *
+ * To run a mutation, you first call `useRemoveCampaignInvestigatorMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRemoveCampaignInvestigatorMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [removeCampaignInvestigatorMutation, { data, loading, error }] = useRemoveCampaignInvestigatorMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *   },
+ * });
+ */
+export function useRemoveCampaignInvestigatorMutation(baseOptions?: Apollo.MutationHookOptions<RemoveCampaignInvestigatorMutation, RemoveCampaignInvestigatorMutationVariables>) {
+        return Apollo.useMutation<RemoveCampaignInvestigatorMutation, RemoveCampaignInvestigatorMutationVariables>(RemoveCampaignInvestigatorDocument, baseOptions);
+      }
+export type RemoveCampaignInvestigatorMutationHookResult = ReturnType<typeof useRemoveCampaignInvestigatorMutation>;
+export type RemoveCampaignInvestigatorMutationResult = Apollo.MutationResult<RemoveCampaignInvestigatorMutation>;
+export type RemoveCampaignInvestigatorMutationOptions = Apollo.BaseMutationOptions<RemoveCampaignInvestigatorMutation, RemoveCampaignInvestigatorMutationVariables>;
 
       export interface PossibleTypesResultData {
         possibleTypes: {

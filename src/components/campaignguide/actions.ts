@@ -30,7 +30,7 @@ import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
 import { CreateCampaignActions, GuideActions } from '@data/remote/campaigns';
-import { Guide_Input_Insert_Input, Guide_Achievement_Insert_Input, Investigator_Data_Insert_Input } from '@generated/graphql/apollo-schema';
+import { Guide_Input_Insert_Input, Guide_Achievement_Insert_Input, Investigator_Data_Insert_Input, Campaign_Investigator_Insert_Input } from '@generated/graphql/apollo-schema';
 
 function guideInputToInsert(input: GuideInput, serverId: number): Guide_Input_Insert_Input {
   return {
@@ -88,6 +88,13 @@ function uploadCampaignHelper(
         availableXp: data.availableXp,
       });
     });
+    const investigators: Campaign_Investigator_Insert_Input[] = [];
+    forEach(campaign.nonDeckInvestigators || [], code => {
+      investigators.push({
+        campaign_id: campaignId.serverId,
+        investigator: code,
+      });
+    });
     await actions.uploadNewCampaign({
       variables: {
         campaignId: campaignId.serverId,
@@ -99,8 +106,8 @@ function uploadCampaignHelper(
         inputs,
         achievements,
         investigator_data,
+        investigators,
         campaignNotes: campaign.campaignNotes,
-        nonDeckInvestigators: campaign.nonDeckInvestigators,
         scenarioResults: campaign.scenarioResults,
         showInterludes: campaign.showInterludes,
         weaknessSet: campaign.weaknessSet,

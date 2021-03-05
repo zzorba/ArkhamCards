@@ -1,8 +1,9 @@
-import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet } from '@actions/types';
+import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData } from '@actions/types';
 import { uniq, map, concat, last, maxBy } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { InvestigatorOddsProps } from '@components/campaign/OddsCalculatorComponent/InvestigatorOddsComponent';
 
 const EMPTY_TRAUMA: Trauma = {};
 
@@ -157,6 +158,7 @@ const EMPTY_WEAKNESS_SET: WeaknessSet = {
 };
 const EMPTY_CAMPAIGN_NOTES = {};
 const EMPTY_SCENARIO_RESULTS: ScenarioResult[] = [];
+const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 
 export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCampaignT {
   constructor(
@@ -179,6 +181,14 @@ export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCamp
 
   investigatorSpentXp(code: string) {
     return this.campaign.adjustedInvestigatorData?.[code]?.spentXp || 0;
+  }
+
+  investigatorData() {
+    return this.campaign.investigatorData || EMPTY_INVESTIGATOR_DATA;
+  }
+
+  getInvestigatorData(investigator: string) {
+    return (this.campaign.investigatorData || {})[investigator] || EMPTY_TRAUMA;
   }
 
   chaosBag() {

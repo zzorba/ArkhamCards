@@ -188,3 +188,151 @@ mutation addGuideInput(
     payload
   }
 }
+
+mutation updateInvestigatorTrauma(
+  $campaign_id: Int!,
+  $investigator: String!,
+  $physical: Int,
+  $mental: Int,
+  $killed: Boolean,
+  $insane: Boolean,
+) {
+  insert_investigator_data_one(
+    object: {
+      campaign_id: $campaign_id
+      investigator: $investigator
+      physical: $physical
+      mental: $mental
+      killed: $killed
+      insane: $insane
+    }
+    on_conflict: {
+      constraint: investigator_data_campaign_id_investigator_key
+      update_columns: [physical, mental, killed, insane]
+    }
+  ) {
+    id
+    campaign_id
+    investigator
+    physical
+    mental
+    killed
+    insane
+  }
+}
+
+mutation updateSpentXp(
+  $campaign_id: Int!,
+  $investigator: String!,
+  $spent_xp: Int!
+) {
+  insert_investigator_data_one(
+    object: {
+      campaign_id: $campaign_id
+      investigator: $investigator
+      spentXp: $spent_xp
+    }
+    on_conflict: {
+      constraint: investigator_data_campaign_id_investigator_key
+      update_columns: [spentXp]
+    }
+  ) {
+    id
+    campaign_id
+    investigator
+    spentXp
+  }
+}
+
+
+mutation updateAvailableXp(
+  $campaign_id: Int!,
+  $investigator: String!,
+  $available_xp: Int!
+) {
+  insert_investigator_data_one(
+    object: {
+      campaign_id: $campaign_id
+      investigator: $investigator
+      availableXp: $available_xp
+    }
+    on_conflict: {
+      constraint: investigator_data_campaign_id_investigator_key
+      update_columns: [availableXp]
+    }
+  ) {
+    id
+    campaign_id
+    investigator
+    spentXp
+  }
+}
+
+mutation updateWeaknessSet(
+  $campaign_id: Int!,
+  $weakness_set: jsonb!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      weaknessSet: $weakness_set,
+    },
+  ) {
+    id
+    uuid
+    weaknessSet
+  }
+}
+
+mutation updateCampaignName(
+  $campaign_id: Int!,
+  $name: String!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      name: $name
+    }
+  ) {
+    id
+    uuid
+    name
+  }
+}
+
+mutation addCampaignInvestigator(
+  $campaign_id: Int!,
+  $investigator: String!
+) {
+  insert_campaign_investigator_one(
+    object: {
+      campaign_id: $campaign_id
+      investigator: $investigator
+    }
+    on_conflict: {
+      constraint: campaign_investigator_campaign_id_investigator_key
+      update_columns: []
+    }
+  ) {
+    id
+    investigator
+    campaign_id
+  }
+}
+
+mutation removeCampaignInvestigator(
+  $campaign_id: Int!,
+  $investigator: String!
+) {
+  delete_campaign_investigator(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      investigator: {_eq: $investigator }
+    }
+  ) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}

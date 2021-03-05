@@ -12,16 +12,12 @@ import space from '@styles/space';
 
 interface Props {
   investigator: Card;
-  investigatorData?: InvestigatorData;
+  traumaData: Trauma;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   sectionHeader?: boolean;
 }
 
-export default function EditTraumaComponent({ investigator, investigatorData, showTraumaDialog, sectionHeader }: Props) {
-  const traumaData = useMemo(() => {
-    return investigatorData?.[investigator.code] || DEFAULT_TRAUMA_DATA;
-  }, [investigatorData, investigator]);
-
+export default function EditTraumaComponent({ investigator, traumaData, showTraumaDialog, sectionHeader }: Props) {
   const editTraumaPressed = useCallback(() => {
     showTraumaDialog(investigator, traumaData);
   }, [traumaData, showTraumaDialog, investigator]);

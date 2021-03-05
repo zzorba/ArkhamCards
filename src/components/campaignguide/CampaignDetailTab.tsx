@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import { filter, keys } from 'lodash';
+import { InteractionManager, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { filter, findLast, keys } from 'lodash';
 import { t } from 'ttag';
 import { Navigation } from 'react-native-navigation';
 
@@ -22,6 +22,7 @@ import { CampaignLogProps } from './CampaignLogView';
 import { CampaignAchievementsProps } from './CampaignAchievementsView';
 import CampaignInvestigatorsComponent from './CampaignInvestigatorsComponent';
 import CampaignSummaryHeader from '@components/campaign/CampaignSummaryHeader';
+import useTraumaDialog from '@components/campaign/useTraumaDialog';
 
 interface Props {
   componentId: string;
@@ -29,13 +30,12 @@ interface Props {
   showAlert: ShowAlert;
   showCountDialog: ShowCountDialog;
   showLinkedScenario?: ShowScenario;
-  showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
   displayLinkScenarioCount?: number;
   footerButtons: React.ReactNode;
 }
 export default function CampaignDetailTab({
   componentId, processedCampaign, displayLinkScenarioCount, footerButtons,
-  showLinkedScenario, showAlert, showTraumaDialog, showCountDialog,
+  showLinkedScenario, showAlert, showCountDialog,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { campaignId, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
@@ -86,6 +86,18 @@ export default function CampaignDetailTab({
       },
     });
   }, [componentId, campaignId]);
+  const updateTrauma = useCallback((code: string, trauma: Trauma) => {
+    const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed');
+    InteractionManager.runAfterInteractions(() => {
+      campaignState.setInterScenarioInvestigatorData(
+        code,
+        trauma,
+        latestScenario ? latestScenario?.id.encodedScenarioId : undefined
+      );
+    });
+  }, [processedCampaign, campaignState]);
+
+  const { showTraumaDialog, traumaDialog } = useTraumaDialog(updateTrauma, true);
 
   const chaosBagDisabled = useMemo(() => !keys(processedCampaign.campaignLog.chaosBag).length, [processedCampaign.campaignLog.chaosBag]);
   const allInvestigators = useMemo(() => filter(campaignInvestigators, investigator => !processedCampaign.campaignLog.isEliminated(investigator)), [campaignInvestigators, processedCampaign.campaignLog]);
@@ -147,6 +159,7 @@ export default function CampaignDetailTab({
         { footerButtons }
       </ScrollView>
       { chaosBagDialog }
+      { traumaDialog }
     </SafeAreaView>
   );
 }

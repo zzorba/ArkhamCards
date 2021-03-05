@@ -1,16 +1,5 @@
 # import FullCampaign from 'fragments.graphql'
 
-mutation updateCampaignName($campaignId: Int!, $name: String!) {
-	update_campaign_by_pk(
-    pk_columns: {id: $campaignId}
-    _set: { name: $name }
-  ) {
-    id
-    uuid
-    name
-  }
-}
-
 mutation uploadNewCampaign(
   $campaignId: Int!,
   $cycleCode: String!,
@@ -19,7 +8,6 @@ mutation uploadNewCampaign(
   $name: String!,
   $difficulty: String,
   $campaignNotes: jsonb,
-  $nonDeckInvestigators: jsonb,
   $scenarioResults: jsonb,
   $chaosBag: jsonb,
   $weaknessSet: jsonb,
@@ -27,7 +15,8 @@ mutation uploadNewCampaign(
   $guideVersion: Int,
   $inputs: [guide_input_insert_input!]!,
   $achievements: [guide_achievement_insert_input!]!,
-  $investigator_data: [investigator_data_insert_input!]!
+  $investigator_data: [investigator_data_insert_input!]!,
+  $investigators: [campaign_investigator_insert_input!]!
 ) {
   insert_guide_input(
     objects: $inputs
@@ -47,25 +36,28 @@ mutation uploadNewCampaign(
   ) {
     affected_rows
   }
-  insert_investigator_data(objects: $investigator_data){
+  insert_investigator_data(objects: $investigator_data) {
     affected_rows
   }
-   update_campaign_by_pk(
-  pk_columns: { id: $campaignId}
-	_set: {
-    name: $name
-    cycleCode: $cycleCode
-    standaloneId: $standaloneId
-    difficulty: $difficulty
-    campaignNotes: $campaignNotes
-    chaosBag: $chaosBag
-    showInterludes: $showInterludes
-    nonDeckInvestigators: $nonDeckInvestigators
-    scenarioResults: $scenarioResults
-    weaknessSet: $weaknessSet
-    guided: $guided
-    guide_version: $guideVersion
-  }) {
+  insert_campaign_investigator(objects: $investigators) {
+    affected_rows
+  }
+  update_campaign_by_pk(
+  	pk_columns: { id: $campaignId}
+		_set: {
+      name: $name
+      cycleCode: $cycleCode
+      standaloneId: $standaloneId
+      difficulty: $difficulty
+      campaignNotes: $campaignNotes
+      chaosBag: $chaosBag
+      showInterludes: $showInterludes
+      scenarioResults: $scenarioResults
+      weaknessSet: $weaknessSet
+      guided: $guided
+      guide_version: $guideVersion
+    }
+	) {
     ...FullCampaign
   }
 }

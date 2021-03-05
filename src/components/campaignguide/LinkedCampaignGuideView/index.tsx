@@ -47,7 +47,6 @@ export default function LinkedCampaignGuideView(props: Props) {
   const dispatch = useDispatch();
   useStopAudioOnUnmount();
 
-  const { showTraumaDialog, traumaDialog } = useTraumaDialog({ hideKilledInsane: true });
   const campaign = useCampaign(campaignId);
   const campaignName = (campaign && campaign.name) || '';
   const campaignDataA = useCampaignGuideReduxData(campaignIdA, investigators);
@@ -127,7 +126,6 @@ export default function LinkedCampaignGuideView(props: Props) {
               showLinkedScenario={showCampaignScenarioB}
               showAlert={showAlert}
               showCountDialog={showCountDialog}
-              showTraumaDialog={showTraumaDialog}
               displayLinkScenarioCount={displayLinkScenarioCount}
               footerButtons={footerButtons}
             />
@@ -136,7 +134,7 @@ export default function LinkedCampaignGuideView(props: Props) {
       ),
     };
   }, [campaignDataA, processedCampaignA, contextA, componentId, displayLinkScenarioCount, footerButtons,
-    showCampaignScenarioB, showCountDialog, showAlert, showTraumaDialog]);
+    showCampaignScenarioB, showCountDialog, showAlert]);
   const campaignBTab = useMemo(() => {
     if (!campaignDataB || !processedCampaignB || !contextB) {
       return null;
@@ -153,7 +151,6 @@ export default function LinkedCampaignGuideView(props: Props) {
               showLinkedScenario={showCampaignScenarioA}
               showAlert={showAlert}
               showCountDialog={showCountDialog}
-              showTraumaDialog={showTraumaDialog}
               displayLinkScenarioCount={displayLinkScenarioCount}
               footerButtons={footerButtons}
             />
@@ -162,7 +159,7 @@ export default function LinkedCampaignGuideView(props: Props) {
       ),
     };
   }, [campaignDataB, processedCampaignB, contextB, componentId, displayLinkScenarioCount, footerButtons,
-    showCampaignScenarioA, showCountDialog, showAlert, showTraumaDialog]);
+    showCampaignScenarioA, showCountDialog, showAlert]);
   const tabs = useMemo(() => {
     if (!campaignATab || !campaignBTab) {
       return [];
@@ -178,7 +175,6 @@ export default function LinkedCampaignGuideView(props: Props) {
       { tabView }
       { alertDialog }
       { dialog }
-      { traumaDialog }
       { countDialog }
     </View>
   );

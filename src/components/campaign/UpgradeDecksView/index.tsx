@@ -11,7 +11,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignId, Deck, getCampaignId, getDeckId, ScenarioResult } from '@actions/types';
+import { CampaignId, Deck, getDeckId, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';
 import { getAllDecks, getDeck, getLangPreference } from '@reducers';
@@ -25,6 +25,7 @@ import StyleContext from '@styles/StyleContext';
 import { useCampaignDetails, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaign } from '@data/remote/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useUpdateCampaignActions } from '@data/remote/campaigns';
 
 export interface UpgradeDecksProps {
   id: CampaignId;
@@ -40,6 +41,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
   const [latestDeckIds, allInvestigators] = useCampaignDetails(campaign, investigators);
   const lang = useSelector(getLangPreference);
   const decks = useSelector(getAllDecks);
+  const updateCampaignActions = useUpdateCampaignActions();
   const originalDeckUuids = useRef(new Set(map(latestDeckIds, id => id.uuid)));
   const close = useCallback(() => {
     Navigation.dismissModal(componentId);
@@ -56,13 +58,14 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
       const oldXp = investigatorData.availableXp || 0;
       dispatch(updateCampaignXp(
         user,
+        updateCampaignActions,
         id,
         investigator.code,
         oldXp + xp,
         'availableXp'
       ));
     }
-  }, [campaign, id, user, dispatch]);
+  }, [campaign, id, user, updateCampaignActions, dispatch]);
 
   const showDeckUpgradeDialog = useCallback((deck: Deck, investigator?: Card) => {
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;

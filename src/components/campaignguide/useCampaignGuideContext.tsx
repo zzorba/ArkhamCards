@@ -26,7 +26,8 @@ import { useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useGuideActions, useRemoveInvestigatorDecks } from '@data/remote/campaigns';
+import { useGuideActions, useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCreateDeckActions } from '@data/remote/decks';
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 const EMPTY_WEAKNESS_SET: WeaknessSet = { packCodes: [], assignedCards: {} };
@@ -36,7 +37,9 @@ export default function useCampaignGuideContext(campaignId: CampaignId, campaign
   const dispatch = useDispatch();
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
-  const campaignChooseDeck = useChooseDeck();
+  const updateCampaignActions = useUpdateCampaignActions();
+  const createDeckActions = useCreateDeckActions();
+  const campaignChooseDeck = useChooseDeck(createDeckActions, updateCampaignActions);
   const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => void) => {
     if (campaignInvestigators !== undefined) {
       campaignChooseDeck(campaignId, campaignInvestigators, singleInvestigator, callback);
@@ -55,16 +58,15 @@ export default function useCampaignGuideContext(campaignId: CampaignId, campaign
     dispatch(guideActions.decCountAchievement(user, remoteGuideActions, campaignId, achievementId));
   }, [dispatch, user, remoteGuideActions, campaignId]);
 
-  const removeInvestigatorDecks = useRemoveInvestigatorDecks();
   const removeDeck = useCallback((
     deck: Deck
   ) => {
-    dispatch(campaignActions.removeInvestigator(user, removeInvestigatorDecks, campaignId, deck.investigator_code, getDeckId(deck)));
-  }, [dispatch, campaignId, user, removeInvestigatorDecks]);
+    dispatch(campaignActions.removeInvestigator(user, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
+  }, [dispatch, campaignId, user, updateCampaignActions]);
 
   const removeInvestigator = useCallback((investigator: Card) => {
-    dispatch(campaignActions.removeInvestigator(user, removeInvestigatorDecks, campaignId, investigator.code));
-  }, [dispatch, campaignId, user, removeInvestigatorDecks]);
+    dispatch(campaignActions.removeInvestigator(user, updateCampaignActions, campaignId, investigator.code));
+  }, [dispatch, campaignId, user, updateCampaignActions]);
 
   const startScenario = useCallback((scenarioId: string) => {
     dispatch(guideActions.startScenario(user, remoteGuideActions, campaignId, scenarioId));

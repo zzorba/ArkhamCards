@@ -2,13 +2,17 @@ import { useContext, useMemo, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { flatMap, concat, omit, sortBy } from 'lodash';
 
-import { AppState, getCampaigns, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
-import { CampaignGuideState, CampaignId, SingleCampaign } from '@actions/types';
+import { AppState, getCampaigns, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector } from '@reducers';
+import { CampaignGuideState, CampaignId, getCampaignLastUpdated, SingleCampaign } from '@actions/types';
 import { useGetMyCampaignsLazyQuery, MiniCampaignFragment, useCampaignSubscription, useGetProfileQuery } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { MiniLinkedCampaignRemote, MiniCampaignRemote } from './types';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { SingleCampaignRedux } from '@data/local/types';
+import { SingleCampaignRemote } from '@data/remote/types';
+import Card, { CardsMap } from '@data/types/Card';
 
 function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
@@ -63,16 +67,37 @@ export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => vo
   return [allCampaigns, loading, refresh];
 }
 
-export function useLiveCampaign(campaignId?: CampaignId): SingleCampaign | undefined {
+export function useLiveCampaign(campaignId?: CampaignId, investigators?: CardsMap): [SingleCampaignT | undefined, Card[]] {
   const { user } = useContext(ArkhamCardsAuthContext);
   const getCampaign = useMemo(makeCampaignSelector, []);
   const reduxCampaign = useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId.campaignId) : undefined);
-  const { loading, data, error } = useCampaignSubscription({
+  const getLatestCampaignDecks = useMemo(makeLatestDecksSelector, []);
+  const latestDecks = useSelector((state: AppState) => getLatestCampaignDecks(state, reduxCampaign));
+
+  const { data } = useCampaignSubscription({
     variables: { campaign_id: campaignId?.serverId || 0 },
     skip: (!user || !campaignId?.serverId),
   });
-  console.log(JSON.stringify(data));
-  return reduxCampaign;
+  const campaign = useMemo(() => {
+    if (!campaignId) {
+      return undefined;
+    }
+    if (!campaignId?.serverId) {
+      return reduxCampaign ? new SingleCampaignRedux(reduxCampaign, latestDecks, getCampaignLastUpdated(reduxCampaign)) : undefined;
+    }
+    if (data?.campaign_by_pk) {
+      return new SingleCampaignRemote(data.campaign_by_pk)
+    }
+  }, [campaignId, reduxCampaign, data, latestDecks]);
+
+  const allInvestigators = useMemo(() => {
+    if (!campaign || !investigators) {
+      return [];
+    }
+    return flatMap(campaign.investigators(), i => investigators[i] || []);
+  }, [campaign, investigators]);
+
+  return [campaign, allInvestigators];
 }
 
 

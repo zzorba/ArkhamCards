@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useRef } from 'react';
+import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
 import { last } from 'lodash';
 import {
   View,
@@ -11,7 +11,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DeckUpgradeComponent, { DeckUpgradeHandles } from './DeckUpgradeComponent';
-import { CampaignId, Deck, DeckId, getCampaignId, getDeckId, Slots } from '@actions/types';
+import { CampaignId, Deck, DeckId, getCampaignId, getDeckId, Slots, Trauma } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { showDeckModal } from '@components/nav/helper';
 import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
@@ -33,6 +33,7 @@ export interface UpgradeDeckProps {
   showNewDeck: boolean;
 }
 
+const EMPTY_TRAUMA = {};
 function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const actions = useCreateDeckActions();
@@ -49,21 +50,14 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   const investigators = useInvestigatorCards(deck?.taboo_id);
   const dispatch = useDispatch();
 
+  const [traumaUpdate, setTraumaUpdate] = useState<Trauma | undefined>();
+  const setInvestigatorTrauma = useCallback((investigator: string, trauma: Trauma) => {
+    setTraumaUpdate(trauma);
+  }, [setTraumaUpdate]);
   const {
     showTraumaDialog,
-    investigatorDataUpdates,
     traumaDialog,
-  } = useTraumaDialog({});
-
-  const investigatorData = useMemo(() => {
-    if (!campaign) {
-      return undefined;
-    }
-    return {
-      ...(campaign.investigatorData || {}),
-      ...investigatorDataUpdates,
-    };
-  }, [campaign, investigatorDataUpdates]);
+  } = useTraumaDialog(setInvestigatorTrauma);
 
   const save = useCallback(() => {
     if (deckUpgradeComponent.current) {
@@ -86,7 +80,14 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
 
   const deckUpgradeComplete = useCallback((deck: Deck) => {
     if (campaign) {
-      if (investigatorData) {
+      if (traumaUpdate && campaign) {
+        const investigatorData = {
+          ...(campaign.investigatorData || {}),
+          [deck.investigator_code]: {
+            ...(campaign.investigatorData || {})[deck.investigator_code],
+            ...traumaUpdate,
+          },
+        };
         dispatch(updateCampaign(
           user,
           getCampaignId(campaign),
@@ -99,7 +100,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     } else {
       Navigation.pop(componentId);
     }
-  }, [showNewDeck, componentId, dispatch, user, campaign, colors, investigator, investigatorData]);
+  }, [showNewDeck, componentId, dispatch, user, campaign, colors, investigator, traumaUpdate]);
 
   const onStoryCountsChange = useCallback((storyCounts: Slots) => {
     updateStoryCounts({ type: 'sync', slots: storyCounts });
@@ -114,7 +115,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
         { !campaign.guided && (
           <EditTraumaComponent
             investigator={investigator}
-            investigatorData={investigatorData}
+            traumaData={traumaUpdate || ((campaign.investigatorData || {})[investigator.code]) || EMPTY_TRAUMA}
             showTraumaDialog={showTraumaDialog}
             sectionHeader
           />
@@ -129,7 +130,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
         />
       </>
     );
-  }, [deck, componentId, campaign, showTraumaDialog, storyEncounterCodes, scenarioName, investigator, investigatorData, onStoryCountsChange]);
+  }, [deck, componentId, campaign, showTraumaDialog, storyEncounterCodes, scenarioName, investigator, traumaUpdate, onStoryCountsChange]);
   const [saving, error, saveDeckUpgrade] = useDeckUpgrade(deck, actions, deckUpgradeComplete);
 
   if (!deck || !investigator) {
