@@ -55,11 +55,13 @@ export interface LocalDeckId {
   id: undefined;
   local: true;
   uuid: string;
+  serverId?: number;
 }
 export interface ArkhamDbDeckId {
   id: number;
   local: false;
   uuid: string;
+  serverId?: number;
 }
 export type DeckId = LocalDeckId | ArkhamDbDeckId;
 
@@ -814,7 +816,7 @@ export interface UpdateCampaignTraumaAction {
   type: typeof UPDATE_CAMPAIGN_TRAUMA;
   id: CampaignId;
   investigator: string;
-  trauma: Trauma;
+  trauma: TraumaAndCardData;
   now: Date;
 }
 
@@ -1067,6 +1069,8 @@ export interface GuideCampaignLinkInput extends BasicInput {
   step: string;
   decision: string;
 }
+
+export const SYSTEM_BASED_GUIDE_INPUT_TYPES = new Set(['campaign_link', 'inter_scenario']);
 
 export type GuideInput =
   GuideSuppliesInput |

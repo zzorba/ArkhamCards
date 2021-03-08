@@ -13,7 +13,7 @@ import {
   Fade,
 } from 'rn-placeholder';
 
-import { Campaign, Deck, getDeckId } from '@actions/types';
+import { Campaign, CampaignId, Deck, getDeckId } from '@actions/types';
 import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { getProblemMessage } from '@components/core/DeckProblemRow';
@@ -34,7 +34,7 @@ interface Props {
   lang: string;
   deck: Deck;
   previousDeck?: Deck;
-  deckToCampaign?: { [deck_id: string]: Campaign };
+  deckToCampaignId?: { [deck_id: string]: CampaignId };
   investigator?: Card;
   onPress?: (deck: Deck, investigator?: Card) => void;
   details?: ReactNode;
@@ -157,7 +157,7 @@ export default function NewDeckListRow({
   lang,
   deck,
   previousDeck,
-  deckToCampaign,
+  deckToCampaignId,
   investigator,
   onPress,
   details,
@@ -172,7 +172,7 @@ export default function NewDeckListRow({
   }, [deck, investigator, onPress]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
   const yithian = useMemo(() => !!deck.slots && (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.slots]);
-  const campaign = deck && deckToCampaign && deckToCampaign[getDeckId(deck).uuid];
+  const campaignId = deck && deckToCampaignId && deckToCampaignId[getDeckId(deck).uuid];
   const eliminated = useMemo(() => {
     if (killedOrInsane) {
       return true;

@@ -4,7 +4,7 @@ import { map } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { getCampaignId, STANDALONE } from '@actions/types';
+import { STANDALONE } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import CampaignItem from './CampaignItem';
 import { CampaignDetailProps } from '@components/campaign/CampaignDetailView';
@@ -38,7 +38,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     const options: Options = {
       topBar: {
         title: {
-          text: campaign.name(),
+          text: campaign.name,
         },
         backButton: {
           title: t`Back`,
@@ -53,28 +53,28 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
         ],
       },
     };
-    if (campaign.cycleCode() === STANDALONE) {
-      const standaloneId = campaign.standaloneId();
+    if (campaign.cycleCode === STANDALONE) {
+      const standaloneId = campaign.standaloneId;
       if (standaloneId) {
         Navigation.push<StandaloneGuideProps>(componentId, {
           component: {
             name: 'Guide.Standalone',
             passProps: {
-              campaignId: campaign.id(),
+              campaignId: campaign.id,
               standaloneId,
             },
             options,
           },
         });
       }
-    } else if (campaign.guided()) {
-      const link = campaign.linked();
+    } else if (campaign.guided) {
+      const link = campaign.linked;
       if (link) {
         Navigation.push<LinkedCampaignGuideProps>(componentId, {
           component: {
             name: 'Guide.LinkedCampaign',
             passProps: {
-              campaignId: campaign.id(),
+              campaignId: campaign.id,
               campaignIdA: link.campaignIdA,
               campaignIdB: link.campaignIdB,
             },
@@ -86,7 +86,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
           component: {
             name: 'Guide.Campaign',
             passProps: {
-              campaignId: campaign.id(),
+              campaignId: campaign.id,
             },
             options,
           },
@@ -97,7 +97,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
         component: {
           name: 'Campaign',
           passProps: {
-            campaignId: campaign.id(),
+            campaignId: campaign.id,
           },
           options,
         },
@@ -106,11 +106,11 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
   }, [componentId]);
 
   const renderItem = useCallback(({ item: { campaign } }: ListRenderItemInfo<CampaignItemType>) => {
-    if (campaign.cycleCode() === STANDALONE) {
-      const standaloneId = campaign.standaloneId();
+    if (campaign.cycleCode === STANDALONE) {
+      const standaloneId = campaign.standaloneId;
       return standaloneId ? (
         <StandaloneItem
-          key={campaign.uuid()}
+          key={campaign.uuid}
           campaign={campaign}
           onPress={onPress}
           scenarioName={standalonesById[standaloneId.campaignId][standaloneId.scenarioId]}
@@ -119,7 +119,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     }
     return (
       <CampaignItem
-        key={campaign.uuid()}
+        key={campaign.uuid}
         campaign={campaign}
         onPress={onPress}
       />
@@ -155,7 +155,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       onScroll={onScroll}
       data={map(campaigns, campaign => {
         return {
-          key: campaign.uuid(),
+          key: campaign.uuid,
           campaign,
         };
       })}

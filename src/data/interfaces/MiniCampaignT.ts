@@ -6,16 +6,17 @@ export interface CampaignLink {
 }
 
 export default interface MiniCampaignT {
-  id: () => CampaignId;
-  uuid: () => string;
-  guided: () => boolean;
-  name: () => string;
-  cycleCode: () => CampaignCycleCode;
-  difficulty: () => CampaignDifficulty | undefined;
-  standaloneId: () => StandaloneId | undefined;
-  latestScenarioResult: () => ScenarioResult | undefined;
-  investigators: () => string[];
+  id: CampaignId;
+  uuid: string;
+  guided: boolean;
+  name: string;
+  cycleCode: CampaignCycleCode;
+  difficulty: CampaignDifficulty | undefined;
+  standaloneId: StandaloneId | undefined;
+  latestScenarioResult: ScenarioResult | undefined;
+  investigators: string[];
+  updatedAt: Date;
+  linked: undefined | CampaignLink;
+
   investigatorTrauma: (code: string) => TraumaAndCardData;
-  updatedAt: () => Date;
-  linked: () => undefined | CampaignLink;
 }

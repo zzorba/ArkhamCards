@@ -21,7 +21,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, DeckId, getCampaignId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, DeckId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/types/Card';
 import { EditDeckProps } from '../DeckEditView';
@@ -31,7 +31,7 @@ import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
 import {
-  makeCampaignForDeckSelector,
+  makeCampaignIdForDeckSelector,
   getPacksInCollection,
   AppState,
 } from '@reducers';
@@ -52,8 +52,9 @@ import DeckButton from '../controls/DeckButton';
 import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import DeckProblemBanner from '../DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useCampaign } from '@data/remote/hooks';
+import { useCampaign } from '@data/hooks';
 import { useCreateDeckActions, useUpdateDeckActions } from '@data/remote/decks';
+import { useUpdateCampaignActions } from '@data/remote/campaigns';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -102,13 +103,15 @@ function DeckDetailView({
     tabooSetId,
   } = parsedDeckObj;
 
-  const campaignForDeckSelector = useMemo(makeCampaignForDeckSelector, []);
+  const campaignForDeckSelector = useMemo(makeCampaignIdForDeckSelector, []);
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
-  const mainCampaign = useCampaign(campaignId);
-  const campaign = useSelector((state: AppState) => {
-    return campaignId ? mainCampaign : campaignForDeckSelector(state, deckId);
+  const theCampaignId = useSelector((state: AppState) => {
+    return campaignId ? campaignId : campaignForDeckSelector(state, deckId);
   });
-  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj, campaign);
+
+  const campaign = useCampaign(theCampaignId);
+  const updateCampaignActions = useUpdateCampaignActions();
+  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj, updateCampaignActions, campaign);
 
   const [copying, toggleCopying] = useFlag(false);
   const {
@@ -399,7 +402,7 @@ function DeckDetailView({
       component: {
         name: 'Deck.EditSpecial',
         passProps: {
-          campaignId: campaign ? getCampaignId(campaign) : undefined,
+          campaignId: campaign?.id,
           id,
           assignedWeaknesses: addedBasicWeaknesses,
         },
@@ -480,7 +483,7 @@ function DeckDetailView({
         passProps: {
           id: deckId,
           showNewDeck: true,
-          campaignId: campaign ? getCampaignId(campaign) : undefined,
+          campaignId: campaign?.id,
         },
         options: {
           statusBar: {

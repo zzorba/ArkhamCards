@@ -99,7 +99,7 @@ EncounterCardErrataView.options = () => {
   };
 };
 
-export default withCampaignGuideContext(EncounterCardErrataView);
+export default withCampaignGuideContext(EncounterCardErrataView, { rootView: false });
 
 const styles = StyleSheet.create({
   container: {

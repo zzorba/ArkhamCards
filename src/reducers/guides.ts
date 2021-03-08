@@ -14,6 +14,7 @@ import {
   guideInputToId,
   REDUX_MIGRATION,
   CampaignId,
+  SYSTEM_BASED_GUIDE_INPUT_TYPES,
 } from '@actions/types';
 
 export interface GuidesState {
@@ -44,8 +45,6 @@ function updateCampaignHelper(
     },
   };
 }
-
-const SYSTEM_BASED_INPUTS = new Set(['campaign_link', 'inter_scenario']);
 
 export default function(
   state: GuidesState = DEFAULT_GUIDES_STATE,
@@ -158,7 +157,7 @@ export default function(
       action.campaignId,
       action.now,
       campaign => {
-        const existingInputs = SYSTEM_BASED_INPUTS.has(action.input.type) ?
+        const existingInputs = SYSTEM_BASED_GUIDE_INPUT_TYPES.has(action.input.type) ?
           filter(campaign.inputs,
             input => !(
               input.type === action.input.type &&
@@ -189,7 +188,7 @@ export default function(
           campaign.inputs,
           input => (
             input.scenario === action.scenarioId &&
-            !SYSTEM_BASED_INPUTS.has(input.type)
+            !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type)
           )
         );
         if (latestInputIndex === -1) {
@@ -198,7 +197,7 @@ export default function(
         const inputs: GuideInput[] = [];
         const removedInputs: GuideInput[] = [];
         forEach(campaign.inputs, (input: GuideInput, idx: number) => {
-          if (SYSTEM_BASED_INPUTS.has(input.type)) {
+          if (SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type)) {
             if (idx < latestInputIndex || input.scenario !== action.scenarioId) {
               inputs.push(input);
             } else {

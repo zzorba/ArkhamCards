@@ -221,6 +221,58 @@ mutation updateInvestigatorTrauma(
   }
 }
 
+
+mutation updateInvestigatorData(
+  $campaign_id: Int!,
+  $investigator: String!,
+  $physical: Int,
+  $mental: Int,
+  $killed: Boolean,
+  $insane: Boolean,
+  $added_cards: jsonb,
+  $available_xp: Int,
+  $story_assets: jsonb,
+  $ignore_story_assets: jsonb,
+  $removed_cards: jsonb
+) {
+  insert_investigator_data_one(
+    object: {
+      campaign_id: $campaign_id
+      investigator: $investigator
+      physical: $physical
+      mental: $mental
+      killed: $killed
+      insane: $insane
+      addedCards: $added_cards
+      storyAssets: $story_assets
+      ignoreStoryAssets: $ignore_story_assets
+      removedCards: $removed_cards
+      availableXp: $available_xp
+    }
+    on_conflict: {
+      constraint: investigator_data_campaign_id_investigator_key
+      update_columns: [
+        physical, mental, killed, insane,
+        addedCards, removedCards, storyAssets, ignoreStoryAssets,
+	      availableXp
+      ]
+    }
+  ) {
+    id
+    campaign_id
+    investigator
+    physical
+    mental
+    killed
+    insane
+    addedCards
+    removedCards
+    storyAssets
+    ignoreStoryAssets
+    availableXp
+  }
+}
+
 mutation updateSpentXp(
   $campaign_id: Int!,
   $investigator: String!,
@@ -281,6 +333,103 @@ mutation updateWeaknessSet(
     id
     uuid
     weaknessSet
+  }
+}
+
+mutation updateCampaignDifficulty(
+  $campaign_id: Int!,
+  $difficulty: String
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      difficulty: $difficulty,
+    },
+  ) {
+    id
+    uuid
+    difficulty
+  }
+}
+
+mutation updateCampaignScenarioResults(
+  $campaign_id: Int!,
+  $scenarioResults: jsonb!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      scenarioResults: $scenarioResults,
+    },
+  ) {
+    id
+    uuid
+    scenarioResults
+  }
+}
+
+mutation updateCampaignGuideVersion(
+  $campaign_id: Int!,
+  $guideVersion: Int!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      guide_version: $guideVersion,
+    },
+  ) {
+    id
+    uuid
+    guide_version
+  }
+}
+
+mutation updateCampaignNotes(
+  $campaign_id: Int!,
+  $campaign_notes: jsonb!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      campaignNotes: $campaign_notes,
+    },
+  ) {
+    id
+    uuid
+    campaignNotes
+  }
+}
+
+mutation updateCampaignShowInterludes(
+  $campaign_id: Int!,
+  $show_interludes: Boolean!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      showInterludes: $show_interludes,
+    },
+  ) {
+    id
+    uuid
+    showInterludes
+  }
+}
+
+
+mutation updateChaosBag(
+  $campaign_id: Int!,
+  $chaos_bag: jsonb!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      chaosBag: $chaos_bag,
+    },
+  ) {
+    id
+    uuid
+    chaosBag
   }
 }
 

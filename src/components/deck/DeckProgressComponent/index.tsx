@@ -8,12 +8,13 @@ import { t } from 'ttag';
 
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import CampaignSummaryComponent from '@components/campaign/CampaignSummaryComponent';
-import { Campaign, CUSTOM, Deck, ParsedDeck } from '@actions/types';
+import { CUSTOM, Deck, ParsedDeck } from '@actions/types';
 import { CardsMap } from '@data/types/Card';
 import space, { l, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckSectionBlock from '../section/DeckSectionBlock';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface Props {
   componentId: string;
@@ -22,7 +23,7 @@ interface Props {
   parsedDeck: ParsedDeck;
   isPrivate: boolean;
   editable: boolean;
-  campaign?: Campaign;
+  campaign?: SingleCampaignT;
   hideCampaign?: boolean;
   title?: string;
   onTitlePress?: (deck: ParsedDeck) => void;

@@ -1,3 +1,21 @@
+fragment BasicDeck on deck {
+  id
+  arkhamdb_id
+  local_uuid
+  investigator
+  content
+}
+
+fragment LatestDeck on deck {
+  ...BasicDeck
+  campaign {
+    id
+    uuid
+  }
+  previous_deck {
+    ...BasicDeck
+  }
+}
 
 fragment MiniInvestigatorData on investigator_data {
   id
@@ -50,21 +68,10 @@ fragment MiniCampaign on campaign {
   updated_at
 }
 
-fragment FullCampaign on campaign {
+fragment FullCampaignGuide on campaign {
   id
-  updated_at
   uuid
-  name
-  cycleCode
-  standaloneId
-  difficulty
-  campaignNotes
-  chaosBag
-  showInterludes
-  scenarioResults
-  weaknessSet
-  guided
-  guide_version
+  updated_at
   guide_inputs {
     id
     step
@@ -80,6 +87,23 @@ fragment FullCampaign on campaign {
     value
     updated_at
   }
+}
+
+fragment FullCampaign on campaign {
+  id
+  updated_at
+  uuid
+  name
+  cycleCode
+  standaloneId
+  difficulty
+  campaignNotes
+  chaosBag
+  showInterludes
+  scenarioResults
+  weaknessSet
+  guided
+  guide_version
   investigators {
     id
     investigator

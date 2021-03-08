@@ -192,18 +192,7 @@ query getMyDecks(
     id
     decks {
       deck {
-        id
-        arkhamdb_id
-        local_uuid
-        investigator
-        content
-        previous_deck {
-          id
-          arkhamdb_id
-          local_uuid
-          investigator
-          content
-        }
+        ...LatestDeck
       }
     }
   }

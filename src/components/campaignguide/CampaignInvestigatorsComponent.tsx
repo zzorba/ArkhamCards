@@ -1,17 +1,15 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
-import { InteractionManager, Text, StyleSheet, View } from 'react-native';
-import { filter, find, findLast, flatMap, forEach, map, mapValues, partition } from 'lodash';
-import { isAfter } from 'date-fns';
+import { Text, StyleSheet, View } from 'react-native';
+import { filter, find, flatMap, map, partition } from 'lodash';
 import { useAppState } from '@react-native-community/hooks';
 import { t } from 'ttag';
 
-import { InvestigatorData, Trauma } from '@actions/types';
+import { Trauma } from '@actions/types';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import Card from '@data/types/Card';
 import space, { s, l } from '@styles/space';
-import { useCounters, useEffectUpdate } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -19,10 +17,12 @@ import CampaignLogSectionComponent from './CampaignLogComponent/CampaignLogSecti
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
-import { updateCampaign } from '@components/campaign/actions';
+import { updateCampaignXp } from '@components/campaign/actions';
+import { UpdateCampaignActions } from '@data/remote/campaigns';
 
 interface Props {
   componentId: string;
+  actions: UpdateCampaignActions;
   processedCampaign: ProcessedCampaign;
   showAddInvestigator: () => void;
   showCountDialog: ShowCountDialog;
@@ -30,58 +30,16 @@ interface Props {
   showAlert: ShowAlert;
 }
 
-function getDate(date: string | Date) {
-  if (typeof date === 'string') {
-    return new Date(Date.parse(date));
-  }
-  return date;
-}
-
 export default function CampaignInvestigatorsComponent(props: Props) {
-  const { componentId, processedCampaign, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog } = props;
-  const { campaignGuideVersion, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, adjustedInvestigatorData, playerCards, lastUpdated } = useContext(CampaignGuideContext);
+  const { componentId, processedCampaign, actions, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog } = props;
+  const { syncCampaignChanges, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, playerCards, lastUpdated, spentXp } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
-  const investigatorSpentXp = useMemo(() => mapValues(adjustedInvestigatorData, data => (data && data.spentXp) || 0), [adjustedInvestigatorData]);
-  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
-
-  const [spentXp,,,,syncSpentXp] = useCounters(investigatorSpentXp);
-  useEffectUpdate(() => {
-    syncSpentXp(investigatorSpentXp);
-  }, [syncSpentXp, adjustedInvestigatorData]);
 
   const appState = useAppState();
   const syncCampaignData = useCallback(() => {
-    const {
-      campaignLog,
-      scenarios,
-    } = processedCampaign;
-    const guideLastUpdated = getDate(campaignState.lastUpdated());
-    const newLastUpdated = isAfter(getDate(lastUpdated), guideLastUpdated) ? lastUpdated : guideLastUpdated;
-    dispatch(updateCampaign(
-      user,
-      campaignId,
-      {
-        guideVersion: campaignGuideVersion === -1 ? campaignGuide.campaignVersion() : campaignGuideVersion,
-        difficulty: campaignLog.campaignData.difficulty,
-        investigatorData: campaignLog.campaignData.investigatorData,
-        chaosBag: campaignLog.chaosBag,
-        scenarioResults: flatMap(scenarios, scenario => {
-          if (scenario.type !== 'completed') {
-            return [];
-          }
-          const scenarioType = scenario.scenarioGuide.scenarioType();
-          return {
-            scenario: scenario.scenarioGuide.scenarioName(),
-            scenarioCode: scenario.scenarioGuide.scenarioId(),
-            resolution: campaignLog.scenarioResolution(scenario.scenarioGuide.scenarioId()) || '',
-            interlude: scenarioType === 'interlude' || scenarioType === 'epilogue',
-          };
-        }),
-      },
-      newLastUpdated
-    ));
-  }, [lastUpdated, campaignGuide, campaignGuideVersion, campaignId, campaignState, processedCampaign, user, dispatch]);
+    syncCampaignChanges(processedCampaign);
+  }, [syncCampaignChanges, processedCampaign]);
   const syncCampaignDataRef = useRef<() => void>(syncCampaignData);
 
   useEffect(() => {
@@ -145,31 +103,22 @@ export default function CampaignInvestigatorsComponent(props: Props) {
   ), [processedCampaign.campaignLog, campaignInvestigators]);
 
   const showXpDialogPressed = useCallback((investigator: Card) => {
-    const adjustedInvestigatorData: InvestigatorData = {};
-    forEach(spentXp, (xp, code) => {
-      adjustedInvestigatorData[code] = {
-        spentXp: xp,
-      };
-    });
-
     showCountDialog({
       title: investigator.name,
       label: t`Spent experience`,
       value: spentXp[investigator.code] || 0,
       max: processedCampaign.campaignLog.totalXp(investigator.code),
       update: (count: number) => {
-        adjustedInvestigatorData[investigator.code] = {
-          spentXp: count,
-        };
-        dispatch(updateCampaign(
-          user,
+        dispatch(updateCampaignXp(
+          actions,
           campaignId,
-          { adjustedInvestigatorData },
-          new Date()
+          investigator.code,
+          count,
+          'spentXp'
         ));
       },
     });
-  }, [showCountDialog, dispatch, user, campaignId, spentXp, processedCampaign.campaignLog]);
+  }, [showCountDialog, dispatch, actions, campaignId, spentXp, processedCampaign.campaignLog]);
 
   const disabledShowTraumaPressed = useCallback(() => {
     const campaignSetupCompleted = !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed');

@@ -1,4 +1,4 @@
-import { forEach, map, update } from 'lodash';
+import { forEach, map } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -48,17 +48,18 @@ import {
   CampaignSyncRequiredAction,
   getCampaignId,
   UPDATE_CAMPAIGN_XP,
-  UploadedCampaignId,
   Trauma,
   UpdateCampaignTraumaAction,
   UPDATE_CAMPAIGN_TRAUMA,
+  TraumaAndCardData,
+  LocalCampaignId,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
 import { CreateDeckActions } from '@data/remote/decks';
-import { UpdateCampaignActions } from '@data/remote/campaigns';
+import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
 
 function getBaseDeckIds(
   state: AppState,
@@ -231,7 +232,6 @@ export function newCampaign(
 }
 
 export function updateCampaignXp(
-  user: FirebaseAuthTypes.User | undefined,
   actions: UpdateCampaignActions,
   id: CampaignId,
   investigator: string,
@@ -239,7 +239,7 @@ export function updateCampaignXp(
   xpType: 'spentXp' | 'availableXp'
 ): ThunkAction<void, AppState, unknown, UpdateCampaignXpAction> {
   return async(dispatch) => {
-    if (user && id.serverId) {
+    if (id.serverId !== undefined) {
       await actions.setXp(id, investigator, xpType, value);
     } else {
       dispatch({
@@ -256,7 +256,6 @@ export function updateCampaignXp(
 }
 
 export function updateCampaignInvestigatorTrauma(
-  user: FirebaseAuthTypes.User | undefined,
   actions: UpdateCampaignActions,
   id: CampaignId,
   investigator: string,
@@ -264,7 +263,7 @@ export function updateCampaignInvestigatorTrauma(
   now?: Date
 ): ThunkAction<void, AppState, unknown, UpdateCampaignTraumaAction> {
   return async(dispatch) => {
-    if (id.serverId && user) {
+    if (id.serverId !== undefined) {
       await actions.setInvestigatorTrauma(id, investigator, trauma);
     } else {
       dispatch({
@@ -278,39 +277,152 @@ export function updateCampaignInvestigatorTrauma(
   };
 }
 
-export function updateCampaignWeaknessSet(
+
+export function updateCampaignInvestigatorData(
   user: FirebaseAuthTypes.User | undefined,
   actions: UpdateCampaignActions,
+  id: CampaignId,
+  investigator: string,
+  data: TraumaAndCardData,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignTraumaAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setInvestigatorData(id, investigator, data);
+    } else {
+      dispatch({
+        type: UPDATE_CAMPAIGN_TRAUMA,
+        id,
+        investigator,
+        trauma: data,
+        now: now || new Date(),
+      });
+    }
+  };
+}
+
+export function updateCampaignWeaknessSet(
+  setWeaknessSet: SetCampaignWeaknessSetAction,
   id: CampaignId,
   weaknessSet: WeaknessSet,
   now?: Date
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch) => {
-    if (id.serverId && user) {
-      await actions.setWeaknessSet(id, weaknessSet);
+    if (id.serverId !== undefined) {
+      await setWeaknessSet(id, weaknessSet);
     } else {
-      dispatch(updateCampaign(user, id, { weaknessSet }, now));
+      dispatch(updateCampaign(id, { weaknessSet }, now));
+    }
+  };
+}
+
+export function updateCampaignChaosBag(
+  setChaosBag: SetCampaignChaosBagAction,
+  id: CampaignId,
+  chaosBag: ChaosBag,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await setChaosBag(id, chaosBag);
+    } else {
+      dispatch(updateCampaign(id, { chaosBag }, now));
+    }
+  };
+}
+
+
+export function updateCampaignNotes(
+  setCampaignNotes: SetCampaignNotesAction,
+  id: CampaignId,
+  campaignNotes: CampaignNotes,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await setCampaignNotes(id, campaignNotes);
+    } else {
+      dispatch(updateCampaign(id, { campaignNotes }, now));
+    }
+  };
+}
+
+
+export function updateCampaignShowInterludes(
+  setShowInterludes: SetCampaignShowInterludes,
+  id: CampaignId,
+  showInterludes: boolean,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await setShowInterludes(id, showInterludes);
+    } else {
+      dispatch(updateCampaign(id, { showInterludes }, now));
     }
   };
 }
 
 
 export function updateCampaignName(
-  user: FirebaseAuthTypes.User | undefined,
   actions: UpdateCampaignActions,
   id: CampaignId,
   name: string,
   now?: Date
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch) => {
-    if (id.serverId && user) {
+    if (id.serverId !== undefined) {
       await actions.setCampaigName(id, name);
     } else {
-      dispatch(updateCampaign(user, id, { name }, now));
+      dispatch(updateCampaign(id, { name }, now));
     }
   };
 }
 
+export function updateCampaignDifficulty(
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  difficulty?: CampaignDifficulty,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setDifficulty(id, difficulty);
+    } else {
+      dispatch(updateCampaign(id, { difficulty }, now));
+    }
+  };
+}
+
+export function updateCampaignScenarioResults(
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  scenarioResults: ScenarioResult[],
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setScenarioResults(id, scenarioResults);
+    } else {
+      dispatch(updateCampaign(id, { scenarioResults }, now));
+    }
+  };
+}
+
+export function updateCampaignGuideVersion(
+  actions: UpdateCampaignActions,
+  id: CampaignId,
+  guideVersion: number,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await actions.setGuideVersion(id, guideVersion);
+    } else {
+      dispatch(updateCampaign(id, { guideVersion }, now));
+    }
+  };
+}
 
 /**
  * Pass only the fields that you want to update.
@@ -322,30 +434,18 @@ export function updateCampaignName(
  *   weaknessSet,
  * }
  */
-export function updateCampaign(
-  user: FirebaseAuthTypes.User | undefined,
-  id: CampaignId,
+function updateCampaign(
+  id: LocalCampaignId,
   sparseCampaign: Partial<Campaign>,
   now?: Date
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction | CampaignSyncRequiredAction> {
   return async(dispatch) => {
-    if (user && id.serverId) {
-      /*
-      const campaignRef = fbdb.campaignDetail(id);
-      await Promise.all(
-        map(sparseCampaign, (value, key) => {
-          return campaignRef.child(key).set(value);
-        })
-      );
-      */
-    } else {
-      dispatch({
-        type: UPDATE_CAMPAIGN,
-        id,
-        campaign: sparseCampaign,
-        now: (now || new Date()),
-      });
-    }
+    dispatch({
+      type: UPDATE_CAMPAIGN,
+      id,
+      campaign: sparseCampaign,
+      now: (now || new Date()),
+    });
   };
 }
 

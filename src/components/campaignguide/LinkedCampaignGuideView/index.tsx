@@ -7,22 +7,22 @@ import { t } from 'ttag';
 import { CampaignId } from '@actions/types';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import useTabView from '@components/core/useTabView';
-import { updateCampaign } from '@components/campaign/actions';
-import { useCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
+import { updateCampaignName } from '@components/campaign/actions';
+import { useLiveCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
 import { NavigationProps } from '@components/nav/types';
-import { useCampaign } from '@data/remote/hooks';
+import { useLiveCampaign } from '@data/hooks';
 import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import useCampaignGuideContext from '@components/campaignguide/useCampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
-import useTraumaDialog from '@components/campaign/useTraumaDialog';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaignId } from '@components/campaign/hooks';
 import { useCampaignLinkHelper } from './useCampaignLinkHelper';
 import CampaignDetailTab from '../CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
+import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCreateDeckActions } from '@data/remote/decks';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -43,17 +43,18 @@ export default function LinkedCampaignGuideView(props: Props) {
     ];
   }, [props.campaignIdA, props.campaignIdB, campaignId.serverId]);
   const investigators = useInvestigatorCards();
-  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
+  const createDeckActions = useCreateDeckActions();
+  const updateCampaignActions = useUpdateCampaignActions();
   useStopAudioOnUnmount();
 
-  const campaign = useCampaign(campaignId);
-  const campaignName = (campaign && campaign.name) || '';
-  const campaignDataA = useCampaignGuideReduxData(campaignIdA, investigators);
-  const campaignDataB = useCampaignGuideReduxData(campaignIdB, investigators);
+  const [campaign] = useLiveCampaign(campaignId, investigators);
+  const campaignName = campaign?.name || '';
+  const campaignDataA = useLiveCampaignGuideReduxData(campaignIdA, investigators);
+  const campaignDataB = useLiveCampaignGuideReduxData(campaignIdB, investigators);
 
-  const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(user, campaignId, { name }));
+  const setCampaignName = useCallback((name: string) => {
+    dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -61,12 +62,12 @@ export default function LinkedCampaignGuideView(props: Props) {
         },
       },
     });
-  }, [campaignId, dispatch, user, componentId]);
+  }, [campaignId, dispatch, updateCampaignActions, componentId]);
 
   const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Name`,
     value: campaignName,
-    onValueChange: updateCampaignName,
+    onValueChange: setCampaignName,
   });
 
   useNavigationButtonPressed(({ buttonId }) => {
@@ -75,8 +76,8 @@ export default function LinkedCampaignGuideView(props: Props) {
     }
   }, componentId, [showEditNameDialog]);
 
-  const contextA = useCampaignGuideContext(campaignIdA, campaignDataA);
-  const contextB = useCampaignGuideContext(campaignIdB, campaignDataB);
+  const contextA = useCampaignGuideContext(campaignIdA, createDeckActions, updateCampaignActions, campaignDataA);
+  const contextB = useCampaignGuideContext(campaignIdB, createDeckActions, updateCampaignActions, campaignDataB);
   const processedCampaignA = useMemo(() => contextA?.campaignGuide && contextA?.campaignState && contextA.campaignGuide.processAllScenarios(contextA.campaignState), [contextA?.campaignGuide, contextA?.campaignState]);
   const processedCampaignB = useMemo(() => contextB?.campaignGuide && contextB?.campaignState && contextB.campaignGuide.processAllScenarios(contextB.campaignState), [contextB?.campaignGuide, contextB?.campaignState]);
 
@@ -98,7 +99,7 @@ export default function LinkedCampaignGuideView(props: Props) {
           setCampaignServerId={setCampaignServerId}
           showAlert={showAlert}
           guided
-          linked={campaign?.linkUuid}
+          linked={campaign?.linked}
         />
         <DeleteCampaignButton
           componentId={componentId}
@@ -108,7 +109,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [showAlert, setCampaignServerId, componentId, campaignId, campaignName, campaign?.linkUuid]);
+  }, [showAlert, setCampaignServerId, componentId, campaignId, campaignName, campaign?.linked]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA || !processedCampaignA || !contextA) {
@@ -128,13 +129,14 @@ export default function LinkedCampaignGuideView(props: Props) {
               showCountDialog={showCountDialog}
               displayLinkScenarioCount={displayLinkScenarioCount}
               footerButtons={footerButtons}
+              updateCampaignActions={updateCampaignActions}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
   }, [campaignDataA, processedCampaignA, contextA, componentId, displayLinkScenarioCount, footerButtons,
-    showCampaignScenarioB, showCountDialog, showAlert]);
+    updateCampaignActions, showCampaignScenarioB, showCountDialog, showAlert]);
   const campaignBTab = useMemo(() => {
     if (!campaignDataB || !processedCampaignB || !contextB) {
       return null;
@@ -153,13 +155,14 @@ export default function LinkedCampaignGuideView(props: Props) {
               showCountDialog={showCountDialog}
               displayLinkScenarioCount={displayLinkScenarioCount}
               footerButtons={footerButtons}
+              updateCampaignActions={updateCampaignActions}
             />
           </CampaignGuideContext.Provider>
         </SafeAreaView>
       ),
     };
   }, [campaignDataB, processedCampaignB, contextB, componentId, displayLinkScenarioCount, footerButtons,
-    showCampaignScenarioA, showCountDialog, showAlert]);
+    updateCampaignActions, showCampaignScenarioA, showCountDialog, showAlert]);
   const tabs = useMemo(() => {
     if (!campaignATab || !campaignBTab) {
       return [];

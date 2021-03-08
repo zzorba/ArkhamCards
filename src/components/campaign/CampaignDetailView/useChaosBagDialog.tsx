@@ -16,7 +16,8 @@ import { CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
 import { useDialog } from '@components/deck/dialogs';
 import StyleContext from '@styles/StyleContext';
-import { updateCampaign } from '../actions';
+import { updateCampaignChaosBag } from '../actions';
+import { SetCampaignChaosBagAction } from '@data/remote/campaigns';
 
 interface Props {
   componentId: string;
@@ -24,6 +25,7 @@ interface Props {
   campaignId: CampaignId;
   chaosBag: ChaosBag;
   guided?: boolean;
+  setChaosBag: SetCampaignChaosBagAction;
 }
 
 export function useSimpleChaosBagDialog(chaosBag: ChaosBag): [React.ReactNode, () => void] {
@@ -54,6 +56,7 @@ export default function useChaosBagDialog({
   campaignId,
   chaosBag,
   guided,
+  setChaosBag,
 }: Props): [React.ReactNode, () => void] {
   const { width } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
@@ -76,8 +79,8 @@ export default function useChaosBagDialog({
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
-    dispatch(updateCampaign(user, campaignId, { chaosBag }));
-  }, [dispatch, campaignId, user]);
+    dispatch(updateCampaignChaosBag(setChaosBag, campaignId, chaosBag));
+  }, [dispatch, setChaosBag, campaignId]);
 
   const editChaosBagDialog = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);

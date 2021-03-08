@@ -38,11 +38,13 @@ import {
   CampaignId,
   getCampaignLastUpdated,
   getLastUpdated,
+  getCampaignId,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag } from '@app_constants';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { MiniCampaignRedux, MiniLinkedCampaignRedux } from '@data/local/types';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -318,23 +320,23 @@ export const makeLatestDeckSelector = (): (state: AppState, deckId?: DeckId) => 
     }
   );
 
-export const getDeckToCampaignMap = createSelector(
+export const getDeckToCampaignIdMap = createSelector(
   allCampaignsSelector,
   allDecksSelector,
   (
     allCampaigns: { [id: string]: Campaign },
     allDecks: DecksMap
-  ): { [uuid: string]: Campaign } => {
+  ): { [uuid: string]: CampaignId } => {
     const decks = allDecks || {};
     const campaigns = allCampaigns || {};
-    const result: { [uuid: string]: Campaign } = {};
+    const result: { [uuid: string]: CampaignId } = {};
     forEach(
       values(campaigns),
       campaign => {
         forEach(campaign.deckIds || [], deckId => {
           let deck = getDeck(decks, deckId);
           while (deck) {
-            result[getDeckId(deck).uuid] = campaign;
+            result[getDeckId(deck).uuid] = getCampaignId(campaign);
             if (deck.nextDeckId) {
               deck = getDeck(decks, deck.nextDeckId);
             } else {
@@ -421,11 +423,11 @@ export const makeLatestDecksSelector = (): (state: AppState, campaign?: Campaign
     (decks: DecksMap, latestDeckIds: DeckId[]) => flatMap(latestDeckIds, deckId => getDeck(decks, deckId) || [])
   );
 
-export const makeOtherCampiagnDeckIdsSelector = (): (state: AppState, campaign?: Campaign) => DeckId[] =>
+export const makeOtherCampiagnDeckIdsSelector = (): (state: AppState, campaign?: SingleCampaignT) => DeckId[] =>
   createSelector(
     (state: AppState) => state.decks.all,
     (state: AppState) => state.campaigns_2.all,
-    (state: AppState, campaign?: Campaign) => campaign,
+    (state: AppState, campaign?: SingleCampaignT) => campaign,
     (decks, campaigns, campaign) => {
       if (!campaign) {
         return EMPTY_DECK_ID_LIST;
@@ -575,13 +577,13 @@ export const makeTabooSetSelector = (): (state: AppState, tabooSetOverride?: num
     }
   );
 
-export const makeCampaignForDeckSelector = () =>
+export const makeCampaignIdForDeckSelector = () =>
   createSelector(
-    (state: AppState) => getDeckToCampaignMap(state),
+    (state: AppState) => getDeckToCampaignIdMap(state),
     (state: AppState, deckId: DeckId) => deckId,
-    (deckToCampaign, deckId): SingleCampaign | undefined => {
+    (deckToCampaign, deckId): CampaignId | undefined => {
       if (deckId.uuid in deckToCampaign) {
-        return processCampaign(deckToCampaign[deckId.uuid]);
+        return deckToCampaign[deckId.uuid];
       }
       return undefined;
     }

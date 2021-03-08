@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { c, msgid, t } from 'ttag';
 
 import {
-  Campaign,
   CardId,
   Deck,
   DeckMeta,
@@ -44,6 +43,7 @@ import { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
 import { getPacksInCollection } from '@reducers';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -251,7 +251,7 @@ interface Props {
   investigatorFront?: Card;
   investigatorBack?: Card;
   hideCampaign?: boolean;
-  campaign?: Campaign;
+  campaign?: SingleCampaignT;
   parsedDeck: ParsedDeck;
   hasPendingEdits?: boolean;
   cards: CardsMap;

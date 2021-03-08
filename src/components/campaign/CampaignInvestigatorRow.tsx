@@ -36,7 +36,7 @@ export default function CampaignInvestigatorRow({ campaign }: Props) {
 
   return (
     <View style={styles.row}>
-      { map(campaign.investigators(), code => renderInvestigator(code)) }
+      { map(campaign.investigators, code => renderInvestigator(code)) }
     </View>
   );
 }

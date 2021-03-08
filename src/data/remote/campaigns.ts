@@ -1,8 +1,8 @@
 import { useCallback, useContext, useMemo } from 'react';
-import { filter, omit, update } from 'lodash';
+import { filter, omit } from 'lodash';
 import { FetchResult, MutationFunctionOptions } from '@apollo/client';
 
-import { GuideInput, Trauma, UploadedCampaignId, WeaknessSet } from '@actions/types';
+import { CampaignDifficulty, CampaignNotes, GuideInput, ScenarioResult, Trauma, TraumaAndCardData, UploadedCampaignId, WeaknessSet } from '@actions/types';
 import { useModifyUserCache } from '@data/apollo/cache';
 import {
   UploadNewCampaignMutation, UploadNewCampaignMutationVariables, useUploadNewCampaignMutation,
@@ -19,10 +19,18 @@ import {
   useUpdateAvailableXpMutation,
   useAddCampaignInvestigatorMutation,
   useRemoveCampaignInvestigatorMutation,
+  useUpdateChaosBagMutation,
+  useUpdateCampaignNotesMutation,
+  useUpdateCampaignShowInterludesMutation,
+  useUpdateInvestigatorDataMutation,
+  useUpdateCampaignScenarioResultsMutation,
+  useUpdateCampaignDifficultyMutation,
+  useUpdateCampaignGuideVersionMutation,
 } from '@generated/graphql/apollo-schema';
 import { CreateDeckActions, useCreateDeckActions } from './decks';
 import { useFunction, ErrorResponse } from './api';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { ChaosBag } from '@app_constants';
 
 
 interface CampaignLink {
@@ -165,11 +173,70 @@ export function useDeleteCampaignRequest() {
   }, [apiCall, updateCache, client]);
 }
 
+export type SetCampaignChaosBagAction = (campaignId: UploadedCampaignId, chaosBag: ChaosBag) => Promise<void>;
+export function useSetCampaignChaosBag(): SetCampaignChaosBagAction {
+  const [updateChaosBag] = useUpdateChaosBagMutation();
+  return useCallback(async(campaignId: UploadedCampaignId, chaosBag: ChaosBag) => {
+    await updateChaosBag({
+      variables: {
+        campaign_id: campaignId.serverId,
+        chaos_bag: chaosBag,
+      },
+    });
+  }, [updateChaosBag]);
+}
+
+export type SetCampaignWeaknessSetAction = (campaignId: UploadedCampaignId, weaknessSet: WeaknessSet) => Promise<void>;
+export function useSetCampaignWeaknessSet(): SetCampaignWeaknessSetAction {
+  const [updateWeaknessSet] = useUpdateWeaknessSetMutation();
+  return useCallback(async(campaignId: UploadedCampaignId, weaknessSet: WeaknessSet) => {
+    await updateWeaknessSet({
+      variables: {
+        campaign_id: campaignId.serverId,
+        weakness_set: weaknessSet,
+      },
+    });
+  }, [updateWeaknessSet]);
+}
+
+
+export type SetCampaignNotesAction = (campaignId: UploadedCampaignId, campaignNotes: CampaignNotes) => Promise<void>;
+export function useSetCampaignNotes(): SetCampaignNotesAction {
+  const [updateCampaignNotes] = useUpdateCampaignNotesMutation();
+  return useCallback(async(campaignId: UploadedCampaignId, campaignNotes: CampaignNotes) => {
+    await updateCampaignNotes({
+      variables: {
+        campaign_id: campaignId.serverId,
+        campaign_notes: campaignNotes,
+      },
+    });
+  }, [updateCampaignNotes]);
+}
+
+export type SetCampaignShowInterludes = (campaignId: UploadedCampaignId, showInterludes: boolean) => Promise<void>;
+export function useSetCampaignShowInterludes(): SetCampaignShowInterludes {
+  const [updateShowInterlude] = useUpdateCampaignShowInterludesMutation();
+  return useCallback(async(campaignId: UploadedCampaignId, showInterludes: boolean) => {
+    await updateShowInterlude({
+      variables: {
+        campaign_id: campaignId.serverId,
+        show_interludes: showInterludes,
+      },
+    });
+  }, [updateShowInterlude]);
+}
+
 export interface UpdateCampaignActions {
+  setScenarioResults: (campaignId: UploadedCampaignId, scenarioResults: ScenarioResult[]) => Promise<void>;
+  setGuideVersion: (campaignId: UploadedCampaignId, guideVersion: number) => Promise<void>;
+  setDifficulty: (campaignId: UploadedCampaignId, difficulty?: CampaignDifficulty) => Promise<void>
+  setInvestigatorData: (campaignId: UploadedCampaignId, investigator: string, trauma: TraumaAndCardData) => Promise<void>;
   setInvestigatorTrauma: (campaignId: UploadedCampaignId, investigator: string, trauma: Trauma) => Promise<void>;
   setXp: (campaignId: UploadedCampaignId, investigator: string, type: 'spentXp' | 'availableXp', xp: number) => Promise<void>;
-  setWeaknessSet: (campaignId: UploadedCampaignId, weaknessSet: WeaknessSet) => Promise<void>;
   setCampaigName: (campaignId: UploadedCampaignId, name: string) => Promise<void>;
+  setWeaknessSet: SetCampaignWeaknessSetAction;
+  setChaosBag: SetCampaignChaosBagAction;
+  setCampaignNotes: SetCampaignNotesAction;
   addInvestigator: (campaignId: UploadedCampaignId, investigator: string) => Promise<void>;
   removeInvestigator: (campaignId: UploadedCampaignId, investigator: string) => Promise<void>;
   removeInvestigatorDeck: (campaignId: UploadedCampaignId, investigator: string) => Promise<void>;
@@ -177,14 +244,49 @@ export interface UpdateCampaignActions {
 
 export function useUpdateCampaignActions(): UpdateCampaignActions {
   const [updateInvestigatorTrauma] = useUpdateInvestigatorTraumaMutation();
-  const [updateWeaknessSet] = useUpdateWeaknessSetMutation();
+  const [updateInvestigatorData] = useUpdateInvestigatorDataMutation();
   const [updateCampaignName] = useUpdateCampaignNameMutation();
   const [updateSpentXp] = useUpdateSpentXpMutation();
   const [updateAvailableXp] = useUpdateAvailableXpMutation();
+  const [updateScenarioResults] = useUpdateCampaignScenarioResultsMutation();
+  const [updateDifficulty] = useUpdateCampaignDifficultyMutation();
+  const [updateGuideVersion] = useUpdateCampaignGuideVersionMutation();
+
   const { user } = useContext(ArkhamCardsAuthContext);
   const [insertInvestigator] = useAddCampaignInvestigatorMutation();
   const [deleteInvestigator] = useRemoveCampaignInvestigatorMutation();
   const [deleteInvestigatorDecks] = useDeleteInvestigatorDecksMutation();
+  const setWeaknessSet = useSetCampaignWeaknessSet();
+  const setChaosBag = useSetCampaignChaosBag();
+  const setCampaignNotes = useSetCampaignNotes();
+
+  const setDifficulty = useCallback(async(campaignId: UploadedCampaignId, difficulty?: CampaignDifficulty) => {
+    await updateDifficulty({
+      variables: {
+        campaign_id: campaignId.serverId,
+        difficulty,
+      },
+    });
+  }, [updateDifficulty]);
+
+  const setGuideVersion = useCallback(async(campaignId: UploadedCampaignId, guideVersion: number) => {
+    await updateGuideVersion({
+      variables: {
+        campaign_id: campaignId.serverId,
+        guideVersion,
+      },
+    });
+  }, [updateGuideVersion]);
+
+  const setScenarioResults = useCallback(async(campaignId: UploadedCampaignId, scenarioResults: ScenarioResult[]) => {
+    await updateScenarioResults({
+      variables: {
+        campaign_id: campaignId.serverId,
+        scenarioResults,
+      },
+    });
+  }, [updateScenarioResults]);
+
   const addInvestigator = useCallback(async(campaignId: UploadedCampaignId, investigator: string) => {
     await insertInvestigator({
       variables: {
@@ -226,14 +328,25 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       },
     });
   }, [updateInvestigatorTrauma]);
-  const setWeaknessSet = useCallback(async(campaignId: UploadedCampaignId, weaknessSet: WeaknessSet) => {
-    await updateWeaknessSet({
+
+  const setInvestigatorData = useCallback(async(campaignId: UploadedCampaignId, investigator: string, data: TraumaAndCardData) => {
+    await updateInvestigatorData({
       variables: {
         campaign_id: campaignId.serverId,
-        weakness_set: weaknessSet,
+        investigator,
+        killed: data.killed,
+        insane: data.insane,
+        physical: data.physical,
+        mental: data.mental,
+        added_cards: data.addedCards || [],
+        removed_cards: data.removedCards || [],
+        ignore_story_assets: data.ignoreStoryAssets || [],
+        story_assets: data.storyAssets || [],
+        available_xp: data.availableXp || 0,
       },
     });
-  }, [updateWeaknessSet]);
+  }, [updateInvestigatorData]);
+
   const setCampaigName = useCallback(async(campaignId: UploadedCampaignId, name: string) => {
     await updateCampaignName({
       variables: {
@@ -264,14 +377,22 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   return useMemo(() => {
     return {
       setInvestigatorTrauma,
+      setInvestigatorData,
       setWeaknessSet,
+      setChaosBag,
       setCampaigName,
+      setCampaignNotes,
       setXp,
       addInvestigator,
       removeInvestigatorDeck,
       removeInvestigator,
+      setScenarioResults,
+      setDifficulty,
+      setGuideVersion,
     };
-  }, [setInvestigatorTrauma, setWeaknessSet, setCampaigName, setXp, addInvestigator, removeInvestigatorDeck, removeInvestigator]);
+  }, [
+    setInvestigatorTrauma, setInvestigatorData, addInvestigator, removeInvestigatorDeck, removeInvestigator,
+    setChaosBag, setWeaknessSet, setCampaignNotes, setCampaigName, setXp, setScenarioResults, setDifficulty, setGuideVersion]);
 }
 
 export interface GuideActions {

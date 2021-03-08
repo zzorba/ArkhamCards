@@ -4,19 +4,19 @@ import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
-import { updateCampaign } from '@components/campaign/actions';
+import { updateCampaignName } from '@components/campaign/actions';
 import withCampaignGuideContext, { CampaignGuideInputProps, InjectedCampaignGuideContextProps } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import CampaignGuideContext from './CampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
-import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import CampaignDetailTab from './CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
+import { useUpdateCampaignActions } from '@data/remote/campaigns';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -24,13 +24,13 @@ type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContext
 
 function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
-  const { user } = useContext(ArkhamCardsAuthContext);
   const { componentId, setCampaignServerId } = props;
   const campaignData = useContext(CampaignGuideContext);
   const { campaignId } = campaignData;
   const dispatch = useDispatch();
-  const updateCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaign(user, campaignId, { name }));
+  const updateCampaignActions = useUpdateCampaignActions();
+  const setCampaignName = useCallback((name: string) => {
+    dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -38,11 +38,11 @@ function CampaignGuideView(props: Props) {
         },
       },
     });
-  }, [campaignId, user, dispatch, componentId]);
+  }, [campaignId, dispatch, updateCampaignActions, componentId]);
   const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Name`,
     value: campaignData.campaignName,
-    onValueChange: updateCampaignName,
+    onValueChange: setCampaignName,
   });
 
   useStopAudioOnUnmount();
@@ -81,6 +81,7 @@ function CampaignGuideView(props: Props) {
         showAlert={showAlert}
         showCountDialog={showCountDialog}
         footerButtons={footerButtons}
+        updateCampaignActions={updateCampaignActions}
       />
       { alertDialog }
       { dialog }
@@ -89,7 +90,7 @@ function CampaignGuideView(props: Props) {
   );
 }
 
-export default withCampaignGuideContext(CampaignGuideView);
+export default withCampaignGuideContext(CampaignGuideView, { rootView: true });
 
 const styles = StyleSheet.create({
   wrapper: {

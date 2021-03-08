@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCounter } from '@components/core/hooks';
 import { SaveDeckChanges, saveDeckChanges, uploadLocalDeck } from '@components/deck/actions';
-import { updateCampaign } from '@components/campaign/actions';
+import { updateCampaignWeaknessSet } from '@components/campaign/actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
@@ -22,6 +22,7 @@ import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
 import DeckBubbleHeader from './section/DeckBubbleHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { CreateDeckActions, useUpdateDeckActions } from '@data/remote/decks';
+import { UpdateCampaignActions } from '@data/remote/campaigns';
 
 interface DialogOptions {
   title: string;
@@ -557,6 +558,7 @@ export function useAdjustXpDialog({
 
 export function useSaveDialog(
   parsedDeckResults: ParsedDeckResults,
+  updateCampaignActions: UpdateCampaignActions,
   campaign?: Campaign,
 ): DeckEditState & {
   saving: boolean;
@@ -585,7 +587,7 @@ export function useSaveDialog(
     setSaveError(err.message || 'Unknown Error');
   }, [setSaveError, setSaving]);
 
-  const updateCampaignWeaknessSet = useCallback((newAssignedCards: string[]) => {
+  const updateWeaknessSet = useCallback((newAssignedCards: string[]) => {
     if (campaign) {
       const assignedCards = {
         ...(campaign.weaknessSet && campaign.weaknessSet.assignedCards) || {},
@@ -593,18 +595,16 @@ export function useSaveDialog(
       forEach(newAssignedCards, code => {
         assignedCards[code] = (assignedCards[code] || 0) + 1;
       });
-      dispatch(updateCampaign(
-        user,
+      dispatch(updateCampaignWeaknessSet(
+        updateCampaignActions.setWeaknessSet,
         getCampaignId(campaign),
         {
-          weaknessSet: {
-            packCodes: campaign.weaknessSet?.packCodes || [],
-            assignedCards,
-          },
+          packCodes: campaign.weaknessSet?.packCodes || [],
+          assignedCards,
         },
       ));
     }
-  }, [campaign, dispatch, user]);
+  }, [campaign, dispatch, updateCampaignActions]);
   const updateDeckActions = useUpdateDeckActions();
 
   const actuallySaveEdits = useCallback(async(dismissAfterSave: boolean, isRetry?: boolean) => {
@@ -637,7 +637,7 @@ export function useSaveDialog(
           deckChanges,
         ));
         if (addedBasicWeaknesses.length) {
-          updateCampaignWeaknessSet(addedBasicWeaknesses);
+          updateWeaknessSet(addedBasicWeaknesses);
         }
       }
 
@@ -657,7 +657,7 @@ export function useSaveDialog(
       handleSaveError(e);
     }
   }, [deck, saving, addedBasicWeaknesses, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, user, updateDeckActions,
-    dispatch, deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet]);
+    dispatch, deckDispatch, handleSaveError, setSaving, updateWeaknessSet]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
   const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);

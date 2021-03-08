@@ -42,7 +42,7 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   campaignLog: GuidedCampaignLog;
   children: (xp: number) => JSX.Element | null;
 }) {
-  const { latestDecks, playerCards, adjustedInvestigatorData } = useContext(CampaignGuideContext);
+  const { latestDecks, playerCards, spentXp } = useContext(CampaignGuideContext);
 
   const deck = latestDecks[investigator.code];
   const earnedXp = campaignLog.earnedXp(investigator.code);
@@ -61,8 +61,7 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
       </SpentDeckXpComponent>
     );
   }
-  const adjustedData = adjustedInvestigatorData[investigator.code];
-  return children(earnedXp + campaignLog.totalXp(investigator.code) - (adjustedData ? adjustedData.spentXp || 0 : 0));
+  return children(earnedXp + campaignLog.totalXp(investigator.code) - (spentXp[investigator.code] || 0));
 }
 
 function onChoiceChange() {

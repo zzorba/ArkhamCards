@@ -26,7 +26,7 @@ function CampaignAchievementsView() {
   );
 }
 
-export default withCampaignGuideContext(CampaignAchievementsView);
+export default withCampaignGuideContext(CampaignAchievementsView, { rootView: false });
 
 const styles = StyleSheet.create({
   wrapper: {

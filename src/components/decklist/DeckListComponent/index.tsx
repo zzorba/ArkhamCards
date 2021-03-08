@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import DeckList from './DeckList';
-import { Campaign, Deck, DeckId } from '@actions/types';
+import { Campaign, CampaignId, Deck, DeckId } from '@actions/types';
 import Card from '@data/types/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { fetchPublicDeck } from '@components/deck/actions';
@@ -26,7 +26,7 @@ interface Props {
   deckClicked: (deck: Deck, investigator?: Card) => void;
   onRefresh?: () => void;
   refreshing?: boolean;
-  deckToCampaign?: { [uuid: string]: Campaign };
+  deckToCampaignId?: { [uuid: string]: CampaignId };
   customHeader?: ReactNode;
   customFooter?: ReactNode;
   searchOptions?: SearchOptions;
@@ -38,7 +38,7 @@ export default function DeckListComponent({
   deckClicked,
   onRefresh,
   refreshing,
-  deckToCampaign,
+  deckToCampaignId,
   customHeader,
   customFooter,
   searchOptions,
@@ -115,7 +115,7 @@ export default function DeckListComponent({
           header={header}
           footer={renderFooter}
           searchTerm={searchTerm}
-          deckToCampaign={deckToCampaign}
+          deckToCampaignId={deckToCampaignId}
           onRefresh={onRefresh}
           refreshing={refreshing}
           decks={decks}

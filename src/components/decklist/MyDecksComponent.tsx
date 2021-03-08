@@ -19,7 +19,7 @@ import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import COLORS from '@styles/colors';
 import space, { s, xs } from '@styles/space';
-import { getAllDecks, getMyDecksState, getDeckToCampaignMap, getDeck } from '@reducers';
+import { getAllDecks, getMyDecksState, getDeckToCampaignIdMap, getDeck } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
@@ -58,7 +58,7 @@ function MyDecksComponent({
     login();
   }, [login]);
   const decks = useSelector(getAllDecks);
-  const deckToCampaign = useSelector(getDeckToCampaignMap);
+  const deckToCampaignId = useSelector(getDeckToCampaignIdMap);
   const {
     myDecks,
     myDecksUpdated,
@@ -182,7 +182,7 @@ function MyDecksComponent({
       customFooter={footer}
       deckIds={deckIds}
       deckClicked={deckClicked}
-      deckToCampaign={deckToCampaign}
+      deckToCampaignId={deckToCampaignId}
       onRefresh={signedIn ? onRefresh : undefined}
       refreshing={refreshing}
       isEmpty={myDecks.length === 0}
