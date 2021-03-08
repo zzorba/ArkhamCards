@@ -37652,7 +37652,7 @@
       "id": "across_from_rule",
       "type": "rule_reminder",
       "title": "\"Across from\"",
-      "text": "The location \"across from\" another l ocation is the farthest location, equidistant in both the clockwise and counter-clockwise directions. For hte purpose of this scenario, \"across from your location\" and \"across from you\" have the same meaning."
+      "text": "The location \"across from\" another location is the farthest location, equidistant in both the clockwise and counter-clockwise directions. For the purpose of this scenario, \"across from your location\" and \"across from you\" have the same meaning."
     },
     {
       "id": "earn_xp",
