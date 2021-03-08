@@ -1,16 +1,29 @@
-import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData } from '@actions/types';
-import { uniq, map, concat, last, maxBy } from 'lodash';
+import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, GuideAchievement, CampaignNotes, getDeckId, DeckId } from '@actions/types';
+import { find, findLast, uniq, map, concat, last, maxBy, sumBy } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
-import { InvestigatorOddsProps } from '@components/campaign/OddsCalculatorComponent/InvestigatorOddsComponent';
+import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
+import { ChaosBag } from '@app_constants';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 const EMPTY_TRAUMA: Trauma = {};
 
 export class MiniCampaignRedux implements MiniCampaignT {
   protected campaign: Campaign;
   protected campaignDecks: Deck[];
-  protected campaignUpdatedAt: Date;
+
+  public id: CampaignId;
+  public uuid: string;
+  public guided: boolean;
+  public name: string;
+  public cycleCode: CampaignCycleCode;
+  public difficulty: CampaignDifficulty | undefined;
+  public standaloneId: StandaloneId | undefined;
+  public latestScenarioResult: ScenarioResult | undefined;
+  public investigators: string[];
+  public updatedAt: Date;
+  public linked: undefined | CampaignLink = undefined;
 
   constructor(
     campaign: Campaign,
@@ -19,60 +32,27 @@ export class MiniCampaignRedux implements MiniCampaignT {
   ) {
     this.campaign = campaign;
     this.campaignDecks = campaignDecks;
-    this.campaignUpdatedAt = updatedAt;
-  }
 
-  id(): CampaignId {
-    return getCampaignId(this.campaign);
-  }
-
-  uuid(): string {
-    return this.campaign.uuid;
-  }
-
-  guided(): boolean {
-    return !!this.campaign.guided;
-  }
-
-  name(): string {
-    return this.campaign.name;
-  }
-
-  difficulty(): CampaignDifficulty | undefined {
-    return this.campaign.difficulty;
-  }
-
-  latestScenarioResult(): ScenarioResult | undefined {
-    return last(this.campaign.scenarioResults || []) || undefined;
-  }
-
-  cycleCode(): CampaignCycleCode {
-    return this.campaign.cycleCode;
-  }
-
-  standaloneId(): StandaloneId | undefined {
-    return this.campaign.standaloneId;
-  }
-
-  investigators(): string[] {
-    return uniq(
+    this.updatedAt = updatedAt;
+    this.investigators = uniq(
       concat(
         map(this.campaignDecks, d => d.investigator_code),
         this.campaign.nonDeckInvestigators || [],
       )
     );
+
+    this.id = getCampaignId(campaign);
+    this.uuid = campaign.uuid;
+    this.guided = !!campaign.guided;
+    this.name = campaign.name;
+    this.difficulty = campaign.difficulty;
+    this.latestScenarioResult = last(campaign.scenarioResults || []) || undefined;
+    this.cycleCode = campaign.cycleCode;
+    this.standaloneId = this.campaign.standaloneId;
   }
 
   investigatorTrauma(code: string): TraumaAndCardData {
     return this.campaign.investigatorData?.[code] || EMPTY_TRAUMA;
-  }
-
-  updatedAt(): Date {
-    return this.campaignUpdatedAt;
-  }
-
-  linked(): undefined | CampaignLink {
-    return undefined;
   }
 }
 
@@ -103,25 +83,8 @@ export class MiniLinkedCampaignRedux extends MiniCampaignRedux {
     this.decksB = decksB;
     this.updatedAtA = updatedAtA;
     this.updatedAtB = updatedAtB;
-  }
 
-  difficulty(): CampaignDifficulty | undefined {
-    // tslint:disable-next-line: strict-comparisons
-    if (this.campaignA.difficulty === this.campaignB.difficulty) {
-      return this.campaignA.difficulty;
-    }
-    return undefined;
-  }
-
-  latestScenarioResult(): ScenarioResult | undefined {
-    if (this.updatedAtA.getTime() > this.updatedAtB.getTime()) {
-      return last(this.campaignA.scenarioResults || []) || undefined;
-    }
-    return last(this.campaignB.scenarioResults || []) || undefined;
-  }
-
-  investigators(): string[] {
-    return uniq(
+    this.investigators = uniq(
       concat(
         map(this.decksA, d => d.investigator_code),
         this.campaignA.nonDeckInvestigators || [],
@@ -129,24 +92,23 @@ export class MiniLinkedCampaignRedux extends MiniCampaignRedux {
         this.campaignB.nonDeckInvestigators || [],
       )
     );
+    // tslint:disable-next-line: strict-comparisons
+    this.difficulty = (campaignA.difficulty === campaignB.difficulty) ? campaignA.difficulty : undefined;
+    this.latestScenarioResult = (updatedAtA.getTime() > updatedAtB.getTime()) ?
+      (last(campaignA.scenarioResults || []) || undefined) :
+      (last(campaignB.scenarioResults || []) || undefined);
+    this.updatedAt = maxBy(
+      [this.updatedAt, this.updatedAtA, this.updatedAtB],
+      d => d.getTime()
+    ) as Date;
+    this.linked = {
+      campaignIdA: getCampaignId(this.campaignA),
+      campaignIdB: getCampaignId(this.campaignB),
+    };
   }
 
   investigatorTrauma(code: string): TraumaAndCardData {
     return this.campaignA.investigatorData?.[code] || this.campaignB.investigatorData?.[code] || EMPTY_TRAUMA;
-  }
-
-  updatedAt(): Date {
-    return maxBy(
-      [super.updatedAt(), this.updatedAtA, this.updatedAtB],
-      d => d.getTime()
-    ) as Date;
-  }
-
-  linked() {
-    return {
-      campaignIdA: getCampaignId(this.campaignA),
-      campaignIdB: getCampaignId(this.campaignB),
-    };
   }
 }
 
@@ -161,53 +123,101 @@ const EMPTY_SCENARIO_RESULTS: ScenarioResult[] = [];
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 
 export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCampaignT {
+  showInterludes: boolean;
+  investigatorData: InvestigatorData;
+  chaosBag: ChaosBag;
+  weaknessSet: WeaknessSet;
+  campaignNotes: CampaignNotes;
+  scenarioResults: ScenarioResult[];
+  linkedCampaignId: CampaignId | undefined;
+  guideVersion: number;
+
   constructor(
     campaign: Campaign,
     latestCampaignDecks: Deck[],
     updatedAt: Date
   ) {
     super(campaign, latestCampaignDecks, updatedAt);
-  }
 
-  showInterludes() {
-    return !!this.campaign.showInterludes;
+    this.showInterludes = !!campaign.showInterludes;
+    this.investigatorData = campaign.investigatorData || EMPTY_INVESTIGATOR_DATA;
+    this.chaosBag = campaign.chaosBag || EMPTY_CHAOS_BAG;
+    this.weaknessSet = campaign.weaknessSet || EMPTY_WEAKNESS_SET;
+    this.campaignNotes = campaign.campaignNotes || EMPTY_CAMPAIGN_NOTES;
+    this.scenarioResults = campaign.scenarioResults || EMPTY_SCENARIO_RESULTS;
+    this.linkedCampaignId = campaign.linkedCampaignUuid ? {
+      campaignId: campaign.linkedCampaignUuid,
+      serverId: campaign.serverId,
+    } : undefined;
+    this.guideVersion = campaign.guideVersion !== undefined ? campaign.guideVersion : -1;
   }
   latestDecks(): Deck[] {
     return this.campaignDecks;
   }
-  guideVersion() {
-    return this.campaign.guided ? this.campaign.guideVersion : undefined;
-  }
 
   investigatorSpentXp(code: string) {
-    return this.campaign.adjustedInvestigatorData?.[code]?.spentXp || 0;
-  }
-
-  investigatorData() {
-    return this.campaign.investigatorData || EMPTY_INVESTIGATOR_DATA;
+    return (
+      this.campaign.guided ?
+      this.campaign.adjustedInvestigatorData?.[code]?.spentXp :
+      this.campaign.investigatorData?.[code]?.spentXp
+    ) || 0;
   }
 
   getInvestigatorData(investigator: string) {
     return (this.campaign.investigatorData || {})[investigator] || EMPTY_TRAUMA;
   }
+}
 
-  chaosBag() {
-    return this.campaign.chaosBag || EMPTY_CHAOS_BAG;
+export class CampaignGuideStateRedux implements CampaignGuideStateT {
+  private guide: CampaignGuideState;
+  private updatedAt: Date;
+
+  constructor(
+    guide: CampaignGuideState,
+    updatedAt: Date
+  ) {
+    this.guide = guide;
+    this.updatedAt = updatedAt;
   }
-  weaknessSet() {
-    return this.campaign.weaknessSet || EMPTY_WEAKNESS_SET;
-  }
-  campaignNotes() {
-    return this.campaign.campaignNotes || EMPTY_CAMPAIGN_NOTES;
-  }
-  scenarioResults() {
-    return this.campaign.scenarioResults || EMPTY_SCENARIO_RESULTS;
+  countInput(pred: (i: GuideInput) => boolean): number {
+    return sumBy(this.guide.inputs, i => pred(i) ? 1 : 0);
   }
 
-  linkedCampaignId() {
-    return this.campaign.linkedCampaignUuid ? {
-      campaignId: this.campaign.linkedCampaignUuid,
-      serverId: this.campaign.serverId,
-    } : undefined;
+  findInput(pred: (i: GuideInput) => boolean): GuideInput | undefined {
+    return find(this.guide.inputs, pred);
+  }
+  findLastInput(pred: (i: GuideInput) => boolean): GuideInput | undefined {
+    return findLast(this.guide.inputs, pred);
+  }
+
+  binaryAchievement(id: string): boolean {
+    return !!find(this.guide.achievements || [], a => a.id === id && a.type === 'binary' && a.value);
+  }
+  countAchievement(id: string): number {
+    const entry = find(this.guide.achievements || [], a => a.id === id && a.type === 'count');
+    if (entry?.type === 'count') {
+      return entry.value;
+    }
+    return 0;
+  }
+  lastUpdated(): Date {
+    return this.updatedAt;
+  }
+}
+
+
+export class LatestDeckRedux implements LatestDeckT {
+  id: DeckId;
+  investigator: string;
+  deck: Deck;
+  previousDeck: Deck | undefined;
+  campaignId: CampaignId | undefined;
+
+  constructor(deck: Deck, previousDeck?: Deck, campaignId?: CampaignId) {
+    this.id = getDeckId(deck);
+    this.investigator = deck.investigator_code;
+    this.deck = deck;
+    this.previousDeck = previousDeck;
+    this.campaignId = campaignId;
   }
 }

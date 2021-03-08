@@ -6,14 +6,14 @@ import {
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Campaign } from '@actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import NavButton from '@components/core/NavButton';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface Props {
-  campaign: Campaign;
+  campaign: SingleCampaignT;
   viewScenarios: () => void;
   addScenarioResult: () => void;
 }

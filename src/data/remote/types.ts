@@ -1,9 +1,12 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet } from '@actions/types';
-import { uniq, concat, flatMap, keys, maxBy, last, forEach } from 'lodash';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId } from '@actions/types';
+import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
-import { FullCampaignFragment, MiniCampaignFragment } from '@generated/graphql/apollo-schema';
+import { FullCampaignFragment, LatestDeckFragment, FullCampaignGuideFragment, MiniCampaignFragment, Guide_Input } from '@generated/graphql/apollo-schema';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
+import { ChaosBag } from '@app_constants';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 const EMPTY_TRAUMA = {};
 
@@ -53,64 +56,43 @@ function fragmentToInvestigators(campaign: MiniCampaignFragment): string[] {
 export class MiniCampaignRemote implements MiniCampaignT {
   protected campaign: MiniCampaignFragment;
   protected campaignInvestigatorData: InvestigatorData;
-  protected campaignUpdatedAt: Date;
+
+  public id: CampaignId;
+  public uuid: string;
+  public guided: boolean;
+  public name: string;
+  public cycleCode: CampaignCycleCode;
+  public difficulty: CampaignDifficulty | undefined;
+  public standaloneId: StandaloneId | undefined;
+  public latestScenarioResult: ScenarioResult | undefined;
+  public investigators: string[];
+  public updatedAt: Date;
+  public linked: undefined | CampaignLink = undefined;
+
   constructor(
     campaign: MiniCampaignFragment
   ) {
     this.campaign = campaign;
     this.campaignInvestigatorData = fragmentToInvestigatorData(campaign);
-    this.campaignUpdatedAt = new Date(Date.parse(campaign.updated_at));
-  }
+    this.updatedAt = new Date(Date.parse(campaign.updated_at));
 
-  id(): CampaignId {
-    return {
-      campaignId: this.campaign.uuid,
-      serverId: this.campaign.id,
+    this.investigators = fragmentToInvestigators(campaign);
+    this.id = {
+      campaignId: campaign.uuid,
+      serverId: campaign.id,
     };
-  }
-
-  uuid(): string {
-    return this.campaign.uuid;
-  }
-
-  name(): string {
-    return this.campaign.name || '';
-  }
-
-  guided(): boolean {
-    return !!this.campaign.guided;
-  }
-
-  difficulty(): CampaignDifficulty | undefined {
-    return (this.campaign.difficulty || undefined) as (CampaignDifficulty | undefined);
-  }
-
-  latestScenarioResult(): ScenarioResult | undefined {
-    return last(this.campaign.scenarioResults || []) || undefined;
-  }
-
-  cycleCode(): CampaignCycleCode {
-    return (this.campaign.cycleCode || undefined) as CampaignCycleCode;
-  }
-
-  standaloneId(): StandaloneId | undefined {
-    return this.campaign.standaloneId;
-  }
-
-  investigators(): string[] {
-    return fragmentToInvestigators(this.campaign);
+    this.uuid = campaign.uuid;
+    this.name = campaign.name || '';
+    this.guided = !!campaign.guided;
+    this.difficulty = (campaign.difficulty || undefined) as (CampaignDifficulty | undefined);
+    this.latestScenarioResult = last(this.campaign.scenarioResults || []) || undefined;
+    this.cycleCode = (this.campaign.cycleCode || undefined) as CampaignCycleCode;
+    this.standaloneId = this.campaign.standaloneId;
+    this.linked = undefined;
   }
 
   investigatorTrauma(code: string): TraumaAndCardData {
     return this.campaignInvestigatorData[code] || EMPTY_TRAUMA;
-  }
-
-  updatedAt(): Date {
-    return this.campaignUpdatedAt;
-  }
-
-  linked(): undefined | CampaignLink {
-    return undefined;
   }
 }
 
@@ -137,55 +119,40 @@ export class MiniLinkedCampaignRemote extends MiniCampaignRemote {
     this.investigatorDataB = fragmentToInvestigatorData(campaignB);
     this.updatedAtA = new Date(Date.parse(campaignA.updated_at));
     this.updatedAtB = new Date(Date.parse(campaignB.updated_at));
-  }
 
-  difficulty(): CampaignDifficulty | undefined {
-    // tslint:disable-next-line: strict-comparisons
-    if (this.campaignA.difficulty === this.campaignB.difficulty) {
-      return (this.campaignA.difficulty || undefined) as CampaignDifficulty | undefined;
-    }
-    return undefined;
-  }
-
-  latestScenarioResult(): ScenarioResult | undefined {
-    if (this.updatedAtA.getTime() > this.updatedAtB.getTime()) {
-      return last(this.campaignA.scenarioResults || []) || undefined;
-    }
-    return last(this.campaignB.scenarioResults || []) || undefined;
-  }
-
-  investigators(): string[] {
-    return uniq(
+    this.investigators = uniq(
       concat(
-        super.investigators(),
+        this.investigators,
         fragmentToInvestigators(this.campaignA),
         fragmentToInvestigators(this.campaignB)
       )
     );
+    // tslint:disable-next-line: strict-comparisons
+    this.difficulty = (this.campaignA.difficulty === this.campaignB.difficulty) ? (
+      (this.campaignA.difficulty || undefined) as CampaignDifficulty | undefined
+    ) : undefined;
+    this.latestScenarioResult = (this.updatedAtA.getTime() > this.updatedAtB.getTime()) ? (
+      last(this.campaignA.scenarioResults || []) || undefined) : (
+      last(this.campaignB.scenarioResults || []) || undefined
+    );
+    this.updatedAt = maxBy(
+      [super.updatedAt, this.updatedAtA, this.updatedAtB],
+      d => d.getTime()
+    ) as Date;
+    this.linked = {
+      campaignIdA: {
+        campaignId: campaignA.uuid,
+        serverId: campaignA.id,
+      },
+      campaignIdB: {
+        campaignId: campaignB.uuid,
+        serverId: campaignB.id,
+      },
+    };
   }
 
   investigatorTrauma(code: string): TraumaAndCardData {
     return this.investigatorDataA[code] || this.investigatorDataB[code] || EMPTY_TRAUMA;
-  }
-
-  updatedAt(): Date {
-    return maxBy(
-      [super.updatedAt(), this.updatedAtA, this.updatedAtB],
-      d => d.getTime()
-    ) as Date;
-  }
-
-  linked() {
-    return {
-      campaignIdA: {
-        campaignId: this.campaignA.uuid,
-        serverId: this.campaignA.id,
-      },
-      campaignIdB: {
-        campaignId: this.campaignB.uuid,
-        serverId: this.campaignB.id,
-      },
-    };
   }
 }
 
@@ -200,55 +167,118 @@ const EMPTY_SCENARIO_RESULTS: ScenarioResult[] = [];
 
 export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCampaignT {
   fullCampaign: FullCampaignFragment;
-  fullInvestigatorData: InvestigatorData;
   linkCampaignId?: CampaignId;
+  fullLatestDecks: Deck[];
+
+  showInterludes: boolean;
+  investigatorData: InvestigatorData;
+  chaosBag: ChaosBag;
+  weaknessSet: WeaknessSet;
+  campaignNotes: CampaignNotes;
+  scenarioResults: ScenarioResult[];
+  linkedCampaignId: CampaignId | undefined;
+  guideVersion: number;
+
   constructor(campaign: FullCampaignFragment) {
     super(campaign);
 
     this.fullCampaign = campaign;
-    this.fullInvestigatorData = fragmentToFullInvestigatorData(campaign);
-  }
+    this.investigatorData = fragmentToFullInvestigatorData(campaign);
+    // TODO: do something with their IDs here.
+    this.fullLatestDecks = flatMap(this.fullCampaign.latest_decks, d => d.deck?.content);
 
-  showInterludes() {
-    return !!this.fullCampaign.showInterludes;
+    this.showInterludes = !!campaign.showInterludes;
+    this.guideVersion = (typeof campaign.guide_version === 'number') ? campaign.guide_version : -1;
+    this.chaosBag = campaign.chaosBag || EMPTY_CHAOS_BAG;
+    this.weaknessSet = campaign.weaknessSet || EMPTY_WEAKNESS_SET;
+    this.campaignNotes = campaign.campaignNotes || EMPTY_CAMPAIGN_NOTES;
+    this.scenarioResults = campaign.scenarioResults || EMPTY_SCENARIO_RESULTS;
+    this.linkedCampaignId = campaign.linked_campaign ? {
+      campaignId: campaign.linked_campaign.uuid,
+      serverId: campaign.linked_campaign.id,
+    } : undefined;
   }
   latestDecks(): Deck[] {
-    // TODO: do something with their IDs here.
-    return flatMap(this.fullCampaign.latest_decks, d => d.deck?.content);
+    return this.fullLatestDecks;
   }
-  guideVersion() {
-    return (this.fullCampaign.guided && this.fullCampaign.guide_version) || 0;
-  }
-
   investigatorSpentXp(code: string) {
-    return this.fullInvestigatorData[code]?.spentXp || 0;
+    return this.investigatorData[code]?.spentXp || 0;
   }
-
-  investigatorData() {
-    return this.fullInvestigatorData;
-  }
-
   getInvestigatorData(investigator: string) {
-    return this.fullInvestigatorData[investigator] || EMPTY_TRAUMA;
+    return this.investigatorData[investigator] || EMPTY_TRAUMA;
+  }
+}
+
+function unpackGuideInput(input: Pick<Guide_Input, 'id' | 'step' | 'scenario' | 'payload' | 'created_at'>): GuideInput {
+  return {
+    step: input.step || undefined,
+    scenario: input.scenario || undefined,
+    ...input.payload,
+  };
+}
+
+export class CampaignGuideStateRemote implements CampaignGuideStateT {
+  private guide: FullCampaignGuideFragment;
+  private inputs: GuideInput[];
+  private guideUpdatedAt: Date;
+  constructor(guide: FullCampaignGuideFragment) {
+    this.guide = guide;
+    this.guideUpdatedAt = new Date(Date.parse(guide.updated_at));
+    this.inputs = map(this.guide.guide_inputs, unpackGuideInput);
   }
 
-  chaosBag() {
-    return this.fullCampaign.chaosBag || EMPTY_CHAOS_BAG;
-  }
-  weaknessSet() {
-    return this.fullCampaign.weaknessSet || EMPTY_WEAKNESS_SET;
-  }
-  campaignNotes() {
-    return this.fullCampaign.campaignNotes || EMPTY_CAMPAIGN_NOTES;
-  }
-  scenarioResults() {
-    return this.fullCampaign.scenarioResults || EMPTY_SCENARIO_RESULTS;
+  countInput(pred: (i: GuideInput) => boolean): number {
+    return sumBy(this.inputs, i => pred(i) ? 1 : 0);
   }
 
-  linkedCampaignId() {
-    return this.fullCampaign.linked_campaign ? {
-      campaignId: this.fullCampaign.link_b_campaign.uuid,
-      serverId: this.fullCampaign.link_b_campaign.id,
+  findInput(pred: (i: GuideInput) => boolean): GuideInput | undefined {
+    return find(this.inputs, pred);
+  }
+  findLastInput(pred: (i: GuideInput) => boolean): GuideInput | undefined {
+    return findLast(this.inputs, pred);
+  }
+
+  binaryAchievement(id: string): boolean {
+    return !!find(this.guide.guide_achivements || [], a => a.achievement_id === id && a.type === 'binary' && a.bool_value);
+  }
+  countAchievement(id: string): number {
+    const entry = find(this.guide.guide_achivements || [], a => a.achievement_id === id && a.type === 'count');
+    if (entry?.type === 'count') {
+      return entry.value || 0;
+    }
+    return 0;
+  }
+
+  lastUpdated(): Date {
+    return this.guideUpdatedAt;
+  }
+}
+
+export class LatestDeckRemote implements LatestDeckT {
+  id: DeckId;
+  investigator: string;
+  deck: Deck;
+  previousDeck: Deck | undefined;
+  campaignId: CampaignId | undefined;
+
+  constructor(deck: LatestDeckFragment) {
+    this.id = deck.arkhamdb_id ? {
+      id: deck.arkhamdb_id,
+      local: false,
+      uuid: `${deck.arkhamdb_id}`,
+      serverId: deck.id,
+    } : {
+      serverId: deck.id,
+      id: undefined,
+      local: true,
+      uuid: deck.local_uuid || '',
+    };
+    this.investigator = deck.investigator;
+    this.deck = deck.content;
+    this.previousDeck = deck.previous_deck?.content;
+    this.campaignId = deck.campaign ? {
+      campaignId: deck.campaign.uuid,
+      serverId: deck.campaign.id,
     } : undefined;
   }
 }

@@ -45,7 +45,8 @@ export default function withScenarioGuideContext<Props>(
     );
   }
   const result = withCampaignGuideContext<Props & ScenarioGuideInputProps>(
-    ScenarioDataComponent
+    ScenarioDataComponent,
+    { rootView: false }
   );
   hoistNonReactStatic(result, WrappedComponent);
   return result as React.ComponentType<Props & ScenarioGuideInputProps>;

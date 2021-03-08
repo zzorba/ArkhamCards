@@ -188,7 +188,7 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
   );
 }
 
-export default withCampaignGuideContext(AddSideScenarioView);
+export default withCampaignGuideContext(AddSideScenarioView, { rootView: false });
 
 
 const styles = StyleSheet.create({

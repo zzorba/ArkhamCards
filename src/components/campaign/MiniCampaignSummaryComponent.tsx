@@ -21,11 +21,11 @@ interface Props {
 
 export default function MiniCampaignSummaryComponent({ campaign, name, hideScenario, standaloneName, children }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const cycleCode = campaign.cycleCode();
-  const standaloneId = cycleCode === STANDALONE ? campaign.standaloneId() : undefined;
-  const latestScenario = useMemo(() => campaign.latestScenarioResult(), [campaign]);
+  const cycleCode = campaign.cycleCode;
+  const standaloneId = cycleCode === STANDALONE ? campaign.standaloneId : undefined;
+  const latestScenario = useMemo(() => campaign.latestScenarioResult, [campaign]);
   const campaignSection = useMemo(() => {
-    const text = cycleCode === CUSTOM ? campaign.name() : campaignNames()[cycleCode];
+    const text = cycleCode === CUSTOM ? campaign.name : campaignNames()[cycleCode];
     const campaignName = (cycleCode === STANDALONE && standaloneName) || text;
     return (
       <>
@@ -43,7 +43,7 @@ export default function MiniCampaignSummaryComponent({ campaign, name, hideScena
       return null;
     }
     if (latestScenario && latestScenario.scenario) {
-      const resolution = latestScenario.resolution && !campaign.guided() ?
+      const resolution = latestScenario.resolution && !campaign.guided ?
         `: ${latestScenario.resolution}` : '';
       return (
         <View style={space.marginTopXs}>
@@ -63,16 +63,15 @@ export default function MiniCampaignSummaryComponent({ campaign, name, hideScena
   }, [hideScenario, campaign, typography, latestScenario]);
 
   const difficultySection = useMemo(() => {
-    const difficulty = campaign.difficulty();
-    if (!difficulty) {
+    if (!campaign.difficulty) {
       return null;
     }
     return (
       <View style={space.marginRightS}>
-        <Difficulty difficulty={difficulty} />
+        <Difficulty difficulty={campaign.difficulty} />
       </View>
     );
-  }, [campaign]);
+  }, [campaign.difficulty]);
 
   const color = useMemo(() => campaignColor(cycleCode, colors), [cycleCode, colors]);
   const backgroundIcon = useMemo(() => {

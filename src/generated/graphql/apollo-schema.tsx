@@ -6300,14 +6300,27 @@ export type GetMyDecksQuery = (
       { __typename?: 'latest_decks' }
       & { deck?: Maybe<(
         { __typename?: 'deck' }
-        & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
-        & { previous_deck?: Maybe<(
-          { __typename?: 'deck' }
-          & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
-        )> }
+        & LatestDeckFragment
       )> }
     )> }
   )> }
+);
+
+export type BasicDeckFragment = (
+  { __typename?: 'deck' }
+  & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
+);
+
+export type LatestDeckFragment = (
+  { __typename?: 'deck' }
+  & { campaign: (
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid'>
+  ), previous_deck?: Maybe<(
+    { __typename?: 'deck' }
+    & BasicDeckFragment
+  )> }
+  & BasicDeckFragment
 );
 
 export type MiniInvestigatorDataFragment = (
@@ -6339,16 +6352,22 @@ export type MiniCampaignFragment = (
   )> }
 );
 
-export type FullCampaignFragment = (
+export type FullCampaignGuideFragment = (
   { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'updated_at' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'scenarioResults' | 'weaknessSet' | 'guided' | 'guide_version'>
+  & Pick<Campaign, 'id' | 'uuid' | 'updated_at'>
   & { guide_inputs: Array<(
     { __typename?: 'guide_input' }
     & Pick<Guide_Input, 'id' | 'step' | 'scenario' | 'payload' | 'created_at'>
   )>, guide_achivements: Array<(
     { __typename?: 'guide_achievement' }
     & Pick<Guide_Achievement, 'id' | 'achievement_id' | 'type' | 'bool_value' | 'value' | 'updated_at'>
-  )>, investigators: Array<(
+  )> }
+);
+
+export type FullCampaignFragment = (
+  { __typename?: 'campaign' }
+  & Pick<Campaign, 'id' | 'updated_at' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'scenarioResults' | 'weaknessSet' | 'guided' | 'guide_version'>
+  & { investigators: Array<(
     { __typename?: 'campaign_investigator' }
     & Pick<Campaign_Investigator, 'id' | 'investigator'>
   )>, investigator_data: Array<(
@@ -6412,6 +6431,19 @@ export type GetCampaignQuery = (
   )> }
 );
 
+export type GetCampaignGuideQueryVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type GetCampaignGuideQuery = (
+  { __typename?: 'query_root' }
+  & { campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & FullCampaignGuideFragment
+  )> }
+);
+
 export type CampaignSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
@@ -6422,6 +6454,19 @@ export type CampaignSubscription = (
   & { campaign_by_pk?: Maybe<(
     { __typename?: 'campaign' }
     & FullCampaignFragment
+  )> }
+);
+
+export type CampaignGuideSubscriptionVariables = Exact<{
+  campaign_id: Scalars['Int'];
+}>;
+
+
+export type CampaignGuideSubscription = (
+  { __typename?: 'subscription_root' }
+  & { campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & FullCampaignGuideFragment
   )> }
 );
 
@@ -6585,6 +6630,29 @@ export type UpdateInvestigatorTraumaMutation = (
   )> }
 );
 
+export type UpdateInvestigatorDataMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
+  physical?: Maybe<Scalars['Int']>;
+  mental?: Maybe<Scalars['Int']>;
+  killed?: Maybe<Scalars['Boolean']>;
+  insane?: Maybe<Scalars['Boolean']>;
+  added_cards?: Maybe<Scalars['jsonb']>;
+  available_xp?: Maybe<Scalars['Int']>;
+  story_assets?: Maybe<Scalars['jsonb']>;
+  ignore_story_assets?: Maybe<Scalars['jsonb']>;
+  removed_cards?: Maybe<Scalars['jsonb']>;
+}>;
+
+
+export type UpdateInvestigatorDataMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_investigator_data_one?: Maybe<(
+    { __typename?: 'investigator_data' }
+    & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'physical' | 'mental' | 'killed' | 'insane' | 'addedCards' | 'removedCards' | 'storyAssets' | 'ignoreStoryAssets' | 'availableXp'>
+  )> }
+);
+
 export type UpdateSpentXpMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
   investigator: Scalars['String'];
@@ -6626,6 +6694,90 @@ export type UpdateWeaknessSetMutation = (
   & { update_campaign_by_pk?: Maybe<(
     { __typename?: 'campaign' }
     & Pick<Campaign, 'id' | 'uuid' | 'weaknessSet'>
+  )> }
+);
+
+export type UpdateCampaignDifficultyMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  difficulty?: Maybe<Scalars['String']>;
+}>;
+
+
+export type UpdateCampaignDifficultyMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid' | 'difficulty'>
+  )> }
+);
+
+export type UpdateCampaignScenarioResultsMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  scenarioResults: Scalars['jsonb'];
+}>;
+
+
+export type UpdateCampaignScenarioResultsMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid' | 'scenarioResults'>
+  )> }
+);
+
+export type UpdateCampaignGuideVersionMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  guideVersion: Scalars['Int'];
+}>;
+
+
+export type UpdateCampaignGuideVersionMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid' | 'guide_version'>
+  )> }
+);
+
+export type UpdateCampaignNotesMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  campaign_notes: Scalars['jsonb'];
+}>;
+
+
+export type UpdateCampaignNotesMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid' | 'campaignNotes'>
+  )> }
+);
+
+export type UpdateCampaignShowInterludesMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  show_interludes: Scalars['Boolean'];
+}>;
+
+
+export type UpdateCampaignShowInterludesMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid' | 'showInterludes'>
+  )> }
+);
+
+export type UpdateChaosBagMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  chaos_bag: Scalars['jsonb'];
+}>;
+
+
+export type UpdateChaosBagMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_campaign_by_pk?: Maybe<(
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid' | 'chaosBag'>
   )> }
 );
 
@@ -6675,6 +6827,27 @@ export type RemoveCampaignInvestigatorMutation = (
   )> }
 );
 
+export const BasicDeckFragmentDoc = gql`
+    fragment BasicDeck on deck {
+  id
+  arkhamdb_id
+  local_uuid
+  investigator
+  content
+}
+    `;
+export const LatestDeckFragmentDoc = gql`
+    fragment LatestDeck on deck {
+  ...BasicDeck
+  campaign {
+    id
+    uuid
+  }
+  previous_deck {
+    ...BasicDeck
+  }
+}
+    ${BasicDeckFragmentDoc}`;
 export const MiniInvestigatorDataFragmentDoc = gql`
     fragment MiniInvestigatorData on investigator_data {
   id
@@ -6714,6 +6887,28 @@ export const MiniCampaignFragmentDoc = gql`
   updated_at
 }
     ${MiniInvestigatorDataFragmentDoc}`;
+export const FullCampaignGuideFragmentDoc = gql`
+    fragment FullCampaignGuide on campaign {
+  id
+  uuid
+  updated_at
+  guide_inputs {
+    id
+    step
+    scenario
+    payload
+    created_at
+  }
+  guide_achivements {
+    id
+    achievement_id
+    type
+    bool_value
+    value
+    updated_at
+  }
+}
+    `;
 export const FullInvestigatorDataFragmentDoc = gql`
     fragment FullInvestigatorData on investigator_data {
   ...MiniInvestigatorData
@@ -6742,21 +6937,6 @@ export const FullCampaignFragmentDoc = gql`
   weaknessSet
   guided
   guide_version
-  guide_inputs {
-    id
-    step
-    scenario
-    payload
-    created_at
-  }
-  guide_achivements {
-    id
-    achievement_id
-    type
-    bool_value
-    value
-    updated_at
-  }
   investigators {
     id
     investigator
@@ -7159,23 +7339,12 @@ export const GetMyDecksDocument = gql`
     id
     decks {
       deck {
-        id
-        arkhamdb_id
-        local_uuid
-        investigator
-        content
-        previous_deck {
-          id
-          arkhamdb_id
-          local_uuid
-          investigator
-          content
-        }
+        ...LatestDeck
       }
     }
   }
 }
-    `;
+    ${LatestDeckFragmentDoc}`;
 
 /**
  * __useGetMyDecksQuery__
@@ -7279,6 +7448,39 @@ export function useGetCampaignLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type GetCampaignQueryHookResult = ReturnType<typeof useGetCampaignQuery>;
 export type GetCampaignLazyQueryHookResult = ReturnType<typeof useGetCampaignLazyQuery>;
 export type GetCampaignQueryResult = Apollo.QueryResult<GetCampaignQuery, GetCampaignQueryVariables>;
+export const GetCampaignGuideDocument = gql`
+    query getCampaignGuide($campaign_id: Int!) {
+  campaign_by_pk(id: $campaign_id) {
+    ...FullCampaignGuide
+  }
+}
+    ${FullCampaignGuideFragmentDoc}`;
+
+/**
+ * __useGetCampaignGuideQuery__
+ *
+ * To run a query within a React component, call `useGetCampaignGuideQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCampaignGuideQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCampaignGuideQuery({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useGetCampaignGuideQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>) {
+        return Apollo.useQuery<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>(GetCampaignGuideDocument, baseOptions);
+      }
+export function useGetCampaignGuideLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>) {
+          return Apollo.useLazyQuery<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>(GetCampaignGuideDocument, baseOptions);
+        }
+export type GetCampaignGuideQueryHookResult = ReturnType<typeof useGetCampaignGuideQuery>;
+export type GetCampaignGuideLazyQueryHookResult = ReturnType<typeof useGetCampaignGuideLazyQuery>;
+export type GetCampaignGuideQueryResult = Apollo.QueryResult<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>;
 export const CampaignDocument = gql`
     subscription campaign($campaign_id: Int!) {
   campaign_by_pk(id: $campaign_id) {
@@ -7308,6 +7510,35 @@ export function useCampaignSubscription(baseOptions: Apollo.SubscriptionHookOpti
       }
 export type CampaignSubscriptionHookResult = ReturnType<typeof useCampaignSubscription>;
 export type CampaignSubscriptionResult = Apollo.SubscriptionResult<CampaignSubscription>;
+export const CampaignGuideDocument = gql`
+    subscription campaignGuide($campaign_id: Int!) {
+  campaign_by_pk(id: $campaign_id) {
+    ...FullCampaignGuide
+  }
+}
+    ${FullCampaignGuideFragmentDoc}`;
+
+/**
+ * __useCampaignGuideSubscription__
+ *
+ * To run a query within a React component, call `useCampaignGuideSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useCampaignGuideSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCampaignGuideSubscription({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useCampaignGuideSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignGuideSubscription, CampaignGuideSubscriptionVariables>) {
+        return Apollo.useSubscription<CampaignGuideSubscription, CampaignGuideSubscriptionVariables>(CampaignGuideDocument, baseOptions);
+      }
+export type CampaignGuideSubscriptionHookResult = ReturnType<typeof useCampaignGuideSubscription>;
+export type CampaignGuideSubscriptionResult = Apollo.SubscriptionResult<CampaignGuideSubscription>;
 export const GetProfileDocument = gql`
     query getProfile($userId: String!) {
   users_by_pk(id: $userId) {
@@ -7686,6 +7917,62 @@ export function useUpdateInvestigatorTraumaMutation(baseOptions?: Apollo.Mutatio
 export type UpdateInvestigatorTraumaMutationHookResult = ReturnType<typeof useUpdateInvestigatorTraumaMutation>;
 export type UpdateInvestigatorTraumaMutationResult = Apollo.MutationResult<UpdateInvestigatorTraumaMutation>;
 export type UpdateInvestigatorTraumaMutationOptions = Apollo.BaseMutationOptions<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>;
+export const UpdateInvestigatorDataDocument = gql`
+    mutation updateInvestigatorData($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean, $added_cards: jsonb, $available_xp: Int, $story_assets: jsonb, $ignore_story_assets: jsonb, $removed_cards: jsonb) {
+  insert_investigator_data_one(
+    object: {campaign_id: $campaign_id, investigator: $investigator, physical: $physical, mental: $mental, killed: $killed, insane: $insane, addedCards: $added_cards, storyAssets: $story_assets, ignoreStoryAssets: $ignore_story_assets, removedCards: $removed_cards, availableXp: $available_xp}
+    on_conflict: {constraint: investigator_data_campaign_id_investigator_key, update_columns: [physical, mental, killed, insane, addedCards, removedCards, storyAssets, ignoreStoryAssets, availableXp]}
+  ) {
+    id
+    campaign_id
+    investigator
+    physical
+    mental
+    killed
+    insane
+    addedCards
+    removedCards
+    storyAssets
+    ignoreStoryAssets
+    availableXp
+  }
+}
+    `;
+export type UpdateInvestigatorDataMutationFn = Apollo.MutationFunction<UpdateInvestigatorDataMutation, UpdateInvestigatorDataMutationVariables>;
+
+/**
+ * __useUpdateInvestigatorDataMutation__
+ *
+ * To run a mutation, you first call `useUpdateInvestigatorDataMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateInvestigatorDataMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateInvestigatorDataMutation, { data, loading, error }] = useUpdateInvestigatorDataMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *      physical: // value for 'physical'
+ *      mental: // value for 'mental'
+ *      killed: // value for 'killed'
+ *      insane: // value for 'insane'
+ *      added_cards: // value for 'added_cards'
+ *      available_xp: // value for 'available_xp'
+ *      story_assets: // value for 'story_assets'
+ *      ignore_story_assets: // value for 'ignore_story_assets'
+ *      removed_cards: // value for 'removed_cards'
+ *   },
+ * });
+ */
+export function useUpdateInvestigatorDataMutation(baseOptions?: Apollo.MutationHookOptions<UpdateInvestigatorDataMutation, UpdateInvestigatorDataMutationVariables>) {
+        return Apollo.useMutation<UpdateInvestigatorDataMutation, UpdateInvestigatorDataMutationVariables>(UpdateInvestigatorDataDocument, baseOptions);
+      }
+export type UpdateInvestigatorDataMutationHookResult = ReturnType<typeof useUpdateInvestigatorDataMutation>;
+export type UpdateInvestigatorDataMutationResult = Apollo.MutationResult<UpdateInvestigatorDataMutation>;
+export type UpdateInvestigatorDataMutationOptions = Apollo.BaseMutationOptions<UpdateInvestigatorDataMutation, UpdateInvestigatorDataMutationVariables>;
 export const UpdateSpentXpDocument = gql`
     mutation updateSpentXp($campaign_id: Int!, $investigator: String!, $spent_xp: Int!) {
   insert_investigator_data_one(
@@ -7804,6 +8091,234 @@ export function useUpdateWeaknessSetMutation(baseOptions?: Apollo.MutationHookOp
 export type UpdateWeaknessSetMutationHookResult = ReturnType<typeof useUpdateWeaknessSetMutation>;
 export type UpdateWeaknessSetMutationResult = Apollo.MutationResult<UpdateWeaknessSetMutation>;
 export type UpdateWeaknessSetMutationOptions = Apollo.BaseMutationOptions<UpdateWeaknessSetMutation, UpdateWeaknessSetMutationVariables>;
+export const UpdateCampaignDifficultyDocument = gql`
+    mutation updateCampaignDifficulty($campaign_id: Int!, $difficulty: String) {
+  update_campaign_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {difficulty: $difficulty}
+  ) {
+    id
+    uuid
+    difficulty
+  }
+}
+    `;
+export type UpdateCampaignDifficultyMutationFn = Apollo.MutationFunction<UpdateCampaignDifficultyMutation, UpdateCampaignDifficultyMutationVariables>;
+
+/**
+ * __useUpdateCampaignDifficultyMutation__
+ *
+ * To run a mutation, you first call `useUpdateCampaignDifficultyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCampaignDifficultyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCampaignDifficultyMutation, { data, loading, error }] = useUpdateCampaignDifficultyMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      difficulty: // value for 'difficulty'
+ *   },
+ * });
+ */
+export function useUpdateCampaignDifficultyMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignDifficultyMutation, UpdateCampaignDifficultyMutationVariables>) {
+        return Apollo.useMutation<UpdateCampaignDifficultyMutation, UpdateCampaignDifficultyMutationVariables>(UpdateCampaignDifficultyDocument, baseOptions);
+      }
+export type UpdateCampaignDifficultyMutationHookResult = ReturnType<typeof useUpdateCampaignDifficultyMutation>;
+export type UpdateCampaignDifficultyMutationResult = Apollo.MutationResult<UpdateCampaignDifficultyMutation>;
+export type UpdateCampaignDifficultyMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignDifficultyMutation, UpdateCampaignDifficultyMutationVariables>;
+export const UpdateCampaignScenarioResultsDocument = gql`
+    mutation updateCampaignScenarioResults($campaign_id: Int!, $scenarioResults: jsonb!) {
+  update_campaign_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {scenarioResults: $scenarioResults}
+  ) {
+    id
+    uuid
+    scenarioResults
+  }
+}
+    `;
+export type UpdateCampaignScenarioResultsMutationFn = Apollo.MutationFunction<UpdateCampaignScenarioResultsMutation, UpdateCampaignScenarioResultsMutationVariables>;
+
+/**
+ * __useUpdateCampaignScenarioResultsMutation__
+ *
+ * To run a mutation, you first call `useUpdateCampaignScenarioResultsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCampaignScenarioResultsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCampaignScenarioResultsMutation, { data, loading, error }] = useUpdateCampaignScenarioResultsMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      scenarioResults: // value for 'scenarioResults'
+ *   },
+ * });
+ */
+export function useUpdateCampaignScenarioResultsMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignScenarioResultsMutation, UpdateCampaignScenarioResultsMutationVariables>) {
+        return Apollo.useMutation<UpdateCampaignScenarioResultsMutation, UpdateCampaignScenarioResultsMutationVariables>(UpdateCampaignScenarioResultsDocument, baseOptions);
+      }
+export type UpdateCampaignScenarioResultsMutationHookResult = ReturnType<typeof useUpdateCampaignScenarioResultsMutation>;
+export type UpdateCampaignScenarioResultsMutationResult = Apollo.MutationResult<UpdateCampaignScenarioResultsMutation>;
+export type UpdateCampaignScenarioResultsMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignScenarioResultsMutation, UpdateCampaignScenarioResultsMutationVariables>;
+export const UpdateCampaignGuideVersionDocument = gql`
+    mutation updateCampaignGuideVersion($campaign_id: Int!, $guideVersion: Int!) {
+  update_campaign_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {guide_version: $guideVersion}
+  ) {
+    id
+    uuid
+    guide_version
+  }
+}
+    `;
+export type UpdateCampaignGuideVersionMutationFn = Apollo.MutationFunction<UpdateCampaignGuideVersionMutation, UpdateCampaignGuideVersionMutationVariables>;
+
+/**
+ * __useUpdateCampaignGuideVersionMutation__
+ *
+ * To run a mutation, you first call `useUpdateCampaignGuideVersionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCampaignGuideVersionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCampaignGuideVersionMutation, { data, loading, error }] = useUpdateCampaignGuideVersionMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      guideVersion: // value for 'guideVersion'
+ *   },
+ * });
+ */
+export function useUpdateCampaignGuideVersionMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignGuideVersionMutation, UpdateCampaignGuideVersionMutationVariables>) {
+        return Apollo.useMutation<UpdateCampaignGuideVersionMutation, UpdateCampaignGuideVersionMutationVariables>(UpdateCampaignGuideVersionDocument, baseOptions);
+      }
+export type UpdateCampaignGuideVersionMutationHookResult = ReturnType<typeof useUpdateCampaignGuideVersionMutation>;
+export type UpdateCampaignGuideVersionMutationResult = Apollo.MutationResult<UpdateCampaignGuideVersionMutation>;
+export type UpdateCampaignGuideVersionMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignGuideVersionMutation, UpdateCampaignGuideVersionMutationVariables>;
+export const UpdateCampaignNotesDocument = gql`
+    mutation updateCampaignNotes($campaign_id: Int!, $campaign_notes: jsonb!) {
+  update_campaign_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {campaignNotes: $campaign_notes}
+  ) {
+    id
+    uuid
+    campaignNotes
+  }
+}
+    `;
+export type UpdateCampaignNotesMutationFn = Apollo.MutationFunction<UpdateCampaignNotesMutation, UpdateCampaignNotesMutationVariables>;
+
+/**
+ * __useUpdateCampaignNotesMutation__
+ *
+ * To run a mutation, you first call `useUpdateCampaignNotesMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCampaignNotesMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCampaignNotesMutation, { data, loading, error }] = useUpdateCampaignNotesMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      campaign_notes: // value for 'campaign_notes'
+ *   },
+ * });
+ */
+export function useUpdateCampaignNotesMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignNotesMutation, UpdateCampaignNotesMutationVariables>) {
+        return Apollo.useMutation<UpdateCampaignNotesMutation, UpdateCampaignNotesMutationVariables>(UpdateCampaignNotesDocument, baseOptions);
+      }
+export type UpdateCampaignNotesMutationHookResult = ReturnType<typeof useUpdateCampaignNotesMutation>;
+export type UpdateCampaignNotesMutationResult = Apollo.MutationResult<UpdateCampaignNotesMutation>;
+export type UpdateCampaignNotesMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignNotesMutation, UpdateCampaignNotesMutationVariables>;
+export const UpdateCampaignShowInterludesDocument = gql`
+    mutation updateCampaignShowInterludes($campaign_id: Int!, $show_interludes: Boolean!) {
+  update_campaign_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {showInterludes: $show_interludes}
+  ) {
+    id
+    uuid
+    showInterludes
+  }
+}
+    `;
+export type UpdateCampaignShowInterludesMutationFn = Apollo.MutationFunction<UpdateCampaignShowInterludesMutation, UpdateCampaignShowInterludesMutationVariables>;
+
+/**
+ * __useUpdateCampaignShowInterludesMutation__
+ *
+ * To run a mutation, you first call `useUpdateCampaignShowInterludesMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCampaignShowInterludesMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCampaignShowInterludesMutation, { data, loading, error }] = useUpdateCampaignShowInterludesMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      show_interludes: // value for 'show_interludes'
+ *   },
+ * });
+ */
+export function useUpdateCampaignShowInterludesMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCampaignShowInterludesMutation, UpdateCampaignShowInterludesMutationVariables>) {
+        return Apollo.useMutation<UpdateCampaignShowInterludesMutation, UpdateCampaignShowInterludesMutationVariables>(UpdateCampaignShowInterludesDocument, baseOptions);
+      }
+export type UpdateCampaignShowInterludesMutationHookResult = ReturnType<typeof useUpdateCampaignShowInterludesMutation>;
+export type UpdateCampaignShowInterludesMutationResult = Apollo.MutationResult<UpdateCampaignShowInterludesMutation>;
+export type UpdateCampaignShowInterludesMutationOptions = Apollo.BaseMutationOptions<UpdateCampaignShowInterludesMutation, UpdateCampaignShowInterludesMutationVariables>;
+export const UpdateChaosBagDocument = gql`
+    mutation updateChaosBag($campaign_id: Int!, $chaos_bag: jsonb!) {
+  update_campaign_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {chaosBag: $chaos_bag}
+  ) {
+    id
+    uuid
+    chaosBag
+  }
+}
+    `;
+export type UpdateChaosBagMutationFn = Apollo.MutationFunction<UpdateChaosBagMutation, UpdateChaosBagMutationVariables>;
+
+/**
+ * __useUpdateChaosBagMutation__
+ *
+ * To run a mutation, you first call `useUpdateChaosBagMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateChaosBagMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateChaosBagMutation, { data, loading, error }] = useUpdateChaosBagMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      chaos_bag: // value for 'chaos_bag'
+ *   },
+ * });
+ */
+export function useUpdateChaosBagMutation(baseOptions?: Apollo.MutationHookOptions<UpdateChaosBagMutation, UpdateChaosBagMutationVariables>) {
+        return Apollo.useMutation<UpdateChaosBagMutation, UpdateChaosBagMutationVariables>(UpdateChaosBagDocument, baseOptions);
+      }
+export type UpdateChaosBagMutationHookResult = ReturnType<typeof useUpdateChaosBagMutation>;
+export type UpdateChaosBagMutationResult = Apollo.MutationResult<UpdateChaosBagMutation>;
+export type UpdateChaosBagMutationOptions = Apollo.BaseMutationOptions<UpdateChaosBagMutation, UpdateChaosBagMutationVariables>;
 export const UpdateCampaignNameDocument = gql`
     mutation updateCampaignName($campaign_id: Int!, $name: String!) {
   update_campaign_by_pk(pk_columns: {id: $campaign_id}, _set: {name: $name}) {

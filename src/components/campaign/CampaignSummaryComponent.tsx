@@ -4,15 +4,16 @@ import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
 import { campaignNames, campaignColor } from './constants';
-import { Campaign, CUSTOM, STANDALONE } from '@actions/types';
+import { CUSTOM, STANDALONE } from '@actions/types';
 import Difficulty from './Difficulty';
 import GameHeader from './GameHeader';
 import BackgroundIcon from './BackgroundIcon';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface Props {
-  campaign: Campaign;
+  campaign: SingleCampaignT;
   name?: string;
   hideScenario?: boolean;
   standaloneName?: string;

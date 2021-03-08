@@ -20,9 +20,10 @@ import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import InvestigatorSectionRow from '../CampaignLogSection/InvestigatorSectionRow';
 import InvestigatorCountsSection from '../CampaignLogSection/InvestigatorCountsSection';
 import { useDispatch } from 'react-redux';
-import { updateCampaign } from '../actions';
+import { updateCampaignNotes } from '../actions';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { SetCampaignNotesAction } from '@data/remote/campaigns';
 
 interface Props {
   componentId: string;
@@ -35,6 +36,7 @@ interface Props {
   removeInvestigator: (investigator: Card, removedDeckId?: DeckId) => void;
   showChooseDeck: (investigator?: Card) => void;
   showXpDialog: (investigator: Card) => void;
+  setCampaignNotes: SetCampaignNotesAction;
   showAlert: ShowAlert;
   showTextEditDialog: ShowTextEditDialog;
   showCountDialog: ShowCountDialog;
@@ -47,6 +49,7 @@ export default function DecksSection({
   latestDecks,
   cards,
   allInvestigators,
+  setCampaignNotes,
   showXpDialog,
   showTraumaDialog,
   removeInvestigator,
@@ -86,7 +89,7 @@ export default function DecksSection({
         name: 'Deck.Upgrade',
         passProps: {
           id: getDeckId(deck),
-          campaignId: campaign.id(),
+          campaignId: campaign.id,
           showNewDeck: false,
         },
         options: {
@@ -115,17 +118,16 @@ export default function DecksSection({
   const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
     showChooseDeck(investigator);
   }, [showChooseDeck]);
-  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
-  const updateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
-    dispatch(updateCampaign(user, campaignId, { campaignNotes }));
-  }, [dispatch, campaignId, user]);
+  const saveCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
+    dispatch(updateCampaignNotes(setCampaignNotes, campaignId, campaignNotes));
+  }, [dispatch, setCampaignNotes, campaignId]);
 
   const delayedUpdateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
     InteractionManager.runAfterInteractions(() => {
-      updateCampaignNotes(campaignNotes);
+      saveCampaignNotes(campaignNotes);
     });
-  }, [updateCampaignNotes]);
+  }, [saveCampaignNotes]);
   const updateInvestigatorNotes = useCallback((investigatorNotes: InvestigatorNotes) => {
     delayedUpdateCampaignNotes({
       ...campaign.campaignNotes,
@@ -135,7 +137,6 @@ export default function DecksSection({
 
   const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: Deck) => {
     const traumaAndCardData = campaign.getInvestigatorData(investigator.code);
-    const campaignNotes = campaign.campaignNotes();
     return (
       <InvestigatorCampaignRow
         key={investigator.code}
@@ -152,17 +153,17 @@ export default function DecksSection({
         chooseDeckForInvestigator={showChooseDeckForInvestigator}
         deck={deck}
         removeInvestigator={removeDeckPrompt}
-        miniButtons={campaignNotes.investigatorNotes?.counts?.length ?
+        miniButtons={campaign.campaignNotes.investigatorNotes?.counts?.length ?
           <InvestigatorCountsSection
             investigator={investigator}
             updateInvestigatorNotes={updateInvestigatorNotes}
-            investigatorNotes={campaignNotes.investigatorNotes}
+            investigatorNotes={campaign.campaignNotes.investigatorNotes}
             showCountDialog={showCountDialog}
           /> : undefined}
       >
         <InvestigatorSectionRow
           investigator={investigator}
-          investigatorNotes={campaignNotes.investigatorNotes}
+          investigatorNotes={campaign.campaignNotes.investigatorNotes}
           updateInvestigatorNotes={updateInvestigatorNotes}
           showDialog={showTextEditDialog}
           showCountDialog={showCountDialog}

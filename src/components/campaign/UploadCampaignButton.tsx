@@ -20,8 +20,8 @@ interface Props {
   showAlert: ShowAlert;
   guided: boolean;
   linked?: {
-    campaignIdA: string;
-    campaignIdB: string;
+    campaignIdA: CampaignId;
+    campaignIdB: CampaignId;
   };
 }
 

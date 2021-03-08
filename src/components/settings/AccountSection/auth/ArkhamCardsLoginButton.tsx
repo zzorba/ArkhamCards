@@ -350,10 +350,10 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
 
 function CampaignRow({ campaign, value, onChange, last }: { campaign: MiniCampaignT; value: boolean; last: boolean; onChange: (uuid: string, value: boolean) => void }) {
   const { colors } = useContext(StyleContext);
-  const uuid = campaign.uuid();
+  const uuid = campaign.uuid;
   const onValueChange = useCallback((value: boolean) => onChange(uuid, !value), [uuid, onChange]);
-  const cycleCode = campaign.cycleCode();
-  const standaloneId = cycleCode === STANDALONE ? campaign.standaloneId() : undefined;
+  const cycleCode = campaign.cycleCode;
+  const standaloneId = cycleCode === STANDALONE ? campaign.standaloneId : undefined;
   return (
     <DeckCheckboxButton
       icon={(
@@ -363,7 +363,7 @@ function CampaignRow({ campaign, value, onChange, last }: { campaign: MiniCampai
           color={colors.M}
         />
       )}
-      title={campaign.name()}
+      title={campaign.name}
       value={!value}
       onValueChange={onValueChange}
       last={last}
@@ -436,9 +436,9 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
         </View>
         { map(localCampaigns, (campaign, idx) => (
           <CampaignRow
-            key={campaign.uuid()}
+            key={campaign.uuid}
             campaign={campaign}
-            value={!!noUpload[campaign.uuid()]}
+            value={!!noUpload[campaign.uuid]}
             onChange={setNoUpload}
             last={idx === localCampaigns.length - 1}
           />
@@ -449,11 +449,11 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
   const createCampaignActions = useCreateCampaignActions();
   const uploadCampaigns = useCallback(async() => {
     if (user) {
-      const uploadCampaigns = filter(localCampaigns, c => !noUpload[c.uuid()]);
+      const uploadCampaigns = filter(localCampaigns, c => !noUpload[c.uuid]);
       updateUploadState({ type: 'start', total: uploadCampaigns.length });
       await Promise.all(
         map(uploadCampaigns, c => {
-          return dispatch(uploadCampaign(user, createCampaignActions, c.id())).then(
+          return dispatch(uploadCampaign(user, createCampaignActions, c.id)).then(
             () => updateUploadState({ type: 'finish' }),
             () => updateUploadState({ type: 'error' }),
           );

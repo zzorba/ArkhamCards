@@ -17,7 +17,7 @@ import DeckSelectorTab from './DeckSelectorTab';
 import { NewDeckProps } from '@components/deck/NewDeckView';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { NavigationProps } from '@components/nav/types';
-import { CampaignId, Deck, DeckId, SortType, SORT_BY_PACK } from '@actions/types';
+import { CampaignId, Deck, DeckId, getDeckId, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/types/Card';
 import { getAllDecks, makeLatestCampaignDeckIdsSelector, AppState, getDeck, makeOtherCampiagnDeckIdsSelector } from '@reducers';
@@ -26,7 +26,7 @@ import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
-import { useCampaign } from '@data/remote/hooks';
+import { useCampaign } from '@data/hooks';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;
@@ -94,8 +94,6 @@ function MyDecksSelectorDialog(props: Props) {
   const campaign = useCampaign(campaignId);
   const otherCampaignsDeckIdsSelector = useMemo(() => makeOtherCampiagnDeckIdsSelector(), []);
   const otherCampaignDeckIds = useSelector((state: AppState) => otherCampaignsDeckIdsSelector(state, campaign));
-  const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
-  const campaignLatestDeckIds = useSelector((state: AppState) => getLatestCampaignDeckIds(state, campaign));
   const decks = useSelector(getAllDecks);
 
   const [hideOtherCampaignDecks, toggleHideOtherCampaignDecks] = useFlag(true);
@@ -166,10 +164,10 @@ function MyDecksSelectorDialog(props: Props) {
       return selectedDeckIds;
     }
     if (onlyShowPreviousCampaignMembers && campaign) {
-      return campaignLatestDeckIds;
+      return campaign.latestDecks().map(getDeckId);
     }
     return undefined;
-  }, [selectedDeckIds, campaign, campaignLatestDeckIds, onlyShowSelected, onlyShowPreviousCampaignMembers]);
+  }, [selectedDeckIds, campaign, onlyShowSelected, onlyShowPreviousCampaignMembers]);
 
   const filterDeckIds: DeckId[] = useMemo(() => {
     if (onlyShowSelected) {

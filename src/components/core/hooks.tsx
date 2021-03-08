@@ -3,7 +3,7 @@ import { BackHandler, InteractionManager, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, CampaignId, ChaosBagResults, Deck, DeckId, Slots } from '@actions/types';
+import { Campaign, CampaignCycleCode, CampaignId, ChaosBagResults, Deck, DeckId, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -12,8 +12,6 @@ import {
   makeDeckSelector,
   getEffectiveDeckId,
   makeTabooSetSelector,
-  makeLatestCampaignDeckIdsSelector,
-  makeLatestCampaignInvestigatorsSelector,
 } from '@reducers';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { fetchPrivateDeck } from '@components/deck/actions';
@@ -21,6 +19,7 @@ import { campaignScenarios, Scenario } from '@components/campaign/constants';
 import TabooSet from '@data/types/TabooSet';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { CreateDeckActions } from '@data/remote/decks';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -530,30 +529,12 @@ export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined 
   return playerCards?.weaknessCards;
 }
 
-const EMPTY_INVESTIGATORS: Card[] = [];
-export function useCampaignInvestigators(campaign?: Campaign, investigators?: CardsMap): Card[] {
-  const getLatestCampaignInvestigators = useMemo(makeLatestCampaignInvestigatorsSelector, []);
-  return useSelector((state: AppState) => investigators && campaign ? getLatestCampaignInvestigators(state, investigators, campaign) : EMPTY_INVESTIGATORS);
+export function useCycleScenarios(cycleCode: CampaignCycleCode | undefined): Scenario[] {
+  return useMemo(() => cycleCode ? campaignScenarios(cycleCode) : [], [cycleCode]);
 }
 
-const EMPTY_DECK_IDS: DeckId[] = [];
-export function useCampaignLatestDeckIds(campaign?: Campaign): DeckId[] {
-  const getLatestCampaignDeckIds = useMemo(makeLatestCampaignDeckIdsSelector, []);
-  return useSelector((state: AppState) => campaign ? getLatestCampaignDeckIds(state, campaign) : EMPTY_DECK_IDS);
-}
-
-export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [DeckId[], Card[]] {
-  const allInvestigators = useCampaignInvestigators(campaign, investigators);
-  const latestDeckIds = useCampaignLatestDeckIds(campaign);
-  return [latestDeckIds, allInvestigators];
-}
-
-export function useCycleScenarios(campaign?: Campaign): Scenario[] {
-  return useMemo(() => campaign ? campaignScenarios(campaign.cycleCode) : [], [campaign]);
-}
-
-export function useCampaignScenarios(campaign?: Campaign): [Scenario[], { [code: string]: Scenario }] {
-  const cycleScenarios = useCycleScenarios(campaign);
+export function useCampaignScenarios(campaign: SingleCampaignT | undefined): [Scenario[], { [code: string]: Scenario }] {
+  const cycleScenarios = useCycleScenarios(campaign?.cycleCode);
   const scenarioByCode = useMemo(() => {
     const result: { [code: string]: Scenario } = {};
     forEach(cycleScenarios, scenario => {

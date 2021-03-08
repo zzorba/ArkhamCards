@@ -15,7 +15,7 @@ import { campaignColor, Scenario, completedScenario, scenarioFromCard } from '@c
 import Difficulty from '@components/campaign/Difficulty';
 import GameHeader from '@components/campaign/GameHeader';
 import BackgroundIcon from '@components/campaign/BackgroundIcon';
-import { Campaign, CampaignDifficulty, CUSTOM, getCampaignId } from '@actions/types';
+import { CampaignDifficulty, CUSTOM } from '@actions/types';
 import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue, ChaosTokenType } from '@app_constants';
 import Card from '@data/types/Card';
 import space, { m, s } from '@styles/space';
@@ -28,9 +28,10 @@ import { useSelector } from 'react-redux';
 import { getAllStandalonePacks } from '@reducers';
 import { Item, usePickerDialog } from '@components/deck/dialogs';
 import EncounterIcon from '@icons/EncounterIcon';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface Props {
-  campaign: Campaign;
+  campaign: SingleCampaignT;
   chaosBag: ChaosBag;
   cycleScenarios?: Scenario[];
   allInvestigators: Card[];
@@ -124,7 +125,7 @@ export default function OddsCalculatorComponent({
   allInvestigators,
 }: Props) {
   const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
-  const chaosBagResults = useChaosBagResults(getCampaignId(campaign));
+  const chaosBagResults = useChaosBagResults(campaign.id);
   const [chaosBag, sealedChaosBag] = useMemo(() => {
     const sealed: ChaosBag = {};
     forEach(chaosBagResults.sealedTokens, token => {

@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Campaign, Deck, DeckId, DecksMap } from '@actions/types';
+import { Campaign, CampaignId, Deck, DeckId, DecksMap } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
@@ -22,7 +22,7 @@ interface Props {
   header?: React.ReactElement;
   footer: (empty: boolean) => React.ReactElement;
   searchTerm: string;
-  deckToCampaign?: { [uuid: string]: Campaign };
+  deckToCampaignId?: { [uuid: string]: CampaignId };
   onRefresh?: () => void;
   refreshing?: boolean;
   decks: DecksMap;
@@ -39,7 +39,7 @@ function keyExtractor(item: Item) {
   return item.deckId.uuid;
 }
 
-export default function DeckList({ lang, deckIds, header, searchTerm, deckToCampaign, refreshing, decks, footer, onRefresh, onScroll, deckClicked }: Props) {
+export default function DeckList({ lang, deckIds, header, searchTerm, deckToCampaignId, refreshing, decks, footer, onRefresh, onScroll, deckClicked }: Props) {
   const { backgroundStyle, colors, width } = useContext(StyleContext);
   const investigators = useInvestigatorCards();
   const renderItem = useCallback(({ item: { deckId } }: { item: Item }) => {
@@ -54,13 +54,13 @@ export default function DeckList({ lang, deckIds, header, searchTerm, deckToCamp
         key={deckId.uuid}
         deck={deck}
         previousDeck={deck.previousDeckId ? getDeck(decks, deck.previousDeckId) : undefined}
-        deckToCampaign={deckToCampaign}
+        deckToCampaignId={deckToCampaignId}
         investigator={investigator}
         onPress={deckClicked}
         width={width}
       />
     );
-  }, [decks, investigators, deckToCampaign, deckClicked, lang, width]);
+  }, [decks, investigators, deckToCampaignId, deckClicked, lang, width]);
   const items = useMemo(() => {
     return map(
       filter(deckIds, deckId => {

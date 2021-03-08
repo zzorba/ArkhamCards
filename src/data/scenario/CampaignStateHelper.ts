@@ -1,4 +1,3 @@
-import { sumBy, filter, find, findLast } from 'lodash';
 import { Alert } from 'react-native';
 import { t } from 'ttag';
 import uuid from 'react-native-uuid';
@@ -10,14 +9,15 @@ import {
   GuideInput,
   NumberChoices,
   StringChoices,
-  CampaignGuideState,
   SupplyCounts,
   InvestigatorTraumaData,
   Trauma,
   DeckId,
+  SYSTEM_BASED_GUIDE_INPUT_TYPES,
 } from '@actions/types';
 import { ScenarioId } from '@data/scenario';
 import Card, { CardsMap } from '@data/types/Card';
+import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 
 export interface CampaignGuideActions {
   showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => void) => void;
@@ -44,19 +44,19 @@ export interface CampaignGuideActions {
 }
 
 export default class CampaignStateHelper {
-  state: CampaignGuideState;
+  state: CampaignGuideStateT;
   investigators: CardsMap;
   actions: CampaignGuideActions;
 
-  linkedState?: CampaignGuideState;
+  linkedState?: CampaignGuideStateT;
   guideVersion: number;
 
   constructor(
-    state: CampaignGuideState,
+    state: CampaignGuideStateT,
     investigators: CardsMap,
     actions: CampaignGuideActions,
     guideVersion: number,
-    linkedState?: CampaignGuideState
+    linkedState?: CampaignGuideStateT
   ) {
     this.guideVersion = guideVersion;
     this.state = state;
@@ -66,7 +66,7 @@ export default class CampaignStateHelper {
   }
 
   lastUpdated(): Date {
-    return this.state.lastUpdated || new Date();
+    return this.state.lastUpdated() || new Date();
   }
 
   showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => void) {
@@ -86,18 +86,14 @@ export default class CampaignStateHelper {
   }
 
   closeOnUndo(scenarioId: string) {
-    return sumBy(
-      filter(this.state.inputs, input => input.type !== 'campaign_link'),
-      input => input.scenario === scenarioId ? 1 : 0
-    ) === 1;
+    return this.state.countInput(input => (
+      !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type) && input.scenario === scenarioId
+    )) === 1;
   }
 
-  sideScenario(
-    previousScenarioId: string
-  ): GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput | undefined {
-    const matchingEntry = find(
-      this.state.inputs,
-      input => input.type === 'start_side_scenario' && input.previousScenarioId === previousScenarioId
+  sideScenario(previousScenarioId: string): GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput | undefined {
+    const matchingEntry = this.state.findInput(input =>
+      input.type === 'start_side_scenario' && input.previousScenarioId === previousScenarioId
     );
     if (matchingEntry && matchingEntry.type === 'start_side_scenario') {
       return matchingEntry;
@@ -175,14 +171,10 @@ export default class CampaignStateHelper {
   }
 
   binaryAchievement(achievementId: string): boolean {
-    return !!find(this.state.achievements || [], a => a.id === achievementId && a.type === 'binary' && a.value);
+    return this.state.binaryAchievement(achievementId);
   }
   countAchievement(achievementId: string): number {
-    const entry = find(this.state.achievements || [], a => a.id === achievementId && a.type === 'count');
-    if (entry?.type === 'count') {
-      return entry.value;
-    }
-    return 0;
+    return this.state.countAchievement(achievementId);
   }
 
   setBinaryAchievement(achievementId: string, value: boolean) {
@@ -198,8 +190,9 @@ export default class CampaignStateHelper {
   }
 
   undo(scenarioId: string) {
-    const latestInput = findLast(this.state.inputs,
-      input => input.scenario === scenarioId);
+    const latestInput = this.state.findLastInput(input =>
+      input.scenario === scenarioId && !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type)
+    );
     if (latestInput &&
       latestInput.type === 'choice_list' &&
       (latestInput.step.startsWith('$upgrade_decks#') || latestInput.step.startsWith('$save_standalone_decks')) &&
@@ -232,36 +225,30 @@ export default class CampaignStateHelper {
   }
 
   private entry(type: string, step?: string, scenario?: string): GuideInput | undefined {
-    return findLast(
-      this.state.inputs,
-      input => (
-        input.type === type &&
+    return this.state.findLastInput(input => (
+      input.type === type &&
+      // tslint:disable-next-line
+      input.scenario === scenario && (
+        input.type === 'start_scenario' ||
+        input.type === 'start_side_scenario' ||
         // tslint:disable-next-line
-        input.scenario === scenario && (
-          input.type === 'start_scenario' ||
-          input.type === 'start_side_scenario' ||
-          // tslint:disable-next-line
-          input.step === step
-        )
+        input.step === step
       )
-    );
+    ));
   }
 
   private linkedEntry(
     type: string,
     step?: string
   ): GuideInput | undefined {
-    return findLast(
-      this.linkedState ? this.linkedState.inputs : [],
-      input => (
-        input.type === type && (
-          input.type === 'start_scenario' ||
-          input.type === 'start_side_scenario' ||
-          // tslint:disable-next-line
-          input.step === step
-        )
+    return this.linkedState?.findLastInput(input => (
+      input.type === type && (
+        input.type === 'start_scenario' ||
+        input.type === 'start_side_scenario' ||
+        // tslint:disable-next-line
+        input.step === step
       )
-    );
+    ));
   }
 
   startedScenario(scenario: string): boolean {

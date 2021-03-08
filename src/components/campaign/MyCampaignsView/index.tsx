@@ -23,7 +23,7 @@ import { useNavigationButtonPressed } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import { getStandaloneScenarios } from '@data/scenario';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { useCampaigns } from '@data/remote/hooks';
+import { useCampaigns } from '@data/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 function MyCampaignsView({ componentId }: NavigationProps) {
@@ -73,10 +73,10 @@ function MyCampaignsView({ componentId }: NavigationProps) {
 
   const filteredCampaigns: MiniCampaignT[] = useMemo(() => {
     return flatMap(campaigns, (campaign) => {
-      const parts = [campaign.name()];
-      const cycleCode = campaign.cycleCode();
+      const parts = [campaign.name];
+      const cycleCode = campaign.cycleCode;
       if (cycleCode === STANDALONE) {
-        const standaloneId = campaign.standaloneId();
+        const standaloneId = campaign.standaloneId;
         if (standaloneId) {
           parts.push(standalonesById[standaloneId.campaignId][standaloneId.scenarioId]);
         }

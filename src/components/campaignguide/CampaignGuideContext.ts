@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { WeaknessSet, InvestigatorData, CampaignId } from '@actions/types';
+import { WeaknessSet, CampaignId } from '@actions/types';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
-import { LatestDecks } from '@data/scenario';
+import { LatestDecks, ProcessedCampaign } from '@data/scenario';
 import Card, { CardsMap } from '@data/types/Card';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 export interface CampaignGuideContextType {
   campaignId: CampaignId;
@@ -12,12 +13,13 @@ export interface CampaignGuideContextType {
   campaignName: string;
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;
+  spentXp: { [code: string]: number | undefined };
   campaignInvestigators: Card[];
   weaknessSet: WeaknessSet;
   latestDecks: LatestDecks;
-  adjustedInvestigatorData: InvestigatorData;
   playerCards: CardsMap;
   lastUpdated: Date;
+  syncCampaignChanges: (campaignLog: ProcessedCampaign) => Promise<void>;
 }
 
 export const CampaignGuideContext = React.createContext<CampaignGuideContextType>(

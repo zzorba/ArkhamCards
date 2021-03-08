@@ -13,16 +13,16 @@ interface Props {
 
 export default function CampaignItem({ campaign, onPress }: Props) {
   const handleOnPress = useCallback(() => {
-    onPress(campaign.uuid(), campaign);
+    onPress(campaign.uuid, campaign);
   }, [onPress, campaign]);
   return (
     <GenericCampaignItem
-      lastUpdated={campaign.updatedAt()}
+      lastUpdated={campaign.updatedAt}
       onPress={handleOnPress}
     >
       <MiniCampaignSummaryComponent
         campaign={campaign}
-        name={campaign.cycleCode() !== CUSTOM ? campaign.name() : undefined}
+        name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
       >
         <CampaignInvestigatorRow campaign={campaign} />
       </MiniCampaignSummaryComponent>

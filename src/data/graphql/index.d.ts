@@ -27,9 +27,12 @@ export const getMyDecks: DocumentNode;
 declare module '*/fragments.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const MiniInvestigatorData: DocumentNode;
+  export const BasicDeck: DocumentNode;
+export const LatestDeck: DocumentNode;
+export const MiniInvestigatorData: DocumentNode;
 export const FullInvestigatorData: DocumentNode;
 export const MiniCampaign: DocumentNode;
+export const FullCampaignGuide: DocumentNode;
 export const FullCampaign: DocumentNode;
 
   export default defaultDocument;
@@ -41,7 +44,9 @@ declare module '*/readCampaigns.graphql' {
   const defaultDocument: DocumentNode;
   export const getMyCampaigns: DocumentNode;
 export const getCampaign: DocumentNode;
+export const getCampaignGuide: DocumentNode;
 export const campaign: DocumentNode;
+export const campaignGuide: DocumentNode;
 
   export default defaultDocument;
 }
@@ -66,9 +71,16 @@ export const incCountAchievement: DocumentNode;
 export const decCountAchievement: DocumentNode;
 export const addGuideInput: DocumentNode;
 export const updateInvestigatorTrauma: DocumentNode;
+export const updateInvestigatorData: DocumentNode;
 export const updateSpentXp: DocumentNode;
 export const updateAvailableXp: DocumentNode;
 export const updateWeaknessSet: DocumentNode;
+export const updateCampaignDifficulty: DocumentNode;
+export const updateCampaignScenarioResults: DocumentNode;
+export const updateCampaignGuideVersion: DocumentNode;
+export const updateCampaignNotes: DocumentNode;
+export const updateCampaignShowInterludes: DocumentNode;
+export const updateChaosBag: DocumentNode;
 export const updateCampaignName: DocumentNode;
 export const addCampaignInvestigator: DocumentNode;
 export const removeCampaignInvestigator: DocumentNode;

@@ -13,7 +13,7 @@ import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
-import { useLiveCampaign } from '@data/remote/hooks';
+import { useLiveCampaign } from '@data/hooks';
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
 import { campaignNames } from '../constants';
@@ -57,8 +57,8 @@ function CampaignDetailView(props: Props) {
   const dispatch = useDispatch();
 
   const updateInvestigatorTrauma = useCallback((investigator: string, trauma: Trauma) => {
-    dispatch(updateCampaignInvestigatorTrauma(user, updateCampaignActions, campaignId, investigator, trauma));
-  }, [dispatch, updateCampaignActions, campaignId, user]);
+    dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, investigator, trauma));
+  }, [dispatch, updateCampaignActions, campaignId]);
 
   const {
     showTraumaDialog,
@@ -66,13 +66,13 @@ function CampaignDetailView(props: Props) {
   } = useTraumaDialog(updateInvestigatorTrauma);
 
   const updateWeaknessSet = useCallback((weaknessSet: WeaknessSet) => {
-    dispatch(updateCampaignWeaknessSet(user, updateCampaignActions, campaignId, weaknessSet));
-  }, [dispatch, updateCampaignActions, campaignId, user]);
+    dispatch(updateCampaignWeaknessSet(updateCampaignActions.setWeaknessSet, campaignId, weaknessSet));
+  }, [dispatch, updateCampaignActions, campaignId]);
 
   const updateSpentXp = useCallback((code: string, value: number) => {
-    dispatch(updateCampaignXp(user, updateCampaignActions, campaignId, code, value, 'spentXp'));
-  }, [dispatch, campaignId, updateCampaignActions, user]);
-  const name = campaign?.name();
+    dispatch(updateCampaignXp(updateCampaignActions, campaignId, code, value, 'spentXp'));
+  }, [dispatch, campaignId, updateCampaignActions]);
+  const name = campaign?.name;
   useEffect(() => {
     if (name) {
       Navigation.mergeOptions(componentId, {
@@ -96,7 +96,7 @@ function CampaignDetailView(props: Props) {
   }, [componentId, campaignId]);
 
   const setCampaignName = useCallback((name: string) => {
-    dispatch(updateCampaignName(user, updateCampaignActions, campaignId, name));
+    dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -104,10 +104,10 @@ function CampaignDetailView(props: Props) {
         },
       },
     });
-  }, [campaignId, dispatch, user, updateCampaignActions, componentId]);
+  }, [campaignId, dispatch, updateCampaignActions, componentId]);
   const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Name`,
-    value: campaign?.name() || '',
+    value: campaign?.name || '',
     onValueChange: setCampaignName,
   });
 
@@ -120,7 +120,7 @@ function CampaignDetailView(props: Props) {
   const updateWeaknessAssignedCards = useCallback((weaknessCards: Slots) => {
     if (campaign) {
       updateWeaknessSet({
-        packCodes: campaign.weaknessSet().packCodes || [],
+        packCodes: campaign.weaknessSet.packCodes || [],
         assignedCards: weaknessCards,
       });
     }
@@ -132,7 +132,7 @@ function CampaignDetailView(props: Props) {
       maybeShowWeaknessPrompt(
         deck,
         cards,
-        campaign.weaknessSet().assignedCards || {},
+        campaign.weaknessSet.assignedCards || {},
         updateWeaknessAssignedCards,
         showAlert
       );
@@ -159,11 +159,11 @@ function CampaignDetailView(props: Props) {
       return;
     }
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
-      campaignId: campaign.id(),
+      campaignId: campaign.id,
       singleInvestigator: singleInvestigator.code,
       onDeckSelect: onAddDeck,
     } : {
-      campaignId: campaign.id(),
+      campaignId: campaign.id,
       selectedInvestigatorIds: map(
         allInvestigators,
         investigator => investigator.code
@@ -242,7 +242,13 @@ function CampaignDetailView(props: Props) {
   const addScenarioResultPressed = useCallback(() => {
     showAddScenarioResult(componentId, campaignId);
   }, [campaignId, componentId]);
-  const [chaosBagDialog, showChaosBag] = useChaosBagDialog({ componentId, allInvestigators, campaignId, chaosBag: campaign?.chaosBag() || EMPTY_CHAOS_BAG });
+  const [chaosBagDialog, showChaosBag] = useChaosBagDialog({
+    componentId,
+    allInvestigators,
+    campaignId,
+    chaosBag: campaign?.chaosBag || EMPTY_CHAOS_BAG,
+    setChaosBag: updateCampaignActions.setChaosBag,
+  });
   if (!campaign) {
     return (
       <View>
@@ -254,16 +260,15 @@ function CampaignDetailView(props: Props) {
       </View>
     );
   }
-  const cycleCode = campaign.cycleCode();
   return (
     <View style={[styles.flex, backgroundStyle]}>
       <View style={[styles.flex, backgroundStyle]}>
         <ScrollView contentContainerStyle={backgroundStyle}>
           <View style={space.paddingSideS}>
             <CampaignSummaryHeader
-              name={cycleCode === CUSTOM ? campaign.name() : campaignNames()[cycleCode]}
-              cycle={cycleCode}
-              difficulty={campaign.difficulty()}
+              name={campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode]}
+              cycle={campaign.cycleCode}
+              difficulty={campaign.difficulty}
             />
             <DeckButton
               icon="log"
@@ -317,6 +322,7 @@ function CampaignDetailView(props: Props) {
                 removeInvestigator={onRemoveInvestigator}
                 showXpDialog={showXpDialog}
                 showChooseDeck={showChooseDeck}
+                setCampaignNotes={updateCampaignActions.setCampaignNotes}
               />
             ) }
             <DeckButton
@@ -343,7 +349,7 @@ function CampaignDetailView(props: Props) {
             <DeleteCampaignButton
               componentId={componentId}
               campaignId={campaignId}
-              campaignName={campaign?.name() || ''}
+              campaignName={campaign?.name || ''}
               showAlert={showAlert}
             />
           </View>

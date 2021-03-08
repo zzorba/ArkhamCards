@@ -3,7 +3,7 @@ import { flatMap } from 'lodash';
 
 import OddsCalculatorComponent from './OddsCalculatorComponent';
 import { useCycleScenarios, useInvestigatorCards } from '@components/core/hooks';
-import { useCampaign } from '@data/remote/hooks';
+import { useCampaign } from '@data/hooks';
 
 import { CampaignId } from '@actions/types';
 
@@ -16,7 +16,7 @@ const EMPTY_CHAOS_BAG = {};
 export default function OddsCalculatorView({ campaignId, investigatorIds }: OddsCalculatorProps) {
   const campaign = useCampaign(campaignId);
   const chaosBag = campaign?.chaosBag || EMPTY_CHAOS_BAG;
-  const cycleScenarios = useCycleScenarios(campaign);
+  const cycleScenarios = useCycleScenarios(campaign?.cycleCode);
   const investigators = useInvestigatorCards();
   const allInvestigators = useMemo(() => flatMap(investigatorIds, code => investigators?.[code] || []), [investigatorIds, investigators]);
   if (!campaign) {
