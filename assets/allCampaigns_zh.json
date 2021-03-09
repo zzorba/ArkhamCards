@@ -302,7 +302,7 @@
 },
 {
   "id": "blood_on_the_altar",
-  "scenario_name": "Blood on the Altar",
+  "scenario_name": "血色祭壇",
   "full_name": "Scenario IV: Blood on the Altar",
   "setup": [
     "prologue",
@@ -592,11 +592,11 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into the hidden world of the Mythos.",
         "effects": [
           {
@@ -775,8 +775,8 @@
 },
 {
   "id": "dwl_epilogue",
-  "scenario_name": "Epilogue",
-  "full_name": "Epilogue",
+  "scenario_name": "尾聲故事",
+  "full_name": "尾聲故事",
   "type": "epilogue",
   "icon": "dunwich",
   "setup": [
@@ -1155,11 +1155,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -1417,11 +1417,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -1436,7 +1436,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -1588,7 +1588,7 @@
 },
 {
   "id": "lost_in_time_and_space",
-  "scenario_name": "Lost in Time and Space",
+  "scenario_name": "迷失時空",
   "full_name": "Scenario VII: Lost in Time and Space",
   "setup": [
     "prologue",
@@ -1746,12 +1746,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they saved the world from being torn apart.",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -1906,7 +1906,7 @@
 },
 {
   "id": "dwl_interlude2",
-  "scenario_name": "The Survivors",
+  "scenario_name": "倖存者",
   "full_name": "Interlude II: The Survivors",
   "type": "interlude",
   "icon": "whippoorwills",
@@ -2462,11 +2462,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -2477,11 +2477,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "回想起今晚的恐懼，每位調查員獲得額外1點經驗。",
         "effects": [
           {
@@ -2612,7 +2612,7 @@
 },
 {
   "id": "the_miskatonic_museum",
-  "scenario_name": "The Miskatonic Museum",
+  "scenario_name": "博物館之夜",
   "full_name": "Scenario II: The Miskatonic Museum",
   "setup": [
     "prologue",
@@ -2777,11 +2777,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -2941,7 +2941,7 @@
 },
 {
   "id": "undimensioned_and_unseen",
-  "scenario_name": "Undimensioned and Unseen",
+  "scenario_name": "無人知曉",
   "full_name": "Scenario V: Undimensioned and Unseen",
   "setup": [
     "prologue",
@@ -2969,7 +2969,7 @@
     },
     {
       "id": "warn_or_calm_choice",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -3219,11 +3219,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -3322,7 +3322,7 @@
 },
 {
   "id": "where_doom_awaits",
-  "scenario_name": "Where Doom Awaits",
+  "scenario_name": "毀滅之地",
   "full_name": "Scenario VI: Where Doom Awaits",
   "setup": [
     "prologue",
@@ -3749,11 +3749,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -4596,11 +4596,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -4969,11 +4969,11 @@
     },
     {
       "id": "earn_5_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "因為拯救了阿卡姆，每位調查員獲得額外5點經驗。",
         "effects": [
           {
@@ -4986,11 +4986,11 @@
     },
     {
       "id": "earn_10_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "因為與一個可怕至極的敵人作戰並且獲勝，每位調查員獲得額外10點經驗。",
         "effects": [
           {
@@ -5003,11 +5003,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -5232,7 +5232,7 @@
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into the hidden world of the Mythos.",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -5387,7 +5387,7 @@
   "id": "ptc",
   "position": 2,
   "version": 2,
-  "name": "The Path to Carcosa",
+  "name": "卡爾克薩之路",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -5396,30 +5396,30 @@
     },
     {
       "id": "chasing_the_stranger",
-      "title": "Chasing the Stranger",
+      "title": "追蹤陌生人",
       "type": "count"
     },
     {
       "id": "vips_interviewed",
-      "title": "VIPs Interviewed"
+      "title": "貴賓會談"
     },
     {
       "id": "vips_slain",
-      "title": "VIPs Slain"
+      "title": "貴賓遇害"
     },
     {
       "id": "doubt",
-      "title": "Doubt",
+      "title": "疑惑",
       "type": "count"
     },
     {
       "id": "conviction",
-      "title": "Conviction",
+      "title": "確信",
       "type": "count"
     },
     {
       "id": "hidden",
-      "title": "Campaign Log",
+      "title": "冒險日誌",
       "type": "hidden"
     }
   ],
@@ -5652,7 +5652,7 @@
 }, "scenarios": [
 {
   "id": "a_phantom_of_truth",
-  "scenario_name": "A Phantom of Truth",
+  "scenario_name": "真相幻影",
   "full_name": "Scenario V: A Phantom of Truth",
   "setup": [
     "app_note",
@@ -6420,11 +6420,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -6627,7 +6627,7 @@
 },
 {
   "id": "black_stars_rise",
-  "scenario_name": "Black Stars Rise",
+  "scenario_name": "黑星升起",
   "full_name": "Scenario VII: Black Stars Rise",
   "setup": [
     "intro",
@@ -7109,11 +7109,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -7354,7 +7354,7 @@
 },
 {
   "id": "curtain_call",
-  "scenario_name": "Curtain Call",
+  "scenario_name": "謝幕",
   "full_name": "Scenario I: Curtain Call",
   "setup": [
     "intro",
@@ -7480,11 +7480,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -7705,7 +7705,7 @@
 },
 {
   "id": "dim_carcosa",
-  "scenario_name": "Dim Carcosa",
+  "scenario_name": "卡城幽影",
   "full_name": "Scenario VIII: Dim Carcosa",
   "setup": [
     "check_path_below",
@@ -8293,11 +8293,11 @@
     },
     {
       "id": "earn_xp_triumph",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has truimphed over their own self—the most dangerous of foes.",
         "effects": [
           {
@@ -8310,11 +8310,11 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has learned the truth behind <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -8542,7 +8542,7 @@
 },
 {
   "id": "echoes_of_the_past",
-  "scenario_name": "Echoes of the Past",
+  "scenario_name": "往事回聲",
   "full_name": "Scenario III: Echoes of the Past",
   "setup": [
     "intro",
@@ -8850,11 +8850,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -8865,11 +8865,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 1 bonus experience as they gain insight into the machinations of <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -9127,9 +9127,9 @@
 },
 {
   "id": "ptc_epilogue",
-  "scenario_name": "Epilogue",
+  "scenario_name": "尾聲故事",
   "icon": "maddening_delusions",
-  "full_name": "Epilogue",
+  "full_name": "尾聲故事",
   "type": "epilogue",
   "setup": [
     "check_epilogue"
@@ -9166,7 +9166,7 @@
 },
 {
   "id": "ptc_interlude2",
-  "scenario_name": "Lost Soul",
+  "scenario_name": "失魂落魄",
   "full_name": "Interlude II: Lost Soul",
   "type": "interlude",
   "icon": "the_stranger",
@@ -9754,7 +9754,7 @@
 },
 {
   "id": "the_last_king",
-  "scenario_name": "The Last King",
+  "scenario_name": "最後的王者",
   "full_name": "Scenario II: The Last King",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -10018,11 +10018,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -10236,7 +10236,7 @@
 },
 {
   "id": "the_pallid_mask",
-  "scenario_name": "The Pallid Mask",
+  "scenario_name": "蒼白面具",
   "full_name": "Scenario VI: The Pallid Mask",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -10829,11 +10829,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -11160,7 +11160,7 @@
 },
 {
   "id": "the_unspeakable_oath",
-  "scenario_name": "The Unspeakable Oath",
+  "scenario_name": "邪穢誓約",
   "full_name": "Scenario IV: The Unspeakable Oath",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -11749,11 +11749,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -12002,7 +12002,7 @@
   "id": "rtdwl",
   "position": 1,
   "version": 1,
-  "name": "Return to The Dunwich Legacy",
+  "name": "重返敦威治遺產",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -12462,8 +12462,8 @@
 },
 {
   "id": "dwl_epilogue",
-  "scenario_name": "Epilogue",
-  "full_name": "Epilogue",
+  "scenario_name": "尾聲故事",
+  "full_name": "尾聲故事",
   "type": "epilogue",
   "icon": "dunwich",
   "setup": [
@@ -12515,7 +12515,7 @@
 },
 {
   "id": "return_to_blood_on_the_altar",
-  "scenario_name": "Return to Blood on the Altar",
+  "scenario_name": "重返血色祭壇",
   "full_name": "Scenario IV: Return to Blood on the Altar",
   "setup": [
     "prologue",
@@ -12720,11 +12720,11 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into the hidden world of the Mythos.",
         "effects": [
           {
@@ -13260,11 +13260,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -13378,7 +13378,7 @@
 },
 {
   "id": "return_to_extracurricular_activity",
-  "scenario_name": "Return to Extracurricular Activity",
+  "scenario_name": "重返課外活動",
   "full_name": "Scenario I–A: Return to Extracurricular Activity",
   "setup": [
     "prologue",
@@ -13506,11 +13506,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -13525,7 +13525,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -13742,7 +13742,7 @@
 },
 {
   "id": "return_to_lost_in_time_and_space",
-  "scenario_name": "Return to Lost in Time and Space",
+  "scenario_name": "重返迷失時空",
   "full_name": "Scenario VII: Return to Lost in Time and Space",
   "setup": [
     "prologue",
@@ -13887,12 +13887,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they saved the world from being torn apart.",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -14094,7 +14094,7 @@
 },
 {
   "id": "return_to_the_house_always_wins",
-  "scenario_name": "Return to The House Always Wins",
+  "scenario_name": "重返百賭百勝",
   "full_name": "Scenario I–B: Return to The House Always Wins",
   "setup": [
     "prologue",
@@ -14259,11 +14259,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -14274,11 +14274,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "回想起今晚的恐懼，每位調查員獲得額外1點經驗。",
         "effects": [
           {
@@ -14438,7 +14438,7 @@
 },
 {
   "id": "return_to_the_miskatonic_museum",
-  "scenario_name": "Return to The Miskatonic Museum",
+  "scenario_name": "重返博物館之夜",
   "full_name": "Scenario II: Return to The Miskatonic Museum",
   "setup": [
     "prologue",
@@ -14579,11 +14579,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -14776,7 +14776,7 @@
 },
 {
   "id": "return_to_undimensioned_and_unseen",
-  "scenario_name": "Return to Undimensioned and Unseen",
+  "scenario_name": "重返無人知曉",
   "full_name": "Scenario V: Return to Undimensioned and Unseen",
   "setup": [
     "prologue",
@@ -14806,7 +14806,7 @@
     },
     {
       "id": "warn_or_calm_choice",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -15024,11 +15024,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -15169,7 +15169,7 @@
 },
 {
   "id": "return_to_where_doom_awaits",
-  "scenario_name": "Return to Where Doom Awaits",
+  "scenario_name": "重返毀滅之地",
   "full_name": "Scenario VI: Return to Where Doom Awaits",
   "setup": [
     "prologue",
@@ -15536,11 +15536,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -15667,7 +15667,7 @@
 },
 {
   "id": "dwl_interlude2",
-  "scenario_name": "The Survivors",
+  "scenario_name": "倖存者",
   "full_name": "Interlude II: The Survivors",
   "type": "interlude",
   "icon": "whippoorwills",
@@ -16596,11 +16596,11 @@
     },
     {
       "id": "earn_5_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "因為拯救了阿卡姆，每位調查員獲得額外5點經驗。",
         "effects": [
           {
@@ -16613,11 +16613,11 @@
     },
     {
       "id": "earn_10_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "因為與一個可怕至極的敵人作戰並且獲勝，每位調查員獲得額外10點經驗。",
         "effects": [
           {
@@ -16630,11 +16630,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -16761,7 +16761,7 @@
 },
 {
   "id": "return_to_the_gathering",
-  "scenario_name": "Return to The Gathering",
+  "scenario_name": "重返聚集於此",
   "full_name": "Scenario I: Return to the Gathering",
   "setup": [
     "prologue",
@@ -16870,7 +16870,7 @@
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into the hidden world of the Mythos.",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -17628,11 +17628,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -17754,7 +17754,7 @@
   "id": "rtptc",
   "position": 2,
   "version": 2,
-  "name": "Return to The Path to Carcosa",
+  "name": "重返卡爾克薩之路",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -17763,30 +17763,30 @@
     },
     {
       "id": "chasing_the_stranger",
-      "title": "Chasing the Stranger",
+      "title": "追蹤陌生人",
       "type": "count"
     },
     {
       "id": "vips_interviewed",
-      "title": "VIPs Interviewed"
+      "title": "貴賓會談"
     },
     {
       "id": "vips_slain",
-      "title": "VIPs Slain"
+      "title": "貴賓遇害"
     },
     {
       "id": "doubt",
-      "title": "Doubt",
+      "title": "疑惑",
       "type": "count"
     },
     {
       "id": "conviction",
-      "title": "Conviction",
+      "title": "確信",
       "type": "count"
     },
     {
       "id": "hidden",
-      "title": "Campaign Log",
+      "title": "冒險日誌",
       "type": "hidden"
     }
   ],
@@ -18139,9 +18139,9 @@
 }, "scenarios": [
 {
   "id": "ptc_epilogue",
-  "scenario_name": "Epilogue",
+  "scenario_name": "尾聲故事",
   "icon": "maddening_delusions",
-  "full_name": "Epilogue",
+  "full_name": "尾聲故事",
   "type": "epilogue",
   "setup": [
     "check_epilogue"
@@ -18178,7 +18178,7 @@
 },
 {
   "id": "ptc_interlude2",
-  "scenario_name": "Lost Soul",
+  "scenario_name": "失魂落魄",
   "full_name": "Interlude II: Lost Soul",
   "type": "interlude",
   "icon": "the_stranger",
@@ -18766,7 +18766,7 @@
 },
 {
   "id": "return_to_a_phantom_of_truth",
-  "scenario_name": "Return to A Phantom of Truth",
+  "scenario_name": "重返真相幻影",
   "full_name": "Scenario V: Return to A Phantom of Truth",
   "setup": [
     "app_note",
@@ -19509,11 +19509,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -19747,7 +19747,7 @@
 },
 {
   "id": "return_to_black_stars_rise",
-  "scenario_name": "Return to Black Stars Rise",
+  "scenario_name": "重返黑星升起",
   "full_name": "Scenario VII: Return to Black Stars Rise",
   "setup": [
     "intro",
@@ -20212,11 +20212,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -20491,7 +20491,7 @@
 },
 {
   "id": "return_to_curtain_call",
-  "scenario_name": "Return to Curtain Call",
+  "scenario_name": "重返謝幕",
   "full_name": "Scenario I: Return to Curtain Call",
   "setup": [
     "intro",
@@ -20605,11 +20605,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -20895,7 +20895,7 @@
 },
 {
   "id": "return_to_dim_carcosa",
-  "scenario_name": "Return to Dim Carcosa",
+  "scenario_name": "重返卡城幽影",
   "full_name": "Scenario VIII: Return to Dim Carcosa",
   "setup": [
     "check_path_below",
@@ -21434,11 +21434,11 @@
     },
     {
       "id": "earn_xp_triumph",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has truimphed over their own self—the most dangerous of foes.",
         "effects": [
           {
@@ -21451,11 +21451,11 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has learned the truth behind <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -21743,7 +21743,7 @@
 },
 {
   "id": "return_to_echoes_of_the_past",
-  "scenario_name": "Return to Echoes of the Past",
+  "scenario_name": "重返往事回聲",
   "full_name": "Scenario III: Return to Echoes of the Past",
   "setup": [
     "intro",
@@ -22002,11 +22002,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -22017,11 +22017,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 1 bonus experience as they gain insight into the machinations of <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -22339,7 +22339,7 @@
 },
 {
   "id": "return_to_the_last_king",
-  "scenario_name": "Return to The Last King",
+  "scenario_name": "重返最後的王者",
   "full_name": "Scenario II: Return to The Last King",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -22579,11 +22579,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -22827,7 +22827,7 @@
 },
 {
   "id": "return_to_the_pallid_mask",
-  "scenario_name": "Return to The Pallid Mask",
+  "scenario_name": "重返蒼白面具",
   "full_name": "Scenario VI: Return to The Pallid Mask",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -23398,11 +23398,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -23760,7 +23760,7 @@
 },
 {
   "id": "return_to_the_unspeakable_oath",
-  "scenario_name": "Return to The Unspeakable Oath",
+  "scenario_name": "重返邪穢誓約",
   "full_name": "Scenario IV: Return to The Unspeakable Oath",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -24324,11 +24324,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -24650,7 +24650,7 @@
   "id": "rttfa",
   "position": 3,
   "version": 1,
-  "name": "Return to The Forgotten Age",
+  "name": "重返失落的時代",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -24659,12 +24659,12 @@
     },
     {
       "id": "yigs_fury",
-      "title": "Yig's Fury",
+      "title": "伊格之怒",
       "type": "count"
     },
     {
       "id": "supplies",
-      "title": "Supplies",
+      "title": "補給品",
       "type": "supplies"
     },
     {
@@ -24716,7 +24716,7 @@
     {
       "id": "supplies",
       "type": "rule_reminder",
-      "title": "Supplies",
+      "title": "補給品",
       "text": "At certain points throughout The Forgotten Age campaign, investigators are given the opportunity to choose supplies to bring on their expeditions into the wilds. These supplies are recorded in the Campaign Log, under each investigator’s “Supplies” section.\nSupplies are purchased with supply points, which are granted to investigators whenever they are given the opportunity to purchase supplies. Leftover supply points are not recorded, and are lost.\nAn investigator’s supplies will determine the possible options available during gameplay and throughout the story of this campaign. <b>Each supply has no effect on its own.</b> Some card effects, story options, and resolutions may change or become available depending on the supplies carried by the investigator(s)."
     },
     {
@@ -25004,8 +25004,8 @@
 }, "scenarios": [
 {
   "id": "tfa_epilogue",
-  "scenario_name": "Epilogue",
-  "full_name": "Epilogue",
+  "scenario_name": "尾聲故事",
+  "full_name": "尾聲故事",
   "type": "epilogue",
   "icon": "temporal_flux",
   "setup": [
@@ -25132,7 +25132,7 @@
     },
     {
       "id": "choose_where_relic_goes",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -25290,7 +25290,7 @@
 },
 {
   "id": "tfa_interlude3",
-  "scenario_name": "The Jungle Beckons",
+  "scenario_name": "叢林的呼喚",
   "full_name": "Interlude III: The Jungle Beckons",
   "type": "interlude",
   "icon": "rainforest",
@@ -25900,7 +25900,7 @@
 },
 {
   "id": "tfa_interlude1",
-  "scenario_name": "Restless Nights",
+  "scenario_name": "不眠之夜",
   "full_name": "Interlude I: Restless Nights",
   "type": "interlude",
   "icon": "deadly_traps",
@@ -26442,7 +26442,7 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display:",
+            "text": "勝利牌區：",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -26458,11 +26458,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -26972,11 +26972,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -27236,7 +27236,7 @@
 },
 {
   "id": "return_to_shattered_aeons",
-  "scenario_name": "Return to Shattered Aeons",
+  "scenario_name": "重返破碎永世",
   "full_name": "Scenario VIII: Return to Shattered Aeons",
   "setup": [
     "check_braziers_are_lit",
@@ -27596,12 +27596,12 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has mended the shattered timeline and saved the Earth from catastrophe.",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -27613,11 +27613,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -27777,7 +27777,7 @@
 },
 {
   "id": "return_to_the_boundary_beyond",
-  "scenario_name": "Return to The Boundary Beyond",
+  "scenario_name": "重返界線彼端",
   "full_name": "Scenario IV: Return to The Boundary Beyond",
   "setup": [
     "intro",
@@ -28450,12 +28450,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 1 additional experience for each [[Tenochtitlán]] location in the victory display.",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -28601,7 +28601,7 @@
 },
 {
   "id": "return_to_the_city_of_archives",
-  "scenario_name": "Return to The City of Archives",
+  "scenario_name": "重返天機之城",
   "full_name": "Scenario VI: Return to The City of Archives",
   "setup": [
     "intro_1",
@@ -28631,7 +28631,7 @@
     },
     {
       "id": "choose_to_cooperate",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -28937,11 +28937,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -29078,7 +29078,7 @@
 },
 {
   "id": "return_to_the_depths_of_yoth",
-  "scenario_name": "Return to The Depths of Yoth",
+  "scenario_name": "重返幽嘶之城",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -30140,11 +30140,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -30156,11 +30156,11 @@
     },
     {
       "id": "earn_xp_full_depth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -30432,7 +30432,7 @@
 },
 {
   "id": "return_to_the_doom_of_eztli",
-  "scenario_name": "Return to The Doom of Eztli",
+  "scenario_name": "重返埃茲特里的覆滅",
   "full_name": "Scenario II: Return to The Doom of Eztli",
   "setup": [
     "check_wait_for_additional_supplies",
@@ -30659,7 +30659,7 @@
     },
     {
       "id": "choose_to_continue",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -30794,11 +30794,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -31081,7 +31081,7 @@
 },
 {
   "id": "return_to_the_untamed_wilds",
-  "scenario_name": "Return to The Untamed Wilds",
+  "scenario_name": "重返荒莽密林",
   "full_name": "Scenario I: Return to The Untamed Wilds",
   "setup": [
     "intro",
@@ -31259,11 +31259,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -31530,7 +31530,7 @@
 },
 {
   "id": "return_to_threads_of_fate",
-  "scenario_name": "Return to Threads of Fate",
+  "scenario_name": "重返命運之線",
   "full_name": "Scenario III: Return to Threads of Fate",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -31894,7 +31894,7 @@
     },
     {
       "id": "choose_forging_own_path",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -31936,7 +31936,7 @@
     },
     {
       "id": "choose_forging_own_path_standalone",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -32331,11 +32331,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -33544,11 +33544,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -33679,7 +33679,7 @@
 },
 {
   "id": "tfa_interlude5",
-  "scenario_name": "The Darkness",
+  "scenario_name": "無盡幽暗",
   "full_name": "Interlude V: The Darkness",
   "type": "interlude",
   "icon": "torch",
@@ -34240,7 +34240,7 @@
 },
 {
   "id": "tfa_interlude4",
-  "scenario_name": "Those Held Captive",
+  "scenario_name": "仍被監禁",
   "full_name": "Interlude IV: Those Held Captive",
   "type": "interlude",
   "icon": "cult_of_pnakotus",
@@ -34965,7 +34965,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy",
+            "text": "簡單",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -34999,7 +34999,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35033,7 +35033,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35067,7 +35067,7 @@
           },
           {
             "id": "expert",
-            "text": "Expert",
+            "text": "專家",
             "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35348,7 +35348,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -35557,7 +35557,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy",
+            "text": "簡單",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35591,7 +35591,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35625,7 +35625,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35659,7 +35659,7 @@
           },
           {
             "id": "expert",
-            "text": "Expert",
+            "text": "專家",
             "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35965,7 +35965,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -36113,7 +36113,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, 0, 0, 0, -1, -2, -2, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -36147,7 +36147,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -36383,11 +36383,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 3 bonus experience as they have saved the fabric of existence.",
         "effects": [
           {
@@ -37520,7 +37520,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, 0, 0, 0, -1, -1, -1, -2, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -37556,7 +37556,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "+1, 0, 0, 0, -1, -1, -3, -4, -5, -6, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -37656,11 +37656,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -37772,7 +37772,7 @@
         "choices": [
           {
             "id": "none",
-            "text": "None",
+            "text": "無",
             "steps": [
               "ask_innocent_revelers_killed"
             ]
@@ -37809,7 +37809,7 @@
         "choices": [
           {
             "id": "none",
-            "text": "None"
+            "text": "無"
           },
           {
             "id": "one_or_more",
@@ -37940,7 +37940,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -37981,7 +37981,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -38066,11 +38066,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -38209,7 +38209,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -5, [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -38242,7 +38242,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "+1, 0, -1, -1, -1, -2, -2, -2, -3, -4, -5, -6, [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39057,7 +39057,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy",
+            "text": "簡單",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39091,7 +39091,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39125,7 +39125,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39160,7 +39160,7 @@
           },
           {
             "id": "expert",
-            "text": "Expert",
+            "text": "專家",
             "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39214,7 +39214,7 @@
     {
       "id": "alert_rule",
       "type": "rule_reminder",
-      "title": "Alert",
+      "title": "警戒",
       "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
     },
     {
@@ -39613,7 +39613,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, 0, -1, -1, -2, -3, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39645,7 +39645,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "0, -1, -2, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39873,11 +39873,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -41380,7 +41380,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy",
+            "text": "簡單",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -41414,7 +41414,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -41448,7 +41448,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -41482,7 +41482,7 @@
           },
           {
             "id": "expert",
-            "text": "Expert",
+            "text": "專家",
             "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -41789,7 +41789,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -41933,7 +41933,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -41971,7 +41971,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -42129,11 +42129,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -42422,7 +42422,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -42460,7 +42460,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -42649,11 +42649,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -42920,7 +42920,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy",
+            "text": "簡單",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -42952,7 +42952,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "普通",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -42984,7 +42984,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "困難",
             "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -43016,7 +43016,7 @@
           },
           {
             "id": "expert",
-            "text": "Expert",
+            "text": "專家",
             "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -43384,11 +43384,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -43399,11 +43399,11 @@
     },
     {
       "id": "earn_xp_bonus_2",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -43692,7 +43692,7 @@
   "id": "tcu",
   "position": 4,
   "version": 3,
-  "name": "The Circle Undone",
+  "name": "萬象無終",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -44465,11 +44465,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -44882,11 +44882,11 @@
     },
     {
       "id": "earn_xp_bonus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 5 bonus experience, as they have saved the universe from being devoured.",
         "effects": [
           {
@@ -44978,11 +44978,11 @@
     },
     {
       "id": "earn_xp_bonus_10",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 10 bonus experience, as they have learned the innermost secrets of the Black Book.",
         "effects": [
           {
@@ -45597,8 +45597,8 @@
 },
 {
   "id": "tcu_epilogue",
-  "scenario_name": "Epilogue",
-  "full_name": "Epilogue",
+  "scenario_name": "尾聲故事",
+  "full_name": "尾聲故事",
   "type": "epilogue",
   "icon": "realm_of_death",
   "setup": [
@@ -46140,11 +46140,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -46828,11 +46828,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -48393,11 +48393,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -48613,12 +48613,12 @@
     },
     {
       "id": "earn_xp_bonus_2",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into Arkham’s mysterious past.",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -48896,11 +48896,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -49263,11 +49263,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -50873,11 +50873,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -51899,7 +51899,7 @@
     {
       "id": "alert",
       "type": "rule_reminder",
-      "title": "Alert",
+      "title": "警戒",
       "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
     },
     {
@@ -52294,8 +52294,8 @@
 },
 {
   "id": "tde_epilogue",
-  "scenario_name": "Epilogue",
-  "full_name": "Epilogue",
+  "scenario_name": "尾聲故事",
+  "full_name": "尾聲故事",
   "type": "epilogue",
   "icon": "merging_realities",
   "setup": [
@@ -55054,11 +55054,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -55671,11 +55671,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -56661,11 +56661,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -57363,11 +57363,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -57378,11 +57378,11 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns 5 bonus experience, as they have stopped Nyarlathotep’s scheme once and for all.",
         "effects": [
           {
@@ -58051,7 +58051,7 @@
     {
       "id": "alert",
       "type": "rule_reminder",
-      "title": "Alert",
+      "title": "警戒",
       "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
     },
     {
@@ -58271,11 +58271,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -58305,14 +58305,14 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Yes",
+            "text": "是",
             "steps": [
               "resolution_3"
             ]
           },
           {
             "id": "no",
-            "text": "No",
+            "text": "不",
             "steps": [
               "resolution_4"
             ]
@@ -58752,8 +58752,8 @@
 },
 {
   "id": "tde_epilogue",
-  "scenario_name": "Epilogue",
-  "full_name": "Epilogue",
+  "scenario_name": "尾聲故事",
+  "full_name": "尾聲故事",
   "type": "epilogue",
   "icon": "merging_realities",
   "setup": [
@@ -60988,11 +60988,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -61385,11 +61385,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -62165,12 +62165,12 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they have prevented the Dreamlands and Earth from merging.",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -62646,7 +62646,7 @@
   "id": "tfa",
   "position": 3,
   "version": 1,
-  "name": "The Forgotten Age",
+  "name": "失落的時代",
   "campaign_type": "campaign",
   "campaign_log": [
     {
@@ -62655,12 +62655,12 @@
     },
     {
       "id": "yigs_fury",
-      "title": "Yig's Fury",
+      "title": "伊格之怒",
       "type": "count"
     },
     {
       "id": "supplies",
-      "title": "Supplies",
+      "title": "補給品",
       "type": "supplies"
     },
     {
@@ -62712,7 +62712,7 @@
     {
       "id": "supplies",
       "type": "rule_reminder",
-      "title": "Supplies",
+      "title": "補給品",
       "text": "At certain points throughout The Forgotten Age campaign, investigators are given the opportunity to choose supplies to bring on their expeditions into the wilds. These supplies are recorded in the Campaign Log, under each investigator’s “Supplies” section.\nSupplies are purchased with supply points, which are granted to investigators whenever they are given the opportunity to purchase supplies. Leftover supply points are not recorded, and are lost.\nAn investigator’s supplies will determine the possible options available during gameplay and throughout the story of this campaign. <b>Each supply has no effect on its own.</b> Some card effects, story options, and resolutions may change or become available depending on the supplies carried by the investigator(s)."
     },
     {
@@ -62898,8 +62898,8 @@
 }, "scenarios": [
 {
   "id": "tfa_epilogue",
-  "scenario_name": "Epilogue",
-  "full_name": "Epilogue",
+  "scenario_name": "尾聲故事",
+  "full_name": "尾聲故事",
   "type": "epilogue",
   "icon": "temporal_flux",
   "setup": [
@@ -63026,7 +63026,7 @@
     },
     {
       "id": "choose_where_relic_goes",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -63184,7 +63184,7 @@
 },
 {
   "id": "eztli",
-  "scenario_name": "The Doom of Eztli",
+  "scenario_name": "埃茲特里的覆滅",
   "full_name": "Scenario II: The Doom of Eztli",
   "setup": [
     "check_wait_for_additional_supplies",
@@ -63430,7 +63430,7 @@
     },
     {
       "id": "choose_to_continue",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -63576,11 +63576,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -64060,7 +64060,7 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display:",
+            "text": "勝利牌區：",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -64076,11 +64076,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -64300,11 +64300,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -64452,7 +64452,7 @@
 },
 {
   "id": "tfa_interlude3",
-  "scenario_name": "The Jungle Beckons",
+  "scenario_name": "叢林的呼喚",
   "full_name": "Interlude III: The Jungle Beckons",
   "type": "interlude",
   "icon": "rainforest",
@@ -65062,7 +65062,7 @@
 },
 {
   "id": "tfa_interlude1",
-  "scenario_name": "Restless Nights",
+  "scenario_name": "不眠之夜",
   "full_name": "Interlude I: Restless Nights",
   "type": "interlude",
   "icon": "deadly_traps",
@@ -65352,7 +65352,7 @@
 },
 {
   "id": "shattered_aeons",
-  "scenario_name": "Shattered Aeons",
+  "scenario_name": "破碎永世",
   "full_name": "Scenario VIII: Shattered Aeons",
   "setup": [
     "check_braziers_are_lit",
@@ -65746,12 +65746,12 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has mended the shattered timeline and saved the Earth from catastrophe.",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -65763,11 +65763,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -65882,7 +65882,7 @@
 },
 {
   "id": "the_boundary_beyond",
-  "scenario_name": "The Boundary Beyond",
+  "scenario_name": "界線彼端",
   "full_name": "Scenario IV: The Boundary Beyond",
   "setup": [
     "intro",
@@ -66590,12 +66590,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 1 additional experience for each [[Tenochtitlán]] location in the victory display.",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -66700,7 +66700,7 @@
 },
 {
   "id": "the_city_of_archives",
-  "scenario_name": "The City of Archives",
+  "scenario_name": "天機之城",
   "full_name": "Scenario VI: The City of Archives",
   "setup": [
     "intro_1",
@@ -66729,7 +66729,7 @@
     },
     {
       "id": "choose_to_cooperate",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -67114,11 +67114,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -67166,7 +67166,7 @@
 },
 {
   "id": "tfa_interlude5",
-  "scenario_name": "The Darkness",
+  "scenario_name": "無盡幽暗",
   "full_name": "Interlude V: The Darkness",
   "type": "interlude",
   "icon": "torch",
@@ -67727,7 +67727,7 @@
 },
 {
   "id": "the_depths_of_yoth",
-  "scenario_name": "The Depths of Yoth",
+  "scenario_name": "幽嘶深淵",
   "full_name": "Scenario VII: The Depths of Yoth",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -68814,11 +68814,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -68830,11 +68830,11 @@
     },
     {
       "id": "earn_xp_full_depth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -68997,7 +68997,7 @@
 },
 {
   "id": "tfa_interlude4",
-  "scenario_name": "Those Held Captive",
+  "scenario_name": "仍被監禁",
   "full_name": "Interlude IV: Those Held Captive",
   "type": "interlude",
   "icon": "cult_of_pnakotus",
@@ -69634,7 +69634,7 @@
 },
 {
   "id": "threads_of_fate",
-  "scenario_name": "Threads of Fate",
+  "scenario_name": "命運之線",
   "full_name": "Scenario III: Threads of Fate",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -69996,7 +69996,7 @@
     },
     {
       "id": "choose_forging_own_path",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -70038,7 +70038,7 @@
     },
     {
       "id": "choose_forging_own_path_standalone",
-      "text": "The investigators must decide (choose one):",
+      "text": "調查員必須選擇(一項)：",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -70538,11 +70538,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -71299,11 +71299,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -71375,7 +71375,7 @@
 },
 {
   "id": "wilds",
-  "scenario_name": "The Untamed Wilds",
+  "scenario_name": "荒莽密林",
   "full_name": "Scenario I: The Untamed Wilds",
   "setup": [
     "intro",
@@ -71571,11 +71571,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -72939,7 +72939,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -74212,7 +74212,7 @@
     },
     {
       "id": "flashback_11_assets",
-      "text": "Take control of both the blck key and the set-aside Headdress of Y'ha-nthlei story asset. Place the black key on the Headdress of Y'ha-nthlei. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the black key also takes control of the Headdress of Y'ha-nthlei, as well. If the black key is placed on another card, place the Headdress of Y'ha-nthlei near that card, uncontrolled. If the black key leaves play, remove the Headdress of Y'ha-nthlei from the game."
+      "text": "Take control of both the black key and the set-aside Headdress of Y'ha-nthlei story asset. Place the black key on the Headdress of Y'ha-nthlei. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the black key also takes control of the Headdress of Y'ha-nthlei, as well. If the black key is placed on another card, place the Headdress of Y'ha-nthlei near that card, uncontrolled. If the black key leaves play, remove the Headdress of Y'ha-nthlei from the game."
     },
     {
       "id": "resolution_1",
@@ -74225,7 +74225,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -74672,11 +74672,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "每位調查員獲得經驗值，數量等同於勝利牌區中的勝利點數總值。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -75289,7 +75289,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -75787,7 +75787,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -77042,7 +77042,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "勝利牌區：",
         "effects": [
           {
             "type": "earn_xp",
@@ -78182,8 +78182,8 @@
 },
 {
   "id": "tic_epilogue",
-  "scenario_name": "Epilogue",
-  "full_name": "Epilogue",
+  "scenario_name": "尾聲故事",
+  "full_name": "尾聲故事",
   "type": "placeholder",
   "icon": "rising_tide",
   "setup": [],
