@@ -1,4 +1,4 @@
-import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, GuideAchievement, CampaignNotes, getDeckId, DeckId } from '@actions/types';
+import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId } from '@actions/types';
 import { find, findLast, uniq, map, concat, last, maxBy, sumBy } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
@@ -6,6 +6,7 @@ import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { ChaosBag } from '@app_constants';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 const EMPTY_TRAUMA: Trauma = {};
 
@@ -205,17 +206,27 @@ export class CampaignGuideStateRedux implements CampaignGuideStateT {
   }
 }
 
-
-export class LatestDeckRedux implements LatestDeckT {
+export class MiniDeckRedux implements MiniDeckT {
   id: DeckId;
+  name: string;
   investigator: string;
+  date_update: string;
+
+  constructor(deck: Deck) {
+    this.id = getDeckId(deck);
+    this.name = deck.name;
+    this.investigator = deck.investigator_code;
+    this.date_update = deck.date_update;
+  }
+}
+
+export class LatestDeckRedux extends MiniDeckRedux implements LatestDeckT {
   deck: Deck;
   previousDeck: Deck | undefined;
   campaignId: CampaignId | undefined;
 
   constructor(deck: Deck, previousDeck?: Deck, campaignId?: CampaignId) {
-    this.id = getDeckId(deck);
-    this.investigator = deck.investigator_code;
+    super(deck);
     this.deck = deck;
     this.previousDeck = previousDeck;
     this.campaignId = campaignId;

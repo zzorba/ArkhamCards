@@ -7,7 +7,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { t } from 'ttag';
 
 import NewDialog from '@components/core/NewDialog';
-import { Campaign, Deck, getCampaignId, getDeckId, ParsedDeck, UPDATE_DECK_EDIT } from '@actions/types';
+import { Deck, getDeckId, ParsedDeck, UPDATE_DECK_EDIT } from '@actions/types';
 import { useDispatch } from 'react-redux';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCounter } from '@components/core/hooks';
@@ -23,6 +23,7 @@ import DeckBubbleHeader from './section/DeckBubbleHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { CreateDeckActions, useUpdateDeckActions } from '@data/remote/decks';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface DialogOptions {
   title: string;
@@ -559,7 +560,7 @@ export function useAdjustXpDialog({
 export function useSaveDialog(
   parsedDeckResults: ParsedDeckResults,
   updateCampaignActions: UpdateCampaignActions,
-  campaign?: Campaign,
+  campaign?: SingleCampaignT,
 ): DeckEditState & {
   saving: boolean;
   saveEdits: () => void;
@@ -597,7 +598,7 @@ export function useSaveDialog(
       });
       dispatch(updateCampaignWeaknessSet(
         updateCampaignActions.setWeaknessSet,
-        getCampaignId(campaign),
+        campaign.id,
         {
           packCodes: campaign.weaknessSet?.packCodes || [],
           assignedCards,

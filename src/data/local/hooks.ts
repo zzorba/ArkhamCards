@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { AppState, getMyDecksState, getDeckToCampaignIdMap, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector } from '@reducers';
+import { AppState, MyDecksState, getMyDecksState, getDeckToCampaignIdMap, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector } from '@reducers';
 import { CampaignId, Deck, getCampaignLastUpdated, getLastUpdated } from '@actions/types';
 import { CampaignGuideStateRedux, SingleCampaignRedux } from './types';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
@@ -31,11 +31,6 @@ export function useCampaignFromRedux(campaignId: CampaignId | undefined): Single
   }, [reduxCampaign, latestDecks, campaignId]);
 }
 
-export function useMyDecksRedux(campaignId: CampaignId | undefined) {
-  const {
-    myDecks,
-    myDecksUpdated,
-    refreshing,
-    error,
-  } = useSelector(getMyDecksState);
+export function useMyDecksRedux(): MyDecksState {
+  return useSelector(getMyDecksState);
 }

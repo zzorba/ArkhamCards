@@ -1,15 +1,17 @@
 import { useContext, useMemo, useEffect, useCallback } from 'react';
 import { flatMap, omit } from 'lodash';
 
-import { CampaignId } from '@actions/types';
+import { CampaignId, DeckId } from '@actions/types';
 import { useGetMyCampaignsLazyQuery, MiniCampaignFragment, useCampaignSubscription, useGetProfileQuery, useCampaignGuideSubscription, useGetCampaignQuery, useGetCampaignGuideQuery, useGetMyDecksLazyQuery } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
-import { MiniLinkedCampaignRemote, MiniCampaignRemote, CampaignGuideStateRemote } from './types';
+import { MiniLinkedCampaignRemote, MiniCampaignRemote, CampaignGuideStateRemote, LatestDeckRemote, fragmentToDeckId, MiniDeckRemote } from './types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { SingleCampaignRemote } from '@data/remote/types';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
+import { MyDecksState } from '@reducers';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
@@ -195,8 +197,8 @@ export function useMyProfile(useCached?: boolean): [UserProfile | undefined, boo
   return useProfile(user?.uid, useCached);
 }
 
-export function useRemoteDecks() {
-  const { user } = useContext(ArkhamCardsAuthContext);
+export function useMyDecksRemote(): [MiniDeckT[], boolean, () => void] {
+  const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
   const [loadMyDecks, { data, loading: dataLoading, refetch }] = useGetMyDecksLazyQuery({
     variables: { userId: user?.uid || '' },
     fetchPolicy: 'cache-and-network',
@@ -211,7 +213,7 @@ export function useRemoteDecks() {
     refetch?.({ userId: user?.uid || '' });
   }, [refetch, user]);
   const rawDecks = data?.users_by_pk?.decks;
-  const decks = useMemo(() => {
+  const deckIds = useMemo(() => {
     if (!rawDecks) {
       return [];
     }
@@ -219,16 +221,8 @@ export function useRemoteDecks() {
       if (!deck) {
         return [];
       }
-      if
-      if (campaign.link_a_campaign && campaign.link_b_campaign) {
-        return new MiniLinkedCampaignRemote(
-          omit(campaign, ['link_a_campaign', 'link_b_campaign']) as MiniCampaignFragment,
-          campaign.link_a_campaign,
-          campaign.link_b_campaign
-        );
-      }
-      return new MiniCampaignRemote(campaign);
+      return new MiniDeckRemote(deck);
     });
-  }, [rawCampaigns]);
-  return [campaigns, userLoading || dataLoading, refresh];
+  }, [rawDecks]);
+  return [deckIds, userLoading || dataLoading, refresh];
 }
