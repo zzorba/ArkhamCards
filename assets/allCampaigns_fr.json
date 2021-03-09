@@ -10728,7 +10728,7 @@
           {
             "id": "doubt",
             "text": "Vous avez dépensé des indices pour avancer.",
-            "description": " Inscrivez deux <b>Doutes</b>",
+            "description": "Inscrivez deux <b>Doutes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -10980,7 +10980,7 @@
     },
     {
       "id": "add_two_conviction",
-      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "Pendant le scénario, il vous a été demandé d'inscrire deux <b>Certitudes</b> dans votre Carnet de Campagne.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -11010,7 +11010,7 @@
     },
     {
       "id": "add_two_doubt",
-      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "Pendant ce scénario, il vous a été demandé d'inscrire deux <b>Doutes</b> dans votre Carnet de Campagne.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -11062,13 +11062,13 @@
     {
       "id": "ask_conviction_or_doubt_resolution",
       "type": "input",
-      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "text": "Au cours du scénario, avez-vous reçu des instructions pour modifier votre Carnet de Campagne ?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "doubt",
-            "text": "Mark 2 <b>Doubt</b>.",
+            "text": "Inscrivez 2 <b>Doutes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -11080,7 +11080,7 @@
           },
           {
             "id": "conviction",
-            "text": "Mark 2 <b>Conviction</b>.",
+            "text": "Inscrivez 2 <b>Certitudes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -11092,7 +11092,7 @@
           },
           {
             "id": "neither",
-            "text": "Scenario ended before Act 2b was resolved."
+            "text": "Le scénario s'est terminé avant la résolution de l'acte 2b."
           }
         ]
       }
@@ -23297,7 +23297,7 @@
           {
             "id": "doubt",
             "text": "Vous avez dépensé des indices pour avancer.",
-            "description": " Inscrivez deux <b>Doutes</b>",
+            "description": "Inscrivez deux <b>Doutes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23549,7 +23549,7 @@
     },
     {
       "id": "add_two_conviction",
-      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "Pendant le scénario, il vous a été demandé d'inscrire deux <b>Certitudes</b> dans votre Carnet de Campagne.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23579,7 +23579,7 @@
     },
     {
       "id": "add_two_doubt",
-      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "Pendant ce scénario, il vous a été demandé d'inscrire deux <b>Doutes</b> dans votre Carnet de Campagne.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23631,13 +23631,13 @@
     {
       "id": "ask_conviction_or_doubt_resolution",
       "type": "input",
-      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "text": "Au cours du scénario, avez-vous reçu des instructions pour modifier votre Carnet de Campagne ?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "doubt",
-            "text": "Mark 2 <b>Doubt</b>.",
+            "text": "Inscrivez 2 <b>Doutes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23649,7 +23649,7 @@
           },
           {
             "id": "conviction",
-            "text": "Mark 2 <b>Conviction</b>.",
+            "text": "Inscrivez 2 <b>Certitudes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23661,7 +23661,7 @@
           },
           {
             "id": "neither",
-            "text": "Scenario ended before Act 2b was resolved."
+            "text": "Le scénario s'est terminé avant la résolution de l'acte 2b."
           }
         ]
       }
@@ -43555,7 +43555,7 @@
     {
       "id": "add_chaos_token",
       "type": "input",
-      "text": "Which chaos token should be added to the bag?",
+      "text": "Quels pions Chaos doit être placé dans la réserve du Chaos ?",
       "input": {
         "type": "choose_one",
         "choices": [
