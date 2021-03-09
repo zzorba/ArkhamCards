@@ -26,11 +26,13 @@ import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import { useMyDecks } from '@data/hooks';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 interface OwnProps {
   componentId: string;
   deckClicked: (deck: Deck, investigator?: Card) => void;
-  onlyDeckIds?: DeckId[];
+  onlyDeckIds?: MiniDeckT[];
   onlyInvestigators?: string[];
   filterDeckIds?: DeckId[];
   filterInvestigators?: string[];
@@ -57,14 +59,13 @@ function MyDecksComponent({
   const reLogin = useCallback(() => {
     login();
   }, [login]);
-  const decks = useSelector(getAllDecks);
   const deckToCampaignId = useSelector(getDeckToCampaignIdMap);
   const {
-    myDecks,
+    myDeckIds,
     myDecksUpdated,
     refreshing,
     error,
-  } = useSelector(getMyDecksState);
+  } = useMyDecks();
   const onRefresh = useCallback(() => {
     if (!refreshing) {
       dispatch(refreshMyDecks());
@@ -73,8 +74,8 @@ function MyDecksComponent({
 
   useEffect(() => {
     const now = new Date();
-    if ((!myDecks ||
-      myDecks.length === 0 ||
+    if ((!myDeckIds ||
+      myDeckIds.length === 0 ||
       !myDecksUpdated ||
       (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)
     ) && signedIn) {
@@ -168,13 +169,12 @@ function MyDecksComponent({
     const onlyInvestigatorSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterDeckIdsSet = new Set(map(filterDeckIds, id => id.uuid));
     const filterInvestigatorsSet = new Set(filterInvestigators);
-    return filter(onlyDeckIds || myDecks, deckId => {
-      const deck = getDeck(decks, deckId);
-      return !filterDeckIdsSet.has(deckId.uuid) && (
-        !deck || !filterInvestigatorsSet.has(deck.investigator_code)
-      ) && (!deck || !onlyInvestigatorSet || onlyInvestigatorSet.has(deck.investigator_code));
+    return filter(onlyDeckIds || myDeckIds, deckId => {
+      return !filterDeckIdsSet.has(deckId.id.uuid) && (
+        !filterInvestigatorsSet.has(deckId.investigator)
+      ) && (!onlyInvestigatorSet || onlyInvestigatorSet.has(deckId.investigator));
     });
-  }, [onlyInvestigators, onlyDeckIds, filterDeckIds, filterInvestigators, myDecks, decks]);
+  }, [onlyInvestigators, onlyDeckIds, filterDeckIds, filterInvestigators, myDeckIds]);
   return (
     <DeckListComponent
       searchOptions={searchOptions}
@@ -185,7 +185,7 @@ function MyDecksComponent({
       deckToCampaignId={deckToCampaignId}
       onRefresh={signedIn ? onRefresh : undefined}
       refreshing={refreshing}
-      isEmpty={myDecks.length === 0}
+      isEmpty={myDeckIds.length === 0}
     />
   );
 }

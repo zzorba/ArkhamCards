@@ -6,23 +6,24 @@ import {
   View,
 } from 'react-native';
 import { forEach } from 'lodash';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import DeckList from './DeckList';
-import { Campaign, CampaignId, Deck, DeckId } from '@actions/types';
+import { CampaignId, Deck, DeckId } from '@actions/types';
 import Card from '@data/types/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { fetchPublicDeck } from '@components/deck/actions';
-import { getAllDecks, getDeck } from '@reducers';
+import { getDeck } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCreateDeckActions } from '@data/remote/decks';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 interface Props {
-  deckIds: DeckId[];
+  deckIds: MiniDeckT[];
   deckClicked: (deck: Deck, investigator?: Card) => void;
   onRefresh?: () => void;
   refreshing?: boolean;
@@ -45,16 +46,16 @@ export default function DeckListComponent({
   isEmpty,
 }: Props) {
   const { typography } = useContext(StyleContext);
-  const { lang } = useContext(LanguageContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const [searchTerm, setSearchTerm] = useState('');
-  const decks = useSelector(getAllDecks);
   const handleDeckClick = useCallback((deck: Deck, investigator?: Card) => {
     Keyboard.dismiss();
     deckClicked(deck, investigator);
   }, [deckClicked]);
   const dispatch = useDispatch();
   const createDeckActions = useCreateDeckActions();
+
+
   useEffect(() => {
     // Only do this once, even though it might want to be done a second time.
     forEach(deckIds, deckId => {
@@ -110,7 +111,6 @@ export default function DeckListComponent({
     >
       { onScroll => (
         <DeckList
-          lang={lang}
           deckIds={deckIds}
           header={header}
           footer={renderFooter}
@@ -118,7 +118,6 @@ export default function DeckListComponent({
           deckToCampaignId={deckToCampaignId}
           onRefresh={onRefresh}
           refreshing={refreshing}
-          decks={decks}
           onScroll={onScroll}
           deckClicked={handleDeckClick}
         />

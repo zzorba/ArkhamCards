@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { find, filter, flatMap, forEach, map, last, sortBy, uniq, values, reverse } from 'lodash';
+import _, { find, filter, flatMap, forEach, map, last, sortBy, uniq, values, reverse } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -43,8 +43,9 @@ import {
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag } from '@app_constants';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
-import { MiniCampaignRedux, MiniLinkedCampaignRedux } from '@data/local/types';
+import { MiniCampaignRedux, MiniDeckRedux, MiniLinkedCampaignRedux } from '@data/local/types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -453,8 +454,8 @@ export const makeOtherCampiagnDeckIdsSelector = (): (state: AppState, campaign?:
 
 const EMPTY_MY_DECKS: DeckId[] = [];
 
-interface MyDecksState {
-  myDecks: DeckId[];
+export interface MyDecksState {
+  myDecks: MiniDeckT[];
   myDecksUpdated?: Date;
   refreshing: boolean,
   error?: string;
@@ -470,7 +471,9 @@ export const getMyDecksState: (state: AppState) => MyDecksState = createSelector
   (allDecks, dateUpdated, refreshing, error) => {
     const myDecks = map(reverse(sortBy(filter(values(allDecks), deck => {
       return !!deck && !deck.nextDeckId;
-    }), deck => deck.date_update)), deck => getDeckId(deck));
+    }), deck => deck.date_update)), deck => {
+      return new MiniDeckRedux(deck);
+    });
     return {
       myDecks: myDecks || EMPTY_MY_DECKS,
       myDecksUpdated: dateUpdated ? new Date(dateUpdated) : undefined,

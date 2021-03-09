@@ -1,15 +1,15 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { flatMap, concat, sortBy } from 'lodash';
+import { flatMap, concat, sortBy, reverse, map } from 'lodash';
 
-import { getCampaigns } from '@reducers';
+import { getCampaigns, MyDecksState } from '@reducers';
 import { CampaignId } from '@actions/types';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import Card, { CardsMap } from '@data/types/Card';
-import { useCachedCampaignRemote, useLiveCampaignGuideStateRemote, useLiveCampaignRemote, useRemoteCampaigns, useCachedCampaignGuideStateRemote } from '@data/remote/hooks';
+import { useMyDecksRemote, useCachedCampaignRemote, useLiveCampaignGuideStateRemote, useLiveCampaignRemote, useRemoteCampaigns, useCachedCampaignGuideStateRemote } from '@data/remote/hooks';
 import CampaignGuideStateT from './interfaces/CampaignGuideStateT';
-import { useCampaignFromRedux, useCampaignGuideFromRedux } from './local/hooks';
+import { useCampaignFromRedux, useCampaignGuideFromRedux, useMyDecksRedux } from './local/hooks';
 
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);
@@ -97,4 +97,22 @@ export function useCampaignInvestigators(campaign: undefined | SingleCampaignT, 
     }
     return [flatMap(campaignInvestigators, i => investigators[i] || []), false];
   }, [campaignInvestigators, investigators]);
+}
+
+
+export function useMyDecks() {
+  const { myDecks, error, refreshing, myDecksUpdated } = useMyDecksRedux();
+  const [remoteMyDecks, remoteRefreshing, refresh] = useMyDecksRemote();
+  const mergedMyDecks = useMemo(() => {
+    return reverse(sortBy(
+      [...myDecks, ...remoteMyDecks],
+      r => r.date_update
+    ));
+  }, [myDecks, remoteMyDecks]);
+  return {
+    myDeckIds: mergedMyDecks,
+    error,
+    refreshing: refreshing || remoteRefreshing,
+    myDecksUpdated,
+  };
 }

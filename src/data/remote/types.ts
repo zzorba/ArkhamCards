@@ -7,6 +7,7 @@ import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { ChaosBag } from '@app_constants';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 const EMPTY_TRAUMA = {};
 
@@ -254,26 +255,40 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
   }
 }
 
-export class LatestDeckRemote implements LatestDeckT {
+export function fragmentToDeckId(deck: LatestDeckFragment): DeckId {
+  return deck.arkhamdb_id ? {
+    id: deck.arkhamdb_id,
+    local: false,
+    uuid: `${deck.arkhamdb_id}`,
+    serverId: deck.id,
+  } : {
+    serverId: deck.id,
+    id: undefined,
+    local: true,
+    uuid: deck.local_uuid || '',
+  };
+}
+
+export class MiniDeckRemote implements MiniDeckT {
   id: DeckId;
   investigator: string;
+  date_update: string;
+  name: string;
+  constructor(deck: LatestDeckFragment) {
+    this.id = fragmentToDeckId(deck);
+    this.investigator = deck.investigator;
+    this.name = deck.content?.name || '';
+    this.date_update = deck.content?.date_update || '';
+  }
+}
+
+export class LatestDeckRemote extends MiniDeckRemote implements LatestDeckT {
   deck: Deck;
   previousDeck: Deck | undefined;
   campaignId: CampaignId | undefined;
 
   constructor(deck: LatestDeckFragment) {
-    this.id = deck.arkhamdb_id ? {
-      id: deck.arkhamdb_id,
-      local: false,
-      uuid: `${deck.arkhamdb_id}`,
-      serverId: deck.id,
-    } : {
-      serverId: deck.id,
-      id: undefined,
-      local: true,
-      uuid: deck.local_uuid || '',
-    };
-    this.investigator = deck.investigator;
+    super(deck);
     this.deck = deck.content;
     this.previousDeck = deck.previous_deck?.content;
     this.campaignId = deck.campaign ? {
