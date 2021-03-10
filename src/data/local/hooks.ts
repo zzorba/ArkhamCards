@@ -1,11 +1,12 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { AppState, MyDecksState, getMyDecksState, getDeckToCampaignIdMap, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector } from '@reducers';
-import { CampaignId, Deck, getCampaignLastUpdated, getLastUpdated } from '@actions/types';
-import { CampaignGuideStateRedux, SingleCampaignRedux } from './types';
+import { AppState, MyDecksState, getAllDecks, getMyDecksState, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector, getDeck } from '@reducers';
+import { CampaignId, DeckId, getCampaignLastUpdated, getLastUpdated } from '@actions/types';
+import { CampaignGuideStateRedux, LatestDeckRedux, SingleCampaignRedux } from './types';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export function useCampaignGuideFromRedux(campaignId?: CampaignId): CampaignGuideStateT | undefined {
   const campaignGuideStateSelector = useMemo(makeCampaignGuideStateSelector, []);
@@ -29,6 +30,13 @@ export function useCampaignFromRedux(campaignId: CampaignId | undefined): Single
     }
     return new SingleCampaignRedux(reduxCampaign, latestDecks, getCampaignLastUpdated(reduxCampaign));
   }, [reduxCampaign, latestDecks, campaignId]);
+}
+
+export function useLatestDeckRedux(deckId: DeckId): LatestDeckT | undefined {
+  const decks = useSelector(getAllDecks);
+  const deck = getDeck(decks, deckId);
+  const previousDeck = deck?.previousDeckId ? getDeck(decks, deck.previousDeckId) : undefined;
+  return useMemo(() => deck && new LatestDeckRedux(deck, previousDeck, undefined), [deck, previousDeck]);
 }
 
 export function useMyDecksRedux(): MyDecksState {

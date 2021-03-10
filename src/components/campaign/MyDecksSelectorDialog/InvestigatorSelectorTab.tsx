@@ -5,6 +5,7 @@ import { DeckId, SortType } from '@actions/types';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
 import Card from '@data/types/Card';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 interface Props {
   componentId: string;
@@ -12,7 +13,7 @@ interface Props {
   searchOptions?: SearchOptions;
   sort: SortType;
 
-  onlyDeckIds?: DeckId[];
+  onlyDecks?: MiniDeckT[];
   filterDeckIds: DeckId[];
   filterInvestigators: string[];
 }

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { Campaign, CUSTOM } from '@actions/types';
+import { CUSTOM } from '@actions/types';
 import MiniCampaignSummaryComponent from '../MiniCampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 

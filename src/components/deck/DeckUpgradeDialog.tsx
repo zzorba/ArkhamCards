@@ -23,7 +23,6 @@ import StyleContext from '@styles/StyleContext';
 import { useCampaign } from '@data/hooks';
 import { useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useDeckUpgrade from './useDeckUpgrade';
 import { useCreateDeckActions } from '@data/remote/decks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';

@@ -56,8 +56,8 @@ function MyDecksView({ componentId }: NavigationProps) {
   }, [componentId, colors]);
 
   const searchOptionControls = useMemo(() => {
-    const hasLocalDeck = !!find(myDecks, deckId => deckId.local);
-    const hasOnlineDeck = !!find(myDecks, deckId => !deckId.local);
+    const hasLocalDeck = !!find(myDecks, deckId => deckId.id.local);
+    const hasOnlineDeck = !!find(myDecks, deckId => !deckId.id.local);
     if (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck)) {
       // need to have both to show the toggle.
       return null;
@@ -88,9 +88,9 @@ function MyDecksView({ componentId }: NavigationProps) {
     );
   }, [showNewDeckDialog]);
 
-  const onlyDeckIds = useMemo(() => {
+  const onlyDecks = useMemo(() => {
     if (localDecksOnly) {
-      return filter(myDecks, deckId => deckId.local);
+      return filter(myDecks, deckId => deckId.id.local);
     }
     return undefined;
   }, [myDecks, localDecksOnly]);
@@ -104,7 +104,7 @@ function MyDecksView({ componentId }: NavigationProps) {
       }}
       customFooter={customFooter}
       deckClicked={deckNavClicked}
-      onlyDeckIds={onlyDeckIds}
+      onlyDecks={onlyDecks}
     />
   );
 }

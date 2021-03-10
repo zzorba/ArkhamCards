@@ -1,9 +1,13 @@
-import { CampaignId, Deck, DeckId } from '@actions/types';
+import { Deck, Trauma } from '@actions/types';
+import MiniDeckT from './MiniDeckT';
 
-export default interface LatestDeckT {
-  id: DeckId;
-  investigator: string;
+export interface DeckCampaignInfo {
+  name: string;
+  trauma: Trauma;
+}
+
+export default interface LatestDeckT extends MiniDeckT {
   deck: Deck;
   previousDeck: Deck | undefined;
-  campaignId: CampaignId | undefined;
+  campaign?: DeckCampaignInfo;
 }

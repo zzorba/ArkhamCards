@@ -197,3 +197,11 @@ query getMyDecks(
     }
   }
 }
+
+query getLatestDeck(
+  $deckId: Int!
+) {
+	deck_by_pk(id: $deckId) {
+    ...LatestDeck
+  }
+}

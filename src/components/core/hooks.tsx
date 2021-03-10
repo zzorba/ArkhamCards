@@ -3,7 +3,7 @@ import { BackHandler, InteractionManager, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, CampaignCycleCode, CampaignId, ChaosBagResults, Deck, DeckId, Slots } from '@actions/types';
+import { CampaignCycleCode, CampaignId, ChaosBagResults, Deck, DeckId, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {

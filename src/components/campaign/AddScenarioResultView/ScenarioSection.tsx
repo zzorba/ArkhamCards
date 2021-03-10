@@ -16,7 +16,6 @@ import space from '@styles/space';
 import { useCycleScenarios } from '@components/core/hooks';
 import { usePickerDialog } from '@components/deck/dialogs';
 import { QuerySort } from '@data/sqlite/types';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import EncounterIcon from '@icons/EncounterIcon';
 import StyleContext from '@styles/StyleContext';

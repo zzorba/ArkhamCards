@@ -4,7 +4,7 @@ import { flatMap, forEach, concat, keys, uniq, omit } from 'lodash';
 import deepDiff from 'deep-diff';
 
 import { CampaignGuideReduxData } from './contextHelper';
-import campaignActions, { updateCampaignChaosBag, updateCampaignDifficulty, updateCampaignGuideVersion, updateCampaignInvestigatorData, updateCampaignInvestigatorTrauma, updateCampaignScenarioResults } from '@components/campaign/actions';
+import campaignActions, { updateCampaignChaosBag, updateCampaignDifficulty, updateCampaignGuideVersion, updateCampaignInvestigatorData, updateCampaignScenarioResults } from '@components/campaign/actions';
 import guideActions from '@components/campaignguide/actions';
 import {
   Deck,
@@ -189,8 +189,8 @@ export default function useCampaignGuideContext(
       [code: string]: Deck | undefined;
     } = {};
     forEach(latestDecks, deck => {
-      if (deck && deck.investigator_code) {
-        decksByInvestigator[deck.investigator_code] = deck;
+      if (deck && deck.investigator) {
+        decksByInvestigator[deck.investigator] = deck.deck;
       }
     });
     return decksByInvestigator;

@@ -11,6 +11,14 @@ fragment LatestDeck on deck {
   campaign {
     id
     uuid
+    name
+  }
+  investigator_data {
+    id
+    killed
+    insane
+    physical
+    mental
   }
   previous_deck {
     ...BasicDeck
@@ -113,11 +121,7 @@ fragment FullCampaign on campaign {
   }
   latest_decks {
     deck {
-      id
-      arkhamdb_id
-      local_uuid
-      investigator
-      content
+      ...LatestDeck
     }
   }
   link_a_campaign {

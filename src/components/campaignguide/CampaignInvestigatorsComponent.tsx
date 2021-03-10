@@ -15,7 +15,6 @@ import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 import CampaignLogSectionComponent from './CampaignLogComponent/CampaignLogSectionComponent';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
 import { updateCampaignXp } from '@components/campaign/actions';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
@@ -32,7 +31,7 @@ interface Props {
 
 export default function CampaignInvestigatorsComponent(props: Props) {
   const { componentId, processedCampaign, actions, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog } = props;
-  const { syncCampaignChanges, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, playerCards, lastUpdated, spentXp } = useContext(CampaignGuideContext);
+  const { syncCampaignChanges, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, playerCards, spentXp } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
   const dispatch = useDispatch();
 

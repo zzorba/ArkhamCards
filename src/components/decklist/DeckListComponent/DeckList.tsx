@@ -7,19 +7,18 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Campaign, CampaignId, Deck, DeckId, DecksMap } from '@actions/types';
+import { CampaignId, Deck, DeckId } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { useInvestigatorCards } from '@components/core/hooks';
 import NewDeckListRow from './NewDeckListRow';
-import { getDeck } from '@reducers';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useLatestDeck } from '@data/hooks';
 
 interface Props {
-  lang: string;
   deckIds: MiniDeckT[];
   header?: React.ReactElement;
   footer: (empty: boolean) => React.ReactElement;
@@ -34,34 +33,32 @@ interface Props {
 interface Item {
   key: string;
   deckId: DeckId;
-  deckClicked: (deck: Deck, investigator?: Card) => void;
 }
 
 function keyExtractor(item: Item) {
   return item.deckId.uuid;
 }
 
-function DeckListItem({ item: {
+function DeckListItem({
   deckId,
   deckClicked,
-} }: {
-  item: Item;
+}: {
+  deckId: DeckId;
+  deckClicked: (deck: Deck, investigator?: Card) => void;
 }) {
-  const { backgroundStyle, colors, width } = useContext(StyleContext);
+  const { width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const investigators = useInvestigatorCards();
-  const deck = getDeck(decks, deckId);
+  const deck = useLatestDeck(deckId);
   if (!deck) {
     return null;
   }
-  const investigator = deck && investigators && investigators[deck.investigator_code];
+  const investigator = deck && investigators && investigators[deck.investigator];
   return (
     <NewDeckListRow
       lang={lang}
       key={deckId.uuid}
       deck={deck}
-      previousDeck={deck.previousDeckId ? getDeck(decks, deck.previousDeckId) : undefined}
-      deckToCampaignId={deckToCampaignId}
       investigator={investigator}
       onPress={deckClicked}
       width={width}
@@ -69,8 +66,8 @@ function DeckListItem({ item: {
   );
 }
 
-export default function DeckList({ deckIds, header, searchTerm, deckToCampaignId, refreshing, footer, onRefresh, onScroll, deckClicked }: Props) {
-  const { colors, backgroundStyle, width } = useContext(StyleContext);
+export default function DeckList({ deckIds, header, searchTerm, refreshing, footer, onRefresh, onScroll, deckClicked }: Props) {
+  const { colors, backgroundStyle } = useContext(StyleContext);
   const investigators = useInvestigatorCards();
   const items = useMemo(() => {
     return map(
@@ -88,6 +85,12 @@ export default function DeckList({ deckIds, header, searchTerm, deckToCampaignId
         };
       });
   }, [deckIds, deckClicked, investigators, searchTerm]);
+
+  const renderItem = useCallback(({ item: { deckId } }: {
+    item: Item;
+  }) => {
+    return <DeckListItem key={deckId.uuid} deckId={deckId} deckClicked={deckClicked} />;
+  }, [deckClicked]);
 
   return (
     <FlatList
@@ -107,7 +110,7 @@ export default function DeckList({ deckIds, header, searchTerm, deckToCampaignId
       keyboardDismissMode="on-drag"
       style={[styles.container, backgroundStyle]}
       data={items}
-      renderItem={DeckListItem}
+      renderItem={renderItem}
       keyExtractor={keyExtractor}
       ListHeaderComponent={header}
       removeClippedSubviews

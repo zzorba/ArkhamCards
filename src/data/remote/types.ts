@@ -6,7 +6,7 @@ import { FullCampaignFragment, LatestDeckFragment, FullCampaignGuideFragment, Mi
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { ChaosBag } from '@app_constants';
-import LatestDeckT from '@data/interfaces/LatestDeckT';
+import LatestDeckT, { DeckCampaignInfo } from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 const EMPTY_TRAUMA = {};
@@ -169,7 +169,7 @@ const EMPTY_SCENARIO_RESULTS: ScenarioResult[] = [];
 export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCampaignT {
   fullCampaign: FullCampaignFragment;
   linkCampaignId?: CampaignId;
-  fullLatestDecks: Deck[];
+  fullLatestDecks: LatestDeckT[];
 
   showInterludes: boolean;
   investigatorData: InvestigatorData;
@@ -186,7 +186,7 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
     this.fullCampaign = campaign;
     this.investigatorData = fragmentToFullInvestigatorData(campaign);
     // TODO: do something with their IDs here.
-    this.fullLatestDecks = flatMap(this.fullCampaign.latest_decks, d => d.deck?.content);
+    this.fullLatestDecks = flatMap(this.fullCampaign.latest_decks, d => d.deck ? new LatestDeckRemote(d.deck) : []);
 
     this.showInterludes = !!campaign.showInterludes;
     this.guideVersion = (typeof campaign.guide_version === 'number') ? campaign.guide_version : -1;
@@ -199,7 +199,7 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
       serverId: campaign.linked_campaign.id,
     } : undefined;
   }
-  latestDecks(): Deck[] {
+  latestDecks(): LatestDeckT[] {
     return this.fullLatestDecks;
   }
   investigatorSpentXp(code: string) {
@@ -285,15 +285,20 @@ export class MiniDeckRemote implements MiniDeckT {
 export class LatestDeckRemote extends MiniDeckRemote implements LatestDeckT {
   deck: Deck;
   previousDeck: Deck | undefined;
-  campaignId: CampaignId | undefined;
+  campaign: DeckCampaignInfo | undefined;
 
   constructor(deck: LatestDeckFragment) {
     super(deck);
     this.deck = deck.content;
     this.previousDeck = deck.previous_deck?.content;
-    this.campaignId = deck.campaign ? {
-      campaignId: deck.campaign.uuid,
-      serverId: deck.campaign.id,
+    this.campaign = deck.campaign?.name ? {
+      name: deck.campaign.name,
+      trauma: {
+        mental: deck.investigator_data?.mental || undefined,
+        physical: deck.investigator_data?.physical || undefined,
+        killed: deck.investigator_data?.killed || undefined,
+        insane: deck.investigator_data?.insane || undefined,
+      },
     } : undefined;
   }
 }

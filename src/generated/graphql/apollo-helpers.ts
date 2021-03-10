@@ -410,7 +410,7 @@ export type campaign_variance_fieldsFieldPolicy = {
 	link_b_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	link_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type deckKeySpecifier = ('arkhamdb_id' | 'base' | 'campaign' | 'campaign_id' | 'content' | 'id' | 'investigator' | 'local_uuid' | 'next_deck' | 'next_deck_id' | 'owner' | 'owner_id' | 'previous_deck' | deckKeySpecifier)[];
+export type deckKeySpecifier = ('arkhamdb_id' | 'base' | 'campaign' | 'campaign_id' | 'content' | 'id' | 'investigator' | 'investigator_data' | 'local_uuid' | 'next_deck' | 'next_deck_id' | 'owner' | 'owner_id' | 'previous_deck' | deckKeySpecifier)[];
 export type deckFieldPolicy = {
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	base?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -419,6 +419,7 @@ export type deckFieldPolicy = {
 	content?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
+	investigator_data?: FieldPolicy<any> | FieldReadFunction<any>,
 	local_uuid?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -894,9 +895,8 @@ export type investigator_data_variance_fieldsFieldPolicy = {
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type latest_decksKeySpecifier = ('campaign' | 'campaign_id' | 'deck' | 'id' | 'owner_id' | latest_decksKeySpecifier)[];
+export type latest_decksKeySpecifier = ('campaign_id' | 'deck' | 'id' | 'owner_id' | latest_decksKeySpecifier)[];
 export type latest_decksFieldPolicy = {
-	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,

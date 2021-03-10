@@ -19,7 +19,7 @@ import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import COLORS from '@styles/colors';
 import space, { s, xs } from '@styles/space';
-import { getAllDecks, getMyDecksState, getDeckToCampaignIdMap, getDeck } from '@reducers';
+import { getDeckToCampaignIdMap } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
@@ -32,7 +32,7 @@ import MiniDeckT from '@data/interfaces/MiniDeckT';
 interface OwnProps {
   componentId: string;
   deckClicked: (deck: Deck, investigator?: Card) => void;
-  onlyDeckIds?: MiniDeckT[];
+  onlyDecks?: MiniDeckT[];
   onlyInvestigators?: string[];
   filterDeckIds?: DeckId[];
   filterInvestigators?: string[];
@@ -44,7 +44,7 @@ type Props = OwnProps & LoginStateProps;
 
 function MyDecksComponent({
   deckClicked,
-  onlyDeckIds,
+  onlyDecks,
   onlyInvestigators,
   filterDeckIds = [],
   filterInvestigators = [],
@@ -60,22 +60,23 @@ function MyDecksComponent({
     login();
   }, [login]);
   const deckToCampaignId = useSelector(getDeckToCampaignIdMap);
-  const {
-    myDeckIds,
+  const [{
+    myDecks,
     myDecksUpdated,
     refreshing,
     error,
-  } = useMyDecks();
+  }, refreshRemoteCampaigns] = useMyDecks();
   const onRefresh = useCallback(() => {
     if (!refreshing) {
+      refreshRemoteCampaigns();
       dispatch(refreshMyDecks());
     }
-  }, [dispatch, refreshing]);
+  }, [dispatch, refreshing, refreshRemoteCampaigns]);
 
   useEffect(() => {
     const now = new Date();
-    if ((!myDeckIds ||
-      myDeckIds.length === 0 ||
+    if ((!myDecks ||
+      myDecks.length === 0 ||
       !myDecksUpdated ||
       (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)
     ) && signedIn) {
@@ -169,12 +170,12 @@ function MyDecksComponent({
     const onlyInvestigatorSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterDeckIdsSet = new Set(map(filterDeckIds, id => id.uuid));
     const filterInvestigatorsSet = new Set(filterInvestigators);
-    return filter(onlyDeckIds || myDeckIds, deckId => {
+    return filter(onlyDecks || myDecks, deckId => {
       return !filterDeckIdsSet.has(deckId.id.uuid) && (
         !filterInvestigatorsSet.has(deckId.investigator)
       ) && (!onlyInvestigatorSet || onlyInvestigatorSet.has(deckId.investigator));
     });
-  }, [onlyInvestigators, onlyDeckIds, filterDeckIds, filterInvestigators, myDeckIds]);
+  }, [onlyInvestigators, onlyDecks, filterDeckIds, filterInvestigators, myDecks]);
   return (
     <DeckListComponent
       searchOptions={searchOptions}
@@ -185,7 +186,7 @@ function MyDecksComponent({
       deckToCampaignId={deckToCampaignId}
       onRefresh={signedIn ? onRefresh : undefined}
       refreshing={refreshing}
-      isEmpty={myDeckIds.length === 0}
+      isEmpty={myDecks.length === 0}
     />
   );
 }
