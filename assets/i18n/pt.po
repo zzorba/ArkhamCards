@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2021-03-10 09:15-0500\n"
+"PO-Revision-Date: 2021-03-10 11:03-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
@@ -680,17 +680,6 @@ msgstr "Dados de Backup"
 
 msgid "Cache cleared"
 msgstr "Cache apagado"
-
-#, javascript-format
-msgid "${ cycleCount } Cycle"
-msgid_plural "${ cycleCount } Cycles"
-msgstr[0] "${ cycleCount } Ciclo"
-msgstr[1] "${ cycleCount } Ciclo"
-
-msgid "${ standalonePackCount } Pack"
-msgid_plural "${ standalonePackCount } Packs"
-msgstr[0] "${ standalonePackCount } Pacote"
-msgstr[1] "${ standalonePackCount } Pacotes"
 
 msgid "Edit Spoilers"
 msgstr "Alterar Spoilers"
@@ -4103,6 +4092,17 @@ msgstr "Baralhos com Conhecimento Ancestral devem incluir pelo menos 10 perícia
 
 msgid "Faction, Level, Type"
 msgstr "Facção, Nível, Tipo"
+
+#, javascript-format
+msgid "${ cycleCount } Cycle"
+msgid_plural "${ cycleCount } Cycles"
+msgstr[0] "${ cycleCount } Ciclo"
+msgstr[1] "${ cycleCount } Ciclo"
+
+msgid "${ standalonePackCount } Pack"
+msgid_plural "${ standalonePackCount } Packs"
+msgstr[0] "${ standalonePackCount } Pacote"
+msgstr[1] "${ standalonePackCount } Pacotes"
 
 msgctxt "masculine"
 msgid "Alive"
