@@ -8,7 +8,7 @@ import {
 import { t } from 'ttag';
 
 import DeckList from './DeckList';
-import { CampaignId, Deck } from '@actions/types';
+import { Campaign, Deck } from '@actions/types';
 import Card from '@data/types/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import space, { s } from '@styles/space';
@@ -20,7 +20,7 @@ interface Props {
   deckClicked: (deck: Deck, investigator?: Card) => void;
   onRefresh?: () => void;
   refreshing?: boolean;
-  deckToCampaignId?: { [uuid: string]: CampaignId };
+  deckToCampaign?: { [uuid: string]: Campaign };
   customHeader?: ReactNode;
   customFooter?: ReactNode;
   searchOptions?: SearchOptions;
@@ -32,7 +32,7 @@ export default function DeckListComponent({
   deckClicked,
   onRefresh,
   refreshing,
-  deckToCampaignId,
+  deckToCampaign,
   customHeader,
   customFooter,
   searchOptions,
@@ -94,7 +94,7 @@ export default function DeckListComponent({
           header={header}
           footer={renderFooter}
           searchTerm={searchTerm}
-          deckToCampaignId={deckToCampaignId}
+          deckToCampaign={deckToCampaign}
           onRefresh={onRefresh}
           refreshing={refreshing}
           onScroll={onScroll}

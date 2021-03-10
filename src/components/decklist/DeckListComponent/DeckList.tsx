@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { CampaignId, Deck, DeckId } from '@actions/types';
+import { Campaign, Deck, DeckId } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
@@ -23,7 +23,7 @@ interface Props {
   header?: React.ReactElement;
   footer: (empty: boolean) => React.ReactElement;
   searchTerm: string;
-  deckToCampaignId?: { [uuid: string]: CampaignId };
+  deckToCampaign?: { [uuid: string]: Campaign };
   onRefresh?: () => void;
   refreshing?: boolean;
   onScroll: (...args: any[]) => void;
@@ -42,14 +42,16 @@ function keyExtractor(item: Item) {
 function DeckListItem({
   deckId,
   deckClicked,
+  deckToCampaign,
 }: {
   deckId: DeckId;
   deckClicked: (deck: Deck, investigator?: Card) => void;
+  deckToCampaign?: { [uuid: string]: Campaign };
 }) {
   const { width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const investigators = useInvestigatorCards();
-  const deck = useLatestDeck(deckId);
+  const deck = useLatestDeck(deckId, deckToCampaign);
   if (!deck) {
     return null;
   }
@@ -66,7 +68,10 @@ function DeckListItem({
   );
 }
 
-export default function DeckList({ deckIds, header, searchTerm, refreshing, footer, onRefresh, onScroll, deckClicked }: Props) {
+export default function DeckList({
+  deckIds, header, searchTerm, refreshing, deckToCampaign,
+  footer, onRefresh, onScroll, deckClicked,
+}: Props) {
   const { colors, backgroundStyle } = useContext(StyleContext);
   const investigators = useInvestigatorCards();
   const items = useMemo(() => {
@@ -89,8 +94,15 @@ export default function DeckList({ deckIds, header, searchTerm, refreshing, foot
   const renderItem = useCallback(({ item: { deckId } }: {
     item: Item;
   }) => {
-    return <DeckListItem key={deckId.uuid} deckId={deckId} deckClicked={deckClicked} />;
-  }, [deckClicked]);
+    return (
+      <DeckListItem
+        key={deckId.uuid}
+        deckId={deckId}
+        deckClicked={deckClicked}
+        deckToCampaign={deckToCampaign}
+      />
+    );
+  }, [deckClicked, deckToCampaign]);
 
   return (
     <FlatList

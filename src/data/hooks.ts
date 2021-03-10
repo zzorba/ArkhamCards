@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { flatMap, concat, sortBy, reverse } from 'lodash';
 
 import { getCampaigns, MyDecksState } from '@reducers';
-import { CampaignId, DeckId } from '@actions/types';
+import { Campaign, CampaignId, DeckId } from '@actions/types';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import Card, { CardsMap } from '@data/types/Card';
@@ -118,8 +118,8 @@ export function useMyDecks(): [MyDecksState, () => void] {
   }, refresh];
 }
 
-export function useLatestDeck(deckId: DeckId): LatestDeckT | undefined {
-  const reduxDeck = useLatestDeckRedux(deckId);
+export function useLatestDeck(deckId: DeckId, deckToCampaign?: { [uuid: string]: Campaign }): LatestDeckT | undefined {
+  const reduxDeck = useLatestDeckRedux(deckId, deckToCampaign);
   const remoteDeck = useLatestDeckRemote(deckId);
   return deckId?.serverId ? remoteDeck : reduxDeck;
 }
