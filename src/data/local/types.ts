@@ -5,14 +5,14 @@ import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { ChaosBag } from '@app_constants';
-import LatestDeckT from '@data/interfaces/LatestDeckT';
+import LatestDeckT, { DeckCampaignInfo } from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 const EMPTY_TRAUMA: Trauma = {};
 
 export class MiniCampaignRedux implements MiniCampaignT {
   protected campaign: Campaign;
-  protected campaignDecks: Deck[];
+  protected campaignDecks: LatestDeckT[];
 
   public id: CampaignId;
   public uuid: string;
@@ -28,7 +28,7 @@ export class MiniCampaignRedux implements MiniCampaignT {
 
   constructor(
     campaign: Campaign,
-    campaignDecks: Deck[],
+    campaignDecks: LatestDeckT[],
     updatedAt: Date
   ) {
     this.campaign = campaign;
@@ -37,7 +37,7 @@ export class MiniCampaignRedux implements MiniCampaignT {
     this.updatedAt = updatedAt;
     this.investigators = uniq(
       concat(
-        map(this.campaignDecks, d => d.investigator_code),
+        map(this.campaignDecks, d => d.investigator),
         this.campaign.nonDeckInvestigators || [],
       )
     );
@@ -135,7 +135,7 @@ export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCamp
 
   constructor(
     campaign: Campaign,
-    latestCampaignDecks: Deck[],
+    latestCampaignDecks: LatestDeckT[],
     updatedAt: Date
   ) {
     super(campaign, latestCampaignDecks, updatedAt);
@@ -152,7 +152,7 @@ export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCamp
     } : undefined;
     this.guideVersion = campaign.guideVersion !== undefined ? campaign.guideVersion : -1;
   }
-  latestDecks(): Deck[] {
+  latestDecks(): LatestDeckT[] {
     return this.campaignDecks;
   }
 
@@ -223,12 +223,15 @@ export class MiniDeckRedux implements MiniDeckT {
 export class LatestDeckRedux extends MiniDeckRedux implements LatestDeckT {
   deck: Deck;
   previousDeck: Deck | undefined;
-  campaignId: CampaignId | undefined;
+  campaign: DeckCampaignInfo | undefined;
 
-  constructor(deck: Deck, previousDeck?: Deck, campaignId?: CampaignId) {
+  constructor(deck: Deck, previousDeck: Deck | undefined, campaign: Campaign | undefined) {
     super(deck);
     this.deck = deck;
     this.previousDeck = previousDeck;
-    this.campaignId = campaignId;
+    this.campaign = campaign ? {
+      name: campaign.name,
+      trauma: campaign.investigatorData?.[deck.investigator_code] || {},
+    } : undefined;
   }
 }

@@ -13,7 +13,7 @@ import {
   Fade,
 } from 'rn-placeholder';
 
-import { Campaign, CampaignId, Deck, getDeckId } from '@actions/types';
+import { Campaign, Deck } from '@actions/types';
 import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { getProblemMessage } from '@components/core/DeckProblemRow';
@@ -29,12 +29,11 @@ import InvestigatorImage from '@components/core/InvestigatorImage';
 import ArkhamButtonIcon from '@icons/ArkhamButtonIcon';
 import WarningIcon from '@icons/WarningIcon';
 import { useDeckXpStrings } from '@components/deck/hooks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   lang: string;
-  deck: Deck;
-  previousDeck?: Deck;
-  deckToCampaignId?: { [deck_id: string]: CampaignId };
+  deck: LatestDeckT;
   investigator?: Card;
   onPress?: (deck: Deck, investigator?: Card) => void;
   details?: ReactNode;
@@ -47,8 +46,7 @@ interface Props {
 interface DetailProps {
   investigator?: Card;
   campaign?: Campaign;
-  deck: Deck;
-  previousDeck?: Deck;
+  deck: LatestDeckT;
   details?: ReactNode;
   lang: string;
   eliminated: boolean;
@@ -77,16 +75,14 @@ function DetailLine({ text, icon, last }: { text: string; icon: React.ReactNode;
 
 function DeckListRowDetails({
   investigator,
-  campaign,
   deck,
   details,
-  previousDeck,
   eliminated,
 }: DetailProps) {
   const { colors, typography } = useContext(StyleContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
-  const cards = usePlayerCards(deck.taboo_id || 0);
-  const parsedDeck = useMemo(() => deck && cards && parseBasicDeck(deck, cards, previousDeck), [deck, cards, previousDeck]);
+  const cards = usePlayerCards(deck.deck.taboo_id || 0);
+  const parsedDeck = useMemo(() => deck && cards && parseBasicDeck(deck.deck, cards, deck.previousDeck), [deck, cards]);
   const [mainXpString, xpDetailString] = useDeckXpStrings(parsedDeck);
   if (details) {
     return (
@@ -106,11 +102,11 @@ function DeckListRowDetails({
     );
   }
   const xpString = xpDetailString ? `${mainXpString} · ${xpDetailString}` : mainXpString;
-  const scenarioCount = deck.scenarioCount || 0;
-  const traumaData = campaign && campaign.investigatorData?.[investigator.code];
+  const scenarioCount = deck.deck.scenarioCount || 0;
+  const traumaData = deck.campaign?.trauma;
   const campaignLines: string[] = [];
-  if (campaign) {
-    campaignLines.push(campaign.name);
+  if (deck.campaign) {
+    campaignLines.push(deck.campaign.name);
   }
   if (eliminated) {
     campaignLines.push(investigator.traumaString(traumaData));
@@ -128,7 +124,7 @@ function DeckListRowDetails({
       <DetailLine
         icon={<ArkhamButtonIcon icon="campaign" color="dark" />}
         text={campaignLines.join('\n')}
-        last={!xpString && !deck.problem}
+        last={!xpString && !deck.deck.problem}
       />
       { eliminated && (
         <Text style={typography.small}>
@@ -139,13 +135,13 @@ function DeckListRowDetails({
         <DetailLine
           icon={<ArkhamButtonIcon icon="xp" color="dark" />}
           text={xpString}
-          last={!deck.problem}
+          last={!deck.deck.problem}
         />
       ) }
-      { !!deck.problem && (
+      { !!deck.deck.problem && (
         <DetailLine
           icon={<WarningIcon size={20} />}
-          text={getProblemMessage({ reason: deck.problem })}
+          text={getProblemMessage({ reason: deck.deck.problem })}
           last
         />
       ) }
@@ -156,8 +152,6 @@ function DeckListRowDetails({
 export default function NewDeckListRow({
   lang,
   deck,
-  previousDeck,
-  deckToCampaignId,
   investigator,
   onPress,
   details,
@@ -168,11 +162,10 @@ export default function NewDeckListRow({
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const onDeckPressFunction = useCallback(() => {
-    onPress && onPress(deck, investigator);
+    onPress && onPress(deck.deck, investigator);
   }, [deck, investigator, onPress]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
-  const yithian = useMemo(() => !!deck.slots && (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.slots]);
-  const campaignId = deck && deckToCampaignId && deckToCampaignId[getDeckId(deck).uuid];
+  const yithian = useMemo(() => !!deck.deck.slots && (deck.deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.deck.slots]);
   const eliminated = useMemo(() => {
     if (killedOrInsane) {
       return true;
@@ -180,9 +173,8 @@ export default function NewDeckListRow({
     if (!investigator) {
       return false;
     }
-    const traumaData = campaign && campaign.investigatorData?.[investigator.code];
-    return investigator.eliminated(traumaData);
-  }, [killedOrInsane, investigator, campaign]);
+    return investigator.eliminated(deck.campaign?.trauma);
+  }, [killedOrInsane, investigator, deck]);
 
   const contents = useMemo(() => {
     const faction = investigator?.factionCode();
@@ -198,7 +190,7 @@ export default function NewDeckListRow({
       );
     }
 
-    const date: undefined | string = deck.date_update || deck.date_creation;
+    const date: undefined | string = deck.deck.date_update || deck.deck.date_creation;
     const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
     const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate), lang) : undefined;
     return (
@@ -209,7 +201,7 @@ export default function NewDeckListRow({
             <RoundedFactionHeader faction={faction} width={width - s * 2}>
               <View style={space.paddingSideS}>
                 <Text style={[typography.large, typography.white]} numberOfLines={1} ellipsizeMode="tail">
-                  { deck.name }
+                  { deck.deck.name }
                 </Text>
                 <Text style={[typography.smallLabel, typography.italic, typography.white]}>
                   { investigator?.name || '' }
@@ -242,9 +234,7 @@ export default function NewDeckListRow({
                 <View style={[styles.column, styles.titleColumn]}>
                   <DeckListRowDetails
                     deck={deck}
-                    previousDeck={previousDeck}
                     investigator={investigator}
-                    campaign={campaign}
                     eliminated={eliminated}
                     lang={lang}
                     details={details}
@@ -257,7 +247,7 @@ export default function NewDeckListRow({
         </RoundedFactionBlock>
       </View>
     );
-  }, [colors, previousDeck, yithian, eliminated, deck, campaign, investigator, subDetails, lang, details, width, typography]);
+  }, [colors, yithian, eliminated, deck, investigator, subDetails, lang, details, width, typography]);
 
   if (!deck) {
     return (

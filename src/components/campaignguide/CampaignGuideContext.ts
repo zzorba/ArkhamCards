@@ -5,7 +5,6 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { LatestDecks, ProcessedCampaign } from '@data/scenario';
 import Card, { CardsMap } from '@data/types/Card';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 export interface CampaignGuideContextType {
   campaignId: CampaignId;

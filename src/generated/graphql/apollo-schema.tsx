@@ -1611,6 +1611,8 @@ export type Deck = {
   content?: Maybe<Scalars['jsonb']>;
   id: Scalars['Int'];
   investigator: Scalars['String'];
+  /** An object relationship */
+  investigator_data?: Maybe<Investigator_Data>;
   local_uuid?: Maybe<Scalars['String']>;
   /** An object relationship */
   next_deck: Deck;
@@ -1684,6 +1686,7 @@ export type Deck_Bool_Exp = {
   content?: Maybe<Jsonb_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   investigator?: Maybe<String_Comparison_Exp>;
+  investigator_data?: Maybe<Investigator_Data_Bool_Exp>;
   local_uuid?: Maybe<String_Comparison_Exp>;
   next_deck?: Maybe<Deck_Bool_Exp>;
   next_deck_id?: Maybe<Int_Comparison_Exp>;
@@ -1734,6 +1737,7 @@ export type Deck_Insert_Input = {
   content?: Maybe<Scalars['jsonb']>;
   id?: Maybe<Scalars['Int']>;
   investigator?: Maybe<Scalars['String']>;
+  investigator_data?: Maybe<Investigator_Data_Obj_Rel_Insert_Input>;
   local_uuid?: Maybe<Scalars['String']>;
   next_deck?: Maybe<Deck_Obj_Rel_Insert_Input>;
   next_deck_id?: Maybe<Scalars['Int']>;
@@ -1798,6 +1802,7 @@ export type Deck_Order_By = {
   content?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   investigator?: Maybe<Order_By>;
+  investigator_data?: Maybe<Investigator_Data_Order_By>;
   local_uuid?: Maybe<Order_By>;
   next_deck?: Maybe<Deck_Order_By>;
   next_deck_id?: Maybe<Order_By>;
@@ -3063,6 +3068,13 @@ export type Investigator_Data_Mutation_Response = {
   returning: Array<Investigator_Data>;
 };
 
+/** input type for inserting object relation for remote table "investigator_data" */
+export type Investigator_Data_Obj_Rel_Insert_Input = {
+  data: Investigator_Data_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: Maybe<Investigator_Data_On_Conflict>;
+};
+
 /** on conflict condition type for table "investigator_data" */
 export type Investigator_Data_On_Conflict = {
   constraint: Investigator_Data_Constraint;
@@ -3371,8 +3383,6 @@ export type Jsonb_Comparison_Exp = {
 /** columns and relationships of "latest_decks" */
 export type Latest_Decks = {
   __typename?: 'latest_decks';
-  /** An object relationship */
-  campaign?: Maybe<Campaign>;
   campaign_id?: Maybe<Scalars['Int']>;
   /** An object relationship */
   deck?: Maybe<Deck>;
@@ -3448,7 +3458,6 @@ export type Latest_Decks_Bool_Exp = {
   _and?: Maybe<Array<Latest_Decks_Bool_Exp>>;
   _not?: Maybe<Latest_Decks_Bool_Exp>;
   _or?: Maybe<Array<Latest_Decks_Bool_Exp>>;
-  campaign?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
   deck?: Maybe<Deck_Bool_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
@@ -3463,7 +3472,6 @@ export type Latest_Decks_Inc_Input = {
 
 /** input type for inserting data into table "latest_decks" */
 export type Latest_Decks_Insert_Input = {
-  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   campaign_id?: Maybe<Scalars['Int']>;
   deck?: Maybe<Deck_Obj_Rel_Insert_Input>;
   id?: Maybe<Scalars['Int']>;
@@ -3511,7 +3519,6 @@ export type Latest_Decks_Mutation_Response = {
 
 /** Ordering options when selecting data from "latest_decks". */
 export type Latest_Decks_Order_By = {
-  campaign?: Maybe<Campaign_Order_By>;
   campaign_id?: Maybe<Order_By>;
   deck?: Maybe<Deck_Order_By>;
   id?: Maybe<Order_By>;
@@ -6306,6 +6313,19 @@ export type GetMyDecksQuery = (
   )> }
 );
 
+export type GetLatestDeckQueryVariables = Exact<{
+  deckId: Scalars['Int'];
+}>;
+
+
+export type GetLatestDeckQuery = (
+  { __typename?: 'query_root' }
+  & { deck_by_pk?: Maybe<(
+    { __typename?: 'deck' }
+    & LatestDeckFragment
+  )> }
+);
+
 export type BasicDeckFragment = (
   { __typename?: 'deck' }
   & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
@@ -6315,8 +6335,11 @@ export type LatestDeckFragment = (
   { __typename?: 'deck' }
   & { campaign: (
     { __typename?: 'campaign' }
-    & Pick<Campaign, 'id' | 'uuid'>
-  ), previous_deck?: Maybe<(
+    & Pick<Campaign, 'id' | 'uuid' | 'name'>
+  ), investigator_data?: Maybe<(
+    { __typename?: 'investigator_data' }
+    & Pick<Investigator_Data, 'id' | 'killed' | 'insane' | 'physical' | 'mental'>
+  )>, previous_deck?: Maybe<(
     { __typename?: 'deck' }
     & BasicDeckFragment
   )> }
@@ -6377,7 +6400,7 @@ export type FullCampaignFragment = (
     { __typename?: 'latest_decks' }
     & { deck?: Maybe<(
       { __typename?: 'deck' }
-      & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
+      & LatestDeckFragment
     )> }
   )>, link_a_campaign: (
     { __typename?: 'campaign' }
@@ -6827,27 +6850,6 @@ export type RemoveCampaignInvestigatorMutation = (
   )> }
 );
 
-export const BasicDeckFragmentDoc = gql`
-    fragment BasicDeck on deck {
-  id
-  arkhamdb_id
-  local_uuid
-  investigator
-  content
-}
-    `;
-export const LatestDeckFragmentDoc = gql`
-    fragment LatestDeck on deck {
-  ...BasicDeck
-  campaign {
-    id
-    uuid
-  }
-  previous_deck {
-    ...BasicDeck
-  }
-}
-    ${BasicDeckFragmentDoc}`;
 export const MiniInvestigatorDataFragmentDoc = gql`
     fragment MiniInvestigatorData on investigator_data {
   id
@@ -6921,6 +6923,35 @@ export const FullInvestigatorDataFragmentDoc = gql`
   updated_at
 }
     ${MiniInvestigatorDataFragmentDoc}`;
+export const BasicDeckFragmentDoc = gql`
+    fragment BasicDeck on deck {
+  id
+  arkhamdb_id
+  local_uuid
+  investigator
+  content
+}
+    `;
+export const LatestDeckFragmentDoc = gql`
+    fragment LatestDeck on deck {
+  ...BasicDeck
+  campaign {
+    id
+    uuid
+    name
+  }
+  investigator_data {
+    id
+    killed
+    insane
+    physical
+    mental
+  }
+  previous_deck {
+    ...BasicDeck
+  }
+}
+    ${BasicDeckFragmentDoc}`;
 export const FullCampaignFragmentDoc = gql`
     fragment FullCampaign on campaign {
   id
@@ -6946,11 +6977,7 @@ export const FullCampaignFragmentDoc = gql`
   }
   latest_decks {
     deck {
-      id
-      arkhamdb_id
-      local_uuid
-      investigator
-      content
+      ...LatestDeck
     }
   }
   link_a_campaign {
@@ -6966,7 +6993,8 @@ export const FullCampaignFragmentDoc = gql`
     uuid
   }
 }
-    ${FullInvestigatorDataFragmentDoc}`;
+    ${FullInvestigatorDataFragmentDoc}
+${LatestDeckFragmentDoc}`;
 export const UploadNewCampaignDocument = gql`
     mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $guided: Boolean, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
   insert_guide_input(objects: $inputs) {
@@ -7371,6 +7399,39 @@ export function useGetMyDecksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetMyDecksQueryHookResult = ReturnType<typeof useGetMyDecksQuery>;
 export type GetMyDecksLazyQueryHookResult = ReturnType<typeof useGetMyDecksLazyQuery>;
 export type GetMyDecksQueryResult = Apollo.QueryResult<GetMyDecksQuery, GetMyDecksQueryVariables>;
+export const GetLatestDeckDocument = gql`
+    query getLatestDeck($deckId: Int!) {
+  deck_by_pk(id: $deckId) {
+    ...LatestDeck
+  }
+}
+    ${LatestDeckFragmentDoc}`;
+
+/**
+ * __useGetLatestDeckQuery__
+ *
+ * To run a query within a React component, call `useGetLatestDeckQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLatestDeckQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLatestDeckQuery({
+ *   variables: {
+ *      deckId: // value for 'deckId'
+ *   },
+ * });
+ */
+export function useGetLatestDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestDeckQuery, GetLatestDeckQueryVariables>) {
+        return Apollo.useQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>(GetLatestDeckDocument, baseOptions);
+      }
+export function useGetLatestDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLatestDeckQuery, GetLatestDeckQueryVariables>) {
+          return Apollo.useLazyQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>(GetLatestDeckDocument, baseOptions);
+        }
+export type GetLatestDeckQueryHookResult = ReturnType<typeof useGetLatestDeckQuery>;
+export type GetLatestDeckLazyQueryHookResult = ReturnType<typeof useGetLatestDeckLazyQuery>;
+export type GetLatestDeckQueryResult = Apollo.QueryResult<GetLatestDeckQuery, GetLatestDeckQueryVariables>;
 export const GetMyCampaignsDocument = gql`
     query getMyCampaigns($userId: String!) {
   users_by_pk(id: $userId) {

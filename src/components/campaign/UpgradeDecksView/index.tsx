@@ -25,13 +25,14 @@ import StyleContext from '@styles/StyleContext';
 import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export interface UpgradeDecksProps {
   id: CampaignId;
   scenarioResult: ScenarioResult;
 }
 
-const EMPTY_DECKS: Deck[] = [];
+const EMPTY_DECKS: LatestDeckT[] = [];
 
 function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
@@ -42,7 +43,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
   const latestDecks = campaign?.latestDecks() || EMPTY_DECKS;
   const lang = useSelector(getLangPreference);
   const updateCampaignActions = useUpdateCampaignActions();
-  const originalDeckUuids = useRef(new Set(map(latestDecks, deck => getDeckId(deck).uuid)));
+  const originalDeckUuids = useRef(new Set(map(latestDecks, deck => deck.id.uuid)));
   const close = useCallback(() => {
     Navigation.dismissModal(componentId);
   }, [componentId]);

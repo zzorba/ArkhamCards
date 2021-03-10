@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { EventEmitter } from 'events';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database';
+import database from '@react-native-firebase/database';
 
 import { ENABLE_ARKHAM_CARDS_ACCOUNT } from '@app_constants';
 import ArkhamCardsAuthContext from './ArkhamCardsAuthContext';

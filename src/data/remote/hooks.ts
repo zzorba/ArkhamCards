@@ -2,16 +2,26 @@ import { useContext, useMemo, useEffect, useCallback } from 'react';
 import { flatMap, omit } from 'lodash';
 
 import { CampaignId, DeckId } from '@actions/types';
-import { useGetMyCampaignsLazyQuery, MiniCampaignFragment, useCampaignSubscription, useGetProfileQuery, useCampaignGuideSubscription, useGetCampaignQuery, useGetCampaignGuideQuery, useGetMyDecksLazyQuery } from '@generated/graphql/apollo-schema';
+import {
+  MiniCampaignFragment,
+  useGetMyCampaignsLazyQuery,
+  useCampaignSubscription,
+  useGetProfileQuery,
+  useCampaignGuideSubscription,
+  useGetCampaignQuery,
+  useGetCampaignGuideQuery,
+  useGetMyDecksLazyQuery,
+  useGetLatestDeckQuery,
+} from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
-import { MiniLinkedCampaignRemote, MiniCampaignRemote, CampaignGuideStateRemote, LatestDeckRemote, fragmentToDeckId, MiniDeckRemote } from './types';
+import { MiniLinkedCampaignRemote, MiniCampaignRemote, CampaignGuideStateRemote, LatestDeckRemote, MiniDeckRemote } from './types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { SingleCampaignRemote } from '@data/remote/types';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
-import { MyDecksState } from '@reducers';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
@@ -210,7 +220,9 @@ export function useMyDecksRemote(): [MiniDeckT[], boolean, () => void] {
   }, [user, loadMyDecks]);
 
   const refresh = useCallback(() => {
-    refetch?.({ userId: user?.uid || '' });
+    if (user && refetch) {
+      refetch({ userId: user.uid });
+    }
   }, [refetch, user]);
   const rawDecks = data?.users_by_pk?.decks;
   const deckIds = useMemo(() => {
@@ -225,4 +237,15 @@ export function useMyDecksRemote(): [MiniDeckT[], boolean, () => void] {
     });
   }, [rawDecks]);
   return [deckIds, userLoading || dataLoading, refresh];
+}
+
+
+export function useLatestDeckRemote(deckId: DeckId): LatestDeckT | undefined {
+  const { data } = useGetLatestDeckQuery({
+    variables: { deckId: deckId.serverId || 0 },
+    fetchPolicy: 'cache-only',
+    skip: !deckId.serverId,
+  });
+  const deck = data?.deck_by_pk;
+  return useMemo(() => deck ? new LatestDeckRemote(deck) : undefined, [deck]);
 }

@@ -1,25 +1,18 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import {
   Keyboard,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { forEach } from 'lodash';
-import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import DeckList from './DeckList';
-import { CampaignId, Deck, DeckId } from '@actions/types';
+import { CampaignId, Deck } from '@actions/types';
 import Card from '@data/types/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
-import { fetchPublicDeck } from '@components/deck/actions';
-import { getDeck } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import LanguageContext from '@lib/i18n/LanguageContext';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useCreateDeckActions } from '@data/remote/decks';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 interface Props {
@@ -46,25 +39,11 @@ export default function DeckListComponent({
   isEmpty,
 }: Props) {
   const { typography } = useContext(StyleContext);
-  const { user } = useContext(ArkhamCardsAuthContext);
   const [searchTerm, setSearchTerm] = useState('');
   const handleDeckClick = useCallback((deck: Deck, investigator?: Card) => {
     Keyboard.dismiss();
     deckClicked(deck, investigator);
   }, [deckClicked]);
-  const dispatch = useDispatch();
-  const createDeckActions = useCreateDeckActions();
-
-
-  useEffect(() => {
-    // Only do this once, even though it might want to be done a second time.
-    forEach(deckIds, deckId => {
-      if (!getDeck(decks, deckId) && !deckId.local) {
-        dispatch(fetchPublicDeck(user, createDeckActions, deckId, false));
-      }
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   const header = useMemo(() => (
     <View style={styles.header}>
       { !!customHeader && customHeader }

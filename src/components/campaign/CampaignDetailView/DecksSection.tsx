@@ -21,15 +21,15 @@ import InvestigatorSectionRow from '../CampaignLogSection/InvestigatorSectionRow
 import InvestigatorCountsSection from '../CampaignLogSection/InvestigatorCountsSection';
 import { useDispatch } from 'react-redux';
 import { updateCampaignNotes } from '../actions';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { SetCampaignNotesAction } from '@data/remote/campaigns';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   componentId: string;
   campaignId: CampaignId;
   campaign: SingleCampaignT;
-  latestDecks: Deck[];
+  latestDecks: LatestDeckT[];
   cards: CardsMap;
   allInvestigators: Card[];
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
@@ -61,7 +61,7 @@ export default function DecksSection({
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const removeDeckPrompt = useCallback((investigator: Card) => {
     const deck = find(latestDecks, deck => {
-      return !!(deck && deck.investigator_code === investigator.code);
+      return !!(deck && deck.investigator === investigator.code);
     });
     showAlert(
       t`Remove ${investigator.name}?`,
@@ -75,7 +75,7 @@ export default function DecksSection({
         },
         {
           text: t`Remove`,
-          onPress: () => removeInvestigator(investigator, deck && getDeckId(deck)),
+          onPress: () => removeInvestigator(investigator, deck?.id),
           style: 'destructive',
         },
       ],
@@ -184,8 +184,8 @@ export default function DecksSection({
   return (
     <>
       { flatMap(aliveInvestigators, investigator => {
-        const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
-        return renderInvestigator(investigator, false, deck);
+        const deck = find(latestDecks, deck => deck.investigator === investigator.code);
+        return renderInvestigator(investigator, false, deck?.deck);
       }) }
       { killedInvestigators.length > 0 && (
         <View style={[styles.underline, borderStyle]}>
@@ -195,8 +195,8 @@ export default function DecksSection({
             </Text>
           </View>
           { flatMap(killedInvestigators, investigator => {
-            const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
-            return renderInvestigator(investigator, true, deck);
+            const deck = find(latestDecks, deck => deck.investigator === investigator.code);
+            return renderInvestigator(investigator, true, deck?.deck);
           }) }
         </View>
       ) }

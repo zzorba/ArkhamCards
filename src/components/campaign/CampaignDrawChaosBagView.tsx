@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -14,7 +14,6 @@ import { useNavigationButtonPressed } from '@components/core/hooks';
 import { CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator } from './nav';
 import Card from '@data/types/Card';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useSetCampaignChaosBag } from '@data/remote/campaigns';
 
 export interface CampaignDrawChaosBagProps {

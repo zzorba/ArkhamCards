@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useRef, useReducer } from 'react';
-import { filter, flatMap, forEach, map, uniq } from 'lodash';
+import { filter, forEach, map, uniq } from 'lodash';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Input } from 'react-native-elements';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';

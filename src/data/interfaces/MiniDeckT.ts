@@ -1,4 +1,4 @@
-import { CampaignId, Deck, DeckId } from '@actions/types';
+import { DeckId } from '@actions/types';
 
 export default interface MiniDeckT {
   id: DeckId;

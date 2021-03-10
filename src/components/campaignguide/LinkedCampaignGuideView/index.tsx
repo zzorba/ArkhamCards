@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useRef, useEffect } from 'react';
+import React, { useCallback, useMemo, useRef, useEffect } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { useDispatch } from 'react-redux';

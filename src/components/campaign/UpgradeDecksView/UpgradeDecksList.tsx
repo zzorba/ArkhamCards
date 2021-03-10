@@ -18,6 +18,7 @@ import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useToggles } from '@components/core/hooks';
 import { useCreateDeckActions } from '@data/remote/decks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   lang: string;
@@ -26,7 +27,7 @@ interface Props {
   investigatorData?: InvestigatorData;
   originalDeckUuids: Set<string>;
   componentId: string;
-  decks: Deck[];
+  decks: LatestDeckT[];
   allInvestigators: Card[];
 }
 
@@ -106,14 +107,14 @@ export default function UpgradeDecksList({
   return (
     <>
       { map(investigators, investigator => {
-        const deck = find(decks, deck => deck.investigator_code === investigator.code);
+        const deck = find(decks, deck => deck.investigator === investigator.code);
         if (deck) {
           return (
             <DeckRow
-              key={deck.local ? deck.uuid : deck.id}
+              key={deck.id.local ? deck.id.uuid : deck.id.id}
               lang={lang}
               componentId={componentId}
-              id={getDeckId(deck)}
+              id={deck.id}
               renderDetails={renderDetails}
               compact
               viewDeckButton

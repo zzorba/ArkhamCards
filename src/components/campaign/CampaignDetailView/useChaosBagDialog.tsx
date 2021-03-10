@@ -10,7 +10,6 @@ import space, { m, s } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import Card from '@data/types/Card';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDispatch } from 'react-redux';
 import { CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
@@ -76,7 +75,6 @@ export default function useChaosBagDialog({
       showDrawChaosBag(componentId, campaignId, allInvestigators);
     }
   }, [campaignId, componentId, guided, chaosBag, allInvestigators]);
-  const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
     dispatch(updateCampaignChaosBag(setChaosBag, campaignId, chaosBag));

@@ -4,13 +4,14 @@ import { Navigation } from 'react-native-navigation';
 import MyDecksComponent from '@components/decklist/MyDecksComponent';
 import { Deck, DeckId } from '@actions/types';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 interface Props {
   componentId: string;
   onDeckSelect: (deck: Deck) => void;
   searchOptions?: SearchOptions;
 
-  onlyDeckIds?: DeckId[];
+  onlyDecks?: MiniDeckT[];
   onlyInvestigators?: string[];
   filterDeckIds: DeckId[];
   filterInvestigators: string[];
@@ -21,7 +22,7 @@ export default function DeckSelectorTab({
   searchOptions,
   filterInvestigators,
   filterDeckIds,
-  onlyDeckIds,
+  onlyDecks,
   onlyInvestigators,
   onDeckSelect,
 }: Props) {
@@ -35,7 +36,7 @@ export default function DeckSelectorTab({
       componentId={componentId}
       searchOptions={searchOptions}
       deckClicked={deckSelected}
-      onlyDeckIds={onlyDeckIds}
+      onlyDecks={onlyDecks}
       onlyInvestigators={onlyInvestigators}
       filterDeckIds={filterDeckIds}
       filterInvestigators={filterInvestigators}
