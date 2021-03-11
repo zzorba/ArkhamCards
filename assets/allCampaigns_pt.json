@@ -10,11 +10,11 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "sacrificed",
-      "title": "Sacrificed to Yog-Sothoth"
+      "title": "Sacrificado para Yog-Sothoth"
     },
     {
       "id": "hidden",
@@ -592,11 +592,11 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into the hidden world of the Mythos.",
         "effects": [
           {
@@ -1155,11 +1155,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1417,11 +1417,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1436,7 +1436,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1746,12 +1746,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they saved the world from being torn apart.",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -2462,11 +2462,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -2477,11 +2477,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 1 bonus experience as they reflect on the night’s events.",
         "effects": [
           {
@@ -2777,11 +2777,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -2969,7 +2969,7 @@
     },
     {
       "id": "warn_or_calm_choice",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -3219,11 +3219,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -3749,11 +3749,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -3824,7 +3824,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "cultists_interrogated",
@@ -4596,11 +4596,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -4969,11 +4969,11 @@
     },
     {
       "id": "earn_5_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Cada investigador ganha 5 pontos de experiência bônus por ter salvo a cidade de Arkham de um terrível destino.",
         "effects": [
           {
@@ -4986,11 +4986,11 @@
     },
     {
       "id": "earn_10_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Cada investigador ganha 10 pontos de experiência bônus por ter triunfado em batalha contra um terrível oponente.",
         "effects": [
           {
@@ -5003,11 +5003,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -5232,7 +5232,7 @@
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into the hidden world of the Mythos.",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -5392,34 +5392,34 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "chasing_the_stranger",
-      "title": "Chasing the Stranger",
+      "title": "Perseguindo o Estranho",
       "type": "count"
     },
     {
       "id": "vips_interviewed",
-      "title": "VIPs Interviewed"
+      "title": "VIPs Entrevistados"
     },
     {
       "id": "vips_slain",
-      "title": "VIPs Slain"
+      "title": "VIPs Assassinados"
     },
     {
       "id": "doubt",
-      "title": "Doubt",
+      "title": "Dúvida",
       "type": "count"
     },
     {
       "id": "conviction",
-      "title": "Conviction",
+      "title": "Convicção",
       "type": "count"
     },
     {
       "id": "hidden",
-      "title": "Campaign Log",
+      "title": "Relatório de Campanha",
       "type": "hidden"
     }
   ],
@@ -6420,11 +6420,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -7109,11 +7109,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -7480,11 +7480,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -8293,11 +8293,11 @@
     },
     {
       "id": "earn_xp_triumph",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has truimphed over their own self—the most dangerous of foes.",
         "effects": [
           {
@@ -8310,11 +8310,11 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has learned the truth behind <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -8850,11 +8850,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -8865,11 +8865,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 1 bonus experience as they gain insight into the machinations of <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -10018,11 +10018,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -10829,11 +10829,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -11749,11 +11749,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -12007,11 +12007,11 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "sacrificed",
-      "title": "Sacrificed to Yog-Sothoth"
+      "title": "Sacrificado para Yog-Sothoth"
     },
     {
       "id": "hidden",
@@ -12720,11 +12720,11 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into the hidden world of the Mythos.",
         "effects": [
           {
@@ -13260,11 +13260,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -13506,11 +13506,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -13525,7 +13525,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -13887,12 +13887,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they saved the world from being torn apart.",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -14259,11 +14259,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -14274,11 +14274,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 1 bonus experience as they reflect on the night’s events.",
         "effects": [
           {
@@ -14579,11 +14579,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -14806,7 +14806,7 @@
     },
     {
       "id": "warn_or_calm_choice",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -15024,11 +15024,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -15536,11 +15536,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -16040,7 +16040,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "cultists_interrogated",
@@ -16596,11 +16596,11 @@
     },
     {
       "id": "earn_5_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Cada investigador ganha 5 pontos de experiência bônus por ter salvo a cidade de Arkham de um terrível destino.",
         "effects": [
           {
@@ -16613,11 +16613,11 @@
     },
     {
       "id": "earn_10_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Cada investigador ganha 10 pontos de experiência bônus por ter triunfado em batalha contra um terrível oponente.",
         "effects": [
           {
@@ -16630,11 +16630,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -16870,7 +16870,7 @@
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into the hidden world of the Mythos.",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -17628,11 +17628,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -17759,34 +17759,34 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "chasing_the_stranger",
-      "title": "Chasing the Stranger",
+      "title": "Perseguindo o Estranho",
       "type": "count"
     },
     {
       "id": "vips_interviewed",
-      "title": "VIPs Interviewed"
+      "title": "VIPs Entrevistados"
     },
     {
       "id": "vips_slain",
-      "title": "VIPs Slain"
+      "title": "VIPs Assassinados"
     },
     {
       "id": "doubt",
-      "title": "Doubt",
+      "title": "Dúvida",
       "type": "count"
     },
     {
       "id": "conviction",
-      "title": "Conviction",
+      "title": "Convicção",
       "type": "count"
     },
     {
       "id": "hidden",
-      "title": "Campaign Log",
+      "title": "Relatório de Campanha",
       "type": "hidden"
     }
   ],
@@ -19509,11 +19509,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -20212,11 +20212,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -20605,11 +20605,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -21434,11 +21434,11 @@
     },
     {
       "id": "earn_xp_triumph",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has truimphed over their own self—the most dangerous of foes.",
         "effects": [
           {
@@ -21451,11 +21451,11 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has learned the truth behind <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -22002,11 +22002,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -22017,11 +22017,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 1 bonus experience as they gain insight into the machinations of <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -22579,11 +22579,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -23398,11 +23398,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -24324,11 +24324,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -24655,16 +24655,16 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "yigs_fury",
-      "title": "Yig's Fury",
+      "title": "Fúria de Yig",
       "type": "count"
     },
     {
       "id": "supplies",
-      "title": "Supplies",
+      "title": "Suprimentos",
       "type": "supplies"
     },
     {
@@ -24716,7 +24716,7 @@
     {
       "id": "supplies",
       "type": "rule_reminder",
-      "title": "Supplies",
+      "title": "Suprimentos",
       "text": "At certain points throughout The Forgotten Age campaign, investigators are given the opportunity to choose supplies to bring on their expeditions into the wilds. These supplies are recorded in the Campaign Log, under each investigator’s “Supplies” section.\nSupplies are purchased with supply points, which are granted to investigators whenever they are given the opportunity to purchase supplies. Leftover supply points are not recorded, and are lost.\nAn investigator’s supplies will determine the possible options available during gameplay and throughout the story of this campaign. <b>Each supply has no effect on its own.</b> Some card effects, story options, and resolutions may change or become available depending on the supplies carried by the investigator(s)."
     },
     {
@@ -25132,7 +25132,7 @@
     },
     {
       "id": "choose_where_relic_goes",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -26442,7 +26442,7 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display:",
+            "text": "Marcador de vitória:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -26458,11 +26458,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -26972,11 +26972,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -27596,12 +27596,12 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has mended the shattered timeline and saved the Earth from catastrophe.",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -27613,11 +27613,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -28450,12 +28450,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 1 additional experience for each [[Tenochtitlán]] location in the victory display.",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -28631,7 +28631,7 @@
     },
     {
       "id": "choose_to_cooperate",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -28937,11 +28937,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -30140,11 +30140,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -30156,11 +30156,11 @@
     },
     {
       "id": "earn_xp_full_depth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -30659,7 +30659,7 @@
     },
     {
       "id": "choose_to_continue",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -30794,11 +30794,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -31259,11 +31259,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -31894,7 +31894,7 @@
     },
     {
       "id": "choose_forging_own_path",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -31936,7 +31936,7 @@
     },
     {
       "id": "choose_forging_own_path_standalone",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -32331,11 +32331,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -33544,11 +33544,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -34887,7 +34887,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "hidden",
@@ -34965,7 +34965,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy",
+            "text": "Fácil",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -34999,7 +34999,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35033,7 +35033,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35348,7 +35348,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -35557,7 +35557,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy",
+            "text": "Fácil",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35591,7 +35591,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35625,7 +35625,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -35965,7 +35965,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -36113,7 +36113,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, 0, 0, 0, -1, -2, -2, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -36147,7 +36147,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -36383,11 +36383,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 3 bonus experience as they have saved the fabric of existence.",
         "effects": [
           {
@@ -37520,7 +37520,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, 0, 0, 0, -1, -1, -1, -2, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -37556,7 +37556,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "+1, 0, 0, 0, -1, -1, -3, -4, -5, -6, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -37656,11 +37656,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -37772,7 +37772,7 @@
         "choices": [
           {
             "id": "none",
-            "text": "None",
+            "text": "Nenhum",
             "steps": [
               "ask_innocent_revelers_killed"
             ]
@@ -37809,7 +37809,7 @@
         "choices": [
           {
             "id": "none",
-            "text": "None"
+            "text": "Nenhum"
           },
           {
             "id": "one_or_more",
@@ -37940,7 +37940,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -37981,7 +37981,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -38066,11 +38066,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -38209,7 +38209,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -4, -5, [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -38242,7 +38242,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "+1, 0, -1, -1, -1, -2, -2, -2, -3, -4, -5, -6, [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39057,7 +39057,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy",
+            "text": "Fácil",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39091,7 +39091,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39125,7 +39125,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39613,7 +39613,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, 0, -1, -1, -2, -3, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39645,7 +39645,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "0, -1, -2, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -39873,11 +39873,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -41380,7 +41380,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy",
+            "text": "Fácil",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -41414,7 +41414,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -41448,7 +41448,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -41789,7 +41789,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -41933,7 +41933,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -41971,7 +41971,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -42129,11 +42129,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -42422,7 +42422,7 @@
         "choices": [
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -42460,7 +42460,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -42649,11 +42649,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -42920,7 +42920,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy",
+            "text": "Fácil",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -42952,7 +42952,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard",
+            "text": "Normal",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -42984,7 +42984,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard",
+            "text": "Difícil",
             "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -43384,11 +43384,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -43399,11 +43399,11 @@
     },
     {
       "id": "earn_xp_bonus_2",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -43697,27 +43697,27 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "mementos",
-      "title": "Mementos Discovered"
+      "title": "Lembranças Descobertas"
     },
     {
       "id": "05046",
-      "title": "Missing Persons - Gavriella Mizrah"
+      "title": "Pessoas Desaparecidas - Gavriella Mizrah"
     },
     {
       "id": "05047",
-      "title": "Missing Persons - Jerome Davids"
+      "title": "Pessoas Desaparecidas - Jerome Davids"
     },
     {
       "id": "05049",
-      "title": "Missing Persons - Penny White"
+      "title": "Pessoas Desaparecidas - Penny White"
     },
     {
       "id": "05048",
-      "title": "Missing Persons - Valentino Rivas"
+      "title": "Pessoas Desaparecidas - Valentino Rivas"
     },
     {
       "id": "$input_value",
@@ -44465,11 +44465,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -44882,11 +44882,11 @@
     },
     {
       "id": "earn_xp_bonus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they have saved the universe from being devoured.",
         "effects": [
           {
@@ -44978,11 +44978,11 @@
     },
     {
       "id": "earn_xp_bonus_10",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 10 bonus experience, as they have learned the innermost secrets of the Black Book.",
         "effects": [
           {
@@ -46140,11 +46140,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -46828,11 +46828,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -48393,11 +48393,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -48613,12 +48613,12 @@
     },
     {
       "id": "earn_xp_bonus_2",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into Arkham’s mysterious past.",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -48896,11 +48896,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -49263,11 +49263,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -50873,11 +50873,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -51634,11 +51634,11 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "evidence_of_kadath",
-      "title": "Evidence of Kadath",
+      "title": "Evidência de Kadath",
       "type": "count"
     },
     {
@@ -55054,11 +55054,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -55671,11 +55671,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -56661,11 +56661,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -57363,11 +57363,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -57378,11 +57378,11 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they have stopped Nyarlathotep’s scheme once and for all.",
         "effects": [
           {
@@ -57774,11 +57774,11 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "steps_of_the_bridge",
-      "title": "Steps of the Bridge",
+      "title": "Passos da Ponte",
       "type": "count"
     },
     {
@@ -58271,11 +58271,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -58305,14 +58305,14 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Yes",
+            "text": "Sim",
             "steps": [
               "resolution_3"
             ]
           },
           {
             "id": "no",
-            "text": "No",
+            "text": "Não",
             "steps": [
               "resolution_4"
             ]
@@ -60988,11 +60988,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -61385,11 +61385,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -62165,12 +62165,12 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they have prevented the Dreamlands and Earth from merging.",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -62651,16 +62651,16 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "yigs_fury",
-      "title": "Yig's Fury",
+      "title": "Fúria de Yig",
       "type": "count"
     },
     {
       "id": "supplies",
-      "title": "Supplies",
+      "title": "Suprimentos",
       "type": "supplies"
     },
     {
@@ -62712,7 +62712,7 @@
     {
       "id": "supplies",
       "type": "rule_reminder",
-      "title": "Supplies",
+      "title": "Suprimentos",
       "text": "At certain points throughout The Forgotten Age campaign, investigators are given the opportunity to choose supplies to bring on their expeditions into the wilds. These supplies are recorded in the Campaign Log, under each investigator’s “Supplies” section.\nSupplies are purchased with supply points, which are granted to investigators whenever they are given the opportunity to purchase supplies. Leftover supply points are not recorded, and are lost.\nAn investigator’s supplies will determine the possible options available during gameplay and throughout the story of this campaign. <b>Each supply has no effect on its own.</b> Some card effects, story options, and resolutions may change or become available depending on the supplies carried by the investigator(s)."
     },
     {
@@ -63026,7 +63026,7 @@
     },
     {
       "id": "choose_where_relic_goes",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -63430,7 +63430,7 @@
     },
     {
       "id": "choose_to_continue",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -63576,11 +63576,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -64060,7 +64060,7 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display:",
+            "text": "Marcador de vitória:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -64076,11 +64076,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -64300,11 +64300,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -65746,12 +65746,12 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has mended the shattered timeline and saved the Earth from catastrophe.",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -65763,11 +65763,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -66590,12 +66590,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 1 additional experience for each [[Tenochtitlán]] location in the victory display.",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -66729,7 +66729,7 @@
     },
     {
       "id": "choose_to_cooperate",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -67114,11 +67114,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -68814,11 +68814,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -68830,11 +68830,11 @@
     },
     {
       "id": "earn_xp_full_depth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -69996,7 +69996,7 @@
     },
     {
       "id": "choose_forging_own_path",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -70038,7 +70038,7 @@
     },
     {
       "id": "choose_forging_own_path_standalone",
-      "text": "The investigators must decide (choose one):",
+      "text": "Os investigadores devem decidir (escolha um):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -70538,11 +70538,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -71299,11 +71299,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -71571,11 +71571,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -71811,19 +71811,19 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Campaign Notes"
+      "title": "Notas de Campanha"
     },
     {
       "id": "memories_recovered",
-      "title": "Memories Recovered"
+      "title": "Memórias Recuperadas"
     },
     {
       "id": "possible_suspects",
-      "title": "Possible Suspects"
+      "title": "Possíveis Suspeitos"
     },
     {
       "id": "possible_hideouts",
-      "title": "Possible Hideouts"
+      "title": "Possíveis Esconderijos"
     },
     {
       "id": "hidden",
@@ -72939,7 +72939,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -74225,7 +74225,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -74672,11 +74672,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada investigador ganha experiência igual ao valor de Vitória X de cada carta no marcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -75289,7 +75289,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -75787,7 +75787,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -77042,7 +77042,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory display:",
+        "text": "Marcador de vitória:",
         "effects": [
           {
             "type": "earn_xp",
