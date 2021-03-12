@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2021-03-10 11:03-0500\n"
+"PO-Revision-Date: 2021-03-11 23:18-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
@@ -2556,7 +2556,7 @@ msgid "Note campaign achievements"
 msgstr "Notas de Conquistas de campanha"
 
 msgid "Chaos Bag"
-msgstr "Sacola do Caos"
+msgstr "Bolsa do Caos"
 
 msgid "Complete campaign setup"
 msgstr "Preparação completa de campanha"
@@ -2950,11 +2950,11 @@ msgstr ""
 "text }</i>."
 
 msgid "Add ${ tokenString } to the chaos bag."
-msgstr "Adicionar ${ tokenString } à sacola do caos."
+msgstr "Adicionar ${ tokenString } à bolsa do caos."
 
 #, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
-msgstr "Remover ${ tokenString } da sacola do caos."
+msgstr "Remover ${ tokenString } da bolsa do caos."
 
 #, javascript-format
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
@@ -3217,7 +3217,7 @@ msgid "Selected Difficulty"
 msgstr "Escolher Dificuldade"
 
 msgid "Edit Chaos Bag"
-msgstr "Alterar Sacola do caos"
+msgstr "Alterar Bolsa do caos"
 
 msgid "Edit Assigned Weaknesses"
 msgstr "Alterar Fraquezas Atribuídas"
@@ -3250,7 +3250,7 @@ msgid "Delete campaign"
 msgstr "Apagar campanha"
 
 msgid "Chaos bag is empty"
-msgstr "Sacola do caos está vazia"
+msgstr "Bolsa do caos está vazia"
 
 msgid "Draw another"
 msgstr "Comprar outro"
@@ -3963,7 +3963,7 @@ msgstr ""
 "\n"
 "Use o botão + para criar uma nova.\n"
 "\n"
-"Você pode usar este app para mapear campanhas, incluindo trauma de investigador, sacola "
+"Você pode usar este app para mapear campanhas, incluindo trauma de investigador, bolsa "
 "de caos, fraquezas básicas, notas de campanha e os valores de experiência para todos os "
 "baralhos."
 
@@ -4032,7 +4032,7 @@ msgid "Review scenario results"
 msgstr "Rever resultados do cenário"
 
 msgid "Edit chaos bag"
-msgstr "Alterar sacola do caos"
+msgstr "Alterar bolsa do caos"
 
 msgid "Scenario or Interlude"
 msgstr "Cenário ou Interlúdio"
@@ -4069,7 +4069,7 @@ msgid "Return, but ${ doNotRemove } Bless/Curse"
 msgstr "Retorne, mas  ${ doNotRemove } Bênção/Maldição"
 
 msgid "View chaos bag"
-msgstr "Ver Sacola do caos"
+msgstr "Ver Bolsa do caos"
 
 msgid "Sealed tokens"
 msgstr "Marcadores Selados"
@@ -4092,17 +4092,6 @@ msgstr "Baralhos com Conhecimento Ancestral devem incluir pelo menos 10 perícia
 
 msgid "Faction, Level, Type"
 msgstr "Facção, Nível, Tipo"
-
-#, javascript-format
-msgid "${ cycleCount } Cycle"
-msgid_plural "${ cycleCount } Cycles"
-msgstr[0] "${ cycleCount } Ciclo"
-msgstr[1] "${ cycleCount } Ciclo"
-
-msgid "${ standalonePackCount } Pack"
-msgid_plural "${ standalonePackCount } Packs"
-msgstr[0] "${ standalonePackCount } Pacote"
-msgstr[1] "${ standalonePackCount } Pacotes"
 
 msgctxt "masculine"
 msgid "Alive"
@@ -4409,3 +4398,15 @@ msgstr "Todas"
 msgctxt "trauma"
 msgid "None"
 msgstr "Nenhum"
+
+#, javascript-format
+msgid "${ cycleCount } Cycle"
+msgid_plural "${ cycleCount } Cycles"
+msgstr[0] "${ cycleCount } Ciclo"
+msgstr[1] "${ cycleCount } Ciclo"
+
+msgid "${ standalonePackCount } Pack"
+msgid_plural "${ standalonePackCount } Packs"
+msgstr[0] "${ standalonePackCount } Pacote"
+msgstr[1] "${ standalonePackCount } Pacotes"
+
