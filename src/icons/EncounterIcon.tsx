@@ -350,20 +350,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_heart_of_the_elders':
       case 'return_to_the_heart_of_the_elders':
         return this.forgottenIcon('return_to_the_heart_of_the_elders', size, color);
-      case 'tcu':
-        return this.circleIcon('the_circle_undone', size, color);
-      case 'tsn':
-        return this.circleIcon('the_secret_name', size, color);
-      case 'wos':
-        return this.circleIcon('the_wages_of_sin', size, color);
-      case 'fgg':
-        return this.circleIcon('for_the_greater_good', size, color);
-      case 'uad':
-        return this.circleIcon('union_and_disillusion', size, color);
-      case 'icc':
-        return this.circleIcon('in_the_clutches_of_chaos', size, color);
-      case 'bbt':
-        return this.circleIcon('before_the_black_throne', size, color);
       case 'wog':
       case 'war_of_the_outer_gods':
         return this.standaloneIcon('war_of_the_outer_gods', size, color);
@@ -375,28 +361,60 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'death_of_stars':
       case 'death_of_the_stars':
         return this.standaloneIcon('death_of_the_stars', size, color);
+      case 'tcu':
+        return this.circleIcon('the_circle_undone', size, color);
+      case 'rttcu':
+        return this.circleIcon('rttcu', size, color);
+      case 'tsn':
+      case 'the_secret_name':
+        return this.circleIcon('the_secret_name', size, color);
+      case 'wos':
+      case 'the_wages_of_sin':
+        return this.circleIcon('the_wages_of_sin', size, color);
+      case 'fgg':
+      case 'for_the_greater_good':
+        return this.circleIcon('for_the_greater_good', size, color);
+      case 'uad':
+      case 'union_and_disillusion':
+        return this.circleIcon('union_and_disillusion', size, color);
+      case 'icc':
+      case 'in_the_clutches_of_chaos':
+        return this.circleIcon('in_the_clutches_of_chaos', size, color);
+      case 'bbt':
+      case 'before_the_black_throne':
+        return this.circleIcon('before_the_black_throne', size, color);
+      case 'disappearance_at_the_twilight_estate':
+      case 'return_to_disappearance_at_the_twilight_estate':
+      case 'the_witching_hour':
+      case 'return_to_the_witching_hour':
+      case 'at_deaths_doorstep':
+      case 'return_to_at_deaths_doorstep':
+      case 'return_to_the_secret_name':
+      case 'return_to_the_wages_of_sin':
+      case 'return_to_for_the_greater_good':
+      case 'return_to_union_and_disillusion':
+      case 'return_to_in_the_clutches_of_chaos':
+      case 'return_to_before_the_black_throne':
       case 'the_circle_undone':
       case 'agents_of_azathoth':
       case 'anettes_coven':
-      case 'at_deaths_doorstep':
       case 'city_of_sins':
-      case 'disappearance_at_the_twilight_estate':
       case 'inexorable_fate':
       case 'realm_of_death':
       case 'silver_twilight_lodge':
       case 'spectral_predators':
       case 'the_watcher':
-      case 'the_witching_hour':
       case 'trapped_spirits':
       case 'witchcraft':
       case 'music_of_the_damned':
       case 'secrets_of_the_universe':
-      case 'the_secret_name':
-      case 'the_wages_of_sin':
-      case 'for_the_greater_good':
-      case 'union_and_disillusion':
-      case 'in_the_clutches_of_chaos':
-      case 'before_the_black_throne':
+      case 'witchwork': // real return names tba
+      case 'unspeakable_fate':
+      case 'threatening_evil':
+      case 'spectral_realm':
+      case 'cold_fog':
+      case 'city_of_the_damned':
+      case 'bloodthirsty_spirits':
         return this.circleIcon(encounter_code, size, color);
       case 'tdeb':
         return this.dreamIcon('agents_of_atlach_nacha', size, color);
@@ -450,6 +468,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.innsmouthIcon('horror_in_high_gear', size, color);
       case 'itm':
       case 'into_the_maelstrom':
+        return this.innsmouthIcon('into_the_maelstrom', size, color);
       case 'tic':
       case 'the_innsmouth_conspiracy':
         return this.innsmouthIcon('tic', size, color);

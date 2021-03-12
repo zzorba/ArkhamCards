@@ -10,6 +10,7 @@ export const ALL_LANGUAGES = [
   'ko',
   'uk',
   'pl',
+  'pt',
   'zh',
 ];
 
@@ -32,6 +33,7 @@ export function localizedName(lang: string) {
     case 'uk': return 'Українська';
     case 'pl': return 'Polski';
     case 'ru': return 'Pусский';
+    case 'pt': return 'Português';
     case 'zh': return '汉语';
     default: return 'Unknown';
   }

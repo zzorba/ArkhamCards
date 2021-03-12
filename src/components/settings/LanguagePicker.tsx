@@ -82,6 +82,7 @@ function dialogStrings(lang: string): DialogStrings {
     case 'it':
     case 'pl':
     case 'uk':
+    case 'pt':
     default:
       return {
         title: t`Confirm`,
