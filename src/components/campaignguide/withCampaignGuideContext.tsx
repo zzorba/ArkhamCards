@@ -9,7 +9,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import { CampaignId } from '@actions/types';
 import { useCampaignId } from '@components/campaign/hooks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
-import { useCreateDeckActions } from '@data/remote/decks';
+import { useDeckActions } from '@data/remote/decks';
 
 export interface CampaignGuideInputProps {
   campaignId: CampaignId;
@@ -28,8 +28,8 @@ export default function withCampaignGuideContext<Props>(
     const investigators = useInvestigatorCards();
     const campaignData = useLiveCampaignGuideReduxData(campaignId, investigators);
     const updateCampaignActions = useUpdateCampaignActions();
-    const createDeckActions = useCreateDeckActions();
-    const context = useCampaignGuideContext(campaignId, createDeckActions, updateCampaignActions, campaignData);
+    const deckActions = useDeckActions();
+    const context = useCampaignGuideContext(campaignId, deckActions, updateCampaignActions, campaignData);
     if (!campaignData || !context) {
       return (
         <LoadingSpinner />
@@ -41,13 +41,14 @@ export default function withCampaignGuideContext<Props>(
       </CampaignGuideContext.Provider>
     );
   }
+
   function CampaignDataComponent(props: Props & CampaignGuideInputProps) {
     const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
     const investigators = useInvestigatorCards();
     const campaignData = useCampaignGuideReduxData(campaignId, investigators);
     const updateCampaignActions = useUpdateCampaignActions();
-    const createDeckActions = useCreateDeckActions();
-    const context = useCampaignGuideContext(campaignId, createDeckActions, updateCampaignActions, campaignData);
+    const deckActions = useDeckActions();
+    const context = useCampaignGuideContext(campaignId, deckActions, updateCampaignActions, campaignData);
     if (!campaignData || !context) {
       return (
         <LoadingSpinner />

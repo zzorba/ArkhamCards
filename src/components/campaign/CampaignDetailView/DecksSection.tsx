@@ -141,7 +141,7 @@ export default function DecksSection({
       <InvestigatorCampaignRow
         key={investigator.code}
         componentId={componentId}
-        campaignId={campaignId}
+        campaign={campaign}
         investigator={investigator}
         spentXp={traumaAndCardData.spentXp || 0}
         totalXp={traumaAndCardData.availableXp || 0}
@@ -172,7 +172,7 @@ export default function DecksSection({
         />
       </InvestigatorCampaignRow>
     );
-  }, [componentId, campaign, campaignId, cards,
+  }, [componentId, campaign, cards,
     showTextEditDialog, updateInvestigatorNotes, showCountDialog,
     showTraumaDialog, showXpDialog, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator]);
 

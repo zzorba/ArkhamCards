@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Campaign, Deck, DeckId } from '@actions/types';
+import { Campaign, CampaignId, Deck, DeckId } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
@@ -27,7 +27,7 @@ interface Props {
   onRefresh?: () => void;
   refreshing?: boolean;
   onScroll: (...args: any[]) => void;
-  deckClicked: (deck: Deck, investigator?: Card) => void;
+  deckClicked: (deck: Deck, investigator: Card | undefined, campaign: CampaignId | undefined) => void;
 }
 
 interface Item {
@@ -45,7 +45,7 @@ function DeckListItem({
   deckToCampaign,
 }: {
   deckId: DeckId;
-  deckClicked: (deck: Deck, investigator?: Card) => void;
+  deckClicked: (deck: Deck, investigator: Card | undefined, campaignId: CampaignId | undefined) => void;
   deckToCampaign?: { [uuid: string]: Campaign };
 }) {
   const { width } = useContext(StyleContext);

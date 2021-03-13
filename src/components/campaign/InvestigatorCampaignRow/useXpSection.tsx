@@ -9,10 +9,12 @@ import { AppState, makeDeckSelector } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 interface Props {
   componentId: string;
   deck?: Deck;
+  campaign: MiniCampaignT;
   cards: CardsMap;
   investigator: Card;
   showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
@@ -23,7 +25,7 @@ interface Props {
   last?: boolean;
 }
 
-export default function useXpSection({ componentId, deck, cards, investigator, last, showDeckUpgrade, editXpPressed, spentXp, totalXp }: Props): [React.ReactNode, boolean] {
+export default function useXpSection({ componentId, deck, campaign, cards, investigator, last, showDeckUpgrade, editXpPressed, spentXp, totalXp }: Props): [React.ReactNode, boolean] {
   const { colors } = useContext(StyleContext);
   const previousDeckSelector = useMemo(makeDeckSelector, []);
   const previousDeck = useSelector((state: AppState) => {
@@ -41,12 +43,13 @@ export default function useXpSection({ componentId, deck, cards, investigator, l
       showDeckModal(
         componentId,
         deck,
+        campaign?.id,
         colors,
         investigator,
-        { hideCampaign: true, initialMode: 'upgrade' }
+        'upgrade',
       );
     }
-  }, [colors, componentId, deck, investigator]);
+  }, [colors, componentId, campaign, deck, investigator]);
 
   const parsedDeck = useMemo(() => {
     if (!deck) {

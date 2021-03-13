@@ -230,6 +230,7 @@ export class LatestDeckRedux extends MiniDeckRedux implements LatestDeckT {
     this.deck = deck;
     this.previousDeck = previousDeck;
     this.campaign = campaign ? {
+      id: getCampaignId(campaign),
       name: campaign.name,
       trauma: campaign.investigatorData?.[deck.investigator_code] || {},
     } : undefined;

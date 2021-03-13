@@ -16,6 +16,7 @@ import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useDeckActions } from '@data/remote/decks';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -27,6 +28,7 @@ function CampaignGuideView(props: Props) {
   const campaignData = useContext(CampaignGuideContext);
   const { campaignId } = campaignData;
   const dispatch = useDispatch();
+  const deckActions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
   const setCampaignName = useCallback((name: string) => {
     dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
@@ -40,7 +42,7 @@ function CampaignGuideView(props: Props) {
   }, [campaignId, dispatch, updateCampaignActions, componentId]);
   const { dialog, showDialog: showEditNameDialog } = useSimpleTextDialog({
     title: t`Name`,
-    value: campaignData.campaignName,
+    value: campaignData.campaign.name,
     onValueChange: setCampaignName,
   });
 
@@ -51,7 +53,7 @@ function CampaignGuideView(props: Props) {
     }
   }, componentId, [showEditNameDialog]);
 
-  const { campaignGuide, campaignState, campaignName } = campaignData;
+  const { campaignGuide, campaignState, campaign } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const [alertDialog, showAlert] = useAlertDialog();
   const footerButtons = useMemo(() => {
@@ -61,17 +63,18 @@ function CampaignGuideView(props: Props) {
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
           showAlert={showAlert}
+          deckActions={deckActions}
           guided
         />
         <DeleteCampaignButton
           componentId={componentId}
           campaignId={campaignId}
-          campaignName={campaignName || ''}
+          campaignName={campaign.name || ''}
           showAlert={showAlert}
         />
       </View>
     );
-  }, [componentId, campaignName, campaignId, setCampaignServerId, showAlert]);
+  }, [componentId, campaign.name, campaignId, deckActions, setCampaignServerId, showAlert]);
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab

@@ -12,7 +12,7 @@ import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
 import { parseDeck } from '@lib/parseDeck';
 import { AppState, makeDeckEditsSelector } from '@reducers';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
 
 export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [string | undefined, string | undefined] {
   return useMemo(() => {
@@ -141,7 +141,7 @@ function useParsedDeckHelper(
 export function useParsedDeckWithFetch(
   id: DeckId,
   componentId: string,
-  actions: CreateDeckActions,
+  actions: DeckActions,
   initialMode?: 'upgrade' | 'edit',
 ) {
   const [deck, previousDeck] = useDeckWithFetch(id, actions);

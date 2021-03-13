@@ -13,9 +13,11 @@ import useNetworkStatus from '@components/core/useNetworkStatus';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { ShowAlert } from '@components/deck/dialogs';
 import { s } from '@styles/space';
+import { DeckActions } from '@data/remote/decks';
 
 interface Props {
   campaignId: CampaignId;
+  deckActions: DeckActions;
   setCampaignServerId: (serverId: number) => void;
   showAlert: ShowAlert;
   guided: boolean;
@@ -27,7 +29,7 @@ interface Props {
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function UploadCampaignButton({ campaignId, setCampaignServerId, showAlert }: Props) {
+export default function UploadCampaignButton({ campaignId, deckActions, setCampaignServerId, showAlert }: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
@@ -37,14 +39,15 @@ export default function UploadCampaignButton({ campaignId, setCampaignServerId, 
     if (!uploading && user && !campaignId.serverId) {
       setUploading(true);
       try {
-        const newCampaignId = await dispatch(uploadCampaign(user, createCampaignActions, campaignId));
+        const newCampaignId = await dispatch(uploadCampaign(user, createCampaignActions, deckActions, campaignId));
         setCampaignServerId(newCampaignId.serverId);
       } catch (e) {
         showAlert('Error', e.message);
       }
       setUploading(false);
     }
-  }, [dispatch, createCampaignActions, setCampaignServerId, setUploading, showAlert, user, uploading, campaignId]);
+  }, [dispatch, setCampaignServerId, setUploading, showAlert,
+    createCampaignActions, user, uploading, deckActions, campaignId]);
   if (!user || campaignId.serverId) {
     return null;
   }

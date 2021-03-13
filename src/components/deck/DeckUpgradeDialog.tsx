@@ -24,7 +24,7 @@ import { useCampaign } from '@data/hooks';
 import { useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import useDeckUpgrade from './useDeckUpgrade';
-import { useCreateDeckActions } from '@data/remote/decks';
+import { useDeckActions } from '@data/remote/decks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 
 export interface UpgradeDeckProps {
@@ -36,7 +36,7 @@ export interface UpgradeDeckProps {
 const EMPTY_TRAUMA = {};
 function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
-  const actions = useCreateDeckActions();
+  const actions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
   const [deck] = useDeck(id);
   const campaign = useCampaign(campaignId);
@@ -85,11 +85,11 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
       }
     }
     if (showNewDeck) {
-      showDeckModal(componentId, deck, colors, investigator, { initialMode: 'upgrade' });
+      showDeckModal(componentId, deck, campaign?.id, colors, investigator, 'upgrade');
     } else {
       Navigation.pop(componentId);
     }
-  }, [showNewDeck, componentId, campaignId, dispatch, updateCampaignActions, colors, investigator, traumaUpdate]);
+  }, [showNewDeck, componentId, campaignId, campaign, dispatch, updateCampaignActions, colors, investigator, traumaUpdate]);
 
   const onStoryCountsChange = useCallback((storyCounts: Slots) => {
     updateStoryCounts({ type: 'sync', slots: storyCounts });

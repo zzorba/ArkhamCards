@@ -639,17 +639,32 @@ export interface CampaignSyncRequiredAction {
   campaignId: CampaignId;
 }
 
+export interface UploadedDeck {
+  deckId: DeckId;
+  hash: string;
+  campaignId: number[];
+}
 export const UPLOAD_DECK = 'UPLOAD_DECK';
 export interface UploadDeckAction {
   type: typeof UPLOAD_DECK;
   deckId: DeckId;
-  campaignId: UploadedCampaignId;
+  hash: string;
+  campaignId: number;
 }
+
 export const REMOVE_UPLOAD_DECK = 'REMOVE_UPLOAD_DECK';
 export interface RemoveUploadDeckAction {
   type: typeof REMOVE_UPLOAD_DECK;
   deckId: DeckId;
-  campaignId: CampaignId;
+  campaignId: number;
+}
+
+export const SET_UPLOADED_DECKS = 'SET_UPLOADED_DECKS';
+export interface SetUploadedDecksAction {
+  type: typeof SET_UPLOADED_DECKS;
+  uploadedDecks: {
+    [uuid: string]: UploadedDeck | undefined;
+  };
 }
 
 export const DELETE_DECK = 'DELETE_DECK';
@@ -1243,7 +1258,9 @@ export type DecksActions =
   ReplaceLocalDeckAction |
   EnsureUuidAction |
   ReduxMigrationAction |
-  UploadDeckAction;
+  UploadDeckAction |
+  RemoveUploadDeckAction |
+  SetUploadedDecksAction;
 
 export type DeckEditsActions =
   DeleteDeckAction |

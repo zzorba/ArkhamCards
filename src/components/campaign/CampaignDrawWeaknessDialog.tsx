@@ -27,7 +27,7 @@ import StyleContext from '@styles/StyleContext';
 import { useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useUpdateDeckActions } from '@data/remote/decks';
+import { useDeckActions } from '@data/remote/decks';
 import { useSetCampaignWeaknessSet } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 
@@ -61,7 +61,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
   const { saveWeakness, componentId, campaignId } = props;
   const { borderStyle } = useContext(StyleContext);
   const dispatch: DeckDispatch = useDispatch();
-  const deckActions = useUpdateDeckActions();
+  const deckActions = useDeckActions();
   const { user } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(campaignId);
   campaign?.latestDecks

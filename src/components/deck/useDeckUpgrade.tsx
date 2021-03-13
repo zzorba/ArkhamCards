@@ -8,7 +8,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
@@ -16,7 +16,7 @@ export type SaveDeckUpgrade = (xp: number, storyCounts: Slots, ignoreStoryCounts
 
 export default function useDeckUpgrade(
   deck: Deck | undefined,
-  actions: CreateDeckActions,
+  actions: DeckActions,
   upgradeCompleted: (deck: Deck, xp: number) => void,
 ): [boolean, string | undefined, SaveDeckUpgrade] {
   const { user } = useContext(ArkhamCardsAuthContext);

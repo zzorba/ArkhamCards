@@ -18,7 +18,7 @@ import { fetchPrivateDeck } from '@components/deck/actions';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
 import TabooSet from '@data/types/TabooSet';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 export function useBackButton(handler: () => boolean) {
@@ -561,7 +561,7 @@ export function useDeck(id: DeckId | undefined): [Deck | undefined, Deck | undef
 }
 
 
-export function useDeckWithFetch(id: DeckId | undefined, actions: CreateDeckActions): [Deck | undefined, Deck | undefined] {
+export function useDeckWithFetch(id: DeckId | undefined, actions: DeckActions): [Deck | undefined, Deck | undefined] {
   const [theDeck, thePreviousDeck] = useDeck(id);
   const dispatch = useDispatch();
   const { user } = useContext(ArkhamCardsAuthContext);

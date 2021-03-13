@@ -9,10 +9,10 @@ import Card from '@data/types/Card';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { Platform } from 'react-native';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
 
-export default function useChooseDeck(createDeckActions: CreateDeckActions, updateActions: UpdateCampaignActions) {
+export default function useChooseDeck(createDeckActions: DeckActions, updateActions: UpdateCampaignActions) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
   const doAddInvestigator = useCallback((campaignId: CampaignId, code: string, deckId?: DeckId) => {

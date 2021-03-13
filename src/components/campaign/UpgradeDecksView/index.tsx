@@ -112,7 +112,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
       <UpgradeDecksList
         componentId={componentId}
         lang={lang}
-        investigatorData={campaign.investigatorData}
+        campaign={campaign}
         allInvestigators={allInvestigators}
         decks={latestDecks}
         originalDeckUuids={originalDeckUuids.current}

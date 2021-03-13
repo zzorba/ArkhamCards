@@ -6,6 +6,7 @@ mutation insertNewDeck(
   $campaign_id: Int!,
   $investigator: String!,
   $content: jsonb!,
+  $content_hash: String!,
   $userId: String!
 ) {
   insert_deck_one(
@@ -15,6 +16,7 @@ mutation insertNewDeck(
       campaign_id: $campaign_id
       investigator: $investigator
       content: $content
+      content_hash: $content_hash
       owner_id: $userId
       base: true
     }
@@ -34,6 +36,7 @@ mutation insertNextLocalDeck(
   $campaign_id: Int!,
   $investigator: String!,
   $content: jsonb!,
+  $content_hash: String!,
   $userId: String!
 ) {
   insert_deck_one(
@@ -48,6 +51,7 @@ mutation insertNextLocalDeck(
           campaign_id: $campaign_id
           investigator: $investigator
           content: $content
+          content_hash: $content_hash
           owner_id: $userId
         }
       }
@@ -74,6 +78,7 @@ mutation insertNextArkhamDbDeck(
   $campaign_id: Int!,
   $investigator: String!,
   $content: jsonb!,
+  $content_hash: String!,
   $userId: String!
 ) {
   insert_deck_one(
@@ -88,6 +93,7 @@ mutation insertNextArkhamDbDeck(
           campaign_id: $campaign_id
           investigator: $investigator
           content: $content
+          content_hash: $content_hash
           owner_id: $userId
         }
       }
@@ -111,7 +117,8 @@ mutation insertNextArkhamDbDeck(
 mutation updateArkhamDbDeck(
   $arkhamdb_id: Int!,
   $campaign_id: Int!,
-  $content: jsonb!
+  $content: jsonb!,
+  $content_hash: String!
 ) {
   update_deck(
     where: {
@@ -120,6 +127,7 @@ mutation updateArkhamDbDeck(
     }
   	_set: {
       content: $content
+      content_hash: $content_hash
     }
   ) {
     affected_rows
@@ -132,7 +140,8 @@ mutation updateArkhamDbDeck(
 mutation updateLocalDeck(
   $local_uuid: String!,
   $campaign_id: Int!,
-  $content: jsonb!
+  $content: jsonb!,
+  $content_hash: String!
 ) {
   update_deck(
     where: {
@@ -141,6 +150,7 @@ mutation updateLocalDeck(
     }
   	_set: {
       content: $content
+      content_hash: $content_hash
     }
   ) {
     affected_rows
@@ -195,6 +205,13 @@ query getMyDecks(
         ...LatestDeck
       }
     }
+    all_decks {
+      id
+      campaign_id
+      arkhamdb_id
+      local_uuid
+      content_hash
+    }
   }
 }
 
@@ -205,3 +222,4 @@ query getLatestDeck(
     ...LatestDeck
   }
 }
+

@@ -1,7 +1,8 @@
-import { Deck, Trauma } from '@actions/types';
+import { CampaignId, Deck, Trauma } from '@actions/types';
 import MiniDeckT from './MiniDeckT';
 
 export interface DeckCampaignInfo {
+  id: CampaignId;
   name: string;
   trauma: Trauma;
 }

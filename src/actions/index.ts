@@ -24,8 +24,13 @@ import { AppState } from '@reducers';
 import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 import * as dissonantVoices from '@lib/dissonantVoices';
 import { decks } from '@lib/authApi';
+import { DeckActions, syncCampaignDecksFromArkhamDB } from '@data/remote/decks';
+import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
-export function login(): ThunkAction<void, AppState, unknown, Action<string>> {
+export function login(
+  user: FirebaseAuthTypes.User | undefined,
+  actions: DeckActions
+): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch): void => {
     dispatch({
       type: ARKHAMDB_LOGIN_STARTED,
@@ -35,7 +40,7 @@ export function login(): ThunkAction<void, AppState, unknown, Action<string>> {
         dispatch({
           type: ARKHAMDB_LOGIN,
         });
-        dispatch(refreshMyDecks());
+        dispatch(refreshMyDecks(user, actions));
       } else {
         dispatch({
           type: ARKHAMDB_LOGIN_ERROR,
@@ -136,7 +141,10 @@ function getDecksLastModified(state: AppState): string | undefined {
     undefined;
 }
 
-export function refreshMyDecks(): ThunkAction<void, AppState, unknown, Action<string>> {
+export function refreshMyDecks(
+  user: FirebaseAuthTypes.User | undefined,
+  actions: DeckActions
+): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch, getState) => {
     dispatch({
       type: MY_DECKS_START_REFRESH,
@@ -154,6 +162,13 @@ export function refreshMyDecks(): ThunkAction<void, AppState, unknown, Action<st
           lastModified: response.lastModified,
           timestamp: new Date(),
         });
+        if (user) {
+          syncCampaignDecksFromArkhamDB(
+            response.decks || [],
+            getState().decks.syncedDecks || {},
+            actions
+          );
+        }
       }
     },
     error => {

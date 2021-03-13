@@ -25,13 +25,13 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { UpdateCampaignActions, useGuideActions } from '@data/remote/campaigns';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
 import { ProcessedCampaign } from '@data/scenario';
 
 const EMPTY_SPENT_XP = {};
 export default function useCampaignGuideContext(
   campaignId: CampaignId,
-  createDeckActions: CreateDeckActions,
+  createDeckActions: DeckActions,
   updateCampaignActions: UpdateCampaignActions,
   campaignData?: CampaignGuideReduxData
 ): CampaignGuideContextType | undefined {
@@ -298,7 +298,7 @@ export default function useCampaignGuideContext(
     }
     return {
       campaignId,
-      campaignName: campaign.name,
+      campaign,
       campaignGuideVersion: campaign.guideVersion,
       campaignGuide: campaignGuide,
       campaignState: campaignStateHelper,
@@ -307,7 +307,6 @@ export default function useCampaignGuideContext(
       latestDecks: decksByInvestigator,
       weaknessSet: campaign.weaknessSet,
       playerCards: cards,
-      lastUpdated: campaign.updatedAt,
       syncCampaignChanges,
     };
   }, [campaignId, syncCampaignChanges,

@@ -24,7 +24,8 @@ import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { TINY_PHONE } from '@styles/sizes';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { UpdateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 
 interface ShowDeckButtonProps {
   componentId: string;
@@ -33,19 +34,14 @@ interface ShowDeckButtonProps {
 }
 
 function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonProps) {
+  const { campaign } = useContext(CampaignGuideContext);
   const { colors } = useContext(StyleContext);
   const [deck] = useDeck(deckId);
   const onPress = useCallback(() => {
     if (deck) {
-      showDeckModal(
-        componentId,
-        deck,
-        colors,
-        investigator,
-        { hideCampaign: true }
-      );
+      showDeckModal(componentId, deck, campaign?.id, colors, investigator);
     }
-  }, [componentId, investigator, deck, colors]);
+  }, [componentId, investigator, deck, campaign, colors]);
 
   if (!deck) {
     return null;
@@ -70,7 +66,7 @@ interface Props {
   deck?: Deck;
   campaignLog: GuidedCampaignLog;
   editable: boolean;
-  actions: UpdateDeckActions;
+  actions: DeckActions;
 }
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
@@ -185,12 +181,13 @@ function SaveDeckRow({
   const selectDeck = useCallback(() => {
     campaignState.showChooseDeck(investigator);
   }, [campaignState, investigator]);
+  const { campaign } = useContext(CampaignGuideContext);
 
   const viewDeck = useCallback(() => {
     if (deck) {
-      showDeckModal(componentId, deck, colors, investigator, { hideCampaign: true });
+      showDeckModal(componentId, deck, campaign?.id, colors, investigator);
     }
-  }, [componentId, colors, investigator, deck]);
+  }, [componentId, colors, campaign, investigator, deck]);
 
   const deckButton = useMemo(() => {
     if (deck && deckChoice !== undefined) {

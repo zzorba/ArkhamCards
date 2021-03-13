@@ -6,11 +6,11 @@ import Card from '@data/types/Card';
 import { useDeckWithFetch, useInvestigatorCards } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
 
 interface Props {
   id: DeckId;
-  actions: CreateDeckActions;
+  actions: DeckActions;
   deckRemoved?: (
     id: DeckId,
     deck?: Deck,

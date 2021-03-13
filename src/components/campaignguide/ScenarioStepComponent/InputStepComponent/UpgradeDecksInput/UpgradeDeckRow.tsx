@@ -25,7 +25,8 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import useDeckUpgrade from '@components/deck/useDeckUpgrade';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 
 interface ShowDeckButtonProps {
   componentId: string;
@@ -34,19 +35,14 @@ interface ShowDeckButtonProps {
 }
 
 function ShowDeckButton({ componentId, deckId, investigator }: ShowDeckButtonProps) {
+  const { campaign } = useContext(CampaignGuideContext);
   const { colors } = useContext(StyleContext);
   const [deck] = useDeck(deckId);
   const onPress = useCallback(() => {
     if (deck) {
-      showDeckModal(
-        componentId,
-        deck,
-        colors,
-        investigator,
-        { hideCampaign: true }
-      );
+      showDeckModal(componentId, deck, campaign?.id, colors, investigator);
     }
-  }, [componentId, investigator, deck, colors]);
+  }, [componentId, investigator, campaign, deck, colors]);
 
   if (!deck) {
     return null;
@@ -70,7 +66,7 @@ interface Props {
   campaignLog: GuidedCampaignLog;
   setUnsavedEdits: (investigator: string, edits: boolean) => void;
   editable: boolean;
-  actions: CreateDeckActions;
+  actions: DeckActions;
 }
 
 function computeChoiceId(stepId: string, investigator: Card) {
@@ -385,11 +381,12 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
     campaignState.showChooseDeck(investigator);
   }, [campaignState, investigator]);
 
+  const { campaign } = useContext(CampaignGuideContext);
   const viewDeck = useCallback(() => {
     if (deck) {
-      showDeckModal(componentId, deck, colors, investigator, { hideCampaign: true });
+      showDeckModal(componentId, deck, campaign?.id, colors, investigator);
     }
-  }, [componentId, colors, investigator, deck]);
+  }, [componentId, colors, investigator, deck, campaign]);
 
   const deckButton = useMemo(() => {
     if (deck && deckChoice !== undefined) {

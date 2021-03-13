@@ -1,20 +1,12 @@
-import React, { useContext, useMemo } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
 
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
-import CampaignSummaryComponent from '@components/campaign/CampaignSummaryComponent';
-import { CUSTOM, Deck, ParsedDeck } from '@actions/types';
+import { Deck, ParsedDeck } from '@actions/types';
 import { CardsMap } from '@data/types/Card';
-import space, { l, xs } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import { l, xs } from '@styles/space';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
-import DeckSectionBlock from '../section/DeckSectionBlock';
-import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface Props {
   componentId: string;
@@ -23,12 +15,9 @@ interface Props {
   parsedDeck: ParsedDeck;
   isPrivate: boolean;
   editable: boolean;
-  campaign?: SingleCampaignT;
-  hideCampaign?: boolean;
   title?: string;
   onTitlePress?: (deck: ParsedDeck) => void;
   showDeckHistory?: () => void;
-  showDeckUpgrade?: () => void;
   tabooSetId?: number;
   singleCardView?: boolean;
 }
@@ -39,66 +28,20 @@ export default function DeckProgressComponent({
   cards,
   parsedDeck,
   editable,
-  campaign,
-  hideCampaign,
   title,
   onTitlePress,
   showDeckHistory,
-  showDeckUpgrade,
   tabooSetId,
   singleCardView,
 }: Props) {
-  const { typography } = useContext(StyleContext);
-  const { investigator } = parsedDeck;
-  const footerButton = useMemo(() => {
-    if (!showDeckUpgrade) {
-      return undefined;
-    }
-    return (
-      <RoundedFooterButton
-        title={t`Upgrade Deck with XP`}
-        icon="up"
-        onPress={showDeckUpgrade}
-      />
-    );
-  }, [showDeckUpgrade]);
-  const campaignSection = useMemo(() => {
-    if (!editable || campaign?.guided) {
-      return null;
-    }
-    return (
-      <View style={space.paddingBottomS}>
-        <DeckSectionBlock
-          title={t`Campaign`}
-          faction={investigator.factionCode()}
-          footerButton={footerButton}
-          noSpace
-        >
-          { !!campaign && !hideCampaign && (
-            <CampaignSummaryComponent campaign={campaign} hideScenario>
-              { campaign.cycleCode !== CUSTOM && (
-                <View style={[space.paddingTopS, space.paddingBottomS]}>
-                  <Text style={typography.text}>
-                    { campaign.name }
-                  </Text>
-                </View>
-              ) }
-            </CampaignSummaryComponent>
-          ) }
-        </DeckSectionBlock>
-      </View>
-    );
-  }, [campaign, editable, hideCampaign, investigator, typography, footerButton]);
-
-  if (!deck.previousDeckId && !deck.nextDeckId && !campaign && !editable && !title) {
+  if (!deck.previousDeckId && !deck.nextDeckId && !editable && !title) {
     return null;
   }
 
   // Actually compute the diffs.
   return (
     <View style={styles.container}>
-      { campaignSection }
-      { !!(!campaignSection || deck.previousDeckId) && (
+      { !!(deck.previousDeckId) && (
         <ChangesFromPreviousDeck
           componentId={componentId}
           title={title}

@@ -3,13 +3,13 @@ import { ThunkAction } from 'redux-thunk';
 
 import { DeckId, getDeckId, UploadedCampaignId, UPLOAD_DECK } from '@actions/types';
 import { AppState, makeDeckSelector } from '@reducers';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
 
 
 export function uploadCampaignDeckHelper(
   campaignId: UploadedCampaignId,
   deckId: DeckId,
-  actions: CreateDeckActions
+  actions: DeckActions
 ): ThunkAction<void, AppState, unknown, Action<string>> {
   return async(dispatch, getState) => {
     const state = getState();
@@ -18,9 +18,9 @@ export function uploadCampaignDeckHelper(
     while (deck) {
       const deckId = getDeckId(deck);
       if (deck.previousDeckId) {
-        await actions.createNextDeck(deck, campaignId, deck.previousDeckId);
+        await actions.createNextDeck(deck, campaignId.serverId, deck.previousDeckId);
       } else {
-        await actions.createBaseDeck(deck, campaignId);
+        await actions.createBaseDeck(deck, campaignId.serverId);
       }
       dispatch({
         type: UPLOAD_DECK,

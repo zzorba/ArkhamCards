@@ -13,7 +13,7 @@ import {
   Fade,
 } from 'rn-placeholder';
 
-import { Campaign, Deck } from '@actions/types';
+import { Campaign, CampaignId, Deck } from '@actions/types';
 import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { getProblemMessage } from '@components/core/DeckProblemRow';
@@ -35,7 +35,7 @@ interface Props {
   lang: string;
   deck: LatestDeckT;
   investigator?: Card;
-  onPress?: (deck: Deck, investigator?: Card) => void;
+  onPress?: (deck: Deck, investigator: Card | undefined, campaignId: CampaignId | undefined) => void;
   details?: ReactNode;
   subDetails?: ReactNode;
   viewDeckButton?: boolean;
@@ -162,7 +162,7 @@ export default function NewDeckListRow({
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const onDeckPressFunction = useCallback(() => {
-    onPress && onPress(deck.deck, investigator);
+    onPress && onPress(deck.deck, investigator, deck.campaign?.id);
   }, [deck, investigator, onPress]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
   const yithian = useMemo(() => !!deck.deck.slots && (deck.deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.deck.slots]);

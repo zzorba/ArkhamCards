@@ -32,7 +32,7 @@ import { CampaignScenariosViewProps } from '../CampaignScenariosView';
 import UploadCampaignButton from '../UploadCampaignButton';
 import useChaosBagDialog from './useChaosBagDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
-import { useCreateDeckActions } from '@data/remote/decks';
+import { useDeckActions } from '@data/remote/decks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 
 export interface CampaignDetailProps {
@@ -138,15 +138,15 @@ function CampaignDetailView(props: Props) {
       );
     }
   }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
-  const createDeckActions = useCreateDeckActions();
+  const deckActions = useDeckActions();
   const onAddDeck = useCallback((deck: Deck) => {
-    dispatch(addInvestigator(user, createDeckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
+    dispatch(addInvestigator(user, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
     checkForWeaknessPrompt(deck);
-  }, [user, campaignId, createDeckActions, updateCampaignActions, dispatch, checkForWeaknessPrompt]);
+  }, [user, campaignId, deckActions, updateCampaignActions, dispatch, checkForWeaknessPrompt]);
 
   const onAddInvestigator = useCallback((card: Card) => {
-    dispatch(addInvestigator(user, createDeckActions, updateCampaignActions, campaignId, card.code));
-  }, [user, campaignId, createDeckActions, updateCampaignActions, dispatch]);
+    dispatch(addInvestigator(user, deckActions, updateCampaignActions, campaignId, card.code));
+  }, [user, campaignId, deckActions, updateCampaignActions, dispatch]);
 
   const onRemoveInvestigator = useCallback((investigator: Card, removedDeckId?: DeckId) => {
     dispatch(removeInvestigator(user, updateCampaignActions, campaignId, investigator.code, removedDeckId));
@@ -345,6 +345,7 @@ function CampaignDetailView(props: Props) {
               setCampaignServerId={setCampaignServerId}
               showAlert={showAlert}
               guided={false}
+              deckActions={deckActions}
             />
             <DeleteCampaignButton
               componentId={componentId}

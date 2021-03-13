@@ -34,10 +34,10 @@ import {
   DeckId,
   getDeckId,
   LocalDeck,
-  UploadedCampaignId,
   CampaignId,
   getCampaignLastUpdated,
   getLastUpdated,
+  UploadedDeck,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag } from '@app_constants';
@@ -744,10 +744,9 @@ export const makeCampaignChaosBagSelector = () =>
     }
   );
 
-const EMPTY_CAMPAIGN_IDS: UploadedCampaignId[] = [];
-export function getDeckUploadedCampaigns(state: AppState, id: DeckId): UploadedCampaignId[] {
-  const uploaded = state.decks.uploaded || {};
-  return uploaded[id.uuid] || EMPTY_CAMPAIGN_IDS;
+export function getDeckUploadedCampaigns(state: AppState, id: DeckId): UploadedDeck | undefined {
+  const uploaded = state.decks.syncedDecks || {};
+  return uploaded[id.uuid];
 }
 
 const getTrackedQueriesIds = (state: AppState) => state.trackedQueries.ids;
@@ -758,4 +757,18 @@ export const getTrackedQueries = createSelector(
   getTrackedQueriesIds,
   getTrackedQueriesById,
   (pIds, pById) => pIds.map(o => pById[o])
+);
+
+
+export const getArkhamDbDecks = createSelector(
+  (state: AppState) => state.decks.all,
+  (decks: DecksMap) => {
+    const allDecks: Deck[] = [];
+    forEach(decks, deck => {
+      if (!deck.local) {
+        allDecks.push(deck);
+      }
+    });
+    return allDecks;
+  }
 );
