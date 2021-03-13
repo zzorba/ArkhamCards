@@ -79,10 +79,22 @@ function dialogStrings(lang: string): DialogStrings {
         cancelButton: 'Cancel',
       };
     case 'zh':
+      return {
+        title: '確認',
+        description: '更改APP語言需要從ArkhamDB下載翻譯過的卡牌，需要網路連線與一點時間。',
+        confirmButton: '開始下載',
+        cancelButton: '取消',
+      };
+    case 'pt':
+      return {
+        title: 'Confirmar',
+        description: 'Alterar o idioma do app requer o download de informações de cartas traduzidas do ArkhamDB. Isso requer rede e pode demorar.',
+        confirmButton: 'Baixar agora',
+        cancelButton: 'Cancelar',
+      };
     case 'it':
     case 'pl':
     case 'uk':
-    case 'pt':
     default:
       return {
         title: t`Confirm`,
@@ -119,7 +131,7 @@ export default function LanguagePicker({ first, last, showAlert }: { first?: boo
         description,
         confirmButton,
         cancelButton,
-      } = dialogStrings(newLang);
+      } = dialogStrings(newCardLang);
       setTimeout(() => {
         showAlert(
           title,
