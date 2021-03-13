@@ -17,7 +17,7 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import StyleContext from '@styles/StyleContext';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { useToggles } from '@components/core/hooks';
-import { useUpdateDeckActions } from '@data/remote/decks';
+import { useDeckActions } from '@data/remote/decks';
 
 interface Props {
   componentId: string;
@@ -29,7 +29,7 @@ export default function SaveDecksInput({ componentId, id }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const [unsavedEdits, , setUnsavedEdits] = useToggles({});
-  const updateDeckActions = useUpdateDeckActions();
+  const deckActions = useDeckActions();
 
   const proceedMessage = useCallback((): string | undefined => {
     const unsavedDeck = find(
@@ -122,7 +122,7 @@ export default function SaveDecksInput({ componentId, id }: Props) {
         return (
           <SaveDeckRow
             key={investigator.code}
-            actions={updateDeckActions}
+            actions={deckActions}
             id={id}
             componentId={componentId}
             campaignLog={campaignLog}

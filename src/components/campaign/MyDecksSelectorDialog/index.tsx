@@ -130,18 +130,21 @@ function MyDecksSelectorDialog(props: Props) {
     return undefined;
   }, [singleInvestigator]);
 
-  const showNewDeckDialog = useMemo(() => throttle(() => {
-    Navigation.push<NewDeckProps>(componentId, {
-      component: {
-        name: 'Deck.New',
-        passProps: {
-          onCreateDeck: onDeckSelect,
-          filterInvestigators,
-          onlyInvestigators,
+  const showNewDeckDialog = useMemo(() => {
+    return throttle(() => {
+      Navigation.push<NewDeckProps>(componentId, {
+        component: {
+          name: 'Deck.New',
+          passProps: {
+            campaignId,
+            onCreateDeck: onDeckSelect,
+            filterInvestigators,
+            onlyInvestigators,
+          },
         },
-      },
-    });
-  }, 200), [componentId, onDeckSelect, filterInvestigators, onlyInvestigators]);
+      });
+    }, 200);
+  }, [componentId, campaignId, onDeckSelect, filterInvestigators, onlyInvestigators]);
 
   const showSortDialog = useCallback(() => {
     Keyboard.dismiss();

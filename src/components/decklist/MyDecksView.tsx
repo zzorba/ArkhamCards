@@ -5,7 +5,7 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Deck } from '@actions/types';
+import { CampaignId, Deck } from '@actions/types';
 import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
 import { showDeckModal } from '@components/nav/helper';
@@ -51,8 +51,8 @@ function MyDecksView({ componentId }: NavigationProps) {
     }
   }, componentId, [showNewDeckDialog]);
 
-  const deckNavClicked = useCallback((deck: Deck, investigator?: Card) => {
-    showDeckModal(componentId, deck, colors, investigator);
+  const deckNavClicked = useCallback((deck: Deck, investigator: Card | undefined, campaignId: CampaignId | undefined) => {
+    showDeckModal(componentId, deck, campaignId, colors, investigator);
   }, [componentId, colors]);
 
   const searchOptionControls = useMemo(() => {

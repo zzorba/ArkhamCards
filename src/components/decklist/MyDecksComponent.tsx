@@ -8,12 +8,11 @@ import {
 } from 'react-native';
 import { filter, map } from 'lodash';
 import { NetInfoStateType } from '@react-native-community/netinfo';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { refreshMyDecks } from '@actions';
 import useNetworkStatus from '@components/core/useNetworkStatus';
-import { Deck, DeckId } from '@actions/types';
+import { CampaignId, Deck, DeckId } from '@actions/types';
 import Card from '@data/types/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
@@ -31,7 +30,7 @@ import MiniDeckT from '@data/interfaces/MiniDeckT';
 
 interface OwnProps {
   componentId: string;
-  deckClicked: (deck: Deck, investigator?: Card) => void;
+  deckClicked: (deck: Deck, investigator: Card | undefined, campaign: CampaignId | undefined) => void;
   onlyDecks?: MiniDeckT[];
   onlyInvestigators?: string[];
   filterDeckIds?: DeckId[];
@@ -52,10 +51,10 @@ function MyDecksComponent({
   customFooter,
   login,
   signedIn,
+  deckActions,
 }: Props) {
   const [{ networkType, isConnected }] = useNetworkStatus();
   const { typography, width } = useContext(StyleContext);
-  const dispatch = useDispatch();
   const reLogin = useCallback(() => {
     login();
   }, [login]);
@@ -65,13 +64,8 @@ function MyDecksComponent({
     myDecksUpdated,
     refreshing,
     error,
-  }, refreshRemoteCampaigns] = useMyDecks();
-  const onRefresh = useCallback(() => {
-    if (!refreshing) {
-      refreshRemoteCampaigns();
-      dispatch(refreshMyDecks());
-    }
-  }, [dispatch, refreshing, refreshRemoteCampaigns]);
+  }, onRefresh] = useMyDecks(deckActions);
+
 
   useEffect(() => {
     const now = new Date();

@@ -98,20 +98,14 @@ export function getDeckOptions(
   return options;
 }
 
-interface DeckModalOptions {
-  campaignId?: CampaignId;
-  hideCampaign?: boolean;
-  initialMode?: 'upgrade' | 'edit';
-}
-
 export function showDeckModal(
   componentId: string,
   deck: Deck,
+  campaignId: CampaignId | undefined,
   colors: ThemeColors,
   investigator?: Card,
-  options: DeckModalOptions = {}
+  initialMode?: 'upgrade' | 'edit'
 ) {
-  const { campaignId, hideCampaign, initialMode } = options;
   const passProps: DeckDetailProps = {
     id: getDeckId(deck),
     isPrivate: true,
@@ -119,7 +113,6 @@ export function showDeckModal(
     campaignId,
     title: investigator ? investigator.name : t`Deck`,
     subtitle: deck.name,
-    hideCampaign,
     initialMode,
   };
 

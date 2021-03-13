@@ -58,7 +58,7 @@ import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
 import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
 
 function getBaseDeckIds(
@@ -100,7 +100,7 @@ export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
 
 export function addInvestigator(
   user: FirebaseAuthTypes.User | undefined,
-  createDeckActions: CreateDeckActions,
+  deckActions: DeckActions,
   updateCampaignActions: UpdateCampaignActions,
   id: CampaignId,
   investigator: string,
@@ -123,7 +123,7 @@ export function addInvestigator(
       dispatch(action);
     }
     if (baseDeckId && id.serverId && user) {
-      dispatch(uploadCampaignDeckHelper(id, baseDeckId, createDeckActions));
+      dispatch(uploadCampaignDeckHelper(id, baseDeckId, deckActions));
     }
   };
 }
@@ -484,6 +484,7 @@ export function removeLocalCampaign(
 ): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
   return (dispatch, getState) => {
     if (campaign.serverId) {
+      const campaignId = campaign.serverId;
       // Delink all of the decks.
       const state = getState();
       const getDeck = makeDeckSelector();
@@ -493,10 +494,7 @@ export function removeLocalCampaign(
           dispatch({
             type: REMOVE_UPLOAD_DECK,
             deckId: getDeckId(deck),
-            campaignId: {
-              campaignId: campaign.uuid,
-              serverId: campaign.serverId,
-            },
+            campaignId,
           });
           if (!deck.nextDeckId) {
             break;

@@ -1,5 +1,5 @@
-import { useContext, useMemo, useEffect, useCallback } from 'react';
-import { flatMap, omit } from 'lodash';
+import { useContext, useMemo, useEffect, useCallback, useRef } from 'react';
+import { flatMap, map, omit } from 'lodash';
 
 import { CampaignId, DeckId } from '@actions/types';
 import {
@@ -22,6 +22,9 @@ import { SingleCampaignRemote } from '@data/remote/types';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { useDispatch } from 'react-redux';
+import { setServerDecks } from '@components/deck/actions';
+import { DeckActions } from './decks';
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
@@ -207,8 +210,10 @@ export function useMyProfile(useCached?: boolean): [UserProfile | undefined, boo
   return useProfile(user?.uid, useCached);
 }
 
-export function useMyDecksRemote(): [MiniDeckT[], boolean, () => void] {
+export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, () => void] {
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
+  const dispatch = useDispatch();
+  const checkForSync = useRef(false);
   const [loadMyDecks, { data, loading: dataLoading, refetch }] = useGetMyDecksLazyQuery({
     variables: { userId: user?.uid || '' },
     fetchPolicy: 'cache-and-network',
@@ -218,9 +223,35 @@ export function useMyDecksRemote(): [MiniDeckT[], boolean, () => void] {
       loadMyDecks();
     }
   }, [user, loadMyDecks]);
+  const allDecks = data?.users_by_pk?.all_decks;
+  useEffect(() => {
+    if (allDecks) {
+      const uploadDecks = map(allDecks, i => {
+        const deckId: DeckId = i.arkhamdb_id ? {
+          id: i.arkhamdb_id,
+          local: false,
+          uuid: `${i.arkhamdb_id}`,
+          serverId: i.id || undefined,
+        } : {
+          id: undefined,
+          local: true,
+          uuid: i.local_uuid || '',
+          serverId: i.id || undefined,
+        };
+        return {
+          deckId,
+          hash: i.content_hash || '',
+          campaignServerId: i.campaign_id,
+        };
+      });
+      dispatch(setServerDecks(uploadDecks, actions, checkForSync.current));
+      checkForSync.current = false;
+    }
+  }, [allDecks, actions, dispatch])
 
   const refresh = useCallback(() => {
     if (user && refetch) {
+      checkForSync.current = true;
       refetch({ userId: user.uid });
     }
   }, [refetch, user]);
@@ -238,7 +269,6 @@ export function useMyDecksRemote(): [MiniDeckT[], boolean, () => void] {
   }, [rawDecks]);
   return [deckIds, userLoading || dataLoading, refresh];
 }
-
 
 export function useLatestDeckRemote(deckId: DeckId): LatestDeckT | undefined {
   const { data } = useGetLatestDeckQuery({

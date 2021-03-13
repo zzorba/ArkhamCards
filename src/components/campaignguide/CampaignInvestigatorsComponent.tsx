@@ -31,7 +31,7 @@ interface Props {
 
 export default function CampaignInvestigatorsComponent(props: Props) {
   const { componentId, processedCampaign, actions, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog } = props;
-  const { syncCampaignChanges, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, playerCards, spentXp } = useContext(CampaignGuideContext);
+  const { syncCampaignChanges, campaign, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, playerCards, spentXp } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
   const dispatch = useDispatch();
 
@@ -140,7 +140,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
       { map(aliveInvestigators, investigator => (
         <InvestigatorCampaignRow
           key={investigator.code}
-          campaignId={campaignId}
+          campaign={campaign}
           playerCards={playerCards}
           spentXp={spentXp[investigator.code] || 0}
           totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
@@ -194,7 +194,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
             spentXp={spentXp[investigator.code] || 0}
             totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
             showXpDialog={showXpDialogPressed}
-            campaignId={campaignId}
+            campaign={campaign}
             deck={latestDecks[investigator.code]}
             componentId={componentId}
             investigator={investigator}

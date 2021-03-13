@@ -11675,6 +11675,11 @@ react-native-gesture-handler@1.9.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-hash@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-hash/-/react-native-hash-1.3.1.tgz#996d4a479848284a4195a7e88009e493c90a17bc"
+  integrity sha512-DRbwLHUteyITeLmpxtFpZHKb3oie2okb59DVKdAMYNEjeYAjcK0q93NWdgzMCqPInRbcn+9xUzWEh3uwVRiUWw==
+
 react-native-keep-awake@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-native-keep-awake/-/react-native-keep-awake-4.0.0.tgz#d89fdc3fb60b3cffa979ef37dc5816196df998a2"

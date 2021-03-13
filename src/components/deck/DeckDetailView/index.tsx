@@ -30,11 +30,7 @@ import { DeckHistoryProps } from '../DeckHistoryView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
-import {
-  makeCampaignIdForDeckSelector,
-  getPacksInCollection,
-  AppState,
-} from '@reducers';
+import { getPacksInCollection, AppState } from '@reducers';
 import space, { xs, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
@@ -53,16 +49,13 @@ import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import DeckProblemBanner from '../DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaign } from '@data/hooks';
-import { useCreateDeckActions, useUpdateDeckActions } from '@data/remote/decks';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
 
 export interface DeckDetailProps {
   id: DeckId;
   initialMode?: 'upgrade' | 'edit';
   title?: string;
   subtitle?: string;
-  campaignId?: CampaignId;
-  hideCampaign?: boolean;
+  campaignId: CampaignId | undefined;
   isPrivate?: boolean;
   modal?: boolean;
 }
@@ -78,20 +71,20 @@ function DeckDetailView({
   title,
   subtitle,
   campaignId,
-  hideCampaign,
   isPrivate,
   modal,
   signedIn,
   login,
   initialMode,
+  deckActions,
 }: Props) {
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
+  const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { user } = useContext(ArkhamCardsAuthContext);
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
-  const actions = useCreateDeckActions();
-  const parsedDeckObj = useParsedDeckWithFetch(id, componentId, actions, initialMode);
+  const parsedDeckObj = useParsedDeckWithFetch(id, componentId, deckActions, initialMode);
   const { showXpAdjustmentDialog, xpAdjustmentDialog } = useAdjustXpDialog(parsedDeckObj);
   const {
     deck,
@@ -103,15 +96,8 @@ function DeckDetailView({
     tabooSetId,
   } = parsedDeckObj;
 
-  const campaignForDeckSelector = useMemo(makeCampaignIdForDeckSelector, []);
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
-  const theCampaignId = useSelector((state: AppState) => {
-    return campaignId ? campaignId : campaignForDeckSelector(state, deckId);
-  });
-
-  const campaign = useCampaign(theCampaignId);
-  const updateCampaignActions = useUpdateCampaignActions();
-  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj, updateCampaignActions, campaign);
+  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
 
   const [copying, toggleCopying] = useFlag(false);
   const {
@@ -300,7 +286,7 @@ function DeckDetailView({
       },
     });
   }, [modal, darkMode, componentId, mode, colors, factionColor, name, subtitle, title]);
-  const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(actions, deck, parsedDeck);
+  const { uploadLocalDeck, uploadLocalDeckDialog } = useUploadLocalDeckDialog(deckActions, deck, parsedDeck);
 
   useEffect(() => {
     if (!deck) {
@@ -319,18 +305,17 @@ function DeckDetailView({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deck]);
-  const updateDeckActions = useUpdateDeckActions();
 
   const deleteDeck = useCallback((deleteAllVersions: boolean) => {
     if (!deleting) {
       setDeleting(true);
 
-      deckDispatch(deleteDeckAction(user, updateDeckActions, id, deleteAllVersions)).then(() => {
+      deckDispatch(deleteDeckAction(user, deckActions, id, deleteAllVersions)).then(() => {
         Navigation.dismissAllModals();
         setDeleting(false);
       });
     }
-  }, [id, deleting, user, updateDeckActions, setDeleting, deckDispatch]);
+  }, [id, deleting, user, deckActions, setDeleting, deckDispatch]);
 
   const deleteAllDecks = useCallback(() => {
     deleteDeck(true);
@@ -344,12 +329,12 @@ function DeckDetailView({
     if (!deleting) {
       setDeleting(true);
 
-      deckDispatch(deleteDeckAction(user, updateDeckActions, id, false)).then(() => {
+      deckDispatch(deleteDeckAction(user, deckActions, id, false)).then(() => {
         Navigation.dismissAllModals();
         setDeleting(false);
       });
     }
-  }, [id, deckDispatch, updateDeckActions, deleting, user, setDeleting]);
+  }, [id, deckDispatch, deckActions, deleting, user, setDeleting]);
   const deleteBrokenDeck = useCallback(() => {
     showAlert(
       t`Delete broken deck`,
@@ -512,13 +497,14 @@ function DeckDetailView({
     return (
       <CopyDeckDialog
         componentId={componentId}
+        campaign={campaign}
         deckId={copying ? id : undefined}
         toggleVisible={toggleCopyDialog}
         signedIn={signedIn}
-        actions={actions}
+        actions={deckActions}
       />
     );
-  }, [componentId, id, signedIn, copying, actions, toggleCopyDialog]);
+  }, [componentId, id, signedIn, campaign, copying, deckActions, toggleCopyDialog]);
 
   const showTabooPicker = useCallback(() => {
     setTabooOpen(true);
@@ -719,12 +705,13 @@ function DeckDetailView({
           name: 'Deck.History',
           passProps: {
             id,
+            campaign,
           },
           options: getDeckOptions(colors, { title: t`Upgrade History` }, parsedDeck.investigator),
         },
       });
     }
-  }, [componentId, id, colors, parsedDeck, setFabOpen, setMenuOpen]);
+  }, [componentId, id, campaign, colors, parsedDeck, setFabOpen, setMenuOpen]);
 
   const showDrawSimulatorPressed = useCallback(() => {
     setFabOpen(false);
@@ -1038,15 +1025,12 @@ function DeckDetailView({
               isPrivate={!!isPrivate}
               buttons={buttons}
               showEditCards={onAddCardsPressed}
-              showDeckUpgrade={onUpgradePressed}
               showDeckHistory={showUpgradeHistoryPressed}
               showXpAdjustmentDialog={showXpAdjustmentDialog}
               showCardUpgradeDialog={showCardUpgradeDialog}
               showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               signedIn={signedIn}
               login={login}
-              campaign={campaign}
-              hideCampaign={hideCampaign}
               width={width}
               deckEdits={deckEdits}
               deckEditsRef={deckEditsRef}

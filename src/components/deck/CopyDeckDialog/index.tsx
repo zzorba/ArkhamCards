@@ -23,19 +23,21 @@ import { useDeck, useEffectUpdate, useInvestigatorCards, usePlayerCards } from '
 import { ThunkDispatch } from 'redux-thunk';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 interface Props {
   componentId: string;
+  campaign: MiniCampaignT | undefined;
   toggleVisible: () => void;
   deckId?: DeckId;
   signedIn?: boolean;
-  actions: CreateDeckActions;
+  actions: DeckActions;
 }
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function CopyDeckDialog({ componentId, toggleVisible, deckId, signedIn, actions }: Props) {
+export default function CopyDeckDialog({ componentId, toggleVisible, campaign, deckId, signedIn, actions }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const { user } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
@@ -62,13 +64,12 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
       resetForm();
     }
   }, [deckId]);
-
   const onDeckTypeChange = useCallback((value: boolean) => {
     if (value && !signedIn) {
-      dispatch(login());
+      dispatch(login(user, actions));
     }
     setOfflineDeck(!value);
-  }, [dispatch, signedIn, setOfflineDeck]);
+  }, [dispatch, signedIn, actions, user, setOfflineDeck]);
 
   const selectedDeck: Deck | undefined = useMemo(() => {
     if (baseDeck && getDeckId(baseDeck).uuid === selectedDeckId?.uuid) {
@@ -88,8 +89,8 @@ export default function CopyDeckDialog({ componentId, toggleVisible, deckId, sig
       toggleVisible();
     }
     // Change the deck options for required cards, if present.
-    showDeckModal(componentId, deck, colors, investigator);
-  }, [componentId, toggleVisible, investigator, setSaving, colors]);
+    showDeckModal(componentId, deck, campaign?.id, colors, investigator);
+  }, [componentId, campaign, toggleVisible, investigator, setSaving, colors]);
   const saveCopy = useCallback((isRetry: boolean) => {
     if (!selectedDeck) {
       return;

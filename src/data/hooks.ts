@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useCallback, useContext, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { flatMap, concat, sortBy, reverse } from 'lodash';
 
 import { getCampaigns, MyDecksState } from '@reducers';
@@ -11,6 +11,9 @@ import { useMyDecksRemote, useCachedCampaignRemote, useLiveCampaignGuideStateRem
 import CampaignGuideStateT from './interfaces/CampaignGuideStateT';
 import { useCampaignFromRedux, useCampaignGuideFromRedux, useLatestDeckRedux, useMyDecksRedux } from './local/hooks';
 import LatestDeckT from './interfaces/LatestDeckT';
+import { refreshMyDecks } from '@actions';
+import { DeckActions } from './remote/decks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);
@@ -101,9 +104,17 @@ export function useCampaignInvestigators(campaign: undefined | SingleCampaignT, 
 }
 
 
-export function useMyDecks(): [MyDecksState, () => void] {
+export function useMyDecks(deckActions: DeckActions): [MyDecksState, () => void] {
+  const dispatch = useDispatch();
+  const { user } = useContext(ArkhamCardsAuthContext);
   const { myDecks, error, refreshing, myDecksUpdated } = useMyDecksRedux();
-  const [remoteMyDecks, remoteRefreshing, refresh] = useMyDecksRemote();
+  const [remoteMyDecks, remoteRefreshing, refreshRemoteDecks] = useMyDecksRemote(deckActions);
+  const onRefresh = useCallback(() => {
+    if (!refreshing) {
+      refreshRemoteDecks();
+      dispatch(refreshMyDecks(user, deckActions));
+    }
+  }, [dispatch, user, deckActions, refreshing, refreshRemoteDecks]);
   const mergedMyDecks = useMemo(() => {
     return reverse(sortBy(
       [...myDecks, ...remoteMyDecks],
@@ -115,7 +126,7 @@ export function useMyDecks(): [MyDecksState, () => void] {
     error,
     refreshing: refreshing || remoteRefreshing,
     myDecksUpdated,
-  }, refresh];
+  }, onRefresh];
 }
 
 export function useLatestDeck(deckId: DeckId, deckToCampaign?: { [uuid: string]: Campaign }): LatestDeckT | undefined {

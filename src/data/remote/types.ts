@@ -292,6 +292,10 @@ export class LatestDeckRemote extends MiniDeckRemote implements LatestDeckT {
     this.deck = deck.content;
     this.previousDeck = deck.previous_deck?.content;
     this.campaign = deck.campaign?.name ? {
+      id: {
+        campaignId: deck.campaign.uuid,
+        serverId: deck.campaign.id,
+      },
       name: deck.campaign.name,
       trauma: {
         mental: deck.investigator_data?.mental || undefined,

@@ -6,7 +6,8 @@ import { Deck, DeckId } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import { useDeckWithFetch, useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
-import { CreateDeckActions } from '@data/remote/decks';
+import { DeckActions } from '@data/remote/decks';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 type RenderDeckDetails = (
   deck: Deck,
@@ -18,12 +19,13 @@ type RenderDeckDetails = (
 export interface DeckRowProps {
   componentId: string;
   id: DeckId;
+  campaign: MiniCampaignT;
   lang: string;
   renderSubDetails?: RenderDeckDetails;
   renderDetails?: RenderDeckDetails;
   killedOrInsane?: boolean;
   skipRender?: (deck: Deck, investigator: Card) => boolean;
-  actions: CreateDeckActions;
+  actions: DeckActions;
 }
 
 interface Props extends DeckRowProps {
@@ -34,6 +36,7 @@ interface Props extends DeckRowProps {
 export default function DeckRow({
   componentId,
   id,
+  campaign,
   lang,
   renderSubDetails,
   renderDetails,
@@ -50,9 +53,9 @@ export default function DeckRow({
   const investigator = theDeck && investigators && investigators[theDeck.investigator_code] || undefined;
   const onDeckPressFunction = useCallback(() => {
     if (theDeck) {
-      showDeckModal(componentId, theDeck, colors, investigator);
+      showDeckModal(componentId, theDeck, campaign.id, colors, investigator);
     }
-  }, [componentId, theDeck, colors, investigator]);
+  }, [componentId, theDeck, campaign, colors, investigator]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
   const subDetails = useMemo(() => {
     if (theDeck && renderSubDetails) {

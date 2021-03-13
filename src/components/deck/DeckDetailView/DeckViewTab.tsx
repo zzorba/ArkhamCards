@@ -43,7 +43,6 @@ import { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
 import { getPacksInCollection } from '@reducers';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
-import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -250,8 +249,6 @@ interface Props {
   deck: Deck;
   investigatorFront?: Card;
   investigatorBack?: Card;
-  hideCampaign?: boolean;
-  campaign?: SingleCampaignT;
   parsedDeck: ParsedDeck;
   hasPendingEdits?: boolean;
   cards: CardsMap;
@@ -277,7 +274,6 @@ interface Props {
   login: () => void;
   problem?: DeckProblem;
   showEditCards: () => void;
-  showDeckUpgrade: () => void;
   showDeckHistory: () => void;
   width: number;
   inCollection: {
@@ -313,9 +309,6 @@ export default function DeckViewTab(props: Props) {
     tabooOpen,
     buttons,
     isPrivate,
-    campaign,
-    hideCampaign,
-    showDeckUpgrade,
     showDeckHistory,
     deckEdits,
     deckEditsRef,
@@ -680,9 +673,6 @@ export default function DeckViewTab(props: Props) {
           parsedDeck={parsedDeck}
           editable={editable}
           isPrivate={isPrivate}
-          campaign={campaign}
-          hideCampaign={hideCampaign}
-          showDeckUpgrade={showDeckUpgrade}
           showDeckHistory={showDeckHistory}
           tabooSetId={tabooSetId}
           singleCardView={singleCardView}

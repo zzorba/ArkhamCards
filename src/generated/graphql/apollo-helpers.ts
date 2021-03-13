@@ -410,13 +410,14 @@ export type campaign_variance_fieldsFieldPolicy = {
 	link_b_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	link_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type deckKeySpecifier = ('arkhamdb_id' | 'base' | 'campaign' | 'campaign_id' | 'content' | 'id' | 'investigator' | 'investigator_data' | 'local_uuid' | 'next_deck' | 'next_deck_id' | 'owner' | 'owner_id' | 'previous_deck' | deckKeySpecifier)[];
+export type deckKeySpecifier = ('arkhamdb_id' | 'base' | 'campaign' | 'campaign_id' | 'content' | 'content_hash' | 'id' | 'investigator' | 'investigator_data' | 'local_uuid' | 'next_deck' | 'next_deck_id' | 'owner' | 'owner_id' | 'previous_deck' | deckKeySpecifier)[];
 export type deckFieldPolicy = {
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	base?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	content?: FieldPolicy<any> | FieldReadFunction<any>,
+	content_hash?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	investigator_data?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -453,20 +454,22 @@ export type deck_avg_fieldsFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type deck_max_fieldsKeySpecifier = ('arkhamdb_id' | 'campaign_id' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | deck_max_fieldsKeySpecifier)[];
+export type deck_max_fieldsKeySpecifier = ('arkhamdb_id' | 'campaign_id' | 'content_hash' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | deck_max_fieldsKeySpecifier)[];
 export type deck_max_fieldsFieldPolicy = {
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	content_hash?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	local_uuid?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	owner_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type deck_min_fieldsKeySpecifier = ('arkhamdb_id' | 'campaign_id' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | deck_min_fieldsKeySpecifier)[];
+export type deck_min_fieldsKeySpecifier = ('arkhamdb_id' | 'campaign_id' | 'content_hash' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | deck_min_fieldsKeySpecifier)[];
 export type deck_min_fieldsFieldPolicy = {
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	content_hash?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	local_uuid?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -895,8 +898,9 @@ export type investigator_data_variance_fieldsFieldPolicy = {
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type latest_decksKeySpecifier = ('campaign_id' | 'deck' | 'id' | 'owner_id' | latest_decksKeySpecifier)[];
+export type latest_decksKeySpecifier = ('campaign' | 'campaign_id' | 'deck' | 'id' | 'owner_id' | latest_decksKeySpecifier)[];
 export type latest_decksFieldPolicy = {
+	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1331,8 +1335,10 @@ export type user_sent_friend_requests_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type usersKeySpecifier = ('campaigns' | 'campaigns_aggregate' | 'created_at' | 'decks' | 'decks_aggregate' | 'friends' | 'friends_aggregate' | 'handle' | 'id' | 'received_requests' | 'received_requests_aggregate' | 'sent_requests' | 'sent_requests_aggregate' | 'updated_at' | usersKeySpecifier)[];
+export type usersKeySpecifier = ('all_decks' | 'all_decks_aggregate' | 'campaigns' | 'campaigns_aggregate' | 'created_at' | 'decks' | 'decks_aggregate' | 'friends' | 'friends_aggregate' | 'handle' | 'id' | 'received_requests' | 'received_requests_aggregate' | 'sent_requests' | 'sent_requests_aggregate' | 'updated_at' | usersKeySpecifier)[];
 export type usersFieldPolicy = {
+	all_decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	all_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaigns?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaigns_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,

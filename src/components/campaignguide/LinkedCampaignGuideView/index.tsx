@@ -22,7 +22,7 @@ import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
-import { useCreateDeckActions } from '@data/remote/decks';
+import { useDeckActions } from '@data/remote/decks';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -44,7 +44,7 @@ export default function LinkedCampaignGuideView(props: Props) {
   }, [props.campaignIdA, props.campaignIdB, campaignId.serverId]);
   const investigators = useInvestigatorCards();
   const dispatch = useDispatch();
-  const createDeckActions = useCreateDeckActions();
+  const deckActions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
   useStopAudioOnUnmount();
 
@@ -76,8 +76,8 @@ export default function LinkedCampaignGuideView(props: Props) {
     }
   }, componentId, [showEditNameDialog]);
 
-  const contextA = useCampaignGuideContext(campaignIdA, createDeckActions, updateCampaignActions, campaignDataA);
-  const contextB = useCampaignGuideContext(campaignIdB, createDeckActions, updateCampaignActions, campaignDataB);
+  const contextA = useCampaignGuideContext(campaignIdA, deckActions, updateCampaignActions, campaignDataA);
+  const contextB = useCampaignGuideContext(campaignIdB, deckActions, updateCampaignActions, campaignDataB);
   const processedCampaignA = useMemo(() => contextA?.campaignGuide && contextA?.campaignState && contextA.campaignGuide.processAllScenarios(contextA.campaignState), [contextA?.campaignGuide, contextA?.campaignState]);
   const processedCampaignB = useMemo(() => contextB?.campaignGuide && contextB?.campaignState && contextB.campaignGuide.processAllScenarios(contextB.campaignState), [contextB?.campaignGuide, contextB?.campaignState]);
 
@@ -97,6 +97,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         <UploadCampaignButton
           campaignId={campaignId}
           setCampaignServerId={setCampaignServerId}
+          deckActions={deckActions}
           showAlert={showAlert}
           guided
           linked={campaign?.linked}
@@ -109,7 +110,7 @@ export default function LinkedCampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [showAlert, setCampaignServerId, componentId, campaignId, campaignName, campaign?.linked]);
+  }, [showAlert, setCampaignServerId, deckActions, componentId, campaignId, campaignName, campaign?.linked]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA || !processedCampaignA || !contextA) {

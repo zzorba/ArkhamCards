@@ -5,11 +5,13 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { LatestDecks, ProcessedCampaign } from '@data/scenario';
 import Card, { CardsMap } from '@data/types/Card';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 
 export interface CampaignGuideContextType {
   campaignId: CampaignId;
+  campaign: MiniCampaignT;
+
   campaignGuideVersion: number;
-  campaignName: string;
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;
   spentXp: { [code: string]: number | undefined };
@@ -17,7 +19,6 @@ export interface CampaignGuideContextType {
   weaknessSet: WeaknessSet;
   latestDecks: LatestDecks;
   playerCards: CardsMap;
-  lastUpdated: Date;
   syncCampaignChanges: (campaignLog: ProcessedCampaign) => Promise<void>;
 }
 

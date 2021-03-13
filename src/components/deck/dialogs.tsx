@@ -12,7 +12,6 @@ import { useDispatch } from 'react-redux';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCounter } from '@components/core/hooks';
 import { SaveDeckChanges, saveDeckChanges, uploadLocalDeck } from '@components/deck/actions';
-import { updateCampaignWeaknessSet } from '@components/campaign/actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
@@ -21,9 +20,7 @@ import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
 import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
 import DeckBubbleHeader from './section/DeckBubbleHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { CreateDeckActions, useUpdateDeckActions } from '@data/remote/decks';
-import { UpdateCampaignActions } from '@data/remote/campaigns';
-import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { DeckActions, useDeckActions } from '@data/remote/decks';
 
 interface DialogOptions {
   title: string;
@@ -457,7 +454,7 @@ export function useBasicDialog(title: string): BasicDialogResult {
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 export function useUploadLocalDeckDialog(
-  actions: CreateDeckActions,
+  actions: DeckActions,
   deck?: Deck,
   parsedDeck?: ParsedDeck,
 ): {
@@ -557,11 +554,7 @@ export function useAdjustXpDialog({
   };
 }
 
-export function useSaveDialog(
-  parsedDeckResults: ParsedDeckResults,
-  updateCampaignActions: UpdateCampaignActions,
-  campaign?: SingleCampaignT,
-): DeckEditState & {
+export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditState & {
   saving: boolean;
   saveEdits: () => void;
   saveEditsAndDismiss: () => void;
@@ -587,26 +580,7 @@ export function useSaveDialog(
     setSaving(false);
     setSaveError(err.message || 'Unknown Error');
   }, [setSaveError, setSaving]);
-
-  const updateWeaknessSet = useCallback((newAssignedCards: string[]) => {
-    if (campaign) {
-      const assignedCards = {
-        ...(campaign.weaknessSet && campaign.weaknessSet.assignedCards) || {},
-      };
-      forEach(newAssignedCards, code => {
-        assignedCards[code] = (assignedCards[code] || 0) + 1;
-      });
-      dispatch(updateCampaignWeaknessSet(
-        updateCampaignActions.setWeaknessSet,
-        campaign.id,
-        {
-          packCodes: campaign.weaknessSet?.packCodes || [],
-          assignedCards,
-        },
-      ));
-    }
-  }, [campaign, dispatch, updateCampaignActions]);
-  const updateDeckActions = useUpdateDeckActions();
+  const deckActions = useDeckActions();
 
   const actuallySaveEdits = useCallback(async(dismissAfterSave: boolean, isRetry?: boolean) => {
     if (saving && !isRetry) {
@@ -633,13 +607,10 @@ export function useSaveDialog(
         };
         await deckDispatch(saveDeckChanges(
           user,
-          updateDeckActions,
+          deckActions,
           deck,
           deckChanges,
         ));
-        if (addedBasicWeaknesses.length) {
-          updateWeaknessSet(addedBasicWeaknesses);
-        }
       }
 
       if (dismissAfterSave) {
@@ -657,8 +628,8 @@ export function useSaveDialog(
     } catch(e) {
       handleSaveError(e);
     }
-  }, [deck, saving, addedBasicWeaknesses, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, user, updateDeckActions,
-    dispatch, deckDispatch, handleSaveError, setSaving, updateWeaknessSet]);
+  }, [deck, saving, hasPendingEdits, parsedDeck, deckEditsRef, tabooSetId, user, deckActions,
+    dispatch, deckDispatch, handleSaveError, setSaving]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
   const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);

@@ -27,7 +27,6 @@ import {
   useUpdateCampaignDifficultyMutation,
   useUpdateCampaignGuideVersionMutation,
 } from '@generated/graphql/apollo-schema';
-import { CreateDeckActions, useCreateDeckActions } from './decks';
 import { useFunction, ErrorResponse } from './api';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ChaosBag } from '@app_constants';
@@ -129,23 +128,19 @@ export interface CreateCampaignActions {
     campaignIdB: UploadedCampaignId;
   }>;
   uploadNewCampaign: UploadNewCampaignFn;
-
-  createDeckActions: CreateDeckActions;
 }
 
 export function useCreateCampaignActions(): CreateCampaignActions {
   const createCampaign = useCreateCampaignRequest();
   const createLinkedCampaign = useCreateLinkedCampaignRequest();
   const uploadNewCampaign = useUploadNewCampaign();
-  const createDeckActions = useCreateDeckActions();
   return useMemo(() => {
     return {
       createCampaign,
       createLinkedCampaign,
       uploadNewCampaign,
-      createDeckActions,
     };
-  }, [createCampaign, createLinkedCampaign, uploadNewCampaign, createDeckActions]);
+  }, [createCampaign, createLinkedCampaign, uploadNewCampaign]);
 }
 
 interface DeleteCampaignRequest extends ErrorResponse {

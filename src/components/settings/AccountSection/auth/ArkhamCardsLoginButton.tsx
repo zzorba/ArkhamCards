@@ -27,8 +27,9 @@ import EncounterIcon from '@icons/EncounterIcon';
 import { uploadCampaign } from '@components/campaignguide/actions';
 import { useCreateCampaignActions } from '@data/remote/campaigns';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import { useDeckActions } from '@data/remote/decks';
 
-function login(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
+function arkhamCardsLogin(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
     dispatch({
       type: ARKHAM_CARDS_LOGIN,
@@ -447,13 +448,14 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
     );
   }, [localCampaigns, setNoUpload, noUpload, typography, uploadState, width, colors]);
   const createCampaignActions = useCreateCampaignActions();
+  const deckActions = useDeckActions();
   const uploadCampaigns = useCallback(async() => {
     if (user) {
       const uploadCampaigns = filter(localCampaigns, c => !noUpload[c.uuid]);
       updateUploadState({ type: 'start', total: uploadCampaigns.length });
       await Promise.all(
         map(uploadCampaigns, c => {
-          return dispatch(uploadCampaign(user, createCampaignActions, c.id)).then(
+          return dispatch(uploadCampaign(user, createCampaignActions, deckActions, c.id)).then(
             () => updateUploadState({ type: 'finish' }),
             () => updateUploadState({ type: 'error' }),
           );
@@ -461,7 +463,7 @@ function useCampaignUploadDialog(user?: FirebaseAuthTypes.User): [React.ReactNod
       );
     }
     return true;
-  }, [user, localCampaigns, noUpload, dispatch, updateUploadState, createCampaignActions]);
+  }, [user, localCampaigns, noUpload, dispatch, updateUploadState, createCampaignActions, deckActions]);
   const uploading = !!uploadState?.completed;
   const { dialog, showDialog, setVisible } = useDialog({
     title: t`Upload campaigns`,
@@ -536,7 +538,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   }, [setMode, setEmailLogin, setVisibleRef]);
 
   const loginSucceeded = useCallback((user: FirebaseAuthTypes.UserCredential) => {
-    dispatch(login(user.user.uid));
+    dispatch(arkhamCardsLogin(user.user.uid));
     resetDialog();
     showUploadDialog();
   }, [resetDialog, dispatch, showUploadDialog]);

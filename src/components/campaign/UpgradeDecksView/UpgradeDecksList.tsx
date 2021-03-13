@@ -9,7 +9,7 @@ import { t } from 'ttag';
 
 import NonDeckDetailsButton from './NonDeckDetailsButton';
 import UpgradeDeckButton from './UpgradeDeckButton';
-import { Deck, getDeckId, InvestigatorData, ParsedDeck } from '@actions/types';
+import { Deck, getDeckId, ParsedDeck } from '@actions/types';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import Card, { CardsMap } from '@data/types/Card';
 import { parseBasicDeck } from '@lib/parseDeck';
@@ -17,14 +17,15 @@ import DeckRow from '@components/campaign/DeckRow';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useToggles } from '@components/core/hooks';
-import { useCreateDeckActions } from '@data/remote/decks';
+import { useDeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface Props {
   lang: string;
   showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
   updateInvestigatorXp: (investigator: Card, xp: number) => void;
-  investigatorData?: InvestigatorData;
+  campaign: SingleCampaignT;
   originalDeckUuids: Set<string>;
   componentId: string;
   decks: LatestDeckT[];
@@ -47,7 +48,7 @@ export default function UpgradeDecksList({
   lang,
   showDeckUpgradeDialog,
   updateInvestigatorXp,
-  investigatorData,
+  campaign,
   originalDeckUuids,
   componentId,
   decks,
@@ -65,7 +66,7 @@ export default function UpgradeDecksList({
     if (!deck) {
       return null;
     }
-    const eliminated = investigator.eliminated(investigatorData?.[investigator.code]);
+    const eliminated = investigator.eliminated(campaign.investigatorData?.[investigator.code]);
     if (eliminated) {
       return null;
     }
@@ -92,7 +93,7 @@ export default function UpgradeDecksList({
         onPress={showDeckUpgradeDialog}
       />
     );
-  }, [investigatorData, originalDeckUuids, typography, showDeckUpgradeDialog]);
+  }, [campaign.investigatorData, originalDeckUuids, typography, showDeckUpgradeDialog]);
 
   const saveXp = useCallback((investigator: Card, xp: number) => {
     updateInvestigatorXp(investigator, xp);
@@ -101,9 +102,9 @@ export default function UpgradeDecksList({
 
   const investigators = filter(
     allInvestigators,
-    investigator => !investigator.eliminated(investigatorData?.[investigator.code] || {})
+    investigator => !investigator.eliminated(campaign.investigatorData?.[investigator.code] || {})
   );
-  const createDeckActions = useCreateDeckActions();
+  const deckActions = useDeckActions();
   return (
     <>
       { map(investigators, investigator => {
@@ -113,12 +114,13 @@ export default function UpgradeDecksList({
             <DeckRow
               key={deck.id.local ? deck.id.uuid : deck.id.id}
               lang={lang}
+              campaign={campaign}
               componentId={componentId}
               id={deck.id}
               renderDetails={renderDetails}
               compact
               viewDeckButton
-              actions={createDeckActions}
+              actions={deckActions}
             />
           );
         }

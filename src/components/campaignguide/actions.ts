@@ -31,6 +31,7 @@ import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
 import { CreateCampaignActions, GuideActions } from '@data/remote/campaigns';
 import { Guide_Input_Insert_Input, Guide_Achievement_Insert_Input, Investigator_Data_Insert_Input, Campaign_Investigator_Insert_Input } from '@generated/graphql/apollo-schema';
+import { DeckActions } from '@data/remote/decks';
 
 function guideInputToInsert(input: GuideInput, serverId: number): Guide_Input_Insert_Input {
   return {
@@ -55,7 +56,8 @@ function uploadCampaignHelper(
   campaign: Campaign,
   campaignId: UploadedCampaignId,
   guided: boolean,
-  actions: CreateCampaignActions
+  actions: CreateCampaignActions,
+  deckActions: DeckActions
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch, getState) => {
     // Do something with deck uploads?
@@ -122,7 +124,7 @@ function uploadCampaignHelper(
       now: new Date(),
     });
     forEach(campaign.deckIds || [], deckId => {
-      dispatch(uploadCampaignDeckHelper(campaignId, deckId, actions.createDeckActions));
+      dispatch(uploadCampaignDeckHelper(campaignId, deckId, deckActions));
     });
   };
 }
@@ -130,6 +132,7 @@ function uploadCampaignHelper(
 export function uploadCampaign(
   user: FirebaseAuthTypes.User,
   actions: CreateCampaignActions,
+  deckActions: DeckActions,
   campaignId: CampaignId
 ): ThunkAction<Promise<UploadedCampaignId>, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch, getState): Promise<UploadedCampaignId> => {
@@ -146,17 +149,17 @@ export function uploadCampaign(
       const ids = await actions.createLinkedCampaign(campaignId.campaignId, campaign.linkUuid, guided);
       const campaignA = makeCampaignSelector()(state, campaign.linkUuid.campaignIdA);
       if (campaignA) {
-        dispatch(uploadCampaignHelper(campaignA, ids.campaignIdA, guided, actions));
+        dispatch(uploadCampaignHelper(campaignA, ids.campaignIdA, guided, actions, deckActions));
       }
       const campaignB = makeCampaignSelector()(state, campaign.linkUuid.campaignIdB);
       if (campaignB) {
-        dispatch(uploadCampaignHelper(campaignB, ids.campaignIdB, guided, actions));
+        dispatch(uploadCampaignHelper(campaignB, ids.campaignIdB, guided, actions, deckActions));
       }
-      dispatch(uploadCampaignHelper(campaign, ids.campaignId, guided, actions));
+      dispatch(uploadCampaignHelper(campaign, ids.campaignId, guided, actions, deckActions));
       return ids.campaignId;
     }
     const newCampaignId = await actions.createCampaign(campaignId.campaignId, guided);
-    dispatch(uploadCampaignHelper(campaign, newCampaignId, guided, actions));
+    dispatch(uploadCampaignHelper(campaign, newCampaignId, guided, actions, deckActions));
     return newCampaignId;
   };
 }
