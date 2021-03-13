@@ -29116,7 +29116,6 @@
     "create_exploration_deck",
     "setup_depth",
     "set_aside_relic",
-    "set_aside_harbinger",
     "set_aside_poison",
     "encounter_deck",
     "depth_level_rule",
