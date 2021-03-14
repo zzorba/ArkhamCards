@@ -37605,7 +37605,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "\"Look,\" Sheriff Engel insists, \"I know it sounds crazy, but that's really all there is to it.\" He sighs and sits back down, pouring a cup of joe for you and one for himself. \"A dame in Uptown spotted a cracked egg wearing this mask and holdin' a bloody butcher's cleaver,\" he says, motioning to the black leather mask sitting on his desk. It has a comicaly long nose and a strange symbol scrawled in yellow on its forehead. \"So, she calls it in. My boys and I picked him up on the corner of Saltonstall & Garrison.\" The sheriff's jaw clenches and his brows furrow as he recounts the story. \"Fella did nothing but laugh as we slapped the bracelets on him. Called himself Zanni. Said nothing except the 'carnival is coming'; whatever the hell that meant. Wasn't until the next day we found the victim's body. Defense wanted him in a straitjacket. We were happy to oblige.\"\nThere isn't much time to spare. If your research is right, there is more to this case than meets the eye. This \"Zanni\" wasn't talking about Darke's Carnival, but rather the Carnevale of Venice, which begins just before the next full moon."
+      "text": "“Olha”, o xerife Engel insiste: “Eu sei que parece loucura mas isso é realmente tudo o que temos”. Ele suspira e senta novamente, servindo uma xícara de café para você e uma para ele. “Uma dama em Uptown viu um maluco usando essa máscara e segurando um cutelo de açougueiro”, ele diz, apontando para a máscara de couro preta em cima da mesa. Ela tem um nariz cômico comprido e um símbolo estranho rabiscado em amarelo na testa. “Então, ela liga. Meus garotos e eu o pegamos na esquina da Saltonstall & Garrison”. A mandíbula do xerife se contrai e suas sobrancelhas fazem quando ele conta a história. “O cara não fez nada além de rir quando botamos as algemas nele. Ele se chama Zanni. Não disse nada, exceto que o ‘carnaval está chegando’, seja lá o que isso significasse. Até que no dia seguinte encontramos o corpo da vítima. A defesa quer ele um uma camisa de força. Nós ficamos felizes em obedecer”.\nNão há muito tempo de sobra. Se sua pesquisa estiver correta, há mais neste caso do que aparenta. Este “Zanni” não está falando sobre o Carnaval de Darke mas sim o Carnaval de Veneza, que começa pouco antes da próxima lua cheia."
     },
     {
       "id": "gather_encounter_sets",
@@ -37840,7 +37840,7 @@
     {
       "id": "sacrifice_made",
       "type": "story",
-      "text": "Too many lives were lost during the eclipse to stop the machinations of Cnidathqua's servants. The beast has been fed, its minions empowered. You find yourself hoping you don't live long enough to see the fallout of your failure."
+      "text": "Muitas vidas foram perdidas durante o eclipse para impedir as maquinações dos servos de Cnidathqua. A besta foi alimentada e seus servos empedrados. Você espera não viver o suficiente para ver as consequências de seu fracasso."
     },
     {
       "id": "random_weakness",
@@ -37868,7 +37868,7 @@
         "physical",
         "mental"
       ],
-      "text": "You sputter awake as an oar gently taps yoru shoulder. \"Tutto bene?\" The goldolier holding the oars says with a concerned expression. You nod and drag yourself onto the docks from his gondola, drenched and aching all over. The city is devestated. Most of the boats in the canal are wrecked. The streets are covered not in confetti, but in blood.",
+      "text": "Você acorda quando um remo bate suavemente em seu ombro. “Tutto bene?” O gondoleiro segurando o remo diz com uma expressão preocupada. Você balança a cabeça e se arrasta para o cais através de sua gôndola, ensopado e com dor em todo lugar. A cidade está arrasada. A maioria dos barcos no canal está naufragada e as ruas estão cobertas não de confetes, mas de sangue.",
       "steps": [
         "many_were_sacrificed_to_cnidathqua",
         "earn_xp",
@@ -37881,7 +37881,7 @@
     {
       "id": "R1",
       "title": "Resolução 1",
-      "text": "The city is still recovering from the events during the eclipse. With nearly all evidence of the creature melted away by the hot sun, many attribute the violence during the Carnevale to local crime lord Cascio Di Boerio and his crew. Those that know the truth know better than to speak of the elder creature that lives in Laguna Veneta. With any luck, its name will never be spoken again.",
+      "text": "A cidade ainda está se recuperando dos eventos durante o eclipse. Com quase todas as evidências da criatura derretida pelo sol quente, muitos atribuem a violência durante o Carnaval ao senhor do crime local Cascio Di Boerio e gangue. Quem conhece a verdade sabe que não deve falar da velha criatura que mora em Laguna Veneta. Com alguma sorte, seu nome nunca mais será pronunciado novamente.",
       "steps": [
         "sun_banished_cnidathqua",
         "earn_xp",
@@ -37893,7 +37893,7 @@
     {
       "id": "R2",
       "title": "Resolução 2",
-      "text": "The creature recoils as globules of its jelly-like flesh rip and tear from its body, splashing into the lagoon. It makes no sound as its torn body sinks into the depths. The chanting in the city plunges into mournful silence. As you return to the canal-side streets, black feathers fall from the sky where bright confetti once fluttered. You can only wonder how long it will take for the creature to recover.",
+      "text": "A criatura recua quando glóbulos de sua carne gelatinosa se rasgam e se desprendem de seu corpo, espirrando na lagoa. Não faz nenhum barulho quando seu corpo dilacerado afunda nas profundezas. Os cânticos na cidade mergulham em um silêncio triste. Quando você volta para as ruas do lado do canal, penas pretas caem do céu onde confetes brilhantes esvoaçam. Você só pode imaginar quanto tempo levará para a criatura se recuperar.",
       "steps": [
         "cnidathqua_retreated",
         "earn_xp",

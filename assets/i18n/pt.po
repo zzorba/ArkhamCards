@@ -3328,7 +3328,7 @@ msgid "Night of the Zealot"
 msgstr "Noite da Fanática"
 
 msgid "Return to the Night of the Zealot"
-msgstr "Return to the Night of the Zealot"
+msgstr "Retorno à Noite da Fanática"
 
 msgid "Return to The Dunwich Legacy"
 msgstr "Return to The Dunwich Legacy"
@@ -3349,49 +3349,49 @@ msgid "The Web of Dreams"
 msgstr "The Web of Dreams"
 
 msgid "The Gathering"
-msgstr "The Gathering"
+msgstr "O Encontro"
 
 msgid "The Midnight Masks"
-msgstr "The Midnight Masks"
+msgstr "As Máscaras da Meia-Noite"
 
 msgid "The Devourer Below"
-msgstr "The Devourer Below"
+msgstr "O Devorador Inferior"
 
 msgid "Prologue"
-msgstr "Prologue"
+msgstr "Prólogo"
 
 msgid "Extracurricular Activity"
-msgstr "Extracurricular Activity"
+msgstr "Atividade Extracurricular"
 
 msgid "The House Always Wins"
-msgstr "The House Always Wins"
+msgstr "A Casa Sempre Vence"
 
 msgid "Armitage’s Fate"
-msgstr "Armitage’s Fate"
+msgstr "Destino de Armitage"
 
 msgid "The Miskatonic Museum"
-msgstr "The Miskatonic Museum"
+msgstr "O Museu Miskatonic"
 
 msgid "Essex County Express"
-msgstr "Essex County Express"
+msgstr "O Expresso para o Condado de Essex"
 
 msgid "Blood on the Altar"
-msgstr "Blood on the Altar"
+msgstr "Sangue no Altar"
 
 msgid "The Survivors"
-msgstr "The Survivors"
+msgstr "Os Sobreviventes"
 
 msgid "Undimensioned and Unseen"
-msgstr "Undimensioned and Unseen"
+msgstr "Imensurável e Invisível"
 
 msgid "Where Doom Awaits"
-msgstr "Where Doom Awaits"
+msgstr "Onde a Perdição Aguarda"
 
 msgid "Lost in Time and Space"
-msgstr "Lost in Time and Space"
+msgstr "Perdido no Tempo e no Espaço"
 
 msgid "Epilogue"
-msgstr "Epilogue"
+msgstr "Epílogo"
 
 msgid "Return to Extracurricular Activity"
 msgstr "Return to Extracurricular Activity"
@@ -4408,4 +4408,4 @@ msgstr[1] "${ cycleCount } Ciclo"
 msgid "${ standalonePackCount } Pack"
 msgid_plural "${ standalonePackCount } Packs"
 msgstr[0] "${ standalonePackCount } Pacote"
-msgstr[1] "${ standalonePackCount } Pacotes"
+msgstr[1] "${ standalonePackCount } Pacotes
