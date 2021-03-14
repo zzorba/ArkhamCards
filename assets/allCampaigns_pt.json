@@ -592,11 +592,11 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Cada investigador ganha 2 bônus de experiência como ele ou ela tiveram uma visão no mundo oculto dos Mitos.",
         "effects": [
           {
@@ -1155,11 +1155,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1320,7 +1320,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Coloque as localizações Miskatonic Quad, Orne Library, Humanities Building, Student Union, Science Building, and Administration Building em jogo. Cada investigador começa a jogar Miskatonic Quad."
+      "text": "Coloque as localizações Miskatonic Quad, Orne Library, Humanities Building, Student Union, Science Building e Administration Building em jogo. Cada investigador começa a jogar Miskatonic Quad."
     },
     {
       "id": "location_layout",
@@ -1343,7 +1343,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Separe as seguintes cartas de lado: “Jazz” Mulligan, Alchemical Concoction, The Experiment, Professor Warren Rice, Dormitories e Alchemy Labs."
+      "text": "Ponha as seguintes cartas de lado: “Jazz” Mulligan, Alchemical Concoction, The Experiment, Professor Warren Rice, Dormitories e Alchemy Labs."
     },
     {
       "id": "encounter_deck",
@@ -1417,11 +1417,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1432,11 +1432,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Cada investigador ganha (x) experiência igual ao valor de vitória de cada carta na zona de troféus. Cada investigador ganha 1 de experiência caso ele ou ela reflita sobre os eventos da noite.",
+      "text": "Cada investigador ganha (x) experiência igual ao valor de vitória de cada carta no marcador de vitória. Cada investigador ganha 1 de experiência caso ele ou ela reflita sobre os eventos da noite.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1746,12 +1746,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Cada investigador ganha 5 de experiências de bônus como ele ou ela salvaram o mundo de ser despedaçado.",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -2025,7 +2025,7 @@
         "name": "Professor Warren Rice"
       },
       "type": "story",
-      "text": "Professor Rice adjusts his glasses and studies the documents and arcane manuscripts left in the chamber. “I thought this nightmare was over and done with,” he sighs. “But we have a duty to see this through. We have to stop these creatures, or it won’t be just Dunwich in trouble. The powder mixture Armitage created to see the creatures will be our saving grace,” he explains, and sets off to the task of recreating the powder."
+      "text": "O Professor Rice ajusta seus óculos e estuda os documentos e os manuscritos arcanos deixados na câmara. “Eu pensei que esse pesadelo tivesse terminado”, ele suspira. “Mas temos o dever de ver isso. Temos que parar essas criaturas, ou não será apenas Dunwich com problemas. A mistura em pó de Armitage criada para ver as criaturas será nossa salvação”, ele explica, e começa a tarefa de recriar o pó."
     },
     {
       "id": "warren_rice_survived",
@@ -2034,7 +2034,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "warren_rice_survived",
-          "text": "Professor Warren Rice survived The Dunwich Legacy."
+          "text": "Professor Warren Rice sobreviveu ao Legado de Dunwich."
         }
       ]
     },
@@ -2094,7 +2094,7 @@
         "name": "Dr. Francis Morgan"
       },
       "type": "story",
-      "text": "“Thank you for everything you’ve done,” Dr. Morgan says, taking count of your provisions and ammunition. “Last time, we needed some of that strange powder Armitage concocted to even see the beast that terrorized Dunwich. If there’s more of those things out there, we’re going to need that powder. I think I remember how he made it...”"
+      "text": "“Obrigado por tudo o que você fez”, diz o Dr. Morgan, contando com suas provisões e munições. “Na última vez, nós precisamos de um pouco do estranho pó de Armitage que inventou para ver a besta que aterrorizava Dunwich. Se houver mais dessas coisas lá fora, vamos precisar desse pó. Acho que eu lembro como ele conseguiu…”"
     },
     {
       "id": "francis_morgan_survived",
@@ -2103,7 +2103,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "francis_morgan_survived",
-          "text": "Dr. Francis Morgan survived The Dunwich Legacy."
+          "text": "Dr. Francis Morgan sobreviveu ao Legado de Dunwich."
         }
       ]
     },
@@ -2127,7 +2127,7 @@
     },
     {
       "id": "earn_francis_morgan",
-      "text": "Any one investigator may choose to add Dr. Francis Morgan to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Qualquer investigador pode escolher adicionar Dr. Francis Morgan ao seu baralho. Esta carta não conta no tamanho do baralho do investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -2162,7 +2162,7 @@
         "name": "Zebulon Whately"
       },
       "type": "story",
-      "text": "“Dunwich’s had its fair share of oddities,” Zebulon explains to you with a quavering voice, “but I ain’t ever seen anything as sick and twisted as this...this...<b>thing</b>.” He gives the creature’s remains one last sickened glance before closing the door to the chamber behind him, shuddering. He locks eyes with you, his expression grim. “Whoever dun this gotta pay. I’ll do all I can to help.”"
+      "text": "“Dunwich teve uma boa parcela de estranheza”, Zebulon explica para você com uma voz tremulante, “mas eu nunca vi nada tão doente e retorcido como este… essa… coisa”. Ele deixa os restos da criatura com um último olhar enjoado antes de fechar a porta para a câmara atrás dele, estremecendo. Ele trava os olhos em você, sua expressão sombria. “Quem quer que tenha que pagar. Eu irei fazer tudo o que puder para ajudar."
     },
     {
       "id": "zebulon_whateley_survived",
@@ -2171,13 +2171,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "zebulon_whateley_survived",
-          "text": "Zebulon Whateley survived The Dunwich Legacy."
+          "text": "Zebulon Whateley sobreviveu ao Legado de Dunwich."
         }
       ]
     },
     {
       "id": "earn_zebulon_whateley",
-      "text": "Any one investigator may choose to add Zebulon Whateley to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Qualquer investigador pode escolher adicionar Zebulon Whateley ao seu baralho. Esta carta não conta no tamanho do baralho do investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -2212,7 +2212,7 @@
         "name": "Earl Sawyer"
       },
       "type": "story",
-      "text": "“I never could’a made it if it weren’t for you,” Earl says with a stammer, shaking your hand repeatedly. “If ’n there’s anything I can do to repay yeh, just ask away. I ain’t much of a fighter or anythin’, but I’ll do all I can. Jus’...don’t make me look at anythin’ like that beast again, a’right?”"
+      "text": "“Eu nunca poderia fazer isso se não fosse por você”, diz Earl gaguejando, balançando sua mão repetidamente. “Se houver algo que eu possa fazer para pagar, basta dizer. Eu não sou muito bom como lutador ou qualquer coisa do tipo, mas farei tudo o que puder. Apenas… não me faça olhar para nada como essa besta novamente, certo?”"
     },
     {
       "id": "earl_sawyer_survived",
@@ -2221,13 +2221,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "earl_sawyer_survived",
-          "text": "Earl Sawyer survived The Dunwich Legacy."
+          "text": "Earl Sawyer sobreviveu ao Legado de Dunwich."
         }
       ]
     },
     {
       "id": "earn_earl_sawyer",
-      "text": "Any one investigator may choose to add Earl Sawyer to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Qualquer investigador pode escolher adicionar Earl Sawyer ao seu baralho. Esta carta não conta no tamanho do baralho do investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -2256,7 +2256,7 @@
     },
     {
       "id": "earn_powder",
-      "text": "Any one investigator may choose to add the Powder of Ibn‐Ghazi card to their deck. It does not count toward that investigator’s deck size.",
+      "text": "Qualquer investigador pode escolher adicionar a carta Powder of Ibn-Ghazi ao seu baralho. Esta carta não conta no tamanho do baralho do investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -2357,7 +2357,7 @@
     {
       "id": "criminal_aloof_note",
       "type": "rule_reminder",
-      "text": "<b>Nota:</b> No começo deste cenário, “Agenda 1a” concede a cada inimigo “Criminal” a palavra-chave “Indiferente”, impedindo que os inimigos se engajem automaticamente à você. Em algum momento, esses inimigos podem perder a palavra-chave “Indiferente”. Lembre-se que os inimigos que não são mais “Indiferente” se engajarão automaticamente nos investigadores em sua localização, conforme o normal."
+      "text": "<b>Nota:</b> No começo deste cenário, “Agenda 1a” conceda a cada inimigo “Criminal” a palavra-chave “allof (indiferente)”, impedindo que os inimigos se engajem automaticamente a você. Em algum momento, esses inimigos podem perder a palavra-chave “allof (indiferente)”. Lembre-se que os inimigos que não são mais “aloof (indidente)” se engajarão automaticamente nos investigadores em sua localização, conforme o normal."
     },
     {
       "id": "bone_to_pick",
@@ -2462,11 +2462,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -2477,11 +2477,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Cada investigador ganha 1 de experiência caso ele ou ela reflita sobre os eventos da noite.",
         "effects": [
           {
@@ -2549,7 +2549,7 @@
         "name": "Resolution 1"
       },
       "title": "Resolução 1",
-      "text": "Você foge até o final do bloco e pausa para se recuperar. Antes que você possa recuperar a respiração, o chão vibra com um choque estrondoso. Pessoas saem de seus lares e vitrines para ver o que é o tumulto, e uma multidão se forma na rua. Você se dirige para frente da multidão e está horrorizado ao ver o prédio do qual você fugiu, alguns minutos antes, reduzido a escombros. Não há sinal de Dr. Morgan em nenhum lugar.",
+      "text": "Você foge até o final do quarteirão e pausa para se recuperar. Antes que você possa recuperar a respiração, o chão vibra com um choque estrondoso. Pessoas saem de seus lares e vitrines para ver o que é o tumulto, e uma multidão se forma na rua. Você se dirige para frente da multidão e está horrorizado ao ver o prédio do qual você fugiu, alguns minutos antes, reduzido a escombros. Não há sinal de Dr. Morgan em nenhum lugar.",
       "steps": [
         "bone_to_pick",
         "francis_morgan_kidnapped",
@@ -2717,7 +2717,7 @@
       "id": "void_note",
       "type": "rule_reminder",
       "title": "O Vazio",
-      "text": "Algumas cartas neste cenário são referentes a uma área chamada “O Vazio”. O vazio é uma área fora do jogo próxima aos baralhos de ato e agenda que o “Horror Caçador” pode entrar e sair via efeitos de carta. Enquanto o “Horror Caçador” está no vazio, ele é considerado fora de jogo e não pode ser afetado por cartas de jogadores ou ações de investigador."
+      "text": "Algumas cartas neste cenário são referentes a uma área chamada “O Vazio”. O vazio é uma área fora do jogo próxima aos baralhos de ato e agenda que o Hunting Horror (Horror Caçador) pode entrar e sair via efeitos de carta. Enquanto o Hunting Horror (Horror Caçador) está no vazio, ele é considerado fora de jogo e não pode ser afetado por cartas de jogadores ou ações de investigador."
     },
     {
       "id": "failed_to_recover_necronomicon",
@@ -2777,11 +2777,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -3219,11 +3219,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -3749,11 +3749,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -4440,7 +4440,7 @@
     {
       "id": "cultists_interrogated",
       "type": "input",
-      "text": "Em seu Relatório de Campanha, sob “Cultistas que Interrogamos”, anote os nomes de cada inimigo Cultista único no marcador de vitória.",
+      "text": "Em seu Registro de Campanha, sob “Cultistas que Interrogamos”, anote os nomes de cada inimigo Cultista único no marcador de vitória.",
       "input": {
         "type": "card_choice",
         "query": [
@@ -4468,7 +4468,7 @@
     },
     {
       "id": "cultists_got_away_r1",
-      "text": "Em seu Relatório de Campanha, sob “Cultistas que fugiram,” anote os nomes de cada inimigo único que ainda está no baralho de Cultistas ou em jogo. Se a Agenda 1 estiver em jogo, anote também “O Caçador Mascarado” sob “Cultistas que fugiram”.",
+      "text": "Em seu Registro de Campanha, sob “Cultistas que fugiram,” anote os nomes de cada inimigo único que ainda está no baralho de Cultistas ou em jogo. Se a Agenda 1 estiver em jogo, anote também “O Caçador Mascarado” sob “Cultistas que fugiram”.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -4507,7 +4507,7 @@
     },
     {
       "id": "cultists_got_away_r2",
-      "text": "Em seu Relatório de Campanha, sob “Cultistas que fugiram,” anote os nomes de cada inimigo único que ainda está no baralho de Cultistas ou em jogo.",
+      "text": "Em seu Registro de Campanha, sob “Cultistas que fugiram,” anote os nomes de cada inimigo único que ainda está no baralho de Cultistas ou em jogo.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -4596,11 +4596,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -4969,11 +4969,11 @@
     },
     {
       "id": "earn_5_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Cada investigador ganha 5 pontos de experiência bônus por ter salvo a cidade de Arkham de um terrível destino.",
         "effects": [
           {
@@ -4986,11 +4986,11 @@
     },
     {
       "id": "earn_10_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Cada investigador ganha 10 pontos de experiência bônus por ter triunfado em batalha contra um terrível oponente.",
         "effects": [
           {
@@ -5003,11 +5003,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -5232,7 +5232,7 @@
       "input": {
         "type": "counter",
         "confirm_text": "Cada investigador ganha 2 bônus de experiência como ele ou ela tiveram uma visão no mundo oculto dos Mitos.",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -5419,7 +5419,7 @@
     },
     {
       "id": "hidden",
-      "title": "Relatório de Campanha",
+      "title": "Registro de Campanha",
       "type": "hidden"
     }
   ],
@@ -6420,11 +6420,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -7109,11 +7109,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -7480,11 +7480,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -8293,11 +8293,11 @@
     },
     {
       "id": "earn_xp_triumph",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has truimphed over their own self—the most dangerous of foes.",
         "effects": [
           {
@@ -8310,11 +8310,11 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has learned the truth behind <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -8850,11 +8850,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -8865,11 +8865,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns 1 bonus experience as they gain insight into the machinations of <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -10018,11 +10018,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -10829,11 +10829,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -11749,11 +11749,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -12720,11 +12720,11 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Cada investigador ganha 2 bônus de experiência como ele ou ela tiveram uma visão no mundo oculto dos Mitos.",
         "effects": [
           {
@@ -13260,11 +13260,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -13432,7 +13432,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Separe as seguintes cartas de lado: “Jazz” Mulligan, Alchemical Concoction, The Experiment, Professor Warren Rice, Dormitories e Alchemy Labs."
+      "text": "Ponha as seguintes cartas de lado: “Jazz” Mulligan, Alchemical Concoction, The Experiment, Professor Warren Rice, Dormitories e Alchemy Labs."
     },
     {
       "id": "encounter_deck",
@@ -13506,11 +13506,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -13521,11 +13521,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Cada investigador ganha (x) experiência igual ao valor de vitória de cada carta na zona de troféus. Cada investigador ganha 1 de experiência caso ele ou ela reflita sobre os eventos da noite.",
+      "text": "Cada investigador ganha (x) experiência igual ao valor de vitória de cada carta no marcador de vitória. Cada investigador ganha 1 de experiência caso ele ou ela reflita sobre os eventos da noite.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -13887,12 +13887,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Cada investigador ganha 5 de experiências de bônus como ele ou ela salvaram o mundo de ser despedaçado.",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -14154,7 +14154,7 @@
     {
       "id": "criminal_aloof_note",
       "type": "rule_reminder",
-      "text": "<b>Nota:</b> No começo deste cenário, “Agenda 1a” concede a cada inimigo “Criminal” a palavra-chave “Indiferente”, impedindo que os inimigos se engajem automaticamente à você. Em algum momento, esses inimigos podem perder a palavra-chave “Indiferente”. Lembre-se que os inimigos que não são mais “Indiferente” se engajarão automaticamente nos investigadores em sua localização, conforme o normal."
+      "text": "<b>Nota:</b> No começo deste cenário, “Agenda 1a” conceda a cada inimigo “Criminal” a palavra-chave “allof (indiferente)”, impedindo que os inimigos se engajem automaticamente a você. Em algum momento, esses inimigos podem perder a palavra-chave “allof (indiferente)”. Lembre-se que os inimigos que não são mais “aloof (indidente)” se engajarão automaticamente nos investigadores em sua localização, conforme o normal."
     },
     {
       "id": "bone_to_pick",
@@ -14259,11 +14259,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -14274,11 +14274,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Cada investigador ganha 1 de experiência caso ele ou ela reflita sobre os eventos da noite.",
         "effects": [
           {
@@ -14375,7 +14375,7 @@
         "name": "Resolution 1"
       },
       "title": "Resolução 1",
-      "text": "Você foge até o final do bloco e pausa para se recuperar. Antes que você possa recuperar a respiração, o chão vibra com um choque estrondoso. Pessoas saem de seus lares e vitrines para ver o que é o tumulto, e uma multidão se forma na rua. Você se dirige para frente da multidão e está horrorizado ao ver o prédio do qual você fugiu, alguns minutos antes, reduzido a escombros. Não há sinal de Dr. Morgan em nenhum lugar.",
+      "text": "Você foge até o final do quarteirão e pausa para se recuperar. Antes que você possa recuperar a respiração, o chão vibra com um choque estrondoso. Pessoas saem de seus lares e vitrines para ver o que é o tumulto, e uma multidão se forma na rua. Você se dirige para frente da multidão e está horrorizado ao ver o prédio do qual você fugiu, alguns minutos antes, reduzido a escombros. Não há sinal de Dr. Morgan em nenhum lugar.",
       "steps": [
         "bone_to_pick",
         "francis_morgan_kidnapped",
@@ -14519,7 +14519,7 @@
       "id": "void_note",
       "type": "rule_reminder",
       "title": "O Vazio",
-      "text": "Algumas cartas neste cenário são referentes a uma área chamada “O Vazio”. O vazio é uma área fora do jogo próxima aos baralhos de ato e agenda que o “Horror Caçador” pode entrar e sair via efeitos de carta. Enquanto o “Horror Caçador” está no vazio, ele é considerado fora de jogo e não pode ser afetado por cartas de jogadores ou ações de investigador."
+      "text": "Algumas cartas neste cenário são referentes a uma área chamada “O Vazio”. O vazio é uma área fora do jogo próxima aos baralhos de ato e agenda que o Hunting Horror (Horror Caçador) pode entrar e sair via efeitos de carta. Enquanto o Hunting Horror (Horror Caçador) está no vazio, ele é considerado fora de jogo e não pode ser afetado por cartas de jogadores ou ações de investigador."
     },
     {
       "id": "failed_to_recover_necronomicon",
@@ -14579,11 +14579,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -15024,11 +15024,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -15536,11 +15536,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -15786,7 +15786,7 @@
         "name": "Professor Warren Rice"
       },
       "type": "story",
-      "text": "Professor Rice adjusts his glasses and studies the documents and arcane manuscripts left in the chamber. “I thought this nightmare was over and done with,” he sighs. “But we have a duty to see this through. We have to stop these creatures, or it won’t be just Dunwich in trouble. The powder mixture Armitage created to see the creatures will be our saving grace,” he explains, and sets off to the task of recreating the powder."
+      "text": "O Professor Rice ajusta seus óculos e estuda os documentos e os manuscritos arcanos deixados na câmara. “Eu pensei que esse pesadelo tivesse terminado”, ele suspira. “Mas temos o dever de ver isso. Temos que parar essas criaturas, ou não será apenas Dunwich com problemas. A mistura em pó de Armitage criada para ver as criaturas será nossa salvação”, ele explica, e começa a tarefa de recriar o pó."
     },
     {
       "id": "warren_rice_survived",
@@ -15795,7 +15795,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "warren_rice_survived",
-          "text": "Professor Warren Rice survived The Dunwich Legacy."
+          "text": "Professor Warren Rice sobreviveu ao Legado de Dunwich."
         }
       ]
     },
@@ -15855,7 +15855,7 @@
         "name": "Dr. Francis Morgan"
       },
       "type": "story",
-      "text": "“Thank you for everything you’ve done,” Dr. Morgan says, taking count of your provisions and ammunition. “Last time, we needed some of that strange powder Armitage concocted to even see the beast that terrorized Dunwich. If there’s more of those things out there, we’re going to need that powder. I think I remember how he made it...”"
+      "text": "“Obrigado por tudo o que você fez”, diz o Dr. Morgan, contando com suas provisões e munições. “Na última vez, nós precisamos de um pouco do estranho pó de Armitage que inventou para ver a besta que aterrorizava Dunwich. Se houver mais dessas coisas lá fora, vamos precisar desse pó. Acho que eu lembro como ele conseguiu…”"
     },
     {
       "id": "francis_morgan_survived",
@@ -15864,7 +15864,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "francis_morgan_survived",
-          "text": "Dr. Francis Morgan survived The Dunwich Legacy."
+          "text": "Dr. Francis Morgan sobreviveu ao Legado de Dunwich."
         }
       ]
     },
@@ -15888,7 +15888,7 @@
     },
     {
       "id": "earn_francis_morgan",
-      "text": "Any one investigator may choose to add Dr. Francis Morgan to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Qualquer investigador pode escolher adicionar Dr. Francis Morgan ao seu baralho. Esta carta não conta no tamanho do baralho do investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -15923,7 +15923,7 @@
         "name": "Zebulon Whately"
       },
       "type": "story",
-      "text": "“Dunwich’s had its fair share of oddities,” Zebulon explains to you with a quavering voice, “but I ain’t ever seen anything as sick and twisted as this...this...<b>thing</b>.” He gives the creature’s remains one last sickened glance before closing the door to the chamber behind him, shuddering. He locks eyes with you, his expression grim. “Whoever dun this gotta pay. I’ll do all I can to help.”"
+      "text": "“Dunwich teve uma boa parcela de estranheza”, Zebulon explica para você com uma voz tremulante, “mas eu nunca vi nada tão doente e retorcido como este… essa… coisa”. Ele deixa os restos da criatura com um último olhar enjoado antes de fechar a porta para a câmara atrás dele, estremecendo. Ele trava os olhos em você, sua expressão sombria. “Quem quer que tenha que pagar. Eu irei fazer tudo o que puder para ajudar."
     },
     {
       "id": "zebulon_whateley_survived",
@@ -15932,13 +15932,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "zebulon_whateley_survived",
-          "text": "Zebulon Whateley survived The Dunwich Legacy."
+          "text": "Zebulon Whateley sobreviveu ao Legado de Dunwich."
         }
       ]
     },
     {
       "id": "earn_zebulon_whateley",
-      "text": "Any one investigator may choose to add Zebulon Whateley to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Qualquer investigador pode escolher adicionar Zebulon Whateley ao seu baralho. Esta carta não conta no tamanho do baralho do investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -15973,7 +15973,7 @@
         "name": "Earl Sawyer"
       },
       "type": "story",
-      "text": "“I never could’a made it if it weren’t for you,” Earl says with a stammer, shaking your hand repeatedly. “If ’n there’s anything I can do to repay yeh, just ask away. I ain’t much of a fighter or anythin’, but I’ll do all I can. Jus’...don’t make me look at anythin’ like that beast again, a’right?”"
+      "text": "“Eu nunca poderia fazer isso se não fosse por você”, diz Earl gaguejando, balançando sua mão repetidamente. “Se houver algo que eu possa fazer para pagar, basta dizer. Eu não sou muito bom como lutador ou qualquer coisa do tipo, mas farei tudo o que puder. Apenas… não me faça olhar para nada como essa besta novamente, certo?”"
     },
     {
       "id": "earl_sawyer_survived",
@@ -15982,13 +15982,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "earl_sawyer_survived",
-          "text": "Earl Sawyer survived The Dunwich Legacy."
+          "text": "Earl Sawyer sobreviveu ao Legado de Dunwich."
         }
       ]
     },
     {
       "id": "earn_earl_sawyer",
-      "text": "Any one investigator may choose to add Earl Sawyer to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Qualquer investigador pode escolher adicionar Earl Sawyer ao seu baralho. Esta carta não conta no tamanho do baralho do investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -16017,7 +16017,7 @@
     },
     {
       "id": "earn_powder",
-      "text": "Any one investigator may choose to add the Powder of Ibn‐Ghazi card to their deck. It does not count toward that investigator’s deck size.",
+      "text": "Qualquer investigador pode escolher adicionar a carta Powder of Ibn-Ghazi ao seu baralho. Esta carta não conta no tamanho do baralho do investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -16596,11 +16596,11 @@
     },
     {
       "id": "earn_5_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Cada investigador ganha 5 pontos de experiência bônus por ter salvo a cidade de Arkham de um terrível destino.",
         "effects": [
           {
@@ -16613,11 +16613,11 @@
     },
     {
       "id": "earn_10_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Cada investigador ganha 10 pontos de experiência bônus por ter triunfado em batalha contra um terrível oponente.",
         "effects": [
           {
@@ -16630,11 +16630,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -16870,7 +16870,7 @@
       "input": {
         "type": "counter",
         "confirm_text": "Cada investigador ganha 2 bônus de experiência como ele ou ela tiveram uma visão no mundo oculto dos Mitos.",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -17472,7 +17472,7 @@
     {
       "id": "cultists_interrogated",
       "type": "input",
-      "text": "Em seu Relatório de Campanha, sob “Cultistas que Interrogamos”, anote os nomes de cada inimigo Cultista único no marcador de vitória.",
+      "text": "Em seu Registro de Campanha, sob “Cultistas que Interrogamos”, anote os nomes de cada inimigo Cultista único no marcador de vitória.",
       "input": {
         "type": "card_choice",
         "query": [
@@ -17500,7 +17500,7 @@
     },
     {
       "id": "cultists_got_away_r1",
-      "text": "Em seu Relatório de Campanha, sob “Cultistas que fugiram,” anote os nomes de cada inimigo único que ainda está no baralho de Cultistas ou em jogo. Se a Agenda 1 estiver em jogo, anote também “O Caçador Mascarado” sob “Cultistas que fugiram”.",
+      "text": "Em seu Registro de Campanha, sob “Cultistas que fugiram,” anote os nomes de cada inimigo único que ainda está no baralho de Cultistas ou em jogo. Se a Agenda 1 estiver em jogo, anote também “O Caçador Mascarado” sob “Cultistas que fugiram”.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -17539,7 +17539,7 @@
     },
     {
       "id": "cultists_got_away_r2",
-      "text": "Em seu Relatório de Campanha, sob “Cultistas que fugiram,” anote os nomes de cada inimigo único que ainda está no baralho de Cultistas ou em jogo.",
+      "text": "Em seu Registro de Campanha, sob “Cultistas que fugiram,” anote os nomes de cada inimigo único que ainda está no baralho de Cultistas ou em jogo.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -17628,11 +17628,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -17786,7 +17786,7 @@
     },
     {
       "id": "hidden",
-      "title": "Relatório de Campanha",
+      "title": "Registro de Campanha",
       "type": "hidden"
     }
   ],
@@ -19509,11 +19509,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -20212,11 +20212,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -20605,11 +20605,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -21434,11 +21434,11 @@
     },
     {
       "id": "earn_xp_triumph",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has truimphed over their own self—the most dangerous of foes.",
         "effects": [
           {
@@ -21451,11 +21451,11 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has learned the truth behind <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -22002,11 +22002,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -22017,11 +22017,11 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns 1 bonus experience as they gain insight into the machinations of <u>The King in Yellow</u>.",
         "effects": [
           {
@@ -22579,11 +22579,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -23398,11 +23398,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -24324,11 +24324,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -26442,7 +26442,7 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Marcador da Vitória:",
+            "text": "Marcador de Vitória:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -26458,11 +26458,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -26972,11 +26972,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -27596,12 +27596,12 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has mended the shattered timeline and saved the Earth from catastrophe.",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -27613,11 +27613,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -28450,12 +28450,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 1 additional experience for each [[Tenochtitlán]] location in the victory display.",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -28937,11 +28937,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -30139,11 +30139,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -30155,11 +30155,11 @@
     },
     {
       "id": "earn_xp_full_depth",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -30793,11 +30793,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -31258,11 +31258,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -32330,11 +32330,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -33543,11 +33543,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -34879,7 +34879,7 @@
   "campaign":
 {
   "id": "side",
-  "name": "Side Scenarios",
+  "name": "Cenários Independentes",
   "campaign_type": "campaign",
   "position": 0,
   "version": 1,
@@ -35347,7 +35347,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -35964,7 +35964,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -36382,11 +36382,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns 3 bonus experience as they have saved the fabric of existence.",
         "effects": [
           {
@@ -37478,8 +37478,8 @@
 },
 {
   "id": "carnevale_of_horrors",
-  "scenario_name": "Carnevale of Horrors",
-  "full_name": "Carnevale of Horrors",
+  "scenario_name": "Carnaval dos Horrores",
+  "full_name": "Carnaval dos Horrores",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -37617,19 +37617,19 @@
     },
     {
       "id": "remove_random_location",
-      "text": "Choose 1 location at random and remove it from the game. If San Marco Basilica or Canal-side is chosen, randomly choose a different location instead."
+      "text": "Escolha 1 localidade aleatoriamente e remova-a do jogo. Se San Marco Basilica ou Canal-side for escolhida, aleatoriamente escolha uma locação diferente."
     },
     {
       "id": "setup_locations",
-      "text": "Put the other 8 locations into play, in a random circular formation. Each investigator begins play in San Marco Basilica. Put Abbess Allegria Di Biase into play at San Marco Basilica."
+      "text": "Coloque as outras 8 localidades em jogo, em uma formação circular aleatória. Cada investigador começa na San Marco Basilica. Coloque a Abbess Allegria Di Biase em jogo na San Marco Basilica."
     },
     {
       "id": "setup_masked_people",
-      "text": "Shuffle the 7 Masked Carnevale-Goers and put 1 into play at each location other than San Marco Basilica, Masked Carnevale-Goers side face-up. Do not look at their other sides."
+      "text": "Embaralhe as 7 Masked Carnevale-Goers e coloque 1 em jogo para cada localidade que não seja San Marco Basilica, com o lado Masked Carnevale-Goers virado para cima. Não olhe para os seus outros lados."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Cnidathqua, Pantalone, Medico Della Peste, Bauta, Gilded Volto."
+      "text": "Deixe as seguintes cartas de lado, fora de jogo: Cnidathqua, Pantalone, Medico Della Peste, Bauta, Gilded Volto."
     },
     {
       "id": "encounter_deck",
@@ -37638,28 +37638,28 @@
     {
       "id": "circle_rule",
       "type": "rule_reminder",
-      "title": "Location Setup",
-      "text": "In this scenario, locations are placed in a circle. Due to the parade during the Carnevale, each location is connectd only to the location in the clockwise direction. This means that investigators and monsters can only travel (or count the nearest location) in the clockwise direction unless otherwise noted."
+      "title": "Preparação de Localidade",
+      "text": "Neste cenário, localidades são colocadas em um círculo. Por causa do desfile durante o Carnaval, cada localidade é conectada somente a uma localidade no sentido horário. Isso significa que os investigadores e monstros podem somente viajar (ou contar a localidade mais próxima) na direção horária, a menos que indicado de outra forma."
     },
     {
       "id": "counter_clockwise_rule",
       "type": "rule_reminder",
-      "title": "Counter-clockwise",
-      "text": "Some cards instruct the players to find the nearest location in the counter-clockwise direction. This is an exception to the above rule and should be followed as though locations are connected counter-clockwise."
+      "title": "Sentido anti-horário",
+      "text": "Algumas cartas instruem os jogadores a encontrar o local mais próximo no sentido anti-horário. Esta é uma exceção à regra acima e deve ser seguida como se os locais estivessem conectados no sentido anti-horário."
     },
     {
       "id": "across_from_rule",
       "type": "rule_reminder",
-      "title": "\"Across from\"",
+      "title": "“Em frente de”",
       "text": "The location \"across from\" another location is the farthest location, equidistant in both the clockwise and counter-clockwise directions. For the purpose of this scenario, \"across from your location\" and \"across from you\" have the same meaning."
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -37675,7 +37675,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_many_were_sacrificed_to_cnidathqua",
-          "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          "text": "muitos foram sacrificados a Cnidathqua durante o Carnaval."
         }
       ]
     },
@@ -37686,7 +37686,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_sun_banished_cnidathqua",
-          "text": "the sun banished Cnidathqua into the depths."
+          "text": "o sol baniu Cnidathqua para as profundezas."
         }
       ]
     },
@@ -37697,18 +37697,18 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_cnidathqua_retreated",
-          "text": "Cnidathqua retreated to nurse its wounds."
+          "text": "Cnidathqua recuou para tratar de suas feridas."
         }
       ]
     },
     {
       "id": "move_innocent_reveler",
-      "text": "Move 1 Innocent Reveler from underneath the act deck to underneath the agenda deck, if able."
+      "text": "Mova 1 folião inocente debaixo do baralho do ato para debaixo do baralho de agenda se possível."
     },
     {
       "id": "choose_masks",
-      "title": "Additional Rewards",
-      "text": "In player order, each investigator may choose one of the following [[Mask]] cards to add to his or her deck: Pantalone, Medico Della Peste, Bauta, Gilded Volto. The chosen card does not count towards that investigator's deck size.",
+      "title": "Recompensas Adicionais",
+      "text": "Na ordem de jogador, cada investigador pode escolher uma das seguintes cartas [[Mask]] para adicionar ao baralho dele ou dela: Pantalone, Medico Della Peste, Bauta, Gilded Volto. As cartas escolhidas não contam para o tamanho do baralho daquele investigador.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -37765,7 +37765,7 @@
     {
       "id": "ask_innocent_revelers_saved",
       "type": "input",
-      "text": "How many Innocent Revelers are underneath the act deck?",
+      "text": "Quantos foliões inocentes estão embaixo do baralho de ato?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -37778,14 +37778,14 @@
           },
           {
             "id": "one_or_two",
-            "text": "One or Two",
+            "text": "Um ou Dois",
             "steps": [
               "no_further_rewards"
             ]
           },
           {
             "id": "three",
-            "text": "Three",
+            "text": "Três",
             "steps": [
               "abbess_satisfied",
               "earn_abbess"
@@ -37797,11 +37797,11 @@
     {
       "id": "no_further_rewards",
       "bullet_type": "small",
-      "text": "No further rewards."
+      "text": "Sem mais recompensas."
     },
     {
       "id": "ask_innocent_revelers_killed",
-      "text": "How many Innocent Revelers are underneath the agenda deck?",
+      "text": "Quantos foliões inocentes estão embaixo do baralho de agenda?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -37812,7 +37812,7 @@
           },
           {
             "id": "one_or_more",
-            "text": "One or more",
+            "text": "Um ou mais",
             "steps": [
               "sacrifice_made",
               "random_weakness"
@@ -37824,11 +37824,11 @@
     {
       "id": "abbess_satisfied",
       "type": "story",
-      "text": "\"Grazie mille—thank you for all your help.\" Allegria says as you return to the basilica. \"Thanks to you, there were few casualties. I shudder to think what might have happened had you not arrived. Should you ever require assistance, please do not hesitate to ask.\""
+      "text": "“Grazie mille—obrigado por toda as sua ajuda.” Diz Allegria assim que você retorna para a basílica. “Graças a você, houve poucas vítimas. Estremeço ao pensar no que poderia ter acontecido se você não tivesse chegado. Se você precisar de ajuda, não hesite em pedir.”"
     },
     {
       "id": "earn_abbess",
-      "text": "Any one investigator may choose to add Abbess Allegria Di Biase to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Qualquer investigador pode escolher adicionar Abbess Allegria Di Biase ao seu baralho. Esta carta não conta para o tamanho do baralho do investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -37844,7 +37844,7 @@
     },
     {
       "id": "random_weakness",
-      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Injury]], or [[Monster]] weakness and adds it to their deck for the remainder of the campaign.",
+      "text": "Cada investigador procura a coleção por uma fraqueza básica aleatória [[Madness]], [[Injury]], ou [[Monster]] e a adiciona ao seu baralho para o restante da campanha.",
       "effects": [
         {
           "type": "add_weakness",
@@ -38036,7 +38036,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Minnie Klein, seu contato no Arkham Advertise, lhe entregou um rascunho do artigo sobre uma xícara de café no Velma’s Diner. Teria sido impressa se Doyle Heffries, o principal editor, não tivesse zombado do conceito: “Acredito que suas palavras exatas foram: ‘Eu não estou imprimindo os delírios de algum lunático vudu e passando isso como notícias’”, explicou ela. Pelo sorriso astuto se espalhando por seu rosto, você poderia dizer que ela cheirava uma história.\nA manchete era sensacionalista. Três assassinatos em nove dias foram suficientes para assustar uma cidade, com certeza. Mas você duvida que Nova Orleans esteja tomada pelo terror, ou mesmo que saiba doas assassinatos. Ainda assim algo despertou seu interesse. “Lady Esprit”, a sacerdotisa vudu que o artigo cita, afirmou que uma maldição maligna havia se enraizado no pântano.\n“Há algo nisso não há? Eu conheço esse olhar”, disse Minnie. Você não tinha certeza. Se Lady Esprit estava certa, esse “roux-ga-roux” não pararia de matar, essas coisas são reais? Pessoas-lobos? Como essas coisas poderiam ser reais? Só há uma maneira de descobrir. Você veste seu casaco e vai para a Estação Northside."
+      "text": "Minnie Klein, seu contato no Arkham Advertise, lhe entregou um rascunho do artigo enquanto tomava uma xícara de café no Velma’s Diner. Teria sido impresso se Doyle Heffries, o editor-chefe, não tivesse zombado do conceito: “Acredito que as palavras exatas dele foram: ‘Eu não vou imprimir isso como uma manchete’”, explicou ela. Pelo sorriso malicioso espalhando-se em seu rosto, você poderia dizer que ela sentiu o cheiro de uma história.\nA manchete era sensacionalista. Três assassinatos em nove dias foram suficientes para assustar uma cidade, com certeza. Mas você duvida que Nova Orleans esteja tomada pelo terror, ou até mesmo saiba sobre os assassinatos. Ainda assim, algo despertou seu interesse. “Lady Esprit”, a sacerdotisa vudu que o artigo cita, afirmou que uma maldição maligna havia se enraizado no bayou.\n“Há algo nisso não há? Eu conheço esse olhar”, disse Minnie. Você não tinha certeza. Se Lady Esprit estava certa, esse “roux-ga-roux” não pararia de matar, isso é certo. Mas maldições? Pessoas-lobos? Como essas coisas podem ser reais? Só há uma maneira de descobrir. Você veste o casaco e vai para a Estação Northside."
     },
     {
       "id": "gather_encounter_sets",
@@ -38049,15 +38049,15 @@
     },
     {
       "id": "set_aside_rougarou",
-      "text": "Coloque o encontro Curse of the Rougarou, fora de jogo."
+      "text": "Ponha de lado, fora de jogo, o encontro Curse of the Rougarou."
     },
     {
       "id": "setup_locations",
-      "text": "Separa cada um dos locais em 4 pilhas, separadas por característica ([[New Orleans]], [[Riverside]], [[Wilderness]], and [[Unhallowed]]). Aleatoriamente escolha uma dessas pilhas e remova do jogo. Aleatoriamente escolha outra pilha e coloque em jogo. Separa as 2 pilhas restantes fora do jogo. Cada investigador começa a jogar no local [[Bayou]] em jogo."
+      "text": "Separe cada um dos locais em 4 pilhas, separadas por característica ([[New Orleans]], [[Riverside]], [[Wilderness]], e [[Unhallowed]]). Aleatoriamente, escolha uma dessas pilhas e remova do jogo. Aleatoriamente escolha outra pilha e coloque-a em jogo. Deixe as 2 pilhas restantes fora de jogo por enquanto. Cada investigador começa a jogar no local [[Bayou]] em jogo."
     },
     {
       "id": "set_aside_cards",
-      "text": "Deixe as seguintes cartas reservadas fora do jogo: Lady Esprit, Bear Trap, and Fishing Net."
+      "text": "Deixe as seguintes cartas reservadas fora de jogo: Lady Esprit, Bear Trap, e Fishing Net."
     },
     {
       "id": "encounter_deck",
@@ -38065,11 +38065,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -38080,7 +38080,7 @@
     },
     {
       "id": "rougarou_destroyed_and_curse_is_lifted",
-      "text": "Em seu Relatório de Campanha, registre que <i>Rougarou continua assombrando o Bayou</i>. Remove a fraqueza the Curse of the Rougarou do baralho do portador. Qualquer um investigador pode escolher adicionar Lady Esprit ao seu baralho. Esta carta não conta para o tamanho do baralho desse investigador.",
+      "text": "Em seu Registro de Campanha, registre que <i>o Rougarou está destruído e a maldição foi quebrada</i>. Remova a fraqueza a Curse of the Rougarou do baralho do portador. Qualquer um investigador pode escolher adicionar Lady Esprit ao seu baralho. Esta carta não conta para o tamanho do baralho desse investigador.",
       "effects": [
         {
           "type": "campaign_log",
@@ -38097,7 +38097,7 @@
     },
     {
       "id": "rougarou_escaped_and_embrace_curse",
-      "text": "Em seu Registro de Campanha, registre que <i>o rougarou escapou e você abraçou a maldição</i>. O portador da fraqueza The Curse of the Rougarou deve adicionar Monstrous Transformation ao seu baralho. Esta carta não conta para o tamanho do baralho desse investigador.",
+      "text": "Em seu Registro de Campanha, registre que <i>o Rougarou escapou e você abraçou a maldição</i>. O portador da fraqueza The Curse of the Rougarou deve adicionar Monstrous Transformation ao seu baralho. Esta carta não conta para o tamanho do baralho desse investigador.",
       "effects": [
         {
           "type": "campaign_log",
@@ -38124,7 +38124,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rougarou_continues_to_haunt_the_bayou",
-          "text": "o Rougarou continua assombrando o babou."
+          "text": "o Rougarou continua assombrando o bayou."
         },
         {
           "type": "add_card",
@@ -38156,7 +38156,7 @@
     {
       "id": "R1",
       "title": "Resolução 1",
-      "text": "De alguma forma, você consegue voltar à segurança antes do amanhecer, descansando até o final da tarde. Não até você procurar Lady Esprit no dia seguinte e então você percebe quem foi a vítima na noite anterior. Com um coração pesado e um medo inabalável, você escolhe enterrar o corpo dela em vez de contatar as autoridades - quanto menos pessoas mergulharem profundamente no bayou, melhor.",
+      "text": "De alguma forma, você consegue voltar à segurança antes do amanhecer, descansando até o final da tarde. Você procura Lady Esprit no dia seguinte e então percebe quem foi a vítima na noite anterior. Com um coração pesado e um medo inabalável, você escolhe enterrar o corpo dela em vez de contatar as autoridades - quanto menos pessoas mergulharem no bayou, melhor.",
       "steps": [
         "rougarou_continues_to_haunt_the_bayou",
         "earn_xp",
@@ -39872,11 +39872,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -41788,7 +41788,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -42128,11 +42128,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -42648,11 +42648,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -43383,11 +43383,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -43398,11 +43398,11 @@
     },
     {
       "id": "earn_xp_bonus_2",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -44464,11 +44464,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -44881,11 +44881,11 @@
     },
     {
       "id": "earn_xp_bonus_5",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they have saved the universe from being devoured.",
         "effects": [
           {
@@ -44977,11 +44977,11 @@
     },
     {
       "id": "earn_xp_bonus_10",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns 10 bonus experience, as they have learned the innermost secrets of the Black Book.",
         "effects": [
           {
@@ -46139,11 +46139,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -46827,11 +46827,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -48392,11 +48392,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -48612,12 +48612,12 @@
     },
     {
       "id": "earn_xp_bonus_2",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into Arkham’s mysterious past.",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -48895,11 +48895,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -49262,11 +49262,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -50872,11 +50872,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -55053,11 +55053,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -55670,11 +55670,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -56660,11 +56660,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -57362,11 +57362,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -57377,11 +57377,11 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns 5 bonus experience, as they have stopped Nyarlathotep’s scheme once and for all.",
         "effects": [
           {
@@ -58270,11 +58270,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -60987,11 +60987,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -61384,11 +61384,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -62164,12 +62164,12 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they have prevented the Dreamlands and Earth from merging.",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -63575,11 +63575,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -64059,7 +64059,7 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Marcador da Vitória:",
+            "text": "Marcador de Vitória:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -64075,11 +64075,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -64299,11 +64299,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -65745,12 +65745,12 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 5 bonus experience, as they has mended the shattered timeline and saved the Earth from catastrophe.",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -65762,11 +65762,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -66589,12 +66589,12 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
         "confirm_text": "Each investigator earns 1 additional experience for each [[Tenochtitlán]] location in the victory display.",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -67113,11 +67113,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -68813,11 +68813,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -68829,11 +68829,11 @@
     },
     {
       "id": "earn_xp_full_depth",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
@@ -70537,11 +70537,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -71298,11 +71298,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -71570,11 +71570,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -72938,7 +72938,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -74224,7 +74224,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -74671,11 +74671,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta na zona de troféus.",
+      "text": "Cada investigador ganha experiência igual ao valor de vitória de cada carta no mcarcador de vitória.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -75288,7 +75288,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -75786,7 +75786,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",
@@ -77041,7 +77041,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Marcador da Vitória:",
+        "text": "Marcador de Vitória:",
         "effects": [
           {
             "type": "earn_xp",

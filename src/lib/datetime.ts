@@ -24,11 +24,6 @@ const LOCALE_MAP: {
   zh: { locale: zhTW },
 };
 
-const DATE_FORMAT_MAP: {
-  [key: string]: string | undefined;
-} = {
-  pt: `d 'de' MMMM 'de' yyyy`,
-};
 /**
  * Formats a timestamp into a string with year and month, e.g. "2017-2".
  */
@@ -102,7 +97,7 @@ export function toRelativeDateString(date: Date | string, locale: string) {
       default: return t`Updated ${dayOfWeek}`;
     }
   }
-  const dateString = format(date, DATE_FORMAT_MAP[locale] || 'MMMM d, yyyy', LOCALE_MAP[locale]);
+  const dateString = format(date, 'MMMM d, yyyy', LOCALE_MAP[locale]);
   return t`Updated ${dateString}`;
 }
 

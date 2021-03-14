@@ -96,7 +96,7 @@
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer survived The Dunwich Legacy."
+            "text": "Earl Sawyer sobreviveu ao Legado de Dunwich."
           },
           {
             "id": "entered_the_gate",
@@ -124,7 +124,7 @@
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan survived The Dunwich Legacy."
+            "text": "Dr. Francis Morgan sobreviveu ao Legado de Dunwich."
           },
           {
             "id": "henry_armitage_kidnapped",
@@ -192,7 +192,7 @@
           },
           {
             "id": "warren_rice_survived",
-            "text": "Professor Warren Rice survived The Dunwich Legacy."
+            "text": "Professor Warren Rice sobreviveu ao Legado de Dunwich."
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
@@ -208,7 +208,7 @@
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley survived The Dunwich Legacy."
+            "text": "Zebulon Whateley sobreviveu ao Legado de Dunwich."
           }
         ]
       },
@@ -457,7 +457,7 @@
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer survived The Dunwich Legacy."
+            "text": "Earl Sawyer sobreviveu ao Legado de Dunwich."
           },
           {
             "id": "entered_the_gate",
@@ -485,7 +485,7 @@
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan survived The Dunwich Legacy."
+            "text": "Dr. Francis Morgan sobreviveu ao Legado de Dunwich."
           },
           {
             "id": "henry_armitage_kidnapped",
@@ -553,7 +553,7 @@
           },
           {
             "id": "warren_rice_survived",
-            "text": "Professor Warren Rice survived The Dunwich Legacy."
+            "text": "Professor Warren Rice sobreviveu ao Legado de Dunwich."
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
@@ -569,7 +569,7 @@
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley survived The Dunwich Legacy."
+            "text": "Zebulon Whateley sobreviveu ao Legado de Dunwich."
           }
         ]
       },
@@ -1230,15 +1230,15 @@
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua recuou para tratar de suas feridas."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "muitos foram sacrificados a Cnidathqua durante o Carnaval."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "o sol baniu Cnidathqua para as profundezas."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -1258,7 +1258,7 @@
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "o Rougarou continua assombrando o babou."
+            "text": "o Rougarou continua assombrando o bayou."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
