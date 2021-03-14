@@ -13,11 +13,12 @@ interface Props {
 let eventListener: EventEmitter | null = null;
 export let currentUser: FirebaseAuthTypes.User | undefined = undefined;
 
-let hasHasuraToken: boolean = false;
 let currentUserLoading: boolean = true;
 
 export async function getAuthToken(): Promise<string | undefined> {
-  if (!hasHasuraToken || !currentUser) {
+  if (!currentUser) {
+    console.log('***********');
+    console.log('trying to get token with no user.');
     return undefined;
   }
   return await currentUser.getIdToken();
@@ -48,8 +49,6 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
             const idTokenReuslt = await user.getIdTokenResult();
             const hasuraClaims = idTokenReuslt.claims['https://hasura.io/jwt/claims'];
             if (hasuraClaims) {
-              console.log('Loaded hasura token');
-              hasHasuraToken = true;
               eventListener?.emit('onAuthStateChanged', currentUser);
             } else {
               console.log('No Hasura');
@@ -61,7 +60,6 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
                   return;
                 }
                 // Force refresh to pick up the latest custom claims changes.
-                hasHasuraToken = true;
                 eventListener?.emit('onAuthStateChanged', currentUser);
               });
             }

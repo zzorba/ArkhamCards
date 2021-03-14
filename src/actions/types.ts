@@ -1339,7 +1339,6 @@ export interface TrackedQuery {
   contextJSON: string;
   id: string;
   name: string;
-  queryJSON: string;
   variablesJSON: string;
 }
 

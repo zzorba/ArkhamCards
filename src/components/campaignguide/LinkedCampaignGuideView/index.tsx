@@ -8,9 +8,9 @@ import { CampaignId } from '@actions/types';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import useTabView from '@components/core/useTabView';
 import { updateCampaignName } from '@components/campaign/actions';
-import { useLiveCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
+import { useSingleCampaignGuideData } from '@components/campaignguide/contextHelper';
 import { NavigationProps } from '@components/nav/types';
-import { useLiveCampaign } from '@data/hooks';
+import { useCampaign } from '@data/hooks';
 import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import useCampaignGuideContext from '@components/campaignguide/useCampaignGuideContext';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
@@ -48,10 +48,10 @@ export default function LinkedCampaignGuideView(props: Props) {
   const updateCampaignActions = useUpdateCampaignActions();
   useStopAudioOnUnmount();
 
-  const [campaign] = useLiveCampaign(campaignId, investigators);
+  const campaign = useCampaign(campaignId, true);
   const campaignName = campaign?.name || '';
-  const campaignDataA = useLiveCampaignGuideReduxData(campaignIdA, investigators);
-  const campaignDataB = useLiveCampaignGuideReduxData(campaignIdB, investigators);
+  const campaignDataA = useSingleCampaignGuideData(campaignIdA, investigators, true);
+  const campaignDataB = useSingleCampaignGuideData(campaignIdB, investigators, true);
 
   const setCampaignName = useCallback((name: string) => {
     dispatch(updateCampaignName(updateCampaignActions, campaignId, name));

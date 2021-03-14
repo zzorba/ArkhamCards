@@ -7232,10 +7232,9 @@ export type RemoveCampaignInvestigatorMutation = (
   { __typename?: 'mutation_root' }
   & { delete_campaign_investigator?: Maybe<(
     { __typename?: 'campaign_investigator_mutation_response' }
-    & Pick<Campaign_Investigator_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_investigator' }
-      & Pick<Campaign_Investigator, 'id'>
+      & Pick<Campaign_Investigator, 'id' | 'campaign_id' | 'investigator'>
     )> }
   )> }
 );
@@ -8834,9 +8833,10 @@ export const RemoveCampaignInvestigatorDocument = gql`
   delete_campaign_investigator(
     where: {campaign_id: {_eq: $campaign_id}, investigator: {_eq: $investigator}}
   ) {
-    affected_rows
     returning {
       id
+      campaign_id
+      investigator
     }
   }
 }

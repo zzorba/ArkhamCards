@@ -3,7 +3,7 @@ import { useCallback, useContext, useMemo } from 'react';
 import { flatMap, forEach, concat, keys, uniq, omit } from 'lodash';
 import deepDiff from 'deep-diff';
 
-import { CampaignGuideReduxData } from './contextHelper';
+import { SingleCampaignGuideData } from './contextHelper';
 import campaignActions, { updateCampaignChaosBag, updateCampaignDifficulty, updateCampaignGuideVersion, updateCampaignInvestigatorData, updateCampaignScenarioResults } from '@components/campaign/actions';
 import guideActions from '@components/campaignguide/actions';
 import {
@@ -33,7 +33,7 @@ export default function useCampaignGuideContext(
   campaignId: CampaignId,
   createDeckActions: DeckActions,
   updateCampaignActions: UpdateCampaignActions,
-  campaignData?: CampaignGuideReduxData
+  campaignData?: SingleCampaignGuideData
 ): CampaignGuideContextType | undefined {
   const { user } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;

@@ -4,16 +4,21 @@ import { Action, Dispatch } from 'redux';
 import uuid from 'react-native-uuid';
 
 import { TrackedQuery, TrackedQueriesAddAction, TrackedQueriesRemoveAction, TRACKED_QUERIES_ADD, TRACKED_QUERIES_REMOVE } from '@actions/types';
+import { optimisticUpdates } from '@data/remote/apollo';
 
-const trackedQueriesAdd = (trackedQuery: TrackedQuery): TrackedQueriesAddAction => ({
-  payload: trackedQuery,
-  type: TRACKED_QUERIES_ADD,
-});
+export function trackedQueriesAdd(trackedQuery: TrackedQuery): TrackedQueriesAddAction {
+  return {
+    payload: trackedQuery,
+    type: TRACKED_QUERIES_ADD,
+  };
+}
 
-const trackedQueriesRemove = (id: string): TrackedQueriesRemoveAction => ({
-  payload: id,
-  type: TRACKED_QUERIES_REMOVE,
-});
+export function trackedQueriesRemove(id: string): TrackedQueriesRemoveAction {
+  return {
+    payload: id,
+    type: TRACKED_QUERIES_REMOVE,
+  };
+}
 
 export default (dispatch: Dispatch<Action>) => (
   new ApolloLink((operation, forward) => {
@@ -21,24 +26,26 @@ export default (dispatch: Dispatch<Action>) => (
       return null;
     }
     const name: string = operation.operationName;
-    const queryJSON: string = stringify(operation.query);
     const variablesJSON: string = stringify(operation.variables);
     const context = operation.getContext();
     const contextJSON = stringify(context);
     const id = uuid.v4();
-    if (context.tracked !== undefined) {
+    const tracked = !!optimisticUpdates[name];
+    if (tracked) {
       dispatch(
         trackedQueriesAdd({
           contextJSON,
           id,
           name,
-          queryJSON,
           variablesJSON,
         })
       );
+    } else {
+      console.log(`Skipping tracking of: ${name}`);
     }
     return forward(operation).map(data => {
-      if (context.tracked !== undefined) {
+      if (tracked) {
+        console.log(`Removing a tracked query: ${id}`);
         dispatch(trackedQueriesRemove(id));
       }
       return data;

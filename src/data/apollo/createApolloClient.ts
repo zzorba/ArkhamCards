@@ -31,8 +31,6 @@ const typePolicies: TypedTypePolicies = {
     fields: {
       guide_inputs: {
         merge(existing, incoming) {
-          console.log('Merging a campaign guide');
-          console.log(JSON.stringify({ existing, incoming }));
           return incoming;
         },
       },
@@ -62,19 +60,21 @@ const errorLink = onError((e) => {
 });
 
 const authLink = setContext(async(req, { headers }) => {
-  const newHeaders = {
-    ...headers,
-  };
   const hasuraToken = await getAuthToken();
   if (hasuraToken) {
-    newHeaders.Authorization = `Bearer ${hasuraToken}`;
-  } else {
-    console.log('Sending request without auth.');
+    return {
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${hasuraToken}`,
+      },
+    };
   }
-  return {
-    headers: newHeaders,
-  };
+  console.log('#################')
+  console.log(`Sending request without auth: ${JSON.stringify(req.query)}`);
+  console.log('#################')
+  return { headers };
 });
+
 const httpsLink = authLink.concat(new HttpLink({
   uri: `https://${GRAPHQL_SERVER}/graphql`,
 }));
@@ -86,7 +86,9 @@ const wsLink = new WebSocketLink(
       lazy: true,
       connectionParams: async() => {
         const hasuraToken = await getAuthToken();
-        console.log(`Calling connectionParams for WSLINk: hasuraToken: ${!!hasuraToken}`);
+        if (!hasuraToken) {
+          console.log('*********\nno hasura token for subscription....\n**********');
+        }
         return {
           headers: hasuraToken ? {
             Authorization: `Bearer ${hasuraToken}`,
@@ -97,6 +99,7 @@ const wsLink = new WebSocketLink(
   ),
 );
 export const apolloQueueLink = new QueueLink();
+apolloQueueLink.close();
 const retryLink = new RetryLink();
 const serializingLink = new SerializingLink();
 
