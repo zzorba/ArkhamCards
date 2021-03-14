@@ -23,6 +23,7 @@ import useReduxMigrator from '@components/settings/useReduxMigrator';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { apolloQueueLink } from '@data/apollo/createApolloClient';
+import { useApolloClient } from '@apollo/client';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -94,12 +95,14 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
       (dateUpdatePrompt + REPROMPT_SECONDS) < nowSeconds
     );
   }, [dateFetched, dateUpdatePrompt]);
-
+  const client = useApolloClient();
   useEffect(() => {
     if (promptForUpdate) {
       if (user && isConnected) {
+        console.log('Opening apollo');
         apolloQueueLink.open();
       } else {
+        console.log('Closing apollo');
         apolloQueueLink.close();
       }
     }

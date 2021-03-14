@@ -80,22 +80,19 @@ export type base_decks_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaignKeySpecifier = ('access' | 'access_aggregate' | 'base_decks' | 'base_decks_aggregate' | 'campaignNotes' | 'chaosBag' | 'created_at' | 'cycleCode' | 'deleted' | 'difficulty' | 'guide_achivements' | 'guide_achivements_aggregate' | 'guide_inputs' | 'guide_inputs_aggregate' | 'guide_version' | 'guided' | 'id' | 'investigator_data' | 'investigator_data_aggregate' | 'investigators' | 'investigators_aggregate' | 'latest_decks' | 'latest_decks_aggregate' | 'link_a_campaign' | 'link_a_campaign_id' | 'link_b_campaign' | 'link_b_campaign_id' | 'link_campaign_id' | 'linked_campaign' | 'name' | 'owner' | 'scenarioResults' | 'showInterludes' | 'standaloneId' | 'updated_at' | 'uuid' | 'weaknessSet' | campaignKeySpecifier)[];
+export type campaignKeySpecifier = ('access' | 'access_aggregate' | 'base_decks' | 'base_decks_aggregate' | 'campaignNotes' | 'campaign_guide' | 'chaosBag' | 'created_at' | 'cycleCode' | 'deleted' | 'difficulty' | 'guide_version' | 'guided' | 'id' | 'investigator_data' | 'investigator_data_aggregate' | 'investigators' | 'investigators_aggregate' | 'latest_decks' | 'latest_decks_aggregate' | 'link_a_campaign' | 'link_a_campaign_id' | 'link_b_campaign' | 'link_b_campaign_id' | 'link_campaign_id' | 'linked_campaign' | 'name' | 'owner' | 'scenarioResults' | 'showInterludes' | 'standaloneId' | 'updated_at' | 'uuid' | 'weaknessSet' | campaignKeySpecifier)[];
 export type campaignFieldPolicy = {
 	access?: FieldPolicy<any> | FieldReadFunction<any>,
 	access_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaignNotes?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_guide?: FieldPolicy<any> | FieldReadFunction<any>,
 	chaosBag?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycleCode?: FieldPolicy<any> | FieldReadFunction<any>,
 	deleted?: FieldPolicy<any> | FieldReadFunction<any>,
 	difficulty?: FieldPolicy<any> | FieldReadFunction<any>,
-	guide_achivements?: FieldPolicy<any> | FieldReadFunction<any>,
-	guide_achivements_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
-	guide_inputs?: FieldPolicy<any> | FieldReadFunction<any>,
-	guide_inputs_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	guide_version?: FieldPolicy<any> | FieldReadFunction<any>,
 	guided?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -230,6 +227,92 @@ export type campaign_avg_fieldsFieldPolicy = {
 	link_b_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	link_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
+export type campaign_guideKeySpecifier = ('access' | 'access_aggregate' | 'created_at' | 'guide_achievements' | 'guide_achievements_aggregate' | 'guide_inputs' | 'guide_inputs_aggregate' | 'id' | 'owner' | 'updated_at' | 'uuid' | campaign_guideKeySpecifier)[];
+export type campaign_guideFieldPolicy = {
+	access?: FieldPolicy<any> | FieldReadFunction<any>,
+	access_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	guide_achievements?: FieldPolicy<any> | FieldReadFunction<any>,
+	guide_achievements_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	guide_inputs?: FieldPolicy<any> | FieldReadFunction<any>,
+	guide_inputs_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	uuid?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_aggregateKeySpecifier = ('aggregate' | 'nodes' | campaign_guide_aggregateKeySpecifier)[];
+export type campaign_guide_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | campaign_guide_aggregate_fieldsKeySpecifier)[];
+export type campaign_guide_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_avg_fieldsKeySpecifier = ('id' | campaign_guide_avg_fieldsKeySpecifier)[];
+export type campaign_guide_avg_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_max_fieldsKeySpecifier = ('created_at' | 'id' | 'owner' | 'updated_at' | 'uuid' | campaign_guide_max_fieldsKeySpecifier)[];
+export type campaign_guide_max_fieldsFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	uuid?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_min_fieldsKeySpecifier = ('created_at' | 'id' | 'owner' | 'updated_at' | 'uuid' | campaign_guide_min_fieldsKeySpecifier)[];
+export type campaign_guide_min_fieldsFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	uuid?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | campaign_guide_mutation_responseKeySpecifier)[];
+export type campaign_guide_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_stddev_fieldsKeySpecifier = ('id' | campaign_guide_stddev_fieldsKeySpecifier)[];
+export type campaign_guide_stddev_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_stddev_pop_fieldsKeySpecifier = ('id' | campaign_guide_stddev_pop_fieldsKeySpecifier)[];
+export type campaign_guide_stddev_pop_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_stddev_samp_fieldsKeySpecifier = ('id' | campaign_guide_stddev_samp_fieldsKeySpecifier)[];
+export type campaign_guide_stddev_samp_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_sum_fieldsKeySpecifier = ('id' | campaign_guide_sum_fieldsKeySpecifier)[];
+export type campaign_guide_sum_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_var_pop_fieldsKeySpecifier = ('id' | campaign_guide_var_pop_fieldsKeySpecifier)[];
+export type campaign_guide_var_pop_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_var_samp_fieldsKeySpecifier = ('id' | campaign_guide_var_samp_fieldsKeySpecifier)[];
+export type campaign_guide_var_samp_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type campaign_guide_variance_fieldsKeySpecifier = ('id' | campaign_guide_variance_fieldsKeySpecifier)[];
+export type campaign_guide_variance_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
 export type campaign_investigatorKeySpecifier = ('campaign' | 'campaign_id' | 'created_at' | 'id' | 'investigator' | 'updated_at' | campaign_investigatorKeySpecifier)[];
 export type campaign_investigatorFieldPolicy = {
 	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -258,24 +341,21 @@ export type campaign_investigator_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_investigator_avg_fieldsKeySpecifier = ('campaign_id' | 'id' | campaign_investigator_avg_fieldsKeySpecifier)[];
+export type campaign_investigator_avg_fieldsKeySpecifier = ('campaign_id' | campaign_investigator_avg_fieldsKeySpecifier)[];
 export type campaign_investigator_avg_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_investigator_max_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'investigator' | 'updated_at' | campaign_investigator_max_fieldsKeySpecifier)[];
+export type campaign_investigator_max_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'investigator' | 'updated_at' | campaign_investigator_max_fieldsKeySpecifier)[];
 export type campaign_investigator_max_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_investigator_min_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'investigator' | 'updated_at' | campaign_investigator_min_fieldsKeySpecifier)[];
+export type campaign_investigator_min_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'investigator' | 'updated_at' | campaign_investigator_min_fieldsKeySpecifier)[];
 export type campaign_investigator_min_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -284,40 +364,33 @@ export type campaign_investigator_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_investigator_stddev_fieldsKeySpecifier = ('campaign_id' | 'id' | campaign_investigator_stddev_fieldsKeySpecifier)[];
+export type campaign_investigator_stddev_fieldsKeySpecifier = ('campaign_id' | campaign_investigator_stddev_fieldsKeySpecifier)[];
 export type campaign_investigator_stddev_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_investigator_stddev_pop_fieldsKeySpecifier = ('campaign_id' | 'id' | campaign_investigator_stddev_pop_fieldsKeySpecifier)[];
+export type campaign_investigator_stddev_pop_fieldsKeySpecifier = ('campaign_id' | campaign_investigator_stddev_pop_fieldsKeySpecifier)[];
 export type campaign_investigator_stddev_pop_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_investigator_stddev_samp_fieldsKeySpecifier = ('campaign_id' | 'id' | campaign_investigator_stddev_samp_fieldsKeySpecifier)[];
+export type campaign_investigator_stddev_samp_fieldsKeySpecifier = ('campaign_id' | campaign_investigator_stddev_samp_fieldsKeySpecifier)[];
 export type campaign_investigator_stddev_samp_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_investigator_sum_fieldsKeySpecifier = ('campaign_id' | 'id' | campaign_investigator_sum_fieldsKeySpecifier)[];
+export type campaign_investigator_sum_fieldsKeySpecifier = ('campaign_id' | campaign_investigator_sum_fieldsKeySpecifier)[];
 export type campaign_investigator_sum_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_investigator_var_pop_fieldsKeySpecifier = ('campaign_id' | 'id' | campaign_investigator_var_pop_fieldsKeySpecifier)[];
+export type campaign_investigator_var_pop_fieldsKeySpecifier = ('campaign_id' | campaign_investigator_var_pop_fieldsKeySpecifier)[];
 export type campaign_investigator_var_pop_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_investigator_var_samp_fieldsKeySpecifier = ('campaign_id' | 'id' | campaign_investigator_var_samp_fieldsKeySpecifier)[];
+export type campaign_investigator_var_samp_fieldsKeySpecifier = ('campaign_id' | campaign_investigator_var_samp_fieldsKeySpecifier)[];
 export type campaign_investigator_var_samp_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_investigator_variance_fieldsKeySpecifier = ('campaign_id' | 'id' | campaign_investigator_variance_fieldsKeySpecifier)[];
+export type campaign_investigator_variance_fieldsKeySpecifier = ('campaign_id' | campaign_investigator_variance_fieldsKeySpecifier)[];
 export type campaign_investigator_variance_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type campaign_max_fieldsKeySpecifier = ('created_at' | 'cycleCode' | 'difficulty' | 'guide_version' | 'id' | 'link_a_campaign_id' | 'link_b_campaign_id' | 'link_campaign_id' | 'name' | 'owner' | 'updated_at' | 'uuid' | campaign_max_fieldsKeySpecifier)[];
 export type campaign_max_fieldsFieldPolicy = {
@@ -530,8 +603,9 @@ export type deck_variance_fieldsFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type friend_statusKeySpecifier = ('status' | 'user_id_a' | 'user_id_b' | friend_statusKeySpecifier)[];
+export type friend_statusKeySpecifier = ('id' | 'status' | 'user_id_a' | 'user_id_b' | friend_statusKeySpecifier)[];
 export type friend_statusFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	status?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
@@ -564,9 +638,8 @@ export type friend_status_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievementKeySpecifier = ('achievement_id' | 'bool_value' | 'campaign' | 'campaign_id' | 'created_at' | 'id' | 'type' | 'updated_at' | 'value' | guide_achievementKeySpecifier)[];
+export type guide_achievementKeySpecifier = ('bool_value' | 'campaign' | 'campaign_id' | 'created_at' | 'id' | 'type' | 'updated_at' | 'value' | guide_achievementKeySpecifier)[];
 export type guide_achievementFieldPolicy = {
-	achievement_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	bool_value?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -595,15 +668,13 @@ export type guide_achievement_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievement_avg_fieldsKeySpecifier = ('campaign_id' | 'id' | 'value' | guide_achievement_avg_fieldsKeySpecifier)[];
+export type guide_achievement_avg_fieldsKeySpecifier = ('campaign_id' | 'value' | guide_achievement_avg_fieldsKeySpecifier)[];
 export type guide_achievement_avg_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	value?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievement_max_fieldsKeySpecifier = ('achievement_id' | 'campaign_id' | 'created_at' | 'id' | 'type' | 'updated_at' | 'value' | guide_achievement_max_fieldsKeySpecifier)[];
+export type guide_achievement_max_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'type' | 'updated_at' | 'value' | guide_achievement_max_fieldsKeySpecifier)[];
 export type guide_achievement_max_fieldsFieldPolicy = {
-	achievement_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -611,9 +682,8 @@ export type guide_achievement_max_fieldsFieldPolicy = {
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	value?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievement_min_fieldsKeySpecifier = ('achievement_id' | 'campaign_id' | 'created_at' | 'id' | 'type' | 'updated_at' | 'value' | guide_achievement_min_fieldsKeySpecifier)[];
+export type guide_achievement_min_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'type' | 'updated_at' | 'value' | guide_achievement_min_fieldsKeySpecifier)[];
 export type guide_achievement_min_fieldsFieldPolicy = {
-	achievement_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -626,49 +696,42 @@ export type guide_achievement_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievement_stddev_fieldsKeySpecifier = ('campaign_id' | 'id' | 'value' | guide_achievement_stddev_fieldsKeySpecifier)[];
+export type guide_achievement_stddev_fieldsKeySpecifier = ('campaign_id' | 'value' | guide_achievement_stddev_fieldsKeySpecifier)[];
 export type guide_achievement_stddev_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	value?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievement_stddev_pop_fieldsKeySpecifier = ('campaign_id' | 'id' | 'value' | guide_achievement_stddev_pop_fieldsKeySpecifier)[];
+export type guide_achievement_stddev_pop_fieldsKeySpecifier = ('campaign_id' | 'value' | guide_achievement_stddev_pop_fieldsKeySpecifier)[];
 export type guide_achievement_stddev_pop_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	value?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievement_stddev_samp_fieldsKeySpecifier = ('campaign_id' | 'id' | 'value' | guide_achievement_stddev_samp_fieldsKeySpecifier)[];
+export type guide_achievement_stddev_samp_fieldsKeySpecifier = ('campaign_id' | 'value' | guide_achievement_stddev_samp_fieldsKeySpecifier)[];
 export type guide_achievement_stddev_samp_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	value?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievement_sum_fieldsKeySpecifier = ('campaign_id' | 'id' | 'value' | guide_achievement_sum_fieldsKeySpecifier)[];
+export type guide_achievement_sum_fieldsKeySpecifier = ('campaign_id' | 'value' | guide_achievement_sum_fieldsKeySpecifier)[];
 export type guide_achievement_sum_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	value?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievement_var_pop_fieldsKeySpecifier = ('campaign_id' | 'id' | 'value' | guide_achievement_var_pop_fieldsKeySpecifier)[];
+export type guide_achievement_var_pop_fieldsKeySpecifier = ('campaign_id' | 'value' | guide_achievement_var_pop_fieldsKeySpecifier)[];
 export type guide_achievement_var_pop_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	value?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievement_var_samp_fieldsKeySpecifier = ('campaign_id' | 'id' | 'value' | guide_achievement_var_samp_fieldsKeySpecifier)[];
+export type guide_achievement_var_samp_fieldsKeySpecifier = ('campaign_id' | 'value' | guide_achievement_var_samp_fieldsKeySpecifier)[];
 export type guide_achievement_var_samp_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	value?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_achievement_variance_fieldsKeySpecifier = ('campaign_id' | 'id' | 'value' | guide_achievement_variance_fieldsKeySpecifier)[];
+export type guide_achievement_variance_fieldsKeySpecifier = ('campaign_id' | 'value' | guide_achievement_variance_fieldsKeySpecifier)[];
 export type guide_achievement_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	value?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_inputKeySpecifier = ('campaign' | 'campaign_id' | 'created_at' | 'id' | 'payload' | 'scenario' | 'step' | guide_inputKeySpecifier)[];
+export type guide_inputKeySpecifier = ('campaign' | 'campaign_id' | 'created_at' | 'id' | 'payload' | 'scenario' | 'step' | 'type' | guide_inputKeySpecifier)[];
 export type guide_inputFieldPolicy = {
 	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -676,7 +739,8 @@ export type guide_inputFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	payload?: FieldPolicy<any> | FieldReadFunction<any>,
 	scenario?: FieldPolicy<any> | FieldReadFunction<any>,
-	step?: FieldPolicy<any> | FieldReadFunction<any>
+	step?: FieldPolicy<any> | FieldReadFunction<any>,
+	type?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type guide_input_aggregateKeySpecifier = ('aggregate' | 'nodes' | guide_input_aggregateKeySpecifier)[];
 export type guide_input_aggregateFieldPolicy = {
@@ -697,66 +761,60 @@ export type guide_input_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_avg_fieldsKeySpecifier = ('campaign_id' | 'id' | guide_input_avg_fieldsKeySpecifier)[];
+export type guide_input_avg_fieldsKeySpecifier = ('campaign_id' | guide_input_avg_fieldsKeySpecifier)[];
 export type guide_input_avg_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_max_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'scenario' | 'step' | guide_input_max_fieldsKeySpecifier)[];
+export type guide_input_max_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'scenario' | 'step' | 'type' | guide_input_max_fieldsKeySpecifier)[];
 export type guide_input_max_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	scenario?: FieldPolicy<any> | FieldReadFunction<any>,
-	step?: FieldPolicy<any> | FieldReadFunction<any>
+	step?: FieldPolicy<any> | FieldReadFunction<any>,
+	type?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_min_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'scenario' | 'step' | guide_input_min_fieldsKeySpecifier)[];
+export type guide_input_min_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'scenario' | 'step' | 'type' | guide_input_min_fieldsKeySpecifier)[];
 export type guide_input_min_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	scenario?: FieldPolicy<any> | FieldReadFunction<any>,
-	step?: FieldPolicy<any> | FieldReadFunction<any>
+	step?: FieldPolicy<any> | FieldReadFunction<any>,
+	type?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type guide_input_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | guide_input_mutation_responseKeySpecifier)[];
 export type guide_input_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_stddev_fieldsKeySpecifier = ('campaign_id' | 'id' | guide_input_stddev_fieldsKeySpecifier)[];
+export type guide_input_stddev_fieldsKeySpecifier = ('campaign_id' | guide_input_stddev_fieldsKeySpecifier)[];
 export type guide_input_stddev_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_stddev_pop_fieldsKeySpecifier = ('campaign_id' | 'id' | guide_input_stddev_pop_fieldsKeySpecifier)[];
+export type guide_input_stddev_pop_fieldsKeySpecifier = ('campaign_id' | guide_input_stddev_pop_fieldsKeySpecifier)[];
 export type guide_input_stddev_pop_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_stddev_samp_fieldsKeySpecifier = ('campaign_id' | 'id' | guide_input_stddev_samp_fieldsKeySpecifier)[];
+export type guide_input_stddev_samp_fieldsKeySpecifier = ('campaign_id' | guide_input_stddev_samp_fieldsKeySpecifier)[];
 export type guide_input_stddev_samp_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_sum_fieldsKeySpecifier = ('campaign_id' | 'id' | guide_input_sum_fieldsKeySpecifier)[];
+export type guide_input_sum_fieldsKeySpecifier = ('campaign_id' | guide_input_sum_fieldsKeySpecifier)[];
 export type guide_input_sum_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_var_pop_fieldsKeySpecifier = ('campaign_id' | 'id' | guide_input_var_pop_fieldsKeySpecifier)[];
+export type guide_input_var_pop_fieldsKeySpecifier = ('campaign_id' | guide_input_var_pop_fieldsKeySpecifier)[];
 export type guide_input_var_pop_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_var_samp_fieldsKeySpecifier = ('campaign_id' | 'id' | guide_input_var_samp_fieldsKeySpecifier)[];
+export type guide_input_var_samp_fieldsKeySpecifier = ('campaign_id' | guide_input_var_samp_fieldsKeySpecifier)[];
 export type guide_input_var_samp_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_variance_fieldsKeySpecifier = ('campaign_id' | 'id' | guide_input_variance_fieldsKeySpecifier)[];
+export type guide_input_variance_fieldsKeySpecifier = ('campaign_id' | guide_input_variance_fieldsKeySpecifier)[];
 export type guide_input_variance_fieldsFieldPolicy = {
-	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type investigator_dataKeySpecifier = ('addedCards' | 'availableXp' | 'campaign_data' | 'campaign_id' | 'created_at' | 'id' | 'ignoreStoryAssets' | 'insane' | 'investigator' | 'killed' | 'mental' | 'physical' | 'removedCards' | 'specialXp' | 'spentXp' | 'storyAssets' | 'updated_at' | investigator_dataKeySpecifier)[];
 export type investigator_dataFieldPolicy = {
@@ -797,33 +855,30 @@ export type investigator_data_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type investigator_data_avg_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'id' | 'mental' | 'physical' | 'spentXp' | investigator_data_avg_fieldsKeySpecifier)[];
+export type investigator_data_avg_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'mental' | 'physical' | 'spentXp' | investigator_data_avg_fieldsKeySpecifier)[];
 export type investigator_data_avg_fieldsFieldPolicy = {
 	availableXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	mental?: FieldPolicy<any> | FieldReadFunction<any>,
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type investigator_data_max_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'created_at' | 'id' | 'investigator' | 'mental' | 'physical' | 'spentXp' | 'updated_at' | investigator_data_max_fieldsKeySpecifier)[];
+export type investigator_data_max_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'created_at' | 'investigator' | 'mental' | 'physical' | 'spentXp' | 'updated_at' | investigator_data_max_fieldsKeySpecifier)[];
 export type investigator_data_max_fieldsFieldPolicy = {
 	availableXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	mental?: FieldPolicy<any> | FieldReadFunction<any>,
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type investigator_data_min_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'created_at' | 'id' | 'investigator' | 'mental' | 'physical' | 'spentXp' | 'updated_at' | investigator_data_min_fieldsKeySpecifier)[];
+export type investigator_data_min_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'created_at' | 'investigator' | 'mental' | 'physical' | 'spentXp' | 'updated_at' | investigator_data_min_fieldsKeySpecifier)[];
 export type investigator_data_min_fieldsFieldPolicy = {
 	availableXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	mental?: FieldPolicy<any> | FieldReadFunction<any>,
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -835,65 +890,58 @@ export type investigator_data_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type investigator_data_stddev_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'id' | 'mental' | 'physical' | 'spentXp' | investigator_data_stddev_fieldsKeySpecifier)[];
+export type investigator_data_stddev_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'mental' | 'physical' | 'spentXp' | investigator_data_stddev_fieldsKeySpecifier)[];
 export type investigator_data_stddev_fieldsFieldPolicy = {
 	availableXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	mental?: FieldPolicy<any> | FieldReadFunction<any>,
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type investigator_data_stddev_pop_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'id' | 'mental' | 'physical' | 'spentXp' | investigator_data_stddev_pop_fieldsKeySpecifier)[];
+export type investigator_data_stddev_pop_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'mental' | 'physical' | 'spentXp' | investigator_data_stddev_pop_fieldsKeySpecifier)[];
 export type investigator_data_stddev_pop_fieldsFieldPolicy = {
 	availableXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	mental?: FieldPolicy<any> | FieldReadFunction<any>,
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type investigator_data_stddev_samp_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'id' | 'mental' | 'physical' | 'spentXp' | investigator_data_stddev_samp_fieldsKeySpecifier)[];
+export type investigator_data_stddev_samp_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'mental' | 'physical' | 'spentXp' | investigator_data_stddev_samp_fieldsKeySpecifier)[];
 export type investigator_data_stddev_samp_fieldsFieldPolicy = {
 	availableXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	mental?: FieldPolicy<any> | FieldReadFunction<any>,
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type investigator_data_sum_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'id' | 'mental' | 'physical' | 'spentXp' | investigator_data_sum_fieldsKeySpecifier)[];
+export type investigator_data_sum_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'mental' | 'physical' | 'spentXp' | investigator_data_sum_fieldsKeySpecifier)[];
 export type investigator_data_sum_fieldsFieldPolicy = {
 	availableXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	mental?: FieldPolicy<any> | FieldReadFunction<any>,
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type investigator_data_var_pop_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'id' | 'mental' | 'physical' | 'spentXp' | investigator_data_var_pop_fieldsKeySpecifier)[];
+export type investigator_data_var_pop_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'mental' | 'physical' | 'spentXp' | investigator_data_var_pop_fieldsKeySpecifier)[];
 export type investigator_data_var_pop_fieldsFieldPolicy = {
 	availableXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	mental?: FieldPolicy<any> | FieldReadFunction<any>,
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type investigator_data_var_samp_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'id' | 'mental' | 'physical' | 'spentXp' | investigator_data_var_samp_fieldsKeySpecifier)[];
+export type investigator_data_var_samp_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'mental' | 'physical' | 'spentXp' | investigator_data_var_samp_fieldsKeySpecifier)[];
 export type investigator_data_var_samp_fieldsFieldPolicy = {
 	availableXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	mental?: FieldPolicy<any> | FieldReadFunction<any>,
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type investigator_data_variance_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'id' | 'mental' | 'physical' | 'spentXp' | investigator_data_variance_fieldsKeySpecifier)[];
+export type investigator_data_variance_fieldsKeySpecifier = ('availableXp' | 'campaign_id' | 'mental' | 'physical' | 'spentXp' | investigator_data_variance_fieldsKeySpecifier)[];
 export type investigator_data_variance_fieldsFieldPolicy = {
 	availableXp?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	mental?: FieldPolicy<any> | FieldReadFunction<any>,
 	physical?: FieldPolicy<any> | FieldReadFunction<any>,
 	spentXp?: FieldPolicy<any> | FieldReadFunction<any>
@@ -982,13 +1030,14 @@ export type latest_decks_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type mutation_rootKeySpecifier = ('delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_deck' | 'delete_deck_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_user_campaigns' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_users' | 'delete_users_by_pk' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_deck' | 'insert_deck_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_users' | 'insert_users_one' | 'update_base_decks' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_by_pk' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_deck' | 'update_deck_by_pk' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_latest_decks' | 'update_user_campaigns' | 'update_user_friends' | 'update_user_received_friend_requests' | 'update_user_sent_friend_requests' | 'update_users' | 'update_users_by_pk' | mutation_rootKeySpecifier)[];
+export type mutation_rootKeySpecifier = ('delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_deck' | 'delete_deck_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_user_campaigns' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_users' | 'delete_users_by_pk' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_deck' | 'insert_deck_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_users' | 'insert_users_one' | 'update_base_decks' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_by_pk' | 'update_campaign_guide' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_deck' | 'update_deck_by_pk' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_latest_decks' | 'update_user_campaigns' | 'update_user_friends' | 'update_user_received_friend_requests' | 'update_user_sent_friend_requests' | 'update_users' | 'update_users_by_pk' | mutation_rootKeySpecifier)[];
 export type mutation_rootFieldPolicy = {
 	delete_base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign_access?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign_access_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_campaign_guide?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_deck?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1013,6 +1062,8 @@ export type mutation_rootFieldPolicy = {
 	insert_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_campaign_access?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_campaign_access_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_campaign_guide?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_campaign_guide_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_campaign_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_campaign_investigator_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_campaign_one?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1043,6 +1094,7 @@ export type mutation_rootFieldPolicy = {
 	update_campaign_access?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_campaign_access_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_campaign_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_campaign_guide?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_campaign_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_deck?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1063,7 +1115,7 @@ export type mutation_rootFieldPolicy = {
 	update_users?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type query_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'deck' | 'deck_aggregate' | 'deck_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
+export type query_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'deck' | 'deck_aggregate' | 'deck_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
 export type query_rootFieldPolicy = {
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1073,6 +1125,8 @@ export type query_rootFieldPolicy = {
 	campaign_access_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_guide?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_guide_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_investigator_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1105,7 +1159,7 @@ export type query_rootFieldPolicy = {
 	users_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type subscription_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'deck' | 'deck_aggregate' | 'deck_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | subscription_rootKeySpecifier)[];
+export type subscription_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'deck' | 'deck_aggregate' | 'deck_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | subscription_rootKeySpecifier)[];
 export type subscription_rootFieldPolicy = {
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1115,6 +1169,8 @@ export type subscription_rootFieldPolicy = {
 	campaign_access_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_guide?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_guide_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_investigator_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_investigator_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1512,6 +1568,62 @@ export type TypedTypePolicies = TypePolicies & {
 	campaign_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | campaign_avg_fieldsKeySpecifier | (() => undefined | campaign_avg_fieldsKeySpecifier),
 		fields?: campaign_avg_fieldsFieldPolicy,
+	},
+	campaign_guide?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guideKeySpecifier | (() => undefined | campaign_guideKeySpecifier),
+		fields?: campaign_guideFieldPolicy,
+	},
+	campaign_guide_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_aggregateKeySpecifier | (() => undefined | campaign_guide_aggregateKeySpecifier),
+		fields?: campaign_guide_aggregateFieldPolicy,
+	},
+	campaign_guide_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_aggregate_fieldsKeySpecifier | (() => undefined | campaign_guide_aggregate_fieldsKeySpecifier),
+		fields?: campaign_guide_aggregate_fieldsFieldPolicy,
+	},
+	campaign_guide_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_avg_fieldsKeySpecifier | (() => undefined | campaign_guide_avg_fieldsKeySpecifier),
+		fields?: campaign_guide_avg_fieldsFieldPolicy,
+	},
+	campaign_guide_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_max_fieldsKeySpecifier | (() => undefined | campaign_guide_max_fieldsKeySpecifier),
+		fields?: campaign_guide_max_fieldsFieldPolicy,
+	},
+	campaign_guide_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_min_fieldsKeySpecifier | (() => undefined | campaign_guide_min_fieldsKeySpecifier),
+		fields?: campaign_guide_min_fieldsFieldPolicy,
+	},
+	campaign_guide_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_mutation_responseKeySpecifier | (() => undefined | campaign_guide_mutation_responseKeySpecifier),
+		fields?: campaign_guide_mutation_responseFieldPolicy,
+	},
+	campaign_guide_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_stddev_fieldsKeySpecifier | (() => undefined | campaign_guide_stddev_fieldsKeySpecifier),
+		fields?: campaign_guide_stddev_fieldsFieldPolicy,
+	},
+	campaign_guide_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_stddev_pop_fieldsKeySpecifier | (() => undefined | campaign_guide_stddev_pop_fieldsKeySpecifier),
+		fields?: campaign_guide_stddev_pop_fieldsFieldPolicy,
+	},
+	campaign_guide_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_stddev_samp_fieldsKeySpecifier | (() => undefined | campaign_guide_stddev_samp_fieldsKeySpecifier),
+		fields?: campaign_guide_stddev_samp_fieldsFieldPolicy,
+	},
+	campaign_guide_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_sum_fieldsKeySpecifier | (() => undefined | campaign_guide_sum_fieldsKeySpecifier),
+		fields?: campaign_guide_sum_fieldsFieldPolicy,
+	},
+	campaign_guide_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_var_pop_fieldsKeySpecifier | (() => undefined | campaign_guide_var_pop_fieldsKeySpecifier),
+		fields?: campaign_guide_var_pop_fieldsFieldPolicy,
+	},
+	campaign_guide_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_var_samp_fieldsKeySpecifier | (() => undefined | campaign_guide_var_samp_fieldsKeySpecifier),
+		fields?: campaign_guide_var_samp_fieldsFieldPolicy,
+	},
+	campaign_guide_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | campaign_guide_variance_fieldsKeySpecifier | (() => undefined | campaign_guide_variance_fieldsKeySpecifier),
+		fields?: campaign_guide_variance_fieldsFieldPolicy,
 	},
 	campaign_investigator?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | campaign_investigatorKeySpecifier | (() => undefined | campaign_investigatorKeySpecifier),

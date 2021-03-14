@@ -13,7 +13,7 @@ import SerializingLink from 'apollo-link-serialize';
 
 import { TypedTypePolicies } from '@generated/graphql/apollo-helpers';
 
-import { hasuraToken } from '@lib/ArkhamCardsAuthProvider';
+import { getAuthToken } from '@lib/ArkhamCardsAuthProvider';
 
 import trackerLink from './trackerLink';
 
@@ -21,10 +21,33 @@ export const GRAPHQL_SERVER = 'api.arkhamcards.com/v1';
 
 const typePolicies: TypedTypePolicies = {
   deck: {
-    keyFields: ['id', 'arkhamdb_id', 'local_uuid'],
+    keyFields: ['id'],
   },
   campaign: {
-    keyFields: ['id', 'uuid'],
+    keyFields: ['id'],
+  },
+  campaign_guide: {
+    keyFields: ['id'],
+    fields: {
+      guide_inputs: {
+        merge(existing, incoming) {
+          console.log('Merging a campaign guide');
+          console.log(JSON.stringify({ existing, incoming }));
+          return incoming;
+        },
+      },
+      guide_achievements: {
+        merge(existing, incoming) {
+          return incoming;
+        },
+      },
+    },
+  },
+  guide_input: {
+    keyFields: ['id', 'campaign_id'],
+  },
+  guide_achievement: {
+    keyFields: ['id', 'campaign_id'],
   },
 };
 
@@ -38,13 +61,13 @@ const errorLink = onError((e) => {
   console.log(stringify(e));
 });
 
-const authLink = setContext((req, { headers }) => {
+const authLink = setContext(async(req, { headers }) => {
   const newHeaders = {
     ...headers,
   };
+  const hasuraToken = await getAuthToken();
   if (hasuraToken) {
     newHeaders.Authorization = `Bearer ${hasuraToken}`;
-    console.log(newHeaders.Authorization);
   } else {
     console.log('Sending request without auth.');
   }
@@ -61,7 +84,8 @@ const wsLink = new WebSocketLink(
     `wss://${GRAPHQL_SERVER}/graphql`, {
       reconnect: true,
       lazy: true,
-      connectionParams: () => {
+      connectionParams: async() => {
+        const hasuraToken = await getAuthToken();
         console.log(`Calling connectionParams for WSLINk: hasuraToken: ${!!hasuraToken}`);
         return {
           headers: hasuraToken ? {

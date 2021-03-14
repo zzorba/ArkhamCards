@@ -32,7 +32,7 @@ export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => vo
 
 export function useLiveCampaignGuideState(campaignId: undefined | CampaignId): CampaignGuideStateT | undefined {
   const reduxState = useCampaignGuideFromRedux(campaignId);
-  const remoteState = useLiveCampaignGuideStateRemote(campaignId);
+  const remoteState = useCachedCampaignGuideStateRemote(campaignId);
   return useMemo(() => {
     if (!campaignId) {
       return undefined;
@@ -78,7 +78,7 @@ export function useLiveCampaign(
   investigators: undefined | CardsMap,
 ): [SingleCampaignT | undefined, Card[], boolean] {
   const reduxCampaign = useCampaignFromRedux(campaignId);
-  const remoteCampaign = useLiveCampaignRemote(campaignId);
+  const remoteCampaign = useCachedCampaignRemote(campaignId);
   const campaign: SingleCampaignT | undefined = useMemo(() => {
     if (!campaignId) {
       return undefined;

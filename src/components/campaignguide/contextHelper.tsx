@@ -79,11 +79,14 @@ export function useCampaignGuideReduxData(campaignId: CampaignId, investigators:
 
   return useMemo(() => {
     if (!campaign) {
+      console.log('No campaign');
       return undefined;
     }
     if (!campaignGuide || !campaignState) {
+      console.log('no guide/guide state')
       return undefined;
     }
+    console.log(campaignState.numInputs())
     return {
       campaign,
       campaignGuide,

@@ -80,12 +80,18 @@ export function useDeckActions(): DeckActions {
           local_uuid: deckId.uuid,
           campaign_id: campaignId,
         },
+        context: {
+          serializationKey: campaignId,
+        },
       });
     } else {
       await deleteArkhamDbDeck({
         variables: {
           arkhamdb_id: deckId.id,
           campaign_id: campaignId,
+        },
+        context: {
+          serializationKey: campaignId,
         },
       });
     }
@@ -103,6 +109,9 @@ export function useDeckActions(): DeckActions {
           content: deck,
           content_hash: await hashDeck(deck),
         },
+        context: {
+          serializationKey: campaignId,
+        },
       });
     } else {
       await updateArkhamDbDeck({
@@ -111,6 +120,9 @@ export function useDeckActions(): DeckActions {
           campaign_id: campaignId,
           content: deck,
           content_hash: await hashDeck(deck),
+        },
+        context: {
+          serializationKey: campaignId,
         },
       });
     }
@@ -142,6 +154,9 @@ export function useDeckActions(): DeckActions {
         ...content,
         arkhamdb_id: deckId.id,
       },
+      context: {
+        serializationKey: campaignId,
+      },
     });
     return response?.data?.insert_deck_one?.id;
   }, [createNewDeck, user]);
@@ -169,6 +184,9 @@ export function useDeckActions(): DeckActions {
           local_uuid: deckId.uuid,
           previous_local_uuid: previousDeckId.uuid,
         },
+        context: {
+          serializationKey: campaignId,
+        },
       });
       return response.data?.insert_deck_one?.next_deck?.id;
     }
@@ -181,6 +199,9 @@ export function useDeckActions(): DeckActions {
         ...content,
         arkhamdb_id: deckId.id,
         previous_arkhamdb_id: previousDeckId.id,
+      },
+      context: {
+        serializationKey: campaignId,
       },
     });
     return response.data?.insert_deck_one?.next_deck?.id;

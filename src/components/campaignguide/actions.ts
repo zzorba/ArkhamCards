@@ -29,23 +29,14 @@ import {
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
-import { CreateCampaignActions, GuideActions } from '@data/remote/campaigns';
+import { CreateCampaignActions, GuideActions, guideInputToInsert } from '@data/remote/campaigns';
 import { Guide_Input_Insert_Input, Guide_Achievement_Insert_Input, Investigator_Data_Insert_Input, Campaign_Investigator_Insert_Input } from '@generated/graphql/apollo-schema';
 import { DeckActions } from '@data/remote/decks';
-
-function guideInputToInsert(input: GuideInput, serverId: number): Guide_Input_Insert_Input {
-  return {
-    campaign_id: serverId,
-    scenario: input.scenario,
-    step: input.step,
-    payload: omit(input, ['scenario', 'step']),
-  };
-}
 
 function guideAchievementToInsert(a: GuideAchievement, serverId: number): Guide_Achievement_Insert_Input {
   return {
     campaign_id: serverId,
-    achievement_id: a.id,
+    id: a.id,
     bool_value: a.type === 'binary' ? a.value : undefined,
     value: a.type === 'count' ? a.value : undefined,
     type: a.type,
@@ -113,8 +104,10 @@ function uploadCampaignHelper(
         scenarioResults: campaign.scenarioResults,
         showInterludes: campaign.showInterludes,
         weaknessSet: campaign.weaknessSet,
-        guided: campaign.guided,
         guideVersion: campaign.guideVersion,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
       },
     });
     dispatch({

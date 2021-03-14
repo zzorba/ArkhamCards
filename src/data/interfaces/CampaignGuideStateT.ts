@@ -7,4 +7,5 @@ export default interface CampaignGuideStateT {
   binaryAchievement: (id: string) => boolean;
   countAchievement: (id: string) => number;
   lastUpdated: () => Date | undefined;
+  numInputs: () => number;
 }

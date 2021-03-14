@@ -1,9 +1,10 @@
 import React from 'react';
 import { AppearanceProvider } from 'react-native-appearance';
 import { Provider } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { persistCache } from 'apollo-cache-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ApolloProvider } from '@apollo/client';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Navigation } from 'react-native-navigation';
 import Crashes from 'appcenter-crashes';
 import database from '@react-native-firebase/database';
@@ -47,6 +48,11 @@ if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
 
 const { store, persistor } = configureStore({});
 const apolloClient = createApolloClient(store);
+
+persistCache({
+  cache: apolloClient.cache,
+  storage: AsyncStorage,
+});
 
 function shouldProcess() {
   return !__DEV__;

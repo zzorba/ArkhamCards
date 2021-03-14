@@ -334,19 +334,13 @@ export type Campaign = {
   /** An aggregate relationship */
   base_decks_aggregate: Base_Decks_Aggregate;
   campaignNotes?: Maybe<Scalars['jsonb']>;
+  /** An object relationship */
+  campaign_guide?: Maybe<Campaign_Guide>;
   chaosBag?: Maybe<Scalars['jsonb']>;
   created_at: Scalars['timestamptz'];
   cycleCode?: Maybe<Scalars['String']>;
   deleted?: Maybe<Scalars['Boolean']>;
   difficulty?: Maybe<Scalars['String']>;
-  /** An array relationship */
-  guide_achivements: Array<Guide_Achievement>;
-  /** An aggregate relationship */
-  guide_achivements_aggregate: Guide_Achievement_Aggregate;
-  /** An array relationship */
-  guide_inputs: Array<Guide_Input>;
-  /** An aggregate relationship */
-  guide_inputs_aggregate: Guide_Input_Aggregate;
   guide_version?: Maybe<Scalars['Int']>;
   guided?: Maybe<Scalars['Boolean']>;
   id: Scalars['Int'];
@@ -431,46 +425,6 @@ export type CampaignCampaignNotesArgs = {
 /** columns and relationships of "campaign" */
 export type CampaignChaosBagArgs = {
   path?: Maybe<Scalars['String']>;
-};
-
-
-/** columns and relationships of "campaign" */
-export type CampaignGuide_AchivementsArgs = {
-  distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Achievement_Order_By>>;
-  where?: Maybe<Guide_Achievement_Bool_Exp>;
-};
-
-
-/** columns and relationships of "campaign" */
-export type CampaignGuide_Achivements_AggregateArgs = {
-  distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Achievement_Order_By>>;
-  where?: Maybe<Guide_Achievement_Bool_Exp>;
-};
-
-
-/** columns and relationships of "campaign" */
-export type CampaignGuide_InputsArgs = {
-  distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Input_Order_By>>;
-  where?: Maybe<Guide_Input_Bool_Exp>;
-};
-
-
-/** columns and relationships of "campaign" */
-export type CampaignGuide_Inputs_AggregateArgs = {
-  distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Guide_Input_Order_By>>;
-  where?: Maybe<Guide_Input_Bool_Exp>;
 };
 
 
@@ -897,13 +851,12 @@ export type Campaign_Bool_Exp = {
   access?: Maybe<Campaign_Access_Bool_Exp>;
   base_decks?: Maybe<Base_Decks_Bool_Exp>;
   campaignNotes?: Maybe<Jsonb_Comparison_Exp>;
+  campaign_guide?: Maybe<Campaign_Guide_Bool_Exp>;
   chaosBag?: Maybe<Jsonb_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   cycleCode?: Maybe<String_Comparison_Exp>;
   deleted?: Maybe<Boolean_Comparison_Exp>;
   difficulty?: Maybe<String_Comparison_Exp>;
-  guide_achivements?: Maybe<Guide_Achievement_Bool_Exp>;
-  guide_inputs?: Maybe<Guide_Input_Bool_Exp>;
   guide_version?: Maybe<Int_Comparison_Exp>;
   guided?: Maybe<Boolean_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
@@ -959,6 +912,267 @@ export type Campaign_Delete_Key_Input = {
   weaknessSet?: Maybe<Scalars['String']>;
 };
 
+/** columns and relationships of "campaign_guide" */
+export type Campaign_Guide = {
+  __typename?: 'campaign_guide';
+  /** An array relationship */
+  access: Array<Campaign_Access>;
+  /** An aggregate relationship */
+  access_aggregate: Campaign_Access_Aggregate;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  /** An array relationship */
+  guide_achievements: Array<Guide_Achievement>;
+  /** An aggregate relationship */
+  guide_achievements_aggregate: Guide_Achievement_Aggregate;
+  /** An array relationship */
+  guide_inputs: Array<Guide_Input>;
+  /** An aggregate relationship */
+  guide_inputs_aggregate: Guide_Input_Aggregate;
+  id?: Maybe<Scalars['Int']>;
+  owner?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  uuid?: Maybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "campaign_guide" */
+export type Campaign_GuideAccessArgs = {
+  distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Access_Order_By>>;
+  where?: Maybe<Campaign_Access_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign_guide" */
+export type Campaign_GuideAccess_AggregateArgs = {
+  distinct_on?: Maybe<Array<Campaign_Access_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Access_Order_By>>;
+  where?: Maybe<Campaign_Access_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign_guide" */
+export type Campaign_GuideGuide_AchievementsArgs = {
+  distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Guide_Achievement_Order_By>>;
+  where?: Maybe<Guide_Achievement_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign_guide" */
+export type Campaign_GuideGuide_Achievements_AggregateArgs = {
+  distinct_on?: Maybe<Array<Guide_Achievement_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Guide_Achievement_Order_By>>;
+  where?: Maybe<Guide_Achievement_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign_guide" */
+export type Campaign_GuideGuide_InputsArgs = {
+  distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Guide_Input_Order_By>>;
+  where?: Maybe<Guide_Input_Bool_Exp>;
+};
+
+
+/** columns and relationships of "campaign_guide" */
+export type Campaign_GuideGuide_Inputs_AggregateArgs = {
+  distinct_on?: Maybe<Array<Guide_Input_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Guide_Input_Order_By>>;
+  where?: Maybe<Guide_Input_Bool_Exp>;
+};
+
+/** aggregated selection of "campaign_guide" */
+export type Campaign_Guide_Aggregate = {
+  __typename?: 'campaign_guide_aggregate';
+  aggregate?: Maybe<Campaign_Guide_Aggregate_Fields>;
+  nodes: Array<Campaign_Guide>;
+};
+
+/** aggregate fields of "campaign_guide" */
+export type Campaign_Guide_Aggregate_Fields = {
+  __typename?: 'campaign_guide_aggregate_fields';
+  avg?: Maybe<Campaign_Guide_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Campaign_Guide_Max_Fields>;
+  min?: Maybe<Campaign_Guide_Min_Fields>;
+  stddev?: Maybe<Campaign_Guide_Stddev_Fields>;
+  stddev_pop?: Maybe<Campaign_Guide_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Campaign_Guide_Stddev_Samp_Fields>;
+  sum?: Maybe<Campaign_Guide_Sum_Fields>;
+  var_pop?: Maybe<Campaign_Guide_Var_Pop_Fields>;
+  var_samp?: Maybe<Campaign_Guide_Var_Samp_Fields>;
+  variance?: Maybe<Campaign_Guide_Variance_Fields>;
+};
+
+
+/** aggregate fields of "campaign_guide" */
+export type Campaign_Guide_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Campaign_Guide_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Campaign_Guide_Avg_Fields = {
+  __typename?: 'campaign_guide_avg_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "campaign_guide". All fields are combined with a logical 'AND'. */
+export type Campaign_Guide_Bool_Exp = {
+  _and?: Maybe<Array<Campaign_Guide_Bool_Exp>>;
+  _not?: Maybe<Campaign_Guide_Bool_Exp>;
+  _or?: Maybe<Array<Campaign_Guide_Bool_Exp>>;
+  access?: Maybe<Campaign_Access_Bool_Exp>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  guide_achievements?: Maybe<Guide_Achievement_Bool_Exp>;
+  guide_inputs?: Maybe<Guide_Input_Bool_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+  owner?: Maybe<String_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  uuid?: Maybe<String_Comparison_Exp>;
+};
+
+/** input type for incrementing numeric columns in table "campaign_guide" */
+export type Campaign_Guide_Inc_Input = {
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "campaign_guide" */
+export type Campaign_Guide_Insert_Input = {
+  access?: Maybe<Campaign_Access_Arr_Rel_Insert_Input>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  guide_achievements?: Maybe<Guide_Achievement_Arr_Rel_Insert_Input>;
+  guide_inputs?: Maybe<Guide_Input_Arr_Rel_Insert_Input>;
+  id?: Maybe<Scalars['Int']>;
+  owner?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  uuid?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Campaign_Guide_Max_Fields = {
+  __typename?: 'campaign_guide_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  owner?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  uuid?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Campaign_Guide_Min_Fields = {
+  __typename?: 'campaign_guide_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  owner?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  uuid?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "campaign_guide" */
+export type Campaign_Guide_Mutation_Response = {
+  __typename?: 'campaign_guide_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Campaign_Guide>;
+};
+
+/** input type for inserting object relation for remote table "campaign_guide" */
+export type Campaign_Guide_Obj_Rel_Insert_Input = {
+  data: Campaign_Guide_Insert_Input;
+};
+
+/** Ordering options when selecting data from "campaign_guide". */
+export type Campaign_Guide_Order_By = {
+  access_aggregate?: Maybe<Campaign_Access_Aggregate_Order_By>;
+  created_at?: Maybe<Order_By>;
+  guide_achievements_aggregate?: Maybe<Guide_Achievement_Aggregate_Order_By>;
+  guide_inputs_aggregate?: Maybe<Guide_Input_Aggregate_Order_By>;
+  id?: Maybe<Order_By>;
+  owner?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+  uuid?: Maybe<Order_By>;
+};
+
+/** select columns of table "campaign_guide" */
+export enum Campaign_Guide_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Owner = 'owner',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  Uuid = 'uuid'
+}
+
+/** input type for updating data in table "campaign_guide" */
+export type Campaign_Guide_Set_Input = {
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  owner?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  uuid?: Maybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Campaign_Guide_Stddev_Fields = {
+  __typename?: 'campaign_guide_stddev_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Campaign_Guide_Stddev_Pop_Fields = {
+  __typename?: 'campaign_guide_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Campaign_Guide_Stddev_Samp_Fields = {
+  __typename?: 'campaign_guide_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Campaign_Guide_Sum_Fields = {
+  __typename?: 'campaign_guide_sum_fields';
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate var_pop on columns */
+export type Campaign_Guide_Var_Pop_Fields = {
+  __typename?: 'campaign_guide_var_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Campaign_Guide_Var_Samp_Fields = {
+  __typename?: 'campaign_guide_var_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Campaign_Guide_Variance_Fields = {
+  __typename?: 'campaign_guide_variance_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
 /** input type for incrementing numeric columns in table "campaign" */
 export type Campaign_Inc_Input = {
   guide_version?: Maybe<Scalars['Int']>;
@@ -973,13 +1187,12 @@ export type Campaign_Insert_Input = {
   access?: Maybe<Campaign_Access_Arr_Rel_Insert_Input>;
   base_decks?: Maybe<Base_Decks_Arr_Rel_Insert_Input>;
   campaignNotes?: Maybe<Scalars['jsonb']>;
+  campaign_guide?: Maybe<Campaign_Guide_Obj_Rel_Insert_Input>;
   chaosBag?: Maybe<Scalars['jsonb']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   cycleCode?: Maybe<Scalars['String']>;
   deleted?: Maybe<Scalars['Boolean']>;
   difficulty?: Maybe<Scalars['String']>;
-  guide_achivements?: Maybe<Guide_Achievement_Arr_Rel_Insert_Input>;
-  guide_inputs?: Maybe<Guide_Input_Arr_Rel_Insert_Input>;
   guide_version?: Maybe<Scalars['Int']>;
   guided?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['Int']>;
@@ -1009,7 +1222,8 @@ export type Campaign_Investigator = {
   campaign: Campaign;
   campaign_id: Scalars['Int'];
   created_at: Scalars['timestamptz'];
-  id: Scalars['Int'];
+  /** A computed field, executes function "campaign_investigator_id" */
+  id?: Maybe<Scalars['String']>;
   investigator: Scalars['String'];
   updated_at: Scalars['timestamptz'];
 };
@@ -1070,13 +1284,11 @@ export type Campaign_Investigator_Arr_Rel_Insert_Input = {
 export type Campaign_Investigator_Avg_Fields = {
   __typename?: 'campaign_investigator_avg_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Avg_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "campaign_investigator". All fields are combined with a logical 'AND'. */
@@ -1087,7 +1299,6 @@ export type Campaign_Investigator_Bool_Exp = {
   campaign?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
   investigator?: Maybe<String_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
@@ -1103,7 +1314,6 @@ export enum Campaign_Investigator_Constraint {
 /** input type for incrementing numeric columns in table "campaign_investigator" */
 export type Campaign_Investigator_Inc_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "campaign_investigator" */
@@ -1111,7 +1321,6 @@ export type Campaign_Investigator_Insert_Input = {
   campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
   investigator?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -1121,7 +1330,6 @@ export type Campaign_Investigator_Max_Fields = {
   __typename?: 'campaign_investigator_max_fields';
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
   investigator?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -1130,7 +1338,6 @@ export type Campaign_Investigator_Max_Fields = {
 export type Campaign_Investigator_Max_Order_By = {
   campaign_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   investigator?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
@@ -1140,7 +1347,6 @@ export type Campaign_Investigator_Min_Fields = {
   __typename?: 'campaign_investigator_min_fields';
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
   investigator?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -1149,7 +1355,6 @@ export type Campaign_Investigator_Min_Fields = {
 export type Campaign_Investigator_Min_Order_By = {
   campaign_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   investigator?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
@@ -1175,14 +1380,14 @@ export type Campaign_Investigator_Order_By = {
   campaign?: Maybe<Campaign_Order_By>;
   campaign_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   investigator?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
 
 /** primary key columns input for table: campaign_investigator */
 export type Campaign_Investigator_Pk_Columns_Input = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
 };
 
 /** select columns of table "campaign_investigator" */
@@ -1191,8 +1396,6 @@ export enum Campaign_Investigator_Select_Column {
   CampaignId = 'campaign_id',
   /** column name */
   CreatedAt = 'created_at',
-  /** column name */
-  Id = 'id',
   /** column name */
   Investigator = 'investigator',
   /** column name */
@@ -1203,7 +1406,6 @@ export enum Campaign_Investigator_Select_Column {
 export type Campaign_Investigator_Set_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
   investigator?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -1212,52 +1414,44 @@ export type Campaign_Investigator_Set_Input = {
 export type Campaign_Investigator_Stddev_Fields = {
   __typename?: 'campaign_investigator_stddev_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Stddev_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Campaign_Investigator_Stddev_Pop_Fields = {
   __typename?: 'campaign_investigator_stddev_pop_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Stddev_Pop_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Campaign_Investigator_Stddev_Samp_Fields = {
   __typename?: 'campaign_investigator_stddev_samp_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Stddev_Samp_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate sum on columns */
 export type Campaign_Investigator_Sum_Fields = {
   __typename?: 'campaign_investigator_sum_fields';
   campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Sum_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** update columns of table "campaign_investigator" */
@@ -1266,8 +1460,6 @@ export enum Campaign_Investigator_Update_Column {
   CampaignId = 'campaign_id',
   /** column name */
   CreatedAt = 'created_at',
-  /** column name */
-  Id = 'id',
   /** column name */
   Investigator = 'investigator',
   /** column name */
@@ -1278,39 +1470,33 @@ export enum Campaign_Investigator_Update_Column {
 export type Campaign_Investigator_Var_Pop_Fields = {
   __typename?: 'campaign_investigator_var_pop_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Var_Pop_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Campaign_Investigator_Var_Samp_Fields = {
   __typename?: 'campaign_investigator_var_samp_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Var_Samp_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Campaign_Investigator_Variance_Fields = {
   __typename?: 'campaign_investigator_variance_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "campaign_investigator" */
 export type Campaign_Investigator_Variance_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate max on columns */
@@ -1375,13 +1561,12 @@ export type Campaign_Order_By = {
   access_aggregate?: Maybe<Campaign_Access_Aggregate_Order_By>;
   base_decks_aggregate?: Maybe<Base_Decks_Aggregate_Order_By>;
   campaignNotes?: Maybe<Order_By>;
+  campaign_guide?: Maybe<Campaign_Guide_Order_By>;
   chaosBag?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   cycleCode?: Maybe<Order_By>;
   deleted?: Maybe<Order_By>;
   difficulty?: Maybe<Order_By>;
-  guide_achivements_aggregate?: Maybe<Guide_Achievement_Aggregate_Order_By>;
-  guide_inputs_aggregate?: Maybe<Guide_Input_Aggregate_Order_By>;
   guide_version?: Maybe<Order_By>;
   guided?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -2065,6 +2250,8 @@ export type Deck_Variance_Order_By = {
 /** columns and relationships of "friend_status" */
 export type Friend_Status = {
   __typename?: 'friend_status';
+  /** A computed field, executes function "friend_status_id" */
+  id?: Maybe<Scalars['String']>;
   status: Scalars['String'];
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
@@ -2190,13 +2377,12 @@ export enum Friend_Status_Update_Column {
 /** columns and relationships of "guide_achievement" */
 export type Guide_Achievement = {
   __typename?: 'guide_achievement';
-  achievement_id: Scalars['String'];
   bool_value?: Maybe<Scalars['Boolean']>;
   /** An object relationship */
   campaign: Campaign;
   campaign_id: Scalars['Int'];
   created_at: Scalars['timestamptz'];
-  id: Scalars['Int'];
+  id: Scalars['String'];
   type: Scalars['String'];
   updated_at: Scalars['timestamptz'];
   value?: Maybe<Scalars['Int']>;
@@ -2258,14 +2444,12 @@ export type Guide_Achievement_Arr_Rel_Insert_Input = {
 export type Guide_Achievement_Avg_Fields = {
   __typename?: 'guide_achievement_avg_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   value?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "guide_achievement" */
 export type Guide_Achievement_Avg_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   value?: Maybe<Order_By>;
 };
 
@@ -2274,12 +2458,11 @@ export type Guide_Achievement_Bool_Exp = {
   _and?: Maybe<Array<Guide_Achievement_Bool_Exp>>;
   _not?: Maybe<Guide_Achievement_Bool_Exp>;
   _or?: Maybe<Array<Guide_Achievement_Bool_Exp>>;
-  achievement_id?: Maybe<String_Comparison_Exp>;
   bool_value?: Maybe<Boolean_Comparison_Exp>;
   campaign?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
+  id?: Maybe<String_Comparison_Exp>;
   type?: Maybe<String_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
   value?: Maybe<Int_Comparison_Exp>;
@@ -2288,26 +2471,22 @@ export type Guide_Achievement_Bool_Exp = {
 /** unique or primary key constraints on table "guide_achievement" */
 export enum Guide_Achievement_Constraint {
   /** unique or primary key constraint */
-  CampaignGuideAchivementPkey = 'campaign_guide_achivement_pkey',
-  /** unique or primary key constraint */
-  GuideAchivementCampaignIdAchievementIdKey = 'guide_achivement_campaign_id_achievement_id_key'
+  GuideAchievementPkey = 'guide_achievement_pkey'
 }
 
 /** input type for incrementing numeric columns in table "guide_achievement" */
 export type Guide_Achievement_Inc_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
   value?: Maybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "guide_achievement" */
 export type Guide_Achievement_Insert_Input = {
-  achievement_id?: Maybe<Scalars['String']>;
   bool_value?: Maybe<Scalars['Boolean']>;
   campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   value?: Maybe<Scalars['Int']>;
@@ -2316,10 +2495,9 @@ export type Guide_Achievement_Insert_Input = {
 /** aggregate max on columns */
 export type Guide_Achievement_Max_Fields = {
   __typename?: 'guide_achievement_max_fields';
-  achievement_id?: Maybe<Scalars['String']>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   value?: Maybe<Scalars['Int']>;
@@ -2327,7 +2505,6 @@ export type Guide_Achievement_Max_Fields = {
 
 /** order by max() on columns of table "guide_achievement" */
 export type Guide_Achievement_Max_Order_By = {
-  achievement_id?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -2339,10 +2516,9 @@ export type Guide_Achievement_Max_Order_By = {
 /** aggregate min on columns */
 export type Guide_Achievement_Min_Fields = {
   __typename?: 'guide_achievement_min_fields';
-  achievement_id?: Maybe<Scalars['String']>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   value?: Maybe<Scalars['Int']>;
@@ -2350,7 +2526,6 @@ export type Guide_Achievement_Min_Fields = {
 
 /** order by min() on columns of table "guide_achievement" */
 export type Guide_Achievement_Min_Order_By = {
-  achievement_id?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -2377,7 +2552,6 @@ export type Guide_Achievement_On_Conflict = {
 
 /** Ordering options when selecting data from "guide_achievement". */
 export type Guide_Achievement_Order_By = {
-  achievement_id?: Maybe<Order_By>;
   bool_value?: Maybe<Order_By>;
   campaign?: Maybe<Campaign_Order_By>;
   campaign_id?: Maybe<Order_By>;
@@ -2390,13 +2564,12 @@ export type Guide_Achievement_Order_By = {
 
 /** primary key columns input for table: guide_achievement */
 export type Guide_Achievement_Pk_Columns_Input = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 /** select columns of table "guide_achievement" */
 export enum Guide_Achievement_Select_Column {
-  /** column name */
-  AchievementId = 'achievement_id',
   /** column name */
   BoolValue = 'bool_value',
   /** column name */
@@ -2415,11 +2588,10 @@ export enum Guide_Achievement_Select_Column {
 
 /** input type for updating data in table "guide_achievement" */
 export type Guide_Achievement_Set_Input = {
-  achievement_id?: Maybe<Scalars['String']>;
   bool_value?: Maybe<Scalars['Boolean']>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   value?: Maybe<Scalars['Int']>;
@@ -2429,14 +2601,12 @@ export type Guide_Achievement_Set_Input = {
 export type Guide_Achievement_Stddev_Fields = {
   __typename?: 'guide_achievement_stddev_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   value?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "guide_achievement" */
 export type Guide_Achievement_Stddev_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   value?: Maybe<Order_By>;
 };
 
@@ -2444,14 +2614,12 @@ export type Guide_Achievement_Stddev_Order_By = {
 export type Guide_Achievement_Stddev_Pop_Fields = {
   __typename?: 'guide_achievement_stddev_pop_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   value?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "guide_achievement" */
 export type Guide_Achievement_Stddev_Pop_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   value?: Maybe<Order_By>;
 };
 
@@ -2459,14 +2627,12 @@ export type Guide_Achievement_Stddev_Pop_Order_By = {
 export type Guide_Achievement_Stddev_Samp_Fields = {
   __typename?: 'guide_achievement_stddev_samp_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   value?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "guide_achievement" */
 export type Guide_Achievement_Stddev_Samp_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   value?: Maybe<Order_By>;
 };
 
@@ -2474,21 +2640,17 @@ export type Guide_Achievement_Stddev_Samp_Order_By = {
 export type Guide_Achievement_Sum_Fields = {
   __typename?: 'guide_achievement_sum_fields';
   campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
   value?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "guide_achievement" */
 export type Guide_Achievement_Sum_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   value?: Maybe<Order_By>;
 };
 
 /** update columns of table "guide_achievement" */
 export enum Guide_Achievement_Update_Column {
-  /** column name */
-  AchievementId = 'achievement_id',
   /** column name */
   BoolValue = 'bool_value',
   /** column name */
@@ -2509,14 +2671,12 @@ export enum Guide_Achievement_Update_Column {
 export type Guide_Achievement_Var_Pop_Fields = {
   __typename?: 'guide_achievement_var_pop_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   value?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "guide_achievement" */
 export type Guide_Achievement_Var_Pop_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   value?: Maybe<Order_By>;
 };
 
@@ -2524,14 +2684,12 @@ export type Guide_Achievement_Var_Pop_Order_By = {
 export type Guide_Achievement_Var_Samp_Fields = {
   __typename?: 'guide_achievement_var_samp_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   value?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "guide_achievement" */
 export type Guide_Achievement_Var_Samp_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   value?: Maybe<Order_By>;
 };
 
@@ -2539,14 +2697,12 @@ export type Guide_Achievement_Var_Samp_Order_By = {
 export type Guide_Achievement_Variance_Fields = {
   __typename?: 'guide_achievement_variance_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   value?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "guide_achievement" */
 export type Guide_Achievement_Variance_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   value?: Maybe<Order_By>;
 };
 
@@ -2557,10 +2713,11 @@ export type Guide_Input = {
   campaign: Campaign;
   campaign_id: Scalars['Int'];
   created_at: Scalars['timestamptz'];
-  id: Scalars['Int'];
+  id: Scalars['String'];
   payload?: Maybe<Scalars['jsonb']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
+  type: Scalars['String'];
 };
 
 
@@ -2630,13 +2787,11 @@ export type Guide_Input_Arr_Rel_Insert_Input = {
 export type Guide_Input_Avg_Fields = {
   __typename?: 'guide_input_avg_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "guide_input" */
 export type Guide_Input_Avg_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "guide_input". All fields are combined with a logical 'AND'. */
@@ -2647,18 +2802,19 @@ export type Guide_Input_Bool_Exp = {
   campaign?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
+  id?: Maybe<String_Comparison_Exp>;
   payload?: Maybe<Jsonb_Comparison_Exp>;
   scenario?: Maybe<String_Comparison_Exp>;
   step?: Maybe<String_Comparison_Exp>;
+  type?: Maybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "guide_input" */
 export enum Guide_Input_Constraint {
   /** unique or primary key constraint */
-  CampaignGuideInputCampaignGuideIdScenarioStepKey = 'campaign_guide_input_campaign_guide_id_scenario_step_key',
+  GuideInputPkey = 'guide_input_pkey',
   /** unique or primary key constraint */
-  CampaignGuideInputPkey = 'campaign_guide_input_pkey'
+  GuideInputScenarioCampaignIdStepTypeKey = 'guide_input_scenario_campaign_id_step_type_key'
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
@@ -2679,7 +2835,6 @@ export type Guide_Input_Delete_Key_Input = {
 /** input type for incrementing numeric columns in table "guide_input" */
 export type Guide_Input_Inc_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "guide_input" */
@@ -2687,10 +2842,11 @@ export type Guide_Input_Insert_Input = {
   campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
   payload?: Maybe<Scalars['jsonb']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -2698,9 +2854,10 @@ export type Guide_Input_Max_Fields = {
   __typename?: 'guide_input_max_fields';
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
 };
 
 /** order by max() on columns of table "guide_input" */
@@ -2710,6 +2867,7 @@ export type Guide_Input_Max_Order_By = {
   id?: Maybe<Order_By>;
   scenario?: Maybe<Order_By>;
   step?: Maybe<Order_By>;
+  type?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -2717,9 +2875,10 @@ export type Guide_Input_Min_Fields = {
   __typename?: 'guide_input_min_fields';
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
 };
 
 /** order by min() on columns of table "guide_input" */
@@ -2729,6 +2888,7 @@ export type Guide_Input_Min_Order_By = {
   id?: Maybe<Order_By>;
   scenario?: Maybe<Order_By>;
   step?: Maybe<Order_By>;
+  type?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "guide_input" */
@@ -2756,11 +2916,13 @@ export type Guide_Input_Order_By = {
   payload?: Maybe<Order_By>;
   scenario?: Maybe<Order_By>;
   step?: Maybe<Order_By>;
+  type?: Maybe<Order_By>;
 };
 
 /** primary key columns input for table: guide_input */
 export type Guide_Input_Pk_Columns_Input = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
@@ -2781,69 +2943,64 @@ export enum Guide_Input_Select_Column {
   /** column name */
   Scenario = 'scenario',
   /** column name */
-  Step = 'step'
+  Step = 'step',
+  /** column name */
+  Type = 'type'
 }
 
 /** input type for updating data in table "guide_input" */
 export type Guide_Input_Set_Input = {
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
   payload?: Maybe<Scalars['jsonb']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
 };
 
 /** aggregate stddev on columns */
 export type Guide_Input_Stddev_Fields = {
   __typename?: 'guide_input_stddev_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Guide_Input_Stddev_Pop_Fields = {
   __typename?: 'guide_input_stddev_pop_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Pop_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Guide_Input_Stddev_Samp_Fields = {
   __typename?: 'guide_input_stddev_samp_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Samp_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate sum on columns */
 export type Guide_Input_Sum_Fields = {
   __typename?: 'guide_input_sum_fields';
   campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "guide_input" */
 export type Guide_Input_Sum_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** update columns of table "guide_input" */
@@ -2859,46 +3016,42 @@ export enum Guide_Input_Update_Column {
   /** column name */
   Scenario = 'scenario',
   /** column name */
-  Step = 'step'
+  Step = 'step',
+  /** column name */
+  Type = 'type'
 }
 
 /** aggregate var_pop on columns */
 export type Guide_Input_Var_Pop_Fields = {
   __typename?: 'guide_input_var_pop_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "guide_input" */
 export type Guide_Input_Var_Pop_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Guide_Input_Var_Samp_Fields = {
   __typename?: 'guide_input_var_samp_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "guide_input" */
 export type Guide_Input_Var_Samp_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Guide_Input_Variance_Fields = {
   __typename?: 'guide_input_variance_fields';
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "guide_input" */
 export type Guide_Input_Variance_Order_By = {
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
 };
 
 /** columns and relationships of "investigator_data" */
@@ -2910,7 +3063,8 @@ export type Investigator_Data = {
   campaign_data: Campaign;
   campaign_id: Scalars['Int'];
   created_at: Scalars['timestamptz'];
-  id: Scalars['Int'];
+  /** A computed field, executes function "investigator_data_id" */
+  id?: Maybe<Scalars['String']>;
   ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
   insane?: Maybe<Scalars['Boolean']>;
   investigator: Scalars['String'];
@@ -3020,7 +3174,6 @@ export type Investigator_Data_Avg_Fields = {
   __typename?: 'investigator_data_avg_fields';
   availableXp?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   mental?: Maybe<Scalars['Float']>;
   physical?: Maybe<Scalars['Float']>;
   spentXp?: Maybe<Scalars['Float']>;
@@ -3030,7 +3183,6 @@ export type Investigator_Data_Avg_Fields = {
 export type Investigator_Data_Avg_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   mental?: Maybe<Order_By>;
   physical?: Maybe<Order_By>;
   spentXp?: Maybe<Order_By>;
@@ -3046,7 +3198,6 @@ export type Investigator_Data_Bool_Exp = {
   campaign_data?: Maybe<Campaign_Bool_Exp>;
   campaign_id?: Maybe<Int_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
   ignoreStoryAssets?: Maybe<Jsonb_Comparison_Exp>;
   insane?: Maybe<Boolean_Comparison_Exp>;
   investigator?: Maybe<String_Comparison_Exp>;
@@ -3062,8 +3213,6 @@ export type Investigator_Data_Bool_Exp = {
 
 /** unique or primary key constraints on table "investigator_data" */
 export enum Investigator_Data_Constraint {
-  /** unique or primary key constraint */
-  InvestigatorDataCampaignIdInvestigatorKey = 'investigator_data_campaign_id_investigator_key',
   /** unique or primary key constraint */
   InvestigatorDataPkey = 'investigator_data_pkey'
 }
@@ -3099,7 +3248,6 @@ export type Investigator_Data_Delete_Key_Input = {
 export type Investigator_Data_Inc_Input = {
   availableXp?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
   mental?: Maybe<Scalars['Int']>;
   physical?: Maybe<Scalars['Int']>;
   spentXp?: Maybe<Scalars['Int']>;
@@ -3112,7 +3260,6 @@ export type Investigator_Data_Insert_Input = {
   campaign_data?: Maybe<Campaign_Obj_Rel_Insert_Input>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
   ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
   insane?: Maybe<Scalars['Boolean']>;
   investigator?: Maybe<Scalars['String']>;
@@ -3132,7 +3279,6 @@ export type Investigator_Data_Max_Fields = {
   availableXp?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
   investigator?: Maybe<Scalars['String']>;
   mental?: Maybe<Scalars['Int']>;
   physical?: Maybe<Scalars['Int']>;
@@ -3145,7 +3291,6 @@ export type Investigator_Data_Max_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   investigator?: Maybe<Order_By>;
   mental?: Maybe<Order_By>;
   physical?: Maybe<Order_By>;
@@ -3159,7 +3304,6 @@ export type Investigator_Data_Min_Fields = {
   availableXp?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
   investigator?: Maybe<Scalars['String']>;
   mental?: Maybe<Scalars['Int']>;
   physical?: Maybe<Scalars['Int']>;
@@ -3172,7 +3316,6 @@ export type Investigator_Data_Min_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   investigator?: Maybe<Order_By>;
   mental?: Maybe<Order_By>;
   physical?: Maybe<Order_By>;
@@ -3210,7 +3353,6 @@ export type Investigator_Data_Order_By = {
   campaign_data?: Maybe<Campaign_Order_By>;
   campaign_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   ignoreStoryAssets?: Maybe<Order_By>;
   insane?: Maybe<Order_By>;
   investigator?: Maybe<Order_By>;
@@ -3226,7 +3368,8 @@ export type Investigator_Data_Order_By = {
 
 /** primary key columns input for table: investigator_data */
 export type Investigator_Data_Pk_Columns_Input = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
 };
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
@@ -3248,8 +3391,6 @@ export enum Investigator_Data_Select_Column {
   CampaignId = 'campaign_id',
   /** column name */
   CreatedAt = 'created_at',
-  /** column name */
-  Id = 'id',
   /** column name */
   IgnoreStoryAssets = 'ignoreStoryAssets',
   /** column name */
@@ -3280,7 +3421,6 @@ export type Investigator_Data_Set_Input = {
   availableXp?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
   ignoreStoryAssets?: Maybe<Scalars['jsonb']>;
   insane?: Maybe<Scalars['Boolean']>;
   investigator?: Maybe<Scalars['String']>;
@@ -3299,7 +3439,6 @@ export type Investigator_Data_Stddev_Fields = {
   __typename?: 'investigator_data_stddev_fields';
   availableXp?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   mental?: Maybe<Scalars['Float']>;
   physical?: Maybe<Scalars['Float']>;
   spentXp?: Maybe<Scalars['Float']>;
@@ -3309,7 +3448,6 @@ export type Investigator_Data_Stddev_Fields = {
 export type Investigator_Data_Stddev_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   mental?: Maybe<Order_By>;
   physical?: Maybe<Order_By>;
   spentXp?: Maybe<Order_By>;
@@ -3320,7 +3458,6 @@ export type Investigator_Data_Stddev_Pop_Fields = {
   __typename?: 'investigator_data_stddev_pop_fields';
   availableXp?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   mental?: Maybe<Scalars['Float']>;
   physical?: Maybe<Scalars['Float']>;
   spentXp?: Maybe<Scalars['Float']>;
@@ -3330,7 +3467,6 @@ export type Investigator_Data_Stddev_Pop_Fields = {
 export type Investigator_Data_Stddev_Pop_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   mental?: Maybe<Order_By>;
   physical?: Maybe<Order_By>;
   spentXp?: Maybe<Order_By>;
@@ -3341,7 +3477,6 @@ export type Investigator_Data_Stddev_Samp_Fields = {
   __typename?: 'investigator_data_stddev_samp_fields';
   availableXp?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   mental?: Maybe<Scalars['Float']>;
   physical?: Maybe<Scalars['Float']>;
   spentXp?: Maybe<Scalars['Float']>;
@@ -3351,7 +3486,6 @@ export type Investigator_Data_Stddev_Samp_Fields = {
 export type Investigator_Data_Stddev_Samp_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   mental?: Maybe<Order_By>;
   physical?: Maybe<Order_By>;
   spentXp?: Maybe<Order_By>;
@@ -3362,7 +3496,6 @@ export type Investigator_Data_Sum_Fields = {
   __typename?: 'investigator_data_sum_fields';
   availableXp?: Maybe<Scalars['Int']>;
   campaign_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
   mental?: Maybe<Scalars['Int']>;
   physical?: Maybe<Scalars['Int']>;
   spentXp?: Maybe<Scalars['Int']>;
@@ -3372,7 +3505,6 @@ export type Investigator_Data_Sum_Fields = {
 export type Investigator_Data_Sum_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   mental?: Maybe<Order_By>;
   physical?: Maybe<Order_By>;
   spentXp?: Maybe<Order_By>;
@@ -3388,8 +3520,6 @@ export enum Investigator_Data_Update_Column {
   CampaignId = 'campaign_id',
   /** column name */
   CreatedAt = 'created_at',
-  /** column name */
-  Id = 'id',
   /** column name */
   IgnoreStoryAssets = 'ignoreStoryAssets',
   /** column name */
@@ -3419,7 +3549,6 @@ export type Investigator_Data_Var_Pop_Fields = {
   __typename?: 'investigator_data_var_pop_fields';
   availableXp?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   mental?: Maybe<Scalars['Float']>;
   physical?: Maybe<Scalars['Float']>;
   spentXp?: Maybe<Scalars['Float']>;
@@ -3429,7 +3558,6 @@ export type Investigator_Data_Var_Pop_Fields = {
 export type Investigator_Data_Var_Pop_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   mental?: Maybe<Order_By>;
   physical?: Maybe<Order_By>;
   spentXp?: Maybe<Order_By>;
@@ -3440,7 +3568,6 @@ export type Investigator_Data_Var_Samp_Fields = {
   __typename?: 'investigator_data_var_samp_fields';
   availableXp?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   mental?: Maybe<Scalars['Float']>;
   physical?: Maybe<Scalars['Float']>;
   spentXp?: Maybe<Scalars['Float']>;
@@ -3450,7 +3577,6 @@ export type Investigator_Data_Var_Samp_Fields = {
 export type Investigator_Data_Var_Samp_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   mental?: Maybe<Order_By>;
   physical?: Maybe<Order_By>;
   spentXp?: Maybe<Order_By>;
@@ -3461,7 +3587,6 @@ export type Investigator_Data_Variance_Fields = {
   __typename?: 'investigator_data_variance_fields';
   availableXp?: Maybe<Scalars['Float']>;
   campaign_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
   mental?: Maybe<Scalars['Float']>;
   physical?: Maybe<Scalars['Float']>;
   spentXp?: Maybe<Scalars['Float']>;
@@ -3471,7 +3596,6 @@ export type Investigator_Data_Variance_Fields = {
 export type Investigator_Data_Variance_Order_By = {
   availableXp?: Maybe<Order_By>;
   campaign_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
   mental?: Maybe<Order_By>;
   physical?: Maybe<Order_By>;
   spentXp?: Maybe<Order_By>;
@@ -3772,6 +3896,8 @@ export type Mutation_Root = {
   delete_campaign_access_by_pk?: Maybe<Campaign_Access>;
   /** delete single row from the table: "campaign" */
   delete_campaign_by_pk?: Maybe<Campaign>;
+  /** delete data from the table: "campaign_guide" */
+  delete_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
   /** delete data from the table: "campaign_investigator" */
   delete_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
   /** delete single row from the table: "campaign_investigator" */
@@ -3820,6 +3946,10 @@ export type Mutation_Root = {
   insert_campaign_access?: Maybe<Campaign_Access_Mutation_Response>;
   /** insert a single row into the table: "campaign_access" */
   insert_campaign_access_one?: Maybe<Campaign_Access>;
+  /** insert data into the table: "campaign_guide" */
+  insert_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
+  /** insert a single row into the table: "campaign_guide" */
+  insert_campaign_guide_one?: Maybe<Campaign_Guide>;
   /** insert data into the table: "campaign_investigator" */
   insert_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
   /** insert a single row into the table: "campaign_investigator" */
@@ -3880,6 +4010,8 @@ export type Mutation_Root = {
   update_campaign_access_by_pk?: Maybe<Campaign_Access>;
   /** update single row of the table: "campaign" */
   update_campaign_by_pk?: Maybe<Campaign>;
+  /** update data of the table: "campaign_guide" */
+  update_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
   /** update data of the table: "campaign_investigator" */
   update_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
   /** update single row of the table: "campaign_investigator" */
@@ -3952,6 +4084,12 @@ export type Mutation_RootDelete_Campaign_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Campaign_GuideArgs = {
+  where: Campaign_Guide_Bool_Exp;
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Campaign_InvestigatorArgs = {
   where: Campaign_Investigator_Bool_Exp;
 };
@@ -3959,7 +4097,8 @@ export type Mutation_RootDelete_Campaign_InvestigatorArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Campaign_Investigator_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
 };
 
 
@@ -3996,7 +4135,8 @@ export type Mutation_RootDelete_Guide_AchievementArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Guide_Achievement_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 
@@ -4008,7 +4148,8 @@ export type Mutation_RootDelete_Guide_InputArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Guide_Input_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 
@@ -4020,7 +4161,8 @@ export type Mutation_RootDelete_Investigator_DataArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Investigator_Data_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
 };
 
 
@@ -4096,6 +4238,18 @@ export type Mutation_RootInsert_Campaign_AccessArgs = {
 export type Mutation_RootInsert_Campaign_Access_OneArgs = {
   object: Campaign_Access_Insert_Input;
   on_conflict?: Maybe<Campaign_Access_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Campaign_GuideArgs = {
+  objects: Array<Campaign_Guide_Insert_Input>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Campaign_Guide_OneArgs = {
+  object: Campaign_Guide_Insert_Input;
 };
 
 
@@ -4315,6 +4469,14 @@ export type Mutation_RootUpdate_Campaign_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Campaign_GuideArgs = {
+  _inc?: Maybe<Campaign_Guide_Inc_Input>;
+  _set?: Maybe<Campaign_Guide_Set_Input>;
+  where: Campaign_Guide_Bool_Exp;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Campaign_InvestigatorArgs = {
   _inc?: Maybe<Campaign_Investigator_Inc_Input>;
   _set?: Maybe<Campaign_Investigator_Set_Input>;
@@ -4522,6 +4684,10 @@ export type Query_Root = {
   campaign_aggregate: Campaign_Aggregate;
   /** fetch data from the table: "campaign" using primary key columns */
   campaign_by_pk?: Maybe<Campaign>;
+  /** fetch data from the table: "campaign_guide" */
+  campaign_guide: Array<Campaign_Guide>;
+  /** fetch aggregated fields from the table: "campaign_guide" */
+  campaign_guide_aggregate: Campaign_Guide_Aggregate;
   /** fetch data from the table: "campaign_investigator" */
   campaign_investigator: Array<Campaign_Investigator>;
   /** fetch aggregated fields from the table: "campaign_investigator" */
@@ -4651,6 +4817,24 @@ export type Query_RootCampaign_By_PkArgs = {
 };
 
 
+export type Query_RootCampaign_GuideArgs = {
+  distinct_on?: Maybe<Array<Campaign_Guide_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Guide_Order_By>>;
+  where?: Maybe<Campaign_Guide_Bool_Exp>;
+};
+
+
+export type Query_RootCampaign_Guide_AggregateArgs = {
+  distinct_on?: Maybe<Array<Campaign_Guide_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Guide_Order_By>>;
+  where?: Maybe<Campaign_Guide_Bool_Exp>;
+};
+
+
 export type Query_RootCampaign_InvestigatorArgs = {
   distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -4670,7 +4854,8 @@ export type Query_RootCampaign_Investigator_AggregateArgs = {
 
 
 export type Query_RootCampaign_Investigator_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
 };
 
 
@@ -4740,7 +4925,8 @@ export type Query_RootGuide_Achievement_AggregateArgs = {
 
 
 export type Query_RootGuide_Achievement_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 
@@ -4763,7 +4949,8 @@ export type Query_RootGuide_Input_AggregateArgs = {
 
 
 export type Query_RootGuide_Input_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 
@@ -4786,7 +4973,8 @@ export type Query_RootInvestigator_Data_AggregateArgs = {
 
 
 export type Query_RootInvestigator_Data_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
 };
 
 
@@ -4920,6 +5108,10 @@ export type Subscription_Root = {
   campaign_aggregate: Campaign_Aggregate;
   /** fetch data from the table: "campaign" using primary key columns */
   campaign_by_pk?: Maybe<Campaign>;
+  /** fetch data from the table: "campaign_guide" */
+  campaign_guide: Array<Campaign_Guide>;
+  /** fetch aggregated fields from the table: "campaign_guide" */
+  campaign_guide_aggregate: Campaign_Guide_Aggregate;
   /** fetch data from the table: "campaign_investigator" */
   campaign_investigator: Array<Campaign_Investigator>;
   /** fetch aggregated fields from the table: "campaign_investigator" */
@@ -5049,6 +5241,24 @@ export type Subscription_RootCampaign_By_PkArgs = {
 };
 
 
+export type Subscription_RootCampaign_GuideArgs = {
+  distinct_on?: Maybe<Array<Campaign_Guide_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Guide_Order_By>>;
+  where?: Maybe<Campaign_Guide_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Guide_AggregateArgs = {
+  distinct_on?: Maybe<Array<Campaign_Guide_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Campaign_Guide_Order_By>>;
+  where?: Maybe<Campaign_Guide_Bool_Exp>;
+};
+
+
 export type Subscription_RootCampaign_InvestigatorArgs = {
   distinct_on?: Maybe<Array<Campaign_Investigator_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5068,7 +5278,8 @@ export type Subscription_RootCampaign_Investigator_AggregateArgs = {
 
 
 export type Subscription_RootCampaign_Investigator_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
 };
 
 
@@ -5138,7 +5349,8 @@ export type Subscription_RootGuide_Achievement_AggregateArgs = {
 
 
 export type Subscription_RootGuide_Achievement_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 
@@ -5161,7 +5373,8 @@ export type Subscription_RootGuide_Input_AggregateArgs = {
 
 
 export type Subscription_RootGuide_Input_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 
@@ -5184,7 +5397,8 @@ export type Subscription_RootInvestigator_Data_AggregateArgs = {
 
 
 export type Subscription_RootInvestigator_Data_By_PkArgs = {
-  id: Scalars['Int'];
+  campaign_id: Scalars['Int'];
+  investigator: Scalars['String'];
 };
 
 
@@ -6277,7 +6491,6 @@ export type UploadNewCampaignMutationVariables = Exact<{
   scenarioResults?: Maybe<Scalars['jsonb']>;
   chaosBag?: Maybe<Scalars['jsonb']>;
   weaknessSet?: Maybe<Scalars['jsonb']>;
-  guided?: Maybe<Scalars['Boolean']>;
   guideVersion?: Maybe<Scalars['Int']>;
   inputs: Array<Guide_Input_Insert_Input> | Guide_Input_Insert_Input;
   achievements: Array<Guide_Achievement_Insert_Input> | Guide_Achievement_Insert_Input;
@@ -6306,6 +6519,10 @@ export type UploadNewCampaignMutation = (
     & Pick<Campaign_Investigator_Mutation_Response, 'affected_rows'>
   )>, update_campaign_by_pk?: Maybe<(
     { __typename?: 'campaign' }
+    & { campaign_guide?: Maybe<(
+      { __typename?: 'campaign_guide' }
+      & FullCampaignGuideStateFragment
+    )> }
     & FullCampaignFragment
   )> }
 );
@@ -6487,9 +6704,19 @@ export type GetLatestDeckQuery = (
   )> }
 );
 
+export type GuideInputFragment = (
+  { __typename?: 'guide_input' }
+  & Pick<Guide_Input, 'id' | 'campaign_id' | 'step' | 'scenario' | 'type' | 'payload' | 'created_at'>
+);
+
+export type GuideAchievementFragment = (
+  { __typename?: 'guide_achievement' }
+  & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'type' | 'value' | 'bool_value'>
+);
+
 export type BasicDeckFragment = (
   { __typename?: 'deck' }
-  & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
+  & Pick<Deck, 'id' | 'campaign_id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
 );
 
 export type LatestDeckFragment = (
@@ -6509,7 +6736,7 @@ export type LatestDeckFragment = (
 
 export type MiniInvestigatorDataFragment = (
   { __typename?: 'investigator_data' }
-  & Pick<Investigator_Data, 'id' | 'investigator' | 'mental' | 'physical' | 'insane' | 'killed' | 'storyAssets'>
+  & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'mental' | 'physical' | 'insane' | 'killed' | 'storyAssets'>
 );
 
 export type FullInvestigatorDataFragment = (
@@ -6520,7 +6747,7 @@ export type FullInvestigatorDataFragment = (
 
 export type MiniCampaignFragment = (
   { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'uuid' | 'updated_at'>
+  & Pick<Campaign, 'id' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'scenarioResults' | 'guided' | 'updated_at'>
   & { latest_decks: Array<(
     { __typename?: 'latest_decks' }
     & { deck?: Maybe<(
@@ -6533,18 +6760,6 @@ export type MiniCampaignFragment = (
   )>, investigator_data: Array<(
     { __typename?: 'investigator_data' }
     & MiniInvestigatorDataFragment
-  )> }
-);
-
-export type FullCampaignGuideFragment = (
-  { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'uuid' | 'updated_at'>
-  & { guide_inputs: Array<(
-    { __typename?: 'guide_input' }
-    & Pick<Guide_Input, 'id' | 'step' | 'scenario' | 'payload' | 'created_at'>
-  )>, guide_achivements: Array<(
-    { __typename?: 'guide_achievement' }
-    & Pick<Guide_Achievement, 'id' | 'achievement_id' | 'type' | 'bool_value' | 'value' | 'updated_at'>
   )> }
 );
 
@@ -6573,6 +6788,18 @@ export type FullCampaignFragment = (
     { __typename?: 'campaign' }
     & Pick<Campaign, 'id' | 'uuid'>
   ) }
+);
+
+export type FullCampaignGuideStateFragment = (
+  { __typename?: 'campaign_guide' }
+  & Pick<Campaign_Guide, 'id' | 'uuid' | 'updated_at'>
+  & { guide_inputs: Array<(
+    { __typename?: 'guide_input' }
+    & GuideInputFragment
+  )>, guide_achievements: Array<(
+    { __typename?: 'guide_achievement' }
+    & GuideAchievementFragment
+  )> }
 );
 
 export type GetMyCampaignsQueryVariables = Exact<{
@@ -6622,9 +6849,9 @@ export type GetCampaignGuideQueryVariables = Exact<{
 
 export type GetCampaignGuideQuery = (
   { __typename?: 'query_root' }
-  & { campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & FullCampaignGuideFragment
+  & { campaign_guide: Array<(
+    { __typename?: 'campaign_guide' }
+    & FullCampaignGuideStateFragment
   )> }
 );
 
@@ -6648,9 +6875,9 @@ export type CampaignGuideSubscriptionVariables = Exact<{
 
 export type CampaignGuideSubscription = (
   { __typename?: 'subscription_root' }
-  & { campaign_by_pk?: Maybe<(
-    { __typename?: 'campaign' }
-    & FullCampaignGuideFragment
+  & { campaign_guide: Array<(
+    { __typename?: 'campaign_guide' }
+    & FullCampaignGuideStateFragment
   )> }
 );
 
@@ -6706,7 +6933,7 @@ export type DeleteInvestigatorDecksMutation = (
 
 export type SetBinaryAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
-  achievement_id: Scalars['String'];
+  id: Scalars['String'];
   value: Scalars['Boolean'];
 }>;
 
@@ -6715,13 +6942,13 @@ export type SetBinaryAchievementMutation = (
   { __typename?: 'mutation_root' }
   & { insert_guide_achievement_one?: Maybe<(
     { __typename?: 'guide_achievement' }
-    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'bool_value'>
+    & GuideAchievementFragment
   )> }
 );
 
 export type IncCountAchievementMaxMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
-  achievement_id: Scalars['String'];
+  id: Scalars['String'];
   max: Scalars['Int'];
 }>;
 
@@ -6730,19 +6957,19 @@ export type IncCountAchievementMaxMutation = (
   { __typename?: 'mutation_root' }
   & { insert_guide_achievement_one?: Maybe<(
     { __typename?: 'guide_achievement' }
-    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'type' | 'value'>
   )>, update_guide_achievement?: Maybe<(
     { __typename?: 'guide_achievement_mutation_response' }
     & { returning: Array<(
       { __typename?: 'guide_achievement' }
-      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+      & GuideAchievementFragment
     )> }
   )> }
 );
 
 export type IncCountAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
-  achievement_id: Scalars['String'];
+  id: Scalars['String'];
 }>;
 
 
@@ -6750,19 +6977,19 @@ export type IncCountAchievementMutation = (
   { __typename?: 'mutation_root' }
   & { insert_guide_achievement_one?: Maybe<(
     { __typename?: 'guide_achievement' }
-    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+    & GuideAchievementFragment
   )>, update_guide_achievement?: Maybe<(
     { __typename?: 'guide_achievement_mutation_response' }
     & { returning: Array<(
       { __typename?: 'guide_achievement' }
-      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+      & GuideAchievementFragment
     )> }
   )> }
 );
 
 export type DecCountAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
-  achievement_id: Scalars['String'];
+  id: Scalars['String'];
 }>;
 
 
@@ -6770,18 +6997,20 @@ export type DecCountAchievementMutation = (
   { __typename?: 'mutation_root' }
   & { insert_guide_achievement_one?: Maybe<(
     { __typename?: 'guide_achievement' }
-    & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+    & GuideAchievementFragment
   )>, update_guide_achievement?: Maybe<(
     { __typename?: 'guide_achievement_mutation_response' }
     & { returning: Array<(
       { __typename?: 'guide_achievement' }
-      & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'achievement_id' | 'type' | 'value'>
+      & GuideAchievementFragment
     )> }
   )> }
 );
 
 export type AddGuideInputMutationVariables = Exact<{
+  id: Scalars['String'];
   campaign_id: Scalars['Int'];
+  type: Scalars['String'];
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
   payload?: Maybe<Scalars['jsonb']>;
@@ -6792,7 +7021,7 @@ export type AddGuideInputMutation = (
   { __typename?: 'mutation_root' }
   & { insert_guide_input_one?: Maybe<(
     { __typename?: 'guide_input' }
-    & Pick<Guide_Input, 'id' | 'campaign_id' | 'scenario' | 'step' | 'payload'>
+    & GuideInputFragment
   )> }
 );
 
@@ -6810,7 +7039,7 @@ export type UpdateInvestigatorTraumaMutation = (
   { __typename?: 'mutation_root' }
   & { insert_investigator_data_one?: Maybe<(
     { __typename?: 'investigator_data' }
-    & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'physical' | 'mental' | 'killed' | 'insane'>
+    & MiniInvestigatorDataFragment
   )> }
 );
 
@@ -6833,7 +7062,7 @@ export type UpdateInvestigatorDataMutation = (
   { __typename?: 'mutation_root' }
   & { insert_investigator_data_one?: Maybe<(
     { __typename?: 'investigator_data' }
-    & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'physical' | 'mental' | 'killed' | 'insane' | 'addedCards' | 'removedCards' | 'storyAssets' | 'ignoreStoryAssets' | 'availableXp'>
+    & FullInvestigatorDataFragment
   )> }
 );
 
@@ -7014,6 +7243,7 @@ export type RemoveCampaignInvestigatorMutation = (
 export const MiniInvestigatorDataFragmentDoc = gql`
     fragment MiniInvestigatorData on investigator_data {
   id
+  campaign_id
   investigator
   mental
   physical
@@ -7025,13 +7255,13 @@ export const MiniInvestigatorDataFragmentDoc = gql`
 export const MiniCampaignFragmentDoc = gql`
     fragment MiniCampaign on campaign {
   id
+  uuid
   name
   cycleCode
   standaloneId
   difficulty
   scenarioResults
   guided
-  uuid
   latest_decks {
     deck {
       id
@@ -7050,28 +7280,6 @@ export const MiniCampaignFragmentDoc = gql`
   updated_at
 }
     ${MiniInvestigatorDataFragmentDoc}`;
-export const FullCampaignGuideFragmentDoc = gql`
-    fragment FullCampaignGuide on campaign {
-  id
-  uuid
-  updated_at
-  guide_inputs {
-    id
-    step
-    scenario
-    payload
-    created_at
-  }
-  guide_achivements {
-    id
-    achievement_id
-    type
-    bool_value
-    value
-    updated_at
-  }
-}
-    `;
 export const FullInvestigatorDataFragmentDoc = gql`
     fragment FullInvestigatorData on investigator_data {
   ...MiniInvestigatorData
@@ -7087,6 +7295,7 @@ export const FullInvestigatorDataFragmentDoc = gql`
 export const BasicDeckFragmentDoc = gql`
     fragment BasicDeck on deck {
   id
+  campaign_id
   arkhamdb_id
   local_uuid
   investigator
@@ -7156,8 +7365,42 @@ export const FullCampaignFragmentDoc = gql`
 }
     ${FullInvestigatorDataFragmentDoc}
 ${LatestDeckFragmentDoc}`;
+export const GuideInputFragmentDoc = gql`
+    fragment GuideInput on guide_input {
+  id
+  campaign_id
+  step
+  scenario
+  type
+  payload
+  created_at
+}
+    `;
+export const GuideAchievementFragmentDoc = gql`
+    fragment GuideAchievement on guide_achievement {
+  id
+  campaign_id
+  type
+  value
+  bool_value
+}
+    `;
+export const FullCampaignGuideStateFragmentDoc = gql`
+    fragment FullCampaignGuideState on campaign_guide {
+  id
+  uuid
+  updated_at
+  guide_inputs {
+    ...GuideInput
+  }
+  guide_achievements {
+    ...GuideAchievement
+  }
+}
+    ${GuideInputFragmentDoc}
+${GuideAchievementFragmentDoc}`;
 export const UploadNewCampaignDocument = gql`
-    mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $guided: Boolean, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
+    mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
   insert_guide_input(objects: $inputs) {
     affected_rows
     returning {
@@ -7180,12 +7423,16 @@ export const UploadNewCampaignDocument = gql`
   }
   update_campaign_by_pk(
     pk_columns: {id: $campaignId}
-    _set: {name: $name, cycleCode: $cycleCode, standaloneId: $standaloneId, difficulty: $difficulty, campaignNotes: $campaignNotes, chaosBag: $chaosBag, showInterludes: $showInterludes, scenarioResults: $scenarioResults, weaknessSet: $weaknessSet, guided: $guided, guide_version: $guideVersion}
+    _set: {name: $name, cycleCode: $cycleCode, standaloneId: $standaloneId, difficulty: $difficulty, campaignNotes: $campaignNotes, chaosBag: $chaosBag, showInterludes: $showInterludes, scenarioResults: $scenarioResults, weaknessSet: $weaknessSet, guide_version: $guideVersion}
   ) {
     ...FullCampaign
+    campaign_guide {
+      ...FullCampaignGuideState
+    }
   }
 }
-    ${FullCampaignFragmentDoc}`;
+    ${FullCampaignFragmentDoc}
+${FullCampaignGuideStateFragmentDoc}`;
 export type UploadNewCampaignMutationFn = Apollo.MutationFunction<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>;
 
 /**
@@ -7211,7 +7458,6 @@ export type UploadNewCampaignMutationFn = Apollo.MutationFunction<UploadNewCampa
  *      scenarioResults: // value for 'scenarioResults'
  *      chaosBag: // value for 'chaosBag'
  *      weaknessSet: // value for 'weaknessSet'
- *      guided: // value for 'guided'
  *      guideVersion: // value for 'guideVersion'
  *      inputs: // value for 'inputs'
  *      achievements: // value for 'achievements'
@@ -7611,13 +7857,13 @@ export const GetMyCampaignsDocument = gql`
     id
     campaigns {
       campaign {
+        ...MiniCampaign
         link_a_campaign {
           ...MiniCampaign
         }
         link_b_campaign {
           ...MiniCampaign
         }
-        ...MiniCampaign
       }
     }
   }
@@ -7684,11 +7930,11 @@ export type GetCampaignLazyQueryHookResult = ReturnType<typeof useGetCampaignLaz
 export type GetCampaignQueryResult = Apollo.QueryResult<GetCampaignQuery, GetCampaignQueryVariables>;
 export const GetCampaignGuideDocument = gql`
     query getCampaignGuide($campaign_id: Int!) {
-  campaign_by_pk(id: $campaign_id) {
-    ...FullCampaignGuide
+  campaign_guide(where: {id: {_eq: $campaign_id}}) {
+    ...FullCampaignGuideState
   }
 }
-    ${FullCampaignGuideFragmentDoc}`;
+    ${FullCampaignGuideStateFragmentDoc}`;
 
 /**
  * __useGetCampaignGuideQuery__
@@ -7746,11 +7992,11 @@ export type CampaignSubscriptionHookResult = ReturnType<typeof useCampaignSubscr
 export type CampaignSubscriptionResult = Apollo.SubscriptionResult<CampaignSubscription>;
 export const CampaignGuideDocument = gql`
     subscription campaignGuide($campaign_id: Int!) {
-  campaign_by_pk(id: $campaign_id) {
-    ...FullCampaignGuide
+  campaign_guide(where: {id: {_eq: $campaign_id}}) {
+    ...FullCampaignGuideState
   }
 }
-    ${FullCampaignGuideFragmentDoc}`;
+    ${FullCampaignGuideStateFragmentDoc}`;
 
 /**
  * __useCampaignGuideSubscription__
@@ -7866,19 +8112,15 @@ export type DeleteInvestigatorDecksMutationHookResult = ReturnType<typeof useDel
 export type DeleteInvestigatorDecksMutationResult = Apollo.MutationResult<DeleteInvestigatorDecksMutation>;
 export type DeleteInvestigatorDecksMutationOptions = Apollo.BaseMutationOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
 export const SetBinaryAchievementDocument = gql`
-    mutation setBinaryAchievement($campaign_id: Int!, $achievement_id: String!, $value: Boolean!) {
+    mutation setBinaryAchievement($campaign_id: Int!, $id: String!, $value: Boolean!) {
   insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "binary", bool_value: $value}
-    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: [bool_value]}
+    object: {campaign_id: $campaign_id, id: $id, type: "binary", bool_value: $value}
+    on_conflict: {constraint: guide_achievement_pkey, update_columns: [bool_value]}
   ) {
-    id
-    campaign_id
-    achievement_id
-    type
-    bool_value
+    ...GuideAchievement
   }
 }
-    `;
+    ${GuideAchievementFragmentDoc}`;
 export type SetBinaryAchievementMutationFn = Apollo.MutationFunction<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>;
 
 /**
@@ -7895,7 +8137,7 @@ export type SetBinaryAchievementMutationFn = Apollo.MutationFunction<SetBinaryAc
  * const [setBinaryAchievementMutation, { data, loading, error }] = useSetBinaryAchievementMutation({
  *   variables: {
  *      campaign_id: // value for 'campaign_id'
- *      achievement_id: // value for 'achievement_id'
+ *      id: // value for 'id'
  *      value: // value for 'value'
  *   },
  * });
@@ -7907,31 +8149,27 @@ export type SetBinaryAchievementMutationHookResult = ReturnType<typeof useSetBin
 export type SetBinaryAchievementMutationResult = Apollo.MutationResult<SetBinaryAchievementMutation>;
 export type SetBinaryAchievementMutationOptions = Apollo.BaseMutationOptions<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>;
 export const IncCountAchievementMaxDocument = gql`
-    mutation incCountAchievementMax($campaign_id: Int!, $achievement_id: String!, $max: Int!) {
+    mutation incCountAchievementMax($campaign_id: Int!, $id: String!, $max: Int!) {
   insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 1}
-    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
+    object: {campaign_id: $campaign_id, id: $id, type: "count", value: 1}
+    on_conflict: {constraint: guide_achievement_pkey, update_columns: []}
   ) {
     id
     campaign_id
-    achievement_id
+    id
     type
     value
   }
   update_guide_achievement(
-    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}, value: {_lt: $max}}
+    where: {campaign_id: {_eq: $campaign_id}, id: {_eq: $id}, value: {_lt: $max}}
     _inc: {value: 1}
   ) {
     returning {
-      id
-      campaign_id
-      achievement_id
-      type
-      value
+      ...GuideAchievement
     }
   }
 }
-    `;
+    ${GuideAchievementFragmentDoc}`;
 export type IncCountAchievementMaxMutationFn = Apollo.MutationFunction<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>;
 
 /**
@@ -7948,7 +8186,7 @@ export type IncCountAchievementMaxMutationFn = Apollo.MutationFunction<IncCountA
  * const [incCountAchievementMaxMutation, { data, loading, error }] = useIncCountAchievementMaxMutation({
  *   variables: {
  *      campaign_id: // value for 'campaign_id'
- *      achievement_id: // value for 'achievement_id'
+ *      id: // value for 'id'
  *      max: // value for 'max'
  *   },
  * });
@@ -7960,31 +8198,23 @@ export type IncCountAchievementMaxMutationHookResult = ReturnType<typeof useIncC
 export type IncCountAchievementMaxMutationResult = Apollo.MutationResult<IncCountAchievementMaxMutation>;
 export type IncCountAchievementMaxMutationOptions = Apollo.BaseMutationOptions<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>;
 export const IncCountAchievementDocument = gql`
-    mutation incCountAchievement($campaign_id: Int!, $achievement_id: String!) {
+    mutation incCountAchievement($campaign_id: Int!, $id: String!) {
   insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 1}
-    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
+    object: {campaign_id: $campaign_id, id: $id, type: "count", value: 1}
+    on_conflict: {constraint: guide_achievement_pkey, update_columns: []}
   ) {
-    id
-    campaign_id
-    achievement_id
-    type
-    value
+    ...GuideAchievement
   }
   update_guide_achievement(
-    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}}
+    where: {campaign_id: {_eq: $campaign_id}, id: {_eq: $id}}
     _inc: {value: 1}
   ) {
     returning {
-      id
-      campaign_id
-      achievement_id
-      type
-      value
+      ...GuideAchievement
     }
   }
 }
-    `;
+    ${GuideAchievementFragmentDoc}`;
 export type IncCountAchievementMutationFn = Apollo.MutationFunction<IncCountAchievementMutation, IncCountAchievementMutationVariables>;
 
 /**
@@ -8001,7 +8231,7 @@ export type IncCountAchievementMutationFn = Apollo.MutationFunction<IncCountAchi
  * const [incCountAchievementMutation, { data, loading, error }] = useIncCountAchievementMutation({
  *   variables: {
  *      campaign_id: // value for 'campaign_id'
- *      achievement_id: // value for 'achievement_id'
+ *      id: // value for 'id'
  *   },
  * });
  */
@@ -8012,31 +8242,23 @@ export type IncCountAchievementMutationHookResult = ReturnType<typeof useIncCoun
 export type IncCountAchievementMutationResult = Apollo.MutationResult<IncCountAchievementMutation>;
 export type IncCountAchievementMutationOptions = Apollo.BaseMutationOptions<IncCountAchievementMutation, IncCountAchievementMutationVariables>;
 export const DecCountAchievementDocument = gql`
-    mutation decCountAchievement($campaign_id: Int!, $achievement_id: String!) {
+    mutation decCountAchievement($campaign_id: Int!, $id: String!) {
   insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, achievement_id: $achievement_id, type: "count", value: 0}
-    on_conflict: {constraint: guide_achivement_campaign_id_achievement_id_key, update_columns: []}
+    object: {campaign_id: $campaign_id, id: $id, type: "count", value: 0}
+    on_conflict: {constraint: guide_achievement_pkey, update_columns: []}
   ) {
-    id
-    campaign_id
-    achievement_id
-    type
-    value
+    ...GuideAchievement
   }
   update_guide_achievement(
-    where: {campaign_id: {_eq: $campaign_id}, achievement_id: {_eq: $achievement_id}, value: {_gt: 0}}
+    where: {campaign_id: {_eq: $campaign_id}, id: {_eq: $id}, value: {_gt: 0}}
     _inc: {value: -1}
   ) {
     returning {
-      id
-      campaign_id
-      achievement_id
-      type
-      value
+      ...GuideAchievement
     }
   }
 }
-    `;
+    ${GuideAchievementFragmentDoc}`;
 export type DecCountAchievementMutationFn = Apollo.MutationFunction<DecCountAchievementMutation, DecCountAchievementMutationVariables>;
 
 /**
@@ -8053,7 +8275,7 @@ export type DecCountAchievementMutationFn = Apollo.MutationFunction<DecCountAchi
  * const [decCountAchievementMutation, { data, loading, error }] = useDecCountAchievementMutation({
  *   variables: {
  *      campaign_id: // value for 'campaign_id'
- *      achievement_id: // value for 'achievement_id'
+ *      id: // value for 'id'
  *   },
  * });
  */
@@ -8064,19 +8286,15 @@ export type DecCountAchievementMutationHookResult = ReturnType<typeof useDecCoun
 export type DecCountAchievementMutationResult = Apollo.MutationResult<DecCountAchievementMutation>;
 export type DecCountAchievementMutationOptions = Apollo.BaseMutationOptions<DecCountAchievementMutation, DecCountAchievementMutationVariables>;
 export const AddGuideInputDocument = gql`
-    mutation addGuideInput($campaign_id: Int!, $scenario: String, $step: String, $payload: jsonb) {
+    mutation addGuideInput($id: String!, $campaign_id: Int!, $type: String!, $scenario: String, $step: String, $payload: jsonb) {
   insert_guide_input_one(
-    object: {campaign_id: $campaign_id, scenario: $scenario, step: $step, payload: $payload}
-    on_conflict: {constraint: campaign_guide_input_campaign_guide_id_scenario_step_key, update_columns: [payload]}
+    object: {id: $id, campaign_id: $campaign_id, scenario: $scenario, step: $step, type: $type, payload: $payload}
+    on_conflict: {constraint: guide_input_scenario_campaign_id_step_type_key, update_columns: [payload]}
   ) {
-    id
-    campaign_id
-    scenario
-    step
-    payload
+    ...GuideInput
   }
 }
-    `;
+    ${GuideInputFragmentDoc}`;
 export type AddGuideInputMutationFn = Apollo.MutationFunction<AddGuideInputMutation, AddGuideInputMutationVariables>;
 
 /**
@@ -8092,7 +8310,9 @@ export type AddGuideInputMutationFn = Apollo.MutationFunction<AddGuideInputMutat
  * @example
  * const [addGuideInputMutation, { data, loading, error }] = useAddGuideInputMutation({
  *   variables: {
+ *      id: // value for 'id'
  *      campaign_id: // value for 'campaign_id'
+ *      type: // value for 'type'
  *      scenario: // value for 'scenario'
  *      step: // value for 'step'
  *      payload: // value for 'payload'
@@ -8109,18 +8329,12 @@ export const UpdateInvestigatorTraumaDocument = gql`
     mutation updateInvestigatorTrauma($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean) {
   insert_investigator_data_one(
     object: {campaign_id: $campaign_id, investigator: $investigator, physical: $physical, mental: $mental, killed: $killed, insane: $insane}
-    on_conflict: {constraint: investigator_data_campaign_id_investigator_key, update_columns: [physical, mental, killed, insane]}
+    on_conflict: {constraint: investigator_data_pkey, update_columns: [physical, mental, killed, insane]}
   ) {
-    id
-    campaign_id
-    investigator
-    physical
-    mental
-    killed
-    insane
+    ...MiniInvestigatorData
   }
 }
-    `;
+    ${MiniInvestigatorDataFragmentDoc}`;
 export type UpdateInvestigatorTraumaMutationFn = Apollo.MutationFunction<UpdateInvestigatorTraumaMutation, UpdateInvestigatorTraumaMutationVariables>;
 
 /**
@@ -8155,23 +8369,12 @@ export const UpdateInvestigatorDataDocument = gql`
     mutation updateInvestigatorData($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean, $added_cards: jsonb, $available_xp: Int, $story_assets: jsonb, $ignore_story_assets: jsonb, $removed_cards: jsonb) {
   insert_investigator_data_one(
     object: {campaign_id: $campaign_id, investigator: $investigator, physical: $physical, mental: $mental, killed: $killed, insane: $insane, addedCards: $added_cards, storyAssets: $story_assets, ignoreStoryAssets: $ignore_story_assets, removedCards: $removed_cards, availableXp: $available_xp}
-    on_conflict: {constraint: investigator_data_campaign_id_investigator_key, update_columns: [physical, mental, killed, insane, addedCards, removedCards, storyAssets, ignoreStoryAssets, availableXp]}
+    on_conflict: {constraint: investigator_data_pkey, update_columns: [physical, mental, killed, insane, addedCards, removedCards, storyAssets, ignoreStoryAssets, availableXp]}
   ) {
-    id
-    campaign_id
-    investigator
-    physical
-    mental
-    killed
-    insane
-    addedCards
-    removedCards
-    storyAssets
-    ignoreStoryAssets
-    availableXp
+    ...FullInvestigatorData
   }
 }
-    `;
+    ${FullInvestigatorDataFragmentDoc}`;
 export type UpdateInvestigatorDataMutationFn = Apollo.MutationFunction<UpdateInvestigatorDataMutation, UpdateInvestigatorDataMutationVariables>;
 
 /**
@@ -8211,7 +8414,7 @@ export const UpdateSpentXpDocument = gql`
     mutation updateSpentXp($campaign_id: Int!, $investigator: String!, $spent_xp: Int!) {
   insert_investigator_data_one(
     object: {campaign_id: $campaign_id, investigator: $investigator, spentXp: $spent_xp}
-    on_conflict: {constraint: investigator_data_campaign_id_investigator_key, update_columns: [spentXp]}
+    on_conflict: {constraint: investigator_data_pkey, update_columns: [spentXp]}
   ) {
     id
     campaign_id
@@ -8251,7 +8454,7 @@ export const UpdateAvailableXpDocument = gql`
     mutation updateAvailableXp($campaign_id: Int!, $investigator: String!, $available_xp: Int!) {
   insert_investigator_data_one(
     object: {campaign_id: $campaign_id, investigator: $investigator, availableXp: $available_xp}
-    on_conflict: {constraint: investigator_data_campaign_id_investigator_key, update_columns: [availableXp]}
+    on_conflict: {constraint: investigator_data_pkey, update_columns: [availableXp]}
   ) {
     id
     campaign_id
@@ -8592,7 +8795,7 @@ export const AddCampaignInvestigatorDocument = gql`
     mutation addCampaignInvestigator($campaign_id: Int!, $investigator: String!) {
   insert_campaign_investigator_one(
     object: {campaign_id: $campaign_id, investigator: $investigator}
-    on_conflict: {constraint: campaign_investigator_campaign_id_investigator_key, update_columns: []}
+    on_conflict: {constraint: campaign_investigator_campaign_id_investigator_key, update_columns: [investigator]}
   ) {
     id
     investigator
