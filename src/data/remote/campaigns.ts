@@ -1,6 +1,6 @@
 import { useCallback, useContext, useMemo } from 'react';
-import { filter, omit } from 'lodash';
-import { FetchResult, MutationFunctionOptions } from '@apollo/client';
+import { filter, find, omit } from 'lodash';
+import { FetchResult, MutationFunctionOptions, MutationUpdaterFn } from '@apollo/client';
 
 import { CampaignDifficulty, CampaignNotes, GuideInput, ScenarioResult, Trauma, TraumaAndCardData, UploadedCampaignId, WeaknessSet } from '@actions/types';
 import { useModifyUserCache } from '@data/apollo/cache';
@@ -26,11 +26,13 @@ import {
   useUpdateCampaignScenarioResultsMutation,
   useUpdateCampaignDifficultyMutation,
   useUpdateCampaignGuideVersionMutation,
+  AddGuideInputMutation,
+  GetCampaignGuideQuery,
+  GetCampaignGuideDocument,
 } from '@generated/graphql/apollo-schema';
 import { useFunction, ErrorResponse } from './api';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ChaosBag } from '@app_constants';
-
 
 interface CampaignLink {
   campaignIdA: string;
@@ -177,6 +179,9 @@ export function useSetCampaignChaosBag(): SetCampaignChaosBagAction {
         campaign_id: campaignId.serverId,
         chaos_bag: chaosBag,
       },
+      context: {
+        serializationKey: campaignId.serverId,
+      },
     });
   }, [updateChaosBag]);
 }
@@ -189,6 +194,9 @@ export function useSetCampaignWeaknessSet(): SetCampaignWeaknessSetAction {
       variables: {
         campaign_id: campaignId.serverId,
         weakness_set: weaknessSet,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
       },
     });
   }, [updateWeaknessSet]);
@@ -204,6 +212,9 @@ export function useSetCampaignNotes(): SetCampaignNotesAction {
         campaign_id: campaignId.serverId,
         campaign_notes: campaignNotes,
       },
+      context: {
+        serializationKey: campaignId.serverId,
+      },
     });
   }, [updateCampaignNotes]);
 }
@@ -216,6 +227,9 @@ export function useSetCampaignShowInterludes(): SetCampaignShowInterludes {
       variables: {
         campaign_id: campaignId.serverId,
         show_interludes: showInterludes,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
       },
     });
   }, [updateShowInterlude]);
@@ -261,6 +275,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
         campaign_id: campaignId.serverId,
         difficulty,
       },
+      context: {
+        serializationKey: campaignId.serverId,
+      },
     });
   }, [updateDifficulty]);
 
@@ -269,6 +286,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       variables: {
         campaign_id: campaignId.serverId,
         guideVersion,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
       },
     });
   }, [updateGuideVersion]);
@@ -279,14 +299,29 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
         campaign_id: campaignId.serverId,
         scenarioResults,
       },
+      context: {
+        serializationKey: campaignId.serverId,
+      },
     });
   }, [updateScenarioResults]);
 
   const addInvestigator = useCallback(async(campaignId: UploadedCampaignId, investigator: string) => {
     await insertInvestigator({
+      optimisticResponse: {
+        __typename: 'mutation_root',
+        insert_campaign_investigator_one: {
+          __typename: 'campaign_investigator',
+          campaign_id: campaignId.serverId,
+          id: `${campaignId.serverId}-${investigator}`,
+          investigator,
+        },
+      },
       variables: {
         campaign_id: campaignId.serverId,
         investigator,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
       },
     });
   }, [insertInvestigator]);
@@ -295,6 +330,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       variables: {
         campaign_id: campaignId.serverId,
         investigator,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
       },
     });
   }, [deleteInvestigator]);
@@ -308,6 +346,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
         investigator,
         campaign_id: campaignId.serverId,
       },
+      context: {
+        serializationKey: campaignId.serverId,
+      },
     });
   }, [deleteInvestigatorDecks, user]);
 
@@ -320,6 +361,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
         insane: trauma.insane,
         physical: trauma.physical,
         mental: trauma.mental,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
       },
     });
   }, [updateInvestigatorTrauma]);
@@ -339,6 +383,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
         story_assets: data.storyAssets || [],
         available_xp: data.availableXp || 0,
       },
+      context: {
+        serializationKey: campaignId.serverId,
+      },
     });
   }, [updateInvestigatorData]);
 
@@ -347,6 +394,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       variables: {
         campaign_id: campaignId.serverId,
         name,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
       },
     });
   }, [updateCampaignName]);
@@ -358,6 +408,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
           investigator,
           spent_xp: xp,
         },
+        context: {
+          serializationKey: campaignId.serverId,
+        },
       });
     } else {
       updateAvailableXp({
@@ -365,6 +418,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
           campaign_id: campaignId.serverId,
           investigator,
           available_xp: xp,
+        },
+        context: {
+          serializationKey: campaignId.serverId,
         },
       });
     }
@@ -390,6 +446,53 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
     setChaosBag, setWeaknessSet, setCampaignNotes, setCampaigName, setXp, setScenarioResults, setDifficulty, setGuideVersion]);
 }
 
+const handleSetGuideInput: MutationUpdaterFn<AddGuideInputMutation> = (cache, { data }) => {
+  if (data === undefined || !data?.insert_guide_input_one) {
+    return;
+  }
+  const campaignId = data.insert_guide_input_one.campaign_id;
+  const cacheData = cache.readQuery<GetCampaignGuideQuery>({
+    query: GetCampaignGuideDocument,
+    variables: {
+      campaign_id: campaignId,
+    },
+  });
+  if (cacheData === null || !cacheData.campaign_guide.length) {
+    return;
+  }
+  const campaignGuide = cacheData.campaign_guide[0];
+  const { guide_inputs } = campaignGuide;
+  const inputId = data.insert_guide_input_one.id;
+  const newGuideInputs = [
+    ...filter(guide_inputs, i => i.id !== inputId),
+    {
+      ...data.insert_guide_input_one,
+    },
+  ];
+  cache.writeQuery<GetCampaignGuideQuery>({
+    query: GetCampaignGuideDocument,
+    variables: {
+      campaign_id: campaignId,
+    },
+    data: {
+      campaign_guide: [{
+        ...campaignGuide,
+        guide_inputs: newGuideInputs,
+      }],
+    },
+  });
+};
+
+export function guideInputToInsert(input: GuideInput, serverId: number) {
+  return {
+    id: `${serverId}(${input.type},${input.scenario || ''},${input.step || ''})`,
+    campaign_id: serverId,
+    scenario: input.scenario,
+    step: input.step,
+    type: input.type,
+    payload: omit(input, ['scenario', 'step', 'type']),
+  };
+}
 export interface GuideActions {
   setInput: (campaignId: UploadedCampaignId, input: GuideInput) => Promise<void>;
   setBinaryAchievement: (campaignId: UploadedCampaignId, achievementId: string, value: boolean) => Promise<void>;
@@ -404,13 +507,21 @@ export function useGuideActions(): GuideActions {
 
   const [setGuideInput] = useAddGuideInputMutation();
   const setInput = useCallback(async(campaignId: UploadedCampaignId, input: GuideInput) => {
+    const insert = guideInputToInsert(input, campaignId.serverId);
     await setGuideInput({
-      variables: {
-        campaign_id: campaignId.serverId,
-        scenario: input.scenario,
-        step: input.step,
-        payload: omit(input, ['scenario', 'step']),
+      optimisticResponse: {
+        __typename: 'mutation_root',
+        insert_guide_input_one: {
+          ...insert,
+          __typename: 'guide_input',
+          created_at: new Date(),
+        },
       },
+      variables: insert,
+      context: {
+        serializationKey: campaignId.serverId,
+      },
+      update: handleSetGuideInput,
     });
   }, [setGuideInput]);
 
@@ -419,8 +530,11 @@ export function useGuideActions(): GuideActions {
     await setBinary({
       variables: {
         campaign_id: campaignId.serverId,
-        achievement_id: achievementId,
+        id: achievementId,
         value,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
       },
     });
   }, [setBinary]);
@@ -429,15 +543,21 @@ export function useGuideActions(): GuideActions {
       await incCountMax({
         variables: {
           campaign_id: campaignId.serverId,
-          achievement_id: achievementId,
+          id: achievementId,
           max,
+        },
+        context: {
+          serializationKey: campaignId.serverId,
         },
       });
     } else {
       await incCount({
         variables: {
           campaign_id: campaignId.serverId,
-          achievement_id: achievementId,
+          id: achievementId,
+        },
+        context: {
+          serializationKey: campaignId.serverId,
         },
       });
     }
@@ -446,7 +566,10 @@ export function useGuideActions(): GuideActions {
     await decCount({
       variables: {
         campaign_id: campaignId.serverId,
-        achievement_id: achievementId,
+        id: achievementId,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
       },
     });
   }, [decCount]);

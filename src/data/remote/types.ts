@@ -2,7 +2,7 @@ import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, Tr
 import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
-import { FullCampaignFragment, LatestDeckFragment, FullCampaignGuideFragment, MiniCampaignFragment, Guide_Input } from '@generated/graphql/apollo-schema';
+import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment } from '@generated/graphql/apollo-schema';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { ChaosBag } from '@app_constants';
@@ -210,22 +210,28 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
   }
 }
 
-function unpackGuideInput(input: Pick<Guide_Input, 'id' | 'step' | 'scenario' | 'payload' | 'created_at'>): GuideInput {
+function unpackGuideInput(input: Pick<Guide_Input, 'id' | 'step' | 'type' | 'scenario' | 'payload' | 'created_at'>): GuideInput {
   return {
     step: input.step || undefined,
     scenario: input.scenario || undefined,
+    type: input.type || undefined,
     ...input.payload,
   };
 }
 
 export class CampaignGuideStateRemote implements CampaignGuideStateT {
-  private guide: FullCampaignGuideFragment;
+  private guide: FullCampaignGuideStateFragment;
   private inputs: GuideInput[];
   private guideUpdatedAt: Date;
-  constructor(guide: FullCampaignGuideFragment) {
+
+  constructor(guide: FullCampaignGuideStateFragment) {
     this.guide = guide;
     this.guideUpdatedAt = new Date(Date.parse(guide.updated_at));
     this.inputs = map(this.guide.guide_inputs, unpackGuideInput);
+  }
+
+  numInputs() {
+    return this.guide.guide_inputs.length;
   }
 
   countInput(pred: (i: GuideInput) => boolean): number {
@@ -240,10 +246,10 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
   }
 
   binaryAchievement(id: string): boolean {
-    return !!find(this.guide.guide_achivements || [], a => a.achievement_id === id && a.type === 'binary' && a.bool_value);
+    return !!find(this.guide.guide_achievements || [], a => a.id === id && a.type === 'binary' && a.bool_value);
   }
   countAchievement(id: string): number {
-    const entry = find(this.guide.guide_achivements || [], a => a.achievement_id === id && a.type === 'count');
+    const entry = find(this.guide.guide_achievements || [], a => a.id === id && a.type === 'count');
     if (entry?.type === 'count') {
       return entry.value || 0;
     }

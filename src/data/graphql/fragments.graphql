@@ -1,5 +1,24 @@
+fragment GuideInput on guide_input {
+  id
+  campaign_id
+  step
+  scenario
+  type
+  payload
+  created_at
+}
+
+fragment GuideAchievement on guide_achievement {
+  id
+  campaign_id
+  type
+  value
+  bool_value
+}
+
 fragment BasicDeck on deck {
   id
+  campaign_id
   arkhamdb_id
   local_uuid
   investigator
@@ -27,6 +46,7 @@ fragment LatestDeck on deck {
 
 fragment MiniInvestigatorData on investigator_data {
   id
+  campaign_id
   investigator
   mental
   physical
@@ -51,13 +71,13 @@ fragment FullInvestigatorData on investigator_data {
 
 fragment MiniCampaign on campaign {
   id
+  uuid
   name
   cycleCode
   standaloneId
   difficulty
   scenarioResults
   guided
-  uuid
   latest_decks {
     deck {
       id
@@ -74,27 +94,6 @@ fragment MiniCampaign on campaign {
     ...MiniInvestigatorData
   }
   updated_at
-}
-
-fragment FullCampaignGuide on campaign {
-  id
-  uuid
-  updated_at
-  guide_inputs {
-    id
-    step
-    scenario
-    payload
-    created_at
-  }
-  guide_achivements {
-    id
-    achievement_id
-    type
-    bool_value
-    value
-    updated_at
-  }
 }
 
 fragment FullCampaign on campaign {
@@ -135,5 +134,17 @@ fragment FullCampaign on campaign {
   linked_campaign {
     id
     uuid
+  }
+}
+
+fragment FullCampaignGuideState on campaign_guide {
+  id
+  uuid
+  updated_at
+  guide_inputs {
+    ...GuideInput
+  }
+  guide_achievements {
+    ...GuideAchievement
   }
 }

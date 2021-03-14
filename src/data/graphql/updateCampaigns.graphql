@@ -20,172 +20,147 @@ mutation deleteInvestigatorDecks(
 
 mutation setBinaryAchievement(
   $campaign_id: Int!,
-  $achievement_id: String!,
+  $id: String!,
   $value: Boolean!
 ) {
   insert_guide_achievement_one(
     object: {
       campaign_id: $campaign_id
-      achievement_id: $achievement_id
+      id: $id
       type: "binary"
       bool_value: $value
     }
     on_conflict: {
-      constraint: guide_achivement_campaign_id_achievement_id_key
+      constraint: guide_achievement_pkey
       update_columns: [bool_value]
     }
   ) {
-    id
-    campaign_id
-    achievement_id
-    type
-    bool_value
+    ...GuideAchievement
   }
 }
 
 mutation incCountAchievementMax(
   $campaign_id: Int!,
-  $achievement_id: String!,
+  $id: String!,
   $max: Int!
 ) {
   insert_guide_achievement_one(
     object: {
       campaign_id:$campaign_id
-      achievement_id: $achievement_id
+      id: $id
       type: "count"
       value: 1
     }
     on_conflict: {
-      constraint: guide_achivement_campaign_id_achievement_id_key
+      constraint: guide_achievement_pkey
       update_columns: []
     }
   ) {
     id
     campaign_id
-    achievement_id
+    id
     type
     value
   }
   update_guide_achievement(
     where: {
       campaign_id: { _eq: $campaign_id }
-      achievement_id: { _eq: $achievement_id }
+      id: { _eq: $id }
       value: { _lt: $max }
     }
     _inc: { value: 1 }
   ) {
     returning {
-      id
-      campaign_id
-      achievement_id
-      type
-      value
+      ...GuideAchievement
     }
   }
 }
 
 mutation incCountAchievement(
   $campaign_id: Int!,
-  $achievement_id: String!
+  $id: String!
 ) {
   insert_guide_achievement_one(
     object: {
       campaign_id:$campaign_id
-      achievement_id: $achievement_id
+      id: $id
       type: "count"
       value: 1
     }
     on_conflict: {
-      constraint: guide_achivement_campaign_id_achievement_id_key
+      constraint: guide_achievement_pkey
       update_columns: []
     }
   ) {
-    id
-    campaign_id
-    achievement_id
-    type
-    value
+    ...GuideAchievement
   }
   update_guide_achievement(
     where: {
       campaign_id: { _eq: $campaign_id }
-      achievement_id: { _eq: $achievement_id }
+      id: { _eq: $id }
     }
     _inc: { value: 1 }
   ) {
     returning {
-      id
-      campaign_id
-      achievement_id
-      type
-      value
+      ...GuideAchievement
     }
   }
 }
 
 mutation decCountAchievement(
   $campaign_id: Int!,
-  $achievement_id: String!
+  $id: String!
 ) {
   insert_guide_achievement_one(
     object: {
       campaign_id:$campaign_id
-      achievement_id: $achievement_id
+      id: $id
       type: "count"
       value: 0
     }
     on_conflict: {
-      constraint: guide_achivement_campaign_id_achievement_id_key
+      constraint: guide_achievement_pkey
       update_columns: []
     }
   ) {
-    id
-    campaign_id
-    achievement_id
-    type
-    value
+    ...GuideAchievement
   }
   update_guide_achievement(
     where: {
       campaign_id: { _eq: $campaign_id }
-      achievement_id: { _eq: $achievement_id }
+      id: { _eq: $id }
       value: { _gt: 0 }
     }
     _inc: { value: -1 }
   ) {
     returning {
-      id
-      campaign_id
-      achievement_id
-      type
-      value
+      ...GuideAchievement
     }
   }
 }
-
 mutation addGuideInput(
+  $id: String!,
   $campaign_id: Int!,
+  $type: String!,
   $scenario: String,
   $step: String,
   $payload: jsonb
 ) {
   insert_guide_input_one(
     object: {
+      id: $id
       campaign_id: $campaign_id
       scenario: $scenario
       step: $step
+      type: $type
       payload: $payload
     }
     on_conflict: {
-      constraint: campaign_guide_input_campaign_guide_id_scenario_step_key
+      constraint: guide_input_scenario_campaign_id_step_type_key
       update_columns: [payload]
     }
   ) {
-    id
-    campaign_id
-    scenario
-    step
-    payload
+    ...GuideInput
   }
 }
 
@@ -207,17 +182,11 @@ mutation updateInvestigatorTrauma(
       insane: $insane
     }
     on_conflict: {
-      constraint: investigator_data_campaign_id_investigator_key
+      constraint: investigator_data_pkey
       update_columns: [physical, mental, killed, insane]
     }
   ) {
-    id
-    campaign_id
-    investigator
-    physical
-    mental
-    killed
-    insane
+    ...MiniInvestigatorData
   }
 }
 
@@ -250,7 +219,7 @@ mutation updateInvestigatorData(
       availableXp: $available_xp
     }
     on_conflict: {
-      constraint: investigator_data_campaign_id_investigator_key
+      constraint: investigator_data_pkey
       update_columns: [
         physical, mental, killed, insane,
         addedCards, removedCards, storyAssets, ignoreStoryAssets,
@@ -258,18 +227,7 @@ mutation updateInvestigatorData(
       ]
     }
   ) {
-    id
-    campaign_id
-    investigator
-    physical
-    mental
-    killed
-    insane
-    addedCards
-    removedCards
-    storyAssets
-    ignoreStoryAssets
-    availableXp
+    ...FullInvestigatorData
   }
 }
 
@@ -285,7 +243,7 @@ mutation updateSpentXp(
       spentXp: $spent_xp
     }
     on_conflict: {
-      constraint: investigator_data_campaign_id_investigator_key
+      constraint: investigator_data_pkey
       update_columns: [spentXp]
     }
   ) {
@@ -309,7 +267,7 @@ mutation updateAvailableXp(
       availableXp: $available_xp
     }
     on_conflict: {
-      constraint: investigator_data_campaign_id_investigator_key
+      constraint: investigator_data_pkey
       update_columns: [availableXp]
     }
   ) {
@@ -460,7 +418,7 @@ mutation addCampaignInvestigator(
     }
     on_conflict: {
       constraint: campaign_investigator_campaign_id_investigator_key
-      update_columns: []
+      update_columns: [investigator]
     }
   ) {
     id

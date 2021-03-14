@@ -180,6 +180,11 @@ export class CampaignGuideStateRedux implements CampaignGuideStateT {
     this.guide = guide;
     this.updatedAt = updatedAt;
   }
+
+  numInputs() {
+    return this.guide.inputs.length;
+  }
+
   countInput(pred: (i: GuideInput) => boolean): number {
     return sumBy(this.guide.inputs, i => pred(i) ? 1 : 0);
   }

@@ -28,13 +28,15 @@ export const getLatestDeck: DocumentNode;
 declare module '*/fragments.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const BasicDeck: DocumentNode;
+  export const GuideInput: DocumentNode;
+export const GuideAchievement: DocumentNode;
+export const BasicDeck: DocumentNode;
 export const LatestDeck: DocumentNode;
 export const MiniInvestigatorData: DocumentNode;
 export const FullInvestigatorData: DocumentNode;
 export const MiniCampaign: DocumentNode;
-export const FullCampaignGuide: DocumentNode;
 export const FullCampaign: DocumentNode;
+export const FullCampaignGuideState: DocumentNode;
 
   export default defaultDocument;
 }

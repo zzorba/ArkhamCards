@@ -7,30 +7,69 @@ import {
   useGetMyCampaignsLazyQuery,
   useCampaignSubscription,
   useGetProfileQuery,
-  useCampaignGuideSubscription,
   useGetCampaignQuery,
-  useGetCampaignGuideQuery,
   useGetMyDecksLazyQuery,
   useGetLatestDeckQuery,
+  useCampaignGuideSubscription,
+  useGetCampaignGuideQuery,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
-import { MiniLinkedCampaignRemote, MiniCampaignRemote, CampaignGuideStateRemote, LatestDeckRemote, MiniDeckRemote } from './types';
+import { MiniLinkedCampaignRemote, MiniCampaignRemote, LatestDeckRemote, MiniDeckRemote, CampaignGuideStateRemote } from './types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { SingleCampaignRemote } from '@data/remote/types';
-import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDispatch } from 'react-redux';
 import { setServerDecks } from '@components/deck/actions';
 import { DeckActions } from './decks';
+import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
+
+export function useLiveCampaignGuideStateRemote(campaignId: CampaignId | undefined): CampaignGuideStateT | undefined {
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const { data } = useCampaignGuideSubscription({
+    variables: { campaign_id: campaignId?.serverId || 0 },
+    skip: (!user || !campaignId?.serverId),
+  });
+
+  return useMemo(() => {
+    if (!campaignId || !campaignId.serverId) {
+      return undefined;
+    }
+    if (data?.campaign_guide.length) {
+      return new CampaignGuideStateRemote(data.campaign_guide[0]);
+    }
+    return undefined;
+  }, [data, campaignId]);
+}
+
+export function useCachedCampaignGuideStateRemote(campaignId: CampaignId | undefined): CampaignGuideStateT | undefined {
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const { data } = useGetCampaignGuideQuery({
+    variables: { campaign_id: campaignId?.serverId || 0 },
+    fetchPolicy: 'cache-first',
+    skip: (!user || !campaignId?.serverId),
+  });
+
+  return useMemo(() => {
+    if (!campaignId || !campaignId.serverId) {
+      return undefined;
+    }
+    if (data?.campaign_guide.length) {
+      return new CampaignGuideStateRemote(data.campaign_guide[0]);
+    }
+    return undefined;
+  }, [data, campaignId]);
+}
+
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   const { user, loading: userLoading } = useContext(ArkhamCardsAuthContext);
   const [loadMyCampaigns, { data, loading: dataLoading, refetch }] = useGetMyCampaignsLazyQuery({
     variables: { userId: user?.uid || '' },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-first',
+    returnPartialData: true,
   });
   useEffect(() => {
     if (user) {
@@ -63,49 +102,12 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   return [campaigns, userLoading || dataLoading, refresh];
 }
 
-export function useLiveCampaignGuideStateRemote(campaignId: CampaignId | undefined): CampaignGuideStateT | undefined {
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const { data } = useCampaignGuideSubscription({
-    variables: { campaign_id: campaignId?.serverId || 0 },
-    skip: (!user || !campaignId?.serverId),
-  });
-
-  return useMemo(() => {
-    if (!campaignId || !campaignId.serverId) {
-      return undefined;
-    }
-    if (data?.campaign_by_pk) {
-      return new CampaignGuideStateRemote(data.campaign_by_pk);
-    }
-    return undefined;
-  }, [data, campaignId]);
-}
-
-
-export function useCachedCampaignGuideStateRemote(campaignId: CampaignId | undefined): CampaignGuideStateT | undefined {
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const { data } = useGetCampaignGuideQuery({
-    variables: { campaign_id: campaignId?.serverId || 0 },
-    fetchPolicy: 'cache-only',
-    skip: (!user || !campaignId?.serverId),
-  });
-
-  return useMemo(() => {
-    if (!campaignId || !campaignId.serverId) {
-      return undefined;
-    }
-    if (data?.campaign_by_pk) {
-      return new CampaignGuideStateRemote(data.campaign_by_pk);
-    }
-    return undefined;
-  }, [data, campaignId]);
-}
-
 export function useLiveCampaignRemote(campaignId: CampaignId | undefined): SingleCampaignT | undefined {
   const { user } = useContext(ArkhamCardsAuthContext);
   const { data } = useCampaignSubscription({
     variables: { campaign_id: campaignId?.serverId || 0 },
     skip: (!user || !campaignId?.serverId),
+    fetchPolicy: 'cache-first',
   });
 
   return useMemo(() => {
@@ -123,8 +125,9 @@ export function useCachedCampaignRemote(campaignId: CampaignId | undefined): Sin
   const { user } = useContext(ArkhamCardsAuthContext);
   const { data } = useGetCampaignQuery({
     variables: { campaign_id: campaignId?.serverId || 0 },
-    fetchPolicy: 'cache-only',
+    fetchPolicy: 'cache-first',
     skip: (!user || !campaignId?.serverId),
+    returnPartialData: true,
   });
   return useMemo(() => {
     if (!campaignId || !campaignId.serverId) {
@@ -133,6 +136,7 @@ export function useCachedCampaignRemote(campaignId: CampaignId | undefined): Sin
     if (data?.campaign_by_pk) {
       return new SingleCampaignRemote(data.campaign_by_pk);
     }
+    console.log('data is null');
     return undefined;
   }, [data, campaignId]);
 }

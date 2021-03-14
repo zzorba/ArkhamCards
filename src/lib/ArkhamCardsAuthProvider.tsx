@@ -11,24 +11,30 @@ interface Props {
 }
 
 let eventListener: EventEmitter | null = null;
-let currentUser: FirebaseAuthTypes.User | undefined = undefined;
-export let hasuraToken: string | undefined = undefined;
+export let currentUser: FirebaseAuthTypes.User | undefined = undefined;
+
+let hasHasuraToken: boolean = false;
 let currentUserLoading: boolean = true;
+
+export async function getAuthToken(): Promise<string | undefined> {
+  if (!hasHasuraToken || !currentUser) {
+    return undefined;
+  }
+  return await currentUser.getIdToken();
+}
 
 interface State {
   user?: FirebaseAuthTypes.User;
-  token?: string;
   loading: boolean;
 }
 export default function ArkhamCardsAuthProvider({ children }: Props) {
-  const [state, setState] = useState<State>({ user: currentUser, loading: currentUserLoading, token: hasuraToken });
+  const [state, setState] = useState<State>({ user: currentUser, loading: currentUserLoading });
   useEffect(() => {
     if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
-      const authUserChanged = (user: FirebaseAuthTypes.User | undefined, token: string | undefined) => {
+      const authUserChanged = (user: FirebaseAuthTypes.User | undefined) => {
         setState({
           user,
           loading: false,
-          token,
         });
       };
       if (eventListener === null) {
@@ -39,31 +45,28 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
           currentUserLoading = false;
           currentUser = user || undefined;
           if (user) {
-            const token = await user.getIdToken();
             const idTokenReuslt = await user.getIdTokenResult();
             const hasuraClaims = idTokenReuslt.claims['https://hasura.io/jwt/claims'];
             if (hasuraClaims) {
               console.log('Loaded hasura token');
-              hasuraToken = token;
-              eventListener?.emit('onAuthStateChanged', currentUser, token);
+              hasHasuraToken = true;
+              eventListener?.emit('onAuthStateChanged', currentUser);
             } else {
               console.log('No Hasura');
               // Check if refresh is required.
               const metadataRef = database().ref(`metadata/${user.uid}/refreshTime`);
               metadataRef.on('value', async(data) => {
                 if (!data.exists) {
-                  eventListener?.emit('onAuthStateChanged', currentUser, token);
+                  eventListener?.emit('onAuthStateChanged', currentUser);
                   return;
                 }
                 // Force refresh to pick up the latest custom claims changes.
-                const newToken = await user.getIdToken(true);
-                console.log('Loaded hasura token');
-                hasuraToken = newToken;
-                eventListener?.emit('onAuthStateChanged', currentUser, newToken);
+                hasHasuraToken = true;
+                eventListener?.emit('onAuthStateChanged', currentUser);
               });
             }
           } else {
-            eventListener?.emit('onAuthStateChanged', currentUser, undefined);
+            eventListener?.emit('onAuthStateChanged', currentUser);
           }
         };
         auth().onAuthStateChanged(callback);

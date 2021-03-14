@@ -1,5 +1,6 @@
 import { CampaignId, CampaignNotes, InvestigatorData, ScenarioResult, TraumaAndCardData, WeaknessSet } from '@actions/types';
 import { ChaosBag } from '@app_constants';
+import CampaignGuideStateT from './CampaignGuideStateT';
 import LatestDeckT from './LatestDeckT';
 import MiniCampaignT from './MiniCampaignT';
 
