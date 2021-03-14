@@ -25,6 +25,7 @@ import { getStandaloneScenarios } from '@data/scenario';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useCampaigns } from '@data/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import withApolloGate from '@components/core/withApolloGate';
 
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
@@ -164,9 +165,11 @@ MyCampaignsView.options = (): Options => {
   };
 };
 
-export default withFetchCardsGate<NavigationProps>(
-  MyCampaignsView,
-  { promptForUpdate: false },
+export default withApolloGate(
+  withFetchCardsGate<NavigationProps>(
+    MyCampaignsView,
+    { promptForUpdate: false },
+  )
 );
 
 const styles = StyleSheet.create({

@@ -7,7 +7,7 @@ import { Campaign, CampaignId, DeckId } from '@actions/types';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import Card, { CardsMap } from '@data/types/Card';
-import { useMyDecksRemote, useCachedCampaignRemote, useLiveCampaignGuideStateRemote, useLiveCampaignRemote, useRemoteCampaigns, useCachedCampaignGuideStateRemote, useLatestDeckRemote } from '@data/remote/hooks';
+import { useMyDecksRemote, useRemoteCampaigns, useCampaignGuideStateRemote, useLatestDeckRemote, useCampaignRemote } from '@data/remote/hooks';
 import CampaignGuideStateT from './interfaces/CampaignGuideStateT';
 import { useCampaignFromRedux, useCampaignGuideFromRedux, useLatestDeckRedux, useMyDecksRedux } from './local/hooks';
 import LatestDeckT from './interfaces/LatestDeckT';
@@ -18,7 +18,6 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
   const campaigns = useSelector(getCampaigns);
   const [serverCampaigns, loading, refresh] = useRemoteCampaigns();
-
   const allCampaigns = useMemo(() => {
     return sortBy(
       concat(
@@ -30,23 +29,9 @@ export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => vo
   return [allCampaigns, loading, refresh];
 }
 
-export function useLiveCampaignGuideState(campaignId: undefined | CampaignId): CampaignGuideStateT | undefined {
-  const reduxState = useCampaignGuideFromRedux(campaignId);
-  const remoteState = useCachedCampaignGuideStateRemote(campaignId);
-  return useMemo(() => {
-    if (!campaignId) {
-      return undefined;
-    }
-    if (!campaignId.serverId) {
-      return reduxState;
-    }
-    return remoteState;
-  }, [campaignId, reduxState, remoteState]);
-}
-
-export function useCampaignGuideState(campaignId?: CampaignId): CampaignGuideStateT | undefined {
+export function useCampaignGuideState(campaignId?: CampaignId, live?: boolean): CampaignGuideStateT | undefined {
   const reduxGuide = useCampaignGuideFromRedux(campaignId);
-  const remoteGuide = useCachedCampaignGuideStateRemote(campaignId);
+  const remoteGuide = useCampaignGuideStateRemote(campaignId, live);
   return useMemo(() => {
     if (!campaignId) {
       return undefined;
@@ -58,9 +43,9 @@ export function useCampaignGuideState(campaignId?: CampaignId): CampaignGuideSta
   }, [campaignId, reduxGuide, remoteGuide]);
 }
 
-export function useCampaign(campaignId: CampaignId | undefined): SingleCampaignT | undefined {
+export function useCampaign(campaignId: CampaignId | undefined, live?: boolean): SingleCampaignT | undefined {
   const reduxCampaign = useCampaignFromRedux(campaignId);
-  const remoteCampaign = useCachedCampaignRemote(campaignId);
+  const remoteCampaign = useCampaignRemote(campaignId, live);
   return useMemo(() => {
     if (!campaignId) {
       return undefined;
@@ -70,26 +55,6 @@ export function useCampaign(campaignId: CampaignId | undefined): SingleCampaignT
     }
     return remoteCampaign;
   }, [reduxCampaign, remoteCampaign, campaignId]);
-}
-
-
-export function useLiveCampaign(
-  campaignId: undefined | CampaignId,
-  investigators: undefined | CardsMap,
-): [SingleCampaignT | undefined, Card[], boolean] {
-  const reduxCampaign = useCampaignFromRedux(campaignId);
-  const remoteCampaign = useCachedCampaignRemote(campaignId);
-  const campaign: SingleCampaignT | undefined = useMemo(() => {
-    if (!campaignId) {
-      return undefined;
-    }
-    if (!campaignId?.serverId) {
-      return reduxCampaign;
-    }
-    return remoteCampaign;
-  }, [campaignId, reduxCampaign, remoteCampaign]);
-  const [allInvestigators, loading] = useCampaignInvestigators(campaign, investigators);
-  return [campaign, allInvestigators, loading];
 }
 
 const NO_INVESTIGATORS: Card[] = [];

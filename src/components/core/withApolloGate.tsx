@@ -1,0 +1,123 @@
+import React, { useContext, useEffect, useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ActivityIndicator,
+} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { parse } from 'flatted';
+import { t } from 'ttag';
+
+import { AppState, getTrackedQueries } from '@reducers';
+import StyleContext from '@styles/StyleContext';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import useNetworkStatus from '@components/core/useNetworkStatus';
+import { apolloQueueLink } from '@data/apollo/createApolloClient';
+import hoistNonReactStatics from 'hoist-non-react-statics';
+import { useApolloClient } from '@apollo/client';
+import { optimisticUpdates } from '@data/remote/apollo';
+import { trackedQueriesRemove } from '@data/apollo/trackerLink';
+
+interface Props {
+  children: JSX.Element;
+}
+
+/**
+ * Simple component to block to handle apollo singleton stuff.
+ */
+function ApolloGate({ children }: Props): JSX.Element {
+  const { user } = useContext(ArkhamCardsAuthContext);
+  const [{ isConnected }] = useNetworkStatus();
+  const trackedQueries = useSelector(getTrackedQueries);
+  const [trackedLoaded, setTrackedLoaded] = useState(false);
+  const loading = useSelector((state: AppState) => state.packs.loading || state.cards.loading);
+  useEffect(() => {
+    if (user && isConnected) {
+      console.log('Opening apollo');
+      apolloQueueLink.open();
+    } else {
+      console.log('Closing apollo');
+      apolloQueueLink.close();
+    }
+  }, [user, isConnected]);
+  const client = useApolloClient();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const execute = async() => {
+      const promises: Array<Promise<any>> = [];
+      trackedQueries.forEach(trackedQuery => {
+        const optimisticUpdate = optimisticUpdates[trackedQuery.name];
+        if (!optimisticUpdate) {
+          console.log(`Something weird here, we cannot handle tracked query: ${trackedQuery.name}`);
+        } else {
+          const context = parse(trackedQuery.contextJSON);
+          const variables = parse(trackedQuery.variablesJSON);
+          promises.push(
+            client.mutate({
+              context,
+              mutation: optimisticUpdate.mutation,
+              optimisticResponse: context.optimisticResponse,
+              update: optimisticUpdate.update,
+              variables,
+            })
+          );
+          dispatch(trackedQueriesRemove(trackedQuery.id));
+        }
+      });
+
+      if (isConnected) {
+        try {
+          await Promise.all(promises);
+        } catch (e) {
+          // ALLOW TRACKED QUERIES TO FAIL
+        }
+      }
+      setTrackedLoaded(true);
+    };
+    execute();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const { colors, backgroundStyle, typography } = useContext(StyleContext);
+  if (loading || !trackedLoaded) {
+    return (
+      <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+        <Text style={typography.text}>
+          { t`Loading...` }
+        </Text>
+        <ActivityIndicator
+          style={styles.spinner}
+          size="small"
+          animating
+          color={colors.lightText}
+        />
+      </View>
+    );
+  }
+  return children;
+}
+
+export default function withApolloGate<Props>(WrappedComponent: React.ComponentType<Props>) {
+  const result = function(props: Props) {
+    return (
+      <ApolloGate>
+        <WrappedComponent {...props} />
+      </ApolloGate>
+    );
+  };
+  hoistNonReactStatics(result, WrappedComponent);
+  return result;
+}
+
+
+const styles = StyleSheet.create({
+  activityIndicatorContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  spinner: {
+    height: 80,
+  },
+});

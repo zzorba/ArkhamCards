@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import Database from '@data/sqlite/Database';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { fetchCards, dismissUpdatePrompt } from './actions';
 import { AppState } from '@reducers';
@@ -20,33 +19,13 @@ import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useEffectUpdate } from '@components/core/hooks';
 import useReduxMigrator from '@components/settings/useReduxMigrator';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import useNetworkStatus from '@components/core/useNetworkStatus';
-import { apolloQueueLink } from '@data/apollo/createApolloClient';
-import { useApolloClient } from '@apollo/client';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
 const REFETCH_SECONDS = REFETCH_DAYS * 24 * 60 * 60;
 const REPROMPT_SECONDS = REPROMPT_DAYS * 24 * 60 * 60;
 
-interface ReduxProps {
-  loading?: boolean;
-  error?: string;
-  currentCardLang: string;
-  choiceLang: string;
-  useSystemLang: boolean;
-  fetchNeeded?: boolean;
-  dateFetched?: number;
-  dateUpdatePrompt?: number;
-}
-
 let CHANGING_LANGUAGE = false;
-
-interface ReduxActionProps {
-  fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
-  dismissUpdatePrompt: () => void;
-}
 
 interface Props {
   promptForUpdate?: boolean;
@@ -59,8 +38,6 @@ interface Props {
 export default function FetchCardsGate({ promptForUpdate, children }: Props): JSX.Element {
   const { db } = useContext(DatabaseContext);
   const [needsMigration, migrating, doMigrate] = useReduxMigrator();
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const [{ isConnected }] = useNetworkStatus();
 
   const dispatch = useDispatch();
   const fetchNeeded = useSelector((state: AppState) => state.packs.all.length === 0);
@@ -95,18 +72,6 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props): JS
       (dateUpdatePrompt + REPROMPT_SECONDS) < nowSeconds
     );
   }, [dateFetched, dateUpdatePrompt]);
-  const client = useApolloClient();
-  useEffect(() => {
-    if (promptForUpdate) {
-      if (user && isConnected) {
-        console.log('Opening apollo');
-        apolloQueueLink.open();
-      } else {
-        console.log('Closing apollo');
-        apolloQueueLink.close();
-      }
-    }
-  }, [promptForUpdate, user, isConnected]);
 
   useEffect(() => {
     if (fetchNeeded) {

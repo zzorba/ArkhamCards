@@ -2,7 +2,7 @@ import React from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import { useCampaignGuideReduxData, useLiveCampaignGuideReduxData } from '@components/campaignguide/contextHelper';
+import { useSingleCampaignGuideData } from '@components/campaignguide/contextHelper';
 import useCampaignGuideContext from './useCampaignGuideContext';
 import { useInvestigatorCards } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
@@ -23,29 +23,10 @@ export default function withCampaignGuideContext<Props>(
   WrappedComponent: React.ComponentType<Props & InjectedCampaignGuideContextProps>,
   { rootView }: { rootView: boolean }
 ): React.ComponentType<Props & CampaignGuideInputProps> {
-  function LiveCampaignDataComponent(props: Props & CampaignGuideInputProps) {
-    const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
-    const investigators = useInvestigatorCards();
-    const campaignData = useLiveCampaignGuideReduxData(campaignId, investigators);
-    const updateCampaignActions = useUpdateCampaignActions();
-    const deckActions = useDeckActions();
-    const context = useCampaignGuideContext(campaignId, deckActions, updateCampaignActions, campaignData);
-    if (!campaignData || !context) {
-      return (
-        <LoadingSpinner />
-      );
-    }
-    return (
-      <CampaignGuideContext.Provider value={context}>
-        <WrappedComponent {...props as Props} setCampaignServerId={setCampaignServerId} />
-      </CampaignGuideContext.Provider>
-    );
-  }
-
   function CampaignDataComponent(props: Props & CampaignGuideInputProps) {
     const [campaignId, setCampaignServerId] = useCampaignId(props.campaignId);
     const investigators = useInvestigatorCards();
-    const campaignData = useCampaignGuideReduxData(campaignId, investigators);
+    const campaignData = useSingleCampaignGuideData(campaignId, investigators, rootView);
     const updateCampaignActions = useUpdateCampaignActions();
     const deckActions = useDeckActions();
     const context = useCampaignGuideContext(campaignId, deckActions, updateCampaignActions, campaignData);
@@ -59,10 +40,6 @@ export default function withCampaignGuideContext<Props>(
         <WrappedComponent {...props as Props} setCampaignServerId={setCampaignServerId} />
       </CampaignGuideContext.Provider>
     );
-  }
-  if (rootView) {
-    hoistNonReactStatic(LiveCampaignDataComponent, WrappedComponent);
-    return LiveCampaignDataComponent;
   }
 
   hoistNonReactStatic(CampaignDataComponent, WrappedComponent);

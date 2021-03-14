@@ -13,7 +13,7 @@ import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useInvestigatorCards, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
-import { useLiveCampaign } from '@data/hooks';
+import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
 import { campaignNames } from '../constants';
@@ -52,7 +52,9 @@ function CampaignDetailView(props: Props) {
   const { user } = useContext(ArkhamCardsAuthContext);
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
-  const [campaign, allInvestigators] = useLiveCampaign(campaignId, investigators);
+  const campaign = useCampaign(campaignId, true);
+  const [allInvestigators, loadingInvestigators] = useCampaignInvestigators(campaign, investigators);
+
   const updateCampaignActions = useUpdateCampaignActions();
   const dispatch = useDispatch();
 

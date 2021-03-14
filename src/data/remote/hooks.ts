@@ -5,13 +5,13 @@ import { CampaignId, DeckId } from '@actions/types';
 import {
   MiniCampaignFragment,
   useGetMyCampaignsLazyQuery,
-  useCampaignSubscription,
   useGetProfileQuery,
   useGetCampaignQuery,
   useGetMyDecksLazyQuery,
   useGetLatestDeckQuery,
-  useCampaignGuideSubscription,
   useGetCampaignGuideQuery,
+  CampaignGuideDocument,
+  CampaignDocument,
 } from '@generated/graphql/apollo-schema';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { FriendStatus } from './api';
@@ -25,43 +25,7 @@ import { useDispatch } from 'react-redux';
 import { setServerDecks } from '@components/deck/actions';
 import { DeckActions } from './decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
-
-export function useLiveCampaignGuideStateRemote(campaignId: CampaignId | undefined): CampaignGuideStateT | undefined {
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const { data } = useCampaignGuideSubscription({
-    variables: { campaign_id: campaignId?.serverId || 0 },
-    skip: (!user || !campaignId?.serverId),
-  });
-
-  return useMemo(() => {
-    if (!campaignId || !campaignId.serverId) {
-      return undefined;
-    }
-    if (data?.campaign_guide.length) {
-      return new CampaignGuideStateRemote(data.campaign_guide[0]);
-    }
-    return undefined;
-  }, [data, campaignId]);
-}
-
-export function useCachedCampaignGuideStateRemote(campaignId: CampaignId | undefined): CampaignGuideStateT | undefined {
-  const { user } = useContext(ArkhamCardsAuthContext);
-  const { data } = useGetCampaignGuideQuery({
-    variables: { campaign_id: campaignId?.serverId || 0 },
-    fetchPolicy: 'cache-first',
-    skip: (!user || !campaignId?.serverId),
-  });
-
-  return useMemo(() => {
-    if (!campaignId || !campaignId.serverId) {
-      return undefined;
-    }
-    if (data?.campaign_guide.length) {
-      return new CampaignGuideStateRemote(data.campaign_guide[0]);
-    }
-    return undefined;
-  }, [data, campaignId]);
-}
+import useNetworkStatus from '@components/core/useNetworkStatus';
 
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
@@ -102,33 +66,52 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   return [campaigns, userLoading || dataLoading, refresh];
 }
 
-export function useLiveCampaignRemote(campaignId: CampaignId | undefined): SingleCampaignT | undefined {
+export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, live?: boolean): CampaignGuideStateT | undefined {
   const { user } = useContext(ArkhamCardsAuthContext);
-  const { data } = useCampaignSubscription({
+  const { data, subscribeToMore } = useGetCampaignGuideQuery({
     variables: { campaign_id: campaignId?.serverId || 0 },
+    fetchPolicy: live ? 'cache-first' : 'cache-only',
     skip: (!user || !campaignId?.serverId),
-    fetchPolicy: 'cache-first',
   });
+
+  useEffect(() => {
+    if (live && user && campaignId?.serverId && subscribeToMore) {
+      return subscribeToMore({
+        document: CampaignGuideDocument,
+        variables: { campaign_id: campaignId.serverId },
+      });
+    }
+  }, [live, user, campaignId, subscribeToMore]);
 
   return useMemo(() => {
     if (!campaignId || !campaignId.serverId) {
       return undefined;
     }
-    if (data?.campaign_by_pk) {
-      return new SingleCampaignRemote(data.campaign_by_pk);
+    if (data?.campaign_guide.length) {
+      return new CampaignGuideStateRemote(data.campaign_guide[0]);
     }
     return undefined;
   }, [data, campaignId]);
 }
 
-export function useCachedCampaignRemote(campaignId: CampaignId | undefined): SingleCampaignT | undefined {
+export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boolean): SingleCampaignT | undefined {
   const { user } = useContext(ArkhamCardsAuthContext);
-  const { data } = useGetCampaignQuery({
+  const { data, subscribeToMore } = useGetCampaignQuery({
     variables: { campaign_id: campaignId?.serverId || 0 },
-    fetchPolicy: 'cache-first',
+    fetchPolicy: live ? 'cache-first' : 'cache-only',
     skip: (!user || !campaignId?.serverId),
     returnPartialData: true,
   });
+  useEffect(() => {
+    if (live && user && campaignId?.serverId && subscribeToMore) {
+      return subscribeToMore({
+        document: CampaignDocument,
+        variables: { campaign_id: campaignId.serverId },
+      });
+    }
+  }, [user, campaignId, live, subscribeToMore]);
+
+
   return useMemo(() => {
     if (!campaignId || !campaignId.serverId) {
       return undefined;
