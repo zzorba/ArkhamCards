@@ -166,7 +166,7 @@ msgid "Contains too many limited cards."
 msgstr "含有太多限制卡牌。"
 
 msgid "Back"
-msgstr "背面"
+msgstr "返回"
 
 msgid "Edit Story Cards"
 msgstr "編輯故事牌"
@@ -191,13 +191,13 @@ msgid "Sort by"
 msgstr "排序"
 
 msgid "Title"
-msgstr "標題"
+msgstr "卡牌名稱"
 
 msgid "Faction"
 msgstr "職階"
 
 msgid "Pack"
-msgstr "擴充"
+msgstr "擴充包"
 
 msgid "Connect to ArkhamDB"
 msgstr "連接ArkhamDB"
@@ -350,7 +350,7 @@ msgid "Health"
 msgstr "生命值"
 
 msgid "Per Investigator"
-msgstr "依調查員"
+msgstr "每調查員"
 
 msgid "Evade"
 msgstr "躲避值"
@@ -1240,16 +1240,16 @@ msgid ""
 "balance between investigator power and scenario difficulty, and to enforce shifts in "
 "deckbuilding environments over time."
 msgstr ""
-"詭鎮奇談禁卡表：可以選擇加入額外卡牌構建限制或者文字修正來進行遊戲。禁卡表的設計是為了改"
-"善調查員能力的平衡以及冒險難度，並且隨著時間強制改變牌組構建環境。"
+"詭鎮奇談禁卡表是一種卡牌構建限制或者卡牌文本修正的清單。禁卡表的設計是為了改善調查員能力"
+"的平衡以及冒險難度，並且有不同版本逐漸地調整。"
 
 msgid ""
 "Adhering to The List of Taboos is completely optional. Investigators are not forced to "
 "adhere to the restrictions on this list, but if an investigator chooses to do so, they "
 "must do so in full (an investigator cannot pick and choose which restrictions to use)."
 msgstr ""
-"是否使用禁卡表是可選擇的。調查員不一定需要遵照禁卡表上的限制，但如果調查員選擇要遵照禁卡"
-"表，則必須完全遵照禁卡表上的所有限制(不能只挑選其中一些限制而忽略其他限制)。"
+"是否附加禁卡表規則是可選擇的。調查員不一定要遵照禁卡表上的限制，但如果調查員選擇要遵照禁"
+"卡表，則必須完全遵照禁卡表上的所有限制(不能只挑選其中一些限制而忽略其他限制)。"
 
 msgid "Note: not all cards have translations available."
 msgstr "注意：並非所有卡牌都有可用的翻譯。"
@@ -1539,7 +1539,7 @@ msgid "Multiplayer"
 msgstr "多人遊戲"
 
 msgid "Standalone"
-msgstr "單人遊戲"
+msgstr "獨立劇本"
 
 #, fuzzy
 msgid "Debug Card Json"
@@ -1687,12 +1687,12 @@ msgstr "使用經驗值升級牌組"
 
 msgid ""
 "Note: Deck size should only be selected at deck creation time, not between scenarios."
-msgstr "注意：卡牌張數限制僅需在卡牌創建時遵守，在冒險之間不用檢查。"
+msgstr "注意：卡牌張數限制僅需在卡牌創建時遵守，在每場冒險之間不用檢查。"
 
 msgid ""
 "Note: Secondary faction should only be selected at deck creation time, not between "
 "scenarios."
-msgstr "注意：第二職階僅需在卡牌創建時選擇，在冒險之間不用檢查。"
+msgstr "注意：第二職階僅能在卡牌創建時選擇，在每場冒險之間不能改變。"
 
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot upload it to "
@@ -1742,7 +1742,7 @@ msgid "Options"
 msgstr "選項"
 
 msgid "Deck Cards"
-msgstr "卡牌張數"
+msgstr "玩家卡牌"
 
 msgid "Save changes before upgrading"
 msgstr "在升級前保存變更"
@@ -1775,8 +1775,8 @@ msgid ""
 "Note: chaos tokens that cause additional tokens to be revealed does not show correct "
 "odds for the \"Draw Two Pick One\" and similar multi-draw situations."
 msgstr ""
-"注意：會導致額外抽取混亂標記的標記或效果(例如抽取兩個標記選擇一個，或類似的情形)，沒有正"
-"確計算其概率。"
+"注意：需要抽取多個混亂標記的效果(例如抽取兩個標記選擇一個，或類似的混亂標記或卡牌效果)，"
+"其概率沒有被計算。"
 
 msgid "Deleting"
 msgstr "刪除中"
@@ -1904,7 +1904,7 @@ msgstr "冒險結束時調查員的狀態："
 
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
-msgstr "推進到<b>${ nextScenarioName }</b>。"
+msgstr "進入<b>${ nextScenarioName }</b>。"
 
 msgid ""
 "Mark the scenarios you've played through to make the results start showing up in search "
@@ -1959,10 +1959,10 @@ msgid "${ spent } of ${ total }"
 msgstr "${ spent } / ${ total }"
 
 msgid "Too many"
-msgstr "太多"
+msgstr "調查員人數太多"
 
 msgid "Not enough"
-msgstr "不夠"
+msgstr "調查員人數不足"
 
 msgid "Reset Scenario?"
 msgstr "重置冒險？"
@@ -2166,7 +2166,7 @@ msgid "Edit name"
 msgstr "編輯名字"
 
 msgid "Guided Campaign"
-msgstr "Guided Campaign"
+msgstr "引導劇本模式"
 
 #. This is a deck upgrade action.
 msgid ""
@@ -2215,7 +2215,7 @@ msgid "Return to..."
 msgstr "重返…"
 
 msgid "Investigator Starter Decks"
-msgstr "調查員擴充包牌組"
+msgstr "調查員擴充包"
 
 msgid "Show story assets from other campaigns"
 msgstr "顯示其他劇本的故事支援卡"
@@ -2328,13 +2328,13 @@ msgid "Delete Deck"
 msgstr "刪除牌組"
 
 msgid "Parallel"
-msgstr "平行"
+msgstr "平行調查員"
 
 msgid "Faction, Name"
 msgstr "職階，名稱"
 
 msgid "Faction, Pack"
-msgstr "職階，擴充"
+msgstr "職階，擴充包"
 
 msgid "Random location"
 msgstr "隨機地點"
@@ -2363,8 +2363,8 @@ msgid ""
 "properly track the experience cost for any changes you make (the original versions of "
 "the deck can still be viewed from the deck's menu)."
 msgstr ""
-"有的牌組升級尚未保存。如果你希望此APP追蹤你牌組變化時花費的經驗，請在推進到下一個冒險之"
-"前，按下每位調查員的“保存牌組升級”的按鈕。\n"
+"有牌組的升級尚未保存。如果你希望此APP追蹤你牌組變化時花費的經驗，請在進入下一個冒險之前，"
+"按下每位調查員的“保存牌組升級”的按鈕。\n"
 "\n"
 "當有升級被保存時，你可以正常地編輯牌組；此APP將會自動追蹤任何改變所花費的經驗值。(原始版"
 "本的牌組仍然可以從牌組選單中瀏覽)。"
@@ -2397,7 +2397,7 @@ msgid ""
 "After removing the deck you will be able to select a different deck, but experience and "
 "story assets will only be saved as you complete new scenarios."
 msgstr ""
-"你是否越定要從劇本中移除此牌組？\n"
+"你是否確定要從劇本中移除此牌組？\n"
 "\n"
 "移除牌組後，你可以選擇一個不同的牌組，但是只有完成新冒險後的經驗值與故事支援卡才會保存。"
 
@@ -2411,9 +2411,9 @@ msgid ""
 "However, you can choose to have them not participate in future scenarios of this "
 "campaign."
 msgstr ""
-"由於這位調查員參與了此劇本中一場或多場的冒險，目前無法移除。\n"
+"由於這位調查員曾參與了此劇本中一場以上的冒險，因此無法移除。\n"
 "\n"
-"但是你可以選擇不要將這位調查員加入此劇本中將來的冒險。"
+"但是，你可以選擇不要將這位調查員加入此劇本中將來的冒險。"
 
 #, javascript-format
 msgid "Experience cost: ${ xpCost }"
@@ -2455,7 +2455,7 @@ msgstr ""
 msgid ""
 "Parallel investigator options should only be selected at deck creation time, not between "
 "scenarios."
-msgstr "平行調查員只能在創建新牌組的時候選擇，無法在冒險之間切換。"
+msgstr "平行調查員的選項只能在創建新牌組的時候選擇，無法在每場冒險之間切換。"
 
 msgid "Advanced Cards"
 msgstr "進階卡牌"
@@ -2603,7 +2603,7 @@ msgstr "調查員"
 msgid ""
 "If you encounter any problems with the campaign guide system, please let me know at "
 "arkhamcards@gmail.com."
-msgstr "如果你在劇本手冊系統遇到任何問題，請與我聯繫arkhamcards@gmail.com。"
+msgstr "如果你在使用劇本引導系統時遇到任何問題，請聯繫arkhamcards@gmail.com。"
 
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
@@ -3138,8 +3138,8 @@ msgid ""
 "level version in your deck (it does not count towards your deck size or the number of "
 "copies of that card in your deck)."
 msgstr ""
-"<b>Additional Options</b>：當你升級[[幸運]]或[[局勢]]卡牌時，你可以選擇支付較高等卡牌的全"
-"額經驗，並且將低等級卡牌留在你的牌組中(不計入卡牌張數限制或同名卡牌張數上限)。"
+"<b>額外選項</b>：當你升級[[幸運]]或[[局勢]]卡牌時，你可以選擇支付較高等卡牌的全額經驗，並"
+"且將低等級卡牌留在你的牌組中(不計入卡牌張數限制或同名卡牌張數上限)。"
 
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use Shrewd Analysis "
@@ -3208,28 +3208,28 @@ msgid "Version to copy"
 msgstr "複製的版本"
 
 msgid "Updated Monday"
-msgstr "週一更新"
+msgstr "於週一更新"
 
 msgid "Updated Tuesday"
-msgstr "週二更新"
+msgstr "於週二更新"
 
 msgid "Updated Wednesday"
-msgstr "週三更新"
+msgstr "於週三更新"
 
 msgid "Updated Thursday"
-msgstr "週四更新"
+msgstr "於週四更新"
 
 msgid "Updated Friday"
-msgstr "周五更新"
+msgstr "於周五更新"
 
 msgid "Updated Saturday"
-msgstr "週六更新"
+msgstr "於週六更新"
 
 msgid "Updated Sunday"
-msgstr "週日更新"
+msgstr "於週日更新"
 
 msgid "Books"
-msgstr "書本"
+msgstr "精裝小說"
 
 msgid "Upgraded"
 msgstr "升級"
@@ -3314,13 +3314,13 @@ msgid "Deck is invalid"
 msgstr "牌組無效"
 
 msgid "Show splash cards"
-msgstr "Show splash cards"
+msgstr "顯示受限卡牌"
 
 msgid "Hide splash cards"
-msgstr "Hide splash cards"
+msgstr "隱藏受限卡牌"
 
 msgid "Limited Slots"
-msgstr "限制的槽位"
+msgstr "受牌組構建限制的卡牌"
 
 #, javascript-format
 msgid "${ count } of ${ limitSlotCount }"
@@ -3334,7 +3334,7 @@ msgid "0 unspent"
 msgstr "無剩餘經驗"
 
 msgid "${ overspent } overspent"
-msgstr "超過${ overspent }點經驗"
+msgstr "超支${ overspent }點經驗"
 
 msgid "Missing system permission"
 msgstr "缺少系統權限"
@@ -3582,7 +3582,7 @@ msgid_plural "${ standalonePackCount } Packs"
 msgstr[0] "${ standalonePackCount }擴充包"
 
 msgid "Encounter Spoilers"
-msgstr "遭遇組據透"
+msgstr "遭遇組劇透"
 
 msgid "Support"
 msgstr "支援"
@@ -3867,7 +3867,7 @@ msgid "Note campaign achievements"
 msgstr "記錄劇本成就"
 
 msgid "Complete campaign setup"
-msgstr "完成劇本設置"
+msgstr "請先完成劇本設置"
 
 msgid "Review and draw tokens"
 msgstr "檢視並抽取標記"
@@ -3989,7 +3989,7 @@ msgid_plural ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } "
 "physical trauma."
 msgstr[0] ""
-"${ investigator.name }承受${ effect.mental }點精神創傷和${ effect.physical }點精神創傷。"
+"${ investigator.name }承受${ effect.mental }點精神創傷和${ effect.physical }點肉體創傷。"
 
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
@@ -4072,7 +4072,7 @@ msgid_plural ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } "
 "physical trauma."
 msgstr[0] ""
-"${ investigator.name }承受${ effect.mental }點精神創傷和${ effect.physical }點精神創傷。"
+"${ investigator.name }承受${ effect.mental }點精神創傷和${ effect.physical }點肉體創傷。"
 
 #, javascript-format
 msgctxt "feminine"
@@ -4147,7 +4147,7 @@ msgstr "調查"
 
 msgctxt "action"
 msgid "Play"
-msgstr "場上"
+msgstr "打出"
 
 msgctxt "action"
 msgid "Draw"
