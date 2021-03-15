@@ -715,7 +715,7 @@ msgid "Preferences"
 msgstr "Preferências"
 
 msgid "Swipe between card results"
-msgstr "Deslizar deado para trocar cartas"
+msgstr "Deslizar dedo para trocar cartas"
 
 msgid "Color blind friendly icons"
 msgstr "Ícones amigáveis para daltônicos"
@@ -1536,16 +1536,16 @@ msgstr[0] "${ unspentXpStr } não gasto"
 msgstr[1] "${ unspentXpStr } não gastos"
 
 msgid "Show splash cards"
-msgstr "Mostrar cartas splash"
+msgstr "Mostrar cartas de outras cores (cartas de splash)"
 
 msgid "Hide splash cards"
-msgstr "Esconder cartas splash"
+msgstr "Esconder cartas de outras cores (cartas de splash)"
 
 msgid "Select Taboo List"
-msgstr "Escolha lista de Taboo"
+msgstr "Escolha lista de Tabu"
 
 msgid "Taboo List"
-msgstr "Lista de Taboo"
+msgstr "Lista de Tabu"
 
 #, javascript-format
 msgid "${ cardCount } Cards"
@@ -1752,7 +1752,7 @@ msgid "Delete"
 msgstr "Apagar"
 
 msgid "Checklist"
-msgstr "Checklist"
+msgstr "Lista de Controle"
 
 msgid "Edit Special Cards"
 msgstr "Editar Cartas Especiais"
@@ -1855,7 +1855,7 @@ msgid "Taboo"
 msgstr "Tabu"
 
 msgid "Free-form text records"
-msgstr "Registros de texto livres"
+msgstr "Registro de Anotações"
 
 msgid "Tools"
 msgstr "Ferramentas"
@@ -2347,7 +2347,7 @@ msgid "Flip Card"
 msgstr "Virar Carta"
 
 msgid "Taboo List Changes"
-msgstr "Mudanças na Lista de Taboo"
+msgstr "Mudanças na Lista de Tabu"
 
 #, javascript-format
 msgid "Additional XP: ${ card.extra_xp }."
@@ -2660,7 +2660,7 @@ msgid "Encounter Card Errata"
 msgstr "Errata de Carta de Encontro"
 
 msgid "Choose Investigator"
-msgstr "Escolha Investigador"
+msgstr "Escolha de Investigador"
 
 msgid "No one"
 msgstr "Ninguém"
@@ -2811,7 +2811,7 @@ msgid "Switch campaign"
 msgstr "Mudar de campanha"
 
 msgid "Choose Investigators"
-msgstr "Escolha Investigadores"
+msgstr "Escolha de Investigadores"
 
 msgid "View upgrade"
 msgstr "Ver atualização"
