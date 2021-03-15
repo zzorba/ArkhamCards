@@ -30,7 +30,7 @@ export const DEFAULLT_STYLE_CONTEXT = {
   colors: LIGHT_THEME,
   gameFont: 'Teutonic',
   fontScale: 1,
-  typography: typography(1.0, LIGHT_THEME, 'Teutonic'),
+  typography: typography(1.0, LIGHT_THEME, 'Teutonic', 'en'),
   backgroundStyle: {
     backgroundColor: LIGHT_THEME.background,
   },
