@@ -24543,6 +24543,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "name": "(has binoculars)",
         "investigator": "choice",
         "prompt": "Group's lookout",
         "positiveChoice": {
@@ -59236,6 +59237,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "name": "(has binoculars)",
         "investigator": "choice",
         "prompt": "Group's lookout",
         "positiveChoice": {

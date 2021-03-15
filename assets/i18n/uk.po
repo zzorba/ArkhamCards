@@ -1446,12 +1446,6 @@ msgid_plural "${ startText } These sets are indicated by the following icons:"
 msgstr[0] ""
 msgstr[1] ""
 
-#, javascript-format
-msgid ""
-"${ card.name }\n"
-"(has ${ input.id })"
-msgstr ""
-
 msgid "Random location"
 msgstr ""
 
@@ -2617,7 +2611,6 @@ msgid ""
 "settings."
 msgstr ""
 
-#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] ""
@@ -4046,6 +4039,7 @@ msgid ""
 "Campaign Log."
 msgstr ""
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr ""

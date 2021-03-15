@@ -31,7 +31,7 @@ export default function InvestigatorChoiceWithSuppliesInputComponent({ step, inp
 
   const investigatorToString = useCallback((card: Card) => {
     if (investigatorHasSupply(card.code)) {
-      return t`${card.name}\n(has ${input.id})`;
+      return `${card.name}\n(${input.name})`;
     }
     return card.name;
   }, [input, investigatorHasSupply]);
