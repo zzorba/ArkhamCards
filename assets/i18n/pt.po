@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2021-03-11 23:18-0300\n"
+"PO-Revision-Date: 2021-03-13 20:24-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
@@ -387,7 +387,7 @@ msgid "Record Trauma"
 msgstr "Registrar Trauma"
 
 msgid "In your Campaign Log, record that:"
-msgstr "Em seu Relatório de Campanha, anote que:"
+msgstr "Em seu Registro de Campanha, anote que:"
 
 msgid "Choose lead investigator"
 msgstr "Escolha o investigador chefe"
@@ -502,13 +502,13 @@ msgid "Export Campaign Data"
 msgstr "Exportar Dados da Campanha"
 
 msgid "Save backup"
-msgstr "Salvar Backup"
+msgstr "Salvar Cópia de Segurança"
 
 msgid "Backup"
 msgstr "Backup"
 
 msgid "Backup Campaign Data"
-msgstr "Backup dos Dados de Campanha"
+msgstr "Cópia de Segurança dos Dados de Campanha"
 
 msgid "Restore Campaign Data"
 msgstr "Recuperar Dados de Campanha"
@@ -676,7 +676,7 @@ msgid "Done"
 msgstr "Feito"
 
 msgid "Backup Data"
-msgstr "Dados de Backup"
+msgstr "Cópia de Segurança"
 
 msgid "Cache cleared"
 msgstr "Cache apagado"
@@ -715,19 +715,19 @@ msgid "Preferences"
 msgstr "Preferências"
 
 msgid "Swipe between card results"
-msgstr "Deslize entre os resultados de carta"
+msgstr "Deslizar dedo para trocar cartas"
 
 msgid "Color blind friendly icons"
 msgstr "Ícones amigáveis para daltônicos"
 
 msgid "Alphabetize guide encounter sets"
-msgstr "Conjuntos de Encontro no Guia em Ordem Alfabética"
+msgstr "Ordem Alfabética para Conjuntos de Encontro"
 
 msgid "Support"
 msgstr "Suporte"
 
 msgid "Contact us"
-msgstr "Contate nos"
+msgstr "Contate-nos"
 
 msgid ""
 "Mark the scenarios you've played through to make the results start showing up in search "
@@ -991,7 +991,7 @@ msgid "Reconnect"
 msgstr "Reconectar"
 
 msgid "Logged in"
-msgstr "Logado em"
+msgstr "Logado"
 
 msgid "Synchronize decks"
 msgstr "Sincronizar baralhos"
@@ -1536,16 +1536,16 @@ msgstr[0] "${ unspentXpStr } não gasto"
 msgstr[1] "${ unspentXpStr } não gastos"
 
 msgid "Show splash cards"
-msgstr "Mostrar cartas splash"
+msgstr "Mostrar cartas de outras cores (cartas de splash)"
 
 msgid "Hide splash cards"
-msgstr "Esconder cartas splash"
+msgstr "Esconder cartas de outras cores (cartas de splash)"
 
 msgid "Select Taboo List"
-msgstr "Escolha lista de Taboo"
+msgstr "Escolha lista de Tabu"
 
 msgid "Taboo List"
-msgstr "Lista de Taboo"
+msgstr "Lista de Tabu"
 
 #, javascript-format
 msgid "${ cardCount } Cards"
@@ -1752,7 +1752,7 @@ msgid "Delete"
 msgstr "Apagar"
 
 msgid "Checklist"
-msgstr "Checklist"
+msgstr "Lista de Controle"
 
 msgid "Edit Special Cards"
 msgstr "Editar Cartas Especiais"
@@ -1855,7 +1855,7 @@ msgid "Taboo"
 msgstr "Tabu"
 
 msgid "Free-form text records"
-msgstr "Registros de texto livres"
+msgstr "Registro de Anotações"
 
 msgid "Tools"
 msgstr "Ferramentas"
@@ -2347,7 +2347,7 @@ msgid "Flip Card"
 msgstr "Virar Carta"
 
 msgid "Taboo List Changes"
-msgstr "Mudanças na Lista de Taboo"
+msgstr "Mudanças na Lista de Tabu"
 
 #, javascript-format
 msgid "Additional XP: ${ card.extra_xp }."
@@ -2434,7 +2434,7 @@ msgid "Try Again"
 msgstr "Tente Novamente"
 
 msgid "Loading latest cards..."
-msgstr "Carregando últimas cartas…"
+msgstr "Carregando as últimas cartas…"
 
 msgid "Database migration required"
 msgstr "Migração de Banco de Dados necessária"
@@ -2544,13 +2544,13 @@ msgid "Show front"
 msgstr "Mostrar frente"
 
 msgid "Campaign Log"
-msgstr "Relatório de Campanha"
+msgstr "Registro de Campanha"
 
 msgid "Achievements"
 msgstr "Conquistas"
 
 msgid "Review records"
-msgstr "Rever registros"
+msgstr "Ver registros"
 
 msgid "Note campaign achievements"
 msgstr "Notas de Conquistas de campanha"
@@ -2562,7 +2562,7 @@ msgid "Complete campaign setup"
 msgstr "Preparação completa de campanha"
 
 msgid "Review and draw tokens"
-msgstr "Rever e comprar marcadores"
+msgstr "Ver e comprar marcadores"
 
 msgid "Remove deck from campaign"
 msgstr "Remover baralho da campanha"
@@ -2660,7 +2660,7 @@ msgid "Encounter Card Errata"
 msgstr "Errata de Carta de Encontro"
 
 msgid "Choose Investigator"
-msgstr "Escolha Investigador"
+msgstr "Escolha de Investigador"
 
 msgid "No one"
 msgstr "Ninguém"
@@ -2811,7 +2811,7 @@ msgid "Switch campaign"
 msgstr "Mudar de campanha"
 
 msgid "Choose Investigators"
-msgstr "Escolha Investigadores"
+msgstr "Escolha de Investigadores"
 
 msgid "View upgrade"
 msgstr "Ver atualização"
@@ -2888,10 +2888,10 @@ msgid "It looks like one or more deck changes are unsaved."
 msgstr "Parece que uma ou mais alterações do baralho não foram salvas."
 
 msgid "Choose entry to add to campaign log:"
-msgstr "Escolher entrada para adicionar ao relatório de campanha:"
+msgstr "Escolher entrada para adicionar ao registro de campanha:"
 
 msgid "Edit campaign log"
-msgstr "Editar relatório de campanha"
+msgstr "Editar registro de campanha"
 
 msgid "Draw chaos tokens"
 msgstr "Comprar marcadores de caos"
@@ -2922,31 +2922,31 @@ msgstr "Quem vai adicionar ${ card.name } ao seu baralho?"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
-msgstr "Em seu Relatório de Campanha, abaixo de “${ section }”, anote ${ card.name }. "
+msgstr "Em seu Registro de Campanha, abaixo de “${ section }”, anote ${ card.name }. "
 
 msgid "In your Campaign Log, record that <i>${ text }</i>"
-msgstr "Em seu Relatório de Campanha, anote que <i>${ text }</i>"
+msgstr "Em seu Registro de Campanha, anote que <i>${ text }</i>"
 
 #, javascript-format
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
-msgstr "Em seu Relatório de Campanha, risque <i>${ logEntry.text }</i>"
+msgstr "Em seu Registro de Campanha, risque <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ logEntry.text }</"
 "i>"
 msgstr ""
-"Em seu Relatório de Campanha, embaixo de “${ logEntry.section }”, risque i>${ logEntry."
+"Em seu Registro de Campanha, embaixo de “${ logEntry.section }”, risque i>${ logEntry."
 "text }</i>"
 
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
-msgstr "Em seu Relatório de Campanha, anote que <i>${ logEntry.text }</i>"
+msgstr "Em seu Registro de Campanha, anote que <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ logEntry.text }</i>."
 msgstr ""
-"Em seu Relatório de Campanha, embaixo de “${ logEntry.section }”, anote <i>${ logEntry."
+"Em seu Registro de Campanha, embaixo de “${ logEntry.section }”, anote <i>${ logEntry."
 "text }</i>."
 
 msgid "Add ${ tokenString } to the chaos bag."
@@ -3016,29 +3016,29 @@ msgid "Check Campaign Log. Because there is ${ count } mark under '${ logEntry.s
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ logEntry.section }'"
 msgstr[0] ""
-"Verifique o Relatório de Campanha. Porque existe ${ count } marca sob ‘${ logEntry."
+"Verifique o Registro de Campanha. Porque existe ${ count } marca sob ‘${ logEntry."
 "section }’"
 msgstr[1] ""
-"Verifique o Relatório de Campanha. Porque existe ${ count } marcas sob ‘${ logEntry."
+"Verifique o Registro de Campanha. Porque existe ${ count } marcas sob ‘${ logEntry."
 "section }’"
 
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
 msgstr[0] ""
-"Verifique o Relatório de Campanha. Porque tem ${ count } entrada sob ‘${ logEntry."
+"Verifique o Registro de Campanha. Porque tem ${ count } entrada sob ‘${ logEntry."
 "section }’"
 msgstr[1] ""
-"Verifique o Relatório de Campanha. Porque tem ${ count } entradas sob ‘${ logEntry."
+"Verifique o Registro de Campanha. Porque tem ${ count } entradas sob ‘${ logEntry."
 "section }’"
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr "Verifique o Relatório de Campanha.Por causa <i>${ entry }</i>"
+msgstr "Verifique o Registro de Campanha.Por causa <i>${ entry }</i>"
 
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr ""
-"Verifique o Relatório de Campanha. A <i>${ logEntry.section }</i> não está riscada?"
+"Verifique o Registro de Campanha. A <i>${ logEntry.section }</i> não está riscada?"
 
 #, javascript-format
 msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
@@ -3133,7 +3133,7 @@ msgstr "Calculador de probabilidades"
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
-msgstr "Sacado do Caos (${ tokenCount })"
+msgstr "Bolsa do Caos (${ tokenCount })"
 
 msgid "Odds calculator"
 msgstr "Calculador de probabilidades"
@@ -3325,10 +3325,10 @@ msgid "Not Now"
 msgstr "Agora Não"
 
 msgid "Night of the Zealot"
-msgstr ""
+msgstr "Noite da Fanática"
 
 msgid "Return to the Night of the Zealot"
-msgstr "Return to the Night of the Zealot"
+msgstr "Retorno à Noite da Fanática"
 
 msgid "Return to The Dunwich Legacy"
 msgstr "Return to The Dunwich Legacy"
@@ -3349,49 +3349,49 @@ msgid "The Web of Dreams"
 msgstr "The Web of Dreams"
 
 msgid "The Gathering"
-msgstr "The Gathering"
+msgstr "O Encontro"
 
 msgid "The Midnight Masks"
-msgstr "The Midnight Masks"
+msgstr "As Máscaras da Meia-Noite"
 
 msgid "The Devourer Below"
-msgstr "The Devourer Below"
+msgstr "O Devorador Inferior"
 
 msgid "Prologue"
-msgstr "Prologue"
+msgstr "Prólogo"
 
 msgid "Extracurricular Activity"
-msgstr "Extracurricular Activity"
+msgstr "Atividade Extracurricular"
 
 msgid "The House Always Wins"
-msgstr "The House Always Wins"
+msgstr "A Casa Sempre Vence"
 
 msgid "Armitage’s Fate"
-msgstr "Armitage’s Fate"
+msgstr "Destino de Armitage"
 
 msgid "The Miskatonic Museum"
-msgstr "The Miskatonic Museum"
+msgstr "O Museu Miskatonic"
 
 msgid "Essex County Express"
-msgstr "Essex County Express"
+msgstr "O Expresso para o Condado de Essex"
 
 msgid "Blood on the Altar"
-msgstr "Blood on the Altar"
+msgstr "Sangue no Altar"
 
 msgid "The Survivors"
-msgstr "The Survivors"
+msgstr "Os Sobreviventes"
 
 msgid "Undimensioned and Unseen"
-msgstr "Undimensioned and Unseen"
+msgstr "Imensurável e Invisível"
 
 msgid "Where Doom Awaits"
-msgstr "Where Doom Awaits"
+msgstr "Onde a Perdição Aguarda"
 
 msgid "Lost in Time and Space"
-msgstr "Lost in Time and Space"
+msgstr "Perdido no Tempo e no Espaço"
 
 msgid "Epilogue"
-msgstr "Epilogue"
+msgstr "Epílogo"
 
 msgid "Return to Extracurricular Activity"
 msgstr "Return to Extracurricular Activity"
@@ -3721,7 +3721,7 @@ msgid "Count"
 msgstr "Contar"
 
 msgid "Add Campaign Log Section"
-msgstr "Adicionar Seção do Relatório de Campanha"
+msgstr "Adicionar Seção do Registro de Campanha"
 
 msgid "Save XP"
 msgstr "Salvar XP"
@@ -3891,7 +3891,7 @@ msgid "Include all basic weaknesses from these expansions"
 msgstr "Incluir todas as fraquezas básicas destas expansões"
 
 msgid "Add Log Section"
-msgstr "Adicionar Sessão de Relatório"
+msgstr "Adicionar Sessão de Registro"
 
 msgid "Guided Campaign"
 msgstr "Campanha Guiada"
@@ -3900,7 +3900,7 @@ msgid "Use app for scenario setup & resolutions"
 msgstr "Usar o app para preparações e resoluções de cenário"
 
 msgid "Track campaign log and resolutions manually"
-msgstr "Mapear Relatório de Campanha e resoluções manualmente"
+msgstr "Mapear Registro de Campanha e resoluções manualmente"
 
 msgid ""
 "Note: this campaign is still being released and so the guide is incomplete (and may "
@@ -4181,14 +4181,14 @@ msgid ""
 "Log."
 msgstr ""
 "Se <i>${ card.name }</i> não está listada sob Check ‘${ entry.section }’ no seu "
-"Relatório de Campanha."
+"Registro de Campanha."
 
 #, javascript-format
 msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your Campaign Log."
 msgstr ""
-"Se <i>${ card.name }</i> está listada sob Check ‘${ entry.section }’ em seu Relatório de "
+"Se <i>${ card.name }</i> está listada sob Check ‘${ entry.section }’ em seu Registro de "
 "Campanha."
 
 msgctxt "feminine"
@@ -4408,5 +4408,4 @@ msgstr[1] "${ cycleCount } Ciclo"
 msgid "${ standalonePackCount } Pack"
 msgid_plural "${ standalonePackCount } Packs"
 msgstr[0] "${ standalonePackCount } Pacote"
-msgstr[1] "${ standalonePackCount } Pacotes"
-
+msgstr[1] "${ standalonePackCount } Pacotes
