@@ -76,7 +76,7 @@ function hasUpgrades(
   return !!(
     card &&
     card.has_upgrades &&
-    find(cardsByName[card.real_name] || [], upgradeCard => (
+    find(cardsByName[card.real_name.toLowerCase()] || [], upgradeCard => (
       upgradeCard &&
       upgradeCard.code !== code &&
       validation.canIncludeCard(upgradeCard, false) &&
