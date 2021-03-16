@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
@@ -14,6 +14,7 @@ interface Props {
   valueLabelDescription?: string;
   first?: boolean;
   last?: boolean;
+  loading?: boolean;
   editable: boolean;
   onPress?: () => void;
   noLabelDivider?: boolean;
@@ -45,6 +46,7 @@ export default function DeckPickerStyleButton({
   valueLabelDescription,
   first,
   last,
+  loading,
   editable,
   onPress,
   noLabelDivider,
@@ -93,9 +95,10 @@ export default function DeckPickerStyleButton({
             </View>
           </View>
         </View>
-        { !!editable && (
+        { (!!editable || !!loading) && (
           <View style={styles.editIcon}>
-            <AppIcon name={editIcon} size={20} color={colors.M} />
+            { !!editable && <AppIcon name={editIcon} size={20} color={colors.M} /> }
+            { !!loading && <ActivityIndicator size="small" animating color={colors.M} /> }
           </View>
         ) }
       </View>
