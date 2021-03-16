@@ -27,8 +27,8 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, selected, 
     return null;
   }, [iconNode, iconName, colors]);
   return (
-    <View style={[styles.row, !last ? borderStyle : { borderBottomWidth: 0 }]}>
-      <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress}>
+      <View style={[styles.row, !last ? borderStyle : { borderBottomWidth: 0 }]}>
         <View style={styles.contentRow}>
           <View style={styles.leadRow}>
             { !!icon && (
@@ -36,7 +36,7 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, selected, 
                 { icon }
               </View>
             ) }
-            <Text style={typography.menuText}>
+            <Text style={[typography.menuText, { textAlignVertical: 'center' }]}>
               { text }
             </Text>
           </View>
@@ -44,8 +44,8 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, selected, 
             { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
           </View>
         </View>
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 }
 
@@ -53,6 +53,9 @@ const styles = StyleSheet.create({
   row: {
     minHeight: 48,
     borderBottomWidth: StyleSheet.hairlineWidth,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     marginLeft: s,
     marginRight: s,
     paddingTop: s,
@@ -67,6 +70,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    flex: 1,
   },
   icon: {
     width: 32,

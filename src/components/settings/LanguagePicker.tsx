@@ -177,6 +177,7 @@ export default function LanguagePicker({ first, last, showAlert }: { first?: boo
         title={t`Language`}
         icon="world"
         editable={!cardsLoading}
+        loading={cardsLoading}
         onPress={showDialog}
         valueLabel={find(items, option => option.value === selectedValue)?.valueLabel || 'Unknown'}
         first={first}
