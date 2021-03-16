@@ -6249,7 +6249,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_for_onyx_clasp",
@@ -6851,7 +6851,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_for_onyx_clasp",
@@ -8173,7 +8173,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "single_sided_location",
@@ -8727,7 +8727,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_for_mitpm",
@@ -9719,7 +9719,7 @@
     },
     {
       "id": "check_lola_hayes",
-      "text": "If Lola Hayes was chosen as an investigator for this campaign:",
+      "text": "Se Lola Hayes foi escolhida como um investigador para esta campanha:",
       "type": "branch",
       "condition": {
         "type": "campaign_data",
@@ -9739,7 +9739,7 @@
     {
       "id": "lola_hayes_reads",
       "bullet_type": "small",
-      "text": "The Lola Hayes player reads the following section (out loud)."
+      "text": "O jogador com a Lola Hayes lê a seção seguinte (em voz alta)."
     },
     {
       "id": "lola_prologue",
@@ -10574,7 +10574,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_for_onyx_clasp",
@@ -11544,7 +11544,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_for_mitpm",
@@ -18731,7 +18731,7 @@
     },
     {
       "id": "check_lola_hayes",
-      "text": "If Lola Hayes was chosen as an investigator for this campaign:",
+      "text": "Se Lola Hayes foi escolhida como um investigador para esta campanha:",
       "type": "branch",
       "condition": {
         "type": "campaign_data",
@@ -18751,7 +18751,7 @@
     {
       "id": "lola_hayes_reads",
       "bullet_type": "small",
-      "text": "The Lola Hayes player reads the following section (out loud)."
+      "text": "O jogador com a Lola Hayes lê a seção seguinte (em voz alta)."
     },
     {
       "id": "lola_prologue",
@@ -19338,7 +19338,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_for_onyx_clasp",
@@ -19954,7 +19954,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_for_onyx_clasp",
@@ -21314,7 +21314,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "single_sided_location",
@@ -21879,7 +21879,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_for_mitpm",
@@ -23143,7 +23143,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_for_onyx_clasp",
@@ -24119,7 +24119,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_for_mitpm",
@@ -26381,7 +26381,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "record_paths_known",
@@ -26900,7 +26900,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_harbinger",
@@ -27464,7 +27464,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "lose",
@@ -28297,7 +28297,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "replacing_locations_reminder",
@@ -28776,7 +28776,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "body_of_yithian_rule",
@@ -29882,7 +29882,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "depth_level_rule",
@@ -30517,7 +30517,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_yigs_fury",
@@ -31118,7 +31118,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "wait_for_additional_supplies",
@@ -32003,7 +32003,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "setup_act_ab",
@@ -33507,7 +33507,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "all_insane",
@@ -34880,7 +34880,7 @@
   "campaign":
 {
   "id": "side",
-  "name": "Cenários Independentes",
+  "name": "Side Scenarios",
   "campaign_type": "campaign",
   "position": 0,
   "version": 1,
@@ -35231,7 +35231,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "resolution_2",
@@ -35797,7 +35797,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "patrol_rule",
@@ -36342,7 +36342,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "devour_rule",
@@ -37634,7 +37634,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "circle_rule",
@@ -38062,7 +38062,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "earn_xp",
@@ -39510,7 +39510,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "resolution_2",
@@ -39869,7 +39869,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "earn_xp",
@@ -41655,7 +41655,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "resolution_2",
@@ -42125,7 +42125,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "earn_xp",
@@ -42645,7 +42645,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "earn_xp",
@@ -63288,7 +63288,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_yigs_fury",
@@ -63987,7 +63987,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "record_paths_known",
@@ -64227,7 +64227,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "check_harbinger",
@@ -65614,7 +65614,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "lose",
@@ -66437,7 +66437,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "replacing_locations_reminder",
@@ -66917,7 +66917,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "body_of_yithian_rule",
@@ -68557,7 +68557,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "depth_level_rule",
@@ -70128,7 +70128,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "setup_act_ab",
@@ -71263,7 +71263,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "all_insane",
@@ -71431,7 +71431,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+      "text": "Embaralhe o restante das cartas de encontro para criar um baralho de encontro."
     },
     {
       "id": "wait_for_additional_supplies",
