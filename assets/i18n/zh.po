@@ -60,40 +60,40 @@ msgid "Investigator"
 msgstr "調查員"
 
 msgid "Asset: Hand"
-msgstr "支援：手持"
+msgstr "支援: 手持"
 
 msgid "Asset: Hand x2"
-msgstr "支援：手持x2"
+msgstr "支援: 手持x2"
 
 msgid "Asset: Hand. Arcane"
-msgstr "支援：手持，法術"
+msgstr "支援: 手持. 法術"
 
 msgid "Asset: Body. Hand x2"
-msgstr "支援：服裝，手持x2"
+msgstr "支援: 服裝. 手持x2"
 
 msgid "Asset: Accessory"
-msgstr "支援：飾品"
+msgstr "支援: 飾品"
 
 msgid "Asset: Ally"
-msgstr "支援：盟友"
+msgstr "支援: 盟友"
 
 msgid "Asset: Arcane"
-msgstr "支援：法術"
+msgstr "支援: 法術"
 
 msgid "Asset: Arcane x2"
-msgstr "支援：法術x2"
+msgstr "支援: 法術x2"
 
 msgid "Asset: Body"
-msgstr "支援：服裝"
+msgstr "支援: 服裝"
 
 msgid "Asset: Permanent"
-msgstr "支援：永久"
+msgstr "支援: 永久"
 
 msgid "Asset: Tarot"
-msgstr "支援：塔羅"
+msgstr "支援: 塔羅"
 
 msgid "Asset: Other"
-msgstr "支援：其他"
+msgstr "支援: 其他"
 
 msgid "Event"
 msgstr "事件"
@@ -297,7 +297,7 @@ msgid "Updating cards"
 msgstr "卡牌資料更新中"
 
 msgid "Error: Check for Cards Again"
-msgstr "錯誤：再次重試"
+msgstr "錯誤: 再次重試"
 
 msgid "Check ArkhamDB for updates"
 msgstr "檢查ArkhamDB的更新"
@@ -387,40 +387,40 @@ msgid "Skill Icons"
 msgstr "技能圖標"
 
 msgid "Skill Icons: All"
-msgstr "技能圖標：全部"
+msgstr "技能圖標: 全部"
 
 msgid "Filter"
 msgstr "篩選"
 
 msgid "Packs: All"
-msgstr "擴充包：全部"
+msgstr "擴充包: 全部"
 
 #, javascript-format
 msgid "${ cycleNames[cycle_position] } Cycle"
 msgstr "${ cycleNames[cycle_position] }循環"
 
 msgid "Packs: ${ allPacksString }"
-msgstr "擴充包：${ allPacksString }"
+msgstr "擴充包: ${ allPacksString }"
 
 msgid "HPI"
-msgstr "HPI"
+msgstr "生命值每調查員"
 
 msgid "Enemies: All"
-msgstr "敵人：全部"
+msgstr "敵人: 全部"
 
 #, javascript-format
 msgid "Enemies: ${ searchParts }"
-msgstr "敵人：${ searchParts }"
+msgstr "敵人: ${ searchParts }"
 
 msgid "Fixed Clues"
 msgstr "固定線索"
 
 msgid "Locations: All"
-msgstr "地點：全部"
+msgstr "地點: 全部"
 
 #, javascript-format
 msgid "Locations: ${ searchParts }"
-msgstr "地點：${ searchParts }"
+msgstr "地點: ${ searchParts }"
 
 msgid "Level"
 msgstr "等級"
@@ -518,7 +518,7 @@ msgstr "選擇難度"
 
 #, javascript-format
 msgid "Investigator: ${ investigatorName }"
-msgstr "調查員：${ investigatorName }"
+msgstr "調查員: ${ investigatorName }"
 
 msgid "Replace Random Weakness"
 msgstr "替換隨機弱點"
@@ -742,28 +742,28 @@ msgid "The Price of Progress"
 msgstr "The Price of Progress"
 
 msgid "The Secret Name"
-msgstr "The Secret Name"
+msgstr "隱秘之名"
 
 msgid "The Wages of Sin"
-msgstr "The Wages of Sin"
+msgstr "惡罪報應"
 
 msgid "For the Greater Good"
-msgstr "For the Greater Good"
+msgstr "崇高利益"
 
 msgid "The Inner Circle"
 msgstr "The Inner Circle"
 
 msgid "Union and Disillusion"
-msgstr "Union and Disillusion"
+msgstr "聚合幻滅"
 
 msgid "In the Clutches of Chaos"
-msgstr "In the Clutches of Chaos"
+msgstr "混沌魔掌"
 
 msgid "Twist of Fate"
 msgstr "Twist of Fate"
 
 msgid "Before the Black Throne"
-msgstr "Before the Black Throne"
+msgstr "黑色王座"
 
 msgid "Return to The Gathering"
 msgstr "重返聚集於此"
@@ -1039,7 +1039,7 @@ msgid "All Investigators"
 msgstr "所有調查員"
 
 msgid "Draw: "
-msgstr "抽取： "
+msgstr "抽取:  "
 
 msgid "Redraw"
 msgstr "重抽"
@@ -1122,25 +1122,25 @@ msgid "Encounter Set"
 msgstr "遭遇組"
 
 msgid "Investigating for clues"
-msgstr "Investigating for clues"
+msgstr "正在調查新線索"
 
 msgid "Cursing at the tentacle token"
-msgstr "Cursing at the tentacle token"
+msgstr "正在消毒觸手標記"
 
 msgid "Drawing a mythos card with surge"
-msgstr "Drawing a mythos card with surge"
+msgstr "正在獻祭密謀卡以平息湧動"
 
 msgid "Placing doom on the agenda"
-msgstr "在當前密謀卡上放置一個毀滅標記"
+msgstr "正在散布毀滅標記"
 
 msgid "Reticulating spines"
-msgstr "Reticulating spines"
+msgstr "正在準備網狀棘刺"
 
 msgid "Trying to make sense of the Time Warp FAQ"
-msgstr "Trying to make sense of the Time Warp FAQ"
+msgstr "正在查閱時空旅行的FAQ"
 
 msgid "Taking three damage and three horror"
-msgstr "受到3點傷害和3點恐懼"
+msgstr "準備承受3點傷害和3點恐懼"
 
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "找不到符合\"${ searchTerm }\"的卡牌"
@@ -1149,7 +1149,7 @@ msgid "No matching cards"
 msgstr "找不到符合的卡牌"
 
 msgid "Cost: None"
-msgstr "費用：無"
+msgstr "費用: 無"
 
 msgid "All Cards"
 msgstr "所有卡牌"
@@ -1183,7 +1183,7 @@ msgid "Allowed Cards"
 msgstr "可使用卡牌"
 
 msgid "Test Icons: "
-msgstr "技能檢定標記： "
+msgstr "技能檢定標記:  "
 
 msgid "Show back"
 msgstr "顯示背面"
@@ -1214,7 +1214,7 @@ msgid "Doesn't comply with the Investigator requirements."
 msgstr "不符合調查員卡牌構建需求。"
 
 msgid "Up by 5, hope I don't draw the tentacle"
-msgstr "超過5點，希望我不要抽到觸手"
+msgstr "超過5點了隨便抽啦…噢不，又是觸手"
 
 msgid "Cards"
 msgstr "卡牌"
@@ -1440,14 +1440,14 @@ msgstr "將卡牌翻面"
 
 #, javascript-format
 msgid "Doom: ${ doom }"
-msgstr "毀滅標記：${ doom }"
+msgstr "毀滅標記: ${ doom }"
 
 #, javascript-format
 msgid "Clues: ${ clues }${ perInvestigatorClues }"
-msgstr "線索：${ clues }${ perInvestigatorClues }"
+msgstr "線索: ${ clues }${ perInvestigatorClues }"
 
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
-msgstr "隱藏值：${ shroud }。線索：${ clues }${ perInvestigatorClues }。"
+msgstr "隱藏值: ${ shroud }。線索: ${ clues }${ perInvestigatorClues }。"
 
 msgid "Update investigator decks"
 msgstr "升級調查員牌組"
@@ -1626,7 +1626,7 @@ msgid "${ investigator.deck_requirements.size } Cards"
 msgstr "${ investigator.deck_requirements.size }張卡牌"
 
 msgid "Unknown card: ${ req.code }"
-msgstr "未知的卡牌：${ req.code }"
+msgstr "未知的卡牌: ${ req.code }"
 
 msgid "Select Deck Size"
 msgstr "選擇牌組大小"
@@ -1805,7 +1805,7 @@ msgstr "等級${ startXp } - ${ endXp }"
 
 #, javascript-format
 msgid "Cost: ${ actualCost }"
-msgstr "費用：${ actualCost }"
+msgstr "費用: ${ actualCost }"
 
 msgid "No Changes"
 msgstr "沒有變更"
@@ -1834,13 +1834,13 @@ msgid "Too many off-class cards for Versatile"
 msgstr "Too many off-class cards for Versatile"
 
 msgid "Asset: Ally. Arcane"
-msgstr "支援：盟友，法術"
+msgstr "支援: 盟友. 法術"
 
 msgid "Arcane x2"
 msgstr "法術 x2"
 
 msgid "Ally. Arcane"
-msgstr "盟友，法術"
+msgstr "盟友. 法術"
 
 msgid "Success"
 msgstr "成功"
@@ -1898,7 +1898,7 @@ msgstr "讀取中"
 
 #, javascript-format
 msgid "${ label }: All"
-msgstr "${ label }：全部"
+msgstr "${ label }: 全部"
 
 msgid "Experience points"
 msgstr "經驗值"
@@ -2786,10 +2786,10 @@ msgid "Checklist"
 msgstr "清單"
 
 msgid "Limit 1 Covenant per deck."
-msgstr "Limit 1 Covenant per deck."
+msgstr "每副牌組限制僅有1個Covenant。"
 
 msgid "Checking for FAQ"
-msgstr "檢查FAQ"
+msgstr "正在讀取FAQ"
 
 msgid "No entries at this time."
 msgstr "目前沒有項目。"
@@ -2839,7 +2839,7 @@ msgid "Safe mode"
 msgstr "安全模式"
 
 msgid "The app drew an Auto-Fail"
-msgstr "此APP抽到觸手(自動失敗)了"
+msgstr "此APP抽到自動失敗的觸手了"
 
 msgid ""
 "Sorry about that. If the app is crashing on launch, you can enter 'Safe "
@@ -2930,45 +2930,45 @@ msgstr "選單"
 
 #, javascript-format
 msgid "Faction: ${ card.faction_name }, Level: ${ level }"
-msgstr "職階：${ card.faction_name }，等級：${ level }"
+msgstr "職階: ${ card.faction_name }，等級: ${ level }"
 
 #, javascript-format
 msgid "Faction: ${ card.faction_name }, Cost: ${ cost }, Level: ${ level }"
-msgstr "職階：${ card.faction_name }，費用：${ cost }，等級：${ level }"
+msgstr "職階: ${ card.faction_name }，費用: ${ cost }，等級: ${ level }"
 
 msgid "Faction: ${ card.faction_name }"
-msgstr "職階：${ card.faction_name }"
+msgstr "職階: ${ card.faction_name }"
 
 #, javascript-format
 msgid "Encounter set: ${ card.encounter_name }"
-msgstr "遭遇組：${ card.encounter_name }"
+msgstr "遭遇組: ${ card.encounter_name }"
 
 msgid "Health: none"
-msgstr "生命值：無"
+msgstr "生命值: 無"
 
 msgid "Sanity: none"
-msgstr "神智值：無"
+msgstr "神智值: 無"
 
 #, javascript-format
 msgid "Health: ${ count }"
-msgstr "生命值：${ count }"
+msgstr "生命值: ${ count }"
 
 msgid "Sanity: ${ count }"
-msgstr "神智值：${ count }"
+msgstr "神智值: ${ count }"
 
 #, javascript-format
 msgid "Willpower: ${ willpower }"
-msgstr "意志：${ willpower }"
+msgstr "意志: ${ willpower }"
 
 msgid "Intellect: ${ intellect }"
-msgstr "知識：${ intellect }"
+msgstr "知識: ${ intellect }"
 
 #, javascript-format
 msgid "Combat: ${ combat }"
-msgstr "戰鬥：${ combat }"
+msgstr "戰鬥: ${ combat }"
 
 msgid "Agility: ${ agility }"
-msgstr "敏捷：${ agility }"
+msgstr "敏捷: ${ agility }"
 
 msgid "Search options"
 msgstr "搜尋選項"
@@ -2984,35 +2984,35 @@ msgstr "顯示所有可用卡牌"
 
 #, javascript-format
 msgid "Fight: ${ fight }"
-msgstr "攻擊：${ fight }"
+msgstr "攻擊: ${ fight }"
 
 msgid "Health: ${ health } per investigator"
-msgstr "生命值：${ health }倍調查員數量"
+msgstr "生命值: ${ health }倍調查員數量"
 
 #, javascript-format
 msgid "Health: ${ health }"
-msgstr "生命值：${ health }"
+msgstr "生命值: ${ health }"
 
 msgid "Evade: ${ evade }"
-msgstr "躲避值：${ evade }"
+msgstr "躲避值: ${ evade }"
 
 #, javascript-format
 msgid "Willpower: ${ count }"
-msgstr "意志：${ count }"
+msgstr "意志: ${ count }"
 
 msgid "Intellect: ${ count }"
-msgstr "知識：${ count }"
+msgstr "知識: ${ count }"
 
 #, javascript-format
 msgid "Combat: ${ count }"
-msgstr "力量：${ count }"
+msgstr "力量: ${ count }"
 
 msgid "Agility: ${ count }"
-msgstr "敏捷：${ count }"
+msgstr "敏捷: ${ count }"
 
 #, javascript-format
 msgid "Wild: ${ count }"
-msgstr "全能：${ count }"
+msgstr "全能: ${ count }"
 
 msgid "Edit Chaos Bag"
 msgstr "編輯混亂袋"
@@ -3054,7 +3054,7 @@ msgid "Possible Hideouts"
 msgstr "Possible Hideouts"
 
 msgid "In Bag"
-msgstr "In Bag"
+msgstr "已加入"
 
 msgid "The Syzygy"
 msgstr "The Syzygy"
@@ -3171,7 +3171,7 @@ msgstr ""
 "當新冒險推出時，此APP將盡快更新。"
 
 msgid "Slot: ${ card.slot }"
-msgstr "槽位：${ card.slot }"
+msgstr "槽位: ${ card.slot }"
 
 msgid "Search rules"
 msgstr "搜尋規則"
@@ -3181,7 +3181,7 @@ msgstr "專屬弱點"
 
 #, javascript-format
 msgid "Cost: ${ json.cost }"
-msgstr "費用：${ json.cost }"
+msgstr "費用: ${ json.cost }"
 
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
@@ -3376,11 +3376,11 @@ msgid "Sanity"
 msgstr "神智值"
 
 msgid "Assets: All"
-msgstr "支援：全部"
+msgstr "支援: 全部"
 
 #, javascript-format
 msgid "Assets: ${ searchParts }"
-msgstr "支援：${ searchParts }"
+msgstr "支援: ${ searchParts }"
 
 msgid "Asset"
 msgstr "支援"
@@ -3601,7 +3601,7 @@ msgid "Account name"
 msgstr "帳戶名稱"
 
 msgid "Choose a handle"
-msgstr "Choose a handle"
+msgstr "選擇一個handle"
 
 msgid "ArkhamDB Account"
 msgstr "ArkhamDB帳戶"
@@ -3820,7 +3820,7 @@ msgid "Skill Boosts"
 msgstr "技能提升"
 
 msgid "Skill Boosts: All"
-msgstr "技能提升：全部"
+msgstr "技能提升: 全部"
 
 msgid ""
 "If you run into any problems with this migration, please contact "
@@ -3828,7 +3828,7 @@ msgid ""
 msgstr "如果本次這次搬移遇到任何問題，請聯繫arkhamcards@gmail.com。"
 
 msgid "Asset: Body. Arcane"
-msgstr "支援：服裝，法術"
+msgstr "支援: 服裝. 法術"
 
 msgid "Color blind friendly icons"
 msgstr "色覺辨認友善圖標"
