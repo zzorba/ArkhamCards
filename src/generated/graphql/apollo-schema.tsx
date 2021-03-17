@@ -6519,7 +6519,13 @@ export type UploadNewCampaignMutation = (
     & Pick<Campaign_Investigator_Mutation_Response, 'affected_rows'>
   )>, update_campaign_by_pk?: Maybe<(
     { __typename?: 'campaign' }
-    & { campaign_guide?: Maybe<(
+    & { link_a_campaign: (
+      { __typename?: 'campaign' }
+      & MiniCampaignFragment
+    ), link_b_campaign: (
+      { __typename?: 'campaign' }
+      & MiniCampaignFragment
+    ), campaign_guide?: Maybe<(
       { __typename?: 'campaign_guide' }
       & FullCampaignGuideStateFragment
     )> }
@@ -6765,7 +6771,7 @@ export type MiniCampaignFragment = (
 
 export type FullCampaignFragment = (
   { __typename?: 'campaign' }
-  & Pick<Campaign, 'id' | 'updated_at' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'scenarioResults' | 'weaknessSet' | 'guided' | 'guide_version'>
+  & Pick<Campaign, 'id' | 'updated_at' | 'uuid' | 'name' | 'cycleCode' | 'standaloneId' | 'difficulty' | 'campaignNotes' | 'chaosBag' | 'showInterludes' | 'scenarioResults' | 'weaknessSet' | 'guided' | 'guide_version' | 'owner'>
   & { investigators: Array<(
     { __typename?: 'campaign_investigator' }
     & Pick<Campaign_Investigator, 'id' | 'investigator'>
@@ -7092,7 +7098,7 @@ export type UpdateAvailableXpMutation = (
   { __typename?: 'mutation_root' }
   & { insert_investigator_data_one?: Maybe<(
     { __typename?: 'investigator_data' }
-    & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'spentXp'>
+    & Pick<Investigator_Data, 'id' | 'campaign_id' | 'investigator' | 'availableXp'>
   )> }
 );
 
@@ -7337,6 +7343,7 @@ export const FullCampaignFragmentDoc = gql`
   weaknessSet
   guided
   guide_version
+  owner
   investigators {
     id
     investigator
@@ -7425,12 +7432,19 @@ export const UploadNewCampaignDocument = gql`
     _set: {name: $name, cycleCode: $cycleCode, standaloneId: $standaloneId, difficulty: $difficulty, campaignNotes: $campaignNotes, chaosBag: $chaosBag, showInterludes: $showInterludes, scenarioResults: $scenarioResults, weaknessSet: $weaknessSet, guide_version: $guideVersion}
   ) {
     ...FullCampaign
+    link_a_campaign {
+      ...MiniCampaign
+    }
+    link_b_campaign {
+      ...MiniCampaign
+    }
     campaign_guide {
       ...FullCampaignGuideState
     }
   }
 }
     ${FullCampaignFragmentDoc}
+${MiniCampaignFragmentDoc}
 ${FullCampaignGuideStateFragmentDoc}`;
 export type UploadNewCampaignMutationFn = Apollo.MutationFunction<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>;
 
@@ -8458,7 +8472,7 @@ export const UpdateAvailableXpDocument = gql`
     id
     campaign_id
     investigator
-    spentXp
+    availableXp
   }
 }
     `;

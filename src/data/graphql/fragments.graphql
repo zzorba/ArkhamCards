@@ -111,6 +111,7 @@ fragment FullCampaign on campaign {
   weaknessSet
   guided
   guide_version
+  owner
   investigators {
     id
     investigator

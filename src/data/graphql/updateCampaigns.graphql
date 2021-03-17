@@ -274,7 +274,7 @@ mutation updateAvailableXp(
     id
     campaign_id
     investigator
-    spentXp
+    availableXp
   }
 }
 
