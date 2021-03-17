@@ -2317,14 +2317,6 @@ msgstr "Zusätzliche Karte wählen"
 msgid "Campaign Log"
 msgstr "Kampagnenlogbuch"
 
-#, javascript-format
-msgid ""
-"${ card.name }\n"
-"(has ${ input.id })"
-msgstr ""
-"${ card.name }\n"
-"(hat ${ input.id })"
-
 msgid "Choose entry to add to campaign log:"
 msgstr "Wähle einen Eintrag, der zum Kampagnenlogbuch hinzugefügt wird:"
 
@@ -2831,7 +2823,6 @@ msgstr ""
 "Fehlende Karte #${ code }. Bitte versuche, die Karten von ArkhamDB in den "
 "Einstellungen zu updaten."
 
-#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } Erfahrungspunkt für Ausrüstungspunkte verfügbar"
@@ -4385,6 +4376,7 @@ msgstr ""
 "Falls <i>${ card.name }</i> unter \\\"Überprüfe ‘${ entry.section }’ im "
 "Kampagnenlogbuch\\\" aufgeführt ist."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } liest <b>${ sectionName }</b>"

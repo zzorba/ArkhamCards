@@ -2324,14 +2324,6 @@ msgstr "Choisissez une carte supplémentaire"
 msgid "Campaign Log"
 msgstr "Carnet de Campagne"
 
-#, javascript-format
-msgid ""
-"${ card.name }\n"
-"(has ${ input.id })"
-msgstr ""
-"${ card.name }\n"
-"(a ${ input.id })"
-
 msgid "Choose entry to add to campaign log:"
 msgstr "Choisir une entrée à ajouter au Carnet de Campagne:"
 
@@ -2835,7 +2827,6 @@ msgstr ""
 "Carte manquante #${ code }. Veuillez essayer de charger les cartes depuis "
 "ArkhamDB dans les paramètres."
 
-#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } point d'équipement disponible"
@@ -4399,6 +4390,7 @@ msgstr ""
 "Si <i>${ card.name }</i> est noté sous la mention ‘${ entry.section }’ dans "
 "votre Carnet de Campagne."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } lit <b>${ sectionName }</b>"

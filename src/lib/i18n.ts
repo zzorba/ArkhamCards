@@ -34,7 +34,7 @@ export function localizedName(lang: string) {
     case 'pl': return 'Polski';
     case 'ru': return 'Pусский';
     case 'pt': return 'Português';
-    case 'zh': return '汉语';
+    case 'zh': return '中文';
     default: return 'Unknown';
   }
 }

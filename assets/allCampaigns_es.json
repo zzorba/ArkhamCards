@@ -26051,6 +26051,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "name": "(has binoculars)",
         "investigator": "choice",
         "prompt": "Centinela del grupo",
         "positiveChoice": {
@@ -65212,6 +65213,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "name": "(has binoculars)",
         "investigator": "choice",
         "prompt": "Centinela del grupo",
         "positiveChoice": {

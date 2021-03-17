@@ -2185,12 +2185,6 @@ msgstr ""
 msgid "Campaign Log"
 msgstr ""
 
-#, javascript-format
-msgid ""
-"${ card.name }\n"
-"(has ${ input.id })"
-msgstr ""
-
 msgid "Choose entry to add to campaign log:"
 msgstr ""
 
@@ -2617,7 +2611,6 @@ msgid ""
 "settings."
 msgstr ""
 
-#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] ""
@@ -4046,6 +4039,7 @@ msgid ""
 "Campaign Log."
 msgstr ""
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr ""

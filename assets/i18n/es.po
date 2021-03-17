@@ -2311,14 +2311,6 @@ msgstr "Elige una carta adicional"
 msgid "Campaign Log"
 msgstr "Registro de Campaña"
 
-#, javascript-format
-msgid ""
-"${ card.name }\n"
-"(has ${ input.id })"
-msgstr ""
-"${ card.name }\n"
-"(tiene ${ input.id })"
-
 msgid "Choose entry to add to campaign log:"
 msgstr "Elige una entrada para añadir al Registro de Campaña:"
 
@@ -2824,7 +2816,6 @@ msgstr ""
 "Carta #${ code } no encontrada. Por favor, prueba a \"Buscar nuevas cartas "
 "en ArkhamDB\" desde Ajustes."
 
-#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } de experiencia de reabastecimiento disponible"
@@ -4367,6 +4358,7 @@ msgstr ""
 "Si <i>${ card.name }</i> aparece en la sección ‘${ entry.section }’ de tu "
 "Registro de Campaña."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } lee <b>${ sectionName }</b>"

@@ -1702,15 +1702,6 @@ msgstr[0] "Всего ${ xp } / ${ resupplyPointsString } опыта"
 msgstr[1] "Всего ${ xp } / ${ resupplyPointsString } опыта"
 msgstr[2] "Всего ${ xp } / ${ resupplyPointsString } опыта"
 
-#, javascript-format
-msgid ""
-"${ card.name }\n"
-"(has ${ input.id })"
-msgstr ""
-"${ card.name }\n"
-"(Имеет ${ input.id })"
-
-#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "Доступно ${ specialXp } очко пополнения припасов"
@@ -4409,6 +4400,7 @@ msgstr ""
 "Если <i>${ card.name }</i> указана под «Проверьте «${ entry.section }» в "
 "вашем журнале кампании."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } читает <b>${ sectionName }</b>"

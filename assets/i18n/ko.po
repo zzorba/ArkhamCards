@@ -1486,14 +1486,6 @@ msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
 msgstr[0] "${ startText } 이 세트에는 다음 아이콘이 그려져 있습니다."
 
-#, javascript-format
-msgid ""
-"${ card.name }\n"
-"(has ${ input.id })"
-msgstr ""
-"${ card.name }\n"
-"(${ input.id }를 가지고 있습니다)"
-
 msgid "Random location"
 msgstr "무작위 장소"
 
@@ -2704,7 +2696,6 @@ msgid ""
 "settings."
 msgstr "#${ code } 카드를 발견할 수 없습니다. 설정에서 아컴디비 카드 업데이트를 수행해주십시오."
 
-#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } 재보급 경험치 사용가능"
@@ -4174,6 +4165,7 @@ msgstr ""
 "당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 있으면, 다음 지시를 "
 "수행합니다."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 읽습니다."

@@ -669,6 +669,7 @@ export interface InvestigatorChoiceWithSuppliesInput {
   section: string;
   id: string;
   prompt: string;
+  name: string;
   investigator: "choice";
   positiveChoice: Choice;
   negativeChoice: Choice;
