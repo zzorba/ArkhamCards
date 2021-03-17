@@ -140,6 +140,7 @@
 {
   "id": "armitages_fate",
   "scenario_name": "Armitage's Fate",
+  "header": "Interlude I",
   "full_name": "Interlude I: Armitage's Fate",
   "type": "interlude",
   "icon": "armitages_fate",
@@ -235,6 +236,7 @@
 {
   "id": "blood_on_the_altar",
   "scenario_name": "Blood on the Altar",
+  "header": "Scenario IV",
   "full_name": "Scenario IV: Blood on the Altar",
   "setup": [
     "prologue",
@@ -591,6 +593,7 @@
   "id": "dwl_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "armitages_fate",
   "setup": [
@@ -646,6 +649,7 @@
   "id": "dwl_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "dunwich",
   "setup": [
@@ -695,6 +699,7 @@
 {
   "id": "essex_county_express",
   "scenario_name": "The Essex County Express",
+  "header": "Scenario III",
   "full_name": "Scenario III: The Essex County Express",
   "setup": [
     "prologue",
@@ -1071,6 +1076,7 @@
 {
   "id": "extracurricular_activity",
   "scenario_name": "Extracurricular Activity",
+  "header": "Scenario I-A",
   "full_name": "Scenario I–A: Extracurricular Activity",
   "setup": [
     "prologue",
@@ -1369,6 +1375,7 @@
 {
   "id": "lost_in_time_and_space",
   "scenario_name": "Lost in Time and Space",
+  "header": "Scenario VII",
   "full_name": "Scenario VII: Lost in Time and Space",
   "setup": [
     "prologue",
@@ -1660,6 +1667,7 @@
 {
   "id": "dwl_interlude2",
   "scenario_name": "The Survivors",
+  "header": "Interlude II",
   "full_name": "Interlude II: The Survivors",
   "type": "interlude",
   "icon": "whippoorwills",
@@ -1993,6 +2001,7 @@
 {
   "id": "the_house_always_wins",
   "scenario_name": "The House Always Wins",
+  "header": "Scenario I-B",
   "full_name": "Scenario I–B: The House Always Wins",
   "setup": [
     "prologue",
@@ -2289,6 +2298,7 @@
 {
   "id": "the_miskatonic_museum",
   "scenario_name": "The Miskatonic Museum",
+  "header": "Scenario II",
   "full_name": "Scenario II: The Miskatonic Museum",
   "setup": [
     "prologue",
@@ -2587,6 +2597,7 @@
 {
   "id": "undimensioned_and_unseen",
   "scenario_name": "Undimensioned and Unseen",
+  "header": "Scenario V",
   "full_name": "Scenario V: Undimensioned and Unseen",
   "setup": [
     "prologue",
@@ -2915,6 +2926,7 @@
 {
   "id": "where_doom_awaits",
   "scenario_name": "Where Doom Awaits",
+  "header": "Scenario VI",
   "full_name": "Scenario VI: Where Doom Awaits",
   "setup": [
     "prologue",
@@ -3490,6 +3502,7 @@
 {
   "id": "arkham",
   "scenario_name": "The Midnight Masks",
+  "header": "Scenario II",
   "full_name": "Scenario II: The Midnight Masks",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -4033,6 +4046,7 @@
 {
   "id": "tentacles",
   "scenario_name": "The Devourer Below",
+  "header": "Scenario III",
   "full_name": "Scenario III: The Devourer Below",
   "setup": [
     "intro",
@@ -4433,6 +4447,7 @@
 {
   "id": "torch",
   "scenario_name": "The Gathering",
+  "header": "Scenario I",
   "full_name": "Scenario I: The Gathering",
   "setup": [
     "prologue",
@@ -4880,6 +4895,7 @@
   "id": "a_phantom_of_truth",
   "scenario_name": "A Phantom of Truth",
   "full_name": "Scenario V: A Phantom of Truth",
+  "header": "Scenario V",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -5726,6 +5742,7 @@
   "id": "black_stars_rise",
   "scenario_name": "Black Stars Rise",
   "full_name": "Scenario VII: Black Stars Rise",
+  "header": "Scenario VII",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -6361,6 +6378,7 @@
   "id": "curtain_call",
   "scenario_name": "Curtain Call",
   "full_name": "Scenario I: Curtain Call",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -6668,6 +6686,7 @@
   "id": "dim_carcosa",
   "scenario_name": "Dim Carcosa",
   "full_name": "Scenario VIII: Dim Carcosa",
+  "header": "Scenario VIII",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -7391,6 +7410,7 @@
   "id": "echoes_of_the_past",
   "scenario_name": "Echoes of the Past",
   "full_name": "Scenario III: Echoes of the Past",
+  "header": "Scenario III",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -7917,8 +7937,9 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Epilogue",
-  "icon": "maddening_delusions",
+  "header": "",
   "full_name": "Epilogue",
+  "icon": "maddening_delusions",
   "type": "epilogue",
   "setup": [
     "check_epilogue"
@@ -7956,6 +7977,7 @@
   "id": "ptc_interlude2",
   "scenario_name": "Lost Soul",
   "full_name": "Interlude II: Lost Soul",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "the_stranger",
   "setup": [
@@ -8131,6 +8153,7 @@
   "id": "ptc_interlude1",
   "scenario_name": "Lunacy's Reward",
   "full_name": "Interlude I: Lunacy's Reward",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "hasturs_gift",
   "setup": [
@@ -8453,6 +8476,7 @@
   "id": "ptc_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "delusions",
   "setup": [
@@ -8514,6 +8538,7 @@
   "id": "the_last_king",
   "scenario_name": "The Last King",
   "full_name": "Scenario II: The Last King",
+  "header": "Scenario II",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -8933,6 +8958,7 @@
   "id": "the_pallid_mask",
   "scenario_name": "The Pallid Mask",
   "full_name": "Scenario VI: The Pallid Mask",
+  "header": "Scenario VI",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -9785,6 +9811,7 @@
   "id": "the_unspeakable_oath",
   "scenario_name": "The Unspeakable Oath",
   "full_name": "Scenario IV: The Unspeakable Oath",
+  "header": "Scenario IV",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -10804,6 +10831,7 @@
 {
   "id": "armitages_fate",
   "scenario_name": "Armitage's Fate",
+  "header": "Interlude I",
   "full_name": "Interlude I: Armitage's Fate",
   "type": "interlude",
   "icon": "armitages_fate",
@@ -10907,6 +10935,7 @@
   "id": "dwl_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "armitages_fate",
   "setup": [
@@ -10956,6 +10985,7 @@
   "id": "dwl_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "dunwich",
   "setup": [
@@ -11008,6 +11038,7 @@
 {
   "id": "return_to_blood_on_the_altar",
   "scenario_name": "Return to Blood on the Altar",
+  "header": "Scenario IV",
   "full_name": "Scenario IV: Return to Blood on the Altar",
   "setup": [
     "prologue",
@@ -11445,6 +11476,7 @@
 {
   "id": "return_to_essex_county_express",
   "scenario_name": "Return to The Essex County Express",
+  "header": "Scenario III",
   "full_name": "Scenario III: Return to The Essex County Express",
   "setup": [
     "prologue",
@@ -11871,6 +11903,7 @@
 {
   "id": "return_to_extracurricular_activity",
   "scenario_name": "Return to Extracurricular Activity",
+  "header": "Scenario I-A",
   "full_name": "Scenario I–A: Return to Extracurricular Activity",
   "setup": [
     "prologue",
@@ -12235,6 +12268,7 @@
 {
   "id": "return_to_lost_in_time_and_space",
   "scenario_name": "Return to Lost in Time and Space",
+  "header": "Scenario VII",
   "full_name": "Scenario VII: Return to Lost in Time and Space",
   "setup": [
     "prologue",
@@ -12587,6 +12621,7 @@
 {
   "id": "return_to_the_house_always_wins",
   "scenario_name": "Return to The House Always Wins",
+  "header": "Scenario I-B",
   "full_name": "Scenario I–B: Return to The House Always Wins",
   "setup": [
     "prologue",
@@ -12931,6 +12966,7 @@
 {
   "id": "return_to_the_miskatonic_museum",
   "scenario_name": "Return to The Miskatonic Museum",
+  "header": "Scenario II",
   "full_name": "Scenario II: Return to The Miskatonic Museum",
   "setup": [
     "prologue",
@@ -13269,6 +13305,7 @@
 {
   "id": "return_to_undimensioned_and_unseen",
   "scenario_name": "Return to Undimensioned and Unseen",
+  "header": "Scenario V",
   "full_name": "Scenario V: Return to Undimensioned and Unseen",
   "setup": [
     "prologue",
@@ -13662,6 +13699,7 @@
 {
   "id": "return_to_where_doom_awaits",
   "scenario_name": "Return to Where Doom Awaits",
+  "header": "Scenario VI",
   "full_name": "Scenario VI: Return to Where Doom Awaits",
   "setup": [
     "prologue",
@@ -14160,6 +14198,7 @@
 {
   "id": "dwl_interlude2",
   "scenario_name": "The Survivors",
+  "header": "Interlude II",
   "full_name": "Interlude II: The Survivors",
   "type": "interlude",
   "icon": "whippoorwills",
@@ -14811,6 +14850,7 @@
 {
   "id": "return_to_the_devourer_below",
   "scenario_name": "Return to The Devourer Below",
+  "header": "Scenario III",
   "full_name": "Scenario III: Return to The Devourer Below",
   "setup": [
     "intro",
@@ -15254,6 +15294,7 @@
 {
   "id": "return_to_the_gathering",
   "scenario_name": "Return to The Gathering",
+  "header": "Scenario I",
   "full_name": "Scenario I: Return to the Gathering",
   "setup": [
     "prologue",
@@ -15580,6 +15621,7 @@
 {
   "id": "return_to_the_midnight_masks",
   "scenario_name": "Return to The Midnight Masks",
+  "header": "Scenario II",
   "full_name": "Scenario II: Return to The Midnight Masks",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -16632,8 +16674,9 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Epilogue",
-  "icon": "maddening_delusions",
+  "header": "",
   "full_name": "Epilogue",
+  "icon": "maddening_delusions",
   "type": "epilogue",
   "setup": [
     "check_epilogue"
@@ -16672,6 +16715,7 @@
   "id": "ptc_interlude2",
   "scenario_name": "Lost Soul",
   "full_name": "Interlude II: Lost Soul",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "the_stranger",
   "setup": [
@@ -16863,6 +16907,7 @@
   "id": "ptc_interlude1",
   "scenario_name": "Lunacy's Reward",
   "full_name": "Interlude I: Lunacy's Reward",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "hasturs_gift",
   "setup": [
@@ -17197,6 +17242,7 @@
   "id": "ptc_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "delusions",
   "setup": [
@@ -17260,6 +17306,7 @@
   "id": "return_to_a_phantom_of_truth",
   "scenario_name": "Return to A Phantom of Truth",
   "full_name": "Scenario V: Return to A Phantom of Truth",
+  "header": "Scenario V",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -18241,6 +18288,7 @@
   "id": "return_to_black_stars_rise",
   "scenario_name": "Return to Black Stars Rise",
   "full_name": "Scenario VII: Return to Black Stars Rise",
+  "header": "Scenario VII",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -18985,6 +19033,7 @@
   "id": "return_to_curtain_call",
   "scenario_name": "Return to Curtain Call",
   "full_name": "Scenario I: Return to Curtain Call",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -19389,6 +19438,7 @@
   "id": "return_to_dim_carcosa",
   "scenario_name": "Return to Dim Carcosa",
   "full_name": "Scenario VIII: Return to Dim Carcosa",
+  "header": "Scenario VIII",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -20237,6 +20287,7 @@
   "id": "return_to_echoes_of_the_past",
   "scenario_name": "Return to Echoes of the Past",
   "full_name": "Scenario III: Return to Echoes of the Past",
+  "header": "Scenario III",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -20833,6 +20884,7 @@
   "id": "return_to_the_last_king",
   "scenario_name": "Return to The Last King",
   "full_name": "Scenario II: Return to The Last King",
+  "header": "Scenario II",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -21321,6 +21373,7 @@
   "id": "return_to_the_pallid_mask",
   "scenario_name": "Return to The Pallid Mask",
   "full_name": "Scenario VI: Return to The Pallid Mask",
+  "header": "Scenario VI",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -22254,6 +22307,7 @@
   "id": "return_to_the_unspeakable_oath",
   "scenario_name": "Return to The Unspeakable Oath",
   "full_name": "Scenario IV: Return to The Unspeakable Oath",
+  "header": "Scenario IV",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -23498,6 +23552,7 @@
   "id": "tfa_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "temporal_flux",
   "setup": [
@@ -23565,6 +23620,7 @@
   "id": "tfa_interlude2",
   "scenario_name": "Expedition's End",
   "full_name": "Interlude II: Expedition's End",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -23784,6 +23840,7 @@
   "id": "tfa_interlude3",
   "scenario_name": "The Jungle Beckons",
   "full_name": "Interlude III: The Jungle Beckons",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "rainforest",
   "setup": [
@@ -24274,6 +24331,7 @@
   "id": "tfa_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -24394,6 +24452,7 @@
   "id": "tfa_interlude1",
   "scenario_name": "Restless Nights",
   "full_name": "Interlude I: Restless Nights",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "deadly_traps",
   "setup": [
@@ -24685,6 +24744,7 @@
   "id": "return_to_heart_of_the_elders_part_1",
   "scenario_name": "Return to Heart of the Elders, Part 1",
   "full_name": "Scenario V–A: Return to Heart of the Elders, Part 1",
+  "header": "Scenario V-A",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -25351,6 +25411,7 @@
   "id": "return_to_heart_of_the_elders_part_2",
   "scenario_name": "Return to Heart of the Elders, Part 2",
   "full_name": "Scenario V–B: Return to Heart of the Elders, Part 2",
+  "header": "Scenario V-B",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -25731,6 +25792,7 @@
   "id": "return_to_shattered_aeons",
   "scenario_name": "Return to Shattered Aeons",
   "full_name": "Scenario VIII: Return to Shattered Aeons",
+  "header": "Scenario VIII",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -26272,6 +26334,7 @@
   "id": "return_to_the_boundary_beyond",
   "scenario_name": "Return to The Boundary Beyond",
   "full_name": "Scenario IV: Return to The Boundary Beyond",
+  "header": "Scenario IV",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -27096,6 +27159,7 @@
   "id": "return_to_the_city_of_archives",
   "scenario_name": "Return to The City of Archives",
   "full_name": "Scenario VI: Return to The City of Archives",
+  "header": "Scenario VI",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -27573,6 +27637,7 @@
   "id": "return_to_the_depths_of_yoth",
   "scenario_name": "Return to The Depths of Yoth",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
+  "header": "Scenario VII",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -28926,6 +28991,7 @@
   "id": "return_to_the_doom_of_eztli",
   "scenario_name": "Return to The Doom of Eztli",
   "full_name": "Scenario II: Return to The Doom of Eztli",
+  "header": "Scenario II",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -29575,6 +29641,7 @@
   "id": "return_to_the_untamed_wilds",
   "scenario_name": "Return to The Untamed Wilds",
   "full_name": "Scenario I: Return to The Untamed Wilds",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -30024,6 +30091,7 @@
   "id": "return_to_threads_of_fate",
   "scenario_name": "Return to Threads of Fate",
   "full_name": "Scenario III: Return to Threads of Fate",
+  "header": "Scenario III",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -31642,6 +31710,7 @@
   "id": "return_to_turn_back_time",
   "scenario_name": "Return to Turn Back Time",
   "full_name": "Scenario IX: Return to Turn Back Time",
+  "header": "Scenario IX",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -32173,6 +32242,7 @@
   "id": "tfa_interlude5",
   "scenario_name": "The Darkness",
   "full_name": "Interlude V: The Darkness",
+  "header": "Interlude V",
   "type": "interlude",
   "icon": "torch",
   "setup": [
@@ -32734,6 +32804,7 @@
   "id": "tfa_interlude4",
   "scenario_name": "Those Held Captive",
   "full_name": "Interlude IV: Those Held Captive",
+  "header": "Interlude IV",
   "type": "interlude",
   "icon": "cult_of_pnakotus",
   "setup": [
@@ -33409,6 +33480,7 @@
   "id": "all_or_nothing",
   "scenario_name": "All or Nothing",
   "full_name": "All or Nothing",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -33901,6 +33973,7 @@
   "id": "bad_blood",
   "scenario_name": "Bad Blood",
   "full_name": "Bad Blood",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -34379,6 +34452,7 @@
   "id": "blob_that_ate_everything",
   "scenario_name": "The Blob That Ate Everything",
   "full_name": "The Blob That Ate Everything",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -34934,6 +35008,7 @@
   "id": "carnevale_of_horrors",
   "scenario_name": "Carnevale of Horrors",
   "full_name": "Carnevale of Horrors",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -35293,6 +35368,7 @@
   "id": "curse_of_the_rougarou",
   "scenario_name": "Curse of the Rougarou",
   "full_name": "Curse of the Rougarou",
+  "header": "",
   "xp_cost": 1,
   "standalone_setup": [
     "choose_difficulty",
@@ -35513,6 +35589,7 @@
   "id": "in_the_labyrinths_of_lunacy",
   "scenario_name": "The Labyrinths of Lunacy",
   "full_name": "The Labyrinths of Lunacy",
+  "header": "",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -36277,6 +36354,7 @@
   "id": "meddling_of_meowlathotep",
   "scenario_name": "The Meddling of Meowlathotep",
   "full_name": "The Meddling of Meowlathotep",
+  "header": "",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -36695,6 +36773,7 @@
   "id": "murder_at_the_excelsior_hotel",
   "scenario_name": "Murder at the Excelsior Hotel",
   "full_name": "Murder at the Excelsior Hotel",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -38242,6 +38321,7 @@
   "id": "read_or_die",
   "scenario_name": "Read or Die",
   "full_name": "Read or Die",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -38713,6 +38793,7 @@
   "id": "the_eternal_slumber",
   "scenario_name": "The Eternal Slumber",
   "full_name": "The Eternal Slumber",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -39124,6 +39205,7 @@
   "id": "the_nights_usurper",
   "scenario_name": "The Night's Usurper",
   "full_name": "The Night's Usurper",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -39541,6 +39623,7 @@
   "id": "war_of_the_outer_gods",
   "scenario_name": "War of the Outer Gods",
   "full_name": "War of the Outer Gods",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -40317,6 +40400,7 @@
   "id": "at_deaths_doorstep",
   "scenario_name": "At Death's Doorstep",
   "full_name": "Scenario II: At Death's Doorstep",
+  "header": "Scenario II",
   "setup": [
     "intro_article",
     "intro",
@@ -40966,6 +41050,7 @@
   "id": "before_the_black_throne",
   "scenario_name": "Before the Black Throne",
   "full_name": "Scenario VIII: Before the Black Throne",
+  "header": "Scenario VIII",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -41372,8 +41457,9 @@
 },
 {
   "id": "disappearance_at_the_twilight_estate",
-  "scenario_name": "Prologue: Disappearance at the Twilight Estate",
+  "scenario_name": "Disappearance at the Twilight Estate",
   "full_name": "Prologue: Disappearance at the Twilight Estate",
+  "header": "Prologue",
   "type": "interlude",
   "setup": [
     "pre_intro",
@@ -41814,6 +41900,7 @@
   "id": "tcu_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "realm_of_death",
   "setup": [
@@ -41968,6 +42055,7 @@
   "id": "for_the_greater_good",
   "scenario_name": "For the Greater Good",
   "full_name": "Scenario V: For the Greater Good",
+  "header": "Scenario V",
   "setup": [
     "intro_1",
     "check_members_of_the_lodge",
@@ -42361,6 +42449,7 @@
   "id": "in_the_clutches_of_chaos",
   "scenario_name": "In the Clutches of Chaos",
   "full_name": "Scenario VII: In the Clutches of Chaos",
+  "header": "Scenario VII",
   "setup": [
     "intro_1",
     "check_never_seen_again",
@@ -43008,6 +43097,7 @@
   "type": "interlude",
   "scenario_name": "The Inner Circle",
   "full_name": "Interlude III: The Inner Circle",
+  "header": "Interlude III",
   "icon": "trapped_spirits",
   "setup": [
     "ic_1",
@@ -43624,6 +43714,7 @@
   "type": "interlude",
   "scenario_name": "The Price of Progress",
   "full_name": "Interlude II: The Price of Progress",
+  "header": "Interlude II",
   "icon": "silver_twilight_lodge",
   "setup": [
     "check_silver_twilight_investigator",
@@ -43938,6 +44029,7 @@
   "id": "the_secret_name",
   "scenario_name": "The Secret Name",
   "full_name": "Scenario III: The Secret Name",
+  "header": "Scenario III",
   "setup": [
     "check_members_of_the_lodge",
     "gather_encounter_sets",
@@ -44488,6 +44580,7 @@
   "id": "the_wages_of_sin",
   "scenario_name": "The Wages of Sin",
   "full_name": "Scenario IV: The Wages of Sin",
+  "header": "Scenario IV",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -44744,6 +44837,7 @@
   "id": "the_witching_hour",
   "scenario_name": "The Witching Hour",
   "full_name": "Scenario I: The Witching Hour",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "choose_fate",
@@ -45145,6 +45239,7 @@
   "type": "interlude",
   "scenario_name": "Twist of Fate",
   "full_name": "Interlude IV: Twist of Fate",
+  "header": "Interlude IV",
   "icon": "inexorable_fate",
   "setup": [
     "tof_1",
@@ -45489,6 +45584,7 @@
   "id": "union_and_disillusion",
   "scenario_name": "Union and Disillusion",
   "full_name": "Scenario VI: Union and Disillusion",
+  "header": "Scenario VI",
   "setup": [
     "intro_1",
     "point_of_no_return",
@@ -47417,6 +47513,7 @@
   "id": "the_black_cat",
   "scenario_name": "The Black Cat",
   "full_name": "Interlude I: The Black Cat",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "tde",
   "setup": [
@@ -47743,6 +47840,7 @@
   "id": "tde_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "merging_realities",
   "setup": [
@@ -48281,6 +48379,7 @@
   "id": "the_great_ones",
   "scenario_name": "The Great Ones",
   "full_name": "Interlude III: The Great Ones",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "dreamers_curse",
   "setup": [
@@ -48993,6 +49092,7 @@
   "id": "the_oneironauts",
   "scenario_name": "The Oneironauts",
   "full_name": "Interlude II: The Oneironauts",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "whispers_of_hypnos",
   "setup": [
@@ -49625,6 +49725,7 @@
   "id": "beyond_the_gates_of_sleep",
   "scenario_name": "Beyond the Gates of Sleep",
   "full_name": "Scenario I–A: Beyond the Gates of Sleep",
+  "header": "Scenario I-A",
   "setup": [
     "dream_intro",
     "choose_dreams",
@@ -50502,6 +50603,7 @@
   "id": "dark_side_of_the_moon",
   "scenario_name": "Dark Side of the Moon",
   "full_name": "Scenario III–A: Dark Side of the Moon",
+  "header": "Scenario III-A",
   "setup": [
     "check_someone_captured",
     "gather_encounter_sets",
@@ -50884,6 +50986,7 @@
   "id": "tde_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "dreamlands",
   "setup": [
@@ -50906,6 +51009,7 @@
   "id": "the_search_for_kadath",
   "scenario_name": "The Search for Kadath",
   "full_name": "Scenario II–A: The Search for Kadath",
+  "header": "Scenario II-A",
   "standalone_setup": [
     "setup_standalone_bag",
     "black_cat_not_at_your_side",
@@ -51910,6 +52014,7 @@
   "id": "where_gods_dwell",
   "scenario_name": "Where the Gods Dwell",
   "full_name": "Scenario IV–A: Where the Gods Dwell",
+  "header": "Scenario IV-A",
   "setup": [
     "check_carried_to_the_cold_wastes",
     "gather_encounter_sets",
@@ -52914,6 +53019,7 @@
   "id": "a_thousand_shapes_of_horror",
   "scenario_name": "A Thousand Shapes of Horror",
   "full_name": "Scenario II–B: A Thousand Shapes of Horror",
+  "header": "Scenario II-B",
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -53251,6 +53357,7 @@
   "id": "the_black_cat",
   "scenario_name": "The Black Cat",
   "full_name": "Interlude I: The Black Cat",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "tde",
   "setup": [
@@ -53483,6 +53590,7 @@
   "id": "tde_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "merging_realities",
   "setup": [
@@ -53977,6 +54085,7 @@
   "id": "the_great_ones",
   "scenario_name": "The Great Ones",
   "full_name": "Interlude III: The Great Ones",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "dreamers_curse",
   "setup": [
@@ -54423,6 +54532,7 @@
   "id": "the_oneironauts",
   "scenario_name": "The Oneironauts",
   "full_name": "Interlude II: The Oneironauts",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "whispers_of_hypnos",
   "setup": [
@@ -55099,6 +55209,7 @@
   "id": "point_of_no_return",
   "scenario_name": "Point of No Return",
   "full_name": "Scenario III–B: Point of No Return",
+  "header": "Scenario III-B",
   "setup": [
     "check_randolph_did_not_survive_descent",
     "gather_encounter_sets",
@@ -55539,6 +55650,7 @@
   "id": "tde_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "dreamlands",
   "setup": [
@@ -55561,6 +55673,7 @@
   "id": "waking_nightmare",
   "scenario_name": "Waking Nightmare",
   "full_name": "Scenario I–B: Waking Nightmare",
+  "header": "Scenario I-B",
   "setup": [
     "intro_1",
     "choose_doctor",
@@ -56043,6 +56156,7 @@
   "id": "weaver_of_the_cosmos",
   "scenario_name": "Weaver of the Cosmos",
   "full_name": "Scenario IV-B: Weaver of the Cosmos",
+  "header": "Scenario IV-B",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -57105,6 +57219,7 @@
   "id": "tfa_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "temporal_flux",
   "setup": [
@@ -57168,6 +57283,7 @@
   "id": "tfa_interlude2",
   "scenario_name": "Expedition's End",
   "full_name": "Interlude II: Expedition's End",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -57365,6 +57481,7 @@
   "id": "eztli",
   "scenario_name": "The Doom of Eztli",
   "full_name": "Scenario II: The Doom of Eztli",
+  "header": "Scenario II",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -57861,6 +57978,7 @@
   "id": "heart_of_the_elders_part_1",
   "scenario_name": "Heart of the Elders, Part 1",
   "full_name": "Scenario V–A: Heart of the Elders, Part 1",
+  "header": "Scenario V-A",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -58258,6 +58376,7 @@
   "id": "heart_of_the_elders_part_2",
   "scenario_name": "Heart of the Elders, Part 2",
   "full_name": "Scenario V–B: Heart of the Elders, Part 2",
+  "header": "Scenario V-B",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -58521,6 +58640,7 @@
   "id": "tfa_interlude3",
   "scenario_name": "The Jungle Beckons",
   "full_name": "Interlude III: The Jungle Beckons",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "rainforest",
   "setup": [
@@ -58982,6 +59102,7 @@
   "id": "tfa_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -59098,6 +59219,7 @@
   "id": "tfa_interlude1",
   "scenario_name": "Restless Nights",
   "full_name": "Interlude I: Restless Nights",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "deadly_traps",
   "setup": [
@@ -59373,6 +59495,7 @@
   "id": "shattered_aeons",
   "scenario_name": "Shattered Aeons",
   "full_name": "Scenario VIII: Shattered Aeons",
+  "header": "Scenario VIII",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -59850,6 +59973,7 @@
   "id": "the_boundary_beyond",
   "scenario_name": "The Boundary Beyond",
   "full_name": "Scenario IV: The Boundary Beyond",
+  "header": "Scenario IV",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -60550,6 +60674,7 @@
   "id": "the_city_of_archives",
   "scenario_name": "The City of Archives",
   "full_name": "Scenario VI: The City of Archives",
+  "header": "Scenario VI",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -60968,6 +61093,7 @@
   "id": "tfa_interlude5",
   "scenario_name": "The Darkness",
   "full_name": "Interlude V: The Darkness",
+  "header": "Interlude V",
   "type": "interlude",
   "icon": "torch",
   "setup": [
@@ -61473,6 +61599,7 @@
   "id": "the_depths_of_yoth",
   "scenario_name": "The Depths of Yoth",
   "full_name": "Scenario VII: The Depths of Yoth",
+  "header": "Scenario VII",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -62605,6 +62732,7 @@
   "id": "tfa_interlude4",
   "scenario_name": "Those Held Captive",
   "full_name": "Interlude IV: Those Held Captive",
+  "header": "Interlude IV",
   "type": "interlude",
   "icon": "cult_of_pnakotus",
   "setup": [
@@ -63211,6 +63339,7 @@
   "id": "threads_of_fate",
   "scenario_name": "Threads of Fate",
   "full_name": "Scenario III: Threads of Fate",
+  "header": "Scenario III",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -64317,6 +64446,7 @@
   "id": "turn_back_time",
   "scenario_name": "Turn Back Time",
   "full_name": "Scenario IX: Turn Back Time",
+  "header": "Scenario IX",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -64790,6 +64920,7 @@
   "id": "wilds",
   "scenario_name": "The Untamed Wilds",
   "full_name": "Scenario I: The Untamed Wilds",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -65446,6 +65577,7 @@
   "id": "a_light_in_the_fog",
   "scenario_name": "A Light in the Fog",
   "full_name": "Scenario VI: A Light in the Fog",
+  "header": "Scenario VI",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -66457,6 +66589,7 @@
   "id": "beneath_the_waves",
   "scenario_name": "Beneath the Waves",
   "full_name": "Interlude III: Beneath the Waves",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "flooded_caverns",
   "setup": [
@@ -66746,6 +66879,7 @@
   "id": "devil_reef",
   "scenario_name": "Devil Reef",
   "full_name": "Scenario IV: Devil Reef",
+  "header": "Scenario IV",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -67447,6 +67581,7 @@
   "id": "hidden_truths",
   "scenario_name": "Hidden Truths",
   "full_name": "Interlude IV: Hidden Truths",
+  "header": "Interlude IV",
   "icon": "agents_of_dagon",
   "type": "placeholder",
   "setup": [],
@@ -67457,6 +67592,7 @@
   "id": "horror_in_high_gear",
   "scenario_name": "Horror in High Gear",
   "full_name": "Scenario V: Horror in High Gear",
+  "header": "Scenario V",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -67763,6 +67899,7 @@
   "id": "in_too_deep",
   "scenario_name": "In Too Deep",
   "full_name": "Scenario III: In Too Deep",
+  "header": "Scenario III",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -68338,6 +68475,7 @@
   "id": "into_the_maelstrom",
   "scenario_name": "Into the Maelstrom",
   "full_name": "Scenario VIII: Into the Maelstrom",
+  "header": "Scenario VIII",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -68347,6 +68485,7 @@
   "id": "puzzle_pieces",
   "scenario_name": "Puzzle Pieces",
   "full_name": "Interlude I: Puzzle Pieces",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "shattered_memories",
   "setup": [
@@ -68574,6 +68713,7 @@
   "id": "the_lair_of_dagon",
   "scenario_name": "The Lair of Dagon",
   "full_name": "Scenario VII: The Lair of Dagon",
+  "header": "Scenario VII",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -68583,6 +68723,7 @@
   "id": "the_pit_of_despair",
   "scenario_name": "The Pit of Despair",
   "full_name": "Scenario I: The Pit of Despair",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -69050,6 +69191,7 @@
   "id": "the_syzygy",
   "scenario_name": "The Syzygy",
   "full_name": "Interlude II: The Syzygy",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "syzygy",
   "setup": [
@@ -69159,6 +69301,7 @@
   "id": "the_vanishing_of_elina_harper",
   "scenario_name": "The Vanishing of Elina Harper",
   "full_name": "Scenario II: The Vanishing of Elina Harper",
+  "header": "Scenario II",
   "setup": [
     "intro_1",
     "info_summary",
@@ -71018,6 +71161,7 @@
   "id": "tic_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "placeholder",
   "icon": "rising_tide",
   "setup": [],

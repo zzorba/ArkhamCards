@@ -54,6 +54,10 @@ export default class ScenarioGuide {
     return this.scenario.scenario_name;
   }
 
+  scenarioHeader(): string {
+    return this.scenario.header;
+  }
+
   fullScenarioName(): string {
     return this.scenario.full_name;
   }

@@ -864,6 +864,7 @@ export interface Scenario {
   id: string;
   scenario_name: string;
   full_name: string;
+  header: string;
   icon?: string;
   xp_cost?: number;
   side_scenario_type?: "challenge" | "standalone";

@@ -610,7 +610,7 @@ function DeckDetailView({
         passProps: {
           componentId,
           id,
-          cardsByName: cardsByName[card.real_name] || [],
+          cardsByName: cardsByName[card.real_name.toLowerCase()] || [],
           investigator: parsedDeck.investigator,
         },
         options: getDeckOptions(colors, { title: card.name }, parsedDeck.investigator),

@@ -24,10 +24,8 @@ interface Props {
 export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, last, isActive }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const [scenarioNumber, scenarioName] = useMemo(() => {
-    const fullScenarioName = scenario.scenarioGuide.fullScenarioName();
-    const splitPoint = fullScenarioName.indexOf(':');
-    const scenarioName = fullScenarioName.substr(0, splitPoint).trim();
-    const actualName = fullScenarioName.substr(splitPoint + 1).trim();
+    const scenarioName = scenario.scenarioGuide.scenarioHeader();
+    const actualName = scenario.scenarioGuide.scenarioName();
     if (scenario.id.replayAttempt) {
       const attempt = scenario.id.replayAttempt + 1;
       return [t`${ scenarioName } (Attempt ${ attempt })`, actualName];

@@ -322,7 +322,7 @@ export const syncCards = async function(
       });
 
       // Handle all upgrade stuff
-      const cardsByName = values(groupBy(playerCards, card => card.real_name));
+      const cardsByName = values(groupBy(playerCards, card => card.real_name.toLowerCase()));
       forEach(cardsByName, cardsGroup => {
         if (cardsGroup.length > 1) {
           const maxXpCard = head(sortBy(cardsGroup, card => -(card.xp || 0)));
