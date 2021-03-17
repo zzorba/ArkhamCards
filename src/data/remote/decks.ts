@@ -1,5 +1,5 @@
 import { useCallback, useContext, useMemo } from 'react';
-import RnHash, { CONSTANTS } from 'react-native-hash';
+import { sha1 } from 'react-native-sha256';
 import { keys } from 'lodash';
 
 import { Deck, DeckId, getDeckId, UploadedDeck } from '@actions/types';
@@ -29,7 +29,7 @@ export interface DeckActions {
 }
 
 function hashDeck(deck: Deck): Promise<string> {
-  return RnHash.hashString(JSON.stringify(deck), CONSTANTS.HashAlgorithms.md5);
+  return sha1(JSON.stringify(deck));
 }
 
 export async function syncCampaignDecksFromArkhamDB(
