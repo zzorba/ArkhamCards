@@ -57,6 +57,12 @@ mutation uploadNewCampaign(
     }
 	) {
     ...FullCampaign
+    link_a_campaign {
+      ...MiniCampaign
+    }
+    link_b_campaign {
+      ...MiniCampaign
+    }
     campaign_guide {
       ...FullCampaignGuideState
     }

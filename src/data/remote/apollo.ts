@@ -1,7 +1,77 @@
 import { ApolloCache, DocumentNode, MutationUpdaterFn } from '@apollo/client';
-import { filter, find } from 'lodash';
+import { filter, find, pick } from 'lodash';
 
-import { AddCampaignInvestigatorDocument, AddCampaignInvestigatorMutation, AddGuideInputDocument, AddGuideInputMutation, FullCampaignFragment, FullCampaignFragmentDoc, GetCampaignGuideDocument, GetCampaignGuideQuery, MiniCampaignFragment, MiniCampaignFragmentDoc, RemoveCampaignInvestigatorDocument, RemoveCampaignInvestigatorMutation, UpdateInvestigatorDataDocument, UpdateInvestigatorDataMutation, UpdateInvestigatorTraumaDocument, UpdateInvestigatorTraumaMutation } from '@generated/graphql/apollo-schema';
+import { AddCampaignInvestigatorDocument, AddCampaignInvestigatorMutation, AddGuideInputDocument, AddGuideInputMutation, DecCountAchievementDocument, DecCountAchievementMutation, FullCampaignFragment, FullCampaignFragmentDoc, FullCampaignGuideStateFragment, FullCampaignGuideStateFragmentDoc, GetCampaignDocument, GetCampaignGuideDocument, GetCampaignGuideQuery, GetCampaignQuery, GetMyCampaignsDocument, GetMyCampaignsQuery, GuideAchievementFragment, GuideAchievementFragmentDoc, Guide_Achievement, IncCountAchievementDocument, IncCountAchievementMaxDocument, IncCountAchievementMaxMutation, IncCountAchievementMutation, MiniCampaignFragment, MiniCampaignFragmentDoc, RemoveCampaignInvestigatorDocument, RemoveCampaignInvestigatorMutation, SetBinaryAchievementDocument, SetBinaryAchievementMutation, UpdateInvestigatorDataDocument, UpdateInvestigatorDataMutation, UpdateInvestigatorTraumaDocument, UpdateInvestigatorTraumaMutation, UploadNewCampaignMutation } from '@generated/graphql/apollo-schema';
+
+function fullToMiniCampaignFragment(fragment: FullCampaignFragment): MiniCampaignFragment {
+  return {
+    __typename: 'campaign',
+    ...pick(fragment, [
+      'id',
+      'uuid',
+      'name',
+      'investigator_data',
+      'latest_decks',
+      'investigators',
+      'difficulty',
+      'updated_at',
+      'guided',
+      'scenarioResults',
+    ]),
+  };
+}
+
+export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutation> = (cache, { data }) => {
+  if (data === undefined || !data?.update_campaign_by_pk) {
+    return;
+  }
+  const campaignId = data.update_campaign_by_pk.id;
+  const ownerId = data.update_campaign_by_pk.owner;
+
+  cache.writeQuery<GetCampaignQuery>({
+    query: GetCampaignDocument,
+    variables: {
+      campaign_id: campaignId,
+    },
+    data: {
+      __typename: 'query_root',
+      campaign_by_pk: data.update_campaign_by_pk,
+    },
+  });
+
+  const cacheData = cache.readQuery<GetMyCampaignsQuery>({
+    query: GetMyCampaignsDocument,
+    variables: {
+      userId: ownerId,
+    },
+  });
+  if (!cacheData || !cacheData.users_by_pk) {
+    return;
+  }
+  cache.writeQuery<GetMyCampaignsQuery>({
+    query: GetMyCampaignsDocument,
+    variables: {
+      userId: ownerId,
+    },
+    data: {
+      users_by_pk: {
+        id: ownerId,
+        campaigns: [
+          ...filter(cacheData.users_by_pk.campaigns, c => c.campaign?.id !== campaignId),
+          {
+            __typename: 'user_campaigns',
+            campaign: {
+              ...fullToMiniCampaignFragment(data.update_campaign_by_pk),
+              link_a_campaign: data.update_campaign_by_pk.link_a_campaign,
+              link_b_campaign: data.update_campaign_by_pk.link_b_campaign,
+            },
+          },
+        ],
+      },
+    },
+  })
+};
+
 
 const handleAddGuideInput: MutationUpdaterFn<AddGuideInputMutation> = (cache, { data }) => {
   if (data === undefined || !data?.insert_guide_input_one) {
@@ -68,6 +138,27 @@ function updateFullCampaign(cache: ApolloCache<unknown>, campaignId: number, upd
     cache.writeFragment<FullCampaignFragment>({
       fragment: FullCampaignFragmentDoc,
       fragmentName: 'FullCampaign',
+      data: update(existingCacheData),
+    });
+  }
+}
+
+
+function updateFullCampaignGuide(
+  cache: ApolloCache<unknown>,
+  campaignId: number,
+  update: (fragment: FullCampaignGuideStateFragment) => FullCampaignGuideStateFragment
+) {
+  const id = cache.identify({ __typename: 'campaign', id: campaignId });
+  const existingCacheData = cache.readFragment<FullCampaignGuideStateFragment>({
+    fragment: FullCampaignGuideStateFragmentDoc,
+    fragmentName: 'FullCampaignGuideState',
+    id,
+  });
+  if (existingCacheData) {
+    cache.writeFragment<FullCampaignGuideStateFragment>({
+      fragment: FullCampaignGuideStateFragmentDoc,
+      fragmentName: 'FullCampaignGuideState',
       data: update(existingCacheData),
     });
   }
@@ -187,6 +278,117 @@ const handleUpdateInvestigatorData: MutationUpdaterFn<UpdateInvestigatorDataMuta
   );
 };
 
+function updateGuideAchievement(
+  cache: ApolloCache<unknown>,
+  achievement: GuideAchievementFragment,
+  insert: () => GuideAchievementFragment,
+  update: (achievement: GuideAchievementFragment) => GuideAchievementFragment
+) {
+  const id = achievement.id;
+  cache.writeFragment<GuideAchievementFragment>({
+    fragment: GuideAchievementFragmentDoc,
+    data: achievement,
+  });
+  updateFullCampaignGuide(
+    cache,
+    achievement.campaign_id,
+    (existingCacheData: FullCampaignGuideStateFragment) => {
+      const existingAchievement = find(existingCacheData.guide_achievements, a => a.id === id);
+      if (!existingAchievement) {
+        return {
+          ...existingCacheData,
+          guide_achievements: [
+            ...existingCacheData.guide_achievements || [],
+            insert(),
+          ],
+        };
+      }
+      return {
+        ...existingCacheData,
+        guide_achievements: [
+          ...filter(existingCacheData.guide_achievements, a => a.id !== id),
+          update(existingAchievement),
+        ],
+      };
+    }
+  );
+}
+
+const handleSetBinaryAchievement: MutationUpdaterFn<SetBinaryAchievementMutation> = (cache, { data }) => {
+  if (!data?.insert_guide_achievement_one) {
+    return;
+  }
+  const achievement = data.insert_guide_achievement_one;
+  updateGuideAchievement(cache, achievement, () => achievement, () => achievement);
+};
+
+const handleIncCountAchievementMax: MutationUpdaterFn<IncCountAchievementMaxMutation> = (cache, { data, context }) => {
+  if (!data?.update_guide_achievement || !data.update_guide_achievement.returning.length) {
+    return;
+  }
+  const achievement = data.update_guide_achievement.returning[0];
+  const id = achievement.id;
+  const max = context?.max || 0;
+  updateGuideAchievement(cache, achievement, () => {
+    return {
+      __typename: 'guide_achievement',
+      id,
+      campaign_id: achievement.campaign_id,
+      type: 'count',
+      value: Math.min(1, context?.max),
+    };
+  }, (a: GuideAchievementFragment) => {
+    return {
+      ...a,
+      value: Math.min((a.value || 0) + 1, max),
+    };
+  });
+};
+
+const handleIncCountAchievement: MutationUpdaterFn<IncCountAchievementMutation> = (cache, { data }) => {
+  if (!data?.update_guide_achievement || !data.update_guide_achievement.returning.length) {
+    return;
+  }
+  const achievement = data.update_guide_achievement.returning[0];
+  const id = achievement.id;
+  updateGuideAchievement(cache, achievement, () => {
+    return {
+      __typename: 'guide_achievement',
+      id,
+      campaign_id: achievement.campaign_id,
+      type: 'count',
+      value: 1,
+    };
+  }, (a: GuideAchievementFragment) => {
+    return {
+      ...a,
+      value: (a.value || 0) + 1,
+    };
+  });
+};
+
+const handleDecCountAchievement: MutationUpdaterFn<DecCountAchievementMutation> = (cache, { data }) => {
+  if (!data?.update_guide_achievement || !data.update_guide_achievement.returning.length) {
+    return;
+  }
+  const achievement = data.update_guide_achievement.returning[0];
+  const id = achievement.id;
+  updateGuideAchievement(cache, achievement, () => {
+    return {
+      __typename: 'guide_achievement',
+      id,
+      campaign_id: achievement.campaign_id,
+      type: 'count',
+      value: 0,
+    };
+  }, (a: GuideAchievementFragment) => {
+    return {
+      ...a,
+      value: Math.max((a.value || 0) - 1, 0),
+    };
+  });
+};
+
 interface OptimisticUpdate {
   mutation: DocumentNode;
   update: MutationUpdaterFn;
@@ -216,5 +418,21 @@ export const optimisticUpdates: OptimisticUpdateByName = {
   updateInvestigatorData: {
     mutation: UpdateInvestigatorDataDocument,
     update: handleUpdateInvestigatorData,
+  },
+  setBinaryAchievement: {
+    mutation: SetBinaryAchievementDocument,
+    update: handleSetBinaryAchievement,
+  },
+  incCountAchievementMax: {
+    mutation: IncCountAchievementMaxDocument,
+    update: handleIncCountAchievementMax,
+  },
+  incCountAchievement: {
+    mutation: IncCountAchievementDocument,
+    update: handleIncCountAchievement,
+  },
+  decCountAchievement: {
+    mutation: DecCountAchievementDocument,
+    update: handleDecCountAchievement,
   },
 };

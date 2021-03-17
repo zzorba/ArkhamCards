@@ -1,4 +1,4 @@
-import { forEach, map, omit } from 'lodash';
+import { forEach } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -23,25 +23,13 @@ import {
   Campaign,
   UploadedCampaignId,
   UPDATE_CAMPAIGN,
-  GuideAchievement,
 } from '@actions/types';
 
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
-import { CreateCampaignActions, GuideActions, guideInputToInsert } from '@data/remote/campaigns';
-import { Guide_Input_Insert_Input, Guide_Achievement_Insert_Input, Investigator_Data_Insert_Input, Campaign_Investigator_Insert_Input } from '@generated/graphql/apollo-schema';
+import { CreateCampaignActions, GuideActions } from '@data/remote/campaigns';
 import { DeckActions } from '@data/remote/decks';
-
-function guideAchievementToInsert(a: GuideAchievement, serverId: number): Guide_Achievement_Insert_Input {
-  return {
-    campaign_id: serverId,
-    id: a.id,
-    bool_value: a.type === 'binary' ? a.value : undefined,
-    value: a.type === 'count' ? a.value : undefined,
-    type: a.type,
-  };
-}
 
 function uploadCampaignHelper(
   campaign: Campaign,
@@ -52,64 +40,13 @@ function uploadCampaignHelper(
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch, getState) => {
     // Do something with deck uploads?
-    let inputs: Guide_Input_Insert_Input[] = [];
-    let achievements: Guide_Achievement_Insert_Input[] = [];
     if (guided) {
       const state = getState();
       const guide = makeCampaignGuideStateSelector()(state, campaign.uuid);
-      inputs = map(guide.inputs, input => guideInputToInsert(input, campaignId.serverId));
-      achievements = map(guide.achievements || [], a => guideAchievementToInsert(a, campaignId.serverId));
+      actions.uploadNewCampaign(campaignId.serverId, campaign, guide);
+    } else {
+      actions.uploadNewCampaign(campaignId.serverId, campaign, undefined);
     }
-    const investigator_data: Investigator_Data_Insert_Input[] = [];
-    forEach(campaign.investigatorData, (data, investigator) => {
-      if (!data) {
-        return;
-      }
-      investigator_data.push({
-        campaign_id: campaignId.serverId,
-        investigator,
-        addedCards: data.addedCards,
-        removedCards: data.removedCards,
-        storyAssets: data.storyAssets,
-        ignoreStoryAssets: data.ignoreStoryAssets,
-        insane: data.insane,
-        killed: data.killed,
-        mental: data.mental,
-        physical: data.physical,
-        specialXp: data.specialXp,
-        spentXp: data.spentXp,
-        availableXp: data.availableXp,
-      });
-    });
-    const investigators: Campaign_Investigator_Insert_Input[] = [];
-    forEach(campaign.nonDeckInvestigators || [], code => {
-      investigators.push({
-        campaign_id: campaignId.serverId,
-        investigator: code,
-      });
-    });
-    await actions.uploadNewCampaign({
-      variables: {
-        campaignId: campaignId.serverId,
-        name: campaign.name,
-        cycleCode: campaign.cycleCode,
-        standaloneId: campaign.standaloneId,
-        difficulty: campaign.difficulty,
-        chaosBag: campaign.chaosBag,
-        inputs,
-        achievements,
-        investigator_data,
-        investigators,
-        campaignNotes: campaign.campaignNotes,
-        scenarioResults: campaign.scenarioResults,
-        showInterludes: campaign.showInterludes,
-        weaknessSet: campaign.weaknessSet,
-        guideVersion: campaign.guideVersion,
-      },
-      context: {
-        serializationKey: campaignId.serverId,
-      },
-    });
     dispatch({
       type: UPDATE_CAMPAIGN,
       id: campaignId,
