@@ -3951,6 +3951,10 @@ msgid "Faction, Level, Type"
 msgstr "職階，等級，種類"
 
 #, javascript-format
+msgid "${ normalCardCount } / ${ deckSize } cards"
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"

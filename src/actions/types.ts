@@ -190,6 +190,7 @@ export interface ParsedDeck {
   investigator: Card;
   deck: Deck;
   slots: Slots;
+  deckSize: number;
   normalCardCount: number;
   totalCardCount: number;
   experience: number;

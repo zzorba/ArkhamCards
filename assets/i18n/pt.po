@@ -4170,6 +4170,10 @@ msgid_plural "${ standalonePackCount } Packs"
 msgstr[0] "${ standalonePackCount } Pacote"
 msgstr[1] "${ standalonePackCount } Pacotes\n"
 
+#, javascript-format
+msgid "${ normalCardCount } / ${ deckSize } cards"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"

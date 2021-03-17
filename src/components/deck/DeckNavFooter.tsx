@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { t } from 'ttag';
+import { msgid, ngettext, t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import space, { isBig, m, s, xs } from '@styles/space';
@@ -15,6 +15,7 @@ import RoundButton from '@components/core/RoundButton';
 import { useDeckEditState, useParsedDeck } from '@components/deck/hooks';
 import { useAdjustXpDialog } from '@components/deck/dialogs';
 import { DeckId } from '@actions/types';
+import { TINY_PHONE } from '@styles/sizes';
 
 const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 
@@ -66,6 +67,14 @@ export default function DeckNavFooter({
     return t`${adjustedXp} XP`;
   }, [parsedDeck]);
 
+  const cardString = useMemo(() => {
+    if (!parsedDeck) {
+      return undefined;
+    }
+    const { normalCardCount, deckSize } = parsedDeck;
+    return t`${normalCardCount} / ${deckSize} cards`;
+  }, [parsedDeck]);
+
   const xpLine = useMemo(() => {
     if (!editable || !deck || !deck.previousDeckId) {
       return (
@@ -94,26 +103,29 @@ export default function DeckNavFooter({
   if (mode === 'view' && !forceShow) {
     return null;
   }
+  const modeText = mode === 'upgrade' ? t`Upgrading` : t`Editing`;
   return (
     <>
       <View style={[styles.marginWrapper, { bottom: (yOffset || NOTCH_BOTTOM_PADDING) + s, paddingRight: fabPadding(control) }]}>
         <View style={[styles.content, shadow.large, { backgroundColor: colors.D10 }]}>
-          <View>
-            <RoundButton
-              onPress={onPress}
-              size={FOOTER_HEIGHT - 16}
-              margin={8}
-            >
-              <AppIcon
-                size={24}
-                color={colors.M}
-                name="check"
-              />
-            </RoundButton>
-          </View>
+          { (control !== 'counts' || !TINY_PHONE) ? (
+            <View>
+              <RoundButton
+                onPress={onPress}
+                size={FOOTER_HEIGHT - 16}
+                margin={8}
+              >
+                <AppIcon
+                  size={24}
+                  color={colors.M}
+                  name="check"
+                />
+              </RoundButton>
+            </View>
+          ) : <View style={{ width: m }} /> }
           <View style={styles.left}>
             <Text style={[typography.smallLabel, typography.italic, typography.inverted]} allowFontScaling={false}>
-              { mode === 'upgrade' ? t`Upgrading` : t`Editing` }
+              { cardString ? `${modeText} · ${cardString}` : modeText }
             </Text>
             { xpLine }
           </View>
