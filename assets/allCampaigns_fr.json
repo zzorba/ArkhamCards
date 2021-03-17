@@ -25798,7 +25798,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Mardi 2 juin 1925</right></fancy>\nIl semble que nous n'aurons pas de repos cet été.\nAujourd'hui, j'ai rencontré mon vieil ami Harlan Earnstone, chercheur en Histoire à l'Université Miskatonic. Il disait avoir un travail à me confier, mais je ne savais honnêtement pas à quoi m'attendre.\nHarlan m'a présenté l'un de ses collègues : Alejandro Vela, un historien célèbre de l'autre côté de la frontière sud. M. Vela est diplômé d\"une prestigieuse université de Mexico et a passé de nombreuses années à étudier l\"Empire aztèque. Il prétend avoir trouvé des preuves de l\"existence d\"une cité-état aztèque encore inconnue appelée Eztli. Mais ses découvertes aussi étranges qu\"inédites n\"ont pas été prises au sérieux par l\"université et il est devenu un paria auprès de ses pairs.\nAlejandro est venu à Arkham dans le but de rassembler des fonds pour monter une expédition afin d'explorer les forêts tropicales du sud du Mexique où reposent, selon lui, les ruines encore inviolées de l'altepetl d'Eztli. Sa description des origines de la cité-état défie toutes nos connaissances actuelles sur l'histoire de l'Amérique précolombienne. Malgré cela – ou plutôt à cause de cela, connaissant bien mon vieil ami –, Harlan a été fasciné par les découvertes d'Alejandro. L'Université Miskatonic a accepté de financer l'expédition (quoique chichement), et Harlan compte sur moi pour en faire partie.\nSi vous voulez mon avis, il y a de grandes probabilités pour que nous partions à la recherche de quelque chose qui n'existe même pas. Mais s'il y a la moindre chance que ce peuple appelé Eztli ait réellement vécu, les implications historiques seraient alors considérables. Après avoir débattu pendant quelque temps de cette proposition, nous avons finalement accepté l'offre d'Alejandro. Les préparatifs sont en cours et nous devrions décoller d'ici la fin du mois. Avec un peu de chance, nous pourrons remplir ce journal avec toutes sortes d'intéressantes découvertes. Sinon, il fera toujours une bonne cale pour le bureau branlant d'Harlan."
+      "text": "<right><fancy>Mardi 2 juin 1925</fancy></right>\nIl semble que nous n'aurons pas de repos cet été.\nAujourd'hui, j'ai rencontré mon vieil ami Harlan Earnstone, chercheur en Histoire à l'Université Miskatonic. Il disait avoir un travail à me confier, mais je ne savais honnêtement pas à quoi m'attendre.\nHarlan m'a présenté l'un de ses collègues : Alejandro Vela, un historien célèbre de l'autre côté de la frontière sud. M. Vela est diplômé d\"une prestigieuse université de Mexico et a passé de nombreuses années à étudier l\"Empire aztèque. Il prétend avoir trouvé des preuves de l\"existence d\"une cité-état aztèque encore inconnue appelée Eztli. Mais ses découvertes aussi étranges qu\"inédites n\"ont pas été prises au sérieux par l\"université et il est devenu un paria auprès de ses pairs.\nAlejandro est venu à Arkham dans le but de rassembler des fonds pour monter une expédition afin d'explorer les forêts tropicales du sud du Mexique où reposent, selon lui, les ruines encore inviolées de l'altepetl d'Eztli. Sa description des origines de la cité-état défie toutes nos connaissances actuelles sur l'histoire de l'Amérique précolombienne. Malgré cela – ou plutôt à cause de cela, connaissant bien mon vieil ami –, Harlan a été fasciné par les découvertes d'Alejandro. L'Université Miskatonic a accepté de financer l'expédition (quoique chichement), et Harlan compte sur moi pour en faire partie.\nSi vous voulez mon avis, il y a de grandes probabilités pour que nous partions à la recherche de quelque chose qui n'existe même pas. Mais s'il y a la moindre chance que ce peuple appelé Eztli ait réellement vécu, les implications historiques seraient alors considérables. Après avoir débattu pendant quelque temps de cette proposition, nous avons finalement accepté l'offre d'Alejandro. Les préparatifs sont en cours et nous devrions décoller d'ici la fin du mois. Avec un peu de chance, nous pourrons remplir ce journal avec toutes sortes d'intéressantes découvertes. Sinon, il fera toujours une bonne cale pour le bureau branlant d'Harlan."
     },
     {
       "id": "choose_investigators",
@@ -26051,7 +26051,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
-        "name": "(has binoculars)",
+        "name": "(possède des jumelles)",
         "investigator": "choice",
         "prompt": "Guetteur du groupe",
         "positiveChoice": {
@@ -32700,7 +32700,7 @@
           },
           {
             "id": "completed",
-            "text": "L'Acte 3b a été complété",
+            "text": "L'Acte 3d a été complété",
             "steps": [
               "rescued_alejandro",
               "maybe_earn_alejandro"
@@ -64960,7 +64960,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Mardi 2 juin 1925</right></fancy>\nIl semble que nous n'aurons pas de repos cet été.\nAujourd'hui, j'ai rencontré mon vieil ami Harlan Earnstone, chercheur en Histoire à l'Université Miskatonic. Il disait avoir un travail à me confier, mais je ne savais honnêtement pas à quoi m'attendre.\nHarlan m'a présenté l'un de ses collègues : Alejandro Vela, un historien célèbre de l'autre côté de la frontière sud. M. Vela est diplômé d\"une prestigieuse université de Mexico et a passé de nombreuses années à étudier l\"Empire aztèque. Il prétend avoir trouvé des preuves de l\"existence d\"une cité-état aztèque encore inconnue appelée Eztli. Mais ses découvertes aussi étranges qu\"inédites n\"ont pas été prises au sérieux par l\"université et il est devenu un paria auprès de ses pairs.\nAlejandro est venu à Arkham dans le but de rassembler des fonds pour monter une expédition afin d'explorer les forêts tropicales du sud du Mexique où reposent, selon lui, les ruines encore inviolées de l'altepetl d'Eztli. Sa description des origines de la cité-état défie toutes nos connaissances actuelles sur l'histoire de l'Amérique précolombienne. Malgré cela – ou plutôt à cause de cela, connaissant bien mon vieil ami –, Harlan a été fasciné par les découvertes d'Alejandro. L'Université Miskatonic a accepté de financer l'expédition (quoique chichement), et Harlan compte sur moi pour en faire partie.\nSi vous voulez mon avis, il y a de grandes probabilités pour que nous partions à la recherche de quelque chose qui n'existe même pas. Mais s'il y a la moindre chance que ce peuple appelé Eztli ait réellement vécu, les implications historiques seraient alors considérables. Après avoir débattu pendant quelque temps de cette proposition, nous avons finalement accepté l'offre d'Alejandro. Les préparatifs sont en cours et nous devrions décoller d'ici la fin du mois. Avec un peu de chance, nous pourrons remplir ce journal avec toutes sortes d'intéressantes découvertes. Sinon, il fera toujours une bonne cale pour le bureau branlant d'Harlan."
+      "text": "<right><fancy>Mardi 2 juin 1925</fancy></right>\nIl semble que nous n'aurons pas de repos cet été.\nAujourd'hui, j'ai rencontré mon vieil ami Harlan Earnstone, chercheur en Histoire à l'Université Miskatonic. Il disait avoir un travail à me confier, mais je ne savais honnêtement pas à quoi m'attendre.\nHarlan m'a présenté l'un de ses collègues : Alejandro Vela, un historien célèbre de l'autre côté de la frontière sud. M. Vela est diplômé d\"une prestigieuse université de Mexico et a passé de nombreuses années à étudier l\"Empire aztèque. Il prétend avoir trouvé des preuves de l\"existence d\"une cité-état aztèque encore inconnue appelée Eztli. Mais ses découvertes aussi étranges qu\"inédites n\"ont pas été prises au sérieux par l\"université et il est devenu un paria auprès de ses pairs.\nAlejandro est venu à Arkham dans le but de rassembler des fonds pour monter une expédition afin d'explorer les forêts tropicales du sud du Mexique où reposent, selon lui, les ruines encore inviolées de l'altepetl d'Eztli. Sa description des origines de la cité-état défie toutes nos connaissances actuelles sur l'histoire de l'Amérique précolombienne. Malgré cela – ou plutôt à cause de cela, connaissant bien mon vieil ami –, Harlan a été fasciné par les découvertes d'Alejandro. L'Université Miskatonic a accepté de financer l'expédition (quoique chichement), et Harlan compte sur moi pour en faire partie.\nSi vous voulez mon avis, il y a de grandes probabilités pour que nous partions à la recherche de quelque chose qui n'existe même pas. Mais s'il y a la moindre chance que ce peuple appelé Eztli ait réellement vécu, les implications historiques seraient alors considérables. Après avoir débattu pendant quelque temps de cette proposition, nous avons finalement accepté l'offre d'Alejandro. Les préparatifs sont en cours et nous devrions décoller d'ici la fin du mois. Avec un peu de chance, nous pourrons remplir ce journal avec toutes sortes d'intéressantes découvertes. Sinon, il fera toujours une bonne cale pour le bureau branlant d'Harlan."
     },
     {
       "id": "choose_investigators",
@@ -65213,7 +65213,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
-        "name": "(has binoculars)",
+        "name": "(possède des jumelles)",
         "investigator": "choice",
         "prompt": "Guetteur du groupe",
         "positiveChoice": {
@@ -70435,7 +70435,7 @@
         "choices": [
           {
             "id": "completed",
-            "text": "L'Acte 3b a été complété",
+            "text": "L'Acte 3d a été complété",
             "steps": [
               "rescued_alejandro",
               "maybe_earn_alejandro"

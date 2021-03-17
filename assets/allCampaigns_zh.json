@@ -44611,7 +44611,7 @@
 },
 {
   "id": "before_the_black_throne",
-  "scenario_name": "Before the Black Throne",
+  "scenario_name": "黑色王座",
   "full_name": "Scenario VIII: Before the Black Throne",
   "setup": [
     "intro",
@@ -45761,7 +45761,7 @@
 },
 {
   "id": "for_the_greater_good",
-  "scenario_name": "For the Greater Good",
+  "scenario_name": "崇高利益",
   "full_name": "Scenario V: For the Greater Good",
   "setup": [
     "intro_1",
@@ -46223,7 +46223,7 @@
 },
 {
   "id": "in_the_clutches_of_chaos",
-  "scenario_name": "In the Clutches of Chaos",
+  "scenario_name": "混沌魔掌",
   "full_name": "Scenario VII: In the Clutches of Chaos",
   "setup": [
     "intro_1",
@@ -48065,7 +48065,7 @@
 },
 {
   "id": "the_secret_name",
-  "scenario_name": "The Secret Name",
+  "scenario_name": "隱秘之名",
   "full_name": "Scenario III: The Secret Name",
   "setup": [
     "check_members_of_the_lodge",
@@ -48689,7 +48689,7 @@
 },
 {
   "id": "the_wages_of_sin",
-  "scenario_name": "The Wages of Sin",
+  "scenario_name": "惡罪報應",
   "full_name": "Scenario IV: The Wages of Sin",
   "setup": [
     "intro",
@@ -49809,7 +49809,7 @@
 },
 {
   "id": "union_and_disillusion",
-  "scenario_name": "Union and Disillusion",
+  "scenario_name": "聚合幻滅",
   "full_name": "Scenario VI: Union and Disillusion",
   "setup": [
     "intro_1",
