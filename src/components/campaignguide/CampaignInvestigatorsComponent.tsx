@@ -164,7 +164,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
                 return null;
               }
               return (
-                <>
+                <View key={`${investigator.code}-${supplies.id}`}>
                   <DeckSlotHeader title={supplies.title} first />
                   <View style={space.paddingTopXs}>
                     <CampaignLogSectionComponent
@@ -173,7 +173,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
                       section={investigatorSection}
                     />
                   </View>
-                </>
+                </View>
               );
             }) }
           </>
