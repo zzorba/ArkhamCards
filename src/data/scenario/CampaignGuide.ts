@@ -284,6 +284,7 @@ export default class CampaignGuide {
           icon: this.campaign.campaign.id,
           scenario_name: t`Campaign Setup`,
           full_name: t`Campaign Setup`,
+          header: '',
           setup: this.campaign.campaign.setup,
           steps: this.campaign.campaign.steps,
         },
@@ -411,6 +412,7 @@ export default class CampaignGuide {
       id: entry.scenario,
       scenario_name: entry.name,
       full_name: entry.name,
+      header: '',
       setup: [
         'spend_xp_cost',
         PLAY_SCENARIO_STEP_ID,
