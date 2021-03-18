@@ -10,7 +10,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "sacrificed",
@@ -2980,7 +2980,7 @@
     },
     {
       "id": "warn_or_calm_choice",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -3836,7 +3836,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "cultists_interrogated",
@@ -5407,7 +5407,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "chasing_the_stranger",
@@ -5434,7 +5434,7 @@
     },
     {
       "id": "hidden",
-      "title": "Campaign Log",
+      "title": "Diario della Campagna",
       "type": "hidden"
     }
   ],
@@ -12029,12 +12029,12 @@
   "id": "rtdwl",
   "position": 1,
   "version": 1,
-  "name": "Ritorno all'Eredità di Dunwich",
+  "name": "Ritorno a… L’Eredità di Dunwich",
   "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "sacrificed",
@@ -12545,7 +12545,7 @@
 },
 {
   "id": "return_to_blood_on_the_altar",
-  "scenario_name": "Ritorno a Sangue sull'Altare",
+  "scenario_name": "Ritorno a… Sangue sull'Altare",
   "header": "Scenario IV",
   "full_name": "Scenario IV: Return to Blood on the Altar",
   "setup": [
@@ -13410,7 +13410,7 @@
 },
 {
   "id": "return_to_extracurricular_activity",
-  "scenario_name": "Ritorno ad Attività Extracurricolare",
+  "scenario_name": "Ritorno a… Attività Extracurricolare",
   "header": "Scenario I-A",
   "full_name": "Scenario I–A: Return to Extracurricular Activity",
   "setup": [
@@ -13775,7 +13775,7 @@
 },
 {
   "id": "return_to_lost_in_time_and_space",
-  "scenario_name": "Ritorno a Oltre il Tempo e lo Spazio",
+  "scenario_name": "Ritorno a… Oltre il Tempo e lo Spazio",
   "header": "Scenario VII",
   "full_name": "Scenario VII: Return to Lost in Time and Space",
   "setup": [
@@ -14128,7 +14128,7 @@
 },
 {
   "id": "return_to_the_house_always_wins",
-  "scenario_name": "Ritorno a Il Banco Vince Sempre",
+  "scenario_name": "Ritorno a… Il Banco Vince Sempre",
   "header": "Scenario I-B",
   "full_name": "Scenario I–B: Return to The House Always Wins",
   "setup": [
@@ -14473,7 +14473,7 @@
 },
 {
   "id": "return_to_the_miskatonic_museum",
-  "scenario_name": "Ritorno a Il Museo della Miskatonic",
+  "scenario_name": "Ritorno a… Il Museo della Miskatonic",
   "header": "Scenario II",
   "full_name": "Scenario II: Return to The Miskatonic Museum",
   "setup": [
@@ -14812,7 +14812,7 @@
 },
 {
   "id": "return_to_undimensioned_and_unseen",
-  "scenario_name": "Ritorno a Le Dimensioni dell'Invisibile",
+  "scenario_name": "Ritorno a… Le Dimensioni dell'Invisibile",
   "header": "Scenario V",
   "full_name": "Scenario V: Return to Undimensioned and Unseen",
   "setup": [
@@ -14843,7 +14843,7 @@
     },
     {
       "id": "warn_or_calm_choice",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -15206,7 +15206,7 @@
 },
 {
   "id": "return_to_where_doom_awaits",
-  "scenario_name": "Ritorno a Verso un Destino Oscuro",
+  "scenario_name": "Ritorno a… Verso un Destino Oscuro",
   "header": "Scenario VI",
   "full_name": "Scenario VI: Return to Where Doom Awaits",
   "setup": [
@@ -16079,7 +16079,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "cultists_interrogated",
@@ -16801,7 +16801,7 @@
 },
 {
   "id": "return_to_the_gathering",
-  "scenario_name": "Ritorno a L'Adunanza",
+  "scenario_name": "Ritorno a… L'Adunanza",
   "header": "Scenario I",
   "full_name": "Scenario I: Return to the Gathering",
   "setup": [
@@ -17796,12 +17796,12 @@
   "id": "rtptc",
   "position": 2,
   "version": 2,
-  "name": "Ritorno a La Strada per Carcosa",
+  "name": "Ritorno a… La Strada per Carcosa",
   "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "chasing_the_stranger",
@@ -17828,7 +17828,7 @@
     },
     {
       "id": "hidden",
-      "title": "Campaign Log",
+      "title": "Diario della Campagna",
       "type": "hidden"
     }
   ],
@@ -18812,7 +18812,7 @@
 },
 {
   "id": "return_to_a_phantom_of_truth",
-  "scenario_name": "Ritorno a Lo Spettro della Verità",
+  "scenario_name": "Ritorno a… Lo Spettro della Verità",
   "full_name": "Scenario V: Return to A Phantom of Truth",
   "header": "Scenario V",
   "setup": [
@@ -19794,7 +19794,7 @@
 },
 {
   "id": "return_to_black_stars_rise",
-  "scenario_name": "Ritorno a L'Ascesa delle Stelle Nere",
+  "scenario_name": "Ritorno a… L'Ascesa delle Stelle Nere",
   "full_name": "Scenario VII: Return to Black Stars Rise",
   "header": "Scenario VII",
   "setup": [
@@ -20539,7 +20539,7 @@
 },
 {
   "id": "return_to_curtain_call",
-  "scenario_name": "Ritorno a Cala il Sipario",
+  "scenario_name": "Ritorno a… Cala il Sipario",
   "full_name": "Scenario I: Return to Curtain Call",
   "header": "Scenario I",
   "setup": [
@@ -20944,7 +20944,7 @@
 },
 {
   "id": "return_to_dim_carcosa",
-  "scenario_name": "Ritorno a La Cupa Carcosa",
+  "scenario_name": "Ritorno a… La Cupa Carcosa",
   "full_name": "Scenario VIII: Return to Dim Carcosa",
   "header": "Scenario VIII",
   "setup": [
@@ -21793,7 +21793,7 @@
 },
 {
   "id": "return_to_echoes_of_the_past",
-  "scenario_name": "Ritorno a Echi dal Passato",
+  "scenario_name": "Ritorno a… Echi dal Passato",
   "full_name": "Scenario III: Return to Echoes of the Past",
   "header": "Scenario III",
   "setup": [
@@ -22390,7 +22390,7 @@
 },
 {
   "id": "return_to_the_last_king",
-  "scenario_name": "Ritorno a L'Ultimo Re",
+  "scenario_name": "Ritorno a… L'Ultimo Re",
   "full_name": "Scenario II: Return to The Last King",
   "header": "Scenario II",
   "standalone_setup": [
@@ -22879,7 +22879,7 @@
 },
 {
   "id": "return_to_the_pallid_mask",
-  "scenario_name": "Ritorno a La Maschera Pallida",
+  "scenario_name": "Ritorno a… La Maschera Pallida",
   "full_name": "Scenario VI: Return to The Pallid Mask",
   "header": "Scenario VI",
   "standalone_setup": [
@@ -23813,7 +23813,7 @@
 },
 {
   "id": "return_to_the_unspeakable_oath",
-  "scenario_name": "Ritorno a Il Giuramento Impronunciabile",
+  "scenario_name": "Ritorno a… Il Giuramento Impronunciabile",
   "full_name": "Scenario IV: Return to The Unspeakable Oath",
   "header": "Scenario IV",
   "standalone_setup": [
@@ -24704,12 +24704,12 @@
   "id": "rttfa",
   "position": 3,
   "version": 1,
-  "name": "Return to The Forgotten Age",
+  "name": "Ritorno a… L’Era Dimenticata",
   "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "yigs_fury",
@@ -25188,7 +25188,7 @@
     },
     {
       "id": "choose_where_relic_goes",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -27298,7 +27298,7 @@
 },
 {
   "id": "return_to_shattered_aeons",
-  "scenario_name": "Return to Shattered Aeons",
+  "scenario_name": "Ritorno a… Eoni Infranti",
   "full_name": "Scenario VIII: Return to Shattered Aeons",
   "header": "Scenario VIII",
   "setup": [
@@ -27840,7 +27840,7 @@
 },
 {
   "id": "return_to_the_boundary_beyond",
-  "scenario_name": "Return to The Boundary Beyond",
+  "scenario_name": "Ritorno a… Oltre i Confini",
   "full_name": "Scenario IV: Return to The Boundary Beyond",
   "header": "Scenario IV",
   "setup": [
@@ -28665,7 +28665,7 @@
 },
 {
   "id": "return_to_the_city_of_archives",
-  "scenario_name": "Return to The City of Archives",
+  "scenario_name": "Ritorno a… Città degli Archivi",
   "full_name": "Scenario VI: Return to The City of Archives",
   "header": "Scenario VI",
   "setup": [
@@ -28696,7 +28696,7 @@
     },
     {
       "id": "choose_to_cooperate",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -29143,7 +29143,7 @@
 },
 {
   "id": "return_to_the_depths_of_yoth",
-  "scenario_name": "Return to The Depths of Yoth",
+  "scenario_name": "Ritorno a… Abissi di Yoth",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
   "header": "Scenario VII",
   "standalone_setup": [
@@ -30497,7 +30497,7 @@
 },
 {
   "id": "return_to_the_doom_of_eztli",
-  "scenario_name": "Return to The Doom of Eztli",
+  "scenario_name": "Ritorno a… La Maledizione di Eztli",
   "full_name": "Scenario II: Return to The Doom of Eztli",
   "header": "Scenario II",
   "setup": [
@@ -30725,7 +30725,7 @@
     },
     {
       "id": "choose_to_continue",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -31147,7 +31147,7 @@
 },
 {
   "id": "return_to_the_untamed_wilds",
-  "scenario_name": "Return to The Untamed Wilds",
+  "scenario_name": "Ritorno a… La Foresta Inviolata",
   "full_name": "Scenario I: Return to The Untamed Wilds",
   "header": "Scenario I",
   "setup": [
@@ -31597,7 +31597,7 @@
 },
 {
   "id": "return_to_threads_of_fate",
-  "scenario_name": "Return to Threads of Fate",
+  "scenario_name": "Ritorno a… Trame del Fato",
   "full_name": "Scenario III: Return to Threads of Fate",
   "header": "Scenario III",
   "standalone_setup": [
@@ -31962,7 +31962,7 @@
     },
     {
       "id": "choose_forging_own_path",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -32004,7 +32004,7 @@
     },
     {
       "id": "choose_forging_own_path_standalone",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -34958,7 +34958,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "hidden",
@@ -43780,7 +43780,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "mementos",
@@ -51730,7 +51730,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "evidence_of_kadath",
@@ -57879,7 +57879,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "steps_of_the_bridge",
@@ -62765,7 +62765,7 @@
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "yigs_fury",
@@ -63142,7 +63142,7 @@
     },
     {
       "id": "choose_where_relic_goes",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -63547,7 +63547,7 @@
     },
     {
       "id": "choose_to_continue",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -66855,7 +66855,7 @@
     },
     {
       "id": "choose_to_cooperate",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -70126,7 +70126,7 @@
     },
     {
       "id": "choose_forging_own_path",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -70168,7 +70168,7 @@
     },
     {
       "id": "choose_forging_own_path_standalone",
-      "text": "The investigators must decide (choose one):",
+      "text": "Gli investigatori devono decidere (scegliere una):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -71938,24 +71938,25 @@
   "id": "tic",
   "position": 7,
   "version": 1,
-  "name": "The Innsmouth Conspiracy",
+  "name": "La Cospirazione di Innsmouth",
   "campaign_type": "campaign",
   "campaign_log": [
     {
       "id": "campaign_notes",
-      "title": "Note della Campagna"
+      "title": "Appunti della Campagna"
     },
     {
       "id": "memories_recovered",
-      "title": "Memories Recovered"
+      "title": "Ricordi Recuperati"
     },
     {
       "id": "possible_suspects",
-      "title": "Possible Suspects"
+      "title": "Possibili Sospettati"
     },
     {
       "id": "possible_hideouts",
-      "title": "Possible Hideouts"
+      "title": "Possibili Nascondigli"
+>>>>>>> dde0372319b390b3087780faca673566e5a26f1c
     },
     {
       "id": "hidden",
@@ -72288,7 +72289,7 @@
 }, "scenarios": [
 {
   "id": "a_light_in_the_fog",
-  "scenario_name": "A Light in the Fog",
+  "scenario_name": "Una Luce nella Nebbia",
   "full_name": "Scenario VI: A Light in the Fog",
   "header": "Scenario VI",
   "setup": [
@@ -73406,7 +73407,7 @@
 },
 {
   "id": "beneath_the_waves",
-  "scenario_name": "Beneath the Waves",
+  "scenario_name": "Sotto le Onde",
   "full_name": "Interlude III: Beneath the Waves",
   "header": "Interlude III",
   "type": "interlude",
@@ -73716,7 +73717,7 @@
 },
 {
   "id": "devil_reef",
-  "scenario_name": "Devil Reef",
+  "scenario_name": "Lo Scoglio del Diavolo",
   "full_name": "Scenario IV: Devil Reef",
   "header": "Scenario IV",
   "setup": [
@@ -74757,6 +74758,19 @@
 {
   "id": "horror_in_high_gear",
   "scenario_name": "Horror in High Gear",
+=======
+  "scenario_name": "Verità Nascoste",
+  "full_name": "Interlude IV: Hidden Truths",
+  "header": "Interlude IV",
+  "icon": "agents_of_dagon",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+},
+{
+  "id": "horror_in_high_gear",
+  "scenario_name": "Orrore Ad Alta Velocità",
+>>>>>>> dde0372319b390b3087780faca673566e5a26f1c
   "full_name": "Scenario V: Horror in High Gear",
   "header": "Scenario V",
   "setup": [
@@ -75081,7 +75095,7 @@
 },
 {
   "id": "in_too_deep",
-  "scenario_name": "In Too Deep",
+  "scenario_name": "Con l’Acqua alla Gola",
   "full_name": "Scenario III: In Too Deep",
   "header": "Scenario III",
   "setup": [
@@ -75723,7 +75737,7 @@
 },
 {
   "id": "into_the_maelstrom",
-  "scenario_name": "Into the Maelstrom",
+  "scenario_name": "Nel Maelstrom",
   "full_name": "Scenario VIII: Into the Maelstrom",
   "header": "Scenario VIII",
   "type": "placeholder",
@@ -75732,7 +75746,7 @@
 },
 {
   "id": "puzzle_pieces",
-  "scenario_name": "Puzzle Pieces",
+  "scenario_name": "I Pezzi del Puzzle",
   "full_name": "Interlude I: Puzzle Pieces",
   "header": "Interlude I",
   "type": "interlude",
@@ -76687,6 +76701,18 @@
 {
   "id": "the_pit_of_despair",
   "scenario_name": "The Pit of Despair",
+=======
+  "scenario_name": "Il Covo di Dagon",
+  "full_name": "Scenario VII: The Lair of Dagon",
+  "header": "Scenario VII",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+},
+{
+  "id": "the_pit_of_despair",
+  "scenario_name": "La Grotta della Disperazione",
+>>>>>>> dde0372319b390b3087780faca673566e5a26f1c
   "full_name": "Scenario I: The Pit of Despair",
   "header": "Scenario I",
   "setup": [
@@ -77183,7 +77209,7 @@
 },
 {
   "id": "the_syzygy",
-  "scenario_name": "The Syzygy",
+  "scenario_name": "La Sizigia",
   "full_name": "Interlude II: The Syzygy",
   "header": "Interlude II",
   "type": "interlude",
@@ -77299,7 +77325,7 @@
 },
 {
   "id": "the_vanishing_of_elina_harper",
-  "scenario_name": "The Vanishing of Elina Harper",
+  "scenario_name": "La Scomparsa di Elina Harper",
   "full_name": "Scenario II: The Vanishing of Elina Harper",
   "header": "Scenario II",
   "setup": [
