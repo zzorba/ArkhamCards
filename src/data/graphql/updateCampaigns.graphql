@@ -12,8 +12,10 @@ mutation deleteInvestigatorDecks(
   ) {
     returning {
       id
+      campaign_id
       arkhamdb_id
       local_uuid
+      investigator
     }
   }
 }
@@ -161,6 +163,24 @@ mutation addGuideInput(
     }
   ) {
     ...GuideInput
+  }
+}
+
+mutation removeGuideInputs(
+  $campaign_id: Int!,
+  $ids: [String!]!,
+) {
+  delete_guide_input(
+    where:{
+      campaign_id: { _eq: $campaign_id }
+      id: { _in: $ids }
+    }
+  ) {
+    affected_rows
+    returning {
+      id
+      campaign_id
+    }
   }
 }
 
