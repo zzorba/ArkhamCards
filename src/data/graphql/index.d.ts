@@ -73,6 +73,7 @@ export const incCountAchievementMax: DocumentNode;
 export const incCountAchievement: DocumentNode;
 export const decCountAchievement: DocumentNode;
 export const addGuideInput: DocumentNode;
+export const removeGuideInputs: DocumentNode;
 export const updateInvestigatorTrauma: DocumentNode;
 export const updateInvestigatorData: DocumentNode;
 export const updateSpentXp: DocumentNode;

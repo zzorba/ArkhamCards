@@ -30,6 +30,7 @@ import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { uploadCampaignDeckHelper } from '@lib/firebaseApi';
 import { CreateCampaignActions, GuideActions } from '@data/remote/campaigns';
 import { DeckActions } from '@data/remote/decks';
+import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 
 function uploadCampaignHelper(
   campaign: Campaign,
@@ -96,16 +97,25 @@ export function uploadCampaign(
 
 export function undo(
   user: FirebaseAuthTypes.User | undefined,
+  actions: GuideActions,
   campaignId: CampaignId,
-  scenarioId: string
+  scenarioId: string,
+  campaignState: CampaignGuideStateT
 ): ThunkAction<void, AppState, unknown, GuideUndoInputAction> {
   return (dispatch) => {
-    dispatch({
-      type: GUIDE_UNDO_INPUT,
-      campaignId,
-      scenarioId,
-      now: new Date(),
-    });
+    if (user && campaignId.serverId) {
+      const undoInputs = campaignState.undoInputs(scenarioId);
+      if (undoInputs.length) {
+        actions.removeInputs(campaignId, undoInputs);
+      }
+    } else {
+      dispatch({
+        type: GUIDE_UNDO_INPUT,
+        campaignId,
+        scenarioId,
+        now: new Date(),
+      });
+    }
   };
 }
 

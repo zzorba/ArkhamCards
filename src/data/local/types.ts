@@ -181,6 +181,10 @@ export class CampaignGuideStateRedux implements CampaignGuideStateT {
     this.updatedAt = updatedAt;
   }
 
+  undoInputs() {
+    return [];
+  }
+
   numInputs() {
     return this.guide.inputs.length;
   }

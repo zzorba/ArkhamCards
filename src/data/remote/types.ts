@@ -1,5 +1,5 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId } from '@actions/types';
-import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach } from 'lodash';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES } from '@actions/types';
+import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment } from '@generated/graphql/apollo-schema';
@@ -212,9 +212,9 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
 
 function unpackGuideInput(input: Pick<Guide_Input, 'id' | 'step' | 'type' | 'scenario' | 'payload' | 'created_at'>): GuideInput {
   return {
-    step: input.step || undefined,
-    scenario: input.scenario || undefined,
-    type: input.type || undefined,
+    step: input.step || null,
+    scenario: input.scenario || null,
+    type: input.type || null,
     ...input.payload,
   };
 }
@@ -228,6 +228,33 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
     this.guide = guide;
     this.guideUpdatedAt = new Date(Date.parse(guide.updated_at));
     this.inputs = map(this.guide.guide_inputs, unpackGuideInput);
+  }
+
+  undoInputs(scenarioId: string) {
+    if (!this.inputs.length) {
+      return [];
+    }
+    const latestInputIndex = findLastIndex(
+      this.inputs,
+      input => (
+        input.scenario === scenarioId &&
+        !SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type)
+      )
+    );
+    if (latestInputIndex === -1) {
+      return [];
+    }
+    const removedInputs: GuideInput[] = [];
+    forEach(this.inputs, (input: GuideInput, idx: number) => {
+      if (SYSTEM_BASED_GUIDE_INPUT_TYPES.has(input.type)) {
+        if (idx >= latestInputIndex && input.scenario === scenarioId) {
+          removedInputs.push(input);
+        }
+      } else if (idx === latestInputIndex) {
+        removedInputs.push(input);
+      }
+    });
+    return removedInputs;
   }
 
   numInputs() {

@@ -161,7 +161,6 @@ export const getCampaigns = createSelector(
     filter(
       values(allCampaigns),
       campaign => {
-        console.log(campaign.serverId);
         return (!campaign.linkedCampaignUuid && !campaign.serverId);
       }
     ),

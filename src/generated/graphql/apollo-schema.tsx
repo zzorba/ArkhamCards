@@ -6932,7 +6932,7 @@ export type DeleteInvestigatorDecksMutation = (
     { __typename?: 'deck_mutation_response' }
     & { returning: Array<(
       { __typename?: 'deck' }
-      & Pick<Deck, 'id' | 'arkhamdb_id' | 'local_uuid'>
+      & Pick<Deck, 'id' | 'campaign_id' | 'arkhamdb_id' | 'local_uuid' | 'investigator'>
     )> }
   )> }
 );
@@ -7028,6 +7028,24 @@ export type AddGuideInputMutation = (
   & { insert_guide_input_one?: Maybe<(
     { __typename?: 'guide_input' }
     & GuideInputFragment
+  )> }
+);
+
+export type RemoveGuideInputsMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  ids: Array<Scalars['String']> | Scalars['String'];
+}>;
+
+
+export type RemoveGuideInputsMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_guide_input?: Maybe<(
+    { __typename?: 'guide_input_mutation_response' }
+    & Pick<Guide_Input_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename?: 'guide_input' }
+      & Pick<Guide_Input, 'id' | 'campaign_id'>
+    )> }
   )> }
 );
 
@@ -8091,8 +8109,10 @@ export const DeleteInvestigatorDecksDocument = gql`
   ) {
     returning {
       id
+      campaign_id
       arkhamdb_id
       local_uuid
+      investigator
     }
   }
 }
@@ -8338,6 +8358,43 @@ export function useAddGuideInputMutation(baseOptions?: Apollo.MutationHookOption
 export type AddGuideInputMutationHookResult = ReturnType<typeof useAddGuideInputMutation>;
 export type AddGuideInputMutationResult = Apollo.MutationResult<AddGuideInputMutation>;
 export type AddGuideInputMutationOptions = Apollo.BaseMutationOptions<AddGuideInputMutation, AddGuideInputMutationVariables>;
+export const RemoveGuideInputsDocument = gql`
+    mutation removeGuideInputs($campaign_id: Int!, $ids: [String!]!) {
+  delete_guide_input(where: {campaign_id: {_eq: $campaign_id}, id: {_in: $ids}}) {
+    affected_rows
+    returning {
+      id
+      campaign_id
+    }
+  }
+}
+    `;
+export type RemoveGuideInputsMutationFn = Apollo.MutationFunction<RemoveGuideInputsMutation, RemoveGuideInputsMutationVariables>;
+
+/**
+ * __useRemoveGuideInputsMutation__
+ *
+ * To run a mutation, you first call `useRemoveGuideInputsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRemoveGuideInputsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [removeGuideInputsMutation, { data, loading, error }] = useRemoveGuideInputsMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      ids: // value for 'ids'
+ *   },
+ * });
+ */
+export function useRemoveGuideInputsMutation(baseOptions?: Apollo.MutationHookOptions<RemoveGuideInputsMutation, RemoveGuideInputsMutationVariables>) {
+        return Apollo.useMutation<RemoveGuideInputsMutation, RemoveGuideInputsMutationVariables>(RemoveGuideInputsDocument, baseOptions);
+      }
+export type RemoveGuideInputsMutationHookResult = ReturnType<typeof useRemoveGuideInputsMutation>;
+export type RemoveGuideInputsMutationResult = Apollo.MutationResult<RemoveGuideInputsMutation>;
+export type RemoveGuideInputsMutationOptions = Apollo.BaseMutationOptions<RemoveGuideInputsMutation, RemoveGuideInputsMutationVariables>;
 export const UpdateInvestigatorTraumaDocument = gql`
     mutation updateInvestigatorTrauma($campaign_id: Int!, $investigator: String!, $physical: Int, $mental: Int, $killed: Boolean, $insane: Boolean) {
   insert_investigator_data_one(

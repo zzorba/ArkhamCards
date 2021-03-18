@@ -1,7 +1,8 @@
-import { ApolloCache, DocumentNode, MutationUpdaterFn } from '@apollo/client';
-import { filter, find, pick } from 'lodash';
+import { ApolloCache, DocumentNode, empty, MutationUpdaterFn } from '@apollo/client';
+import { filter, find, map, pick } from 'lodash';
 
-import { AddCampaignInvestigatorDocument, AddCampaignInvestigatorMutation, AddGuideInputDocument, AddGuideInputMutation, DecCountAchievementDocument, DecCountAchievementMutation, FullCampaignFragment, FullCampaignFragmentDoc, FullCampaignGuideStateFragment, FullCampaignGuideStateFragmentDoc, GetCampaignDocument, GetCampaignGuideDocument, GetCampaignGuideQuery, GetCampaignQuery, GetMyCampaignsDocument, GetMyCampaignsQuery, GuideAchievementFragment, GuideAchievementFragmentDoc, Guide_Achievement, IncCountAchievementDocument, IncCountAchievementMaxDocument, IncCountAchievementMaxMutation, IncCountAchievementMutation, MiniCampaignFragment, MiniCampaignFragmentDoc, RemoveCampaignInvestigatorDocument, RemoveCampaignInvestigatorMutation, SetBinaryAchievementDocument, SetBinaryAchievementMutation, UpdateInvestigatorDataDocument, UpdateInvestigatorDataMutation, UpdateInvestigatorTraumaDocument, UpdateInvestigatorTraumaMutation, UploadNewCampaignMutation } from '@generated/graphql/apollo-schema';
+import { AddCampaignInvestigatorDocument, AddCampaignInvestigatorMutation, AddGuideInputDocument, AddGuideInputMutation, DecCountAchievementDocument, DecCountAchievementMutation, DeleteInvestigatorDecksDocument, DeleteInvestigatorDecksMutation, FullCampaignFragment, FullCampaignFragmentDoc, FullCampaignGuideStateFragment, FullCampaignGuideStateFragmentDoc, FullInvestigatorDataFragment, FullInvestigatorDataFragmentDoc, GetCampaignDocument, GetCampaignGuideDocument, GetCampaignGuideQuery, GetCampaignQuery, GetMyCampaignsDocument, GetMyCampaignsQuery, GuideAchievementFragment, GuideAchievementFragmentDoc, Guide_Achievement, IncCountAchievementDocument, IncCountAchievementMaxDocument, IncCountAchievementMaxMutation, IncCountAchievementMutation, MiniCampaignFragment, MiniCampaignFragmentDoc, RemoveCampaignInvestigatorDocument, RemoveCampaignInvestigatorMutation, RemoveGuideInputsDocument, RemoveGuideInputsMutation, SetBinaryAchievementDocument, SetBinaryAchievementMutation, UpdateAvailableXpDocument, UpdateAvailableXpMutation, UpdateCampaignDifficultyDocument, UpdateCampaignGuideVersionDocument, UpdateCampaignNameDocument, UpdateCampaignNotesDocument, UpdateCampaignScenarioResultsDocument, UpdateCampaignShowInterludesDocument, UpdateChaosBagDocument, UpdateInvestigatorDataDocument, UpdateInvestigatorDataMutation, UpdateInvestigatorTraumaDocument, UpdateInvestigatorTraumaMutation, UpdateSpentXpDocument, UpdateSpentXpMutation, UpdateWeaknessSetDocument, UploadNewCampaignMutation } from '@generated/graphql/apollo-schema';
+import { FullInvestigatorData } from '*/fragments.graphql';
 
 function fullToMiniCampaignFragment(fragment: FullCampaignFragment): MiniCampaignFragment {
   return {
@@ -72,12 +73,7 @@ export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutatio
   })
 };
 
-
-const handleAddGuideInput: MutationUpdaterFn<AddGuideInputMutation> = (cache, { data }) => {
-  if (data === undefined || !data?.insert_guide_input_one) {
-    return;
-  }
-  const campaignId = data.insert_guide_input_one.campaign_id;
+function updateCampaignGuide(cache: ApolloCache<unknown>, campaignId: number, update: (cacheData: FullCampaignGuideStateFragment) => FullCampaignGuideStateFragmentDoc) {
   const cacheData = cache.readQuery<GetCampaignGuideQuery>({
     query: GetCampaignGuideDocument,
     variables: {
@@ -87,26 +83,55 @@ const handleAddGuideInput: MutationUpdaterFn<AddGuideInputMutation> = (cache, { 
   if (cacheData === null || !cacheData.campaign_guide.length) {
     return;
   }
+
   const campaignGuide = cacheData.campaign_guide[0];
-  const { guide_inputs } = campaignGuide;
-  const inputId = data.insert_guide_input_one.id;
-  const newGuideInputs = [
-    ...filter(guide_inputs, i => i.id !== inputId),
-    {
-      ...data.insert_guide_input_one,
-    },
-  ];
+  const newCampaignGuide = update(campaignGuide);
   cache.writeQuery<GetCampaignGuideQuery>({
     query: GetCampaignGuideDocument,
     variables: {
       campaign_id: campaignId,
     },
     data: {
-      campaign_guide: [{
-        ...campaignGuide,
-        guide_inputs: newGuideInputs,
-      }],
+      campaign_guide: [newCampaignGuide],
     },
+  });
+}
+
+
+const handleAddGuideInput: MutationUpdaterFn<AddGuideInputMutation> = (cache, { data }) => {
+  if (data === undefined || !data?.insert_guide_input_one) {
+    return;
+  }
+  const campaignId = data.insert_guide_input_one.campaign_id;
+  const inputId = data.insert_guide_input_one.id;
+  updateCampaignGuide(cache, campaignId, (campaignGuide) => {
+    const { guide_inputs } = campaignGuide;
+    const newGuideInputs = [
+      ...filter(guide_inputs, i => i.id !== inputId),
+      {
+        ...data.insert_guide_input_one,
+      },
+    ];
+    return {
+      ...campaignGuide,
+      guide_inputs: newGuideInputs,
+    }
+  });
+};
+
+
+const handleRemoveGuideInputs: MutationUpdaterFn<RemoveGuideInputsMutation> = (cache, { data }) => {
+  if (data === undefined || !data?.delete_guide_input?.returning.length) {
+    return;
+  }
+  const deletes = data.delete_guide_input.returning;
+  const campaignId = deletes[0].campaign_id;
+  const ids = new Set(map(deletes, d => d.id));
+  updateCampaignGuide(cache, campaignId, (campaignGuide) => {
+    return {
+      ...campaignGuide,
+      guide_inputs: filter(campaignGuide.guide_inputs, i => !ids.has(i.id)),
+    }
   });
 };
 
@@ -164,6 +189,18 @@ function updateFullCampaignGuide(
   }
 }
 
+const handleDeleteInvestigatorDecks: MutationUpdaterFn<DeleteInvestigatorDecksMutation> = (cache, { data }) => {
+  if (!data?.delete_deck?.returning.length) {
+    return;
+  }
+  const { investigator, campaign_id } = data.delete_deck.returning[0];
+  updateFullCampaign(cache, campaign_id, (campaign) => {
+    return {
+      ...campaign,
+      latest_decks: filter(campaign.latest_decks, d => d.deck?.investigator !== investigator),
+    };
+  });
+};
 
 const handleAddCampaignInvestigator: MutationUpdaterFn<AddCampaignInvestigatorMutation> = (cache, { data }) => {
   if (!data?.insert_campaign_investigator_one) {
@@ -243,6 +280,53 @@ const handleUpdateInvestigatorTrauma: MutationUpdaterFn<UpdateInvestigatorTrauma
   );
 };
 
+function updateFullInvestigatorData(cache: ApolloCache<unknown>, campaignId: number, investigator: string, update: (investigator_data?: FullInvestigatorDataFragment) => FullInvestigatorDataFragment) {
+  updateFullCampaign(
+    cache,
+    campaignId,
+    (existingCacheData: FullCampaignFragment) => {
+      const existingInvestigatorData = find(existingCacheData.investigator_data, id => id.investigator === investigator);
+      if (!existingInvestigatorData) {
+        return {
+          ...existingCacheData,
+          investigator_data: [
+            ...existingCacheData.investigator_data || [],
+            update(),
+          ],
+        };
+      }
+      return {
+        ...existingCacheData,
+        investigator_data: [
+          ...filter(existingCacheData.investigator_data, id => id.investigator !== investigator),
+          update(existingInvestigatorData),
+        ],
+      };
+    }
+  );
+}
+
+function emptyInvestigatorData(campaign_id: number, investigator: string): FullInvestigatorDataFragment {
+  return {
+    __typename: 'investigator_data',
+    id: `${campaign_id}-${investigator}`,
+    campaign_id,
+    investigator,
+    insane: null,
+    killed: null,
+    mental: null,
+    physical: null,
+    storyAssets: [],
+    specialXp: {},
+    addedCards: [],
+    removedCards: [],
+    ignoreStoryAssets: [],
+    availableXp: 0,
+    spentXp: 0,
+    updated_at: new Date(),
+  };
+}
+
 
 const handleUpdateInvestigatorData: MutationUpdaterFn<UpdateInvestigatorDataMutation> = (cache, { data }) => {
   if (!data?.insert_investigator_data_one) {
@@ -250,32 +334,56 @@ const handleUpdateInvestigatorData: MutationUpdaterFn<UpdateInvestigatorDataMuta
   }
   const investigator_data = data.insert_investigator_data_one;
   handleUpdateInvestigatorTrauma(cache, { data });
-  updateFullCampaign(
-    cache,
-    investigator_data.campaign_id,
-    (existingCacheData: FullCampaignFragment) => {
-      const existingInvestigatorData = find(existingCacheData.investigator_data, id => id.investigator === investigator_data.investigator);
-      if (!existingInvestigatorData) {
-        return {
-          ...existingCacheData,
-          investigator_data: [
-            ...existingCacheData.investigator_data || [],
-            investigator_data,
-          ],
-        };
-      }
+  updateFullInvestigatorData(cache, investigator_data.campaign_id, investigator_data.investigator, data => {
+    if (!data) {
       return {
-        ...existingCacheData,
-        investigator_data: [
-          ...filter(existingCacheData.investigator_data, id => id.investigator !== investigator_data.investigator),
-          {
-            ...existingInvestigatorData,
-            ...investigator_data,
-          },
-        ],
+        ...emptyInvestigatorData(investigator_data.campaign_id, investigator_data.investigator),
+        ...investigator_data,
       };
     }
-  );
+    return {
+      ...data,
+      ...investigator_data,
+    };
+  });
+};
+
+const handleUpdateSpentXp: MutationUpdaterFn<UpdateSpentXpMutation> = (cache, { data }) => {
+  if (!data?.insert_investigator_data_one) {
+    return;
+  }
+  const investigator_data = data.insert_investigator_data_one;
+  updateFullInvestigatorData(cache, investigator_data.campaign_id, investigator_data.investigator, data => {
+    if (!data) {
+      return {
+        ...emptyInvestigatorData(investigator_data.campaign_id, investigator_data.investigator),
+        spentXp: investigator_data.spentXp || 0,
+      };
+    }
+    return {
+      ...data,
+      ...investigator_data,
+    };
+  });
+};
+
+const handleUpdateAvailableXp: MutationUpdaterFn<UpdateAvailableXpMutation> = (cache, { data }) => {
+  if (!data?.insert_investigator_data_one) {
+    return;
+  }
+  const investigator_data = data.insert_investigator_data_one;
+  updateFullInvestigatorData(cache, investigator_data.campaign_id, investigator_data.investigator, data => {
+    if (!data) {
+      return {
+        ...emptyInvestigatorData(investigator_data.campaign_id, investigator_data.investigator),
+        availableXp: investigator_data.availableXp || 0,
+      };
+    }
+    return {
+      ...data,
+      ...investigator_data,
+    };
+  });
 };
 
 function updateGuideAchievement(
@@ -391,21 +499,29 @@ const handleDecCountAchievement: MutationUpdaterFn<DecCountAchievementMutation> 
 
 interface OptimisticUpdate {
   mutation: DocumentNode;
-  update: MutationUpdaterFn;
+  update?: MutationUpdaterFn;
 }
 
 interface OptimisticUpdateByName {
   [name: string]: OptimisticUpdate | undefined;
 }
 
-export const optimisticUpdates: OptimisticUpdateByName = {
+export const optimisticUpdates = {
   addGuideInput: {
     mutation: AddGuideInputDocument,
     update: handleAddGuideInput,
   },
+  removeGuideInputs: {
+    mutation: RemoveGuideInputsDocument,
+    update: handleRemoveGuideInputs,
+  },
   addCampaignInvestigator: {
     mutation: AddCampaignInvestigatorDocument,
     update: handleAddCampaignInvestigator,
+  },
+  deleteInvestigatorDecks: {
+    mutation: DeleteInvestigatorDecksDocument,
+    update: handleDeleteInvestigatorDecks,
   },
   removeCampaignInvestigator: {
     mutation: RemoveCampaignInvestigatorDocument,
@@ -435,4 +551,40 @@ export const optimisticUpdates: OptimisticUpdateByName = {
     mutation: DecCountAchievementDocument,
     update: handleDecCountAchievement,
   },
+  updateSpentXp: {
+    mutation: UpdateSpentXpDocument,
+    update: handleUpdateSpentXp,
+  },
+  updateAvailableXp: {
+    mutation: UpdateAvailableXpDocument,
+    update: handleUpdateAvailableXp,
+  },
+  // These are all just 'set' operations, i.e. we want to track them but don't
+  // need fancy speculative updates, the standard apollo Key-Value update will do.
+  updateChaosBag: {
+    mutation: UpdateChaosBagDocument,
+  },
+  updateWeaknessSet: {
+    mutation: UpdateWeaknessSetDocument,
+  },
+  updateCampaignNotes: {
+    mutation: UpdateCampaignNotesDocument,
+  },
+  updateCampaignScenarioResults: {
+    mutation: UpdateCampaignScenarioResultsDocument,
+  },
+  updateCampaignShowInterludes: {
+    mutation: UpdateCampaignShowInterludesDocument,
+  },
+  updateCampaignDifficulty: {
+    mutation: UpdateCampaignDifficultyDocument,
+  },
+  updateCampaignGuideVersion: {
+    mutation: UpdateCampaignGuideVersionDocument,
+  },
+  updateCampaignName: {
+    mutation: UpdateCampaignNameDocument,
+  },
 };
+
+export const genericOptimisticUpdates: OptimisticUpdateByName = optimisticUpdates;

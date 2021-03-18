@@ -27,7 +27,6 @@ const DEFAULT_GUIDES_STATE: GuidesState = {
   all: {},
 };
 
-
 function updateCampaignHelper(
   state: GuidesState,
   campaignId: CampaignId,
@@ -210,8 +209,7 @@ export default function(
               removedInputs.push(input);
             }
           }
-        }
-        );
+        });
         return {
           ...campaign,
           undo: [...(campaign.undo || []), ...map(removedInputs, guideInputToId)],

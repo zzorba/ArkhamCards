@@ -16,7 +16,7 @@ import useNetworkStatus from '@components/core/useNetworkStatus';
 import { apolloQueueLink } from '@data/apollo/createApolloClient';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useApolloClient } from '@apollo/client';
-import { optimisticUpdates } from '@data/remote/apollo';
+import { genericOptimisticUpdates, optimisticUpdates } from '@data/remote/apollo';
 import { trackedQueriesRemove } from '@data/apollo/trackerLink';
 
 interface Props {
@@ -47,7 +47,7 @@ function ApolloGate({ children }: Props): JSX.Element {
     const execute = async() => {
       const promises: Array<Promise<any>> = [];
       trackedQueries.forEach(trackedQuery => {
-        const optimisticUpdate = optimisticUpdates[trackedQuery.name];
+        const optimisticUpdate = genericOptimisticUpdates[trackedQuery.name];
         if (!optimisticUpdate) {
           console.log(`Something weird here, we cannot handle tracked query: ${trackedQuery.name}`);
         } else {

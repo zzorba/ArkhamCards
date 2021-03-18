@@ -176,9 +176,18 @@ export default function useCampaignGuideContext(
     ));
   }, [dispatch, campaignId, remoteGuideActions, user]);
 
+  const campaignState = campaignData?.campaignState;
   const undo = useCallback((scenarioId: string) => {
-    dispatch(guideActions.undo(user, campaignId, scenarioId));
-  }, [dispatch, campaignId, user]);
+    if (campaignState) {
+      dispatch(guideActions.undo(
+        user,
+        remoteGuideActions,
+        campaignId,
+        scenarioId,
+        campaignState
+      ));
+    }
+  }, [dispatch, campaignId, campaignState, user, remoteGuideActions]);
 
   const resetScenario = useCallback((scenarioId: string) => {
     dispatch(guideActions.resetScenario(user, campaignId, scenarioId));

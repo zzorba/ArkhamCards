@@ -8,4 +8,6 @@ export default interface CampaignGuideStateT {
   countAchievement: (id: string) => number;
   lastUpdated: () => Date | undefined;
   numInputs: () => number;
+
+  undoInputs: (scenarioId: string) => GuideInput[];
 }
