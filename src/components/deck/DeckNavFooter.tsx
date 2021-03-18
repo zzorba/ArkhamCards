@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { msgid, ngettext, t } from 'ttag';
+import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import space, { isBig, m, s, xs } from '@styles/space';

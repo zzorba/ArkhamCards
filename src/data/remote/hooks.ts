@@ -25,7 +25,6 @@ import { useDispatch } from 'react-redux';
 import { setServerDecks } from '@components/deck/actions';
 import { DeckActions } from './decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
-import useNetworkStatus from '@components/core/useNetworkStatus';
 
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {

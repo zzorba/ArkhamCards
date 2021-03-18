@@ -319,6 +319,7 @@ function CampaignDetailView(props: Props) {
                 campaignId={campaignId}
                 latestDecks={campaign.latestDecks()}
                 allInvestigators={allInvestigators}
+                loading={loadingInvestigators}
                 cards={cards}
                 showTraumaDialog={showTraumaDialog}
                 removeInvestigator={onRemoveInvestigator}

@@ -220,7 +220,4 @@ const styles = StyleSheet.create({
     padding: s,
     paddingTop: l,
   },
-  bottomBorder: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
 });
