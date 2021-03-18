@@ -96,7 +96,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -2366,7 +2366,7 @@
     {
       "id": "criminal_aloof_note",
       "type": "rule_reminder",
-      "text": "<b>注意：</b> 在這場冒險開始時，密謀1a會給每個 [[罪犯]] 敵人冷漠關鍵詞，這些敵人不會自動被你吸引。在某個時間點，這些敵人會失去該關鍵詞，之後，這些敵人會按照正常規則，自動被你吸引。"
+      "text": "<b>注意：</b> 在這場冒險開始時，密謀1a會給每個[[罪犯]]敵人冷漠關鍵詞，這些敵人不會自動與你交戰。在某個時間點，這些敵人會失去該關鍵詞，之後，這些敵人會按照正常規則，自動與你交戰。"
     },
     {
       "id": "bone_to_pick",
@@ -2590,7 +2590,7 @@
         "name": "Resolution 3"
       },
       "title": "結局3",
-      "text": "雖然你無法找到摩爾根博士，但你們救出的那個男人，十分感激你們的友善。他名叫彼得·克勞佛，是四葉草俱樂部所在大樓的主人。儘管發生了這種災難，他還是保持著專業的冷靜頭腦。你們向著街道走去，一輛B-70克萊斯勒高級轎車停在你們面前，從裡面走出一位留著褐色長髮，眼眸細長的美麗女士。她身後跟著一個目光兇惡，身著黑色西服的大漢。“彼得，”那女子看到你們時，好像鬆了一口氣。“你沒事真是太好了。我聽說你遇到麻煩了？”她轉頭看了看你們，“這些人是誰？”\n克勞佛拍了拍肩上的灰塵，一臉輕鬆。“娜奧米，親愛的，這些是我的朋友。他們……”他清了清喉嚨。“他們護送我離開了房子，”他停頓了一下，簡短地解釋道。“我很感激他們。”那個女人叉起雙手放在胸前，仔細地打量著你們，然後是一個很明顯的假笑。\n“那好吧。我謝謝你們照顧彼得。你們可以走了，剩下的事交給我們處理。”她向那個壯漢點了點頭，然後從後門走進了俱樂部，一邊從大衣下拿出了槍。你不太清楚他們會怎麼“處理”，不過你也不想知道具體方案。你們謝別了內奧米和彼得，離開了這兒。",
+      "text": "雖然你無法找到摩爾根博士，但你們救出的那個男人，十分感激你們的友善。他名叫彼得·克勞佛，是四葉草俱樂部所在大樓的主人。儘管發生了這種災難，他還是保持著專業的冷靜頭腦。你們向著街道走去，一輛B-70克萊斯勒高級轎車停在你們面前，從裡面走出一位留著褐色長髮，眼眸細長的美麗女士。她身後跟著一個目光兇惡，身著黑色西服的大漢。“彼得，”那女子看到你們時，好像鬆了一口氣。“你沒事真是太好了。我聽說你遇到麻煩了？”她轉頭看了看你們，“這些人是誰？”\n克勞佛拍了拍肩上的灰塵，一臉輕鬆。“娜奧米，親愛的，這些是我的朋友。他們……”他清了清喉嚨。“他們護送我離開了房子，”他停頓了一下，簡短地解釋道。“我很感激他們。”那個女人叉起雙手放在胸前，仔細地打量著你們，然後是一個很明顯的假笑。\n“那好吧。我謝謝你們照顧彼得。你們可以走了，剩下的事交給我們處理。”她向那個壯漢點了點頭，然後從後門走進了俱樂部，一邊從大衣下拿出了槍。你不太清楚他們會怎麼“處理”，不過你也不想知道具體方案。你們謝別了娜奧米和彼得，離開了這兒。",
       "steps": [
         "naomi_has_back",
         "francis_morgan_kidnapped",
@@ -3921,7 +3921,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -4106,7 +4106,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -5464,8 +5464,8 @@
     {
       "id": "prologue",
       "type": "story",
-      "title": "Have You Seen the Yellow Sign?",
-      "text": "“He mentioned the establishment of the Dynasty in Carcosa, the lakes which connected Hastur, Aldebaran, and the mystery of the Hyades. He spoke of Cassilda and Camilla, and sounded the cloudy depths of Demhe and the Lake of Hali.” – Robert W. Chambers, “The Repairer of Reputations”"
+      "title": "你曾見過黃色印記嗎？",
+      "text": "“他提到了整個王朝是如何在卡爾克薩建立起來的，還有那些將哈斯塔、畢宿五和畢星團的秘密聯繫起來的湖泊。他還說起了卡西露達和卡米拉，還談到了德姆赫和哈利湖那陰鬱的深淵。”——《名譽修復師》羅伯特·Ｗ·錢伯斯"
     },
     {
       "id": "choose_investigators",
@@ -5477,20 +5477,20 @@
     {
       "id": "hidden_keyword",
       "type": "rule_reminder",
-      "title": "New Keyword: Hidden",
-      "text": "Some encounter cards in <i>The Path to Carcosa</i> campaign have the “hidden” keyword. Hidden cards have <b>Revelation</b> abilities that secretly add them to your hand. This should be done without revealing that card or its text to the other investigators. While a hidden card is in your hand, treat it as if it were in your threat area. Its Constant abilities are active, and abilities on it can be triggered, but only by you. A hidden card counts toward your hand size, but it cannot be discarded from your hand by any means except those described on the card. When discarded, hidden cards are placed in the encounter discard pile. They do not remain a part of your deck like weaknesses do. For the best experience, players are encouraged to stay “in character” and not share information about hidden cards in their hand."
+      "title": "新的關鍵字：隱私",
+      "text": "《卡爾克薩之路》系列傳說中的部分遭遇卡帶有“隱私”關鍵字。隱私卡帶有的<b>顯現</b>能力會將這張卡秘密地加入你的手牌中。結算此能力效果時不翻開這張卡，也不向其他調查員展示卡牌上的文字。當你的手牌中有隱私卡時，視作它在你的威脅區域內。卡牌上的持續能力生效，並且卡牌上的能力只能被你觸發。隱私卡計入你的手牌上限，但除非按照隱私卡上的文字描述執行，否則你無法以任何形式從你手牌中棄除它。隱私卡被棄掉時，放回遭遇棄牌堆。它們不會像弱點卡一樣留在你的牌堆中。為了獲得最佳的遊戲體驗，建議玩家“扮演角色”進行遊戲，不要將手牌中的隱私卡任何內容公開。"
     },
     {
       "id": "doubt_and_conviction",
       "type": "rule_reminder",
-      "title": "Doubt and Conviction",
-      "text": "Some story resolutions and interludes in The Path to Carcosa campaign instruct the players to “Mark one <b>Doubt</b>” or “Mark one <b>Conviction</b>” in their Campaign Log. This is done by filling in one of the boxes next to “<b>Doubt</b>” or “<b>Conviction</b>” in the Campaign Log.\nLater in the campaign, some scenarios may be changed or altered depending on whether the investigators “have more <b>Doubt</b> than <b>Conviction</b>” or “have more <b>Conviction</b> than <b>Doubt</b>.” The investigators have more <b>Doubt</b> than <b>Conviction</b> if the number of boxes filled in next to <b>Doubt</b> is greater than the number of boxes filled in next to <b>Conviction</b> (and vice versa). <b>Doubt</b> and <b>Conviction</b> are shared among all of the investigators, and they are not tied to any specific investigator. <b>Doubt</b> and <b>Conviction</b> have no game effect except when explicitly referenced by the Campaign Guide or by a card effect."
+      "title": "疑惑和確信",
+      "text": "《卡爾克薩之路》劇本中的部分結局和幕間故事會讓玩家在冒險日誌上“記一點<b>疑惑</b>”或“記一點<b>確信</b>”。具體表現為填塗冒險日誌下方的“<b>疑惑</b>”或“<b>確信</b>”旁邊的一個格子。\n在之後的冒險中，部分冒險可能會因調查員的“<b>疑惑</b>高於<b>確信</b>”或“<b>確信</b>高於<b>疑惑</b>”而發生改變。當<b>疑惑</b>旁邊已填塗的格子數大於<b>確信</b>旁邊已填塗的格子數時，稱調查員的<b>疑惑</b>高於<b>確信</b>(反之亦然)。<b>疑惑</b>和<b>確信</b>為全體調查員共有，不特指任何一位調查員。除非劇本手冊或卡牌效果明確提到，否則<b>疑惑</b>和<b>確信</b>不產生遊戲效果。"
     },
     {
       "id": "story_cards",
       "type": "rule_reminder",
-      "title": "Story Cards",
-      "text": "Story cards are a new cardtype in <i>The Path to Carcosa</i> campaign. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any."
+      "title": "劇情卡",
+      "text": "劇情卡是在《卡爾克薩之路》劇本出現的一種新的卡牌類型。此類卡牌只出現在另一冒險卡的背面，作為另一種敘述的形式出現。當你收到指示要結算一張劇情卡時，閱讀該卡上的故事文本然後結算其遊戲文本(如果有的話)。"
     },
     {
       "id": "difficulty_choice",
@@ -5501,7 +5501,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy <i>(I want to watch the play)</i>",
+            "text": "簡單<i>(欣賞這部戲劇)</i>：",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -5533,7 +5533,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(I want to read the signs)</i>",
+            "text": "普通<i>(細看那些印記)</i>：",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -5565,7 +5565,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard <i>(I want to speak the oath)</i>",
+            "text": "困難<i>(大聲說出誓言)</i>：",
             "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -5598,7 +5598,7 @@
           },
           {
             "id": "expert",
-            "text": "Expert <i>(I want <u>The King in Yellow</u>)</i>",
+            "text": "專家<i>(黃衣之王降臨)</i>：",
             "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -7372,7 +7372,7 @@
 {
   "id": "curtain_call",
   "scenario_name": "謝幕",
-  "full_name": "Scenario I: Curtain Call",
+  "full_name": "冒險I：謝幕",
   "header": "冒險I",
   "setup": [
     "intro",
@@ -7391,7 +7391,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "You awaken with a start, as though shaken by an unseen force. You must have slept for quite some time, for there are only a few other patrons in the audience, and no performers on stage. The lights are dimmed, and the stage curtains are tattered and ripped, though you do not remember that being the case during the first act. You wait a moment before you are sure this isn’t part of the performance. As you wait, a foul but unrecognizable smell permeates the air. How long have you been asleep? Shaking off your drowsiness, you walk toward one of the seated patrons and ask for the time, but he does not respond. It is then that you realize you are speaking to a corpse."
+      "text": "你被一股看不見的力量搖醒了。你肯定是睡了很長一段時間，此時觀眾席上只剩下幾個觀眾，舞台上也不見表演者的蹤影。舞台的幕布破破爛爛，燈光昏暗，但你記不起來在第一幕的時候是否也是這幅景象。你等了好一會才確定這並非演出的一部分。就在你等待的時候，一股難以名狀的惡臭在空氣中彌漫。你到底睡了多久？你擺脫了睏意，向坐在座位上的一個觀眾走去，問他現在是什麼時候，但他沒有回答你。此時你意識到你正在對一具屍體說話。"
     },
     {
       "id": "gather_encounter_sets",
@@ -7409,14 +7409,14 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Man in the Pallid Mask, Royal Emissary, each copy of Lobby Doorway, and each copy of Backstage Doorway."
+      "text": "將下列卡排放到一邊，位於遊戲場外：蒼白面具下的男子，皇家密使，每張前廳走廊門口，每張後台走廊門口。"
     },
     {
       "id": "setup_locations",
-      "text": "Put the Theatre, Lobby, Balcony, and Backstage locations into play. Each investigator begins play at the Theatre.",
+      "text": "將劇院、前廳、樓座、後台地點放置入場。每位調查員從劇院開始遊戲。",
       "bullets": [
         {
-          "text": "If Lola Hayes was chosen as an investigator for this campaign, she begins play at Backstage, instead."
+          "text": "如果蘿拉‧海耶斯作為調查員參與劇本，則她從後台開始遊戲。"
         }
       ]
     },
@@ -7451,13 +7451,13 @@
     },
     {
       "id": "stranger_is_on_to_you",
-      "text": "In your Campaign Log, record <i>the Stranger is on to you</i>. Add The Man in the Pallid Mask weakness to the lead investigator’s deck (does not count towards deck size). For the remainder of this campaign, any time the bearer of The Man in the Pallid Mask leaves the campaign for any reason, choose a new investigator to become the bearer of The Man in the Pallid Mask weakness, and add it to that investigator’s deck.",
+      "text": "在冒險日誌中，記錄下<i>陌生人與你接觸</i>。將蒼白面具下的男子弱點卡加入調查員隊長的牌組中(不計入卡牌張數限制)。在這個劇本接下來的冒險中，蒼白面具下的男子的承受者在任何時候以任何理由退出劇本時，重新選擇一位調查員成為蒼白面具下的男子弱點的承受者，然後將該卡加入這位調查員的牌組中。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "stranger_is_on_to_you",
-          "text": "the Stranger is on to you."
+          "text": "陌生人與你接觸。"
         },
         {
           "type": "add_card",
@@ -7468,11 +7468,11 @@
     },
     {
       "id": "chasing_the_stranger",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark for each time The Man in the Pallid Mask was defeated during this scenario. For the remainder of the campaign, keep a running tally of the number of times The Man in the Pallid Mask is defeated during a game. Each tally will bring you one step closer to the truth.",
+      "text": "在冒險日誌中，每當蒼白面具下的男子被擊敗時，在“追蹤陌生人”下方作1次記錄，持續記錄所有的次數。每作一次記錄都會使你離真相更近一步。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Chasing the Stranger:",
+        "text": "追蹤陌生人：",
         "delta": true,
         "max": 2,
         "effects": [
@@ -7486,7 +7486,7 @@
     },
     {
       "id": "chasing_the_stranger_2",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place two tally marks. For the remainder of the campaign, keep a running tally of the number of times The Man in the Pallid Mask is defeated during a game. Each tally will bring you one step closer to the truth.",
+      "text": "在冒險日誌中，在“追蹤陌生人”下方作2次記錄。在接下來的冒險中，每當蒼白面具下的男子被擊敗時，在“追蹤陌生人”下方作1次記錄，持續記錄所有的次數。每作一次記錄都會使你離真相更近一步。",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -7513,17 +7513,17 @@
     },
     {
       "id": "police_unhelpful",
-      "text": "Did you really think the police would help you?"
+      "text": "你真的覺得警方會幫你嗎？"
     },
     {
       "id": "tried_to_warn_police",
-      "text": "In your Campaign Log, record that <i>you tried to warn the police</i>. Mark one <b>Conviction</b> in your Campaign Log.",
+      "text": "在冒險日誌中，記錄<i>你嘗試提醒警方</i>。在冒險日誌上記1點<b>確信</b>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tried_to_warn_police",
-          "text": "you tried to warn the police."
+          "text": "你嘗試提醒警方。"
         },
         {
           "type": "campaign_log_count",
@@ -7541,13 +7541,13 @@
         "choices": [
           {
             "id": "steal",
-            "text": "Did anyone “steal from the box office?”",
+            "text": "有任何人“從售票處偷竊”嗎？",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "police_are_suspicious",
-                "text": "the police are suspicious of you."
+                "text": "警方對你抱有懷疑。"
               }
             ]
           }
@@ -7556,17 +7556,17 @@
     },
     {
       "id": "wise_not_to_warn",
-      "text": "Do you think it was wise not to warn anyone?"
+      "text": "你覺得不向別人示警是一個明智的做法嗎？"
     },
     {
       "id": "chose_not_to_warn_police",
-      "text": "In your Campaign Log, record that <i>you chose not to go to the police</i>. Mark one <b>Doubt</b> in your Campaign Log.",
+      "text": "在冒險日誌中，記錄下<i>你選擇不去警察局</i>。在冒險日誌上記1點<b>疑惑</b>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "chose_not_to_warn_police",
-          "text": "you chose not to go to the police."
+          "text": "你選擇不去警察局。"
         },
         {
           "type": "campaign_log_count",
@@ -7612,15 +7612,15 @@
     },
     {
       "id": "add_chaos_token",
-      "text": "Which version of Act 2b was advanced?",
+      "text": "推進到哪個場景2b？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "a_city_aflame",
-            "text": "A City Aflame",
-            "description": "Add 2 [cultist] tokens to the chaos bag.",
+            "text": "烈焰焚城",
+            "description": "在混亂袋中增加2個[cultist]標記。",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -7633,8 +7633,8 @@
           },
           {
             "id": "the_path_is_mine",
-            "text": "The Path is Mine",
-            "description": "Add 2 [tablet] tokens to the chaos bag.",
+            "text": "奪路逃生",
+            "description": "在混亂袋中增加2個[tablet]標記。",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -7647,8 +7647,8 @@
           },
           {
             "id": "the_shores_of_hali",
-            "text": "The Shores of Hali",
-            "description": "Add 2 [elder_thing] tokens to the chaos bag.",
+            "text": "哈利湖濱",
+            "description": "在混亂袋中增加2個[elder_thing]標記。",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -7676,7 +7676,7 @@
         "physical",
         "mental"
       ],
-      "text": "Once again you are startled awake, this time by the cold, clammy fingers of a hand on your shoulder. “Are you alright?” an elderly man asks, helping you to your feet. Your mind is a flurry of memories. Last you remember, the Ward Theatre had become a place of nightmares, filled with dangerous fanatics and strange terrors. Worried, you glance at your surroundings, only to find yourself on the rain-slicked curb outside the theatre. Despite the events from earlier, the city seems normal to your eyes—or at least, what passes as normal for Arkham. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. The old man wears an expression of concern, noting the terror in your eyes. “Were you mugged? Damn those trouble boys!” he exclaims. “Dry-gulching folk on a night out to the the-a-tre! Not a single street those hooligans haven’t staked a claim on, I tell you.”\nYou stand and walk over to the front window of the Ward Theatre to tentatively peer through, but it is too dark to see anything inside. The elderly man eyes you curiously for a moment, then shrugs and continues walking. “Well, I’d best be on my way. I would do the same, if I were you,” he says, rounding the street corner. You quickly follow, hoping to warn him to stay away from the theatre. But when you turn the corner, it is not the elderly man you see, but the familiar sight of the Stranger in his featureless, pallid mask. His unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, but instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty— save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, frustrated and lost.",
+      "text": "你再次從睡夢中驚醒，這次將你弄醒的是搭在你肩膀上的一隻手，它的手指冰冷，又黏又濕。“你還好嗎？”一位老人攙扶你起身，關切地問道。你腦海裡的記憶十分凌亂。你只記得在最後，沃德劇院已經變成了一個噩夢，裡面充斥著危險的狂熱信徒和怪異而可怖的東西。你憂心仲仲地環顧周圍，發現自己站在劇院外溼滑的路邊。儘管早前發生過那些事件，這座城在你眼中並無異常——至少說，這對阿卡姆城來說挺正常的。車燈的強光刺入你的雙眼，一輛車開了過來，將航髒的雨水濺到你身旁的人行道上。老人見你的眼中驚恐萬分，表情對你十分關切。“你是遭賊了嗎？那群惹是生非的壞小子真該死！”他大聲罵道：“他們準是在今晚到劇院來為非作歹了！我跟你說，這兒到處都是他們的地盤。”\n你站了起來，走到沃德劇院前門的窗戶前，試著往裡看看，但因為裡面太黑，你什麼都看不見。老人好奇地看了你一會，聳了聳肩然後走開了。“好吧，我得走了。我要是你的話我也會早些離開的，”他說完就拐過了街角。你快步跟上，想要提醒他遠離劇院。但當你走過轉角時，那位老人已經不見蹤影，你只見陌生人戴著他那毫無特徵的蒼白面具，向你投來熟悉的視線。他定定地注視著你。“你是誰？”你大聲問道。陌生人沒有回答，而是轉身離去，消失在劇院後的小巷中。你緊追在後，期望從他口中得到答案，但當你到達小巷時，那裡空空如也——除了在劇院員工入口旁邊張貼的一張告示，“別掃興了！ 快來參加《黃衣之王》的慶功派對吧。晚上八點在大西洋街1452號，康斯坦絲·杜梅因的住宅舉行派對。請著正裝到場。”你從牆上撕下這張告示並且收了起來，心中既沮喪又茫然。",
       "steps": [
         "stranger_is_on_to_you",
         "chasing_the_stranger",
@@ -7691,7 +7691,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "Fleeing from the theatre, you head straight to the police station in Easttown. Bursting through the door, to the stares of onlookers and police officers alike, you demand to see Sheriff Engle, stressing the importance of your visit. The desk sergeant, who is lazily working through a stack of paperwork, shakes his head and raises a finger in silence, then points to a nearby chair. The wait is excruciating. Every moment is an eternity. The hands of the nearby clock crawl. You drum your fingers on the desk. You tap your feet. You constantly peer over your shoulder to make sure the pallid mask of the Stranger is not watching you through the front window. Finally, the desk sergeant puts his pen down and sits up, beckoning you. “Alright, what’s so important now?” You are only halfway through your explanation of the night’s events when he sighs and shakes his head. “Look, if this is some kind of joke, it ain’t funny,” he says. “We had officers downtown all night. Don’t try to feed me some hooey straight to my face.” You insist, but the desk sergeant rises to his feet and opens the door, motioning for you to leave. He raises his voice. “What, you think we’re not busy enough or something? Beat it!” He mumbles about “blind birds” behind your back as he escorts you out of the station.\nYou <b>know</b> what you saw earlier that night. Frustrated, you head back to the Ward Theatre to find some kind of proof you can take to the police. You are surprised to find that the front door of the theatre is locked. You are about to decide whether or not to break down the door when you see a notice on the wall near the entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and fold it into your coat pocket, hoping it will lead you to the answers you seek.",
+      "text": "你逃出劇院之後直奔東城區的警察局。你徑直推開警察局的大門，迎著所有旁觀者和警員的目光，你說有緊急的事情要見恩格爾警長。值班的警官正懶洋洋地做著手邊的文書工作，他搖搖頭，抬起一根手指指向旁邊的一張椅子，不發一語。你焦灼地等待著。等待的每一秒都如此地漫長。時鐘的指針艱難前行。你不耐煩地跺著腳，在桌面上敲敲手指。你不時地回頭看，確認戴著蒼白面具的陌生人沒從前門的窗戶上盯著你看。終於，值班警官放下手中的筆，起身並向你招手。“好吧，是什麼要緊事？”你向他說明這夜發生的種種事件，還沒說完他就嘆氣搖頭。“聽著，如果說你在說笑話，這一點都不好笑，”他說：“整晚都有警察在商業區駐守。別想在我面前說胡話。”你堅持想要說服他，但值班警官起身開門，示意讓你離開。他拔高了音量：“難不成你覺得我閒得發慌？快走！”他盯著你離開警局，嘴裡嘟囔著“蠢貨”。\n你<b>知道</b>你今晚所見非虛。你沮喪地回到沃德劇院，希望能找到一些證據帶回警局。驚奇的是劇院的大門鎖上了。在你決定是否要破門而入的時候，劇院的員工入口旁張貼的一張告示吸引了你的注意力。“別掃興了！快來參加《黃衣之王》的慶功派對吧。晚上八點在大西洋街1452號，康斯坦絲‧杜梅因的住宅舉行派對。請著正裝到場。”你撕下告示，將它折好放進外套的口袋裡，祈禱它能帶領你找到答案。",
       "steps": [
         "police_unhelpful",
         "tried_to_warn_police",
@@ -7709,7 +7709,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "You think about going to the police, but considering the horrors in the theatre, they’re more likely to think you’re mad than to believe your story. A small part of you wonders if this is still some kind of prank, but that can’t be the case—it was all too real, too terrifying to forget. Wondering what course of action to take, you find yourself backtracking over your escape route, returning to the theatre with cautious steps. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. Soon the Ward Theatre comes into sight, its bright lights dominating the streets of Downtown. You expected the theatre to be in ruins, but its exterior looks the same as it did when you arrived to see The King in Yellow earlier that night. You walk to the front window of the Ward Theatre and tentatively peer through, but it is too dark to see anything inside.\nJust then, a chill brushes the nape of your neck, and you feel that you are being watched. You turn, and spot a shadow fleeing around the corner. A swarm of roaches skitters across the sidewalk, following in the shadow’s wake. Your muscles tense with uncertainty, and you round the corner in pursuit. Standing unconcerned on the sidewalk is a familiar-looking man in a featureless pallid mask.\nHis unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, and instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty—save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, hoping it will lead you to the answers you seek.",
+      "text": "你打算上警察局，但考慮到劇院裡發生的事情可怕如斯，那幫警察不會相信你所說的，而更可能會認為你是個瘋子。在你心底仍抱有些許懷疑，或許那不過是一場惡作劇，但這事兒不一樣——這整件事實在過於真實，過於可怕，使你全然無法忘卻。你不知所措，謹慎地按照逃出劇院的路線返回。街道上車流穿梭，車頭燈的明亮光線刺入你的雙眼，將骯髒的雨水濺到你身旁的人行道上。很快，沃德劇院映入你的眼簾，亮堂的燈盞照亮了商業區的街道。你本以為劇院已成廢墟，但它看起來跟你今晚早些時候觀看《黃衣之王》時別無二致。你走到沃德劇院前門的窗戶前，試著往裡看看，但因為裡面太黑，你什麼都看不見。就在這時，一陣寒意掠過你的後頸，你察覺你在被人監視。你一轉身，發現有個黑影從街角跑過。一群蟑螂從路上流竄，追隨那個黑影的蹤跡而去。你的肌肉莫名地繃緊，緊接著你便往街角追去。一個似曾相識的男子站在人行道上，他一副漠不關心的姿態，臉上還戴著一張毫無特徵的蒼白面具。\n他定定地註視著你。“你是<b>誰</b>？”你大聲問道。陌生人並未應答，而是轉身離去，在劇院後的小巷裡消失了蹤影。你緊追在後，期望從他口中得到答案，但當你到達小巷時，那裡空空如也——除了在劇院員工入口旁邊張貼的一張告示。“別掃興了！快來參加《黃衣之王》的慶功派對吧。晚上八點在大西洋街1452號，康斯坦絲‧杜梅因的住宅舉行派對。請著正裝到場。”你撕下告示，將它收起，祈禱它能帶領你找到答案。",
       "steps": [
         "wise_not_to_warn",
         "chose_not_to_warn_police",
@@ -9379,8 +9379,8 @@
 },
 {
   "id": "ptc_interlude1",
-  "scenario_name": "Lunacy's Reward",
-  "full_name": "Interlude I: Lunacy's Reward",
+  "scenario_name": "癲狂獎勵",
+  "full_name": "幕間故事I：癲狂獎勵",
   "header": "幕間故事 I",
   "type": "interlude",
   "icon": "hasturs_gift",
@@ -9401,7 +9401,7 @@
         "choices": [
           {
             "id": "go_back_in",
-            "text": "<i>Things seem to have calmed down. Perhaps we should go back inside and investigate further.</i>",
+            "text": "<i>一切似乎已歸於平靜。或許我們應該回到那幢大宅裡去，再作進一步調查。</i>",
             "steps": [
               "reward_1",
               "why_go_back",
@@ -9411,7 +9411,7 @@
           },
           {
             "id": "block_door",
-            "text": "<i>I don’t trust this place one bit. Let’s block the door and get the hell out of here!</i>",
+            "text": "<i>絕對不能在這個鬼地方待下去。堵上前門馬上走吧！</i>",
             "steps": [
               "reward_2",
               "door_wont_stop_them",
@@ -9421,7 +9421,7 @@
           },
           {
             "id": "burn_house",
-            "text": "<i>If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <b>kill them.</b></i>",
+            "text": "<i>如果讓這些人留在世上，這恐怖的景像只會重演。我們得讓它就此結束。我們必須<b>殺掉他們</b>。</i>",
             "steps": [
               "reward_3",
               "did_what_had_to_be_done",
@@ -9439,15 +9439,15 @@
     },
     {
       "id": "why_go_back",
-      "text": "Why would you go back inside?"
+      "text": "為什麼你會回到這幢大宅裡去？"
     },
     {
       "id": "door_wont_stop_them",
-      "text": "That door isn't going to stop them."
+      "text": "那扇大門阻止不了他們。"
     },
     {
       "id": "did_what_had_to_be_done",
-      "text": "You did what had to be done... Right?"
+      "text": "你做了應做之事……真是這樣嗎？"
     },
     {
       "id": "fled_dinner_party",
@@ -9456,19 +9456,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "fled_dinner_party",
-          "text": "you fled the dinner party."
+          "text": "你逃離晚宴。"
         }
       ]
     },
     {
       "id": "intruded_on_secret_meeting",
-      "text": "In your Campaign Log, record that <i>you intruded on a secret meeting</i>. Mark one <b>Doubt</b> in your Campaign Log.",
+      "text": "在冒險日誌中，記錄下<i>你闖入了一場密會</i>。在冒險日誌上記1點<b>疑惑</b>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "intruded_on_secret_meeting",
-          "text": "you intruded on a secret meeting."
+          "text": "你闖入了一場密會。"
         },
         {
           "type": "campaign_log_count",
@@ -9480,13 +9480,13 @@
     },
     {
       "id": "slayed_the_monsters",
-      "text": "In your Campaign Log, record that <i>you slayed the monsters at the dinner party</i>. Mark one <b>Conviction</b> in your Campaign Log.",
+      "text": "在冒險日誌中，記錄<i>你殺死了晚宴上的那群怪物</i>。在冒險日誌上記1點<b>確信</b>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "slayed_the_monsters",
-          "text": "you slayed the monsters at the dinner party."
+          "text": "你殺死了晚宴上的那群怪物。"
         },
         {
           "type": "campaign_log_count",
@@ -9690,7 +9690,7 @@
         "name": "Lunacy's Reward 1"
       },
       "type": "story",
-      "text": "The change in the atmosphere has you curious. What if it was all a trick of your mind? What if the hauntings that follow The King in Yellow are but transitory? The answers to all of your questions might lie inside. Cautiously, you open the front door to the manor once again. Reassuring jazz and the clamor of casual conversation grow louder as you step inside. The enticing smell of roasted pork wafts through the air. As you suspected, the signs of struggle and oddities you noticed before have vanished without explanation. Then, as you turn the corner into the dining room, you find the Stranger speaking with another man—tall, mustached, wearing a fine black suit, and holding a silver-handled cane. The Stranger turns to you, his gaze drills through your mind, and your vision swims with agony. Before you realize it, you are running as fast as you can, toppling through the front doorway in a haze of pain and disorientation. Without time to catch your breath, you race to your vehicle and speed away, hands trembling upon the steering wheel."
+      "text": "氛圍的轉變使你疑惑。這會不會只是你腦海中的錯覺？還是說《黃衣之王》緊跟著的鬼影轉瞬即逝？你所有問題的答案，可能就在這大宅裡面。你小心翼翼地再次打開莊園的前門。隨著你步入莊園，令人安心的爵士樂和人們閒聊的嘈雜聲愈發響亮。空氣中飄來煎烤豬肉的誘人香味。如你所料，你先前所發現的掙扎的跡象和種種怪事都已消失。然後，當你拐進宴會廳時，你發現陌生人正在和另一個男人交談，他身材高挑，蓄有鬍鬚，一身體面的黑西裝，手裡拿著銀色手柄的手杖。陌生人轉向你，他的目光穿透了你的心靈，你的視線痛苦地四處游移。在你意識到這一切之前，你便用盡全力跑了起來，痛覺和不知所蹤的方向感使你在門廊處栽倒在地。連喘息的時間都沒有，你衝到你的車子上並快速離開，扶在方向盤上的手都是顫抖的。"
     },
     {
       "id": "reward_2",
@@ -9699,7 +9699,7 @@
         "name": "Lunacy's Reward 2"
       },
       "type": "story",
-      "text": "You can’t trust your senses. This is all a trick, an attempt to lure you back inside. You’re no safer now than you were before. Swallowing your fear, you set to work barricading the front door of the manor using several of the heavy stone benches lining the cobblestone path in the front yard. You hope it’s enough, but you aren’t willing to stick around to find out. As soon as you’re done, you head back to your vehicle and drive toward Southside, where you hope to find answers."
+      "text": "你無法相信你所感知到的。這就是個圈套，想要引你回到那幢大宅去。你此刻仍處於危險之中。強忍著心頭的恐懼，你開始從前庭的鵝卵石路上搬運幾個沉甸甸的石凳，將它們堵在莊園的前門上。希望這些足夠把門堵住，然而你不願留在這兒尋找真相。完成這項工作之後，你回到車上，駛向南區，期望你能在那兒找到答案。"
     },
     {
       "id": "reward_3",
@@ -9708,7 +9708,7 @@
         "name": "Lunacy's Reward 3"
       },
       "type": "story",
-      "text": "You dare not risk stepping back inside that madhouse. But you can’t let the monstrosities run amok, either. You root through the open garage for a few supplies, finding an old hose, an empty gasoline canister, and some matches. Knowing what you must do, you first siphon some gas from Mrs. Dumaine’s Oakland 6-54A. You spread the gasoline across the front porch, inside the garage, and around the manor’s outer walls. From there, all it takes is several matches to start the blaze. You watch from the front yard as the manor is eventually consumed by the flames. The sounds of crackling fire and snapping wood and the screeching of dying horrors fills the street. Satisfied, you head back to your vehicle and tear off toward Southside, full of grim determination."
+      "text": "你不敢冒險回到那幢瘋人院般的大宅中去。但你也不能讓那群可怕的傢伙肆意殺戮。你在敞著的車庫裡東翻西找，找到了一些東西：一根舊水管，一個空的汽油罐，還有一些火柴。深知這事兒非做不可，你首先從杜梅因夫人的奧克蘭6-54A汽車中抽出一些汽油。你將汽油灑在門廊上、車庫內，還在整個莊園的外牆澆了一圈。之後只用幾根火柴便可引起一場火災。你從前廳看著整個莊園最終被大火吞噬。火焰的爆裂聲，木頭噼噼啪啪地斷裂，與人們垂死發出的恐懼尖叫交織在一起，充斥著整條街道。眼前的火勢已達到預期，於是你回到車上並向南區駛去，心中只有堅如磐石的決心。"
     }
   ]
 },
@@ -9732,7 +9732,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "You turn over the folded program in your hand, reading it for what seems like the hundredth time. “Miskatonic Playhouse presents: The King in Yellow,” it reads. “A special one-night engagement at Arkham’s very own Ward Theatre. An irresistible drama in two acts. Production staged and directed by Nigel Engram.” The cast is a small ensemble, with one unattributed credit at the end: “The Stranger.”\nTo have such a highly anticipated play come to Arkham all the way from Paris is a noteworthy event, even if it is just for one night. For weeks leading up to the show, it was the talk of the town. It seemed so unassuming...and yet, you have evidence something sinister is at work. It started with the disappearance of one of the stagehands at the theatre—a boy of only seventeen who missed rehearsal one night and was never seen again. Then, less than two weeks before the performance, there was the musician whose corpse was found with a gun in its mouth. Perhaps most chilling was the crazed man the coppers had picked up in Independence Square who had been ranting and raving about the “King’s return.” He was brought to Arkham Asylum, and you were surprised to discover that he was not alone in his delusions.\nFinding these events suspicious, you and your companions have delved deeper into the matter. Although no connection can be proven, these weren’t the only strange events surrounding the up-and-coming play. Instances of suicide and madness have followed in its wake, and you are determined to discover why.\nThe lights in the auditorium dim, and a spotlight shines on the stage. What unfolds is not quite what you expected. Slow-paced and monotonous, the first act of The King in Yellow is a tedious bore. The setting and characters are compelling, but the meandering and nonsensical story does little to entertain or inform. You begin to wonder whether the dreadful events surrounding The King in Yellow aren’t connected, after all. Perhaps it was just your overactive imagination; how could such a trivial and unassuming show cause such pandemonium? You are surprised when the first act closes without any rising action or revelation. The lights rise for the intermission, and you consider leaving early, stifling a yawn. Before you are able to decide, however, you find yourself drifting...drifting...to sleep."
+      "text": "你翻開手中折起的節目單，再次閱讀彷彿你已讀過百遍的這張紙片。“米斯卡塔尼克劇院上演：《黃衣之王》，”紙上這麼寫著。“阿卡姆本地的沃德劇院將迎來這部戲劇的特別上演，為期一晚。這部令人無法抗拒的戲劇共有兩幕。本作品由奈傑爾·英格蘭姆負責籌劃和管理。本劇演員均屬於一個小型劇團，在演員名單最後還有個未署名的人物：“陌生人。”\n這樣一部萬眾期待的戲劇不遠萬里從巴黎來到阿卡姆，即便只上演一夜它也備受矚目。在演出前的幾個星期裡，它一直是城中熱話。雖然跡象不甚明顯……然而，你有證據證明有某種邪惡勢力正在行動。最初是劇院有個舞台工作人員失蹤——一個才十七歲的男孩在一次彩排中缺席，之後就再也沒人見過他。到距離演出已不到兩個星期的時候，一位音樂家被發現死亡，並且屍體口中含著槍。或許最讓人生畏的是警察從獨立廣場抓到的瘋漢，他滿口胡言亂語，說著“王已歸來”之類的瘋話。他被帶到阿卡姆瘋人院之後你驚訝地發現，產生這種妄想的並不止他一人。\n你和你的同伴們經過深入調查之後，發現這些事件十分可疑。儘管無法證實這些事件之間有何關聯，而這部即將上演的戲劇周圍所發生的離奇事件遠不止這些。一椿椿自殺事件和發瘋事件接踵而來，你決心要找出背後的真相。\n觀眾席的燈光暗了下來，聚光燈投下的燈光落在舞台上。眼前的情景與你的預期相去甚遠。《黃衣之王》的第一幕緩慢而單調，使人感到無聊乏味。這部戲劇的背景和角色足夠吸引，但曲折而怪誕的劇情卻未能娛樂觀眾，也無法傳達什麼信息。你開始懷疑這些發生在《黃衣之王》周圍的駭人事件之間是不是根本就沒有聯繫。或許這不過是你的過度想像；這場平凡而不起眼的演出怎能引起這般混亂？令你吃驚的是第一幕沒有任何高潮和轉折就驟然結束了。幕間休息時燈光亮起，你忍住哈欠，想要提早離場。你正在躊躇之中，突然感覺自己睏意越來越濃……最終昏睡了過去。"
     },
     {
       "id": "choose_investigators",
@@ -9743,7 +9743,7 @@
     },
     {
       "id": "check_lola_hayes",
-      "text": "If Lola Hayes was chosen as an investigator for this campaign:",
+      "text": "如果蘿拉·海耶斯作為調查員參與劇本：",
       "type": "branch",
       "condition": {
         "type": "campaign_data",
@@ -9763,7 +9763,7 @@
     {
       "id": "lola_hayes_reads",
       "bullet_type": "small",
-      "text": "The Lola Hayes player reads the following section (out loud)."
+      "text": "該調查員大聲朗讀<b>蘿拉的序幕</b>。"
     },
     {
       "id": "lola_prologue",
@@ -9772,14 +9772,14 @@
         "name": "Lola Prologue"
       },
       "type": "story",
-      "text": "Act I came and went without a hitch, as it often did in rehearsal. You couldn’t help but note the blank, dismissive expressions on many of the audience members’ faces, and you wonder how the audience will react to the play’s disturbing second half. The role of Cassilda is tiresomely boring for the first half of the play, although you enjoy portraying her regal charm. You find yourself missing your previous co-star, Miriam Twain, and suddenly the dread and regret you had felt in Paris comes flooding back. With a sigh, you retreat to a dark corner backstage to escape the sounds of stagehands preparing for the next scene. You try to quell your emotions and replace your thoughts with those of Cassilda’s—her hopes, her fears, her fate.\nJust then, you catch the Stranger staring at you from afar, and you find yourself shaking at the mere sight of him. Even though they continue to replace the actor who plays the Stranger before each show (and indeed many times during rehearsals), you know that this last-minute replacement is the most horrid of them all. Realizing you never caught his name, a shiver of terror courses through your spine. Have you found your way back to the wolves, like a lost lamb? You cannot look away— his gaze is inescapable. Everything goes black."
+      "text": "第一幕從演出到結束都未有差錯，如同平常彩排的一樣。你不由得注意到許多觀眾臉上空洞而輕蔑的神情，不知觀眾在觀看這部戲劇的下半部分時，會對令人煩厭的劇情作何反應。卡西露達這個角色在戲劇的前半部分實在令人厭倦，儘管她的王家氣度使你在扮演時樂在其中。你心中泛起對前搭檔米里亞姆·吐溫的懷念，突然間，你在巴黎時的恐懼和悲悼之情又湧上心頭。你聽見舞台工作人員開始為接下來的佈景做準備，你嘆了口氣，閃身躲到後台的漆黑角落，好避開人群。你試圖讓你的情緒平定下來，將你的思緒代入卡西露達——她的希望，她的恐懼，她的命運。\n就在此時，你驚覺陌生人正從遠處盯著你看，僅短短一瞥就使你膽顫心驚。儘管他們在每場演出之前都會改換陌生人的扮演者(實際上在彩排時也發生過多次)，但你知道，在這緊要關頭換上的扮演者比過往的都要可怕得多。你意識到你從未得知他的名字，一陣恐懼的戰慄爬上你的後脊。你像是隻迷路的羔羊，懵然步向狼群……你無法將目光從他身上移開——他的雙眼緊盯著你。然後你眼前一黑。"
     }
   ]
 },
 {
   "id": "the_last_king",
   "scenario_name": "最後的王者",
-  "full_name": "Scenario II: The Last King",
+  "full_name": "冒險II：最後的王者",
   "header": "冒險II",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -9811,7 +9811,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "用以下標記組成混亂袋：+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -9841,13 +9841,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "在冒險設置時不調整混亂袋的內容。"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -9896,7 +9896,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "調查員隊長將蒼白面具下的男子弱點卡(卡爾克薩之路#59)加入其牌組。",
       "effects": [
         {
           "type": "add_card",
@@ -9912,7 +9912,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "If anyone has the answers to the questions that burn in your mind, it’s the cast and crew of The King in Yellow. With no other leads to pursue, you put on your best clothes and head to 1452 Atlantic Avenue, where a woman named Constance Dumaine is hosting an event in celebration of the play’s one-night engagement in Arkham."
+      "text": "若是有人能夠解答使你抓心撓肝的那些問題，那準是《黃衣之王》的演職人員了。眼下沒有其他的線索可以追尋，你穿上你最光鮮的衣裝，前往大西洋街1452號，一位名叫康斯坦絲·杜梅因的女士將在那兒舉辦慶功宴會，慶祝這部戲劇在阿卡姆城成功上演。"
     },
     {
       "id": "gather_encounter_sets",
@@ -9928,7 +9928,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put all 6 locations into play (Foyer, Courtyard, Living Room, Ballroom, Dining Room, and Gallery). Each investigator begins play in the Foyer."
+      "text": "將全部6個地點放置入場(門廳、庭院、客廳、舞廳、餐廳、畫廊)。每位調查員從門廳開始遊戲。"
     },
     {
       "id": "location_layout",
@@ -9956,23 +9956,23 @@
     },
     {
       "id": "setup_bystanders",
-      "text": "Shuffle the 5 Bystander assets (Constance Dumaine, Jordan Perry, Ishimaru Haruko, Sebastien Moreau, and Ashleigh Clarke) and randomly place one in each location except for the Foyer. Place 1 clue on each of these assets, plus 1 additional clue per investigator.",
+      "text": "混洗以下5張[[旁人]]支援卡(康斯坦絲·杜梅因、喬丹·佩里、石丸春子、塞巴斯蒂安·莫羅、阿什莉·克拉克)，然後將他們隨機放到除門廳外的各個地點上。放置1個線索在這些支援卡上，再額外放置等同於調查員人數的線索。",
       "bullets": [
         {
-          "text": "<i>Note: These cards are double-sided and have story cards on their other side. For the best experience, do not look at the other side unless an effect instructs you to do so.</i>"
+          "text": "<i>注意：這些卡牌是雙面的，其背面為劇情卡。為了獲得最佳的遊戲體驗，請勿翻開背面內容，除非有效果指示你如此做。</i>"
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Dianne Devine enemy aside, out of play."
+      "text": "將黛安娜·迪瓦恩敵人卡放在一邊，位於遊戲場外。"
     },
     {
       "id": "setup_sickening_reality",
-      "text": "Place the 5 “Sickening Reality” story cards underneath the scenario reference card.",
+      "text": "將5張“令人作嘔的現實”劇情卡放在冒險參考卡下方。",
       "bullets": [
         {
-          "text": "<i>Note: These cards are double-sided and have encounter cards on their other side. For the best experience, do not look at the other side unless an effect instructs you to do so.</i>"
+          "text": "<i>注意：這些卡牌是雙面的，其背面為遭遇卡。為了獲得最佳的遊戲體驗，請勿翻開背面內容，除非有效果指示你如此做。</i>"
         }
       ]
     },
@@ -10058,11 +10058,11 @@
     },
     {
       "id": "earn_clue_xp",
-      "text": "For every 2 clues that were on the act deck when the game ended, choose an investigator to earn 1 additional experience point. Experience from this reward must be divided as evenly among the investigators as possible.",
+      "text": "遊戲結束時在場景牌堆上每有2個線索，選擇一位調查員獲得額外1點經驗值。由這項獎勵獲得的經驗值必須盡可能地在調查員間平均分配。",
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "XP from Clues",
+        "text": "從線索獲得的經驗值",
         "effects": [
           {
             "type": "earn_xp",
@@ -10073,7 +10073,7 @@
     },
     {
       "id": "vips_interviewed",
-      "text": "In your Campaign Log, under “VIPs Interviewed,” record the name of each character you “interviewed.”",
+      "text": "在你的冒險日誌的“貴賓會談”下方記錄你“會談”的每個角色的名字。",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -10091,7 +10091,7 @@
         "choices": [
           {
             "id": "interviewed",
-            "text": "Interviewed",
+            "text": "已會談",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -10107,7 +10107,7 @@
     {
       "id": "vips_slain",
       "type": "input",
-      "text": "In your Campaign Log, under “VIPs Slain,” record the name of each unique [[Lunatic]] enemy in the victory display.",
+      "text": "在你的冒險日誌的“貴賓遇害”下方記錄勝利牌區中每個獨特的[[狂人]]敵人的名字。",
       "input": {
         "type": "card_choice",
         "query": [
@@ -10120,7 +10120,7 @@
         "choices": [
           {
             "id": "slain",
-            "text": "Slain",
+            "text": "已遇害",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -10135,7 +10135,7 @@
     },
     {
       "id": "skip_lunacys_reward",
-      "text": "Skip <b>Interlude I: Lunacy's Reward</b>.",
+      "text": "跳過<b>幕間故事I：癲狂獎勵</b>。",
       "effects": [
         {
           "type": "campaign_data",
@@ -10183,7 +10183,7 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution\n(at least one investigator resigned)",
+      "title": "未達成任何結局(至少一位調查員撤退)",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -10196,7 +10196,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(all investigators defeated)",
+      "title": "未達成任何結局(所有調查員被擊敗)",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -10213,7 +10213,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "The brisk autumn air embraces you as you exit the manor. There is no doubt in your mind that the cast and crew of The King in Yellow have become affected by madness. Perhaps it’s getting to you, as well. You feel an encroaching darkness, a presence in your mind not unlike the gaze of the Stranger. Startled, you peer about the front yard for the first time since escaping the manor. The scene is...different. The front windows are not smashed as they were when you first approached. The trail of blood you had noticed on the porch has been wiped clean, and instead of the disturbingly warped music you had heard upon entering, the soothing tones of slow jazz drift out from the courtyard.",
+      "text": "當你離開這個莊園時，凜冽的秋風向你襲來。你心中確信無疑，《黃衣之王》的演職人員都被瘋狂所影響。或許這也將發生在你的身上。你感覺到一股黑暗逐漸滲入，陌生人的凝視彷彿滲入你的腦海中。驚懼之下，你逃出莊園之後首次細看前院。景像……不同了。與你第一次到來時不同，前窗並未破碎。你在門廊發現的血跡已被抹淨，與你在進入這幢建築時聽到的令人不安的扭曲的音樂不同，此時從庭院傳來的是輕柔而舒緩的爵士樂曲調。",
       "steps": [
         "vips_interviewed",
         "vips_slain",
@@ -10228,7 +10228,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "“Excuse me, but it’s very late,” you hear a server say as he gently taps you on your shoulder. You realize that you are sitting on a couch in the manor’s living room, and that you have been asleep for some time. The party appears to be winding down. No music fills the halls, the food is all but gone, and only a few guests remain. “Perhaps you would like for me to get your coat?” the server asks with a trained smile. You wobble as you rise to your feet, leaning against the couch’s armrest. Your head pounds with a dizzying intensity, and your vision is spotted. You insist that you are fine, and begin walking toward the foyer.\nYou no longer see any of the guests you were searching for earlier, not even the hostess, Mrs. Dumaine. All traces of the madness and horror you’ve experienced are gone. Even the oddities you witnessed upon entering the manor have vanished—the signs of struggle, the broken windows, the blood trail on the porch... Every piece of evidence has been erased. But you still remember the night’s events, and in your memory you will find your answers.",
+      "text": "“請您原諒我的冒犯，但現在時間已經很晚了。”一位侍者輕拍你的肩膀，對你說道。你發覺你身處這座莊園的客廳，坐在沙發上睡著了一陣子。派對似乎已進入尾聲。各個禮堂都沒有樂聲環繞，佳餚消失一空，只有少數幾個賓客逗留在此。“或許您需要我給您取來外套？”侍者臉上露出職業微笑，問道。你倚靠著沙發扶手，雙腿顫顫巍巍地站起身來。你的大腦彷彿受到重擊，使你頭暈目眩，眼前的景像模糊不清。你堅稱自己無恙，然後向門廳走去。\n先前你尋找的賓客已消失蹤影，女主人杜梅因夫人也不見了。你所經歷過的瘋狂和恐怖景像已無跡可尋。你進入莊園時目睹的怪事也悉數消失——掙扎的跡象，破碎的窗戶，門廊的血跡……所有的證據都被抹消了。但你仍記得這夜發生的事情，你會在記憶中找到你要的答案。",
       "steps": [
         "vips_interviewed",
         "vips_slain",
@@ -10246,7 +10246,7 @@
         "name": "Resolution 3"
       },
       "title": "結局3",
-      "text": "Several days later, you find yourself reminiscing about the party you attended at 1452 Atlantic Avenue. What a roaring good time you had! And yet, your memory is hazy. You can’t help but feel you are forgetting something important. Something about the play you’d watched earlier that night—The King in Yellow. That nagging sensation pursues you in every waking moment. Try as you might to recall the night’s events in full, there remains a gaping hole in your memory. As you strain to remember, your concern grows, almost to the point of obsession. Deciding that you absolutely must know what occurred that night, you head toward the manor of the Historical Society in Southside. Perhaps there you can learn more about <u>The King in Yellow</u> play...",
+      "text": "幾天過去後，你回想起你在大西洋街1452號參加過的派對。那晚你玩得真痛快！然而，你的記憶卻是模糊的。你不禁感覺到，你忘記了一些重要的事情。與你在那晚早些時候觀看的戲劇《黃衣之王》有關。在你清醒的每個時刻，這種困惑的想法揮散不去，使你不得安寧。你試圖回想起那晚發生的所有事情，然而你的記憶卻仍有一大段空白。隨著你盡力地回想，你對此事愈發專注，幾乎到了沉迷的程度。你必須知道那晚究竟發生了什麼，於是你出發前往南區的那所莊園——歷史協會。或許在那兒你會得知更多有關《黃衣之王》這部戲劇的信息……",
       "steps": [
         "vips_interviewed",
         "vips_slain",
@@ -10333,13 +10333,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "在冒險設置時不調整混亂袋的內容。"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -10388,7 +10388,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "調查員隊長將蒼白面具下的男子弱點卡(卡爾克薩之路#59)加入其牌組。",
       "effects": [
         {
           "type": "add_card",
@@ -11264,13 +11264,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "在冒險設置時不調整混亂袋的內容。"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -12120,7 +12120,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -14189,7 +14189,7 @@
     {
       "id": "criminal_aloof_note",
       "type": "rule_reminder",
-      "text": "<b>注意：</b> 在這場冒險開始時，密謀1a會給每個 [[罪犯]] 敵人冷漠關鍵詞，這些敵人不會自動被你吸引。在某個時間點，這些敵人會失去該關鍵詞，之後，這些敵人會按照正常規則，自動被你吸引。"
+      "text": "<b>注意：</b> 在這場冒險開始時，密謀1a會給每個[[罪犯]]敵人冷漠關鍵詞，這些敵人不會自動與你交戰。在某個時間點，這些敵人會失去該關鍵詞，之後，這些敵人會按照正常規則，自動與你交戰。"
     },
     {
       "id": "bone_to_pick",
@@ -14442,7 +14442,7 @@
         "name": "Resolution 3"
       },
       "title": "結局3",
-      "text": "雖然你無法找到摩爾根博士，但你們救出的那個男人，十分感激你們的友善。他名叫彼得·克勞佛，是四葉草俱樂部所在大樓的主人。儘管發生了這種災難，他還是保持著專業的冷靜頭腦。你們向著街道走去，一輛B-70克萊斯勒高級轎車停在你們面前，從裡面走出一位留著褐色長髮，眼眸細長的美麗女士。她身後跟著一個目光兇惡，身著黑色西服的大漢。“彼得，”那女子看到你們時，好像鬆了一口氣。“你沒事真是太好了。我聽說你遇到麻煩了？”她轉頭看了看你們，“這些人是誰？”\n克勞佛拍了拍肩上的灰塵，一臉輕鬆。“娜奧米，親愛的，這些是我的朋友。他們……”他清了清喉嚨。“他們護送我離開了房子，”他停頓了一下，簡短地解釋道。“我很感激他們。”那個女人叉起雙手放在胸前，仔細地打量著你們，然後是一個很明顯的假笑。\n“那好吧。我謝謝你們照顧彼得。你們可以走了，剩下的事交給我們處理。”她向那個壯漢點了點頭，然後從後門走進了俱樂部，一邊從大衣下拿出了槍。你不太清楚他們會怎麼“處理”，不過你也不想知道具體方案。你們謝別了內奧米和彼得，離開了這兒。",
+      "text": "雖然你無法找到摩爾根博士，但你們救出的那個男人，十分感激你們的友善。他名叫彼得·克勞佛，是四葉草俱樂部所在大樓的主人。儘管發生了這種災難，他還是保持著專業的冷靜頭腦。你們向著街道走去，一輛B-70克萊斯勒高級轎車停在你們面前，從裡面走出一位留著褐色長髮，眼眸細長的美麗女士。她身後跟著一個目光兇惡，身著黑色西服的大漢。“彼得，”那女子看到你們時，好像鬆了一口氣。“你沒事真是太好了。我聽說你遇到麻煩了？”她轉頭看了看你們，“這些人是誰？”\n克勞佛拍了拍肩上的灰塵，一臉輕鬆。“娜奧米，親愛的，這些是我的朋友。他們……”他清了清喉嚨。“他們護送我離開了房子，”他停頓了一下，簡短地解釋道。“我很感激他們。”那個女人叉起雙手放在胸前，仔細地打量著你們，然後是一個很明顯的假笑。\n“那好吧。我謝謝你們照顧彼得。你們可以走了，剩下的事交給我們處理。”她向那個壯漢點了點頭，然後從後門走進了俱樂部，一邊從大衣下拿出了槍。你不太清楚他們會怎麼“處理”，不過你也不想知道具體方案。你們謝別了娜奧米和彼得，離開了這兒。",
       "steps": [
         "naomi_has_back",
         "francis_morgan_kidnapped",
@@ -16164,7 +16164,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -17207,7 +17207,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -17858,8 +17858,8 @@
     {
       "id": "prologue",
       "type": "story",
-      "title": "Have You Seen the Yellow Sign?",
-      "text": "“He mentioned the establishment of the Dynasty in Carcosa, the lakes which connected Hastur, Aldebaran, and the mystery of the Hyades. He spoke of Cassilda and Camilla, and sounded the cloudy depths of Demhe and the Lake of Hali.” – Robert W. Chambers, “The Repairer of Reputations”"
+      "title": "你曾見過黃色印記嗎？",
+      "text": "“他提到了整個王朝是如何在卡爾克薩建立起來的，還有那些將哈斯塔、畢宿五和畢星團的秘密聯繫起來的湖泊。他還說起了卡西露達和卡米拉，還談到了德姆赫和哈利湖那陰鬱的深淵。”——《名譽修復師》羅伯特·Ｗ·錢伯斯"
     },
     {
       "id": "choose_investigators",
@@ -17871,20 +17871,20 @@
     {
       "id": "hidden_keyword",
       "type": "rule_reminder",
-      "title": "New Keyword: Hidden",
-      "text": "Some encounter cards in <i>The Path to Carcosa</i> campaign have the “hidden” keyword. Hidden cards have <b>Revelation</b> abilities that secretly add them to your hand. This should be done without revealing that card or its text to the other investigators. While a hidden card is in your hand, treat it as if it were in your threat area. Its Constant abilities are active, and abilities on it can be triggered, but only by you. A hidden card counts toward your hand size, but it cannot be discarded from your hand by any means except those described on the card. When discarded, hidden cards are placed in the encounter discard pile. They do not remain a part of your deck like weaknesses do. For the best experience, players are encouraged to stay “in character” and not share information about hidden cards in their hand."
+      "title": "新的關鍵字：隱私",
+      "text": "《卡爾克薩之路》系列傳說中的部分遭遇卡帶有“隱私”關鍵字。隱私卡帶有的<b>顯現</b>能力會將這張卡秘密地加入你的手牌中。結算此能力效果時不翻開這張卡，也不向其他調查員展示卡牌上的文字。當你的手牌中有隱私卡時，視作它在你的威脅區域內。卡牌上的持續能力生效，並且卡牌上的能力只能被你觸發。隱私卡計入你的手牌上限，但除非按照隱私卡上的文字描述執行，否則你無法以任何形式從你手牌中棄除它。隱私卡被棄掉時，放回遭遇棄牌堆。它們不會像弱點卡一樣留在你的牌堆中。為了獲得最佳的遊戲體驗，建議玩家“扮演角色”進行遊戲，不要將手牌中的隱私卡任何內容公開。"
     },
     {
       "id": "doubt_and_conviction",
       "type": "rule_reminder",
-      "title": "Doubt and Conviction",
-      "text": "Some story resolutions and interludes in The Path to Carcosa campaign instruct the players to “Mark one <b>Doubt</b>” or “Mark one <b>Conviction</b>” in their Campaign Log. This is done by filling in one of the boxes next to “<b>Doubt</b>” or “<b>Conviction</b>” in the Campaign Log.\nLater in the campaign, some scenarios may be changed or altered depending on whether the investigators “have more <b>Doubt</b> than <b>Conviction</b>” or “have more <b>Conviction</b> than <b>Doubt</b>.” The investigators have more <b>Doubt</b> than <b>Conviction</b> if the number of boxes filled in next to <b>Doubt</b> is greater than the number of boxes filled in next to <b>Conviction</b> (and vice versa). <b>Doubt</b> and <b>Conviction</b> are shared among all of the investigators, and they are not tied to any specific investigator. <b>Doubt</b> and <b>Conviction</b> have no game effect except when explicitly referenced by the Campaign Guide or by a card effect."
+      "title": "疑惑和確信",
+      "text": "《卡爾克薩之路》劇本中的部分結局和幕間故事會讓玩家在冒險日誌上“記一點<b>疑惑</b>”或“記一點<b>確信</b>”。具體表現為填塗冒險日誌下方的“<b>疑惑</b>”或“<b>確信</b>”旁邊的一個格子。\n在之後的冒險中，部分冒險可能會因調查員的“<b>疑惑</b>高於<b>確信</b>”或“<b>確信</b>高於<b>疑惑</b>”而發生改變。當<b>疑惑</b>旁邊已填塗的格子數大於<b>確信</b>旁邊已填塗的格子數時，稱調查員的<b>疑惑</b>高於<b>確信</b>(反之亦然)。<b>疑惑</b>和<b>確信</b>為全體調查員共有，不特指任何一位調查員。除非劇本手冊或卡牌效果明確提到，否則<b>疑惑</b>和<b>確信</b>不產生遊戲效果。"
     },
     {
       "id": "story_cards",
       "type": "rule_reminder",
-      "title": "Story Cards",
-      "text": "Story cards are a new cardtype in <i>The Path to Carcosa</i> campaign. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any."
+      "title": "劇情卡",
+      "text": "劇情卡是在《卡爾克薩之路》劇本出現的一種新的卡牌類型。此類卡牌只出現在另一冒險卡的背面，作為另一種敘述的形式出現。當你收到指示要結算一張劇情卡時，閱讀該卡上的故事文本然後結算其遊戲文本(如果有的話)。"
     },
     {
       "id": "difficulty_choice",
@@ -17895,7 +17895,7 @@
         "choices": [
           {
             "id": "easy",
-            "text": "Easy <i>(I want to watch the play)</i>",
+            "text": "簡單<i>(欣賞這部戲劇)</i>：",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -17927,7 +17927,7 @@
           },
           {
             "id": "standard",
-            "text": "Standard <i>(I want to read the signs)</i>",
+            "text": "普通<i>(細看那些印記)</i>：",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -17959,7 +17959,7 @@
           },
           {
             "id": "hard",
-            "text": "Hard <i>(I want to speak the oath)</i>",
+            "text": "困難<i>(大聲說出誓言)</i>：",
             "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -17992,7 +17992,7 @@
           },
           {
             "id": "expert",
-            "text": "Expert <i>(I want <u>The King in Yellow</u>)</i>",
+            "text": "專家<i>(黃衣之王降臨)</i>：",
             "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -18161,7 +18161,7 @@
     },
     {
       "id": "path_is_mine",
-      "title": "The Path is Mine",
+      "title": "奪路逃生",
       "text": "Win <i>The Path to Carcosa</i> campaign with less than <b>2 Doubt</b> and <b>Conviction</b> in total.",
       "type": "binary"
     },
@@ -18413,8 +18413,8 @@
 },
 {
   "id": "ptc_interlude1",
-  "scenario_name": "Lunacy's Reward",
-  "full_name": "Interlude I: Lunacy's Reward",
+  "scenario_name": "癲狂獎勵",
+  "full_name": "幕間故事I：癲狂獎勵",
   "header": "幕間故事 I",
   "type": "interlude",
   "icon": "hasturs_gift",
@@ -18435,7 +18435,7 @@
         "choices": [
           {
             "id": "go_back_in",
-            "text": "<i>Things seem to have calmed down. Perhaps we should go back inside and investigate further.</i>",
+            "text": "<i>一切似乎已歸於平靜。或許我們應該回到那幢大宅裡去，再作進一步調查。</i>",
             "steps": [
               "reward_1",
               "why_go_back",
@@ -18445,7 +18445,7 @@
           },
           {
             "id": "block_door",
-            "text": "<i>I don’t trust this place one bit. Let’s block the door and get the hell out of here!</i>",
+            "text": "<i>絕對不能在這個鬼地方待下去。堵上前門馬上走吧！</i>",
             "steps": [
               "reward_2",
               "door_wont_stop_them",
@@ -18455,7 +18455,7 @@
           },
           {
             "id": "burn_house",
-            "text": "<i>If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <b>kill them.</b></i>",
+            "text": "<i>如果讓這些人留在世上，這恐怖的景像只會重演。我們得讓它就此結束。我們必須<b>殺掉他們</b>。</i>",
             "steps": [
               "reward_3",
               "did_what_had_to_be_done",
@@ -18473,15 +18473,15 @@
     },
     {
       "id": "why_go_back",
-      "text": "Why would you go back inside?"
+      "text": "為什麼你會回到這幢大宅裡去？"
     },
     {
       "id": "door_wont_stop_them",
-      "text": "That door isn't going to stop them."
+      "text": "那扇大門阻止不了他們。"
     },
     {
       "id": "did_what_had_to_be_done",
-      "text": "You did what had to be done... Right?"
+      "text": "你做了應做之事……真是這樣嗎？"
     },
     {
       "id": "fled_dinner_party",
@@ -18490,19 +18490,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "fled_dinner_party",
-          "text": "you fled the dinner party."
+          "text": "你逃離晚宴。"
         }
       ]
     },
     {
       "id": "intruded_on_secret_meeting",
-      "text": "In your Campaign Log, record that <i>you intruded on a secret meeting</i>. Mark one <b>Doubt</b> in your Campaign Log.",
+      "text": "在冒險日誌中，記錄下<i>你闖入了一場密會</i>。在冒險日誌上記1點<b>疑惑</b>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "intruded_on_secret_meeting",
-          "text": "you intruded on a secret meeting."
+          "text": "你闖入了一場密會。"
         },
         {
           "type": "campaign_log_count",
@@ -18514,13 +18514,13 @@
     },
     {
       "id": "slayed_the_monsters",
-      "text": "In your Campaign Log, record that <i>you slayed the monsters at the dinner party</i>. Mark one <b>Conviction</b> in your Campaign Log.",
+      "text": "在冒險日誌中，記錄<i>你殺死了晚宴上的那群怪物</i>。在冒險日誌上記1點<b>確信</b>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "slayed_the_monsters",
-          "text": "you slayed the monsters at the dinner party."
+          "text": "你殺死了晚宴上的那群怪物。"
         },
         {
           "type": "campaign_log_count",
@@ -18724,7 +18724,7 @@
         "name": "Lunacy's Reward 1"
       },
       "type": "story",
-      "text": "The change in the atmosphere has you curious. What if it was all a trick of your mind? What if the hauntings that follow The King in Yellow are but transitory? The answers to all of your questions might lie inside. Cautiously, you open the front door to the manor once again. Reassuring jazz and the clamor of casual conversation grow louder as you step inside. The enticing smell of roasted pork wafts through the air. As you suspected, the signs of struggle and oddities you noticed before have vanished without explanation. Then, as you turn the corner into the dining room, you find the Stranger speaking with another man—tall, mustached, wearing a fine black suit, and holding a silver-handled cane. The Stranger turns to you, his gaze drills through your mind, and your vision swims with agony. Before you realize it, you are running as fast as you can, toppling through the front doorway in a haze of pain and disorientation. Without time to catch your breath, you race to your vehicle and speed away, hands trembling upon the steering wheel."
+      "text": "氛圍的轉變使你疑惑。這會不會只是你腦海中的錯覺？還是說《黃衣之王》緊跟著的鬼影轉瞬即逝？你所有問題的答案，可能就在這大宅裡面。你小心翼翼地再次打開莊園的前門。隨著你步入莊園，令人安心的爵士樂和人們閒聊的嘈雜聲愈發響亮。空氣中飄來煎烤豬肉的誘人香味。如你所料，你先前所發現的掙扎的跡象和種種怪事都已消失。然後，當你拐進宴會廳時，你發現陌生人正在和另一個男人交談，他身材高挑，蓄有鬍鬚，一身體面的黑西裝，手裡拿著銀色手柄的手杖。陌生人轉向你，他的目光穿透了你的心靈，你的視線痛苦地四處游移。在你意識到這一切之前，你便用盡全力跑了起來，痛覺和不知所蹤的方向感使你在門廊處栽倒在地。連喘息的時間都沒有，你衝到你的車子上並快速離開，扶在方向盤上的手都是顫抖的。"
     },
     {
       "id": "reward_2",
@@ -18733,7 +18733,7 @@
         "name": "Lunacy's Reward 2"
       },
       "type": "story",
-      "text": "You can’t trust your senses. This is all a trick, an attempt to lure you back inside. You’re no safer now than you were before. Swallowing your fear, you set to work barricading the front door of the manor using several of the heavy stone benches lining the cobblestone path in the front yard. You hope it’s enough, but you aren’t willing to stick around to find out. As soon as you’re done, you head back to your vehicle and drive toward Southside, where you hope to find answers."
+      "text": "你無法相信你所感知到的。這就是個圈套，想要引你回到那幢大宅去。你此刻仍處於危險之中。強忍著心頭的恐懼，你開始從前庭的鵝卵石路上搬運幾個沉甸甸的石凳，將它們堵在莊園的前門上。希望這些足夠把門堵住，然而你不願留在這兒尋找真相。完成這項工作之後，你回到車上，駛向南區，期望你能在那兒找到答案。"
     },
     {
       "id": "reward_3",
@@ -18742,7 +18742,7 @@
         "name": "Lunacy's Reward 3"
       },
       "type": "story",
-      "text": "You dare not risk stepping back inside that madhouse. But you can’t let the monstrosities run amok, either. You root through the open garage for a few supplies, finding an old hose, an empty gasoline canister, and some matches. Knowing what you must do, you first siphon some gas from Mrs. Dumaine’s Oakland 6-54A. You spread the gasoline across the front porch, inside the garage, and around the manor’s outer walls. From there, all it takes is several matches to start the blaze. You watch from the front yard as the manor is eventually consumed by the flames. The sounds of crackling fire and snapping wood and the screeching of dying horrors fills the street. Satisfied, you head back to your vehicle and tear off toward Southside, full of grim determination."
+      "text": "你不敢冒險回到那幢瘋人院般的大宅中去。但你也不能讓那群可怕的傢伙肆意殺戮。你在敞著的車庫裡東翻西找，找到了一些東西：一根舊水管，一個空的汽油罐，還有一些火柴。深知這事兒非做不可，你首先從杜梅因夫人的奧克蘭6-54A汽車中抽出一些汽油。你將汽油灑在門廊上、車庫內，還在整個莊園的外牆澆了一圈。之後只用幾根火柴便可引起一場火災。你從前廳看著整個莊園最終被大火吞噬。火焰的爆裂聲，木頭噼噼啪啪地斷裂，與人們垂死發出的恐懼尖叫交織在一起，充斥著整條街道。眼前的火勢已達到預期，於是你回到車上並向南區駛去，心中只有堅如磐石的決心。"
     }
   ]
 },
@@ -18766,7 +18766,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "You turn over the folded program in your hand, reading it for what seems like the hundredth time. “Miskatonic Playhouse presents: The King in Yellow,” it reads. “A special one-night engagement at Arkham’s very own Ward Theatre. An irresistible drama in two acts. Production staged and directed by Nigel Engram.” The cast is a small ensemble, with one unattributed credit at the end: “The Stranger.”\nTo have such a highly anticipated play come to Arkham all the way from Paris is a noteworthy event, even if it is just for one night. For weeks leading up to the show, it was the talk of the town. It seemed so unassuming...and yet, you have evidence something sinister is at work. It started with the disappearance of one of the stagehands at the theatre—a boy of only seventeen who missed rehearsal one night and was never seen again. Then, less than two weeks before the performance, there was the musician whose corpse was found with a gun in its mouth. Perhaps most chilling was the crazed man the coppers had picked up in Independence Square who had been ranting and raving about the “King’s return.” He was brought to Arkham Asylum, and you were surprised to discover that he was not alone in his delusions.\nFinding these events suspicious, you and your companions have delved deeper into the matter. Although no connection can be proven, these weren’t the only strange events surrounding the up-and-coming play. Instances of suicide and madness have followed in its wake, and you are determined to discover why.\nThe lights in the auditorium dim, and a spotlight shines on the stage. What unfolds is not quite what you expected. Slow-paced and monotonous, the first act of The King in Yellow is a tedious bore. The setting and characters are compelling, but the meandering and nonsensical story does little to entertain or inform. You begin to wonder whether the dreadful events surrounding The King in Yellow aren’t connected, after all. Perhaps it was just your overactive imagination; how could such a trivial and unassuming show cause such pandemonium? You are surprised when the first act closes without any rising action or revelation. The lights rise for the intermission, and you consider leaving early, stifling a yawn. Before you are able to decide, however, you find yourself drifting...drifting...to sleep."
+      "text": "你翻開手中折起的節目單，再次閱讀彷彿你已讀過百遍的這張紙片。“米斯卡塔尼克劇院上演：《黃衣之王》，”紙上這麼寫著。“阿卡姆本地的沃德劇院將迎來這部戲劇的特別上演，為期一晚。這部令人無法抗拒的戲劇共有兩幕。本作品由奈傑爾·英格蘭姆負責籌劃和管理。本劇演員均屬於一個小型劇團，在演員名單最後還有個未署名的人物：“陌生人。”\n這樣一部萬眾期待的戲劇不遠萬里從巴黎來到阿卡姆，即便只上演一夜它也備受矚目。在演出前的幾個星期裡，它一直是城中熱話。雖然跡象不甚明顯……然而，你有證據證明有某種邪惡勢力正在行動。最初是劇院有個舞台工作人員失蹤——一個才十七歲的男孩在一次彩排中缺席，之後就再也沒人見過他。到距離演出已不到兩個星期的時候，一位音樂家被發現死亡，並且屍體口中含著槍。或許最讓人生畏的是警察從獨立廣場抓到的瘋漢，他滿口胡言亂語，說著“王已歸來”之類的瘋話。他被帶到阿卡姆瘋人院之後你驚訝地發現，產生這種妄想的並不止他一人。\n你和你的同伴們經過深入調查之後，發現這些事件十分可疑。儘管無法證實這些事件之間有何關聯，而這部即將上演的戲劇周圍所發生的離奇事件遠不止這些。一椿椿自殺事件和發瘋事件接踵而來，你決心要找出背後的真相。\n觀眾席的燈光暗了下來，聚光燈投下的燈光落在舞台上。眼前的情景與你的預期相去甚遠。《黃衣之王》的第一幕緩慢而單調，使人感到無聊乏味。這部戲劇的背景和角色足夠吸引，但曲折而怪誕的劇情卻未能娛樂觀眾，也無法傳達什麼信息。你開始懷疑這些發生在《黃衣之王》周圍的駭人事件之間是不是根本就沒有聯繫。或許這不過是你的過度想像；這場平凡而不起眼的演出怎能引起這般混亂？令你吃驚的是第一幕沒有任何高潮和轉折就驟然結束了。幕間休息時燈光亮起，你忍住哈欠，想要提早離場。你正在躊躇之中，突然感覺自己睏意越來越濃……最終昏睡了過去。"
     },
     {
       "id": "choose_investigators",
@@ -18777,7 +18777,7 @@
     },
     {
       "id": "check_lola_hayes",
-      "text": "If Lola Hayes was chosen as an investigator for this campaign:",
+      "text": "如果蘿拉·海耶斯作為調查員參與劇本：",
       "type": "branch",
       "condition": {
         "type": "campaign_data",
@@ -18797,7 +18797,7 @@
     {
       "id": "lola_hayes_reads",
       "bullet_type": "small",
-      "text": "The Lola Hayes player reads the following section (out loud)."
+      "text": "該調查員大聲朗讀<b>蘿拉的序幕</b>。"
     },
     {
       "id": "lola_prologue",
@@ -18806,7 +18806,7 @@
         "name": "Lola Prologue"
       },
       "type": "story",
-      "text": "Act I came and went without a hitch, as it often did in rehearsal. You couldn’t help but note the blank, dismissive expressions on many of the audience members’ faces, and you wonder how the audience will react to the play’s disturbing second half. The role of Cassilda is tiresomely boring for the first half of the play, although you enjoy portraying her regal charm. You find yourself missing your previous co-star, Miriam Twain, and suddenly the dread and regret you had felt in Paris comes flooding back. With a sigh, you retreat to a dark corner backstage to escape the sounds of stagehands preparing for the next scene. You try to quell your emotions and replace your thoughts with those of Cassilda’s—her hopes, her fears, her fate.\nJust then, you catch the Stranger staring at you from afar, and you find yourself shaking at the mere sight of him. Even though they continue to replace the actor who plays the Stranger before each show (and indeed many times during rehearsals), you know that this last-minute replacement is the most horrid of them all. Realizing you never caught his name, a shiver of terror courses through your spine. Have you found your way back to the wolves, like a lost lamb? You cannot look away— his gaze is inescapable. Everything goes black."
+      "text": "第一幕從演出到結束都未有差錯，如同平常彩排的一樣。你不由得注意到許多觀眾臉上空洞而輕蔑的神情，不知觀眾在觀看這部戲劇的下半部分時，會對令人煩厭的劇情作何反應。卡西露達這個角色在戲劇的前半部分實在令人厭倦，儘管她的王家氣度使你在扮演時樂在其中。你心中泛起對前搭檔米里亞姆·吐溫的懷念，突然間，你在巴黎時的恐懼和悲悼之情又湧上心頭。你聽見舞台工作人員開始為接下來的佈景做準備，你嘆了口氣，閃身躲到後台的漆黑角落，好避開人群。你試圖讓你的情緒平定下來，將你的思緒代入卡西露達——她的希望，她的恐懼，她的命運。\n就在此時，你驚覺陌生人正從遠處盯著你看，僅短短一瞥就使你膽顫心驚。儘管他們在每場演出之前都會改換陌生人的扮演者(實際上在彩排時也發生過多次)，但你知道，在這緊要關頭換上的扮演者比過往的都要可怕得多。你意識到你從未得知他的名字，一陣恐懼的戰慄爬上你的後脊。你像是隻迷路的羔羊，懵然步向狼群……你無法將目光從他身上移開——他的雙眼緊盯著你。然後你眼前一黑。"
     }
   ]
 },
@@ -20561,18 +20561,18 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "You awaken with a start, as though shaken by an unseen force. You must have slept for quite some time, for there are only a few other patrons in the audience, and no performers on stage. The lights are dimmed, and the stage curtains are tattered and ripped, though you do not remember that being the case during the first act. You wait a moment before you are sure this isn’t part of the performance. As you wait, a foul but unrecognizable smell permeates the air. How long have you been asleep? Shaking off your drowsiness, you walk toward one of the seated patrons and ask for the time, but he does not respond. It is then that you realize you are speaking to a corpse."
+      "text": "你被一股看不見的力量搖醒了。你肯定是睡了很長一段時間，此時觀眾席上只剩下幾個觀眾，舞台上也不見表演者的蹤影。舞台的幕布破破爛爛，燈光昏暗，但你記不起來在第一幕的時候是否也是這幅景象。你等了好一會才確定這並非演出的一部分。就在你等待的時候，一股難以名狀的惡臭在空氣中彌漫。你到底睡了多久？你擺脫了睏意，向坐在座位上的一個觀眾走去，問他現在是什麼時候，但他沒有回答你。此時你意識到你正在對一具屍體說話。"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Man in the Pallid Mask, Royal Emissary, each copy of Lobby Doorway, and each copy of Backstage Doorway."
+      "text": "將下列卡排放到一邊，位於遊戲場外：蒼白面具下的男子，皇家密使，每張前廳走廊門口，每張後台走廊門口。"
     },
     {
       "id": "setup_locations",
-      "text": "Put the Theatre, Lobby, Balcony, and Backstage locations into play. Each investigator begins play at the Theatre.",
+      "text": "將劇院、前廳、樓座、後台地點放置入場。每位調查員從劇院開始遊戲。",
       "bullets": [
         {
-          "text": "If Lola Hayes was chosen as an investigator for this campaign, she begins play at Backstage, instead."
+          "text": "如果蘿拉‧海耶斯作為調查員參與劇本，則她從後台開始遊戲。"
         }
       ]
     },
@@ -20607,13 +20607,13 @@
     },
     {
       "id": "stranger_is_on_to_you",
-      "text": "In your Campaign Log, record <i>the Stranger is on to you</i>. Add The Man in the Pallid Mask weakness to the lead investigator’s deck (does not count towards deck size). For the remainder of this campaign, any time the bearer of The Man in the Pallid Mask leaves the campaign for any reason, choose a new investigator to become the bearer of The Man in the Pallid Mask weakness, and add it to that investigator’s deck.",
+      "text": "在冒險日誌中，記錄下<i>陌生人與你接觸</i>。將蒼白面具下的男子弱點卡加入調查員隊長的牌組中(不計入卡牌張數限制)。在這個劇本接下來的冒險中，蒼白面具下的男子的承受者在任何時候以任何理由退出劇本時，重新選擇一位調查員成為蒼白面具下的男子弱點的承受者，然後將該卡加入這位調查員的牌組中。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "stranger_is_on_to_you",
-          "text": "the Stranger is on to you."
+          "text": "陌生人與你接觸。"
         },
         {
           "type": "add_card",
@@ -20624,11 +20624,11 @@
     },
     {
       "id": "chasing_the_stranger",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark for each time The Man in the Pallid Mask was defeated during this scenario. For the remainder of the campaign, keep a running tally of the number of times The Man in the Pallid Mask is defeated during a game. Each tally will bring you one step closer to the truth.",
+      "text": "在冒險日誌中，每當蒼白面具下的男子被擊敗時，在“追蹤陌生人”下方作1次記錄，持續記錄所有的次數。每作一次記錄都會使你離真相更近一步。",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Chasing the Stranger:",
+        "text": "追蹤陌生人：",
         "delta": true,
         "max": 2,
         "effects": [
@@ -20642,7 +20642,7 @@
     },
     {
       "id": "chasing_the_stranger_2",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place two tally marks. For the remainder of the campaign, keep a running tally of the number of times The Man in the Pallid Mask is defeated during a game. Each tally will bring you one step closer to the truth.",
+      "text": "在冒險日誌中，在“追蹤陌生人”下方作2次記錄。在接下來的冒險中，每當蒼白面具下的男子被擊敗時，在“追蹤陌生人”下方作1次記錄，持續記錄所有的次數。每作一次記錄都會使你離真相更近一步。",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -20669,17 +20669,17 @@
     },
     {
       "id": "police_unhelpful",
-      "text": "Did you really think the police would help you?"
+      "text": "你真的覺得警方會幫你嗎？"
     },
     {
       "id": "tried_to_warn_police",
-      "text": "In your Campaign Log, record that <i>you tried to warn the police</i>. Mark one <b>Conviction</b> in your Campaign Log.",
+      "text": "在冒險日誌中，記錄<i>你嘗試提醒警方</i>。在冒險日誌上記1點<b>確信</b>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tried_to_warn_police",
-          "text": "you tried to warn the police."
+          "text": "你嘗試提醒警方。"
         },
         {
           "type": "campaign_log_count",
@@ -20697,13 +20697,13 @@
         "choices": [
           {
             "id": "steal",
-            "text": "Did anyone “steal from the box office?”",
+            "text": "有任何人“從售票處偷竊”嗎？",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "police_are_suspicious",
-                "text": "the police are suspicious of you."
+                "text": "警方對你抱有懷疑。"
               }
             ]
           }
@@ -20712,17 +20712,17 @@
     },
     {
       "id": "wise_not_to_warn",
-      "text": "Do you think it was wise not to warn anyone?"
+      "text": "你覺得不向別人示警是一個明智的做法嗎？"
     },
     {
       "id": "chose_not_to_warn_police",
-      "text": "In your Campaign Log, record that <i>you chose not to go to the police</i>. Mark one <b>Doubt</b> in your Campaign Log.",
+      "text": "在冒險日誌中，記錄下<i>你選擇不去警察局</i>。在冒險日誌上記1點<b>疑惑</b>。",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "chose_not_to_warn_police",
-          "text": "you chose not to go to the police."
+          "text": "你選擇不去警察局。"
         },
         {
           "type": "campaign_log_count",
@@ -20791,15 +20791,15 @@
     },
     {
       "id": "add_chaos_token",
-      "text": "Which version of Act 2b was advanced?",
+      "text": "推進到哪個場景2b？",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "a_city_aflame",
-            "text": "A City Aflame",
-            "description": "Add 2 [cultist] tokens to the chaos bag.",
+            "text": "烈焰焚城",
+            "description": "在混亂袋中增加2個[cultist]標記。",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -20812,8 +20812,8 @@
           },
           {
             "id": "the_path_is_mine",
-            "text": "The Path is Mine",
-            "description": "Add 2 [tablet] tokens to the chaos bag.",
+            "text": "奪路逃生",
+            "description": "在混亂袋中增加2個[tablet]標記。",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -20826,8 +20826,8 @@
           },
           {
             "id": "the_shores_of_hali",
-            "text": "The Shores of Hali",
-            "description": "Add 2 [elder_thing] tokens to the chaos bag.",
+            "text": "哈利湖濱",
+            "description": "在混亂袋中增加2個[elder_thing]標記。",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -20897,7 +20897,7 @@
         "physical",
         "mental"
       ],
-      "text": "Once again you are startled awake, this time by the cold, clammy fingers of a hand on your shoulder. “Are you alright?” an elderly man asks, helping you to your feet. Your mind is a flurry of memories. Last you remember, the Ward Theatre had become a place of nightmares, filled with dangerous fanatics and strange terrors. Worried, you glance at your surroundings, only to find yourself on the rain-slicked curb outside the theatre. Despite the events from earlier, the city seems normal to your eyes—or at least, what passes as normal for Arkham. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. The old man wears an expression of concern, noting the terror in your eyes. “Were you mugged? Damn those trouble boys!” he exclaims. “Dry-gulching folk on a night out to the the-a-tre! Not a single street those hooligans haven’t staked a claim on, I tell you.”\nYou stand and walk over to the front window of the Ward Theatre to tentatively peer through, but it is too dark to see anything inside. The elderly man eyes you curiously for a moment, then shrugs and continues walking. “Well, I’d best be on my way. I would do the same, if I were you,” he says, rounding the street corner. You quickly follow, hoping to warn him to stay away from the theatre. But when you turn the corner, it is not the elderly man you see, but the familiar sight of the Stranger in his featureless, pallid mask. His unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, but instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty— save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, frustrated and lost.",
+      "text": "你再次從睡夢中驚醒，這次將你弄醒的是搭在你肩膀上的一隻手，它的手指冰冷，又黏又濕。“你還好嗎？”一位老人攙扶你起身，關切地問道。你腦海裡的記憶十分凌亂。你只記得在最後，沃德劇院已經變成了一個噩夢，裡面充斥著危險的狂熱信徒和怪異而可怖的東西。你憂心仲仲地環顧周圍，發現自己站在劇院外溼滑的路邊。儘管早前發生過那些事件，這座城在你眼中並無異常——至少說，這對阿卡姆城來說挺正常的。車燈的強光刺入你的雙眼，一輛車開了過來，將航髒的雨水濺到你身旁的人行道上。老人見你的眼中驚恐萬分，表情對你十分關切。“你是遭賊了嗎？那群惹是生非的壞小子真該死！”他大聲罵道：“他們準是在今晚到劇院來為非作歹了！我跟你說，這兒到處都是他們的地盤。”\n你站了起來，走到沃德劇院前門的窗戶前，試著往裡看看，但因為裡面太黑，你什麼都看不見。老人好奇地看了你一會，聳了聳肩然後走開了。“好吧，我得走了。我要是你的話我也會早些離開的，”他說完就拐過了街角。你快步跟上，想要提醒他遠離劇院。但當你走過轉角時，那位老人已經不見蹤影，你只見陌生人戴著他那毫無特徵的蒼白面具，向你投來熟悉的視線。他定定地注視著你。“你是誰？”你大聲問道。陌生人沒有回答，而是轉身離去，消失在劇院後的小巷中。你緊追在後，期望從他口中得到答案，但當你到達小巷時，那裡空空如也——除了在劇院員工入口旁邊張貼的一張告示，“別掃興了！ 快來參加《黃衣之王》的慶功派對吧。晚上八點在大西洋街1452號，康斯坦絲·杜梅因的住宅舉行派對。請著正裝到場。”你從牆上撕下這張告示並且收了起來，心中既沮喪又茫然。",
       "steps": [
         "stranger_is_on_to_you",
         "chasing_the_stranger",
@@ -20912,7 +20912,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "Fleeing from the theatre, you head straight to the police station in Easttown. Bursting through the door, to the stares of onlookers and police officers alike, you demand to see Sheriff Engle, stressing the importance of your visit. The desk sergeant, who is lazily working through a stack of paperwork, shakes his head and raises a finger in silence, then points to a nearby chair. The wait is excruciating. Every moment is an eternity. The hands of the nearby clock crawl. You drum your fingers on the desk. You tap your feet. You constantly peer over your shoulder to make sure the pallid mask of the Stranger is not watching you through the front window. Finally, the desk sergeant puts his pen down and sits up, beckoning you. “Alright, what’s so important now?” You are only halfway through your explanation of the night’s events when he sighs and shakes his head. “Look, if this is some kind of joke, it ain’t funny,” he says. “We had officers downtown all night. Don’t try to feed me some hooey straight to my face.” You insist, but the desk sergeant rises to his feet and opens the door, motioning for you to leave. He raises his voice. “What, you think we’re not busy enough or something? Beat it!” He mumbles about “blind birds” behind your back as he escorts you out of the station.\nYou <b>know</b> what you saw earlier that night. Frustrated, you head back to the Ward Theatre to find some kind of proof you can take to the police. You are surprised to find that the front door of the theatre is locked. You are about to decide whether or not to break down the door when you see a notice on the wall near the entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and fold it into your coat pocket, hoping it will lead you to the answers you seek.",
+      "text": "你逃出劇院之後直奔東城區的警察局。你徑直推開警察局的大門，迎著所有旁觀者和警員的目光，你說有緊急的事情要見恩格爾警長。值班的警官正懶洋洋地做著手邊的文書工作，他搖搖頭，抬起一根手指指向旁邊的一張椅子，不發一語。你焦灼地等待著。等待的每一秒都如此地漫長。時鐘的指針艱難前行。你不耐煩地跺著腳，在桌面上敲敲手指。你不時地回頭看，確認戴著蒼白面具的陌生人沒從前門的窗戶上盯著你看。終於，值班警官放下手中的筆，起身並向你招手。“好吧，是什麼要緊事？”你向他說明這夜發生的種種事件，還沒說完他就嘆氣搖頭。“聽著，如果說你在說笑話，這一點都不好笑，”他說：“整晚都有警察在商業區駐守。別想在我面前說胡話。”你堅持想要說服他，但值班警官起身開門，示意讓你離開。他拔高了音量：“難不成你覺得我閒得發慌？快走！”他盯著你離開警局，嘴裡嘟囔著“蠢貨”。\n你<b>知道</b>你今晚所見非虛。你沮喪地回到沃德劇院，希望能找到一些證據帶回警局。驚奇的是劇院的大門鎖上了。在你決定是否要破門而入的時候，劇院的員工入口旁張貼的一張告示吸引了你的注意力。“別掃興了！快來參加《黃衣之王》的慶功派對吧。晚上八點在大西洋街1452號，康斯坦絲‧杜梅因的住宅舉行派對。請著正裝到場。”你撕下告示，將它折好放進外套的口袋裡，祈禱它能帶領你找到答案。",
       "steps": [
         "police_unhelpful",
         "tried_to_warn_police",
@@ -20930,7 +20930,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "You think about going to the police, but considering the horrors in the theatre, they’re more likely to think you’re mad than to believe your story. A small part of you wonders if this is still some kind of prank, but that can’t be the case—it was all too real, too terrifying to forget. Wondering what course of action to take, you find yourself backtracking over your escape route, returning to the theatre with cautious steps. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. Soon the Ward Theatre comes into sight, its bright lights dominating the streets of Downtown. You expected the theatre to be in ruins, but its exterior looks the same as it did when you arrived to see The King in Yellow earlier that night. You walk to the front window of the Ward Theatre and tentatively peer through, but it is too dark to see anything inside.\nJust then, a chill brushes the nape of your neck, and you feel that you are being watched. You turn, and spot a shadow fleeing around the corner. A swarm of roaches skitters across the sidewalk, following in the shadow’s wake. Your muscles tense with uncertainty, and you round the corner in pursuit. Standing unconcerned on the sidewalk is a familiar-looking man in a featureless pallid mask.\nHis unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, and instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty—save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, hoping it will lead you to the answers you seek.",
+      "text": "你打算上警察局，但考慮到劇院裡發生的事情可怕如斯，那幫警察不會相信你所說的，而更可能會認為你是個瘋子。在你心底仍抱有些許懷疑，或許那不過是一場惡作劇，但這事兒不一樣——這整件事實在過於真實，過於可怕，使你全然無法忘卻。你不知所措，謹慎地按照逃出劇院的路線返回。街道上車流穿梭，車頭燈的明亮光線刺入你的雙眼，將骯髒的雨水濺到你身旁的人行道上。很快，沃德劇院映入你的眼簾，亮堂的燈盞照亮了商業區的街道。你本以為劇院已成廢墟，但它看起來跟你今晚早些時候觀看《黃衣之王》時別無二致。你走到沃德劇院前門的窗戶前，試著往裡看看，但因為裡面太黑，你什麼都看不見。就在這時，一陣寒意掠過你的後頸，你察覺你在被人監視。你一轉身，發現有個黑影從街角跑過。一群蟑螂從路上流竄，追隨那個黑影的蹤跡而去。你的肌肉莫名地繃緊，緊接著你便往街角追去。一個似曾相識的男子站在人行道上，他一副漠不關心的姿態，臉上還戴著一張毫無特徵的蒼白面具。\n他定定地註視著你。“你是<b>誰</b>？”你大聲問道。陌生人並未應答，而是轉身離去，在劇院後的小巷裡消失了蹤影。你緊追在後，期望從他口中得到答案，但當你到達小巷時，那裡空空如也——除了在劇院員工入口旁邊張貼的一張告示。“別掃興了！快來參加《黃衣之王》的慶功派對吧。晚上八點在大西洋街1452號，康斯坦絲‧杜梅因的住宅舉行派對。請著正裝到場。”你撕下告示，將它收起，祈禱它能帶領你找到答案。",
       "steps": [
         "wise_not_to_warn",
         "chose_not_to_warn_police",
@@ -22424,7 +22424,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "用以下標記組成混亂袋：+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -22454,13 +22454,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "在冒險設置時不調整混亂袋的內容。"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -22509,7 +22509,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "調查員隊長將蒼白面具下的男子弱點卡(卡爾克薩之路#59)加入其牌組。",
       "effects": [
         {
           "type": "add_card",
@@ -22525,11 +22525,11 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "If anyone has the answers to the questions that burn in your mind, it’s the cast and crew of The King in Yellow. With no other leads to pursue, you put on your best clothes and head to 1452 Atlantic Avenue, where a woman named Constance Dumaine is hosting an event in celebration of the play’s one-night engagement in Arkham."
+      "text": "若是有人能夠解答使你抓心撓肝的那些問題，那準是《黃衣之王》的演職人員了。眼下沒有其他的線索可以追尋，你穿上你最光鮮的衣裝，前往大西洋街1452號，一位名叫康斯坦絲·杜梅因的女士將在那兒舉辦慶功宴會，慶祝這部戲劇在阿卡姆城成功上演。"
     },
     {
       "id": "setup_locations",
-      "text": "Put all 6 locations into play (Foyer, Courtyard, Living Room, Ballroom, Dining Room, and Gallery). Each investigator begins play in the Foyer."
+      "text": "將全部6個地點放置入場(門廳、庭院、客廳、舞廳、餐廳、畫廊)。每位調查員從門廳開始遊戲。"
     },
     {
       "id": "location_layout",
@@ -22557,10 +22557,10 @@
     },
     {
       "id": "setup_bystanders",
-      "text": "Shuffle the 5 Bystander assets (Constance Dumaine, Jordan Perry, Ishimaru Haruko, Sebastien Moreau, and Ashleigh Clarke) and randomly place one in each location except for the Foyer. Place 1 clue on each of these assets, plus 1 additional clue per investigator.",
+      "text": "混洗以下5張[[旁人]]支援卡(康斯坦絲·杜梅因、喬丹·佩里、石丸春子、塞巴斯蒂安·莫羅、阿什莉·克拉克)，然後將他們隨機放到除門廳外的各個地點上。放置1個線索在這些支援卡上，再額外放置等同於調查員人數的線索。",
       "bullets": [
         {
-          "text": "<i>Note: These cards are double-sided and have story cards on their other side. For the best experience, do not look at the other side unless an effect instructs you to do so.</i>"
+          "text": "<i>注意：這些卡牌是雙面的，其背面為劇情卡。為了獲得最佳的遊戲體驗，請勿翻開背面內容，除非有效果指示你如此做。</i>"
         }
       ]
     },
@@ -22646,11 +22646,11 @@
     },
     {
       "id": "earn_clue_xp",
-      "text": "For every 2 clues that were on the act deck when the game ended, choose an investigator to earn 1 additional experience point. Experience from this reward must be divided as evenly among the investigators as possible.",
+      "text": "遊戲結束時在場景牌堆上每有2個線索，選擇一位調查員獲得額外1點經驗值。由這項獎勵獲得的經驗值必須盡可能地在調查員間平均分配。",
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "XP from Clues",
+        "text": "從線索獲得的經驗值",
         "effects": [
           {
             "type": "earn_xp",
@@ -22661,7 +22661,7 @@
     },
     {
       "id": "vips_interviewed",
-      "text": "In your Campaign Log, under “VIPs Interviewed,” record the name of each character you “interviewed.”",
+      "text": "在你的冒險日誌的“貴賓會談”下方記錄你“會談”的每個角色的名字。",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -22679,7 +22679,7 @@
         "choices": [
           {
             "id": "interviewed",
-            "text": "Interviewed",
+            "text": "已會談",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -22695,7 +22695,7 @@
     {
       "id": "vips_slain",
       "type": "input",
-      "text": "In your Campaign Log, under “VIPs Slain,” record the name of each unique [[Lunatic]] enemy in the victory display.",
+      "text": "在你的冒險日誌的“貴賓遇害”下方記錄勝利牌區中每個獨特的[[狂人]]敵人的名字。",
       "input": {
         "type": "card_choice",
         "query": [
@@ -22708,7 +22708,7 @@
         "choices": [
           {
             "id": "slain",
-            "text": "Slain",
+            "text": "已遇害",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -22723,7 +22723,7 @@
     },
     {
       "id": "skip_lunacys_reward",
-      "text": "Skip <b>Interlude I: Lunacy's Reward</b>.",
+      "text": "跳過<b>幕間故事I：癲狂獎勵</b>。",
       "effects": [
         {
           "type": "campaign_data",
@@ -22793,7 +22793,7 @@
       "text": "Place the 8 “Sickening Reality” story cards underneath the scenario reference card.",
       "bullets": [
         {
-          "text": "<i>Note: These cards are double-sided and have encounter cards on their other side. For the best experience, do not look at the other side unless an effect instructs you to do so.</i>"
+          "text": "<i>注意：這些卡牌是雙面的，其背面為遭遇卡。為了獲得最佳的遊戲體驗，請勿翻開背面內容，除非有效果指示你如此做。</i>"
         }
       ]
     }
@@ -22801,7 +22801,7 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution\n(at least one investigator resigned)",
+      "title": "未達成任何結局(至少一位調查員撤退)",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -22814,7 +22814,7 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(all investigators defeated)",
+      "title": "未達成任何結局(所有調查員被擊敗)",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -22831,7 +22831,7 @@
         "name": "Resolution 1"
       },
       "title": "結局1",
-      "text": "The brisk autumn air embraces you as you exit the manor. There is no doubt in your mind that the cast and crew of The King in Yellow have become affected by madness. Perhaps it’s getting to you, as well. You feel an encroaching darkness, a presence in your mind not unlike the gaze of the Stranger. Startled, you peer about the front yard for the first time since escaping the manor. The scene is...different. The front windows are not smashed as they were when you first approached. The trail of blood you had noticed on the porch has been wiped clean, and instead of the disturbingly warped music you had heard upon entering, the soothing tones of slow jazz drift out from the courtyard.",
+      "text": "當你離開這個莊園時，凜冽的秋風向你襲來。你心中確信無疑，《黃衣之王》的演職人員都被瘋狂所影響。或許這也將發生在你的身上。你感覺到一股黑暗逐漸滲入，陌生人的凝視彷彿滲入你的腦海中。驚懼之下，你逃出莊園之後首次細看前院。景像……不同了。與你第一次到來時不同，前窗並未破碎。你在門廊發現的血跡已被抹淨，與你在進入這幢建築時聽到的令人不安的扭曲的音樂不同，此時從庭院傳來的是輕柔而舒緩的爵士樂曲調。",
       "steps": [
         "vips_interviewed",
         "vips_slain",
@@ -22846,7 +22846,7 @@
         "name": "Resolution 2"
       },
       "title": "結局2",
-      "text": "“Excuse me, but it’s very late,” you hear a server say as he gently taps you on your shoulder. You realize that you are sitting on a couch in the manor’s living room, and that you have been asleep for some time. The party appears to be winding down. No music fills the halls, the food is all but gone, and only a few guests remain. “Perhaps you would like for me to get your coat?” the server asks with a trained smile. You wobble as you rise to your feet, leaning against the couch’s armrest. Your head pounds with a dizzying intensity, and your vision is spotted. You insist that you are fine, and begin walking toward the foyer.\nYou no longer see any of the guests you were searching for earlier, not even the hostess, Mrs. Dumaine. All traces of the madness and horror you’ve experienced are gone. Even the oddities you witnessed upon entering the manor have vanished—the signs of struggle, the broken windows, the blood trail on the porch... Every piece of evidence has been erased. But you still remember the night’s events, and in your memory you will find your answers.",
+      "text": "“請您原諒我的冒犯，但現在時間已經很晚了。”一位侍者輕拍你的肩膀，對你說道。你發覺你身處這座莊園的客廳，坐在沙發上睡著了一陣子。派對似乎已進入尾聲。各個禮堂都沒有樂聲環繞，佳餚消失一空，只有少數幾個賓客逗留在此。“或許您需要我給您取來外套？”侍者臉上露出職業微笑，問道。你倚靠著沙發扶手，雙腿顫顫巍巍地站起身來。你的大腦彷彿受到重擊，使你頭暈目眩，眼前的景像模糊不清。你堅稱自己無恙，然後向門廳走去。\n先前你尋找的賓客已消失蹤影，女主人杜梅因夫人也不見了。你所經歷過的瘋狂和恐怖景像已無跡可尋。你進入莊園時目睹的怪事也悉數消失——掙扎的跡象，破碎的窗戶，門廊的血跡……所有的證據都被抹消了。但你仍記得這夜發生的事情，你會在記憶中找到你要的答案。",
       "steps": [
         "vips_interviewed",
         "vips_slain",
@@ -22864,7 +22864,7 @@
         "name": "Resolution 3"
       },
       "title": "結局3",
-      "text": "Several days later, you find yourself reminiscing about the party you attended at 1452 Atlantic Avenue. What a roaring good time you had! And yet, your memory is hazy. You can’t help but feel you are forgetting something important. Something about the play you’d watched earlier that night—The King in Yellow. That nagging sensation pursues you in every waking moment. Try as you might to recall the night’s events in full, there remains a gaping hole in your memory. As you strain to remember, your concern grows, almost to the point of obsession. Deciding that you absolutely must know what occurred that night, you head toward the manor of the Historical Society in Southside. Perhaps there you can learn more about <u>The King in Yellow</u> play...",
+      "text": "幾天過去後，你回想起你在大西洋街1452號參加過的派對。那晚你玩得真痛快！然而，你的記憶卻是模糊的。你不禁感覺到，你忘記了一些重要的事情。與你在那晚早些時候觀看的戲劇《黃衣之王》有關。在你清醒的每個時刻，這種困惑的想法揮散不去，使你不得安寧。你試圖回想起那晚發生的所有事情，然而你的記憶卻仍有一大段空白。隨著你盡力地回想，你對此事愈發專注，幾乎到了沉迷的程度。你必須知道那晚究竟發生了什麼，於是你出發前往南區的那所莊園——歷史協會。或許在那兒你會得知更多有關《黃衣之王》這部戲劇的信息……",
       "steps": [
         "vips_interviewed",
         "vips_slain",
@@ -22952,13 +22952,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "在冒險設置時不調整混亂袋的內容。"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -23007,7 +23007,7 @@
     },
     {
       "id": "lead_investigator_mitpm",
-      "text": "The lead investigator adds The Man in the Pallid Mask weakness to their deck.",
+      "text": "調查員隊長將蒼白面具下的男子弱點卡(卡爾克薩之路#59)加入其牌組。",
       "effects": [
         {
           "type": "add_card",
@@ -23891,13 +23891,13 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "在冒險設置時不調整混亂袋的內容。"
         }
       ]
     },
     {
       "id": "randomly_choose_tokens",
-      "text": "Randomly choose one of the following tokens ([cultist], [tablet], or [elder_thing]). Add 2 of the chosen token to the chaos bag.",
+      "text": "隨機從以下標記中選擇一種：([cultist], [tablet],或[elder_thing])。將2個所選標記放入混亂袋。",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -24833,7 +24833,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -27516,7 +27516,7 @@
       "text": "Set the 2 enemy cards depicted here aside, out of play: Ichtaca (Scion of Yig) and Alejandro Vela (Or, Is He?).",
       "bullets": [
         {
-          "text": "<i>Note: These cards are double-sided and have story cards on their other side. For the best experience, do not look at the other side unless an effect instructs you to do so.</i>"
+          "text": "<i>注意：這些卡牌是雙面的，其背面為劇情卡。為了獲得最佳的遊戲體驗，請勿翻開背面內容，除非有效果指示你如此做。</i>"
         }
       ]
     },
@@ -31673,7 +31673,7 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "在冒險設置時不調整混亂袋的內容。"
         }
       ]
     },
@@ -38412,7 +38412,7 @@
     {
       "id": "story_rule",
       "type": "rule_reminder",
-      "title": "Story Cards",
+      "title": "劇情卡",
       "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and game text. When a story card is drawn, read its story text and resolve its <b>Revelation</b> effect. Its game text is considered active for as long as the card is in play. The story cards in this scenario are double sided, with one side entitled “Deep Within the Labyrinth.” Do not flip them to this  until you are instructed to do so."
     },
     {
@@ -38747,7 +38747,7 @@
     },
     {
       "id": "add_tokens_a",
-      "text": "Add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "在混亂袋中增加2個[elder_thing]標記。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -38760,7 +38760,7 @@
     },
     {
       "id": "add_tokens_b",
-      "text": "Add 2 [tablet] tokens to the chaos bag.",
+      "text": "在混亂袋中增加2個[tablet]標記。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -38773,7 +38773,7 @@
     },
     {
       "id": "add_tokens_c",
-      "text": "Add 2 [cultist] tokens to the chaos bag.",
+      "text": "在混亂袋中增加2個[cultist]標記。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -42129,7 +42129,7 @@
     },
     {
       "id": "story_cards",
-      "title": "Story Cards",
+      "title": "劇情卡",
       "type": "rule_reminder",
       "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any.\n<i>(Note: When a location or enemy that is in play is flipped over to a story card on its other side, that location or enemy is still considered to be in play while that story card is being resolved.)</i>"
     },
@@ -42631,7 +42631,7 @@
     },
     {
       "id": "story_cards",
-      "title": "Story Cards",
+      "title": "劇情卡",
       "type": "rule_reminder",
       "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any.\n<i>(Note: When a location or enemy that is in play is flipped over to a story card on its other side, that location or enemy is still considered to be in play while that story card is being resolved.)</i>"
     },
@@ -43878,7 +43878,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, -1, -1, -2, -2, -3, -4, [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -49028,7 +49028,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution\n(at least one investigator resigned)",
+      "title": "未達成任何結局(至少一位調查員撤退)",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -51818,7 +51818,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, -1, -1, -2, -2, -3, -4, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -52001,7 +52001,7 @@
     {
       "id": "story",
       "type": "rule_reminder",
-      "title": "Story Cards",
+      "title": "劇情卡",
       "text": "Story cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text."
     },
     {
@@ -57970,7 +57970,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -58162,7 +58162,7 @@
     {
       "id": "story",
       "type": "rule_reminder",
-      "title": "Story Cards",
+      "title": "劇情卡",
       "text": "Story cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text."
     },
     {
@@ -62913,7 +62913,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -65719,7 +65719,7 @@
       "text": "Set the 2 enemy cards depicted here aside, out of play: Ichtaca (Scion of Yig) and Alejandro Vela (Or, Is He?).",
       "bullets": [
         {
-          "text": "<i>Note: These cards are double-sided and have story cards on their other side. For the best experience, do not look at the other side unless an effect instructs you to do so.</i>"
+          "text": "<i>注意：這些卡牌是雙面的，其背面為劇情卡。為了獲得最佳的遊戲體驗，請勿翻開背面內容，除非有效果指示你如此做。</i>"
         }
       ]
     },
@@ -69837,7 +69837,7 @@
       ],
       "bullets": [
         {
-          "text": "Do not alter the contents of the chaos bag during the intro."
+          "text": "在冒險設置時不調整混亂袋的內容。"
         }
       ]
     },
@@ -72125,7 +72125,7 @@
           },
           {
             "id": "standard",
-            "text": "普通<i>（來點挑戰也無妨）</i>：",
+            "text": "普通<i>(來點挑戰也無妨)</i>：",
             "description": "+1, 0, 0, -1, -1, -1 -2, -2, -3, -4, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
             "effects": [
               {
@@ -74536,9 +74536,223 @@
   "full_name": "Interlude IV: Hidden Truths",
   "header": "Interlude IV",
   "icon": "agents_of_dagon",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "type": "interlude",
+  "setup": [
+    "intro",
+    "read_sections",
+    "check_terror_of_devil_reef_dead_and_lifecyle_of_deep_one",
+    "check_guardian_and_story_assets",
+    "remove_thomas_dawson",
+    "spend_xp",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "As soon as your mind returned to the present, you began formulating your plan. A plan to enter the realm of the Deep Ones and end their conspiracy once and for all. \"This is ridiculous, you know that, right?\" Harper asks. You nod. Of course it's ridiculous. You've spent the last two days on the run. Chased. Hunted. Tormented.\nBut you've also spend the last two days recovering the memories you've forgotten. And what you've seen is something you can't possibly ignore. You have seen the deity the Esoteric Order of Dagon is named for, and you understand what the Order plans to do. The alignment of the celestial bodies in the sky, the steadily rising tides, the tumultuous fluctuating weather, the creatures emerging from the deep, all of it is tied together. You have seen it. There will come a flood, a great disaster to wipe out humanity, so only the deep remains. The great city in the reef shall rise once more and become the beating heart of all life on Earth.\nThere are still gaps in your memory, but all this you know to be true. All of Innsmouthis consumed by this conspiracy. The Order controlled the town through its oaths and the secret wealth it hoarded from the deep. It was no wonder they treated outsiders like yourself with such scorn.\nYou give Harper a knowing glare. She sighs and nods. \"I know. It's the only way.\" Together, the two of you plot your course. Abandoned ships still litter the harbor of Innsmouth. Under the cover of night, you must commandeer one of them, sail to Devil Reef, and descend once more into the antediluvian ruins in the depths below the forsaken islands. That is where the other entrance to the city lies. Y'ha-nthlei.\nYour skin prickles with cold shivers as you utter the word aloud. Harper grimaces, though you can sense the determination behind her steely gaze. \"I'm going to see this mission through, Dawson. For you.\"\nYou lay out all of the information you've uncovered and the relics you've obtained despite the horrors arrayed against you. You know the way to Y'ha-nthlei is sealed tight. There must be a way to gain entrance. Perhaps you already have the answers you seek…"
+    },
+    {
+      "id": "read_sections",
+      "text": "Check the campaign log. Read each of the sections below that apply to your situation."
+    },
+    {
+      "id": "check_terror_of_devil_reef_dead_and_lifecyle_of_deep_one",
+      "text": "If <i>the Terror of Devil Reef is dead</i> and <i>the lifecycle of a \"Deep One\"</i> is listed under \"Memories Recovered\" in your Campaign Log.",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "terror_of_devil_reef_is_dead",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "memories_recovered",
+            "id": "lifecycle_of_a_deep_one",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": [
+              "story_1",
+              "guardian_of_yhanthlei_is_dispatched"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "story_1",
+      "type": "story",
+      "text": "You study the trophy you found in the sacrificial pit in which you awoke several days ago—part of what was once the creature that you fought in Devil Reef. It wasn't the same kind of creature as the \"Deep Ones\" that the Esoteric Order of Dagon worships, but you cannot help ruminating over the similarities between them. You recall that fish never cease growing as they age, and wonder if the same may be true for Deep Ones. Perhaps it was an ancient breed of Deep Ones—something so old, it grew enormous and twisted beyond imagination. If so what was it doing in Devil Reef? Was it guarding Y'ha-nthlei? And if so, what does that bode for you? You decide to take the trophy with you, hoping it is important enough to aid in your mission…"
+    },
+    {
+      "id": "guardian_of_yhanthlei_is_dispatched",
+      "text": "The conspiracy deepends. In your Campaign Log, record <i>the guardian of Y'ha-nthlei is dispatched.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "guardian_of_yhanthlei_is_dispatched",
+          "text": "the guardian of Y’ha-nthlei is dispatched."
+        }
+      ]
+    },
+    {
+      "id": "check_guardian_and_story_assets",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07179",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07180",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07181",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "success_check_guardian_and_story_assets"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "fail_check_guardian_and_story_assets"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "success_check_guardian_and_story_assets",
+      "text": "If <i>the gatekeeper has been defeated</i> and an investigator's deck contains at least 1 of the following story assets (Waveworn Idol, Awakened Mantle, or Headdress of Y'ha-nthlei):",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gatekeeper_has_been_defeated",
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": [
+              "story_2",
+              "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fail_check_guardian_and_story_assets",
+      "text": "If <i>the gatekeeper has been defeated</i> and an investigator's deck contains at least 1 of the following story assets (Waveworn Idol, Awakened Mantle, or Headdress of Y'ha-nthlei):",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gatekeeper_has_been_defeated",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": [
+              "story_2",
+              "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "story_2",
+      "type": "story",
+      "text": "You understand now the purpose of the relic you found in Devil Reef. It isn't just an object of power. It is a badge—an heirloom of sorts, worn by the one who stands guard over the gateway to the Deep Ones' city. You defeated the one groomed to be its next protector. Now the relic recognizes you as its rightful heir. Perhaps with this, you will be able to gain entrance to Y'ha-nthlei…"
+    },
+    {
+      "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+      "text": "The conspiracy deepens. In your Campaign Log, record <i>the gateway to Y’ha-nthlei recognizes you as its rightful keeper</i>.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+          "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+        }
+      ]
+    },
+    {
+      "id": "remove_thomas_dawson",
+      "text": "Return Thomas Dawson to the collection. If an investigator earned Elina Harper (at any point during this campaign), they may add her back to their deck."
+    },
+    {
+      "id": "spend_xp",
+      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "transfer_special_xp": "unspect_xp"
+        }
+      ]
+    }
+  ]
 },
 {
   "id": "horror_in_high_gear",
@@ -75762,9 +75976,714 @@
   "scenario_name": "The Lair of Dagon",
   "full_name": "Scenario VII: The Lair of Dagon",
   "header": "冒險VII",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "intro_1",
+    "check_mission_succeeded",
+    "check_decision_to_stick_together_intro",
+    "investigator_setup",
+    "gather_encounter_sets",
+    "setup_keys",
+    "setup_locations",
+    "location_layout",
+    "set_aside_cards",
+    "check_memories_recovered",
+    "check_jailbreak",
+    "check_encounter_with_a_secret_cult",
+    "check_decision_to_stick_together",
+    "flood_tokens",
+    "keys_rule",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "<center><game>THURSDAY, SEPTEMBER 15, 1927</game></center>\n<center><game>ONE WEEK EARLIER</game></center>\nYou stand outside the cracked marble steps leading up to the masonic hall of the Esoteric Order of Dagon. All of the evidence has lead you here. Whatever is going on in this town, this Order is behind it. You're sure of it… though their ultimate goal remains a mystery.\nThe town is eerily quiet as you stand before the building's entrance. Once, this place might have been impressive and opulent. Years of disrepair and flood damage have reduced it to a near-ruin. Its once-white paint is gray and peeling, and many of the pillars outside the entryway are beginning to crumble. Still, it is one of the more intimidating places in Innsmouth, projecting authority despite its decrepitude. No, not authority—something darker. A looming, unspoken threat.\n\"Are you ready?\" Agent Dawson asks. His usually calm demeanor has vanished, replaced with a humorless gravity that throws you off guard. \"This is it. This is where we'll find answers.\"\nYou're not so sure. Every other lead you've followed has led to only more questions."
+    },
+    {
+      "id": "check_mission_succeeded",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_succeeded",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "intro_2"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "intro_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "Agent Harper was kidnapped when she got too close to the Order, but interrogating her kidnapper didn't exactly yield the answers you needed. What you know now is that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. What's worse, many of the town's inhabitants seem to follow the Order with blind, fanatical devotion. So many that you're not sure this is even a functioning town anymore. It's no wonder the people are so hostile towards outsiders.\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "You are sure that Agent Harper was kidnapped after she began investigating the Order. Your own investigation might have ended the same way had you not laid low for a week after the townsfolk got riled up. It seems that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. But why?\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
+    },
+    {
+      "id": "check_decision_to_stick_together_intro",
+      "type": "branch",
+      "text": "If <i>a decision to stick together</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "intro_4"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "intro_5"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_4",
+      "type": "story",
+      "text": "<i>Creeeak.</i> Agent Dawson opens the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"I don't like this one bit,\" Dawson says as the front door closes behind you. He unholsters his gun, turns on his flashlight, and scans the room. \"We should stay together. Safety in numbers.\" You nod in agreement. The Order has proven to be very dangerous, and they surely don't want you poking around in their headquarters…"
+    },
+    {
+      "id": "intro_5",
+      "type": "story",
+      "text": "<i>Creeeak.</i> Agent Dawson creaks open the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"It's quiet. I guess there are no ceremonies going on tonight. That's good,\" Dawson says as the front door closes behind you. He turns on his flashlight and illuminates a nearby doorway. \"We should split up. We'll be able to cover more ground that way. See if you can figure out what they're hiding here. I'll meet up with you later.\" You nod and head in the opposite direction…"
+    },
+    {
+      "id": "investigator_setup",
+      "type": "rule_reminder",
+      "title": "Investigator Setup",
+      "text": "Perform this step before setting up your investigator.",
+      "bullets": [
+        {
+          "text": "Search each investigator's deck for Elina Harper and remove her from the game for the duration of this scenario."
+        }
+      ]
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Scenario Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_lair_of_dagon",
+        "agents_of_dagon",
+        "flooded_caverns",
+        "syzygy",
+        "pentagram",
+        "locked_doors"
+      ]
+    },
+    {
+      "id": "setup_keys",
+      "text": "Place each key as follows:",
+      "bullets": [
+        {
+          "text": "Set the black, blue, green, purple, and red keys aside, faceup."
+        },
+        {
+          "text": "Set the white and yellow aside, facedown. Shuffle them so you do not know which is which."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the following locations into play: Grand Entryway, Foul Corridors, both copies of First Floor Hall, both copies of Second Floor Hall, and Third Floor Hall.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at the Grand Entryway."
+        },
+        {
+          "text": "Set other locations aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "參考擺放位置",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "third_floor_hall",
+          "blank"
+        ],
+        [
+          "second_floor_hall",
+          "foul_corridors",
+          "second_floor_hall"
+        ],
+        [
+          "first_floor_hall",
+          "grand_entryway",
+          "first_floor_hall"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "second_floor_hall",
+          "name": "Second Floor Hall"
+        },
+        {
+          "code": "foul_corridors",
+          "name": "Foul Corridors"
+        },
+        {
+          "code": "first_floor_hall",
+          "name": "First Floor Hall"
+        },
+        {
+          "code": "grand_entryway",
+          "name": "Grand Entryway"
+        },
+        {
+          "code": "third_floor_hall",
+          "name": "Third Floor Hall"
+        }
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Both copies of the Syzygy treachery, both copies of the Tidal Alignment treachery, the double-sided Y’ha-nthlei Statue story asset, the Apostle of Dagon enemy, and the double-sided Dagon enemy."
+    },
+    {
+      "id": "check_memories_recovered",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log:",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "memories_recovered",
+        "id": "$num_entries",
+        "max": 10,
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 1,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 2,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 3,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 4,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 5,
+            "steps": [
+              "add_2_curse"
+            ]
+          },
+          {
+            "numCondition": 6,
+            "steps": [
+              "add_2_curse"
+            ]
+          },
+          {
+            "numCondition": 7,
+            "steps": [
+              "add_2_curse"
+            ]
+          },
+          {
+            "numCondition": 8,
+            "steps": [
+              "add_5_curse"
+            ]
+          }
+        ],
+        "defaultOption": {
+          "steps": [
+            "add_5_curse"
+          ]
+        }
+      }
+    },
+    {
+      "id": "add_5_bless",
+      "bullet_type": "small",
+      "text": "Because there are 4 or fewer memories recorded, add 5 [bless] tokens to the chaos bag."
+    },
+    {
+      "id": "add_2_curse",
+      "bullet_type": "small",
+      "text": "Because there are between 5 and 7 memories recorded, add 2 [curse] tokens to the chaos bag."
+    },
+    {
+      "id": "add_5_curse",
+      "bullet_type": "small",
+      "text": "Because there are 8 or more memories recorded, add 5 [curse] tokens to the chaos bag."
+    },
+    {
+      "id": "check_jailbreak",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>a jailbreak</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_jailbreak",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_possible_suspect"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_possible_suspect",
+      "bullet_type": "small",
+      "text": "Search the collection for the [[Suspect]] enemy underlined under “Possible Suspects” and set it aside, out of play."
+    },
+    {
+      "id": "check_encounter_with_a_secret_cult",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>an encounter with a secret cult</i> is listed under \"Memories Recovered\":",
+      "bullet_type": "small",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "encounter_with_a_secret_cult",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "agenda_1_v1"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "agenda_1_v2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "agenda_1_v1",
+      "bullet_type": "small",
+      "text": "When constructing the agenda deck, use Agenda 1a—\"The Initiation (v.I)\" and remove Agenda 1a—\"The Initiation (v.II)\" from the game."
+    },
+    {
+      "id": "agenda_1_v2",
+      "bullet_type": "small",
+      "text": "Otherwise, use Agenda 1a—\"The Initiation (v.II)\" and remove Agenda 1a-\"The Initiation (v.I)\" from the game."
+    },
+    {
+      "id": "check_decision_to_stick_together",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>a decision to stick together</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "put_agent_dawson_in_play"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_aside_agent_dawson"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "put_agent_dawson_in_play",
+      "bullet_type": "small",
+      "text": "Search the collection for Thomas Dawson and put him into play under any investigator's control. When constructing the agenda deck, use Agenda 2a—\"What Lurks Below (v.I)\" and remove Agenda 2a—\"What Lurks Below (v.II)\" from the game."
+    },
+    {
+      "id": "set_aside_agent_dawson",
+      "bullet_type": "small",
+      "text": "Otherwise, search the collection for Thomas Dawson and set him aside, out of play. When constructing the agenda deck, use Agenda 2a—\"What Lurks Below (v.II)\" and remove Agenda 2a—\"What Lurks Below (v.I)\" from the game."
+    },
+    {
+      "id": "flood_tokens",
+      "text": "Add the flood tokens to the token pool."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Keys",
+            "steps": [
+              "ask_keys"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Which keys do you want to read the representation of:",
+      "input": {
+        "type": "checklist",
+        "text": "Read",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Red",
+            "steps": [
+              "red_key"
+            ]
+          },
+          {
+            "id": "blue",
+            "text": "Blue",
+            "steps": [
+              "blue_key"
+            ]
+          },
+          {
+            "id": "green",
+            "text": "Green",
+            "steps": [
+              "green_key"
+            ]
+          },
+          {
+            "id": "purple",
+            "text": "Purple",
+            "steps": [
+              "purple_key"
+            ]
+          },
+          {
+            "id": "black",
+            "text": "Black",
+            "steps": [
+              "black_key"
+            ]
+          },
+          {
+            "id": "white",
+            "text": "White / Yellow",
+            "steps": [
+              "white_key"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "red_key",
+      "text": "Red: A crest engraved with a glyph depicting a great sacrifice."
+    },
+    {
+      "id": "blue_key",
+      "text": "Blue: A scroll detailing some of the Order's activities and secrets."
+    },
+    {
+      "id": "green_key",
+      "text": "Green: A crest depicting a widening fish-eye."
+    },
+    {
+      "id": "purple_key",
+      "text": "Purple: A crest inscribed with a circle of words in an alphabet you do not comprehend."
+    },
+    {
+      "id": "black_key",
+      "text": "Black: A crest carved with an arcane sigil."
+    },
+    {
+      "id": "white_key",
+      "text": "White / Yellow: Crests whose glyphs depict the alignment of celestial bodies. The white key shows the moon overlapping the sun. The yellow key shows the sun overlapping the moon."
+    },
+    {
+      "id": "dagon_has_awakened",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "dagon_has_awakened",
+          "text": "Dagon has awakened."
+        }
+      ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "勝利牌區：",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unspect_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_suspect_defeated",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_jailbreak",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_suspect_defeated"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_suspect_defeated",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "suspect_defeated",
+            "text": "Is a [[Suspect]] enemy in the victory display?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gatekeeper_has_been_defeated",
+                "text": "the gatekeeper has been defeated."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_oceiros",
+      "text": "The lead investigator must decide:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "nothing",
+            "text": "Tell Oceiros nothing.",
+            "steps": [
+              "resolution_2"
+            ]
+          },
+          {
+            "id": "lying",
+            "text": "Lie to Oceiros.",
+            "steps": [
+              "resolution_3"
+            ]
+          },
+          {
+            "id": "truth",
+            "text": "Tell Oceiros everything.",
+            "steps": [
+              "resolution_4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_elder_thing",
+      "text": "Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "elder_thing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add_tablet",
+      "text": "在混亂袋中加入1個[tablet]標記，持續到劇本結束。",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "tablet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add_cultist",
+      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "cultist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keys_rule",
+      "title": "Keys",
+      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "如果未達成任何結局(所有調查員都撤退或被擊敗)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "This place is more dangerous than you could have possibly imagined. You stumble as you flee through the dark, flooded corridors, retracing your steps as quickly as you can to reach the entrance. Your heart races in your chest as you see the exit at last. You gasp in relief as you crash through the doors, to safety—\n—Only you are not safe. Standing at the bottom of the steps is an angry throng of citizens, far too many for you to fight your way through. \"There! Get 'em!\" a wrinkled women at the head of the mob shouts. You are surrounded and grabbed within moments. You struggle and fight for your life, but it's no use. The last thing you remember is being dragged back through the halls of the Order to some unknown fate…",
+      "steps": [
+        "dagon_has_awakened",
+        "resolution_1"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "結局1",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You're somewhere else now, lying on your stomach on cold, damp stone. Your arms are held tight behind your back. You have no idea how you got here. As consciousness returns, your vision comes into focus. You crane your neck up to view your surroundings, but it's too dark to see anything inside your stone cell.\n\"I'll ask you one last time. Who sent you here?\" a voice asks. It is deep and husky, like the croaking of a frog.\nYou hear the familiar, cool baritone of Agent Dawson reply: \"Your breath smells awful. Ever heard of brushing your teeth?\" Despite the sarcasm dripping from his words, his voice wavers ever so slightly.\n\"Your mockery only masks the fear that hides within,\" the voice replies. \"Very well. If you are of no use to us, you will be the first to be sacrificed.\"\nYour vision continues to adjust. You can just barely make out Dawson's silhouette on the other side of the cell. He is kneeling before a metal hatch in the stone floor. An elderly robed figure presses a curved knife against Dawson's throat. Someone lifts the hatch, and Dawson's eyes go wide. He gives you one last despairing look, shakes his head slowly and deliberately, and quietly slides something across the stone floor. Then the hooded figure pushes him in. In the scuffle and the low light, nobody notices the car key that skitters to a halt directly next to you.\nYou grab the key and stuff it into your pocket just before you are shoved forward. Two more sets of cold, clammy hands grap your shoulders, and the hooded figure slides his knife up to your neck. All you can see of his face are his wide, unblinking eyes.\n\"Oceiros, these ones were found in Dagon's lair as well,\" another voice explains to the elderly figure in the robes. \"We believe they were the ones snooping around Devil Reef.\"\nThe man with the knife to your throat nods. \"Your turn,\" he declares. \"Tell us why you have come and perhaps we will let you go. Who sent you? What have you seen?\"",
+      "steps": [
+        "earn_xp",
+        "maybe_ask_suspect_defeated",
+        "ask_oceiros"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "結局2",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You remember the slow, gentle shaking of Agent Dawson's head and known what he meant by the gesture. You look up into the man's unblinking eyes, set your jaw, and say nothing. A moment of silent understanding passes between you and your interrogator. \"Very well. Your defiance has earned you naught but a slow, agonizing death.\" The metal hatch opens again. Inside, you see nothing but darkness. You glare long and hard at your captor.\n\"Take what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": [
+        "add_elder_thing"
+      ]
+    },
+    {
+      "id": "R3",
+      "title": "結局3",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You can think of only one way out of this situation. The Order believes that you are poking around their business, so you will have to convince them that you don't know or care what they are up to. You lie as best you can, spinning a story that might convince them you were simply in the wrong place at the wrong time. \"And what of your unfortunate friend?\" your interrogator asks. You tell him that you have never met that man before in your life. \"Perhaps you speak the truth,\" the man says, and you breath a short-lived sigh of relief before he dashes your hopes: \"…but it matters not. You have seen too much, and for that, you must be silenced. Worry not. You will be joining our kindred soon.\" The metal hatch opens again. Inside, you see nothing but darkness.\n\"Take what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": [
+        "add_tablet"
+      ]
+    },
+    {
+      "id": "R3",
+      "title": "結局3",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "None of this is what you signed up for. Hoping to avoid Dawson's fate, you have no choice but to tell your interrogator everything. You explain you were hired by Dawson to find his missing agent, and go on to describe the events that followed over the past few weeks, including your exploration of Devil Reef and your investigation into the Order. A slow smile crawls across the man's face as you divulge everything you know. \"I thank you for your candor. Sadly, there is only one way I can repay you. You have seen too much, and for that, you must be silenced.\" Your heart goes cold as you realize what he means. The metal hatch opens again. Inside, you see nothing but darkness.\nTake what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": [
+        "add_cultist"
+      ]
+    }
+  ]
 },
 {
   "id": "the_pit_of_despair",

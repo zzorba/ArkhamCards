@@ -263,7 +263,7 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "你選擇不去警察局。"
           },
           {
             "id": "destroyed_the_oathspeaker",
@@ -283,7 +283,7 @@
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "你逃離晚宴。"
           },
           {
             "id": "followers_of_sign_found_way",
@@ -311,7 +311,7 @@
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "你闖入了一場密會。"
           },
           {
             "id": "king_claimed_victims",
@@ -335,7 +335,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "警方對你抱有懷疑。"
           },
           {
             "id": "prevented_hasturs_escape",
@@ -343,11 +343,11 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "你殺死了晚宴上的那群怪物。"
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "陌生人與你接觸。"
           },
           {
             "id": "took_onyx_clasp",
@@ -355,7 +355,7 @@
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "你嘗試提醒警方。"
           },
           {
             "id": "unable_to_find_nigel",
@@ -689,7 +689,7 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "你選擇不去警察局。"
           },
           {
             "id": "destroyed_the_oathspeaker",
@@ -709,7 +709,7 @@
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "你逃離晚宴。"
           },
           {
             "id": "followers_of_sign_found_way",
@@ -737,7 +737,7 @@
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "你闖入了一場密會。"
           },
           {
             "id": "king_claimed_victims",
@@ -761,7 +761,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "警方對你抱有懷疑。"
           },
           {
             "id": "prevented_hasturs_escape",
@@ -769,11 +769,11 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "你殺死了晚宴上的那群怪物。"
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "陌生人與你接觸。"
           },
           {
             "id": "took_onyx_clasp",
@@ -781,7 +781,7 @@
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "你嘗試提醒警方。"
           },
           {
             "id": "unable_to_find_nigel",
@@ -2379,12 +2379,28 @@
             "text": "Brian Burnham is out for blood."
           },
           {
+            "id": "dagon_has_awakened",
+            "text": "Dagon has awakened."
+          },
+          {
             "id": "friendly_out_for_blood",
             "text": "Robert Friendly is out for blood."
           },
           {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "the gatekeeper has been defeated."
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+          },
+          {
             "id": "gilman_out_for_blood",
             "text": "Othera Gilman is out for blood."
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "the guardian of Y’ha-nthlei is dispatched."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
