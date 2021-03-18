@@ -75991,8 +75991,8 @@
     "check_encounter_with_a_secret_cult",
     "check_decision_to_stick_together",
     "flood_tokens",
-    "keys_rule",
     "encounter_deck",
+    "keys_rule",
     "$play_scenario"
   ],
   "steps": [
@@ -76279,7 +76279,6 @@
     {
       "id": "check_encounter_with_a_secret_cult",
       "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>an encounter with a secret cult</i> is listed under \"Memories Recovered\":",
-      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -76669,8 +76668,8 @@
       ]
     },
     {
-      "id": "R3",
-      "title": "Conclusion 3",
+      "id": "R4",
+      "title": "Conclusion 4",
       "investigator_status": [
         "alive",
         "resigned",

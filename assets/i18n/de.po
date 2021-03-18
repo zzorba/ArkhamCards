@@ -4182,6 +4182,36 @@ msgstr ""
 msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr ""
 
+msgid "Ammo"
+msgstr ""
+
+msgid "Bounties"
+msgstr ""
+
+msgid "Charges"
+msgstr ""
+
+msgid "Keys"
+msgstr ""
+
+msgid "Locks"
+msgstr ""
+
+msgid "Resources"
+msgstr ""
+
+msgid "Secrets"
+msgstr ""
+
+msgid "Tickets"
+msgstr ""
+
+msgid "Tries"
+msgstr ""
+
+msgid "Whistles"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."

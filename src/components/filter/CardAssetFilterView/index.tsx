@@ -29,6 +29,23 @@ export function slotsTranslations() {
   };
 }
 
+
+export function usesTranslations() {
+  return {
+    ammo: t`Ammo`,
+    aounties: t`Bounties`,
+    charges: t`Charges`,
+    keys: t`Keys`,
+    locks: t`Locks`,
+    resources: t`Resources`,
+    secrets: t`Secrets`,
+    supplies: t`Supplies`,
+    tickets: t`Tickets`,
+    tries: t`Tries`,
+    whistles: t`Whistles`,
+  };
+}
+
 const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
   const { componentId, baseQuery, tabooSetId } = props;
   const {
@@ -89,6 +106,7 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
           onFilterChange={onFilterChange}
           query={baseQuery}
           tabooSetId={tabooSetId}
+          fixedTranslations={usesTranslations()}
           capitalize
         />
       ) }
