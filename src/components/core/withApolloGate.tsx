@@ -16,7 +16,7 @@ import useNetworkStatus from '@components/core/useNetworkStatus';
 import { apolloQueueLink } from '@data/apollo/createApolloClient';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useApolloClient } from '@apollo/client';
-import { genericOptimisticUpdates, optimisticUpdates } from '@data/remote/apollo';
+import { genericOptimisticUpdates } from '@data/remote/apollo';
 import { trackedQueriesRemove } from '@data/apollo/trackerLink';
 
 interface Props {

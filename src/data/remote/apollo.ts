@@ -73,7 +73,7 @@ export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutatio
   })
 };
 
-function updateCampaignGuide(cache: ApolloCache<unknown>, campaignId: number, update: (cacheData: FullCampaignGuideStateFragment) => FullCampaignGuideStateFragmentDoc) {
+function updateCampaignGuide(cache: ApolloCache<unknown>, campaignId: number, update: (cacheData: FullCampaignGuideStateFragment) => FullCampaignGuideStateFragment) {
   const cacheData = cache.readQuery<GetCampaignGuideQuery>({
     query: GetCampaignGuideDocument,
     variables: {
@@ -104,12 +104,13 @@ const handleAddGuideInput: MutationUpdaterFn<AddGuideInputMutation> = (cache, { 
   }
   const campaignId = data.insert_guide_input_one.campaign_id;
   const inputId = data.insert_guide_input_one.id;
-  updateCampaignGuide(cache, campaignId, (campaignGuide) => {
+  const guide_input = data.insert_guide_input_one;
+  updateCampaignGuide(cache, campaignId, campaignGuide => {
     const { guide_inputs } = campaignGuide;
     const newGuideInputs = [
       ...filter(guide_inputs, i => i.id !== inputId),
       {
-        ...data.insert_guide_input_one,
+        ...guide_input,
       },
     ];
     return {
@@ -232,7 +233,7 @@ const handleRemoveCampaignInvestigator: MutationUpdaterFn<RemoveCampaignInvestig
   const removed = data.delete_campaign_investigator?.returning;
   if (removed.length) {
     const removal = removed[0];
-    const removalSet = new Set(removed.map(i => i.investigator));
+    const removalSet = new Set(map(removed, i => i.investigator));
     const campaign_id = removal.campaign_id;
     updateMiniCampaign(
       cache,
