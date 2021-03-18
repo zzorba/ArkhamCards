@@ -24,11 +24,13 @@ import { updateCampaignNotes } from '../actions';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { SetCampaignNotesAction } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 interface Props {
   componentId: string;
   campaignId: CampaignId;
   campaign: SingleCampaignT;
+  loading: boolean;
   latestDecks: LatestDeckT[];
   cards: CardsMap;
   allInvestigators: Card[];
@@ -49,6 +51,7 @@ export default function DecksSection({
   latestDecks,
   cards,
   allInvestigators,
+  loading,
   setCampaignNotes,
   showXpDialog,
   showTraumaDialog,
@@ -181,6 +184,9 @@ export default function DecksSection({
       return investigator.eliminated(campaign.getInvestigatorData(investigator.code));
     });
   }, [allInvestigators, campaign]);
+  if (loading) {
+    return <LoadingSpinner inline />;
+  }
   return (
     <>
       { flatMap(aliveInvestigators, investigator => {
