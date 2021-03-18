@@ -29,7 +29,6 @@ import {
   Guide_Achievement_Insert_Input,
   Investigator_Data_Insert_Input,
   Campaign_Investigator_Insert_Input,
-  GuideInputFragment,
   useRemoveGuideInputsMutation,
 } from '@generated/graphql/apollo-schema';
 import { useFunction, ErrorResponse } from './api';

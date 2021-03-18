@@ -4,7 +4,7 @@ import { Action, Dispatch } from 'redux';
 import uuid from 'react-native-uuid';
 
 import { TrackedQuery, TrackedQueriesAddAction, TrackedQueriesRemoveAction, TRACKED_QUERIES_ADD, TRACKED_QUERIES_REMOVE } from '@actions/types';
-import { genericOptimisticUpdates, optimisticUpdates } from '@data/remote/apollo';
+import { genericOptimisticUpdates } from '@data/remote/apollo';
 
 export function trackedQueriesAdd(trackedQuery: TrackedQuery): TrackedQueriesAddAction {
   return {
