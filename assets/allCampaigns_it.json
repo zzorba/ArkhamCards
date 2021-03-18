@@ -71956,7 +71956,6 @@
     {
       "id": "possible_hideouts",
       "title": "Possibili Nascondigli"
->>>>>>> dde0372319b390b3087780faca673566e5a26f1c
     },
     {
       "id": "hidden",
@@ -74533,7 +74532,7 @@
 },
 {
   "id": "hidden_truths",
-  "scenario_name": "Hidden Truths",
+  "scenario_name": "Verità Nascoste",
   "full_name": "Interlude IV: Hidden Truths",
   "header": "Interlude IV",
   "icon": "agents_of_dagon",
@@ -74757,20 +74756,7 @@
 },
 {
   "id": "horror_in_high_gear",
-  "scenario_name": "Horror in High Gear",
-=======
-  "scenario_name": "Verità Nascoste",
-  "full_name": "Interlude IV: Hidden Truths",
-  "header": "Interlude IV",
-  "icon": "agents_of_dagon",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
-},
-{
-  "id": "horror_in_high_gear",
   "scenario_name": "Orrore Ad Alta Velocità",
->>>>>>> dde0372319b390b3087780faca673566e5a26f1c
   "full_name": "Scenario V: Horror in High Gear",
   "header": "Scenario V",
   "setup": [
@@ -75987,7 +75973,7 @@
 },
 {
   "id": "the_lair_of_dagon",
-  "scenario_name": "The Lair of Dagon",
+  "scenario_name": "Il Covo di Dagon",
   "full_name": "Scenario VII: The Lair of Dagon",
   "header": "Scenario VII",
   "setup": [
@@ -76700,19 +76686,7 @@
 },
 {
   "id": "the_pit_of_despair",
-  "scenario_name": "The Pit of Despair",
-=======
-  "scenario_name": "Il Covo di Dagon",
-  "full_name": "Scenario VII: The Lair of Dagon",
-  "header": "Scenario VII",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
-},
-{
-  "id": "the_pit_of_despair",
   "scenario_name": "La Grotta della Disperazione",
->>>>>>> dde0372319b390b3087780faca673566e5a26f1c
   "full_name": "Scenario I: The Pit of Despair",
   "header": "Scenario I",
   "setup": [
