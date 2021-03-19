@@ -46161,7 +46161,7 @@
     {
       "id": "keys",
       "type": "rule_reminder",
-      "title": "Keys",
+      "title": "Chiavi",
       "text": "The setup of this scenario instructs the players to set aside 1 [skull] token, 1 [cultist] token, 1 [tablet] token, and 1 [elder_thing] token, as keys. These keys are never placed in the chaos bag and do not act as traditional chaos tokens. Instead, they represent keys which investigators can recover and use throughout the scenario.\nKeys can enter play via several different card effects, and are usually placed on an enemy, location, or story asset. Keys can be acquired in one of three ways:",
       "bullets": [
         {
@@ -72242,7 +72242,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "Chiavi",
       "type": "rule_reminder",
       "text": "This expansion introduces key tokens that represent important objects or pieces of information that can be claimed and used during scenarios.\nKey tokens have two sides. When facedown, all seven keys have the same universal key symbol, so they can be randomized without the investigators knowing which is which. When faceup, each key is color coded with a unique color.\nIf a scenario uses one or more keys, the setup of that scenario indicates how many are set aside and whether they should be faceup or randomized facedown. Keys can enter play via several different card effects, and they are usually placed on enemy, location, or story asset. Keys can be acquired in any of three ways:",
       "bullets": [
@@ -72486,7 +72486,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "Chiavi",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -72633,7 +72633,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "Chiavi",
             "steps": [
               "ask_keys"
             ]
@@ -74130,7 +74130,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "Chiavi",
             "steps": [
               "ask_keys"
             ]
@@ -75283,7 +75283,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "Chiavi",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -75294,7 +75294,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "Chiavi",
             "steps": [
               "ask_keys"
             ]
@@ -76360,7 +76360,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "Chiavi",
             "steps": [
               "ask_keys"
             ]
@@ -76600,7 +76600,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "Chiavi",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     }
   ],
@@ -76838,7 +76838,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "Chiavi",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -76865,7 +76865,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "Chiavi",
             "steps": [
               "ask_keys"
             ]

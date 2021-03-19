@@ -71951,11 +71951,11 @@
     },
     {
       "id": "possible_suspects",
-      "title": "Suspects Possibles"
+      "title": "Suspects possibles"
     },
     {
       "id": "possible_hideouts",
-      "title": "Cachettes Possibles"
+      "title": "Les cachettes possibles"
     },
     {
       "id": "hidden",
@@ -74532,7 +74532,7 @@
 },
 {
   "id": "hidden_truths",
-  "scenario_name": "Vérités Cachées",
+  "scenario_name": "Hidden Truths",
   "full_name": "Interlude IV : Vérités Cachée",
   "header": "Interlude IV",
   "icon": "agents_of_dagon",
@@ -75723,7 +75723,7 @@
 },
 {
   "id": "into_the_maelstrom",
-  "scenario_name": "Dans le Maelström",
+  "scenario_name": "Into the Maelstrom",
   "full_name": "Scénario VII : Dans le Maelström",
   "header": "Scénario VIII",
   "type": "placeholder",
@@ -75973,7 +75973,7 @@
 },
 {
   "id": "the_lair_of_dagon",
-  "scenario_name": "La Tanière de Dagon",
+  "scenario_name": "The Lair of Dagon",
   "full_name": "Scénario VII : La Tanière de Dagon",
   "header": "Scénario VII",
   "setup": [
@@ -77183,7 +77183,7 @@
 },
 {
   "id": "the_syzygy",
-  "scenario_name": "La Syzygie",
+  "scenario_name": "The Syzygy",
   "full_name": "Interlude II : La Syzygie",
   "header": "Interlude II",
   "type": "interlude",
