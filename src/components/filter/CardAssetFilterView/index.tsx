@@ -33,7 +33,7 @@ export function slotsTranslations() {
 export function usesTranslations() {
   return {
     ammo: t`Ammo`,
-    aounties: t`Bounties`,
+    bounties: t`Bounties`,
     charges: t`Charges`,
     keys: t`Keys`,
     locks: t`Locks`,

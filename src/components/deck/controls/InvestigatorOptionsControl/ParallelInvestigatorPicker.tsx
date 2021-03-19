@@ -54,7 +54,7 @@ export default function ParallelInvestigatorPicker({
   return (
     <>
       <DeckPickerStyleButton
-        title={`Parallel`}
+        title={t`Parallel`}
         icon="parallel"
         editable={!disabled}
         onPress={showDialog}

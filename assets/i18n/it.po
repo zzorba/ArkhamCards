@@ -4187,34 +4187,34 @@ msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr "${ normalCardCount } / ${ deckSize } carte"
 
 msgid "Ammo"
-msgstr ""
+msgstr "Munizioni"
 
 msgid "Bounties"
-msgstr ""
+msgstr "Taglie"
 
 msgid "Charges"
-msgstr ""
+msgstr "Cariche"
 
 msgid "Keys"
-msgstr ""
+msgstr "Chiavi"
 
 msgid "Locks"
-msgstr ""
+msgstr "Lucchetti"
 
 msgid "Resources"
-msgstr ""
+msgstr "Risorse"
 
 msgid "Secrets"
-msgstr ""
+msgstr "Segreti"
 
 msgid "Tickets"
-msgstr ""
+msgstr "Biglietti"
 
 msgid "Tries"
-msgstr ""
+msgstr "Tentativi"
 
 msgid "Whistles"
-msgstr ""
+msgstr "Fischietti"
 
 #, javascript-format
 msgctxt "masculine"
