@@ -3,7 +3,7 @@ mutation deleteInvestigatorDecks(
   $investigator: String!,
   $user_id: String!,
 ) {
-  delete_deck(
+  delete_campaign_deck(
     where: {
       campaign_id: { _eq: $campaign_id }
       investigator: { _eq: $investigator }

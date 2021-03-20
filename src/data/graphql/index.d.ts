@@ -16,6 +16,8 @@ export const insertNextLocalDeck: DocumentNode;
 export const insertNextArkhamDbDeck: DocumentNode;
 export const updateArkhamDbDeck: DocumentNode;
 export const updateLocalDeck: DocumentNode;
+export const deleteAllLocalDeck: DocumentNode;
+export const deleteAllArkhamDbDeck: DocumentNode;
 export const deleteLocalDeck: DocumentNode;
 export const deleteArkhamDbDeck: DocumentNode;
 export const getMyDecks: DocumentNode;

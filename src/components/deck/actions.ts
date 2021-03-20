@@ -137,7 +137,9 @@ export function removeDeck(
     });
     if (user && uploads?.campaignId.length) {
       await Promise.all(
-        map(uploads.campaignId, campaignId => actions.deleteDeck(id, campaignId))
+        map(uploads.campaignId, campaignId => {
+          return actions.deleteDeck(id, campaignId, !!deleteAllVersions);
+        })
       );
     }
     return true;

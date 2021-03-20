@@ -490,8 +490,8 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
     await deleteInvestigatorDecks({
       optimisticResponse: {
         __typename: 'mutation_root',
-        delete_deck: {
-          __typename: 'deck_mutation_response',
+        delete_campaign_deck: {
+          __typename: 'campaign_deck_mutation_response',
           returning: [
             {
               id: -1,
