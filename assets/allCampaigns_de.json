@@ -42263,7 +42263,8 @@
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_escaped_brotherhood",
-                "text": "Entkommene Agenten der Bruderschaft: #name#"
+                "text": "Entkommene Agenten der Bruderschaft: #name#",
+                "cards": "$input_value"
               }
             ]
           }

@@ -42263,7 +42263,8 @@
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_escaped_brotherhood",
-                "text": "Agents de la Fraternité qui se sont échappés : #name#"
+                "text": "Agents de la Fraternité qui se sont échappés : #name#",
+                "cards": "$input_value"
               }
             ]
           }
@@ -71951,11 +71952,11 @@
     },
     {
       "id": "possible_suspects",
-      "title": "Suspects possibles"
+      "title": "Suspects Possibles"
     },
     {
       "id": "possible_hideouts",
-      "title": "Les cachettes possibles"
+      "title": "Cachettes Possibles"
     },
     {
       "id": "hidden",
@@ -74532,7 +74533,7 @@
 },
 {
   "id": "hidden_truths",
-  "scenario_name": "Hidden Truths",
+  "scenario_name": "Vérités Cachées",
   "full_name": "Interlude IV : Vérités Cachée",
   "header": "Interlude IV",
   "icon": "agents_of_dagon",
@@ -75723,7 +75724,7 @@
 },
 {
   "id": "into_the_maelstrom",
-  "scenario_name": "Into the Maelstrom",
+  "scenario_name": "Dans le Maelström",
   "full_name": "Scénario VII : Dans le Maelström",
   "header": "Scénario VIII",
   "type": "placeholder",
@@ -75973,7 +75974,7 @@
 },
 {
   "id": "the_lair_of_dagon",
-  "scenario_name": "The Lair of Dagon",
+  "scenario_name": "La Tanière de Dagon",
   "full_name": "Scénario VII : La Tanière de Dagon",
   "header": "Scénario VII",
   "setup": [
@@ -77183,7 +77184,7 @@
 },
 {
   "id": "the_syzygy",
-  "scenario_name": "The Syzygy",
+  "scenario_name": "La Syzygie",
   "full_name": "Interlude II : La Syzygie",
   "header": "Interlude II",
   "type": "interlude",
