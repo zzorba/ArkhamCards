@@ -201,6 +201,7 @@
 {
   "id": "armitages_fate",
   "scenario_name": "Судьба Армитеджа",
+  "header": "Интерлюдия I",
   "full_name": "Интерлюдия I: Судьба Армитеджа",
   "type": "interlude",
   "icon": "armitages_fate",
@@ -303,6 +304,7 @@
 {
   "id": "blood_on_the_altar",
   "scenario_name": "Кровь на алтаре",
+  "header": "Сценарий IV",
   "full_name": "Сценарий IV: Кровь на алтаре",
   "setup": [
     "prologue",
@@ -724,6 +726,7 @@
   "id": "dwl_prologue",
   "scenario_name": "Пролог",
   "full_name": "Пролог",
+  "header": "",
   "type": "interlude",
   "icon": "armitages_fate",
   "setup": [
@@ -777,6 +780,7 @@
   "id": "dwl_epilogue",
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
+  "header": "",
   "type": "epilogue",
   "icon": "dunwich",
   "setup": [
@@ -829,6 +833,7 @@
 {
   "id": "essex_county_express",
   "scenario_name": "Экспресс округа Эссекс",
+  "header": "Сценарий III",
   "full_name": "Сценарий III: Экспресс округа Эссекс",
   "setup": [
     "prologue",
@@ -1249,6 +1254,7 @@
 {
   "id": "extracurricular_activity",
   "scenario_name": "Факультативные занятия",
+  "header": "Сценарий I-A",
   "full_name": "Сценарий I-A: Факультативные занятия",
   "setup": [
     "prologue",
@@ -1589,6 +1595,7 @@
 {
   "id": "lost_in_time_and_space",
   "scenario_name": "Потерянные во времени и пространстве",
+  "header": "Сценарий VII",
   "full_name": "Сценарий VII: Потерянные во времени и пространстве",
   "setup": [
     "prologue",
@@ -1907,6 +1914,7 @@
 {
   "id": "dwl_interlude2",
   "scenario_name": "Выжившие",
+  "header": "Интерлюдия II",
   "full_name": "Интерлюдия II: Выжившие",
   "type": "interlude",
   "icon": "whippoorwills",
@@ -2270,6 +2278,7 @@
 {
   "id": "the_house_always_wins",
   "scenario_name": "Казино всегда в выигрыше",
+  "header": "Сценарий I-B",
   "full_name": "Сценарий I-B: Казино всегда в выигрыше",
   "setup": [
     "prologue",
@@ -2613,6 +2622,7 @@
 {
   "id": "the_miskatonic_museum",
   "scenario_name": "Мискатоникский музей",
+  "header": "Сценарий II",
   "full_name": "Сценарий II: Мискатоникский музей",
   "setup": [
     "prologue",
@@ -2942,6 +2952,7 @@
 {
   "id": "undimensioned_and_unseen",
   "scenario_name": "Неизмеримые и невидимые",
+  "header": "Сценарий V",
   "full_name": "Сценарий V: Неизмеримые и невидимые",
   "setup": [
     "prologue",
@@ -3323,6 +3334,7 @@
 {
   "id": "where_doom_awaits",
   "scenario_name": "Там, где ждёт погибель",
+  "header": "Сценарий VI",
   "full_name": "Сценарий VI: Там, где ждёт погибель",
   "setup": [
     "prologue",
@@ -4017,6 +4029,7 @@
 {
   "id": "arkham",
   "scenario_name": "Полуночные маски",
+  "header": "Сценарий II",
   "full_name": "Часть II: Полуночные маски",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -4672,6 +4685,7 @@
 {
   "id": "tentacles",
   "scenario_name": "Пожиратель из глубин",
+  "header": "Сценарий III",
   "full_name": "Часть III: Пожиратель из глубин",
   "setup": [
     "intro",
@@ -5114,6 +5128,7 @@
 {
   "id": "torch",
   "scenario_name": "Встреча",
+  "header": "Сценарий I",
   "full_name": "Часть I: Встреча",
   "setup": [
     "prologue",
@@ -5654,6 +5669,7 @@
   "id": "a_phantom_of_truth",
   "scenario_name": "Призрак Истины",
   "full_name": "Сценарий V: Призрак Истины",
+  "header": "Сценарий V",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -6629,6 +6645,7 @@
   "id": "black_stars_rise",
   "scenario_name": "Восход чёрных звёзд",
   "full_name": "Сценарий VII: Восход чёрных звёзд",
+  "header": "Сценарий VII",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -7356,6 +7373,7 @@
   "id": "curtain_call",
   "scenario_name": "Дайте занавес",
   "full_name": "Сценарий I: Дайте занавес",
+  "header": "Сценарий I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -7707,6 +7725,7 @@
   "id": "dim_carcosa",
   "scenario_name": "Туманная Каркоза",
   "full_name": "Сценарий VIII: Туманная Каркоза",
+  "header": "Сценарий VIII",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -8544,6 +8563,7 @@
   "id": "echoes_of_the_past",
   "scenario_name": "Отголоски прошлого",
   "full_name": "Сценарий III: Отголоски прошлого",
+  "header": "Сценарий III",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -9128,8 +9148,9 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Эпилог",
-  "icon": "maddening_delusions",
+  "header": "",
   "full_name": "Эпилог",
+  "icon": "maddening_delusions",
   "type": "epilogue",
   "setup": [
     "check_epilogue"
@@ -9168,6 +9189,7 @@
   "id": "ptc_interlude2",
   "scenario_name": "Пропащая душа",
   "full_name": "Интерлюдия II: Пропащая душа",
+  "header": "Интерлюдия II",
   "type": "interlude",
   "icon": "the_stranger",
   "setup": [
@@ -9359,6 +9381,7 @@
   "id": "ptc_interlude1",
   "scenario_name": "Награда за безумие",
   "full_name": "Интерлюдия I: Награда за безумие",
+  "header": "Интерлюдия I",
   "type": "interlude",
   "icon": "hasturs_gift",
   "setup": [
@@ -9693,6 +9716,7 @@
   "id": "ptc_prologue",
   "scenario_name": "Пролог",
   "full_name": "Пролог",
+  "header": "",
   "type": "interlude",
   "icon": "delusions",
   "setup": [
@@ -9756,6 +9780,7 @@
   "id": "the_last_king",
   "scenario_name": "Последний король",
   "full_name": "Сценарий II: Последний король",
+  "header": "Сценарий II",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -10238,6 +10263,7 @@
   "id": "the_pallid_mask",
   "scenario_name": "Бледная маска",
   "full_name": "Сценарий VI: Бледная маска",
+  "header": "Сценарий VI",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -10276,7 +10302,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Соберите мешок хаоса из следующих жетонов: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -10373,7 +10399,7 @@
     },
     {
       "id": "found_nigels_home",
-      "text": "<i>You found Nigel's home.</i>",
+      "text": "<i>Вы нашли дом Найджела.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -10385,7 +10411,7 @@
     },
     {
       "id": "no_haruko",
-      "text": "<i>Ishimaru Haruko is not listed under VIPs Interviewed or VIPs Slain.</i>"
+      "text": "<i>Харуко Исимару не записана ни в графе «Опрошенные гости», ни в графе «Убитые гости».</i>"
     },
     {
       "id": "check_intro_condition",
@@ -10980,7 +11006,7 @@
     },
     {
       "id": "add_two_conviction",
-      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "В ходе сценария вы получили указание отметить в журнале кампании 2 <b>Уверенности</b>.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -11010,7 +11036,7 @@
     },
     {
       "id": "add_two_doubt",
-      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "В ходе сценария вы получили указание отметить в журнале кампании 2 <b>Сомнения</b>.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -11040,7 +11066,7 @@
           {
             "type": "campaign_data",
             "campaign_data": "version",
-            "min_version": 1,
+            "min_version": 2,
             "options": [
               {
                 "boolCondition": true
@@ -11062,13 +11088,13 @@
     {
       "id": "ask_conviction_or_doubt_resolution",
       "type": "input",
-      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "text": "Получали ли вы в ходе сценария указания записать что-либо в журнале кампании?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "doubt",
-            "text": "Mark 2 <b>Doubt</b>.",
+            "text": "Отметьте 2 <b>Сомнения</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -11080,7 +11106,7 @@
           },
           {
             "id": "conviction",
-            "text": "Mark 2 <b>Conviction</b>.",
+            "text": "Отметьте 2 <b>Уверенности</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -11092,7 +11118,7 @@
           },
           {
             "id": "neither",
-            "text": "Scenario ended before Act 2b was resolved."
+            "text": "Сценарий завершился до розыгрыша Сцены 2b."
           }
         ]
       }
@@ -11162,6 +11188,7 @@
   "id": "the_unspeakable_oath",
   "scenario_name": "Невыразимая клятва",
   "full_name": "Сценарий IV: Невыразимая клятва",
+  "header": "Сценарий IV",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -11206,7 +11233,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Соберите мешок хаоса из следующих жетонов: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -12312,6 +12339,7 @@
 {
   "id": "armitages_fate",
   "scenario_name": "Судьба Армитеджа",
+  "header": "Интерлюдия I",
   "full_name": "Интерлюдия I: Судьба Армитеджа",
   "type": "interlude",
   "icon": "armitages_fate",
@@ -12415,6 +12443,7 @@
   "id": "dwl_prologue",
   "scenario_name": "Пролог",
   "full_name": "Пролог",
+  "header": "",
   "type": "interlude",
   "icon": "armitages_fate",
   "setup": [
@@ -12464,6 +12493,7 @@
   "id": "dwl_epilogue",
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
+  "header": "",
   "type": "epilogue",
   "icon": "dunwich",
   "setup": [
@@ -12516,6 +12546,7 @@
 {
   "id": "return_to_blood_on_the_altar",
   "scenario_name": "Return to Blood on the Altar",
+  "header": "Сценарий IV",
   "full_name": "Scenario IV: Return to Blood on the Altar",
   "setup": [
     "prologue",
@@ -12953,6 +12984,7 @@
 {
   "id": "return_to_essex_county_express",
   "scenario_name": "Return to The Essex County Express",
+  "header": "Сценарий III",
   "full_name": "Scenario III: Return to The Essex County Express",
   "setup": [
     "prologue",
@@ -13379,6 +13411,7 @@
 {
   "id": "return_to_extracurricular_activity",
   "scenario_name": "Return to Extracurricular Activity",
+  "header": "Сценарий I-A",
   "full_name": "Scenario I–A: Return to Extracurricular Activity",
   "setup": [
     "prologue",
@@ -13743,6 +13776,7 @@
 {
   "id": "return_to_lost_in_time_and_space",
   "scenario_name": "Return to Lost in Time and Space",
+  "header": "Сценарий VII",
   "full_name": "Scenario VII: Return to Lost in Time and Space",
   "setup": [
     "prologue",
@@ -14095,6 +14129,7 @@
 {
   "id": "return_to_the_house_always_wins",
   "scenario_name": "Return to The House Always Wins",
+  "header": "Сценарий I-B",
   "full_name": "Scenario I–B: Return to The House Always Wins",
   "setup": [
     "prologue",
@@ -14439,6 +14474,7 @@
 {
   "id": "return_to_the_miskatonic_museum",
   "scenario_name": "Return to The Miskatonic Museum",
+  "header": "Сценарий II",
   "full_name": "Scenario II: Return to The Miskatonic Museum",
   "setup": [
     "prologue",
@@ -14777,6 +14813,7 @@
 {
   "id": "return_to_undimensioned_and_unseen",
   "scenario_name": "Return to Undimensioned and Unseen",
+  "header": "Сценарий V",
   "full_name": "Scenario V: Return to Undimensioned and Unseen",
   "setup": [
     "prologue",
@@ -15170,6 +15207,7 @@
 {
   "id": "return_to_where_doom_awaits",
   "scenario_name": "Return to Where Doom Awaits",
+  "header": "Сценарий VI",
   "full_name": "Scenario VI: Return to Where Doom Awaits",
   "setup": [
     "prologue",
@@ -15668,6 +15706,7 @@
 {
   "id": "dwl_interlude2",
   "scenario_name": "Выжившие",
+  "header": "Интерлюдия II",
   "full_name": "Интерлюдия II: Выжившие",
   "type": "interlude",
   "icon": "whippoorwills",
@@ -16319,6 +16358,7 @@
 {
   "id": "return_to_the_devourer_below",
   "scenario_name": "Return to The Devourer Below",
+  "header": "Сценарий III",
   "full_name": "Scenario III: Return to The Devourer Below",
   "setup": [
     "intro",
@@ -16762,6 +16802,7 @@
 {
   "id": "return_to_the_gathering",
   "scenario_name": "Return to The Gathering",
+  "header": "Сценарий I",
   "full_name": "Scenario I: Return to the Gathering",
   "setup": [
     "prologue",
@@ -17088,6 +17129,7 @@
 {
   "id": "return_to_the_midnight_masks",
   "scenario_name": "Return to The Midnight Masks",
+  "header": "Сценарий II",
   "full_name": "Scenario II: Return to The Midnight Masks",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -18140,8 +18182,9 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Эпилог",
-  "icon": "maddening_delusions",
+  "header": "",
   "full_name": "Эпилог",
+  "icon": "maddening_delusions",
   "type": "epilogue",
   "setup": [
     "check_epilogue"
@@ -18180,6 +18223,7 @@
   "id": "ptc_interlude2",
   "scenario_name": "Пропащая душа",
   "full_name": "Интерлюдия II: Пропащая душа",
+  "header": "Интерлюдия II",
   "type": "interlude",
   "icon": "the_stranger",
   "setup": [
@@ -18371,6 +18415,7 @@
   "id": "ptc_interlude1",
   "scenario_name": "Награда за безумие",
   "full_name": "Интерлюдия I: Награда за безумие",
+  "header": "Интерлюдия I",
   "type": "interlude",
   "icon": "hasturs_gift",
   "setup": [
@@ -18705,6 +18750,7 @@
   "id": "ptc_prologue",
   "scenario_name": "Пролог",
   "full_name": "Пролог",
+  "header": "",
   "type": "interlude",
   "icon": "delusions",
   "setup": [
@@ -18768,6 +18814,7 @@
   "id": "return_to_a_phantom_of_truth",
   "scenario_name": "Return to A Phantom of Truth",
   "full_name": "Scenario V: Return to A Phantom of Truth",
+  "header": "Сценарий V",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -19749,6 +19796,7 @@
   "id": "return_to_black_stars_rise",
   "scenario_name": "Return to Black Stars Rise",
   "full_name": "Scenario VII: Return to Black Stars Rise",
+  "header": "Сценарий VII",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -20493,6 +20541,7 @@
   "id": "return_to_curtain_call",
   "scenario_name": "Return to Curtain Call",
   "full_name": "Scenario I: Return to Curtain Call",
+  "header": "Сценарий I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -20897,6 +20946,7 @@
   "id": "return_to_dim_carcosa",
   "scenario_name": "Return to Dim Carcosa",
   "full_name": "Scenario VIII: Return to Dim Carcosa",
+  "header": "Сценарий VIII",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -21745,6 +21795,7 @@
   "id": "return_to_echoes_of_the_past",
   "scenario_name": "Return to Echoes of the Past",
   "full_name": "Scenario III: Return to Echoes of the Past",
+  "header": "Сценарий III",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -22341,6 +22392,7 @@
   "id": "return_to_the_last_king",
   "scenario_name": "Return to The Last King",
   "full_name": "Scenario II: Return to The Last King",
+  "header": "Сценарий II",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -22829,6 +22881,7 @@
   "id": "return_to_the_pallid_mask",
   "scenario_name": "Return to The Pallid Mask",
   "full_name": "Scenario VI: Return to The Pallid Mask",
+  "header": "Сценарий VI",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -22868,7 +22921,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Соберите мешок хаоса из следующих жетонов: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -22965,7 +23018,7 @@
     },
     {
       "id": "found_nigels_home",
-      "text": "<i>You found Nigel's home.</i>",
+      "text": "<i>Вы нашли дом Найджела.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -22977,7 +23030,7 @@
     },
     {
       "id": "no_haruko",
-      "text": "<i>Ishimaru Haruko is not listed under VIPs Interviewed or VIPs Slain.</i>"
+      "text": "<i>Харуко Исимару не записана ни в графе «Опрошенные гости», ни в графе «Убитые гости».</i>"
     },
     {
       "id": "check_intro_condition",
@@ -23549,7 +23602,7 @@
     },
     {
       "id": "add_two_conviction",
-      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "В ходе сценария вы получили указание отметить в журнале кампании 2 <b>Уверенности</b>.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23579,7 +23632,7 @@
     },
     {
       "id": "add_two_doubt",
-      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "В ходе сценария вы получили указание отметить в журнале кампании 2 <b>Сомнения</b>.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23609,7 +23662,7 @@
           {
             "type": "campaign_data",
             "campaign_data": "version",
-            "min_version": 1,
+            "min_version": 2,
             "options": [
               {
                 "boolCondition": true
@@ -23631,13 +23684,13 @@
     {
       "id": "ask_conviction_or_doubt_resolution",
       "type": "input",
-      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "text": "Получали ли вы в ходе сценария указания записать что-либо в журнале кампании?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "doubt",
-            "text": "Mark 2 <b>Doubt</b>.",
+            "text": "Отметьте 2 <b>Сомнения</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23649,7 +23702,7 @@
           },
           {
             "id": "conviction",
-            "text": "Mark 2 <b>Conviction</b>.",
+            "text": "Отметьте 2 <b>Уверенности</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23661,7 +23714,7 @@
           },
           {
             "id": "neither",
-            "text": "Scenario ended before Act 2b was resolved."
+            "text": "Сценарий завершился до розыгрыша Сцены 2b."
           }
         ]
       }
@@ -23762,6 +23815,7 @@
   "id": "return_to_the_unspeakable_oath",
   "scenario_name": "Return to The Unspeakable Oath",
   "full_name": "Scenario IV: Return to The Unspeakable Oath",
+  "header": "Сценарий IV",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -23806,7 +23860,7 @@
   "steps": [
     {
       "id": "setup_standalone_bag",
-      "text": "Assemble the chaos bag using the following tokens: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
+      "text": "Соберите мешок хаоса из следующих жетонов: +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
       "effects": [
         {
           "type": "campaign_data",
@@ -25006,6 +25060,7 @@
   "id": "tfa_epilogue",
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
+  "header": "",
   "type": "epilogue",
   "icon": "temporal_flux",
   "setup": [
@@ -25073,6 +25128,7 @@
   "id": "tfa_interlude2",
   "scenario_name": "Финал экспедиции",
   "full_name": "Интерлюдия II: Финал экспедиции",
+  "header": "Интерлюдия II",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -25292,6 +25348,7 @@
   "id": "tfa_interlude3",
   "scenario_name": "Зов джунглей",
   "full_name": "Интерлюдия III: Зов джунглей",
+  "header": "Интерлюдия III",
   "type": "interlude",
   "icon": "rainforest",
   "setup": [
@@ -25782,6 +25839,7 @@
   "id": "tfa_prologue",
   "scenario_name": "Пролог",
   "full_name": "Пролог",
+  "header": "",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -25902,6 +25960,7 @@
   "id": "tfa_interlude1",
   "scenario_name": "Бессонные ночи",
   "full_name": "Интерлюдия I: Бессонные ночи",
+  "header": "Интерлюдия I",
   "type": "interlude",
   "icon": "deadly_traps",
   "setup": [
@@ -26051,6 +26110,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "name": "(has binoculars)",
         "investigator": "choice",
         "prompt": "Дозорный",
         "positiveChoice": {
@@ -26192,6 +26252,7 @@
   "id": "return_to_heart_of_the_elders_part_1",
   "scenario_name": "Return to Heart of the Elders, Part 1",
   "full_name": "Scenario V–A: Return to Heart of the Elders, Part 1",
+  "header": "Сценарий V-A",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -26858,6 +26919,7 @@
   "id": "return_to_heart_of_the_elders_part_2",
   "scenario_name": "Return to Heart of the Elders, Part 2",
   "full_name": "Scenario V–B: Return to Heart of the Elders, Part 2",
+  "header": "Сценарий V-Б",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -27238,6 +27300,7 @@
   "id": "return_to_shattered_aeons",
   "scenario_name": "Return to Shattered Aeons",
   "full_name": "Scenario VIII: Return to Shattered Aeons",
+  "header": "Сценарий VIII",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -27779,6 +27842,7 @@
   "id": "return_to_the_boundary_beyond",
   "scenario_name": "Return to The Boundary Beyond",
   "full_name": "Scenario IV: Return to The Boundary Beyond",
+  "header": "Сценарий IV",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -27996,7 +28060,7 @@
         "id": "the_forgotten_age.the_boundary_beyond.alejandro_section",
         "name": "Alejandro Section"
       },
-      "text": "Сверьтесь с журналом. Если <i>сыщики спасли Алехандро</i>, ве­дущий сыщик читает <b>«Размышления Алехандро».</b>",
+      "text": "Сверьтесь с журналом. Если <i>сыщики спасли Алехандро</i>, ведущий сыщик читает <b>«Размышления Алехандро».</b>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -28072,7 +28136,7 @@
       },
       "title": "Незанятое кресло",
       "type": "story",
-      "text": "Немного не доехав до границы, вы останав­ливаетесь на ночь. Ваш взгляд падает на незанятое место на заднем сиденье, и вы задумываетесь, где сейчас Алехандро."
+      "text": "Немного не доехав до границы, вы останавливаетесь на ночь. Ваш взгляд падает на незанятое место на заднем сиденье, и вы задумываетесь, где сейчас Алехандро."
     },
     {
       "id": "use_gasoline",
@@ -28117,7 +28181,7 @@
       },
       "title": "Бензин на исходе",
       "type": "story",
-      "text": "Горючее — ваша постоянная головная боль по пути на юг. Несколько раз вы заправляетесь в придорожных магазинчиках, но недалеко от границы автомобиль замирает на обочине. Вы с Ичтакой вынуждены идти несколько миль до бли­жайшего городка, чтобы заправиться, и теряете несколько часов."
+      "text": "Горючее — ваша постоянная головная боль по пути на юг. Несколько раз вы заправляетесь в придорожных магазинчиках, но недалеко от границы автомобиль замирает на обочине. Вы с Ичтакой вынуждены идти несколько миль до ближайшего городка, чтобы заправиться, и теряете несколько часов."
     },
     {
       "id": "no_mulligan",
@@ -28570,7 +28634,7 @@
         "name": "Resolution 1"
       },
       "title": "Исход 1",
-      "text": "Вас охватывает вихрь радужных огней, и вы резко приходите в себя. Когда вы открываете глаза, вы лежите на главной площади города. Голова кружится, словно от стремительного падения. Голосок на задворках разума твердит, что всё это было плодом вашего воображения, сновидением. Это инстинкт самосохранения пытается не дать вам пойти дальше по тропе безумия. Не обращая на него внимания, вы встаёте. Ваши ноги дрожат от ужаса и изнеможения.\n«Та женщина... Видимо, она поняла, кто я, и прошла за нами через разрыв, который я сделала. Наверняка она тоже хотела узнать, где находится Средоточие, — загадочно произносит Ичтака. При попытке вспомнить события предыдущих часов вашу голову пронзает страшная боль. — Вы ведь видели её? Пещеру. Обагрённую пасть в небесах. — Она задумчиво осматривает небо. — Должно быть, это и есть путь к Средоточию».\nВам трудно припомнить, что случилось на той стороне, но видение багровой пещеры вспыхивает в вашей памяти. Вы подтверждаете, что тоже видели её, и спрашиваете Ичтаку, почему она считает, будто это путь к Средоточию. Она смотрит на вас красными глазами, и по её губам пробегает тень улыбки. «Это не так-то просто... Заглянуть за предел, увидеть сами нити времени. Похоже, вы способнее, чем кажетесь», — говорит она. Хотя Ичтака так и не ответила на вопрос, вы догадываетесь о том, что не было сказано вслух: путь: который вы видели в сумбуре временных линий и необъяснимых явлений, — это «одно из будущих». Будущее, которое вы должны сделать реальностью.",
+      "text": "Вас охватывает вихрь радужных огней, и вы резко приходите в себя. Когда вы открываете глаза, вы лежите на главной площади города. Голова кружится, словно от стремительного падения. Голосок на задворках разума твердит, что всё это было плодом вашего воображения, сновидением. Это инстинкт самосохранения пытается не дать вам пойти дальше по тропе безумия. Не обращая на него внимания, вы встаёте. Ваши ноги дрожат от ужаса и изнеможения.\n«Та женщина... Видимо, она поняла, кто я, и прошла за нами через разрыв, который я сделала. Наверняка она тоже хотела узнать, где находится Средоточие, — загадочно произносит Ичтака. При попытке вспомнить события предыдущих часов вашу голову пронзает страшная боль. — Вы ведь видели её? Пещеру. Обагрённую пасть в небесах. — Она задумчиво осматривает небо. — Должно быть, это и есть путь к Средоточию».\nВам трудно припомнить, что случилось на той стороне, но видение багровой пещеры вспыхивает в вашей памяти. Вы подтверждаете, что тоже видели её, и спрашиваете Ичтаку, почему она считает, будто это путь к Средоточию. Она смотрит на вас красными глазами, и по её губам пробегает тень улыбки. «Это не так-то просто... Заглянуть за предел, увидеть сами нити времени. Похоже, вы способнее, чем кажетесь», — говорит она. Хотя Ичтака так и не ответила на вопрос, вы догадываетесь о том, что не было сказано вслух: путь, который вы видели в сумбуре временных линий и необъяснимых явлений, — это «одно из будущих». Будущее, которое вы должны сделать реальностью.",
       "steps": [
         "record_x_paths_known",
         "check_if_ichtaca_has_confidence",
@@ -28587,7 +28651,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "Охватывающий горизонт барьер мерцает, когда проход домой закрывается на ваших глазах. Туман в голове и чувство невесомости, которые вы ощущали во время видения, пропадают, и вы внезапно понимаете, что это не сон. Вы в пле­ну чужого времени, а Ичтака куда-то пропала.\nВы блуждаете часами. Днями. Неделями. Ваш рассудок уже не выдерживает. Вы с ужасом осознаёте, что можете остаться тут навсегда. Отчаяние и уныние овладевают вашим разумом. Вам некуда бежать от одиночества и безумия. Вы не помните, сколько времени провели здесь. Вы не спали и не ели.\nВ ожидании проходит целая вечность, когда внезапно барьер тре­скается и небо заливает ослепительный свет. Когда вы откры­ваете глаза, вы лежите на главной площади города. Голова кружится, словно от стремительного падения. Ичтака помогает вам подняться. Ваши ноги дрожат от ужаса и изнеможения. Вы спрашиваете, как долго вас не было, но она качает головой: «Не имеет значения. Вы вернулись». Её уклончивость не задевает вас, но вы всё равно возмущены. Почему она не осталась с вами? Случайно — или намеренно? «Вы ведь видели её? — спрашивает Ичтака. — Пещеру. Обагрённую пасть в небесах. — Ваша память затуманивается и вы непонимающе смотрите в ответ. - Неважно. Я знаю, как найти Средоточие, и вы пойдёте туда со мной».",
+      "text": "Охватывающий горизонт барьер мерцает, когда проход домой закрывается на ваших глазах. Туман в голове и чувство невесомости, которые вы ощущали во время видения, пропадают, и вы внезапно понимаете, что это не сон. Вы в пле­ну чужого времени, а Ичтака куда-то пропала.\nВы блуждаете часами. Днями. Неделями. Ваш рассудок уже не выдерживает. Вы с ужасом осознаёте, что можете остаться тут навсегда. Отчаяние и уныние овладевают вашим разумом. Вам некуда бежать от одиночества и безумия. Вы не помните, сколько времени провели здесь. Вы не спали и не ели.\nВ ожидании проходит целая вечность, когда внезапно барьер трескается и небо заливает ослепительный свет. Когда вы открываете глаза, вы лежите на главной площади города. Голова кружится, словно от стремительного падения. Ичтака помогает вам подняться. Ваши ноги дрожат от ужаса и изнеможения. Вы спрашиваете, как долго вас не было, но она качает головой: «Не имеет значения. Вы вернулись». Её уклончивость не задевает вас, но вы всё равно возмущены. Почему она не осталась с вами? Случайно — или намеренно? «Вы ведь видели её? — спрашивает Ичтака. — Пещеру. Обагрённую пасть в небесах. — Ваша память затуманивается и вы непонимающе смотрите в ответ. - Неважно. Я знаю, как найти Средоточие, и вы пойдёте туда со мной».",
       "steps": [
         "check_act_2",
         "record_x_paths_known",
@@ -28603,6 +28667,7 @@
   "id": "return_to_the_city_of_archives",
   "scenario_name": "Return to The City of Archives",
   "full_name": "Scenario VI: Return to The City of Archives",
+  "header": "Сценарий VI",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -29080,6 +29145,7 @@
   "id": "return_to_the_depths_of_yoth",
   "scenario_name": "Return to The Depths of Yoth",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
+  "header": "Сценарий VII",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -29116,7 +29182,6 @@
     "create_exploration_deck",
     "setup_depth",
     "set_aside_relic",
-    "set_aside_harbinger",
     "set_aside_poison",
     "encounter_deck",
     "depth_level_rule",
@@ -29252,7 +29317,7 @@
           },
           {
             "id": "17",
-            "text": "17",
+            "text": "7",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -30434,6 +30499,7 @@
   "id": "return_to_the_doom_of_eztli",
   "scenario_name": "Return to The Doom of Eztli",
   "full_name": "Scenario II: Return to The Doom of Eztli",
+  "header": "Сценарий II",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -31083,6 +31149,7 @@
   "id": "return_to_the_untamed_wilds",
   "scenario_name": "Return to The Untamed Wilds",
   "full_name": "Scenario I: Return to The Untamed Wilds",
+  "header": "Сценарий I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -31532,6 +31599,7 @@
   "id": "return_to_threads_of_fate",
   "scenario_name": "Return to Threads of Fate",
   "full_name": "Scenario III: Return to Threads of Fate",
+  "header": "Сценарий III",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -33150,6 +33218,7 @@
   "id": "return_to_turn_back_time",
   "scenario_name": "Return to Turn Back Time",
   "full_name": "Scenario IX: Return to Turn Back Time",
+  "header": "Сценарий IX",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -33681,6 +33750,7 @@
   "id": "tfa_interlude5",
   "scenario_name": "Во тьме",
   "full_name": "Интерлюдия V: Во тьме",
+  "header": "Интерлюдия V",
   "type": "interlude",
   "icon": "torch",
   "setup": [
@@ -34242,6 +34312,7 @@
   "id": "tfa_interlude4",
   "scenario_name": "На свободе",
   "full_name": "Интерлюдия IV: На свободе",
+  "header": "Интерлюдия IV",
   "type": "interlude",
   "icon": "cult_of_pnakotus",
   "setup": [
@@ -34916,6 +34987,7 @@
   "id": "all_or_nothing",
   "scenario_name": "All or Nothing",
   "full_name": "All or Nothing",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -35504,6 +35576,7 @@
   "id": "bad_blood",
   "scenario_name": "Bad Blood",
   "full_name": "Bad Blood",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -36066,6 +36139,7 @@
   "id": "blob_that_ate_everything",
   "scenario_name": "The Blob That Ate Everything",
   "full_name": "The Blob That Ate Everything",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -37481,6 +37555,7 @@
   "id": "carnevale_of_horrors",
   "scenario_name": "Карнавал ужасов",
   "full_name": "Карнавал ужасов",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -37909,6 +37984,7 @@
   "id": "curse_of_the_rougarou",
   "scenario_name": "Проклятие ругару",
   "full_name": "Проклятие ругару",
+  "header": "",
   "xp_cost": 1,
   "standalone_setup": [
     "choose_difficulty",
@@ -38190,6 +38266,7 @@
   "id": "in_the_labyrinths_of_lunacy",
   "scenario_name": "The Labyrinths of Lunacy",
   "full_name": "The Labyrinths of Lunacy",
+  "header": "",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -39030,6 +39107,7 @@
   "id": "meddling_of_meowlathotep",
   "scenario_name": "The Meddling of Meowlathotep",
   "full_name": "The Meddling of Meowlathotep",
+  "header": "",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -39567,6 +39645,7 @@
   "id": "murder_at_the_excelsior_hotel",
   "scenario_name": "Murder at the Excelsior Hotel",
   "full_name": "Murder at the Excelsior Hotel",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -41325,6 +41404,7 @@
   "id": "read_or_die",
   "scenario_name": "Прочти или умри",
   "full_name": "Прочти или умри",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -41890,6 +41970,7 @@
   "id": "the_eternal_slumber",
   "scenario_name": "Беспробудный сон",
   "full_name": "Беспробудный сон",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42381,6 +42462,7 @@
   "id": "the_nights_usurper",
   "scenario_name": "Узурпатор ночи",
   "full_name": "Узурпатор ночи",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42866,6 +42948,7 @@
   "id": "war_of_the_outer_gods",
   "scenario_name": "War of the Outer Gods",
   "full_name": "War of the Outer Gods",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -43892,6 +43975,7 @@
   "id": "at_deaths_doorstep",
   "scenario_name": "На пороге смерти",
   "full_name": "Сценарий II: На пороге смерти",
+  "header": "Сценарий II",
   "setup": [
     "intro_article",
     "intro",
@@ -44613,6 +44697,7 @@
   "id": "before_the_black_throne",
   "scenario_name": "Перед Чёрным престолом",
   "full_name": "Scenario VIII: Before the Black Throne",
+  "header": "Сценарий VIII",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -45123,8 +45208,9 @@
 },
 {
   "id": "disappearance_at_the_twilight_estate",
-  "scenario_name": "Пролог: Исчезновение в поместье Сумерек",
+  "scenario_name": "Исчезновение в поместье Сумерек",
   "full_name": "Пролог: Исчезновение в поместье Сумерек",
+  "header": "Пролог",
   "type": "interlude",
   "setup": [
     "pre_intro",
@@ -45599,6 +45685,7 @@
   "id": "tcu_epilogue",
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
+  "header": "",
   "type": "epilogue",
   "icon": "realm_of_death",
   "setup": [
@@ -45762,7 +45849,8 @@
 {
   "id": "for_the_greater_good",
   "scenario_name": "Во имя высшего блага",
-  "full_name": "Scenario V: For the Greater Good",
+  "full_name": "Сценарий V: Ради высшего блага",
+  "header": "Сценарий V",
   "setup": [
     "intro_1",
     "check_members_of_the_lodge",
@@ -45783,7 +45871,7 @@
         "name": "Intro 1"
       },
       "type": "story",
-      "text": "Ever since your brush with death at Hangman’s Hill, the situation in Arkham has only worsened. In the days since, there have been more reports of “ghost sightings” and even several more disappearances. A thin layer of grey mist lingers over the streets at all hours, day and night. As soon as the sun begins to set each evening, doors are shut and locked. Without truly realizing why, very few people dare venture out at night. Some businesses have even closed their doors to customers during the day, citing “poor weather.” Things are getting out of hand."
+      "text": "С тех пор как вы столкнулись со смертью на Висельном холме, обстановка в Аркхэме только ухудшилась. Рассказов о встречах с призраками всё больше, а люди продолжают исчезать. Днём и ночью над улицами висит тонкий слой серой мглы. С наступлением сумерек двери во всём городе крепко запираются. Немногим хватает духу выйти из дома ночью, хотя жители и не понимают, чего именно боятся. А некоторые заведения остаются закрытыми даже днём, по причине «плохой погоды». Со всем этим срочно надо что-то делать."
     },
     {
       "id": "check_members_of_the_lodge",
@@ -45879,7 +45967,7 @@
         "name": "Intro 2"
       },
       "type": "story",
-      "text": "The creature that appeared at the Lodge’s charity gala is clearly not bound to Josef Meiger’s manor, which means the horrors you’ve experienced could be just the start of something much worse. It is time to report your findings to the Silver Twilight Lodge. Perhaps they can help interpret the knowledge you’ve gathered, and inform you as to what your next step should be. With their help, you may be able to save Arkham…"
+      "text": "Существо, которое появилось на благотворительном вечере Ложи, очевидно, не привязано к поместью Джозефа Майгера, а значит, самое скверное наверняка ещё впереди. Пора рассказать о том, что вы узнали, Ложе Серебряных Сумерек. Скорее всего, там вам помогут разобраться в собранной информации и подскажут, куда двигаться дальше. Возможно, с их помощью у вас получится спасти Аркхэм…"
     },
     {
       "id": "check_deceiving",
@@ -45905,7 +45993,7 @@
         "name": "Deceiving the Lodge"
       },
       "type": "story",
-      "text": "…though you suspect the Lodge has other interests. The Lodge clearly knows more about what is happening than they care to admit. There is a sinister purpose that lurks beneath the surface of the Lodge, and you intend to discover what that purpose is."
+      "text": "…Хотя вы подозреваете, что Ложа ведёт свою игру. Очевидно, что они знают о происходящем больше, чем говорят. Где-то в недрах Ложи зреет зловещий замысел, и вы намерены раскрыть его."
     },
     {
       "id": "intro_3",
@@ -45914,7 +46002,7 @@
         "name": "Intro 3"
       },
       "type": "story",
-      "text": "The creature that appeared at the Lodge’s charity gala is clearly not bound to Josef Meiger’s manor, which means the horrors you’ve experienced could be just the start of something much worse. You’re not sure why just yet, but you know the Silver Twilight Lodge is connected to the creature in some way. Perhaps it’s time to pay the Lodge a visit—with or without their permission."
+      "text": "Существо, которое появилось на благотворительном вечере Ложи, очевидно, не привязано к поместью Джозефа Майгера, а значит, самое скверное наверняка ещё впереди. Вы знаете, что Ложа Серебряных Сумерек имеет какое-то отношение к этому существу, но пока не уверены, какое именно. Пожалуй, пора нанести им визит — хотят они этого или нет."
     },
     {
       "id": "intro_4",
@@ -45923,7 +46011,7 @@
         "name": "Intro 4"
       },
       "type": "story",
-      "text": "You can’t help but wonder if you missed something important in the home of Josef Meiger. The four disappearances that occurred at the Lodge’s charity gala could not have been a coincidence. If those victims encountered a creature like the one you saw at the graveyard, the horrors you’ve experienced could be just the start of something much worse. You’re not sure why just yet, but you are sure that the Silver Twilight Lodge is connected to these events in some way. Perhaps it’s time to pay the Lodge a visit—with or without their permission."
+      "text": "Вас не покидает чувство, будто вы упустили нечто важное в доме Джозефа Майгера. Четыре исчезновения на благотворительном вечере не могли быть простым совпадением. Если жертвы столкнулись с тем же существом, что вы видели на кладбище, значит, самое скверное наверняка ещё впереди. Вы убеждены, что Ложа Серебряных Сумерек имеет какое-то отношение к происходящему, но пока не уверены, какое именно. Пожалуй, пора нанести им визит — хотят они этого или нет."
     },
     {
       "id": "intro_5",
@@ -45932,7 +46020,7 @@
         "name": "Intro 5"
       },
       "type": "story",
-      "text": "Too many disappearances have occurred at Josef Meiger’s estate for it to be a coincidence: first, the four victims at the charity gala, then the ones who attended the benefit dinner one week later. If they encountered a creature like the one you saw at the graveyard, the horrors you’ve experienced could be just the start of something much worse. You’re not sure why just yet, but you are sure that the Silver Twilight Lodge is connected to these events in some way. Perhaps it’s time to pay the Lodge a visit—with or without their permission."
+      "text": "Слишком много людей исчезли в особняке Джозефа Майгера, чтобы это можно было счесть совпадением: сначала четверо на благотворительном вечере, затем гости на званом ужине неделю спустя. Если они столкнулись с тем же существом, что вы видели на кладбище, значит, самое скверное наверняка ещё впереди. Вы убеждены, что Ложа Серебряных Сумерек имеет какое-то отношение к происходящему, но пока не уверены, какое именно. Пожалуй, пора нанести им визит — хотят они этого или нет."
     },
     {
       "id": "gather_encounter_sets",
@@ -45979,36 +46067,36 @@
     {
       "id": "lodge_setup_1",
       "bullet_type": "small",
-      "text": "When constructing the act deck, use Act 1a—“Warm Welcome” and remove Act 1a—“Infiltrating the Lodge” from the game."
+      "text": "При подготовке колоды сцен включите в неё карту «Сцена 1а. Тёплый приём» и удалите из игры карту «Cцена 1а. Проникнуть в Ложу»."
     },
     {
       "id": "lodge_setup_2",
       "bullet_type": "small",
-      "text": "Put the versions of Lodge Gates, Lobby, and Lodge Cellar with the <i>(We’ve Been Expecting You)</i> subtitle into play. Remove the other versions of those locations from the game."
+      "text": "Введите в игру те варианты локаций «Ворота Ложи», «Приёмная» и «Подвал Ложи», у которых есть подзаголовок «Добро пожаловать». Удалите из игры остальные варианты этих локаций."
     },
     {
       "id": "lodge_setup_3",
       "bullet_type": "small",
-      "text": "Search the gathered encounter sets for the following cards, and remove them from the game: 3 copies of Acolyte, 1 copy of Wizard of the Order, 2 copies of Knight of the Inner Circle, and 1 copy of Cell Keeper."
+      "text": "Найдите среди собранных карт контактов следующие карты и удалите их из игры: 3 экземпляра «Аколита», 1 экземпляр «Орденского волшебника», 2 экземпляра «Рыцаря Внутреннего круга», 1 экземпляр «Смотрителя подземелий»."
     },
     {
       "id": "not_lodge_setup_1",
       "bullet_type": "small",
-      "text": "When constructing the act deck, use Act 1a—“Infiltrating the Lodge” and remove Act 1a—“Warm Welcome” from the game."
+      "text": "При подготовке колоды сцен включите в неё карту «Сцена 1а. Проникнуть в Ложу» и удалите из игры карту «Cцена 1а. Тёплый приём»."
     },
     {
       "id": "not_lodge_setup_2",
       "bullet_type": "small",
-      "text": "Put the versions of Lodge Gates, Lobby, and Lodge Cellar with the (Members Only) subtitle into play. Remove the other versions of those locations from the game."
+      "text": "Введите в игру те варианты локаций «Ворота Ложи», «Приёмная» и «Подвал Ложи», у которых есть подзаголовок «Только для своих». Удалите из игры остальные варианты этих локаций."
     },
     {
       "id": "not_lodge_setup_3",
       "bullet_type": "small",
-      "text": "Search the gathered encounter sets for the following cards, and remove them from the game: 3 copies of Lodge Neophyte, 1 copy of Keeper of Secrets, 2 copies of Knight of the Outer Void, and 1 copy of Lodge Jailor."
+      "text": "Найдите среди собранных карт контактов следующие карты и удалите их из игры: 3 экземпляра «Неофита Ложи», 1 экземпляр «Хранителя тайн», 2 экземпляра «Рыцаря Внешней пустоты», 1 экземпляр «Тюремщика Ложи»."
     },
     {
       "id": "setup_locations",
-      "text": "Put the Lodge Catacombs and the Lounge into play. Each investigator begins play at the Lodge Gates. Set each other remaining location aside, out of play (Library, Vault, Inner Sanctum, and the 2 Sanctum Doorway locations)."
+      "text": "Введите в игру локации «Катакомбы Ложи» и «Комната для отдыха». Все сыщики начинают игру в локации «Ворота Ложи». Отложите в сторону все остальные локации («Библиотека», «Хранилище», «Святая святых» и 2 экземпляра «Двери в святилище»)."
     },
     {
       "id": "location_layout_lodge",
@@ -46060,11 +46148,11 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: the Puzzle Box asset, the Summoned Beast enemy, the August Lindquist asset, and the double‑sided Nathan Wick enemy."
+      "text": "Отложите в сторону следующие карты: актив «Шкатулка с секретом», врага «Призванный зверь», актив «Август Линдквист» и двустороннего врага «Нейтан Уик»."
     },
     {
       "id": "set_aside_keys",
-      "text": "Set 1 [skull] token, 1 [cultist] token, 1 [tablet] token, and 1 [elder_thing] token aside, out of play. These tokens should be taken from your collection, not from your chaos bag. These tokens are keys. <i>(See “Keys” section below)</i>"
+      "text": "Отложите в сторону, вне игры, 1 жетон [skull], 1 жетон [cultist], 1 жетон [tablet] и 1 жетон [elder_thing]. Возьмите их из комплекта игры, а не из мешка хаоса. Эти жетоны — ключи <i>(см. «Ключи» ниже)</i>."
     },
     {
       "id": "encounter_deck",
@@ -46073,20 +46161,20 @@
     {
       "id": "keys",
       "type": "rule_reminder",
-      "title": "Keys",
-      "text": "The setup of this scenario instructs the players to set aside 1 [skull] token, 1 [cultist] token, 1 [tablet] token, and 1 [elder_thing] token, as keys. These keys are never placed in the chaos bag and do not act as traditional chaos tokens. Instead, they represent keys which investigators can recover and use throughout the scenario.\nKeys can enter play via several different card effects, and are usually placed on an enemy, location, or story asset. Keys can be acquired in one of three ways:",
+      "title": "Ключи",
+      "text": "При подготовке к этому сценарию игрокам следует отложить в сторону 1 жетон [skull], 1 жетон [cultist], 1 жетон [tablet] и 1 жетон [elder_thing] в качестве ключей. Эти жетоны не кладутся в мешок хаоса и с точки зрения игровых эффектов не являются жетонами хаоса. Вместо этого они представляют собой ключи, которые сыщики могут найти и использовать в ходе сценария.\nКлючи вводятся в игру различными эффектами карт и обычно выкладываются на локации, врагов или сюжетные активы. Ключи можно получить несколькими способами:",
       "bullets": [
         {
-          "text": "If a location with a key on it has no clues, an investigator can take control of its key as a [fast] ability."
+          "text": "Если в локации с ключом нет улик, сыщик может взять под контроль данный ключ — это бесплатное активируемое свойство ([fast])."
         },
         {
-          "text": "If an enemy with a key on it leaves play, the investigator who caused that enemy to leave play must take control of its key. (If the enemy leaves play through some other means, place its key on its location.)"
+          "text": "Если враг с ключом выходит из игры, то сыщик, ставший причиной этого, должен взять под контроль данный ключ. (Если враг выходит из игры по иным причинам, поместите его ключ в его локацию.)"
         },
         {
-          "text": "Some card effects may allow investigators to take control of keys in other ways."
+          "text": "Некоторые эффекты карт позволяют сыщикам взять под контроль ключи иным образом."
         }
       ],
-      "example": "When an investigator takes control of a key, they place that key on their investigator card. If an investigator who controls 1 or more keys is eliminated, place each of those keys on their location. As an [action] ability, an investigator may give any number of their keys to another investigator at the same location."
+      "example": "Когда сыщик берёт под контроль ключ, он кладёт его на свою карту сыщика. Если сыщик, под чьим контролем находится хотя бы 1 ключ, выбывает из сценария, положите все его ключи в его локацию. Сыщик может передать сколько угодно своих ключей другому сыщику в своей локации — это свойство, активируемое действием ([action])."
     },
     {
       "id": "guardian_of_the_trap_emerged",
@@ -46095,19 +46183,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "guardian_of_the_trap_emerged",
-          "text": "the guardian of the trap emerged."
+          "text": "хранитель ловушки явился."
         }
       ]
     },
     {
       "id": "discovered_how_to_open_the_puzzle_box",
-      "text": "In your Campaign Log, record <i>the investigators discovered how to open the puzzle box</i>. Any one investigator may choose to add the Puzzle Box story asset to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Запишите в журнал кампании, что <i>сыщики узнали, как открыть шкатулку</i>. Любой сыщик может добавить сюжетный актив «Шкатулка с секретом» в свою колоду. Эта карта не идёт в счёт размера колоды.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "discovered_how_to_open_the_puzzle_box",
-          "text": "the investigators discovered how to open the puzzle box.."
+          "text": "сыщики узнали, как открыть шкатулку."
         },
         {
           "type": "add_card",
@@ -46118,7 +46206,7 @@
     },
     {
       "id": "skip_inner_circle",
-      "text": "Skip <b>Interlude III: The Inner Circle</b>.",
+      "text": "Перейдите к <b>интерлюдии III «Внутренний круг»</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -46134,7 +46222,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "guardian_of_the_trap_defeated",
-          "text": "the guardian of the trap emerged and was defeated."
+          "text": "хранитель ловушки явился и был побеждён."
         }
       ]
     },
@@ -46168,7 +46256,7 @@
         "physical",
         "mental"
       ],
-      "text": "You manage to escape the building and flee on foot. As you run, you can hear a thunderous rumble coming from the manor. Several others burst through the front door behind you, too preoccupied to notice you. One yells to her companions: “Get out and gather at the Unvisited Isle! We have to perform the binding rite with or without the device!”\n“What about the guardian?” A man at the gates asks.\n“It’s no use,” she replies. “Just go!”\nThat is when the screaming begins. A spray of blood splatters against the basement window. Those who escaped immediately panic and flee.\nYou don’t stop or look back. You run until the building has faded behind the dense, grey mist, until you can no longer hear the screams of those still inside, until your legs can barely move.\nIs this the kind of “sacrifice” the Silver Twilight Lodge believes in making? And if so, what does this mean for the “binding rite” they seek to complete at the Unvisited Isle?",
+      "text": "Каким-то чудом выбравшись из здания, вы бежите прочь со всех ног. Внутри особняка за вашей спиной раздаётся раскатистый грохот. Ещё несколько человек выбегают через парадный вход, не замечая вас в суматохе. Одна из них кричит остальным: «Бегите и собирайтесь на Безлюдном острове! Мы должны провести связующий ритуал — с этой штукой или без неё!»\n«А как же хранитель?» — спрашивает мужчина у ворот.\n«Уже неважно, — отвечает она. — Уходите!»\nВ этот момент начинаются крики. Брызги крови обагряют подвальное окно. Люди на улице в панике бросаются врассыпную.\nВы не останавливаетесь и не оборачиваетесь. Вы бежите, пока дом не скрывается в плотной серой мгле, пока вы не перестаёте слышать вопли оставшихся внутри, пока ваши ноги не подкашиваются.\nТак вот какие жертвы Ложа Серебряных Сумерек считает необходимыми? И если так, то чем обернётся «связующий ритуал», который они собрались совершить на Безлюдном острове?",
       "steps": [
         "guardian_of_the_trap_emerged",
         "earn_xp",
@@ -46183,7 +46271,7 @@
         "name": "Resolution 1"
       },
       "title": "Исход 1",
-      "text": "Every fiber of your being is stretched as the box pulls you in. However, before it can accomplish its task, the lid is suddenly slammed shut by an elderly hand. You reel backward and collapse as the pulling force ceases. When your senses finally return to you, Carl Sanford is standing over you, unflappable as ever. “I see you managed to open the device without defeating its guardian. How fortunate,” he declares. He examines the box closely, removing the key and the coin from the container and recognizing them instantly. “I had a feeling you would be a valuable asset to the Lodge, but it seems I underestimated your resourcefulness. Perhaps it is time that you learn the truth behind our organization. I have a feeling you are destined for great things.” Unexpectedly, Mr. Sanford hands the puzzle box back to you, along with the components that unlocked it. “Come with me. There is much to discuss.”",
+      "text": "Шкатулка пытается затащить вас внутрь, растягивая каждую фибру вашего существа. Но прежде чем ей это удаётся, морщинистая рука захлопывает крышку. Тянущая сила исчезает, вы отшатываетесь и падаете наземь. Придя в себя, вы видите стоящего над вами Карла Сэнфорда, невозмутимого как всегда. «Вижу, вам удалось открыть шкатулку, не убивая хранителя. Как удачно, — произносит он. Сэнфорд пристально изучает шкатулку, вынимает из неё ключ и монету и смотрит на них с узнаванием. — Я чувствовал, что вы будете полезны для Ложи, но, видимо, недооценил вашу смекалку. Полагаю, пришло время посвятить вас в истинные цели нашей организации. Мне кажется, вам суждено вершить великие дела». Неожиданно мистер Сэнфорд протягивает вам шкатулку и открывшие её предметы. «Идёмте. Нужно многое обсудить».",
       "steps": [
         "discovered_how_to_open_the_puzzle_box",
         "earn_xp"
@@ -46196,7 +46284,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "Every fiber of your being is stretched as the box pulls you in. However, before it can accomplish its task, you manage to reach out and slam the lid shut. You shudder uncontrollably as your senses slowly return to you. This box is more dangerous than you could have imagined. In the hands of the Lodge, it could have been a powerful weapon, though you’re not sure what they intended to do with it. Just then, you hear several Lodge members approaching. You quickly shift one of the room’s bookcases aside and hide behind it before they enter the room. “You’re sure you heard something in here? I don’t see anybody,” one of them says.\n“Hm…” the other pauses, presumably inspecting the room for signs of intruders. “Must have been nothing.”\n“It’s all right. We’re all a bit on edge since the trap box went missing. Come, we don’t want to be late for the ceremony. Tonight is an important night.” Their footfalls become softer as they depart. The man’s words linger in your thoughts momentarily. What did he mean by tonight being an important night? This could be just as important as the puzzle box they had been attempting to open. You quietly follow the two men as they head deep into the tunnels beneath the Lodge. You struggle to keep up with them while trying to keep your footsteps silent on the stone floor of the passageway. Finally, they enter a large door with the familiar three arrows of Silver Twilight emblazoned along its surface. Ritualistic chanting fills the hall from the other side. You approach softly, placing your ear against the door to listen in.\n“Brothers and sisters,” an elderly voice announces, “thank you for coming to this hallowed gathering. The time we have long waited for approaches.” You recognize the man’s voice – it is Carl Sanford, president of the Silver Twilight Lodge. “For many decades, the Order of the Silver Twilight has pursued knowledge that can elevate humanity. We have defended against threats to our very existence. We have sacrificed everything for this sacred cause. Now, one of these threats terrorizes our city, and once again we must do what has to be done in order to protect it.” The crowd responds with solemn approval. “Tonight, we will complete the ritual we began many nights ago at the center of the Unvisited Isle. Tonight, we will finally bind the revenant and learn what it knows. We must not allow the secrets of AZATHOTH to be lost to those who would do humanity harm.”\nThe cult replies with a monotone hymn, and you take this opportunity to flee the Lodge before you are discovered. The conspiracy you have unveiled leaves you with even more questions. If the revenant Mr. Sanford speaks of is what you think it is, binding it will surely protect Arkham, as he claims. But what knowledge do they seek to learn from it?…and what in the hell is an “AZATHOTH?”",
+      "text": "Шкатулка пытается затащить вас внутрь, растягивая каждую фибру вашего существа. Но прежде чем ей это удаётся, вы протягиваете руку и захлопываете крышку. Вас трясёт, пока вы медленно приходите в себя. Эта шкатулка куда опаснее, чем вы могли представить. В руках Ложи она могла бы стать мощным оружием, хотя вы и не знаете, что именно они собирались с ней делать. Вдруг вы слышите приближающиеся шаги нескольких членов Ложи. Быстро отодвинув один из книжных шкафов, вы прячетесь за ним, пока они не вошли. «Уверен, что ты слышал шум здесь? Я никого тут не вижу», — говорит один из них.\n«Хм… — задумывается другой, видимо пытаясь найти следы незваных гостей. — Наверное, показалось». \n«Ничего. Мы все не в себе из-за пропажи шкатулки-ловушки. Пойдём, нельзя опаздывать на церемонию. Сегодня знаменательная ночь». Их удаляющиеся шаги растворяются в тишине. Последняя фраза задерживается у вас в голове. Что он имел в виду, назвав эту ночь знаменательной? Это может быть так же важно, как и шкатулка, которую они пытались открыть. Вы осторожно следуете за мужчинами, которые спускаются глубже в туннели под особняком. Вы едва поспеваете за ними, пытаясь беззвучно ступать по каменному полу коридоров. Наконец они входят в большую дверь, отмеченную тремя стрелами — знакомым символом Серебряных Сумерек. С той стороны двери слышатся ритуальные песнопения. Вы на цыпочках подходите и прижимаете ухо к двери.\n«Братья и сестры! — произносит старческий голос. — Спасибо, что собрались здесь в этот великий момент. Близок час, которого мы так долго ждали». Вы узнаёте голос. Это Карл Сэнфорд, президент Ложи Серебряных Сумерек. «Многие десятилетия Орден Серебряных Сумерек искал знания, способные возвысить человечество. Мы защищались от угроз самому нашему существованию. Мы жертвовали всем во имя этой священной цели. Сегодня одна из таких угроз нависла над нашим городом, и снова мы обязаны сделать то, что должно, чтобы защитить его». Остальные отвечают благоговейным согласием. «Сегодня мы завершим ритуал, начатый много ночей назад в центре Безлюдного острова. Сегодня мы наконец скуём призрака и допросим его. Нельзя, чтобы тайны АЗАТОТА попали в руки тем, кто хочет навредить людскому роду».\nВ ответ сектанты затягивают монотонное песнопение, и вы пользуетесь моментом, чтобы сбежать из Ложи, пока вас не заметили. Заговор, о котором вы узнали, вызывает ещё больше вопросов. Если мистер Сэнфорд собирается сковать того призрака, о котором вы \nдумаете, это, несомненно, защитит Аркхэм, как он и утверждает. Но что за сведения они хотят от него получить?.. И что вообще такое этот АЗАТОТ?",
       "steps": [
         "discovered_how_to_open_the_puzzle_box",
         "earn_xp",
@@ -46211,7 +46299,7 @@
         "name": "Resolution 3"
       },
       "title": "Исход 3",
-      "text": "The beast that had emerged from the box was a vicious guardian, slaughtering anyone in its path. Somehow you were able to slay the creature, but the consequences were dire. Many Lodge members were gruesomely killed by the creature’s rampage before you were able to put it down. Worse, the device it emerged from was destroyed beyond recognition. You’re not sure whether it broke as a result of the beast’s emergence or as a result of its death, but either way, it is a regretful outcome. “This didn’t work as planned,” one of the robed members of the Order states matter-of-factly as you examine the crushed puzzle box.\n“That’s a hell of an understatement,” another adds. She places a hand on your shoulder and gently pulls you away from the remains of the device. “Come on, that’s a lost cause,” she says.\nHer partner ignores your presence and stoically addresses her. “We’ll have to get to the Unvisited Isle and complete the binding rite without the trap.” She nods and takes one last look at you before the remaining Lodge members flee the building. Is this the kind of “sacrifice” the Silver Twilight Lodge believes in making? And if so, what does this mean for the “binding rite” they seek to complete at the Unvisited Isle?",
+      "text": "Зверь, явившийся из шкатулки, оказался её свирепым хранителем, убивающим всё на своём пути. Вам каким-то чудом удалось его победить, но последствия битвы ужасны. Прежде чем вы остановили её, бешеная тварь растерзала многих членов Ложи. Что ещё хуже, шкатулка, из которой появился зверь, безнадёжно сломана. Неизвестно, случилось ли это из-за его появления или из-за его гибели, но исход в любом случае неутешительный. «Всё пошло не по плану», — сухо замечает один из облачённых в мантии членов Ордена, пока вы изучаете обломки шкатулки.\n«Это ещё мягко сказано, — добавляет другая. Она кладёт руку вам на плечо и аккуратно отстраняет вас от остатков устройства. — Бросьте, это безнадёжно».\nЕё спутник, словно не замечая вас, твёрдо обращается к ней: «Мы должны попасть на Безлюдный остров, чтобы завершить связующий ритуал без ловушки». Она кивает и бросает на вас последний взгляд, когда последние члены Ложи покидают здание. Так вот какие жертвы Ложа Серебряных Сумерек считает необходимыми? И если так, то чем обернётся «связующий ритуал», который они собрались совершить на Безлюдном острове?",
       "steps": [
         "guardian_of_the_trap_defeated",
         "earn_xp",
@@ -46225,6 +46313,7 @@
   "id": "in_the_clutches_of_chaos",
   "scenario_name": "В когтях Хаоса",
   "full_name": "Scenario VII: In the Clutches of Chaos",
+  "header": "Сценарий VII",
   "setup": [
     "intro_1",
     "check_never_seen_again",
@@ -46980,6 +47069,7 @@
   "type": "interlude",
   "scenario_name": "Внутренний круг",
   "full_name": "Interlude III: The Inner Circle",
+  "header": "Интерлюдия III",
   "icon": "trapped_spirits",
   "setup": [
     "ic_1",
@@ -47713,6 +47803,7 @@
   "type": "interlude",
   "scenario_name": "Цена прогресса",
   "full_name": "Интерлюдия II: Цена прогресса",
+  "header": "Интерлюдия II",
   "icon": "silver_twilight_lodge",
   "setup": [
     "check_silver_twilight_investigator",
@@ -48067,6 +48158,7 @@
   "id": "the_secret_name",
   "scenario_name": "Тайное имя",
   "full_name": "Сценарий III: Тайное имя",
+  "header": "Сценарий III",
   "setup": [
     "check_members_of_the_lodge",
     "gather_encounter_sets",
@@ -48691,6 +48783,7 @@
   "id": "the_wages_of_sin",
   "scenario_name": "Расплата за грехи",
   "full_name": "Сценарий IV: Расплата за грехи",
+  "header": "Сценарий IV",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -48984,6 +49077,7 @@
   "id": "the_witching_hour",
   "scenario_name": "Час ведьмовства",
   "full_name": "Сценарий I: Час ведьмовства",
+  "header": "Сценарий I",
   "setup": [
     "intro",
     "choose_fate",
@@ -49431,6 +49525,7 @@
   "type": "interlude",
   "scenario_name": "Причуда судьбы",
   "full_name": "Interlude IV: Twist of Fate",
+  "header": "Интерлюдия IV",
   "icon": "inexorable_fate",
   "setup": [
     "tof_1",
@@ -49811,6 +49906,7 @@
   "id": "union_and_disillusion",
   "scenario_name": "Единство и разочарование",
   "full_name": "Scenario VI: Union and Disillusion",
+  "header": "Сценарий VI",
   "setup": [
     "intro_1",
     "point_of_no_return",
@@ -51958,6 +52054,7 @@
   "id": "the_black_cat",
   "scenario_name": "The Black Cat",
   "full_name": "Interlude I: The Black Cat",
+  "header": "Интерлюдия I",
   "type": "interlude",
   "icon": "tde",
   "setup": [
@@ -52296,6 +52393,7 @@
   "id": "tde_epilogue",
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
+  "header": "",
   "type": "epilogue",
   "icon": "merging_realities",
   "setup": [
@@ -52939,6 +53037,7 @@
   "id": "the_great_ones",
   "scenario_name": "The Great Ones",
   "full_name": "Interlude III: The Great Ones",
+  "header": "Интерлюдия III",
   "type": "interlude",
   "icon": "dreamers_curse",
   "setup": [
@@ -53741,6 +53840,7 @@
   "id": "the_oneironauts",
   "scenario_name": "The Oneironauts",
   "full_name": "Interlude II: The Oneironauts",
+  "header": "Интерлюдия II",
   "type": "interlude",
   "icon": "whispers_of_hypnos",
   "setup": [
@@ -54439,6 +54539,7 @@
   "id": "beyond_the_gates_of_sleep",
   "scenario_name": "Beyond the Gates of Sleep",
   "full_name": "Scenario I–A: Beyond the Gates of Sleep",
+  "header": "Сценарий I-A",
   "setup": [
     "dream_intro",
     "choose_dreams",
@@ -55422,6 +55523,7 @@
   "id": "dark_side_of_the_moon",
   "scenario_name": "Dark Side of the Moon",
   "full_name": "Scenario III–A: Dark Side of the Moon",
+  "header": "Scenario III-A",
   "setup": [
     "check_someone_captured",
     "gather_encounter_sets",
@@ -55838,6 +55940,7 @@
   "id": "tde_prologue",
   "scenario_name": "Пролог",
   "full_name": "Пролог",
+  "header": "",
   "type": "interlude",
   "icon": "dreamlands",
   "setup": [
@@ -55859,6 +55962,7 @@
   "id": "the_search_for_kadath",
   "scenario_name": "The Search for Kadath",
   "full_name": "Scenario II–A: The Search for Kadath",
+  "header": "Scenario II-A",
   "standalone_setup": [
     "setup_standalone_bag",
     "black_cat_not_at_your_side",
@@ -56939,6 +57043,7 @@
   "id": "where_gods_dwell",
   "scenario_name": "Where the Gods Dwell",
   "full_name": "Scenario IV–A: Where the Gods Dwell",
+  "header": "Scenario IV-A",
   "setup": [
     "check_carried_to_the_cold_wastes",
     "gather_encounter_sets",
@@ -58110,6 +58215,7 @@
   "id": "a_thousand_shapes_of_horror",
   "scenario_name": "A Thousand Shapes of Horror",
   "full_name": "Scenario II–B: A Thousand Shapes of Horror",
+  "header": "Scenario II-B",
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -58497,6 +58603,7 @@
   "id": "the_black_cat",
   "scenario_name": "The Black Cat",
   "full_name": "Interlude I: The Black Cat",
+  "header": "Интерлюдия I",
   "type": "interlude",
   "icon": "tde",
   "setup": [
@@ -58754,6 +58861,7 @@
   "id": "tde_epilogue",
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
+  "header": "",
   "type": "epilogue",
   "icon": "merging_realities",
   "setup": [
@@ -59353,6 +59461,7 @@
   "id": "the_great_ones",
   "scenario_name": "The Great Ones",
   "full_name": "Interlude III: The Great Ones",
+  "header": "Интерлюдия III",
   "type": "interlude",
   "icon": "dreamers_curse",
   "setup": [
@@ -59852,6 +59961,7 @@
   "id": "the_oneironauts",
   "scenario_name": "The Oneironauts",
   "full_name": "Interlude II: The Oneironauts",
+  "header": "Интерлюдия II",
   "type": "interlude",
   "icon": "whispers_of_hypnos",
   "setup": [
@@ -60618,6 +60728,7 @@
   "id": "point_of_no_return",
   "scenario_name": "Point of No Return",
   "full_name": "Scenario III–B: Point of No Return",
+  "header": "Scenario III-B",
   "setup": [
     "check_randolph_did_not_survive_descent",
     "gather_encounter_sets",
@@ -61103,6 +61214,7 @@
   "id": "tde_prologue",
   "scenario_name": "Пролог",
   "full_name": "Пролог",
+  "header": "",
   "type": "interlude",
   "icon": "dreamlands",
   "setup": [
@@ -61124,6 +61236,7 @@
   "id": "waking_nightmare",
   "scenario_name": "Waking Nightmare",
   "full_name": "Scenario I–B: Waking Nightmare",
+  "header": "Сценарий I-B",
   "setup": [
     "intro_1",
     "choose_doctor",
@@ -61671,6 +61784,7 @@
   "id": "weaver_of_the_cosmos",
   "scenario_name": "Weaver of the Cosmos",
   "full_name": "Scenario IV-B: Weaver of the Cosmos",
+  "header": "Scenario IV-B",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -62900,6 +63014,7 @@
   "id": "tfa_epilogue",
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
+  "header": "",
   "type": "epilogue",
   "icon": "temporal_flux",
   "setup": [
@@ -62967,6 +63082,7 @@
   "id": "tfa_interlude2",
   "scenario_name": "Финал экспедиции",
   "full_name": "Интерлюдия II: Финал экспедиции",
+  "header": "Интерлюдия II",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -63186,6 +63302,7 @@
   "id": "eztli",
   "scenario_name": "Погибель эцтли",
   "full_name": "Сценарий II: Погибель эцтли",
+  "header": "Сценарий II",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -63741,6 +63858,7 @@
   "id": "heart_of_the_elders_part_1",
   "scenario_name": "Сердце древних, часть 1",
   "full_name": "Сценарий V-A: Сердце древних, часть 1",
+  "header": "Сценарий V-A",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -64170,6 +64288,7 @@
   "id": "heart_of_the_elders_part_2",
   "scenario_name": "Сердце древних, часть 2",
   "full_name": "Сценарий V-Б: Сердце древних, часть 2",
+  "header": "Сценарий V-Б",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -64454,6 +64573,7 @@
   "id": "tfa_interlude3",
   "scenario_name": "Зов джунглей",
   "full_name": "Интерлюдия III: Зов джунглей",
+  "header": "Интерлюдия III",
   "type": "interlude",
   "icon": "rainforest",
   "setup": [
@@ -64944,6 +65064,7 @@
   "id": "tfa_prologue",
   "scenario_name": "Пролог",
   "full_name": "Пролог",
+  "header": "",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -65064,6 +65185,7 @@
   "id": "tfa_interlude1",
   "scenario_name": "Бессонные ночи",
   "full_name": "Интерлюдия I: Бессонные ночи",
+  "header": "Интерлюдия I",
   "type": "interlude",
   "icon": "deadly_traps",
   "setup": [
@@ -65213,6 +65335,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "name": "(has binoculars)",
         "investigator": "choice",
         "prompt": "Дозорный",
         "positiveChoice": {
@@ -65354,6 +65477,7 @@
   "id": "shattered_aeons",
   "scenario_name": "Расколотая вечность",
   "full_name": "Сценарий VIII: Расколотая вечность",
+  "header": "Сценарий VIII",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -65884,6 +66008,7 @@
   "id": "the_boundary_beyond",
   "scenario_name": "Потусторонний предел",
   "full_name": "Сценарий IV: Потусторонний предел",
+  "header": "Сценарий IV",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -66100,7 +66225,7 @@
         "id": "the_forgotten_age.the_boundary_beyond.alejandro_section",
         "name": "Alejandro Section"
       },
-      "text": "Сверьтесь с журналом. Если <i>сыщики спасли Алехандро</i>, ве­дущий сыщик читает <b>«Размышления Алехандро».</b>",
+      "text": "Сверьтесь с журналом. Если <i>сыщики спасли Алехандро</i>, ведущий сыщик читает <b>«Размышления Алехандро».</b>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -66176,7 +66301,7 @@
       },
       "title": "Незанятое кресло",
       "type": "story",
-      "text": "Немного не доехав до границы, вы останав­ливаетесь на ночь. Ваш взгляд падает на незанятое место на заднем сиденье, и вы задумываетесь, где сейчас Алехандро."
+      "text": "Немного не доехав до границы, вы останавливаетесь на ночь. Ваш взгляд падает на незанятое место на заднем сиденье, и вы задумываетесь, где сейчас Алехандро."
     },
     {
       "id": "use_gasoline",
@@ -66221,7 +66346,7 @@
       },
       "title": "Бензин на исходе",
       "type": "story",
-      "text": "Горючее — ваша постоянная головная боль по пути на юг. Несколько раз вы заправляетесь в придорожных магазинчиках, но недалеко от границы автомобиль замирает на обочине. Вы с Ичтакой вынуждены идти несколько миль до бли­жайшего городка, чтобы заправиться, и теряете несколько часов."
+      "text": "Горючее — ваша постоянная головная боль по пути на юг. Несколько раз вы заправляетесь в придорожных магазинчиках, но недалеко от границы автомобиль замирает на обочине. Вы с Ичтакой вынуждены идти несколько миль до ближайшего городка, чтобы заправиться, и теряете несколько часов."
     },
     {
       "id": "no_mulligan",
@@ -66669,7 +66794,7 @@
         "name": "Resolution 1"
       },
       "title": "Исход 1",
-      "text": "Вас охватывает вихрь радужных огней, и вы резко приходите в себя. Когда вы открываете глаза, вы лежите на главной площади города. Голова кружится, словно от стремительного падения. Голосок на задворках разума твердит, что всё это было плодом вашего воображения, сновидением. Это инстинкт самосохранения пытается не дать вам пойти дальше по тропе безумия. Не обращая на него внимания, вы встаёте. Ваши ноги дрожат от ужаса и изнеможения.\n«Та женщина... Видимо, она поняла, кто я, и прошла за нами через разрыв, который я сделала. Наверняка она тоже хотела узнать, где находится Средоточие, — загадочно произносит Ичтака. При попытке вспомнить события предыдущих часов вашу голову пронзает страшная боль. — Вы ведь видели её? Пещеру. Обагрённую пасть в небесах. — Она задумчиво осматривает небо. — Должно быть, это и есть путь к Средоточию».\nВам трудно припомнить, что случилось на той стороне, но видение багровой пещеры вспыхивает в вашей памяти. Вы подтверждаете, что тоже видели её, и спрашиваете Ичтаку, почему она считает, будто это путь к Средоточию. Она смотрит на вас красными глазами, и по её губам пробегает тень улыбки. «Это не так-то просто... Заглянуть за предел, увидеть сами нити времени. Похоже, вы способнее, чем кажетесь», — говорит она. Хотя Ичтака так и не ответила на вопрос, вы догадываетесь о том, что не было сказано вслух: путь: который вы видели в сумбуре временных линий и необъяснимых явлений, — это «одно из будущих». Будущее, которое вы должны сделать реальностью.",
+      "text": "Вас охватывает вихрь радужных огней, и вы резко приходите в себя. Когда вы открываете глаза, вы лежите на главной площади города. Голова кружится, словно от стремительного падения. Голосок на задворках разума твердит, что всё это было плодом вашего воображения, сновидением. Это инстинкт самосохранения пытается не дать вам пойти дальше по тропе безумия. Не обращая на него внимания, вы встаёте. Ваши ноги дрожат от ужаса и изнеможения.\n«Та женщина... Видимо, она поняла, кто я, и прошла за нами через разрыв, который я сделала. Наверняка она тоже хотела узнать, где находится Средоточие, — загадочно произносит Ичтака. При попытке вспомнить события предыдущих часов вашу голову пронзает страшная боль. — Вы ведь видели её? Пещеру. Обагрённую пасть в небесах. — Она задумчиво осматривает небо. — Должно быть, это и есть путь к Средоточию».\nВам трудно припомнить, что случилось на той стороне, но видение багровой пещеры вспыхивает в вашей памяти. Вы подтверждаете, что тоже видели её, и спрашиваете Ичтаку, почему она считает, будто это путь к Средоточию. Она смотрит на вас красными глазами, и по её губам пробегает тень улыбки. «Это не так-то просто... Заглянуть за предел, увидеть сами нити времени. Похоже, вы способнее, чем кажетесь», — говорит она. Хотя Ичтака так и не ответила на вопрос, вы догадываетесь о том, что не было сказано вслух: путь, который вы видели в сумбуре временных линий и необъяснимых явлений, — это «одно из будущих». Будущее, которое вы должны сделать реальностью.",
       "steps": [
         "record_x_paths_known",
         "check_if_ichtaca_has_confidence",
@@ -66686,7 +66811,7 @@
         "name": "Resolution 2"
       },
       "title": "Исход 2",
-      "text": "Охватывающий горизонт барьер мерцает, когда проход домой закрывается на ваших глазах. Туман в голове и чувство невесомости, которые вы ощущали во время видения, пропадают, и вы внезапно понимаете, что это не сон. Вы в пле­ну чужого времени, а Ичтака куда-то пропала.\nВы блуждаете часами. Днями. Неделями. Ваш рассудок уже не выдерживает. Вы с ужасом осознаёте, что можете остаться тут навсегда. Отчаяние и уныние овладевают вашим разумом. Вам некуда бежать от одиночества и безумия. Вы не помните, сколько времени провели здесь. Вы не спали и не ели.\nВ ожидании проходит целая вечность, когда внезапно барьер тре­скается и небо заливает ослепительный свет. Когда вы откры­ваете глаза, вы лежите на главной площади города. Голова кружится, словно от стремительного падения. Ичтака помогает вам подняться. Ваши ноги дрожат от ужаса и изнеможения. Вы спрашиваете, как долго вас не было, но она качает головой: «Не имеет значения. Вы вернулись». Её уклончивость не задевает вас, но вы всё равно возмущены. Почему она не осталась с вами? Случайно — или намеренно? «Вы ведь видели её? — спрашивает Ичтака. — Пещеру. Обагрённую пасть в небесах. — Ваша память затуманивается и вы непонимающе смотрите в ответ. - Неважно. Я знаю, как найти Средоточие, и вы пойдёте туда со мной».",
+      "text": "Охватывающий горизонт барьер мерцает, когда проход домой закрывается на ваших глазах. Туман в голове и чувство невесомости, которые вы ощущали во время видения, пропадают, и вы внезапно понимаете, что это не сон. Вы в пле­ну чужого времени, а Ичтака куда-то пропала.\nВы блуждаете часами. Днями. Неделями. Ваш рассудок уже не выдерживает. Вы с ужасом осознаёте, что можете остаться тут навсегда. Отчаяние и уныние овладевают вашим разумом. Вам некуда бежать от одиночества и безумия. Вы не помните, сколько времени провели здесь. Вы не спали и не ели.\nВ ожидании проходит целая вечность, когда внезапно барьер трескается и небо заливает ослепительный свет. Когда вы открываете глаза, вы лежите на главной площади города. Голова кружится, словно от стремительного падения. Ичтака помогает вам подняться. Ваши ноги дрожат от ужаса и изнеможения. Вы спрашиваете, как долго вас не было, но она качает головой: «Не имеет значения. Вы вернулись». Её уклончивость не задевает вас, но вы всё равно возмущены. Почему она не осталась с вами? Случайно — или намеренно? «Вы ведь видели её? — спрашивает Ичтака. — Пещеру. Обагрённую пасть в небесах. — Ваша память затуманивается и вы непонимающе смотрите в ответ. - Неважно. Я знаю, как найти Средоточие, и вы пойдёте туда со мной».",
       "steps": [
         "check_act_2",
         "record_x_paths_known",
@@ -66702,6 +66827,7 @@
   "id": "the_city_of_archives",
   "scenario_name": "Город архивов",
   "full_name": "Сценарий VI: Город архивов",
+  "header": "Сценарий VI",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -67168,6 +67294,7 @@
   "id": "tfa_interlude5",
   "scenario_name": "Во тьме",
   "full_name": "Интерлюдия V: Во тьме",
+  "header": "Интерлюдия V",
   "type": "interlude",
   "icon": "torch",
   "setup": [
@@ -67729,6 +67856,7 @@
   "id": "the_depths_of_yoth",
   "scenario_name": "Глубины Йота",
   "full_name": "Сценарий VII: Глубины Йота",
+  "header": "Сценарий VII",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -67899,7 +68027,7 @@
           },
           {
             "id": "17",
-            "text": "17",
+            "text": "7",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -68999,6 +69127,7 @@
   "id": "tfa_interlude4",
   "scenario_name": "На свободе",
   "full_name": "Интерлюдия IV: На свободе",
+  "header": "Интерлюдия IV",
   "type": "interlude",
   "icon": "cult_of_pnakotus",
   "setup": [
@@ -69636,6 +69765,7 @@
   "id": "threads_of_fate",
   "scenario_name": "Нити судьбы",
   "full_name": "Сценарий III: Нити судьбы",
+  "header": "Сценарий III",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -70886,6 +71016,7 @@
   "id": "turn_back_time",
   "scenario_name": "Обратить время вспять",
   "full_name": "Сценарий IX: Обратить время вспять",
+  "header": "Сценарий IX",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -71377,6 +71508,7 @@
   "id": "wilds",
   "scenario_name": "Дремучие джунгли",
   "full_name": "Сценарий I: Дремучие джунгли",
+  "header": "Сценарий I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -72110,7 +72242,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "Ключи",
       "type": "rule_reminder",
       "text": "This expansion introduces key tokens that represent important objects or pieces of information that can be claimed and used during scenarios.\nKey tokens have two sides. When facedown, all seven keys have the same universal key symbol, so they can be randomized without the investigators knowing which is which. When faceup, each key is color coded with a unique color.\nIf a scenario uses one or more keys, the setup of that scenario indicates how many are set aside and whether they should be faceup or randomized facedown. Keys can enter play via several different card effects, and they are usually placed on enemy, location, or story asset. Keys can be acquired in any of three ways:",
       "bullets": [
@@ -72158,6 +72290,7 @@
   "id": "a_light_in_the_fog",
   "scenario_name": "A Light in the Fog",
   "full_name": "Scenario VI: A Light in the Fog",
+  "header": "Сценарий VI",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -72353,7 +72486,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "Ключи",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -72500,7 +72633,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "Ключи",
             "steps": [
               "ask_keys"
             ]
@@ -73275,6 +73408,7 @@
   "id": "beneath_the_waves",
   "scenario_name": "Beneath the Waves",
   "full_name": "Interlude III: Beneath the Waves",
+  "header": "Интерлюдия III",
   "type": "interlude",
   "icon": "flooded_caverns",
   "setup": [
@@ -73584,6 +73718,7 @@
   "id": "devil_reef",
   "scenario_name": "Devil Reef",
   "full_name": "Scenario IV: Devil Reef",
+  "header": "Сценарий IV",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -73995,7 +74130,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "Ключи",
             "steps": [
               "ask_keys"
             ]
@@ -74212,7 +74347,7 @@
     },
     {
       "id": "flashback_11_assets",
-      "text": "Take control of both the blck key and the set-aside Headdress of Y'ha-nthlei story asset. Place the black key on the Headdress of Y'ha-nthlei. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the black key also takes control of the Headdress of Y'ha-nthlei, as well. If the black key is placed on another card, place the Headdress of Y'ha-nthlei near that card, uncontrolled. If the black key leaves play, remove the Headdress of Y'ha-nthlei from the game."
+      "text": "Take control of both the black key and the set-aside Headdress of Y'ha-nthlei story asset. Place the black key on the Headdress of Y'ha-nthlei. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the black key also takes control of the Headdress of Y'ha-nthlei, as well. If the black key is placed on another card, place the Headdress of Y'ha-nthlei near that card, uncontrolled. If the black key leaves play, remove the Headdress of Y'ha-nthlei from the game."
     },
     {
       "id": "resolution_1",
@@ -74399,15 +74534,231 @@
   "id": "hidden_truths",
   "scenario_name": "Hidden Truths",
   "full_name": "Interlude IV: Hidden Truths",
+  "header": "Интерлюдия IV",
   "icon": "agents_of_dagon",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "type": "interlude",
+  "setup": [
+    "intro",
+    "read_sections",
+    "check_terror_of_devil_reef_dead_and_lifecyle_of_deep_one",
+    "check_guardian_and_story_assets",
+    "remove_thomas_dawson",
+    "spend_xp",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "As soon as your mind returned to the present, you began formulating your plan. A plan to enter the realm of the Deep Ones and end their conspiracy once and for all. \"This is ridiculous, you know that, right?\" Harper asks. You nod. Of course it's ridiculous. You've spent the last two days on the run. Chased. Hunted. Tormented.\nBut you've also spend the last two days recovering the memories you've forgotten. And what you've seen is something you can't possibly ignore. You have seen the deity the Esoteric Order of Dagon is named for, and you understand what the Order plans to do. The alignment of the celestial bodies in the sky, the steadily rising tides, the tumultuous fluctuating weather, the creatures emerging from the deep, all of it is tied together. You have seen it. There will come a flood, a great disaster to wipe out humanity, so only the deep remains. The great city in the reef shall rise once more and become the beating heart of all life on Earth.\nThere are still gaps in your memory, but all this you know to be true. All of Innsmouthis consumed by this conspiracy. The Order controlled the town through its oaths and the secret wealth it hoarded from the deep. It was no wonder they treated outsiders like yourself with such scorn.\nYou give Harper a knowing glare. She sighs and nods. \"I know. It's the only way.\" Together, the two of you plot your course. Abandoned ships still litter the harbor of Innsmouth. Under the cover of night, you must commandeer one of them, sail to Devil Reef, and descend once more into the antediluvian ruins in the depths below the forsaken islands. That is where the other entrance to the city lies. Y'ha-nthlei.\nYour skin prickles with cold shivers as you utter the word aloud. Harper grimaces, though you can sense the determination behind her steely gaze. \"I'm going to see this mission through, Dawson. For you.\"\nYou lay out all of the information you've uncovered and the relics you've obtained despite the horrors arrayed against you. You know the way to Y'ha-nthlei is sealed tight. There must be a way to gain entrance. Perhaps you already have the answers you seek…"
+    },
+    {
+      "id": "read_sections",
+      "text": "Check the campaign log. Read each of the sections below that apply to your situation."
+    },
+    {
+      "id": "check_terror_of_devil_reef_dead_and_lifecyle_of_deep_one",
+      "text": "If <i>the Terror of Devil Reef is dead</i> and <i>the lifecycle of a \"Deep One\"</i> is listed under \"Memories Recovered\" in your Campaign Log.",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "terror_of_devil_reef_is_dead",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "memories_recovered",
+            "id": "lifecycle_of_a_deep_one",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": [
+              "story_1",
+              "guardian_of_yhanthlei_is_dispatched"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "story_1",
+      "type": "story",
+      "text": "You study the trophy you found in the sacrificial pit in which you awoke several days ago—part of what was once the creature that you fought in Devil Reef. It wasn't the same kind of creature as the \"Deep Ones\" that the Esoteric Order of Dagon worships, but you cannot help ruminating over the similarities between them. You recall that fish never cease growing as they age, and wonder if the same may be true for Deep Ones. Perhaps it was an ancient breed of Deep Ones—something so old, it grew enormous and twisted beyond imagination. If so what was it doing in Devil Reef? Was it guarding Y'ha-nthlei? And if so, what does that bode for you? You decide to take the trophy with you, hoping it is important enough to aid in your mission…"
+    },
+    {
+      "id": "guardian_of_yhanthlei_is_dispatched",
+      "text": "The conspiracy deepends. In your Campaign Log, record <i>the guardian of Y'ha-nthlei is dispatched.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "guardian_of_yhanthlei_is_dispatched",
+          "text": "the guardian of Y’ha-nthlei is dispatched."
+        }
+      ]
+    },
+    {
+      "id": "check_guardian_and_story_assets",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07179",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07180",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07181",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "success_check_guardian_and_story_assets"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "fail_check_guardian_and_story_assets"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "success_check_guardian_and_story_assets",
+      "text": "If <i>the gatekeeper has been defeated</i> and an investigator's deck contains at least 1 of the following story assets (Waveworn Idol, Awakened Mantle, or Headdress of Y'ha-nthlei):",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gatekeeper_has_been_defeated",
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": [
+              "story_2",
+              "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fail_check_guardian_and_story_assets",
+      "text": "If <i>the gatekeeper has been defeated</i> and an investigator's deck contains at least 1 of the following story assets (Waveworn Idol, Awakened Mantle, or Headdress of Y'ha-nthlei):",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gatekeeper_has_been_defeated",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": [
+              "story_2",
+              "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "story_2",
+      "type": "story",
+      "text": "You understand now the purpose of the relic you found in Devil Reef. It isn't just an object of power. It is a badge—an heirloom of sorts, worn by the one who stands guard over the gateway to the Deep Ones' city. You defeated the one groomed to be its next protector. Now the relic recognizes you as its rightful heir. Perhaps with this, you will be able to gain entrance to Y'ha-nthlei…"
+    },
+    {
+      "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+      "text": "The conspiracy deepens. In your Campaign Log, record <i>the gateway to Y’ha-nthlei recognizes you as its rightful keeper</i>.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+          "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+        }
+      ]
+    },
+    {
+      "id": "remove_thomas_dawson",
+      "text": "Return Thomas Dawson to the collection. If an investigator earned Elina Harper (at any point during this campaign), they may add her back to their deck."
+    },
+    {
+      "id": "spend_xp",
+      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "transfer_special_xp": "unspect_xp"
+        }
+      ]
+    }
+  ]
 },
 {
   "id": "horror_in_high_gear",
   "scenario_name": "Horror in High Gear",
   "full_name": "Scenario V: Horror in High Gear",
+  "header": "Сценарий V",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -74732,6 +75083,7 @@
   "id": "in_too_deep",
   "scenario_name": "In Too Deep",
   "full_name": "Scenario III: In Too Deep",
+  "header": "Сценарий III",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -74931,7 +75283,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "Ключи",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -74942,7 +75294,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "Ключи",
             "steps": [
               "ask_keys"
             ]
@@ -75373,6 +75725,7 @@
   "id": "into_the_maelstrom",
   "scenario_name": "Into the Maelstrom",
   "full_name": "Scenario VIII: Into the Maelstrom",
+  "header": "Сценарий VIII",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -75381,6 +75734,7 @@
   "id": "puzzle_pieces",
   "scenario_name": "Puzzle Pieces",
   "full_name": "Interlude I: Puzzle Pieces",
+  "header": "Интерлюдия I",
   "type": "interlude",
   "icon": "shattered_memories",
   "setup": [
@@ -75621,14 +75975,720 @@
   "id": "the_lair_of_dagon",
   "scenario_name": "The Lair of Dagon",
   "full_name": "Scenario VII: The Lair of Dagon",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "header": "Сценарий VII",
+  "setup": [
+    "intro_1",
+    "check_mission_succeeded",
+    "check_decision_to_stick_together_intro",
+    "investigator_setup",
+    "gather_encounter_sets",
+    "setup_keys",
+    "setup_locations",
+    "location_layout",
+    "set_aside_cards",
+    "check_memories_recovered",
+    "check_jailbreak",
+    "check_encounter_with_a_secret_cult",
+    "check_decision_to_stick_together",
+    "flood_tokens",
+    "encounter_deck",
+    "keys_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "<center><game>THURSDAY, SEPTEMBER 15, 1927</game></center>\n<center><game>ONE WEEK EARLIER</game></center>\nYou stand outside the cracked marble steps leading up to the masonic hall of the Esoteric Order of Dagon. All of the evidence has lead you here. Whatever is going on in this town, this Order is behind it. You're sure of it… though their ultimate goal remains a mystery.\nThe town is eerily quiet as you stand before the building's entrance. Once, this place might have been impressive and opulent. Years of disrepair and flood damage have reduced it to a near-ruin. Its once-white paint is gray and peeling, and many of the pillars outside the entryway are beginning to crumble. Still, it is one of the more intimidating places in Innsmouth, projecting authority despite its decrepitude. No, not authority—something darker. A looming, unspoken threat.\n\"Are you ready?\" Agent Dawson asks. His usually calm demeanor has vanished, replaced with a humorless gravity that throws you off guard. \"This is it. This is where we'll find answers.\"\nYou're not so sure. Every other lead you've followed has led to only more questions."
+    },
+    {
+      "id": "check_mission_succeeded",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_succeeded",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "intro_2"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "intro_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "Agent Harper was kidnapped when she got too close to the Order, but interrogating her kidnapper didn't exactly yield the answers you needed. What you know now is that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. What's worse, many of the town's inhabitants seem to follow the Order with blind, fanatical devotion. So many that you're not sure this is even a functioning town anymore. It's no wonder the people are so hostile towards outsiders.\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "You are sure that Agent Harper was kidnapped after she began investigating the Order. Your own investigation might have ended the same way had you not laid low for a week after the townsfolk got riled up. It seems that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. But why?\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
+    },
+    {
+      "id": "check_decision_to_stick_together_intro",
+      "type": "branch",
+      "text": "If <i>a decision to stick together</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "intro_4"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "intro_5"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_4",
+      "type": "story",
+      "text": "<i>Creeeak.</i> Agent Dawson opens the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"I don't like this one bit,\" Dawson says as the front door closes behind you. He unholsters his gun, turns on his flashlight, and scans the room. \"We should stay together. Safety in numbers.\" You nod in agreement. The Order has proven to be very dangerous, and they surely don't want you poking around in their headquarters…"
+    },
+    {
+      "id": "intro_5",
+      "type": "story",
+      "text": "<i>Creeeak.</i> Agent Dawson creaks open the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"It's quiet. I guess there are no ceremonies going on tonight. That's good,\" Dawson says as the front door closes behind you. He turns on his flashlight and illuminates a nearby doorway. \"We should split up. We'll be able to cover more ground that way. See if you can figure out what they're hiding here. I'll meet up with you later.\" You nod and head in the opposite direction…"
+    },
+    {
+      "id": "investigator_setup",
+      "type": "rule_reminder",
+      "title": "Подготовка сыщика",
+      "text": "Perform this step before setting up your investigator.",
+      "bullets": [
+        {
+          "text": "Search each investigator's deck for Elina Harper and remove her from the game for the duration of this scenario."
+        }
+      ]
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Подготовка к сценарию",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_lair_of_dagon",
+        "agents_of_dagon",
+        "flooded_caverns",
+        "syzygy",
+        "pentagram",
+        "locked_doors"
+      ]
+    },
+    {
+      "id": "setup_keys",
+      "text": "Place each key as follows:",
+      "bullets": [
+        {
+          "text": "Set the black, blue, green, purple, and red keys aside, faceup."
+        },
+        {
+          "text": "Set the white and yellow aside, facedown. Shuffle them so you do not know which is which."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the following locations into play: Grand Entryway, Foul Corridors, both copies of First Floor Hall, both copies of Second Floor Hall, and Third Floor Hall.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at the Grand Entryway."
+        },
+        {
+          "text": "Set other locations aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Расположение локаций",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "third_floor_hall",
+          "blank"
+        ],
+        [
+          "second_floor_hall",
+          "foul_corridors",
+          "second_floor_hall"
+        ],
+        [
+          "first_floor_hall",
+          "grand_entryway",
+          "first_floor_hall"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "second_floor_hall",
+          "name": "Second Floor Hall"
+        },
+        {
+          "code": "foul_corridors",
+          "name": "Foul Corridors"
+        },
+        {
+          "code": "first_floor_hall",
+          "name": "First Floor Hall"
+        },
+        {
+          "code": "grand_entryway",
+          "name": "Grand Entryway"
+        },
+        {
+          "code": "third_floor_hall",
+          "name": "Third Floor Hall"
+        }
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Both copies of the Syzygy treachery, both copies of the Tidal Alignment treachery, the double-sided Y’ha-nthlei Statue story asset, the Apostle of Dagon enemy, and the double-sided Dagon enemy."
+    },
+    {
+      "id": "check_memories_recovered",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log:",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "memories_recovered",
+        "id": "$num_entries",
+        "max": 10,
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 1,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 2,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 3,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 4,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 5,
+            "steps": [
+              "add_2_curse"
+            ]
+          },
+          {
+            "numCondition": 6,
+            "steps": [
+              "add_2_curse"
+            ]
+          },
+          {
+            "numCondition": 7,
+            "steps": [
+              "add_2_curse"
+            ]
+          },
+          {
+            "numCondition": 8,
+            "steps": [
+              "add_5_curse"
+            ]
+          }
+        ],
+        "defaultOption": {
+          "steps": [
+            "add_5_curse"
+          ]
+        }
+      }
+    },
+    {
+      "id": "add_5_bless",
+      "bullet_type": "small",
+      "text": "Because there are 4 or fewer memories recorded, add 5 [bless] tokens to the chaos bag."
+    },
+    {
+      "id": "add_2_curse",
+      "bullet_type": "small",
+      "text": "Because there are between 5 and 7 memories recorded, add 2 [curse] tokens to the chaos bag."
+    },
+    {
+      "id": "add_5_curse",
+      "bullet_type": "small",
+      "text": "Because there are 8 or more memories recorded, add 5 [curse] tokens to the chaos bag."
+    },
+    {
+      "id": "check_jailbreak",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>a jailbreak</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_jailbreak",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_possible_suspect"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_possible_suspect",
+      "bullet_type": "small",
+      "text": "Search the collection for the [[Suspect]] enemy underlined under “Possible Suspects” and set it aside, out of play."
+    },
+    {
+      "id": "check_encounter_with_a_secret_cult",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>an encounter with a secret cult</i> is listed under \"Memories Recovered\":",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "encounter_with_a_secret_cult",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "agenda_1_v1"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "agenda_1_v2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "agenda_1_v1",
+      "bullet_type": "small",
+      "text": "When constructing the agenda deck, use Agenda 1a—\"The Initiation (v.I)\" and remove Agenda 1a—\"The Initiation (v.II)\" from the game."
+    },
+    {
+      "id": "agenda_1_v2",
+      "bullet_type": "small",
+      "text": "Otherwise, use Agenda 1a—\"The Initiation (v.II)\" and remove Agenda 1a-\"The Initiation (v.I)\" from the game."
+    },
+    {
+      "id": "check_decision_to_stick_together",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>a decision to stick together</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "put_agent_dawson_in_play"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_aside_agent_dawson"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "put_agent_dawson_in_play",
+      "bullet_type": "small",
+      "text": "Search the collection for Thomas Dawson and put him into play under any investigator's control. When constructing the agenda deck, use Agenda 2a—\"What Lurks Below (v.I)\" and remove Agenda 2a—\"What Lurks Below (v.II)\" from the game."
+    },
+    {
+      "id": "set_aside_agent_dawson",
+      "bullet_type": "small",
+      "text": "Otherwise, search the collection for Thomas Dawson and set him aside, out of play. When constructing the agenda deck, use Agenda 2a—\"What Lurks Below (v.II)\" and remove Agenda 2a—\"What Lurks Below (v.I)\" from the game."
+    },
+    {
+      "id": "flood_tokens",
+      "text": "Add the flood tokens to the token pool."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Ключи",
+            "steps": [
+              "ask_keys"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Which keys do you want to read the representation of:",
+      "input": {
+        "type": "checklist",
+        "text": "Read",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Red",
+            "steps": [
+              "red_key"
+            ]
+          },
+          {
+            "id": "blue",
+            "text": "Blue",
+            "steps": [
+              "blue_key"
+            ]
+          },
+          {
+            "id": "green",
+            "text": "Green",
+            "steps": [
+              "green_key"
+            ]
+          },
+          {
+            "id": "purple",
+            "text": "Purple",
+            "steps": [
+              "purple_key"
+            ]
+          },
+          {
+            "id": "black",
+            "text": "Black",
+            "steps": [
+              "black_key"
+            ]
+          },
+          {
+            "id": "white",
+            "text": "White / Yellow",
+            "steps": [
+              "white_key"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "red_key",
+      "text": "Red: A crest engraved with a glyph depicting a great sacrifice."
+    },
+    {
+      "id": "blue_key",
+      "text": "Blue: A scroll detailing some of the Order's activities and secrets."
+    },
+    {
+      "id": "green_key",
+      "text": "Green: A crest depicting a widening fish-eye."
+    },
+    {
+      "id": "purple_key",
+      "text": "Purple: A crest inscribed with a circle of words in an alphabet you do not comprehend."
+    },
+    {
+      "id": "black_key",
+      "text": "Black: A crest carved with an arcane sigil."
+    },
+    {
+      "id": "white_key",
+      "text": "White / Yellow: Crests whose glyphs depict the alignment of celestial bodies. The white key shows the moon overlapping the sun. The yellow key shows the sun overlapping the moon."
+    },
+    {
+      "id": "dagon_has_awakened",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "dagon_has_awakened",
+          "text": "Dagon has awakened."
+        }
+      ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Победный счёт:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unspect_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_suspect_defeated",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_jailbreak",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_suspect_defeated"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_suspect_defeated",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "suspect_defeated",
+            "text": "Is a [[Suspect]] enemy in the victory display?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gatekeeper_has_been_defeated",
+                "text": "the gatekeeper has been defeated."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_oceiros",
+      "text": "The lead investigator must decide:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "nothing",
+            "text": "Tell Oceiros nothing.",
+            "steps": [
+              "resolution_2"
+            ]
+          },
+          {
+            "id": "lying",
+            "text": "Lie to Oceiros.",
+            "steps": [
+              "resolution_3"
+            ]
+          },
+          {
+            "id": "truth",
+            "text": "Tell Oceiros everything.",
+            "steps": [
+              "resolution_4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_elder_thing",
+      "text": "Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "elder_thing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add_tablet",
+      "text": "Добавьте 1 жетон [tablet] в мешок хаоса до конца кампании.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "tablet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add_cultist",
+      "text": "Добавьте в мешок хаоса 1 жетон [cultist] до конца кампании.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "cultist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keys_rule",
+      "title": "Ключи",
+      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "Исход не был достигнут\n(все сыщики совершили побег или побеждены)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "This place is more dangerous than you could have possibly imagined. You stumble as you flee through the dark, flooded corridors, retracing your steps as quickly as you can to reach the entrance. Your heart races in your chest as you see the exit at last. You gasp in relief as you crash through the doors, to safety—\n—Only you are not safe. Standing at the bottom of the steps is an angry throng of citizens, far too many for you to fight your way through. \"There! Get 'em!\" a wrinkled women at the head of the mob shouts. You are surrounded and grabbed within moments. You struggle and fight for your life, but it's no use. The last thing you remember is being dragged back through the halls of the Order to some unknown fate…",
+      "steps": [
+        "dagon_has_awakened",
+        "resolution_1"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "Исход 1",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You're somewhere else now, lying on your stomach on cold, damp stone. Your arms are held tight behind your back. You have no idea how you got here. As consciousness returns, your vision comes into focus. You crane your neck up to view your surroundings, but it's too dark to see anything inside your stone cell.\n\"I'll ask you one last time. Who sent you here?\" a voice asks. It is deep and husky, like the croaking of a frog.\nYou hear the familiar, cool baritone of Agent Dawson reply: \"Your breath smells awful. Ever heard of brushing your teeth?\" Despite the sarcasm dripping from his words, his voice wavers ever so slightly.\n\"Your mockery only masks the fear that hides within,\" the voice replies. \"Very well. If you are of no use to us, you will be the first to be sacrificed.\"\nYour vision continues to adjust. You can just barely make out Dawson's silhouette on the other side of the cell. He is kneeling before a metal hatch in the stone floor. An elderly robed figure presses a curved knife against Dawson's throat. Someone lifts the hatch, and Dawson's eyes go wide. He gives you one last despairing look, shakes his head slowly and deliberately, and quietly slides something across the stone floor. Then the hooded figure pushes him in. In the scuffle and the low light, nobody notices the car key that skitters to a halt directly next to you.\nYou grab the key and stuff it into your pocket just before you are shoved forward. Two more sets of cold, clammy hands grap your shoulders, and the hooded figure slides his knife up to your neck. All you can see of his face are his wide, unblinking eyes.\n\"Oceiros, these ones were found in Dagon's lair as well,\" another voice explains to the elderly figure in the robes. \"We believe they were the ones snooping around Devil Reef.\"\nThe man with the knife to your throat nods. \"Your turn,\" he declares. \"Tell us why you have come and perhaps we will let you go. Who sent you? What have you seen?\"",
+      "steps": [
+        "earn_xp",
+        "maybe_ask_suspect_defeated",
+        "ask_oceiros"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "Исход 2",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You remember the slow, gentle shaking of Agent Dawson's head and known what he meant by the gesture. You look up into the man's unblinking eyes, set your jaw, and say nothing. A moment of silent understanding passes between you and your interrogator. \"Very well. Your defiance has earned you naught but a slow, agonizing death.\" The metal hatch opens again. Inside, you see nothing but darkness. You glare long and hard at your captor.\n\"Take what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": [
+        "add_elder_thing"
+      ]
+    },
+    {
+      "id": "R3",
+      "title": "Исход 3",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You can think of only one way out of this situation. The Order believes that you are poking around their business, so you will have to convince them that you don't know or care what they are up to. You lie as best you can, spinning a story that might convince them you were simply in the wrong place at the wrong time. \"And what of your unfortunate friend?\" your interrogator asks. You tell him that you have never met that man before in your life. \"Perhaps you speak the truth,\" the man says, and you breath a short-lived sigh of relief before he dashes your hopes: \"…but it matters not. You have seen too much, and for that, you must be silenced. Worry not. You will be joining our kindred soon.\" The metal hatch opens again. Inside, you see nothing but darkness.\n\"Take what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": [
+        "add_tablet"
+      ]
+    },
+    {
+      "id": "R4",
+      "title": "Исход 4",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "None of this is what you signed up for. Hoping to avoid Dawson's fate, you have no choice but to tell your interrogator everything. You explain you were hired by Dawson to find his missing agent, and go on to describe the events that followed over the past few weeks, including your exploration of Devil Reef and your investigation into the Order. A slow smile crawls across the man's face as you divulge everything you know. \"I thank you for your candor. Sadly, there is only one way I can repay you. You have seen too much, and for that, you must be silenced.\" Your heart goes cold as you realize what he means. The metal hatch opens again. Inside, you see nothing but darkness.\nTake what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": [
+        "add_cultist"
+      ]
+    }
+  ]
 },
 {
   "id": "the_pit_of_despair",
   "scenario_name": "The Pit of Despair",
   "full_name": "Scenario I: The Pit of Despair",
+  "header": "Сценарий I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75778,7 +76838,7 @@
     },
     {
       "id": "keys_rule",
-      "title": "Keys",
+      "title": "Ключи",
       "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
     },
     {
@@ -75805,7 +76865,7 @@
         "branches": [
           {
             "id": "keys",
-            "text": "Keys",
+            "text": "Ключи",
             "steps": [
               "ask_keys"
             ]
@@ -76125,6 +77185,7 @@
   "id": "the_syzygy",
   "scenario_name": "The Syzygy",
   "full_name": "Interlude II: The Syzygy",
+  "header": "Интерлюдия II",
   "type": "interlude",
   "icon": "syzygy",
   "setup": [
@@ -76240,6 +77301,7 @@
   "id": "the_vanishing_of_elina_harper",
   "scenario_name": "The Vanishing of Elina Harper",
   "full_name": "Scenario II: The Vanishing of Elina Harper",
+  "header": "Сценарий II",
   "setup": [
     "intro_1",
     "info_summary",
@@ -78184,6 +79246,7 @@
   "id": "tic_epilogue",
   "scenario_name": "Эпилог",
   "full_name": "Эпилог",
+  "header": "",
   "type": "placeholder",
   "icon": "rising_tide",
   "setup": [],

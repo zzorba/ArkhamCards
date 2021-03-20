@@ -201,6 +201,7 @@
 {
   "id": "armitages_fate",
   "scenario_name": "Le Sort d’Armitage",
+  "header": "Interlude I",
   "full_name": "Interlude I : Le Sort d’Armitage",
   "type": "interlude",
   "icon": "armitages_fate",
@@ -303,6 +304,7 @@
 {
   "id": "blood_on_the_altar",
   "scenario_name": "Du Sang sur l'Autel",
+  "header": "Scénario IV",
   "full_name": "Scénario IV : Du Sang sur l'Autel",
   "setup": [
     "prologue",
@@ -471,7 +473,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "killed_silas_bishop",
-          "text": "les investigateurs ont abrégé les souff\u001erances de Silas Bishop."
+          "text": "les investigateurs ont abrégé les souffrances de Silas Bishop."
         }
       ]
     },
@@ -482,7 +484,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "restored_silas_bishop",
-          "text": "les investigateurs ont rendu sa forme à Silas Bishop."
+          "text": "les investigateurs ont rendu sa forme à Silas Bishop."
         }
       ]
     },
@@ -499,11 +501,11 @@
     },
     {
       "id": "sacrifice_all",
-      "text": "S’il restait des sacrifices potentiels à la fin de la partie, mettez-les sous le deck Intrigue."
+      "text": "S’il restait des sacrifices potentiels à la fin de la partie, mettez-les sous le deck Intrigue."
     },
     {
       "id": "record_sacrificed",
-      "text": "Dans votre Carnet de Campagne, sous la mention « Sacrifiés à Yog-Sothoth », inscrivez les noms de chaque carte unique située sous le deck Intrigue. Ces cartes sont retirées des decks de tous les Joueurs et aucun joueur ne peut plus les intégrer à son deck pour le reste de la campagne.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Sacrifiés à Yog-Sothoth », inscrivez les noms de chaque carte unique située sous le deck Intrigue. Ces cartes sont retirées des decks de tous les Joueurs et aucun joueur ne peut plus les intégrer à son deck pour le reste de la campagne.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -576,7 +578,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "necronomicon_stolen",
-          "text": "le Necronomicon a été volé."
+          "text": "le Necronomicon a été volé."
         }
       ]
     },
@@ -592,12 +594,12 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "Pile de victoire :",
-        "confirm_text": "Chaque investigateur reçoit également 2 points d’expérience bonus pour l’aperçu qu’il a eu du monde caché du Mythe.",
+        "confirm_text": "Chaque investigateur reçoit également 2 points d’expérience bonus pour l’aperçu qu’il a eu du monde caché du Mythe.",
         "effects": [
           {
             "type": "earn_xp",
@@ -643,7 +645,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "henry_armitage_survived",
-          "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
+          "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
         }
       ]
     }
@@ -681,7 +683,7 @@
         "name": "Resolution 1"
       },
       "title": "Conclusion 1",
-      "text": "Alors que vous assénez le coup de grâce, le corps de la créature explose en des centaines d’appendices en forme de corde qui se contorsionnent sur le sol et sur les murs. Vous êtes si surpris que vous ne parvenez pas à les empêcher de fuir la pièce. Malgré tout, et quoi que fut la créature, vous êtes content qu’elle soit morte.",
+      "text": "Alors que vous assénez le coup de grâce, le corps de la créature explose en des centaines d’appendices en forme de corde qui se contorsionnent sur le sol et sur les murs. Vous êtes si surpris que vous ne parvenez pas à les empêcher de fuir la pièce. Malgré tout, et quoi que fut la créature, vous êtes content qu’elle soit morte.",
       "steps": [
         "killed_silas_bishop",
         "record_sacrificed",
@@ -710,7 +712,7 @@
         "name": "Resolution 3"
       },
       "title": "Conclusion 3",
-      "text": "La créature qui fut autrefois Silas Bishop tente de vous attaquer malgré ses chaînes, vous devez agir vite. Espérant qu’il y ait quelque chose dans la chambre que vous puissiez utiliser à votre avantage, vous contenez l’abomination assez longtemps pour mettre la main sur un journal ; la majorité du texte est écrite en latin. Vous découvrez qu’il s’agit d’extraits manuscrits du Necronomicon, mais vous ignorez leur utilité. Il n’y a pas de temps à perdre, vous récitez l’incantation en latin et sentez les mots qui glissent sans effort sur votre langue, comme une réminiscence de souvenirs antérieurs. Le corps de la créature commence à se flétrir et à fondre en poussant des cris aussi terrifiants que lancinants à mesure que l’incantation fait effet. À la fin, seul subsiste une masse fielleuse et humide, ainsi qu’une odeur nauséabonde.",
+      "text": "La créature qui fut autrefois Silas Bishop tente de vous attaquer malgré ses chaînes, vous devez agir vite. Espérant qu’il y ait quelque chose dans la chambre que vous puissiez utiliser à votre avantage, vous contenez l’abomination assez longtemps pour mettre la main sur un journal ; la majorité du texte est écrite en latin. Vous découvrez qu’il s’agit d’extraits manuscrits du Necronomicon, mais vous ignorez leur utilité. Il n’y a pas de temps à perdre, vous récitez l’incantation en latin et sentez les mots qui glissent sans effort sur votre langue, comme une réminiscence de souvenirs antérieurs. Le corps de la créature commence à se flétrir et à fondre en poussant des cris aussi terrifiants que lancinants à mesure que l’incantation fait effet. À la fin, seul subsiste une masse fielleuse et humide, ainsi qu’une odeur nauséabonde.",
       "steps": [
         "banished_silas_bishop",
         "record_sacrificed",
@@ -724,6 +726,7 @@
   "id": "dwl_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "armitages_fate",
   "setup": [
@@ -777,6 +780,7 @@
   "id": "dwl_epilogue",
   "scenario_name": "Épilogue",
   "full_name": "Épilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "dunwich",
   "setup": [
@@ -828,8 +832,9 @@
 },
 {
   "id": "essex_county_express",
-  "scenario_name": "L’Express du Comté d’Essex",
-  "full_name": "Scénario III : L’Express du Comté d’Essex",
+  "scenario_name": "L’Express du Comté d’Essex",
+  "header": "Scénario III",
+  "full_name": "Scénario III : L’Express du Comté d’Essex",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -850,7 +855,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "Les récents événements au musée vous ont amené à réévaluer l’histoire d’Armitage à propos de Dunwich. Tout cela ne peut pas être une coïncidence – Wilbur Whateley, le Necronomicon, la créature de Dunwich et les hommes et les créatures qui ont attaqué ici, à Arkham – tout doit être lié. Vous savez où vous devez vous rendre à présent : le village lugubre et isolé de Dunwich.\nVous envisagez un moment de raconter tout ce que vous savez à la Police d’État du Massachusetts, mais les aspects négatifs contrebalancent les bénéfices potentiels. Compte tenu de la nature de votre histoire, ils la considéreront probablement comme un canular absurde. Pire, ils pourraient vous arrêter. Après tout, vous étiez présent dans un bar clandestin et vous avez pénétré illégalement dans le musée. Vous décidez de vous rendre vous-même à Dunwich afin de pousser plus avant vos investigations.\nVous empaquetez tout ce que vous jugez utile et prenez un peu de repos pendant la nuit. Au petit matin, vous vous rendez à la gare du Quartier Nord et achetez un billet pour l’express. Dunwich se trouve à plusieurs heures de train au nord-ouest, le long de la vallée du Miskatonic. Il n’y a pas de gare à Dunwich même, mais vous parvenez à téléphoner à l’une des connaissances d’Armitage dans le village : un homme nommé Zebulon Whateley qui était présent lors des événements qui se sont déroulés il y a plusieurs mois.\nLes notes d’Armitage indiquent que la famille Whateley est divisée en plusieurs branches, certaines décadentes et sans scrupules, d’autres « saines », autrement dit, non affectée par les rites infâmes et diaboliques. D’après Armitage, la branche de la famille à laquelle appartient Zebulon se situe quelque part entre les deux. Ils connaissent les traditions de leurs ancêtres mais n’ont pas été corrompus par eux. Zebulon accepte de venir vous chercher à la gare la plus proche et de vous conduire jusqu’au village.\nAlors que le train quitte Arkham, les événements de la veille vous rattrapent et la fatigue vous submerge. Mais avant d’atteindre votre destination, le wagon se met à gronder et à trembler, vous tirant de votre rêverie. Le train freine brutalement et vous entendez un claquement derrière vous…"
+      "text": "Les récents événements au musée vous ont amené à réévaluer l’histoire d’Armitage à propos de Dunwich. Tout cela ne peut pas être une coïncidence – Wilbur Whateley, le Necronomicon, la créature de Dunwich et les hommes et les créatures qui ont attaqué ici, à Arkham – tout doit être lié. Vous savez où vous devez vous rendre à présent : le village lugubre et isolé de Dunwich.\nVous envisagez un moment de raconter tout ce que vous savez à la Police d’État du Massachusetts, mais les aspects négatifs contrebalancent les bénéfices potentiels. Compte tenu de la nature de votre histoire, ils la considéreront probablement comme un canular absurde. Pire, ils pourraient vous arrêter. Après tout, vous étiez présent dans un bar clandestin et vous avez pénétré illégalement dans le musée. Vous décidez de vous rendre vous-même à Dunwich afin de pousser plus avant vos investigations.\nVous empaquetez tout ce que vous jugez utile et prenez un peu de repos pendant la nuit. Au petit matin, vous vous rendez à la gare du Quartier Nord et achetez un billet pour l’express. Dunwich se trouve à plusieurs heures de train au nord-ouest, le long de la vallée du Miskatonic. Il n’y a pas de gare à Dunwich même, mais vous parvenez à téléphoner à l’une des connaissances d’Armitage dans le village : un homme nommé Zebulon Whateley qui était présent lors des événements qui se sont déroulés il y a plusieurs mois.\nLes notes d’Armitage indiquent que la famille Whateley est divisée en plusieurs branches, certaines décadentes et sans scrupules, d’autres « saines », autrement dit, non affectée par les rites infâmes et diaboliques. D’après Armitage, la branche de la famille à laquelle appartient Zebulon se situe quelque part entre les deux. Ils connaissent les traditions de leurs ancêtres mais n’ont pas été corrompus par eux. Zebulon accepte de venir vous chercher à la gare la plus proche et de vous conduire jusqu’au village.\nAlors que le train quitte Arkham, les événements de la veille vous rattrapent et la fatigue vous submerge. Mais avant d’atteindre votre destination, le wagon se met à gronder et à trembler, vous tirant de votre rêverie. Le train freine brutalement et vous entendez un claquement derrière vous…"
     },
     {
       "id": "gather_encounter_sets",
@@ -866,7 +871,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Prenez au hasard l’un des trois lieux Locomotive et mettez-le en jeu. Retirez de la partie les autres exemplaires de la Locomotive. Ensuite, prenez au hasard six des huit lieux Wagon et mettez-les en jeu, disposés en ligne à gauche de la Locomotive. Retirez de la partie les deux lieux Wagon restants."
+      "text": "Prenez au hasard l’un des trois lieux Locomotive et mettez-le en jeu. Retirez de la partie les autres exemplaires de la Locomotive. Ensuite, prenez au hasard six des huit lieux Wagon et mettez-les en jeu, disposés en ligne à gauche de la Locomotive. Retirez de la partie les deux lieux Wagon restants."
     },
     {
       "id": "location_layout",
@@ -888,11 +893,11 @@
     },
     {
       "id": "reveal_location",
-      "text": "Révélez le Wagon situé le plus à gauche. Chaque investigateur commence la partie dans ce lieu. (Si ce lieu a un effet « forcé » qui s’active en entrant dans ce lieu, ignorez-le.)"
+      "text": "Révélez le Wagon situé le plus à gauche. Chaque investigateur commence la partie dans ce lieu. (Si ce lieu a un effet « forcé » qui s’active en entrant dans ce lieu, ignorez-le.)"
     },
     {
       "id": "set_aside_cards",
-      "text": "Mettez de côté les 4 exemplaires de À Travers l’Espace et le Temps, hors jeu."
+      "text": "Mettez de côté les 4 exemplaires de À Travers l’Espace et le Temps, hors jeu."
     },
     {
       "id": "add_chaos_token",
@@ -955,8 +960,8 @@
     {
       "id": "train_note",
       "type": "rule_reminder",
-      "title": "Se Déplacer dans le Train : « Gauche » et « Droite »",
-      "text": "Dans ce scénario, les lieux sont alignés de gauche à droite, la Locomotive étant le lieu le plus à droite. Quand un effet de carte se réfère au « lieu à gauche » ou au « lieu à droite », il se réfère au lieu situé immédiatement à la gauche ou à la droite de votre lieu.\nTout effet de carte se référant à une direction (gauche ou droite) devrait être interprété selon le schéma sur la page précédente."
+      "title": "Se Déplacer dans le Train : « Gauche » et « Droite »",
+      "text": "Dans ce scénario, les lieux sont alignés de gauche à droite, la Locomotive étant le lieu le plus à droite. Quand un effet de carte se réfère au « lieu à gauche » ou au « lieu à droite », il se réfère au lieu situé immédiatement à la gauche ou à la droite de votre lieu.\nTout effet de carte se référant à une direction (gauche ou droite) devrait être interprété selon le schéma sur la page précédente."
     },
     {
       "id": "investigators_delayed",
@@ -965,13 +970,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_delayed",
-          "text": "les investigateurs ont été retardés lors de leur voyage vers Dunwich."
+          "text": "les investigateurs ont été retardés lors de leur voyage vers Dunwich."
         }
       ]
     },
     {
       "id": "across_space_and_time",
-      "text": "Chaque investigateur qui a été vaincu reçoit la faiblesse À Travers l’Espace et le Temps et doit ajouter 1 exemplaire de cette carte à son deck. Cette carte ne compte pas dans la Taille du Deck de l’investigateur.",
+      "text": "Chaque investigateur qui a été vaincu reçoit la faiblesse À Travers l’Espace et le Temps et doit ajouter 1 exemplaire de cette carte à son deck. Cette carte ne compte pas dans la Taille du Deck de l’investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -982,7 +987,7 @@
     },
     {
       "id": "bonus_xp",
-      "text": "Chaque investigateur qui a été vaincu reçoit 1 point d’expérience bonus pour l’aperçu du cosmos qu’il a eu au-delà du portail.",
+      "text": "Chaque investigateur qui a été vaincu reçoit 1 point d’expérience bonus pour l’aperçu du cosmos qu’il a eu au-delà du portail.",
       "effects": [
         {
           "type": "earn_xp",
@@ -1017,7 +1022,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "necronomicon_stolen",
-          "text": "le Necronomicon a été volé."
+          "text": "le Necronomicon a été volé."
         }
       ]
     },
@@ -1155,7 +1160,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -1218,7 +1223,7 @@
         "mental"
       ],
       "title": "Conclusion 1",
-      "text": "Vous poussez un soupir de soulagement lorsque le portail derrière le train s’affaisse sur lui-même. Les quelques passagers qui ont sur vécu à ce calvaire ne semblent pas en mesure d’appréhender ce qui vient de se passer. Un passager évoque « l’explosion d’une conduite dans le dernier wagon, » et cela devient bientôt l’explication rationnelle pour les innocents et les ignorants, ceux qui ne peuvent pas, ou ne veulent pas, chercher plus loin. Vous, par contre, vous savez... bien qu’avec le recul, vous préféreriez ne rien savoir.",
+      "text": "Vous poussez un soupir de soulagement lorsque le portail derrière le train s’affaisse sur lui-même. Les quelques passagers qui ont sur vécu à ce calvaire ne semblent pas en mesure d’appréhender ce qui vient de se passer. Un passager évoque « l’explosion d’une conduite dans le dernier wagon, » et cela devient bientôt l’explication rationnelle pour les innocents et les ignorants, ceux qui ne peuvent pas, ou ne veulent pas, chercher plus loin. Vous, par contre, vous savez... bien qu’avec le recul, vous préféreriez ne rien savoir.",
       "steps": [
         "earn_xp",
         "$upgrade_decks"
@@ -1237,7 +1242,7 @@
         "mental"
       ],
       "title": "Conclusion 2",
-      "text": "Sous le choc, vous commencez à marcher le long des rails en direction de Dunwich.",
+      "text": "Sous le choc, vous commencez à marcher le long des rails en direction de Dunwich.",
       "steps": [
         "investigators_delayed",
         "earn_xp",
@@ -1249,6 +1254,7 @@
 {
   "id": "extracurricular_activity",
   "scenario_name": "Activité Extrascolaire",
+  "header": "Scénario I–A",
   "full_name": "Scénario I–A : Activité Extrascolaire",
   "setup": [
     "prologue",
@@ -1417,7 +1423,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -1545,7 +1551,7 @@
         "name": "Resolution 2"
       },
       "title": "Conclusion 2",
-      "text": "Vous activez chaque alarme incendie du dortoir et escortez les étudiants hors du bâtiment par l'entrée nord, espé­rant réussir à leur faire quitter le campus. La plupart d'entre eux sont confus et épuisés, mais vous pensez qu'une tentative pour leur expliquer la situation ferait plus de mal que de bien. Quelques mi­nutes plus tard, un terrible hurlement résonne à travers le campus, perçant et strident. Vous ordonnez aux étudiants d'attendre et re­tournez dans les dortoirs afin d'enquêter. Etonnamment, vous ne trouvez aucune trace de l'étrange créature — une perspective qui vous effraie plus qu'elle ne vous rassure. Vous vous ruez vers les bureaux des enseignants pour trouver le professeur Rice, mais il n'y a aucun signe de lui nulle part.",
+      "text": "Vous activez chaque alarme incendie du dortoir et escortez les étudiants hors du bâtiment par l'entrée nord, espé­rant réussir à leur faire quitter le campus. La plupart d'entre eux sont confus et épuisés, mais vous pensez qu'une tentative pour leur expliquer la situation ferait plus de mal que de bien. Quelques mi­nutes plus tard, un terrible hurlement résonne à travers le campus, perçant et strident. Vous ordonnez aux étudiants d'attendre et re­tournez dans les dortoirs afin d'enquêter. Etonnamment, vous ne trouvez aucune trace de l'étrange créature — une perspective qui vous effraie plus qu'elle ne vous rassure. Vous vous ruez vers les bureaux des enseignants pour trouver le professeur Rice, mais il n'y a aucun signe de lui nulle part.",
       "steps": [
         "warren_rice_kidnapped",
         "students_rescued",
@@ -1589,6 +1595,7 @@
 {
   "id": "lost_in_time_and_space",
   "scenario_name": "Perdu dans le Temps et l’Espace",
+  "header": "Scénario VII",
   "full_name": "Scénario VII : Perdu dans le Temps et l’Espace",
   "setup": [
     "prologue",
@@ -1746,7 +1753,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -1907,6 +1914,7 @@
 {
   "id": "dwl_interlude2",
   "scenario_name": "Les Survivants",
+  "header": "Interlude II",
   "full_name": "Interlude II : Les Survivants",
   "type": "interlude",
   "icon": "whippoorwills",
@@ -1965,7 +1973,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "henry_armitage_survived",
-          "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
+          "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
         }
       ]
     },
@@ -2270,6 +2278,7 @@
 {
   "id": "the_house_always_wins",
   "scenario_name": "La Banque Gagne Toujours",
+  "header": "Scénario I–B",
   "full_name": "Scénario I–B : La Banque Gagne Toujours",
   "setup": [
     "prologue",
@@ -2462,7 +2471,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -2477,7 +2486,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -2613,6 +2622,7 @@
 {
   "id": "the_miskatonic_museum",
   "scenario_name": "Le Musée Miskatonic",
+  "header": "Scénario II",
   "full_name": "Scénario II : Le Musée Miskatonic",
   "setup": [
     "prologue",
@@ -2777,7 +2787,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -2942,6 +2952,7 @@
 {
   "id": "undimensioned_and_unseen",
   "scenario_name": "Aux Frontières du Visible",
+  "header": "Scénario V",
   "full_name": "Scénario V : Aux Frontières du Visible",
   "setup": [
     "prologue",
@@ -3219,7 +3230,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -3323,6 +3334,7 @@
 {
   "id": "where_doom_awaits",
   "scenario_name": "Là où le Destin Attend",
+  "header": "Scénario VI",
   "full_name": "Scénario VI : Là où le Destin Attend",
   "setup": [
     "prologue",
@@ -3749,7 +3761,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -4017,6 +4029,7 @@
 {
   "id": "arkham",
   "scenario_name": "Les Masques de Minuit",
+  "header": "Scénario II",
   "full_name": "Chapitre II : Les Masques de Minuit",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -4596,7 +4609,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -4672,6 +4685,7 @@
 {
   "id": "tentacles",
   "scenario_name": "Le Dévoreur du Dessous",
+  "header": "Scénario III",
   "full_name": "Chapitre III : Le Dévoreur du Dessous",
   "setup": [
     "intro",
@@ -4969,7 +4983,7 @@
     },
     {
       "id": "earn_5_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -4986,7 +5000,7 @@
     },
     {
       "id": "earn_10_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -5003,7 +5017,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -5114,7 +5128,8 @@
 {
   "id": "torch",
   "scenario_name": "Le Rassemblement",
-  "full_name": "Chapitre I : Le Rassemblement",
+  "header": "Scénario I",
+  "full_name": "Scénario I : Le Rassemblement",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -5231,7 +5246,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Chaque investigateur reçoit également 2 points d’expérience bonus pour l’aperçu qu’il a eu du monde caché du Mythe.",
+        "confirm_text": "Chaque investigateur reçoit également 2 points d’expérience bonus pour l’aperçu qu’il a eu du monde caché du Mythe.",
         "text": "Pile de victoire :",
         "effects": [
           {
@@ -5654,6 +5669,7 @@
   "id": "a_phantom_of_truth",
   "scenario_name": "Le Spectre de la Vérité",
   "full_name": "Scénario V : Le Spectre de la Vérité",
+  "header": "Scénario V",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -6420,7 +6436,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -6629,6 +6645,7 @@
   "id": "black_stars_rise",
   "scenario_name": "Sous les Étoiles Noires",
   "full_name": "Scénario VII : Sous les Étoiles Noires",
+  "header": "Scénario VII",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -7109,7 +7126,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -7356,6 +7373,7 @@
   "id": "curtain_call",
   "scenario_name": "Baisser de Rideau",
   "full_name": "Scénario I : Baisser de Rideau",
+  "header": "Scénario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -7480,7 +7498,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -7707,6 +7725,7 @@
   "id": "dim_carcosa",
   "scenario_name": "La Pâle Carcosa",
   "full_name": "Scénario VIII : La Pâle Carcosa",
+  "header": "Scénario VIII",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -8293,7 +8312,7 @@
     },
     {
       "id": "earn_xp_triumph",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -8310,7 +8329,7 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -8544,6 +8563,7 @@
   "id": "echoes_of_the_past",
   "scenario_name": "Les Échos du Passé",
   "full_name": "Scénario III : Les Échos du Passé",
+  "header": "Scénario III",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -8850,7 +8870,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -8865,7 +8885,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -9128,8 +9148,9 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Épilogue",
-  "icon": "maddening_delusions",
+  "header": "",
   "full_name": "Épilogue",
+  "icon": "maddening_delusions",
   "type": "epilogue",
   "setup": [
     "check_epilogue"
@@ -9168,6 +9189,7 @@
   "id": "ptc_interlude2",
   "scenario_name": "Âme Perdue",
   "full_name": "Interlude II : Âme Perdue",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "the_stranger",
   "setup": [
@@ -9359,6 +9381,7 @@
   "id": "ptc_interlude1",
   "scenario_name": "Le Prix de la Folie",
   "full_name": "Interlude I : Le Prix de la Folie",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "hasturs_gift",
   "setup": [
@@ -9693,6 +9716,7 @@
   "id": "ptc_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "delusions",
   "setup": [
@@ -9756,6 +9780,7 @@
   "id": "the_last_king",
   "scenario_name": "Le Dernier Roi",
   "full_name": "Scénario II : Le Dernier Roi",
+  "header": "Scénario II",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -10018,7 +10043,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -10238,6 +10263,7 @@
   "id": "the_pallid_mask",
   "scenario_name": "Le Masque Blême",
   "full_name": "Scénario VI : Le Masque Blême",
+  "header": "Scénario VI",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -10728,7 +10754,7 @@
           {
             "id": "doubt",
             "text": "Vous avez dépensé des indices pour avancer.",
-            "description": " Inscrivez deux <b>Doutes</b>",
+            "description": "Inscrivez deux <b>Doutes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -10829,7 +10855,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -10980,7 +11006,7 @@
     },
     {
       "id": "add_two_conviction",
-      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "Pendant le scénario, il vous a été demandé d'inscrire deux <b>Certitudes</b> dans votre Carnet de Campagne.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -11010,7 +11036,7 @@
     },
     {
       "id": "add_two_doubt",
-      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "Pendant ce scénario, il vous a été demandé d'inscrire deux <b>Doutes</b> dans votre Carnet de Campagne.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -11040,7 +11066,7 @@
           {
             "type": "campaign_data",
             "campaign_data": "version",
-            "min_version": 1,
+            "min_version": 2,
             "options": [
               {
                 "boolCondition": true
@@ -11062,13 +11088,13 @@
     {
       "id": "ask_conviction_or_doubt_resolution",
       "type": "input",
-      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "text": "Au cours du scénario, avez-vous reçu des instructions pour modifier votre Carnet de Campagne ?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "doubt",
-            "text": "Mark 2 <b>Doubt</b>.",
+            "text": "Inscrivez 2 <b>Doutes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -11080,7 +11106,7 @@
           },
           {
             "id": "conviction",
-            "text": "Mark 2 <b>Conviction</b>.",
+            "text": "Inscrivez 2 <b>Certitudes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -11092,7 +11118,7 @@
           },
           {
             "id": "neither",
-            "text": "Scenario ended before Act 2b was resolved."
+            "text": "Le scénario s'est terminé avant la résolution de l'acte 2b."
           }
         ]
       }
@@ -11162,6 +11188,7 @@
   "id": "the_unspeakable_oath",
   "scenario_name": "Le Serment Indicible",
   "full_name": "Scénario IV : Le Serment Indicible",
+  "header": "Scénario IV",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -11749,7 +11776,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -12312,6 +12339,7 @@
 {
   "id": "armitages_fate",
   "scenario_name": "Le Sort d’Armitage",
+  "header": "Interlude I",
   "full_name": "Interlude I : Le Sort d’Armitage",
   "type": "interlude",
   "icon": "armitages_fate",
@@ -12415,6 +12443,7 @@
   "id": "dwl_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "armitages_fate",
   "setup": [
@@ -12464,6 +12493,7 @@
   "id": "dwl_epilogue",
   "scenario_name": "Épilogue",
   "full_name": "Épilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "dunwich",
   "setup": [
@@ -12516,6 +12546,7 @@
 {
   "id": "return_to_blood_on_the_altar",
   "scenario_name": "Renouveau - Du Sang sur l'Autel",
+  "header": "Scénario IV",
   "full_name": "Scénario IV: Renouveau - Du Sang sur l'Autel",
   "setup": [
     "prologue",
@@ -12599,7 +12630,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "killed_silas_bishop",
-          "text": "les investigateurs ont abrégé les souff\\u001erances de Silas Bishop."
+          "text": "les investigateurs ont abrégé les souffrances de Silas Bishop."
         }
       ]
     },
@@ -12610,7 +12641,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "restored_silas_bishop",
-          "text": "les investigateurs ont rendu sa forme à Silas Bishop."
+          "text": "les investigateurs ont rendu sa forme à Silas Bishop."
         }
       ]
     },
@@ -12627,11 +12658,11 @@
     },
     {
       "id": "sacrifice_all",
-      "text": "S’il restait des sacrifices potentiels à la fin de la partie, mettez-les sous le deck Intrigue."
+      "text": "S’il restait des sacrifices potentiels à la fin de la partie, mettez-les sous le deck Intrigue."
     },
     {
       "id": "record_sacrificed",
-      "text": "Dans votre Carnet de Campagne, sous la mention « Sacrifiés à Yog-Sothoth », inscrivez les noms de chaque carte unique située sous le deck Intrigue. Ces cartes sont retirées des decks de tous les Joueurs et aucun joueur ne peut plus les intégrer à son deck pour le reste de la campagne.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « Sacrifiés à Yog-Sothoth », inscrivez les noms de chaque carte unique située sous le deck Intrigue. Ces cartes sont retirées des decks de tous les Joueurs et aucun joueur ne peut plus les intégrer à son deck pour le reste de la campagne.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -12704,7 +12735,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "necronomicon_stolen",
-          "text": "le Necronomicon a été volé."
+          "text": "le Necronomicon a été volé."
         }
       ]
     },
@@ -12720,12 +12751,12 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "Pile de victoire :",
-        "confirm_text": "Chaque investigateur reçoit également 2 points d’expérience bonus pour l’aperçu qu’il a eu du monde caché du Mythe.",
+        "confirm_text": "Chaque investigateur reçoit également 2 points d’expérience bonus pour l’aperçu qu’il a eu du monde caché du Mythe.",
         "effects": [
           {
             "type": "earn_xp",
@@ -12771,7 +12802,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "henry_armitage_survived",
-          "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
+          "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
         }
       ]
     },
@@ -12911,7 +12942,7 @@
         "name": "Resolution 1"
       },
       "title": "Conclusion 1",
-      "text": "Alors que vous assénez le coup de grâce, le corps de la créature explose en des centaines d’appendices en forme de corde qui se contorsionnent sur le sol et sur les murs. Vous êtes si surpris que vous ne parvenez pas à les empêcher de fuir la pièce. Malgré tout, et quoi que fut la créature, vous êtes content qu’elle soit morte.",
+      "text": "Alors que vous assénez le coup de grâce, le corps de la créature explose en des centaines d’appendices en forme de corde qui se contorsionnent sur le sol et sur les murs. Vous êtes si surpris que vous ne parvenez pas à les empêcher de fuir la pièce. Malgré tout, et quoi que fut la créature, vous êtes content qu’elle soit morte.",
       "steps": [
         "killed_silas_bishop",
         "record_sacrificed",
@@ -12940,7 +12971,7 @@
         "name": "Resolution 3"
       },
       "title": "Conclusion 3",
-      "text": "La créature qui fut autrefois Silas Bishop tente de vous attaquer malgré ses chaînes, vous devez agir vite. Espérant qu’il y ait quelque chose dans la chambre que vous puissiez utiliser à votre avantage, vous contenez l’abomination assez longtemps pour mettre la main sur un journal ; la majorité du texte est écrite en latin. Vous découvrez qu’il s’agit d’extraits manuscrits du Necronomicon, mais vous ignorez leur utilité. Il n’y a pas de temps à perdre, vous récitez l’incantation en latin et sentez les mots qui glissent sans effort sur votre langue, comme une réminiscence de souvenirs antérieurs. Le corps de la créature commence à se flétrir et à fondre en poussant des cris aussi terrifiants que lancinants à mesure que l’incantation fait effet. À la fin, seul subsiste une masse fielleuse et humide, ainsi qu’une odeur nauséabonde.",
+      "text": "La créature qui fut autrefois Silas Bishop tente de vous attaquer malgré ses chaînes, vous devez agir vite. Espérant qu’il y ait quelque chose dans la chambre que vous puissiez utiliser à votre avantage, vous contenez l’abomination assez longtemps pour mettre la main sur un journal ; la majorité du texte est écrite en latin. Vous découvrez qu’il s’agit d’extraits manuscrits du Necronomicon, mais vous ignorez leur utilité. Il n’y a pas de temps à perdre, vous récitez l’incantation en latin et sentez les mots qui glissent sans effort sur votre langue, comme une réminiscence de souvenirs antérieurs. Le corps de la créature commence à se flétrir et à fondre en poussant des cris aussi terrifiants que lancinants à mesure que l’incantation fait effet. À la fin, seul subsiste une masse fielleuse et humide, ainsi qu’une odeur nauséabonde.",
       "steps": [
         "banished_silas_bishop",
         "record_sacrificed",
@@ -12953,6 +12984,7 @@
 {
   "id": "return_to_essex_county_express",
   "scenario_name": "Renouveau - L'Express du Comté d'Essex",
+  "header": "Scénario III",
   "full_name": "Scénario III: Renouveau - L'Express du Comté d'Essex",
   "setup": [
     "prologue",
@@ -12975,7 +13007,7 @@
         "name": "Intro"
       },
       "type": "story",
-      "text": "Les récents événements au musée vous ont amené à réévaluer l’histoire d’Armitage à propos de Dunwich. Tout cela ne peut pas être une coïncidence – Wilbur Whateley, le Necronomicon, la créature de Dunwich et les hommes et les créatures qui ont attaqué ici, à Arkham – tout doit être lié. Vous savez où vous devez vous rendre à présent : le village lugubre et isolé de Dunwich.\nVous envisagez un moment de raconter tout ce que vous savez à la Police d’État du Massachusetts, mais les aspects négatifs contrebalancent les bénéfices potentiels. Compte tenu de la nature de votre histoire, ils la considéreront probablement comme un canular absurde. Pire, ils pourraient vous arrêter. Après tout, vous étiez présent dans un bar clandestin et vous avez pénétré illégalement dans le musée. Vous décidez de vous rendre vous-même à Dunwich afin de pousser plus avant vos investigations.\nVous empaquetez tout ce que vous jugez utile et prenez un peu de repos pendant la nuit. Au petit matin, vous vous rendez à la gare du Quartier Nord et achetez un billet pour l’express. Dunwich se trouve à plusieurs heures de train au nord-ouest, le long de la vallée du Miskatonic. Il n’y a pas de gare à Dunwich même, mais vous parvenez à téléphoner à l’une des connaissances d’Armitage dans le village : un homme nommé Zebulon Whateley qui était présent lors des événements qui se sont déroulés il y a plusieurs mois.\nLes notes d’Armitage indiquent que la famille Whateley est divisée en plusieurs branches, certaines décadentes et sans scrupules, d’autres « saines », autrement dit, non affectée par les rites infâmes et diaboliques. D’après Armitage, la branche de la famille à laquelle appartient Zebulon se situe quelque part entre les deux. Ils connaissent les traditions de leurs ancêtres mais n’ont pas été corrompus par eux. Zebulon accepte de venir vous chercher à la gare la plus proche et de vous conduire jusqu’au village.\nAlors que le train quitte Arkham, les événements de la veille vous rattrapent et la fatigue vous submerge. Mais avant d’atteindre votre destination, le wagon se met à gronder et à trembler, vous tirant de votre rêverie. Le train freine brutalement et vous entendez un claquement derrière vous…"
+      "text": "Les récents événements au musée vous ont amené à réévaluer l’histoire d’Armitage à propos de Dunwich. Tout cela ne peut pas être une coïncidence – Wilbur Whateley, le Necronomicon, la créature de Dunwich et les hommes et les créatures qui ont attaqué ici, à Arkham – tout doit être lié. Vous savez où vous devez vous rendre à présent : le village lugubre et isolé de Dunwich.\nVous envisagez un moment de raconter tout ce que vous savez à la Police d’État du Massachusetts, mais les aspects négatifs contrebalancent les bénéfices potentiels. Compte tenu de la nature de votre histoire, ils la considéreront probablement comme un canular absurde. Pire, ils pourraient vous arrêter. Après tout, vous étiez présent dans un bar clandestin et vous avez pénétré illégalement dans le musée. Vous décidez de vous rendre vous-même à Dunwich afin de pousser plus avant vos investigations.\nVous empaquetez tout ce que vous jugez utile et prenez un peu de repos pendant la nuit. Au petit matin, vous vous rendez à la gare du Quartier Nord et achetez un billet pour l’express. Dunwich se trouve à plusieurs heures de train au nord-ouest, le long de la vallée du Miskatonic. Il n’y a pas de gare à Dunwich même, mais vous parvenez à téléphoner à l’une des connaissances d’Armitage dans le village : un homme nommé Zebulon Whateley qui était présent lors des événements qui se sont déroulés il y a plusieurs mois.\nLes notes d’Armitage indiquent que la famille Whateley est divisée en plusieurs branches, certaines décadentes et sans scrupules, d’autres « saines », autrement dit, non affectée par les rites infâmes et diaboliques. D’après Armitage, la branche de la famille à laquelle appartient Zebulon se situe quelque part entre les deux. Ils connaissent les traditions de leurs ancêtres mais n’ont pas été corrompus par eux. Zebulon accepte de venir vous chercher à la gare la plus proche et de vous conduire jusqu’au village.\nAlors que le train quitte Arkham, les événements de la veille vous rattrapent et la fatigue vous submerge. Mais avant d’atteindre votre destination, le wagon se met à gronder et à trembler, vous tirant de votre rêverie. Le train freine brutalement et vous entendez un claquement derrière vous…"
     },
     {
       "id": "location_layout",
@@ -12997,7 +13029,7 @@
     },
     {
       "id": "reveal_location",
-      "text": "Révélez le Wagon situé le plus à gauche. Chaque investigateur commence la partie dans ce lieu. (Si ce lieu a un effet « forcé » qui s’active en entrant dans ce lieu, ignorez-le.)"
+      "text": "Révélez le Wagon situé le plus à gauche. Chaque investigateur commence la partie dans ce lieu. (Si ce lieu a un effet « forcé » qui s’active en entrant dans ce lieu, ignorez-le.)"
     },
     {
       "id": "add_chaos_token",
@@ -13060,8 +13092,8 @@
     {
       "id": "train_note",
       "type": "rule_reminder",
-      "title": "Se Déplacer dans le Train : « Gauche » et « Droite »",
-      "text": "Dans ce scénario, les lieux sont alignés de gauche à droite, la Locomotive étant le lieu le plus à droite. Quand un effet de carte se réfère au « lieu à gauche » ou au « lieu à droite », il se réfère au lieu situé immédiatement à la gauche ou à la droite de votre lieu.\nTout effet de carte se référant à une direction (gauche ou droite) devrait être interprété selon le schéma sur la page précédente."
+      "title": "Se Déplacer dans le Train : « Gauche » et « Droite »",
+      "text": "Dans ce scénario, les lieux sont alignés de gauche à droite, la Locomotive étant le lieu le plus à droite. Quand un effet de carte se réfère au « lieu à gauche » ou au « lieu à droite », il se réfère au lieu situé immédiatement à la gauche ou à la droite de votre lieu.\nTout effet de carte se référant à une direction (gauche ou droite) devrait être interprété selon le schéma sur la page précédente."
     },
     {
       "id": "investigators_delayed",
@@ -13070,13 +13102,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_delayed",
-          "text": "les investigateurs ont été retardés lors de leur voyage vers Dunwich."
+          "text": "les investigateurs ont été retardés lors de leur voyage vers Dunwich."
         }
       ]
     },
     {
       "id": "across_space_and_time",
-      "text": "Chaque investigateur qui a été vaincu reçoit la faiblesse À Travers l’Espace et le Temps et doit ajouter 1 exemplaire de cette carte à son deck. Cette carte ne compte pas dans la Taille du Deck de l’investigateur.",
+      "text": "Chaque investigateur qui a été vaincu reçoit la faiblesse À Travers l’Espace et le Temps et doit ajouter 1 exemplaire de cette carte à son deck. Cette carte ne compte pas dans la Taille du Deck de l’investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -13087,7 +13119,7 @@
     },
     {
       "id": "bonus_xp",
-      "text": "Chaque investigateur qui a été vaincu reçoit 1 point d’expérience bonus pour l’aperçu du cosmos qu’il a eu au-delà du portail.",
+      "text": "Chaque investigateur qui a été vaincu reçoit 1 point d’expérience bonus pour l’aperçu du cosmos qu’il a eu au-delà du portail.",
       "effects": [
         {
           "type": "earn_xp",
@@ -13122,7 +13154,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "necronomicon_stolen",
-          "text": "le Necronomicon a été volé."
+          "text": "le Necronomicon a été volé."
         }
       ]
     },
@@ -13260,7 +13292,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -13348,7 +13380,7 @@
         "mental"
       ],
       "title": "Conclusion 1",
-      "text": "Vous poussez un soupir de soulagement lorsque le portail derrière le train s’affaisse sur lui-même. Les quelques passagers qui ont sur vécu à ce calvaire ne semblent pas en mesure d’appréhender ce qui vient de se passer. Un passager évoque « l’explosion d’une conduite dans le dernier wagon, » et cela devient bientôt l’explication rationnelle pour les innocents et les ignorants, ceux qui ne peuvent pas, ou ne veulent pas, chercher plus loin. Vous, par contre, vous savez... bien qu’avec le recul, vous préféreriez ne rien savoir.",
+      "text": "Vous poussez un soupir de soulagement lorsque le portail derrière le train s’affaisse sur lui-même. Les quelques passagers qui ont sur vécu à ce calvaire ne semblent pas en mesure d’appréhender ce qui vient de se passer. Un passager évoque « l’explosion d’une conduite dans le dernier wagon, » et cela devient bientôt l’explication rationnelle pour les innocents et les ignorants, ceux qui ne peuvent pas, ou ne veulent pas, chercher plus loin. Vous, par contre, vous savez... bien qu’avec le recul, vous préféreriez ne rien savoir.",
       "steps": [
         "earn_xp",
         "$upgrade_decks"
@@ -13367,7 +13399,7 @@
         "mental"
       ],
       "title": "Conclusion 2",
-      "text": "Sous le choc, vous commencez à marcher le long des rails en direction de Dunwich.",
+      "text": "Sous le choc, vous commencez à marcher le long des rails en direction de Dunwich.",
       "steps": [
         "investigators_delayed",
         "earn_xp",
@@ -13379,6 +13411,7 @@
 {
   "id": "return_to_extracurricular_activity",
   "scenario_name": "Renouveau - Activité Extrascolaire",
+  "header": "Scénario I–A",
   "full_name": "Scénario I–A:Renouveau - Activité Extrascolaire",
   "setup": [
     "prologue",
@@ -13506,7 +13539,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -13699,7 +13732,7 @@
         "name": "Resolution 2"
       },
       "title": "Conclusion 2",
-      "text": "Vous activez chaque alarme incendie du dortoir et escortez les étudiants hors du bâtiment par l'entrée nord, espé­rant réussir à leur faire quitter le campus. La plupart d'entre eux sont confus et épuisés, mais vous pensez qu'une tentative pour leur expliquer la situation ferait plus de mal que de bien. Quelques mi­nutes plus tard, un terrible hurlement résonne à travers le campus, perçant et strident. Vous ordonnez aux étudiants d'attendre et re­tournez dans les dortoirs afin d'enquêter. Etonnamment, vous ne trouvez aucune trace de l'étrange créature — une perspective qui vous effraie plus qu'elle ne vous rassure. Vous vous ruez vers les bureaux des enseignants pour trouver le professeur Rice, mais il n'y a aucun signe de lui nulle part.",
+      "text": "Vous activez chaque alarme incendie du dortoir et escortez les étudiants hors du bâtiment par l'entrée nord, espé­rant réussir à leur faire quitter le campus. La plupart d'entre eux sont confus et épuisés, mais vous pensez qu'une tentative pour leur expliquer la situation ferait plus de mal que de bien. Quelques mi­nutes plus tard, un terrible hurlement résonne à travers le campus, perçant et strident. Vous ordonnez aux étudiants d'attendre et re­tournez dans les dortoirs afin d'enquêter. Etonnamment, vous ne trouvez aucune trace de l'étrange créature — une perspective qui vous effraie plus qu'elle ne vous rassure. Vous vous ruez vers les bureaux des enseignants pour trouver le professeur Rice, mais il n'y a aucun signe de lui nulle part.",
       "steps": [
         "warren_rice_kidnapped",
         "students_rescued",
@@ -13743,6 +13776,7 @@
 {
   "id": "return_to_lost_in_time_and_space",
   "scenario_name": "Renouveau - Perdu dans le Temps et l'Espace",
+  "header": "Scénario VII",
   "full_name": "Scénario VII: Renouveau - Perdu dans le Temps et l'Espace",
   "setup": [
     "prologue",
@@ -13887,7 +13921,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -14095,6 +14129,7 @@
 {
   "id": "return_to_the_house_always_wins",
   "scenario_name": "Renouveau - La Banque Gagne Toujours",
+  "header": "Scénario I–B",
   "full_name": "Scénario I–B: Renouveau - La Banque Gagne Toujours",
   "setup": [
     "prologue",
@@ -14259,7 +14294,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -14274,7 +14309,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -14439,6 +14474,7 @@
 {
   "id": "return_to_the_miskatonic_museum",
   "scenario_name": "Renouveau - Le Musée Miskatonic",
+  "header": "Scénario II",
   "full_name": "Scénario II: Renouveau - Le Musée Miskatonic",
   "setup": [
     "prologue",
@@ -14579,7 +14615,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -14777,6 +14813,7 @@
 {
   "id": "return_to_undimensioned_and_unseen",
   "scenario_name": "Renouveau - Aux Frontières du Visible",
+  "header": "Scénario V",
   "full_name": "Scénario V: Renouveau - Aux Frontières du Visible",
   "setup": [
     "prologue",
@@ -15024,7 +15061,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -15170,6 +15207,7 @@
 {
   "id": "return_to_where_doom_awaits",
   "scenario_name": "Renouveau - Là où le Destin Attend",
+  "header": "Scénario VI",
   "full_name": "Scénario VI: Renouveau - Là où le Destin Attend",
   "setup": [
     "prologue",
@@ -15536,7 +15574,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -15668,6 +15706,7 @@
 {
   "id": "dwl_interlude2",
   "scenario_name": "Les Survivants",
+  "header": "Interlude II",
   "full_name": "Interlude II : Les Survivants",
   "type": "interlude",
   "icon": "whippoorwills",
@@ -15726,7 +15765,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "henry_armitage_survived",
-          "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
+          "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
         }
       ]
     },
@@ -16319,6 +16358,7 @@
 {
   "id": "return_to_the_devourer_below",
   "scenario_name": "Renouveau - Le Dévoreur du Dessous",
+  "header": "Scénario III",
   "full_name": "Scénario III: Renouveau - Le Dévoreur du Dessous",
   "setup": [
     "intro",
@@ -16596,7 +16636,7 @@
     },
     {
       "id": "earn_5_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -16613,7 +16653,7 @@
     },
     {
       "id": "earn_10_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -16630,7 +16670,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -16762,6 +16802,7 @@
 {
   "id": "return_to_the_gathering",
   "scenario_name": "Renouveau - Le Rassemblement",
+  "header": "Scénario I",
   "full_name": "Scénario I: Renouveau - Le Rassemblement",
   "setup": [
     "prologue",
@@ -16869,7 +16910,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Chaque investigateur reçoit également 2 points d’expérience bonus pour l’aperçu qu’il a eu du monde caché du Mythe.",
+        "confirm_text": "Chaque investigateur reçoit également 2 points d’expérience bonus pour l’aperçu qu’il a eu du monde caché du Mythe.",
         "text": "Pile de victoire :",
         "effects": [
           {
@@ -17088,6 +17129,7 @@
 {
   "id": "return_to_the_midnight_masks",
   "scenario_name": "Renouveau - Les Masques de Minuit",
+  "header": "Scénario II",
   "full_name": "Scénario II: Renouveau - Les Masques de Minuit",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -17628,7 +17670,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -18140,8 +18182,9 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Épilogue",
-  "icon": "maddening_delusions",
+  "header": "",
   "full_name": "Épilogue",
+  "icon": "maddening_delusions",
   "type": "epilogue",
   "setup": [
     "check_epilogue"
@@ -18180,6 +18223,7 @@
   "id": "ptc_interlude2",
   "scenario_name": "Âme Perdue",
   "full_name": "Interlude II : Âme Perdue",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "the_stranger",
   "setup": [
@@ -18371,6 +18415,7 @@
   "id": "ptc_interlude1",
   "scenario_name": "Le Prix de la Folie",
   "full_name": "Interlude I : Le Prix de la Folie",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "hasturs_gift",
   "setup": [
@@ -18705,6 +18750,7 @@
   "id": "ptc_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "delusions",
   "setup": [
@@ -18768,6 +18814,7 @@
   "id": "return_to_a_phantom_of_truth",
   "scenario_name": "Renouveau - Le Spectre de la Vérité",
   "full_name": "Scénario V :Renouveau - Le Spectre de la Vérité",
+  "header": "Scénario V",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -19509,7 +19556,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -19749,6 +19796,7 @@
   "id": "return_to_black_stars_rise",
   "scenario_name": "Renouveau - Sous les Étoiles Noires",
   "full_name": "Scénario VII : Renouveau - Sous les Étoiles Noires",
+  "header": "Scénario VII",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -20212,7 +20260,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -20493,6 +20541,7 @@
   "id": "return_to_curtain_call",
   "scenario_name": "Renouveau - Baisser de Rideau",
   "full_name": "Scénario I : Renouveau - Baisser de Rideau",
+  "header": "Scénario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -20605,7 +20654,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -20897,6 +20946,7 @@
   "id": "return_to_dim_carcosa",
   "scenario_name": "Renouveau - La Pâle Carcosa",
   "full_name": "Scénario VIII : Renouveau - La Pâle Carcosa",
+  "header": "Scénario VIII",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -21434,7 +21484,7 @@
     },
     {
       "id": "earn_xp_triumph",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -21451,7 +21501,7 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -21745,6 +21795,7 @@
   "id": "return_to_echoes_of_the_past",
   "scenario_name": "Renouveau - Les Échos du Passé",
   "full_name": "Scénario III : Renouveau - Les Échos du Passé",
+  "header": "Scénario III",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -22002,7 +22053,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -22017,7 +22068,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -22341,6 +22392,7 @@
   "id": "return_to_the_last_king",
   "scenario_name": "Renouveau - Le Dernier Roi",
   "full_name": "Scénario II : Renouveau - Le Dernier Roi",
+  "header": "Scénario II",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -22579,7 +22631,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -22829,6 +22881,7 @@
   "id": "return_to_the_pallid_mask",
   "scenario_name": "Renouveau - Le Masque Blême",
   "full_name": "Scénario VI : Renouveau - Le Masque Blême",
+  "header": "Scénario VI",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -23297,7 +23350,7 @@
           {
             "id": "doubt",
             "text": "Vous avez dépensé des indices pour avancer.",
-            "description": " Inscrivez deux <b>Doutes</b>",
+            "description": "Inscrivez deux <b>Doutes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23398,7 +23451,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -23549,7 +23602,7 @@
     },
     {
       "id": "add_two_conviction",
-      "text": "During the scenario, you were instructed to mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "Pendant le scénario, il vous a été demandé d'inscrire deux <b>Certitudes</b> dans votre Carnet de Campagne.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23579,7 +23632,7 @@
     },
     {
       "id": "add_two_doubt",
-      "text": "During the scenario, you were instructed to mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "Pendant ce scénario, il vous a été demandé d'inscrire deux <b>Doutes</b> dans votre Carnet de Campagne.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23609,7 +23662,7 @@
           {
             "type": "campaign_data",
             "campaign_data": "version",
-            "min_version": 1,
+            "min_version": 2,
             "options": [
               {
                 "boolCondition": true
@@ -23631,13 +23684,13 @@
     {
       "id": "ask_conviction_or_doubt_resolution",
       "type": "input",
-      "text": "During the scenario, were you instructed to make any Campaign Log changes?",
+      "text": "Au cours du scénario, avez-vous reçu des instructions pour modifier votre Carnet de Campagne ?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "doubt",
-            "text": "Mark 2 <b>Doubt</b>.",
+            "text": "Inscrivez 2 <b>Doutes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23649,7 +23702,7 @@
           },
           {
             "id": "conviction",
-            "text": "Mark 2 <b>Conviction</b>.",
+            "text": "Inscrivez 2 <b>Certitudes</b>",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -23661,7 +23714,7 @@
           },
           {
             "id": "neither",
-            "text": "Scenario ended before Act 2b was resolved."
+            "text": "Le scénario s'est terminé avant la résolution de l'acte 2b."
           }
         ]
       }
@@ -23762,6 +23815,7 @@
   "id": "return_to_the_unspeakable_oath",
   "scenario_name": "Renouveau - Le Serment Indicible",
   "full_name": "Scénario IV : Renouveau - Le Serment Indicible",
+  "header": "Scénario IV",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -24324,7 +24378,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -25006,6 +25060,7 @@
   "id": "tfa_epilogue",
   "scenario_name": "Épilogue",
   "full_name": "Épilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "temporal_flux",
   "setup": [
@@ -25073,6 +25128,7 @@
   "id": "tfa_interlude2",
   "scenario_name": "La Fin de l’Expédition",
   "full_name": "Interlude II : La Fin de l’Expédition",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -25292,6 +25348,7 @@
   "id": "tfa_interlude3",
   "scenario_name": "L’Appel de la Jungle",
   "full_name": "Interlude III : L’Appel de la Jungle",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "rainforest",
   "setup": [
@@ -25782,6 +25839,7 @@
   "id": "tfa_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -25798,7 +25856,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Mardi 2 juin 1925</right></fancy>\nIl semble que nous n'aurons pas de repos cet été.\nAujourd'hui, j'ai rencontré mon vieil ami Harlan Earnstone, chercheur en Histoire à l'Université Miskatonic. Il disait avoir un travail à me confier, mais je ne savais honnêtement pas à quoi m'attendre.\nHarlan m'a présenté l'un de ses collègues : Alejandro Vela, un historien célèbre de l'autre côté de la frontière sud. M. Vela est diplômé d\"une prestigieuse université de Mexico et a passé de nombreuses années à étudier l\"Empire aztèque. Il prétend avoir trouvé des preuves de l\"existence d\"une cité-état aztèque encore inconnue appelée Eztli. Mais ses découvertes aussi étranges qu\"inédites n\"ont pas été prises au sérieux par l\"université et il est devenu un paria auprès de ses pairs.\nAlejandro est venu à Arkham dans le but de rassembler des fonds pour monter une expédition afin d'explorer les forêts tropicales du sud du Mexique où reposent, selon lui, les ruines encore inviolées de l'altepetl d'Eztli. Sa description des origines de la cité-état défie toutes nos connaissances actuelles sur l'histoire de l'Amérique précolombienne. Malgré cela – ou plutôt à cause de cela, connaissant bien mon vieil ami –, Harlan a été fasciné par les découvertes d'Alejandro. L'Université Miskatonic a accepté de financer l'expédition (quoique chichement), et Harlan compte sur moi pour en faire partie.\nSi vous voulez mon avis, il y a de grandes probabilités pour que nous partions à la recherche de quelque chose qui n'existe même pas. Mais s'il y a la moindre chance que ce peuple appelé Eztli ait réellement vécu, les implications historiques seraient alors considérables. Après avoir débattu pendant quelque temps de cette proposition, nous avons finalement accepté l'offre d'Alejandro. Les préparatifs sont en cours et nous devrions décoller d'ici la fin du mois. Avec un peu de chance, nous pourrons remplir ce journal avec toutes sortes d'intéressantes découvertes. Sinon, il fera toujours une bonne cale pour le bureau branlant d'Harlan."
+      "text": "<right><fancy>Mardi 2 juin 1925</fancy></right>\nIl semble que nous n'aurons pas de repos cet été.\nAujourd'hui, j'ai rencontré mon vieil ami Harlan Earnstone, chercheur en Histoire à l'Université Miskatonic. Il disait avoir un travail à me confier, mais je ne savais honnêtement pas à quoi m'attendre.\nHarlan m'a présenté l'un de ses collègues : Alejandro Vela, un historien célèbre de l'autre côté de la frontière sud. M. Vela est diplômé d\"une prestigieuse université de Mexico et a passé de nombreuses années à étudier l\"Empire aztèque. Il prétend avoir trouvé des preuves de l\"existence d\"une cité-état aztèque encore inconnue appelée Eztli. Mais ses découvertes aussi étranges qu\"inédites n\"ont pas été prises au sérieux par l\"université et il est devenu un paria auprès de ses pairs.\nAlejandro est venu à Arkham dans le but de rassembler des fonds pour monter une expédition afin d'explorer les forêts tropicales du sud du Mexique où reposent, selon lui, les ruines encore inviolées de l'altepetl d'Eztli. Sa description des origines de la cité-état défie toutes nos connaissances actuelles sur l'histoire de l'Amérique précolombienne. Malgré cela – ou plutôt à cause de cela, connaissant bien mon vieil ami –, Harlan a été fasciné par les découvertes d'Alejandro. L'Université Miskatonic a accepté de financer l'expédition (quoique chichement), et Harlan compte sur moi pour en faire partie.\nSi vous voulez mon avis, il y a de grandes probabilités pour que nous partions à la recherche de quelque chose qui n'existe même pas. Mais s'il y a la moindre chance que ce peuple appelé Eztli ait réellement vécu, les implications historiques seraient alors considérables. Après avoir débattu pendant quelque temps de cette proposition, nous avons finalement accepté l'offre d'Alejandro. Les préparatifs sont en cours et nous devrions décoller d'ici la fin du mois. Avec un peu de chance, nous pourrons remplir ce journal avec toutes sortes d'intéressantes découvertes. Sinon, il fera toujours une bonne cale pour le bureau branlant d'Harlan."
     },
     {
       "id": "choose_investigators",
@@ -25902,6 +25960,7 @@
   "id": "tfa_interlude1",
   "scenario_name": "Nuits Agitées",
   "full_name": "Interlude I : Nuits Agitées",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "deadly_traps",
   "setup": [
@@ -26051,6 +26110,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "name": "(possède des jumelles)",
         "investigator": "choice",
         "prompt": "Guetteur du groupe",
         "positiveChoice": {
@@ -26192,6 +26252,7 @@
   "id": "return_to_heart_of_the_elders_part_1",
   "scenario_name": "Renouveau - Le Cœur des Anciens, Partie 1",
   "full_name": "Scénario V-A : Renouveau - Le Cœur des Anciens, Partie 1",
+  "header": "Scénario V-A",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -26458,7 +26519,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -26858,6 +26919,7 @@
   "id": "return_to_heart_of_the_elders_part_2",
   "scenario_name": "Renouveau - Le Cœur des Anciens, Partie 2",
   "full_name": "Scénario V-B : Renouveau - Le Cœur des Anciens, Partie 2",
+  "header": "Scénario V-B",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -26972,7 +27034,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -27238,6 +27300,7 @@
   "id": "return_to_shattered_aeons",
   "scenario_name": "Renouveau - Paradoxes Temporels",
   "full_name": "Scénario VIII : Renouveau - Paradoxes Temporels",
+  "header": "Scénario VIII",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -27596,7 +27659,7 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -27613,7 +27676,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -27779,6 +27842,7 @@
   "id": "return_to_the_boundary_beyond",
   "scenario_name": "Renouveau - Par-delà les Limites",
   "full_name": "Scénario IV : Renouveau - Par-delà les Limites",
+  "header": "Scénario IV",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -28450,7 +28514,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -28603,6 +28667,7 @@
   "id": "return_to_the_city_of_archives",
   "scenario_name": "Renouveau - La Cité des Archives",
   "full_name": "Scénario VI : Renouveau - La Cité des Archives",
+  "header": "Scénario VI",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -28937,7 +29002,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -29080,6 +29145,7 @@
   "id": "return_to_the_depths_of_yoth",
   "scenario_name": "Renouveau - La Civilisation Oubliée",
   "full_name": "Scénario VII : Renouveau - La Civilisation Oubliée",
+  "header": "Scénario VII",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -29116,7 +29182,6 @@
     "create_exploration_deck",
     "setup_depth",
     "set_aside_relic",
-    "set_aside_harbinger",
     "set_aside_poison",
     "encounter_deck",
     "depth_level_rule",
@@ -30140,7 +30205,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -30156,7 +30221,7 @@
     },
     {
       "id": "earn_xp_full_depth",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -30434,6 +30499,7 @@
   "id": "return_to_the_doom_of_eztli",
   "scenario_name": "Renouveau - Le Fléau des Eztli",
   "full_name": "Scénario II : Renouveau - Le Fléau des Eztli",
+  "header": "Scénario II",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -30794,7 +30860,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -31083,6 +31149,7 @@
   "id": "return_to_the_untamed_wilds",
   "scenario_name": "Renouveau - Une Contrée Sauvage",
   "full_name": "Scénario I : Renouveau - Une Contrée Sauvage",
+  "header": "Scénario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -31259,7 +31326,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -31532,6 +31599,7 @@
   "id": "return_to_threads_of_fate",
   "scenario_name": "Renouveau - Les Fils du Destin",
   "full_name": "Scénario III : Renouveau - Les Fils du Destin",
+  "header": "Scénario III",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -32331,7 +32399,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -32700,7 +32768,7 @@
           },
           {
             "id": "completed",
-            "text": "L'Acte 3b a été complété",
+            "text": "L'Acte 3d a été complété",
             "steps": [
               "rescued_alejandro",
               "maybe_earn_alejandro"
@@ -33150,6 +33218,7 @@
   "id": "return_to_turn_back_time",
   "scenario_name": "Renouveau - Remonter le temps",
   "full_name": "Scénario IX : Renouveau - Remonter le temps",
+  "header": "Scénario Secret IX",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -33544,7 +33613,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -33681,6 +33750,7 @@
   "id": "tfa_interlude5",
   "scenario_name": "Les Ténèbres",
   "full_name": "Interlude V : Les Ténèbres",
+  "header": "Interlude V",
   "type": "interlude",
   "icon": "torch",
   "setup": [
@@ -34242,6 +34312,7 @@
   "id": "tfa_interlude4",
   "scenario_name": "Les Captifs",
   "full_name": "Interlude IV : Les Captifs",
+  "header": "Interlude IV",
   "type": "interlude",
   "icon": "cult_of_pnakotus",
   "setup": [
@@ -34916,6 +34987,7 @@
   "id": "all_or_nothing",
   "scenario_name": "Le Tout pour le Tout",
   "full_name": "Le Tout pour le Tout",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -35504,6 +35576,7 @@
   "id": "bad_blood",
   "scenario_name": "Mauvais Sang",
   "full_name": "Mauvais Sang",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -36066,6 +36139,7 @@
   "id": "blob_that_ate_everything",
   "scenario_name": "Le Dévoreur de Toute Chose",
   "full_name": "Le Dévoreur de Toute Chose",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -36383,7 +36457,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -37481,6 +37555,7 @@
   "id": "carnevale_of_horrors",
   "scenario_name": "Le Carnaval des Horreurs",
   "full_name": "Le Carnaval des Horreurs",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -37656,7 +37731,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -37909,6 +37984,7 @@
   "id": "curse_of_the_rougarou",
   "scenario_name": "La Malédiction du Rougarou",
   "full_name": "La Malédiction du Rougarou",
+  "header": "",
   "xp_cost": 1,
   "standalone_setup": [
     "choose_difficulty",
@@ -38066,7 +38142,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -38190,6 +38266,7 @@
   "id": "in_the_labyrinths_of_lunacy",
   "scenario_name": "Les Labyrinthes de la Folie",
   "full_name": "Les Labyrinthes de la Folie",
+  "header": "",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -39030,6 +39107,7 @@
   "id": "meddling_of_meowlathotep",
   "scenario_name": "La Cabale de Myarlathotep",
   "full_name": "La Cabale de Myarlathotep",
+  "header": "",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -39567,6 +39645,7 @@
   "id": "murder_at_the_excelsior_hotel",
   "scenario_name": "Meutre à l'Hôtel Excelsior",
   "full_name": "Meutre à l'Hôtel Excelsior",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -39873,7 +39952,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -41325,6 +41404,7 @@
   "id": "read_or_die",
   "scenario_name": "Lire ou Mourir",
   "full_name": "Lire ou Mourir",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -41890,6 +41970,7 @@
   "id": "the_eternal_slumber",
   "scenario_name": "Éternelle Torpeur",
   "full_name": "Éternelle Torpeur",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42129,7 +42210,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -42381,6 +42462,7 @@
   "id": "the_nights_usurper",
   "scenario_name": "L'Usurpateur de la Nuit",
   "full_name": "L'Usurpateur de la Nuit",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -42649,7 +42731,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -42866,6 +42948,7 @@
   "id": "war_of_the_outer_gods",
   "scenario_name": "La Guerre des Dieux Extérieurs",
   "full_name": "La Guerre des Dieux Extérieurs",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -43384,7 +43467,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -43399,7 +43482,7 @@
     },
     {
       "id": "earn_xp_bonus_2",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -43555,7 +43638,7 @@
     {
       "id": "add_chaos_token",
       "type": "input",
-      "text": "Which chaos token should be added to the bag?",
+      "text": "Quels pions Chaos doit être placé dans la réserve du Chaos ?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -43892,6 +43975,7 @@
   "id": "at_deaths_doorstep",
   "scenario_name": "Aux Portes de la Mort",
   "full_name": "Scénario II : Aux Portes de la Mort",
+  "header": "Scénario II",
   "setup": [
     "intro_article",
     "intro",
@@ -44465,7 +44549,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -44613,6 +44697,7 @@
   "id": "before_the_black_throne",
   "scenario_name": "Devant le Trône Noir",
   "full_name": "Scénario VIII: Devant le Trône Noir",
+  "header": "Scénario VIII",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -44882,7 +44967,7 @@
     },
     {
       "id": "earn_xp_bonus_5",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -44978,7 +45063,7 @@
     },
     {
       "id": "earn_xp_bonus_10",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -45123,8 +45208,9 @@
 },
 {
   "id": "disappearance_at_the_twilight_estate",
-  "scenario_name": "Prologue: Disparitions dans la Demeure du Crépuscule",
+  "scenario_name": "Disparitions dans la Demeure du Crépuscule",
   "full_name": "Prologue: Disparitions dans la Demeure du Crépuscule",
+  "header": "Prologue",
   "type": "interlude",
   "setup": [
     "pre_intro",
@@ -45599,6 +45685,7 @@
   "id": "tcu_epilogue",
   "scenario_name": "Épilogue",
   "full_name": "Épilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "realm_of_death",
   "setup": [
@@ -45763,6 +45850,7 @@
   "id": "for_the_greater_good",
   "scenario_name": "Pour le Bien Commun",
   "full_name": "Scénario V: Pour le Bien Commun",
+  "header": "Scénario V",
   "setup": [
     "intro_1",
     "check_members_of_the_lodge",
@@ -46140,7 +46228,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -46225,6 +46313,7 @@
   "id": "in_the_clutches_of_chaos",
   "scenario_name": "Dans les Griffes du Chaos",
   "full_name": "Scénario VII: Dans les Griffes du Chaos",
+  "header": "Scénario VII",
   "setup": [
     "intro_1",
     "check_never_seen_again",
@@ -46828,7 +46917,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -46980,6 +47069,7 @@
   "type": "interlude",
   "scenario_name": "Le Cercle Restreint",
   "full_name": "Interlude III: Le Cercle Restreint",
+  "header": "Interlude III",
   "icon": "trapped_spirits",
   "setup": [
     "ic_1",
@@ -47713,6 +47803,7 @@
   "type": "interlude",
   "scenario_name": "Le Prix du Progrès",
   "full_name": "Interlude II: Le Prix du Progrès",
+  "header": "Interlude II",
   "icon": "silver_twilight_lodge",
   "setup": [
     "check_silver_twilight_investigator",
@@ -48067,6 +48158,7 @@
   "id": "the_secret_name",
   "scenario_name": "Le Nom Secret",
   "full_name": "Scénario III: Le Nom Secret",
+  "header": "Scénario III",
   "setup": [
     "check_members_of_the_lodge",
     "gather_encounter_sets",
@@ -48393,7 +48485,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -48613,7 +48705,7 @@
     },
     {
       "id": "earn_xp_bonus_2",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -48691,6 +48783,7 @@
   "id": "the_wages_of_sin",
   "scenario_name": "Le Salaire du Péché",
   "full_name": "Scénario IV: Le Salaire du Péché",
+  "header": "Scénario IV",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -48896,7 +48989,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -48984,6 +49077,7 @@
   "id": "the_witching_hour",
   "scenario_name": "L’Heure des Sorcières",
   "full_name": "Scénario I : L’Heure des Sorcières",
+  "header": "Scénario I",
   "setup": [
     "intro",
     "choose_fate",
@@ -49263,7 +49357,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -49431,6 +49525,7 @@
   "type": "interlude",
   "scenario_name": "Coup du Sort",
   "full_name": "Interlude IV : Coup du Sort",
+  "header": "Interlude IV",
   "icon": "inexorable_fate",
   "setup": [
     "tof_1",
@@ -49811,6 +49906,7 @@
   "id": "union_and_disillusion",
   "scenario_name": "Union et Désillusion",
   "full_name": "Scénario VI : Union et Désillusion",
+  "header": "Scénario VI",
   "setup": [
     "intro_1",
     "point_of_no_return",
@@ -50873,7 +50969,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -51958,6 +52054,7 @@
   "id": "the_black_cat",
   "scenario_name": "Le Chat Noir",
   "full_name": "Interlude I : Le Chat Noir",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "tde",
   "setup": [
@@ -52296,6 +52393,7 @@
   "id": "tde_epilogue",
   "scenario_name": "Épilogue",
   "full_name": "Épilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "merging_realities",
   "setup": [
@@ -52939,6 +53037,7 @@
   "id": "the_great_ones",
   "scenario_name": "Les Grands Anciens",
   "full_name": "Interlude III : Les Grands Anciens",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "dreamers_curse",
   "setup": [
@@ -53741,6 +53840,7 @@
   "id": "the_oneironauts",
   "scenario_name": "Les Onironautes",
   "full_name": "Interlude II : Les Onironautes",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "whispers_of_hypnos",
   "setup": [
@@ -54439,6 +54539,7 @@
   "id": "beyond_the_gates_of_sleep",
   "scenario_name": "Par-delà le Mur du Sommeil",
   "full_name": "Scénario 1A : Par-delà le Mur du Sommeil",
+  "header": "Scénario I–A",
   "setup": [
     "dream_intro",
     "choose_dreams",
@@ -55054,7 +55155,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -55422,6 +55523,7 @@
   "id": "dark_side_of_the_moon",
   "scenario_name": "La Face Cachée de la Lune",
   "full_name": "Scénario III-A : La Face Cachée de la Lune",
+  "header": "Scénario III-A",
   "setup": [
     "check_someone_captured",
     "gather_encounter_sets",
@@ -55671,7 +55773,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -55838,6 +55940,7 @@
   "id": "tde_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "dreamlands",
   "setup": [
@@ -55859,6 +55962,7 @@
   "id": "the_search_for_kadath",
   "scenario_name": "À la Recherche de Kadath",
   "full_name": "Scénario II-A : À la Recherche de Kadath",
+  "header": "Scénario II-A",
   "standalone_setup": [
     "setup_standalone_bag",
     "black_cat_not_at_your_side",
@@ -56661,7 +56765,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -56939,6 +57043,7 @@
   "id": "where_gods_dwell",
   "scenario_name": "La Demeure des Dieux",
   "full_name": "Scénario IV-A : La Demeure des Dieux",
+  "header": "Scénario IV-A",
   "setup": [
     "check_carried_to_the_cold_wastes",
     "gather_encounter_sets",
@@ -57363,7 +57468,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -57378,7 +57483,7 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -58110,6 +58215,7 @@
   "id": "a_thousand_shapes_of_horror",
   "scenario_name": "Mille Nuances d’Horreur",
   "full_name": "Scénario II-B : Mille Nuances d’Horreur",
+  "header": "Scénario II-B",
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -58271,7 +58377,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -58497,6 +58603,7 @@
   "id": "the_black_cat",
   "scenario_name": "Le Chat Noir",
   "full_name": "Interlude I : Le Chat Noir",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "tde",
   "setup": [
@@ -58754,6 +58861,7 @@
   "id": "tde_epilogue",
   "scenario_name": "Épilogue",
   "full_name": "Épilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "merging_realities",
   "setup": [
@@ -59353,6 +59461,7 @@
   "id": "the_great_ones",
   "scenario_name": "Les Grands Anciens",
   "full_name": "Interlude III : Les Grands Anciens",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "dreamers_curse",
   "setup": [
@@ -59852,6 +59961,7 @@
   "id": "the_oneironauts",
   "scenario_name": "Les Onironautes",
   "full_name": "Interlude II : Les Onironautes",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "whispers_of_hypnos",
   "setup": [
@@ -60618,6 +60728,7 @@
   "id": "point_of_no_return",
   "scenario_name": "Point de Non-Retour",
   "full_name": "Scénario III-B : Point de Non-Retour",
+  "header": "Scénario III-B",
   "setup": [
     "check_randolph_did_not_survive_descent",
     "gather_encounter_sets",
@@ -60988,7 +61099,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -61103,6 +61214,7 @@
   "id": "tde_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "dreamlands",
   "setup": [
@@ -61124,6 +61236,7 @@
   "id": "waking_nightmare",
   "scenario_name": "Cauchemar Éveillé",
   "full_name": "Scénario 1B : Cauchemar Éveillé",
+  "header": "Scénario I–B",
   "setup": [
     "intro_1",
     "choose_doctor",
@@ -61385,7 +61498,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -61671,6 +61784,7 @@
   "id": "weaver_of_the_cosmos",
   "scenario_name": "Tisseuse du Cosmos",
   "full_name": "Scénario IV-B : Tisseuse du Cosmos",
+  "header": "Scenario IV-B",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -62165,7 +62279,7 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -62900,6 +63014,7 @@
   "id": "tfa_epilogue",
   "scenario_name": "Épilogue",
   "full_name": "Épilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "temporal_flux",
   "setup": [
@@ -62967,6 +63082,7 @@
   "id": "tfa_interlude2",
   "scenario_name": "La Fin de l’Expédition",
   "full_name": "Interlude II : La Fin de l’Expédition",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -63186,6 +63302,7 @@
   "id": "eztli",
   "scenario_name": "Le Fléau des Eztli",
   "full_name": "Scénario II : Le Fléau des Eztli",
+  "header": "Scénario II",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -63576,7 +63693,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -63741,6 +63858,7 @@
   "id": "heart_of_the_elders_part_1",
   "scenario_name": "Le Coeur des Anciens, Partie 1",
   "full_name": "Scénario V-A : Le Coeur des Anciens, Partie 1",
+  "header": "Scénario V-A",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -64076,7 +64194,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -64170,6 +64288,7 @@
   "id": "heart_of_the_elders_part_2",
   "scenario_name": "Le Coeur des Anciens, Partie 2",
   "full_name": "Scénario V-B : Le Coeur des Anciens, Partie 2",
+  "header": "Scénario V-B",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -64300,7 +64419,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -64454,6 +64573,7 @@
   "id": "tfa_interlude3",
   "scenario_name": "L’Appel de la Jungle",
   "full_name": "Interlude III : L’Appel de la Jungle",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "rainforest",
   "setup": [
@@ -64944,6 +65064,7 @@
   "id": "tfa_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -64960,7 +65081,7 @@
         "name": "Prologue"
       },
       "type": "story",
-      "text": "<right><fancy>Mardi 2 juin 1925</right></fancy>\nIl semble que nous n'aurons pas de repos cet été.\nAujourd'hui, j'ai rencontré mon vieil ami Harlan Earnstone, chercheur en Histoire à l'Université Miskatonic. Il disait avoir un travail à me confier, mais je ne savais honnêtement pas à quoi m'attendre.\nHarlan m'a présenté l'un de ses collègues : Alejandro Vela, un historien célèbre de l'autre côté de la frontière sud. M. Vela est diplômé d\"une prestigieuse université de Mexico et a passé de nombreuses années à étudier l\"Empire aztèque. Il prétend avoir trouvé des preuves de l\"existence d\"une cité-état aztèque encore inconnue appelée Eztli. Mais ses découvertes aussi étranges qu\"inédites n\"ont pas été prises au sérieux par l\"université et il est devenu un paria auprès de ses pairs.\nAlejandro est venu à Arkham dans le but de rassembler des fonds pour monter une expédition afin d'explorer les forêts tropicales du sud du Mexique où reposent, selon lui, les ruines encore inviolées de l'altepetl d'Eztli. Sa description des origines de la cité-état défie toutes nos connaissances actuelles sur l'histoire de l'Amérique précolombienne. Malgré cela – ou plutôt à cause de cela, connaissant bien mon vieil ami –, Harlan a été fasciné par les découvertes d'Alejandro. L'Université Miskatonic a accepté de financer l'expédition (quoique chichement), et Harlan compte sur moi pour en faire partie.\nSi vous voulez mon avis, il y a de grandes probabilités pour que nous partions à la recherche de quelque chose qui n'existe même pas. Mais s'il y a la moindre chance que ce peuple appelé Eztli ait réellement vécu, les implications historiques seraient alors considérables. Après avoir débattu pendant quelque temps de cette proposition, nous avons finalement accepté l'offre d'Alejandro. Les préparatifs sont en cours et nous devrions décoller d'ici la fin du mois. Avec un peu de chance, nous pourrons remplir ce journal avec toutes sortes d'intéressantes découvertes. Sinon, il fera toujours une bonne cale pour le bureau branlant d'Harlan."
+      "text": "<right><fancy>Mardi 2 juin 1925</fancy></right>\nIl semble que nous n'aurons pas de repos cet été.\nAujourd'hui, j'ai rencontré mon vieil ami Harlan Earnstone, chercheur en Histoire à l'Université Miskatonic. Il disait avoir un travail à me confier, mais je ne savais honnêtement pas à quoi m'attendre.\nHarlan m'a présenté l'un de ses collègues : Alejandro Vela, un historien célèbre de l'autre côté de la frontière sud. M. Vela est diplômé d\"une prestigieuse université de Mexico et a passé de nombreuses années à étudier l\"Empire aztèque. Il prétend avoir trouvé des preuves de l\"existence d\"une cité-état aztèque encore inconnue appelée Eztli. Mais ses découvertes aussi étranges qu\"inédites n\"ont pas été prises au sérieux par l\"université et il est devenu un paria auprès de ses pairs.\nAlejandro est venu à Arkham dans le but de rassembler des fonds pour monter une expédition afin d'explorer les forêts tropicales du sud du Mexique où reposent, selon lui, les ruines encore inviolées de l'altepetl d'Eztli. Sa description des origines de la cité-état défie toutes nos connaissances actuelles sur l'histoire de l'Amérique précolombienne. Malgré cela – ou plutôt à cause de cela, connaissant bien mon vieil ami –, Harlan a été fasciné par les découvertes d'Alejandro. L'Université Miskatonic a accepté de financer l'expédition (quoique chichement), et Harlan compte sur moi pour en faire partie.\nSi vous voulez mon avis, il y a de grandes probabilités pour que nous partions à la recherche de quelque chose qui n'existe même pas. Mais s'il y a la moindre chance que ce peuple appelé Eztli ait réellement vécu, les implications historiques seraient alors considérables. Après avoir débattu pendant quelque temps de cette proposition, nous avons finalement accepté l'offre d'Alejandro. Les préparatifs sont en cours et nous devrions décoller d'ici la fin du mois. Avec un peu de chance, nous pourrons remplir ce journal avec toutes sortes d'intéressantes découvertes. Sinon, il fera toujours une bonne cale pour le bureau branlant d'Harlan."
     },
     {
       "id": "choose_investigators",
@@ -65064,6 +65185,7 @@
   "id": "tfa_interlude1",
   "scenario_name": "Nuits Agitées",
   "full_name": "Interlude I : Nuits Agitées",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "deadly_traps",
   "setup": [
@@ -65213,6 +65335,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "name": "(possède des jumelles)",
         "investigator": "choice",
         "prompt": "Guetteur du groupe",
         "positiveChoice": {
@@ -65354,6 +65477,7 @@
   "id": "shattered_aeons",
   "scenario_name": "Paradoxes Temporels",
   "full_name": "Scénario VIII : Paradoxes Temporels",
+  "header": "Scénario VIII",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -65746,7 +65870,7 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -65763,7 +65887,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -65884,6 +66008,7 @@
   "id": "the_boundary_beyond",
   "scenario_name": "Par-delà les Limites",
   "full_name": "Scénario IV : Par-delà les Limites",
+  "header": "Scénario IV",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -66590,7 +66715,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -66702,6 +66827,7 @@
   "id": "the_city_of_archives",
   "scenario_name": "La Cité des Archives",
   "full_name": "Scénario VI : La Cité des Archives",
+  "header": "Scénario VI",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -67114,7 +67240,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -67168,6 +67294,7 @@
   "id": "tfa_interlude5",
   "scenario_name": "Les Ténèbres",
   "full_name": "Interlude V : Les Ténèbres",
+  "header": "Interlude V",
   "type": "interlude",
   "icon": "torch",
   "setup": [
@@ -67729,6 +67856,7 @@
   "id": "the_depths_of_yoth",
   "scenario_name": "Les Profondeurs de Yoth",
   "full_name": "Scénario VII : Les Profondeurs de Yoth",
+  "header": "Scénario VII",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -68814,7 +68942,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -68830,7 +68958,7 @@
     },
     {
       "id": "earn_xp_full_depth",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -68999,6 +69127,7 @@
   "id": "tfa_interlude4",
   "scenario_name": "Les Captifs",
   "full_name": "Interlude IV : Les Captifs",
+  "header": "Interlude IV",
   "type": "interlude",
   "icon": "cult_of_pnakotus",
   "setup": [
@@ -69636,6 +69765,7 @@
   "id": "threads_of_fate",
   "scenario_name": "Les Fils du Destin",
   "full_name": "Scénario III : Les Fils du Destin",
+  "header": "Scénario III",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -70434,7 +70564,7 @@
         "choices": [
           {
             "id": "completed",
-            "text": "L'Acte 3b a été complété",
+            "text": "L'Acte 3d a été complété",
             "steps": [
               "rescued_alejandro",
               "maybe_earn_alejandro"
@@ -70538,7 +70668,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -70886,6 +71016,7 @@
   "id": "turn_back_time",
   "scenario_name": "Remonter le Temps",
   "full_name": "Scénario Secret IX : Remonter le Temps",
+  "header": "Scénario Secret IX",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -71299,7 +71430,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -71377,6 +71508,7 @@
   "id": "wilds",
   "scenario_name": "Une Contrée Sauvage",
   "full_name": "Scénario I : Une Contrée Sauvage",
+  "header": "Scénario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -71571,7 +71703,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -71819,11 +71951,11 @@
     },
     {
       "id": "possible_suspects",
-      "title": "Suspects Possibles"
+      "title": "Suspects possibles"
     },
     {
       "id": "possible_hideouts",
-      "title": "Cachettes Possibles"
+      "title": "Les cachettes possibles"
     },
     {
       "id": "hidden",
@@ -72158,6 +72290,7 @@
   "id": "a_light_in_the_fog",
   "scenario_name": "Une Lueur dans le Brouillard",
   "full_name": "Scénario VI : Une Lueur dans le Brouillard",
+  "header": "Scénario VI",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -73275,6 +73408,7 @@
   "id": "beneath_the_waves",
   "scenario_name": "Sous les Vagues",
   "full_name": "Interlude III : Sous les Vagues",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "flooded_caverns",
   "setup": [
@@ -73584,6 +73718,7 @@
   "id": "devil_reef",
   "scenario_name": "Le Récif du Diable",
   "full_name": "Scénario IV : Le Récif du Diable",
+  "header": "Scénario IV",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -74397,17 +74532,233 @@
 },
 {
   "id": "hidden_truths",
-  "scenario_name": "Vérités Cachées",
+  "scenario_name": "Hidden Truths",
   "full_name": "Interlude IV : Vérités Cachée",
+  "header": "Interlude IV",
   "icon": "agents_of_dagon",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "type": "interlude",
+  "setup": [
+    "intro",
+    "read_sections",
+    "check_terror_of_devil_reef_dead_and_lifecyle_of_deep_one",
+    "check_guardian_and_story_assets",
+    "remove_thomas_dawson",
+    "spend_xp",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "As soon as your mind returned to the present, you began formulating your plan. A plan to enter the realm of the Deep Ones and end their conspiracy once and for all. \"This is ridiculous, you know that, right?\" Harper asks. You nod. Of course it's ridiculous. You've spent the last two days on the run. Chased. Hunted. Tormented.\nBut you've also spend the last two days recovering the memories you've forgotten. And what you've seen is something you can't possibly ignore. You have seen the deity the Esoteric Order of Dagon is named for, and you understand what the Order plans to do. The alignment of the celestial bodies in the sky, the steadily rising tides, the tumultuous fluctuating weather, the creatures emerging from the deep, all of it is tied together. You have seen it. There will come a flood, a great disaster to wipe out humanity, so only the deep remains. The great city in the reef shall rise once more and become the beating heart of all life on Earth.\nThere are still gaps in your memory, but all this you know to be true. All of Innsmouthis consumed by this conspiracy. The Order controlled the town through its oaths and the secret wealth it hoarded from the deep. It was no wonder they treated outsiders like yourself with such scorn.\nYou give Harper a knowing glare. She sighs and nods. \"I know. It's the only way.\" Together, the two of you plot your course. Abandoned ships still litter the harbor of Innsmouth. Under the cover of night, you must commandeer one of them, sail to Devil Reef, and descend once more into the antediluvian ruins in the depths below the forsaken islands. That is where the other entrance to the city lies. Y'ha-nthlei.\nYour skin prickles with cold shivers as you utter the word aloud. Harper grimaces, though you can sense the determination behind her steely gaze. \"I'm going to see this mission through, Dawson. For you.\"\nYou lay out all of the information you've uncovered and the relics you've obtained despite the horrors arrayed against you. You know the way to Y'ha-nthlei is sealed tight. There must be a way to gain entrance. Perhaps you already have the answers you seek…"
+    },
+    {
+      "id": "read_sections",
+      "text": "Check the campaign log. Read each of the sections below that apply to your situation."
+    },
+    {
+      "id": "check_terror_of_devil_reef_dead_and_lifecyle_of_deep_one",
+      "text": "If <i>the Terror of Devil Reef is dead</i> and <i>the lifecycle of a \"Deep One\"</i> is listed under \"Memories Recovered\" in your Campaign Log.",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "terror_of_devil_reef_is_dead",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "memories_recovered",
+            "id": "lifecycle_of_a_deep_one",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": [
+              "story_1",
+              "guardian_of_yhanthlei_is_dispatched"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "story_1",
+      "type": "story",
+      "text": "You study the trophy you found in the sacrificial pit in which you awoke several days ago—part of what was once the creature that you fought in Devil Reef. It wasn't the same kind of creature as the \"Deep Ones\" that the Esoteric Order of Dagon worships, but you cannot help ruminating over the similarities between them. You recall that fish never cease growing as they age, and wonder if the same may be true for Deep Ones. Perhaps it was an ancient breed of Deep Ones—something so old, it grew enormous and twisted beyond imagination. If so what was it doing in Devil Reef? Was it guarding Y'ha-nthlei? And if so, what does that bode for you? You decide to take the trophy with you, hoping it is important enough to aid in your mission…"
+    },
+    {
+      "id": "guardian_of_yhanthlei_is_dispatched",
+      "text": "The conspiracy deepends. In your Campaign Log, record <i>the guardian of Y'ha-nthlei is dispatched.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "guardian_of_yhanthlei_is_dispatched",
+          "text": "the guardian of Y’ha-nthlei is dispatched."
+        }
+      ]
+    },
+    {
+      "id": "check_guardian_and_story_assets",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07179",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07180",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07181",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "success_check_guardian_and_story_assets"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "fail_check_guardian_and_story_assets"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "success_check_guardian_and_story_assets",
+      "text": "If <i>the gatekeeper has been defeated</i> and an investigator's deck contains at least 1 of the following story assets (Waveworn Idol, Awakened Mantle, or Headdress of Y'ha-nthlei):",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gatekeeper_has_been_defeated",
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": [
+              "story_2",
+              "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fail_check_guardian_and_story_assets",
+      "text": "If <i>the gatekeeper has been defeated</i> and an investigator's deck contains at least 1 of the following story assets (Waveworn Idol, Awakened Mantle, or Headdress of Y'ha-nthlei):",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gatekeeper_has_been_defeated",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": [
+              "story_2",
+              "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "story_2",
+      "type": "story",
+      "text": "You understand now the purpose of the relic you found in Devil Reef. It isn't just an object of power. It is a badge—an heirloom of sorts, worn by the one who stands guard over the gateway to the Deep Ones' city. You defeated the one groomed to be its next protector. Now the relic recognizes you as its rightful heir. Perhaps with this, you will be able to gain entrance to Y'ha-nthlei…"
+    },
+    {
+      "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+      "text": "The conspiracy deepens. In your Campaign Log, record <i>the gateway to Y’ha-nthlei recognizes you as its rightful keeper</i>.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+          "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+        }
+      ]
+    },
+    {
+      "id": "remove_thomas_dawson",
+      "text": "Remettez Thomas Dawson dans la collection. Si un investigateur a gagné Elina Harper (à n'importe quel point de cette campagne), il peut l'ajouter à son deck."
+    },
+    {
+      "id": "spend_xp",
+      "text": "Avec tous ces souvenirs retrouvés, les événements passés vous paraissent plus clairs. Chaque investigateur a maintenant le droit de dépenser l'expérience inscrite sous la mention « Expérience non dépensée » de votre Carnet de Campagne.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "transfer_special_xp": "unspect_xp"
+        }
+      ]
+    }
+  ]
 },
 {
   "id": "horror_in_high_gear",
   "scenario_name": "Horreur à Toute Vitesse",
   "full_name": "Scénario V : Horreur à Toute Vitesse",
+  "header": "Scénario V",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -74672,7 +75023,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
+      "text": "Chaque investigateur reçoit un total de points d’expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -74732,6 +75083,7 @@
   "id": "in_too_deep",
   "scenario_name": "Mouillés Jusqu’au Cou",
   "full_name": "Scénario III : Mouillés Jusqu'au Cou",
+  "header": "Scénario III",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -75371,8 +75723,9 @@
 },
 {
   "id": "into_the_maelstrom",
-  "scenario_name": "Dans le Maelström",
+  "scenario_name": "Into the Maelstrom",
   "full_name": "Scénario VII : Dans le Maelström",
+  "header": "Scénario VIII",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -75381,6 +75734,7 @@
   "id": "puzzle_pieces",
   "scenario_name": "Les Pièces du Puzzle",
   "full_name": "Interlude I : Les Pièces du Puzzle",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "shattered_memories",
   "setup": [
@@ -75619,16 +75973,722 @@
 },
 {
   "id": "the_lair_of_dagon",
-  "scenario_name": "La Tanière de Dagon",
+  "scenario_name": "The Lair of Dagon",
   "full_name": "Scénario VII : La Tanière de Dagon",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "header": "Scénario VII",
+  "setup": [
+    "intro_1",
+    "check_mission_succeeded",
+    "check_decision_to_stick_together_intro",
+    "investigator_setup",
+    "gather_encounter_sets",
+    "setup_keys",
+    "setup_locations",
+    "location_layout",
+    "set_aside_cards",
+    "check_memories_recovered",
+    "check_jailbreak",
+    "check_encounter_with_a_secret_cult",
+    "check_decision_to_stick_together",
+    "flood_tokens",
+    "encounter_deck",
+    "keys_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "<center><game>THURSDAY, SEPTEMBER 15, 1927</game></center>\n<center><game>ONE WEEK EARLIER</game></center>\nYou stand outside the cracked marble steps leading up to the masonic hall of the Esoteric Order of Dagon. All of the evidence has lead you here. Whatever is going on in this town, this Order is behind it. You're sure of it… though their ultimate goal remains a mystery.\nThe town is eerily quiet as you stand before the building's entrance. Once, this place might have been impressive and opulent. Years of disrepair and flood damage have reduced it to a near-ruin. Its once-white paint is gray and peeling, and many of the pillars outside the entryway are beginning to crumble. Still, it is one of the more intimidating places in Innsmouth, projecting authority despite its decrepitude. No, not authority—something darker. A looming, unspoken threat.\n\"Are you ready?\" Agent Dawson asks. His usually calm demeanor has vanished, replaced with a humorless gravity that throws you off guard. \"This is it. This is where we'll find answers.\"\nYou're not so sure. Every other lead you've followed has led to only more questions."
+    },
+    {
+      "id": "check_mission_succeeded",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_succeeded",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "intro_2"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "intro_3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "Agent Harper was kidnapped when she got too close to the Order, but interrogating her kidnapper didn't exactly yield the answers you needed. What you know now is that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. What's worse, many of the town's inhabitants seem to follow the Order with blind, fanatical devotion. So many that you're not sure this is even a functioning town anymore. It's no wonder the people are so hostile towards outsiders.\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "You are sure that Agent Harper was kidnapped after she began investigating the Order. Your own investigation might have ended the same way had you not laid low for a week after the townsfolk got riled up. It seems that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. But why?\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
+    },
+    {
+      "id": "check_decision_to_stick_together_intro",
+      "type": "branch",
+      "text": "Si <i>Une décision de rester groupés</i> est inscrite sous la mention  « Souvenir Retrouvés » :",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "intro_4"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "intro_5"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_4",
+      "type": "story",
+      "text": "<i>Creeeak.</i> Agent Dawson opens the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"I don't like this one bit,\" Dawson says as the front door closes behind you. He unholsters his gun, turns on his flashlight, and scans the room. \"We should stay together. Safety in numbers.\" You nod in agreement. The Order has proven to be very dangerous, and they surely don't want you poking around in their headquarters…"
+    },
+    {
+      "id": "intro_5",
+      "type": "story",
+      "text": "<i>Creeeak.</i> Agent Dawson creaks open the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"It's quiet. I guess there are no ceremonies going on tonight. That's good,\" Dawson says as the front door closes behind you. He turns on his flashlight and illuminates a nearby doorway. \"We should split up. We'll be able to cover more ground that way. See if you can figure out what they're hiding here. I'll meet up with you later.\" You nod and head in the opposite direction…"
+    },
+    {
+      "id": "investigator_setup",
+      "type": "rule_reminder",
+      "title": "Mise en Place des Investigateurs",
+      "text": "Effectuez cette étape avant de mettre en place votre investigateur.",
+      "bullets": [
+        {
+          "text": "Cherchez Elina Harper dans les decks de tous les investigateurs et retirez-la de la partie pour la durée de ce scénario."
+        }
+      ]
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Mise en Place du Scénario",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_lair_of_dagon",
+        "agents_of_dagon",
+        "flooded_caverns",
+        "syzygy",
+        "pentagram",
+        "locked_doors"
+      ]
+    },
+    {
+      "id": "setup_keys",
+      "text": "Placez chaque clé de la manière suivante :",
+      "bullets": [
+        {
+          "text": "Set the black, blue, green, purple, and red keys aside, faceup."
+        },
+        {
+          "text": "Set the white and yellow aside, facedown. Shuffle them so you do not know which is which."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the following locations into play: Grand Entryway, Foul Corridors, both copies of First Floor Hall, both copies of Second Floor Hall, and Third Floor Hall.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at the Grand Entryway."
+        },
+        {
+          "text": "Set other locations aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Suggestion de Placement des Lieux",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "third_floor_hall",
+          "blank"
+        ],
+        [
+          "second_floor_hall",
+          "foul_corridors",
+          "second_floor_hall"
+        ],
+        [
+          "first_floor_hall",
+          "grand_entryway",
+          "first_floor_hall"
+        ]
+      ],
+      "location_names": [
+        {
+          "code": "second_floor_hall",
+          "name": "Second Floor Hall"
+        },
+        {
+          "code": "foul_corridors",
+          "name": "Foul Corridors"
+        },
+        {
+          "code": "first_floor_hall",
+          "name": "First Floor Hall"
+        },
+        {
+          "code": "grand_entryway",
+          "name": "Grand Entryway"
+        },
+        {
+          "code": "third_floor_hall",
+          "name": "Third Floor Hall"
+        }
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Both copies of the Syzygy treachery, both copies of the Tidal Alignment treachery, the double-sided Y’ha-nthlei Statue story asset, the Apostle of Dagon enemy, and the double-sided Dagon enemy."
+    },
+    {
+      "id": "check_memories_recovered",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log:",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "memories_recovered",
+        "id": "$num_entries",
+        "max": 10,
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 1,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 2,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 3,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 4,
+            "steps": [
+              "add_5_bless"
+            ]
+          },
+          {
+            "numCondition": 5,
+            "steps": [
+              "add_2_curse"
+            ]
+          },
+          {
+            "numCondition": 6,
+            "steps": [
+              "add_2_curse"
+            ]
+          },
+          {
+            "numCondition": 7,
+            "steps": [
+              "add_2_curse"
+            ]
+          },
+          {
+            "numCondition": 8,
+            "steps": [
+              "add_5_curse"
+            ]
+          }
+        ],
+        "defaultOption": {
+          "steps": [
+            "add_5_curse"
+          ]
+        }
+      }
+    },
+    {
+      "id": "add_5_bless",
+      "bullet_type": "small",
+      "text": "Because there are 4 or fewer memories recorded, add 5 [bless] tokens to the chaos bag."
+    },
+    {
+      "id": "add_2_curse",
+      "bullet_type": "small",
+      "text": "Because there are between 5 and 7 memories recorded, add 2 [curse] tokens to the chaos bag."
+    },
+    {
+      "id": "add_5_curse",
+      "bullet_type": "small",
+      "text": "Because there are 8 or more memories recorded, add 5 [curse] tokens to the chaos bag."
+    },
+    {
+      "id": "check_jailbreak",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>a jailbreak</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_jailbreak",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "set_aside_possible_suspect"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_possible_suspect",
+      "bullet_type": "small",
+      "text": "Search the collection for the [[Suspect]] enemy underlined under “Possible Suspects” and set it aside, out of play."
+    },
+    {
+      "id": "check_encounter_with_a_secret_cult",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>an encounter with a secret cult</i> is listed under \"Memories Recovered\":",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "encounter_with_a_secret_cult",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "agenda_1_v1"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "agenda_1_v2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "agenda_1_v1",
+      "bullet_type": "small",
+      "text": "When constructing the agenda deck, use Agenda 1a—\"The Initiation (v.I)\" and remove Agenda 1a—\"The Initiation (v.II)\" from the game."
+    },
+    {
+      "id": "agenda_1_v2",
+      "bullet_type": "small",
+      "text": "Otherwise, use Agenda 1a—\"The Initiation (v.II)\" and remove Agenda 1a-\"The Initiation (v.I)\" from the game."
+    },
+    {
+      "id": "check_decision_to_stick_together",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>a decision to stick together</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "put_agent_dawson_in_play"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "set_aside_agent_dawson"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "put_agent_dawson_in_play",
+      "bullet_type": "small",
+      "text": "Search the collection for Thomas Dawson and put him into play under any investigator's control. When constructing the agenda deck, use Agenda 2a—\"What Lurks Below (v.I)\" and remove Agenda 2a—\"What Lurks Below (v.II)\" from the game."
+    },
+    {
+      "id": "set_aside_agent_dawson",
+      "bullet_type": "small",
+      "text": "Otherwise, search the collection for Thomas Dawson and set him aside, out of play. When constructing the agenda deck, use Agenda 2a—\"What Lurks Below (v.II)\" and remove Agenda 2a—\"What Lurks Below (v.I)\" from the game."
+    },
+    {
+      "id": "flood_tokens",
+      "text": "Ajoutez les pions Inondation à la réserve de pions."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Mélangez les cartes Rencontre restantes pour former le deck Rencontre."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Clés",
+            "steps": [
+              "ask_keys"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Les clé représentent les éléments suivants :",
+      "input": {
+        "type": "checklist",
+        "text": "Lire",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Rouge",
+            "steps": [
+              "red_key"
+            ]
+          },
+          {
+            "id": "blue",
+            "text": "Bleu",
+            "steps": [
+              "blue_key"
+            ]
+          },
+          {
+            "id": "green",
+            "text": "Vert",
+            "steps": [
+              "green_key"
+            ]
+          },
+          {
+            "id": "purple",
+            "text": "Violet",
+            "steps": [
+              "purple_key"
+            ]
+          },
+          {
+            "id": "black",
+            "text": "Noir",
+            "steps": [
+              "black_key"
+            ]
+          },
+          {
+            "id": "white",
+            "text": "White / Yellow",
+            "steps": [
+              "white_key"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "red_key",
+      "text": "Red: A crest engraved with a glyph depicting a great sacrifice."
+    },
+    {
+      "id": "blue_key",
+      "text": "Blue: A scroll detailing some of the Order's activities and secrets."
+    },
+    {
+      "id": "green_key",
+      "text": "Green: A crest depicting a widening fish-eye."
+    },
+    {
+      "id": "purple_key",
+      "text": "Purple: A crest inscribed with a circle of words in an alphabet you do not comprehend."
+    },
+    {
+      "id": "black_key",
+      "text": "Black: A crest carved with an arcane sigil."
+    },
+    {
+      "id": "white_key",
+      "text": "White / Yellow: Crests whose glyphs depict the alignment of celestial bodies. The white key shows the moon overlapping the sun. The yellow key shows the sun overlapping the moon."
+    },
+    {
+      "id": "dagon_has_awakened",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "dagon_has_awakened",
+          "text": "Dagon has awakened."
+        }
+      ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "earn_xp",
+      "text": "Chaque investigateur reçoit un total de points d'expérience égal à la somme des valeurs de Victoire X des cartes qui se trouvent dans la pile de victoire. Inscrivez cette expérience sous la mention « Expérience non dépensée » de votre Carnet de Campagne, <b>mais ne la dépensez pas tout de suite</b>. Il vous sera indiqué ultérieurement quand dépenser cette expérience.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Pile de victoire :",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unspect_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_suspect_defeated",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_jailbreak",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "ask_suspect_defeated"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_suspect_defeated",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "suspect_defeated",
+            "text": "Is a [[Suspect]] enemy in the victory display?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gatekeeper_has_been_defeated",
+                "text": "the gatekeeper has been defeated."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_oceiros",
+      "text": "The lead investigator must decide:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "nothing",
+            "text": "Tell Oceiros nothing.",
+            "steps": [
+              "resolution_2"
+            ]
+          },
+          {
+            "id": "lying",
+            "text": "Lie to Oceiros.",
+            "steps": [
+              "resolution_3"
+            ]
+          },
+          {
+            "id": "truth",
+            "text": "Tell Oceiros everything.",
+            "steps": [
+              "resolution_4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_elder_thing",
+      "text": "Ajoutez 1 pion [elder_thing] à la réserve du Chaos pour le reste de la campagne.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "elder_thing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add_tablet",
+      "text": "Ajoutez 1 [tablet] à la réserve du Chaos pour le reste de la campagne.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "tablet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add_cultist",
+      "text": "Ajoutez 1 pion [cultist] à la réserve du Chaos pour le reste de la campagne.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": [
+            "cultist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keys_rule",
+      "title": "Clés",
+      "text": "Dans ce scénario, les clés représentent les éléments suivant :"
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "Aucune conclusion n'est atteinte\n(tous les investigateurs ont abandonné ou été vaincus)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "This place is more dangerous than you could have possibly imagined. You stumble as you flee through the dark, flooded corridors, retracing your steps as quickly as you can to reach the entrance. Your heart races in your chest as you see the exit at last. You gasp in relief as you crash through the doors, to safety—\n—Only you are not safe. Standing at the bottom of the steps is an angry throng of citizens, far too many for you to fight your way through. \"There! Get 'em!\" a wrinkled women at the head of the mob shouts. You are surrounded and grabbed within moments. You struggle and fight for your life, but it's no use. The last thing you remember is being dragged back through the halls of the Order to some unknown fate…",
+      "steps": [
+        "dagon_has_awakened",
+        "resolution_1"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "Conclusion 1",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You're somewhere else now, lying on your stomach on cold, damp stone. Your arms are held tight behind your back. You have no idea how you got here. As consciousness returns, your vision comes into focus. You crane your neck up to view your surroundings, but it's too dark to see anything inside your stone cell.\n\"I'll ask you one last time. Who sent you here?\" a voice asks. It is deep and husky, like the croaking of a frog.\nYou hear the familiar, cool baritone of Agent Dawson reply: \"Your breath smells awful. Ever heard of brushing your teeth?\" Despite the sarcasm dripping from his words, his voice wavers ever so slightly.\n\"Your mockery only masks the fear that hides within,\" the voice replies. \"Very well. If you are of no use to us, you will be the first to be sacrificed.\"\nYour vision continues to adjust. You can just barely make out Dawson's silhouette on the other side of the cell. He is kneeling before a metal hatch in the stone floor. An elderly robed figure presses a curved knife against Dawson's throat. Someone lifts the hatch, and Dawson's eyes go wide. He gives you one last despairing look, shakes his head slowly and deliberately, and quietly slides something across the stone floor. Then the hooded figure pushes him in. In the scuffle and the low light, nobody notices the car key that skitters to a halt directly next to you.\nYou grab the key and stuff it into your pocket just before you are shoved forward. Two more sets of cold, clammy hands grap your shoulders, and the hooded figure slides his knife up to your neck. All you can see of his face are his wide, unblinking eyes.\n\"Oceiros, these ones were found in Dagon's lair as well,\" another voice explains to the elderly figure in the robes. \"We believe they were the ones snooping around Devil Reef.\"\nThe man with the knife to your throat nods. \"Your turn,\" he declares. \"Tell us why you have come and perhaps we will let you go. Who sent you? What have you seen?\"",
+      "steps": [
+        "earn_xp",
+        "maybe_ask_suspect_defeated",
+        "ask_oceiros"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "Conclusion 2",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You remember the slow, gentle shaking of Agent Dawson's head and known what he meant by the gesture. You look up into the man's unblinking eyes, set your jaw, and say nothing. A moment of silent understanding passes between you and your interrogator. \"Very well. Your defiance has earned you naught but a slow, agonizing death.\" The metal hatch opens again. Inside, you see nothing but darkness. You glare long and hard at your captor.\n\"Take what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": [
+        "add_elder_thing"
+      ]
+    },
+    {
+      "id": "R3",
+      "title": "Conclusion 3",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You can think of only one way out of this situation. The Order believes that you are poking around their business, so you will have to convince them that you don't know or care what they are up to. You lie as best you can, spinning a story that might convince them you were simply in the wrong place at the wrong time. \"And what of your unfortunate friend?\" your interrogator asks. You tell him that you have never met that man before in your life. \"Perhaps you speak the truth,\" the man says, and you breath a short-lived sigh of relief before he dashes your hopes: \"…but it matters not. You have seen too much, and for that, you must be silenced. Worry not. You will be joining our kindred soon.\" The metal hatch opens again. Inside, you see nothing but darkness.\n\"Take what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": [
+        "add_tablet"
+      ]
+    },
+    {
+      "id": "R4",
+      "title": "Conclusion 4",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "None of this is what you signed up for. Hoping to avoid Dawson's fate, you have no choice but to tell your interrogator everything. You explain you were hired by Dawson to find his missing agent, and go on to describe the events that followed over the past few weeks, including your exploration of Devil Reef and your investigation into the Order. A slow smile crawls across the man's face as you divulge everything you know. \"I thank you for your candor. Sadly, there is only one way I can repay you. You have seen too much, and for that, you must be silenced.\" Your heart goes cold as you realize what he means. The metal hatch opens again. Inside, you see nothing but darkness.\nTake what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": [
+        "add_cultist"
+      ]
+    }
+  ]
 },
 {
   "id": "the_pit_of_despair",
   "scenario_name": "Le Gouffre du Désespoir",
   "full_name": "Scénario I : Le Gouffre du Désespoir",
+  "header": "Scénario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -76123,8 +77183,9 @@
 },
 {
   "id": "the_syzygy",
-  "scenario_name": "La Syzygie",
+  "scenario_name": "The Syzygy",
   "full_name": "Interlude II : La Syzygie",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "syzygy",
   "setup": [
@@ -76240,6 +77301,7 @@
   "id": "the_vanishing_of_elina_harper",
   "scenario_name": "La Disparition d'Elina Harper",
   "full_name": "Scénario II : La Disparition d'Elina Harper",
+  "header": "Scénario II",
   "setup": [
     "intro_1",
     "info_summary",
@@ -78184,6 +79246,7 @@
   "id": "tic_epilogue",
   "scenario_name": "Épilogue",
   "full_name": "Épilogue",
+  "header": "",
   "type": "placeholder",
   "icon": "rising_tide",
   "setup": [],

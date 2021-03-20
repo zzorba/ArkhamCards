@@ -5,7 +5,7 @@ import {
   isAfter,
   startOfDay,
 } from 'date-fns';
-import { de, es, ru, it, fr, ko, uk, pl } from 'date-fns/locale';
+import { de, es, ru, it, fr, ko, uk, pl, ptBR, zhTW } from 'date-fns/locale';
 import { t } from 'ttag';
 
 const LOCALE_MAP: {
@@ -20,7 +20,10 @@ const LOCALE_MAP: {
   ko: { locale: ko },
   uk: { locale: uk },
   pl: { locale: pl },
+  pt: { locale: ptBR },
+  zh: { locale: zhTW },
 };
+
 /**
  * Formats a timestamp into a string with year and month, e.g. "2017-2".
  */

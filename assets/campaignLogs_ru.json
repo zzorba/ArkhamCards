@@ -1528,7 +1528,7 @@
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "the investigators discovered how to open the puzzle box.."
+            "text": "сыщики узнали, как открыть шкатулку."
           },
           {
             "id": "doom_draws_ever_closer",
@@ -1540,11 +1540,11 @@
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "the guardian of the trap emerged and was defeated."
+            "text": "хранитель ловушки явился и был побеждён."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "the guardian of the trap emerged."
+            "text": "хранитель ловушки явился."
           },
           {
             "id": "heretics_released",
@@ -2379,12 +2379,28 @@
             "text": "Brian Burnham is out for blood."
           },
           {
+            "id": "dagon_has_awakened",
+            "text": "Dagon has awakened."
+          },
+          {
             "id": "friendly_out_for_blood",
             "text": "Robert Friendly is out for blood."
           },
           {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "the gatekeeper has been defeated."
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+          },
+          {
             "id": "gilman_out_for_blood",
             "text": "Othera Gilman is out for blood."
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "the guardian of Y’ha-nthlei is dispatched."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",

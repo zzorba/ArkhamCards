@@ -140,6 +140,7 @@
 {
   "id": "armitages_fate",
   "scenario_name": "Armitage's Fate",
+  "header": "Interlude I",
   "full_name": "Interlude I: Armitage's Fate",
   "type": "interlude",
   "icon": "armitages_fate",
@@ -235,6 +236,7 @@
 {
   "id": "blood_on_the_altar",
   "scenario_name": "Blood on the Altar",
+  "header": "Scenario IV",
   "full_name": "Scenario IV: Blood on the Altar",
   "setup": [
     "prologue",
@@ -591,6 +593,7 @@
   "id": "dwl_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "armitages_fate",
   "setup": [
@@ -646,6 +649,7 @@
   "id": "dwl_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "dunwich",
   "setup": [
@@ -695,6 +699,7 @@
 {
   "id": "essex_county_express",
   "scenario_name": "The Essex County Express",
+  "header": "Scenario III",
   "full_name": "Scenario III: The Essex County Express",
   "setup": [
     "prologue",
@@ -1071,6 +1076,7 @@
 {
   "id": "extracurricular_activity",
   "scenario_name": "Extracurricular Activity",
+  "header": "Scenario I-A",
   "full_name": "Scenario I–A: Extracurricular Activity",
   "setup": [
     "prologue",
@@ -1369,6 +1375,7 @@
 {
   "id": "lost_in_time_and_space",
   "scenario_name": "Lost in Time and Space",
+  "header": "Scenario VII",
   "full_name": "Scenario VII: Lost in Time and Space",
   "setup": [
     "prologue",
@@ -1660,6 +1667,7 @@
 {
   "id": "dwl_interlude2",
   "scenario_name": "The Survivors",
+  "header": "Interlude II",
   "full_name": "Interlude II: The Survivors",
   "type": "interlude",
   "icon": "whippoorwills",
@@ -1993,6 +2001,7 @@
 {
   "id": "the_house_always_wins",
   "scenario_name": "The House Always Wins",
+  "header": "Scenario I-B",
   "full_name": "Scenario I–B: The House Always Wins",
   "setup": [
     "prologue",
@@ -2289,6 +2298,7 @@
 {
   "id": "the_miskatonic_museum",
   "scenario_name": "The Miskatonic Museum",
+  "header": "Scenario II",
   "full_name": "Scenario II: The Miskatonic Museum",
   "setup": [
     "prologue",
@@ -2587,6 +2597,7 @@
 {
   "id": "undimensioned_and_unseen",
   "scenario_name": "Undimensioned and Unseen",
+  "header": "Scenario V",
   "full_name": "Scenario V: Undimensioned and Unseen",
   "setup": [
     "prologue",
@@ -2915,6 +2926,7 @@
 {
   "id": "where_doom_awaits",
   "scenario_name": "Where Doom Awaits",
+  "header": "Scenario VI",
   "full_name": "Scenario VI: Where Doom Awaits",
   "setup": [
     "prologue",
@@ -3490,6 +3502,7 @@
 {
   "id": "arkham",
   "scenario_name": "The Midnight Masks",
+  "header": "Scenario II",
   "full_name": "Scenario II: The Midnight Masks",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -4033,6 +4046,7 @@
 {
   "id": "tentacles",
   "scenario_name": "The Devourer Below",
+  "header": "Scenario III",
   "full_name": "Scenario III: The Devourer Below",
   "setup": [
     "intro",
@@ -4433,6 +4447,7 @@
 {
   "id": "torch",
   "scenario_name": "The Gathering",
+  "header": "Scenario I",
   "full_name": "Scenario I: The Gathering",
   "setup": [
     "prologue",
@@ -4880,6 +4895,7 @@
   "id": "a_phantom_of_truth",
   "scenario_name": "A Phantom of Truth",
   "full_name": "Scenario V: A Phantom of Truth",
+  "header": "Scenario V",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -5726,6 +5742,7 @@
   "id": "black_stars_rise",
   "scenario_name": "Black Stars Rise",
   "full_name": "Scenario VII: Black Stars Rise",
+  "header": "Scenario VII",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -6361,6 +6378,7 @@
   "id": "curtain_call",
   "scenario_name": "Curtain Call",
   "full_name": "Scenario I: Curtain Call",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -6668,6 +6686,7 @@
   "id": "dim_carcosa",
   "scenario_name": "Dim Carcosa",
   "full_name": "Scenario VIII: Dim Carcosa",
+  "header": "Scenario VIII",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -7391,6 +7410,7 @@
   "id": "echoes_of_the_past",
   "scenario_name": "Echoes of the Past",
   "full_name": "Scenario III: Echoes of the Past",
+  "header": "Scenario III",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -7917,8 +7937,9 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Epilogue",
-  "icon": "maddening_delusions",
+  "header": "",
   "full_name": "Epilogue",
+  "icon": "maddening_delusions",
   "type": "epilogue",
   "setup": [
     "check_epilogue"
@@ -7956,6 +7977,7 @@
   "id": "ptc_interlude2",
   "scenario_name": "Lost Soul",
   "full_name": "Interlude II: Lost Soul",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "the_stranger",
   "setup": [
@@ -8131,6 +8153,7 @@
   "id": "ptc_interlude1",
   "scenario_name": "Lunacy's Reward",
   "full_name": "Interlude I: Lunacy's Reward",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "hasturs_gift",
   "setup": [
@@ -8453,6 +8476,7 @@
   "id": "ptc_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "delusions",
   "setup": [
@@ -8514,6 +8538,7 @@
   "id": "the_last_king",
   "scenario_name": "The Last King",
   "full_name": "Scenario II: The Last King",
+  "header": "Scenario II",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -8933,6 +8958,7 @@
   "id": "the_pallid_mask",
   "scenario_name": "The Pallid Mask",
   "full_name": "Scenario VI: The Pallid Mask",
+  "header": "Scenario VI",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -9679,7 +9705,7 @@
           {
             "type": "campaign_data",
             "campaign_data": "version",
-            "min_version": 1,
+            "min_version": 2,
             "options": [
               {
                 "boolCondition": true
@@ -9785,6 +9811,7 @@
   "id": "the_unspeakable_oath",
   "scenario_name": "The Unspeakable Oath",
   "full_name": "Scenario IV: The Unspeakable Oath",
+  "header": "Scenario IV",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -10804,6 +10831,7 @@
 {
   "id": "armitages_fate",
   "scenario_name": "Armitage's Fate",
+  "header": "Interlude I",
   "full_name": "Interlude I: Armitage's Fate",
   "type": "interlude",
   "icon": "armitages_fate",
@@ -10907,6 +10935,7 @@
   "id": "dwl_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "armitages_fate",
   "setup": [
@@ -10956,6 +10985,7 @@
   "id": "dwl_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "dunwich",
   "setup": [
@@ -11008,6 +11038,7 @@
 {
   "id": "return_to_blood_on_the_altar",
   "scenario_name": "Return to Blood on the Altar",
+  "header": "Scenario IV",
   "full_name": "Scenario IV: Return to Blood on the Altar",
   "setup": [
     "prologue",
@@ -11445,6 +11476,7 @@
 {
   "id": "return_to_essex_county_express",
   "scenario_name": "Return to The Essex County Express",
+  "header": "Scenario III",
   "full_name": "Scenario III: Return to The Essex County Express",
   "setup": [
     "prologue",
@@ -11871,6 +11903,7 @@
 {
   "id": "return_to_extracurricular_activity",
   "scenario_name": "Return to Extracurricular Activity",
+  "header": "Scenario I-A",
   "full_name": "Scenario I–A: Return to Extracurricular Activity",
   "setup": [
     "prologue",
@@ -12235,6 +12268,7 @@
 {
   "id": "return_to_lost_in_time_and_space",
   "scenario_name": "Return to Lost in Time and Space",
+  "header": "Scenario VII",
   "full_name": "Scenario VII: Return to Lost in Time and Space",
   "setup": [
     "prologue",
@@ -12587,6 +12621,7 @@
 {
   "id": "return_to_the_house_always_wins",
   "scenario_name": "Return to The House Always Wins",
+  "header": "Scenario I-B",
   "full_name": "Scenario I–B: Return to The House Always Wins",
   "setup": [
     "prologue",
@@ -12931,6 +12966,7 @@
 {
   "id": "return_to_the_miskatonic_museum",
   "scenario_name": "Return to The Miskatonic Museum",
+  "header": "Scenario II",
   "full_name": "Scenario II: Return to The Miskatonic Museum",
   "setup": [
     "prologue",
@@ -13269,6 +13305,7 @@
 {
   "id": "return_to_undimensioned_and_unseen",
   "scenario_name": "Return to Undimensioned and Unseen",
+  "header": "Scenario V",
   "full_name": "Scenario V: Return to Undimensioned and Unseen",
   "setup": [
     "prologue",
@@ -13662,6 +13699,7 @@
 {
   "id": "return_to_where_doom_awaits",
   "scenario_name": "Return to Where Doom Awaits",
+  "header": "Scenario VI",
   "full_name": "Scenario VI: Return to Where Doom Awaits",
   "setup": [
     "prologue",
@@ -14160,6 +14198,7 @@
 {
   "id": "dwl_interlude2",
   "scenario_name": "The Survivors",
+  "header": "Interlude II",
   "full_name": "Interlude II: The Survivors",
   "type": "interlude",
   "icon": "whippoorwills",
@@ -14811,6 +14850,7 @@
 {
   "id": "return_to_the_devourer_below",
   "scenario_name": "Return to The Devourer Below",
+  "header": "Scenario III",
   "full_name": "Scenario III: Return to The Devourer Below",
   "setup": [
     "intro",
@@ -15254,6 +15294,7 @@
 {
   "id": "return_to_the_gathering",
   "scenario_name": "Return to The Gathering",
+  "header": "Scenario I",
   "full_name": "Scenario I: Return to the Gathering",
   "setup": [
     "prologue",
@@ -15580,6 +15621,7 @@
 {
   "id": "return_to_the_midnight_masks",
   "scenario_name": "Return to The Midnight Masks",
+  "header": "Scenario II",
   "full_name": "Scenario II: Return to The Midnight Masks",
   "standalone_setup": [
     "setup_standalone_bag",
@@ -16632,8 +16674,9 @@
 {
   "id": "ptc_epilogue",
   "scenario_name": "Epilogue",
-  "icon": "maddening_delusions",
+  "header": "",
   "full_name": "Epilogue",
+  "icon": "maddening_delusions",
   "type": "epilogue",
   "setup": [
     "check_epilogue"
@@ -16672,6 +16715,7 @@
   "id": "ptc_interlude2",
   "scenario_name": "Lost Soul",
   "full_name": "Interlude II: Lost Soul",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "the_stranger",
   "setup": [
@@ -16863,6 +16907,7 @@
   "id": "ptc_interlude1",
   "scenario_name": "Lunacy's Reward",
   "full_name": "Interlude I: Lunacy's Reward",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "hasturs_gift",
   "setup": [
@@ -17197,6 +17242,7 @@
   "id": "ptc_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "delusions",
   "setup": [
@@ -17260,6 +17306,7 @@
   "id": "return_to_a_phantom_of_truth",
   "scenario_name": "Return to A Phantom of Truth",
   "full_name": "Scenario V: Return to A Phantom of Truth",
+  "header": "Scenario V",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -18241,6 +18288,7 @@
   "id": "return_to_black_stars_rise",
   "scenario_name": "Return to Black Stars Rise",
   "full_name": "Scenario VII: Return to Black Stars Rise",
+  "header": "Scenario VII",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -18985,6 +19033,7 @@
   "id": "return_to_curtain_call",
   "scenario_name": "Return to Curtain Call",
   "full_name": "Scenario I: Return to Curtain Call",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -19389,6 +19438,7 @@
   "id": "return_to_dim_carcosa",
   "scenario_name": "Return to Dim Carcosa",
   "full_name": "Scenario VIII: Return to Dim Carcosa",
+  "header": "Scenario VIII",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -20237,6 +20287,7 @@
   "id": "return_to_echoes_of_the_past",
   "scenario_name": "Return to Echoes of the Past",
   "full_name": "Scenario III: Return to Echoes of the Past",
+  "header": "Scenario III",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -20833,6 +20884,7 @@
   "id": "return_to_the_last_king",
   "scenario_name": "Return to The Last King",
   "full_name": "Scenario II: Return to The Last King",
+  "header": "Scenario II",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -21321,6 +21373,7 @@
   "id": "return_to_the_pallid_mask",
   "scenario_name": "Return to The Pallid Mask",
   "full_name": "Scenario VI: Return to The Pallid Mask",
+  "header": "Scenario VI",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -22101,7 +22154,7 @@
           {
             "type": "campaign_data",
             "campaign_data": "version",
-            "min_version": 1,
+            "min_version": 2,
             "options": [
               {
                 "boolCondition": true
@@ -22254,6 +22307,7 @@
   "id": "return_to_the_unspeakable_oath",
   "scenario_name": "Return to The Unspeakable Oath",
   "full_name": "Scenario IV: Return to The Unspeakable Oath",
+  "header": "Scenario IV",
   "standalone_setup": [
     "setup_standalone_bag",
     "randomly_choose_tokens",
@@ -23498,6 +23552,7 @@
   "id": "tfa_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "temporal_flux",
   "setup": [
@@ -23565,6 +23620,7 @@
   "id": "tfa_interlude2",
   "scenario_name": "Expedition's End",
   "full_name": "Interlude II: Expedition's End",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -23784,6 +23840,7 @@
   "id": "tfa_interlude3",
   "scenario_name": "The Jungle Beckons",
   "full_name": "Interlude III: The Jungle Beckons",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "rainforest",
   "setup": [
@@ -24274,6 +24331,7 @@
   "id": "tfa_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -24394,6 +24452,7 @@
   "id": "tfa_interlude1",
   "scenario_name": "Restless Nights",
   "full_name": "Interlude I: Restless Nights",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "deadly_traps",
   "setup": [
@@ -24543,6 +24602,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "name": "(has binoculars)",
         "investigator": "choice",
         "prompt": "Group's lookout",
         "positiveChoice": {
@@ -24684,6 +24744,7 @@
   "id": "return_to_heart_of_the_elders_part_1",
   "scenario_name": "Return to Heart of the Elders, Part 1",
   "full_name": "Scenario V–A: Return to Heart of the Elders, Part 1",
+  "header": "Scenario V-A",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -25350,6 +25411,7 @@
   "id": "return_to_heart_of_the_elders_part_2",
   "scenario_name": "Return to Heart of the Elders, Part 2",
   "full_name": "Scenario V–B: Return to Heart of the Elders, Part 2",
+  "header": "Scenario V-B",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -25730,6 +25792,7 @@
   "id": "return_to_shattered_aeons",
   "scenario_name": "Return to Shattered Aeons",
   "full_name": "Scenario VIII: Return to Shattered Aeons",
+  "header": "Scenario VIII",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -26271,6 +26334,7 @@
   "id": "return_to_the_boundary_beyond",
   "scenario_name": "Return to The Boundary Beyond",
   "full_name": "Scenario IV: Return to The Boundary Beyond",
+  "header": "Scenario IV",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -27095,6 +27159,7 @@
   "id": "return_to_the_city_of_archives",
   "scenario_name": "Return to The City of Archives",
   "full_name": "Scenario VI: Return to The City of Archives",
+  "header": "Scenario VI",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -27572,6 +27637,7 @@
   "id": "return_to_the_depths_of_yoth",
   "scenario_name": "Return to The Depths of Yoth",
   "full_name": "Scenario VII: Return to The Depths of Yoth",
+  "header": "Scenario VII",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -27608,7 +27674,6 @@
     "create_exploration_deck",
     "setup_depth",
     "set_aside_relic",
-    "set_aside_harbinger",
     "set_aside_poison",
     "encounter_deck",
     "depth_level_rule",
@@ -28926,6 +28991,7 @@
   "id": "return_to_the_doom_of_eztli",
   "scenario_name": "Return to The Doom of Eztli",
   "full_name": "Scenario II: Return to The Doom of Eztli",
+  "header": "Scenario II",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -29575,6 +29641,7 @@
   "id": "return_to_the_untamed_wilds",
   "scenario_name": "Return to The Untamed Wilds",
   "full_name": "Scenario I: Return to The Untamed Wilds",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -30024,6 +30091,7 @@
   "id": "return_to_threads_of_fate",
   "scenario_name": "Return to Threads of Fate",
   "full_name": "Scenario III: Return to Threads of Fate",
+  "header": "Scenario III",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -31642,6 +31710,7 @@
   "id": "return_to_turn_back_time",
   "scenario_name": "Return to Turn Back Time",
   "full_name": "Scenario IX: Return to Turn Back Time",
+  "header": "Scenario IX",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -32173,6 +32242,7 @@
   "id": "tfa_interlude5",
   "scenario_name": "The Darkness",
   "full_name": "Interlude V: The Darkness",
+  "header": "Interlude V",
   "type": "interlude",
   "icon": "torch",
   "setup": [
@@ -32734,6 +32804,7 @@
   "id": "tfa_interlude4",
   "scenario_name": "Those Held Captive",
   "full_name": "Interlude IV: Those Held Captive",
+  "header": "Interlude IV",
   "type": "interlude",
   "icon": "cult_of_pnakotus",
   "setup": [
@@ -33409,6 +33480,7 @@
   "id": "all_or_nothing",
   "scenario_name": "All or Nothing",
   "full_name": "All or Nothing",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -33901,6 +33973,7 @@
   "id": "bad_blood",
   "scenario_name": "Bad Blood",
   "full_name": "Bad Blood",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -34379,6 +34452,7 @@
   "id": "blob_that_ate_everything",
   "scenario_name": "The Blob That Ate Everything",
   "full_name": "The Blob That Ate Everything",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -34934,6 +35008,7 @@
   "id": "carnevale_of_horrors",
   "scenario_name": "Carnevale of Horrors",
   "full_name": "Carnevale of Horrors",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -35068,7 +35143,7 @@
       "id": "across_from_rule",
       "type": "rule_reminder",
       "title": "\"Across from\"",
-      "text": "The location \"across from\" another l ocation is the farthest location, equidistant in both the clockwise and counter-clockwise directions. For hte purpose of this scenario, \"across from your location\" and \"across from you\" have the same meaning."
+      "text": "The location \"across from\" another location is the farthest location, equidistant in both the clockwise and counter-clockwise directions. For the purpose of this scenario, \"across from your location\" and \"across from you\" have the same meaning."
     },
     {
       "id": "earn_xp",
@@ -35293,6 +35368,7 @@
   "id": "curse_of_the_rougarou",
   "scenario_name": "Curse of the Rougarou",
   "full_name": "Curse of the Rougarou",
+  "header": "",
   "xp_cost": 1,
   "standalone_setup": [
     "choose_difficulty",
@@ -35513,6 +35589,7 @@
   "id": "in_the_labyrinths_of_lunacy",
   "scenario_name": "The Labyrinths of Lunacy",
   "full_name": "The Labyrinths of Lunacy",
+  "header": "",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -36277,6 +36354,7 @@
   "id": "meddling_of_meowlathotep",
   "scenario_name": "The Meddling of Meowlathotep",
   "full_name": "The Meddling of Meowlathotep",
+  "header": "",
   "side_scenario_type": "standalone",
   "standalone_setup": [
     "choose_difficulty",
@@ -36695,6 +36773,7 @@
   "id": "murder_at_the_excelsior_hotel",
   "scenario_name": "Murder at the Excelsior Hotel",
   "full_name": "Murder at the Excelsior Hotel",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -38242,6 +38321,7 @@
   "id": "read_or_die",
   "scenario_name": "Read or Die",
   "full_name": "Read or Die",
+  "header": "",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -38713,6 +38793,7 @@
   "id": "the_eternal_slumber",
   "scenario_name": "The Eternal Slumber",
   "full_name": "The Eternal Slumber",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -39124,6 +39205,7 @@
   "id": "the_nights_usurper",
   "scenario_name": "The Night's Usurper",
   "full_name": "The Night's Usurper",
+  "header": "",
   "xp_cost": 2,
   "standalone_setup": [
     "choose_difficulty",
@@ -39541,6 +39623,7 @@
   "id": "war_of_the_outer_gods",
   "scenario_name": "War of the Outer Gods",
   "full_name": "War of the Outer Gods",
+  "header": "",
   "xp_cost": 3,
   "standalone_setup": [
     "choose_difficulty",
@@ -40317,6 +40400,7 @@
   "id": "at_deaths_doorstep",
   "scenario_name": "At Death's Doorstep",
   "full_name": "Scenario II: At Death's Doorstep",
+  "header": "Scenario II",
   "setup": [
     "intro_article",
     "intro",
@@ -40966,6 +41050,7 @@
   "id": "before_the_black_throne",
   "scenario_name": "Before the Black Throne",
   "full_name": "Scenario VIII: Before the Black Throne",
+  "header": "Scenario VIII",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -41372,8 +41457,9 @@
 },
 {
   "id": "disappearance_at_the_twilight_estate",
-  "scenario_name": "Prologue: Disappearance at the Twilight Estate",
+  "scenario_name": "Disappearance at the Twilight Estate",
   "full_name": "Prologue: Disappearance at the Twilight Estate",
+  "header": "Prologue",
   "type": "interlude",
   "setup": [
     "pre_intro",
@@ -41814,6 +41900,7 @@
   "id": "tcu_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "realm_of_death",
   "setup": [
@@ -41968,6 +42055,7 @@
   "id": "for_the_greater_good",
   "scenario_name": "For the Greater Good",
   "full_name": "Scenario V: For the Greater Good",
+  "header": "Scenario V",
   "setup": [
     "intro_1",
     "check_members_of_the_lodge",
@@ -42361,6 +42449,7 @@
   "id": "in_the_clutches_of_chaos",
   "scenario_name": "In the Clutches of Chaos",
   "full_name": "Scenario VII: In the Clutches of Chaos",
+  "header": "Scenario VII",
   "setup": [
     "intro_1",
     "check_never_seen_again",
@@ -43008,6 +43097,7 @@
   "type": "interlude",
   "scenario_name": "The Inner Circle",
   "full_name": "Interlude III: The Inner Circle",
+  "header": "Interlude III",
   "icon": "trapped_spirits",
   "setup": [
     "ic_1",
@@ -43624,6 +43714,7 @@
   "type": "interlude",
   "scenario_name": "The Price of Progress",
   "full_name": "Interlude II: The Price of Progress",
+  "header": "Interlude II",
   "icon": "silver_twilight_lodge",
   "setup": [
     "check_silver_twilight_investigator",
@@ -43938,6 +44029,7 @@
   "id": "the_secret_name",
   "scenario_name": "The Secret Name",
   "full_name": "Scenario III: The Secret Name",
+  "header": "Scenario III",
   "setup": [
     "check_members_of_the_lodge",
     "gather_encounter_sets",
@@ -44488,6 +44580,7 @@
   "id": "the_wages_of_sin",
   "scenario_name": "The Wages of Sin",
   "full_name": "Scenario IV: The Wages of Sin",
+  "header": "Scenario IV",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -44744,6 +44837,7 @@
   "id": "the_witching_hour",
   "scenario_name": "The Witching Hour",
   "full_name": "Scenario I: The Witching Hour",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "choose_fate",
@@ -45145,6 +45239,7 @@
   "type": "interlude",
   "scenario_name": "Twist of Fate",
   "full_name": "Interlude IV: Twist of Fate",
+  "header": "Interlude IV",
   "icon": "inexorable_fate",
   "setup": [
     "tof_1",
@@ -45489,6 +45584,7 @@
   "id": "union_and_disillusion",
   "scenario_name": "Union and Disillusion",
   "full_name": "Scenario VI: Union and Disillusion",
+  "header": "Scenario VI",
   "setup": [
     "intro_1",
     "point_of_no_return",
@@ -47417,6 +47513,7 @@
   "id": "the_black_cat",
   "scenario_name": "The Black Cat",
   "full_name": "Interlude I: The Black Cat",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "tde",
   "setup": [
@@ -47743,6 +47840,7 @@
   "id": "tde_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "merging_realities",
   "setup": [
@@ -48281,6 +48379,7 @@
   "id": "the_great_ones",
   "scenario_name": "The Great Ones",
   "full_name": "Interlude III: The Great Ones",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "dreamers_curse",
   "setup": [
@@ -48993,6 +49092,7 @@
   "id": "the_oneironauts",
   "scenario_name": "The Oneironauts",
   "full_name": "Interlude II: The Oneironauts",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "whispers_of_hypnos",
   "setup": [
@@ -49625,6 +49725,7 @@
   "id": "beyond_the_gates_of_sleep",
   "scenario_name": "Beyond the Gates of Sleep",
   "full_name": "Scenario I–A: Beyond the Gates of Sleep",
+  "header": "Scenario I-A",
   "setup": [
     "dream_intro",
     "choose_dreams",
@@ -50502,6 +50603,7 @@
   "id": "dark_side_of_the_moon",
   "scenario_name": "Dark Side of the Moon",
   "full_name": "Scenario III–A: Dark Side of the Moon",
+  "header": "Scenario III-A",
   "setup": [
     "check_someone_captured",
     "gather_encounter_sets",
@@ -50884,6 +50986,7 @@
   "id": "tde_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "dreamlands",
   "setup": [
@@ -50906,6 +51009,7 @@
   "id": "the_search_for_kadath",
   "scenario_name": "The Search for Kadath",
   "full_name": "Scenario II–A: The Search for Kadath",
+  "header": "Scenario II-A",
   "standalone_setup": [
     "setup_standalone_bag",
     "black_cat_not_at_your_side",
@@ -51910,6 +52014,7 @@
   "id": "where_gods_dwell",
   "scenario_name": "Where the Gods Dwell",
   "full_name": "Scenario IV–A: Where the Gods Dwell",
+  "header": "Scenario IV-A",
   "setup": [
     "check_carried_to_the_cold_wastes",
     "gather_encounter_sets",
@@ -52914,6 +53019,7 @@
   "id": "a_thousand_shapes_of_horror",
   "scenario_name": "A Thousand Shapes of Horror",
   "full_name": "Scenario II–B: A Thousand Shapes of Horror",
+  "header": "Scenario II-B",
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -53251,6 +53357,7 @@
   "id": "the_black_cat",
   "scenario_name": "The Black Cat",
   "full_name": "Interlude I: The Black Cat",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "tde",
   "setup": [
@@ -53483,6 +53590,7 @@
   "id": "tde_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "merging_realities",
   "setup": [
@@ -53977,6 +54085,7 @@
   "id": "the_great_ones",
   "scenario_name": "The Great Ones",
   "full_name": "Interlude III: The Great Ones",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "dreamers_curse",
   "setup": [
@@ -54423,6 +54532,7 @@
   "id": "the_oneironauts",
   "scenario_name": "The Oneironauts",
   "full_name": "Interlude II: The Oneironauts",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "whispers_of_hypnos",
   "setup": [
@@ -55099,6 +55209,7 @@
   "id": "point_of_no_return",
   "scenario_name": "Point of No Return",
   "full_name": "Scenario III–B: Point of No Return",
+  "header": "Scenario III-B",
   "setup": [
     "check_randolph_did_not_survive_descent",
     "gather_encounter_sets",
@@ -55539,6 +55650,7 @@
   "id": "tde_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "dreamlands",
   "setup": [
@@ -55561,6 +55673,7 @@
   "id": "waking_nightmare",
   "scenario_name": "Waking Nightmare",
   "full_name": "Scenario I–B: Waking Nightmare",
+  "header": "Scenario I-B",
   "setup": [
     "intro_1",
     "choose_doctor",
@@ -56043,6 +56156,7 @@
   "id": "weaver_of_the_cosmos",
   "scenario_name": "Weaver of the Cosmos",
   "full_name": "Scenario IV-B: Weaver of the Cosmos",
+  "header": "Scenario IV-B",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -57105,6 +57219,7 @@
   "id": "tfa_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "epilogue",
   "icon": "temporal_flux",
   "setup": [
@@ -57168,6 +57283,7 @@
   "id": "tfa_interlude2",
   "scenario_name": "Expedition's End",
   "full_name": "Interlude II: Expedition's End",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -57365,6 +57481,7 @@
   "id": "eztli",
   "scenario_name": "The Doom of Eztli",
   "full_name": "Scenario II: The Doom of Eztli",
+  "header": "Scenario II",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -57861,6 +57978,7 @@
   "id": "heart_of_the_elders_part_1",
   "scenario_name": "Heart of the Elders, Part 1",
   "full_name": "Scenario V–A: Heart of the Elders, Part 1",
+  "header": "Scenario V-A",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -58258,6 +58376,7 @@
   "id": "heart_of_the_elders_part_2",
   "scenario_name": "Heart of the Elders, Part 2",
   "full_name": "Scenario V–B: Heart of the Elders, Part 2",
+  "header": "Scenario V-B",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -58521,6 +58640,7 @@
   "id": "tfa_interlude3",
   "scenario_name": "The Jungle Beckons",
   "full_name": "Interlude III: The Jungle Beckons",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "rainforest",
   "setup": [
@@ -58982,6 +59102,7 @@
   "id": "tfa_prologue",
   "scenario_name": "Prologue",
   "full_name": "Prologue",
+  "header": "",
   "type": "interlude",
   "icon": "expedition",
   "setup": [
@@ -59098,6 +59219,7 @@
   "id": "tfa_interlude1",
   "scenario_name": "Restless Nights",
   "full_name": "Interlude I: Restless Nights",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "deadly_traps",
   "setup": [
@@ -59237,6 +59359,7 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "name": "(has binoculars)",
         "investigator": "choice",
         "prompt": "Group's lookout",
         "positiveChoice": {
@@ -59372,6 +59495,7 @@
   "id": "shattered_aeons",
   "scenario_name": "Shattered Aeons",
   "full_name": "Scenario VIII: Shattered Aeons",
+  "header": "Scenario VIII",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -59849,6 +59973,7 @@
   "id": "the_boundary_beyond",
   "scenario_name": "The Boundary Beyond",
   "full_name": "Scenario IV: The Boundary Beyond",
+  "header": "Scenario IV",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -60549,6 +60674,7 @@
   "id": "the_city_of_archives",
   "scenario_name": "The City of Archives",
   "full_name": "Scenario VI: The City of Archives",
+  "header": "Scenario VI",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -60967,6 +61093,7 @@
   "id": "tfa_interlude5",
   "scenario_name": "The Darkness",
   "full_name": "Interlude V: The Darkness",
+  "header": "Interlude V",
   "type": "interlude",
   "icon": "torch",
   "setup": [
@@ -61472,6 +61599,7 @@
   "id": "the_depths_of_yoth",
   "scenario_name": "The Depths of Yoth",
   "full_name": "Scenario VII: The Depths of Yoth",
+  "header": "Scenario VII",
   "standalone_setup": [
     "setup_standalone_bag",
     "setup_standalone_log_1",
@@ -62604,6 +62732,7 @@
   "id": "tfa_interlude4",
   "scenario_name": "Those Held Captive",
   "full_name": "Interlude IV: Those Held Captive",
+  "header": "Interlude IV",
   "type": "interlude",
   "icon": "cult_of_pnakotus",
   "setup": [
@@ -63210,6 +63339,7 @@
   "id": "threads_of_fate",
   "scenario_name": "Threads of Fate",
   "full_name": "Scenario III: Threads of Fate",
+  "header": "Scenario III",
   "standalone_setup": [
     "setup_standalone_bag",
     "intro_1",
@@ -64316,6 +64446,7 @@
   "id": "turn_back_time",
   "scenario_name": "Turn Back Time",
   "full_name": "Scenario IX: Turn Back Time",
+  "header": "Scenario IX",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -64789,6 +64920,7 @@
   "id": "wilds",
   "scenario_name": "The Untamed Wilds",
   "full_name": "Scenario I: The Untamed Wilds",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -65445,6 +65577,7 @@
   "id": "a_light_in_the_fog",
   "scenario_name": "A Light in the Fog",
   "full_name": "Scenario VI: A Light in the Fog",
+  "header": "Scenario VI",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -66456,6 +66589,7 @@
   "id": "beneath_the_waves",
   "scenario_name": "Beneath the Waves",
   "full_name": "Interlude III: Beneath the Waves",
+  "header": "Interlude III",
   "type": "interlude",
   "icon": "flooded_caverns",
   "setup": [
@@ -66745,6 +66879,7 @@
   "id": "devil_reef",
   "scenario_name": "Devil Reef",
   "full_name": "Scenario IV: Devil Reef",
+  "header": "Scenario IV",
   "setup": [
     "intro_1",
     "check_mission_succeeded",
@@ -67275,7 +67410,7 @@
     },
     {
       "id": "flashback_11_assets",
-      "text": "Take control of both the blck key and the set-aside Headdress of Y'ha-nthlei story asset. Place the black key on the Headdress of Y'ha-nthlei. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the black key also takes control of the Headdress of Y'ha-nthlei, as well. If the black key is placed on another card, place the Headdress of Y'ha-nthlei near that card, uncontrolled. If the black key leaves play, remove the Headdress of Y'ha-nthlei from the game."
+      "text": "Take control of both the black key and the set-aside Headdress of Y'ha-nthlei story asset. Place the black key on the Headdress of Y'ha-nthlei. <i>(It is still under that investigator's control)</i> For the remainder of the game, whoever takes control of the black key also takes control of the Headdress of Y'ha-nthlei, as well. If the black key is placed on another card, place the Headdress of Y'ha-nthlei near that card, uncontrolled. If the black key leaves play, remove the Headdress of Y'ha-nthlei from the game."
     },
     {
       "id": "resolution_1",
@@ -67446,16 +67581,219 @@
   "id": "hidden_truths",
   "scenario_name": "Hidden Truths",
   "full_name": "Interlude IV: Hidden Truths",
+  "header": "Interlude IV",
   "icon": "agents_of_dagon",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "type": "interlude",
+  "setup": [
+    "intro",
+    "read_sections",
+    "check_terror_of_devil_reef_dead_and_lifecyle_of_deep_one",
+    "check_guardian_and_story_assets",
+    "remove_thomas_dawson",
+    "spend_xp",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "As soon as your mind returned to the present, you began formulating your plan. A plan to enter the realm of the Deep Ones and end their conspiracy once and for all. \"This is ridiculous, you know that, right?\" Harper asks. You nod. Of course it's ridiculous. You've spent the last two days on the run. Chased. Hunted. Tormented.\nBut you've also spend the last two days recovering the memories you've forgotten. And what you've seen is something you can't possibly ignore. You have seen the deity the Esoteric Order of Dagon is named for, and you understand what the Order plans to do. The alignment of the celestial bodies in the sky, the steadily rising tides, the tumultuous fluctuating weather, the creatures emerging from the deep, all of it is tied together. You have seen it. There will come a flood, a great disaster to wipe out humanity, so only the deep remains. The great city in the reef shall rise once more and become the beating heart of all life on Earth.\nThere are still gaps in your memory, but all this you know to be true. All of Innsmouthis consumed by this conspiracy. The Order controlled the town through its oaths and the secret wealth it hoarded from the deep. It was no wonder they treated outsiders like yourself with such scorn.\nYou give Harper a knowing glare. She sighs and nods. \"I know. It's the only way.\" Together, the two of you plot your course. Abandoned ships still litter the harbor of Innsmouth. Under the cover of night, you must commandeer one of them, sail to Devil Reef, and descend once more into the antediluvian ruins in the depths below the forsaken islands. That is where the other entrance to the city lies. Y'ha-nthlei.\nYour skin prickles with cold shivers as you utter the word aloud. Harper grimaces, though you can sense the determination behind her steely gaze. \"I'm going to see this mission through, Dawson. For you.\"\nYou lay out all of the information you've uncovered and the relics you've obtained despite the horrors arrayed against you. You know the way to Y'ha-nthlei is sealed tight. There must be a way to gain entrance. Perhaps you already have the answers you seek…"
+    },
+    {
+      "id": "read_sections",
+      "text": "Check the campaign log. Read each of the sections below that apply to your situation."
+    },
+    {
+      "id": "check_terror_of_devil_reef_dead_and_lifecyle_of_deep_one",
+      "text": "If <i>the Terror of Devil Reef is dead</i> and <i>the lifecycle of a \"Deep One\"</i> is listed under \"Memories Recovered\" in your Campaign Log.",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "terror_of_devil_reef_is_dead",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "memories_recovered",
+            "id": "lifecycle_of_a_deep_one",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": ["story_1", "guardian_of_yhanthlei_is_dispatched"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "story_1",
+      "type": "story",
+      "text": "You study the trophy you found in the sacrificial pit in which you awoke several days ago—part of what was once the creature that you fought in Devil Reef. It wasn't the same kind of creature as the \"Deep Ones\" that the Esoteric Order of Dagon worships, but you cannot help ruminating over the similarities between them. You recall that fish never cease growing as they age, and wonder if the same may be true for Deep Ones. Perhaps it was an ancient breed of Deep Ones—something so old, it grew enormous and twisted beyond imagination. If so what was it doing in Devil Reef? Was it guarding Y'ha-nthlei? And if so, what does that bode for you? You decide to take the trophy with you, hoping it is important enough to aid in your mission…"
+    },
+    {
+      "id": "guardian_of_yhanthlei_is_dispatched",
+      "text": "The conspiracy deepends. In your Campaign Log, record <i>the guardian of Y'ha-nthlei is dispatched.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "guardian_of_yhanthlei_is_dispatched",
+          "text": "the guardian of Y’ha-nthlei is dispatched."
+        }
+      ]
+    },
+    {
+      "id": "check_guardian_and_story_assets",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07179",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07180",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "has_card",
+            "investigator": "any",
+            "card": "07181",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["success_check_guardian_and_story_assets"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["fail_check_guardian_and_story_assets"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "success_check_guardian_and_story_assets",
+      "text": "If <i>the gatekeeper has been defeated</i> and an investigator's deck contains at least 1 of the following story assets (Waveworn Idol, Awakened Mantle, or Headdress of Y'ha-nthlei):",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "gatekeeper_has_been_defeated",
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": ["story_2", "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fail_check_guardian_and_story_assets",
+      "text": "If <i>the gatekeeper has been defeated</i> and an investigator's deck contains at least 1 of the following story assets (Waveworn Idol, Awakened Mantle, or Headdress of Y'ha-nthlei):",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "gatekeeper_has_been_defeated",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "steps": ["story_2", "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "story_2",
+      "type": "story",
+      "text": "You understand now the purpose of the relic you found in Devil Reef. It isn't just an object of power. It is a badge—an heirloom of sorts, worn by the one who stands guard over the gateway to the Deep Ones' city. You defeated the one groomed to be its next protector. Now the relic recognizes you as its rightful heir. Perhaps with this, you will be able to gain entrance to Y'ha-nthlei…"
+    },
+    {
+      "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+      "text": "The conspiracy deepens. In your Campaign Log, record <i>the gateway to Y’ha-nthlei recognizes you as its rightful keeper</i>.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+          "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+        }
+      ]
+    },
+    {
+      "id": "remove_thomas_dawson",
+      "text": "Return Thomas Dawson to the collection. If an investigator earned Elina Harper (at any point during this campaign), they may add her back to their deck."
+    },
+    {
+      "id": "spend_xp",
+      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "transfer_special_xp": "unspect_xp"
+        }
+      ]
+    }
+  ]
 }
 ,
 {
   "id": "horror_in_high_gear",
   "scenario_name": "Horror in High Gear",
   "full_name": "Scenario V: Horror in High Gear",
+  "header": "Scenario V",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -67762,6 +68100,7 @@
   "id": "in_too_deep",
   "scenario_name": "In Too Deep",
   "full_name": "Scenario III: In Too Deep",
+  "header": "Scenario III",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -68337,6 +68676,7 @@
   "id": "into_the_maelstrom",
   "scenario_name": "Into the Maelstrom",
   "full_name": "Scenario VIII: Into the Maelstrom",
+  "header": "Scenario VIII",
   "type": "placeholder",
   "setup": [],
   "steps": []
@@ -68346,6 +68686,7 @@
   "id": "puzzle_pieces",
   "scenario_name": "Puzzle Pieces",
   "full_name": "Interlude I: Puzzle Pieces",
+  "header": "Interlude I",
   "type": "interlude",
   "icon": "shattered_memories",
   "setup": [
@@ -68573,15 +68914,630 @@
   "id": "the_lair_of_dagon",
   "scenario_name": "The Lair of Dagon",
   "full_name": "Scenario VII: The Lair of Dagon",
-  "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "header": "Scenario VII",
+  "setup": [
+    "intro_1",
+    "check_mission_succeeded",
+    "check_decision_to_stick_together_intro",
+    "investigator_setup",
+    "gather_encounter_sets",
+    "setup_keys",
+    "setup_locations",
+    "location_layout",
+    "set_aside_cards",
+    "check_memories_recovered",
+    "check_jailbreak",
+    "check_encounter_with_a_secret_cult",
+    "check_decision_to_stick_together",
+    "flood_tokens",
+    "encounter_deck",
+    "keys_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "<center><game>THURSDAY, SEPTEMBER 15, 1927</game></center>\n<center><game>ONE WEEK EARLIER</game></center>\nYou stand outside the cracked marble steps leading up to the masonic hall of the Esoteric Order of Dagon. All of the evidence has lead you here. Whatever is going on in this town, this Order is behind it. You're sure of it… though their ultimate goal remains a mystery.\nThe town is eerily quiet as you stand before the building's entrance. Once, this place might have been impressive and opulent. Years of disrepair and flood damage have reduced it to a near-ruin. Its once-white paint is gray and peeling, and many of the pillars outside the entryway are beginning to crumble. Still, it is one of the more intimidating places in Innsmouth, projecting authority despite its decrepitude. No, not authority—something darker. A looming, unspoken threat.\n\"Are you ready?\" Agent Dawson asks. His usually calm demeanor has vanished, replaced with a humorless gravity that throws you off guard. \"This is it. This is where we'll find answers.\"\nYou're not so sure. Every other lead you've followed has led to only more questions."
+    },
+    {
+      "id": "check_mission_succeeded",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_succeeded",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_3"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "Agent Harper was kidnapped when she got too close to the Order, but interrogating her kidnapper didn't exactly yield the answers you needed. What you know now is that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. What's worse, many of the town's inhabitants seem to follow the Order with blind, fanatical devotion. So many that you're not sure this is even a functioning town anymore. It's no wonder the people are so hostile towards outsiders.\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "You are sure that Agent Harper was kidnapped after she began investigating the Order. Your own investigation might have ended the same way had you not laid low for a week after the townsfolk got riled up. It seems that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. But why?\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
+    },
+    {
+      "id": "check_decision_to_stick_together_intro",
+      "type": "branch",
+      "text": "If <i>a decision to stick together</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_4"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_5"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_4",
+      "type": "story",
+      "text": "<i>Creeeak.</i> Agent Dawson opens the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"I don't like this one bit,\" Dawson says as the front door closes behind you. He unholsters his gun, turns on his flashlight, and scans the room. \"We should stay together. Safety in numbers.\" You nod in agreement. The Order has proven to be very dangerous, and they surely don't want you poking around in their headquarters…"
+    },
+    {
+      "id": "intro_5",
+      "type": "story",
+      "text": "<i>Creeeak.</i> Agent Dawson creaks open the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"It's quiet. I guess there are no ceremonies going on tonight. That's good,\" Dawson says as the front door closes behind you. He turns on his flashlight and illuminates a nearby doorway. \"We should split up. We'll be able to cover more ground that way. See if you can figure out what they're hiding here. I'll meet up with you later.\" You nod and head in the opposite direction…"
+    },
+    {
+      "id": "investigator_setup",
+      "type": "rule_reminder",
+      "title": "Investigator Setup",
+      "text": "Perform this step before setting up your investigator.",
+      "bullets": [
+        {
+          "text": "Search each investigator's deck for Elina Harper and remove her from the game for the duration of this scenario."
+        }
+      ]
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Scenario Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_lair_of_dagon",
+        "agents_of_dagon",
+        "flooded_caverns",
+        "syzygy",
+        "pentagram",
+        "locked_doors"
+      ]
+    },
+    {
+      "id": "setup_keys",
+      "text": "Place each key as follows:",
+      "bullets": [
+        {
+          "text": "Set the black, blue, green, purple, and red keys aside, faceup."
+        },
+        {
+          "text": "Set the white and yellow aside, facedown. Shuffle them so you do not know which is which."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the following locations into play: Grand Entryway, Foul Corridors, both copies of First Floor Hall, both copies of Second Floor Hall, and Third Floor Hall.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at the Grand Entryway."
+        },
+        {
+          "text": "Set other locations aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "third_floor_hall", "blank"],
+        ["second_floor_hall", "foul_corridors", "second_floor_hall"],
+        ["first_floor_hall", "grand_entryway", "first_floor_hall"]
+      ],
+      "location_names": [
+        {
+          "code": "second_floor_hall",
+          "name": "Second Floor Hall"
+        },
+        {
+          "code": "foul_corridors",
+          "name": "Foul Corridors"
+        },
+        {
+          "code": "first_floor_hall",
+          "name": "First Floor Hall"
+        },
+        {
+          "code": "grand_entryway",
+          "name": "Grand Entryway"
+        },
+        {
+          "code": "third_floor_hall",
+          "name": "Third Floor Hall"
+        }
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Both copies of the Syzygy treachery, both copies of the Tidal Alignment treachery, the double-sided Y’ha-nthlei Statue story asset, the Apostle of Dagon enemy, and the double-sided Dagon enemy."
+    },
+    {
+      "id": "check_memories_recovered",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log:",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "memories_recovered",
+        "id": "$num_entries",
+        "max": 10,
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["add_5_bless"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["add_5_bless"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["add_5_bless"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["add_5_bless"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["add_5_bless"]
+          },
+          {
+            "numCondition": 5,
+            "steps": ["add_2_curse"]
+          },
+          {
+            "numCondition": 6,
+            "steps": ["add_2_curse"]
+          },
+          {
+            "numCondition": 7,
+            "steps": ["add_2_curse"]
+          },
+          {
+            "numCondition": 8,
+            "steps": ["add_5_curse"]
+          }
+        ],
+        "defaultOption": {
+          "steps": ["add_5_curse"]
+        }
+      }
+    },
+    {
+      "id": "add_5_bless",
+      "bullet_type": "small",
+      "text": "Because there are 4 or fewer memories recorded, add 5 [bless] tokens to the chaos bag."
+    },
+    {
+      "id": "add_2_curse",
+      "bullet_type": "small",
+      "text": "Because there are between 5 and 7 memories recorded, add 2 [curse] tokens to the chaos bag."
+    },
+    {
+      "id": "add_5_curse",
+      "bullet_type": "small",
+      "text": "Because there are 8 or more memories recorded, add 5 [curse] tokens to the chaos bag."
+    },
+    {
+      "id": "check_jailbreak",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>a jailbreak</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_jailbreak",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["set_aside_possible_suspect"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "set_aside_possible_suspect",
+      "bullet_type": "small",
+      "text": "Search the collection for the [[Suspect]] enemy underlined under “Possible Suspects” and set it aside, out of play."
+    },
+    {
+      "id": "check_encounter_with_a_secret_cult",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>an encounter with a secret cult</i> is listed under \"Memories Recovered\":",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "encounter_with_a_secret_cult",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["agenda_1_v1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["agenda_1_v2"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "agenda_1_v1",
+      "bullet_type": "small",
+      "text": "When constructing the agenda deck, use Agenda 1a—\"The Initiation (v.I)\" and remove Agenda 1a—\"The Initiation (v.II)\" from the game."
+    },
+    {
+      "id": "agenda_1_v2",
+      "bullet_type": "small",
+      "text": "Otherwise, use Agenda 1a—\"The Initiation (v.II)\" and remove Agenda 1a-\"The Initiation (v.I)\" from the game."
+    },
+    {
+      "id": "check_decision_to_stick_together",
+      "type": "branch",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>a decision to stick together</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["put_agent_dawson_in_play"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["set_aside_agent_dawson"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "put_agent_dawson_in_play",
+      "bullet_type": "small",
+      "text": "Search the collection for Thomas Dawson and put him into play under any investigator's control. When constructing the agenda deck, use Agenda 2a—\"What Lurks Below (v.I)\" and remove Agenda 2a—\"What Lurks Below (v.II)\" from the game."
+    },
+    {
+      "id": "set_aside_agent_dawson",
+      "bullet_type": "small",
+      "text": "Otherwise, search the collection for Thomas Dawson and set him aside, out of play. When constructing the agenda deck, use Agenda 2a—\"What Lurks Below (v.II)\" and remove Agenda 2a—\"What Lurks Below (v.I)\" from the game."
+    },
+    {
+      "id": "flood_tokens",
+      "text": "Add the flood tokens to the token pool."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Keys",
+            "steps": ["ask_keys"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Which keys do you want to read the representation of:",
+      "input": {
+        "type": "checklist",
+        "text": "Read",
+        "choices": [
+          {
+            "id": "red",
+            "text": "Red",
+            "steps": ["red_key"]
+          },
+          {
+            "id": "blue",
+            "text": "Blue",
+            "steps": ["blue_key"]
+          },
+          {
+            "id": "green",
+            "text": "Green",
+            "steps": ["green_key"]
+          },
+          {
+            "id": "purple",
+            "text": "Purple",
+            "steps": ["purple_key"]
+          },
+          {
+            "id": "black",
+            "text": "Black",
+            "steps": ["black_key"]
+          },
+          {
+            "id": "white",
+            "text": "White / Yellow",
+            "steps": ["white_key"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "red_key",
+      "text": "Red: A crest engraved with a glyph depicting a great sacrifice."
+    },
+    {
+      "id": "blue_key",
+      "text": "Blue: A scroll detailing some of the Order's activities and secrets."
+    },
+    {
+      "id": "green_key",
+      "text": "Green: A crest depicting a widening fish-eye."
+    },
+    {
+      "id": "purple_key",
+      "text": "Purple: A crest inscribed with a circle of words in an alphabet you do not comprehend."
+    },
+    {
+      "id": "black_key",
+      "text": "Black: A crest carved with an arcane sigil."
+    },
+    {
+      "id": "white_key",
+      "text": "White / Yellow: Crests whose glyphs depict the alignment of celestial bodies. The white key shows the moon overlapping the sun. The yellow key shows the sun overlapping the moon."
+    },
+    {
+      "id": "dagon_has_awakened",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "dagon_has_awakened",
+          "text": "Dagon has awakened."
+        }
+      ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unspect_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_suspect_defeated",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "a_jailbreak",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["ask_suspect_defeated"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_suspect_defeated",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "suspect_defeated",
+            "text": "Is a [[Suspect]] enemy in the victory display?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gatekeeper_has_been_defeated",
+                "text": "the gatekeeper has been defeated."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_oceiros",
+      "text": "The lead investigator must decide:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "nothing",
+            "text": "Tell Oceiros nothing.",
+            "steps": ["resolution_2"]
+          },
+          {
+            "id": "lying",
+            "text": "Lie to Oceiros.",
+            "steps": ["resolution_3"]
+          },
+          {
+            "id": "truth",
+            "text": "Tell Oceiros everything.",
+            "steps": ["resolution_4"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_elder_thing",
+      "text": "Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": ["elder_thing"]
+        }
+      ]
+    },
+    {
+      "id": "add_tablet",
+      "text": "Add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": ["tablet"]
+        }
+      ]
+    },
+    {
+      "id": "add_cultist",
+      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": ["cultist"]
+        }
+      ]
+    },
+    {
+      "id": "keys_rule",
+      "title": "Keys",
+      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "This place is more dangerous than you could have possibly imagined. You stumble as you flee through the dark, flooded corridors, retracing your steps as quickly as you can to reach the entrance. Your heart races in your chest as you see the exit at last. You gasp in relief as you crash through the doors, to safety—\n—Only you are not safe. Standing at the bottom of the steps is an angry throng of citizens, far too many for you to fight your way through. \"There! Get 'em!\" a wrinkled women at the head of the mob shouts. You are surrounded and grabbed within moments. You struggle and fight for your life, but it's no use. The last thing you remember is being dragged back through the halls of the Order to some unknown fate…",
+      "steps": ["dagon_has_awakened", "resolution_1"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You're somewhere else now, lying on your stomach on cold, damp stone. Your arms are held tight behind your back. You have no idea how you got here. As consciousness returns, your vision comes into focus. You crane your neck up to view your surroundings, but it's too dark to see anything inside your stone cell.\n\"I'll ask you one last time. Who sent you here?\" a voice asks. It is deep and husky, like the croaking of a frog.\nYou hear the familiar, cool baritone of Agent Dawson reply: \"Your breath smells awful. Ever heard of brushing your teeth?\" Despite the sarcasm dripping from his words, his voice wavers ever so slightly.\n\"Your mockery only masks the fear that hides within,\" the voice replies. \"Very well. If you are of no use to us, you will be the first to be sacrificed.\"\nYour vision continues to adjust. You can just barely make out Dawson's silhouette on the other side of the cell. He is kneeling before a metal hatch in the stone floor. An elderly robed figure presses a curved knife against Dawson's throat. Someone lifts the hatch, and Dawson's eyes go wide. He gives you one last despairing look, shakes his head slowly and deliberately, and quietly slides something across the stone floor. Then the hooded figure pushes him in. In the scuffle and the low light, nobody notices the car key that skitters to a halt directly next to you.\nYou grab the key and stuff it into your pocket just before you are shoved forward. Two more sets of cold, clammy hands grap your shoulders, and the hooded figure slides his knife up to your neck. All you can see of his face are his wide, unblinking eyes.\n\"Oceiros, these ones were found in Dagon's lair as well,\" another voice explains to the elderly figure in the robes. \"We believe they were the ones snooping around Devil Reef.\"\nThe man with the knife to your throat nods. \"Your turn,\" he declares. \"Tell us why you have come and perhaps we will let you go. Who sent you? What have you seen?\"",
+      "steps": ["earn_xp", "maybe_ask_suspect_defeated", "ask_oceiros"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You remember the slow, gentle shaking of Agent Dawson's head and known what he meant by the gesture. You look up into the man's unblinking eyes, set your jaw, and say nothing. A moment of silent understanding passes between you and your interrogator. \"Very well. Your defiance has earned you naught but a slow, agonizing death.\" The metal hatch opens again. Inside, you see nothing but darkness. You glare long and hard at your captor.\n\"Take what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": ["add_elder_thing"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You can think of only one way out of this situation. The Order believes that you are poking around their business, so you will have to convince them that you don't know or care what they are up to. You lie as best you can, spinning a story that might convince them you were simply in the wrong place at the wrong time. \"And what of your unfortunate friend?\" your interrogator asks. You tell him that you have never met that man before in your life. \"Perhaps you speak the truth,\" the man says, and you breath a short-lived sigh of relief before he dashes your hopes: \"…but it matters not. You have seen too much, and for that, you must be silenced. Worry not. You will be joining our kindred soon.\" The metal hatch opens again. Inside, you see nothing but darkness.\n\"Take what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": ["add_tablet"]
+    },
+    {
+      "id": "R4",
+      "title": "Resolution 4",
+      "investigator_status": [
+        "alive",
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "None of this is what you signed up for. Hoping to avoid Dawson's fate, you have no choice but to tell your interrogator everything. You explain you were hired by Dawson to find his missing agent, and go on to describe the events that followed over the past few weeks, including your exploration of Devil Reef and your investigation into the Order. A slow smile crawls across the man's face as you divulge everything you know. \"I thank you for your candor. Sadly, there is only one way I can repay you. You have seen too much, and for that, you must be silenced.\" Your heart goes cold as you realize what he means. The metal hatch opens again. Inside, you see nothing but darkness.\nTake what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "steps": ["add_cultist"]
+    }
+  ]
 }
 ,
 {
   "id": "the_pit_of_despair",
   "scenario_name": "The Pit of Despair",
   "full_name": "Scenario I: The Pit of Despair",
+  "header": "Scenario I",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -69049,6 +70005,7 @@
   "id": "the_syzygy",
   "scenario_name": "The Syzygy",
   "full_name": "Interlude II: The Syzygy",
+  "header": "Interlude II",
   "type": "interlude",
   "icon": "syzygy",
   "setup": [
@@ -69158,6 +70115,7 @@
   "id": "the_vanishing_of_elina_harper",
   "scenario_name": "The Vanishing of Elina Harper",
   "full_name": "Scenario II: The Vanishing of Elina Harper",
+  "header": "Scenario II",
   "setup": [
     "intro_1",
     "info_summary",
@@ -71017,6 +71975,7 @@
   "id": "tic_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
+  "header": "",
   "type": "placeholder",
   "icon": "rising_tide",
   "setup": [],

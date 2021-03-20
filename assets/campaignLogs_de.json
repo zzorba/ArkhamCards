@@ -2393,12 +2393,28 @@
             "text": "Brian Burnham will Blut sehen."
           },
           {
+            "id": "dagon_has_awakened",
+            "text": "Dagon has awakened."
+          },
+          {
             "id": "friendly_out_for_blood",
             "text": "Robert Friendly will Blut sehen."
           },
           {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "the gatekeeper has been defeated."
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+          },
+          {
             "id": "gilman_out_for_blood",
             "text": "Othera Gilman will Blut sehen."
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "the guardian of Y’ha-nthlei is dispatched."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",

@@ -2317,14 +2317,6 @@ msgstr "Zusätzliche Karte wählen"
 msgid "Campaign Log"
 msgstr "Kampagnenlogbuch"
 
-#, javascript-format
-msgid ""
-"${ card.name }\n"
-"(has ${ input.id })"
-msgstr ""
-"${ card.name }\n"
-"(hat ${ input.id })"
-
 msgid "Choose entry to add to campaign log:"
 msgstr "Wähle einen Eintrag, der zum Kampagnenlogbuch hinzugefügt wird:"
 
@@ -2831,7 +2823,6 @@ msgstr ""
 "Fehlende Karte #${ code }. Bitte versuche, die Karten von ArkhamDB in den "
 "Einstellungen zu updaten."
 
-#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } Erfahrungspunkt für Ausrüstungspunkte verfügbar"
@@ -4088,7 +4079,7 @@ msgid "Note campaign achievements"
 msgstr "Kampagnenerfolge notieren"
 
 msgid "Complete campaign setup"
-msgstr "Komplette Kampagnenvorbereitung"
+msgstr "Kampagnenvorbereitung abschließen"
 
 msgid "Review and draw tokens"
 msgstr "Marker prüfen und ziehen"
@@ -4179,6 +4170,46 @@ msgid "Save your changes to the campaign log"
 msgstr ""
 
 msgid "You must be online to upload campaigns"
+msgstr ""
+
+msgid "Decks with Ancestral Knowledge must include at least 10 skills."
+msgstr ""
+
+msgid "Faction, Level, Type"
+msgstr ""
+
+#, javascript-format
+msgid "${ normalCardCount } / ${ deckSize } cards"
+msgstr ""
+
+msgid "Ammo"
+msgstr ""
+
+msgid "Bounties"
+msgstr ""
+
+msgid "Charges"
+msgstr ""
+
+msgid "Keys"
+msgstr ""
+
+msgid "Locks"
+msgstr ""
+
+msgid "Resources"
+msgstr ""
+
+msgid "Secrets"
+msgstr ""
+
+msgid "Tickets"
+msgstr ""
+
+msgid "Tries"
+msgstr ""
+
+msgid "Whistles"
 msgstr ""
 
 #, javascript-format
@@ -4379,6 +4410,7 @@ msgstr ""
 "Falls <i>${ card.name }</i> unter \\\"Überprüfe ‘${ entry.section }’ im "
 "Kampagnenlogbuch\\\" aufgeführt ist."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } liest <b>${ sectionName }</b>"

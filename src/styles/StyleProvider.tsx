@@ -68,8 +68,8 @@ export default function StyleProvider({ children } : Props) {
   }, [windowWidth, windowHeight, windowScale, screenScale]);
   const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
-  const gameFont = lang === 'ru' ? 'Conkordia' : 'Teutonic';
-  const styleTypography = useMemo(() => typography(appFontScale, colors, gameFont), [appFontScale, colors, gameFont]);
+  const gameFont = lang === 'ru' ? 'Teutonic RU' : 'Teutonic';
+  const styleTypography = useMemo(() => typography(appFontScale, colors, gameFont, lang), [appFontScale, colors, gameFont, lang]);
   const context = useMemo(() => {
     return {
       ...DEFAULLT_STYLE_CONTEXT,

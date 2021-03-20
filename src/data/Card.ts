@@ -2,7 +2,7 @@ import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'type
 import { forEach, filter, keys, map, min, find } from 'lodash';
 import { t } from 'ttag';
 
-import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
+import { SortType, SORT_BY_COST, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
 import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
@@ -45,12 +45,6 @@ const REPRINT_CARDS: {
   '02190': ['jac'],
   '02153': ['jac'],
   '04032': ['jac'],
-  '01079': ['ste'],
-  '01075': ['ste'],
-  '04201': ['ste'],
-  '04034': ['ste'],
-  '02113': ['ste'],
-  '04200': ['ste'],
 };
 
 const FEMININE_INVESTIGATORS = new Set([
@@ -86,6 +80,7 @@ const FEMININE_INVESTIGATORS = new Set([
 const HEADER_SELECT = {
   [SORT_BY_FACTION]: 'c.sort_by_faction as headerId, c.sort_by_faction_header as headerTitle',
   [SORT_BY_FACTION_PACK]: 'c.sort_by_faction_pack as headerId, c.sort_by_faction_pack_header as headerTitle',
+  [SORT_BY_FACTION_XP]: 'c.sort_by_faction_xp as headerId, c.sort_by_faction_xp_header as headerTitle',
   [SORT_BY_COST]: 'c.cost as headerId, c.sort_by_cost_header as headerTitle',
   [SORT_BY_PACK]: 'c.sort_by_pack as headerId, c.pack_name as headerTitle',
   [SORT_BY_ENCOUNTER_SET]: 'c.encounter_code as headerId, c.sort_by_encounter_set_header as headerTitle',
@@ -102,6 +97,7 @@ export class PartialCard {
   public headerId: string;
   public headerTitle: string;
   public pack_code: string;
+  public reprint_pack_codes?: string[];
   public spoiler?: boolean;
 
   constructor(
@@ -111,6 +107,7 @@ export class PartialCard {
     headerId: string,
     headerTitle: string,
     pack_code: string,
+    reprint_pack_codes?: string[],
     renderSubName?: string,
     spoiler?: boolean,
   ) {
@@ -120,6 +117,7 @@ export class PartialCard {
     this.headerId = headerId;
     this.headerTitle = headerTitle;
     this.pack_code = pack_code;
+    this.reprint_pack_codes = reprint_pack_codes;
     this.renderSubName = renderSubName;
     this.spoiler = spoiler;
   }
@@ -131,6 +129,7 @@ export class PartialCard {
       `c.renderName as renderName`,
       `c.renderSubname as renderSubname`,
       `c.pack_code as pack_code`,
+      `c.reprint_pack_codes as reprint_pack_codes`,
       `c.spoiler as spoiler`,
       HEADER_SELECT[sort || SORT_BY_TYPE],
     ];
@@ -146,6 +145,7 @@ export class PartialCard {
         (raw.headerId === null || raw.headerId === undefined) ? 'null' : `${raw.headerId}`,
         sort === SORT_BY_TITLE ? t`All Cards` : raw.headerTitle,
         raw.pack_code,
+        raw.reprint_pack_codes ? raw.reprint_pack_codes.split(',') : undefined,
         raw.renderSubname,
         !!raw.spoiler
       );
@@ -160,6 +160,7 @@ export class PartialCard {
 @Index('sort_type', ['browse_visible', 'taboo_set_id', 'sort_by_type', 'renderName', 'xp'])
 @Index('sort_faction', ['browse_visible', 'taboo_set_id', 'sort_by_faction', 'renderName', 'xp'])
 @Index('sort_faction_pack', ['browse_visible', 'taboo_set_id', 'sort_by_faction_pack', 'code'])
+@Index('sort_faction_xp', ['browse_visible', 'taboo_set_id', 'sort_by_faction_xp', 'renderName'])
 @Index('sort_cost', ['browse_visible', 'taboo_set_id', 'cost', 'renderName', 'xp'])
 @Index('sort_pack', ['browse_visible', 'taboo_set_id', 'sort_by_pack', 'position'])
 @Index('sort_pack_encounter', ['browse_visible', 'taboo_set_id', 'sort_by_pack', 'encounter_code', 'encounter_position'])
@@ -183,6 +184,12 @@ export default class Card {
   @Index()
   @Column('text')
   public renderName!: string;
+
+  @Column('text', { nullable: true })
+  public duplicate_of_code?: string;
+
+  @Column('simple-array', { nullable: true })
+  public reprint_pack_codes?: string[];
 
   @Column('text')
   public type_code!: TypeCodeType;
@@ -454,6 +461,10 @@ export default class Card {
   public sort_by_faction_pack?: number;
   @Column('text', { nullable: true, select: false })
   public sort_by_faction_pack_header?: string;
+  @Column('integer', { nullable: true, select: false })
+  public sort_by_faction_xp?: number;
+  @Column('text', { nullable: true, select: false })
+  public sort_by_faction_xp_header?: string;
   @Column('text', { nullable: true, select: false })
   public sort_by_cost_header?: string;
   @Column('text', { nullable: true, select: false })
@@ -481,6 +492,8 @@ export default class Card {
     'c.sort_by_faction_header',
     'c.sort_by_faction_pack',
     'c.sort_by_faction_pack_header',
+    'c.sort_by_faction_xp',
+    'c.sort_by_faction_xp_header',
     'c.sort_by_cost_header',
     'c.sort_by_encounter_set_header',
     'c.sort_by_pack',
@@ -637,7 +650,7 @@ export default class Card {
     if (this.pack_code !== 'core' || packInCollection.core) {
       return this.deck_limit || 0;
     }
-    const reprintPacks = REPRINT_CARDS[this.code];
+    const reprintPacks = this.reprint_pack_codes || REPRINT_CARDS[this.code];
     if (reprintPacks && find(reprintPacks, pack => !!packInCollection[pack])) {
       return this.deck_limit || 0;
     }
@@ -725,6 +738,21 @@ export default class Card {
     }
   }
 
+  static basicTypeHeaderOrder() {
+    return [
+      t`Investigator`,
+      t`Asset`,
+      t`Event`,
+      t`Skill`,
+      t`Basic Weakness`,
+      t`Signature Weakness`,
+      t`Weakness`,
+      t`Scenario`,
+      t`Story`,
+    ];
+  }
+
+
   static typeHeaderOrder() {
     return [
       t`Investigator`,
@@ -752,9 +780,9 @@ export default class Card {
     ];
   }
 
-  static typeSortHeader(json: any): string {
+  static typeSortHeader(json: any, basic?: boolean): string {
     if (json.hidden && json.linked_card) {
-      return Card.typeSortHeader(json.linked_card);
+      return Card.typeSortHeader(json.linked_card, basic);
     }
     switch(json.subtype_code) {
       case 'basicweakness':
@@ -772,6 +800,9 @@ export default class Card {
           case 'asset':
             if (json.spoiler || json.encounter_code) {
               return t`Story`;
+            }
+            if (basic) {
+              return t`Asset`;
             }
             if (json.permanent || json.double_sided) {
               return t`Asset: Permanent`;
@@ -938,6 +969,13 @@ export default class Card {
     const pack = packsByCode[json.pack_code] || null;
     const sort_by_faction_pack = sort_by_faction * 100 + (pack ? pack.cycle_position : 0);
     const sort_by_faction_pack_header = `${sort_by_faction_header} - ${json.pack_name}`;
+
+    const basic_type_header = Card.typeSortHeader(json, true);
+    const sort_by_faction_xp = (sort_by_faction * 1000) + (typeof json.xp === 'number' ? json.xp : 6) * 100 + Card.basicTypeHeaderOrder().indexOf(basic_type_header);
+    const sort_by_faction_xp_header = typeof json.xp === 'number' ?
+      `${sort_by_faction_header} (${json.xp}) - ${basic_type_header}` :
+      `${sort_by_faction_header} - ${basic_type_header}`;
+
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
     const sort_by_cost_header = (json.cost === null || json.cost === undefined) ? t`Cost: None` : t`Cost: ${json.cost}`;
     const sort_by_encounter_set_header = json.encounter_name ||
@@ -1014,6 +1052,7 @@ export default class Card {
       sort_by_type,
       sort_by_faction,
       sort_by_faction_pack,
+      sort_by_faction_xp,
       sort_by_pack,
       enemy_horror,
       enemy_damage,
@@ -1023,6 +1062,7 @@ export default class Card {
       sort_by_faction_header,
       sort_by_encounter_set_header,
       sort_by_faction_pack_header,
+      sort_by_faction_xp_header,
     };
     if (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
       // console.log(`Reversing ${result.name} to ${result.linked_card.name}`);
@@ -1058,6 +1098,9 @@ export default class Card {
       }
     } else if (result.altArtInvestigator) {
       result.browse_visible += 4;
+    }
+    if (result.duplicate_of_code) {
+      result.browse_visible += 8;
     }
     result.mythos_card = !!result.encounter_code || !!result.linked_card?.encounter_code;
     result.spoiler = result.spoiler || (result.linked_card && result.linked_card.spoiler);
@@ -1115,6 +1158,12 @@ export default class Card {
           { s: 'c.sort_by_faction_pack', direction: 'ASC' },
           { s: 'c.code', direction: 'ASC' },
         ];
+      case SORT_BY_FACTION_XP:
+        return [
+          { s: 'c.sort_by_faction_xp', direction: 'ASC' },
+          { s: 'c.renderName', direction: 'ASC' },
+          { s: 'c.code', direction: 'ASC' },
+        ];
       case SORT_BY_COST:
         return [
           { s: 'c.cost', direction: 'ASC' },
@@ -1152,7 +1201,7 @@ export function cardInCollection(card: Card | PartialCard, packInCollection: { [
   if (packInCollection[card.pack_code]) {
     return true;
   }
-  const reprintPacks = REPRINT_CARDS[card.code];
+  const reprintPacks = card.reprint_pack_codes || REPRINT_CARDS[card.code];
   if (!reprintPacks) {
     return false;
   }

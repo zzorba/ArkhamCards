@@ -33,6 +33,7 @@
 		65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */; };
 		65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */; };
 		65851174250F047800DCB842 /* Alegreya-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851173250F047800DCB842 /* Alegreya-Bold.ttf */; };
+		65862DA125F17A3D00BDD228 /* Teutonic RU.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65862DA025F17A3D00BDD228 /* Teutonic RU.ttf */; };
 		658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 658AF45324FAAD4D00874CA7 /* Conkordia.ttf */; };
 		659EB1BD25118C55007E69E0 /* Alegreya-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */; };
 		659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */; };
@@ -94,6 +95,7 @@
 		6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Italic.ttf"; path = "../assets/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
 		65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Medium.ttf"; path = "../assets/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
 		65851173250F047800DCB842 /* Alegreya-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Bold.ttf"; path = "../assets/Alegreya-Bold.ttf"; sourceTree = "<group>"; };
+		65862DA025F17A3D00BDD228 /* Teutonic RU.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Teutonic RU.ttf"; path = "../assets/Teutonic RU.ttf"; sourceTree = "<group>"; };
 		658AF45324FAAD4D00874CA7 /* Conkordia.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Conkordia.ttf; path = ../assets/Conkordia.ttf; sourceTree = "<group>"; };
 		659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-MediumItalic.ttf"; path = "../assets/Alegreya-MediumItalic.ttf"; sourceTree = "<group>"; };
 		659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-BoldItalic.ttf"; path = "../assets/Alegreya-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				65862DA025F17A3D00BDD228 /* Teutonic RU.ttf */,
 				6506962325D05D5300B134B0 /* tokens.ttf */,
 				656D83DA25AA4AB80010E4CA /* cost.ttf */,
 				6560EBDC25A012700076B227 /* GoogleService-Info.plist */,
@@ -323,6 +326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65862DA125F17A3D00BDD228 /* Teutonic RU.ttf in Resources */,
 				65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */,
 				658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */,
 				651B383B251ACF8900D9D054 /* AboutDead.ttf in Resources */,
@@ -558,7 +562,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.11.0;
+				MARKETING_VERSION = 2.11.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -601,7 +605,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.11.0;
+				MARKETING_VERSION = 2.11.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

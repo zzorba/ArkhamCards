@@ -2178,12 +2178,6 @@ msgstr ""
 msgid "Campaign Log"
 msgstr ""
 
-#, javascript-format
-msgid ""
-"${ card.name }\n"
-"(has ${ input.id })"
-msgstr ""
-
 msgid "Choose entry to add to campaign log:"
 msgstr ""
 
@@ -2610,7 +2604,6 @@ msgid ""
 "settings."
 msgstr ""
 
-#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] ""
@@ -3855,6 +3848,46 @@ msgstr ""
 msgid "You must be online to upload campaigns"
 msgstr ""
 
+msgid "Decks with Ancestral Knowledge must include at least 10 skills."
+msgstr ""
+
+msgid "Faction, Level, Type"
+msgstr ""
+
+#, javascript-format
+msgid "${ normalCardCount } / ${ deckSize } cards"
+msgstr ""
+
+msgid "Ammo"
+msgstr ""
+
+msgid "Bounties"
+msgstr ""
+
+msgid "Charges"
+msgstr ""
+
+msgid "Keys"
+msgstr ""
+
+msgid "Locks"
+msgstr ""
+
+msgid "Resources"
+msgstr ""
+
+msgid "Secrets"
+msgstr ""
+
+msgid "Tickets"
+msgstr ""
+
+msgid "Tries"
+msgstr ""
+
+msgid "Whistles"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4033,6 +4066,7 @@ msgid ""
 "Campaign Log."
 msgstr ""
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr ""

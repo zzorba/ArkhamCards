@@ -112,7 +112,7 @@ export function fetchCards(
   };
 }
 
-const NON_LOCALIZED_CARDS = new Set(['en', 'zh', 'pt']);
+const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
 type PackActions = PacksFetchStartAction | PacksFetchErrorAction | PacksCacheHitAction | PacksAvailableAction;
 export function fetchPacks(

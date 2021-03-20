@@ -136,15 +136,15 @@
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
+            "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
           },
           {
             "id": "investigators_delayed",
-            "text": "les investigateurs ont été retardés lors de leur voyage vers Dunwich."
+            "text": "les investigateurs ont été retardés lors de leur voyage vers Dunwich."
           },
           {
             "id": "killed_silas_bishop",
-            "text": "les investigateurs ont abrégé les souff\u001erances de Silas Bishop."
+            "text": "les investigateurs ont abrégé les souffrances de Silas Bishop."
           },
           {
             "id": "naomi_has_back",
@@ -152,7 +152,7 @@
           },
           {
             "id": "necronomicon_stolen",
-            "text": "le Necronomicon a été volé."
+            "text": "le Necronomicon a été volé."
           },
           {
             "id": "no_brood_escaped",
@@ -160,7 +160,7 @@
           },
           {
             "id": "restored_silas_bishop",
-            "text": "les investigateurs ont rendu sa forme à Silas Bishop."
+            "text": "les investigateurs ont rendu sa forme à Silas Bishop."
           },
           {
             "id": "ritual_completed",
@@ -497,15 +497,15 @@
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
+            "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
           },
           {
             "id": "investigators_delayed",
-            "text": "les investigateurs ont été retardés lors de leur voyage vers Dunwich."
+            "text": "les investigateurs ont été retardés lors de leur voyage vers Dunwich."
           },
           {
             "id": "killed_silas_bishop",
-            "text": "les investigateurs ont abrégé les souff\\u001erances de Silas Bishop."
+            "text": "les investigateurs ont abrégé les souffrances de Silas Bishop."
           },
           {
             "id": "naomi_has_back",
@@ -513,7 +513,7 @@
           },
           {
             "id": "necronomicon_stolen",
-            "text": "le Necronomicon a été volé."
+            "text": "le Necronomicon a été volé."
           },
           {
             "id": "no_brood_escaped",
@@ -521,7 +521,7 @@
           },
           {
             "id": "restored_silas_bishop",
-            "text": "les investigateurs ont rendu sa forme à Silas Bishop."
+            "text": "les investigateurs ont rendu sa forme à Silas Bishop."
           },
           {
             "id": "ritual_completed",
@@ -2379,12 +2379,28 @@
             "text": "Brian Burnham veut votre peaux."
           },
           {
+            "id": "dagon_has_awakened",
+            "text": "Dagon has awakened."
+          },
+          {
             "id": "friendly_out_for_blood",
             "text": "Robert Friendly veut votre peaux."
           },
           {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "the gatekeeper has been defeated."
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+          },
+          {
             "id": "gilman_out_for_blood",
             "text": "Othera Gilman veut votre peaux."
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "the guardian of Y’ha-nthlei is dispatched."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",

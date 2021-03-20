@@ -46,7 +46,7 @@ export interface Typography {
   inverted: TextStyle;
 }
 
-export default function(fontScale: number, colors: TypographyColors, gameFont: string): Typography {
+export default function(fontScale: number, colors: TypographyColors, gameFont: string, lang: string): Typography {
   return StyleSheet.create({
     searchLabel: {
       fontFamily: 'Alegreya-Regular',
@@ -64,7 +64,7 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
     smallButtonLabel: {
       fontFamily: 'Alegreya-Italic',
       fontSize: Math.ceil(14 * fontScale),
-      lineHeight: Math.ceil(14 * fontScale),
+      lineHeight: Math.ceil((lang === 'zh' ? 17 : 14) * fontScale),
       letterSpacing: 0.3,
       color: colors.lightText,
     },
@@ -90,7 +90,7 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
     cardName: {
       fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(20 * fontScale),
-      lineHeight: Math.ceil(22 * fontScale),
+      lineHeight: Math.ceil((lang === 'zh' ? 24 : 22) * fontScale),
       color: colors.darkText,
       textAlignVertical: 'center',
     },

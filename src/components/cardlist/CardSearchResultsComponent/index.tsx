@@ -10,7 +10,7 @@ import { SORT_BY_ENCOUNTER_SET, SortType, DeckId } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';
-import { MYTHOS_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt } from '@data/query';
+import { MYTHOS_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt, BROWSE_CARDS_WITH_DUPLICATES_QUERY, BASIC_WITH_DUPLICATES_QUERY } from '@data/query';
 import Card from '@data/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -43,6 +43,7 @@ interface Props {
   storyOnly?: boolean;
 
   initialSort?: SortType;
+  includeDuplicates?: boolean;
 }
 
 function searchOptionsHeight(fontScale: number) {
@@ -236,6 +237,7 @@ export default function({
   header,
   storyOnly,
   initialSort,
+  includeDuplicates,
 }: Props) {
   const { fontScale, colors } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
@@ -327,7 +329,11 @@ export default function({
       if (mythosMode) {
         queryParts.push(MYTHOS_CARDS_QUERY);
       } else {
-        queryParts.push(BROWSE_CARDS_QUERY);
+        if (includeDuplicates) {
+          queryParts.push(BROWSE_CARDS_WITH_DUPLICATES_QUERY);
+        } else {
+          queryParts.push(BROWSE_CARDS_QUERY);
+        }
       }
     }
     if (baseQuery) {
@@ -337,11 +343,11 @@ export default function({
       // queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
     }
     return combineQueries(
-      BASIC_QUERY,
+      includeDuplicates ? BASIC_WITH_DUPLICATES_QUERY : BASIC_QUERY,
       queryParts,
       'and'
     );
-  }, [baseQuery, mythosToggle, selectedSort, mythosMode]);
+  }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, true), [filters]);
   const [hasFilters, showFiltersPress] = useFilterButton(componentId, baseQuery);
   const renderFabIcon = useCallback(() => (

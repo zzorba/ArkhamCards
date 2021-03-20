@@ -625,6 +625,7 @@ export function parseDeck(
     slots,
     normalCardCount: sum(normalCards.map(c =>
       c.quantity - (ignoreDeckLimitSlots[c.id] || 0))),
+    deckSize: validation.getDeckSize(),
     totalCardCount: sum(cardIds.map(c => c.quantity)),
     experience: totalXp,
     availableExperience: (deck.xp || 0) + (xpAdjustment || 0),

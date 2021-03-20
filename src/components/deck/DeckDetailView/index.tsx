@@ -163,10 +163,11 @@ function DeckDetailView({
     } = {};
     forEach(cards, card => {
       if (card) {
-        if (cardsByName[card.real_name]) {
-          cardsByName[card.real_name].push(card);
+        const real_name = card.real_name.toLowerCase();
+        if (cardsByName[real_name]) {
+          cardsByName[real_name].push(card);
         } else {
-          cardsByName[card.real_name] = [card];
+          cardsByName[real_name] = [card];
         }
         if (card.bonded_name) {
           if (bondedCardsByName[card.bonded_name]) {
@@ -609,7 +610,7 @@ function DeckDetailView({
         passProps: {
           componentId,
           id,
-          cardsByName: cardsByName[card.real_name] || [],
+          cardsByName: cardsByName[card.real_name.toLowerCase()] || [],
           investigator: parsedDeck.investigator,
         },
         options: getDeckOptions(colors, { title: card.name }, parsedDeck.investigator),

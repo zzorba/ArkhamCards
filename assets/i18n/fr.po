@@ -948,7 +948,7 @@ msgid "Remove"
 msgstr "Supprimer"
 
 msgid "Upgrade"
-msgstr "Mise à jour"
+msgstr "Améliorer"
 
 msgid "Scenarios"
 msgstr "Scénarios"
@@ -2140,10 +2140,10 @@ msgid_plural ""
 "logEntry.section }'"
 msgstr[0] ""
 "Vérifiez votre Carnet de Campagne. Parce qu'il y a ${ count } marque sous "
-"la mention '${ logEntry.section }'"
+"la mention « ${ logEntry.section } »"
 msgstr[1] ""
 "Vérifiez votre Carnet de campagne. Parce qu'il y a ${ count } marques sous "
-"la mention '${ logEntry.section }'"
+"la mention « ${ logEntry.section } »"
 
 msgid ""
 "Check Campaign Log. Because there is ${ count } entry under '${ "
@@ -2153,10 +2153,10 @@ msgid_plural ""
 "logEntry.section }'"
 msgstr[0] ""
 "Vérifiez votre Carnet de Campagne. Parce qu'il y a ${ count } entrée sous "
-"la mention '${ logEntry.section }'"
+"la mention « ${ logEntry.section } »"
 msgstr[1] ""
-"Vérifiez votre Carnet de campagne. Parce qu'il y a ${ count }entrées sous "
-"la mention '${ logEntry.section }'"
+"Vérifiez votre Carnet de campagne. Parce qu'il y a ${ count } entrées sous "
+"la mention « ${ logEntry.section } »"
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
@@ -2323,14 +2323,6 @@ msgstr "Choisissez une carte supplémentaire"
 
 msgid "Campaign Log"
 msgstr "Carnet de Campagne"
-
-#, javascript-format
-msgid ""
-"${ card.name }\n"
-"(has ${ input.id })"
-msgstr ""
-"${ card.name }\n"
-"(a ${ input.id })"
 
 msgid "Choose entry to add to campaign log:"
 msgstr "Choisir une entrée à ajouter au Carnet de Campagne:"
@@ -2835,7 +2827,6 @@ msgstr ""
 "Carte manquante #${ code }. Veuillez essayer de charger les cartes depuis "
 "ArkhamDB dans les paramètres."
 
-#, javascript-format
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } point d'équipement disponible"
@@ -2943,8 +2934,8 @@ msgstr ""
 
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
 msgstr ""
-"Les traumatismes initiaux peuvent être modifiés après la 'Mise en Place de "
-"la Campagne'."
+"Les traumatismes initiaux peuvent être modifiés après la « Mise en Place de "
+"la Campagne »."
 
 msgid "Confirm"
 msgstr "Confirmer"
@@ -3642,7 +3633,7 @@ msgid "Upgrading"
 msgstr "Amélioration"
 
 msgid "Editing"
-msgstr "Édition"
+msgstr "Modification"
 
 msgid ""
 "If you have just completed a scenario, use the 'Upgrade' button which will "
@@ -3683,7 +3674,7 @@ msgid "Upgrading deck"
 msgstr "Amélioration du deck en cours"
 
 msgid "Editing deck"
-msgstr "Modification du deck en cours"
+msgstr "Modification du deck"
 
 #, javascript-format
 msgid "${ normalCards } card"
@@ -3767,7 +3758,7 @@ msgstr "Résultats des Recherches"
 
 #, javascript-format
 msgid "No results found for search '${ searchResults.term }'."
-msgstr "Aucun résultat trouvé pour la recherche '${ searchResults.term }'."
+msgstr "Aucun résultat trouvé pour la recherche « ${ searchResults.term } »."
 
 msgid "Clear search"
 msgstr "Effacer la recherche"
@@ -3872,7 +3863,7 @@ msgid ""
 "\n"
 "Please follow the instructions and then return to the app to continue."
 msgstr ""
-"Un mot de passe de réinitialisation a été envoyé à '${ emailAddress }'.\n"
+"Un mot de passe de réinitialisation a été envoyé à « ${ emailAddress } ».\n"
 "\n"
 "Veuillez suivre les instructions et ensuite, retournez sur l'application "
 "pour continuer."
@@ -4191,6 +4182,46 @@ msgstr "Enregistrez vos modifications dans le carnet de campagne."
 msgid "You must be online to upload campaigns"
 msgstr ""
 
+msgid "Decks with Ancestral Knowledge must include at least 10 skills."
+msgstr ""
+
+msgid "Faction, Level, Type"
+msgstr ""
+
+#, javascript-format
+msgid "${ normalCardCount } / ${ deckSize } cards"
+msgstr ""
+
+msgid "Ammo"
+msgstr "Munitions"
+
+msgid "Bounties"
+msgstr "Primes"
+
+msgid "Charges"
+msgstr "Charges"
+
+msgid "Keys"
+msgstr "Clés"
+
+msgid "Locks"
+msgstr "Verrous"
+
+msgid "Resources"
+msgstr "Ressources"
+
+msgid "Secrets"
+msgstr "Secrets"
+
+msgid "Tickets"
+msgstr "Tickets"
+
+msgid "Tries"
+msgstr "Tentatives"
+
+msgid "Whistles"
+msgstr "Sifflets"
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -4393,6 +4424,7 @@ msgstr ""
 "Si <i>${ card.name }</i> est noté sous la mention ‘${ entry.section }’ dans "
 "votre Carnet de Campagne."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } lit <b>${ sectionName }</b>"

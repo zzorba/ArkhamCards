@@ -109,6 +109,20 @@ function load(lang: string): {
         encounterSets: require('../../../assets/encounterSets_de.json'),
         errata: require('../../../assets/campaignErrata_de.json'),
       };
+    case 'it':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_it.json'),
+        allCampaigns: require('../../../assets/allCampaigns_it.json'),
+        encounterSets: require('../../../assets/encounterSets_it.json'),
+        errata: require('../../../assets/campaignErrata_it.json'),
+      };
+    case 'pt':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_pt.json'),
+        allCampaigns: require('../../../assets/allCampaigns_pt.json'),
+        encounterSets: require('../../../assets/encounterSets_pt.json'),
+        errata: require('../../../assets/campaignErrata_pt.json'),
+      };
     case 'zh':
       return {
         allLogEntries: require('../../../assets/campaignLogs_zh.json'),

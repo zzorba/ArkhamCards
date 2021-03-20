@@ -30,11 +30,11 @@ export default function DbChooserButton({ componentId, title, field, onChange, f
 
   const onSelectionChange = useCallback((selection: string[]) => {
     if (fixedTranslations) {
-      const reversed: { [key: string]: string } = {};
+      const reversed: { [key: string]: string | undefined} = {};
       forEach(fixedTranslations, (value, key) => {
         reversed[value] = key;
       });
-      onChange(map(selection, item => reversed[item]));
+      onChange(map(selection, item => reversed[item] || item));
     } else {
       onChange(selection);
     }
@@ -43,8 +43,8 @@ export default function DbChooserButton({ componentId, title, field, onChange, f
   const onPress = useCallback(() => {
     setPressed(true);
     db.getDistinctFields(field, query, tabooSetId, processValue).then(values => {
-      const actualValues = fixedTranslations ? map(values, item => fixedTranslations[item]) : values;
-      const actualSelection = fixedTranslations ? map(selection || [], item => fixedTranslations[item]) : selection;
+      const actualValues = fixedTranslations ? map(values, item => fixedTranslations[item] || item) : values;
+      const actualSelection = fixedTranslations ? map(selection || [], item => fixedTranslations[item] || item) : selection;
       Navigation.push<SearchSelectProps>(componentId, {
         component: {
           name: 'SearchFilters.Chooser',
@@ -84,7 +84,7 @@ export default function DbChooserButton({ componentId, title, field, onChange, f
     if (!selection || !selection.length) {
       return t`All`;
     }
-    return (fixedTranslations ? map(selection, item => fixedTranslations[item]) : selection).join(', ');
+    return (fixedTranslations ? map(selection, item => fixedTranslations[item] || item) : selection).join(', ');
   }, [selection, fixedTranslations]);
   return (
     <NavButton
