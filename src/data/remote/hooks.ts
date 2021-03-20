@@ -262,6 +262,6 @@ export function useLatestDeckRemote(deckId: DeckId): LatestDeckT | undefined {
     fetchPolicy: 'cache-only',
     skip: !deckId.serverId,
   });
-  const deck = data?.deck_by_pk;
+  const deck = data?.campaign_deck_by_pk;
   return useMemo(() => deck ? new LatestDeckRemote(deck) : undefined, [deck]);
 }

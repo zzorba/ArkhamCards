@@ -16,7 +16,7 @@ fragment GuideAchievement on guide_achievement {
   bool_value
 }
 
-fragment BasicDeck on deck {
+fragment BasicDeck on campaign_deck {
   id
   campaign_id
   arkhamdb_id
@@ -25,7 +25,7 @@ fragment BasicDeck on deck {
   content
 }
 
-fragment LatestDeck on deck {
+fragment LatestDeck on campaign_deck {
   ...BasicDeck
   campaign {
     id

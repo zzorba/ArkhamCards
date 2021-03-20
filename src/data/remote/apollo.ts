@@ -1,7 +1,7 @@
 import { ApolloCache, DocumentNode, MutationUpdaterFn } from '@apollo/client';
-import { filter, find, map, pick } from 'lodash';
+import { filter, find, flatMap, map, pick } from 'lodash';
 
-import { AddCampaignInvestigatorDocument, AddCampaignInvestigatorMutation, AddGuideInputDocument, AddGuideInputMutation, DecCountAchievementDocument, DecCountAchievementMutation, DeleteInvestigatorDecksDocument, DeleteInvestigatorDecksMutation, FullCampaignFragment, FullCampaignFragmentDoc, FullCampaignGuideStateFragment, FullCampaignGuideStateFragmentDoc, FullInvestigatorDataFragment, GetCampaignDocument, GetCampaignGuideDocument, GetCampaignGuideQuery, GetCampaignQuery, GetMyCampaignsDocument, GetMyCampaignsQuery, GuideAchievementFragment, GuideAchievementFragmentDoc, IncCountAchievementDocument, IncCountAchievementMaxDocument, IncCountAchievementMaxMutation, IncCountAchievementMutation, MiniCampaignFragment, MiniCampaignFragmentDoc, RemoveCampaignInvestigatorDocument, RemoveCampaignInvestigatorMutation, RemoveGuideInputsDocument, RemoveGuideInputsMutation, SetBinaryAchievementDocument, SetBinaryAchievementMutation, UpdateAvailableXpDocument, UpdateAvailableXpMutation, UpdateCampaignDifficultyDocument, UpdateCampaignGuideVersionDocument, UpdateCampaignNameDocument, UpdateCampaignNotesDocument, UpdateCampaignScenarioResultsDocument, UpdateCampaignShowInterludesDocument, UpdateChaosBagDocument, UpdateInvestigatorDataDocument, UpdateInvestigatorDataMutation, UpdateInvestigatorTraumaDocument, UpdateInvestigatorTraumaMutation, UpdateSpentXpDocument, UpdateSpentXpMutation, UpdateWeaknessSetDocument, UploadNewCampaignMutation } from '@generated/graphql/apollo-schema';
+import { AddCampaignInvestigatorDocument, AddCampaignInvestigatorMutation, AddGuideInputDocument, AddGuideInputMutation, DecCountAchievementDocument, DecCountAchievementMutation, DeleteAllLocalDeckMutation, DeleteArkhamDbDeckMutation, DeleteInvestigatorDecksDocument, DeleteInvestigatorDecksMutation, FullCampaignFragment, FullCampaignFragmentDoc, FullCampaignGuideStateFragment, FullCampaignGuideStateFragmentDoc, FullInvestigatorDataFragment, GetCampaignDocument, GetCampaignGuideDocument, GetCampaignGuideQuery, GetCampaignQuery, GetMyCampaignsDocument, GetMyCampaignsQuery, GetMyDecksDocument, GetMyDecksQuery, GuideAchievementFragment, GuideAchievementFragmentDoc, IncCountAchievementDocument, IncCountAchievementMaxDocument, IncCountAchievementMaxMutation, IncCountAchievementMutation, MiniCampaignFragment, MiniCampaignFragmentDoc, RemoveCampaignInvestigatorDocument, RemoveCampaignInvestigatorMutation, RemoveGuideInputsDocument, RemoveGuideInputsMutation, SetBinaryAchievementDocument, SetBinaryAchievementMutation, UpdateAvailableXpDocument, UpdateAvailableXpMutation, UpdateCampaignDifficultyDocument, UpdateCampaignGuideVersionDocument, UpdateCampaignNameDocument, UpdateCampaignNotesDocument, UpdateCampaignScenarioResultsDocument, UpdateCampaignShowInterludesDocument, UpdateChaosBagDocument, UpdateInvestigatorDataDocument, UpdateInvestigatorDataMutation, UpdateInvestigatorTraumaDocument, UpdateInvestigatorTraumaMutation, UpdateSpentXpDocument, UpdateSpentXpMutation, UpdateWeaknessSetDocument, UploadNewCampaignMutation } from '@generated/graphql/apollo-schema';
 
 function fullToMiniCampaignFragment(fragment: FullCampaignFragment): MiniCampaignFragment {
   return {
@@ -20,6 +20,64 @@ function fullToMiniCampaignFragment(fragment: FullCampaignFragment): MiniCampaig
     ]),
   };
 }
+
+export const handleDeleteAllLocalDecks: MutationUpdaterFn<DeleteAllLocalDeckMutation> = (cache, { data }) => {
+  if (data === undefined || !data?.delete_campaign_deck?.returning.length) {
+    return;
+  }
+  const { campaign_id, owner_id } = data.delete_campaign_deck.returning[0];
+  const local_uuids = new Set(flatMap(data.delete_campaign_deck.returning, d => d.local_uuid || []));
+  const ids = new Set(flatMap(data.delete_campaign_deck.returning, d => d.id === -1 ? [] : d.id));
+
+  updateMiniCampaign(cache, campaign_id, (fragment) => {
+    return {
+      ...fragment,
+      latest_decks: filter(fragment.latest_decks, d => {
+        if (!d.deck) {
+          return false;
+        }
+        return d.deck.id !== -1 ? !ids.has(d.deck.id) : (!d.deck.local_uuid || !local_uuids.has(d.deck.local_uuid));
+      }),
+    };
+  });
+  updateFullCampaign(cache, campaign_id, (fragment) => {
+    return {
+      ...fragment,
+      latest_decks: filter(fragment.latest_decks, d => {
+        if (!d.deck) {
+          return false;
+        }
+        return d.deck.id !== -1 ? !ids.has(d.deck.id) : (!d.deck.local_uuid || !local_uuids.has(d.deck.local_uuid));
+      }),
+    };
+  });
+  const myCampaignsCacheData = cache.readQuery<GetMyDecksQuery>({
+    query: GetMyDecksDocument,
+    variables: {
+      userId: owner_id,
+    },
+  });
+  if (myCampaignsCacheData?.users_by_pk) {
+    cache.writeQuery<GetMyDecksQuery>({
+      query: GetMyDecksDocument,
+      variables: {
+        userId: owner_id,
+      },
+      data: {
+        users_by_pk: {
+          __typename: 'users',
+          id: owner_id,
+          decks: filter(myCampaignsCacheData.users_by_pk.decks, d => {
+            return !!d.deck && (d.deck.id !== -1 ? !ids.has(d.deck.id) : (!d.deck.local_uuid || !local_uuids.has(d.deck.local_uuid)));
+          }),
+          all_decks: filter(myCampaignsCacheData.users_by_pk.all_decks, d => {
+            return d.id !== -1 ? !ids.has(d.id) : (!d.local_uuid || !local_uuids.has(d.local_uuid));
+          }),
+        },
+      },
+    });
+  }
+};
 
 export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutation> = (cache, { data }) => {
   if (data === undefined || !data?.update_campaign_by_pk) {
@@ -55,6 +113,7 @@ export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutatio
     },
     data: {
       users_by_pk: {
+        __typename: 'users',
         id: ownerId,
         campaigns: [
           ...filter(cacheData.users_by_pk.campaigns, c => c.campaign?.id !== campaignId),
@@ -190,10 +249,16 @@ function updateFullCampaignGuide(
 }
 
 const handleDeleteInvestigatorDecks: MutationUpdaterFn<DeleteInvestigatorDecksMutation> = (cache, { data }) => {
-  if (!data?.delete_deck?.returning.length) {
+  if (!data?.delete_campaign_deck?.returning.length) {
     return;
   }
-  const { investigator, campaign_id } = data.delete_deck.returning[0];
+  const { investigator, campaign_id } = data.delete_campaign_deck.returning[0];
+  updateMiniCampaign(cache, campaign_id, (campaign) => {
+    return {
+      ...campaign,
+      latest_decks: filter(campaign.latest_decks, d => d.deck?.investigator !== investigator),
+    };
+  });
   updateFullCampaign(cache, campaign_id, (campaign) => {
     return {
       ...campaign,

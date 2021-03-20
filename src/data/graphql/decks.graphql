@@ -9,7 +9,7 @@ mutation insertNewDeck(
   $content_hash: String!,
   $userId: String!
 ) {
-  insert_deck_one(
+  insert_campaign_deck_one(
     object: {
       arkhamdb_id: $arkhamdb_id
       local_uuid: $local_uuid
@@ -27,6 +27,8 @@ mutation insertNewDeck(
     campaign_id
     owner_id
     investigator
+    content
+    content_hash
   }
 }
 
@@ -39,7 +41,7 @@ mutation insertNextLocalDeck(
   $content_hash: String!,
   $userId: String!
 ) {
-  insert_deck_one(
+  insert_campaign_deck_one(
     object: {
       local_uuid: $previous_local_uuid
       investigator: $investigator
@@ -62,12 +64,18 @@ mutation insertNextLocalDeck(
     }
   ) {
     id
+    local_uuid
+    campaign_id
+    investigator
+    owner_id
     next_deck {
   		id
     	local_uuid
 	    campaign_id
 	    investigator
     	owner_id
+      content
+      content_hash
 	  }
   }
 }
@@ -81,7 +89,7 @@ mutation insertNextArkhamDbDeck(
   $content_hash: String!,
   $userId: String!
 ) {
-  insert_deck_one(
+  insert_campaign_deck_one(
     object: {
       arkhamdb_id: $previous_arkhamdb_id
       investigator: $investigator
@@ -104,12 +112,18 @@ mutation insertNextArkhamDbDeck(
     }
   ) {
     id
+    arkhamdb_id
+    campaign_id
+    investigator
+    owner_id
     next_deck {
   		id
     	arkhamdb_id
 	    campaign_id
-	    investigator
+      investigator
     	owner_id
+      content
+      content_hash
 	  }
   }
 }
@@ -120,7 +134,7 @@ mutation updateArkhamDbDeck(
   $content: jsonb!,
   $content_hash: String!
 ) {
-  update_deck(
+  update_campaign_deck(
     where: {
       arkhamdb_id: { _eq: $arkhamdb_id }
       campaign_id: { _eq: $campaign_id }
@@ -133,7 +147,9 @@ mutation updateArkhamDbDeck(
     affected_rows
     returning {
       id
+      arkhamdb_id
       content
+      content_hash
     }
   }
 }
@@ -143,7 +159,7 @@ mutation updateLocalDeck(
   $content: jsonb!,
   $content_hash: String!
 ) {
-  update_deck(
+  update_campaign_deck(
     where: {
       local_uuid: { _eq: $local_uuid }
       campaign_id: { _eq: $campaign_id }
@@ -156,7 +172,54 @@ mutation updateLocalDeck(
     affected_rows
     returning {
       id
+      local_uuid
       content
+      content_hash
+    }
+  }
+}
+
+mutation deleteAllLocalDeck(
+  $local_uuid: String!,
+  $campaign_id: Int!
+) {
+  delete_campaign_deck(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      other_decks: {
+        local_uuid: { _eq: $local_uuid }
+      }
+    }
+  ) {
+    affected_rows
+    returning {
+      id
+      campaign_id
+      local_uuid
+      owner_id
+    }
+  }
+}
+
+
+mutation deleteAllArkhamDbDeck(
+  $arkhamdb_id: Int!,
+  $campaign_id: Int!
+) {
+  delete_campaign_deck(
+    where: {
+      campaign_id: { _eq: $campaign_id }
+      other_decks: {
+        arkhamdb_id: { _eq: $arkhamdb_id }
+      }
+    }
+  ) {
+    affected_rows
+    returning {
+      id
+      campaign_id
+      arkhamdb_id
+      owner_id
     }
   }
 }
@@ -165,7 +228,7 @@ mutation deleteLocalDeck(
   $local_uuid: String!,
   $campaign_id: Int!
 ) {
-  delete_deck(
+  delete_campaign_deck(
     where: {
       local_uuid: { _eq: $local_uuid }
       campaign_id: { _eq: $campaign_id }
@@ -174,6 +237,11 @@ mutation deleteLocalDeck(
     affected_rows
     returning {
       id
+      campaign_id
+      local_uuid
+      previous_deck {
+        ...LatestDeck
+      }
     }
   }
 }
@@ -182,7 +250,7 @@ mutation deleteArkhamDbDeck(
   $arkhamdb_id: Int!,
   $campaign_id: Int!
 ) {
-  delete_deck(
+  delete_campaign_deck(
     where: {
       arkhamdb_id: { _eq: $arkhamdb_id }
       campaign_id: { _eq: $campaign_id }
@@ -191,6 +259,11 @@ mutation deleteArkhamDbDeck(
     affected_rows
     returning {
       id
+      campaign_id
+      arkhamdb_id
+      previous_deck {
+        ...LatestDeck
+      }
     }
   }
 }
@@ -200,7 +273,13 @@ query getMyDecks(
 ) {
   users_by_pk(id: $userId) {
     id
-    decks {
+    decks(
+      where: {
+      	deck: {
+          local_uuid: { _is_null: false }
+        }
+			}
+    ) {
       deck {
         ...LatestDeck
       }
@@ -211,6 +290,12 @@ query getMyDecks(
       arkhamdb_id
       local_uuid
       content_hash
+      next_deck {
+ 				id
+	    }
+    	previous_deck {
+        id
+      }
     }
   }
 }
@@ -218,7 +303,7 @@ query getMyDecks(
 query getLatestDeck(
   $deckId: Int!
 ) {
-	deck_by_pk(id: $deckId) {
+	campaign_deck_by_pk(id: $deckId) {
     ...LatestDeck
   }
 }
