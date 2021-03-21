@@ -227,7 +227,10 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
         return {
           deckId,
           hash: i.content_hash || '',
-          campaignServerId: i.campaign_id,
+          campaignId: {
+            campaignId: i.campaign.uuid,
+            serverId: i.campaign.id,
+          },
         };
       });
       dispatch(setServerDecks(uploadDecks, actions, checkForSync.current));

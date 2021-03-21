@@ -642,21 +642,21 @@ export interface CampaignSyncRequiredAction {
 export interface UploadedDeck {
   deckId: DeckId;
   hash: string;
-  campaignId: number[];
+  campaignId: UploadedCampaignId[];
 }
 export const UPLOAD_DECK = 'UPLOAD_DECK';
 export interface UploadDeckAction {
   type: typeof UPLOAD_DECK;
   deckId: DeckId;
   hash: string;
-  campaignId: number;
+  campaignId: UploadedCampaignId;
 }
 
 export const REMOVE_UPLOAD_DECK = 'REMOVE_UPLOAD_DECK';
 export interface RemoveUploadDeckAction {
   type: typeof REMOVE_UPLOAD_DECK;
   deckId: DeckId;
-  campaignId: number;
+  campaignId: UploadedCampaignId;
 }
 
 export const SET_UPLOADED_DECKS = 'SET_UPLOADED_DECKS';

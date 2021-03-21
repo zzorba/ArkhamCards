@@ -264,13 +264,7 @@ export const handleInsertNewDeck: MutationUpdaterFn<InsertNewDeckMutation> = (ca
             ...filter(myDecks.users_by_pk.all_decks, d => matches(d.id, d.arkhamdb_id, d.local_uuid)),
             {
               __typename: 'campaign_deck',
-              id: deck.id,
-              arkhamdb_id: deck.arkhamdb_id,
-              local_uuid: deck.local_uuid,
-              investigator: deck.investigator,
-              content: deck.content,
-              content_hash: deck.content_hash,
-              campaign_id: deck.campaign_id,
+              ...deck,
             },
           ],
         },
@@ -332,6 +326,7 @@ function removeDeck(
         return previousDeck ? {
           __typename: 'campaign_deck',
           id: previousDeck.id,
+          campaign_id,
           investigator: previousDeck.investigator,
           arkhamdb_id: previousDeck.arkhamdb_id,
           local_uuid: previousDeck.local_uuid,
@@ -343,7 +338,8 @@ function removeDeck(
       if (matchesDeck(deck)) {
         return previousDeck ? {
           __typename: 'campaign_deck',
-          campaign_id: previousDeck.campaign_id,
+          campaign_id,
+          campaign: previousDeck.campaign,
           id: previousDeck.id,
           arkhamdb_id: previousDeck.arkhamdb_id,
           local_uuid: previousDeck.local_uuid,
@@ -353,6 +349,7 @@ function removeDeck(
           previous_deck: previousDeck.previous_deck ? {
             __typename: 'campaign_deck',
             id: previousDeck.previous_deck.id,
+            campaign_id,
             arkhamdb_id: previousDeck.previous_deck.id,
             local_uuid: previousDeck.previous_deck.local_uuid,
           } : undefined,

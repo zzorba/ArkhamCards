@@ -34,6 +34,7 @@ import {
   SET_UPLOADED_DECKS,
   UploadedDeck,
   SetUploadedDecksAction,
+  UploadedCampaignId,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
@@ -45,7 +46,7 @@ export function setServerDecks(
   deckIds: {
     deckId: DeckId;
     hash: string | undefined;
-    campaignServerId: number;
+    campaignId: UploadedCampaignId;
   }[],
   actions: DeckActions,
   refresh: boolean
@@ -57,11 +58,11 @@ export function setServerDecks(
       uploadedDecks[deck.deckId.uuid] = existing ? {
         deckId: deck.deckId,
         hash: deck.hash || '',
-        campaignId: [...existing.campaignId, deck.campaignServerId],
+        campaignId: [...existing.campaignId, deck.campaignId],
       } : {
         deckId: deck.deckId,
         hash: deck.hash || '',
-        campaignId: [deck.campaignServerId],
+        campaignId: [deck.campaignId],
       };
     });
     dispatch({

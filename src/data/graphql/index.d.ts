@@ -32,6 +32,7 @@ declare module '*/fragments.graphql' {
   const defaultDocument: DocumentNode;
   export const GuideInput: DocumentNode;
 export const GuideAchievement: DocumentNode;
+export const IdDeck: DocumentNode;
 export const MiniDeck: DocumentNode;
 export const BasicDeck: DocumentNode;
 export const AllDeck: DocumentNode;

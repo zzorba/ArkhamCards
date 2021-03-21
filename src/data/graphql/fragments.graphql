@@ -16,31 +16,35 @@ fragment GuideAchievement on guide_achievement {
   bool_value
 }
 
-fragment MiniDeck on campaign_deck {
+fragment IdDeck on campaign_deck {
   id
   arkhamdb_id
   local_uuid
+  campaign_id
+}
+
+fragment MiniDeck on campaign_deck {
+  ...IdDeck
   investigator
 }
 
 fragment BasicDeck on campaign_deck {
   ...MiniDeck
-  campaign_id
   content
   content_hash
 }
 
 fragment AllDeck on campaign_deck {
   ...BasicDeck
-  next_deck {
+  campaign {
     id
-    local_uuid
-    arkhamdb_id
+    uuid
+  }
+  next_deck {
+    ...IdDeck
   }
   previous_deck {
-    id
-    local_uuid
-    arkhamdb_id
+    ...IdDeck
   }
 }
 
