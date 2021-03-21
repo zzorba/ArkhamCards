@@ -484,7 +484,10 @@ export function removeLocalCampaign(
 ): ThunkAction<void, AppState, unknown, DeleteCampaignAction | RemoveUploadDeckAction> {
   return (dispatch, getState) => {
     if (campaign.serverId) {
-      const campaignId = campaign.serverId;
+      const campaignId = {
+        campaignId: campaign.uuid,
+        serverId: campaign.serverId,
+      };
       // Delink all of the decks.
       const state = getState();
       const getDeck = makeDeckSelector();

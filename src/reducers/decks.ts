@@ -140,10 +140,10 @@ export default function(
       ...(state.syncedDecks || {}),
     };
     const existingUploadedDeck = syncedDecks[action.deckId.uuid];
-    const uploadedDeck = existingUploadedDeck && find(existingUploadedDeck.campaignId, id => id !== action.campaignId) ? {
+    const uploadedDeck = existingUploadedDeck && find(existingUploadedDeck.campaignId, id => id.serverId !== action.campaignId.serverId) ? {
       deckId: existingUploadedDeck.deckId,
       hash: existingUploadedDeck.hash,
-      campaignId: filter(existingUploadedDeck.campaignId, campaignId => campaignId !== action.campaignId),
+      campaignId: filter(existingUploadedDeck.campaignId, campaignId => campaignId.serverId !== action.campaignId.serverId),
     } : undefined;
     if (uploadedDeck) {
       syncedDecks[action.deckId.uuid] = uploadedDeck;

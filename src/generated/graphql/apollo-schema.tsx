@@ -7154,25 +7154,34 @@ export type GuideAchievementFragment = (
   & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'type' | 'value' | 'bool_value'>
 );
 
+export type IdDeckFragment = (
+  { __typename?: 'campaign_deck' }
+  & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'campaign_id'>
+);
+
 export type MiniDeckFragment = (
   { __typename?: 'campaign_deck' }
-  & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator'>
+  & Pick<Campaign_Deck, 'investigator'>
+  & IdDeckFragment
 );
 
 export type BasicDeckFragment = (
   { __typename?: 'campaign_deck' }
-  & Pick<Campaign_Deck, 'campaign_id' | 'content' | 'content_hash'>
+  & Pick<Campaign_Deck, 'content' | 'content_hash'>
   & MiniDeckFragment
 );
 
 export type AllDeckFragment = (
   { __typename?: 'campaign_deck' }
-  & { next_deck?: Maybe<(
+  & { campaign: (
+    { __typename?: 'campaign' }
+    & Pick<Campaign, 'id' | 'uuid'>
+  ), next_deck?: Maybe<(
     { __typename?: 'campaign_deck' }
-    & Pick<Campaign_Deck, 'id' | 'local_uuid' | 'arkhamdb_id'>
+    & IdDeckFragment
   )>, previous_deck?: Maybe<(
     { __typename?: 'campaign_deck' }
-    & Pick<Campaign_Deck, 'id' | 'local_uuid' | 'arkhamdb_id'>
+    & IdDeckFragment
   )> }
   & BasicDeckFragment
 );
@@ -7716,18 +7725,23 @@ export type RemoveCampaignInvestigatorMutation = (
   )> }
 );
 
-export const MiniDeckFragmentDoc = gql`
-    fragment MiniDeck on campaign_deck {
+export const IdDeckFragmentDoc = gql`
+    fragment IdDeck on campaign_deck {
   id
   arkhamdb_id
   local_uuid
-  investigator
+  campaign_id
 }
     `;
+export const MiniDeckFragmentDoc = gql`
+    fragment MiniDeck on campaign_deck {
+  ...IdDeck
+  investigator
+}
+    ${IdDeckFragmentDoc}`;
 export const BasicDeckFragmentDoc = gql`
     fragment BasicDeck on campaign_deck {
   ...MiniDeck
-  campaign_id
   content
   content_hash
 }
@@ -7735,18 +7749,19 @@ export const BasicDeckFragmentDoc = gql`
 export const AllDeckFragmentDoc = gql`
     fragment AllDeck on campaign_deck {
   ...BasicDeck
-  next_deck {
+  campaign {
     id
-    local_uuid
-    arkhamdb_id
+    uuid
+  }
+  next_deck {
+    ...IdDeck
   }
   previous_deck {
-    id
-    local_uuid
-    arkhamdb_id
+    ...IdDeck
   }
 }
-    ${BasicDeckFragmentDoc}`;
+    ${BasicDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
 export const MiniInvestigatorDataFragmentDoc = gql`
     fragment MiniInvestigatorData on investigator_data {
   id
