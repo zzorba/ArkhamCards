@@ -179,7 +179,7 @@ mutation updateLocalDeck(
   }
 }
 
-mutation deleteAllLocalDeck(
+mutation deleteAllLocalDecks(
   $local_uuid: String!,
   $campaign_id: Int!
 ) {
@@ -202,7 +202,7 @@ mutation deleteAllLocalDeck(
 }
 
 
-mutation deleteAllArkhamDbDeck(
+mutation deleteAllArkhamDbDecks(
   $arkhamdb_id: Int!,
   $campaign_id: Int!
 ) {
@@ -239,6 +239,7 @@ mutation deleteLocalDeck(
       id
       campaign_id
       local_uuid
+      owner_id
       previous_deck {
         ...LatestDeck
       }
@@ -261,6 +262,7 @@ mutation deleteArkhamDbDeck(
       id
       campaign_id
       arkhamdb_id
+      owner_id
       previous_deck {
         ...LatestDeck
       }
@@ -273,29 +275,13 @@ query getMyDecks(
 ) {
   users_by_pk(id: $userId) {
     id
-    decks(
-      where: {
-      	deck: {
-          local_uuid: { _is_null: false }
-        }
-			}
-    ) {
+    decks {
       deck {
         ...LatestDeck
       }
     }
     all_decks {
-      id
-      campaign_id
-      arkhamdb_id
-      local_uuid
-      content_hash
-      next_deck {
- 				id
-	    }
-    	previous_deck {
-        id
-      }
+      ...AllDeck
     }
   }
 }

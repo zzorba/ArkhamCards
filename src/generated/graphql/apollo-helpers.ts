@@ -1032,7 +1032,91 @@ export type latest_decks_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type mutation_rootKeySpecifier = ('delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_user_campaigns' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_users' | 'delete_users_by_pk' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_users' | 'insert_users_one' | 'update_base_decks' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_guide' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_latest_decks' | 'update_user_campaigns' | 'update_user_friends' | 'update_user_received_friend_requests' | 'update_user_sent_friend_requests' | 'update_users' | 'update_users_by_pk' | mutation_rootKeySpecifier)[];
+export type local_decksKeySpecifier = ('campaign' | 'campaign_id' | 'deck' | 'id' | 'owner_id' | local_decksKeySpecifier)[];
+export type local_decksFieldPolicy = {
+	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_aggregateKeySpecifier = ('aggregate' | 'nodes' | local_decks_aggregateKeySpecifier)[];
+export type local_decks_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | local_decks_aggregate_fieldsKeySpecifier)[];
+export type local_decks_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_avg_fieldsKeySpecifier = ('campaign_id' | 'id' | local_decks_avg_fieldsKeySpecifier)[];
+export type local_decks_avg_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_max_fieldsKeySpecifier = ('campaign_id' | 'id' | 'owner_id' | local_decks_max_fieldsKeySpecifier)[];
+export type local_decks_max_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_min_fieldsKeySpecifier = ('campaign_id' | 'id' | 'owner_id' | local_decks_min_fieldsKeySpecifier)[];
+export type local_decks_min_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | local_decks_mutation_responseKeySpecifier)[];
+export type local_decks_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_stddev_fieldsKeySpecifier = ('campaign_id' | 'id' | local_decks_stddev_fieldsKeySpecifier)[];
+export type local_decks_stddev_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_stddev_pop_fieldsKeySpecifier = ('campaign_id' | 'id' | local_decks_stddev_pop_fieldsKeySpecifier)[];
+export type local_decks_stddev_pop_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_stddev_samp_fieldsKeySpecifier = ('campaign_id' | 'id' | local_decks_stddev_samp_fieldsKeySpecifier)[];
+export type local_decks_stddev_samp_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_sum_fieldsKeySpecifier = ('campaign_id' | 'id' | local_decks_sum_fieldsKeySpecifier)[];
+export type local_decks_sum_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_var_pop_fieldsKeySpecifier = ('campaign_id' | 'id' | local_decks_var_pop_fieldsKeySpecifier)[];
+export type local_decks_var_pop_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_var_samp_fieldsKeySpecifier = ('campaign_id' | 'id' | local_decks_var_samp_fieldsKeySpecifier)[];
+export type local_decks_var_samp_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type local_decks_variance_fieldsKeySpecifier = ('campaign_id' | 'id' | local_decks_variance_fieldsKeySpecifier)[];
+export type local_decks_variance_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type mutation_rootKeySpecifier = ('delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_user_campaigns' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_users' | 'delete_users_by_pk' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_users' | 'insert_users_one' | 'update_base_decks' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_guide' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_latest_decks' | 'update_local_decks' | 'update_user_campaigns' | 'update_user_friends' | 'update_user_received_friend_requests' | 'update_user_sent_friend_requests' | 'update_users' | 'update_users_by_pk' | mutation_rootKeySpecifier)[];
 export type mutation_rootFieldPolicy = {
 	delete_base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1053,6 +1137,7 @@ export type mutation_rootFieldPolicy = {
 	delete_investigator_data?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_investigator_data_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_latest_decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_local_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_user_campaigns?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_user_friends?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_user_received_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1081,6 +1166,8 @@ export type mutation_rootFieldPolicy = {
 	insert_investigator_data_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_latest_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_latest_decks_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_local_decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_local_decks_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_user_campaigns?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_user_campaigns_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_user_friends?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1110,6 +1197,7 @@ export type mutation_rootFieldPolicy = {
 	update_investigator_data?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_investigator_data_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_latest_decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_local_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_user_campaigns?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_user_friends?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_user_received_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1117,7 +1205,7 @@ export type mutation_rootFieldPolicy = {
 	update_users?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type query_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
+export type query_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
 export type query_rootFieldPolicy = {
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1149,6 +1237,8 @@ export type query_rootFieldPolicy = {
 	investigator_data_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	latest_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	latest_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	local_decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	local_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_campaigns?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_campaigns_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_friends?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1161,7 +1251,7 @@ export type query_rootFieldPolicy = {
 	users_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type subscription_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | subscription_rootKeySpecifier)[];
+export type subscription_rootKeySpecifier = ('base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'users' | 'users_aggregate' | 'users_by_pk' | subscription_rootKeySpecifier)[];
 export type subscription_rootFieldPolicy = {
 	base_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	base_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1193,6 +1283,8 @@ export type subscription_rootFieldPolicy = {
 	investigator_data_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	latest_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	latest_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	local_decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	local_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_campaigns?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_campaigns_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_friends?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1393,7 +1485,7 @@ export type user_sent_friend_requests_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type usersKeySpecifier = ('all_decks' | 'all_decks_aggregate' | 'campaigns' | 'campaigns_aggregate' | 'created_at' | 'decks' | 'decks_aggregate' | 'friends' | 'friends_aggregate' | 'handle' | 'id' | 'received_requests' | 'received_requests_aggregate' | 'sent_requests' | 'sent_requests_aggregate' | 'updated_at' | usersKeySpecifier)[];
+export type usersKeySpecifier = ('all_decks' | 'all_decks_aggregate' | 'campaigns' | 'campaigns_aggregate' | 'created_at' | 'decks' | 'decks_aggregate' | 'friends' | 'friends_aggregate' | 'handle' | 'id' | 'local_decks' | 'local_decks_aggregate' | 'received_requests' | 'received_requests_aggregate' | 'sent_requests' | 'sent_requests_aggregate' | 'updated_at' | usersKeySpecifier)[];
 export type usersFieldPolicy = {
 	all_decks?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1406,6 +1498,8 @@ export type usersFieldPolicy = {
 	friends_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	handle?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	local_decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	local_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	received_requests?: FieldPolicy<any> | FieldReadFunction<any>,
 	received_requests_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	sent_requests?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -2026,6 +2120,62 @@ export type TypedTypePolicies = TypePolicies & {
 	latest_decks_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | latest_decks_variance_fieldsKeySpecifier | (() => undefined | latest_decks_variance_fieldsKeySpecifier),
 		fields?: latest_decks_variance_fieldsFieldPolicy,
+	},
+	local_decks?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decksKeySpecifier | (() => undefined | local_decksKeySpecifier),
+		fields?: local_decksFieldPolicy,
+	},
+	local_decks_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_aggregateKeySpecifier | (() => undefined | local_decks_aggregateKeySpecifier),
+		fields?: local_decks_aggregateFieldPolicy,
+	},
+	local_decks_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_aggregate_fieldsKeySpecifier | (() => undefined | local_decks_aggregate_fieldsKeySpecifier),
+		fields?: local_decks_aggregate_fieldsFieldPolicy,
+	},
+	local_decks_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_avg_fieldsKeySpecifier | (() => undefined | local_decks_avg_fieldsKeySpecifier),
+		fields?: local_decks_avg_fieldsFieldPolicy,
+	},
+	local_decks_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_max_fieldsKeySpecifier | (() => undefined | local_decks_max_fieldsKeySpecifier),
+		fields?: local_decks_max_fieldsFieldPolicy,
+	},
+	local_decks_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_min_fieldsKeySpecifier | (() => undefined | local_decks_min_fieldsKeySpecifier),
+		fields?: local_decks_min_fieldsFieldPolicy,
+	},
+	local_decks_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_mutation_responseKeySpecifier | (() => undefined | local_decks_mutation_responseKeySpecifier),
+		fields?: local_decks_mutation_responseFieldPolicy,
+	},
+	local_decks_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_stddev_fieldsKeySpecifier | (() => undefined | local_decks_stddev_fieldsKeySpecifier),
+		fields?: local_decks_stddev_fieldsFieldPolicy,
+	},
+	local_decks_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_stddev_pop_fieldsKeySpecifier | (() => undefined | local_decks_stddev_pop_fieldsKeySpecifier),
+		fields?: local_decks_stddev_pop_fieldsFieldPolicy,
+	},
+	local_decks_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_stddev_samp_fieldsKeySpecifier | (() => undefined | local_decks_stddev_samp_fieldsKeySpecifier),
+		fields?: local_decks_stddev_samp_fieldsFieldPolicy,
+	},
+	local_decks_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_sum_fieldsKeySpecifier | (() => undefined | local_decks_sum_fieldsKeySpecifier),
+		fields?: local_decks_sum_fieldsFieldPolicy,
+	},
+	local_decks_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_var_pop_fieldsKeySpecifier | (() => undefined | local_decks_var_pop_fieldsKeySpecifier),
+		fields?: local_decks_var_pop_fieldsFieldPolicy,
+	},
+	local_decks_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_var_samp_fieldsKeySpecifier | (() => undefined | local_decks_var_samp_fieldsKeySpecifier),
+		fields?: local_decks_var_samp_fieldsFieldPolicy,
+	},
+	local_decks_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | local_decks_variance_fieldsKeySpecifier | (() => undefined | local_decks_variance_fieldsKeySpecifier),
+		fields?: local_decks_variance_fieldsFieldPolicy,
 	},
 	mutation_root?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | mutation_rootKeySpecifier | (() => undefined | mutation_rootKeySpecifier),

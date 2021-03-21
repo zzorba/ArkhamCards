@@ -901,7 +901,7 @@ export type Campaign_Deck = {
   investigator_data?: Maybe<Investigator_Data>;
   local_uuid?: Maybe<Scalars['String']>;
   /** An object relationship */
-  next_deck: Campaign_Deck;
+  next_deck?: Maybe<Campaign_Deck>;
   next_deck_id?: Maybe<Scalars['Int']>;
   /** An array relationship */
   other_decks: Array<Campaign_Deck>;
@@ -3910,6 +3910,264 @@ export type Latest_Decks_Variance_Order_By = {
   id?: Maybe<Order_By>;
 };
 
+/** columns and relationships of "local_decks" */
+export type Local_Decks = {
+  __typename?: 'local_decks';
+  /** An object relationship */
+  campaign?: Maybe<Campaign>;
+  campaign_id?: Maybe<Scalars['Int']>;
+  /** An object relationship */
+  deck?: Maybe<Campaign_Deck>;
+  id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "local_decks" */
+export type Local_Decks_Aggregate = {
+  __typename?: 'local_decks_aggregate';
+  aggregate?: Maybe<Local_Decks_Aggregate_Fields>;
+  nodes: Array<Local_Decks>;
+};
+
+/** aggregate fields of "local_decks" */
+export type Local_Decks_Aggregate_Fields = {
+  __typename?: 'local_decks_aggregate_fields';
+  avg?: Maybe<Local_Decks_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Local_Decks_Max_Fields>;
+  min?: Maybe<Local_Decks_Min_Fields>;
+  stddev?: Maybe<Local_Decks_Stddev_Fields>;
+  stddev_pop?: Maybe<Local_Decks_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Local_Decks_Stddev_Samp_Fields>;
+  sum?: Maybe<Local_Decks_Sum_Fields>;
+  var_pop?: Maybe<Local_Decks_Var_Pop_Fields>;
+  var_samp?: Maybe<Local_Decks_Var_Samp_Fields>;
+  variance?: Maybe<Local_Decks_Variance_Fields>;
+};
+
+
+/** aggregate fields of "local_decks" */
+export type Local_Decks_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Local_Decks_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "local_decks" */
+export type Local_Decks_Aggregate_Order_By = {
+  avg?: Maybe<Local_Decks_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Local_Decks_Max_Order_By>;
+  min?: Maybe<Local_Decks_Min_Order_By>;
+  stddev?: Maybe<Local_Decks_Stddev_Order_By>;
+  stddev_pop?: Maybe<Local_Decks_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Local_Decks_Stddev_Samp_Order_By>;
+  sum?: Maybe<Local_Decks_Sum_Order_By>;
+  var_pop?: Maybe<Local_Decks_Var_Pop_Order_By>;
+  var_samp?: Maybe<Local_Decks_Var_Samp_Order_By>;
+  variance?: Maybe<Local_Decks_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "local_decks" */
+export type Local_Decks_Arr_Rel_Insert_Input = {
+  data: Array<Local_Decks_Insert_Input>;
+};
+
+/** aggregate avg on columns */
+export type Local_Decks_Avg_Fields = {
+  __typename?: 'local_decks_avg_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "local_decks" */
+export type Local_Decks_Avg_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "local_decks". All fields are combined with a logical 'AND'. */
+export type Local_Decks_Bool_Exp = {
+  _and?: Maybe<Array<Local_Decks_Bool_Exp>>;
+  _not?: Maybe<Local_Decks_Bool_Exp>;
+  _or?: Maybe<Array<Local_Decks_Bool_Exp>>;
+  campaign?: Maybe<Campaign_Bool_Exp>;
+  campaign_id?: Maybe<Int_Comparison_Exp>;
+  deck?: Maybe<Campaign_Deck_Bool_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+  owner_id?: Maybe<String_Comparison_Exp>;
+};
+
+/** input type for incrementing numeric columns in table "local_decks" */
+export type Local_Decks_Inc_Input = {
+  campaign_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "local_decks" */
+export type Local_Decks_Insert_Input = {
+  campaign?: Maybe<Campaign_Obj_Rel_Insert_Input>;
+  campaign_id?: Maybe<Scalars['Int']>;
+  deck?: Maybe<Campaign_Deck_Obj_Rel_Insert_Input>;
+  id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Local_Decks_Max_Fields = {
+  __typename?: 'local_decks_max_fields';
+  campaign_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "local_decks" */
+export type Local_Decks_Max_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Local_Decks_Min_Fields = {
+  __typename?: 'local_decks_min_fields';
+  campaign_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "local_decks" */
+export type Local_Decks_Min_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "local_decks" */
+export type Local_Decks_Mutation_Response = {
+  __typename?: 'local_decks_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Local_Decks>;
+};
+
+/** Ordering options when selecting data from "local_decks". */
+export type Local_Decks_Order_By = {
+  campaign?: Maybe<Campaign_Order_By>;
+  campaign_id?: Maybe<Order_By>;
+  deck?: Maybe<Campaign_Deck_Order_By>;
+  id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
+/** select columns of table "local_decks" */
+export enum Local_Decks_Select_Column {
+  /** column name */
+  CampaignId = 'campaign_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  OwnerId = 'owner_id'
+}
+
+/** input type for updating data in table "local_decks" */
+export type Local_Decks_Set_Input = {
+  campaign_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Local_Decks_Stddev_Fields = {
+  __typename?: 'local_decks_stddev_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "local_decks" */
+export type Local_Decks_Stddev_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Local_Decks_Stddev_Pop_Fields = {
+  __typename?: 'local_decks_stddev_pop_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "local_decks" */
+export type Local_Decks_Stddev_Pop_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Local_Decks_Stddev_Samp_Fields = {
+  __typename?: 'local_decks_stddev_samp_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "local_decks" */
+export type Local_Decks_Stddev_Samp_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Local_Decks_Sum_Fields = {
+  __typename?: 'local_decks_sum_fields';
+  campaign_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "local_decks" */
+export type Local_Decks_Sum_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate var_pop on columns */
+export type Local_Decks_Var_Pop_Fields = {
+  __typename?: 'local_decks_var_pop_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "local_decks" */
+export type Local_Decks_Var_Pop_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Local_Decks_Var_Samp_Fields = {
+  __typename?: 'local_decks_var_samp_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "local_decks" */
+export type Local_Decks_Var_Samp_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Local_Decks_Variance_Fields = {
+  __typename?: 'local_decks_variance_fields';
+  campaign_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "local_decks" */
+export type Local_Decks_Variance_Order_By = {
+  campaign_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
@@ -3951,6 +4209,8 @@ export type Mutation_Root = {
   delete_investigator_data_by_pk?: Maybe<Investigator_Data>;
   /** delete data from the table: "latest_decks" */
   delete_latest_decks?: Maybe<Latest_Decks_Mutation_Response>;
+  /** delete data from the table: "local_decks" */
+  delete_local_decks?: Maybe<Local_Decks_Mutation_Response>;
   /** delete data from the table: "user_campaigns" */
   delete_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
   /** delete data from the table: "user_friends" */
@@ -4007,6 +4267,10 @@ export type Mutation_Root = {
   insert_latest_decks?: Maybe<Latest_Decks_Mutation_Response>;
   /** insert a single row into the table: "latest_decks" */
   insert_latest_decks_one?: Maybe<Latest_Decks>;
+  /** insert data into the table: "local_decks" */
+  insert_local_decks?: Maybe<Local_Decks_Mutation_Response>;
+  /** insert a single row into the table: "local_decks" */
+  insert_local_decks_one?: Maybe<Local_Decks>;
   /** insert data into the table: "user_campaigns" */
   insert_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
   /** insert a single row into the table: "user_campaigns" */
@@ -4065,6 +4329,8 @@ export type Mutation_Root = {
   update_investigator_data_by_pk?: Maybe<Investigator_Data>;
   /** update data of the table: "latest_decks" */
   update_latest_decks?: Maybe<Latest_Decks_Mutation_Response>;
+  /** update data of the table: "local_decks" */
+  update_local_decks?: Maybe<Local_Decks_Mutation_Response>;
   /** update data of the table: "user_campaigns" */
   update_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
   /** update data of the table: "user_friends" */
@@ -4196,6 +4462,12 @@ export type Mutation_RootDelete_Investigator_Data_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Latest_DecksArgs = {
   where: Latest_Decks_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Local_DecksArgs = {
+  where: Local_Decks_Bool_Exp;
 };
 
 
@@ -4380,6 +4652,18 @@ export type Mutation_RootInsert_Latest_DecksArgs = {
 /** mutation root */
 export type Mutation_RootInsert_Latest_Decks_OneArgs = {
   object: Latest_Decks_Insert_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Local_DecksArgs = {
+  objects: Array<Local_Decks_Insert_Input>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Local_Decks_OneArgs = {
+  object: Local_Decks_Insert_Input;
 };
 
 
@@ -4636,6 +4920,14 @@ export type Mutation_RootUpdate_Latest_DecksArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Local_DecksArgs = {
+  _inc?: Maybe<Local_Decks_Inc_Input>;
+  _set?: Maybe<Local_Decks_Set_Input>;
+  where: Local_Decks_Bool_Exp;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_CampaignsArgs = {
   _inc?: Maybe<User_Campaigns_Inc_Input>;
   _set?: Maybe<User_Campaigns_Set_Input>;
@@ -4755,6 +5047,10 @@ export type Query_Root = {
   latest_decks: Array<Latest_Decks>;
   /** An aggregate relationship */
   latest_decks_aggregate: Latest_Decks_Aggregate;
+  /** An array relationship */
+  local_decks: Array<Local_Decks>;
+  /** An aggregate relationship */
+  local_decks_aggregate: Local_Decks_Aggregate;
   /** fetch data from the table: "user_campaigns" */
   user_campaigns: Array<User_Campaigns>;
   /** fetch aggregated fields from the table: "user_campaigns" */
@@ -5023,6 +5319,24 @@ export type Query_RootLatest_Decks_AggregateArgs = {
 };
 
 
+export type Query_RootLocal_DecksArgs = {
+  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Local_Decks_Order_By>>;
+  where?: Maybe<Local_Decks_Bool_Exp>;
+};
+
+
+export type Query_RootLocal_Decks_AggregateArgs = {
+  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Local_Decks_Order_By>>;
+  where?: Maybe<Local_Decks_Bool_Exp>;
+};
+
+
 export type Query_RootUser_CampaignsArgs = {
   distinct_on?: Maybe<Array<User_Campaigns_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -5179,6 +5493,10 @@ export type Subscription_Root = {
   latest_decks: Array<Latest_Decks>;
   /** An aggregate relationship */
   latest_decks_aggregate: Latest_Decks_Aggregate;
+  /** An array relationship */
+  local_decks: Array<Local_Decks>;
+  /** An aggregate relationship */
+  local_decks_aggregate: Local_Decks_Aggregate;
   /** fetch data from the table: "user_campaigns" */
   user_campaigns: Array<User_Campaigns>;
   /** fetch aggregated fields from the table: "user_campaigns" */
@@ -5444,6 +5762,24 @@ export type Subscription_RootLatest_Decks_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Latest_Decks_Order_By>>;
   where?: Maybe<Latest_Decks_Bool_Exp>;
+};
+
+
+export type Subscription_RootLocal_DecksArgs = {
+  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Local_Decks_Order_By>>;
+  where?: Maybe<Local_Decks_Bool_Exp>;
+};
+
+
+export type Subscription_RootLocal_Decks_AggregateArgs = {
+  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Local_Decks_Order_By>>;
+  where?: Maybe<Local_Decks_Bool_Exp>;
 };
 
 
@@ -6226,6 +6562,10 @@ export type Users = {
   handle?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   /** An array relationship */
+  local_decks: Array<Local_Decks>;
+  /** An aggregate relationship */
+  local_decks_aggregate: Local_Decks_Aggregate;
+  /** An array relationship */
   received_requests: Array<User_Received_Friend_Requests>;
   /** An aggregate relationship */
   received_requests_aggregate: User_Received_Friend_Requests_Aggregate;
@@ -6318,6 +6658,26 @@ export type UsersFriends_AggregateArgs = {
 
 
 /** columns and relationships of "users" */
+export type UsersLocal_DecksArgs = {
+  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Local_Decks_Order_By>>;
+  where?: Maybe<Local_Decks_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users" */
+export type UsersLocal_Decks_AggregateArgs = {
+  distinct_on?: Maybe<Array<Local_Decks_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Local_Decks_Order_By>>;
+  where?: Maybe<Local_Decks_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users" */
 export type UsersReceived_RequestsArgs = {
   distinct_on?: Maybe<Array<User_Received_Friend_Requests_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -6390,6 +6750,7 @@ export type Users_Bool_Exp = {
   friends?: Maybe<User_Friends_Bool_Exp>;
   handle?: Maybe<String_Comparison_Exp>;
   id?: Maybe<String_Comparison_Exp>;
+  local_decks?: Maybe<Local_Decks_Bool_Exp>;
   received_requests?: Maybe<User_Received_Friend_Requests_Bool_Exp>;
   sent_requests?: Maybe<User_Sent_Friend_Requests_Bool_Exp>;
   updated_at?: Maybe<Timestamp_Comparison_Exp>;
@@ -6410,6 +6771,7 @@ export type Users_Insert_Input = {
   friends?: Maybe<User_Friends_Arr_Rel_Insert_Input>;
   handle?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
+  local_decks?: Maybe<Local_Decks_Arr_Rel_Insert_Input>;
   received_requests?: Maybe<User_Received_Friend_Requests_Arr_Rel_Insert_Input>;
   sent_requests?: Maybe<User_Sent_Friend_Requests_Arr_Rel_Insert_Input>;
   updated_at?: Maybe<Scalars['timestamp']>;
@@ -6465,6 +6827,7 @@ export type Users_Order_By = {
   friends_aggregate?: Maybe<User_Friends_Aggregate_Order_By>;
   handle?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  local_decks_aggregate?: Maybe<Local_Decks_Aggregate_Order_By>;
   received_requests_aggregate?: Maybe<User_Received_Friend_Requests_Aggregate_Order_By>;
   sent_requests_aggregate?: Maybe<User_Sent_Friend_Requests_Aggregate_Order_By>;
   updated_at?: Maybe<Order_By>;
@@ -6595,10 +6958,10 @@ export type InsertNextLocalDeckMutation = (
   & { insert_campaign_deck_one?: Maybe<(
     { __typename?: 'campaign_deck' }
     & Pick<Campaign_Deck, 'id' | 'local_uuid' | 'campaign_id' | 'investigator' | 'owner_id'>
-    & { next_deck: (
+    & { next_deck?: Maybe<(
       { __typename?: 'campaign_deck' }
       & Pick<Campaign_Deck, 'id' | 'local_uuid' | 'campaign_id' | 'investigator' | 'owner_id' | 'content' | 'content_hash'>
-    ) }
+    )> }
   )> }
 );
 
@@ -6618,10 +6981,10 @@ export type InsertNextArkhamDbDeckMutation = (
   & { insert_campaign_deck_one?: Maybe<(
     { __typename?: 'campaign_deck' }
     & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'campaign_id' | 'investigator' | 'owner_id'>
-    & { next_deck: (
+    & { next_deck?: Maybe<(
       { __typename?: 'campaign_deck' }
       & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'campaign_id' | 'investigator' | 'owner_id' | 'content' | 'content_hash'>
-    ) }
+    )> }
   )> }
 );
 
@@ -6665,13 +7028,13 @@ export type UpdateLocalDeckMutation = (
   )> }
 );
 
-export type DeleteAllLocalDeckMutationVariables = Exact<{
+export type DeleteAllLocalDecksMutationVariables = Exact<{
   local_uuid: Scalars['String'];
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type DeleteAllLocalDeckMutation = (
+export type DeleteAllLocalDecksMutation = (
   { __typename?: 'mutation_root' }
   & { delete_campaign_deck?: Maybe<(
     { __typename?: 'campaign_deck_mutation_response' }
@@ -6683,13 +7046,13 @@ export type DeleteAllLocalDeckMutation = (
   )> }
 );
 
-export type DeleteAllArkhamDbDeckMutationVariables = Exact<{
+export type DeleteAllArkhamDbDecksMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int'];
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type DeleteAllArkhamDbDeckMutation = (
+export type DeleteAllArkhamDbDecksMutation = (
   { __typename?: 'mutation_root' }
   & { delete_campaign_deck?: Maybe<(
     { __typename?: 'campaign_deck_mutation_response' }
@@ -6714,7 +7077,7 @@ export type DeleteLocalDeckMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'local_uuid'>
+      & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'local_uuid' | 'owner_id'>
       & { previous_deck?: Maybe<(
         { __typename?: 'campaign_deck' }
         & LatestDeckFragment
@@ -6736,7 +7099,7 @@ export type DeleteArkhamDbDeckMutation = (
     & Pick<Campaign_Deck_Mutation_Response, 'affected_rows'>
     & { returning: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'arkhamdb_id'>
+      & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'arkhamdb_id' | 'owner_id'>
       & { previous_deck?: Maybe<(
         { __typename?: 'campaign_deck' }
         & LatestDeckFragment
@@ -6763,14 +7126,7 @@ export type GetMyDecksQuery = (
       )> }
     )>, all_decks: Array<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'arkhamdb_id' | 'local_uuid' | 'content_hash'>
-      & { next_deck: (
-        { __typename?: 'campaign_deck' }
-        & Pick<Campaign_Deck, 'id'>
-      ), previous_deck?: Maybe<(
-        { __typename?: 'campaign_deck' }
-        & Pick<Campaign_Deck, 'id'>
-      )> }
+      & AllDeckFragment
     )> }
   )> }
 );
@@ -6798,9 +7154,27 @@ export type GuideAchievementFragment = (
   & Pick<Guide_Achievement, 'id' | 'campaign_id' | 'type' | 'value' | 'bool_value'>
 );
 
+export type MiniDeckFragment = (
+  { __typename?: 'campaign_deck' }
+  & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator'>
+);
+
 export type BasicDeckFragment = (
   { __typename?: 'campaign_deck' }
-  & Pick<Campaign_Deck, 'id' | 'campaign_id' | 'arkhamdb_id' | 'local_uuid' | 'investigator' | 'content'>
+  & Pick<Campaign_Deck, 'campaign_id' | 'content' | 'content_hash'>
+  & MiniDeckFragment
+);
+
+export type AllDeckFragment = (
+  { __typename?: 'campaign_deck' }
+  & { next_deck?: Maybe<(
+    { __typename?: 'campaign_deck' }
+    & Pick<Campaign_Deck, 'id' | 'local_uuid' | 'arkhamdb_id'>
+  )>, previous_deck?: Maybe<(
+    { __typename?: 'campaign_deck' }
+    & Pick<Campaign_Deck, 'id' | 'local_uuid' | 'arkhamdb_id'>
+  )> }
+  & BasicDeckFragment
 );
 
 export type LatestDeckFragment = (
@@ -6836,7 +7210,7 @@ export type MiniCampaignFragment = (
     { __typename?: 'latest_decks' }
     & { deck?: Maybe<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'investigator'>
+      & MiniDeckFragment
     )> }
   )>, investigators: Array<(
     { __typename?: 'campaign_investigator' }
@@ -7341,6 +7715,37 @@ export type RemoveCampaignInvestigatorMutation = (
   )> }
 );
 
+export const MiniDeckFragmentDoc = gql`
+    fragment MiniDeck on campaign_deck {
+  id
+  arkhamdb_id
+  local_uuid
+  investigator
+}
+    `;
+export const BasicDeckFragmentDoc = gql`
+    fragment BasicDeck on campaign_deck {
+  ...MiniDeck
+  campaign_id
+  content
+  content_hash
+}
+    ${MiniDeckFragmentDoc}`;
+export const AllDeckFragmentDoc = gql`
+    fragment AllDeck on campaign_deck {
+  ...BasicDeck
+  next_deck {
+    id
+    local_uuid
+    arkhamdb_id
+  }
+  previous_deck {
+    id
+    local_uuid
+    arkhamdb_id
+  }
+}
+    ${BasicDeckFragmentDoc}`;
 export const MiniInvestigatorDataFragmentDoc = gql`
     fragment MiniInvestigatorData on investigator_data {
   id
@@ -7365,10 +7770,7 @@ export const MiniCampaignFragmentDoc = gql`
   guided
   latest_decks {
     deck {
-      id
-      arkhamdb_id
-      local_uuid
-      investigator
+      ...MiniDeck
     }
   }
   investigators {
@@ -7380,7 +7782,8 @@ export const MiniCampaignFragmentDoc = gql`
   }
   updated_at
 }
-    ${MiniInvestigatorDataFragmentDoc}`;
+    ${MiniDeckFragmentDoc}
+${MiniInvestigatorDataFragmentDoc}`;
 export const FullInvestigatorDataFragmentDoc = gql`
     fragment FullInvestigatorData on investigator_data {
   ...MiniInvestigatorData
@@ -7393,16 +7796,6 @@ export const FullInvestigatorDataFragmentDoc = gql`
   updated_at
 }
     ${MiniInvestigatorDataFragmentDoc}`;
-export const BasicDeckFragmentDoc = gql`
-    fragment BasicDeck on campaign_deck {
-  id
-  campaign_id
-  arkhamdb_id
-  local_uuid
-  investigator
-  content
-}
-    `;
 export const LatestDeckFragmentDoc = gql`
     fragment LatestDeck on campaign_deck {
   ...BasicDeck
@@ -7824,8 +8217,8 @@ export function useUpdateLocalDeckMutation(baseOptions?: Apollo.MutationHookOpti
 export type UpdateLocalDeckMutationHookResult = ReturnType<typeof useUpdateLocalDeckMutation>;
 export type UpdateLocalDeckMutationResult = Apollo.MutationResult<UpdateLocalDeckMutation>;
 export type UpdateLocalDeckMutationOptions = Apollo.BaseMutationOptions<UpdateLocalDeckMutation, UpdateLocalDeckMutationVariables>;
-export const DeleteAllLocalDeckDocument = gql`
-    mutation deleteAllLocalDeck($local_uuid: String!, $campaign_id: Int!) {
+export const DeleteAllLocalDecksDocument = gql`
+    mutation deleteAllLocalDecks($local_uuid: String!, $campaign_id: Int!) {
   delete_campaign_deck(
     where: {campaign_id: {_eq: $campaign_id}, other_decks: {local_uuid: {_eq: $local_uuid}}}
   ) {
@@ -7839,34 +8232,34 @@ export const DeleteAllLocalDeckDocument = gql`
   }
 }
     `;
-export type DeleteAllLocalDeckMutationFn = Apollo.MutationFunction<DeleteAllLocalDeckMutation, DeleteAllLocalDeckMutationVariables>;
+export type DeleteAllLocalDecksMutationFn = Apollo.MutationFunction<DeleteAllLocalDecksMutation, DeleteAllLocalDecksMutationVariables>;
 
 /**
- * __useDeleteAllLocalDeckMutation__
+ * __useDeleteAllLocalDecksMutation__
  *
- * To run a mutation, you first call `useDeleteAllLocalDeckMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteAllLocalDeckMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useDeleteAllLocalDecksMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteAllLocalDecksMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [deleteAllLocalDeckMutation, { data, loading, error }] = useDeleteAllLocalDeckMutation({
+ * const [deleteAllLocalDecksMutation, { data, loading, error }] = useDeleteAllLocalDecksMutation({
  *   variables: {
  *      local_uuid: // value for 'local_uuid'
  *      campaign_id: // value for 'campaign_id'
  *   },
  * });
  */
-export function useDeleteAllLocalDeckMutation(baseOptions?: Apollo.MutationHookOptions<DeleteAllLocalDeckMutation, DeleteAllLocalDeckMutationVariables>) {
-        return Apollo.useMutation<DeleteAllLocalDeckMutation, DeleteAllLocalDeckMutationVariables>(DeleteAllLocalDeckDocument, baseOptions);
+export function useDeleteAllLocalDecksMutation(baseOptions?: Apollo.MutationHookOptions<DeleteAllLocalDecksMutation, DeleteAllLocalDecksMutationVariables>) {
+        return Apollo.useMutation<DeleteAllLocalDecksMutation, DeleteAllLocalDecksMutationVariables>(DeleteAllLocalDecksDocument, baseOptions);
       }
-export type DeleteAllLocalDeckMutationHookResult = ReturnType<typeof useDeleteAllLocalDeckMutation>;
-export type DeleteAllLocalDeckMutationResult = Apollo.MutationResult<DeleteAllLocalDeckMutation>;
-export type DeleteAllLocalDeckMutationOptions = Apollo.BaseMutationOptions<DeleteAllLocalDeckMutation, DeleteAllLocalDeckMutationVariables>;
-export const DeleteAllArkhamDbDeckDocument = gql`
-    mutation deleteAllArkhamDbDeck($arkhamdb_id: Int!, $campaign_id: Int!) {
+export type DeleteAllLocalDecksMutationHookResult = ReturnType<typeof useDeleteAllLocalDecksMutation>;
+export type DeleteAllLocalDecksMutationResult = Apollo.MutationResult<DeleteAllLocalDecksMutation>;
+export type DeleteAllLocalDecksMutationOptions = Apollo.BaseMutationOptions<DeleteAllLocalDecksMutation, DeleteAllLocalDecksMutationVariables>;
+export const DeleteAllArkhamDbDecksDocument = gql`
+    mutation deleteAllArkhamDbDecks($arkhamdb_id: Int!, $campaign_id: Int!) {
   delete_campaign_deck(
     where: {campaign_id: {_eq: $campaign_id}, other_decks: {arkhamdb_id: {_eq: $arkhamdb_id}}}
   ) {
@@ -7880,32 +8273,32 @@ export const DeleteAllArkhamDbDeckDocument = gql`
   }
 }
     `;
-export type DeleteAllArkhamDbDeckMutationFn = Apollo.MutationFunction<DeleteAllArkhamDbDeckMutation, DeleteAllArkhamDbDeckMutationVariables>;
+export type DeleteAllArkhamDbDecksMutationFn = Apollo.MutationFunction<DeleteAllArkhamDbDecksMutation, DeleteAllArkhamDbDecksMutationVariables>;
 
 /**
- * __useDeleteAllArkhamDbDeckMutation__
+ * __useDeleteAllArkhamDbDecksMutation__
  *
- * To run a mutation, you first call `useDeleteAllArkhamDbDeckMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteAllArkhamDbDeckMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useDeleteAllArkhamDbDecksMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteAllArkhamDbDecksMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [deleteAllArkhamDbDeckMutation, { data, loading, error }] = useDeleteAllArkhamDbDeckMutation({
+ * const [deleteAllArkhamDbDecksMutation, { data, loading, error }] = useDeleteAllArkhamDbDecksMutation({
  *   variables: {
  *      arkhamdb_id: // value for 'arkhamdb_id'
  *      campaign_id: // value for 'campaign_id'
  *   },
  * });
  */
-export function useDeleteAllArkhamDbDeckMutation(baseOptions?: Apollo.MutationHookOptions<DeleteAllArkhamDbDeckMutation, DeleteAllArkhamDbDeckMutationVariables>) {
-        return Apollo.useMutation<DeleteAllArkhamDbDeckMutation, DeleteAllArkhamDbDeckMutationVariables>(DeleteAllArkhamDbDeckDocument, baseOptions);
+export function useDeleteAllArkhamDbDecksMutation(baseOptions?: Apollo.MutationHookOptions<DeleteAllArkhamDbDecksMutation, DeleteAllArkhamDbDecksMutationVariables>) {
+        return Apollo.useMutation<DeleteAllArkhamDbDecksMutation, DeleteAllArkhamDbDecksMutationVariables>(DeleteAllArkhamDbDecksDocument, baseOptions);
       }
-export type DeleteAllArkhamDbDeckMutationHookResult = ReturnType<typeof useDeleteAllArkhamDbDeckMutation>;
-export type DeleteAllArkhamDbDeckMutationResult = Apollo.MutationResult<DeleteAllArkhamDbDeckMutation>;
-export type DeleteAllArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<DeleteAllArkhamDbDeckMutation, DeleteAllArkhamDbDeckMutationVariables>;
+export type DeleteAllArkhamDbDecksMutationHookResult = ReturnType<typeof useDeleteAllArkhamDbDecksMutation>;
+export type DeleteAllArkhamDbDecksMutationResult = Apollo.MutationResult<DeleteAllArkhamDbDecksMutation>;
+export type DeleteAllArkhamDbDecksMutationOptions = Apollo.BaseMutationOptions<DeleteAllArkhamDbDecksMutation, DeleteAllArkhamDbDecksMutationVariables>;
 export const DeleteLocalDeckDocument = gql`
     mutation deleteLocalDeck($local_uuid: String!, $campaign_id: Int!) {
   delete_campaign_deck(
@@ -7916,6 +8309,7 @@ export const DeleteLocalDeckDocument = gql`
       id
       campaign_id
       local_uuid
+      owner_id
       previous_deck {
         ...LatestDeck
       }
@@ -7959,6 +8353,7 @@ export const DeleteArkhamDbDeckDocument = gql`
       id
       campaign_id
       arkhamdb_id
+      owner_id
       previous_deck {
         ...LatestDeck
       }
@@ -7996,27 +8391,18 @@ export const GetMyDecksDocument = gql`
     query getMyDecks($userId: String!) {
   users_by_pk(id: $userId) {
     id
-    decks(where: {deck: {local_uuid: {_is_null: false}}}) {
+    decks {
       deck {
         ...LatestDeck
       }
     }
     all_decks {
-      id
-      campaign_id
-      arkhamdb_id
-      local_uuid
-      content_hash
-      next_deck {
-        id
-      }
-      previous_deck {
-        id
-      }
+      ...AllDeck
     }
   }
 }
-    ${LatestDeckFragmentDoc}`;
+    ${LatestDeckFragmentDoc}
+${AllDeckFragmentDoc}`;
 
 /**
  * __useGetMyDecksQuery__
