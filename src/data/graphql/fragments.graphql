@@ -46,6 +46,7 @@ fragment AllDeck on campaign_deck {
 
 fragment LatestDeck on campaign_deck {
   ...BasicDeck
+  owner_id,
   campaign {
     id
     uuid

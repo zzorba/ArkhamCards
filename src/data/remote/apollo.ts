@@ -67,6 +67,8 @@ import {
   DeleteLocalDeckMutation,
   UpdateLocalDeckDocument,
   UpdateArkhamDbDeckDocument,
+  InsertNewDeckMutation,
+  InsertNewDeckDocument,
 } from '@generated/graphql/apollo-schema';
 
 function fullToMiniCampaignFragment(fragment: FullCampaignFragment): MiniCampaignFragment {
@@ -199,6 +201,84 @@ function removeAllMatchingDecks(
   );
 }
 
+export const handleInsertNewDeck: MutationUpdaterFn<InsertNewDeckMutation> = (cache, { data }) => {
+  if (!data?.insert_campaign_deck_one) {
+    return;
+  }
+  const deck = data.insert_campaign_deck_one;
+  updateMiniCampaign(cache, deck.campaign_id, (campaign) => {
+    return {
+      ...campaign,
+      latest_decks: [
+        ...filter(campaign.latest_decks, d => d.deck?.investigator !== deck.investigator),
+        {
+          __typename: 'latest_decks',
+          deck,
+        },
+      ],
+    };
+  });
+  updateFullCampaign(cache, deck.campaign_id, (campaign) => {
+    return {
+      ...campaign,
+      latest_decks: [
+        ...filter(campaign.latest_decks, d => d.deck?.investigator !== deck.investigator),
+        {
+          __typename: 'latest_decks',
+          deck,
+        },
+      ],
+    };
+  });
+  const myDecks = cache.readQuery<GetMyDecksQuery>({
+    query: GetMyDecksDocument,
+    variables: {
+      userId: deck.owner_id,
+    },
+  });
+  if (myDecks?.users_by_pk) {
+    const matches = (id: number, arkhamdb_id: number | undefined | null, local_uuid: string | undefined | null): boolean => {
+      if (id === -1 || deck.id === -1) {
+        return !!((arkhamdb_id && arkhamdb_id === deck.arkhamdb_id) ||
+          (local_uuid && local_uuid === deck.local_uuid));
+      }
+      return (id === deck.id);
+    };
+    cache.writeQuery<GetMyDecksQuery>({
+      query: GetMyDecksDocument,
+      variables: {
+        userId: deck.owner_id,
+      },
+      data: {
+        users_by_pk: {
+          __typename: 'users',
+          id: deck.owner_id,
+          decks: [
+            ...filter(myDecks.users_by_pk.decks, d => d.deck ? matches(d.deck.id, d.deck.arkhamdb_id, d.deck.local_uuid) : false),
+            {
+              __typename: 'latest_decks',
+              deck,
+            },
+          ],
+          all_decks: [
+            ...filter(myDecks.users_by_pk.all_decks, d => matches(d.id, d.arkhamdb_id, d.local_uuid)),
+            {
+              __typename: 'campaign_deck',
+              id: deck.id,
+              arkhamdb_id: deck.arkhamdb_id,
+              local_uuid: deck.local_uuid,
+              investigator: deck.investigator,
+              content: deck.content,
+              content_hash: deck.content_hash,
+              campaign_id: deck.campaign_id,
+            },
+          ],
+        },
+      },
+    });
+  }
+};
+
 export const handleDeleteAllArkhamDbDecks: MutationUpdaterFn<DeleteAllArkhamDbDecksMutation> = (cache, { data }) => {
   if (data === undefined || !data?.delete_campaign_deck?.returning.length) {
     return;
@@ -290,6 +370,7 @@ function removeDeck(
       if (matchesDeck(deck)) {
         return deck.previous_deck ? {
           ...deck.previous_deck || undefined,
+          owner_id: deck.owner_id,
           campaign_id: deck.campaign_id,
           campaign: deck.campaign,
         } : undefined;
@@ -914,6 +995,10 @@ export const optimisticUpdates = {
   },
   updateArkhamDbDeck: {
     mutation: UpdateArkhamDbDeckDocument,
+  },
+  insertNewDeck: {
+    mutation: InsertNewDeckDocument,
+    update: handleInsertNewDeck,
   },
 };
 

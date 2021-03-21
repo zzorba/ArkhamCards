@@ -6938,7 +6938,7 @@ export type InsertNewDeckMutation = (
   { __typename?: 'mutation_root' }
   & { insert_campaign_deck_one?: Maybe<(
     { __typename?: 'campaign_deck' }
-    & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'local_uuid' | 'campaign_id' | 'owner_id' | 'investigator' | 'content' | 'content_hash'>
+    & LatestDeckFragment
   )> }
 );
 
@@ -6960,7 +6960,7 @@ export type InsertNextLocalDeckMutation = (
     & Pick<Campaign_Deck, 'id' | 'local_uuid' | 'campaign_id' | 'investigator' | 'owner_id'>
     & { next_deck?: Maybe<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'local_uuid' | 'campaign_id' | 'investigator' | 'owner_id' | 'content' | 'content_hash'>
+      & LatestDeckFragment
     )> }
   )> }
 );
@@ -6983,7 +6983,7 @@ export type InsertNextArkhamDbDeckMutation = (
     & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'campaign_id' | 'investigator' | 'owner_id'>
     & { next_deck?: Maybe<(
       { __typename?: 'campaign_deck' }
-      & Pick<Campaign_Deck, 'id' | 'arkhamdb_id' | 'campaign_id' | 'investigator' | 'owner_id' | 'content' | 'content_hash'>
+      & LatestDeckFragment
     )> }
   )> }
 );
@@ -7179,6 +7179,7 @@ export type AllDeckFragment = (
 
 export type LatestDeckFragment = (
   { __typename?: 'campaign_deck' }
+  & Pick<Campaign_Deck, 'owner_id'>
   & { campaign: (
     { __typename?: 'campaign' }
     & Pick<Campaign, 'id' | 'uuid' | 'name'>
@@ -7799,6 +7800,7 @@ export const FullInvestigatorDataFragmentDoc = gql`
 export const LatestDeckFragmentDoc = gql`
     fragment LatestDeck on campaign_deck {
   ...BasicDeck
+  owner_id
   campaign {
     id
     uuid
@@ -7979,17 +7981,10 @@ export const InsertNewDeckDocument = gql`
   insert_campaign_deck_one(
     object: {arkhamdb_id: $arkhamdb_id, local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId, base: true}
   ) {
-    id
-    arkhamdb_id
-    local_uuid
-    campaign_id
-    owner_id
-    investigator
-    content
-    content_hash
+    ...LatestDeck
   }
 }
-    `;
+    ${LatestDeckFragmentDoc}`;
 export type InsertNewDeckMutationFn = Apollo.MutationFunction<InsertNewDeckMutation, InsertNewDeckMutationVariables>;
 
 /**
@@ -8033,17 +8028,11 @@ export const InsertNextLocalDeckDocument = gql`
     investigator
     owner_id
     next_deck {
-      id
-      local_uuid
-      campaign_id
-      investigator
-      owner_id
-      content
-      content_hash
+      ...LatestDeck
     }
   }
 }
-    `;
+    ${LatestDeckFragmentDoc}`;
 export type InsertNextLocalDeckMutationFn = Apollo.MutationFunction<InsertNextLocalDeckMutation, InsertNextLocalDeckMutationVariables>;
 
 /**
@@ -8087,17 +8076,11 @@ export const InsertNextArkhamDbDeckDocument = gql`
     investigator
     owner_id
     next_deck {
-      id
-      arkhamdb_id
-      campaign_id
-      investigator
-      owner_id
-      content
-      content_hash
+      ...LatestDeck
     }
   }
 }
-    `;
+    ${LatestDeckFragmentDoc}`;
 export type InsertNextArkhamDbDeckMutationFn = Apollo.MutationFunction<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>;
 
 /**

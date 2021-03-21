@@ -2,7 +2,7 @@ import { useCallback, useContext, useMemo, useRef } from 'react';
 import { sha1 } from 'react-native-sha256';
 import { forEach, keys, map, uniq } from 'lodash';
 
-import { Deck, DeckId, getDeckId, UploadedDeck } from '@actions/types';
+import { Deck, DeckId, getDeckId, UploadedCampaignId, UploadedDeck } from '@actions/types';
 import {
   useDeleteAllArkhamDbDecksMutation,
   useDeleteAllLocalDecksMutation,
@@ -30,11 +30,11 @@ export interface DeckActions {
   deleteDeck: (deckId: DeckId, campaignId: number, deleteAllVersions: boolean) => Promise<void>;
   createBaseDeck: (
     deck: Deck,
-    campaignId: number
+    campaignId: UploadedCampaignId
   ) => Promise<number | undefined>;
   createNextDeck: (
     deck: Deck,
-    campaignId: number,
+    campaignId: UploadedCampaignId,
     previousDeckId: DeckId
   ) => Promise<number | undefined>;
 }
@@ -171,6 +171,7 @@ function getPreviousDeck(id: number, cache: ApolloCache<unknown>): LatestDeckFra
     campaign: currentDeck.campaign,
     campaign_id: currentDeck.campaign_id,
     investigator_data: currentDeck.investigator_data,
+    owner_id: currentDeck.owner_id,
     id: previousDeck.id,
     investigator: previousDeck.investigator,
     arkhamdb_id: previousDeck.arkhamdb_id,
@@ -387,7 +388,7 @@ export function useDeckActions(): DeckActions {
   const [createNextLocalDeck] = useInsertNextLocalDeckMutation();
   const createBaseDeck = useCallback(async(
     deck: Deck,
-    campaignId: number,
+    campaignId: UploadedCampaignId,
   ) => {
     if (!user) {
       throw new Error('No user');
@@ -395,7 +396,7 @@ export function useDeckActions(): DeckActions {
     const deckId = getDeckId(deck);
     const content_hash = await hashDeck(deck);
     const variables = {
-      campaign_id: campaignId,
+      campaign_id: campaignId.serverId,
       investigator: deck.investigator_code,
       userId: user.uid,
       content: deck,
@@ -407,11 +408,16 @@ export function useDeckActions(): DeckActions {
         insert_campaign_deck_one: {
           __typename: 'campaign_deck',
           id: -1,
-          campaign_id: campaignId,
+          campaign_id: campaignId.serverId,
           investigator: deck.investigator_code,
           owner_id: user.uid,
           content: deck,
           content_hash,
+          campaign: {
+            __typename: 'campaign',
+            id: campaignId.serverId,
+            uuid: campaignId.campaignId,
+          },
         },
       },
       variables: deckId.local ? {
@@ -422,15 +428,16 @@ export function useDeckActions(): DeckActions {
         arkhamdb_id: deckId.id,
       },
       context: {
-        serializationKey: campaignId,
+        serializationKey: campaignId.serverId,
       },
+      update: optimisticUpdates.insertNewDeck.update,
     });
     return response?.data?.insert_campaign_deck_one?.id;
   }, [createNewDeck, user]);
 
   const createNextDeck = useCallback(async(
     deck: Deck,
-    campaignId: number,
+    campaignId: UploadedCampaignId,
     previousDeckId: DeckId
   ) => {
     if (!user) {
@@ -439,7 +446,7 @@ export function useDeckActions(): DeckActions {
     const deckId = getDeckId(deck);
     const content_hash = await hashDeck(deck);
     const variables = {
-      campaign_id: campaignId,
+      campaign_id: campaignId.serverId,
       investigator: deck.investigator_code,
       userId: user.uid,
       content: deck,
@@ -452,19 +459,24 @@ export function useDeckActions(): DeckActions {
           insert_campaign_deck_one: {
             __typename: 'campaign_deck',
             id: previousDeckId.serverId || -1,
-            campaign_id: campaignId,
+            campaign_id: campaignId.serverId,
             local_uuid: previousDeckId.uuid,
             investigator: deck.investigator_code,
             owner_id: user.uid,
             next_deck: {
               __typename: 'campaign_deck',
               id: -1,
-              campaign_id: campaignId,
+              campaign_id: campaignId.serverId,
               local_uuid: deck.uuid,
               investigator: deck.investigator_code,
               owner_id: user.uid,
               content: deck,
               content_hash,
+              campaign: {
+                __typename: 'campaign',
+                id: campaignId.serverId,
+                uuid: campaignId.campaignId,
+              },
             },
           },
         },
@@ -474,7 +486,7 @@ export function useDeckActions(): DeckActions {
           previous_local_uuid: previousDeckId.uuid,
         },
         context: {
-          serializationKey: campaignId,
+          serializationKey: campaignId.serverId,
         },
       });
       return response.data?.insert_campaign_deck_one?.next_deck?.id;
@@ -489,19 +501,24 @@ export function useDeckActions(): DeckActions {
         insert_campaign_deck_one: {
           __typename: 'campaign_deck',
           id: previousDeckId.serverId || -1,
-          campaign_id: campaignId,
+          campaign_id: campaignId.serverId,
           arkhamdb_id: previousDeckId.id,
           investigator: deck.investigator_code,
           owner_id: user.uid,
           next_deck: {
             __typename: 'campaign_deck',
             id: -1,
-            campaign_id: campaignId,
+            campaign_id: campaignId.serverId,
             arkhamdb_id: deck.id,
             investigator: deck.investigator_code,
             owner_id: user.uid,
             content: deck,
             content_hash,
+            campaign: {
+              __typename: 'campaign',
+              id: campaignId.serverId,
+              uuid: campaignId.campaignId,
+            },
           },
         },
       },
@@ -511,7 +528,7 @@ export function useDeckActions(): DeckActions {
         previous_arkhamdb_id: previousDeckId.id,
       },
       context: {
-        serializationKey: campaignId,
+        serializationKey: campaignId.serverId,
       },
     });
     return response.data?.insert_campaign_deck_one?.next_deck?.id;
