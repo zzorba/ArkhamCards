@@ -74551,15 +74551,15 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "As soon as your mind returned to the present, you began formulating your plan. A plan to enter the realm of the Deep Ones and end their conspiracy once and for all. \"This is ridiculous, you know that, right?\" Harper asks. You nod. Of course it's ridiculous. You've spent the last two days on the run. Chased. Hunted. Tormented.\nBut you've also spend the last two days recovering the memories you've forgotten. And what you've seen is something you can't possibly ignore. You have seen the deity the Esoteric Order of Dagon is named for, and you understand what the Order plans to do. The alignment of the celestial bodies in the sky, the steadily rising tides, the tumultuous fluctuating weather, the creatures emerging from the deep, all of it is tied together. You have seen it. There will come a flood, a great disaster to wipe out humanity, so only the deep remains. The great city in the reef shall rise once more and become the beating heart of all life on Earth.\nThere are still gaps in your memory, but all this you know to be true. All of Innsmouthis consumed by this conspiracy. The Order controlled the town through its oaths and the secret wealth it hoarded from the deep. It was no wonder they treated outsiders like yourself with such scorn.\nYou give Harper a knowing glare. She sighs and nods. \"I know. It's the only way.\" Together, the two of you plot your course. Abandoned ships still litter the harbor of Innsmouth. Under the cover of night, you must commandeer one of them, sail to Devil Reef, and descend once more into the antediluvian ruins in the depths below the forsaken islands. That is where the other entrance to the city lies. Y'ha-nthlei.\nYour skin prickles with cold shivers as you utter the word aloud. Harper grimaces, though you can sense the determination behind her steely gaze. \"I'm going to see this mission through, Dawson. For you.\"\nYou lay out all of the information you've uncovered and the relics you've obtained despite the horrors arrayed against you. You know the way to Y'ha-nthlei is sealed tight. There must be a way to gain entrance. Perhaps you already have the answers you seek…"
+      "text": "Sofort nachdem dein Verstand wieder in der Gegenwart angekommen ist, beginnst du einen Plan zu schmieden. Einen Plan, das Reich der Tiefen Wesen zu betreten und ihre Verschwörung ein für alle Mal zu beenden. „Das ist doch lächerlich und das wissen Sie auch“, stellt Harper fest. Du nickst. Natürlich ist das lächerlich. Du hast die letzten zwei Tage auf der Flucht verbracht. Du wurdest verfolgt, gejagt und gequält. \nAber die letzten zwei Tage hast du auch damit verbracht, deine vergessenen Erinnerungen zurückzuerlangen. Und was du gesehen hast, kannst du nicht einfach so ignorieren. Du hast die Gottheit gesehen, nach welcher der Esoterische Orden von Dagon benannt ist, und du weißt nun, was der Orden plant. Die Konstellation der Himmelskörper, die stetig ansteigende Flut, das stürmische, wechselhafte Wetter, die aus der Tiefe emporkommenden Kreaturen – all das hängt miteinander zusammen. Du hast es mit eigenen Augen gesehen. Es steht eine Flut bevor, eine große Katastrophe, welche die Menschheit auslöschen wird, und es wird nur noch die Tiefe selbst zurückbleiben. Die große Stadt im Riff wird sich erneut erheben und zum Zentrum allen Lebens auf der Erde werden. \nDeine Erinnerungen sind an manchen Stellen noch lückenhaft, aber du weißt, dass all das wahr ist. Dass ganz Innsmouth in die Verschwörung verstrickt ist. Dass der Orden die Stadt mithilfe von Eiden und geheimen Schätzen, die in der Tiefe gehortet werden, kontrolliert. Kein Wunder, dass die Einwohner mit einer solchen Verachtung auf dich und Fremde im Allgemeinen reagiert haben. \nDu wirfst Harper einen wissenden Blick zu. Sie seufzt und nickt. „Ich weiß. Uns bleibt kein anderer Weg.“ Zusammen schmiedet ihr beide einen Schlachtplan. Im Hafen von Innsmouth liegen noch immer vereinzelt verlassene Schiffe vor Anker. Im Schutze der Nacht müsst ihr mit einem davon zum Teufelsriff fahren und einmal mehr in die vorsintflutlichen Ruinen in den Tiefen unter den verlorenen Inseln hinabsteigen. Dort befindet sich der Eingang zur Stadt Y’ha-nthlei. \nDu bekommst am ganzen Körper eine Gänsehaut, als du die Worte laut aussprichst. Harper verzieht das Gesicht, aber ihr harter Blick zeigt Entschlossenheit. „Ich werde die Mission erfolgreich abschließen, Dawson. Für dich.“ \nDu teilst mit ihr alle Informationen, die du gesammelt hast, und zeigst ihr die Relikte, die du trotz der Schrecken, denen du ausgesetzt warst, bergen konntest. Du weißt, dass der Weg nach Y’ha-nthlei fest versiegelt ist. Es muss jedoch einen Weg geben, sich Zugang zu verschaffen. Vielleicht besitzt du bereits die Antworten, nach denen du suchst …"
     },
     {
       "id": "read_sections",
-      "text": "Check the campaign log. Read each of the sections below that apply to your situation."
+      "text": "Überprüfe das Kampagnenlogbuch. Lies jeden zu deiner Situation passenden Abschnitt. Fahre dann mit dem auf die Abschnitte folgenden Text fort."
     },
     {
       "id": "check_terror_of_devil_reef_dead_and_lifecyle_of_deep_one",
-      "text": "If <i>the Terror of Devil Reef is dead</i> and <i>the lifecycle of a \"Deep One\"</i> is listed under \"Memories Recovered\" in your Campaign Log.",
+      "text": "Falls <i>der Schrecken des Teufelsriffs tot ist </i> und <i>der Lebenszyklus eines „Tiefen Wesens“ </i> unter „Zurückerlangte Erinnerungen“ im Kampagnenlogbuch notiert ist:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -74601,17 +74601,17 @@
     {
       "id": "story_1",
       "type": "story",
-      "text": "You study the trophy you found in the sacrificial pit in which you awoke several days ago—part of what was once the creature that you fought in Devil Reef. It wasn't the same kind of creature as the \"Deep Ones\" that the Esoteric Order of Dagon worships, but you cannot help ruminating over the similarities between them. You recall that fish never cease growing as they age, and wonder if the same may be true for Deep Ones. Perhaps it was an ancient breed of Deep Ones—something so old, it grew enormous and twisted beyond imagination. If so what was it doing in Devil Reef? Was it guarding Y'ha-nthlei? And if so, what does that bode for you? You decide to take the trophy with you, hoping it is important enough to aid in your mission…"
+      "text": "Du untersuchst die Trophäe, die du in der Opfergrotte gefunden hast, in der du vor ein paar Tagen cht bist. Sie ist ein Teil der Kreatur, die du beim Teufelsriff bekämpft hast. Es handelt sich nicht um die gleiche Art wie die „Tiefen Wesen“, die der Orden von Dagon verehrt, aber die Ähnlichkeiten dieser beiden Arten bringen dich ins Grübeln. Du meinst dich zu erinnern, dass Fische niemals zu wachsen aufhören, und fragst dich, ob das auch bei den Tiefen Wesen der Fall ist. Vielleicht war es ein uraltes Exemplar der Tiefen Wesen – so alt, dass es zu so etwas unvorstellbar Riesigem angewachsen ist. Wenn das stimmt, was hat es dann beim Teufelsriff zu suchen gehabt? Hat es etwa Y’ha-nthlei bewacht? Und wenn ja, was heißt das nun für dich? Du entschließt dich, die Trophäe mitzunehmen, und hoffst, dass sie dir auf deiner Mission helfen wird …"
     },
     {
       "id": "guardian_of_yhanthlei_is_dispatched",
-      "text": "The conspiracy deepends. In your Campaign Log, record <i>the guardian of Y'ha-nthlei is dispatched.</i>",
+      "text": "Die Verschwörung weitet sich aus. Im Kampagnenlogbuch wird notiert: <i>Der Wächter von Y’ha-nthlei wurde beseitigt.</i>",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "guardian_of_yhanthlei_is_dispatched",
-          "text": "the guardian of Y’ha-nthlei is dispatched."
+          "text": "Der Wächter von Y’ha-nthlei wurde beseitigt."
         }
       ]
     },
@@ -74672,7 +74672,7 @@
     },
     {
       "id": "success_check_guardian_and_story_assets",
-      "text": "If <i>the gatekeeper has been defeated</i> and an investigator's deck contains at least 1 of the following story assets (Waveworn Idol, Awakened Mantle, or Headdress of Y'ha-nthlei):",
+      "text": "Falls <i>der Hüter des Tores besiegt wurde</i> und sich im Deck eines Ermittlers mindestens 1 der folgenden Storyvorteilskarten befindet (Verwitterter Götze, Maske des Erwachten oder Kopfschmuck aus Y’ha-nthlei):",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -74692,7 +74692,7 @@
     },
     {
       "id": "fail_check_guardian_and_story_assets",
-      "text": "If <i>the gatekeeper has been defeated</i> and an investigator's deck contains at least 1 of the following story assets (Waveworn Idol, Awakened Mantle, or Headdress of Y'ha-nthlei):",
+      "text": "Falls <i>der Hüter des Tores besiegt wurde</i> und sich im Deck eines Ermittlers mindestens 1 der folgenden Storyvorteilskarten befindet (Verwitterter Götze, Maske des Erwachten oder Kopfschmuck aus Y’ha-nthlei):",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -74724,17 +74724,17 @@
     {
       "id": "story_2",
       "type": "story",
-      "text": "You understand now the purpose of the relic you found in Devil Reef. It isn't just an object of power. It is a badge—an heirloom of sorts, worn by the one who stands guard over the gateway to the Deep Ones' city. You defeated the one groomed to be its next protector. Now the relic recognizes you as its rightful heir. Perhaps with this, you will be able to gain entrance to Y'ha-nthlei…"
+      "text": "So langsam verstehst du den Zweck des Relikts, das du beim Teufelsriff gefunden hast. Es handelt sich nicht nur um ein Objekt der Macht. Es ist viel mehr auch ein Zeichen – gewissermaßen ein Erbstück, das von demjenigen getragen wird, der Wache vor dem Tor steht, das zur Stadt der Tiefen Wesen führt. Du hast denjenigen besiegt, der als sein nächster Beschützer auserkoren war, und nun erkennt das Relikt dich als seinen rechtmäßigen Erben an. Vielleicht schaffst du es damit, dir Zugang nach Y’ha-nthlei zu verschaffen …"
     },
     {
       "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-      "text": "The conspiracy deepens. In your Campaign Log, record <i>the gateway to Y’ha-nthlei recognizes you as its rightful keeper</i>.",
+      "text": "Die Verschwörung weitet sich aus. Im Kampagnenlogbuch wird notiert: <i>Das Tor nach Y’ha-nthlei erkennt dich als seinen rechtmäßigen Hüter an</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-          "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+          "text": "Das Tor nach Y’ha-nthlei erkennt dich als seinen rechtmäßigen Hüter an"
         }
       ]
     },
@@ -76000,7 +76000,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<center><game>THURSDAY, SEPTEMBER 15, 1927</game></center>\n<center><game>ONE WEEK EARLIER</game></center>\nYou stand outside the cracked marble steps leading up to the masonic hall of the Esoteric Order of Dagon. All of the evidence has lead you here. Whatever is going on in this town, this Order is behind it. You're sure of it… though their ultimate goal remains a mystery.\nThe town is eerily quiet as you stand before the building's entrance. Once, this place might have been impressive and opulent. Years of disrepair and flood damage have reduced it to a near-ruin. Its once-white paint is gray and peeling, and many of the pillars outside the entryway are beginning to crumble. Still, it is one of the more intimidating places in Innsmouth, projecting authority despite its decrepitude. No, not authority—something darker. A looming, unspoken threat.\n\"Are you ready?\" Agent Dawson asks. His usually calm demeanor has vanished, replaced with a humorless gravity that throws you off guard. \"This is it. This is where we'll find answers.\"\nYou're not so sure. Every other lead you've followed has led to only more questions."
+      "text": "<center><game>DONNERSTAG, 15. SEPTEMBER 1927</game></center>\n<center><game>EINE WOCHE ZUVOR</game></center>\nDu stehst vor der brüchigen Marmortreppe, die zum Freimaurertempel hinaufführt, dem Sitz des Esoterischen Ordens von Dagon. Alle Spuren haben dich hierhergeführt. Was auch immer in dieser Stadt vor sich geht, der Orden hat seine Finger im Spiel … da bist du dir sicher. Seine Beweggründe allerdings sind dir immer noch ein Rätsel. \nIn der Stadt Innsmouth herrscht eine unheimliche Stille, während du deinen Blick über die Gebäude schweifen lässt. Dies war bestimmt einmal ein beeindruckender und wohlhabender Ort. Aber jahrelange Vernachlässigung und die Schäden durch das Hochwasser haben es fast zu einer Ruine verkommen lassen. Die ursprünglich wohl weiß getünchte Fassade ist jetzt grau und blättert an vielen Stellen ab. Und die meisten Säulen vor dem Eingang beginnen zu zerbröckeln. Dennoch ist es noch immer eines der furchteinflößenderen Gebäude in Innsmouth, von dem trotz seiner Baufälligkeit eine gewisse Autorität ausgeht. Nein, Autorität ist das falsche Wort – es ist etwas Dunkleres. Eine unausgesprochene, lauernde Bedrohung. \n„Sind Sie bereit?“, fragt Agent Dawson und reißt dich damit aus deinen Gedanken. Sein normalerweise so gelassenes Auftreten ist verschwunden und hat sich in eine humorlose Ernsthaftigkeit verwandelt. „Das ist es. Hier werden wir Antworten finden.“ \nDu bist dir da nicht so sicher. Jede Spur, der du bisher gefolgt bist, hat dich nur mit noch mehr Fragen zurückgelassen."
     },
     {
       "id": "check_mission_succeeded",
@@ -76028,12 +76028,12 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "Agent Harper was kidnapped when she got too close to the Order, but interrogating her kidnapper didn't exactly yield the answers you needed. What you know now is that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. What's worse, many of the town's inhabitants seem to follow the Order with blind, fanatical devotion. So many that you're not sure this is even a functioning town anymore. It's no wonder the people are so hostile towards outsiders.\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
+      "text": "Agent Harper wurde entführt, als sie dem Orden zu nahe gekommen war. Aber die Befragung ihres Entführers hat nicht die Antworten gebracht, die du brauchst. Was du jetzt aber weißt, ist, dass sich der Einfluss des Ordens über ganz Innsmouth erstreckt, von einflussreichen öffentlichen Personen bis hin zu den einfachen Bürgern. Finanzen, Religion, Politik … in allen Bereichen hat der Orden auf die eine oder andere Weise seine Finger im Spiel. Und das Schlimmste ist, dass viele der Stadtbewohner diesem Kult mit blinder, fanatischer Hingabe folgen. Wahrscheinlich sind es sogar so viele, dass man gar nicht mehr von einer normal funktionierenden Stadt sprechen kann. Da ist es nicht verwunderlich, dass die Leute Fremden mit einer solchen Feindseligkeit begegnen. \nAber erst nachdem du deine Untersuchungen auf das Teufelsriff ausgeweitet hattest, war es dir gelungen, die äußersten Schichten von Innsmouth abzuziehen und die Fäulnis darunter aufzudecken. Dort hast du gefunden, was der Orden versteckt hatte: die monströsen Kreaturen, die aus den Tiefen hervorgekommen sind, auf den Gezeiteninseln herumschleichen und sich im Gebet zusammenschließen, um einer schrecklichen Gottheit zu huldigen. Vielleicht ist es sogar der gleiche „Dagon“, den der Orden verehrt."
     },
     {
       "id": "intro_3",
       "type": "story",
-      "text": "You are sure that Agent Harper was kidnapped after she began investigating the Order. Your own investigation might have ended the same way had you not laid low for a week after the townsfolk got riled up. It seems that the Order's influence pervades Innsmouth, from important civic figures to everyday citizens. Finances, religion, politics… everything is wrapped up in this cult's business in some way or another. But why?\nIt wasn't until your investigation of Devil Reef that you truly began to peel away the outer layers of Innsmouth and reveal the rot beneath. There, you found what the Order was hiding: the monstrous creatures that emerged from the depths and prowled the tidal islands, congregating in prayers to some horrific deity. Perhaps it is even the same \"Dagon\" worshipped by the Order."
+      "text": "Du bist dir sicher, dass Agent Harper entführt wurde, nachdem sie mit ihren Ermittlungen über den Orden begonnen hatte. Wenn du dich nicht eine Woche lang vor den aufgebrachten Stadtbewohnern versteckt hättest, wäre dir womöglich das Gleiche zugestoßen. Wie es aussieht, erstreckt sich der Einfluss des Ordens über ganz Innsmouth, von einflussreichen öffentlichen Personen bis hin zu den einfachen Bürgern. Finanzen, Religion, Politik … in allen Bereichen hat der Orden auf die eine oder andere Weise seine Finger im Spiel. Aber warum? \nErst nachdem du deine Untersuchungen auf das Teufelsriff ausgeweitet hattest, war es dir gelungen, die äußersten Schichten von Innsmouth abzuziehen und die Fäulnis darunter aufzudecken. Dort hast du gefunden, was der Orden versteckt hatte: die monströsen Kreaturen, die aus den Tiefen hervorgekommen sind, auf den Gezeiteninseln herumschleichen und sich im Gebet zusammenschließen, um einer schrecklichen Gottheit zu huldigen. Vielleicht ist es sogar der gleiche „Dagon“, den der Orden verehrt."
     },
     {
       "id": "check_decision_to_stick_together_intro",
@@ -76062,12 +76062,12 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "<i>Creeeak.</i> Agent Dawson opens the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"I don't like this one bit,\" Dawson says as the front door closes behind you. He unholsters his gun, turns on his flashlight, and scans the room. \"We should stay together. Safety in numbers.\" You nod in agreement. The Order has proven to be very dangerous, and they surely don't want you poking around in their headquarters…"
+      "text": "Mit einem Knarren öffnet Agent Dawson die großen Türen, die dem Gebäude als Eingang dienen. Du folgst ihm ins Innere. Hier ist es dunkel und unheimlich still. Nur das leise Tropfen von Wasser ist aus der Ferne zu hören. „Das gefällt mir gar nicht“, meint Agent Dawson, als sich die Vordertüren hinter dir schließen. Er zieht seine Waffe, schaltet seine Taschenlampe ein und untersucht den Raum. „Wir sollten zusammenbleiben. Gemeinsam sind wir sicherer.“ Du nickst zustimmend. Der Orden hat sich als äußerst gefährlich erwiesen. Ihm wird es nicht gefallen, wenn in seinem Hauptquartier herumgeschnüffelt wird …"
     },
     {
       "id": "intro_5",
       "type": "story",
-      "text": "<i>Creeeak.</i> Agent Dawson creaks open the large doors serving as the entrance to the building, and you follow close behind. Inside, the halls are dark and eerily still. Only the faint sound of trickling water lingers in the air. \"It's quiet. I guess there are no ceremonies going on tonight. That's good,\" Dawson says as the front door closes behind you. He turns on his flashlight and illuminates a nearby doorway. \"We should split up. We'll be able to cover more ground that way. See if you can figure out what they're hiding here. I'll meet up with you later.\" You nod and head in the opposite direction…"
+      "text": "Mit einem Knarren öffnet Agent Dawson die großen Türen, die dem Gebäude als Eingang dienen. Du folgst ihm ins Innere. Hier ist es dunkel und unheimlich still. Nur das leise Tropfen von Wasser ist aus der Ferne zu hören. „Es ist ruhig hier. Ich denke, dass heute keine Zeremonie stattfindet. Sehr gut“, meint Agent Dawson, als sich die Vordertüren hinter dir schließen. Er schaltet seine Taschenlampe ein und beleuchtet damit den nächsten Durchgang. „Wir sollten uns aufteilen. Auf diese Weise kommen wir schneller voran. Mal sehen, ob wir herausfinden können, was sie hier verstecken. Ich treffe mich mit Ihnen später wieder.“ Du nickst und gehst in die entgegengesetzte Richtung …"
     },
     {
       "id": "investigator_setup",
@@ -76098,22 +76098,22 @@
       "text": "Die Schlüssel werden wie folgt platziert:",
       "bullets": [
         {
-          "text": "Set the black, blue, green, purple, and red keys aside, faceup."
+          "text": "Der schwarze, blaue, grüne, lila und rote Schlüssel werden offen beiseitegelegt."
         },
         {
-          "text": "Set the white and yellow aside, facedown. Shuffle them so you do not know which is which."
+          "text": "Der weiße und gelbe Schlüssel werden verdeckt beiseitegelegt und gemischt, sodass die Ermittler nicht wissen, welcher welcher ist."
         }
       ]
     },
     {
       "id": "setup_locations",
-      "text": "Put the following locations into play: Grand Entryway, Foul Corridors, both copies of First Floor Hall, both copies of Second Floor Hall, and Third Floor Hall.",
+      "text": "Die folgenden Orte werden ins Spiel gebracht: Große Eingangshalle, Stinkende Korridore, beide Kopien von Halle im Erdgeschoss, beide Kopien von Halle im ersten Stock und Halle im zweiten Stock.",
       "bullets": [
         {
-          "text": "Each investigator begins play at the Grand Entryway."
+          "text": "Jeder Ermittler beginnt das Spiel in der Großen Eingangshalle."
         },
         {
-          "text": "Set other locations aside, out of play."
+          "text": "Jeder andere Ort wird als nicht im Spiel befindlich beiseitegelegt."
         }
       ]
     },
@@ -76147,30 +76147,30 @@
         },
         {
           "code": "foul_corridors",
-          "name": "Foul Corridors"
+          "name": "Stinkende Korridore"
         },
         {
           "code": "first_floor_hall",
-          "name": "First Floor Hall"
+          "name": "Halle im Erdgeschoss"
         },
         {
           "code": "grand_entryway",
-          "name": "Grand Entryway"
+          "name": "Große Eingangshalle"
         },
         {
           "code": "third_floor_hall",
-          "name": "Third Floor Hall"
+          "name": "Halle im zweiten Stock"
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Both copies of the Syzygy treachery, both copies of the Tidal Alignment treachery, the double-sided Y’ha-nthlei Statue story asset, the Apostle of Dagon enemy, and the double-sided Dagon enemy."
+      "text": "Beide Kopien der Verratskarte Syzygium, beide Kopien der Verratskarte Gezeitenkonstellation, die doppelseitige Storyvorteilskarte Statue aus Y’ha-nthlei, der Gegner Apostel von Dagon und der doppelseitige Gegner Dagon."
     },
     {
       "id": "check_memories_recovered",
       "type": "branch",
-      "text": "Check the \"Memories Recovered\" section of the Campaign Log:",
+      "text": "Überprüfe den Abschnitt „Zurückerlangte Erinnerungen“ im Kampagnenlogbuch:",
       "condition": {
         "type": "campaign_log_count",
         "section": "memories_recovered",
@@ -76242,22 +76242,22 @@
     {
       "id": "add_5_bless",
       "bullet_type": "small",
-      "text": "Because there are 4 or fewer memories recorded, add 5 [bless] tokens to the chaos bag."
+      "text": "Da 4 oder weniger Erinnerungen notiert sind, werden dem Chaosbeutel 5 [bless]-Marker hinzugefügt."
     },
     {
       "id": "add_2_curse",
       "bullet_type": "small",
-      "text": "Because there are between 5 and 7 memories recorded, add 2 [curse] tokens to the chaos bag."
+      "text": "Da zwischen 5–7 Erinnerungen notiert sind, werden dem Chaosbeutel 2 [curse]-Marker hinzugefügt."
     },
     {
       "id": "add_5_curse",
       "bullet_type": "small",
-      "text": "Because there are 8 or more memories recorded, add 5 [curse] tokens to the chaos bag."
+      "text": "Da 8 oder mehr Erinnerungen notiert sind, werden dem Chaosbeutel 5 [curse]-Marker hinzugefügt."
     },
     {
       "id": "check_jailbreak",
       "type": "branch",
-      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>a jailbreak</i> is listed under \"Memories Recovered\":",
+      "text": "Überprüfe den Abschnitt „Zurückerlangte Erinnerungen“ im Kampagnenlogbuch. Falls darunter ein <i>Gefängnisausbruch</i> notiert ist:",
       "condition": {
         "type": "campaign_log",
         "section": "memories_recovered",
@@ -76275,11 +76275,11 @@
     {
       "id": "set_aside_possible_suspect",
       "bullet_type": "small",
-      "text": "Search the collection for the [[Suspect]] enemy underlined under “Possible Suspects” and set it aside, out of play."
+      "text": "Die Sammlung wird nach dem [[Verdächtiger]]-Gegner durchsucht, der unter „Mögliche Verdächtige“ eingekreist ist. Dieser wird als nicht im Spiel befindlich beiseitegelegt."
     },
     {
       "id": "check_encounter_with_a_secret_cult",
-      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>an encounter with a secret cult</i> is listed under \"Memories Recovered\":",
+      "text": "Überprüfe den Abschnitt „Zurückerlangte Erinnerungen“ im Kampagnenlogbuch. Falls darunter eine Begegnung mit einem Geheimkult notiert ist:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -76304,17 +76304,17 @@
     {
       "id": "agenda_1_v1",
       "bullet_type": "small",
-      "text": "When constructing the agenda deck, use Agenda 1a—\"The Initiation (v.I)\" and remove Agenda 1a—\"The Initiation (v.II)\" from the game."
+      "text": "Beim Erstellen des Agendadecks wird Agenda 1a – Die Initiation (I) verwendet und Agenda 1a – Die Initiation\u001f(II) aus dem Spiel entfernt."
     },
     {
       "id": "agenda_1_v2",
       "bullet_type": "small",
-      "text": "Otherwise, use Agenda 1a—\"The Initiation (v.II)\" and remove Agenda 1a-\"The Initiation (v.I)\" from the game."
+      "text": "Ansonsten wird beim Erstellen des Agendadecks Agenda 1a – Die Initiation (II) verwendet und Agenda 1a – Die Initiation (I) aus dem Spiel entfernt."
     },
     {
       "id": "check_decision_to_stick_together",
       "type": "branch",
-      "text": "Check the \"Memories Recovered\" section of the Campaign Log. If <i>a decision to stick together</i> is listed under \"Memories Recovered\":",
+      "text": "Überprüfe den Abschnitt „Zurückerlangte Erinnerungen“ im Kampagnenlogbuch. Falls darunter <i>ein Beschluss zusammenzubleiben</i> notiert ist:",
       "condition": {
         "type": "campaign_log",
         "section": "memories_recovered",
@@ -76338,12 +76338,12 @@
     {
       "id": "put_agent_dawson_in_play",
       "bullet_type": "small",
-      "text": "Search the collection for Thomas Dawson and put him into play under any investigator's control. When constructing the agenda deck, use Agenda 2a—\"What Lurks Below (v.I)\" and remove Agenda 2a—\"What Lurks Below (v.II)\" from the game."
+      "text": "Die Sammlung wird nach Thomas Dawson durchsucht, der unter der Kontrolle eines beliebigen Ermittlers ins Spiel gebracht wird. Beim Erstellen des Agendadecks wird Agenda 2a – Was unter uns lauert (I) verwendet und Agenda 2a – Was unter uns lauert (II) aus dem Spiel entfernt."
     },
     {
       "id": "set_aside_agent_dawson",
       "bullet_type": "small",
-      "text": "Otherwise, search the collection for Thomas Dawson and set him aside, out of play. When constructing the agenda deck, use Agenda 2a—\"What Lurks Below (v.II)\" and remove Agenda 2a—\"What Lurks Below (v.I)\" from the game."
+      "text": "Ansonsten wird Thomas Dawson als nicht im Spiel befindlich beiseitegelegt. Beim Erstellen des Agendadecks wird Agenda 2a – Was unter uns lauert (II) verwendet und Agenda 2a – Was unter uns lauert (I) aus dem Spiel entfernt."
     },
     {
       "id": "flood_tokens",
@@ -76414,7 +76414,7 @@
           },
           {
             "id": "white",
-            "text": "White / Yellow",
+            "text": "Weiß/Gelb",
             "steps": [
               "white_key"
             ]
@@ -76424,27 +76424,27 @@
     },
     {
       "id": "red_key",
-      "text": "Red: A crest engraved with a glyph depicting a great sacrifice."
+      "text": "Rot: Ein Wappen, in das eine Glyphe eingraviert ist, die ein großes Opfer zeigt."
     },
     {
       "id": "blue_key",
-      "text": "Blue: A scroll detailing some of the Order's activities and secrets."
+      "text": "Blau: Eine Schriftrolle, in der einige der Aktivitäten und Geheimnisse des Ordens detailliert beschrieben werden."
     },
     {
       "id": "green_key",
-      "text": "Green: A crest depicting a widening fish-eye."
+      "text": "Grün: Ein Wappen, das ein sich öffnendes Fischauge zeigt."
     },
     {
       "id": "purple_key",
-      "text": "Purple: A crest inscribed with a circle of words in an alphabet you do not comprehend."
+      "text": "Lila: Ein Wappen, auf dem Worte in einer Schrift stehen, die du nicht begreifen kannst."
     },
     {
       "id": "black_key",
-      "text": "Black: A crest carved with an arcane sigil."
+      "text": "Schwarz: Ein Wappen, in das ein arkanes Siegel geschnitzt ist."
     },
     {
       "id": "white_key",
-      "text": "White / Yellow: Crests whose glyphs depict the alignment of celestial bodies. The white key shows the moon overlapping the sun. The yellow key shows the sun overlapping the moon."
+      "text": "Weiß/Gelb: Wappen, auf denen Glyphen abgebildet sind, die Konstellationen von Himmelskörpern beschreiben. Der weiße Schlüssel zeigt den Mond, der einen Teil der Sonne verdeckt. Der gelbe Schlüssel zeigt die Sonne, die einen Teil des Mondes verdeckt."
     },
     {
       "id": "dagon_has_awakened",
@@ -76453,7 +76453,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "dagon_has_awakened",
-          "text": "Dagon has awakened."
+          "text": "Dagon ist erwacht."
         }
       ]
     },
@@ -76519,13 +76519,13 @@
         "choices": [
           {
             "id": "suspect_defeated",
-            "text": "Is a [[Suspect]] enemy in the victory display?",
+            "text": "Befindet sich ein [[Verdächtiger]]-Gegner im Siegpunktestapel?",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "gatekeeper_has_been_defeated",
-                "text": "the gatekeeper has been defeated."
+                "text": "Der Hüter des Tores wurde besiegt."
               }
             ]
           }
@@ -76534,28 +76534,28 @@
     },
     {
       "id": "ask_oceiros",
-      "text": "The lead investigator must decide:",
+      "text": "Der Ermittlungsleiter muss entscheiden:",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "nothing",
-            "text": "Tell Oceiros nothing.",
+            "text": "Du sagst Oceiros gar nichts.",
             "steps": [
               "resolution_2"
             ]
           },
           {
             "id": "lying",
-            "text": "Lie to Oceiros.",
+            "text": "Du lügst Oceiros an.",
             "steps": [
               "resolution_3"
             ]
           },
           {
             "id": "truth",
-            "text": "Tell Oceiros everything.",
+            "text": "Du erzählst Oceiros alles.",
             "steps": [
               "resolution_4"
             ]
@@ -76615,7 +76615,7 @@
         "physical",
         "mental"
       ],
-      "text": "This place is more dangerous than you could have possibly imagined. You stumble as you flee through the dark, flooded corridors, retracing your steps as quickly as you can to reach the entrance. Your heart races in your chest as you see the exit at last. You gasp in relief as you crash through the doors, to safety—\n—Only you are not safe. Standing at the bottom of the steps is an angry throng of citizens, far too many for you to fight your way through. \"There! Get 'em!\" a wrinkled women at the head of the mob shouts. You are surrounded and grabbed within moments. You struggle and fight for your life, but it's no use. The last thing you remember is being dragged back through the halls of the Order to some unknown fate…",
+      "text": "Dieser Ort ist gefährlicher, als du es dir hättest vorstellen können. Stolpernd fliehst du durch die dunklen, überfluteten Korridore und versuchst, so schnell wie möglich auf dem Weg, über den du gekommen bist, den Ausgang zu erreichen. Als du ihn endlich sehen kannst, pocht dir das Herz rasend in der Brust. Du atmest erleichtert aus, als du durch die Türen hinausstürzt – der Sicherheit entgegen … \n… nur dass du nicht in Sicherheit bist. Am Fuße der Treppe erwartet dich eine Meute wütender Bürger, viel zu viele, um dir deinen Weg durch sie hindurch freikämpfen zu können. „Da! Schnappt ihn euch!“, ruft eine runzlige Frau an der Spitze der Meute. Augenblicklich umringen dich die Leute und greifen nach dir. Du kämpfst um dein Leben , aber vergeblich. Das Letze,woran du dich erinnern kannst, ist, wie du wieder zurück ins Innere des Gebäudes des Ordens gezogen wirst, wo dich ein unbekanntes Schicksal erwartet …",
       "steps": [
         "dagon_has_awakened",
         "resolution_1"
@@ -76631,7 +76631,7 @@
         "physical",
         "mental"
       ],
-      "text": "You're somewhere else now, lying on your stomach on cold, damp stone. Your arms are held tight behind your back. You have no idea how you got here. As consciousness returns, your vision comes into focus. You crane your neck up to view your surroundings, but it's too dark to see anything inside your stone cell.\n\"I'll ask you one last time. Who sent you here?\" a voice asks. It is deep and husky, like the croaking of a frog.\nYou hear the familiar, cool baritone of Agent Dawson reply: \"Your breath smells awful. Ever heard of brushing your teeth?\" Despite the sarcasm dripping from his words, his voice wavers ever so slightly.\n\"Your mockery only masks the fear that hides within,\" the voice replies. \"Very well. If you are of no use to us, you will be the first to be sacrificed.\"\nYour vision continues to adjust. You can just barely make out Dawson's silhouette on the other side of the cell. He is kneeling before a metal hatch in the stone floor. An elderly robed figure presses a curved knife against Dawson's throat. Someone lifts the hatch, and Dawson's eyes go wide. He gives you one last despairing look, shakes his head slowly and deliberately, and quietly slides something across the stone floor. Then the hooded figure pushes him in. In the scuffle and the low light, nobody notices the car key that skitters to a halt directly next to you.\nYou grab the key and stuff it into your pocket just before you are shoved forward. Two more sets of cold, clammy hands grap your shoulders, and the hooded figure slides his knife up to your neck. All you can see of his face are his wide, unblinking eyes.\n\"Oceiros, these ones were found in Dagon's lair as well,\" another voice explains to the elderly figure in the robes. \"We believe they were the ones snooping around Devil Reef.\"\nThe man with the knife to your throat nods. \"Your turn,\" he declares. \"Tell us why you have come and perhaps we will let you go. Who sent you? What have you seen?\"",
+      "text": "Jetzt befindest du dich an einem anderen Ort, wo du bäuchlings auf kaltem, feuchtem Stein liegst. Deine Arme werden dir auf dem Rücken festgehalten. Du hast keine Ahnung, wie du hierhergekommen bist. Als deine Sinne zurückkehren, konzentrierst du dich zuerst auf das, was du sehen kannst. Du verrenkst deinen Hals und blickst dich um. Leider ist es zu dunkel, um in deiner dunklen Zelle aus Stein irgendetwas erkennen zu können. \n„Ich frage Sie nun ein letztes Mal. Wer hat Sie geschickt?“, fragt eine Stimme. Sie ist tief und heiser, ähnlich dem Quaken eines Frosches. \nDer vertraute, ruhige Bariton von Agent Dawson antwortet: „Ihr Atem riecht ja fürchterlich. Schon mal was von Zähneputzen gehört?“ Trotz des triefenden Sarkasmus seiner Worte hast du ein leichtes Zaudern in seiner Stimme erkennen können. \n„Mit Ihrem Spott wollen Sie nur Ihre Angst verbergen“, antwortet die Stimme. „Also gut. Da Sie keinen Nutzen für uns haben, werden Sie das erste Opfer sein.“ \nMittlerweile haben sich deine Augen so weit an die Dunkelheit gewöhnt, dass du gerade so Dawsons Umrisse auf der anderen Seite der Zelle wahrnehmen kannst. Er kniet vor einer Metallluke im Steinboden. Eine älter wirkende Gestalt, die in eine Robe gehüllt ist, drückt ihm ein gekrümmtes Messer an die Kehle. Als jemand die Metallluke öffnet, weiten sich Dawsons Augen. Er wirft dir einen letzten verzweifelten Blick zu, schüttelt langsam und bedächtig den Kopf und lässt dann langsam etwas über den Steinboden zu dir gleiten. Kurz darauf stößt ihn die verhüllte Gestalt durch die geöffnete Luke. Wegen der Auseinandersetzung und der schlechten Beleuchtung hat niemand den Autoschlüssel bemerkt, der direkt vor dir liegen bleibt. \nSchnell schnappst du dir den Schlüssel und steckst ihn in deine Tasche, bevor du ebenfalls nach vorne gestoßen wirst. Zwei weitere kalte, feuchte Hände fassen dich an den Schultern und die verhüllte Gestalt hält das Messer jetzt gegen deine Kehle. Das Einzige, was du von seinem Gesicht erkennen kannst, sind die großen Augen, die niemals zu blinzeln scheinen. \n„Oceiros, wir haben einen weiteren Eindringling in Dagons Reich gefunden“, spricht eine andere Stimme die verhüllte Gestalt an. „Wir glauben, dass er derselbe ist, der auch am Teufelsriff herumgeschnüffelt hat.“ \nDer Mann mit dem Messer an deiner Kehle nickt. „Nun sind Sie am Zug“, verkündet er. „Sagen Sie uns, warum Sie hier sind. Dann lassen wir Sie vielleicht laufen. Wer hat Sie geschickt? Was haben Sie gesehen?“",
       "steps": [
         "earn_xp",
         "maybe_ask_suspect_defeated",
@@ -76648,7 +76648,7 @@
         "physical",
         "mental"
       ],
-      "text": "You remember the slow, gentle shaking of Agent Dawson's head and known what he meant by the gesture. You look up into the man's unblinking eyes, set your jaw, and say nothing. A moment of silent understanding passes between you and your interrogator. \"Very well. Your defiance has earned you naught but a slow, agonizing death.\" The metal hatch opens again. Inside, you see nothing but darkness. You glare long and hard at your captor.\n\"Take what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "text": "Du erinnerst dich daran, wie Agent Dawson langsam und bedächtig seinen Kopf geschüttelt hat. Du weißt, was er dir mit dieser Geste mitteilen wollte. Du blickst dem Mann fest in die Augen, die niemals zu blinzeln scheinen, schiebst trotzig den Unterkiefer nach vorne und sagst gar nichts. Ein Augenblick verstreicht, in dem dein Entführer dein Vorhaben zu begreifen scheint. Dann sagt er zu dir: „Nun gut. Ihr widerspenstiges Verhalten hat Ihnen nichts weiter als einen langsamen, schmerzhaften Tod beschert.“ Wieder öffnet sich die Metallluke. Dahinter kannst du nur Dunkelheit erkennen. Du starrst Oceiros mit hartem Blick lange entgegen. \n„Bringt alles, was er gestohlen hat, sofort zum Leuchtturm“, befiehlt er einer anderen Gestalt, die ebenfalls in eine Robe gehüllt ist. „Es wird Zeit, unser großes Werk zu beginnen. Niemand wird je wieder die Geschäfte des Ordens stören. Schon bald werden alle die natürliche Ordnung des Lebens verstehen lernen.“ Dann nickt er jemandem zu und du wirst nach vorne geschoben. Als dich die feuchtkalten Hände loslassen, stürzt du mit einem Mal in die Dunkelheit hinab. Das Letzte, das du spürst, ist, wie dein Kopf auf kaltem Stein aufprallt, dann …",
       "steps": [
         "add_elder_thing"
       ]
@@ -76663,7 +76663,7 @@
         "physical",
         "mental"
       ],
-      "text": "You can think of only one way out of this situation. The Order believes that you are poking around their business, so you will have to convince them that you don't know or care what they are up to. You lie as best you can, spinning a story that might convince them you were simply in the wrong place at the wrong time. \"And what of your unfortunate friend?\" your interrogator asks. You tell him that you have never met that man before in your life. \"Perhaps you speak the truth,\" the man says, and you breath a short-lived sigh of relief before he dashes your hopes: \"…but it matters not. You have seen too much, and for that, you must be silenced. Worry not. You will be joining our kindred soon.\" The metal hatch opens again. Inside, you see nothing but darkness.\n\"Take what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "text": "Du kannst dir nur einen Ausweg aus dieser Situation vorstellen. Da der Orden glaubt, dass du in seinen Angelegenheiten herumschnüffelst, musst du ihn überzeugen, dass du keine Ahnung von dem hast, was sie vorhaben, und es dir auch egal ist. Du lügst, so gut du kannst, indem du eine Geschichte erzählst, in der du einfach nur zum falschen Zeitpunkt am falschen Ort warst. „Und was ist mit Ihrem unglückseligen Freund?“, will dein Entführer von dir wissen. Du antwortest ihm, dass du diesen Mann noch niemals zuvor in deinem Leben gesehen hast. „Vielleicht sagen Sie ja die Wahrheit“, sagt der Mann und du atmest erleichtert aus. Doch dann zerschlägt er deine Hoffnung sogleich wieder, indem er fortfährt: „… aber das spielt keine Rolle. Sie haben zu viel gesehen und deshalb müssen Sie zum Schweigen gebracht werden. Aber sorgen Sie sich nicht. Sie werden schon bald den Unsrigen angehören.“ Wieder öffnet sich die Metallluke. Dahinter ist nur Dunkelheit zu erkennen. \n„Bringt alles, was er gestohlen hat, sofort zum Leuchtturm“, befiehlt er einer anderen Gestalt, die ebenfalls in eine Robe gehüllt ist. „Es wird Zeit, unser großes Werk zu beginnen. Niemand wird je wieder die Geschäfte des Ordens stören. Schon bald werden alle die natürliche Ordnung des Lebens verstehen lernen.“ Dann nickt er jemandem zu und du wirst nach vorne geschoben. Als dich die feuchtkalten Hände loslassen, stürzt du mit einem Mal in die Dunkelheit hinab. Das Letzte, das du spürst, ist, wie dein Kopf auf kaltem Stein aufprallt, dann …",
       "steps": [
         "add_tablet"
       ]
@@ -76678,7 +76678,7 @@
         "physical",
         "mental"
       ],
-      "text": "None of this is what you signed up for. Hoping to avoid Dawson's fate, you have no choice but to tell your interrogator everything. You explain you were hired by Dawson to find his missing agent, and go on to describe the events that followed over the past few weeks, including your exploration of Devil Reef and your investigation into the Order. A slow smile crawls across the man's face as you divulge everything you know. \"I thank you for your candor. Sadly, there is only one way I can repay you. You have seen too much, and for that, you must be silenced.\" Your heart goes cold as you realize what he means. The metal hatch opens again. Inside, you see nothing but darkness.\nTake what they have stolen to the lighthouse at once,\" Oceiros commands one of the other robed figures. \"It is time to begin our great work. None will disrupt the Order's business ever again. Soon, all will understand the natural order of life.\" Then he nods to your captors, and you are shoved forward. The clammy hands release you and suddenly you are tumbling into darkness. The last think you feel is your head striking cold stone, and then—",
+      "text": "Auf nichts davon warst du vorbereitet. Um dem gleichen Schicksal wie dem von Dawson zu entgehen, hast du keine andere Wahl, als deinem Befrager alles zu erzählen. Du erklärst ihm, wie Dawson dich angeheuert hat, um eine vermisste Agentin zu finden. Dann fährst du mit den Ereignissen der letzten Wochen fort, darunter auch deine Erkundung des Teufelsriffs und deine Ermittlungen über den Orden. Ein Lächeln breitet sich im Gesicht des Mannes aus, als du alles preisgibst, was du weißt. „Ich danke Ihnen für Ihre Offenheit. Leider kann ich Ihnen nur auf eine Art dafür danken. Sie haben zu viel gesehen und deshalb müssen Sie zum Schweigen gebracht werden.“ Dir wird kalt ums Herz, als du erkennst, was er damit meint. Wieder öffnet sich die Metallluke. Dahinter ist nur Dunkelheit zu erkennen. \n„Bringt alles, was er gestohlen hat, sofort zum Leuchtturm“, befiehlt er einer anderen Gestalt, die ebenfalls in eine Robe gehüllt ist. „Es wird Zeit, unser großes Werk zu beginnen. Niemand wird je wieder die Geschäfte des Ordens stören. Schon bald werden alle die natürliche Ordnung des Lebens verstehen lernen.“ Dann nickt er jemandem zu und du wirst nach vorne geschoben. Als dich die feuchtkalten Hände loslassen, stürzt du mit einem Mal in die Dunkelheit hinab. Das Letzte, das du spürst, ist, wie dein Kopf auf kaltem Stein aufprallt, dann …",
       "steps": [
         "add_cultist"
       ]

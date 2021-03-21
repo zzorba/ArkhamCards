@@ -2394,7 +2394,7 @@
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "Dagon ist erwacht."
           },
           {
             "id": "friendly_out_for_blood",
@@ -2402,11 +2402,11 @@
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "Der Hüter des Tores wurde besiegt."
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "Das Tor nach Y’ha-nthlei erkennt dich als seinen rechtmäßigen Hüter an"
           },
           {
             "id": "gilman_out_for_blood",
@@ -2414,7 +2414,7 @@
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "Der Wächter von Y’ha-nthlei wurde beseitigt."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
