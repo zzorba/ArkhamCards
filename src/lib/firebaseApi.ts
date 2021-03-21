@@ -18,9 +18,9 @@ export function uploadCampaignDeckHelper(
     while (deck) {
       const deckId = getDeckId(deck);
       if (deck.previousDeckId) {
-        await actions.createNextDeck(deck, campaignId.serverId, deck.previousDeckId);
+        await actions.createNextDeck(deck, campaignId, deck.previousDeckId);
       } else {
-        await actions.createBaseDeck(deck, campaignId.serverId);
+        await actions.createBaseDeck(deck, campaignId);
       }
       dispatch({
         type: UPLOAD_DECK,

@@ -21,14 +21,7 @@ mutation insertNewDeck(
       base: true
     }
   ) {
-    id
-    arkhamdb_id
-    local_uuid
-    campaign_id
-    owner_id
-    investigator
-    content
-    content_hash
+    ...LatestDeck
   }
 }
 
@@ -69,13 +62,7 @@ mutation insertNextLocalDeck(
     investigator
     owner_id
     next_deck {
-  		id
-    	local_uuid
-	    campaign_id
-	    investigator
-    	owner_id
-      content
-      content_hash
+      ...LatestDeck
 	  }
   }
 }
@@ -117,13 +104,7 @@ mutation insertNextArkhamDbDeck(
     investigator
     owner_id
     next_deck {
-  		id
-    	arkhamdb_id
-	    campaign_id
-      investigator
-    	owner_id
-      content
-      content_hash
+      ...LatestDeck
 	  }
   }
 }
