@@ -404,10 +404,6 @@ msgstr "Filtro"
 msgid "Packs: All"
 msgstr "Pack: Tutti"
 
-#, javascript-format
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "${ cycleNames[cycle_position] } Ciclo"
-
 msgid "Packs: ${ allPacksString }"
 msgstr "Pack: ${ allPacksString }"
 
@@ -4418,6 +4414,11 @@ msgstr ""
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } reads <b>${ sectionName }</b>"
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr "${ cycleNames[cycle_position] } Ciclo"
 
 msgctxt "action"
 msgid "Fight"

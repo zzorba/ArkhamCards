@@ -166,7 +166,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
 
     const parts: string[] = [];
     forEach(completeCycles, cycle_position => {
-      parts.push(t`${cycleNames[cycle_position]} Cycle`);
+      parts.push(c('filter').t`${cycleNames[cycle_position]} Cycle`);
     });
     const partialCyclesSet = new Set(partialCycles);
     forEach(selectedPacks, pack => {

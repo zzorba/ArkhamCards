@@ -693,17 +693,6 @@ msgstr "Cópia de Segurança"
 msgid "Cache cleared"
 msgstr "Cache apagado"
 
-#, javascript-format
-msgid "${ cycleCount } Cycle"
-msgid_plural "${ cycleCount } Cycles"
-msgstr[0] "${ cycleCount } Ciclo"
-msgstr[1] "${ cycleCount } Ciclo"
-
-msgid "${ standalonePackCount } Pack"
-msgid_plural "${ standalonePackCount } Packs"
-msgstr[0] "${ standalonePackCount } Pacote"
-msgstr[1] "${ standalonePackCount } Pacotes"
-
 msgid "Edit Spoilers"
 msgstr "Alterar Spoilers"
 
@@ -1188,13 +1177,6 @@ msgstr "Filtros"
 
 msgid "Packs: All"
 msgstr "Pacotes: Todos"
-
-#, javascript-format
-msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr "${ cycleNames[cycle_position] } Ciclo"
-
-msgid "Packs: ${ allPacksString }"
-msgstr "Pacotes: ${ allPacksString }"
 
 msgid "HPI"
 msgstr "HPI"
@@ -4204,6 +4186,20 @@ msgstr ""
 msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr ""
 
+#, javascript-format
+msgid "${ cycleCount } Cycle"
+msgid_plural "${ cycleCount } Cycles"
+msgstr[0] "${ cycleCount } Ciclo"
+msgstr[1] "${ cycleCount } Ciclo"
+
+msgid "${ standalonePackCount } Pack"
+msgid_plural "${ standalonePackCount } Packs"
+msgstr[0] "${ standalonePackCount } Pacote"
+msgstr[1] "${ standalonePackCount } Pacotes"
+
+msgid "Packs: ${ allPacksString }"
+msgstr "Pacotes: ${ allPacksString }"
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"
@@ -4406,6 +4402,11 @@ msgid ""
 msgstr ""
 "Se <i>${ card.name }</i> está listada is listed under Check ‘${ "
 "entry.section }’ in your Campaign Log."
+
+#, javascript-format
+msgctxt "filter"
+msgid "${ cycleNames[cycle_position] } Cycle"
+msgstr "${ cycleNames[cycle_position] } Ciclo"
 
 msgctxt "action"
 msgid "Fight"
